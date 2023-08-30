@@ -11,13 +11,13 @@
 
 from holidays.calendars.gregorian import MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.constants import WEEKEND_TO_NEXTWORK
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import WEEKEND_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

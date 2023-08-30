@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR
+from holidays.calendars.gregorian import MAR, TUE, WED, THU, FRI
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
@@ -53,7 +53,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         # Decree Law #14977, # 15535, #16805.
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 0, 0))
+        ObservedHolidays.__init__(self, rule={TUE: -1, WED: -2, THU: +4, FRI: +3})
         super().__init__(*args, **kwargs)
 
     def _is_observed_applicable(self, dt: date) -> bool:

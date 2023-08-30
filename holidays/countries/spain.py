@@ -9,13 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import SUN_TO_MON
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
     InternationalHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 

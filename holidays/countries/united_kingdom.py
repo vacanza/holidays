@@ -11,9 +11,9 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
-from holidays.constants import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC, MON, SAT, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
 from holidays.holiday_base import HolidayBase
 
 
@@ -140,9 +140,9 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, Obser
 
         # New Year Holiday
         self._add_observed(
-            self._add_new_years_day_two("New Year Holiday"), rule=(1, 0, 0, 0, 0, 2, 1)
+            self._add_new_years_day_two("New Year Holiday"), rule={MON: +1, SAT: +2, SUN: +1}
         )
-        self._add_observed(jan_1, rule=(0, 0, 0, 0, 0, 3, 1))
+        self._add_observed(jan_1, rule={SAT: +3, SUN: +1})
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")

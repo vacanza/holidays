@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import WEEKEND_TO_NEXTWORK
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

@@ -29,13 +29,13 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.constants import SUN_TO_MON, SUN_TO_TUE, SAT_TO_MON, WEEKEND_TO_MON_OR_TUE
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
     InternationalHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE, SAT_TO_MON, WEEKEND_TO_MON_OR_TUE
 from holidays.holiday_base import HolidayBase
 
 

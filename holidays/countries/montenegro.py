@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.constants import SUN_TO_MON, SUN_TO_TUE
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE
 from holidays.holiday_base import HolidayBase
 
 

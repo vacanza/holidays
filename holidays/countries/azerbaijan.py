@@ -12,9 +12,26 @@
 from datetime import date
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import WEEKEND_TO_NEXTWORK
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+)
 from holidays.groups import InternationalHolidays, IslamicHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 
@@ -133,7 +150,11 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays, ObservedHo
                     continue
                 for name in self.get_list(dt_observed):
                     if "Bayrami" in name:
-                        self._add_observed(dt_observed, rule=(7, 7, 7, 7, 7, 0, 0), name=name)
+                        self._add_observed(
+                            dt_observed,
+                            rule={MON: +7, TUE: +7, WED: +7, THU: +7, FRI: +7},
+                            name=name,
+                        )
 
 
 class AZ(Azerbaijan):

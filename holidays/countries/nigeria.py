@@ -10,13 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAY
-from holidays.constants import WEEKEND_TO_NEXTWORK
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import WEEKEND_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

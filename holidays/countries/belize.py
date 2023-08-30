@@ -8,9 +8,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
-from holidays.constants import SUN_TO_MON
+from holidays.calendars.gregorian import TUE, WED, THU, FRI, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -52,7 +52,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         # National Heroes and Benefactors Day.
         self._move_holiday(
             self._add_holiday_mar_9("National Heroes and Benefactors Day"),
-            rule=(0, -1, -2, -3, 3, 0, 1),
+            rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
         )
 
         # Good Friday.
@@ -70,13 +70,15 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         if year <= 2021:
             # Commonwealth Day.
             self._move_holiday(
-                self._add_holiday_may_24("Commonwealth Day"), rule=(0, -1, -2, -3, 3, 0, 1)
+                self._add_holiday_may_24("Commonwealth Day"),
+                rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
             )
 
         if year >= 2021:
             # Emancipation Day.
             self._move_holiday(
-                self._add_holiday_aug_1("Emancipation Day"), rule=(0, -1, -2, -3, 3, 0, 1)
+                self._add_holiday_aug_1("Emancipation Day"),
+                rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
             )
 
         # Saint George's Caye Day.
@@ -87,7 +89,9 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         # Indigenous Peoples' Resistance Day / Pan American Day.
         name = "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day"
-        self._move_holiday(self._add_columbus_day(name), rule=(0, -1, -2, -3, 3, 0, 1))
+        self._move_holiday(
+            self._add_columbus_day(name), rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1}
+        )
 
         # Garifuna Settlement Day.
         self._move_holiday(self._add_holiday_nov_19("Garifuna Settlement Day"))

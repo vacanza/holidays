@@ -11,13 +11,13 @@
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import SUN_TO_MON
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 

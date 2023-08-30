@@ -13,8 +13,8 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
 from holidays.holiday_base import HolidayBase
 
 

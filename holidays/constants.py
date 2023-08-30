@@ -65,26 +65,3 @@ ALL_CATEGORIES = {
     SCHOOL,
     WORKDAY,
 }
-
-# observed calculation rules
-# tuple of 7 int (MON...SUN)
-# 7 - next workday, -7 - prev workday
-SUN_TO_MON = (0, 0, 0, 0, 0, 0, 1)
-WEEKEND_TO_MON = (0, 0, 0, 0, 0, 2, 1)
-SUN_TO_TUE = (0, 0, 0, 0, 0, 0, 2)
-SAT_TO_MON = (0, 0, 0, 0, 0, 2, 0)
-WEEKEND_TO_MON_OR_TUE = (0, 0, 0, 0, 0, 2, 2)
-WEEKEND_TO_PREV_NEXT = (0, 0, 0, 0, 0, -1, 1)
-THU_TO_FRI = (0, 0, 0, 1, 0, 0, 0)
-TUE_TO_MON_AND_THU_TO_FRI = (0, -1, 0, 1, 0, 0, 0)
-FRI_TO_SAT_AND_SUN_TO_MON = (0, 0, 0, 0, 1, 0, 1)
-THU_TO_WED_AND_FRI_TO_SAT = (0, 0, 0, -1, 1, 0, 0)
-FRI_TO_THU_AND_SAT_TO_SUN = (0, 0, 0, 0, -1, 1, 0)
-FRI_TO_NEXTWORK = (0, 0, 0, 0, 7, 0, 0)
-SAT_TO_NEXTWORK = (0, 0, 0, 0, 0, 7, 0)
-SUN_TO_NEXTWORK = (0, 0, 0, 0, 0, 0, 7)
-WEEKEND_TO_NEXTWORK = (0, 0, 0, 0, 0, 7, 7)
-WEEKEND_TO_PREV_NEXT_WORK = (0, 0, 0, 0, 0, -7, 7)
-THU_FRI_TO_NEXTWORK = (0, 0, 0, 7, 7, 0, 0)
-FRI_SAT_TO_NEXTWORK = (0, 0, 0, 0, 7, 7, 0)
-NEAREST_MON = (0, -1, -2, -3, 3, 2, 1)

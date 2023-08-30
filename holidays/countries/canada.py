@@ -13,8 +13,8 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR, APR, JUN, JUL
-from holidays.constants import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, NEAREST_MON
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, NEAREST_MON
 from holidays.holiday_base import HolidayBase
 
 

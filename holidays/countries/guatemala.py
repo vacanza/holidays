@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import NEAREST_MON_LATAM
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,7 +39,7 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 2, 1))
+        ObservedHolidays.__init__(self, rule=NEAREST_MON_LATAM)
         super().__init__(*args, **kwargs)
 
     def _is_observed_applicable(self, dt: date) -> bool:

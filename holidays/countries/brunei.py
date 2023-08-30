@@ -12,8 +12,22 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import FRI_TO_SAT_AND_SUN_TO_MON
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    FRI,
+    SUN,
+)
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -21,6 +35,7 @@ from holidays.groups import (
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import FRI_TO_SAT_AND_SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -166,11 +181,11 @@ class Brunei(
         # Eid al-Fitr
         name = tr("Hari Raya Aidil Fitri")
         for dt in self._add_eid_al_fitr_day(name):
-            self._add_observed(dt, rule=(0, 0, 0, 0, 3, 0, 3))
+            self._add_observed(dt, rule={FRI: +3, SUN: +3})
         for dt in self._add_eid_al_fitr_day_two(name):
-            self._add_observed(dt, rule=(0, 0, 0, 0, 3, 0, 2))
+            self._add_observed(dt, rule={FRI: +3, SUN: +2})
         for dt in self._add_eid_al_fitr_day_three(name):
-            self._add_observed(dt, rule=(0, 0, 0, 0, 1, 0, 0))
+            self._add_observed(dt, rule={FRI: +1})
 
         # Hari Raya Aidil Adha
         # Status: In-Use.

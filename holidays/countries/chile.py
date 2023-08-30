@@ -13,8 +13,9 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import JUN, SEP
+from holidays.calendars.gregorian import JUN, SEP, TUE, WED
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WORKDAY_TO_NEAREST_MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -73,7 +74,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolid
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, -3, 3, 0, 0), begin=2000)
+        ObservedHolidays.__init__(self, rule=WORKDAY_TO_NEAREST_MON, begin=2000)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -176,7 +177,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolid
                     # National Day of the Evangelical and Protestant Churches.
                     tr("Día Nacional de las Iglesias Evangélicas y Protestantes")
                 ),
-                rule=(0, -4, 2, 0, 0, 0, 0),
+                rule={TUE: -4, WED: +2},
             )
 
         # All Saints Day.

@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import DEC
-from holidays.constants import WEEKEND_TO_PREV_NEXT_WORK
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_PREV_NEXT_WORK
 from holidays.holiday_base import HolidayBase
 
 

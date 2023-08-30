@@ -11,7 +11,24 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    TUE,
+    WED,
+    THU,
+    FRI,
+)
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -159,7 +176,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 0, 0))
+        ObservedHolidays.__init__(self, rule={TUE: -1, WED: -2, THU: +4, FRI: +3})
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -275,7 +292,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
             )
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
             # but Jun 20 is Gen. Belgrano holiday
-            self._move_holiday(jun_17, rule=(0, -1, -2, 4, 0, 0, 0))
+            self._move_holiday(jun_17, rule={TUE: -1, WED: -2, THU: +4})
 
         # Status: In-Use.
         # Started in 1938 via Ley 12387 on Aug 17.

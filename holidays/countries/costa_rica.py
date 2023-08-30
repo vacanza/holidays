@@ -12,6 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import NEAREST_MON_LATAM, NEXT_SUN, WORKDAY_TO_NEXT_MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -36,7 +37,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 2, 1))
+        ObservedHolidays.__init__(self, rule=NEAREST_MON_LATAM)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -54,7 +55,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
         # Juan Santamaría Day.
         apr_11 = self._add_holiday_apr_11(tr("Día de Juan Santamaría"))
         if 2006 <= year <= 2010:
-            self._move_holiday(apr_11, rule=(0, 6, 5, 4, 3, 0, 0))
+            self._move_holiday(apr_11, rule=WORKDAY_TO_NEXT_MON)
         elif year in {2023, 2024}:
             self._move_holiday(apr_11)
 
@@ -66,7 +67,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
         # Annexation of the Party of Nicoya to Costa Rica.
         jul_25 = self._add_holiday_jul_25(tr("Anexión del Partido de Nicoya a Costa Rica"))
         if 2005 <= year <= 2008:
-            self._move_holiday(jul_25, rule=(0, 6, 5, 4, 3, 0, 0))
+            self._move_holiday(jul_25, rule=WORKDAY_TO_NEXT_MON)
         elif 2020 <= year <= 2024:
             self._move_holiday(jul_25)
 
@@ -76,7 +77,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
         # Mother's Day.
         dt = self._add_assumption_of_mary_day(tr("Día de la Madre"))
         if 2005 <= year <= 2007:
-            self._move_holiday(dt, rule=(0, 6, 5, 4, 3, 0, 0))
+            self._move_holiday(dt, rule=WORKDAY_TO_NEXT_MON)
         elif year in {2020, 2023, 2024}:
             self._move_holiday(dt)
 
@@ -87,7 +88,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
             )
             if year in {2022, 2023}:
                 # Move to next Sunday.
-                self._move_holiday(aug_31, rule=(6, 5, 4, 3, 2, 1, 0))
+                self._move_holiday(aug_31, rule=NEXT_SUN)
 
         # Independence Day.
         sep_15 = self._add_holiday_sep_15(tr("Día de la Independencia"))
@@ -98,7 +99,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
             self._move_holiday(
                 # Cultures Day.
                 self._add_columbus_day(tr("Día de las Culturas")),
-                rule=(0, 6, 5, 4, 3, 0, 0),
+                rule=WORKDAY_TO_NEXT_MON,
             )
 
         if year >= 2020:

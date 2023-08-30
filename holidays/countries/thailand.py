@@ -12,9 +12,26 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, SAT_TO_MON
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+)
 from holidays.groups import InternationalHolidays, ObservedHolidays, ThaiCalendarHolidays
+from holidays.groups.observed import WEEKEND_TO_MON, SAT_TO_MON, WEEKEND_TO_MON_OR_TUE
 from holidays.holiday_base import HolidayBase
 
 
@@ -343,7 +360,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
             # See in lieu logic in `_add_observed(dt: date)`.
             # Status: In Use.
             if year >= 1995:
-                self._add_observed(dt, rule=(0, 0, 0, 4, 3, 3, 0))
+                self._add_observed(dt, rule={THU: +4, FRI: +3, SAT: +3})
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
@@ -534,7 +551,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
         # See in lieu logic in `_add_observed(dt: date)`.
 
         if year >= 1995:
-            self._add_observed(date(year - 1, DEC, 31), rule=(0, 0, 0, 0, 0, 3, 2), name=name)
+            self._add_observed(date(year - 1, DEC, 31), rule={SAT: +3, SUN: +2}, name=name)
 
         # Thai Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.

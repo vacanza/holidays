@@ -13,8 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC
-from holidays.constants import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, NEAREST_MON
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, NEAREST_MON
 from holidays.holiday_base import HolidayBase
 
 

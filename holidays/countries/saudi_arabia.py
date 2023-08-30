@@ -15,13 +15,13 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
-from holidays.constants import (
+from holidays.groups import IslamicHolidays, ObservedHolidays
+from holidays.groups.observed import (
     THU_TO_WED_AND_FRI_TO_SAT,
     FRI_TO_THU_AND_SAT_TO_SUN,
     THU_FRI_TO_NEXTWORK,
     FRI_SAT_TO_NEXTWORK,
 )
-from holidays.groups import IslamicHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 

@@ -31,7 +31,6 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
 )
-from holidays.constants import FRI_TO_NEXTWORK, SAT_TO_NEXTWORK, SUN_TO_NEXTWORK
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -41,6 +40,7 @@ from holidays.groups import (
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import FRI_TO_NEXTWORK, SAT_TO_NEXTWORK, SUN_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

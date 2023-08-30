@@ -11,9 +11,9 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import DEC
-from holidays.constants import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_PREV_NEXT
+from holidays.calendars.gregorian import DEC, MON, FRI, SAT, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_PREV_NEXT
 from holidays.holiday_base import HolidayBase
 
 
@@ -149,7 +149,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
         # Christmas Eve
         # If on Friday, observed on Thursday
         # If on Saturday or Sunday, observed on Friday
-        self._add_observed(self._add_christmas_eve("Christmas Eve"), rule=(0, 0, 0, 0, -1, -1, -2))
+        self._add_observed(
+            self._add_christmas_eve("Christmas Eve"), rule={FRI: -1, SAT: -1, SUN: -2}
+        )
 
     def _add_subdiv_holidays(self):
         # Martin Luther King Jr. Day
@@ -570,7 +572,8 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
             # If on Saturday or Sunday, observed on Monday
             # If on Monday, observed on Tuesday
             self._add_observed(
-                self._add_christmas_day_two("Day After Christmas"), rule=(1, 0, 0, 0, 0, 2, 1)
+                self._add_christmas_day_two("Day After Christmas"),
+                rule={MON: +1, SAT: +2, SUN: +1},
             )
 
     def _add_subdiv_nd_holidays(self):

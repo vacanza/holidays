@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
-from holidays.constants import SUN_TO_MON
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 

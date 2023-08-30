@@ -12,8 +12,9 @@
 from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
-from holidays.constants import HALF_DAY, PUBLIC, WEEKEND_TO_NEXTWORK
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

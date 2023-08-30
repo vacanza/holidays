@@ -12,13 +12,13 @@
 from datetime import date
 from typing import Optional
 
-from holidays.constants import SUN_TO_MON
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
     InternationalHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import SUN_TO_MON
 from holidays.holiday_base import HolidayBase
 
 

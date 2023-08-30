@@ -12,8 +12,8 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC
-from holidays.constants import TUE_TO_MON_AND_THU_TO_FRI, THU_TO_FRI
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import THU_TO_FRI, TUE_TO_MON_AND_THU_TO_FRI
 from holidays.holiday_base import HolidayBase
 
 

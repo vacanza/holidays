@@ -16,7 +16,6 @@ from holidays.calendars import (
     _CustomHinduCalendar,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import SUN_TO_NEXTWORK
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -26,6 +25,7 @@ from holidays.groups import (
     IslamicHolidays,
     ObservedHolidays,
 )
+from holidays.groups.observed import SUN_TO_NEXTWORK
 from holidays.holiday_base import HolidayBase
 
 

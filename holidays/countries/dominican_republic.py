@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN
+from holidays.calendars.gregorian import JUN, TUE, WED, THU, FRI, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -30,7 +30,7 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, O
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 0, 0))
+        ObservedHolidays.__init__(self, rule={TUE: -1, WED: -2, THU: +4, FRI: +3})
         super().__init__(*args, **kwargs)
 
     def _is_observed_applicable(self, dt: date) -> bool:
@@ -58,9 +58,10 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, O
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        # Labor Day.
         self._move_holiday(
-            self._add_labor_day(tr("Día del Trabajo")), rule=(0, -1, -2, 4, 3, 0, 1)
+            # Labor Day.
+            self._add_labor_day(tr("Día del Trabajo")),
+            rule={TUE: -1, WED: -2, THU: +4, FRI: +3, SUN: +1},
         )
 
         # Feast of Corpus Christi.

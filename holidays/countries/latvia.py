@@ -13,8 +13,8 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, JUL, SEP
-from holidays.constants import WEEKEND_TO_MON
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_MON
 from holidays.holiday_base import HolidayBase
 
 

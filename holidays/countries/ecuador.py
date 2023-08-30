@@ -11,9 +11,9 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import DEC
-from holidays.constants import WEEKEND_TO_PREV_NEXT
+from holidays.calendars.gregorian import DEC, TUE, WED, THU, SAT, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
+from holidays.groups.observed import WEEKEND_TO_PREV_NEXT
 from holidays.holiday_base import HolidayBase
 
 
@@ -42,7 +42,9 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         # When holidays falls on Saturday or Sunday, the rest shall be
         # transferred, respectively, to the preceding Friday or the
         # following Monday.
-        ObservedHolidays.__init__(self, rule=(0, -1, 2, 1, 0, -1, 1), begin=2017)
+        ObservedHolidays.__init__(
+            self, rule={TUE: -1, WED: +2, THU: +1, SAT: -1, SUN: +1}, begin=2017
+        )
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -78,13 +80,13 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         self._add_observed(
             # All Souls' Day.
             self._add_all_souls_day(tr("Día de los Difuntos")),
-            rule=(0, -1, 2, 0, 0, -1, 0),  # no observed on next day
+            rule={TUE: -1, WED: +2, SAT: -1},  # no observed on next day
         )
 
         self._add_observed(
             # Independence of Cuenca.
             self._add_holiday_nov_3(tr("Independencia de Cuenca")),
-            rule=(0, 0, 2, 1, 0, 0, 1),  # no observed on previous day
+            rule={WED: +2, THU: +1, SUN: +1},  # no observed on previous day
         )
 
         self._add_observed(

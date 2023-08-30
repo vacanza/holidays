@@ -13,10 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
-from holidays.constants import WEEKEND_TO_MON
 from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
+from ..groups.observed import WEEKEND_TO_MON
 from .united_kingdom import UnitedKingdom
 
 

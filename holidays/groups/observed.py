@@ -11,11 +11,39 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Optional, Tuple, Set
+from typing import Dict, Optional, Tuple, Set
 
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
-ObservedRule = Tuple[int, int, int, int, int, int, int]
+ObservedRule = Dict[int, int]
+
+# observed calculation rules
+# 7 - next workday, -7 - prev workday
+SUN_TO_MON = {SUN: +1}
+WEEKEND_TO_MON = {SAT: +2, SUN: +1}
+SUN_TO_TUE = {SUN: +2}
+SAT_TO_MON = {SAT: +2}
+WEEKEND_TO_MON_OR_TUE = {SAT: +2, SUN: +2}
+WEEKEND_TO_PREV_NEXT = {SAT: -1, SUN: +1}
+THU_TO_FRI = {THU: +1}
+TUE_TO_MON_AND_THU_TO_FRI = {TUE: -1, THU: +1}
+FRI_TO_SAT_AND_SUN_TO_MON = {FRI: +1, SUN: +1}
+THU_TO_WED_AND_FRI_TO_SAT = {THU: -1, FRI: +1}
+FRI_TO_THU_AND_SAT_TO_SUN = {FRI: -1, SAT: +1}
+FRI_TO_NEXTWORK = {FRI: +7}
+SAT_TO_NEXTWORK = {SAT: +7}
+SUN_TO_NEXTWORK = {SUN: +7}
+WEEKEND_TO_NEXTWORK = {SAT: +7, SUN: +7}
+WEEKEND_TO_PREV_NEXT_WORK = {SAT: -7, SUN: +7}
+THU_FRI_TO_NEXTWORK = {THU: +7, FRI: +7}
+FRI_SAT_TO_NEXTWORK = {FRI: +7, SAT: +7}
+NEAREST_MON = {TUE: -1, WED: -2, THU: -3, FRI: +3, SAT: +2, SUN: +1}
+NEAREST_MON_LATAM = {TUE: -1, WED: -2, THU: 4, FRI: +3, SAT: +2, SUN: +1}
+WORKDAY_TO_NEXT_MON = {TUE: +6, WED: +5, THU: +4, FRI: +3}
+WORKDAY_TO_NEAREST_MON = {TUE: -1, WED: -2, THU: -3, FRI: +3}
+NEXT_MON = {TUE: +6, WED: +5, THU: +4, FRI: +3, SAT: +2, SUN: +1}
+NEXT_SUN = {MON: +6, TUE: +5, WED: +4, THU: +3, FRI: +2, SAT: +1}
 
 
 class ObservedHolidays:
@@ -37,7 +65,7 @@ class ObservedHolidays:
         return not self._begin or self._year >= self._begin
 
     def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
-        delta = rule[dt.weekday()]
+        delta = rule.get(dt.weekday(), 0)
         if delta != 0:
             if abs(delta) == 7:
                 delta //= 7
