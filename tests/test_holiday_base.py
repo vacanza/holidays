@@ -99,7 +99,7 @@ class MarketStub2(EntityStub):
 
 class TestArgs(unittest.TestCase):
     def test_categories(self):
-        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories={"HOME"}))
+        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories=("HOME",)))
 
     def test_country(self):
         self.assertEqual(CountryStub1().country, "CS1")
@@ -174,13 +174,25 @@ class TestEqualityInequality(unittest.TestCase):
         self.assertEqual(hb_2, hb_2)
         self.assertEqual(hb_3, hb_3)
 
-        self.assertEqual(CountryStub1(years=2014), CountryStub1(years=2014))
-        self.assertEqual(CountryStub2(years=(2014, 2015)), CountryStub2(years=(2014, 2015)))
-        self.assertEqual(CountryStub3(language="fr"), CountryStub3(language="fr"))
+        hb_4 = CountryStub1(years=2014)
+        hb_5 = CountryStub1(years=2014)
+        self.assertEqual(hb_4, hb_5)
+        self.assertEqual(hb_5, hb_4)
+
+        hb_6 = CountryStub2(years=(2014, 2015))
+        hb_7 = CountryStub2(years=(2014, 2015))
+        self.assertEqual(hb_6, hb_7)
+        self.assertEqual(hb_7, hb_6)
+
+        hb_8 = CountryStub3(language="fr")
+        hb_9 = CountryStub3(language="fr")
+        self.assertEqual(hb_8, hb_9)
+        self.assertEqual(hb_9, hb_8)
 
         # Use assertFalse instead of assertNotEqual as we want to check "==" explicitly.
         self.assertFalse(hb_1 == {})
         self.assertFalse(hb_2 == {})
+        self.assertFalse(hb_3 == {})
         self.assertFalse(hb_1 == hb_2)
         self.assertFalse(hb_2 == hb_1)
         self.assertFalse(hb_1 == hb_3)
@@ -193,38 +205,39 @@ class TestEqualityInequality(unittest.TestCase):
         hb_2 = CountryStub2()
         hb_3 = CountryStub1(subdiv="Subdiv1")
 
-        self.assertNotEqual(hb_1, hb_2)
         self.assertNotEqual(hb_1, {})
         self.assertNotEqual(hb_2, {})
-
-        hb_3 = CountryStub1(years=2014)
-        hb_4 = CountryStub2(years=2015)
-        self.assertNotEqual(hb_1, hb_3)
-        self.assertNotEqual(hb_2, hb_4)
-        self.assertNotEqual(hb_3, hb_4)
-
-        hb_5 = CountryStub1(years=2014, subdiv="Subdiv1")
-        hb_6 = CountryStub1(years=2014, subdiv="Subdiv2")
-        self.assertNotEqual(hb_5, hb_6)
-
-        hb_7 = CountryStub1(years=2014)
-        hb_8 = CountryStub1(years=2014, language="fr")
-        self.assertNotEqual(hb_7, hb_8)
-
-        # Use assertFalse instead of assertEqual in order to check "!=" explicitly.
-        self.assertFalse(hb_1 != hb_1)
-        self.assertFalse(hb_2 != hb_2)
-        self.assertFalse(hb_3 != hb_3)
-
-        self.assertNotEqual(hb_1, {})
-        self.assertNotEqual(hb_2, {})
+        self.assertNotEqual(hb_3, {})
         self.assertNotEqual(hb_1, hb_2)
         self.assertNotEqual(hb_2, hb_1)
         self.assertNotEqual(hb_1, hb_3)
         self.assertNotEqual(hb_3, hb_1)
         self.assertNotEqual(hb_2, hb_3)
         self.assertNotEqual(hb_3, hb_2)
-        self.assertNotEqual(hb_7, hb_8)
+
+        hb_4 = CountryStub1(years=2014)
+        hb_5 = CountryStub2(years=2015)
+        self.assertNotEqual(hb_1, hb_4)
+        self.assertNotEqual(hb_4, hb_1)
+        self.assertNotEqual(hb_2, hb_5)
+        self.assertNotEqual(hb_5, hb_2)
+        self.assertNotEqual(hb_4, hb_5)
+        self.assertNotEqual(hb_5, hb_4)
+
+        hb_6 = CountryStub1(years=2014, subdiv="Subdiv1")
+        hb_7 = CountryStub1(years=2014, subdiv="Subdiv2")
+        self.assertNotEqual(hb_6, hb_7)
+        self.assertNotEqual(hb_7, hb_6)
+
+        hb_8 = CountryStub1(years=2014)
+        hb_9 = CountryStub1(years=2014, language="fr")
+        self.assertNotEqual(hb_8, hb_9)
+        self.assertNotEqual(hb_9, hb_8)
+
+        # Use assertFalse instead of assertEqual in order to check "!=" explicitly.
+        self.assertFalse(hb_1 != hb_1)
+        self.assertFalse(hb_2 != hb_2)
+        self.assertFalse(hb_3 != hb_3)
 
 
 class TestGetList(unittest.TestCase):
@@ -267,7 +280,7 @@ class TestGetNamed(unittest.TestCase):
     def test_contains(self):
         hb = CountryStub1(years=2022)
         for name in ("New", "Year"):
-            self.assertListEqual(hb.get_named(name), [date(2022, 1, 1)])
+            self.assertListEqual(hb.get_named(name, lookup="contains"), [date(2022, 1, 1)])
         self.assertListEqual(
             hb.get_named("Independence Day", lookup="contains"),
             [date(2022, 6, 19), date(2022, 6, 20), date(2022, 7, 4)],
