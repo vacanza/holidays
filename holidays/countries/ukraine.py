@@ -69,7 +69,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     country = "UA"
     default_language = "uk"
     # %s (Observed).
-    observed_label = "%s (вихідний)"
+    observed_label = tr("%s (вихідний)")
     supported_languages = ("ar", "en_US", "uk")
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")

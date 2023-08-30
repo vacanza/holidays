@@ -42,7 +42,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
     country = "CO"
     default_language = "es"
     # %s (Observed).
-    observed_label = "%s (Observado)"
+    observed_label = tr("%s (Observado)")
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):

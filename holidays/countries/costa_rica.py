@@ -31,7 +31,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     country = "CR"
     default_language = "es"
     # %s (Observed).
-    observed_label = "%s (Observado)"
+    observed_label = tr("%s (Observado)")
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):

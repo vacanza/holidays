@@ -83,7 +83,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
     # %s (Observed).
-    observed_label = "%s (Observado)"
+    observed_label = tr("%s (Observado)")
 
     # Special Bridge Holidays are given upto 3 days a year
     # as long as it's declared 50 days before calendar year's end
