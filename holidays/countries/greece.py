@@ -28,7 +28,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     country = "GR"
     default_language = "el"
     # %s (Observed).
-    observed_label = "%s (παρατηρήθηκε)"
+    observed_label = tr("%s (παρατηρήθηκε)")
     supported_categories = {HALF_DAY, PUBLIC}
     supported_languages = ("el", "en_US", "uk")
 

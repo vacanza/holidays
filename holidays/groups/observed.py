@@ -34,15 +34,15 @@ class ObservedHolidays:
         self._begin = begin
 
     def _is_observed_applicable(self, dt: date) -> bool:
-        return (not self._begin) or (self._year >= self._begin)
+        return not self._begin or self._year >= self._begin
 
     def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
         delta = rule[dt.weekday()]
         if delta != 0:
-            if delta in {-7, 7}:
+            if abs(delta) == 7:
                 delta //= 7
                 dt += td(days=delta)
-                while (dt.year == self._year) and (
+                while dt.year == self._year and (
                     dt in self or self._is_weekend(dt)  # type: ignore[operator]
                 ):
                     dt += td(days=delta)
