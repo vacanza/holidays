@@ -89,13 +89,15 @@ class ObservedHolidays:
             else HolidayBase._add_holiday(self, name, dt)  # type: ignore[arg-type]
         )
 
-    def _add_observed_holiday(
-        self, dt: date, rule: ObservedRule, name: Optional[str] = None
+    def _add_observed(
+        self, dt: date, rule: Optional[ObservedRule] = None, name: Optional[str] = None
     ) -> Tuple[bool, date]:
+        if not self.observed or not self._is_observed_applicable(dt):
+            return False, dt
+        rule = rule or self._rule
         obs_date = self._get_observed_date(dt, rule)
         if obs_date == dt:
             return False, dt
-
         observed_label = self.observed_label
         if obs_date < dt:
             observed_label = getattr(self, "observed_label_before", observed_label)
@@ -105,15 +107,6 @@ class ObservedHolidays:
                 self, self.tr(observed_label) % self.tr(name), obs_date  # type: ignore[arg-type]
             )
         return True, obs_date
-
-    def _add_observed(
-        self, dt: date, rule: Optional[ObservedRule] = None, name: Optional[str] = None
-    ) -> Tuple[bool, date]:
-        if not self.observed or not self._is_observed_applicable(dt):
-            return False, dt
-
-        rule = rule or self._rule
-        return self._add_observed_holiday(dt, rule, name)
 
     def _move_holiday(self, dt: date, rule: Optional[ObservedRule] = None) -> Tuple[bool, date]:
         is_obs, dt_observed = self._add_observed(dt, rule)
@@ -125,14 +118,9 @@ class ObservedHolidays:
         """
         When multiple is True, each holiday from a given date has its own observed date.
         """
-        if not self.observed:
-            return None
-
         for dt in sorted(hol_dates):
-            if not self._is_observed_applicable(dt):
-                continue
             if multiple:
                 for name in self.get_list(dt):
-                    self._add_observed_holiday(dt, self._rule, name)
+                    self._add_observed(dt, name=name)
             else:
-                self._add_observed_holiday(dt, self._rule)
+                self._add_observed(dt)
