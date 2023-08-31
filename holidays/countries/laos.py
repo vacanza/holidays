@@ -13,9 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import APR, DEC
+from holidays.calendars.gregorian import APR
+from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 
 class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
@@ -113,7 +113,7 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # Lao New Year's Day
         name = tr("ບຸນປີໃໝ່ລາວ")
-        dt = self._add_holiday(name, APR, 14)
+        dt = self._add_holiday_apr_14(name)
         self._add_holiday(name, dt + td(days=+1))
         self._add_holiday(name, dt + td(days=+2))
 
@@ -150,7 +150,7 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Celebrated the establishment of Lao PDR on Dec 2, 1975.
 
         # Lao National Day
-        _add_observed(self._add_holiday(tr("ວັນຊາດ"), DEC, 2))
+        _add_observed(self._add_holiday_dec_2(tr("ວັນຊາດ")))
 
         # Laotian Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
