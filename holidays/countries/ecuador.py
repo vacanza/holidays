@@ -11,13 +11,20 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import DEC, TUE, WED, THU, SAT, SUN
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_PREV_NEXT
-from holidays.holiday_base import HolidayBase
+from holidays.calendars.gregorian import DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_TO_PREV_MON,
+    WED_TO_NEXT_FRI,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+    WED_THU_TO_NEXT_FRI,
+    SAT_TO_PREV_WORKDAY,
+)
 
 
-class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Ecuador
@@ -42,17 +49,23 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         # When holidays falls on Saturday or Sunday, the rest shall be
         # transferred, respectively, to the preceding Friday or the
         # following Monday.
-        ObservedHolidays.__init__(
-            self, rule={TUE: -1, WED: +2, THU: +1, SAT: -1, SUN: +1}, begin=2017
+        super().__init__(
+            observed_rule=(
+                TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI + SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
+            ),
+            observed_since=2017,
+            *args,
+            **kwargs,
         )
-        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
         name = self.tr("Año Nuevo")
-        self._add_observed(self._add_new_years_day(name), rule=WEEKEND_TO_PREV_NEXT)
+        self._add_observed(
+            self._add_new_years_day(name), rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_MON
+        )
 
         if self.observed and self._is_friday(DEC, 31) and year >= 2017:
             self._add_holiday_dec_31(self.tr(self.observed_label) % name)
@@ -80,19 +93,19 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         self._add_observed(
             # All Souls' Day.
             self._add_all_souls_day(tr("Día de los Difuntos")),
-            rule={TUE: -1, WED: +2, SAT: -1},  # no observed on next day
+            rule=TUE_TO_PREV_MON + WED_TO_NEXT_FRI + SAT_TO_PREV_FRI,  # Not observed the next day.
         )
 
         self._add_observed(
             # Independence of Cuenca.
             self._add_holiday_nov_3(tr("Independencia de Cuenca")),
-            rule={WED: +2, THU: +1, SUN: +1},  # no observed on previous day
+            rule=WED_THU_TO_NEXT_FRI + SUN_TO_NEXT_MON,  # Not observed the previous day.
         )
 
         self._add_observed(
             # Christmas Day.
             self._add_christmas_day(tr("Día de Navidad")),
-            rule=WEEKEND_TO_PREV_NEXT,
+            rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_MON,
         )
 
 

@@ -10,19 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAY
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    ObservedHolidays,
-)
-from holidays.groups.observed import WEEKEND_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Nigeria(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
-):
+class Nigeria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
     """
@@ -40,8 +32,9 @@ class Nigeria(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK, begin=2016)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2016, *args, **kwargs
+        )
 
     def _populate(self, year):
         if year <= 1978:

@@ -29,18 +29,18 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import (
-    ChristianHolidays,
-    IslamicHolidays,
-    InternationalHolidays,
-    ObservedHolidays,
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
-from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE, SAT_TO_MON, WEEKEND_TO_MON_OR_TUE
-from holidays.holiday_base import HolidayBase
 
 
 class BosniaAndHerzegovina(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina
@@ -74,8 +74,7 @@ class BosniaAndHerzegovina(
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=BosniaAndHerzegovinaIslamicCalendar())
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -122,7 +121,7 @@ class BosniaAndHerzegovina(
     def _add_subdiv_bih_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas Eve.
@@ -148,7 +147,7 @@ class BosniaAndHerzegovina(
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_labor_day_two(name)
 
         # Victory Day.
@@ -172,7 +171,7 @@ class BosniaAndHerzegovina(
     def _add_subdiv_brc_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), rule=WEEKEND_TO_MON_OR_TUE)
+        self._add_observed(self._add_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas.
@@ -185,7 +184,7 @@ class BosniaAndHerzegovina(
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), rule=WEEKEND_TO_MON_OR_TUE)
+        self._add_observed(self._add_labor_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_labor_day_two(name)
 
         self._add_observed(
@@ -196,7 +195,7 @@ class BosniaAndHerzegovina(
     def _add_subdiv_srp_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), rule=SAT_TO_MON)
+        self._add_observed(self._add_new_years_day(name), rule=SAT_TO_NEXT_MON)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas Eve.
@@ -222,7 +221,7 @@ class BosniaAndHerzegovina(
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), rule=SAT_TO_MON)
+        self._add_observed(self._add_labor_day(name), rule=SAT_TO_NEXT_MON)
         self._add_labor_day_two(name)
 
         # Victory Day.

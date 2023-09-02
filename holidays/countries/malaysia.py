@@ -38,21 +38,23 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    ObservedHolidays,
 )
-from holidays.groups.observed import FRI_TO_NEXTWORK, SAT_TO_NEXTWORK, SUN_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    FRI_TO_NEXT_WORKDAY,
+    SAT_TO_NEXT_WORKDAY,
+    SUN_TO_NEXT_WORKDAY,
+)
 
 
 class Malaysia(
-    HolidayBase,
+    ObservedHolidayBase,
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    ObservedHolidays,
 ):
     country = "MY"
     observed_label = "%s [In lieu]"
@@ -83,7 +85,7 @@ class Malaysia(
         "TRG",
     )
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
         Malaysia.
@@ -140,8 +142,7 @@ class Malaysia(
         HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
-        ObservedHolidays.__init__(self, rule=SUN_TO_NEXTWORK)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -317,15 +318,15 @@ class Malaysia(
             dts_observed.add(self._add_holiday_apr_26("Birthday of the Sultan of Terengganu"))
 
         if self.subdiv in {"JHR", "KDH"}:
+            self._observed_rule = FRI_TO_NEXT_WORKDAY
             self.weekend = {FRI, SAT}
-            self._rule = FRI_TO_NEXTWORK
         elif self.subdiv in {"KTN", "TRG"}:
+            self._observed_rule = SAT_TO_NEXT_WORKDAY
             self.weekend = {FRI, SAT}
-            self._rule = SAT_TO_NEXTWORK
-
-        self._populate_observed(dts_observed)
 
         if self.observed:
+            self._populate_observed(dts_observed)
+
             # Special cases observed from previous year.
             if year == 2007 and self.subdiv not in {"JHR", "KDH", "KTN", "TRG"}:
                 self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")

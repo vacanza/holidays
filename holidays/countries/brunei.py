@@ -12,40 +12,29 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    FRI,
-    SUN,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    ObservedHolidays,
 )
-from holidays.groups.observed import FRI_TO_SAT_AND_SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    FRI_TO_NEXT_MON,
+    FRI_TO_NEXT_SAT,
+    SUN_TO_NEXT_TUE,
+    SUN_TO_NEXT_WED,
+    FRI_SUN_TO_NEXT_SAT_MON,
+)
 
 
 class Brunei(
-    HolidayBase,
+    ObservedHolidayBase,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    ObservedHolidays,
 ):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.
@@ -90,8 +79,7 @@ class Brunei(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=BruneiIslamicCalendar())
-        ObservedHolidays.__init__(self, rule=FRI_TO_SAT_AND_SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=FRI_SUN_TO_NEXT_SAT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Available post-Independence from 1984 afterwards
@@ -181,11 +169,11 @@ class Brunei(
         # Eid al-Fitr
         name = tr("Hari Raya Aidil Fitri")
         for dt in self._add_eid_al_fitr_day(name):
-            self._add_observed(dt, rule={FRI: +3, SUN: +3})
+            self._add_observed(dt, rule=FRI_TO_NEXT_MON + SUN_TO_NEXT_WED)
         for dt in self._add_eid_al_fitr_day_two(name):
-            self._add_observed(dt, rule={FRI: +3, SUN: +2})
+            self._add_observed(dt, rule=FRI_TO_NEXT_MON + SUN_TO_NEXT_TUE)
         for dt in self._add_eid_al_fitr_day_three(name):
-            self._add_observed(dt, rule={FRI: +1})
+            self._add_observed(dt, rule=FRI_TO_NEXT_SAT)
 
         # Hari Raya Aidil Adha
         # Status: In-Use.

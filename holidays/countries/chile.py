@@ -13,13 +13,17 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import JUN, SEP, TUE, WED
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WORKDAY_TO_NEAREST_MON
-from holidays.holiday_base import HolidayBase
+from holidays.calendars.gregorian import JUN, SEP
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_TO_PREV_FRI,
+    WED_TO_NEXT_FRI,
+    WORKDAY_TO_NEAREST_MON,
+)
 
 
-class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://www.feriados.cl
@@ -74,8 +78,9 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolid
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WORKDAY_TO_NEAREST_MON, begin=2000)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=WORKDAY_TO_NEAREST_MON, observed_since=2000, *args, **kwargs
+        )
 
     def _populate(self, year):
         if year <= 1914:
@@ -177,7 +182,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolid
                     # National Day of the Evangelical and Protestant Churches.
                     tr("Día Nacional de las Iglesias Evangélicas y Protestantes")
                 ),
-                rule={TUE: -4, WED: +2},
+                rule=TUE_TO_PREV_FRI + WED_TO_NEXT_FRI,
             )
 
         # All Saints Day.

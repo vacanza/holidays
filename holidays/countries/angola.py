@@ -14,12 +14,16 @@ from gettext import gettext as tr
 from typing import Tuple
 
 from holidays.calendars.gregorian import AUG, SEP, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_TO_PREV_MON,
+    THU_TO_NEXT_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
-class Angola(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
@@ -49,10 +53,9 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=TUE_TO_MON_AND_THU_TO_FRI)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI, *args, **kwargs)
 
-    def _is_observed_applicable(self, dt: date) -> bool:
+    def _is_observed(self, dt: date) -> bool:
         # As per Law # 16/96, from 1996/9/27, when public holiday falls on Sunday,
         # it rolls over to the following Monday.
         return dt >= date(1996, SEP, 27)
@@ -60,8 +63,9 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     def _add_observed(self, dt: date, *args) -> Tuple[bool, date]:
         # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
         # the Monday or Friday is also a holiday.
-        rule = SUN_TO_MON if dt < date(2018, SEP, 10) else self._rule
-        return super()._add_observed(dt, rule)
+        return super()._add_observed(
+            dt, rule=SUN_TO_NEXT_MON if dt < date(2018, SEP, 10) else self._observed_rule
+        )
 
     def _populate(self, year):
         # Decree #5/75.

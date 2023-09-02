@@ -9,12 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, WEEKEND_TO_MON, SUN_TO_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_MON,
+)
 
 
-class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
     https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf
@@ -23,11 +27,10 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     country = "JM"
     observed_label = "%s (Observed)"
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -45,7 +48,9 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         self._add_easter_monday("Easter Monday")
 
         # National Labour Day
-        self._add_observed(self._add_holiday_may_23("National Labour Day"), rule=WEEKEND_TO_MON)
+        self._add_observed(
+            self._add_holiday_may_23("National Labour Day"), rule=SAT_SUN_TO_NEXT_MON
+        )
 
         # Emancipation Day
         if year >= 1998:
@@ -58,7 +63,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         self._add_holiday_3rd_mon_of_oct("National Heroes Day")
 
         # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"))

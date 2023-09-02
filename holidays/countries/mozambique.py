@@ -11,12 +11,11 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MZ"
     default_language = "pt_MZ"
     # %s (Observed).
@@ -26,8 +25,7 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays, Observed
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         if year <= 1974:

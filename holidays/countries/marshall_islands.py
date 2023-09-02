@@ -12,12 +12,11 @@
 import warnings
 
 from holidays.calendars.gregorian import NOV
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101
     https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays
@@ -43,8 +42,7 @@ class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays, Observed
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

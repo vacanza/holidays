@@ -13,11 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.holiday_base import HolidayBase
-
-from ..groups.observed import WEEKEND_TO_MON
-from .united_kingdom import UnitedKingdom
+from holidays.countries.united_kingdom import UnitedKingdom
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
 
 class IsleOfMan(UnitedKingdom):
@@ -29,8 +27,7 @@ class IsleOfMan(UnitedKingdom):
     def __init__(self, *args, **kwargs):  # Override UnitedKingdom __init__().
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
-        HolidayBase.__init__(self, *args, **kwargs)
+        ObservedHolidayBase.__init__(self, observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year: int) -> None:
         super()._populate(year)

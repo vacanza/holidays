@@ -9,14 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
     https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
@@ -28,8 +25,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         if year <= 1987:
@@ -55,10 +51,10 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Independence Day.
-        apr_18 = self._add_holiday_apr_18("Independence Day")
         self._add_observed(
-            apr_18, rule=SUN_TO_TUE if apr_18 == self._easter_sunday else SUN_TO_MON
+            # Independence Day.
+            apr_18 := self._add_holiday_apr_18("Independence Day"),
+            rule=SUN_TO_NEXT_TUE if apr_18 == self._easter_sunday else SUN_TO_NEXT_MON,
         )
 
         # Workers' Day.
@@ -68,16 +64,16 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
         self._add_observed(self._add_africa_day("Africa Day"))
 
         # Zimbabwe Heroes' Day.
-        second_mon_of_august = self._add_holiday_2nd_mon_of_aug("Zimbabwe Heroes' Day")
+        self._add_holiday_2nd_mon_of_aug("Zimbabwe Heroes' Day")
 
         # Defense Forces Day.
-        self._add_holiday("Defense Forces Day", second_mon_of_august + td(days=+1))
+        self._add_holiday_1_day_past_2nd_mon_of_aug("Defense Forces Day")
 
         # Unity Day.
         self._add_observed(self._add_holiday_dec_22("Unity Day"))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"))

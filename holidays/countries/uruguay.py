@@ -13,13 +13,17 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, TUE, WED, THU, FRI
+from holidays.calendars.gregorian import MAR
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_WED_TO_PREV_MON,
+    THU_FRI_TO_NEXT_MON,
+)
 
 
-class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
@@ -49,14 +53,13 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         2020: (MAR, 1, presidential_inauguration_day),
     }
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         # Decree Law #14977, # 15535, #16805.
-        ObservedHolidays.__init__(self, rule={TUE: -1, WED: -2, THU: +4, FRI: +3})
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
 
-    def _is_observed_applicable(self, dt: date) -> bool:
+    def _is_observed(self, dt: date) -> bool:
         return 1980 <= self._year <= 1983 or self._year >= 1997
 
     def _populate_public_holidays(self):

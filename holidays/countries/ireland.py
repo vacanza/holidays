@@ -10,12 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Official holidays in Ireland, as declared in the Citizen's Information
     bulletin:
@@ -31,8 +34,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -76,7 +78,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
 
         # St. Stephen's Day.
         self._add_observed(
-            self._add_christmas_day_two("St. Stephen's Day"), rule=WEEKEND_TO_MON_OR_TUE
+            self._add_christmas_day_two("St. Stephen's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
         )
 
 

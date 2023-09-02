@@ -12,19 +12,11 @@
 from datetime import date
 from typing import Optional
 
-from holidays.groups import (
-    ChristianHolidays,
-    IslamicHolidays,
-    InternationalHolidays,
-    ObservedHolidays,
-)
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Burundi(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
-):
+class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     Burundian holidays
     Note that holidays falling on a sunday maybe observed
@@ -43,8 +35,7 @@ class Burundi(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
         dt_added = super()._add_holiday(name, *args)

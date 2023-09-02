@@ -9,12 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/malawi
     https://www.timeanddate.com/holidays/malawi/
@@ -26,8 +29,7 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 2000
@@ -54,9 +56,9 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         self._add_observed(self._add_holiday_oct_15("Mother's Day"))
 
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=WEEKEND_TO_MON_OR_TUE)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=WEEKEND_TO_MON_OR_TUE)
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
 
 class MW(Malawi):

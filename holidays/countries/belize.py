@@ -8,13 +8,17 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-from holidays.calendars.gregorian import TUE, WED, THU, FRI, SUN
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    TUE_WED_THU_TO_PREV_MON,
+    FRI_SUN_TO_NEXT_MON,
+)
 
 
-class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Belize
@@ -26,15 +30,14 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     country = "BZ"
     observed_label = "%s (Observed)"
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         # Chapter 289 of the laws of Belize states that if the holiday falls
         # on a Sunday or a Friday, the following Monday is observed as public
         # holiday; further, if the holiday falls on a Tuesday, Wednesday or
         # Thursday, the preceding Monday is observed as public holiday
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Belize was granted independence on 21.09.1981.
@@ -52,7 +55,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         # National Heroes and Benefactors Day.
         self._move_holiday(
             self._add_holiday_mar_9("National Heroes and Benefactors Day"),
-            rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
+            rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
         )
 
         # Good Friday.
@@ -71,14 +74,14 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
             # Commonwealth Day.
             self._move_holiday(
                 self._add_holiday_may_24("Commonwealth Day"),
-                rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
+                rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
             )
 
         if year >= 2021:
             # Emancipation Day.
             self._move_holiday(
                 self._add_holiday_aug_1("Emancipation Day"),
-                rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1},
+                rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
             )
 
         # Saint George's Caye Day.
@@ -90,7 +93,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         # Indigenous Peoples' Resistance Day / Pan American Day.
         name = "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day"
         self._move_holiday(
-            self._add_columbus_day(name), rule={TUE: -1, WED: -2, THU: -3, FRI: +3, SUN: +1}
+            self._add_columbus_day(name), rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON
         )
 
         # Garifuna Settlement Day.

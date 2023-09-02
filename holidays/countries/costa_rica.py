@@ -11,12 +11,16 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import NEAREST_MON_LATAM, NEXT_SUN, WORKDAY_TO_NEXT_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    ALL_TO_NEAREST_MON_LATAM,
+    ALL_TO_NEXT_SUN,
+    WORKDAY_TO_NEXT_MON,
+)
 
 
-class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica
@@ -37,8 +41,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=NEAREST_MON_LATAM)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=ALL_TO_NEAREST_MON_LATAM, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -88,7 +91,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
             )
             if year in {2022, 2023}:
                 # Move to next Sunday.
-                self._move_holiday(aug_31, rule=NEXT_SUN)
+                self._move_holiday(aug_31, rule=ALL_TO_NEXT_SUN)
 
         # Independence Day.
         sep_15 = self._add_holiday_sep_15(tr("Día de la Independencia"))

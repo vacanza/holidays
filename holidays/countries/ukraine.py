@@ -27,12 +27,11 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Current holidays list:
     https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
@@ -194,10 +193,9 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
-    def _is_observed_applicable(self, dt: date) -> bool:
+    def _is_observed(self, dt: date) -> bool:
         # 27.01.1995: holiday on weekend move to next workday
         # https://zakon.rada.gov.ua/laws/show/35/95-вр
         # 10.01.1998: cancelled
@@ -296,7 +294,8 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
                     )
                 )
 
-        self._populate_observed(dts_observed)
+        if self.observed:
+            self._populate_observed(dts_observed)
 
 
 class UA(Ukraine):

@@ -12,12 +12,11 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import THU_TO_FRI, TUE_TO_MON_AND_THU_TO_FRI
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, TUE_TO_PREV_MON, THU_TO_NEXT_FRI
 
 
-class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Hungary(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
     Codification dates:
@@ -36,8 +35,12 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=TUE_TO_MON_AND_THU_TO_FRI, begin=2010)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI,
+            observed_since=2010,
+            *args,
+            **kwargs,
+        )
 
     def _populate(self, year):
         super()._populate(year)
@@ -108,7 +111,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
             # Second Day of Christmas.
             dec_26 = self._add_christmas_day_two(tr("Karácsony másnapja"))
             if year >= 2013:
-                self._add_observed(dec_26, rule=THU_TO_FRI)
+                self._add_observed(dec_26, rule=THU_TO_NEXT_FRI)
 
         # Soviet era.
         if 1950 <= year <= 1989:

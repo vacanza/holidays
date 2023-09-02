@@ -11,19 +11,11 @@
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    ObservedHolidays,
-)
-from holidays.groups.observed import SUN_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class Cameroon(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
-):
+class Cameroon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
@@ -40,12 +32,11 @@ class Cameroon(
         ),
     }
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=CameroonIslamicCalendar())
-        ObservedHolidays.__init__(self, rule=SUN_TO_NEXTWORK)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
         # On 1 January 1960, French Cameroun gained independence from France.
@@ -90,11 +81,12 @@ class Cameroon(
         # Mawlid.
         dts_observed.update(self._add_mawlid_day("Mawlid"))
 
-        self._populate_observed(dts_observed)
+        if self.observed:
+            self._populate_observed(dts_observed)
 
-        # Observed holidays special cases.
-        if self.observed and year == 2007:
-            self._add_holiday_jan_2(self.observed_label % "Eid al-Adha")
+            # Observed holidays special cases.
+            if year == 2007:
+                self._add_holiday_jan_2(self.observed_label % "Eid al-Adha")
 
 
 class CM(Cameroon):

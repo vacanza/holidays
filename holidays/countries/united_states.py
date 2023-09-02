@@ -11,13 +11,20 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import DEC, MON, FRI, SAT, SUN
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_PREV_NEXT
-from holidays.holiday_base import HolidayBase
+from holidays.calendars.gregorian import DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    FRI_TO_PREV_THU,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+    SAT_SUN_TO_PREV_FRI,
+    SAT_SUN_TO_NEXT_MON,
+)
 
 
-class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
 
@@ -94,8 +101,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_PREV_NEXT)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -150,7 +156,8 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
         # If on Friday, observed on Thursday
         # If on Saturday or Sunday, observed on Friday
         self._add_observed(
-            self._add_christmas_eve("Christmas Eve"), rule={FRI: -1, SAT: -1, SUN: -2}
+            self._add_christmas_eve("Christmas Eve"),
+            rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI,
         )
 
     def _add_subdiv_holidays(self):
@@ -264,7 +271,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
 
         # Cesar Chavez Day
         if self._year >= 1995:
-            self._add_observed(self._add_holiday_mar_31("Cesar Chavez Day"), rule=SUN_TO_MON)
+            self._add_observed(self._add_holiday_mar_31("Cesar Chavez Day"), rule=SUN_TO_NEXT_MON)
 
         # Day After Thanksgiving
         if self._year >= 1975:
@@ -289,7 +296,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
                 else self._add_holiday_mar_4(name),
-                rule=SUN_TO_MON,
+                rule=SUN_TO_NEXT_MON,
             )
 
         # Emancipation Day
@@ -449,7 +456,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
                 else self._add_holiday_mar_4(name),
-                rule=SUN_TO_MON,
+                rule=SUN_TO_NEXT_MON,
             )
 
         # Mardi Gras
@@ -466,7 +473,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
     def _add_subdiv_ma_holidays(self):
         # Evacuation Day
         if self._year >= 1901:
-            self._add_observed(self._add_holiday_mar_17("Evacuation Day"), rule=WEEKEND_TO_MON)
+            self._add_observed(
+                self._add_holiday_mar_17("Evacuation Day"), rule=SAT_SUN_TO_NEXT_MON
+            )
 
         # Patriots' Day
         if self._year >= 1894:
@@ -484,7 +493,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
                 else self._add_holiday_mar_4(name),
-                rule=SUN_TO_MON,
+                rule=SUN_TO_NEXT_MON,
             )
 
         # American Indian Heritage Day
@@ -573,7 +582,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
             # If on Monday, observed on Tuesday
             self._add_observed(
                 self._add_christmas_day_two("Day After Christmas"),
-                rule={MON: +1, SAT: +2, SUN: +1},
+                rule=MON_TO_NEXT_TUE + SAT_SUN_TO_NEXT_MON,
             )
 
     def _add_subdiv_nd_holidays(self):
@@ -666,16 +675,16 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
         self._add_holiday_3rd_mon_of_feb("Presidents' Day")
 
         # Emancipation Day
-        self._add_observed(self._add_holiday_mar_22("Emancipation Day"), rule=SUN_TO_MON)
+        self._add_observed(self._add_holiday_mar_22("Emancipation Day"), rule=SUN_TO_NEXT_MON)
 
         # Good Friday
         self._add_good_friday("Good Friday")
 
         # Constitution Day
-        self._add_observed(self._add_holiday_jul_25("Constitution Day"), rule=SUN_TO_MON)
+        self._add_observed(self._add_holiday_jul_25("Constitution Day"), rule=SUN_TO_NEXT_MON)
 
         # Discovery Day
-        self._add_observed(self._add_holiday_nov_19("Discovery Day"), rule=SUN_TO_MON)
+        self._add_observed(self._add_holiday_nov_19("Discovery Day"), rule=SUN_TO_NEXT_MON)
 
     def _add_subdiv_pw_holidays(self):
         pass
@@ -769,7 +778,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays, Observ
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
                 else self._add_holiday_mar_4(name),
-                rule=SUN_TO_MON,
+                rule=SUN_TO_NEXT_MON,
             )
 
     def _add_subdiv_vi_holidays(self):

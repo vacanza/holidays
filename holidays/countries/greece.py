@@ -13,12 +13,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Greece(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Greece holidays.
 
@@ -36,8 +35,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.

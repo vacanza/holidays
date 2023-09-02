@@ -9,15 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/zambia/
     https://www.timeanddate.com/holidays/zambia/
@@ -49,8 +46,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1965
@@ -91,10 +87,10 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         self._add_observed(self._add_africa_day("Africa Freedom Day"))
 
         # Heroes' Day.
-        first_mon_of_july = self._add_holiday_1st_mon_of_jul("Heroes' Day")
+        self._add_holiday_1st_mon_of_jul("Heroes' Day")
 
         # Unity Day.
-        self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
+        self._add_holiday_1_day_past_1st_mon_of_jul("Unity Day")
 
         # Farmers' Day.
         self._add_holiday_1st_mon_of_aug("Farmers' Day")

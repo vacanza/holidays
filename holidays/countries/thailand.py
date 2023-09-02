@@ -12,30 +12,20 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    THU,
-    FRI,
-    SAT,
-    SUN,
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SAT_TO_NEXT_TUE,
+    THU_FRI_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
-from holidays.groups import InternationalHolidays, ObservedHolidays, ThaiCalendarHolidays
-from holidays.groups.observed import WEEKEND_TO_MON, SAT_TO_MON, WEEKEND_TO_MON_OR_TUE
-from holidays.holiday_base import HolidayBase
 
 
-class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalendarHolidays):
+class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Thailand.
 
@@ -289,13 +279,12 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
     }
     supported_languages = ("en_US", "th")
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         ThaiCalendarHolidays.__init__(self)
-        super().__init__(**kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
-    def _is_observed_applicable(self, dt: date) -> bool:
+    def _is_observed(self, dt: date) -> bool:
         return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
 
     def _populate(self, year):
@@ -360,7 +349,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
             # See in lieu logic in `_add_observed(dt: date)`.
             # Status: In Use.
             if year >= 1995:
-                self._add_observed(dt, rule={THU: +4, FRI: +3, SAT: +3})
+                self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
@@ -551,7 +540,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
         # See in lieu logic in `_add_observed(dt: date)`.
 
         if year >= 1995:
-            self._add_observed(date(year - 1, DEC, 31), rule={SAT: +3, SUN: +2}, name=name)
+            self._add_observed(date(year - 1, DEC, 31), name=name, rule=SAT_SUN_TO_NEXT_TUE)
 
         # Thai Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
@@ -584,7 +573,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
         # Asarnha Bucha.
         asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
         if asarnha_bucha_date:
-            self._add_observed(asarnha_bucha_date, rule=WEEKEND_TO_MON_OR_TUE)
+            self._add_observed(asarnha_bucha_date, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # วันเข้าพรรษา
         # Status: In-Use.
@@ -592,7 +581,7 @@ class Thailand(HolidayBase, InternationalHolidays, ObservedHolidays, ThaiCalenda
         # Buddhist Lent Day.
         khao_phansa_date = self._add_khao_phansa(tr("วันเข้าพรรษา"))
         if khao_phansa_date:
-            self._add_observed(khao_phansa_date, rule=SAT_TO_MON)
+            self._add_observed(khao_phansa_date, rule=SAT_TO_NEXT_MON)
 
         # No Future Fixed Date Holidays
 

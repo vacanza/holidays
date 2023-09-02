@@ -10,12 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/namibia
     https://www.timeanddate.com/holidays/namibia/
@@ -39,8 +38,7 @@ class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1991)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1991, *args, **kwargs)
 
     def _populate(self, year):
         if year <= 1989:

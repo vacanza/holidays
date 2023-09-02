@@ -11,13 +11,19 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC, MON, SAT, SUN
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    SAT_TO_NEXT_TUE,
+    SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
     """
@@ -54,8 +60,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, Obser
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -101,12 +106,12 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, Obser
 
             # Christmas Day
             self._add_observed(
-                self._add_christmas_day("Christmas Day"), rule=WEEKEND_TO_MON_OR_TUE
+                self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
 
             # Boxing Day
             self._add_observed(
-                self._add_christmas_day_two("Boxing Day"), rule=WEEKEND_TO_MON_OR_TUE
+                self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
 
         super()._add_subdiv_holidays()
@@ -140,9 +145,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, Obser
 
         # New Year Holiday
         self._add_observed(
-            self._add_new_years_day_two("New Year Holiday"), rule={MON: +1, SAT: +2, SUN: +1}
+            self._add_new_years_day_two("New Year Holiday"),
+            rule=MON_TO_NEXT_TUE + SAT_SUN_TO_NEXT_MON,
         )
-        self._add_observed(jan_1, rule={SAT: +3, SUN: +1})
+        self._add_observed(jan_1, rule=SAT_TO_NEXT_TUE + SUN_TO_NEXT_MON)
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
@@ -154,13 +160,13 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, Obser
         # Christmas Day
         self._add_observed(
             self._add_christmas_day("Christmas Day"),
-            rule=WEEKEND_TO_MON_OR_TUE if self._year >= 1974 else WEEKEND_TO_MON,
+            rule=SAT_SUN_TO_NEXT_MON_TUE if self._year >= 1974 else SAT_SUN_TO_NEXT_MON,
         )
 
         if self._year >= 1974:
             # Boxing Day
             self._add_observed(
-                self._add_christmas_day_two("Boxing Day"), rule=WEEKEND_TO_MON_OR_TUE
+                self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
 
     def _add_subdiv_wls_holidays(self):

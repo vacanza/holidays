@@ -13,12 +13,11 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import NEAREST_MON_LATAM
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEAREST_MON_LATAM
 
 
-class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php
@@ -39,10 +38,9 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedH
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=NEAREST_MON_LATAM)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=ALL_TO_NEAREST_MON_LATAM, *args, **kwargs)
 
-    def _is_observed_applicable(self, dt: date) -> bool:
+    def _is_observed(self, dt: date) -> bool:
         return dt >= date(2018, OCT, 18)
 
     def _populate(self, year):

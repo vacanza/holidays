@@ -13,12 +13,17 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR, APR, JUN, JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE, NEAREST_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    ALL_TO_NEAREST_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+    SUN_TO_NEXT_MON,
+)
 
 
-class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CA"
     default_language = "en"
     # %s (Observed).
@@ -46,11 +51,10 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
             kwargs["subdiv"] = "ON"
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> date:
-        return self._get_observed_date(date(self._year, *args), rule=NEAREST_MON)
+        return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)
 
     def _populate(self, year):
         if year <= 1866:
@@ -74,14 +78,16 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
             # Labour Day.
             self._add_holiday_1st_mon_of_sep(tr("Labour Day"))
 
-        # Christmas Day.
         self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=WEEKEND_TO_MON_OR_TUE
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=WEEKEND_TO_MON_OR_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
     def _add_family_day(self):
@@ -238,7 +244,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_MON)
+            self._add_observed(
+                self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_NEXT_MON
+            )
 
     def _add_subdiv_ns_holidays(self):
         # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
@@ -254,7 +262,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_MON)
+            self._add_observed(
+                self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_NEXT_MON
+            )
 
     def _add_subdiv_nt_holidays(self):
         if self._year >= 1953:
@@ -273,7 +283,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_MON)
+            self._add_observed(
+                self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_NEXT_MON
+            )
 
     def _add_subdiv_nu_holidays(self):
         if self._year >= 1953:
@@ -283,7 +295,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
         if self._year >= 2000:
             dt = (APR, 1) if self._year == 2000 else (JUL, 9)
             # Nunavut Day.
-            self._add_observed(self._add_holiday(tr("Nunavut Day"), dt), rule=SUN_TO_MON)
+            self._add_observed(self._add_holiday(tr("Nunavut Day"), dt), rule=SUN_TO_NEXT_MON)
 
         self._add_thanksgiving()
 
@@ -318,7 +330,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_MON)
+            self._add_observed(
+                self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_NEXT_MON
+            )
 
     def _add_subdiv_qc_holidays(self):
         if self._year >= 2003:
@@ -329,7 +343,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
             self._add_observed(
                 # St. Jean Baptiste Day.
                 self._add_saint_johns_day(tr("St. Jean Baptiste Day")),
-                rule=SUN_TO_MON,
+                rule=SUN_TO_NEXT_MON,
             )
 
         self._add_thanksgiving()
@@ -351,7 +365,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHoli
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_MON)
+            self._add_observed(
+                self._add_remembrance_day(tr("Remembrance Day")), rule=SUN_TO_NEXT_MON
+            )
 
     def _add_subdiv_yt_holidays(self):
         # start date?

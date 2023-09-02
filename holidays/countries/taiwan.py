@@ -10,12 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import DEC
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_PREV_NEXT_WORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_PREV_WORKDAY,
+    SUN_TO_NEXT_WORKDAY,
+)
 
 
-class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays):
+class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
@@ -32,8 +35,12 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, Observ
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_PREV_NEXT_WORK, begin=2015)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY,
+            observed_since=2015,
+            *args,
+            **kwargs,
+        )
 
     def _populate(self, year):
         if year <= 1911:

@@ -12,30 +12,16 @@
 from datetime import date
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    WORKDAY_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
-from holidays.groups import InternationalHolidays, IslamicHolidays, ObservedHolidays
-from holidays.groups.observed import WEEKEND_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
 
 
-class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays, ObservedHolidays):
+class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     # [1] https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
     # [2] https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri  # noqa: E501
     # [3] https://www.sosial.gov.az/en/prod-calendar
@@ -46,8 +32,9 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays, ObservedHo
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=AzerbaijanIslamicCalendar())
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK, begin=2006)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2006, *args, **kwargs
+        )
 
     def _populate(self, year):
         if year <= 1989:
@@ -152,8 +139,8 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays, ObservedHo
                     if "Bayrami" in name:
                         self._add_observed(
                             dt_observed,
-                            rule={MON: +7, TUE: +7, WED: +7, THU: +7, FRI: +7},
                             name=name,
+                            rule=WORKDAY_TO_NEXT_WORKDAY,
                         )
 
 

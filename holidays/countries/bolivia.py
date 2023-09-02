@@ -13,12 +13,16 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_TO_PREV_MON,
+    THU_TO_NEXT_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
-class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - [Supreme Decree #14260] https://bolivia.infoleyes.com/norma/1141/decreto-supremo-14260
@@ -49,12 +53,11 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         "T",  # Tarija
     )
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         # Supreme Decree #14260.
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1977)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1977, *args, **kwargs)
 
     def _populate(self, year):
         if year <= 1824:
@@ -86,7 +89,7 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHol
         self._add_observed(may_1 := self._add_labor_day(self.tr("Día del Trabajo")))
         # Supreme Decree #1210.
         if 2012 <= year <= 2015:
-            self._add_observed(may_1, rule=TUE_TO_MON_AND_THU_TO_FRI)
+            self._add_observed(may_1, rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI)
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))

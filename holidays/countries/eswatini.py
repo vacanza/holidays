@@ -12,12 +12,11 @@
 import warnings
 
 from holidays.calendars.gregorian import JAN, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://swazilii.org/sz/legislation/act/1938/71
     https://www.officeholidays.com/countries/swaziland
@@ -34,8 +33,7 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=2021)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=2021, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1939
@@ -53,15 +51,15 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
         self._add_ascension_thursday("Ascension Day")
 
         if year >= 1987:
-            apr_19 = self._add_holiday_apr_19("King's Birthday")
             self._add_observed(
-                apr_19, rule=SUN_TO_TUE if apr_19 == self._easter_sunday else SUN_TO_MON
+                apr_19 := self._add_holiday_apr_19("King's Birthday"),
+                rule=SUN_TO_NEXT_TUE if apr_19 == self._easter_sunday else SUN_TO_NEXT_MON,
             )
 
         if year >= 1969:
-            apr_25 = self._add_holiday_apr_25("National Flag Day")
             self._add_observed(
-                apr_25, rule=SUN_TO_TUE if apr_25 == self._easter_sunday else SUN_TO_MON
+                apr_25 := self._add_holiday_apr_25("National Flag Day"),
+                rule=SUN_TO_NEXT_TUE if apr_25 == self._easter_sunday else SUN_TO_NEXT_MON,
             )
 
         self._add_observed(self._add_labor_day("Worker's Day"))
@@ -71,7 +69,7 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
 
         self._add_observed(self._add_holiday_sep_6("Independence Day"))
 
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
 

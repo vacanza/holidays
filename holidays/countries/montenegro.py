@@ -10,12 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON, SUN_TO_TUE
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Montenegro(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
@@ -30,15 +29,14 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays, Observed
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
         name = "New Year's Day"
-        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two(name))
 
         # Orthodox Christmas Eve.
@@ -49,7 +47,7 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays, Observed
 
         # Labour Day.
         name = "Labour Day"
-        self._add_observed(self._add_labor_day(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_labor_day_two(name))
 
         # Good Friday.
@@ -63,12 +61,12 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays, Observed
 
         # Independence Day.
         name = "Independence Day"
-        self._add_observed(self._add_holiday_may_21(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_holiday_may_21(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_holiday_may_22(name))
 
         # Statehood Day.
         name = "Statehood Day"
-        self._add_observed(self._add_holiday_jul_13(name), rule=SUN_TO_TUE)
+        self._add_observed(self._add_holiday_jul_13(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_holiday_jul_14(name))
 
 

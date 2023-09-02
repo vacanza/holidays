@@ -10,19 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    ObservedHolidays,
-)
-from holidays.groups.observed import WEEKEND_TO_NEXTWORK
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Kazakhstan(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
-):
+class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     1. https://www.officeholidays.com/countries/kazakhstan/2020
     2. https://egov.kz/cms/en/articles/holidays-calend
@@ -37,8 +29,9 @@ class Kazakhstan(
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK, begin=2002)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2002, *args, **kwargs
+        )
 
     def _populate(self, year):
         # Kazakhstan declared its sovereignty on 25 October 1990

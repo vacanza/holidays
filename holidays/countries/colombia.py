@@ -12,12 +12,11 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import NEXT_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEXT_MON
 
 
-class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Colombia has 18 holidays. The establishing of these are by:
     Ley 35 de 1939 (DEC 4): https://bit.ly/3PJwk7B
@@ -48,8 +47,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHo
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=NEXT_MON, begin=1984)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=ALL_TO_NEXT_MON, observed_since=1984, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

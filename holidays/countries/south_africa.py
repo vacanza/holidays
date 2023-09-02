@@ -10,12 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
-from holidays.groups.observed import SUN_TO_MON
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
+class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     http://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
@@ -50,8 +49,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays, Observe
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1995)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1995, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1910, with a few name changes
