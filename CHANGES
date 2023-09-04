@@ -1,3 +1,16 @@
+Version 0.32
+============
+
+Released September 4, 2023
+
+- Add subdivision category holidays support (#1446 by @KJhellico)
+- Fix months imports (#1442 by @KJhellico)
+- Improve code owners transparency (#1440 by @arkid15r)
+- Update HolidayBase tests (#1447 by @arkid15r)
+- Update documentation: correct inheritance example (#1438 by @arkid15r)
+- Add CODEOWNERS (#1436 by @arkid15r)
+- Add pre-commit hooks autoupdate workflow (#1441 by @KJhellico)
+
 Version 0.31
 ============
 

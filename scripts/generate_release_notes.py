@@ -31,7 +31,7 @@ Version {version}
 
 Released {month} {day}, {year}
 """
-IGNORED_CONTRIBUTORS = {"dependabot[bot]"}
+IGNORED_CONTRIBUTORS = {"dependabot[bot]", "github-actions[bot]"}
 REPOSITORY_NAME = "vacanza/python-holidays"
 
 

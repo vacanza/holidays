@@ -577,13 +577,14 @@ class HolidayBase(Dict[date, str]):
         parts = []
         if hasattr(self, "market"):
             parts.append(f"holidays.financial_holidays({self.market!r}")
+            parts.append(")")
         elif hasattr(self, "country"):
             if parts:
                 parts.append(" + ")
             parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
                 parts.append(f", subdiv={self.subdiv!r}")
-        parts.append(")")
+            parts.append(")")
 
         return "".join(parts)
 
@@ -648,13 +649,18 @@ class HolidayBase(Dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
-    def _add_subdiv_holidays(self):
-        """Populate subdivision holidays."""
+    def _add_subdiv_category_holidays(self, category: str = None):
+        """Populate subdivision holidays by category."""
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            add_subdiv_holidays = getattr(self, f"_add_subdiv_{subdiv}_holidays", None)
+            method_name = f"_add_subdiv_{subdiv}{f'_{category}' if category else ''}_holidays"
+            add_subdiv_holidays = getattr(self, method_name, None)
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
+
+    def _add_subdiv_holidays(self):
+        """Populate subdivision holidays."""
+        self._add_subdiv_category_holidays()
 
     def _add_substituted_holidays(self):
         """Populate substituted holidays."""
@@ -757,6 +763,9 @@ class HolidayBase(Dict[date, str]):
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):
                 populate_category_holidays()
+
+            # Populate subdivision holidays for all categories.
+            self._add_subdiv_category_holidays(category)
 
     def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
