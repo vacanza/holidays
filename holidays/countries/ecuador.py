@@ -20,7 +20,6 @@ from holidays.observed_holiday_base import (
     SAT_TO_PREV_FRI,
     SUN_TO_NEXT_MON,
     WED_THU_TO_NEXT_FRI,
-    SAT_TO_PREV_WORKDAY,
 )
 
 
@@ -63,9 +62,7 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Day.
         name = self.tr("Año Nuevo")
-        self._add_observed(
-            self._add_new_years_day(name), rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_MON
-        )
+        self._add_observed(self._add_new_years_day(name), rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
 
         if self.observed and self._is_friday(DEC, 31) and year >= 2017:
             self._add_holiday_dec_31(self.tr(self.observed_label) % name)
@@ -105,7 +102,7 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(
             # Christmas Day.
             self._add_christmas_day(tr("Día de Navidad")),
-            rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_MON,
+            rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON,
         )
 
 

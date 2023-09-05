@@ -97,8 +97,8 @@ class ObservedHolidayBase(HolidayBase):
 
         super().__init__(*args, **kwargs)
 
-    def _is_observed(self, dt: date) -> bool:
-        return self._observed_since is None or dt.year >= self._observed_since
+    def _is_observed(self, *args, **kwargs) -> bool:
+        return self._observed_since is None or self._year >= self._observed_since
 
     def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
         delta = rule.get(dt.weekday(), 0)

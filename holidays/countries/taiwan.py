@@ -92,7 +92,8 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # National Day.
         dts_observed.add(self._add_holiday_oct_10("National Day"))
 
-        self._populate_observed(dts_observed, multiple=True)
+        if self.observed:
+            self._populate_observed(dts_observed, multiple=True)
 
 
 class TW(Taiwan):

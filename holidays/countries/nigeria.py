@@ -80,7 +80,8 @@ class Nigeria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Birthday of Prophet Muhammad.
         dts_observed.update(self._add_mawlid_day("Eid-el-Mawlid"))
 
-        self._populate_observed(dts_observed)
+        if self.observed:
+            self._populate_observed(dts_observed)
 
 
 class NG(Nigeria):

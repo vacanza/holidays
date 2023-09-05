@@ -95,7 +95,8 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         if 2002 <= year <= 2021:
             dts_observed.add(self._add_holiday_dec_17(name))
 
-        self._populate_observed(dts_observed)
+        if self.observed:
+            self._populate_observed(dts_observed)
 
         # Kurban Ait (nonworking day, without extending)
         if year >= 2006:
