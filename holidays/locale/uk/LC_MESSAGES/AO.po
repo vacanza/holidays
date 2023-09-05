@@ -20,7 +20,7 @@ msgstr ""
 msgid "Dia de eleições gerais"
 msgstr "День загальних виборів"
 
-#. Day off for %s.
+#. %s (Observed).
 #, c-format
 msgid "%s (Ponte)"
 msgstr "Вихідний за %s"

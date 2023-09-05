@@ -10,23 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
-from datetime import timedelta as td
 
 from holidays.calendars.gregorian import NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
+class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101
     https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays
     """
 
     country = "MH"
-
-    # Special Holidays
+    observed_label = "%s Holiday"
 
     # General Election Day
     election_day = "General Election Day"
@@ -42,17 +39,10 @@ class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
         2023: (NOV, 20, election_day),
     }
 
-    def _add_observed(self, dt: date) -> None:
-        """
-        If fall on Sunday, an observed holiday marked with suffix " Holiday" will be added.
-        """
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s Holiday" % self[dt], dt + td(days=+1))
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

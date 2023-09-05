@@ -9,14 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import MON, _get_nth_weekday_from
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    TUE_WED_THU_TO_PREV_MON,
+    FRI_SUN_TO_NEXT_MON,
+)
 
 
-class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Belize
@@ -26,33 +28,16 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "BZ"
+    observed_label = "%s (Observed)"
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _move_holiday(self, dt: date, sunday_only: bool = True) -> None:
         # Chapter 289 of the laws of Belize states that if the holiday falls
         # on a Sunday or a Friday, the following Monday is observed as public
         # holiday; further, if the holiday falls on a Tuesday, Wednesday or
         # Thursday, the preceding Monday is observed as public holiday
-        if not self.observed:
-            return None
-
-        dt_observed = None
-        if sunday_only:
-            if self._is_sunday(dt):
-                dt_observed = _get_nth_weekday_from(+1, MON, dt)
-        else:
-            if self._is_friday(dt) or self._is_sunday(dt):
-                dt_observed = _get_nth_weekday_from(+1, MON, dt)
-            elif self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt):
-                dt_observed = _get_nth_weekday_from(-1, MON, dt)
-
-        if dt_observed:
-            self._add_holiday("%s (Observed)" % self[dt], dt_observed)
-            self.pop(dt)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Belize was granted independence on 21.09.1981.
@@ -69,7 +54,8 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # National Heroes and Benefactors Day.
         self._move_holiday(
-            self._add_holiday_mar_9("National Heroes and Benefactors Day"), sunday_only=False
+            self._add_holiday_mar_9("National Heroes and Benefactors Day"),
+            rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
         )
 
         # Good Friday.
@@ -86,11 +72,17 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 2021:
             # Commonwealth Day.
-            self._move_holiday(self._add_holiday_may_24("Commonwealth Day"), sunday_only=False)
+            self._move_holiday(
+                self._add_holiday_may_24("Commonwealth Day"),
+                rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
+            )
 
         if year >= 2021:
             # Emancipation Day.
-            self._move_holiday(self._add_holiday_aug_1("Emancipation Day"), sunday_only=False)
+            self._move_holiday(
+                self._add_holiday_aug_1("Emancipation Day"),
+                rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
+            )
 
         # Saint George's Caye Day.
         self._move_holiday(self._add_holiday_sep_10("Saint George's Caye Day"))
@@ -100,7 +92,9 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Indigenous Peoples' Resistance Day / Pan American Day.
         name = "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day"
-        self._move_holiday(self._add_columbus_day(name), sunday_only=False)
+        self._move_holiday(
+            self._add_columbus_day(name), rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON
+        )
 
         # Garifuna Settlement Day.
         self._move_holiday(self._add_holiday_nov_19("Garifuna Settlement Day"))

@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.1\n"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observed)"
 msgstr "(تمت ملاحظته) %s"

@@ -16,9 +16,11 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. Public holiday.
 msgid "Jour férié"
 msgstr "Public holiday"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observé)"
 msgstr "%s (Observed)"

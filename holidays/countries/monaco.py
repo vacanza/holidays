@@ -9,16 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Monaco
     https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays  # noqa: E501
@@ -26,17 +24,16 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MC"
     default_language = "fr"
+    # %s (Observed).
+    observed_label = tr("%s (Observé)")
+    # Public holiday.
     special_holidays = {2015: (JAN, 7, tr("Jour férié"))}
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday(self.tr("%s (Observé)") % self[dt], dt + td(days=days))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

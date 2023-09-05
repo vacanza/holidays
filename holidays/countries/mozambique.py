@@ -9,32 +9,23 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MZ"
     default_language = "pt_MZ"
+    # %s (Observed).
+    observed_label = tr("%s (Ponte)")
     supported_languages = ("en_US", "pt_MZ", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        """
-        Whenever a public holiday falls on a Sunday,
-        it rolls over to the following Monday.
-        """
-        if self.observed and self._is_sunday(dt):
-            # %s (Observed).
-            self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         if year <= 1974:
