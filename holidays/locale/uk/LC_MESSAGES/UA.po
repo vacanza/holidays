@@ -25,6 +25,7 @@ msgstr ""
 msgid "Вихідний день (перенесено з %s)"
 msgstr ""
 
+#. %s (Observed).
 #, c-format
 msgid "%s (вихідний)"
 msgstr ""

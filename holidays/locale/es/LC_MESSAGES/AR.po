@@ -118,6 +118,7 @@ msgstr ""
 msgid "Día de la Soberanía Nacional"
 msgstr ""
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observado)"
 msgstr ""

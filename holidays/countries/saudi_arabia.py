@@ -16,10 +16,18 @@ from typing import Set
 
 from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
 from holidays.groups import IslamicHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    THU_TO_PREV_WED,
+    FRI_TO_PREV_THU,
+    FRI_TO_NEXT_SAT,
+    SAT_TO_NEXT_SUN,
+    THU_FRI_TO_NEXT_WORKDAY,
+    FRI_SAT_TO_NEXT_WORKDAY,
+)
 
 
-class SaudiArabia(HolidayBase, IslamicHolidays):
+class SaudiArabia(ObservedHolidayBase, IslamicHolidays):
     """
     There are only 4 official national holidays in Saudi:
     https://laboreducation.hrsd.gov.sa/en/gallery/274
@@ -49,35 +57,16 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=FRI_TO_PREV_THU + SAT_TO_NEXT_SUN, *args, **kwargs)
 
     def _add_islamic_observed(self, dts: Set[date]) -> None:
         # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None
-
+        observed_rule = THU_FRI_TO_NEXT_WORKDAY if self._year <= 2012 else FRI_SAT_TO_NEXT_WORKDAY
         for dt in dts:
             for i in range(4):
-                if not self._is_weekend(dt + td(days=-i)):
-                    continue
-                dt_observed = dt + td(days=+1)
-                while dt_observed.year == self._year and (
-                    self._is_weekend(dt_observed) or dt_observed in self
-                ):
-                    dt_observed += td(days=+1)
-                self._add_holiday(self.tr(self.observed_label) % self[dt], dt_observed)
-
-    def _add_observed(self, dt: date) -> None:
-        if not self.observed:
-            return None
-
-        weekend = sorted(self.weekend)
-        # 1st weekend day (Thursday before 2013 and Friday otherwise)
-        if dt.weekday() == weekend[0]:
-            self._add_holiday(self.tr(self.observed_label) % self.tr(self[dt]), dt + td(days=-1))
-        # 2nd weekend day (Friday before 2013 and Saturday otherwise)
-        elif dt.weekday() == weekend[1]:
-            self._add_holiday(self.tr(self.observed_label) % self.tr(self[dt]), dt + td(days=+1))
+                self._add_observed(dt + td(days=-i), name=self[dt], rule=observed_rule)
 
     def _populate(self, year):
         super()._populate(year)
@@ -85,6 +74,11 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         # Weekend used to be THU, FRI before June 28th, 2013.
         # On that year both Eids were after that date, and Founding day
         # holiday started at 2022; so what below works.
+        self._observed_rule = (
+            THU_TO_PREV_WED + FRI_TO_NEXT_SAT
+            if year <= 2012
+            else FRI_TO_PREV_THU + SAT_TO_NEXT_SUN
+        )
         self.weekend = {THU, FRI} if year <= 2012 else {FRI, SAT}
 
         # Eid al-Fitr Holiday
@@ -103,7 +97,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         self._add_islamic_observed(self._add_eid_al_adha_day_three(name))
 
         # If National Day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Adha Holiday, there is no extra holidays given for it.
+        # Eid al-Adha Holiday, there is no extra holidays given for it.
         if year >= 2005:
             dt = date(year, SEP, 23)
             if dt not in self:
@@ -111,7 +105,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
                 self._add_observed(self._add_holiday(tr("اليوم الوطني"), dt))
 
         # If Founding Day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Adha Holiday, there is no extra holidays given for it.
+        # Eid al-Adha Holiday, there is no extra holidays given for it.
         if year >= 2022:
             dt = date(year, FEB, 22)
             if dt not in self:

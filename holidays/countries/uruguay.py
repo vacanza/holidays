@@ -13,13 +13,17 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, JUN, DEC, MON, _get_nth_weekday_from
+from holidays.calendars.gregorian import MAR
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    TUE_WED_TO_PREV_MON,
+    THU_FRI_TO_NEXT_MON,
+)
 
 
-class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
@@ -49,22 +53,14 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         2020: (MAR, 1, presidential_inauguration_day),
     }
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _move_holiday(self, dt: date) -> None:
         # Decree Law #14977, # 15535, #16805.
-        if self.observed and (1980 <= self._year <= 1983 or self._year >= 1997):
-            dt_observed = None
-            if self._is_tuesday(dt) or self._is_wednesday(dt):
-                dt_observed = _get_nth_weekday_from(-1, MON, dt)
-            elif self._is_thursday(dt) or self._is_friday(dt):
-                dt_observed = _get_nth_weekday_from(1, MON, dt)
-            if dt_observed:
-                self._add_holiday(self[dt], dt_observed)
-                self.pop(dt)
+        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
+
+    def _is_observed(self, dt: date) -> bool:
+        return 1980 <= self._year <= 1983 or self._year >= 1997
 
     def _populate_public_holidays(self):
         # Law # 6997.
@@ -111,7 +107,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1932 or 1936 <= self._year <= 1979:
             # Beaches Day.
-            self._add_holiday(tr("Día de las Playas"), DEC, 8)
+            self._add_holiday_dec_8(tr("Día de las Playas"))
 
         # Day of the Family.
         self._add_christmas_day(tr("Día de la Familia"))
@@ -149,7 +145,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1932 or self._year >= 1940:
             # Birthday of Artigas.
-            dt = self._add_holiday(tr("Natalicio de Artigas"), JUN, 19)
+            dt = self._add_holiday_jun_19(tr("Natalicio de Artigas"))
             if self._year <= 2001:
                 self._move_holiday(dt)
 

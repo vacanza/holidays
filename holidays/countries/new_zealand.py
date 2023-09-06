@@ -12,24 +12,19 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    JUN,
-    JUL,
-    SEP,
-    NOV,
-    DEC,
-    MON,
-    _get_nth_weekday_from,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    ALL_TO_NEAREST_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
+class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NZ"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2022: (SEP, 26, "Queen Elizabeth II Memorial Day"),
     }
@@ -78,20 +73,12 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _get_nearest_monday(self, *args) -> date:
         dt = args if len(args) > 1 else args[0]
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
-        return _get_nth_weekday_from(
-            +1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
-        )
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
-            )
+        return self._get_observed_date(dt, rule=ALL_TO_NEAREST_MON)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Bank Holidays Act 1873
@@ -111,8 +98,10 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day
-        self._add_observed(self._add_new_years_day("New Year's Day"), days=+2)
-        self._add_observed(self._add_new_years_day_two("Day after New Year's Day"), days=+2)
+        self._add_observed(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            self._add_new_years_day_two("Day after New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
         # Waitangi Day
         if year >= 1974:
@@ -194,10 +183,10 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday_2nd_wed_of_oct(name)
 
         # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Boxing Day
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         if self.subdiv == "Auckland":
             self._add_subdiv_auk_holidays()

@@ -10,8 +10,6 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
@@ -32,20 +30,35 @@ from holidays.calendars.gregorian import (
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class BosniaAndHerzegovina(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina
     https://www.paragraf.ba/neradni-dani-fbih.html
     https://www.paragraf.ba/neradni-dani-republike-srpske.html
     https://www.paragraf.ba/neradni-dani-brcko.html
+
+    Observed holidays rules:
+    - BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
+    - BRC: if holiday fall on Sunday, observed on next working day.
+    - SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
     """
 
     country = "BA"
     default_language = "bs"
     supported_languages = ("bs", "en_US", "sr", "uk")
+    # %s (Observed).
+    observed_label = tr("%s (preneseno)")
     subdivisions = (
         "BIH",  # Federacija Bosne i Hercegovine
         "BRC",  # Brčko distrikt
@@ -61,21 +74,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=BosniaAndHerzegovinaIslamicCalendar())
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(
-        self, dt: date, include_sat: bool = True, include_sun: bool = True, days: int = +1
-    ) -> None:
-        # BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
-        # BRC: if holiday fall on Sunday, observed on next working day.
-        # SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
-        if not self.observed:
-            return None
-        if (include_sun and self._is_sunday(dt)) or (include_sat and self._is_saturday(dt)):
-            self._add_holiday(
-                self.tr("%s (preneseno)") % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
-            )
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -122,7 +121,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
     def _add_subdiv_bih_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), include_sat=False, days=+2)
+        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas Eve.
@@ -148,7 +147,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), include_sat=False, days=+2)
+        self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_labor_day_two(name)
 
         # Victory Day.
@@ -172,36 +171,31 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
     def _add_subdiv_brc_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), days=+2)
+        self._add_observed(self._add_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas.
-        self._add_observed(
-            self._add_christmas_day(tr("Božić (Pravoslavni)")),
-            include_sat=False,
-        )
+        self._add_observed(self._add_christmas_day(tr("Božić (Pravoslavni)")))
 
         self._add_observed(
             # Day of establishment of Brčko District.
-            self._add_holiday_mar_8(tr("Dan uspostavljanja Brčko distrikta")),
-            include_sat=False,
+            self._add_holiday_mar_8(tr("Dan uspostavljanja Brčko distrikta"))
         )
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_observed(self._add_labor_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_labor_day_two(name)
 
         self._add_observed(
             # Catholic Christmas.
-            self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR),
-            include_sat=False,
+            self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
         )
 
     def _add_subdiv_srp_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
-        self._add_observed(self._add_new_years_day(name), include_sun=False)
+        self._add_observed(self._add_new_years_day(name), rule=SAT_TO_NEXT_MON)
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas Eve.
@@ -227,7 +221,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        self._add_observed(self._add_labor_day(name), include_sun=False)
+        self._add_observed(self._add_labor_day(name), rule=SAT_TO_NEXT_MON)
         self._add_labor_day_two(name)
 
         # Victory Day.

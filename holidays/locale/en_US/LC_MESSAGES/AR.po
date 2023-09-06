@@ -122,6 +122,7 @@ msgstr "Columbus day"
 msgid "Día de la Soberanía Nacional"
 msgstr "National Sovereignty Day"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (Observed)"

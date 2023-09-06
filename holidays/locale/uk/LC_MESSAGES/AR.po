@@ -121,6 +121,7 @@ msgstr "День Колумба"
 msgid "Día de la Soberanía Nacional"
 msgstr "День національного суверенітету"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (вихідний)"

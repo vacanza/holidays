@@ -9,13 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
+class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     https://publicholidays.vn/
     http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
@@ -23,18 +21,19 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
 
     country = "VN"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
-        observed_dates = set()
+        dts_observed = set()
 
         # New Year's Day
-        observed_dates.add(self._add_new_years_day("International New Year's Day"))
+        dts_observed.add(self._add_new_years_day("International New Year's Day"))
 
         # Lunar New Year
         self._add_chinese_new_years_eve("Vietnamese New Year's Eve")
@@ -47,25 +46,19 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
-            observed_dates.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
+            dts_observed.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
 
         # Liberation Day/Reunification Day
-        observed_dates.add(self._add_holiday_apr_30("Liberation Day/Reunification Day"))
+        dts_observed.add(self._add_holiday_apr_30("Liberation Day/Reunification Day"))
 
         # International Labor Day
-        observed_dates.add(self._add_labor_day("International Labor Day"))
+        dts_observed.add(self._add_labor_day("International Labor Day"))
 
         # Independence Day
-        observed_dates.add(self._add_holiday_sep_2("Independence Day"))
+        dts_observed.add(self._add_holiday_sep_2("Independence Day"))
 
         if self.observed:
-            for dt in sorted(observed_dates):
-                if not self._is_weekend(dt):
-                    continue
-                next_workday = dt + td(days=+1)
-                while self._is_weekend(next_workday) or next_workday in observed_dates:
-                    next_workday += td(days=+1)
-                observed_dates.add(self._add_holiday(f"{self[dt]} (Observed)", next_workday))
+            self._populate_observed(dts_observed)
 
 
 class VN(Vietnam):
