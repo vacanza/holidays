@@ -10,16 +10,22 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, APR, JUN, JUL, MON, _get_nth_weekday_from
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    ALL_TO_NEAREST_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
-class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Canada
@@ -35,6 +41,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CA"
     default_language = "en"
+    # %s (Observed).
+    observed_label = tr("%s (Observed)")
     supported_categories = {GOVERNMENT, OPTIONAL, PUBLIC}
     subdivisions = (
         "AB",
@@ -56,24 +64,10 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> date:
-        dt = date(self._year, *args)
-        return _get_nth_weekday_from(
-            +1 if self._is_friday(dt) or self._is_weekend(dt) else -1,
-            MON,
-            dt,
-        )
-
-    def _add_observed(self, dt: date, include_sat: bool = True, days: int = +1) -> None:
-        if not self.observed:
-            return None
-        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
-            self._add_holiday(
-                self.tr("%s (Observed)") % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
-            )
+        return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)
 
     def _add_common_holidays(self):
         """Nationwide statutory holidays."""
@@ -136,20 +130,26 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Remembrance Day.
             self._add_observed(self._add_remembrance_day(tr("Remembrance Day")))
 
-        self._add_observed(self._christmas_day, days=+2)
+        self._add_observed(self._christmas_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Boxing Day.
-        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), days=+2)
+        self._add_observed(
+            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
     def _populate_optional_holidays(self):
         if self._year <= 1866:
             return None
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")), days=+2)
+        self._add_observed(
+            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
         # Boxing Day.
-        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), days=+2)
+        self._add_observed(
+            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
     def _add_thanksgiving_day(self):
         if self._year >= 1931:
@@ -173,7 +173,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
 
         if self._year >= 1879:
-            self._add_observed(self._canada_day, include_sat=False)
+            self._add_observed(self._canada_day, rule=SUN_TO_NEXT_MON)
 
         self._add_thanksgiving_day()
 
@@ -210,7 +210,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
 
         if self._year >= 1879:
-            self._add_observed(self._canada_day, include_sat=False)
+            self._add_observed(self._canada_day, rule=SUN_TO_NEXT_MON)
 
         # https://en.wikipedia.org/wiki/Civic_Holiday#British_Columbia
         if self._year >= 1974:
@@ -408,9 +408,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_thanksgiving_day()
 
-        self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), include_sat=False, days=+2
-        )
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SUN_TO_NEXT_TUE)
 
     def _add_subdiv_on_optional_holidays(self):
         if self._year >= 1900:
@@ -450,11 +448,11 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_observed(
                 # St. Jean Baptiste Day.
                 self._add_saint_johns_day(tr("St. Jean Baptiste Day")),
-                include_sat=False,
+                rule=SUN_TO_NEXT_MON,
             )
 
         if self._year >= 1879:
-            self._add_observed(self._canada_day, include_sat=False)
+            self._add_observed(self._canada_day, rule=SUN_TO_NEXT_MON)
 
         self._add_thanksgiving_day()
 

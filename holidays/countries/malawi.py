@@ -9,31 +9,27 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/malawi
     https://www.timeanddate.com/holidays/malawi/
     """
 
     country = "MW"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(+2 if self._is_saturday(dt) else days)
-            )
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 2000
@@ -60,9 +56,9 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_observed(self._add_holiday_oct_15("Mother's Day"))
 
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
 
 class MW(Malawi):

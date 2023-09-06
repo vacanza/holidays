@@ -9,19 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import FEB, MAY
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Nigeria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
     """
 
     country = "NG"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2019: (
             (FEB, 22, "Public Holiday for Elections"),
@@ -33,7 +32,9 @@ class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2016, *args, **kwargs
+        )
 
     def _populate(self, year):
         if year <= 1978:
@@ -79,16 +80,8 @@ class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # Birthday of Prophet Muhammad.
         dts_observed.update(self._add_mawlid_day("Eid-el-Mawlid"))
 
-        # Observed holidays.
-        if self.observed and year >= 2016:
-            for dt in sorted(dts_observed):
-                if not self._is_weekend(dt):
-                    continue
-                dt_observed = dt + td(days=+1)
-                while self._is_weekend(dt_observed) or dt_observed in dts_observed:
-                    dt_observed += td(days=+1)
-                for name in self.get_list(dt):
-                    dts_observed.add(self._add_holiday("%s (Observed)" % name, dt_observed))
+        if self.observed:
+            self._populate_observed(dts_observed)
 
 
 class NG(Nigeria):

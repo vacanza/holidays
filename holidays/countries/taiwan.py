@@ -9,14 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import DEC
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_PREV_WORKDAY,
+    SUN_TO_NEXT_WORKDAY,
+)
 
 
-class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
+class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
@@ -28,11 +30,17 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
 
     country = "TW"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY,
+            observed_since=2015,
+            *args,
+            **kwargs,
+        )
 
     def _populate(self, year):
         if year <= 1911:
@@ -45,8 +53,8 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         name = "Republic of China Founding Day / New Year's Day"
         dts_observed.add(self._add_new_years_day(name))
 
-        if self.observed and year >= 2015 and self._is_friday(DEC, 31):
-            self._add_holiday_dec_31("%s (Observed)" % name)
+        if self.observed and self._is_friday(DEC, 31) and year >= 2015:
+            self._add_holiday_dec_31(self.observed_label % name)
 
         # Lunar New Year.
         self._add_chinese_new_years_eve("Lunar New Year's Eve")
@@ -84,16 +92,8 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # National Day.
         dts_observed.add(self._add_holiday_oct_10("National Day"))
 
-        if self.observed and year >= 2015:
-            for dt in sorted(dts_observed):
-                if not self._is_weekend(dt):
-                    continue
-                delta = -1 if self._is_saturday(dt) else +1
-                for name in self.get_list(dt):
-                    dt_observed = dt + td(days=delta)
-                    while dt_observed in dts_observed:
-                        dt_observed += td(days=delta)
-                    dts_observed.add(self._add_holiday("%s (Observed)" % name, dt_observed))
+        if self.observed:
+            self._populate_observed(dts_observed, multiple=True)
 
 
 class TW(Taiwan):
