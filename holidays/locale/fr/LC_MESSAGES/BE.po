@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.33\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-28 15:28+0300\n"
+"PO-Revision-Date: 2023-09-06 20:51+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgid "Dag van de Arbeid"
 msgstr "Fête du Travail"
 
 #. Ascension Day.
-msgid "Hemelvaart"
+msgid "O. L. H. Hemelvaart"
 msgstr "Ascension"
 
 #. Whit Sunday.
@@ -49,7 +49,7 @@ msgid "Nationale feestdag"
 msgstr "Fête nationale"
 
 #. Assumption of Mary.
-msgid "Onze Lieve Vrouw hemelvaart"
+msgid "O. L. V. Hemelvaart"
 msgstr "Assomption"
 
 #. All Saints' Day.
@@ -63,3 +63,15 @@ msgstr "Jour de l'Armistice"
 #. Christmas Day.
 msgid "Kerstmis"
 msgstr "Noël"
+
+#. Good Friday.
+msgid "Goede Vrijdag"
+msgstr "Vendredi Saint"
+
+#. Friday after Ascension Day.
+msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr "Vendredi suivant l'Ascension"
+
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr "Bank Holiday"
