@@ -10,16 +10,23 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SAT_TO_NEXT_TUE,
+    THU_FRI_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
-class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
+class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Thailand.
 
@@ -90,6 +97,20 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     - [Teacher's Day]
         https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf
 
+        !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
+        Despite the wording, this usually only applies to Monday only for
+        holidays, consecutive holidays all have their own special in lieu
+        declared separately.
+        Data from 1992-1994 and 1998-2000 are declared discretely in
+        special_holidays declarations above.
+        Applied Automatically for Monday if on Weekends: 1961-1973
+         **NOTE: No New Year's Eve (in lieu) for this period
+        No In Lieu days available: 1974-1988
+        Case-by-Case application for Workday if on Weekends: 1989-1994
+        Applied Automatically for Workday if on Weekends: 1995-1997
+        Case-by-Case application for Workday if on Weekends: 1998-2000
+        Applied Automatically for Workday if on Weekends: 2001-Present
+
     Limitations:
 
     - This is only 100% accurate for 1997-2023; any future dates are up to the
@@ -117,6 +138,8 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     country = "TH"
     supported_categories = {ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY}
     default_language = "th"
+    # %s (in lieu).
+    observed_label = tr("ชดเชย%s")
     supported_languages = ("en_US", "th")
 
     # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
@@ -262,46 +285,19 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         ),
     }
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self)
-        super().__init__(**kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+
+    def _is_observed(self, dt: date) -> bool:
+        return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
 
     def _populate_public_holidays(self):
         # Due to Thai Calendar Migration, this is capped off at 1941.
         # But certain holidays were implemented before 1941.
         if self._year <= 1940:
             return None
-
-        def _add_observed(dt: date) -> None:
-            """
-            !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
-            Despite the wording, this usually only applies to Monday only for
-            holidays, consecutive holidays all have their own special in lieu
-            declared separately.
-
-            Data from 1992-1994 and 1998-2000 are declared discretely in
-            special_holidays declarations above.
-
-            Applied Automatically for Monday if on Weekends: 1961-1973
-             **NOTE: No New Year's Eve (in lieu) for this period
-            No In Lieu days available: 1974-1988
-            Case-by-Case application for Workday if on Weekends: 1989-1994
-            Applied Automatically for Workday if on Weekends: 1995-1997
-            Case-by-Case application for Workday if on Weekends: 1998-2000
-            Applied Automatically for Workday if on Weekends: 2001-Present
-            """
-            if (
-                self.observed
-                and self._is_weekend(dt)
-                and (
-                    1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
-                )
-            ):
-                in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                for name in self.get_list(dt):
-                    # %s (in lieu)
-                    self._add_holiday(self.tr("ชดเชย%s") % name, in_lieu)
 
         # Fixed Date Holidays
 
@@ -311,24 +307,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1941 if we support earlier dates.
 
         # New Year's Day.
-        jan_1 = self._add_new_years_day(tr("วันขึ้นปีใหม่"))
-        _add_observed(jan_1)
-
-        # วันหยุดชดเชยวันสิ้นปี
-        # Status: In-Use.
-        # Added separately from New Year's Eve itself so that it would't
-        #   go over the next year.
-        #   - CASE 1: SAT-SUN -> 1 in-lieu on TUE.
-        #   - CASE 2: SUN-MON -> 1 in-lieu on TUE.
-        # See in lieu logic in `_add_observed(dt: date)`.
-
-        new_years_eve_in_lieu = self.tr("ชดเชย%s") % self.tr("วันสิ้นปี")
-
-        if self.observed and (1995 <= self._year <= 1997 or self._year >= 2001):
-            if self._is_sunday(jan_1):
-                self._add_new_years_day_three(new_years_eve_in_lieu)
-            elif self._is_monday(jan_1):
-                self._add_new_years_day_two(new_years_eve_in_lieu)
+        self._add_observed(self._add_new_years_day(tr("วันขึ้นปีใหม่")))
 
         # วันเด็กแห่งชาติ
         # Status: In-Use.
@@ -351,7 +330,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1918 if we support earlier dates.
 
         # Chakri Memorial Day.
-        _add_observed(self._add_holiday_apr_6(tr("วันจักรี")))
+        self._add_observed(self._add_holiday_apr_6(tr("วันจักรี")))
 
         # วันสงกรานต์
         # Status: In-Use.
@@ -366,20 +345,19 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         #    (Except for 2020 due to Covid-19 outbreaks)
         # This has its own in-lieu trigger.
 
-        if self._year >= 1948:
+        if 1948 <= self._year <= 1953 or (1957 <= self._year != 2020):
             # Songkran Festival.
             songkran_festival = tr("วันสงกรานต์")
-            if self._year <= 1953 or (1957 <= self._year != 2020):
-                dt = (
-                    self._add_holiday_apr_12(songkran_festival)
-                    if 1989 <= self._year <= 1997
-                    else self._add_holiday_apr_13(songkran_festival)
-                )
-                if 1957 <= self._year <= 1988:
-                    _add_observed(dt)
-                else:
-                    self._add_holiday(songkran_festival, dt + td(days=+1))
-                    self._add_holiday(songkran_festival, dt + td(days=+2))
+            if 1957 <= self._year <= 1988:
+                self._add_observed(self._add_holiday_apr_13(songkran_festival))
+            elif 1989 <= self._year <= 1997:
+                dt = self._add_holiday_apr_12(songkran_festival)
+                self._add_holiday_apr_13(songkran_festival)
+                self._add_holiday_apr_14(songkran_festival)
+            else:
+                dt = self._add_holiday_apr_13(songkran_festival)
+                self._add_holiday_apr_14(songkran_festival)
+                self._add_holiday_apr_15(songkran_festival)
 
             # วันหยุดชดเชยวันสงกรานต์
             # If Songkran happened to be held on the weekends, only one in-lieu
@@ -390,13 +368,8 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             # See in lieu logic in `_add_observed(dt: date)`.
             # Status: In Use.
 
-            songkran_festival_in_lieu = self.tr("ชดเชย%s") % self.tr(songkran_festival)
-
-            if self.observed and (1995 <= self._year <= 1997 or 2001 <= self._year != 2020):
-                if self._is_thursday(dt):
-                    self._add_holiday(songkran_festival_in_lieu, dt + td(days=+4))
-                elif self._is_friday(dt) or self._is_saturday(dt):
-                    self._add_holiday(songkran_festival_in_lieu, dt + td(days=+3))
+            if self._year >= 1995:
+                self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
@@ -406,7 +379,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 1974:
             # National Labour day.
-            _add_observed(self._add_labor_day(tr("วันแรงงานแห่งชาติ")))
+            self._add_observed(self._add_labor_day(tr("วันแรงงานแห่งชาติ")))
 
         # วันชาติ
         # Status: In-Use.
@@ -416,7 +389,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # National Day.
         national_day = tr("วันชาติ")
-        _add_observed(
+        self._add_observed(
             self._add_holiday_jun_24(national_day)
             if self._year <= 1959
             else self._add_holiday_dec_5(national_day)
@@ -431,16 +404,16 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         coronation_day = tr("วันฉัตรมงคล")
 
         if 1958 <= self._year <= 2016:
-            _add_observed(self._add_holiday_may_5(coronation_day))
+            self._add_observed(self._add_holiday_may_5(coronation_day))
         elif self._year >= 2020:
-            _add_observed(self._add_holiday_may_4(coronation_day))
+            self._add_observed(self._add_holiday_may_4(coronation_day))
 
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use.
         # Starts in 2019 (B.E. 2562).
 
         if self._year >= 2019:
-            _add_observed(
+            self._add_observed(
                 self._add_holiday_jun_3(
                     # HM Queen Suthida's Birthday.
                     tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี")
@@ -452,7 +425,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Started in 2017 (B.E 2560).
 
         if self._year >= 2017:
-            _add_observed(
+            self._add_observed(
                 self._add_holiday_jul_28(
                     # HM King Maha Vajiralongkorn's Birthday.
                     tr(
@@ -477,7 +450,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # HM Queen Sirikit's Birthday.
                 else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
             )
-            _add_observed(self._add_holiday_aug_12(q_sirikit_bday))
+            self._add_observed(self._add_holiday_aug_12(q_sirikit_bday))
 
         # วันแม่แห่งชาติ
         # Status: In-Use.
@@ -490,9 +463,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         thai_mothers_day = tr("วันแม่แห่งชาติ")
 
         if 1950 <= self._year <= 1957:
-            _add_observed(self._add_holiday_apr_15(thai_mothers_day))
+            self._add_observed(self._add_holiday_apr_15(thai_mothers_day))
         elif self._year >= 1976:
-            _add_observed(self._add_holiday_aug_12(thai_mothers_day))
+            self._add_observed(self._add_holiday_aug_12(thai_mothers_day))
 
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
         # Status: In-Use.
@@ -510,7 +483,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # Anniversary for the Death of King Bhumibol Adulyadej.
                 else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
             )
-            _add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
+            self._add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
 
         # วันปิยมหาราช
         # Status: In-Use.
@@ -518,7 +491,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1911 if we support earlier dates.
 
         # HM King Chulalongkorn Memorial Day.
-        _add_observed(self._add_holiday_oct_23(tr("วันปิยมหาราช")))
+        self._add_observed(self._add_holiday_oct_23(tr("วันปิยมหาราช")))
 
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016)
         # วันคล้ายวันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (2017-Present)
@@ -548,7 +521,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     )
                 )
             )
-            _add_observed(self._add_holiday_dec_5(k_bhumibol_bday))
+            self._add_observed(self._add_holiday_dec_5(k_bhumibol_bday))
 
         # วันพ่อแห่งชาติ
         # Status: In-Use.
@@ -558,7 +531,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 1980:
             # National Father's Day.
-            _add_observed(self._add_holiday_dec_5(tr("วันพ่อแห่งชาติ")))
+            self._add_observed(self._add_holiday_dec_5(tr("วันพ่อแห่งชาติ")))
 
         # วันรัฐธรรมนูญ
         # Status: In-Use.
@@ -567,7 +540,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1932 if we support earlier dates.
 
         # Constitution Day.
-        _add_observed(self._add_holiday_dec_10(tr("วันรัฐธรรมนูญ")))
+        self._add_observed(self._add_holiday_dec_10(tr("วันรัฐธรรมนูญ")))
 
         # วันสิ้นปี
         # Status: In-Use.
@@ -577,7 +550,19 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # This has its own in-lieu trigger.
 
         # New Year's Eve.
-        self._add_new_years_eve(tr("วันสิ้นปี"))
+        name = tr("วันสิ้นปี")
+        self._add_new_years_eve(name)
+
+        # วันหยุดชดเชยวันสิ้นปี
+        # Status: In-Use.
+        # Added separately from New Year's Eve itself so that it would't
+        #   go over the next year.
+        #   - CASE 1: SAT-SUN -> 1 in-lieu on TUE.
+        #   - CASE 2: SUN-MON -> 1 in-lieu on TUE.
+        # See in lieu logic in `_add_observed(dt: date)`.
+
+        if self._year >= 1995:
+            self._add_observed(date(self._year - 1, DEC, 31), name=name, rule=SAT_SUN_TO_NEXT_TUE)
 
         # Thai Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
@@ -589,7 +574,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Makha Bucha.
         makha_bucha_date = self._add_makha_bucha(tr("วันมาฆบูชา"))
         if makha_bucha_date:
-            _add_observed(makha_bucha_date)
+            self._add_observed(makha_bucha_date)
 
         # วันวิสาขบูชา
         # Status: In-Use.
@@ -597,43 +582,29 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Visakha Bucha.
         visakha_bucha_date = self._add_visakha_bucha(tr("วันวิสาขบูชา"))
         if visakha_bucha_date:
-            _add_observed(visakha_bucha_date)
+            self._add_observed(visakha_bucha_date)
 
         # วันอาสาฬหบูชา
         # Status: In-Use.
-        # This has its own in-lieu trigger.
-
-        # Asarnha Bucha.
-        asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
-
-        # วันเข้าพรรษา
-        # Status: In-Use.
-        # This has its own in-lieu trigger.
-
-        # Buddhist Lent Day.
-        self._add_khao_phansa(tr("วันเข้าพรรษา"))
-
-        # วันหยุดชดเชยวันอาสาฬหบูชา
-        # วันหยุดชดเชยวันเข้าพรรษา
-        # Status: In Use.
         #  - CASE 1: FRI-SAT -> 1 in-lieu on MON
         #  - CASE 2: SAT-SUN -> 1 in-lieu on MON
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
-        # See in lieu logic in `_add_observed(dt: date)`.
 
-        if (
-            asarnha_bucha_date
-            and self.observed
-            and (1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001)
-        ):
-            if self._is_friday(asarnha_bucha_date):
-                self._add_holiday(
-                    self.tr("ชดเชย%s") % self.tr("วันเข้าพรรษา"), asarnha_bucha_date + td(days=+3)
-                )
-            elif self._is_weekend(asarnha_bucha_date):
-                self._add_holiday(
-                    self.tr("ชดเชย%s") % self.tr("วันอาสาฬหบูชา"), asarnha_bucha_date + td(days=+2)
-                )
+        # Asarnha Bucha.
+        asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
+        if asarnha_bucha_date:
+            self._add_observed(asarnha_bucha_date, rule=SAT_SUN_TO_NEXT_MON_TUE)
+
+        # วันเข้าพรรษา
+        # Status: In-Use.
+        #  - CASE 1: FRI-SAT -> 1 in-lieu on MON
+        #  - CASE 2: SAT-SUN -> 1 in-lieu on MON
+        #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
+
+        # Buddhist Lent Day.
+        khao_phansa_date = self._add_khao_phansa(tr("วันเข้าพรรษา"))
+        if khao_phansa_date:
+            self._add_observed(khao_phansa_date, rule=SAT_TO_NEXT_MON)
 
     def _populate_armed_forces_holidays(self):
         # วันกองทัพไทย
@@ -728,8 +699,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             2023: (MAY, 11),
         }
         if 1957 <= self._year <= 2023 and self._year != 1999:
-            # Royal Ploughing Ceremony.
-            self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
+            self._add_observed(
+                # Royal Ploughing Ceremony.
+                self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
+            )
 
     def _populate_school_holidays(self):
         # วันครู
