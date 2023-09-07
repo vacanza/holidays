@@ -11,7 +11,6 @@
 
 import importlib
 import inspect
-import sys
 import warnings
 from unittest import TestCase
 
@@ -19,12 +18,12 @@ import pytest
 
 import holidays
 from holidays import countries, financial, registry
-from tests.common import PYTHON_VERSION
+from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestEntityLoader(TestCase):
     @pytest.mark.skipif(
-        sys.version_info < PYTHON_VERSION,
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
     def test_countries_imports(self):
@@ -67,7 +66,7 @@ class TestEntityLoader(TestCase):
         )
 
     @pytest.mark.skipif(
-        sys.version_info < PYTHON_VERSION,
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
     def test_financial_imports(self):
