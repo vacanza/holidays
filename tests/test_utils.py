@@ -20,6 +20,7 @@ import pytest
 
 import holidays
 from holidays.utils import (
+    CountryHoliday,
     country_holidays,
     financial_holidays,
     list_localized_countries,
@@ -57,6 +58,14 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
         self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
         self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
+
+    def test_country_holiday_class_deprecation(self):
+        with warnings.catch_warnings(record=True) as ctx:
+            warnings.simplefilter("always")
+            CountryHoliday("IT")
+            warning = ctx[0]
+            self.assertTrue(issubclass(warning.category, DeprecationWarning))
+            self.assertIn("CountryHoliday is deprecated", str(warning.message))
 
 
 class TestFinancialHolidays(unittest.TestCase):

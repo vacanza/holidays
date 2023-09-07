@@ -67,7 +67,7 @@ msgstr ""
 msgid "ชดเชยวันสงกรานต์"
 msgstr ""
 
-#. %s (in lieu)
+#. %s (in lieu).
 #, c-format
 msgid "ชดเชย%s"
 msgstr ""

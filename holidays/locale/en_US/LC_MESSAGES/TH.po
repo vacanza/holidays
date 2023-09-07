@@ -67,7 +67,7 @@ msgstr "HM King Maha Vajiralongkorn's Coronation Celebrations"
 msgid "ชดเชยวันสงกรานต์"
 msgstr "Songkran Festival (in lieu)"
 
-#. %s (in lieu)
+#. %s (in lieu).
 #, c-format
 msgid "ชดเชย%s"
 msgstr "%s (in lieu)"

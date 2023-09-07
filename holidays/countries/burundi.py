@@ -10,14 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Optional
 
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     Burundian holidays
     Note that holidays falling on a sunday maybe observed
@@ -30,21 +29,18 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
     """
 
     country = "BI"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
-        dt = args if len(args) > 1 else args[0]
-        dt = dt if isinstance(dt, date) else date(self._year, *dt)
-
-        dt_added = super()._add_holiday(name, dt)
-        if self.observed and dt_added and self._is_sunday(dt_added):
-            dt_added = super()._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
-
+        dt_added = super()._add_holiday(name, *args)
+        if dt_added:
+            self._add_observed(dt_added)
         return dt_added
 
     def _populate(self, year):
