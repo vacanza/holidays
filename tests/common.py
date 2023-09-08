@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import os
+import sys
 import unittest
 import warnings
 from datetime import date
@@ -20,7 +21,8 @@ from dateutil.parser import parse
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
 
-PYTHON_VERSION = (3, 11)
+PYTHON_LATEST_SUPPORTED_VERSION = (3, 11)
+PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
 
 
 class TestCase(unittest.TestCase):

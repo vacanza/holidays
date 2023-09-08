@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
 import unittest
 import warnings
 from datetime import date
@@ -28,7 +27,7 @@ from holidays.utils import (
     list_supported_countries,
     list_supported_financial,
 )
-from tests.common import PYTHON_VERSION
+from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestCountryHolidays(unittest.TestCase):
@@ -94,7 +93,7 @@ class TestAllInSameYear(unittest.TestCase):
     years = set(range(1950, 2051))
 
     @pytest.mark.skipif(
-        sys.version_info < PYTHON_VERSION,
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
     @mock.patch("pathlib.Path.rglob", return_value=())
@@ -117,7 +116,7 @@ class TestAllInSameYear(unittest.TestCase):
         self.assertEqual(self.years, country_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
-        sys.version_info < PYTHON_VERSION,
+        PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
     @mock.patch("pathlib.Path.rglob", return_value=())
