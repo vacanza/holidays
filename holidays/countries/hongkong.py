@@ -13,12 +13,20 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars.gregorian import JUL, AUG, SEP, MON, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import JUL, AUG, SEP, MON, SUN, _get_nth_weekday_of_month
 from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_WORKDAY,
+    MON_TO_NEXT_TUE,
+    WORKDAY_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_NEXT_WORKDAY,
+)
 
 
-class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):
+class HongKong(
+    ObservedHolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
+):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
     Holidays for 2007–2023 (government source):
@@ -26,6 +34,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
     """
 
     country = "HK"
+    observed_label = "The day following %s"
     special_holidays = {
         1997: (JUL, 2, "Hong Kong Special Administrative Region Establishment Day"),
         2015: (
@@ -42,15 +51,18 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
-    def _add_holiday(self, name: str, dt: date) -> Optional[date]:
-        if self.observed and (self._is_sunday(dt) or dt in self):
-            while self._is_sunday(dt) or dt in self:
-                dt += td(days=+1)
-            name = self.tr("The day following %s") % self.tr(name)
-
-        return super()._add_holiday(name, dt)
+    def _add_holiday(self, name: str, *args) -> Optional[date]:
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+        rule = (
+            WORKDAY_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY
+            if dt in self
+            else self._observed_rule
+        )
+        is_obs, dt_observed = self._add_observed(dt, name=name, rule=rule)
+        return dt_observed if is_obs else super()._add_holiday(name, dt)  # type: ignore[arg-type]
 
     def _populate(self, year):
         # Current set of holidays actually valid since 1946
@@ -58,8 +70,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
             return None
 
         super()._populate(year)
-
-        day_following = "The day following"
+        self.weekend = {SUN}
 
         # The first day of January
         self._add_new_years_day("The first day of January")
@@ -96,7 +107,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         name = "Ching Ming Festival"
         dt_qingming = self._qingming_date
         if self.observed and dt_qingming == self._easter_sunday + td(days=+1):
-            self._add_holiday(f"{day_following} {name}", dt_qingming + td(days=+1))
+            self._add_observed(dt_qingming, name=name, rule=MON_TO_NEXT_TUE)
         elif dt_qingming not in {
             self._easter_sunday + td(days=-2),
             self._easter_sunday + td(days=-1),
@@ -107,7 +118,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         good_friday = "Good Friday"
         easter_monday = "Easter Monday"
         self._add_good_friday(good_friday)
-        self._add_holy_saturday(f"{day_following} {good_friday}")
+        self._add_holy_saturday(self.observed_label % good_friday)
         self._add_easter_monday(easter_monday)
 
         if dt_qingming in {
