@@ -79,14 +79,13 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Good Friday"))
 
         if self._year >= 1879:
-            name = (
+            self._canada_day = self._add_holiday_jul_1(
                 # Canada Day.
                 tr("Canada Day")
                 if self._year >= 1983
                 # Dominion Day.
                 else tr("Dominion Day")
             )
-            self._canada_day = self._add_holiday_jul_1(name)
 
         if self._year >= 1894:
             # Labour Day.
