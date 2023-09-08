@@ -675,6 +675,12 @@ class TestThailand(TestCase):
             ("1957-01-16", "วันครู"),
         )
 
+    def test_workday_1947(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1947),
+            ("1947-11-27", "วันลอยกระทง"),
+        )
+
     def test_workday_1948(self):
         self.assertHolidays(
             Thailand(categories=(WORKDAY,), years=1948),
