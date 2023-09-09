@@ -74,10 +74,12 @@ WED_THU_TO_NEXT_FRI = ObservedRule({WED: +2, THU: +1})
 THU_FRI_TO_NEXT_MON = ObservedRule({THU: +4, FRI: +3})
 THU_FRI_TO_NEXT_WORKDAY = ObservedRule({THU: +7, FRI: +7})
 THU_FRI_SUN_TO_NEXT_MON = ObservedRule({THU: +4, FRI: +3, SUN: +1})
+THU_FRI_SAT_TO_NEXT_MON_TUE_WED = ObservedRule({THU: +4, FRI: +4, SAT: +4})
 
 FRI_SAT_TO_NEXT_WORKDAY = ObservedRule({FRI: +7, SAT: +7})
 FRI_SUN_TO_NEXT_MON = ObservedRule({FRI: +3, SUN: +1})
 FRI_SUN_TO_NEXT_SAT_MON = ObservedRule({FRI: +1, SUN: +1})
+FRI_SAT_SUN_TO_NEXT_MON_TUE_WED = ObservedRule({FRI: +3, SAT: +3, SUN: +3})
 
 SAT_SUN_TO_PREV_FRI = ObservedRule({SAT: -1, SUN: -2})
 SAT_SUN_TO_NEXT_MON = ObservedRule({SAT: +2, SUN: +1})

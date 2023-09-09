@@ -10,15 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    THU_FRI_SAT_TO_NEXT_MON_TUE_WED,
+    FRI_SAT_SUN_TO_NEXT_MON_TUE_WED,
+    SAT_SUN_TO_NEXT_MON,
+)
 
 
-class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
+class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Laos.
 
@@ -31,6 +36,14 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
                     https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
                     https://www.timeanddate.com/holidays/laos/
+
+        !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
+        Despite the wording, this usually only applies to Monday only for holidays,
+        consecutive holidays all have their own special in lieu declared separately.
+
+        As featured in ດຳລັດວ່າດ້ວຍ ວັນພັກ ເລກທີ 386 /ລບ (15.12.2017);
+        - Saturdays and Sundays shall be restdays each week.
+        - In-Lieu holidays shall be given if it fall on the weekends.
 
     Limitations:
 
@@ -46,7 +59,10 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
 
     country = "LA"
+    supported_categories = {PUBLIC, SCHOOL}
     default_language = "lo"
+    # %s (in lieu).
+    observed_label = tr("ພັກຊົດເຊີຍ%s")
 
     # Special Cases.
 
@@ -68,29 +84,15 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
-    def _populate(self, year):
+    def _is_observed(self, dt: date) -> bool:
+        return self._year >= 2018
+
+    def _populate_public_holidays(self):
         # Available post-Lao PDR proclamation on Dec 2, 1975.
-        if year <= 1975:
+        if self._year <= 1975:
             return None
-
-        def _add_observed(dt: date) -> None:
-            """
-            !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
-            Despite the wording, this usually only applies to Monday only for holidays,
-            consecutive holidays all have their own special in lieu declared separately.
-
-            As featured in ດຳລັດວ່າດ້ວຍ ວັນພັກ ເລກທີ 386 /ລບ (15.12.2017);
-            - Saturdays and Sundays shall be restdays each week.
-            - In-Lieu holidays shall be given if it fall on the weekends.
-            """
-            if self.observed and self._is_weekend(dt) and year >= 2018:
-                in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                for name in self.get_list(dt):
-                    self._add_holiday(self.tr("ພັກຊົດເຊີຍ%s") % name, in_lieu)
-
-        super()._populate(year)
 
         # Fixed Date Official Holidays
 
@@ -114,20 +116,22 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Lao New Year's Day
         name = tr("ບຸນປີໃໝ່ລາວ")
         dt = self._add_holiday_apr_14(name)
-        self._add_holiday(name, dt + td(days=+1))
-        self._add_holiday(name, dt + td(days=+2))
+        self._add_holiday_apr_15(name)
+        self._add_holiday_apr_16(name)
 
         # ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ
         # See in lieu logic in `_add_observed(dt: date)`.
         # Dates prior to 2018 are assigned manually
         # Status: In-Use.
-
-        if self.observed and year >= 2018:
-            lao_new_year_in_lieu = self.tr("ພັກຊົດເຊີຍ%s") % self.tr("ບຸນປີໃໝ່ລາວ")
-            if self._is_thursday(dt) or self._is_friday(dt) or self._is_saturday(dt):
-                self._add_holiday(lao_new_year_in_lieu, dt + td(days=+4))
-            if self._is_friday(dt) or self._is_saturday(dt) or self._is_sunday(dt):
-                self._add_holiday(lao_new_year_in_lieu, dt + td(days=+3))
+        #   - CASE 1: THU-FRI-SAT -> in-lieu on MON.
+        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE
+        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED
+        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED
+        if year >= 2018:
+            self._add_observed(
+                dt,
+                rule=THU_FRI_SAT_TO_NEXT_MON_TUE_WED + FRI_SAT_SUN_TO_NEXT_MON_TUE_WED,
+            )
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
@@ -141,7 +145,7 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Rights of the Child in 1989 (de-facto start as holiday in 1990).
         # Became defunct from 2018 onwards.
 
-        if 1990 <= year <= 2017:
+        if 1990 <= self._year <= 2017:
             # International Children Day
             self._add_childrens_day(tr("ວັນເດັກສາກົນ"))
 
@@ -152,11 +156,15 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Lao National Day
         _add_observed(self._add_holiday_dec_2(tr("ວັນຊາດ")))
 
+    def _populate_school_holidays(self):
         # Laotian Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
-        # Laotian Lunar Calendar Holidays only work from 1941 to 2057.
         # Unofficial, but observed by schools and most business holidays;
         # As such, no in-lieu observance are in place for these holidays.
+
+        # Laotian Lunar Calendar Holidays only work from 1941 to 2057.
+        if self._year <= 1940:
+            return None
 
         # ບຸນທາດຫລວງ
         # Status: In-Use, Unofficial.
