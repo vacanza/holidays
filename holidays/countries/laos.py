@@ -69,7 +69,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     # Lao New Year's Day (in-lieu)
     lao_new_year_in_lieu = tr("ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ")
 
-    special_holidays = {
+    special_public_holidays = {
         2016: (
             (APR, 12, lao_new_year_in_lieu),
             (APR, 13, lao_new_year_in_lieu),
@@ -127,7 +127,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE
         #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED
         #   - CASE 4: SUN-MON-TUE -> in-lieu on WED
-        if year >= 2018:
+        if self._year >= 2018:
             self._add_observed(
                 dt,
                 rule=THU_FRI_SAT_TO_NEXT_MON_TUE_WED + FRI_SAT_SUN_TO_NEXT_MON_TUE_WED,
