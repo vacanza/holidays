@@ -186,9 +186,12 @@ class TestVanuatu(TestCase):
         name = "Family Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1981, 2050)))
         dt = (
+            "2004-12-27",
             "2005-12-27",
+            "2010-12-27",
             "2011-12-27",
             "2016-12-27",
+            "2021-12-27",
             "2022-12-27",
         )
         self.assertHolidayName(f"{name} (Observed)", dt)
