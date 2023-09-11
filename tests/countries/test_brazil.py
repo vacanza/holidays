@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.brazil import Brazil, BR, BRA
 from tests.common import TestCase
 
@@ -22,7 +23,7 @@ class TestBrazil(TestCase):
         self.assertCountryAliases(Brazil, BR, BRA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Brazil(years=1889))
+        self.assertNoHolidays(Brazil(categories=(OPTIONAL, PUBLIC), years=1889))
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1890, 2050))
@@ -89,8 +90,8 @@ class TestBrazil(TestCase):
         self.assertNoHolidayName("Natal", range(1890, 1922))
 
     def test_optional_holidays(self):
-        self.assertHolidayName(
-            "Carnaval",
+        holidays = Brazil(categories=(OPTIONAL,))
+        dt = (
             "2018-02-12",
             "2018-02-13",
             "2019-03-04",
@@ -102,28 +103,32 @@ class TestBrazil(TestCase):
             "2022-02-28",
             "2022-03-01",
         )
+        self.assertHolidayName("Carnaval", holidays, dt)
+        self.assertNoHoliday(dt)
 
-        self.assertHolidayName(
-            "Início da Quaresma",
+        dt = (
             "2018-02-14",
             "2019-03-06",
             "2020-02-26",
             "2021-02-17",
             "2022-03-02",
         )
+        self.assertHolidayName("Início da Quaresma", holidays, dt)
+        self.assertNoHoliday(dt)
 
-        self.assertHolidayName(
-            "Corpus Christi",
+        dt = (
             "2018-05-31",
             "2019-06-20",
             "2020-06-11",
             "2021-06-03",
             "2022-06-16",
         )
+        self.assertHolidayName("Corpus Christi", holidays, dt)
+        self.assertNoHoliday(dt)
 
-        self.assertHoliday(f"{year}-10-28" for year in range(1950, 2050))
-        self.assertHoliday(f"{year}-12-24" for year in range(1950, 2050))
-        self.assertHoliday(f"{year}-12-31" for year in range(1950, 2050))
+        for year in range(1950, 2050):
+            self.assertHoliday(holidays, f"{year}-10-28", f"{year}-12-24", f"{year}-12-31")
+            self.assertNoHoliday(f"{year}-10-28", f"{year}-12-24", f"{year}-12-31")
 
     def test_AC_holidays(self):
         ac_holidays = Brazil(subdiv="AC", years=range(1995, 2030))

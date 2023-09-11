@@ -13,6 +13,7 @@ from datetime import timedelta as td
 from datetime import date
 
 from holidays.calendars.gregorian import JAN, MAR, SEP, NOV, FRI, _get_nth_weekday_from
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -57,37 +58,37 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SP",  # São Paulo
         "TO",  # Tocantins
     )
+    supported_categories = {OPTIONAL, PUBLIC}
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Decreto n. 155-B, de 14.01.1890
-        if year <= 1889:
+        if self._year <= 1889:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day("Confraternização Universal")
 
-        if 1892 <= year <= 1930:
+        if 1892 <= self._year <= 1930:
             # Republic Constitution Day.
             self._add_holiday_feb_24("Constituição da Republica")
 
         # Good Friday.
         self._add_good_friday("Sexta-feira Santa")
 
-        if year not in {1931, 1932}:
+        if self._year not in {1931, 1932}:
             # Tiradentes' Day.
             self._add_holiday_apr_21("Tiradentes")
 
-        if year >= 1925:
+        if self._year >= 1925:
             # Labor Day.
             self._add_labor_day("Dia do Trabalhador")
 
-        if year <= 1930:
+        if self._year <= 1930:
             # Discovery of Brazil.
             self._add_holiday_may_3("Descobrimento do Brasil")
 
@@ -100,7 +101,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_sep_7("Independência do Brasil")
 
-        if year <= 1930 or year >= 1980:
+        if self._year <= 1930 or self._year >= 1980:
             # Our Lady of Aparecida.
             self._add_holiday_oct_12("Nossa Senhora Aparecida")
 
@@ -110,11 +111,13 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Republic Proclamation Day.
         self._add_holiday_nov_15("Proclamação da República")
 
-        if year >= 1922:
+        if self._year >= 1922:
             # Christmas Day.
             self._add_christmas_day("Natal")
 
-        # Optional holidays
+    def _populate_optional_holidays(self):
+        if self._year <= 1889:
+            return None
 
         # Carnival.
         self._add_carnival_monday("Carnaval")
