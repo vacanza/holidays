@@ -16,8 +16,6 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
-    SAT_TO_NEXT_TUE,
-    SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
 )
@@ -25,7 +23,10 @@ from holidays.observed_holiday_base import (
 
 class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    - https://www.gov.uk/bank-holidays
+    - https://www.timeanddate.com/holidays/uk/
     """
 
     country = "GB"
@@ -133,7 +134,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_easter_monday("Easter Monday")
 
         # Battle of the Boyne
-        self._add_holiday_jul_12("Battle of the Boyne")
+        self._add_observed(self._add_holiday_jul_12("Battle of the Boyne"))
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
@@ -141,21 +142,20 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     def _add_subdiv_sct_holidays(self):
         # New Year's Day
-        jan_1 = self._add_new_years_day("New Year's Day")
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # New Year Holiday
         self._add_observed(
             self._add_new_years_day_two("New Year Holiday"),
-            rule=MON_TO_NEXT_TUE + SAT_SUN_TO_NEXT_MON,
+            rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
-        self._add_observed(jan_1, rule=SAT_TO_NEXT_TUE + SUN_TO_NEXT_MON)
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
 
         if self._year >= 2006:
             # St. Andrew's Day
-            self._add_holiday_nov_30("St. Andrew's Day")
+            self._add_observed(self._add_holiday_nov_30("St. Andrew's Day"))
 
         # Christmas Day
         self._add_observed(
