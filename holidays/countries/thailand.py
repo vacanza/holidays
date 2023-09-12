@@ -345,7 +345,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         #    (Except for 2020 due to Covid-19 outbreaks)
         # This has its own in-lieu trigger.
 
-        if 1948 <= self._year <= 1953 or (1957 <= self._year != 2020):
+        if 1948 <= self._year <= 1953 or 1957 <= self._year != 2020:
             # Songkran Festival.
             songkran_festival = tr("วันสงกรานต์")
             if 1957 <= self._year <= 1988:
