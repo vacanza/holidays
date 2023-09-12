@@ -129,8 +129,8 @@ To change the language translation, you can set the language explicitly.
 
 .. code-block:: python
 
-   >>> for date, name in sorted(holidays.ES(years=2023, lanuage="es").items()):
-   >>>     print(date, name)
+   >>> for dt, name in sorted(holidays.ES(years=2023, language="es").items()):
+   >>>     print(dt, name)
    2023-01-06 Epifanía del Señor
    2023-04-06 Jueves Santo
    2023-04-07 Viernes Santo
