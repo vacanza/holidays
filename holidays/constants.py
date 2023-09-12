@@ -37,6 +37,7 @@ from holidays.calendars.gregorian import (
 HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 
 # Supported holiday categories.
+ARMED_FORCES = "armed_forces"
 BANK = "bank"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
@@ -52,6 +53,7 @@ HINDU = "hindu"
 ISLAMIC = "islamic"
 
 ALL_CATEGORIES = {
+    ARMED_FORCES,
     BANK,
     CHINESE,
     CHRISTIAN,

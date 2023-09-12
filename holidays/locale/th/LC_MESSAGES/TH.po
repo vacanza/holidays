@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.24\n"
+"Project-Id-Version: Python Holidays 0.33\n"
 "POT-Creation-Date: 2023-03-02 00:37+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -80,6 +80,10 @@ msgstr ""
 msgid "วันสิ้นปี"
 msgstr ""
 
+#. National Children's Day
+msgid "วันเด็กแห่งชาติ"
+msgstr ""
+
 #. Chakri Memorial Day.
 msgid "วันจักรี"
 msgstr ""
@@ -100,6 +104,7 @@ msgstr ""
 msgid "วันฉัตรมงคล"
 msgstr ""
 
+#. HM Queen Suthida's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""
@@ -176,6 +181,60 @@ msgstr ""
 msgid "วันเข้าพรรษา"
 msgstr ""
 
+#. Royal Thai Armed Forces Day
+msgid "วันกองทัพไทย"
+msgstr ""
+
+#. Additional Closing Day for Bank for Agriculture and Agricultural
+#. Cooperatives
+msgid ""
+"วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+msgstr ""
+
+#. Mid-Year Closing Day
+msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+msgstr ""
+
 #. Royal Ploughing Ceremony.
 msgid "วันพืชมงคล"
+msgstr ""
+
+#. Teacher's Day
+msgid "วันครู"
+msgstr ""
+
+#. National Aviation Day
+msgid "วันการบินแห่งชาติ"
+msgstr ""
+
+#. National Forest Conservation Day
+msgid "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"
+msgstr ""
+
+#. National Artist Day
+msgid "วันศิลปินแห่งชาติ"
+msgstr ""
+
+#. International Women's Day
+msgid "วันสตรีสากล"
+msgstr ""
+
+#. Loy Krathong
+msgid "วันลอยกระทง"
+msgstr ""
+
+#. Thai Veterans Day
+msgid "วันทหารผ่านศึก"
+msgstr ""
+
+#. National Science Day
+msgid "วันวิทยาศาสตร์แห่งชาติ"
+msgstr ""
+
+#. HM King Ramkamhaeng Memorial Day
+msgid "วันพ่อขุนรามคำแหงมหาราช"
+msgstr ""
+
+#. Thai National Flag Day
+msgid "วันพระราชทานธงชาติไทย"
 msgstr ""
