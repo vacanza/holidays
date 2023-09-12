@@ -243,7 +243,7 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YT
+     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
      - ar, **en**, fr, th
    * - Chad
      - TD

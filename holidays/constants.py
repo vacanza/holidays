@@ -39,9 +39,9 @@ HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 # Supported holiday categories.
 ARMED_FORCES = "armed_forces"
 BANK = "bank"
-EXTENDED = "extended"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
+OPTIONAL = "optional"
 PUBLIC = "public"
 SCHOOL = "school"
 WORKDAY = "workday"
@@ -57,12 +57,12 @@ ALL_CATEGORIES = {
     BANK,
     CHINESE,
     CHRISTIAN,
-    EXTENDED,
     GOVERNMENT,
     HALF_DAY,
     HEBREW,
     HINDU,
     ISLAMIC,
+    OPTIONAL,
     PUBLIC,
     SCHOOL,
     WORKDAY,
