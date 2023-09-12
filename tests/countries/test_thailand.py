@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
 from holidays.countries.thailand import Thailand, TH, THA
 from tests.common import TestCase
 
@@ -100,12 +101,21 @@ class TestThailand(TestCase):
             "2023-07-31",
         )
 
-    def test_2022(self):
+    def test_2022_all(self):
         self.assertHolidays(
-            Thailand(years=2022),
+            Thailand(categories=(ARMED_FORCES, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY), years=2022),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-01-08", "วันเด็กแห่งชาติ"),
+            ("2022-01-13", "วันการบินแห่งชาติ"),
+            ("2022-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("2022-01-16", "วันครู"),
+            ("2022-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("2022-01-18", "วันกองทัพไทย"),
+            ("2022-02-03", "วันทหารผ่านศึก"),
             ("2022-02-16", "วันมาฆบูชา"),
+            ("2022-02-26", "วันศิลปินแห่งชาติ"),
+            ("2022-03-08", "วันสตรีสากล"),
             ("2022-04-06", "วันจักรี"),
             ("2022-04-13", "วันสงกรานต์"),
             ("2022-04-14", "วันสงกรานต์"),
@@ -132,6 +142,8 @@ class TestThailand(TestCase):
             ),
             ("2022-07-29", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-08-12", "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; วันแม่แห่งชาติ"),
+            ("2022-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("2022-09-28", "วันพระราชทานธงชาติไทย"),
             (
                 "2022-10-13",
                 (
@@ -142,6 +154,7 @@ class TestThailand(TestCase):
             ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-10-23", "วันปิยมหาราช"),
             ("2022-10-24", "ชดเชยวันปิยมหาราช"),
+            ("2022-11-08", "วันลอยกระทง"),
             (
                 "2022-12-05",
                 (
@@ -166,6 +179,33 @@ class TestThailand(TestCase):
             "2023-01-02",
             "2028-01-03",
         )
+
+    def test_national_childrens_day(self):
+        name = "วันเด็กแห่งชาติ"
+
+        dt = (
+            # First Iteration
+            "1955-10-03",
+            # Second and Current Iteration
+            "2010-01-09",
+            "2011-01-08",
+            "2012-01-14",
+            "2013-01-12",
+            "2014-01-11",
+            "2015-01-10",
+            "2016-01-09",
+            "2017-01-14",
+            "2018-01-13",
+            "2019-01-12",
+            "2020-01-11",
+            "2021-01-09",
+            "2022-01-08",
+            "2023-01-14",
+            "2024-01-13",
+            "2025-01-11",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, 1954, 1964)
 
     def test_chakri_memorial_day(self):
         self.assertHoliday(f"{year}-04-06" for year in range(1941, 2058))
@@ -561,33 +601,173 @@ class TestThailand(TestCase):
 
     def test_raeknakhwan(self):
         name = "วันพืชมงคล"
-        dt = (
-            "2011-05-13",
-            "2012-05-09",
-            "2013-05-13",
-            "2014-05-09",
-            "2015-05-13",
-            "2016-05-09",
-            "2017-05-12",
-            "2018-05-14",
-            "2019-05-09",
-            "2020-05-11",
-            "2021-05-13",
-            "2022-05-17",
-            "2023-05-11",
+        self.assertHolidays(
+            Thailand(categories=(GOVERNMENT,), years=range(1997, 2024)),
+            ("1997-05-13", name),
+            ("1998-05-13", name),
+            ("2000-05-15", name),
+            ("2001-05-16", name),
+            ("2002-05-09", name),
+            ("2003-05-08", name),
+            ("2004-05-07", name),
+            ("2005-05-11", name),
+            ("2006-05-11", name),
+            ("2007-05-10", name),
+            ("2008-05-09", name),
+            ("2009-05-11", name),
+            ("2010-05-10", name),
+            ("2011-05-13", name),
+            ("2012-05-09", name),
+            ("2013-05-13", name),
+            ("2014-05-09", name),
+            ("2015-05-13", name),
+            ("2016-05-09", name),
+            ("2017-05-12", name),
+            ("2018-05-14", name),
+            ("2019-05-09", name),
+            ("2020-05-11", name),
+            ("2021-05-13", name),
+            ("2022-05-17", name),
+            ("2023-05-11", name),
         )
-        self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, 1956, 1999)
 
-        self.assertHolidayName(name, (f"{year}-05-13" for year in range(1957, 1997)))
+    def test_armed_forces_holiday(self):
+        name = "วันกองทัพไทย"
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(1958, 1960)), ("1959-04-08", name)
+        )
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(1979, 1981)),
+            ("1979-04-08", name),
+            ("1980-01-25", name),
+        )
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(2006, 2008)),
+            ("2006-01-25", name),
+            ("2007-01-18", name),
+        )
 
-        # No Royal Ploughing Ceremony on weekend for 1997-2023
+    def test_bank_holiday(self):
+        a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+        m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+
+        # Start
+        self.assertHolidays(
+            Thailand(categories=(BANK,), years=range(1942, 1944)),
+            ("1943-04-01", a_name),
+            ("1943-07-01", m_name),
+        )
+        # End
+        self.assertHolidays(
+            Thailand(categories=(BANK,), years=range(2017, 2023)),
+            ("2017-04-01", a_name),
+            ("2017-07-01", m_name),
+            ("2018-04-01", a_name),
+            ("2018-07-01", m_name),
+            ("2019-04-01", a_name),
+            ("2020-04-01", a_name),
+            ("2021-04-01", a_name),
+        )
+
+    def test_school_holiday(self):
+        self.assertHolidays(
+            Thailand(categories=(SCHOOL,), years=range(1956, 1958)),
+            ("1957-01-16", "วันครู"),
+        )
+
+    def test_workday_1947(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1947),
+            ("1947-11-27", "วันลอยกระทง"),
+        )
+
+    def test_workday_1948(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1948),
+            ("1948-02-03", "วันทหารผ่านศึก"),
+            ("1948-11-15", "วันลอยกระทง"),
+        )
+
+    def test_workday_1982(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1982),
+            ("1982-02-03", "วันทหารผ่านศึก"),
+            ("1982-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1982-10-31", "วันลอยกระทง"),
+        )
+
+    def test_workday_1985(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1985),
+            ("1985-02-03", "วันทหารผ่านศึก"),
+            ("1985-02-26", "วันศิลปินแห่งชาติ"),
+            ("1985-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1985-11-26", "วันลอยกระทง"),
+        )
+
+    def test_workday_1989(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1989),
+            ("1989-02-03", "วันทหารผ่านศึก"),
+            ("1989-02-26", "วันศิลปินแห่งชาติ"),
+            ("1989-03-08", "วันสตรีสากล"),
+            ("1989-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1989-11-12", "วันลอยกระทง"),
+        )
+
+    def test_workday_1990(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1990),
+            ("1990-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("1990-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("1990-02-03", "วันทหารผ่านศึก"),
+            ("1990-02-26", "วันศิลปินแห่งชาติ"),
+            ("1990-03-08", "วันสตรีสากล"),
+            ("1990-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1990-11-02", "วันลอยกระทง"),
+        )
+
+    def test_workday_1995(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=1995),
+            ("1995-01-13", "วันการบินแห่งชาติ"),
+            ("1995-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("1995-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("1995-02-03", "วันทหารผ่านศึก"),
+            ("1995-02-26", "วันศิลปินแห่งชาติ"),
+            ("1995-03-08", "วันสตรีสากล"),
+            ("1995-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1995-11-06", "วันลอยกระทง"),
+        )
+
+    def test_workday_2017(self):
+        self.assertHolidays(
+            Thailand(categories=(WORKDAY,), years=2017),
+            ("2017-01-13", "วันการบินแห่งชาติ"),
+            ("2017-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("2017-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("2017-02-03", "วันทหารผ่านศึก"),
+            ("2017-02-26", "วันศิลปินแห่งชาติ"),
+            ("2017-03-08", "วันสตรีสากล"),
+            ("2017-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("2017-09-28", "วันพระราชทานธงชาติไทย"),
+            ("2017-11-03", "วันลอยกระทง"),
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-01-08", "วันเด็กแห่งชาติ"),
+            ("2022-01-13", "วันการบินแห่งชาติ"),
+            ("2022-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("2022-01-16", "วันครู"),
+            ("2022-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("2022-01-18", "วันกองทัพไทย"),
+            ("2022-02-03", "วันทหารผ่านศึก"),
             ("2022-02-16", "วันมาฆบูชา"),
+            ("2022-02-26", "วันศิลปินแห่งชาติ"),
+            ("2022-03-08", "วันสตรีสากล"),
             ("2022-04-06", "วันจักรี"),
             ("2022-04-13", "วันสงกรานต์"),
             ("2022-04-14", "วันสงกรานต์"),
@@ -614,6 +794,8 @@ class TestThailand(TestCase):
             ),
             ("2022-07-29", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-08-12", "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; วันแม่แห่งชาติ"),
+            ("2022-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("2022-09-28", "วันพระราชทานธงชาติไทย"),
             (
                 "2022-10-13",
                 (
@@ -624,6 +806,7 @@ class TestThailand(TestCase):
             ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-10-23", "วันปิยมหาราช"),
             ("2022-10-24", "ชดเชยวันปิยมหาราช"),
+            ("2022-11-08", "วันลอยกระทง"),
             (
                 "2022-12-05",
                 (
@@ -642,7 +825,16 @@ class TestThailand(TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (in lieu)"),
+            ("2022-01-08", "National Children's Day"),
+            ("2022-01-13", "National Aviation Day"),
+            ("2022-01-14", "National Forest Conservation Day"),
+            ("2022-01-16", "Teacher's Day"),
+            ("2022-01-17", "HM King Ramkamhaeng Memorial Day"),
+            ("2022-01-18", "Royal Thai Armed Forces Day"),
+            ("2022-02-03", "Thai Veterans Day"),
             ("2022-02-16", "Makha Bucha"),
+            ("2022-02-26", "National Artist Day"),
+            ("2022-03-08", "International Women's Day"),
             ("2022-04-06", "Chakri Memorial Day"),
             ("2022-04-13", "Songkran Festival"),
             ("2022-04-14", "Songkran Festival"),
@@ -663,10 +855,13 @@ class TestThailand(TestCase):
                 "2022-08-12",
                 "HM Queen Sirikit The Queen Mother's Birthday; National Mother's Day",
             ),
+            ("2022-08-18", "National Science Day"),
+            ("2022-09-28", "Thai National Flag Day"),
             ("2022-10-13", "HM King Bhumibol Adulyadej the Great Memorial Day"),
             ("2022-10-14", "Bridge Public Holiday"),
             ("2022-10-23", "HM King Chulalongkorn Memorial Day"),
             ("2022-10-24", "HM King Chulalongkorn Memorial Day (in lieu)"),
+            ("2022-11-08", "Loy Krathong"),
             (
                 "2022-12-05",
                 (
