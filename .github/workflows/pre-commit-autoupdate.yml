@@ -1,4 +1,4 @@
-name: Update pre-commit hooks
+name: Chores
 
 on:
   schedule:
@@ -7,9 +7,12 @@ on:
 
 jobs:
   auto-update:
-    runs-on: ubuntu-latest
+    name: Update pre-commit hooks
+    if: ${{ github.repository }} == "vacanza/python-holidays"
     permissions:
+      contents: write
       pull-requests: write
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4.7.0
@@ -18,7 +21,7 @@ jobs:
         with:
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           base: beta
-          body: Update versions of pre-commit hooks to latest version.
+          body: Update versions of pre-commit hooks to the latest version.
           branch: update/pre-commit-hooks
           commit-message: "Chore: Update pre-commit hooks"
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
