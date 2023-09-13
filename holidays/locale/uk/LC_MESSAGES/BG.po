@@ -68,6 +68,7 @@ msgstr "Святий вечір"
 msgid "Рождество Христово"
 msgstr "Різдво Христове"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (почивен ден)"
 msgstr "%s (вихідний)"
