@@ -13,9 +13,9 @@ from holidays.calendars.gregorian import JAN, JUL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
     SUN_TO_NEXT_MON,
     SUN_TO_NEXT_TUE,
-    MON_TO_NEXT_TUE,
 )
 
 

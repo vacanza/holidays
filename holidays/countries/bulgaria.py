@@ -56,12 +56,12 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2017, *args, **kwargs
         )
 
-    def _populate_observed(self, dts: Set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: Set[date], excluded_names: Set[str]) -> None:
         for dt in sorted(dts):
             if not self._is_observed(dt):
                 continue
             for name in self.get_list(dt):
-                if name not in self.excluded_names:
+                if name not in excluded_names:
                     self._add_observed(dt, name)
 
     def _populate_public_holidays(self):
@@ -124,8 +124,9 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         dts_observed.add(self._add_christmas_day_two(name))
 
         if self.observed:
-            self.excluded_names = {self.tr("Велика събота"), self.tr("Великден")}
-            self._populate_observed(dts_observed)
+            self._populate_observed(
+                dts_observed, excluded_names={self.tr("Велика събота"), self.tr("Великден")}
+            )
 
     def _populate_school_holidays(self):
         if self._year <= 1989:

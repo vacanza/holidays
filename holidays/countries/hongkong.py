@@ -17,9 +17,9 @@ from holidays.calendars.gregorian import JUL, AUG, SEP, MON, SUN, _get_nth_weekd
 from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SUN_TO_NEXT_WORKDAY,
-    MON_TO_NEXT_TUE,
     WORKDAY_TO_NEXT_WORKDAY,
+    MON_TO_NEXT_TUE,
+    SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_WORKDAY,
 )
 
