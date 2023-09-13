@@ -28,7 +28,7 @@ msgstr ""
 msgid "رأس السنة الأمازيغية"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "عيد العمال"
 msgstr ""
 
@@ -52,9 +52,7 @@ msgstr ""
 msgid "عيد المولد النبوي"
 msgstr ""
 
-#. As of April 30, 2023. Algeria has 3 days of Eid holidays
-#. (https://www.horizons.dz/english/archives/amp/12021) Eid al-Fitr - Feast
-#. Festive.
+#. Eid al-Fitr - Feast Festive.
 msgid "عيد الفطر"
 msgstr ""
 

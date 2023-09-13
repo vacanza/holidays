@@ -43,7 +43,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Amazigh New Year / Yennayer.
             self._add_holiday_jan_12(tr("رأس السنة الأمازيغية"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
         if year >= 1962:
@@ -65,6 +65,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # As of April 30, 2023. Algeria has 3 days of Eid holidays
         # (https://www.horizons.dz/english/archives/amp/12021)
+
         # Eid al-Fitr - Feast Festive.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
         # Eid al-Fitr Holiday.
