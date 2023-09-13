@@ -13,7 +13,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/python/black
-    rev: 23.7.0
+    rev: 23.9.1
     hooks:
       - id: black
         exclude: ^(docs)
@@ -50,7 +50,7 @@ repos:
       - id: rst-backticks
 
   - repo: https://github.com/myint/rstcheck
-    rev: v6.1.2
+    rev: v6.2.0
     hooks:
       - id: rstcheck
         additional_dependencies: [rstcheck, sphinx]
