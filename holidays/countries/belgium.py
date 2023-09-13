@@ -80,7 +80,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Vrijdag na O. L. H. Hemelvaart"), self._easter_sunday + td(days=+40))
 
         # Bank Holiday.
-        self._add_christmas_day_two(tr("Bank Holiday"))
+        self._add_christmas_day_two(tr("Banksluitingsdag"))
 
 
 class BE(Belgium):

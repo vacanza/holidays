@@ -75,7 +75,7 @@ class TestBelgium(TestCase):
             Belgium(categories=(BANK,), years=2022),
             ("2022-04-15", "Goede Vrijdag"),
             ("2022-05-27", "Vrijdag na O. L. H. Hemelvaart"),
-            ("2022-12-26", "Bank Holiday"),
+            ("2022-12-26", "Banksluitingsdag"),
         )
 
     def test_l10n_default(self):
@@ -94,7 +94,7 @@ class TestBelgium(TestCase):
             ("2022-11-01", "Allerheiligen"),
             ("2022-11-11", "Wapenstilstand"),
             ("2022-12-25", "Kerstmis"),
-            ("2022-12-26", "Bank Holiday"),
+            ("2022-12-26", "Banksluitingsdag"),
         )
 
     def test_l10n_de(self):
@@ -114,7 +114,7 @@ class TestBelgium(TestCase):
             ("2022-11-01", "Allerheiligen"),
             ("2022-11-11", "Waffenstillstand"),
             ("2022-12-25", "Weihnachten"),
-            ("2022-12-26", "Bank Holiday"),
+            ("2022-12-26", "Bankschlusstag"),
         )
 
     def test_l10n_en_us(self):
@@ -154,7 +154,7 @@ class TestBelgium(TestCase):
             ("2022-11-01", "Toussaint"),
             ("2022-11-11", "Jour de l'Armistice"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "Bank Holiday"),
+            ("2022-12-26", "Jour de fermeture bancaire"),
         )
 
     def test_l10n_uk(self):

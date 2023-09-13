@@ -73,5 +73,5 @@ msgid "Vrijdag na O. L. H. Hemelvaart"
 msgstr "Пʼятниця після Вознесіння Господнього"
 
 #. Bank Holiday.
-msgid "Bank Holiday"
+msgid "Banksluitingsdag"
 msgstr "Банківський вихідний"

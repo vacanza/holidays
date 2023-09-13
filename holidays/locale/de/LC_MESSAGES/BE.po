@@ -73,5 +73,5 @@ msgid "Vrijdag na O. L. H. Hemelvaart"
 msgstr "Freitag nach Christi Himmelfahrt"
 
 #. Bank Holiday.
-msgid "Bank Holiday"
-msgstr "Bank Holiday"
+msgid "Banksluitingsdag"
+msgstr "Bankschlusstag"
