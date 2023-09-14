@@ -45,7 +45,7 @@ Install
 
 The latest stable version can always be installed or updated via pip:
 
-.. code-block:: bash
+.. code-block:: shell
 
     $ pip install --upgrade holidays
 
@@ -705,7 +705,7 @@ Beta Version
 
 The latest development (beta) version can be installed directly from GitHub:
 
-.. code-block:: bash
+.. code-block:: shell
 
     $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
 
