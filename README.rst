@@ -140,7 +140,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Algeria
      - DZ
      -
-     - **ar**, en_US
+     - **ar**, en_US, fr
    * - American Samoa
      - AS
      - Can also be loaded as country US, subdivision AS
