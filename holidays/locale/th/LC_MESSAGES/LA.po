@@ -1,0 +1,53 @@
+# Laos holidays th localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.33\n"
+"POT-Creation-Date: 2023-09-11 15:10+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. %s (in lieu).
+#, c-format
+msgid "ພັກຊົດເຊີຍ%s"
+msgstr "ชดเชย%s"
+
+#. Lao New Year's Day (in-lieu)
+msgid "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"
+msgstr "ชดเชยวันปีใหม่ลาว"
+
+#. New Year's Day
+msgid "ວັນປີໃໝ່ສາກົນ"
+msgstr "วันปีใหม่สากล"
+
+#. International Women's Rights Day
+msgid "ວັນແມ່ຍິງສາກົນ"
+msgstr "วันสตรีสากล"
+
+#. Lao New Year's Day
+msgid "ບຸນປີໃໝ່ລາວ"
+msgstr "วันปีใหม่ลาว"
+
+#. Labor Day
+msgid "ວັນກຳມະກອນສາກົນ"
+msgstr "วันแรงงานสากล"
+
+#. International Children Day
+msgid "ວັນເດັກສາກົນ"
+msgstr "วันเด็กสากล"
+
+#. Lao National Day
+msgid "ວັນຊາດ"
+msgstr "วันชาติ สปป. ลาว"
+
+#. Boun That Luang Festival
+msgid "ບຸນທາດຫລວງ"
+msgstr "วันงานพระธาตุหลวง"
