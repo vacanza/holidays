@@ -1,7 +1,25 @@
 Version 0.33
 ============
 
-Released ???????? ??, ????
+Released September 18, 2023
+
+- Add merge queue support (#1464 by @arkid15r)
+- Introduce ObservedHolidays class (#1444 by @KJhellico, @arkid15r)
+- Update Algeria holidays: add fr localization (#1467 by @abh31000)
+- Fix README.rst (#1472 by @KJhellico)
+- Update Belgium holidays: add bank holidays (#1457 by @KJhellico)
+- Update Brazil holidays: specify optional holidays (#1452 by @KJhellico)
+- Update Canada holidays (#1448 by @KJhellico)
+- Update Liechtenstein holidays: specify bank holidays (#1462 by @KJhellico)
+- Update PR template (#1461 by @arkid15r)
+- Update Thailand holidays: add holiday categories (#1346 by @PPsyrius, @arkid15r, @KJhellico)
+- Update United Kingdom holidays (#1454 by @KJhellico)
+- Update documentation: add language usage example to examples.rst (#1456 by @jovana, @arkid15r, @KJhellico)
+- Update l10n files: fix ar, en_US headers (#1468 by @abh31000)
+- Update pre commit automatic update workflow (#1469 by @arkid15r)
+- Update skipIf rules for heavy tests (#1460 by @arkid15r)
+- Migrate remaining countries to ObservedHolidayBase (#1463 by @KJhellico)
+- Tune pre-commit auto-update workflow (#1473 by @arkid15r)
 
 Version 0.32
 ============
