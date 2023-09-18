@@ -5,4 +5,3 @@ recursive-include docs *
 recursive-include requirements *
 
 prune docs/build
-prune setup.cfg
