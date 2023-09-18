@@ -200,6 +200,13 @@ class TestSpain(TestCase):
             "2023-12-25",
         )
 
+    def test_islamic(self):
+        name = "Eid al-Adha"
+        ce_holidays = ES(subdiv="CE", years=2009)
+        ml_holidays = ES(subdiv="ML", years=2009)
+        self.assertNoHolidayName(name, ce_holidays)
+        self.assertNoHolidayName(name, ml_holidays)
+
     def _test_variable_days(self, year: int, subdiv_holidays: dict):
         observed_prov_holidays = {subdiv: ES(subdiv=subdiv) for subdiv in ES.subdivisions}
         for hol_date, hol_provs in subdiv_holidays.items():
