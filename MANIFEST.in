@@ -2,6 +2,8 @@ include CHANGES
 include CONTRIBUTING.rst
 include Makefile
 recursive-include docs *
+recursive-include holidays/locale *.po
+recursive-include holidays/locale *.mo
 recursive-include requirements *
 
 prune docs/build
