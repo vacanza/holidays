@@ -9,15 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/zambia/
     https://www.timeanddate.com/holidays/zambia/
@@ -26,6 +23,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "ZM"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2016: (
             (AUG, 11, "General elections and referendum"),
@@ -48,13 +46,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        # whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1965
@@ -95,10 +87,10 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_africa_day("Africa Freedom Day"))
 
         # Heroes' Day.
-        first_mon_of_july = self._add_holiday_1st_mon_of_jul("Heroes' Day")
+        self._add_holiday_1st_mon_of_jul("Heroes' Day")
 
         # Unity Day.
-        self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
+        self._add_holiday_1_day_past_1st_mon_of_jul("Unity Day")
 
         # Farmers' Day.
         self._add_holiday_1st_mon_of_aug("Farmers' Day")

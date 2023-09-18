@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
+"Project-Id-Version: Python Holidays 0.32\n"
 "POT-Creation-Date: 2023-04-10 14:10+0300\n"
-"PO-Revision-Date: 2023-04-10 14:11+0300\n"
+"PO-Revision-Date: 2023-08-26 18:23+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: fr\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observed)"
 msgstr "%s (Observé)"
@@ -52,8 +53,8 @@ msgstr "Boxing Day"
 msgid "Family Day"
 msgstr "Fête de la famille"
 
-#. Thanksgiving.
-msgid "Thanksgiving"
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
 msgstr "Action de grâce"
 
 #. Funeral of Queen Elizabeth II.
@@ -139,3 +140,11 @@ msgstr "Fête nationale du Québec"
 #. Saskatchewan Day.
 msgid "Saskatchewan Day"
 msgstr "Jour du Saskatchewan"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "Journée des Orangistes"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "Jour de la Fondation"

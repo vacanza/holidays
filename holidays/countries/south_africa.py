@@ -9,21 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
+class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     http://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
     """
 
     country = "ZA"
+    observed_label = "%s (Observed)"
     special_holidays = {
         1999: (
             (JUN, 2, "National and provincial government elections"),
@@ -51,13 +49,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday
-        if self.observed and self._is_sunday(dt) and self._year >= 1995:
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1995, *args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1910, with a few name changes

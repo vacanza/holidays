@@ -123,6 +123,25 @@ fly and the holiday list will be adjusted accordingly:
    >> date(2012, 1, 2) in us_holidays
    True
 
+Language support
+----------------
+To change the language translation, you can set the language explicitly.
+
+.. code-block:: python
+
+   >>> for dt, name in sorted(holidays.ES(years=2023, language="es").items()):
+   >>>     print(dt, name)
+   2023-01-06 Epifanía del Señor
+   2023-04-06 Jueves Santo
+   2023-04-07 Viernes Santo
+   2023-05-01 Día del Trabajador
+   2023-08-15 Asunción de la Virgen
+   2023-10-12 Día de la Hispanidad
+   2023-11-01 Todos los Santos
+   2023-12-06 Día de la Constitución Española
+   2023-12-08 La Inmaculada Concepción
+   2023-12-25 Navidad
+
 
 Date from holiday name
 ----------------------

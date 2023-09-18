@@ -25,6 +25,7 @@ msgstr "%d/%m/%Y"
 msgid "Вихідний день (перенесено з %s)"
 msgstr "يوم عطلة (استبدل من %s)"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (вихідний)"
 msgstr "(يوم عطلة) %s"

@@ -150,3 +150,20 @@ class TestAlgeria(TestCase):
             ("2022-10-08", "Prophet's Birthday* (*estimated)"),
             ("2022-11-01", "Revolution Day"),
         )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2022-01-01", "Nouvel an"),
+            ("2022-01-12", "Nouvel an Amazigh"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-02", "Fête de la rupture du jeûne* (*estimé)"),
+            ("2022-05-03", "Congé de fête de la rupture du jeûne* (*estimé)"),
+            ("2022-07-05", "Fête de l'indépendance"),
+            ("2022-07-09", "Fête du sacrifice* (*estimé)"),
+            ("2022-07-10", "Congé de fête du sacrifice* (*estimé)"),
+            ("2022-07-30", "Nouvel an musulman* (*estimé)"),
+            ("2022-08-08", "Achoura* (*estimé)"),
+            ("2022-10-08", "Anniversaire du prophète* (*estimé)"),
+            ("2022-11-01", "Fête de la Révolution"),
+        )

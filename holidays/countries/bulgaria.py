@@ -9,16 +9,17 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
+from datetime import date
 from gettext import gettext as tr
+from typing import Set
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Official holidays in Bulgaria in their current form. This class does not
     any return holidays before 1990, as holidays in the People's Republic of
@@ -43,13 +44,25 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BG"
     default_language = "bg"
+    # %s (Observed).
+    observed_label = tr("%s (почивен ден)")
     supported_categories = {PUBLIC, SCHOOL}
     supported_languages = ("bg", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2017, *args, **kwargs
+        )
+
+    def _populate_observed(self, dts: Set[date], excluded_names: Set[str]) -> None:
+        for dt in sorted(dts):
+            if not self._is_observed(dt):
+                continue
+            for name in self.get_list(dt):
+                if name not in excluded_names:
+                    self._add_observed(dt, name)
 
     def _populate_public_holidays(self):
         if self._year <= 1989:
@@ -110,19 +123,15 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
         dts_observed.add(self._add_christmas_day(name))
         dts_observed.add(self._add_christmas_day_two(name))
 
-        if self.observed and self._year >= 2017:
-            excluded_names = {self.tr("Велика събота"), self.tr("Великден")}
-            for dt in sorted(dts_observed):
-                if not self._is_weekend(dt):
-                    continue
-                dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                while dt_observed in self:
-                    dt_observed += td(days=+1)
-                for name in self.get_list(dt):
-                    if name not in excluded_names:
-                        self._add_holiday(self.tr("%s (почивен ден)") % name, dt_observed)
+        if self.observed:
+            self._populate_observed(
+                dts_observed, excluded_names={self.tr("Велика събота"), self.tr("Великден")}
+            )
 
     def _populate_school_holidays(self):
+        if self._year <= 1989:
+            return None
+
         # National Awakening Day.
         self._add_holiday_nov_1(tr("Ден на народните будители"))
 

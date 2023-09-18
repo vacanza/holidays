@@ -9,16 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Chad(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Chad
@@ -26,19 +23,16 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
     """
 
     country = "TD"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2021: (APR, 23, "Funeral of Idriss Déby Itno"),
     }
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=ChadIslamicCalendar())
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # On 11 August 1960, Chad gained independence from France.

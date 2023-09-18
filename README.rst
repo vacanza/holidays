@@ -45,7 +45,7 @@ Install
 
 The latest stable version can always be installed or updated via pip:
 
-.. code-block:: bash
+.. code-block:: shell
 
     $ pip install --upgrade holidays
 
@@ -140,7 +140,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Algeria
      - DZ
      -
-     - **ar**, en_US
+     - **ar**, en_US, fr
    * - American Samoa
      - AS
      - Can also be loaded as country US, subdivision AS
@@ -243,7 +243,7 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YT
+     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
      - ar, **en**, fr, th
    * - Chad
      - TD
@@ -705,7 +705,7 @@ Beta Version
 
 The latest development (beta) version can be installed directly from GitHub:
 
-.. code-block:: bash
+.. code-block:: shell
 
     $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
 

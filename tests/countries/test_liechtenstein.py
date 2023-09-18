@@ -10,14 +10,17 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
+from holidays.constants import BANK
 from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
 from tests.common import TestCase
 
 
-class TestLI(TestCase):
+class TestLiechtenstein(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Liechtenstein, years=range(1900, 2050))
+        years = range(1900, 2050)
+        super().setUpClass(Liechtenstein, years=years)
+        cls.bank_holidays = Liechtenstein(categories=(BANK,), years=years)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Liechtenstein, LI, LIE)
@@ -26,7 +29,12 @@ class TestLI(TestCase):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))
 
     def test_saint_berchtolds_day(self):
-        self.assertHolidayName("Berchtoldstag", (f"{year}-01-02" for year in range(1900, 2050)))
+        name = "Berchtoldstag"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-01-02" for year in range(1900, 2050))
+        )
+        self.assertNoHoliday(f"{year}-01-02" for year in range(1900, 2050))
+        self.assertNoHolidayName(name)
 
     def test_epiphany(self):
         self.assertHolidayName(
@@ -37,8 +45,8 @@ class TestLI(TestCase):
         self.assertHolidayName("Mariä Lichtmess", (f"{year}-02-02" for year in range(1900, 2050)))
 
     def test_shrove_tuesday(self):
-        self.assertHolidayName(
-            "Fasnachtsdienstag",
+        name = "Fasnachtsdienstag"
+        dt = (
             "1900-02-27",
             "1901-02-19",
             "1902-02-11",
@@ -50,13 +58,16 @@ class TestLI(TestCase):
             "2021-02-16",
             "2022-03-01",
         )
+        self.assertHolidayName(name, self.bank_holidays, dt)
+        self.assertNoHoliday(dt)
+        self.assertNoHolidayName(name)
 
     def test_saint_josephs_day(self):
         self.assertHolidayName("Josefstag", (f"{year}-03-19" for year in range(1900, 2050)))
 
     def test_good_friday(self):
-        self.assertHolidayName(
-            "Karfreitag",
+        name = "Karfreitag"
+        dt = (
             "1900-04-13",
             "1901-04-05",
             "1902-03-28",
@@ -68,6 +79,9 @@ class TestLI(TestCase):
             "2021-04-02",
             "2022-04-15",
         )
+        self.assertHolidayName(name, self.bank_holidays, dt)
+        self.assertNoHoliday(dt)
+        self.assertNoHolidayName(name)
 
     def test_easter(self):
         self.assertHolidayName(
@@ -175,7 +189,12 @@ class TestLI(TestCase):
         self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in range(1900, 2050)))
 
     def test_christmas_eve(self):
-        self.assertHolidayName("Heiligabend", (f"{year}-12-24" for year in range(1900, 2050)))
+        name = "Heiligabend"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-12-24" for year in range(1900, 2050))
+        )
+        self.assertNoHoliday(f"{year}-12-24" for year in range(1900, 2050))
+        self.assertNoHolidayName(name)
 
     def test_christmas_day(self):
         self.assertHolidayName("Weihnachten", (f"{year}-12-25" for year in range(1900, 2050)))
@@ -184,18 +203,20 @@ class TestLI(TestCase):
         self.assertHolidayName("Stefanstag", (f"{year}-12-26" for year in range(1900, 2050)))
 
     def test_new_years_eve(self):
-        self.assertHolidayName("Silvester", (f"{year}-12-31" for year in range(1900, 2050)))
+        name = "Silvester"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-12-31" for year in range(1900, 2050))
+        )
+        self.assertNoHoliday(f"{year}-12-31" for year in range(1900, 2050))
+        self.assertNoHolidayName(name)
 
     def test_2022(self):
         self.assertHolidays(
             Liechtenstein(years=2022),
             ("2022-01-01", "Neujahr"),
-            ("2022-01-02", "Berchtoldstag"),
             ("2022-01-06", "Heilige Drei Könige"),
             ("2022-02-02", "Mariä Lichtmess"),
-            ("2022-03-01", "Fasnachtsdienstag"),
             ("2022-03-19", "Josefstag"),
-            ("2022-04-15", "Karfreitag"),
             ("2022-04-17", "Ostersonntag"),
             ("2022-04-18", "Ostermontag"),
             ("2022-05-01", "Tag der Arbeit"),
@@ -207,9 +228,17 @@ class TestLI(TestCase):
             ("2022-09-08", "Mariä Geburt"),
             ("2022-11-01", "Allerheiligen"),
             ("2022-12-08", "Mariä Empfängnis"),
-            ("2022-12-24", "Heiligabend"),
             ("2022-12-25", "Weihnachten"),
             ("2022-12-26", "Stefanstag"),
+        )
+
+    def test_2022_bank(self):
+        self.assertHolidays(
+            Liechtenstein(categories=(BANK,), years=2022),
+            ("2022-01-02", "Berchtoldstag"),
+            ("2022-03-01", "Fasnachtsdienstag"),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-12-24", "Heiligabend"),
             ("2022-12-31", "Silvester"),
         )
 

@@ -34,9 +34,10 @@ Your PR description goes here.
 -->
 
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
+- [ ] I've added references to all holidays information sources used in this PR
 - [ ] This PR is filed against `beta` branch of the repository
 - [ ] This PR doesn't contain any merge conflicts and has clean commit history
-- [ ] The code style looks good: `make pre-commit`
+- [ ] The code style looks good: `make pre-commit` command generates no changes
 - [ ] All tests pass locally: `make test`, `make tox` (we strongly encourage adding tests to your code)
 - [ ] The related [documentation][docs] has been added/updated (check off the box for free if no updates is required)
 
