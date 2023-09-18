@@ -26,6 +26,7 @@ msgstr "%m/%d/%Y"
 msgid "Вихідний день (перенесено з %s)"
 msgstr "Day off (substituted from %s)"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (вихідний)"
 msgstr "%s (Observed)"

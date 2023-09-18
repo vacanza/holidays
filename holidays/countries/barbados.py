@@ -9,15 +9,17 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import JAN, JUL
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
-class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Barbados
     https://www.timeanddate.com/holidays/barbados/
@@ -40,14 +42,10 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         2023: (JUL, 31, "50th Anniversary of CARICOM Holiday"),
     }
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday(self.observed_label % self[dt], dt + td(days=days))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Public Holidays Act Cap.352, 1968-12-30
@@ -80,10 +78,8 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Emancipation Day
         name = "Emancipation Day"
-        self._add_observed(aug_1 := self._add_holiday_aug_1(name), days=+2)
-        # If Aug 1 is Kadooment Day.
-        if self.observed and self._is_monday(aug_1):
-            self._add_holiday(self.observed_label % name, aug_1 + td(days=+1))
+        # If Aug 1 is Kadooment Day (i.e. Monday), observed on Tuesday.
+        self._add_observed(self._add_holiday_aug_1(name), rule=SUN_TO_NEXT_TUE + MON_TO_NEXT_TUE)
 
         # Kadooment Day
         self._add_holiday_1st_mon_of_aug("Kadooment Day")
@@ -92,7 +88,7 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_nov_30("Independence Day"))
 
         # Christmas
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"))

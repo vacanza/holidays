@@ -9,15 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import JUL, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, MON_TO_NEXT_TUE
 
 
-class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu
     https://www.timeanddate.com/holidays/vanuatu/
@@ -41,11 +38,7 @@ class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday(self.observed_label % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # On 30 July 1980, Vanuatu gained independence from Britain and France.
@@ -95,10 +88,9 @@ class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day("Christmas Day")
 
         # Family Day.
-        name = "Family Day"
-        dec_26 = self._add_christmas_day_two(name)
-        if self.observed and self._is_monday(dec_26):
-            self._add_holiday(self.observed_label % name, dec_26 + td(days=+1))
+        self._add_observed(
+            self._add_christmas_day_two("Family Day"), rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE
+        )
 
 
 class VU(Vanuatu):

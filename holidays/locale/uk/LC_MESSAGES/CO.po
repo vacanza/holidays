@@ -88,6 +88,7 @@ msgstr "Свято Тіла і Крові Христових"
 msgid "Sagrado Corazón"
 msgstr "Свято Найсвятішого Серця Ісуса"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (вихідний)"

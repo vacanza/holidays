@@ -9,32 +9,26 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class BurkinaFaso(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso
     """
 
     country = "BF"
+    observed_label = "%s (Observed)"
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=BurkinaFasoIslamicCalendar())
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)

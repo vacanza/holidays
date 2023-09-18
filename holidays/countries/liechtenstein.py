@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -19,12 +20,14 @@ from holidays.holiday_base import HolidayBase
 class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Liechtenstein holidays.
-    See https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
-    for details.
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
+    - https://www.llb.li/en/contact/bank-holidays
     """
 
     country = "LI"
     default_language = "de"
+    supported_categories = {BANK, PUBLIC}
     supported_languages = ("de", "en_US", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
@@ -32,14 +35,9 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))
-
-        # Saint Berchtold's Day.
-        self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Epiphany.
         self._add_epiphany_day(tr("Heilige Drei Könige"))
@@ -47,14 +45,8 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Candlemas.
         self._add_candlemas(tr("Mariä Lichtmess"))
 
-        # Shrove Tuesday.
-        self._add_carnival_tuesday(tr("Fasnachtsdienstag"))
-
         # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Karfreitag"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Ostersonntag"))
@@ -89,14 +81,24 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Heiligabend"))
-
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
 
         # St. Stephen's Day.
         self._add_christmas_day_two(tr("Stefanstag"))
+
+    def _populate_bank_holidays(self):
+        # Saint Berchtold's Day.
+        self._add_new_years_day_two(tr("Berchtoldstag"))
+
+        # Shrove Tuesday.
+        self._add_carnival_tuesday(tr("Fasnachtsdienstag"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Karfreitag"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Heiligabend"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))

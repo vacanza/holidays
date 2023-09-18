@@ -9,15 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Montenegro(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
@@ -27,22 +24,19 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "ME"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days))
+        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
         name = "New Year's Day"
-        self._add_observed(self._add_new_years_day(name), days=+2)
+        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two(name))
 
         # Orthodox Christmas Eve.
@@ -53,7 +47,7 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labour Day.
         name = "Labour Day"
-        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_labor_day_two(name))
 
         # Good Friday.
@@ -67,15 +61,13 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Independence Day.
         name = "Independence Day"
-        may_21 = self._add_holiday_may_21(name)
-        self._add_observed(may_21, days=+2)
-        self._add_observed(self._add_holiday(name, may_21 + td(days=+1)))
+        self._add_observed(self._add_holiday_may_21(name), rule=SUN_TO_NEXT_TUE)
+        self._add_observed(self._add_holiday_may_22(name))
 
         # Statehood Day.
         name = "Statehood Day"
-        jul_13 = self._add_holiday_jul_13(name)
-        self._add_observed(jul_13, days=+2)
-        self._add_observed(self._add_holiday(name, jul_13 + td(days=+1)))
+        self._add_observed(self._add_holiday_jul_13(name), rule=SUN_TO_NEXT_TUE)
+        self._add_observed(self._add_holiday_jul_14(name))
 
 
 class ME(Montenegro):

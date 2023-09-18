@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 
-from holidays.constants import SCHOOL
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
 from tests.common import TestCase
 
@@ -24,7 +24,7 @@ class TestBulgaria(TestCase):
         self.assertCountryAliases(Bulgaria, BG, BLG)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Bulgaria(years=1989))
+        self.assertNoHolidays(Bulgaria(categories=(PUBLIC, SCHOOL), years=1989))
 
     def test_new_years_day(self):
         name = "Нова година"

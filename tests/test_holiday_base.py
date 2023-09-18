@@ -705,12 +705,15 @@ class TestPopNamed(unittest.TestCase):
 
 
 class TestRepr(unittest.TestCase):
-    def test_country(self):
-        hb = CountryStub1()
-        self.assertEqual(repr(hb), "holidays.country_holidays('CS1')")
+    def test_base(self):
+        self.assertEqual(repr(HolidayBase()), "holidays.HolidayBase()")
 
-        hb = CountryStub1(subdiv="Subdiv1")
-        self.assertEqual(repr(hb), "holidays.country_holidays('CS1', subdiv='Subdiv1')")
+    def test_country(self):
+        self.assertEqual(repr(CountryStub1()), "holidays.country_holidays('CS1')")
+        self.assertEqual(
+            repr(CountryStub1(subdiv="Subdiv1")),
+            "holidays.country_holidays('CS1', subdiv='Subdiv1')",
+        )
 
     def test_market(self):
         self.assertEqual(repr(MarketStub1()), "holidays.financial_holidays('MS1')")

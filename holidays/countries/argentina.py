@@ -9,30 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    MON,
-    _get_nth_weekday_from,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    THU_TO_NEXT_MON,
+    TUE_WED_TO_PREV_MON,
+    THU_FRI_TO_NEXT_MON,
+)
 
 
-class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Argentina.
@@ -69,11 +58,20 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         https://servicios.lanacion.com.ar/app-mobile/feriados/2017
         https://servicios.lanacion.com.ar/app-mobile/feriados/2016
         https://servicios.lanacion.com.ar/app-mobile/feriados/2015
+
+        Movable Holidays Laws:
+    - Decreto 1584/2010: 2010-11-03
+        - AUG 17, OCT 12, NOV 20 Holidays will always be on MON
+    - Decreto 52/2017: 2017-01-23 (Reconfirmed in Ley 27399)
+        - If TUE/WED - observed on previous MON
+        - If THU/FRI - observed on next MON
     """
 
     country = "AR"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
+    # %s (Observed).
+    observed_label = tr("%s (Observado)")
 
     # Special Bridge Holidays are given upto 3 days a year
     # as long as it's declared 50 days before calendar year's end
@@ -166,27 +164,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _move_holiday(self, dt: date) -> None:
-        """
-         Movable Holidays Laws:
-        - Decreto 1584/2010: 2010-11-03
-            - AUG 17, OCT 12, NOV 20 Holidays will always be on MON
-        - Decreto 52/2017: 2017-01-23 (Reconfirmed in Ley 27399)
-            - If TUE/WED - observed on previous MON
-            - If THU/FRI - observed on next MON
-        """
-        if self.observed:
-            dt_observed = None
-            if self._is_tuesday(dt) or self._is_wednesday(dt):
-                dt_observed = _get_nth_weekday_from(-1, MON, dt)
-            elif self._is_thursday(dt) or self._is_friday(dt):
-                dt_observed = _get_nth_weekday_from(+1, MON, dt)
-
-            if dt_observed:
-                self._add_holiday(self.tr("%s (Observado)") % self[dt], dt_observed)
-                self.pop(dt)
+        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -301,8 +279,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
             # but Jun 20 is Gen. Belgrano holiday
-            if not self._is_friday(jun_17):
-                self._move_holiday(jun_17)
+            self._move_holiday(jun_17, rule=TUE_WED_TO_PREV_MON + THU_TO_NEXT_MON)
 
         # Status: In-Use.
         # Started in 1938 via Ley 12387 on Aug 17.

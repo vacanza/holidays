@@ -32,6 +32,7 @@ msgid ""
 msgstr ""
 "День здобуття збірною Латвії з хокею бронзової медалі Чемпіонату світу"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (brīvdiena)"
 msgstr "%s (вихідний)"

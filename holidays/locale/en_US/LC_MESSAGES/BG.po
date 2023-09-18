@@ -66,6 +66,7 @@ msgstr "Christmas Eve"
 msgid "Рождество Христово"
 msgstr "Christmas Day"
 
+#. %s (Observed).
 #, c-format
 msgid "%s (почивен ден)"
 msgstr "%s (Observed)"
