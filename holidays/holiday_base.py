@@ -751,7 +751,7 @@ class HolidayBase(Dict[date, str]):
         self._add_substituted_holidays()
 
     def _populate_categories(self):
-        for category in self.categories:
+        for category in sorted(self.categories):
             # Populate items from the special holidays list for all categories.
             special_category_holidays = getattr(self, f"special_{category}_holidays", None)
             if special_category_holidays:
