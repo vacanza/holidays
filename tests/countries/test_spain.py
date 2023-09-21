@@ -21,10 +21,22 @@ class TestSpain(TestCase):
     def setUpClass(cls):
         super().setUpClass(Spain)
 
+    def _assertVariableDays(self, year: int, subdiv_holidays: dict):
+        observed_prov_holidays = {subdiv: ES(subdiv=subdiv) for subdiv in ES.subdivisions}
+        for hol_date, hol_provs in subdiv_holidays.items():
+            dt = date(year, *hol_date)
+            for subdiv, prov_holidays in observed_prov_holidays.items():
+                self.assertEqual(
+                    dt in prov_holidays,
+                    subdiv in hol_provs,
+                    f"Failed date `{dt:%Y-%m-%d}`, "
+                    f"province `{subdiv}`: {', '.join(hol_provs)}",
+                )
+
     def test_country_aliases(self):
         self.assertCountryAliases(Spain, ES, ESP)
 
-    def test_fix_days_in_2010(self):
+    def test_fixed_holidays_2010(self):
         self.assertNonObservedHoliday(
             "2010-01-01",
             "2010-01-06",
@@ -37,7 +49,7 @@ class TestSpain(TestCase):
             "2010-12-25",
         )
 
-    def test_fix_days_in_2011(self):
+    def test_fixed_holidays_2011(self):
         self.assertNonObservedHoliday(
             "2011-01-01",
             "2011-01-06",
@@ -49,7 +61,7 @@ class TestSpain(TestCase):
             "2011-12-08",
         )
 
-    def test_fix_days_in_2012(self):
+    def test_fixed_holidays_2012(self):
         self.assertNonObservedHoliday(
             "2012-01-06",
             "2012-04-06",
@@ -62,7 +74,7 @@ class TestSpain(TestCase):
             "2012-12-25",
         )
 
-    def test_fix_days_in_2013(self):
+    def test_fixed_holidays_2013(self):
         self.assertNonObservedHoliday(
             "2013-01-01",
             "2013-03-29",
@@ -74,7 +86,7 @@ class TestSpain(TestCase):
             "2013-12-25",
         )
 
-    def test_fix_days_in_2014(self):
+    def test_fixed_holidays_2014(self):
         self.assertNonObservedHoliday(
             "2014-01-01",
             "2014-01-06",
@@ -87,7 +99,7 @@ class TestSpain(TestCase):
             "2014-12-25",
         )
 
-    def test_fix_days_in_2015(self):
+    def test_fixed_holidays_2015(self):
         self.assertNonObservedHoliday(
             "2015-01-01",
             "2015-01-06",
@@ -99,7 +111,7 @@ class TestSpain(TestCase):
             "2015-12-25",
         )
 
-    def test_fix_days_in_2016(self):
+    def test_fixed_holidays_2016(self):
         self.assertNonObservedHoliday(
             "2016-01-01",
             "2016-01-06",
@@ -111,7 +123,7 @@ class TestSpain(TestCase):
             "2016-12-08",
         )
 
-    def test_fix_days_in_2017(self):
+    def test_fixed_holidays_2017(self):
         self.assertNonObservedHoliday(
             "2017-01-06",
             "2017-04-14",
@@ -124,7 +136,7 @@ class TestSpain(TestCase):
             "2017-12-25",
         )
 
-    def test_fix_days_in_2018(self):
+    def test_fixed_holidays_2018(self):
         self.assertNonObservedHoliday(
             "2018-01-01",
             "2018-01-06",
@@ -138,7 +150,7 @@ class TestSpain(TestCase):
             "2018-12-25",
         )
 
-    def test_fix_days_in_2019(self):
+    def test_fixed_holidays_2019(self):
         self.assertNonObservedHoliday(
             "2019-01-01",
             "2019-04-19",
@@ -150,7 +162,7 @@ class TestSpain(TestCase):
             "2019-12-25",
         )
 
-    def test_fix_days_in_2020(self):
+    def test_fixed_holidays_2020(self):
         self.assertNonObservedHoliday(
             "2020-01-01",
             "2020-01-06",
@@ -162,7 +174,7 @@ class TestSpain(TestCase):
             "2020-12-25",
         )
 
-    def test_fix_days_in_2021(self):
+    def test_fixed_holidays_2021(self):
         self.assertNonObservedHoliday(
             "2021-01-01",
             "2021-01-06",
@@ -175,7 +187,7 @@ class TestSpain(TestCase):
             "2021-12-25",
         )
 
-    def test_fix_days_in_2022(self):
+    def test_fixed_holidays_2022(self):
         self.assertNonObservedHoliday(
             "2022-01-01",
             "2022-01-06",
@@ -187,7 +199,7 @@ class TestSpain(TestCase):
             "2022-12-08",
         )
 
-    def test_fix_days_in_2023(self):
+    def test_fixed_holidays_2023(self):
         self.assertNonObservedHoliday(
             "2023-01-06",
             "2023-04-07",
@@ -202,24 +214,12 @@ class TestSpain(TestCase):
 
     def test_islamic(self):
         name = "Eid al-Adha"
-        ce_holidays = ES(subdiv="CE", years=2009)
-        ml_holidays = ES(subdiv="ML", years=2009)
+        ce_holidays = Spain(subdiv="CE", years=2009)
+        ml_holidays = Spain(subdiv="ML", years=2009)
         self.assertNoHolidayName(name, ce_holidays)
         self.assertNoHolidayName(name, ml_holidays)
 
-    def _test_variable_days(self, year: int, subdiv_holidays: dict):
-        observed_prov_holidays = {subdiv: ES(subdiv=subdiv) for subdiv in ES.subdivisions}
-        for hol_date, hol_provs in subdiv_holidays.items():
-            dt = date(year, *hol_date)
-            for subdiv, prov_holidays in observed_prov_holidays.items():
-                self.assertEqual(
-                    dt in prov_holidays,
-                    subdiv in hol_provs,
-                    f"Failed date `{dt:%Y-%m-%d}`, "
-                    f"province `{subdiv}`: {', '.join(hol_provs)}",
-                )
-
-    def test_variable_days_in_2010(self):
+    def test_variable_holidays_2010(self):
         province_days = {
             (MAR, 1): {"AN", "IB"},
             (MAR, 19): {"CL", "CM", "EX", "GA", "MC", "MD", "ML", "NC", "PV", "RI", "VC"},
@@ -258,9 +258,9 @@ class TestSpain(TestCase):
             (OCT, 9): {"VC"},
             (NOV, 17): {"CE", "ML"},
         }
-        self._test_variable_days(2010, province_days)
+        self._assertVariableDays(2010, province_days)
 
-    def test_variable_days_in_2011(self):
+    def test_variable_holidays_2011(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
@@ -303,9 +303,9 @@ class TestSpain(TestCase):
             (NOV, 7): {"CE", "ML"},
             (DEC, 26): {"AN", "AR", "AS", "CE", "CL", "CN", "CT", "EX", "IB", "ML", "NC"},
         }
-        self._test_variable_days(2011, province_days)
+        self._assertVariableDays(2011, province_days)
 
-    def test_variable_days_in_2012(self):
+    def test_variable_holidays_2012(self):
         province_days = {
             (JAN, 2): {"AN", "AR", "AS", "CE", "EX"},
             (FEB, 28): {"AN"},
@@ -348,9 +348,9 @@ class TestSpain(TestCase):
             (OCT, 27): {"CE"},
             (DEC, 26): {"CT"},
         }
-        self._test_variable_days(2012, province_days)
+        self._assertVariableDays(2012, province_days)
 
-    def test_variable_days_in_2013(self):
+    def test_variable_holidays_2013(self):
         province_days = {
             (JAN, 7): {
                 "AN",
@@ -407,9 +407,9 @@ class TestSpain(TestCase):
             (DEC, 9): {"AN", "AR", "AS", "CE", "CL", "EX", "MC", "RI"},
             (DEC, 26): {"CT", "IB"},
         }
-        self._test_variable_days(2013, province_days)
+        self._assertVariableDays(2013, province_days)
 
-    def test_variable_days_in_2014(self):
+    def test_variable_holidays_2014(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
@@ -452,9 +452,9 @@ class TestSpain(TestCase):
             (OCT, 25): {"PV"},
             (DEC, 26): {"CT", "IB"},
         }
-        self._test_variable_days(2014, province_days)
+        self._assertVariableDays(2014, province_days)
 
-    def test_variable_days_in_2015(self):
+    def test_variable_holidays_2015(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 19): {"MC", "MD", "ML", "NC", "PV", "VC"},
@@ -495,9 +495,9 @@ class TestSpain(TestCase):
             (DEC, 7): {"AN", "AR", "AS", "CE", "CL", "CM", "EX", "IB", "MC", "ML", "RI", "VC"},
             (DEC, 26): {"CT"},
         }
-        self._test_variable_days(2015, province_days)
+        self._assertVariableDays(2015, province_days)
 
-    def test_variable_days_in_2016(self):
+    def test_variable_holidays_2016(self):
         province_days = {
             (FEB, 29): {"AN"},
             (MAR, 1): {"IB"},
@@ -557,9 +557,9 @@ class TestSpain(TestCase):
                 "VC",
             },
         }
-        self._test_variable_days(2016, province_days)
+        self._assertVariableDays(2016, province_days)
 
-    def test_variable_days_in_2017(self):
+    def test_variable_holidays_2017(self):
         province_days = {
             (JAN, 2): {"AN", "AR", "AS", "CL", "MC", "ML"},
             (FEB, 28): {"AN"},
@@ -604,9 +604,9 @@ class TestSpain(TestCase):
             (OCT, 9): {"VC"},
             (DEC, 26): {"CT"},
         }
-        self._test_variable_days(2017, province_days)
+        self._assertVariableDays(2017, province_days)
 
-    def test_variable_days_in_2018(self):
+    def test_variable_holidays_2018(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
@@ -645,9 +645,9 @@ class TestSpain(TestCase):
             (OCT, 9): {"VC"},
             (DEC, 26): {"CT"},
         }
-        self._test_variable_days(2018, province_days)
+        self._assertVariableDays(2018, province_days)
 
-    def test_variable_days_in_2019(self):
+    def test_variable_holidays_2019(self):
         province_days = {
             (JAN, 7): {"AN", "AR", "AS", "CE", "CL", "CN", "EX", "MC", "MD", "ML", "NC"},
             (FEB, 28): {"AN"},
@@ -690,9 +690,9 @@ class TestSpain(TestCase):
             (DEC, 9): {"AN", "AR", "AS", "CB", "CL", "EX", "MD", "ML", "RI"},
             (DEC, 26): {"CT", "IB"},
         }
-        self._test_variable_days(2019, province_days)
+        self._assertVariableDays(2019, province_days)
 
-    def test_variable_days_in_2020(self):
+    def test_variable_holidays_2020(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 13): {"ML"},
@@ -749,9 +749,9 @@ class TestSpain(TestCase):
             },
             (DEC, 26): {"CT", "IB"},
         }
-        self._test_variable_days(2020, province_days)
+        self._assertVariableDays(2020, province_days)
 
-    def test_variable_days_in_2021(self):
+    def test_variable_holidays_2021(self):
         province_days = {
             (MAR, 1): {"AN", "IB"},
             (MAR, 13): {"ML"},
@@ -793,9 +793,9 @@ class TestSpain(TestCase):
             (SEP, 15): {"CB"},
             (OCT, 9): {"VC"},
         }
-        self._test_variable_days(2021, province_days)
+        self._assertVariableDays(2021, province_days)
 
-    def test_variable_days_in_2022(self):
+    def test_variable_holidays_2022(self):
         province_days = {
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
@@ -858,9 +858,9 @@ class TestSpain(TestCase):
                 "RI",
             },
         }
-        self._test_variable_days(2022, province_days)
+        self._assertVariableDays(2022, province_days)
 
-    def test_variable_days_in_2023(self):
+    def test_variable_holidays_2023(self):
         province_days = {
             (JAN, 2): {"AN", "AR", "AS", "CL", "MC"},
             (FEB, 21): {"EX"},
@@ -906,4 +906,4 @@ class TestSpain(TestCase):
             (OCT, 9): {"VC"},
             (DEC, 26): {"CT"},
         }
-        self._test_variable_days(2023, province_days)
+        self._assertVariableDays(2023, province_days)

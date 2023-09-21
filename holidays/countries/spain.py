@@ -22,7 +22,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     References:
      - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
 
-     Fiestas laborales:
+     Labor Holidays:
      2010: https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477
      2011: https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722
      2012: https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116
@@ -93,7 +93,6 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if year not in {2015, 2020}:
             self._add_all_saints_day("Todos los Santos")
 
-        if year not in {2015, 2020}:
             self._add_holiday_dec_6("Día de la Constitución Española")
 
         if year not in {2013, 2019}:
@@ -546,14 +545,14 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
-        if self._year in {2010, 2012, 2014, 2015} or 2019 <= self._year <= 2021:
+        if self._year in {2010, 2012, 2014, 2015, 2019, 2020, 2021}:
             self._add_saint_josephs_day("San José")
 
         self._add_holy_thursday("Jueves Santo")
 
         self._add_easter_monday("Lunes de Pascua")
 
-        if self._year in {2011, 2013} or 2015 <= self._year <= 2017 or self._year >= 2022:
+        if self._year in {2011, 2013, 2015, 2016, 2017} or self._year >= 2022:
             self._add_saint_james_day("Santiago Apóstol")
 
         if self._year == 2020:
@@ -563,7 +562,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
     def _add_subdiv_pv_holidays(self):
-        if self._year in {2010, 2015} or 2019 <= self._year <= 2021:
+        if self._year in {2010, 2015, 2019, 2020, 2021}:
             self._add_saint_josephs_day("San José")
 
         self._add_holy_thursday("Jueves Santo")
