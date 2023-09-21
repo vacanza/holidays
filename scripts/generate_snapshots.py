@@ -40,24 +40,19 @@ class SnapshotGenerator:
     @staticmethod
     def update_snapshot(snapshot, data):
         for dt, name in data.items():
-            if dt in snapshot:
-                existing_names = set(snapshot[dt].split(HOLIDAY_NAME_DELIMITER))
-                existing_names.update(name.split(HOLIDAY_NAME_DELIMITER))
-                name = HOLIDAY_NAME_DELIMITER.join(sorted(existing_names))
-
-            snapshot[dt] = name
+            holiday_names = set(
+                snapshot[dt].split(HOLIDAY_NAME_DELIMITER) if dt in snapshot else ()
+            )
+            holiday_names.update(name.split(HOLIDAY_NAME_DELIMITER))
+            snapshot[dt] = HOLIDAY_NAME_DELIMITER.join(sorted(holiday_names))
 
     def generate_country_snapshots(self):
         """Generates country snapshots."""
         for country_code in list_supported_countries():
             country = getattr(holidays, country_code)
-            snapshot = holidays.country_holidays(
-                country_code,
-                years=self.years,
-                categories=country.supported_categories,
-                language="en_US",
-            )
-            for subdiv in country.subdivisions:
+            snapshot = {}
+
+            for subdiv in (None,) + country.subdivisions:
                 self.update_snapshot(
                     snapshot,
                     holidays.country_holidays(
