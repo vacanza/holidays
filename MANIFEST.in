@@ -1,8 +1,11 @@
 include CHANGES
-include holidays/py.typed
+include CONTRIBUTING.rst
+include Makefile
+
 recursive-include docs *
-recursive-include holidays *.py
 recursive-include holidays/locale *.mo
 recursive-include holidays/locale *.po
-recursive-include scripts/l10n *.py
-recursive-include tests *.py
+recursive-include requirements *
+
+prune docs/build
+prune tests

@@ -579,12 +579,12 @@ class HolidayBase(Dict[date, str]):
             parts.append(f"holidays.financial_holidays({self.market!r}")
             parts.append(")")
         elif hasattr(self, "country"):
-            if parts:
-                parts.append(" + ")
             parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
                 parts.append(f", subdiv={self.subdiv!r}")
             parts.append(")")
+        else:
+            parts.append("holidays.HolidayBase()")
 
         return "".join(parts)
 

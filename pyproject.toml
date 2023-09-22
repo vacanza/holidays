@@ -1,18 +1,67 @@
+[project]
+name = "holidays"
+version = "0.34"
+description = "Generate and work with holidays in Python"
+license = { file = "LICENSE" }
+readme = "README.rst"
+requires-python = ">=3.8"
+
+authors = [{ email = "dr.prodigy.github@gmail.com", name = "Maurizio Montel" }]
+dependencies = ["python-dateutil"]
+classifiers = [
+    "Classifier: Development Status :: 4 - Beta",
+    "Classifier: Intended Audience :: Developers",
+    "Classifier: License :: OSI Approved :: MIT License",
+    "Classifier: Operating System :: OS Independent",
+    "Classifier: Programming Language :: Python",
+    "Classifier: Programming Language :: Python :: 3",
+    "Classifier: Programming Language :: Python :: 3 :: Only",
+    "Classifier: Programming Language :: Python :: Implementation :: CPython",
+    "Classifier: Programming Language :: Python :: Implementation :: PyPy",
+    "Classifier: Topic :: Office/Business :: Scheduling",
+    "Classifier: Topic :: Software Development :: Libraries :: Python Modules",
+    "Classifier: Topic :: Software Development :: Localization",
+]
+keywords = ["holidays", "calendar", "l10n"]
+maintainers = [{ email = "ark@cho.red", name = "Arkadii Yakovets" }]
+
+[project.urls]
+Repository = "https://github.com/vacanza/python-holidays/"
+Documentation = "https://python-holidays.readthedocs.io/en/latest/"
+Changelog = "https://github.com/vacanza/python-holidays/releases"
+Downloads = "https://pypi.org/project/holidays/"
+
 [tool.black]
 line-length = 99
-target-version = ['py38', 'py39', 'py310', 'py311']
+target-version = ["py38", "py39", "py310", "py311"]
 
 [tool.coverage.run]
 branch = true
-omit = ['scripts/*', 'setup.py', 'tests/*']
-
-[tool.coverage.report]
-exclude_lines = ['def __repr__', 'pragma: no cover']
+omit = ["scripts/*", "setup.py", "tests/*"]
 
 [tool.isort]
-known_first_party = ['holidays', 'tests']
+known_first_party = ["holidays", "tests"]
 line_length = 99
 multi_line_output = 3
 no_inline_sort = true
-profile = 'black'
-skip = ['docs']
+profile = "black"
+skip = ["docs"]
+
+
+[tool.mypy]
+strict = false
+
+[[tool.mypy.overrides]]
+module = "holidays.countries.*"
+disable_error_code = ["override"]
+
+[[tool.mypy.overrides]]
+module = "holidays.groups.*"
+disable_error_code = "attr-defined"
+
+[tool.rstcheck]
+ignore_directives = ["automodule"]
+ignore_languages = ["python"]
+
+[tool.setuptools.packages.find]
+include = ["holidays*"]
