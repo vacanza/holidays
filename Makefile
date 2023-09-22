@@ -50,6 +50,9 @@ setup:
 	pre-commit install --hook-type pre-push
 	make l10n
 
+snapshot:
+	scripts/generate_snapshots.py
+
 test:
 	scripts/l10n/generate_mo_files.py
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report lcov --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
