@@ -45,6 +45,48 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.asarnha_bucha_date(self._year, calendar)
         )
 
+    def _add_boun_haw_khao_padapdin(self, name) -> Optional[date]:
+        """
+        Add Boun Haw Khao Padapdin.
+
+        Boun Haw Khao Padapdin (also known as Rice Growing Festival)
+        is a Buddhist festival celebrated on the 14th Waning Day of Month 9.
+
+        https://www.timsthailand.com/boon-khao-pradap-din/
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self._thai_calendar.boun_haw_khao_padapdin_date(self._year)
+        )
+
+    def _add_boun_haw_khao_salark(self, name) -> Optional[date]:
+        """
+        Add Boun Haw Khao Salark.
+
+        Boun Haw Khao Salark (also known as Ancestor Festival)
+        is a Buddhist festival celebrated on the 15th Waxing Day of Month 10.
+
+        https://www.timsthailand.com/boon-khao-sak/
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self._thai_calendar.boun_haw_khao_salark_date(self._year)
+        )
+
+    def _add_boun_suang_heua(self, name) -> Optional[date]:
+        """
+        Add Boun Suang Huea.
+
+        Boun Suang Huea Nakhone Luang Prabang (also known as Vientiane Boat Racing Festival)
+        is a Buddhist festival celebrated on the 1st Waning Day of Month 11.
+
+        https://sonasia-holiday.com/sonabee/laos-boat-racing-festival
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self._thai_calendar.boun_suang_heua_date(self._year)
+        )
+
     def _add_khao_phansa(self, name, calendar=None) -> Optional[date]:
         """
         Add Khao Phansa.
@@ -95,6 +137,20 @@ class ThaiCalendarHolidays:
 
         return self._add_thai_calendar_holiday(
             name, self._thai_calendar.makha_bucha_date(self._year, calendar)
+        )
+
+    def _add_ok_phansa(self, name) -> Optional[date]:
+        """
+        Add Ok Phansa.
+
+        End of Buddhist Lent (also written as Ok Phansa Day) is a Buddhist
+        festival celebrated on the 15th Waxing Day of Month 11.
+
+        https://en.wikipedia.org/wiki/Pavarana
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self._thai_calendar.ok_phansa_date(self._year)
         )
 
     def _add_pchum_ben(self, name) -> Optional[date]:

@@ -286,8 +286,7 @@ class _ThaiLunisolar:
         If the Gregorian year input is invalid, this will outputs None instead.
 
         Also known as "Vesak" and "Buddha Day". This concides with
-        the 15th Waxing Day of Month 6 in Thai Lunar Calendar,
-        or Month 7 in Athikamat years.
+        the 15th Waxing Day of Month 6 in Thai Lunar Calendar, or Month 7 in Athikamat years.
 
         KHMER_CALENDAR will always use Month 6 regardless of year type.
 
@@ -359,8 +358,7 @@ class _ThaiLunisolar:
         If the Gregorian year input is invalid, this will outputs None instead.
 
         Also known as "Buddha's Cremation Day". This concides with
-        the 8th Waning Day of Month 6 in Thai Lunar Calendar,
-        or Month 7 in Athikamat years.
+        the 8th Waning Day of Month 6 in Thai Lunar Calendar, or Month 7 in Athikamat years.
 
         KHMER_CALENDAR will always use Month 6 regardless of year type.
 
@@ -489,14 +487,81 @@ class _ThaiLunisolar:
             delta_days = 221
         return start_date + td(days=delta_days)
 
+    def boun_haw_khao_padapdin_date(self, year: int) -> Optional[date]:
+        """
+        Calculate the estimated Gregorian date of Boun Haw Khao Padapdin.
+        If the Gregorian year input is invalid, this will outputs None instead.
+
+        Also known as "Boon Khao Padap Din".
+        This concides with the 14th Waning Day of Month 9 in Thai Lunar Calendar.
+
+         To calculate, we use use the following time delta:
+        - Athikamat: 14th Waning Day of Month 9
+                     or 236[1-8] + 30[8.8] + 29[9] -1 = 294
+        - Athikawan: 14th Waning Day of Month 9
+                     or 236[1-8] + 1[7] + 29[9] -1 = 265
+        - Pakatimat: 14th Waning Day of Month 9
+                     or 236[1-8] + 29[9] -1 = 264
+
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Boun Haw Khao Padapdin.
+        """
+        start_date = self._get_start_date(year)
+        if not start_date:
+            return None
+
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 294
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 265
+        else:
+            delta_days = 264
+        return start_date + td(days=delta_days)
+
+    def boun_haw_khao_salark_date(self, year: int) -> Optional[date]:
+        """
+        Calculate the estimated Gregorian date of Boun Haw Khao Salark.
+        If the Gregorian year input is invalid, this will outputs None instead.
+
+        Also known as "Boon Khao Sak".
+        This concides with the 15th Waxing Day of Month 10 in Thai Lunar Calendar.
+
+         To calculate, we use use the following time delta:
+        - Athikamat: 15th Waxing Day of Month 10
+                     or 265[1-9] + 30[8.8] + 15[10] -1 = 309
+        - Athikawan: 15th Waxing Day of Month 10
+                     or 265[1-9] + 1[7] + 15[10] -1 = 280
+        - Pakatimat: 15th Waxing Day of Month 10
+                     or 265[1-9] + 15[10] -1 = 279
+
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Pchum Ben.
+        """
+        start_date = self._get_start_date(year)
+        if not start_date:
+            return None
+
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 309
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 280
+        else:
+            delta_days = 279
+        return start_date + td(days=delta_days)
+
     def pchum_ben_date(self, year: int) -> Optional[date]:
         """
         Calculate the estimated Gregorian date of Pchum Ben.
         If the Gregorian year input is invalid, this will outputs None instead.
 
         Also known as "Prachum Bandar".
-        This concides with the 15th Waning Day of Month 10 in
-        Thai Lunar Calendar.
+        This concides with the 15th Waning Day of Month 10 in Thai Lunar Calendar.
 
          To calculate, we use use the following time delta:
         - Athikamat: 15th Waning Day of Month 10
@@ -530,8 +595,7 @@ class _ThaiLunisolar:
         If the Gregorian year input is invalid, this will outputs None instead.
 
         Also known as "End of Buddhist Lent" and "End of Vassa".
-        This concides with the 15th Waxing Day of Month 11
-        in Thai Lunar Calendar.
+        This concides with the 15th Waxing Day of Month 11 in Thai Lunar Calendar.
 
         To calculate, we use use the following time delta:
         - Athikamat: 15th Waxing Day of Month 11
@@ -559,14 +623,47 @@ class _ThaiLunisolar:
             delta_days = 309
         return start_date + td(days=delta_days)
 
+    def boun_suang_heua_date(self, year: int) -> Optional[date]:
+        """
+        Calculate the estimated Gregorian date of Ok Boun Suang Huea.
+        If the Gregorian year input is invalid, this will outputs None instead.
+
+        Boun Suang Huea Nakhone Luang Prabang, also known as "Vientiane Boat Racing Festival".
+        This concides with the 1st Waning Day of Month 11 in Thai Lunar Calendar.
+
+        To calculate, we use use the following time delta:
+        - Athikamat: 1st Waning Day of Month 11
+                     or 295[1-10] + 30[8.8] + 16[11] -1 = 340
+        - Athikawan: 1st Waning Day of Month 11
+                     or 295[1-10] + 1[7] + 16[11] -1 = 311
+        - Pakatimat: 1st Waning Day of Month 11
+                     or 295[1-10] + 16[11] -1 = 310
+
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Boun Suang Huea.
+        """
+        start_date = self._get_start_date(year)
+        if not start_date:
+            return None
+
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 340
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 311
+        else:
+            delta_days = 310
+        return start_date + td(days=delta_days)
+
     def loy_krathong_date(self, year: int) -> Optional[date]:
         """
         Calculate the estimated Gregorian date of Loy Krathong.
         If the Gregorian year input is invalid, this will outputs None instead.
 
         Also known as "Boun That Louang" and "Bon Om Touk".
-        This concides with the 15th Waxing Day of Month 12
-        in Thai Lunar Calendar.
+        This concides with the 15th Waxing Day of Month 12 in Thai Lunar Calendar.
 
         To calculate, we use use the following time delta:
         - Athikamat: 15th Waxing Day of Month 12

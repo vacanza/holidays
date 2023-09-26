@@ -79,6 +79,50 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 self.calendar.atthami_bucha_date(year, KHMER_CALENDAR),
             )
 
+    def test_boun_haw_khao_padapdin(self):
+        boun_haw_khao_padapdin_year_date = {
+            self.calendar.START_YEAR - 1: None,
+            self.calendar.END_YEAR + 1: None,
+            2022: date(2022, AUG, 26),
+            2023: date(2023, SEP, 14),
+            2024: date(2024, SEP, 2),
+            2025: date(2025, AUG, 23),
+        }
+        for year in boun_haw_khao_padapdin_year_date:
+            self.assertEqual(
+                boun_haw_khao_padapdin_year_date[year],
+                self.calendar.boun_haw_khao_padapdin_date(year),
+            )
+
+    def test_boun_haw_khao_salark(self):
+        boun_haw_khao_salark_year_date = {
+            self.calendar.START_YEAR - 1: None,
+            self.calendar.END_YEAR + 1: None,
+            2022: date(2022, SEP, 10),
+            2023: date(2023, SEP, 29),
+            2024: date(2024, SEP, 17),
+            2025: date(2025, SEP, 7),
+        }
+        for year in boun_haw_khao_salark_year_date:
+            self.assertEqual(
+                boun_haw_khao_salark_year_date[year],
+                self.calendar.boun_haw_khao_salark_date(year),
+            )
+
+    def test_boun_suang_heua_date(self):
+        boun_suang_heua_year_date = {
+            self.calendar.START_YEAR - 1: None,
+            self.calendar.END_YEAR + 1: None,
+            2022: date(2022, OCT, 11),
+            2023: date(2023, OCT, 30),
+            2024: date(2024, OCT, 18),
+            2025: date(2025, OCT, 8),
+        }
+        for year in boun_suang_heua_year_date:
+            self.assertEqual(
+                boun_suang_heua_year_date[year], self.calendar.boun_suang_heua_date(year)
+            )
+
     def test_khao_phansa_date(self):
         # THAI_CALENDAR
         khao_phansa_year_date = {

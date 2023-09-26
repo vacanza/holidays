@@ -12,9 +12,9 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUL, OCT, DEC
 from holidays.calendars.thai import KHMER_CALENDAR
-from holidays.constants import PUBLIC, SCHOOL
+from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -39,6 +39,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     https://www.timeanddate.com/holidays/laos/
                     https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022
                     https://www.bcel.com.la/bcel/bcel-calendar.html?year=2023
+                    http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo (from 2011 onwards)
 
         !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
         Despite the wording, this usually only applies to Monday only for holidays,
@@ -62,25 +63,75 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
 
     country = "LA"
-    supported_categories = {PUBLIC, SCHOOL}
+    supported_categories = {BANK, PUBLIC, SCHOOL, WORKDAY}
     default_language = "lo"
     # %s (in lieu).
     observed_label = tr("ພັກຊົດເຊີຍ%s")
 
     # Special Cases.
 
-    # Lao New Year's Day (in-lieu)
+    # Special Bank Holiday.
+    special_bank_day_off = tr("ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ")
+
+    # New Year's Day (in-lieu).
+    new_year_day_in_lieu = tr("ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ")
+
+    # Internation Women's Rights Day (in-lieu).
+    international_womens_rights_day_in_lieu = tr("ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ")
+
+    # Lao New Year's Day (in-lieu).
     lao_new_year_in_lieu = tr("ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ")
 
+    # Lao New Year's Day (Special).
+    lao_new_year_special = tr("ພັກບຸນປີໃໝ່ລາວ")
+
+    # Labor Day (in-lieu).
+    labor_day_in_lieu = tr("ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ")
+
+    # Establishment Day of the Lao Women's Union (in-lieu).
+    lao_womens_union_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
+
+    # Establishment Day of the BOL (in-lieu).
+    establishment_day_of_bol_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")
+
+    # Lao National Day (in-lieu).
+    lao_national_day_in_lieu = tr("ພັກຊົດເຊີຍວັນຊາດ")
+
+    special_bank_holiday = {
+        2015: (JAN, 2, special_bank_day_off),
+        2017: (OCT, 9, establishment_day_of_bol_in_lieu),
+    }
     special_public_holidays = {
-        2016: (
-            (APR, 12, lao_new_year_in_lieu),
-            (APR, 13, lao_new_year_in_lieu),
-        ),
-        2017: (
+        2011: (APR, 13, lao_new_year_in_lieu),
+        2012: (
+            (JAN, 2, new_year_day_in_lieu),
             (APR, 13, lao_new_year_in_lieu),
             (APR, 17, lao_new_year_in_lieu),
+            (DEC, 3, lao_national_day_in_lieu),
         ),
+        2013: (APR, 17, lao_new_year_in_lieu),
+        2015: (
+            (MAR, 9, international_womens_rights_day_in_lieu),
+            (APR, 17, lao_new_year_special),
+        ),
+        2016: (
+            (APR, 13, lao_new_year_special),
+            (APR, 18, lao_new_year_special),
+            (MAY, 2, labor_day_in_lieu),
+        ),
+        2017: (
+            (JAN, 2, new_year_day_in_lieu),
+            (APR, 13, lao_new_year_in_lieu),
+            (APR, 17, lao_new_year_in_lieu),
+            (DEC, 4, lao_national_day_in_lieu),
+        ),
+        2020: (
+            (APR, 13, lao_new_year_special),
+            (APR, 17, lao_new_year_special),
+        ),
+    }
+    special_workday_holiday = {
+        2019: (JUL, 22, lao_womens_union_in_lieu),
     }
     supported_languages = ("en_US", "lo", "th")
 
@@ -92,12 +143,59 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     def _is_observed(self, dt: date) -> bool:
         return self._year >= 2018
 
-    def _populate_public_holidays(self):
+    def _populate_bank_holidays(self):
+        # Based on both LSX and BCEL calendar.
         # Available post-Lao PDR proclamation on Dec 2, 1975.
         if self._year <= 1975:
             return None
 
-        # Fixed Date Official Holidays
+        # ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ
+        # Status: In-Use.
+        # Celebrated the creation of the Bank of the Lao PDR on Oct 7, 1968.
+        # In-Lieus are available in LSX calendar.
+
+        # Establishment Day of the BOL.
+        self._add_observed(self._add_holiday_oct_7(tr("ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")))
+
+        # ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ
+        # Status: In-Use.
+        # Financial Institution in Laos are closed on last 3 weekdays of the year.
+        # Assume [WEEKDAY] is Dec 31:
+        #   - CASE MON: (THU)-(FRI)-MON
+        #   - CASE TUE: (FRI)-MON-TUE
+        #   - CASE WED: MON-TUE-WED
+        #   - CASE THU: TUE-WED-THU
+        #   - CASE FRI/SAT/SUN: WED-THU-FRI
+
+        # Lao Year-End Bank Holiday.
+        year_end_bank_holiday = tr("ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ")
+
+        dec_31 = date(self._year, DEC, 31)
+        if self._is_monday(dec_31):
+            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
+        elif self._is_tuesday(dec_31):
+            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
+        elif self._is_wednesday(dec_31):
+            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
+        elif self._is_thursday(dec_31):
+            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
+        else:
+            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
+            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
+
+    def _populate_public_holidays(self):
+        # Available post-Lao PDR proclamation on Dec 2, 1975.
+        if self._year <= 1975:
+            return None
 
         # ວັນປີໃໝ່ສາກົນ
         # Status: In-Use.
@@ -126,9 +224,9 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Dates prior to 2018 are assigned manually
         # Status: In-Use.
         #   - CASE 1: THU-FRI-SAT -> in-lieu on MON.
-        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE
-        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED
-        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED
+        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE.
+        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED.
+        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED.
         if self._year >= 2018:
             self._add_observed(
                 dt,
@@ -142,7 +240,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         self._add_observed(self._add_labor_day(tr("ວັນກຳມະກອນສາກົນ")))
 
         # ວັນເດັກສາກົນ (`PUBLIC`)
-        # Status: Defunct, Still Observed. 
+        # Status: Defunct, Still Observed.
         # Starts as public holiday after Lao PDR joined UN Convention on the
         # Rights of the Child in 1989 (de-facto start as holiday in 1990).
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
@@ -171,7 +269,9 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # ວັນບຸນມາຂະບູຊາ
         # Status: In-Use.
         # 15th Waxing Day of Month 3.
-        
+        # Also denoted as festival days for Sikhottabong Stupa Festival and
+        # Wat Phou Champasack Festival in BCEL calendar.
+
         # Makha Bousa Festival.
         self._add_makha_bucha(tr("ວັນບຸນມາຂະບູຊາ"))
 
@@ -180,16 +280,60 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # 15th Waxing Day of Month 6.
         # This utilizes Thai calendar as a base, though are calculated to always happen
         # in the Traditional Visakhamas month (May).
+        # In Laos Calendar, the day after marks the traditional Buddhist Calendar Year change.
 
         # Visakha Bousa Festival.
         self._add_visakha_bucha(tr("ວັນບຸນວິສາຂະບູຊາ"))
 
-        # ບຸນທາດຫລວງ
+        # ວັນບຸນເຂົ້າພັນສາ
+        # Status: In-Use.
+        # 1st Waning Day of Month 8.
+
+        # Boun Khao Phansa (Begin of Buddhist Lent).
+        self._add_khao_phansa(tr("ວັນບຸນເຂົ້າພັນສາ"))
+
+        # ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ
+        # Status: In-Use.
+        # 14th Waning Day of Month 9.
+
+        # Boun Haw Khao Padapdin (Rice Growing Festival).
+        self._add_boun_haw_khao_padapdin(tr("ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ"))
+
+        # ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ
+        # Status: In-Use.
+        # 15th Waxing Day of Month 10.
+
+        # Boun Haw Khao Salark (Ancestor Festival).
+        self._add_boun_haw_khao_salark(tr("ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ"))
+
+        # ວັນບຸນອອກພັນສາ
+        # Status: In-Use.
+        # 15th Waxing Day of Month 11.
+
+        # Boun Awk Phansa (End of Buddhist Lent).
+        self._add_ok_phansa(tr("ວັນບຸນອອກພັນສາ"))
+
+        # ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ
+        # Status: In-Use.
+        # 1st Waning Day of Month 11.
+
+        # Boun Suang Heua (Vientiane Boat Racing Festival).
+        self._add_boun_suang_heua(tr("ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"))
+
+        # ວັນບຸນທາດຫລວງ
         # Status: In-Use.
         # 15th Waxing Day of Month 12.
 
         # Boun That Luang Festival.
-        self._add_loy_krathong(tr("ບຸນທາດຫລວງ"))
+        self._add_loy_krathong(tr("ວັນບຸນທາດຫລວງ"))
+
+        # ວັນຄູແຫ່ງຊາດ
+        # Status: In-Use.
+        # In recognition of First Lao Teacher, Kham, as started in Oct 7, 1994.
+
+        if self._year >= 1994:
+            # National Teacher Day.
+            self._add_holiday_oct_7(tr("ວັນຄູແຫ່ງຊາດ"))
 
     def _populate_workday_holidays(self):
         # No Public Holidays are issued, though still observed by the government.
@@ -204,30 +348,30 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # Lao People's Armed Force Day.
         self._add_holiday_jan_20(tr("ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"))
-        
+
         # ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ
         # Status: In-Use.
         # Celebrated the creation of Lao Federation of Trade Unions on Feb 1, 1966.
-        
+
         # Lao Federation of Trade Union's Day.
         self._add_holiday_feb_1(tr("ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"))
-        
+
         # ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ
         # Status: In-Use.
         # Celebrated the creation of the Lao People's Revolutionary Party on Mar 22, 1955.
-        
+
         # Establishment Day of the Lao People's Revolutionary Party.
         self._add_holiday_mar_22(tr("ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"))
-        
+
         # ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ
         # Status: In-Use.
         # Celebrated the creation of the Lao People's Revolutionary Youth Union on Apr 14, 1955.
-        
+
         # Lao People's Revolutionary Youth Union Day.
         self._add_holiday_apr_14(tr("ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"))
-        
+
         # ວັນເດັກສາກົນ (`WORKDAY`)
-        # Status: Defunct, Still Observed. 
+        # Status: Defunct, Still Observed.
         # Starts as public holiday after Lao PDR joined UN Convention on the
         # Rights of the Child in 1989 (de-facto start as holiday in 1990).
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
@@ -239,19 +383,67 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ
         # Status: In-Use.
         # No information on when this was first observed is available in Thai or English sources.
-        
+
         # National Arbor Day.
         self._add_holiday_jun_1(tr("ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"))
-        
+
         # ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ
-        
+        # Status: In-Use.
+        # Celebrated President Souphanouvong's Birthday Anniversary on Jul 13, 1909.
+
+        # President Souphanouvong's Birthday.
+        self._add_holiday_jul_13(tr("ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"))
+
         # ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ
         # Status: In-Use.
         # No information on when this was first observed is available in Thai or English sources.
-        
+
         # The National Day for Wildlife and Aquatic Animal Conservation.
         self._add_holiday_jul_13(tr("ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"))
-        
+
+        # ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ
+        # Status: In-Use.
+        # Celebrated the creation of Lao Women's Union on Jul 20, 1955.
+
+        # Establishment Day of the Lao Women's Union.
+        self._add_holiday_jul_20(tr("ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"))
+
+        # ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ
+        # Status: In-Use.
+        # Celebrated the creation of LPRP's Party Newspaper on Aug 13, 1950.
+
+        # Lao National Mass Media and Publishing Day.
+        self._add_holiday_aug_13(tr("ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"))
+
+        # ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ
+        # Status: In-Use.
+        # Celebrated the adoption of the 1991 Constitution on Aug 15, 1991.
+
+        if self._year >= 1991:
+            # Lao National Constitution Day.
+            self._add_holiday_aug_15(tr("ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"))
+
+        # ວັນຍຶດອຳນາດທົ່ວປະເທດ
+        # Status: In-Use.
+        # Celebrated the Liberation of Vientiane by Pathet Lao forces on Aug 23, 1975.
+
+        # National Uprising Day.
+        self._add_holiday_aug_23(tr("ວັນຍຶດອຳນາດທົ່ວປະເທດ"))
+
+        # ວັນປະກາດເອກະລາດ
+        # Status: In-Use.
+        # Celebrated the Declaration of Independence on Oct 12, 1945.
+
+        # Indepedence Declaration Day.
+        self._add_holiday_oct_12(tr("ວັນປະກາດເອກະລາດ"))
+
+        # ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ
+        # Status: In-Use.
+        # Celebrated President Kaysone Phomvihane's Birthday Anniversary on Dec 13, 1920.
+
+        if self._year >= 1991:
+            # President Kaysone Phomvihane's Birthday.
+            self._add_holiday_dec_13(tr("ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"))
 
 
 class LA(Laos):
