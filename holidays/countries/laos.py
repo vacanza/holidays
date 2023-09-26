@@ -97,7 +97,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     # Lao National Day (in-lieu).
     lao_national_day_in_lieu = tr("ພັກຊົດເຊີຍວັນຊາດ")
 
-    special_bank_holiday = {
+    special_bank_holidays = {
         2015: (JAN, 2, special_bank_day_off),
         2017: (OCT, 9, establishment_day_of_bol_in_lieu),
     }
@@ -130,7 +130,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             (APR, 17, lao_new_year_special),
         ),
     }
-    special_workday_holiday = {
+    special_workday_holidays = {
         2019: (JUL, 22, lao_womens_union_in_lieu),
     }
     supported_languages = ("en_US", "lo", "th")

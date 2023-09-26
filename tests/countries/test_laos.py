@@ -25,6 +25,41 @@ class TestLaos(TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Laos(years=1975))
 
+    def test_special_bank_holiday(self):
+        self.assertHoliday(
+            Laos(categories=(BANK,)),
+            "2015-01-02",
+            "2017-10-09",
+        )
+
+    def test_special_public_holiday(self):
+        self.assertHoliday(
+            Laos(categories=(PUBLIC,)),
+            "2011-04-13",
+            "2012-01-02",
+            "2012-04-13",
+            "2012-04-17",
+            "2012-12-03",
+            "2013-04-17",
+            "2015-03-09",
+            "2015-04-17",
+            "2016-04-13",
+            "2016-04-18",
+            "2016-05-02",
+            "2017-01-02",
+            "2017-04-13",
+            "2017-04-17",
+            "2017-12-04",
+            "2020-04-13",
+            "2020-04-17",
+        )
+
+    def test_special_workday(self):
+        self.assertHoliday(
+            Laos(categories=(WORKDAY,)),
+            "2019-07-22",
+        )
+
     def test_2022_public_holiday(self):
         self.assertHolidays(
             Laos(categories=(PUBLIC,), years=2022),
