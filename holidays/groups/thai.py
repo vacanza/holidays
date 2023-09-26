@@ -27,7 +27,7 @@ class ThaiCalendarHolidays:
         self.__calendar = calendar
         self._thai_calendar = _ThaiLunisolar(calendar)
 
-    def _add_asarnha_bucha(self, name, calendar=None) -> Optional[date]:
+    def _add_asarnha_bucha(self, name) -> Optional[date]:
         """
         Add Asarnha Bucha.
 
@@ -39,10 +39,9 @@ class ThaiCalendarHolidays:
 
         https://en.wikipedia.org/wiki/Asalha_Puja
         """
-        calendar = calendar or self.__calendar
 
         return self._add_thai_calendar_holiday(
-            name, self._thai_calendar.asarnha_bucha_date(self._year, calendar)
+            name, self._thai_calendar.asarnha_bucha_date(self._year)
         )
 
     def _add_boun_haw_khao_padapdin(self, name) -> Optional[date]:
@@ -87,7 +86,7 @@ class ThaiCalendarHolidays:
             name, self._thai_calendar.boun_suang_heua_date(self._year)
         )
 
-    def _add_khao_phansa(self, name, calendar=None) -> Optional[date]:
+    def _add_khao_phansa(self, name) -> Optional[date]:
         """
         Add Khao Phansa.
 
@@ -99,10 +98,9 @@ class ThaiCalendarHolidays:
 
         https://en.wikipedia.org/wiki/Vassa
         """
-        calendar = calendar or self.__calendar
 
         return self._add_thai_calendar_holiday(
-            name, self._thai_calendar.khao_phansa_date(self._year, calendar)
+            name, self._thai_calendar.khao_phansa_date(self._year)
         )
 
     def _add_loy_krathong(self, name) -> Optional[date]:

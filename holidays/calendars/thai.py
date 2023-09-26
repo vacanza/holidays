@@ -405,7 +405,7 @@ class _ThaiLunisolar:
         the 15th Waxing Day of Month 8 in Thai Lunar Calendar,
         or Month 8.8 in Athikamat years.
 
-        KHMER_CALENDAR will always use Month 8 regardless of year type.
+        Lao Start of Buddhist Lent start on this day (1-day earlier than Thai and Khmer ones).
 
         To calculate, we use use the following time delta:
         - Athikamat: 15th Waxing Day of Month 8/8
@@ -424,16 +424,11 @@ class _ThaiLunisolar:
         :return:
             Estimated Gregorian date of Asarnha Bucha.
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         start_date = self._get_start_date(year)
         if not start_date:
             return None
 
-        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
-            calendar
-        ):
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             delta_days = 250
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             delta_days = 221
@@ -441,7 +436,7 @@ class _ThaiLunisolar:
             delta_days = 220
         return start_date + td(days=delta_days)
 
-    def khao_phansa_date(self, year: int, calendar=None) -> Optional[date]:
+    def khao_phansa_date(self, year: int) -> Optional[date]:
         """
         Calculate the estimated Gregorian date of Khao Phansa.
         If the Gregorian year input is invalid, this will outputs None instead.
@@ -449,8 +444,6 @@ class _ThaiLunisolar:
         Also known as "(Start of) Buddhist Lent" and "Start of Vassa".
         This concides with the 1st Waning Day of Month 8
         in Thai Lunar Calendar, or Month 8.8 in Athikamat years.
-
-        KHMER_CALENDAR will always use Month 8 regardless of year type.
 
         To calculate, we use use the following time delta:
         - Athikamat: 1st Waning Day of Month 8.8
@@ -470,16 +463,11 @@ class _ThaiLunisolar:
         :return:
             Estimated Gregorian date of Khao Phansa.
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         start_date = self._get_start_date(year)
         if not start_date:
             return None
 
-        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
-            calendar
-        ):
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             delta_days = 251
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             delta_days = 222

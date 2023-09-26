@@ -18,8 +18,8 @@ from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    THU_FRI_SAT_TO_NEXT_MON_TUE_WED,
-    FRI_SAT_SUN_TO_NEXT_MON_TUE_WED,
+    THU_FRI_SAT_TO_NEXT_MON_TUE,
+    FRI_SAT_SUN_TO_NEXT_TUE_WED,
     SAT_SUN_TO_NEXT_MON,
 )
 
@@ -228,10 +228,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED.
         #   - CASE 4: SUN-MON-TUE -> in-lieu on WED.
         if self._year >= 2018:
-            self._add_observed(
-                dt,
-                rule=THU_FRI_SAT_TO_NEXT_MON_TUE_WED + FRI_SAT_SUN_TO_NEXT_MON_TUE_WED,
-            )
+            self._add_observed(dt, rule=THU_FRI_SAT_TO_NEXT_MON_TUE)
+            self._add_observed(dt, rule=FRI_SAT_SUN_TO_NEXT_TUE_WED)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
@@ -287,10 +285,10 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # ວັນບຸນເຂົ້າພັນສາ
         # Status: In-Use.
-        # 1st Waning Day of Month 8.
+        # 15th Waxing Day of Month 8 (Asarnha Bucha for Thailand and Cambodia).
 
         # Boun Khao Phansa (Begin of Buddhist Lent).
-        self._add_khao_phansa(tr("ວັນບຸນເຂົ້າພັນສາ"))
+        self._add_asarnha_bucha(tr("ວັນບຸນເຂົ້າພັນສາ"))
 
         # ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ
         # Status: In-Use.

@@ -37,20 +37,6 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in asarnha_bucha_year_date:
             self.assertEqual(asarnha_bucha_year_date[year], self.calendar.asarnha_bucha_date(year))
-        # KHMER_CALENDAR
-        asanha_bochea_year_date = {
-            self.calendar.START_YEAR - 1: None,
-            self.calendar.END_YEAR + 1: None,
-            2022: date(2022, JUL, 13),
-            2023: date(2023, JUL, 2),
-            2024: date(2024, JUL, 20),
-            2025: date(2025, JUL, 10),
-        }
-        for year in asanha_bochea_year_date:
-            self.assertEqual(
-                asanha_bochea_year_date[year],
-                self.calendar.asarnha_bucha_date(year, KHMER_CALENDAR),
-            )
 
     def test_atthami_bucha_date(self):
         # THAI_CALENDAR
@@ -135,20 +121,6 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in khao_phansa_year_date:
             self.assertEqual(khao_phansa_year_date[year], self.calendar.khao_phansa_date(year))
-        # KHMER_CALENDAR
-        bony_kanben_year_date = {
-            self.calendar.START_YEAR - 1: None,
-            self.calendar.END_YEAR + 1: None,
-            2022: date(2022, JUL, 14),
-            2023: date(2023, JUL, 3),
-            2024: date(2024, JUL, 21),
-            2025: date(2025, JUL, 11),
-        }
-        for year in bony_kanben_year_date:
-            self.assertEqual(
-                bony_kanben_year_date[year],
-                self.calendar.khao_phansa_date(year, KHMER_CALENDAR),
-            )
 
     def test_loy_krathong_date(self):
         loy_krathong_year_date = {
