@@ -210,8 +210,8 @@ class TestNewYorkStockExchange(TestCase):
 
     def test_juneteenth(self):
         for dt in (
-            date(2021, JUN, 18),
             date(2022, JUN, 20),
+            date(2023, JUN, 19),
         ):
             self.assertHoliday(dt)
             self.assertNoHoliday(dt + td(days=-1))
@@ -222,6 +222,7 @@ class TestNewYorkStockExchange(TestCase):
         for dt in (
             date(1954, JUN, 18),
             date(1967, JUN, 19),
+            date(2021, JUN, 18),
         ):
             self.assertNoHoliday(dt)
 
@@ -473,15 +474,14 @@ class TestNewYorkStockExchange(TestCase):
 
     def test_all_modern_holidays_present(self):
         self.assertHolidays(
-            ("2021-01-01", "New Year's Day"),
-            ("2021-01-18", "Martin Luther King Jr. Day"),
-            ("2021-02-15", "Washington's Birthday"),
-            ("2021-04-02", "Good Friday"),
-            ("2021-05-31", "Memorial Day"),
-            ("2021-06-18", "Juneteenth National Independence Day (Observed)"),
-            ("2021-07-05", "Independence Day (Observed)"),
-            ("2021-09-06", "Labor Day"),
-            ("2021-11-25", "Thanksgiving Day"),
-            ("2021-12-24", "Christmas Day (Observed)"),
-            ("2021-12-31", "New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-16", "Martin Luther King Jr. Day"),
+            ("2023-02-20", "Washington's Birthday"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-05-29", "Memorial Day"),
+            ("2023-06-19", "Juneteenth National Independence Day"),
+            ("2023-07-04", "Independence Day"),
+            ("2023-09-04", "Labor Day"),
+            ("2023-11-23", "Thanksgiving Day"),
+            ("2023-12-25", "Christmas Day"),
         )

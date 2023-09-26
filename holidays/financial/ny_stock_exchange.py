@@ -39,6 +39,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
     - https://www.nyse.com/markets/hours-calendars
     Historical data:
     - s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
+    - https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars
     """
 
     market = "NYSE"
@@ -204,8 +205,8 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         if 1916 <= year <= 1953:
             self._add_observed_holiday("Flag Day", date(year, JUN, 14))
 
-        # JUNETEENTH: since 2021
-        if year >= 2021:
+        # JUNETEENTH: since 2022
+        if year >= 2022:
             self._add_observed_holiday("Juneteenth National Independence Day", date(year, JUN, 19))
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
