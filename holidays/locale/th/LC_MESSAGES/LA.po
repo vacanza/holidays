@@ -158,7 +158,7 @@ msgstr "วันก่อตั้งสหภาพแม่หญิงลา
 
 #. Lao National Mass Media and Publishing Day.
 msgid "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"
-msgstr "วันสื่อสารมวลชนและการพิมพ์แห่งชาติ  "
+msgstr "วันสื่อสารมวลชนและการพิมพ์แห่งชาติ"
 
 #. Lao National Constitution Day.
 msgid "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"
