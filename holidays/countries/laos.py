@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUL, OCT, DEC
@@ -138,10 +137,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
-
-    def _is_observed(self, dt: date) -> bool:
-        return self._year >= 2018
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, observed_since=2018, *args, **kwargs)
 
     def _populate_bank_holidays(self):
         # Based on both LSX and BCEL calendar.
@@ -170,7 +166,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Lao Year-End Bank Holiday.
         year_end_bank_holiday = tr("ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ")
 
-        dec_31 = date(self._year, DEC, 31)
+        dec_31 = (DEC, 31)
         if self._is_monday(dec_31):
             self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
             self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
@@ -213,6 +209,11 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # ບຸນປີໃໝ່ລາວ
         # Status: In-Use.
         # Celebrated for 3 days from 14-16 April annualy.
+        # Observed dates prior to 2018 are assigned manually.
+        #   - CASE 1: THU-FRI-SAT -> in-lieu on MON.
+        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE.
+        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED.
+        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED.
 
         # Lao New Year's Day.
         name = tr("ບຸນປີໃໝ່ລາວ")
@@ -220,16 +221,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         self._add_holiday_apr_15(name)
         self._add_holiday_apr_16(name)
 
-        # ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ
-        # Dates prior to 2018 are assigned manually
-        # Status: In-Use.
-        #   - CASE 1: THU-FRI-SAT -> in-lieu on MON.
-        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE.
-        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED.
-        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED.
-        if self._year >= 2018:
-            self._add_observed(dt, rule=THU_FRI_SAT_TO_NEXT_MON_TUE)
-            self._add_observed(dt, rule=FRI_SAT_SUN_TO_NEXT_TUE_WED)
+        self._add_observed(dt, rule=THU_FRI_SAT_TO_NEXT_MON_TUE)
+        self._add_observed(dt, rule=FRI_SAT_SUN_TO_NEXT_TUE_WED)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
@@ -380,10 +373,11 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ
         # Status: In-Use.
-        # No information on when this was first observed is available in Thai or English sources.
+        # Assumed to first observed in 1989 following the National Forestry Conference in May.
 
-        # National Arbor Day.
-        self._add_holiday_jun_1(tr("ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"))
+        if self._year >= 1989:
+            # National Arbor Day.
+            self._add_holiday_jun_1(tr("ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"))
 
         # ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ
         # Status: In-Use.
@@ -394,10 +388,11 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ
         # Status: In-Use.
-        # No information on when this was first observed is available in Thai or English sources.
+        # First designated in 1997 to concide with Souphanouvong's Birthday anniversary.
 
-        # The National Day for Wildlife and Aquatic Animal Conservation.
-        self._add_holiday_jul_13(tr("ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"))
+        if self._year >= 1997:
+            # The National Day for Wildlife and Aquatic Animal Conservation.
+            self._add_holiday_jul_13(tr("ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"))
 
         # ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ
         # Status: In-Use.

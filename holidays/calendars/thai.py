@@ -396,7 +396,7 @@ class _ThaiLunisolar:
             else +169
         )
 
-    def asarnha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
+    def asarnha_bucha_date(self, year: int) -> Optional[date]:
         """
         Calculate the estimated Gregorian date of Asarnha Bucha.
         If the Gregorian year input is invalid, this will outputs None instead.
