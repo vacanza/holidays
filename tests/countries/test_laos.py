@@ -24,6 +24,9 @@ class TestLaos(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Laos(years=1975))
+        self.assertNoHolidays(Laos(years=1975, categories=(BANK,)))
+        self.assertNoHolidays(Laos(years=1975, categories=(SCHOOL,)))
+        self.assertNoHolidays(Laos(years=1975, categories=(WORKDAY,)))
 
     def test_special_bank_holiday(self):
         self.assertHoliday(
