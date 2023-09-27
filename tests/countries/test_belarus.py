@@ -22,7 +22,7 @@ class TestBelarus(TestCase):
         self.assertCountryAliases(Belarus, BY, BLR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Belarus(years=1998))
+        self.assertNoHolidays(Belarus(years=1997))
 
     def test_2018(self):
         # http://calendar.by/procal.php?year=2018
@@ -76,6 +76,8 @@ class TestBelarus(TestCase):
 
     def test_substituted(self):
         self.assertHoliday(
+            "1998-01-02",
+            "1998-04-27",
             "1999-01-08",
             "1999-04-19",
             "2000-05-08",

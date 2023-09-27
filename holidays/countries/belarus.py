@@ -37,6 +37,10 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Day off (substituted from %s).
     substituted_label = tr("Выходны (перанесены з %s)")
     substituted_holidays = {
+        1998: (
+            (JAN, 10, JAN, 2),
+            (APR, 25, APR, 27),
+        ),
         1999: (
             (JAN, 16, JAN, 8),
             (APR, 17, APR, 19),
@@ -174,8 +178,8 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-        # The current set of holidays came into force in 1998.
-        if year <= 1998:
+        # The current set of holidays actual from 1998.
+        if year <= 1997:
             return None
 
         super()._populate(year)
