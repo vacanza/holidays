@@ -13,6 +13,7 @@
 
 # flake8: noqa: F402
 
+import argparse
 import json
 import sys
 import warnings
@@ -28,6 +29,30 @@ class SnapshotGenerator:
     """Creates a snapshot of available holidays for supported entities."""
 
     years = range(1950, 2051)
+
+    def __init__(self) -> None:
+        arg_parser = argparse.ArgumentParser()
+        arg_parser.add_argument(
+            "-c",
+            "--countries",
+            action="extend",
+            nargs="+",
+            default=[],
+            help="Countries to generate",
+            required=False,
+            type=str,
+        )
+        arg_parser.add_argument(
+            "-m",
+            "--markets",
+            action="extend",
+            nargs="+",
+            default=[],
+            help="Markets to generate",
+            required=False,
+            type=str,
+        )
+        self.args = arg_parser.parse_args()
 
     @staticmethod
     def save(snapshot, file_path):
@@ -48,7 +73,10 @@ class SnapshotGenerator:
 
     def generate_country_snapshots(self):
         """Generates country snapshots."""
-        for country_code in list_supported_countries():
+        if len(self.args.markets) > 0:
+            return None
+        country_list = self.args.countries or list_supported_countries()
+        for country_code in country_list:
             country = getattr(holidays, country_code)
             snapshot = {}
 
@@ -67,7 +95,10 @@ class SnapshotGenerator:
 
     def generate_financial_snapshots(self):
         """Generates financial snapshots."""
-        for market_code in list_supported_financial():
+        if len(self.args.countries) > 0:
+            return None
+        market_list = self.args.markets or list_supported_financial()
+        for market_code in market_list:
             self.save(
                 holidays.country_holidays(
                     market_code,
