@@ -142,7 +142,7 @@ class TestLaos(TestCase):
         )
 
     def test_2014_bank_holiday(self):
-        # Dec 31 is Wedneday.
+        # Dec 31 is Wednesday.
         self.assertHolidays(
             Laos(categories=(BANK,), years=2014),
             ("2014-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
