@@ -17,9 +17,11 @@ from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    THU_FRI_SAT_TO_NEXT_MON_TUE,
-    FRI_SAT_SUN_TO_NEXT_TUE_WED,
+    THU_FRI_TO_NEXT_MON,
+    FRI_TO_NEXT_TUE,
+    SAT_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_WED,
 )
 
 
@@ -30,7 +32,6 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     References:
 
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Laos
-                https://www.ayutthaya.go.th/5786-%20ข้อควรรู้และวันหยุดในประเทศลาว
                 ດຳລັດວ່າດ້ວຍ ວັນພັກ ເລກທີ 386 /ລບ (15.12.2017)
 
     - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
@@ -72,28 +73,28 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     # Special Bank Holiday.
     special_bank_day_off = tr("ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ")
 
-    # New Year's Day (in-lieu).
+    # New Year's Day (in lieu).
     new_year_day_in_lieu = tr("ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ")
 
-    # Internation Women's Rights Day (in-lieu).
+    # Internation Women's Rights Day (in lieu).
     international_womens_rights_day_in_lieu = tr("ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ")
 
-    # Lao New Year's Day (in-lieu).
+    # Lao New Year's Day (in lieu).
     lao_new_year_in_lieu = tr("ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ")
 
     # Lao New Year's Day (Special).
     lao_new_year_special = tr("ພັກບຸນປີໃໝ່ລາວ")
 
-    # Labor Day (in-lieu).
+    # Labor Day (in lieu).
     labor_day_in_lieu = tr("ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ")
 
-    # Establishment Day of the Lao Women's Union (in-lieu).
+    # Establishment Day of the Lao Women's Union (in lieu).
     lao_womens_union_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
 
-    # Establishment Day of the BOL (in-lieu).
+    # Establishment Day of the BOL (in lieu).
     establishment_day_of_bol_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")
 
-    # Lao National Day (in-lieu).
+    # Lao National Day (in lieu).
     lao_national_day_in_lieu = tr("ພັກຊົດເຊີຍວັນຊາດ")
 
     special_bank_holidays = {
@@ -210,10 +211,10 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Status: In-Use.
         # Celebrated for 3 days from 14-16 April annualy.
         # Observed dates prior to 2018 are assigned manually.
-        #   - CASE 1: THU-FRI-SAT -> in-lieu on MON.
-        #   - CASE 2: FRI-SAT-SUN -> in-lieu on MON-TUE.
-        #   - CASE 3: SAT-SUN-MON -> in-lieu on TUE-WED.
-        #   - CASE 4: SUN-MON-TUE -> in-lieu on WED.
+        #   - CASE 1: THU-FRI-SAT -> in lieu on MON.
+        #   - CASE 2: FRI-SAT-SUN -> in lieu on MON-TUE.
+        #   - CASE 3: SAT-SUN-MON -> in lieu on TUE-WED.
+        #   - CASE 4: SUN-MON-TUE -> in lieu on WED.
 
         # Lao New Year's Day.
         name = tr("ບຸນປີໃໝ່ລາວ")
@@ -221,8 +222,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         self._add_holiday_apr_15(name)
         self._add_holiday_apr_16(name)
 
-        self._add_observed(dt, rule=THU_FRI_SAT_TO_NEXT_MON_TUE)
-        self._add_observed(dt, rule=FRI_SAT_SUN_TO_NEXT_TUE_WED)
+        self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
+        self._add_observed(dt, rule=FRI_TO_NEXT_TUE + SAT_SUN_TO_NEXT_WED)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
@@ -251,7 +252,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Laotian Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
         # Unofficial, but observed by schools and most business holidays;
-        # As such, no in-lieu observance are in place for these holidays.
+        # As such, no in lieu observance are in place for these holidays.
 
         # Laotian Lunar Calendar Holidays only work from 1941 to 2057.
         if self._year <= 1975:

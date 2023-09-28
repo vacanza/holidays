@@ -20,7 +20,7 @@ msgstr ""
 msgid "ພັກຊົດເຊີຍ%s"
 msgstr "ชดเชย%s"
 
-#. Lao New Year's Day (in-lieu).
+#. Lao New Year's Day (in lieu).
 msgid "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"
 msgstr "ชดเชยวันปีใหม่ลาว"
 
@@ -56,11 +56,11 @@ msgstr "วันงานพระธาตุหลวง"
 msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
 msgstr "วันหยุดทำการพิเศษของสถาบันการเงิน"
 
-#. New Year's Day (in-lieu).
+#. New Year's Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"
 msgstr "ชดเชยวันปีใหม่สากล"
 
-#. Internation Women's Rights Day (in-lieu).
+#. Internation Women's Rights Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ"
 msgstr "ชดเชยวันสตรีสากล"
 
@@ -68,19 +68,19 @@ msgstr "ชดเชยวันสตรีสากล"
 msgid "ພັກບຸນປີໃໝ່ລາວ"
 msgstr "ชดเชยวันปีใหม่ลาว"
 
-#. Labor Day (in-lieu).
+#. Labor Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ"
 msgstr "ชดเชยันแรงงานสากล"
 
-#. Establishment Day of the Lao Women's Union (in-lieu).
+#. Establishment Day of the Lao Women's Union (in lieu).
 msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
 msgstr "ชดเชยวันก่อตั้งสหภาพแม่หญิงลาว"
 
-#. Establishment Day of the BOL (in-lieu).
+#. Establishment Day of the BOL (in lieu).
 msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
 msgstr "ชดเชยวันก่อตั้งธนาคารแห่ง สปป. ลาว"
 
-#. Lao National Day (in-lieu).
+#. Lao National Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນຊາດ"
 msgstr "ชดเชยวันชาติ สปป. ลาว"
 

@@ -20,9 +20,9 @@ msgstr ""
 msgid "ພັກຊົດເຊີຍ%s"
 msgstr "%s (in lieu)"
 
-#. Lao New Year's Day (in-lieu).
+#. Lao New Year's Day (in lieu).
 msgid "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"
-msgstr "Lao New Year's Day (in-lieu)"
+msgstr "Lao New Year's Day (in lieu)"
 
 #. New Year's Day.
 msgid "ວັນປີໃໝ່ສາກົນ"
@@ -56,33 +56,33 @@ msgstr "Boun That Luang Festival"
 msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
 msgstr "Special Bank Holiday"
 
-#. New Year's Day (in-lieu).
+#. New Year's Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"
-msgstr "New Year's Day (in-lieu)"
+msgstr "New Year's Day (in lieu)"
 
-#. Internation Women's Rights Day (in-lieu).
+#. Internation Women's Rights Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ"
-msgstr "Internation Women's Rights Day (in-lieu)"
+msgstr "Internation Women's Rights Day (in lieu)"
 
 #. Lao New Year's Day (Special).
 msgid "ພັກບຸນປີໃໝ່ລາວ"
 msgstr "Lao New Year's Day (Special)"
 
-#. Labor Day (in-lieu).
+#. Labor Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ"
-msgstr "Labor Day (in-lieu)"
+msgstr "Labor Day (in lieu)"
 
-#. Establishment Day of the Lao Women's Union (in-lieu).
+#. Establishment Day of the Lao Women's Union (in lieu).
 msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
-msgstr "Establishment Day of the Lao Women's Union (in-lieu)"
+msgstr "Establishment Day of the Lao Women's Union (in lieu)"
 
-#. Establishment Day of the BOL (in-lieu).
+#. Establishment Day of the BOL (in lieu).
 msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
-msgstr "Establishment Day of the BOL (in-lieu)"
+msgstr "Establishment Day of the BOL (in lieu)"
 
-#. Lao National Day (in-lieu).
+#. Lao National Day (in lieu).
 msgid "ພັກຊົດເຊີຍວັນຊາດ"
-msgstr "Lao National Day (in-lieu"
+msgstr "Lao National Day (in lieu"
 
 #. Establishment Day of the BOL.
 msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
