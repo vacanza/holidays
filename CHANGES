@@ -3,6 +3,12 @@ Version 0.34
 
 Released ???????? ??, ????
 
+- Introduce holiday snapshots (#1478 by @arkid15r)
+- Update ES snapshot (#1481 by @arkid15r)
+- Update NYSE holidays: fix Juneteenth National Independence Day start year (#1484 by @KJhellico)
+- Update Spain holidays (#1476 by @KJhellico)
+- Update package configuration: migrate to pyproject.toml (#1466 by @arkid15r)
+
 Version 0.33
 ============
 
