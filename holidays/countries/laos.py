@@ -32,7 +32,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     References:
 
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Laos
-                ດຳລັດວ່າດ້ວຍ ວັນພັກ ເລກທີ 386 /ລບ (15.12.2017)
+                Decree on Holidays No. 386 / Rev. 15.12.2017
+                https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf
 
     - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
                     https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
