@@ -46,7 +46,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         Despite the wording, this usually only applies to Monday only for holidays,
         consecutive holidays all have their own special in lieu declared separately.
 
-        As featured in ດຳລັດວ່າດ້ວຍ ວັນພັກ ເລກທີ 386 /ລບ (15.12.2017);
+        As featured in Decree on Holidays No. 386 / Rev. 15.12.2017;
         - Saturdays and Sundays shall be restdays each week.
         - In-Lieu holidays shall be given if it fall on the weekends.
 
