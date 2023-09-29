@@ -82,6 +82,7 @@ from .japan import Japan, JP, JPN
 from .kazakhstan import Kazakhstan, KZ, KAZ
 from .kenya import Kenya, KE, KEN
 from .kyrgyzstan import Kyrgyzstan, KG, KGZ
+from .laos import Laos, LA, LAO
 from .latvia import Latvia, LV, LVA
 from .lesotho import Lesotho, LS, LSO
 from .liechtenstein import Liechtenstein, LI, LIE

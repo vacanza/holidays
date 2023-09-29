@@ -1,0 +1,177 @@
+# Laos holidays en_US localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.34\n"
+"POT-Creation-Date: 2023-09-11 15:10+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. %s (in lieu).
+#, c-format
+msgid "ພັກຊົດເຊີຍ%s"
+msgstr "%s (in lieu)"
+
+#. Lao New Year's Day (in lieu).
+msgid "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"
+msgstr "Lao New Year's Day (in lieu)"
+
+#. New Year's Day.
+msgid "ວັນປີໃໝ່ສາກົນ"
+msgstr "New Year's Day"
+
+#. International Women's Rights Day.
+msgid "ວັນແມ່ຍິງສາກົນ"
+msgstr "International Women's Rights Day"
+
+#. Lao New Year's Day.
+msgid "ບຸນປີໃໝ່ລາວ"
+msgstr "Lao New Year's Day"
+
+#. Labor Day.
+msgid "ວັນກຳມະກອນສາກົນ"
+msgstr "Labor Day"
+
+#. International Children Day.
+msgid "ວັນເດັກສາກົນ"
+msgstr "International Children Day"
+
+#. Lao National Day.
+msgid "ວັນຊາດ"
+msgstr "Lao National Day"
+
+#. Boun That Luang Festival.
+msgid "ວັນບຸນທາດຫລວງ"
+msgstr "Boun That Luang Festival"
+
+#. Special Bank Holiday.
+msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
+msgstr "Special Bank Holiday"
+
+#. New Year's Day (in lieu).
+msgid "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"
+msgstr "New Year's Day (in lieu)"
+
+#. Internation Women's Rights Day (in lieu).
+msgid "ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ"
+msgstr "Internation Women's Rights Day (in lieu)"
+
+#. Lao New Year's Day (Special).
+msgid "ພັກບຸນປີໃໝ່ລາວ"
+msgstr "Lao New Year's Day (Special)"
+
+#. Labor Day (in lieu).
+msgid "ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ"
+msgstr "Labor Day (in lieu)"
+
+#. Establishment Day of the Lao Women's Union (in lieu).
+msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
+msgstr "Establishment Day of the Lao Women's Union (in lieu)"
+
+#. Establishment Day of the BOL (in lieu).
+msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
+msgstr "Establishment Day of the BOL (in lieu)"
+
+#. Lao National Day (in lieu).
+msgid "ພັກຊົດເຊີຍວັນຊາດ"
+msgstr "Lao National Day (in lieu"
+
+#. Establishment Day of the BOL.
+msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
+msgstr "Establishment Day of the BOL"
+
+#. Lao Year-End Bank Holiday.
+msgid "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
+msgstr "Lao Year-End Bank Holiday"
+
+#. Makha Bousa Festival.
+msgid "ວັນບຸນມາຂະບູຊາ"
+msgstr "Makha Bousa Festival"
+
+#. Visakha Bousa Festival.
+msgid "ວັນບຸນວິສາຂະບູຊາ"
+msgstr "Visakha Bousa Festival"
+
+#. Boun Khao Phansa (Begin of Buddhist Lent).
+msgid "ວັນບຸນເຂົ້າພັນສາ"
+msgstr "Begin of Buddhist Lent"
+
+#. Boun Haw Khao Padapdin (Rice Growing Festival).
+msgid "ວັນບຸນຫໍ່ເຂົ້າປະດັບດິນ"
+msgstr "Boun Haw Khao Padapdin"
+
+#. Boun Haw Khao Salark (Ancestor Festival).
+msgid "ວັນບຸນຫໍ່ເຂົ້າສະຫຼາກ"
+msgstr "Boun Haw Khao Salark"
+
+#. Boun Awk Phansa (End of Buddhist Lent).
+msgid "ວັນບຸນອອກພັນສາ"
+msgstr "End of Buddhist Lent"
+
+#. Boun Suang Heua (Vientiane Boat Racing Festival).
+msgid "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"
+msgstr "Vientiane Boat Racing Festival"
+
+#. National Teacher Day.
+msgid "ວັນຄູແຫ່ງຊາດ"
+msgstr "National Teacher Day"
+
+#. Lao People's Armed Force Day.
+msgid "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"
+msgstr "Lao People's Armed Force Day"
+
+#. Lao Federation of Trade Union's Day.
+msgid "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"
+msgstr "Lao Federation of Trade Union's Day"
+
+#. Establishment Day of the Lao People's Revolutionary Party.
+msgid "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"
+msgstr "Establishment Day of the Lao People's Revolutionary Party"
+
+#. Lao People's Revolutionary Youth Union Day.
+msgid "ວັນສ້າງຕັ້ງສູນກາງຊາວໜຸ່ມປະຊາຊົນປະຕິວັດລາວ"
+msgstr "Lao People's Revolutionary Youth Union Day"
+
+#. National Arbor Day.
+msgid "ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ"
+msgstr "National Arbor Day"
+
+#. President Souphanouvong's Birthday.
+msgid "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ສຸພານຸວົງ"
+msgstr "President Souphanouvong's Birthday"
+
+#. The National Day for Wildlife and Aquatic Animal Conservation.
+msgid "ວັນປ່ອຍປາ ແລະ ວັນອະນຸລັກສັດນ້ຳ-ສັດປ່າແຫ່ງຊາດ"
+msgstr "The National Day for Wildlife and Aquatic Animal Conservation"
+
+#. Establishment Day of the Lao Women's Union.
+msgid "ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
+msgstr "Establishment Day of the Lao Women's Union"
+
+#. Lao National Mass Media and Publishing Day.
+msgid "ວັນສື່ມວນຊົນແຫ່ງຊາດ ແລະ ວັນພິມຈໍາໜ່າຍ"
+msgstr "Lao National Mass Media and Publishing Day"
+
+#. Lao National Constitution Day.
+msgid "ວັນລັດຖະທໍາມະນູນແຫ່ງຊາດ"
+msgstr "Lao National Constitution Day"
+
+#. National Uprising Day.
+msgid "ວັນຍຶດອຳນາດທົ່ວປະເທດ"
+msgstr "National Uprising Day"
+
+#. Indepedence Declaration Day.
+msgid "ວັນປະກາດເອກະລາດ"
+msgstr "Indepedence Declaration Day"
+
+#. President Kaysone Phomvihane's Birthday.
+msgid "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"
+msgstr "President Kaysone Phomvihane's Birthday"
