@@ -27,6 +27,7 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MG"
     default_language = "mg"
     supported_languages = ("en_US", "mg", "uk")
+    start_year = 1947
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -34,10 +35,6 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Observed since 1947
-        if self._year <= 1946:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Taom-baovao"))
 

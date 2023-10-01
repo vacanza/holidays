@@ -41,6 +41,8 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SC", "en_US")
+    # Earliest source is the 1994 amendment of Seychelles Public Holidays Act.
+    start_year = 1994
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -50,10 +52,6 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Earliest source is the 1994 amendment of Seychelles Public Holidays Act.
-        if self._year <= 1993:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 

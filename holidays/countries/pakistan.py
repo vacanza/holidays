@@ -18,6 +18,7 @@ from holidays.holiday_base import HolidayBase
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "PK"
+    start_year = 1948
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -25,9 +26,6 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1947:
-            return None
-
         # Kashmir Solidarity Day.
         if self._year >= 1990:
             self._add_holiday_feb_5("Kashmir Solidarity Day")

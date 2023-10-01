@@ -85,6 +85,8 @@ class Kazakhstan(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (қайта белгіленген демалыс, бағаланған)")
     supported_languages = ("en_US", "kk", "uk")
+    # Kazakhstan declared its sovereignty on 25 October 1990.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -96,10 +98,6 @@ class Kazakhstan(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Kazakhstan declared its sovereignty on 25 October 1990
-        if self._year <= 1990:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.

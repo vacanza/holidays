@@ -30,7 +30,7 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
 
     def test_new_years(self):
         self.assertHoliday(
-            "1900-01-01",
+            "1901-01-01",
             "2017-01-01",
             "2023-01-01",
         )
@@ -80,7 +80,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         self.assertHoliday(
             "2005-06-06",
             "2017-06-06",
-            "2999-06-06",
         )
         self.assertNoHoliday("2004-06-06")
         self.assertNoHolidayName("Sveriges nationaldag", Sweden(years=2004))

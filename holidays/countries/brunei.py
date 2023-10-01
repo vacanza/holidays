@@ -127,6 +127,8 @@ class Brunei(
     observed_estimated_label = tr("%s (diperhatikan, anggaran)")
     supported_languages = ("en_US", "ms", "th")
     weekend = {FRI, SUN}
+    # Available post-Independence from 1984 afterwards
+    start_year = 1984
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -138,10 +140,6 @@ class Brunei(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Available post-Independence from 1984 afterwards
-        if self._year <= 1983:
-            return None
-
         # Awal Tahun Masihi
         # Status: In-Use.
 

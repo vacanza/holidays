@@ -73,6 +73,7 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     supported_languages = ("en_US", "es", "uk")
     # %s (observed).
     observed_label = tr("%s (observado)")
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

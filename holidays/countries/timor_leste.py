@@ -48,6 +48,8 @@ class TimorLeste(
     # %s (estimated).
     estimated_label = tr("%s (aproximada)")
     supported_languages = ("en_US", "pt_TL", "tet")
+    # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
+    start_year = 2006
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -57,10 +59,6 @@ class TimorLeste(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
-        if self._year <= 2005:
-            return None
-
         # Fixed Date Public Holidays.
 
         # New Year's Day.
@@ -141,10 +139,6 @@ class TimorLeste(
         self._add_eid_al_adha_day(tr("Idul Adha"))
 
     def _populate_workday_holidays(self):
-        # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
-        if self._year <= 2005:
-            return None
-
         # Fixed Date Government Holidays.
 
         # World Children's Day.

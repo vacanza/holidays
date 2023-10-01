@@ -52,6 +52,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
     country = "KH"
     default_language = "km"
     supported_languages = ("en_US", "km", "th")
+    # Available post-Independence from 1993 afterwards
+    start_year = 1993
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -60,10 +62,6 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Available post-Independence from 1993 afterwards
-        if self._year <= 1992:
-            return None
-
         # Fixed Holidays
 
         #  ទិវាចូលឆ្នាំសាកល

@@ -127,6 +127,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         "MH",
         "PW",
     )
+    start_year = 1777
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

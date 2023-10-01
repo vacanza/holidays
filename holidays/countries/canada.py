@@ -62,6 +62,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         "YT",
     )
     supported_languages = ("ar", "en_CA", "en_US", "fr", "th")
+    start_year = 1867
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -99,18 +100,12 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_christmas_day(tr("Christmas Day"))
 
     def _populate_public_holidays(self):
-        if self._year <= 1866:
-            return None
-
         self._add_statutory_holidays()
 
         self._add_observed(self._christmas_day)
 
     def _populate_government_holidays(self):
         """Holidays for federally regulated workplaces."""
-
-        if self._year <= 1866:
-            return None
 
         self._add_statutory_holidays()
 
@@ -141,9 +136,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         )
 
     def _populate_optional_holidays(self):
-        if self._year <= 1866:
-            return None
-
         # Christmas Day.
         self._add_observed(
             self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE

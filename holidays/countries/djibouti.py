@@ -24,6 +24,8 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
     estimated_label = tr("%s (estimé)")
     supported_languages = ("ar", "en_US", "fr")
     weekend = {FRI, SAT}
+    # On 27 June 1977, Djibouti gained independence from France.
+    start_year = 1978
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -32,10 +34,6 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # On 27 June 1977, Djibouti gained independence from France.
-        if self._year <= 1977:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Nouvel an"))
 

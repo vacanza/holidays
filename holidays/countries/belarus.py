@@ -33,6 +33,8 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     country = "BY"
     default_language = "be"
     supported_languages = ("be", "en_US")
+    # The current set of holidays actual from 1998.
+    start_year = 1998
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -41,10 +43,6 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # The current set of holidays actual from 1998.
-        if self._year <= 1997:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Новы год"))
 

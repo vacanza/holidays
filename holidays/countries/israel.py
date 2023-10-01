@@ -54,6 +54,7 @@ class Israel(ObservedHolidayBase):
     supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
     supported_languages = ("en_US", "he", "uk")
     weekend = {FRI, SAT}
+    start_year = 1948
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)
@@ -63,12 +64,6 @@ class Israel(ObservedHolidayBase):
         return _HebrewLunisolar._get_holiday(holiday, self._year)
 
     def _populate_public_holidays(self):
-        if self._year <= 1947:
-            return None
-
-        if self._year >= 2101:
-            raise NotImplementedError
-
         # Rosh Hashanah (New Year).
         name = tr("ראש השנה")
         rosh_hashanah_dt = self._get_holiday(ROSH_HASHANAH)
@@ -105,12 +100,6 @@ class Israel(ObservedHolidayBase):
         self._add_holiday(tr("שבועות"), self._get_holiday(SHAVUOT))
 
     def _populate_optional_holidays(self):
-        if self._year <= 1947:
-            return None
-
-        if self._year >= 2101:
-            raise NotImplementedError
-
         sukkot_dt = self._get_holiday(SUKKOT)
         for offset in range(1, 6):
             # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
@@ -151,12 +140,6 @@ class Israel(ObservedHolidayBase):
             self._add_holiday(name, tisha_bav_dt)
 
     def _populate_school_holidays(self):
-        if self._year <= 1947:
-            return None
-
-        if self._year >= 2101:
-            raise NotImplementedError
-
         sukkot_dt = self._get_holiday(SUKKOT)
         for offset in range(1, 6):
             # Chol HaMoed Sukkot (Feast of Tabernacles holiday).

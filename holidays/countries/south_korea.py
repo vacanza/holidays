@@ -92,6 +92,7 @@ class SouthKorea(
     # Alternative holiday for %s.
     observed_label = tr("%s 대체 휴일")
     supported_languages = ("en_US", "ko", "th")
+    start_year = 1948
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
@@ -133,9 +134,6 @@ class SouthKorea(
                 self._add_holiday(self.tr("%s 다음날") % name, _timedelta(dt, +1)),
             ):
                 three_days_holidays[dt_alt] = name
-
-        if self._year <= 1947:
-            return None
 
         dts_observed = set()
         three_days_holidays = {}
@@ -281,9 +279,6 @@ class SouthKorea(
             self._populate_observed(dts_observed, three_days_holidays)
 
     def _populate_bank_holidays(self):
-        if self._year <= 1947:
-            return None
-
         # Workers' Day.
         name = tr("근로자의날")
         if self._year >= 1994:

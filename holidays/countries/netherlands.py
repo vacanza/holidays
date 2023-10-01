@@ -32,6 +32,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "nl"
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "nl", "uk")
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
