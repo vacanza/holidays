@@ -60,11 +60,6 @@ repos:
     hooks:
       - id: tox-ini-fmt
 
-  - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.4.0
-    hooks:
-      - id: setup-cfg-fmt
-
   - repo: local
     hooks:
       - id: tests

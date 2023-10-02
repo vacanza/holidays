@@ -579,12 +579,12 @@ class HolidayBase(Dict[date, str]):
             parts.append(f"holidays.financial_holidays({self.market!r}")
             parts.append(")")
         elif hasattr(self, "country"):
-            if parts:
-                parts.append(" + ")
             parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
                 parts.append(f", subdiv={self.subdiv!r}")
             parts.append(")")
+        else:
+            parts.append("holidays.HolidayBase()")
 
         return "".join(parts)
 
@@ -751,7 +751,7 @@ class HolidayBase(Dict[date, str]):
         self._add_substituted_holidays()
 
     def _populate_categories(self):
-        for category in self.categories:
+        for category in sorted(self.categories):
             # Populate items from the special holidays list for all categories.
             special_category_holidays = getattr(self, f"special_{category}_holidays", None)
             if special_category_holidays:
