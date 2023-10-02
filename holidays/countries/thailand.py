@@ -474,14 +474,19 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
 
         if self._year >= 2017:
             k_bhumibol_memorial = (
-                # Anniversary for the Death of King Bhumibol Adulyadej the Great.
-                tr(
-                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
-                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                # HM King Bhumibol Adulyadej Memorial Day.
+                tr("วันนวมินทรมหาราช")
+                if self._year >= 2023
+                else (
+                    # Anniversary for the Death of King Bhumibol Adulyadej the Great.
+                    tr(
+                        "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
+                        "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                    )
+                    if self._year >= 2019
+                    # Anniversary for the Death of King Bhumibol Adulyadej.
+                    else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
                 )
-                if self._year >= 2019
-                # Anniversary for the Death of King Bhumibol Adulyadej.
-                else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
             )
             self._add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
 

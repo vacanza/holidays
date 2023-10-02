@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.33\n"
+"Project-Id-Version: Python Holidays 0.34\n"
 "POT-Creation-Date: 2023-03-18 15:58-0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -240,3 +240,7 @@ msgstr "HM King Ramkamhaeng Memorial Day"
 #. Thai National Flag Day
 msgid "วันพระราชทานธงชาติไทย"
 msgstr "Thai National Flag Day"
+
+#. HM King Bhumibol Adulyadej Memorial Day.
+msgid "วันนวมินทรมหาราช"
+msgstr "HM King Bhumibol Adulyadej Memorial Day"
