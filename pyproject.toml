@@ -1,6 +1,6 @@
 [project]
 name = "holidays"
-version = "0.34"
+version = "0.35"
 description = "Generate and work with holidays in Python"
 license = { file = "LICENSE" }
 readme = "README.rst"
