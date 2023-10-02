@@ -9,18 +9,18 @@ requires-python = ">=3.8"
 authors = [{ email = "dr.prodigy.github@gmail.com", name = "Maurizio Montel" }]
 dependencies = ["python-dateutil"]
 classifiers = [
-    "Classifier: Development Status :: 4 - Beta",
-    "Classifier: Intended Audience :: Developers",
-    "Classifier: License :: OSI Approved :: MIT License",
-    "Classifier: Operating System :: OS Independent",
-    "Classifier: Programming Language :: Python",
-    "Classifier: Programming Language :: Python :: 3",
-    "Classifier: Programming Language :: Python :: 3 :: Only",
-    "Classifier: Programming Language :: Python :: Implementation :: CPython",
-    "Classifier: Programming Language :: Python :: Implementation :: PyPy",
-    "Classifier: Topic :: Office/Business :: Scheduling",
-    "Classifier: Topic :: Software Development :: Libraries :: Python Modules",
-    "Classifier: Topic :: Software Development :: Localization",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Office/Business :: Scheduling",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Localization",
 ]
 keywords = ["holidays", "calendar", "l10n"]
 maintainers = [{ email = "ark@cho.red", name = "Arkadii Yakovets" }]
