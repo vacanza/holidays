@@ -88,6 +88,7 @@ COUNTRIES: RegistryDict = {
     "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
     "kenya": ("Kenya", "KE", "KEN"),
     "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),
+    "laos": ("Laos", "LA", "LAO"),
     "latvia": ("Latvia", "LV", "LVA"),
     "lesotho": ("Lesotho", "LS", "LSO"),
     "liechtenstein": ("Liechtenstein", "LI", "LIE"),
