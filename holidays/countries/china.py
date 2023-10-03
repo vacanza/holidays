@@ -134,79 +134,79 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         if self._is_monday(dt):
             if self._year <= 2007:
                 # TUE-WED
-                self._add_holiday(self[dt], dt + td(days=1))
-                self._add_holiday(self[dt], dt + td(days=2))
+                self._add_holiday(self[dt], dt + td(days=+1))
+                self._add_holiday(self[dt], dt + td(days=+2))
             elif self._year >= 2008:
                 # [SAT]-[SUN]
-                self._add_holiday(self[dt], dt - td(days=2))
-                self._add_holiday(self[dt], dt - td(days=1))
+                self._add_holiday(self[dt], dt + td(days=-2))
+                self._add_holiday(self[dt], dt + td(days=-1))
                 if dt == date(self._year, MAY, 1) and self._year >= 2020:
                     # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=1))
-                    self._add_holiday(self[dt], dt + td(days=2))
+                    self._add_holiday(self[dt], dt + td(days=+1))
+                    self._add_holiday(self[dt], dt + td(days=+2))
         elif self._is_tuesday(dt):
             if self._year <= 2007:
                 # WED-THU
-                self._add_holiday(self[dt], dt + td(days=1))
-                self._add_holiday(self[dt], dt + td(days=2))
+                self._add_holiday(self[dt], dt + td(days=+1))
+                self._add_holiday(self[dt], dt + td(days=+2))
             elif self._year >= 2008:
                 # [SUN]-[MON]
-                self._add_holiday(self[dt], dt - td(days=2))
-                self._add_holiday(self[dt], dt - td(days=1))
+                self._add_holiday(self[dt], dt + td(days=-2))
+                self._add_holiday(self[dt], dt + td(days=-1))
                 if dt == date(self._year, MAY, 1) and self._year >= 2020:
                     # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=1))
-                    self._add_holiday(self[dt], dt + td(days=2))
+                    self._add_holiday(self[dt], dt + td(days=+1))
+                    self._add_holiday(self[dt], dt + td(days=+2))
         elif self._is_wednesday(dt) and self._year >= 2008:
             # [MON]-[TUE]
-            self._add_holiday(self[dt], dt - td(days=2))
-            self._add_holiday(self[dt], dt - td(days=1))
+            self._add_holiday(self[dt], dt + td(days=-2))
+            self._add_holiday(self[dt], dt + td(days=-1))
             if dt == date(self._year, MAY, 1) and self._year >= 2020:
                 # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=1))
-                self._add_holiday(self[dt], dt + td(days=2))
+                self._add_holiday(self[dt], dt + td(days=+1))
+                self._add_holiday(self[dt], dt + td(days=+2))
         elif self._is_thursday(dt) and self._year >= 2008:
-            # [FRI]-[SAT]
-            self._add_holiday(self[dt], dt + td(days=1))
-            self._add_holiday(self[dt], dt + td(days=2))
+            # FRI-SAT
+            self._add_holiday(self[dt], dt + td(days=+1))
+            self._add_holiday(self[dt], dt + td(days=+2))
             if dt == date(self._year, MAY, 1) and self._year >= 2020:
                 # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=3))
-                self._add_holiday(self[dt], dt + td(days=4))
+                self._add_holiday(self[dt], dt + td(days=+3))
+                self._add_holiday(self[dt], dt + td(days=+4))
         elif self._is_friday(dt):
-            # [SAT]-[SUN]
-            self._add_holiday(self[dt], dt + td(days=1))
-            self._add_holiday(self[dt], dt + td(days=2))
+            # SAT-SUN
+            self._add_holiday(self[dt], dt + td(days=+1))
+            self._add_holiday(self[dt], dt + td(days=+2))
             if dt == date(self._year, MAY, 1) and self._year >= 2020:
                 # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=3))
-                self._add_holiday(self[dt], dt + td(days=4))
+                self._add_holiday(self[dt], dt + td(days=+3))
+                self._add_holiday(self[dt], dt + td(days=+4))
         elif self._is_saturday(dt):
             if self._year <= 2011 or self._year >= 2020:
                 # SUN-MON
-                self._add_holiday(self[dt], dt + td(days=1))
-                self._add_holiday(self[dt], dt + td(days=2))
+                self._add_holiday(self[dt], dt + td(days=+1))
+                self._add_holiday(self[dt], dt + td(days=+2))
                 if dt == date(self._year, MAY, 1) and self._year >= 2020:
                     # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=3))
-                    self._add_holiday(self[dt], dt + td(days=4))
+                    self._add_holiday(self[dt], dt + td(days=+3))
+                    self._add_holiday(self[dt], dt + td(days=+4))
             elif 2012 <= self._year <= 2019:
-                # [FRI]-[SUN]
-                self._add_holiday(self[dt], dt - td(days=1))
-                self._add_holiday(self[dt], dt + td(days=1))
+                # [FRI]-SUN
+                self._add_holiday(self[dt], dt + td(days=-1))
+                self._add_holiday(self[dt], dt + td(days=+1))
         elif self._is_sunday(dt):
             if self._year <= 2007 or 2012 <= self._year <= 2019:
                 # MON-TUE
-                self._add_holiday(self[dt], dt + td(days=1))
-                self._add_holiday(self[dt], dt + td(days=2))
+                self._add_holiday(self[dt], dt + td(days=+1))
+                self._add_holiday(self[dt], dt + td(days=+2))
             elif 2008 <= self._year <= 2011 or self._year >= 2020:
                 # [SAT]-MON
-                self._add_holiday(self[dt], dt - td(days=1))
-                self._add_holiday(self[dt], dt + td(days=1))
+                self._add_holiday(self[dt], dt + td(days=-1))
+                self._add_holiday(self[dt], dt + td(days=+1))
                 if dt == date(self._year, MAY, 1) and self._year >= 2020:
                     # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=2))
-                    self._add_holiday(self[dt], dt + td(days=3))
+                    self._add_holiday(self[dt], dt + td(days=+2))
+                    self._add_holiday(self[dt], dt + td(days=+3))
 
     def _populate_public_holidays(self):
         # Proclamation of the People's Republic of China on Oct 1, 1949.
