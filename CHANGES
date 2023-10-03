@@ -1,9 +1,16 @@
-Version 0.34
+Version 0.35
 ============
 
 Released ???????? ??, ????
 
+Version 0.34
+============
+
+Released October 2, 2023
+
 - Introduce holiday snapshots (#1478 by @arkid15r)
+- Add Laos holidays (#1483 by @PPsyrius)
+- Update Belarus holidays: add substituted holidays (#1486 by @KJhellico)
 - Update ES snapshot (#1481 by @arkid15r)
 - Update NYSE holidays: fix Juneteenth National Independence Day start year (#1484 by @KJhellico)
 - Update Spain holidays (#1476 by @KJhellico)
