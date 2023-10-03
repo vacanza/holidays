@@ -27,10 +27,11 @@ class TestChina(TestCase):
         self.assertNoHolidays(China(years=1949, categories=(HALF_DAY,)))
 
     def test_national_day(self):
+        name = "国庆节"
         for year in range(1950, 1999):
-            self.assertHoliday(f"{year}-10-01", f"{year}-10-02")
+            self.assertHolidayName(name, (f"{year}-10-01", f"{year}-10-02"))
         for year in range(1999, 2051):
-            self.assertHoliday(f"{year}-10-01", f"{year}-10-02", f"{year}-10-03")
+            self.assertHolidayName(name, (f"{year}-10-01", f"{year}-10-02", f"{year}-10-03"))
 
         self.assertNoNonObservedHoliday(
             "2022-10-04",
