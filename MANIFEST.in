@@ -1,5 +1,6 @@
 include CHANGES
 include CONTRIBUTING.rst
+include holidays/py.typed
 include Makefile
 
 recursive-include docs *
