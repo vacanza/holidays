@@ -1,4 +1,4 @@
-# Chinese holidays th translation.
+# Chinese holidays th localization.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
@@ -32,7 +32,7 @@ msgstr "วันไหว้พระจันทร์"
 msgid "春节"
 msgstr "วันตรุษจีน"
 
-#. Labour Day.
+#. Labor Day.
 msgid "劳动节"
 msgstr "วันแรงงาน"
 

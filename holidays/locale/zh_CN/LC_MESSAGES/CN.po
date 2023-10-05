@@ -32,7 +32,7 @@ msgstr ""
 msgid "春节"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "劳动节"
 msgstr ""
 

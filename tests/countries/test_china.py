@@ -857,7 +857,7 @@ class TestChina(TestCase):
             ("2022-12-31", "元旦"),
         )
 
-    def test_l10n_en_US(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
@@ -874,11 +874,11 @@ class TestChina(TestCase):
             ("2022-04-03", "Tomb-Sweeping Day"),
             ("2022-04-04", "Tomb-Sweeping Day"),
             ("2022-04-05", "Tomb-Sweeping Day"),
-            ("2022-04-30", "Labour Day"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day"),
-            ("2022-05-03", "Labour Day"),
-            ("2022-05-04", "Labour Day; Youth Day"),
+            ("2022-04-30", "Labor Day"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day"),
+            ("2022-05-03", "Labor Day"),
+            ("2022-05-04", "Labor Day; Youth Day"),
             ("2022-06-01", "Children's Day"),
             ("2022-06-03", "Dragon Boat Festival"),
             ("2022-06-04", "Dragon Boat Festival"),
@@ -937,7 +937,7 @@ class TestChina(TestCase):
             ("2022-12-31", "วันปีใหม่สากล"),
         )
 
-    def test_l10n_zh_TW(self):
+    def test_l10n_zh_tw(self):
         self.assertLocalizedHolidays(
             "zh_TW",
             ("2022-01-01", "元旦"),

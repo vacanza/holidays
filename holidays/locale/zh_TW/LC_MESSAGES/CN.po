@@ -1,4 +1,4 @@
-# Chinese holidays zh_TW translation.
+# Chinese holidays zh_TW localization.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
@@ -32,7 +32,7 @@ msgstr "中秋節"
 msgid "春节"
 msgstr "春節"
 
-#. Labour Day.
+#. Labor Day.
 msgid "劳动节"
 msgstr "勞動節"
 

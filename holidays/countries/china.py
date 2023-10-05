@@ -72,10 +72,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     new_years_day_overflow = tr("元旦")
 
     # National Day.
-    national_day_2008_gdw = tr("国庆节")
+    national_day_2008_golden_week = tr("国庆节")
 
     # Mid-Autumn Festival.
-    mid_autumn_fest_2010_special = tr("中秋节")
+    mid_autumn_festival_2010_special = tr("中秋节")
 
     special_public_holidays = {
         2007: (
@@ -85,15 +85,15 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         ),
         2008: (
             # 2008: weird National Day Golden Week pattern.
-            (SEP, 29, national_day_2008_gdw),
-            (SEP, 30, national_day_2008_gdw),
-            (OCT, 4, national_day_2008_gdw),
-            (OCT, 5, national_day_2008_gdw),
+            (SEP, 29, national_day_2008_golden_week),
+            (SEP, 30, national_day_2008_golden_week),
+            (OCT, 4, national_day_2008_golden_week),
+            (OCT, 5, national_day_2008_golden_week),
         ),
         2010: (
             # 2010: doesn't fit with existing observed pattern.
-            (SEP, 23, mid_autumn_fest_2010_special),
-            (SEP, 24, mid_autumn_fest_2010_special),
+            (SEP, 23, mid_autumn_festival_2010_special),
+            (SEP, 24, mid_autumn_festival_2010_special),
         ),
         2013: (
             # 2013: doesn't fit with existing observed pattern.
@@ -120,27 +120,31 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _one_off_observed_pattern(self, dt: date):
-        # Based on 2002-2023 data, calculates observance for one-off
-        # holidays (New Year's Day, Tomb-Sweeping Day, ...)
-        # - Monday -> Tue-Wed (????-2007), [Sat]-[Sun] (2008-???)
-        # - Tuesday -> Wed-Thu (????-2007), [Sun]-[Mon] (2008-????)
-        # - Wednesday -> None (????-2007), [Mon]-[Tue] (2008-????)
-        # - Thursday -> None (????-2007), Fri-Sat (2008-????)
-        # - Friday -> Sat-Sun (????-????)
-        # - Saturday -> [Fri]-Sun (2012-2019), Sun-Mon (????-2011, 2020-????)
-        # - Sunday -> Mon-Tue (????-2007, 2012-2019), [Sat]-Mon (2008-2011, 2020-????)
+    def _add_observed_one_off_holidays(self, dt: date):
+        """
+        Based on 2002-2023 data, adds observance for one-off
+        holidays (New Year's Day, Tomb-Sweeping Day, ..., etc.)
+         - Monday -> TUE-WED (????-2007), [SAT]-[SUN] (2008-???)
+         - Tuesday -> WED-THU (????-2007), [SUN]-[MON] (2008-????)
+         - Wednesday -> None (????-2007), [MON]-[TUE] (2008-????)
+         - Thursday -> None (????-2007), FRI-SAT (2008-????)
+         - Friday -> SAT-SUN (????-????)
+         - Saturday -> [FRI]-SUN (2012-2019), SUN-MON (????-2011, 2020-????)
+         - Sunday -> MON-TUE (????-2007, 2012-2019), [SAT]-MON (2008-2011, 2020-????)
+
+         '[DAY]' denotes that this applies prior to the input date, with 'DAY' as after.
+        """
 
         if self._is_monday(dt):
             if self._year <= 2007:
                 # TUE-WED
                 self._add_holiday(self[dt], dt + td(days=+1))
                 self._add_holiday(self[dt], dt + td(days=+2))
-            elif self._year >= 2008:
+            else:
                 # [SAT]-[SUN]
                 self._add_holiday(self[dt], dt + td(days=-2))
                 self._add_holiday(self[dt], dt + td(days=-1))
-                if dt == date(self._year, MAY, 1) and self._year >= 2020:
+                if self._year >= 2020 and dt == date(self._year, MAY, 1):
                     # 2 Extra Days for May Day >= 2020:
                     self._add_holiday(self[dt], dt + td(days=+1))
                     self._add_holiday(self[dt], dt + td(days=+2))
@@ -149,11 +153,11 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 # WED-THU
                 self._add_holiday(self[dt], dt + td(days=+1))
                 self._add_holiday(self[dt], dt + td(days=+2))
-            elif self._year >= 2008:
+            else:
                 # [SUN]-[MON]
                 self._add_holiday(self[dt], dt + td(days=-2))
                 self._add_holiday(self[dt], dt + td(days=-1))
-                if dt == date(self._year, MAY, 1) and self._year >= 2020:
+                if self._year >= 2020 and dt == date(self._year, MAY, 1):
                     # 2 Extra Days for May Day >= 2020:
                     self._add_holiday(self[dt], dt + td(days=+1))
                     self._add_holiday(self[dt], dt + td(days=+2))
@@ -161,7 +165,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # [MON]-[TUE]
             self._add_holiday(self[dt], dt + td(days=-2))
             self._add_holiday(self[dt], dt + td(days=-1))
-            if dt == date(self._year, MAY, 1) and self._year >= 2020:
+            if self._year >= 2020 and dt == date(self._year, MAY, 1):
                 # 2 Extra Days for May Day >= 2020:
                 self._add_holiday(self[dt], dt + td(days=+1))
                 self._add_holiday(self[dt], dt + td(days=+2))
@@ -169,7 +173,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # FRI-SAT
             self._add_holiday(self[dt], dt + td(days=+1))
             self._add_holiday(self[dt], dt + td(days=+2))
-            if dt == date(self._year, MAY, 1) and self._year >= 2020:
+            if self._year >= 2020 and dt == date(self._year, MAY, 1):
                 # 2 Extra Days for May Day >= 2020:
                 self._add_holiday(self[dt], dt + td(days=+3))
                 self._add_holiday(self[dt], dt + td(days=+4))
@@ -177,7 +181,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # SAT-SUN
             self._add_holiday(self[dt], dt + td(days=+1))
             self._add_holiday(self[dt], dt + td(days=+2))
-            if dt == date(self._year, MAY, 1) and self._year >= 2020:
+            if self._year >= 2020 and dt == date(self._year, MAY, 1):
                 # 2 Extra Days for May Day >= 2020:
                 self._add_holiday(self[dt], dt + td(days=+3))
                 self._add_holiday(self[dt], dt + td(days=+4))
@@ -186,7 +190,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 # SUN-MON
                 self._add_holiday(self[dt], dt + td(days=+1))
                 self._add_holiday(self[dt], dt + td(days=+2))
-                if dt == date(self._year, MAY, 1) and self._year >= 2020:
+                if self._year >= 2020 and dt == date(self._year, MAY, 1):
                     # 2 Extra Days for May Day >= 2020:
                     self._add_holiday(self[dt], dt + td(days=+3))
                     self._add_holiday(self[dt], dt + td(days=+4))
@@ -203,7 +207,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 # [SAT]-MON
                 self._add_holiday(self[dt], dt + td(days=-1))
                 self._add_holiday(self[dt], dt + td(days=+1))
-                if dt == date(self._year, MAY, 1) and self._year >= 2020:
+                if self._year >= 2020 and dt == date(self._year, MAY, 1):
                     # 2 Extra Days for May Day >= 2020:
                     self._add_holiday(self[dt], dt + td(days=+2))
                     self._add_holiday(self[dt], dt + td(days=+3))
@@ -232,7 +236,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 2023,
             }
         ):
-            self._one_off_observed_pattern(jan_1)
+            self._add_observed_one_off_holidays(jan_1)
 
         # 春节
         # Status: In-Use (Statutory).
@@ -262,26 +266,26 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # May 1 in 1949, 1999, 2007, and 2013 revision.
         # Additional Holidays (May 2-3) are available from 2000 (1999 rev.) - 2007 (2007 rev.).
 
-        # Labour Day Golden Weekend
+        # Labor Day Golden Weekend
         # Checked with Official Notice from 2001-2023.
         # Consecutive Holidays are available from 2002, with exception of ????-????.
 
-        # Labour Day.
-        labour_day = tr("劳动节")
-        may_1 = self._add_labor_day(labour_day)
+        # Labor Day.
+        labor_day = tr("劳动节")
+        may_1 = self._add_labor_day(labor_day)
         if 2000 <= self._year <= 2007:
-            self._add_labor_day_two(labour_day)
-            self._add_labor_day_three(labour_day)
+            self._add_labor_day_two(labor_day)
+            self._add_labor_day_three(labor_day)
             if self.observed:
                 # Non-Statutory.
-                self._add_holiday_may_4(labour_day)
-                self._add_holiday_may_5(labour_day)
-                self._add_holiday_may_6(labour_day)
-                self._add_holiday_may_7(labour_day)
+                self._add_holiday_may_4(labor_day)
+                self._add_holiday_may_5(labor_day)
+                self._add_holiday_may_6(labor_day)
+                self._add_holiday_may_7(labor_day)
         elif self.observed and (
             2008 <= self._year <= 2014 or self._year == 2018 or self._year >= 2020
         ):
-            self._one_off_observed_pattern(may_1)
+            self._add_observed_one_off_holidays(may_1)
 
         # 国庆节
         # Status: In-Use (Statutory).
@@ -312,11 +316,11 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # Consecutive Holidays are available from 2008, except in 2014/2015/2016/2019.
 
             # Tomb-Sweeping Day.
-            qingming_fest = self._add_qingming_festival(tr("清明节"))
+            qingming_festival = self._add_qingming_festival(tr("清明节"))
 
             if self.observed and self._year not in {2014, 2015, 2016, 2019, 2023}:
                 # Non-Statutory.
-                self._one_off_observed_pattern(qingming_fest)
+                self._add_observed_one_off_holidays(qingming_festival)
 
             # 端午节
             # Status: In-Use (Statutory).
@@ -324,11 +328,11 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # Consecutive Holidays are available from 2008, except in 2014/2015/2018/2019/2023.
 
             # Dragon Boat Festival.
-            dragon_boat_fest = self._add_dragon_boat_festival(tr("端午节"))
+            dragon_boat_festival = self._add_dragon_boat_festival(tr("端午节"))
 
             if self.observed and self._year not in {2014, 2015, 2018, 2019}:
                 # Non-Statutory.
-                self._one_off_observed_pattern(dragon_boat_fest)
+                self._add_observed_one_off_holidays(dragon_boat_festival)
 
             # 中秋节
             # Status: In-Use (Statutory).
@@ -337,30 +341,28 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             # Extra Day (Oct 8) is instead aded to the National Day Week if overlaps.
 
             # Mid-Autumn Festival.
-            mid_autumn_fest = self._add_mid_autumn_festival(tr("中秋节"))
+            mid_autumn_festival = self._add_mid_autumn_festival(tr("中秋节"))
 
             if self.observed:
                 # Non-Statutory.
                 if (
-                    mid_autumn_fest == date(self._year, OCT, 1)
-                    or mid_autumn_fest == date(self._year, OCT, 2)
-                    or mid_autumn_fest == date(self._year, OCT, 3)
-                    or mid_autumn_fest == date(self._year, OCT, 4)
-                    or mid_autumn_fest == date(self._year, OCT, 5)
-                    or mid_autumn_fest == date(self._year, OCT, 6)
-                    or mid_autumn_fest == date(self._year, OCT, 7)
+                    mid_autumn_festival == date(self._year, OCT, 1)
+                    or mid_autumn_festival == date(self._year, OCT, 2)
+                    or mid_autumn_festival == date(self._year, OCT, 3)
+                    or mid_autumn_festival == date(self._year, OCT, 4)
+                    or mid_autumn_festival == date(self._year, OCT, 5)
+                    or mid_autumn_festival == date(self._year, OCT, 6)
+                    or mid_autumn_festival == date(self._year, OCT, 7)
                 ):
                     self._add_holiday_oct_8(national_day)
-                elif mid_autumn_fest == date(self._year, SEP, 30):
-                    # No Additional Consecutive Holidays got added.
-                    pass
-                elif mid_autumn_fest == date(self._year, SEP, 29):
-                    self._add_holiday_sep_30(self[mid_autumn_fest])
-                elif self._year not in {2010, 2014, 2015, 2018, 2019}:
-                    self._one_off_observed_pattern(mid_autumn_fest)
+                elif mid_autumn_festival == date(self._year, SEP, 29):
+                    self._add_holiday_sep_30(self[mid_autumn_festival])
+                elif self._year not in {2010, 2012, 2014, 2015, 2018, 2019, 2030, 2050, 2096}:
+                    # SEP 30's "no observance added" rule for 2012/2030/2050/2096 included.
+                    self._add_observed_one_off_holidays(mid_autumn_festival)
 
     def _populate_half_day_holidays(self):
-        # No in-lieus are given for this category.
+        # No in lieus are given for this category.
         # Proclamation of the People's Republic of China on Oct 1, 1949.
         if self._year <= 1949:
             return None

@@ -1,4 +1,4 @@
-# Chinese holidays en_US translation.
+# Chinese holidays en_US localization.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
@@ -32,9 +32,9 @@ msgstr "Mid-Autumn Festival"
 msgid "春节"
 msgstr "Chinese New Year (Spring Festival)"
 
-#. Labour Day.
+#. Labor Day.
 msgid "劳动节"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Tomb-Sweeping Day.
 msgid "清明节"
