@@ -186,6 +186,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1937 and self.subdiv not in {
             "AK",
             "AR",
+            "CA",
             "DE",
             "FL",
             "HI",
