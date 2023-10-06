@@ -233,7 +233,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 2008,
                 2013,
                 2014,
-                2023,
+                2023
             }
         ):
             self._add_observed_one_off_holidays(jan_1)
