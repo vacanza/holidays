@@ -228,13 +228,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         if (
             self.observed
             and (2002 <= self._year <= 2015 or self._year >= 2020)
-            and self._year
-            not in {
-                2008,
-                2013,
-                2014,
-                2023
-            }
+            and self._year not in {2008, 2013, 2014, 2023}
         ):
             self._add_observed_one_off_holidays(jan_1)
 
