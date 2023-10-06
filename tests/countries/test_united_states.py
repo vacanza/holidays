@@ -447,7 +447,7 @@ class TestUS(TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        subdiv_dont = {"AK", "AR", "DE", "FL", "HI", "NV", "SD", "VI"}
+        subdiv_dont = {"AK", "AR", "CA", "DE", "FL", "HI", "NV", "SD", "VI"}
         for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
 
@@ -470,7 +470,7 @@ class TestUS(TestCase):
             "2023-10-09",
         )
 
-        for subdiv in ("AK", "AR", "DE", "FL", "HI", "NV"):
+        for subdiv in ("AK", "AR", "CA", "DE", "FL", "HI", "NV"):
             self.assertNoHoliday(self.state_hols[subdiv], dt)
             self.assertNoHolidayName(name, self.state_hols[subdiv])
 
