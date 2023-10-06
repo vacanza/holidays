@@ -345,15 +345,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
 
             if self.observed:
                 # Non-Statutory.
-                if (
-                    mid_autumn_festival == date(self._year, OCT, 1)
-                    or mid_autumn_festival == date(self._year, OCT, 2)
-                    or mid_autumn_festival == date(self._year, OCT, 3)
-                    or mid_autumn_festival == date(self._year, OCT, 4)
-                    or mid_autumn_festival == date(self._year, OCT, 5)
-                    or mid_autumn_festival == date(self._year, OCT, 6)
-                    or mid_autumn_festival == date(self._year, OCT, 7)
-                ):
+                if mid_autumn_festival.month == OCT and 1 <= mid_autumn_festival.day <= 7:
                     self._add_holiday_oct_8(national_day)
                 elif mid_autumn_festival == date(self._year, SEP, 29):
                     self._add_holiday_sep_30(self[mid_autumn_festival])
