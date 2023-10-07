@@ -24,6 +24,11 @@ class TestThailand(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Thailand(years=1940))
+        self.assertNoHolidays(Thailand(years=1958, categories=(ARMED_FORCES,)))
+        self.assertNoHolidays(Thailand(years=1942, categories=(BANK,)))
+        self.assertNoHolidays(Thailand(years=1956, categories=(GOVERNMENT,)))
+        self.assertNoHolidays(Thailand(years=1956, categories=(SCHOOL,)))
+        self.assertNoHolidays(Thailand(years=1940, categories=(WORKDAY,)))
 
     def test_special_holidays(self):
         self.assertHoliday(

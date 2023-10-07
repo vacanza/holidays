@@ -789,8 +789,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # วันลอยกระทง
         # Status: In-Use.
 
-        # Loy Krathong
-        self._add_loy_krathong(tr("วันลอยกระทง"))
+        if self._year >= 1941:
+            # Loy Krathong
+            self._add_loy_krathong(tr("วันลอยกระทง"))
 
 
 class TH(Thailand):
