@@ -29,73 +29,83 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
 
     For Northern Mariana Islands (subdivision MP):
-    https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/
-    https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0
+    - https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/  # noqa: E501
+    - https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0  # noqa: E501
+
+    Columbus Day / Indigenous Peoples Day history:
+    - https://www.pewresearch.org/short-reads/2023/10/05/working-on-columbus-day-or-indigenous-peoples-day-it-depends-on-where-your-job-is/  # noqa: E501
+    - https://www.officeholidays.com/holidays/usa/columbus-day-state-guide
+    - https://en.wikipedia.org/wiki/Indigenous_Peoples%27_Day_(United_States)
+    - https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays
+
     """
 
     country = "US"
     observed_label = "%s (Observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
-        "AK",
-        "AL",
-        "AR",
-        "AS",
-        "AZ",
-        "CA",
-        "CO",
-        "CT",
-        "DC",
-        "DE",
-        "FL",
+        "AK",  # Alaska.
+        "AL",  # Alabama.
+        "AR",  # Arkansas.
+        "AS",  # American Samoa.
+        "AZ",  # Arizona.
+        "CA",  # California.
+        "CO",  # Colorado.
+        "CT",  # Connecticut.
+        "DC",  # District of Columbia.
+        "DE",  # Delaware.
+        "FL",  # Florida.
+        "GA",  # Georgia.
+        "GU",  # Guam.
+        "HI",  # Hawaii.
+        "IA",  # Iowa.
+        "ID",  # Idaho.
+        "IL",  # Illinois.
+        "IN",  # Indiana.
+        "KS",  # Kansas.
+        "KY",  # Kentucky.
+        "LA",  # Louisiana.
+        "MA",  # Massachusetts.
+        "MD",  # Maryland.
+        "ME",  # Maine.
+        "MI",  # Michigan.
+        "MN",  # Minnesota.
+        "MO",  # Missouri.
+        "MP",  # Northern Mariana Islands.
+        "MS",  # Mississippi.
+        "MT",  # Montana.
+        "NC",  # North Carolina.
+        "ND",  # North Dakota.
+        "NE",  # Nebraska.
+        "NH",  # New Hampshire.
+        "NJ",  # New Jersey.
+        "NM",  # New Mexico.
+        "NV",  # Nevada.
+        "NY",  # New York.
+        "OH",  # Ohio.
+        "OK",  # Oklahoma.
+        "OR",  # Oregon.
+        "PA",  # Pennsylvania.
+        "PR",  # Puerto Rico.
+        "RI",  # Rhode Island.
+        "SC",  # South Carolina.
+        "SD",  # South Dakota.
+        "TN",  # Tennessee.
+        "TX",  # Texas.
+        "UM",  # United States Minor Outlying Islands.
+        "UT",  # Utah.
+        "VA",  # Virginia.
+        "VI",  # Virgin Islands, U.S..
+        "VT",  # Vermont.
+        "WA",  # Washington.
+        "WI",  # Wisconsin.
+        "WV",  # West Virginia.
+        "WY",  # Wyoming.
+    )
+
+    _deprecated_subdivisions = (
         "FM",
-        "GA",
-        "GU",
-        "HI",
-        "IA",
-        "ID",
-        "IL",
-        "IN",
-        "KS",
-        "KY",
-        "LA",
-        "MA",
-        "MD",
-        "ME",
         "MH",
-        "MI",
-        "MN",
-        "MO",
-        "MP",
-        "MS",
-        "MT",
-        "NC",
-        "ND",
-        "NE",
-        "NH",
-        "NJ",
-        "NM",
-        "NV",
-        "NY",
-        "OH",
-        "OK",
-        "OR",
-        "PA",
-        "PR",
         "PW",
-        "RI",
-        "SC",
-        "SD",
-        "TN",
-        "TX",
-        "UM",
-        "UT",
-        "VA",
-        "VI",
-        "VT",
-        "WA",
-        "WI",
-        "WV",
-        "WY",
     )
 
     def __init__(self, *args, **kwargs):
@@ -183,18 +193,31 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_holiday_feb_22(name)
 
         # Columbus Day
-        if self._year >= 1937 and self.subdiv not in {
-            "AK",
-            "AR",
-            "DE",
-            "FL",
-            "HI",
-            "NV",
-            "SD",
-            "VI",
-        }:
+        if self._year >= 1937 and (
+            self.subdiv is None
+            or self.subdiv
+            in {
+                "AS",
+                "AZ",
+                "CT",
+                "GA",
+                "ID",
+                "IL",
+                "IN",
+                "MA",
+                "MD",
+                "MO",
+                "MT",
+                "NJ",
+                "NY",
+                "OH",
+                "PA",
+                "UT",
+                "WV",
+            }
+        ):
             name = "Columbus Day"
-            if self._year >= 1970:
+            if self._year >= 1971:
                 self._add_holiday_2nd_mon_of_oct(name)
             else:
                 self._add_columbus_day(name)
@@ -209,6 +232,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_holiday_last_mon_of_mar(name)
             else:
                 self._add_holiday_mar_30(name)
+
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2015 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
 
         # Alaska Day
         if self._year >= 1867:
@@ -233,6 +261,15 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Jefferson Davis Birthday
         if self._year >= 1890:
             self._add_holiday_1st_mon_of_jun("Jefferson Davis Birthday")
+
+        # Columbus Day / American Indian Heritage Day / Fraternal Day
+        if self._year >= 1971:
+            name = (
+                "Columbus Day / American Indian Heritage Day / Fraternal Day"
+                if self._year >= 2000
+                else "Columbus Day / Fraternal Day"
+            )
+            self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_ar_holidays(self):
         # Martin Luther King Jr. Day
@@ -303,6 +340,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 2005:
             self._add_observed(self._add_holiday_apr_16("Emancipation Day"))
 
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
+
     def _add_subdiv_de_holidays(self):
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -323,9 +365,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Friday After Thanksgiving
         if self._year >= 1975:
             self._add_holiday_1_day_past_4th_thu_of_nov("Friday After Thanksgiving")
-
-    def _add_subdiv_fm_holidays(self):
-        pass
 
     def _add_subdiv_ga_holidays(self):
         # Martin Luther King Jr. Day
@@ -509,8 +548,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_apr_19(name)
 
-    def _add_subdiv_mh_holidays(self):
-        pass
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_mi_holidays(self):
         if self._year >= 2013:
@@ -597,6 +638,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_apr_22(name)
 
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2020 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
+
     def _add_subdiv_nh_holidays(self):
         # Martin Luther King Jr. Day
         if self._year >= 1986:
@@ -623,6 +669,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
 
     def _add_subdiv_nm_holidays(self):
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
+
         # Presidents' Day
         self._add_holiday_1_day_past_4th_thu_of_nov("Presidents' Day")
 
@@ -686,13 +737,17 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Discovery Day
         self._add_observed(self._add_holiday_nov_19("Discovery Day"), rule=SUN_TO_NEXT_MON)
 
-    def _add_subdiv_pw_holidays(self):
-        pass
-
     def _add_subdiv_ri_holidays(self):
         # Victory Day
         if self._year >= 1948:
             self._add_holiday_2nd_mon_of_aug("Victory Day")
+
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = (
+                "Indigenous Peoples Day / Columbus Day" if self._year >= 2022 else "Columbus Day"
+            )
+            self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_sc_holidays(self):
         # Confederate Memorial Day
@@ -700,9 +755,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_4th_mon_of_apr("Confederate Memorial Day")
 
     def _add_subdiv_sd_holidays(self):
-        # Columbus Day
+        # Native Americans' Day / Columbus Day
         if self._year >= 1937:
-            name = "Native American Day"
+            name = "Native Americans' Day" if self._year >= 1990 else "Columbus Day"
             if self._year >= 1970:
                 self._add_holiday_2nd_mon_of_oct(name)
             else:
@@ -780,6 +835,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 else self._add_holiday_mar_4(name),
                 rule=SUN_TO_NEXT_MON,
             )
+        # Indigenous Peoples Day
+        if self._year >= 1971:
+            name = "Indigenous Peoples Day" if self._year >= 2020 else "Columbus Day"
+            self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_vi_holidays(self):
         # Three Kings Day

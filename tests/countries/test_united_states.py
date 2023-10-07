@@ -27,6 +27,9 @@ class TestUS(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(UnitedStates, US, USA)
 
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
+
     def test_new_years(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1871, 2050)))
@@ -427,8 +430,8 @@ class TestUS(TestCase):
     def test_columbus_day(self):
         name = "Columbus Day"
         self.assertNoHolidayName(name, range(1865, 1937))
-        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1937, 1970)))
-        self.assertHolidayName(name, range(1970, 2050))
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1937, 1971)))
+        self.assertHolidayName(name, range(1971, 2050))
         dt = (
             "2010-10-11",
             "2011-10-10",
@@ -447,12 +450,53 @@ class TestUS(TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        subdiv_dont = {"AK", "AR", "DE", "FL", "HI", "NV", "SD", "VI"}
-        for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
+        subdivs_have_columbus_day = {
+            "AS",
+            "AZ",
+            "CT",
+            "GA",
+            "ID",
+            "IL",
+            "IN",
+            "MA",
+            "MD",
+            "MO",
+            "MT",
+            "NJ",
+            "NY",
+            "OH",
+            "PA",
+            "UT",
+            "WV",
+        }
+        subdivs_have_columbus_day_with_other_name = {
+            "AK",
+            "AL",
+            "DC",
+            "ME",
+            "MP",
+            "NE",
+            "NM",
+            "RI",
+            "SD",
+            "VA",
+            "VI",
+        }
+
+        for subdiv in subdivs_have_columbus_day:
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
 
+        for subdiv in (
+            set(UnitedStates.subdivisions)
+            - subdivs_have_columbus_day
+            - subdivs_have_columbus_day_with_other_name
+        ):
+            self.assertNoHolidayName(name, self.state_hols[subdiv])
+            self.assertNoHoliday(self.state_hols[subdiv], dt)
+
     def test_columbus_day_states(self):
-        name = "Columbus Day"
+        name_1 = "Columbus Day"
+        name_2 = "Indigenous Peoples Day"
         dt = (
             "2010-10-11",
             "2011-10-10",
@@ -469,16 +513,94 @@ class TestUS(TestCase):
             "2022-10-10",
             "2023-10-09",
         )
-
-        for subdiv in ("AK", "AR", "DE", "FL", "HI", "NV"):
-            self.assertNoHoliday(self.state_hols[subdiv], dt)
-            self.assertNoHolidayName(name, self.state_hols[subdiv])
-
-        self.assertHolidayName("Native American Day", self.state_hols["SD"], dt)
+        for subdiv, change_year in (
+            ("AK", 2015),
+            ("DC", 2019),
+            ("ME", 2019),
+            ("NM", 2019),
+            ("NE", 2020),
+            ("VA", 2020),
+        ):
+            self.assertNoHolidayName(name_1, self.state_hols[subdiv], range(1865, 1970))
+            self.assertHolidayName(name_1, self.state_hols[subdiv], range(1971, change_year))
+            self.assertHolidayName(name_2, self.state_hols[subdiv], range(change_year, 2050))
+            self.assertHoliday(self.state_hols[subdiv], dt)
 
         self.assertHolidayName(
             "Columbus Day and Puerto Rico Friendship Day", self.state_hols["VI"], dt
         )
+
+    def test_columbus_day_al(self):
+        name_1 = "Columbus Day / Fraternal Day"
+        name_2 = "Columbus Day / American Indian Heritage Day / Fraternal Day"
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+        self.assertNoHolidayName(name_1, self.state_hols["AL"], range(1865, 1970))
+        self.assertHolidayName(name_1, self.state_hols["AL"], range(1971, 2000))
+        self.assertHolidayName(name_2, self.state_hols["AL"], range(2000, 2050))
+        self.assertHoliday(self.state_hols["AL"], dt)
+
+    def test_columbus_day_ri(self):
+        name_1 = "Columbus Day"
+        name_2 = "Indigenous Peoples Day / Columbus Day"
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+        self.assertNoHolidayName(name_1, self.state_hols["RI"], range(1865, 1970))
+        self.assertHolidayName(name_1, self.state_hols["RI"], range(1971, 2022))
+        self.assertHolidayName(name_2, self.state_hols["RI"], range(2022, 2050))
+        self.assertHoliday(self.state_hols["RI"], dt)
+
+    def test_columbus_day_sd(self):
+        name_1 = "Columbus Day"
+        name_2 = "Native Americans' Day"
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+        self.assertNoHolidayName(name_1, self.state_hols["SD"], range(1865, 1937))
+        self.assertHolidayName(name_1, self.state_hols["SD"], range(1937, 1990))
+        self.assertHolidayName(name_2, self.state_hols["SD"], range(1990, 2050))
+        self.assertHolidayName(name_2, self.state_hols["SD"], dt)
 
     def test_epiphany(self):
         name = "Epiphany"
