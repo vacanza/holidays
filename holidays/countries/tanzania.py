@@ -51,6 +51,8 @@ class Tanzania(
         Government Notices No. 79 of 1977
         Government Notices No. 300 of 1985
         Government Notices No. 296 of 1994
+
+    - Exact Islamic holidays date are only available from 2013-2023; the rest being estimates.
     """
 
     country = "TZ"
