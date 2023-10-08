@@ -49,6 +49,14 @@ The latest stable version can always be installed or updated via pip:
 
     $ pip install --upgrade holidays
 
+The latest development (beta) version can be installed directly from GitHub:
+
+.. code-block:: shell
+
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
+
+All new features are always first pushed to beta branch, then released on
+master branch upon official version upgrades.
 
 Documentation
 -------------
@@ -678,6 +686,65 @@ The list of supported countries, their subdivisions and supported languages
      -
      -
 
+Holiday categories
+==================
+Many countries have other categories of holidays in addition to common (national-wide) holidays:
+bank holidays, school holidays, additional (paid or non-paid) holidays, holidays of state or
+public employees, religious holidays (valid only for these religions followers).
+
+List of countries for which holiday categories are supported (**additionally** to PUBLIC category):
+
+.. list-table::
+   :widths: 23 4 83
+   :header-rows: 1
+   :class: tight-table
+
+   * - Entity
+     - Code
+     - Available categories
+   * - Austria
+     - AT
+     - BANK
+   * - Belgium
+     - BE
+     - BANK
+   * - Brazil
+     - BR
+     - OPTIONAL
+   * - Bulgaria
+     - BG
+     - PUBLIC
+   * - Canada
+     - CA
+     - GOVERNMENT, OPTIONAL
+   * - Greece
+     - GR
+     - HALF_DAY
+   * - Indonesia
+     - ID
+     - GOVERNMENT
+   * - Japan
+     - JP
+     - BANK
+   * - Laos
+     - LA
+     - BANK, SCHOOL, WORKDAY
+   * - Liechtenstein
+     - LI
+     - BANK
+   * - Slovakia
+     - SK
+     - WORKDAY
+   * - SouthKorea
+     - KR
+     - BANK
+   * - Thailand
+     - TH
+     - ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY
+   * - Uruguay
+     - UY
+     - BANK
+
 
 Available Financial Markets
 ===========================
@@ -702,19 +769,6 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
-
-
-Beta Version
-------------
-
-The latest development (beta) version can be installed directly from GitHub:
-
-.. code-block:: shell
-
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
-
-All new features are always first pushed to beta branch, then released on
-master branch upon official version upgrades.
 
 
 Contributions
