@@ -256,7 +256,7 @@ The list of supported countries, their subdivisions and supported languages
    * - China
      - CN
      -
-     -
+     - en_US, th, **zh_CN**, zh_TW
    * - Colombia
      - CO
      -
