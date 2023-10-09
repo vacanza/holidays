@@ -51,7 +51,7 @@ msgstr "Zanzibar Revolution Day"
 #. The Sheikh Abeid Amani Karume Day.
 msgid ""
 "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-"Sheikh Abeid Amant Karume"
+"Sheikh Abeid Amani Karume"
 msgstr "The Sheikh Abeid Amani Karume Day"
 
 #. Union Celebrations.

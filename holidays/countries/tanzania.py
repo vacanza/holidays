@@ -132,7 +132,7 @@ class Tanzania(
         self._add_holiday_jan_12(tr("Mapinduzi ya Zanzibar"))
 
         # Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar
-        # Sheikh Abeid Amant Karume.
+        # Sheikh Abeid Amani Karume.
         # Status: In-Use.
         # Commemorates the death of Abeid Amani Karume on Apr 7, 1972.
         # Assumed to start via Government Notices 79 of 1977.
@@ -141,7 +141,7 @@ class Tanzania(
             # The Sheikh Abeid Amani Karume Day.
             tr(
                 "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-                "Sheikh Abeid Amant Karume"
+                "Sheikh Abeid Amani Karume"
             )
         )
 

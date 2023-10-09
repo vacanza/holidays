@@ -48,7 +48,7 @@ class TestTanzania(TestCase):
                 "2018-04-07",
                 (
                     "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-                    "Sheikh Abeid Amant Karume"
+                    "Sheikh Abeid Amani Karume"
                 ),
             ),
             ("2018-04-26", "Muungano wa Tanganyika na Zanzibar"),
@@ -73,7 +73,7 @@ class TestTanzania(TestCase):
                 "2020-04-07",
                 (
                     "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-                    "Sheikh Abeid Amant Karume"
+                    "Sheikh Abeid Amani Karume"
                 ),
             ),
             ("2020-04-10", "Ijumaa Kuu"),
@@ -107,7 +107,7 @@ class TestTanzania(TestCase):
                 "2021-04-07",
                 (
                     "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-                    "Sheikh Abeid Amant Karume"
+                    "Sheikh Abeid Amani Karume"
                 ),
             ),
             ("2021-04-26", "Muungano wa Tanganyika na Zanzibar"),
@@ -132,7 +132,7 @@ class TestTanzania(TestCase):
                 "2022-04-07",
                 (
                     "Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
-                    "Sheikh Abeid Amant Karume"
+                    "Sheikh Abeid Amani Karume"
                 ),
             ),
             ("2022-04-15", "Ijumaa Kuu"),
@@ -160,7 +160,7 @@ class TestTanzania(TestCase):
                 "2023-04-07",
                 (
                     "Ijumaa Kuu; Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali "
-                    "ya Mapinduzi Zanzibar Sheikh Abeid Amant Karume"
+                    "ya Mapinduzi Zanzibar Sheikh Abeid Amani Karume"
                 ),
             ),
             ("2023-04-09", "Sikukuu ya Pasaka"),
