@@ -1,0 +1,61 @@
+# Chinese holidays th localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.35\n"
+"POT-Creation-Date: 2023-09-28 19:23+0700\n"
+"PO-Revision-Date: 2023-09-28 19:57+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Translation Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. New Year's Day.
+msgid "元旦"
+msgstr "วันปีใหม่สากล"
+
+#. National Day.
+msgid "国庆节"
+msgstr "วันชาติจีน"
+
+#. Mid-Autumn Festival.
+msgid "中秋节"
+msgstr "วันไหว้พระจันทร์"
+
+#. Chinese New Year (Spring Festival).
+msgid "春节"
+msgstr "วันตรุษจีน"
+
+#. Labor Day.
+msgid "劳动节"
+msgstr "วันแรงงาน"
+
+#. Tomb-Sweeping Day.
+msgid "清明节"
+msgstr "วันเช็งเม้ง"
+
+#. Dragon Boat Festival.
+msgid "端午节"
+msgstr "วันไหว้บ๊ะจ่าง"
+
+#. International Women's Day.
+msgid "国际妇女节"
+msgstr "วันสตรีสากล"
+
+#. Youth Day.
+msgid "五四青年节"
+msgstr "วันเยาวชนห่งชาติจีน"
+
+#. Children's Day.
+msgid "六一儿童节"
+msgstr "วันเด็กสากล"
+
+#. Army Day.
+msgid "建军节"
+msgstr "วันสถาปนากองทัพปลดปล่อยประชาชนจีน"
