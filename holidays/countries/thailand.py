@@ -473,16 +473,20 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 2017:
-            k_bhumibol_memorial = (
+            if self._year >= 2023:
+                # HM King Bhumibol Adulyadej Memorial Day.
+                k_bhumibol_memorial = tr("วันนวมินทรมหาราช")
+            elif self._year >= 2019:
                 # Anniversary for the Death of King Bhumibol Adulyadej the Great.
-                tr(
+                k_bhumibol_memorial = tr(
                     "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
                     "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
                 )
-                if self._year >= 2019
+            else:
                 # Anniversary for the Death of King Bhumibol Adulyadej.
-                else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
-            )
+                k_bhumibol_memorial = tr(
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+                )
             self._add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
 
         # วันปิยมหาราช
@@ -501,26 +505,27 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 1960:
-            k_bhumibol_bday = (
-                # HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
-                tr(
-                    "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
-                    "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+            if self._year >= 2019:
+                k_bhumibol_bday = (
+                    # HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
+                    tr(
+                        "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
+                        "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                    )
                 )
-                if self._year >= 2019
-                else (
+            elif self._year >= 2016:
+                k_bhumibol_bday = (
                     # HM King Bhumibol Adulyadej Birthday Anniversary.
                     tr(
                         "วันคล้ายวันเฉลิมพระชนมพรรษา"
                         "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
                     )
-                    if self._year >= 2016
-                    # HM King Bhumibol Adulyadej Birthday Anniversary.
-                    else tr(
-                        "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-                    )
                 )
-            )
+            else:
+                k_bhumibol_bday = (
+                    # HM King Bhumibol Adulyadej Birthday Anniversary.
+                    tr("วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
+                )
             self._add_observed(self._add_holiday_dec_5(k_bhumibol_bday))
 
         # วันพ่อแห่งชาติ
@@ -784,8 +789,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # วันลอยกระทง
         # Status: In-Use.
 
-        # Loy Krathong
-        self._add_loy_krathong(tr("วันลอยกระทง"))
+        if self._year >= 1941:
+            # Loy Krathong
+            self._add_loy_krathong(tr("วันลอยกระทง"))
 
 
 class TH(Thailand):
