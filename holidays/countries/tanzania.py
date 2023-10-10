@@ -114,7 +114,7 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Mwaka Mpya.
         # Status: In-Use.
         # Abrogated in Public Holidays Ordinance No. 28 of 1966.
-        # Reinstitued prior to the Written Law (Miscellaneous Amendments) (No. 1) Act, 1993.
+        # Reinstituted prior to the Written Law (Miscellaneous Amendments) (No. 1) Act, 1993.
 
         # New Year's Day.
         self._add_new_years_day(tr("Mwaka Mpya"))
