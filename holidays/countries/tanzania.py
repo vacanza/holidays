@@ -106,7 +106,7 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
         # In-lieus ("Badala ya %s") are observed on Monday should it fall on the weekends.
         # Abrogated in Public Holidays Ordinance  No. 28 of 1966.
-        # Reinstitued in Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
+        # Reinstituted in Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
         # Claimed to be abrogated again on an unspecified date.
 
         # Fixed Date Holidays.
