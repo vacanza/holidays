@@ -32,7 +32,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     - https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/  # noqa: E501
     - https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0  # noqa: E501
 
-    Columbus Day / Indigenous Peoples Day history:
+    Columbus Day / Indigenous Peoples' Day history:
     - https://www.pewresearch.org/short-reads/2023/10/05/working-on-columbus-day-or-indigenous-peoples-day-it-depends-on-where-your-job-is/  # noqa: E501
     - https://www.officeholidays.com/holidays/usa/columbus-day-state-guide
     - https://en.wikipedia.org/wiki/Indigenous_Peoples%27_Day_(United_States)
@@ -233,10 +233,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_mar_30(name)
 
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2015 else "Columbus Day"
-            self._add_holiday_2nd_mon_of_oct(name)
+            self._add_holiday_2nd_mon_of_oct(
+                "Indigenous Peoples' Day" if self._year >= 2015 else "Columbus Day"
+            )
 
         # Alaska Day
         if self._year >= 1867:
@@ -264,12 +265,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         # Columbus Day / American Indian Heritage Day / Fraternal Day
         if self._year >= 1971:
-            name = (
+            self._add_holiday_2nd_mon_of_oct(
                 "Columbus Day / American Indian Heritage Day / Fraternal Day"
                 if self._year >= 2000
                 else "Columbus Day / Fraternal Day"
             )
-            self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_ar_holidays(self):
         # Martin Luther King Jr. Day
@@ -340,9 +340,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 2005:
             self._add_observed(self._add_holiday_apr_16("Emancipation Day"))
 
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            name = "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
             self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_de_holidays(self):
@@ -548,9 +548,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_apr_19(name)
 
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            name = "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
             self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_mi_holidays(self):
@@ -638,9 +638,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_apr_22(name)
 
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2020 else "Columbus Day"
+            name = "Indigenous Peoples' Day" if self._year >= 2020 else "Columbus Day"
             self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_nh_holidays(self):
@@ -669,9 +669,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
 
     def _add_subdiv_nm_holidays(self):
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2019 else "Columbus Day"
+            name = "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
             self._add_holiday_2nd_mon_of_oct(name)
 
         # Presidents' Day
@@ -742,10 +742,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1948:
             self._add_holiday_2nd_mon_of_aug("Victory Day")
 
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
             name = (
-                "Indigenous Peoples Day / Columbus Day" if self._year >= 2022 else "Columbus Day"
+                "Indigenous Peoples' Day / Columbus Day" if self._year >= 2022 else "Columbus Day"
             )
             self._add_holiday_2nd_mon_of_oct(name)
 
@@ -835,9 +835,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 else self._add_holiday_mar_4(name),
                 rule=SUN_TO_NEXT_MON,
             )
-        # Indigenous Peoples Day
+        # Indigenous Peoples' Day
         if self._year >= 1971:
-            name = "Indigenous Peoples Day" if self._year >= 2020 else "Columbus Day"
+            name = "Indigenous Peoples' Day" if self._year >= 2020 else "Columbus Day"
             self._add_holiday_2nd_mon_of_oct(name)
 
     def _add_subdiv_vi_holidays(self):

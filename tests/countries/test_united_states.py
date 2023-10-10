@@ -496,7 +496,7 @@ class TestUS(TestCase):
 
     def test_columbus_day_states(self):
         name_1 = "Columbus Day"
-        name_2 = "Indigenous Peoples Day"
+        name_2 = "Indigenous Peoples' Day"
         dt = (
             "2010-10-11",
             "2011-10-10",
@@ -556,7 +556,7 @@ class TestUS(TestCase):
 
     def test_columbus_day_ri(self):
         name_1 = "Columbus Day"
-        name_2 = "Indigenous Peoples Day / Columbus Day"
+        name_2 = "Indigenous Peoples' Day / Columbus Day"
         dt = (
             "2010-10-11",
             "2011-10-10",
