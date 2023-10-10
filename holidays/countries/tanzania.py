@@ -18,12 +18,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHol
 from holidays.holiday_base import HolidayBase
 
 
-class Tanzania(
-    HolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-):
+class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
     - https://old.tanzlii.org/tz/legislation/act/1962/48/  # 1962
