@@ -178,7 +178,7 @@ class TestTanzania(TestCase):
             ("2023-12-26", "Siku ya Kupeana Zawadi"),
         )
 
-    def test_l10n_en_US(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
