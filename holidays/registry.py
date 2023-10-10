@@ -135,6 +135,7 @@ COUNTRIES: RegistryDict = {
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "taiwan": ("Taiwan", "TW", "TWN"),
+    "tanzania": ("Tanzania", "TZ", "TZA"),
     "thailand": ("Thailand", "TH", "THA"),
     "tunisia": ("Tunisia", "TN", "TUN"),
     "turkey": ("Turkey", "TR", "TUR"),

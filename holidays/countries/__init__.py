@@ -129,6 +129,7 @@ from .spain import Spain, ES, ESP
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
+from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR
