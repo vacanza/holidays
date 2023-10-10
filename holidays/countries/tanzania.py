@@ -42,7 +42,7 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
     Limitations:
 
-    - Only works from 1994 onwards due to the lack of sources for certain legislations, which are:
+    - Only works from 1994 onwards due to the lack of sources for certain legislation:
         Government Notices No. 79 of 1977
         Government Notices No. 300 of 1985
         Government Notices No. 296 of 1994
