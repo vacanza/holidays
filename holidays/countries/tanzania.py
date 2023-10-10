@@ -47,7 +47,7 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         Government Notices No. 300 of 1985
         Government Notices No. 296 of 1994
 
-    - Exact Islamic holidays date are only available from 2013-2023; the rest being estimates.
+    - Exact Islamic holidays dates are only available for 2013-2023; the rest are estimates.
     """
 
     country = "TZ"
