@@ -8,7 +8,7 @@ on:
 jobs:
   auto-update:
     name: Update pre-commit hooks
-    if: github.repository == 'vacanza/python-holidays'
+    if: ${{ github.repository == 'vacanza/python-holidays' }}
     permissions:
       contents: write
       pull-requests: write
