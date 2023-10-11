@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -29,7 +29,7 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=GabonIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=GabonIslamicHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -86,7 +86,7 @@ class GAB(Gabon):
     pass
 
 
-class GabonIslamicCalendar(_CustomIslamicCalendar):
+class GabonIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

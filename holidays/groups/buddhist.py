@@ -20,8 +20,8 @@ class BuddhistCalendarHolidays:
     Buddhist lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_BuddhistLunisolar(), show_estimated=False) -> None:
-        self._buddhist_calendar = calendar
+    def __init__(self, cls=None, show_estimated=False) -> None:
+        self._buddhist_calendar = cls() if cls else _BuddhistLunisolar()
         self._show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(

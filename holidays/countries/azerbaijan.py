@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
@@ -31,7 +31,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=AzerbaijanIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=AzerbaijanIslamicHolidays)
         super().__init__(
             observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2006, *args, **kwargs
         )
@@ -152,7 +152,7 @@ class AZE(Azerbaijan):
     pass
 
 
-class AzerbaijanIslamicCalendar(_CustomIslamicCalendar):
+class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2011: (NOV, 6),
         2012: (OCT, 25),

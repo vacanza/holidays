@@ -14,7 +14,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomChineseCalendar
+from holidays.calendars import _CustomChineseHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, SAT, SUN
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
@@ -54,7 +54,7 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
     }
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self, calendar=SouthKoreaLunisolarCalendar())
+        ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -180,7 +180,7 @@ class KOR(SouthKorea):
     pass
 
 
-class SouthKoreaLunisolarCalendar(_CustomChineseCalendar):
+class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
     BUDDHA_BIRTHDAY_DATES = {
         1931: (MAY, 25),
         1968: (MAY, 5),
