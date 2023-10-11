@@ -12,11 +12,11 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Monaco
     https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays  # noqa: E501
@@ -26,13 +26,12 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fr"
     # %s (Observed).
     observed_label = tr("%s (Observé)")
-    # Public holiday.
-    special_holidays = {2015: (JAN, 7, tr("Jour férié"))}
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, MonacoStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -85,3 +84,10 @@ class MC(Monaco):
 
 class MCO(Monaco):
     pass
+
+
+class MonacoStaticHolidays:
+    special_holidays = {
+        # Public holiday.
+        2015: (JAN, 7, tr("Jour férié")),
+    }

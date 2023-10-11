@@ -14,7 +14,12 @@ from datetime import timedelta as td
 from typing import Optional
 
 from holidays.calendars.gregorian import JUL, AUG, SEP, MON, SUN, _get_nth_weekday_of_month
-from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
+from holidays.groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     WORKDAY_TO_NEXT_WORKDAY,
@@ -25,7 +30,11 @@ from holidays.observed_holiday_base import (
 
 
 class HongKong(
-    ObservedHolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
+    ObservedHolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
 ):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
@@ -35,22 +44,12 @@ class HongKong(
 
     country = "HK"
     observed_label = "The day following %s"
-    special_holidays = {
-        1997: (JUL, 2, "Hong Kong Special Administrative Region Establishment Day"),
-        2015: (
-            (
-                SEP,
-                3,
-                "The 70th anniversary day of the victory of the Chinese "
-                "people's war of resistance against Japanese aggression",
-            )
-        ),
-    }
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, HongKongStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
@@ -213,3 +212,17 @@ class HK(HongKong):
 
 class HKG(HongKong):
     pass
+
+
+class HongKongStaticHolidays:
+    special_holidays = {
+        1997: (JUL, 2, "Hong Kong Special Administrative Region Establishment Day"),
+        2015: (
+            (
+                SEP,
+                3,
+                "The 70th anniversary day of the victory of the Chinese "
+                "people's war of resistance against Japanese aggression",
+            )
+        ),
+    }

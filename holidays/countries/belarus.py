@@ -13,11 +13,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, MAR, APR, MAY, JUN, JUL, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     Belarus holidays.
 
@@ -32,6 +32,60 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "BY"
     default_language = "be"
     supported_languages = ("be", "en_US")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, BelarusStaticHolidays)
+        super().__init__(*args, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays actual from 1998.
+        if year <= 1997:
+            return None
+
+        super()._populate(year)
+
+        # New Year's Day.
+        self._add_new_years_day(tr("Новы год"))
+
+        if year >= 2020:
+            self._add_new_years_day_two(tr("Новы год"))
+
+        # Orthodox Christmas Day.
+        self._add_christmas_day(tr("Нараджэнне Хрыстова (праваслаўнае Раство)"))
+
+        # Women's Day.
+        self._add_womens_day(tr("Дзень жанчын"))
+
+        # Radunitsa (Day of Rejoicing).
+        self._add_rejoicing_day(tr("Радаўніца"))
+
+        # Labour Day.
+        self._add_labor_day(tr("Свята працы"))
+
+        # Victory Day.
+        self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
+
+        # Independence Day.
+        self._add_holiday_jul_3(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"))
+
+        # October Revolution Day.
+        self._add_holiday_nov_7(tr("Дзень Кастрычніцкай рэвалюцыі"))
+
+        # Catholic Christmas Day.
+        self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)
+
+
+class BY(Belarus):
+    pass
+
+
+class BLR(Belarus):
+    pass
+
+
+class BelarusStaticHolidays:
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
@@ -171,53 +225,3 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
             (NOV, 11, NOV, 6),
         ),
     }
-
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
-        InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _populate(self, year):
-        # The current set of holidays actual from 1998.
-        if year <= 1997:
-            return None
-
-        super()._populate(year)
-
-        # New Year's Day.
-        self._add_new_years_day(tr("Новы год"))
-
-        if year >= 2020:
-            self._add_new_years_day_two(tr("Новы год"))
-
-        # Orthodox Christmas Day.
-        self._add_christmas_day(tr("Нараджэнне Хрыстова (праваслаўнае Раство)"))
-
-        # Women's Day.
-        self._add_womens_day(tr("Дзень жанчын"))
-
-        # Radunitsa (Day of Rejoicing).
-        self._add_rejoicing_day(tr("Радаўніца"))
-
-        # Labour Day.
-        self._add_labor_day(tr("Свята працы"))
-
-        # Victory Day.
-        self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
-
-        # Independence Day.
-        self._add_holiday_jul_3(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"))
-
-        # October Revolution Day.
-        self._add_holiday_nov_7(tr("Дзень Кастрычніцкай рэвалюцыі"))
-
-        # Catholic Christmas Day.
-        self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)
-
-
-class BY(Belarus):
-    pass
-
-
-class BLR(Belarus):
-    pass
