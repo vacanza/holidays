@@ -31,4 +31,4 @@ jobs:
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           delete-branch: true
           title: Update pre-commit hooks
-          token: github.token
+          token: ${{ github.token }}
