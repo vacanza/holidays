@@ -22,7 +22,7 @@ class BuddhistCalendarHolidays:
 
     def __init__(self, cls=None, show_estimated=False) -> None:
         self._buddhist_calendar = cls() if cls else _BuddhistLunisolar()
-        self._show_estimated = show_estimated
+        self._buddhist_calendar_show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(
         self, name: str, dt_estimated: Tuple[date, bool]
@@ -38,7 +38,7 @@ class BuddhistCalendarHolidays:
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._show_estimated
+            if is_estimated and self._buddhist_calendar_show_estimated
             else name,
             dt,
         )
