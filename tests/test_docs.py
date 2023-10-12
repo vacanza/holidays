@@ -38,7 +38,7 @@ class TestReadme(TestCase):
 
     def test_supported_countries_table(self):
         # Parse table data.
-        columns_number = 4
+        columns_number = 5
         country_alpha_2_codes = set()
         country_default_languages = {}
         country_names = []
@@ -48,7 +48,7 @@ class TestReadme(TestCase):
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Supported Languages(.*)Available Financial Markets",
+                r"Supported Categories(.*)Available Financial Markets",
                 self.readme_content,
                 re.DOTALL,
             )[0].split("\n")
