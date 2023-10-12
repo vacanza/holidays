@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import APR, AUG, SEP, OCT, FRI, _get_nth_weekday_from
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_MON,
@@ -22,7 +22,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
       - https://www.qld.gov.au/recreation/travel/holidays
@@ -30,9 +30,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AU"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
-    }
     subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
 
     @property
@@ -47,6 +44,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, AustraliaStaticHolidays)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -317,3 +315,9 @@ class AU(Australia):
 
 class AUS(Australia):
     pass
+
+
+class AustraliaStaticHolidays:
+    special_holidays = {
+        2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
+    }

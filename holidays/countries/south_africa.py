@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     http://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
@@ -22,33 +22,11 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     country = "ZA"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        1999: (
-            (JUN, 2, "National and provincial government elections"),
-            (DEC, 31, "Y2K changeover"),
-        ),
-        2000: (JAN, 2, "Y2K changeover"),
-        2004: (APR, 14, "National and provincial government elections"),
-        2006: (MAR, 1, "Local government elections"),
-        2008: (MAY, 2, "Public holiday by presidential decree"),
-        2009: (APR, 22, "National and provincial government elections"),
-        2011: (
-            (MAY, 18, "Local government elections"),
-            (DEC, 27, "Public holiday by presidential decree"),
-        ),
-        2014: (MAY, 7, "National and provincial government elections"),
-        2016: (
-            (AUG, 3, "Local government elections"),
-            (DEC, 27, "Public holiday by presidential decree"),
-        ),
-        2019: (MAY, 8, "National and provincial government elections"),
-        2021: (NOV, 1, "Municipal elections"),
-        2022: (DEC, 27, "Public holiday by presidential decree"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, SouthAfricaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1995, *args, **kwargs)
 
     def _populate(self, year):
@@ -139,3 +117,29 @@ class ZA(SouthAfrica):
 
 class ZAF(SouthAfrica):
     pass
+
+
+class SouthAfricaStaticHolidays:
+    special_holidays = {
+        1999: (
+            (JUN, 2, "National and provincial government elections"),
+            (DEC, 31, "Y2K changeover"),
+        ),
+        2000: (JAN, 2, "Y2K changeover"),
+        2004: (APR, 14, "National and provincial government elections"),
+        2006: (MAR, 1, "Local government elections"),
+        2008: (MAY, 2, "Public holiday by presidential decree"),
+        2009: (APR, 22, "National and provincial government elections"),
+        2011: (
+            (MAY, 18, "Local government elections"),
+            (DEC, 27, "Public holiday by presidential decree"),
+        ),
+        2014: (MAY, 7, "National and provincial government elections"),
+        2016: (
+            (AUG, 3, "Local government elections"),
+            (DEC, 27, "Public holiday by presidential decree"),
+        ),
+        2019: (MAY, 8, "National and provincial government elections"),
+        2021: (NOV, 1, "Municipal elections"),
+        2022: (DEC, 27, "Public holiday by presidential decree"),
+    }

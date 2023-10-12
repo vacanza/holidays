@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import MAY
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
@@ -23,13 +23,11 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "LS"
-    special_holidays = {
-        2002: (MAY, 25, "Africa Day"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, LesothoStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -88,3 +86,9 @@ class LS(Lesotho):
 
 class LSO(Lesotho):
     pass
+
+
+class LesothoStaticHolidays:
+    special_holidays = {
+        2002: (MAY, 25, "Africa Day"),
+    }

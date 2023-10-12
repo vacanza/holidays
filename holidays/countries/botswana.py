@@ -12,11 +12,11 @@
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://www.gov.bw/public-holidays
     https://publicholidays.africa/botswana/2021-dates/
@@ -26,11 +26,11 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BW"
     observed_label = "%s (Observed)"
-    special_holidays = {2019: (JUL, 2, "Public Holiday")}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, BotswanaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1995, *args, **kwargs)
 
     def _populate(self, year):
@@ -75,3 +75,9 @@ class BW(Botswana):
 
 class BWA(Botswana):
     pass
+
+
+class BotswanaStaticHolidays:
+    special_holidays = {
+        2019: (JUL, 2, "Public Holiday"),
+    }

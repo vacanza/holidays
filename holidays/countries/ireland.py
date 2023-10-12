@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -18,7 +18,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     Official holidays in Ireland, as declared in the Citizen's Information
     bulletin:
@@ -27,13 +27,11 @@ class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "IE"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2022: (MAR, 18, "Day of Remembrance and Recognition"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, IrelandStaticHolidays)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -88,3 +86,9 @@ class IE(Ireland):
 
 class IRL(Ireland):
     pass
+
+
+class IrelandStaticHolidays:
+    special_holidays = {
+        2022: (MAR, 18, "Day of Remembrance and Recognition"),
+    }

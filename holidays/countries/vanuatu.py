@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JUL, OCT
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, MON_TO_NEXT_TUE
 
 
-class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu
     https://www.timeanddate.com/holidays/vanuatu/
@@ -23,21 +23,11 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "VU"
     observed_label = "%s (Observed)"
-    independence_anniversary = "40th Independence Anniversary"
-    special_holidays = {
-        2020: (
-            (JUL, 23, independence_anniversary),
-            (JUL, 27, independence_anniversary),
-            (JUL, 28, independence_anniversary),
-            (JUL, 29, independence_anniversary),
-            (JUL, 31, independence_anniversary),
-        ),
-        2022: (OCT, 13, "Election Day"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, VanatuStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -99,3 +89,18 @@ class VU(Vanuatu):
 
 class VTU(Vanuatu):
     pass
+
+
+class VanatuStaticHolidays:
+    independence_anniversary = "40th Independence Anniversary"
+
+    special_holidays = {
+        2020: (
+            (JUL, 23, independence_anniversary),
+            (JUL, 27, independence_anniversary),
+            (JUL, 28, independence_anniversary),
+            (JUL, 29, independence_anniversary),
+            (JUL, 31, independence_anniversary),
+        ),
+        2022: (OCT, 13, "Election Day"),
+    }
