@@ -12,11 +12,11 @@
 import warnings
 
 from holidays.calendars.gregorian import NOV
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101
     https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays
@@ -25,23 +25,10 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MH"
     observed_label = "%s Holiday"
 
-    # General Election Day
-    election_day = "General Election Day"
-
-    special_holidays = {
-        1995: (NOV, 20, election_day),
-        1999: (NOV, 22, election_day),
-        2003: (NOV, 17, election_day),
-        2007: (NOV, 19, election_day),
-        2011: (NOV, 21, election_day),
-        2015: (NOV, 16, election_day),
-        2019: (NOV, 18, election_day),
-        2023: (NOV, 20, election_day),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, MarshalIslandsStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -98,3 +85,19 @@ class MHL(HolidaysMH):
 
 class MarshallIslands(HolidaysMH):
     pass
+
+
+class MarshalIslandsStaticHolidays:
+    # General Election Day
+    election_day = "General Election Day"
+
+    special_holidays = {
+        1995: (NOV, 20, election_day),
+        1999: (NOV, 22, election_day),
+        2003: (NOV, 17, election_day),
+        2007: (NOV, 19, election_day),
+        2011: (NOV, 21, election_day),
+        2015: (NOV, 16, election_day),
+        2019: (NOV, 18, election_day),
+        2023: (NOV, 20, election_day),
+    }
