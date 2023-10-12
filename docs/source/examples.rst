@@ -142,6 +142,17 @@ To change the language translation, you can set the language explicitly.
    2023-12-08 La Inmaculada Concepción
    2023-12-25 Navidad
 
+Holiday categories support
+--------------------------
+To get a list of other categories holidays (for countries that support them):
+
+.. code-block:: python
+
+   >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK,)).items()):
+   >>>     print(dt, name)
+   2023-04-07 Good Friday
+   2023-05-19 Friday after Ascension Day
+   2023-12-26 Bank Holiday
 
 Date from holiday name
 ----------------------

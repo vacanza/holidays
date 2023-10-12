@@ -49,6 +49,14 @@ The latest stable version can always be installed or updated via pip:
 
     $ pip install --upgrade holidays
 
+The latest development (beta) version can be installed directly from GitHub:
+
+.. code-block:: shell
+
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
+
+All new features are always first pushed to beta branch, then released on
+master branch upon official version upgrades.
 
 Documentation
 -------------
@@ -120,12 +128,17 @@ a `ISO 639-1 code`_. A list of all languages supported by country is defined by
 ``supported_languages`` (optional) attribute. If there is no designated
 `ISO 639-1 code`_ then `ISO 639-2 code`_ can be used.
 
-The list of supported countries, their subdivisions and supported languages
+Many countries have other categories of holidays in addition to common (national-wide) holidays:
+bank holidays, school holidays, additional (paid or non-paid) holidays, holidays of state or
+public employees, religious holidays (valid only for these religions followers). A list of all
+categories supported by country is defined by ``supported_categories`` (optional) attribute.
+
+The list of supported countries, their subdivisions, supported languages and categories
 (all default values are hightlighted with bold):
 
 
 .. list-table::
-   :widths: 23 4 63 20
+   :widths: 20 4 46 20 10
    :header-rows: 1
    :class: tight-table
 
@@ -133,552 +146,690 @@ The list of supported countries, their subdivisions and supported languages
      - Code
      - Subdivisions
      - Supported Languages
+     - Supported Categories
    * - Albania
      - AL
+     -
      -
      -
    * - Algeria
      - DZ
      -
      - **ar**, en_US, fr
+     -
    * - American Samoa
      - AS
      - Can also be loaded as country US, subdivision AS
+     -
      -
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
      -
+     -
    * - Angola
      - AO
      -
      - en_US, **pt_AO**, uk
+     -
    * - Argentina
      - AR
      -
      - en_US, **es**, uk
+     -
    * - Armenia
      - AM
      -
      - en_US, **hy**
+     -
    * - Aruba
      - AW
      -
      - en_US, nl, **pap**, uk
+     -
    * - Australia
      - AU
      - States and territories: **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
+     -
      -
    * - Austria
      - AT
      - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
      - **de**, en_US, uk
+     - BANK, **PUBLIC**
    * - Azerbaijan
      - AZ
+     -
      -
      -
    * - Bahrain
      - BH
      -
      - **ar**, en_US
+     -
    * - Bangladesh
      - BD
+     -
      -
      -
    * - Barbados
      - BB
      -
      -
+     -
    * - Belarus
      - BY
      -
      - **be**, en_US
+     -
    * - Belgium
      - BE
      -
      - de, en_US, fr, **nl**, uk
+     - BANK, **PUBLIC**
    * - Belize
      - BZ
+     -
      -
      -
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
      - en_US, **es**, uk
+     -
    * - Bosnia and Herzegovina
      - BA
      - Entities and district: BIH, BRC, SRP
      - **bs**, en_US, sr, uk
+     -
    * - Botswana
      - BW
+     -
      -
      -
    * - Brazil
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
      -
+     - OPTIONAL, **PUBLIC**
    * - Brunei
      - BN
      -
      - en_US, **ms**, th
+     -
    * - Bulgaria
      - BG
      -
      - **bg**, en_US, uk
+     - **PUBLIC**, SCHOOL
    * - Burkina Faso
      - BF
+     -
      -
      -
    * - Burundi
      - BI
      -
      -
+     -
    * - Cambodia
      - KH
      -
      - en_US, **km**, th
+     -
    * - Cameroon
      - CM
+     -
      -
      -
    * - Canada
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
      - ar, **en**, fr, th
+     - GOVERNMENT, OPTIONAL, **PUBLIC**
    * - Chad
      - TD
+     -
      -
      -
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
      - en_US, **es**, uk
+     -
    * - China
      - CN
      -
      - en_US, th, **zh_CN**, zh_TW
+     - HALF_DAY, **PUBLIC**
    * - Colombia
      - CO
      -
      - en_US, **es**, uk
+     -
    * - Costa Rica
      - CR
      -
      - en_US, **es**, uk
+     -
    * - Croatia
      - HR
      -
      - en_US, **hr**, uk
+     -
    * - Cuba
      - CU
      -
      - en_US, **es**, uk
+     -
    * - Curacao
      - CW
      -
      - en_US, nl, **pap**, uk
+     -
    * - Cyprus
      - CY
      -
      - **el**, en_US
+     -
    * - Czechia
      - CZ
      -
      - **cs**, en_US, uk
+     -
    * - Denmark
      - DK
      -
      - **da**, en_US, uk
+     -
    * - Djibouti
      - DJ
      -
      - ar, en_US, **fr**
+     -
    * - Dominican Republic
      - DO
      -
      - en_US, **es**, uk
+     -
    * - Ecuador
      - EC
      -
      - en_US, **es**, uk
+     -
    * - Egypt
      - EG
      -
      - **ar**, en_US
+     -
    * - El Salvador
      - SV
      - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
+     -
      -
    * - Estonia
      - EE
      -
      - en_US, **et**, uk
+     -
    * - Eswatini
      - SZ
+     -
      -
      -
    * - Ethiopia
      - ET
      -
      - **am**, ar, en_US
+     -
    * - Finland
      - FI
      -
      - en_US, **fi**, sv, uk
+     -
    * - France
      - FR
      - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
      - en_US, **fr**, uk
+     -
    * - Gabon
      - GA
+     -
      -
      -
    * - Georgia
      - GE
      -
      - en_US, **ka**, uk
+     -
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
      - **de**, en_US, uk
+     -
    * - Greece
      - GR
      -
      - **el**, en_US, uk
+     - HALF_DAY, **PUBLIC**
    * - Guam
      - GU
      - Can also be loaded as country US, subdivision GU
+     -
      -
    * - Guatemala
      - GT
      -
      - en_US, **es**
+     -
    * - Honduras
      - HN
      -
      - en_US, **es**, uk
+     -
    * - Hong Kong
      - HK
+     -
      -
      -
    * - Hungary
      - HU
      -
      - en_US, **hu**, uk
+     -
    * - Iceland
      - IS
      -
      - en_US, **is**, uk
+     -
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+     -
      -
    * - Indonesia
      - ID
      -
      - en_US, **id**, uk
+     - GOVERNMENT, **PUBLIC**
    * - Iran
      - IR
      -
      - en_US, **fa**
+     -
    * - Ireland
      - IE
+     -
      -
      -
    * - Isle of Man
      - IM
      -
      -
+     -
    * - Israel
      - IL
+     -
      -
      -
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
      -
+     -
    * - Jamaica
      - JM
+     -
      -
      -
    * - Japan
      - JP
      -
      - en_US, **ja**
+     - BANK, **PUBLIC**
    * - Kazakhstan
      - KZ
+     -
      -
      -
    * - Kenya
      - KE
      -
      -
+     -
    * - Kyrgyzstan
      - KG
+     -
      -
      -
    * - Laos
      - LA
      -
      - en_US, **lo**, th
+     - BANK, **PUBLIC**, SCHOOL, WORKDAY
    * - Latvia
      - LV
      -
      - en_US, **lv**, uk
+     -
    * - Lesotho
      - LS
+     -
      -
      -
    * - Liechtenstein
      - LI
      -
      - **de**, en_US, uk
+     - BANK, **PUBLIC**
    * - Lithuania
      - LT
      -
      - en_US, **lt**, uk
+     -
    * - Luxembourg
      - LU
      -
      - de, en_US, fr, **lb**, uk
+     -
    * - Madagascar
      - MG
      -
      - en_US, **mg**, uk
+     -
    * - Malawi
      - MW
+     -
      -
      -
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
      -
+     -
    * - Malta
      - MT
      -
      - en_MT, **mt**
+     -
    * - Marshall Islands (the)
      - MH
+     -
      -
      -
    * - Mexico
      - MX
      -
      - en_US, **es**, uk
+     -
    * - Moldova
      - MD
      -
      - en_US, **ro**, uk
+     -
    * - Monaco
      - MC
      -
      - en_US, **fr**, uk
+     -
    * - Montenegro
      - ME
+     -
      -
      -
    * - Morocco
      - MA
      -
      - **ar**, en_US, fr
+     -
    * - Mozambique
      - MZ
      -
      - en_US, **pt_MZ**, uk
+     -
    * - Namibia
      - NA
+     -
      -
      -
    * - Netherlands
      - NL
      -
      - en_US, **nl**, uk
+     -
    * - New Zealand
      - NZ
      - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
+     -
      -
    * - Nicaragua
      - NI
      - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN**, MS, MT, NS, RI, SJ
      - en_US, **es**, uk
+     -
    * - Nigeria
      - NG
+     -
      -
      -
    * - Northern Mariana Islands (the)
      - MP
      - Can also be loaded as country US, subdivision MP
      -
+     -
    * - North Macedonia
      - MK
+     -
      -
      -
    * - Norway
      - NO
      -
      - en_US, **no**, uk
+     -
    * - Pakistan
      - PK
+     -
      -
      -
    * - Panama
      - PA
      -
      -
+     -
    * - Paraguay
      - PY
      -
      - en_US, **es**, uk
+     -
    * - Peru
      - PE
      -
      - en_US, **es**, uk
+     -
    * - Philippines
      - PH
+     -
      -
      -
    * - Poland
      - PL
      -
      - en_US, **pl**, uk
+     -
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30, Ext; Use subdiv='Ext' to include holidays most people have off
      - en_US, **pt_PT**
+     -
    * - Puerto Rico
      - PR
      - Can also be loaded as country US, subdivision PR
+     -
      -
    * - Romania
      - RO
      -
      - en_US, **ro**, uk
+     -
    * - Russia
      - RU
      -
      - en_US, **ru**
+     -
    * - San Marino
      - SM
+     -
      -
      -
    * - Saudi Arabia
      - SA
      -
      - **ar**, en_US
+     -
    * - Serbia
      - RS
      -
      - en_US, **sr**
+     -
    * - Singapore
      - SG
+     -
      -
      -
    * - Slovakia
      - SK
      -
      - en_US, **sk**, uk
+     - **PUBLIC**, WORKDAY
    * - Slovenia
      - SI
      -
      - en_US, **sl**, uk
+     -
    * - South Africa
      - ZA
+     -
      -
      -
    * - South Korea
      - KR
      -
      -
+     - BANK, **PUBLIC**
    * - Spain
      - ES
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
+     -
      -
    * - Sweden
      - SE
      -
      - en_US, **sv**, uk
+     -
    * - Switzerland
      - CH
      - Cantons: AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
      - **de**, en_US, fr, it, uk
+     -
    * - Taiwan
      - TW
+     -
      -
      -
    * - Tanzania
      - TZ
      -
      - en_US, **sw**
+     - BANK, **PUBLIC**
    * - Thailand
      - TH
      -
      - en_US, **th**
+     - ARMED_FORCES, BANK, GOVERNMENT, **PUBLIC**, SCHOOL, WORKDAY
    * - Tunisia
      - TN
      -
      - **ar**, en_US
+     -
    * - Turkey
      - TR
+     -
      -
      -
    * - Ukraine
      - UA
      -
      - ar, en_US, **uk**
+     -
    * - United Arab Emirates
      - AE
      -
      - **ar**, en_US
+     -
    * - United Kingdom
      - GB
      - Subdivisions: ENG, NIR, SCT, WLS
+     -
      -
    * - United States Minor Outlying Islands
      - UM
      - Can also be loaded as country US, subdivision UM
      -
+     -
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
+     -
      -
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
      -
+     -
    * - Uruguay
      - UY
      -
      - en_US, **es**, uk
+     - BANK, **PUBLIC**
    * - Uzbekistan
      - UZ
+     -
      -
      -
    * - Vanuatu
      - VU
      -
      -
+     -
    * - Vatican City
      - VA
+     -
      -
      -
    * - Venezuela
      - VE
      -
      - en_US, **es**, uk
+     -
    * - Vietnam
      - VN
+     -
      -
      -
    * - Virgin Islands (U.S.)
      - VI
      - Can also be loaded as country US, subdivision VI
      -
+     -
    * - Zambia
      - ZM
      -
      -
+     -
    * - Zimbabwe
      - ZW
+     -
      -
      -
 
@@ -706,19 +857,6 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
-
-
-Beta Version
-------------
-
-The latest development (beta) version can be installed directly from GitHub:
-
-.. code-block:: shell
-
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
-
-All new features are always first pushed to beta branch, then released on
-master branch upon official version upgrades.
 
 
 Contributions
