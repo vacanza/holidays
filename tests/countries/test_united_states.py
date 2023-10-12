@@ -531,26 +531,6 @@ class TestUS(TestCase):
             "Columbus Day and Puerto Rico Friendship Day", self.state_hols["VI"], dt
         )
 
-    def test_columbus_day_ca(self):
-        name = "Columbus Day"
-        dt = (
-            "1990-10-08",
-            "1995-10-09",
-            "2000-10-09",
-            "2001-10-08",
-            "2002-10-14",
-            "2003-10-13",
-            "2004-10-11",
-            "2005-10-10",
-            "2006-10-09",
-            "2007-10-08",
-            "2008-10-13",
-        )
-        self.assertNoHolidayName(name, self.state_hols["CA"], range(1865, 1970))
-        self.assertNoHolidayName(name, self.state_hols["CA"], range(2009, 2050))
-        self.assertHolidayName(name, self.state_hols["CA"], range(1971, 2009))
-        self.assertHoliday(self.state_hols["CA"], dt)
-
     def test_columbus_day_al(self):
         name_1 = "Columbus Day / Fraternal Day"
         name_2 = "Columbus Day / American Indian Heritage Day / Fraternal Day"
@@ -574,6 +554,26 @@ class TestUS(TestCase):
         self.assertHolidayName(name_1, self.state_hols["AL"], range(1971, 2000))
         self.assertHolidayName(name_2, self.state_hols["AL"], range(2000, 2050))
         self.assertHoliday(self.state_hols["AL"], dt)
+
+    def test_columbus_day_ca(self):
+        name = "Columbus Day"
+        dt = (
+            "1990-10-08",
+            "1995-10-09",
+            "2000-10-09",
+            "2001-10-08",
+            "2002-10-14",
+            "2003-10-13",
+            "2004-10-11",
+            "2005-10-10",
+            "2006-10-09",
+            "2007-10-08",
+            "2008-10-13",
+        )
+        self.assertNoHolidayName(name, self.state_hols["CA"], range(1865, 1970))
+        self.assertNoHolidayName(name, self.state_hols["CA"], range(2009, 2050))
+        self.assertHolidayName(name, self.state_hols["CA"], range(1971, 2009))
+        self.assertHoliday(self.state_hols["CA"], dt)
 
     def test_columbus_day_ri(self):
         name_1 = "Columbus Day"
