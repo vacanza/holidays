@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ALL_TO_NEAREST_MON,
@@ -22,12 +22,9 @@ from holidays.observed_holiday_base import (
 )
 
 
-class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     country = "NZ"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2022: (SEP, 26, "Queen Elizabeth II Memorial Day"),
-    }
     subdivisions = (
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makaurau
@@ -70,15 +67,16 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "WTL",  # Correct code is WTC
     )
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, NewZelandStaticHolidays)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+
     def _get_nearest_monday(self, *args) -> date:
         dt = args if len(args) > 1 else args[0]
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return self._get_observed_date(dt, rule=ALL_TO_NEAREST_MON)
-
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
         # Bank Holidays Act 1873
@@ -281,3 +279,9 @@ class NZ(NewZealand):
 
 class NZL(NewZealand):
     pass
+
+
+class NewZelandStaticHolidays:
+    special_holidays = {
+        2022: (SEP, 26, "Queen Elizabeth II Memorial Day"),
+    }

@@ -13,11 +13,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAY
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Russia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Russia
     """
@@ -26,18 +26,10 @@ class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "ru"
     supported_languages = ("en_US", "ru")
 
-    special_holidays = {
-        # Bridge days for 01/01/2023 and 08/01/2023.
-        # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
-        2023: (
-            (FEB, 24, tr("День защитника Отечества")),
-            (MAY, 8, tr("День Победы")),
-        ),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, RussiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -118,3 +110,14 @@ class RU(Russia):
 
 class RUS(Russia):
     pass
+
+
+class RussiaStaticHolidays:
+    special_holidays = {
+        # Bridge days for 01/01/2023 and 08/01/2023.
+        # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
+        2023: (
+            (FEB, 24, tr("День защитника Отечества")),
+            (MAY, 8, tr("День Победы")),
+        ),
+    }

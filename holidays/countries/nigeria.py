@@ -10,28 +10,30 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAY
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Nigeria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Nigeria(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
     """
 
     country = "NG"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2019: (
-            (FEB, 22, "Public Holiday for Elections"),
-            (MAY, 29, "Presidential Inauguration Day"),
-        ),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
+        StaticHolidays.__init__(self, NigeriaStaticHolidays)
         super().__init__(
             observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2016, *args, **kwargs
         )
@@ -90,3 +92,12 @@ class NG(Nigeria):
 
 class NGA(Nigeria):
     pass
+
+
+class NigeriaStaticHolidays:
+    special_holidays = {
+        2019: (
+            (FEB, 22, "Public Holiday for Elections"),
+            (MAY, 29, "Presidential Inauguration Day"),
+        ),
+    }

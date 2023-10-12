@@ -27,11 +27,11 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     Current holidays list:
     https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
@@ -70,6 +70,125 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (Observed).
     observed_label = tr("%s (вихідний)")
     supported_languages = ("ar", "en_US", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, UkraineStaticHolidays)
+        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+
+    def _is_observed(self, dt: date) -> bool:
+        # 27.01.1995: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/35/95-вр
+        # 10.01.1998: cancelled
+        # https://zakon.rada.gov.ua/laws/show/785/97-вр
+        # 23.04.1999: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/576-14
+        return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 1991
+        if year <= 1990:
+            return None
+
+        # There is no holidays in Ukraine during the period of martial law
+        # https://zakon.rada.gov.ua/laws/show/2136-20#n26
+        # law is in force from March 15, 2022
+        if year >= 2023:
+            return None
+
+        super()._populate(year)
+        dts_observed = set()
+
+        # New Year's Day.
+        dts_observed.add(self._add_new_years_day(tr("Новий рік")))
+
+        dts_observed.add(
+            # Christmas (Julian calendar).
+            self._add_christmas_day(tr("Різдво Христове (за юліанським календарем)"))
+        )
+
+        # International Women's Day.
+        dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
+
+        # There is no holidays from March 15, 2022
+        # https://zakon.rada.gov.ua/laws/show/2136-20#n26
+        if year <= 2021:
+            # Easter Sunday (Pascha).
+            dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
+
+            # Holy Trinity Day.
+            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
+
+            name = (
+                # Labour Day.
+                tr("День праці")
+                if year >= 2018
+                # International Workers' Solidarity Day.
+                else tr("День міжнародної солідарності трудящих")
+            )
+            dts_observed.add(self._add_labor_day(name))
+            if year <= 2017:
+                dts_observed.add(self._add_labor_day_two(name))
+
+            name = (
+                # Day of Victory over Nazism in World War II (Victory Day).
+                tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
+                if year >= 2016
+                # Victory Day.
+                else tr("День перемоги")
+            )
+            dts_observed.add(self._add_world_war_two_victory_day(name))
+
+            if year >= 1997:
+                # Day of the Constitution of Ukraine.
+                dts_observed.add(self._add_holiday_jun_28(tr("День Конституції України")))
+
+            # Independence Day.
+            name = tr("День незалежності України")
+            if year >= 1992:
+                dts_observed.add(self._add_holiday_aug_24(name))
+            else:
+                self._add_holiday_jul_16(name)
+
+            if year >= 2015:
+                name = (
+                    # Day of defenders of Ukraine.
+                    tr("День захисників і захисниць України")
+                    if year >= 2021
+                    # Defender of Ukraine Day.
+                    else tr("День захисника України")
+                )
+                dts_observed.add(self._add_holiday_oct_14(name))
+
+            if year <= 1999:
+                # Anniversary of the Great October Socialist Revolution.
+                name = tr("Річниця Великої Жовтневої соціалістичної революції")
+                dts_observed.add(self._add_holiday_nov_7(name))
+                dts_observed.add(self._add_holiday_nov_8(name))
+
+            if year >= 2017:
+                dts_observed.add(
+                    self._add_christmas_day(
+                        # Christmas (Gregorian calendar).
+                        tr("Різдво Христове (за григоріанським календарем)"),
+                        GREGORIAN_CALENDAR,
+                    )
+                )
+
+        if self.observed:
+            self._populate_observed(dts_observed)
+
+
+class UA(Ukraine):
+    pass
+
+
+class UKR(Ukraine):
+    pass
+
+
+class UkraineStaticHolidays:
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
@@ -189,118 +308,3 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         ),
         2022: (MAR, 12, MAR, 7),
     }
-
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
-        InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
-
-    def _is_observed(self, dt: date) -> bool:
-        # 27.01.1995: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/35/95-вр
-        # 10.01.1998: cancelled
-        # https://zakon.rada.gov.ua/laws/show/785/97-вр
-        # 23.04.1999: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/576-14
-        return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
-
-    def _populate(self, year):
-        # The current set of holidays came into force in 1991
-        if year <= 1990:
-            return None
-
-        # There is no holidays in Ukraine during the period of martial law
-        # https://zakon.rada.gov.ua/laws/show/2136-20#n26
-        # law is in force from March 15, 2022
-        if year >= 2023:
-            return None
-
-        super()._populate(year)
-        dts_observed = set()
-
-        # New Year's Day.
-        dts_observed.add(self._add_new_years_day(tr("Новий рік")))
-
-        dts_observed.add(
-            # Christmas (Julian calendar).
-            self._add_christmas_day(tr("Різдво Христове (за юліанським календарем)"))
-        )
-
-        # International Women's Day.
-        dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
-
-        # There is no holidays from March 15, 2022
-        # https://zakon.rada.gov.ua/laws/show/2136-20#n26
-        if year <= 2021:
-            # Easter Sunday (Pascha).
-            dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
-
-            # Holy Trinity Day.
-            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
-
-            name = (
-                # Labour Day.
-                tr("День праці")
-                if year >= 2018
-                # International Workers' Solidarity Day.
-                else tr("День міжнародної солідарності трудящих")
-            )
-            dts_observed.add(self._add_labor_day(name))
-            if year <= 2017:
-                dts_observed.add(self._add_labor_day_two(name))
-
-            name = (
-                # Day of Victory over Nazism in World War II (Victory Day).
-                tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
-                if year >= 2016
-                # Victory Day.
-                else tr("День перемоги")
-            )
-            dts_observed.add(self._add_world_war_two_victory_day(name))
-
-            if year >= 1997:
-                # Day of the Constitution of Ukraine.
-                dts_observed.add(self._add_holiday_jun_28(tr("День Конституції України")))
-
-            # Independence Day.
-            name = tr("День незалежності України")
-            if year >= 1992:
-                dts_observed.add(self._add_holiday_aug_24(name))
-            else:
-                self._add_holiday_jul_16(name)
-
-            if year >= 2015:
-                name = (
-                    # Day of defenders of Ukraine.
-                    tr("День захисників і захисниць України")
-                    if year >= 2021
-                    # Defender of Ukraine Day.
-                    else tr("День захисника України")
-                )
-                dts_observed.add(self._add_holiday_oct_14(name))
-
-            if year <= 1999:
-                # Anniversary of the Great October Socialist Revolution.
-                name = tr("Річниця Великої Жовтневої соціалістичної революції")
-                dts_observed.add(self._add_holiday_nov_7(name))
-                dts_observed.add(self._add_holiday_nov_8(name))
-
-            if year >= 2017:
-                dts_observed.add(
-                    self._add_christmas_day(
-                        # Christmas (Gregorian calendar).
-                        tr("Різдво Христове (за григоріанським календарем)"),
-                        GREGORIAN_CALENDAR,
-                    )
-                )
-
-        if self.observed:
-            self._populate_observed(dts_observed)
-
-
-class UA(Ukraine):
-    pass
-
-
-class UKR(Ukraine):
-    pass

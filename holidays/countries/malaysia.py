@@ -38,6 +38,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -55,17 +56,10 @@ class Malaysia(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     country = "MY"
     observed_label = "%s [In lieu]"
-    special_holidays = {
-        # The years 1955 1959 1995 seems to have the elections
-        # one weekday but I am not sure if they were marked as
-        # holidays.
-        1999: (NOV, 29, "Malaysia General Election Holiday"),
-        2018: (MAY, 9, "Malaysia General Election Holiday"),
-        2019: (JUL, 30, "Installation of New King"),
-    }
     subdivisions = (
         "JHR",
         "KDH",
@@ -142,6 +136,7 @@ class Malaysia(
         HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
+        StaticHolidays.__init__(self, MalaysiaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
@@ -691,4 +686,15 @@ class MalaysiaIslamicCalendar(_CustomIslamicCalendar):
         2021: (APR, 13),
         2022: (APR, 3),
         2023: (MAR, 23),
+    }
+
+
+class MalaysiaStaticHolidays:
+    special_holidays = {
+        # The years 1955 1959 1995 seems to have the elections
+        # one weekday but I am not sure if they were marked as
+        # holidays.
+        1999: (NOV, 29, "Malaysia General Election Holiday"),
+        2018: (MAY, 9, "Malaysia General Election Holiday"),
+        2019: (JUL, 30, "Installation of New King"),
     }
