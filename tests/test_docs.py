@@ -48,7 +48,7 @@ class TestReadme(TestCase):
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Supported Languages(.*)Holiday categories",
+                r"Supported Languages(.*)Available Financial Markets",
                 self.readme_content,
                 re.DOTALL,
             )[0].split("\n")
