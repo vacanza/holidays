@@ -301,7 +301,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - CN
      -
      - en_US, th, **zh_CN**, zh_TW
-     -
+     - HALF_DAY, **PUBLIC**
    * - Colombia
      - CO
      -
@@ -741,7 +741,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - TZ
      -
      - en_US, **sw**
-     -
+     - BANK, **PUBLIC**
    * - Thailand
      - TH
      -
