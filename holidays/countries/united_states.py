@@ -37,6 +37,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     - https://www.officeholidays.com/holidays/usa/columbus-day-state-guide
     - https://en.wikipedia.org/wiki/Indigenous_Peoples%27_Day_(United_States)
     - https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays
+    - https://web.archive.org/web/20080831103521/http://www.dpa.ca.gov/personnel-policies/holidays.htm  # noqa: E501
 
     """
 
@@ -309,6 +310,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Cesar Chavez Day
         if self._year >= 1995:
             self._add_observed(self._add_holiday_mar_31("Cesar Chavez Day"), rule=SUN_TO_NEXT_MON)
+
+        # Columbus Day
+        if 1971 <= self._year <= 2008:
+            self._add_holiday_2nd_mon_of_oct("Columbus Day")
 
         # Day After Thanksgiving
         if self._year >= 1975:
