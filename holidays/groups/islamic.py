@@ -24,8 +24,8 @@ class IslamicHolidays:
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, calendar=_IslamicLunar()) -> None:
-        self._islamic_calendar = calendar
+    def __init__(self, cls=None) -> None:
+        self._islamic_calendar = cls() if cls else _IslamicLunar()
 
     def _add_ali_al_rida_death_day(self, name) -> Set[date]:
         """

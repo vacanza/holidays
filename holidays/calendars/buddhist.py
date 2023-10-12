@@ -437,5 +437,5 @@ class _BuddhistLunisolar:
         return self._get_holiday(VESAK_MAY, year)
 
 
-class _CustomBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+class _CustomBuddhistHolidays(_CustomCalendar, _BuddhistLunisolar):
     pass

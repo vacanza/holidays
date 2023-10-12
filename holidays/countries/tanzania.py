@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -84,7 +84,7 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=TanzaniaIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=TanzaniaIslamicHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_bank_holidays(self):
@@ -252,7 +252,7 @@ class TZA(Tanzania):
     pass
 
 
-class TanzaniaIslamicCalendar(_CustomIslamicCalendar):
+class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2013: (OCT, 15),
         2014: (OCT, 5),

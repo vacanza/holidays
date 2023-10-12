@@ -10,10 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import (
-    _CustomBuddhistCalendar,
-    _CustomChineseCalendar,
-    _CustomIslamicCalendar,
-    _CustomHinduCalendar,
+    _CustomBuddhistHolidays,
+    _CustomChineseHolidays,
+    _CustomIslamicHolidays,
+    _CustomHinduHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
@@ -75,17 +75,13 @@ class Singapore(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        BuddhistCalendarHolidays.__init__(
-            self, calendar=SingaporeBuddhistCalendar(), show_estimated=True
-        )
-        ChineseCalendarHolidays.__init__(
-            self, calendar=SingaporeChineseCalendar(), show_estimated=True
-        )
+        BuddhistCalendarHolidays.__init__(self, cls=SingaporeBuddhistHolidays, show_estimated=True)
+        ChineseCalendarHolidays.__init__(self, cls=SingaporeChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self, calendar=SingaporeHinduCalendar())
+        HinduCalendarHolidays.__init__(self, cls=SingaporeHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=SingaporeIslamicCalendar())
-        StaticHolidays.__init__(self, SingaporeStaticHolidays)
+        IslamicHolidays.__init__(self, cls=SingaporeIslamicHolidays)
+        StaticHolidays.__init__(self, cls=SingaporeStaticHolidays)
         # Implement Section 4(2) of the Holidays Act:
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
@@ -157,7 +153,7 @@ class SGP(Singapore):
     pass
 
 
-class SingaporeBuddhistCalendar(_CustomBuddhistCalendar):
+class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
     VESAK_DATES = {
         2001: (MAY, 7),
         2002: (MAY, 26),
@@ -185,7 +181,7 @@ class SingaporeBuddhistCalendar(_CustomBuddhistCalendar):
     }
 
 
-class SingaporeChineseCalendar(_CustomChineseCalendar):
+class SingaporeChineseHolidays(_CustomChineseHolidays):
     LUNAR_NEW_YEAR_DATES = {
         2001: (JAN, 24),
         2002: (FEB, 12),
@@ -213,7 +209,7 @@ class SingaporeChineseCalendar(_CustomChineseCalendar):
     }
 
 
-class SingaporeHinduCalendar(_CustomHinduCalendar):
+class SingaporeHinduHolidays(_CustomHinduHolidays):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -241,7 +237,7 @@ class SingaporeHinduCalendar(_CustomHinduCalendar):
     }
 
 
-class SingaporeIslamicCalendar(_CustomIslamicCalendar):
+class SingaporeIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

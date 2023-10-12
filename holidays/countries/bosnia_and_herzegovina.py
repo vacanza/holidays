@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     GREGORIAN_CALENDAR,
     JAN,
@@ -73,7 +73,7 @@ class BosniaAndHerzegovina(
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=BosniaAndHerzegovinaIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=BosniaAndHerzegovinaIslamicHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -253,7 +253,7 @@ class BIH(BosniaAndHerzegovina):
     pass
 
 
-class BosniaAndHerzegovinaIslamicCalendar(_CustomIslamicCalendar):
+class BosniaAndHerzegovinaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

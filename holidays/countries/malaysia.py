@@ -10,10 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import (
-    _CustomBuddhistCalendar,
-    _CustomChineseCalendar,
-    _CustomHinduCalendar,
-    _CustomIslamicCalendar,
+    _CustomBuddhistHolidays,
+    _CustomChineseHolidays,
+    _CustomHinduHolidays,
+    _CustomIslamicHolidays,
 )
 from holidays.calendars.gregorian import (
     JAN,
@@ -126,17 +126,13 @@ class Malaysia(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        BuddhistCalendarHolidays.__init__(
-            self, calendar=MalaysiaBuddhistCalendar(), show_estimated=True
-        )
-        ChineseCalendarHolidays.__init__(
-            self, calendar=MalaysiaChineseCalendar(), show_estimated=True
-        )
+        BuddhistCalendarHolidays.__init__(self, cls=MalaysiaBuddhistHolidays, show_estimated=True)
+        ChineseCalendarHolidays.__init__(self, cls=MalaysiaChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
+        HinduCalendarHolidays.__init__(self, cls=MalaysiaHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
-        StaticHolidays.__init__(self, MalaysiaStaticHolidays)
+        IslamicHolidays.__init__(self, cls=MalaysiaIslamicHolidays)
+        StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
@@ -396,7 +392,7 @@ class MYS(Malaysia):
     pass
 
 
-class MalaysiaBuddhistCalendar(_CustomBuddhistCalendar):
+class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
     VESAK_MAY_DATES = {
         2001: (MAY, 7),
         2002: (MAY, 27),
@@ -424,7 +420,7 @@ class MalaysiaBuddhistCalendar(_CustomBuddhistCalendar):
     }
 
 
-class MalaysiaChineseCalendar(_CustomChineseCalendar):
+class MalaysiaChineseHolidays(_CustomChineseHolidays):
     LUNAR_NEW_YEAR_DATES = {
         2001: (JAN, 24),
         2002: (FEB, 12),
@@ -452,7 +448,7 @@ class MalaysiaChineseCalendar(_CustomChineseCalendar):
     }
 
 
-class MalaysiaHinduCalendar(_CustomHinduCalendar):
+class MalaysiaHinduHolidays(_CustomHinduHolidays):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -493,7 +489,7 @@ class MalaysiaHinduCalendar(_CustomHinduCalendar):
     }
 
 
-class MalaysiaIslamicCalendar(_CustomIslamicCalendar):
+class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

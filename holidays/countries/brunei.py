@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -78,7 +78,7 @@ class Brunei(
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=BruneiIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=BruneiIslamicHolidays)
         super().__init__(observed_rule=FRI_SUN_TO_NEXT_SAT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -205,7 +205,7 @@ class BRN(Brunei):
     pass
 
 
-class BruneiIslamicCalendar(_CustomIslamicCalendar):
+class BruneiIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2000: (MAR, 16),
         2001: (MAR, 6),
