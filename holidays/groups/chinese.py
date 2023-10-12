@@ -24,7 +24,7 @@ class ChineseCalendarHolidays:
 
     def __init__(self, calendar=_ChineseLunisolar(), show_estimated=False) -> None:
         self._chinese_calendar = calendar
-        self._show_estimated = show_estimated
+        self._chinese_calendar_show_estimated = show_estimated
 
     @property
     def _chinese_new_year(self):
@@ -64,7 +64,7 @@ class ChineseCalendarHolidays:
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._show_estimated
+            if is_estimated and self._chinese_calendar_show_estimated
             else name,
             dt,
         )
