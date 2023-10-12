@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
@@ -35,7 +35,7 @@ class Cameroon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Is
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=CameroonIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=CameroonIslamicHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
@@ -97,7 +97,7 @@ class CMR(Cameroon):
     pass
 
 
-class CameroonIslamicCalendar(_CustomIslamicCalendar):
+class CameroonIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

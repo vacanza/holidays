@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -20,7 +20,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=PakistanIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=PakistanIslamicHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -76,7 +76,7 @@ class PAK(Pakistan):
     pass
 
 
-class PakistanIslamicCalendar(_CustomIslamicCalendar):
+class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://www.timeanddate.com/holidays/pakistan/first-day-ashura
 
     ASHURA_DATES = {

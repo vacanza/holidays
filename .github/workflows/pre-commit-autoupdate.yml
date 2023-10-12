@@ -2,30 +2,33 @@ name: Update pre-commit hooks
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
   auto-update:
     name: Update pre-commit hooks
-    if: ${{ github.repository }} == "vacanza/python-holidays"
+    if: ${{ github.repository == 'vacanza/python-holidays' }}
     permissions:
       contents: write
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v4.7.1
         with:
-          python-version: "3.11"
+          python-version: '3.11'
+
       - uses: browniebroke/pre-commit-autoupdate-action@v1.0.0
+
       - uses: peter-evans/create-pull-request@v5.0.2
         with:
           base: beta
           body: Update pre-commit hooks to their latest versions.
           branch: update-pre-commit-hooks
-          commit-message: "Chore: Update pre-commit hooks"
+          commit-message: 'chore: Update pre-commit hooks'
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           delete-branch: true
           title: Update pre-commit hooks
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}

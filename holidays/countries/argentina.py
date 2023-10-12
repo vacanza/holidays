@@ -12,7 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     THU_TO_NEXT_MON,
@@ -21,7 +21,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Argentina.
@@ -73,97 +73,10 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (Observed).
     observed_label = tr("%s (Observado)")
 
-    # Special Bridge Holidays are given upto 3 days a year
-    # as long as it's declared 50 days before calendar year's end
-    # There's no Bridge Holidays declared in 2017
-
-    # Bridge Public Holiday.
-    arg_bridge_public_holiday = tr("Feriado con fines turísticos")
-
-    # Bicentenary of the creation and first oath of the national flag.
-    bicentennial_national_flag = tr(
-        "Bicentenario de la creación y primera jura de la bandera nacional"
-    )
-
-    # Bicentenary of the Battle of Tucuman.
-    bicentennial_battle_tucuman = tr("Bicentenario de la Batalla de Tucumán")
-
-    # Bicentenary of the inaugural session of the National Constituent Assembly of the year 1813.
-    bicentennial_assembly_1813 = tr(
-        "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
-    )
-
-    # Bicentenary of the Battle of Salta.
-    bicentennial_battle_salta = tr("Bicentenario de la Batalla de Salta")
-
-    # National Census Day 2022.
-    national_census_2022 = tr("Censo nacional 2022")
-
-    special_holidays = {
-        2011: (
-            (MAR, 25, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2012: (
-            (FEB, 27, bicentennial_national_flag),
-            (APR, 30, arg_bridge_public_holiday),
-            (SEP, 24, bicentennial_battle_tucuman),
-            (DEC, 24, arg_bridge_public_holiday),
-        ),
-        2013: (
-            (JAN, 31, bicentennial_assembly_1813),
-            (FEB, 20, bicentennial_battle_salta),
-            (APR, 1, arg_bridge_public_holiday),
-            (JUN, 21, arg_bridge_public_holiday),
-        ),
-        2014: (
-            (MAY, 2, arg_bridge_public_holiday),
-            (DEC, 26, arg_bridge_public_holiday),
-        ),
-        2015: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
-        ),
-        2016: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2018: (
-            (APR, 30, arg_bridge_public_holiday),
-            (DEC, 24, arg_bridge_public_holiday),
-            (DEC, 31, arg_bridge_public_holiday),
-        ),
-        2019: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (AUG, 19, arg_bridge_public_holiday),
-            (OCT, 14, arg_bridge_public_holiday),
-        ),
-        2020: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (JUL, 10, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
-        ),
-        2021: (
-            (MAY, 24, arg_bridge_public_holiday),
-            (OCT, 8, arg_bridge_public_holiday),
-            (NOV, 22, arg_bridge_public_holiday),
-        ),
-        2022: (
-            (MAY, 18, national_census_2022),
-            (OCT, 7, arg_bridge_public_holiday),
-            (NOV, 21, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2023: (
-            (MAY, 26, arg_bridge_public_holiday),
-            (JUN, 19, arg_bridge_public_holiday),
-            (OCT, 13, arg_bridge_public_holiday),
-        ),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, ArgentinaStaticHolidays)
         super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -336,3 +249,95 @@ class AR(Argentina):
 
 class ARG(Argentina):
     pass
+
+
+class ArgentinaStaticHolidays:
+    """
+    Special Bridge Holidays are given upto 3 days a year
+    as long as it's declared 50 days before calendar year's end
+    There's no Bridge Holidays declared in 2017.
+    """
+
+    # Bridge Public Holiday.
+    arg_bridge_public_holiday = tr("Feriado con fines turísticos")
+
+    # Bicentenary of the creation and first oath of the national flag.
+    bicentennial_national_flag = tr(
+        "Bicentenario de la creación y primera jura de la bandera nacional"
+    )
+
+    # Bicentenary of the Battle of Tucuman.
+    bicentennial_battle_tucuman = tr("Bicentenario de la Batalla de Tucumán")
+
+    # Bicentenary of the inaugural session of the National Constituent Assembly of the year 1813.
+    bicentennial_assembly_1813 = tr(
+        "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
+    )
+
+    # Bicentenary of the Battle of Salta.
+    bicentennial_battle_salta = tr("Bicentenario de la Batalla de Salta")
+
+    # National Census Day 2022.
+    national_census_2022 = tr("Censo nacional 2022")
+
+    special_holidays = {
+        2011: (
+            (MAR, 25, arg_bridge_public_holiday),
+            (DEC, 9, arg_bridge_public_holiday),
+        ),
+        2012: (
+            (FEB, 27, bicentennial_national_flag),
+            (APR, 30, arg_bridge_public_holiday),
+            (SEP, 24, bicentennial_battle_tucuman),
+            (DEC, 24, arg_bridge_public_holiday),
+        ),
+        2013: (
+            (JAN, 31, bicentennial_assembly_1813),
+            (FEB, 20, bicentennial_battle_salta),
+            (APR, 1, arg_bridge_public_holiday),
+            (JUN, 21, arg_bridge_public_holiday),
+        ),
+        2014: (
+            (MAY, 2, arg_bridge_public_holiday),
+            (DEC, 26, arg_bridge_public_holiday),
+        ),
+        2015: (
+            (MAR, 23, arg_bridge_public_holiday),
+            (DEC, 7, arg_bridge_public_holiday),
+        ),
+        2016: (
+            (JUL, 8, arg_bridge_public_holiday),
+            (DEC, 9, arg_bridge_public_holiday),
+        ),
+        2018: (
+            (APR, 30, arg_bridge_public_holiday),
+            (DEC, 24, arg_bridge_public_holiday),
+            (DEC, 31, arg_bridge_public_holiday),
+        ),
+        2019: (
+            (JUL, 8, arg_bridge_public_holiday),
+            (AUG, 19, arg_bridge_public_holiday),
+            (OCT, 14, arg_bridge_public_holiday),
+        ),
+        2020: (
+            (MAR, 23, arg_bridge_public_holiday),
+            (JUL, 10, arg_bridge_public_holiday),
+            (DEC, 7, arg_bridge_public_holiday),
+        ),
+        2021: (
+            (MAY, 24, arg_bridge_public_holiday),
+            (OCT, 8, arg_bridge_public_holiday),
+            (NOV, 22, arg_bridge_public_holiday),
+        ),
+        2022: (
+            (MAY, 18, national_census_2022),
+            (OCT, 7, arg_bridge_public_holiday),
+            (NOV, 21, arg_bridge_public_holiday),
+            (DEC, 9, arg_bridge_public_holiday),
+        ),
+        2023: (
+            (MAY, 26, arg_bridge_public_holiday),
+            (JUN, 19, arg_bridge_public_holiday),
+            (OCT, 13, arg_bridge_public_holiday),
+        ),
+    }

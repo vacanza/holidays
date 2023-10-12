@@ -3395,5 +3395,5 @@ class _IslamicLunar:
         return self._get_holiday(TASUA, year)
 
 
-class _CustomIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class _CustomIslamicHolidays(_CustomCalendar, _IslamicLunar):
     pass

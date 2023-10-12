@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -19,7 +19,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Barbados
     https://www.timeanddate.com/holidays/barbados/
@@ -32,19 +32,11 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BB"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2021: (
-            (JAN, 4, "Public Holiday"),
-            (JAN, 5, "Public Holiday"),
-        ),
-        # One off 50th Anniversary of CARICOM Holiday.
-        # See https://tinyurl.com/brbhol
-        2023: (JUL, 31, "50th Anniversary of CARICOM Holiday"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, BarbadosStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -100,3 +92,15 @@ class BB(Barbados):
 
 class BRB(Barbados):
     pass
+
+
+class BarbadosStaticHolidays:
+    special_holidays = {
+        2021: (
+            (JAN, 4, "Public Holiday"),
+            (JAN, 5, "Public Holiday"),
+        ),
+        # One off 50th Anniversary of CARICOM Holiday.
+        # See https://tinyurl.com/brbhol
+        2023: (JUL, 31, "50th Anniversary of CARICOM Holiday"),
+    }

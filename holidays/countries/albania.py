@@ -11,11 +11,18 @@
 
 from holidays.calendars.gregorian import MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class Albania(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Albania(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Albania
@@ -23,14 +30,12 @@ class Albania(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
 
     country = "AL"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2022: (MAR, 21, "Public Holiday"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
+        StaticHolidays.__init__(self, AlbaniaStaticHolidays)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
@@ -96,3 +101,9 @@ class AL(Albania):
 
 class ALB(Albania):
     pass
+
+
+class AlbaniaStaticHolidays:
+    special_holidays = {
+        2022: (MAR, 21, "Public Holiday"),
+    }

@@ -117,7 +117,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 135 country codes. The standard way to refer to a country
+We currently support 136 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
 than one language for holiday names output.
@@ -300,7 +300,7 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - China
      - CN
      -
-     -
+     - en_US, th, **zh_CN**, zh_TW
      -
    * - Colombia
      - CO
@@ -737,6 +737,11 @@ The list of supported countries, their subdivisions, supported languages and cat
      -
      -
      -
+   * - Tanzania
+     - TZ
+     -
+     - en_US, **sw**
+     -
    * - Thailand
      - TH
      -
@@ -774,7 +779,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      -
    * - United States of America (the)
      - US
-     - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, FM, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MH, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
+     - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
      -
      -
    * - United States Virgin Islands (the)

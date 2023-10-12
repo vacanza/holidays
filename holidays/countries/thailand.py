@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
-from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
+from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,
@@ -26,7 +26,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays):
+class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Thailand.
 
@@ -142,151 +142,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
     observed_label = tr("ชดเชย%s")
     supported_languages = ("en_US", "th")
 
-    # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
-
-    # Special In Lieu Holiday.
-    thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
-    # Thai Election Day.
-    thai_election = tr("วันเลือกตั้ง")
-    # Thai Election Day (in lieu).
-    thai_election_in_lieu = tr("ชดเชยวันเลือกตั้ง")
-    # Bridge Public Holiday.
-    thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
-
-    # Special Cases.
-
-    # HM King Bhumibol Adulyadej's Golden Jubilee.
-    rama_ix_golden_jubilee = tr("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
-    # HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
-    rama_ix_sixty_accession = tr("พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549")
-    # Emergency Lockdown (Thai Military Coup d'état).
-    thai_military_emergency_lockdown = tr("วันหยุดพิเศษ (คมช.)")
-    # Emergency Lockdown (Thai Political Unrest).
-    thai_political_emergency_lockdown = tr("วันหยุดพิเศษ (การเมือง)")
-    # Emergency Lockdown (2011 Thailand Floods).
-    thai_flood_2011_emergency_lockdown = tr("วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)")
-    # Day of Mourning for HM King Bhumibol Adulyadej.
-    rama_ix_mourning = tr("วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)")
-    # HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
-    rama_ix_cremation = tr(
-        "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
-    )
-    # HM King Maha Vajiralongkorn's Coronation Celebrations.
-    rama_x_coronation_celebrations = tr(
-        "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
-    )
-    # Songkran Festival (in lieu).
-    songkran_festival_in_lieu_covid = tr("ชดเชยวันสงกรานต์")
-
-    special_public_holidays = {
-        # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
-        1992: (
-            (MAY, 18, thai_special_in_lieu_holidays),
-            (DEC, 7, thai_special_in_lieu_holidays),
-        ),
-        1993: (
-            (MAR, 8, thai_special_in_lieu_holidays),
-            (MAY, 3, thai_special_in_lieu_holidays),
-            (OCT, 25, thai_special_in_lieu_holidays),
-            (DEC, 6, thai_special_in_lieu_holidays),
-        ),
-        1994: (
-            (JAN, 3, thai_special_in_lieu_holidays),
-            (MAY, 2, thai_special_in_lieu_holidays),
-            (JUL, 25, thai_special_in_lieu_holidays),
-            (OCT, 24, thai_special_in_lieu_holidays),
-            (DEC, 12, thai_special_in_lieu_holidays),
-        ),
-        # 1995-1997 (Bank of Thailand Data).
-        1996: (JUN, 10, rama_ix_golden_jubilee),
-        # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data).
-        1998: (
-            (MAY, 11, thai_special_in_lieu_holidays),
-            (DEC, 7, thai_special_in_lieu_holidays),
-        ),
-        1999: (
-            (MAY, 3, thai_special_in_lieu_holidays),
-            (MAY, 31, thai_special_in_lieu_holidays),
-            (OCT, 25, thai_special_in_lieu_holidays),
-            (DEC, 6, thai_special_in_lieu_holidays),
-        ),
-        2000: (
-            (JAN, 3, thai_special_in_lieu_holidays),
-            (FEB, 21, thai_special_in_lieu_holidays),
-            (AUG, 14, thai_special_in_lieu_holidays),
-            (DEC, 11, thai_special_in_lieu_holidays),
-            (DEC, 29, thai_election),
-        ),
-        # From 2001 Onwards (Checked with Bank of Thailand Data).
-        2006: (
-            (APR, 19, thai_election),
-            (JUN, 9, rama_ix_sixty_accession),
-            (JUN, 12, rama_ix_sixty_accession),
-            (JUN, 13, rama_ix_sixty_accession),
-            (SEP, 20, thai_military_emergency_lockdown),
-        ),
-        2007: (DEC, 24, thai_election_in_lieu),
-        2009: (
-            (JAN, 2, thai_bridge_public_holiday),
-            (APR, 10, thai_political_emergency_lockdown),
-            (APR, 16, thai_political_emergency_lockdown),
-            (APR, 17, thai_political_emergency_lockdown),
-            (JUL, 6, thai_bridge_public_holiday),
-        ),
-        2010: (
-            (MAY, 20, thai_bridge_public_holiday),
-            (MAY, 21, thai_bridge_public_holiday),
-            (AUG, 13, thai_bridge_public_holiday),
-        ),
-        2011: (
-            (MAY, 16, thai_bridge_public_holiday),
-            (OCT, 27, thai_flood_2011_emergency_lockdown),
-            (OCT, 28, thai_flood_2011_emergency_lockdown),
-            (OCT, 29, thai_flood_2011_emergency_lockdown),
-            (OCT, 30, thai_flood_2011_emergency_lockdown),
-            (OCT, 31, thai_flood_2011_emergency_lockdown),
-        ),
-        2012: (APR, 9, thai_bridge_public_holiday),
-        2013: (DEC, 30, thai_bridge_public_holiday),
-        2014: (AUG, 11, thai_bridge_public_holiday),
-        2015: (
-            (JAN, 2, thai_bridge_public_holiday),
-            (MAY, 4, thai_bridge_public_holiday),
-        ),
-        2016: (
-            (MAY, 6, thai_bridge_public_holiday),
-            (JUL, 18, thai_bridge_public_holiday),
-            (OCT, 14, rama_ix_mourning),
-        ),
-        2017: (OCT, 26, rama_ix_cremation),
-        2019: (MAY, 6, rama_x_coronation_celebrations),
-        2020: (
-            (JUL, 27, songkran_festival_in_lieu_covid),
-            (SEP, 4, songkran_festival_in_lieu_covid),
-            (SEP, 7, songkran_festival_in_lieu_covid),
-            (NOV, 19, thai_bridge_public_holiday),
-            (NOV, 20, thai_bridge_public_holiday),
-            (DEC, 11, thai_bridge_public_holiday),
-        ),
-        2021: (
-            (FEB, 12, thai_bridge_public_holiday),
-            (APR, 12, thai_bridge_public_holiday),
-            (SEP, 24, thai_bridge_public_holiday),
-        ),
-        2022: (
-            (JUL, 15, thai_bridge_public_holiday),
-            (JUL, 29, thai_bridge_public_holiday),
-            (OCT, 14, thai_bridge_public_holiday),
-            (DEC, 30, thai_bridge_public_holiday),
-        ),
-        2023: (
-            (MAY, 5, thai_bridge_public_holiday),
-            (JUL, 31, thai_bridge_public_holiday),
-        ),
-    }
-
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, ThailandStaticHolidays)
         ThaiCalendarHolidays.__init__(self)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
@@ -473,16 +331,20 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 2017:
-            k_bhumibol_memorial = (
+            if self._year >= 2023:
+                # HM King Bhumibol Adulyadej Memorial Day.
+                k_bhumibol_memorial = tr("วันนวมินทรมหาราช")
+            elif self._year >= 2019:
                 # Anniversary for the Death of King Bhumibol Adulyadej the Great.
-                tr(
+                k_bhumibol_memorial = tr(
                     "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
                     "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
                 )
-                if self._year >= 2019
+            else:
                 # Anniversary for the Death of King Bhumibol Adulyadej.
-                else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
-            )
+                k_bhumibol_memorial = tr(
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+                )
             self._add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
 
         # วันปิยมหาราช
@@ -501,26 +363,27 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 1960:
-            k_bhumibol_bday = (
-                # HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
-                tr(
-                    "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
-                    "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+            if self._year >= 2019:
+                k_bhumibol_bday = (
+                    # HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
+                    tr(
+                        "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
+                        "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                    )
                 )
-                if self._year >= 2019
-                else (
+            elif self._year >= 2016:
+                k_bhumibol_bday = (
                     # HM King Bhumibol Adulyadej Birthday Anniversary.
                     tr(
                         "วันคล้ายวันเฉลิมพระชนมพรรษา"
                         "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
                     )
-                    if self._year >= 2016
-                    # HM King Bhumibol Adulyadej Birthday Anniversary.
-                    else tr(
-                        "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-                    )
                 )
-            )
+            else:
+                k_bhumibol_bday = (
+                    # HM King Bhumibol Adulyadej Birthday Anniversary.
+                    tr("วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
+                )
             self._add_observed(self._add_holiday_dec_5(k_bhumibol_bday))
 
         # วันพ่อแห่งชาติ
@@ -784,8 +647,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays)
         # วันลอยกระทง
         # Status: In-Use.
 
-        # Loy Krathong
-        self._add_loy_krathong(tr("วันลอยกระทง"))
+        if self._year >= 1941:
+            # Loy Krathong
+            self._add_loy_krathong(tr("วันลอยกระทง"))
 
 
 class TH(Thailand):
@@ -794,3 +658,148 @@ class TH(Thailand):
 
 class THA(Thailand):
     pass
+
+
+class ThailandStaticHolidays:
+    # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
+
+    # Special In Lieu Holiday.
+    thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
+    # Thai Election Day.
+    thai_election = tr("วันเลือกตั้ง")
+    # Thai Election Day (in lieu).
+    thai_election_in_lieu = tr("ชดเชยวันเลือกตั้ง")
+    # Bridge Public Holiday.
+    thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
+
+    # Special Cases.
+
+    # HM King Bhumibol Adulyadej's Golden Jubilee.
+    rama_ix_golden_jubilee = tr("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
+    # HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
+    rama_ix_sixty_accession = tr("พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549")
+    # Emergency Lockdown (Thai Military Coup d'état).
+    thai_military_emergency_lockdown = tr("วันหยุดพิเศษ (คมช.)")
+    # Emergency Lockdown (Thai Political Unrest).
+    thai_political_emergency_lockdown = tr("วันหยุดพิเศษ (การเมือง)")
+    # Emergency Lockdown (2011 Thailand Floods).
+    thai_flood_2011_emergency_lockdown = tr("วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)")
+    # Day of Mourning for HM King Bhumibol Adulyadej.
+    rama_ix_mourning = tr("วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)")
+    # HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
+    rama_ix_cremation = tr(
+        "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
+    )
+    # HM King Maha Vajiralongkorn's Coronation Celebrations.
+    rama_x_coronation_celebrations = tr(
+        "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
+    )
+    # Songkran Festival (in lieu).
+    songkran_festival_in_lieu_covid = tr("ชดเชยวันสงกรานต์")
+
+    special_public_holidays = {
+        # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
+        1992: (
+            (MAY, 18, thai_special_in_lieu_holidays),
+            (DEC, 7, thai_special_in_lieu_holidays),
+        ),
+        1993: (
+            (MAR, 8, thai_special_in_lieu_holidays),
+            (MAY, 3, thai_special_in_lieu_holidays),
+            (OCT, 25, thai_special_in_lieu_holidays),
+            (DEC, 6, thai_special_in_lieu_holidays),
+        ),
+        1994: (
+            (JAN, 3, thai_special_in_lieu_holidays),
+            (MAY, 2, thai_special_in_lieu_holidays),
+            (JUL, 25, thai_special_in_lieu_holidays),
+            (OCT, 24, thai_special_in_lieu_holidays),
+            (DEC, 12, thai_special_in_lieu_holidays),
+        ),
+        # 1995-1997 (Bank of Thailand Data).
+        1996: (JUN, 10, rama_ix_golden_jubilee),
+        # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data).
+        1998: (
+            (MAY, 11, thai_special_in_lieu_holidays),
+            (DEC, 7, thai_special_in_lieu_holidays),
+        ),
+        1999: (
+            (MAY, 3, thai_special_in_lieu_holidays),
+            (MAY, 31, thai_special_in_lieu_holidays),
+            (OCT, 25, thai_special_in_lieu_holidays),
+            (DEC, 6, thai_special_in_lieu_holidays),
+        ),
+        2000: (
+            (JAN, 3, thai_special_in_lieu_holidays),
+            (FEB, 21, thai_special_in_lieu_holidays),
+            (AUG, 14, thai_special_in_lieu_holidays),
+            (DEC, 11, thai_special_in_lieu_holidays),
+            (DEC, 29, thai_election),
+        ),
+        # From 2001 Onwards (Checked with Bank of Thailand Data).
+        2006: (
+            (APR, 19, thai_election),
+            (JUN, 9, rama_ix_sixty_accession),
+            (JUN, 12, rama_ix_sixty_accession),
+            (JUN, 13, rama_ix_sixty_accession),
+            (SEP, 20, thai_military_emergency_lockdown),
+        ),
+        2007: (DEC, 24, thai_election_in_lieu),
+        2009: (
+            (JAN, 2, thai_bridge_public_holiday),
+            (APR, 10, thai_political_emergency_lockdown),
+            (APR, 16, thai_political_emergency_lockdown),
+            (APR, 17, thai_political_emergency_lockdown),
+            (JUL, 6, thai_bridge_public_holiday),
+        ),
+        2010: (
+            (MAY, 20, thai_bridge_public_holiday),
+            (MAY, 21, thai_bridge_public_holiday),
+            (AUG, 13, thai_bridge_public_holiday),
+        ),
+        2011: (
+            (MAY, 16, thai_bridge_public_holiday),
+            (OCT, 27, thai_flood_2011_emergency_lockdown),
+            (OCT, 28, thai_flood_2011_emergency_lockdown),
+            (OCT, 29, thai_flood_2011_emergency_lockdown),
+            (OCT, 30, thai_flood_2011_emergency_lockdown),
+            (OCT, 31, thai_flood_2011_emergency_lockdown),
+        ),
+        2012: (APR, 9, thai_bridge_public_holiday),
+        2013: (DEC, 30, thai_bridge_public_holiday),
+        2014: (AUG, 11, thai_bridge_public_holiday),
+        2015: (
+            (JAN, 2, thai_bridge_public_holiday),
+            (MAY, 4, thai_bridge_public_holiday),
+        ),
+        2016: (
+            (MAY, 6, thai_bridge_public_holiday),
+            (JUL, 18, thai_bridge_public_holiday),
+            (OCT, 14, rama_ix_mourning),
+        ),
+        2017: (OCT, 26, rama_ix_cremation),
+        2019: (MAY, 6, rama_x_coronation_celebrations),
+        2020: (
+            (JUL, 27, songkran_festival_in_lieu_covid),
+            (SEP, 4, songkran_festival_in_lieu_covid),
+            (SEP, 7, songkran_festival_in_lieu_covid),
+            (NOV, 19, thai_bridge_public_holiday),
+            (NOV, 20, thai_bridge_public_holiday),
+            (DEC, 11, thai_bridge_public_holiday),
+        ),
+        2021: (
+            (FEB, 12, thai_bridge_public_holiday),
+            (APR, 12, thai_bridge_public_holiday),
+            (SEP, 24, thai_bridge_public_holiday),
+        ),
+        2022: (
+            (JUL, 15, thai_bridge_public_holiday),
+            (JUL, 29, thai_bridge_public_holiday),
+            (OCT, 14, thai_bridge_public_holiday),
+            (DEC, 30, thai_bridge_public_holiday),
+        ),
+        2023: (
+            (MAY, 5, thai_bridge_public_holiday),
+            (JUL, 31, thai_bridge_public_holiday),
+        ),
+    }

@@ -14,11 +14,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, AUG, SEP
 from holidays.calendars.thai import KHMER_CALENDAR
-from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
+from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
+class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Cambodia.
 
@@ -50,36 +50,11 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
     country = "KH"
     default_language = "km"
-
-    # Special Cases.
-
-    sangkranta_in_lieu_covid = tr(
-        # Khmer New Year's Replacement Holiday
-        "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-    )
-    # Special Public Holiday
-    special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
-
-    special_holidays = {
-        2016: (
-            (MAY, 2, special_in_lieu_holidays),
-            (MAY, 16, special_in_lieu_holidays),
-        ),
-        2018: (MAY, 21, special_in_lieu_holidays),
-        2019: (SEP, 30, special_in_lieu_holidays),
-        2020: (
-            (MAY, 11, special_in_lieu_holidays),
-            (AUG, 17, sangkranta_in_lieu_covid),
-            (AUG, 18, sangkranta_in_lieu_covid),
-            (AUG, 19, sangkranta_in_lieu_covid),
-            (AUG, 20, sangkranta_in_lieu_covid),
-            (AUG, 21, sangkranta_in_lieu_covid),
-        ),
-    }
     supported_languages = ("en_US", "km", "th")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, CameroonStaticHolidays)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
@@ -304,3 +279,29 @@ class KH(Cambodia):
 
 class KHM(Cambodia):
     pass
+
+
+class CameroonStaticHolidays:
+    sangkranta_in_lieu_covid = tr(
+        # Khmer New Year's Replacement Holiday
+        "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
+    )
+    # Special Public Holiday
+    special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
+
+    special_holidays = {
+        2016: (
+            (MAY, 2, special_in_lieu_holidays),
+            (MAY, 16, special_in_lieu_holidays),
+        ),
+        2018: (MAY, 21, special_in_lieu_holidays),
+        2019: (SEP, 30, special_in_lieu_holidays),
+        2020: (
+            (MAY, 11, special_in_lieu_holidays),
+            (AUG, 17, sangkranta_in_lieu_covid),
+            (AUG, 18, sangkranta_in_lieu_covid),
+            (AUG, 19, sangkranta_in_lieu_covid),
+            (AUG, 20, sangkranta_in_lieu_covid),
+            (AUG, 21, sangkranta_in_lieu_covid),
+        ),
+    }

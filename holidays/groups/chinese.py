@@ -22,9 +22,9 @@ class ChineseCalendarHolidays:
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_ChineseLunisolar(), show_estimated=False) -> None:
-        self._chinese_calendar = calendar
-        self._show_estimated = show_estimated
+    def __init__(self, cls=None, show_estimated=False) -> None:
+        self._chinese_calendar = cls() if cls else _ChineseLunisolar()
+        self._chinese_calendar_show_estimated = show_estimated
 
     @property
     def _chinese_new_year(self):
@@ -64,7 +64,7 @@ class ChineseCalendarHolidays:
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._show_estimated
+            if is_estimated and self._chinese_calendar_show_estimated
             else name,
             dt,
         )
@@ -144,6 +144,26 @@ class ChineseCalendarHolidays:
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
+        )
+
+    def _add_chinese_new_years_day_six(self, name) -> Optional[date]:
+        """
+        Add Chinese New Year's Day Six.
+
+        https://en.wikipedia.org/wiki/Chinese_New_Year
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+5
+        )
+
+    def _add_chinese_new_years_day_seven(self, name) -> Optional[date]:
+        """
+        Add Chinese New Year's Day Seven.
+
+        https://en.wikipedia.org/wiki/Chinese_New_Year
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+6
         )
 
     def _add_qingming_festival(self, name) -> date:
