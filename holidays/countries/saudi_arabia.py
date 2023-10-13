@@ -15,7 +15,7 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
-from holidays.groups import IslamicHolidays
+from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     THU_TO_PREV_WED,
@@ -27,7 +27,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class SaudiArabia(ObservedHolidayBase, IslamicHolidays):
+class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     """
     There are only 4 official national holidays in Saudi:
     https://laboreducation.hrsd.gov.sa/en/gallery/274
@@ -50,13 +50,9 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays):
     observed_label = tr("(ملاحظة) %s")
     supported_languages = ("ar", "en_US")
 
-    special_holidays = {
-        # Celebrate the country's win against Argentina in the World Cup
-        2022: (NOV, 23, tr("يوم وطني")),
-    }
-
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
+        StaticHolidays.__init__(self, SaudiArabiaStaticHolidays)
         super().__init__(observed_rule=FRI_TO_PREV_THU + SAT_TO_NEXT_SUN, *args, **kwargs)
 
     def _add_islamic_observed(self, dts: Set[date]) -> None:
@@ -123,3 +119,10 @@ class SA(SaudiArabia):
 
 class SAU(SaudiArabia):
     pass
+
+
+class SaudiArabiaStaticHolidays:
+    special_holidays = {
+        # Celebrate the country's win against Argentina in the World Cup
+        2022: (NOV, 23, tr("يوم وطني")),
+    }

@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
@@ -67,7 +67,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=SpainIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=SpainIslamicHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -640,7 +640,7 @@ class ESP(Spain):
     pass
 
 
-class SpainIslamicCalendar(_CustomIslamicCalendar):
+class SpainIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2010: (NOV, 17),
         2011: (NOV, 6),

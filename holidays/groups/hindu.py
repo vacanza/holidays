@@ -20,9 +20,9 @@ class HinduCalendarHolidays:
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_HinduLunisolar(), show_estimated=False) -> None:
-        self._hindu_calendar = calendar
-        self._show_estimated = show_estimated
+    def __init__(self, cls=None, show_estimated=False) -> None:
+        self._hindu_calendar = cls() if cls else _HinduLunisolar()
+        self._hindu_calendar_show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
         self, name: str, dt_estimated: Tuple[date, bool]
@@ -38,7 +38,7 @@ class HinduCalendarHolidays:
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._show_estimated
+            if is_estimated and self._hindu_calendar_show_estimated
             else name,
             dt,
         )

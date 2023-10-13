@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import JAN, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://www.officeholidays.com/countries/namibia
     https://www.timeanddate.com/holidays/namibia/
@@ -29,15 +29,11 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NA"
     # %s (Observed).
     observed_label = "%s (Observed)"
-    special_holidays = {
-        # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
-        1999: (DEC, 31, "Y2K changeover"),
-        2000: (JAN, 3, "Y2K changeover"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, NamibiaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1991, *args, **kwargs)
 
     def _populate(self, year):
@@ -95,3 +91,11 @@ class NA(Namibia):
 
 class NAM(Namibia):
     pass
+
+
+class NamibiaStaticHolidays:
+    special_holidays = {
+        # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
+        1999: (DEC, 31, "Y2K changeover"),
+        2000: (JAN, 3, "Y2K changeover"),
+    }

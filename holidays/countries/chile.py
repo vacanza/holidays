@@ -14,7 +14,7 @@ from gettext import gettext as tr
 from typing import Tuple
 
 from holidays.calendars.gregorian import JUN, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_TO_PREV_FRI,
@@ -23,7 +23,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://www.feriados.cl
@@ -51,10 +51,6 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CL"
     default_language = "es"
-    special_holidays = {
-        # National Holiday.
-        2022: (SEP, 16, tr("Feriado nacional")),
-    }
     subdivisions = (
         "AI",
         "AN",
@@ -78,6 +74,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, ChileStaticHolidays)
         super().__init__(
             observed_rule=WORKDAY_TO_NEAREST_MON, observed_since=2000, *args, **kwargs
         )
@@ -226,3 +223,10 @@ class CL(Chile):
 
 class CHL(Chile):
     pass
+
+
+class ChileStaticHolidays:
+    special_holidays = {
+        # National Holiday.
+        2022: (SEP, 16, tr("Feriado nacional")),
+    }

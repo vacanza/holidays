@@ -12,9 +12,9 @@
 from gettext import gettext as tr
 
 from holidays.calendars import (
-    _CustomBuddhistCalendar,
-    _CustomChineseCalendar,
-    _CustomIslamicCalendar,
+    _CustomBuddhistHolidays,
+    _CustomChineseHolidays,
+    _CustomIslamicHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
@@ -87,15 +87,11 @@ class Indonesia(
     }
 
     def __init__(self, *args, **kwargs):
-        BuddhistCalendarHolidays.__init__(
-            self, calendar=IndonesiaBuddhistCalendar(), show_estimated=True
-        )
-        ChineseCalendarHolidays.__init__(
-            self, calendar=IndonesiaChineseCalendar(), show_estimated=True
-        )
+        BuddhistCalendarHolidays.__init__(self, cls=IndonesiaBuddhistHolidays, show_estimated=True)
+        ChineseCalendarHolidays.__init__(self, cls=IndonesiaChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=IndonesiaIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=IndonesiaIslamicHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -212,7 +208,7 @@ class IDN(Indonesia):
     pass
 
 
-class IndonesiaBuddhistCalendar(_CustomBuddhistCalendar):
+class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
     VESAK_DATES = {
         2007: (JUN, 1),
         2008: (MAY, 20),
@@ -234,7 +230,7 @@ class IndonesiaBuddhistCalendar(_CustomBuddhistCalendar):
     }
 
 
-class IndonesiaChineseCalendar(_CustomChineseCalendar):
+class IndonesiaChineseHolidays(_CustomChineseHolidays):
     LUNAR_NEW_YEAR_DATES = {
         2003: (FEB, 1),
         2004: (JAN, 22),
@@ -260,7 +256,7 @@ class IndonesiaChineseCalendar(_CustomChineseCalendar):
     }
 
 
-class IndonesiaIslamicCalendar(_CustomIslamicCalendar):
+class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),

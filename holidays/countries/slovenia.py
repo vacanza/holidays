@@ -12,11 +12,11 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import AUG
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     Contains all work-free public holidays in Slovenia.
     No holidays are returned before year 1991 when Slovenia became independent
@@ -31,14 +31,10 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "sl"
     supported_languages = ("en_US", "sl", "uk")
 
-    special_holidays = {
-        # Solidarity Day.
-        2023: (AUG, 14, tr("dan solidarnosti")),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, SloveniaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -93,3 +89,10 @@ class SI(Slovenia):
 
 class SVN(Slovenia):
     pass
+
+
+class SloveniaStaticHolidays:
+    special_holidays = {
+        # Solidarity Day.
+        2023: (AUG, 14, tr("dan solidarnosti")),
+    }

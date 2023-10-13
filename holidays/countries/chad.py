@@ -9,13 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Chad(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Chad(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Chad
@@ -24,14 +31,12 @@ class Chad(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
 
     country = "TD"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2021: (APR, 23, "Funeral of Idriss Déby Itno"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=ChadIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=ChadIslamicHolidays)
+        StaticHolidays.__init__(self, ChadStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -87,7 +92,7 @@ class TCD(Chad):
     pass
 
 
-class ChadIslamicCalendar(_CustomIslamicCalendar):
+class ChadIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
         2016: (SEP, 13),
@@ -121,4 +126,10 @@ class ChadIslamicCalendar(_CustomIslamicCalendar):
         2020: (OCT, 29),
         2021: (OCT, 18),
         2022: (OCT, 8),
+    }
+
+
+class ChadStaticHolidays:
+    special_holidays = {
+        2021: (APR, 23, "Funeral of Idriss Déby Itno"),
     }
