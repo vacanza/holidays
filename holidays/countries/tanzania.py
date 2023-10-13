@@ -14,11 +14,18 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Tanzania(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """
     References:
     - https://old.tanzlii.org/tz/legislation/act/1962/48/  # 1962
@@ -56,35 +63,11 @@ class Tanzania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     estimated_label = tr("%s* (*makisio)")
     supported_languages = ("en_US", "sw")
 
-    # Special Holidays.
-
-    # John Pombe Magufuli Inauguration Day.
-    john_magufuli_inauguration = tr("Sikukuu ya Kuapishwa kwa John Pombe Magufuli")
-
-    # Tanzania General Election Day.
-    tz_election_day = tr("Sikukuu ya Uchaguzi Mkuu wa Tanzania")
-
-    # National Population and Housing Census Day.
-    phc_census_day = tr("Siku ya Sensa ya Kitaifa ya Watu na Makazi")
-
-    # John Pombe Magufuli's Funeral.
-    john_magufuli_funeral = tr("Mazishi cha John Pombe Magufuli")
-
-    special_public_holidays = {
-        2002: (AUG, 25, phc_census_day),
-        2015: (NOV, 5, john_magufuli_inauguration),
-        2020: (OCT, 28, tz_election_day),
-        2021: (
-            (MAR, 22, john_magufuli_funeral),
-            (MAR, 25, john_magufuli_funeral),
-        ),
-        2022: (AUG, 23, phc_census_day),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=TanzaniaIslamicHolidays)
+        StaticHolidays.__init__(self, TanzaniaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_bank_holidays(self):
@@ -293,4 +276,31 @@ class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),
+    }
+
+
+class TanzaniaStaticHolidays:
+    # Special Holidays.
+
+    # John Pombe Magufuli Inauguration Day.
+    john_magufuli_inauguration = tr("Sikukuu ya Kuapishwa kwa John Pombe Magufuli")
+
+    # Tanzania General Election Day.
+    tz_election_day = tr("Sikukuu ya Uchaguzi Mkuu wa Tanzania")
+
+    # National Population and Housing Census Day.
+    phc_census_day = tr("Siku ya Sensa ya Kitaifa ya Watu na Makazi")
+
+    # John Pombe Magufuli's Funeral.
+    john_magufuli_funeral = tr("Mazishi cha John Pombe Magufuli")
+
+    special_public_holidays = {
+        2002: (AUG, 25, phc_census_day),
+        2015: (NOV, 5, john_magufuli_inauguration),
+        2020: (OCT, 28, tz_election_day),
+        2021: (
+            (MAR, 22, john_magufuli_funeral),
+            (MAR, 25, john_magufuli_funeral),
+        ),
+        2022: (AUG, 23, phc_census_day),
     }
