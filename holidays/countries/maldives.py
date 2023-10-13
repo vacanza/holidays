@@ -36,6 +36,19 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
+        # Labor Day.
+        self._add_labor_day("Labor Day")
+
+        # Independence Day.
+        self._add_holiday_jul_26("Independence Day")
+
+        # Victory Day.
+        self._add_holiday_nov_3("Victory Day")
+
+        # Republic Day.
+        self._add_holiday_nov_11("Republic Day")
+
+        # Islamic holidays.
         # Start of Ramadan.
         self._add_ramadan_beginning_day("Beginning of Ramadan")
 
@@ -43,9 +56,6 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day("Eid al-Fitr")
         self._add_eid_al_fitr_day_two("Eid al-Fitr")
         self._add_eid_al_fitr_day_three("Eid al-Fitr")
-
-        # Labor Day.
-        self._add_labor_day("Labor Day")
 
         # Hajj Day.
         self._add_arafah_day("Hajj Day")
@@ -59,9 +69,6 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Muharram/Islamic New Year.
         self._add_islamic_new_year_day("Islamic New Year")
 
-        # Independence Day.
-        self._add_holiday_jul_26("Independence Day")
-
         # National Day.
         self._add_quamee_dhuvas_day("National Day")
 
@@ -70,12 +77,6 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # The Day Maldives Embraced Islam.
         self._add_maldives_embraced_islam_day("The Day Maldives Embraced Islam")
-
-        # Victory Day.
-        self._add_holiday_nov_3("Victory Day")
-
-        # Republic Day.
-        self._add_holiday_nov_11("Republic Day")
 
 
 class MV(Maldives):
