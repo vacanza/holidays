@@ -1261,5 +1261,5 @@ class _ChineseLunisolar:
         return self._get_holiday(MID_AUTUMN, year)
 
 
-class _CustomChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):
     pass

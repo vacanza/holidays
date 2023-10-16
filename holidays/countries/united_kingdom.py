@@ -12,7 +12,7 @@
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -21,7 +21,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
@@ -31,25 +31,13 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     country = "GB"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
-        1981: (JUL, 29, "Wedding of Charles and Diana"),
-        1999: (DEC, 31, "Millennium Celebrations"),
-        2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
-        2011: (APR, 29, "Wedding of William and Catherine"),
-        2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
-        2022: (
-            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
-            (SEP, 19, "State Funeral of Queen Elizabeth II"),
-        ),
-        2023: (MAY, 8, "Coronation of Charles III"),
-    }
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "ENG",  # England
         "NIR",  # Northern Ireland
         "SCT",  # Scotland
         "WLS",  # Wales
     )
+
     _deprecated_subdivisions: Tuple[str, ...] = (
         "England",
         "Northern Ireland",
@@ -61,6 +49,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year: int) -> None:
@@ -188,3 +177,19 @@ class GB(UnitedKingdom):
 
 class GBR(UnitedKingdom):
     pass
+
+
+class UnitedKingdomStaticHolidays:
+    special_holidays = {
+        1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
+        1981: (JUL, 29, "Wedding of Charles and Diana"),
+        1999: (DEC, 31, "Millennium Celebrations"),
+        2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+        2011: (APR, 29, "Wedding of William and Catherine"),
+        2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
+        2022: (
+            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+            (SEP, 19, "State Funeral of Queen Elizabeth II"),
+        ),
+        2023: (MAY, 8, "Coronation of Charles III"),
+    }

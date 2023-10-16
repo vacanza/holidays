@@ -1,6 +1,6 @@
 [project]
 name = "holidays"
-version = "0.34"
+version = "0.35"
 description = "Generate and work with holidays in Python"
 license = { file = "LICENSE" }
 readme = "README.rst"
@@ -23,7 +23,10 @@ classifiers = [
     "Topic :: Software Development :: Localization",
 ]
 keywords = ["holidays", "calendar", "l10n"]
-maintainers = [{ email = "ark@cho.red", name = "Arkadii Yakovets" }]
+maintainers = [
+    { email = "ark@cho.red", name = "Arkadii Yakovets" },
+    { email = "jhellico@gmail.com", name = "Serhii Murza" },
+]
 
 [project.urls]
 Repository = "https://github.com/vacanza/python-holidays/"

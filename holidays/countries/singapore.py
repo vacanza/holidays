@@ -10,10 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import (
-    _CustomBuddhistCalendar,
-    _CustomChineseCalendar,
-    _CustomIslamicCalendar,
-    _CustomHinduCalendar,
+    _CustomBuddhistHolidays,
+    _CustomChineseHolidays,
+    _CustomIslamicHolidays,
+    _CustomHinduHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
@@ -23,6 +23,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
@@ -35,25 +36,10 @@ class Singapore(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     country = "SG"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2001: (NOV, 3, "Polling Day"),
-        2006: (MAY, 6, "Polling Day"),
-        2011: (MAY, 7, "Polling Day"),
-        2015: (
-            # SG50 Public holiday
-            # Announced on 14 March 2015
-            # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-            (AUG, 7, "SG50 Public Holiday"),
-            (SEP, 11, "Polling Day"),
-        ),
-        2020: (JUL, 10, "Polling Day"),
-        # Announced in state-associated press on 12 August 2023
-        # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
-        2023: (SEP, 1, "Polling Day"),
-    }
 
     def __init__(self, *args, **kwargs):
         """
@@ -89,16 +75,13 @@ class Singapore(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        BuddhistCalendarHolidays.__init__(
-            self, calendar=SingaporeBuddhistCalendar(), show_estimated=True
-        )
-        ChineseCalendarHolidays.__init__(
-            self, calendar=SingaporeChineseCalendar(), show_estimated=True
-        )
+        BuddhistCalendarHolidays.__init__(self, cls=SingaporeBuddhistHolidays, show_estimated=True)
+        ChineseCalendarHolidays.__init__(self, cls=SingaporeChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self, calendar=SingaporeHinduCalendar())
+        HinduCalendarHolidays.__init__(self, cls=SingaporeHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=SingaporeIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=SingaporeIslamicHolidays)
+        StaticHolidays.__init__(self, cls=SingaporeStaticHolidays)
         # Implement Section 4(2) of the Holidays Act:
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
@@ -170,7 +153,7 @@ class SGP(Singapore):
     pass
 
 
-class SingaporeBuddhistCalendar(_CustomBuddhistCalendar):
+class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
     VESAK_DATES = {
         2001: (MAY, 7),
         2002: (MAY, 26),
@@ -198,7 +181,7 @@ class SingaporeBuddhistCalendar(_CustomBuddhistCalendar):
     }
 
 
-class SingaporeChineseCalendar(_CustomChineseCalendar):
+class SingaporeChineseHolidays(_CustomChineseHolidays):
     LUNAR_NEW_YEAR_DATES = {
         2001: (JAN, 24),
         2002: (FEB, 12),
@@ -226,7 +209,7 @@ class SingaporeChineseCalendar(_CustomChineseCalendar):
     }
 
 
-class SingaporeHinduCalendar(_CustomHinduCalendar):
+class SingaporeHinduHolidays(_CustomHinduHolidays):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -254,7 +237,7 @@ class SingaporeHinduCalendar(_CustomHinduCalendar):
     }
 
 
-class SingaporeIslamicCalendar(_CustomIslamicCalendar):
+class SingaporeIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -305,4 +288,23 @@ class SingaporeIslamicCalendar(_CustomIslamicCalendar):
         2021: (MAY, 13),
         2022: (MAY, 3),
         2023: (APR, 22),
+    }
+
+
+class SingaporeStaticHolidays:
+    special_holidays = {
+        2001: (NOV, 3, "Polling Day"),
+        2006: (MAY, 6, "Polling Day"),
+        2011: (MAY, 7, "Polling Day"),
+        2015: (
+            # SG50 Public holiday
+            # Announced on 14 March 2015
+            # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
+            (AUG, 7, "SG50 Public Holiday"),
+            (SEP, 11, "Polling Day"),
+        ),
+        2020: (JUL, 10, "Polling Day"),
+        # Announced in state-associated press on 12 August 2023
+        # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
+        2023: (SEP, 1, "Polling Day"),
     }

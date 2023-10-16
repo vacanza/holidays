@@ -13,23 +13,23 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import NOV
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
     """
 
     country = "PL"
     default_language = "pl"
-    special_holidays = {2018: (NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie"))}
     supported_languages = ("en_US", "pl", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, PolandStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -120,3 +120,9 @@ class PL(Poland):
 
 class POL(Poland):
     pass
+
+
+class PolandStaticHolidays:
+    special_holidays = {
+        2018: (NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),
+    }

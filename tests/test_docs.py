@@ -38,17 +38,18 @@ class TestReadme(TestCase):
 
     def test_supported_countries_table(self):
         # Parse table data.
-        columns_number = 4
+        columns_number = 5
         country_alpha_2_codes = set()
         country_default_languages = {}
         country_names = []
         country_subdivisions = {}
         country_supported_languages = {}
+        country_supported_categories = {}
         subdivisions_re = re.compile(".*: (.*)")
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Supported Languages(.*)Available Financial Markets",
+                r"Supported Categories(.*)Available Financial Markets",
                 self.readme_content,
                 re.DOTALL,
             )[0].split("\n")
@@ -99,6 +100,14 @@ class TestReadme(TestCase):
                     languages.append(supported_language)
 
                 country_supported_languages[country_code] = languages
+
+            # Supported Categories: 5th column.
+            supported_categories = table_content[idx + 4].strip(" -")
+            if supported_categories:
+                categories = []
+                for supported_category in supported_categories.split(","):
+                    categories.append(supported_category.strip("* ").lower())
+                country_supported_categories[country_code] = categories
 
         # Check the data.
         self.assertEqual(
@@ -177,3 +186,14 @@ class TestReadme(TestCase):
                     "to specify the country default language: "
                     f"**{instance.default_language}**.",
                 )
+
+            # Make sure supported categories are shown correctly.
+            supported_categories = sorted(instance.supported_categories)
+            self.assertEqual(
+                supported_categories,
+                country_supported_categories.get(country_code, []),
+                f"Country {country_name} supported categories are not "
+                "shown correctly in the table. The column must contain "
+                "all supported categories: "
+                f"{', '.join(instance.supported_categories)}",
+            )

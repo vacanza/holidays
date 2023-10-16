@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, NOV, FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -49,7 +49,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=UnitedArabEmiratesIslamicCalendar())
+        IslamicHolidays.__init__(self, cls=UnitedArabEmiratesIslamicHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -105,7 +105,7 @@ class ARE(UnitedArabEmirates):
     pass
 
 
-class UnitedArabEmiratesIslamicCalendar(_CustomIslamicCalendar):
+class UnitedArabEmiratesIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2017: (SEP, 1),
         2018: (AUG, 21),

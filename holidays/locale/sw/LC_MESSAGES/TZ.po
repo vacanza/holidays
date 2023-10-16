@@ -1,0 +1,107 @@
+# Tanzania holidays.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.35\n"
+"POT-Creation-Date: 2023-10-07 15:05+0700\n"
+"PO-Revision-Date: 2023-10-07 15:16+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#, c-format
+msgid "%s* (*makisio)"
+msgstr ""
+
+#. John Pombe Magufuli Inauguration Day.
+msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"
+msgstr ""
+
+#. Tanzania General Election Day.
+msgid "Sikukuu ya Uchaguzi Mkuu wa Tanzania"
+msgstr ""
+
+#. National Population and Housing Census Day.
+msgid "Siku ya Sensa ya Kitaifa ya Watu na Makazi"
+msgstr ""
+
+#. John Pombe Magufuli's Funeral.
+msgid "Mazishi cha John Pombe Magufuli"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Sikukuu ya Pasaka"
+msgstr ""
+
+#. New Year's Day.
+msgid "Mwaka Mpya"
+msgstr ""
+
+#. Zanzibar Revolution Day.
+msgid "Mapinduzi ya Zanzibar"
+msgstr ""
+
+#. The Sheikh Abeid Amani Karume Day.
+msgid ""
+"Siku ya kumbukumbu ya Rais wa Kwanza wa Serikali ya Mapinduzi Zanzibar "
+"Sheikh Abeid Amani Karume"
+msgstr ""
+
+#. Union Celebrations.
+msgid "Muungano wa Tanganyika na Zanzibar"
+msgstr ""
+
+#. Worker's Day.
+msgid "Sikukuu ya Wafanyakazi"
+msgstr ""
+
+#. International Trade Fair.
+msgid "Sabasaba"
+msgstr ""
+
+#. Peasants Day.
+msgid "Siku ya Wakulima"
+msgstr ""
+
+#. The Mwalimu Nyerere Day.
+msgid "Kumbukumbu ya Mwalimu Nyerere"
+msgstr ""
+
+#. Independence and Republic Day.
+msgid "Uhuru na Jamhuri"
+msgstr ""
+
+#. Christmas Day.
+msgid "Kuzaliwa Kristo"
+msgstr ""
+
+#. Boxing Day.
+msgid "Siku ya Kupeana Zawadi"
+msgstr ""
+
+#. Good Friday.
+msgid "Ijumaa Kuu"
+msgstr ""
+
+#. Easter Monday.
+msgid "Jumatatu ya Pasaka"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid El-Fitry"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Eid El-Hajj"
+msgstr ""
+
+#. Maulid Day.
+msgid "Maulidi"
+msgstr ""

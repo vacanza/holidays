@@ -63,6 +63,9 @@ ISLAMIC_HOLIDAYS = (
     (9, 21, "ALI_DEATH"),  # Martyrdom of Imam Ali
     (10, 25, "SADIQ_DEATH"),  # Martyrdom of Imam Sadeq
     (12, 18, "EID_AL_GHADIR"),  # Eid al-Ghadir
+    # MV holidays:
+    (3, 1, "QUAMEE_DHUVAS"),  # National Day in Maldives
+    (4, 1, "MALDIVES_EMBRACED_ISLAM"),  # The Day Maldives Embraced Islam
 )
 
 

@@ -24,6 +24,11 @@ class TestThailand(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Thailand(years=1940))
+        self.assertNoHolidays(Thailand(years=1958, categories=(ARMED_FORCES,)))
+        self.assertNoHolidays(Thailand(years=1942, categories=(BANK,)))
+        self.assertNoHolidays(Thailand(years=1956, categories=(GOVERNMENT,)))
+        self.assertNoHolidays(Thailand(years=1956, categories=(SCHOOL,)))
+        self.assertNoHolidays(Thailand(years=1940, categories=(WORKDAY,)))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -353,13 +358,17 @@ class TestThailand(TestCase):
         name_x = (
             "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
         )
+        name_x_memorial = "วันนวมินทรมหาราช"
 
         self.assertNoHoliday("2016-10-13")
         self.assertNoHolidayName(name_ix, 2016)
-        self.assertHolidayName(name_ix, (f"{year}-10-13" for year in range(2017, 2019)))
         self.assertNoHolidayName(name_x, range(1941, 2019))
-        self.assertHolidayName(name_x, (f"{year}-10-13" for year in range(2019, 2058)))
+        self.assertNoHolidayName(name_x_memorial, range(1941, 2023))
+        self.assertHolidayName(name_ix, (f"{year}-10-13" for year in range(2017, 2019)))
+        self.assertHolidayName(name_x, (f"{year}-10-13" for year in range(2019, 2023)))
+        self.assertHolidayName(name_x_memorial, (f"{year}-10-13" for year in range(2023, 2058)))
         self.assertNoHolidayName(name_ix, range(2019, 2058))
+        self.assertNoHolidayName(name_x, range(2023, 2058))
 
         self.assertNoNonObservedHoliday(
             "2018-10-15",
@@ -395,17 +404,13 @@ class TestThailand(TestCase):
         )
 
         self.assertNoHoliday("1959-12-05")
-        self.assertNoHolidayName(name_reign, 1959)
-        self.assertNoHolidayName(name_dead, 1959)
-        self.assertNoHolidayName(name_great, 1959)
-        self.assertHolidayName(name_reign, (f"{year}-12-05" for year in range(1976, 2016)))
+        self.assertNoHolidayName(name_reign, range(1941, 1960))
         self.assertNoHolidayName(name_dead, range(1941, 2016))
-        self.assertNoHolidayName(name_great, range(1941, 2016))
+        self.assertNoHolidayName(name_great, range(1941, 2019))
+        self.assertHolidayName(name_reign, (f"{year}-12-05" for year in range(1976, 2016)))
         self.assertHolidayName(name_dead, (f"{year}-12-05" for year in range(2016, 2019)))
-        self.assertNoHolidayName(name_reign, range(2019, 2058))
-        self.assertNoHolidayName(name_great, range(2016, 2019))
         self.assertHolidayName(name_great, (f"{year}-12-05" for year in range(2019, 2058)))
-        self.assertNoHolidayName(name_reign, range(2019, 2058))
+        self.assertNoHolidayName(name_reign, range(2016, 2058))
         self.assertNoHolidayName(name_dead, range(2019, 2058))
 
         self.assertNoNonObservedHoliday(

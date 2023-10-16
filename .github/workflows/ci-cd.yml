@@ -12,7 +12,7 @@ jobs:
       - name: Check Out Repository
         uses: actions/checkout@v4
       - name: Set Up Python
-        uses: actions/setup-python@v4.7.0
+        uses: actions/setup-python@v4.7.1
         with:
           python-version: '3.11'
       - name: Run pre-commit
@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set Up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.7.0
+        uses: actions/setup-python@v4.7.1
         with:
           cache: pip
           cache-dependency-path: |
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set Up Python
-        uses: actions/setup-python@v4.7.0
+        uses: actions/setup-python@v4.7.1
         with:
           cache: pip
           cache-dependency-path: requirements/runtime.txt

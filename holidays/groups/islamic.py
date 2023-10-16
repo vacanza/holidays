@@ -24,8 +24,8 @@ class IslamicHolidays:
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, calendar=_IslamicLunar()) -> None:
-        self._islamic_calendar = calendar
+    def __init__(self, cls=None) -> None:
+        self._islamic_calendar = cls() if cls else _IslamicLunar()
 
     def _add_ali_al_rida_death_day(self, name) -> Set[date]:
         """
@@ -287,6 +287,16 @@ class IslamicHolidays:
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
+    def _add_maldives_embraced_islam_day(self, name) -> Set[date]:
+        """
+        Add Maldives Embraced Islam Day (1st day of 4th month).
+
+        https://en.wikipedia.org/wiki/Islam_in_Maldives
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.maldives_embraced_islam_day_dates(self._year)
+        )
+
     def _add_mawlid_day(self, name) -> Set[date]:
         """
         Add Mawlid Day (12th day of 3rd month).
@@ -332,6 +342,16 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.prophet_death_dates(self._year)
+        )
+
+    def _add_quamee_dhuvas_day(self, name) -> Set[date]:
+        """
+        Add Quamee Dhuvas (1st day of 3rd month).
+
+        https://en.wikipedia.org/wiki/Qaumee_Dhuvas_(Maldives_National_Day)
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.quamee_dhuvas_dates(self._year)
         )
 
     def _add_ramadan_beginning_day(self, name) -> Set[date]:

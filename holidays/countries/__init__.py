@@ -91,6 +91,7 @@ from .luxembourg import Luxembourg, LU, LUX
 from .madagascar import Madagascar, MG, MDG
 from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
+from .maldives import Maldives, MV, MDV
 from .malta import Malta, MT, MLT
 from .marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
 from .mexico import Mexico, MX, MEX
@@ -129,6 +130,7 @@ from .spain import Spain, ES, ESP
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
+from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR

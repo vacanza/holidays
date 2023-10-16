@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://www.officeholidays.com/countries/zambia/
     https://www.timeanddate.com/holidays/zambia/
@@ -24,28 +24,11 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "ZM"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2016: (
-            (AUG, 11, "General elections and referendum"),
-            (SEP, 13, "Inauguration ceremony of President-elect and Vice President-elect"),
-        ),
-        2018: (
-            (MAR, 9, "Public holiday"),
-            (JUL, 26, "Lusaka mayoral and other local government elections"),
-        ),
-        2021: (
-            (JUL, 2, "Memorial service for Kenneth Kaunda"),
-            (JUL, 7, "Funeral of Kenneth Kaunda"),
-            (AUG, 12, "General elections"),
-            (AUG, 13, "Counting in general elections"),
-            (AUG, 24, "Presidential inauguration"),
-        ),
-        2022: (MAR, 18, "Funeral of Rupiah Banda"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, ZambiaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -112,3 +95,24 @@ class ZM(Zambia):
 
 class ZMB(Zambia):
     pass
+
+
+class ZambiaStaticHolidays:
+    special_holidays = {
+        2016: (
+            (AUG, 11, "General elections and referendum"),
+            (SEP, 13, "Inauguration ceremony of President-elect and Vice President-elect"),
+        ),
+        2018: (
+            (MAR, 9, "Public holiday"),
+            (JUL, 26, "Lusaka mayoral and other local government elections"),
+        ),
+        2021: (
+            (JUL, 2, "Memorial service for Kenneth Kaunda"),
+            (JUL, 7, "Funeral of Kenneth Kaunda"),
+            (AUG, 12, "General elections"),
+            (AUG, 13, "Counting in general elections"),
+            (AUG, 24, "Presidential inauguration"),
+        ),
+        2022: (MAR, 18, "Funeral of Rupiah Banda"),
+    }

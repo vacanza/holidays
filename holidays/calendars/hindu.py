@@ -437,5 +437,5 @@ class _HinduLunisolar:
         return self._get_holiday(THAIPUSAM, year)
 
 
-class _CustomHinduCalendar(_CustomCalendar, _HinduLunisolar):
+class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):
     pass
