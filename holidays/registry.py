@@ -97,6 +97,7 @@ COUNTRIES: RegistryDict = {
     "madagascar": ("Madagascar", "MG", "MDG"),
     "malawi": ("Malawi", "MW", "MWI"),
     "malaysia": ("Malaysia", "MY", "MYS"),
+    "maldives": ("Maldives", "MV", "MDV"),
     "malta": ("Malta", "MT", "MLT"),
     "marshall_islands": ("MarshallIslands", "MH", "MHL", "HolidaysMH"),
     "mexico": ("Mexico", "MX", "MEX"),
