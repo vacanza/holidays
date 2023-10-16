@@ -1,7 +1,22 @@
 Version 0.35
 ============
 
-Released ???????? ??, ????
+Released October 16, 2023
+
+- Refactor static holidays (#1509 by @arkid15r)
+- Add Maldives holidays (#1508 by @kasya)
+- Add Tanzania holidays (#1505 by @PPsyrius)
+- Fix estimated label for multiple holiday group entities (#1512 by @arkid15r)
+- Update China holidays add non-statutory holidays support, l10n, optional half-day holidays (#1491 by @PPsyrius)
+- Update Thailand holidays: name change for October 13 holiday (#1493 by @PPsyrius)
+- Update United States holidays: Columbus Day adjustment (#1503 by @KJhellico)
+- Update documentation for holiday categories usage (#1506 by @KJhellico)
+- Update pre-commit hooks automatic update workflow (#1507 by @arkid15r)
+- Update project metadata: add @KJhellico to maintainers (#1501 by @arkid15r)
+- Add py.typed to MANIFEST.in includes (#1498 by @arkid15r)
+- Implement Tanzania `StaticHolidays`  (#1513 by @PPsyrius)
+- Simplify PR template (#1502 by @arkid15r)
+- Standardize custom holiday classes use (#1510 by @arkid15r)
 
 Version 0.34
 ============
