@@ -406,6 +406,35 @@ class TestTimorLeste(TestCase):
             ("2022-12-31", "Dia dos Heróis Nacionais"),
         )
 
+    def test_2022_workday(self):
+        self.assertHolidays(
+            TimorLeste(categories=(WORKDAY,), years=2022),
+            ("2022-03-02", "Quarta-Feira de Cinzas"),
+            ("2022-04-14", "Quinta-Feira Santa"),
+            ("2022-05-26", "Dia da Ascensão de Jesus Cristo ao Céu"),
+            ("2022-06-01", "Dia Mundial da Criança"),
+            (
+                "2022-08-20",
+                "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)",
+            ),
+            ("2022-11-03", "Dia Nacional da Mulher"),
+            ("2022-12-10", "Dia Mundial dos Direitos Humanos"),
+        )
+
+    def test_2023_workday(self):
+        self.assertHolidays(
+            TimorLeste(categories=(WORKDAY,), years=2023),
+            ("2023-02-22", "Quarta-Feira de Cinzas"),
+            ("2023-04-06", "Quinta-Feira Santa"),
+            ("2023-05-18", "Dia da Ascensão de Jesus Cristo ao Céu"),
+            ("2023-06-01", "Dia Mundial da Criança"),
+            (
+                "2023-08-20",
+                "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)",
+            ),
+            ("2023-12-10", "Dia Mundial dos Direitos Humanos"),
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Dia de Ano Novo"),
