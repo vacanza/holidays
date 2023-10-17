@@ -117,7 +117,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 137 country codes. The standard way to refer to a country
+We currently support 138 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
 than one language for holiday names output.
@@ -199,6 +199,11 @@ The list of supported countries, their subdivisions, supported languages and cat
      - BANK, **PUBLIC**
    * - Azerbaijan
      - AZ
+     -
+     -
+     -
+   * - Bahamas
+     - BS
      -
      -
      -
