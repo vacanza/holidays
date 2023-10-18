@@ -669,9 +669,9 @@ The list of supported countries, their subdivisions, supported languages and cat
      -
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30, Ext; Use subdiv='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
      - en_US, **pt_PT**
-     -
+     - OPTIONAL, **PUBLIC**
    * - Puerto Rico
      - PR
      - Can also be loaded as country US, subdivision PR
