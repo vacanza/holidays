@@ -122,10 +122,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if year >= 1871:
             name = "New Year's Day"
             self._add_observed(self._add_new_years_day(name))
-            # The following year's observed New Year's Day can be in this year
-            # when it falls on a Friday (Jan 1st is a Saturday).
-            if self.observed and self._is_friday(DEC, 31):
-                self._add_holiday_dec_31(self.observed_label % name)
+            self._add_observed(self._next_year_new_years_day, name=name)
 
         # Memorial Day
         if year >= 1888:

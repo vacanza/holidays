@@ -13,7 +13,7 @@ from datetime import date
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import AUG, SEP, DEC
+from holidays.calendars.gregorian import AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -58,12 +58,13 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # it rolls over to the following Monday.
         return dt >= date(1996, SEP, 27)
 
-    def _add_observed(self, dt: date, *args) -> Tuple[bool, date]:
+    def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, date]:
         # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
         # the Monday or Friday is also a holiday.
-        return super()._add_observed(
-            dt, rule=SUN_TO_NEXT_MON if dt < date(2018, SEP, 10) else self._observed_rule
+        kwargs.setdefault(
+            "rule", SUN_TO_NEXT_MON if dt < date(2018, SEP, 10) else self._observed_rule
         )
+        return super()._add_observed(dt, **kwargs)
 
     def _populate(self, year):
         # Decree #5/75.
@@ -75,11 +76,9 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # New Year's Day.
         name = self.tr("Dia do Ano Novo")
         dt = self._add_new_years_day(name)
-        if year <= 2011 or year >= 2019:
+        if year <= 2011 or year >= 2018:
             self._add_observed(dt)
-
-        if self.observed and self._is_monday(DEC, 31) and year >= 2018:
-            self._add_holiday_dec_31(self.tr(self.observed_label) % name)
+            self._add_observed(self._next_year_new_years_day, name=name)
 
         # Law #16/96.
         if 1997 <= year <= 2011:

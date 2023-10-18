@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, TUE_TO_PREV_MON, THU_TO_NEXT_FRI
 
@@ -47,11 +46,7 @@ class Hungary(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         jan_1 = self._add_new_years_day(name)
         if year >= 2014:
             self._add_observed(jan_1)
-
-            # The last day of the year is an observed day off if New Year's Day
-            # falls on a Tuesday.
-            if self.observed and self._is_monday(DEC, 31):
-                self._add_holiday_dec_31(self.tr(self.observed_label_before) % name)
+            self._add_observed(self._next_year_new_years_day, name=name)
 
         if 1945 <= year <= 1950 or year >= 1989:
             # National Day.
