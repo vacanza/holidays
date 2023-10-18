@@ -78,7 +78,7 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         if self._year >= 2013:
             self._add_observed(self._add_holiday_2nd_mon_of_oct("National Heroes Day"))
         else:
-            self._add_observed(self._add_holiday_oct_12("Discovery Day"))
+            self._add_observed(self._add_columbus_day("Discovery Day"))
 
         # Christmas Holidays Exception Rules.
         # Observance Exception:
