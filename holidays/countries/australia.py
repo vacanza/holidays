@@ -9,10 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from holidays.calendars.gregorian import APR, JUN, AUG, SEP, OCT, FRI, _get_nth_weekday_from
+from holidays.calendars.gregorian import APR, JUN, AUG, SEP, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -40,6 +37,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if 1902 <= self._year <= 1951 or self._year >= 2023
             else "Queen's Birthday"
         )
+
+    @property
+    def boxing_day_name(self) -> str:
+        """Dec 26 holiday name."""
+        return "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -76,15 +78,23 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_holiday_nov_9(self.sovereign_birthday)  # Edward VII
 
+        # Christmas Day
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+
+        # Boxing Day
+        self._add_observed(
+            self._add_christmas_day_two(self.boxing_day_name),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
+
     def _add_subdiv_holidays(self):
         # Australia Day
         if self._year >= 1935:
-            name = (
+            jan_26 = self._add_holiday_jan_26(
                 "Anniversary Day"
                 if self.subdiv == "NSW" and self._year <= 1945
                 else "Australia Day"
             )
-            jan_26 = self._add_holiday_jan_26(name)
             if self._year >= 1946:
                 self._add_observed(jan_26)
         elif self._year >= 1888 and self.subdiv != "SA":
@@ -93,13 +103,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Anzac Day
         if self._year >= 1921:
             self._add_holiday_apr_25("Anzac Day")
-
-        # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
-
-        # Boxing Day
-        name = "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
-        self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         super()._add_subdiv_holidays()
 
@@ -117,7 +120,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), rule=SUN_TO_NEXT_MON)
+            self._add_observed((APR, 25), rule=SUN_TO_NEXT_MON)
 
         # Canberra Day
         # Info from https://www.timeanddate.com/holidays/australia/canberra-day
@@ -138,14 +141,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # TODO need a formula for the ACT school holidays then
             # http://www.cmd.act.gov.au/communication/holidays
             fc_dates = {
-                2010: date(2010, SEP, 26),
-                2011: date(2011, OCT, 10),
-                2012: date(2012, OCT, 8),
-                2013: date(2013, SEP, 30),
-                2014: date(2014, SEP, 29),
-                2015: date(2015, SEP, 28),
-                2016: date(2016, SEP, 26),
-                2017: date(2017, SEP, 25),
+                2010: (SEP, 26),
+                2011: (OCT, 10),
+                2012: (OCT, 8),
+                2013: (SEP, 30),
+                2014: (SEP, 29),
+                2015: (SEP, 28),
+                2016: (SEP, 26),
+                2017: (SEP, 25),
             }
             name = "Family & Community Day"
             if self._year in fc_dates:
@@ -186,7 +189,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25))
+            self._add_observed((APR, 25))
 
         # Picnic Day
         self._add_holiday_1st_mon_of_aug("Picnic Day")
@@ -226,9 +229,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year in ekka_dates:
             self._add_holiday(name, ekka_dates[self._year])
         else:
-            self._add_holiday(
-                name, _get_nth_weekday_from(+1, FRI, date(self._year, AUG, 5)) + td(days=+5)
-            )
+            # [1st FRI after Aug 5] + 5 days = [1st WED after Aug 10]
+            self._add_holiday_1st_wed_from_aug_10(name)
 
     def _add_subdiv_sa_holidays(self):
         # Easter
@@ -279,10 +281,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Grand Final Day
             grand_final_dates = {
                 # Rescheduled due to COVID-19
-                2020: date(2020, OCT, 23),
+                2020: (OCT, 23),
                 # Rescheduled due to COVID-19
-                2021: date(2021, SEP, 24),
-                2022: date(2022, SEP, 23),
+                2021: (SEP, 24),
+                2022: (SEP, 23),
             }
             name = "Grand Final Day"
             if self._year in grand_final_dates:
@@ -300,12 +302,13 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25))
+            self._add_observed((APR, 25))
 
         # Western Australia Day
         if self._year >= 1833:
-            name = "Western Australia Day" if self._year >= 2015 else "Foundation Day"
-            self._add_holiday_1st_mon_of_jun(name)
+            self._add_holiday_1st_mon_of_jun(
+                "Western Australia Day" if self._year >= 2015 else "Foundation Day"
+            )
 
 
 class AU(Australia):
