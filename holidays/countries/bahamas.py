@@ -55,13 +55,12 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # - If TUE, New Year's Day (Observed) prev MON.
         # - If WED or THU, New Year's Day (Observed) next FRI.
         # 2012 and beyond Observance: If SUN, New Year's Day (Observed) next MON (not for SAT).
-        if self._year >= 2012:
-            self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_MON)
-        else:
-            self._add_observed(
-                self._add_new_years_day("New Year's Day"),
-                rule=SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI,
-            )
+        self._add_observed(
+            self._add_new_years_day("New Year's Day"),
+            rule=SUN_TO_NEXT_MON
+            if self._year >= 2012
+            else SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI,
+        )
 
         # Majority Rule Day.
         # Officially made a holiday on Oct 11, 2013 under Majority Rule (Public Holiday) Act 2013.
