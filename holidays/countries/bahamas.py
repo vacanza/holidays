@@ -119,7 +119,7 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # New Year's Day observance overflow.
         # This only applies to Pre-2012 observance.
         if self.observed and self._year in {1979, 1984, 1990, 2001, 2007}:
-            self._add_new_years_eve("New Year's Day (Observed)")       
+            self._add_new_years_eve("New Year's Day (Observed)")
 
 
 class BS(Bahamas):
