@@ -78,10 +78,11 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # Randol Fawkes Labour Day.
         # This was simply known as "Labour Day" prior to Randol Fawkes Labour Day Act 2013.
-        if self._year >= 2013:
-            self._add_observed(self._add_holiday_1st_fri_of_jun("Randol Fawkes Labour Day"))
-        else:
-            self._add_observed(self._add_holiday_1st_fri_of_jun("Labour Day"))
+        self._add_observed(
+            self._add_holiday_1st_fri_of_jun(
+                "Randol Fawkes Labour Day" if self._year >= 2013 else "Labour Day"
+            )
+        )
 
         # Independence Day.
         self._add_observed(self._add_holiday_jul_10("Independence Day"))
