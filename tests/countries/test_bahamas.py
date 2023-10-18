@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestBahamas(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Bahamas, years=range(1974, 2050))
+        super().setUpClass(Bahamas, years=range(1974, 2050), years_non_observed=range(1974, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Bahamas, BS, BHS)
@@ -26,6 +26,22 @@ class TestBahamas(TestCase):
 
     def test_special_public_holidays(self):
         self.assertHoliday("2022-09-19")
+
+    def test_special_observance_2012_and_prior(self):
+        self.assertNoNonObservedHoliday(
+            # Cases of New Year's Day observance overflow into prev year
+            "1979-12-31",
+            "1984-12-31",
+            "1990-12-31",
+            "2001-12-31",
+            "2007-12-31",
+            # New Year's Day
+            "2009-01-02",
+            "2011-01-03",
+            # Discovery Day
+            "2010-10-11",
+            "2011-10-14",
+        )
 
     def test_2012(self):
         self.assertHolidays(

@@ -13,7 +13,10 @@ from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    TUE_TO_PREV_MON,
+    WED_THU_TO_NEXT_FRI,
     SAT_SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_MON,
     SUN_TO_NEXT_TUE,
 )
 
@@ -48,7 +51,17 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             return None
 
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        # Pre-2012 Observance:
+        # - If TUE, New Year's Day (Observed) prev MON.
+        # - If WED or THU, New Year's Day (Observed) next FRI.
+        # 2012 and beyond Observance: If SUN, New Year's Day (Observed) next MON (not for SAT).
+        if self._year >= 2012:
+            self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_MON)
+        else:
+            self._add_observed(
+                self._add_new_years_day("New Year's Day"),
+                rule=SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI,
+            )
 
         # Majority Rule Day.
         # Officially made a holiday on Oct 11, 2013 under Majority Rule (Public Holiday) Act 2013.
@@ -72,7 +85,6 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             self._add_observed(self._add_holiday_1st_fri_of_jun("Labour Day"))
 
         # Independence Day.
-        # Observance Exception: Not Moving to Next FRI if fall on WED or THU.
         self._add_observed(self._add_holiday_jul_10("Independence Day"))
 
         # Emancipation Day.
@@ -81,22 +93,33 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # National Heroes Day.
         # Known as "Discovery Day" prior to 2013, with its date fixed as Oct 12 annually.
         # Got its name changed on Oct 11, 2013 under Majority Rule (Public Holiday) Act 2013.
+        # Pre-2013 Observance:
+        # - If TUE, New Year's Day (Observed) prev MON.
+        # - If WED or THU, New Year's Day (Observed) next FRI.
         if self._year >= 2013:
             self._add_observed(self._add_holiday_2nd_mon_of_oct("National Heroes Day"))
         else:
-            self._add_observed(self._add_columbus_day("Discovery Day"))
+            self._add_observed(
+                self._add_columbus_day("Discovery Day"),
+                rule=SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI,
+            )
 
         # Christmas Holidays Exception Rules.
         # Observance Exception:
-        # FRI-SAT -> Boxing Day (Observed) on MON.
-        # SAT-SUN -> Boxing Day (Observed) on MON.
-        # SUN-MON -> Christmas Day (Observed) on TUE.
+        # FRI-SAT -> Boxing Day (Observed) next MON.
+        # SAT-SUN -> Boxing Day (Observed) next MON.
+        # SUN-MON -> Christmas Day (Observed) next TUE.
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
+
+        # New Year's Day observance overflow.
+        # This only applies to Pre-2012 observance.
+        if self.observed and self._year in {1979, 1984, 1990, 2001, 2007}:
+            self._add_new_years_eve("New Year's Day (Observed)")       
 
 
 class BS(Bahamas):
