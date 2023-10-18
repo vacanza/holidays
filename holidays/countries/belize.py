@@ -37,7 +37,8 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # on a Sunday or a Friday, the following Monday is observed as public
         # holiday; further, if the holiday falls on a Tuesday, Wednesday or
         # Thursday, the preceding Monday is observed as public holiday
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Belize was granted independence on 21.09.1981.

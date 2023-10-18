@@ -71,7 +71,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, NewZelandStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> date:
         dt = args if len(args) > 1 else args[0]

@@ -74,7 +74,9 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         StaticHolidays.__init__(self, cls=LaosStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, observed_since=2018, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 2018)
+        super().__init__(*args, **kwargs)
 
     def _populate_bank_holidays(self):
         # Based on both LSX and BCEL calendar.

@@ -146,7 +146,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, ThailandStaticHolidays)
         ThaiCalendarHolidays.__init__(self)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001

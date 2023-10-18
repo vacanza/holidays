@@ -65,7 +65,8 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, CanadaStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> date:
         return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)

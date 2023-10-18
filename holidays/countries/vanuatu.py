@@ -28,7 +28,8 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, VanatuStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # On 30 July 1980, Vanuatu gained independence from Britain and France.

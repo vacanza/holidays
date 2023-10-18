@@ -29,7 +29,9 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=EswatiniStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=2021, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 2021)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1939

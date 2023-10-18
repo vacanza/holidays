@@ -86,7 +86,9 @@ class Singapore(
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
-        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, observed_since=1998, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 1998)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year) -> None:
         super()._populate(year)

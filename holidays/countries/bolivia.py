@@ -57,7 +57,9 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         # Supreme Decree #14260.
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=1977, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 1977)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1824:

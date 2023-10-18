@@ -29,9 +29,9 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(
-            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2002, *args, **kwargs
-        )
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2002)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Kazakhstan declared its sovereignty on 25 October 1990
