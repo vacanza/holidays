@@ -750,22 +750,23 @@ class HolidayBase(Dict[date, str]):
         self._add_substituted_holidays()
 
     def _add_special_holidays(self):
-        for month, day, name in _normalize_tuple(self.special_holidays.get(self._year, ())):
-            self._add_holiday(name, date(self._year, month, day))
+        special_holidays_mapping_names = ["special_holidays"]
+        if self.subdiv is not None:
+            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
+            special_holidays_mapping_names.append(f"special_{subdiv}_holidays")
 
         for category in sorted(self.categories):
-            special_holidays_mapping_names = [f"special_{category}_holidays"]
+            special_holidays_mapping_names.append(f"special_{category}_holidays")
             if self.subdiv is not None:
-                subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
                 special_holidays_mapping_names.append(f"special_{subdiv}_{category}_holidays")
 
-            for mapping_name in special_holidays_mapping_names:
-                special_holidays_mapping = getattr(self, mapping_name, None)
-                if special_holidays_mapping:
-                    for month, day, name in _normalize_tuple(
-                        special_holidays_mapping.get(self._year, ())
-                    ):
-                        self._add_holiday(name, date(self._year, month, day))
+        for mapping_name in special_holidays_mapping_names:
+            special_holidays_mapping = getattr(self, mapping_name, None)
+            if special_holidays_mapping:
+                for month, day, name in _normalize_tuple(
+                    special_holidays_mapping.get(self._year, ())
+                ):
+                    self._add_holiday(name, date(self._year, month, day))
 
     def _add_non_static_holidays(self):
         for category in sorted(self.categories):

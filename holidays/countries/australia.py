@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import APR, AUG, SEP, OCT, FRI, _get_nth_weekday_from
+from holidays.calendars.gregorian import APR, JUN, AUG, SEP, OCT, FRI, _get_nth_weekday_from
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -208,8 +208,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
             else:
                 self._add_holiday_1st_mon_of_oct(self.sovereign_birthday)
-        if self._year == 2012:
-            self._add_holiday_jun_11("Queen's Diamond Jubilee")
 
         # Anzac Day
         if self._year >= 1921:
@@ -320,4 +318,8 @@ class AUS(Australia):
 class AustraliaStaticHolidays:
     special_holidays = {
         2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
+    }
+
+    special_qld_holidays = {
+        2012: (JUN, 11, "Queen's Diamond Jubilee"),
     }
