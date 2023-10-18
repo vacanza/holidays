@@ -94,8 +94,8 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Known as "Discovery Day" prior to 2013, with its date fixed as Oct 12 annually.
         # Got its name changed on Oct 11, 2013 under Majority Rule (Public Holiday) Act 2013.
         # Pre-2013 Observance:
-        # - If TUE, New Year's Day (Observed) prev MON.
-        # - If WED or THU, New Year's Day (Observed) next FRI.
+        # - If TUE, Discovery Day (Observed) prev MON.
+        # - If WED or THU, Discovery Day (Observed) next FRI.
         if self._year >= 2013:
             self._add_observed(self._add_holiday_2nd_mon_of_oct("National Heroes Day"))
         else:
