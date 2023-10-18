@@ -22,7 +22,9 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas
-      - https://www.ilo.org/dyn/travail/docs/1204/PublicHolidaysAct_1.pdf
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf  # noqa: E501
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf  # noqa: E501
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf  # noqa: E501
       - http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/
       - https://eleutheranews.com/?p=3594
     Checked With:
@@ -63,7 +65,11 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_whit_monday("Whit Monday"))
 
         # Randol Fawkes Labour Day.
-        self._add_observed(self._add_holiday_1st_fri_of_jun("Randol Fawkes Labour Day"))
+        # This was simply known as "Labour Day" prior to Randol Fawkes Labour Day Act 2013.
+        if self._year >= 2013:
+            self._add_observed(self._add_holiday_1st_fri_of_jun("Randol Fawkes Labour Day"))
+        else:
+            self._add_observed(self._add_holiday_1st_fri_of_jun("Labour Day"))
 
         # Independence Day.
         # Observance Exception: Not Moving to Next FRI if fall on WED or THU.

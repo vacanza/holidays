@@ -35,7 +35,7 @@ class TestBahamas(TestCase):
             ("2012-04-06", "Good Friday"),
             ("2012-04-09", "Easter Monday"),
             ("2012-05-28", "Whit Monday"),
-            ("2012-06-01", "Randol Fawkes Labour Day"),
+            ("2012-06-01", "Labour Day"),
             ("2012-07-10", "Independence Day"),
             ("2012-08-06", "Emancipation Day"),
             ("2012-10-12", "Discovery Day"),
@@ -114,7 +114,6 @@ class TestBahamas(TestCase):
         self.assertHolidays(
             Bahamas(years=2022),
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
             ("2022-01-10", "Majority Rule Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
