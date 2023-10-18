@@ -12,9 +12,9 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, APR, JUN, JUL
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, SEP
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ALL_TO_NEAREST_MON,
@@ -25,7 +25,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Canada
@@ -64,6 +64,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, CanadaStaticHolidays)
         super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> date:
@@ -216,10 +217,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # British Columbia Day.
             self._add_holiday_1st_mon_of_aug(tr("British Columbia Day"))
 
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
-
         if self._year >= 2023:
             # National Day for Truth and Reconciliation.
             self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
@@ -266,10 +263,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # New Brunswick Day.
             self._add_holiday_1st_mon_of_aug(tr("New Brunswick Day"))
 
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
-
         if self._year >= 1931:
             # Remembrance Day.
             self._add_remembrance_day(tr("Remembrance Day"))
@@ -291,10 +284,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1879:
             self._add_observed(self._canada_day)
-
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
 
         if self._year >= 1931:
             # Remembrance Day.
@@ -331,10 +320,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2015:
             # Heritage Day.
             self._add_holiday_3rd_mon_of_feb(tr("Heritage Day"))
-
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
 
         if self._year >= 1981:
             # Remembrance Day.
@@ -426,10 +411,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1879:
             self._add_observed(self._canada_day)
 
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
-
         if self._year >= 2022:
             # National Day for Truth and Reconciliation.
             self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
@@ -498,10 +479,6 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Discovery Day.
             self._add_holiday_3rd_mon_of_aug(tr("Discovery Day"))
 
-        if self._year == 2022:
-            # Funeral of Queen Elizabeth II.
-            self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
-
         if self._year >= 2023:
             # National Day for Truth and Reconciliation.
             self._add_holiday_sep_30(tr("National Day for Truth and Reconciliation"))
@@ -524,3 +501,32 @@ class CA(Canada):
 
 class CAN(Canada):
     pass
+
+
+class CanadaStaticHolidays:
+    # Funeral of Queen Elizabeth II.
+    queen_funeral = tr("Funeral of Her Majesty the Queen Elizabeth II")
+
+    special_bc_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
+
+    special_nb_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
+
+    special_nl_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
+
+    special_ns_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
+
+    special_pe_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
+
+    special_yt_public_holidays = {
+        2022: (SEP, 19, queen_funeral),
+    }
