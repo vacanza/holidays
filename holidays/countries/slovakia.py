@@ -13,11 +13,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
 from holidays.constants import PUBLIC, WORKDAY
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia
     https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku
@@ -26,17 +26,13 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "SK"
     default_language = "sk"
-    special_public_holidays = {
-        # 100th anniversary of the adoption of the Declaration
-        # of the Slovak Nation.
-        2018: (OCT, 30, tr("100. výročie prijatia Deklarácie slovenského národa"))
-    }
     supported_categories = {PUBLIC, WORKDAY}
     supported_languages = ("en_US", "sk", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=SlovakiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -107,3 +103,11 @@ class SK(Slovakia):
 
 class SVK(Slovakia):
     pass
+
+
+class SlovakiaStaticHolidays:
+    special_public_holidays = {
+        # 100th anniversary of the adoption of the Declaration
+        # of the Slovak Nation.
+        2018: (OCT, 30, tr("100. výročie prijatia Deklarácie slovenského národa"))
+    }

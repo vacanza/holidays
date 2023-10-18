@@ -18,6 +18,7 @@ from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -35,6 +36,7 @@ class Brunei(
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.
@@ -69,16 +71,12 @@ class Brunei(
     observed_label = tr("%s - Diperhatikan")
     supported_languages = ("en_US", "ms", "th")
 
-    special_holidays = {
-        # Sultan Hassanal Bolkiah's Golden Jubilee celebration
-        2017: (OCT, 5, tr("Jubli Emas Sultan Hassanal Bolkiah")),
-    }
-
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=BruneiIslamicHolidays)
+        StaticHolidays.__init__(self, cls=BruneiStaticHolidays)
         super().__init__(observed_rule=FRI_SUN_TO_NEXT_SAT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -393,4 +391,11 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (APR, 13),
         2022: (APR, 3),
         2023: (MAR, 23),
+    }
+
+
+class BruneiStaticHolidays:
+    special_holidays = {
+        # Sultan Hassanal Bolkiah's Golden Jubilee celebration
+        2017: (OCT, 5, tr("Jubli Emas Sultan Hassanal Bolkiah")),
     }

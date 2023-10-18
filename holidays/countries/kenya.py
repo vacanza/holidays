@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, APR, AUG, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
     http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
@@ -23,21 +23,11 @@ class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "KE"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2020: (FEB, 11, "President Moi Celebration of Life Day"),
-        2022: (
-            (APR, 29, "State Funeral for Former President Mwai Kibaki"),
-            (AUG, 9, "Election Day"),
-            (SEP, 10, "Day of Mourning for Queen Elizabeth II"),
-            (SEP, 11, "Day of Mourning for Queen Elizabeth II"),
-            (SEP, 12, "Day of Mourning for Queen Elizabeth II"),
-            (SEP, 13, "Inauguration Day"),
-        ),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=KenyaStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
 
     def _populate(self, year):
@@ -89,3 +79,17 @@ class KE(Kenya):
 
 class KEN(Kenya):
     pass
+
+
+class KenyaStaticHolidays:
+    special_holidays = {
+        2020: (FEB, 11, "President Moi Celebration of Life Day"),
+        2022: (
+            (APR, 29, "State Funeral for Former President Mwai Kibaki"),
+            (AUG, 9, "Election Day"),
+            (SEP, 10, "Day of Mourning for Queen Elizabeth II"),
+            (SEP, 11, "Day of Mourning for Queen Elizabeth II"),
+            (SEP, 12, "Day of Mourning for Queen Elizabeth II"),
+            (SEP, 13, "Inauguration Day"),
+        ),
+    }
