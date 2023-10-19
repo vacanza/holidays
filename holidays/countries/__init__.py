@@ -132,6 +132,7 @@ from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
 from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
+from .timor_leste import TimorLeste, TL, TLS
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR
 from .ukraine import Ukraine, UA, UKR
