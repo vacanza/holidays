@@ -757,6 +757,11 @@ The list of supported countries, their subdivisions, supported languages and cat
      -
      - en_US, **th**
      - ARMED_FORCES, BANK, GOVERNMENT, **PUBLIC**, SCHOOL, WORKDAY
+   * - Timor Leste
+     - TL
+     -
+     - en_US, **pt_TL**, tet
+     - GOVERNMENT, **PUBLIC**, WORKDAY
    * - Tunisia
      - TN
      -
