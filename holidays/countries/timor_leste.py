@@ -79,10 +79,10 @@ class TimorLeste(
         # Popular Consultation Day.
         self._add_holiday_aug_30(tr("Dia da Consulta Popular"))
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_all_saints_day(tr("Dia de Todos os Santos"))
 
-        # All Souls Day.
+        # All Souls' Day.
         self._add_all_souls_day(tr("Dia de Todos os Fiéis Defuntos"))
 
         # Dia Nacional da Mulher.
@@ -169,7 +169,7 @@ class TimorLeste(
         # Ash Wednesday.
         self._add_ash_wednesday(tr("Quarta-Feira de Cinzas"))
 
-        # Holy Thusday.
+        # Holy Thursday.
         self._add_holy_thursday(tr("Quinta-Feira Santa"))
 
         # The Day of Ascension of Jesus Christ into Heaven.

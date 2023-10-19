@@ -40,11 +40,11 @@ msgstr ""
 msgid "Dia da Consulta Popular"
 msgstr ""
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Dia de Todos os Santos"
 msgstr ""
 
-#. All Souls Day.
+#. All Souls' Day.
 msgid "Dia de Todos os Fiéis Defuntos"
 msgstr ""
 
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Quarta-Feira de Cinzas"
 msgstr ""
 
-#. Holy Thusday.
+#. Holy Thursday.
 msgid "Quinta-Feira Santa"
 msgstr ""
 

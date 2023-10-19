@@ -40,11 +40,11 @@ msgstr "Loron Restaurasaun Independénsia nian"
 msgid "Dia da Consulta Popular"
 msgstr "Loron Konsulta Populár nian"
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Dia de Todos os Santos"
 msgstr "Loron Santu sira Hotu nian"
 
-#. All Souls Day.
+#. All Souls' Day.
 msgid "Dia de Todos os Fiéis Defuntos"
 msgstr "Loron Matebian sira nian"
 
@@ -114,7 +114,7 @@ msgstr "Loron Mundiál Direitu Umanu"
 msgid "Quarta-Feira de Cinzas"
 msgstr "Kuarta-Feira Sinzas"
 
-#. Holy Thusday.
+#. Holy Thursday.
 msgid "Quinta-Feira Santa"
 msgstr "Quinta-Feira Santa"
 

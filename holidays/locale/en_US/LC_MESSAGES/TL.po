@@ -40,13 +40,13 @@ msgstr "Restoration of Independence Day"
 msgid "Dia da Consulta Popular"
 msgstr "Popular Consultation Day"
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Dia de Todos os Santos"
-msgstr "All Saints Day"
+msgstr "All Saints' Day"
 
-#. All Souls Day.
+#. All Souls' Day.
 msgid "Dia de Todos os Fiéis Defuntos"
-msgstr "All Souls Day"
+msgstr "All Souls' Day"
 
 #. National Women's Day.
 msgid "Dia Nacional da Mulher"
@@ -116,9 +116,9 @@ msgstr "World Human Rights Day"
 msgid "Quarta-Feira de Cinzas"
 msgstr "Ash Wednesday"
 
-#. Holy Thusday.
+#. Holy Thursday.
 msgid "Quinta-Feira Santa"
-msgstr "Holy Thusday"
+msgstr "Holy Thursday"
 
 #. The Day of Ascension of Jesus Christ into Heaven.
 msgid "Dia da Ascensão de Jesus Cristo ao Céu"
