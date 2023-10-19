@@ -28,6 +28,7 @@ COUNTRIES: RegistryDict = {
     "australia": ("Australia", "AU", "AUS"),
     "austria": ("Austria", "AT", "AUT"),
     "azerbaijan": ("Azerbaijan", "AZ", "AZE"),
+    "bahamas": ("Bahamas", "BS", "BHS"),
     "bahrain": ("Bahrain", "BH", "BAH"),
     "bangladesh": ("Bangladesh", "BD", "BGD"),
     "barbados": ("Barbados", "BB", "BRB"),
