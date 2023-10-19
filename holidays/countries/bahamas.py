@@ -68,13 +68,13 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             self._add_observed(self._add_holiday_jan_10("Majority Rule Day"))
 
         # Good Friday.
-        self._add_observed(self._add_good_friday("Good Friday"))
+        self._add_good_friday("Good Friday")
 
         # Easter Monday.
-        self._add_observed(self._add_easter_monday("Easter Monday"))
+        self._add_easter_monday("Easter Monday")
 
         # Whit Monday.
-        self._add_observed(self._add_whit_monday("Whit Monday"))
+        self._add_whit_monday("Whit Monday")
 
         # Randol Fawkes Labour Day.
         # This was simply known as "Labour Day" prior to Randol Fawkes Labour Day Act 2013.
