@@ -86,7 +86,7 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_holiday_jul_10("Independence Day"))
 
         # Emancipation Day.
-        self._add_observed(self._add_holiday_1st_mon_of_aug("Emancipation Day"))
+        self._add_holiday_1st_mon_of_aug("Emancipation Day")
 
         # National Heroes Day.
         # Known as "Discovery Day" prior to 2013, with its date fixed as Oct 12 annually.
