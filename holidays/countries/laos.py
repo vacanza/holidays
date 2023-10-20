@@ -25,7 +25,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Laos(ObservedHolidayBase, InternationalHolidays, ThaiCalendarHolidays, StaticHolidays):
+class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Laos.
 
