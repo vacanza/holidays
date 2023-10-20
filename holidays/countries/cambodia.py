@@ -54,7 +54,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, CambodiaStaticHolidays)
+        StaticHolidays.__init__(self, cls=CambodiaStaticHolidays)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
