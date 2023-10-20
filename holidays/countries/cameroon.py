@@ -11,11 +11,18 @@
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class Cameroon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Cameroon(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
@@ -25,17 +32,12 @@ class Cameroon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Is
 
     country = "CM"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        2021: (
-            (MAY, 14, "Public Holiday"),
-            (JUL, 19, "Public Holiday"),
-        ),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=CameroonIslamicHolidays)
+        StaticHolidays.__init__(self, cls=CameroonStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
 
     def _populate(self, year):
@@ -173,4 +175,13 @@ class CameroonIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 8),
+    }
+
+
+class CameroonStaticHolidays:
+    special_holidays = {
+        2021: (
+            (MAY, 14, "Public Holiday"),
+            (JUL, 19, "Public Holiday"),
+        ),
     }

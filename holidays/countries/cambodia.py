@@ -54,7 +54,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, CameroonStaticHolidays)
+        StaticHolidays.__init__(self, cls=CambodiaStaticHolidays)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
@@ -281,7 +281,7 @@ class KHM(Cambodia):
     pass
 
 
-class CameroonStaticHolidays:
+class CambodiaStaticHolidays:
     sangkranta_in_lieu_covid = tr(
         # Khmer New Year's Replacement Holiday
         "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"

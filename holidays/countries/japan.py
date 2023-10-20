@@ -16,12 +16,12 @@ from typing import Tuple
 
 from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import InternationalHolidays
+from holidays.groups import InternationalHolidays, StaticHolidays
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
 
 
-class Japan(HolidayBase, InternationalHolidays):
+class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
     """
     References:
 
@@ -31,21 +31,12 @@ class Japan(HolidayBase, InternationalHolidays):
 
     country = "JP"
     default_language = "ja"
-    special_public_holidays = {
-        1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
-        1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
-        1990: (NOV, 12, tr("即位礼正殿の儀")),  # Enthronement ceremony.
-        1993: (JUN, 9, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
-        2019: (
-            (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
-            (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
-        ),
-    }
     supported_categories = {BANK, PUBLIC}
     supported_languages = ("en_US", "ja")
 
     def __init__(self, *args, **kwargs) -> None:
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=JapanStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -240,3 +231,16 @@ class JP(Japan):
 
 class JPN(Japan):
     pass
+
+
+class JapanStaticHolidays:
+    special_public_holidays = {
+        1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
+        1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
+        1990: (NOV, 12, tr("即位礼正殿の儀")),  # Enthronement ceremony.
+        1993: (JUN, 9, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
+        2019: (
+            (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
+            (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
+        ),
+    }

@@ -24,6 +24,7 @@ from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -35,6 +36,7 @@ class Indonesia(
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     """
     References:
@@ -50,48 +52,13 @@ class Indonesia(
     supported_languages = ("en_US", "id", "uk")
     supported_categories = {GOVERNMENT, PUBLIC}
 
-    # Election Day.
-    election_day = tr("Hari Pemilihan")
-    # Eid al-Fitr Joint Holiday.
-    eid_al_fitr_joint_holiday = tr("Cuti Bersama Hari Raya Idulfitri")
-    # Christmas Joint Holiday.
-    christmas_joint_holiday = tr("Cuti Bersama Hari Raya Natal")
-    # Lunar New Year Joint Holiday.
-    lunar_new_year_joint_holiday = tr("Cuti Bersama Tahun Baru Imlek")
-    # Day of Silence Joint Holiday.
-    day_of_silence_joint_holiday = tr("Cuti Bersama Hari Suci Nyepi")
-
-    special_public_holidays = {
-        2018: (JUN, 27, election_day),
-        2019: (APR, 17, election_day),
-        2020: (DEC, 9, election_day),
-    }
-    special_government_holidays = {
-        2022: (
-            (APR, 29, eid_al_fitr_joint_holiday),
-            (MAY, 4, eid_al_fitr_joint_holiday),
-            (MAY, 5, eid_al_fitr_joint_holiday),
-            (MAY, 6, eid_al_fitr_joint_holiday),
-            (DEC, 26, christmas_joint_holiday),
-        ),
-        2023: (
-            (JAN, 23, lunar_new_year_joint_holiday),
-            (MAR, 23, day_of_silence_joint_holiday),
-            (APR, 19, eid_al_fitr_joint_holiday),
-            (APR, 20, eid_al_fitr_joint_holiday),
-            (APR, 21, eid_al_fitr_joint_holiday),
-            (APR, 24, eid_al_fitr_joint_holiday),
-            (APR, 25, eid_al_fitr_joint_holiday),
-            (DEC, 26, christmas_joint_holiday),
-        ),
-    }
-
     def __init__(self, *args, **kwargs):
         BuddhistCalendarHolidays.__init__(self, cls=IndonesiaBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=IndonesiaChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=IndonesiaIslamicHolidays)
+        StaticHolidays.__init__(self, cls=IndonesiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -379,4 +346,42 @@ class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 8),
+    }
+
+
+class IndonesiaStaticHolidays:
+    # Election Day.
+    election_day = tr("Hari Pemilihan")
+    # Eid al-Fitr Joint Holiday.
+    eid_al_fitr_joint_holiday = tr("Cuti Bersama Hari Raya Idulfitri")
+    # Christmas Joint Holiday.
+    christmas_joint_holiday = tr("Cuti Bersama Hari Raya Natal")
+    # Lunar New Year Joint Holiday.
+    lunar_new_year_joint_holiday = tr("Cuti Bersama Tahun Baru Imlek")
+    # Day of Silence Joint Holiday.
+    day_of_silence_joint_holiday = tr("Cuti Bersama Hari Suci Nyepi")
+
+    special_public_holidays = {
+        2018: (JUN, 27, election_day),
+        2019: (APR, 17, election_day),
+        2020: (DEC, 9, election_day),
+    }
+    special_government_holidays = {
+        2022: (
+            (APR, 29, eid_al_fitr_joint_holiday),
+            (MAY, 4, eid_al_fitr_joint_holiday),
+            (MAY, 5, eid_al_fitr_joint_holiday),
+            (MAY, 6, eid_al_fitr_joint_holiday),
+            (DEC, 26, christmas_joint_holiday),
+        ),
+        2023: (
+            (JAN, 23, lunar_new_year_joint_holiday),
+            (MAR, 23, day_of_silence_joint_holiday),
+            (APR, 19, eid_al_fitr_joint_holiday),
+            (APR, 20, eid_al_fitr_joint_holiday),
+            (APR, 21, eid_al_fitr_joint_holiday),
+            (APR, 24, eid_al_fitr_joint_holiday),
+            (APR, 25, eid_al_fitr_joint_holiday),
+            (DEC, 26, christmas_joint_holiday),
+        ),
     }
