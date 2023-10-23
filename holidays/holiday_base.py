@@ -655,12 +655,12 @@ class HolidayBase(Dict[date, str]):
             return None
 
         subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-        subdiv_holidays_names = [f"_add_subdiv_{subdiv}_holidays"]
+        method_names = [f"_add_subdiv_{subdiv}_holidays"]
 
         for category in sorted(self.categories):
-            subdiv_holidays_names.append(f"_add_subdiv_{subdiv}_{category}_holidays")
+            method_names.append(f"_add_subdiv_{subdiv}_{category}_holidays")
 
-        for method_name in subdiv_holidays_names:
+        for method_name in method_names:
             add_subdiv_holidays = getattr(self, method_name, None)
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
@@ -743,8 +743,8 @@ class HolidayBase(Dict[date, str]):
         # Populate special holidays.
         self._add_special_holidays()
 
-        # Populate non-static holidays.
-        self._add_non_static_holidays()
+        # Populate category holidays.
+        self._add_category_holidays()
 
         # Populate subdivision non-static holidays.
         self._add_subdiv_holidays()
@@ -753,11 +753,15 @@ class HolidayBase(Dict[date, str]):
         self._add_substituted_holidays()
 
     def _add_special_holidays(self):
+        # Check for general special holidays.
         special_holidays_mapping_names = ["special_holidays"]
+
+        # Check subdivision specific special holidays.
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
             special_holidays_mapping_names.append(f"special_{subdiv}_holidays")
 
+        # Check category specific special holidays (both general and per subdivision).
         for category in sorted(self.categories):
             special_holidays_mapping_names.append(f"special_{category}_holidays")
             if self.subdiv is not None:
@@ -771,7 +775,7 @@ class HolidayBase(Dict[date, str]):
                 ):
                     self._add_holiday(name, date(self._year, month, day))
 
-    def _add_non_static_holidays(self):
+    def _add_category_holidays(self):
         for category in sorted(self.categories):
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):
