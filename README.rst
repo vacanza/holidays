@@ -20,8 +20,8 @@ flexible as possible.
         :target: https://pypi.python.org/pypi/holidays
         :alt: Downloads
 
-:CD/CI:
-    .. image:: https://github.com/vacanza/python-holidays/workflows/Tests/badge.svg
+:CI/CD:
+    .. image:: https://github.com/vacanza/python-holidays/workflows/CI%2FCD/badge.svg
         :target: actions
 
     .. image:: http://img.shields.io/coveralls/vacanza/python-holidays/master
