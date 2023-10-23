@@ -12,11 +12,11 @@
 import warnings
 
 from holidays.calendars.gregorian import JAN, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://swazilii.org/sz/legislation/act/1938/71
     https://www.officeholidays.com/countries/swaziland
@@ -24,15 +24,11 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "SZ"
     observed_label = "%s (Observed)"
-    special_holidays = {
-        # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
-        1999: (DEC, 31, "Y2K changeover"),
-        2000: (JAN, 3, "Y2K changeover"),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=EswatiniStaticHolidays)
         super().__init__(observed_rule=SUN_TO_NEXT_MON, observed_since=2021, *args, **kwargs)
 
     def _populate(self, year):
@@ -87,3 +83,11 @@ class SZ(Eswatini):
 
 class SZW(Eswatini):
     pass
+
+
+class EswatiniStaticHolidays:
+    special_holidays = {
+        # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
+        1999: (DEC, 31, "Y2K changeover"),
+        2000: (JAN, 3, "Y2K changeover"),
+    }

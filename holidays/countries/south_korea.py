@@ -17,46 +17,46 @@ from datetime import timedelta as td
 from holidays.calendars import _CustomChineseHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, SAT, SUN
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
+from holidays.groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):
+class SouthKorea(
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
     """
+    References:
     1. https://publicholidays.co.kr/ko/2020-dates/
     2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
-    3. https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B4%80%EA%B3%B5%EC%84%9C%EC%9D%98%20%EA%B3%B5%ED%9C%B4%EC%9D%BC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95  # noqa
+    3. https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정
 
     According to (3), the alt holidays in Korea are as follows:
-    The alt holiday means next first non holiday after the holiday.
-    Independence movement day, Liberation day, National Foundation Day,
-    Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have alt holiday if they fell on Saturday or Sunday.
-    Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they fell
-    on only sunday.
+    - The alt holiday means next first non holiday after the holiday.
+    - Independence Movement Day, Liberation Day, National Foundation Day,
+      Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have
+      alt holiday if they fell on Saturday or Sunday.
+    - Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they
+      fell on Sunday.
 
     """
 
     country = "KR"
     supported_categories = {BANK, PUBLIC}
-    special_public_holidays = {
-        2016: (APR, 13, "National Assembly Election Day"),
-        2017: (MAY, 9, "Presidential Election Day"),
-        2018: (JUN, 13, "Local Election Day"),
-        2020: (
-            (APR, 15, "National Assembly Election Day"),
-            # Since 2020.08.15 is Sat, the government decided to make 2020.08.17 holiday.
-            (AUG, 17, "Alternative public holiday"),
-        ),
-        2022: (
-            (MAR, 9, "Presidential Election Day"),
-            (JUN, 1, "Local Election Day"),
-        ),
-    }
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _add_alt_holiday(
@@ -205,4 +205,21 @@ class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
     MID_AUTUMN_DATES = {
         1942: (SEP, 25),
         2040: (SEP, 21),
+    }
+
+
+class SouthKoreaStaticHolidays:
+    special_public_holidays = {
+        2016: (APR, 13, "National Assembly Election Day"),
+        2017: (MAY, 9, "Presidential Election Day"),
+        2018: (JUN, 13, "Local Election Day"),
+        2020: (
+            (APR, 15, "National Assembly Election Day"),
+            # Since 2020.08.15 is Sat, the government decided to make 2020.08.17 holiday.
+            (AUG, 17, "Alternative public holiday"),
+        ),
+        2022: (
+            (MAR, 9, "Presidential Election Day"),
+            (JUN, 1, "Local Election Day"),
+        ),
     }
