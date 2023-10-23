@@ -1,10 +1,10 @@
 [project]
 name = "holidays"
-version = "0.36"
 description = "Generate and work with holidays in Python"
 license = { file = "LICENSE" }
 readme = "README.rst"
 requires-python = ">=3.8"
+dynamic = ["version"]
 
 authors = [{ email = "dr.prodigy.github@gmail.com", name = "Maurizio Montel" }]
 dependencies = ["python-dateutil"]
@@ -65,6 +65,9 @@ disable_error_code = "attr-defined"
 [tool.rstcheck]
 ignore_directives = ["automodule"]
 ignore_languages = ["python"]
+
+[tool.setuptools.dynamic]
+version = {attr = "holidays.__version__"}
 
 [tool.setuptools.packages.find]
 include = ["holidays*"]
