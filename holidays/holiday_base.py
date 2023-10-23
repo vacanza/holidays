@@ -649,18 +649,21 @@ class HolidayBase(Dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
-    def _add_subdiv_category_holidays(self, category: str = None):
-        """Populate subdivision holidays by category."""
-        if self.subdiv is not None:
-            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            method_name = f"_add_subdiv_{subdiv}{f'_{category}' if category else ''}_holidays"
+    def _add_subdiv_holidays(self):
+        """Populate subdivision holidays."""
+        if self.subdiv is None:
+            return None
+
+        subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
+        method_names = [f"_add_subdiv_{subdiv}_holidays"]
+
+        for category in sorted(self.categories):
+            method_names.append(f"_add_subdiv_{subdiv}_{category}_holidays")
+
+        for method_name in method_names:
             add_subdiv_holidays = getattr(self, method_name, None)
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
-
-    def _add_subdiv_holidays(self):
-        """Populate subdivision holidays."""
-        self._add_subdiv_category_holidays()
 
     def _add_substituted_holidays(self):
         """Populate substituted holidays."""
@@ -737,35 +740,46 @@ class HolidayBase(Dict[date, str]):
 
         self._year = year
 
-        # Populate items from the special holidays list.
-        for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
-            self._add_holiday(name, date(self._year, month, day))
+        # Populate special holidays.
+        self._add_special_holidays()
 
-        # Populate categories holidays.
-        self._populate_categories()
+        # Populate category holidays.
+        self._add_category_holidays()
 
-        # Populate subdivision holidays.
+        # Populate subdivision non-static holidays.
         self._add_subdiv_holidays()
 
         # Populate substituted holidays.
         self._add_substituted_holidays()
 
-    def _populate_categories(self):
+    def _add_special_holidays(self):
+        # Check for general special holidays.
+        special_holidays_mapping_names = ["special_holidays"]
+
+        # Check subdivision specific special holidays.
+        if self.subdiv is not None:
+            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
+            special_holidays_mapping_names.append(f"special_{subdiv}_holidays")
+
+        # Check category specific special holidays (both general and per subdivision).
         for category in sorted(self.categories):
-            # Populate items from the special holidays list for all categories.
-            special_category_holidays = getattr(self, f"special_{category}_holidays", None)
-            if special_category_holidays:
+            special_holidays_mapping_names.append(f"special_{category}_holidays")
+            if self.subdiv is not None:
+                special_holidays_mapping_names.append(f"special_{subdiv}_{category}_holidays")
+
+        for mapping_name in special_holidays_mapping_names:
+            special_holidays_mapping = getattr(self, mapping_name, None)
+            if special_holidays_mapping:
                 for month, day, name in _normalize_tuple(
-                    special_category_holidays.get(self._year, ())
+                    special_holidays_mapping.get(self._year, ())
                 ):
                     self._add_holiday(name, date(self._year, month, day))
 
+    def _add_category_holidays(self):
+        for category in sorted(self.categories):
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):
                 populate_category_holidays()
-
-            # Populate subdivision holidays for all categories.
-            self._add_subdiv_category_holidays(category)
 
     def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
