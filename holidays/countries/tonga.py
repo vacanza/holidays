@@ -59,7 +59,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         following Monday; and if it falls on a Tuesday or Wednesday, that public
         holiday shall be celebrated on the Monday before the actual public holiday.
         (Amended by Act 10 of 2010: May 18, 2010.)
-        "Birthday of the reigning Sovereign of Tonga and Birthday of the Heir to the Crown of Tonga" is add to the exempted list as seen above.
+        "Birthday of the reigning Sovereign of Tonga and Birthday of the Heir to 
+        the Crown of Tonga" is add to the exempted list as seen above.
         (Amended by Act 5 of 2013: Jun 28, 2013.)
 
         Further provided that the Birthday of the reigning Sovereign of Tonga and the
