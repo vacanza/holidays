@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
 from holidays.countries.united_kingdom import UnitedKingdom, UnitedKingdomStaticHolidays
@@ -28,7 +27,8 @@ class IsleOfMan(UnitedKingdom):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
-        ObservedHolidayBase.__init__(self, observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        ObservedHolidayBase.__init__(self, *args, **kwargs)
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -47,8 +47,8 @@ class IsleOfMan(UnitedKingdom):
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.
         dt = date(year, JUL, 5)
-        if self._is_weekend(dt) and year >= 1992:
-            dt += td(days=+2 if self._is_saturday(dt) else +1)
+        if year >= 1992:
+            dt = self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON)
         self._add_holiday("Tynwald Day", dt)
 
 
