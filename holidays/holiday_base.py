@@ -45,8 +45,6 @@ SubstitutedHoliday = Union[
     Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
 ]
 
-gettext = gettext
-
 
 class HolidayBase(Dict[date, str]):
     """
