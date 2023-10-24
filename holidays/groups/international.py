@@ -28,6 +28,21 @@ class InternationalHolidays:
         """
         return self._add_holiday_may_25(name)
 
+    def _add_anzac_day(self, name):
+        """
+        Add Anzac Day (April 25th)
+
+        Anzac Day is a national day of remembrance in Australia and New Zealand
+        that broadly commemorates all Australians and New Zealanders "who
+        served and died in all wars, conflicts, and peacekeeping operations"
+        and "the contribution and suffering of all those who have served".
+
+        Anzac Day is a public holiday in Australia, New Zealand, and Tonga; as
+        well as a public holiday in Samoa up until 2008.
+        https://en.wikipedia.org/wiki/Anzac_Day
+        """
+        return self._add_holiday_apr_25(name)
+
     def _add_childrens_day(self, name, variation="JUN"):
         """
         Add International Children's Day (June 1).

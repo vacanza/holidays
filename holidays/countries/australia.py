@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import APR, JUN, AUG, SEP, OCT
+from holidays.calendars.gregorian import JUN, AUG, SEP, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -102,7 +102,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_holiday_apr_25("Anzac Day")
+            self._add_anzac_day("Anzac Day")
 
         super()._add_subdiv_holidays()
 
@@ -120,7 +120,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed((APR, 25), rule=SUN_TO_NEXT_MON)
+            self._add_observed(self._add_anzac_day("Anzac Day"), rule=SUN_TO_NEXT_MON)
 
         # Canberra Day
         # Info from https://www.timeanddate.com/holidays/australia/canberra-day
@@ -189,7 +189,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed((APR, 25))
+            self._add_observed(self._add_anzac_day("Anzac Day"))
 
         # Picnic Day
         self._add_holiday_1st_mon_of_aug("Picnic Day")
@@ -215,7 +215,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed((APR, 25), rule=SUN_TO_NEXT_MON)
+            self._add_observed(self._add_anzac_day("Anzac Day"), rule=SUN_TO_NEXT_MON)
 
         # The Royal Queensland Show (Ekka)
         # The Show starts on the first Friday of August - providing this is
@@ -245,7 +245,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed((APR, 25), rule=SUN_TO_NEXT_MON)
+            self._add_observed(self._add_anzac_day("Anzac Day"), rule=SUN_TO_NEXT_MON)
 
         # Adelaide Cup
         name = "Adelaide Cup"
@@ -302,7 +302,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed((APR, 25))
+            self._add_observed(self._add_anzac_day("Anzac Day"))
 
         # Western Australia Day
         if self._year >= 1833:
