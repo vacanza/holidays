@@ -36,7 +36,8 @@ class Albania(
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         StaticHolidays.__init__(self, AlbaniaStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

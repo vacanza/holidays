@@ -77,7 +77,8 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, ArgentinaStaticHolidays)
-        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

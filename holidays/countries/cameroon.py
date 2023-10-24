@@ -38,7 +38,8 @@ class Cameroon(
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=CameroonIslamicHolidays)
         StaticHolidays.__init__(self, cls=CameroonStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # On 1 January 1960, French Cameroun gained independence from France.

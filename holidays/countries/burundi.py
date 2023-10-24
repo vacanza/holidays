@@ -32,7 +32,8 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1961:

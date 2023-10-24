@@ -47,7 +47,9 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=ALL_TO_NEXT_MON, observed_since=1984, *args, **kwargs)
+        kwargs.setdefault("observed_rule", ALL_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 1984)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

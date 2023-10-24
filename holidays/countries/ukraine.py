@@ -75,7 +75,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UkraineStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         # 27.01.1995: holiday on weekend move to next workday

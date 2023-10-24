@@ -33,7 +33,8 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

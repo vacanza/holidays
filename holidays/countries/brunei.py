@@ -77,7 +77,8 @@ class Brunei(
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=BruneiIslamicHolidays)
         StaticHolidays.__init__(self, cls=BruneiStaticHolidays)
-        super().__init__(observed_rule=FRI_SUN_TO_NEXT_SAT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", FRI_SUN_TO_NEXT_SAT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Available post-Independence from 1984 afterwards

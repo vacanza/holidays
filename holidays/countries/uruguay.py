@@ -45,7 +45,8 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=UruguayStaticHolidays)
         # Decree Law #14977, # 15535, #16805.
-        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         return 1980 <= self._year <= 1983 or self._year >= 1997

@@ -45,7 +45,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, AustraliaStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

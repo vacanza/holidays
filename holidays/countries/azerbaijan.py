@@ -32,9 +32,9 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=AzerbaijanIslamicHolidays)
-        super().__init__(
-            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2006, *args, **kwargs
-        )
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2006)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1989:

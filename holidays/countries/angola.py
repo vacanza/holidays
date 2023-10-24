@@ -50,7 +50,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=AngolaStaticHolidays)
-        super().__init__(observed_rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI, *args, **kwargs)
+        kwargs.setdefault("observed_rule", TUE_TO_PREV_MON + THU_TO_NEXT_FRI)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         # As per Law # 16/96, from 1996/9/27, when public holiday falls on Sunday,

@@ -48,14 +48,12 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # When holidays falls on Saturday or Sunday, the rest shall be
         # transferred, respectively, to the preceding Friday or the
         # following Monday.
-        super().__init__(
-            observed_rule=(
-                TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI + SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-            ),
-            observed_since=2017,
-            *args,
-            **kwargs,
+        kwargs.setdefault(
+            "observed_rule",
+            TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI + SAT_TO_PREV_FRI + SUN_TO_NEXT_MON,
         )
+        kwargs.setdefault("observed_since", 2017)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
