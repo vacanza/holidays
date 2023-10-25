@@ -32,7 +32,49 @@ class TestSouthKorea(TestCase):
     def test_special_holidays(self):
         # Election Dates have its own separate checklists.
         self.assertHoliday(
+            "1948-12-15",
+            "1949-05-10",
+            "1949-07-05",
+            "1950-06-21",
+            "1957-03-26",
+            "1958-03-26",
+            "1959-03-26",
+            "1960-03-26",
+            "1960-10-01",
+            "1961-04-19",
+            "1962-04-19",
+            "1962-05-16",
+            "1963-04-19",
+            "1963-05-16",
+            "1963-12-17",
+            "1966-10-01",
+            "1967-01-04",
+            "1967-07-01",
+            "1969-07-21",
+            "1969-10-17",
+            "1971-07-01",
+            "1972-11-21",
+            "1972-12-15",
+            "1972-12-27",
+            "1974-08-19",
+            "1975-02-12",
+            "1978-05-18",
+            "1978-12-27",
+            "1979-11-03",
+            "1979-12-21",
+            "1980-09-01",
+            "1980-10-22",
+            "1981-02-11",
+            "1981-03-03",
+            "1982-10-02",
+            "1987-10-27",
+            "1988-02-25",
+            "1988-09-17",
+            "2002-07-01",
+            "2017-05-09",
+            "2017-10-02",
             "2020-08-17",
+            "2023-10-02",
         )
 
     def test_national_assembly_election_day(self):
@@ -60,7 +102,7 @@ class TestSouthKorea(TestCase):
             "1996-04-11",
             "2000-04-13",
             "2004-04-15",
-            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            # Codified rather than on ad-hoc basis from SEP 2006 onwards.
             "2008-04-09",
             "2012-04-11",
             "2016-04-13",
@@ -96,7 +138,7 @@ class TestSouthKorea(TestCase):
             "1992-12-18",
             "1997-12-18",
             "2002-12-19",
-            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            # Codified rather than on ad-hoc basis from SEP 2006 onwards.
             "2007-12-19",
             "2012-12-19",
             "2017-05-09",
@@ -107,12 +149,24 @@ class TestSouthKorea(TestCase):
 
     def test_local_election_day(self):
         self.assertHoliday(
+            # 1st Republic Local Elections.
+            "1952-04-25",
+            "1952-05-10",
+            "1956-08-08",
+            "1956-08-13",
+            "1960-12-12",
+            "1960-12-19",
+            "1960-12-26",
+            "1960-12-29",
+            # 1991 Local Elections.
+            "1991-03-26",
+            "1991-06-20",
             # Nationwide Local Elections.
             "1995-06-27",
             "1998-06-04",
             "2002-06-13",
             "2006-05-31",
-            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            # Codified rather than on ad-hoc basis from SEP 2006 onwards.
             "2010-06-02",
             "2014-06-04",
             "2018-06-13",

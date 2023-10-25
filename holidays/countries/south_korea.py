@@ -178,7 +178,7 @@ class SouthKorea(
         # Christmas Day.
         self._add_alt_holiday(self._add_christmas_day(tr("기독탄신일")), since=2023)
 
-        # Election Days since Sep 2006.
+        # Election Days since Sep 2006; excluding the 2017 Special Presidential Election Day.
 
         # Based on Article 34 of the Public Official Election Act.
         # (1) The election day for each election to be held at the expiration of the term shall
@@ -204,12 +204,9 @@ class SouthKorea(
             self._add_holiday_2nd_wed_of_apr(name)
 
         # Presidential Election Day.
-        presidential_election_day = tr("대통령 선거일")
+        name = tr("대통령 선거일")
 
-        if self._year == 2017:
-            # Special Vote due to Park Geun-hye's impeachment.
-            self._add_holiday_may_9(name)
-        elif self._year >= 2007 and (self._year - 2007) % 5 == 0:
+        if self._year >= 2007 and (self._year - 2007) % 5 == 0:
             if self._year <= 2012:
                 self._add_holiday_3rd_wed_of_dec(name)
             elif self._year >= 2022:
@@ -310,8 +307,26 @@ class SouthKoreaStaticHolidays:
     # Local Election Day.
     local_election_day = tr("지방선거일")
 
-    # Alternative Public Holiday.
-    alternative_public_holiday = tr("대체공휴일")
+    # Temporary Public Holiday.
+    temporary_public_holiday = tr("임시공휴일")
+
+    # Presidential Inauguration Day.
+    presidential_inauguration_day = tr("대통령 취임식")
+
+    # National Conference for Unification Election Day.
+    national_conference_for_unification_election_day = tr("통일주체국민회의 선거일")
+
+    # Yushin Constitution Referendum Day.
+    yushin_constitution_referendum_day = tr("유신헌법 국민투표일")
+
+    # May 16 Military Coup d'État Anniversary.
+    may_16_coup_anniversary = tr("5.16 군사혁명 기념일")
+
+    # April 19 Revolution Anniversary.
+    apr_19_revolution_anniversary = tr("4.19 혁명 기념일")
+
+    # President Syngman Rhee’s Birthday.
+    syngman_rhee_birthday = tr("이승만 대통령 탄신일")
 
     special_public_holidays = {
         1948: (
@@ -319,16 +334,30 @@ class SouthKoreaStaticHolidays:
             (MAY, 10, national_assembly_election_day),
             # 1st Presidential Election.
             (JUL, 20, presidential_election_day),
+            # Republic of Korea's United Nations Recognation Celebrations.
+            (DEC, 15, tr("국제연합의 대한민국 정부 승인 경축 국민대회")),
+        ),
+        1949: (
+            # Anniversary of the 1st National Assembly Election.
+            (MAY, 10, tr("5.10 제헌의회선거 1주년 기념일")),
+            # Baekbeom Kim Ku's Funeral Ceremony.
+            (JUL, 5, tr("백범 김구 선생 국민장 영결식")),
         ),
         1950: (
             # 2nd National Assembly Election.
             (MAY, 30, national_assembly_election_day),
+            # Joint Memorial Service for Fallen Soldiers.
+            (JUN, 21, tr("부통령 선거일")),
         ),
         1951: (
             # Vice Presidential Election.
             (MAY, 16, tr("부통령 선거일")),
         ),
         1952: (
+            # City/Town/Township-level Local Elections.
+            (APR, 25, local_election_day),
+            # Provincial-level Local Elections.
+            (MAY, 10, local_election_day),
             # 2nd Presidential Election/3rd Vice President Election.
             (AUG, 5, presidential_election_day),
         ),
@@ -339,76 +368,162 @@ class SouthKoreaStaticHolidays:
         1956: (
             # 3rd Presidential Election/4th Vice President Election.
             (MAY, 15, presidential_election_day),
+            # City/Town/Township-level Local Elections.
+            (AUG, 8, local_election_day),
+            # Provincial-level Local Elections.
+            (AUG, 13, local_election_day),
         ),
+        # President Syngman Rhee’s Birthday.
+        1957: (MAR, 26, syngman_rhee_birthday),
         1958: (
             # 4th National Assembly Election.
             (MAY, 2, national_assembly_election_day),
+            # President Syngman Rhee’s Birthday.
+            (MAR, 26, syngman_rhee_birthday),
         ),
+        # President Syngman Rhee’s Birthday.
+        1959: (MAR, 26, syngman_rhee_birthday),
         1960: (
+            # President Syngman Rhee’s Birthday.
+            (MAR, 26, syngman_rhee_birthday),
             # 4th Presidential Election/5th Vice President Election.
             (MAR, 15, presidential_election_day),
             # 5th National Assembly Election.
             (JUL, 29, national_assembly_election_day),
             # 4th Presidential Election.
             (AUG, 12, presidential_election_day),
+            # New Government Celebration Day.
+            (OCT, 1, tr("신정부 경축의 날")),
+            # Special City/Provincial-level Councillors Local Elections.
+            (DEC, 12, local_election_day),
+            # City/Town/Township-level Councillors Local Elections.
+            (DEC, 19, local_election_day),
+            # Special City/Provincial-level Mayors Local Elections.
+            (DEC, 26, local_election_day),
+            # City/Town/Township-level Governors Local Elections.
+            (DEC, 29, local_election_day),
+        ),
+        # April 19 Revolution Anniversary.
+        1961: (APR, 19, apr_19_revolution_anniversary),
+        1962: (
+            # April 19 Revolution Anniversary.
+            (APR, 19, apr_19_revolution_anniversary),
+            # May 16 Military Coup d'État Anniversary.
+            (MAY, 16, may_16_coup_anniversary),
         ),
         1963: (
+            # April 19 Revolution Anniversary.
+            (APR, 19, apr_19_revolution_anniversary),
+            # May 16 Military Coup d'État Anniversary.
+            (MAY, 16, may_16_coup_anniversary),
             # 5th Presidential Election.
             (OCT, 15, presidential_election_day),
             # 6th National Assembly Election.
             (NOV, 26, national_assembly_election_day),
+            # President Park Chung Hee's Inauguration Day.
+            (DEC, 17, presidential_inauguration_day),
         ),
+        # Armed Forces Day.
+        1966: (OCT, 1, tr("국군의 날")),
         1967: (
+            # In-lieu observance for New Year's Day.
+            (JAN, 4, temporary_public_holiday),
             # 6th Presidential Election.
             (MAY, 3, presidential_election_day),
             # 7th National Assembly Election.
             (JUN, 8, national_assembly_election_day),
+            # President Park Chung Hee's Inauguration Day.
+            (JUL, 1, presidential_inauguration_day),
+        ),
+        1969: (
+            # Commemoration of the Apollo 11 Moon Landing.
+            (JUL, 21, tr("아폴로 11호 달 착륙 기념")),
+            # Third-term Constitutional Referendum Day.
+            (OCT, 17, tr("삼선 헌법 개정 국민투표일")),
         ),
         1971: (
             # 7th Presidential Election.
             (APR, 27, presidential_election_day),
             # 8th National Assembly Election.
             (MAY, 25, national_assembly_election_day),
+            # President Park Chung Hee's Inauguration Day.
+            (JUL, 1, presidential_inauguration_day),
         ),
         1972: (
+            # Yushin Constitution Referendum Day.
+            (NOV, 21, yushin_constitution_referendum_day),
+            # 1st National Conference for Unification Election Day.
+            (DEC, 15, national_conference_for_unification_election_day),
             # 8th Presidential Election.
             (DEC, 23, presidential_election_day),
+            # President Park Chung Hee's Inauguration Day.
+            (DEC, 27, presidential_inauguration_day),
         ),
-        1973: (
-            # 9th National Assembly Election.
-            (FEB, 27, national_assembly_election_day),
-        ),
+        # 9th National Assembly Election.
+        1973: (FEB, 27, national_assembly_election_day),
+        # First Lady Yuk Young-soo's Funeral Ceremony.
+        1974: (AUG, 19, tr("대통령 영부인 육영수 여사 국민장 영결식")),
+        # Yushin Constitution Referendum Day.
+        1975: (FEB, 12, yushin_constitution_referendum_day),
         1978: (
+            # 2nd National Conference for Unification Election Day.
+            (MAY, 18, national_conference_for_unification_election_day),
             # 9th Presidential Election.
             (JUL, 6, presidential_election_day),
             # 10th National Assembly Election.
             (DEC, 12, national_assembly_election_day),
+            # President Park Chung Hee's Inauguration Day.
+            (DEC, 27, presidential_inauguration_day),
         ),
         1979: (
+            # President Park Chung Hee's Funeral Ceremony.
+            (NOV, 3, tr("박정희 대통령 국장 영결식")),
             # 10th Presidential Election.
             (DEC, 6, presidential_election_day),
+            # President Choi Kyu-hah's Inauguration Day.
+            (DEC, 21, presidential_inauguration_day),
         ),
         1980: (
             # 11th Presidential Election.
             (AUG, 27, presidential_election_day),
+            # President Chun Doo-hwan's Inauguration Day.
+            (SEP, 1, presidential_inauguration_day),
+            # 5th Republic Constitutional Referendum Day.
+            (OCT, 22, tr("제5공화국 헌법 개정 국민투표일")),
         ),
         1981: (
+            # Electoral College Election Day.
+            (FEB, 11, tr("선거를 위한 선거인단 선일")),
             # 12th Presidential Election.
             (FEB, 25, presidential_election_day),
+            # President Chun Doo-hwan's Inauguration Day.
+            (MAR, 3, presidential_inauguration_day),
             # 11th National Assembly Election.
             (MAR, 25, national_assembly_election_day),
         ),
-        1985: (
-            # 12th National Assembly Election.
-            (FEB, 12, national_assembly_election_day),
-        ),
+        # Added due to overlaps between Chuseok and Armed Forces Day.
+        1982: (OCT, 2, temporary_public_holiday),
+        # 12th National Assembly Election.
+        1985: (FEB, 12, national_assembly_election_day),
         1987: (
             # 13th Presidential Election.
             (DEC, 16, presidential_election_day),
+            # 6th Republic Constitutional Referendum Day.
+            (OCT, 27, tr("제6공화국 헌법 개정 국민투표일")),
         ),
         1988: (
+            # President Roh Tae-woo's Inauguration Day.
+            (FEB, 25, presidential_inauguration_day),
             # 13th National Assembly Election.
             (APR, 26, national_assembly_election_day),
+            # 1988 Seoul Olympics Opening Ceremony.
+            (SEP, 17, tr("1988 서울 올림픽 개막식")),
+        ),
+        1991: (
+            # District/City/County-level Local Elections.
+            (MAR, 26, local_election_day),
+            # Metropolitan/Provincial-level Local Elections.
+            (JUN, 20, local_election_day),
         ),
         1992: (
             # 14th National Assembly Election.
@@ -416,42 +531,40 @@ class SouthKoreaStaticHolidays:
             # 14th Presidential Election.
             (DEC, 18, presidential_election_day),
         ),
-        1995: (
-            # 1st Nationwide Local Election.
-            (JUN, 27, local_election_day),
-        ),
-        1996: (
-            # 15th National Assembly Election.
-            (APR, 11, national_assembly_election_day),
-        ),
-        1997: (
-            # 15th Presidential Election.
-            (DEC, 18, presidential_election_day),
-        ),
-        1998: (
-            # 2nd Nationwide Local Election.
-            (JUN, 4, local_election_day),
-        ),
-        2000: (
-            # 16th National Assembly Election.
-            (APR, 13, national_assembly_election_day),
-        ),
+        # 1st Nationwide Local Election.
+        1995: (JUN, 27, local_election_day),
+        # 15th National Assembly Election.
+        1996: (APR, 11, national_assembly_election_day),
+        # 15th Presidential Election.
+        1997: (DEC, 18, presidential_election_day),
+        # 2nd Nationwide Local Election.
+        1998: (JUN, 4, local_election_day),
+        # 16th National Assembly Election.
+        2000: (APR, 13, national_assembly_election_day),
         2002: (
             # 3rd Nationwide Local Election.
             (JUN, 13, local_election_day),
+            # 2002 FIFA World Cup National Team Semi-Finals Celebrations.
+            (JUL, 1, tr("2002년 한일 월드컵 대표팀 4강 진출")),
             # 16th Presidential Election.
             (DEC, 19, presidential_election_day),
         ),
-        2004: (
-            # 17th National Assembly Election.
-            (APR, 15, national_assembly_election_day),
+        # 17th National Assembly Election.
+        2004: (APR, 15, national_assembly_election_day),
+        # 4th Nationwide Local Election.
+        2006: (MAY, 31, local_election_day),
+        # Added to help cope with MERS Pandemic fatigue.
+        2015: (AUG, 14, temporary_public_holiday),
+        # Added to fill in holiday gaps between Children's Day and Saturday.
+        2016: (MAY, 6, temporary_public_holiday),
+        2017: (
+            # Special Presidential Election due to Park Geun-hye's impeachment.
+            (MAY, 9, presidential_election_day),
+            # Added to create a 10-day long holiday period.
+            (OCT, 2, temporary_public_holiday),
         ),
-        2006: (
-            # 4th Nationwide Local Election.
-            (MAY, 31, local_election_day),
-        ),
-        2020: (
-            # Since 2020.08.15 is SAT, the government decided to make 2020.08.17 holiday.
-            (AUG, 17, alternative_public_holiday),
-        ),
+        # Added to help cope with Covid-19 Pandemic fatigue.
+        2020: (AUG, 17, temporary_public_holiday),
+        # Added to create a 6-day long holiday period.
+        2023: (OCT, 2, temporary_public_holiday),
     }
