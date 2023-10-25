@@ -30,29 +30,111 @@ class TestSouthKorea(TestCase):
         self.assertNoHolidays(SouthKorea(categories=(BANK,), years=1947))
 
     def test_special_holidays(self):
+        # Election Dates have its own separate checklists.
         self.assertHoliday(
-            "2016-04-13",
-            "2017-05-09",
-            "2018-06-13",
-            "2020-04-15",
             "2020-08-17",
+        )
+
+    def test_national_assembly_election_day(self):
+        self.assertHoliday(
+            # 1st Republic.
+            "1948-05-10",
+            "1950-05-30",
+            "1954-05-20",
+            "1958-05-02",
+            "1960-07-29",
+            # No Election during the short 2nd Republic.
+            # 3rd Republic.
+            "1963-11-26",
+            "1967-06-08",
+            "1971-05-25",
+            # 4th Republic.
+            "1973-02-27",
+            "1978-12-12",
+            # 5th Republic.
+            "1981-03-25",
+            "1985-02-12",
+            # 6th Republic.
+            "1988-04-26",
+            "1992-03-24",
+            "1996-04-11",
+            "2000-04-13",
+            "2004-04-15",
+            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            "2008-04-09",
+            "2012-04-11",
+            "2016-04-13",
+            "2020-04-15",
+            # Preliminary Dates.
+            "2024-04-10",
+            "2028-04-12",
+        )
+
+    def test_presidential_election_day(self):
+        self.assertHoliday(
+            # 1st Republic. (incl. 2nd Vice President Election in 1951)
+            "1948-07-20",
+            "1951-05-16",
+            "1952-08-05",
+            "1956-05-15",
+            "1960-03-15",
+            # 2nd Republic.
+            "1960-08-12",
+            # 3rd Republic.
+            "1963-10-15",
+            "1967-05-03",
+            "1971-04-27",
+            # 4th Republic.
+            "1972-12-23",
+            "1978-07-06",
+            "1979-12-06",
+            "1980-08-27",
+            # 5th Republic.
+            "1981-02-25",
+            # 6th Republic.
+            "1987-12-16",
+            "1992-12-18",
+            "1997-12-18",
+            "2002-12-19",
+            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            "2007-12-19",
+            "2012-12-19",
+            "2017-05-09",
             "2022-03-09",
+            # Preliminary Dates.
+            "2027-03-03",
+        )
+
+    def test_local_election_day(self):
+        self.assertHoliday(
+            # Nationwide Local Elections.
+            "1995-06-27",
+            "1998-06-04",
+            "2002-06-13",
+            "2006-05-31",
+            # Codified in law rather than on a case-by-case basis in SEP 2006.
+            "2010-06-02",
+            "2014-06-04",
+            "2018-06-13",
             "2022-06-01",
+            # Preliminary Dates.
+            "2026-06-03",
+            "2030-06-12",
         )
 
     def test_common(self):
-        self.assertNonObservedHolidayName("New Year's Day", "2019-01-01")
+        self.assertNonObservedHolidayName("신정", "2019-01-01")
 
     def test_new_years_day(self):
-        name = "New Year's Day"
+        name = "신정"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1981, 2050)))
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(1981, 1999)))
         self.assertNoHoliday(f"{year}-01-02" for year in range(1999, 2050))
 
-    def test_lunar_new_year(self):
-        name = "Lunar New Year"
+    def test_korean_new_years_day(self):
+        name = "설날"
         self.assertHolidayName(
-            f"The day preceding {name}",
+            f"{name} 전날",
             "2014-01-30",
             "2015-02-18",
             "2016-02-07",
@@ -88,7 +170,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            f"The second day of {name}",
+            f"{name} 다음날",
             "2006-01-30",
             "2007-02-19",
             "2008-02-08",
@@ -110,7 +192,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2016-02-10",
             "2017-01-30",
             "2020-01-27",
@@ -122,17 +204,17 @@ class TestSouthKorea(TestCase):
         self.assertNoHoliday("2015-02-07", "2015-02-21")
 
     def test_independence_movement_day(self):
-        name = "Independence Movement Day"
+        name = "3ㆍ1절"
         self.assertHolidayName(name, (f"{year}-03-01" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2025-03-03",
             "2026-03-02",
         )
 
     def test_tree_planting_day(self):
-        name = "Tree Planting Day"
+        name = "식목일"
         self.assertHolidayName(name, (f"{year}-04-05" for year in range(1981, 2006)))
         self.assertHolidayName(name, "1949-04-05")
         self.assertNoHolidayName(name, 1948, 1960, range(2006, 2050))
@@ -141,14 +223,14 @@ class TestSouthKorea(TestCase):
         )
 
     def test_childrens_day(self):
-        name = "Children's Day"
+        name = "어린이날"
         self.assertHolidayName(name, (f"{year}-05-05" for year in range(2001, 2050)))
         self.assertHolidayName(name, "1975-05-05")
         self.assertNoHolidayName(name, 1974)
         self.assertNoHoliday("1974-05-05")
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2018-05-07",
             "2019-05-06",
             "2024-05-06",
@@ -158,7 +240,7 @@ class TestSouthKorea(TestCase):
         )
 
     def test_birthday_of_buddha(self):
-        name = "Buddha's Birthday"
+        name = "부처님오신날"
         self.assertHolidayName(
             name,
             "2006-05-05",
@@ -188,7 +270,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2023-05-29",
             "2026-05-25",
             "2029-05-21",
@@ -197,28 +279,29 @@ class TestSouthKorea(TestCase):
         self.assertNoHoliday("2022-05-09")
 
     def test_memorial_day(self):
-        self.assertHolidayName("Memorial Day", (f"{year}-06-06" for year in range(2001, 2050)))
+        self.assertHolidayName("현충일", (f"{year}-06-06" for year in range(2001, 2050)))
 
     def test_constitution_day(self):
-        name = "Constitution Day"
+        name = "제헌절"
         self.assertHolidayName(name, (f"{year}-07-17" for year in range(1981, 2008)))
         self.assertNoHoliday(f"{year}-07-17" for year in range(2008, 2050))
         self.assertNoHolidayName(name, range(2008, 2050))
 
     def test_liberation_day(self):
-        name = "Liberation Day"
+        name = "광복절"
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2021-08-16",
             "2026-08-17",
             "2027-08-16",
         )
 
     def test_chuseok(self):
+        name = "추석"
         self.assertHolidayName(
-            "The day preceding Chuseok",
+            f"{name} 전날",
             "2014-09-07",
             "2015-09-26",
             "2016-09-14",
@@ -232,7 +315,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            "Chuseok",
+            name,
             "1978-09-17",
             "2010-09-22",
             "2011-09-12",
@@ -251,7 +334,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            "The second day of Chuseok",
+            f"{name} 다음날",
             "2010-09-23",
             "2011-09-13",
             "2012-10-01",
@@ -269,7 +352,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            "Alternative holiday for Chuseok",
+            f"{name} 대체 휴일",
             "2014-09-10",
             "2015-09-29",
             "2018-09-26",
@@ -279,36 +362,36 @@ class TestSouthKorea(TestCase):
         )
 
     def test_national_foundation_day(self):
-        name = "National Foundation Day"
+        name = "개천절"
         self.assertHolidayName(name, (f"{year}-10-03" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2021-10-04",
             "2026-10-05",
             "2027-10-04",
         )
 
     def test_hangul_day(self):
-        name = "Hangul Day"
+        name = "한글날"
         self.assertHolidayName(name, (f"{year}-10-09" for year in range(1981, 1991)))
         self.assertHolidayName(name, (f"{year}-10-09" for year in range(2013, 2050)))
         self.assertNoHoliday(f"{year}-10-09" for year in range(1991, 2013))
         self.assertNoHolidayName(name, range(1991, 2013))
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2021-10-11",
             "2022-10-10",
             "2027-10-11",
         )
 
     def test_christmas_day(self):
-        name = "Christmas Day"
+        name = "기독탄신일"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday for {name}",
+            f"{name} 대체 휴일",
             "2027-12-27",
             "2032-12-27",
             "2033-12-26",
@@ -316,8 +399,8 @@ class TestSouthKorea(TestCase):
 
         self.assertNoHoliday("2022-12-26")
 
-    def test_labour_day(self):
-        name = "Labour Day"
+    def test_workers_day(self):
+        name = "근로자의날"
         holidays = SouthKorea(categories=(BANK,), years=range(1990, 2050))
         self.assertHolidayName(name, holidays, (f"{year}-03-10" for year in range(1990, 1994)))
         self.assertHolidayName(name, holidays, (f"{year}-05-01" for year in range(1994, 2050)))
