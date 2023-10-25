@@ -142,10 +142,6 @@ class Singapore(
         if self.observed:
             self._populate_observed(dts_observed)
 
-            # Observed holidays special cases (observed from previous year)
-            if year == 2007:
-                self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")
-
 
 class SG(Singapore):
     pass
@@ -309,4 +305,8 @@ class SingaporeStaticHolidays:
         # Announced in state-associated press on 12 August 2023
         # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
         2023: (SEP, 1, "Polling Day"),
+    }
+
+    special_holidays_observed = {
+        2007: (JAN, 2, "Hari Raya Haji"),
     }

@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Set
 
-from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
+from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -109,10 +109,6 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
                 # Founding Day
                 self._add_observed(self._add_holiday(tr("يوم التأسيسي"), dt))
 
-        # observed holidays special case (Eid al-Fitr Holiday (observed))
-        if self.observed and year == 2001:
-            self._add_holiday_jan_1(self.tr(self.observed_label) % self.tr(eid_al_fitr_name))
-
 
 class SA(SaudiArabia):
     pass
@@ -126,4 +122,9 @@ class SaudiArabiaStaticHolidays:
     special_holidays = {
         # Celebrate the country's win against Argentina in the World Cup
         2022: (NOV, 23, tr("يوم وطني")),
+    }
+
+    special_holidays_observed = {
+        # Eid al-Fitr Holiday
+        2001: (JAN, 1, tr("عطلة عيد الفطر")),
     }
