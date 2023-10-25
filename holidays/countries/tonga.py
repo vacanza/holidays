@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import SEP, NOV, DEC
@@ -83,6 +84,11 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date, **kwargs):
+        if self._year >= 2010 and kwargs.get("rule") is None:
+            kwargs["rule"] = TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
+        return super()._add_observed(dt, **kwargs)
+
     def _populate_public_holidays(self):
         # Public Holidays Act, 1988 Revision.
         if self._year <= 1988:
@@ -91,7 +97,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # New Year's Day.
         jan_1 = self._add_new_years_day(tr("'Uluaki 'Aho 'o e Ta'u Fo'ou"))
         if self._year <= 2016:
-            self._add_observed(jan_1)
+            self._add_observed(jan_1, rule=SUN_TO_NEXT_MON)
 
         # Birthday of the King/Queen of Tonga.
         # Topou VI: Jul 12 (2012-Present)*
@@ -104,14 +110,11 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         name = tr("'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule")
 
         if self._year == 2011:
-            self._add_observed(
-                self._add_holiday_may_4(name),
-                rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON,
-            )
-        elif 2007 <= self._year <= 2010:
             self._add_observed(self._add_holiday_may_4(name))
+        elif 2007 <= self._year <= 2010:
+            self._add_observed(self._add_holiday_may_4(name), rule=SUN_TO_NEXT_MON)
         elif self._year != 2012:
-            self._add_observed(self._add_holiday_jul_4(name))
+            self._add_observed(self._add_holiday_jul_4(name), rule=SUN_TO_NEXT_MON)
 
         # Birthday of the Crown Prince/Princess of Tonga.
         # Tupouto'a 'Ulukalala: Sep 17 (2012-Present)
@@ -122,13 +125,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         name = tr("'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga")
 
         if self._year >= 2012:
-            self._add_observed(self._add_holiday_sep_17(name))
-        elif 2010 <= self._year <= 2011:
-            self._add_observed(
-                self._add_holiday_jul_12(name),
-                rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON,
-            )
-        elif 2007 <= self._year <= 2009:
+            self._add_observed(self._add_holiday_sep_17(name), rule=SUN_TO_NEXT_MON)
+        elif self._year >= 2007:
             self._add_observed(self._add_holiday_jul_12(name))
         else:
             self._add_observed(self._add_holiday_may_4(name))
@@ -142,16 +140,10 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Anzac Day.
         apr_25 = self._add_holiday_apr_25(tr("'Aho Anzac"))
         if self._year <= 2016:
-            self._add_observed(apr_25)
+            self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)
 
         # Emancipation Day.
-        jun_4 = self._add_holiday_jun_4(tr("'Aho Tau'ataina"))
-        if self._year <= 2009:
-            self._add_observed(jun_4)
-        else:
-            self._add_observed(
-                jun_4, rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
-            )
+        self._add_observed(self._add_holiday_jun_4(tr("'Aho Tau'ataina")))
 
         # Coronation Date of Tongan Monarchy since 1970.*
         # Topou VI: Jul 4 (2015-Present)**
@@ -161,39 +153,25 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         #  ** Has de facto merged with King's Birthday.
 
         if 2008 <= self._year <= 2011:
-            aug_1 = self._add_holiday_aug_1(
-                tr(
-                    # Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
-                    "Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga "
-                    "'a ia 'oku lolotonga Pule"
+            self._add_observed(
+                self._add_holiday_aug_1(
+                    tr(
+                        # Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
+                        "Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga "
+                        "'a ia 'oku lolotonga Pule"
+                    )
                 )
             )
-            if self._year <= 2009:
-                self._add_observed(aug_1)
-            else:
-                self._add_observed(
-                    aug_1, rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
-                )
 
         # Constitution Day.
-        nov_4 = self._add_holiday_nov_4(tr("'Aho Konisitutone"))
-        if self._year <= 2009:
-            self._add_observed(nov_4)
-        else:
-            self._add_observed(
-                nov_4, rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
-            )
+        self._add_observed(self._add_holiday_nov_4(tr("'Aho Konisitutone")))
 
-        dec_4 = self._add_holiday_dec_4(
-            # Anniversary of the Coronation of HM King George Tupou I.
-            tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
-        )
-        if self._year <= 2009:
-            self._add_observed(dec_4)
-        else:
-            self._add_observed(
-                dec_4, rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
+        self._add_observed(
+            self._add_holiday_dec_4(
+                # Anniversary of the Coronation of HM King George Tupou I.
+                tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
             )
+        )
 
         # Christmas Day.
         self._add_christmas_day(tr("'Aho Kilisimasi"))
