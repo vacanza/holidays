@@ -47,9 +47,9 @@ class IsleOfMan(UnitedKingdom):
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.
         dt = date(year, JUL, 5)
-        if year >= 1992:
-            dt = self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON)
-        self._add_holiday("Tynwald Day", dt)
+        self._add_holiday(
+            "Tynwald Day", self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) if year >= 1992 else dt
+        )
 
 
 class IM(IsleOfMan):
