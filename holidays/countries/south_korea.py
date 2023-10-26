@@ -219,7 +219,7 @@ class SouthKorea(
         name = tr("추석")
         chuseok = self._add_mid_autumn_festival(name)
         if 1986 <= self._year <= 1988:
-            self._add_mid_autumn_festival_day_two(tr("%s 다음날") % name)
+            self._add_mid_autumn_festival_day_two(self.tr("%s 다음날") % self.tr(name))
         elif self._year >= 1989:
             self._add_three_day_holiday(name, chuseok)
 
@@ -372,13 +372,13 @@ class SouthKoreaStaticHolidays:
     # Yushin Constitution Referendum Day.
     yushin_constitution_referendum_day = tr("유신헌법 국민투표일")
 
-    # May 16 Military Coup d'État Anniversary.
+    # May 16 Military Coup d'Etat Anniversary.
     may_16_coup_anniversary = tr("5.16 군사혁명 기념일")
 
     # April 19 Revolution Anniversary.
     apr_19_revolution_anniversary = tr("4.19 혁명 기념일")
 
-    # President Syngman Rhee’s Birthday.
+    # President Syngman Rhee's Birthday.
     syngman_rhee_birthday = tr("이승만 대통령 탄신일")
 
     special_public_holidays = {

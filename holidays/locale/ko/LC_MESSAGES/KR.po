@@ -131,7 +131,7 @@ msgstr ""
 msgid "유신헌법 국민투표일"
 msgstr ""
 
-#. May 16 Military Coup d'État Anniversary.
+#. May 16 Military Coup d'Etat Anniversary.
 msgid "5.16 군사혁명 기념일"
 msgstr ""
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "4.19 혁명 기념일"
 msgstr ""
 
-#. President Syngman Rhee’s Birthday.
+#. President Syngman Rhee's Birthday.
 msgid "이승만 대통령 탄신일"
 msgstr ""
 

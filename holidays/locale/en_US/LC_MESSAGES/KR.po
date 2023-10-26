@@ -131,17 +131,17 @@ msgstr "National Conference for Unification Election Day."
 msgid "유신헌법 국민투표일"
 msgstr "Yushin Constitution Referendum Day"
 
-#. May 16 Military Coup d'État Anniversary.
+#. May 16 Military Coup d'Etat Anniversary.
 msgid "5.16 군사혁명 기념일"
-msgstr "May 16 Military Coup d'État Anniversary"
+msgstr "May 16 Military Coup d'Etat Anniversary"
 
 #. April 19 Revolution Anniversary.
 msgid "4.19 혁명 기념일"
 msgstr "April 19 Revolution Anniversary"
 
-#. President Syngman Rhee’s Birthday.
+#. President Syngman Rhee's Birthday.
 msgid "이승만 대통령 탄신일"
-msgstr "President Syngman Rhee’s Birthday"
+msgstr "President Syngman Rhee's Birthday"
 
 #. Republic of Korea's United Nations Recognition Celebrations.
 msgid "국제연합의 대한민국 정부 승인 경축 국민대회"
