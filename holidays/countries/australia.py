@@ -38,11 +38,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else "Queen's Birthday"
         )
 
-    @property
-    def boxing_day_name(self) -> str:
-        """Dec 26 holiday name."""
-        return "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -81,12 +76,6 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        # Boxing Day
-        self._add_observed(
-            self._add_christmas_day_two(self.boxing_day_name),
-            rule=SAT_SUN_TO_NEXT_MON_TUE,
-        )
-
     def _add_subdiv_holidays(self):
         # Australia Day
         if self._year >= 1935:
@@ -103,6 +92,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Anzac Day
         if self._year >= 1921:
             self._add_anzac_day("Anzac Day")
+
+        # Boxing Day
+        self._add_observed(
+            self._add_christmas_day_two(
+                "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
+            ),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
         super()._add_subdiv_holidays()
 

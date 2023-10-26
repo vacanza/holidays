@@ -37,8 +37,8 @@ class InternationalHolidays:
         served and died in all wars, conflicts, and peacekeeping operations"
         and "the contribution and suffering of all those who have served".
 
-        Anzac Day is a public holiday in Australia, New Zealand, and Tonga; as
-        well as a public holiday in Samoa up until 2008.
+        Anzac Day is a public holiday in Australia, New Zealand, and Tonga; it
+        used to be a public holiday in Samoa up until 2008.
         https://en.wikipedia.org/wiki/Anzac_Day
         """
         return self._add_holiday_apr_25(name)
