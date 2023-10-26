@@ -34,21 +34,21 @@ class SnapshotGenerator:
         arg_parser = argparse.ArgumentParser()
         arg_parser.add_argument(
             "-c",
-            "--countries",
+            "--country",
             action="extend",
             nargs="+",
             default=[],
-            help="Countries to generate",
+            help="Country codes to use for snapshot generation",
             required=False,
             type=str,
         )
         arg_parser.add_argument(
             "-m",
-            "--markets",
+            "--market",
             action="extend",
             nargs="+",
             default=[],
-            help="Markets to generate",
+            help="Market codes to use for snapshot generation",
             required=False,
             type=str,
         )
@@ -73,9 +73,18 @@ class SnapshotGenerator:
 
     def generate_country_snapshots(self):
         """Generates country snapshots."""
-        if len(self.args.markets) > 0:
+        if len(self.args.market) > 0:
             return None
-        country_list = self.args.countries or list_supported_countries()
+
+        country_list = self.args.country
+        supported_countries = list_supported_countries()
+        if country_list:
+            unknown_countries = set(country_list).difference(supported_countries.keys())
+            if len(unknown_countries) > 0:
+                raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
+        else:
+            country_list = supported_countries
+
         for country_code in country_list:
             country = getattr(holidays, country_code)
             snapshot = {}
@@ -95,9 +104,18 @@ class SnapshotGenerator:
 
     def generate_financial_snapshots(self):
         """Generates financial snapshots."""
-        if len(self.args.countries) > 0:
+        if len(self.args.country) > 0:
             return None
-        market_list = self.args.markets or list_supported_financial()
+
+        market_list = self.args.market
+        supported_markets = list_supported_financial()
+        if market_list:
+            unknown_markets = set(market_list).difference(supported_markets.keys())
+            if len(unknown_markets) > 0:
+                raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
+        else:
+            market_list = supported_markets
+
         for market_code in market_list:
             self.save(
                 holidays.country_holidays(
