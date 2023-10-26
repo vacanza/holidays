@@ -55,6 +55,9 @@ class SouthKorea(
     3. https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678
     4. https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG
     5. https://namu.wiki/w/대통령%20선거일
+    6. https://namu.wiki/w/공휴일/대한민국
+    7. https://namu.wiki/w/공휴일/대한민국/역사
+    8. https://namu.wiki/w/대체%20휴일%20제도
 
     Checked With:
     1. https://publicholidays.co.kr/ko/2020-dates/
@@ -82,7 +85,8 @@ class SouthKorea(
     def _add_alt_holiday(
         self, dt: date, name: str = "", since: int = 2014, include_sat: bool = True
     ) -> None:
-        """Add alternative holiday on first day from the date provided
+        """
+        Add alternative holiday on first day from the date provided
         that's not already a another holiday nor a weekend.
 
         :param dt:
@@ -114,6 +118,15 @@ class SouthKorea(
                     self._add_holiday(tr("%s 대체 휴일") % name, obs_date)
 
     def _add_three_day_holiday(self, name: str, dt: date) -> None:
+        """
+        Add holiday for the date before and after the given holiday date.
+
+        :param name:
+           The name of the holiday.
+
+        :param dt:
+           The date of the holiday.
+        """
         for dt_alt in (
             # The day preceding %s.
             self._add_holiday(tr("%s 전날") % name, dt + td(days=-1)),
@@ -134,10 +147,20 @@ class SouthKorea(
         self._add_new_years_day(name)
         if self._year <= 1998:
             self._add_new_years_day_two(name)
+        if self._year <= 1989:
+            self._add_new_years_day_three(name)
 
-        # Lunar New Year.
-        name = tr("설날")
-        self._add_three_day_holiday(name, self._add_chinese_new_years_day(name))
+        if self._year >= 1985:
+            name = (
+                # Korean New Year.
+                tr("설날")
+                if self._year >= 1989
+                # Folk Day.
+                else tr("민속의 날")
+            )
+            korean_new_year = self._add_chinese_new_years_day(name)
+            if self._year >= 1989:
+                self._add_three_day_holiday(name, korean_new_year)
 
         # Independence Movement Day.
         mar_1 = self._add_holiday_mar_1(tr("3ㆍ1절"))
@@ -147,15 +170,23 @@ class SouthKorea(
             # Tree Planting Day.
             self._add_holiday_apr_5(tr("식목일"))
 
-        # Buddha's Birthday.
-        self._add_alt_holiday(self._add_chinese_birthday_of_buddha(tr("부처님오신날")), since=2023)
+        if self._year >= 1975:
+            name = (
+                # Buddha's Birthday.
+                tr("부처님오신날")
+                if self._year >= 2017
+                # Buddha's Birthday.
+                else tr("석가탄신일")
+            )
+            self._add_alt_holiday(self._add_chinese_birthday_of_buddha(name), since=2023)
 
         if self._year >= 1975:
             # Children's Day.
             self._add_alt_holiday(self._add_holiday_may_5(tr("어린이날")), since=2015)
 
         # Memorial Day.
-        jun_6 = self._add_holiday_jun_6(tr("현충일"))
+        if self._year >= 1956:
+            self._add_holiday_jun_6(tr("현충일"))
 
         if self._year <= 2007:
             # Constitution Day.
@@ -164,6 +195,10 @@ class SouthKorea(
         # Liberation Day.
         self._add_alt_holiday(self._add_holiday_aug_15(tr("광복절")), since=2021)
 
+        if 1976 <= self._year <= 1990:
+            # Armed Forces Day.
+            self._add_holiday_oct_1(tr("국군의 날"))
+
         # National Foundation Day.
         self._add_alt_holiday(self._add_holiday_oct_3(tr("개천절")), since=2021)
 
@@ -171,9 +206,17 @@ class SouthKorea(
             # Hangul Day.
             self._add_alt_holiday(self._add_holiday_oct_9(tr("한글날")), since=2021)
 
+        if 1950 <= self._year <= 1975:
+            # United Nations Day.
+            self._add_holiday_oct_24(tr("국제연합일"))
+
         # Chuseok.
         name = tr("추석")
-        self._add_three_day_holiday(name, self._add_mid_autumn_festival(name))
+        chuseok = self._add_mid_autumn_festival(name)
+        if 1986 <= self._year <= 1988:
+            self._add_mid_autumn_festival_day_two(tr("%s 다음날") % name)
+        elif self._year >= 1989:
+            self._add_three_day_holiday(name, chuseok)
 
         # Christmas Day.
         self._add_alt_holiday(self._add_christmas_day(tr("기독탄신일")), since=2023)
@@ -225,6 +268,7 @@ class SouthKorea(
         name = tr("지방선거일")
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
+            jun_6 = (JUN, 6)
             if self._is_tuesday(jun_6) or self._is_wednesday(jun_6) or self._is_thursday(jun_6):
                 # Moved as per Paragraph 2 of Article 34 due to conflict with
                 # Memorial Day (JUN, 6).
@@ -290,10 +334,14 @@ class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
 class SouthKoreaStaticHolidays:
     """
     References:
-      - https://namu.wiki/w/임시공휴일
+    1. https://namu.wiki/w/임시공휴일 *
+    2. https://namu.wiki/w/공휴일/대한민국 **
+    3. https://namu.wiki/w/대체%20휴일%20제도
 
     * Election Dates featured here are the ones prior to the proper recodification to
       Article 34 of the Public Official Election Act(September 2006)
+    ** Sabang Day (사방의 날) was technically in the Public Holidays Act itself, but since it was
+       only celebrated in 1960, this is being put here.
     """
 
     # Common Special Holiday Types.
@@ -384,6 +432,8 @@ class SouthKoreaStaticHolidays:
         # President Syngman Rhee’s Birthday.
         1959: (MAR, 26, syngman_rhee_birthday),
         1960: (
+            # Sabang Day.
+            (MAR, 16, tr("사방의 날")),
             # President Syngman Rhee’s Birthday.
             (MAR, 26, syngman_rhee_birthday),
             # 4th Presidential Election/5th Vice President Election.
