@@ -12,6 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -46,9 +47,9 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "PT"
     default_language = "pt_PT"
+    supported_categories = {OPTIONAL, PUBLIC}
 
     # https://en.wikipedia.org/wiki/ISO_3166-2:PT
-    # `Ext` represents the national holidays most people have off
     subdivisions = (
         "01",
         "02",
@@ -70,8 +71,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "18",
         "20",
         "30",
-        "Ext",
     )
+    _deprecated_subdivisions = ("Ext",)
     supported_languages = ("en_US", "pt_PT")
 
     def __init__(self, *args, **kwargs) -> None:
@@ -79,9 +80,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         self._add_new_years_day(tr("Ano Novo"))
 
         # Carnival is no longer a holiday, but some companies let workers off.
@@ -94,21 +93,22 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Páscoa"))
 
         # Revoked holidays in 2013–2015.
-        if year <= 2012 or year >= 2016:
+        if self._year <= 2012 or self._year >= 2016:
             self._add_corpus_christi_day(tr("Corpo de Deus"))
-            if year >= 1910:
+            if self._year >= 1910:
                 self._add_holiday_oct_5(tr("Implantação da República"))
             self._add_all_saints_day(tr("Dia de Todos os Santos"))
-            if year >= 1823:
+            if self._year >= 1823:
                 self._add_holiday_dec_1(tr("Restauração da Independência"))
 
-        if year >= 1974:
+        if self._year >= 1974:
             self._add_holiday_apr_25(tr("Dia da Liberdade"))
             self._add_labor_day(tr("Dia do Trabalhador"))
-        if year >= 1911:
-            if 1933 <= year <= 1973:
+
+        if self._year >= 1911:
+            if 1933 <= self._year <= 1973:
                 self._add_holiday_jun_10(tr("Dia de Camões, de Portugal e da Raça"))
-            elif year >= 1978:
+            elif self._year >= 1978:
                 self._add_holiday_jun_10(
                     tr("Dia de Portugal, de Camões e das Comunidades Portuguesas")
                 )
@@ -119,11 +119,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_immaculate_conception_day(tr("Imaculada Conceição"))
         self._add_christmas_day(tr("Dia de Natal"))
 
-    def _add_subdiv_holidays(self):
-        if self._year >= 1911:
-            super()._add_subdiv_holidays()
-
-    def _add_subdiv_ext_holidays(self):
+    def _populate_optional_holidays(self):
         """
         Adds extended days that most people have as a bonus from their
         companies:
@@ -139,83 +135,88 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # - get Holidays that occur on Thursday and add Friday (+1 day)
 
         self._add_carnival_monday(tr("Carnaval"))
+        self._add_holiday_jun_13(tr("Dia de Santo António"))
         self._add_christmas_eve(tr("Véspera de Natal"))
         self._add_christmas_day_two(tr("26 de Dezembro"))
         self._add_new_years_eve(tr("Véspera de Ano Novo"))
-        self._add_holiday_jun_13(tr("Dia de Santo António"))
 
-    def _add_subdiv_01_holidays(self):
+    def _add_subdiv_holidays(self):
+        if self._year >= 1911:
+            super()._add_subdiv_holidays()
+
+        if self.subdiv == "Ext":
+            self._populate_optional_holidays()
+
+    def _add_subdiv_01_public_holidays(self):
         self._add_holiday_may_12(tr("Dia de Santa Joana"))
 
-    def _add_subdiv_02_holidays(self):
+    def _add_subdiv_02_public_holidays(self):
         self._add_ascension_thursday(tr("Quinta-feira da Ascensão"))
 
-    def _add_subdiv_03_holidays(self):
-        self._add_holiday_jun_24(tr("Dia de São João"))
+    def _add_subdiv_03_public_holidays(self):
+        self._add_saint_johns_day(tr("Dia de São João"))
 
-    def _add_subdiv_04_holidays(self):
+    def _add_subdiv_04_public_holidays(self):
         self._add_holiday_aug_22(tr("Dia de Nossa Senhora das Graças"))
 
-    def _add_subdiv_05_holidays(self):
+    def _add_subdiv_05_public_holidays(self):
         self._add_holiday(
             tr("Dia de Nossa Senhora de Mércoles"), self._easter_sunday + td(days=+16)
         )
 
-    def _add_subdiv_06_holidays(self):
+    def _add_subdiv_06_public_holidays(self):
         self._add_holiday_jul_4(tr("Dia de Santa Isabel"))
 
-    def _add_subdiv_07_holidays(self):
+    def _add_subdiv_07_public_holidays(self):
         self._add_holiday_jun_29(tr("Dia de São Pedro"))
 
-    def _add_subdiv_08_holidays(self):
+    def _add_subdiv_08_public_holidays(self):
         self._add_holiday_sep_7(tr("Dia do Município de Faro"))
 
-    def _add_subdiv_09_holidays(self):
+    def _add_subdiv_09_public_holidays(self):
         self._add_holiday_nov_27(tr("Dia do Município da Guarda"))
 
-    def _add_subdiv_10_holidays(self):
+    def _add_subdiv_10_public_holidays(self):
         self._add_holiday_may_22(tr("Dia do Município de Leiria"))
 
-    def _add_subdiv_11_holidays(self):
+    def _add_subdiv_11_public_holidays(self):
         self._add_holiday_jun_13(tr("Dia de Santo António"))
 
-    def _add_subdiv_12_holidays(self):
+    def _add_subdiv_12_public_holidays(self):
         self._add_holiday_may_23(tr("Dia do Município de Portalegre"))
 
-    def _add_subdiv_13_holidays(self):
-        self._add_holiday_jun_24(tr("Dia de São João"))
+    def _add_subdiv_13_public_holidays(self):
+        self._add_saint_johns_day(tr("Dia de São João"))
 
-    def _add_subdiv_14_holidays(self):
+    def _add_subdiv_14_public_holidays(self):
         self._add_saint_josephs_day(tr("Dia de São José"))
 
-    def _add_subdiv_15_holidays(self):
+    def _add_subdiv_15_public_holidays(self):
         self._add_holiday_sep_15(tr("Dia de Bocage"))
 
-    def _add_subdiv_16_holidays(self):
+    def _add_subdiv_16_public_holidays(self):
         self._add_holiday_aug_20(tr("Dia de Nossa Senhora da Agonia"))
 
-    def _add_subdiv_17_holidays(self):
+    def _add_subdiv_17_public_holidays(self):
         self._add_holiday_jun_13(tr("Dia de Santo António"))
 
-    def _add_subdiv_18_holidays(self):
+    def _add_subdiv_18_public_holidays(self):
         self._add_holiday_sep_21(tr("Dia de São Mateus"))
 
-    def _add_subdiv_20_holidays(self):
+    def _add_subdiv_20_public_holidays(self):
         if self._year >= 1981:
-            self._add_holiday(
-                tr("Dia da Região Autónoma dos Açores"), self._easter_sunday + td(days=+50)
-            )
+            self._add_whit_monday(tr("Dia da Região Autónoma dos Açores"))
 
-    def _add_subdiv_30_holidays(self):
-        if 1979 <= self._year <= 1988:
-            self._add_holiday_jul_1(tr("Dia da Região Autónoma da Madeira"))
-        elif self._year >= 1989:
+    def _add_subdiv_30_public_holidays(self):
+        if self._year >= 1979:
             self._add_holiday_jul_1(
                 tr("Dia da Região Autónoma da Madeira e das Comunidades Madeirenses")
+                if self._year >= 1989
+                else tr("Dia da Região Autónoma da Madeira")
             )
 
         if self._year >= 2002:
-            self._add_holiday_dec_26(tr("Primeira Oitava"))
+            self._add_christmas_day_two(tr("Primeira Oitava"))
 
 
 class PT(Portugal):

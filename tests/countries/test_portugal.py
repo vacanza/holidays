@@ -9,6 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
+
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.portugal import Portugal, PT, PRT
 from tests.common import TestCase
 
@@ -18,8 +21,15 @@ class TestPortugal(TestCase):
     def setUpClass(cls):
         super().setUpClass(Portugal, years=range(1910, 2050))
 
+    def setUp(self):
+        super().setUp()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
     def test_country_aliases(self):
         self.assertCountryAliases(Portugal, PT, PRT)
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_2014(self):
         # http://www.officeholidays.com/countries/portugal/2014.php
@@ -138,19 +148,31 @@ class TestPortugal(TestCase):
             (f"{year}-12-26" for year in range(2016, 2024)),
         )
 
-    def test_ext(self):
-        # Christmas's Eve, S. Stephen & New Year's Eve
+    def test_optional_holidays(self):
+        holidays = Portugal(categories=(OPTIONAL,), years=range(2017, 2020))
         self.assertHoliday(
-            Portugal(years=range(2017, 2020), subdiv="Ext"),
+            holidays,
+            "2017-02-27",
+            "2017-06-13",
             "2017-12-24",
             "2017-12-26",
             "2017-12-31",
+            "2018-02-12",
+            "2018-06-13",
             "2018-12-24",
             "2018-12-26",
             "2018-12-31",
+            "2019-03-04",
+            "2019-06-13",
             "2019-12-24",
             "2019-12-26",
             "2019-12-31",
+        )
+
+    def test_deprecated(self):
+        self.assertEqual(
+            Portugal(subdiv="Ext", years=2022).keys(),
+            Portugal(categories=(OPTIONAL, PUBLIC), years=2022).keys(),
         )
 
     def test_corpus_christi(self):
@@ -220,34 +242,44 @@ class TestPortugal(TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2018-01-01", "Ano Novo"),
+            ("2018-02-12", "Carnaval"),
             ("2018-03-30", "Sexta-feira Santa"),
             ("2018-04-01", "Páscoa"),
             ("2018-04-25", "Dia da Liberdade"),
             ("2018-05-01", "Dia do Trabalhador"),
             ("2018-05-31", "Corpo de Deus"),
             ("2018-06-10", "Dia de Portugal, de Camões e das Comunidades Portuguesas"),
+            ("2018-06-13", "Dia de Santo António"),
             ("2018-08-15", "Assunção de Nossa Senhora"),
             ("2018-10-05", "Implantação da República"),
             ("2018-11-01", "Dia de Todos os Santos"),
             ("2018-12-01", "Restauração da Independência"),
             ("2018-12-08", "Imaculada Conceição"),
+            ("2018-12-24", "Véspera de Natal"),
             ("2018-12-25", "Dia de Natal"),
+            ("2018-12-26", "26 de Dezembro"),
+            ("2018-12-31", "Véspera de Ano Novo"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2018-01-01", "New Year's Day"),
+            ("2018-02-12", "Carnival"),
             ("2018-03-30", "Good Friday"),
             ("2018-04-01", "Easter Sunday"),
             ("2018-04-25", "Freedom Day"),
             ("2018-05-01", "Labour Day"),
             ("2018-05-31", "Corpus Christi"),
             ("2018-06-10", "Day of Portugal, Camões, and the Portuguese Communities"),
+            ("2018-06-13", "St. Anthony's Day"),
             ("2018-08-15", "Assumption Day"),
             ("2018-10-05", "Republic Day"),
             ("2018-11-01", "All Saints Day"),
             ("2018-12-01", "Restoration of Independence Day"),
             ("2018-12-08", "Immaculate Conception"),
+            ("2018-12-24", "Christmas Eve"),
             ("2018-12-25", "Christmas"),
+            ("2018-12-26", "Boxing Day"),
+            ("2018-12-31", "New Year's Eve"),
         )

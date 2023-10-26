@@ -111,7 +111,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Anzac Day
         if year >= 1921:
-            apr_25 = self._add_holiday_apr_25("Anzac Day")
+            apr_25 = self._add_anzac_day("Anzac Day")
             if year >= 2014:
                 self._add_observed(apr_25)
 
