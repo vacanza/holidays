@@ -11,7 +11,7 @@
 
 import warnings
 
-from holidays.constants import BANK
+from holidays.constants import BANK, PUBLIC
 from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from tests.common import TestCase
 
@@ -178,10 +178,10 @@ class TestSouthKorea(TestCase):
         )
 
     def test_common(self):
-        self.assertNonObservedHolidayName("신정", "2019-01-01")
+        self.assertNonObservedHolidayName("신정연휴", "2019-01-01")
 
     def test_new_years_day(self):
-        name = "신정"
+        name = "신정연휴"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1949, 2050)))
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(1949, 1999)))
         self.assertHolidayName(name, (f"{year}-01-03" for year in range(1949, 1990)))
@@ -276,7 +276,7 @@ class TestSouthKorea(TestCase):
         self.assertNoHolidayName(f"{name_old} 대체 휴일", range(1949, 2050))
 
     def test_independence_movement_day(self):
-        name = "3ㆍ1절"
+        name = "삼일절"
         self.assertHolidayName(name, (f"{year}-03-01" for year in range(1949, 2050)))
 
         self.assertHolidayName(
@@ -515,3 +515,101 @@ class TestSouthKorea(TestCase):
         warnings.simplefilter("error")
         with self.assertRaises(Warning):
             Korea()
+
+    def test_2020_all(self):
+        self.assertHolidays(
+            SouthKorea(categories=(BANK, PUBLIC), years=2020),
+            ("2020-01-01", "신정연휴"),
+            ("2020-01-24", "설날 전날"),
+            ("2020-01-25", "설날"),
+            ("2020-01-26", "설날 다음날"),
+            ("2020-01-27", "설날 대체 휴일"),
+            ("2020-03-01", "삼일절"),
+            ("2020-04-15", "국회의원 선거일"),
+            ("2020-04-30", "부처님오신날"),
+            ("2020-05-01", "근로자의날"),
+            ("2020-05-05", "어린이날"),
+            ("2020-06-06", "현충일"),
+            ("2020-08-15", "광복절"),
+            ("2020-08-17", "임시공휴일"),
+            ("2020-09-30", "추석 전날"),
+            ("2020-10-01", "추석"),
+            ("2020-10-02", "추석 다음날"),
+            ("2020-10-03", "개천절"),
+            ("2020-10-09", "한글날"),
+            ("2020-12-25", "기독탄신일"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "신정연휴"),
+            ("2022-01-31", "설날 전날"),
+            ("2022-02-01", "설날"),
+            ("2022-02-02", "설날 다음날"),
+            ("2022-03-01", "삼일절"),
+            ("2022-03-09", "대통령 선거일"),
+            ("2022-05-01", "근로자의날"),
+            ("2022-05-05", "어린이날"),
+            ("2022-05-08", "부처님오신날"),
+            ("2022-06-01", "지방선거일"),
+            ("2022-06-06", "현충일"),
+            ("2022-08-15", "광복절"),
+            ("2022-09-09", "추석 전날"),
+            ("2022-09-10", "추석"),
+            ("2022-09-11", "추석 다음날"),
+            ("2022-09-12", "추석 대체 휴일"),
+            ("2022-10-03", "개천절"),
+            ("2022-10-09", "한글날"),
+            ("2022-10-10", "한글날 대체 휴일"),
+            ("2022-12-25", "기독탄신일"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-31", "The day preceding Korean New Year"),
+            ("2022-02-01", "Korean New Year"),
+            ("2022-02-02", "The second day of Korean New Year"),
+            ("2022-03-01", "Independence Movement Day"),
+            ("2022-03-09", "Presidential Election Day"),
+            ("2022-05-01", "Workers' Day"),
+            ("2022-05-05", "Children's Day"),
+            ("2022-05-08", "Buddha's Birthday"),
+            ("2022-06-01", "Local Election Day"),
+            ("2022-06-06", "Memorial Day"),
+            ("2022-08-15", "Liberation Day"),
+            ("2022-09-09", "The day preceding Chuseok"),
+            ("2022-09-10", "Chuseok"),
+            ("2022-09-11", "The second day of Chuseok"),
+            ("2022-09-12", "Alternative holiday for Chuseok"),
+            ("2022-10-03", "National Foundation Day"),
+            ("2022-10-09", "Hangul Day"),
+            ("2022-10-10", "Alternative holiday for Hangul Day"),
+            ("2022-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันปีใหม่สากล"),
+            ("2022-01-31", "วันก่อนเทศกาลซอลลัล"),
+            ("2022-02-01", "เทศกาลซอลลัล"),
+            ("2022-02-02", "วันหลังเทศกาลซอลลัล"),
+            ("2022-03-01", "วันอิสรภาพ"),
+            ("2022-03-09", "วันเลือกตั้งประธานาธิบดี"),
+            ("2022-05-01", "วันแรงงาน"),
+            ("2022-05-05", "วันเด็ก"),
+            ("2022-05-08", "วันวิสาขบูชา"),
+            ("2022-06-01", "วันเลือกตั้งท้องถิ่น"),
+            ("2022-06-06", "วันรำลึกวีรชน"),
+            ("2022-08-15", "วันฉลองอิสรภาพ"),
+            ("2022-09-09", "วันก่อนเทศกาลชูซอก"),
+            ("2022-09-10", "เทศกาลชูซอก"),
+            ("2022-09-11", "วันหลังเทศกาลชูซอก"),
+            ("2022-09-12", "ชดเชยเทศกาลชูซอก"),
+            ("2022-10-03", "วันสถาปนาประเทศ"),
+            ("2022-10-09", "วันฮันกึล"),
+            ("2022-10-10", "ชดเชยวันฮันกึล"),
+            ("2022-12-25", "วันคริสต์มาส"),
+        )

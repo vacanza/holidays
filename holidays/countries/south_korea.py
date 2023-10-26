@@ -58,9 +58,12 @@ class SouthKorea(
     6. https://namu.wiki/w/공휴일/대한민국
     7. https://namu.wiki/w/공휴일/대한민국/역사
     8. https://namu.wiki/w/대체%20휴일%20제도
+    9. https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do (th localization)
+    10. https://thailand.korean-culture.org/th/138/korea/38 (th localization)
 
     Checked With:
     1. https://publicholidays.co.kr/ko/2020-dates/
+    2. https://publicholidays.co.kr/ko/2022-dates/
 
     According to (3), the alt holidays in Korea are as follows:
     - The alt holiday means next first non holiday after the holiday.
@@ -74,6 +77,8 @@ class SouthKorea(
 
     country = "KR"
     supported_categories = {BANK, PUBLIC}
+    default_language = "ko"
+    supported_languages = ("en_US", "ko", "th")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
@@ -115,7 +120,7 @@ class SouthKorea(
             for name in (name,) if name else self.get_list(dt):
                 if "Alternative holiday" not in name:
                     # Alternative holiday for %s.
-                    self._add_holiday(tr("%s 대체 휴일") % name, obs_date)
+                    self._add_holiday(self.tr("%s 대체 휴일") % self.tr(name), obs_date)
 
     def _add_three_day_holiday(self, name: str, dt: date) -> None:
         """
@@ -129,10 +134,10 @@ class SouthKorea(
         """
         for dt_alt in (
             # The day preceding %s.
-            self._add_holiday(tr("%s 전날") % name, dt + td(days=-1)),
+            self._add_holiday(self.tr("%s 전날") % self.tr(name), dt + td(days=-1)),
             dt,
             # The second day of %s.
-            self._add_holiday(tr("%s 다음날") % name, dt + td(days=+1)),
+            self._add_holiday(self.tr("%s 다음날") % self.tr(name), dt + td(days=+1)),
         ):
             self._add_alt_holiday(dt_alt, name=name, include_sat=False)  # type: ignore[arg-type]
 
@@ -143,7 +148,7 @@ class SouthKorea(
         # Fixed Date Holidays.
 
         # New Year's Day.
-        name = tr("신정")
+        name = tr("신정연휴")
         self._add_new_years_day(name)
         if self._year <= 1998:
             self._add_new_years_day_two(name)
@@ -163,7 +168,7 @@ class SouthKorea(
                 self._add_three_day_holiday(name, korean_new_year)
 
         # Independence Movement Day.
-        mar_1 = self._add_holiday_mar_1(tr("3ㆍ1절"))
+        mar_1 = self._add_holiday_mar_1(tr("삼일절"))
         self._add_alt_holiday(mar_1, since=2022)
 
         if 1949 <= self._year <= 2005 and self._year != 1960:
@@ -184,8 +189,8 @@ class SouthKorea(
             # Children's Day.
             self._add_alt_holiday(self._add_holiday_may_5(tr("어린이날")), since=2015)
 
-        # Memorial Day.
         if self._year >= 1956:
+            # Memorial Day.
             self._add_holiday_jun_6(tr("현충일"))
 
         if self._year <= 2007:
@@ -382,7 +387,7 @@ class SouthKoreaStaticHolidays:
             (MAY, 10, national_assembly_election_day),
             # 1st Presidential Election.
             (JUL, 20, presidential_election_day),
-            # Republic of Korea's United Nations Recognation Celebrations.
+            # Republic of Korea's United Nations Recognition Celebrations.
             (DEC, 15, tr("국제연합의 대한민국 정부 승인 경축 국민대회")),
         ),
         1949: (
@@ -395,7 +400,7 @@ class SouthKoreaStaticHolidays:
             # 2nd National Assembly Election.
             (MAY, 30, national_assembly_election_day),
             # Joint Memorial Service for Fallen Soldiers.
-            (JUN, 21, tr("부통령 선거일")),
+            (JUN, 21, tr("전몰군인 합동위령제")),
         ),
         1951: (
             # Vice Presidential Election.
