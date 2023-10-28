@@ -773,16 +773,6 @@ class HolidayBase(Dict[date, str]):
                 ):
                     self._add_holiday(name, date(self._year, month, day))
 
-        if self.observed:
-            special_holidays_observed = getattr(self, "special_holidays_observed", None)
-            if special_holidays_observed:
-                for month, day, name in _normalize_tuple(
-                    special_holidays_observed.get(self._year, ())
-                ):
-                    self._add_holiday(
-                        self.tr(self.observed_label) % self.tr(name), date(self._year, month, day)
-                    )
-
     def _add_category_holidays(self):
         for category in sorted(self.categories):
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
