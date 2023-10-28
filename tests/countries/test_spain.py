@@ -212,6 +212,19 @@ class TestSpain(TestCase):
             "2023-12-25",
         )
 
+    def test_fixed_holidays_2024(self):
+        self.assertNonObservedHoliday(
+            "2024-01-01",
+            "2024-01-06",
+            "2024-03-29",
+            "2024-05-01",
+            "2024-08-15",
+            "2024-10-12",
+            "2024-11-01",
+            "2024-12-06",
+            "2024-12-25",
+        )
+
     def test_islamic(self):
         name = "Eid al-Adha"
         ce_holidays = Spain(subdiv="CE", years=2009)
@@ -886,7 +899,7 @@ class TestSpain(TestCase):
                 "PV",
                 "RI",
             },
-            (APR, 10): {"IB", "CT", "VC", "NC", "PV", "RI"},
+            (APR, 10): {"CT", "IB", "NC", "PV", "RI", "VC"},
             (APR, 21): {"ML"},
             (APR, 24): {"AR"},
             (MAY, 2): {"MD"},
@@ -907,3 +920,47 @@ class TestSpain(TestCase):
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2023, province_days)
+
+    def test_variable_holidays_2024(self):
+        province_days = {
+            (FEB, 13): {"EX"},
+            (FEB, 28): {"AN"},
+            (MAR, 1): {"IB"},
+            (MAR, 19): {"MC", "VC"},
+            (MAR, 28): {
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+            },
+            (APR, 1): {"CB", "CT", "IB", "NC", "PV", "RI", "VC"},
+            (APR, 23): {"AR", "CL"},
+            (MAY, 2): {"MD"},
+            (MAY, 17): {"GA"},
+            (MAY, 30): {"CM", "CN"},
+            (MAY, 31): {"CM"},
+            (JUN, 10): {"RI"},
+            (JUN, 17): {"CE", "ML"},
+            (JUN, 24): {"CT", "VC"},
+            (JUL, 25): {"CB", "GA", "MD", "NC", "PV"},
+            (AUG, 5): {"CE"},
+            (SEP, 9): {"AS"},
+            (SEP, 11): {"CT"},
+            (OCT, 9): {"VC"},
+            (DEC, 9): {"AN", "AR", "AS", "CL", "EX", "MC", "ML"},
+            (DEC, 26): {"CT"},
+        }
+        self._assertVariableDays(2024, province_days)
