@@ -29,6 +29,9 @@ class TestTonga(TestCase):
             "2017-11-29",
             "2019-09-19",
             "2019-11-15",
+        )
+        self.assertNoNonObservedHoliday(
+            # 2021 Boxing Day
             "2021-12-27",
         )
 
