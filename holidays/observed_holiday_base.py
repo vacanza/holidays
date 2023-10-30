@@ -14,6 +14,7 @@ from datetime import timedelta as td
 from typing import Dict, Optional, Tuple, Set
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import DateArg, HolidayBase
 
 
@@ -155,3 +156,14 @@ class ObservedHolidayBase(HolidayBase):
                     self._add_observed(dt, name)
             else:
                 self._add_observed(dt)
+
+    def _add_special_holidays(self):
+        super()._add_special_holidays()
+
+        if self.observed:
+            for month, day, name in _normalize_tuple(
+                getattr(self, "special_holidays_observed", {}).get(self._year, ())
+            ):
+                self._add_holiday(
+                    self.tr(self.observed_label) % self.tr(name), date(self._year, month, day)
+                )
