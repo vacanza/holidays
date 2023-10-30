@@ -19,8 +19,7 @@ from tests.common import TestCase
 class TestSouthKorea(TestCase):
     @classmethod
     def setUpClass(cls):
-        years = (1948, 1949, 1960, 1974, 1975) + tuple(range(1981, 2050))
-        super().setUpClass(SouthKorea, years=years)
+        super().setUpClass(SouthKorea, years=range(1948, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(SouthKorea, KR, KOR)
@@ -77,12 +76,11 @@ class TestSouthKorea(TestCase):
             "2020-08-17",
             "2023-10-02",
         )
-        # Pre-2014 Observance
+        # Pre-2014 Observance sans "1960-12-26"
         self.assertNoNonObservedHoliday(
             "1959-04-06",
             "1960-07-18",
             "1960-10-10",
-            "1960-12-26",
             "1989-10-02",
         )
 
