@@ -87,10 +87,6 @@ class Cameroon(
         if self.observed:
             self._populate_observed(dts_observed)
 
-            # Observed holidays special cases.
-            if year == 2007:
-                self._add_holiday_jan_2(self.observed_label % "Eid al-Adha")
-
 
 class CM(Cameroon):
     pass
@@ -185,4 +181,8 @@ class CameroonStaticHolidays:
             (MAY, 14, "Public Holiday"),
             (JUL, 19, "Public Holiday"),
         ),
+    }
+
+    special_holidays_observed = {
+        2007: (JAN, 2, "Eid al-Adha"),
     }

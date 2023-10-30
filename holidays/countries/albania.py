@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAR
+from holidays.calendars.gregorian import JAN, MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import (
     ChristianHolidays,
@@ -91,10 +91,6 @@ class Albania(
         if self.observed:
             self._populate_observed(dts_observed)
 
-            # Observed holidays special cases.
-            if year == 2007:
-                self._add_holiday_jan_3(self.observed_label % "Eid al-Adha")
-
 
 class AL(Albania):
     pass
@@ -107,4 +103,8 @@ class ALB(Albania):
 class AlbaniaStaticHolidays:
     special_holidays = {
         2022: (MAR, 21, "Public Holiday"),
+    }
+
+    special_holidays_observed = {
+        2007: (JAN, 3, "Eid al-Adha"),
     }

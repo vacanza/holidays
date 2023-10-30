@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import SEP
+from holidays.calendars.gregorian import SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -115,11 +115,6 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
 
-        # New Year's Day observance overflow.
-        # This only applies to Pre-2012 observance.
-        if self.observed and self._year in {1979, 1984, 1990, 2001, 2007}:
-            self._add_new_years_eve("New Year's Day (Observed)")
-
 
 class BS(Bahamas):
     pass
@@ -133,4 +128,14 @@ class BahamasStaticHolidays:
     special_public_holidays = {
         # https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/  # noqa: E501
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
+    }
+
+    special_holidays_observed = {
+        # New Year's Day observance overflow.
+        # This only applies to Pre-2012 observance.
+        1979: (DEC, 31, "New Year's Day"),
+        1984: (DEC, 31, "New Year's Day"),
+        1990: (DEC, 31, "New Year's Day"),
+        2001: (DEC, 31, "New Year's Day"),
+        2007: (DEC, 31, "New Year's Day"),
     }

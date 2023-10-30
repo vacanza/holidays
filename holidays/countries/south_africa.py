@@ -73,10 +73,6 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
 
             self._add_observed(self._add_holiday_sep_24("Heritage Day"))
 
-        # Special holiday http://tiny.cc/za_y2k
-        if self.observed and year == 2000:
-            self._add_holiday_jan_3("Y2K changeover (Observed)")
-
         # Historic public holidays no longer observed
         if 1952 <= year <= 1973:
             self._add_holiday_apr_6("Van Riebeeck's Day")
@@ -144,4 +140,9 @@ class SouthAfricaStaticHolidays:
         2019: (MAY, 8, "National and provincial government elections"),
         2021: (NOV, 1, "Municipal elections"),
         2022: (DEC, 27, "Public holiday by presidential decree"),
+    }
+
+    special_holidays_observed = {
+        # Special holiday http://tiny.cc/za_y2k
+        2000: (JAN, 3, "Y2K changeover"),
     }
