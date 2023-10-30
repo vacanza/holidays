@@ -382,6 +382,9 @@ class SouthKoreaStaticHolidays:
     # President Syngman Rhee's Birthday.
     syngman_rhee_birthday = tr("이승만 대통령 탄신일")
 
+    # Armed Forces Day.
+    armed_forces_day = tr("국군의 날")
+
     special_public_holidays = {
         1948: (
             # 1st National Assembly Election.
@@ -480,7 +483,7 @@ class SouthKoreaStaticHolidays:
             (DEC, 17, presidential_inauguration_day),
         ),
         # Armed Forces Day.
-        1966: (OCT, 1, tr("국군의 날")),
+        1966: (OCT, 1, armed_forces_day),
         1967: (
             # In-lieu observance for New Year's Day.
             (JAN, 4, temporary_public_holiday),
@@ -633,5 +636,5 @@ class SouthKoreaStaticHolidays:
             (OCT, 10, tr("한글날")),
             (DEC, 26, tr("기독탄신일")),
         ),
-        1989: (OCT, 2, tr("국군의 날")),
+        1989: (OCT, 2, armed_forces_day),
     }
