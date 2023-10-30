@@ -75,10 +75,6 @@ msgstr "Boxing Day"
 msgid "'Aho malolo 'akapulu 'a Tonga"
 msgstr "Tonga Rugby Public Holiday"
 
-#. Boxing Day (Observed).
-msgid "'Aho 2 'o e Kilisimasi (Fakatokanga'i)"
-msgstr "Boxing Day (Observed)"
-
 #. State Funeral of 'Akilisi Pohiva.
 msgid "Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva"
 msgstr "State Funeral of 'Akilisi Pohiva"

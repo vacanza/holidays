@@ -210,6 +210,9 @@ class TongaStaticHolidays:
             (SEP, 19, tr("Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva")),
             (NOV, 15, rugby_special_holidays),
         ),
-        # Boxing Day (Observed).
-        2021: (DEC, 27, tr("'Aho 2 'o e Kilisimasi (Fakatokanga'i)")),
+    }
+    # Special Case for 2021
+    special_holidays_observed = {
+        # Boxing Day.
+        2021: (DEC, 27, tr("'Aho 2 'o e Kilisimasi")),
     }
