@@ -38,11 +38,11 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
 
 class SouthKorea(
-    HolidayBase,
+    ObservedHolidayBase,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
@@ -78,6 +78,8 @@ class SouthKorea(
     country = "KR"
     supported_categories = {BANK, PUBLIC}
     default_language = "ko"
+    # Alternative holiday for %s.
+    observed_label = tr("%s 대체 휴일")
     supported_languages = ("en_US", "ko", "th")
 
     def __init__(self, *args, **kwargs):
@@ -85,6 +87,7 @@ class SouthKorea(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _add_alt_holiday(
@@ -119,18 +122,17 @@ class SouthKorea(
                 obs_date += td(days=+1)
             for name in (name,) if name else self.get_list(dt):
                 if "Alternative holiday" not in name:
-                    # Alternative holiday for %s.
-                    self._add_holiday(self.tr("%s 대체 휴일") % self.tr(name), obs_date)
+                    self._add_holiday(self.tr(self.observed_label) % self.tr(name), obs_date)
 
-    def _add_three_day_holiday(self, name: str, dt: date) -> None:
+    def _add_three_day_holiday(self, dt: date, name: str) -> None:
         """
         Add holiday for the date before and after the given holiday date.
 
-        :param name:
-           The name of the holiday.
-
         :param dt:
            The date of the holiday.
+
+        :param name:
+           The name of the holiday.
         """
         for dt_alt in (
             # The day preceding %s.
@@ -165,7 +167,7 @@ class SouthKorea(
             )
             korean_new_year = self._add_chinese_new_years_day(name)
             if self._year >= 1989:
-                self._add_three_day_holiday(name, korean_new_year)
+                self._add_three_day_holiday(korean_new_year, name)
 
         # Independence Movement Day.
         mar_1 = self._add_holiday_mar_1(tr("삼일절"))
@@ -221,7 +223,7 @@ class SouthKorea(
         if 1986 <= self._year <= 1988:
             self._add_mid_autumn_festival_day_two(self.tr("%s 다음날") % self.tr(name))
         elif self._year >= 1989:
-            self._add_three_day_holiday(name, chuseok)
+            self._add_three_day_holiday(chuseok, name)
 
         # Christmas Day.
         self._add_alt_holiday(self._add_christmas_day(tr("기독탄신일")), since=2023)
@@ -621,4 +623,15 @@ class SouthKoreaStaticHolidays:
         2020: (AUG, 17, temporary_public_holiday),
         # Added to create a 6-day long holiday period.
         2023: (OCT, 2, temporary_public_holiday),
+    }
+    # Pre-2014 Alternate Holidays
+    # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1
+    special_holidays_observed = {
+        1959: (APR, 6, tr("식목일")),
+        1960: (
+            (JUL, 18, tr("제헌절")),
+            (OCT, 10, tr("한글날")),
+            (DEC, 26, tr("기독탄신일")),
+        ),
+        1989: (OCT, 2, tr("국군의 날")),
     }
