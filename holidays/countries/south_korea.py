@@ -191,7 +191,7 @@ class SouthKorea(
 
         if self._year >= 1956:
             # Memorial Day.
-            self._add_holiday_jun_6(tr("현충일"))
+            jun_6 = self._add_holiday_jun_6(tr("현충일"))
 
         if self._year <= 2007:
             # Constitution Day.
@@ -273,7 +273,6 @@ class SouthKorea(
         name = tr("지방선거일")
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
-            jun_6 = (JUN, 6)
             if self._is_tuesday(jun_6) or self._is_wednesday(jun_6) or self._is_thursday(jun_6):
                 # Moved as per Paragraph 2 of Article 34 due to conflict with
                 # Memorial Day (JUN, 6).
