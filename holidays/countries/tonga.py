@@ -16,9 +16,9 @@ from holidays.calendars.gregorian import SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SUN_TO_NEXT_MON,
-    MON_TO_NEXT_TUE,
     ALL_TO_NEAREST_MON_LATAM,
+    MON_TO_NEXT_TUE,
+    SUN_TO_NEXT_MON,
 )
 
 
