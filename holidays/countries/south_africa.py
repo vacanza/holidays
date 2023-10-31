@@ -16,8 +16,9 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    http://www.gov.za/about-sa/public-holidays
+    https://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
+    https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000
     """
 
     country = "ZA"
@@ -118,31 +119,37 @@ class ZAF(SouthAfrica):
 
 
 class SouthAfricaStaticHolidays:
+    y2k_changeover = "Y2K changeover"
+    presidential_decree_holiday = "Public holiday by presidential decree"
+    national_and_provicial_elections = "National and provincial government elections"
+    local_elections = "Local government elections"
     special_holidays = {
         1999: (
-            (JUN, 2, "National and provincial government elections"),
-            (DEC, 31, "Y2K changeover"),
+            (JUN, 2, national_and_provicial_elections),
+            (DEC, 31, y2k_changeover),
         ),
-        2000: (JAN, 2, "Y2K changeover"),
-        2004: (APR, 14, "National and provincial government elections"),
-        2006: (MAR, 1, "Local government elections"),
-        2008: (MAY, 2, "Public holiday by presidential decree"),
-        2009: (APR, 22, "National and provincial government elections"),
+        2000: (JAN, 2, y2k_changeover),
+        2004: (APR, 14, national_and_provicial_elections),
+        2006: (MAR, 1, local_elections),
+        2008: (MAY, 2, presidential_decree_holiday),
+        2009: (APR, 22, national_and_provicial_elections),
         2011: (
-            (MAY, 18, "Local government elections"),
-            (DEC, 27, "Public holiday by presidential decree"),
+            (MAY, 18, local_elections),
+            (DEC, 27, presidential_decree_holiday),
         ),
-        2014: (MAY, 7, "National and provincial government elections"),
+        2014: (MAY, 7, national_and_provicial_elections),
         2016: (
-            (AUG, 3, "Local government elections"),
-            (DEC, 27, "Public holiday by presidential decree"),
+            (AUG, 3, local_elections),
+            (DEC, 27, presidential_decree_holiday),
         ),
-        2019: (MAY, 8, "National and provincial government elections"),
+        2019: (MAY, 8, national_and_provicial_elections),
         2021: (NOV, 1, "Municipal elections"),
-        2022: (DEC, 27, "Public holiday by presidential decree"),
+        2022: (DEC, 27, presidential_decree_holiday),
+        # Winning the 2023 Rugby World Cup
+        2023: (DEC, 15, presidential_decree_holiday),
     }
 
     special_holidays_observed = {
         # Special holiday http://tiny.cc/za_y2k
-        2000: (JAN, 3, "Y2K changeover"),
+        2000: (JAN, 3, y2k_changeover),
     }
