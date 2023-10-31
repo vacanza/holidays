@@ -83,8 +83,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         super().__init__(*args, **kwargs)
 
     def _add_observed(self, dt: date, **kwargs):
-        if self._year >= 2010 and kwargs.get("rule") is None:
-            kwargs["rule"] = ALL_TO_NEAREST_MON_LATAM
+        if self._year >= 2010:
+            kwargs["rule"] = kwargs["rule"] or ALL_TO_NEAREST_MON_LATAM
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
