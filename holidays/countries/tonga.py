@@ -143,11 +143,11 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)
 
         # Emancipation Day.
-        emancipation_day = self._add_holiday_jun_4(tr("'Aho Tau'ataina"))
+        jun_4 = self._add_holiday_jun_4(tr("'Aho Tau'ataina"))
         if self._year >= 2010:
-            self._move_holiday(emancipation_day)
+            self._move_holiday(jun_4)
         else:
-            self._add_observed(emancipation_day)
+            self._add_observed(jun_4)
 
         # Coronation Date of Tongan Monarchy since 1970.*
         # Topou VI: Jul 4 (2015-Present)**
