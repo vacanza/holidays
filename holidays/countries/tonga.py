@@ -174,14 +174,14 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         else:
             self._add_observed(nov_4)
 
-        hm_king_topou_1_coronation_day = self._add_holiday_dec_4(
+        dec_4 = self._add_holiday_dec_4(
             # Anniversary of the Coronation of HM King George Tupou I.
             tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
         )
         if self._year >= 2010:
-            self._move_holiday(hm_king_topou_1_coronation_day)
+            self._move_holiday(dec_4)
         else:
-            self._add_observed(hm_king_topou_1_coronation_day)
+            self._add_observed(dec_4)
 
         # Christmas Day.
         self._add_christmas_day(tr("'Aho Kilisimasi"))
