@@ -18,9 +18,7 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_MON,
     MON_TO_NEXT_TUE,
-    TUE_WED_TO_PREV_MON,
-    THU_FRI_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON,
+    ALL_TO_NEAREST_MON_LATAM,
 )
 
 
@@ -86,7 +84,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     def _add_observed(self, dt: date, **kwargs):
         if self._year >= 2010 and kwargs.get("rule") is None:
-            kwargs["rule"] = TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_MON
+            kwargs["rule"] = ALL_TO_NEAREST_MON_LATAM
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
@@ -110,7 +108,7 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         name = tr("'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule")
 
         if self._year == 2011:
-            self._add_observed(self._add_holiday_may_4(name))
+            self._move_holiday(self._add_holiday_may_4(name))
         elif 2007 <= self._year <= 2010:
             self._add_observed(self._add_holiday_may_4(name), rule=SUN_TO_NEXT_MON)
         elif self._year != 2012:
@@ -126,6 +124,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
         if self._year >= 2012:
             self._add_observed(self._add_holiday_sep_17(name), rule=SUN_TO_NEXT_MON)
+        elif self._year >= 2010:
+            self._move_holiday(self._add_holiday_jul_12(name))
         elif self._year >= 2007:
             self._add_observed(self._add_holiday_jul_12(name))
         else:
@@ -143,7 +143,11 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_observed(apr_25, rule=SUN_TO_NEXT_MON)
 
         # Emancipation Day.
-        self._add_observed(self._add_holiday_jun_4(tr("'Aho Tau'ataina")))
+        emancipation_day = self._add_holiday_jun_4(tr("'Aho Tau'ataina"))
+        if self._year >= 2010:
+            self._move_holiday(emancipation_day)
+        else:
+            self._add_observed(emancipation_day)
 
         # Coronation Date of Tongan Monarchy since 1970.*
         # Topou VI: Jul 4 (2015-Present)**
@@ -153,25 +157,31 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         #  ** Has de facto merged with King's Birthday.
 
         if 2008 <= self._year <= 2011:
-            self._add_observed(
-                self._add_holiday_aug_1(
-                    tr(
-                        # Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
-                        "Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga "
-                        "'a ia 'oku lolotonga Pule"
-                    )
-                )
+            name = tr(
+                # Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
+                "Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga "
+                "'a ia 'oku lolotonga Pule"
             )
+            if self._year >= 2010:
+                self._move_holiday(self._add_holiday_aug_1(name))
+            else:
+                self._add_observed(self._add_holiday_aug_1(name))
 
         # Constitution Day.
-        self._add_observed(self._add_holiday_nov_4(tr("'Aho Konisitutone")))
+        constitution_day = self._add_holiday_nov_4(tr("'Aho Konisitutone"))
+        if self._year >= 2010:
+            self._move_holiday(constitution_day)
+        else:
+            self._add_observed(constitution_day)
 
-        self._add_observed(
-            self._add_holiday_dec_4(
-                # Anniversary of the Coronation of HM King George Tupou I.
-                tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
-            )
+        hm_king_topou_1_coronation_day = self._add_holiday_dec_4(
+            # Anniversary of the Coronation of HM King George Tupou I.
+            tr("'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I")
         )
+        if self._year >= 2010:
+            self._move_holiday(hm_king_topou_1_coronation_day)
+        else:
+            self._add_observed(hm_king_topou_1_coronation_day)
 
         # Christmas Day.
         self._add_christmas_day(tr("'Aho Kilisimasi"))

@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestTonga(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Tonga, years=range(1989, 2050))
+        super().setUpClass(Tonga, years=range(1989, 2050), years_non_observed=range(1989, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Tonga, TO, TON)
@@ -35,10 +35,35 @@ class TestTonga(TestCase):
             "2021-12-27",
         )
 
+    def test_government_actual_date_observance(self):
+        self.assertNonObservedHoliday(
+            # Emancipation Day.
+            "2017-06-04",
+            "2019-06-04",
+            "2020-06-04",
+            "2021-06-04",
+            "2022-06-04",
+            "2023-06-04",
+            "2024-06-04",
+            # Constitution Day.
+            "2017-11-04",
+            "2018-11-04",
+            "2020-11-04",
+            "2021-11-04",
+            "2022-11-04",
+            "2023-11-04",
+            # HM King Topou I's Coronation Day.
+            "2018-12-04",
+            "2019-12-04",
+            "2021-12-04",
+            "2022-12-04",
+            "2024-12-04",
+        )
+
     def test_birthday_of_the_reigning_sovereign(self):
         name = "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"
         self.assertHolidayName(name, (f"{year}-07-04" for year in range(1989, 2007)))
-        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2007, 2012)))
+        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2007, 2011)))
         self.assertNoHolidayName(name, 2012)
         self.assertHolidayName(name, (f"{year}-07-04" for year in range(2013, 2050)))
 
@@ -55,11 +80,15 @@ class TestTonga(TestCase):
             "2021-07-05",
             "2027-07-05",
         )
+        self.assertNonObservedHoliday(
+            # Topou V (Act 10 of 2010).
+            "2011-05-04",
+        )
 
     def test_birthday_of_the_heir_to_the_crown(self):
         name = "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"
         self.assertHolidayName(name, (f"{year}-05-04" for year in range(1989, 2007)))
-        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2007, 2012)))
+        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2007, 2011)))
         self.assertHolidayName(name, (f"{year}-09-17" for year in range(2012, 2050)))
 
         self.assertNoNonObservedHoliday(
@@ -75,6 +104,10 @@ class TestTonga(TestCase):
             "2023-09-18",
             "2028-09-18",
         )
+        self.assertNonObservedHoliday(
+            # Topou V's Heir: Topou VI (Act 10 of 2010).
+            "2011-07-12",
+        )
 
     def test_coronation_day_anniversary(self):
         name = (
@@ -82,12 +115,16 @@ class TestTonga(TestCase):
             "'a ia 'oku lolotonga Pule"
         )
         self.assertNoHolidayName(name, range(1989, 2008))
-        self.assertHolidayName(name, (f"{year}-08-01" for year in range(2008, 2012)))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in {2008, 2009, 2011}))
         self.assertNoHolidayName(name, range(2012, 2050))
 
         self.assertNoNonObservedHoliday(
             # Topou V (Act 10 of 2010).
-            "2010-08-02"
+            "2010-08-02",
+        )
+        self.assertNonObservedHoliday(
+            # Topou V (Act 10 of 2010).
+            "2010-08-01",
         )
 
     def test_2017(self):
@@ -98,12 +135,10 @@ class TestTonga(TestCase):
             ("2017-04-14", "Falaite Lelei"),
             ("2017-04-17", "Monite 'o e Toetu'u"),
             ("2017-04-25", "'Aho Anzac"),
-            ("2017-06-04", "'Aho Tau'ataina"),
             ("2017-06-05", "'Aho Tau'ataina (Fakatokanga'i)"),
             ("2017-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2017-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2017-09-18", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (Fakatokanga'i)"),
-            ("2017-11-04", "'Aho Konisitutone"),
             ("2017-11-06", "'Aho Konisitutone (Fakatokanga'i)"),
             ("2017-11-29", "'Aho malolo 'akapulu 'a Tonga"),
             (
@@ -125,7 +160,6 @@ class TestTonga(TestCase):
             ("2018-06-04", "'Aho Tau'ataina"),
             ("2018-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2018-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
-            ("2018-11-04", "'Aho Konisitutone"),
             ("2018-11-05", "'Aho Konisitutone (Fakatokanga'i)"),
             (
                 "2018-12-03",
@@ -133,10 +167,6 @@ class TestTonga(TestCase):
                     "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
                     "Siaosi Tupou I (Fakatokanga'i)"
                 ),
-            ),
-            (
-                "2018-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
             ),
             ("2018-12-25", "'Aho Kilisimasi"),
             ("2018-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -151,7 +181,6 @@ class TestTonga(TestCase):
             ("2019-04-22", "Monite 'o e Toetu'u"),
             ("2019-04-25", "'Aho Anzac"),
             ("2019-06-03", "'Aho Tau'ataina (Fakatokanga'i)"),
-            ("2019-06-04", "'Aho Tau'ataina"),
             ("2019-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2019-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2019-09-19", "Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva"),
@@ -163,10 +192,6 @@ class TestTonga(TestCase):
                     "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
                     "Siaosi Tupou I (Fakatokanga'i)"
                 ),
-            ),
-            (
-                "2019-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
             ),
             ("2019-12-25", "'Aho Kilisimasi"),
             ("2019-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -180,16 +205,10 @@ class TestTonga(TestCase):
             ("2020-04-10", "Falaite Lelei"),
             ("2020-04-13", "Monite 'o e Toetu'u"),
             ("2020-04-25", "'Aho Anzac"),
-            ("2020-06-04", "'Aho Tau'ataina"),
             ("2020-06-08", "'Aho Tau'ataina (Fakatokanga'i)"),
             ("2020-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2020-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2020-11-02", "'Aho Konisitutone (Fakatokanga'i)"),
-            ("2020-11-04", "'Aho Konisitutone"),
-            (
-                "2020-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
-            ),
             (
                 "2020-12-07",
                 (
@@ -209,7 +228,6 @@ class TestTonga(TestCase):
             ("2021-04-02", "Falaite Lelei"),
             ("2021-04-05", "Monite 'o e Toetu'u"),
             ("2021-04-25", "'Aho Anzac"),
-            ("2021-06-04", "'Aho Tau'ataina"),
             ("2021-06-07", "'Aho Tau'ataina (Fakatokanga'i)"),
             ("2021-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             (
@@ -220,12 +238,7 @@ class TestTonga(TestCase):
                 ),
             ),
             ("2021-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
-            ("2021-11-04", "'Aho Konisitutone"),
             ("2021-11-08", "'Aho Konisitutone (Fakatokanga'i)"),
-            (
-                "2021-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
-            ),
             (
                 "2021-12-06",
                 (
@@ -246,16 +259,10 @@ class TestTonga(TestCase):
             ("2022-04-15", "Falaite Lelei"),
             ("2022-04-18", "Monite 'o e Toetu'u"),
             ("2022-04-25", "'Aho Anzac"),
-            ("2022-06-04", "'Aho Tau'ataina"),
             ("2022-06-06", "'Aho Tau'ataina (Fakatokanga'i)"),
             ("2022-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2022-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
-            ("2022-11-04", "'Aho Konisitutone"),
             ("2022-11-07", "'Aho Konisitutone (Fakatokanga'i)"),
-            (
-                "2022-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
-            ),
             (
                 "2022-12-05",
                 (
@@ -276,7 +283,6 @@ class TestTonga(TestCase):
             ("2024-04-01", "Monite 'o e Toetu'u"),
             ("2024-04-25", "'Aho Anzac"),
             ("2024-06-03", "'Aho Tau'ataina (Fakatokanga'i)"),
-            ("2024-06-04", "'Aho Tau'ataina"),
             ("2024-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2024-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2024-11-04", "'Aho Konisitutone"),
@@ -286,10 +292,6 @@ class TestTonga(TestCase):
                     "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko "
                     "Siaosi Tupou I (Fakatokanga'i)"
                 ),
-            ),
-            (
-                "2024-12-04",
-                "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I",
             ),
             ("2024-12-25", "'Aho Kilisimasi"),
             ("2024-12-26", "'Aho 2 'o e Kilisimasi"),
@@ -302,12 +304,10 @@ class TestTonga(TestCase):
             ("2023-04-07", "Falaite Lelei"),
             ("2023-04-10", "Monite 'o e Toetu'u"),
             ("2023-04-25", "'Aho Anzac"),
-            ("2023-06-04", "'Aho Tau'ataina"),
             ("2023-06-05", "'Aho Tau'ataina (Fakatokanga'i)"),
             ("2023-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
             ("2023-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2023-09-18", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (Fakatokanga'i)"),
-            ("2023-11-04", "'Aho Konisitutone"),
             ("2023-11-06", "'Aho Konisitutone (Fakatokanga'i)"),
             (
                 "2023-12-04",
@@ -324,12 +324,10 @@ class TestTonga(TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-25", "Anzac Day"),
-            ("2023-06-04", "Emancipation Day"),
             ("2023-06-05", "Emancipation Day (Observed)"),
             ("2023-07-04", "Birthday of the Reigning Sovereign of Tonga"),
             ("2023-09-17", "Birthday of the Heir to the Crown of Tonga"),
             ("2023-09-18", "Birthday of the Heir to the Crown of Tonga (Observed)"),
-            ("2023-11-04", "Constitution Day"),
             ("2023-11-06", "Constitution Day (Observed)"),
             ("2023-12-04", "Anniversary of the Coronation of HM King George Tupou I"),
             ("2023-12-25", "Christmas Day"),
