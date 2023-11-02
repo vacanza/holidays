@@ -1,0 +1,80 @@
+# Tonga holidays en_US localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.36\n"
+"POT-Creation-Date: 2023-10-24 19:30+0700\n"
+"PO-Revision-Date: 2023-10-24 19:36+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Fakatokanga'i)"
+msgstr "%s (Observed)"
+
+#. New Year's Day.
+msgid "'Uluaki 'Aho 'o e Ta'u Fo'ou"
+msgstr "New Year's Day"
+
+#. Birthday of the Reigning Sovereign of Tonga.
+msgid "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"
+msgstr "Birthday of the Reigning Sovereign of Tonga"
+
+#. Birthday of the Heir to the Crown of Tonga.
+msgid "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"
+msgstr "Birthday of the Heir to the Crown of Tonga"
+
+#. Good Friday.
+msgid "Falaite Lelei"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Monite 'o e Toetu'u"
+msgstr "Easter Monday"
+
+#. Anzac Day.
+msgid "'Aho Anzac"
+msgstr "Anzac Day"
+
+#. Emancipation Day.
+msgid "'Aho Tau'ataina"
+msgstr "Emancipation Day"
+
+#. Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
+msgid ""
+"Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'a ia"
+" 'oku lolotonga Pule"
+msgstr "Anniversary of the Coronation Day of the reigning Sovereign of Tonga"
+
+#. Constitution Day.
+msgid "'Aho Konisitutone"
+msgstr "Constitution Day"
+
+#. Anniversary of the Coronation of HM King George Tupou I.
+msgid "'Aho Fakamanatu 'o e Hilifaki Kalauni 'o 'Ene 'Afio ko Siaosi Tupou I"
+msgstr "Anniversary of the Coronation of HM King George Tupou I"
+
+#. Christmas Day.
+msgid "'Aho Kilisimasi"
+msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "'Aho 2 'o e Kilisimasi"
+msgstr "Boxing Day"
+
+#. Tonga Rugby Public Holiday.
+msgid "'Aho malolo 'akapulu 'a Tonga"
+msgstr "Tonga Rugby Public Holiday"
+
+#. State Funeral of 'Akilisi Pohiva.
+msgid "Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva"
+msgstr "State Funeral of 'Akilisi Pohiva"
