@@ -119,31 +119,32 @@ class ZAF(SouthAfrica):
 
 
 class SouthAfricaStaticHolidays:
-    y2k_changeover = "Y2K changeover"
-    presidential_decree_holiday = "Public holiday by presidential decree"
-    national_and_provicial_elections = "National and provincial government elections"
     local_elections = "Local government elections"
+    municipal_elections = "Municipal elections"
+    national_and_provincial_elections = "National and provincial government elections"
+    presidential_decree_holiday = "Public holiday by presidential decree"
+    y2k_changeover = "Y2K changeover"
     special_holidays = {
         1999: (
-            (JUN, 2, national_and_provicial_elections),
+            (JUN, 2, national_and_provincial_elections),
             (DEC, 31, y2k_changeover),
         ),
         2000: (JAN, 2, y2k_changeover),
-        2004: (APR, 14, national_and_provicial_elections),
+        2004: (APR, 14, national_and_provincial_elections),
         2006: (MAR, 1, local_elections),
         2008: (MAY, 2, presidential_decree_holiday),
-        2009: (APR, 22, national_and_provicial_elections),
+        2009: (APR, 22, national_and_provincial_elections),
         2011: (
             (MAY, 18, local_elections),
             (DEC, 27, presidential_decree_holiday),
         ),
-        2014: (MAY, 7, national_and_provicial_elections),
+        2014: (MAY, 7, national_and_provincial_elections),
         2016: (
             (AUG, 3, local_elections),
             (DEC, 27, presidential_decree_holiday),
         ),
-        2019: (MAY, 8, national_and_provicial_elections),
-        2021: (NOV, 1, "Municipal elections"),
+        2019: (MAY, 8, national_and_provincial_elections),
+        2021: (NOV, 1, municipal_elections),
         2022: (DEC, 27, presidential_decree_holiday),
         # Winning the 2023 Rugby World Cup
         2023: (DEC, 15, presidential_decree_holiday),
