@@ -7,38 +7,62 @@ state or province) specific sets of government-designated holidays on the fly.
 It aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
-:Package:
-    .. image:: https://img.shields.io/pypi/pyversions/holidays.svg?logo=python&label=Python&logoColor=gold
+:PyPI:
+    .. image:: https://img.shields.io/pypi/dm/holidays?color=%2341B5BE
         :target: https://pypi.python.org/pypi/holidays
-        :alt: Python supported versions
+        :alt: downloads
 
-    .. image:: http://img.shields.io/pypi/v/holidays.svg?logo=pypi&label=PyPI&logoColor=gold
+    .. image:: https://img.shields.io/pypi/v/holidays?label=version&color=%2341B5BE
         :target: https://pypi.python.org/pypi/holidays
-        :alt: PyPI version
+        :alt: PyPI - Version
 
-    .. image:: https://img.shields.io/pypi/dm/holidays.svg?color=blue&label=Downloads&logo=pypi&logoColor=gold
-        :target: https://pypi.python.org/pypi/holidays
-        :alt: Downloads
+    .. image:: https://img.shields.io/github/release-date/vacanza/python-holidays?color=%2341B5BE
+        :target: https://github.com/vacanza/python-holidays/releases
+        :alt: Release date
 
 :CI/CD:
-    .. image:: https://github.com/vacanza/python-holidays/workflows/CI%2FCD/badge.svg
+    .. image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?color=%2341BE4A
+        :alt: Tests Status
         :target: actions
 
-    .. image:: http://img.shields.io/coveralls/vacanza/python-holidays/master
-        :target: https://coveralls.io/r/vacanza/python-holidays
-
-:Docs:
-    .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
+    .. image:: https://img.shields.io/readthedocs/python-holidays?color=%2341BE4A
         :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-:Meta:
-    .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-        :alt: Code style
-
-    .. image:: http://img.shields.io/pypi/l/holidays.svg
+:Code:
+    .. image:: https://img.shields.io/github/license/vacanza/python-holidays?color=%2341B5BE
         :target: LICENSE
         :alt: License
+
+    .. image:: https://img.shields.io/pypi/pyversions/holidays?label=python&color=%2341B5BE
+        :target: https://pypi.python.org/pypi/holidays
+        :alt: Python supported versions
+
+    .. image:: https://img.shields.io/badge/code%20style-black-%252333F93C0?label=style&color=%2341B5BE
+        :target: https://github.com/psf/black
+        :alt: style
+
+    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=master&color=%2341B5BE
+        :target: https://coveralls.io/r/vacanza/python-holidays
+
+
+:GitHub:
+    .. image:: https://img.shields.io/github/stars/vacanza/python-holidays?color=%2341BE4A
+        :target: https://github.com/vacanza/python-holidays/stargazers
+        :alt: GitHub stars
+
+    .. image:: https://img.shields.io/github/forks/vacanza/python-holidays?color=%2341BE4A
+        :target: https://github.com/vacanza/python-holidays/forks
+        :alt: GitHub forks
+
+    .. image:: https://img.shields.io/github/contributors/vacanza/python-holidays?color=%2341BE4A
+        :target: https://github.com/vacanza/python-holidays/graphs/contributors
+        :alt: GitHub contributors
+
+    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/beta?color=%2341BE4A
+        :target: https://github.com/vacanza/python-holidays/commits/beta
+        :alt: GitHub last commit (branch)
+
 
 Install
 -------
