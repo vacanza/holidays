@@ -1,7 +1,26 @@
 Version 0.36
 ============
 
-Released ???????? ??, ????
+Released November 6, 2023
+
+- Add special holidays per subdivisions support (#1520 by @KJhellico)
+- Add special_holidays_observed support (#1535 by @KJhellico)
+- Refactor Australia holidays (#1531 by @KJhellico)
+- Refactor Isle of Man holidays (Tynwald Day) (#1532 by @KJhellico)
+- Add Bahamas holidays (#1517 by @PPsyrius)
+- Add Timor-Leste holidays (#1516 by @PPsyrius)
+- Add Tonga holidays (#1534 by @PPsyrius)
+- Update Portugal holidays: add holiday categories (#1529 by @KJhellico)
+- Update South Africa holidays: add holiday in honor of Winning the Rugby World Cup 2023 (Dec 15, 2023) (#1538 by @KJhellico)
+- Update snapshots generator (#1530 by @KJhellico)
+- Add Thailand's Bridge Public Holiday on Dec 29, 2023 (#1528 by @PPsyrius)
+- Migrate the remaining `special_holidays` to `StaticHolidays` class (#1519 by @PPsyrius)
+- Remove hard-coding observed_rule for Bahamas (#1527 by @PPsyrius)
+- Remove redundant gettext assignment (#1533 by @arkid15r)
+- Set concurrency group for CI/CD jobs (#1540 by @arkid15r)
+- Set pyproject.toml project version dynamically (#1525 by @arkid15r)
+- Use OIDC (trusted publishers) for PyPI uploads (#1523 by @arkid15r)
+- Use setdefault instead of hard-coding observed_rule and observed_since (#1521 by @BossColo)
 
 Version 0.35
 ============
