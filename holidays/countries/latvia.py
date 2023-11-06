@@ -34,7 +34,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, LatviaStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1989:

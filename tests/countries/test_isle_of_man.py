@@ -42,10 +42,7 @@ class TestIM(TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-02", "May Day"),
             ("2022-06-02", "Spring Bank Holiday"),
-            (
-                "2022-06-03",
-                "Platinum Jubilee of Elizabeth II; TT Bank Holiday",
-            ),
+            ("2022-06-03", "Platinum Jubilee of Elizabeth II; TT Bank Holiday"),
             ("2022-07-05", "Tynwald Day"),
             ("2022-08-29", "Late Summer Bank Holiday"),
             ("2022-09-19", "State Funeral of Queen Elizabeth II"),

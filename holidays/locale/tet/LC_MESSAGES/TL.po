@@ -1,0 +1,143 @@
+# Timor-Leste holidays tet localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.36\n"
+"POT-Creation-Date: 2023-10-14 08:23+0700\n"
+"PO-Revision-Date: 2023-10-14 08:29+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: tet\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#, c-format
+msgid "%s* (*aproximada)"
+msgstr "%s* (*kalkula)"
+
+#. New Year's Day.
+msgid "Dia de Ano Novo"
+msgstr "Loron Tinan-Foun nian"
+
+#. Veteran's Day.
+msgid "Dia dos Veteranos"
+msgstr "Loron Veteranu sira nian"
+
+#. World Labor Day.
+msgid "Dia Mundial do Trabalhador"
+msgstr "Loron Mundiál Serbisu-na'in sira nian"
+
+#. Restoration of Independence Day.
+msgid "Dia da Restauração da Independência"
+msgstr "Loron Restaurasaun Independénsia nian"
+
+#. Popular Consultation Day.
+msgid "Dia da Consulta Popular"
+msgstr "Loron Konsulta Populár nian"
+
+#. All Saints' Day.
+msgid "Dia de Todos os Santos"
+msgstr "Loron Santu sira Hotu nian"
+
+#. All Souls' Day.
+msgid "Dia de Todos os Fiéis Defuntos"
+msgstr "Loron Matebian sira nian"
+
+#. National Women's Day.
+msgid "Dia Nacional da Mulher"
+msgstr "Loron Nasionál Feto"
+
+#. National Youth Day.
+msgid "Dia Nacional da Juventude"
+msgstr "Loron Nasionál Foin-Sa'e sira nian"
+
+#. Proclamation of Independence Day.
+msgid "Dia da Proclamação da Independência"
+msgstr "Loron Proklamasaun Independénsia nian"
+
+#. Memorial Day.
+msgid "Dia da Memória"
+msgstr "Loron Memória nian"
+
+#. Day of Our Lady of Immaculate Conception and Timor-Leste Patroness.
+msgid "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste"
+msgstr "Loron Nossa Senhora da Imaculada Conceição, mahein Timor-Leste nian"
+
+#. Christmas Day.
+msgid "Dia de Natal"
+msgstr "Loron Natál"
+
+#. National Heroes Day.
+msgid "Dia dos Heróis Nacionais"
+msgstr "Loron Eroi Nasionál sira nian"
+
+#. Holy Friday.
+msgid "Sexta-Feira Santa"
+msgstr "Sesta-Feira Santa"
+
+#. Idul Fitri.
+msgid "Idul Fitri"
+msgstr "Idul-Fitri"
+
+#. Corpus Christi.
+msgid "Festa do Corpo de Deus"
+msgstr "Festa Korpu de Deus"
+
+#. Idul Adha.
+msgid "Idul Adha"
+msgstr "Idul Adha"
+
+#. National Holidays (Special).
+msgid "Feriados Nacionais (Especiais)"
+msgstr "Feriadu Nasional (Espesial)"
+
+#. World Children's Day.
+msgid "Dia Mundial da Criança"
+msgstr "Loron Mundial ba Labarik"
+
+#. Day of the Armed Forces for the National Liberation of Timor-Leste
+#. (FALINTIL).
+msgid ""
+"Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+msgstr "Loron Forsa Armada Libertasaun Nasionál Timor-Leste (FALINTIL) nian"
+
+#. World Human Rights Day.
+msgid "Dia Mundial dos Direitos Humanos"
+msgstr "Loron Mundiál Direitu Umanu"
+
+#. Ash Wednesday.
+msgid "Quarta-Feira de Cinzas"
+msgstr "Kuarta-Feira Sinzas"
+
+#. Holy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr "Quinta-Feira Santa"
+
+#. The Day of Ascension of Jesus Christ into Heaven.
+msgid "Dia da Ascensão de Jesus Cristo ao Céu"
+msgstr "Loron Ascensão do Senhor Jesus Cristo hi'it An ba Lalehan nian"
+
+#. Presidential Election Day.
+msgid "Dia da Eleição Presidencial"
+msgstr "Loron Eleisaun Prezidensiál nian"
+
+#. Parliamentary Election Day.
+msgid "Dia de Eleições Parlamentares"
+msgstr "Loron Eleisaun Parlamentár nian"
+
+#. Centenary of the Revolt of Dom Boaventura.
+msgid "Centenário da Revolta de Dom Boaventura"
+msgstr "Sentanáriu Revolta Dom Boaventura nian"
+
+#. Funeral Ceremonies of Fernando 'La Sama' de Araújo.
+msgid "Cerimónias Fúnebres de Fernando 'La Sama' de Araújo"
+msgstr "Serimónia Fúnebre Fernando 'La Sama' de Araújo nian"
+
+#. 20th Anniversary Celebrations of the Popular Consultation.
+msgid "Celebrações do 20.º Aniversário da Consulta Popular"
+msgstr "Komemorasaun Aniversáriu Konsulta Popular ba dala 20"

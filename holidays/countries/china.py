@@ -15,11 +15,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAY, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
+class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_China
@@ -66,58 +66,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
 
-    # Special Cases.
-
-    # New Year's Day.
-    new_years_day_overflow = tr("元旦")
-
-    # National Day.
-    national_day_2008_golden_week = tr("国庆节")
-
-    # Mid-Autumn Festival.
-    mid_autumn_festival_2010_special = tr("中秋节")
-
-    special_public_holidays = {
-        2007: (
-            # 2007: Overflow from 2008 Notice.
-            (DEC, 30, new_years_day_overflow),
-            (DEC, 31, new_years_day_overflow),
-        ),
-        2008: (
-            # 2008: weird National Day Golden Week pattern.
-            (SEP, 29, national_day_2008_golden_week),
-            (SEP, 30, national_day_2008_golden_week),
-            (OCT, 4, national_day_2008_golden_week),
-            (OCT, 5, national_day_2008_golden_week),
-        ),
-        2010: (
-            # 2010: doesn't fit with existing observed pattern.
-            (SEP, 23, mid_autumn_festival_2010_special),
-            (SEP, 24, mid_autumn_festival_2010_special),
-        ),
-        2013: (
-            # 2013: doesn't fit with existing observed pattern.
-            (JAN, 2, new_years_day_overflow),
-            (JAN, 3, new_years_day_overflow),
-        ),
-        2018: (
-            # 2018: Overflow from 2019 Notice.
-            (DEC, 30, new_years_day_overflow),
-            (DEC, 31, new_years_day_overflow),
-        ),
-        2022: (
-            # 2022: Overflow from 2023 Notice.
-            (DEC, 31, new_years_day_overflow),
-        ),
-        2023: (
-            # 2023: Overflow from 2023 Notice.
-            (JAN, 2, new_years_day_overflow),
-        ),
-    }
-
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=ChinaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _add_observed_one_off_holidays(self, dt: date):
@@ -372,3 +324,54 @@ class CN(China):
 
 class CHN(China):
     pass
+
+
+class ChinaStaticHolidays:
+    # Special Cases.
+
+    # New Year's Day.
+    new_years_day_overflow = tr("元旦")
+
+    # National Day.
+    national_day_2008_golden_week = tr("国庆节")
+
+    # Mid-Autumn Festival.
+    mid_autumn_festival_2010_special = tr("中秋节")
+
+    special_public_holidays = {
+        2007: (
+            # 2007: Overflow from 2008 Notice.
+            (DEC, 30, new_years_day_overflow),
+            (DEC, 31, new_years_day_overflow),
+        ),
+        2008: (
+            # 2008: weird National Day Golden Week pattern.
+            (SEP, 29, national_day_2008_golden_week),
+            (SEP, 30, national_day_2008_golden_week),
+            (OCT, 4, national_day_2008_golden_week),
+            (OCT, 5, national_day_2008_golden_week),
+        ),
+        2010: (
+            # 2010: doesn't fit with existing observed pattern.
+            (SEP, 23, mid_autumn_festival_2010_special),
+            (SEP, 24, mid_autumn_festival_2010_special),
+        ),
+        2013: (
+            # 2013: doesn't fit with existing observed pattern.
+            (JAN, 2, new_years_day_overflow),
+            (JAN, 3, new_years_day_overflow),
+        ),
+        2018: (
+            # 2018: Overflow from 2019 Notice.
+            (DEC, 30, new_years_day_overflow),
+            (DEC, 31, new_years_day_overflow),
+        ),
+        2022: (
+            # 2022: Overflow from 2023 Notice.
+            (DEC, 31, new_years_day_overflow),
+        ),
+        2023: (
+            # 2023: Overflow from 2023 Notice.
+            (JAN, 2, new_years_day_overflow),
+        ),
+    }

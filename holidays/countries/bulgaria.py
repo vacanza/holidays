@@ -52,9 +52,9 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
-        super().__init__(
-            observed_rule=SAT_SUN_TO_NEXT_WORKDAY, observed_since=2017, *args, **kwargs
-        )
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2017)
+        super().__init__(*args, **kwargs)
 
     def _populate_observed(self, dts: Set[date], excluded_names: Set[str]) -> None:
         for dt in sorted(dts):

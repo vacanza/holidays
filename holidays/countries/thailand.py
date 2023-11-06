@@ -146,7 +146,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, ThailandStaticHolidays)
         ThaiCalendarHolidays.__init__(self)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
@@ -424,7 +425,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #   - CASE 2: SUN-MON -> 1 in-lieu on TUE.
         # See in lieu logic in `_add_observed(dt: date)`.
 
-        if self._year >= 1995:
+        if self._year >= 1995 and self._year != 2024:
             self._add_observed(date(self._year - 1, DEC, 31), name=name, rule=SAT_SUN_TO_NEXT_TUE)
 
         # Thai Lunar Calendar Holidays
@@ -801,5 +802,6 @@ class ThailandStaticHolidays:
         2023: (
             (MAY, 5, thai_bridge_public_holiday),
             (JUL, 31, thai_bridge_public_holiday),
+            (DEC, 29, thai_bridge_public_holiday),
         ),
     }

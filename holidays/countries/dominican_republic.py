@@ -35,7 +35,8 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997

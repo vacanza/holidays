@@ -37,7 +37,8 @@ class Chad(
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=ChadIslamicHolidays)
         StaticHolidays.__init__(self, ChadStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # On 11 August 1960, Chad gained independence from France.

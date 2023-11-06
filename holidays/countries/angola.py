@@ -14,7 +14,7 @@ from gettext import gettext as tr
 from typing import Tuple
 
 from holidays.calendars.gregorian import AUG, SEP, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_TO_PREV_MON,
@@ -23,7 +23,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
@@ -45,15 +45,13 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "pt_AO", "uk")
     # %s (Observed).
     observed_label = tr("%s (Ponte)")
-    special_holidays = {
-        # General Election Day.
-        2017: (AUG, 23, tr("Dia de eleições gerais")),
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(observed_rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI, *args, **kwargs)
+        StaticHolidays.__init__(self, cls=AngolaStaticHolidays)
+        kwargs.setdefault("observed_rule", TUE_TO_PREV_MON + THU_TO_NEXT_FRI)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         # As per Law # 16/96, from 1996/9/27, when public holiday falls on Sunday,
@@ -188,3 +186,10 @@ class AO(Angola):
 
 class AGO(Angola):
     pass
+
+
+class AngolaStaticHolidays:
+    special_holidays = {
+        # General Election Day.
+        2017: (AUG, 23, tr("Dia de eleições gerais")),
+    }

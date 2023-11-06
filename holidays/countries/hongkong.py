@@ -50,7 +50,8 @@ class HongKong(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, HongKongStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
         dt = args if len(args) > 1 else args[0]

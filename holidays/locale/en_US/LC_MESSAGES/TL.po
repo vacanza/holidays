@@ -1,0 +1,145 @@
+# Timor-Leste holidays en_US localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.36\n"
+"POT-Creation-Date: 2023-10-14 08:23+0700\n"
+"PO-Revision-Date: 2023-10-14 08:26+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#, c-format
+msgid "%s* (*aproximada)"
+msgstr "%s* (*estimated)"
+
+#. New Year's Day.
+msgid "Dia de Ano Novo"
+msgstr "New Year's Day"
+
+#. Veteran's Day.
+msgid "Dia dos Veteranos"
+msgstr "Veteran's Day"
+
+#. World Labor Day.
+msgid "Dia Mundial do Trabalhador"
+msgstr "World Labor Day"
+
+#. Restoration of Independence Day.
+msgid "Dia da Restauração da Independência"
+msgstr "Restoration of Independence Day"
+
+#. Popular Consultation Day.
+msgid "Dia da Consulta Popular"
+msgstr "Popular Consultation Day"
+
+#. All Saints' Day.
+msgid "Dia de Todos os Santos"
+msgstr "All Saints' Day"
+
+#. All Souls' Day.
+msgid "Dia de Todos os Fiéis Defuntos"
+msgstr "All Souls' Day"
+
+#. National Women's Day.
+msgid "Dia Nacional da Mulher"
+msgstr "National Women's Day"
+
+#. National Youth Day.
+msgid "Dia Nacional da Juventude"
+msgstr "National Youth Day"
+
+#. Proclamation of Independence Day.
+msgid "Dia da Proclamação da Independência"
+msgstr "Proclamation of Independence Day"
+
+#. Memorial Day.
+msgid "Dia da Memória"
+msgstr "Memorial Day"
+
+#. Day of Our Lady of Immaculate Conception and Timor-Leste Patroness.
+msgid "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste"
+msgstr "Day of Our Lady of Immaculate Conception and Timor-Leste Patroness"
+
+#. Christmas Day.
+msgid "Dia de Natal"
+msgstr "Christmas Day"
+
+#. National Heroes Day.
+msgid "Dia dos Heróis Nacionais"
+msgstr "National Heroes Day"
+
+#. Holy Friday.
+msgid "Sexta-Feira Santa"
+msgstr "Holy Friday"
+
+#. Idul Fitri.
+msgid "Idul Fitri"
+msgstr "Idul Fitri"
+
+#. Corpus Christi.
+msgid "Festa do Corpo de Deus"
+msgstr "Corpus Christi"
+
+#. Idul Adha.
+msgid "Idul Adha"
+msgstr "Idul Adha"
+
+#. National Holidays (Special).
+msgid "Feriados Nacionais (Especiais)"
+msgstr "National Holidays (Special)"
+
+#. World Children's Day.
+msgid "Dia Mundial da Criança"
+msgstr "World Children's Day"
+
+#. Day of the Armed Forces for the National Liberation of Timor-Leste
+#. (FALINTIL).
+msgid ""
+"Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+msgstr ""
+"Day of the Armed Forces for the National Liberation of Timor-Leste "
+"(FALINTIL)"
+
+#. World Human Rights Day.
+msgid "Dia Mundial dos Direitos Humanos"
+msgstr "World Human Rights Day"
+
+#. Ash Wednesday.
+msgid "Quarta-Feira de Cinzas"
+msgstr "Ash Wednesday"
+
+#. Holy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr "Holy Thursday"
+
+#. The Day of Ascension of Jesus Christ into Heaven.
+msgid "Dia da Ascensão de Jesus Cristo ao Céu"
+msgstr "The Day of Ascension of Jesus Christ into Heaven"
+
+#. Presidential Election Day.
+msgid "Dia da Eleição Presidencial"
+msgstr "Presidential Election Day"
+
+#. Parliamentary Election Day.
+msgid "Dia de Eleições Parlamentares"
+msgstr "Parliamentary Election Day"
+
+#. Centenary of the Revolt of Dom Boaventura.
+msgid "Centenário da Revolta de Dom Boaventura"
+msgstr "Centenary of the Revolt of Dom Boaventura"
+
+#. Funeral Ceremonies of Fernando 'La Sama' de Araújo.
+msgid "Cerimónias Fúnebres de Fernando 'La Sama' de Araújo"
+msgstr "Funeral Ceremonies of Fernando 'La Sama' de Araújo"
+
+#. 20th Anniversary Celebrations of the Popular Consultation.
+msgid "Celebrações do 20.º Aniversário da Consulta Popular"
+msgstr "20th Anniversary Celebrations of the Popular Consultation"

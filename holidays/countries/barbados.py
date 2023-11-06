@@ -37,7 +37,8 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, BarbadosStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Public Holidays Act Cap.352, 1968-12-30

@@ -35,12 +35,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(
-            observed_rule=SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY,
-            observed_since=2015,
-            *args,
-            **kwargs,
-        )
+        kwargs.setdefault("observed_rule", SAT_TO_PREV_WORKDAY + SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2015)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1911:

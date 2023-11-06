@@ -86,7 +86,9 @@ class Singapore(
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
-        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, observed_since=1998, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 1998)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year) -> None:
         super()._populate(year)
@@ -139,10 +141,6 @@ class Singapore(
 
         if self.observed:
             self._populate_observed(dts_observed)
-
-            # Observed holidays special cases (observed from previous year)
-            if year == 2007:
-                self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")
 
 
 class SG(Singapore):
@@ -307,4 +305,8 @@ class SingaporeStaticHolidays:
         # Announced in state-associated press on 12 August 2023
         # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
         2023: (SEP, 1, "Polling Day"),
+    }
+
+    special_holidays_observed = {
+        2007: (JAN, 2, "Hari Raya Haji"),
     }

@@ -133,7 +133,8 @@ class Malaysia(
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=MalaysiaIslamicHolidays)
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
-        super().__init__(observed_rule=SUN_TO_NEXT_WORKDAY, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

@@ -75,9 +75,9 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, ChileStaticHolidays)
-        super().__init__(
-            observed_rule=WORKDAY_TO_NEAREST_MON, observed_since=2000, *args, **kwargs
-        )
+        kwargs.setdefault("observed_rule", WORKDAY_TO_NEAREST_MON)
+        kwargs.setdefault("observed_since", 2000)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1914:

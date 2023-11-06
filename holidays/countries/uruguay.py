@@ -15,7 +15,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_WED_TO_PREV_MON,
@@ -23,7 +23,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
@@ -40,24 +40,13 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = {BANK, PUBLIC}
     supported_languages = ("en_US", "es", "uk")
 
-    # Presidential Inauguration Day.
-    presidential_inauguration_day = tr("Inauguración del Presidente de la República")
-    special_public_holidays = {
-        1985: (MAR, 1, presidential_inauguration_day),
-        1990: (MAR, 1, presidential_inauguration_day),
-        1995: (MAR, 1, presidential_inauguration_day),
-        2000: (MAR, 1, presidential_inauguration_day),
-        2005: (MAR, 1, presidential_inauguration_day),
-        2010: (MAR, 1, presidential_inauguration_day),
-        2015: (MAR, 1, presidential_inauguration_day),
-        2020: (MAR, 1, presidential_inauguration_day),
-    }
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=UruguayStaticHolidays)
         # Decree Law #14977, # 15535, #16805.
-        super().__init__(observed_rule=TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
         return 1980 <= self._year <= 1983 or self._year >= 1997
@@ -172,3 +161,18 @@ class UY(Uruguay):
 
 class URY(Uruguay):
     pass
+
+
+class UruguayStaticHolidays:
+    # Presidential Inauguration Day.
+    presidential_inauguration_day = tr("Inauguración del Presidente de la República")
+    special_public_holidays = {
+        1985: (MAR, 1, presidential_inauguration_day),
+        1990: (MAR, 1, presidential_inauguration_day),
+        1995: (MAR, 1, presidential_inauguration_day),
+        2000: (MAR, 1, presidential_inauguration_day),
+        2005: (MAR, 1, presidential_inauguration_day),
+        2010: (MAR, 1, presidential_inauguration_day),
+        2015: (MAR, 1, presidential_inauguration_day),
+        2020: (MAR, 1, presidential_inauguration_day),
+    }

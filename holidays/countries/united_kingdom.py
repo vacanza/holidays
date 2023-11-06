@@ -50,7 +50,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
-        super().__init__(observed_rule=SAT_SUN_TO_NEXT_MON, *args, **kwargs)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
