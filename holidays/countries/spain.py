@@ -37,6 +37,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
      2021: https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343
      2022: https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113
      2023: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-16755
+     2024: https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014
     """
 
     country = "ES"
@@ -96,7 +97,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
             self._add_holiday_dec_6("Día de la Constitución Española")
 
-        if year not in {2013, 2019}:
+        if year not in {2013, 2019, 2024}:
             self._add_immaculate_conception_day("Inmaculada Concepción")
 
         if year not in {2011, 2016, 2022}:
@@ -128,7 +129,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year in {2013, 2019}:
+        if self._year in {2013, 2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
@@ -160,7 +161,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year in {2013, 2019}:
+        if self._year in {2013, 2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
@@ -192,7 +193,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year in {2013, 2019}:
+        if self._year in {2013, 2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
@@ -205,19 +206,19 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year != 2018:
             self._add_holy_thursday("Jueves Santo")
 
-        if self._year in {2013, 2015, 2019, 2020}:
+        if self._year in {2013, 2015, 2019, 2020, 2024}:
             self._add_easter_monday("Lunes de Pascua")
 
         if self._year == 2011:
             self._move_holiday(self._add_labor_day("Fiesta del Trabajo"))
 
-        if self._year in {2012, 2013, 2014, 2019}:
+        if self._year in {2012, 2013, 2014, 2019, 2024}:
             self._add_saint_james_day("Santiago Apóstol")
 
-        if self._year not in {2012, 2015, 2019}:
+        if self._year not in {2012, 2015, 2019, 2024}:
             self._add_holiday_jul_28("Día de las Instituciones de Cantabria")
 
-        if self._year not in {2013, 2019}:
+        if self._year not in {2013, 2019, 2024}:
             self._add_holiday_sep_15("La Bien Aparecida")
 
         if self._year == 2015:
@@ -281,7 +282,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
         self._add_holy_thursday("Jueves Santo")
 
-        if self._year <= 2022:
+        if self._year != 2023:
             self._move_holiday(self._add_holiday_apr_23("Fiesta de la Comunidad Autónoma"))
 
         if self._year in {2016, 2022}:
@@ -302,7 +303,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year in {2013, 2019}:
+        if self._year in {2013, 2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
@@ -378,7 +379,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
-        if self._year == 2023:
+        if self._year in {2023, 2024}:
             self._add_carnival_tuesday("Martes de Carnaval")
 
         if self._year in {2010, 2017, 2021}:
@@ -389,7 +390,8 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_labor_day("Fiesta del Trabajo"))
 
-        self._move_holiday(self._add_holiday_sep_8("Día de Extremadura"))
+        if self._year != 2024:
+            self._move_holiday(self._add_holiday_sep_8("Día de Extremadura"))
 
         if self._year == 2014:
             self._move_holiday(self._add_holiday_oct_12("Fiesta Nacional de España"))
@@ -400,7 +402,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year in {2013, 2019}:
+        if self._year in {2013, 2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
@@ -455,7 +457,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
-        if self._year <= 2021 and self._year != 2017:
+        if (self._year <= 2021 and self._year != 2017) or self._year == 2024:
             self._move_holiday(self._add_saint_josephs_day("San José"))
 
         self._add_holy_thursday("Jueves Santo")
@@ -463,13 +465,13 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2022}:
             self._move_holiday(self._add_labor_day("Fiesta del Trabajo"))
 
-        if self._year != 2013:
+        if self._year not in {2013, 2024}:
             self._move_holiday(self._add_holiday_jun_9("Día de la Región de Murcia"))
 
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year == 2013:
+        if self._year in {2013, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2016, 2022}:
@@ -493,7 +495,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2010, 2011, 2014}:
             self._add_corpus_christi_day("Corpus Christi")
 
-        if self._year in {2011, 2016, 2022}:
+        if self._year in {2011, 2016, 2022, 2024}:
             self._add_saint_james_day("Santiago Apóstol")
 
         if self._year == 2020:
@@ -526,13 +528,13 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2015, 2020}:
             self._move_holiday(self._add_holiday_dec_6("Día de la Constitución Española"))
 
-        if self._year == 2019:
+        if self._year in {2019, 2024}:
             self._move_holiday(self._add_immaculate_conception_day("Inmaculada Concepción"))
 
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-        if self._year >= 2022:
+        if self._year in {2022, 2023}:
             self._add_eid_al_fitr_day("Eid al-Fitr")
 
         if self._year in {2011, 2012, 2021}:
@@ -609,7 +611,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year == 2013:
             self._add_holiday_mar_18("Lunes de Fallas")
 
-        if self._year <= 2022 and self._year != 2017:
+        if (self._year <= 2022 and self._year != 2017) or self._year == 2024:
             self._add_saint_josephs_day("San José")
 
         if self._year in {2011, 2016, 2017, 2022}:
@@ -657,6 +659,7 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 9),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     EID_AL_FITR_DATES = {
