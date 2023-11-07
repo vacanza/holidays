@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import DEC
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -49,9 +48,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # Republic of China Founding Day / New Year's Day.
         name = "Republic of China Founding Day / New Year's Day"
         dts_observed.add(self._add_new_years_day(name))
-
-        if self.observed and self._is_friday(DEC, 31) and year >= 2015:
-            self._add_holiday_dec_31(self.observed_label % name)
+        self._add_observed(self._next_year_new_years_day, name=name)
 
         # Lunar New Year.
         self._add_chinese_new_years_eve("Lunar New Year's Eve")

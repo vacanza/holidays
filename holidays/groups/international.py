@@ -11,11 +11,20 @@
 
 from datetime import date
 
+from holidays.calendars.gregorian import JAN
+
 
 class InternationalHolidays:
     """
     International holidays.
     """
+
+    @property
+    def _next_year_new_years_day(self):
+        """
+        Return New Year's Day of next year.
+        """
+        return date(self._year + 1, JAN, 1)
 
     def _add_africa_day(self, name):
         """
