@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.36\n"
+"Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-10-26 23:49+0700\n"
 "PO-Revision-Date: 2023-10-26 23:54+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
