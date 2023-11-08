@@ -171,6 +171,7 @@ class SouthKorea(
 
         # Independence Movement Day.
         mar_1 = self._add_holiday_mar_1(tr("삼일절"))
+        # mar_1 is used later for Presidential Election Day.
         self._add_alt_holiday(mar_1, since=2022)
 
         if 1949 <= self._year <= 2005 and self._year != 1960:
@@ -194,6 +195,7 @@ class SouthKorea(
         if self._year >= 1956:
             # Memorial Day.
             jun_6 = self._add_holiday_jun_6(tr("현충일"))
+            # jun_6 is  used later for Local Election Day.
 
         if self._year <= 2007:
             # Constitution Day.
@@ -253,10 +255,10 @@ class SouthKorea(
         elif self._year >= 2007 and (self._year - 2008) % 4 == 0:
             self._add_holiday_2nd_wed_of_apr(name)
 
-        # Presidential Election Day.
-        name = tr("대통령 선거일")
-
         if self._year >= 2007 and (self._year - 2007) % 5 == 0:
+            # Presidential Election Day.
+            name = tr("대통령 선거일")
+
             if self._year <= 2012:
                 self._add_holiday_3rd_wed_of_dec(name)
             elif self._year >= 2022:
@@ -271,10 +273,10 @@ class SouthKorea(
                 else:
                     self._add_holiday_1st_wed_of_mar(name)
 
-        # Local Election Day.
-        name = tr("지방선거일")
-
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
+            # Local Election Day.
+            name = tr("지방선거일")
+
             if self._is_tuesday(jun_6) or self._is_wednesday(jun_6) or self._is_thursday(jun_6):
                 # Moved as per Paragraph 2 of Article 34 due to conflict with
                 # Memorial Day (JUN, 6).
