@@ -725,7 +725,7 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - South Korea
      - KR
      -
-     -
+     - en_US, **ko**, th
      - BANK, **PUBLIC**
    * - Spain
      - ES
