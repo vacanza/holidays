@@ -13,7 +13,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/python/black
-    rev: 23.10.1
+    rev: 23.11.0
     hooks:
       - id: black
         exclude: ^(docs)
