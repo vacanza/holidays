@@ -1,4 +1,4 @@
-# Canada holidays th localization.
+# Japan holidays th localization.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
