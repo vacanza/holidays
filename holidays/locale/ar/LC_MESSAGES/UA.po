@@ -1,11 +1,11 @@
-# Ukraine holidays ar localization (PoC).
+# Ukraine holidays ar localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2023-07-09 17:35+0300\n"
+"PO-Revision-Date: 2023-11-10 15:35+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ar\n"
@@ -89,3 +89,7 @@ msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 #. Christmas (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
 msgstr "عيد الميلاد (حسب التقويم الغريغوري)"
+
+#. Presidential decree holiday.
+msgid "Вихідний згідно указу Президента"
+msgstr "العطلة بمرسوم رئاسي"

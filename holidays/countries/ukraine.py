@@ -24,6 +24,7 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
+    NOV,
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
@@ -37,7 +38,24 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
 
     Substituted holidays:
-    2001 - https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80
+    1992 - https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF
+    1993 - https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/725-92-%D0%BF
+    1994 - https://zakon.rada.gov.ua/laws/show/98-94-%D0%BF
+    1995 - https://zakon.rada.gov.ua/laws/show/852-95-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF
+    1996 - https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF
+    1997 - https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF
+    1999 - https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF
+    2000 - https://zakon.rada.gov.ua/laws/show/1251-2000-%D0%BF,
+           https://zakon.rada.gov.ua/laws/show/717-2000-%D0%BF
+    2001 - https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80,
+           https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF
     2002,
     2003 - https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80,
            https://zakon.rada.gov.ua/laws/show/705-2002-%D1%80
@@ -63,6 +81,9 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     2020 - https://zakon.rada.gov.ua/laws/show/995-2019-%D1%80
     2021 - https://zakon.rada.gov.ua/laws/show/1191-2020-%D1%80
     2022 - https://zakon.rada.gov.ua/laws/show/1004-2021-%D1%80
+
+    Special holidays:
+    1995 - https://zakon.rada.gov.ua/laws/show/13/95
     """
 
     country = "UA"
@@ -115,8 +136,9 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # There is no holidays from March 15, 2022
         # https://zakon.rada.gov.ua/laws/show/2136-20#n26
         if year <= 2021:
-            # Easter Sunday (Pascha).
-            dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
+            if year >= 1992:
+                # Easter Sunday (Pascha).
+                dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
             # Holy Trinity Day.
             dts_observed.add(self._add_whit_sunday(tr("Трійця")))
@@ -190,24 +212,63 @@ class UKR(Ukraine):
 
 
 class UkraineStaticHolidays:
+    special_holidays = {
+        # Presidential decree holiday.
+        1995: (JAN, 9, tr("Вихідний згідно указу Президента"))
+    }
+
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")
     substituted_holidays = {
+        1992: (
+            (JAN, 4, JAN, 6),
+            (MAY, 16, APR, 27),
+        ),
+        1993: (
+            (JAN, 10, JAN, 8),
+            (AUG, 21, AUG, 23),
+        ),
+        1994: (MAR, 5, MAR, 7),
+        1995: (
+            (MAY, 6, MAY, 8),
+            (AUG, 27, AUG, 25),
+            (NOV, 4, NOV, 6),
+        ),
+        1996: (
+            (MAY, 5, MAY, 3),
+            (MAY, 12, MAY, 10),
+        ),
+        1997: (
+            (1996, DEC, 28, JAN, 2),
+            (JAN, 4, JAN, 6),
+            (APR, 19, APR, 29),
+            (MAY, 17, APR, 30),
+        ),
+        1999: (
+            (JAN, 10, JAN, 8),
+            (APR, 24, APR, 12),
+            (AUG, 21, AUG, 23),
+        ),
+        2000: (
+            (MAY, 6, MAY, 8),
+            (AUG, 27, AUG, 25),
+        ),
         2001: (
+            (MAR, 11, MAR, 9),
             (APR, 28, APR, 30),
             (MAY, 5, MAY, 10),
             (MAY, 6, MAY, 11),
             (JUN, 23, JUN, 29),
-            (2001, DEC, 29, DEC, 31),
+            (DEC, 29, DEC, 31),
         ),
         2002: (
             (MAY, 11, MAY, 3),
             (DEC, 28, DEC, 30),
             (DEC, 29, DEC, 31),
         ),
-        2003: ((JAN, 4, JAN, 6),),
+        2003: (JAN, 4, JAN, 6),
         2004: (
             (JAN, 10, JAN, 2),
             (JAN, 17, JAN, 5),
