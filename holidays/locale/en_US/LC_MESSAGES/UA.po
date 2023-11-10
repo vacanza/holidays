@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2023-07-09 17:34+0300\n"
+"PO-Revision-Date: 2023-11-10 15:35+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -90,3 +90,7 @@ msgstr "Anniversary of the Great October Socialist Revolution"
 #. Christmas (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
 msgstr "Christmas (Gregorian calendar)"
+
+#. Presidential decree holiday.
+msgid "Вихідний згідно указу Президента"
+msgstr "Presidential decree holiday"

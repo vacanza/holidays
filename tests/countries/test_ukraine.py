@@ -25,6 +25,9 @@ class TestUkraine(TestCase):
         self.assertNoHolidays(Ukraine(years=1990))
         self.assertNoHolidays(Ukraine(years=2023))
 
+    def test_special_holidays(self):
+        self.assertHoliday("1995-01-09")
+
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1991, 2023))
         dt = (
@@ -57,8 +60,9 @@ class TestUkraine(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_easter(self):
+        name = "Великдень (Пасха)"
         self.assertHolidayName(
-            "Великдень (Пасха)",
+            name,
             "2010-04-04",
             "2011-04-24",
             "2012-04-15",
@@ -72,6 +76,8 @@ class TestUkraine(TestCase):
             "2020-04-19",
             "2021-05-02",
         )
+        self.assertHolidayName(name, range(1992, 2022))
+        self.assertNoHolidayName(name, 1991)
 
         dt = (
             "2010-04-05",
@@ -232,6 +238,26 @@ class TestUkraine(TestCase):
 
     def test_substituted(self):
         self.assertHoliday(
+            "1992-01-06",
+            "1992-04-27",
+            "1993-01-08",
+            "1993-08-23",
+            "1994-03-07",
+            "1995-05-08",
+            "1995-08-25",
+            "1995-11-06",
+            "1996-05-03",
+            "1996-05-10",
+            "1997-01-02",
+            "1997-01-06",
+            "1997-04-29",
+            "1997-04-30",
+            "1999-01-08",
+            "1999-04-12",
+            "1999-08-23",
+            "2000-05-08",
+            "2000-08-25",
+            "2001-03-09",
             "2001-04-30",
             "2001-05-10",
             "2001-05-11",
