@@ -27,12 +27,9 @@ class TestIsrael(TestCase):
         self.assertCountryAliases(Israel, IL, ISR)
 
     def test_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
-            Israel(years=2101)
-        with self.assertRaises(NotImplementedError):
-            Israel(categories=(OPTIONAL,), years=2101)
-        with self.assertRaises(NotImplementedError):
-            Israel(categories=(SCHOOL,), years=2101)
+        self.assertRaises(NotImplementedError, lambda: Israel(years=2101))
+        self.assertRaises(NotImplementedError, lambda: Israel(categories=(OPTIONAL,), years=2101))
+        self.assertRaises(NotImplementedError, lambda: Israel(categories=(SCHOOL,), years=2101))
 
     def test_no_holidays(self):
         self.assertNoHolidays(Israel(years=1947))

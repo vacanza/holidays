@@ -34,6 +34,9 @@ class Israel(ObservedHolidayBase):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)
         super().__init__(*args, **kwargs)
 
+    def _get_holiday(self, holiday: str):
+        return _HebrewLunisolar.hebrew_holiday_date(self._year, holiday)
+
     def _populate_public_holidays(self):
         if self._year <= 1947:
             return None
@@ -42,28 +45,27 @@ class Israel(ObservedHolidayBase):
             raise NotImplementedError
 
         # Rosh Hashanah
-        rosh_hashanah_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "ROSH_HASHANAH")
+        rosh_hashanah_dt = self._get_holiday("ROSH_HASHANAH")
         name = "Rosh Hashanah"
         self._add_holiday(name, rosh_hashanah_dt)
         self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
 
         # Yom Kippur
-        yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "YOM_KIPPUR")
-        self._add_holiday("Yom Kippur", yom_kippur_dt)
+        self._add_holiday("Yom Kippur", self._get_holiday("YOM_KIPPUR"))
 
         # Sukkot
-        sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "SUKKOT")
+        sukkot_dt = self._get_holiday("SUKKOT")
         self._add_holiday("Sukkot", sukkot_dt)
         self._add_holiday("Simchat Torah / Shemini Atzeret", sukkot_dt + td(days=+7))
 
         # Passover
-        passover_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "PASSOVER")
+        passover_dt = self._get_holiday("PASSOVER")
         self._add_holiday("Passover", passover_dt)
         self._add_holiday("Seventh day of Passover", passover_dt + td(days=+6))
 
         # Independence Day
         name = "Independence Day"
-        independence_day_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "INDEPENDENCE_DAY")
+        independence_day_dt = self._get_holiday("INDEPENDENCE_DAY")
         rule = FRI_TO_PREV_THU + SAT_TO_PREV_THU
         if self._year >= 2004:
             rule += MON_TO_NEXT_TUE
@@ -72,8 +74,7 @@ class Israel(ObservedHolidayBase):
             self._add_holiday(name, independence_day_dt)
 
         # Shavuot
-        shavuot_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "SHAVUOT")
-        self._add_holiday("Shavuot", shavuot_dt)
+        self._add_holiday("Shavuot", self._get_holiday("SHAVUOT"))
 
     def _populate_optional_holidays(self):
         if self._year <= 1947:
@@ -83,30 +84,26 @@ class Israel(ObservedHolidayBase):
             raise NotImplementedError
 
         # Sukkot Chol HaMoed
-        sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "SUKKOT")
+        sukkot_dt = self._get_holiday("SUKKOT")
         for offset in range(1, 6):
             self._add_holiday("Sukkot", sukkot_dt + td(days=offset))
 
         if self._year >= 2008:
             # Sigd
-            yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "YOM_KIPPUR")
-            self._add_holiday("Sigd", yom_kippur_dt + td(days=+49))
+            self._add_holiday("Sigd", self._get_holiday("YOM_KIPPUR") + td(days=+49))
 
         # Purim
-        purim_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "PURIM")
-        self._add_holiday("Purim", purim_dt)
+        self._add_holiday("Purim", self._get_holiday("PURIM"))
 
         # Passover (Chol HaMoed Pesach)
-        passover_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "PASSOVER")
+        passover_dt = self._get_holiday("PASSOVER")
         for offset in range(1, 6):
             self._add_holiday("Passover", passover_dt + td(days=offset))
 
         # Memorial Day
         if self._year >= 1963:
             name = "Memorial Day"
-            memorial_day_dt = _HebrewLunisolar.hebrew_holiday_date(
-                self._year, "INDEPENDENCE_DAY"
-            ) + td(days=-1)
+            memorial_day_dt = self._get_holiday("INDEPENDENCE_DAY") + td(days=-1)
             rule = THU_TO_PREV_WED + FRI_TO_PREV_WED
             if self._year >= 2004:
                 rule += SUN_TO_NEXT_MON
@@ -115,12 +112,11 @@ class Israel(ObservedHolidayBase):
                 self._add_holiday(name, memorial_day_dt)
 
         # Jerusalem Day
-        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "LAG_BAOMER")
-        self._add_holiday("Jerusalem Day", lag_baomer_dt + td(days=+10))
+        self._add_holiday("Jerusalem Day", self._get_holiday("LAG_BAOMER") + td(days=+10))
 
         # Tisha B'Av
         name = "Tisha B'Av"
-        tisha_bav_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "TISHA_BAV")
+        tisha_bav_dt = self._get_holiday("TISHA_BAV")
         is_obs, _ = self._add_observed(tisha_bav_dt, name, SAT_TO_NEXT_SUN)
         if not is_obs:
             self._add_holiday(name, tisha_bav_dt)
@@ -133,7 +129,7 @@ class Israel(ObservedHolidayBase):
             raise NotImplementedError
 
         # Sukkot Chol HaMoed
-        sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "SUKKOT")
+        sukkot_dt = self._get_holiday("SUKKOT")
         for offset in range(1, 6):
             self._add_holiday("Sukkot", sukkot_dt + td(days=offset))
 
@@ -145,7 +141,7 @@ class Israel(ObservedHolidayBase):
 
         # Fast of Esther
         name = "Fast of Esther"
-        purim_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "PURIM")
+        purim_dt = self._get_holiday("PURIM")
         taanit_ester_dt = purim_dt + td(days=-1)
         is_obs, _ = self._add_observed(taanit_ester_dt, name, SAT_TO_PREV_THU)
         if not is_obs:
@@ -155,13 +151,12 @@ class Israel(ObservedHolidayBase):
         self._add_holiday("Purim", purim_dt)
 
         # Passover (Chol HaMoed Pesach)
-        passover_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "PASSOVER")
+        passover_dt = self._get_holiday("PASSOVER")
         for offset in range(1, 6):
             self._add_holiday("Passover", passover_dt + td(days=offset))
 
         # Lag BaOmer
-        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(self._year, "LAG_BAOMER")
-        self._add_holiday("Lag BaOmer", lag_baomer_dt)
+        self._add_holiday("Lag BaOmer", self._get_holiday("LAG_BAOMER"))
 
 
 class IL(Israel):
