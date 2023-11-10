@@ -9,96 +9,154 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _HebrewLunisolar
-from holidays.holiday_base import HolidayBase
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    THU_TO_PREV_WED,
+    FRI_TO_PREV_WED,
+    FRI_TO_PREV_THU,
+    SAT_TO_PREV_THU,
+    SAT_TO_NEXT_SUN,
+    SUN_TO_NEXT_MON,
+)
 
 
-class Israel(HolidayBase):
+class Israel(ObservedHolidayBase):
     country = "IL"
+    observed_label = "%s (Observed)"
+    supported_categories = {OPTIONAL, PUBLIC, SCHOOL}
 
-    def _add_with_eve(self, name: str, dt: date) -> None:
-        self._add_holiday(f"{name} - Eve", dt + td(days=-1))
-        self._add_holiday(name, dt)
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)
+        super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1947:
+    def _get_holiday(self, holiday: str):
+        return _HebrewLunisolar.hebrew_holiday_date(self._year, holiday)
+
+    def _populate_public_holidays(self):
+        if self._year <= 1947:
             return None
 
-        if year >= 2101:
+        if self._year >= 2101:
             raise NotImplementedError
 
-        super()._populate(year)
-
-        # Passover
-        passover_dt = _HebrewLunisolar.hebrew_holiday_date(year, "PASSOVER")
-        self._add_with_eve("Passover I", passover_dt)
-        for offset in range(1, 5):
-            self._add_holiday("Passover - Chol HaMoed", passover_dt + td(days=offset))
-        self._add_with_eve("Passover VII", passover_dt + td(days=+6))
-
-        # Memorial Day
-        memorial_day_dt = _HebrewLunisolar.hebrew_holiday_date(year, "MEMORIAL_DAY")
-        observed_delta = 0
-        if self.observed:
-            if self._is_thursday(memorial_day_dt):
-                observed_delta = -1
-            elif self._is_friday(memorial_day_dt):
-                observed_delta = -2
-            elif year >= 2004 and self._is_sunday(memorial_day_dt):
-                observed_delta = 1
-
-        name = "Memorial Day"
-        if observed_delta != 0:
-            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta))
-        else:
-            self._add_holiday(name, memorial_day_dt)
-
-        # Independence Day
-        name = "Independence Day"
-        if self.observed and observed_delta != 0:
-            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta + 1))
-        else:
-            self._add_holiday(name, memorial_day_dt + td(days=+1))
-
-        # Lag Baomer
-        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(year, "LAG_BAOMER")
-        self._add_holiday("Lag B'Omer", lag_baomer_dt)
-
-        # Shavuot
-        shavuot_dt = _HebrewLunisolar.hebrew_holiday_date(year, "SHAVUOT")
-        self._add_with_eve("Shavuot", shavuot_dt)
-
-        # Rosh Hashana
-        rosh_hashanah_dt = _HebrewLunisolar.hebrew_holiday_date(year, "ROSH_HASHANAH")
+        # Rosh Hashanah
+        rosh_hashanah_dt = self._get_holiday("ROSH_HASHANAH")
         name = "Rosh Hashanah"
-        self._add_with_eve(name, rosh_hashanah_dt)
+        self._add_holiday(name, rosh_hashanah_dt)
         self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
 
         # Yom Kippur
-        yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(year, "YOM_KIPPUR")
-        self._add_with_eve("Yom Kippur", yom_kippur_dt)
+        self._add_holiday("Yom Kippur", self._get_holiday("YOM_KIPPUR"))
 
         # Sukkot
-        sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(year, "SUKKOT")
-        self._add_with_eve("Sukkot I", sukkot_dt)
+        sukkot_dt = self._get_holiday("SUKKOT")
+        self._add_holiday("Sukkot", sukkot_dt)
+        self._add_holiday("Simchat Torah / Shemini Atzeret", sukkot_dt + td(days=+7))
+
+        # Passover
+        passover_dt = self._get_holiday("PASSOVER")
+        self._add_holiday("Passover", passover_dt)
+        self._add_holiday("Seventh day of Passover", passover_dt + td(days=+6))
+
+        # Independence Day
+        name = "Independence Day"
+        independence_day_dt = self._get_holiday("INDEPENDENCE_DAY")
+        rule = FRI_TO_PREV_THU + SAT_TO_PREV_THU
+        if self._year >= 2004:
+            rule += MON_TO_NEXT_TUE
+        is_obs, _ = self._add_observed(independence_day_dt, name, rule)
+        if not is_obs:
+            self._add_holiday(name, independence_day_dt)
+
+        # Shavuot
+        self._add_holiday("Shavuot", self._get_holiday("SHAVUOT"))
+
+    def _populate_optional_holidays(self):
+        if self._year <= 1947:
+            return None
+
+        if self._year >= 2101:
+            raise NotImplementedError
+
+        # Sukkot Chol HaMoed
+        sukkot_dt = self._get_holiday("SUKKOT")
         for offset in range(1, 6):
-            self._add_holiday("Sukkot - Chol HaMoed", sukkot_dt + td(days=offset))
-        self._add_with_eve("Sukkot VII", sukkot_dt + td(days=+7))
+            self._add_holiday("Sukkot", sukkot_dt + td(days=offset))
+
+        if self._year >= 2008:
+            # Sigd
+            self._add_holiday("Sigd", self._get_holiday("YOM_KIPPUR") + td(days=+49))
+
+        # Purim
+        self._add_holiday("Purim", self._get_holiday("PURIM"))
+
+        # Passover (Chol HaMoed Pesach)
+        passover_dt = self._get_holiday("PASSOVER")
+        for offset in range(1, 6):
+            self._add_holiday("Passover", passover_dt + td(days=offset))
+
+        # Memorial Day
+        if self._year >= 1963:
+            name = "Memorial Day"
+            memorial_day_dt = self._get_holiday("INDEPENDENCE_DAY") + td(days=-1)
+            rule = THU_TO_PREV_WED + FRI_TO_PREV_WED
+            if self._year >= 2004:
+                rule += SUN_TO_NEXT_MON
+            is_obs, _ = self._add_observed(memorial_day_dt, name, rule)
+            if not is_obs:
+                self._add_holiday(name, memorial_day_dt)
+
+        # Jerusalem Day
+        self._add_holiday("Jerusalem Day", self._get_holiday("LAG_BAOMER") + td(days=+10))
+
+        # Tisha B'Av
+        name = "Tisha B'Av"
+        tisha_bav_dt = self._get_holiday("TISHA_BAV")
+        is_obs, _ = self._add_observed(tisha_bav_dt, name, SAT_TO_NEXT_SUN)
+        if not is_obs:
+            self._add_holiday(name, tisha_bav_dt)
+
+    def _populate_school_holidays(self):
+        if self._year <= 1947:
+            return None
+
+        if self._year >= 2101:
+            raise NotImplementedError
+
+        # Sukkot Chol HaMoed
+        sukkot_dt = self._get_holiday("SUKKOT")
+        for offset in range(1, 6):
+            self._add_holiday("Sukkot", sukkot_dt + td(days=offset))
 
         # Hanukkah
-        # Some o prior's year Hannukah may fall in current year.
-        for yr in (year - 1, year):
+        for yr in (self._year - 1, self._year):
             hanukkah_dt = _HebrewLunisolar.hebrew_holiday_date(yr, "HANUKKAH")
             for offset in range(8):
                 self._add_holiday("Hanukkah", hanukkah_dt + td(days=offset))
 
+        # Fast of Esther
+        name = "Fast of Esther"
+        purim_dt = self._get_holiday("PURIM")
+        taanit_ester_dt = purim_dt + td(days=-1)
+        is_obs, _ = self._add_observed(taanit_ester_dt, name, SAT_TO_PREV_THU)
+        if not is_obs:
+            self._add_holiday(name, taanit_ester_dt)
+
         # Purim
-        purim_dt = _HebrewLunisolar.hebrew_holiday_date(year, "PURIM")
-        self._add_with_eve("Purim", purim_dt)
-        self._add_holiday("Shushan Purim", purim_dt + td(days=+1))
+        self._add_holiday("Purim", purim_dt)
+
+        # Passover (Chol HaMoed Pesach)
+        passover_dt = self._get_holiday("PASSOVER")
+        for offset in range(1, 6):
+            self._add_holiday("Passover", passover_dt + td(days=offset))
+
+        # Lag BaOmer
+        self._add_holiday("Lag BaOmer", self._get_holiday("LAG_BAOMER"))
 
 
 class IL(Israel):

@@ -31,9 +31,10 @@ YEAR_TEMPLATE = "        {year}: ({dates}),"
 
 HEBREW_HOLIDAYS = (
     (1, 15, "PASSOVER"),
-    (2, 4, "MEMORIAL_DAY"),
+    (2, 5, "INDEPENDENCE_DAY"),
     (2, 18, "LAG_BAOMER"),
     (3, 6, "SHAVUOT"),
+    (5, 9, "TISHA_BAV"),
     (7, 1, "ROSH_HASHANAH"),
     (7, 10, "YOM_KIPPUR"),
     (7, 15, "SUKKOT"),
