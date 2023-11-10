@@ -118,7 +118,7 @@ class TestSlovakia(TestCase):
 
     def test_establishment_state_day(self):
         name = "Deň vzniku samostatného česko-slovenského štátu"
-        holidays = Slovakia(categories=(WORKDAY,), years=range(1993, 2050))
+        holidays = Slovakia(categories=WORKDAY, years=range(1993, 2050))
         self.assertHolidayName(name, holidays, (f"{year}-10-28" for year in range(2021, 2050)))
         self.assertNoHoliday(holidays, (f"{year}-10-28" for year in range(1993, 2021)))
         self.assertNoHolidayName(name, holidays, range(1993, 2021))
@@ -148,7 +148,7 @@ class TestSlovakia(TestCase):
 
     def test_workday_2021(self):
         self.assertHolidays(
-            Slovakia(categories=(WORKDAY,), years=2021),
+            Slovakia(categories=WORKDAY, years=2021),
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 

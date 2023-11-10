@@ -24,7 +24,7 @@ class TestTanzania(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Tanzania(years=1993))
-        self.assertNoHolidays(Tanzania(years=1993, categories=(BANK,)))
+        self.assertNoHolidays(Tanzania(years=1993, categories=BANK))
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -30,7 +30,7 @@ class TestIndonesia(TestCase):
 
     def test_special_government(self):
         self.assertHoliday(
-            Indonesia(categories=(GOVERNMENT,)),
+            Indonesia(categories=GOVERNMENT),
             "2022-04-29",
             "2022-05-04",
             "2022-05-05",

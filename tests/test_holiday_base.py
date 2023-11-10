@@ -99,7 +99,7 @@ class MarketStub2(EntityStub):
 
 class TestArgs(unittest.TestCase):
     def test_categories(self):
-        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories=("HOME",)))
+        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories="HOME"))
 
     def test_country(self):
         self.assertEqual(CountryStub1().country, "CS1")

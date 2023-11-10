@@ -26,7 +26,7 @@ class TestSouthKorea(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(SouthKorea(years=1947))
-        self.assertNoHolidays(SouthKorea(categories=(BANK,), years=1947))
+        self.assertNoHolidays(SouthKorea(categories=BANK, years=1947))
 
     def test_special_holidays(self):
         # Election Dates have its own separate checklists.
@@ -529,7 +529,7 @@ class TestSouthKorea(TestCase):
 
     def test_workers_day(self):
         name = "근로자의날"
-        holidays = SouthKorea(categories=(BANK,), years=range(1990, 2050))
+        holidays = SouthKorea(categories=BANK, years=range(1990, 2050))
         self.assertHolidayName(name, holidays, (f"{year}-03-10" for year in range(1990, 1994)))
         self.assertHolidayName(name, holidays, (f"{year}-05-01" for year in range(1994, 2050)))
         self.assertNoHoliday(holidays, "1993-05-01", "1994-03-10")

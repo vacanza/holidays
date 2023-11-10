@@ -10,8 +10,30 @@
 #  License: MIT (see LICENSE file)
 
 
+def _normalize_arguments(cls, value):
+    """Normalize arguments.
+
+    :param cls:
+        A type of arguments to normalize.
+
+    :param value:
+        Either a single item or an iterable of `cls` type.
+
+    :return:
+        A set created from `value` argument.
+
+    """
+    if isinstance(value, cls):
+        return {value}
+
+    return set(value) if value is not None else set()
+
+
 def _normalize_tuple(data):
     """Normalize tuple.
+
+    :param data:
+        Either a tuple or a tuple of tuples.
 
     :return:
         An unchanged object for tuple of tuples, e.g., ((JAN, 10), (DEC, 31)).

@@ -28,9 +28,9 @@ class TestJapan(TestCase):
         with self.assertRaises(NotImplementedError):
             Japan(years=2100)
         with self.assertRaises(NotImplementedError):
-            Japan(categories=(BANK,), years=1945)
+            Japan(categories=BANK, years=1945)
         with self.assertRaises(NotImplementedError):
-            Japan(categories=(BANK,), years=2100)
+            Japan(categories=BANK, years=2100)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1949, 2051))
@@ -730,7 +730,7 @@ class TestJapan(TestCase):
 
     def test_bank_holidays(self):
         name = "銀行休業日"
-        holidays = Japan(categories=(BANK,), years=range(1949, 2051))
+        holidays = Japan(categories=BANK, years=range(1949, 2051))
         for year in range(1949, 2051):
             self.assertHolidayName(
                 name, holidays, f"{year}-01-02", f"{year}-01-03", f"{year}-12-31"
