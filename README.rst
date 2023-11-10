@@ -490,7 +490,7 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - Japan
      - JP
      -
-     - en_US, **ja**
+     - en_US, **ja**, th
      - BANK, **PUBLIC**
    * - Kazakhstan
      - KZ
