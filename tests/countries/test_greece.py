@@ -98,7 +98,7 @@ class TestGreece(TestCase):
 
     def test_hal_day_2022(self):
         self.assertHolidays(
-            Greece(categories=(HALF_DAY,), years=2022),
+            Greece(categories=HALF_DAY, years=2022),
             ("2022-12-24", "Παραμονή Χριστουγέννων"),
             ("2022-12-31", "Παραμονή Πρωτοχρονιάς"),
         )

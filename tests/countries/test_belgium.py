@@ -72,7 +72,7 @@ class TestBelgium(TestCase):
 
     def test_bank_2022(self):
         self.assertHolidays(
-            Belgium(categories=(BANK,), years=2022),
+            Belgium(categories=BANK, years=2022),
             ("2022-04-15", "Goede Vrijdag"),
             ("2022-05-27", "Vrijdag na O. L. H. Hemelvaart"),
             ("2022-12-26", "Banksluitingsdag"),
