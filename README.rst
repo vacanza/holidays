@@ -606,7 +606,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - NL
      -
      - en_US, **nl**, uk
-     -
+     - OPTIONAL, **PUBLIC**
    * - New Zealand
      - NZ
      - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
