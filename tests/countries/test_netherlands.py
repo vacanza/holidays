@@ -108,7 +108,7 @@ class TestNetherlands(TestCase):
         )
 
     def test_liberation_day(self):
-        opt_holidays = Netherlands(categories=(OPTIONAL,), years=range(1980, 2050))
+        opt_holidays = Netherlands(categories=OPTIONAL, years=range(1980, 2050))
         name = "Bevrijdingsdag"
         self.assertHolidayName(
             name,
@@ -125,7 +125,7 @@ class TestNetherlands(TestCase):
         )
         self.assertHoliday(opt_holidays, (f"{year}-05-05" for year in range(1990, 2050)))
         self.assertNoHoliday(opt_holidays, "1944-05-05", "1971-05-05")
-        self.assertNoHolidayName(name, Netherlands(categories=(OPTIONAL,), years=(1944, 1971)))
+        self.assertNoHolidayName(name, Netherlands(categories=OPTIONAL, years=(1944, 1971)))
 
     def test_2017(self):
         self.assertHolidays(
@@ -155,7 +155,7 @@ class TestNetherlands(TestCase):
 
     def test_optional_2023(self):
         self.assertHolidays(
-            Netherlands(categories=(OPTIONAL,), years=2023),
+            Netherlands(categories=OPTIONAL, years=2023),
             ("2023-04-07", "Goede Vrijdag"),
             ("2023-05-05", "Bevrijdingsdag"),
         )
