@@ -190,6 +190,16 @@ class IslamicHolidays:
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
+    def _add_eid_al_fitr_eve(self, name) -> Set[date]:
+        """
+        Add Eid al-Fitr Eve (last day of 9th month of Islamic calendar).
+
+        https://en.wikipedia.org/wiki/Eid_al-Fitr
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=-1
+        )
+
     def _add_eid_al_ghadir_day(self, name) -> Set[date]:
         """
         Add Eid al-Ghadir Day (18th day of 12th month).

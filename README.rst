@@ -775,8 +775,8 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - Turkey
      - TR
      -
-     -
-     -
+     - en_US, **tr**, uk
+     - HALF_DAY, **PUBLIC**
    * - Ukraine
      - UA
      -
