@@ -19,7 +19,7 @@ class TestUruguay(TestCase):
     def setUpClass(cls):
         years = range(1920, 2050)
         super().setUpClass(Uruguay, years=years)
-        cls.bank_holidays = Uruguay(years=years, categories=(BANK,))
+        cls.bank_holidays = Uruguay(years=years, categories=BANK)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Uruguay, UY, URY)

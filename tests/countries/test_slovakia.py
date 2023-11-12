@@ -37,7 +37,7 @@ class TestSlovakia(TestCase):
 
     def test_epiphany(self):
         self.assertHolidayName(
-            "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
+            "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)",
             (f"{year}-01-06" for year in range(1993, 2050)),
         )
 
@@ -118,7 +118,7 @@ class TestSlovakia(TestCase):
 
     def test_establishment_state_day(self):
         name = "Deň vzniku samostatného česko-slovenského štátu"
-        holidays = Slovakia(categories=(WORKDAY,), years=range(1993, 2050))
+        holidays = Slovakia(categories=WORKDAY, years=range(1993, 2050))
         self.assertHolidayName(name, holidays, (f"{year}-10-28" for year in range(2021, 2050)))
         self.assertNoHoliday(holidays, (f"{year}-10-28" for year in range(1993, 2021)))
         self.assertNoHolidayName(name, holidays, range(1993, 2021))
@@ -129,7 +129,7 @@ class TestSlovakia(TestCase):
             ("2021-01-01", "Deň vzniku Slovenskej republiky"),
             (
                 "2021-01-06",
-                "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
+                "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)",
             ),
             ("2021-04-02", "Veľký piatok"),
             ("2021-04-05", "Veľkonočný pondelok"),
@@ -148,7 +148,7 @@ class TestSlovakia(TestCase):
 
     def test_workday_2021(self):
         self.assertHolidays(
-            Slovakia(categories=(WORKDAY,), years=2021),
+            Slovakia(categories=WORKDAY, years=2021),
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 
@@ -157,7 +157,7 @@ class TestSlovakia(TestCase):
             ("2022-01-01", "Deň vzniku Slovenskej republiky"),
             (
                 "2022-01-06",
-                "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
+                "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)",
             ),
             ("2022-04-15", "Veľký piatok"),
             ("2022-04-18", "Veľkonočný pondelok"),

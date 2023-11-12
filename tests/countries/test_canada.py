@@ -20,9 +20,9 @@ class TestCanada(TestCase):
         years = range(1867, 2050)
         super().setUpClass(Canada, years=years, years_non_observed=(range(2000, 2024)))
         cls.prov_hols = {prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions}
-        cls.gov_hols = CA(years=years, categories=(GOVERNMENT,))
+        cls.gov_hols = CA(years=years, categories=GOVERNMENT)
         cls.prov_opt_hols = {
-            prov: CA(subdiv=prov, years=years, categories=(OPTIONAL,)) for prov in CA.subdivisions
+            prov: CA(subdiv=prov, years=years, categories=OPTIONAL) for prov in CA.subdivisions
         }
 
     def test_country_aliases(self):
@@ -30,8 +30,8 @@ class TestCanada(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Canada(years=1866))
-        self.assertNoHolidays(Canada(years=1866, categories=(GOVERNMENT,)))
-        self.assertNoHolidays(Canada(years=1866, categories=(OPTIONAL,)))
+        self.assertNoHolidays(Canada(years=1866, categories=GOVERNMENT))
+        self.assertNoHolidays(Canada(years=1866, categories=OPTIONAL))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -106,7 +106,7 @@ class TestCanada(TestCase):
         self.assertNoHoliday(dts_sat, dts_sun)
         self.assertHolidayName(name_observed, self.gov_hols, dts_sat, dts_sun)
         self.assertNoNonObservedHoliday(
-            CA(observed=False, categories=(GOVERNMENT,)), dts_sat, dts_sun
+            CA(observed=False, categories=GOVERNMENT), dts_sat, dts_sun
         )
         for prov, holidays in self.prov_hols.items():
             if prov in {"AB", "BC", "QC"}:
@@ -175,15 +175,15 @@ class TestCanada(TestCase):
         self.assertNoNonObservedHoliday(dts_sat, dts_sun_with_boxing, dts_sun_without_boxing)
         self.assertHolidayName(name_observed, self.gov_hols, dts_sat, dts_sun_with_boxing)
         self.assertNoNonObservedHoliday(
-            CA(observed=False, categories=(GOVERNMENT,)),
+            CA(observed=False, categories=GOVERNMENT),
             dts_sat,
             dts_sun_with_boxing,
         )
         self.assertHolidayName(
-            name_observed, CA(categories=(OPTIONAL,)), dts_sat, dts_sun_with_boxing
+            name_observed, CA(categories=OPTIONAL), dts_sat, dts_sun_with_boxing
         )
         self.assertNoNonObservedHoliday(
-            CA(observed=False, categories=(OPTIONAL,)),
+            CA(observed=False, categories=OPTIONAL),
             dts_sat,
             dts_sun_with_boxing,
         )
@@ -237,7 +237,7 @@ class TestCanada(TestCase):
             "2029-10-01",
         )
         self.assertHolidayName(name_observed, self.gov_hols, dts)
-        self.assertNoNonObservedHoliday(CA(observed=False, categories=(GOVERNMENT,)), dts)
+        self.assertNoNonObservedHoliday(CA(observed=False, categories=GOVERNMENT), dts)
 
         start_years = {
             "AB": 2021,
@@ -259,7 +259,7 @@ class TestCanada(TestCase):
 
         self.assertHolidayName(
             name,
-            CA(subdiv="AB", categories=(OPTIONAL,)),
+            CA(subdiv="AB", categories=OPTIONAL),
             (f"{year}-09-30" for year in range(2021, 2050)),
         )
 
@@ -293,7 +293,7 @@ class TestCanada(TestCase):
                 self.assertNoHolidayName(name, holidays, dts)
 
         for prov in ("NB", "NL"):
-            self.assertHolidayName(name, CA(subdiv=prov, categories=(OPTIONAL,)), dts)
+            self.assertHolidayName(name, CA(subdiv=prov, categories=OPTIONAL), dts)
 
     def test_remembrance_day(self):
         name = "Remembrance Day"
@@ -314,7 +314,7 @@ class TestCanada(TestCase):
             "2023-11-13",
         )
         self.assertHolidayName(name_observed, self.gov_hols, dts)
-        self.assertNoNonObservedHoliday(CA(observed=False, categories=(GOVERNMENT,)), dts)
+        self.assertNoNonObservedHoliday(CA(observed=False, categories=GOVERNMENT), dts)
 
         for prov, holidays in self.prov_hols.items():
             if prov in {"AB", "BC", "NB", "NL", "NS", "NT", "NU", "PE", "SK", "YT"}:
@@ -337,7 +337,7 @@ class TestCanada(TestCase):
 
         self.assertHolidayName(
             name,
-            CA(subdiv="MB", categories=(OPTIONAL,)),
+            CA(subdiv="MB", categories=OPTIONAL),
             (f"{year}-11-11" for year in range(1931, 2050)),
         )
 
@@ -349,7 +349,7 @@ class TestCanada(TestCase):
             name, self.gov_hols, (f"{year}-12-26" for year in range(1867, 2050))
         )
 
-        opt_holidays = CA(years=range(1867, 2050), categories=(OPTIONAL,))
+        opt_holidays = CA(years=range(1867, 2050), categories=OPTIONAL)
         self.assertHolidayName(name, opt_holidays, (f"{year}-12-26" for year in range(1867, 2050)))
 
         dts = (
@@ -361,7 +361,7 @@ class TestCanada(TestCase):
             "2021-12-28",
         )
         self.assertHolidayName(name_observed, opt_holidays, dts)
-        self.assertNoNonObservedHoliday(CA(observed=False, categories=(OPTIONAL,)), dts)
+        self.assertNoNonObservedHoliday(CA(observed=False, categories=OPTIONAL), dts)
 
         dts = (
             "2004-12-28",
@@ -374,7 +374,7 @@ class TestCanada(TestCase):
         for prov in ("AB", "NB", "NL"):
             self.assertHolidayName(
                 name,
-                CA(subdiv=prov, categories=(OPTIONAL,)),
+                CA(subdiv=prov, categories=OPTIONAL),
                 (f"{year}-12-26" for year in range(1867, 2050)),
             )
 
@@ -476,12 +476,12 @@ class TestCanada(TestCase):
             self.assertNoHolidayName(name, holidays)
 
             if prov in {"AB", "QC"}:
-                self.assertHolidayName(name, CA(subdiv=prov, categories=(OPTIONAL,)), dts)
+                self.assertHolidayName(name, CA(subdiv=prov, categories=OPTIONAL), dts)
 
     def test_civic_holiday_ab(self):
         name = "Heritage Day"
         self.assertNoHolidayName(name, self.prov_hols["AB"])
-        ab_opt_holidays = CA(subdiv="AB", categories=(OPTIONAL,))
+        ab_opt_holidays = CA(subdiv="AB", categories=OPTIONAL)
         dts = (
             "1974-08-05",
             "1999-08-02",
@@ -517,7 +517,7 @@ class TestCanada(TestCase):
         self.assertNoHolidayName(old_name, self.prov_hols["MB"])
         self.assertNoHolidayName(new_name, self.prov_hols["MB"])
 
-        mb_opt_holidays = CA(subdiv="MB", categories=(OPTIONAL,))
+        mb_opt_holidays = CA(subdiv="MB", categories=OPTIONAL)
         dts = (
             "1900-08-06",
             "1999-08-02",
@@ -556,7 +556,7 @@ class TestCanada(TestCase):
     def test_civic_holiday_ns(self):
         name = "Natal Day"
         self.assertNoHolidayName(name, self.prov_hols["NS"])
-        ns_opt_holidays = CA(subdiv="NS", categories=(OPTIONAL,))
+        ns_opt_holidays = CA(subdiv="NS", categories=OPTIONAL)
         dts = (
             "1996-08-05",
             "1999-08-02",
@@ -574,7 +574,7 @@ class TestCanada(TestCase):
         name = "Civic Holiday"
         nt_holidays = self.prov_hols["NT"]
         nu_holidays = self.prov_hols["NU"]
-        on_opt_holidays = CA(subdiv="ON", categories=(OPTIONAL,))
+        on_opt_holidays = CA(subdiv="ON", categories=OPTIONAL)
         sk_holidays = self.prov_hols["SK"]
         dts = (
             "1900-08-06",
@@ -605,7 +605,7 @@ class TestCanada(TestCase):
     def test_st_patricks_day(self):
         name = "St. Patrick's Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
-        nl_opt_holidays = CA(subdiv="NL", categories=(OPTIONAL,))
+        nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
             "1900-03-19",
             "1999-03-15",
@@ -625,7 +625,7 @@ class TestCanada(TestCase):
     def test_st_georges_day(self):
         name = "St. George's Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
-        nl_opt_holidays = CA(subdiv="NL", categories=(OPTIONAL,))
+        nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
             "1990-04-23",
             "1999-04-26",
@@ -641,7 +641,7 @@ class TestCanada(TestCase):
     def test_discovery_day_nl(self):
         name = "Discovery Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
-        nl_opt_holidays = CA(subdiv="NL", categories=(OPTIONAL,))
+        nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
             "1997-06-23",
             "1999-06-21",
@@ -658,7 +658,7 @@ class TestCanada(TestCase):
     def test_orangemans_day(self):
         name = "Orangemen's Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
-        nl_opt_holidays = CA(subdiv="NL", categories=(OPTIONAL,))
+        nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
             "1900-07-09",
             "1999-07-12",
@@ -704,7 +704,7 @@ class TestCanada(TestCase):
         self.assertNoHolidayName(name)
         self.assertNoHoliday(f"{year}-07-09" for year in range(2001, 2050))
         self.assertNoHolidayName(name, self.prov_hols["NU"])
-        nu_opt_holidays = CA(subdiv="NU", categories=(OPTIONAL,))
+        nu_opt_holidays = CA(subdiv="NU", categories=OPTIONAL)
         self.assertNoHoliday(nu_opt_holidays, "1999-07-09", "2000-07-09")
         self.assertHoliday(nu_opt_holidays, "2000-04-01")
         self.assertHoliday(nu_opt_holidays, (f"{year}-07-09" for year in range(2001, 2050)))
@@ -738,7 +738,7 @@ class TestCanada(TestCase):
         name = "Heritage Day"
         self.assertNoHolidayName(name)
         self.assertNoHolidayName(name, self.prov_hols["YT"])
-        yt_opt_holidays = CA(subdiv="YT", categories=(OPTIONAL,))
+        yt_opt_holidays = CA(subdiv="YT", categories=OPTIONAL)
         dts = (
             "2017-02-24",
             "2018-02-23",
@@ -770,7 +770,7 @@ class TestCanada(TestCase):
 
     def test_government_2022(self):
         self.assertHolidays(
-            Canada(years=2022, categories=(GOVERNMENT,)),
+            Canada(years=2022, categories=GOVERNMENT),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (Observed)"),
             ("2022-04-15", "Good Friday"),
@@ -787,7 +787,7 @@ class TestCanada(TestCase):
 
     def test_optional_2022(self):
         self.assertHolidays(
-            Canada(years=2022, categories=(OPTIONAL,)),
+            Canada(years=2022, categories=OPTIONAL),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (Observed)"),

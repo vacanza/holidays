@@ -24,20 +24,20 @@ class TestLaos(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Laos(years=1975))
-        self.assertNoHolidays(Laos(years=1975, categories=(BANK,)))
-        self.assertNoHolidays(Laos(years=1975, categories=(SCHOOL,)))
-        self.assertNoHolidays(Laos(years=1975, categories=(WORKDAY,)))
+        self.assertNoHolidays(Laos(years=1975, categories=BANK))
+        self.assertNoHolidays(Laos(years=1975, categories=SCHOOL))
+        self.assertNoHolidays(Laos(years=1975, categories=WORKDAY))
 
     def test_special_bank_holiday(self):
         self.assertHoliday(
-            Laos(categories=(BANK,)),
+            Laos(categories=BANK),
             "2015-01-02",
             "2017-10-09",
         )
 
     def test_special_public_holiday(self):
         self.assertHoliday(
-            Laos(categories=(PUBLIC,)),
+            Laos(categories=PUBLIC),
             "2011-04-13",
             "2012-01-02",
             "2012-04-13",
@@ -59,13 +59,13 @@ class TestLaos(TestCase):
 
     def test_special_workday(self):
         self.assertHoliday(
-            Laos(categories=(WORKDAY,)),
+            Laos(categories=WORKDAY),
             "2019-07-22",
         )
 
     def test_2022_public_holiday(self):
         self.assertHolidays(
-            Laos(categories=(PUBLIC,), years=2022),
+            Laos(categories=PUBLIC, years=2022),
             ("2022-01-01", "ວັນປີໃໝ່ສາກົນ"),
             ("2022-01-03", "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"),
             ("2022-03-08", "ວັນແມ່ຍິງສາກົນ"),
@@ -80,7 +80,7 @@ class TestLaos(TestCase):
 
     def test_2023_public_holiday(self):
         self.assertHolidays(
-            Laos(categories=(PUBLIC,), years=2023),
+            Laos(categories=PUBLIC, years=2023),
             ("2023-01-01", "ວັນປີໃໝ່ສາກົນ"),
             ("2023-01-02", "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"),
             ("2023-03-08", "ວັນແມ່ຍິງສາກົນ"),
@@ -144,7 +144,7 @@ class TestLaos(TestCase):
     def test_2014_bank_holiday(self):
         # Dec 31 is Wednesday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2014),
+            Laos(categories=BANK, years=2014),
             ("2014-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2014-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2014-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -154,7 +154,7 @@ class TestLaos(TestCase):
     def test_2018_bank_holiday(self):
         # Dec 31 is Monday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2018),
+            Laos(categories=BANK, years=2018),
             ("2018-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2018-10-08", "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2018-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -165,7 +165,7 @@ class TestLaos(TestCase):
     def test_2019_bank_holiday(self):
         # Dec 31 is Tuesday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2019),
+            Laos(categories=BANK, years=2019),
             ("2019-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2019-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2019-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -175,7 +175,7 @@ class TestLaos(TestCase):
     def test_2020_bank_holiday(self):
         # Dec 31 is Thursday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2020),
+            Laos(categories=BANK, years=2020),
             ("2020-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2020-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2020-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -185,7 +185,7 @@ class TestLaos(TestCase):
     def test_2021_bank_holiday(self):
         # Dec 31 is Friday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2021),
+            Laos(categories=BANK, years=2021),
             ("2021-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2021-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2021-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -195,7 +195,7 @@ class TestLaos(TestCase):
     def test_2022_bank_holiday(self):
         # Dec 31 is Saturday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2022),
+            Laos(categories=BANK, years=2022),
             ("2022-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2022-12-28", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
             ("2022-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -205,7 +205,7 @@ class TestLaos(TestCase):
     def test_2023_bank_holiday(self):
         # Dec 31 is Sunday.
         self.assertHolidays(
-            Laos(categories=(BANK,), years=2023),
+            Laos(categories=BANK, years=2023),
             ("2023-10-07", "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2023-10-09", "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"),
             ("2023-12-27", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
@@ -216,7 +216,7 @@ class TestLaos(TestCase):
     def test_1993_school_holiday(self):
         # Prior to Adoption of National Teacher Day
         self.assertHolidays(
-            Laos(categories=(SCHOOL,), years=1993),
+            Laos(categories=SCHOOL, years=1993),
             ("1993-02-06", "ວັນບຸນມາຂະບູຊາ"),
             ("1993-05-05", "ວັນບຸນວິສາຂະບູຊາ"),
             ("1993-07-03", "ວັນບຸນເຂົ້າພັນສາ"),
@@ -229,7 +229,7 @@ class TestLaos(TestCase):
 
     def test_2022_school_holiday(self):
         self.assertHolidays(
-            Laos(categories=(SCHOOL,), years=2022),
+            Laos(categories=SCHOOL, years=2022),
             ("2022-02-16", "ວັນບຸນມາຂະບູຊາ"),
             ("2022-05-15", "ວັນບຸນວິສາຂະບູຊາ"),
             ("2022-07-13", "ວັນບຸນເຂົ້າພັນສາ"),
@@ -243,7 +243,7 @@ class TestLaos(TestCase):
 
     def test_2023_school_holiday(self):
         self.assertHolidays(
-            Laos(categories=(SCHOOL,), years=2023),
+            Laos(categories=SCHOOL, years=2023),
             ("2023-02-05", "ວັນບຸນມາຂະບູຊາ"),
             ("2023-05-04", "ວັນບຸນວິສາຂະບູຊາ"),
             ("2023-08-01", "ວັນບຸນເຂົ້າພັນສາ"),
@@ -258,7 +258,7 @@ class TestLaos(TestCase):
     def test_1988_workday(self):
         # Prior to National Arbor Day creation in 1989.
         self.assertHolidays(
-            Laos(categories=(WORKDAY,), years=1988),
+            Laos(categories=WORKDAY, years=1988),
             ("1988-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
             ("1988-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
             ("1988-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
@@ -273,7 +273,7 @@ class TestLaos(TestCase):
     def test_1990_workday(self):
         # Prior to Kaysone Phomvihane's Presidency and 1991 Constitution Adoption.
         self.assertHolidays(
-            Laos(categories=(WORKDAY,), years=1990),
+            Laos(categories=WORKDAY, years=1990),
             ("1990-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
             ("1990-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
             ("1990-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
@@ -289,7 +289,7 @@ class TestLaos(TestCase):
     def test_1996_workday(self):
         # Prior to 1997's Lao Wildlife Conservation Day Designation.
         self.assertHolidays(
-            Laos(categories=(WORKDAY,), years=1996),
+            Laos(categories=WORKDAY, years=1996),
             ("1996-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
             ("1996-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
             ("1996-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
@@ -307,7 +307,7 @@ class TestLaos(TestCase):
     def test_2017_workday(self):
         # Prior to 2018 International Children's Day is in `PUBLIC` category
         self.assertHolidays(
-            Laos(categories=(WORKDAY,), years=2017),
+            Laos(categories=WORKDAY, years=2017),
             ("2017-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
             ("2017-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
             ("2017-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),
@@ -330,7 +330,7 @@ class TestLaos(TestCase):
 
     def test_2022_workday(self):
         self.assertHolidays(
-            Laos(categories=(WORKDAY,), years=2022),
+            Laos(categories=WORKDAY, years=2022),
             ("2022-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
             ("2022-02-01", "ວັນສ້າງຕັ້ງສະຫະພັນກໍາມະບານລາວ"),
             ("2022-03-22", "ວັນສ້າງຕັ້ງພັກປະຊາຊົນປະຕິວັດລາວ"),

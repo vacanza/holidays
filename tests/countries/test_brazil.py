@@ -90,7 +90,7 @@ class TestBrazil(TestCase):
         self.assertNoHolidayName("Natal", range(1890, 1922))
 
     def test_optional_holidays(self):
-        holidays = Brazil(categories=(OPTIONAL,))
+        holidays = Brazil(categories=OPTIONAL)
         dt = (
             "2018-02-12",
             "2018-02-13",

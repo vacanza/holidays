@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.25\n"
 "POT-Creation-Date: 2023-05-10 17:13+0300\n"
-"PO-Revision-Date: 2023-05-10 17:15+0300\n"
+"PO-Revision-Date: 2023-11-10 15:16+0100\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: sk\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Deň vzniku Slovenskej republiky"
 msgstr ""
 
-msgid "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)"
+msgid "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)"
 msgstr ""
 
 #. Good Friday.

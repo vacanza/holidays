@@ -150,7 +150,7 @@ class TestBulgaria(TestCase):
         name = "Ден на народните будители"
         self.assertHolidayName(
             name,
-            Bulgaria(categories=(SCHOOL,), years=range(1990, 2050)),
+            Bulgaria(categories=SCHOOL, years=range(1990, 2050)),
             (f"{year}-11-01" for year in range(1990, 2050)),
         )
         self.assertNoHolidayName(name)
