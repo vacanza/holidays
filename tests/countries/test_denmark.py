@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import OPTIONAL
 from holidays.countries.denmark import Denmark, DK, DNK
 from tests.common import TestCase
 
@@ -52,6 +53,15 @@ class TestDenmark(TestCase):
             ("2022-12-26", "Anden juledag"),
         )
 
+    def test_2022_optional(self):
+        self.assertHolidays(
+            Denmark(categories=OPTIONAL, years=2022),
+            ("2022-05-01", "Arbejdernes kampdag"),
+            ("2022-06-05", "Grundlovsdag"),
+            ("2022-12-24", "Juleaftensdag"),
+            ("2022-12-31", "Nytårsaften"),
+        )
+
     def test_2024(self):
         # https://www.officeholidays.com/countries/denmark/2024
         self.assertNoHoliday("2024-04-26")
@@ -64,12 +74,15 @@ class TestDenmark(TestCase):
             ("2022-04-15", "Langfredag"),
             ("2022-04-17", "Påskedag"),
             ("2022-04-18", "Anden påskedag"),
+            ("2022-05-01", "Arbejdernes kampdag"),
             ("2022-05-13", "Store bededag"),
             ("2022-05-26", "Kristi himmelfartsdag"),
-            ("2022-06-05", "Pinsedag"),
+            ("2022-06-05", "Grundlovsdag; Pinsedag"),
             ("2022-06-06", "Anden pinsedag"),
+            ("2022-12-24", "Juleaftensdag"),
             ("2022-12-25", "Juledag"),
             ("2022-12-26", "Anden juledag"),
+            ("2022-12-31", "Nytårsaften"),
         )
 
     def test_l10n_en_us(self):
@@ -80,12 +93,15 @@ class TestDenmark(TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "International Workers' Day"),
             ("2022-05-13", "Great Prayer Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
+            ("2022-06-05", "Constitution Day; Whit Sunday"),
             ("2022-06-06", "Whit Monday"),
+            ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
@@ -96,10 +112,13 @@ class TestDenmark(TestCase):
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
             ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День праці"),
             ("2022-05-13", "День загальної молитви"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
+            ("2022-06-05", "День Конституції; Трійця"),
             ("2022-06-06", "День Святого Духа"),
+            ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
+            ("2022-12-31", "Переддень Нового року"),
         )

@@ -346,7 +346,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - DK
      -
      - **da**, en_US, uk
-     -
+     - OPTIONAL, **PUBLIC**
    * - Djibouti
      - DJ
      -
