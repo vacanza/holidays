@@ -153,7 +153,7 @@ class TestNetherlands(TestCase):
             ("2020-12-26", "Tweede Kerstdag"),
         )
 
-    def test_optional_2023(self):
+    def test_2023_optional(self):
         self.assertHolidays(
             Netherlands(categories=OPTIONAL, years=2023),
             ("2023-04-07", "Goede Vrijdag"),
