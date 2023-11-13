@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-04-09 13:45+0300\n"
-"PO-Revision-Date: 2023-04-09 13:53+0300\n"
+"PO-Revision-Date: 2023-11-12 16:36+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -59,3 +59,19 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "Anden juledag"
 msgstr "Другий день Різдва"
+
+#. International Workers' Day.
+msgid "Arbejdernes kampdag"
+msgstr "День праці"
+
+#. Constitution Day.
+msgid "Grundlovsdag"
+msgstr "День Конституції"
+
+#. Christmas Eve.
+msgid "Juleaftensdag"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+msgid "Nytårsaften"
+msgstr "Переддень Нового року"

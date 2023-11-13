@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import OPTIONAL
 from holidays.countries.netherlands import Netherlands, NL, NLD
 from tests.common import TestCase
 
@@ -107,7 +108,11 @@ class TestNetherlands(TestCase):
         )
 
     def test_liberation_day(self):
-        self.assertHoliday(
+        opt_holidays = Netherlands(categories=OPTIONAL, years=range(1980, 2050))
+        name = "Bevrijdingsdag"
+        self.assertHolidayName(
+            name,
+            opt_holidays,
             "1945-05-05",
             "1950-05-05",
             "1955-05-05",
@@ -117,21 +122,14 @@ class TestNetherlands(TestCase):
             "1975-05-05",
             "1980-05-05",
             "1985-05-05",
-            "1990-05-05",
-            "1995-05-05",
-            "2000-05-05",
-            "2005-05-05",
-            "2010-05-05",
-            "2015-05-05",
-            "2020-05-05",
         )
-        self.assertNoHoliday("1944-05-05", "1971-05-05", "2022-05-05")
-        self.assertNoHolidayName("Bevrijdingsdag", Netherlands(years=(1944, 1971, 2022)))
+        self.assertHoliday(opt_holidays, (f"{year}-05-05" for year in range(1990, 2050)))
+        self.assertNoHoliday(opt_holidays, "1944-05-05", "1971-05-05")
+        self.assertNoHolidayName(name, Netherlands(categories=OPTIONAL, years=(1944, 1971)))
 
     def test_2017(self):
         self.assertHolidays(
             ("2017-01-01", "Nieuwjaarsdag"),
-            ("2017-04-14", "Goede Vrijdag"),
             ("2017-04-16", "Eerste paasdag"),
             ("2017-04-17", "Tweede paasdag"),
             ("2017-04-27", "Koningsdag"),
@@ -145,16 +143,21 @@ class TestNetherlands(TestCase):
     def test_2020(self):
         self.assertHolidays(
             ("2020-01-01", "Nieuwjaarsdag"),
-            ("2020-04-10", "Goede Vrijdag"),
             ("2020-04-12", "Eerste paasdag"),
             ("2020-04-13", "Tweede paasdag"),
             ("2020-04-27", "Koningsdag"),
-            ("2020-05-05", "Bevrijdingsdag"),
             ("2020-05-21", "Hemelvaartsdag"),
             ("2020-05-31", "Eerste Pinksterdag"),
             ("2020-06-01", "Tweede Pinksterdag"),
             ("2020-12-25", "Eerste Kerstdag"),
             ("2020-12-26", "Tweede Kerstdag"),
+        )
+
+    def test_2023_optional(self):
+        self.assertHolidays(
+            Netherlands(categories=OPTIONAL, years=2023),
+            ("2023-04-07", "Goede Vrijdag"),
+            ("2023-05-05", "Bevrijdingsdag"),
         )
 
     def test_l10n_default(self):
@@ -164,6 +167,7 @@ class TestNetherlands(TestCase):
             ("2022-04-17", "Eerste paasdag"),
             ("2022-04-18", "Tweede paasdag"),
             ("2022-04-27", "Koningsdag"),
+            ("2022-05-05", "Bevrijdingsdag"),
             ("2022-05-26", "Hemelvaartsdag"),
             ("2022-06-05", "Eerste Pinksterdag"),
             ("2022-06-06", "Tweede Pinksterdag"),
@@ -179,6 +183,7 @@ class TestNetherlands(TestCase):
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-27", "King's Day"),
+            ("2022-05-05", "Liberation Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
             ("2022-06-06", "Whit Monday"),
@@ -194,6 +199,7 @@ class TestNetherlands(TestCase):
             ("2022-04-17", "Великдень"),
             ("2022-04-18", "Великодній понеділок"),
             ("2022-04-27", "День короля"),
+            ("2022-05-05", "День визволення"),
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-06-05", "Трійця"),
             ("2022-06-06", "День Святого Духа"),
