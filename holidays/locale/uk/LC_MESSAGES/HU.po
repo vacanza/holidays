@@ -80,6 +80,7 @@ msgstr "День визволення"
 msgid "A nagy októberi szocialista forradalom ünnepe"
 msgstr "День Великої Жовтневої соціалістичної революції"
 
+#. Substituted date format.
 msgid "%Y. %m. %d."
 msgstr "%d.%m.%Y"
 

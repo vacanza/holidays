@@ -130,6 +130,7 @@ class HUN(Hungary):
 
 
 class HungaryStaticHolidays:
+    # Substituted date format.
     substituted_date_format = tr("%Y. %m. %d.")
     # Day off (substituted from %s).
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")

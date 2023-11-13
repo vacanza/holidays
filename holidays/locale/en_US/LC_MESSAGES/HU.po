@@ -80,6 +80,7 @@ msgstr "Liberation Day"
 msgid "A nagy októberi szocialista forradalom ünnepe"
 msgstr "Great October Socialist Revolution Day"
 
+#. Substituted date format.
 msgid "%Y. %m. %d."
 msgstr "%m/%d/%Y"
 
