@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
-"PO-Revision-Date: 2023-11-12 18:57+0200\n"
+"PO-Revision-Date: 2023-11-14 12:56+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,6 +14,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*tahmini)"
+msgstr "%s* (*estimated)"
 
 #. New Year's Day.
 msgid "Yılbaşı"
