@@ -9,12 +9,12 @@ flexible as possible.
 
 :PyPI:
     .. image:: https://img.shields.io/pypi/dm/holidays?color=%2341B5BE
-        :target: https://pypi.python.org/pypi/holidays
-        :alt: downloads
+        :target: https://pypi.org/project/holidays
+        :alt: Downloads
 
     .. image:: https://img.shields.io/pypi/v/holidays?label=version&color=%2341B5BE
-        :target: https://pypi.python.org/pypi/holidays
-        :alt: PyPI - Version
+        :target: https://pypi.org/project/holidays
+        :alt: PyPI version
 
     .. image:: https://img.shields.io/github/release-date/vacanza/python-holidays?color=%2341B5BE
         :target: https://github.com/vacanza/python-holidays/releases
@@ -22,12 +22,12 @@ flexible as possible.
 
 :CI/CD:
     .. image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?color=%2341BE4A
-        :alt: Tests Status
-        :target: actions
+        :alt: CI/CD status
+        :target: https://github.com/vacanza/python-holidays/actions
 
     .. image:: https://img.shields.io/readthedocs/python-holidays?color=%2341BE4A
         :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
+        :alt: Documentation status
 
 :Code:
     .. image:: https://img.shields.io/github/license/vacanza/python-holidays?color=%2341B5BE
@@ -35,15 +35,16 @@ flexible as possible.
         :alt: License
 
     .. image:: https://img.shields.io/pypi/pyversions/holidays?label=python&color=%2341B5BE
-        :target: https://pypi.python.org/pypi/holidays
+        :target: https://pypi.org/project/holidays
         :alt: Python supported versions
 
     .. image:: https://img.shields.io/badge/code%20style-black-%252333F93C0?label=style&color=%2341B5BE
         :target: https://github.com/psf/black
-        :alt: style
+        :alt: Code style
 
     .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=master&color=%2341B5BE
         :target: https://coveralls.io/r/vacanza/python-holidays
+        :alt: Code coverage
 
 
 :GitHub:
@@ -61,7 +62,7 @@ flexible as possible.
 
     .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/beta?color=%2341BE4A
         :target: https://github.com/vacanza/python-holidays/commits/beta
-        :alt: GitHub last commit (branch)
+        :alt: GitHub last commit
 
 
 Install
