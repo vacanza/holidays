@@ -11,46 +11,53 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, TUE_TO_PREV_MON, THU_TO_NEXT_FRI
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.holiday_base import HolidayBase
 
 
-class Hungary(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
     Codification dates:
-      - https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek  # noqa
+      - https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek
       - https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839
+
+    Substituted holidays official sources:
+    2010 - https://njt.hu/jogszabaly/2009-20-20-1X
+    2011 - https://njt.hu/jogszabaly/2010-7-20-2X
+    2012 - https://njt.hu/jogszabaly/2011-39-20-2X
+    2012-2013 - https://njt.hu/jogszabaly/2012-28-20-2X
+    2014 - https://njt.hu/jogszabaly/2013-33-20-2X
+    2015 - https://njt.hu/jogszabaly/2014-28-20-2X
+    2016 - https://njt.hu/jogszabaly/2015-18-20-2X
+    2018 - https://njt.hu/jogszabaly/2017-61-B0-15
+    2019 - https://njt.hu/jogszabaly/2018-6-20-53
+    2020 - https://njt.hu/jogszabaly/2019-7-20-53
+    2021 - https://njt.hu/jogszabaly/2020-14-20-7Q
+    2022 - https://njt.hu/jogszabaly/2021-23-20-7Q
+    2024 - https://njt.hu/jogszabaly/2023-15-20-8P
     """
 
     country = "HU"
     default_language = "hu"
-    # Day off before
-    observed_label_before = tr("%s előtti pihenőnap")
-    # Day off after
-    observed_label = tr("%s utáni pihenőnap")
     supported_languages = ("en_US", "hu", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        kwargs.setdefault("observed_rule", TUE_TO_PREV_MON + THU_TO_NEXT_FRI)
-        kwargs.setdefault("observed_since", 2010)
+        StaticHolidays.__init__(self, HungaryStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        name = self.tr("Újév")
-        jan_1 = self._add_new_years_day(name)
-        if year >= 2014:
-            self._add_observed(jan_1)
-            self._add_observed(self._next_year_new_years_day, name=name)
+        self._add_new_years_day(self.tr("Újév"))
 
         if 1945 <= year <= 1950 or year >= 1989:
             # National Day.
-            self._add_observed(self._add_holiday_mar_15(tr("Nemzeti ünnep")))
+            self._add_holiday_mar_15(tr("Nemzeti ünnep"))
 
         if year >= 2017:
             # Good Friday.
@@ -73,37 +80,33 @@ class Hungary(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1946:
             # Labor Day.
             name = tr("A Munka ünnepe")
-            self._add_observed(self._add_labor_day(name))
+            self._add_labor_day(name)
             if 1950 <= year <= 1953:
                 self._add_labor_day_two(name)
 
-        self._add_observed(
-            self._add_holiday_aug_20(
-                # Bread Day.
-                tr("A kenyér ünnepe")
-                if 1950 <= year <= 1989
-                else
-                # State Foundation Day.
-                tr("Az államalapítás ünnepe"),
-            )
+        self._add_holiday_aug_20(
+            # Bread Day.
+            tr("A kenyér ünnepe")
+            if 1950 <= year <= 1989
+            else
+            # State Foundation Day.
+            tr("Az államalapítás ünnepe"),
         )
 
         if year >= 1991:
             # National Day.
-            self._add_observed(self._add_holiday_oct_23(tr("Nemzeti ünnep")))
+            self._add_holiday_oct_23(tr("Nemzeti ünnep"))
 
         if year >= 1999:
             # All Saints' Day.
-            self._add_observed(self._add_all_saints_day(tr("Mindenszentek")))
+            self._add_all_saints_day(tr("Mindenszentek"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Karácsony"))
 
         if year != 1955:
             # Second Day of Christmas.
-            dec_26 = self._add_christmas_day_two(tr("Karácsony másnapja"))
-            if year >= 2013:
-                self._add_observed(dec_26, rule=THU_TO_NEXT_FRI)
+            self._add_christmas_day_two(tr("Karácsony másnapja"))
 
         # Soviet era.
         if 1950 <= year <= 1989:
@@ -124,3 +127,71 @@ class HU(Hungary):
 
 class HUN(Hungary):
     pass
+
+
+class HungaryStaticHolidays:
+    # Substituted date format.
+    substituted_date_format = tr("%Y. %m. %d.")
+    # Day off (substituted from %s).
+    substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
+    substituted_holidays = {
+        2010: (DEC, 11, DEC, 24),
+        2011: (
+            (MAR, 19, MAR, 14),
+            (NOV, 5, OCT, 31),
+        ),
+        2012: (
+            (MAR, 24, MAR, 16),
+            (APR, 21, APR, 30),
+            (OCT, 27, OCT, 22),
+            (NOV, 10, NOV, 2),
+            (DEC, 15, DEC, 24),
+            (DEC, 1, DEC, 31),
+        ),
+        2013: (
+            (AUG, 24, AUG, 19),
+            (DEC, 7, DEC, 24),
+            (DEC, 21, DEC, 27),
+        ),
+        2014: (
+            (MAY, 10, MAY, 2),
+            (OCT, 18, OCT, 24),
+            (DEC, 13, DEC, 24),
+        ),
+        2015: (
+            (JAN, 10, JAN, 2),
+            (AUG, 8, AUG, 21),
+            (DEC, 12, DEC, 24),
+        ),
+        2016: (
+            (MAR, 5, MAR, 14),
+            (OCT, 15, OCT, 31),
+        ),
+        2018: (
+            (MAR, 10, MAR, 16),
+            (APR, 21, APR, 30),
+            (OCT, 13, OCT, 22),
+            (NOV, 10, NOV, 2),
+            (DEC, 1, DEC, 24),
+            (DEC, 15, DEC, 31),
+        ),
+        2019: (
+            (AUG, 10, AUG, 19),
+            (DEC, 7, DEC, 24),
+            (DEC, 14, DEC, 27),
+        ),
+        2020: (
+            (AUG, 29, AUG, 21),
+            (DEC, 12, DEC, 24),
+        ),
+        2021: (DEC, 11, DEC, 24),
+        2022: (
+            (MAR, 26, MAR, 14),
+            (OCT, 15, OCT, 31),
+        ),
+        2024: (
+            (AUG, 3, AUG, 19),
+            (DEC, 7, DEC, 24),
+            (DEC, 14, DEC, 27),
+        ),
+    }
