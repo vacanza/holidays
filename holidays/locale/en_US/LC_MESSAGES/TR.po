@@ -60,13 +60,13 @@ msgstr "Victory Day"
 msgid "Cumhuriyet Bayramı"
 msgstr "Republic Day"
 
-#. Ramadan Feast.
+#. Eid al-Fitr.
 msgid "Ramazan Bayramı"
-msgstr "Ramadan Feast"
+msgstr "Eid al-Fitr"
 
-#. Sacrifice Feast.
+#. Eid al-Adha.
 msgid "Kurban Bayramı"
-msgstr "Sacrifice Feast"
+msgstr "Eid al-Adha"
 
 #, c-format
 msgid "%s (saat 13.00'ten)"

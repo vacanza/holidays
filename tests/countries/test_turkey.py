@@ -80,7 +80,7 @@ class TestTurkey(TestCase):
             (f"{year}-10-28" for year in range(1936, 2050)),
         )
 
-    def test_ramadan_feast(self):
+    def test_eid_al_fitr(self):
         name = "Ramazan Bayramı"
         half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
         name_half_day = f"{name} (saat 13.00'ten)"
@@ -99,7 +99,7 @@ class TestTurkey(TestCase):
             self.assertHolidayName(name, dt, dt + td(days=+1), dt + td(days=+2))
             self.assertHolidayName(name_half_day, half_day_holidays, dt + td(days=-1))
 
-    def test_sacrifice_feast(self):
+    def test_eid_al_adha(self):
         name = "Kurban Bayramı"
         half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
         name_half_day = f"{name} (saat 13.00'ten)"
@@ -169,17 +169,17 @@ class TestTurkey(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
-            ("2023-04-20", "Ramadan Feast (from 1pm)"),
-            ("2023-04-21", "Ramadan Feast"),
-            ("2023-04-22", "Ramadan Feast"),
-            ("2023-04-23", "National Sovereignty and Children's Day; Ramadan Feast"),
+            ("2023-04-20", "Eid al-Fitr (from 1pm)"),
+            ("2023-04-21", "Eid al-Fitr"),
+            ("2023-04-22", "Eid al-Fitr"),
+            ("2023-04-23", "Eid al-Fitr; National Sovereignty and Children's Day"),
             ("2023-05-01", "Labour and Solidarity Day"),
             ("2023-05-19", "Commemoration of Atatürk, Youth and Sports Day"),
-            ("2023-06-27", "Sacrifice Feast (from 1pm)"),
-            ("2023-06-28", "Sacrifice Feast"),
-            ("2023-06-29", "Sacrifice Feast"),
-            ("2023-06-30", "Sacrifice Feast"),
-            ("2023-07-01", "Sacrifice Feast"),
+            ("2023-06-27", "Eid al-Adha (from 1pm)"),
+            ("2023-06-28", "Eid al-Adha"),
+            ("2023-06-29", "Eid al-Adha"),
+            ("2023-06-30", "Eid al-Adha"),
+            ("2023-07-01", "Eid al-Adha"),
             ("2023-07-15", "Democracy and National Unity Day"),
             ("2023-08-30", "Victory Day"),
             ("2023-10-28", "Republic Day (from 1pm)"),

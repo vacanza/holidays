@@ -61,11 +61,11 @@ msgstr ""
 msgid "Cumhuriyet Bayramı"
 msgstr ""
 
-#. Ramadan Feast.
+#. Eid al-Fitr.
 msgid "Ramazan Bayramı"
 msgstr ""
 
-#. Sacrifice Feast.
+#. Eid al-Adha.
 msgid "Kurban Bayramı"
 msgstr ""
 

@@ -88,13 +88,13 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         if self._year <= 1980:
             self._add_holiday_oct_30(name)
 
-        # Ramadan Feast.
+        # Eid al-Fitr.
         name = tr("Ramazan Bayramı")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        # Sacrifice Feast.
+        # Eid al-Adha.
         name = tr("Kurban Bayramı")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
@@ -110,10 +110,10 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         # Republic Day.
         self._add_holiday_oct_28(begin_time_label % self.tr("Cumhuriyet Bayramı"))
 
-        # Ramadan Feast.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_eve(begin_time_label % self.tr("Ramazan Bayramı"))
 
-        # Sacrifice Feast.
+        # Eid al-Adha.
         self._add_arafah_day(begin_time_label % self.tr("Kurban Bayramı"))
 
 
