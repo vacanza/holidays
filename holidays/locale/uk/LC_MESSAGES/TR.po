@@ -1,0 +1,77 @@
+# Turkey holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.37\n"
+"POT-Creation-Date: 2023-11-12 18:52+0200\n"
+"PO-Revision-Date: 2023-11-14 12:55+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*tahmini)"
+msgstr "%s* (*орієнтовно)"
+
+#. New Year's Day.
+msgid "Yılbaşı"
+msgstr "Новий рік"
+
+#. National Sovereignty and Children's Day.
+msgid "Ulusal Egemenlik ve Çocuk Bayramı"
+msgstr "День національної незалежності та дітей"
+
+#. National Sovereignty Day.
+msgid "Ulusal Egemenlik Bayramı"
+msgstr "День національної незалежності"
+
+#. Labour and Solidarity Day.
+msgid "Emek ve Dayanışma Günü"
+msgstr "День праці та солідарності"
+
+#. Commemoration of Atatürk, Youth and Sports Day.
+msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
+msgstr "День вшанування памʼяті Ататюрка, молоді та спорту"
+
+#. Youth and Sports Day.
+msgid "Gençlik ve Spor Bayramı"
+msgstr "День молоді та спорту"
+
+#. Freedom and Constitution Day.
+msgid "Hürriyet ve Anayasa Bayramı"
+msgstr "День Свободи та Конституції"
+
+#. Democracy and National Unity Day.
+msgid "Demokrasi ve Millî Birlik Günü"
+msgstr "День демократії та національної єдності"
+
+#. Victory Day.
+msgid "Zafer Bayramı"
+msgstr "День Перемоги"
+
+#. Republic Day.
+msgid "Cumhuriyet Bayramı"
+msgstr "День Республіки"
+
+#. Eid al-Fitr.
+msgid "Ramazan Bayramı"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Kurban Bayramı"
+msgstr "Курбан-байрам"
+
+#, c-format
+msgid "%s (saat 13.00'ten)"
+msgstr "%s (з 13:00)"
+
+#. Public holiday.
+msgid "Genel tati̇l"
+msgstr "Загальний вихідний"
