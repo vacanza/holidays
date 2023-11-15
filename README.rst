@@ -22,8 +22,8 @@ flexible as possible.
 
 :CI/CD:
     .. image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?color=%2341BE4A
-        :alt: CI/CD status
         :target: https://github.com/vacanza/python-holidays/actions
+        :alt: CI/CD status
 
     .. image:: https://img.shields.io/readthedocs/python-holidays?color=%2341BE4A
         :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
