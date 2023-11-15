@@ -73,9 +73,8 @@ class TestTurkey(TestCase):
         self.assertHolidayName(name, (f"{year}-10-29" for year in range(1936, 2050)))
         self.assertHolidayName(name, (f"{year}-10-30" for year in range(1936, 1981)))
 
-        name_half_day = f"{name} (saat 13.00'ten)"
         self.assertHolidayName(
-            name_half_day,
+            f"{name} (saat 13.00'ten)",
             Turkey(categories=HALF_DAY, years=range(1936, 2050)),
             (f"{year}-10-28" for year in range(1936, 2050)),
         )
@@ -83,7 +82,6 @@ class TestTurkey(TestCase):
     def test_eid_al_fitr(self):
         name = "Ramazan Bayramı"
         half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
-        name_half_day = f"{name} (saat 13.00'ten)"
         for ymd in (
             (2000, 1, 8),
             (2000, 12, 27),
@@ -97,12 +95,11 @@ class TestTurkey(TestCase):
         ):
             dt = date(*ymd)
             self.assertHolidayName(name, dt, dt + td(days=+1), dt + td(days=+2))
-            self.assertHolidayName(name_half_day, half_day_holidays, dt + td(days=-1))
+            self.assertHolidayName(f"{name} (saat 13.00'ten)", half_day_holidays, dt + td(days=-1))
 
     def test_eid_al_adha(self):
         name = "Kurban Bayramı"
         half_day_holidays = Turkey(categories=HALF_DAY, years=range(1936, 2050))
-        name_half_day = f"{name} (saat 13.00'ten)"
         for ymd in (
             (2006, 1, 10),
             (2006, 12, 31),
@@ -116,7 +113,7 @@ class TestTurkey(TestCase):
         ):
             dt = date(*ymd)
             self.assertHolidayName(name, dt, dt + td(days=+1), dt + td(days=+2), dt + td(days=+3))
-            self.assertHolidayName(name_half_day, half_day_holidays, dt + td(days=-1))
+            self.assertHolidayName(f"{name} (saat 13.00'ten)", half_day_holidays, dt + td(days=-1))
 
     def test_2022(self):
         self.assertHolidays(
