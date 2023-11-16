@@ -39,18 +39,12 @@ class NewYorkStockExchange(
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _add_observed_holiday(self, name, *args) -> None:
-        dt = date(self._year, *args)
-        is_obs, _ = self._add_observed(dt, name)
-        if not is_obs:
-            self._add_holiday(name, dt)
-
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year Day.
+        # New Year's Day.
         name = "New Year's Day"
-        self._add_observed_holiday("New Year's Day", JAN, 1)
+        self._move_holiday(self._add_new_years_day(name))
         self._add_observed(self._next_year_new_years_day, name)
 
         # MLK, 3rd Monday of January.
@@ -59,12 +53,12 @@ class NewYorkStockExchange(
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
         if 1896 <= year <= 1953 or year == 1968:
-            self._add_observed_holiday("Lincoln's Birthday", FEB, 12)
+            self._move_holiday(self._add_holiday_feb_12("Lincoln's Birthday"))
 
         # WASHINGTON'S BIRTHDAY: Feb 22 (obs) until 1971, then 3rd Mon of Feb
         name = "Washington's Birthday"
         if year <= 1970:
-            self._add_observed_holiday(name, FEB, 22)
+            self._move_holiday(self._add_holiday_feb_22(name))
         else:
             self._add_holiday_3rd_mon_of_feb(name)
 
@@ -77,20 +71,20 @@ class NewYorkStockExchange(
         if year >= 1873:
             name = "Memorial Day"
             if year <= 1970:
-                self._add_observed_holiday(name, MAY, 30)
+                self._move_holiday(self._add_holiday_may_30(name))
             else:
                 self._add_holiday_last_mon_of_may(name)
 
         # FLAG DAY: June 14th 1916 - 1953
         if 1916 <= year <= 1953:
-            self._add_observed_holiday("Flag Day", JUN, 14)
+            self._move_holiday(self._add_holiday_jun_14("Flag Day"))
 
         # JUNETEENTH: since 2022
         if year >= 2022:
-            self._add_observed_holiday("Juneteenth National Independence Day", JUN, 19)
+            self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
-        self._add_observed_holiday("Independence Day", JUL, 4)
+        self._move_holiday(self._add_holiday_jul_4("Independence Day"))
 
         # LABOR DAY - first mon in Sept, since 1887
         if year >= 1887:
@@ -98,7 +92,7 @@ class NewYorkStockExchange(
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
         if 1909 <= year <= 1953:
-            self._add_observed_holiday("Columbus Day", OCT, 12)
+            self._move_holiday(self._add_columbus_day("Columbus Day"))
 
         # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
@@ -107,13 +101,13 @@ class NewYorkStockExchange(
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
         if year in {1918, 1921} or 1934 <= year <= 1953:
-            self._add_observed_holiday("Veteran's Day", NOV, 11)
+            self._move_holiday(self._add_remembrance_day("Veteran's Day"))
 
         # THXGIVING DAY: 4th Thurs in Nov - closed every year
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
         # XMAS DAY: Dec 25th - every year
-        self._add_observed_holiday("Christmas Day", DEC, 25)
+        self._move_holiday(self._add_christmas_day("Christmas Day"))
 
         # Special holidays.
         if year == 1914:
