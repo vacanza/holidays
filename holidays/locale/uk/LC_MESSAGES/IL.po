@@ -29,7 +29,7 @@ msgstr "Суккот"
 
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
-msgstr "Симхат Тора / Восьмий день зборів"
+msgstr "Сімхат Тора / Восьмий день зборів"
 
 #. Pesach (Passover).
 msgid "פסח"
@@ -73,7 +73,7 @@ msgstr "День Єрусалиму"
 
 #. Tisha B'Av (Tisha B'Av, fast).
 msgid "תשעה באב"
-msgstr "Тиша Бе Ав"
+msgstr "Тиша Бе-Ав"
 
 #. Hanukkah.
 msgid "חנוכה"
@@ -81,7 +81,7 @@ msgstr "Ханука"
 
 #. Ta`anit Ester (Fast of Esther).
 msgid "תענית אסתר"
-msgstr "Таніт Естер"
+msgstr "Тааніт-Естер"
 
 #. Lag Ba'omer (Lag BaOmer).
 msgid "ל\"ג בעומר"
