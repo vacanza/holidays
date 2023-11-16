@@ -20,6 +20,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class EntityStub(HolidayBase):
+    _has_special = True
+    _has_substituted = True
     special_holidays = {
         1111: (JAN, 1, "Test holiday"),
         2222: (FEB, 2, "Test holiday"),
@@ -924,6 +926,7 @@ class TestStr(unittest.TestCase):
 
 class TestSubstitutedHolidays(unittest.TestCase):
     class SubstitutedHolidays(HolidayBase):
+        _has_substituted = True
         country = "HB"
         substituted_holidays = {
             1991: (

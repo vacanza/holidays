@@ -19,5 +19,9 @@ class StaticHolidays:
 
     def __init__(self, cls) -> None:
         for attribute_name in cls.__dict__.keys():
-            if attribute_name.startswith("special_") or attribute_name.startswith("substituted_"):
+            if attribute_name.startswith("special_"):
                 setattr(self, attribute_name, getattr(cls, attribute_name))
+                self._has_special = True
+            elif attribute_name.startswith("substituted_"):
+                setattr(self, attribute_name, getattr(cls, attribute_name))
+                self._has_substituted = True
