@@ -229,7 +229,7 @@ class HolidayBase(Dict[date, str]):
     """Country weekend days."""
     default_language: Optional[str] = None
     """The entity language used by default."""
-    categories: Optional[Set[str]] = None
+    categories: Set[str] = set()
     """Requested holiday categories."""
     supported_categories: Set[str] = set()
     """All holiday categories supported by this entity."""
@@ -750,28 +750,29 @@ class HolidayBase(Dict[date, str]):
         # Populate substituted holidays.
         self._add_substituted_holidays()
 
-    def _add_special_holidays(self):
+    def _get_special_holidays_names(self):
         # Check for general special holidays.
-        special_holidays_mapping_names = ["special_holidays"]
+        mapping_names = ["special_holidays"]
 
         # Check subdivision specific special holidays.
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            special_holidays_mapping_names.append(f"special_{subdiv}_holidays")
+            mapping_names.append(f"special_{subdiv}_holidays")
 
         # Check category specific special holidays (both general and per subdivision).
         for category in sorted(self.categories):
-            special_holidays_mapping_names.append(f"special_{category}_holidays")
+            mapping_names.append(f"special_{category}_holidays")
             if self.subdiv is not None:
-                special_holidays_mapping_names.append(f"special_{subdiv}_{category}_holidays")
+                mapping_names.append(f"special_{subdiv}_{category}_holidays")
 
-        for mapping_name in special_holidays_mapping_names:
-            special_holidays_mapping = getattr(self, mapping_name, None)
-            if special_holidays_mapping:
-                for month, day, name in _normalize_tuple(
-                    special_holidays_mapping.get(self._year, ())
-                ):
-                    self._add_holiday(name, date(self._year, month, day))
+        return mapping_names
+
+    def _add_special_holidays(self):
+        for mapping_name in self._get_special_holidays_names():
+            for month, day, name in _normalize_tuple(
+                getattr(self, mapping_name, {}).get(self._year, ())
+            ):
+                self._add_holiday(name, date(self._year, month, day))
 
     def _add_category_holidays(self):
         for category in sorted(self.categories):
