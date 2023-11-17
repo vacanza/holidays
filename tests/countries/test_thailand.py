@@ -31,7 +31,7 @@ class TestThailand(TestCase):
         self.assertNoHolidays(Thailand(years=1940, categories=WORKDAY))
 
     def test_special_holidays(self):
-        self.assertHoliday(
+        dt = (
             # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
             "1992-05-18",
             "1992-12-07",
@@ -64,7 +64,6 @@ class TestThailand(TestCase):
             "2006-06-12",
             "2006-06-13",
             "2006-09-20",
-            "2007-12-24",
             "2009-01-02",
             "2009-04-10",
             "2009-04-16",
@@ -89,9 +88,6 @@ class TestThailand(TestCase):
             "2016-10-14",
             "2017-10-26",
             "2019-05-06",
-            "2020-07-27",
-            "2020-09-04",
-            "2020-09-07",
             "2020-11-19",
             "2020-11-20",
             "2020-12-11",
@@ -106,6 +102,14 @@ class TestThailand(TestCase):
             "2023-07-31",
             "2023-12-29",
         )
+        dt_observed = (
+            "2007-12-24",
+            "2020-07-27",
+            "2020-09-04",
+            "2020-09-07",
+        )
+        self.assertHoliday(dt, dt_observed)
+        self.assertNoNonObservedHoliday(Thailand(observed=False), dt_observed)
 
     def test_2022_all(self):
         self.assertHolidays(
