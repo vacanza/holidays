@@ -13,24 +13,10 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
+from typing import Dict, Set
 
 from holidays.calendars import _CustomChineseHolidays
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    SAT,
-    SUN,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -38,7 +24,11 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_WORKDAY,
+    SUN_TO_NEXT_WORKDAY,
+)
 
 
 class SouthKorea(
@@ -87,65 +77,43 @@ class SouthKorea(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2014)
         super().__init__(*args, **kwargs)
 
-    def _add_alt_holiday(
-        self, dt: date, name: str = "", since: int = 2014, include_sat: bool = True
-    ) -> None:
-        """
-        Add alternative holiday on first day from the date provided
-        that's not already a another holiday nor a weekend.
-
-        :param dt:
-           The date of the holiday.
-
-        :param name:
-           The name of the holiday.
-
-        :param since:
-           Year starting from which alt holiday should be added
-
-        :param include_sat:
-           Whether Saturday is to be considered a weekend in addition to
-           Sunday.
-        """
-        if not self.observed:
-            return None
-
-        target_weekday = {SUN}
-        if include_sat:
-            target_weekday.add(SAT)
-        if (dt.weekday() in target_weekday or len(self.get_list(dt)) > 1) and dt.year >= since:
-            obs_date = dt + td(days=+1)
-            while obs_date.weekday() in target_weekday or obs_date in self:
-                obs_date += td(days=+1)
-            for name in (name,) if name else self.get_list(dt):
-                if "Alternative holiday" not in name:
+    def _populate_observed(self, dts: Set[date], spec_holidays: Dict[date, str]) -> None:
+        for dt in sorted(dts.union(spec_holidays.keys())):
+            if not self._is_observed(dt):
+                continue
+            rule = SUN_TO_NEXT_WORKDAY if dt in spec_holidays else SAT_SUN_TO_NEXT_WORKDAY
+            obs_date = self._get_observed_date(dt, rule)
+            if obs_date != dt or len(self.get_list(dt)) > 1:
+                if obs_date == dt:
+                    obs_date = self._get_next_workday(dt)
+                names = [spec_holidays[dt]] if dt in spec_holidays else self.get_list(dt)
+                for name in names:
                     self._add_holiday(self.tr(self.observed_label) % self.tr(name), obs_date)
 
-    def _add_three_day_holiday(self, dt: date, name: str) -> None:
-        """
-        Add holiday for the date before and after the given holiday date.
-
-        :param dt:
-           The date of the holiday.
-
-        :param name:
-           The name of the holiday.
-        """
-        for dt_alt in (
-            # The day preceding %s.
-            self._add_holiday(self.tr("%s 전날") % self.tr(name), dt + td(days=-1)),
-            dt,
-            # The second day of %s.
-            self._add_holiday(self.tr("%s 다음날") % self.tr(name), dt + td(days=+1)),
-        ):
-            self._add_alt_holiday(dt_alt, name=name, include_sat=False)  # type: ignore[arg-type]
-
     def _populate_public_holidays(self):
+        def _append_observed(dt: date, since: int):
+            if self._year >= since:
+                dts_observed.add(dt)
+
+        def _add_three_day_holiday(dt: date, name: str):
+            for dt_alt in (
+                # The day preceding %s.
+                self._add_holiday(self.tr("%s 전날") % self.tr(name), dt + td(days=-1)),
+                dt,
+                # The second day of %s.
+                self._add_holiday(self.tr("%s 다음날") % self.tr(name), dt + td(days=+1)),
+            ):
+                three_days_holidays[dt_alt] = self.tr(name)
+
         if self._year <= 1947:
             return None
+
+        dts_observed = set()
+        three_days_holidays = {}
 
         # Fixed Date Holidays.
 
@@ -167,12 +135,12 @@ class SouthKorea(
             )
             korean_new_year = self._add_chinese_new_years_day(name)
             if self._year >= 1989:
-                self._add_three_day_holiday(korean_new_year, name)
+                _add_three_day_holiday(korean_new_year, name)
 
         # Independence Movement Day.
         mar_1 = self._add_holiday_mar_1(tr("삼일절"))
         # mar_1 is used later for Presidential Election Day.
-        self._add_alt_holiday(mar_1, since=2022)
+        _append_observed(mar_1, 2022)
 
         if 1949 <= self._year <= 2005 and self._year != 1960:
             # Tree Planting Day.
@@ -186,34 +154,34 @@ class SouthKorea(
                 # Buddha's Birthday.
                 else tr("석가탄신일")
             )
-            self._add_alt_holiday(self._add_chinese_birthday_of_buddha(name), since=2023)
+            _append_observed(self._add_chinese_birthday_of_buddha(name), 2023)
 
         if self._year >= 1975:
             # Children's Day.
-            self._add_alt_holiday(self._add_holiday_may_5(tr("어린이날")), since=2015)
+            _append_observed(self._add_holiday_may_5(tr("어린이날")), 2015)
 
         if self._year >= 1956:
             # Memorial Day.
             jun_6 = self._add_holiday_jun_6(tr("현충일"))
-            # jun_6 is  used later for Local Election Day.
+            # jun_6 is used later for Local Election Day.
 
         if self._year <= 2007:
             # Constitution Day.
             self._add_holiday_jul_17(tr("제헌절"))
 
         # Liberation Day.
-        self._add_alt_holiday(self._add_holiday_aug_15(tr("광복절")), since=2021)
+        _append_observed(self._add_holiday_aug_15(tr("광복절")), 2021)
 
         if 1976 <= self._year <= 1990:
             # Armed Forces Day.
             self._add_holiday_oct_1(tr("국군의 날"))
 
         # National Foundation Day.
-        self._add_alt_holiday(self._add_holiday_oct_3(tr("개천절")), since=2021)
+        _append_observed(self._add_holiday_oct_3(tr("개천절")), 2021)
 
         if self._year <= 1990 or self._year >= 2013:
             # Hangul Day.
-            self._add_alt_holiday(self._add_holiday_oct_9(tr("한글날")), since=2021)
+            _append_observed(self._add_holiday_oct_9(tr("한글날")), 2021)
 
         if 1950 <= self._year <= 1975:
             # United Nations Day.
@@ -225,10 +193,10 @@ class SouthKorea(
         if 1986 <= self._year <= 1988:
             self._add_mid_autumn_festival_day_two(self.tr("%s 다음날") % self.tr(name))
         elif self._year >= 1989:
-            self._add_three_day_holiday(chuseok, name)
+            _add_three_day_holiday(chuseok, name)
 
         # Christmas Day.
-        self._add_alt_holiday(self._add_christmas_day(tr("기독탄신일")), since=2023)
+        _append_observed(self._add_christmas_day(tr("기독탄신일")), 2023)
 
         # Election Days since Sep 2006; excluding the 2017 Special Presidential Election Day.
 
@@ -283,6 +251,9 @@ class SouthKorea(
                 self._add_holiday_2nd_wed_of_jun(name)
             else:
                 self._add_holiday_1st_wed_of_jun(name)
+
+        if self.observed:
+            self._populate_observed(dts_observed, three_days_holidays)
 
     def _populate_bank_holidays(self):
         if self._year <= 1947:
