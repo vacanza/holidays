@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.27\n"
+"Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-06-12 19:06+0300\n"
-"PO-Revision-Date: 2023-06-12 20:10+0300\n"
+"PO-Revision-Date: 2023-11-10 22:16+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -15,16 +15,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. Day off before
-#, c-format
-msgid "%s előtti pihenőnap"
-msgstr "%s (вихідний за день до)"
-
-#. Day off after
-#, c-format
-msgid "%s utáni pihenőnap"
-msgstr "%s (вихідний після)"
 
 #. New Year's Day.
 msgid "Újév"
@@ -89,3 +79,12 @@ msgstr "День визволення"
 #. Great October Socialist Revolution Day.
 msgid "A nagy októberi szocialista forradalom ünnepe"
 msgstr "День Великої Жовтневої соціалістичної революції"
+
+#. Substituted date format.
+msgid "%Y. %m. %d."
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Pihenőnap (%s-től helyettesítve)"
+msgstr "Вихідний день (перенесено з %s)"
