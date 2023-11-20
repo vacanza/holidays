@@ -1,7 +1,23 @@
 Version 0.37
 ============
 
-Released ???????? ??, ????
+Released November 20, 2023
+
+- Update Japan holidays: add th localization (#1545 by @PPsyrius)
+- Fix Brazil subdivisions holidays (#1562 by @KJhellico)
+- Update Denmark holidays: add holiday categories (#1555 by @KJhellico)
+- Update Hungary holidays: add substituted holidays (#1551 by @KJhellico)
+- Update Israel holidays (#1541 by @KJhellico)
+- Update Netherlands holidays: add holiday categories (#1552 by @KJhellico)
+- Update Slovakia holidays (#1546 by @jose1711)
+- Update South Korea holidays, add l10n support (#1536 by @PPsyrius)
+- Update Spain holidays in 2024 (#1537 by @KJhellico)
+- Update Turkey holidays: add holiday categories and l10n support (#1556 by @KJhellico)
+- Update Ukraine holidays (#1547 by @KJhellico)
+- Update badges in README (#1544 by @kasya)
+- Add `_next_year_new_years_day` to InternationalHolidays (#1539 by @KJhellico)
+- Extend HolidayBase::categories to accept a single value (#1550 by @arkid15r)
+- Migrate NYSE holidays to ObservedHolidayBase (#1548 by @KJhellico)
 
 Version 0.36
 ============
