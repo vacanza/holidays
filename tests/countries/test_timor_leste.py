@@ -24,12 +24,12 @@ class TestTimorLeste(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(TimorLeste(years=2005))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=(GOVERNMENT,)))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=(WORKDAY,)))
+        self.assertNoHolidays(TimorLeste(years=2005, categories=GOVERNMENT))
+        self.assertNoHolidays(TimorLeste(years=2005, categories=WORKDAY))
 
     def test_special_government_holidays(self):
         self.assertHoliday(
-            TimorLeste(categories=(GOVERNMENT,)),
+            TimorLeste(categories=GOVERNMENT),
             "2010-11-03",
             "2010-12-24",
             "2010-12-31",
@@ -120,7 +120,7 @@ class TestTimorLeste(TestCase):
 
     def test_2011_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2011),
+            TimorLeste(categories=PUBLIC, years=2011),
             ("2011-01-01", "Dia de Ano Novo"),
             ("2011-04-22", "Sexta-Feira Santa"),
             ("2011-05-01", "Dia Mundial do Trabalhador"),
@@ -143,7 +143,7 @@ class TestTimorLeste(TestCase):
 
     def test_2012_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2012),
+            TimorLeste(categories=PUBLIC, years=2012),
             ("2012-01-01", "Dia de Ano Novo"),
             ("2012-04-06", "Sexta-Feira Santa"),
             ("2012-05-01", "Dia Mundial do Trabalhador"),
@@ -166,7 +166,7 @@ class TestTimorLeste(TestCase):
 
     def test_2013_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2013),
+            TimorLeste(categories=PUBLIC, years=2013),
             ("2013-01-01", "Dia de Ano Novo"),
             ("2013-03-29", "Sexta-Feira Santa"),
             ("2013-05-01", "Dia Mundial do Trabalhador"),
@@ -189,7 +189,7 @@ class TestTimorLeste(TestCase):
 
     def test_2014_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2014),
+            TimorLeste(categories=PUBLIC, years=2014),
             ("2014-01-01", "Dia de Ano Novo"),
             ("2014-04-18", "Sexta-Feira Santa"),
             ("2014-05-01", "Dia Mundial do Trabalhador"),
@@ -212,7 +212,7 @@ class TestTimorLeste(TestCase):
 
     def test_2015_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2015),
+            TimorLeste(categories=PUBLIC, years=2015),
             ("2015-01-01", "Dia de Ano Novo"),
             ("2015-04-03", "Sexta-Feira Santa"),
             ("2015-05-01", "Dia Mundial do Trabalhador"),
@@ -235,7 +235,7 @@ class TestTimorLeste(TestCase):
 
     def test_2016_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2016),
+            TimorLeste(categories=PUBLIC, years=2016),
             ("2016-01-01", "Dia de Ano Novo"),
             ("2016-03-25", "Sexta-Feira Santa"),
             ("2016-05-01", "Dia Mundial do Trabalhador"),
@@ -258,7 +258,7 @@ class TestTimorLeste(TestCase):
 
     def test_2017_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2017),
+            TimorLeste(categories=PUBLIC, years=2017),
             ("2017-01-01", "Dia de Ano Novo"),
             ("2017-03-03", "Dia dos Veteranos"),
             ("2017-04-14", "Sexta-Feira Santa"),
@@ -283,7 +283,7 @@ class TestTimorLeste(TestCase):
 
     def test_2018_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2018),
+            TimorLeste(categories=PUBLIC, years=2018),
             ("2018-01-01", "Dia de Ano Novo"),
             ("2018-03-03", "Dia dos Veteranos"),
             ("2018-03-30", "Sexta-Feira Santa"),
@@ -308,7 +308,7 @@ class TestTimorLeste(TestCase):
 
     def test_2019_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2019),
+            TimorLeste(categories=PUBLIC, years=2019),
             ("2019-01-01", "Dia de Ano Novo"),
             ("2019-03-03", "Dia dos Veteranos"),
             ("2019-04-19", "Sexta-Feira Santa"),
@@ -333,7 +333,7 @@ class TestTimorLeste(TestCase):
 
     def test_2020_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2020),
+            TimorLeste(categories=PUBLIC, years=2020),
             ("2020-01-01", "Dia de Ano Novo"),
             ("2020-03-03", "Dia dos Veteranos"),
             ("2020-04-10", "Sexta-Feira Santa"),
@@ -358,7 +358,7 @@ class TestTimorLeste(TestCase):
 
     def test_2021_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2021),
+            TimorLeste(categories=PUBLIC, years=2021),
             ("2021-01-01", "Dia de Ano Novo"),
             ("2021-03-03", "Dia dos Veteranos"),
             ("2021-04-02", "Sexta-Feira Santa"),
@@ -383,7 +383,7 @@ class TestTimorLeste(TestCase):
 
     def test_2022_public(self):
         self.assertHolidays(
-            TimorLeste(categories=(PUBLIC,), years=2022),
+            TimorLeste(categories=PUBLIC, years=2022),
             ("2022-01-01", "Dia de Ano Novo"),
             ("2022-03-03", "Dia dos Veteranos"),
             ("2022-04-15", "Sexta-Feira Santa"),
@@ -408,7 +408,7 @@ class TestTimorLeste(TestCase):
 
     def test_2022_workday(self):
         self.assertHolidays(
-            TimorLeste(categories=(WORKDAY,), years=2022),
+            TimorLeste(categories=WORKDAY, years=2022),
             ("2022-03-02", "Quarta-Feira de Cinzas"),
             ("2022-04-14", "Quinta-Feira Santa"),
             ("2022-05-26", "Dia da Ascensão de Jesus Cristo ao Céu"),
@@ -423,7 +423,7 @@ class TestTimorLeste(TestCase):
 
     def test_2023_workday(self):
         self.assertHolidays(
-            TimorLeste(categories=(WORKDAY,), years=2023),
+            TimorLeste(categories=WORKDAY, years=2023),
             ("2023-02-22", "Quarta-Feira de Cinzas"),
             ("2023-04-06", "Quinta-Feira Santa"),
             ("2023-05-18", "Dia da Ascensão de Jesus Cristo ao Céu"),

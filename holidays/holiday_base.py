@@ -35,8 +35,9 @@ from holidays.calendars.gregorian import (
     _get_nth_weekday_of_month,
 )
 from holidays.constants import HOLIDAY_NAME_DELIMITER, ALL_CATEGORIES, PUBLIC
-from holidays.helpers import _normalize_tuple
+from holidays.helpers import _normalize_arguments, _normalize_tuple
 
+CategoryArg = Union[str, Iterable[str]]
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
@@ -44,6 +45,7 @@ SubstitutedHoliday = Union[
     Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]],
     Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
 ]
+YearArg = Union[int, Iterable[int]]
 
 
 class HolidayBase(Dict[date, str]):
@@ -236,14 +238,14 @@ class HolidayBase(Dict[date, str]):
 
     def __init__(
         self,
-        years: Optional[Union[int, Iterable[int]]] = None,
+        years: Optional[YearArg] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
-        categories: Optional[Tuple[str]] = None,
+        categories: Optional[CategoryArg] = None,
     ) -> None:
         """
         :param years:
@@ -282,11 +284,11 @@ class HolidayBase(Dict[date, str]):
         """
         super().__init__()
 
+        self.categories = _normalize_arguments(str, categories or {PUBLIC})
         self.expand = expand
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = set(categories) if categories else {PUBLIC}
 
         self.tr = gettext  # Default translation method.
 
@@ -317,7 +319,9 @@ class HolidayBase(Dict[date, str]):
                     DeprecationWarning,
                 )
 
-            unknown_categories = self.categories.difference(ALL_CATEGORIES)
+            unknown_categories = self.categories.difference(  # type: ignore[union-attr]
+                ALL_CATEGORIES
+            )
             if len(unknown_categories) > 0:
                 raise NotImplementedError(
                     f"Category is not supported: {', '.join(unknown_categories)}."
@@ -333,11 +337,7 @@ class HolidayBase(Dict[date, str]):
                 )
                 self.tr = translator.gettext
 
-        if isinstance(years, int):
-            self.years = {years}
-        else:
-            self.years = set(years) if years is not None else set()
-
+        self.years = _normalize_arguments(int, years)
         for year in self.years:
             self._populate(year)
 

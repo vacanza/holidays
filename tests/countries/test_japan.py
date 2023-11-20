@@ -28,9 +28,9 @@ class TestJapan(TestCase):
         with self.assertRaises(NotImplementedError):
             Japan(years=2100)
         with self.assertRaises(NotImplementedError):
-            Japan(categories=(BANK,), years=1945)
+            Japan(categories=BANK, years=1945)
         with self.assertRaises(NotImplementedError):
-            Japan(categories=(BANK,), years=2100)
+            Japan(categories=BANK, years=2100)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1949, 2051))
@@ -730,7 +730,7 @@ class TestJapan(TestCase):
 
     def test_bank_holidays(self):
         name = "銀行休業日"
-        holidays = Japan(categories=(BANK,), years=range(1949, 2051))
+        holidays = Japan(categories=BANK, years=range(1949, 2051))
         for year in range(1949, 2051):
             self.assertHolidayName(
                 name, holidays, f"{year}-01-02", f"{year}-01-03", f"{year}-12-31"
@@ -781,4 +781,28 @@ class TestJapan(TestCase):
             ("2022-11-03", "Culture Day"),
             ("2022-11-23", "Labor Thanksgiving Day"),
             ("2022-12-31", "Bank Holiday"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-02", "วันหยุดธนาคาร"),
+            ("2022-01-03", "วันหยุดธนาคาร"),
+            ("2022-01-10", "วันฉลองบรรลุนิติภาวะ"),
+            ("2022-02-11", "วันชาติญี่ปุ่น"),
+            ("2022-02-23", "วันคล้ายวันพระราชสมภพ สมเด็จพระจักรพรรดินารุฮิโตะ"),
+            ("2022-03-21", "วันวสันตวิษุวัต"),
+            ("2022-04-29", "วันโชวะ"),
+            ("2022-05-03", "วันรัฐธรรมนูญ"),
+            ("2022-05-04", "วันพฤกษชาติ"),
+            ("2022-05-05", "วันเด็กแห่งชาติ"),
+            ("2022-07-18", "วันแห่งทะเล"),
+            ("2022-08-11", "วันแห่งภูเขา"),
+            ("2022-09-19", "วันเคารพผู้สูงอายุ"),
+            ("2022-09-23", "วันศารทวิษุวัต"),
+            ("2022-10-10", "วันกีฬาแห่งชาติ"),
+            ("2022-11-03", "วันวัฒนธรรม"),
+            ("2022-11-23", "วันขอบคุณแรงงาน"),
+            ("2022-12-31", "วันหยุดธนาคาร"),
         )

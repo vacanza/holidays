@@ -1,0 +1,208 @@
+# South Korea holidays th localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.37\n"
+"POT-Creation-Date: 2023-10-26 23:49+0700\n"
+"PO-Revision-Date: 2023-10-26 23:54+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Alternative holiday for %s.
+#, c-format
+msgid "%s 대체 휴일"
+msgstr "ชดเชย%s"
+
+#. The day preceding %s.
+#, c-format
+msgid "%s 전날"
+msgstr "วันก่อน%s"
+
+#. The second day of %s.
+#, c-format
+msgid "%s 다음날"
+msgstr "วันหลัง%s"
+
+#. New Year's Day.
+msgid "신정연휴"
+msgstr "วันปีใหม่สากล"
+
+#. Korean New Year.
+msgid "설날"
+msgstr "เทศกาลซอลลัล"
+
+#. Folk Day.
+msgid "민속의 날"
+msgstr "วันเทศกาลพื้นบ้าน"
+
+#. Independence Movement Day.
+msgid "삼일절"
+msgstr "วันอิสรภาพ"
+
+#. Tree Planting Day.
+msgid "식목일"
+msgstr "วันปลูกต้นไม้"
+
+#. Buddha's Birthday.
+msgid "부처님오신날"
+msgstr "วันวิสาขบูชา"
+
+#. Buddha's Birthday.
+msgid "석가탄신일"
+msgstr "วันประสูติของพระพุทธเจ้า"
+
+#. Children's Day.
+msgid "어린이날"
+msgstr "วันเด็ก"
+
+#. Memorial Day.
+msgid "현충일"
+msgstr "วันรำลึกวีรชน"
+
+#. Constitution Day.
+msgid "제헌절"
+msgstr "วันรัฐธรรมนูญ"
+
+#. Liberation Day.
+msgid "광복절"
+msgstr "วันฉลองอิสรภาพ"
+
+#. Armed Forces Day.
+msgid "국군의 날"
+msgstr "วันกองทัพ"
+
+#. National Foundation Day.
+msgid "개천절"
+msgstr "วันสถาปนาประเทศ"
+
+#. Hangul Day.
+msgid "한글날"
+msgstr "วันฮันกึล"
+
+#. United Nations Day.
+msgid "국제연합일"
+msgstr "วันสหประชาชาติ"
+
+#. Chuseok.
+msgid "추석"
+msgstr "เทศกาลชูซอก"
+
+#. Christmas Day.
+msgid "기독탄신일"
+msgstr "วันคริสต์มาส"
+
+#. National Assembly Election Day.
+msgid "국회의원 선거일"
+msgstr "วันเลือกตั้งสมัชชาแห่งชาติ"
+
+#. Presidential Election Day.
+msgid "대통령 선거일"
+msgstr "วันเลือกตั้งประธานาธิบดี"
+
+#. Local Election Day.
+msgid "지방선거일"
+msgstr "วันเลือกตั้งท้องถิ่น"
+
+#. Workers' Day.
+msgid "근로자의날"
+msgstr "วันแรงงาน"
+
+#. Temporary Public Holiday.
+msgid "임시공휴일"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
+
+#. Presidential Inauguration Day.
+msgid "대통령 취임식"
+msgstr "วันสาบานตนประธานาธิบดี"
+
+#. National Conference for Unification Election Day.
+msgid "통일주체국민회의 선거일"
+msgstr "วันเลือกตั้งสมัชชาแห่งชาติเพื่อการรวมชาติ"
+
+#. Yushin Constitution Referendum Day.
+msgid "유신헌법 국민투표일"
+msgstr "วันลงประชามติแก้ไขรัฐธรรมนูญฉบับยูชิน"
+
+#. May 16 Military Coup d'Etat Anniversary.
+msgid "5.16 군사혁명 기념일"
+msgstr "วันครบรอบการรัฐประหาร 16 พ.ค."
+
+#. April 19 Revolution Anniversary.
+msgid "4.19 혁명 기념일"
+msgstr "วันครบรอบการปฏิวัติ 19 เม.ย."
+
+#. President Syngman Rhee's Birthday.
+msgid "이승만 대통령 탄신일"
+msgstr "วันคล้ายวันเกิดประธานาธิบดี อี ซึง-มัน"
+
+#. Republic of Korea's United Nations Recognition Celebrations.
+msgid "국제연합의 대한민국 정부 승인 경축 국민대회"
+msgstr "เฉลิมฉลองการยอมรับของรัฐบาลสาธารณรัฐเกาหลีโดยสหประชาชาติ"
+
+#. Anniversary of the 1st National Assembly Election.
+msgid "5.10 제헌의회선거 1주년 기념일"
+msgstr "ครบรอบ 1 ปีการเลือกตั้งสมัชชาแห่งชาติ"
+
+#. Baekbeom Kim Ku's Funeral Ceremony.
+msgid "백범 김구 선생 국민장 영결식"
+msgstr "พิธีศพ แพ็กบ็อม คิม กู"
+
+#. Vice Presidential Election.
+msgid "부통령 선거일"
+msgstr "วันเลือกตั้งรองประธานาธิบดี"
+
+#. Sabang Day.
+msgid "사방의 날"
+msgstr "วันซาบัง"
+
+#. New Government Celebration Day.
+msgid "신정부 경축의 날"
+msgstr "วันเฉลิมฉลองรัฐบาลใหม่"
+
+#. Commemoration of the Apollo 11 Moon Landing.
+msgid "아폴로 11호 달 착륙 기념"
+msgstr "วันรำลึกการลงจอดบนดวงจันทร์สำเร็จของยานอะพอลโล 11"
+
+#. Third-term Constitutional Referendum Day.
+msgid "삼선 헌법 개정 국민투표일"
+msgstr "วันลงประชามติแก้ไขรัฐธรรมนูญเรื่องการเข้ารับตำแหน่งสมัยที่ 3"
+
+#. First Lady Yuk Young-soo's Funeral Ceremony.
+msgid "대통령 영부인 육영수 여사 국민장 영결식"
+msgstr "พิธีศพสุภาพสตรีหมายเลขหนึ่ง ยุก ย็อง-ซู"
+
+#. President Park Chung Hee's Funeral Ceremony.
+msgid "박정희 대통령 국장 영결식"
+msgstr "พิธีศพประธานาธิบดี พัก จ็อง-ฮี"
+
+#. 5th Republic Constitutional Referendum Day.
+msgid "제5공화국 헌법 개정 국민투표일"
+msgstr "วันลงประชามติแก้ไขรัฐธรรมนูญของสาธารณรัฐเกาหลีที่ห้า"
+
+#. Electoral College Election Day.
+msgid "선거를 위한 선거인단 선일"
+msgstr "วันเลือกตั้งคณะผู้เลือกตั้ง"
+
+#. 6th Republic Constitutional Referendum Day.
+msgid "제6공화국 헌법 개정 국민투표일"
+msgstr "วันลงประชามติแก้ไขรัฐธรรมนูญของสาธารณรัฐเกาหลีที่หก"
+
+#. 1988 Seoul Olympics Opening Ceremony.
+msgid "1988 서울 올림픽 개막식"
+msgstr "พิธีเปิดโอลิมปิกฤดูร้อน 1988 โซล"
+
+#. 2002 FIFA World Cup National Team Semi-Finals Celebrations.
+msgid "2002년 한일 월드컵 대표팀 4강 진출"
+msgstr "ฉลองทีมชาติเกาหลีเข้ารอบฟุตบอลโลก 2002 รอบรองชนะเลิศ"
+
+#. Joint Memorial Service for Fallen Soldiers.
+msgid "전몰군인 합동위령제"
+msgstr "วันร่วมรำลึกทหารที่เสียชีวิต"

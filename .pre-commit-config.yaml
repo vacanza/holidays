@@ -13,7 +13,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/python/black
-    rev: 23.10.1
+    rev: 23.11.0
     hooks:
       - id: black
         exclude: ^(docs)
@@ -35,7 +35,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.6.1
+    rev: v1.7.0
     hooks:
       - id: mypy
         additional_dependencies: [types-all]

@@ -179,35 +179,47 @@ class TestHungary(TestCase):
         self.assertNoHoliday(f"{year}-11-07" for year in years_absent)
         self.assertNoHolidayName(name, years_absent)
 
-    def test_additional_day_off(self):
+    def test_substituted(self):
         dt = (
+            "2010-12-24",
             "2011-03-14",
             "2011-10-31",
             "2012-03-16",
             "2012-04-30",
             "2012-10-22",
             "2012-11-02",
+            "2012-12-24",
+            "2012-12-31",
             "2013-08-19",
+            "2013-12-24",
             "2013-12-27",
             "2014-05-02",
             "2014-10-24",
+            "2014-12-24",
             "2015-01-02",
             "2015-08-21",
+            "2015-12-24",
             "2016-03-14",
             "2016-10-31",
             "2018-03-16",
             "2018-04-30",
             "2018-10-22",
             "2018-11-02",
+            "2018-12-24",
             "2018-12-31",
             "2019-08-19",
+            "2019-12-24",
             "2019-12-27",
             "2020-08-21",
+            "2020-12-24",
+            "2021-12-24",
             "2022-03-14",
             "2022-10-31",
+            "2024-08-19",
+            "2024-12-24",
+            "2024-12-27",
         )
         self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_2021(self):
         self.assertHolidays(
@@ -223,6 +235,7 @@ class TestHungary(TestCase):
             ("2021-08-20", "Az államalapítás ünnepe"),
             ("2021-10-23", "Nemzeti ünnep"),
             ("2021-11-01", "Mindenszentek"),
+            ("2021-12-24", "Pihenőnap (2021. 12. 11.-től helyettesítve)"),
             ("2021-12-25", "Karácsony"),
             ("2021-12-26", "Karácsony másnapja"),
         )
@@ -230,7 +243,7 @@ class TestHungary(TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Újév"),
-            ("2022-03-14", "Nemzeti ünnep előtti pihenőnap"),
+            ("2022-03-14", "Pihenőnap (2022. 03. 26.-től helyettesítve)"),
             ("2022-03-15", "Nemzeti ünnep"),
             ("2022-04-15", "Nagypéntek"),
             ("2022-04-17", "Húsvét"),
@@ -240,7 +253,7 @@ class TestHungary(TestCase):
             ("2022-06-06", "Pünkösdhétfő"),
             ("2022-08-20", "Az államalapítás ünnepe"),
             ("2022-10-23", "Nemzeti ünnep"),
-            ("2022-10-31", "Mindenszentek előtti pihenőnap"),
+            ("2022-10-31", "Pihenőnap (2022. 10. 15.-től helyettesítve)"),
             ("2022-11-01", "Mindenszentek"),
             ("2022-12-25", "Karácsony"),
             ("2022-12-26", "Karácsony másnapja"),
@@ -250,7 +263,7 @@ class TestHungary(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-03-14", "Day off before National Day"),
+            ("2022-03-14", "Day off (substituted from 03/26/2022)"),
             ("2022-03-15", "National Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter"),
@@ -260,7 +273,7 @@ class TestHungary(TestCase):
             ("2022-06-06", "Whit Monday"),
             ("2022-08-20", "State Foundation Day"),
             ("2022-10-23", "National Day"),
-            ("2022-10-31", "Day off before All Saints' Day"),
+            ("2022-10-31", "Day off (substituted from 10/15/2022)"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
@@ -270,7 +283,7 @@ class TestHungary(TestCase):
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "Новий рік"),
-            ("2022-03-14", "Національне свято (вихідний за день до)"),
+            ("2022-03-14", "Вихідний день (перенесено з 26.03.2022)"),
             ("2022-03-15", "Національне свято"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
@@ -280,7 +293,7 @@ class TestHungary(TestCase):
             ("2022-06-06", "День Святого Духа"),
             ("2022-08-20", "День заснування держави"),
             ("2022-10-23", "Національне свято"),
-            ("2022-10-31", "День усіх святих (вихідний за день до)"),
+            ("2022-10-31", "Вихідний день (перенесено з 15.10.2022)"),
             ("2022-11-01", "День усіх святих"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),

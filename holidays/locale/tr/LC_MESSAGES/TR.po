@@ -1,0 +1,78 @@
+# Turkey holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.37\n"
+"POT-Creation-Date: 2023-11-12 18:52+0200\n"
+"PO-Revision-Date: 2023-11-14 12:53+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*tahmini)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Yılbaşı"
+msgstr ""
+
+#. National Sovereignty and Children's Day.
+msgid "Ulusal Egemenlik ve Çocuk Bayramı"
+msgstr ""
+
+# National Sovereignty Day.
+#. National Sovereignty Day.
+msgid "Ulusal Egemenlik Bayramı"
+msgstr ""
+
+#. Labour and Solidarity Day.
+msgid "Emek ve Dayanışma Günü"
+msgstr ""
+
+#. Commemoration of Atatürk, Youth and Sports Day.
+msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
+msgstr ""
+
+#. Youth and Sports Day.
+msgid "Gençlik ve Spor Bayramı"
+msgstr ""
+
+#. Freedom and Constitution Day.
+msgid "Hürriyet ve Anayasa Bayramı"
+msgstr ""
+
+#. Democracy and National Unity Day.
+msgid "Demokrasi ve Millî Birlik Günü"
+msgstr ""
+
+#. Victory Day.
+msgid "Zafer Bayramı"
+msgstr ""
+
+#. Republic Day.
+msgid "Cumhuriyet Bayramı"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Ramazan Bayramı"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Kurban Bayramı"
+msgstr ""
+
+#, c-format
+msgid "%s (saat 13.00'ten)"
+msgstr ""
+
+#. Public holiday.
+msgid "Genel tati̇l"
+msgstr ""

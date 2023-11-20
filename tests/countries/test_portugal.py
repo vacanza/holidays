@@ -149,7 +149,7 @@ class TestPortugal(TestCase):
         )
 
     def test_optional_holidays(self):
-        holidays = Portugal(categories=(OPTIONAL,), years=range(2017, 2020))
+        holidays = Portugal(categories=OPTIONAL, years=range(2017, 2020))
         self.assertHoliday(
             holidays,
             "2017-02-27",

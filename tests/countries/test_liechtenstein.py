@@ -20,7 +20,7 @@ class TestLiechtenstein(TestCase):
     def setUpClass(cls):
         years = range(1900, 2050)
         super().setUpClass(Liechtenstein, years=years)
-        cls.bank_holidays = Liechtenstein(categories=(BANK,), years=years)
+        cls.bank_holidays = Liechtenstein(categories=BANK, years=years)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Liechtenstein, LI, LIE)
@@ -234,7 +234,7 @@ class TestLiechtenstein(TestCase):
 
     def test_2022_bank(self):
         self.assertHolidays(
-            Liechtenstein(categories=(BANK,), years=2022),
+            Liechtenstein(categories=BANK, years=2022),
             ("2022-01-02", "Berchtoldstag"),
             ("2022-03-01", "Fasnachtsdienstag"),
             ("2022-04-15", "Karfreitag"),

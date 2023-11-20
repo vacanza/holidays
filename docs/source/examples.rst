@@ -148,11 +148,30 @@ To get a list of other categories holidays (for countries that support them):
 
 .. code-block:: python
 
-   >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK,)).items()):
+   >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=BANK).items()):
    >>>     print(dt, name)
    2023-04-07 Good Friday
    2023-05-19 Friday after Ascension Day
    2023-12-26 Bank Holiday
+
+   >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
+   >>>     print(dt, name)
+   2023-01-01 New Year's Day
+   2023-04-07 Good Friday
+   2023-04-09 Easter
+   2023-04-10 Easter Monday
+   2023-05-01 Labor Day
+   2023-05-18 Ascension Day
+   2023-05-19 Friday after Ascension Day
+   2023-05-28 Whit Sunday
+   2023-05-29 Whit Monday
+   2023-07-21 National Day
+   2023-08-15 Assumption of Mary
+   2023-11-01 All Saints' Day
+   2023-11-11 Armistice Day
+   2023-12-25 Christmas Day
+   2023-12-26 Bank Holiday
+
 
 Date from holiday name
 ----------------------

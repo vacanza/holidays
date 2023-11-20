@@ -14,18 +14,23 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, AUG
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
-    http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    References:
+
+    - https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
+    - https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland
+    - http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
     """
 
     country = "NL"
     default_language = "nl"
+    supported_categories = {OPTIONAL, PUBLIC}
     supported_languages = ("en_US", "nl", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -33,14 +38,9 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Nieuwjaarsdag"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Eerste paasdag"))
@@ -49,27 +49,23 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Tweede paasdag"))
 
         # King's / Queen's day
-        if year >= 1891:
+        if self._year >= 1891:
             name = (
                 # King's Day.
                 tr("Koningsdag")
-                if year >= 2014
+                if self._year >= 2014
                 # Queen's Day.
                 else tr("Koninginnedag")
             )
-            if year >= 2014:
-                dt = date(year, APR, 27)
-            elif year >= 1949:
-                dt = date(year, APR, 30)
+            if self._year >= 2014:
+                dt = date(self._year, APR, 27)
+            elif self._year >= 1949:
+                dt = date(self._year, APR, 30)
             else:
-                dt = date(year, AUG, 31)
+                dt = date(self._year, AUG, 31)
             if self._is_sunday(dt):
-                dt += td(days=-1) if year >= 1980 else td(days=+1)
+                dt += td(days=-1) if self._year >= 1980 else td(days=+1)
             self._add_holiday(name, dt)
-
-        if year >= 1945 and year % 5 == 0:
-            # Liberation Day.
-            self._add_holiday_may_5(tr("Bevrijdingsdag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
@@ -85,6 +81,14 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
+
+    def _populate_optional_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Goede Vrijdag"))
+
+        if (self._year >= 1945 and self._year % 5 == 0) or self._year >= 1990:
+            # Liberation Day.
+            self._add_holiday_may_5(tr("Bevrijdingsdag"))
 
 
 class NL(Netherlands):

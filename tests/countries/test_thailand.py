@@ -24,11 +24,11 @@ class TestThailand(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Thailand(years=1940))
-        self.assertNoHolidays(Thailand(years=1958, categories=(ARMED_FORCES,)))
-        self.assertNoHolidays(Thailand(years=1942, categories=(BANK,)))
-        self.assertNoHolidays(Thailand(years=1956, categories=(GOVERNMENT,)))
-        self.assertNoHolidays(Thailand(years=1956, categories=(SCHOOL,)))
-        self.assertNoHolidays(Thailand(years=1940, categories=(WORKDAY,)))
+        self.assertNoHolidays(Thailand(years=1958, categories=ARMED_FORCES))
+        self.assertNoHolidays(Thailand(years=1942, categories=BANK))
+        self.assertNoHolidays(Thailand(years=1956, categories=GOVERNMENT))
+        self.assertNoHolidays(Thailand(years=1956, categories=SCHOOL))
+        self.assertNoHolidays(Thailand(years=1940, categories=WORKDAY))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -607,7 +607,7 @@ class TestThailand(TestCase):
     def test_raeknakhwan(self):
         name = "วันพืชมงคล"
         self.assertHolidays(
-            Thailand(categories=(GOVERNMENT,), years=range(1997, 2024)),
+            Thailand(categories=GOVERNMENT, years=range(1997, 2024)),
             ("1997-05-13", name),
             ("1998-05-13", name),
             ("2000-05-15", name),
@@ -639,15 +639,15 @@ class TestThailand(TestCase):
     def test_armed_forces_holiday(self):
         name = "วันกองทัพไทย"
         self.assertHolidays(
-            Thailand(categories=(ARMED_FORCES,), years=range(1958, 1960)), ("1959-04-08", name)
+            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)), ("1959-04-08", name)
         )
         self.assertHolidays(
-            Thailand(categories=(ARMED_FORCES,), years=range(1979, 1981)),
+            Thailand(categories=ARMED_FORCES, years=range(1979, 1981)),
             ("1979-04-08", name),
             ("1980-01-25", name),
         )
         self.assertHolidays(
-            Thailand(categories=(ARMED_FORCES,), years=range(2006, 2008)),
+            Thailand(categories=ARMED_FORCES, years=range(2006, 2008)),
             ("2006-01-25", name),
             ("2007-01-18", name),
         )
@@ -658,13 +658,13 @@ class TestThailand(TestCase):
 
         # Start
         self.assertHolidays(
-            Thailand(categories=(BANK,), years=range(1942, 1944)),
+            Thailand(categories=BANK, years=range(1942, 1944)),
             ("1943-04-01", a_name),
             ("1943-07-01", m_name),
         )
         # End
         self.assertHolidays(
-            Thailand(categories=(BANK,), years=range(2017, 2023)),
+            Thailand(categories=BANK, years=range(2017, 2023)),
             ("2017-04-01", a_name),
             ("2017-07-01", m_name),
             ("2018-04-01", a_name),
@@ -676,26 +676,26 @@ class TestThailand(TestCase):
 
     def test_school_holiday(self):
         self.assertHolidays(
-            Thailand(categories=(SCHOOL,), years=range(1956, 1958)),
+            Thailand(categories=SCHOOL, years=range(1956, 1958)),
             ("1957-01-16", "วันครู"),
         )
 
     def test_workday_1947(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1947),
+            Thailand(categories=WORKDAY, years=1947),
             ("1947-11-27", "วันลอยกระทง"),
         )
 
     def test_workday_1948(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1948),
+            Thailand(categories=WORKDAY, years=1948),
             ("1948-02-03", "วันทหารผ่านศึก"),
             ("1948-11-15", "วันลอยกระทง"),
         )
 
     def test_workday_1982(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1982),
+            Thailand(categories=WORKDAY, years=1982),
             ("1982-02-03", "วันทหารผ่านศึก"),
             ("1982-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
             ("1982-10-31", "วันลอยกระทง"),
@@ -703,7 +703,7 @@ class TestThailand(TestCase):
 
     def test_workday_1985(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1985),
+            Thailand(categories=WORKDAY, years=1985),
             ("1985-02-03", "วันทหารผ่านศึก"),
             ("1985-02-26", "วันศิลปินแห่งชาติ"),
             ("1985-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
@@ -712,7 +712,7 @@ class TestThailand(TestCase):
 
     def test_workday_1989(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1989),
+            Thailand(categories=WORKDAY, years=1989),
             ("1989-02-03", "วันทหารผ่านศึก"),
             ("1989-02-26", "วันศิลปินแห่งชาติ"),
             ("1989-03-08", "วันสตรีสากล"),
@@ -722,7 +722,7 @@ class TestThailand(TestCase):
 
     def test_workday_1990(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1990),
+            Thailand(categories=WORKDAY, years=1990),
             ("1990-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
             ("1990-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
             ("1990-02-03", "วันทหารผ่านศึก"),
@@ -734,7 +734,7 @@ class TestThailand(TestCase):
 
     def test_workday_1995(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=1995),
+            Thailand(categories=WORKDAY, years=1995),
             ("1995-01-13", "วันการบินแห่งชาติ"),
             ("1995-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
             ("1995-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
@@ -747,7 +747,7 @@ class TestThailand(TestCase):
 
     def test_workday_2017(self):
         self.assertHolidays(
-            Thailand(categories=(WORKDAY,), years=2017),
+            Thailand(categories=WORKDAY, years=2017),
             ("2017-01-13", "วันการบินแห่งชาติ"),
             ("2017-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
             ("2017-01-17", "วันพ่อขุนรามคำแหงมหาราช"),

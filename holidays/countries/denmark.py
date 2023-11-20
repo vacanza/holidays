@@ -12,6 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,11 +23,13 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    - https://www.norden.org/en/info-norden/public-holidays-denmark
     - https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
     """
 
     country = "DK"
     default_language = "da"
+    supported_categories = {OPTIONAL, PUBLIC}
     supported_languages = ("da", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -34,9 +37,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Nytårsdag"))
 
@@ -53,7 +54,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Anden påskedag"))
 
         # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
-        if year <= 2023:
+        if self._year <= 2023:
             # Great Day of Prayers.
             self._add_holiday(tr("Store bededag"), self._easter_sunday + td(days=+26))
 
@@ -71,6 +72,19 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Anden juledag"))
+
+    def _populate_optional_holidays(self):
+        # International Workers' Day.
+        self._add_labor_day(tr("Arbejdernes kampdag"))
+
+        # Constitution Day.
+        self._add_holiday_jun_5(tr("Grundlovsdag"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Juleaftensdag"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Nytårsaften"))
 
 
 class DK(Denmark):
