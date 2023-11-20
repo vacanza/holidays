@@ -16,10 +16,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
-    1. https://www.officeholidays.com/countries/kazakhstan/2020
-    2. https://egov.kz/cms/en/articles/holidays-calend
-    3. https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan
-    4. https://adilet.zan.kz/rus/docs/Z010000267_/history
+    References:
+        - https://www.officeholidays.com/countries/kazakhstan/2020
+        - https://egov.kz/cms/en/articles/holidays-calend
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan
+        - https://adilet.zan.kz/rus/docs/Z010000267\_/history  # noqa W605
     """
 
     country = "KZ"

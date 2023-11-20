@@ -18,6 +18,7 @@
    examples
    contributing
    api
+   Supported Entities <modules>
    changelog
    genindex
 
