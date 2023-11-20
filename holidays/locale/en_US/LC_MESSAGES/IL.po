@@ -17,11 +17,11 @@ msgstr ""
 
 #. Rosh Hashanah (New Year).
 msgid "ראש השנה"
-msgstr "New Year"
+msgstr "Rosh Hashanah"
 
 #. Yom Kippur (Day of Atonement).
 msgid "יום כיפור"
-msgstr "Day of Atonement"
+msgstr "Yom Kippur"
 
 #. Sukkot (Feast of Tabernacles).
 msgid "סוכות"
@@ -29,15 +29,15 @@ msgstr "Sukkot"
 
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
-msgstr "Simchat Torah / Eighth Day of Assembly"
+msgstr "Simchat Torah / Shemini Atzeret"
 
 #. Pesach (Passover).
 msgid "פסח"
-msgstr "Passover"
+msgstr "Pesach"
 
 #. Shvi'i shel Pesach (Seventh day of Passover)
 msgid "שביעי של פסח"
-msgstr "Seventh day of Passover"
+msgstr "Seventh day of Pesach"
 
 #. Yom Ha-Atzmaut (Independence Day).
 msgid "יום העצמאות"
@@ -61,11 +61,11 @@ msgstr "Purim"
 
 #. Chol HaMoed Pesach (Passover holiday).
 msgid "חול המועד פסח"
-msgstr "Passover holiday"
+msgstr "Pesach holiday"
 
 #. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
 msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
-msgstr "National Remembrance Day"
+msgstr "Remembrance Day"
 
 #. Yom Yerushalayim (Jerusalem Day).
 msgid "יום ירושלים"
@@ -81,7 +81,7 @@ msgstr "Hanukkah"
 
 #. Ta`anit Ester (Fast of Esther).
 msgid "תענית אסתר"
-msgstr "Fast of Esther"
+msgstr "Ta'anit Ester"
 
 #. Lag Ba'omer (Lag BaOmer).
 msgid "ל\"ג בעומר"

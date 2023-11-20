@@ -17,7 +17,7 @@ msgstr ""
 
 #. Rosh Hashanah (New Year).
 msgid "ראש השנה"
-msgstr "Новий рік"
+msgstr "Рош га-Шана"
 
 #. Yom Kippur (Day of Atonement).
 msgid "יום כיפור"
@@ -29,7 +29,7 @@ msgstr "Суккот"
 
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
-msgstr "Сімхат Тора / Восьмий день зборів"
+msgstr "Сімхат Тора / Шміні Ацерет"
 
 #. Pesach (Passover).
 msgid "פסח"
@@ -41,7 +41,7 @@ msgstr "Сьомий день Песаха"
 
 #. Yom Ha-Atzmaut (Independence Day).
 msgid "יום העצמאות"
-msgstr "День Незалежності"
+msgstr "День незалежності"
 
 #. Shavuot.
 msgid "שבועות"
