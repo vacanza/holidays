@@ -85,12 +85,13 @@ class SouthKorea(
         for dt in sorted(dts.union(spec_holidays.keys())):
             if not self._is_observed(dt):
                 continue
-            rule = SUN_TO_NEXT_WORKDAY if dt in spec_holidays else SAT_SUN_TO_NEXT_WORKDAY
-            obs_date = self._get_observed_date(dt, rule)
+            obs_date = self._get_observed_date(
+                dt, SUN_TO_NEXT_WORKDAY if dt in spec_holidays else SAT_SUN_TO_NEXT_WORKDAY
+            )
             if obs_date != dt or len(self.get_list(dt)) > 1:
                 if obs_date == dt:
                     obs_date = self._get_next_workday(dt)
-                names = [spec_holidays[dt]] if dt in spec_holidays else self.get_list(dt)
+                names = (spec_holidays[dt],) if dt in spec_holidays else self.get_list(dt)
                 for name in names:
                     self._add_holiday(self.tr(self.observed_label) % self.tr(name), obs_date)
 
@@ -100,14 +101,15 @@ class SouthKorea(
                 dts_observed.add(dt)
 
         def _add_three_day_holiday(dt: date, name: str):
+            name = self.tr(name)
             for dt_alt in (
                 # The day preceding %s.
-                self._add_holiday(self.tr("%s 전날") % self.tr(name), dt + td(days=-1)),
+                self._add_holiday(self.tr("%s 전날") % name, dt + td(days=-1)),
                 dt,
                 # The second day of %s.
-                self._add_holiday(self.tr("%s 다음날") % self.tr(name), dt + td(days=+1)),
+                self._add_holiday(self.tr("%s 다음날") % name, dt + td(days=+1)),
             ):
-                three_days_holidays[dt_alt] = self.tr(name)
+                three_days_holidays[dt_alt] = name
 
         if self._year <= 1947:
             return None
