@@ -27,7 +27,7 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, VanatuStaticHolidays)
+        StaticHolidays.__init__(self, VanuatuStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -92,7 +92,7 @@ class VTU(Vanuatu):
     pass
 
 
-class VanatuStaticHolidays:
+class VanuatuStaticHolidays:
     independence_anniversary = "40th Independence Anniversary"
 
     special_holidays = {
