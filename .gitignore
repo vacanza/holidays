@@ -9,13 +9,13 @@
 *.DS_Store
 *.egg-info
 *.mo
-*.pot
 *.pyc
 build/*
 coverage.lcov
 dist/
 docs/build
-holidays/locale/pot
+holidays/locale/pot/*.pot
+!holidays/locale/pot/UA.pot
 MANIFEST
 Pipfile
 venv/
