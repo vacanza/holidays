@@ -92,6 +92,17 @@ class POGenerator:
                 standalone_mode=False,
             )
 
+            # Update .pot file metadata.
+            pot_file = pofile(pot_file_path)
+            pot_file.metadata.update(
+                {
+                    "Language-Team": "Python Holidays Localization Team",
+                    "Last-Translator": "",
+                    "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
+                }
+            )
+            pot_file.save()
+
             # Create country default .po file from the .pot file.
             po_directory = locale_path / default_language / "LC_MESSAGES"
             po_directory.mkdir(parents=True, exist_ok=True)
