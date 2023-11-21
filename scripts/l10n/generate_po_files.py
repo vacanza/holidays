@@ -97,7 +97,6 @@ class POGenerator:
             pot_file.metadata.update(
                 {
                     "Language-Team": "Python Holidays Localization Team",
-                    "Last-Translator": "",
                     "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
                 }
             )
