@@ -43,7 +43,7 @@ class Israel(ObservedHolidayBase):
     # %s (Observed).
     observed_label = tr("(נצפה) %s")
     supported_categories = {OPTIONAL, PUBLIC, SCHOOL}
-    supported_languages = ("en_US", "he", "uk")
+    supported_languages = ("en_US", "he", "uk", "yi")
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)

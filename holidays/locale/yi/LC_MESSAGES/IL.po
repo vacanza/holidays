@@ -1,4 +1,4 @@
-# Israel holidays.
+# Israel holidays yi localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "PO-Revision-Date: 2023-07-18 17:57+0300\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: he\n"
+"Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,77 +17,77 @@ msgstr ""
 
 #. Rosh Hashanah (New Year).
 msgid "ראש השנה"
-msgstr ""
+msgstr "נייע יאר"
 
 #. Yom Kippur (Day of Atonement).
 msgid "יום כיפור"
-msgstr ""
+msgstr "יום כיפור"
 
 #. Sukkot (Feast of Tabernacles).
 msgid "סוכות"
-msgstr ""
+msgstr "סוכות, סוכות"
 
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
-msgstr ""
+msgstr "עצרת שמחת תורה/שמיני"
 
 #. Pesach (Passover).
 msgid "פסח"
-msgstr ""
+msgstr "פסח"
 
 #. Shvi'i shel Pesach (Seventh day of Passover)
 msgid "שביעי של פסח"
-msgstr ""
+msgstr "זיבעטן פּסח"
 
 #. Yom Ha-Atzmaut (Independence Day).
 msgid "יום העצמאות"
-msgstr ""
+msgstr "זעלבסטשטענדיגקייט טאג"
 
 #. Shavuot.
 msgid "שבועות"
-msgstr ""
+msgstr "וואָכן"
 
 #. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
 msgid "חול המועד סוכות"
-msgstr ""
+msgstr "דער יום־טובֿ סוכות"
 
 #. Sigd.
 msgid "סיגד"
-msgstr ""
+msgstr "געבוקט"
 
 #. Purim.
 msgid "פורים"
-msgstr ""
+msgstr "פּורים"
 
 #. Chol HaMoed Pesach (Passover holiday).
 msgid "חול המועד פסח"
-msgstr ""
+msgstr "פּסח יום טוּב"
 
 #. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
 msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
-msgstr ""
+msgstr "אנדענק טאג פאר די מארטירער פון ישראל'ס סיסטעמען און קרבנות פון שינאה"
 
 #. Yom Yerushalayim (Jerusalem Day).
 msgid "יום ירושלים"
-msgstr ""
+msgstr "טאג ירושלים"
 
 #. Tisha B'Av (Tisha B'Av, fast).
 msgid "תשעה באב"
-msgstr ""
+msgstr "תשעה באב"
 
 #. Hanukkah.
 msgid "חנוכה"
-msgstr ""
+msgstr "חנוכה"
 
 #. Ta`anit Ester (Fast of Esther).
 msgid "תענית אסתר"
-msgstr ""
+msgstr "תנית אסתר"
 
 #. Lag Ba'omer (Lag BaOmer).
 msgid "ל\"ג בעומר"
-msgstr ""
+msgstr "ל\"ג בעומר"
 
 #. %s (Observed).
 #, c-format
 msgid "(נצפה) %s"
-msgstr ""
+msgstr "(באמערקט) %s"

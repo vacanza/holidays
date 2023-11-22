@@ -500,7 +500,7 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - Israel
      - IL
      -
-     - en_US, **he**, uk
+     - en_US, **he**, uk, yi
      - OPTIONAL, **PUBLIC**, SCHOOL
    * - Italy
      - IT
