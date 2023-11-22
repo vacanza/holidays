@@ -32,25 +32,25 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
     References:
         - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
-        - Checked with: (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
+        - Checked with: `Bank of Thailand lists <http://tiny.cc/wa_bot_2023>`_
         - [In Lieus]
-            (isranews.org 's wbm) http://tiny.cc/wa_isranews_inlieu_hist
-            https://resolution.soc.go.th/?prep_id=99159317
-            https://resolution.soc.go.th/?prep_id=196007
-            https://github.com/dr-prodigy/python-holidays/pull/929
+            - `isranews.org <http://tiny.cc/wa_isranews_inlieu_hist>`_
+            - https://resolution.soc.go.th/?prep_id=99159317
+            - https://resolution.soc.go.th/?prep_id=196007
+            - https://github.com/dr-prodigy/python-holidays/pull/929
         - [New Year's Day]
-            (wikisource.org 's wbm) http://tiny.cc/wa_wiki_thai_newyear_2483
+            `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
         - [National Children's Day]
             https://thainews.prd.go.th/banner/th/children'sday/
         - [Chakri Memorial Day]
-            (ocac.got.th 's wbm) http://tiny.cc/wa_ocac_chakri
+            `ocac.got.th <http://tiny.cc/wa_ocac_chakri>`_
         - [Songkran Festival]
-            (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
-            https://resolution.soc.go.th/?prep_id=123659
+            - `museumsiam.org <http://tiny.cc/wa_museumsiam_songkran>`_
+            - https://resolution.soc.go.th/?prep_id=123659
         - [National Labour Day]
             https://www.thairath.co.th/lifestyle/culture/1832869
         - [National Day (24 June: Defunct)]
-            (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
+            `Ministry of Culture <http://tiny.cc/wa_mincul_nat_day>`_
         - [Coronation Day]
             https://www.matichon.co.th/politics/news_526200
             https://workpointtoday.com/news1-5/
@@ -65,20 +65,20 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         - [HM King Bhumibol Adulyadej Memorial Day]
             https://www.matichon.co.th/politics/news_526200
         - [HM King Chulalongkorn Memorial Day]
-            https://th.wikipedia.org/wiki/วันปิยมหาราช
+            `<https://th.wikipedia.org/wiki/วันปิยมหาราช>`_
         - [HM King Bhumibol Adulyadej's Birthday]
-            (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
-            https://hilight.kapook.com/view/148862
+            - `Ministry of Culture <http://tiny.cc/wa_mincul_nat_day>`_
+            - https://hilight.kapook.com/view/148862
         - [National Father's Day]
             https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
         - [Constitution Day]
-            https://hilight.kapook.com/view/18208
-            (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
-            https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
+            - https://hilight.kapook.com/view/18208
+            - `Bank of Thailand <http://tiny.cc/wa_bot_1992>`_
+            - `<https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>`_
         - [New Year's Eve]
-            (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
-            https://resolution.soc.go.th/?prep_id=205799
-            https://resolution.soc.go.th/?prep_id=210744
+            - `Bank of Thailand`_
+            - https://resolution.soc.go.th/?prep_id=205799
+            - https://resolution.soc.go.th/?prep_id=210744
         - [Makha Bucha]
             https://www.onab.go.th/th/content/category/detail/id/73/iid/3403
         - [Visakha Bucha]
@@ -90,9 +90,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         - [Royal Ploughing Ceremony]
             https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
             https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
-            https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
+            `<https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx>`_
         - [Royal Thai Armed Forces Day]
-            https://th.wikipedia.org/wiki/วันกองทัพไทย
+            `<https://th.wikipedia.org/wiki/วันกองทัพไทย>`_
         - [Teacher's Day]
             https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf
 

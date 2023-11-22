@@ -27,7 +27,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         - `Labour Day <https://www.e-konomista.pt/dia-do-trabalhador/>`_
         - Portugal Day - Decreto 17.171
         - Restoration of Independence Day - Gazeta de Lisboa, 8 de Dezembro
-            de 1823 (n.º 290), pp. 1789 e 1790
+          de 1823 (n.º 290), pp. 1789 e 1790
         - Azores
             - https://files.dre.pt/1s/1980/08/19200/23052305.pdf
         - Madeira

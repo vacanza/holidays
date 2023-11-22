@@ -56,7 +56,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
     Limitations:
         - Only checked with the official General Office of the State Council Notice from 2001
-            onwards.
+          onwards.
         - Due to its complexity, need yearly checks 3-weeks before year's end each year.
     """
 
