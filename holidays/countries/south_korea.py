@@ -50,28 +50,36 @@ class SouthKorea(
 ):
     """
     References:
-    1. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
-    2. https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정
-    3. https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678
-    4. https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG
-    5. https://namu.wiki/w/대통령%20선거일
-    6. https://namu.wiki/w/공휴일/대한민국
-    7. https://namu.wiki/w/공휴일/대한민국/역사
-    8. https://namu.wiki/w/대체%20휴일%20제도
-    9. https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do (th localization)
-    10. https://thailand.korean-culture.org/th/138/korea/38 (th localization)
+        - https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
+        - https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정
+        - https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678
+        - https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG
+        - https://namu.wiki/w/대통령%20선거일
+        - https://namu.wiki/w/공휴일/대한민국
+        - https://namu.wiki/w/공휴일/대한민국/역사
+        - https://namu.wiki/w/대체%20휴일%20제도
+        - `TH localization 1 <https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do>`_
+        - `TH localization 2 <https://thailand.korean-culture.org/th/138/korea/38>`_
 
     Checked With:
-    1. https://publicholidays.co.kr/ko/2020-dates/
-    2. https://publicholidays.co.kr/ko/2022-dates/
+        - https://publicholidays.co.kr/ko/2020-dates/
+        - https://publicholidays.co.kr/ko/2022-dates/
 
     According to (3), the alt holidays in Korea are as follows:
-    - The alt holiday means next first non holiday after the holiday.
-    - Independence Movement Day, Liberation Day, National Foundation Day,
-      Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have
-      alt holiday if they fell on Saturday or Sunday.
-    - Korean New Year's Day, Korean Mid Autumn Day have alt holiday if they
-      fell on Sunday.
+        - The alt holiday means next first non holiday after the holiday.
+        - Independence Movement Day, Liberation Day, National Foundation Day,
+            Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have
+            alt holiday if they fell on Saturday or Sunday.
+        - Korean New Year's Day, Korean Mid Autumn Day have alt holiday if they
+            fell on Sunday.
+
+    The alt holidays in Korea are as follows:
+        - The alt holiday means next first non holiday after the holiday.
+        - Independence Movement Day, Liberation Day, National Foundation Day,
+            Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have
+            alt holiday if they fell on Saturday or Sunday.
+        - Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they
+            fell on Sunday.
 
     """
 
@@ -342,14 +350,14 @@ class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
 class SouthKoreaStaticHolidays:
     """
     References:
-    1. https://namu.wiki/w/임시공휴일 *
-    2. https://namu.wiki/w/공휴일/대한민국 **
-    3. https://namu.wiki/w/대체%20휴일%20제도
+        - https://namu.wiki/w/임시공휴일 *
+        - https://namu.wiki/w/공휴일/대한민국 **
+        - https://namu.wiki/w/대체%20휴일%20제도
 
-    * Election Dates featured here are the ones prior to the proper recodification to
-      Article 34 of the Public Official Election Act(September 2006)
-    ** Sabang Day (사방의 날) was technically in the Public Holidays Act itself, but since it was
-       only celebrated in 1960, this is being put here.
+    (1) Election Dates featured here are the ones prior to the proper recodification to
+        Article 34 of the Public Official Election Act(September 2006)
+    (2) Sabang Day (사방의 날) was technically in the Public Holidays Act itself, but since it was
+        only celebrated in 1960, this is being put here.
     """
 
     # Common Special Holiday Types.
