@@ -38,12 +38,20 @@ from holidays.observed_holiday_base import (
 
 
 class Israel(ObservedHolidayBase):
+    """
+    Israel holidays.
+
+    References:
+      - https://en.wikipedia.org/wiki/Public_holidays_in_Israel
+
+    """
+
     country = "IL"
     default_language = "he"
     # %s (Observed).
     observed_label = tr("(נצפה) %s")
     supported_categories = {OPTIONAL, PUBLIC, SCHOOL}
-    supported_languages = ("en_US", "he", "uk", "yi")
+    supported_languages = ("en_US", "he", "uk")
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)
@@ -129,8 +137,9 @@ class Israel(ObservedHolidayBase):
             if not is_observed:
                 self._add_holiday(name, remembrance_day_dt)
 
-        # Yom Yerushalayim (Jerusalem Day).
-        self._add_holiday(tr("יום ירושלים"), self._get_holiday(LAG_BAOMER) + td(days=+10))
+        if self._year >= 1967:
+            # Yom Yerushalayim (Jerusalem Day).
+            self._add_holiday(tr("יום ירושלים"), self._get_holiday(LAG_BAOMER) + td(days=+10))
 
         # Tisha B'Av (Tisha B'Av, fast).
         name = tr("תשעה באב")

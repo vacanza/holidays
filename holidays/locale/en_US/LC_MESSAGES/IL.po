@@ -27,6 +27,10 @@ msgstr "Yom Kippur"
 msgid "סוכות"
 msgstr "Sukkot"
 
+#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+msgid "חול המועד סוכות"
+msgstr "Sukkot holiday"
+
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
 msgstr "Simchat Torah / Shemini Atzeret"
@@ -34,6 +38,10 @@ msgstr "Simchat Torah / Shemini Atzeret"
 #. Pesach (Passover).
 msgid "פסח"
 msgstr "Pesach"
+
+#. Chol HaMoed Pesach (Passover holiday).
+msgid "חול המועד פסח"
+msgstr "Pesach holiday"
 
 #. Shvi'i shel Pesach (Seventh day of Passover)
 msgid "שביעי של פסח"
@@ -47,10 +55,6 @@ msgstr "Independence Day"
 msgid "שבועות"
 msgstr "Shavuot"
 
-#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
-msgid "חול המועד סוכות"
-msgstr "Sukkot holiday"
-
 #. Sigd.
 msgid "סיגד"
 msgstr "Sigd"
@@ -58,10 +62,6 @@ msgstr "Sigd"
 #. Purim.
 msgid "פורים"
 msgstr "Purim"
-
-#. Chol HaMoed Pesach (Passover holiday).
-msgid "חול המועד פסח"
-msgstr "Pesach holiday"
 
 #. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
 msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
