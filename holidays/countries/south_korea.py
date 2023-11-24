@@ -81,26 +81,28 @@ class SouthKorea(
         kwargs.setdefault("observed_since", 2014)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: Set[date], spec_holidays: Dict[date, str]) -> None:
-        for dt in sorted(dts.union(spec_holidays.keys())):
+    def _populate_observed(self, dts: Set[date], three_day_holidays: Dict[date, str]) -> None:
+        for dt in sorted(dts.union(three_day_holidays.keys())):
             if not self._is_observed(dt):
                 continue
-            obs_date = self._get_observed_date(
-                dt, SUN_TO_NEXT_WORKDAY if dt in spec_holidays else SAT_SUN_TO_NEXT_WORKDAY
+            dt_observed = self._get_observed_date(
+                dt, SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY
             )
-            if obs_date != dt or len(self.get_list(dt)) > 1:
-                if obs_date == dt:
-                    obs_date = self._get_next_workday(dt)
-                names = (spec_holidays[dt],) if dt in spec_holidays else self.get_list(dt)
+            if dt_observed != dt or len(self.get_list(dt)) > 1:
+                if dt_observed == dt:
+                    dt_observed = self._get_next_workday(dt)
+                names = (
+                    (three_day_holidays[dt],) if dt in three_day_holidays else self.get_list(dt)
+                )
                 for name in names:
-                    self._add_holiday(self.tr(self.observed_label) % self.tr(name), obs_date)
+                    self._add_holiday(self.tr(self.observed_label) % self.tr(name), dt_observed)
 
     def _populate_public_holidays(self):
-        def _append_observed(dt: date, since: int):
+        def append_observed(dt: date, since: int):
             if self._year >= since:
                 dts_observed.add(dt)
 
-        def _add_three_day_holiday(dt: date, name: str):
+        def add_three_day_holiday(dt: date, name: str):
             name = self.tr(name)
             for dt_alt in (
                 # The day preceding %s.
@@ -137,12 +139,12 @@ class SouthKorea(
             )
             korean_new_year = self._add_chinese_new_years_day(name)
             if self._year >= 1989:
-                _add_three_day_holiday(korean_new_year, name)
+                add_three_day_holiday(korean_new_year, name)
 
         # Independence Movement Day.
         mar_1 = self._add_holiday_mar_1(tr("삼일절"))
         # mar_1 is used later for Presidential Election Day.
-        _append_observed(mar_1, 2022)
+        append_observed(mar_1, 2022)
 
         if 1949 <= self._year <= 2005 and self._year != 1960:
             # Tree Planting Day.
@@ -156,11 +158,11 @@ class SouthKorea(
                 # Buddha's Birthday.
                 else tr("석가탄신일")
             )
-            _append_observed(self._add_chinese_birthday_of_buddha(name), 2023)
+            append_observed(self._add_chinese_birthday_of_buddha(name), 2023)
 
         if self._year >= 1975:
             # Children's Day.
-            _append_observed(self._add_holiday_may_5(tr("어린이날")), 2015)
+            append_observed(self._add_holiday_may_5(tr("어린이날")), 2015)
 
         if self._year >= 1956:
             # Memorial Day.
@@ -172,18 +174,18 @@ class SouthKorea(
             self._add_holiday_jul_17(tr("제헌절"))
 
         # Liberation Day.
-        _append_observed(self._add_holiday_aug_15(tr("광복절")), 2021)
+        append_observed(self._add_holiday_aug_15(tr("광복절")), 2021)
 
         if 1976 <= self._year <= 1990:
             # Armed Forces Day.
             self._add_holiday_oct_1(tr("국군의 날"))
 
         # National Foundation Day.
-        _append_observed(self._add_holiday_oct_3(tr("개천절")), 2021)
+        append_observed(self._add_holiday_oct_3(tr("개천절")), 2021)
 
         if self._year <= 1990 or self._year >= 2013:
             # Hangul Day.
-            _append_observed(self._add_holiday_oct_9(tr("한글날")), 2021)
+            append_observed(self._add_holiday_oct_9(tr("한글날")), 2021)
 
         if 1950 <= self._year <= 1975:
             # United Nations Day.
@@ -195,10 +197,10 @@ class SouthKorea(
         if 1986 <= self._year <= 1988:
             self._add_mid_autumn_festival_day_two(self.tr("%s 다음날") % self.tr(name))
         elif self._year >= 1989:
-            _add_three_day_holiday(chuseok, name)
+            add_three_day_holiday(chuseok, name)
 
         # Christmas Day.
-        _append_observed(self._add_christmas_day(tr("기독탄신일")), 2023)
+        append_observed(self._add_christmas_day(tr("기독탄신일")), 2023)
 
         # Election Days since Sep 2006; excluding the 2017 Special Presidential Election Day.
 
