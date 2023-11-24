@@ -6,11 +6,17 @@ repos:
       - id: check-builtin-literals
       - id: check-yaml
       - id: end-of-file-fixer
+        exclude_types:
+          - rst
       - id: fix-encoding-pragma
-        args: [--remove]
+        args:
+          - --remove
       - id: mixed-line-ending
-        args: [--fix=lf]
+        args:
+          - --fix=lf
       - id: trailing-whitespace
+        exclude_types:
+          - rst
 
   - repo: https://github.com/python/black
     rev: 23.11.0
@@ -41,8 +47,8 @@ repos:
         additional_dependencies: [types-all]
         args:
           - --ignore-missing-imports
-          - --show-error-codes
           - --implicit-optional
+          - --show-error-codes
 
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
@@ -53,10 +59,12 @@ repos:
     rev: v6.2.0
     hooks:
       - id: rstcheck
-        additional_dependencies: [rstcheck, sphinx]
+        additional_dependencies:
+          - rstcheck
+          - sphinx
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: "1.3.1"
+    rev: '1.3.1'
     hooks:
       - id: tox-ini-fmt
 
