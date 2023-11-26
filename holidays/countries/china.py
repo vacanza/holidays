@@ -145,7 +145,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
                     # 2 Extra Days for May Day >= 2020:
                     self._add_holiday(self[dt], dt + td(days=+3))
                     self._add_holiday(self[dt], dt + td(days=+4))
-            elif 2012 <= self._year <= 2019:
+            else:
                 # [FRI]-SUN
                 self._add_holiday(self[dt], dt + td(days=-1))
                 self._add_holiday(self[dt], dt + td(days=+1))
@@ -154,7 +154,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
                 # MON-TUE
                 self._add_holiday(self[dt], dt + td(days=+1))
                 self._add_holiday(self[dt], dt + td(days=+2))
-            elif 2008 <= self._year <= 2011 or self._year >= 2020:
+            else:
                 # [SAT]-MON
                 self._add_holiday(self[dt], dt + td(days=-1))
                 self._add_holiday(self[dt], dt + td(days=+1))
