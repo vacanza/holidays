@@ -27,7 +27,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BE"
     default_language = "nl"
-    supported_categories = {BANK, PUBLIC}
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "nl", "uk")
 
     def __init__(self, *args, **kwargs):

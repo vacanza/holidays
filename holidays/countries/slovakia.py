@@ -26,7 +26,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
 
     country = "SK"
     default_language = "sk"
-    supported_categories = {PUBLIC, WORKDAY}
+    supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "sk", "uk")
 
     def __init__(self, *args, **kwargs):

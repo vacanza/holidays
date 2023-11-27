@@ -61,7 +61,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
     """
 
     country = "CN"
-    supported_categories = {PUBLIC, HALF_DAY}
+    supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
 

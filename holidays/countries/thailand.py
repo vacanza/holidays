@@ -133,7 +133,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     """
 
     country = "TH"
-    supported_categories = {ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY}
+    supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
     default_language = "th"
     # %s (in lieu).
     observed_label = tr("ชดเชย%s")

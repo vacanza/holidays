@@ -31,7 +31,7 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
 
     country = "JP"
     default_language = "ja"
-    supported_categories = {BANK, PUBLIC}
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "ja", "th")
 
     def __init__(self, *args, **kwargs) -> None:

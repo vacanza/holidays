@@ -15,7 +15,7 @@ from datetime import date, datetime
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
+from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
 from holidays.holiday_base import HolidayBase
 
 
@@ -35,7 +35,6 @@ class EntityStub(HolidayBase):
     }
     substituted_date_format = "%d/%m/%Y"
     substituted_label = "From %s"
-    supported_categories = {PUBLIC}
 
     def _add_observed(self, dt: date, before: bool = True, after: bool = True) -> None:
         if not self.observed:
@@ -63,6 +62,7 @@ class EntityStub(HolidayBase):
 class CountryStub1(EntityStub):
     country = "CS1"
     subdivisions = ("Subdiv1", "Subdiv2")
+    supported_categories = (PUBLIC, SCHOOL)
 
     def _add_subdiv_subdiv1_holidays(self):
         self._add_holiday_aug_10("Subdiv1 Custom Holiday")
@@ -99,7 +99,14 @@ class MarketStub2(EntityStub):
 
 class TestArgs(unittest.TestCase):
     def test_categories(self):
-        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories="HOME"))
+        self.assertEqual({PUBLIC}, CountryStub1(categories=PUBLIC).categories)
+        self.assertEqual({PUBLIC, SCHOOL}, CountryStub1(categories=(PUBLIC, SCHOOL)).categories)
+
+        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories=OPTIONAL))
+        self.assertRaises(NotImplementedError, lambda: CountryStub1(categories="UNSUPPORTED"))
+        self.assertRaises(
+            NotImplementedError, lambda: CountryStub1(categories=("HOME", "UNSUPPORTED"))
+        )
 
     def test_country(self):
         self.assertEqual(CountryStub1().country, "CS1")
