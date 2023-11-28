@@ -56,7 +56,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SP",  # São Paulo
         "TO",  # Tocantins
     )
-    supported_categories = {OPTIONAL, PUBLIC}
+    supported_categories = (OPTIONAL, PUBLIC)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

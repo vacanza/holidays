@@ -74,7 +74,7 @@ class SouthKorea(
     """
 
     country = "KR"
-    supported_categories = {BANK, PUBLIC}
+    supported_categories = (BANK, PUBLIC)
     default_language = "ko"
     # Alternative holiday for %s.
     observed_label = tr("%s 대체 휴일")

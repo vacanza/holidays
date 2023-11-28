@@ -38,7 +38,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "PT"
     default_language = "pt_PT"
-    supported_categories = {OPTIONAL, PUBLIC}
+    supported_categories = (OPTIONAL, PUBLIC)
 
     # https://en.wikipedia.org/wiki/ISO_3166-2:PT
     subdivisions = (

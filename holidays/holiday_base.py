@@ -34,7 +34,7 @@ from holidays.calendars.gregorian import (
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, ALL_CATEGORIES, PUBLIC
+from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -231,7 +231,7 @@ class HolidayBase(Dict[date, str]):
     """The entity language used by default."""
     categories: Optional[Set[str]] = None
     """Requested holiday categories."""
-    supported_categories: Set[str] = set()
+    supported_categories: Tuple[str, ...] = ()
     """All holiday categories supported by this entity."""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
@@ -319,10 +319,11 @@ class HolidayBase(Dict[date, str]):
                     DeprecationWarning,
                 )
 
-            unknown_categories = self.categories.difference(  # type: ignore[union-attr]
-                ALL_CATEGORIES
-            )
-            if len(unknown_categories) > 0:
+            if len(self.supported_categories) > 0 and (
+                unknown_categories := self.categories.difference(  # type: ignore[union-attr]
+                    set(self.supported_categories)
+                )
+            ):
                 raise NotImplementedError(
                     f"Category is not supported: {', '.join(unknown_categories)}."
                 )
