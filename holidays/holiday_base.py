@@ -750,7 +750,7 @@ class HolidayBase(Dict[date, str]):
         # Populate substituted holidays.
         self._add_substituted_holidays()
 
-    def _get_special_holidays_names(self):
+    def _get_special_holiday_mapping_names(self):
         # Check for general special holidays.
         mapping_names = ["special_holidays"]
 
@@ -768,7 +768,7 @@ class HolidayBase(Dict[date, str]):
         return mapping_names
 
     def _add_special_holidays(self):
-        for mapping_name in self._get_special_holidays_names():
+        for mapping_name in self._get_special_holiday_mapping_names():
             for month, day, name in _normalize_tuple(
                 getattr(self, mapping_name, {}).get(self._year, ())
             ):
