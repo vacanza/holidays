@@ -676,13 +676,10 @@ class HolidayBase(Dict[date, str]):
         substituted_label = self.tr(self.substituted_label)
         substituted_date_format = self.tr(self.substituted_date_format)
 
-        substituted_holidays_mapping_names = ["substituted_holidays"]
-        # Check category specific special observed holidays.
-        for category in sorted(self.categories):
-            substituted_holidays_mapping_names.append(f"substituted_{category}_holidays")
-
-        for mapping_name in substituted_holidays_mapping_names:
-            for hol in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
+        for mapping_name in self._get_static_holiday_mapping_names():
+            for hol in _normalize_tuple(
+                getattr(self, f"substituted_{mapping_name}", {}).get(self._year, ())
+            ):
                 from_year = hol[0] if len(hol) == 5 else self._year
                 from_month, from_day, to_month, to_day = hol[-4:]
                 from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
@@ -758,20 +755,20 @@ class HolidayBase(Dict[date, str]):
         # Populate substituted holidays.
         self._add_substituted_holidays()
 
-    def _get_special_holiday_mapping_names(self):
+    def _get_static_holiday_mapping_names(self):
         # Check for general special holidays.
-        mapping_names = ["special_holidays"]
+        mapping_names = ["holidays"]
 
         # Check subdivision specific special holidays.
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            mapping_names.append(f"special_{subdiv}_holidays")
+            mapping_names.append(f"{subdiv}_holidays")
 
         # Check category specific special holidays (both general and per subdivision).
         for category in sorted(self.categories):
-            mapping_names.append(f"special_{category}_holidays")
+            mapping_names.append(f"{category}_holidays")
             if self.subdiv is not None:
-                mapping_names.append(f"special_{subdiv}_{category}_holidays")
+                mapping_names.append(f"{subdiv}_{category}_holidays")
 
         return mapping_names
 
@@ -779,9 +776,9 @@ class HolidayBase(Dict[date, str]):
         if not hasattr(self, "_has_special"):
             return None
 
-        for mapping_name in self._get_special_holiday_mapping_names():
+        for mapping_name in self._get_static_holiday_mapping_names():
             for month, day, name in _normalize_tuple(
-                getattr(self, mapping_name, {}).get(self._year, ())
+                getattr(self, f"special_{mapping_name}", {}).get(self._year, ())
             ):
                 self._add_holiday(name, date(self._year, month, day))
 
