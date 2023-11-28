@@ -22,7 +22,7 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CZ"
     default_language = "cs"
-    supported_languages = ("cs", "en_US", "uk")
+    supported_languages = ("cs", "en_US", "sk", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

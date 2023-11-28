@@ -63,7 +63,7 @@ module = "holidays.groups.*"
 disable_error_code = "attr-defined"
 
 [tool.rstcheck]
-ignore_directives = ["automodule"]
+ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
