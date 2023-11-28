@@ -28,7 +28,7 @@ from holidays.observed_holiday_base import (
 class Israel(ObservedHolidayBase):
     country = "IL"
     observed_label = "%s (Observed)"
-    supported_categories = {OPTIONAL, PUBLIC, SCHOOL}
+    supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)

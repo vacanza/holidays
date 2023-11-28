@@ -26,18 +26,18 @@ from holidays.observed_holiday_base import (
 class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
-    - http://www.siac.gv.ao/downloads/181029-Lei-Feriados.pdf
-    - [Decree #5/75] https://www.lexlink.eu/FileGet.aspx?FileId=3023486
-    - [Decree #92/80] https://www.lexlink.eu/FileGet.aspx?FileId=3023473
-    - [Decree #7/92] https://www.lexlink.eu/FileGet.aspx?FileId=3023485
-    - [Law #16/96] https://www.lexlink.eu/FileGet.aspx?FileId=3037036
-    - [Law #1/01] https://www.lexlink.eu/FileGet.aspx?FileId=3029035
-    - [Law #7/03] https://www.lexlink.eu/FileGet.aspx?FileId=3002131
-    - [Law #10/11] https://equadros.gov.ao/documents/40468/0/lei_10_11-1+%281%29.pdf
-    - [Law #11/18] https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+%281%29.pdf
-    - https://www.officeholidays.com/countries/angola/
-    - https://www.timeanddate.com/holidays/angola/
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
+        - http://www.siac.gv.ao/downloads/181029-Lei-Feriados.pdf
+        - `Decree #5/75 <https://www.lexlink.eu/FileGet.aspx?FileId=3023486>`_
+        - [Decree #92/80] https://www.lexlink.eu/FileGet.aspx?FileId=3023473
+        - [Decree #7/92] https://www.lexlink.eu/FileGet.aspx?FileId=3023485
+        - [Law #16/96] https://www.lexlink.eu/FileGet.aspx?FileId=3037036
+        - [Law #1/01] https://www.lexlink.eu/FileGet.aspx?FileId=3029035
+        - [Law #7/03] https://www.lexlink.eu/FileGet.aspx?FileId=3002131
+        - [Law #10/11] https://equadros.gov.ao/documents/40468/0/lei_10_11-1+%281%29.pdf
+        - [Law #11/18] https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+%281%29.pdf
+        - https://www.officeholidays.com/countries/angola/
+        - https://www.timeanddate.com/holidays/angola/
     """
 
     country = "AO"

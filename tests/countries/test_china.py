@@ -286,6 +286,22 @@ class TestChina(TestCase):
             ("2007-12-31", "元旦"),
         )
 
+        self.assertNonObservedHolidays(
+            China(categories=PUBLIC, observed=False, years=2007),
+            ("2007-01-01", "元旦"),
+            ("2007-02-18", "春节"),
+            ("2007-02-19", "春节"),
+            ("2007-02-20", "春节"),
+            ("2007-05-01", "劳动节"),
+            ("2007-05-02", "劳动节"),
+            ("2007-05-03", "劳动节"),
+            ("2007-10-01", "国庆节"),
+            ("2007-10-02", "国庆节"),
+            ("2007-10-03", "国庆节"),
+            ("2007-12-30", "元旦"),
+            ("2007-12-31", "元旦"),
+        )
+
     def test_2008_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2008/content_859870.htm
         self.assertHolidays(

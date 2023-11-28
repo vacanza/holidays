@@ -12,27 +12,14 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    MON,
-    _get_nth_weekday_of_month,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
-class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class NewYorkStockExchange(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """
     Official regulations:
     - https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
@@ -43,37 +30,22 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     market = "NYSE"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, NewYorkStockExchangeStaticHolidays)
+        kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed_holiday(self, name: str, dt: date) -> None:
-        if self._is_saturday(dt):
-            dt += td(days=-1)
-            name = f"{name} (Observed)"
-        elif self._is_sunday(dt):
-            dt += td(days=+1)
-            name = f"{name} (Observed)"
-
-        self._add_holiday(name, dt)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year Day.
-        jan_1 = date(year, JAN, 1)
-        if not self._is_saturday(jan_1):
-            self._add_observed_holiday("New Year's Day", jan_1)
-
-        # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
-        # As per Rule 7.2.: check if next year's NYD falls on Saturday and
-        # needs to be observed on Friday (Dec 31 of previous year).
-        dec_31 = date(year, DEC, 31)
-        if self._is_friday(dec_31):
-            self._add_observed_holiday("New Year's Day", dec_31 + td(days=+1))
+        # New Year's Day.
+        name = "New Year's Day"
+        self._move_holiday(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name)
 
         # MLK, 3rd Monday of January.
         if year >= 1998:
@@ -81,15 +53,14 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
         if 1896 <= year <= 1953 or year == 1968:
-            self._add_observed_holiday("Lincoln's Birthday", date(year, FEB, 12))
+            self._move_holiday(self._add_holiday_feb_12("Lincoln's Birthday"))
 
         # WASHINGTON'S BIRTHDAY: Feb 22 (obs) until 1971, then 3rd Mon of Feb
-        self._add_observed_holiday(
-            "Washington's Birthday",
-            date(year, FEB, 22)
-            if year <= 1970
-            else _get_nth_weekday_of_month(3, MON, FEB, self._year),
-        )
+        name = "Washington's Birthday"
+        if year <= 1970:
+            self._move_holiday(self._add_holiday_feb_22(name))
+        else:
+            self._add_holiday_3rd_mon_of_feb(name)
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         if year not in {1898, 1906, 1907}:
@@ -98,23 +69,22 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
         if year >= 1873:
-            self._add_observed_holiday(
-                "Memorial Day",
-                date(year, MAY, 30)
-                if year <= 1970
-                else _get_nth_weekday_of_month(-1, MON, MAY, self._year),
-            )
+            name = "Memorial Day"
+            if year <= 1970:
+                self._move_holiday(self._add_holiday_may_30(name))
+            else:
+                self._add_holiday_last_mon_of_may(name)
 
         # FLAG DAY: June 14th 1916 - 1953
         if 1916 <= year <= 1953:
-            self._add_observed_holiday("Flag Day", date(year, JUN, 14))
+            self._move_holiday(self._add_holiday_jun_14("Flag Day"))
 
         # JUNETEENTH: since 2022
         if year >= 2022:
-            self._add_observed_holiday("Juneteenth National Independence Day", date(year, JUN, 19))
+            self._move_holiday(self._add_holiday_jun_19("Juneteenth National Independence Day"))
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
-        self._add_observed_holiday("Independence Day", date(year, JUL, 4))
+        self._move_holiday(self._add_holiday_jul_4("Independence Day"))
 
         # LABOR DAY - first mon in Sept, since 1887
         if year >= 1887:
@@ -122,7 +92,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
         if 1909 <= year <= 1953:
-            self._add_observed_holiday("Columbus Day", date(year, OCT, 12))
+            self._move_holiday(self._add_columbus_day("Columbus Day"))
 
         # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
@@ -131,13 +101,13 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
         if year in {1918, 1921} or 1934 <= year <= 1953:
-            self._add_observed_holiday("Veteran's Day", date(year, NOV, 11))
+            self._move_holiday(self._add_remembrance_day("Veteran's Day"))
 
         # THXGIVING DAY: 4th Thurs in Nov - closed every year
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
         # XMAS DAY: Dec 25th - every year
-        self._add_observed_holiday("Christmas Day", date(year, DEC, 25))
+        self._move_holiday(self._add_christmas_day("Christmas Day"))
 
         # Special holidays.
         if year == 1914:

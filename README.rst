@@ -365,7 +365,7 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - Czechia
      - CZ
      -
-     - **cs**, en_US, uk
+     - **cs**, en_US, sk, uk
      -
    * - Denmark
      - DK

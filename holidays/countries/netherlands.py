@@ -30,7 +30,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "NL"
     default_language = "nl"
-    supported_categories = {OPTIONAL, PUBLIC}
+    supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "nl", "uk")
 
     def __init__(self, *args, **kwargs):

@@ -29,7 +29,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "DK"
     default_language = "da"
-    supported_categories = {OPTIONAL, PUBLIC}
+    supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("da", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):

@@ -37,7 +37,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     country = "UY"
     default_language = "es"
-    supported_categories = {BANK, PUBLIC}
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):

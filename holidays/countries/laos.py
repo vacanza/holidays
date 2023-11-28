@@ -64,7 +64,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
     """
 
     country = "LA"
-    supported_categories = {BANK, PUBLIC, SCHOOL, WORKDAY}
+    supported_categories = (BANK, PUBLIC, SCHOOL, WORKDAY)
     default_language = "lo"
     # %s (in lieu).
     observed_label = tr("ພັກຊົດເຊີຍ%s")

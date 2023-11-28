@@ -32,7 +32,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     default_language = "tr"
     # Estimated label.
     estimated_label = tr("%s* (*tahmini)")
-    supported_categories = {HALF_DAY, PUBLIC}
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "tr", "uk")
 
     def __init__(self, *args, **kwargs):
