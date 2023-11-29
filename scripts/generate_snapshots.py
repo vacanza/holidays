@@ -22,7 +22,7 @@ from pathlib import Path
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
 
 import holidays
-from holidays import HOLIDAY_NAME_DELIMITER, list_supported_countries, list_supported_financial
+from holidays import list_supported_countries, list_supported_financial
 
 
 class SnapshotGenerator:
@@ -62,15 +62,6 @@ class SnapshotGenerator:
             )
             output.write("\n")  # Get along with pre-commit.
 
-    @staticmethod
-    def update_snapshot(snapshot, data):
-        for dt, name in data.items():
-            holiday_names = set(
-                snapshot[dt].split(HOLIDAY_NAME_DELIMITER) if dt in snapshot else ()
-            )
-            holiday_names.update(name.split(HOLIDAY_NAME_DELIMITER))
-            snapshot[dt] = HOLIDAY_NAME_DELIMITER.join(sorted(holiday_names))
-
     def generate_country_snapshots(self):
         """Generates country snapshots."""
         if len(self.args.market) > 0:
@@ -87,11 +78,10 @@ class SnapshotGenerator:
 
         for country_code in country_list:
             country = getattr(holidays, country_code)
-            snapshot = {}
 
             for subdiv in (None,) + country.subdivisions:
-                self.update_snapshot(
-                    snapshot,
+                file_name = f"{country_code}-{subdiv}" if subdiv else f"{country_code}"
+                self.save(
                     holidays.country_holidays(
                         country_code,
                         subdiv=subdiv,
@@ -99,8 +89,8 @@ class SnapshotGenerator:
                         categories=country.supported_categories,
                         language="en_US",
                     ),
+                    f"snapshots/countries/{file_name}.json",
                 )
-            self.save(snapshot, f"snapshots/countries/{country_code}.json")
 
     def generate_financial_snapshots(self):
         """Generates financial snapshots."""
