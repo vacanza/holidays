@@ -90,7 +90,7 @@ class BelarusStaticHolidays:
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходны (перанесены з %s)")
-    substituted_holidays = {
+    special_holidays = {
         1998: (
             (JAN, 10, JAN, 2),
             (APR, 25, APR, 27),

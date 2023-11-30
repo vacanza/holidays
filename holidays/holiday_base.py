@@ -217,11 +217,9 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict[int, SpecialHoliday] = {}
+    special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
-    substituted_holidays: Dict[int, SubstitutedHoliday] = {}
-    """A list of the country-wide substituted holidays for a specific year."""
     _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
@@ -664,27 +662,6 @@ class HolidayBase(Dict[date, str]):
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
 
-    def _add_substituted_holidays(self):
-        """Populate substituted holidays."""
-        if not hasattr(self, "_has_substituted"):
-            return None
-        if not hasattr(self, "substituted_label") or not hasattr(self, "substituted_date_format"):
-            raise ValueError(
-                f"Country `{self.country}` class should contain `substituted_label` "
-                "and `substituted_date_format`"
-            )
-        substituted_label = self.tr(self.substituted_label)
-        substituted_date_format = self.tr(self.substituted_date_format)
-
-        for mapping_name in self._get_static_holiday_mapping_names():
-            for hol in _normalize_tuple(
-                getattr(self, f"substituted_{mapping_name}", {}).get(self._year, ())
-            ):
-                from_year = hol[0] if len(hol) == 5 else self._year
-                from_month, from_day, to_month, to_day = hol[-4:]
-                from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
-                self._add_holiday(substituted_label % from_date, to_month, to_day)
-
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
         Returns True if `weekday` equals to the date's week day.
@@ -752,35 +729,51 @@ class HolidayBase(Dict[date, str]):
         # Populate subdivision non-static holidays.
         self._add_subdiv_holidays()
 
-        # Populate substituted holidays.
-        self._add_substituted_holidays()
-
-    def _get_static_holiday_mapping_names(self):
+    def _get_special_holiday_mapping_names(self) -> List[str]:
         # Check for general special holidays.
-        mapping_names = ["holidays"]
+        mapping_names = ["special_holidays"]
 
         # Check subdivision specific special holidays.
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            mapping_names.append(f"{subdiv}_holidays")
+            mapping_names.append(f"special_{subdiv}_holidays")
 
         # Check category specific special holidays (both general and per subdivision).
         for category in sorted(self.categories):
-            mapping_names.append(f"{category}_holidays")
+            mapping_names.append(f"special_{category}_holidays")
             if self.subdiv is not None:
-                mapping_names.append(f"{subdiv}_{category}_holidays")
+                mapping_names.append(f"special_{subdiv}_{category}_holidays")
 
         return mapping_names
 
     def _add_special_holidays(self):
+        """Populate special and substituted holidays."""
         if not hasattr(self, "_has_special"):
             return None
 
-        for mapping_name in self._get_static_holiday_mapping_names():
-            for month, day, name in _normalize_tuple(
-                getattr(self, f"special_{mapping_name}", {}).get(self._year, ())
+        if hasattr(self, "_has_substituted"):
+            if not hasattr(self, "substituted_label") or not hasattr(
+                self, "substituted_date_format"
             ):
-                self._add_holiday(name, date(self._year, month, day))
+                raise ValueError(
+                    f"Country `{self.country}` class should contain `substituted_label` "
+                    "and `substituted_date_format`"
+                )
+            substituted_label = self.tr(self.substituted_label)
+            substituted_date_format = self.tr(self.substituted_date_format)
+
+        for mapping_name in self._get_special_holiday_mapping_names():
+            for hol in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
+                if len(hol) == 3:
+                    month, day, name = hol
+                    self._add_holiday(name, date(self._year, month, day))
+                else:
+                    from_year = hol[0] if len(hol) == 5 else self._year
+                    from_month, from_day, to_month, to_day = hol[-4:]
+                    from_date = date(from_year, from_month, from_day).strftime(
+                        substituted_date_format
+                    )
+                    self._add_holiday(substituted_label % from_date, to_month, to_day)
 
     def _add_category_holidays(self):
         for category in sorted(self.categories):

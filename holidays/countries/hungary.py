@@ -135,7 +135,7 @@ class HungaryStaticHolidays:
     substituted_date_format = tr("%Y. %m. %d.")
     # Day off (substituted from %s).
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
-    substituted_holidays = {
+    special_holidays = {
         2010: (DEC, 11, DEC, 24),
         2011: (
             (MAR, 19, MAR, 14),

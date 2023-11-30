@@ -27,9 +27,6 @@ class EntityStub(HolidayBase):
         2222: (FEB, 2, "Test holiday"),
         3333: ((FEB, 2, "Test holiday")),
         4444: (),
-    }
-
-    substituted_holidays = {
         1991: (
             (JAN, 12, JAN, 7),
             (1991, JAN, 13, JAN, 8),
@@ -933,9 +930,10 @@ class TestStr(unittest.TestCase):
 
 class TestSubstitutedHolidays(unittest.TestCase):
     class SubstitutedHolidays(HolidayBase):
+        _has_special = True
         _has_substituted = True
         country = "HB"
-        substituted_holidays = {
+        special_holidays = {
             1991: (
                 (JAN, 12, JAN, 7),
                 (1991, JAN, 13, JAN, 8),
@@ -956,7 +954,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
 
     def test_no_substituted_holidays(self):
         hb = CountryStub1()
-        hb.substituted_holidays = {}
+        hb.special_holidays = {}
         hb._populate(1991)
         self.assertNotIn("1991-01-07", hb)
         self.assertNotIn("1991-01-08", hb)

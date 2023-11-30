@@ -215,16 +215,11 @@ class UkraineStaticHolidays:
         - `1995 <https://zakon.rada.gov.ua/laws/show/13/95>`_
     """
 
-    special_holidays = {
-        # Presidential decree holiday.
-        1995: (JAN, 9, tr("Вихідний згідно указу Президента"))
-    }
-
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")
-    substituted_holidays = {
+    special_holidays = {
         1992: (
             (JAN, 4, JAN, 6),
             (MAY, 16, APR, 27),
@@ -235,6 +230,8 @@ class UkraineStaticHolidays:
         ),
         1994: (MAR, 5, MAR, 7),
         1995: (
+            # Presidential decree holiday.
+            (JAN, 9, tr("Вихідний згідно указу Президента")),
             (MAY, 6, MAY, 8),
             (AUG, 27, AUG, 25),
             (NOV, 4, NOV, 6),
