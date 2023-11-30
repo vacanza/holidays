@@ -80,7 +80,6 @@ class SnapshotGenerator:
             country = getattr(holidays, country_code)
 
             for subdiv in (None,) + country.subdivisions:
-                file_name = f"{country_code}-{subdiv}" if subdiv else f"{country_code}"
                 self.save(
                     holidays.country_holidays(
                         country_code,
@@ -89,7 +88,7 @@ class SnapshotGenerator:
                         categories=country.supported_categories,
                         language="en_US",
                     ),
-                    f"snapshots/countries/{file_name}.json",
+                    f"snapshots/countries/{country_code}_{subdiv or 'COMMON'}.json",
                 )
 
     def generate_financial_snapshots(self):
