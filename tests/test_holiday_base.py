@@ -28,8 +28,8 @@ class EntityStub(HolidayBase):
         3333: ((FEB, 2, "Test holiday")),
         4444: (),
         1991: (
-            (JAN, 12, JAN, 7),
-            (1991, JAN, 13, JAN, 8),
+            (JAN, 7, JAN, 12),
+            (JAN, 8, JAN, 13, 1991),
         ),
     }
     substituted_date_format = "%d/%m/%Y"
@@ -935,8 +935,8 @@ class TestSubstitutedHolidays(unittest.TestCase):
         country = "HB"
         special_holidays = {
             1991: (
-                (JAN, 12, JAN, 7),
-                (1991, JAN, 13, JAN, 8),
+                (JAN, 7, JAN, 12),
+                (JAN, 8, JAN, 13, 1991),
             ),
         }
 

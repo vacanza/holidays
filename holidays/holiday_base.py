@@ -768,8 +768,8 @@ class HolidayBase(Dict[date, str]):
                     month, day, name = hol
                     self._add_holiday(name, date(self._year, month, day))
                 else:
-                    from_year = hol[0] if len(hol) == 5 else self._year
-                    from_month, from_day, to_month, to_day = hol[-4:]
+                    from_year = hol[4] if len(hol) == 5 else self._year
+                    to_month, to_day, from_month, from_day = hol[:4]
                     from_date = date(from_year, from_month, from_day).strftime(
                         substituted_date_format
                     )
