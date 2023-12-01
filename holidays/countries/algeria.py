@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import IslamicHolidays, InternationalHolidays
+from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 

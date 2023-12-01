@@ -26,9 +26,10 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     (https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige).
     Initialize this class with include_sundays=False
     to not include sundays as a holiday.
+
     Primary sources:
-    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige and
-    http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
+        - https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige
+        - http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253  # noqa: E501
     """
 
     country = "SE"
@@ -37,9 +38,8 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def __init__(self, include_sundays=True, *args, **kwargs):
         """
-        :param include_sundays: Whether to consider sundays as a holiday
-        (which they are in Sweden)
-        :param kwargs:
+        :param include_sundays:
+            Whether to consider sundays as a holiday (which they are in Sweden)
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)

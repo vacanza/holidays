@@ -105,16 +105,20 @@ class ObservedHolidayBase(HolidayBase):
     def _is_observed(self, *args, **kwargs) -> bool:
         return self._observed_since is None or self._year >= self._observed_since
 
+    def _get_next_workday(self, dt: date, delta: int = +1) -> date:
+        dt_work = dt + td(days=delta)
+        while dt_work.year == self._year:
+            if dt_work in self or self._is_weekend(dt_work):  # type: ignore[operator]
+                dt_work += td(days=delta)
+            else:
+                return dt_work
+        return dt
+
     def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
         delta = rule.get(dt.weekday(), 0)
         if delta != 0:
             if abs(delta) == 7:
-                delta //= 7
-                dt += td(days=delta)
-                while dt.year == self._year and (
-                    dt in self or self._is_weekend(dt)  # type: ignore[operator]
-                ):
-                    dt += td(days=delta)
+                dt = self._get_next_workday(dt, delta // 7)
             else:
                 dt += td(days=delta)
         return dt
@@ -162,9 +166,12 @@ class ObservedHolidayBase(HolidayBase):
     def _add_special_holidays(self):
         super()._add_special_holidays()
 
-        if self.observed:
+        if not self.observed:
+            return None
+
+        for mapping_name in self._get_static_holiday_mapping_names():
             for month, day, name in _normalize_tuple(
-                getattr(self, "special_holidays_observed", {}).get(self._year, ())
+                getattr(self, f"special_{mapping_name}_observed", {}).get(self._year, ())
             ):
                 self._add_holiday(
                     self.tr(self.observed_label) % self.tr(name), date(self._year, month, day)

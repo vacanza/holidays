@@ -34,9 +34,8 @@ Your PR description goes here.
 -->
 
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] I've added references to all holidays information sources used in this PR
-- [ ] The code style looks good: `make pre-commit` command generates no changes
-- [ ] All tests pass locally: `make test`, `make tox` (we strongly encourage adding tests to your code)
+- [ ] I've run `make pre-commit`, it didn't generate any changes
+- [ ] I've run `make test`, all tests passed locally
 
 <!--
   Thanks again for your contribution!

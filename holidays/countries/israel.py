@@ -50,7 +50,7 @@ class Israel(ObservedHolidayBase):
     default_language = "he"
     # %s (Observed).
     observed_label = tr("(נצפה) %s")
-    supported_categories = {OPTIONAL, PUBLIC, SCHOOL}
+    supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
     supported_languages = ("en_US", "he", "uk")
 
     def __init__(self, *args, **kwargs):

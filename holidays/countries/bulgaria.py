@@ -46,7 +46,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "bg"
     # %s (Observed).
     observed_label = tr("%s (почивен ден)")
-    supported_categories = {PUBLIC, SCHOOL}
+    supported_categories = (PUBLIC, SCHOOL)
     supported_languages = ("bg", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):

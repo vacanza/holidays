@@ -16,10 +16,11 @@ Basics
 
 When contributing with fixes and new features, please start forking/branching
 from the `beta branch`_ to work on the latest code and reduce merging issues.
-
-Contributed PRs_ are required to include valid test coverage **(the goal is
-100% coverage)** in order to be merged. Please don't hesitate to ask for
-help if you'read struggling with tests.
+If you add/change holiday official dates or names you must include references to
+all sources (government sites, archived web pages, wiki pages, etc) you've used
+while working on this PR. Contributed PRs_ are required to include valid test
+coverage in order to be merged. Please don't hesitate to ask for help if you
+need one with the tests.
 
 Thanks a lot for your support.
 
@@ -77,7 +78,7 @@ Use pytest directly if you need ``-s`` option:
 
 
 Localization
---------------------------
+------------
 .. _ISO 639-1 codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 In order to add or update existing holiday names translation you'll need to

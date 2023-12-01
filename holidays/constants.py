@@ -51,19 +51,3 @@ CHRISTIAN = "christian"
 HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
-
-ALL_CATEGORIES = {
-    ARMED_FORCES,
-    BANK,
-    CHINESE,
-    CHRISTIAN,
-    GOVERNMENT,
-    HALF_DAY,
-    HEBREW,
-    HINDU,
-    ISLAMIC,
-    OPTIONAL,
-    PUBLIC,
-    SCHOOL,
-    WORKDAY,
-}
