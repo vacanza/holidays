@@ -222,7 +222,7 @@ class TongaStaticHolidays:
         ),
     }
     # Special Case for 2021
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         # Boxing Day.
         2021: (DEC, 27, tr("'Aho 2 'o e Kilisimasi")),
     }

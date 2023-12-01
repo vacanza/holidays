@@ -614,7 +614,7 @@ class SouthKoreaStaticHolidays:
     }
     # Pre-2014 Alternate Holidays
     # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         1959: (APR, 6, tr("식목일")),
         1960: (
             (JUL, 18, tr("제헌절")),
