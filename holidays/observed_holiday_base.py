@@ -169,9 +169,9 @@ class ObservedHolidayBase(HolidayBase):
         if not self.observed:
             return None
 
-        for mapping_name in self._get_static_holiday_mapping_names():
+        for mapping_name in self._get_special_holiday_mapping_names():
             for month, day, name in _normalize_tuple(
-                getattr(self, f"special_{mapping_name}_observed", {}).get(self._year, ())
+                getattr(self, f"{mapping_name}_observed", {}).get(self._year, ())
             ):
                 self._add_holiday(
                     self.tr(self.observed_label) % self.tr(name), date(self._year, month, day)
