@@ -236,51 +236,49 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
 
 
 class AzerbaijanStaticHolidays:
-    special_public_holidays = {
-        # Presidential elections.
-        2018: (APR, 11, tr("Prezidenti seçkiləri")),
-        # Municipal elections.
-        2019: (DEC, 27, tr("Bələdiyyə seçkiləri")),
-    }
-
     eid_al_adha = tr("Qurban bayrami")
-    special_public_holidays_observed = {
-        2007: (JAN, 3, eid_al_adha),
-        2072: (JAN, 5, eid_al_adha),
-    }
-
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("İstirahət günü (%s ilə əvəz edilmişdir)")
-    substituted_public_holidays = {
-        2011: (AUG, 27, AUG, 29),
+
+    special_public_holidays = {
+        2011: (AUG, 29, AUG, 27),
         2013: (
-            (2012, DEC, 29, JAN, 3),
-            (2012, DEC, 30, JAN, 4),
+            (JAN, 3, DEC, 29, 2012),
+            (JAN, 4, DEC, 30, 2012),
         ),
         2014: (
-            (2013, DEC, 28, JAN, 3),
-            (2013, DEC, 29, JAN, 6),
+            (JAN, 3, DEC, 28, 2013),
+            (JAN, 6, DEC, 29, 2013),
         ),
+        # Presidential elections.
+        2018: (APR, 11, tr("Prezidenti seçkiləri")),
+        # Municipal elections.
+        2019: (DEC, 27, tr("Bələdiyyə seçkiləri")),
         2020: (
-            (MAR, 29, MAR, 27),
-            (MAY, 30, MAY, 27),
-            (2019, DEC, 28, JAN, 3),
-            (2019, DEC, 29, JAN, 6),
+            (MAR, 27, MAR, 29),
+            (MAY, 27, MAY, 30),
+            (JAN, 3, DEC, 28, 2019),
+            (JAN, 6, DEC, 29, 2019),
         ),
         2021: (
-            (MAY, 8, MAY, 11),
-            (MAY, 16, MAY, 12),
-            (JUL, 17, JUL, 19),
+            (MAY, 11, MAY, 8),
+            (MAY, 12, MAY, 16),
+            (JUL, 19, JUL, 17),
         ),
         2022: (
-            (MAR, 5, MAR, 7),
-            (NOV, 5, NOV, 7),
+            (MAR, 7, MAR, 5),
+            (NOV, 7, NOV, 5),
         ),
         2023: (
-            (JUN, 24, JUN, 27),
-            (JUN, 25, JUN, 30),
-            (NOV, 4, NOV, 10),
+            (JUN, 27, JUN, 24),
+            (JUN, 30, JUN, 25),
+            (NOV, 10, NOV, 4),
         ),
+    }
+
+    special_public_holidays_observed = {
+        2007: (JAN, 3, eid_al_adha),
+        2072: (JAN, 5, eid_al_adha),
     }
