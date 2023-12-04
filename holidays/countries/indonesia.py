@@ -50,7 +50,7 @@ class Indonesia(
     default_language = "id"
     estimated_label = tr("%s* (*perkiraan)")
     supported_languages = ("en_US", "id", "uk")
-    supported_categories = {GOVERNMENT, PUBLIC}
+    supported_categories = (GOVERNMENT, PUBLIC)
 
     def __init__(self, *args, **kwargs):
         BuddhistCalendarHolidays.__init__(self, cls=IndonesiaBuddhistHolidays, show_estimated=True)

@@ -1,0 +1,77 @@
+# Czechia holidays sk localization.
+# This file is distributed under the same license as the Python Holidays package.
+# Authors: Jose Riha <jose1711@gmail.com>, (c) 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.38\n"
+"POT-Creation-Date: 2023-11-24 00:14+0100\n"
+"PO-Revision-Date: 2023-11-24 00:17+0100\n"
+"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. Independent Czech State Restoration Day.
+msgid "Den obnovy samostatného českého státu"
+msgstr "Deň obnovy samostatného českého štátu"
+
+#. New Year's Day.
+msgid "Nový rok"
+msgstr "Nový rok"
+
+#. Good Friday.
+msgid "Velký pátek"
+msgstr "Veľký piatok"
+
+#. Easter Monday.
+msgid "Velikonoční pondělí"
+msgstr "Veľkonočný pondelok"
+
+#. Labor Day.
+msgid "Svátek práce"
+msgstr "Sviatok práce"
+
+#. Victory Day.
+msgid "Den vítězství"
+msgstr "Deň víťazstva"
+
+#. Day of Victory over Fascism.
+msgid "Den vítězství nad hitlerovským fašismem"
+msgstr "Deň víťazstva nad hitlerovským fašizmom"
+
+#. Saints Cyril and Methodius Day.
+msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
+msgstr "Deň slovanských vierozvestcov Cyrila a Metoda"
+
+#. Jan Hus Day.
+msgid "Den upálení mistra Jana Husa"
+msgstr "Deň upálenia majstra Jána Husa"
+
+#. Statehood Day.
+msgid "Den české státnosti"
+msgstr "Deň českej štátnosti"
+
+#. Independent Czechoslovak State Day.
+msgid "Den vzniku samostatného československého státu"
+msgstr "Deň vzniku samostatného československého štátu"
+
+#. Struggle for Freedom and Democracy Day.
+msgid "Den boje za svobodu a demokracii"
+msgstr "Deň boja za slobodu a demokraciu"
+
+#. Christmas Eve.
+msgid "Štědrý den"
+msgstr "Štedrý deň"
+
+#. Christmas Day.
+msgid "1. svátek vánoční"
+msgstr "1. sviatok vianočný"
+
+#. Second Day of Christmas.
+msgid "2. svátek vánoční"
+msgstr "2. sviatok vianočný"

@@ -21,11 +21,9 @@ from holidays.holiday_base import HolidayBase
 class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-    - https://pt.wikipedia.org/wiki/Feriados_no_Brasil
-    - Decreto n. 155-B, de 14.01.1890:
-        https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html
-    - Decreto n. 19.488, de 15.12.1930:
-        https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html
+        - https://pt.wikipedia.org/wiki/Feriados_no_Brasil
+        - `Decreto n. 155-B, de 14.01.1890 <https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html>`_  # noqa: E501
+        - `Decreto n. 19.488, de 15.12.1930 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html>`_  # noqa: E501
     """
 
     country = "BR"
@@ -58,7 +56,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SP",  # São Paulo
         "TO",  # Tocantins
     )
-    supported_categories = {OPTIONAL, PUBLIC}
+    supported_categories = (OPTIONAL, PUBLIC)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

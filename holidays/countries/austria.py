@@ -19,7 +19,7 @@ from holidays.holiday_base import HolidayBase
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AT"
     default_language = "de"
-    supported_categories = {BANK, PUBLIC}
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
     subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 

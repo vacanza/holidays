@@ -34,56 +34,10 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
+    Ukraine holidays.
+
     Current holidays list:
-    https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
-
-    Substituted holidays:
-    1992 - https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF
-    1993 - https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/725-92-%D0%BF
-    1994 - https://zakon.rada.gov.ua/laws/show/98-94-%D0%BF
-    1995 - https://zakon.rada.gov.ua/laws/show/852-95-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF
-    1996 - https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF
-    1997 - https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF
-    1999 - https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF
-    2000 - https://zakon.rada.gov.ua/laws/show/1251-2000-%D0%BF,
-           https://zakon.rada.gov.ua/laws/show/717-2000-%D0%BF
-    2001 - https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80,
-           https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF
-    2002,
-    2003 - https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80,
-           https://zakon.rada.gov.ua/laws/show/705-2002-%D1%80
-    2004 - https://zakon.rada.gov.ua/laws/show/773-2003-%D1%80
-    2005 - https://zakon.rada.gov.ua/laws/show/936-2004-%D1%80,
-           https://zakon.rada.gov.ua/laws/show/133-2005-%D1%80
-    2006 - https://zakon.rada.gov.ua/laws/show/490-2005-%D1%80,
-           https://zakon.rada.gov.ua/laws/show/562-2005-%D1%80
-    2007 - https://zakon.rada.gov.ua/laws/show/612-2006-%D1%80
-    2008 - https://zakon.rada.gov.ua/laws/show/1059-2007-%D1%80,
-           https://zakon.rada.gov.ua/laws/show/538-2008-%D1%80
-    2009 - https://zakon.rada.gov.ua/laws/show/1458-2008-%D1%80
-    2010 - https://zakon.rada.gov.ua/laws/show/1412-2009-%D1%80
-    2011 - https://zakon.rada.gov.ua/laws/show/2130-2010-%D1%80
-    2012 - https://zakon.rada.gov.ua/laws/show/1210-2011-%D1%80
-    2013 - https://zakon.rada.gov.ua/laws/show/1043-2012-%D1%80
-    2014 - https://zakon.rada.gov.ua/laws/show/920-2013-%D1%80
-    2015 - https://zakon.rada.gov.ua/laws/show/1084-2014-%D1%80
-    2016 - https://zakon.rada.gov.ua/laws/show/1155-2015-%D1%80
-    2017 - https://zakon.rada.gov.ua/laws/show/850-2016-%D1%80
-    2018 - https://zakon.rada.gov.ua/laws/show/1-2018-%D1%80
-    2019 - https://zakon.rada.gov.ua/laws/show/7-2019-%D1%80
-    2020 - https://zakon.rada.gov.ua/laws/show/995-2019-%D1%80
-    2021 - https://zakon.rada.gov.ua/laws/show/1191-2020-%D1%80
-    2022 - https://zakon.rada.gov.ua/laws/show/1004-2021-%D1%80
-
-    Special holidays:
-    1995 - https://zakon.rada.gov.ua/laws/show/13/95
+        - https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
     """
 
     country = "UA"
@@ -212,161 +166,207 @@ class UKR(Ukraine):
 
 
 class UkraineStaticHolidays:
-    special_holidays = {
-        # Presidential decree holiday.
-        1995: (JAN, 9, tr("Вихідний згідно указу Президента"))
-    }
+    """
+        Substituted holidays:
+            - `1992 [1] <https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF>`_
+            - `1992 [2] <https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF>`_
+            - `1993 [1] <https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF>`_
+            - `1993 [2] <https://zakon.rada.gov.ua/laws/show/725-92-%D0%BF>`_
+            - `1994 <https://zakon.rada.gov.ua/laws/show/98-94-%D0%BF>`_
+            - `1995 [1] <https://zakon.rada.gov.ua/laws/show/852-95-%D0%BF>`_
+            - `1995 [2] <https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF>`_
+            - `1995 [3] <https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF>`_
+            - `1996 <https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF>`_
+            - `1997[1] <https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF>`_
+            - `1997[2] <https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF>`_
+            - `1999 [1] <https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF>`_,
+            - `1999 [2] <https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF>`_,
+            - `1999 [3] <https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF>`_
+            - `2000 [1] <https://zakon.rada.gov.ua/laws/show/1251-2000-%D0%BF>`_
+            - `2000 [2] <https://zakon.rada.gov.ua/laws/show/717-2000-%D0%BF>`_
+            - `2001 [1] <https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80>`_
+            - `2001 [2] <https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF>`_
+            - `2002 <https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80>`_
+            - `2002 - 2003 <https:/zakon.rada.gov.ua/laws/show/705-2002-%D1%80>`_
+            - `2004 <https://zakon.rada.gov.ua/laws/show/773-2003-%D1%80>`_
+            - `2005 [1] <https://zakon.rada.gov.ua/laws/show/936-2004-%D1%80>`_
+            - `2005 [2] <https://zakon.rada.gov.ua/laws/show/133-2005-%D1%80>`_
+            - `2006 [1] <https://zakon.rada.gov.ua/laws/show/490-2005-%D1%80>`_
+            - `2006 [2] <https://zakon.rada.gov.ua/laws/show/562-2005-%D1%80>`_
+            - `2007 <https://zakon.rada.gov.ua/laws/show/612-2006-%D1%80>`_
+            - `2008 [1] <https://zakon.rada.gov.ua/laws/show/1059-2007-%D1%80>`_
+            - `2008 [2] <https://zakon.rada.gov.ua/laws/show/538-2008-%D1%80>`_
+            - `2009 <https://zakon.rada.gov.ua/laws/show/1458-2008-%D1%80>`_
+            - `2010 <https://zakon.rada.gov.ua/laws/show/1412-2009-%D1%80>`_
+            - `2011 <https://zakon.rada.gov.ua/laws/show/2130-2010-%D1%80>`_
+            - `2012 <https://zakon.rada.gov.ua/laws/show/1210-2011-%D1%80>`_
+            - `2013 <https://zakon.rada.gov.ua/laws/show/1043-2012-%D1%80>`_
+            - `2014 <https://zakon.rada.gov.ua/laws/show/920-2013-%D1%80>`_
+            - `2015 <https://zakon.rada.gov.ua/laws/show/1084-2014-%D1%80>`_
+            - `2016 <https://zakon.rada.gov.ua/laws/show/1155-2015-%D1%80>`_
+            - `2017 <https://zakon.rada.gov.ua/laws/show/850-2016-%D1%80>`_
+            - `2018 <https://zakon.rada.gov.ua/laws/show/1-2018-%D1%80>`_
+            - `2019 <https://zakon.rada.gov.ua/laws/show/7-2019-%D1%80>`_
+            - `2020 <https://zakon.rada.gov.ua/laws/show/995-2019-%D1%80>`_
+            - `2021 <https://zakon.rada.gov.ua/laws/show/1191-2020-%D1%80>`_
+            - `2022 <https://zakon.rada.gov.ua/laws/show/1004-2021-%D1%80>`_
+
+    Special holidays:
+        - `1995 <https://zakon.rada.gov.ua/laws/show/13/95>`_
+    """
 
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")
-    substituted_holidays = {
+    special_holidays = {
         1992: (
-            (JAN, 4, JAN, 6),
-            (MAY, 16, APR, 27),
+            (JAN, 6, JAN, 4),
+            (APR, 27, MAY, 16),
         ),
         1993: (
-            (JAN, 10, JAN, 8),
-            (AUG, 21, AUG, 23),
+            (JAN, 8, JAN, 10),
+            (AUG, 23, AUG, 21),
         ),
-        1994: (MAR, 5, MAR, 7),
+        1994: (MAR, 7, MAR, 5),
         1995: (
-            (MAY, 6, MAY, 8),
-            (AUG, 27, AUG, 25),
-            (NOV, 4, NOV, 6),
+            # Presidential decree holiday.
+            (JAN, 9, tr("Вихідний згідно указу Президента")),
+            (MAY, 8, MAY, 6),
+            (AUG, 25, AUG, 27),
+            (NOV, 6, NOV, 4),
         ),
         1996: (
-            (MAY, 5, MAY, 3),
-            (MAY, 12, MAY, 10),
+            (MAY, 3, MAY, 5),
+            (MAY, 10, MAY, 12),
         ),
         1997: (
-            (1996, DEC, 28, JAN, 2),
-            (JAN, 4, JAN, 6),
-            (APR, 19, APR, 29),
-            (MAY, 17, APR, 30),
+            (JAN, 2, DEC, 28, 1996),
+            (JAN, 6, JAN, 4),
+            (APR, 29, APR, 19),
+            (APR, 30, MAY, 17),
         ),
         1999: (
-            (JAN, 10, JAN, 8),
-            (APR, 24, APR, 12),
-            (AUG, 21, AUG, 23),
+            (JAN, 8, JAN, 10),
+            (APR, 12, APR, 24),
+            (AUG, 23, AUG, 21),
         ),
         2000: (
-            (MAY, 6, MAY, 8),
-            (AUG, 27, AUG, 25),
+            (MAY, 8, MAY, 6),
+            (AUG, 25, AUG, 27),
         ),
         2001: (
-            (MAR, 11, MAR, 9),
-            (APR, 28, APR, 30),
-            (MAY, 5, MAY, 10),
-            (MAY, 6, MAY, 11),
-            (JUN, 23, JUN, 29),
-            (DEC, 29, DEC, 31),
+            (MAR, 9, MAR, 11),
+            (APR, 30, APR, 28),
+            (MAY, 10, MAY, 5),
+            (MAY, 11, MAY, 6),
+            (JUN, 29, JUN, 23),
+            (DEC, 31, DEC, 29),
         ),
         2002: (
-            (MAY, 11, MAY, 3),
-            (DEC, 28, DEC, 30),
-            (DEC, 29, DEC, 31),
+            (MAY, 3, MAY, 11),
+            (DEC, 30, DEC, 28),
+            (DEC, 31, DEC, 29),
         ),
-        2003: (JAN, 4, JAN, 6),
+        2003: (JAN, 6, JAN, 4),
         2004: (
-            (JAN, 10, JAN, 2),
-            (JAN, 17, JAN, 5),
-            (JAN, 31, JAN, 6),
-            (AUG, 21, AUG, 23),
+            (JAN, 2, JAN, 10),
+            (JAN, 5, JAN, 17),
+            (JAN, 6, JAN, 31),
+            (AUG, 23, AUG, 21),
         ),
         2005: (
-            (MAR, 5, MAR, 7),
-            (MAY, 14, MAY, 10),
-            (JUN, 25, JUN, 27),
+            (MAR, 7, MAR, 5),
+            (MAY, 10, MAY, 14),
+            (JUN, 27, JUN, 25),
         ),
         2006: (
-            (JAN, 21, JAN, 3),
-            (FEB, 4, JAN, 4),
-            (FEB, 18, JAN, 5),
-            (MAR, 11, JAN, 6),
-            (MAY, 6, MAY, 8),
-            (SEP, 9, AUG, 25),
+            (JAN, 3, JAN, 21),
+            (JAN, 4, FEB, 4),
+            (JAN, 5, FEB, 18),
+            (JAN, 6, MAR, 11),
+            (MAY, 8, MAY, 6),
+            (AUG, 25, SEP, 9),
         ),
         2007: (
-            (JAN, 20, JAN, 2),
-            (JAN, 27, JAN, 3),
-            (FEB, 10, JAN, 4),
-            (FEB, 24, JAN, 5),
-            (MAR, 3, MAR, 9),
-            (APR, 28, APR, 30),
-            (JUN, 16, JUN, 29),
-            (DEC, 29, DEC, 31),
+            (JAN, 2, JAN, 20),
+            (JAN, 3, JAN, 27),
+            (JAN, 4, FEB, 10),
+            (JAN, 5, FEB, 24),
+            (MAR, 9, MAR, 3),
+            (APR, 30, APR, 28),
+            (JUN, 29, JUN, 16),
+            (DEC, 31, DEC, 29),
         ),
         2008: (
-            (JAN, 12, JAN, 2),
-            (JAN, 26, JAN, 3),
-            (FEB, 9, JAN, 4),
-            (MAY, 17, APR, 29),
-            (MAY, 31, APR, 30),
+            (JAN, 2, JAN, 12),
+            (JAN, 3, JAN, 26),
+            (JAN, 4, FEB, 9),
+            (APR, 29, MAY, 17),
+            (APR, 30, MAY, 31),
         ),
         2009: (
-            (JAN, 10, JAN, 2),
-            (JAN, 24, JAN, 5),
-            (FEB, 7, JAN, 6),
+            (JAN, 2, JAN, 10),
+            (JAN, 5, JAN, 24),
+            (JAN, 6, FEB, 7),
         ),
         2010: (
-            (JAN, 30, JAN, 4),
-            (FEB, 13, JAN, 5),
-            (FEB, 27, JAN, 6),
-            (MAR, 13, JAN, 8),
-            (AUG, 21, AUG, 23),
+            (JAN, 4, JAN, 30),
+            (JAN, 5, FEB, 13),
+            (JAN, 6, FEB, 27),
+            (JAN, 8, MAR, 13),
+            (AUG, 23, AUG, 21),
         ),
         2011: (
-            (MAR, 12, MAR, 7),
-            (JUN, 25, JUN, 27),
+            (MAR, 7, MAR, 12),
+            (JUN, 27, JUN, 25),
         ),
         2012: (
-            (MAR, 3, MAR, 9),
-            (APR, 28, APR, 20),
-            (JUL, 7, JUN, 29),
-            (DEC, 29, DEC, 31),
+            (MAR, 9, MAR, 3),
+            (APR, 20, APR, 28),
+            (JUN, 29, JUL, 7),
+            (DEC, 31, DEC, 29),
         ),
         2013: (
-            (MAY, 18, MAY, 3),
-            (JUN, 1, MAY, 10),
+            (MAY, 3, MAY, 18),
+            (MAY, 10, JUN, 1),
         ),
         2014: (
-            (JAN, 11, JAN, 2),
-            (JAN, 25, JAN, 3),
-            (FEB, 8, JAN, 6),
+            (JAN, 2, JAN, 11),
+            (JAN, 3, JAN, 25),
+            (JAN, 6, FEB, 8),
         ),
         2015: (
-            (JAN, 17, JAN, 2),
-            (JAN, 31, JAN, 8),
-            (FEB, 14, JAN, 9),
+            (JAN, 2, JAN, 17),
+            (JAN, 8, JAN, 31),
+            (JAN, 9, FEB, 14),
         ),
         2016: (
-            (JAN, 16, JAN, 8),
-            (MAR, 12, MAR, 7),
-            (JUL, 2, JUN, 27),
+            (JAN, 8, JAN, 16),
+            (MAR, 7, MAR, 12),
+            (JUN, 27, JUL, 2),
         ),
         2017: (
-            (MAY, 13, MAY, 8),
-            (AUG, 19, AUG, 25),
+            (MAY, 8, MAY, 13),
+            (AUG, 25, AUG, 19),
         ),
         2018: (
-            (MAR, 3, MAR, 9),
-            (MAY, 5, APR, 30),
-            (JUN, 23, JUN, 29),
-            (DEC, 22, DEC, 24),
-            (DEC, 29, DEC, 31),
+            (MAR, 9, MAR, 3),
+            (APR, 30, MAY, 5),
+            (JUN, 29, JUN, 23),
+            (DEC, 24, DEC, 22),
+            (DEC, 31, DEC, 29),
         ),
         2019: (
-            (MAY, 11, APR, 30),
-            (DEC, 21, DEC, 30),
-            (DEC, 28, DEC, 31),
+            (APR, 30, MAY, 11),
+            (DEC, 30, DEC, 21),
+            (DEC, 31, DEC, 28),
         ),
-        2020: (JAN, 11, JAN, 6),
+        2020: (JAN, 6, JAN, 11),
         2021: (
-            (JAN, 16, JAN, 8),
-            (AUG, 28, AUG, 23),
-            (OCT, 23, OCT, 15),
+            (JAN, 8, JAN, 16),
+            (AUG, 23, AUG, 28),
+            (OCT, 15, OCT, 23),
         ),
-        2022: (MAR, 12, MAR, 7),
+        2022: (MAR, 7, MAR, 12),
     }

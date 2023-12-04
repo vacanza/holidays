@@ -29,7 +29,7 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "el"
     # %s (Observed).
     observed_label = tr("%s (παρατηρήθηκε)")
-    supported_categories = {HALF_DAY, PUBLIC}
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("el", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):

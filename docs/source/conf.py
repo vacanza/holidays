@@ -189,7 +189,7 @@ autodoc_default_options = {
     "undoc-members": True,
     # 'private-members': False,  # default
     # 'special-members': False,  # default
-    "inherited-members": True,
+    "inherited-members": False,  # Disabled due to performance concerns.
     "show-inheritance": True,
     # 'ignore-module-all': False,  # default
     # 'imported-members': False, # default
