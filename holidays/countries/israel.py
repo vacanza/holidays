@@ -137,7 +137,7 @@ class Israel(ObservedHolidayBase):
             if not is_observed:
                 self._add_holiday(name, remembrance_day_dt)
 
-        if self._year >= 1967:
+        if self._year >= 1998:
             # Yom Yerushalayim (Jerusalem Day).
             self._add_holiday(tr("יום ירושלים"), self._get_holiday(LAG_BAOMER) + td(days=+10))
 
