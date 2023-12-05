@@ -90,6 +90,6 @@ class IRL(Ireland):
 
 
 class IrelandStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2022: (MAR, 18, "Day of Remembrance and Recognition"),
     }

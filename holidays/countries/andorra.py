@@ -84,32 +84,32 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two("Saint Stephen's Day")
 
     # Canillo.
-    def _add_subdiv_02_holidays(self):
+    def _populate_subdiv_02_public_holidays(self):
         name = "Canillo Annual Festival"
         third_sat_of_july = self._add_holiday_3rd_sat_of_jul(name)
         self._add_holiday(name, third_sat_of_july + td(days=+1))
         self._add_holiday(name, third_sat_of_july + td(days=+2))
 
     # Encamp.
-    def _add_subdiv_03_holidays(self):
+    def _populate_subdiv_03_public_holidays(self):
         name = "Encamp Annual Festival"
         aug_15 = self._add_holiday_aug_15(name)
         self._add_holiday(name, aug_15 + td(days=+1))
 
     # La Massana.
-    def _add_subdiv_04_holidays(self):
+    def _populate_subdiv_04_public_holidays(self):
         name = "La Massana Annual Festival"
         aug_15 = self._add_holiday_aug_15(name)
         self._add_holiday(name, aug_15 + td(days=+1))
 
     # Ordino.
-    def _add_subdiv_05_holidays(self):
+    def _populate_subdiv_05_public_holidays(self):
         name = "Ordino Annual Festival"
         aug_15 = self._add_holiday_aug_15(name)
         self._add_holiday(name, aug_15 + td(days=+1))
 
     # Sant Julià de Lòria.
-    def _add_subdiv_06_holidays(self):
+    def _populate_subdiv_06_public_holidays(self):
         name = "Sant Julià de Lòria Annual Festival"
         last_fri_of_july = self._add_holiday_1st_fri_before_jul_29(name)
         self._add_holiday(name, last_fri_of_july + td(days=+1))
@@ -117,14 +117,14 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(name, last_fri_of_july + td(days=+3))
 
     # Andorra la Vella.
-    def _add_subdiv_07_holidays(self):
+    def _populate_subdiv_07_public_holidays(self):
         name = "Andorra la Vella Annual Festival"
         first_sat_of_august = self._add_holiday_1st_sat_of_aug(name)
         self._add_holiday(name, first_sat_of_august + td(days=+1))
         self._add_holiday(name, first_sat_of_august + td(days=+2))
 
     # Escaldes-Engordany.
-    def _add_subdiv_08_holidays(self):
+    def _populate_subdiv_08_public_holidays(self):
         name = "Escaldes-Engordany Annual Festival"
         jul_25 = self._add_holiday_jul_25(name)
         self._add_holiday(name, jul_25 + td(days=+1))

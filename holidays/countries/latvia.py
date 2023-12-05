@@ -115,7 +115,7 @@ class LatviaStaticHolidays:
         "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada "
         "Pasaules hokeja čempionātā"
     )
-    special_holidays = {
+    special_public_holidays = {
         2018: (
             (JUL, 9, song_and_dance_festival_closing_day),
             (SEP, 24, pope_francis_pastoral_visit_day),

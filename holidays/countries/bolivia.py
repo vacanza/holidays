@@ -123,39 +123,39 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Navidad")))
 
-    def _add_subdiv_b_holidays(self):
+    def _populate_subdiv_b_public_holidays(self):
         # Beni Day.
         self._add_holiday_nov_18(tr("Día del departamento de Beni"))
 
-    def _add_subdiv_c_holidays(self):
+    def _populate_subdiv_c_public_holidays(self):
         # Cochabamba Day.
         self._add_holiday_sep_14(tr("Día del departamento de Cochabamba"))
 
-    def _add_subdiv_h_holidays(self):
+    def _populate_subdiv_h_public_holidays(self):
         # Chuquisaca Day.
         self._add_holiday_may_25(tr("Día del departamento de Chuquisaca"))
 
-    def _add_subdiv_l_holidays(self):
+    def _populate_subdiv_l_public_holidays(self):
         # La Paz Day.
         self._add_holiday_jul_16(tr("Día del departamento de La Paz"))
 
-    def _add_subdiv_n_holidays(self):
+    def _populate_subdiv_n_public_holidays(self):
         # Pando Day.
         self._add_holiday_oct_11(tr("Día del departamento de Pando"))
 
-    def _add_subdiv_p_holidays(self):
+    def _populate_subdiv_p_public_holidays(self):
         # Potosí Day.
         self._add_holiday_nov_10(tr("Día del departamento de Potosí"))
 
-    def _add_subdiv_o_holidays(self):
+    def _populate_subdiv_o_public_holidays(self):
         # Carnival in Oruro.
         self._add_holiday(tr("Carnaval de Oruro"), self._easter_sunday + td(days=-51))
 
-    def _add_subdiv_s_holidays(self):
+    def _populate_subdiv_s_public_holidays(self):
         # Santa Cruz Day.
         self._add_holiday_sep_24(tr("Día del departamento de Santa Cruz"))
 
-    def _add_subdiv_t_holidays(self):
+    def _populate_subdiv_t_public_holidays(self):
         # La Tablada.
         self._add_holiday_apr_15(tr("La Tablada"))
 

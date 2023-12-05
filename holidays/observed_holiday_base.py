@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from typing import Dict, Optional, Tuple, Set
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
-from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import DateArg, HolidayBase
 
 
@@ -163,16 +162,32 @@ class ObservedHolidayBase(HolidayBase):
             else:
                 self._add_observed(dt)
 
-    def _add_special_holidays(self):
-        super()._add_special_holidays()
-
+    def _populate_common_holidays(self):
+        """Populate entity common holidays."""
+        super()._populate_common_holidays()
         if not self.observed:
             return None
 
-        for mapping_name in self._get_special_holiday_mapping_names():
-            for month, day, name in _normalize_tuple(
-                getattr(self, f"{mapping_name}_observed", {}).get(self._year, ())
-            ):
-                self._add_holiday(
-                    self.tr(self.observed_label) % self.tr(name), date(self._year, month, day)
-                )
+        if self.has_special_holidays:
+            self._add_special_holidays(
+                (f"special_{category}_holidays_observed" for category in self._sorted_categories),
+                observed=True,
+            )
+
+    def _populate_subdiv_holidays(self):
+        """Populate entity subdivision holidays."""
+        if self.subdiv is None:
+            return None
+
+        super()._populate_subdiv_holidays()
+        if not self.observed:
+            return None
+
+        if self.has_special_holidays:
+            self._add_special_holidays(
+                (
+                    f"special_{self._normalized_subdiv}_{category}_holidays_observed"
+                    for category in self._sorted_categories
+                ),
+                observed=True,
+            )

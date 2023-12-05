@@ -130,7 +130,7 @@ class BahamasStaticHolidays:
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         # New Year's Day observance overflow.
         # This only applies to Pre-2012 observance.
         1979: (DEC, 31, "New Year's Day"),

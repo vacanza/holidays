@@ -281,7 +281,7 @@ class ArgentinaStaticHolidays:
     # National Census Day 2022.
     national_census_2022 = tr("Censo nacional 2022")
 
-    special_holidays = {
+    special_public_holidays = {
         2011: (
             (MAR, 25, arg_bridge_public_holiday),
             (DEC, 9, arg_bridge_public_holiday),

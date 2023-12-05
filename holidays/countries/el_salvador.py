@@ -84,7 +84,7 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
 
-    def _add_subdiv_ss_holidays(self):
+    def _populate_subdiv_ss_public_holidays(self):
         # San Salvador Day 1.
         self._add_holiday_aug_3("San Salvador Day 1")
 

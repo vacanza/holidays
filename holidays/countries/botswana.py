@@ -80,6 +80,6 @@ class BWA(Botswana):
 
 
 class BotswanaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2019: (JUL, 2, "Public Holiday"),
     }

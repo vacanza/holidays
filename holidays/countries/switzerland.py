@@ -77,7 +77,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
 
-    def _add_subdiv_holidays(self):
+    def _populate_subdiv_holidays(self):
         if not self.subdiv:
             return None
 
@@ -95,16 +95,16 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
             # St. Stephen's Day.
             self._add_christmas_day_two(tr("Stephanstag"))
 
-        super()._add_subdiv_holidays()
+        super()._populate_subdiv_holidays()
 
-    def _add_subdiv_ag_holidays(self):
+    def _populate_subdiv_ag_public_holidays(self):
         # Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
-    def _add_subdiv_ar_holidays(self):
+    def _populate_subdiv_ar_public_holidays(self):
         pass
 
-    def _add_subdiv_ai_holidays(self):
+    def _populate_subdiv_ai_public_holidays(self):
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
@@ -117,20 +117,20 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_bl_holidays(self):
+    def _populate_subdiv_bl_public_holidays(self):
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-    def _add_subdiv_bs_holidays(self):
+    def _populate_subdiv_bs_public_holidays(self):
         self._add_labor_day(tr("Tag der Arbeit"))
 
-    def _add_subdiv_be_holidays(self):
+    def _populate_subdiv_be_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
-    def _add_subdiv_fr_holidays(self):
+    def _populate_subdiv_fr_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
-    def _add_subdiv_ge_holidays(self):
+    def _populate_subdiv_ge_public_holidays(self):
         # Thursday after the first Sunday of September
         # Genevan Fast.
         self._add_holiday_4_days_past_1st_sun_of_sep(tr("Genfer Bettag"))
@@ -138,7 +138,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Restoration Day.
         self._add_holiday_dec_31(tr("Wiederherstellung der Republik"))
 
-    def _add_subdiv_gl_holidays(self):
+    def _populate_subdiv_gl_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
@@ -152,10 +152,10 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_all_saints_day(tr("Allerheiligen"))
 
-    def _add_subdiv_gr_holidays(self):
+    def _populate_subdiv_gr_public_holidays(self):
         pass
 
-    def _add_subdiv_ju_holidays(self):
+    def _populate_subdiv_ju_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -165,14 +165,14 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
         self._add_all_saints_day(tr("Allerheiligen"))
 
-    def _add_subdiv_lu_holidays(self):
+    def _populate_subdiv_lu_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_ne_holidays(self):
+    def _populate_subdiv_ne_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Republic Day.
@@ -182,7 +182,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._is_sunday(self._christmas_day):
             self._add_christmas_day_two(tr("Stephanstag"))
 
-    def _add_subdiv_nw_holidays(self):
+    def _populate_subdiv_nw_public_holidays(self):
         # St. Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -190,7 +190,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_ow_holidays(self):
+    def _populate_subdiv_ow_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
@@ -200,14 +200,14 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_sg_holidays(self):
+    def _populate_subdiv_sg_public_holidays(self):
         self._add_all_saints_day(tr("Allerheiligen"))
 
-    def _add_subdiv_sh_holidays(self):
+    def _populate_subdiv_sh_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
 
-    def _add_subdiv_sz_holidays(self):
+    def _populate_subdiv_sz_public_holidays(self):
         # Epiphany.
         self._add_epiphany_day(tr("Heilige Drei Könige"))
         self._add_saint_josephs_day(tr("Josefstag"))
@@ -216,15 +216,15 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_so_holidays(self):
+    def _populate_subdiv_so_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
 
-    def _add_subdiv_tg_holidays(self):
+    def _populate_subdiv_tg_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
 
-    def _add_subdiv_ti_holidays(self):
+    def _populate_subdiv_ti_public_holidays(self):
         self._add_epiphany_day(tr("Heilige Drei Könige"))
         self._add_saint_josephs_day(tr("Josefstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
@@ -236,7 +236,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_ur_holidays(self):
+    def _populate_subdiv_ur_public_holidays(self):
         self._add_epiphany_day(tr("Heilige Drei Könige"))
         self._add_saint_josephs_day(tr("Josefstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -244,28 +244,28 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_vd_holidays(self):
+    def _populate_subdiv_vd_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Monday after the third Sunday of September
         # Prayer Monday.
         self._add_holiday_1_day_past_3rd_sun_of_sep(tr("Bettagsmontag"))
 
-    def _add_subdiv_vs_holidays(self):
+    def _populate_subdiv_vs_public_holidays(self):
         self._add_saint_josephs_day(tr("Josefstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_zg_holidays(self):
+    def _populate_subdiv_zg_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-    def _add_subdiv_zh_holidays(self):
+    def _populate_subdiv_zh_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
         self._add_labor_day(tr("Tag der Arbeit"))
 

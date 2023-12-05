@@ -92,7 +92,7 @@ class MarshalIslandsStaticHolidays:
     # General Election Day
     election_day = "General Election Day"
 
-    special_holidays = {
+    special_public_holidays = {
         1995: (NOV, 20, election_day),
         1999: (NOV, 22, election_day),
         2003: (NOV, 17, election_day),

@@ -219,7 +219,7 @@ class UkraineStaticHolidays:
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")
-    special_holidays = {
+    special_public_holidays = {
         1992: (
             (JAN, 6, JAN, 4),
             (APR, 27, MAY, 16),

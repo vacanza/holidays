@@ -89,6 +89,6 @@ class LSO(Lesotho):
 
 
 class LesothoStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2002: (MAY, 25, "Africa Day"),
     }

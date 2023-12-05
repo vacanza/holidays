@@ -95,7 +95,7 @@ class NGA(Nigeria):
 
 
 class NigeriaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2019: (
             (FEB, 22, "Public Holiday for Elections"),
             (MAY, 29, "Presidential Inauguration Day"),

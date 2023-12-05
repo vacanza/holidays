@@ -16,7 +16,8 @@ import re
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta, timezone
-from gettext import NullTranslations, gettext, translation
+from functools import cached_property
+from gettext import gettext, translation
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Union, cast
 
@@ -175,11 +176,11 @@ class HolidayBase(Dict[date, str]):
     >>> assert '12/25/2015' in custom_holidays
 
     For special (one-off) country-wide holidays handling use
-    :attr:`special_holidays`:
+    :attr:`special_public_holidays`:
 
     .. code-block:: python
 
-        special_holidays = {
+        special_public_holidays = {
             1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
             1981: ((JUL, 29, "Wedding of Charles and Diana"),),
             1999: ((DEC, 31, "Millennium Celebrations"),),
@@ -225,11 +226,13 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
+    default_category: str = PUBLIC
+    """The entity category used by default."""
     default_language: Optional[str] = None
     """The entity language used by default."""
     categories: Set[str] = set()
     """Requested holiday categories."""
-    supported_categories: Tuple[str, ...] = ()
+    supported_categories: Tuple[str, ...] = (PUBLIC,)
     """All holiday categories supported by this entity."""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
@@ -282,34 +285,44 @@ class HolidayBase(Dict[date, str]):
         """
         super().__init__()
 
-        self.categories = _normalize_arguments(str, categories or {PUBLIC})
-        self.expand = expand
-        self.language = language.lower() if language else None
-        self.observed = observed
-        self.subdiv = subdiv or prov or state
+        # Categories validation.
+        if self.default_category and self.default_category not in self.supported_categories:
+            raise ValueError("The default category must be listed in supported categories.")
 
-        self.tr = gettext  # Default translation method.
+        if not self.default_category and not categories:
+            raise ValueError("Categories cannot be empty if `default_category` is not set.")
 
-        if prov or state:
-            warnings.warn(
-                f"Arguments prov and state are deprecated, use subdiv='{prov or state}' instead.",
-                DeprecationWarning,
-            )
+        categories = _normalize_arguments(str, categories) or {self.default_category}
+        if unknown_categories := categories.difference(  # type: ignore[union-attr]
+            self.supported_categories
+        ):
+            raise ValueError(f"Category is not supported: {', '.join(unknown_categories)}.")
 
-        if isinstance(self.subdiv, int):
-            self.subdiv = str(self.subdiv)
+        # Subdivision validation.
+        if subdiv := subdiv or prov or state:
+            # Handle subdivisions passed as integers.
+            if isinstance(subdiv, int):
+                subdiv = str(subdiv)
 
-        if not isinstance(self, HolidaySum):
-            if self.subdiv and self.subdiv not in set(
-                self.subdivisions + self._deprecated_subdivisions
+            # Unsupported subdivisions.
+            if (
+                not isinstance(self, HolidaySum)
+                and subdiv not in self.subdivisions + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
-                    f"Market {self.market} does not have subdivision {self.subdiv}"
-                    if hasattr(self, "market")
-                    else f"Country {self.country} does not have subdivision {self.subdiv}"
+                    f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
                 )
 
-            if subdiv and subdiv in self._deprecated_subdivisions:
+            # Deprecated arguments.
+            if prov_state := prov or state:
+                warnings.warn(
+                    "Arguments prov and state are deprecated, use "
+                    f"subdiv='{prov_state}' instead.",
+                    DeprecationWarning,
+                )
+
+            # Deprecated subdivisions.
+            if subdiv in self._deprecated_subdivisions:
                 warnings.warn(
                     "This subdivision is deprecated and will be removed after "
                     "Dec, 1 2023. The list of supported subdivisions: "
@@ -317,26 +330,38 @@ class HolidayBase(Dict[date, str]):
                     DeprecationWarning,
                 )
 
-            if len(self.supported_categories) > 0 and (
-                unknown_categories := self.categories.difference(  # type: ignore[union-attr]
-                    set(self.supported_categories)
-                )
-            ):
-                raise NotImplementedError(
-                    f"Category is not supported: {', '.join(unknown_categories)}."
-                )
+        # Special holidays validation.
+        if has_substituted_holidays := getattr(self, "has_substituted_holidays", False) and (
+            not getattr(self, "substituted_label", None)
+            or not getattr(self, "substituted_date_format", None)
+        ):
+            raise ValueError(
+                f"Entity `{self._entity_code}` class must have `substituted_label` "
+                "and `substituted_date_format` attributes set."
+            )
 
-            name: Optional[str] = getattr(self, "country", getattr(self, "market", None))
-            if name:
-                translator: NullTranslations = translation(
-                    name,
-                    fallback=language not in self.supported_languages,
-                    languages=[language] if language in self.supported_languages else None,
-                    localedir=str(Path(__file__).with_name("locale")),
-                )
-                self.tr = translator.gettext
+        self.categories = categories
+        self.expand = expand
+        self.has_special_holidays = getattr(self, "has_special_holidays", False)
+        self.has_substituted_holidays = has_substituted_holidays
+        self.language = language.lower() if language else None
+        self.observed = observed
+        self.subdiv = subdiv
 
+        supported_languages = set(self.supported_languages)
+        self.tr = (
+            translation(
+                self._entity_code,
+                fallback=language not in supported_languages,
+                languages=[language] if language in supported_languages else None,
+                localedir=str(Path(__file__).with_name("locale")),
+            ).gettext
+            if self._entity_code is not None
+            else gettext
+        )
         self.years = _normalize_arguments(int, years)
+
+        # Populate holidays.
         for year in self.years:
             self._populate(year)
 
@@ -626,6 +651,25 @@ class HolidayBase(Dict[date, str]):
             "years",
         )
 
+    @cached_property
+    def _entity_code(self):
+        return getattr(self, "country", getattr(self, "market", None))
+
+    @cached_property
+    def _normalized_subdiv(self):
+        return self.subdiv.translate(
+            str.maketrans(
+                {
+                    "-": "_",
+                    " ": "_",
+                }
+            )
+        ).lower()
+
+    @cached_property
+    def _sorted_categories(self):
+        return sorted(self.categories)
+
     def _is_leap_year(self) -> bool:
         """
         Returns True if the year is leap. Returns False otherwise.
@@ -646,21 +690,29 @@ class HolidayBase(Dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
-    def _add_subdiv_holidays(self):
-        """Populate subdivision holidays."""
-        if self.subdiv is None:
-            return None
-
-        subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-        method_names = [f"_add_subdiv_{subdiv}_holidays"]
-
-        for category in sorted(self.categories):
-            method_names.append(f"_add_subdiv_{subdiv}_{category}_holidays")
-
-        for method_name in method_names:
-            add_subdiv_holidays = getattr(self, method_name, None)
-            if add_subdiv_holidays and callable(add_subdiv_holidays):
-                add_subdiv_holidays()
+    def _add_special_holidays(self, mapping_names, observed=False):
+        """Add special holidays."""
+        for mapping_name in mapping_names:
+            for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
+                if len(data) == 3:  # Special holidays.
+                    month, day, name = data
+                    self._add_holiday(
+                        self.tr(self.observed_label) % self.tr(name)
+                        if observed
+                        else self.tr(name),
+                        month,
+                        day,
+                    )
+                else:  # Substituted holidays.
+                    to_month, to_day, from_month, from_day, *optional = data
+                    self._add_holiday(
+                        self.tr(self.substituted_label)
+                        % date(
+                            optional[0] if optional else self._year, from_month, from_day
+                        ).strftime(self.tr(self.substituted_date_format)),
+                        to_month,
+                        to_day,
+                    )
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
@@ -719,67 +771,38 @@ class HolidayBase(Dict[date, str]):
         """
 
         self._year = year
+        self._populate_common_holidays()
+        self._populate_subdiv_holidays()
 
-        # Populate special holidays.
-        self._add_special_holidays()
+    def _populate_common_holidays(self):
+        """Populate entity common holidays."""
+        for category in self._sorted_categories:
+            if pch_method := getattr(self, f"_populate_{category.lower()}_holidays", None):
+                pch_method()
 
-        # Populate category holidays.
-        self._add_category_holidays()
+        if self.has_special_holidays:
+            self._add_special_holidays(
+                f"special_{category}_holidays" for category in self._sorted_categories
+            )
 
-        # Populate subdivision non-static holidays.
-        self._add_subdiv_holidays()
-
-    def _get_special_holiday_mapping_names(self) -> List[str]:
-        # Check for general special holidays.
-        mapping_names = ["special_holidays"]
-
-        # Check subdivision specific special holidays.
-        if self.subdiv is not None:
-            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            mapping_names.append(f"special_{subdiv}_holidays")
-
-        # Check category specific special holidays (both general and per subdivision).
-        for category in sorted(self.categories):
-            mapping_names.append(f"special_{category}_holidays")
-            if self.subdiv is not None:
-                mapping_names.append(f"special_{subdiv}_{category}_holidays")
-
-        return mapping_names
-
-    def _add_special_holidays(self):
-        """Populate special and substituted holidays."""
-        if not hasattr(self, "_has_special"):
+    def _populate_subdiv_holidays(self):
+        """Populate entity subdivision holidays."""
+        if self.subdiv is None:
             return None
 
-        if hasattr(self, "_has_substituted"):
-            if not hasattr(self, "substituted_label") or not hasattr(
-                self, "substituted_date_format"
+        for category in self._sorted_categories:
+            if asch_method := getattr(
+                self,
+                f"_populate_subdiv_{self._normalized_subdiv}_{category.lower()}_holidays",
+                None,
             ):
-                raise ValueError(
-                    f"Country `{self.country}` class should contain `substituted_label` "
-                    "and `substituted_date_format`"
-                )
-            substituted_label = self.tr(self.substituted_label)
-            substituted_date_format = self.tr(self.substituted_date_format)
+                asch_method()
 
-        for mapping_name in self._get_special_holiday_mapping_names():
-            for hol in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
-                if len(hol) == 3:
-                    month, day, name = hol
-                    self._add_holiday(name, date(self._year, month, day))
-                else:
-                    from_year = hol[4] if len(hol) == 5 else self._year
-                    to_month, to_day, from_month, from_day = hol[:4]
-                    from_date = date(from_year, from_month, from_day).strftime(
-                        substituted_date_format
-                    )
-                    self._add_holiday(substituted_label % from_date, to_month, to_day)
-
-    def _add_category_holidays(self):
-        for category in sorted(self.categories):
-            populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
-            if populate_category_holidays and callable(populate_category_holidays):
-                populate_category_holidays()
+        if self.has_special_holidays:
+            self._add_special_holidays(
+                f"special_{self._normalized_subdiv}_{category.lower()}_holidays"
+                for category in self._sorted_categories
+            )
 
     def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""

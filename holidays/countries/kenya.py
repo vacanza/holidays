@@ -83,7 +83,7 @@ class KEN(Kenya):
 
 
 class KenyaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2020: (FEB, 11, "President Moi Celebration of Life Day"),
         2022: (
             (APR, 29, "State Funeral for Former President Mwai Kibaki"),

@@ -199,89 +199,89 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_christmas_day("Christmas Day")
 
     # Andhra Pradesh.
-    def _add_subdiv_ap_holidays(self):
+    def _populate_subdiv_ap_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Andhra Pradesh Foundation Day")
 
     # Assam.
-    def _add_subdiv_as_holidays(self):
+    def _populate_subdiv_as_public_holidays(self):
         self._add_holiday_apr_15("Bihu (Assamese New Year)")
 
     # Bihar.
-    def _add_subdiv_br_holidays(self):
+    def _populate_subdiv_br_public_holidays(self):
         self._add_holiday_mar_22("Bihar Day")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Chhattisgarh.
-    def _add_subdiv_cg_holidays(self):
+    def _populate_subdiv_cg_public_holidays(self):
         self._add_holiday_nov_1("Chhattisgarh Foundation Day")
 
     # Gujarat.
-    def _add_subdiv_gj_holidays(self):
+    def _populate_subdiv_gj_public_holidays(self):
         self._add_holiday_jan_14("Uttarayan")
         self._add_holiday_may_1("Gujarat Day")
         self._add_holiday_oct_31("Sardar Patel Jayanti")
 
     # Haryana.
-    def _add_subdiv_hr_holidays(self):
+    def _populate_subdiv_hr_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Haryana Foundation Day")
 
     # Karnataka.
-    def _add_subdiv_ka_holidays(self):
+    def _populate_subdiv_ka_public_holidays(self):
         self._add_holiday_nov_1("Karnataka Rajyotsava")
 
     # Kerala.
-    def _add_subdiv_kl_holidays(self):
+    def _populate_subdiv_kl_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Kerala Foundation Day")
 
     # Maharashtra.
-    def _add_subdiv_mh_holidays(self):
+    def _populate_subdiv_mh_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_1("Maharashtra Day")
         self._add_holiday_oct_15("Dussehra")
 
     # Madhya Pradesh.
-    def _add_subdiv_mp_holidays(self):
+    def _populate_subdiv_mp_public_holidays(self):
         self._add_holiday_nov_1("Madhya Pradesh Foundation Day")
 
     # Orissa / Odisha.
-    def _add_subdiv_or_holidays(self):
+    def _populate_subdiv_or_public_holidays(self):
         self._add_holiday_apr_1("Odisha Day (Utkala Dibasa)")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_15("Maha Vishuva Sankranti / Pana Sankranti")
 
     # Rajasthan.
-    def _add_subdiv_rj_holidays(self):
+    def _populate_subdiv_rj_public_holidays(self):
         self._add_holiday_mar_30("Rajasthan Day")
         self._add_holiday_jun_15("Maharana Pratap Jayanti")
 
     # Sikkim.
-    def _add_subdiv_sk_holidays(self):
+    def _populate_subdiv_sk_public_holidays(self):
         self._add_holiday_may_16("Annexation Day")
 
     # Tamil Nadu.
-    def _add_subdiv_tn_holidays(self):
+    def _populate_subdiv_tn_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_14("Puthandu (Tamil New Year)")
         self._add_holiday_apr_15("Puthandu (Tamil New Year)")
 
     # Telangana.
-    def _add_subdiv_ts_holidays(self):
+    def _populate_subdiv_ts_public_holidays(self):
         self._add_holiday_apr_6("Eid al-Fitr")
         self._add_holiday_oct_6("Bathukamma Festival")
 
     # Uttarakhand.
-    def _add_subdiv_uk_holidays(self):
+    def _populate_subdiv_uk_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Uttar Pradesh.
-    def _add_subdiv_up_holidays(self):
+    def _populate_subdiv_up_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # West Bengal.
-    def _add_subdiv_wb_holidays(self):
+    def _populate_subdiv_wb_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_14("Pohela Boishakh")
         self._add_holiday_apr_15("Pohela Boishakh")

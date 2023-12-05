@@ -158,8 +158,9 @@ bank holidays, school holidays, additional (paid or non-paid) holidays, holidays
 public employees, religious holidays (valid only for these religions followers). A list of all
 categories supported by country is defined by ``supported_categories`` (optional) attribute.
 
-The list of supported countries, their subdivisions, supported languages and categories
-(all default values are hightlighted with bold):
+The following is a list of supported countries, their subdivisions, available languages and
+additional categories. All countries support **PUBLIC** holidays category by default.
+All other default values are highlighted with bold:
 
 
 .. list-table::
@@ -221,7 +222,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - AT
      - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
      - **de**, en_US, uk
-     - BANK, **PUBLIC**
+     - BANK
    * - Azerbaijan
      - AZ
      -
@@ -256,7 +257,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - BE
      -
      - de, en_US, fr, **nl**, uk
-     - BANK, **PUBLIC**
+     - BANK
    * - Belize
      - BZ
      -
@@ -281,7 +282,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
      -
-     - OPTIONAL, **PUBLIC**
+     - OPTIONAL
    * - Brunei
      - BN
      -
@@ -291,7 +292,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - BG
      -
      - **bg**, en_US, uk
-     - **PUBLIC**, SCHOOL
+     - SCHOOL
    * - Burkina Faso
      - BF
      -
@@ -316,7 +317,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
      - ar, **en**, fr, th
-     - GOVERNMENT, OPTIONAL, **PUBLIC**
+     - GOVERNMENT, OPTIONAL
    * - Chad
      - TD
      -
@@ -331,7 +332,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - CN
      -
      - en_US, th, **zh_CN**, zh_TW
-     - HALF_DAY, **PUBLIC**
+     - HALF_DAY
    * - Colombia
      - CO
      -
@@ -371,7 +372,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - DK
      -
      - **da**, en_US, uk
-     - OPTIONAL, **PUBLIC**
+     - OPTIONAL
    * - Djibouti
      - DJ
      -
@@ -441,7 +442,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - GR
      -
      - **el**, en_US, uk
-     - HALF_DAY, **PUBLIC**
+     - HALF_DAY
    * - Guam
      - GU
      - Can also be loaded as country US, subdivision GU
@@ -481,7 +482,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - ID
      -
      - en_US, **id**, uk
-     - GOVERNMENT, **PUBLIC**
+     - GOVERNMENT
    * - Iran
      - IR
      -
@@ -501,7 +502,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - IL
      -
      -
-     - OPTIONAL, **PUBLIC**, SCHOOL
+     - OPTIONAL, SCHOOL
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
@@ -516,7 +517,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - JP
      -
      - en_US, **ja**, th
-     - BANK, **PUBLIC**
+     - BANK
    * - Kazakhstan
      - KZ
      -
@@ -536,7 +537,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - LA
      -
      - en_US, **lo**, th
-     - BANK, **PUBLIC**, SCHOOL, WORKDAY
+     - BANK, SCHOOL, WORKDAY
    * - Latvia
      - LV
      -
@@ -551,7 +552,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - LI
      -
      - **de**, en_US, uk
-     - BANK, **PUBLIC**
+     - BANK
    * - Lithuania
      - LT
      -
@@ -631,7 +632,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - NL
      -
      - en_US, **nl**, uk
-     - OPTIONAL, **PUBLIC**
+     - OPTIONAL
    * - New Zealand
      - NZ
      - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
@@ -696,7 +697,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
      - en_US, **pt_PT**
-     - OPTIONAL, **PUBLIC**
+     - OPTIONAL
    * - Puerto Rico
      - PR
      - Can also be loaded as country US, subdivision PR
@@ -736,7 +737,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - SK
      -
      - en_US, **sk**, uk
-     - **PUBLIC**, WORKDAY
+     - WORKDAY
    * - Slovenia
      - SI
      -
@@ -751,7 +752,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - KR
      -
      - en_US, **ko**, th
-     - BANK, **PUBLIC**
+     - BANK
    * - Spain
      - ES
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
@@ -776,17 +777,17 @@ The list of supported countries, their subdivisions, supported languages and cat
      - TZ
      -
      - en_US, **sw**
-     - BANK, **PUBLIC**
+     - BANK
    * - Thailand
      - TH
      -
      - en_US, **th**
-     - ARMED_FORCES, BANK, GOVERNMENT, **PUBLIC**, SCHOOL, WORKDAY
+     - ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY
    * - Timor Leste
      - TL
      -
      - en_US, **pt_TL**, tet
-     - GOVERNMENT, **PUBLIC**, WORKDAY
+     - GOVERNMENT, WORKDAY
    * - Tonga
      - TO
      -
@@ -801,7 +802,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - TR
      -
      - en_US, **tr**, uk
-     - HALF_DAY, **PUBLIC**
+     - HALF_DAY
    * - Ukraine
      - UA
      -
@@ -836,7 +837,7 @@ The list of supported countries, their subdivisions, supported languages and cat
      - UY
      -
      - en_US, **es**, uk
-     - BANK, **PUBLIC**
+     - BANK
    * - Uzbekistan
      - UZ
      -

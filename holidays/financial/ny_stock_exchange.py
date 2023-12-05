@@ -135,7 +135,7 @@ class NYSE(NewYorkStockExchange):
 
 
 class NewYorkStockExchangeStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         1888: (
             (MAR, 12, "Blizzard of 1888"),
             (MAR, 13, "Blizzard of 1888"),

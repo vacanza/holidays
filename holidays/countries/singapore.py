@@ -290,7 +290,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SingaporeStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2001: (NOV, 3, "Polling Day"),
         2006: (MAY, 6, "Polling Day"),
         2011: (MAY, 7, "Polling Day"),
@@ -307,6 +307,6 @@ class SingaporeStaticHolidays:
         2023: (SEP, 1, "Polling Day"),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         2007: (JAN, 2, "Hari Raya Haji"),
     }

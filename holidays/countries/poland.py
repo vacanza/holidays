@@ -123,6 +123,6 @@ class POL(Poland):
 
 
 class PolandStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2018: (NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),
     }

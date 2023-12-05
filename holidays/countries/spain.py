@@ -103,7 +103,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if year not in {2011, 2016, 2022}:
             self._add_christmas_day("Natividad del Señor")
 
-    def _add_subdiv_an_holidays(self):
+    def _populate_subdiv_an_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -135,7 +135,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_ar_holidays(self):
+    def _populate_subdiv_ar_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -167,7 +167,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_as_holidays(self):
+    def _populate_subdiv_as_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -199,7 +199,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_cb_holidays(self):
+    def _populate_subdiv_cb_public_holidays(self):
         if self._year == 2013:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
@@ -230,7 +230,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_ce_holidays(self):
+    def _populate_subdiv_ce_public_holidays(self):
         if self._year == 2012:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -270,7 +270,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         elif self._year >= 2010:
             self._add_eid_al_adha_day("Eid al-Adha")
 
-    def _add_subdiv_cl_holidays(self):
+    def _populate_subdiv_cl_public_holidays(self):
         if self._year in {2017, 2023}:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -309,7 +309,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_cm_holidays(self):
+    def _populate_subdiv_cm_public_holidays(self):
         if self._year == 2013:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
@@ -333,7 +333,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_cn_holidays(self):
+    def _populate_subdiv_cn_public_holidays(self):
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
@@ -357,7 +357,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_ct_holidays(self):
+    def _populate_subdiv_ct_public_holidays(self):
         self._add_easter_monday("Lunes de Pascua")
 
         if self._year in {2011, 2016, 2022}:
@@ -372,7 +372,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year not in {2010, 2021}:
             self._add_christmas_day_two("San Esteban")
 
-    def _add_subdiv_ex_holidays(self):
+    def _populate_subdiv_ex_public_holidays(self):
         if self._year == 2012:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -408,7 +408,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_ga_holidays(self):
+    def _populate_subdiv_ga_public_holidays(self):
         if self._year in {2010, 2011} or 2019 <= self._year <= 2021:
             self._move_holiday(self._add_saint_josephs_day("San José"))
 
@@ -429,7 +429,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year == 2015:
             self._move_holiday(self._add_all_saints_day("Todos los Santos"))
 
-    def _add_subdiv_ib_holidays(self):
+    def _populate_subdiv_ib_public_holidays(self):
         if self._year not in {2015, 2020}:
             self._add_holiday_mar_1("Día de las Islas Baleares")
 
@@ -450,7 +450,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2013, 2014, 2019, 2020}:
             self._add_christmas_day_two("San Esteban")
 
-    def _add_subdiv_mc_holidays(self):
+    def _populate_subdiv_mc_public_holidays(self):
         if self._year in {2017, 2023}:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -477,7 +477,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_md_holidays(self):
+    def _populate_subdiv_md_public_holidays(self):
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
@@ -510,7 +510,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_ml_holidays(self):
+    def _populate_subdiv_ml_public_holidays(self):
         if self._year == 2017:
             self._move_holiday(self._add_new_years_day("Año nuevo"))
 
@@ -544,7 +544,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         elif self._year >= 2010:
             self._add_eid_al_adha_day("Eid al-Adha")
 
-    def _add_subdiv_nc_holidays(self):
+    def _populate_subdiv_nc_public_holidays(self):
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day("Epifanía del Señor"))
 
@@ -564,7 +564,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_pv_holidays(self):
+    def _populate_subdiv_pv_public_holidays(self):
         if self._year in {2010, 2015, 2019, 2020, 2021}:
             self._add_saint_josephs_day("San José")
 
@@ -584,7 +584,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if 2011 <= self._year <= 2014:
             self._add_holiday_oct_25("Día del País Vasco")
 
-    def _add_subdiv_ri_holidays(self):
+    def _populate_subdiv_ri_public_holidays(self):
         if self._year in {2010, 2012}:
             self._add_saint_josephs_day("San José")
 
@@ -607,7 +607,7 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         if self._year == 2022:
             self._move_holiday(self._add_christmas_day("Natividad del Señor"))
 
-    def _add_subdiv_vc_holidays(self):
+    def _populate_subdiv_vc_public_holidays(self):
         if self._year == 2013:
             self._add_holiday_mar_18("Lunes de Fallas")
 

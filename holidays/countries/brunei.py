@@ -396,7 +396,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
 
 
 class BruneiStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # Sultan Hassanal Bolkiah's Golden Jubilee celebration
         2017: (OCT, 5, tr("Jubli Emas Sultan Hassanal Bolkiah")),
     }
