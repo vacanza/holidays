@@ -1,7 +1,24 @@
-Version 0.38
+Version 0.39
 ============
 
 Released ???????? ??, ????
+
+Version 0.38
+============
+
+Released December 4, 2023
+
+- Add categories and subdivisions support to special observed holidays (#1561 by @KJhellico)
+- Add categories and subdivisions support to substituted holidays (#1558 by @KJhellico)
+- Update Czechia holidays: add sk localization (#1568 by @jose1711, @arkid15r)
+- Update PR template and contributing guidelines (#1574 by @arkid15r)
+- Update documentation: add supported entities section (#1564 by @arkid15r)
+- Update snapshot generator: group holidays by subdiv (#1578 by @KJhellico)
+- Update test coverage to 100% (#1573 by @arkid15r)
+- Add supported categories validation (#1576 by @arkid15r)
+- Merge substituted holidays with special holidays (#1580 by @KJhellico)
+- Migrate South Korea holidays to ObservedHolidayBase (#1560 by @KJhellico)
+- Prepare project for Weblate integration [UA] (#1565 by @arkid15r)
 
 Version 0.37
 ============
