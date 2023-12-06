@@ -19,9 +19,16 @@ class StaticHolidays:
 
     def __init__(self, cls) -> None:
         for attribute_name in cls.__dict__.keys():
-            if attribute_name.startswith("special_"):
-                setattr(self, attribute_name, getattr(cls, attribute_name))
+            # Special holidays.
+            if attribute_name.startswith("special_") and (
+                value := getattr(cls, attribute_name, None)
+            ):
+                setattr(self, attribute_name, value)
                 self.has_special_holidays = True
-            elif attribute_name.startswith("substituted_"):
-                setattr(self, attribute_name, getattr(cls, attribute_name))
+
+            # Substituted holidays.
+            elif attribute_name.startswith("substituted_") and (
+                value := getattr(cls, attribute_name, None)
+            ):
+                setattr(self, attribute_name, value)
                 self.has_substituted_holidays = True

@@ -1011,7 +1011,11 @@ class TestSubstitutedHolidays(unittest.TestCase):
             super().__init__(*args, **kwargs)
 
     def test_populate_substituted_holidays(self):
-        hb = CountryStub1(years=1991)
+        hb = CountryStub1()
+        self.assertTrue(hb.has_special_holidays)
+        self.assertTrue(hb.has_substituted_holidays)
+
+        hb._populate(1991)
         self.assertIn("1991-01-07", hb)
         self.assertIn("1991-01-08", hb)
         self.assertIn("12/01/1991", hb["1991-01-07"])
@@ -1041,6 +1045,9 @@ class TestSubstitutedHolidays(unittest.TestCase):
 
         for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
             hb = self.CountryStub(cls=cls)
+            self.assertFalse(hb.has_special_holidays)
+            self.assertTrue(hb.has_substituted_holidays)
+
             hb._populate(1991)
             self.assertNotIn("1991-01-07", hb)
             self.assertNotIn("1991-01-08", hb)

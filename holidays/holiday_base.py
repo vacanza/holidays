@@ -331,7 +331,7 @@ class HolidayBase(Dict[date, str]):
                 )
 
         # Special holidays validation.
-        if has_substituted_holidays := getattr(self, "has_substituted_holidays", False) and (
+        if (has_substituted_holidays := getattr(self, "has_substituted_holidays", False)) and (
             not getattr(self, "substituted_label", None)
             or not getattr(self, "substituted_date_format", None)
         ):
