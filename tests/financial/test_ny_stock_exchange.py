@@ -44,21 +44,18 @@ class TestNewYorkStockExchange(TestCase):
             date(1930, JAN, 1),
             date(1950, JAN, 2),
             date(1999, JAN, 1),
-            date(1999, DEC, 31),
             date(2010, JAN, 1),
             date(2018, JAN, 1),
             date(2019, JAN, 1),
             date(2020, JAN, 1),
             date(2021, JAN, 1),
-            date(2021, DEC, 31),
-            date(2027, DEC, 31),
         ):
             self.assertHoliday(dt)
             self.assertNoHoliday(dt + td(days=-1))
             self.assertNoHoliday(dt + td(days=+1))
             self.assertNoHoliday(dt + td(days=+7))
 
-        # observed on previous year Dec 31
+        # no observed on previous year Dec 31
         for dt in (
             date(1994, JAN, 1),
             date(2000, JAN, 1),
@@ -67,7 +64,7 @@ class TestNewYorkStockExchange(TestCase):
             date(2022, JAN, 1),
         ):
             self.assertNoHoliday(dt)
-            self.assertHoliday(dt + td(days=-1))
+            self.assertNoHoliday(dt + td(days=-1))
 
     def test_mlk(self):
         for dt in (
@@ -398,7 +395,6 @@ class TestNewYorkStockExchange(TestCase):
             date(1918, JAN, 28),  # Heatless Day
             date(1918, FEB, 4),  # Heatless Day
             date(1918, FEB, 11),  # Heatless Day
-            date(1918, JUN, 14),  # Heatless Day
             date(1918, SEP, 12),  # Draft Registration Day
             date(1918, NOV, 11),  # Armistice Day
             date(1919, MAR, 25),  # Homecoming Day for 27th Division
@@ -407,6 +403,7 @@ class TestNewYorkStockExchange(TestCase):
             date(1923, AUG, 3),  # Death of President Warren G. Harding
             date(1923, AUG, 10),  # Funeral of President Warren G. Harding
             date(1927, JUN, 13),  # Parade for Colonel Charles Lindbergh
+            date(1929, NOV, 1),  # Catch Up Day
             date(1929, NOV, 29),  # Catch Up Day
             date(1945, AUG, 15),  # V-J Day (WWII)
             date(1945, AUG, 16),  # V-J Day (WWII)
@@ -424,7 +421,7 @@ class TestNewYorkStockExchange(TestCase):
             date(1969, JUL, 21),  # National Participation in Lunar Exploration
             date(1972, DEC, 28),  # Funeral for President Harry S. Truman
             date(1973, JAN, 25),  # Funeral for President Lyndon B. Johnson
-            date(1977, JUL, 14),  # Blackout in New Yor City
+            date(1977, JUL, 14),  # Blackout in New York City
             date(1985, SEP, 27),  # Hurricane Gloria
             date(1994, APR, 27),  # Funeral for President Richard M. Nixon
             date(2001, SEP, 11),  # Closed for Sept 11, 2001 Attacks
