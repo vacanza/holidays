@@ -20,7 +20,7 @@ from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class EntityStubStaticHolidays(HolidayBase):
+class EntityStubStaticHolidays:
     special_public_holidays = {
         1111: (JAN, 1, "Test holiday"),
         2222: (FEB, 2, "Test holiday"),
@@ -1019,7 +1019,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
 
     def test_no_substituted_date_format(self):
         class SubstitutedHolidays:
-            substituted_holidays = {
+            special_public_holidays = {
                 1991: (
                     (JAN, 12, JAN, 7),
                     (1991, JAN, 13, JAN, 8),
@@ -1041,7 +1041,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
 
     def test_no_substituted_label(self):
         class SubstitutedHolidays:
-            substituted_holidays = {
+            special_public_holidays = {
                 1991: (
                     (JAN, 7, JAN, 12),
                     (JAN, 8, JAN, 13, 1991),

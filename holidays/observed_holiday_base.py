@@ -165,29 +165,26 @@ class ObservedHolidayBase(HolidayBase):
     def _populate_common_holidays(self):
         """Populate entity common holidays."""
         super()._populate_common_holidays()
-        if not self.observed:
+
+        if not self.observed or not self.has_special_holidays:
             return None
 
-        if self.has_special_holidays:
-            self._add_special_holidays(
-                (f"special_{category}_holidays_observed" for category in self._sorted_categories),
-                observed=True,
-            )
+        self._add_special_holidays(
+            (f"special_{category}_holidays_observed" for category in self._sorted_categories),
+            observed=True,
+        )
 
     def _populate_subdiv_holidays(self):
         """Populate entity subdivision holidays."""
-        if self.subdiv is None:
-            return None
-
         super()._populate_subdiv_holidays()
-        if not self.observed:
+
+        if not self.subdiv or not self.observed or not self.has_special_holidays:
             return None
 
-        if self.has_special_holidays:
-            self._add_special_holidays(
-                (
-                    f"special_{self._normalized_subdiv}_{category}_holidays_observed"
-                    for category in self._sorted_categories
-                ),
-                observed=True,
-            )
+        self._add_special_holidays(
+            (
+                f"special_{self._normalized_subdiv}_{category}_holidays_observed"
+                for category in self._sorted_categories
+            ),
+            observed=True,
+        )
