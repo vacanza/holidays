@@ -1030,14 +1030,20 @@ class TestSubstitutedHolidays(unittest.TestCase):
         self.assertRaises(ValueError, lambda: self.CountryStub(SubstitutedHolidays))
 
     def test_no_substituted_holidays(self):
-        class SubstitutedHolidays:
+        class EmptySubstitutedHolidays:
+            special_public_holidays = {}
             substituted_date_format = "%d/%m/%Y"
             substituted_label = "From %s"
 
-        hb = self.CountryStub(SubstitutedHolidays)
-        hb._populate(1991)
-        self.assertNotIn("1991-01-07", hb)
-        self.assertNotIn("1991-01-08", hb)
+        class NoSubstitutedHolidays:
+            substituted_date_format = "%d/%m/%Y"
+            substituted_label = "From %s"
+
+        for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
+            hb = self.CountryStub(cls=cls)
+            hb._populate(1991)
+            self.assertNotIn("1991-01-07", hb)
+            self.assertNotIn("1991-01-08", hb)
 
     def test_no_substituted_label(self):
         class SubstitutedHolidays:
