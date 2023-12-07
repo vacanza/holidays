@@ -142,14 +142,14 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         if self.observed and self._year >= 2006:
             self._populate_observed(dts_observed.union(dts_bairami))
 
-            bairami_names = {self.tr("Ramazan bayrami"), self.tr("Qurban bayrami")}
+            bayrami_names = {self.tr("Ramazan bayrami"), self.tr("Qurban bayrami")}
             # 6. If the holidays of Qurban and Ramadan coincide with another holiday
             # that is not considered a working day, the next working day is considered a rest day.
             for dt_observed in sorted(dts_bairami.difference(dts_non_observed)):
-                if len(self.get_list(dt_observed)) == 1:
+                if len(dt_holidays := self.get_list(dt_observed)) == 1:
                     continue
-                for name in self.get_list(dt_observed):
-                    if name in bairami_names:
+                for name in dt_holidays:
+                    if name in bayrami_names:
                         self._add_observed(dt_observed, name, WORKDAY_TO_NEXT_WORKDAY)
 
     def _populate_workday_holidays(self):
