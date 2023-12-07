@@ -1,0 +1,120 @@
+# Azerbaijan holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.39\n"
+"POT-Creation-Date: 2023-11-15 20:42+0200\n"
+"PO-Revision-Date: 2023-11-15 20:47+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*təxmini)"
+msgstr ""
+
+#. %s (Observed).
+#, c-format
+msgid "%s (müşahidə olunur)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Yeni il bayramı"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Ümumxalq hüzn günü"
+msgstr ""
+
+#. Women's Day.
+msgid "Qadınlar günü"
+msgstr ""
+
+#. Spring Festival.
+msgid "Novruz bayramı"
+msgstr ""
+
+#. Victory over Fascism Day.
+msgid "Faşizm üzərində qələbə günü"
+msgstr ""
+
+#. Independence Day.
+msgid "Müstəqillik Günü"
+msgstr ""
+
+#. Republic Day.
+msgid "Respublika Günü"
+msgstr ""
+
+#. National Liberation Day.
+msgid "Azərbaycan xalqının milli qurtuluş günü"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
+msgstr ""
+
+#. Independence Day.
+msgid "Milli Müstəqillik Günü"
+msgstr ""
+
+#. Victory Day.
+msgid "Zəfər Günü"
+msgstr ""
+
+#. National Flag Day.
+msgid "Azərbaycan Respublikasının Dövlət bayrağı günü"
+msgstr ""
+
+#. International Azerbaijanis Solidarity Day.
+msgid "Dünya azərbaycanlılarının həmrəyliyi günü"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Ramazan bayrami"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Qurban bayrami"
+msgstr ""
+
+#. Memorial Day.
+msgid "Anım Günü"
+msgstr ""
+
+#. Independence Restoration Day.
+msgid "Müstəqilliyin Bərpası Günü"
+msgstr ""
+
+#. Constitution Day.
+msgid "Konstitusiya Günü"
+msgstr ""
+
+#. National Revival Day.
+msgid "Milli Dirçəliş Günü"
+msgstr ""
+
+#. Presidential elections.
+msgid "Prezidenti seçkiləri"
+msgstr ""
+
+#. Municipal elections.
+msgid "Bələdiyyə seçkiləri"
+msgstr ""
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
+msgstr ""

@@ -1,0 +1,120 @@
+# Azerbaijan holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.39\n"
+"POT-Creation-Date: 2023-11-15 20:42+0200\n"
+"PO-Revision-Date: 2023-11-15 20:55+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*təxmini)"
+msgstr "%s* (*орієнтовно)"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (müşahidə olunur)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day.
+msgid "Yeni il bayramı"
+msgstr "Новий рік"
+
+#. Martyrs' Day.
+msgid "Ümumxalq hüzn günü"
+msgstr "День національної скорботи"
+
+#. Women's Day.
+msgid "Qadınlar günü"
+msgstr "Жіночий день"
+
+#. Spring Festival.
+msgid "Novruz bayramı"
+msgstr "Свято Новруз"
+
+#. Victory over Fascism Day.
+msgid "Faşizm üzərində qələbə günü"
+msgstr "День перемоги над фашизмом"
+
+#. Independence Day.
+msgid "Müstəqillik Günü"
+msgstr "День Незалежності"
+
+#. Republic Day.
+msgid "Respublika Günü"
+msgstr "День Республіки"
+
+#. National Liberation Day.
+msgid "Azərbaycan xalqının milli qurtuluş günü"
+msgstr "День національного визволення азербайджанського народу"
+
+#. Armed Forces Day.
+msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
+msgstr "День Збройних Сил"
+
+#. Independence Day.
+msgid "Milli Müstəqillik Günü"
+msgstr "День національної незалежності"
+
+#. Victory Day.
+msgid "Zəfər Günü"
+msgstr "День Перемоги"
+
+#. National Flag Day.
+msgid "Azərbaycan Respublikasının Dövlət bayrağı günü"
+msgstr "День державного прапора"
+
+#. International Azerbaijanis Solidarity Day.
+msgid "Dünya azərbaycanlılarının həmrəyliyi günü"
+msgstr "Всесвітній день солідарності азербайджанців"
+
+#. Eid al-Fitr.
+msgid "Ramazan bayrami"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Qurban bayrami"
+msgstr "Курбан-байрам"
+
+#. Memorial Day.
+msgid "Anım Günü"
+msgstr "День памʼяті"
+
+#. Independence Restoration Day.
+msgid "Müstəqilliyin Bərpası Günü"
+msgstr "День відновлення незалежності"
+
+#. Constitution Day.
+msgid "Konstitusiya Günü"
+msgstr "День Конституції"
+
+#. National Revival Day.
+msgid "Milli Dirçəliş Günü"
+msgstr "День національного відродження"
+
+#. Presidential elections.
+msgid "Prezidenti seçkiləri"
+msgstr "Президентські вибори"
+
+#. Municipal elections.
+msgid "Bələdiyyə seçkiləri"
+msgstr "Місцеві вибори"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
+msgstr "Вихідний день (перенесено з %s)"
