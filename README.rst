@@ -225,8 +225,8 @@ The list of supported countries, their subdivisions, supported languages and cat
    * - Azerbaijan
      - AZ
      -
-     -
-     -
+     - **az**, en_US, uk
+     - **PUBLIC**, WORKDAY
    * - Bahamas
      - BS
      -
