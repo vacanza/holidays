@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
 from holidays.countries.singapore import Singapore, SG, SGP
 from tests.common import TestCase
 
@@ -26,138 +24,159 @@ class TestSingapore(TestCase):
     def test_common(self):
         self.assertNonObservedHolidayName("New Year's Day", "2022-01-01")
 
-    def test_Singapore(self):
-        # <= 1968 holidays
-        self.assertIn(date(1968, 4, 13), self.holidays)
-        self.assertIn(date(1968, 4, 15), self.holidays)
-        self.assertIn(date(1968, 12, 26), self.holidays)
-        # latest polling day
-        self.assertIn(date(2015, 9, 11), self.holidays)
-        # Year with lunar leap month
-        self.assertIn(date(2015, 8, 7), self.holidays)
-        # holidays estimated using lunar calendar
-        self.assertIn(date(2050, 6, 4), self.holidays)  # Vesak Day
-        self.assertIn(date(2050, 11, 12), self.holidays)  # Deepavali
+    def test_singapore(self):
+        self.assertHoliday(
+            # <= 1968 holidays
+            "1968-04-13",
+            "1968-04-15",
+            "1968-12-26",
+            # latest polling day
+            "2015-09-11",
+            # Year with lunar leap month
+            "2015-08-07",
+            # holidays estimated using lunar calendar
+            "2050-06-04",  # Vesak Day
+            "2050-11-12",  # Deepavali
+        )
 
     def test_hijri_holidays(self):
-        # holidays estimated using library hijri-converter
-        # <= 1968 holidays
-        self.assertIn(date(1968, 1, 2), self.holidays)
-        # > 2022
-        self.assertIn(date(2050, 6, 20), self.holidays)  # Hari Raya Puasa
-        self.assertIn(date(2050, 8, 28), self.holidays)  # Hari Raya Haji
-        # twice in a Gregorian calendar year
-        self.assertIn(date(2006, 1, 10), self.holidays)
-        self.assertIn(date(2006, 12, 31), self.holidays)
-        # special rare case (Hari Raya Haji from 2006)
-        self.assertIn(date(2007, 1, 2), self.holidays)
+        self.assertHoliday(
+            # <= 1968 holidays
+            "1968-01-02",
+            # > 2022
+            "2050-06-20",  # Hari Raya Puasa
+            "2050-08-28",  # Hari Raya Haji
+            # twice in a Gregorian calendar year
+            "2006-01-10",
+            "2006-12-31",
+            # special rare case (Hari Raya Haji from 2006)
+            "2007-01-02",
+        )
 
-    # Latest holidays
     # Source: https://www.mom.gov.sg/employment-practices/public-holidays
     def test_2018(self):
-        self.assertIn(date(2018, 1, 1), self.holidays)
-        self.assertIn(date(2018, 2, 16), self.holidays)
-        self.assertIn(date(2018, 2, 17), self.holidays)
-        self.assertIn(date(2018, 3, 30), self.holidays)
-        self.assertIn(date(2018, 5, 1), self.holidays)
-        self.assertIn(date(2018, 5, 29), self.holidays)
-        self.assertIn(date(2018, 6, 15), self.holidays)
-        self.assertIn(date(2018, 8, 9), self.holidays)
-        self.assertIn(date(2018, 8, 22), self.holidays)
-        self.assertIn(date(2018, 11, 6), self.holidays)
-        self.assertIn(date(2018, 12, 25), self.holidays)
-        # 2018: total holidays (11 + 0 falling on a Sunday)
-        self.assertEqual(len(Singapore(years=[2018])), 11 + 0)
+        self.assertHolidays(
+            ("2018-01-01", "New Year's Day"),
+            ("2018-02-16", "Chinese New Year"),
+            ("2018-02-17", "Chinese New Year"),
+            ("2018-03-30", "Good Friday"),
+            ("2018-05-01", "Labour Day"),
+            ("2018-05-29", "Vesak Day"),
+            ("2018-06-15", "Hari Raya Puasa"),
+            ("2018-08-09", "National Day"),
+            ("2018-08-22", "Hari Raya Haji"),
+            ("2018-11-06", "Deepavali"),
+            ("2018-12-25", "Christmas Day"),
+        )
 
     def test_2019(self):
-        self.assertIn(date(2019, 1, 1), self.holidays)
-        self.assertIn(date(2019, 2, 5), self.holidays)
-        self.assertIn(date(2019, 2, 6), self.holidays)
-        self.assertIn(date(2019, 4, 19), self.holidays)
-        self.assertIn(date(2019, 5, 1), self.holidays)
-        self.assertIn(date(2019, 5, 19), self.holidays)
-        self.assertIn(date(2019, 5, 20), self.holidays)
-        self.assertIn(date(2019, 6, 5), self.holidays)
-        self.assertIn(date(2019, 8, 9), self.holidays)
-        self.assertIn(date(2019, 8, 11), self.holidays)
-        self.assertIn(date(2019, 8, 12), self.holidays)
-        self.assertIn(date(2019, 10, 27), self.holidays)
-        self.assertIn(date(2019, 10, 28), self.holidays)
-        self.assertIn(date(2019, 12, 25), self.holidays)
-        self.assertEqual(len(Singapore(years=[2019])), 14)
+        self.assertHolidays(
+            ("2019-01-01", "New Year's Day"),
+            ("2019-02-05", "Chinese New Year"),
+            ("2019-02-06", "Chinese New Year"),
+            ("2019-04-19", "Good Friday"),
+            ("2019-05-01", "Labour Day"),
+            ("2019-05-19", "Vesak Day"),
+            ("2019-05-20", "Vesak Day (Observed)"),
+            ("2019-06-05", "Hari Raya Puasa"),
+            ("2019-08-09", "National Day"),
+            ("2019-08-11", "Hari Raya Haji"),
+            ("2019-08-12", "Hari Raya Haji (Observed)"),
+            ("2019-10-27", "Deepavali"),
+            ("2019-10-28", "Deepavali (Observed)"),
+            ("2019-12-25", "Christmas Day"),
+        )
 
     def test_2020(self):
-        self.assertIn(date(2020, 1, 1), self.holidays)
-        self.assertIn(date(2020, 1, 25), self.holidays)
-        self.assertIn(date(2020, 1, 26), self.holidays)
-        self.assertIn(date(2020, 1, 27), self.holidays)
-        self.assertIn(date(2020, 4, 10), self.holidays)
-        self.assertIn(date(2020, 5, 1), self.holidays)
-        self.assertIn(date(2020, 5, 7), self.holidays)
-        self.assertIn(date(2020, 5, 24), self.holidays)
-        self.assertIn(date(2020, 5, 25), self.holidays)
-        self.assertIn(date(2020, 7, 10), self.holidays)
-        self.assertIn(date(2020, 7, 31), self.holidays)
-        self.assertIn(date(2020, 8, 9), self.holidays)
-        self.assertIn(date(2020, 8, 10), self.holidays)
-        self.assertIn(date(2020, 11, 14), self.holidays)
-        self.assertIn(date(2020, 12, 25), self.holidays)
-        self.assertEqual(len(Singapore(years=[2020])), 15)
+        self.assertHolidays(
+            ("2020-01-01", "New Year's Day"),
+            ("2020-01-25", "Chinese New Year"),
+            ("2020-01-26", "Chinese New Year"),
+            ("2020-01-27", "Chinese New Year (Observed)"),
+            ("2020-04-10", "Good Friday"),
+            ("2020-05-01", "Labour Day"),
+            ("2020-05-07", "Vesak Day"),
+            ("2020-05-24", "Hari Raya Puasa"),
+            ("2020-05-25", "Hari Raya Puasa (Observed)"),
+            ("2020-07-10", "Polling Day"),
+            ("2020-07-31", "Hari Raya Haji"),
+            ("2020-08-09", "National Day"),
+            ("2020-08-10", "National Day (Observed)"),
+            ("2020-11-14", "Deepavali"),
+            ("2020-12-25", "Christmas Day"),
+        )
 
     def test_2021(self):
-        self.assertIn(date(2021, 1, 1), self.holidays)
-        self.assertIn(date(2021, 2, 12), self.holidays)
-        self.assertIn(date(2021, 2, 13), self.holidays)
-        self.assertIn(date(2021, 4, 2), self.holidays)
-        self.assertIn(date(2021, 5, 1), self.holidays)
-        self.assertIn(date(2021, 5, 13), self.holidays)
-        self.assertIn(date(2021, 5, 26), self.holidays)
-        self.assertIn(date(2021, 7, 20), self.holidays)
-        self.assertIn(date(2021, 8, 9), self.holidays)
-        self.assertIn(date(2021, 11, 4), self.holidays)
-        self.assertIn(date(2021, 12, 25), self.holidays)
-        self.assertEqual(len(Singapore(years=[2021])), 11)
+        self.assertHolidays(
+            ("2021-01-01", "New Year's Day"),
+            ("2021-02-12", "Chinese New Year"),
+            ("2021-02-13", "Chinese New Year"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-05-01", "Labour Day"),
+            ("2021-05-13", "Hari Raya Puasa"),
+            ("2021-05-26", "Vesak Day"),
+            ("2021-07-20", "Hari Raya Haji"),
+            ("2021-08-09", "National Day"),
+            ("2021-11-04", "Deepavali"),
+            ("2021-12-25", "Christmas Day"),
+        )
 
     def test_2022(self):
-        self.assertIn(date(2022, 1, 1), self.holidays)
-        self.assertIn(date(2022, 2, 1), self.holidays)
-        self.assertIn(date(2022, 2, 2), self.holidays)
-        self.assertIn(date(2022, 4, 15), self.holidays)
-        self.assertIn(date(2022, 5, 1), self.holidays)
-        self.assertIn(date(2022, 5, 2), self.holidays)
-        self.assertIn(date(2022, 5, 3), self.holidays)
-        self.assertIn(date(2022, 5, 15), self.holidays)
-        self.assertIn(date(2022, 5, 16), self.holidays)
-        self.assertIn(date(2022, 7, 10), self.holidays)
-        self.assertIn(date(2022, 7, 11), self.holidays)
-        self.assertIn(date(2022, 8, 9), self.holidays)
-        self.assertIn(date(2022, 10, 24), self.holidays)
-        self.assertIn(date(2022, 12, 25), self.holidays)
-        self.assertIn(date(2022, 12, 26), self.holidays)
-        # 2022: total holidays (11 + 4 falling on a Sunday)
-        self.assertEqual(len(Singapore(years=[2022])), 11 + 4)
+        self.assertHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-01", "Chinese New Year"),
+            ("2022-02-02", "Chinese New Year"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-03", "Hari Raya Puasa"),
+            ("2022-05-15", "Vesak Day"),
+            ("2022-05-16", "Vesak Day (Observed)"),
+            ("2022-07-10", "Hari Raya Haji"),
+            ("2022-07-11", "Hari Raya Haji (Observed)"),
+            ("2022-08-09", "National Day"),
+            ("2022-10-24", "Deepavali"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (Observed)"),
+        )
 
     def test_2023(self):
-        self.assertIn(date(2023, 1, 1), self.holidays)
-        self.assertIn(date(2023, 1, 2), self.holidays)
-        self.assertIn(date(2023, 1, 22), self.holidays)
-        self.assertIn(date(2023, 1, 23), self.holidays)
-        self.assertIn(date(2023, 1, 24), self.holidays)
-        self.assertIn(date(2023, 4, 7), self.holidays)
-        self.assertIn(date(2023, 4, 22), self.holidays)
-        self.assertIn(date(2023, 5, 1), self.holidays)
-        self.assertIn(date(2023, 6, 2), self.holidays)
-        self.assertIn(date(2023, 6, 29), self.holidays)
-        self.assertIn(date(2023, 8, 9), self.holidays)
-        self.assertIn(date(2023, 9, 1), self.holidays)
-        self.assertIn(date(2023, 11, 12), self.holidays)
-        self.assertIn(date(2023, 11, 13), self.holidays)
-        self.assertIn(date(2023, 12, 25), self.holidays)
-        # 2023: total holidays (11 + 3 falling on a Sunday + Polling Day)
-        self.assertEqual(len(Singapore(years=[2023])), 11 + 3 + 1)
+        self.assertHolidays(
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-22", "Chinese New Year"),
+            ("2023-01-23", "Chinese New Year"),
+            ("2023-01-24", "Chinese New Year (Observed)"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-22", "Hari Raya Puasa"),
+            ("2023-05-01", "Labour Day"),
+            ("2023-06-02", "Vesak Day"),
+            ("2023-06-29", "Hari Raya Haji"),
+            ("2023-08-09", "National Day"),
+            ("2023-09-01", "Polling Day"),
+            ("2023-11-12", "Deepavali"),
+            ("2023-11-13", "Deepavali (Observed)"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_2024(self):
+        self.assertHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-02-10", "Chinese New Year"),
+            ("2024-02-11", "Chinese New Year"),
+            ("2024-02-12", "Chinese New Year (Observed)"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-10", "Hari Raya Puasa"),
+            ("2024-05-01", "Labour Day"),
+            ("2024-05-22", "Vesak Day"),
+            ("2024-06-17", "Hari Raya Haji"),
+            ("2024-08-09", "National Day"),
+            ("2024-10-31", "Deepavali"),
+            ("2024-12-25", "Christmas Day"),
+        )
 
     def test_non_observed(self):
-        self.assertNotIn(date(2023, 1, 2), Singapore(observed=False, years=2023))
+        self.assertNoNonObservedHoliday("2023-01-02")
 
     def test_special_holidays(self):
-        self.assertIn(date(2015, 8, 7), self.holidays)
+        self.assertHoliday("2015-08-07")
