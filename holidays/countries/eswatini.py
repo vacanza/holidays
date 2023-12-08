@@ -88,7 +88,7 @@ class SZW(Eswatini):
 
 
 class EswatiniStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
         1999: (DEC, 31, "Y2K changeover"),
         2000: (JAN, 3, "Y2K changeover"),

@@ -113,7 +113,7 @@ class RUS(Russia):
 
 
 class RussiaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # Bridge days for 01/01/2023 and 08/01/2023.
         # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
         2023: (

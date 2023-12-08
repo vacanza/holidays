@@ -101,10 +101,10 @@ class ALB(Albania):
 
 
 class AlbaniaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2022: (MAR, 21, "Public Holiday"),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         2007: (JAN, 3, "Eid al-Adha"),
     }

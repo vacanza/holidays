@@ -289,7 +289,7 @@ class CambodiaStaticHolidays:
     # Special Public Holiday
     special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
 
-    special_holidays = {
+    special_public_holidays = {
         2016: (
             (MAY, 2, special_in_lieu_holidays),
             (MAY, 16, special_in_lieu_holidays),

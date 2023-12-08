@@ -195,12 +195,12 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Christmas.
         self._add_christmas_day(tr("Navidad"))
 
-    def _add_subdiv_ap_holidays(self):
+    def _populate_subdiv_ap_public_holidays(self):
         if self._year >= 2013:
             # Assault and Capture of Cape Arica.
             self._add_holiday_jun_7(tr("Asalto y Toma del Morro de Arica"))
 
-    def _add_subdiv_nb_holidays(self):
+    def _populate_subdiv_nb_public_holidays(self):
         if self._year >= 2014:
             self._add_holiday_aug_20(
                 # Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)
@@ -226,7 +226,7 @@ class CHL(Chile):
 
 
 class ChileStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # National Holiday.
         2022: (SEP, 16, tr("Feriado nacional")),
     }
