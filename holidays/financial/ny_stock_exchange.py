@@ -45,7 +45,6 @@ class NewYorkStockExchange(
         # New Year's Day.
         name = "New Year's Day"
         self._move_holiday(self._add_new_years_day(name))
-        self._add_observed(self._next_year_new_years_day, name)
 
         # MLK, 3rd Monday of January.
         if year >= 1998:
@@ -169,7 +168,6 @@ class NewYorkStockExchangeStaticHolidays:
             (JAN, 28, "Heatless Day"),
             (FEB, 4, "Heatless Day"),
             (FEB, 11, "Heatless Day"),
-            (JUN, 14, "Heatless Day"),
             (SEP, 12, "Draft Registration Day"),
             (NOV, 11, "Armistice Day"),
         ),
@@ -183,7 +181,10 @@ class NewYorkStockExchangeStaticHolidays:
             (AUG, 10, "Funeral of President Warren G. Harding"),
         ),
         1927: (JUN, 13, "Parade for Colonel Charles Lindbergh"),
-        1929: (NOV, 29, "Catch Up Day"),
+        1929: (
+            (NOV, 1, "Catch Up Day"),
+            (NOV, 29, "Catch Up Day"),
+        ),
         1933: (
             (MAR, 6, "Special Bank Holiday"),
             (MAR, 7, "Special Bank Holiday"),
@@ -215,7 +216,7 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1972: (DEC, 28, "Funeral for President Harry S. Truman"),
         1973: (JAN, 25, "Funeral for President Lyndon B. Johnson"),
-        1977: (JUL, 14, "Blackout in New Yor City"),
+        1977: (JUL, 14, "Blackout in New York City"),
         1985: (SEP, 27, "Hurricane Gloria"),
         1994: (APR, 27, "Funeral for President Richard M. Nixon"),
         2001: (

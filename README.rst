@@ -226,8 +226,8 @@ All other default values are highlighted with bold:
    * - Azerbaijan
      - AZ
      -
-     -
-     -
+     - **az**, en_US, uk
+     - **PUBLIC**, WORKDAY
    * - Bahamas
      - BS
      -
