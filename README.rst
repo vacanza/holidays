@@ -227,7 +227,7 @@ All other default values are highlighted with bold:
      - AZ
      -
      - **az**, en_US, uk
-     - **PUBLIC**, WORKDAY
+     - WORKDAY
    * - Bahamas
      - BS
      -
