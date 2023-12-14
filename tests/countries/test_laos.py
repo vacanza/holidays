@@ -23,10 +23,7 @@ class TestLaos(TestCase):
         self.assertCountryAliases(Laos, LA, LAO)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Laos(years=1975))
-        self.assertNoHolidays(Laos(years=1975, categories=BANK))
-        self.assertNoHolidays(Laos(years=1975, categories=SCHOOL))
-        self.assertNoHolidays(Laos(years=1975, categories=WORKDAY))
+        self.assertNoHolidays(Laos(categories=(BANK, PUBLIC, SCHOOL, WORKDAY), years=1975))
 
     def test_special_bank_holiday(self):
         self.assertHoliday(
@@ -34,10 +31,20 @@ class TestLaos(TestCase):
             "2015-01-02",
             "2017-10-09",
         )
+        self.assertNoNonObservedHoliday(
+            Laos(categories=BANK, observed=False),
+            "2017-10-09",
+        )
 
     def test_special_public_holiday(self):
-        self.assertHoliday(
-            Laos(categories=PUBLIC),
+        dt = (
+            "2015-04-17",
+            "2016-04-13",
+            "2016-04-18",
+            "2020-04-13",
+            "2020-04-17",
+        )
+        dt_observed = (
             "2011-04-13",
             "2012-01-02",
             "2012-04-13",
@@ -45,21 +52,22 @@ class TestLaos(TestCase):
             "2012-12-03",
             "2013-04-17",
             "2015-03-09",
-            "2015-04-17",
-            "2016-04-13",
-            "2016-04-18",
             "2016-05-02",
             "2017-01-02",
             "2017-04-13",
             "2017-04-17",
             "2017-12-04",
-            "2020-04-13",
-            "2020-04-17",
         )
+        self.assertHoliday(dt, dt_observed)
+        self.assertNoNonObservedHoliday(dt_observed)
 
     def test_special_workday(self):
         self.assertHoliday(
             Laos(categories=WORKDAY),
+            "2019-07-22",
+        )
+        self.assertNoNonObservedHoliday(
+            Laos(categories=WORKDAY, observed=False),
             "2019-07-22",
         )
 
