@@ -109,7 +109,7 @@ class TestThailand(TestCase):
             "2020-09-07",
         )
         self.assertHoliday(dt, dt_observed)
-        self.assertNoNonObservedHoliday(Thailand(observed=False), dt_observed)
+        self.assertNoNonObservedHoliday(dt_observed)
 
     def test_2022_all(self):
         self.assertHolidays(
