@@ -52,6 +52,7 @@ setup:
 	make l10n
 
 snapshot:
+	scripts/l10n/generate_mo_files.py
 	scripts/generate_snapshots.py
 
 test:
