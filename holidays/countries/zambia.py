@@ -99,7 +99,7 @@ class ZMB(Zambia):
 
 
 class ZambiaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2016: (
             (AUG, 11, "General elections and referendum"),
             (SEP, 13, "Inauguration ceremony of President-elect and Vice President-elect"),

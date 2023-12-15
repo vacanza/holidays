@@ -188,7 +188,7 @@ class AGO(Angola):
 
 
 class AngolaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # General Election Day.
         2017: (AUG, 23, tr("Dia de eleições gerais")),
     }

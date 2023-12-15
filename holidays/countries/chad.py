@@ -131,6 +131,6 @@ class ChadIslamicHolidays(_CustomIslamicHolidays):
 
 
 class ChadStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2021: (APR, 23, "Funeral of Idriss Déby Itno"),
     }

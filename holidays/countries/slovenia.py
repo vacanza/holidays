@@ -92,7 +92,7 @@ class SVN(Slovenia):
 
 
 class SloveniaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # Solidarity Day.
         2023: (AUG, 14, tr("dan solidarnosti")),
     }

@@ -176,6 +176,7 @@ class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
         2021: (MAY, 26),
         2022: (MAY, 15),
         2023: (JUN, 2),
+        2024: (MAY, 22),
     }
 
 
@@ -204,6 +205,7 @@ class SingaporeChineseHolidays(_CustomChineseHolidays):
         2021: (FEB, 12),
         2022: (FEB, 1),
         2023: (JAN, 22),
+        2024: (FEB, 10),
     }
 
 
@@ -232,6 +234,7 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
         2021: (NOV, 4),
         2022: (OCT, 24),
         2023: (NOV, 12),
+        2024: (OCT, 31),
     }
 
 
@@ -260,6 +263,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 10),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     EID_AL_FITR_DATES = {
@@ -286,11 +290,12 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAY, 13),
         2022: (MAY, 3),
         2023: (APR, 22),
+        2024: (APR, 10),
     }
 
 
 class SingaporeStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2001: (NOV, 3, "Polling Day"),
         2006: (MAY, 6, "Polling Day"),
         2011: (MAY, 7, "Polling Day"),
@@ -307,6 +312,6 @@ class SingaporeStaticHolidays:
         2023: (SEP, 1, "Polling Day"),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         2007: (JAN, 2, "Hari Raya Haji"),
     }

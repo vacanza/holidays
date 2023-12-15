@@ -88,7 +88,7 @@ class MCO(Monaco):
 
 
 class MonacoStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # Public holiday.
         2015: (JAN, 7, tr("Jour férié")),
     }

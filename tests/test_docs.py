@@ -14,6 +14,7 @@ from pathlib import Path
 from unittest import TestCase
 
 from holidays import country_holidays, list_supported_countries, list_localized_countries
+from holidays.constants import PUBLIC
 
 
 class TestReadme(TestCase):
@@ -104,10 +105,10 @@ class TestReadme(TestCase):
             # Supported Categories: 5th column.
             supported_categories = table_content[idx + 4].strip(" -")
             if supported_categories:
-                categories = []
+                categories = [PUBLIC]
                 for supported_category in supported_categories.split(","):
-                    categories.append(supported_category.strip("* ").lower())
-                country_supported_categories[country_code] = categories
+                    categories.append(supported_category.strip().lower())
+                country_supported_categories[country_code] = sorted(categories)
 
         # Check the data.
         self.assertEqual(
@@ -191,7 +192,7 @@ class TestReadme(TestCase):
             supported_categories = sorted(instance.supported_categories)
             self.assertEqual(
                 supported_categories,
-                country_supported_categories.get(country_code, []),
+                country_supported_categories.get(country_code, [PUBLIC]),
                 f"Country {country_name} supported categories are not "
                 "shown correctly in the table. The column must contain "
                 "all supported categories: "

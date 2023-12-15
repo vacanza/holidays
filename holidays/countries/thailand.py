@@ -665,8 +665,6 @@ class ThailandStaticHolidays:
     thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
     # Thai Election Day.
     thai_election = tr("วันเลือกตั้ง")
-    # Thai Election Day (in lieu).
-    thai_election_in_lieu = tr("ชดเชยวันเลือกตั้ง")
     # Bridge Public Holiday.
     thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
 
@@ -692,8 +690,8 @@ class ThailandStaticHolidays:
     rama_x_coronation_celebrations = tr(
         "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
     )
-    # Songkran Festival (in lieu).
-    songkran_festival_in_lieu_covid = tr("ชดเชยวันสงกรานต์")
+    # Songkran Festival.
+    songkran_festival = tr("วันสงกรานต์")
 
     special_public_holidays = {
         # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
@@ -742,7 +740,6 @@ class ThailandStaticHolidays:
             (JUN, 13, rama_ix_sixty_accession),
             (SEP, 20, thai_military_emergency_lockdown),
         ),
-        2007: (DEC, 24, thai_election_in_lieu),
         2009: (
             (JAN, 2, thai_bridge_public_holiday),
             (APR, 10, thai_political_emergency_lockdown),
@@ -778,9 +775,6 @@ class ThailandStaticHolidays:
         2017: (OCT, 26, rama_ix_cremation),
         2019: (MAY, 6, rama_x_coronation_celebrations),
         2020: (
-            (JUL, 27, songkran_festival_in_lieu_covid),
-            (SEP, 4, songkran_festival_in_lieu_covid),
-            (SEP, 7, songkran_festival_in_lieu_covid),
             (NOV, 19, thai_bridge_public_holiday),
             (NOV, 20, thai_bridge_public_holiday),
             (DEC, 11, thai_bridge_public_holiday),
@@ -800,5 +794,14 @@ class ThailandStaticHolidays:
             (MAY, 5, thai_bridge_public_holiday),
             (JUL, 31, thai_bridge_public_holiday),
             (DEC, 29, thai_bridge_public_holiday),
+        ),
+    }
+
+    special_public_holidays_observed = {
+        2007: (DEC, 24, thai_election),
+        2020: (
+            (JUL, 27, songkran_festival),
+            (SEP, 4, songkran_festival),
+            (SEP, 7, songkran_festival),
         ),
     }

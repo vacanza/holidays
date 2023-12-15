@@ -93,13 +93,13 @@ class BosniaAndHerzegovina(
         self._add_eid_al_adha_day(tr("Kurban Bajram"))
 
         if self.subdiv == "BD":
-            self._add_subdiv_brc_holidays()
+            self._populate_subdiv_brc_public_holidays()
         elif self.subdiv == "FBiH":
-            self._add_subdiv_bih_holidays()
+            self._populate_subdiv_bih_public_holidays()
         elif self.subdiv == "RS":
-            self._add_subdiv_srp_holidays()
+            self._populate_subdiv_srp_public_holidays()
 
-    def _add_subdiv_holidays(self):
+    def _populate_subdiv_holidays(self):
         if not self.subdiv:
             # New Year's Day.
             name = tr("Nova godina")
@@ -117,9 +117,9 @@ class BosniaAndHerzegovina(
             # Catholic Christmas.
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
 
-        super()._add_subdiv_holidays()
+        super()._populate_subdiv_holidays()
 
-    def _add_subdiv_bih_holidays(self):
+    def _populate_subdiv_bih_public_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
         self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
@@ -169,7 +169,7 @@ class BosniaAndHerzegovina(
         # Eid al-Adha.
         self._add_eid_al_adha_day_two(tr("Kurban Bajram"))
 
-    def _add_subdiv_brc_holidays(self):
+    def _populate_subdiv_brc_public_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
         self._add_observed(self._add_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
@@ -193,7 +193,7 @@ class BosniaAndHerzegovina(
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
         )
 
-    def _add_subdiv_srp_holidays(self):
+    def _populate_subdiv_srp_public_holidays(self):
         # New Year's Day.
         name = tr("Nova godina")
         self._add_observed(self._add_new_years_day(name), rule=SAT_TO_NEXT_MON)

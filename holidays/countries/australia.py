@@ -76,7 +76,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-    def _add_subdiv_holidays(self):
+    def _populate_subdiv_holidays(self):
         # Australia Day
         if self._year >= 1935:
             jan_26 = self._add_holiday_jan_26(
@@ -101,9 +101,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        super()._add_subdiv_holidays()
+        super()._populate_subdiv_holidays()
 
-    def _add_subdiv_act_holidays(self):
+    def _populate_subdiv_act_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
         self._add_easter_sunday("Easter Sunday")
@@ -157,7 +157,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2018:
             self._add_holiday_1st_mon_from_may_27("Reconciliation Day")
 
-    def _add_subdiv_nsw_holidays(self):
+    def _populate_subdiv_nsw_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
         self._add_easter_sunday("Easter Sunday")
@@ -173,7 +173,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1912:
             self._add_holiday_1st_mon_of_aug("Bank Holiday")
 
-    def _add_subdiv_nt_holidays(self):
+    def _populate_subdiv_nt_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
 
@@ -191,7 +191,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Picnic Day
         self._add_holiday_1st_mon_of_aug("Picnic Day")
 
-    def _add_subdiv_qld_holidays(self):
+    def _populate_subdiv_qld_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
         self._add_easter_sunday("Easter Sunday")
@@ -229,7 +229,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # [1st FRI after Aug 5] + 5 days = [1st WED after Aug 10]
             self._add_holiday_1st_wed_from_aug_10(name)
 
-    def _add_subdiv_sa_holidays(self):
+    def _populate_subdiv_sa_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
 
@@ -251,7 +251,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         else:
             self._add_holiday_3rd_mon_of_mar(name)
 
-    def _add_subdiv_tas_holidays(self):
+    def _populate_subdiv_tas_public_holidays(self):
         # Labour Day
         self._add_holiday_2nd_mon_of_mar("Eight Hours Day")
 
@@ -259,7 +259,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1936:
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
-    def _add_subdiv_vic_holidays(self):
+    def _populate_subdiv_vic_public_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
         self._add_easter_sunday("Easter Sunday")
@@ -289,7 +289,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_holiday_1st_fri_from_sep_24(name)
 
-    def _add_subdiv_wa_holidays(self):
+    def _populate_subdiv_wa_public_holidays(self):
         # Labour Day
         self._add_holiday_1st_mon_of_mar("Labour Day")
 
@@ -317,10 +317,10 @@ class AUS(Australia):
 
 
 class AustraliaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
     }
 
-    special_qld_holidays = {
+    special_qld_public_holidays = {
         2012: (JUN, 11, "Queen's Diamond Jubilee"),
     }

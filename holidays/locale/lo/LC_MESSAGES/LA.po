@@ -1,27 +1,23 @@
-# Laos holidays lo localization.
+# Laos holidays.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.34\n"
+"Project-Id-Version: Python Holidays 0.39\n"
 "POT-Creation-Date: 2023-09-11 15:10+0700\n"
-"PO-Revision-Date: \n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2023-11-16 20:47+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. %s (in lieu).
 #, c-format
 msgid "ພັກຊົດເຊີຍ%s"
-msgstr ""
-
-#. Lao New Year's Day (in lieu).
-msgid "ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ"
 msgstr ""
 
 #. New Year's Day.
@@ -56,32 +52,8 @@ msgstr ""
 msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
 msgstr ""
 
-#. New Year's Day (in lieu).
-msgid "ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ"
-msgstr ""
-
-#. Internation Women's Rights Day (in lieu).
-msgid "ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ"
-msgstr ""
-
 #. Lao New Year's Day (Special).
 msgid "ພັກບຸນປີໃໝ່ລາວ"
-msgstr ""
-
-#. Labor Day (in lieu).
-msgid "ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ"
-msgstr ""
-
-#. Establishment Day of the Lao Women's Union (in lieu).
-msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ"
-msgstr ""
-
-#. Establishment Day of the BOL (in lieu).
-msgid "ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
-msgstr ""
-
-#. Lao National Day (in lieu).
-msgid "ພັກຊົດເຊີຍວັນຊາດ"
 msgstr ""
 
 #. Establishment Day of the BOL.

@@ -96,7 +96,7 @@ class BRB(Barbados):
 
 
 class BarbadosStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2021: (
             (JAN, 4, "Public Holiday"),
             (JAN, 5, "Public Holiday"),

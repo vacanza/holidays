@@ -96,7 +96,7 @@ class NAM(Namibia):
 
 
 class NamibiaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
         1999: (DEC, 31, "Y2K changeover"),
         2000: (JAN, 3, "Y2K changeover"),

@@ -95,7 +95,7 @@ class VTU(Vanuatu):
 class VanuatuStaticHolidays:
     independence_anniversary = "40th Independence Anniversary"
 
-    special_holidays = {
+    special_public_holidays = {
         2020: (
             (JUL, 23, independence_anniversary),
             (JUL, 27, independence_anniversary),
