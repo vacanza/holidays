@@ -501,7 +501,7 @@ All other default values are highlighted with bold:
    * - Israel
      - IL
      -
-     -
+     - en_US, **he**, uk
      - OPTIONAL, SCHOOL
    * - Italy
      - IT

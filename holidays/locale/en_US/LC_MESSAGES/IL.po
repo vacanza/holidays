@@ -1,0 +1,93 @@
+# Israel holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.39\n"
+"POT-Creation-Date: 2023-07-18 17:31+0300\n"
+"PO-Revision-Date: 2023-07-18 17:57+0300\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Rosh Hashanah (New Year).
+msgid "ראש השנה"
+msgstr "Rosh Hashanah"
+
+#. Yom Kippur (Day of Atonement).
+msgid "יום כיפור"
+msgstr "Yom Kippur"
+
+#. Sukkot (Feast of Tabernacles).
+msgid "סוכות"
+msgstr "Sukkot"
+
+#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+msgid "חול המועד סוכות"
+msgstr "Sukkot holiday"
+
+#. Simchat Torah / Shemini Atzeret.
+msgid "שמחת תורה/שמיני עצרת"
+msgstr "Simchat Torah / Shemini Atzeret"
+
+#. Pesach (Passover).
+msgid "פסח"
+msgstr "Pesach"
+
+#. Chol HaMoed Pesach (Passover holiday).
+msgid "חול המועד פסח"
+msgstr "Pesach holiday"
+
+#. Shvi'i shel Pesach (Seventh day of Passover)
+msgid "שביעי של פסח"
+msgstr "Seventh day of Pesach"
+
+#. Yom Ha-Atzmaut (Independence Day).
+msgid "יום העצמאות"
+msgstr "Independence Day"
+
+#. Shavuot.
+msgid "שבועות"
+msgstr "Shavuot"
+
+#. Sigd.
+msgid "סיגד"
+msgstr "Sigd"
+
+#. Purim.
+msgid "פורים"
+msgstr "Purim"
+
+#. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
+msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
+msgstr "Remembrance Day"
+
+#. Yom Yerushalayim (Jerusalem Day).
+msgid "יום ירושלים"
+msgstr "Jerusalem Day"
+
+#. Tisha B'Av (Tisha B'Av, fast).
+msgid "תשעה באב"
+msgstr "Tisha B'Av"
+
+#. Hanukkah.
+msgid "חנוכה"
+msgstr "Hanukkah"
+
+#. Ta`anit Ester (Fast of Esther).
+msgid "תענית אסתר"
+msgstr "Ta'anit Ester"
+
+#. Lag Ba'omer (Lag BaOmer).
+msgid "ל\"ג בעומר"
+msgstr "Lag BaOmer"
+
+#. %s (Observed).
+#, c-format
+msgid "(נצפה) %s"
+msgstr "%s (Observed)"
