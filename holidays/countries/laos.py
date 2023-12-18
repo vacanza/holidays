@@ -392,63 +392,69 @@ class LaosStaticHolidays:
     # Special Bank Holiday.
     special_bank_day_off = tr("ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ")
 
-    # New Year's Day (in lieu).
-    new_year_day_in_lieu = tr("ພັກຊົດເຊີຍວັນປີໃໝ່ສາກົນ")
+    # New Year's Day.
+    new_year_day = tr("ວັນປີໃໝ່ສາກົນ")
 
-    # Internation Women's Rights Day (in lieu).
-    international_womens_rights_day_in_lieu = tr("ພັກຊົດເຊີຍວັນແມ່ຍິງສາກົນ")
+    # International Women's Rights Day.
+    international_womens_rights_day = tr("ວັນແມ່ຍິງສາກົນ")
 
-    # Lao New Year's Day (in lieu).
-    lao_new_year_in_lieu = tr("ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ")
+    # Lao New Year's Day.
+    lao_new_year = tr("ບຸນປີໃໝ່ລາວ")
 
     # Lao New Year's Day (Special).
     lao_new_year_special = tr("ພັກບຸນປີໃໝ່ລາວ")
 
-    # Labor Day (in lieu).
-    labor_day_in_lieu = tr("ພັກຊົດເຊີຍວັນກຳມະກອນສາກົນ")
+    # Labor Day.
+    labor_day = tr("ວັນກຳມະກອນສາກົນ")
 
-    # Establishment Day of the Lao Women's Union (in lieu).
-    lao_womens_union_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
+    # Establishment Day of the Lao Women's Union.
+    lao_womens_union = tr("ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
 
-    # Establishment Day of the BOL (in lieu).
-    establishment_day_of_bol_in_lieu = tr("ພັກຊົດເຊີຍວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")
+    # Establishment Day of the BOL.
+    establishment_day_of_bol = tr("ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")
 
-    # Lao National Day (in lieu).
-    lao_national_day_in_lieu = tr("ພັກຊົດເຊີຍວັນຊາດ")
+    # Lao National Day.
+    lao_national_day = tr("ວັນຊາດ")
 
     special_bank_holidays = {
         2015: (JAN, 2, special_bank_day_off),
-        2017: (OCT, 9, establishment_day_of_bol_in_lieu),
     }
+
+    special_bank_holidays_observed = {
+        2017: (OCT, 9, establishment_day_of_bol),
+    }
+
     special_public_holidays = {
-        2011: (APR, 13, lao_new_year_in_lieu),
-        2012: (
-            (JAN, 2, new_year_day_in_lieu),
-            (APR, 13, lao_new_year_in_lieu),
-            (APR, 17, lao_new_year_in_lieu),
-            (DEC, 3, lao_national_day_in_lieu),
-        ),
-        2013: (APR, 17, lao_new_year_in_lieu),
-        2015: (
-            (MAR, 9, international_womens_rights_day_in_lieu),
-            (APR, 17, lao_new_year_special),
-        ),
+        2015: (APR, 17, lao_new_year_special),
         2016: (
             (APR, 13, lao_new_year_special),
             (APR, 18, lao_new_year_special),
-            (MAY, 2, labor_day_in_lieu),
-        ),
-        2017: (
-            (JAN, 2, new_year_day_in_lieu),
-            (APR, 13, lao_new_year_in_lieu),
-            (APR, 17, lao_new_year_in_lieu),
-            (DEC, 4, lao_national_day_in_lieu),
         ),
         2020: (
             (APR, 13, lao_new_year_special),
             (APR, 17, lao_new_year_special),
         ),
     }
-    special_workday_holidays = {
-        2019: (JUL, 22, lao_womens_union_in_lieu),
+
+    special_public_holidays_observed = {
+        2011: (APR, 13, lao_new_year),
+        2012: (
+            (JAN, 2, new_year_day),
+            (APR, 13, lao_new_year),
+            (APR, 17, lao_new_year),
+            (DEC, 3, lao_national_day),
+        ),
+        2013: (APR, 17, lao_new_year),
+        2015: (MAR, 9, international_womens_rights_day),
+        2016: (MAY, 2, labor_day),
+        2017: (
+            (JAN, 2, new_year_day),
+            (APR, 13, lao_new_year),
+            (APR, 17, lao_new_year),
+            (DEC, 4, lao_national_day),
+        ),
+    }
+
+    special_workday_holidays_observed = {
+        2019: (JUL, 22, lao_womens_union),
     }

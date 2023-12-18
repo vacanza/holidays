@@ -67,6 +67,10 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
                 dt += td(days=-1) if self._year >= 1980 else td(days=+1)
             self._add_holiday(name, dt)
 
+        if self._year >= 1950 and self._year % 5 == 0:
+            # Liberation Day.
+            self._add_holiday_may_5(tr("Bevrijdingsdag"))
+
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
@@ -86,7 +90,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Goede Vrijdag"))
 
-        if (self._year >= 1945 and self._year % 5 == 0) or self._year >= 1990:
+        if self._year >= 1990:
             # Liberation Day.
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
 

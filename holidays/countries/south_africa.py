@@ -124,7 +124,7 @@ class SouthAfricaStaticHolidays:
     national_and_provincial_elections = "National and provincial government elections"
     presidential_decree_holiday = "Public holiday by presidential decree"
     y2k_changeover = "Y2K changeover"
-    special_holidays = {
+    special_public_holidays = {
         1999: (
             (JUN, 2, national_and_provincial_elections),
             (DEC, 31, y2k_changeover),
@@ -150,7 +150,7 @@ class SouthAfricaStaticHolidays:
         2023: (DEC, 15, presidential_decree_holiday),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         # Special holiday http://tiny.cc/za_y2k
         2000: (JAN, 3, y2k_changeover),
     }

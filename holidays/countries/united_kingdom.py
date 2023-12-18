@@ -81,15 +81,15 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
                 self._add_holiday_last_mon_of_may(name)
 
         if self.subdiv == "England":
-            self._add_subdiv_eng_holidays()
+            self._populate_subdiv_eng_public_holidays()
         elif self.subdiv == "Northern Ireland":
-            self._add_subdiv_nir_holidays()
+            self._populate_subdiv_nir_public_holidays()
         elif self.subdiv == "Scotland":
-            self._add_subdiv_sct_holidays()
+            self._populate_subdiv_sct_public_holidays()
         elif self.subdiv == "Wales":
-            self._add_subdiv_wls_holidays()
+            self._populate_subdiv_wls_public_holidays()
 
-    def _add_subdiv_holidays(self):
+    def _populate_subdiv_holidays(self):
         if self.subdiv not in {"SCT", "Scotland"}:
             # New Year's Day
             if self._year >= 1975:
@@ -105,9 +105,9 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
                 self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
 
-        super()._add_subdiv_holidays()
+        super()._populate_subdiv_holidays()
 
-    def _add_subdiv_eng_holidays(self):
+    def _populate_subdiv_eng_public_holidays(self):
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
@@ -115,7 +115,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
-    def _add_subdiv_nir_holidays(self):
+    def _populate_subdiv_nir_public_holidays(self):
         if self._year >= 1903:
             # St. Patrick's Day
             self._add_observed(self._add_holiday_mar_17("St. Patrick's Day"))
@@ -130,7 +130,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
-    def _add_subdiv_sct_holidays(self):
+    def _populate_subdiv_sct_public_holidays(self):
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -159,7 +159,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
                 self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
 
-    def _add_subdiv_wls_holidays(self):
+    def _populate_subdiv_wls_public_holidays(self):
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
@@ -181,7 +181,7 @@ class GBR(UnitedKingdom):
 
 
 class UnitedKingdomStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
         1981: (JUL, 29, "Wedding of Charles and Diana"),
         1999: (DEC, 31, "Millennium Celebrations"),

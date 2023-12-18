@@ -176,13 +176,13 @@ class CameroonIslamicHolidays(_CustomIslamicHolidays):
 
 
 class CameroonStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         2021: (
             (MAY, 14, "Public Holiday"),
             (JUL, 19, "Public Holiday"),
         ),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         2007: (JAN, 2, "Eid al-Adha"),
     }

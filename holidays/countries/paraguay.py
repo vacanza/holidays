@@ -121,7 +121,7 @@ class ParaguayStaticHolidays:
     public_holiday = tr("Asueto adicionale")
     # Public sector holiday.
     public_sector_holiday = tr("Asueto de la Administración Pública")
-    special_holidays = {
+    special_public_holidays = {
         # public holiday for business purposes, in view of
         # the recently increased risk of Dengue fever
         2007: (JAN, 29, public_holiday),

@@ -14,6 +14,17 @@ from typing import Optional
 
 from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 
+HANUKKAH = "HANUKKAH"
+INDEPENDENCE_DAY = "INDEPENDENCE_DAY"
+LAG_BAOMER = "LAG_BAOMER"
+PASSOVER = "PASSOVER"
+PURIM = "PURIM"
+ROSH_HASHANAH = "ROSH_HASHANAH"
+SHAVUOT = "SHAVUOT"
+SUKKOT = "SUKKOT"
+TISHA_BAV = "TISHA_BAV"
+YOM_KIPPUR = "YOM_KIPPUR"
+
 
 class _HebrewLunisolar:
     HANUKKAH_DATES = {
@@ -1587,7 +1598,6 @@ class _HebrewLunisolar:
     }
 
     @staticmethod
-    def hebrew_holiday_date(year: int, hol_type: str) -> Optional[date]:
-        hol_array = getattr(_HebrewLunisolar, f"{hol_type}_DATES", {})
-        dt = hol_array.get(year, ())
+    def _get_holiday(holiday: str, year: int) -> Optional[date]:
+        dt = getattr(_HebrewLunisolar, f"{holiday}_DATES", {}).get(year, ())
         return date(year, *dt) if dt else None

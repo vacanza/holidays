@@ -120,12 +120,12 @@ class SAU(SaudiArabia):
 
 
 class SaudiArabiaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # Celebrate the country's win against Argentina in the World Cup
         2022: (NOV, 23, tr("يوم وطني")),
     }
 
-    special_holidays_observed = {
+    special_public_holidays_observed = {
         # Eid al-Fitr Holiday
         2001: (JAN, 1, tr("عطلة عيد الفطر")),
     }

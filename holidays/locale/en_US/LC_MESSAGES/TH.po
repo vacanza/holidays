@@ -3,16 +3,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.35\n"
+"Project-Id-Version: Python Holidays 0.39\n"
 "POT-Creation-Date: 2023-03-18 15:58-0700\n"
-"PO-Revision-Date: \n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2023-11-30 21:08+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4\n"
 
 #. Special In Lieu Holiday.
 msgid "วันหยุดชดเชย"
@@ -21,10 +22,6 @@ msgstr "Special In Lieu Holiday"
 #. Thai Election Day.
 msgid "วันเลือกตั้ง"
 msgstr "Thai Election Day"
-
-#. Thai Election Day (in lieu).
-msgid "ชดเชยวันเลือกตั้ง"
-msgstr "Thai Election Day (in lieu)"
 
 #. Bridge Public Holiday.
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
@@ -62,10 +59,6 @@ msgstr "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
 #. HM King Maha Vajiralongkorn's Coronation Celebrations.
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr "HM King Maha Vajiralongkorn's Coronation Celebrations"
-
-#. Songkran Festival (in lieu).
-msgid "ชดเชยวันสงกรานต์"
-msgstr "Songkran Festival (in lieu)"
 
 #. %s (in lieu).
 #, c-format

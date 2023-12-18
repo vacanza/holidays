@@ -687,7 +687,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class MalaysiaStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         # The years 1955 1959 1995 seems to have the elections
         # one weekday but I am not sure if they were marked as
         # holidays.

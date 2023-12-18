@@ -216,7 +216,7 @@ class HKG(HongKong):
 
 
 class HongKongStaticHolidays:
-    special_holidays = {
+    special_public_holidays = {
         1997: (JUL, 2, "Hong Kong Special Administrative Region Establishment Day"),
         2015: (
             (

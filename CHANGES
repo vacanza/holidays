@@ -1,3 +1,17 @@
+Version 0.39
+============
+
+Released December 18, 2023
+
+- Refactor holiday categories handling (#1584 by @arkid15r)
+- Update Azerbaijan holidays, add l10n support (#1579 by @KJhellico)
+- Update Israel holidays (#1557 by @arkid15r)
+- Update Laos and Thailand special observed holidays (#1587 by @KJhellico)
+- Update Makefile: fix snapshot generation process (#1594 by @arkid15r)
+- Update NYSE holidays: fix New Year's Day observed (#1585 by @KJhellico)
+- Update Netherlands holidays: fix Liberation Day (#1592 by @KJhellico)
+- Update Singapore 2024 holidays (#1588 by @KJhellico)
+
 Version 0.38
 ============
 

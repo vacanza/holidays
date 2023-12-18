@@ -78,7 +78,7 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas.
         self._add_christmas_day(tr("Navidad"))
 
-    def _add_subdiv_mn_holidays(self):
+    def _populate_subdiv_mn_public_holidays(self):
         # Descent of Saint Dominic.
         self._add_holiday_aug_1(tr("Bajada de Santo Domingo"))
 

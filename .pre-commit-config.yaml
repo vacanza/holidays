@@ -19,7 +19,7 @@ repos:
           - rst
 
   - repo: https://github.com/python/black
-    rev: 23.11.0
+    rev: 23.12.0
     hooks:
       - id: black
         exclude: ^(docs)
@@ -35,7 +35,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 5.13.2
     hooks:
       - id: isort
         exclude: ^(docs)
