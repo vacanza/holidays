@@ -77,9 +77,7 @@ class BosniaAndHerzegovina(
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # Orthodox Good Friday.
         self._add_good_friday(tr("Veliki petak (Pravoslavni)"))
 

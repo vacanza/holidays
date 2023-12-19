@@ -33,10 +33,9 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year) -> None:
-        if year <= 1989:
+    def _populate_public_holidays(self) -> None:
+        if self._year <= 1989:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Naujųjų metų diena"))
@@ -62,11 +61,11 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Fathers's day. First Sunday in June.
         self._add_holiday_1st_sun_of_jun(tr("Tėvo diena"))
 
-        if year >= 2003:
+        if self._year >= 2003:
             # Day of Dew and Saint John.
             self._add_saint_johns_day(tr("Rasos ir Joninių diena"))
 
-        if year >= 1991:
+        if self._year >= 1991:
             self._add_holiday_jul_6(
                 # Statehood Day.
                 tr(
@@ -81,7 +80,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # All Saints' Day.
         self._add_all_saints_day(tr("Visų Šventųjų diena"))
 
-        if year >= 2020:
+        if self._year >= 2020:
             # All Souls' Day.
             self._add_all_souls_day(tr("Mirusiųjų atminimo (Vėlinių) diena"))
 

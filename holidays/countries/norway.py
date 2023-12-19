@@ -46,9 +46,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Første nyttårsdag"))
 
@@ -65,7 +63,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Andre påskedag"))
 
         # Source: https://lovdata.no/dokument/NL/lov/1947-04-26-1
-        if year >= 1947:
+        if self._year >= 1947:
             # Labour Day.
             self._add_labor_day(tr("Arbeidernes dag"))
 
@@ -93,7 +91,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.include_sundays:
             # Optionally add all Sundays of the year.
-            for dt in _get_all_sundays(year):
+            for dt in _get_all_sundays(self._year):
                 # Sunday.
                 self._add_holiday(tr("Søndag"), dt)
 

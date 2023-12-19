@@ -35,19 +35,17 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        if year >= 1945:
+        if self._year >= 1945:
             # Proclamation of Independence Day.
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
         # In May 2023, Morocco recognized Berber New Year as official holiday.
         # http://www.diplomatie.ma/en/statement-royal-office-12
-        if year >= 2024:
+        if self._year >= 2024:
             # Amazigh New Year.
             self._add_holiday_jan_13(tr("رأس السنة الأمازيغية"))
 
@@ -56,9 +54,9 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Throne day.
         name = tr("عيد العرش")
-        if year >= 2001:
+        if self._year >= 2001:
             self._add_holiday_jul_30(name)
-        elif year >= 1963:
+        elif self._year >= 1963:
             self._add_holiday_mar_3(name)
         else:
             self._add_holiday_nov_18(name)
@@ -71,16 +69,16 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Youth Day.
         name = tr("عيد الشباب")
-        if year >= 2001:
+        if self._year >= 2001:
             self._add_holiday_aug_21(name)
         else:
             self._add_holiday_jul_9(name)
 
-        if year >= 1976:
+        if self._year >= 1976:
             # Green March.
             self._add_holiday_nov_6(tr("ذكرى المسيرة الخضراء"))
 
-        if year >= 1957:
+        if self._year >= 1957:
             # Independence Day.
             self._add_holiday_nov_18(tr("عيد الإستقلال"))
 

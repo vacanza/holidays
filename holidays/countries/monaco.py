@@ -35,9 +35,7 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Le jour de l'An")))
 
@@ -70,7 +68,7 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Immaculate Conception Day.
         name = tr("L'Immaculée Conception")
-        if year >= 2019 and self._is_sunday(DEC, 8):
+        if self._year >= 2019 and self._is_sunday(DEC, 8):
             self._add_holiday_dec_9(name)
         else:
             self._add_holiday_dec_8(name)

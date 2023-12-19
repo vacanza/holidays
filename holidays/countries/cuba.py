@@ -42,20 +42,18 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # This calendar only works from 1959 onwards.
-        if year <= 1958:
+        if self._year <= 1958:
             return None
-
-        super()._populate(year)
 
         # Liberation Day.
         jan_1 = self._add_holiday_jan_1(tr("Triunfo de la Revolución"))
-        if year <= 2013:
+        if self._year <= 2013:
             self._add_observed(jan_1)
 
         # Granted in 2007 decree.
-        if year >= 2008:
+        if self._year >= 2008:
             #  Victory Day.
             self._add_holiday_jan_2(tr("Día de la Victoria"))
 
@@ -63,7 +61,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         #   https://cnn.it/3v5V6GY
         #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
-        if year >= 2012:
+        if self._year >= 2012:
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
@@ -90,12 +88,12 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # In 1998, Christmas returns for good:
         #   https://bit.ly/3cyXhwz
         #   https://bit.ly/3cyXj7F
-        if year <= 1968 or year >= 1997:
+        if self._year <= 1968 or self._year >= 1997:
             # Christmas Day.
             self._add_christmas_day(tr("Día de Navidad"))
 
         # Granted in 2007 decree.
-        if year >= 2007:
+        if self._year >= 2007:
             # New Year's Eve.
             self._add_new_years_eve(tr("Fiesta de Fin de Año"))
 

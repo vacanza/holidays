@@ -37,16 +37,14 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         StaticHolidays.__init__(self, SloveniaStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1990:
+    def _populate_public_holidays(self):
+        if self._year <= 1990:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         name = tr("novo leto")
         self._add_new_years_day(name)
-        if year <= 2012 or year >= 2017:
+        if self._year <= 2012 or self._year >= 2017:
             self._add_new_years_day_two(name)
 
         # Preseren's Day.
@@ -69,7 +67,7 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Marijino vnebovzetje"))
 
-        if year >= 1992:
+        if self._year >= 1992:
             # Reformation Day.
             self._add_holiday_oct_31(tr("dan reformacije"))
 

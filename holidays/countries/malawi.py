@@ -32,12 +32,10 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Observed since 2000
-        if year <= 1999:
+        if self._year <= 1999:
             return None
-
-        super()._populate(year)
 
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

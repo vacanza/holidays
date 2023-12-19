@@ -41,19 +41,18 @@ class Cameroon(
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # On 1 January 1960, French Cameroun gained independence from France.
-        if year <= 1959:
+        if self._year <= 1959:
             return None
 
-        super()._populate(year)
         dts_observed = set()
 
         # New Year's Day.
         dts_observed.add(self._add_new_years_day("New Year's Day"))
 
         # Youth Day.
-        if year >= 1966:
+        if self._year >= 1966:
             dts_observed.add(self._add_holiday_feb_11("Youth Day"))
 
         # Good Friday.
@@ -63,7 +62,7 @@ class Cameroon(
         dts_observed.add(self._add_labor_day("Labour Day"))
 
         # National Day.
-        if year >= 1972:
+        if self._year >= 1972:
             dts_observed.add(self._add_holiday_may_20("National Day"))
 
         # Ascension Day.

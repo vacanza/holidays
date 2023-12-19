@@ -45,9 +45,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # ACT:  Holidays Act 1958
         # NSW:  Public Holidays Act 2010
         # NT:   Public Holidays Act 2013
@@ -67,7 +65,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         self._add_easter_monday("Easter Monday")
 
         # Sovereign's Birthday
-        if 1902 <= year <= 1935:
+        if 1902 <= self._year <= 1935:
             if self._year >= 1912:
                 self._add_holiday_jun_3(self.sovereign_birthday)  # George V
             else:

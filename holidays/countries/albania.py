@@ -39,8 +39,7 @@ class Albania(
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
+    def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day.
@@ -49,11 +48,11 @@ class Albania(
         dts_observed.add(self._add_new_years_day_two(name))
 
         # Summer Day.
-        if year >= 2004:
+        if self._year >= 2004:
             dts_observed.add(self._add_holiday_mar_14("Summer Day"))
 
         # Nevruz.
-        if year >= 1996:
+        if self._year >= 1996:
             dts_observed.add(self._add_holiday_mar_22("Nevruz"))
 
         # Easter.
@@ -64,9 +63,9 @@ class Albania(
         dts_observed.add(self._add_labor_day("May Day"))
 
         # Mother Teresa Day.
-        if 2004 <= year <= 2017:
+        if 2004 <= self._year <= 2017:
             dts_observed.add(self._add_holiday_oct_19("Mother Teresa Beatification Day"))
-        elif year >= 2018:
+        elif self._year >= 2018:
             dts_observed.add(self._add_holiday_sep_5("Mother Teresa Canonization Day"))
 
         # Independence Day.
@@ -76,7 +75,7 @@ class Albania(
         dts_observed.add(self._add_holiday_nov_29("Liberation Day"))
 
         # National Youth Day.
-        if year >= 2009:
+        if self._year >= 2009:
             dts_observed.add(self._add_holiday_dec_8("National Youth Day"))
 
         # Christmas Day.

@@ -39,17 +39,15 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         StaticHolidays.__init__(self, BelarusStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # The current set of holidays actual from 1998.
-        if year <= 1997:
+        if self._year <= 1997:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Новы год"))
 
-        if year >= 2020:
+        if self._year >= 2020:
             self._add_new_years_day_two(tr("Новы год"))
 
         # Orthodox Christmas Day.

@@ -40,17 +40,16 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Public Holidays Act Cap.352, 1968-12-30
-        if year <= 1968:
+        if self._year <= 1968:
             return None
-        super()._populate(year)
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Errol Barrow Day
-        if year >= 1989:
+        if self._year >= 1989:
             self._add_observed(self._add_holiday_jan_21("Errol Barrow Day"))
 
         # Good Friday
@@ -60,7 +59,7 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_easter_monday("Easter Monday")
 
         # National Heroes Day
-        if year >= 1998:
+        if self._year >= 1998:
             self._add_observed(self._add_holiday_apr_28("National Heroes Day"))
 
         # May Day

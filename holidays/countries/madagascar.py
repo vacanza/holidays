@@ -33,12 +33,10 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Observed since 1947
-        if year <= 1946:
+        if self._year <= 1946:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Taom-baovao"))
@@ -77,7 +75,7 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Father's Day.
         self._add_holiday_3rd_sun_of_jun(tr("Fetin'ny ray"))
 
-        if year >= 1960:
+        if self._year >= 1960:
             # Independence Day.
             self._add_holiday_jun_26(tr("Fetin'ny fahaleovantena"))
 
@@ -87,7 +85,7 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         # All Saints' Day.
         self._add_all_saints_day(tr("Fetin'ny olo-masina"))
 
-        if year >= 2011:
+        if self._year >= 2011:
             # Republic Day.
             self._add_holiday_dec_11(tr("Fetin'ny Repoblika"))
 

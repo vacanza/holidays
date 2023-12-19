@@ -37,10 +37,9 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1989:
+    def _populate_public_holidays(self):
+        if self._year <= 1989:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Jaunais Gads"))
@@ -57,12 +56,12 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Labor Day.
         self._add_labor_day(tr("Darba svētki"))
 
-        if year >= 2002:
+        if self._year >= 2002:
             dt = self._add_holiday_may_4(
                 # Restoration of Independence Day.
                 tr("Latvijas Republikas Neatkarības atjaunošanas diena")
             )
-            if year >= 2008:
+            if self._year >= 2008:
                 self._add_observed(dt)
 
         # Mother's Day.
@@ -76,10 +75,10 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Republic of Latvia Proclamation Day.
         dt = self._add_holiday_nov_18(tr("Latvijas Republikas proklamēšanas diena"))
-        if year >= 2007:
+        if self._year >= 2007:
             self._add_observed(dt)
 
-        if year >= 2007:
+        if self._year >= 2007:
             # Christmas Eve.
             self._add_christmas_eve(tr("Ziemassvētku vakars"))
 

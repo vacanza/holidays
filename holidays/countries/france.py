@@ -68,46 +68,44 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # Civil holidays.
-        if year >= 1811:
+        if self._year >= 1811:
             # New Year's Day.
             self._add_new_years_day(tr("Jour de l'an"))
 
-        if year >= 1919:
+        if self._year >= 1919:
             self._add_labor_day(
                 # Labor Day.
                 tr("Fête du Travail")
-                if year >= 1948
+                if self._year >= 1948
                 # Labor and Social Concord Day.
                 else tr("Fête du Travail et de la Concorde sociale")
             )
 
-        if 1953 <= year <= 1959 or year >= 1982:
+        if 1953 <= self._year <= 1959 or self._year >= 1982:
             # Victory Day.
             self._add_holiday_may_8(tr("Fête de la Victoire"))
 
-        if year >= 1880:
+        if self._year >= 1880:
             # National Day.
             self._add_holiday_jul_14(tr("Fête nationale"))
 
-        if year >= 1918:
+        if self._year >= 1918:
             # Armistice Day.
             self._add_holiday_nov_11(tr("Armistice"))
 
         # Religious holidays.
 
-        if year >= 1886:
+        if self._year >= 1886:
             # Easter Monday.
             self._add_easter_monday(tr("Lundi de Pâques"))
 
-            if year not in {2005, 2006, 2007}:
+            if self._year not in {2005, 2006, 2007}:
                 # Whit Monday.
                 self._add_whit_monday(tr("Lundi de Pentecôte"))
 
-        if year >= 1802:
+        if self._year >= 1802:
             # Ascension Day.
             self._add_ascension_thursday(tr("Ascension"))
             # Assumption Day.

@@ -152,9 +152,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("Capodanno")
 
@@ -167,14 +165,14 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday("Lunedì dell'Angelo")
 
-        if year >= 1946:
+        if self._year >= 1946:
             # Liberation Day.
             self._add_holiday_apr_25("Festa della Liberazione")
 
         # Labor Day.
         self._add_labor_day("Festa dei Lavoratori")
 
-        if year >= 1948:
+        if self._year >= 1948:
             # Republic Day.
             self._add_holiday_jun_2("Festa della Repubblica")
 

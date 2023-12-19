@@ -46,16 +46,14 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Nyårsdagen"))
 
         # Epiphany.
         self._add_epiphany_day(tr("Trettondedag jul"))
 
-        if year <= 1953:
+        if self._year <= 1953:
             # Feast of the Annunciation.
             self._add_holiday_mar_25(tr("Jungfru Marie bebådelsedag"))
 
@@ -69,7 +67,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Annandag påsk"))
 
         # Source: https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj
-        if year >= 1939:
+        if self._year >= 1939:
             # May Day.
             self._add_labor_day(tr("Första maj"))
 
@@ -77,14 +75,14 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday(tr("Kristi himmelsfärdsdag"))
 
         # Source: https://sv.wikipedia.org/wiki/Sveriges_nationaldag
-        if year >= 2005:
+        if self._year >= 2005:
             # National Day of Sweden.
             self._add_holiday_jun_6(tr("Sveriges nationaldag"))
 
         # Whit Sunday.
         self._add_whit_sunday(tr("Pingstdagen"))
 
-        if year <= 2004:
+        if self._year <= 2004:
             # Whit Monday.
             self._add_whit_monday(tr("Annandag pingst"))
 
@@ -97,7 +95,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = tr("Midsommarafton")
         dt = (
             self._add_holiday_1st_fri_from_jun_19(name)
-            if year >= 1953
+            if self._year >= 1953
             else self._add_holiday_jun_23(name)
         )
 
@@ -121,7 +119,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Optionally add all Sundays of the year.
         if self.include_sundays:
-            for dt in _get_all_sundays(year):
+            for dt in _get_all_sundays(self._year):
                 # Sunday.
                 self._add_holiday(tr("Söndag"), dt)
 

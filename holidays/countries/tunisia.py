@@ -17,16 +17,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
-    Holidays here are estimates, it is common for the day to be pushed
-    if falls in a weekend, although not a rule that can be implemented.
-    Holidays after 2020: the following four moving date holidays whose exact
-    date is announced yearly are estimated (and so denoted):
-    - Eid El Fetr
-    - Eid El Adha
-    - Arafat Day
-    - Moulad El Naby
-    """
+    """Tunisia holidays."""
 
     country = "TN"
     default_language = "ar"
@@ -39,9 +30,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

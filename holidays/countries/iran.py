@@ -33,11 +33,9 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1979:
+    def _populate_public_holidays(self):
+        if self._year <= 1979:
             return None
-
-        super()._populate(year)
 
         # Persian New Year.
         name = tr("نوروز")

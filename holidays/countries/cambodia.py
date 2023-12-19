@@ -58,12 +58,10 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Available post-Independence from 1993 afterwards
-        if year <= 1992:
+        if self._year <= 1992:
             return None
-
-        super()._populate(year)
 
         # Fixed Holidays
 
@@ -88,15 +86,15 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
         # Status: In-Use.
-        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for years 2001-2050.
+        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for self._years 2001-2050.
 
-        if year != 2020:
+        if self._year != 2020:
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
             sangkranta_years_apr_14 = {2017, 2018, 2021, 2022, 2023}
             dt = (
                 self._add_holiday_apr_14(sangkranta)
-                if year in sangkranta_years_apr_14
+                if self._year in sangkranta_years_apr_14
                 else self._add_holiday_apr_13(sangkranta)
             )
             self._add_holiday(sangkranta, dt + td(days=+1))
@@ -112,14 +110,14 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Assumed to start in 2005. Was celebrated for 3 days until 2020.
 
-        if year >= 2005:
+        if self._year >= 2005:
             king_sihamoni_bday = tr(
                 # Birthday of His Majesty Preah Bat Samdech Preah Boromneath
                 # NORODOM SIHAMONI, King of Cambodia
                 "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
             )
             dt = self._add_holiday_may_14(king_sihamoni_bday)
-            if year <= 2019:
+            if self._year <= 2019:
                 self._add_holiday_may_13(king_sihamoni_bday)
                 self._add_holiday_may_15(king_sihamoni_bday)
 
@@ -130,7 +128,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Its celebration was put onhold by UN administration with
         # its name changed to present one in 2001.
 
-        if 2018 <= year <= 2019:
+        if 2018 <= self._year <= 2019:
             # National Day of Remembrance
             self._add_holiday_may_20(tr("ទិវាជាតិនៃការចងចាំ"))
 
@@ -138,7 +136,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: Defunct.
         # Assumed to start in 1993, defunct from 2020 onwards.
 
-        if year <= 2019:
+        if self._year <= 2019:
             # International Children Day
             self._add_childrens_day(tr("ទិវាកុមារអន្តរជាតិ"))
 
@@ -146,7 +144,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Assumed to start in 1994. A public holiday since 2015 at least.
 
-        if year >= 1994:
+        if self._year >= 1994:
             self._add_holiday_jun_18(
                 # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
                 tr(
@@ -167,7 +165,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Starts in 2012.
 
-        if year >= 2012:
+        if self._year >= 2012:
             self._add_holiday_oct_15(
                 # Mourning Day of the Late King-Father
                 # NORODOM SIHANOUK of Cambodia
@@ -182,7 +180,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: Defunct.
         # Assumed to start in 1993, defunct from 2020 onwards.
 
-        if year <= 2019:
+        if self._year <= 2019:
             # Paris Peace Agreement's Day
             self._add_holiday_oct_23(tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"))
 
@@ -192,7 +190,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Starts in 2004.
 
-        if year >= 2004:
+        if self._year >= 2004:
             self._add_holiday_oct_29(
                 # Coronation Day of His Majesty Preah Bat Samdech Preah
                 # Boromneath NORODOM SIHAMONI, King of Cambodia
@@ -214,7 +212,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: Defunct.
         # Assumed to start in 1993, defunct from 2020 onwards.
 
-        if year <= 2019:
+        if self._year <= 2019:
             # International Human Rights Day
             self._add_holiday_dec_10(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"))
 
@@ -227,7 +225,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # 15th Waxing Day of Month 3.
         # Defunct from 2020 onwards.
 
-        if year <= 2019:
+        if self._year <= 2019:
             # Meak Bochea Day
             self._add_makha_bucha(tr("ពិធីបុណ្យមាឃបូជា"))
 
@@ -258,7 +256,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         pchum_ben_date = self._add_pchum_ben(pchum_ben)
         if pchum_ben_date:
             self._add_holiday(pchum_ben, pchum_ben_date + td(days=-1))
-            if year >= 2017:
+            if self._year >= 2017:
                 self._add_holiday(pchum_ben, pchum_ben_date + td(days=+1))
 
         # ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក

@@ -79,15 +79,13 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         kwargs.setdefault("observed_since", 2000)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1914:
+    def _populate_public_holidays(self):
+        if self._year <= 1914:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         jan_1 = self._add_new_years_day(tr("Año Nuevo"))
-        if year >= 2017 and self._is_sunday(jan_1):
+        if self._year >= 2017 and self._is_sunday(jan_1):
             self._add_new_years_day_two(tr("Feriado nacional"))
 
         # Good Friday.
@@ -96,57 +94,57 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Holy Saturday.
         self._add_holy_saturday(tr("Sábado Santo"))
 
-        if year <= 1967:
+        if self._year <= 1967:
             # Ascension of Jesus.
             self._add_ascension_thursday(tr("Ascensión del Señor"))
 
-        if year <= 1967 or 1987 <= year <= 2006:
+        if self._year <= 1967 or 1987 <= self._year <= 2006:
             self._add_holiday(
                 # Corpus Christi.
                 tr("Corpus Christi"),
-                self._easter_sunday + td(days=+60 if year <= 1999 else +57),
+                self._easter_sunday + td(days=+60 if self._year <= 1999 else +57),
             )
 
-        if year >= 1932:
+        if self._year >= 1932:
             # Labour Day.
             self._add_labor_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day.
         self._add_holiday_may_21(tr("Día de las Glorias Navales"))
 
-        if year >= 2021:
+        if self._year >= 2021:
             # National Day of Indigenous Peoples.
             name = tr("Día Nacional de los Pueblos Indígenas")
-            if year == 2021:
+            if self._year == 2021:
                 self._add_holiday_jun_21(name)
             else:
                 self._add_holiday(name, self._summer_solstice_date)
 
-        if year <= 1967 or year >= 1986:
+        if self._year <= 1967 or self._year >= 1986:
             # Saint Peter and Saint Paul.
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
-        if year >= 2007:
+        if self._year >= 2007:
             # Day of Virgin of Carmen.
             self._add_holiday_jul_16(tr("Virgen del Carmen"))
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
-        if 1981 <= year <= 1998:
+        if 1981 <= self._year <= 1998:
             # Day of National Liberation.
             self._add_holiday_sep_11(tr("Día de la Liberación Nacional"))
-        elif 1999 <= year <= 2001:
+        elif 1999 <= self._year <= 2001:
             self._add_holiday_1st_mon_of_sep(
                 # Day of National Unity.
                 tr("Día de la Unidad Nacional")
             )
 
-        if year >= 2017 and self._is_saturday(SEP, 18):
+        if self._year >= 2017 and self._is_saturday(SEP, 18):
             # National Holiday.
             self._add_holiday_sep_17(tr("Fiestas Patrias"))
 
-        if year >= 2007 and self._is_tuesday(SEP, 18):
+        if self._year >= 2007 and self._is_tuesday(SEP, 18):
             self._add_holiday_sep_17(tr("Fiestas Patrias"))
 
         # Independence Day.
@@ -155,23 +153,23 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Army Day.
         self._add_holiday_sep_19(tr("Día de las Glorias del Ejército"))
 
-        if year >= 2008 and self._is_thursday(SEP, 19):
+        if self._year >= 2008 and self._is_thursday(SEP, 19):
             self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
-        if 1932 <= year <= 1944:
+        if 1932 <= self._year <= 1944:
             self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
-        if year >= 1922 and year != 1973:
+        if self._year >= 1922 and self._year != 1973:
             name = (
                 # Meeting of Two Worlds' Day.
                 tr("Día del Encuentro de dos Mundos")
-                if year >= 2000
+                if self._year >= 2000
                 # Columbus Day.
                 else tr("Día de la Raza")
             )
             self._move_holiday(self._add_columbus_day(name))
 
-        if year >= 2008:
+        if self._year >= 2008:
             # This holiday is moved to the preceding Friday if it falls on a Tuesday,
             # or to the following Friday if it falls on a Wednesday.
             self._move_holiday(
@@ -188,7 +186,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("La Inmaculada Concepción"))
 
-        if 1944 <= year <= 1988:
+        if 1944 <= self._year <= 1988:
             # Christmas Eve.
             self._add_christmas_eve(tr("Víspera de Navidad"))
 

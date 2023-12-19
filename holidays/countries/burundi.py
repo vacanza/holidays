@@ -35,21 +35,19 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1961:
+    def _populate_public_holidays(self):
+        if self._year <= 1961:
             return None
-
-        super()._populate(year)
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Unity Day
-        if year >= 1992:
+        if self._year >= 1992:
             self._add_observed(self._add_holiday_feb_5("Unity Day"))
 
         # President Ntaryamira Day
-        if year >= 1995:
+        if self._year >= 1995:
             self._add_observed(self._add_holiday_apr_6("President Ntaryamira Day"))
 
         # Labour Day
@@ -59,7 +57,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         self._add_ascension_thursday("Ascension Day")
 
         # President Nkurunziza Day
-        if year >= 2022:
+        if self._year >= 2022:
             self._add_observed(self._add_holiday_jun_8("President Nkurunziza Day"))
 
         # Independence Day
@@ -72,7 +70,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         self._add_observed(self._add_holiday_oct_13("Prince Louis Rwagasore Day"))
 
         # President Ndadaye's Day
-        if year >= 1994:
+        if self._year >= 1994:
             self._add_observed(self._add_holiday_oct_21("President Ndadaye's Day"))
 
         # All Saints' Day

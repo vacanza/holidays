@@ -25,9 +25,7 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("uusaasta"))
 
@@ -52,11 +50,11 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Midsummer Day.
         self._add_saint_johns_day(tr("jaanipäev"))
 
-        if year >= 1998:
+        if self._year >= 1998:
             # Independence Restoration Day.
             self._add_holiday_aug_20(tr("taasiseseisvumispäev"))
 
-        if year >= 2005:
+        if self._year >= 2005:
             # Christmas Eve.
             self._add_christmas_eve(tr("jõululaupäev"))
 

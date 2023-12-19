@@ -90,8 +90,7 @@ class Singapore(
         kwargs.setdefault("observed_since", 1998)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year) -> None:
-        super()._populate(year)
+    def _populate_public_holidays(self) -> None:
         dts_observed = set()
 
         # New Year's Day
@@ -104,7 +103,7 @@ class Singapore(
 
         # Hari Raya Puasa (Eid al-Fitr)
         dts_observed.update(self._add_eid_al_fitr_day("Hari Raya Puasa"))
-        if year <= 1968:
+        if self._year <= 1968:
             self._add_eid_al_fitr_day_two("Second day of Hari Raya Puasa")
 
         # Hari Raya Haji (Eid al-Adha)
@@ -113,7 +112,7 @@ class Singapore(
         # Good Friday
         self._add_good_friday("Good Friday")
 
-        if year <= 1968:
+        if self._year <= 1968:
             # Holy Saturday
             self._add_holy_saturday("Holy Saturday")
 
@@ -136,7 +135,7 @@ class Singapore(
         dts_observed.add(self._add_christmas_day("Christmas Day"))
 
         # Boxing day (up to and including 1968)
-        if year <= 1968:
+        if self._year <= 1968:
             self._add_christmas_day_two("Boxing Day")
 
         if self.observed:

@@ -28,16 +28,14 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1987:
+    def _populate_public_holidays(self):
+        if self._year <= 1987:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        if year >= 2018:
+        if self._year >= 2018:
             self._add_observed(
                 # Robert Gabriel Mugabe National Youth Day.
                 self._add_holiday_feb_21("Robert Gabriel Mugabe National Youth Day")
