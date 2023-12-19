@@ -86,7 +86,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
         # Status: In-Use.
-        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for self._years 2001-2050.
+        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for years 2001-2050.
 
         if self._year != 2020:
             # Khmer New Year's Day
