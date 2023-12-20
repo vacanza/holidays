@@ -32,34 +32,32 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Nova Godina"))
 
-        if year != 2002:
+        if self._year != 2002:
             # Epiphany.
             self._add_epiphany_day(tr("Bogojavljenje ili Sveta tri kralja"))
 
-        if year >= 2009:
+        if self._year >= 2009:
             # Easter.
             self._add_easter_sunday(tr("Uskrs"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Uskrsni ponedjeljak"))
 
-        if year >= 2002:
+        if self._year >= 2002:
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Tijelovo"))
 
         # International Workers' Day.
         self._add_labor_day(tr("Međunarodni praznik rada"))
 
-        if year >= 1996:
+        if self._year >= 1996:
             # Statehood Day.
             name = tr("Dan državnosti")
-            if 2002 <= year <= 2019:
+            if 2002 <= self._year <= 2019:
                 self._add_holiday_jun_25(name)
             else:
                 self._add_holiday_may_30(name)
@@ -70,7 +68,7 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = (
             # Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
             tr("Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja")
-            if year >= 2008
+            if self._year >= 2008
             # Victory and Homeland Thanksgiving Day.
             else tr("Dan pobjede i domovinske zahvalnosti")
         )
@@ -79,14 +77,14 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Velika Gospa"))
 
-        if 2002 <= year <= 2019:
+        if 2002 <= self._year <= 2019:
             # Independence Day.
             self._add_holiday_oct_8(tr("Dan neovisnosti"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Svi sveti"))
 
-        if year >= 2020:
+        if self._year >= 2020:
             # Memorial Day.
             self._add_holiday_nov_18(tr("Dan sjećanja"))
 

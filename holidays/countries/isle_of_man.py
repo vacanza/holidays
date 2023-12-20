@@ -30,14 +30,13 @@ class IsleOfMan(UnitedKingdom):
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
-
+    def _populate_public_holidays(self) -> None:
+        super()._populate_public_holidays()
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
         # Late Summer bank holiday (last Monday in August)
-        if year >= 1971:
+        if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
         # Isle of Man exclusive holidays
@@ -46,9 +45,10 @@ class IsleOfMan(UnitedKingdom):
 
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.
-        dt = date(year, JUL, 5)
+        dt = date(self._year, JUL, 5)
         self._add_holiday(
-            "Tynwald Day", self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) if year >= 1992 else dt
+            "Tynwald Day",
+            self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) if self._year >= 1992 else dt,
         )
 
 

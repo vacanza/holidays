@@ -40,12 +40,10 @@ class Chad(
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # On 11 August 1960, Chad gained independence from France.
-        if year <= 1960:
+        if self._year <= 1960:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
@@ -68,7 +66,7 @@ class Chad(
         # Republic Day.
         self._add_observed(self._add_holiday_nov_28("Republic Day"))
 
-        if year >= 1991:
+        if self._year >= 1991:
             # Freedom and Democracy Day.
             self._add_observed(self._add_holiday_dec_1("Freedom and Democracy Day"))
 

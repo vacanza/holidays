@@ -54,9 +54,7 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         name = self.tr("Año Nuevo")
         self._add_observed(self._add_new_years_day(name), rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)

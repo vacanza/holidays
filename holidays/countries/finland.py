@@ -30,15 +30,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Uudenvuodenpäivä"))
 
         # Epiphany.
         name = tr("Loppiainen")
-        if 1973 <= year <= 1990:
+        if 1973 <= self._year <= 1990:
             self._add_holiday_1st_sat_from_jan_6(name)
         else:
             self._add_epiphany_day(name)
@@ -57,7 +55,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Ascension Day.
         name = tr("Helatorstai")
-        if 1973 <= year <= 1990:
+        if 1973 <= self._year <= 1990:
             self._add_holiday(name, self._easter_sunday + td(days=+34))
         else:
             self._add_ascension_thursday(name)
@@ -67,7 +65,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Midsummer Eve.
         name = tr("Juhannusaatto")
-        if year >= 1955:
+        if self._year >= 1955:
             dt = self._add_holiday_1st_fri_from_jun_19(name)
         else:
             dt = self._add_holiday_jun_23(name)
@@ -77,7 +75,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # All Saints' Day.
         name = tr("Pyhäinpäivä")
-        if year >= 1955:
+        if self._year >= 1955:
             self._add_holiday_1st_sat_from_oct_31(name)
         else:
             self._add_holiday_nov_1(name)

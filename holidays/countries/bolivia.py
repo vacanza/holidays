@@ -61,17 +61,15 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_since", 1977)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1824:
+    def _populate_public_holidays(self):
+        if self._year <= 1824:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
 
         # Supreme Decree #0405.
-        if year >= 2010:
+        if self._year >= 2010:
             self._add_observed(
                 self._add_holiday_jan_22(
                     # Plurinational State Foundation Day.
@@ -90,34 +88,34 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_observed(may_1 := self._add_labor_day(self.tr("Día del Trabajo")))
         # Supreme Decree #1210.
-        if 2012 <= year <= 2015:
+        if 2012 <= self._year <= 2015:
             self._add_observed(may_1, rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI)
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Supreme Decree #0173.
-        if year >= 2009:
+        if self._year >= 2009:
             # Aymara New Year.
             self._add_observed(self._add_holiday_jun_21(tr("Año Nuevo Aymara Amazónico")))
 
         # Independence Day.
         self._add_observed(self._add_holiday_aug_6(tr("Día de la Independencia de Bolivia")))
 
-        if year >= 2020:
+        if self._year >= 2020:
             # National Dignity Day.
             self._add_holiday_oct_17(tr("Día de la Dignidad Nacional"))
 
         # Supreme Decree #21060.
-        if 1985 <= year <= 1988:
+        if 1985 <= self._year <= 1988:
             # All Saints' Day.
             self._add_all_saints_day(tr("Día de Todos los Santos"))
 
         # Supreme Decree #22352.
-        if year >= 1989:
+        if self._year >= 1989:
             # All Souls' Day.
             nov_2 = self._add_all_souls_day(tr("Día de Todos los Difuntos"))
-            if year <= 2015:
+            if self._year <= 2015:
                 self._add_observed(nov_2)
 
         # Christmas Day.

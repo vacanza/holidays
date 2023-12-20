@@ -80,13 +80,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         StaticHolidays.__init__(self, GermanyStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1989:
+    def _populate_public_holidays(self):
+        if self._year <= 1989:
             return None
 
-        super()._populate(year)
-
-        if year >= 1991:
+        if self._year >= 1991:
             # New Year's Day.
             self._add_new_years_day(tr("Neujahr"))
 
@@ -108,7 +106,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # German Unity Day.
         self._add_holiday_oct_3(tr("Tag der Deutschen Einheit"))
 
-        if year <= 1994:
+        if self._year <= 1994:
             # Repentance and Prayer Day.
             self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
@@ -119,6 +117,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
 
     def _populate_subdiv_bb_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             # Easter Sunday.
             self._add_easter_sunday(tr("Ostersonntag"))
@@ -130,11 +131,17 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_be_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2019:
             # International Women's Day.
             self._add_womens_day(tr("Internationaler Frauentag"))
 
     def _populate_subdiv_bw_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             # Epiphany.
             self._add_epiphany_day(tr("Heilige Drei Könige"))
@@ -146,6 +153,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_by_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_epiphany_day(tr("Heilige Drei Könige"))
             self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -156,6 +166,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_byp_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_epiphany_day(tr("Heilige Drei Könige"))
             self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -163,44 +176,71 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_hb_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2018:
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_he_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
     def _populate_subdiv_hh_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2018:
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_mv_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2023:
             self._add_womens_day(tr("Internationaler Frauentag"))
 
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_ni_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2018:
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_nw_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_rp_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_sh_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2018:
             self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_sl_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_corpus_christi_day(tr("Fronleichnam"))
             self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
@@ -208,6 +248,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_all_saints_day(tr("Allerheiligen"))
 
     def _populate_subdiv_sn_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         self._add_holiday_oct_31(tr("Reformationstag"))
 
         if self._year >= 1995:
@@ -215,12 +258,18 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
     def _populate_subdiv_st_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 1991:
             self._add_epiphany_day(tr("Heilige Drei Könige"))
 
         self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _populate_subdiv_th_public_holidays(self):
+        if self._year <= 1989:
+            return None
+
         if self._year >= 2019:
             # World Children's Day.
             self._add_holiday_sep_20(tr("Weltkindertag"))

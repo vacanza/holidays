@@ -44,19 +44,17 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
 
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Coptic Christmas
         self._add_christmas_day(tr("عيد الميلاد المجيد (تقويم قبطي)"))
 
-        if year >= 2012:
+        if self._year >= 2012:
             # January 25th Revolution
             self._add_holiday_jan_25(tr("عيد ثورة 25 يناير"))
-        elif year >= 2009:
+        elif self._year >= 2009:
             # National Police Day
             self._add_holiday_jan_25(tr("عيد الشرطة"))
 
@@ -64,7 +62,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         self._add_easter_sunday(tr("عيد الفصح القبطي"))
         self._add_easter_monday(tr("شم النسيم"))  # Spring Festival
 
-        if year > 1982:
+        if self._year > 1982:
             # Sinai Libration Day
             self._add_holiday_apr_25(tr("عيد تحرير سيناء"))
 
@@ -74,11 +72,11 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         # Armed Forces Day
         self._add_holiday_oct_6(tr("عيد القوات المسلحة"))
 
-        if year >= 2014:
+        if self._year >= 2014:
             # June 30 Revolution Day
             self._add_holiday_jun_30(tr("عيد ثورة 30 يونيو"))
 
-        if year > 1952:
+        if self._year > 1952:
             # July 23 Revolution Day
             self._add_holiday_jul_23(tr("عيد ثورة 23 يوليو"))
 

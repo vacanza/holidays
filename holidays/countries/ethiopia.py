@@ -17,19 +17,6 @@ from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
-# Ethiopian holidays are estimated: it is common for the day to be pushed
-# if falls in a weekend, although not a rule that can be implemented.
-# Holidays after 2020: the following four moving date holidays whose exact
-# date is announced yearly are estimated (and so denoted):
-# - Eid El Fetr*
-# - Eid El Adha*
-# - Arafat Day*
-# - Moulad El Naby*
-# *only if hijri-converter library is installed, otherwise a warning is
-#  raised that this holiday is missing. hijri-converter requires
-#  Python >= 3.6
-# is_weekend function is there, however not activated for accuracy.
-
 
 class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     country = "ET"
@@ -55,9 +42,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
         # Tigrinya, while in Amharic,
@@ -84,22 +69,22 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Orthodox Easter Sunday.
         self._add_easter_sunday(tr("ፋሲካ"))
 
-        if year > 1896:
+        if self._year > 1896:
             # Adwa Victory Day.
             self._add_holiday_mar_2(tr("አድዋ"))
 
         # Labour Day.
         self._add_labor_day(tr("የሰራተኞች ቀን"))
 
-        if year > 1941:
+        if self._year > 1941:
             # Patriots Day.
             self._add_holiday_may_5(tr("የአርበኞች ቀን"))
 
-        if year > 1991:
+        if self._year > 1991:
             # Downfall of Dergue Regime Day.
             self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
 
-        if year < 1991 and year > 1974:
+        if self._year < 1991 and self._year > 1974:
             # Downfall of King Haile Selassie.
             self._add_holiday(tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year() else 12)
 

@@ -32,12 +32,10 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         IslamicHolidays.__init__(self, cls=GabonIslamicHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # On 17 August 1960, Gabon gained independence from France.
-        if year <= 1960:
+        if self._year <= 1960:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
@@ -46,7 +44,7 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_easter_monday("Easter Monday")
 
         # Women's Rights Day.
-        if year >= 2015:
+        if self._year >= 2015:
             self._add_holiday_apr_17("Women's Rights Day")
 
         # Labour Day.

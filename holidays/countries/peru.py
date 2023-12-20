@@ -34,9 +34,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -61,7 +59,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Great Military Parade Day.
         self._add_holiday_jul_29(tr("Día de la Gran Parada Militar"))
 
-        if year >= 2022:
+        if self._year >= 2022:
             # Battle of Junín.
             self._add_holiday_aug_6(tr("Batalla de Junín"))
 
@@ -77,7 +75,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Inmaculada Concepción"))
 
-        if year >= 2022:
+        if self._year >= 2022:
             # Battle of Ayacucho.
             self._add_holiday_dec_9(tr("Batalla de Ayacucho"))
 

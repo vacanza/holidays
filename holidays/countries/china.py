@@ -283,7 +283,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
             # Status: In-Use (Statutory).
             # Mid-Autumn Festival in 2007, and 2013 revision.
             # Consecutive Holidays are available from 2008, except in 2010/2014/2015/2018/2019.
-            # Extra Day (Oct 8) is instead aded to the National Day Week if overlaps.
+            # Extra Day (Oct 8) is instead added to the National Day Week if overlaps.
 
             # Mid-Autumn Festival.
             mid_autumn_festival = self._add_mid_autumn_festival(tr("中秋节"))

@@ -35,11 +35,9 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         kwargs.setdefault("observed_since", 1995)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1965:
+    def _populate_public_holidays(self):
+        if self._year <= 1965:
             return None
-
-        super()._populate(year)
 
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
@@ -52,7 +50,7 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
         may_1 = self._add_labor_day("Labour Day")
         self._add_observed(may_1)
-        if self.observed and year >= 2016 and self._is_saturday(may_1):
+        if self.observed and self._year >= 2016 and self._is_saturday(may_1):
             self._add_labor_day_three("Labour Day Holiday")
 
         self._add_observed(self._add_holiday_jul_1("Sir Seretse Khama Day"))
@@ -67,7 +65,7 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
         self._add_observed(dec_26 := self._add_christmas_day_two("Boxing Day"))
 
-        if self.observed and year >= 2016 and self._is_saturday(dec_26):
+        if self.observed and self._year >= 2016 and self._is_saturday(dec_26):
             self._add_holiday("Boxing Day Holiday", dec_26 + td(days=+2))
 
 

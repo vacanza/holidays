@@ -35,14 +35,12 @@ class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
         # St. Brigid's Day.
-        if year >= 2023:
+        if self._year >= 2023:
             name = "St. Brigid's Day"
             if self._is_friday(FEB, 1):
                 self._add_holiday_feb_1(name)
@@ -56,9 +54,9 @@ class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_easter_monday("Easter Monday")
 
         # May Day.
-        if year >= 1978:
+        if self._year >= 1978:
             name = "May Day"
-            if year == 1995:
+            if self._year == 1995:
                 self._add_holiday_may_8(name)
             else:
                 self._add_holiday_1st_mon_of_may(name)

@@ -38,9 +38,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self, cls=BahrainIslamicHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

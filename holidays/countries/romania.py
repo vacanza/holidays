@@ -31,28 +31,26 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         name = tr("Anul Nou")
         self._add_new_years_day(name)
         self._add_new_years_day_two(name)
 
-        if year >= 2024:
+        if self._year >= 2024:
             # Epiphany.
             self._add_epiphany_day(tr("Bobotează"))
 
             # Saint John the Baptist.
             self._add_holiday_jan_7(tr("Sfântul Ion"))
 
-        if year >= 2016:
+        if self._year >= 2016:
             # Unification of the Romanian Principalities Day.
             self._add_holiday_jan_24(tr("Ziua Unirii Principatelor Române"))
 
         # Easter.
         name = tr("Paștele")
-        if year >= 2018:
+        if self._year >= 2018:
             self._add_good_friday(name)
 
         self._add_easter_sunday(name)
@@ -61,7 +59,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labour Day.
         self._add_labor_day(tr("Ziua Muncii"))
 
-        if year >= 2017:
+        if self._year >= 2017:
             # Children's Day.
             self._add_childrens_day(tr("Ziua Copilului"))
 
@@ -71,12 +69,12 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(name)
 
         # Law #202/2008
-        if year >= 2009:
+        if self._year >= 2009:
             # Dormition of the Mother of God.
             self._add_assumption_of_mary_day(tr("Adormirea Maicii Domnului"))
 
         # Law #147/2012
-        if year >= 2012:
+        if self._year >= 2012:
             # Saint Andrew's Day.
             self._add_holiday_nov_30(tr("Sfantul Apostol Andrei cel Intai chemat"))
 

@@ -31,17 +31,15 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # On 30 July 1980, Vanuatu gained independence from Britain and France.
-        if year <= 1980:
+        if self._year <= 1980:
             return None
-
-        super()._populate(year)
 
         # New Years Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        if year >= 1999:
+        if self._year >= 1999:
             # Father Lini Day.
             self._add_observed(self._add_holiday_feb_21("Father Lini Day"))
 

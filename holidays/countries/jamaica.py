@@ -33,9 +33,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -54,7 +52,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         # Emancipation Day
-        if year >= 1998:
+        if self._year >= 1998:
             self._add_observed(self._add_holiday_aug_1("Emancipation Day"))
 
         # Independence Day

@@ -34,10 +34,9 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1990:
+    def _populate_public_holidays(self):
+        if self._year <= 1990:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         name = tr("ახალი წელი")
