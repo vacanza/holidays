@@ -29,8 +29,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
+    def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day
@@ -46,7 +45,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
 
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
-        if year >= 2007:
+        if self._year >= 2007:
             dts_observed.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
 
         # Liberation Day/Reunification Day

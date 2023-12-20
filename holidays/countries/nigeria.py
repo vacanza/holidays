@@ -38,11 +38,10 @@ class Nigeria(
         kwargs.setdefault("observed_since", 2016)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1978:
+    def _populate_public_holidays(self):
+        if self._year <= 1978:
             return None
 
-        super()._populate(year)
         dts_observed = set()
 
         # New Year's Day.
@@ -52,14 +51,16 @@ class Nigeria(
         self._add_easter_monday("Easter Monday")
 
         # Worker's day.
-        if year >= 1981:
+        if self._year >= 1981:
             dts_observed.add(self._add_labor_day("Workers' Day"))
 
         # Democracy Day.
-        if year >= 2000:
+        if self._year >= 2000:
             name = "Democracy Day"
             dts_observed.add(
-                self._add_holiday_jun_12(name) if year >= 2019 else self._add_holiday_may_29(name)
+                self._add_holiday_jun_12(name)
+                if self._year >= 2019
+                else self._add_holiday_may_29(name)
             )
 
         # Independence Day.

@@ -32,24 +32,22 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         kwargs.setdefault("observed_since", 1995)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Observed since 1910, with a few name changes
-        if year <= 1909:
+        if self._year <= 1909:
             return None
-
-        super()._populate(year)
 
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         self._add_good_friday("Good Friday")
 
-        self._add_easter_monday("Family Day" if year >= 1980 else "Easter Monday")
+        self._add_easter_monday("Family Day" if self._year >= 1980 else "Easter Monday")
 
-        if year <= 1951:
+        if self._year <= 1951:
             name = "Dingaan's Day"
-        elif year <= 1979:
+        elif self._year <= 1979:
             name = "Day of the Covenant"
-        elif year <= 1994:
+        elif self._year <= 1994:
             name = "Day of the Vow"
         else:
             name = "Day of Reconciliation"
@@ -58,10 +56,10 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         self._add_christmas_day("Christmas Day")
 
         self._add_observed(
-            self._add_christmas_day_two("Day of Goodwill" if year >= 1980 else "Boxing Day")
+            self._add_christmas_day_two("Day of Goodwill" if self._year >= 1980 else "Boxing Day")
         )
 
-        if year >= 1995:
+        if self._year >= 1995:
             self._add_observed(self._add_holiday_mar_21("Human Rights Day"))
 
             self._add_observed(self._add_holiday_apr_27("Freedom Day"))
@@ -75,38 +73,38 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
             self._add_observed(self._add_holiday_sep_24("Heritage Day"))
 
         # Historic public holidays no longer observed
-        if 1952 <= year <= 1973:
+        if 1952 <= self._year <= 1973:
             self._add_holiday_apr_6("Van Riebeeck's Day")
-        elif 1980 <= year <= 1994:
+        elif 1980 <= self._year <= 1994:
             self._add_holiday_apr_6("Founder's Day")
 
-        if 1987 <= year <= 1989:
+        if 1987 <= self._year <= 1989:
             self._add_holiday_1st_fri_of_may("Workers' Day")
 
-        if year <= 1993:
+        if self._year <= 1993:
             self._add_ascension_thursday("Ascension Day")
 
-        if year <= 1951:
+        if self._year <= 1951:
             self._add_holiday_may_24("Empire Day")
 
-        if year <= 1960:
+        if self._year <= 1960:
             self._add_holiday_may_31("Union Day")
-        elif year <= 1993:
+        elif self._year <= 1993:
             self._add_holiday_may_31("Republic Day")
 
-        if 1952 <= year <= 1960:
+        if 1952 <= self._year <= 1960:
             self._add_holiday_2nd_mon_of_jul("Queen's Birthday")
 
-        if 1961 <= year <= 1973:
+        if 1961 <= self._year <= 1973:
             self._add_holiday_jul_10("Family Day")
 
-        if year <= 1951:
+        if self._year <= 1951:
             self._add_holiday_1st_mon_of_aug("King's Birthday")
 
-        if 1952 <= year <= 1979:
+        if 1952 <= self._year <= 1979:
             self._add_holiday_1st_mon_of_sep("Settlers' Day")
 
-        if 1952 <= year <= 1993:
+        if 1952 <= self._year <= 1993:
             self._add_holiday_oct_10("Kruger Day")
 
 

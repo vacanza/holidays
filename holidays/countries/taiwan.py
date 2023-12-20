@@ -38,10 +38,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         kwargs.setdefault("observed_since", 2015)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1911:
+    def _populate_public_holidays(self):
+        if self._year <= 1911:
             return None
-        super()._populate(year)
 
         dts_observed = set()
 
@@ -56,7 +55,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         name = "Lunar New Year Holiday"
         self._add_chinese_new_years_day_two(name)
         self._add_chinese_new_years_day_three(name)
-        if self.observed and year >= 2015:
+        if self.observed and self._year >= 2015:
             if self._is_monday(dt):
                 self._add_chinese_new_years_day_four(name)
             elif self._is_thursday(dt):
@@ -66,15 +65,15 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                 self._add_chinese_new_years_day_five(name)
 
         # Peace Memorial Day.
-        if year >= 1997:
+        if self._year >= 1997:
             dts_observed.add(self._add_holiday_feb_28("Peace Memorial Day"))
 
         # Children's Day.
-        if 1990 <= year <= 1999 or year >= 2011:
+        if 1990 <= self._year <= 1999 or self._year >= 2011:
             dts_observed.add(self._add_holiday_apr_4("Children's Day"))
 
         # Tomb Sweeping Day.
-        if year >= 1972:
+        if self._year >= 1972:
             dts_observed.add(self._add_qingming_festival("Tomb Sweeping Day"))
 
         # Dragon Boat Festival.

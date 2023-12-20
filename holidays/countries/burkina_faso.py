@@ -31,18 +31,16 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)
         # gained independence from France.
-        if year <= 1960:
+        if self._year <= 1960:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        if year >= 1967:
+        if self._year >= 1967:
             # Revolution Day.
             self._add_observed(self._add_holiday_jan_3("Revolution Day"))
 
@@ -64,7 +62,7 @@ class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day("Assumption Day"))
 
-        if year >= 2016:
+        if self._year >= 2016:
             # Martyrs' Day.
             self._add_observed(self._add_holiday_oct_31("Martyrs' Day"))
 

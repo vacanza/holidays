@@ -51,13 +51,11 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_since", 1984)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        if year >= 1951:
+        if self._year >= 1951:
             # Epiphany.
             self._move_holiday(self._add_epiphany_day(tr("Día de los Reyes Magos")))
 
@@ -79,13 +77,13 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
-        if year >= 1984:
+        if self._year >= 1984:
             self._move_holiday(
                 # Sacred Heart.
                 self._add_holiday(tr("Sagrado Corazón"), self._easter_sunday + td(days=+68))
             )
 
-        if year >= 1951:
+        if self._year >= 1951:
             # Saint Peter and Saint Paul's Day.
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
@@ -95,14 +93,14 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Battle of Boyaca.
         self._add_holiday_aug_7(tr("Batalla de Boyacá"))
 
-        if year >= 1951:
+        if self._year >= 1951:
             # Assumption of Mary.
             self._move_holiday(self._add_assumption_of_mary_day(tr("La Asunción")))
 
         # Columbus Day.
         self._move_holiday(self._add_columbus_day(tr("Día de la Raza")))
 
-        if year >= 1951:
+        if self._year >= 1951:
             # All Saints' Day.
             self._move_holiday(self._add_all_saints_day(tr("Día de Todos los Santos")))
 
@@ -111,7 +109,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_nov_11(tr("Independencia de Cartagena"))
         )
 
-        if year >= 1951:
+        if self._year >= 1951:
             # Immaculate Conception.
             self._add_immaculate_conception_day(tr("La Inmaculada Concepción"))
 

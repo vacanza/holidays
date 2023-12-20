@@ -64,12 +64,11 @@ class HongKong(
         is_obs, dt_observed = self._add_observed(dt, name=name, rule=rule)
         return dt_observed if is_obs else super()._add_holiday(name, dt)  # type: ignore[arg-type]
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Current set of holidays actually valid since 1946
-        if year <= 1945:
+        if self._year <= 1945:
             return None
 
-        super()._populate(year)
         self.weekend = {SUN}
 
         # The first day of January
@@ -84,7 +83,7 @@ class HongKong(
         dt_lunar_new_year = self._chinese_new_year
         if self.observed:
             if self._is_sunday(dt_lunar_new_year):
-                if year in {2006, 2007, 2010}:
+                if self._year in {2006, 2007, 2010}:
                     self._add_chinese_new_years_eve(preceding_day_lunar)
                 else:
                     self._add_chinese_new_years_day_four(fourth_day_lunar)
@@ -127,7 +126,7 @@ class HongKong(
         }:
             super()._add_holiday(name, dt_qingming)
 
-        if year >= 1999:
+        if self._year >= 1999:
             # The Birthday of the Buddha
             self._add_chinese_birthday_of_buddha("The Birthday of the Buddha")
 
@@ -138,7 +137,7 @@ class HongKong(
         self._add_dragon_boat_festival("Tuen Ng Festival")
 
         # Hong Kong Special Administrative Region Establishment Day
-        if year >= 1997:
+        if self._year >= 1997:
             self._add_holiday_jul_1("Hong Kong Special Administrative Region Establishment Day")
 
         # Chinese Mid-Autumn Festival
@@ -150,7 +149,7 @@ class HongKong(
             # from 1983 to 2010 public holiday lies on same day
             # since 2011 public holiday lies on Monday
             if self._is_saturday(mid_autumn_date):
-                if 1983 <= year <= 2010:
+                if 1983 <= self._year <= 2010:
                     self._add_mid_autumn_festival(name)
                 else:
                     self._add_holiday(
@@ -165,10 +164,10 @@ class HongKong(
         self._add_double_ninth_festival("Chung Yeung Festival")
 
         # National Day
-        if year >= 1997:
+        if self._year >= 1997:
             self._add_holiday_oct_1("National Day")
 
-            if year <= 1998:
+            if self._year <= 1998:
                 self._add_holiday_oct_2("National Day")
 
         # Christmas Day
@@ -191,15 +190,15 @@ class HongKong(
             self._add_christmas_day_two(first_after_christmas)
 
         # Previous holidays
-        if 1952 <= year <= 1997:
+        if 1952 <= self._year <= 1997:
             # Queen's Birthday (June 2nd Monday)
             self._add_holiday_2nd_mon_of_jun("Queen's Birthday")
 
-        if year <= 1996:
+        if self._year <= 1996:
             # Anniversary of the liberation of Hong Kong (August last Monday)
             self._add_holiday_last_mon_of_aug("Anniversary of the liberation of Hong Kong")
 
-        if year <= 1998:
+        if self._year <= 1998:
             # Anniversary of the victory in the Second Sino-Japanese War
             super()._add_holiday(
                 "Anniversary of the victory in the Second Sino-Japanese War",

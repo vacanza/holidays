@@ -35,11 +35,9 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1990:
+    def _populate_public_holidays(self):
+        if self._year <= 1990:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         name = tr("Նոր տարվա օր")
@@ -49,7 +47,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas. Epiphany Day.
         self._add_holiday_jan_6(tr("Սուրբ Ծնունդ եւ Հայտնություն"))
 
-        if 2010 <= year <= 2021:
+        if 2010 <= self._year <= 2021:
             self._add_new_years_day_three(name)
             self._add_new_years_day_four(name)
 
@@ -59,41 +57,41 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # The Day of Remembrance of the Dead.
             self._add_holiday_jan_7(tr("Մեռելոց հիշատակի օր"))
 
-        if year >= 2003:
+        if self._year >= 2003:
             # Army Day.
             self._add_holiday_jan_28(tr("Բանակի օր"))
 
         # Women's Day.
         self._add_womens_day(tr("Կանանց տոն"))
 
-        if 1994 <= year <= 2001:
+        if 1994 <= self._year <= 2001:
             # Motherhood and Beauty Day.
             self._add_holiday_apr_7(tr("Մայրության և գեղեցկության տոն"))
 
         # Armenian Genocide Remembrance Day,
         self._add_holiday_apr_24(tr("Եղեռնի զոհերի հիշատակի օր"))
 
-        if year >= 2001:
+        if self._year >= 2001:
             self._add_labor_day(
                 # Labor Day.
                 tr("Աշխատանքի օր")
-                if year >= 2002
+                if self._year >= 2002
                 # International Day of Workers' Solidarity.
                 else tr("Աշխատավորների համերաշխության միջազգային օր")
             )
 
-        if year >= 1995:
+        if self._year >= 1995:
             # Victory and Peace Day.
             self._add_world_war_two_victory_day(tr("Հաղթանակի և Խաղաղության տոն"))
 
         # Republic Day.
         self._add_holiday_may_28(tr("Հանրապետության օր"))
 
-        if year >= 1996:
+        if self._year >= 1996:
             # Constitution Day.
             self._add_holiday_jul_5(tr("Սահմանադրության օր"))
 
-        if year >= 1992:
+        if self._year >= 1992:
             # Independence Day.
             self._add_holiday_sep_21(tr("Անկախության օր"))
 

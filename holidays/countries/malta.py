@@ -45,11 +45,10 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Earliest available source is 1980
-        if year <= 1979:
+        if self._year <= 1979:
             return None
-        super()._populate(year)
 
         # L-Ewwel tas-Sena
         # Status: In-Use.
@@ -61,7 +60,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1987 via Act LX of 1987.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Feast of St. Paul's Shipwreck
             self._add_holiday_feb_10(tr("Il-Festa tan-Nawfraġju ta' San Pawl"))
 
@@ -69,7 +68,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1987 via Act LX of 1987.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Feast of St. Joseph
             self._add_saint_josephs_day(tr("Il-Festa ta' San Ġużepp"))
 
@@ -78,7 +77,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1980 Act X of 1980.
         # Not presented in 1987-1988
 
-        if year <= 1986 or year >= 1989:
+        if self._year <= 1986 or self._year >= 1989:
             # Freedom Day
             self._add_holiday_mar_31(tr("Jum il-Ħelsien"))
 
@@ -98,7 +97,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Start in 1989 via Act VIII of 1989.
 
-        if year >= 1989:
+        if self._year >= 1989:
             # Sette Giugno
             self._add_holiday_jun_7(tr("Sette Giugno"))
 
@@ -106,7 +105,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1987 via Act LX of 1987.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Feast of St. Peter and St. Paul
             self._add_saints_peter_and_paul_day(tr("Il-Festa ta' San Pietru u San Pawl"))
 
@@ -121,7 +120,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
         # While this concides with Nativity Of Mary Day, the two are considered separate.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Feast of Our Lady of Victories
             self._add_holiday_sep_8(tr("Jum il-Vitorja"))
 
@@ -129,7 +128,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1987 via Act LX of 1987.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Independence Day
             self._add_holiday_sep_21(tr("Jum l-Indipendenza"))
 
@@ -137,7 +136,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1987 via Act LX of 1987.
 
-        if year >= 1987:
+        if self._year >= 1987:
             # Feast of the Immaculate Conception
             self._add_immaculate_conception_day(tr("Il-Festa tal-Immakulata Kunċizzjoni"))
 

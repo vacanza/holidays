@@ -31,11 +31,9 @@ class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1962:
+    def _populate_public_holidays(self):
+        if self._year <= 1962:
             return None
-
-        super()._populate(year)
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
@@ -49,19 +47,19 @@ class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Labour Day
         self._add_observed(self._add_labor_day("Labour Day"))
 
-        if year >= 2010:
+        if self._year >= 2010:
             # Mandaraka Day
             self._add_observed(self._add_holiday_jun_1("Madaraka Day"))
 
-        if 2002 <= year <= 2009 or year >= 2018:
+        if 2002 <= self._year <= 2009 or self._year >= 2018:
             self._add_observed(
                 # Utamaduni/Moi Day
-                self._add_holiday_oct_10("Utamaduni Day" if year >= 2021 else "Moi Day")
+                self._add_holiday_oct_10("Utamaduni Day" if self._year >= 2021 else "Moi Day")
             )
 
         self._add_observed(
             # Mashuja/Kenyatta Day
-            self._add_holiday_oct_20("Mashujaa Day" if year >= 2010 else "Kenyatta Day")
+            self._add_holiday_oct_20("Mashujaa Day" if self._year >= 2010 else "Kenyatta Day")
         )
 
         # Jamhuri Day

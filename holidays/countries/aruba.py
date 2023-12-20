@@ -38,12 +38,10 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # AUG 1947: Autonomous State status in the Kingdom of the Netherlands.
-        if year <= 1946:
+        if self._year <= 1946:
             return None
-
-        super()._populate(year)
 
         # Aña Nobo.
         # Status: In-Use.
@@ -55,7 +53,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1989.
 
-        if year >= 1989:
+        if self._year >= 1989:
             # Betico Day
             self._add_holiday_jan_25(tr("Dia di Betico"))
 
@@ -65,11 +63,11 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Event cancelled but remain a holiday in 2021.
         # Have its name changed from 2023 onwards.
 
-        if year >= 1956:
+        if self._year >= 1956:
             self._add_ash_monday(
                 # Carnival Monday
                 tr("Dialuna despues di Carnaval Grandi")
-                if year <= 2022
+                if self._year <= 2022
                 # Monday before Ash Wednesday
                 else tr("Dialuna prome cu diaranson di shinish")
             )
@@ -78,7 +76,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Started in 1976.
 
-        if year >= 1976:
+        if self._year >= 1976:
             # National Anthem and Flag Day
             self._add_holiday_mar_18(tr("Dia di Himno y Bandera"))
 
@@ -105,23 +103,23 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = (
             # King's Day.
             tr("Dia di Rey")
-            if year >= 2021
+            if self._year >= 2021
             else (
                 # King's Day.
                 tr("Aña di Rey")
-                if year >= 2014
+                if self._year >= 2014
                 # Queen's Day.
                 else tr("Aña di La Reina")
             )
         )
-        if year >= 2014:
+        if self._year >= 2014:
             dt = (APR, 27)
-        elif year >= 1949:
+        elif self._year >= 1949:
             dt = (APR, 30)
         else:
             dt = (AUG, 31)
         if self._is_sunday(dt):
-            dt = date(self._year, *dt) + td(days=-1 if year >= 1980 else +1)
+            dt = date(self._year, *dt) + td(days=-1 if self._year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Labor/Dia di Obrero.

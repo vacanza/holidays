@@ -23,29 +23,27 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(self, cls=PakistanIslamicHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1947:
+    def _populate_public_holidays(self):
+        if self._year <= 1947:
             return None
 
-        super()._populate(year)
-
         # Kashmir Solidarity Day.
-        if year >= 1990:
+        if self._year >= 1990:
             self._add_holiday_feb_5("Kashmir Solidarity Day")
 
         # Pakistan Day.
-        if year >= 1956:
+        if self._year >= 1956:
             self._add_holiday_mar_23("Pakistan Day")
 
         # Labour Day.
-        if year >= 1972:
+        if self._year >= 1972:
             self._add_labor_day("Labour Day")
 
         # Independence Day.
         self._add_holiday_aug_14("Independence Day")
 
         # Iqbal Day.
-        if year <= 2014 or year >= 2022:
+        if self._year <= 2014 or self._year >= 2022:
             self._add_holiday_nov_9("Iqbal Day")
 
         # Quaid-e-Azam Day.

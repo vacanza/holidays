@@ -115,49 +115,47 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day
-        if year >= 1871:
+        if self._year >= 1871:
             name = "New Year's Day"
             self._add_observed(self._add_new_years_day(name))
             self._add_observed(self._next_year_new_years_day, name=name)
 
         # Memorial Day
-        if year >= 1888:
+        if self._year >= 1888:
             name = "Memorial Day"
-            if year >= 1971:
+            if self._year >= 1971:
                 self._add_holiday_last_mon_of_may(name)
             else:
                 self._add_holiday_may_30(name)
 
         # Juneteenth Day
-        if year >= 2021:
+        if self._year >= 2021:
             self._add_observed(self._add_holiday_jun_19("Juneteenth National Independence Day"))
 
         # Independence Day
-        if year >= 1871:
+        if self._year >= 1871:
             self._add_observed(self._add_holiday_jul_4("Independence Day"))
 
         # Labor Day
-        if year >= 1894:
+        if self._year >= 1894:
             self._add_holiday_1st_mon_of_sep("Labor Day")
 
         # Veterans Day
-        if year >= 1938:
-            name = "Veterans Day" if year >= 1954 else "Armistice Day"
-            if 1971 <= year <= 1977:
+        if self._year >= 1938:
+            name = "Veterans Day" if self._year >= 1954 else "Armistice Day"
+            if 1971 <= self._year <= 1977:
                 self._add_holiday_4th_mon_of_oct(name)
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
         # Thanksgiving
-        if year >= 1871:
+        if self._year >= 1871:
             self._add_holiday_4th_thu_of_nov("Thanksgiving")
 
         # Christmas Day
-        if year >= 1871:
+        if self._year >= 1871:
             self._add_observed(self._add_christmas_day("Christmas Day"))
 
     def _add_christmas_eve_holiday(self):

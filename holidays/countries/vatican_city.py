@@ -27,10 +27,9 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         ChristianHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year: int) -> None:
-        if year <= 1928:
+    def _populate_public_holidays(self) -> None:
+        if self._year <= 1928:
             return None
-        super()._populate(year)
 
         # Solemnity of Mary Day.
         # This is supposedly the same as International New Year.
@@ -44,12 +43,12 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         # Lateran Treaty Day.
         self._add_holiday_feb_11("Lateran Treaty Day")
 
-        if year >= 1978:
+        if self._year >= 1978:
             name = "Anniversary of the Election of the Holy Father"
-            if year >= 2013:
+            if self._year >= 2013:
                 # Anniversary of the election of Pope Francis.
                 self._add_holiday_mar_13(name)
-            elif year >= 2005:
+            elif self._year >= 2005:
                 # Anniversary of the election of Pope Benedict XVI.
                 self._add_holiday_apr_19(name)
             else:
@@ -67,18 +66,18 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        if year >= 2013:
+        if self._year >= 2013:
             # Name day for the civilian name of Pope Francis
             # (Jorge Mario Bergoglio)
             # Saint George's Day.
             self._add_saint_georges_day("Saint George's Day")
 
-        if year >= 1955:
+        if self._year >= 1955:
             # Saint Joseph the Worker's Day.
             # Created in response to May Day holidays by Pope Pius XII in 1955.
             self._add_holiday_may_1("Saint Joseph the Worker's Day")
 
-        if year <= 2009:
+        if self._year <= 2009:
             # Ascension of Christ.
             self._add_ascension_thursday("Ascension of Christ")
 
@@ -97,7 +96,7 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")
 
-        if 1978 <= year <= 2004:
+        if 1978 <= self._year <= 2004:
             # Name day for the civilian name of Pope John Paul II
             # (Karol Józef Wojtyła)
             # Saint Charles Borromeo Day.

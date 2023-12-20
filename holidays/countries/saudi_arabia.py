@@ -66,18 +66,16 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
             for i in range(4):
                 self._add_observed(dt + td(days=-i), name=self[dt], rule=observed_rule)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # Weekend used to be THU, FRI before June 28th, 2013.
         # On that year both Eids were after that date, and Founding day
         # holiday started at 2022; so what below works.
         self._observed_rule = (
             THU_TO_PREV_WED + FRI_TO_NEXT_SAT
-            if year <= 2012
+            if self._year <= 2012
             else FRI_TO_PREV_THU + SAT_TO_NEXT_SUN
         )
-        self.weekend = {THU, FRI} if year <= 2012 else {FRI, SAT}
+        self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
         # Eid al-Fitr Holiday
         eid_al_fitr_name = tr("عطلة عيد الفطر")
@@ -96,16 +94,16 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
 
         # If National Day happens within the Eid al-Fitr Holiday or
         # Eid al-Adha Holiday, there is no extra holidays given for it.
-        if year >= 2005:
-            dt = date(year, SEP, 23)
+        if self._year >= 2005:
+            dt = date(self._year, SEP, 23)
             if dt not in self:
                 # National Day Holiday
                 self._add_observed(self._add_holiday(tr("اليوم الوطني"), dt))
 
         # If Founding Day happens within the Eid al-Fitr Holiday or
         # Eid al-Adha Holiday, there is no extra holidays given for it.
-        if year >= 2022:
-            dt = date(year, FEB, 22)
+        if self._year >= 2022:
+            dt = date(self._year, FEB, 22)
             if dt not in self:
                 # Founding Day
                 self._add_observed(self._add_holiday(tr("يوم التأسيسي"), dt))

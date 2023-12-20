@@ -33,10 +33,9 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1990:
+    def _populate_public_holidays(self):
+        if self._year <= 1990:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Anul Nou"))
@@ -44,7 +43,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = (
             # Christmas (by old style).
             tr("Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)")
-            if year >= 2014
+            if self._year >= 2014
             # Christmas.
             else tr("Naşterea lui Iisus Hristos (Crăciunul)")
         )
@@ -71,11 +70,11 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei")
         )
 
-        if year >= 2017:
+        if self._year >= 2017:
             # Europe Day.
             self._add_holiday(tr("Ziua Europei"), may_9)
 
-        if year >= 2016:
+        if self._year >= 2016:
             # International Children's Day
             self._add_childrens_day(tr("Ziua Ocrotirii Copilului"))
 
@@ -85,7 +84,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         # National Language Day.
         self._add_holiday_aug_31(tr("Limba noastră"))
 
-        if year >= 2013:
+        if self._year >= 2013:
             self._add_christmas_day(
                 # Christmas (by new style).
                 tr("Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"),

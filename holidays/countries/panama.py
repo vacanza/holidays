@@ -29,9 +29,7 @@ class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -66,7 +64,7 @@ class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_dec_8("Mother's Day"))
 
         # National Mourning Day
-        if year >= 2022:
+        if self._year >= 2022:
             self._add_observed(self._add_holiday_dec_20("National Mourning Day"))
 
         # Christmas Day

@@ -72,35 +72,33 @@ class Spain(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
-        if year not in {2012, 2017, 2023}:
+    def _populate_public_holidays(self):
+        if self._year not in {2012, 2017, 2023}:
             self._add_new_years_day("Año nuevo")
 
-        if year not in {2013, 2019}:
+        if self._year not in {2013, 2019}:
             self._add_epiphany_day("Epifanía del Señor")
 
         self._add_good_friday("Viernes Santo")
 
-        if year not in {2011, 2016, 2022}:
+        if self._year not in {2011, 2016, 2022}:
             self._add_labor_day("Fiesta del Trabajo")
 
-        if year not in {2010, 2021}:
+        if self._year not in {2010, 2021}:
             self._add_assumption_of_mary_day("Asunción de la Virgen")
 
-        if year != 2014:
+        if self._year != 2014:
             self._add_holiday_oct_12("Fiesta Nacional de España")
 
-        if year not in {2015, 2020}:
+        if self._year not in {2015, 2020}:
             self._add_all_saints_day("Todos los Santos")
 
             self._add_holiday_dec_6("Día de la Constitución Española")
 
-        if year not in {2013, 2019, 2024}:
+        if self._year not in {2013, 2019, 2024}:
             self._add_immaculate_conception_day("Inmaculada Concepción")
 
-        if year not in {2011, 2016, 2022}:
+        if self._year not in {2011, 2016, 2022}:
             self._add_christmas_day("Natividad del Señor")
 
     def _populate_subdiv_an_public_holidays(self):

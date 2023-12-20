@@ -44,9 +44,7 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def _is_observed(self, dt: date) -> bool:
         return dt >= date(2018, OCT, 18)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -61,7 +59,7 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labor Day.
         dt = self._add_labor_day(tr("Dia del Trabajo"))
-        if year == 2019:
+        if self._year == 2019:
             self._move_holiday(dt)
 
         # Army Day.
@@ -75,7 +73,7 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Revolution Day
         dt = self._add_holiday_oct_20(tr("Dia de la Revolución"))
-        if year in {2018, 2019}:
+        if self._year in {2018, 2019}:
             self._move_holiday(dt)
 
         # All Saints' Day.

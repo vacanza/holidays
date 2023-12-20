@@ -33,12 +33,10 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         kwargs.setdefault("observed_since", 2021)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Observed since 1939
-        if year <= 1938:
+        if self._year <= 1938:
             return None
-
-        super()._populate(year)
 
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -48,13 +46,13 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
         self._add_ascension_thursday("Ascension Day")
 
-        if year >= 1987:
+        if self._year >= 1987:
             self._add_observed(
                 apr_19 := self._add_holiday_apr_19("King's Birthday"),
                 rule=SUN_TO_NEXT_TUE if apr_19 == self._easter_sunday else SUN_TO_NEXT_MON,
             )
 
-        if year >= 1969:
+        if self._year >= 1969:
             self._add_observed(
                 apr_25 := self._add_holiday_apr_25("National Flag Day"),
                 rule=SUN_TO_NEXT_TUE if apr_25 == self._easter_sunday else SUN_TO_NEXT_MON,
@@ -62,7 +60,7 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
         self._add_observed(self._add_labor_day("Worker's Day"))
 
-        if year >= 1983:
+        if self._year >= 1983:
             self._add_observed(self._add_holiday_jul_22("Birthday of Late King Sobhuza"))
 
         self._add_observed(self._add_holiday_sep_6("Independence Day"))

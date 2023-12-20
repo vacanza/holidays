@@ -26,9 +26,7 @@ class SanMarino(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
-
+    def _populate_public_holidays(self) -> None:
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 

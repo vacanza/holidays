@@ -30,11 +30,9 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         StaticHolidays.__init__(self, LesothoStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1995:
+    def _populate_public_holidays(self):
+        if self._year <= 1995:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
@@ -42,11 +40,11 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Moshoeshoe's Day.
         self._add_holiday_mar_11("Moshoeshoe's Day")
 
-        if year <= 2002:
+        if self._year <= 2002:
             # Heroes Day.
             self._add_holiday_apr_4("Heroes Day")
 
-        if year >= 2003:
+        if self._year >= 2003:
             # Africa/Heroes Day.
             self._add_africa_day("Africa/Heroes Day")
 
@@ -65,7 +63,7 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # https://en.wikipedia.org/wiki/Letsie_III
         # King's Birthday.
         name = "King's Birthday"
-        if year >= 1998:
+        if self._year >= 1998:
             self._add_holiday_jul_17(name)
         else:
             self._add_holiday_may_2(name)

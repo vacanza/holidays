@@ -36,12 +36,10 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # 1954: Creation of the Netherlands Antilles.
-        if year <= 1953:
+        if self._year <= 1953:
             return None
-
-        super()._populate(year)
 
         # Aña Nobo.
         # Status: In-Use.
@@ -85,21 +83,21 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = (
             # King's Day.
             tr("Dia di Rey")
-            if year >= 2014
+            if self._year >= 2014
             # Queen's Day.
             else tr("Dia di la Reina")
         )
-        dt = date(year, APR, 27 if year >= 2014 else 30)
+        dt = date(self._year, APR, 27 if self._year >= 2014 else 30)
         if self._is_sunday(dt):
-            dt += td(days=-1 if year >= 1980 else +1)
+            dt += td(days=-1 if self._year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Obrero.
         # Status: In-Use.
         # If fall on Sunday, then this will be move to next working day.
 
-        dt = date(year, MAY, 1)
-        if self._is_sunday(dt) or (self._is_monday(dt) and year <= 1979):
+        dt = date(self._year, MAY, 1)
+        if self._is_sunday(dt) or (self._is_monday(dt) and self._year <= 1979):
             dt += td(days=+1)
         # Labor Day
         self._add_holiday(tr("Dia di Obrero"), dt)
@@ -114,7 +112,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Starts in 1984.
 
-        if year >= 1984:
+        if self._year >= 1984:
             # National Anthem and Flag Day
             self._add_holiday_jul_2(tr("Dia di Himno i Bandera"))
 
@@ -122,7 +120,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
         # Starts in 2010.
 
-        if year >= 2010:
+        if self._year >= 2010:
             # Curaçao Day
             self._add_holiday_oct_10(tr("Dia di Pais Kòrsou"))
 

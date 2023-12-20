@@ -73,17 +73,15 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # Makar Sankranti / Pongal.
         self._add_holiday_jan_14("Makar Sankranti / Pongal")
 
-        if year >= 1950:
+        if self._year >= 1950:
             # Republic Day.
             self._add_holiday_jan_26("Republic Day")
 
-        if year >= 1947:
+        if self._year >= 1947:
             # Independence Day.
             self._add_holiday_aug_15("Independence Day")
 
@@ -96,7 +94,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Directly lifted Diwali and Holi dates from FBProphet from:
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
-        if year < 2001 or year > 2030:
+        if self._year < 2001 or self._year > 2030:
             warning_msg = "Diwali and Holi holidays available from 2001 to 2030 only"
             warnings.warn(warning_msg, Warning)
 
@@ -168,11 +166,11 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2030: (MAR, 20),
         }
 
-        if year in diwali_dates:
-            self._add_holiday("Diwali", diwali_dates[year])
+        if self._year in diwali_dates:
+            self._add_holiday("Diwali", diwali_dates[self._year])
 
-        if year in holi_dates:
-            self._add_holiday("Holi", holi_dates[year])
+        if self._year in holi_dates:
+            self._add_holiday("Holi", holi_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
