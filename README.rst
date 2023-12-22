@@ -771,7 +771,7 @@ All other default values are highlighted with bold:
    * - Taiwan
      - TW
      -
-     -
+     - en_US, th, zh_CN, **zh_TW**
      -
    * - Tanzania
      - TZ

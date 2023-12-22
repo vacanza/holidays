@@ -26,7 +26,7 @@ class TestTaiwan(TestCase):
         self.assertNoHolidays(Taiwan(years=1911))
 
     def test_new_years_day(self):
-        name = "Republic of China Founding Day / New Year's Day"
+        name = "中華民國開國紀念日"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1990, 2030)))
 
         obs_dt = (
@@ -34,13 +34,12 @@ class TestTaiwan(TestCase):
             "2021-12-31",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_lunar_new_year(self):
-        name_eve = "Lunar New Year's Eve"
-        name = "Lunar New Year"
-        name_hol = "Lunar New Year Holiday"
+        name_eve = "農曆除夕"
+        name = "春節"
         self.assertHolidayName(
             name_eve,
             "2011-02-02",
@@ -58,6 +57,7 @@ class TestTaiwan(TestCase):
             "2023-01-21",
         )
 
+        # CNY itself.
         self.assertHolidayName(
             name,
             "2015-02-19",
@@ -71,8 +71,9 @@ class TestTaiwan(TestCase):
             "2023-01-22",
         )
 
+        # CNY Day 2, Day 3.
         self.assertHolidayName(
-            name_hol,
+            name,
             "2015-02-20",
             "2015-02-21",
             "2016-02-09",
@@ -107,11 +108,11 @@ class TestTaiwan(TestCase):
             "2023-01-25",
             "2023-01-26",
         )
-        self.assertHolidayName(name_hol, obs_dt)
+        self.assertHolidayName(name, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_peace_memorial_day(self):
-        name = "Peace Memorial Day"
+        name = "和平紀念日"
         self.assertHolidayName(name, (f"{year}-02-28" for year in range(1997, 2030)))
         self.assertNoHoliday(f"{year}-02-28" for year in range(1990, 1997))
         self.assertNoHolidayName(name, range(1990, 1997))
@@ -121,11 +122,11 @@ class TestTaiwan(TestCase):
             "2016-02-29",
             "2021-03-01",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_childrens_day(self):
-        name = "Children's Day"
+        name = "兒童節"
         self.assertHolidayName(name, (f"{year}-04-04" for year in range(1990, 2000)))
         self.assertHolidayName(name, (f"{year}-04-04" for year in range(2011, 2030)))
         self.assertNoHolidayName(name, range(2000, 2011))
@@ -136,11 +137,11 @@ class TestTaiwan(TestCase):
             "2020-04-03",
             "2021-04-05",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_tomb_sweeping_day(self):
-        name = "Tomb Sweeping Day"
+        name = "清明節"
         self.assertHolidayName(
             name,
             "2011-04-05",
@@ -164,11 +165,11 @@ class TestTaiwan(TestCase):
             "2020-04-02",
             "2021-04-06",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_dragon_boat_festival(self):
-        name = "Dragon Boat Festival"
+        name = "端午節"
         self.assertHolidayName(
             name,
             "2011-06-06",
@@ -190,11 +191,11 @@ class TestTaiwan(TestCase):
             "2015-06-19",
             "2025-05-30",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_mid_autumn_festival(self):
-        name = "Mid-Autumn Festival"
+        name = "中秋節"
         self.assertHolidayName(
             name,
             "2011-09-12",
@@ -216,11 +217,11 @@ class TestTaiwan(TestCase):
             "2015-09-28",
             "2022-09-09",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_day(self):
-        name = "National Day"
+        name = "中華民國國慶日"
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(1990, 2030)))
 
         obs_dt = (
@@ -228,17 +229,33 @@ class TestTaiwan(TestCase):
             "2020-10-09",
             "2021-10-11",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_2022(self):
-        self.assertHolidays(
-            Taiwan(years=2022),
-            ("2022-01-01", "Republic of China Founding Day / New Year's Day"),
-            ("2022-01-31", "Lunar New Year's Eve"),
-            ("2022-02-01", "Lunar New Year"),
-            ("2022-02-02", "Lunar New Year Holiday"),
-            ("2022-02-03", "Lunar New Year Holiday"),
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "中華民國開國紀念日"),
+            ("2022-01-31", "農曆除夕"),
+            ("2022-02-01", "春節"),
+            ("2022-02-02", "春節"),
+            ("2022-02-03", "春節"),
+            ("2022-02-28", "和平紀念日"),
+            ("2022-04-04", "兒童節"),
+            ("2022-04-05", "清明節"),
+            ("2022-06-03", "端午節"),
+            ("2022-09-09", "中秋節 (慶祝)"),
+            ("2022-09-10", "中秋節"),
+            ("2022-10-10", "中華民國國慶日"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "Founding Day of the Republic of China"),
+            ("2022-01-31", "Chinese New Year's Eve"),
+            ("2022-02-01", "Chinese New Year"),
+            ("2022-02-02", "Chinese New Year"),
+            ("2022-02-03", "Chinese New Year"),
             ("2022-02-28", "Peace Memorial Day"),
             ("2022-04-04", "Children's Day"),
             ("2022-04-05", "Tomb Sweeping Day"),
@@ -246,4 +263,38 @@ class TestTaiwan(TestCase):
             ("2022-09-09", "Mid-Autumn Festival (Observed)"),
             ("2022-09-10", "Mid-Autumn Festival"),
             ("2022-10-10", "National Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันสถาปนาสาธารณรัฐจีน(ไต้หวัน)"),
+            ("2022-01-31", "วันก่อนวันตรุษจีน"),
+            ("2022-02-01", "วันตรุษจีน"),
+            ("2022-02-02", "วันตรุษจีน"),
+            ("2022-02-03", "วันตรุษจีน"),
+            ("2022-02-28", "วันรำลึกสันติภาพ"),
+            ("2022-04-04", "วันเด็กแห่งชาติ"),
+            ("2022-04-05", "วันเช็งเม้ง"),
+            ("2022-06-03", "วันไหว้บ๊ะจ่าง"),
+            ("2022-09-09", "ชดเชยวันไหว้พระจันทร์"),
+            ("2022-09-10", "วันไหว้พระจันทร์"),
+            ("2022-10-10", "วันชาติสาธารณรัฐจีน(ไต้หวัน)"),
+        )
+
+    def test_l10n_zh_cn(self):
+        self.assertLocalizedHolidays(
+            "zh_CN",
+            ("2022-01-01", "中华民国开国纪念日"),
+            ("2022-01-31", "农历除夕"),
+            ("2022-02-01", "春节"),
+            ("2022-02-02", "春节"),
+            ("2022-02-03", "春节"),
+            ("2022-02-28", "和平纪念日"),
+            ("2022-04-04", "儿童节"),
+            ("2022-04-05", "清明节"),
+            ("2022-06-03", "端午节"),
+            ("2022-09-09", "中秋节 (庆祝)"),
+            ("2022-09-10", "中秋节"),
+            ("2022-10-10", "中华民国国庆日"),
         )

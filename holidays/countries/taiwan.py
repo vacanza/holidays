@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -20,8 +22,9 @@ from holidays.observed_holiday_base import (
 class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
-    - https://www.officeholidays.com/countries/taiwan
+        - https://www.dgpa.gov.tw/information?uid=353&pid=10659
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
+        - https://www.officeholidays.com/countries/taiwan
 
     If a public holiday falls on Tuesday or Thursday, government establishes an "extended holiday",
     although this will be compensated by making Saturday a working day.
@@ -29,7 +32,10 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     """
 
     country = "TW"
-    observed_label = "%s (Observed)"
+    # %s (Observed).
+    observed_label = tr("%s (慶祝)")
+    default_language = "zh_TW"
+    supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -44,15 +50,17 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         dts_observed = set()
 
-        # Republic of China Founding Day / New Year's Day.
-        name = "Republic of China Founding Day / New Year's Day"
+        # Founding Day of the Republic of China.
+        name = tr("中華民國開國紀念日")
         dts_observed.add(self._add_new_years_day(name))
         self._add_observed(self._next_year_new_years_day, name=name)
 
-        # Lunar New Year.
-        self._add_chinese_new_years_eve("Lunar New Year's Eve")
-        dt = self._add_chinese_new_years_day("Lunar New Year")
-        name = "Lunar New Year Holiday"
+        # Chinese New Year's Eve.
+        self._add_chinese_new_years_eve(tr("農曆除夕"))
+
+        # Chinese New Year.
+        name = tr("春節")
+        dt = self._add_chinese_new_years_day(name)
         self._add_chinese_new_years_day_two(name)
         self._add_chinese_new_years_day_three(name)
         if self.observed and self._year >= 2015:
@@ -64,26 +72,26 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                 self._add_chinese_new_years_day_four(name)
                 self._add_chinese_new_years_day_five(name)
 
-        # Peace Memorial Day.
         if self._year >= 1997:
-            dts_observed.add(self._add_holiday_feb_28("Peace Memorial Day"))
+            # Peace Memorial Day.
+            dts_observed.add(self._add_holiday_feb_28(tr("和平紀念日")))
 
-        # Children's Day.
         if 1990 <= self._year <= 1999 or self._year >= 2011:
-            dts_observed.add(self._add_holiday_apr_4("Children's Day"))
+            # Children's Day.
+            dts_observed.add(self._add_holiday_apr_4(tr("兒童節")))
 
-        # Tomb Sweeping Day.
         if self._year >= 1972:
-            dts_observed.add(self._add_qingming_festival("Tomb Sweeping Day"))
+            # Tomb Sweeping Day.
+            dts_observed.add(self._add_qingming_festival(tr("清明節")))
 
         # Dragon Boat Festival.
-        dts_observed.add(self._add_dragon_boat_festival("Dragon Boat Festival"))
+        dts_observed.add(self._add_dragon_boat_festival(tr("端午節")))
 
         # Mid-Autumn Festival.
-        dts_observed.add(self._add_mid_autumn_festival("Mid-Autumn Festival"))
+        dts_observed.add(self._add_mid_autumn_festival(tr("中秋節")))
 
         # National Day.
-        dts_observed.add(self._add_holiday_oct_10("National Day"))
+        dts_observed.add(self._add_holiday_oct_10(tr("中華民國國慶日")))
 
         if self.observed:
             self._populate_observed(dts_observed, multiple=True)
