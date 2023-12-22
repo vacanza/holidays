@@ -162,9 +162,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Christmas Eve
         # If on Friday, observed on Thursday
         # If on Saturday or Sunday, observed on Friday
+        name = "Christmas Eve"
         self._add_observed(
-            self._add_christmas_eve("Christmas Eve"),
-            rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI,
+            self._add_christmas_eve(name), name=name, rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI
         )
 
     def _populate_subdiv_holidays(self):
@@ -624,8 +624,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 2013:
             # If on Saturday or Sunday, observed on Monday
             # If on Monday, observed on Tuesday
+            name = "Day After Christmas"
             self._add_observed(
-                self._add_christmas_day_two("Day After Christmas"),
+                self._add_christmas_day_two(name),
+                name=name,
                 rule=MON_TO_NEXT_TUE + SAT_SUN_TO_NEXT_MON,
             )
 
