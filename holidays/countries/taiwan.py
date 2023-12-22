@@ -58,7 +58,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # Chinese New Year's Eve.
         self._add_chinese_new_years_eve(tr("農曆除夕"))
 
-        # Chinese New Year (Spring Festival).
+        # Chinese New Year.
         name = tr("春節")
         dt = self._add_chinese_new_years_day(name)
         self._add_chinese_new_years_day_two(name)

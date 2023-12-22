@@ -7,7 +7,7 @@ msgstr ""
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
 "PO-Revision-Date: 2023-12-02 11:21+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-"Language-Team: Python Holidays Translation Team\n"
+"Language-Team: Python Holidays localization team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "農曆除夕"
 msgstr ""
 
-#. Chinese New Year (Spring Festival).
+#. Chinese New Year.
 msgid "春節"
 msgstr ""
 
