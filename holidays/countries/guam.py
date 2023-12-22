@@ -22,6 +22,7 @@ class HolidaysGU(US):
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "GU"
+        super()._populate_public_holidays()
 
 
 class GU(HolidaysGU):
