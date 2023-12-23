@@ -1,0 +1,58 @@
+# Taiwan holidays zh_CN localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.40\n"
+"POT-Creation-Date: 2023-11-24 16:16+0700\n"
+"PO-Revision-Date: 2023-12-02 11:20+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (慶祝)"
+msgstr "%s (庆祝)"
+
+#. Founding Day of the Republic of China.
+msgid "中華民國開國紀念日"
+msgstr "中华民国开国纪念日"
+
+#. Chinese New Year's Eve.
+msgid "農曆除夕"
+msgstr "农历除夕"
+
+#. Chinese New Year.
+msgid "春節"
+msgstr "春节"
+
+#. Peace Memorial Day.
+msgid "和平紀念日"
+msgstr "和平纪念日"
+
+#. Children's Day.
+msgid "兒童節"
+msgstr "儿童节"
+
+#. Tomb Sweeping Day.
+msgid "清明節"
+msgstr "清明节"
+
+#. Dragon Boat Festival.
+msgid "端午節"
+msgstr "端午节"
+
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr "中秋节"
+
+#. National Day.
+msgid "中華民國國慶日"
+msgstr "中华民国国庆日"
