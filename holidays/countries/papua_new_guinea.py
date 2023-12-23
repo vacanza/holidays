@@ -42,17 +42,6 @@ class PapuaNewGuinea(
     country = "PG"
     observed_label = "%s (Observed)"
 
-    @property
-    def sovereign_birthday(self) -> str:
-        """Sovereign's birthday holiday name."""
-        return (
-            # King's Birthday.
-            "King's Birthday"
-            if self._year >= 2023
-            # Queen's Birthday.
-            else "Queen's Birthday"
-        )
-
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -106,12 +95,13 @@ class PapuaNewGuinea(
         # Section 3: Anniversary of Birthday of the Queen/King.
         # In Papua New Guinea, it is usually celebrated on the second Monday of June every year.
         # From 2023, the date changed to Jun 17 (Special Observed for 2023 on Jun 16).
-        # For localization, see "self.sovereign_birthday".
 
         if self._year <= 2022:
-            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+            # Queen's Birthday.
+            self._add_holiday_2nd_mon_of_jun("Queen's Birthday")
         else:
-            self._add_holiday_jun_17(self.sovereign_birthday)
+            # King's Birthday.
+            self._add_holiday_jun_17("King's Birthday")
 
         # Section 5: Additional Public Holidays.
 
