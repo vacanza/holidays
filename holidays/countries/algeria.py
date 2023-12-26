@@ -24,7 +24,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "DZ"
     default_language = "ar"
     # Estimated label.
-    estimated_label = tr("(تقدير*) *%s")
+    estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 
     def __init__(self, *args, **kwargs):

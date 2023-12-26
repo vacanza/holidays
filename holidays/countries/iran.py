@@ -25,7 +25,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     country = "IR"
     default_language = "fa"
     # Estimated label.
-    estimated_label = tr("(تخمین زده*) *%s")
+    estimated_label = tr("(تخمین زده) %s")
     supported_languages = ("en_US", "fa")
 
     def __init__(self, *args, **kwargs):
