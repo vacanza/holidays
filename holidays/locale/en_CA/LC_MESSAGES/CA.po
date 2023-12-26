@@ -1,0 +1,150 @@
+# Canada holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.32\n"
+"POT-Creation-Date: 2023-04-10 14:10+0300\n"
+"PO-Revision-Date: 2023-12-26 22:10+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Dominion Day.
+msgid "Dominion Day"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Family Day.
+msgid "Family Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr ""
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr ""
+
+#. Canada Day.
+msgid "Canada Day"
+msgstr ""
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr ""
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr ""
+
+#. Remembrance Day.
+msgid "Remembrance Day"
+msgstr ""
+
+#. British Columbia Day.
+msgid "British Columbia Day"
+msgstr ""
+
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr ""
+
+#. Louis Riel Day.
+msgid "Louis Riel Day"
+msgstr ""
+
+#. Terry Fox Day.
+msgid "Terry Fox Day"
+msgstr ""
+
+#. Civic Holiday.
+msgid "Civic Holiday"
+msgstr ""
+
+#. New Brunswick Day.
+msgid "New Brunswick Day"
+msgstr ""
+
+#. St. Patrick's Day.
+msgid "St. Patrick's Day"
+msgstr ""
+
+#. St. George's Day.
+msgid "St. George's Day"
+msgstr ""
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr ""
+
+#. National Aboriginal Day.
+msgid "National Aboriginal Day"
+msgstr ""
+
+#. Nunavut Day.
+msgid "Nunavut Day"
+msgstr ""
+
+#. Islander Day.
+msgid "Islander Day"
+msgstr ""
+
+#. National Patriots' Day.
+msgid "National Patriots' Day"
+msgstr ""
+
+#. St. Jean Baptiste Day.
+msgid "St. Jean Baptiste Day"
+msgstr ""
+
+#. Saskatchewan Day.
+msgid "Saskatchewan Day"
+msgstr ""
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr ""
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr ""
