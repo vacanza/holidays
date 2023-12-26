@@ -22,7 +22,9 @@ class TestSpain(TestCase):
         super().setUpClass(Spain)
 
     def _assertVariableDays(self, year: int, subdiv_holidays: dict):
-        observed_prov_holidays = {subdiv: ES(subdiv=subdiv) for subdiv in ES.subdivisions}
+        observed_prov_holidays = {
+            subdiv: Spain(subdiv=subdiv, years=year) for subdiv in Spain.subdivisions
+        }
         for hol_date, hol_provs in subdiv_holidays.items():
             dt = date(year, *hol_date)
             for subdiv, prov_holidays in observed_prov_holidays.items():
@@ -226,11 +228,12 @@ class TestSpain(TestCase):
         )
 
     def test_islamic(self):
-        name = "Eid al-Adha"
-        ce_holidays = Spain(subdiv="CE", years=2009)
-        ml_holidays = Spain(subdiv="ML", years=2009)
-        self.assertNoHolidayName(name, ce_holidays)
-        self.assertNoHolidayName(name, ml_holidays)
+        self.assertNoHolidayName(
+            "Fiesta del Sacrificio-Eidul Adha", Spain(subdiv="CE", years=2009)
+        )
+        self.assertNoHolidayName(
+            "Fiesta del Sacrificio-Aid Al Adha", Spain(subdiv="ML", years=2009)
+        )
 
     def test_variable_holidays_2010(self):
         province_days = {
@@ -964,3 +967,44 @@ class TestSpain(TestCase):
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2024, province_days)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-06", "Epifanía del Señor"),
+            ("2023-04-07", "Viernes Santo"),
+            ("2023-05-01", "Fiesta del Trabajo"),
+            ("2023-08-15", "Asunción de la Virgen"),
+            ("2023-10-12", "Fiesta Nacional de España"),
+            ("2023-11-01", "Todos los Santos"),
+            ("2023-12-06", "Día de la Constitución Española"),
+            ("2023-12-08", "Inmaculada Concepción"),
+            ("2023-12-25", "Natividad del Señor"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-06", "Epiphany"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-05-01", "Labor Day"),
+            ("2023-08-15", "Assumption of Mary"),
+            ("2023-10-12", "National Day"),
+            ("2023-11-01", "All Saints' Day"),
+            ("2023-12-06", "Constitution Day"),
+            ("2023-12-08", "Immaculate Conception"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2023-01-06", "Богоявлення"),
+            ("2023-04-07", "Страсна пʼятниця"),
+            ("2023-05-01", "День праці"),
+            ("2023-08-15", "Внебовзяття Пресвятої Діви Марії"),
+            ("2023-10-12", "Національний день Іспанії"),
+            ("2023-11-01", "День усіх святих"),
+            ("2023-12-06", "День Конституції Іспанії"),
+            ("2023-12-08", "Непорочне зачаття Діви Марії"),
+            ("2023-12-25", "Різдво Христове"),
+        )
