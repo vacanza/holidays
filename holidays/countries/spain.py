@@ -50,7 +50,7 @@ class Spain(
     """
 
     country = "ES"
-    default_language = "es_ES"
+    default_language = "es"
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
     subdivisions = (
@@ -74,7 +74,7 @@ class Spain(
         "RI",  # La Rioja
         "VC",  # Valenciana
     )
-    supported_languages = ("en_US", "es_ES", "uk")
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

@@ -756,7 +756,7 @@ All other default values are highlighted with bold:
    * - Spain
      - ES
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
-     - en_US, **es_ES**, uk
+     - en_US, **es**, uk
      -
    * - Sweden
      - SE
