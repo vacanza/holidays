@@ -31,7 +31,7 @@ class PapuaNewGuinea(
       - https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf # 2022
       - https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf # 2023
 
-    Should a holiday listed, other than the Christmas Day, falls on a Sunday the next Monday
+    Should a holiday listed, other than the Christmas Day, fall on a Sunday the next Monday
     shall, unless the Head of State, acting on advice, declares otherwise, be observed as a
     public holiday throughout the country.
 
@@ -113,12 +113,12 @@ class PapuaNewGuinea(
             # Grand Chief Sir Michael Somare Remembrance Day.
             self._add_holiday_feb_26("Grand Chief Sir Michael Somare Remembrance Day")
 
-        # National Repentence Day.
+        # National Repentance Day.
         # Enacted Aug 15, 2011, celebrated by "prayer ceremonies" across the country.
         # First observed on Aug 26, 2011, held annually since then on that date.
 
         if self._year >= 2011:
-            # The National Repentence Day.
+            # The National Repentance Day.
             self._add_observed(self._add_holiday_aug_26("National Repentance Day"))
 
 
