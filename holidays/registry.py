@@ -117,6 +117,7 @@ COUNTRIES: RegistryDict = {
     "norway": ("Norway", "NO", "NOR"),
     "pakistan": ("Pakistan", "PK", "PAK"),
     "panama": ("Panama", "PA", "PAN"),
+    "papua_new_guinea": ("PapuaNewGuinea", "PG", "PNG"),
     "paraguay": ("Paraguay", "PY", "PRY"),
     "peru": ("Peru", "PE", "PER"),
     "philippines": ("Philippines", "PH", "PHL"),

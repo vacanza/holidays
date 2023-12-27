@@ -111,6 +111,7 @@ from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysM
 from .norway import Norway, NO, NOR
 from .pakistan import Pakistan, PK, PAK
 from .panama import Panama, PA, PAN
+from .papua_new_guinea import PapuaNewGuinea, PG, PNG
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .philippines import Philippines, PH, PHL
