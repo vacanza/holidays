@@ -145,10 +145,10 @@ class PapuaNewGuineaStaticHolidays:
     """
 
     # National Day of Mourning for Sir Michael Somare.
-    michael_somare_mourning = "National Day of Mourning for Sir Michael Somare"
+    sir_michael_somare_mourning_day = "National Day of Mourning for Sir Michael Somare"
 
     # Grand Chief Sir Michael Somare Remembrance Day
-    somare_remembrance_day = "Grand Chief Sir Michael Somare Remembrance Day"
+    sir_michael_somare_remembrance_day = "Grand Chief Sir Michael Somare Remembrance Day"
 
     special_public_holidays = {
         # APEC Leaders' Summit Public Holiday.
@@ -156,8 +156,8 @@ class PapuaNewGuineaStaticHolidays:
         2021: (
             # State Funeral of Sir Mekere Morauta.
             (JAN, 8, "State Funeral of Sir Mekere Morauta"),
-            (MAR, 1, michael_somare_mourning),
-            (MAR, 12, michael_somare_mourning),
+            (MAR, 1, sir_michael_somare_mourning_day),
+            (MAR, 12, sir_michael_somare_mourning_day),
         ),
         # State Funeral of Queen Elizabeth II.
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
@@ -166,9 +166,9 @@ class PapuaNewGuineaStaticHolidays:
     }
 
     special_public_holidays_observed = {
-        2022: (FEB, 28, somare_remembrance_day),
+        2022: (FEB, 28, sir_michael_somare_remembrance_day),
         2023: (
-            (FEB, 24, somare_remembrance_day),
+            (FEB, 24, sir_michael_somare_remembrance_day),
             (JUN, 16, "King's Birthday"),
             (SEP, 15, "Independence Day"),
         ),
