@@ -1,173 +1,173 @@
-# Portugal holidays.
-# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+# Portugal holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.40\n"
 "POT-Creation-Date: 2023-03-07 19:38+0700\n"
-"PO-Revision-Date: 2023-02-20 19:10+0200\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2023-12-30 19:46+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: pt_PT\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Ano Novo"
-msgstr ""
+msgstr "Новий рік"
 
 #. Good Friday.
 msgid "Sexta-feira Santa"
-msgstr ""
+msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
 msgid "Páscoa"
-msgstr ""
+msgstr "Великдень"
 
 #. Corpus Christi.
 msgid "Corpo de Deus"
-msgstr ""
+msgstr "Свято Тіла і Крові Христових"
 
 #. Republic Day.
 msgid "Implantação da República"
-msgstr ""
+msgstr "День Республіки"
 
 #. All Saints' Day.
 msgid "Dia de Todos os Santos"
-msgstr ""
+msgstr "День усіх святих"
 
 #. Restoration of Independence Day.
 msgid "Restauração da Independência"
-msgstr ""
+msgstr "День відновлення незалежності"
 
 #. Freedom Day.
 msgid "Dia da Liberdade"
-msgstr ""
+msgstr "День Свободи"
 
 #. Labor Day.
 msgid "Dia do Trabalhador"
-msgstr ""
+msgstr "День праці"
 
 #. Day of Camões, Portugal, and the Portuguese Race.
 msgid "Dia de Camões, de Portugal e da Raça"
-msgstr ""
+msgstr "День Камоенса, Португалії і Раси"
 
 #. Day of Portugal, Camões, and the Portuguese Communities.
 msgid "Dia de Portugal, de Camões e das Comunidades Portuguesas"
-msgstr ""
+msgstr "День Португалії, Камоенса і португальських громад"
 
 #. Portugal Day.
 msgid "Dia de Portugal"
-msgstr ""
+msgstr "День Португалії"
 
 #. Assumption Day.
 msgid "Assunção de Nossa Senhora"
-msgstr ""
+msgstr "Успіння Пресвятої Богородиці"
 
 #. Immaculate Conception.
 msgid "Imaculada Conceição"
-msgstr ""
+msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Day.
 msgid "Dia de Natal"
-msgstr ""
+msgstr "Різдво Христове"
 
 #. Carnival.
 msgid "Carnaval"
-msgstr ""
+msgstr "Карнавал"
 
 #. Christmas Eve.
 msgid "Véspera de Natal"
-msgstr ""
+msgstr "Святий вечір"
 
 #. Boxing Day.
 msgid "26 de Dezembro"
-msgstr ""
+msgstr "Другий день Різдва"
 
 #. New Year's Eve.
 msgid "Véspera de Ano Novo"
-msgstr ""
+msgstr "Переддень Нового року"
 
 #. St. Anthony's Day.
 msgid "Dia de Santo António"
-msgstr ""
+msgstr "День Святого Антонія"
 
 #. St. Joanna's Day.
 msgid "Dia de Santa Joana"
-msgstr ""
+msgstr "День Святої Йоанни"
 
 #. Ascension Day.
 msgid "Quinta-feira da Ascensão"
-msgstr ""
+msgstr "Вознесіння Господнє"
 
 #. St. John's Day.
 msgid "Dia de São João"
-msgstr ""
+msgstr "День Святого Івана"
 
 #. Feast of Our Lady of Graces.
 msgid "Dia de Nossa Senhora das Graças"
-msgstr ""
+msgstr "День Богоматері Милосердя"
 
 #. Feast of Our Lady of Mércoles.
 msgid "Dia de Nossa Senhora de Mércoles"
-msgstr ""
+msgstr "День Богоматері Меркольської"
 
 #. St. Elizabeth's Day.
 msgid "Dia de Santa Isabel"
-msgstr ""
+msgstr "День Святої Єлизавети"
 
 #. St. Peter's Day.
 msgid "Dia de São Pedro"
-msgstr ""
+msgstr "День Святого Петра"
 
 #. Municipal Holiday of Faro.
 msgid "Dia do Município de Faro"
-msgstr ""
+msgstr "День муніципалітету Фару"
 
 #. Municipal Holiday of Guarda.
 msgid "Dia do Município da Guarda"
-msgstr ""
+msgstr "День муніципалітету Гуарда"
 
 #. Municipal Holiday of Leiria.
 msgid "Dia do Município de Leiria"
-msgstr ""
+msgstr "День муніципалітету Лейрія"
 
 #. Municipal Holiday of Portalegre.
 msgid "Dia do Município de Portalegre"
-msgstr ""
+msgstr "День муніципалітету Порталегре"
 
 #. St. Joseph's Day.
 msgid "Dia de São José"
-msgstr ""
+msgstr "День Святого Йосипа"
 
 #. Bocage Day.
 msgid "Dia de Bocage"
-msgstr ""
+msgstr "День Бокажі"
 
 #. Feast of Our Lady of Sorrows.
 msgid "Dia de Nossa Senhora da Agonia"
-msgstr ""
+msgstr "День Богоматері Страждання"
 
 #. St. Matthew's Day.
 msgid "Dia de São Mateus"
-msgstr ""
+msgstr "День Святого Матвія"
 
 #. Day of the Autonomous Region of the Azores.
 msgid "Dia da Região Autónoma dos Açores"
-msgstr ""
+msgstr "День автономного регіону Азорських островів"
 
 #. Day of the Autonomous Region of Madeira.
 msgid "Dia da Região Autónoma da Madeira"
-msgstr ""
+msgstr "День автономного регіону Мадейра"
 
 #. Day of the Autonomous Region of Madeira and the Madeiran Communities.
 msgid "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
-msgstr ""
+msgstr "День автономного регіону Мадейра та мадейрських громад"
 
 #. 1st Octave.
 msgid "Primeira Oitava"
-msgstr ""
+msgstr "Перша октава"
