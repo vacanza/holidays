@@ -1,3 +1,19 @@
+Version 0.40
+============
+
+Released January 1, 2024
+
+- Refactor Germany special holidays (#1595 by @KJhellico)
+- Add Papua New Guinea holidays (#1605 by @PPsyrius)
+- Fix United States and Guam holidays (#1607 by @KJhellico)
+- Fix inconsistent localization team naming in .po files (#1602 by @PPsyrius)
+- Update IL snapshot (#1608 by @arkid15r)
+- Update Kazakhstan: fix URL escaping (#1619 by @heikkiorsila, @arkid15r)
+- Update README: fix shields style (#1620 by @arkid15r)
+- Update Spain holidays, add l10n support (#1610 by @KJhellico)
+- Update Taiwan holidays, add l10n support (#1600 by @PPsyrius)
+- Extend native holiday categories support (#1597 by @arkid15r)
+
 Version 0.39
 ============
 
