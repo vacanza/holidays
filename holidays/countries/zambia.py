@@ -32,17 +32,15 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Observed since 1965
-        if year <= 1964:
+        if self._year <= 1964:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        if year >= 1991:
+        if self._year >= 1991:
             self._add_observed(
                 # International Women's Day.
                 self._add_womens_day("International Women's Day")
@@ -60,7 +58,7 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        if year >= 2022:
+        if self._year >= 2022:
             # Kenneth Kaunda Day.
             self._add_observed(self._add_holiday_apr_28("Kenneth Kaunda Day"))
 
@@ -79,7 +77,7 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Farmers' Day.
         self._add_holiday_1st_mon_of_aug("Farmers' Day")
 
-        if year >= 2015:
+        if self._year >= 2015:
             # National Prayer Day.
             self._add_observed(self._add_holiday_oct_18("National Prayer Day"))
 

@@ -50,74 +50,72 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         StaticHolidays.__init__(self, HungaryStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(self.tr("Újév"))
 
-        if 1945 <= year <= 1950 or year >= 1989:
+        if 1945 <= self._year <= 1950 or self._year >= 1989:
             # National Day.
             self._add_holiday_mar_15(tr("Nemzeti ünnep"))
 
-        if year >= 2017:
+        if self._year >= 2017:
             # Good Friday.
             self._add_good_friday(tr("Nagypéntek"))
 
         # Easter.
         self._add_easter_sunday(tr("Húsvét"))
 
-        if year != 1955:
+        if self._year != 1955:
             # Easter Monday.
             self._add_easter_monday(tr("Húsvét Hétfő"))
 
         # Whit Sunday.
         self._add_whit_sunday(tr("Pünkösd"))
 
-        if year <= 1952 or year >= 1992:
+        if self._year <= 1952 or self._year >= 1992:
             # Whit Monday.
             self._add_whit_monday(tr("Pünkösdhétfő"))
 
-        if year >= 1946:
+        if self._year >= 1946:
             # Labor Day.
             name = tr("A Munka ünnepe")
             self._add_labor_day(name)
-            if 1950 <= year <= 1953:
+            if 1950 <= self._year <= 1953:
                 self._add_labor_day_two(name)
 
         self._add_holiday_aug_20(
             # Bread Day.
             tr("A kenyér ünnepe")
-            if 1950 <= year <= 1989
+            if 1950 <= self._year <= 1989
             else
             # State Foundation Day.
             tr("Az államalapítás ünnepe"),
         )
 
-        if year >= 1991:
+        if self._year >= 1991:
             # National Day.
             self._add_holiday_oct_23(tr("Nemzeti ünnep"))
 
-        if year >= 1999:
+        if self._year >= 1999:
             # All Saints' Day.
             self._add_all_saints_day(tr("Mindenszentek"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Karácsony"))
 
-        if year != 1955:
+        if self._year != 1955:
             # Second Day of Christmas.
             self._add_christmas_day_two(tr("Karácsony másnapja"))
 
         # Soviet era.
-        if 1950 <= year <= 1989:
+        if 1950 <= self._year <= 1989:
             # Proclamation of Soviet Republic Day.
             self._add_holiday_mar_21(tr("A Tanácsköztársaság kikiáltásának ünnepe"))
 
             # Liberation Day.
             self._add_holiday_apr_4(tr("A felszabadulás ünnepe"))
 
-            if year not in {1956, 1989}:
+            if self._year not in {1956, 1989}:
                 # Great October Socialist Revolution Day.
                 self._add_holiday_nov_7(tr("A nagy októberi szocialista forradalom ünnepe"))
 

@@ -20,9 +20,9 @@ class HolidaysUM(US):
     country = "UM"
     subdivisions = ()  # Override US subdivisions.
 
-    def _populate(self, year: int) -> None:
+    def _populate_public_holidays(self) -> None:
         self.subdiv = "UM"
-        super()._populate(year)
+        super()._populate_public_holidays()
 
 
 class UM(HolidaysUM):

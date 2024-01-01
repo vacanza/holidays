@@ -42,9 +42,7 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         return dt >= date(1997, JUN, 27)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -75,7 +73,7 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
         # Restoration Day.
         name = tr("Día de la Restauración")
         # Judgment No. 14 of Feb 20, 2008 of the Supreme Court of Justice
-        if year <= 2007 and year % 4 == 0:
+        if self._year <= 2007 and self._year % 4 == 0:
             self._add_holiday_aug_16(name)
         else:
             self._move_holiday(self._add_holiday_aug_16(name))

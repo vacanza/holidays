@@ -36,9 +36,7 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         name = tr("Нова година")
         self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)

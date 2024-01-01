@@ -80,12 +80,10 @@ class Brunei(
         kwargs.setdefault("observed_rule", FRI_SUN_TO_NEXT_SAT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Available post-Independence from 1984 afterwards
-        if year <= 1983:
+        if self._year <= 1983:
             return None
-
-        super()._populate(year)
 
         # Awal Tahun Masihi
         # Status: In-Use.

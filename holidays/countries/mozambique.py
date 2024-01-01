@@ -28,11 +28,9 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1974:
+    def _populate_public_holidays(self):
+        if self._year <= 1974:
             return None
-
-        super()._populate(year)
 
         # International Fraternalism Day.
         self._add_observed(self._add_new_years_day(tr("Dia da Fraternidade universal")))
@@ -57,7 +55,7 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_sep_25(tr("Dia das Forças Armadas de Libertação Nacional"))
         )
 
-        if year >= 1993:
+        if self._year >= 1993:
             # Peace and Reconciliation Day.
             self._add_observed(self._add_holiday_oct_4(tr("Dia da Paz e Reconciliação")))
 

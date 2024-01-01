@@ -53,30 +53,28 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year: int) -> None:
-        super()._populate(year)
-
+    def _populate_public_holidays(self) -> None:
         # Good Friday
         self._add_good_friday("Good Friday")
 
         # May Day bank holiday (first Monday in May)
-        if year >= 1978:
+        if self._year >= 1978:
             name = "May Day"
-            if year in {1995, 2020}:
+            if self._year in {1995, 2020}:
                 self._add_holiday_may_8(name)
             else:
                 self._add_holiday_1st_mon_of_may(name)
 
         # Spring bank holiday (last Monday in May)
-        if year >= 1971:
+        if self._year >= 1971:
             spring_bank_dates = {
                 2002: (JUN, 4),
                 2012: (JUN, 4),
                 2022: (JUN, 2),
             }
             name = "Spring Bank Holiday"
-            if year in spring_bank_dates:
-                self._add_holiday(name, spring_bank_dates[year])
+            if self._year in spring_bank_dates:
+                self._add_holiday(name, spring_bank_dates[self._year])
             else:
                 self._add_holiday_last_mon_of_may(name)
 

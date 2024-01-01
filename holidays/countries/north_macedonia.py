@@ -27,9 +27,7 @@ class NorthMacedonia(HolidayBase, ChristianHolidays, InternationalHolidays, Isla
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         self._add_new_years_day("New Year's Day")
 
         self._add_christmas_day("Christmas Day (Orthodox)")

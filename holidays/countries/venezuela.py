@@ -29,9 +29,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         """
         Overview: https://dias-festivos.eu/dias-festivos/venezuela/#
         Various decrees about holidays:
@@ -59,41 +57,41 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Note: not sure about the start year, but this event happened in 1811
-        if year >= 1811:
+        if self._year >= 1811:
             # Declaration of Independence.
             self._add_holiday_apr_19(tr("Declaración de la Independencia"))
 
         # https://bit.ly/3B4Xd1L
-        if year >= 1946:
+        if self._year >= 1946:
             # International Worker's Day.
             self._add_labor_day(tr("Dia Mundial del Trabajador"))
 
         # Note: not sure about the start year, but this event happened in 1824
-        if year >= 1971 or 1824 <= year <= 1917:
+        if self._year >= 1971 or 1824 <= self._year <= 1917:
             # Battle of Carabobo.
             self._add_holiday_jun_24(tr("Batalla de Carabobo"))
 
         # Note: not sure about the start year, but this event happened in 1811
-        if year >= 1811:
+        if self._year >= 1811:
             # Independence Day.
             self._add_holiday_jul_5(tr("Día de la Independencia"))
 
-        if year >= 1918:
+        if self._year >= 1918:
             # Birthday of Simon Bolivar.
             self._add_holiday_jul_24(tr("Natalicio de Simón Bolívar"))
 
-        if year >= 1921:
+        if self._year >= 1921:
             self._add_columbus_day(
                 # Day of Indigenous Resistance.
                 tr("Día de la Resistencia Indígena")
-                if year >= 2002
+                if self._year >= 2002
                 # Columbus Day.
                 else tr("Día de la Raza")
             )
 
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear
-        if 1909 <= year <= 1917:
+        if 1909 <= self._year <= 1917:
             # Unknown Holiday.
             self._add_holiday_oct_28(tr("Día Festivo Desconocido"))
 

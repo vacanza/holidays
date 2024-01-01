@@ -79,7 +79,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return self._get_observed_date(dt, rule=ALL_TO_NEAREST_MON)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
         # Factories Act 1894
@@ -91,10 +91,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
 
-        if year <= 1893:
+        if self._year <= 1893:
             return None
-
-        super()._populate(year)
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
@@ -103,16 +101,16 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         )
 
         # Waitangi Day
-        if year >= 1974:
-            name = "Waitangi Day" if year >= 1977 else "New Zealand Day"
+        if self._year >= 1974:
+            name = "Waitangi Day" if self._year >= 1977 else "New Zealand Day"
             feb_6 = self._add_holiday_feb_6(name)
-            if year >= 2014:
+            if self._year >= 2014:
                 self._add_observed(feb_6)
 
         # Anzac Day
-        if year >= 1921:
+        if self._year >= 1921:
             apr_25 = self._add_anzac_day("Anzac Day")
-            if year >= 2014:
+            if self._year >= 2014:
                 self._add_observed(apr_25)
 
         # Easter
@@ -120,17 +118,17 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         self._add_easter_monday("Easter Monday")
 
         # Sovereign's Birthday
-        if year >= 1902:
-            name = "Queen's Birthday" if 1952 <= year <= 2022 else "King's Birthday"
-            if year == 1952:
+        if self._year >= 1902:
+            name = "Queen's Birthday" if 1952 <= self._year <= 2022 else "King's Birthday"
+            if self._year == 1952:
                 self._add_holiday_jun_2(name)  # Elizabeth II
-            elif year >= 1938:
+            elif self._year >= 1938:
                 self._add_holiday_1st_mon_of_jun(name)  # EII & GVI
-            elif year == 1937:
+            elif self._year == 1937:
                 self._add_holiday_jun_9(name)  # George VI
-            elif year == 1936:
+            elif self._year == 1936:
                 self._add_holiday_jun_23(name)  # Edward VIII
-            elif year >= 1912:
+            elif self._year >= 1912:
                 self._add_holiday_jun_3(name)  # George V
             else:
                 # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
@@ -170,13 +168,13 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             2051: (JUN, 30),
             2052: (JUN, 21),
         }
-        if year in dates_obs:
-            self._add_holiday("Matariki", dates_obs[year])
+        if self._year in dates_obs:
+            self._add_holiday("Matariki", dates_obs[self._year])
 
         # Labour Day
-        if year >= 1900:
+        if self._year >= 1900:
             name = "Labour Day"
-            if year >= 1910:
+            if self._year >= 1910:
                 self._add_holiday_4th_mon_of_oct(name)
             else:
                 self._add_holiday_2nd_wed_of_oct(name)

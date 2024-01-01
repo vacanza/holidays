@@ -29,9 +29,7 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -54,7 +52,7 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_sep_15(tr("Día de la Independencia"))
 
         # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
-        if year <= 2014:
+        if self._year <= 2014:
             # Morazan's Day.
             self._add_holiday_oct_3(tr("Día de Morazán"))
 

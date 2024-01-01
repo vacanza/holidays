@@ -40,16 +40,15 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Belize was granted independence on 21.09.1981.
-        if year <= 1981:
+        if self._year <= 1981:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._move_holiday(self._add_new_years_day("New Year's Day"))
 
-        if year >= 2021:
+        if self._year >= 2021:
             # George Price Day.
             self._move_holiday(self._add_holiday_jan_15("George Price Day"))
 
@@ -71,14 +70,14 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labour Day.
         self._move_holiday(self._add_labor_day("Labour Day"))
 
-        if year <= 2021:
+        if self._year <= 2021:
             # Commonwealth Day.
             self._move_holiday(
                 self._add_holiday_may_24("Commonwealth Day"),
                 rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
             )
 
-        if year >= 2021:
+        if self._year >= 2021:
             # Emancipation Day.
             self._move_holiday(
                 self._add_holiday_aug_1("Emancipation Day"),
@@ -92,7 +91,7 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._move_holiday(self._add_holiday_sep_21("Independence Day"))
 
         # Indigenous Peoples' Resistance Day / Pan American Day.
-        name = "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day"
+        name = "Indigenous Peoples' Resistance Day" if self._year >= 2021 else "Pan American Day"
         self._move_holiday(
             self._add_columbus_day(name), rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON
         )

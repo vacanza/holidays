@@ -38,11 +38,9 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         kwargs.setdefault("observed_since", 1991)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1989:
+    def _populate_public_holidays(self):
+        if self._year <= 1989:
             return None
-
-        super()._populate(year)
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
@@ -75,7 +73,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(
             self._add_holiday_sep_10(
                 "Day of the Namibian Women and International Human Rights Day"
-                if year >= 2005
+                if self._year >= 2005
                 else "International Human Rights Day",
             )
         )

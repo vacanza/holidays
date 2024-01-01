@@ -44,9 +44,7 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
@@ -62,12 +60,12 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day("Labor Day")
 
-        if year >= 2016:
+        if self._year >= 2016:
             # Legislative Decree #399 from Apr 14, 2016
             # Mothers' Day.
             self._add_holiday_may_10("Mothers' Day")
 
-        if year >= 2013:
+        if self._year >= 2013:
             # Legislative Decree #208 from Jun 17, 2012
             # Fathers' Day.
             self._add_holiday_jun_17("Fathers' Day")

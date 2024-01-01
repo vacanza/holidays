@@ -38,9 +38,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         if not self.observed and self._is_weekend(dt):
             self.pop(dt)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
@@ -50,8 +48,12 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             2018: (FEB, 26),
             2022: (FEB, 28),
         }
-        # Patriots Day.
-        self._add_holiday(tr("Día de los Héroes de la Patria"), dates_obs.get(year, (MAR, 1)))
+
+        self._add_holiday(
+            # Patriots Day.
+            tr("Día de los Héroes de la Patria"),
+            dates_obs.get(self._year, (MAR, 1)),
+        )
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -67,10 +69,10 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
 
         # Independence Day.
         name = tr("Día de la Independencia Nacional")
-        if year >= 2012:
+        if self._year >= 2012:
             self._move_holiday(self._add_holiday_may_14(name))
         may_15 = self._add_holiday_may_15(name)
-        if year != 2021:
+        if self._year != 2021:
             self._move_holiday(may_15)
 
         dates_obs = {
@@ -79,13 +81,13 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         }
         self._move_holiday(
             # Chaco Armistice Day.
-            self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(year, (JUN, 12)))
+            self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
         )
 
         # Asuncion Foundation's Day.
         self._move_holiday(self._add_holiday_aug_15(tr("Día de la Fundación de Asunción")))
 
-        if year >= 2000:
+        if self._year >= 2000:
             dates_obs = {
                 2015: (SEP, 28),
                 2016: (OCT, 3),
@@ -97,7 +99,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
                 self._add_holiday(
                     # Boqueron Battle Day.
                     tr("Día de la Batalla de Boquerón"),
-                    dates_obs.get(year, (SEP, 29)),
+                    dates_obs.get(self._year, (SEP, 29)),
                 )
             )
 

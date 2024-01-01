@@ -38,9 +38,7 @@ class Philippines(
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 

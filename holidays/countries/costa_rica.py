@@ -44,9 +44,7 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_rule", ALL_TO_NEAREST_MON_LATAM)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -58,21 +56,21 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Juan Santamaría Day.
         apr_11 = self._add_holiday_apr_11(tr("Día de Juan Santamaría"))
-        if 2006 <= year <= 2010:
+        if 2006 <= self._year <= 2010:
             self._move_holiday(apr_11, rule=WORKDAY_TO_NEXT_MON)
-        elif year in {2023, 2024}:
+        elif self._year in {2023, 2024}:
             self._move_holiday(apr_11)
 
         # International Labor Day.
         dt = self._add_labor_day(tr("Día Internacional del Trabajo"))
-        if year == 2021:
+        if self._year == 2021:
             self._move_holiday(dt)
 
         # Annexation of the Party of Nicoya to Costa Rica.
         jul_25 = self._add_holiday_jul_25(tr("Anexión del Partido de Nicoya a Costa Rica"))
-        if 2005 <= year <= 2008:
+        if 2005 <= self._year <= 2008:
             self._move_holiday(jul_25, rule=WORKDAY_TO_NEXT_MON)
-        elif 2020 <= year <= 2024:
+        elif 2020 <= self._year <= 2024:
             self._move_holiday(jul_25)
 
         # Feast of Our Lady of the Angels.
@@ -80,36 +78,36 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Mother's Day.
         dt = self._add_assumption_of_mary_day(tr("Día de la Madre"))
-        if 2005 <= year <= 2007:
+        if 2005 <= self._year <= 2007:
             self._move_holiday(dt, rule=WORKDAY_TO_NEXT_MON)
-        elif year in {2020, 2023, 2024}:
+        elif self._year in {2020, 2023, 2024}:
             self._move_holiday(dt)
 
-        if year >= 2022:
+        if self._year >= 2022:
             aug_31 = self._add_holiday_aug_31(
                 # Day of the Black Person and Afro-Costa Rican Culture.
                 self.tr("Día de la Persona Negra y la Cultura Afrocostarricense")
             )
-            if year in {2022, 2023}:
+            if self._year in {2022, 2023}:
                 # Move to next Sunday.
                 self._move_holiday(aug_31, rule=ALL_TO_NEXT_SUN)
 
         # Independence Day.
         sep_15 = self._add_holiday_sep_15(tr("Día de la Independencia"))
-        if year in {2020, 2021, 2022, 2024}:
+        if self._year in {2020, 2021, 2022, 2024}:
             self._move_holiday(sep_15)
 
-        if year <= 2019:
+        if self._year <= 2019:
             self._move_holiday(
                 # Cultures Day.
                 self._add_columbus_day(tr("Día de las Culturas")),
                 rule=WORKDAY_TO_NEXT_MON,
             )
 
-        if year >= 2020:
+        if self._year >= 2020:
             # Army Abolition Day.
             dec_1 = self._add_holiday_dec_1(tr("Día de la Abolición del Ejército"))
-            if year in {2020, 2021, 2022}:
+            if self._year in {2020, 2021, 2022}:
                 self._move_holiday(dec_1)
 
         # Christmas Day.

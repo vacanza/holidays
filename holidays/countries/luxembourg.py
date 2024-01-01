@@ -29,9 +29,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neijoerschdag"))
 
@@ -41,7 +39,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Dag vun der Aarbecht"))
 
-        if year >= 2019:
+        if self._year >= 2019:
             # Europe Day.
             self._add_holiday_may_9(tr("Europadag"))
 

@@ -1,0 +1,214 @@
+# Spain holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.40\n"
+"POT-Creation-Date: 2023-12-26 19:23+0200\n"
+"PO-Revision-Date: 2023-12-26 19:32+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. Monday following %s.
+#, c-format
+msgid "Lunes siguiente a %s"
+msgstr ""
+
+#. New Year's Day.
+msgid "Año nuevo"
+msgstr ""
+
+#. Epiphany.
+msgid "Epifanía del Señor"
+msgstr ""
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labor Day.
+msgid "Fiesta del Trabajo"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Asunción de la Virgen"
+msgstr ""
+
+#. National Day.
+msgid "Fiesta Nacional de España"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Todos los Santos"
+msgstr ""
+
+#. Constitution Day.
+msgid "Día de la Constitución Española"
+msgstr ""
+
+#. Immaculate Conception.
+msgid "Inmaculada Concepción"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natividad del Señor"
+msgstr ""
+
+#. Andalusia Day.
+msgid "Día de Andalucia"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr ""
+
+#. St. George's Day.
+msgid "Día de San Jorge"
+msgstr ""
+
+#. Asturia Day.
+msgid "Día de Asturias"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lunes de Pascua"
+msgstr ""
+
+#. St. James' Day.
+msgid "Santiago Apóstol"
+msgstr ""
+
+#. Cantabria Institutions Day.
+msgid "Día de las Instituciones de Cantabria"
+msgstr ""
+
+#. Our Lady of the Bien Aparecida.
+msgid "La Bien Aparecida"
+msgstr ""
+
+#. Santa Maria of Africa.
+msgid "Nuestra Señora de África"
+msgstr ""
+
+#. Ceuta Day.
+msgid "Día de Ceuta"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Eidul Adha"
+msgstr ""
+
+#. St. Joseph's Day.
+msgid "San José"
+msgstr ""
+
+#. Castile and León Day.
+msgid "Fiesta de Castilla y León"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Castilla-La Mancha Day.
+msgid "Día de Castilla-La Mancha"
+msgstr ""
+
+#. Day of the Canary Islands.
+msgid "Día de Canarias"
+msgstr ""
+
+#. Whit Monday.
+msgid "Día de la Pascua Granada"
+msgstr ""
+
+#. St. John the Baptist.
+msgid "San Juan"
+msgstr ""
+
+#. National Day of Catalonia.
+msgid "Fiesta Nacional de Cataluña"
+msgstr ""
+
+#. St. Stephen's Day.
+msgid "San Esteban"
+msgstr ""
+
+#. Shrove Tuesday.
+msgid "Martes de Carnaval"
+msgstr ""
+
+#. Extremadura Day.
+msgid "Día de Extremadura"
+msgstr ""
+
+#. Galician Literature Day.
+msgid "Día de las Letras Gallegas"
+msgstr ""
+
+#. Galician National Day.
+msgid "Día Nacional de Galicia"
+msgstr ""
+
+#. Day of the Balearic Islands.
+msgid "Día de las Islas Baleares"
+msgstr ""
+
+#. Murcia Day.
+msgid "Día de la Región de Murcia"
+msgstr ""
+
+#. Madrid Day.
+msgid "Fiesta de la Comunidad de Madrid"
+msgstr ""
+
+#. Statute of Autonomy of Melilla Day.
+msgid "Estatuto de Autonomía de la Ciudad de Melilla"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Fiesta del Eid Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Fiesta del Sacrificio-Aid Al Adha"
+msgstr ""
+
+#. País Vasco Day.
+msgid "Día del País Vasco"
+msgstr ""
+
+#. La Rioja Day.
+msgid "Día de La Rioja"
+msgstr ""
+
+#. Valencian Community Day.
+msgid "Día de la Comunidad Valenciana"
+msgstr ""
+
+#. Day following St. Joseph's Day.
+msgid "Día siguiente a San José"
+msgstr ""
+
+#. St. Joseph's Day Transfer.
+msgid "Traslado de San José"
+msgstr ""
+
+#. 80th Anniversary of the first Basque Government.
+msgid "80 Aniversario del primer Gobierno Vasco"
+msgstr ""
+
+#. V Centennial of the Circumnavigation of the World.
+msgid "V Centenario Vuelta al Mundo"
+msgstr ""
+
+#. The Fallas.
+msgid "Lunes de Fallas"
+msgstr ""

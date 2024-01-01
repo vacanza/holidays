@@ -20,7 +20,7 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         - https://www.officeholidays.com/countries/kazakhstan/2020
         - https://egov.kz/cms/en/articles/holidays-calend
         - https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan
-        - https://adilet.zan.kz/rus/docs/Z010000267\_/history  # noqa W605
+        - https://adilet.zan.kz/rus/docs/Z010000267%5F/history
     """
 
     country = "KZ"
@@ -34,12 +34,11 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         kwargs.setdefault("observed_since", 2002)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Kazakhstan declared its sovereignty on 25 October 1990
-        if year <= 1990:
+        if self._year <= 1990:
             return None
 
-        super()._populate(year)
         dts_observed = set()
 
         # New Year's holiday (2 days)
@@ -48,17 +47,17 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         dts_observed.add(self._add_new_years_day_two(name))
 
         # Orthodox Christmas (nonworking day, without extending)
-        if year >= 2006:
+        if self._year >= 2006:
             self._add_christmas_day("Orthodox Christmas")
 
         # International Women's Day
         dts_observed.add(self._add_womens_day("International Women's Day"))
 
         # Nauryz holiday
-        if year >= 2002:
+        if self._year >= 2002:
             name = "Nauryz holiday"
             dts_observed.add(self._add_holiday_mar_22(name))
-            if year >= 2010:
+            if self._year >= 2010:
                 dts_observed.add(self._add_holiday_mar_21(name))
                 dts_observed.add(self._add_holiday_mar_23(name))
 
@@ -66,41 +65,41 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         dts_observed.add(self._add_labor_day("Kazakhstan People Solidarity Holiday"))
 
         # Defender of the Fatherland Day
-        if year >= 2013:
+        if self._year >= 2013:
             dts_observed.add(self._add_holiday_may_7("Defender of the Fatherland Day"))
 
         # Victory Day
         dts_observed.add(self._add_world_war_two_victory_day("Victory Day"))
 
         # Capital Day
-        if year >= 2009:
+        if self._year >= 2009:
             dts_observed.add(self._add_holiday_jul_6("Capital Day"))
 
         # Constitution Day of the Republic of Kazakhstan
-        if year >= 1996:
+        if self._year >= 1996:
             dts_observed.add(
                 self._add_holiday_aug_30("Constitution Day of the Republic of Kazakhstan")
             )
 
         # Republic Day
-        if 1994 <= year <= 2008 or year >= 2022:
+        if 1994 <= self._year <= 2008 or self._year >= 2022:
             dts_observed.add(self._add_holiday_oct_25("Republic Day"))
 
         # First President Day
-        if 2012 <= year <= 2021:
+        if 2012 <= self._year <= 2021:
             dts_observed.add(self._add_holiday_dec_1("First President Day"))
 
         # Kazakhstan Independence Day
         name = "Kazakhstan Independence Day"
         dts_observed.add(self._add_holiday_dec_16(name))
-        if 2002 <= year <= 2021:
+        if 2002 <= self._year <= 2021:
             dts_observed.add(self._add_holiday_dec_17(name))
 
         if self.observed:
             self._populate_observed(dts_observed)
 
         # Kurban Ait (nonworking day, without extending)
-        if year >= 2006:
+        if self._year >= 2006:
             self._add_eid_al_adha_day("Kurban Ait")
 
 

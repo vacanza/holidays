@@ -32,10 +32,8 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
-        if year <= 2019:
+    def _populate_public_holidays(self):
+        if self._year <= 2019:
             warnings.warn(
                 "Years before 2020 are not available for the Marshall Islands (MH).", Warning
             )
@@ -69,7 +67,7 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
         # Christmas Day
         name = "Christmas Day"
-        if year == 2021:
+        if self._year == 2021:
             # special case
             self._add_holiday_dec_24(name)
         else:
