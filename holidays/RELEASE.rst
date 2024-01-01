@@ -21,8 +21,8 @@ How to release a new version of Python Holidays
     using 'v<version>' as a PR title and the previously generated release notes
     as a PR description
   - get the PR reviewed by at least one of the code owners
-  - merge the PR into ``master`` branch by enabling auto-merge with
-    'Create a merge commit' action (**do not use 'Squash and merge'**)
+  - merge the PR into ``master`` branch with 'Create a merge commit' action
+    (**do not use 'Squash and merge'**)
   - make sure the PR related CI/CD job(s) have been completed successfully
   - make sure readthedocs.org documentation build jobs at
     https://readthedocs.org/projects/python-holidays/builds/
