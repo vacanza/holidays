@@ -20,7 +20,7 @@ class Kazakhstan(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         - https://www.officeholidays.com/countries/kazakhstan/2020
         - https://egov.kz/cms/en/articles/holidays-calend
         - https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan
-        - https://adilet.zan.kz/rus/docs/Z010000267\_/history  # noqa W605
+        - https://adilet.zan.kz/rus/docs/Z010000267%5F/history
     """
 
     country = "KZ"
