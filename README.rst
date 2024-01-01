@@ -846,7 +846,7 @@ All other default values are highlighted with bold:
    * - Uzbekistan
      - UZ
      -
-     -
+     - en_US, uk, **uz**
      -
    * - Vanuatu
      - VU
