@@ -218,212 +218,212 @@ class ChinaStaticHolidays:
 
     special_public_holidays = {
         2001: (
-            (JAN, 29, JAN, 20),  # spring_festival
-            (JAN, 30, JAN, 21),  # spring_festival
-            (MAY, 4, APR, 28),  # labour_day
-            (MAY, 7, APR, 29),  # labour_day
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 5, SEP, 30),  # national_day
+            (JAN, 29, JAN, 20),  # Spring Festival
+            (JAN, 30, JAN, 21),  # Spring Festival
+            (MAY, 4, APR, 28),  # Labor Day
+            (MAY, 7, APR, 29),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
         ),
         2002: (
-            (JAN, 2, DEC, 29, 2001),  # new_years_day
-            (JAN, 3, DEC, 30, 2001),  # new_years_day
-            (FEB, 15, FEB, 9),  # spring_festival
-            (FEB, 18, FEB, 10),  # spring_festival
-            (MAY, 6, APR, 27),  # labour_day
-            (MAY, 7, APR, 28),  # labour_day
-            (OCT, 4, SEP, 28),  # national_day
-            (OCT, 7, SEP, 29),  # national_day
+            (JAN, 2, DEC, 29, 2001),  # New Year's Day
+            (JAN, 3, DEC, 30, 2001),  # New Year's Day
+            (FEB, 15, FEB, 9),  # Spring Festival
+            (FEB, 18, FEB, 10),  # Spring Festival
+            (MAY, 6, APR, 27),  # Labor Day
+            (MAY, 7, APR, 28),  # Labor Day
+            (OCT, 4, SEP, 28),  # National Day
+            (OCT, 7, SEP, 29),  # National Day
         ),
         2003: (
-            (FEB, 6, FEB, 8),  # spring_festival
-            (FEB, 7, FEB, 9),  # spring_festival
-            (MAY, 6, APR, 26),  # labour_day
-            (MAY, 7, APR, 27),  # labour_day
-            (OCT, 6, SEP, 27),  # national_day
-            (OCT, 7, SEP, 28),  # national_day
+            (FEB, 6, FEB, 8),  # Spring Festival
+            (FEB, 7, FEB, 9),  # Spring Festival
+            (MAY, 6, APR, 26),  # Labor Day
+            (MAY, 7, APR, 27),  # Labor Day
+            (OCT, 6, SEP, 27),  # National Day
+            (OCT, 7, SEP, 28),  # National Day
         ),
         2004: (
-            (JAN, 27, JAN, 17),  # spring_festival
-            (JAN, 28, JAN, 18),  # spring_festival
-            (MAY, 6, MAY, 8),  # labour_day
-            (MAY, 7, MAY, 9),  # labour_day
-            (OCT, 6, OCT, 9),  # national_day
-            (OCT, 7, OCT, 10),  # national_day
+            (JAN, 27, JAN, 17),  # Spring Festival
+            (JAN, 28, JAN, 18),  # Spring Festival
+            (MAY, 6, MAY, 8),  # Labor Day
+            (MAY, 7, MAY, 9),  # Labor Day
+            (OCT, 6, OCT, 9),  # National Day
+            (OCT, 7, OCT, 10),  # National Day
         ),
         2005: (
-            (FEB, 14, FEB, 5),  # spring_festival
-            (FEB, 15, FEB, 6),  # spring_festival
-            (MAY, 5, APR, 30),  # labour_day
-            (MAY, 6, MAY, 8),  # labour_day
-            (OCT, 6, OCT, 8),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (FEB, 14, FEB, 5),  # Spring Festival
+            (FEB, 15, FEB, 6),  # Spring Festival
+            (MAY, 5, APR, 30),  # Labor Day
+            (MAY, 6, MAY, 8),  # Labor Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2006: (
-            (JAN, 3, DEC, 31, 2005),  # new_years_day
-            (FEB, 2, JAN, 28),  # spring_festival
-            (FEB, 3, FEB, 5),  # spring_festival
-            (MAY, 4, APR, 29),  # labour_day
-            (MAY, 5, APR, 30),  # labour_day
-            (OCT, 5, SEP, 30),  # national_day
-            (OCT, 6, OCT, 8),  # national_day
+            (JAN, 3, DEC, 31, 2005),  # New Year's Day
+            (FEB, 2, JAN, 28),  # Spring Festival
+            (FEB, 3, FEB, 5),  # Spring Festival
+            (MAY, 4, APR, 29),  # Labor Day
+            (MAY, 5, APR, 30),  # Labor Day
+            (OCT, 5, SEP, 30),  # National Day
+            (OCT, 6, OCT, 8),  # National Day
         ),
         2007: (
-            (JAN, 2, DEC, 30, 2006),  # new_years_day
-            (JAN, 3, DEC, 31, 2006),  # new_years_day
-            (FEB, 22, FEB, 17),  # spring_festival
-            (FEB, 23, FEB, 25),  # spring_festival
-            (MAY, 4, APR, 28),  # labour_day
-            (MAY, 7, APR, 29),  # labour_day
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 5, SEP, 30),  # national_day
-            (DEC, 31, DEC, 29),  # new_years_day
+            (JAN, 2, DEC, 30, 2006),  # New Year's Day
+            (JAN, 3, DEC, 31, 2006),  # New Year's Day
+            (FEB, 22, FEB, 17),  # Spring Festival
+            (FEB, 23, FEB, 25),  # Spring Festival
+            (MAY, 4, APR, 28),  # Labor Day
+            (MAY, 7, APR, 29),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
+            (DEC, 31, DEC, 29),  # New Year's Day
         ),
         2008: (
-            (FEB, 11, FEB, 2),  # spring_festival
-            (FEB, 12, FEB, 3),  # spring_festival
-            (MAY, 2, MAY, 4),  # labour_day
-            (SEP, 29, SEP, 27),  # national_day
-            (SEP, 30, SEP, 28),  # national_day
+            (FEB, 11, FEB, 2),  # Spring Festival
+            (FEB, 12, FEB, 3),  # Spring Festival
+            (MAY, 2, MAY, 4),  # Labor Day
+            (SEP, 29, SEP, 27),  # National Day
+            (SEP, 30, SEP, 28),  # National Day
         ),
         2009: (
-            (JAN, 2, JAN, 4),  # new_years_day
-            (JAN, 29, JAN, 24),  # spring_festival
-            (JAN, 30, FEB, 1),  # spring_festival
-            (MAY, 29, MAY, 31),  # dragon_boat_festival
-            (OCT, 7, SEP, 27),  # national_day
-            (OCT, 8, OCT, 10),  # national_day
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (JAN, 29, JAN, 24),  # Spring Festival
+            (JAN, 30, FEB, 1),  # Spring Festival
+            (MAY, 29, MAY, 31),  # Dragon Boat Festival
+            (OCT, 7, SEP, 27),  # National Day
+            (OCT, 8, OCT, 10),  # National Day
         ),
         2010: (
-            (FEB, 18, FEB, 20),  # spring_festival
-            (FEB, 19, FEB, 21),  # spring_festival
-            (JUN, 14, JUN, 12),  # dragon_boat_festival
-            (JUN, 15, JUN, 13),  # dragon_boat_festival
-            (SEP, 23, SEP, 19),  # mid_autumn_festival
-            (SEP, 24, SEP, 25),  # mid_autumn_festival
-            (OCT, 6, SEP, 26),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (FEB, 18, FEB, 20),  # Spring Festival
+            (FEB, 19, FEB, 21),  # Spring Festival
+            (JUN, 14, JUN, 12),  # Dragon Boat Festival
+            (JUN, 15, JUN, 13),  # Dragon Boat Festival
+            (SEP, 23, SEP, 19),  # Mid-Autumn Festival
+            (SEP, 24, SEP, 25),  # Mid-Autumn Festival
+            (OCT, 6, SEP, 26),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2011: (
-            (FEB, 7, JAN, 30),  # spring_festival
-            (FEB, 8, FEB, 12),  # spring_festival
-            (APR, 4, APR, 2),  # tomb_sweeping_day
-            (OCT, 6, OCT, 8),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (FEB, 7, JAN, 30),  # Spring Festival
+            (FEB, 8, FEB, 12),  # Spring Festival
+            (APR, 4, APR, 2),  # Tomb-Sweeping Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2012: (
-            (JAN, 3, DEC, 31, 2011),  # new_years_day
-            (JAN, 26, JAN, 21),  # spring_festival
-            (JAN, 27, JAN, 29),  # spring_festival
-            (APR, 2, MAR, 31),  # tomb_sweeping_day
-            (APR, 3, APR, 1),  # tomb_sweeping_day
-            (APR, 30, APR, 28),  # labour_day
-            (OCT, 5, SEP, 29),  # national_day
+            (JAN, 3, DEC, 31, 2011),  # New Year's Day
+            (JAN, 26, JAN, 21),  # Spring Festival
+            (JAN, 27, JAN, 29),  # Spring Festival
+            (APR, 2, MAR, 31),  # Tomb-Sweeping Day
+            (APR, 3, APR, 1),  # Tomb-Sweeping Day
+            (APR, 30, APR, 28),  # Labor Day
+            (OCT, 5, SEP, 29),  # National Day
         ),
         2013: (
-            (JAN, 2, JAN, 5),  # new_years_day
-            (JAN, 3, JAN, 6),  # new_years_day
-            (FEB, 14, FEB, 16),  # spring_festival
-            (FEB, 15, FEB, 17),  # spring_festival
-            (APR, 5, APR, 7),  # tomb_sweeping_day
-            (APR, 29, APR, 27),  # labour_day
-            (APR, 30, APR, 28),  # labour_day
-            (JUN, 10, JUN, 8),  # dragon_boat_festival
-            (JUN, 11, JUN, 9),  # dragon_boat_festival
-            (SEP, 20, SEP, 22),  # mid_autumn_festival
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 7, OCT, 12),  # national_day
+            (JAN, 2, JAN, 5),  # New Year's Day
+            (JAN, 3, JAN, 6),  # New Year's Day
+            (FEB, 14, FEB, 16),  # Spring Festival
+            (FEB, 15, FEB, 17),  # Spring Festival
+            (APR, 5, APR, 7),  # Tomb-Sweeping Day
+            (APR, 29, APR, 27),  # Labor Day
+            (APR, 30, APR, 28),  # Labor Day
+            (JUN, 10, JUN, 8),  # Dragon Boat Festival
+            (JUN, 11, JUN, 9),  # Dragon Boat Festival
+            (SEP, 20, SEP, 22),  # Mid-Autumn Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
         ),
         2014: (
-            (FEB, 5, JAN, 26),  # spring_festival
-            (FEB, 6, FEB, 8),  # spring_festival
-            (MAY, 2, MAY, 4),  # labour_day
-            (OCT, 6, SEP, 28),  # national_day
-            (OCT, 7, OCT, 11),  # national_day
+            (FEB, 5, JAN, 26),  # Spring Festival
+            (FEB, 6, FEB, 8),  # Spring Festival
+            (MAY, 2, MAY, 4),  # Labor Day
+            (OCT, 6, SEP, 28),  # National Day
+            (OCT, 7, OCT, 11),  # National Day
         ),
         2015: (
-            (JAN, 2, JAN, 4),  # new_years_day
-            (FEB, 18, FEB, 15),  # spring_festival
-            (FEB, 24, FEB, 28),  # spring_festival
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (FEB, 18, FEB, 15),  # Spring Festival
+            (FEB, 24, FEB, 28),  # Spring Festival
             (SEP, 3, victory_70_anniversary),
-            (SEP, 4, SEP, 6),  # victory_70_anniversary
-            (OCT, 7, OCT, 10),  # national_day
+            (SEP, 4, SEP, 6),  # 70th Anniversary of the Victory
+            (OCT, 7, OCT, 10),  # National Day
         ),
         2016: (
-            (FEB, 11, FEB, 6),  # spring_festival
-            (FEB, 12, FEB, 14),  # spring_festival
-            (JUN, 10, JUN, 12),  # dragon_boat_festival
-            (SEP, 16, SEP, 18),  # mid_autumn_festival
-            (OCT, 6, OCT, 8),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (FEB, 11, FEB, 6),  # Spring Festival
+            (FEB, 12, FEB, 14),  # Spring Festival
+            (JUN, 10, JUN, 12),  # Dragon Boat Festival
+            (SEP, 16, SEP, 18),  # Mid-Autumn Festival
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2017: (
-            (JAN, 27, JAN, 22),  # spring_festival
-            (FEB, 2, FEB, 4),  # spring_festival
-            (APR, 3, APR, 1),  # tomb_sweeping_day
-            (MAY, 29, MAY, 27),  # dragon_boat_festival
-            (OCT, 6, SEP, 30),  # national_day
+            (JAN, 27, JAN, 22),  # Spring Festival
+            (FEB, 2, FEB, 4),  # Spring Festival
+            (APR, 3, APR, 1),  # Tomb-Sweeping Day
+            (MAY, 29, MAY, 27),  # Dragon Boat Festival
+            (OCT, 6, SEP, 30),  # National Day
         ),
         2018: (
-            (FEB, 15, FEB, 11),  # spring_festival
-            (FEB, 21, FEB, 24),  # spring_festival
-            (APR, 6, APR, 8),  # tomb_sweeping_day
-            (APR, 30, APR, 28),  # labour_day
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 5, SEP, 30),  # national_day
-            (DEC, 31, DEC, 29),  # new_years_day
+            (FEB, 15, FEB, 11),  # Spring Festival
+            (FEB, 21, FEB, 24),  # Spring Festival
+            (APR, 6, APR, 8),  # Tomb-Sweeping Day
+            (APR, 30, APR, 28),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
+            (DEC, 31, DEC, 29),  # New Year's Day
         ),
         2019: (
-            (FEB, 4, FEB, 2),  # spring_festival
-            (FEB, 8, FEB, 3),  # spring_festival
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 7, OCT, 12),  # national_day
+            (FEB, 4, FEB, 2),  # Spring Festival
+            (FEB, 8, FEB, 3),  # Spring Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
         ),
         2020: (
-            (JAN, 24, JAN, 19),  # spring_festival
-            (JAN, 30, FEB, 1),  # spring_festival
-            (MAY, 4, APR, 26),  # labour_day
-            (MAY, 5, MAY, 9),  # labour_day
-            (JUN, 26, JUN, 28),  # dragon_boat_festival
-            (OCT, 7, SEP, 27),  # national_day
-            (OCT, 8, OCT, 10),  # national_day
+            (JAN, 24, JAN, 19),  # Spring Festival
+            (JAN, 30, FEB, 1),  # Spring Festival
+            (MAY, 4, APR, 26),  # Labor Day
+            (MAY, 5, MAY, 9),  # Labor Day
+            (JUN, 26, JUN, 28),  # Dragon Boat Festival
+            (OCT, 7, SEP, 27),  # National Day
+            (OCT, 8, OCT, 10),  # National Day
         ),
         2021: (
-            (FEB, 11, FEB, 7),  # spring_festival
-            (FEB, 17, FEB, 20),  # spring_festival
-            (MAY, 4, APR, 25),  # labour_day
-            (MAY, 5, MAY, 8),  # labour_day
-            (SEP, 20, SEP, 18),  # mid_autumn_festival
-            (OCT, 6, SEP, 26),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (FEB, 11, FEB, 7),  # Spring Festival
+            (FEB, 17, FEB, 20),  # Spring Festival
+            (MAY, 4, APR, 25),  # Labor Day
+            (MAY, 5, MAY, 8),  # Labor Day
+            (SEP, 20, SEP, 18),  # Mid-Autumn Festival
+            (OCT, 6, SEP, 26),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2022: (
-            (JAN, 31, JAN, 29),  # spring_festival
-            (FEB, 4, JAN, 30),  # spring_festival
-            (APR, 4, APR, 2),  # tomb_sweeping_day
-            (MAY, 3, APR, 24),  # labour_day
-            (MAY, 4, MAY, 7),  # labour_day
-            (OCT, 6, OCT, 8),  # national_day
-            (OCT, 7, OCT, 9),  # national_day
+            (JAN, 31, JAN, 29),  # Spring Festival
+            (FEB, 4, JAN, 30),  # Spring Festival
+            (APR, 4, APR, 2),  # Tomb-Sweeping Day
+            (MAY, 3, APR, 24),  # Labor Day
+            (MAY, 4, MAY, 7),  # Labor Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2023: (
-            (JAN, 26, JAN, 28),  # spring_festival
-            (JAN, 27, JAN, 29),  # spring_festival
-            (MAY, 2, APR, 23),  # labour_day
-            (MAY, 3, MAY, 6),  # labour_day
-            (JUN, 23, JUN, 25),  # dragon_boat_festival
-            (OCT, 5, OCT, 7),  # national_day
-            (OCT, 6, OCT, 8),  # national_day
+            (JAN, 26, JAN, 28),  # Spring Festival
+            (JAN, 27, JAN, 29),  # Spring Festival
+            (MAY, 2, APR, 23),  # Labor Day
+            (MAY, 3, MAY, 6),  # Labor Day
+            (JUN, 23, JUN, 25),  # Dragon Boat Festival
+            (OCT, 5, OCT, 7),  # National Day
+            (OCT, 6, OCT, 8),  # National Day
         ),
         2024: (
-            (FEB, 15, FEB, 4),  # spring_festival
-            (FEB, 16, FEB, 18),  # spring_festival
-            (APR, 5, APR, 7),  # tomb_sweeping_day
-            (MAY, 2, APR, 28),  # labour_day
-            (MAY, 3, MAY, 11),  # labour_day
-            (SEP, 16, SEP, 14),  # mid_autumn_festival
-            (OCT, 4, SEP, 29),  # national_day
-            (OCT, 7, OCT, 12),  # national_day
+            (FEB, 15, FEB, 4),  # Spring Festival
+            (FEB, 16, FEB, 18),  # Spring Festival
+            (APR, 5, APR, 7),  # Tomb-Sweeping Day
+            (MAY, 2, APR, 28),  # Labor Day
+            (MAY, 3, MAY, 11),  # Labor Day
+            (SEP, 16, SEP, 14),  # Mid-Autumn Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
         ),
     }
 
