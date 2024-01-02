@@ -77,8 +77,8 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_observed.add(self._add_holiday_oct_1(tr("O‘qituvchi va murabbiylar kuni")))
 
         if self._year >= 1993:
-            # Constitution Day.
             dts_observed.add(
+                # Constitution Day.
                 self._add_holiday_dec_8(tr("O‘zbekiston Respublikasi Konstitutsiyasi kuni"))
             )
 
