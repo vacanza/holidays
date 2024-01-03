@@ -20,20 +20,16 @@ from holidays.holiday_base import HolidayBase
 class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
-    # Holidays after 2020: the following four moving date holidays whose exact
-    # date is announced yearly are estimated (and so denoted):
-    # - Eid El Fetr*
-    # - Eid El Adha*
-    # - Arafat Day*
-    # - Moulad El Naby*
-    # *only if hijri-converter library is installed, otherwise a warning is
-    #  raised that this holiday is missing. hijri-converter requires
-    #  Python >= 3.6
-    # is_weekend function is there, however not activated for accuracy.
+    # The following four moving date holidays whose exact date is announced yearly
+    # are estimated (and so denoted):
+    # - Eid al-Fitr
+    # - Eid al-Adha
+    # - Arafat Day
+    # - Prophet's Birthday
 
     country = "EG"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
 
@@ -48,7 +44,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         # New Year's Day
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Coptic Christmas
+        # Coptic Christmas Day
         self._add_christmas_day(tr("عيد الميلاد المجيد (تقويم قبطي)"))
 
         if self._year >= 2012:
@@ -58,15 +54,17 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             # National Police Day
             self._add_holiday_jan_25(tr("عيد الشرطة"))
 
-        # Coptic Easter - Orthodox Easter
+        # Coptic Easter
         self._add_easter_sunday(tr("عيد الفصح القبطي"))
-        self._add_easter_monday(tr("شم النسيم"))  # Spring Festival
+
+        # Spring Festival
+        self._add_easter_monday(tr("شم النسيم"))
 
         if self._year > 1982:
-            # Sinai Libration Day
+            # Sinai Liberation Day
             self._add_holiday_apr_25(tr("عيد تحرير سيناء"))
 
-        # Labour Day
+        # Labor Day
         self._add_labor_day(tr("عيد العمال"))
 
         # Armed Forces Day
@@ -80,7 +78,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             # July 23 Revolution Day
             self._add_holiday_jul_23(tr("عيد ثورة 23 يوليو"))
 
-        # Eid al-Fitr - Feast Festive
+        # Eid al-Fitr
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
         # Eid al-Fitr Holiday
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
@@ -89,7 +87,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         # Arafat Day
         self._add_arafah_day(tr("يوم عرفة"))
 
-        # Eid al-Adha - Scarfice Festive
+        # Eid al-Adha
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
         # Eid al-Adha Holiday
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
@@ -98,7 +96,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         # Islamic New Year
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # Prophet Muhammad's Birthday
+        # Prophet's Birthday
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 

@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (perkiraan)"
 msgstr ""
@@ -80,7 +81,7 @@ msgstr ""
 msgid "Hari Lahir Pancasila"
 msgstr ""
 
-#. Assumption Of Mary.
+#. Assumption Day.
 msgid "Mikraj Santa Maria"
 msgstr ""
 
@@ -116,11 +117,11 @@ msgstr ""
 msgid "Tahun Baru Islam"
 msgstr ""
 
-#. The Prophet's Birthday.
+#. Prophet's Birthday.
 msgid "Maulid Nabi Muhammad"
 msgstr ""
 
-#. The Prophet's Ascension.
+#. Isra and Miraj.
 msgid "Isra Mikraj Nabi Muhammad"
 msgstr ""
 

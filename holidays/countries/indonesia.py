@@ -48,6 +48,7 @@ class Indonesia(
 
     country = "ID"
     default_language = "id"
+    # %s (estimated).
     estimated_label = tr("%s (perkiraan)")
     supported_languages = ("en_US", "id", "uk")
     supported_categories = (GOVERNMENT, PUBLIC)
@@ -126,7 +127,7 @@ class Indonesia(
             self._add_holiday_jun_1(tr("Hari Lahir Pancasila"))
 
         if 1968 <= self._year <= 1970:
-            # Assumption Of Mary.
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Mikraj Santa Maria"))
 
         # Independence Day.
@@ -156,10 +157,10 @@ class Indonesia(
             # Islamic New Year.
             self._add_islamic_new_year_day(tr("Tahun Baru Islam"))
 
-            # The Prophet's Birthday.
+            # Prophet's Birthday.
             self._add_mawlid_day(tr("Maulid Nabi Muhammad"))
 
-            # The Prophet's Ascension.
+            # Isra and Miraj.
             self._add_isra_and_miraj_day(tr("Isra Mikraj Nabi Muhammad"))
 
         if 1953 <= self._year <= 1962:

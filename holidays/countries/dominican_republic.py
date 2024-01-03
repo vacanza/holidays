@@ -67,7 +67,7 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
             rule=TUE_WED_TO_PREV_MON + THU_FRI_SUN_TO_NEXT_MON,
         )
 
-        # Feast of Corpus Christi.
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Restoration Day.

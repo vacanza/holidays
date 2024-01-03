@@ -19,7 +19,7 @@ from holidays.holiday_base import HolidayBase
 class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     country = "DJ"
     default_language = "fr"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("%s (estimé)")
     supported_languages = ("ar", "en_US", "fr")
     weekend = {FRI, SAT}
@@ -59,7 +59,7 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("Eid al-Fitr deuxième jour"))
 
-        # Arafat.
+        # Arafat Day.
         self._add_arafah_day(tr("Arafat"))
 
         # Eid al-Adha.

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.33\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-09-06 20:47+0300\n"
+"PO-Revision-Date: 2024-01-07 15:45+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Nieuwjaar"
 msgstr "New Year's Day"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pasen"
-msgstr "Easter"
+msgstr "Easter Sunday"
 
 #. Easter Monday.
 msgid "Paasmaandag"
@@ -48,9 +48,9 @@ msgstr "Whit Monday"
 msgid "Nationale feestdag"
 msgstr "National Day"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "O. L. V. Hemelvaart"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. All Saints' Day.
 msgid "Allerheiligen"

@@ -41,7 +41,7 @@ msgstr ""
 msgid "Радаўніца"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Свята працы"
 msgstr ""
 

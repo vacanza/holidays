@@ -101,7 +101,7 @@ class Spain(
             self._add_labor_day(tr("Fiesta del Trabajo"))
 
         if self._year not in {2010, 2021}:
-            # Assumption of Mary.
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         if self._year != 2014:

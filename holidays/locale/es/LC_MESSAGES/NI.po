@@ -48,7 +48,7 @@ msgstr ""
 msgid "Concepción de María"
 msgstr ""
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr ""
 

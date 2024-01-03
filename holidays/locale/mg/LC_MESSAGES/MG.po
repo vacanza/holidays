@@ -52,6 +52,7 @@ msgstr ""
 msgid "Alatsinain'ny pentekosta"
 msgstr ""
 
+#. Mother's Day.
 msgid "Fetin'ny reny"
 msgstr ""
 

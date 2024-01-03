@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2023-03-05 13:01+0200\n"
+"PO-Revision-Date: 2024-01-22 13:55+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -44,9 +44,9 @@ msgstr "Good Friday"
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
-#. Feast of Corpus Christi.
+#. Corpus Christi.
 msgid "Corpus Christi"
-msgstr "Feast of Corpus Christi"
+msgstr "Corpus Christi"
 
 #. Restoration Day.
 msgid "Día de la Restauración"

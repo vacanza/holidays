@@ -45,7 +45,7 @@ msgstr "Новий рік"
 msgid "Lielā Piektdiena"
 msgstr "Страсна пʼятниця"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Lieldienas"
 msgstr "Великдень"
 

@@ -23,7 +23,7 @@ msgstr ""
 msgid "መስቀል"
 msgstr ""
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "ገና"
 msgstr ""
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "አድዋ"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "የሰራተኞች ቀን"
 msgstr ""
 
@@ -67,10 +67,11 @@ msgstr ""
 msgid "አረፋ"
 msgstr ""
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "መውሊድ"
 msgstr ""
 
+#. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
 msgstr ""

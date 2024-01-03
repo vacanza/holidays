@@ -45,10 +45,10 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Easter Monday.
         self._add_easter_monday(tr("Le lundi de Pâques"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Fête de la Travaille")))
 
-        # Ascension's Day.
+        # Ascension Day.
         self._add_ascension_thursday(tr("L'Ascension"))
 
         # Whit Monday.
@@ -57,7 +57,7 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Corpus Christi.
         self._add_corpus_christi_day(tr("La Fête Dieu"))
 
-        # Assumption's Day.
+        # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("L'Assomption de Marie")))
 
         # All Saints' Day.
@@ -66,7 +66,7 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Prince's Day.
         self._add_observed(self._add_holiday_nov_19(tr("La Fête du Prince")))
 
-        # Immaculate Conception Day.
+        # Immaculate Conception.
         name = tr("L'Immaculée Conception")
         if self._year >= 2019 and self._is_sunday(DEC, 8):
             self._add_holiday_dec_9(name)

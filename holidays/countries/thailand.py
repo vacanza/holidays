@@ -237,7 +237,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # *** NOTE: only observed by financial and private sectors.
 
         if self._year >= 1974:
-            # National Labour day.
+            # National Labor Day.
             self._add_observed(self._add_labor_day(tr("วันแรงงานแห่งชาติ")))
 
         # วันชาติ

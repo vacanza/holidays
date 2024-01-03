@@ -150,7 +150,7 @@ class TestRomania(CommonCountryTests, TestCase):
             ("2018-04-06", "Easter"),
             ("2018-04-08", "Easter"),
             ("2018-04-09", "Easter"),
-            ("2018-05-01", "Labour Day"),
+            ("2018-05-01", "Labor Day"),
             ("2018-05-27", "Pentecost"),
             ("2018-05-28", "Pentecost"),
             ("2018-06-01", "Children's Day"),

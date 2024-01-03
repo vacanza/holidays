@@ -157,7 +157,7 @@ class TestLithuania(CommonCountryTests, TestCase):
             ("2022-01-01", "New Year's Day"),
             ("2022-02-16", "Day of Restoration of the State of Lithuania"),
             ("2022-03-11", "Day of Restoration of Independence of Lithuania"),
-            ("2022-04-17", "Easter"),
+            ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "International Workers' Day; Mother's Day"),
             ("2022-06-05", "Father's Day"),

@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "(تقدير) %s"
 msgstr ""
@@ -68,7 +68,7 @@ msgstr ""
 msgid "يوم عرفة"
 msgstr ""
 
-#. Eid al-Adha Holiday
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr ""
 
@@ -76,6 +76,6 @@ msgstr ""
 msgid "رأس السنة الهجرية"
 msgstr ""
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr ""

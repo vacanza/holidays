@@ -21,6 +21,7 @@ from holidays.holiday_base import HolidayBase
 class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     country = "ET"
     default_language = "am"
+    # %s (estimated).
     estimated_label = tr("%s (ግምት)")
     supported_languages = ("am", "ar", "en_US")
 
@@ -57,7 +58,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Finding of True Cross.
         self._add_holiday(tr("መስቀል"), SEP, 28 if self._is_leap_year() else 27)
 
-        # Orthodox Christmas.
+        # Orthodox Christmas Day.
         self._add_christmas_day(tr("ገና"))
 
         # Orthodox Epiphany.
@@ -73,7 +74,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
             # Adwa Victory Day.
             self._add_holiday_mar_2(tr("አድዋ"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("የሰራተኞች ቀን"))
 
         if self._year > 1941:
@@ -96,7 +97,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
 
-        # Prophet Muhammad's Birthday.
+        # Prophet's Birthday.
         name = tr("መውሊድ")
         self._add_mawlid_day(name)
         self._add_mawlid_day_two(name)

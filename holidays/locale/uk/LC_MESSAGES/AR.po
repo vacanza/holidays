@@ -48,7 +48,7 @@ msgstr "День національного перепису 2022"
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#. Carnival.
+#. Carnival Day.
 msgid "Día de Carnaval"
 msgstr "Карнавал"
 
@@ -97,7 +97,7 @@ msgstr "День незалежності"
 msgid "Inmaculada Concepción de María"
 msgstr "Непорочне зачаття Діви Марії"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
 

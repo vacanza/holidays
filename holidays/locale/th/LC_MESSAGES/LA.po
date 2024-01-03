@@ -32,7 +32,7 @@ msgstr "วันสตรีสากล"
 msgid "ບຸນປີໃໝ່ລາວ"
 msgstr "วันปีใหม่ลาว"
 
-#. Labor Day.
+#. International Labor Day.
 msgid "ວັນກຳມະກອນສາກົນ"
 msgstr "วันแรงงานสากล"
 
