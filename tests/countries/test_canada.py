@@ -864,6 +864,23 @@ class TestCanada(TestCase):
             ("2022-12-27", "(تمت ملاحظته) عيد الميلاد"),
         )
 
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-23", "Victoria Day"),
+            ("2022-07-01", "Canada Day"),
+            ("2022-09-05", "Labor Day"),
+            ("2022-09-30", "National Day for Truth and Reconciliation"),
+            ("2022-10-10", "Thanksgiving Day"),
+            ("2022-11-11", "Remembrance Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day; Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (Observed)"),
+        )
+
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
             "fr",

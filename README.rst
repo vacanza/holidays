@@ -316,7 +316,7 @@ All other default values are highlighted with bold:
    * - Canada
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
-     - ar, **en**, fr, th
+     - ar, **en_CA**, en_US, fr, th
      - GOVERNMENT, OPTIONAL
    * - Chad
      - TD
@@ -586,7 +586,7 @@ All other default values are highlighted with bold:
    * - Malta
      - MT
      -
-     - en_MT, **mt**
+     - en_US, **mt**
      -
    * - Marshall Islands (the)
      - MH
