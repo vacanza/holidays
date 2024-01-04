@@ -638,6 +638,7 @@ class TestThailand(TestCase):
             ("2021-05-13", name),
             ("2022-05-17", name),
             ("2023-05-11", name),
+            ("2024-05-10", name),
         )
 
     def test_armed_forces_holiday(self):

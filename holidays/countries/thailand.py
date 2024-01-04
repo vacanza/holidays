@@ -558,8 +558,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2021: (MAY, 13),
             2022: (MAY, 17),
             2023: (MAY, 11),
+            2024: (MAY, 10),
         }
-        if 1957 <= self._year <= 2023 and self._year != 1999:
+        if 1957 <= self._year <= 2024 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
