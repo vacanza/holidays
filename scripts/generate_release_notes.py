@@ -77,11 +77,19 @@ class ReleaseNotesGenerator:
             type=str,
         )
         arg_parser.add_argument(
-            "-v",
             "--verbose",
-            action=argparse.BooleanOptionalAction,
+            "-v",
+            action="store_true",
             help="Verbose output",
         )
+
+        arg_parser.add_argument(
+            "--no-verbose",
+            dest="verbose",
+            action="store_false",
+            help="Verbose output",
+        )
+        arg_parser.set_defaults(verbose=None)
         self.args = arg_parser.parse_args()
 
         self.local_repo = Repo(os.getcwd())
