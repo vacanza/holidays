@@ -36,6 +36,7 @@ First step is setting up development environment and installing all the required
     $ source venv/bin/activate
 
     $ make setup
+    $ make package
 
 The project provides automated style, tests and coverage checks:
 
