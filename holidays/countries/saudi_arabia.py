@@ -46,7 +46,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     country = "SA"
     default_language = "ar"
     # Estimated label.
-    estimated_label = tr("(تقدير*) *%s")
+    estimated_label = tr("(تقدير) %s")
     # %s (Observed).
     observed_label = tr("(ملاحظة) %s")
     supported_languages = ("ar", "en_US")

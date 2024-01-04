@@ -18,8 +18,8 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*təxmini)"
-msgstr "%s* (*estimated)"
+msgid "%s (təxmini)"
+msgstr "%s (estimated)"
 
 #. %s (Observed).
 #, c-format

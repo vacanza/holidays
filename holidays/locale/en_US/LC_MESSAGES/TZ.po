@@ -17,8 +17,8 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 
 #, c-format
-msgid "%s* (*makisio)"
-msgstr "%s* (*estimated)"
+msgid "%s (makisio)"
+msgstr "%s (estimated)"
 
 #. John Pombe Magufuli Inauguration Day.
 msgid "Sikukuu ya Kuapishwa kwa John Pombe Magufuli"

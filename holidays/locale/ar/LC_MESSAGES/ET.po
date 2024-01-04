@@ -17,8 +17,8 @@ msgstr ""
 "X-Generator: Poedit 3.3.1\n"
 
 #, c-format
-msgid "%s* (*ግምት)"
-msgstr "(تقدير*) *%s"
+msgid "%s (ግምት)"
+msgstr "(تقدير) %s"
 
 #. Ethiopian New Year.
 msgid "አዲስ ዓመት እንቁጣጣሽ"
