@@ -17,8 +17,8 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 
 #, c-format
-msgid "%s* (*aproximada)"
-msgstr "%s* (*kalkula)"
+msgid "%s (aproximada)"
+msgstr "%s (kalkula)"
 
 #. New Year's Day.
 msgid "Dia de Ano Novo"

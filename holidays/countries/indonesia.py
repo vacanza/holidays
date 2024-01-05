@@ -48,7 +48,7 @@ class Indonesia(
 
     country = "ID"
     default_language = "id"
-    estimated_label = tr("%s* (*perkiraan)")
+    estimated_label = tr("%s (perkiraan)")
     supported_languages = ("en_US", "id", "uk")
     supported_categories = (GOVERNMENT, PUBLIC)
 

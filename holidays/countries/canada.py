@@ -40,7 +40,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """
 
     country = "CA"
-    default_language = "en"
+    default_language = "en_CA"
     # %s (Observed).
     observed_label = tr("%s (Observed)")
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
@@ -59,7 +59,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         "SK",
         "YT",
     )
-    supported_languages = ("ar", "en", "fr", "th")
+    supported_languages = ("ar", "en_CA", "en_US", "fr", "th")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

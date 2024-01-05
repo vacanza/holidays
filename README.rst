@@ -316,7 +316,7 @@ All other default values are highlighted with bold:
    * - Canada
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
-     - ar, **en**, fr, th
+     - ar, **en_CA**, en_US, fr, th
      - GOVERNMENT, OPTIONAL
    * - Chad
      - TD
@@ -586,7 +586,7 @@ All other default values are highlighted with bold:
    * - Malta
      - MT
      -
-     - en_MT, **mt**
+     - en_US, **mt**
      -
    * - Marshall Islands (the)
      - MH
@@ -701,7 +701,7 @@ All other default values are highlighted with bold:
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
-     - en_US, **pt_PT**
+     - en_US, **pt_PT**, uk
      - OPTIONAL
    * - Puerto Rico
      - PR

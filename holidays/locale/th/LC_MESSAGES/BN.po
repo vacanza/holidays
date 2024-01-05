@@ -20,8 +20,8 @@ msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr "พระราชพิธีกาญจนาภิเษกสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
 
 #, c-format
-msgid "%s* (*anggaran)"
-msgstr "%s* (*โดยประมาณ)"
+msgid "%s (anggaran)"
+msgstr "%s (โดยประมาณ)"
 
 #, c-format
 msgid "%s - Diperhatikan"

@@ -17,8 +17,8 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*estimé)"
-msgstr "%s* (*estimated)"
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "Nouvel an"

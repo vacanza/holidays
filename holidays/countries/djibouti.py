@@ -20,7 +20,7 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
     country = "DJ"
     default_language = "fr"
     # Estimated label.
-    estimated_label = tr("%s* (*estimé)")
+    estimated_label = tr("%s (estimé)")
     supported_languages = ("ar", "en_US", "fr")
     weekend = {FRI, SAT}
 
