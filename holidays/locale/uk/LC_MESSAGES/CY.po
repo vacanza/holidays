@@ -1,89 +1,89 @@
-# Cyprus holidays en_US localization.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+# Cyprus holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
-"PO-Revision-Date: 2024-01-05 13:23+0200\n"
+"PO-Revision-Date: 2024-01-05 14:18+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: en_US\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Πρωτοχρονιά"
-msgstr "New Year's Day"
+msgstr "Новий рік"
 
 #. Epiphany.
 msgid "Ημέρα των Θεοφανίων"
-msgstr "Epiphany"
+msgstr "Богоявлення"
 
 #. Green Monday.
 msgid "Καθαρά Δευτέρα"
-msgstr "Green Monday"
+msgstr "Чистий понеділок"
 
 #. Greek Independence Day.
 msgid "Ημέρα της Ελληνικής Ανεξαρτησίας"
-msgstr "Greek Independence Day"
+msgstr "День незалежності Греції"
 
 #. Cyprus National Day.
 msgid "Εθνική Ημέρα Κύπρου"
-msgstr "Cyprus National Day"
+msgstr "Національне свято Кіпру"
 
 #. Good Friday.
 msgid "Μεγάλη Παρασκευή"
-msgstr "Good Friday"
+msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
 msgid "Κυριακή του Πάσχα"
-msgstr "Easter Sunday"
+msgstr "Великдень"
 
 #. Easter Monday.
 msgid "Δευτέρα της Διακαινησίμου"
-msgstr "Easter Monday"
+msgstr "Великодній понеділок"
 
 #. Labor Day.
 msgid "Πρωτομαγιά"
-msgstr "Labor Day"
+msgstr "День праці"
 
 #. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "Whit Monday"
+msgstr "День Святого Духа"
 
 #. Assumption Day.
 msgid "Κοίμηση της Θεοτόκου"
-msgstr "Assumption Day"
+msgstr "Успіння Пресвятої Богородиці"
 
 #. Cyprus Independence Day.
 msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
-msgstr "Cyprus Independence Day"
+msgstr "День незалежності Кіпру"
 
 #. Ochi Day.
 msgid "Ημέρα του Όχι"
-msgstr "Greek National Day"
+msgstr "День Охі"
 
 #. Christmas Eve.
 msgid "Παραμονή Χριστουγέννων"
-msgstr "Christmas Eve"
+msgstr "Святий вечір"
 
 #. Christmas Day.
 msgid "Χριστούγεννα"
-msgstr "Christmas Day"
+msgstr "Різдво Христове"
 
 #. Day After Christmas.
 msgid "Επομένη Χριστουγέννων"
-msgstr "Day After Christmas"
+msgstr "Другий день Різдва"
 
 #. Easter Tuesday.
 msgid "Τρίτη της Διακαινησίμου"
-msgstr "Easter Tuesday"
+msgstr "Великодній вівторок"
 
 #. Holy Saturday.
 msgid "Μεγάλο Σάββατο"
-msgstr "Holy Saturday"
+msgstr "Велика субота"

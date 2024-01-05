@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
 "PO-Revision-Date: 2023-02-16 08:50-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. New Years Day.
+#. New Year's Day.
 msgid "Πρωτοχρονιά"
 msgstr ""
 
 #. Epiphany.
-msgid "Θεοφάνεια"
+msgid "Ημέρα των Θεοφανίων"
 msgstr ""
 
-#. Clean Monday.
+#. Green Monday.
 msgid "Καθαρά Δευτέρα"
 msgstr ""
 
 #. Greek Independence Day.
-msgid "Εικοστή Πέμπτη Μαρτίου"
+msgid "Ημέρα της Ελληνικής Ανεξαρτησίας"
 msgstr ""
 
 #. Cyprus National Day.
-msgid "1η Απριλίου"
+msgid "Εθνική Ημέρα Κύπρου"
 msgstr ""
 
 #. Good Friday.
@@ -44,23 +44,23 @@ msgid "Κυριακή του Πάσχα"
 msgstr ""
 
 #. Easter Monday.
-msgid "Δευτέρα του Πάσχα"
+msgid "Δευτέρα της Διακαινησίμου"
 msgstr ""
 
-#. Labour Day.
-msgid "Εργατική Πρωτομαγιά"
+#. Labor Day.
+msgid "Πρωτομαγιά"
 msgstr ""
 
-#. Monday of the Holy Spirit.
+#. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Κοίμηση της Θεοτόκου"
 msgstr ""
 
 #. Cyprus Independence Day.
-msgid "Ημέρα Ανεξαρτησίας της Κύπρου"
+msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
 msgstr ""
 
 #. Ochi Day.
@@ -76,5 +76,13 @@ msgid "Χριστούγεννα"
 msgstr ""
 
 #. Day After Christmas.
-msgid "Δεύτερη μέρα Χριστουγέννων"
+msgid "Επομένη Χριστουγέννων"
+msgstr ""
+
+#. Easter Tuesday.
+msgid "Τρίτη της Διακαινησίμου"
+msgstr ""
+
+#. Holy Saturday.
+msgid "Μεγάλο Σάββατο"
 msgstr ""
