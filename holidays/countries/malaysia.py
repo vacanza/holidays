@@ -592,7 +592,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 20),
         2021: (AUG, 10),
         2022: (JUL, 30),
-        2024: (JUL, 8),
+        2024: (JUL, 7),
     }
 
     ISRA_AND_MIRAJ_DATES = {
