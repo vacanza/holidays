@@ -58,8 +58,8 @@ msgstr "Курбан-байрам"
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*taxminiy)"
-msgstr "%s* (*орієнтовно)"
+msgid "%s (taxminiy)"
+msgstr "%s (орієнтовно)"
 
 #. %s (Observed).
 #, c-format

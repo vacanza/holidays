@@ -58,7 +58,7 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*taxminiy)"
+msgid "%s (taxminiy)"
 msgstr ""
 
 #. %s (Observed).

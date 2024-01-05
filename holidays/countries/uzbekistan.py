@@ -29,7 +29,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     country = "UZ"
     default_language = "uz"
     # Estimated label.
-    estimated_label = tr("%s* (*taxminiy)")
+    estimated_label = tr("%s (taxminiy)")
     # %s (Observed).
     observed_label = tr("%s (ko‘chirilgan)")
     supported_languages = ("en_US", "uk", "uz")

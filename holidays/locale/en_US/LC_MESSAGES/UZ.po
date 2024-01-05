@@ -58,8 +58,8 @@ msgstr "Eid al-Adha"
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*taxminiy)"
-msgstr "%s* (*estimated)"
+msgid "%s (taxminiy)"
+msgstr "%s (estimated)"
 
 #. %s (Observed).
 #, c-format
