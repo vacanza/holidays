@@ -20,4 +20,3 @@ holidays/locale/pot/*.pot
 MANIFEST
 Pipfile
 venv/
-mytest.py
