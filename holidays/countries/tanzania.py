@@ -60,7 +60,7 @@ class Tanzania(
     country = "TZ"
     supported_categories = (BANK, PUBLIC)
     default_language = "sw"
-    estimated_label = tr("%s* (*makisio)")
+    estimated_label = tr("%s (makisio)")
     supported_languages = ("en_US", "sw")
 
     def __init__(self, *args, **kwargs):

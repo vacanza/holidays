@@ -67,7 +67,7 @@ class Brunei(
 
     country = "BN"
     default_language = "ms"
-    estimated_label = tr("%s* (*anggaran)")
+    estimated_label = tr("%s (anggaran)")
     observed_label = tr("%s - Diperhatikan")
     supported_languages = ("en_US", "ms", "th")
 

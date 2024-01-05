@@ -18,7 +18,7 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*təxmini)"
+msgid "%s (təxmini)"
 msgstr ""
 
 #. %s (Observed).

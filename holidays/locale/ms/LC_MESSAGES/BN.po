@@ -20,7 +20,7 @@ msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr ""
 
 #, c-format
-msgid "%s* (*anggaran)"
+msgid "%s (anggaran)"
 msgstr ""
 
 #, c-format

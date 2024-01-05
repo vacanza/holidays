@@ -73,5 +73,5 @@ msgid "መውሊድ"
 msgstr "Prophet Muhammad's Birthday"
 
 #, c-format
-msgid "%s* (*ግምት)"
-msgstr "%s* (*estimated)"
+msgid "%s (ግምት)"
+msgstr "%s (estimated)"

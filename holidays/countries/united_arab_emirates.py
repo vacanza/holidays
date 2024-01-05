@@ -43,7 +43,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "AE"
     default_language = "ar"
     # Estimated label.
-    estimated_label = tr("(تقدير*) *%s")
+    estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 

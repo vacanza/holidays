@@ -18,8 +18,8 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*təxmini)"
-msgstr "%s* (*орієнтовно)"
+msgid "%s (təxmini)"
+msgstr "%s (орієнтовно)"
 
 #. %s (Observed).
 #, c-format
