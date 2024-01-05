@@ -134,13 +134,31 @@ class ObservedHolidayBase(HolidayBase):
         if dt_observed == dt:
             return False, dt
 
-        observed_label = getattr(
-            self,
-            "observed_label_before" if dt_observed < dt else "observed_label",
-            self.observed_label,
+        estimated_label = self.tr(getattr(self, "estimated_label", ""))
+        observed_label = self.tr(
+            getattr(
+                self,
+                "observed_label_before" if dt_observed < dt else "observed_label",
+                self.observed_label,
+            )
         )
+
+        strip_characters = "%s ()"
+        estimated_label_text = estimated_label.strip(strip_characters)
+        observed_label_text = observed_label.strip(strip_characters)
+        # Join (estimated) (observed) labels to (estimated observed).
         for name in (name,) if name else self.get_list(dt):
-            super()._add_holiday(self.tr(observed_label) % self.tr(name), dt_observed)
+            holiday_name = self.tr(name)
+            if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
+                holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
+                observed_label = self.tr(
+                    f"%s ({estimated_label_text} {observed_label_text})"  # LTR.
+                    if observed_label.startswith("%s")
+                    else f"({observed_label_text} {estimated_label_text}) %s"  # RTL.
+                )
+
+            super()._add_holiday(observed_label % holiday_name, dt_observed)
+
         return True, dt_observed
 
     def _move_holiday(self, dt: date, rule: Optional[ObservedRule] = None) -> Tuple[bool, date]:
