@@ -19,7 +19,7 @@ msgstr ""
 #. Estimated label.
 #, c-format
 msgid "%s (təxmini)"
-msgstr "%s (орієнтовно)"
+msgstr "%s (приблизна дата)"
 
 #. %s (Observed).
 #, c-format
