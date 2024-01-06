@@ -18,7 +18,7 @@ msgstr ""
 
 #, c-format
 msgid "%s (perkiraan)"
-msgstr "%s (орієнтовно)"
+msgstr "%s (приблизна дата)"
 
 #. Election Day.
 msgid "Hari Pemilihan"
