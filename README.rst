@@ -682,7 +682,7 @@ All other default values are highlighted with bold:
      - PY
      -
      - en_US, **es**, uk
-     -
+     - GOVERNMENT
    * - Peru
      - PE
      -

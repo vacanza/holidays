@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
+from holidays.constants import GOVERNMENT
 from holidays.countries.paraguay import Paraguay, PY, PRY
 from tests.common import TestCase
 
@@ -19,147 +17,219 @@ from tests.common import TestCase
 class TestParaguay(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Paraguay)
+        super().setUpClass(Paraguay, years=range(1990, 2050), years_non_observed=range(2000, 2025))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Paraguay, PY, PRY)
 
-    def test_fixed_holidays(self):
-        for year, month, day in (
-            (2016, 1, 1),
-            (2020, 1, 1),
-            (2020, 3, 1),
-            (2020, 4, 8),
-            (2020, 4, 9),
-            (2020, 4, 10),
-            (2020, 4, 12),
-            (2020, 5, 1),
-            (2020, 5, 14),
-            (2020, 5, 15),
-            (2020, 6, 12),
-            (2020, 8, 15),
-            (2020, 9, 29),
-            (2020, 12, 8),
-            (2020, 12, 25),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
+    def test_new_years_day(self):
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1990, 2050)))
+        self.assertNoNonObservedHoliday(
+            "2005-01-01",
+            "2006-01-01",
+            "2011-01-01",
+            "2012-01-01",
+            "2017-01-01",
+            "2022-01-01",
+            "2023-01-01",
+        )
 
-    def test_non_observed(self):
-        # no observed dates
-        for year, month, day in (
-            (2017, 1, 1),
-            (2014, 3, 2),
-            (2020, 4, 12),
-            (2016, 5, 1),
-            (2016, 5, 15),
-            (2016, 6, 12),
-            (2015, 8, 15),
-            (2018, 9, 29),
-            (2018, 12, 8),
-        ):
-            self.assertNoNonObservedHoliday(date(year, month, day))
-
-    def test_moveable(self):
-        for year, month, day in (
-            # Patriots day
-            (2013, 3, 4),
-            (2016, 2, 29),
-            (2018, 2, 26),
-            (2022, 2, 28),
-            (2014, 3, 1),
-            (2015, 3, 1),
-            (2017, 3, 1),
-            (2019, 3, 1),
-            (2020, 3, 1),
-            (2021, 3, 1),
-            # Peace in Chaco Day
-            (2014, 6, 16),
-            (2018, 6, 11),
-            (2013, 6, 12),
-            (2015, 6, 12),
-            (2016, 6, 12),
-            (2017, 6, 12),
-            (2019, 6, 12),
-            (2020, 6, 12),
-            (2021, 6, 12),
-            (2022, 6, 12),
-            # Boqueron's Battle
-            (2015, 9, 28),
-            (2016, 10, 3),
-            (2017, 10, 2),
-            (2021, 9, 27),
-            (2022, 10, 3),
-            (2013, 9, 29),
-            (2014, 9, 29),
-            (2018, 9, 29),
-            (2019, 9, 29),
-            (2020, 9, 29),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
-
-        for year, month, day in (
-            # Patriots day
-            (2013, 3, 1),
-            (2016, 3, 1),
-            (2018, 3, 1),
-            (2022, 3, 1),
-            # Peace in Chaco Day
-            (2014, 6, 12),
-            (2018, 6, 12),
-            # Boqueron's Battle
-            (1999, 9, 29),
-            (2015, 9, 29),
-            (2016, 9, 29),
-            (2017, 9, 29),
-            (2021, 9, 29),
-            (2022, 9, 29),
-        ):
-            self.assertNotIn(date(year, month, day), self.holidays)
-
-    def test_independence_day(self):
-        for year, month, day in (
-            (2010, 5, 15),
-            (2011, 5, 15),
-            (2012, 5, 14),
-            (2012, 5, 15),
-            (2013, 5, 14),
-            (2013, 5, 15),
-            (2018, 5, 14),
-            (2018, 5, 15),
-            (2021, 5, 14),
-            (2021, 5, 15),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
+    def test_patriots_day(self):
+        name = "Día de los Héroes de la Patria"
+        years_excluded = {2013, 2016, 2018, 2022}
+        self.assertHolidayName(
+            name, (f"{year}-03-01" for year in set(range(1990, 2050)).difference(years_excluded))
+        )
+        self.assertNoHolidayName(name, (f"{year}-03-01" for year in years_excluded))
+        self.assertHolidayName(
+            name,
+            "2013-03-04",
+            "2016-02-29",
+            "2018-02-26",
+            "2022-02-28",
+        )
 
     def test_easter(self):
-        for year, month, day in [
-            (2002, 3, 31),
-            (2003, 4, 20),
-            (2004, 4, 11),
-            (2005, 3, 27),
-            (2006, 4, 16),
-            (2007, 4, 8),
-            (2008, 3, 23),
-            (2009, 4, 12),
-            (2010, 4, 4),
-            (2011, 4, 24),
-            (2012, 4, 8),
-            (2013, 3, 31),
-            (2014, 4, 20),
-            (2015, 4, 5),
-            (2016, 3, 27),
-            (2017, 4, 16),
-            (2018, 4, 1),
-            (2019, 4, 21),
-            (2020, 4, 12),
-            (2021, 4, 4),
-            (2022, 4, 17),
-        ]:
-            easter = date(year, month, day)
-            easter_thursday = easter + td(days=-3)
-            easter_friday = easter + td(days=-2)
-            for holiday in [easter_thursday, easter_friday, easter]:
-                self.assertIn(holiday, self.holidays)
+        self.assertHolidayName(
+            "Jueves Santo",
+            "2019-04-18",
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+        )
+
+        self.assertHolidayName(
+            "Viernes Santo",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+        )
+
+        dt = (
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+        )
+        self.assertHolidayName("Domingo de Resurrección", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_labor_day(self):
+        self.assertHolidayName(
+            "Día del Trabajador", (f"{year}-05-01" for year in range(1990, 2050))
+        )
+        self.assertNoNonObservedHoliday(
+            "2004-05-01",
+            "2005-05-01",
+            "2010-05-01",
+            "2011-05-01",
+            "2016-05-01",
+            "2021-05-01",
+            "2022-05-01",
+        )
+
+    def test_independence_day(self):
+        name = "Día de la Independencia Nacional"
+        self.assertHolidayName(name, (f"{year}-05-15" for year in range(1990, 2050)))
+        self.assertHolidayName(name, (f"{year}-05-14" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, (f"{year}-05-14" for year in range(1990, 2012)))
+        self.assertNoNonObservedHoliday(
+            "2004-05-15",
+            "2005-05-15",
+            "2010-05-15",
+            "2011-05-15",
+            "2016-05-14",
+            "2016-05-15",
+            "2017-05-14",
+            "2022-05-14",
+            "2022-05-15",
+            "2023-05-14",
+        )
+
+    def test_chaco_armistice_day(self):
+        name = "Día de la Paz del Chaco"
+        years_excluded = {2014, 2018}
+        self.assertHolidayName(
+            name, (f"{year}-06-12" for year in set(range(1990, 2050)).difference(years_excluded))
+        )
+        self.assertNoHolidayName(name, (f"{year}-06-12" for year in years_excluded))
+        self.assertHolidayName(
+            name,
+            "2014-06-16",
+            "2018-06-11",
+        )
+        self.assertNoNonObservedHoliday(
+            "2004-06-12",
+            "2005-06-12",
+            "2010-06-12",
+            "2011-06-12",
+            "2016-06-12",
+            "2021-06-12",
+            "2022-06-12",
+        )
+
+    def test_asuncion_foundations_day(self):
+        self.assertHolidayName(
+            "Día de la Fundación de Asunción", (f"{year}-08-15" for year in range(1990, 2050))
+        )
+        self.assertNoNonObservedHoliday(
+            "2004-08-15",
+            "2009-08-15",
+            "2010-08-15",
+            "2015-08-15",
+            "2020-08-15",
+            "2021-08-15",
+        )
+
+    def test_boqueron_battle_day(self):
+        name = "Día de la Batalla de Boquerón"
+        years_excluded = {2015, 2016, 2017, 2021, 2022}
+        self.assertHolidayName(
+            name, (f"{year}-09-29" for year in set(range(2000, 2050)).difference(years_excluded))
+        )
+        self.assertNoHolidayName(name, (f"{year}-09-29" for year in years_excluded))
+        self.assertNoHolidayName(name, (f"{year}-09-29" for year in range(1990, 2000)))
+        self.assertHolidayName(
+            name,
+            "2015-09-28",
+            "2016-10-03",
+            "2017-10-02",
+            "2021-09-27",
+            "2022-10-03",
+        )
+        self.assertNoNonObservedHoliday(
+            "2001-09-29",
+            "2002-09-29",
+            "2007-09-29",
+            "2012-09-29",
+            "2013-09-29",
+            "2018-09-29",
+            "2019-09-29",
+            "2024-09-29",
+        )
+
+    def test_caacupe_virgin_day(self):
+        self.assertHolidayName(
+            "Día de la Virgen de Caacupé", (f"{year}-12-08" for year in range(1990, 2050))
+        )
+        self.assertNoNonObservedHoliday(
+            "2001-12-08",
+            "2002-12-08",
+            "2007-12-08",
+            "2012-12-08",
+            "2013-12-08",
+            "2018-12-08",
+            "2019-12-08",
+            "2024-12-08",
+        )
+
+    def test_special_public_holidays(self):
+        self.assertHoliday(
+            "2007-01-29",
+            "2009-09-10",
+            "2010-06-14",
+            "2011-04-19",
+            "2011-05-14",
+            "2011-05-16",
+            "2013-08-14",
+            "2015-07-10",
+        )
+
+    def test_special_government_holidays(self):
+        self.assertHoliday(
+            Paraguay(categories=GOVERNMENT, years=range(2010, 2023)),
+            "2010-12-24",
+            "2010-12-31",
+            "2011-04-20",
+            "2011-12-23",
+            "2011-12-30",
+            "2012-04-04",
+            "2012-12-24",
+            "2012-12-31",
+            "2013-03-27",
+            "2014-04-16",
+            "2014-12-24",
+            "2014-12-31",
+            "2015-04-01",
+            "2015-12-24",
+            "2015-12-31",
+            "2016-03-23",
+            "2017-03-28",
+            "2018-12-24",
+            "2018-12-31",
+            "2019-04-17",
+            "2019-12-24",
+            "2019-12-31",
+            "2020-04-08",
+            "2021-12-24",
+            "2021-12-31",
+            "2022-04-13",
+            "2022-05-02",
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -168,7 +238,7 @@ class TestParaguay(TestCase):
             ("2022-04-13", "Asueto de la Administración Pública"),
             ("2022-04-14", "Jueves Santo"),
             ("2022-04-15", "Viernes Santo"),
-            ("2022-04-17", "Día de Pascuas"),
+            ("2022-04-17", "Domingo de Resurrección"),
             ("2022-05-01", "Día del Trabajador"),
             ("2022-05-02", "Asueto de la Administración Pública"),
             ("2022-05-14", "Día de la Independencia Nacional"),
@@ -188,8 +258,8 @@ class TestParaguay(TestCase):
             ("2022-04-13", "Public sector holiday"),
             ("2022-04-14", "Maundy Thursday"),
             ("2022-04-15", "Good Friday"),
-            ("2022-04-17", "Easter Day"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-04-17", "Easter Sunday"),
+            ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Public sector holiday"),
             ("2022-05-14", "Independence Day"),
             ("2022-05-15", "Independence Day"),
@@ -197,7 +267,7 @@ class TestParaguay(TestCase):
             ("2022-08-15", "Asuncion Foundation's Day"),
             ("2022-10-03", "Boqueron Battle Day"),
             ("2022-12-08", "Caacupe Virgin Day"),
-            ("2022-12-25", "Christmas"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
