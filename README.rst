@@ -701,7 +701,7 @@ All other default values are highlighted with bold:
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
-     - en_US, **pt_PT**
+     - en_US, **pt_PT**, uk
      - OPTIONAL
    * - Puerto Rico
      - PR
@@ -846,7 +846,7 @@ All other default values are highlighted with bold:
    * - Uzbekistan
      - UZ
      -
-     -
+     - en_US, uk, **uz**
      -
    * - Vanuatu
      - VU
