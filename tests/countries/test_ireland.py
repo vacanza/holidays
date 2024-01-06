@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.ireland import Ireland, IE, IRL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIreland(TestCase):
+class TestIreland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ireland, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Ireland, IE, IRL)
+        self.assertAliases(Ireland, IE, IRL)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-03-18")

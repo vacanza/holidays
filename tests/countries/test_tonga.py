@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.tonga import Tonga, TO, TON
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestTonga(TestCase):
+class TestTonga(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Tonga, years=range(1989, 2050), years_non_observed=range(1989, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Tonga, TO, TON)
+        self.assertAliases(Tonga, TO, TON)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Tonga(years=1988))

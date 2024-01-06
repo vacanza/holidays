@@ -10,18 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.countries.cyprus import Cyprus, CY, CYP
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCyprus(TestCase):
+class TestCyprus(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cyprus)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Cyprus, CY, CYP)
+        self.assertAliases(Cyprus, CY, CYP)
 
     def test_fixed_holidays(self):
         years = range(2000, 2025)

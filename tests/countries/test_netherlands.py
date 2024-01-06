@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import OPTIONAL
 from holidays.countries.netherlands import Netherlands, NL, NLD
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestNetherlands(TestCase):
+class TestNetherlands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Netherlands)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Netherlands, NL, NLD)
+        self.assertAliases(Netherlands, NL, NLD)
 
     def test_queens_day_between_1891_and_1948(self):
         name = "Koninginnedag"

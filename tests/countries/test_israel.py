@@ -9,12 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import OPTIONAL, SCHOOL
 from holidays.countries.israel import Israel, IL, ISR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIsrael(TestCase):
+class TestIsrael(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Israel, years=range(1948, 2050))
@@ -24,7 +26,7 @@ class TestIsrael(TestCase):
         )
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Israel, IL, ISR)
+        self.assertAliases(Israel, IL, ISR)
 
     def test_not_implemented(self):
         self.assertRaises(NotImplementedError, lambda: Israel(years=2101))

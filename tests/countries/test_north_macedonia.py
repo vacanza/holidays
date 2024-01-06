@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestNorthMacedonia(TestCase):
+class TestNorthMacedonia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(NorthMacedonia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(NorthMacedonia, MK, MKD)
+        self.assertAliases(NorthMacedonia, MK, MKD)
 
     def test_2019(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia

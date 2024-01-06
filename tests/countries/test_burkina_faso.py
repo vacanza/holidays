@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.burkina_faso import BurkinaFaso, BF, BFA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBurkinaFaso(TestCase):
+class TestBurkinaFaso(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(BurkinaFaso)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(BurkinaFaso, BF, BFA)
+        self.assertAliases(BurkinaFaso, BF, BFA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(BurkinaFaso(years=1960))

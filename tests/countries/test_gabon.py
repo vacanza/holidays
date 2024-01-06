@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.gabon import Gabon, GA, GAB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestGabon(TestCase):
+class TestGabon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Gabon)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Gabon, GA, GAB)
+        self.assertAliases(Gabon, GA, GAB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Gabon(years=1960))

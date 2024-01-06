@@ -10,18 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.india import India, IN, IND
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIndia(TestCase):
+class TestIndia(CommonCountryTests, TestCase):
     def setUp(self):
         self.holidays = India()
         warnings.simplefilter("ignore")
 
     def test_country_aliases(self):
-        self.assertCountryAliases(India, IN, IND)
+        self.assertAliases(India, IN, IND)
 
     def test_2018(self):
         self.assertHoliday(

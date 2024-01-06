@@ -11,18 +11,19 @@
 
 from datetime import date
 from datetime import timedelta as td
+from unittest import TestCase
 
 from holidays.countries.paraguay import Paraguay, PY, PRY
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestParaguay(TestCase):
+class TestParaguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Paraguay)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Paraguay, PY, PRY)
+        self.assertAliases(Paraguay, PY, PRY)
 
     def test_fixed_holidays(self):
         for year, month, day in (

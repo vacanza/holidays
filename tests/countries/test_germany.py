@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.germany import Germany, DE, DEU
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestDE(TestCase):
+class TestDE(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1991, 2050)
@@ -21,7 +23,7 @@ class TestDE(TestCase):
         cls.prov_hols = {prov: DE(subdiv=prov, years=years) for prov in DE.subdivisions}
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Germany, DE, DEU)
+        self.assertAliases(Germany, DE, DEU)
 
     def test_no_data_before_1990(self):
         self.assertNoHolidays(DE(years=1989))

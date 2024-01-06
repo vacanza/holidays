@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.malawi import Malawi, MW, MWI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMalawi(TestCase):
+class TestMalawi(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(self):
         super().setUpClass(Malawi)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Malawi, MW, MWI)
+        self.assertAliases(Malawi, MW, MWI)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Malawi(years=1999))

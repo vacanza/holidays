@@ -11,19 +11,20 @@
 
 from datetime import date
 from datetime import timedelta as td
+from unittest import TestCase
 
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.turkey import Turkey, TR, TUR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestTurkey(TestCase):
+class TestTurkey(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Turkey, years=range(1936, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Turkey, TR, TUR)
+        self.assertAliases(Turkey, TR, TUR)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Turkey(categories=(HALF_DAY, PUBLIC), years=1935))

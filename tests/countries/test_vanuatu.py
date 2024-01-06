@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.vanuatu import Vanuatu, VU, VTU
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestVanuatu(TestCase):
+class TestVanuatu(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Vanuatu, years=range(1981, 2050), years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Vanuatu, VU, VTU)
+        self.assertAliases(Vanuatu, VU, VTU)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Vanuatu(years=1980))

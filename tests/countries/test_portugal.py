@@ -10,13 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.portugal import Portugal, PT, PRT
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPortugal(TestCase):
+class TestPortugal(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Portugal, years=range(1910, 2050))
@@ -26,7 +27,7 @@ class TestPortugal(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Portugal, PT, PRT)
+        self.assertAliases(Portugal, PT, PRT)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

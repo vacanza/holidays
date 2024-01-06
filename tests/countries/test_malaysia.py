@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY, NOV, OCT, SEP
 from holidays.countries.malaysia import Malaysia, MY, MYS
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMalaysia(TestCase):
+class TestMalaysia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Malaysia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Malaysia, MY, MYS)
+        self.assertAliases(Malaysia, MY, MYS)
         holidays1 = MY()
         holidays2 = MYS()
         self.assertEqual(list(holidays1), list(holidays2))

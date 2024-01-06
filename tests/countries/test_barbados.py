@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.barbados import Barbados, BB, BRB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBarbados(TestCase):
+class TestBarbados(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Barbados, years=range(1969, 2050), years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Barbados, BB, BRB)
+        self.assertAliases(Barbados, BB, BRB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Barbados(years=1968))

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.kenya import Kenya, KE, KEN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestKenya(TestCase):
+class TestKenya(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kenya, years=range(1963, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Kenya, KE, KEN)
+        self.assertAliases(Kenya, KE, KEN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Kenya(years=1962))

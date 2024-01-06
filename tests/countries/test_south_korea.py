@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.constants import BANK, PUBLIC
 from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSouthKorea(TestCase):
+class TestSouthKorea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SouthKorea, years=range(1948, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(SouthKorea, KR, KOR)
+        self.assertAliases(SouthKorea, KR, KOR)
 
     def test_no_holidays(self):
         self.assertNoHolidays(SouthKorea(years=1947))

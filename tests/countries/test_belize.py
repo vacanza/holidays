@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.belize import Belize, BZ, BLZ
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBelize(TestCase):
+class TestBelize(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Belize, years=range(1982, 2050), years_non_observed=range(1982, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Belize, BZ, BLZ)
+        self.assertAliases(Belize, BZ, BLZ)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Belize(years=1981))

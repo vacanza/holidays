@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.australia import Australia, AU, AUS
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestAustralia(TestCase):
+class TestAustralia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1900, 2050)
@@ -23,7 +25,7 @@ class TestAustralia(TestCase):
         }
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Australia, AU, AUS)
+        self.assertAliases(Australia, AU, AUS)
 
     def test_new_years(self):
         name = "New Year's Day"

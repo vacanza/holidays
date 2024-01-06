@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.montenegro import Montenegro, ME, MNE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMontenegro(TestCase):
+class TestMontenegro(CommonCountryTests, TestCase):
     def setUp(self):
         self.holidays = Montenegro()
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Montenegro, ME, MNE)
+        self.assertAliases(Montenegro, ME, MNE)
 
     def test_2021(self):
         self.assertHolidays(
