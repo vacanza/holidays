@@ -83,7 +83,6 @@ class ReleaseNotesGenerator:
             default=False,
             help="Verbose output",
         )
-
         self.args = arg_parser.parse_args()
 
         self.local_repo = Repo(os.getcwd())
