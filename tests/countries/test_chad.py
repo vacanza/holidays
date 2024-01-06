@@ -64,7 +64,7 @@ class TestChad(TestCase):
             ("2022-03-08", "International Women's Day"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Eid al-Fitr; Labour Day (Observed)"),
+            ("2022-05-02", "Eid al-Fitr; Labour Day (observed)"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-08-11", "Independence Day"),
             ("2022-10-08", "Mawlid"),

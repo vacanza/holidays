@@ -38,14 +38,14 @@ class TestAustralia(TestCase):
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         for subdiv in Australia.subdivisions:
             self.assertHolidayName(
                 name, self.subdiv_holidays[subdiv], (f"{year}-01-01" for year in range(1900, 2050))
             )
-            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], obs_dt)
             self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
 
     def test_good_friday(self):
@@ -156,9 +156,9 @@ class TestAustralia(TestCase):
             "2019-01-28",
             "2020-01-27",
         )
-        self.assertHolidayName(f"{name_2} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name_2} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(f"{name_2} (Observed)", range(1900, 1946))
+        self.assertNoHolidayName(f"{name_2} (observed)", range(1900, 1946))
 
     def test_anzac_day(self):
         name = "Anzac Day"
@@ -176,7 +176,7 @@ class TestAustralia(TestCase):
             "2021-04-26",
         )
         for subdiv in ("ACT", "NT", "QLD", "SA", "WA"):
-            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], obs_dt)
             self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
         for subdiv in ("NSW", "TAS", "VIC"):
             self.assertNoHoliday(self.subdiv_holidays[subdiv], obs_dt)
@@ -193,14 +193,14 @@ class TestAustralia(TestCase):
             "2021-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         for subdiv in Australia.subdivisions:
             self.assertHolidayName(
                 name, self.subdiv_holidays[subdiv], (f"{year}-12-25" for year in range(1900, 2050))
             )
-            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], obs_dt)
             self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
 
     def test_boxing_day(self):
@@ -215,7 +215,7 @@ class TestAustralia(TestCase):
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name_common} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name_common} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
         for subdiv in Australia.subdivisions:
@@ -223,7 +223,7 @@ class TestAustralia(TestCase):
             self.assertHolidayName(
                 name, self.subdiv_holidays[subdiv], (f"{year}-12-26" for year in range(1900, 2050))
             )
-            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays[subdiv], obs_dt)
             self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
 
     def test_labour_day(self):

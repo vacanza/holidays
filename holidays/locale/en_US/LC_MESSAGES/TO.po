@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.36\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-10-24 19:30+0700\n"
 "PO-Revision-Date: 2023-10-24 19:36+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Fakatokanga'i)"
-msgstr "%s (Observed)"
+msgid "%s (fakatokanga'i)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "'Uluaki 'Aho 'o e Ta'u Fo'ou"

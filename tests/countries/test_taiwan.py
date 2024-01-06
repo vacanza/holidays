@@ -260,7 +260,7 @@ class TestTaiwan(TestCase):
             ("2022-04-04", "Children's Day"),
             ("2022-04-05", "Tomb Sweeping Day"),
             ("2022-06-03", "Dragon Boat Festival"),
-            ("2022-09-09", "Mid-Autumn Festival (Observed)"),
+            ("2022-09-09", "Mid-Autumn Festival (observed)"),
             ("2022-09-10", "Mid-Autumn Festival"),
             ("2022-10-10", "National Day"),
         )

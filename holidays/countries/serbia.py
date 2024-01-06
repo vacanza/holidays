@@ -26,7 +26,7 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "RS"
     default_language = "sr"
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (слободан дан)")
     supported_languages = ("en_US", "sr")
 

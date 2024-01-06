@@ -130,7 +130,7 @@ class TestIreland(TestCase):
         self.assertHoliday(obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
         self.assertHolidayName(
-            f"{name} (Observed)",
+            f"{name} (observed)",
             "1994-12-26",
             "2005-12-26",
             "2011-12-26",
@@ -163,7 +163,7 @@ class TestIreland(TestCase):
             ("2020-10-26", "October Bank Holiday"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "St. Stephen's Day"),
-            ("2020-12-28", "St. Stephen's Day (Observed)"),
+            ("2020-12-28", "St. Stephen's Day (observed)"),
         )
 
     def test_2022(self):
@@ -178,5 +178,5 @@ class TestIreland(TestCase):
             ("2022-08-01", "August Bank Holiday"),
             ("2022-10-31", "October Bank Holiday"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed); St. Stephen's Day"),
+            ("2022-12-26", "Christmas Day (observed); St. Stephen's Day"),
         )

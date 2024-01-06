@@ -142,7 +142,7 @@ class TestZambia(TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-04-28", "Kenneth Kaunda Day"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-05-25", "Africa Freedom Day"),
             ("2022-07-04", "Heroes' Day"),
             ("2022-07-05", "Unity Day"),
@@ -150,5 +150,5 @@ class TestZambia(TestCase):
             ("2022-10-18", "National Prayer Day"),
             ("2022-10-24", "Independence Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )

@@ -18,8 +18,8 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MZ"
     default_language = "pt_MZ"
-    # %s (Observed).
-    observed_label = tr("%s (Ponte)")
+    # %s (observed).
+    observed_label = tr("%s (ponte)")
     supported_languages = ("en_US", "pt_MZ", "uk")
 
     def __init__(self, *args, **kwargs):

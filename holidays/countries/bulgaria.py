@@ -44,7 +44,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BG"
     default_language = "bg"
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (почивен ден)")
     supported_categories = (PUBLIC, SCHOOL)
     supported_languages = ("bg", "en_US", "uk")
