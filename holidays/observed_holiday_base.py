@@ -143,19 +143,13 @@ class ObservedHolidayBase(HolidayBase):
             )
         )
 
-        strip_characters = "%s ()"
-        estimated_label_text = estimated_label.strip(strip_characters)
-        observed_label_text = observed_label.strip(strip_characters)
+        estimated_label_text = estimated_label.strip("%s ()")
         # Join (estimated) (observed) labels to (estimated observed).
         for name in (name,) if name else self.get_list(dt):
             holiday_name = self.tr(name)
             if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
                 holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
-                observed_label = self.tr(
-                    f"%s ({estimated_label_text} {observed_label_text})"  # LTR.
-                    if observed_label.startswith("%s")
-                    else f"({observed_label_text} {estimated_label_text}) %s"  # RTL.
-                )
+                observed_label = self.tr(self.observed_estimated_label)
 
             super()._add_holiday(observed_label % holiday_name, dt_observed)
 

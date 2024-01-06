@@ -61,10 +61,10 @@ msgstr "Eid al-Adha"
 msgid "%s (taxminiy)"
 msgstr "%s (estimated)"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (ko‘chirilgan)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"
 
 #. Date format (see strftime() Format Codes)
 msgid "%d/%m %Y"
@@ -78,3 +78,8 @@ msgstr "Day off (substituted from %s)"
 #. Additional day off by Presidential decree.
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
 msgstr "Additional day off by Presidential decree"
+
+#. %s observed, estimated.
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
+msgstr "%s (observed, estimated)"

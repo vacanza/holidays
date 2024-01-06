@@ -30,8 +30,10 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     default_language = "uz"
     # Estimated label.
     estimated_label = tr("%s (taxminiy)")
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (ko‘chirilgan)")
+    # %s observed, estimated.
+    observed_estimated_label = tr("%s (ko‘chirilgan, taxminiy)")
     supported_languages = ("en_US", "uk", "uz")
 
     def __init__(self, *args, **kwargs):

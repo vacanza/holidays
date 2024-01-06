@@ -49,6 +49,8 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     estimated_label = tr("(تقدير) %s")
     # %s (Observed).
     observed_label = tr("(ملاحظة) %s")
+    # %s observed, estimated.
+    observed_estimated_label = tr("(تقدير ملاحظة) %s")
     supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, **kwargs):

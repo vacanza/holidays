@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.39\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-11-15 20:42+0200\n"
 "PO-Revision-Date: 2023-11-15 20:47+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (təxmini)"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
 msgstr ""
@@ -117,4 +117,9 @@ msgstr ""
 #. Day off (substituted from %s).
 #, c-format
 msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (müşahidə olunur, təxmini)"
 msgstr ""

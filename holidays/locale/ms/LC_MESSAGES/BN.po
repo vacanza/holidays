@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.27\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-03-02 00:37+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -19,10 +19,12 @@ msgstr ""
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr ""
 
+#. %s estimated.
 #, c-format
 msgid "%s (anggaran)"
 msgstr ""
 
+#. %s observed.
 #, c-format
 msgid "%s - Diperhatikan"
 msgstr ""
@@ -77,4 +79,9 @@ msgstr ""
 
 #. Birth of the Prophet
 msgid "Maulidur Rasul"
+msgstr ""
+
+#. %s observed, estimated.
+#, c-format
+msgid "%s - Diperhatikan, anggaran"
 msgstr ""

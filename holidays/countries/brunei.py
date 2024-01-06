@@ -67,8 +67,12 @@ class Brunei(
 
     country = "BN"
     default_language = "ms"
+    # %s estimated.
     estimated_label = tr("%s (anggaran)")
+    # %s observed.
     observed_label = tr("%s - Diperhatikan")
+    # %s observed, estimated.
+    observed_estimated_label = tr("%s - Diperhatikan, anggaran")
     supported_languages = ("en_US", "ms", "th")
 
     def __init__(self, *args, **kwargs):

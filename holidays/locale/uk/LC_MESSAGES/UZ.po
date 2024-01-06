@@ -61,7 +61,7 @@ msgstr "Курбан-байрам"
 msgid "%s (taxminiy)"
 msgstr "%s (орієнтовно)"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (ko‘chirilgan)"
 msgstr "%s (вихідний)"
@@ -78,3 +78,8 @@ msgstr "Вихідний день (перенесено з %s)"
 #. Additional day off by Presidential decree.
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
 msgstr "Додатковий вихідний згідно указу Президента"
+
+#. %s observed, estimated.
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
+msgstr "%s (вихідний, орієнтовно)"
