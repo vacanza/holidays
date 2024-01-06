@@ -954,6 +954,10 @@ class TestUS(TestCase):
             f"{name} (Observed)", UnitedStates(subdiv="CA", observed=False), obs_dt
         )
         self.assertHolidayName(
+            name, self.state_hols["CO"], (f"{year}-03-31" for year in range(2001, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["CO"], range(1865, 2001))
+        self.assertHolidayName(
             name, self.state_hols["TX"], (f"{year}-03-31" for year in range(2000, 2050))
         )
         self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 2000))
