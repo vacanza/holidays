@@ -82,15 +82,13 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
-    def test_all_holidays_present(self):
-        tar_2015 = EuropeanCentralBank(years=[2015])
-        all_holidays = (
-            "New Year's Day",
-            "Good Friday",
-            "Easter Monday",
-            "1 May (Labour Day)",
-            "Christmas Day",
-            "26 December",
+    def test_2015(self):
+        self.assertHolidays(
+            EuropeanCentralBank(years=2015),
+            ("2015-01-01", "New Year's Day"),
+            ("2015-04-03", "Good Friday"),
+            ("2015-04-06", "Easter Monday"),
+            ("2015-05-01", "1 May (Labour Day)"),
+            ("2015-12-25", "Christmas Day"),
+            ("2015-12-26", "26 December"),
         )
-        for holiday in all_holidays:
-            self.assertIn(holiday, tar_2015.values())
