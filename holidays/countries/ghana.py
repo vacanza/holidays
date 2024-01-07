@@ -81,3 +81,11 @@ class Ghana(
 
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
+
+
+class GH(Ghana):
+    pass
+
+
+class GHA(Ghana):
+    pass
