@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import OPTIONAL
 from holidays.countries.denmark import Denmark, DK, DNK
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestDenmark(TestCase):
+class TestDenmark(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Denmark)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Denmark, DK, DNK)
+        self.assertAliases(Denmark, DK, DNK)
 
     def test_2016(self):
         # http://www.officeholidays.com/countries/denmark/2016.php

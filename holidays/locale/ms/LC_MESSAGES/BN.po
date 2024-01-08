@@ -26,7 +26,7 @@ msgstr ""
 
 #. %s observed.
 #, c-format
-msgid "%s - Diperhatikan"
+msgid "%s (diperhatikan)"
 msgstr ""
 
 #. New Year's Day
@@ -83,5 +83,5 @@ msgstr ""
 
 #. %s observed, estimated.
 #, c-format
-msgid "%s - Diperhatikan, anggaran"
+msgid "%s (diperhatikan, anggaran"
 msgstr ""

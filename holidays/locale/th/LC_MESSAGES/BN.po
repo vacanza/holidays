@@ -26,7 +26,7 @@ msgstr "%s (โดยประมาณ)"
 
 #. %s observed.
 #, c-format
-msgid "%s - Diperhatikan"
+msgid "%s (diperhatikan)"
 msgstr "ชดเชย%s"
 
 #. New Year's Day
@@ -83,5 +83,5 @@ msgstr "วันเมาลิดนบี"
 
 #. %s observed, estimated.
 #, c-format
-msgid "%s - Diperhatikan, anggaran"
+msgid "%s (diperhatikan, anggaran"
 msgstr "%ชดเชย%s, โดยประมาณ"

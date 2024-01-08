@@ -222,19 +222,14 @@ class _ThaiLunisolar:
         if year < _ThaiLunisolar.START_YEAR or year > _ThaiLunisolar.END_YEAR:
             return None
 
-        iter_start_date = _ThaiLunisolar.START_DATE
-        iter_start_year = _ThaiLunisolar.START_YEAR
+        delta_days = 354 * (year - _ThaiLunisolar.START_YEAR)
+        for iter_year in range(_ThaiLunisolar.START_YEAR, year):
+            if iter_year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
+                delta_days += 30
+            elif iter_year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
+                delta_days += 1
 
-        while iter_start_year < year:
-            if iter_start_year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = +384
-            elif iter_start_year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
-                delta_days = +355
-            else:
-                delta_days = +354
-            iter_start_date += td(days=delta_days)
-            iter_start_year += 1
-        return iter_start_date
+        return _ThaiLunisolar.START_DATE + td(days=delta_days)
 
     def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """

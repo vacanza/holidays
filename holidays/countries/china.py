@@ -60,7 +60,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     """
 
     country = "CN"
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s（观察日）")
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"

@@ -48,7 +48,7 @@ msgstr ""
 msgid "Εργατική Πρωτομαγιά"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (παρατηρήθηκε)"
 msgstr ""

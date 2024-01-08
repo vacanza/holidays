@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.guatemala import Guatemala, GT, GUA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestGuatemala(TestCase):
+class TestGuatemala(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Guatemala)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Guatemala, GT, GUA)
+        self.assertAliases(Guatemala, GT, GUA)
 
     def test_2016(self):
         # https://calendariohispanohablante.com/2016/calendario-guatemala-2016.html

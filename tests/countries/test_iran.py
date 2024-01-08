@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.iran import Iran, IR, IRN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIran(TestCase):
+class TestIran(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Iran)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Iran, IR, IRN)
+        self.assertAliases(Iran, IR, IRN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Iran(years=1979))

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.botswana import Botswana, BW, BWA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBotswana(TestCase):
+class TestBotswana(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Botswana, years=range(1966, 2050), years_non_observed=range(2010, 2024))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Botswana, BW, BWA)
+        self.assertAliases(Botswana, BW, BWA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Botswana(years=1965))

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.jamaica import Jamaica, JM, JAM
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestJamaica(TestCase):
+class TestJamaica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Jamaica, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Jamaica, JM, JAM)
+        self.assertAliases(Jamaica, JM, JAM)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1950, 2050))
@@ -98,7 +100,7 @@ class TestJamaica(TestCase):
             "2022-12-27",
             "2033-12-27",
         )
-        self.assertHolidayName("Christmas Day (Observed)", dt)
+        self.assertHolidayName("Christmas Day (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
@@ -110,7 +112,7 @@ class TestJamaica(TestCase):
             "2027-12-27",
             "2032-12-27",
         )
-        self.assertHolidayName("Boxing Day (Observed)", dt)
+        self.assertHolidayName("Boxing Day (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_ash_wednesday(self):

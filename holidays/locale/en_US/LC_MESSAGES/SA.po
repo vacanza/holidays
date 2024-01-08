@@ -21,7 +21,7 @@ msgstr ""
 msgid "(تقدير) %s"
 msgstr "%s (estimated)"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "(ملاحظة) %s"
 msgstr "%s (observed)"

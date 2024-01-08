@@ -24,7 +24,7 @@ msgstr "%s (estimated)"
 #. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "Yeni il bayramı"

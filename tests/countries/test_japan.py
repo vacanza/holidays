@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK
 from holidays.countries.japan import Japan, JP, JPN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestJapan(TestCase):
+class TestJapan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Japan, years=range(1949, 2051))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Japan, JP, JPN)
+        self.assertAliases(Japan, JP, JPN)
 
     def test_not_implemented(self):
         with self.assertRaises(NotImplementedError):

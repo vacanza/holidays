@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.cuba import Cuba, CU, CUB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCuba(TestCase):
+class TestCuba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cuba, years=range(1959, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Cuba, CU, CUB)
+        self.assertAliases(Cuba, CU, CUB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Cuba(years=1958))
@@ -298,7 +300,7 @@ class TestCuba(TestCase):
             ("2022-01-02", "Día de la Victoria"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-01", "Día Internacional de los Trabajadores"),
-            ("2022-05-02", "Día Internacional de los Trabajadores (Observado)"),
+            ("2022-05-02", "Día Internacional de los Trabajadores (observado)"),
             ("2022-07-25", "Conmemoración del asalto a Moncada"),
             ("2022-07-26", "Día de la Rebeldía Nacional"),
             ("2022-07-27", "Conmemoración del asalto a Moncada"),
@@ -314,7 +316,7 @@ class TestCuba(TestCase):
             ("2022-01-02", "Victory Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-07-25", "Commemoration of the Assault of the Moncada garrison"),
             ("2022-07-26", "Day of the National Rebellion"),
             ("2022-07-27", "Commemoration of the Assault of the Moncada garrison"),

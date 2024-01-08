@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestKyrgyzstan(TestCase):
+class TestKyrgyzstan(CommonCountryTests, TestCase):
     def setUp(self):
         self.holidays = Kyrgyzstan()
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Kyrgyzstan, KG, KGZ)
+        self.assertAliases(Kyrgyzstan, KG, KGZ)
 
     def test_2022(self):
         self.assertHolidays(

@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK, PUBLIC
 from holidays.countries.tanzania import Tanzania, TZ, TZA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestTanzania(TestCase):
+class TestTanzania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Tanzania, years=range(1994, 2077))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Tanzania, TZ, TZA)
+        self.assertAliases(Tanzania, TZ, TZA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Tanzania(years=1993))

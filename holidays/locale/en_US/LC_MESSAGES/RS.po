@@ -51,7 +51,7 @@ msgstr "Easter Sunday"
 msgid "Други дан Васкрса"
 msgstr "Easter Monday"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (слободан дан)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"

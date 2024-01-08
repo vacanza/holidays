@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import HALF_DAY
 from holidays.countries.greece import Greece, GR, GRC
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestGreece(TestCase):
+class TestGreece(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Greece, years=range(2000, 2025))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Greece, GR, GRC)
+        self.assertAliases(Greece, GR, GRC)
 
     def test_fixed_holidays(self):
         years = range(2000, 2025)
@@ -136,7 +138,7 @@ class TestGreece(TestCase):
             ("2022-04-22", "Good Friday"),
             ("2022-04-25", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Labor Day (Observed)"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-06-13", "Easter Monday"),
             ("2022-08-15", "Dormition of the Mother of God"),
             ("2022-10-28", "Ochi Day"),

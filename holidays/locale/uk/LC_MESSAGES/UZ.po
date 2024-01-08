@@ -59,7 +59,7 @@ msgstr "Курбан-байрам"
 #. Estimated label.
 #, c-format
 msgid "%s (taxminiy)"
-msgstr "%s (орієнтовно)"
+msgstr "%s (приблизна дата)"
 
 #. %s (observed).
 #, c-format

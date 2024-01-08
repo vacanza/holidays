@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 import holidays
 from holidays.countries.eswatini import Eswatini, SZ, SZW
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestEswatini(TestCase):
+class TestEswatini(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Eswatini, years=range(1939, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Eswatini, SZ, SZW)
+        self.assertAliases(Eswatini, SZ, SZW)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Eswatini(years=1938))

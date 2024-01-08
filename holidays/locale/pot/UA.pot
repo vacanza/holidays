@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (вихідний)"
 msgstr ""
