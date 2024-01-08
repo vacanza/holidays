@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.united_states import UnitedStates, US, USA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestUS(TestCase):
+class TestUS(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -25,7 +27,7 @@ class TestUS(TestCase):
         }
 
     def test_country_aliases(self):
-        self.assertCountryAliases(UnitedStates, US, USA)
+        self.assertAliases(UnitedStates, US, USA)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

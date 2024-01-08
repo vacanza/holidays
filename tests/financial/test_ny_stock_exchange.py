@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from unittest import TestCase
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -29,14 +30,17 @@ from holidays.calendars.gregorian import (
     SAT,
     SUN,
 )
-from holidays.financial.ny_stock_exchange import NewYorkStockExchange
-from tests.common import TestCase
+from holidays.financial.ny_stock_exchange import NewYorkStockExchange, NYSE, XNYS
+from tests.common import CommonFinancialTests
 
 
-class TestNewYorkStockExchange(TestCase):
+class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(NewYorkStockExchange)
+
+    def test_market_aliases(self):
+        self.assertAliases(NewYorkStockExchange, NYSE, XNYS)
 
     def test_new_years(self):
         for dt in (

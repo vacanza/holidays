@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.costa_rica import CostaRica, CR, CRI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCostaRica(TestCase):
+class TestCostaRica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CostaRica)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(CostaRica, CR, CRI)
+        self.assertAliases(CostaRica, CR, CRI)
 
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1980, 2041))

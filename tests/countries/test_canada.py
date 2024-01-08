@@ -9,12 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import GOVERNMENT, OPTIONAL
 from holidays.countries.canada import Canada, CA, CAN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCanada(TestCase):
+class TestCanada(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1867, 2050)
@@ -26,7 +28,7 @@ class TestCanada(TestCase):
         }
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Canada, CA, CAN)
+        self.assertAliases(Canada, CA, CAN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Canada(years=1866))

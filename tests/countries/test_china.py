@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.china import China, CN, CHN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestChina(TestCase):
+class TestChina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(China, years=range(1950, 2051), years_non_observed=range(2001, 2025))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(China, CN, CHN)
+        self.assertAliases(China, CN, CHN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(China(years=1949))

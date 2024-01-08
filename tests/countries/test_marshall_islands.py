@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.marshall_islands import HolidaysMH, MH, MHL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMH(TestCase):
+class TestMH(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysMH)
@@ -25,7 +26,7 @@ class TestMH(TestCase):
         warnings.simplefilter("ignore")
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HolidaysMH, MH, MHL)
+        self.assertAliases(HolidaysMH, MH, MHL)
 
     def test_2020(self):
         # http://web.archive.org/web/20201125072002/https://www.pscrmi.net/rmi-holiday-memos

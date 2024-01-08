@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.cuba import Cuba, CU, CUB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCuba(TestCase):
+class TestCuba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cuba, years=range(1959, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Cuba, CU, CUB)
+        self.assertAliases(Cuba, CU, CUB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Cuba(years=1958))

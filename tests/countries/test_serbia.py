@@ -10,18 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.countries.serbia import Serbia, RS, SRB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSerbia(TestCase):
+class TestSerbia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Serbia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Serbia, RS, SRB)
+        self.assertAliases(Serbia, RS, SRB)
 
     def test_new_year(self):
         # If January 1st is in Weekend, test oberved

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.panama import Panama, PA, PAN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPanama(TestCase):
+class TestPanama(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Panama, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Panama, PA, PAN)
+        self.assertAliases(Panama, PA, PAN)
 
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1950, 2050))

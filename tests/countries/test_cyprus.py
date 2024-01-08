@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK, OPTIONAL, PUBLIC
 from holidays.countries.cyprus import Cyprus, CY, CYP
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCyprus(TestCase):
+class TestCyprus(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cyprus, years=range(2000, 2025))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Cyprus, CY, CYP)
+        self.assertAliases(Cyprus, CY, CYP)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Cyprus(categories=(BANK, OPTIONAL, PUBLIC), years=1960))

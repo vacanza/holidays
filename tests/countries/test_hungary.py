@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.hungary import Hungary, HU, HUN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestHungary(TestCase):
+class TestHungary(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Hungary, years=range(1945, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Hungary, HU, HUN)
+        self.assertAliases(Hungary, HU, HUN)
 
     def test_new_years_day(self):
         self.assertHolidayName("Újév", (f"{year}-01-01" for year in range(1945, 2050)))

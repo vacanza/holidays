@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.colombia import Colombia, CO, COL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestColombia(TestCase):
+class TestColombia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Colombia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Colombia, CO, COL)
+        self.assertAliases(Colombia, CO, COL)
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/colombia/2016

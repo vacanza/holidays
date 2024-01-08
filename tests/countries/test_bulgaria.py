@@ -10,18 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 
+from unittest import TestCase
+
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.countries.bulgaria import Bulgaria, BG, BLG
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBulgaria(TestCase):
+class TestBulgaria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bulgaria, years=range(1990, 2050), years_non_observed=range(2017, 2030))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Bulgaria, BG, BLG)
+        self.assertAliases(Bulgaria, BG, BLG)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Bulgaria(categories=(PUBLIC, SCHOOL), years=1989))

@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPapuaNewGuinea(TestCase):
+class TestPapuaNewGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -21,7 +23,7 @@ class TestPapuaNewGuinea(TestCase):
         )
 
     def test_country_aliases(self):
-        self.assertCountryAliases(PapuaNewGuinea, PG, PNG)
+        self.assertAliases(PapuaNewGuinea, PG, PNG)
 
     def test_no_holidays(self):
         self.assertNoHolidays(PapuaNewGuinea(years=1952))

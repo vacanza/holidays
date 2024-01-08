@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.united_kingdom import UnitedKingdom, UK, GB, GBR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestUnitedKingdom(TestCase):
+class TestUnitedKingdom(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -35,8 +36,8 @@ class TestUnitedKingdom(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(UnitedKingdom, UK, GBR)
-        self.assertCountryAliases(UnitedKingdom, GB, GBR)
+        self.assertAliases(UnitedKingdom, UK, GBR)
+        self.assertAliases(UnitedKingdom, GB, GBR)
 
     def test_special_holidays(self):
         self.assertHoliday(

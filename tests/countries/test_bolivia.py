@@ -10,17 +10,19 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
+from unittest import TestCase
+
 from holidays.countries.bolivia import Bolivia, BO, BOL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBolivia(TestCase):
+class TestBolivia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bolivia, years=range(1980, 2050), years_non_observed=range(2000, 2024))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Bolivia, BO, BOL)
+        self.assertAliases(Bolivia, BO, BOL)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Bolivia(years=1824))

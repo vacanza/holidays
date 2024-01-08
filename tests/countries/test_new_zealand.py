@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.new_zealand import NewZealand, NZ, NZL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestNZ(TestCase):
+class TestNZ(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -27,7 +28,7 @@ class TestNZ(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(NewZealand, NZ, NZL)
+        self.assertAliases(NewZealand, NZ, NZL)
 
     def test_no_holidays(self):
         self.assertNoHolidays(NewZealand(years=1893))
