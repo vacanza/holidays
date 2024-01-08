@@ -53,7 +53,7 @@ class TestBahamas(TestCase):
         self.assertHolidays(
             Bahamas(years=2012),
             ("2012-01-01", "New Year's Day"),
-            ("2012-01-02", "New Year's Day (Observed)"),
+            ("2012-01-02", "New Year's Day (observed)"),
             ("2012-04-06", "Good Friday"),
             ("2012-04-09", "Easter Monday"),
             ("2012-05-28", "Whit Monday"),
@@ -110,7 +110,7 @@ class TestBahamas(TestCase):
             ("2020-10-12", "National Heroes Day"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Boxing Day"),
-            ("2020-12-28", "Boxing Day (Observed)"),
+            ("2020-12-28", "Boxing Day (observed)"),
         )
 
     def test_2021(self):
@@ -118,18 +118,18 @@ class TestBahamas(TestCase):
             Bahamas(years=2021),
             ("2021-01-01", "New Year's Day"),
             ("2021-01-10", "Majority Rule Day"),
-            ("2021-01-11", "Majority Rule Day (Observed)"),
+            ("2021-01-11", "Majority Rule Day (observed)"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-05", "Easter Monday"),
             ("2021-05-24", "Whit Monday"),
             ("2021-06-04", "Randol Fawkes Labour Day"),
             ("2021-07-10", "Independence Day"),
-            ("2021-07-12", "Independence Day (Observed)"),
+            ("2021-07-12", "Independence Day (observed)"),
             ("2021-08-02", "Emancipation Day"),
             ("2021-10-11", "National Heroes Day"),
             ("2021-12-25", "Christmas Day"),
             ("2021-12-26", "Boxing Day"),
-            ("2021-12-27", "Boxing Day (Observed)"),
+            ("2021-12-27", "Boxing Day (observed)"),
         )
 
     def test_2022(self):
@@ -142,20 +142,20 @@ class TestBahamas(TestCase):
             ("2022-06-03", "Randol Fawkes Labour Day"),
             ("2022-06-06", "Whit Monday"),
             ("2022-07-10", "Independence Day"),
-            ("2022-07-11", "Independence Day (Observed)"),
+            ("2022-07-11", "Independence Day (observed)"),
             ("2022-08-01", "Emancipation Day"),
             ("2022-09-19", "State Funeral of Queen Elizabeth II"),
             ("2022-10-10", "National Heroes Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_2023(self):
         self.assertHolidays(
             Bahamas(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-10", "Majority Rule Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),

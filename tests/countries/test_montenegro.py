@@ -29,7 +29,7 @@ class TestMontenegro(TestCase):
             ("2021-04-30", "Orthodox Good Friday"),
             ("2021-05-01", "Labour Day"),
             ("2021-05-02", "Labour Day; Orthodox Easter Sunday"),
-            ("2021-05-03", "Labour Day (Observed); Orthodox Easter Monday"),
+            ("2021-05-03", "Labour Day (observed); Orthodox Easter Monday"),
             ("2021-05-21", "Independence Day"),
             ("2021-05-22", "Independence Day"),
             ("2021-07-13", "Statehood Day"),
@@ -40,7 +40,7 @@ class TestMontenegro(TestCase):
         self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-01-06", "Orthodox Christmas Eve"),
             ("2022-01-07", "Orthodox Christmas"),
             ("2022-04-22", "Orthodox Good Friday"),
@@ -48,10 +48,10 @@ class TestMontenegro(TestCase):
             ("2022-04-25", "Orthodox Easter Monday"),
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Labour Day"),
-            ("2022-05-03", "Labour Day (Observed)"),
+            ("2022-05-03", "Labour Day (observed)"),
             ("2022-05-21", "Independence Day"),
             ("2022-05-22", "Independence Day"),
-            ("2022-05-23", "Independence Day (Observed)"),
+            ("2022-05-23", "Independence Day (observed)"),
             ("2022-07-13", "Statehood Day"),
             ("2022-07-14", "Statehood Day"),
         )
@@ -60,7 +60,7 @@ class TestMontenegro(TestCase):
         self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day"),
-            ("2023-01-03", "New Year's Day (Observed)"),
+            ("2023-01-03", "New Year's Day (observed)"),
             ("2023-01-06", "Orthodox Christmas Eve"),
             ("2023-01-07", "Orthodox Christmas"),
             ("2023-04-14", "Orthodox Good Friday"),
@@ -70,7 +70,7 @@ class TestMontenegro(TestCase):
             ("2023-05-02", "Labour Day"),
             ("2023-05-21", "Independence Day"),
             ("2023-05-22", "Independence Day"),
-            ("2023-05-23", "Independence Day (Observed)"),
+            ("2023-05-23", "Independence Day (observed)"),
             ("2023-07-13", "Statehood Day"),
             ("2023-07-14", "Statehood Day"),
         )

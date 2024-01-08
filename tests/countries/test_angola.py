@@ -35,7 +35,7 @@ class TestAngola(TestCase):
             "2018-12-31",
             "2026-01-02",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_martyrs_of_colonial_repression_day(self):
@@ -48,7 +48,7 @@ class TestAngola(TestCase):
             "2004-01-05",
             "2009-01-05",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_armed_struggle_day(self):
@@ -62,7 +62,7 @@ class TestAngola(TestCase):
             "2001-02-05",
             "2007-02-05",
         )
-        self.assertHolidayName(f"{name_1} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name_1} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
         obs_dt = (
             "2018-02-05",
@@ -70,7 +70,7 @@ class TestAngola(TestCase):
             "2021-02-05",
             "2025-02-03",
         )
-        self.assertHolidayName(f"{name_2} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name_2} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_carnival_day(self):
@@ -97,7 +97,7 @@ class TestAngola(TestCase):
             "2022-02-28",
             "2023-02-20",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_international_womens_day(self):
@@ -111,7 +111,7 @@ class TestAngola(TestCase):
             "2022-03-07",
             "2029-03-09",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_southern_africa_liberation_day(self):
@@ -125,7 +125,7 @@ class TestAngola(TestCase):
             "2027-03-22",
             "2028-03-24",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_peace_and_national_reconciliation_day(self):
@@ -141,7 +141,7 @@ class TestAngola(TestCase):
             "2024-04-05",
             "2028-04-03",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
@@ -171,7 +171,7 @@ class TestAngola(TestCase):
             "2025-05-02",
             "2029-04-30",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_africa_day(self):
@@ -184,7 +184,7 @@ class TestAngola(TestCase):
             "2003-05-26",
             "2008-05-26",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_international_childrens_day(self):
@@ -197,7 +197,7 @@ class TestAngola(TestCase):
             "2003-06-02",
             "2008-06-02",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_heroes_day(self):
@@ -213,7 +213,7 @@ class TestAngola(TestCase):
             "2020-09-18",
             "2024-09-16",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_all_souls_day(self):
@@ -226,7 +226,7 @@ class TestAngola(TestCase):
             "2023-11-03",
             "2027-11-01",
         )
-        self.assertHolidayName(f"{name} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_independence_day(self):
@@ -243,7 +243,7 @@ class TestAngola(TestCase):
             "2021-11-12",
             "2025-11-10",
         )
-        self.assertHolidayName(f"{name_2} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name_2} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_date_of_founding_of_mpla(self):
@@ -264,14 +264,14 @@ class TestAngola(TestCase):
         self.assertNoHolidayName(name_3, range(1996, 2011))
 
         obs_dt = ("2005-12-26",)
-        self.assertHolidayName(f"{name_2} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name_2} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
         obs_dt = (
             "2018-12-24",
             "2025-12-26",
             "2029-12-24",
         )
-        self.assertHolidayName(f"{name_3} (Ponte)", obs_dt)
+        self.assertHolidayName(f"{name_3} (ponte)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2022(self):
@@ -279,9 +279,9 @@ class TestAngola(TestCase):
             Angola(years=2022),
             ("2022-01-01", "Dia do Ano Novo"),
             ("2022-02-04", "Dia do Início da Luta Armada de Libertação Nacional"),
-            ("2022-02-28", "Dia do Carnaval (Ponte)"),
+            ("2022-02-28", "Dia do Carnaval (ponte)"),
             ("2022-03-01", "Dia do Carnaval"),
-            ("2022-03-07", "Dia Internacional da Mulher (Ponte)"),
+            ("2022-03-07", "Dia Internacional da Mulher (ponte)"),
             ("2022-03-08", "Dia Internacional da Mulher"),
             ("2022-03-23", "Dia da Libertação da África Austral"),
             ("2022-04-04", "Dia da Paz e Reconciliação Nacional"),
@@ -297,18 +297,18 @@ class TestAngola(TestCase):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Dia do Ano Novo"),
             ("2023-02-04", "Dia do Início da Luta Armada de Libertação Nacional"),
-            ("2023-02-20", "Dia do Carnaval (Ponte)"),
+            ("2023-02-20", "Dia do Carnaval (ponte)"),
             ("2023-02-21", "Dia do Carnaval"),
             ("2023-03-08", "Dia Internacional da Mulher"),
             ("2023-03-23", "Dia da Libertação da África Austral"),
-            ("2023-03-24", "Dia da Libertação da África Austral (Ponte)"),
-            ("2023-04-03", "Dia da Paz e Reconciliação Nacional (Ponte)"),
+            ("2023-03-24", "Dia da Libertação da África Austral (ponte)"),
+            ("2023-04-03", "Dia da Paz e Reconciliação Nacional (ponte)"),
             ("2023-04-04", "Dia da Paz e Reconciliação Nacional"),
             ("2023-04-07", "Sexta-Feira Santa"),
             ("2023-05-01", "Dia Internacional do Trabalhador"),
             ("2023-09-17", "Dia do Fundador da Nação e do Herói Nacional"),
             ("2023-11-02", "Dia dos Finados"),
-            ("2023-11-03", "Dia dos Finados (Ponte)"),
+            ("2023-11-03", "Dia dos Finados (ponte)"),
             ("2023-11-11", "Dia da Independência Nacional"),
             ("2023-12-25", "Dia de Natal e da Família"),
         )

@@ -114,7 +114,7 @@ class TestPapuaNewGuinea(TestCase):
             ("2021-09-16", "Independence Day"),
             ("2021-12-25", "Christmas Day"),
             ("2021-12-26", "Boxing Day"),
-            ("2021-12-27", "Boxing Day (Observed)"),
+            ("2021-12-27", "Boxing Day (observed)"),
         )
 
     def test_2022(self):
@@ -125,7 +125,7 @@ class TestPapuaNewGuinea(TestCase):
             PapuaNewGuinea(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-02-26", "Grand Chief Sir Michael Somare Remembrance Day"),
-            ("2022-02-28", "Grand Chief Sir Michael Somare Remembrance Day (Observed)"),
+            ("2022-02-28", "Grand Chief Sir Michael Somare Remembrance Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Easter Saturday"),
             ("2022-04-17", "Easter Sunday"),
@@ -137,7 +137,7 @@ class TestPapuaNewGuinea(TestCase):
             ("2022-09-19", "State Funeral of Queen Elizabeth II"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_2023(self):
@@ -146,20 +146,20 @@ class TestPapuaNewGuinea(TestCase):
         self.assertHolidays(
             PapuaNewGuinea(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (Observed)"),
-            ("2023-02-24", "Grand Chief Sir Michael Somare Remembrance Day (Observed)"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-02-24", "Grand Chief Sir Michael Somare Remembrance Day (observed)"),
             ("2023-02-26", "Grand Chief Sir Michael Somare Remembrance Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-08", "Easter Saturday"),
             ("2023-04-09", "Easter Sunday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-18", "State Funeral of Sir Rabbie Namaliu"),
-            ("2023-06-16", "King's Birthday (Observed)"),
+            ("2023-06-16", "King's Birthday (observed)"),
             ("2023-06-17", "King's Birthday"),
             ("2023-07-23", "Papua New Guinea Remembrance Day"),
-            ("2023-07-24", "Papua New Guinea Remembrance Day (Observed)"),
+            ("2023-07-24", "Papua New Guinea Remembrance Day (observed)"),
             ("2023-08-26", "National Repentance Day"),
-            ("2023-09-15", "Independence Day (Observed)"),
+            ("2023-09-15", "Independence Day (observed)"),
             ("2023-09-16", "Independence Day"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Boxing Day"),

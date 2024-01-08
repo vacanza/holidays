@@ -39,7 +39,7 @@ class Singapore(
     StaticHolidays,
 ):
     country = "SG"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         """

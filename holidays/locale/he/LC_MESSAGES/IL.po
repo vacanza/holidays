@@ -87,7 +87,7 @@ msgstr ""
 msgid "ל\"ג בעומר"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "(נצפה) %s"
 msgstr ""

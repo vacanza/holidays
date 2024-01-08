@@ -34,7 +34,7 @@ class TestBolivia(TestCase):
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_plurinational_state_foundation_day(self):
@@ -47,7 +47,7 @@ class TestBolivia(TestCase):
             "2017-01-23",
             "2023-01-23",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_carnival(self):
@@ -98,7 +98,7 @@ class TestBolivia(TestCase):
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_corpus_christi(self):
@@ -125,7 +125,7 @@ class TestBolivia(TestCase):
             "2015-06-22",
             "2020-06-22",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
@@ -137,7 +137,7 @@ class TestBolivia(TestCase):
             "2017-08-07",
             "2023-08-07",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_national_dignity_day(self):
@@ -163,9 +163,9 @@ class TestBolivia(TestCase):
             "2008-11-03",
             "2014-11-03",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(f"{name} (Observado)", range(2016, 2050))
+        self.assertNoHolidayName(f"{name} (observado)", range(2016, 2050))
 
     def test_christmas_day(self):
         name = "Navidad"
@@ -176,7 +176,7 @@ class TestBolivia(TestCase):
             "2016-12-26",
             "2022-12-26",
         )
-        self.assertHolidayName(f"{name} (Observado)", dt)
+        self.assertHolidayName(f"{name} (observado)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_beni_day(self):
@@ -265,9 +265,9 @@ class TestBolivia(TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Año Nuevo"),
-            ("2023-01-02", "Año Nuevo (Observado)"),
+            ("2023-01-02", "Año Nuevo (observado)"),
             ("2023-01-22", "Día de la Creación del Estado Plurinacional de Bolivia"),
-            ("2023-01-23", "Día de la Creación del Estado Plurinacional de Bolivia (Observado)"),
+            ("2023-01-23", "Día de la Creación del Estado Plurinacional de Bolivia (observado)"),
             ("2023-02-20", "Carnaval"),
             ("2023-02-21", "Carnaval"),
             ("2023-04-07", "Viernes Santo"),
@@ -275,7 +275,7 @@ class TestBolivia(TestCase):
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-21", "Año Nuevo Aymara Amazónico"),
             ("2023-08-06", "Día de la Independencia de Bolivia"),
-            ("2023-08-07", "Día de la Independencia de Bolivia (Observado)"),
+            ("2023-08-07", "Día de la Independencia de Bolivia (observado)"),
             ("2023-10-17", "Día de la Dignidad Nacional"),
             ("2023-11-02", "Día de Todos los Difuntos"),
             ("2023-12-25", "Navidad"),
@@ -285,9 +285,9 @@ class TestBolivia(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-22", "Plurinational State Foundation Day"),
-            ("2023-01-23", "Plurinational State Foundation Day (Observed)"),
+            ("2023-01-23", "Plurinational State Foundation Day (observed)"),
             ("2023-02-20", "Carnival"),
             ("2023-02-21", "Carnival"),
             ("2023-04-07", "Good Friday"),
@@ -295,7 +295,7 @@ class TestBolivia(TestCase):
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-21", "Aymara New Year"),
             ("2023-08-06", "Independence Day"),
-            ("2023-08-07", "Independence Day (Observed)"),
+            ("2023-08-07", "Independence Day (observed)"),
             ("2023-10-17", "National Dignity Day"),
             ("2023-11-02", "All Souls' Day"),
             ("2023-12-25", "Christmas Day"),

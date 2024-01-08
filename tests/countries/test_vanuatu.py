@@ -43,7 +43,7 @@ class TestVanuatu(TestCase):
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_father_lini_day(self):
@@ -56,7 +56,7 @@ class TestVanuatu(TestCase):
             "2016-02-22",
             "2021-02-22",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_custom_chiefs_day(self):
@@ -68,7 +68,7 @@ class TestVanuatu(TestCase):
             "2017-03-06",
             "2023-03-06",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
@@ -106,7 +106,7 @@ class TestVanuatu(TestCase):
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_ascension_day(self):
@@ -131,7 +131,7 @@ class TestVanuatu(TestCase):
             "2016-07-25",
             "2022-07-25",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
@@ -143,7 +143,7 @@ class TestVanuatu(TestCase):
             "2017-07-31",
             "2023-07-31",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_assumption_day(self):
@@ -154,7 +154,7 @@ class TestVanuatu(TestCase):
             "2010-08-16",
             "2021-08-16",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_constitution_day(self):
@@ -165,7 +165,7 @@ class TestVanuatu(TestCase):
             "2008-10-06",
             "2014-10-06",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_unity_day(self):
@@ -176,7 +176,7 @@ class TestVanuatu(TestCase):
             "2015-11-30",
             "2020-11-30",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
@@ -194,7 +194,7 @@ class TestVanuatu(TestCase):
             "2021-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
@@ -206,10 +206,10 @@ class TestVanuatu(TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-05-26", "Ascension Day"),
             ("2022-07-24", "Children's Day"),
-            ("2022-07-25", "Children's Day (Observed)"),
+            ("2022-07-25", "Children's Day (observed)"),
             ("2022-07-30", "Independence Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-10-05", "Constitution Day"),
@@ -217,5 +217,5 @@ class TestVanuatu(TestCase):
             ("2022-11-29", "Unity Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Family Day"),
-            ("2022-12-27", "Family Day (Observed)"),
+            ("2022-12-27", "Family Day (observed)"),
         )

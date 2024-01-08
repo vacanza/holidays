@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
 "PO-Revision-Date: 2023-03-05 13:25+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -20,9 +20,9 @@ msgstr ""
 msgid "Jour férié"
 msgstr "Державне свято"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Observé)"
+msgid "%s (observé)"
 msgstr "%s (вихідний)"
 
 #. New Year's Day.

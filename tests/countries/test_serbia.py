@@ -95,7 +95,7 @@ class TestSerbia(TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-01-07", "Orthodox Christmas Day"),
             ("2022-02-15", "Statehood Day"),
             ("2022-02-16", "Statehood Day"),
@@ -105,6 +105,6 @@ class TestSerbia(TestCase):
             ("2022-04-25", "Easter Monday"),
             ("2022-05-01", "International Workers' Day"),
             ("2022-05-02", "International Workers' Day"),
-            ("2022-05-03", "International Workers' Day (Observed)"),
+            ("2022-05-03", "International Workers' Day (observed)"),
             ("2022-11-11", "Armistice Day"),
         )

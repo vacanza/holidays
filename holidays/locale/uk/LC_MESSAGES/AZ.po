@@ -21,7 +21,7 @@ msgstr ""
 msgid "%s (təxmini)"
 msgstr "%s (приблизна дата)"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
 msgstr "%s (вихідний)"

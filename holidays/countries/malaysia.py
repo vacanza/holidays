@@ -59,7 +59,7 @@ class Malaysia(
     StaticHolidays,
 ):
     country = "MY"
-    observed_label = "%s [In lieu]"
+    observed_label = "%s (in lieu)"
     subdivisions = (
         "JHR",
         "KDH",

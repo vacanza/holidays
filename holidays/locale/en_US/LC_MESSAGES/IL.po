@@ -87,7 +87,7 @@ msgstr "Ta'anit Ester"
 msgid "ל\"ג בעומר"
 msgstr "Lag BaOmer"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "(נצפה) %s"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"

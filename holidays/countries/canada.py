@@ -41,8 +41,8 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "CA"
     default_language = "en_CA"
-    # %s (Observed).
-    observed_label = tr("%s (Observed)")
+    # %s (observed).
+    observed_label = tr("%s (observed)")
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
     subdivisions = (
         "AB",
