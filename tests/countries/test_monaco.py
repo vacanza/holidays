@@ -131,7 +131,7 @@ class TestMonaco(CommonCountryTests, TestCase):
             ("2022-01-27", "La Sainte Dévote"),
             ("2022-04-18", "Le lundi de Pâques"),
             ("2022-05-01", "Fête de la Travaille"),
-            ("2022-05-02", "Fête de la Travaille (Observé)"),
+            ("2022-05-02", "Fête de la Travaille (observé)"),
             ("2022-05-26", "L'Ascension"),
             ("2022-06-06", "Le lundi de Pentecôte"),
             ("2022-06-16", "La Fête Dieu"),
@@ -140,7 +140,7 @@ class TestMonaco(CommonCountryTests, TestCase):
             ("2022-11-19", "La Fête du Prince"),
             ("2022-12-08", "L'Immaculée Conception"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "Noël (Observé)"),
+            ("2022-12-26", "Noël (observé)"),
         )
 
     def test_l10n_en_us(self):
@@ -150,7 +150,7 @@ class TestMonaco(CommonCountryTests, TestCase):
             ("2022-01-27", "Saint Devote's Day"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-05-26", "Ascension's Day"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-16", "Corpus Christi"),
@@ -159,7 +159,7 @@ class TestMonaco(CommonCountryTests, TestCase):
             ("2022-11-19", "Prince's Day"),
             ("2022-12-08", "Immaculate Conception's Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )
 
     def test_l10n_uk(self):

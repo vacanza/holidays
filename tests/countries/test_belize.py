@@ -32,7 +32,7 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-02" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-02" for year in years_observed))
 
     def test_george_price_day(self):
         name = "George Price Day"
@@ -40,14 +40,14 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-16" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-16" for year in years_observed))
         self.assertNoHoliday(f"{year}-01-15" for year in range(1982, 2021))
         self.assertNoHolidayName(name, range(1982, 2021))
 
     def test_national_heroes_and_benefactors_day(self):
         name = "National Heroes and Benefactors Day"
         self.assertHolidayName(
-            f"{name} (Observed)",
+            f"{name} (observed)",
             "1982-03-08",
             "1983-03-07",
             "1984-03-12",
@@ -95,12 +95,12 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-05-02" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-05-02" for year in years_observed))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
         self.assertHolidayName(
-            f"{name} (Observed)",
+            f"{name} (observed)",
             "1983-05-23",
             "1984-05-21",
             "1992-05-25",
@@ -116,7 +116,7 @@ class TestBelize(CommonCountryTests, TestCase):
     def test_emancipation_day(self):
         name = "Emancipation Day"
         self.assertHolidayName(
-            f"{name} (Observed)",
+            f"{name} (observed)",
             "2021-08-02",
             "2023-07-31",
             "2024-07-29",
@@ -131,7 +131,7 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-09-11" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-09-11" for year in years_observed))
 
     def test_independence_day(self):
         name = "Independence Day"
@@ -139,13 +139,13 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-09-22" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-09-22" for year in years_observed))
 
     def test_indigenous_peoples_resistance_day(self):
         name1 = "Pan American Day"
         name2 = "Indigenous Peoples' Resistance Day"
         self.assertHolidayName(
-            f"{name1} (Observed)",
+            f"{name1} (observed)",
             "1982-10-11",
             "1983-10-10",
             "1993-10-11",
@@ -154,7 +154,7 @@ class TestBelize(CommonCountryTests, TestCase):
             "2018-10-15",
         )
         self.assertHolidayName(
-            f"{name2} (Observed)",
+            f"{name2} (observed)",
             "2021-10-11",
             "2022-10-10",
             "2023-10-09",
@@ -172,7 +172,7 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-11-20" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-11-20" for year in years_observed))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1982, 2050)))
@@ -183,7 +183,7 @@ class TestBelize(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed))
         )
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-27" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
 
     def test_2021(self):
         # https://www.pressoffice.gov.bz/public-and-bank-holidays-2021-3/
@@ -191,19 +191,19 @@ class TestBelize(CommonCountryTests, TestCase):
             Belize(years=2021),
             ("2021-01-01", "New Year's Day"),
             ("2021-01-15", "George Price Day"),
-            ("2021-03-08", "National Heroes and Benefactors Day (Observed)"),
+            ("2021-03-08", "National Heroes and Benefactors Day (observed)"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-03", "Holy Saturday"),
             ("2021-04-05", "Easter Monday"),
             ("2021-05-01", "Labour Day"),
             ("2021-05-24", "Commonwealth Day"),
-            ("2021-08-02", "Emancipation Day (Observed)"),
+            ("2021-08-02", "Emancipation Day (observed)"),
             ("2021-09-10", "Saint George's Caye Day"),
             ("2021-09-21", "Independence Day"),
-            ("2021-10-11", "Indigenous Peoples' Resistance Day (Observed)"),
+            ("2021-10-11", "Indigenous Peoples' Resistance Day (observed)"),
             ("2021-11-19", "Garifuna Settlement Day"),
             ("2021-12-25", "Christmas Day"),
-            ("2021-12-27", "Boxing Day (Observed)"),
+            ("2021-12-27", "Boxing Day (observed)"),
         )
 
     def test_2022(self):
@@ -212,15 +212,15 @@ class TestBelize(CommonCountryTests, TestCase):
             Belize(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-15", "George Price Day"),
-            ("2022-03-07", "National Heroes and Benefactors Day (Observed)"),
+            ("2022-03-07", "National Heroes and Benefactors Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Holy Saturday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-08-01", "Emancipation Day"),
             ("2022-09-10", "Saint George's Caye Day"),
             ("2022-09-21", "Independence Day"),
-            ("2022-10-10", "Indigenous Peoples' Resistance Day (Observed)"),
+            ("2022-10-10", "Indigenous Peoples' Resistance Day (observed)"),
             ("2022-11-19", "Garifuna Settlement Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),

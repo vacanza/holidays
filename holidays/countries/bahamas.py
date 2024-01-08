@@ -37,7 +37,7 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """
 
     country = "BS"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -53,9 +53,9 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # New Year's Day.
         # Pre-2012 Observance:
-        # - If TUE, New Year's Day (Observed) prev MON.
-        # - If WED or THU, New Year's Day (Observed) next FRI.
-        # 2012 and beyond Observance: If SUN, New Year's Day (Observed) next MON (not for SAT).
+        # - If TUE, New Year's Day (observed) prev MON.
+        # - If WED or THU, New Year's Day (observed) next FRI.
+        # 2012 and beyond Observance: If SUN, New Year's Day (observed) next MON (not for SAT).
         self._add_observed(
             self._add_new_years_day("New Year's Day"),
             rule=SUN_TO_NEXT_MON
@@ -93,8 +93,8 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Known as "Discovery Day" prior to 2013, with its date fixed as Oct 12 annually.
         # Got its name changed on Oct 11, 2013 under Majority Rule (Public Holiday) Act 2013.
         # Pre-2013 Observance:
-        # - If TUE, Discovery Day (Observed) prev MON.
-        # - If WED or THU, Discovery Day (Observed) next FRI.
+        # - If TUE, Discovery Day (observed) prev MON.
+        # - If WED or THU, Discovery Day (observed) next FRI.
         if self._year >= 2013:
             self._add_holiday_2nd_mon_of_oct("National Heroes Day")
         else:
@@ -105,9 +105,9 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # Christmas Holidays Exception Rules.
         # Observance Exception:
-        # FRI-SAT -> Boxing Day (Observed) next MON.
-        # SAT-SUN -> Boxing Day (Observed) next MON.
-        # SUN-MON -> Christmas Day (Observed) next TUE.
+        # FRI-SAT -> Boxing Day (observed) next MON.
+        # SAT-SUN -> Boxing Day (observed) next MON.
+        # SUN-MON -> Christmas Day (observed) next TUE.
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)

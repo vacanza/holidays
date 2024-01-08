@@ -369,7 +369,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "2014-03-23",
             # Hari Hol of Sultan Iskandar of Johor
             "2010-01-21",
-            # Malaysia Day [In lieu]
+            # Malaysia Day (in lieu)
             "2018-09-17",
         )
         dt = (
@@ -430,7 +430,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
         )
         self.assertNoHoliday(
             state_holidays,
-            # Malaysia Day [In lieu]
+            # Malaysia Day (in lieu)
             "2018-09-17",
         )
         dt = (
@@ -491,7 +491,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             state_holidays,
             # Birthday of the Sultan of Kelantan
             "2001-11-11",
-            # Malaysia Day [In lieu]
+            # Malaysia Day (in lieu)
             "2018-09-17",
         )
         dt = (
@@ -929,7 +929,7 @@ class TestMalaysia(CommonCountryTests, TestCase):
             "1999-03-04",
             # Birthday of the Sultan of Terengganu
             "1999-04-26",
-            # Malaysia Day [In lieu]
+            # Malaysia Day (in lieu)
             "2018-09-17",
         )
         dt = (

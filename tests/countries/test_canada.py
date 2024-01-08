@@ -37,7 +37,7 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        name_observed = f"{name} (Observed)"
+        name_observed = f"{name} (observed)"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1867, 2050)))
         self.assertHolidayName(
             name, self.gov_hols, (f"{year}-01-01" for year in range(1867, 2050))
@@ -104,7 +104,7 @@ class TestCanada(CommonCountryTests, TestCase):
             "2012-07-02",
             "2018-07-02",
         )
-        name_observed = f"{name_2} (Observed)"
+        name_observed = f"{name_2} (observed)"
         self.assertNoHoliday(dts_sat, dts_sun)
         self.assertHolidayName(name_observed, self.gov_hols, dts_sat, dts_sun)
         self.assertNoNonObservedHoliday(
@@ -150,7 +150,7 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        name_observed = f"{name} (Observed)"
+        name_observed = f"{name} (observed)"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1867, 2050)))
         for _, holidays in self.prov_hols.items():
             self.assertHolidayName(name, holidays, (f"{year}-12-25" for year in range(1867, 2050)))
@@ -226,7 +226,7 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_national_day_for_truth_and_reconciliation(self):
         name = "National Day for Truth and Reconciliation"
-        name_observed = f"{name} (Observed)"
+        name_observed = f"{name} (observed)"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.gov_hols, (f"{year}-09-30" for year in range(2021, 2050))
@@ -299,7 +299,7 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_remembrance_day(self):
         name = "Remembrance Day"
-        name_observed = f"{name} (Observed)"
+        name_observed = f"{name} (observed)"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.gov_hols, (f"{year}-11-11" for year in range(1931, 2050))
@@ -345,7 +345,7 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        name_observed = f"{name} (Observed)"
+        name_observed = f"{name} (observed)"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.gov_hols, (f"{year}-12-26" for year in range(1867, 2050))
@@ -762,19 +762,19 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertHolidays(
             Canada(years=2022),
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-07-01", "Canada Day"),
             ("2022-09-05", "Labour Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )
 
     def test_government_2022(self):
         self.assertHolidays(
             Canada(years=2022, categories=GOVERNMENT),
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-23", "Victoria Day"),
             ("2022-07-01", "Canada Day"),
@@ -784,7 +784,7 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-11-11", "Remembrance Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_optional_2022(self):
@@ -792,7 +792,7 @@ class TestCanada(CommonCountryTests, TestCase):
             Canada(years=2022, categories=OPTIONAL),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_all_holidays_present(self):
@@ -836,7 +836,7 @@ class TestCanada(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-23", "Victoria Day"),
             ("2022-07-01", "Canada Day"),
@@ -845,8 +845,8 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-10-10", "Thanksgiving Day"),
             ("2022-11-11", "Remembrance Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Boxing Day; Christmas Day (Observed)"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_l10n_ar(self):
@@ -870,7 +870,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-23", "Victoria Day"),
             ("2022-07-01", "Canada Day"),
@@ -879,8 +879,8 @@ class TestCanada(CommonCountryTests, TestCase):
             ("2022-10-10", "Thanksgiving Day"),
             ("2022-11-11", "Remembrance Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Boxing Day; Christmas Day (Observed)"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_l10n_fr(self):

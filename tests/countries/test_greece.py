@@ -138,7 +138,7 @@ class TestGreece(CommonCountryTests, TestCase):
             ("2022-04-22", "Good Friday"),
             ("2022-04-25", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Labor Day (Observed)"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-06-13", "Easter Monday"),
             ("2022-08-15", "Dormition of the Mother of God"),
             ("2022-10-28", "Ochi Day"),

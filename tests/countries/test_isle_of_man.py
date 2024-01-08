@@ -32,14 +32,14 @@ class TestIM(CommonCountryTests, TestCase):
             ("1970-07-05", "Tynwald Day"),
             ("1970-12-25", "Christmas Day"),
             ("1970-12-26", "Boxing Day"),
-            ("1970-12-28", "Boxing Day (Observed)"),
+            ("1970-12-28", "Boxing Day (observed)"),
         )
 
     def test_2022(self):
         self.assertHolidays(
             IsleOfMan(years=2022),
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-02", "May Day"),
@@ -50,7 +50,7 @@ class TestIM(CommonCountryTests, TestCase):
             ("2022-09-19", "State Funeral of Queen Elizabeth II"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_tynwald_day(self):

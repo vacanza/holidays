@@ -42,7 +42,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_errol_barrow_day(self):
@@ -55,7 +55,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2007-01-22",
             "2018-01-22",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
@@ -94,7 +94,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2013-04-29",
             "2019-04-29",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_may_day(self):
@@ -106,7 +106,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_whit_monday(self):
@@ -134,7 +134,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2021-08-03",
             "2022-08-02",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_kadooment_day(self):
@@ -158,7 +158,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2008-12-01",
             "2014-12-01",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
@@ -170,7 +170,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
@@ -181,7 +181,7 @@ class TestBarbados(CommonCountryTests, TestCase):
             "2010-12-27",
             "2021-12-27",
         )
-        self.assertHolidayName(f"{name} (Observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
@@ -193,21 +193,21 @@ class TestBarbados(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-04-28", "National Heroes Day"),
             ("2022-05-01", "May Day"),
-            ("2022-05-02", "May Day (Observed)"),
+            ("2022-05-02", "May Day (observed)"),
             ("2022-06-06", "Whit Monday"),
             ("2022-08-01", "Emancipation Day; Kadooment Day"),
-            ("2022-08-02", "Emancipation Day (Observed)"),
+            ("2022-08-02", "Emancipation Day (observed)"),
             ("2022-11-30", "Independence Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
 
     def test_2023(self):
         self.assertHolidays(
             Barbados(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-21", "Errol Barrow Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),

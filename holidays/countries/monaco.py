@@ -24,8 +24,8 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "MC"
     default_language = "fr"
-    # %s (Observed).
-    observed_label = tr("%s (Observé)")
+    # %s (observed).
+    observed_label = tr("%s (observé)")
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):

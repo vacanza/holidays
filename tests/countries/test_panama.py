@@ -83,11 +83,11 @@ class TestPanama(CommonCountryTests, TestCase):
             Panama(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-09", "Martyrs' Day"),
-            ("2022-01-10", "Martyrs' Day (Observed)"),
+            ("2022-01-10", "Martyrs' Day (observed)"),
             ("2022-03-01", "Carnival"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-11-03", "Separation Day"),
             ("2022-11-04", "National Symbols Day"),
             ("2022-11-05", "Colon Day"),
@@ -96,14 +96,14 @@ class TestPanama(CommonCountryTests, TestCase):
             ("2022-12-08", "Mother's Day"),
             ("2022-12-20", "National Mourning Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )
 
     def test_2023(self):
         self.assertHolidays(
             Panama(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-01-09", "Martyrs' Day"),
             ("2023-02-21", "Carnival"),
             ("2023-04-07", "Good Friday"),

@@ -16,9 +16,9 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. %s Observed.
+#. %s observed.
 #, c-format
-msgid "%s (Observado)"
+msgid "%s (observado)"
 msgstr "%s (вихідний)"
 
 #. Liberation Day.

@@ -100,7 +100,7 @@ class TestJamaica(CommonCountryTests, TestCase):
             "2022-12-27",
             "2033-12-27",
         )
-        self.assertHolidayName("Christmas Day (Observed)", dt)
+        self.assertHolidayName("Christmas Day (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
@@ -112,7 +112,7 @@ class TestJamaica(CommonCountryTests, TestCase):
             "2027-12-27",
             "2032-12-27",
         )
-        self.assertHolidayName("Boxing Day (Observed)", dt)
+        self.assertHolidayName("Boxing Day (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_ash_wednesday(self):

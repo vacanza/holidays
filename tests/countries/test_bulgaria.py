@@ -219,14 +219,14 @@ class TestBulgaria(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-03-03", "Liberation Day"),
             ("2022-04-22", "Good Friday"),
             ("2022-04-23", "Holy Saturday"),
             ("2022-04-24", "Easter"),
             ("2022-04-25", "Easter"),
             ("2022-05-01", "Labor Day and International Workers' Solidarity Day"),
-            ("2022-05-02", "Labor Day and International Workers' Solidarity Day (Observed)"),
+            ("2022-05-02", "Labor Day and International Workers' Solidarity Day (observed)"),
             ("2022-05-06", "St. George's Day (Day of the Bulgarian Army)"),
             ("2022-05-24", "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"),
             ("2022-09-06", "Unification Day"),
@@ -235,8 +235,8 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day"),
-            ("2022-12-27", "Christmas Eve (Observed)"),
-            ("2022-12-28", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Eve (observed)"),
+            ("2022-12-28", "Christmas Day (observed)"),
         )
 
     def test_l10n_uk(self):
