@@ -1,14 +1,14 @@
-# Cyprus holidays en_US localization.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+# Cyprus holidays en_CY localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
-"PO-Revision-Date: 2024-01-05 13:23+0200\n"
+"PO-Revision-Date: 2024-01-05 13:33+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: en_US\n"
+"Language: en_CY\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,11 +50,11 @@ msgstr "Easter Monday"
 
 #. Labor Day.
 msgid "Πρωτομαγιά"
-msgstr "Labor Day"
+msgstr "Labour Day"
 
 #. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "Whit Monday"
+msgstr "Pentecost"
 
 #. Assumption Day.
 msgid "Κοίμηση της Θεοτόκου"
@@ -66,7 +66,7 @@ msgstr "Cyprus Independence Day"
 
 #. Ochi Day.
 msgid "Ημέρα του Όχι"
-msgstr "Greek National Day"
+msgstr "Ochi Day"
 
 #. Christmas Eve.
 msgid "Παραμονή Χριστουγέννων"
