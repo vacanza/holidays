@@ -10,21 +10,22 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import NOV
 from holidays.countries.puerto_rico import HolidaysPR, PR, PRI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPR(TestCase):
+class TestPR(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysPR)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HolidaysPR, PR, PRI)
+        self.assertAliases(HolidaysPR, PR, PRI)
 
     def test_pr_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Discovery Day (Observed)", self.holidays.get_list(date(2017, NOV, 20)))
+        self.assertIn("Discovery Day (observed)", self.holidays.get_list(date(2017, NOV, 20)))

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.bahrain import Bahrain, BH, BAH
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBahrain(TestCase):
+class TestBahrain(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Bahrain)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Bahrain, BH, BAH)
+        self.assertAliases(Bahrain, BH, BAH)
 
     def test_2022(self):
         self.assertHoliday(

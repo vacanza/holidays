@@ -361,8 +361,8 @@ All other default values are highlighted with bold:
    * - Cyprus
      - CY
      -
-     - **el**, en_US
-     -
+     - **el**, en_CY, en_US, uk
+     - BANK, OPTIONAL
    * - Czechia
      - CZ
      -

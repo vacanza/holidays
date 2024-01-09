@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.venezuela import Venezuela, VE, VEN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestVenezuela(TestCase):
+class TestVenezuela(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Venezuela, years=range(1900, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Venezuela, VE, VEN)
+        self.assertAliases(Venezuela, VE, VEN)
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/venezuela/2016

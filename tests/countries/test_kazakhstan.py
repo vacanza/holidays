@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestKazakhstan(TestCase):
+class TestKazakhstan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kazakhstan, years=range(1991, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Kazakhstan, KZ, KAZ)
+        self.assertAliases(Kazakhstan, KZ, KAZ)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Kazakhstan(years=1990))

@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.countries.laos import Laos, LA, LAO
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestLaos(TestCase):
+class TestLaos(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Laos, years=range(1976, 2058), years_non_observed=range(2018, 2058))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Laos, LA, LAO)
+        self.assertAliases(Laos, LA, LAO)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Laos(categories=(BANK, PUBLIC, SCHOOL, WORKDAY), years=1975))

@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import GOVERNMENT
 from holidays.countries.paraguay import Paraguay, PY, PRY
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestParaguay(TestCase):
+class TestParaguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Paraguay, years=range(1990, 2050), years_non_observed=range(2000, 2025))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Paraguay, PY, PRY)
+        self.assertAliases(Paraguay, PY, PRY)
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1990, 2050)))

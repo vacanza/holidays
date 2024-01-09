@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.constants import BANK
 from holidays.countries.austria import Austria, AT, AUT
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestAustria(TestCase):
+class TestAustria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Austria, years=range(1900, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Austria, AT, AUT)
+        self.assertAliases(Austria, AT, AUT)
 
     def test_new_years(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))

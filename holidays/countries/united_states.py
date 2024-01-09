@@ -42,7 +42,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",  # Alaska.
         "AL",  # Alabama.

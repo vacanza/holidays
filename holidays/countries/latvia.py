@@ -26,7 +26,7 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "LV"
     default_language = "lv"
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (brīvdiena)")
     supported_languages = ("en_US", "lv", "uk")
 

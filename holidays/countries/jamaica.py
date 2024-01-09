@@ -25,7 +25,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "JM"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

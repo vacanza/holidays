@@ -19,9 +19,9 @@ msgstr ""
 #. Estimated label.
 #, c-format
 msgid "%s (təxmini)"
-msgstr "%s (орієнтовно)"
+msgstr "%s (приблизна дата)"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
 msgstr "%s (вихідний)"

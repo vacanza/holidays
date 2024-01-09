@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.cameroon import Cameroon, CM, CMR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCameroon(TestCase):
+class TestCameroon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Cameroon, years=range(1960, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Cameroon, CM, CMR)
+        self.assertAliases(Cameroon, CM, CMR)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Cameroon(years=1959))
@@ -83,12 +85,12 @@ class TestCameroon(TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Eid al-Fitr"),
-            ("2022-05-03", "Labour Day (Observed)"),
+            ("2022-05-03", "Labour Day (observed)"),
             ("2022-05-20", "National Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-08-15", "Assumption Day"),
             ("2022-10-08", "Mawlid"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )

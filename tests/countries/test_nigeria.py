@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.nigeria import Nigeria, NG, NGA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestNigeria(TestCase):
+class TestNigeria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Nigeria, years=range(1979, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Nigeria, NG, NGA)
+        self.assertAliases(Nigeria, NG, NGA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Nigeria(years=1978))

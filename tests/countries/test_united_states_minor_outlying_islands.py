@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.united_states_minor_outlying_islands import HolidaysUM, UM, UMI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestUM(TestCase):
+class TestUM(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysUM)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HolidaysUM, UM, UMI)
+        self.assertAliases(HolidaysUM, UM, UMI)
 
     def test_common(self):
         self.assertIn("Christmas Day", self.holidays["2022-12-25"])
