@@ -50,7 +50,7 @@ msgstr ""
 msgid "يوم التأسيسي"
 msgstr ""
 
-#. %s observed, estimated.
+#. %s (observed, estimated).
 #, c-format
 msgid "(تقدير ملاحظة) %s"
 msgstr ""

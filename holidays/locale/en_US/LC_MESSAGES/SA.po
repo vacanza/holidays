@@ -50,7 +50,7 @@ msgstr "National Day Holiday"
 msgid "يوم التأسيسي"
 msgstr "Founding Day Holiday"
 
-#. %s observed, estimated.
+#. %s (observed, estimated).
 #, c-format
 msgid "(تقدير ملاحظة) %s"
 msgstr "%s (observed, estimated)"

@@ -340,6 +340,16 @@ class CommonCountryTests(CommonTests):
         self.assertTrue(hasattr(self.holidays, "country"))
         self.assertFalse(hasattr(self.holidays, "market"))
 
+    def test_observed_estimated_label(self):
+        if getattr(self.holidays, "estimated_label", None) and getattr(
+            self.holidays, "observed_label", None
+        ):
+            self.assertTrue(
+                getattr(self.holidays, "observed_estimated_label", None),
+                "The 'observed_estimated_label' attribute must be set for entities containing "
+                "both 'observed_label' and 'estimated_label'.",
+            )
+
 
 class CommonFinancialTests(CommonTests):
     """Common test cases for financial entities."""

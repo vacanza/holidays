@@ -56,7 +56,7 @@ msgstr ""
 msgid "Qurbon hayit"
 msgstr ""
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (taxminiy)"
 msgstr ""
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
 msgstr ""
 
-#. %s observed, estimated.
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (ko‘chirilgan, taxminiy)"
 msgstr ""

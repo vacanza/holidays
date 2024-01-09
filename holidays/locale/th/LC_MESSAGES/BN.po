@@ -19,12 +19,12 @@ msgstr ""
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr "พระราชพิธีกาญจนาภิเษกสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
 
-#. %s estimated.
+#. %s (estimated).
 #, c-format
 msgid "%s (anggaran)"
 msgstr "%s (โดยประมาณ)"
 
-#. %s observed.
+#. %s (observed).
 #, c-format
 msgid "%s (diperhatikan)"
 msgstr "ชดเชย%s"
@@ -81,7 +81,7 @@ msgstr "วันขึ้นปีใหม่อิสลาม"
 msgid "Maulidur Rasul"
 msgstr "วันเมาลิดนบี"
 
-#. %s observed, estimated.
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (diperhatikan, anggaran"
 msgstr "%ชดเชย%s, โดยประมาณ"

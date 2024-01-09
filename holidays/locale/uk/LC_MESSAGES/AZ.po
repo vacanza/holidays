@@ -122,4 +122,4 @@ msgstr "Вихідний день (перенесено з %s)"
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (müşahidə olunur, təxmini)"
-msgstr "%s (вихідний, орієнтовно)"
+msgstr "%s (вихідний, приблизна дата)"

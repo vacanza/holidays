@@ -144,12 +144,12 @@ class ObservedHolidayBase(HolidayBase):
         )
 
         estimated_label_text = estimated_label.strip("%s ()")
-        # Join (estimated) (observed) labels to (estimated observed).
+        # Use observed_estimated_label instead of observed_label for estimated dates.
         for name in (name,) if name else self.get_list(dt):
             holiday_name = self.tr(name)
             if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
                 holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
-                observed_label = self.tr(self.observed_estimated_label)
+                observed_label = self.tr(getattr(self, "observed_estimated_label", observed_label))
 
             super()._add_holiday(observed_label % holiday_name, dt_observed)
 

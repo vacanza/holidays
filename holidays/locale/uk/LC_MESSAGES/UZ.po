@@ -56,7 +56,7 @@ msgstr "Рамазан-байрам"
 msgid "Qurbon hayit"
 msgstr "Курбан-байрам"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (taxminiy)"
 msgstr "%s (приблизна дата)"
@@ -79,7 +79,7 @@ msgstr "Вихідний день (перенесено з %s)"
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
 msgstr "Додатковий вихідний згідно указу Президента"
 
-#. %s observed, estimated.
+#. %s (observed, estimated).
 #, c-format
 msgid "%s (ko‘chirilgan, taxminiy)"
-msgstr "%s (вихідний, орієнтовно)"
+msgstr "%s (вихідний, приблизна дата)"
