@@ -83,5 +83,5 @@ msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (diperhatikan, anggaran"
+msgid "%s (diperhatikan, anggaran)"
 msgstr ""

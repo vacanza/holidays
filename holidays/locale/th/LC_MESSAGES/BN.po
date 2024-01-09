@@ -83,5 +83,5 @@ msgstr "วันเมาลิดนบี"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (diperhatikan, anggaran"
-msgstr "%ชดเชย%s, โดยประมาณ"
+msgid "%s (diperhatikan, anggaran)"
+msgstr "ชดเชย%s (โดยประมาณ)"
