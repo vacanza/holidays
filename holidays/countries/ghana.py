@@ -27,7 +27,6 @@ class Ghana(
 
     country = "GH"
     observed_label = "%s (Observed)"
-    default_language = "en"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
