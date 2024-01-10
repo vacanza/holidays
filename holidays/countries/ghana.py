@@ -61,10 +61,10 @@ class Ghana(
 
         # Eid al-Fitr
         # Date is decided by the office of the National Chief Imam of Ghana
-        self._add_observed(self._add_eid_al_fitr_day("Eid al-Fitr"))
+        # self._add_observed(self._add_eid_al_fitr_day("Eid al-Fitr"))
 
         # Eid al-Adha
-        self._add_observed(self._add_eid_al_adha_day("Eid al-Adha"))
+        # self._add_observed(self._add_eid_al_adha_day("Eid al-Adha"))
 
         # Founders' Day
         if self._year >= 2019:
