@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-04-02 18:54+0300\n"
 "PO-Revision-Date: 2023-04-02 18:58+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -56,7 +56,7 @@ msgstr "Independence of Cuenca"
 msgid "Día de Navidad"
 msgstr "Christmas Day"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Observado)"
-msgstr "%s (Observed)"
+msgid "%s (observado)"
+msgstr "%s (observed)"

@@ -48,7 +48,7 @@ msgstr "День Святого Духа"
 msgid "Εργατική Πρωτομαγιά"
 msgstr "День праці"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (παρατηρήθηκε)"
 msgstr "%s (вихідний)"

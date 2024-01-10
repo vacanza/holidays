@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.china import China, CN, CHN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestChina(TestCase):
+class TestChina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(China, years=range(1950, 2051), years_non_observed=range(2001, 2025))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(China, CN, CHN)
+        self.assertAliases(China, CN, CHN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(China(years=1949))
@@ -933,7 +935,7 @@ class TestChina(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-01-03", "New Year's Day (observed)"),
             ("2022-01-31", "Day off (substituted from 01/29/2022)"),
             ("2022-02-01", "Chinese New Year (Spring Festival)"),
             ("2022-02-02", "Chinese New Year (Spring Festival)"),
@@ -943,19 +945,19 @@ class TestChina(TestCase):
             ("2022-04-04", "Day off (substituted from 04/02/2022)"),
             ("2022-04-05", "Tomb-Sweeping Day"),
             ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Labor Day (Observed)"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-05-03", "Day off (substituted from 04/24/2022)"),
             ("2022-05-04", "Day off (substituted from 05/07/2022); Youth Day"),
             ("2022-06-01", "Children's Day"),
             ("2022-06-03", "Dragon Boat Festival"),
             ("2022-08-01", "Army Day"),
             ("2022-09-10", "Mid-Autumn Festival"),
-            ("2022-09-12", "Mid-Autumn Festival (Observed)"),
+            ("2022-09-12", "Mid-Autumn Festival (observed)"),
             ("2022-10-01", "National Day"),
             ("2022-10-02", "National Day"),
             ("2022-10-03", "National Day"),
-            ("2022-10-04", "National Day (Observed)"),
-            ("2022-10-05", "National Day (Observed)"),
+            ("2022-10-04", "National Day (observed)"),
+            ("2022-10-05", "National Day (observed)"),
             ("2022-10-06", "Day off (substituted from 10/08/2022)"),
             ("2022-10-07", "Day off (substituted from 10/09/2022)"),
         )

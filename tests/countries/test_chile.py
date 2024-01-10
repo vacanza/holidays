@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.chile import Chile, CL, CHL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestChile(TestCase):
+class TestChile(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Chile, years=range(1915, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Chile, CL, CHL)
+        self.assertAliases(Chile, CL, CHL)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-16")

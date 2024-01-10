@@ -32,7 +32,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     default_language = "az"
     # Estimated label.
     estimated_label = tr("%s (təxmini)")
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (müşahidə olunur)")
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("az", "en_US", "uk")

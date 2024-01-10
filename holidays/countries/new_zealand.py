@@ -24,7 +24,7 @@ from holidays.observed_holiday_base import (
 
 class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     country = "NZ"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
     subdivisions = (
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makaurau

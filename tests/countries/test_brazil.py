@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.brazil import Brazil, BR, BRA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBrazil(TestCase):
+class TestBrazil(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Brazil, years=range(1890, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Brazil, BR, BRA)
+        self.assertAliases(Brazil, BR, BRA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Brazil(categories=(OPTIONAL, PUBLIC), years=1889))

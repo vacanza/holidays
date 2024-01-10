@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
 from holidays.countries.timor_leste import TimorLeste, TL, TLS
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestTimorLeste(TestCase):
+class TestTimorLeste(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(TimorLeste, years=range(2006, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(TimorLeste, TL, TLS)
+        self.assertAliases(TimorLeste, TL, TLS)
 
     def test_no_holidays(self):
         self.assertNoHolidays(TimorLeste(years=2005))

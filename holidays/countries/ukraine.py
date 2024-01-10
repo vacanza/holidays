@@ -42,7 +42,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     country = "UA"
     default_language = "uk"
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (вихідний)")
     supported_languages = ("ar", "en_US", "uk")
 

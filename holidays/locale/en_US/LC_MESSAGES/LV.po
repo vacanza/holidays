@@ -33,10 +33,10 @@ msgstr ""
 "Day the Latvian hockey team won the bronze medal at the 2023 World Ice "
 "Hockey Championship"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (brīvdiena)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "Jaunais Gads"

@@ -27,7 +27,7 @@ class Nigeria(
     """
 
     country = "NG"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

@@ -31,7 +31,7 @@ msgid ""
 " hokeja čempionātā"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (brīvdiena)"
 msgstr ""

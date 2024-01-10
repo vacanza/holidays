@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.ecuador import Ecuador, EC, ECU
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestEcuador(TestCase):
+class TestEcuador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ecuador, years=range(2000, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Ecuador, EC, ECU)
+        self.assertAliases(Ecuador, EC, ECU)
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050)))
@@ -143,18 +145,18 @@ class TestEcuador(TestCase):
             ("2022-03-01", "Carnaval"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-01", "Día del Trabajo"),
-            ("2022-05-02", "Día del Trabajo (Observado)"),
-            ("2022-05-23", "Batalla de Pichincha (Observado)"),
+            ("2022-05-02", "Día del Trabajo (observado)"),
+            ("2022-05-23", "Batalla de Pichincha (observado)"),
             ("2022-05-24", "Batalla de Pichincha"),
             ("2022-08-10", "Primer Grito de Independencia"),
-            ("2022-08-12", "Primer Grito de Independencia (Observado)"),
+            ("2022-08-12", "Primer Grito de Independencia (observado)"),
             ("2022-10-09", "Independencia de Guayaquil"),
-            ("2022-10-10", "Independencia de Guayaquil (Observado)"),
+            ("2022-10-10", "Independencia de Guayaquil (observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)"),
+            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
             ("2022-12-25", "Día de Navidad"),
-            ("2022-12-26", "Día de Navidad (Observado)"),
+            ("2022-12-26", "Día de Navidad (observado)"),
         )
         self.assertNonObservedHolidays(
             Ecuador(observed=False, years=2022),
@@ -178,18 +180,18 @@ class TestEcuador(TestCase):
             ("2022-03-01", "Carnaval"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-01", "Día del Trabajo"),
-            ("2022-05-02", "Día del Trabajo (Observado)"),
-            ("2022-05-23", "Batalla de Pichincha (Observado)"),
+            ("2022-05-02", "Día del Trabajo (observado)"),
+            ("2022-05-23", "Batalla de Pichincha (observado)"),
             ("2022-05-24", "Batalla de Pichincha"),
             ("2022-08-10", "Primer Grito de Independencia"),
-            ("2022-08-12", "Primer Grito de Independencia (Observado)"),
+            ("2022-08-12", "Primer Grito de Independencia (observado)"),
             ("2022-10-09", "Independencia de Guayaquil"),
-            ("2022-10-10", "Independencia de Guayaquil (Observado)"),
+            ("2022-10-10", "Independencia de Guayaquil (observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)"),
+            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
             ("2022-12-25", "Día de Navidad"),
-            ("2022-12-26", "Día de Navidad (Observado)"),
+            ("2022-12-26", "Día de Navidad (observado)"),
         )
 
     def test_l10n_en_us(self):
@@ -200,18 +202,18 @@ class TestEcuador(TestCase):
             ("2022-03-01", "Carnival"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
-            ("2022-05-23", "The Battle of Pichincha (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-23", "The Battle of Pichincha (observed)"),
             ("2022-05-24", "The Battle of Pichincha"),
             ("2022-08-10", "Declaration of Independence of Quito"),
-            ("2022-08-12", "Declaration of Independence of Quito (Observed)"),
+            ("2022-08-12", "Declaration of Independence of Quito (observed)"),
             ("2022-10-09", "Independence of Guayaquil"),
-            ("2022-10-10", "Independence of Guayaquil (Observed)"),
+            ("2022-10-10", "Independence of Guayaquil (observed)"),
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-03", "Independence of Cuenca"),
-            ("2022-11-04", "All Souls' Day (Observed); Independence of Cuenca (Observed)"),
+            ("2022-11-04", "All Souls' Day (observed); Independence of Cuenca (observed)"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )
 
     def test_l10n_uk(self):

@@ -10,12 +10,14 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
+from unittest import TestCase
+
 from holidays.constants import BANK
 from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestLiechtenstein(TestCase):
+class TestLiechtenstein(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1900, 2050)
@@ -23,7 +25,7 @@ class TestLiechtenstein(TestCase):
         cls.bank_holidays = Liechtenstein(categories=BANK, years=years)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Liechtenstein, LI, LIE)
+        self.assertAliases(Liechtenstein, LI, LIE)
 
     def test_new_years(self):
         self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))

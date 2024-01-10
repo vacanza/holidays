@@ -11,18 +11,19 @@
 
 from datetime import date
 from datetime import timedelta as td
+from unittest import TestCase
 
 from holidays.countries.pakistan import Pakistan, PK, PAK
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPakistan(TestCase):
+class TestPakistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Pakistan, years=range(1948, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Pakistan, PK, PAK)
+        self.assertAliases(Pakistan, PK, PAK)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Pakistan(years=1947))

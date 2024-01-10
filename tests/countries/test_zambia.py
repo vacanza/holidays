@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.zambia import Zambia, ZM, ZMB
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestZambia(TestCase):
+class TestZambia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Zambia, years=range(1965, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Zambia, ZM, ZMB)
+        self.assertAliases(Zambia, ZM, ZMB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Zambia(years=1964))
@@ -142,7 +144,7 @@ class TestZambia(TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-04-28", "Kenneth Kaunda Day"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-02", "Labour Day (observed)"),
             ("2022-05-25", "Africa Freedom Day"),
             ("2022-07-04", "Heroes' Day"),
             ("2022-07-05", "Unity Day"),
@@ -150,5 +152,5 @@ class TestZambia(TestCase):
             ("2022-10-18", "National Prayer Day"),
             ("2022-10-24", "Independence Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (Observed)"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )

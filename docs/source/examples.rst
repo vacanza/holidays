@@ -109,7 +109,7 @@ will include January 2nd, 2012 as a holiday:
    >>> date(2012, 1, 2) in us_holidays
    True
    >>> us_holidays.get(date(2012 ,1, 2))
-   "New Year's Day (Observed)"
+   "New Year's Day (observed)"
 
 The values of :py:attr:`observed` and :py:attr:`expand` can be changed on the
 fly and the holiday list will be adjusted accordingly:
