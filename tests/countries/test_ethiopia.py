@@ -10,18 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestEthiopia(TestCase):
+class TestEthiopia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ethiopia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Ethiopia, ET, ETH)
+        self.assertAliases(Ethiopia, ET, ETH)
 
     # Check isleap loops
     def test_not_holiday(self):

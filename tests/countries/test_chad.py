@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.chad import Chad, TD, TCD
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestChad(TestCase):
+class TestChad(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Chad)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Chad, TD, TCD)
+        self.assertAliases(Chad, TD, TCD)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Chad(years=1960))
@@ -64,7 +66,7 @@ class TestChad(TestCase):
             ("2022-03-08", "International Women's Day"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Eid al-Fitr; Labour Day (Observed)"),
+            ("2022-05-02", "Eid al-Fitr; Labour Day (observed)"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-08-11", "Independence Day"),
             ("2022-10-08", "Mawlid"),

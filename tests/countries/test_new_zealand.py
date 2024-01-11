@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.new_zealand import NewZealand, NZ, NZL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestNZ(TestCase):
+class TestNZ(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -27,7 +28,7 @@ class TestNZ(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(NewZealand, NZ, NZL)
+        self.assertAliases(NewZealand, NZ, NZL)
 
     def test_no_holidays(self):
         self.assertNoHolidays(NewZealand(years=1893))
@@ -36,14 +37,14 @@ class TestNZ(TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1900, 2050)))
         years_observed = (2005, 2006, 2011, 2012, 2017)
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-03" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-03" for year in years_observed))
         self.assertNoNonObservedHoliday(f"{year}-01-03" for year in years_observed)
 
     def test_day_after_new_years(self):
         name = "Day after New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(1900, 2050)))
         years_observed = (2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-04" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-04" for year in years_observed))
         self.assertNoNonObservedHoliday(f"{year}-01-04" for year in years_observed)
 
     def test_waitangi_day(self):
@@ -65,7 +66,7 @@ class TestNZ(TestCase):
         self.assertHolidayName(name1, (f"{year}-02-06" for year in range(1974, 1977)))
         self.assertHolidayName(name2, (f"{year}-02-06" for year in range(1977, 2050)))
         obs_dt = ("2016-02-08", "2021-02-08", "2022-02-07")
-        self.assertHolidayName(f"{name2} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name2} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
@@ -96,7 +97,7 @@ class TestNZ(TestCase):
         name = "Anzac Day"
         self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, 2050)))
         obs_dt = ("2015-04-27", "2020-04-27", "2021-04-26")
-        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
         self.assertNoHolidayName(name, range(1900, 1921))
         self.assertNoHoliday(f"{year}-04-25" for year in range(1900, 1921))
@@ -213,14 +214,14 @@ class TestNZ(TestCase):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1900, 2050)))
         years_observed = (2004, 2005, 2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-27" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
         self.assertNoNonObservedHoliday(f"{year}-12-27" for year in years_observed)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1900, 2050)))
         years_observed = (2004, 2009, 2010, 2015, 2020, 2021)
-        self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-28" for year in years_observed))
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-28" for year in years_observed))
         self.assertNoNonObservedHoliday(f"{year}-12-28" for year in years_observed)
 
     def test_auckland_anniversary_day(self):

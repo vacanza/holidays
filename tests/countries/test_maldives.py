@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.maldives import Maldives, MDV, MV
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMaldives(TestCase):
+class TestMaldives(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Maldives, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Maldives, MV, MDV)
+        self.assertAliases(Maldives, MV, MDV)
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1950, 2050)))

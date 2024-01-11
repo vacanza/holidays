@@ -41,9 +41,9 @@ class EntityStub(HolidayBase):
             return None
 
         if self._is_saturday(dt) and before:
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=-1))
+            self._add_holiday("%s (observed)" % self[dt], dt + td(days=-1))
         elif self._is_sunday(dt) and after:
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+            self._add_holiday("%s (observed)" % self[dt], dt + td(days=+1))
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -51,7 +51,7 @@ class EntityStub(HolidayBase):
         name = "New Year's Day"
         self._add_observed(self._add_holiday_jan_1(name), before=False)
         if self.observed and self._is_friday(DEC, 31):
-            self._add_holiday_dec_31("%s (Observed)" % name)
+            self._add_holiday_dec_31("%s (observed)" % name)
 
         self._add_observed(self._add_holiday_jun_19("Juneteenth National Independence Day"))
         self._add_observed(self._add_holiday_jul_4("Independence Day"))

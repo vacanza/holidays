@@ -20,9 +20,9 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "วันขึ้นปีใหม่"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Observed)"
+msgid "%s (observed)"
 msgstr "ชดเชย%s"
 
 #. Family Day.

@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK
 from holidays.countries.belgium import Belgium, BE, BEL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBelgium(TestCase):
+class TestBelgium(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Belgium)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Belgium, BE, BEL)
+        self.assertAliases(Belgium, BE, BEL)
 
     def test_2020(self):
         self.assertHolidays(

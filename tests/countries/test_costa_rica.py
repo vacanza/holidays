@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.costa_rica import CostaRica, CR, CRI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCostaRica(TestCase):
+class TestCostaRica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(CostaRica)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(CostaRica, CR, CRI)
+        self.assertAliases(CostaRica, CR, CRI)
 
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1980, 2041))
@@ -197,9 +199,9 @@ class TestCostaRica(TestCase):
             ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
             ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
             ("2022-08-15", "Día de la Madre"),
-            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (Observado)"),
-            ("2022-09-19", "Día de la Independencia (Observado)"),
-            ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
+            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
+            ("2022-09-19", "Día de la Independencia (observado)"),
+            ("2022-12-05", "Día de la Abolición del Ejército (observado)"),
             ("2022-12-25", "Navidad"),
         )
 
@@ -223,12 +225,12 @@ class TestCostaRica(TestCase):
             ("2023-01-01", "Año Nuevo"),
             ("2023-04-06", "Jueves Santo"),
             ("2023-04-07", "Viernes Santo"),
-            ("2023-04-10", "Día de Juan Santamaría (Observado)"),
+            ("2023-04-10", "Día de Juan Santamaría (observado)"),
             ("2023-05-01", "Día Internacional del Trabajo"),
-            ("2023-07-24", "Anexión del Partido de Nicoya a Costa Rica (Observado)"),
+            ("2023-07-24", "Anexión del Partido de Nicoya a Costa Rica (observado)"),
             ("2023-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
-            ("2023-08-14", "Día de la Madre (Observado)"),
-            ("2023-09-03", "Día de la Persona Negra y la Cultura Afrocostarricense (Observado)"),
+            ("2023-08-14", "Día de la Madre (observado)"),
+            ("2023-09-03", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
             ("2023-09-15", "Día de la Independencia"),
             ("2023-12-01", "Día de la Abolición del Ejército"),
             ("2023-12-25", "Navidad"),
@@ -244,9 +246,9 @@ class TestCostaRica(TestCase):
             ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
             ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
             ("2022-08-15", "Día de la Madre"),
-            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (Observado)"),
-            ("2022-09-19", "Día de la Independencia (Observado)"),
-            ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
+            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
+            ("2022-09-19", "Día de la Independencia (observado)"),
+            ("2022-12-05", "Día de la Abolición del Ejército (observado)"),
             ("2022-12-25", "Navidad"),
         )
 
@@ -261,9 +263,9 @@ class TestCostaRica(TestCase):
             ("2022-07-25", "Annexation of the Party of Nicoya to Costa Rica"),
             ("2022-08-02", "Feast of Our Lady of the Angels"),
             ("2022-08-15", "Mother's Day"),
-            ("2022-09-04", "Day of the Black Person and Afro-Costa Rican Culture (Observed)"),
-            ("2022-09-19", "Independence Day (Observed)"),
-            ("2022-12-05", "Army Abolition Day (Observed)"),
+            ("2022-09-04", "Day of the Black Person and Afro-Costa Rican Culture (observed)"),
+            ("2022-09-19", "Independence Day (observed)"),
+            ("2022-12-05", "Army Abolition Day (observed)"),
             ("2022-12-25", "Christmas Day"),
         )
 

@@ -1,0 +1,89 @@
+# Cyprus holidays en_CY localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.41\n"
+"POT-Creation-Date: 2023-02-15 11:50-0800\n"
+"PO-Revision-Date: 2024-01-05 13:33+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_CY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. New Year's Day.
+msgid "Πρωτοχρονιά"
+msgstr "New Year's Day"
+
+#. Epiphany.
+msgid "Ημέρα των Θεοφανίων"
+msgstr "Epiphany"
+
+#. Green Monday.
+msgid "Καθαρά Δευτέρα"
+msgstr "Green Monday"
+
+#. Greek Independence Day.
+msgid "Ημέρα της Ελληνικής Ανεξαρτησίας"
+msgstr "Greek Independence Day"
+
+#. Cyprus National Day.
+msgid "Εθνική Ημέρα Κύπρου"
+msgstr "Cyprus National Day"
+
+#. Good Friday.
+msgid "Μεγάλη Παρασκευή"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+msgid "Κυριακή του Πάσχα"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+msgid "Δευτέρα της Διακαινησίμου"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Πρωτομαγιά"
+msgstr "Labour Day"
+
+#. Whit Monday.
+msgid "Δευτέρα του Αγίου Πνεύματος"
+msgstr "Pentecost"
+
+#. Assumption Day.
+msgid "Κοίμηση της Θεοτόκου"
+msgstr "Assumption Day"
+
+#. Cyprus Independence Day.
+msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
+msgstr "Cyprus Independence Day"
+
+#. Ochi Day.
+msgid "Ημέρα του Όχι"
+msgstr "Ochi Day"
+
+#. Christmas Eve.
+msgid "Παραμονή Χριστουγέννων"
+msgstr "Christmas Eve"
+
+#. Christmas Day.
+msgid "Χριστούγεννα"
+msgstr "Christmas Day"
+
+#. Day After Christmas.
+msgid "Επομένη Χριστουγέννων"
+msgstr "Day After Christmas"
+
+#. Easter Tuesday.
+msgid "Τρίτη της Διακαινησίμου"
+msgstr "Easter Tuesday"
+
+#. Holy Saturday.
+msgid "Μεγάλο Σάββατο"
+msgstr "Holy Saturday"

@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.saudi_arabia import SaudiArabia, SA, SAU
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSaudiArabia(TestCase):
+class TestSaudiArabia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SaudiArabia, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(SaudiArabia, SA, SAU)
+        self.assertAliases(SaudiArabia, SA, SAU)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")

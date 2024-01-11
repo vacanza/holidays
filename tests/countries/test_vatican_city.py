@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.vatican_city import VaticanCity, VA, VAT
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestVaticanCity(TestCase):
+class TestVaticanCity(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(VaticanCity, years=range(1970, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(VaticanCity, VA, VAT)
+        self.assertAliases(VaticanCity, VA, VAT)
 
     def test_no_holidays(self):
         self.assertNoHolidays(VaticanCity(years=1928))

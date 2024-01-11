@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.aruba import Aruba, AW, ABW
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestAruba(TestCase):
+class TestAruba(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Aruba, years=range(1947, 2077))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Aruba, AW, ABW)
+        self.assertAliases(Aruba, AW, ABW)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Aruba(years=1946))

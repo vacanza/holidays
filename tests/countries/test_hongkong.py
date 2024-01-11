@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.hongkong import HongKong, HK, HKG
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestHongKong(TestCase):
+class TestHongKong(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HongKong, years=range(2006, 2024))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HongKong, HK, HKG)
+        self.assertAliases(HongKong, HK, HKG)
 
     def test_no_holidays(self):
         self.assertNoHolidays(HongKong(years=1945))

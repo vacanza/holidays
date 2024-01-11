@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.armenia import Armenia, AM, ARM
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestArmenia(TestCase):
+class TestArmenia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Armenia, years=range(1991, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Armenia, AM, ARM)
+        self.assertAliases(Armenia, AM, ARM)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Armenia(years=1990))

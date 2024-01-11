@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.croatia import Croatia, HR, HRV
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCroatia(TestCase):
+class TestCroatia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Croatia, years=range(1990, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Croatia, HR, HRV)
+        self.assertAliases(Croatia, HR, HRV)
 
     def test_new_years_day(self):
         self.assertHolidayName("Nova Godina", (f"{year}-01-01" for year in range(1990, 2050)))

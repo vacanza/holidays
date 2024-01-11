@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.curacao import Curacao, CW, CUW
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCuracao(TestCase):
+class TestCuracao(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Curacao, years=range(1954, 2077))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Curacao, CW, CUW)
+        self.assertAliases(Curacao, CW, CUW)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Curacao(years=1953))

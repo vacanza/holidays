@@ -16,10 +16,10 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Observed)"
-msgstr "%s (Observed)"
+msgid "%s (observed)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "New Year's Day"

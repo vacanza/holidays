@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.andorra import Andorra, AD, AND
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestAndorra(TestCase):
+class TestAndorra(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Andorra)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Andorra, AD, AND)
+        self.assertAliases(Andorra, AD, AND)
 
     def test_2022(self):
         self.assertHolidays(

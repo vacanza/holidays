@@ -9,10 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-
+from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
+from holidays.constants import BANK, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,12 +23,14 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
     Cyprus holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+         - https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+         - https://www.centralbank.cy/en/the-bank/working-hours-bank-holidays
     """
 
     country = "CY"
     default_language = "el"
-    supported_languages = ("el", "en_US")
+    supported_categories = (BANK, OPTIONAL, PUBLIC)
+    supported_languages = ("el", "en_CY", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
@@ -35,20 +38,23 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Years Day.
+        if self._year <= 1960:
+            return None
+
+        # New Year's Day.
         self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(tr("Θεοφάνεια"))
+        self._add_epiphany_day(tr("Ημέρα των Θεοφανίων"))
 
-        # Clean Monday.
+        # Green Monday.
         self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
         # Greek Independence Day.
-        self._add_holiday_mar_25(tr("Εικοστή Πέμπτη Μαρτίου"))
+        self._add_holiday_mar_25(tr("Ημέρα της Ελληνικής Ανεξαρτησίας"))
 
         # Cyprus National Day.
-        self._add_holiday_apr_1(tr("1η Απριλίου"))
+        self._add_holiday_apr_1(tr("Εθνική Ημέρα Κύπρου"))
 
         # Good Friday.
         self._add_good_friday(tr("Μεγάλη Παρασκευή"))
@@ -57,31 +63,46 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Κυριακή του Πάσχα"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
+        self._add_easter_monday(tr("Δευτέρα της Διακαινησίμου"))
 
-        # Labour Day.
-        self._add_labor_day(tr("Εργατική Πρωτομαγιά"))
+        # Labor Day.
+        self._add_labor_day(tr("Πρωτομαγιά"))
 
-        # Monday of the Holy Spirit.
+        # Whit Monday.
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
-        # Cyprus Independence Day.
-        self._add_holiday_oct_1(tr("Ημέρα Ανεξαρτησίας της Κύπρου"))
+        if self._year >= 1979:
+            # Cyprus Independence Day.
+            self._add_holiday_oct_1(tr("Ημέρα της Κυπριακής Ανεξαρτησίας"))
 
         # Ochi Day.
         self._add_holiday_oct_28(tr("Ημέρα του Όχι"))
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Παραμονή Χριστουγέννων"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Χριστούγεννα"))
 
         # Day After Christmas.
-        self._add_christmas_day_two(tr("Δεύτερη μέρα Χριστουγέννων"))
+        self._add_christmas_day_two(tr("Επομένη Χριστουγέννων"))
+
+    def _populate_bank_holidays(self):
+        if self._year <= 1960:
+            return None
+
+        # Easter Tuesday.
+        self._add_holiday(tr("Τρίτη της Διακαινησίμου"), self._easter_sunday + td(days=+2))
+
+    def _populate_optional_holidays(self):
+        if self._year <= 1960:
+            return None
+
+        # Holy Saturday.
+        self._add_holy_saturday(tr("Μεγάλο Σάββατο"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Παραμονή Χριστουγέννων"))
 
 
 class CY(Cyprus):

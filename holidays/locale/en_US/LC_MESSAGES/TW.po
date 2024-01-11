@@ -16,10 +16,10 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (慶祝)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"
 
 #. Founding Day of the Republic of China.
 msgid "中華民國開國紀念日"

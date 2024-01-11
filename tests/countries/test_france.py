@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.france import France, FR, FRA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestFrance(TestCase):
+class TestFrance(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(France)
@@ -25,7 +26,7 @@ class TestFrance(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(France, FR, FRA)
+        self.assertAliases(France, FR, FRA)
 
     def test_pre_1802(self):
         self.assertNoHoliday("1801-08-15", "1801-11-01", "1801-12-25")

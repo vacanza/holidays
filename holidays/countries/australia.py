@@ -26,7 +26,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     """
 
     country = "AU"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
     subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
 
     @property
