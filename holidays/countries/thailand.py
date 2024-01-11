@@ -842,9 +842,7 @@ class ThailandStaticHolidays:
         ),
         2024: (DEC, 30, thai_bridge_public_holiday),
     }
-    special_workday_holidays = {
-        1999: (MAY, 14, tr("วันพืชมงคล"))
-    }
+    special_workday_holidays = {1999: (MAY, 14, tr("วันพืชมงคล"))}
 
     special_public_holidays_observed = {
         2007: (DEC, 24, thai_election),
