@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import _get_nth_weekday_of_month
+from holidays.calendars.gregorian import _get_nth_weekday_of_month, FRI, DEC
 from holidays.groups import InternationalHolidays, ChristianHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
@@ -59,21 +59,22 @@ class Ghana(
         self._add_observed(self._add_labor_day("May Day"))
 
         # Eid al-Fitr
-        # Date is decided by the office of the National Chief Imam of Ghana
-        # self._add_observed(self._add_eid_al_fitr_day("Eid al-Fitr"))
+        self._add_eid_al_fitr_day("Eid ul-Fitr")
 
         # Eid al-Adha
-        # self._add_observed(self._add_eid_al_adha_day("Eid al-Adha"))
+        self._add_eid_al_adha_day("Eid ul-Adha")
 
         # Founders' Day
         if self._year >= 2019:
-            self._add_observed(self._add_holiday_aug_4("Founders Day"))
+            self._add_observed(self._add_holiday_aug_4("Founders' Day"))
 
         # Kwame Nkrumah Memorial Day (formerly founder's Day))
         self._add_observed(self._add_holiday_sep_21("Kwame Nkrumah Memorial Day"))
 
-        # Farmer's Day
-        self._add_observed(dt=_get_nth_weekday_of_month(1, 5, 12, self._year), name="Farmer's Day")
+        # Farmer's Day: First Friday of December
+        self._add_observed(
+            self._add_holiday("Farmer's Day", _get_nth_weekday_of_month(1, FRI, DEC, self._year))
+        )
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"))
