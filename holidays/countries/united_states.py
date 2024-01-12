@@ -42,7 +42,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",  # Alaska.
         "AL",  # Alabama.
@@ -316,7 +316,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
 
     def _populate_subdiv_co_public_holidays(self):
-        pass
+        # Cesar Chavez Day
+        if self._year >= 2001:
+            self._add_holiday_mar_31("Cesar Chavez Day")
 
     def _populate_subdiv_ct_public_holidays(self):
         # Lincoln's Birthday

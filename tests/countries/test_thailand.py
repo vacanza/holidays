@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
 from holidays.countries.thailand import Thailand, TH, THA
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestThailand(TestCase):
+class TestThailand(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Thailand, years=range(1941, 2058), years_non_observed=range(1941, 2058))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Thailand, TH, THA)
+        self.assertAliases(Thailand, TH, THA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Thailand(years=1940))
@@ -101,6 +103,7 @@ class TestThailand(TestCase):
             "2023-05-05",
             "2023-07-31",
             "2023-12-29",
+            "2024-12-30",
         )
         dt_observed = (
             "2007-12-24",
@@ -133,9 +136,9 @@ class TestThailand(TestCase):
             ("2022-05-01", "วันแรงงานแห่งชาติ"),
             ("2022-05-02", "ชดเชยวันแรงงานแห่งชาติ"),
             ("2022-05-04", "วันฉัตรมงคล"),
+            ("2022-05-13", "วันพืชมงคล"),
             ("2022-05-15", "วันวิสาขบูชา"),
             ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
-            ("2022-05-17", "วันพืชมงคล"),
             (
                 "2022-06-03",
                 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
@@ -611,9 +614,47 @@ class TestThailand(TestCase):
     def test_raeknakhwan(self):
         name = "วันพืชมงคล"
         self.assertHolidays(
-            Thailand(categories=GOVERNMENT, years=range(1997, 2024)),
-            ("1997-05-13", name),
-            ("1998-05-13", name),
+            Thailand(categories=GOVERNMENT, years=range(1960, 2024)),
+            ("1960-05-02", name),
+            ("1961-05-11", name),
+            ("1962-05-07", name),
+            ("1963-05-10", name),
+            ("1964-05-08", name),
+            ("1965-05-13", name),
+            ("1966-05-13", name),
+            ("1967-05-11", name),
+            ("1968-05-10", name),
+            ("1969-05-09", name),
+            ("1970-05-08", name),
+            ("1971-05-07", name),
+            ("1972-05-08", name),
+            ("1973-05-07", name),
+            ("1974-05-08", name),
+            ("1975-05-07", name),
+            ("1976-05-10", name),
+            ("1977-05-12", name),
+            ("1978-05-11", name),
+            ("1979-05-07", name),
+            ("1980-05-14", name),
+            ("1981-05-07", name),
+            ("1982-05-19", name),
+            ("1983-05-11", name),
+            ("1984-05-10", name),
+            ("1985-05-09", name),
+            ("1986-05-09", name),
+            ("1987-05-08", name),
+            ("1988-05-11", name),
+            ("1989-05-11", name),
+            ("1990-05-11", name),
+            ("1991-05-10", name),
+            ("1992-05-14", name),
+            ("1993-05-17", name),
+            ("1994-05-11", name),
+            ("1995-05-10", name),
+            ("1996-05-16", name),
+            ("1997-05-09", name),
+            ("1998-05-08", name),
+            # Not a holiday in 1999 date, was held on MAY, 14.
             ("2000-05-15", name),
             ("2001-05-16", name),
             ("2002-05-09", name),
@@ -624,7 +665,7 @@ class TestThailand(TestCase):
             ("2007-05-10", name),
             ("2008-05-09", name),
             ("2009-05-11", name),
-            ("2010-05-10", name),
+            ("2010-05-13", name),
             ("2011-05-13", name),
             ("2012-05-09", name),
             ("2013-05-13", name),
@@ -635,9 +676,10 @@ class TestThailand(TestCase):
             ("2018-05-14", name),
             ("2019-05-09", name),
             ("2020-05-11", name),
-            ("2021-05-13", name),
-            ("2022-05-17", name),
-            ("2023-05-11", name),
+            ("2021-05-10", name),
+            ("2022-05-13", name),
+            ("2023-05-17", name),
+            ("2024-05-10", name),
         )
 
     def test_armed_forces_holiday(self):
@@ -749,6 +791,20 @@ class TestThailand(TestCase):
             ("1995-11-06", "วันลอยกระทง"),
         )
 
+    def test_workday_1999(self):
+        self.assertHolidays(
+            Thailand(categories=WORKDAY, years=1999),
+            ("1999-01-13", "วันการบินแห่งชาติ"),
+            ("1999-01-14", "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"),
+            ("1999-01-17", "วันพ่อขุนรามคำแหงมหาราช"),
+            ("1999-02-03", "วันทหารผ่านศึก"),
+            ("1999-02-26", "วันศิลปินแห่งชาติ"),
+            ("1999-03-08", "วันสตรีสากล"),
+            ("1999-05-14", "วันพืชมงคล"),
+            ("1999-08-18", "วันวิทยาศาสตร์แห่งชาติ"),
+            ("1999-11-22", "วันลอยกระทง"),
+        )
+
     def test_workday_2017(self):
         self.assertHolidays(
             Thailand(categories=WORKDAY, years=2017),
@@ -784,9 +840,9 @@ class TestThailand(TestCase):
             ("2022-05-01", "วันแรงงานแห่งชาติ"),
             ("2022-05-02", "ชดเชยวันแรงงานแห่งชาติ"),
             ("2022-05-04", "วันฉัตรมงคล"),
+            ("2022-05-13", "วันพืชมงคล"),
             ("2022-05-15", "วันวิสาขบูชา"),
             ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
-            ("2022-05-17", "วันพืชมงคล"),
             (
                 "2022-06-03",
                 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
@@ -851,9 +907,9 @@ class TestThailand(TestCase):
             ("2022-05-01", "National Labour Day"),
             ("2022-05-02", "National Labour Day (in lieu)"),
             ("2022-05-04", "Coronation Day"),
+            ("2022-05-13", "Royal Ploughing Ceremony"),
             ("2022-05-15", "Visakha Bucha"),
             ("2022-05-16", "Visakha Bucha (in lieu)"),
-            ("2022-05-17", "Royal Ploughing Ceremony"),
             ("2022-06-03", "HM Queen Suthida's Birthday"),
             ("2022-07-13", "Asarnha Bucha"),
             ("2022-07-14", "Buddhist Lent Day"),

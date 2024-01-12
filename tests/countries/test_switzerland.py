@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.countries.switzerland import Switzerland, CH, CHE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSwitzerland(TestCase):
+class TestSwitzerland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1970, 2050)
@@ -23,7 +24,7 @@ class TestSwitzerland(TestCase):
         cls.prov_hols = {prov: CH(subdiv=prov, years=years) for prov in CH.subdivisions}
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Switzerland, CH, CHE)
+        self.assertAliases(Switzerland, CH, CHE)
 
     def test_all_holidays_present(self):
         y_2018 = set()

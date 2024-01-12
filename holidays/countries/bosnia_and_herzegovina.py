@@ -57,7 +57,7 @@ class BosniaAndHerzegovina(
     country = "BA"
     default_language = "bs"
     supported_languages = ("bs", "en_US", "sr", "uk")
-    # %s (Observed).
+    # %s (observed).
     observed_label = tr("%s (preneseno)")
     subdivisions = (
         "BIH",  # Federacija Bosne i Hercegovine

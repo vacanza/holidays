@@ -21,7 +21,7 @@ from holidays.holiday_base import HolidayBase
 class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     country = "ET"
     default_language = "am"
-    estimated_label = tr("%s* (*ግምት)")
+    estimated_label = tr("%s (ግምት)")
     supported_languages = ("am", "ar", "en_US")
 
     def _is_leap_year(self):

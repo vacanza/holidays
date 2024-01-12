@@ -1,0 +1,85 @@
+# Uzbekistan holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.41\n"
+"POT-Creation-Date: 2023-12-31 21:12+0200\n"
+"PO-Revision-Date: 2024-01-02 12:46+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. New Year's Day.
+msgid "Yangi yil"
+msgstr "Новий рік"
+
+#. Women's Day.
+msgid "Xotin-qizlar kuni"
+msgstr "Жіночий день"
+
+#. Nowruz.
+msgid "Navro‘z bayrami"
+msgstr "Свято Новруз"
+
+#. Day of Memory and Honor.
+msgid "Xotira va qadrlash kuni"
+msgstr "День памʼяті і шани"
+
+#. Victory Day.
+msgid "G‘alaba kuni"
+msgstr "День Перемоги"
+
+#. Independence Day.
+msgid "Mustaqillik kuni"
+msgstr "День Незалежності"
+
+#. Teachers and Instructors Day.
+msgid "O‘qituvchi va murabbiylar kuni"
+msgstr "День Вчителя і Наставника"
+
+#. Constitution Day.
+msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
+msgstr "День Конституції Республіки Узбекистан"
+
+#. Eid al-Fitr.
+msgid "Ro‘za hayit"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Qurbon hayit"
+msgstr "Курбан-байрам"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (taxminiy)"
+msgstr "%s (приблизна дата)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (ko‘chirilgan)"
+msgstr "%s (вихідний)"
+
+#. Date format (see strftime() Format Codes)
+msgid "%d/%m %Y"
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Dam olish kuni (%s dan ko‘chirilgan)"
+msgstr "Вихідний день (перенесено з %s)"
+
+#. Additional day off by Presidential decree.
+msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+msgstr "Додатковий вихідний згідно указу Президента"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
+msgstr "%s (вихідний, приблизна дата)"

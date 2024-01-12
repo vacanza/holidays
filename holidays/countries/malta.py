@@ -38,7 +38,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MT"
     default_language = "mt"
-    supported_languages = ("en_MT", "mt")
+    supported_languages = ("en_US", "mt")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -53,7 +53,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # L-Ewwel tas-Sena
         # Status: In-Use.
 
-        # New Year's Day
+        # New Year's Day.
         self._add_new_years_day(tr("L-Ewwel tas-Sena"))
 
         # Il-Festa tan-Nawfraġju ta' San Pawl
@@ -61,7 +61,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Paul's Shipwreck
+            # Feast of St. Paul's Shipwreck.
             self._add_holiday_feb_10(tr("Il-Festa tan-Nawfraġju ta' San Pawl"))
 
         # Il-Festa ta' San Ġużepp
@@ -69,7 +69,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Joseph
+            # Feast of St. Joseph.
             self._add_saint_josephs_day(tr("Il-Festa ta' San Ġużepp"))
 
         # Jum il-Ħelsien
@@ -78,19 +78,19 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Not presented in 1987-1988
 
         if self._year <= 1986 or self._year >= 1989:
-            # Freedom Day
+            # Freedom Day.
             self._add_holiday_mar_31(tr("Jum il-Ħelsien"))
 
         # Il-Ġimgħa l-Kbira
         # Status: In-Use.
 
-        # Good Friday
+        # Good Friday.
         self._add_good_friday(tr("Il-Ġimgħa l-Kbira"))
 
         # Jum il-Ħaddiem
         # Status: In-Use.
 
-        # Worker's Day
+        # Worker's Day.
         self._add_labor_day(tr("Jum il-Ħaddiem"))
 
         # Sette Giugno
@@ -98,7 +98,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Start in 1989 via Act VIII of 1989.
 
         if self._year >= 1989:
-            # Sette Giugno
+            # Sette Giugno.
             self._add_holiday_jun_7(tr("Sette Giugno"))
 
         # Il-Festa ta' San Pietru u San Pawl
@@ -106,13 +106,13 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Peter and St. Paul
+            # Feast of St. Peter and St. Paul.
             self._add_saints_peter_and_paul_day(tr("Il-Festa ta' San Pietru u San Pawl"))
 
         # Il-Festa ta' Santa Marija
         # Status: In-Use.
 
-        # Feast of the Assumption
+        # Feast of the Assumption.
         self._add_assumption_of_mary_day(tr("Il-Festa ta' Santa Marija"))
 
         # Jum il-Vitorja
@@ -121,7 +121,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # While this concides with Nativity Of Mary Day, the two are considered separate.
 
         if self._year >= 1987:
-            # Feast of Our Lady of Victories
+            # Feast of Our Lady of Victories.
             self._add_holiday_sep_8(tr("Jum il-Vitorja"))
 
         # Jum l-Indipendenza
@@ -129,7 +129,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Independence Day
+            # Independence Day.
             self._add_holiday_sep_21(tr("Jum l-Indipendenza"))
 
         # Il-Festa tal-Immakulata Kunċizzjoni
@@ -143,13 +143,13 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Jum ir-Repubblika
         # Status: In-Use.
 
-        # Republic Day
+        # Republic Day.
         self._add_holiday_dec_13(tr("Jum ir-Repubblika"))
 
         # Il-Milied
         # Status: In-Use.
 
-        # Christmas Day
+        # Christmas Day.
         self._add_christmas_day(tr("Il-Milied"))
 
 

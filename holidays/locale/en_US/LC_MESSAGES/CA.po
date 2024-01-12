@@ -1,0 +1,150 @@
+# Canada holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.41\n"
+"POT-Creation-Date: 2023-04-10 14:10+0300\n"
+"PO-Revision-Date: 2023-12-26 22:10+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Dominion Day.
+msgid "Dominion Day"
+msgstr "Dominion Day"
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "Family Day"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "Thanksgiving Day"
+
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "Funeral of Her Majesty the Queen Elizabeth II"
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "Memorial Day"
+
+#. Canada Day.
+msgid "Canada Day"
+msgstr "Canada Day"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "Victoria Day"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "Heritage Day"
+
+#. Remembrance Day.
+msgid "Remembrance Day"
+msgstr "Remembrance Day"
+
+#. British Columbia Day.
+msgid "British Columbia Day"
+msgstr "British Columbia Day"
+
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "National Day for Truth and Reconciliation"
+
+#. Louis Riel Day.
+msgid "Louis Riel Day"
+msgstr "Louis Riel Day"
+
+#. Terry Fox Day.
+msgid "Terry Fox Day"
+msgstr "Terry Fox Day"
+
+#. Civic Holiday.
+msgid "Civic Holiday"
+msgstr "Civic Holiday"
+
+#. New Brunswick Day.
+msgid "New Brunswick Day"
+msgstr "New Brunswick Day"
+
+#. St. Patrick's Day.
+msgid "St. Patrick's Day"
+msgstr "St. Patrick's Day"
+
+#. St. George's Day.
+msgid "St. George's Day"
+msgstr "St. George's Day"
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr "Discovery Day"
+
+#. National Aboriginal Day.
+msgid "National Aboriginal Day"
+msgstr "National Aboriginal Day"
+
+#. Nunavut Day.
+msgid "Nunavut Day"
+msgstr "Nunavut Day"
+
+#. Islander Day.
+msgid "Islander Day"
+msgstr "Islander Day"
+
+#. National Patriots' Day.
+msgid "National Patriots' Day"
+msgstr "National Patriots' Day"
+
+#. St. Jean Baptiste Day.
+msgid "St. Jean Baptiste Day"
+msgstr "St. John the Baptist Day"
+
+#. Saskatchewan Day.
+msgid "Saskatchewan Day"
+msgstr "Saskatchewan Day"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "Orangemen's Day"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "Natal Day"

@@ -79,7 +79,8 @@ class ReleaseNotesGenerator:
         arg_parser.add_argument(
             "-v",
             "--verbose",
-            action=argparse.BooleanOptionalAction,
+            action="store_true",
+            default=False,
             help="Verbose output",
         )
         self.args = arg_parser.parse_args()

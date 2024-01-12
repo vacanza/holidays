@@ -15,47 +15,47 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==0 || (n%100>=2 && n%100<=10) ? 1 : n%100>=11 && n%100<=19 ? 2 : 3);\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "L-Ewwel tas-Sena"
 msgstr ""
 
-#. Feast of St. Paul's Shipwreck
+#. Feast of St. Paul's Shipwreck.
 msgid "Il-Festa tan-Nawfraġju ta' San Pawl"
 msgstr ""
 
-#. Feast of St. Joseph
+#. Feast of St. Joseph.
 msgid "Il-Festa ta' San Ġużepp"
 msgstr ""
 
-#. Freedom Day
+#. Freedom Day.
 msgid "Jum il-Ħelsien"
 msgstr ""
 
-#. Good Friday
+#. Good Friday.
 msgid "Il-Ġimgħa l-Kbira"
 msgstr ""
 
-#. Worker's Day
+#. Worker's Day.
 msgid "Jum il-Ħaddiem"
 msgstr ""
 
-#. Sette Giugno
+#. Sette Giugno.
 msgid "Sette Giugno"
 msgstr ""
 
-#. Feast of St. Peter and St. Paul
+#. Feast of St. Peter and St. Paul.
 msgid "Il-Festa ta' San Pietru u San Pawl"
 msgstr ""
 
-#. Feast of the Assumption
+#. Feast of the Assumption.
 msgid "Il-Festa ta' Santa Marija"
 msgstr ""
 
-#. Feast of Our Lady of Victories
+#. Feast of Our Lady of Victories.
 msgid "Jum il-Vitorja"
 msgstr ""
 
-#. Independence Day
+#. Independence Day.
 msgid "Jum l-Indipendenza"
 msgstr ""
 
@@ -63,10 +63,10 @@ msgstr ""
 msgid "Il-Festa tal-Immakulata Kunċizzjoni"
 msgstr ""
 
-#. Republic Day
+#. Republic Day.
 msgid "Jum ir-Repubblika"
 msgstr ""
 
-#. Christmas Day
+#. Christmas Day.
 msgid "Il-Milied"
 msgstr ""

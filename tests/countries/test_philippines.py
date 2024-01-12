@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.philippines import Philippines, PH, PHL
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPhilippines(TestCase):
+class TestPhilippines(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Philippines)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Philippines, PH, PHL)
+        self.assertAliases(Philippines, PH, PHL)
 
     def test_2022(self):
         self.assertHolidays(
@@ -31,9 +33,9 @@ class TestPhilippines(TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Black Saturday"),
             ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Eid'l Fitr* (*estimated)"),
+            ("2022-05-02", "Eid'l Fitr (estimated)"),
             ("2022-06-12", "Independence Day"),
-            ("2022-07-09", "Eid'l Adha* (*estimated)"),
+            ("2022-07-09", "Eid'l Adha (estimated)"),
             ("2022-08-21", "Ninoy Aquino Day"),
             ("2022-08-29", "National Heroes Day"),
             ("2022-11-01", "All Saints' Day"),

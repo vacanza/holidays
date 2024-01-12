@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import MAR
 from holidays.countries.united_states_virgin_islands import HolidaysVI, VI, VIR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestVI(TestCase):
+class TestVI(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysVI)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HolidaysVI, VI, VIR)
+        self.assertAliases(HolidaysVI, VI, VIR)
 
     def test_vi_only(self):
         """Check for a holiday that is not returned by US unless the

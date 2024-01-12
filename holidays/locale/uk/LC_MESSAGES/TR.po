@@ -17,8 +17,8 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "%s* (*tahmini)"
-msgstr "%s* (*орієнтовно)"
+msgid "%s (tahmini)"
+msgstr "%s (приблизна дата)"
 
 #. New Year's Day.
 msgid "Yılbaşı"

@@ -90,7 +90,10 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         - [Royal Ploughing Ceremony]
             https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
             https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
-            `<https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx>`_
+            https://dl.parliament.go.th/handle/20.500.13072/103428
+            https://dl.parliament.go.th/handle/20.500.13072/92816
+            https://e-manage.mju.ac.th/timeline_detail.aspx?key=MTk4
+            https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf
         - [Royal Thai Armed Forces Day]
             `<https://th.wikipedia.org/wiki/วันกองทัพไทย>`_
         - [Teacher's Day]
@@ -522,18 +525,59 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # No Future Fixed Date Holidays
 
         # วันพืชมงคล
-        # Restarts in 1957 (B.E. 2500).
+        # Restarts in 1947 (B.E. 2490), wouldn't become an holiday again until 1960 (B.E. 2503).
+        # Removed as an holiday in 1999 due to financial crisis, reinstated in 2000.
+        # No event was held in 2021 due to local Covid-19 situation, though it stays a day off.
         # Is dated on an annual basis by the Royal Palace, always on weekdays.
+        # For historic research, วันเกษตรแห่งชาติ (National Agricultural Day) also concides with
+        #   this from 1966 onwards. For earlier records the date was refered as วันแรกนาขวัญ.
         # This isn't even fixed even by the Thai Lunar Calendar, but instead
-        #   by Court Astrologers; All chosen dates are all around May, so we
-        #   can technically assign it to 13 May for years prior with no data.
+        #   by Court Astrologers; All chosen dates are all in the first three weeks of May.
         # *** NOTE: only observed by government sectors.
         # TODO: Update this annually around Dec of each year.
 
+        # Got only 1 source for 1992 and 1993, might need some recheck later.
         raeknakhwan_dates = {
-            1997: (MAY, 13),
-            1998: (MAY, 13),
-            # Not held in 1999 date.
+            1960: (MAY, 2),
+            1961: (MAY, 11),
+            1962: (MAY, 7),
+            1963: (MAY, 10),
+            1964: (MAY, 8),
+            1965: (MAY, 13),
+            1966: (MAY, 13),
+            1967: (MAY, 11),
+            1968: (MAY, 10),
+            1969: (MAY, 9),
+            1970: (MAY, 8),
+            1971: (MAY, 7),
+            1972: (MAY, 8),
+            1973: (MAY, 7),
+            1974: (MAY, 8),
+            1975: (MAY, 7),
+            1976: (MAY, 10),
+            1977: (MAY, 12),
+            1978: (MAY, 11),
+            1979: (MAY, 7),
+            1980: (MAY, 14),
+            1981: (MAY, 7),
+            1982: (MAY, 19),
+            1983: (MAY, 11),
+            1984: (MAY, 10),
+            1985: (MAY, 9),
+            1986: (MAY, 9),
+            1987: (MAY, 8),
+            1988: (MAY, 11),
+            1989: (MAY, 11),
+            1990: (MAY, 11),
+            1991: (MAY, 10),
+            1992: (MAY, 14),
+            1993: (MAY, 17),
+            1994: (MAY, 11),
+            1995: (MAY, 10),
+            1996: (MAY, 16),
+            1997: (MAY, 9),
+            1998: (MAY, 8),
+            # Not a holiday in 1999 date, was held on MAY, 14.
             2000: (MAY, 15),
             2001: (MAY, 16),
             2002: (MAY, 9),
@@ -544,7 +588,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2007: (MAY, 10),
             2008: (MAY, 9),
             2009: (MAY, 11),
-            2010: (MAY, 10),
+            2010: (MAY, 13),
             2011: (MAY, 13),
             2012: (MAY, 9),
             2013: (MAY, 13),
@@ -555,11 +599,12 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2018: (MAY, 14),
             2019: (MAY, 9),
             2020: (MAY, 11),
-            2021: (MAY, 13),
-            2022: (MAY, 17),
-            2023: (MAY, 11),
+            2021: (MAY, 10),
+            2022: (MAY, 13),
+            2023: (MAY, 17),
+            2024: (MAY, 10),
         }
-        if 1957 <= self._year <= 2023 and self._year != 1999:
+        if 1960 <= self._year <= 2024 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
@@ -795,7 +840,9 @@ class ThailandStaticHolidays:
             (JUL, 31, thai_bridge_public_holiday),
             (DEC, 29, thai_bridge_public_holiday),
         ),
+        2024: (DEC, 30, thai_bridge_public_holiday),
     }
+    special_workday_holidays = {1999: (MAY, 14, tr("วันพืชมงคล"))}
 
     special_public_holidays_observed = {
         2007: (DEC, 24, thai_election),

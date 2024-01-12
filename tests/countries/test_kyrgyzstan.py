@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestKyrgyzstan(TestCase):
+class TestKyrgyzstan(CommonCountryTests, TestCase):
     def setUp(self):
         self.holidays = Kyrgyzstan()
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Kyrgyzstan, KG, KGZ)
+        self.assertAliases(Kyrgyzstan, KG, KGZ)
 
     def test_2022(self):
         self.assertHolidays(
@@ -29,11 +31,11 @@ class TestKyrgyzstan(TestCase):
             ("2022-03-21", "Nooruz Mairamy"),
             ("2022-04-07", "Day of the People's April Revolution"),
             ("2022-05-01", "International Workers' Day"),
-            ("2022-05-02", "Orozo Ait* (*estimated)"),
-            ("2022-05-03", "Orozo Ait* (*estimated)"),
+            ("2022-05-02", "Orozo Ait (estimated)"),
+            ("2022-05-03", "Orozo Ait (estimated)"),
             ("2022-05-05", "Constitution Day"),
             ("2022-05-09", "Victory Day"),
-            ("2022-07-09", "Kurman Ait* (*estimated)"),
+            ("2022-07-09", "Kurman Ait (estimated)"),
             ("2022-08-31", "Independence Day"),
             ("2022-11-07", "Days of History and Commemoration of Ancestors"),
             ("2022-11-08", "Days of History and Commemoration of Ancestors"),
@@ -48,12 +50,12 @@ class TestKyrgyzstan(TestCase):
             ("2023-03-08", "International Women's Day"),
             ("2023-03-21", "Nooruz Mairamy"),
             ("2023-04-07", "Day of the People's April Revolution"),
-            ("2023-04-21", "Orozo Ait* (*estimated)"),
-            ("2023-04-22", "Orozo Ait* (*estimated)"),
+            ("2023-04-21", "Orozo Ait (estimated)"),
+            ("2023-04-22", "Orozo Ait (estimated)"),
             ("2023-05-01", "International Workers' Day"),
             ("2023-05-05", "Constitution Day"),
             ("2023-05-09", "Victory Day"),
-            ("2023-06-28", "Kurman Ait* (*estimated)"),
+            ("2023-06-28", "Kurman Ait (estimated)"),
             ("2023-08-31", "Independence Day"),
             ("2023-11-07", "Days of History and Commemoration of Ancestors"),
             ("2023-11-08", "Days of History and Commemoration of Ancestors"),

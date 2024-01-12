@@ -48,10 +48,10 @@ msgstr "Easter Monday"
 msgid "Εργατική Πρωτομαγιά"
 msgstr "Labor Day"
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (παρατηρήθηκε)"
-msgstr "%s (Observed)"
+msgstr "%s (observed)"
 
 #. Dormition of the Mother of God.
 msgid "Κοίμηση της Θεοτόκου"

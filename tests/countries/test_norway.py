@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.norway import Norway, NO, NOR
-from tests.common import SundayHolidays
+from tests.common import CommonCountryTests, SundayHolidays
 
 
-class TestNorway(SundayHolidays):
+class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Norway)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Norway, NO, NOR)
+        self.assertAliases(Norway, NO, NOR)
 
     def test_new_years(self):
         self.assertHoliday("1900-01-01", "2017-01-01", "2023-01-01")

@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.san_marino import SanMarino, SM, SMR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSanMarino(TestCase):
+class TestSanMarino(CommonCountryTests, TestCase):
     def setUp(self):
         self.holidays = SanMarino()
 
     def test_country_aliases(self):
-        self.assertCountryAliases(SanMarino, SM, SMR)
+        self.assertAliases(SanMarino, SM, SMR)
 
     def test_2022(self):
         self.assertHolidays(

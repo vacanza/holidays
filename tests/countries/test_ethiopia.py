@@ -10,18 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestEthiopia(TestCase):
+class TestEthiopia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ethiopia)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Ethiopia, ET, ETH)
+        self.assertAliases(Ethiopia, ET, ETH)
 
     # Check isleap loops
     def test_not_holiday(self):
@@ -103,15 +104,15 @@ class TestEthiopia(TestCase):
             ("2022-04-22", "ስቅለት"),
             ("2022-04-24", "ፋሲካ"),
             ("2022-05-01", "የሰራተኞች ቀን"),
-            ("2022-05-02", "ኢድ አልፈጥር* (*ግምት)"),
+            ("2022-05-02", "ኢድ አልፈጥር (ግምት)"),
             ("2022-05-05", "የአርበኞች ቀን"),
             ("2022-05-28", "ደርግ የወደቀበት ቀን"),
-            ("2022-07-09", "አረፋ* (*ግምት)"),
-            ("2022-07-10", "አረፋ* (*ግምት)"),
+            ("2022-07-09", "አረፋ (ግምት)"),
+            ("2022-07-10", "አረፋ (ግምት)"),
             ("2022-09-11", "አዲስ ዓመት እንቁጣጣሽ"),
             ("2022-09-27", "መስቀል"),
-            ("2022-10-08", "መውሊድ* (*ግምት)"),
-            ("2022-10-09", "መውሊድ* (*ግምት)"),
+            ("2022-10-08", "መውሊድ (ግምት)"),
+            ("2022-10-09", "መውሊድ (ግምት)"),
         )
 
     def test_l10n_en_ar(self):
@@ -123,15 +124,15 @@ class TestEthiopia(TestCase):
             ("2022-04-22", "جمعة جيدة"),
             ("2022-04-24", "عيد الفصح"),
             ("2022-05-01", "يوم العمال"),
-            ("2022-05-02", "(تقدير*) *عيد الفطر"),
+            ("2022-05-02", "(تقدير) عيد الفطر"),
             ("2022-05-05", "يوم الوطنيين"),
             ("2022-05-28", "يوم سقوط ديرج"),
-            ("2022-07-09", "(تقدير*) *عيد الأضحى"),
-            ("2022-07-10", "(تقدير*) *عيد الأضحى"),
+            ("2022-07-09", "(تقدير) عيد الأضحى"),
+            ("2022-07-10", "(تقدير) عيد الأضحى"),
             ("2022-09-11", "السنة الإثيوبية الجديدة"),
             ("2022-09-27", "العثور على الصليب الحقيقي"),
-            ("2022-10-08", "(تقدير*) *عيد المولد النبوي"),
-            ("2022-10-09", "(تقدير*) *عيد المولد النبوي"),
+            ("2022-10-08", "(تقدير) عيد المولد النبوي"),
+            ("2022-10-09", "(تقدير) عيد المولد النبوي"),
         )
 
     def test_l10n_en_us(self):
@@ -143,13 +144,13 @@ class TestEthiopia(TestCase):
             ("2022-04-22", "Orthodox Good Friday"),
             ("2022-04-24", "Orthodox Easter Sunday"),
             ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Eid al-Fitr* (*estimated)"),
+            ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-05", "Patriots Day"),
             ("2022-05-28", "Downfall of Dergue Regime Day"),
-            ("2022-07-09", "Eid al-Adha* (*estimated)"),
-            ("2022-07-10", "Eid al-Adha* (*estimated)"),
+            ("2022-07-09", "Eid al-Adha (estimated)"),
+            ("2022-07-10", "Eid al-Adha (estimated)"),
             ("2022-09-11", "Ethiopian New Year's Day"),
             ("2022-09-27", "Finding of True Cross"),
-            ("2022-10-08", "Prophet Muhammad's Birthday* (*estimated)"),
-            ("2022-10-09", "Prophet Muhammad's Birthday* (*estimated)"),
+            ("2022-10-08", "Prophet Muhammad's Birthday (estimated)"),
+            ("2022-10-09", "Prophet Muhammad's Birthday (estimated)"),
         )

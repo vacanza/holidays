@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2023-03-05 13:05+0200\n"
+"PO-Revision-Date: 2024-01-05 12:44+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. Public holiday.
 msgid "Asueto adicionale"
@@ -40,13 +40,13 @@ msgstr "Maundy Thursday"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. Easter Day.
-msgid "Día de Pascuas"
-msgstr "Easter Day"
+#. Easter Sunday.
+msgid "Domingo de Resurrección"
+msgstr "Easter Sunday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día del Trabajador"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Independence Day.
 msgid "Día de la Independencia Nacional"
@@ -68,6 +68,6 @@ msgstr "Boqueron Battle Day"
 msgid "Día de la Virgen de Caacupé"
 msgstr "Caacupe Virgin Day"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Christmas Day"

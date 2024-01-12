@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestZimbabwe(TestCase):
+class TestZimbabwe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Zimbabwe, years=range(1988, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Zimbabwe, ZW, ZWE)
+        self.assertAliases(Zimbabwe, ZW, ZWE)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Zimbabwe(years=1987))
@@ -124,12 +126,12 @@ class TestZimbabwe(TestCase):
             ("2022-04-16", "Easter Saturday"),
             ("2022-04-18", "Easter Monday; Independence Day"),
             ("2022-05-01", "Workers' Day"),
-            ("2022-05-02", "Workers' Day (Observed)"),
+            ("2022-05-02", "Workers' Day (observed)"),
             ("2022-05-25", "Africa Day"),
             ("2022-08-08", "Zimbabwe Heroes' Day"),
             ("2022-08-09", "Defense Forces Day"),
             ("2022-12-22", "Unity Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (Observed)"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )

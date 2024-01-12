@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.burundi import Burundi, BI, BDI
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBurundi(TestCase):
+class TestBurundi(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Burundi, years=range(1962, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Burundi, BI, BDI)
+        self.assertAliases(Burundi, BI, BDI)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Burundi(years=1961))
@@ -88,7 +90,7 @@ class TestBurundi(TestCase):
 
     def test_eid_ul_fitr(self):
         self.assertHolidayName(
-            "Eid ul Fitr* (*estimated)",
+            "Eid ul Fitr (estimated)",
             "2010-09-10",
             "2011-08-30",
             "2012-08-19",
@@ -107,7 +109,7 @@ class TestBurundi(TestCase):
 
     def test_eid_al_adha(self):
         self.assertHolidayName(
-            "Eid al Adha* (*estimated)",
+            "Eid al Adha (estimated)",
             "2010-11-16",
             "2011-11-06",
             "2012-10-26",

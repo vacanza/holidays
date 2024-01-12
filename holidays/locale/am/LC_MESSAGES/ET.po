@@ -72,5 +72,5 @@ msgid "መውሊድ"
 msgstr ""
 
 #, c-format
-msgid "%s* (*ግምት)"
+msgid "%s (ግምት)"
 msgstr ""

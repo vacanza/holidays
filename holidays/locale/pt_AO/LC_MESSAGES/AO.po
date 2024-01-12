@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-07-19 18:14+0300\n"
 "PO-Revision-Date: 2023-07-19 18:17+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -20,9 +20,9 @@ msgstr ""
 msgid "Dia de eleições gerais"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
-msgid "%s (Ponte)"
+msgid "%s (ponte)"
 msgstr ""
 
 #. New Year's Day.

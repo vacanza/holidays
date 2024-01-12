@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.taiwan import Taiwan, TW, TWN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestTaiwan(TestCase):
+class TestTaiwan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1990, 2030)
         super().setUpClass(Taiwan, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Taiwan, TW, TWN)
+        self.assertAliases(Taiwan, TW, TWN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Taiwan(years=1911))
@@ -260,7 +262,7 @@ class TestTaiwan(TestCase):
             ("2022-04-04", "Children's Day"),
             ("2022-04-05", "Tomb Sweeping Day"),
             ("2022-06-03", "Dragon Boat Festival"),
-            ("2022-09-09", "Mid-Autumn Festival (Observed)"),
+            ("2022-09-09", "Mid-Autumn Festival (observed)"),
             ("2022-09-10", "Mid-Autumn Festival"),
             ("2022-10-10", "National Day"),
         )

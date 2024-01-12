@@ -50,6 +50,7 @@ setup:
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
 	make l10n
+	make package
 
 snapshot:
 	scripts/l10n/generate_mo_files.py

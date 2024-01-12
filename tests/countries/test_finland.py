@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.finland import Finland, FI, FIN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestFinland(TestCase):
+class TestFinland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Finland)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Finland, FI, FIN)
+        self.assertAliases(Finland, FI, FIN)
 
     def test_fixed_holidays(self):
         for year in range(2010, 2030):

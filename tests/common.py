@@ -11,7 +11,6 @@
 
 import os
 import sys
-import unittest
 import warnings
 from datetime import date
 from typing import Generator
@@ -25,7 +24,7 @@ PYTHON_LATEST_SUPPORTED_VERSION = (3, 11)
 PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
 
 
-class TestCase(unittest.TestCase):
+class TestCase:
     """Base class for python-holidays test cases."""
 
     @classmethod
@@ -118,35 +117,17 @@ class TestCase(unittest.TestCase):
             "`holidays` object must be a subclass of `HolidayBase`",
         )
 
-    def assertCountryAliases(self, cls, alpha_2, alpha_3):
-        """Assert country aliases match."""
+    def assertAliases(self, cls, *aliases):
+        """Assert aliases match."""
         self.assertTrue(
             issubclass(cls, HolidayBase),
-            "Country holidays object must be a subclass of `HolidayBase`",
+            "The entity object must be a subclass of `HolidayBase`",
         )
 
-        type_error_message = "Country alias object must be a subclass of the country class."
-        for alias in (alpha_2, alpha_3):
+        type_error_message = "The entity alias object must be a subclass of the entity class."
+        for alias in aliases:
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
-
-        length_error_message = (
-            "This method accepts exactly 3 arguments "
-            "in this specific order: country base class, country alpha-2 "
-            "alias, and country alpha-3 alias. For example: "
-            "`self.assertCountryAliases(UnitedStates, US, USA)`"
-        )
-        if len(alpha_2.__name__) != 2:
-            raise ValueError(
-                f"{length_error_message}. Alias `{alpha_2.__name__}` doesn't "
-                "look like alpha-2 country code."
-            )
-
-        if len(alpha_3.__name__) != 3:
-            raise ValueError(
-                f"{length_error_message}. Alias `{alpha_3.__name__}` doesn't "
-                "look like alpha-3 country code."
-            )
 
     def assertDeprecatedSubdivisions(self, message):
         warnings.simplefilter("always", category=DeprecationWarning)
@@ -346,6 +327,39 @@ class TestCase(unittest.TestCase):
             self.set_language(language)
         for language in (language, "invalid", ""):
             self._assertLocalizedHolidays(localized_holidays, language)
+
+
+class CommonTests(TestCase):
+    """Common test cases for all entities."""
+
+
+class CommonCountryTests(CommonTests):
+    """Common test cases for country entities."""
+
+    def test_code(self):
+        self.assertTrue(hasattr(self.holidays, "country"))
+        self.assertFalse(hasattr(self.holidays, "market"))
+
+    def test_observed_estimated_label(self):
+        estimated_label = getattr(self.holidays, "estimated_label", None)
+        observed_label = getattr(self.holidays, "observed_label", None)
+        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
+
+        if estimated_label and observed_label:
+            self.assertTrue(
+                observed_estimated_label,
+                "The 'observed_estimated_label' attribute must be set for entities containing "
+                "both 'observed_label' and 'estimated_label'.",
+            )
+            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+
+
+class CommonFinancialTests(CommonTests):
+    """Common test cases for financial entities."""
+
+    def test_code(self):
+        self.assertTrue(hasattr(self.holidays, "market"))
+        self.assertFalse(hasattr(self.holidays, "country"))
 
 
 class SundayHolidays(TestCase):

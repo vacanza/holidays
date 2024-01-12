@@ -11,12 +11,13 @@
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
 import warnings
+from unittest import TestCase
 
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestBosniaAndHerzegovina(TestCase):
+class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(2000, 2030)
@@ -33,7 +34,7 @@ class TestBosniaAndHerzegovina(TestCase):
         warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(BosniaAndHerzegovina, BA, BIH)
+        self.assertAliases(BosniaAndHerzegovina, BA, BIH)
 
     def test_new_years(self):
         name = "Nova godina"

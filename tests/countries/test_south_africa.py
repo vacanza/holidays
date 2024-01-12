@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSouthAfrica(TestCase):
+class TestSouthAfrica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SouthAfrica, years=range(1940, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(SouthAfrica, ZA, ZAF)
+        self.assertAliases(SouthAfrica, ZA, ZAF)
 
     def test_no_holidays(self):
         self.assertNoHolidays(SouthAfrica(years=1909))

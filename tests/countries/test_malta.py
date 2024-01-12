@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.malta import Malta, MT, MLT
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMalta(TestCase):
+class TestMalta(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Malta)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Malta, MT, MLT)
+        self.assertAliases(Malta, MT, MLT)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Malta(years=1979))
@@ -109,9 +111,9 @@ class TestMalta(TestCase):
             ("2023-12-25", "Il-Milied"),
         )
 
-    def test_l10n_en_mt(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "en_MT",
+            "en_US",
             ("2023-01-01", "New Year's Day"),
             ("2023-02-10", "Feast of St. Paul's Shipwreck"),
             ("2023-03-19", "Feast of St. Joseph"),

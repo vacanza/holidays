@@ -10,19 +10,20 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import MAR
 from holidays.countries.northern_mariana_islands import HolidaysMP, MP, MNP
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestMP(TestCase):
+class TestMP(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysMP)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(HolidaysMP, MP, MNP)
+        self.assertAliases(HolidaysMP, MP, MNP)
 
     def test_mp_only(self):
         """Check for a holiday that is not returned by US unless the
