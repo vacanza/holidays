@@ -19,10 +19,12 @@ msgstr ""
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr ""
 
+#. %s (estimated).
 #, c-format
 msgid "%s (anggaran)"
 msgstr ""
 
+#. %s (observed).
 #, c-format
 msgid "%s (diperhatikan)"
 msgstr ""
@@ -77,4 +79,9 @@ msgstr ""
 
 #. Birth of the Prophet
 msgid "Maulidur Rasul"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (diperhatikan, anggaran)"
 msgstr ""
