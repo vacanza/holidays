@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2023-05-03 18:36-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-15 18:59+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. Bridge Public Holiday.
 msgid "Feriado con fines turísticos"
@@ -66,7 +66,7 @@ msgstr "День ветеранів та загиблих на Мальвінс�
 
 #. Good Friday.
 msgid "Viernes Santo"
-msgstr "Страсна п'ятниця"
+msgstr "Страсна пʼятниця"
 
 #. Labor Day.
 msgid "Día del Trabajo"
@@ -87,7 +87,7 @@ msgstr ""
 
 #. Pass to the Immortality of General Don Manuel Belgrano.
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
-msgstr "День пам’яті генерала Мануеля Бельграно"
+msgstr "День памʼяті генерала Мануеля Бельграно"
 
 #. Independence Day.
 msgid "Día de la Independencia"
@@ -103,11 +103,11 @@ msgstr "Різдво Христове"
 
 #. Pass to the Immortality of General Don Martin Miguel de Guemes.
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
-msgstr "День пам'яті генерала Мартіна Мігеля де Гуемеса"
+msgstr "День памʼяті генерала Мартіна Мігеля де Гуемеса"
 
 #. Pass to the Immortality of General Don Jose de San Martin.
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
-msgstr "День пам'яті генерала Хосе де Сан-Мартіна"
+msgstr "День памʼяті генерала Хосе де Сан-Мартіна"
 
 #. Respect for Cultural Diversity Day.
 msgid "Día del Respeto a la Diversidad Cultural"
