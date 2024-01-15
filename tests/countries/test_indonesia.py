@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import GOVERNMENT
 from holidays.countries.indonesia import Indonesia, ID, IDN
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIndonesia(TestCase):
+class TestIndonesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Indonesia, years=range(1946, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Indonesia, ID, IDN)
+        self.assertAliases(Indonesia, ID, IDN)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Indonesia(years=1945))

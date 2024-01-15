@@ -17,8 +17,8 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #, c-format
-msgid "%s* (*perkiraan)"
-msgstr "%s* (*estimated)"
+msgid "%s (perkiraan)"
+msgstr "%s (estimated)"
 
 #. Election Day.
 msgid "Hari Pemilihan"

@@ -33,7 +33,7 @@ class BuddhistCalendarHolidays:
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
+        estimated_label = getattr(self, "estimated_label", "%s (estimated)")
         dt, is_estimated = dt_estimated
 
         return self._add_holiday(

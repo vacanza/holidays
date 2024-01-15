@@ -9,12 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import OPTIONAL, SCHOOL
 from holidays.countries.israel import Israel, IL, ISR
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestIsrael(TestCase):
+class TestIsrael(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Israel, years=range(1948, 2050))
@@ -24,7 +26,7 @@ class TestIsrael(TestCase):
         )
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Israel, IL, ISR)
+        self.assertAliases(Israel, IL, ISR)
 
     def test_not_implemented(self):
         self.assertRaises(NotImplementedError, lambda: Israel(years=2101))
@@ -465,8 +467,8 @@ class TestIsrael(TestCase):
             ("2021-04-01", "Pesach holiday"),
             ("2021-04-02", "Pesach holiday"),
             ("2021-04-03", "Seventh day of Pesach"),
-            ("2021-04-14", "Remembrance Day (Observed)"),
-            ("2021-04-15", "Independence Day (Observed)"),
+            ("2021-04-14", "Remembrance Day (observed)"),
+            ("2021-04-15", "Independence Day (observed)"),
             ("2021-04-30", "Lag BaOmer"),
             ("2021-05-10", "Jerusalem Day"),
             ("2021-05-17", "Shavuot"),

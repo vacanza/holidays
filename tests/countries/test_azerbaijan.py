@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.azerbaijan import Azerbaijan, AZ, AZE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestAzerbaijan(TestCase):
+class TestAzerbaijan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Azerbaijan, years=range(1990, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Azerbaijan, AZ, AZE)
+        self.assertAliases(Azerbaijan, AZ, AZE)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Azerbaijan(categories=(PUBLIC, WORKDAY), years=1989))
@@ -353,8 +355,8 @@ class TestAzerbaijan(TestCase):
             "en_US",
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day"),
-            ("2023-01-03", "International Azerbaijanis Solidarity Day (Observed)"),
-            ("2023-01-04", "New Year's Day (Observed)"),
+            ("2023-01-03", "International Azerbaijanis Solidarity Day (observed)"),
+            ("2023-01-04", "New Year's Day (observed)"),
             ("2023-01-20", "Martyrs' Day"),
             ("2023-03-08", "Women's Day"),
             ("2023-03-20", "Spring Festival"),
@@ -364,10 +366,10 @@ class TestAzerbaijan(TestCase):
             ("2023-03-24", "Spring Festival"),
             ("2023-04-21", "Eid al-Fitr"),
             ("2023-04-22", "Eid al-Fitr"),
-            ("2023-04-24", "Eid al-Fitr (Observed)"),
+            ("2023-04-24", "Eid al-Fitr (observed)"),
             ("2023-05-09", "Victory over Fascism Day"),
             ("2023-05-28", "Independence Day"),
-            ("2023-05-29", "Independence Day (Observed)"),
+            ("2023-05-29", "Independence Day (observed)"),
             ("2023-06-15", "National Liberation Day"),
             ("2023-06-26", "Armed Forces Day"),
             ("2023-06-27", "Day off (substituted from 06/24/2023)"),

@@ -39,8 +39,8 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "BO"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
-    # %s (Observed).
-    observed_label = tr("%s (Observado)")
+    # %s (observed).
+    observed_label = tr("%s (observado)")
     subdivisions = (
         "B",  # El Beni
         "C",  # Cochabamba

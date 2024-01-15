@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.argentina import Argentina, AR, ARG
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestArgentina(TestCase):
+class TestArgentina(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -21,7 +23,7 @@ class TestArgentina(TestCase):
         )
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Argentina, AR, ARG)
+        self.assertAliases(Argentina, AR, ARG)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1950, 2050))
@@ -214,10 +216,10 @@ class TestArgentina(TestCase):
             ("2022-07-09", "Día de la Independencia"),
             (
                 "2022-08-15",
-                "Paso a la Inmortalidad del General Don José de San Martin (Observado)",
+                "Paso a la Inmortalidad del General Don José de San Martin (observado)",
             ),
             ("2022-10-07", "Feriado con fines turísticos"),
-            ("2022-10-10", "Día del Respeto a la Diversidad Cultural (Observado)"),
+            ("2022-10-10", "Día del Respeto a la Diversidad Cultural (observado)"),
             ("2022-11-20", "Día de la Soberanía Nacional"),
             ("2022-11-21", "Feriado con fines turísticos"),
             ("2022-12-08", "Inmaculada Concepción de María"),
@@ -243,13 +245,37 @@ class TestArgentina(TestCase):
             ("2023-07-09", "Día de la Independencia"),
             (
                 "2023-08-21",
-                "Paso a la Inmortalidad del General Don José de San Martin (Observado)",
+                "Paso a la Inmortalidad del General Don José de San Martin (observado)",
             ),
             ("2023-10-13", "Feriado con fines turísticos"),
-            ("2023-10-16", "Día del Respeto a la Diversidad Cultural (Observado)"),
+            ("2023-10-16", "Día del Respeto a la Diversidad Cultural (observado)"),
             ("2023-11-20", "Día de la Soberanía Nacional"),
             ("2023-12-08", "Inmaculada Concepción de María"),
             ("2023-12-25", "Navidad"),
+        )
+
+    def test_2024(self):
+        self.assertHolidays(
+            Argentina(years=2024),
+            ("2024-01-01", "Año Nuevo"),
+            ("2024-02-12", "Día de Carnaval"),
+            ("2024-02-13", "Día de Carnaval"),
+            ("2024-03-24", "Día Nacional de la Memoria por la Verdad y la Justicia"),
+            ("2024-03-29", "Viernes Santo"),
+            ("2024-04-01", "Feriado con fines turísticos"),
+            ("2024-04-02", "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
+            ("2024-05-01", "Día del Trabajo"),
+            ("2024-05-25", "Día de la Revolución de Mayo"),
+            ("2024-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
+            ("2024-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
+            ("2024-06-21", "Feriado con fines turísticos"),
+            ("2024-07-09", "Día de la Independencia"),
+            ("2024-08-17", "Paso a la Inmortalidad del General Don José de San Martin"),
+            ("2024-10-11", "Feriado con fines turísticos"),
+            ("2024-10-12", "Día del Respeto a la Diversidad Cultural"),
+            ("2024-11-18", "Día de la Soberanía Nacional (observado)"),
+            ("2024-12-08", "Inmaculada Concepción de María"),
+            ("2024-12-25", "Navidad"),
         )
 
     def test_l10n_default(self):
@@ -268,10 +294,10 @@ class TestArgentina(TestCase):
             ("2022-07-09", "Día de la Independencia"),
             (
                 "2022-08-15",
-                "Paso a la Inmortalidad del General Don José de San Martin (Observado)",
+                "Paso a la Inmortalidad del General Don José de San Martin (observado)",
             ),
             ("2022-10-07", "Feriado con fines turísticos"),
-            ("2022-10-10", "Día del Respeto a la Diversidad Cultural (Observado)"),
+            ("2022-10-10", "Día del Respeto a la Diversidad Cultural (observado)"),
             ("2022-11-20", "Día de la Soberanía Nacional"),
             ("2022-11-21", "Feriado con fines turísticos"),
             ("2022-12-08", "Inmaculada Concepción de María"),
@@ -294,9 +320,9 @@ class TestArgentina(TestCase):
             ("2022-06-17", "Pass to the Immortality of General Don Martín Miguel de Güemes"),
             ("2022-06-20", "Pass to the Immortality of General Don Manuel Belgrano"),
             ("2022-07-09", "Independence Day"),
-            ("2022-08-15", "Pass to the Immortality of General Don José de San Martin (Observed)"),
+            ("2022-08-15", "Pass to the Immortality of General Don José de San Martin (observed)"),
             ("2022-10-07", "Bridge Public Holiday"),
-            ("2022-10-10", "Respect for Cultural Diversity Day (Observed)"),
+            ("2022-10-10", "Respect for Cultural Diversity Day (observed)"),
             ("2022-11-20", "National Sovereignty Day"),
             ("2022-11-21", "Bridge Public Holiday"),
             ("2022-12-08", "Immaculate Conception"),
@@ -312,14 +338,14 @@ class TestArgentina(TestCase):
             ("2022-03-01", "Карнавал"),
             ("2022-03-24", "День памʼяті заради правди та правосуддя"),
             ("2022-04-02", "День ветеранів та загиблих на Мальвінській війні"),
-            ("2022-04-15", "Страсна п'ятниця"),
+            ("2022-04-15", "Страсна пʼятниця"),
             ("2022-05-01", "День праці"),
             ("2022-05-18", "День національного перепису 2022"),
             ("2022-05-25", "День Травневої революції"),
-            ("2022-06-17", "День пам'яті генерала Мартіна Мігеля де Гуемеса"),
-            ("2022-06-20", "День пам’яті генерала Мануеля Бельграно"),
+            ("2022-06-17", "День памʼяті генерала Мартіна Мігеля де Гуемеса"),
+            ("2022-06-20", "День памʼяті генерала Мануеля Бельграно"),
             ("2022-07-09", "День незалежності"),
-            ("2022-08-15", "День пам'яті генерала Хосе де Сан-Мартіна (вихідний)"),
+            ("2022-08-15", "День памʼяті генерала Хосе де Сан-Мартіна (вихідний)"),
             ("2022-10-07", "Додатковий вихідний"),
             ("2022-10-10", "День поваги до культурного різноманіття (вихідний)"),
             ("2022-11-20", "День національного суверенітету"),

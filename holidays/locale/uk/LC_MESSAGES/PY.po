@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2023-03-05 14:16+0200\n"
+"PO-Revision-Date: 2024-01-05 12:45+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -40,11 +40,11 @@ msgstr "Великий четвер"
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#. Easter Day.
-msgid "Día de Pascuas"
+#. Easter Sunday.
+msgid "Domingo de Resurrección"
 msgstr "Великдень"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día del Trabajador"
 msgstr "День трудящих"
 
@@ -68,6 +68,6 @@ msgstr "День битви за Бокерон"
 msgid "Día de la Virgen de Caacupé"
 msgstr "Успіння Пресвятої Богородиці"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"

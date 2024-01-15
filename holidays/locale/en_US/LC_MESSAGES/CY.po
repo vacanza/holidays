@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-15 11:50-0800\n"
-"PO-Revision-Date: 2023-02-15 11:58-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-05 13:23+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,26 +14,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
-#. New Years Day.
+#. New Year's Day.
 msgid "Πρωτοχρονιά"
 msgstr "New Year's Day"
 
 #. Epiphany.
-msgid "Θεοφάνεια"
+msgid "Ημέρα των Θεοφανίων"
 msgstr "Epiphany"
 
-#. Clean Monday.
+#. Green Monday.
 msgid "Καθαρά Δευτέρα"
-msgstr "Clean Monday"
+msgstr "Green Monday"
 
 #. Greek Independence Day.
-msgid "Εικοστή Πέμπτη Μαρτίου"
+msgid "Ημέρα της Ελληνικής Ανεξαρτησίας"
 msgstr "Greek Independence Day"
 
 #. Cyprus National Day.
-msgid "1η Απριλίου"
+msgid "Εθνική Ημέρα Κύπρου"
 msgstr "Cyprus National Day"
 
 #. Good Friday.
@@ -45,28 +45,28 @@ msgid "Κυριακή του Πάσχα"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-msgid "Δευτέρα του Πάσχα"
+msgid "Δευτέρα της Διακαινησίμου"
 msgstr "Easter Monday"
 
-#. Labour Day.
-msgid "Εργατική Πρωτομαγιά"
+#. Labor Day.
+msgid "Πρωτομαγιά"
 msgstr "Labor Day"
 
-#. Monday of the Holy Spirit.
+#. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "Monday of the Holy Spirit"
+msgstr "Whit Monday"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Κοίμηση της Θεοτόκου"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Cyprus Independence Day.
-msgid "Ημέρα Ανεξαρτησίας της Κύπρου"
+msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
 msgstr "Cyprus Independence Day"
 
 #. Ochi Day.
 msgid "Ημέρα του Όχι"
-msgstr "Ochi Day"
+msgstr "Greek National Day"
 
 #. Christmas Eve.
 msgid "Παραμονή Χριστουγέννων"
@@ -77,5 +77,13 @@ msgid "Χριστούγεννα"
 msgstr "Christmas Day"
 
 #. Day After Christmas.
-msgid "Δεύτερη μέρα Χριστουγέννων"
+msgid "Επομένη Χριστουγέννων"
 msgstr "Day After Christmas"
+
+#. Easter Tuesday.
+msgid "Τρίτη της Διακαινησίμου"
+msgstr "Easter Tuesday"
+
+#. Holy Saturday.
+msgid "Μεγάλο Σάββατο"
+msgstr "Holy Saturday"

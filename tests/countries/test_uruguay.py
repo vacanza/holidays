@@ -9,12 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.constants import BANK, PUBLIC
 from holidays.countries.uruguay import Uruguay, UY, URY
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestUruguay(TestCase):
+class TestUruguay(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1920, 2050)
@@ -22,7 +24,7 @@ class TestUruguay(TestCase):
         cls.bank_holidays = Uruguay(years=years, categories=BANK)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Uruguay, UY, URY)
+        self.assertAliases(Uruguay, UY, URY)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Uruguay(categories=(BANK, PUBLIC), years=1919))

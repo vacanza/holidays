@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.el_salvador import ElSalvador, SV, SLV
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestElSalvador(TestCase):
+class TestElSalvador(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(ElSalvador, years=range(2000, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(ElSalvador, SV, SLV)
+        self.assertAliases(ElSalvador, SV, SLV)
 
     def test_mothers_day(self):
         name = "Mothers' Day"

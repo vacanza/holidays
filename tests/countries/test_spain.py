@@ -10,13 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.countries.spain import Spain, ES, ESP
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSpain(TestCase):
+class TestSpain(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Spain)
@@ -36,7 +37,7 @@ class TestSpain(TestCase):
                 )
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Spain, ES, ESP)
+        self.assertAliases(Spain, ES, ESP)
 
     def test_fixed_holidays_2010(self):
         self.assertNonObservedHoliday(

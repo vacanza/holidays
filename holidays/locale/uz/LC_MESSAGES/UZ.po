@@ -1,0 +1,85 @@
+# Uzbekistan holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.41\n"
+"POT-Creation-Date: 2023-12-31 21:12+0200\n"
+"PO-Revision-Date: 2024-01-02 12:46+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4\n"
+
+#. New Year's Day.
+msgid "Yangi yil"
+msgstr ""
+
+#. Women's Day.
+msgid "Xotin-qizlar kuni"
+msgstr ""
+
+#. Nowruz.
+msgid "Navro‘z bayrami"
+msgstr ""
+
+#. Day of Memory and Honor.
+msgid "Xotira va qadrlash kuni"
+msgstr ""
+
+#. Victory Day.
+msgid "G‘alaba kuni"
+msgstr ""
+
+#. Independence Day.
+msgid "Mustaqillik kuni"
+msgstr ""
+
+#. Teachers and Instructors Day.
+msgid "O‘qituvchi va murabbiylar kuni"
+msgstr ""
+
+#. Constitution Day.
+msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Ro‘za hayit"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Qurbon hayit"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (taxminiy)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (ko‘chirilgan)"
+msgstr ""
+
+#. Date format (see strftime() Format Codes)
+msgid "%d/%m %Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Dam olish kuni (%s dan ko‘chirilgan)"
+msgstr ""
+
+#. Additional day off by Presidential decree.
+msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
+msgstr ""

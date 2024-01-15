@@ -43,8 +43,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     country = "AO"
     default_language = "pt_AO"
     supported_languages = ("en_US", "pt_AO", "uk")
-    # %s (Observed).
-    observed_label = tr("%s (Ponte)")
+    # %s (observed).
+    observed_label = tr("%s (ponte)")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

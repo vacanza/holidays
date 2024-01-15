@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.saudi_arabia import SaudiArabia, SA, SAU
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestSaudiArabia(TestCase):
+class TestSaudiArabia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SaudiArabia, years=range(1950, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(SaudiArabia, SA, SAU)
+        self.assertAliases(SaudiArabia, SA, SAU)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")
@@ -170,17 +172,17 @@ class TestSaudiArabia(TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-02-22", "يوم التأسيسي"),
-            ("2023-04-21", "(تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-22", "(تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-23", "(تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-24", "(تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-25", "(ملاحظة) (تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-26", "(ملاحظة) (تقدير*) *عطلة عيد الفطر"),
-            ("2023-06-27", "(تقدير*) *يوم عرفة"),
-            ("2023-06-28", "(تقدير*) *عطلة عيد الأضحى"),
-            ("2023-06-29", "(تقدير*) *عطلة عيد الأضحى"),
-            ("2023-06-30", "(تقدير*) *عطلة عيد الأضحى"),
-            ("2023-07-02", "(ملاحظة) (تقدير*) *عطلة عيد الأضحى"),
+            ("2023-04-21", "(تقدير) عطلة عيد الفطر"),
+            ("2023-04-22", "(تقدير) عطلة عيد الفطر"),
+            ("2023-04-23", "(تقدير) عطلة عيد الفطر"),
+            ("2023-04-24", "(تقدير) عطلة عيد الفطر"),
+            ("2023-04-25", "(تقدير ملاحظة) عطلة عيد الفطر"),
+            ("2023-04-26", "(تقدير ملاحظة) عطلة عيد الفطر"),
+            ("2023-06-27", "(تقدير) يوم عرفة"),
+            ("2023-06-28", "(تقدير) عطلة عيد الأضحى"),
+            ("2023-06-29", "(تقدير) عطلة عيد الأضحى"),
+            ("2023-06-30", "(تقدير) عطلة عيد الأضحى"),
+            ("2023-07-02", "(تقدير ملاحظة) عطلة عيد الأضحى"),
             ("2023-09-23", "اليوم الوطني"),
             ("2023-09-24", "(ملاحظة) اليوم الوطني"),
         )
@@ -189,17 +191,17 @@ class TestSaudiArabia(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-02-22", "Founding Day Holiday"),
-            ("2023-04-21", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2023-04-22", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2023-04-23", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2023-04-24", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2023-04-25", "Eid al-Fitr Holiday* (*estimated) (observed)"),
-            ("2023-04-26", "Eid al-Fitr Holiday* (*estimated) (observed)"),
-            ("2023-06-27", "Arafat Day* (*estimated)"),
-            ("2023-06-28", "Eid al-Adha Holiday* (*estimated)"),
-            ("2023-06-29", "Eid al-Adha Holiday* (*estimated)"),
-            ("2023-06-30", "Eid al-Adha Holiday* (*estimated)"),
-            ("2023-07-02", "Eid al-Adha Holiday* (*estimated) (observed)"),
+            ("2023-04-21", "Eid al-Fitr Holiday (estimated)"),
+            ("2023-04-22", "Eid al-Fitr Holiday (estimated)"),
+            ("2023-04-23", "Eid al-Fitr Holiday (estimated)"),
+            ("2023-04-24", "Eid al-Fitr Holiday (estimated)"),
+            ("2023-04-25", "Eid al-Fitr Holiday (observed, estimated)"),
+            ("2023-04-26", "Eid al-Fitr Holiday (observed, estimated)"),
+            ("2023-06-27", "Arafat Day (estimated)"),
+            ("2023-06-28", "Eid al-Adha Holiday (estimated)"),
+            ("2023-06-29", "Eid al-Adha Holiday (estimated)"),
+            ("2023-06-30", "Eid al-Adha Holiday (estimated)"),
+            ("2023-07-02", "Eid al-Adha Holiday (observed, estimated)"),
             ("2023-09-23", "National Day Holiday"),
             ("2023-09-24", "National Day Holiday (observed)"),
         )

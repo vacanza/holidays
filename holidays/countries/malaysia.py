@@ -59,7 +59,7 @@ class Malaysia(
     StaticHolidays,
 ):
     country = "MY"
-    observed_label = "%s [In lieu]"
+    observed_label = "%s (in lieu)"
     subdivisions = (
         "JHR",
         "KDH",
@@ -423,6 +423,7 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
         2021: (MAY, 26),
         2022: (MAY, 15),
         2023: (MAY, 4),
+        2024: (MAY, 22),
     }
 
 
@@ -451,6 +452,7 @@ class MalaysiaChineseHolidays(_CustomChineseHolidays):
         2021: (FEB, 12),
         2022: (FEB, 1),
         2023: (JAN, 22),
+        2024: (FEB, 10),
     }
 
 
@@ -479,6 +481,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2021: (NOV, 4),
         2022: (OCT, 24),
         2023: (NOV, 12),
+        2024: (OCT, 31),
     }
 
     THAIPUSAM_DATES = {
@@ -520,6 +523,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 10),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     EID_AL_FITR_DATES = {
@@ -546,6 +550,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAY, 13),
         2022: (MAY, 2),
         2023: (APR, 22),
+        2024: (APR, 10),
     }
 
     HARI_HOL_JOHOR_DATES = {
@@ -561,6 +566,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (SEP, 24),
         2021: (SEP, 13),
         2022: (SEP, 3),
+        2024: (AUG, 11),
     }
 
     HIJRI_NEW_YEAR_DATES = {
@@ -586,6 +592,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 20),
         2021: (AUG, 10),
         2022: (JUL, 30),
+        2024: (JUL, 7),
     }
 
     ISRA_AND_MIRAJ_DATES = {
@@ -612,6 +619,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAR, 11),
         2022: (MAR, 1),
         2023: (FEB, 18),
+        2024: (FEB, 8),
     }
 
     MAWLID_DATES = {
@@ -637,6 +645,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 10),
+        2024: (SEP, 16),
     }
     NUZUL_AL_QURAN_DATES = {
         2001: (DEC, 3),
@@ -662,6 +671,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (APR, 29),
         2022: (APR, 19),
         2023: (APR, 8),
+        2024: (MAR, 28),
     }
 
     RAMADAN_BEGINNING_DATES = {
@@ -688,6 +698,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (APR, 13),
         2022: (APR, 3),
         2023: (MAR, 23),
+        2024: (MAR, 12),
     }
 
 

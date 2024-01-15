@@ -30,7 +30,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     """
 
     country = "GB"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "ENG",  # England
         "NIR",  # Northern Ireland

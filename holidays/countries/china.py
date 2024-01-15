@@ -9,21 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, SEP, OCT, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
+class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
         - https://en.wikipedia.org/wiki/Public_holidays_in_China
         - `Festivals and Public Holidays <https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期>`_
+        - `2024 <https://www.gov.cn/zhengce/content/202310/content_6911527.htm>`_
         - `2023 <https://www.gov.cn/gongbao/content/2023/content_5736714.htm>`_
         - `2022 <https://www.gov.cn/gongbao/content/2021/content_5651728.htm>`_
         - `2021 <https://www.gov.cn/gongbao/content/2020/content_5567750.htm>`_
@@ -61,6 +60,8 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
     """
 
     country = "CN"
+    # %s (observed).
+    observed_label = tr("%s（观察日）")
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
@@ -69,104 +70,16 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=ChinaStaticHolidays)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2000)
         super().__init__(*args, **kwargs)
-
-    def _add_observed_one_off_holidays(self, dt: date):
-        """
-        Based on 2002-2023 data, adds observance for one-off
-        holidays (New Year's Day, Tomb-Sweeping Day, ..., etc.)
-         - Monday -> TUE-WED (????-2007), [SAT]-[SUN] (2008-???)
-         - Tuesday -> WED-THU (????-2007), [SUN]-[MON] (2008-????)
-         - Wednesday -> None (????-2007), [MON]-[TUE] (2008-????)
-         - Thursday -> None (????-2007), FRI-SAT (2008-????)
-         - Friday -> SAT-SUN (????-????)
-         - Saturday -> [FRI]-SUN (2012-2019), SUN-MON (????-2011, 2020-????)
-         - Sunday -> MON-TUE (????-2007, 2012-2019), [SAT]-MON (2008-2011, 2020-????)
-
-         '[DAY]' denotes that this applies prior to the input date, with 'DAY' as after.
-        """
-
-        if self._is_monday(dt):
-            if self._year <= 2007:
-                # TUE-WED
-                self._add_holiday(self[dt], dt + td(days=+1))
-                self._add_holiday(self[dt], dt + td(days=+2))
-            else:
-                # [SAT]-[SUN]
-                self._add_holiday(self[dt], dt + td(days=-2))
-                self._add_holiday(self[dt], dt + td(days=-1))
-                if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                    # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=+1))
-                    self._add_holiday(self[dt], dt + td(days=+2))
-        elif self._is_tuesday(dt):
-            if self._year <= 2007:
-                # WED-THU
-                self._add_holiday(self[dt], dt + td(days=+1))
-                self._add_holiday(self[dt], dt + td(days=+2))
-            else:
-                # [SUN]-[MON]
-                self._add_holiday(self[dt], dt + td(days=-2))
-                self._add_holiday(self[dt], dt + td(days=-1))
-                if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                    # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=+1))
-                    self._add_holiday(self[dt], dt + td(days=+2))
-        elif self._is_wednesday(dt) and self._year >= 2008:
-            # [MON]-[TUE]
-            self._add_holiday(self[dt], dt + td(days=-2))
-            self._add_holiday(self[dt], dt + td(days=-1))
-            if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=+1))
-                self._add_holiday(self[dt], dt + td(days=+2))
-        elif self._is_thursday(dt) and self._year >= 2008:
-            # FRI-SAT
-            self._add_holiday(self[dt], dt + td(days=+1))
-            self._add_holiday(self[dt], dt + td(days=+2))
-            if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=+3))
-                self._add_holiday(self[dt], dt + td(days=+4))
-        elif self._is_friday(dt):
-            # SAT-SUN
-            self._add_holiday(self[dt], dt + td(days=+1))
-            self._add_holiday(self[dt], dt + td(days=+2))
-            if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                # 2 Extra Days for May Day >= 2020:
-                self._add_holiday(self[dt], dt + td(days=+3))
-                self._add_holiday(self[dt], dt + td(days=+4))
-        elif self._is_saturday(dt):
-            if self._year <= 2011 or self._year >= 2020:
-                # SUN-MON
-                self._add_holiday(self[dt], dt + td(days=+1))
-                self._add_holiday(self[dt], dt + td(days=+2))
-                if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                    # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=+3))
-                    self._add_holiday(self[dt], dt + td(days=+4))
-            else:
-                # [FRI]-SUN
-                self._add_holiday(self[dt], dt + td(days=-1))
-                self._add_holiday(self[dt], dt + td(days=+1))
-        elif self._is_sunday(dt):
-            if self._year <= 2007 or 2012 <= self._year <= 2019:
-                # MON-TUE
-                self._add_holiday(self[dt], dt + td(days=+1))
-                self._add_holiday(self[dt], dt + td(days=+2))
-            else:
-                # [SAT]-MON
-                self._add_holiday(self[dt], dt + td(days=-1))
-                self._add_holiday(self[dt], dt + td(days=+1))
-                if self._year >= 2020 and dt == date(self._year, MAY, 1):
-                    # 2 Extra Days for May Day >= 2020:
-                    self._add_holiday(self[dt], dt + td(days=+2))
-                    self._add_holiday(self[dt], dt + td(days=+3))
 
     def _populate_public_holidays(self):
         # Proclamation of the People's Republic of China on Oct 1, 1949.
         if self._year <= 1949:
             return None
+
+        dts_observed = set()
 
         # 元旦 (simp.) / 新年 (trad.)
         # Status: In-Use (Statutory).
@@ -174,18 +87,13 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
         # Consecutive Holidays are available from 2002, except in 2014/2016/2017/2018.
 
         # New Year's Day.
-        jan_1 = self._add_new_years_day(tr("元旦"))
-
-        if (
-            self.observed
-            and (2002 <= self._year <= 2015 or self._year >= 2020)
-            and self._year not in {2008, 2013, 2014, 2023}
-        ):
-            self._add_observed_one_off_holidays(jan_1)
+        dts_observed.add(self._add_new_years_day(tr("元旦")))
 
         # 春节
         # Status: In-Use (Statutory).
         # Day 1-3 of Chinese New Year in 1949, 1999, 2007, and 2013 revision.
+        # 2007 revision introduced New Year's Eve (农历除夕) instead of
+        # New Year's 3rd day; 2013 revision returned it back.
 
         # Spring Festival Golden Weekend
         # Checked with Official Notice from 2001-2023.
@@ -193,18 +101,13 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
         # Chinese New Year (Spring Festival).
         chinese_new_year = tr("春节")
-        self._add_chinese_new_years_day(chinese_new_year)
-        self._add_chinese_new_years_day_two(chinese_new_year)
-        self._add_chinese_new_years_day_three(chinese_new_year)
-        if self.observed and self._year >= 2000:
-            # Non-Statutory.
-            self._add_chinese_new_years_day_four(chinese_new_year)
-            self._add_chinese_new_years_day_five(chinese_new_year)
-            self._add_chinese_new_years_day_six(chinese_new_year)
-            if 2008 <= self._year <= 2013 or self._year >= 2015:
-                self._add_chinese_new_years_eve(chinese_new_year)
-            else:
-                self._add_chinese_new_years_day_seven(chinese_new_year)
+        dts_observed.add(self._add_chinese_new_years_day(chinese_new_year))
+        dts_observed.add(self._add_chinese_new_years_day_two(chinese_new_year))
+        if 2008 <= self._year <= 2013:
+            # Chinese New Year's Eve.
+            dts_observed.add(self._add_chinese_new_years_eve(tr("农历除夕")))
+        else:
+            dts_observed.add(self._add_chinese_new_years_day_three(chinese_new_year))
 
         # 劳动节
         # Status: In-Use (Statutory).
@@ -217,20 +120,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
         # Labor Day.
         labor_day = tr("劳动节")
-        may_1 = self._add_labor_day(labor_day)
+        dts_observed.add(self._add_labor_day(labor_day))
         if 2000 <= self._year <= 2007:
-            self._add_labor_day_two(labor_day)
-            self._add_labor_day_three(labor_day)
-            if self.observed:
-                # Non-Statutory.
-                self._add_holiday_may_4(labor_day)
-                self._add_holiday_may_5(labor_day)
-                self._add_holiday_may_6(labor_day)
-                self._add_holiday_may_7(labor_day)
-        elif self.observed and (
-            2008 <= self._year <= 2014 or self._year == 2018 or self._year >= 2020
-        ):
-            self._add_observed_one_off_holidays(may_1)
+            dts_observed.add(self._add_labor_day_two(labor_day))
+            dts_observed.add(self._add_labor_day_three(labor_day))
 
         # 国庆节
         # Status: In-Use (Statutory).
@@ -242,17 +135,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
         # National Day.
         national_day = tr("国庆节")
-        self._add_holiday_oct_1(national_day)
-        self._add_holiday_oct_2(national_day)
+        dts_observed.add(self._add_holiday_oct_1(national_day))
+        dts_observed.add(self._add_holiday_oct_2(national_day))
         if self._year >= 1999:
-            self._add_holiday_oct_3(national_day)
-        if self.observed and 2000 <= self._year != 2008:
-            # Non-Statutory.
-            self._add_holiday_oct_4(national_day)
-            self._add_holiday_oct_5(national_day)
-            self._add_holiday_oct_6(national_day)
-            if self._year != 2023:
-                self._add_holiday_oct_7(national_day)
+            dts_observed.add(self._add_holiday_oct_3(national_day))
 
         if self._year >= 2008:
             # 清明节
@@ -261,11 +147,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
             # Consecutive Holidays are available from 2008, except in 2014/2015/2016/2019.
 
             # Tomb-Sweeping Day.
-            qingming_festival = self._add_qingming_festival(tr("清明节"))
-
-            if self.observed and self._year not in {2014, 2015, 2016, 2019, 2023}:
-                # Non-Statutory.
-                self._add_observed_one_off_holidays(qingming_festival)
+            dts_observed.add(self._add_qingming_festival(tr("清明节")))
 
             # 端午节
             # Status: In-Use (Statutory).
@@ -274,10 +156,8 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
             # Dragon Boat Festival.
             dragon_boat_festival = self._add_dragon_boat_festival(tr("端午节"))
-
-            if self.observed and self._year not in {2014, 2015, 2018, 2019}:
-                # Non-Statutory.
-                self._add_observed_one_off_holidays(dragon_boat_festival)
+            if self._year != 2012:
+                dts_observed.add(dragon_boat_festival)
 
             # 中秋节
             # Status: In-Use (Statutory).
@@ -287,16 +167,11 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticH
 
             # Mid-Autumn Festival.
             mid_autumn_festival = self._add_mid_autumn_festival(tr("中秋节"))
+            if self._year != 2015:
+                dts_observed.add(mid_autumn_festival)
 
-            if self.observed:
-                # Non-Statutory.
-                if mid_autumn_festival.month == OCT and 1 <= mid_autumn_festival.day <= 7:
-                    self._add_holiday_oct_8(national_day)
-                elif mid_autumn_festival == date(self._year, SEP, 29):
-                    self._add_holiday_sep_30(self[mid_autumn_festival])
-                elif self._year not in {2010, 2012, 2014, 2015, 2018, 2019, 2030, 2050, 2096}:
-                    # SEP 30's "no observance added" rule for 2012/2030/2050/2096 included.
-                    self._add_observed_one_off_holidays(mid_autumn_festival)
+        if self.observed:
+            self._populate_observed(dts_observed, multiple=True)
 
     def _populate_half_day_holidays(self):
         # No in lieus are given for this category.
@@ -326,51 +201,234 @@ class CHN(China):
 
 
 class ChinaStaticHolidays:
-    # Special Cases.
+    # Date format (see strftime() Format Codes).
+    substituted_date_format = tr("%Y-%m-%d")
+    # Day off (substituted from %s).
+    substituted_label = tr("休息日（%s日起取代）")
 
-    # New Year's Day.
-    new_years_day_overflow = tr("元旦")
-
-    # National Day.
-    national_day_2008_golden_week = tr("国庆节")
+    # Dragon Boat Festival.
+    dragon_boat_festival = tr("端午节")
 
     # Mid-Autumn Festival.
-    mid_autumn_festival_2010_special = tr("中秋节")
+    mid_autumn_festival = tr("中秋节")
+
+    # 70th Anniversary of the Victory of the Chinese People’s War of Resistance against
+    # Japanese Aggression and the World Anti-Fascist War.
+    victory_70_anniversary = tr("中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日")
 
     special_public_holidays = {
+        2001: (
+            (JAN, 29, JAN, 20),  # Spring Festival
+            (JAN, 30, JAN, 21),  # Spring Festival
+            (MAY, 4, APR, 28),  # Labor Day
+            (MAY, 7, APR, 29),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
+        ),
+        2002: (
+            (JAN, 2, DEC, 29, 2001),  # New Year's Day
+            (JAN, 3, DEC, 30, 2001),  # New Year's Day
+            (FEB, 15, FEB, 9),  # Spring Festival
+            (FEB, 18, FEB, 10),  # Spring Festival
+            (MAY, 6, APR, 27),  # Labor Day
+            (MAY, 7, APR, 28),  # Labor Day
+            (OCT, 4, SEP, 28),  # National Day
+            (OCT, 7, SEP, 29),  # National Day
+        ),
+        2003: (
+            (FEB, 6, FEB, 8),  # Spring Festival
+            (FEB, 7, FEB, 9),  # Spring Festival
+            (MAY, 6, APR, 26),  # Labor Day
+            (MAY, 7, APR, 27),  # Labor Day
+            (OCT, 6, SEP, 27),  # National Day
+            (OCT, 7, SEP, 28),  # National Day
+        ),
+        2004: (
+            (JAN, 27, JAN, 17),  # Spring Festival
+            (JAN, 28, JAN, 18),  # Spring Festival
+            (MAY, 6, MAY, 8),  # Labor Day
+            (MAY, 7, MAY, 9),  # Labor Day
+            (OCT, 6, OCT, 9),  # National Day
+            (OCT, 7, OCT, 10),  # National Day
+        ),
+        2005: (
+            (FEB, 14, FEB, 5),  # Spring Festival
+            (FEB, 15, FEB, 6),  # Spring Festival
+            (MAY, 5, APR, 30),  # Labor Day
+            (MAY, 6, MAY, 8),  # Labor Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
+        ),
+        2006: (
+            (JAN, 3, DEC, 31, 2005),  # New Year's Day
+            (FEB, 2, JAN, 28),  # Spring Festival
+            (FEB, 3, FEB, 5),  # Spring Festival
+            (MAY, 4, APR, 29),  # Labor Day
+            (MAY, 5, APR, 30),  # Labor Day
+            (OCT, 5, SEP, 30),  # National Day
+            (OCT, 6, OCT, 8),  # National Day
+        ),
         2007: (
-            # 2007: Overflow from 2008 Notice.
-            (DEC, 30, new_years_day_overflow),
-            (DEC, 31, new_years_day_overflow),
+            (JAN, 2, DEC, 30, 2006),  # New Year's Day
+            (JAN, 3, DEC, 31, 2006),  # New Year's Day
+            (FEB, 22, FEB, 17),  # Spring Festival
+            (FEB, 23, FEB, 25),  # Spring Festival
+            (MAY, 4, APR, 28),  # Labor Day
+            (MAY, 7, APR, 29),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
+            (DEC, 31, DEC, 29),  # New Year's Day
         ),
         2008: (
-            # 2008: weird National Day Golden Week pattern.
-            (SEP, 29, national_day_2008_golden_week),
-            (SEP, 30, national_day_2008_golden_week),
-            (OCT, 4, national_day_2008_golden_week),
-            (OCT, 5, national_day_2008_golden_week),
+            (FEB, 11, FEB, 2),  # Spring Festival
+            (FEB, 12, FEB, 3),  # Spring Festival
+            (MAY, 2, MAY, 4),  # Labor Day
+            (SEP, 29, SEP, 27),  # National Day
+            (SEP, 30, SEP, 28),  # National Day
+        ),
+        2009: (
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (JAN, 29, JAN, 24),  # Spring Festival
+            (JAN, 30, FEB, 1),  # Spring Festival
+            (MAY, 29, MAY, 31),  # Dragon Boat Festival
+            (OCT, 7, SEP, 27),  # National Day
+            (OCT, 8, OCT, 10),  # National Day
         ),
         2010: (
-            # 2010: doesn't fit with existing observed pattern.
-            (SEP, 23, mid_autumn_festival_2010_special),
-            (SEP, 24, mid_autumn_festival_2010_special),
+            (FEB, 18, FEB, 20),  # Spring Festival
+            (FEB, 19, FEB, 21),  # Spring Festival
+            (JUN, 14, JUN, 12),  # Dragon Boat Festival
+            (JUN, 15, JUN, 13),  # Dragon Boat Festival
+            (SEP, 23, SEP, 19),  # Mid-Autumn Festival
+            (SEP, 24, SEP, 25),  # Mid-Autumn Festival
+            (OCT, 6, SEP, 26),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
+        ),
+        2011: (
+            (FEB, 7, JAN, 30),  # Spring Festival
+            (FEB, 8, FEB, 12),  # Spring Festival
+            (APR, 4, APR, 2),  # Tomb-Sweeping Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
+        ),
+        2012: (
+            (JAN, 3, DEC, 31, 2011),  # New Year's Day
+            (JAN, 26, JAN, 21),  # Spring Festival
+            (JAN, 27, JAN, 29),  # Spring Festival
+            (APR, 2, MAR, 31),  # Tomb-Sweeping Day
+            (APR, 3, APR, 1),  # Tomb-Sweeping Day
+            (APR, 30, APR, 28),  # Labor Day
+            (OCT, 5, SEP, 29),  # National Day
         ),
         2013: (
-            # 2013: doesn't fit with existing observed pattern.
-            (JAN, 2, new_years_day_overflow),
-            (JAN, 3, new_years_day_overflow),
+            (JAN, 2, JAN, 5),  # New Year's Day
+            (JAN, 3, JAN, 6),  # New Year's Day
+            (FEB, 14, FEB, 16),  # Spring Festival
+            (FEB, 15, FEB, 17),  # Spring Festival
+            (APR, 5, APR, 7),  # Tomb-Sweeping Day
+            (APR, 29, APR, 27),  # Labor Day
+            (APR, 30, APR, 28),  # Labor Day
+            (JUN, 10, JUN, 8),  # Dragon Boat Festival
+            (JUN, 11, JUN, 9),  # Dragon Boat Festival
+            (SEP, 20, SEP, 22),  # Mid-Autumn Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
+        ),
+        2014: (
+            (FEB, 5, JAN, 26),  # Spring Festival
+            (FEB, 6, FEB, 8),  # Spring Festival
+            (MAY, 2, MAY, 4),  # Labor Day
+            (OCT, 6, SEP, 28),  # National Day
+            (OCT, 7, OCT, 11),  # National Day
+        ),
+        2015: (
+            (JAN, 2, JAN, 4),  # New Year's Day
+            (FEB, 18, FEB, 15),  # Spring Festival
+            (FEB, 24, FEB, 28),  # Spring Festival
+            (SEP, 3, victory_70_anniversary),
+            (SEP, 4, SEP, 6),  # 70th Anniversary of the Victory
+            (OCT, 7, OCT, 10),  # National Day
+        ),
+        2016: (
+            (FEB, 11, FEB, 6),  # Spring Festival
+            (FEB, 12, FEB, 14),  # Spring Festival
+            (JUN, 10, JUN, 12),  # Dragon Boat Festival
+            (SEP, 16, SEP, 18),  # Mid-Autumn Festival
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
+        ),
+        2017: (
+            (JAN, 27, JAN, 22),  # Spring Festival
+            (FEB, 2, FEB, 4),  # Spring Festival
+            (APR, 3, APR, 1),  # Tomb-Sweeping Day
+            (MAY, 29, MAY, 27),  # Dragon Boat Festival
+            (OCT, 6, SEP, 30),  # National Day
         ),
         2018: (
-            # 2018: Overflow from 2019 Notice.
-            (DEC, 30, new_years_day_overflow),
-            (DEC, 31, new_years_day_overflow),
+            (FEB, 15, FEB, 11),  # Spring Festival
+            (FEB, 21, FEB, 24),  # Spring Festival
+            (APR, 6, APR, 8),  # Tomb-Sweeping Day
+            (APR, 30, APR, 28),  # Labor Day
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 5, SEP, 30),  # National Day
+            (DEC, 31, DEC, 29),  # New Year's Day
+        ),
+        2019: (
+            (FEB, 4, FEB, 2),  # Spring Festival
+            (FEB, 8, FEB, 3),  # Spring Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
+        ),
+        2020: (
+            (JAN, 24, JAN, 19),  # Spring Festival
+            (JAN, 30, FEB, 1),  # Spring Festival
+            (MAY, 4, APR, 26),  # Labor Day
+            (MAY, 5, MAY, 9),  # Labor Day
+            (JUN, 26, JUN, 28),  # Dragon Boat Festival
+            (OCT, 7, SEP, 27),  # National Day
+            (OCT, 8, OCT, 10),  # National Day
+        ),
+        2021: (
+            (FEB, 11, FEB, 7),  # Spring Festival
+            (FEB, 17, FEB, 20),  # Spring Festival
+            (MAY, 4, APR, 25),  # Labor Day
+            (MAY, 5, MAY, 8),  # Labor Day
+            (SEP, 20, SEP, 18),  # Mid-Autumn Festival
+            (OCT, 6, SEP, 26),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2022: (
-            # 2022: Overflow from 2023 Notice.
-            (DEC, 31, new_years_day_overflow),
+            (JAN, 31, JAN, 29),  # Spring Festival
+            (FEB, 4, JAN, 30),  # Spring Festival
+            (APR, 4, APR, 2),  # Tomb-Sweeping Day
+            (MAY, 3, APR, 24),  # Labor Day
+            (MAY, 4, MAY, 7),  # Labor Day
+            (OCT, 6, OCT, 8),  # National Day
+            (OCT, 7, OCT, 9),  # National Day
         ),
         2023: (
-            # 2023: Overflow from 2023 Notice.
-            (JAN, 2, new_years_day_overflow),
+            (JAN, 26, JAN, 28),  # Spring Festival
+            (JAN, 27, JAN, 29),  # Spring Festival
+            (MAY, 2, APR, 23),  # Labor Day
+            (MAY, 3, MAY, 6),  # Labor Day
+            (JUN, 23, JUN, 25),  # Dragon Boat Festival
+            (OCT, 5, OCT, 7),  # National Day
+            (OCT, 6, OCT, 8),  # National Day
         ),
+        2024: (
+            (FEB, 15, FEB, 4),  # Spring Festival
+            (FEB, 16, FEB, 18),  # Spring Festival
+            (APR, 5, APR, 7),  # Tomb-Sweeping Day
+            (MAY, 2, APR, 28),  # Labor Day
+            (MAY, 3, MAY, 11),  # Labor Day
+            (SEP, 16, SEP, 14),  # Mid-Autumn Festival
+            (OCT, 4, SEP, 29),  # National Day
+            (OCT, 7, OCT, 12),  # National Day
+        ),
+    }
+
+    special_public_holidays_observed = {
+        2012: (JUN, 22, dragon_boat_festival),  # observed from Jun 23
+        2015: (OCT, 6, mid_autumn_festival),  # observed from Sep 27
+        2020: (OCT, 6, mid_autumn_festival),  # observed from Oct 1, overlap with National Day
     }

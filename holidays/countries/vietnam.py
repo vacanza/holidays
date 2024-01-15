@@ -21,7 +21,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     """
 
     country = "VN"
-    observed_label = "%s (Observed)"
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)

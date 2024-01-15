@@ -43,7 +43,7 @@ class TimorLeste(
     country = "TL"
     supported_categories = (GOVERNMENT, PUBLIC, WORKDAY)
     default_language = "pt_TL"
-    estimated_label = tr("%s* (*aproximada)")
+    estimated_label = tr("%s (aproximada)")
     supported_languages = ("en_US", "pt_TL", "tet")
 
     def __init__(self, *args, **kwargs):

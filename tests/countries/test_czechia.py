@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 from holidays.countries.czechia import Czechia, CZ, CZE
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestCzechia(TestCase):
+class TestCzechia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Czechia, years=range(1945, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Czechia, CZ, CZE)
+        self.assertAliases(Czechia, CZ, CZE)
 
     def test_new_years_day(self):
         name_1 = "Nový rok"

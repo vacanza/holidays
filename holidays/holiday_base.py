@@ -144,7 +144,7 @@ class HolidayBase(Dict[date, str]):
     (datetime.date(2020, 2, 17), "Washington's Birthday")
     (datetime.date(2020, 5, 25), 'Memorial Day')
     (datetime.date(2020, 7, 4), 'Independence Day')
-    (datetime.date(2020, 7, 3), 'Independence Day (Observed)')
+    (datetime.date(2020, 7, 3), 'Independence Day (observed)')
     (datetime.date(2020, 9, 7), 'Labor Day')
     (datetime.date(2020, 10, 12), 'Columbus Day')
     (datetime.date(2020, 11, 11), 'Veterans Day')

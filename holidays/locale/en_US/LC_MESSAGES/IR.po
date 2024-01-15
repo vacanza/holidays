@@ -18,8 +18,8 @@ msgstr ""
 
 #. Estimated label.
 #, c-format
-msgid "(تخمین زده*) *%s"
-msgstr "%s* (*estimated)"
+msgid "(تخمین زده) %s"
+msgstr "%s (estimated)"
 
 #. Persian New Year.
 msgid "نوروز"

@@ -71,8 +71,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     country = "TO"
     default_language = "to"
-    # %s (Observed).
-    observed_label = tr("%s (Fakatokanga'i)")
+    # %s (observed).
+    observed_label = tr("%s (fakatokanga'i)")
     supported_languages = ("en_US", "to")
 
     def __init__(self, *args, **kwargs):

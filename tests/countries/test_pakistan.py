@@ -11,18 +11,19 @@
 
 from datetime import date
 from datetime import timedelta as td
+from unittest import TestCase
 
 from holidays.countries.pakistan import Pakistan, PK, PAK
-from tests.common import TestCase
+from tests.common import CommonCountryTests
 
 
-class TestPakistan(TestCase):
+class TestPakistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Pakistan, years=range(1948, 2050))
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Pakistan, PK, PAK)
+        self.assertAliases(Pakistan, PK, PAK)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Pakistan(years=1947))
@@ -147,18 +148,18 @@ class TestPakistan(TestCase):
         self.assertHolidays(
             Pakistan(years=2002),
             ("2002-02-05", "Kashmir Solidarity Day"),
-            ("2002-02-22", "Eid-ul-Adha* (*estimated)"),
-            ("2002-02-23", "Eid-ul-Adha* (*estimated)"),
-            ("2002-02-24", "Eid-ul-Adha* (*estimated)"),
-            ("2002-03-23", "Ashura* (*estimated); Pakistan Day"),
-            ("2002-03-24", "Ashura* (*estimated)"),
+            ("2002-02-22", "Eid-ul-Adha (estimated)"),
+            ("2002-02-23", "Eid-ul-Adha (estimated)"),
+            ("2002-02-24", "Eid-ul-Adha (estimated)"),
+            ("2002-03-23", "Ashura (estimated); Pakistan Day"),
+            ("2002-03-24", "Ashura (estimated)"),
             ("2002-05-01", "Labour Day"),
-            ("2002-05-24", "Eid Milad-un-Nabi* (*estimated)"),
+            ("2002-05-24", "Eid Milad-un-Nabi (estimated)"),
             ("2002-08-14", "Independence Day"),
             ("2002-11-09", "Iqbal Day"),
-            ("2002-12-05", "Eid-ul-Fitr* (*estimated)"),
-            ("2002-12-06", "Eid-ul-Fitr* (*estimated)"),
-            ("2002-12-07", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-05", "Eid-ul-Fitr (estimated)"),
+            ("2002-12-06", "Eid-ul-Fitr (estimated)"),
+            ("2002-12-07", "Eid-ul-Fitr (estimated)"),
             ("2002-12-25", "Quaid-e-Azam Day"),
         )
 
