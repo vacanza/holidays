@@ -441,7 +441,7 @@ All other default values are highlighted with bold:
    * - Ghana
      - GH
      -
-     - en
+     - 
      -
    * - Greece
      - GR
