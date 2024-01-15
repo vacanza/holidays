@@ -188,7 +188,7 @@ class TestUzbekistan(CommonCountryTests, TestCase):
             ("2023-06-30", "Additional day off by Presidential decree"),
             ("2023-09-01", "Independence Day"),
             ("2023-10-01", "Teachers and Instructors Day"),
-            ("2023-10-02", "Teachers and Instructors Day (Observed)"),
+            ("2023-10-02", "Teachers and Instructors Day (observed)"),
             ("2023-12-08", "Constitution Day"),
         )
 

@@ -47,7 +47,7 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         http://servicios.lanacion.com.ar/feriados
         https://www.clarin.com/feriados/
     - [Specific Calendar Year]
-        https://www.lanacion.com.ar/feriados/2024/
+        https://www.argentina.gob.ar/interior/feriados-nacionales-2024
         https://www.argentina.gob.ar/interior/feriados-nacionales-2023
         https://www.argentina.gob.ar/interior/feriados-nacionales-2022
         https://www.argentina.gob.ar/interior/feriados-nacionales-2021
@@ -338,5 +338,10 @@ class ArgentinaStaticHolidays:
             (MAY, 26, arg_bridge_public_holiday),
             (JUN, 19, arg_bridge_public_holiday),
             (OCT, 13, arg_bridge_public_holiday),
+        ),
+        2024: (
+            (APR, 1, arg_bridge_public_holiday),
+            (JUN, 21, arg_bridge_public_holiday),
+            (OCT, 11, arg_bridge_public_holiday),
         ),
     }

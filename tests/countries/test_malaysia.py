@@ -1308,3 +1308,22 @@ class TestMalaysia(CommonCountryTests, TestCase):
 
         state_holidays.observed = False
         self.assertNoNonObservedHoliday(state_holidays, dt)
+
+    def test_2024(self):
+        self.assertHolidays(
+            Malaysia(years=2024),
+            ("2024-02-10", "Chinese New Year"),
+            ("2024-04-11", "Second day of Hari Raya Puasa"),
+            ("2024-10-31", "Deepavali"),
+            ("2024-05-01", "Labour Day"),
+            ("2024-05-22", "Vesak Day"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-07-07", "Awal Muharram (Hijri New Year)"),
+            ("2024-02-11", "Chinese New Year Holiday"),
+            ("2024-06-03", "Birthday of SPB Yang di-Pertuan Agong"),
+            ("2024-08-31", "National Day"),
+            ("2024-04-10", "Hari Raya Puasa"),
+            ("2024-06-17", "Hari Raya Haji"),
+            ("2024-09-16", "Malaysia Day; Maulidur Rasul (Birthday of the Prophet Muhammad)"),
+            ("2024-02-12", "Chinese New Year Holiday (in lieu)"),
+        )

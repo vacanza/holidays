@@ -56,12 +56,12 @@ msgstr ""
 msgid "Qurbon hayit"
 msgstr ""
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (taxminiy)"
 msgstr ""
 
-#. %s (Observed).
+#. %s (observed).
 #, c-format
 msgid "%s (ko‘chirilgan)"
 msgstr ""
@@ -77,4 +77,9 @@ msgstr ""
 
 #. Additional day off by Presidential decree.
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
 msgstr ""
