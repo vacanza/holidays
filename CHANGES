@@ -1,3 +1,29 @@
+Version 0.41
+============
+
+Released January 15, 2024
+
+- Introduce observed_estimated_label (#1633 by @arkid15r)
+- Refactor Thai calendar (#1628 by @KJhellico)
+- Update Portugal holidays: add uk localization (#1616 by @KJhellico)
+- Fix dev env setup issues  (#1627 by @peter-ni-noob)
+- Update Argentina holidays (#1641 by @KJhellico)
+- Update China holidays: add observed and substituted holidays in 2001-2024 (#1613 by @KJhellico)
+- Update Cyprus holidays (#1632 by @KJhellico)
+- Update Malaysia holidays (#1625 by @shahonseven, @arkid15r)
+- Update Paraguay holidays (#1634 by @KJhellico)
+- Update Thailand holidays (#1626 by @PPsyrius)
+- Update US holidays: add CO Cesar Chavez Day (#1629 by @nwithan8)
+- Update Uzbekistan holidays, add l10n support (#1622 by @KJhellico)
+- Update common tests (#1637 by @arkid15r)
+- Update estimated label uk l10n (#1635 by @arkid15r)
+- Document the release process (#1611 by @arkid15r)
+- Implement en_US localization for all localized countries (#1614 by @KJhellico)
+- Move RELEASE.rst to upper level (#1623 by @arkid15r)
+- Refresh snapshots, reformat th/cn.po (#1631 by @arkid15r)
+- Simplify estimated label text (#1615 by @KJhellico)
+- Unify observed labels format (#1636 by @arkid15r)
+
 Version 0.40
 ============
 
