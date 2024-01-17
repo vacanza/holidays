@@ -62,3 +62,43 @@ class TestGhana(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
         )
+
+
+    def test_2023(self):
+        self.assertHolidays(
+            Ghana(years=2023),
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02","New Year's Day (observed)"),
+            ("2023-01-07","Constitution Day"),
+            ("2023-01-09","Constitution Day (observed)"),
+            ("2023-03-06", "Independence Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-05-01", "May Day"),
+            ("2023-04-21", "Eid ul-Fitr (estimated)"),
+            ("2023-06-28", "Eid ul-Adha (estimated)"),
+            ("2023-08-04", "Founders' Day"),
+            ("2023-09-21", "Kwame Nkrumah Memorial Day"),
+            ("2023-12-01", "Farmer's Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),) 
+    
+    def test_2024(self):
+        self.assertHolidays(
+            Ghana(years=2024),
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-07","Constitution Day"),
+            ("2024-01-08","Constitution Day (observed)"),
+            ("2024-03-06", "Independence Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-01", "May Day"),
+            ("2024-04-10", "Eid ul-Fitr (estimated)"),
+            ("2024-06-16", "Eid ul-Adha (estimated)"),
+            ("2024-08-04", "Founders' Day"),
+            ("2024-08-05", "Founders' Day (observed)"),
+            ("2024-09-21", "Kwame Nkrumah Memorial Day"),
+            ("2024-09-23", "Kwame Nkrumah Memorial Day (observed)"),
+            ("2024-12-06", "Farmer's Day"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),)

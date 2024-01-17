@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import InternationalHolidays, ChristianHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import ObservedHolidayBase,SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, IslamicHolidays):
@@ -26,7 +26,7 @@ class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, Islam
         ChristianHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
