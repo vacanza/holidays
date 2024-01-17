@@ -10,7 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import InternationalHolidays, ChristianHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase,SAT_SUN_TO_NEXT_WORKDAY
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
 
 
 class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, IslamicHolidays):
@@ -26,7 +30,7 @@ class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, Islam
         ChristianHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -45,35 +49,42 @@ class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, Islam
         self._add_observed(self._add_holiday_mar_6("Independence Day"))
 
         # Good Friday
-        self._add_observed(self._add_good_friday("Good Friday"))
+        self._add_good_friday("Good Friday")
 
         # Easter Monday
-        self._add_observed(self._add_easter_monday("Easter Monday"))
+        self._add_easter_monday("Easter Monday")
 
         # May Day(Workers' Day)
         self._add_observed(self._add_labor_day("May Day"))
 
         # Eid al-Fitr
-        self._add_eid_al_fitr_day("Eid ul-Fitr")
+        for dt in self._add_eid_al_fitr_day("Eid ul-Fitr"):
+            self._add_observed(dt)
 
         # Eid al-Adha
-        self._add_eid_al_adha_day("Eid ul-Adha")
+        for dt in self._add_eid_al_adha_day("Eid ul-Adha"):
+            self._add_observed(dt)
 
         # Founders' Day
         if self._year >= 2019:
             self._add_observed(self._add_holiday_aug_4("Founders' Day"))
 
-        # Kwame Nkrumah Memorial Day (formerly founder's Day))
-        self._add_observed(self._add_holiday_sep_21("Kwame Nkrumah Memorial Day"))
+        # Kwame Nkrumah Memorial Day / founder's Day
+        if self._year >= 2009:
+            self._add_observed(
+                self._add_holiday_sep_21(
+                    "Kwame Nkrumah Memorial Day" if self._year >= 2019 else "Founder's Day"
+                )
+            )
 
         # Farmer's Day
-        self._add_observed(self._add_holiday_1st_fri_of_dec("Farmer's Day"))
+        self._add_holiday_1st_fri_of_dec("Farmer's Day")
 
         # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"))
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Boxing Day
-        self._add_observed(self._add_christmas_day_two("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
 
 class GH(Ghana):
