@@ -744,6 +744,7 @@ class TestChina(CommonCountryTests, TestCase):
 
     def test_2020_public_holiday(self):
         # https://www.gov.cn/gongbao/content/2019/content_5459138.htm
+        # https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm
         self.assertHolidays(
             China(categories=PUBLIC, years=2020),
             ("2020-01-01", "元旦"),
@@ -753,7 +754,10 @@ class TestChina(CommonCountryTests, TestCase):
             ("2020-01-27", "春节"),
             ("2020-01-28", "春节（观察日）"),
             ("2020-01-29", "春节（观察日）"),
-            ("2020-01-30", "休息日（2020-02-01日起取代）"),
+            ("2020-01-30", "春节（观察日）"),
+            ("2020-01-31", "春节延长假期"),
+            ("2020-02-01", "春节延长假期"),
+            ("2020-02-02", "春节延长假期"),
             ("2020-04-04", "清明节"),
             ("2020-04-06", "清明节（观察日）"),
             ("2020-05-01", "劳动节"),
