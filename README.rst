@@ -342,7 +342,7 @@ All other default values are highlighted with bold:
      - CR
      -
      - en_US, **es**, uk
-     -
+     - OPTIONAL
    * - Croatia
      - HR
      -
