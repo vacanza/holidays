@@ -268,6 +268,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_ne_public_holidays(self):
         dt = self._add_new_years_day_two(tr("Berchtoldstag"))
+        # Jan 2 is public holiday only when it falls on Monday (Jan 1 falls on Sunday).
         if not self._is_monday(dt):
             self.pop(dt)
 
