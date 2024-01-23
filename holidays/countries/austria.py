@@ -4,7 +4,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#  Authors: Stephan Helma <s.p.helma@gmx.net> (c) 2024
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -21,7 +22,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "de"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
-    subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
+    subdivisions = ("B", "K", "N", "O", "S", "St", "T", "V", "W")
+    _deprecated_subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -29,7 +31,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Set the default subdivision.
         if not kwargs.get("subdiv", kwargs.get("state")):
-            kwargs["subdiv"] = "9"
+            kwargs["subdiv"] = "W"
 
         super().__init__(*args, **kwargs)
 
