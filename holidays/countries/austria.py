@@ -107,6 +107,46 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))
 
+    def _populate_subdiv_1_bank_holidays(self):
+        # Patron saint of Burgenland: Hl. Martin von Tours (St. Martin of Tours)
+        self._add_holiday_nov_11(tr("Hl. Martin"))
+
+    def _populate_subdiv_2_bank_holidays(self):
+        # Patron saint of Carinthia: Hl. Josef (St. Joseph's day)
+        self._add_holiday_mar_19(tr("Hl. Josef"))
+
+        # Tag der Volksabstimmung (1920 Carinthian plebiscite)
+        self._add_holiday_oct_10(tr("Tag der Volksabstimmung"))
+
+    def _populate_subdiv_3_bank_holidays(self):
+        # Patron saint of Lower Austria: Hl. Leopold III. (St. Leopold III)
+        self._add_holiday_nov_15(tr("Hl. Leopold"))
+
+    def _populate_subdiv_4_bank_holidays(self):
+        # Patron saint of Upper Austria: Hl. Florian von Lorch (St. Florian)
+        if self._year >= 2004:
+            self._add_holiday_mai_4(tr("Hl. Florian"))
+
+    def _populate_subdiv_5_bank_holidays(self):
+        # Patron saint of Salzburg: Hl. Rupert von Salzburg (St. Rupert of Salzburg)
+        self._add_holiday_sep_24(tr("Hl. Rupert"))
+
+    def _populate_subdiv_6_bank_holidays(self):
+        # Patron saint of Styria: Hl. Josef (St. Joseph's day)
+        self._add_holiday_mar_19(tr("Hl. Josef"))
+
+    def _populate_subdiv_7_bank_holidays(self):
+        # Patron saint of Tyrol: Hl. Josef (St. Joseph's day)
+        self._add_holiday_mar_19(tr("Hl. Josef"))
+
+    def _populate_subdiv_8_bank_holidays(self):
+        # Patron saint of Vorarlberg: Hl. Josef (St. Joseph's day)
+        self._add_holiday_mar_19(tr("Hl. Josef"))
+
+    def _populate_subdiv_9_bank_holidays(self):
+        # Patron saint of Vienna: Hl. Leopold III. (St. Leopold III)
+        self._add_holiday_nov_15(tr("Hl. Leopold"))
+
 
 class AT(Austria):
     pass
