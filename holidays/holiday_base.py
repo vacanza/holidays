@@ -209,6 +209,9 @@ class HolidayBase(Dict[date, str]):
     """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
+    subdivisions_aliases: Optional[Dict[str, str]] = {}
+    """Aliases for the ISO3166-2 subdivision codes with the key as alias and
+    the value the ISO3166-2 subdivision code."""
     years: Set[int]
     """The years calculated."""
     expand: bool
@@ -217,7 +220,7 @@ class HolidayBase(Dict[date, str]):
     observed: bool
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
-    """The subdiv requested."""
+    """The subdiv requested as ISO3166-2 code or one of the aliases."""
     special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
@@ -262,8 +265,8 @@ class HolidayBase(Dict[date, str]):
             following Monday). This doesn't work for all countries.
 
         :param subdiv:
-            The subdivision (e.g. state or province); not implemented for all
-            countries (see documentation).
+            The subdivision (e.g. state or province) as ISO3166-2 code or
+            alias; not implemented for all countries (see documentation).
 
         :param prov:
             *deprecated* use subdiv instead.
@@ -307,7 +310,10 @@ class HolidayBase(Dict[date, str]):
             # Unsupported subdivisions.
             if (
                 not isinstance(self, HolidaySum)
-                and subdiv not in self.subdivisions + self._deprecated_subdivisions
+                and subdiv not in(
+                    self.subdivisions +
+                    tuple(self.subdivisions_aliases) +
+                    self._deprecated_subdivisions)
             ):
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
@@ -326,7 +332,9 @@ class HolidayBase(Dict[date, str]):
                 warnings.warn(
                     "This subdivision is deprecated and will be removed after "
                     "Dec, 1 2023. The list of supported subdivisions: "
-                    f"{', '.join(sorted(self.subdivisions))}.",
+                    f"{', '.join(sorted(self.subdivisions))}; "
+                    "the list of supported subdivision aliases: "
+                    f"{', '.join(sorted(self.subdivisions_aliases))}.",
                     DeprecationWarning,
                 )
 
@@ -657,7 +665,8 @@ class HolidayBase(Dict[date, str]):
 
     @cached_property
     def _normalized_subdiv(self):
-        return self.subdiv.translate(
+        subdiv = self.subdivisions_aliases.get(self.subdiv, self.subdiv)
+        return subdiv.translate(
             str.maketrans(
                 {
                     "-": "_",
