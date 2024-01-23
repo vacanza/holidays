@@ -2,9 +2,9 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2023-04-11 18:11+0300\n"
+"PO-Revision-Date: 2024-01-21 14:49+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -13,23 +13,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Neujahrestag"
 msgstr "Новий рік"
 
-#. Easter Sunday.
-msgid "Ostern"
-msgstr "Великдень"
-
 #. Ascension Day.
 msgid "Auffahrt"
 msgstr "Вознесіння Господнє"
-
-#. Whit Sunday.
-msgid "Pfingsten"
-msgstr "Трійця"
 
 #. National Day.
 msgid "Nationalfeiertag"
@@ -63,7 +55,7 @@ msgstr "День Святого Бертольда"
 msgid "Fronleichnam"
 msgstr "Свято Тіла і Крові Христових"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
@@ -79,7 +71,7 @@ msgstr "Непорочне зачаття Діви Марії"
 msgid "Tag der Arbeit"
 msgstr "День праці"
 
-#. Thursday after the first Sunday of September Genevan Fast.
+#. Genevan Fast.
 msgid "Genfer Bettag"
 msgstr "Женевський піст"
 
@@ -115,6 +107,6 @@ msgstr "Богоявлення"
 msgid "Peter und Paul"
 msgstr "День Святих Петра і Павла"
 
-#. Monday after the third Sunday of September Prayer Monday.
+#. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Молитовний понеділок"
