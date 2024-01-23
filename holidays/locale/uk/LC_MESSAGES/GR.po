@@ -24,7 +24,7 @@ msgstr "Новий рік"
 msgid "Θεοφάνεια"
 msgstr "Богоявлення"
 
-#. Clean Monday.
+#. Green Monday.
 msgid "Καθαρά Δευτέρα"
 msgstr "Чистий понеділок"
 
@@ -40,11 +40,11 @@ msgstr "Страсна пʼятниця"
 msgid "Δευτέρα του Πάσχα"
 msgstr "Великодній понеділок"
 
-#. Monday of the Holy Spirit.
+#. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr "День Святого Духа"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Εργατική Πρωτομαγιά"
 msgstr "День праці"
 

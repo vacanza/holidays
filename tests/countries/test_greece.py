@@ -74,7 +74,7 @@ class TestGreece(CommonCountryTests, TestCase):
             "2024-05-06",
         )
 
-    def test_monday_of_the_holy_spirit(self):
+    def test_whit_monday(self):
         self.assertHolidayName(
             "Δευτέρα του Αγίου Πνεύματος",
             "2018-05-28",
@@ -86,19 +86,17 @@ class TestGreece(CommonCountryTests, TestCase):
             "2024-06-24",
         )
 
-    def test_labour_day_observed(self):
+    def test_labor_day_observed(self):
         name_observed = "Εργατική Πρωτομαγιά (παρατηρήθηκε)"
         dt = (
-            "2011-05-02",
-            "2016-05-03",
             "2021-05-04",
             "2022-05-02",
         )
         self.assertHolidayName(name_observed, dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(name_observed, 2017, 2018, 2019, 2020, 2023)
+        self.assertNoHolidayName(name_observed, range(2000, 2021), 2023)
 
-    def test_hal_day_2022(self):
+    def test_half_day_2022(self):
         self.assertHolidays(
             Greece(categories=HALF_DAY, years=2022),
             ("2022-12-24", "Παραμονή Χριστουγέννων"),
@@ -133,13 +131,13 @@ class TestGreece(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
-            ("2022-03-07", "Clean Monday"),
+            ("2022-03-07", "Green Monday"),
             ("2022-03-25", "Independence Day"),
             ("2022-04-22", "Good Friday"),
             ("2022-04-25", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Labor Day (observed)"),
-            ("2022-06-13", "Easter Monday"),
+            ("2022-06-13", "Whit Monday"),
             ("2022-08-15", "Dormition of the Mother of God"),
             ("2022-10-28", "Ochi Day"),
             ("2022-12-24", "Christmas Eve"),
