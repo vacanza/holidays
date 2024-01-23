@@ -21,7 +21,28 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "de"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
-    subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
+    subdivisions = (
+        "1",    # Burgenland
+        "2",    # Kärnten
+        "3",    # Niederösterreich
+        "4",    # Oberösterreich
+        "5",    # Salzburg
+        "6",    # Steiermark
+        "7",    # Tirol
+        "8",    # Vorarlberg
+        "9"     # Wien
+    )
+    subdivisions_aliases = {
+        "B": "1", "Bgl": "1", "Burgenland": "1",
+        "K": "2", "Ktn": "2", "Kärnten": "2", "Carinthia": "2",
+        "N": "3", "NÖ": "3", "Niederösterreich": "3", "Lower Austria": "3",
+        "O": "4", "OÖ": "4", "Oberösterreich": "4", "Upper Austria": "4",
+        "S": "5", "Sbg": "5", "Salzburg": "5",
+        "St": "6", "Stmk": "6", "Steiermark": "6", "Styria": "6",
+        "T": "7", "Tirol": "7", "Tyrol": "7",
+        "V": "8", "Vbg": "8", "Vorarlberg": "8",
+        "W": "9", "Wien": "9", "Vienna": "9"
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
