@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"PO-Revision-Date: 2024-01-23 19:21+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: hr\n"
@@ -14,17 +14,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
-msgid "Nova Godina"
+msgid "Nova godina"
 msgstr ""
 
 #. Epiphany.
 msgid "Bogojavljenje ili Sveta tri kralja"
 msgstr ""
 
-#. Easter.
+#. Easter Sunday.
 msgid "Uskrs"
 msgstr ""
 
@@ -36,8 +36,8 @@ msgstr ""
 msgid "Tijelovo"
 msgstr ""
 
-#. International Workers' Day.
-msgid "Međunarodni praznik rada"
+#. Labor Day.
+msgid "Praznik rada"
 msgstr ""
 
 #. Statehood Day.
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Dan pobjede i domovinske zahvalnosti"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Velika Gospa"
 msgstr ""
 
@@ -68,8 +68,10 @@ msgstr ""
 msgid "Svi sveti"
 msgstr ""
 
-#. Memorial Day.
-msgid "Dan sjećanja"
+#. Remembrance Day.
+msgid ""
+"Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i "
+"Škabrnje"
 msgstr ""
 
 #. Christmas Day.
