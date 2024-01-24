@@ -342,7 +342,7 @@ All other default values are highlighted with bold:
      - CR
      -
      - en_US, **es**, uk
-     -
+     - OPTIONAL
    * - Croatia
      - HR
      -
@@ -775,9 +775,9 @@ All other default values are highlighted with bold:
      -
    * - Switzerland
      - CH
-     - Cantons: AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+     - Cantons: AG, AI, AR, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
      - **de**, en_US, fr, it, uk
-     -
+     - HALF_DAY, OPTIONAL
    * - Taiwan
      - TW
      -

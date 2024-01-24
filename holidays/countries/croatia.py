@@ -33,15 +33,18 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        if self._year <= 1991:
+            return None
+
         # New Year's Day.
-        self._add_new_years_day(tr("Nova Godina"))
+        self._add_new_years_day(tr("Nova godina"))
 
         if self._year != 2002:
             # Epiphany.
             self._add_epiphany_day(tr("Bogojavljenje ili Sveta tri kralja"))
 
         if self._year >= 2009:
-            # Easter.
+            # Easter Sunday.
             self._add_easter_sunday(tr("Uskrs"))
 
         # Easter Monday.
@@ -51,8 +54,8 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Tijelovo"))
 
-        # International Workers' Day.
-        self._add_labor_day(tr("Međunarodni praznik rada"))
+        # Labor Day.
+        self._add_labor_day(tr("Praznik rada"))
 
         if self._year >= 1996:
             # Statehood Day.
@@ -74,7 +77,7 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
         self._add_holiday_aug_5(name)
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Velika Gospa"))
 
         if 2002 <= self._year <= 2019:
@@ -85,8 +88,13 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_all_saints_day(tr("Svi sveti"))
 
         if self._year >= 2020:
-            # Memorial Day.
-            self._add_holiday_nov_18(tr("Dan sjećanja"))
+            self._add_holiday_nov_18(
+                # Remembrance Day.
+                tr(
+                    "Dan sjećanja na žrtve Domovinskog rata i "
+                    "Dan sjećanja na žrtvu Vukovara i Škabrnje"
+                )
+            )
 
         # Christmas Day.
         self._add_christmas_day(tr("Božić"))

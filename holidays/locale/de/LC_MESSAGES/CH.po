@@ -2,9 +2,9 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2023-04-11 17:12+0300\n"
+"PO-Revision-Date: 2024-01-21 14:46+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: de\n"
@@ -13,22 +13,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Neujahrestag"
 msgstr ""
 
-#. Easter Sunday.
-msgid "Ostern"
-msgstr ""
-
 #. Ascension Day.
 msgid "Auffahrt"
-msgstr ""
-
-#. Whit Sunday.
-msgid "Pfingsten"
 msgstr ""
 
 #. National Day.
@@ -63,7 +55,7 @@ msgstr ""
 msgid "Fronleichnam"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr ""
 
@@ -79,7 +71,7 @@ msgstr ""
 msgid "Tag der Arbeit"
 msgstr ""
 
-#. Thursday after the first Sunday of September Genevan Fast.
+#. Genevan Fast.
 msgid "Genfer Bettag"
 msgstr ""
 
@@ -115,6 +107,6 @@ msgstr ""
 msgid "Peter und Paul"
 msgstr ""
 
-#. Monday after the third Sunday of September Prayer Monday.
+#. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr ""

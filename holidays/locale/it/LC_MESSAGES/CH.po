@@ -2,9 +2,9 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2023-04-11 17:52+0300\n"
+"PO-Revision-Date: 2024-01-21 14:48+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: it\n"
@@ -13,23 +13,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Neujahrestag"
 msgstr "Capodanno"
 
-#. Easter Sunday.
-msgid "Ostern"
-msgstr "Pasqua"
-
 #. Ascension Day.
 msgid "Auffahrt"
 msgstr "Ascensione di Gesù"
-
-#. Whit Sunday.
-msgid "Pfingsten"
-msgstr "Pentecoste"
 
 #. National Day.
 msgid "Nationalfeiertag"
@@ -63,7 +55,7 @@ msgstr "Giorno di Bertoldo"
 msgid "Fronleichnam"
 msgstr "Corpus Domini"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Mariä Himmelfahrt"
 msgstr "Assunzione di Maria"
 
@@ -79,7 +71,7 @@ msgstr "Immacolata Concezione"
 msgid "Tag der Arbeit"
 msgstr "Festa del lavoro"
 
-#. Thursday after the first Sunday of September Genevan Fast.
+#. Genevan Fast.
 msgid "Genfer Bettag"
 msgstr "Jeûne genevois"
 
@@ -115,6 +107,6 @@ msgstr "Epifania"
 msgid "Peter und Paul"
 msgstr "Santi Pietro e Paolo"
 
-#. Monday after the third Sunday of September Prayer Monday.
+#. Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Digiuno Ginevrino"
