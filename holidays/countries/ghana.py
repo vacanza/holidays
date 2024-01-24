@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import InternationalHolidays, ChristianHolidays, IslamicHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -17,7 +17,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, IslamicHolidays):
+class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://www.mint.gov.gh/statutory-public-holidays/
     https://en.wikipedia.org/wiki/Public_holidays_in_Ghana
@@ -28,8 +28,8 @@ class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, Islam
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -69,7 +69,7 @@ class Ghana(ObservedHolidayBase, InternationalHolidays, ChristianHolidays, Islam
         if self._year >= 2019:
             self._add_observed(self._add_holiday_aug_4("Founders' Day"))
 
-        # Kwame Nkrumah Memorial Day / founder's Day
+        # Kwame Nkrumah Memorial Day / Founder's Day
         if self._year >= 2009:
             self._add_observed(
                 self._add_holiday_sep_21(
