@@ -144,8 +144,10 @@ Available Countries
 
 We currently support 141 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
-than one language for holiday names output.
+for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
+names or abbreviations as aliases for their subdivisions. These are defined in
+the (optional) ``subdivisions_aliases`` attribute.
+Some of the countries support more than one language for holiday names output.
 A default language is defined by ``default_language`` (optional) attribute
 for each entity and is used as a fallback when neither user specified
 language nor user locale language available. The default language code is
