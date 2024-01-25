@@ -46,7 +46,11 @@ class TestReadme(TestCase):
         country_subdivisions = {}
         country_supported_languages = {}
         country_supported_categories = {}
+        # Subdivisions are listed after an identifier followed by a colon
         subdivisions_re = re.compile(".*: (.*)")
+        # Split by comma, but not if comma is inside brackets
+        subdivision_split_re = re.compile(r",(?!(?:[^(]*\([^)]*\))*[^()]*\))")
+
         table_content = [
             line.strip()
             for line in re.findall(
@@ -78,13 +82,13 @@ class TestReadme(TestCase):
                         country_subdivisions[country_code] = []
                         continue
 
-                    # Combine all subdivision codes.
+                    # Combine all subdivision codes with aliases removed.
                     country_subdivisions[country_code].extend(
                         [
-                            subdivision_code.strip("* ")
-                            for subdivision_code in subdivisions_re.findall(subdivision_group)[
-                                0
-                            ].split(",")
+                            subdivision_code.split(maxsplit=1)[0].strip("* ")
+                            for subdivision_code in subdivision_split_re.split(
+                                subdivisions_re.findall(subdivision_group)[0]
+                            )
                         ]
                     )
 
