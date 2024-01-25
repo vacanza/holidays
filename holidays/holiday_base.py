@@ -210,8 +210,8 @@ class HolidayBase(Dict[date, str]):
     subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
     subdivisions_aliases: Optional[Dict[str, str]] = {}
-    """Aliases for the ISO3166-2 subdivision codes with the key as alias and
-    the value the ISO3166-2 subdivision code."""
+    """Aliases for the ISO 3166-2 subdivision codes with the key as alias and
+    the value the ISO 3166-2 subdivision code."""
     years: Set[int]
     """The years calculated."""
     expand: bool
@@ -220,7 +220,7 @@ class HolidayBase(Dict[date, str]):
     observed: bool
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
-    """The subdiv requested as ISO3166-2 code or one of the aliases."""
+    """The subdiv requested as ISO 3166-2 code or one of the aliases."""
     special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
@@ -265,7 +265,7 @@ class HolidayBase(Dict[date, str]):
             following Monday). This doesn't work for all countries.
 
         :param subdiv:
-            The subdivision (e.g. state or province) as ISO3166-2 code or
+            The subdivision (e.g. state or province) as ISO 3166-2 code or
             alias; not implemented for all countries (see documentation).
 
         :param prov:
