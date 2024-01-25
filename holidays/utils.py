@@ -385,3 +385,20 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         supported subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
+
+
+def list_supported_aliases(holiday: HolidayBase) -> Dict[str, List[str]]:
+    """
+    Get all aliases for all subdivisions.
+
+    :param holiday:
+        The holiday class or object to be investigated.
+
+    :return:
+        A dictionary where key is the ISO 3166-2 subdivision code and value is
+        a list of supported aliases.
+    """
+    r: Dict[str, List[str]] = {subdiv: [] for subdiv in holiday.subdivisions}
+    for alias, subdiv in holiday.subdivisions_aliases.items():
+        r[subdiv].append(alias)
+    return r
