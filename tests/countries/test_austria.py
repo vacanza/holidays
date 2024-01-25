@@ -148,6 +148,7 @@ class TestAustria(CommonCountryTests, TestCase):
         self.assertHolidays(
             Austria(categories=BANK, years=2022),
             ("2022-04-15", "Karfreitag"),
+            ("2022-11-15", "Hl. Leopold"),
             ("2022-12-24", "Heiliger Abend"),
             ("2022-12-31", "Silvester"),
         )
@@ -158,6 +159,12 @@ class TestAustria(CommonCountryTests, TestCase):
             self.assertEqual(AT(prov=code).subdiv, "9")
             self.assertEqual(AT(state=code).subdiv, "9")
             self.assertEqual(AT(subdiv=code).subdiv, "9")
+
+    def test_subdivisions_aliases(self):
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+        for code in ("W", "Wien", "Vienna"):
+            self.assertEqual(AT(subdiv=code).subdiv, code)
+            self.assertEqual(AT(subdiv=code).subdivisions_aliases[code], "9")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -172,6 +179,7 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-10-26", "Nationalfeiertag"),
             ("2022-11-01", "Allerheiligen"),
+            ("2022-11-15", "Hl. Leopold"),
             ("2022-12-08", "Mariä Empfängnis"),
             ("2022-12-24", "Heiliger Abend"),
             ("2022-12-25", "Christtag"),
@@ -193,6 +201,7 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-08-15", "Assumption Day"),
             ("2022-10-26", "National Day"),
             ("2022-11-01", "All Saints' Day"),
+            ("2022-11-15", "St. Leopold III"),
             ("2022-12-08", "Immaculate Conception"),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
@@ -214,6 +223,7 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-10-26", "Національне свято"),
             ("2022-11-01", "День усіх святих"),
+            ("2022-11-15", "Hl. Leopold"),
             ("2022-12-08", "Непорочне зачаття Діви Марії"),
             ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
