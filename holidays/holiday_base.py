@@ -209,7 +209,7 @@ class HolidayBase(Dict[date, str]):
     """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
-    subdivisions_aliases: Optional[Dict[str, str]] = {}
+    subdivisions_aliases: Dict[str, str] = {}
     """Aliases for the ISO 3166-2 subdivision codes with the key as alias and
     the value the ISO 3166-2 subdivision code."""
     years: Set[int]
@@ -308,12 +308,10 @@ class HolidayBase(Dict[date, str]):
                 subdiv = str(subdiv)
 
             # Unsupported subdivisions.
-            if (
-                not isinstance(self, HolidaySum)
-                and subdiv not in(
-                    self.subdivisions +
-                    tuple(self.subdivisions_aliases) +
-                    self._deprecated_subdivisions)
+            if not isinstance(self, HolidaySum) and subdiv not in (
+                self.subdivisions
+                + tuple(self.subdivisions_aliases)
+                + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
