@@ -160,7 +160,8 @@ bank holidays, school holidays, additional (paid or non-paid) holidays, holidays
 public employees, religious holidays (valid only for these religions followers). A list of all
 categories supported by country is defined by ``supported_categories`` (optional) attribute.
 
-The following is a list of supported countries, their subdivisions, available languages and
+The following is a list of supported countries, their subdivisions with some
+possible aliases in brackets, available languages and
 additional categories. All countries support **PUBLIC** holidays category by default.
 All other default values are highlighted with bold:
 
@@ -222,7 +223,7 @@ All other default values are highlighted with bold:
      -
    * - Austria
      - AT
-     - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
+     - States: 1 (B, …), 2 (K, …), 3 (N, …), 4 (O, …), 5 (S, …), 6 (St, …), 7 (T, …), 8 (V, …), **9** (W, …)
      - **de**, en_US, uk
      - BANK
    * - Azerbaijan
