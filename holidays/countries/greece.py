@@ -16,8 +16,8 @@ from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_WORKDAY,
     MON_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
 
 
