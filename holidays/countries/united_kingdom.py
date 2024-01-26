@@ -58,11 +58,9 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
-        super().__init__(*args, **kwargs)
-
-    def _is_observed(self, dt: date) -> bool:
         # Bank Holidays Extension Act 1875
-        return self._year >= 1875
+        kwargs.setdefault("observed_since", 1875)
+        super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
         # Bank Holidays Act 1871
