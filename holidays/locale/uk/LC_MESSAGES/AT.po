@@ -93,7 +93,7 @@ msgstr "День Святого Йосипа"
 
 #. Tag der Volksabstimmung (1920 Carinthian plebiscite)
 msgid "Tag der Volksabstimmung"
-msgstr ""
+msgstr "Річниця референдуму 1920 року в Карінтії"
 
 #. Patron saint of Lower Austria: Hl. Leopold III. (St. Leopold III)
 #. Patron saint of Vienna: Hl. Leopold III. (St. Leopold III)
