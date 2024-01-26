@@ -68,8 +68,18 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         if self._year <= 1951:
             return None
 
+        # New Year's Day.
+        # Available online source shown that this was celebrated since at least 1952.
+        # Was briefly removed in 1983 only to be added back again before that came to effect.
+
+        # New Year's Day
+        self._add_observed(self._add_new_years_day("New Year's Day"))
+
         # Good Friday
         self._add_good_friday("Good Friday")
+
+        # Easter Monday
+        self._add_easter_monday("Easter Monday")
 
         # May Day
         # This only starts in 1980 (instead of 1978) for Jersey.
@@ -106,9 +116,6 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Whit Monday.
             self._add_whit_monday("Whit Monday")
 
-        # Easter Monday
-        self._add_easter_monday("Easter Monday")
-
         # Late Summer Bank Holiday
         # Current Pattern started in 1970. Was previously first Monday of September for Jersey.
 
@@ -133,18 +140,6 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 self._is_saturday(liberation_day) and self._year <= 2010
             ):
                 self.pop(liberation_day)
-
-    def _populate_subdiv_holidays(self):
-        # Earliest available piece of law available is from 1952.
-        if self._year <= 1951:
-            return None
-
-        # New Year's Day.
-        # Available online source shown that this was celebrated since at least 1952.
-        # Was briefly removed in 1983 only to be added back again before that came to effect.
-
-        # New Year's Day
-        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Christmas Day
         christmas_day = self._add_christmas_day("Christmas Day")
@@ -191,15 +186,14 @@ class JerseyStaticHolidays:
     # Mostly a direct copy of UnitedKingdomStaticHolidays.
 
     # Jersey Specifics:
-    #   - Queen Elizabeth II's Royal Visit (1957, 1978, 1989)*
-    #        *2004 one falls on existing Liberation Day, source on 2001 ones declared
-    #         as public holiday not available.
-    #   - 75th VE Day Anniversary (2020) (May Day also moved from original schedule)
+    #   - Queen Elizabeth II's Royal Visit (1957, 1978, 1989, 2001)*
+    #        *2004 one falls on existing Liberation Day.
+    #   - 75th VE Day Anniversary (2020)
     #   - 250th Corn Riots/Code of 1771 Anniversary (2021).
 
     # Jersey-specific Special Observance
     #   - New Year's Day (1977, 1983, 1994, 2000)
-    #   - Boxing Day (1976, 1981, 1987, 1992, 1993, 1998, 1999, 2009)
+    #   - Boxing Day (1976, 1981, 1982, 1987, 1992, 1993, 1994, 1998, 1999, 2009)
 
     # New Year's Day
     new_years_day_in_lieu = "New Year's Day"
