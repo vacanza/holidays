@@ -82,7 +82,7 @@ msgstr "Переддень Нового року"
 
 #. Patron saint of Burgenland: Hl. Martin von Tours (St. Martin of Tours)
 msgid "Hl. Martin"
-msgstr ""
+msgstr "День Святого Мартина"
 
 #. Patron saint of Carinthia: Hl. Josef (St. Joseph's day)
 #. Patron saint of Styria: Hl. Josef (St. Joseph's day)
