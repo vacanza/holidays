@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import NON_PUBLIC, PUBLIC
 from holidays.countries.united_states import US
 
 
@@ -18,11 +19,16 @@ class HolidaysMP(US):
     # https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1
 
     country = "MP"
+    supported_categories = (NON_PUBLIC, PUBLIC)
     subdivisions = ()  # Override US subdivisions.
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "MP"
         super()._populate_public_holidays()
+
+    def _populate_non_public_holidays(self) -> None:
+        self.subdiv = "MP"
+        super()._populate_non_public_holidays()
 
 
 class MP(HolidaysMP):

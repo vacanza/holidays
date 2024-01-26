@@ -1595,12 +1595,16 @@ class TestUS(CommonCountryTests, TestCase):
             "2020-11-03",
             "2024-11-05",
         )
-        self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1844, 1847)
-        self.assertHolidayName(
-            name,
-            UnitedStates(categories=NON_PUBLIC),
-            dt,
-        )
+        subdiv_us_territories = {"AS", "GU", "MP", "PR", "UM", "VI"}
+        for subdiv in set(UnitedStates.subdivisions) - subdiv_us_territories:
+            self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1844, 1847)
+            self.assertHolidayName(
+                name,
+                UnitedStates(categories=NON_PUBLIC),
+                dt,
+            )
+        for subdiv in subdiv_us_territories:
+            self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), range(1865, 2050))
 
     def test_valentines_day(self):
         name = "Valentine's Day"
