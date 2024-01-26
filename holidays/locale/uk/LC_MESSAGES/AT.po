@@ -101,7 +101,7 @@ msgid "Hl. Leopold"
 msgstr "День Святого Леопольда"
 
 msgid "Hl. Florian"
-msgstr ""
+msgstr "День Святого Флоріана"
 
 #. Patron saint of Salzburg: Hl. Rupert von Salzburg (St. Rupert of Salzburg)
 msgid "Hl. Rupert"
