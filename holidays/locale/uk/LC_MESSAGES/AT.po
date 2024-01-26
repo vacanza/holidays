@@ -98,7 +98,7 @@ msgstr "Річниця референдуму 1920 року в Карінтії"
 #. Patron saint of Lower Austria: Hl. Leopold III. (St. Leopold III)
 #. Patron saint of Vienna: Hl. Leopold III. (St. Leopold III)
 msgid "Hl. Leopold"
-msgstr ""
+msgstr "День Святого Леопольда"
 
 msgid "Hl. Florian"
 msgstr ""
