@@ -89,7 +89,7 @@ msgstr "День Святого Мартина"
 #. Patron saint of Tyrol: Hl. Josef (St. Joseph's day)
 #. Patron saint of Vorarlberg: Hl. Josef (St. Joseph's day)
 msgid "Hl. Josef"
-msgstr ""
+msgstr "День Святого Йосипа"
 
 #. Tag der Volksabstimmung (1920 Carinthian plebiscite)
 msgid "Tag der Volksabstimmung"
