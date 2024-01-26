@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
@@ -110,6 +109,10 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             if self._year >= 1975:
                 self._add_observed(self._add_new_years_day("New Year's Day"))
 
+            # Whit Monday.
+            if self._year <= 1970:
+                self._add_whit_monday("Whit Monday")
+
             # Christmas Day
             self._add_observed(
                 self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
@@ -126,10 +129,6 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
-        # Whit Monday.
-        if self._year <= 1970:
-            self._add_whit_monday("Whit Monday")
-
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
@@ -141,10 +140,6 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
-
-        # Whit Monday.
-        if self._year <= 1970:
-            self._add_whit_monday("Whit Monday")
 
         # Battle of the Boyne
         self._add_observed(self._add_holiday_jul_12("Battle of the Boyne"))
@@ -185,10 +180,6 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     def _populate_subdiv_wls_public_holidays(self):
         # Easter Monday
         self._add_easter_monday("Easter Monday")
-
-        # Whit Monday.
-        if self._year <= 1970:
-            self._add_whit_monday("Whit Monday")
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:

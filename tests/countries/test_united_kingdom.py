@@ -250,9 +250,6 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             self.assertNoHoliday(self.subdiv_holidays[subdiv], dt)
             self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1950, 2050))
 
-        self.assertNoHoliday(dt)
-        self.assertNoHolidayName(name, range(1950, 2050))
-
     def test_spring_bank_holiday(self):
         name = "Spring Bank Holiday"
         self.assertHolidayName(
