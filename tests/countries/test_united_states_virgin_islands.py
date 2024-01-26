@@ -13,6 +13,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import MAR
+from holidays.constants import NON_PUBLIC
 from holidays.countries.united_states_virgin_islands import HolidaysVI, VI, VIR
 from tests.common import CommonCountryTests
 
@@ -29,3 +30,11 @@ class TestVI(CommonCountryTests, TestCase):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
         self.assertIn("Transfer Day", self.holidays.get_list(date(2020, MAR, 31)))
+
+    def test_non_public_holidays(self):
+        self.assertHolidays(
+            HolidaysVI(categories=NON_PUBLIC, years=2024),
+            ("2024-02-14", "Valentine's Day"),
+            ("2024-03-17", "St. Patrick's Day"),
+            ("2024-10-31", "Halloween"),
+        )

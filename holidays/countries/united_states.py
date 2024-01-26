@@ -170,6 +170,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         )
 
     def _populate_subdiv_holidays(self):
+        if PUBLIC not in self.categories:
+            return None
+
         # Martin Luther King Jr. Day
         if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
             self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
