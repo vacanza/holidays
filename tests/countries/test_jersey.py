@@ -63,6 +63,37 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHoliday(dt, dt_observed)
         self.assertNoNonObservedHoliday(dt_observed)
 
+    def test_liberation_day(self):
+        name = "Liberation Day"
+        non_obs_date = (
+            # Sunday, May 9th list 1952-2050 excl. 2010 (65th Anniversary)
+            "1954-05-09",
+            "1965-05-09",  # 20th Anniversary special? need to check
+            "1971-05-09",
+            "1976-05-09",
+            "1982-05-09",
+            "1993-05-09",
+            "1999-05-09",
+            "2004-05-09",
+            "2021-05-09",
+            "2027-05-09",
+            "2032-05-09",
+            "2038-05-09",
+            "2049-05-09",
+            # Saturday, May 9th list 1952-2010
+            "1953-05-09",
+            "1959-05-09",
+            "1964-05-09",
+            "1970-05-09",  # 25th Anniversary special? need to check
+            "1981-05-09",
+            "1987-05-09",
+            "1992-05-09",
+            "1998-05-09",
+            "2009-05-09",
+        )
+        self.assertNoHolidayName(name, non_obs_date)
+        self.assertHolidayName(name, range(2010, 2021))
+
     def test_2010(self):
         # Wayback Machine of https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
         self.assertHolidays(

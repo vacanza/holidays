@@ -126,6 +126,19 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         else:
             self._add_holiday_1st_mon_of_sep(summer_bank_holiday)
 
+        # Christmas Day
+        christmas_day = self._add_christmas_day("Christmas Day")
+
+        # Boxing Day
+        boxing_day = self._add_christmas_day_two("Boxing Day")
+
+        if self._year >= 2004:
+            self._add_observed(christmas_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
+            self._add_observed(boxing_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        else:
+            self._add_observed(christmas_day, rule=SUN_TO_NEXT_TUE)
+            self._add_observed(boxing_day)
+
         # Jersey exclusive holidays
 
         # Liberation Day.
@@ -140,19 +153,6 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 self._is_saturday(liberation_day) and self._year <= 2010
             ):
                 self.pop(liberation_day)
-
-        # Christmas Day
-        christmas_day = self._add_christmas_day("Christmas Day")
-
-        # Boxing Day
-        boxing_day = self._add_christmas_day_two("Boxing Day")
-
-        if self._year >= 2004:
-            self._add_observed(christmas_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
-            self._add_observed(boxing_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
-        else:
-            self._add_observed(christmas_day, rule=SUN_TO_NEXT_TUE)
-            self._add_observed(boxing_day)
 
 
 class JE(Jersey):
