@@ -136,7 +136,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_2_bank_holidays(self):
         # Patron saint of Carinthia: Hl. Josef (St. Joseph's day)
-        self._add_holiday_mar_19(tr("Hl. Josef"))
+        self._add_saint_josephs_day(tr("Hl. Josef"))
 
         # Tag der Volksabstimmung (1920 Carinthian plebiscite)
         self._add_holiday_oct_10(tr("Tag der Volksabstimmung"))
