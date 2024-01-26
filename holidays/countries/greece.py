@@ -14,7 +14,11 @@ from gettext import gettext as tr
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_WORKDAY,
+)
 
 
 class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -36,6 +40,7 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -45,7 +50,7 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Epiphany.
         self._add_epiphany_day(tr("Θεοφάνεια"))
 
-        # Clean Monday.
+        # Green Monday.
         self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
         # Independence Day.
@@ -55,13 +60,16 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Μεγάλη Παρασκευή"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
+        easter_monday = self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
-        # Monday of the Holy Spirit.
+        # Whit Monday.
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
-        # Labour Day.
-        self._add_observed(self._add_labor_day(self.tr("Εργατική Πρωτομαγιά")))
+        self._add_observed(
+            # Labor Day.
+            may_1 := self._add_labor_day(self.tr("Εργατική Πρωτομαγιά")),
+            rule=MON_TO_NEXT_TUE if may_1 == easter_monday else SAT_SUN_TO_NEXT_WORKDAY,
+        )
 
         # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
