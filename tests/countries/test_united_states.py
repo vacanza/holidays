@@ -11,6 +11,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import NON_PUBLIC
 from holidays.countries.united_states import UnitedStates, US, USA
 from tests.common import CommonCountryTests
 
@@ -1547,6 +1548,84 @@ class TestUS(CommonCountryTests, TestCase):
         for subdiv in ("IN", "NY"):
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 2008))
+
+        # For NON_OFFICIAL category
+        # This is actually for the Presidential Election, but let's keep the same name
+        # to prevent duplicates for states which have them as proper public holidays.
+
+        dt = (
+            "1868-11-03",
+            "1872-11-05",
+            "1876-11-07",
+            "1880-11-02",
+            "1884-11-04",
+            "1888-11-06",
+            "1892-11-08",
+            "1896-11-03",
+            "1900-11-06",
+            "1904-11-08",
+            "1908-11-03",
+            "1912-11-05",
+            "1916-11-07",
+            "1920-11-02",
+            "1924-11-04",
+            "1928-11-06",
+            "1932-11-08",
+            "1936-11-03",
+            "1940-11-05",
+            "1944-11-07",
+            "1948-11-02",
+            "1952-11-04",
+            "1956-11-06",
+            "1960-11-08",
+            "1964-11-03",
+            "1968-11-05",
+            "1972-11-07",
+            "1976-11-02",
+            "1980-11-04",
+            "1984-11-06",
+            "1988-11-08",
+            "1992-11-03",
+            "1996-11-05",
+            "2000-11-07",
+            "2004-11-02",
+            "2008-11-04",
+            "2012-11-06",
+            "2016-11-08",
+            "2020-11-03",
+            "2024-11-05",
+        )
+        self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1844, 1847)
+        self.assertHolidayName(
+            name,
+            UnitedStates(categories=NON_PUBLIC),
+            dt,
+        )
+
+    def test_valentines_day(self):
+        name = "Valentine's Day"
+        self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1846)
+        self.assertHolidayName(
+            name,
+            UnitedStates(categories=NON_PUBLIC),
+            (f"{year}-02-14" for year in range(1865, 2050)),
+        )
+
+    def test_st_patricks_day(self):
+        name = "St. Patrick's Day"
+        self.assertHolidayName(
+            name,
+            UnitedStates(categories=NON_PUBLIC),
+            (f"{year}-03-17" for year in range(1865, 2050)),
+        )
+
+    def test_halloween(self):
+        name = "Halloween"
+        self.assertHolidayName(
+            name,
+            UnitedStates(categories=NON_PUBLIC),
+            (f"{year}-10-31" for year in range(1865, 2050)),
+        )
 
     def test_all_souls_day(self):
         name = "All Souls' Day"

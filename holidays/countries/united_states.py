@@ -12,6 +12,7 @@
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import DEC
+from holidays.constants import NON_PUBLIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -42,6 +43,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
+    supported_categories = (NON_PUBLIC, PUBLIC)
     observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",  # Alaska.
@@ -928,6 +930,34 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_subdiv_wy_public_holidays(self):
         pass
+
+    def _populate_non_public_holidays(self):
+        # Very common celebrated cultural days, but no official observance.
+        # Due to its nature, no in-lieus are observed.
+
+        # Valentine's Day
+        # While the modern iteration of Valentine's Day has started in the UK in 1797,
+        # it wasn't until 1847 in the US that this started to be observed here.
+
+        if self._year >= 1847:
+            self._add_holiday_feb_14("Valentine's Day")
+
+        # St. Patrick's Day
+        # Started in Boston in 1737 for the US.
+
+        self._add_holiday_mar_17("St. Patrick's Day")
+
+        # Halloween
+        # Halloween began in the US sometime around the 19th century.
+
+        self._add_holiday_oct_31("Halloween")
+
+        # Election Day
+        # May be duplicates for certain states which has this as their actual public holiday.
+        # The current US Presidential Election date pattern was only codified in 1848 nationwide.
+
+        if self._year >= 1848 and self._year % 4 == 0:
+            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
 
 
 class US(UnitedStates):
