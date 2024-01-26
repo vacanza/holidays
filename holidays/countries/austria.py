@@ -156,7 +156,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_6_bank_holidays(self):
         # Patron saint of Styria: Hl. Josef (St. Joseph's day)
-        self._add_holiday_mar_19(tr("Hl. Josef"))
+        self._add_saint_josephs_day(tr("Hl. Josef"))
 
     def _populate_subdiv_7_bank_holidays(self):
         # Patron saint of Tyrol: Hl. Josef (St. Joseph's day)
