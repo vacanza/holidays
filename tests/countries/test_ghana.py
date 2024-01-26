@@ -95,7 +95,7 @@ class TestGhana(CommonCountryTests, TestCase):
             ("2024-05-01", "May Day"),
             ("2024-04-10", "Eid ul-Fitr (estimated)"),
             ("2024-06-16", "Eid ul-Adha (estimated)"),
-            ("2024-06-17", "Eid ul-Adha (estimated) (observed)"),
+            ("2024-06-17", "Eid ul-Adha (observed, estimated)"),
             ("2024-08-04", "Founders' Day"),
             ("2024-08-05", "Founders' Day (observed)"),
             ("2024-09-21", "Kwame Nkrumah Memorial Day"),

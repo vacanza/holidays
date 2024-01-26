@@ -26,7 +26,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     country = "GH"
     estimated_label = "%s (estimated)"
     observed_label = "%s (observed)"
-    observed_estimated_label = "%s (estimated) (observed)"
+    observed_estimated_label = "%s (observed, estimated)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
