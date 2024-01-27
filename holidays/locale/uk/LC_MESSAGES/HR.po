@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 17:06+0300\n"
+"PO-Revision-Date: 2024-01-23 19:22+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -14,17 +14,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
-msgid "Nova Godina"
+msgid "Nova godina"
 msgstr "Новий рік"
 
 #. Epiphany.
 msgid "Bogojavljenje ili Sveta tri kralja"
 msgstr "Богоявлення"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Uskrs"
 msgstr "Великдень"
 
@@ -36,9 +36,9 @@ msgstr "Великодній понеділок"
 msgid "Tijelovo"
 msgstr "Свято Тіла і Крові Христових"
 
-#. International Workers' Day.
-msgid "Međunarodni praznik rada"
-msgstr "Міжнародний день трудящих"
+#. Labor Day.
+msgid "Praznik rada"
+msgstr "День праці"
 
 #. Statehood Day.
 msgid "Dan državnosti"
@@ -56,7 +56,7 @@ msgstr "День перемоги і подяки вітчизні та День
 msgid "Dan pobjede i domovinske zahvalnosti"
 msgstr "День перемоги і подяки вітчизні"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Velika Gospa"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
@@ -68,9 +68,11 @@ msgstr "День незалежності"
 msgid "Svi sveti"
 msgstr "День усіх святих"
 
-#. Memorial Day.
-msgid "Dan sjećanja"
-msgstr "День памʼяті"
+#. Remembrance Day.
+msgid ""
+"Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i "
+"Škabrnje"
+msgstr "День памʼяті жертв Вітчизняної війни та жертв Вуковара і Шкабрні"
 
 #. Christmas Day.
 msgid "Božić"
