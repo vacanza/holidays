@@ -33,7 +33,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_national_rebellion_day(self):
         self.assertHolidayName(
-            "Día de la Rebeldía Nacional", (f"{year}-07-26" for year in range(1959, 2050))
+            "Día de la Rebeldía Nacional",
+            (f"{year}-07-26" for year in range(1959, 2050)),
         )
 
     def test_independence_day(self):

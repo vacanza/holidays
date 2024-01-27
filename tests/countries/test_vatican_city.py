@@ -117,7 +117,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_saints_peter_and_paul_day(self):
         self.assertHolidayName(
-            "Saint Peter and Saint Paul's Day", (f"{year}-06-29" for year in range(1970, 2050))
+            "Saint Peter and Saint Paul's Day",
+            (f"{year}-06-29" for year in range(1970, 2050)),
         )
 
     def test_assumption_day(self):

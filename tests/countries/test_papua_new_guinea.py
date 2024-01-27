@@ -19,7 +19,9 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
-            PapuaNewGuinea, years=range(1953, 2050), years_non_observed=range(1953, 2050)
+            PapuaNewGuinea,
+            years=range(1953, 2050),
+            years_non_observed=range(1953, 2050),
         )
 
     def test_country_aliases(self):

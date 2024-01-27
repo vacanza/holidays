@@ -97,7 +97,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_observed(
-            self._add_new_years_day_two("Day after New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
+            self._add_new_years_day_two("Day after New Year's Day"),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
         # Waitangi Day

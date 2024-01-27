@@ -23,7 +23,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Spain(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """
     Holidays checked with official sources for 2010-2023 only.

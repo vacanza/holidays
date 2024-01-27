@@ -33,7 +33,8 @@ class TestVietnam(CommonCountryTests, TestCase):
 
     def test_first_day_of_january(self):
         self.assertHolidayName(
-            "International New Year's Day", (f"{year}-01-01" for year in range(1979, 2050))
+            "International New Year's Day",
+            (f"{year}-01-01" for year in range(1979, 2050)),
         )
 
     def test_lunar_new_year(self):
@@ -72,7 +73,8 @@ class TestVietnam(CommonCountryTests, TestCase):
 
     def test_liberation_day(self):
         self.assertHolidayName(
-            "Liberation Day/Reunification Day", (f"{year}-04-30" for year in range(1979, 2050))
+            "Liberation Day/Reunification Day",
+            (f"{year}-04-30" for year in range(1979, 2050)),
         )
 
     def test_international_labor_day(self):

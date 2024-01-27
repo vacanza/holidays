@@ -116,7 +116,10 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_2022_all(self):
         self.assertHolidays(
-            Thailand(categories=(ARMED_FORCES, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY), years=2022),
+            Thailand(
+                categories=(ARMED_FORCES, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY),
+                years=2022,
+            ),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
             ("2022-01-08", "วันเด็กแห่งชาติ"),
@@ -159,10 +162,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-09-28", "วันพระราชทานธงชาติไทย"),
             (
                 "2022-10-13",
-                (
-                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
-                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-                ),
+                ("วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร " "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"),
             ),
             ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-10-23", "วันปิยมหาราช"),
@@ -363,9 +363,7 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_rama_ix_memorial_day(self):
         name_ix = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-        name_x = (
-            "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-        )
+        name_x = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
         name_x_memorial = "วันนวมินทรมหาราช"
 
         self.assertNoHoliday("2016-10-13")
@@ -403,12 +401,9 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_rama_ix_birthday(self):
         name_reign = "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-        name_dead = (
-            "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-        )
+        name_dead = "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
         name_great = (
-            "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
-            "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+            "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
         )
 
         self.assertNoHoliday("1959-12-05")
@@ -685,7 +680,8 @@ class TestThailand(CommonCountryTests, TestCase):
     def test_armed_forces_holiday(self):
         name = "วันกองทัพไทย"
         self.assertHolidays(
-            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)), ("1959-04-08", name)
+            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)),
+            ("1959-04-08", name),
         )
         self.assertHolidays(
             Thailand(categories=ARMED_FORCES, years=range(1979, 1981)),
@@ -863,10 +859,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-09-28", "วันพระราชทานธงชาติไทย"),
             (
                 "2022-10-13",
-                (
-                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
-                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-                ),
+                ("วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"),
             ),
             ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-10-23", "วันปิยมหาราช"),
