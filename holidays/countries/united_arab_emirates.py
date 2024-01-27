@@ -31,7 +31,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "AE"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
@@ -86,7 +86,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Isra' and Mi'raj.
             self._add_isra_and_miraj_day(tr("ليلة المعراج"))
 
-        # Prophet Muhammad's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 

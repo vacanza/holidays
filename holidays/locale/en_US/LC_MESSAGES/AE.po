@@ -61,6 +61,6 @@ msgstr "Islamic New Year"
 msgid "ليلة المعراج"
 msgstr "Isra' and Mi'raj"
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"

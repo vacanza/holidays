@@ -60,6 +60,6 @@ msgstr ""
 msgid "ليلة المعراج"
 msgstr ""
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr ""
