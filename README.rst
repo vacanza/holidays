@@ -438,6 +438,11 @@ All other default values are highlighted with bold:
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
      - **de**, en_US, uk
      -
+   * - Ghana
+     - GH
+     -
+     - 
+     -
    * - Greece
      - GR
      -

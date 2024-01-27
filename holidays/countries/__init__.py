@@ -64,6 +64,7 @@ from .france import France, FR, FRA
 from .gabon import Gabon, GA, GAB
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
+from .ghana import Ghana, GH, GHA
 from .greece import Greece, GR, GRC
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
