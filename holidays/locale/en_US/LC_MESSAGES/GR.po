@@ -24,9 +24,9 @@ msgstr "New Year's Day"
 msgid "Θεοφάνεια"
 msgstr "Epiphany"
 
-#. Clean Monday.
+#. Green Monday.
 msgid "Καθαρά Δευτέρα"
-msgstr "Clean Monday"
+msgstr "Green Monday"
 
 #. Independence Day.
 msgid "Εικοστή Πέμπτη Μαρτίου"
@@ -40,11 +40,11 @@ msgstr "Good Friday"
 msgid "Δευτέρα του Πάσχα"
 msgstr "Easter Monday"
 
-#. Monday of the Holy Spirit.
+#. Whit Monday.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "Easter Monday"
+msgstr "Whit Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Εργατική Πρωτομαγιά"
 msgstr "Labor Day"
 
