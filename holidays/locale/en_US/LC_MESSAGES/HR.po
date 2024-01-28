@@ -3,30 +3,30 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:50+0300\n"
+"PO-Revision-Date: 2024-01-23 19:20+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
-msgid "Nova Godina"
+msgid "Nova godina"
 msgstr "New Year's Day"
 
 #. Epiphany.
 msgid "Bogojavljenje ili Sveta tri kralja"
 msgstr "Epiphany"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Uskrs"
-msgstr "Easter"
+msgstr "Easter Sunday"
 
 #. Easter Monday.
 msgid "Uskrsni ponedjeljak"
@@ -36,9 +36,9 @@ msgstr "Easter Monday"
 msgid "Tijelovo"
 msgstr "Corpus Christi"
 
-#. International Workers' Day.
-msgid "Međunarodni praznik rada"
-msgstr "International Workers' Day"
+#. Labor Day.
+msgid "Praznik rada"
+msgstr "Labor Day"
 
 #. Statehood Day.
 msgid "Dan državnosti"
@@ -56,9 +56,9 @@ msgstr "Victory and Homeland Thanksgiving Day and Croatian Veterans Day"
 msgid "Dan pobjede i domovinske zahvalnosti"
 msgstr "Victory and Homeland Thanksgiving Day"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Velika Gospa"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Independence Day.
 msgid "Dan neovisnosti"
@@ -68,9 +68,11 @@ msgstr "Independence Day"
 msgid "Svi sveti"
 msgstr "All Saints' Day"
 
-#. Memorial Day.
-msgid "Dan sjećanja"
-msgstr "Memorial Day"
+#. Remembrance Day.
+msgid ""
+"Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i "
+"Škabrnje"
+msgstr "Remembrance Day"
 
 #. Christmas Day.
 msgid "Božić"
