@@ -266,8 +266,8 @@ class HolidayBase(Dict[date, str]):
             following Monday). This doesn't work for all countries.
 
         :param subdiv:
-            The subdivision (e.g. state or province) as ISO 3166-2 code or
-            alias; not implemented for all countries (see documentation).
+            The subdivision (e.g. state or province) as a ISO 3166-2 code
+            or its alias; not implemented for all countries (see documentation).
 
         :param prov:
             *deprecated* use subdiv instead.
@@ -308,11 +308,10 @@ class HolidayBase(Dict[date, str]):
             if isinstance(subdiv, int):
                 subdiv = str(subdiv)
 
+            subdivisions_aliases = tuple(sorted(self.subdivisions_aliases))
             # Unsupported subdivisions.
             if not isinstance(self, HolidaySum) and subdiv not in (
-                self.subdivisions
-                + tuple(self.subdivisions_aliases)
-                + self._deprecated_subdivisions
+                self.subdivisions + subdivisions_aliases + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
@@ -332,8 +331,8 @@ class HolidayBase(Dict[date, str]):
                     "This subdivision is deprecated and will be removed after "
                     "Dec, 1 2023. The list of supported subdivisions: "
                     f"{', '.join(sorted(self.subdivisions))}; "
-                    "the list of supported subdivision aliases: "
-                    f"{', '.join(sorted(self.subdivisions_aliases))}.",
+                    "the list of supported subdivisions aliases: "
+                    f"{', '.join(subdivisions_aliases)}.",
                     DeprecationWarning,
                 )
 
@@ -664,19 +663,27 @@ class HolidayBase(Dict[date, str]):
 
     @cached_property
     def _normalized_subdiv(self):
-        subdiv = self.subdivisions_aliases.get(self.subdiv, self.subdiv)
-        return subdiv.translate(
-            str.maketrans(
-                {
-                    "-": "_",
-                    " ": "_",
-                }
+        return (
+            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
+            .translate(
+                str.maketrans(
+                    {
+                        "-": "_",
+                        " ": "_",
+                    }
+                )
             )
-        ).lower()
+            .lower()
+        )
 
     @cached_property
     def _sorted_categories(self):
         return sorted(self.categories)
+
+    @classmethod
+    def get_subdiv_aliases(cls, subdiv) -> Tuple[str, ...]:
+        """Get subdivision aliases."""
+        return tuple((a for a, s in cls.subdivisions_aliases.items() if s == subdiv))
 
     def _is_leap_year(self) -> bool:
         """

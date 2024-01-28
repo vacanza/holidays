@@ -47,8 +47,8 @@ def country_holidays(
         An ISO 3166-1 Alpha-2 country code.
 
     :param subdiv:
-        The subdivision (e.g. state or province) as ISO3166-2 code or alias;
-        not implemented for all countries (see documentation).
+        The subdivision (e.g. state or province) as a ISO 3166-2 code
+        or its alias; not implemented for all countries (see documentation).
 
     :param years:
         The year(s) to pre-calculate public holidays for at instantiation.
@@ -386,20 +386,3 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         supported subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
-
-
-def list_supported_aliases(holiday: HolidayBase) -> Dict[str, List[str]]:
-    """
-    Get all aliases for all subdivisions.
-
-    :param holiday:
-        The holiday class or object to be investigated.
-
-    :return:
-        A dictionary where key is the ISO 3166-2 subdivision code and value is
-        a list of supported aliases.
-    """
-    r: Dict[str, List[str]] = {subdiv: [] for subdiv in holiday.subdivisions}
-    for alias, subdiv in holiday.subdivisions_aliases.items():
-        r[subdiv].append(alias)
-    return r

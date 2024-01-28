@@ -6,7 +6,6 @@
 #
 #  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           Stephan Helma <s.p.helma@gmx.net> (c) 2024
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -23,58 +22,31 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
     subdivisions = (
-        "1",  # Burgenland
-        "2",  # Kärnten
-        "3",  # Niederösterreich
-        "4",  # Oberösterreich
-        "5",  # Salzburg
-        "6",  # Steiermark
-        "7",  # Tirol
-        "8",  # Vorarlberg
-        "9",  # Wien
+        "1",  # Burgenland.
+        "2",  # Kärnten.
+        "3",  # Niederösterreich.
+        "4",  # Oberösterreich.
+        "5",  # Salzburg.
+        "6",  # Steiermark.
+        "7",  # Tirol.
+        "8",  # Vorarlberg.
+        "9",  # Wien.
     )
     subdivisions_aliases = {
         "B": "1",
-        "Bgl": "1",
-        "Burgenland": "1",
         "K": "2",
-        "Ktn": "2",
-        "Kärnten": "2",
-        "Carinthia": "2",
         "N": "3",
-        "NÖ": "3",
-        "Niederösterreich": "3",
-        "Lower Austria": "3",
         "O": "4",
-        "OÖ": "4",
-        "Oberösterreich": "4",
-        "Upper Austria": "4",
         "S": "5",
-        "Sbg": "5",
-        "Salzburg": "5",
         "St": "6",
-        "Stmk": "6",
-        "Steiermark": "6",
-        "Styria": "6",
         "T": "7",
-        "Tirol": "7",
-        "Tyrol": "7",
         "V": "8",
-        "Vbg": "8",
-        "Vorarlberg": "8",
         "W": "9",
-        "Wien": "9",
-        "Vienna": "9",
     }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-
-        # Set the default subdivision.
-        if not kwargs.get("subdiv", kwargs.get("state")):
-            kwargs["subdiv"] = "9"
-
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -148,7 +120,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_4_bank_holidays(self):
         # Patron saint of Upper Austria: Hl. Florian von Lorch (St. Florian)
         if self._year >= 2004:
-            self._add_holiday_mai_4(tr("Hl. Florian"))
+            self._add_holiday_may_4(tr("Hl. Florian"))
 
     def _populate_subdiv_5_bank_holidays(self):
         # Patron saint of Salzburg: Hl. Rupert von Salzburg (St. Rupert of Salzburg)

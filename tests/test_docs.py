@@ -6,7 +6,6 @@
 #
 #  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           Stephan Helma <s.p.helma@gmx.net> (c) 2024
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -45,12 +44,12 @@ class TestReadme(TestCase):
         country_default_languages = {}
         country_names = []
         country_subdivisions = {}
+        country_subdivisions_aliases = {}
         country_supported_languages = {}
         country_supported_categories = {}
         # Subdivisions are listed after an identifier followed by a colon
         subdivisions_re = re.compile(".*: (.*)")
-        # Split by comma, but not if comma is inside brackets
-        subdivision_split_re = re.compile(r",(?!(?:[^(]*\([^)]*\))*[^()]*\))")
+        subdivision_aliases_re = re.compile(r"\((.*)\)")
 
         table_content = [
             line.strip()
@@ -72,26 +71,28 @@ class TestReadme(TestCase):
             if country_code:
                 country_alpha_2_codes.add(country_code)
 
-            # Subdivisions: 3rd column.
+            # Subdivisions and their aliases: 3rd column.
             country_subdivisions[country_code] = []
-            subdivisions = table_content[idx + 2].strip(" -")
-            if subdivisions:
-                for subdivision in subdivisions.split("."):
-                    subdivision_group = subdivision.split(";")[0]
+            country_subdivisions_aliases[country_code] = {}
+            subdivision_str = table_content[idx + 2].strip(" -")
+            if subdivision_str:
+                for subdivision_groups in subdivision_str.split("."):
+                    subdivision_group = subdivision_groups.split(";")[0].strip()
                     # Exclude empty subdivisions.
                     if ":" not in subdivision_group:
                         country_subdivisions[country_code] = []
                         continue
 
-                    # Combine all subdivision codes with aliases removed.
-                    country_subdivisions[country_code].extend(
-                        [
-                            subdivision_code.split(maxsplit=1)[0].strip("* ")
-                            for subdivision_code in subdivision_split_re.split(
-                                subdivisions_re.findall(subdivision_group)[0]
-                            )
-                        ]
-                    )
+                    # Combine all subdivision and their aliases.
+                    subdivision_group = subdivisions_re.findall(subdivision_group)[0]
+                    for subdivision_code in subdivision_group.split(","):
+                        subdivision = subdivision_code.strip()
+                        aliases = tuple(subdivision_aliases_re.findall(subdivision))
+                        if aliases:
+                            subdivision = subdivision.split()[0]
+                        subdivision = subdivision.strip(" *")
+                        country_subdivisions[country_code].append(subdivision)
+                        country_subdivisions_aliases[country_code][subdivision] = aliases
 
             # Supported Languages: 4th column.
             supported_languages = table_content[idx + 3].strip(" -")
@@ -171,6 +172,15 @@ class TestReadme(TestCase):
                     )
                 ),
             )
+
+            # Make sure country subdivisions aliases are shown correctly.
+            for subdivision in instance.subdivisions:
+                self.assertEqual(
+                    instance.get_subdiv_aliases(subdivision),
+                    country_subdivisions_aliases[country_code][subdivision],
+                    f"Country '{country_name}' subdivisions '{subdivision}' aliases are not shown "
+                    "correctly in the table.\n",
+                )
 
             # Make sure supported languages are shown correctly.
             if country_code in localized_countries:
