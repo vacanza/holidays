@@ -147,13 +147,12 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Counts as Public Holiday when fall on the weekdays, also on Saturday from 2010 onwards.
         # Specially held in 2010 on Sunday for the 65th Anniversary.
 
-        if self._year >= 1952:
-            # Liberation Day
-            liberation_day = self._add_holiday_may_9("Liberation Day")
-            if (self._is_sunday(liberation_day) and self._year != 2010) or (
-                self._is_saturday(liberation_day) and self._year <= 2010
-            ):
-                self.pop(liberation_day)
+        # Liberation Day
+        liberation_day = self._add_holiday_may_9("Liberation Day")
+        if (self._is_sunday(liberation_day) and self._year != 2010) or (
+            self._is_saturday(liberation_day) and self._year <= 2010
+        ):
+            self.pop(liberation_day)
 
 
 class JE(Jersey):
