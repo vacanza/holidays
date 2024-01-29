@@ -18,16 +18,26 @@ from tests.common import CommonCountryTests
 class TestIreland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Ireland, years=range(1950, 2050))
+        super().setUpClass(Ireland, years=range(1900, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Ireland, IE, IRL)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Ireland(years=1871))
+
     def test_special_holidays(self):
-        self.assertHoliday("2022-03-18")
+        self.assertHoliday(
+            "1999-12-31",
+            "2011-09-14",
+            "2022-03-18",
+        )
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1950, 2050)))
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1975, 2050)))
+        self.assertNoHoliday(f"{year}-01-01" for year in range(1900, 1975))
+        self.assertNoHolidayName(name, range(1900, 1975))
 
     def test_st_brigids_day(self):
         name = "St. Brigid's Day"
@@ -44,114 +54,106 @@ class TestIreland(CommonCountryTests, TestCase):
             "2031-02-03",
             "2032-02-02",
         )
-        self.assertNoHolidayName(name, range(1950, 2023))
+        self.assertNoHolidayName(name, range(1900, 2023))
 
     def test_st_patricks_day(self):
-        self.assertHolidayName(
-            "St. Patrick's Day", (f"{year}-03-17" for year in range(1950, 2050))
-        )
-        obs_dt = (
-            "2001-03-19",
-            "2002-03-18",
-            "2007-03-19",
-            "2012-03-19",
-            "2013-03-18",
-            "2018-03-19",
-            "2019-03-18",
-        )
-        self.assertHoliday(obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        name = "St. Patrick's Day"
+        self.assertHolidayName(name, (f"{year}-03-17" for year in range(1903, 2050)))
+        self.assertNoHoliday(f"{year}-03-17" for year in range(1900, 1903))
+        self.assertNoHolidayName(name, range(1900, 1903))
 
     def test_easter_monday(self):
+        name = "Easter Monday"
         self.assertHolidayName(
-            "Easter Monday",
+            name,
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
         )
+        self.assertHolidayName(name, range(1900, 2050))
 
     def test_may_day(self):
         name = "May Day"
         self.assertHolidayName(
             name,
-            "1978-05-01",
-            "1979-05-07",
-            "1980-05-05",
+            "1994-05-02",
             "1995-05-08",
-            "1999-05-03",
-            "2000-05-01",
-            "2010-05-03",
-            "2018-05-07",
+            "1996-05-06",
             "2019-05-06",
             "2020-05-04",
+            "2021-05-03",
+            "2022-05-02",
+            "2023-05-01",
         )
-        self.assertNoHolidayName(name, range(1950, 1978))
+        self.assertHolidayName(name, range(1994, 2050))
+        self.assertNoHolidayName(name, range(1900, 1994))
 
     def test_june_bank_holiday(self):
+        name = "June Bank Holiday"
         self.assertHolidayName(
-            "June Bank Holiday",
+            name,
+            "1973-06-04",
             "2019-06-03",
             "2020-06-01",
             "2021-06-07",
             "2022-06-06",
             "2023-06-05",
         )
+        self.assertHolidayName(name, range(1973, 2050))
+        self.assertNoHolidayName(name, range(1900, 1973))
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        self.assertHolidayName(
+            name,
+            "1900-06-04",
+            "1910-05-16",
+            "1920-05-24",
+            "1930-06-09",
+            "1940-05-13",
+            "1950-05-29",
+            "1960-06-06",
+            "1970-05-18",
+            "1971-05-31",
+            "1972-05-22",
+        )
+        self.assertHolidayName(name, range(1900, 1973))
+        self.assertNoHolidayName(name, range(1973, 2050))
 
     def test_august_bank_holiday(self):
+        name = "August Bank Holiday"
         self.assertHolidayName(
-            "August Bank Holiday",
+            name,
             "2019-08-05",
             "2020-08-03",
             "2021-08-02",
             "2022-08-01",
             "2023-08-07",
         )
+        self.assertHolidayName(name, range(1900, 2050))
 
     def test_october_bank_holiday(self):
+        name = "October Bank Holiday"
         self.assertHolidayName(
-            "October Bank Holiday",
+            name,
             "2019-10-28",
             "2020-10-26",
             "2021-10-25",
             "2022-10-31",
             "2023-10-30",
         )
+        self.assertHolidayName(name, range(1977, 2050))
+        self.assertNoHolidayName(name, range(1900, 1977))
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1950, 2050)))
-        obs_dt = (
-            "1993-12-27",
-            "1999-12-27",
-            "2004-12-27",
-            "2010-12-27",
-            "2021-12-27",
-        )
-        self.assertHoliday(obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-        self.assertHolidayName(
-            f"{name} (observed)",
-            "1994-12-26",
-            "2005-12-26",
-            "2011-12-26",
-            "2016-12-26",
-            "2022-12-26",
-        )
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1900, 2050)))
 
     def test_st_stephens_day(self):
-        name = "St. Stephen's Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1950, 2050)))
-        obs_dt = (
-            "2004-12-28",
-            "2009-12-28",
-            "2010-12-28",
-            "2015-12-28",
-            "2020-12-28",
+        self.assertHolidayName(
+            "St. Stephen's Day", (f"{year}-12-26" for year in range(1950, 2050))
         )
-        self.assertHoliday(obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2020(self):
         self.assertHolidays(
@@ -165,7 +167,6 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2020-10-26", "October Bank Holiday"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "St. Stephen's Day"),
-            ("2020-12-28", "St. Stephen's Day (observed)"),
         )
 
     def test_2022(self):
@@ -180,5 +181,5 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2022-08-01", "August Bank Holiday"),
             ("2022-10-31", "October Bank Holiday"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (observed); St. Stephen's Day"),
+            ("2022-12-26", "St. Stephen's Day"),
         )
