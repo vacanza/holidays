@@ -60,6 +60,9 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "T"]
 
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 99
+
 [[tool.mypy.overrides]]
 module = "holidays.countries.*"
 disable_error_code = ["override"]
