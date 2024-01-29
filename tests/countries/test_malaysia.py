@@ -1324,6 +1324,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
             ("2024-08-31", "National Day"),
             ("2024-04-10", "Hari Raya Puasa"),
             ("2024-06-17", "Hari Raya Haji"),
-            ("2024-09-16", "Malaysia Day; Maulidur Rasul (Birthday of the Prophet Muhammad)"),
+            (
+                "2024-09-16",
+                "Malaysia Day; Maulidur Rasul (Birthday of the Prophet Muhammad)",
+            ),
             ("2024-02-12", "Chinese New Year Holiday (in lieu)"),
         )

@@ -34,10 +34,6 @@ Documentation = "https://python-holidays.readthedocs.io/en/latest/"
 Changelog = "https://github.com/vacanza/python-holidays/releases"
 Downloads = "https://pypi.org/project/holidays/"
 
-[tool.black]
-line-length = 99
-target-version = ["py38", "py39", "py310", "py311"]
-
 [tool.coverage.run]
 branch = true
 omit = ["scripts/*", "setup.py", "tests/*"]
@@ -50,9 +46,22 @@ no_inline_sort = true
 profile = "black"
 skip = ["docs"]
 
-
 [tool.mypy]
 strict = false
+
+[tool.ruff]
+extend-exclude = ["docs"]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.extend-per-file-ignores]
+"scripts/generate_release_notes.py" = ["T201"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "T"]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 99
 
 [[tool.mypy.overrides]]
 module = "holidays.countries.*"
@@ -67,7 +76,7 @@ ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
-version = {attr = "holidays.__version__"}
+version = { attr = "holidays.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["holidays*"]

@@ -24,7 +24,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Tanzania(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """
     References:

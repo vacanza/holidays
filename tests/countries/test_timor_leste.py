@@ -522,7 +522,10 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-04-07", "Sesta-Feira Santa"),
             ("2023-04-22", "Idul-Fitri"),
             ("2023-05-01", "Loron Mundiál Serbisu-na'in sira nian"),
-            ("2023-05-18", "Loron Ascensão do Senhor Jesus Cristo hi'it An ba Lalehan nian"),
+            (
+                "2023-05-18",
+                "Loron Ascensão do Senhor Jesus Cristo hi'it An ba Lalehan nian",
+            ),
             ("2023-05-20", "Loron Restaurasaun Independénsia nian"),
             ("2023-06-01", "Loron Mundial ba Labarik"),
             ("2023-06-08", "Festa Korpu de Deus"),

@@ -11,8 +11,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: T201
-
 import argparse
 import re
 import sys
@@ -25,7 +23,7 @@ from github import Github
 from github.GithubException import UnknownObjectException
 
 sys.path.append(f"{Path.cwd()}")
-import holidays
+import holidays  # noqa: E402
 
 BRANCH_NAME = "beta"
 HEADER_TEMPLATE = """

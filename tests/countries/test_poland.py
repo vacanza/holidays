@@ -140,7 +140,9 @@ class TestPoland(CommonCountryTests, TestCase):
         self.assertNoHoliday(f"{year}-05-09" for year in range(1925, 1946))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1951, 2050))
         self.assertNoHolidayName(
-            "Narodowe Święto Zwycięstwa i Wolności", range(1925, 1946), range(1951, 2050)
+            "Narodowe Święto Zwycięstwa i Wolności",
+            range(1925, 1946),
+            range(1951, 2050),
         )
 
     def test_wniebowstapienie_panskie(self):

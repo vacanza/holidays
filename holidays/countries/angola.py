@@ -165,11 +165,9 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             tr("Dia de Natal e da Família")
             if self._year >= 2011
             else (
-                # Christmas Day.
-                tr("Dia do Natal")
+                tr("Dia do Natal")  # Christmas Day.
                 if self._year >= 1996
-                # Family Day.
-                else tr("Dia da Família")
+                else tr("Dia da Família")  # Family Day.
             )
         )
         dt = self._add_christmas_day(name)

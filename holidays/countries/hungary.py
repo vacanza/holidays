@@ -87,9 +87,8 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # Bread Day.
             tr("A kenyér ünnepe")
             if 1950 <= self._year <= 1989
-            else
             # State Foundation Day.
-            tr("Az államalapítás ünnepe"),
+            else tr("Az államalapítás ünnepe"),
         )
 
         if self._year >= 1991:
