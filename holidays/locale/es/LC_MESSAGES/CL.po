@@ -32,7 +32,7 @@ msgstr ""
 msgid "Sábado Santo"
 msgstr ""
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del Señor"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Corpus Christi"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día Nacional del Trabajo"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Virgen del Carmen"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Día Nacional de las Iglesias Evangélicas y Protestantes"
 msgstr ""
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Día de Todos los Santos"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Víspera de Navidad"
 msgstr ""
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr ""
 

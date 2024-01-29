@@ -43,8 +43,8 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Day of the Establishment of the Slovak Republic.
         self._add_holiday_jan_1(tr("Deň vzniku Slovenskej republiky"))
 
-        # Epiphany.
         self._add_epiphany_day(
+            # Epiphany.
             tr("Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)")
         )
 
@@ -57,7 +57,6 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Labor Day.
         self._add_labor_day(tr("Sviatok práce"))
 
-        # Day of Victory over Fascism.
         if self._year >= 1997:
             # Day of Victory over Fascism.
             self._add_holiday_may_8(tr("Deň víťazstva nad fašizmom"))

@@ -37,7 +37,7 @@ msgstr "Страсна пʼятниця"
 msgid "Fiesta del Trabajo"
 msgstr "День праці"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 

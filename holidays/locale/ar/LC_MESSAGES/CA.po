@@ -37,7 +37,7 @@ msgstr "عيد الفصح الاثنين"
 msgid "Dominion Day"
 msgstr "يوم دومينيون"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "عيد العمال"
 

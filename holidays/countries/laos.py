@@ -166,7 +166,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
 
-        # Labor Day.
+        # International Labor Day.
         self._add_observed(self._add_labor_day(tr("ວັນກຳມະກອນສາກົນ")))
 
         # ວັນເດັກສາກົນ (`PUBLIC`)
@@ -404,8 +404,8 @@ class LaosStaticHolidays:
     # Lao New Year's Day (Special).
     lao_new_year_special = tr("ພັກບຸນປີໃໝ່ລາວ")
 
-    # Labor Day.
-    labor_day = tr("ວັນກຳມະກອນສາກົນ")
+    # International Labor Day.
+    international_labor_day = tr("ວັນກຳມະກອນສາກົນ")
 
     # Establishment Day of the Lao Women's Union.
     lao_womens_union = tr("ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
@@ -446,7 +446,7 @@ class LaosStaticHolidays:
         ),
         2013: (APR, 17, lao_new_year),
         2015: (MAR, 9, international_womens_rights_day),
-        2016: (MAY, 2, labor_day),
+        2016: (MAY, 2, international_labor_day),
         2017: (
             (JAN, 2, new_year_day),
             (APR, 13, lao_new_year),

@@ -153,7 +153,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Eve.
         self._add_christmas_eve(tr("Véspera de Natal"))
 
-        # Boxing Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("26 de Dezembro"))
 
         # New Year's Eve.

@@ -56,7 +56,7 @@ msgstr "День збройних сил"
 msgid "Semana Morazánica"
 msgstr "Тиждень Морасана"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
 

@@ -84,7 +84,7 @@ msgstr ""
 msgid "Véspera de Natal"
 msgstr ""
 
-#. Boxing Day.
+#. Second Day of Christmas.
 msgid "26 de Dezembro"
 msgstr ""
 

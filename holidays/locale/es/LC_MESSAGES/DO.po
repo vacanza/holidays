@@ -44,7 +44,7 @@ msgstr ""
 msgid "Día del Trabajo"
 msgstr ""
 
-#. Feast of Corpus Christi.
+#. Corpus Christi.
 msgid "Corpus Christi"
 msgstr ""
 

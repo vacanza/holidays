@@ -49,7 +49,6 @@ msgid "Reformationstag"
 msgstr "Reformation Day"
 
 #. Repentance and Prayer Day.
-#. last wednesday before year-11-23
 msgid "Buß- und Bettag"
 msgstr "Repentance and Prayer Day"
 

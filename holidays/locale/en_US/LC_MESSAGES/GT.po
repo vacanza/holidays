@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-02-19 17:09+0200\n"
-"PO-Revision-Date: 2023-05-03 18:38-0700\n"
-"Last-Translator: Jorge Cadena <jorge.cadena@gmail.com>\n"
+"PO-Revision-Date: 2024-01-22 14:09+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,48 +14,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
-#. Good Thursday.
+#. Maundy Thursday.
 msgid "Jueves Santo"
-msgstr "Good Thursday"
+msgstr "Maundy Thursday"
 
 #. Good Friday.
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
 #. Army Day.
-msgid "Dia del Ejército"
+msgid "Día del Ejército"
 msgstr "Army Day"
 
-#. Independence Day
+#. Independence Day.
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
 #. All Saints' Day.
-msgid "Dia de Todos los Santos"
+msgid "Día de Todos los Santos"
 msgstr "All Saints' Day"
 
 #. Assumption Day.
-msgid "Dia de la Asunción"
+msgid "Día de la Asunción"
 msgstr "Assumption Day"
 
-#. Revolution Day
-msgid "Dia de la Revolución"
+#. Revolution Day.
+msgid "Día de la Revolución"
 msgstr "Revolution Day"
 
-#. Good Saturday.
+#. Holy Saturday.
 msgid "Sabado Santo"
-msgstr "Good Saturday"
+msgstr "Holy Saturday"
 
 #. Labor Day.
-msgid "Dia del Trabajo"
+msgid "Día del Trabajo"
 msgstr "Labor Day"
 
 #. Christmas Day.
-msgid "Dia de Navidad"
+msgid "Día de Navidad"
 msgstr "Christmas Day"

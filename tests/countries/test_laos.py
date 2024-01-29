@@ -417,8 +417,8 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-04-15", "Lao New Year's Day"),
             ("2022-04-16", "Lao New Year's Day"),
             ("2022-04-18", "Lao New Year's Day (in lieu)"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Labor Day (in lieu)"),
+            ("2022-05-01", "International Labor Day"),
+            ("2022-05-02", "International Labor Day (in lieu)"),
             ("2022-05-15", "Visakha Bousa Festival"),
             ("2022-06-01", "International Children Day; National Arbor Day"),
             (

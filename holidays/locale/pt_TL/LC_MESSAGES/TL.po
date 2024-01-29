@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (aproximada)"
 msgstr ""

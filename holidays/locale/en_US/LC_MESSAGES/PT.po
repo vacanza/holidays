@@ -84,9 +84,9 @@ msgstr "Carnival"
 msgid "Véspera de Natal"
 msgstr "Christmas Eve"
 
-#. Boxing Day.
+#. Second Day of Christmas.
 msgid "26 de Dezembro"
-msgstr "Boxing Day"
+msgstr "Second Day of Christmas"
 
 #. New Year's Eve.
 msgid "Véspera de Ano Novo"

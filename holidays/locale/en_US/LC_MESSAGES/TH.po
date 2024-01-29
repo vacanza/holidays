@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.39\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-03-18 15:58-0700\n"
-"PO-Revision-Date: 2023-11-30 21:08+0200\n"
+"PO-Revision-Date: 2024-01-24 17:51+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -85,9 +85,9 @@ msgstr "Chakri Memorial Day"
 msgid "วันสงกรานต์"
 msgstr "Songkran Festival"
 
-#. National Labour day.
+#. National Labor Day.
 msgid "วันแรงงานแห่งชาติ"
-msgstr "National Labour Day"
+msgstr "National Labor Day"
 
 #. National Day.
 msgid "วันชาติ"

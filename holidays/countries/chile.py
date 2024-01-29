@@ -95,7 +95,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._add_holy_saturday(tr("Sábado Santo"))
 
         if self._year <= 1967:
-            # Ascension of Jesus.
+            # Ascension Day.
             self._add_ascension_thursday(tr("Ascensión del Señor"))
 
         if self._year <= 1967 or 1987 <= self._year <= 2006:
@@ -106,7 +106,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             )
 
         if self._year >= 1932:
-            # Labour Day.
+            # Labor Day.
             self._add_labor_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day.
@@ -128,7 +128,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             # Day of Virgin of Carmen.
             self._add_holiday_jul_16(tr("Virgen del Carmen"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         if 1981 <= self._year <= 1998:
@@ -180,7 +180,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 rule=TUE_TO_PREV_FRI + WED_TO_NEXT_FRI,
             )
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_all_saints_day(tr("Día de Todos los Santos"))
 
         # Immaculate Conception.
@@ -190,7 +190,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             # Christmas Eve.
             self._add_christmas_eve(tr("Víspera de Navidad"))
 
-        # Christmas.
+        # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
 
     def _populate_subdiv_ap_public_holidays(self):

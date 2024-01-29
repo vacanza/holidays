@@ -492,13 +492,13 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
-            ("2022-01-07", "Orthodox Christmas"),
+            ("2022-01-07", "Orthodox Christmas Day"),
             ("2022-04-18", "Catholic Easter Monday"),
             ("2022-04-22", "Orthodox Good Friday"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Eid al-Fitr; Labor Day"),
+            ("2022-05-01", "International Labor Day"),
+            ("2022-05-02", "Eid al-Fitr; International Labor Day"),
             ("2022-07-09", "Eid al-Adha"),
-            ("2022-12-25", "Catholic Christmas"),
+            ("2022-12-25", "Catholic Christmas Day"),
         )
 
     def test_l10n_sr(self):

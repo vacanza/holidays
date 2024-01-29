@@ -59,7 +59,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Radunitsa (Day of Rejoicing).
         self._add_rejoicing_day(tr("Радаўніца"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Свята працы"))
 
         # Victory Day.

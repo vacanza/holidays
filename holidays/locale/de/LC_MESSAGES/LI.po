@@ -2,9 +2,9 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-04-01 18:49+0300\n"
-"PO-Revision-Date: 2023-04-01 18:51+0300\n"
+"PO-Revision-Date: 2024-01-25 21:16+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: de\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Neujahr"
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Mariä Geburt"
 msgstr ""
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Allerheiligen"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgid "Weihnachten"
 msgstr ""
 
 #. St. Stephen's Day.
-msgid "Stefanstag"
+msgid "Stephanstag"
 msgstr ""
 
 #. New Year's Eve.

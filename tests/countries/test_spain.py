@@ -988,7 +988,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-01-06", "Epiphany"),
             ("2023-04-07", "Good Friday"),
             ("2023-05-01", "Labor Day"),
-            ("2023-08-15", "Assumption of Mary"),
+            ("2023-08-15", "Assumption Day"),
             ("2023-10-12", "National Day"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-12-06", "Constitution Day"),

@@ -20,7 +20,7 @@ msgstr ""
 msgid "Nieuwjaar"
 msgstr "Neujahr"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pasen"
 msgstr "Ostern"
 
@@ -48,7 +48,7 @@ msgstr "Pfingstmontag"
 msgid "Nationale feestdag"
 msgstr "Nationalfeiertag"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "O. L. V. Hemelvaart"
 msgstr "Mariä Himmelfahrt"
 

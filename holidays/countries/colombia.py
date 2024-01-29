@@ -68,7 +68,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
-            # Ascension of Jesus.
+            # Ascension Day.
             self._move_holiday(self._add_ascension_thursday(tr("Ascensión del señor")))
 
             # Corpus Christi.
@@ -94,7 +94,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_7(tr("Batalla de Boyacá"))
 
         if self._year >= 1951:
-            # Assumption of Mary.
+            # Assumption Day.
             self._move_holiday(self._add_assumption_of_mary_day(tr("La Asunción")))
 
         # Columbus Day.
@@ -113,7 +113,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Immaculate Conception.
             self._add_immaculate_conception_day(tr("La Inmaculada Concepción"))
 
-        # Christmas.
+        # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
 
 

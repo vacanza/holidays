@@ -79,7 +79,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_may_26(tr("დამოუკიდებლობის დღე"))
 
-        # Assumption of the Virgin Mary.
+        # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("მარიამობა"))
 
         # Holiday of Svetitskhovloba, Robe of Jesus.

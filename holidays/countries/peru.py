@@ -38,7 +38,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        # Holy Thursday.
+        # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
@@ -50,7 +50,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
-        # Feast of Saints Peter and Paul.
+        # Saint Peter and Saint Paul.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
 
         # Independence Day.
@@ -63,13 +63,13 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Battle of Junín.
             self._add_holiday_aug_6(tr("Batalla de Junín"))
 
-        # Santa Rosa de Lima.
+        # Rose of Lima Day.
         self._add_holiday_aug_30(tr("Santa Rosa de Lima"))
 
         # Battle of Angamos.
         self._add_holiday_oct_8(tr("Combate de Angamos"))
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_all_saints_day(tr("Todos Los Santos"))
 
         # Immaculate Conception.

@@ -41,7 +41,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Nytårsdag"))
 
-        # Holy Thursday.
+        # Maundy Thursday.
         self._add_holy_thursday(tr("Skærtorsdag"))
 
         # Good Friday.
@@ -53,7 +53,6 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Anden påskedag"))
 
-        # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
         if self._year <= 2023:
             # Great Day of Prayers.
             self._add_holiday(tr("Store bededag"), self._easter_sunday + td(days=+26))

@@ -36,7 +36,7 @@ msgstr ""
 msgid "Paștele"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Ziua Muncii"
 msgstr ""
 
