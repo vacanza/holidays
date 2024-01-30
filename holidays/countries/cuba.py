@@ -32,7 +32,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CU"
     default_language = "es"
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observado)")
     supported_languages = ("en_US", "es", "uk")
 
@@ -65,7 +65,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
-        # Labour Day.
+        # International Worker's Day.
         self._add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.

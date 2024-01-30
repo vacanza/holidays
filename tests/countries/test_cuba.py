@@ -33,7 +33,8 @@ class TestCuba(CommonCountryTests, TestCase):
 
     def test_national_rebellion_day(self):
         self.assertHolidayName(
-            "Día de la Rebeldía Nacional", (f"{year}-07-26" for year in range(1959, 2050))
+            "Día de la Rebeldía Nacional",
+            (f"{year}-07-26" for year in range(1959, 2050)),
         )
 
     def test_independence_day(self):
@@ -315,8 +316,8 @@ class TestCuba(CommonCountryTests, TestCase):
             ("2022-01-01", "Liberation Day"),
             ("2022-01-02", "Victory Day"),
             ("2022-04-15", "Good Friday"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-01", "International Worker's Day"),
+            ("2022-05-02", "International Worker's Day (observed)"),
             ("2022-07-25", "Commemoration of the Assault of the Moncada garrison"),
             ("2022-07-26", "Day of the National Rebellion"),
             ("2022-07-27", "Commemoration of the Assault of the Moncada garrison"),

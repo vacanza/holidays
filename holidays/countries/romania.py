@@ -56,7 +56,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(name)
         self._add_easter_monday(name)
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Ziua Muncii"))
 
         if self._year >= 2017:

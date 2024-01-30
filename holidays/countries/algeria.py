@@ -19,11 +19,15 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Algeria
+
+        As of April 30, 2023. Algeria has 3 days of Eid holidays
+        (https://www.horizons.dz/english/archives/amp/12021)
+
     """
 
     country = "DZ"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 
@@ -38,7 +42,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # In January 2018, Algeria declared Yennayer a national holiday.
         if self._year >= 2018:
-            # Amazigh New Year / Yennayer.
+            # Amazigh New Year.
             self._add_holiday_jan_12(tr("رأس السنة الأمازيغية"))
 
         # Labor Day.
@@ -58,20 +62,17 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Ashura.
         self._add_ashura_day(tr("عاشورة"))
 
-        # Mawlid / Prophet's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
-        # As of April 30, 2023. Algeria has 3 days of Eid holidays
-        # (https://www.horizons.dz/english/archives/amp/12021)
-
-        # Eid al-Fitr - Feast Festive.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         if self._year >= 2024:
             self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Eid al-Adha - Scarfice Festive.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
         # Eid al-Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))

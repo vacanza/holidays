@@ -24,7 +24,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Tanzania(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """
     References:
@@ -60,6 +64,7 @@ class Tanzania(
     country = "TZ"
     supported_categories = (BANK, PUBLIC)
     default_language = "sw"
+    # %s (estimated).
     estimated_label = tr("%s (makisio)")
     supported_languages = ("en_US", "sw")
 

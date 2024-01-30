@@ -24,7 +24,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class TimorLeste(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """
     References:
@@ -43,6 +47,7 @@ class TimorLeste(
     country = "TL"
     supported_categories = (GOVERNMENT, PUBLIC, WORKDAY)
     default_language = "pt_TL"
+    # %s (estimated).
     estimated_label = tr("%s (aproximada)")
     supported_languages = ("en_US", "pt_TL", "tet")
 

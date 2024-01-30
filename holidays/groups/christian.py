@@ -74,7 +74,11 @@ class ChristianHolidays:
         """
         Verify calendar type.
         """
-        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, JULIAN_REVISED_CALENDAR}:
+        if calendar not in {
+            GREGORIAN_CALENDAR,
+            JULIAN_CALENDAR,
+            JULIAN_REVISED_CALENDAR,
+        }:
             raise ValueError(
                 f"Unknown calendar name: {calendar}. "
                 f"Use `{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."

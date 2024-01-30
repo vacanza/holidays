@@ -153,7 +153,8 @@ class HongKong(
                     self._add_mid_autumn_festival(name)
                 else:
                     self._add_holiday(
-                        f"The second day of the {name} (Monday)", mid_autumn_date + td(days=+2)
+                        f"The second day of the {name} (Monday)",
+                        mid_autumn_date + td(days=+2),
                     )
             else:
                 self._add_mid_autumn_festival_day_two(f"The day following the {name}")

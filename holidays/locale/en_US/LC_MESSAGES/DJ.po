@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.30\n"
 "POT-Creation-Date: 2023-07-15 20:58+0300\n"
-"PO-Revision-Date: 2023-07-15 21:02+0300\n"
+"PO-Revision-Date: 2024-01-02 15:49+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -13,9 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
@@ -52,9 +52,9 @@ msgstr "Eid al-Fitr"
 msgid "Eid al-Fitr deuxième jour"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat.
+#. Arafat Day.
 msgid "Arafat"
-msgstr "Arafat"
+msgstr "Arafat Day"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"

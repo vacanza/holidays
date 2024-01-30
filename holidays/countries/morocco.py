@@ -26,7 +26,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "MA"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 

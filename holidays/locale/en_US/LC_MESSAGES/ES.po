@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.40\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2023-12-26 19:37+0200\n"
+"PO-Revision-Date: 2024-01-03 20:56+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -37,9 +37,9 @@ msgstr "Good Friday"
 msgid "Fiesta del Trabajo"
 msgstr "Labor Day"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. National Day.
 msgid "Fiesta Nacional de España"

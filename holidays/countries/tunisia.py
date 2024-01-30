@@ -21,7 +21,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "TN"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
 
@@ -68,14 +68,14 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Eid al-Adha.
         name = tr("عيد الأضحى")
         self._add_eid_al_adha_day(name)
-        # Eid al-Adha Holiday
+        # Eid al-Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # Prophet Muhammad's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 

@@ -37,11 +37,11 @@ msgstr ""
 msgid "Le lundi de Pâques"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête de la Travaille"
 msgstr ""
 
-#. Ascension's Day.
+#. Ascension Day.
 msgid "L'Ascension"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "La Fête Dieu"
 msgstr ""
 
-#. Assumption's Day.
+#. Assumption Day.
 msgid "L'Assomption de Marie"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 msgid "La Fête du Prince"
 msgstr ""
 
-#. Immaculate Conception Day.
+#. Immaculate Conception.
 msgid "L'Immaculée Conception"
 msgstr ""
 

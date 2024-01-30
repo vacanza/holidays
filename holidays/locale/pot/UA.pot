@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE
 # This file is distributed under the same license as the Python Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.38\n"
-"POT-Creation-Date: 2023-11-20 15:58-0800\n"
-"PO-Revision-Date: 2023-11-20 15:58-0800\n"
-"Last-Translator: \n"
+"Project-Id-Version: Python Holidays 0.42\n"
+"POT-Creation-Date: 2024-01-23 21:10+0200\n"
+"PO-Revision-Date: 2024-01-23 21:10+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Python Holidays Localization Team\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Новий рік"
 msgstr ""
 
-#. Christmas (Julian calendar).
+#. Christmas Day (Julian calendar).
 msgid "Різдво Христове (за юліанським календарем)"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Трійця"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "День праці"
 msgstr ""
 
@@ -76,12 +76,8 @@ msgstr ""
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr ""
 
-#. Christmas (Gregorian calendar).
+#. Christmas Day (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
-msgstr ""
-
-#. Presidential decree holiday.
-msgid "Вихідний згідно указу Президента"
 msgstr ""
 
 #. Date format (see strftime() Format Codes)
@@ -91,4 +87,8 @@ msgstr ""
 #. Day off (substituted from %s).
 #, c-format
 msgid "Вихідний день (перенесено з %s)"
+msgstr ""
+
+#. Presidential decree holiday.
+msgid "Вихідний згідно указу Президента"
 msgstr ""

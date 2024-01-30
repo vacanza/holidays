@@ -66,8 +66,8 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Alatsinain'ny pentekosta"))
 
         last_sun_of_may = _get_nth_weekday_of_month(-1, SUN, MAY, self._year)
-        # Mother's Day.
         self._add_holiday(
+            # Mother's Day.
             tr("Fetin'ny reny"),
             last_sun_of_may + td(days=+7) if last_sun_of_may == whit_sunday else last_sun_of_may,
         )

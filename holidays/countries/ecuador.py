@@ -68,7 +68,7 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
 
         # The Battle of Pichincha.

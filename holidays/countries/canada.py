@@ -90,7 +90,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             )
 
         if self._year >= 1894:
-            # Labour Day.
+            # Labor Day.
             self._add_holiday_1st_mon_of_sep(tr("Labour Day"))
 
         # Christmas Day.

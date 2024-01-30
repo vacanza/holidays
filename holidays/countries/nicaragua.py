@@ -73,7 +73,7 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Virgin's Day.
         self._add_immaculate_conception_day(tr("Concepción de María"))
 
-        # Christmas.
+        # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
 
     def _populate_subdiv_mn_public_holidays(self):

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2023-07-18 17:57+0300\n"
+"PO-Revision-Date: 2024-01-03 19:00+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "ახალი წელი"
@@ -68,9 +68,9 @@ msgstr "Saint Andrew's Day"
 msgid "დამოუკიდებლობის დღე"
 msgstr "Independence Day"
 
-#. Assumption of the Virgin Mary.
+#. Dormition of the Mother of God.
 msgid "მარიამობა"
-msgstr "Assumption of the Virgin Mary"
+msgstr "Dormition of the Mother of God"
 
 #. Holiday of Svetitskhovloba, Robe of Jesus.
 msgid "მცხეთობის"

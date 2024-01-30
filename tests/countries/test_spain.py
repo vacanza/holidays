@@ -239,7 +239,19 @@ class TestSpain(CommonCountryTests, TestCase):
     def test_variable_holidays_2010(self):
         province_days = {
             (MAR, 1): {"AN", "IB"},
-            (MAR, 19): {"CL", "CM", "EX", "GA", "MC", "MD", "ML", "NC", "PV", "RI", "VC"},
+            (MAR, 19): {
+                "CL",
+                "CM",
+                "EX",
+                "GA",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            },
             (APR, 1): {
                 "AN",
                 "AR",
@@ -318,7 +330,19 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 15): {"CB"},
             (OCT, 25): {"PV"},
             (NOV, 7): {"CE", "ML"},
-            (DEC, 26): {"AN", "AR", "AS", "CE", "CL", "CN", "CT", "EX", "IB", "ML", "NC"},
+            (DEC, 26): {
+                "AN",
+                "AR",
+                "AS",
+                "CE",
+                "CL",
+                "CN",
+                "CT",
+                "EX",
+                "IB",
+                "ML",
+                "NC",
+            },
         }
         self._assertVariableDays(2011, province_days)
 
@@ -509,7 +533,20 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 25): {"CE", "ML"},
             (OCT, 9): {"VC"},
             (NOV, 2): {"AN", "AR", "AS", "CB", "CE", "CL", "CN", "EX", "GA", "IB"},
-            (DEC, 7): {"AN", "AR", "AS", "CE", "CL", "CM", "EX", "IB", "MC", "ML", "RI", "VC"},
+            (DEC, 7): {
+                "AN",
+                "AR",
+                "AS",
+                "CE",
+                "CL",
+                "CM",
+                "EX",
+                "IB",
+                "MC",
+                "ML",
+                "RI",
+                "VC",
+            },
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2015, province_days)
@@ -666,7 +703,19 @@ class TestSpain(CommonCountryTests, TestCase):
 
     def test_variable_holidays_2019(self):
         province_days = {
-            (JAN, 7): {"AN", "AR", "AS", "CE", "CL", "CN", "EX", "MC", "MD", "ML", "NC"},
+            (JAN, 7): {
+                "AN",
+                "AR",
+                "AS",
+                "CE",
+                "CL",
+                "CN",
+                "EX",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+            },
             (FEB, 28): {"AN"},
             (MAR, 1): {"IB"},
             (MAR, 19): {"GA", "MC", "NC", "PV", "VC"},
@@ -988,7 +1037,7 @@ class TestSpain(CommonCountryTests, TestCase):
             ("2023-01-06", "Epiphany"),
             ("2023-04-07", "Good Friday"),
             ("2023-05-01", "Labor Day"),
-            ("2023-08-15", "Assumption of Mary"),
+            ("2023-08-15", "Assumption Day"),
             ("2023-10-12", "National Day"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-12-06", "Constitution Day"),

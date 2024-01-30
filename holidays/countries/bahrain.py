@@ -28,7 +28,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "BH"
     default_language = "ar"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
@@ -42,7 +42,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Labour day.
+        # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
         # Eid Al Fitr.
@@ -53,23 +53,20 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
         # Eid Al Adha.
-        eid_al_adha = tr("عيد الأضحى")
-        self._add_eid_al_adha_day(eid_al_adha)
+        self._add_eid_al_adha_day(tr("عيد الأضحى"))
         # Eid Al Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
-        # Al Hijra New Year.
-        hijri_new_year = tr("رأس السنة الهجرية")
-        self._add_islamic_new_year_day(hijri_new_year)
+        # Islamic New Year.
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # Ashura.
-        ashura = tr("عاشورة")
         # Ashura Eve.
         self._add_ashura_eve(tr("ليلة عاشورة"))
-        self._add_ashura_day(ashura)
+        # Ashura.
+        self._add_ashura_day(tr("عاشورة"))
 
-        # Prophets Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
         # National Day.

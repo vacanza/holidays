@@ -34,7 +34,7 @@ msgstr "(يوم عطلة) %s"
 msgid "Новий рік"
 msgstr "السنة الجديدة"
 
-#. Christmas (Julian calendar).
+#. Christmas Day (Julian calendar).
 msgid "Різдво Христове (за юліанським календарем)"
 msgstr "عيد الميلاد (حسب التقويم اليولياني)"
 
@@ -50,7 +50,7 @@ msgstr "عيد الفصح"
 msgid "Трійця"
 msgstr "الثالوث"
 
-#. Labour Day.
+#. Labor Day.
 msgid "День праці"
 msgstr "عيد العمال"
 
@@ -86,7 +86,7 @@ msgstr "يوم المدافع عن أوكرانيا"
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 
-#. Christmas (Gregorian calendar).
+#. Christmas Day (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
 msgstr "عيد الميلاد (حسب التقويم الغريغوري)"
 

@@ -93,7 +93,7 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Restarted in 2011 via Decreto 1584/2010.
 
         if 1956 <= self._year <= 1975 or self._year >= 2011:
-            # Carnival.
+            # Carnival Day.
             name = tr("Día de Carnaval")
             self._add_carnival_monday(name)
             self._add_carnival_tuesday(name)
@@ -176,7 +176,7 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Inmaculada Concepción de María"))
 
-        # Christmas.
+        # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
 
         # Movable Holidays

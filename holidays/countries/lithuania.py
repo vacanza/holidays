@@ -46,7 +46,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Day of Restoration of Independence of Lithuania.
         self._add_holiday_mar_11(tr("Lietuvos nepriklausomybės atkūrimo diena"))
 
-        # Easter.
+        # Easter Sunday.
         self._add_easter_sunday(tr("Šv. Velykos"))
 
         # Easter Monday.
@@ -55,10 +55,10 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Day.
         self._add_labor_day(tr("Tarptautinė darbo diena"))
 
-        # Mother's day. First Sunday in May.
+        # Mother's Day.
         self._add_holiday_1st_sun_of_may(tr("Motinos diena"))
 
-        # Fathers's day. First Sunday in June.
+        # Father's Day.
         self._add_holiday_1st_sun_of_jun(tr("Tėvo diena"))
 
         if self._year >= 2003:

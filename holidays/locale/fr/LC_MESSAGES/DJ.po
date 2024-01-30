@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr ""
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Eid al-Fitr deuxième jour"
 msgstr ""
 
-#. Arafat.
+#. Arafat Day.
 msgid "Arafat"
 msgstr ""
 

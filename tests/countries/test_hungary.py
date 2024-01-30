@@ -30,7 +30,8 @@ class TestHungary(CommonCountryTests, TestCase):
         name = "Nemzeti ünnep"
         years_absent = set(range(1951, 1989))
         self.assertHolidayName(
-            name, (f"{year}-03-15" for year in set(range(1945, 2050)).difference(years_absent))
+            name,
+            (f"{year}-03-15" for year in set(range(1945, 2050)).difference(years_absent)),
         )
         self.assertNoHoliday(f"{year}-03-15" for year in years_absent)
         self.assertNoHolidayName(name, years_absent)
@@ -153,7 +154,8 @@ class TestHungary(CommonCountryTests, TestCase):
 
         name = "Karácsony másnapja"
         self.assertHolidayName(
-            name, (f"{year}-12-26" for year in set(range(1945, 2050)).difference({1955}))
+            name,
+            (f"{year}-12-26" for year in set(range(1945, 2050)).difference({1955})),
         )
         self.assertNoHoliday("1955-12-26")
         self.assertNoHolidayName(name, 1955)

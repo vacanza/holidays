@@ -25,6 +25,7 @@ msgstr ""
 msgid "Deň vzniku Slovenskej republiky"
 msgstr "Day of the Establishment of the Slovak Republic"
 
+#. Epiphany.
 msgid "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)"
 msgstr "Epiphany (Three Kings' Day and Orthodox Christmas)"
 

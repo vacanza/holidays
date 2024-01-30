@@ -43,7 +43,7 @@ msgstr ""
 msgid "Մայրության և գեղեցկության տոն"
 msgstr ""
 
-#. Armenian Genocide Remembrance Day,
+#. Armenian Genocide Remembrance Day.
 msgid "Եղեռնի զոհերի հիշատակի օր"
 msgstr ""
 
