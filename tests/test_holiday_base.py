@@ -169,9 +169,14 @@ class TestArgs(unittest.TestCase):
             for alias in aliases:
                 self.assertEqual(subdiv, CountryStub1(subdiv=alias)._normalized_subdiv)
 
-        self.assertEqual(CountryStub1.get_subdiv_aliases("Subdiv 1"), ("S1", "S_1"))
-        self.assertEqual(CountryStub1.get_subdiv_aliases("Subdiv 2"), ("S2", "S_2"))
-        self.assertEqual(CountryStub1.get_subdiv_aliases("3"), ("S3", "S_3"))
+        self.assertEqual(
+            CountryStub1.get_subdivision_aliases(),
+            {
+                "Subdiv 1": ["S1", "S_1"],
+                "Subdiv 2": ["S2", "S_2"],
+                "3": ["S3", "S_3"],
+            },
+        )
 
     def test_years(self):
         hb = HolidayBase()

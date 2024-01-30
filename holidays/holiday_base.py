@@ -681,9 +681,15 @@ class HolidayBase(Dict[date, str]):
         return sorted(self.categories)
 
     @classmethod
-    def get_subdiv_aliases(cls, subdiv) -> Tuple[str, ...]:
+    def get_subdivision_aliases(cls) -> Dict[str, List]:
         """Get subdivision aliases."""
-        return tuple((a for a, s in cls.subdivisions_aliases.items() if s == subdiv))
+        subdivision_aliases: Dict[str, List] = {}
+        for alias, subdivision in cls.subdivisions_aliases.items():
+            if subdivision not in subdivision_aliases:
+                subdivision_aliases[subdivision] = []
+            subdivision_aliases[subdivision].append(alias)
+
+        return subdivision_aliases
 
     def _is_leap_year(self) -> bool:
         """

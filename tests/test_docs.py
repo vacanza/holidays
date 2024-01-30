@@ -87,7 +87,7 @@ class TestReadme(TestCase):
                     subdivision_group = subdivisions_re.findall(subdivision_group)[0]
                     for subdivision_code in subdivision_group.split(","):
                         subdivision = subdivision_code.strip()
-                        aliases = tuple(subdivision_aliases_re.findall(subdivision))
+                        aliases = list(subdivision_aliases_re.findall(subdivision))
                         if aliases:
                             subdivision = subdivision.split()[0]
                         subdivision = subdivision.strip(" *")
@@ -174,9 +174,10 @@ class TestReadme(TestCase):
             )
 
             # Make sure country subdivisions aliases are shown correctly.
+            subdivision_aliases = instance.get_subdivision_aliases()
             for subdivision in instance.subdivisions:
                 self.assertEqual(
-                    instance.get_subdiv_aliases(subdivision),
+                    subdivision_aliases.get(subdivision, []),
                     country_subdivisions_aliases[country_code][subdivision],
                     f"Country '{country_name}' subdivisions '{subdivision}' aliases are not shown "
                     "correctly in the table.\n",
