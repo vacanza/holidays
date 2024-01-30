@@ -34,10 +34,6 @@ Documentation = "https://python-holidays.readthedocs.io/en/latest/"
 Changelog = "https://github.com/vacanza/python-holidays/releases"
 Downloads = "https://pypi.org/project/holidays/"
 
-[tool.black]
-line-length = 99
-target-version = ["py38", "py39", "py310", "py311"]
-
 [tool.coverage.run]
 branch = true
 omit = ["scripts/*", "setup.py", "tests/*"]
@@ -49,7 +45,6 @@ multi_line_output = 3
 no_inline_sort = true
 profile = "black"
 skip = ["docs"]
-
 
 [tool.mypy]
 strict = false
@@ -65,6 +60,15 @@ disable_error_code = "attr-defined"
 [tool.rstcheck]
 ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]
+
+[tool.ruff]
+line-length = 99
+# only minimum supported version, see https://github.com/astral-sh/ruff/issues/2519
+target-version = "py38"
+
+[tool.ruff.lint]
+# Skip Whitespace before ':' (E203).
+ignore = ["E203"]
 
 [tool.setuptools.dynamic]
 version = {attr = "holidays.__version__"}
