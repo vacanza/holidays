@@ -417,7 +417,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-02-01", "Lunar New Year"),
-            ("2022-02-28", "The Prophet's Ascension"),
+            ("2022-02-28", "Isra and Miraj"),
             ("2022-03-03", "Day of Silence"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-29", "Eid al-Fitr Joint Holiday"),
@@ -433,7 +433,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-07-10", "Eid al-Adha"),
             ("2022-07-30", "Islamic New Year"),
             ("2022-08-17", "Independence Day"),
-            ("2022-10-08", "The Prophet's Birthday"),
+            ("2022-10-08", "Prophet's Birthday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Joint Holiday"),
         )

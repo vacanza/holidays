@@ -109,7 +109,7 @@ msgstr "วันนิวบรันสวิก"
 msgid "Saskatchewan Day"
 msgstr "วันซัสแคตเชวัน"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 

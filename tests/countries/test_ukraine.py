@@ -421,7 +421,10 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-05-02", "Великдень (Пасха)"),
             ("2021-05-03", "День праці (вихідний)"),
             ("2021-05-04", "Великдень (Пасха) (вихідний)"),
-            ("2021-05-09", "День перемоги над нацизмом у Другій світовій війні (День перемоги)"),
+            (
+                "2021-05-09",
+                "День перемоги над нацизмом у Другій світовій війні (День перемоги)",
+            ),
             (
                 "2021-05-10",
                 "День перемоги над нацизмом у Другій світовій війні (День перемоги) (вихідний)",
@@ -458,7 +461,10 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-05-02", "Великдень (Пасха)"),
             ("2021-05-03", "День праці (вихідний)"),
             ("2021-05-04", "Великдень (Пасха) (вихідний)"),
-            ("2021-05-09", "День перемоги над нацизмом у Другій світовій війні (День перемоги)"),
+            (
+                "2021-05-09",
+                "День перемоги над нацизмом у Другій світовій війні (День перемоги)",
+            ),
             (
                 "2021-05-10",
                 "День перемоги над нацизмом у Другій світовій війні (День перемоги) (вихідний)",
@@ -478,7 +484,7 @@ class TestUkraine(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2021-01-01", "New Year's Day"),
-            ("2021-01-07", "Christmas (Julian calendar)"),
+            ("2021-01-07", "Christmas Day (Julian calendar)"),
             ("2021-01-08", "Day off (substituted from 01/16/2021)"),
             ("2021-03-08", "International Women's Day"),
             ("2021-05-01", "Labor Day"),
@@ -486,7 +492,10 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-05-03", "Labor Day (observed)"),
             ("2021-05-04", "Easter Sunday (Pascha) (observed)"),
             ("2021-05-09", "Day of Victory over Nazism in World War II (Victory Day)"),
-            ("2021-05-10", "Day of Victory over Nazism in World War II (Victory Day) (observed)"),
+            (
+                "2021-05-10",
+                "Day of Victory over Nazism in World War II (Victory Day) (observed)",
+            ),
             ("2021-06-20", "Holy Trinity Day"),
             ("2021-06-21", "Holy Trinity Day (observed)"),
             ("2021-06-28", "Day of the Constitution of Ukraine"),
@@ -494,8 +503,8 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-08-24", "Independence Day"),
             ("2021-10-14", "Day of defenders of Ukraine"),
             ("2021-10-15", "Day off (substituted from 10/23/2021)"),
-            ("2021-12-25", "Christmas (Gregorian calendar)"),
-            ("2021-12-27", "Christmas (Gregorian calendar) (observed)"),
+            ("2021-12-25", "Christmas Day (Gregorian calendar)"),
+            ("2021-12-27", "Christmas Day (Gregorian calendar) (observed)"),
         )
 
     def test_l10n_ar(self):
@@ -509,7 +518,10 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-05-02", "عيد الفصح"),
             ("2021-05-03", "(يوم عطلة) عيد العمال"),
             ("2021-05-04", "(يوم عطلة) عيد الفصح"),
-            ("2021-05-09", "يوم النصر على النازية في الحرب العالمية الثانية (يوم النصر)"),
+            (
+                "2021-05-09",
+                "يوم النصر على النازية في الحرب العالمية الثانية (يوم النصر)",
+            ),
             (
                 "2021-05-10",
                 "(يوم عطلة) يوم النصر على النازية في الحرب العالمية الثانية (يوم النصر)",

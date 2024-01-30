@@ -85,7 +85,7 @@ msgstr ""
 msgid "วันสงกรานต์"
 msgstr ""
 
-#. National Labour day.
+#. National Labor Day.
 msgid "วันแรงงานแห่งชาติ"
 msgstr ""
 

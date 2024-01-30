@@ -30,7 +30,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
     country = "TR"
     default_language = "tr"
-    # Estimated label.
+    # %s (estimated).
     estimated_label = tr("%s (tahmini)")
     supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "tr", "uk")
@@ -105,6 +105,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         if self._year <= 1935:
             return None
 
+        # %s (from 1pm).
         begin_time_label = self.tr("%s (saat 13.00'ten)")
 
         # Republic Day.

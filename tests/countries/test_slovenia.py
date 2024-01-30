@@ -54,7 +54,8 @@ class TestSlovenia(CommonCountryTests, TestCase):
 
     def test_uprising_against_occupation_day(self):
         self.assertHolidayName(
-            "dan upora proti okupatorju", (f"{year}-04-27" for year in range(1991, 2050))
+            "dan upora proti okupatorju",
+            (f"{year}-04-27" for year in range(1991, 2050)),
         )
 
     def test_labor_day(self):
@@ -85,7 +86,8 @@ class TestSlovenia(CommonCountryTests, TestCase):
 
     def test_independence_and_unity_day(self):
         self.assertHolidayName(
-            "dan samostojnosti in enotnosti", (f"{year}-12-26" for year in range(1991, 2050))
+            "dan samostojnosti in enotnosti",
+            (f"{year}-12-26" for year in range(1991, 2050)),
         )
 
     def test_l10n_default(self):

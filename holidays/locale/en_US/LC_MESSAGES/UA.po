@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.37\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2023-11-10 15:35+0200\n"
+"PO-Revision-Date: 2024-01-05 13:04+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Date format (see strftime() Format Codes)
@@ -35,9 +35,9 @@ msgstr "%s (observed)"
 msgid "Новий рік"
 msgstr "New Year's Day"
 
-#. Christmas (Julian calendar).
+#. Christmas Day (Julian calendar).
 msgid "Різдво Христове (за юліанським календарем)"
-msgstr "Christmas (Julian calendar)"
+msgstr "Christmas Day (Julian calendar)"
 
 #. International Women's Day.
 msgid "Міжнародний жіночий день"
@@ -51,7 +51,7 @@ msgstr "Easter Sunday (Pascha)"
 msgid "Трійця"
 msgstr "Holy Trinity Day"
 
-#. Labour Day.
+#. Labor Day.
 msgid "День праці"
 msgstr "Labor Day"
 
@@ -87,9 +87,9 @@ msgstr "Defender of Ukraine Day"
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "Anniversary of the Great October Socialist Revolution"
 
-#. Christmas (Gregorian calendar).
+#. Christmas Day (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
-msgstr "Christmas (Gregorian calendar)"
+msgstr "Christmas Day (Gregorian calendar)"
 
 #. Presidential decree holiday.
 msgid "Вихідний згідно указу Президента"

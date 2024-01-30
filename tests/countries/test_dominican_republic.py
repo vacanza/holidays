@@ -120,7 +120,7 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-02-27", "Independence Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-02", "Labor Day"),
-            ("2022-06-16", "Feast of Corpus Christi"),
+            ("2022-06-16", "Corpus Christi"),
             ("2022-08-15", "Restoration Day"),
             ("2022-09-24", "Our Lady of Mercedes Day"),
             ("2022-11-06", "Constitution Day"),

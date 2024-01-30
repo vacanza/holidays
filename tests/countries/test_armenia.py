@@ -118,7 +118,7 @@ class TestArmenia(CommonCountryTests, TestCase):
             ("2022-01-28", "Army Day"),
             ("2022-03-08", "Women's Day"),
             ("2022-04-24", "Genocide Memorial Day"),
-            ("2022-05-01", "Labor day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-05-09", "Victory and Peace Day"),
             ("2022-05-28", "Republic Day"),
             ("2022-07-05", "Constitution Day"),

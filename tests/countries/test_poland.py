@@ -140,7 +140,9 @@ class TestPoland(CommonCountryTests, TestCase):
         self.assertNoHoliday(f"{year}-05-09" for year in range(1925, 1946))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1951, 2050))
         self.assertNoHolidayName(
-            "Narodowe Święto Zwycięstwa i Wolności", range(1925, 1946), range(1951, 2050)
+            "Narodowe Święto Zwycięstwa i Wolności",
+            range(1925, 1946),
+            range(1951, 2050),
         )
 
     def test_wniebowstapienie_panskie(self):
@@ -252,12 +254,12 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2018-05-03", "National Day of the Third of May"),
             ("2018-05-20", "Pentecost"),
             ("2018-05-31", "Corpus Christi"),
-            ("2018-08-15", "Assumption of the Virgin Mary"),
+            ("2018-08-15", "Assumption Day"),
             ("2018-11-01", "All Saints' Day"),
             ("2018-11-11", "National Independence Day"),
             ("2018-11-12", "National Independence Day - 100th anniversary"),
-            ("2018-12-25", "Christmas (Day 1)"),
-            ("2018-12-26", "Christmas (Day 2)"),
+            ("2018-12-25", "Christmas Day"),
+            ("2018-12-26", "Second Day of Christmas"),
         )
         self.assertLocalizedHolidays(
             "en_US",
@@ -269,11 +271,11 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2022-05-03", "National Day of the Third of May"),
             ("2022-06-05", "Pentecost"),
             ("2022-06-16", "Corpus Christi"),
-            ("2022-08-15", "Assumption of the Virgin Mary"),
+            ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-11", "National Independence Day"),
-            ("2022-12-25", "Christmas (Day 1)"),
-            ("2022-12-26", "Christmas (Day 2)"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_uk(self):
@@ -281,32 +283,32 @@ class TestPoland(CommonCountryTests, TestCase):
             "uk",
             ("2018-01-01", "Новий рік"),
             ("2018-01-06", "Богоявлення"),
-            ("2018-04-01", "Перший день Великодня"),
-            ("2018-04-02", "Другий день Великодня"),
+            ("2018-04-01", "Великдень"),
+            ("2018-04-02", "Великодній понеділок"),
             ("2018-05-01", "Національне свято"),
             ("2018-05-03", "Національне свято Третього Травня"),
             ("2018-05-20", "День Святої Трійці"),
             ("2018-05-31", "Свято Тіла і Крові Христових"),
-            ("2018-08-15", "Успіння Пресвятої Богородиці"),
+            ("2018-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2018-11-01", "День усіх святих"),
             ("2018-11-11", "День Незалежності"),
             ("2018-11-12", "100-а річниця Дня Незалежності"),
-            ("2018-12-25", "Перший день Різдва"),
+            ("2018-12-25", "Різдво Христове"),
             ("2018-12-26", "Другий день Різдва"),
         )
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "Новий рік"),
             ("2022-01-06", "Богоявлення"),
-            ("2022-04-17", "Перший день Великодня"),
-            ("2022-04-18", "Другий день Великодня"),
+            ("2022-04-17", "Великдень"),
+            ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "Національне свято"),
             ("2022-05-03", "Національне свято Третього Травня"),
             ("2022-06-05", "День Святої Трійці"),
             ("2022-06-16", "Свято Тіла і Крові Христових"),
-            ("2022-08-15", "Успіння Пресвятої Богородиці"),
+            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),
             ("2022-11-11", "День Незалежності"),
-            ("2022-12-25", "Перший день Різдва"),
+            ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
         )

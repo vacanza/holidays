@@ -254,7 +254,6 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_holiday_oct_31(tr("Reformationstag"))
 
         if self._year >= 1995:
-            # last wednesday before year-11-23
             self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
     def _populate_subdiv_st_public_holidays(self):

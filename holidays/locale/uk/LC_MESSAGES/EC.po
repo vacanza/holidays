@@ -28,7 +28,7 @@ msgstr "Карнавал"
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día del Trabajo"
 msgstr "День праці"
 

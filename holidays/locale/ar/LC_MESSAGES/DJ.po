@@ -2,20 +2,20 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-07-15 20:58+0300\n"
-"PO-Revision-Date: 2023-07-16 13:30+0300\n"
+"PO-Revision-Date: 2024-01-22 13:45+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr "(تقدير) %s"
@@ -50,9 +50,9 @@ msgstr "عيد الفطر"
 
 #. Eid al-Fitr Holiday.
 msgid "Eid al-Fitr deuxième jour"
-msgstr "أجازة عيد الفطر"
+msgstr "عطلة عيد الفطر"
 
-#. Arafat.
+#. Arafat Day.
 msgid "Arafat"
 msgstr "يوم عرفة"
 
@@ -62,7 +62,7 @@ msgstr "عيد الأضحى"
 
 #. Eid al-Adha Holiday.
 msgid "Eid al-Adha deuxième jour"
-msgstr "أجازة عيد الأضحى"
+msgstr "عطلة عيد الأضحى"
 
 #. Islamic New Year.
 msgid "Nouvel an musulman"

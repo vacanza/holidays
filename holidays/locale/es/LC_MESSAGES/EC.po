@@ -28,7 +28,7 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día del Trabajo"
 msgstr ""
 

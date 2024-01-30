@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2023-05-03 18:36-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-05 12:31+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. Bridge Public Holiday.
 msgid "Feriado con fines turísticos"
@@ -49,9 +49,9 @@ msgstr "National Census Day 2022"
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
-#. Carnival.
+#. Carnival Day.
 msgid "Día de Carnaval"
-msgstr "Carnival"
+msgstr "Carnival Day"
 
 #. Memory's National Day for the Truth and Justice.
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
@@ -98,9 +98,9 @@ msgstr "Independence Day"
 msgid "Inmaculada Concepción de María"
 msgstr "Immaculate Conception"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. Pass to the Immortality of General Don Martin Miguel de Guemes.
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"

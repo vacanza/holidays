@@ -23,7 +23,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Spain(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """
     Holidays checked with official sources for 2010-2023 only.
@@ -101,7 +105,7 @@ class Spain(
             self._add_labor_day(tr("Fiesta del Trabajo"))
 
         if self._year not in {2010, 2021}:
-            # Assumption of Mary.
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         if self._year != 2014:

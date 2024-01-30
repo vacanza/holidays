@@ -227,7 +227,18 @@ class Malaysia(
             dts_observed.update(self._add_ramadan_beginning_day("Beginning of Ramadan"))
 
         # Nuzul Al-Quran Day.
-        if self.subdiv in {"KTN", "KUL", "LBN", "PHG", "PJY", "PLS", "PNG", "PRK", "SGR", "TRG"}:
+        if self.subdiv in {
+            "KTN",
+            "KUL",
+            "LBN",
+            "PHG",
+            "PJY",
+            "PLS",
+            "PNG",
+            "PRK",
+            "SGR",
+            "TRG",
+        }:
             dts_observed.update(self._add_nuzul_al_quran_day("Nuzul Al-Quran Day"))
 
         # Thaipusam.

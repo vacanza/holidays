@@ -202,7 +202,7 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
         self.assertHolidayName("Weihnachten", (f"{year}-12-25" for year in range(1900, 2050)))
 
     def test_st_stephens_day(self):
-        self.assertHolidayName("Stefanstag", (f"{year}-12-26" for year in range(1900, 2050)))
+        self.assertHolidayName("Stephanstag", (f"{year}-12-26" for year in range(1900, 2050)))
 
     def test_new_years_eve(self):
         name = "Silvester"
@@ -231,7 +231,7 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
             ("2022-11-01", "Allerheiligen"),
             ("2022-12-08", "Mariä Empfängnis"),
             ("2022-12-25", "Weihnachten"),
-            ("2022-12-26", "Stefanstag"),
+            ("2022-12-26", "Stephanstag"),
         )
 
     def test_2022_bank(self):
@@ -266,7 +266,7 @@ class TestLiechtenstein(CommonCountryTests, TestCase):
             ("2022-12-08", "Mariä Empfängnis"),
             ("2022-12-24", "Heiligabend"),
             ("2022-12-25", "Weihnachten"),
-            ("2022-12-26", "Stefanstag"),
+            ("2022-12-26", "Stephanstag"),
             ("2022-12-31", "Silvester"),
         )
 

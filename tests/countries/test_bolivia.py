@@ -269,7 +269,10 @@ class TestBolivia(CommonCountryTests, TestCase):
             ("2023-01-01", "Año Nuevo"),
             ("2023-01-02", "Año Nuevo (observado)"),
             ("2023-01-22", "Día de la Creación del Estado Plurinacional de Bolivia"),
-            ("2023-01-23", "Día de la Creación del Estado Plurinacional de Bolivia (observado)"),
+            (
+                "2023-01-23",
+                "Día de la Creación del Estado Plurinacional de Bolivia (observado)",
+            ),
             ("2023-02-20", "Carnaval"),
             ("2023-02-21", "Carnaval"),
             ("2023-04-07", "Viernes Santo"),
@@ -309,7 +312,10 @@ class TestBolivia(CommonCountryTests, TestCase):
             ("2023-01-01", "Новий рік"),
             ("2023-01-02", "Новий рік (вихідний)"),
             ("2023-01-22", "День створення Багатонаціональної Держави Болівія"),
-            ("2023-01-23", "День створення Багатонаціональної Держави Болівія (вихідний)"),
+            (
+                "2023-01-23",
+                "День створення Багатонаціональної Держави Болівія (вихідний)",
+            ),
             ("2023-02-20", "Карнавал"),
             ("2023-02-21", "Карнавал"),
             ("2023-04-07", "Страсна пʼятниця"),

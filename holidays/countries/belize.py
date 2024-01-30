@@ -93,7 +93,8 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Indigenous Peoples' Resistance Day / Pan American Day.
         name = "Indigenous Peoples' Resistance Day" if self._year >= 2021 else "Pan American Day"
         self._move_holiday(
-            self._add_columbus_day(name), rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON
+            self._add_columbus_day(name),
+            rule=TUE_WED_THU_TO_PREV_MON + FRI_SUN_TO_NEXT_MON,
         )
 
         # Garifuna Settlement Day.

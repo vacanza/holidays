@@ -78,7 +78,8 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # Family Day.
         self._add_observed(
-            self._add_christmas_day_two("Family Day"), rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE
+            self._add_christmas_day_two("Family Day"),
+            rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE,
         )
 
 

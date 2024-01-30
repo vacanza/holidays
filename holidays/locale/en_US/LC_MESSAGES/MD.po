@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.22\n"
 "POT-Creation-Date: 2023-03-22 21:58+0200\n"
-"PO-Revision-Date: 2023-03-22 22:00+0200\n"
+"PO-Revision-Date: 2024-01-05 12:40+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Anul Nou"
 msgstr "New Year's Day"
 
-#. Christmas (by old style).
+#. Christmas Day (by old style).
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
-msgstr "Christmas (by old style)"
+msgstr "Christmas Day (by old style)"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Naşterea lui Iisus Hristos (Crăciunul)"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. International Women's Day.
 msgid "Ziua internatională a femeii"
@@ -56,11 +56,11 @@ msgstr ""
 msgid "Ziua Europei"
 msgstr "Europe Day"
 
-#. International Children's Day
+#. International Children's Day.
 msgid "Ziua Ocrotirii Copilului"
 msgstr "International Children's Day"
 
-#. Republic of Moldova Independence Day
+#. Republic of Moldova Independence Day.
 msgid "Ziua independenţei Republicii Moldova"
 msgstr "Republic of Moldova Independence Day"
 
@@ -68,6 +68,6 @@ msgstr "Republic of Moldova Independence Day"
 msgid "Limba noastră"
 msgstr "National Language Day"
 
-#. Christmas (by new style).
+#. Christmas Day (by new style).
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
-msgstr "Christmas (by new style)"
+msgstr "Christmas Day (by new style)"

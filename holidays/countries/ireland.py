@@ -75,7 +75,8 @@ class Ireland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # St. Stephen's Day.
         self._add_observed(
-            self._add_christmas_day_two("St. Stephen's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE
+            self._add_christmas_day_two("St. Stephen's Day"),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
 

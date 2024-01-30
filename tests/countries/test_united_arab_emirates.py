@@ -18,15 +18,16 @@ from tests.common import CommonCountryTests
 class TestUnitedArabEmirates(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(UnitedArabEmirates)
+        super().setUpClass(UnitedArabEmirates, years=range(2014, 2024))
 
     def test_country_aliases(self):
         self.assertAliases(UnitedArabEmirates, AE, ARE)
 
     def test_2020(self):
-        self.assertHoliday(
+        self.assertHolidayDates(
             UnitedArabEmirates(years=2020),
             "2020-01-01",
+            "2020-05-23",
             "2020-05-24",
             "2020-05-25",
             "2020-05-26",
@@ -35,21 +36,26 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2020-08-01",
             "2020-08-02",
             "2020-08-23",
+            "2020-10-29",
             "2020-12-01",
             "2020-12-02",
             "2020-12-03",
         )
 
-    def test_commemoration_day_since_2015(self):
+    def test_commemoration_day(self):
         self.assertNoHoliday("2014-11-30")
-        self.assertNoHolidayName("يوم الشهيد", UnitedArabEmirates(years=2014))
-        self.assertHoliday("2015-11-30", "2016-11-30", "2017-11-30", "2018-11-30")
+        self.assertNoHolidayName("يوم الشهيد", 2014, 2023)
+        self.assertHoliday(f"{year}-11-30" for year in range(2015, 2019))
         self.assertNoHoliday("2019-11-30")
-        self.assertHoliday("2019-12-01")
+        self.assertHoliday(f"{year}-12-01" for year in range(2019, 2023))
 
     def test_hijri_based(self):
         self.assertHoliday(
             # Eid Al-Fitr
+            "2018-06-14",
+            "2018-06-15",
+            "2018-06-16",
+            "2020-05-23",
             "2020-05-24",
             "2020-05-25",
             "2020-05-26",
@@ -58,15 +64,31 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2020-07-31",
             "2020-08-01",
             "2020-08-02",
+            "2023-06-27",
+            "2023-06-28",
+            "2023-06-29",
+            "2023-06-30",
             # Islamic New Year
             "2008-01-10",
             "2008-12-29",
+            "2018-09-11",
+            "2019-08-31",
             "2020-08-23",
-            # Leilat Al-Miraj 2018
+            "2021-08-12",
+            "2022-07-30",
+            "2023-07-21",
+            # Isra' and Mi'raj
             "2018-04-13",
-            # Prophet's Birthday 2018
+            # Prophet's Birthday
             "2018-11-19",
+            "2019-11-09",
+            "2020-10-29",
+            "2021-10-21",
+            "2022-10-08",
+            "2023-09-29",
         )
+        self.assertNoHoliday("2018-06-13")  # Eid Al-Fitr Eve
+        self.assertNoHolidayName("ليلة المعراج", range(2019, 2024))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -90,7 +112,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2018-01-01", "New Year's Day"),
-            ("2018-04-13", "Leilat al-Miraj (Ascension of the Prophet)"),
+            ("2018-04-13", "Isra' and Mi'raj"),
             ("2018-06-14", "Eid al-Fitr"),
             ("2018-06-15", "Eid al-Fitr Holiday"),
             ("2018-06-16", "Eid al-Fitr Holiday"),

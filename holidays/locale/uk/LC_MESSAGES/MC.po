@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.41\n"
 "POT-Creation-Date: 2023-02-20 11:58+0200\n"
-"PO-Revision-Date: 2023-03-05 13:25+0200\n"
+"PO-Revision-Date: 2024-01-02 18:34+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. Public holiday.
 msgid "Jour férié"
@@ -37,11 +37,11 @@ msgstr "День святої Девоти"
 msgid "Le lundi de Pâques"
 msgstr "Великодній понеділок"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête de la Travaille"
 msgstr "День праці"
 
-#. Ascension's Day.
+#. Ascension Day.
 msgid "L'Ascension"
 msgstr "Вознесіння Господнє"
 
@@ -53,9 +53,9 @@ msgstr "День Святого Духа"
 msgid "La Fête Dieu"
 msgstr "Свято Тіла і Крові Христових"
 
-#. Assumption's Day.
+#. Assumption Day.
 msgid "L'Assomption de Marie"
-msgstr "Успіння Пресвятої Богородиці"
+msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. All Saints' Day.
 msgid "La Toussaint"
@@ -65,7 +65,7 @@ msgstr "День усіх святих"
 msgid "La Fête du Prince"
 msgstr "День Князя"
 
-#. Immaculate Conception Day.
+#. Immaculate Conception.
 msgid "L'Immaculée Conception"
 msgstr "Непорочне зачаття Діви Марії"
 

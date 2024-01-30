@@ -68,7 +68,7 @@ msgstr ""
 msgid "დამოუკიდებლობის დღე"
 msgstr ""
 
-#. Assumption of the Virgin Mary.
+#. Dormition of the Mother of God.
 msgid "მარიამობა"
 msgstr ""
 

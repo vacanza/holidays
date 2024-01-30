@@ -276,7 +276,8 @@ def CountryHoliday(
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 

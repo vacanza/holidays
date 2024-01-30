@@ -56,7 +56,7 @@ msgstr ""
 msgid "Semana Morazánica"
 msgstr ""
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr ""
 

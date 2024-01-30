@@ -44,9 +44,9 @@ msgstr "День незалежності"
 msgid "Batalla de Boyacá"
 msgstr "Річниця перемоги при Бояка"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "La Asunción"
-msgstr "Успіння Пресвятої Богородиці"
+msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. Columbus Day.
 msgid "Día de la Raza"
@@ -64,7 +64,7 @@ msgstr "День незалежності Картахени"
 msgid "La Inmaculada Concepción"
 msgstr "Непорочне зачаття Діви Марії"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
 
@@ -76,7 +76,7 @@ msgstr "Великий четвер"
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del señor"
 msgstr "Вознесіння Господнє"
 

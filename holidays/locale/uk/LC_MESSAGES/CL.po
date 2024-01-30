@@ -32,7 +32,7 @@ msgstr "Страсна п'ятниця"
 msgid "Sábado Santo"
 msgstr "Велика субота"
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del Señor"
 msgstr "Вознесіння Господнє"
 
@@ -40,7 +40,7 @@ msgstr "Вознесіння Господнє"
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día Nacional del Trabajo"
 msgstr "День праці"
 
@@ -60,9 +60,9 @@ msgstr "День Святих Петра і Павла"
 msgid "Virgen del Carmen"
 msgstr "Матір Божа Кармельська"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
-msgstr "Успіння Пресвятої Богородиці"
+msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. Day of National Liberation.
 msgid "Día de la Liberación Nacional"
@@ -96,7 +96,7 @@ msgstr "День Колумба"
 msgid "Día Nacional de las Iglesias Evangélicas y Protestantes"
 msgstr "День Реформації"
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Día de Todos los Santos"
 msgstr "День усіх святих"
 
@@ -108,7 +108,7 @@ msgstr "Непорочне зачаття Діви Марії"
 msgid "Víspera de Navidad"
 msgstr "Святий вечір"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
 

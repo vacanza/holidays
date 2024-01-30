@@ -70,12 +70,14 @@ class TestEcuador(CommonCountryTests, TestCase):
 
     def test_independence_of_quito(self):
         self.assertHolidayName(
-            "Primer Grito de Independencia", (f"{year}-08-10" for year in range(2000, 2050))
+            "Primer Grito de Independencia",
+            (f"{year}-08-10" for year in range(2000, 2050)),
         )
 
     def test_independence_of_guayaquil(self):
         self.assertHolidayName(
-            "Independencia de Guayaquil", (f"{year}-10-09" for year in range(2000, 2050))
+            "Independencia de Guayaquil",
+            (f"{year}-10-09" for year in range(2000, 2050)),
         )
 
     def test_all_souls_day(self):
@@ -154,7 +156,10 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "Independencia de Guayaquil (observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
+            (
+                "2022-11-04",
+                "Día de los Difuntos (observado); Independencia de Cuenca (observado)",
+            ),
             ("2022-12-25", "Día de Navidad"),
             ("2022-12-26", "Día de Navidad (observado)"),
         )
@@ -189,7 +194,10 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "Independencia de Guayaquil (observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            ("2022-11-04", "Día de los Difuntos (observado); Independencia de Cuenca (observado)"),
+            (
+                "2022-11-04",
+                "Día de los Difuntos (observado); Independencia de Cuenca (observado)",
+            ),
             ("2022-12-25", "Día de Navidad"),
             ("2022-12-26", "Día de Navidad (observado)"),
         )
@@ -201,8 +209,8 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-02-28", "Carnival"),
             ("2022-03-01", "Carnival"),
             ("2022-04-15", "Good Friday"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-05-23", "The Battle of Pichincha (observed)"),
             ("2022-05-24", "The Battle of Pichincha"),
             ("2022-08-10", "Declaration of Independence of Quito"),
@@ -211,7 +219,10 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "Independence of Guayaquil (observed)"),
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-03", "Independence of Cuenca"),
-            ("2022-11-04", "All Souls' Day (observed); Independence of Cuenca (observed)"),
+            (
+                "2022-11-04",
+                "All Souls' Day (observed); Independence of Cuenca (observed)",
+            ),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
@@ -233,7 +244,10 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
             ("2022-11-02", "День усіх померлих"),
             ("2022-11-03", "День незалежності Куенки"),
-            ("2022-11-04", "День незалежності Куенки (вихідний); День усіх померлих (вихідний)"),
+            (
+                "2022-11-04",
+                "День незалежності Куенки (вихідний); День усіх померлих (вихідний)",
+            ),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Різдво Христове (вихідний)"),
         )

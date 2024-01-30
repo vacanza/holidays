@@ -20,7 +20,7 @@ msgstr ""
 msgid "Nieuwjaar"
 msgstr "Новий рік"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pasen"
 msgstr "Великдень"
 
@@ -48,7 +48,7 @@ msgstr "День Святого Духа"
 msgid "Nationale feestdag"
 msgstr "Національне свято"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "O. L. V. Hemelvaart"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 

@@ -28,7 +28,7 @@ msgstr ""
 msgid "Lietuvos nepriklausomybės atkūrimo diena"
 msgstr ""
 
-#. Easter.
+#. Easter Sunday.
 msgid "Šv. Velykos"
 msgstr ""
 
@@ -74,10 +74,10 @@ msgstr ""
 msgid "Šv. Kalėdų antra diena"
 msgstr ""
 
-#. Mother's day. First Sunday in May.
+#. Mother's Day.
 msgid "Motinos diena"
 msgstr ""
 
-#. Fathers's day. First Sunday in June.
+#. Father's Day.
 msgid "Tėvo diena"
 msgstr ""

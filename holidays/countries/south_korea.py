@@ -94,7 +94,8 @@ class SouthKorea(
             if not self._is_observed(dt):
                 continue
             dt_observed = self._get_observed_date(
-                dt, SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY
+                dt,
+                SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY,
             )
             if dt_observed != dt or len(self.get_list(dt)) > 1:
                 if dt_observed == dt:

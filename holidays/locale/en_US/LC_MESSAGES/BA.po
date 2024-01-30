@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-06-26 18:31+0300\n"
-"PO-Revision-Date: 2023-06-26 18:39+0300\n"
+"PO-Revision-Date: 2024-01-23 20:44+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. %s (observed).
 #, c-format
@@ -41,17 +41,17 @@ msgstr "Eid al-Adha"
 msgid "Nova godina"
 msgstr "New Year's Day"
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "Božić (Pravoslavni)"
-msgstr "Orthodox Christmas"
+msgstr "Orthodox Christmas Day"
 
-#. Labor Day.
+#. International Labor Day.
 msgid "Međunarodni praznik rada"
-msgstr "Labor Day"
+msgstr "International Labor Day"
 
-#. Catholic Christmas.
+#. Catholic Christmas Day.
 msgid "Božić (Katolički)"
-msgstr "Catholic Christmas"
+msgstr "Catholic Christmas Day"
 
 #. Orthodox Christmas Eve.
 msgid "Badnji dan (Pravoslavni)"
@@ -65,13 +65,13 @@ msgstr "Independence Day"
 msgid "Veliki petak (Katolički)"
 msgstr "Catholic Good Friday"
 
-#. Catholic Easter.
+#. Catholic Easter Sunday.
 msgid "Uskrs (Katolički)"
-msgstr "Catholic Easter"
+msgstr "Catholic Easter Sunday"
 
-#. Orthodox Easter.
+#. Orthodox Easter Sunday.
 msgid "Vaskrs (Pravoslavni)"
-msgstr "Orthodox Easter"
+msgstr "Orthodox Easter Sunday"
 
 #. Orthodox Easter Monday.
 msgid "Uskrsni ponedjeljak (Pravoslavni)"

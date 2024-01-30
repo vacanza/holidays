@@ -480,7 +480,8 @@ class HolidayBase(Dict[date, str]):
             # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
             # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
             nth_weekday_from = re.match(
-                r"_add_holiday_(\d{1,2})\w{2}_(\w+)_(before|from)_(\w{3})_(\d{1,2})", name
+                r"_add_holiday_(\d{1,2})\w{2}_(\w+)_(before|from)_(\w{3})_(\d{1,2})",
+                name,
             )
             if nth_weekday_from:
                 number, weekday, date_direction, month, day = nth_weekday_from.groups()
@@ -708,7 +709,9 @@ class HolidayBase(Dict[date, str]):
                     self._add_holiday(
                         self.tr(self.substituted_label)
                         % date(
-                            optional[0] if optional else self._year, from_month, from_day
+                            optional[0] if optional else self._year,
+                            from_month,
+                            from_day,
                         ).strftime(self.tr(self.substituted_date_format)),
                         to_month,
                         to_day,
