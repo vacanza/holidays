@@ -17,10 +17,8 @@ from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, SEP, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON_TUE,
-    SUN_TO_NEXT_MON,
-    SUN_TO_NEXT_TUE,
+    SAT_SUN_TO_NEXT_WORKDAY,
+    SUN_TO_NEXT_WORKDAY,
 )
 
 
@@ -53,14 +51,14 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, JerseyStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
     def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, date]:
         # Prior to 2004, in-lieu are only given for Sundays.
         # https://www.jerseylaw.je/laws/enacted/Pages/RO-123-2004.aspx
         kwargs.setdefault(
-            "rule", SUN_TO_NEXT_MON if dt < date(2004, OCT, 12) else self._observed_rule
+            "rule", SUN_TO_NEXT_WORKDAY if dt < date(2004, OCT, 12) else self._observed_rule
         )
         return super()._add_observed(dt, **kwargs)
 
@@ -133,12 +131,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Boxing Day
         boxing_day = self._add_christmas_day_two("Boxing Day")
 
-        if self._year >= 2004:
-            self._add_observed(christmas_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
-            self._add_observed(boxing_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
-        else:
-            self._add_observed(christmas_day, rule=SUN_TO_NEXT_TUE)
-            self._add_observed(boxing_day)
+        self._add_observed(christmas_day)
+        self._add_observed(boxing_day)
 
         # Jersey exclusive holidays
 
