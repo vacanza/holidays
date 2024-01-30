@@ -407,10 +407,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-02-16", "Makha Bousa Festival"),
             ("2022-03-08", "International Women's Rights Day"),
             ("2022-03-22", "Establishment Day of the Lao People's Revolutionary Party"),
-            (
-                "2022-04-14",
-                "Lao New Year's Day; Lao People's Revolutionary Youth Union Day",
-            ),
+            ("2022-04-14", "Lao New Year's Day; Lao People's Revolutionary Youth Union Day"),
             ("2022-04-15", "Lao New Year's Day"),
             ("2022-04-16", "Lao New Year's Day"),
             ("2022-04-18", "Lao New Year's Day (in lieu)"),

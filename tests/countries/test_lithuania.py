@@ -33,8 +33,7 @@ class TestLithuania(CommonCountryTests, TestCase):
 
     def test_restoration_of_state_day(self):
         self.assertHolidayName(
-            "Lietuvos valstybės atkūrimo diena",
-            (f"{year}-02-16" for year in range(1990, 2050)),
+            "Lietuvos valstybės atkūrimo diena", (f"{year}-02-16" for year in range(1990, 2050))
         )
 
     def test_restoration_of_independence_day(self):
@@ -95,7 +94,7 @@ class TestLithuania(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1990, 2003))
 
     def test_statehood_day(self):
-        name = "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"
+        name = "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) " "ir Tautiškos giesmės diena"
         self.assertHolidayName(name, (f"{year}-07-06" for year in range(1991, 2050)))
         self.assertNoHoliday(f"{year}-07-06" for year in range(1990, 1991))
         self.assertNoHolidayName(name, range(1990, 1991))

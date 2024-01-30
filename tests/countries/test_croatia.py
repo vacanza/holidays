@@ -32,8 +32,7 @@ class TestCroatia(CommonCountryTests, TestCase):
     def test_epiphany(self):
         name = "Bogojavljenje ili Sveta tri kralja"
         self.assertHolidayName(
-            name,
-            (f"{year}-01-06" for year in set(range(1992, 2050)).difference({2002})),
+            name, (f"{year}-01-06" for year in set(range(1992, 2050)).difference({2002}))
         )
         self.assertNoHoliday("2002-01-06")
         self.assertNoHolidayName(name, 2002)
@@ -132,10 +131,7 @@ class TestCroatia(CommonCountryTests, TestCase):
             ("2022-05-30", "Dan državnosti"),
             ("2022-06-16", "Tijelovo"),
             ("2022-06-22", "Dan antifašističke borbe"),
-            (
-                "2022-08-05",
-                "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja",
-            ),
+            ("2022-08-05", "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"),
             ("2022-08-15", "Velika Gospa"),
             ("2022-11-01", "Svi sveti"),
             (
@@ -158,10 +154,7 @@ class TestCroatia(CommonCountryTests, TestCase):
             ("2022-05-30", "Statehood Day"),
             ("2022-06-16", "Corpus Christi"),
             ("2022-06-22", "Anti-Fascist Struggle Day"),
-            (
-                "2022-08-05",
-                "Victory and Homeland Thanksgiving Day and Croatian Veterans Day",
-            ),
+            ("2022-08-05", "Victory and Homeland Thanksgiving Day and Croatian Veterans Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-18", "Remembrance Day"),
@@ -180,16 +173,10 @@ class TestCroatia(CommonCountryTests, TestCase):
             ("2022-05-30", "День державності"),
             ("2022-06-16", "Свято Тіла і Крові Христових"),
             ("2022-06-22", "День антифашистської боротьби"),
-            (
-                "2022-08-05",
-                "День перемоги і подяки вітчизні та День хорватських захисників",
-            ),
+            ("2022-08-05", "День перемоги і подяки вітчизні та День хорватських захисників"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),
-            (
-                "2022-11-18",
-                "День памʼяті жертв Вітчизняної війни та жертв Вуковара і Шкабрні",
-            ),
+            ("2022-11-18", "День памʼяті жертв Вітчизняної війни та жертв Вуковара і Шкабрні"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "День Святого Стефана"),
         )

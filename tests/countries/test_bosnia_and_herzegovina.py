@@ -469,10 +469,7 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2021-05-14", "Ramazanski Bajram"),
             ("2021-07-20", "Kurban Bajram"),
             ("2021-07-21", "Kurban Bajram"),
-            (
-                "2021-11-21",
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
-            ),
+            ("2021-11-21", "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
             ("2021-12-24", "Badnji dan (Katolički)"),
             ("2021-12-25", "Božić (Katolički)"),
         )
