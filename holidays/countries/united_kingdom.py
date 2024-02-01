@@ -25,8 +25,14 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    - https://archive.org/details/treatiseonbanki00walk/page/334/mode/2up
     - https://www.gov.uk/bank-holidays
     - https://www.timeanddate.com/holidays/uk/
+
+    The Anniversary of the Battle of the Boyne bank holiday is proclaimed annually by the
+    Secretary of State for Northern Ireland.
+
+    In-Lieu observance was first provided in the Bank Holidays Extension Act 1875.
     """
 
     country = "GB"
@@ -51,9 +57,15 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, UnitedKingdomStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        # Bank Holidays Extension Act 1875
+        kwargs.setdefault("observed_since", 1875)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
+        # Bank Holidays Act 1871
+        if self._year <= 1871:
+            return None
+
         # Good Friday
         self._add_good_friday("Good Friday")
 
@@ -88,6 +100,10 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._populate_subdiv_wls_public_holidays()
 
     def _populate_subdiv_holidays(self):
+        # Bank Holidays Act 1871
+        if self._year <= 1871:
+            return None
+
         if self.subdiv not in {"SCT", "Scotland"}:
             # New Year's Day
             if self._year >= 1975:
@@ -109,6 +125,10 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
+        # Whit Monday.
+        if self._year <= 1970:
+            self._add_whit_monday("Whit Monday")
+
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
@@ -120,6 +140,10 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
+
+        # Whit Monday.
+        if self._year <= 1970:
+            self._add_whit_monday("Whit Monday")
 
         # Battle of the Boyne
         self._add_observed(self._add_holiday_jul_12("Battle of the Boyne"))
@@ -160,6 +184,10 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     def _populate_subdiv_wls_public_holidays(self):
         # Easter Monday
         self._add_easter_monday("Easter Monday")
+
+        # Whit Monday.
+        if self._year <= 1970:
+            self._add_whit_monday("Whit Monday")
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
