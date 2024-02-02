@@ -116,10 +116,7 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_2022_all(self):
         self.assertHolidays(
-            Thailand(
-                categories=(ARMED_FORCES, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY),
-                years=2022,
-            ),
+            Thailand(categories=(ARMED_FORCES, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY), years=2022),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
             ("2022-01-08", "วันเด็กแห่งชาติ"),
@@ -680,8 +677,7 @@ class TestThailand(CommonCountryTests, TestCase):
     def test_armed_forces_holiday(self):
         name = "วันกองทัพไทย"
         self.assertHolidays(
-            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)),
-            ("1959-04-08", name),
+            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)), ("1959-04-08", name)
         )
         self.assertHolidays(
             Thailand(categories=ARMED_FORCES, years=range(1979, 1981)),
@@ -859,7 +855,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-09-28", "วันพระราชทานธงชาติไทย"),
             (
                 "2022-10-13",
-                ("วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"),
+                "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร",
             ),
             ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
             ("2022-10-23", "วันปิยมหาราช"),

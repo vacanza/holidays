@@ -104,8 +104,7 @@ class TestArgentina(CommonCountryTests, TestCase):
     def test_guemes_day(self):
         self.assertNonObservedHoliday(f"{year}-06-17" for year in range(2016, 2050))
         self.assertNoHolidayName(
-            "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            range(1950, 2016),
+            "Paso a la Inmortalidad del General Don Martín Miguel de Güemes", range(1950, 2016)
         )
         self.assertHoliday(
             "2016-06-17",
@@ -141,8 +140,7 @@ class TestArgentina(CommonCountryTests, TestCase):
 
     def test_san_martin_day(self):
         self.assertNoHolidayName(
-            "Paso a la Inmortalidad del General Don José de San Martin",
-            Argentina(years=1937),
+            "Paso a la Inmortalidad del General Don José de San Martin", Argentina(years=1937)
         )
         self.assertNonObservedHoliday(f"{year}-08-17" for year in range(1938, 1995))
         self.assertHoliday(
@@ -213,10 +211,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-05-01", "Día del Trabajo"),
             ("2022-05-18", "Censo nacional 2022"),
             ("2022-05-25", "Día de la Revolución de Mayo"),
-            (
-                "2022-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            ),
+            ("2022-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
             ("2022-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2022-07-09", "Día de la Independencia"),
             (
@@ -244,10 +239,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2023-05-01", "Día del Trabajo"),
             ("2023-05-25", "Día de la Revolución de Mayo"),
             ("2023-05-26", "Feriado con fines turísticos"),
-            (
-                "2023-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            ),
+            ("2023-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
             ("2023-06-19", "Feriado con fines turísticos"),
             ("2023-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2023-07-09", "Día de la Independencia"),
@@ -274,10 +266,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2024-04-02", "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
             ("2024-05-01", "Día del Trabajo"),
             ("2024-05-25", "Día de la Revolución de Mayo"),
-            (
-                "2024-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            ),
+            ("2024-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
             ("2024-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2024-06-21", "Feriado con fines turísticos"),
             ("2024-07-09", "Día de la Independencia"),
@@ -300,10 +289,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-05-01", "Día del Trabajo"),
             ("2022-05-18", "Censo nacional 2022"),
             ("2022-05-25", "Día de la Revolución de Mayo"),
-            (
-                "2022-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            ),
+            ("2022-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
             ("2022-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2022-07-09", "Día de la Independencia"),
             (
@@ -331,16 +317,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-18", "National Census Day 2022"),
             ("2022-05-25", "May Revolution Day"),
-            (
-                "2022-06-17",
-                "Pass to the Immortality of General Don Martín Miguel de Güemes",
-            ),
+            ("2022-06-17", "Pass to the Immortality of General Don Martín Miguel de Güemes"),
             ("2022-06-20", "Pass to the Immortality of General Don Manuel Belgrano"),
             ("2022-07-09", "Independence Day"),
-            (
-                "2022-08-15",
-                "Pass to the Immortality of General Don José de San Martin (observed)",
-            ),
+            ("2022-08-15", "Pass to the Immortality of General Don José de San Martin (observed)"),
             ("2022-10-07", "Bridge Public Holiday"),
             ("2022-10-10", "Respect for Cultural Diversity Day (observed)"),
             ("2022-11-20", "National Sovereignty Day"),

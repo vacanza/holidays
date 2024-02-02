@@ -52,8 +52,7 @@ class TestUruguay(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Día de los Trabajadores"
         self.assertHolidayName(
-            name,
-            (f"{year}-05-01" for year in set(range(1920, 2050)).difference({1980, 1981})),
+            name, (f"{year}-05-01" for year in set(range(1920, 2050)).difference({1980, 1981}))
         )
         self.assertHolidayName(
             name,
@@ -88,8 +87,7 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Declaratoria de la Independencia",
-            (f"{year}-08-25" for year in range(1920, 2050)),
+            "Declaratoria de la Independencia", (f"{year}-08-25" for year in range(1920, 2050))
         )
 
     def test_italy_day(self):
@@ -115,9 +113,7 @@ class TestUruguay(CommonCountryTests, TestCase):
 
     def test_childrens_day(self):
         self.assertHolidayName(
-            "Día de los Niños",
-            self.bank_holidays,
-            (f"{year}-01-06" for year in range(1920, 2050)),
+            "Día de los Niños", self.bank_holidays, (f"{year}-01-06" for year in range(1920, 2050))
         )
 
     def test_carnival(self):

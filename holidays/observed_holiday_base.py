@@ -123,10 +123,7 @@ class ObservedHolidayBase(HolidayBase):
         return dt
 
     def _add_observed(
-        self,
-        dt: DateArg,
-        name: Optional[str] = None,
-        rule: Optional[ObservedRule] = None,
+        self, dt: DateArg, name: Optional[str] = None, rule: Optional[ObservedRule] = None
     ) -> Tuple[bool, date]:
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
