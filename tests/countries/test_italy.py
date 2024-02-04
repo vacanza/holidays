@@ -185,8 +185,7 @@ class TestItaly(CommonCountryTests, TestCase):
 
     def test_deprecated(self):
         self.assertEqual(
-            Italy(subdiv="Forlì", years=2022).keys(),
-            Italy(subdiv="Forli", years=2022).keys(),
+            Italy(subdiv="Forlì", years=2022).keys(), Italy(subdiv="Forli", years=2022).keys()
         )
 
     def test_subdiv_deprecation(self):

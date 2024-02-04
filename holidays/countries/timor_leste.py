@@ -24,11 +24,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class TimorLeste(
-    HolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    StaticHolidays,
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """
     References:

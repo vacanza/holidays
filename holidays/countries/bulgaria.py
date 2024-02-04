@@ -125,8 +125,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed:
             self._populate_observed(
-                dts_observed,
-                excluded_names={self.tr("Велика събота"), self.tr("Великден")},
+                dts_observed, excluded_names={self.tr("Велика събота"), self.tr("Великден")}
             )
 
     def _populate_school_holidays(self):
