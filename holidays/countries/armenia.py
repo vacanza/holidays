@@ -68,7 +68,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Motherhood and Beauty Day.
             self._add_holiday_apr_7(tr("Մայրության և գեղեցկության տոն"))
 
-        # Armenian Genocide Remembrance Day,
+        # Armenian Genocide Remembrance Day.
         self._add_holiday_apr_24(tr("Եղեռնի զոհերի հիշատակի օր"))
 
         if self._year >= 2001:

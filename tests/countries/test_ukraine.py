@@ -478,7 +478,7 @@ class TestUkraine(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2021-01-01", "New Year's Day"),
-            ("2021-01-07", "Christmas (Julian calendar)"),
+            ("2021-01-07", "Christmas Day (Julian calendar)"),
             ("2021-01-08", "Day off (substituted from 01/16/2021)"),
             ("2021-03-08", "International Women's Day"),
             ("2021-05-01", "Labor Day"),
@@ -494,8 +494,8 @@ class TestUkraine(CommonCountryTests, TestCase):
             ("2021-08-24", "Independence Day"),
             ("2021-10-14", "Day of defenders of Ukraine"),
             ("2021-10-15", "Day off (substituted from 10/23/2021)"),
-            ("2021-12-25", "Christmas (Gregorian calendar)"),
-            ("2021-12-27", "Christmas (Gregorian calendar) (observed)"),
+            ("2021-12-25", "Christmas Day (Gregorian calendar)"),
+            ("2021-12-27", "Christmas Day (Gregorian calendar) (observed)"),
         )
 
     def test_l10n_ar(self):

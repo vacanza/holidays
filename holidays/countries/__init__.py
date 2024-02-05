@@ -64,6 +64,7 @@ from .france import France, FR, FRA
 from .gabon import Gabon, GA, GAB
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
+from .ghana import Ghana, GH, GHA
 from .greece import Greece, GR, GRC
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
@@ -80,6 +81,7 @@ from .israel import Israel, IL, ISR
 from .italy import Italy, IT, ITA
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
+from .jersey import Jersey, JE, JEY
 from .kazakhstan import Kazakhstan, KZ, KAZ
 from .kenya import Kenya, KE, KEN
 from .kyrgyzstan import Kyrgyzstan, KG, KGZ

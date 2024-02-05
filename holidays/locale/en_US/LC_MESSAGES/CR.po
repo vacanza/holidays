@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-03-22 22:55+0200\n"
-"PO-Revision-Date: 2023-05-03 18:39-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-23 17:38+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. %s (observed).
 #, c-format
@@ -39,7 +39,7 @@ msgstr "Juan Santamaría Day"
 
 #. International Labor Day.
 msgid "Día Internacional del Trabajo"
-msgstr "International Workers' Day"
+msgstr "International Labor Day"
 
 #. Annexation of the Party of Nicoya to Costa Rica.
 msgid "Anexión del Partido de Nicoya a Costa Rica"

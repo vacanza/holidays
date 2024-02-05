@@ -47,7 +47,7 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Good Friday.
         self._add_good_friday(tr("Lielā Piektdiena"))
 
-        # Easter.
+        # Easter Sunday.
         self._add_easter_sunday(tr("Lieldienas"))
 
         # Easter Monday.

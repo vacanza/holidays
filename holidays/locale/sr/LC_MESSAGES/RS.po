@@ -19,7 +19,7 @@ msgstr ""
 msgid "Нова година"
 msgstr ""
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "Божић"
 msgstr ""
 
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Дан државности Србије"
 msgstr ""
 
-#. International Workers' Day.
+#. Labor Day.
 msgid "Празник рада"
 msgstr ""
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Велики петак"
 msgstr ""
 
-#. Easter Saturday.
+#. Holy Saturday.
 msgid "Велика субота"
 msgstr ""
 

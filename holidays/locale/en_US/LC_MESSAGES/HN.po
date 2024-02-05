@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.25\n"
 "POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 12:55+0200\n"
+"PO-Revision-Date: 2024-01-05 12:38+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -56,9 +56,9 @@ msgstr "Army Day"
 msgid "Semana Morazánica"
 msgstr "Morazan Weekend"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. Independence Day.
 msgid "Día de la Independencia"

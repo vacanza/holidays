@@ -3,18 +3,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.25\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-02-15 20:06-0800\n"
-"PO-Revision-Date: 2023-05-03 15:47-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-23 20:51+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Նոր տարվա օր"
@@ -44,7 +44,7 @@ msgstr "Women's Day"
 msgid "Մայրության և գեղեցկության տոն"
 msgstr "A Holiday of Motherhood and Beauty"
 
-#. Armenian Genocide Remembrance Day,
+#. Armenian Genocide Remembrance Day.
 msgid "Եղեռնի զոհերի հիշատակի օր"
 msgstr "Genocide Memorial Day"
 
@@ -54,7 +54,7 @@ msgstr "International Day of Workers' Solidarity"
 
 #. Labor Day.
 msgid "Աշխատանքի օր"
-msgstr "Labor day"
+msgstr "Labor Day"
 
 #. Victory and Peace Day.
 msgid "Հաղթանակի և Խաղաղության տոն"

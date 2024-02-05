@@ -3,23 +3,24 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.26\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-02-15 15:18-0800\n"
-"PO-Revision-Date: 2023-05-03 18:40-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-22 14:07+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Нова година"
 msgstr "New Year's Day"
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "Божић"
 msgstr "Orthodox Christmas Day"
 
@@ -27,9 +28,9 @@ msgstr "Orthodox Christmas Day"
 msgid "Дан државности Србије"
 msgstr "Statehood Day"
 
-#. International Workers' Day.
+#. Labor Day.
 msgid "Празник рада"
-msgstr "International Workers' Day"
+msgstr "Labor Day"
 
 #. Armistice Day.
 msgid "Дан примирја у Првом светском рату"
@@ -39,9 +40,9 @@ msgstr "Armistice Day"
 msgid "Велики петак"
 msgstr "Good Friday"
 
-#. Easter Saturday.
+#. Holy Saturday.
 msgid "Велика субота"
-msgstr "Easter Saturday"
+msgstr "Holy Saturday"
 
 #. Easter Sunday.
 msgid "Васкрс"

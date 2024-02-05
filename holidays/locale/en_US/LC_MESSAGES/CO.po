@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-02-19 17:09+0200\n"
-"PO-Revision-Date: 2023-05-03 18:38-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-23 20:50+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -30,7 +30,7 @@ msgstr "Saint Joseph's Day"
 
 #. Labor Day.
 msgid "Día del Trabajo"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
@@ -44,9 +44,9 @@ msgstr "Independence Day"
 msgid "Batalla de Boyacá"
 msgstr "Battle of Boyacá"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "La Asunción"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Columbus Day.
 msgid "Día de la Raza"
@@ -64,9 +64,9 @@ msgstr "Independence of Cartagena"
 msgid "La Inmaculada Concepción"
 msgstr "Immaculate Conception"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. Maundy Thursday.
 msgid "Jueves Santo"
@@ -76,9 +76,9 @@ msgstr "Maundy Thursday"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del señor"
-msgstr "Ascension of Jesus"
+msgstr "Ascension Day"
 
 #. Corpus Christi.
 msgid "Corpus Christi"

@@ -105,11 +105,9 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Dia di Rey")
             if self._year >= 2021
             else (
-                # King's Day.
-                tr("Aña di Rey")
+                tr("Aña di Rey")  # King's Day.
                 if self._year >= 2014
-                # Queen's Day.
-                else tr("Aña di La Reina")
+                else tr("Aña di La Reina")  # Queen's Day.
             )
         )
         if self._year >= 2014:

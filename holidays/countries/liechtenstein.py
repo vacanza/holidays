@@ -75,7 +75,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Nativity of Mary.
         self._add_nativity_of_mary_day(tr("Mariä Geburt"))
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
 
         # Immaculate Conception.
@@ -85,7 +85,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Weihnachten"))
 
         # St. Stephen's Day.
-        self._add_christmas_day_two(tr("Stefanstag"))
+        self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_bank_holidays(self):
         # Saint Berchtold's Day.

@@ -69,7 +69,7 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(name, first_wed_of_oct + td(days=+1))
             self._add_holiday(name, first_wed_of_oct + td(days=+2))
 
-        # Christmas.
+        # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
 
 

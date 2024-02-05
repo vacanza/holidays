@@ -92,7 +92,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-05-26", "Christi Himmelfahrt"),
             ("2022-06-06", "Pfingstmontag"),
             ("2022-06-23", "Nationalfeiertag"),
-            ("2022-08-15", "Maria Himmelfahrt"),
+            ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-11-01", "Allerheiligen"),
             ("2022-12-25", "Weihnachten"),
             ("2022-12-26", "Zweiter Weihnachtsfeiertag"),

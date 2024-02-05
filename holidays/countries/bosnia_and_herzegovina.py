@@ -104,15 +104,15 @@ class BosniaAndHerzegovina(
             self._add_new_years_day(name)
             self._add_new_years_day_two(name)
 
-            # Orthodox Christmas.
+            # Orthodox Christmas Day.
             self._add_christmas_day(tr("Božić (Pravoslavni)"))
 
-            # Labor Day.
+            # International Labor Day.
             name = tr("Međunarodni praznik rada")
             self._add_labor_day(name)
             self._add_labor_day_two(name)
 
-            # Catholic Christmas.
+            # Catholic Christmas Day.
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
 
         super()._populate_subdiv_holidays()
@@ -126,7 +126,7 @@ class BosniaAndHerzegovina(
         # Orthodox Christmas Eve.
         self._add_christmas_eve(tr("Badnji dan (Pravoslavni)"))
 
-        # Orthodox Christmas.
+        # Orthodox Christmas Day.
         self._add_christmas_day(tr("Božić (Pravoslavni)"))
 
         # Independence Day.
@@ -135,16 +135,16 @@ class BosniaAndHerzegovina(
         # Catholic Good Friday.
         self._add_good_friday(tr("Veliki petak (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Catholic Easter.
+        # Catholic Easter Sunday.
         self._add_easter_sunday(tr("Uskrs (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Orthodox Easter.
+        # Orthodox Easter Sunday.
         self._add_easter_sunday(tr("Vaskrs (Pravoslavni)"))
 
         # Orthodox Easter Monday.
         self._add_easter_monday(tr("Uskrsni ponedjeljak (Pravoslavni)"))
 
-        # Labor Day.
+        # International Labor Day.
         name = tr("Međunarodni praznik rada")
         self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_labor_day_two(name)
@@ -158,7 +158,7 @@ class BosniaAndHerzegovina(
         # Catholic Christmas Eve.
         self._add_christmas_eve(tr("Badnji dan (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Catholic Christmas.
+        # Catholic Christmas Day.
         self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
 
         # Eid al-Fitr.
@@ -173,7 +173,7 @@ class BosniaAndHerzegovina(
         self._add_observed(self._add_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_new_years_day_two(name)
 
-        # Orthodox Christmas.
+        # Orthodox Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Božić (Pravoslavni)")))
 
         self._add_observed(
@@ -181,13 +181,13 @@ class BosniaAndHerzegovina(
             self._add_holiday_mar_8(tr("Dan uspostavljanja Brčko distrikta"))
         )
 
-        # Labor Day.
+        # International Labor Day.
         name = tr("Međunarodni praznik rada")
         self._add_observed(self._add_labor_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_labor_day_two(name)
 
         self._add_observed(
-            # Catholic Christmas.
+            # Catholic Christmas Day.
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
         )
 
@@ -200,7 +200,7 @@ class BosniaAndHerzegovina(
         # Orthodox Christmas Eve.
         self._add_christmas_eve(tr("Badnji dan (Pravoslavni)"))
 
-        # Orthodox Christmas.
+        # Orthodox Christmas Day.
         self._add_christmas_day(tr("Božić (Pravoslavni)"))
 
         # Orthodox New Year.
@@ -209,16 +209,16 @@ class BosniaAndHerzegovina(
         # Catholic Good Friday.
         self._add_good_friday(tr("Veliki petak (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Catholic Easter.
+        # Catholic Easter Sunday.
         self._add_easter_sunday(tr("Uskrs (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Orthodox Easter.
+        # Orthodox Easter Sunday.
         self._add_easter_sunday(tr("Vaskrs (Pravoslavni)"))
 
         # Orthodox Easter Monday.
         self._add_easter_monday(tr("Uskrsni ponedjeljak (Pravoslavni)"))
 
-        # Labor Day.
+        # International Labor Day.
         name = tr("Međunarodni praznik rada")
         self._add_observed(self._add_labor_day(name), rule=SAT_TO_NEXT_MON)
         self._add_labor_day_two(name)
@@ -234,7 +234,7 @@ class BosniaAndHerzegovina(
         # Catholic Christmas Eve.
         self._add_christmas_eve(tr("Badnji dan (Katolički)"), GREGORIAN_CALENDAR)
 
-        # Catholic Christmas.
+        # Catholic Christmas Day.
         self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
 
         # Eid al-Fitr.

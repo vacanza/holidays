@@ -44,7 +44,7 @@ msgstr "Страсна пʼятниця"
 msgid "Día del Trabajo"
 msgstr "День праці"
 
-#. Feast of Corpus Christi.
+#. Corpus Christi.
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 

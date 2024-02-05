@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.39\n"
 "POT-Creation-Date: 2023-09-11 15:10+0700\n"
-"PO-Revision-Date: 2023-11-16 20:48+0200\n"
+"PO-Revision-Date: 2024-01-02 21:55+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -32,9 +32,9 @@ msgstr "International Women's Rights Day"
 msgid "ບຸນປີໃໝ່ລາວ"
 msgstr "Lao New Year's Day"
 
-#. Labor Day.
+#. International Labor Day.
 msgid "ວັນກຳມະກອນສາກົນ"
-msgstr "Labor Day"
+msgstr "International Labor Day"
 
 #. International Children Day.
 msgid "ວັນເດັກສາກົນ"

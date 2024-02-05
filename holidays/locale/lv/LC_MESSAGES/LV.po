@@ -44,7 +44,7 @@ msgstr ""
 msgid "Lielā Piektdiena"
 msgstr ""
 
-#. Easter.
+#. Easter Sunday.
 msgid "Lieldienas"
 msgstr ""
 

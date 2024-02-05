@@ -85,7 +85,7 @@ class TestPeru(CommonCountryTests, TestCase):
             ("2022-04-14", "Maundy Thursday"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-06-29", "Saint Peter and Saint Paul"),
             ("2022-07-28", "Independence Day"),
             ("2022-07-29", "Great Military Parade Day"),

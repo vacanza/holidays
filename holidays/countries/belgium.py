@@ -39,7 +39,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Nieuwjaar"))
 
-        # Easter.
+        # Easter Sunday.
         self._add_easter_sunday(tr("Pasen"))
 
         # Easter Monday.
@@ -60,7 +60,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # National Day.
         self._add_holiday_jul_21(tr("Nationale feestdag"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("O. L. V. Hemelvaart"))
 
         # All Saints' Day.

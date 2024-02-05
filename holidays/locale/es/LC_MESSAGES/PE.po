@@ -20,7 +20,7 @@ msgstr ""
 msgid "Año Nuevo"
 msgstr ""
 
-#. Holy Thursday.
+#. Maundy Thursday.
 msgid "Jueves Santo"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Día del Trabajo"
 msgstr ""
 
-#. Feast of Saints Peter and Paul.
+#. Saint Peter and Saint Paul.
 msgid "San Pedro y San Pablo"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Batalla de Junín"
 msgstr ""
 
-#. Santa Rosa de Lima.
+#. Rose of Lima Day.
 msgid "Santa Rosa de Lima"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Combate de Angamos"
 msgstr ""
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Todos Los Santos"
 msgstr ""
 

@@ -48,39 +48,39 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        # Good Thursday.
+        # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        # Good Saturday.
+        # Holy Saturday.
         self._add_holy_saturday(tr("Sabado Santo"))
 
         # Labor Day.
-        dt = self._add_labor_day(tr("Dia del Trabajo"))
+        dt = self._add_labor_day(tr("Día del Trabajo"))
         if self._year == 2019:
             self._move_holiday(dt)
 
         # Army Day.
-        self._move_holiday(self._add_holiday_jun_30(tr("Dia del Ejército")))
+        self._move_holiday(self._add_holiday_jun_30(tr("Día del Ejército")))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Dia de la Asunción"))
+        self._add_assumption_of_mary_day(tr("Día de la Asunción"))
 
-        # Independence Day
+        # Independence Day.
         self._add_holiday_sep_15(tr("Día de la Independencia"))
 
-        # Revolution Day
-        dt = self._add_holiday_oct_20(tr("Dia de la Revolución"))
+        # Revolution Day.
+        dt = self._add_holiday_oct_20(tr("Día de la Revolución"))
         if self._year in {2018, 2019}:
             self._move_holiday(dt)
 
         # All Saints' Day.
-        self._add_all_saints_day(tr("Dia de Todos los Santos"))
+        self._add_all_saints_day(tr("Día de Todos los Santos"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Dia de Navidad"))
+        self._add_christmas_day(tr("Día de Navidad"))
 
 
 class GT(Guatemala):

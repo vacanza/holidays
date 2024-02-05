@@ -42,7 +42,7 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two(name))
 
-        # Orthodox Christmas.
+        # Orthodox Christmas Day.
         self._add_christmas_day(tr("Божић"))
 
         # Statehood Day.
@@ -50,7 +50,7 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_feb_15(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_holiday_feb_16(name))
 
-        # International Workers' Day.
+        # Labor Day.
         name = tr("Празник рада")
         self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
 
@@ -64,7 +64,7 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Good Friday.
         self._add_good_friday(tr("Велики петак"))
-        # Easter Saturday.
+        # Holy Saturday.
         self._add_holy_saturday(tr("Велика субота"))
         # Easter Sunday.
         self._add_easter_sunday(tr("Васкрс"))

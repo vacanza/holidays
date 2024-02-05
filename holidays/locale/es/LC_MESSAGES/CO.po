@@ -44,7 +44,7 @@ msgstr ""
 msgid "Batalla de Boyacá"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "La Asunción"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "La Inmaculada Concepción"
 msgstr ""
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del señor"
 msgstr ""
 

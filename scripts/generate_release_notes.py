@@ -11,11 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: T201
-
 import argparse
-import os
 import re
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Dict, Set
@@ -23,6 +21,9 @@ from typing import Dict, Set
 from git import Repo
 from github import Github
 from github.GithubException import UnknownObjectException
+
+sys.path.append(f"{Path.cwd()}")
+import holidays  # noqa: E402
 
 BRANCH_NAME = "beta"
 HEADER_TEMPLATE = """
@@ -39,7 +40,7 @@ class ReleaseNotesGenerator:
     """
     Generates release notes based on local git commits and GitHub PRs metadata.
 
-    Usage example: scripts/generate_release_notes.py -t 0.24
+    Usage example: scripts/generate_release_notes.py
     """
 
     def __init__(self) -> None:
@@ -70,13 +71,6 @@ class ReleaseNotesGenerator:
             type=int,
         )
         arg_parser.add_argument(
-            "-t",
-            "--tag",
-            help="New release tag",
-            required=True,
-            type=str,
-        )
-        arg_parser.add_argument(
             "-v",
             "--verbose",
             action="store_true",
@@ -85,11 +79,13 @@ class ReleaseNotesGenerator:
         )
         self.args = arg_parser.parse_args()
 
-        self.local_repo = Repo(os.getcwd())
+        self.local_repo = Repo(Path.cwd())
         self.remote_repo = Github(self.github_token).get_repo(REPOSITORY_NAME)
 
         self.previous_commits: Set[str] = set()
         self.pull_requests: Dict[int, str] = {}
+
+        self.tag = holidays.__version__
 
         try:
             latest_tag = self.remote_repo.get_tags()[0]
@@ -146,7 +142,7 @@ class ReleaseNotesGenerator:
 
         # Skip failed release attempt PRs, version upgrades.
         pr_title = pull_request.title
-        skip_titles = (f"v.{self.args.tag}", "Bump", "Revert")
+        skip_titles = (f"v.{self.tag}", "Bump", "Revert")
         for skip_title in skip_titles:
             if pr_title.startswith(skip_title):
                 return None
@@ -246,7 +242,7 @@ class ReleaseNotesGenerator:
                 HEADER_TEMPLATE.format(
                     day=today.day,
                     month=today.strftime("%B"),
-                    version=self.args.tag,
+                    version=self.tag,
                     year=today.year,
                 )
             )

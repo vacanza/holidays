@@ -147,10 +147,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         if self._year >= 1994:
             self._add_holiday_jun_18(
                 # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
-                tr(
-                    "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម "
-                    "មុនិនាថ សីហនុ"
-                ),
+                tr("ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ"),
             )
 
         # ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ

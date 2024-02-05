@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "(تقدير) %s"
 msgstr ""
@@ -56,10 +56,10 @@ msgstr ""
 msgid "رأس السنة الهجرية"
 msgstr ""
 
-#. Leilat al-Miraj. The UAE government removed this starting 2019.
+#. Isra' and Mi'raj.
 msgid "ليلة المعراج"
 msgstr ""
 
-#. Prophet Muhammad's Birthday. The UAE government removed this starting 2020.
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr ""

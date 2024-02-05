@@ -20,7 +20,7 @@ msgstr ""
 msgid "Nytårsdag"
 msgstr "New Year's Day"
 
-#. Holy Thursday.
+#. Maundy Thursday.
 msgid "Skærtorsdag"
 msgstr "Maundy Thursday"
 

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2023-03-23 14:47+0200\n"
+"PO-Revision-Date: 2024-01-23 20:54+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
 msgid "Jour de l'an"
@@ -22,11 +22,11 @@ msgstr "Новий рік"
 
 #. Labor Day.
 msgid "Fête du Travail"
-msgstr "День Праці"
+msgstr "День праці"
 
 #. Labor and Social Concord Day.
 msgid "Fête du Travail et de la Concorde sociale"
-msgstr "День Праці та Суспільної згоди"
+msgstr "День праці та Суспільної згоди"
 
 #. Victory Day.
 msgid "Fête de la Victoire"
@@ -38,7 +38,7 @@ msgstr "Національне свято"
 
 #. Armistice Day.
 msgid "Armistice"
-msgstr "День перемирʼя (закінчення Першої світової війни)"
+msgstr "День перемирʼя"
 
 #. Good Friday.
 msgid "Vendredi saint"

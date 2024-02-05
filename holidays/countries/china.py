@@ -26,6 +26,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         - `2023 <https://www.gov.cn/gongbao/content/2023/content_5736714.htm>`_
         - `2022 <https://www.gov.cn/gongbao/content/2021/content_5651728.htm>`_
         - `2021 <https://www.gov.cn/gongbao/content/2020/content_5567750.htm>`_
+        - `2020 Extensions <https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm>`_
         - `2020 <https://www.gov.cn/gongbao/content/2019/content_5459138.htm>`_
         - `2019 <https://www.gov.cn/gongbao/content/2018/content_5350046.htm>`_
         - `2018 <https://www.gov.cn/gongbao/content/2017/content_5248221.htm>`_
@@ -206,6 +207,12 @@ class ChinaStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("休息日（%s日起取代）")
 
+    # Chinese New Year (Spring Festival).
+    chinese_new_year = tr("春节")
+
+    # Chinese New Year (Spring Festival) Extended Holiday.
+    chinese_new_year_extended = tr("春节延长假期")
+
     # Dragon Boat Festival.
     dragon_boat_festival = tr("端午节")
 
@@ -381,7 +388,10 @@ class ChinaStaticHolidays:
         ),
         2020: (
             (JAN, 24, JAN, 19),  # Spring Festival
-            (JAN, 30, FEB, 1),  # Spring Festival
+            # JAN, 30 in special_public_holidays_observed
+            (JAN, 31, chinese_new_year_extended),  # Spring Festival Extended Holiday
+            (FEB, 1, chinese_new_year_extended),  # Spring Festival Extended Holiday
+            (FEB, 2, chinese_new_year_extended),  # Spring Festival Extended Holiday
             (MAY, 4, APR, 26),  # Labor Day
             (MAY, 5, MAY, 9),  # Labor Day
             (JUN, 26, JUN, 28),  # Dragon Boat Festival
@@ -430,5 +440,8 @@ class ChinaStaticHolidays:
     special_public_holidays_observed = {
         2012: (JUN, 22, dragon_boat_festival),  # observed from Jun 23
         2015: (OCT, 6, mid_autumn_festival),  # observed from Sep 27
-        2020: (OCT, 6, mid_autumn_festival),  # observed from Oct 1, overlap with National Day
+        2020: (
+            (JAN, 30, chinese_new_year),  # Spring Festival (extended due to Covid-19 decree)
+            (OCT, 6, mid_autumn_festival),  # observed from Oct 1, overlap with National Day
+        ),
     }

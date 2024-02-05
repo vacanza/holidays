@@ -35,6 +35,10 @@ class IsleOfMan(UnitedKingdom):
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
+        # Whit Monday.
+        if self._year <= 1970:
+            self._add_whit_monday("Whit Monday")
+
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")

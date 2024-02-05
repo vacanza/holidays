@@ -15,79 +15,79 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "(تقدير) %s"
 msgstr ""
 
-#. New Year's Day
+#. New Year's Day.
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#. Coptic Christmas
+#. Coptic Christmas Day.
 msgid "عيد الميلاد المجيد (تقويم قبطي)"
 msgstr ""
 
-#. January 25th Revolution
+#. January 25th Revolution.
 msgid "عيد ثورة 25 يناير"
 msgstr ""
 
-#. National Police Day
+#. National Police Day.
 msgid "عيد الشرطة"
 msgstr ""
 
-#. Coptic Easter - Orthodox Easter
+#. Coptic Easter.
 msgid "عيد الفصح القبطي"
 msgstr ""
 
-#. Spring Festival
+#. Spring Festival.
 msgid "شم النسيم"
 msgstr ""
 
-#. Sinai Libration Day
+#. Sinai Liberation Day.
 msgid "عيد تحرير سيناء"
 msgstr ""
 
-#. Labour Day
+#. Labor Day.
 msgid "عيد العمال"
 msgstr ""
 
-#. Armed Forces Day
+#. Armed Forces Day.
 msgid "عيد القوات المسلحة"
 msgstr ""
 
-#. June 30 Revolution Day
+#. June 30 Revolution Day.
 msgid "عيد ثورة 30 يونيو"
 msgstr ""
 
-#. July 23 Revolution Day
+#. July 23 Revolution Day.
 msgid "عيد ثورة 23 يوليو"
 msgstr ""
 
-#. Eid al-Fitr - Feast Festive
+#. Eid al-Fitr.
 msgid "عيد الفطر"
 msgstr ""
 
-#. Eid al-Fitr Holiday
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Arafat Day
+#. Arafat Day.
 msgid "يوم عرفة"
 msgstr ""
 
-#. Eid al-Adha - Scarfice Festive
+#. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr ""
 
-#. Eid al-Adha Holiday
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr ""
 
-#. Islamic New Year
+#. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr ""
 
-#. Prophet Muhammad's Birthday
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr ""

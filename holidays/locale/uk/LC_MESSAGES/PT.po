@@ -84,7 +84,7 @@ msgstr "Карнавал"
 msgid "Véspera de Natal"
 msgstr "Святий вечір"
 
-#. Boxing Day.
+#. Second Day of Christmas.
 msgid "26 de Dezembro"
 msgstr "Другий день Різдва"
 

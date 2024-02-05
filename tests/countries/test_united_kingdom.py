@@ -39,6 +39,14 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         self.assertAliases(UnitedKingdom, UK, GBR)
         self.assertAliases(UnitedKingdom, GB, GBR)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(UnitedKingdom(years=1870))
+        self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="ENG"))
+        self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="NIR"))
+        self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="SCT"))
+        self.assertNoHolidays(UnitedKingdom(years=1870, subdiv="WLS"))
+        self.assertNoHoliday("1871-01-02", "1874-12-28")
+
     def test_special_holidays(self):
         self.assertHoliday(
             "1977-06-07",
@@ -202,6 +210,45 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             "2020-05-08",
         )
         self.assertNoHolidayName(name, range(1950, 1978))
+
+    def test_whit_monday(self):
+        name = "Whit Monday"
+        dt = (
+            "1950-05-29",
+            "1951-05-14",
+            "1952-06-02",
+            "1953-05-25",
+            "1954-06-07",
+            "1955-05-30",
+            "1956-05-21",
+            "1957-06-10",
+            "1958-05-26",
+            "1959-05-18",
+            "1960-06-06",
+            "1961-05-22",
+            "1962-06-11",
+            "1963-06-03",
+            "1964-05-18",
+            "1965-06-07",
+            "1966-05-30",
+            "1967-05-15",
+            "1968-06-03",
+            "1969-05-26",
+            "1970-05-18",
+        )
+        for subdiv in (
+            "ENG",
+            "NIR",
+            "WLS",
+            "England",
+            "Northern Ireland",
+            "Wales",
+        ):
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
+
+        for subdiv in ("SCT", "Scotland"):
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], dt)
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1950, 2050))
 
     def test_spring_bank_holiday(self):
         name = "Spring Bank Holiday"

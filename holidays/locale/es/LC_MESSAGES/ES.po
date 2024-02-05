@@ -37,7 +37,7 @@ msgstr ""
 msgid "Fiesta del Trabajo"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
 msgstr ""
 

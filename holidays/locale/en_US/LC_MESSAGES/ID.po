@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-07-23 14:09+0300\n"
-"PO-Revision-Date: 2023-07-23 14:17+0300\n"
+"PO-Revision-Date: 2024-01-25 22:33+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,8 +14,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (perkiraan)"
 msgstr "%s (estimated)"
@@ -80,9 +81,9 @@ msgstr "Whit Monday"
 msgid "Hari Lahir Pancasila"
 msgstr "Pancasila Day"
 
-#. Assumption Of Mary.
+#. Assumption Day.
 msgid "Mikraj Santa Maria"
-msgstr "Assumption Of Mary"
+msgstr "Assumption Day"
 
 #. Independence Day.
 msgid "Hari Kemerdekaan Republik Indonesia"
@@ -116,13 +117,13 @@ msgstr "Eid al-Adha"
 msgid "Tahun Baru Islam"
 msgstr "Islamic New Year"
 
-#. The Prophet's Birthday.
+#. Prophet's Birthday.
 msgid "Maulid Nabi Muhammad"
-msgstr "The Prophet's Birthday"
+msgstr "Prophet's Birthday"
 
-#. The Prophet's Ascension.
+#. Isra and Miraj.
 msgid "Isra Mikraj Nabi Muhammad"
-msgstr "The Prophet's Ascension"
+msgstr "Isra and Miraj"
 
 #. Nuzul Al Quran.
 msgid "Nuzululqur'an"

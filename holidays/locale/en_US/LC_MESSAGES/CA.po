@@ -37,7 +37,7 @@ msgstr "Easter Monday"
 msgid "Dominion Day"
 msgstr "Dominion Day"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
 

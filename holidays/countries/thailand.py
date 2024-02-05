@@ -237,7 +237,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # *** NOTE: only observed by financial and private sectors.
 
         if self._year >= 1974:
-            # National Labour day.
+            # National Labor Day.
             self._add_observed(self._add_labor_day(tr("วันแรงงานแห่งชาติ")))
 
         # วันชาติ
@@ -338,8 +338,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             elif self._year >= 2019:
                 # Anniversary for the Death of King Bhumibol Adulyadej the Great.
                 k_bhumibol_memorial = tr(
-                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
-                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
                 )
             else:
                 # Anniversary for the Death of King Bhumibol Adulyadej.
@@ -375,10 +374,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             elif self._year >= 2016:
                 k_bhumibol_bday = (
                     # HM King Bhumibol Adulyadej Birthday Anniversary.
-                    tr(
-                        "วันคล้ายวันเฉลิมพระชนมพรรษา"
-                        "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-                    )
+                    tr("วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
                 )
             else:
                 k_bhumibol_bday = (
@@ -504,10 +500,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         if self._year <= 2021:
             self._add_holiday_apr_1(
                 # Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives
-                tr(
-                    "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของ"
-                    "ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
-                ),
+                tr("วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"),
             )
 
         # วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ
@@ -728,13 +721,9 @@ class ThailandStaticHolidays:
     # Day of Mourning for HM King Bhumibol Adulyadej.
     rama_ix_mourning = tr("วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)")
     # HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
-    rama_ix_cremation = tr(
-        "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
-    )
+    rama_ix_cremation = tr("วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช")
     # HM King Maha Vajiralongkorn's Coronation Celebrations.
-    rama_x_coronation_celebrations = tr(
-        "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
-    )
+    rama_x_coronation_celebrations = tr("พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว")
     # Songkran Festival.
     songkran_festival = tr("วันสงกรานต์")
 

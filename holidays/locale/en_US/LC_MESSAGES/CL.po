@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-02-28 16:42+0200\n"
-"PO-Revision-Date: 2023-02-28 16:46+0200\n"
+"PO-Revision-Date: 2024-01-23 20:59+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. National Holiday.
 msgid "Feriado nacional"
@@ -32,17 +32,17 @@ msgstr "Good Friday"
 msgid "Sábado Santo"
 msgstr "Holy Saturday"
 
-#. Ascension of Jesus.
+#. Ascension Day.
 msgid "Ascensión del Señor"
-msgstr "Ascension of Jesus"
+msgstr "Ascension Day"
 
 #. Corpus Christi.
 msgid "Corpus Christi"
 msgstr "Corpus Christi"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Día Nacional del Trabajo"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Naval Glories Day.
 msgid "Día de las Glorias Navales"
@@ -60,9 +60,9 @@ msgstr "Saint Peter and Saint Paul"
 msgid "Virgen del Carmen"
 msgstr "Our Lady of Mount Carmel"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Asunción de la Virgen"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Day of National Liberation.
 msgid "Día de la Liberación Nacional"
@@ -96,7 +96,7 @@ msgstr "Columbus Day"
 msgid "Día Nacional de las Iglesias Evangélicas y Protestantes"
 msgstr "Reformation Day"
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "Día de Todos los Santos"
 msgstr "All Saints' Day"
 
@@ -108,9 +108,9 @@ msgstr "Immaculate Conception"
 msgid "Víspera de Navidad"
 msgstr "Christmas Eve"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. Assault and Capture of Cape Arica.
 msgid "Asalto y Toma del Morro de Arica"

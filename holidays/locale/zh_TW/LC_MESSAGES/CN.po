@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
-"PO-Revision-Date: 2023-12-29 19:04+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2024-01-18 11:43+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (observed).
 #, c-format
@@ -83,3 +83,7 @@ msgstr "休息日（%s日起取代）"
 #. Aggression and the World Anti-Fascist War.
 msgid "中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日"
 msgstr "中國人民抗日戰爭暨世界反法西斯戰爭勝利70週年紀念日"
+
+#. Chinese New Year (Spring Festival) Extended Holiday.
+msgid "春节延长假期"
+msgstr "春節延長假期"

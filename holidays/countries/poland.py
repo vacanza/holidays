@@ -73,7 +73,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         self._add_whit_sunday(tr("Zielone Świątki"))
 
         if self._year <= 1950:
-            # Pentecost (Day 2).
+            # Whit Monday.
             self._add_whit_monday(tr("Drugi dzień Zielonych Świątek"))
 
         # Corpus Christi.
@@ -90,7 +90,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
             self._add_holiday_jul_22(tr("Narodowe Święto Odrodzenia Polski"))
 
         if self._year <= 1960 or self._year >= 1989:
-            # Assumption of the Virgin Mary.
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Wniebowzięcie Najświętszej Marii Panny"))
 
         # All Saints' Day.
@@ -106,9 +106,9 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
                 tr("Niepokalane Poczęcie Najświętszej Marii Panny")
             )
 
-        # Christmas Day 1.
+        # Christmas Day.
         self._add_christmas_day(tr("Boże Narodzenie (pierwszy dzień)"))
-        # Christmas Day 2.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Boże Narodzenie (drugi dzień)"))
 
 
@@ -122,5 +122,6 @@ class POL(Poland):
 
 class PolandStaticHolidays:
     special_public_holidays = {
+        # National Independence Day - 100th anniversary.
         2018: (NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),
     }

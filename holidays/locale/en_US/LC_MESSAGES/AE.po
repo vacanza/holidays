@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-09-12 15:59+0100\n"
-"Last-Translator: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"PO-Revision-Date: 2024-01-25 15:04+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,9 +14,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "(تقدير) %s"
 msgstr "%s (estimated)"
@@ -57,10 +57,10 @@ msgstr "Eid al-Adha Holiday"
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
-#. Leilat al-Miraj. The UAE government removed this starting 2019.
+#. Isra' and Mi'raj.
 msgid "ليلة المعراج"
-msgstr "Leilat al-Miraj (Ascension of the Prophet)"
+msgstr "Isra' and Mi'raj"
 
-#. Prophet Muhammad's Birthday. The UAE government removed this starting 2020.
+#. Prophet's Birthday.
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"

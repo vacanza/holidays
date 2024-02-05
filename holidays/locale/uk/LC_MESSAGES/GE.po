@@ -68,7 +68,7 @@ msgstr "День святого Андрія Первозваного"
 msgid "დამოუკიდებლობის დღე"
 msgstr "День незалежності"
 
-#. Assumption of the Virgin Mary.
+#. Dormition of the Mother of God.
 msgid "მარიამობა"
 msgstr "Успіння Пресвятої Богородиці"
 
