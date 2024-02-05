@@ -1,3 +1,23 @@
+Version 0.42
+============
+
+Released February 5, 2024
+
+- Add Ghana holidays (#1639 by @JerryAgbesi, @arkid15r)
+- Add Jersey holidays (#1664 by @PPsyrius)
+- Update Costa Rica holidays (#1657 by @KJhellico)
+- Update Croatia holidays (#1659 by @KJhellico)
+- Update Greece holidays (#1663 by @KJhellico)
+- Update Switzerland holidays (#1648 by @KJhellico)
+- Update United Arab Emirates holidays (#1667 by @KJhellico)
+- Update ruff config (#1684 by @KJhellico)
+- 2020 China calendar discrepancies fix (#1645 by @PPsyrius)
+- Add United Kingdom's Whit Monday holidays for pre-1971 years (#1668 by @PPsyrius)
+- Ruff cleanup (#1680 by @PPsyrius, @arkid15r)
+- Unify common holidays name translation (#1673 by @KJhellico)
+- Use current version for release notes generation (#1661 by @arkid15r)
+- Use ruff instead of black+flake8 (#1671 by @arkid15r)
+
 Version 0.41
 ============
 
