@@ -1631,6 +1631,14 @@ class TestUS(CommonCountryTests, TestCase):
             (f"{year}-10-31" for year in range(1865, 2050)),
         )
 
+    def test_groundhog_day(self):
+        name = "Groundhog Day"
+        self.assertHolidayName(
+            name,
+            UnitedStates(categories=NON_PUBLIC),
+            (f"{year}-02-02" for year in range(1886, 2050)),
+        )
+
     def test_all_souls_day(self):
         name = "All Souls' Day"
         self.assertNoHolidayName(name)

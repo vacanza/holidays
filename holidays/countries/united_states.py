@@ -955,16 +955,21 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         self._add_holiday_oct_31("Halloween")
 
-        # Election Day
-        # May be duplicates for certain states which has this as their actual public holiday.
-        # The current US Presidential Election date pattern was only codified in 1848 nationwide.
+        # Continental US non-Public dates
 
-        if (
-            self._year >= 1848
-            and self._year % 4 == 0
-            and self.subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}
-        ):
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+        if self.subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
+            # Groundhog Day
+            # First observed on Feb 2 in 1886 in Continental US + Hawaii.
+
+            if self._year >= 1886:
+                self._add_holiday_feb_2("Groundhog Day")
+
+            # Election Day
+            # May be duplicates for certain states which has this as their actual public holiday.
+            # The current US Presidential Election date pattern was codified in 1848 nationwide.
+
+            if self._year >= 1848 and self._year % 4 == 0:
+                self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
 
 
 class US(UnitedStates):
