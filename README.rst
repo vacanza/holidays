@@ -223,7 +223,7 @@ All other default values are highlighted with bold:
      -
    * - Austria
      - AT
-     - States: 1 (B), 2 (K), 3 (N), 4 (O), 5 (S), 6 (St), 7 (T), 8 (V), 9 (W)
+     - States: 1 (Burgenland, Bgld), 2 (Kärnten, Ktn), 3 (Niederösterreich, NÖ), 4 (Oberösterreich, OÖ), 5 (Salzburg, Sbg), 6 (Steiermark, Stmk), 7 (Tirol, T), 8 (Vorarlberg, Vbg), 9 (Wien, W)
      - **de**, en_US, uk
      - BANK
    * - Azerbaijan

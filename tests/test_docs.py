@@ -47,9 +47,9 @@ class TestReadme(TestCase):
         country_subdivisions_aliases = {}
         country_supported_languages = {}
         country_supported_categories = {}
-        # Subdivisions are listed after an identifier followed by a colon
-        subdivisions_re = re.compile(".*: (.*)")
-        subdivision_aliases_re = re.compile(r"\((.*)\)")
+        subdivision_group_re = re.compile(".*: (.*)")
+        subdivision_and_aliases_re = re.compile(r",(?![^()]*\))")
+        subdivision_aliases_re = re.compile(r"(.*)\s\((.*?)\)")
 
         table_content = [
             line.strip()
@@ -77,20 +77,28 @@ class TestReadme(TestCase):
             subdivision_str = table_content[idx + 2].strip(" -")
             if subdivision_str:
                 for subdivision_groups in subdivision_str.split("."):
-                    subdivision_group = subdivision_groups.split(";")[0].strip()
+                    subdivision_aliases_group = subdivision_groups.split(";")[0].strip()
                     # Exclude empty subdivisions.
-                    if ":" not in subdivision_group:
+                    if ":" not in subdivision_aliases_group:
                         country_subdivisions[country_code] = []
                         continue
 
                     # Combine all subdivision and their aliases.
-                    subdivision_group = subdivisions_re.findall(subdivision_group)[0]
-                    for subdivision_code in subdivision_group.split(","):
-                        subdivision = subdivision_code.strip()
-                        aliases = list(subdivision_aliases_re.findall(subdivision))
-                        if aliases:
-                            subdivision = subdivision.split()[0]
+                    subdivision_aliases_group = subdivision_group_re.findall(
+                        subdivision_aliases_group
+                    )[0]
+                    for subdivision_aliases in subdivision_and_aliases_re.split(
+                        subdivision_aliases_group
+                    ):
+                        if "," in subdivision_aliases:  # Subdivision with aliases.
+                            subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
+                            subdivision = subdivision_aliases.group(1)
+                            aliases = subdivision_aliases.group(2).split(", ")
+                        else:
+                            aliases = []
+                            subdivision = subdivision_aliases
                         subdivision = subdivision.strip(" *")
+
                         country_subdivisions[country_code].append(subdivision)
                         country_subdivisions_aliases[country_code][subdivision] = aliases
 

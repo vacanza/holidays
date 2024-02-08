@@ -80,29 +80,25 @@ msgstr "Christmas Eve"
 msgid "Silvester"
 msgstr "New Year's Eve"
 
-#. Patron saint of Burgenland: Hl. Martin von Tours (St. Martin of Tours)
+#. St. Martin's Day.
 msgid "Hl. Martin"
-msgstr "St. Martin of Tours"
+msgstr "St. Martin's Day"
 
-#. Patron saint of Carinthia: Hl. Josef (St. Joseph's day)
-#. Patron saint of Styria: Hl. Josef (St. Joseph's day)
-#. Patron saint of Tyrol: Hl. Josef (St. Joseph's day)
-#. Patron saint of Vorarlberg: Hl. Josef (St. Joseph's day)
+#. St. Joseph's Day.
 msgid "Hl. Josef"
-msgstr "St. Joseph"
+msgstr "St. Joseph's Day"
 
-#. Tag der Volksabstimmung (1920 Carinthian plebiscite)
+#. 1920 Carinthian plebiscite.
 msgid "Tag der Volksabstimmung"
 msgstr "1920 Carinthian plebiscite"
 
-#. Patron saint of Lower Austria: Hl. Leopold III. (St. Leopold III)
-#. Patron saint of Vienna: Hl. Leopold III. (St. Leopold III)
+#. St. Leopold's Day.
 msgid "Hl. Leopold"
-msgstr "St. Leopold III"
+msgstr "St. Leopold's Day"
 
 msgid "Hl. Florian"
-msgstr "St. Florian"
+msgstr "St. Florian's Day"
 
-#. Patron saint of Salzburg: Hl. Rupert von Salzburg (St. Rupert of Salzburg)
+#. St. Rupert's Day.
 msgid "Hl. Rupert"
-msgstr "St. Rupert of Salzburg"
+msgstr "St. Rupert's Day"
