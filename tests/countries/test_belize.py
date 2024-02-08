@@ -30,8 +30,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "New Year's Day"
         years_observed = {1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name,
-            (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-01-02" for year in years_observed))
 
@@ -39,8 +38,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "George Price Day"
         years_observed = {2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name,
-            (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed)),
+            name, (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-01-16" for year in years_observed))
         self.assertNoHoliday(f"{year}-01-15" for year in range(1982, 2021))
@@ -95,8 +93,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Labour Day"
         years_observed = {1983, 1988, 1994, 2005, 2011, 2016, 2022, 2033, 2039, 2044}
         self.assertHolidayName(
-            name,
-            (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-05-02" for year in years_observed))
 
@@ -132,8 +129,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Saint George's Caye Day"
         years_observed = {1989, 1995, 2000, 2006, 2017, 2023, 2028, 2034, 2045}
         self.assertHolidayName(
-            name,
-            (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-09-11" for year in years_observed))
 
@@ -141,8 +137,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Independence Day"
         years_observed = {1986, 1997, 2003, 2008, 2014, 2025, 2031, 2036, 2042}
         self.assertHolidayName(
-            name,
-            (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-09-22" for year in years_observed))
 
@@ -175,8 +170,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Garifuna Settlement Day"
         years_observed = {1989, 1995, 2000, 2006, 2017, 2023, 2028, 2034, 2045}
         self.assertHolidayName(
-            name,
-            (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-11-20" for year in years_observed))
 
@@ -187,8 +181,7 @@ class TestBelize(CommonCountryTests, TestCase):
         name = "Boxing Day"
         years_observed = {1982, 1993, 1999, 2004, 2010, 2021, 2027, 2032, 2038, 2049}
         self.assertHolidayName(
-            name,
-            (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
 

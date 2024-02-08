@@ -100,11 +100,7 @@ class ZambiaStaticHolidays:
     special_public_holidays = {
         2016: (
             (AUG, 11, "General elections and referendum"),
-            (
-                SEP,
-                13,
-                "Inauguration ceremony of President-elect and Vice President-elect",
-            ),
+            (SEP, 13, "Inauguration ceremony of President-elect and Vice President-elect"),
         ),
         2018: (
             (MAR, 9, "Public holiday"),

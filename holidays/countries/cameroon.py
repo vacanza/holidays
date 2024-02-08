@@ -21,11 +21,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 
 
 class Cameroon(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    StaticHolidays,
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """
     References:
