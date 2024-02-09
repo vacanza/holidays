@@ -61,13 +61,13 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
                 self._add_holiday_1st_mon_of_may(name)
 
         if self._year >= 1973:
-            # June Bank holiday.
+            # June Bank Holiday.
             self._add_holiday_1st_mon_of_jun("June Bank Holiday")
         else:
             # Whit Monday.
             self._add_whit_monday("Whit Monday")
 
-        # August Bank holiday.
+        # August Bank Holiday.
         self._add_holiday_1st_mon_of_aug("August Bank Holiday")
 
         # October Bank Holiday.
