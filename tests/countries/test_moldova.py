@@ -110,8 +110,8 @@ class TestMoldova(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-07", "Christmas (by old style)"),
-            ("2022-01-08", "Christmas (by old style)"),
+            ("2022-01-07", "Christmas Day (by old style)"),
+            ("2022-01-08", "Christmas Day (by old style)"),
             ("2022-03-08", "International Women's Day"),
             ("2022-04-24", "Easter"),
             ("2022-04-25", "Easter"),
@@ -125,7 +125,7 @@ class TestMoldova(CommonCountryTests, TestCase):
             ("2022-06-01", "International Children's Day"),
             ("2022-08-27", "Republic of Moldova Independence Day"),
             ("2022-08-31", "National Language Day"),
-            ("2022-12-25", "Christmas (by new style)"),
+            ("2022-12-25", "Christmas Day (by new style)"),
         )
 
     def test_l10n_uk(self):

@@ -20,11 +20,11 @@ msgstr ""
 msgid "Anul Nou"
 msgstr "Новий рік"
 
-#. Christmas (by old style).
+#. Christmas Day (by old style).
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
 msgstr "Різдво Христове (за старим стилем)"
 
-#. Christmas.
+#. Christmas Day.
 msgid "Naşterea lui Iisus Hristos (Crăciunul)"
 msgstr "Різдво Христове"
 
@@ -56,11 +56,11 @@ msgstr ""
 msgid "Ziua Europei"
 msgstr "День Європи"
 
-#. International Children's Day
+#. International Children's Day.
 msgid "Ziua Ocrotirii Copilului"
 msgstr "День захисту дітей"
 
-#. Republic of Moldova Independence Day
+#. Republic of Moldova Independence Day.
 msgid "Ziua independenţei Republicii Moldova"
 msgstr "День незалежності Республіки Молдова"
 
@@ -68,6 +68,6 @@ msgstr "День незалежності Республіки Молдова"
 msgid "Limba noastră"
 msgstr "День рідної мови"
 
-#. Christmas (by new style).
+#. Christmas Day (by new style).
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr "Різдво Христове (за новим стилем)"

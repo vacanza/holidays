@@ -88,7 +88,7 @@ class TestNicaragua(CommonCountryTests, TestCase):
             ("2022-09-14", "Battle of San Jacinto Day"),
             ("2022-09-15", "Independence Day"),
             ("2022-12-08", "Virgin's Day"),
-            ("2022-12-25", "Christmas"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):

@@ -103,10 +103,10 @@ class TestEgypt(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2019-01-01", "New Year's Day"),
-            ("2019-01-07", "Coptic Christmas"),
+            ("2019-01-07", "Coptic Christmas Day"),
             ("2019-01-25", "January 25th Revolution Day"),
             ("2019-04-25", "Sinai Liberation Day"),
-            ("2019-04-28", "Coptic Easter - Orthodox Easter"),
+            ("2019-04-28", "Coptic Easter"),
             ("2019-04-29", "Sham El Nessim"),
             ("2019-05-01", "Labor Day"),
             ("2019-06-04", "Eid al-Fitr (estimated)"),

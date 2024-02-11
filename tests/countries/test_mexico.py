@@ -151,7 +151,7 @@ class TestMexico(CommonCountryTests, TestCase):
             ("2022-01-01", "New Year's Day"),
             ("2022-02-07", "Constitution Day"),
             ("2022-03-21", "Benito Juárez's birthday"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-09-16", "Independence Day"),
             ("2022-11-21", "Revolution Day"),
             ("2022-12-25", "Christmas Day"),

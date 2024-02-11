@@ -87,7 +87,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
             ("2022-05-09", "Day of Victory over Fascism"),
             ("2022-05-12", "Saint Andrew's Day"),
             ("2022-05-26", "Independence Day"),
-            ("2022-08-28", "Assumption of the Virgin Mary"),
+            ("2022-08-28", "Dormition of the Mother of God"),
             ("2022-10-14", "Holiday of Svetitskhovloba, Robe of Jesus"),
             ("2022-11-23", "Saint George's Day"),
         )

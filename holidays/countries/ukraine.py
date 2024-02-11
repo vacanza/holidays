@@ -80,7 +80,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         dts_observed.add(self._add_new_years_day(tr("Новий рік")))
 
         dts_observed.add(
-            # Christmas (Julian calendar).
+            # Christmas Day (Julian calendar).
             self._add_christmas_day(tr("Різдво Христове (за юліанським календарем)"))
         )
 
@@ -98,7 +98,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             dts_observed.add(self._add_whit_sunday(tr("Трійця")))
 
             name = (
-                # Labour Day.
+                # Labor Day.
                 tr("День праці")
                 if self._year >= 2018
                 # International Workers' Solidarity Day.
@@ -147,7 +147,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             if self._year >= 2017:
                 dts_observed.add(
                     self._add_christmas_day(
-                        # Christmas (Gregorian calendar).
+                        # Christmas Day (Gregorian calendar).
                         tr("Різдво Христове (за григоріанським календарем)"),
                         GREGORIAN_CALENDAR,
                     )

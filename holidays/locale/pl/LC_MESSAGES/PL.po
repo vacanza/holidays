@@ -15,6 +15,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. National Independence Day - 100th anniversary.
 msgid "Narodowe Święto Niepodległości - 100-lecie"
 msgstr ""
 
@@ -58,7 +59,7 @@ msgstr ""
 msgid "Zielone Świątki"
 msgstr ""
 
-#. Pentecost (Day 2).
+#. Whit Monday.
 msgid "Drugi dzień Zielonych Świątek"
 msgstr ""
 
@@ -74,7 +75,7 @@ msgstr ""
 msgid "Narodowe Święto Odrodzenia Polski"
 msgstr ""
 
-#. Assumption of the Virgin Mary.
+#. Assumption Day.
 msgid "Wniebowzięcie Najświętszej Marii Panny"
 msgstr ""
 
@@ -90,10 +91,10 @@ msgstr ""
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
 msgstr ""
 
-#. Christmas Day 1.
+#. Christmas Day.
 msgid "Boże Narodzenie (pierwszy dzień)"
 msgstr ""
 
-#. Christmas Day 2.
+#. Second Day of Christmas.
 msgid "Boże Narodzenie (drugi dzień)"
 msgstr ""

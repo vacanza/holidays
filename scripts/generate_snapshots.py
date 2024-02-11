@@ -12,8 +12,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F402
-
 import argparse
 import json
 import sys
@@ -22,8 +20,8 @@ from pathlib import Path
 
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
 
-import holidays
-from holidays import list_supported_countries, list_supported_financial
+import holidays  # noqa: E402
+from holidays import list_supported_countries, list_supported_financial  # noqa: E402
 
 
 class SnapshotGenerator:

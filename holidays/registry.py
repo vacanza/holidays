@@ -88,6 +88,7 @@ COUNTRIES: RegistryDict = {
     "italy": ("Italy", "IT", "ITA"),
     "jamaica": ("Jamaica", "JM", "JAM"),
     "japan": ("Japan", "JP", "JPN"),
+    "jersey": ("Jersey", "JE", "JEY"),
     "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
     "kenya": ("Kenya", "KE", "KEN"),
     "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),

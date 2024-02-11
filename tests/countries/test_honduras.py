@@ -126,7 +126,7 @@ class TestHonduras(CommonCountryTests, TestCase):
             ("2022-10-05", "Morazan Weekend"),
             ("2022-10-06", "Morazan Weekend"),
             ("2022-10-07", "Morazan Weekend"),
-            ("2022-12-25", "Christmas"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):

@@ -41,15 +41,15 @@ msgstr "Курбан Бајрам"
 msgid "Nova godina"
 msgstr "Нова година"
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "Božić (Pravoslavni)"
 msgstr "Божић (Православни)"
 
-#. Labor Day.
+#. International Labor Day.
 msgid "Međunarodni praznik rada"
 msgstr "Међународни празник рада"
 
-#. Catholic Christmas.
+#. Catholic Christmas Day.
 msgid "Božić (Katolički)"
 msgstr "Божић (Католички)"
 
@@ -65,11 +65,11 @@ msgstr "Дан независности"
 msgid "Veliki petak (Katolički)"
 msgstr "Велики петак (Католички)"
 
-#. Catholic Easter.
+#. Catholic Easter Sunday.
 msgid "Uskrs (Katolički)"
 msgstr "Ускрс (Католички)"
 
-#. Orthodox Easter.
+#. Orthodox Easter Sunday.
 msgid "Vaskrs (Pravoslavni)"
 msgstr "Васкрс (Православни)"
 

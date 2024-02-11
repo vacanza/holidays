@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (perkiraan)"
 msgstr "%s (приблизна дата)"
@@ -80,7 +81,7 @@ msgstr "День Святого Духа"
 msgid "Hari Lahir Pancasila"
 msgstr "День Панчасіла"
 
-#. Assumption Of Mary.
+#. Assumption Day.
 msgid "Mikraj Santa Maria"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
@@ -116,11 +117,11 @@ msgstr "Курбан-байрам"
 msgid "Tahun Baru Islam"
 msgstr "Ісламський Новий рік"
 
-#. The Prophet's Birthday.
+#. Prophet's Birthday.
 msgid "Maulid Nabi Muhammad"
 msgstr "День народження пророка Мухаммада"
 
-#. The Prophet's Ascension.
+#. Isra and Miraj.
 msgid "Isra Mikraj Nabi Muhammad"
 msgstr "Вознесіння пророка Мухаммада"
 

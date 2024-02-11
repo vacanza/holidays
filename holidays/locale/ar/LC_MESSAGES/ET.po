@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.1\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
 msgstr "(تقدير) %s"
@@ -28,7 +29,7 @@ msgstr "السنة الإثيوبية الجديدة"
 msgid "መስቀል"
 msgstr "العثور على الصليب الحقيقي"
 
-#. Orthodox Christmas.
+#. Orthodox Christmas Day.
 msgid "ገና"
 msgstr "عيد الميلاد"
 
@@ -48,7 +49,7 @@ msgstr "عيد الفصح"
 msgid "አድዋ"
 msgstr "العدوة"
 
-#. Labour Day.
+#. Labor Day.
 msgid "የሰራተኞች ቀን"
 msgstr "يوم العمال"
 
@@ -72,6 +73,6 @@ msgstr "عيد الفطر"
 msgid "አረፋ"
 msgstr "عيد الأضحى"
 
-#. Prophet Muhammad's Birthday.
+#. Prophet's Birthday.
 msgid "መውሊድ"
 msgstr "عيد المولد النبوي"

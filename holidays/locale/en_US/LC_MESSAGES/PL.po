@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2022-12-07 18:43-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-01-03 21:22+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -14,9 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
+#. National Independence Day - 100th anniversary.
 msgid "Narodowe Święto Niepodległości - 100-lecie"
 msgstr "National Independence Day - 100th anniversary"
 
@@ -30,7 +31,7 @@ msgstr "Epiphany"
 
 #. Candlemas.
 msgid "Oczyszczenie Najświętszej Marii Panny"
-msgstr "Purification of the Blessed Virgin Mary"
+msgstr "Candlemas"
 
 #. Easter Sunday.
 msgid "Niedziela Wielkanocna"
@@ -60,9 +61,9 @@ msgstr "Ascension Day"
 msgid "Zielone Świątki"
 msgstr "Pentecost"
 
-#. Pentecost (Day 2).
+#. Whit Monday.
 msgid "Drugi dzień Zielonych Świątek"
-msgstr "Pentecost (Day 2)"
+msgstr "Whit Monday"
 
 #. Corpus Christi.
 msgid "Dzień Bożego Ciała"
@@ -76,9 +77,9 @@ msgstr "Saints Peter and Paul Day"
 msgid "Narodowe Święto Odrodzenia Polski"
 msgstr "National Day of Rebirth of Poland"
 
-#. Assumption of the Virgin Mary.
+#. Assumption Day.
 msgid "Wniebowzięcie Najświętszej Marii Panny"
-msgstr "Assumption of the Virgin Mary"
+msgstr "Assumption Day"
 
 #. All Saints' Day.
 msgid "Uroczystość Wszystkich Świętych"
@@ -92,10 +93,10 @@ msgstr "National Independence Day"
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
 msgstr "Immaculate Conception of the Blessed Virgin Mary"
 
-#. Christmas Day 1.
+#. Christmas Day.
 msgid "Boże Narodzenie (pierwszy dzień)"
-msgstr "Christmas (Day 1)"
+msgstr "Christmas Day"
 
-#. Christmas Day 2.
+#. Second Day of Christmas.
 msgid "Boże Narodzenie (drugi dzień)"
-msgstr "Christmas (Day 2)"
+msgstr "Second Day of Christmas"

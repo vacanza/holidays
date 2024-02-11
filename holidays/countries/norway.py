@@ -65,7 +65,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Source: https://lovdata.no/dokument/NL/lov/1947-04-26-1
         if self._year >= 1947:
-            # Labour Day.
+            # Labor Day.
             self._add_labor_day(tr("Arbeidernes dag"))
 
             # Constitution Day.

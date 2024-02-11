@@ -310,8 +310,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-02-28", "Carnival"),
-            ("2022-03-01", "Carnival"),
+            ("2022-02-28", "Carnival Day"),
+            ("2022-03-01", "Carnival Day"),
             ("2022-03-24", "Memory's National Day for the Truth and Justice"),
             ("2022-04-02", "Veterans Day and the Fallen in the Malvinas War"),
             ("2022-04-15", "Good Friday"),
@@ -328,7 +328,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-11-21", "Bridge Public Holiday"),
             ("2022-12-08", "Immaculate Conception"),
             ("2022-12-09", "Bridge Public Holiday"),
-            ("2022-12-25", "Christmas"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):

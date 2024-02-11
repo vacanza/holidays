@@ -282,7 +282,7 @@ class TestPortugal(CommonCountryTests, TestCase):
             ("2018-12-08", "Immaculate Conception"),
             ("2018-12-24", "Christmas Eve"),
             ("2018-12-25", "Christmas Day"),
-            ("2018-12-26", "Boxing Day"),
+            ("2018-12-26", "Second Day of Christmas"),
             ("2018-12-31", "New Year's Eve"),
         )
 

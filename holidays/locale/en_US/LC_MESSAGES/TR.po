@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4\n"
 
-#. Estimated label.
+#. %s (estimated).
 #, c-format
 msgid "%s (tahmini)"
 msgstr "%s (estimated)"
@@ -68,6 +68,7 @@ msgstr "Eid al-Fitr"
 msgid "Kurban Bayramı"
 msgstr "Eid al-Adha"
 
+#. %s (from 1pm).
 #, c-format
 msgid "%s (saat 13.00'ten)"
 msgstr "%s (from 1pm)"

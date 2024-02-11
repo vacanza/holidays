@@ -16,7 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Good Thursday.
+#. Maundy Thursday.
 msgid "Jueves Santo"
 msgstr ""
 
@@ -25,31 +25,31 @@ msgid "Viernes Santo"
 msgstr ""
 
 #. Army Day.
-msgid "Dia del Ejército"
+msgid "Día del Ejército"
 msgstr ""
 
-#. Independence Day
+#. Independence Day.
 msgid "Día de la Independencia"
 msgstr ""
 
 #. All Saints' Day.
-msgid "Dia de Todos los Santos"
+msgid "Día de Todos los Santos"
 msgstr ""
 
 #. Assumption Day.
-msgid "Dia de la Asunción"
+msgid "Día de la Asunción"
 msgstr ""
 
-#. Revolution Day
-msgid "Dia de la Revolución"
+#. Revolution Day.
+msgid "Día de la Revolución"
 msgstr ""
 
-#. Good Saturday.
+#. Holy Saturday.
 msgid "Sabado Santo"
 msgstr ""
 
 #. Labor Day.
-msgid "Dia del Trabajo"
+msgid "Día del Trabajo"
 msgstr ""
 
 #. New Year's Day.
@@ -57,5 +57,5 @@ msgid "Año Nuevo"
 msgstr ""
 
 #. Christmas Day.
-msgid "Dia de Navidad"
+msgid "Día de Navidad"
 msgstr ""

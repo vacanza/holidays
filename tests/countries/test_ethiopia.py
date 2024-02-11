@@ -152,6 +152,6 @@ class TestEthiopia(CommonCountryTests, TestCase):
             ("2022-07-10", "Eid al-Adha (estimated)"),
             ("2022-09-11", "Ethiopian New Year's Day"),
             ("2022-09-27", "Finding of True Cross"),
-            ("2022-10-08", "Prophet Muhammad's Birthday (estimated)"),
-            ("2022-10-09", "Prophet Muhammad's Birthday (estimated)"),
+            ("2022-10-08", "Prophet's Birthday (estimated)"),
+            ("2022-10-09", "Prophet's Birthday (estimated)"),
         )

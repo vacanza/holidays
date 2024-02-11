@@ -36,7 +36,7 @@ msgstr "Easter Sunday"
 msgid "Andre påskedag"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Arbeidernes dag"
 msgstr "Labor Day"
 

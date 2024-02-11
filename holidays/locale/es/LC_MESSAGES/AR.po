@@ -47,7 +47,7 @@ msgstr ""
 msgid "Año Nuevo"
 msgstr ""
 
-#. Carnival.
+#. Carnival Day.
 msgid "Día de Carnaval"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Inmaculada Concepción de María"
 msgstr ""
 
-#. Christmas.
+#. Christmas Day.
 msgid "Navidad"
 msgstr ""
 

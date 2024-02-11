@@ -24,6 +24,7 @@ msgstr "100-а річниця прийняття Декларації слова
 msgid "Deň vzniku Slovenskej republiky"
 msgstr "День утворення Словацької Республіки"
 
+#. Epiphany.
 msgid "Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)"
 msgstr "Богоявлення (Три царі і православне Різдво Христове)"
 

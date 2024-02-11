@@ -381,12 +381,12 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-01-01", "New Year's Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Holy Saturday"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-05-21", "Navy Day"),
             ("2022-06-21", "National Day of Indigenous Peoples"),
             ("2022-06-27", "Saint Peter and Saint Paul"),
             ("2022-07-16", "Our Lady of Mount Carmel"),
-            ("2022-08-15", "Assumption of Mary"),
+            ("2022-08-15", "Assumption Day"),
             ("2022-09-16", "National Holiday"),
             ("2022-09-18", "Independence Day"),
             ("2022-09-19", "Army Day"),
@@ -394,7 +394,7 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-10-31", "Reformation Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-08", "Immaculate Conception"),
-            ("2022-12-25", "Christmas"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
@@ -408,7 +408,7 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-06-21", "Національний день корінних народів"),
             ("2022-06-27", "День Святих Петра і Павла"),
             ("2022-07-16", "Матір Божа Кармельська"),
-            ("2022-08-15", "Успіння Пресвятої Богородиці"),
+            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-09-16", "Національне свято"),
             ("2022-09-18", "День Незалежності"),
             ("2022-09-19", "День військової слави"),

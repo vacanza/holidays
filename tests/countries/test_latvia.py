@@ -156,7 +156,7 @@ class TestLatvia(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-04-15", "Good Friday"),
-            ("2022-04-17", "Easter"),
+            ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-04", "Restoration of Independence Day"),

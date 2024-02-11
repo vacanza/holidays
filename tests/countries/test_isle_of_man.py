@@ -29,6 +29,7 @@ class TestIM(CommonCountryTests, TestCase):
             IsleOfMan(years=1970),
             ("1970-03-27", "Good Friday"),
             ("1970-03-30", "Easter Monday"),
+            ("1970-05-18", "Whit Monday"),
             ("1970-06-05", "TT Bank Holiday"),
             ("1970-07-05", "Tynwald Day"),
             ("1970-12-25", "Christmas Day"),

@@ -36,7 +36,7 @@ msgstr "Великдень"
 msgid "Andre påskedag"
 msgstr "Великодній понеділок"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Arbeidernes dag"
 msgstr "День праці"
 
