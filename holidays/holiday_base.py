@@ -682,10 +682,8 @@ class HolidayBase(Dict[date, str]):
     @classmethod
     def get_subdivision_aliases(cls) -> Dict[str, List]:
         """Get subdivision aliases."""
-        subdivision_aliases: Dict[str, List] = {}
+        subdivision_aliases: Dict[str, List[str]] = {s: [] for s in cls.subdivisions}
         for alias, subdivision in cls.subdivisions_aliases.items():
-            if subdivision not in subdivision_aliases:
-                subdivision_aliases[subdivision] = []
             subdivision_aliases[subdivision].append(alias)
 
         return subdivision_aliases
