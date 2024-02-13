@@ -48,7 +48,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
     country = "TW"
     # %s (observed).
-    observed_label = tr("%s (慶祝)")
+    observed_label = tr("%s（慶祝）")
     default_language = "zh_TW"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
 

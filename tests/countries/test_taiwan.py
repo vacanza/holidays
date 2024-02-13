@@ -36,7 +36,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2021-12-31",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_lunar_new_year(self):
@@ -119,8 +119,8 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2023-01-26",
             "2024-02-13",
         )
-        self.assertHolidayName(f"{name_eve} (慶祝)", obs_eve_dt)
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name_eve}（慶祝）", obs_eve_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_eve_dt, obs_dt)
 
     def test_peace_memorial_day(self):
@@ -134,7 +134,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2016-02-29",
             "2021-03-01",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_childrens_day(self):
@@ -149,7 +149,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2020-04-03",
             "2021-04-05",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_tomb_sweeping_day(self):
@@ -177,7 +177,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2020-04-02",
             "2021-04-06",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_dragon_boat_festival(self):
@@ -203,7 +203,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2015-06-19",
             "2025-05-30",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_mid_autumn_festival(self):
@@ -229,7 +229,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2015-09-28",
             "2022-09-09",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_day(self):
@@ -241,7 +241,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             "2020-10-09",
             "2021-10-11",
         )
-        self.assertHolidayName(f"{name} (慶祝)", obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2010(self):
@@ -512,14 +512,14 @@ class TestTaiwan(CommonCountryTests, TestCase):
         self.assertHolidays(
             Taiwan(years=2023),
             ("2023-01-01", "中華民國開國紀念日"),
-            ("2023-01-02", "中華民國開國紀念日 (慶祝)"),
+            ("2023-01-02", "中華民國開國紀念日（慶祝）"),
             ("2023-01-20", "休息日（2023-01-07日起取代）"),
             ("2023-01-21", "農曆除夕"),
             ("2023-01-22", "春節"),
             ("2023-01-23", "春節"),
             ("2023-01-24", "春節"),
-            ("2023-01-25", "農曆除夕 (慶祝)"),
-            ("2023-01-26", "春節 (慶祝)"),
+            ("2023-01-25", "農曆除夕（慶祝）"),
+            ("2023-01-26", "春節（慶祝）"),
             ("2023-01-27", "休息日（2023-02-04日起取代）"),
             ("2023-02-27", "休息日（2023-02-18日起取代）"),
             ("2023-02-28", "和平紀念日"),
@@ -542,11 +542,11 @@ class TestTaiwan(CommonCountryTests, TestCase):
             ("2024-02-10", "春節"),
             ("2024-02-11", "春節"),
             ("2024-02-12", "春節"),
-            ("2024-02-13", "春節 (慶祝)"),
-            ("2024-02-14", "春節 (慶祝)"),
+            ("2024-02-13", "春節（慶祝）"),
+            ("2024-02-14", "春節（慶祝）"),
             ("2024-02-28", "和平紀念日"),
             ("2024-04-04", "兒童節; 清明節"),
-            ("2024-04-05", "兒童節 (慶祝)"),
+            ("2024-04-05", "兒童節（慶祝）"),
             ("2024-06-10", "端午節"),
             ("2024-09-17", "中秋節"),
             ("2024-10-10", "中華民國國慶日"),
@@ -564,7 +564,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             ("2022-04-04", "兒童節"),
             ("2022-04-05", "清明節"),
             ("2022-06-03", "端午節"),
-            ("2022-09-09", "中秋節 (慶祝)"),
+            ("2022-09-09", "中秋節（慶祝）"),
             ("2022-09-10", "中秋節"),
             ("2022-10-10", "中華民國國慶日"),
         )
@@ -618,7 +618,7 @@ class TestTaiwan(CommonCountryTests, TestCase):
             ("2022-04-04", "儿童节"),
             ("2022-04-05", "清明节"),
             ("2022-06-03", "端午节"),
-            ("2022-09-09", "中秋节 (庆祝)"),
+            ("2022-09-09", "中秋节（庆祝）"),
             ("2022-09-10", "中秋节"),
             ("2022-10-10", "中华民国国庆日"),
         )

@@ -18,7 +18,7 @@ msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "%s (慶祝)"
+msgid "%s（慶祝）"
 msgstr "%s (observed)"
 
 #. Founding Day of the Republic of China.
