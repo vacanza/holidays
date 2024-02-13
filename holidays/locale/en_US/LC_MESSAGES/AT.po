@@ -96,6 +96,7 @@ msgstr "1920 Carinthian plebiscite"
 msgid "Hl. Leopold"
 msgstr "St. Leopold's Day"
 
+#. St. Florian's Day.
 msgid "Hl. Florian"
 msgstr "St. Florian's Day"
 

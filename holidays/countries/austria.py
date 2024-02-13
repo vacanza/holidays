@@ -135,8 +135,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_nov_15(tr("Hl. Leopold"))
 
     def _populate_subdiv_4_bank_holidays(self):
-        # St. Florian's Day.
         if self._year >= 2004:
+            # St. Florian's Day.
             self._add_holiday_may_4(tr("Hl. Florian"))
 
     def _populate_subdiv_5_bank_holidays(self):

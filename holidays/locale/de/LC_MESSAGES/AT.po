@@ -95,6 +95,7 @@ msgstr ""
 msgid "Hl. Leopold"
 msgstr ""
 
+#. St. Florian's Day.
 msgid "Hl. Florian"
 msgstr ""
 

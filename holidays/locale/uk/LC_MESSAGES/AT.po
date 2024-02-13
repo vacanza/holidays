@@ -96,6 +96,7 @@ msgstr "Річниця референдуму 1920 року в Карінтії"
 msgid "Hl. Leopold"
 msgstr "День Святого Леопольда"
 
+#. St. Florian's Day.
 msgid "Hl. Florian"
 msgstr "День Святого Флоріана"
 
