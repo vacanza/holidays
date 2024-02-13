@@ -144,8 +144,10 @@ Available Countries
 
 We currently support 143 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
-than one language for holiday names output.
+for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
+names or abbreviations as aliases for their subdivisions. These are defined in
+the (optional) ``subdivisions_aliases`` attribute.
+Some of the countries support more than one language for holiday names output.
 A default language is defined by ``default_language`` (optional) attribute
 for each entity and is used as a fallback when neither user specified
 language nor user locale language available. The default language code is
@@ -158,8 +160,9 @@ bank holidays, school holidays, additional (paid or non-paid) holidays, holidays
 public employees, religious holidays (valid only for these religions followers). A list of all
 categories supported by country is defined by ``supported_categories`` (optional) attribute.
 
-The following is a list of supported countries, their subdivisions, available languages and
-additional categories. All countries support **PUBLIC** holidays category by default.
+The following is a list of supported countries, their subdivisions followed by their
+aliases (if any) in brackets, available languages and additional holiday categories.
+All countries support **PUBLIC** holidays category by default.
 All other default values are highlighted with bold:
 
 
@@ -220,7 +223,7 @@ All other default values are highlighted with bold:
      -
    * - Austria
      - AT
-     - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
+     - States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)
      - **de**, en_US, uk
      - BANK
    * - Azerbaijan

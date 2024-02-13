@@ -46,8 +46,8 @@ def country_holidays(
         An ISO 3166-1 Alpha-2 country code.
 
     :param subdiv:
-        The subdivision (e.g. state or province); not implemented for all
-        countries (see documentation).
+        The subdivision (e.g. state or province) as a ISO 3166-2 code
+        or its alias; not implemented for all countries (see documentation).
 
     :param years:
         The year(s) to pre-calculate public holidays for at instantiation.
