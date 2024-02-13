@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.40\n"
+"Project-Id-Version: Python Holidays 0.43\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2023-12-02 11:20+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-02-07 19:36+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (慶祝)"
-msgstr "%s (庆祝)"
+msgid "%s（慶祝）"
+msgstr "%s（庆祝）"
 
 #. Founding Day of the Republic of China.
 msgid "中華民國開國紀念日"
@@ -56,3 +56,12 @@ msgstr "中秋节"
 #. National Day.
 msgid "中華民國國慶日"
 msgstr "中华民国国庆日"
+
+#. Date format (see strftime() Format Codes).
+msgid "%Y-%m-%d"
+msgstr "%Y-%m-%d"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "休息日（%s日起取代）"
+msgstr "休息日（%s日起取代）"
