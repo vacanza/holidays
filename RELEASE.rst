@@ -12,7 +12,7 @@ How to release a new version of Python Holidays
   - commit the updated ``CHANGES`` file to ``dev`` branch with the following
     commit message 'Finalize v<version>', e.g. 'Finalize v0.39'
   - push changes to https://github.com/vacanza/python-holidays ``dev`` branch
-  - make sure the push related CI/CD job(s) have been completed successfully
+  - make sure the push related CI/CD jobs have been completed successfully
 
 - Merge the finalized changes into ``main`` branch:
 
@@ -20,9 +20,8 @@ How to release a new version of Python Holidays
     using 'v<version>' as a PR title and the previously generated release notes
     as a PR description
   - get the PR reviewed by at least one of the code owners
-  - merge the PR into ``main`` branch with 'Create a merge commit' action
-    (**do not use 'Squash and merge'**)
-  - make sure the PR related CI/CD job(s) have been completed successfully
+  - merge the PR into ``main`` branch using 'Merge when ready' button
+  - make sure the PR related CI/CD jobs have been completed successfully
   - make sure readthedocs.org documentation build jobs at
     https://readthedocs.org/projects/python-holidays/builds/
     have been completed successfully
@@ -49,7 +48,7 @@ How to release a new version of Python Holidays
 
 - Verify the new release:
 
-  - make sure the release related CI/CD job(s) have been completed successfully
+  - make sure the release related CI/CD jobs have been completed successfully
   - check https://pypi.org/project/holidays/ package page -- it should have
     the current version and the released date updated
 
@@ -65,4 +64,4 @@ How to release a new version of Python Holidays
   - make sure ``dev`` branch **is not behind** the ``main`` branch (there
     will be a message on top of the
     https://github.com/vacanza/python-holidays/tree/dev page in case it is)
-  - make sure the push related CI/CD job(s) have been completed successfully
+  - make sure the push related CI/CD jobs have been completed successfully
