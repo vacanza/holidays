@@ -3,24 +3,24 @@ How to release a new version of Python Holidays
 
 - Finalize the current development version
 
-  - switch to ``beta`` branch and pull the most recent changes
-    from https://github.com/vacanza/python-holidays remote ``beta`` branch.
+  - switch to ``dev`` branch and pull the most recent changes
+    from https://github.com/vacanza/python-holidays remote ``dev`` branch.
   - generate release notes by running the following script
     ``scripts/generate_release_notes.py``
   - insert the script's output into the top of ``CHANGES`` file
     (see previous release notes for consistent formatting)
-  - commit the updated ``CHANGES`` file to ``beta`` branch with the following
+  - commit the updated ``CHANGES`` file to ``dev`` branch with the following
     commit message 'Finalize v<version>', e.g. 'Finalize v0.39'
-  - push changes to https://github.com/vacanza/python-holidays ``beta`` branch
+  - push changes to https://github.com/vacanza/python-holidays ``dev`` branch
   - make sure the push related CI/CD job(s) have been completed successfully
 
-- Merge the finalized changes into ``master`` branch:
+- Merge the finalized changes into ``main`` branch:
 
-  - create a new PR for the recent changes from ``beta`` to ``master`` branch
+  - create a new PR for the recent changes from ``dev`` to ``main`` branch
     using 'v<version>' as a PR title and the previously generated release notes
     as a PR description
   - get the PR reviewed by at least one of the code owners
-  - merge the PR into ``master`` branch with 'Create a merge commit' action
+  - merge the PR into ``main`` branch with 'Create a merge commit' action
     (**do not use 'Squash and merge'**)
   - make sure the PR related CI/CD job(s) have been completed successfully
   - make sure readthedocs.org documentation build jobs at
@@ -33,7 +33,7 @@ How to release a new version of Python Holidays
     on the 'Draft a new release' button
   - click on 'Choose a tag', enter 'v<version>' into the input field
     (you should see something like 'Create a new tag: v0.39' on publish'
-  - select **master** - instead of default ``beta`` in 'Target' dropdown
+  - select **main** - instead of default ``dev`` in 'Target' dropdown
   - put 'v<version>' into 'Release title' field, e.g. 'v0.39'
   - click on 'Generate release notes' button to collect new contributors and
     full changelog link information (we normally keep it at the bottom with
@@ -57,12 +57,12 @@ How to release a new version of Python Holidays
 
   - send "Python Holidays 'v<version>' has been released!" (or similar) message
     to Vacanza Team Slack #release channel
-  - pull the recent changes from ``master`` branch into ``beta``
+  - pull the recent changes from ``main`` branch into ``dev``
   - bump the Python Holidays version at ``holidays/__init__.py`` file
   - create a commit with 'Initialize v<version>' message, e.g.
-    'Initialize v0.40' and push it to ``beta`` branch (this may require
+    'Initialize v0.40' and push it to ``dev`` branch (this may require
     running ``make package`` to pass the tests locally)
-  - make sure ``beta`` branch **is not behind** the master branch (there
+  - make sure ``dev`` branch **is not behind** the ``main`` branch (there
     will be a message on top of the
-    https://github.com/vacanza/python-holidays/tree/beta page in case it is)
+    https://github.com/vacanza/python-holidays/tree/dev page in case it is)
   - make sure the push related CI/CD job(s) have been completed successfully

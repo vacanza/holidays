@@ -5,11 +5,11 @@ updates:
     schedule:
       interval: weekly
       day: wednesday
-    target-branch: beta
+    target-branch: dev
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
       day: wednesday
-    target-branch: beta
+    target-branch: dev

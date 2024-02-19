@@ -25,7 +25,7 @@ from github.GithubException import UnknownObjectException
 sys.path.append(f"{Path.cwd()}")
 import holidays  # noqa: E402
 
-BRANCH_NAME = "beta"
+BRANCH_NAME = "dev"
 HEADER_TEMPLATE = """
 Version {version}
 ============

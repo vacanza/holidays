@@ -3,7 +3,7 @@ Contributing
 ============
 
 .. _prs: https://github.com/vacanza/python-holidays/pulls
-.. _`beta branch`: https://github.com/vacanza/python-holidays/tree/beta
+.. _`dev branch`: https://github.com/vacanza/python-holidays/tree/dev
 .. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
     :target: https://github.com/vacanza/python-holidays/graphs/contributors
     :alt: contributors
@@ -15,7 +15,7 @@ Basics
 ------
 
 When contributing with fixes and new features, please start forking/branching
-from the `beta branch`_ to work on the latest code and reduce merging issues.
+from the `dev branch`_ to work on the latest code and reduce merging issues.
 If you add/change holiday official dates or names you must include references to
 all sources (government sites, archived web pages, wiki pages, etc) you've used
 while working on this PR. Contributed PRs_ are required to include valid test
