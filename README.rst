@@ -42,7 +42,7 @@ flexible as possible.
         :target: https://github.com/psf/black
         :alt: Code style
 
-    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=master&color=%2341B5BE&style=flat
+    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=%2341B5BE&style=flat
         :target: https://coveralls.io/r/vacanza/python-holidays
         :alt: Code coverage
 
@@ -60,8 +60,8 @@ flexible as possible.
         :target: https://github.com/vacanza/python-holidays/graphs/contributors
         :alt: GitHub contributors
 
-    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/beta?color=%2341BE4A&style=flat
-        :target: https://github.com/vacanza/python-holidays/commits/beta
+    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=%2341BE4A&style=flat
+        :target: https://github.com/vacanza/python-holidays/commits/dev
         :alt: GitHub last commit
 
 
@@ -74,14 +74,14 @@ The latest stable version can always be installed or updated via pip:
 
     $ pip install --upgrade holidays
 
-The latest development (beta) version can be installed directly from GitHub:
+The latest development (dev) version can be installed directly from GitHub:
 
 .. code-block:: shell
 
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/dev
 
-All new features are always first pushed to beta branch, then released on
-master branch upon official version upgrades.
+All new features are always first pushed to dev branch, then released on
+main branch upon official version upgrades.
 
 Documentation
 -------------
