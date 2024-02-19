@@ -145,7 +145,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # - get Holidays that occur on Thursday and add Friday (+1 day)
 
         # Carnival.
-        self._add_carnival_monday(tr("Carnaval"))
+        self._add_carnival_tuesday(tr("Carnaval"))
 
         # St. Anthony's Day.
         self._add_holiday_jun_13(tr("Dia de Santo António"))
