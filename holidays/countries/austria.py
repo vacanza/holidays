@@ -21,16 +21,48 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "de"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
-    subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
+    subdivisions = (
+        "1",  # Burgenland.
+        "2",  # Kärnten.
+        "3",  # Niederösterreich.
+        "4",  # Oberösterreich.
+        "5",  # Salzburg.
+        "6",  # Steiermark.
+        "7",  # Tirol.
+        "8",  # Vorarlberg.
+        "9",  # Wien.
+    )
+    subdivisions_aliases = {
+        "Burgenland": "1",
+        "Bgld": "1",
+        "B": "1",
+        "Kärnten": "2",
+        "Ktn": "2",
+        "K": "2",
+        "Niederösterreich": "3",
+        "NÖ": "3",
+        "N": "3",
+        "Oberösterreich": "4",
+        "OÖ": "4",
+        "O": "4",
+        "Salzburg": "5",
+        "Sbg": "5",
+        "S": "5",
+        "Steiermark": "6",
+        "Stmk": "6",
+        "St": "6",
+        "Tirol": "7",
+        "T": "7",
+        "Vorarlberg": "8",
+        "Vbg": "8",
+        "V": "8",
+        "Wien": "9",
+        "W": "9",
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-
-        # Set the default subdivision.
-        if not kwargs.get("subdiv", kwargs.get("state")):
-            kwargs["subdiv"] = "9"
-
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -58,11 +90,12 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
+        # National Day.
+        national_day = tr("Nationalfeiertag")
         if 1919 <= self._year <= 1934:
-            # National Day.
-            self._add_holiday_nov_12(tr("Nationalfeiertag"))
+            self._add_holiday_nov_12(national_day)
         if self._year >= 1967:
-            self._add_holiday_oct_26(tr("Nationalfeiertag"))
+            self._add_holiday_oct_26(national_day)
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
@@ -85,6 +118,46 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))
+
+    def _populate_subdiv_1_bank_holidays(self):
+        # St. Martin's Day.
+        self._add_holiday_nov_11(tr("Hl. Martin"))
+
+    def _populate_subdiv_2_bank_holidays(self):
+        # St. Joseph's Day.
+        self._add_saint_josephs_day(tr("Hl. Josef"))
+
+        # 1920 Carinthian plebiscite.
+        self._add_holiday_oct_10(tr("Tag der Volksabstimmung"))
+
+    def _populate_subdiv_3_bank_holidays(self):
+        # St. Leopold's Day.
+        self._add_holiday_nov_15(tr("Hl. Leopold"))
+
+    def _populate_subdiv_4_bank_holidays(self):
+        if self._year >= 2004:
+            # St. Florian's Day.
+            self._add_holiday_may_4(tr("Hl. Florian"))
+
+    def _populate_subdiv_5_bank_holidays(self):
+        # St. Rupert's Day.
+        self._add_holiday_sep_24(tr("Hl. Rupert"))
+
+    def _populate_subdiv_6_bank_holidays(self):
+        # St. Joseph's Day.
+        self._add_saint_josephs_day(tr("Hl. Josef"))
+
+    def _populate_subdiv_7_bank_holidays(self):
+        # St. Joseph's Day.
+        self._add_saint_josephs_day(tr("Hl. Josef"))
+
+    def _populate_subdiv_8_bank_holidays(self):
+        # St. Joseph's Day.
+        self._add_saint_josephs_day(tr("Hl. Josef"))
+
+    def _populate_subdiv_9_bank_holidays(self):
+        # St. Leopold's Day.
+        self._add_holiday_nov_15(tr("Hl. Leopold"))
 
 
 class AT(Austria):

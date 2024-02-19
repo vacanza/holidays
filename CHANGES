@@ -1,3 +1,14 @@
+Version 0.43
+============
+
+Released February 19, 2024
+
+- Introduce subdivisions aliases (#1662 by @sphh, @arkid15r)
+- Update Ireland holidays (#1687 by @KJhellico)
+- Update Portugal holidays: fix Carnival date (#1694 by @DgRosa)
+- Update Taiwan holidays (#1688 by @KJhellico)
+- Update Thailand holidays: add Bridge Public Holiday on Apr 12, 2024 (#1690 by @PPsyrius)
+
 Version 0.42
 ============
 

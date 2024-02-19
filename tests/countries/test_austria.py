@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from unittest import TestCase
 
 from holidays.constants import BANK
@@ -152,13 +151,6 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-12-31", "Silvester"),
         )
 
-    def test_subdivisions(self):
-        warnings.simplefilter("ignore", category=DeprecationWarning)
-        for code in (9, "9", "", None):
-            self.assertEqual(AT(prov=code).subdiv, "9")
-            self.assertEqual(AT(state=code).subdiv, "9")
-            self.assertEqual(AT(subdiv=code).subdiv, "9")
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Neujahr"),
@@ -220,3 +212,41 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-12-26", "День Святого Стефана"),
             ("2022-12-31", "Переддень Нового року"),
         )
+
+    def test_subdiv_1_bank_holidays(self):
+        subdiv_1_bank_holidays = Austria(subdiv="1", categories=BANK)
+        self.assertHolidayName("Hl. Martin", subdiv_1_bank_holidays, "2024-11-11")
+
+    def test_subdiv_2_bank_holidays(self):
+        subdiv_2_bank_holidays = Austria(subdiv="2", categories=BANK)
+        self.assertHolidayName("Hl. Josef", subdiv_2_bank_holidays, "2024-03-19")
+        self.assertHolidayName("Tag der Volksabstimmung", subdiv_2_bank_holidays, "2024-10-10")
+
+    def test_subdiv_3_bank_holidays(self):
+        subdiv_3_bank_holidays = Austria(subdiv="3", categories=BANK)
+        self.assertHolidayName("Hl. Leopold", subdiv_3_bank_holidays, "2024-11-15")
+
+    def test_subdiv_4_bank_holidays(self):
+        subdiv_4_bank_holidays = Austria(subdiv="4", categories=BANK)
+        self.assertHolidayName("Hl. Florian", subdiv_4_bank_holidays, "2024-05-04")
+        self.assertNoHoliday(subdiv_4_bank_holidays, "2003-05-04")
+
+    def test_subdiv_5_bank_holidays(self):
+        subdiv_5_bank_holidays = Austria(subdiv="5", categories=BANK)
+        self.assertHolidayName("Hl. Rupert", subdiv_5_bank_holidays, "2024-09-24")
+
+    def test_subdiv_6_bank_holidays(self):
+        subdiv_6_bank_holidays = Austria(subdiv="6", categories=BANK)
+        self.assertHolidayName("Hl. Josef", subdiv_6_bank_holidays, "2024-03-19")
+
+    def test_subdiv_7_bank_holidays(self):
+        subdiv_7_bank_holidays = Austria(subdiv="7", categories=BANK)
+        self.assertHolidayName("Hl. Josef", subdiv_7_bank_holidays, "2024-03-19")
+
+    def test_subdiv_8_bank_holidays(self):
+        subdiv_8_bank_holidays = Austria(subdiv="8", categories=BANK)
+        self.assertHolidayName("Hl. Josef", subdiv_8_bank_holidays, "2024-03-19")
+
+    def test_subdiv_9_bank_holidays(self):
+        subdiv_9_bank_holidays = Austria(subdiv="9", categories=BANK)
+        self.assertHolidayName("Hl. Leopold", subdiv_9_bank_holidays, "2024-11-15")

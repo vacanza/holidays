@@ -153,17 +153,17 @@ class TestPortugal(CommonCountryTests, TestCase):
         holidays = Portugal(categories=OPTIONAL, years=range(2017, 2020))
         self.assertHoliday(
             holidays,
-            "2017-02-27",
+            "2017-02-28",
             "2017-06-13",
             "2017-12-24",
             "2017-12-26",
             "2017-12-31",
-            "2018-02-12",
+            "2018-02-13",
             "2018-06-13",
             "2018-12-24",
             "2018-12-26",
             "2018-12-31",
-            "2019-03-04",
+            "2019-03-05",
             "2019-06-13",
             "2019-12-24",
             "2019-12-26",
@@ -243,7 +243,7 @@ class TestPortugal(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2018-01-01", "Ano Novo"),
-            ("2018-02-12", "Carnaval"),
+            ("2018-02-13", "Carnaval"),
             ("2018-03-30", "Sexta-feira Santa"),
             ("2018-04-01", "Páscoa"),
             ("2018-04-25", "Dia da Liberdade"),
@@ -266,7 +266,7 @@ class TestPortugal(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2018-01-01", "New Year's Day"),
-            ("2018-02-12", "Carnival"),
+            ("2018-02-13", "Carnival"),
             ("2018-03-30", "Good Friday"),
             ("2018-04-01", "Easter Sunday"),
             ("2018-04-25", "Freedom Day"),
@@ -289,7 +289,7 @@ class TestPortugal(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "Новий рік"),
-            ("2022-02-28", "Карнавал"),
+            ("2022-03-01", "Карнавал"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
             ("2022-04-25", "День Свободи"),
