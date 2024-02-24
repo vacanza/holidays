@@ -25,6 +25,10 @@ PROJECT_DIR = Path(__file__).parent.parent
 REPOSITORY_NAME = "vacanza/python-holidays"
 
 
+def capitalize(word):
+    return word.capitalize() if word.isupper() else f"{word[0].upper()}{word[1:]}"
+
+
 class AuthorsGenerator:
     """
     Generates authors based on the commits metadata.
@@ -47,7 +51,7 @@ class AuthorsGenerator:
                 tokens = name.split()
                 # Capitalize first name and last name.
                 for idx in (0, -1):
-                    tokens[idx] = tokens[idx].capitalize()
+                    tokens[idx] = capitalize(tokens[idx])
                 authors.add(" ".join(tokens))
 
         with open(PROJECT_DIR / OUTPUT_FILENAME, "w") as output_file:
