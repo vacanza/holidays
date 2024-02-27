@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Python Holidays 0.44\n"
 "POT-Creation-Date: 2023-02-15 14:15-0800\n"
-"PO-Revision-Date: 2024-01-25 20:53+0200\n"
+"PO-Revision-Date: 2024-02-27 14:49+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -14,51 +14,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#. Ethiopian New Year.
-msgid "አዲስ ዓመት እንቁጣጣሽ"
-msgstr "Ethiopian New Year's Day"
+#. %s (estimated).
+#, c-format
+msgid "%s (ግምት)"
+msgstr "%s (estimated)"
 
-#. Finding of True Cross.
-msgid "መስቀል"
-msgstr "Finding of True Cross"
-
-#. Orthodox Christmas Day.
+#. Christmas Day.
 msgid "ገና"
-msgstr "Orthodox Christmas Day"
+msgstr "Christmas Day"
 
-#. Orthodox Epiphany.
+#. Epiphany.
 msgid "ጥምቀት"
-msgstr "Orthodox Epiphany Day"
-
-#. Orthodox Good Friday.
-msgid "ስቅለት"
-msgstr "Orthodox Good Friday"
-
-#. Orthodox Easter Sunday.
-msgid "ፋሲካ"
-msgstr "Orthodox Easter Sunday"
+msgstr "Epiphany Day"
 
 #. Adwa Victory Day.
 msgid "አድዋ"
 msgstr "Adwa Victory Day"
 
-#. Labor Day.
-msgid "የሰራተኞች ቀን"
-msgstr "Labor Day"
+#. Good Friday.
+msgid "ስቅለት"
+msgstr "Good Friday"
 
-#. Patriots Day.
+#. Easter Sunday.
+msgid "ፋሲካ"
+msgstr "Easter Sunday"
+
+#. Workers' Day.
+msgid "የሰራተኞች ቀን"
+msgstr "Workers' Day"
+
+#. Patriots' Day.
 msgid "የአርበኞች ቀን"
-msgstr "Patriots Day"
+msgstr "Patriots' Day"
 
 #. Downfall of Dergue Regime Day.
 msgid "ደርግ የወደቀበት ቀን"
 msgstr "Downfall of Dergue Regime Day"
 
-#. Downfall of King Haile Selassie.
-msgid "ደርግ የመጣበት ቀን"
-msgstr "Downfall of King Haile Selassie Day"
+#. Ethiopian New Year.
+msgid "እንቁጣጣሽ"
+msgstr "Ethiopian New Year"
+
+#. Finding of True Cross.
+msgid "መስቀል"
+msgstr "Finding of True Cross"
+
+#. Revolution Day.
+msgid "የአብዮት ቀን"
+msgstr "Revolution Day"
+
+#. October Revolution Day.
+msgid "የጥቅምት አብዮት ቀን"
+msgstr "October Revolution Day"
 
 #. Eid al-Fitr.
 msgid "ኢድ አልፈጥር"
@@ -71,8 +80,3 @@ msgstr "Eid al-Adha"
 #. Prophet's Birthday.
 msgid "መውሊድ"
 msgstr "Prophet's Birthday"
-
-#. %s (estimated).
-#, c-format
-msgid "%s (ግምት)"
-msgstr "%s (estimated)"

@@ -1,12 +1,12 @@
-# Ethiopia holidays ar localization (PoC).
+# Ethiopia holidays ar localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.26\n"
-"POT-Creation-Date: 2023-05-20 18:48-0700\n"
-"PO-Revision-Date: 2023-05-20 18:51-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Project-Id-Version: Python Holidays 0.44\n"
+"POT-Creation-Date: 2024-02-27 14:42+0200\n"
+"PO-Revision-Date: 2024-02-27 14:51+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -14,46 +14,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
 msgstr "(تقدير) %s"
 
-#. Ethiopian New Year.
-msgid "አዲስ ዓመት እንቁጣጣሽ"
-msgstr "السنة الإثيوبية الجديدة"
-
-#. Finding of True Cross.
-msgid "መስቀል"
-msgstr "العثور على الصليب الحقيقي"
-
-#. Orthodox Christmas Day.
+#. Christmas Day.
 msgid "ገና"
 msgstr "عيد الميلاد"
 
-#. Orthodox Epiphany.
+#. Epiphany.
 msgid "ጥምቀት"
 msgstr "عيد الغطاس"
-
-#. Orthodox Good Friday.
-msgid "ስቅለት"
-msgstr "جمعة جيدة"
-
-#. Orthodox Easter Sunday.
-msgid "ፋሲካ"
-msgstr "عيد الفصح"
 
 #. Adwa Victory Day.
 msgid "አድዋ"
 msgstr "العدوة"
 
-#. Labor Day.
+#. Good Friday.
+msgid "ስቅለት"
+msgstr "جمعة جيدة"
+
+#. Easter Sunday.
+msgid "ፋሲካ"
+msgstr "عيد الفصح"
+
+#. Workers' Day.
 msgid "የሰራተኞች ቀን"
 msgstr "يوم العمال"
 
-#. Patriots Day.
+#. Patriots' Day.
 msgid "የአርበኞች ቀን"
 msgstr "يوم الوطنيين"
 
@@ -61,9 +53,21 @@ msgstr "يوم الوطنيين"
 msgid "ደርግ የወደቀበት ቀን"
 msgstr "يوم سقوط ديرج"
 
-#. Downfall of King Haile Selassie.
-msgid "ደርግ የመጣበት ቀን"
-msgstr "اليوم الذي جاء فيه ديرج"
+#. Ethiopian New Year.
+msgid "እንቁጣጣሽ"
+msgstr "السنة الإثيوبية الجديدة"
+
+#. Finding of True Cross.
+msgid "መስቀል"
+msgstr "مسكل"
+
+#. Revolution Day.
+msgid "የአብዮት ቀን"
+msgstr "يوم الثورة"
+
+#. October Revolution Day.
+msgid "የጥቅምት አብዮት ቀን"
+msgstr "يوم ثورة أكتوبر"
 
 #. Eid al-Fitr.
 msgid "ኢድ አልፈጥር"
