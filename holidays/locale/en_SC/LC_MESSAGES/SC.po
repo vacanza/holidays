@@ -1,0 +1,106 @@
+# Seychelles holidays.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.45\n"
+"POT-Creation-Date: 2024-03-01 11:00+0700\n"
+"PO-Revision-Date: 2024-03-05 16:34+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_SC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. New Year Holiday.
+msgid "New Year Holiday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Saturday.
+msgid "Easter Saturday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. The Fete Dieu.
+msgid "The Fete Dieu"
+msgstr ""
+
+#. Liberation Day.
+msgid "Liberation Day"
+msgstr ""
+
+#. National Day.
+msgid "National Day"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Independence (National) Day.
+msgid "Independence (National) Day"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr ""
+
+#. All Saints Day.
+msgid "All Saints Day"
+msgstr ""
+
+#. The Feast of the Immaculate Conception.
+msgid "The Feast of the Immaculate Conception"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Bridge Public Holiday.
+msgid "Bridge Public Holiday"
+msgstr ""
+
+#. Presidential Election Day.
+msgid "Presidential Election Day"
+msgstr ""
+
+#. Parliamentary Election Day.
+msgid "Parliamentary Election Day"
+msgstr ""
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr ""
+
+#. Funeral of the Former President France Albert René.
+msgid "Funeral of the Former President France Albert René"
+msgstr ""
