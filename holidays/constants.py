@@ -44,6 +44,7 @@ HALF_DAY = "half_day"
 OPTIONAL = "optional"
 PUBLIC = "public"
 SCHOOL = "school"
+UNOFFICIAL = "unofficial"
 WORKDAY = "workday"
 
 CHINESE = "chinese"
