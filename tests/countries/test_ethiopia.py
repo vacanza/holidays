@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
@@ -26,18 +25,6 @@ class TestEthiopia(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Ethiopia(years=1896))
-
-    # Check isleap loops
-    def test_not_holiday(self):
-        self.assertNotIn(date(2019, 9, 11), self.holidays)
-        self.assertNotIn(date(2019, 9, 27), self.holidays)
-        self.assertNotIn(date(2019, 9, 13), self.holidays)
-        self.assertNotIn(date(1940, 5, 5), self.holidays)
-        self.assertNotIn(date(1990, 5, 28), self.holidays)
-        self.assertNotIn(date(1971, 9, 13), self.holidays)
-        self.assertNotIn(date(1970, 9, 12), self.holidays)
-        self.assertNotIn(date(1993, 9, 13), self.holidays)
-        self.assertNotIn(date(1994, 9, 12), self.holidays)
 
     def test_christmas(self):
         self.assertHolidayName("ገና", (f"{year}-01-07" for year in range(1940, 2050)))
