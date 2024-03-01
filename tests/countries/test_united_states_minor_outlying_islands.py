@@ -11,7 +11,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import NON_PUBLIC
+from holidays.constants import UNOFFICIAL
 from holidays.countries.united_states_minor_outlying_islands import HolidaysUM, UM, UMI
 from tests.common import CommonCountryTests
 
@@ -27,9 +27,9 @@ class TestUM(CommonCountryTests, TestCase):
     def test_common(self):
         self.assertIn("Christmas Day", self.holidays["2022-12-25"])
 
-    def test_non_public_holidays(self):
+    def test_unofficial_holidays(self):
         self.assertHolidays(
-            HolidaysUM(categories=NON_PUBLIC, years=2024),
+            HolidaysUM(categories=UNOFFICIAL, years=2024),
             ("2024-02-14", "Valentine's Day"),
             ("2024-03-17", "St. Patrick's Day"),
             ("2024-10-31", "Halloween"),

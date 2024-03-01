@@ -13,7 +13,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import NOV
-from holidays.constants import NON_PUBLIC
+from holidays.constants import UNOFFICIAL
 from holidays.countries.puerto_rico import HolidaysPR, PR, PRI
 from tests.common import CommonCountryTests
 
@@ -31,9 +31,9 @@ class TestPR(CommonCountryTests, TestCase):
         subdivision is specified."""
         self.assertIn("Discovery Day (observed)", self.holidays.get_list(date(2017, NOV, 20)))
 
-    def test_non_public_holidays(self):
+    def test_unofficial_holidays(self):
         self.assertHolidays(
-            HolidaysPR(categories=NON_PUBLIC, years=2024),
+            HolidaysPR(categories=UNOFFICIAL, years=2024),
             ("2024-02-14", "Valentine's Day"),
             ("2024-03-17", "St. Patrick's Day"),
             ("2024-10-31", "Halloween"),

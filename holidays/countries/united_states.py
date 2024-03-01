@@ -12,7 +12,7 @@
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import DEC
-from holidays.constants import NON_PUBLIC, PUBLIC
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -43,7 +43,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    supported_categories = (NON_PUBLIC, PUBLIC)
+    supported_categories = (PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",  # Alaska.
@@ -934,7 +934,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     def _populate_subdiv_wy_public_holidays(self):
         pass
 
-    def _populate_non_public_holidays(self):
+    def _populate_unofficial_holidays(self):
         # Very common celebrated cultural days, but no official observance.
         # Due to its nature, no in-lieus are observed.
 

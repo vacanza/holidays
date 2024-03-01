@@ -11,7 +11,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import NON_PUBLIC
+from holidays.constants import UNOFFICIAL
 from holidays.countries.united_states import UnitedStates, US, USA
 from tests.common import CommonCountryTests
 
@@ -1597,21 +1597,21 @@ class TestUS(CommonCountryTests, TestCase):
         )
         subdiv_us_territories = {"AS", "GU", "MP", "PR", "UM", "VI"}
         for subdiv in set(UnitedStates.subdivisions) - subdiv_us_territories:
-            self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1844, 1847)
+            self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), 1844, 1847)
             self.assertHolidayName(
                 name,
-                UnitedStates(categories=NON_PUBLIC),
+                UnitedStates(categories=UNOFFICIAL),
                 dt,
             )
         for subdiv in subdiv_us_territories:
-            self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), range(1865, 2050))
+            self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), range(1865, 2050))
 
     def test_valentines_day(self):
         name = "Valentine's Day"
-        self.assertNoHolidayName(name, UnitedStates(categories=NON_PUBLIC), 1846)
+        self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), 1846)
         self.assertHolidayName(
             name,
-            UnitedStates(categories=NON_PUBLIC),
+            UnitedStates(categories=UNOFFICIAL),
             (f"{year}-02-14" for year in range(1865, 2050)),
         )
 
@@ -1619,7 +1619,7 @@ class TestUS(CommonCountryTests, TestCase):
         name = "St. Patrick's Day"
         self.assertHolidayName(
             name,
-            UnitedStates(categories=NON_PUBLIC),
+            UnitedStates(categories=UNOFFICIAL),
             (f"{year}-03-17" for year in range(1865, 2050)),
         )
 
@@ -1627,7 +1627,7 @@ class TestUS(CommonCountryTests, TestCase):
         name = "Halloween"
         self.assertHolidayName(
             name,
-            UnitedStates(categories=NON_PUBLIC),
+            UnitedStates(categories=UNOFFICIAL),
             (f"{year}-10-31" for year in range(1865, 2050)),
         )
 
@@ -1635,7 +1635,7 @@ class TestUS(CommonCountryTests, TestCase):
         name = "Groundhog Day"
         self.assertHolidayName(
             name,
-            UnitedStates(categories=NON_PUBLIC),
+            UnitedStates(categories=UNOFFICIAL),
             (f"{year}-02-02" for year in range(1886, 2050)),
         )
 
