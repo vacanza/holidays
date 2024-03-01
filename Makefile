@@ -23,6 +23,7 @@ clean:
 	rm -rf .mypy_cache/*
 	rm -rf .pytest_cache/*
 	rm -rf docs/build/*
+	rm -rf docs/source/_autosummary/*
 
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
