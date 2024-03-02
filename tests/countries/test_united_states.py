@@ -1597,18 +1597,23 @@ class TestUS(CommonCountryTests, TestCase):
         )
         subdiv_us_territories = {"AS", "GU", "MP", "PR", "UM", "VI"}
         for subdiv in set(UnitedStates.subdivisions) - subdiv_us_territories:
-            self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), 1844, 1847)
+            self.assertNoHolidayName(
+                name, UnitedStates(subdiv=subdiv, categories=UNOFFICIAL, years=(1844, 1847))
+            )
             self.assertHolidayName(
                 name,
-                UnitedStates(categories=UNOFFICIAL),
+                UnitedStates(subdiv=subdiv, categories=UNOFFICIAL),
                 dt,
             )
         for subdiv in subdiv_us_territories:
-            self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), range(1865, 2050))
+            self.assertNoHolidayName(
+                name, UnitedStates(subdiv=subdiv, categories=UNOFFICIAL, years=range(1865, 2050))
+            )
 
     def test_valentines_day(self):
         name = "Valentine's Day"
-        self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL), 1846)
+        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, UnitedStates(categories=UNOFFICIAL, years=1846))
         self.assertHolidayName(
             name,
             UnitedStates(categories=UNOFFICIAL),
@@ -1617,6 +1622,7 @@ class TestUS(CommonCountryTests, TestCase):
 
     def test_st_patricks_day(self):
         name = "St. Patrick's Day"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             UnitedStates(categories=UNOFFICIAL),
@@ -1625,6 +1631,7 @@ class TestUS(CommonCountryTests, TestCase):
 
     def test_halloween(self):
         name = "Halloween"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             UnitedStates(categories=UNOFFICIAL),
@@ -1633,6 +1640,7 @@ class TestUS(CommonCountryTests, TestCase):
 
     def test_groundhog_day(self):
         name = "Groundhog Day"
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             UnitedStates(categories=UNOFFICIAL),
