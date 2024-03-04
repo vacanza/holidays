@@ -42,7 +42,7 @@ flexible as possible.
         :target: https://github.com/psf/black
         :alt: Code style
 
-    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=master&color=%2341B5BE&style=flat
+    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=%2341B5BE&style=flat
         :target: https://coveralls.io/r/vacanza/python-holidays
         :alt: Code coverage
 
@@ -60,8 +60,8 @@ flexible as possible.
         :target: https://github.com/vacanza/python-holidays/graphs/contributors
         :alt: GitHub contributors
 
-    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/beta?color=%2341BE4A&style=flat
-        :target: https://github.com/vacanza/python-holidays/commits/beta
+    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=%2341BE4A&style=flat
+        :target: https://github.com/vacanza/python-holidays/commits/dev
         :alt: GitHub last commit
 
 
@@ -74,14 +74,14 @@ The latest stable version can always be installed or updated via pip:
 
     $ pip install --upgrade holidays
 
-The latest development (beta) version can be installed directly from GitHub:
+The latest development (dev) version can be installed directly from GitHub:
 
 .. code-block:: shell
 
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/dev
 
-All new features are always first pushed to beta branch, then released on
-master branch upon official version upgrades.
+All new features are always first pushed to dev branch, then released on
+main branch upon official version upgrades.
 
 Documentation
 -------------
@@ -190,7 +190,7 @@ All other default values are highlighted with bold:
      - AS
      - Can also be loaded as country US, subdivision AS
      -
-     -
+     - UNOFFICIAL
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
@@ -455,7 +455,7 @@ All other default values are highlighted with bold:
      - GU
      - Can also be loaded as country US, subdivision GU
      -
-     -
+     - UNOFFICIAL
    * - Guatemala
      - GT
      -
@@ -665,7 +665,7 @@ All other default values are highlighted with bold:
      - MP
      - Can also be loaded as country US, subdivision MP
      -
-     -
+     - UNOFFICIAL
    * - North Macedonia
      - MK
      -
@@ -720,7 +720,7 @@ All other default values are highlighted with bold:
      - PR
      - Can also be loaded as country US, subdivision PR
      -
-     -
+     - UNOFFICIAL
    * - Romania
      - RO
      -
@@ -840,17 +840,17 @@ All other default values are highlighted with bold:
      - UM
      - Can also be loaded as country US, subdivision UM
      -
-     -
+     - UNOFFICIAL
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
      -
-     -
+     - UNOFFICIAL
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
      -
-     -
+     - UNOFFICIAL
    * - Uruguay
      - UY
      -
@@ -885,7 +885,7 @@ All other default values are highlighted with bold:
      - VI
      - Can also be loaded as country US, subdivision VI
      -
-     -
+     - UNOFFICIAL
    * - Zambia
      - ZM
      -

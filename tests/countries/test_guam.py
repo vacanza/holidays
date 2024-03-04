@@ -13,6 +13,7 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import MAR
+from holidays.constants import UNOFFICIAL
 from holidays.countries.guam import HolidaysGU, GU, GUM
 from tests.common import CommonCountryTests
 
@@ -29,3 +30,11 @@ class TestGU(CommonCountryTests, TestCase):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
         self.assertIn("Guam Discovery Day", self.holidays.get_list(date(2016, MAR, 7)))
+
+    def test_unofficial_holidays(self):
+        self.assertHolidays(
+            HolidaysGU(categories=UNOFFICIAL, years=2024),
+            ("2024-02-14", "Valentine's Day"),
+            ("2024-03-17", "St. Patrick's Day"),
+            ("2024-10-31", "Halloween"),
+        )
