@@ -38,14 +38,20 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Isra and Miraj.
-        self._add_isra_and_miraj_day(tr("ليلة المعراج"))
-
         # National Day.
         self._add_holiday_feb_25(tr("اليوم الوطني"))
 
         # Liberation Day.
         self._add_holiday_feb_26(tr("يوم التحرير"))
+
+        # Islamic New Year.
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
+
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("عيد المولد النبوي"))
+
+        # Isra and Miraj.
+        self._add_isra_and_miraj_day(tr("ليلة المعراج"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
@@ -61,12 +67,6 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Eid al-Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
-
-        # Islamic New Year.
-        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
-
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 
 class KW(Kuwait):
