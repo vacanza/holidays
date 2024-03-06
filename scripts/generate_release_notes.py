@@ -114,22 +114,20 @@ class ReleaseNotesGenerator:
     @property
     def sorted_pull_requests(self):
         def custom_order(pr):
-            pr = re.findall(r"^(.*) \(#\d+ .*\)$", pr)[0]
-
-            if re.findall(r"^(Introduce|Refactor)", pr) or re.findall(r"Add .* support", pr):
+            if re.findall(r"^(Introduce|Refactor)", pr[0]) or re.findall(r"Add .* support", pr[0]):
                 weight = 10
-            elif re.findall(r"^Add .* holidays$", pr):
+            elif re.findall(r"^Add .* holidays$", pr[0]):
                 weight = 20
-            elif re.findall(r"(^Localize|localization$)", pr):
+            elif re.findall(r"(^Localize|localization$)", pr[0]):
                 weight = 30
-            elif re.findall(r"^Fix", pr):
+            elif re.findall(r"^Fix", pr[0]):
                 weight = 40
-            elif re.findall(r"^(Change|Improve|Optimize|Update|Upgrade)", pr):
+            elif re.findall(r"^(Change|Improve|Optimize|Update|Upgrade)", pr[0]):
                 weight = 50
             else:
                 weight = 100
 
-            return (weight, pr)
+            return weight, pr
 
         return sorted(self.pull_requests.values(), key=custom_order)
 
@@ -158,7 +156,8 @@ class ReleaseNotesGenerator:
             contributors.remove(author)
         contributors = (f"@{c}" for c in [author] + sorted(contributors, key=str.lower))
         self.pull_requests[pull_request.number] = (
-            f"{pull_request.title} (#{pull_request.number} by " f"{', '.join(contributors)})"
+            pull_request.title,
+            f"#{pull_request.number} by " f"{', '.join(contributors)}",
         )
 
     def generate_release_notes(self):
@@ -246,7 +245,7 @@ class ReleaseNotesGenerator:
                     year=today.year,
                 )
             )
-            print("\n".join((f"- {pr}" for pr in self.sorted_pull_requests)))
+            print("\n".join((f"- {pr[0]} ({pr[1]})" for pr in self.sorted_pull_requests)))
 
         else:
             print(f"No changes since {self.latest_tag_name} release.")
