@@ -47,9 +47,9 @@ class TestReadme(TestCase):
         country_subdivisions_aliases = {}
         country_supported_languages = {}
         country_supported_categories = {}
-        subdivision_group_re = re.compile(".*: (.*)")
+        subdivision_group_re = re.compile("\w+: ([\s\w,*()]+)")
         subdivision_and_aliases_re = re.compile(r",(?![^()]*\))")
-        subdivision_aliases_re = re.compile(r"(.*)\s\((.*?)\)")
+        subdivision_aliases_re = re.compile(r"(.*?)\s\((.*?)\)")
 
         table_content = [
             line.strip()
