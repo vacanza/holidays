@@ -291,6 +291,7 @@ class IslamicHolidays:
         """
         Add Isra' and Mi'raj Day (27th day of 7th month).
 
+        The Prophet's Ascension.
         https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
         """
         return self._add_islamic_calendar_holiday(
