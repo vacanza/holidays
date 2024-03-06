@@ -118,7 +118,7 @@ class ReleaseNotesGenerator:
                 weight = 10
             elif re.findall(r"^Add .* holidays$", pr[0]):
                 weight = 20
-            elif re.findall(r"(^Localize|localization$)", pr[0]):
+            elif re.findall(r"(^Localize)|(localization$)", pr[0]):
                 weight = 30
             elif re.findall(r"^Fix", pr[0]):
                 weight = 40
@@ -157,7 +157,7 @@ class ReleaseNotesGenerator:
         contributors = (f"@{c}" for c in [author] + sorted(contributors, key=str.lower))
         self.pull_requests[pull_request.number] = (
             pull_request.title,
-            f"#{pull_request.number} by " f"{', '.join(contributors)}",
+            f"#{pull_request.number} by {', '.join(contributors)}",
         )
 
     def generate_release_notes(self):
