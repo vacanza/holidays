@@ -62,7 +62,15 @@ class EntityStub(HolidayBase):
 
 class CountryStub1(EntityStub, StaticHolidays):
     country = "CS1"
-    subdivisions = ("Subdiv 1", "Subdiv 2")
+    subdivisions = ("Subdiv 1", "Subdiv 2", "3")
+    subdivisions_aliases = {
+        "S1": "Subdiv 1",
+        "S2": "Subdiv 2",
+        "S3": "3",
+        "S_1": "Subdiv 1",
+        "S_2": "Subdiv 2",
+        "S_3": "3",
+    }
     supported_categories = (PUBLIC, SCHOOL)
 
     def __init__(self, *args, **kwargs) -> None:
@@ -148,8 +156,28 @@ class TestArgs(unittest.TestCase):
         self.assertIn("2012-01-01", hb)
         self.assertNotIn("2012-01-02", hb)
 
-    def test_subdiv(self):
+    def test_subdivision(self):
         self.assertEqual(CountryStub1(subdiv="Subdiv 1").subdiv, "Subdiv 1")
+        self.assertEqual(CountryStub1(subdiv=3).subdiv, "3")
+
+    def test_subdivisions_aliases(self):
+        subdivisions_aliases = {
+            "subdiv_1": ("S1", "S_1"),
+            "subdiv_2": ("S2", "S_2"),
+            "3": ("S3", "S_3"),
+        }
+        for subdiv, aliases in subdivisions_aliases.items():
+            for alias in aliases:
+                self.assertEqual(subdiv, CountryStub1(subdiv=alias)._normalized_subdiv)
+
+        self.assertEqual(
+            CountryStub1.get_subdivision_aliases(),
+            {
+                "Subdiv 1": ["S1", "S_1"],
+                "Subdiv 2": ["S2", "S_2"],
+                "3": ["S3", "S_3"],
+            },
+        )
 
     def test_years(self):
         hb = HolidayBase()

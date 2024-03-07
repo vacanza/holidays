@@ -42,7 +42,7 @@ flexible as possible.
         :target: https://github.com/psf/black
         :alt: Code style
 
-    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=master&color=%2341B5BE&style=flat
+    .. image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=%2341B5BE&style=flat
         :target: https://coveralls.io/r/vacanza/python-holidays
         :alt: Code coverage
 
@@ -60,8 +60,8 @@ flexible as possible.
         :target: https://github.com/vacanza/python-holidays/graphs/contributors
         :alt: GitHub contributors
 
-    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/beta?color=%2341BE4A&style=flat
-        :target: https://github.com/vacanza/python-holidays/commits/beta
+    .. image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=%2341BE4A&style=flat
+        :target: https://github.com/vacanza/python-holidays/commits/dev
         :alt: GitHub last commit
 
 
@@ -74,14 +74,14 @@ The latest stable version can always be installed or updated via pip:
 
     $ pip install --upgrade holidays
 
-The latest development (beta) version can be installed directly from GitHub:
+The latest development (dev) version can be installed directly from GitHub:
 
 .. code-block:: shell
 
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/dev
 
-All new features are always first pushed to beta branch, then released on
-master branch upon official version upgrades.
+All new features are always first pushed to dev branch, then released on
+main branch upon official version upgrades.
 
 Documentation
 -------------
@@ -142,10 +142,12 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 143 country codes. The standard way to refer to a country
+We currently support 144 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
-than one language for holiday names output.
+for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
+names or abbreviations as aliases for their subdivisions. These are defined in
+the (optional) ``subdivisions_aliases`` attribute.
+Some of the countries support more than one language for holiday names output.
 A default language is defined by ``default_language`` (optional) attribute
 for each entity and is used as a fallback when neither user specified
 language nor user locale language available. The default language code is
@@ -158,8 +160,9 @@ bank holidays, school holidays, additional (paid or non-paid) holidays, holidays
 public employees, religious holidays (valid only for these religions followers). A list of all
 categories supported by country is defined by ``supported_categories`` (optional) attribute.
 
-The following is a list of supported countries, their subdivisions, available languages and
-additional categories. All countries support **PUBLIC** holidays category by default.
+The following is a list of supported countries, their subdivisions followed by their
+aliases (if any) in brackets, available languages and additional holiday categories.
+All countries support **PUBLIC** holidays category by default.
 All other default values are highlighted with bold:
 
 
@@ -187,7 +190,7 @@ All other default values are highlighted with bold:
      - AS
      - Can also be loaded as country US, subdivision AS
      -
-     -
+     - UNOFFICIAL
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
@@ -220,7 +223,7 @@ All other default values are highlighted with bold:
      -
    * - Austria
      - AT
-     - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
+     - States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)
      - **de**, en_US, uk
      - BANK
    * - Azerbaijan
@@ -452,7 +455,7 @@ All other default values are highlighted with bold:
      - GU
      - Can also be loaded as country US, subdivision GU
      -
-     -
+     - UNOFFICIAL
    * - Guatemala
      - GT
      -
@@ -537,6 +540,11 @@ All other default values are highlighted with bold:
      - KE
      -
      -
+     -
+   * - Kuwait
+     - KW
+     -
+     - **ar**, en_US
      -
    * - Kyrgyzstan
      - KG
@@ -662,7 +670,7 @@ All other default values are highlighted with bold:
      - MP
      - Can also be loaded as country US, subdivision MP
      -
-     -
+     - UNOFFICIAL
    * - North Macedonia
      - MK
      -
@@ -717,7 +725,7 @@ All other default values are highlighted with bold:
      - PR
      - Can also be loaded as country US, subdivision PR
      -
-     -
+     - UNOFFICIAL
    * - Romania
      - RO
      -
@@ -837,17 +845,17 @@ All other default values are highlighted with bold:
      - UM
      - Can also be loaded as country US, subdivision UM
      -
-     -
+     - UNOFFICIAL
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
      -
-     -
+     - UNOFFICIAL
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
      -
-     -
+     - UNOFFICIAL
    * - Uruguay
      - UY
      -
@@ -882,7 +890,7 @@ All other default values are highlighted with bold:
      - VI
      - Can also be loaded as country US, subdivision VI
      -
-     -
+     - UNOFFICIAL
    * - Zambia
      - ZM
      -

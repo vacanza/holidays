@@ -45,9 +45,13 @@ class TestReadme(TestCase):
         country_default_languages = {}
         country_names = []
         country_subdivisions = {}
+        country_subdivisions_aliases = {}
         country_supported_languages = {}
         country_supported_categories = {}
-        subdivisions_re = re.compile(".*: (.*)")
+        subdivision_group_re = re.compile("\w+: ([\s\w,*()]+)")
+        subdivision_and_aliases_re = re.compile(r",(?![^()]*\))")
+        subdivision_aliases_re = re.compile(r"(.*?)\s\((.*?)\)")
+
         table_content = [
             line.strip()
             for line in re.findall(
@@ -68,26 +72,36 @@ class TestReadme(TestCase):
             if country_code:
                 country_alpha_2_codes.add(country_code)
 
-            # Subdivisions: 3rd column.
+            # Subdivisions and their aliases: 3rd column.
             country_subdivisions[country_code] = []
-            subdivisions = table_content[idx + 2].strip(" -")
-            if subdivisions:
-                for subdivision in subdivisions.split("."):
-                    subdivision_group = subdivision.split(";")[0]
+            country_subdivisions_aliases[country_code] = {}
+            subdivision_str = table_content[idx + 2].strip(" -")
+            if subdivision_str:
+                for subdivision_groups in subdivision_str.split("."):
+                    subdivision_aliases_group = subdivision_groups.split(";")[0].strip()
                     # Exclude empty subdivisions.
-                    if ":" not in subdivision_group:
+                    if ":" not in subdivision_aliases_group:
                         country_subdivisions[country_code] = []
                         continue
 
-                    # Combine all subdivision codes.
-                    country_subdivisions[country_code].extend(
-                        [
-                            subdivision_code.strip("* ")
-                            for subdivision_code in subdivisions_re.findall(subdivision_group)[
-                                0
-                            ].split(",")
-                        ]
-                    )
+                    # Combine all subdivision and their aliases.
+                    subdivision_aliases_group = subdivision_group_re.findall(
+                        subdivision_aliases_group
+                    )[0]
+                    for subdivision_aliases in subdivision_and_aliases_re.split(
+                        subdivision_aliases_group
+                    ):
+                        if "," in subdivision_aliases:  # Subdivision with aliases.
+                            subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
+                            subdivision = subdivision_aliases.group(1)
+                            aliases = subdivision_aliases.group(2).split(", ")
+                        else:
+                            aliases = []
+                            subdivision = subdivision_aliases
+                        subdivision = subdivision.strip(" *")
+
+                        country_subdivisions[country_code].append(subdivision)
+                        country_subdivisions_aliases[country_code][subdivision] = aliases
 
             # Supported Languages: 4th column.
             supported_languages = table_content[idx + 3].strip(" -")
@@ -167,6 +181,16 @@ class TestReadme(TestCase):
                     )
                 ),
             )
+
+            # Make sure country subdivisions aliases are shown correctly.
+            subdivision_aliases = instance.get_subdivision_aliases()
+            for subdivision in instance.subdivisions:
+                self.assertEqual(
+                    subdivision_aliases.get(subdivision, []),
+                    country_subdivisions_aliases[country_code][subdivision],
+                    f"Country '{country_name}' subdivisions '{subdivision}' aliases are not shown "
+                    "correctly in the table.\n",
+                )
 
             # Make sure supported languages are shown correctly.
             if country_code in localized_countries:

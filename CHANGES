@@ -1,3 +1,29 @@
+Version 0.44
+============
+
+Released March 4, 2024
+
+- Update Ethiopia holidays (#1704 by @KJhellico)
+- Update RELEASE.rst (#1698 by @arkid15r)
+- Update Ukrainian translations (proper apostrophe) (#1714 by @KJhellico)
+- Update make clean action: delete docs autosummary (#1711 by @arkid15r)
+- Update snapshots: Portugal holidays (#1709 by @PPsyrius)
+- Update test coverage to 100% (#1715 by @KJhellico)
+- Add AUTHORS file (#1700 by @arkid15r)
+- Add `UNOFFICIAL` category for the United States (#1669 by @PPsyrius)
+- Rename repository branches (#1699 by @arkid15r)
+
+Version 0.43
+============
+
+Released February 19, 2024
+
+- Introduce subdivisions aliases (#1662 by @sphh, @arkid15r)
+- Update Ireland holidays (#1687 by @KJhellico)
+- Update Portugal holidays: fix Carnival date (#1694 by @DgRosa)
+- Update Taiwan holidays (#1688 by @KJhellico)
+- Update Thailand holidays: add Bridge Public Holiday on Apr 12, 2024 (#1690 by @PPsyrius)
+
 Version 0.42
 ============
 

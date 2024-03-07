@@ -13,6 +13,7 @@
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import DEC
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -43,6 +44,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
+    supported_categories = (PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",  # Alaska.
@@ -169,6 +171,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         )
 
     def _populate_subdiv_holidays(self):
+        if PUBLIC not in self.categories:
+            return None
+
         # Martin Luther King Jr. Day
         if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
             self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
@@ -929,6 +934,43 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_subdiv_wy_public_holidays(self):
         pass
+
+    def _populate_unofficial_holidays(self):
+        # Very common celebrated cultural days, but no official observance.
+        # Due to its nature, no in-lieus are observed.
+
+        # Valentine's Day
+        # While the modern iteration of Valentine's Day has started in the UK in 1797,
+        # it wasn't until 1847 in the US that this started to be observed here.
+
+        if self._year >= 1847:
+            self._add_holiday_feb_14("Valentine's Day")
+
+        # St. Patrick's Day
+        # Started in Boston in 1737 for the US.
+
+        self._add_holiday_mar_17("St. Patrick's Day")
+
+        # Halloween
+        # Halloween began in the US sometime around the 19th century.
+
+        self._add_holiday_oct_31("Halloween")
+
+        # Continental US non-Public dates
+
+        if self.subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
+            # Groundhog Day
+            # First observed on Feb 2 in 1886 in Continental US + Hawaii.
+
+            if self._year >= 1886:
+                self._add_holiday_feb_2("Groundhog Day")
+
+            # Election Day
+            # May be duplicates for certain states which has this as their actual public holiday.
+            # The current US Presidential Election date pattern was codified in 1848 nationwide.
+
+            if self._year >= 1848 and self._year % 4 == 0:
+                self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
 
 
 class US(UnitedStates):

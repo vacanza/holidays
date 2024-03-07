@@ -10,6 +10,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import US
 
 
@@ -19,11 +20,16 @@ class HolidaysGU(US):
     # https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1
 
     country = "GU"
+    supported_categories = (PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "GU"
         super()._populate_public_holidays()
+
+    def _populate_unofficial_holidays(self) -> None:
+        self.subdiv = "GU"
+        super()._populate_unofficial_holidays()
 
 
 class GU(HolidaysGU):

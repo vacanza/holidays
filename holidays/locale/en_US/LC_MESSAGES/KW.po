@@ -1,0 +1,64 @@
+# Kuwait holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.44\n"
+"POT-Creation-Date: 2024-02-28 09:55-0800\n"
+"PO-Revision-Date: 2024-02-28 09:55-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+
+#. %s (estimated).
+#, c-format
+msgid "(تقدير) %s"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "رأس السنة الميلادية"
+msgstr "New Year's Day"
+
+#. Isra and Miraj.
+msgid "ليلة المعراج"
+msgstr "Isra and Miraj"
+
+#. National Day.
+msgid "اليوم الوطني"
+msgstr "National Day"
+
+#. Liberation Day.
+msgid "يوم التحرير"
+msgstr "Liberation Day"
+
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Fitr Holiday.
+msgid "عطلة عيد الفطر"
+msgstr "Eid al-Fitr Holiday"
+
+#. Arafat Day.
+msgid "يوم عرفة"
+msgstr "Arafat Day"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"
+
+#. Eid al-Adha Holiday.
+msgid "عطلة عيد الأضحى"
+msgstr "Eid al-Adha Holiday"
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"

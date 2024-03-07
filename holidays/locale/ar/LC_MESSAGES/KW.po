@@ -1,0 +1,64 @@
+# Kuwait holidays.
+# Authors: Jaemin Kim <zxc16199@gmail.com>, (c) 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.44\n"
+"POT-Creation-Date: 2024-02-28 09:55-0800\n"
+"PO-Revision-Date: 2024-02-28 09:55-0800\n"
+"Last-Translator: Jaemin Kim <zxc16199@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+
+#. %s (estimated).
+#, c-format
+msgid "(تقدير) %s"
+msgstr ""
+
+#. New Year's Day.
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Isra and Miraj.
+msgid "ليلة المعراج"
+msgstr ""
+
+#. National Day.
+msgid "اليوم الوطني"
+msgstr ""
+
+#. Liberation Day.
+msgid "يوم التحرير"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr ""
+
+#. Eid al-Fitr Holiday.
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. Arafat Day.
+msgid "يوم عرفة"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr ""
+
+#. Eid al-Adha Holiday.
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
+msgstr ""

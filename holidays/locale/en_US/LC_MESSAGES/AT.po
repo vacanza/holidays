@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.42\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
 "PO-Revision-Date: 2023-04-01 17:18+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -79,3 +79,27 @@ msgstr "Christmas Eve"
 #. New Year's Eve.
 msgid "Silvester"
 msgstr "New Year's Eve"
+
+#. St. Martin's Day.
+msgid "Hl. Martin"
+msgstr "St. Martin's Day"
+
+#. St. Joseph's Day.
+msgid "Hl. Josef"
+msgstr "St. Joseph's Day"
+
+#. 1920 Carinthian plebiscite.
+msgid "Tag der Volksabstimmung"
+msgstr "1920 Carinthian plebiscite"
+
+#. St. Leopold's Day.
+msgid "Hl. Leopold"
+msgstr "St. Leopold's Day"
+
+#. St. Florian's Day.
+msgid "Hl. Florian"
+msgstr "St. Florian's Day"
+
+#. St. Rupert's Day.
+msgid "Hl. Rupert"
+msgstr "St. Rupert's Day"

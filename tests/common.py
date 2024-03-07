@@ -333,6 +333,17 @@ class TestCase:
 class CommonTests(TestCase):
     """Common test cases for all entities."""
 
+    def test_subdivisions_aliases(self):
+        """Validate entity subdivisions aliases."""
+        if self.holidays.subdivisions_aliases:
+            subdivisions = set(self.holidays.subdivisions)
+            for alias, subdiv in self.holidays.subdivisions_aliases.items():
+                self.assertIn(
+                    subdiv,
+                    subdivisions,
+                    f"Invalid subdivision alias {alias}: subdivision {subdiv} does not exist.",
+                )
+
 
 class CommonCountryTests(CommonTests):
     """Common test cases for country entities."""

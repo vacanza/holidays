@@ -210,6 +210,9 @@ class HolidayBase(Dict[date, str]):
     """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
+    subdivisions_aliases: Dict[str, str] = {}
+    """Aliases for the ISO 3166-2 subdivision codes with the key as alias and
+    the value the ISO 3166-2 subdivision code."""
     years: Set[int]
     """The years calculated."""
     expand: bool
@@ -218,7 +221,7 @@ class HolidayBase(Dict[date, str]):
     observed: bool
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
-    """The subdiv requested."""
+    """The subdiv requested as ISO 3166-2 code or one of the aliases."""
     special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
@@ -263,8 +266,8 @@ class HolidayBase(Dict[date, str]):
             following Monday). This doesn't work for all countries.
 
         :param subdiv:
-            The subdivision (e.g. state or province); not implemented for all
-            countries (see documentation).
+            The subdivision (e.g. state or province) as a ISO 3166-2 code
+            or its alias; not implemented for all countries (see documentation).
 
         :param prov:
             *deprecated* use subdiv instead.
@@ -305,10 +308,10 @@ class HolidayBase(Dict[date, str]):
             if isinstance(subdiv, int):
                 subdiv = str(subdiv)
 
+            subdivisions_aliases = tuple(sorted(self.subdivisions_aliases))
             # Unsupported subdivisions.
-            if (
-                not isinstance(self, HolidaySum)
-                and subdiv not in self.subdivisions + self._deprecated_subdivisions
+            if not isinstance(self, HolidaySum) and subdiv not in (
+                self.subdivisions + subdivisions_aliases + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
@@ -327,7 +330,9 @@ class HolidayBase(Dict[date, str]):
                 warnings.warn(
                     "This subdivision is deprecated and will be removed after "
                     "Dec, 1 2023. The list of supported subdivisions: "
-                    f"{', '.join(sorted(self.subdivisions))}.",
+                    f"{', '.join(sorted(self.subdivisions))}; "
+                    "the list of supported subdivisions aliases: "
+                    f"{', '.join(subdivisions_aliases)}.",
                     DeprecationWarning,
                 )
 
@@ -658,18 +663,31 @@ class HolidayBase(Dict[date, str]):
 
     @cached_property
     def _normalized_subdiv(self):
-        return self.subdiv.translate(
-            str.maketrans(
-                {
-                    "-": "_",
-                    " ": "_",
-                }
+        return (
+            self.subdivisions_aliases.get(self.subdiv, self.subdiv)
+            .translate(
+                str.maketrans(
+                    {
+                        "-": "_",
+                        " ": "_",
+                    }
+                )
             )
-        ).lower()
+            .lower()
+        )
 
     @cached_property
     def _sorted_categories(self):
         return sorted(self.categories)
+
+    @classmethod
+    def get_subdivision_aliases(cls) -> Dict[str, List]:
+        """Get subdivision aliases."""
+        subdivision_aliases: Dict[str, List[str]] = {s: [] for s in cls.subdivisions}
+        for alias, subdivision in cls.subdivisions_aliases.items():
+            subdivision_aliases[subdivision].append(alias)
+
+        return subdivision_aliases
 
     def _is_leap_year(self) -> bool:
         """
