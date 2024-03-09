@@ -13,5 +13,4 @@ hijridate
 # Deployment.
 build
 gitpython
-pip
 pygithub
