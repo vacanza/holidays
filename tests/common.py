@@ -20,7 +20,7 @@ from dateutil.parser import parse
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
 
-PYTHON_LATEST_SUPPORTED_VERSION = (3, 11)
+PYTHON_LATEST_SUPPORTED_VERSION = (3, 12)
 PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
 
 

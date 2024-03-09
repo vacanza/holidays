@@ -4,8 +4,7 @@ ruff
 tox
 
 # Localization.
-chameleon
-lingua
+lingva
 
 # Holidays pre-calculation.
 convertdate
@@ -14,5 +13,5 @@ hijridate
 # Deployment.
 build
 gitpython
-pip>=19.2.3
+pip
 pygithub
