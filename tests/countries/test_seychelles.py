@@ -18,8 +18,7 @@ from tests.common import CommonCountryTests
 class TestSeychelles(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1994, 2050)
-        super().setUpClass(Seychelles, years=years, years_non_observed=years)
+        super().setUpClass(Seychelles)
 
     def test_country_aliases(self):
         self.assertAliases(Seychelles, SC, SYC)

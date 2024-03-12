@@ -60,20 +60,20 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day_two(tr("New Year Holiday")))
 
         # Good Friday.
-        self._add_observed(self._add_good_friday(tr("Good Friday")))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Saturday.
-        self._add_observed(self._add_holy_saturday(tr("Easter Saturday")))
+        self._add_holy_saturday(tr("Easter Saturday"))
 
         if self._year >= 2017:
             # Easter Monday.
-            self._add_observed(self._add_easter_monday(tr("Easter Monday")))
+            self._add_easter_monday(tr("Easter Monday"))
 
         # Labour Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # The Fete Dieu.
-        self._add_observed(self._add_corpus_christi_day(tr("The Fete Dieu")))
+        self._add_corpus_christi_day(tr("The Fete Dieu"))
 
         if self._year <= 2016:
             # Liberation Day.

@@ -79,7 +79,7 @@ msgstr "All Saints Day"
 
 #. The Feast of the Immaculate Conception.
 msgid "The Feast of the Immaculate Conception"
-msgstr "The Feast of the Immaculate Conception"
+msgstr "Immaculate Conception"
 
 #. Christmas Day.
 msgid "Christmas Day"
