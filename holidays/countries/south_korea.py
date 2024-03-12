@@ -198,7 +198,7 @@ class SouthKorea(
 
         if 1950 <= self._year <= 1975:
             # United Nations Day.
-            self._add_holiday_oct_24(tr("국제연합일"))
+            self._add_united_nations_day(tr("국제연합일"))
 
         # Chuseok.
         name = tr("추석")
