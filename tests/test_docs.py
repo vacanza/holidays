@@ -90,7 +90,7 @@ class TestReadme(TestCase):
                     for subdivision_aliases in subdivision_and_aliases_re.split(
                         subdivision_aliases_group
                     ):
-                        if "," in subdivision_aliases:  # Subdivision with aliases.
+                        if "(" in subdivision_aliases:  # Subdivision with aliases.
                             subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
                             subdivision = subdivision_aliases.group(1)
                             aliases = subdivision_aliases.group(2).split(", ")

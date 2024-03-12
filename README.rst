@@ -218,9 +218,9 @@ All other default values are highlighted with bold:
      -
    * - Australia
      - AU
-     - States and territories: **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
+     - States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)
      -
-     -
+     - BANK, HALF_DAY
    * - Austria
      - AT
      - States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)
