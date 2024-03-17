@@ -104,6 +104,22 @@ class ObservedHolidayBase(HolidayBase):
     def _is_observed(self, *args, **kwargs) -> bool:
         return self._observed_since is None or self._year >= self._observed_since
 
+    def get_next_workday(self, dt: date, delta: int = +1) -> date:
+        if not hasattr(self, "_year"):
+            self.clear()
+            self._populate(dt.year)
+        if dt.year != self._year:
+            self._populate(dt.year)
+            self.observed = self.observed
+            self._year = dt.year
+        dt_work = dt + td(days=delta)
+        while dt_work.year == self._year:
+            if dt_work in self or (self._is_weekend(dt_work) and (dt_work not in self.workdayofweekend)):  # type: ignore[operator]
+                dt_work += td(days=delta)
+            else:
+                return dt_work
+        return dt_work
+    
     def _get_next_workday(self, dt: date, delta: int = +1) -> date:
         dt_work = dt + td(days=delta)
         while dt_work.year == self._year:

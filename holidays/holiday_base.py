@@ -227,6 +227,7 @@ class HolidayBase(Dict[date, str]):
     _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
+    workdayofweekend: Dict[date, str]
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
     default_category: str = PUBLIC
@@ -287,7 +288,7 @@ class HolidayBase(Dict[date, str]):
             A :class:`HolidayBase` object matching the **country**.
         """
         super().__init__()
-
+        self.workdayofweekend={}
         # Categories validation.
         if self.default_category and self.default_category not in self.supported_categories:
             raise ValueError("The default category must be listed in supported categories.")
@@ -708,6 +709,20 @@ class HolidayBase(Dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
+    def _add_workdayofweekend(self, name: str, *args) -> Optional[date]:
+        """Add a holiday."""
+        if not args:
+            raise TypeError("Incorrect number of arguments.")
+
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+
+        if dt.year != self._year:
+            return None
+
+        self.workdayofweekend[dt] = self.tr(name)
+        return dt
+
     def _add_special_holidays(self, mapping_names, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:
@@ -730,6 +745,14 @@ class HolidayBase(Dict[date, str]):
                         ).strftime(self.tr(self.substituted_date_format)),
                         to_month,
                         to_day,
+                    )
+                    self._add_workdayofweekend(
+                        self.tr(self.substituted_label)
+                        % date(
+                            optional[0] if optional else self._year, from_month, from_day
+                        ).strftime(self.tr(self.substituted_date_format)),
+                        from_month,
+                        from_day,
                     )
 
     def _check_weekday(self, weekday: int, *args) -> bool:
