@@ -34,7 +34,10 @@ repos:
     rev: v1.9.0
     hooks:
       - id: mypy
-        additional_dependencies: [types-docutils, types-polib, types-python-dateutil]
+        additional_dependencies:
+          - types-docutils
+          - types-polib
+          - types-python-dateutil
         args:
           - --ignore-missing-imports
           - --implicit-optional
