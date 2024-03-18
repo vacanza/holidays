@@ -18,11 +18,11 @@ jobs:
 
       - uses: actions/setup-python@v5.0.0
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - uses: browniebroke/pre-commit-autoupdate-action@v1.0.0
 
-      - uses: peter-evans/create-pull-request@v6.0.1
+      - uses: peter-evans/create-pull-request@v6.0.2
         with:
           base: dev
           body: Update pre-commit hooks to their latest versions.

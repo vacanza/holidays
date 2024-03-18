@@ -23,8 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5.0.0
         with:
-          python-version: '3.11'
-
+          python-version: '3.12'
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
 
@@ -89,7 +88,7 @@ jobs:
         with:
           cache: pip
           cache-dependency-path: requirements/runtime.txt
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
