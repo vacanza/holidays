@@ -1,3 +1,17 @@
+Version 0.45
+============
+
+Released March 18, 2024
+
+- Add Python 3.12 support (#1721 by @arkid15r)
+- Add Kuwait holidays (#1707 by @arkid15r)
+- Add Seychelles holidays (#1728 by @PPsyrius)
+- Fix SonarCloud security hotspots (#1718 by @arkid15r)
+- Fix SonarCloud security hotspots (attempt #2) (#1720 by @arkid15r)
+- Fix SonarCloud security hotspots (attempt #3) (#1723 by @arkid15r)
+- Update Mexico holidays (#1722 by @KJhellico)
+- Update pre-commit config (#1732 by @KJhellico)
+
 Version 0.44
 ============
 
