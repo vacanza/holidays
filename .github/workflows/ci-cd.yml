@@ -116,8 +116,8 @@ jobs:
         with:
           parallel-finished: true
 
-  package-test:
-    name: Package test on ${{ matrix.os }}
+  test-build:
+    name: Test build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     needs: build
     strategy:
@@ -145,16 +145,15 @@ jobs:
           name: dist
           path: dist
 
-      - name: Install package and dependencies
+      - name: Run tests
         shell: bash
         run: |
-          mv holidays _holidays
-          PACKAGENAME=`ls dist/*.whl`
-          python -m pip install $PACKAGENAME
+          rm -rf holidays
           python -m pip install --upgrade --requirement requirements/tests.txt
-
-      - name: Run tests
-        run: |
+          python -m pip install `ls dist/*.whl`
+          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          python -m pip uninstall -y holidays python-dateutil six
+          python -m pip install `ls dist/*.tar.gz`
           pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
   publish-pypi-main:
@@ -165,7 +164,7 @@ jobs:
       startsWith(github.event.ref, 'refs/tags/v')
     environment: main
     needs:
-      - package-test
+      - test-build
     permissions:
       id-token: write
     runs-on: ubuntu-latest
