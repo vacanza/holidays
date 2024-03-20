@@ -177,10 +177,7 @@ class TestListLocalizedEntities(unittest.TestCase):
             )
 
             if expected_languages:
-                self.assertTrue(
-                    isinstance(expected_languages, list),
-                    entity_code,
-                )
+                self.assertIsInstance(expected_languages, list, entity_code)
                 self.assertIn(
                     entity.default_language,
                     expected_languages,
@@ -212,7 +209,7 @@ class TestListSupportedEntities(unittest.TestCase):
 
         us_subdivisions = supported_countries["US"]
         self.assertIn("CA", us_subdivisions)
-        self.assertTrue(isinstance(us_subdivisions, list))
+        self.assertIsInstance(us_subdivisions, list)
 
         countries_files = [
             path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
@@ -229,7 +226,7 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIn("NYSE", supported_financial)
 
         nyse = supported_financial["NYSE"]
-        self.assertTrue(isinstance(nyse, list))
+        self.assertIsInstance(nyse, list)
 
         financial_files = [
             path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"

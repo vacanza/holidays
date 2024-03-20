@@ -41,9 +41,9 @@ class TestEntityLoader(TestCase):
                 self.assertIsNotNone(loader_cls, entity)
                 self.assertIsNotNone(module_cls, entity)
                 self.assertEqual(countries_cls, module_cls)
-                self.assertTrue(isinstance(loader_cls, registry.EntityLoader))
-                self.assertTrue(isinstance(loader_cls(), countries_cls))
-                self.assertTrue(isinstance(loader_cls(), module_cls))
+                self.assertIsInstance(loader_cls, registry.EntityLoader)
+                self.assertIsInstance(loader_cls(), countries_cls)
+                self.assertIsInstance(loader_cls(), module_cls)
 
                 loader_entities.add(loader_cls.__name__)
 
@@ -82,9 +82,9 @@ class TestEntityLoader(TestCase):
                 self.assertIsNotNone(loader_cls, entity)
                 self.assertIsNotNone(module_cls, entity)
                 self.assertEqual(financial_cls, module_cls)
-                self.assertTrue(isinstance(loader_cls, registry.EntityLoader))
-                self.assertTrue(isinstance(loader_cls(), financial_cls))
-                self.assertTrue(isinstance(loader_cls(), module_cls))
+                self.assertIsInstance(loader_cls, registry.EntityLoader)
+                self.assertIsInstance(loader_cls(), financial_cls)
+                self.assertIsInstance(loader_cls(), module_cls)
 
                 loader_entities.add(loader_cls.__name__)
 
@@ -115,7 +115,7 @@ class TestEntityLoader(TestCase):
             return SubClass()
 
         for cls in (holidays.UnitedStates, holidays.US, holidays.USA):
-            self.assertTrue(isinstance(cls, holidays.registry.EntityLoader))
+            self.assertIsInstance(cls, holidays.registry.EntityLoader)
             with self.assertRaises(TypeError):
                 create_instance(cls)
 
@@ -124,4 +124,4 @@ class TestEntityLoader(TestCase):
             holidays.countries.US,
             holidays.countries.USA,
         ):
-            self.assertTrue(isinstance(create_instance(cls), holidays.countries.UnitedStates))
+            self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
