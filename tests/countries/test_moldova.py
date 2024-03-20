@@ -27,9 +27,9 @@ class TestMoldova(CommonCountryTests, TestCase):
         self.assertNoHolidays(Moldova(years=1990))
 
     def test_christmas(self):
-        name_old1 = "Naşterea lui Iisus Hristos (Crăciunul)"
-        name_old2 = "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
-        name_new = "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
+        name_old1 = "Nașterea lui Iisus Hristos (Crăciunul)"
+        name_old2 = "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"
+        name_new = "Nașterea lui Iisus Hristos (Crăciunul pe stil nou)"
         self.assertHolidayName(name_old1, (f"{year}-01-07" for year in range(1991, 2014)))
         self.assertNoHolidayName(name_old1, Moldova(years=2014))
         self.assertHolidayName(name_old2, (f"{year}-01-07" for year in range(2014, 2031)))
@@ -87,22 +87,22 @@ class TestMoldova(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Anul Nou"),
-            ("2022-01-07", "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
-            ("2022-01-08", "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
+            ("2022-01-07", "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
+            ("2022-01-08", "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
             ("2022-03-08", "Ziua internatională a femeii"),
-            ("2022-04-24", "Paştele"),
-            ("2022-04-25", "Paştele"),
+            ("2022-04-24", "Paștele"),
+            ("2022-04-25", "Paștele"),
             ("2022-05-01", "Ziua internaţională a solidarităţii oamenilor muncii"),
-            ("2022-05-02", "Paştele blajinilor"),
+            ("2022-05-02", "Paștele blajinilor"),
             (
                 "2022-05-09",
-                "Ziua Europei; Ziua Victoriei şi a comemorării eroilor "
+                "Ziua Europei; Ziua Victoriei și a comemorării eroilor "
                 "căzuţi pentru Independenţa Patriei",
             ),
             ("2022-06-01", "Ziua Ocrotirii Copilului"),
             ("2022-08-27", "Ziua independenţei Republicii Moldova"),
             ("2022-08-31", "Limba noastră"),
-            ("2022-12-25", "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"),
+            ("2022-12-25", "Nașterea lui Iisus Hristos (Crăciunul pe stil nou)"),
         )
 
     def test_l10n_en_us(self):
