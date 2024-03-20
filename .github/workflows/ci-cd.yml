@@ -116,6 +116,46 @@ jobs:
         with:
           parallel-finished: true
 
+  test-build:
+    name: Test build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs: build
+    strategy:
+      matrix:
+        os:
+          - macOS-latest
+          - ubuntu-latest
+          - windows-latest
+    steps:
+      - name: Check out Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.0.0
+        with:
+          cache: pip
+          cache-dependency-path: |
+            requirements/runtime.txt
+            requirements/tests.txt
+          python-version: '3.12'
+
+      - name: Get package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Run tests
+        shell: bash
+        run: |
+          rm -rf holidays
+          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install `ls dist/*.whl`
+          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          python -m pip uninstall -y holidays python-dateutil six
+          python -m pip install `ls dist/*.tar.gz`
+          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+
   publish-pypi-main:
     name: Publish to PyPI
     if: |
@@ -124,7 +164,7 @@ jobs:
       startsWith(github.event.ref, 'refs/tags/v')
     environment: main
     needs:
-      - build
+      - test-build
     permissions:
       id-token: write
     runs-on: ubuntu-latest
