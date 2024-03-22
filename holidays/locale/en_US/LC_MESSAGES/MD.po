@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.46\n"
 "POT-Creation-Date: 2023-03-22 21:58+0200\n"
-"PO-Revision-Date: 2024-01-05 12:40+0200\n"
+"PO-Revision-Date: 2024-03-20 21:12+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -21,11 +21,11 @@ msgid "Anul Nou"
 msgstr "New Year's Day"
 
 #. Christmas Day (by old style).
-msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"
 msgstr "Christmas Day (by old style)"
 
 #. Christmas Day.
-msgid "Naşterea lui Iisus Hristos (Crăciunul)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul)"
 msgstr "Christmas Day"
 
 #. International Women's Day.
@@ -33,11 +33,11 @@ msgid "Ziua internatională a femeii"
 msgstr "International Women's Day"
 
 #. Easter.
-msgid "Paştele"
+msgid "Paștele"
 msgstr "Easter"
 
 #. Day of Rejoicing.
-msgid "Paştele blajinilor"
+msgid "Paștele blajinilor"
 msgstr "Day of Rejoicing"
 
 #. International Workers' Solidarity Day.
@@ -47,7 +47,7 @@ msgstr "International Workers' Solidarity Day"
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
 msgid ""
-"Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei"
+"Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr ""
 "Victory Day and Commemoration of the heroes fallen for Independence of "
 "Fatherland"
@@ -69,5 +69,5 @@ msgid "Limba noastră"
 msgstr "National Language Day"
 
 #. Christmas Day (by new style).
-msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr "Christmas Day (by new style)"
