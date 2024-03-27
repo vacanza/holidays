@@ -155,13 +155,14 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     def _populate_subdiv_sct_public_holidays(self):
         # New Year's Day
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        jan_1 = self._add_new_years_day("New Year's Day")
 
         # New Year Holiday
         self._add_observed(
             self._add_new_years_day_two("New Year Holiday"),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
+        self._add_observed(jan_1)
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")

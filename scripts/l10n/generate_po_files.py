@@ -17,7 +17,7 @@ import inspect
 import sys
 from pathlib import Path
 
-from lingua.extract import main as create_pot_file
+from lingva.extract import main as create_pot_file
 from polib import pofile
 
 

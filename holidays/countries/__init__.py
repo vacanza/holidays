@@ -127,6 +127,7 @@ from .russia import Russia, RU, RUS
 from .san_marino import SanMarino, SM, SMR
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
+from .seychelles import Seychelles, SC, SYC
 from .singapore import Singapore, SG, SGP
 from .slovakia import Slovakia, SK, SVK
 from .slovenia import Slovenia, SI, SVN
