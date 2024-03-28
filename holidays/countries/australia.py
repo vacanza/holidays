@@ -16,11 +16,11 @@ from holidays.constants import BANK, HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
     SUN_TO_NEXT_MON,
     SUN_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
-    MON_TO_NEXT_TUE,
 )
 
 
@@ -125,8 +125,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2015:
             self._add_observed(self._add_new_years_day(name))
         elif self._year >= 1959:
-            dt = (JAN, 1)
-            if self._is_sunday(dt) or (self._year >= 1993 and self._is_saturday(dt)):
+            jan_1 = (JAN, 1)
+            if self._is_sunday(jan_1) or (self._year >= 1993 and self._is_saturday(jan_1)):
                 self._add_holiday_1st_mon_from_jan_1(name)
             else:
                 self._add_new_years_day(name)
@@ -210,8 +210,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2014:
             self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1958:
-            dt = (DEC, 25)
-            if self._is_weekend(dt) or (self._year >= 1992 and self._is_saturday(dt)):
+            dec_25 = (DEC, 25)
+            if self._is_weekend(dec_25) or (self._year >= 1992 and self._is_saturday(dec_25)):
                 self._add_holiday_1st_mon_from_dec_25(name)
             else:
                 self._add_christmas_day(name)
@@ -228,18 +228,18 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2014:
             self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1958:
-            dt = (DEC, 26)
+            dec_26 = (DEC, 26)
             if self._year >= 1992:
-                if self._is_saturday(dt):
+                if self._is_saturday(dec_26):
                     self._add_holiday_1st_mon_from_dec_26(name)
-                elif self._is_sunday(dt) or self._is_monday(dt):
+                elif self._is_sunday(dec_26) or self._is_monday(dec_26):
                     self._add_holiday_1st_tue_from_dec_26(name)
                 else:
                     self._add_christmas_day_two(name)
             else:
-                if self._is_sunday(dt):
+                if self._is_sunday(dec_26):
                     self._add_holiday_1st_mon_from_dec_26(name)
-                elif self._is_monday(dt):
+                elif self._is_monday(dec_26):
                     self._add_holiday_1st_tue_from_dec_26(name)
                 else:
                     self._add_christmas_day_two(name)
@@ -404,10 +404,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE
             )
         elif self._year >= 1981:
-            dt = (DEC, 26)
-            if self._is_saturday(dt):
+            dec_26 = (DEC, 26)
+            if self._is_saturday(dec_26):
                 self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dt) or self._is_monday(dt):
+            elif self._is_sunday(dec_26) or self._is_monday(dec_26):
                 self._add_holiday_1st_tue_from_dec_26(name)
             else:
                 self._add_christmas_day_two(name)
@@ -519,10 +519,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2011:
             self._add_observed(self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1984:
-            dt = (DEC, 26)
-            if self._is_sunday(dt):
+            dec_26 = (DEC, 26)
+            if self._is_sunday(dec_26):
                 self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_monday(dt):
+            elif self._is_monday(dec_26):
                 self._add_holiday_1st_tue_from_dec_26(name)
             else:
                 self._add_christmas_day_two(name)
@@ -537,14 +537,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # New Year's Day.
         name = "New Year's Day"
+        jan_1 = (JAN, 1)
         if self._year >= 2024:
             self._add_observed(self._add_new_years_day(name))
         elif self._year >= 2004:
-            if self._is_saturday(JAN, 1):
+            if self._is_saturday(jan_1):
                 self._add_holiday_1st_mon_from_jan_1(name)
             else:
                 self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_MON)
-        elif self._year >= 1984 and self._is_weekend(JAN, 1):
+        elif self._year >= 1984 and self._is_weekend(jan_1):
             self._add_holiday_1st_mon_from_jan_1(name)
         else:
             self._add_new_years_day(name)
@@ -558,14 +559,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Australia Day.
         if self._year >= 1935:
             name = "Australia Day"
-            dt = (JAN, 26)
+            jan_26 = (JAN, 26)
             if 1994 <= self._year <= 2003 or self._year >= 2024:
-                if self._is_weekend(dt):
+                if self._is_weekend(jan_26):
                     self._add_holiday_1st_mon_from_jan_26(name)
                 else:
                     self._add_holiday_jan_26(name)
             elif self._year >= 2004:
-                if self._is_saturday(dt):
+                if self._is_saturday(jan_26):
                     self._add_holiday_1st_mon_from_jan_26(name)
                 else:
                     self._add_observed(self._add_holiday_jan_26(name), rule=SUN_TO_NEXT_MON)
@@ -615,26 +616,26 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Proclamation Day.
         name = "Proclamation Day"
-        dt = (DEC, 26)
+        dec_26 = (DEC, 26)
         if self._year >= 2024:
             self._add_observed(
                 self._add_christmas_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE
             )
         elif self._year >= 2003:
-            if self._is_saturday(dt):
+            if self._is_saturday(dec_26):
                 self._add_holiday_1st_mon_from_dec_26(name)
             else:
                 self._add_observed(
                     self._add_christmas_day_two(name), rule=SUN_TO_NEXT_TUE + MON_TO_NEXT_TUE
                 )
         elif self._year >= 1993:
-            if self._is_saturday(dt):
+            if self._is_saturday(dec_26):
                 self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dt) or self._is_monday(dt):
+            elif self._is_sunday(dec_26) or self._is_monday(dec_26):
                 self._add_holiday_1st_tue_from_dec_26(name)
             else:
                 self._add_christmas_day_two(name)
-        elif self._year >= 1984 and self._is_weekend(dt):
+        elif self._year >= 1984 and self._is_weekend(dec_26):
             self._add_holiday_1st_mon_from_dec_26(name)
         else:
             self._add_christmas_day_two(name)
@@ -646,14 +647,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Christmas Day.
         name = "Christmas Day"
+        dec_25 = (DEC, 25)
         if self._year >= 2024:
             self._add_observed(self._add_christmas_day(name))
         elif self._year >= 2003:
-            if self._is_saturday(DEC, 25):
+            if self._is_saturday(dec_25):
                 self._add_holiday_1st_mon_from_dec_25(name)
             else:
                 self._add_observed(self._add_christmas_day(name), rule=SUN_TO_NEXT_MON)
-        elif self._year >= 1984 and self._is_weekend(DEC, 25):
+        elif self._year >= 1984 and self._is_weekend(dec_25):
             self._add_holiday_1st_mon_from_dec_25(name)
         else:
             self._add_christmas_day(name)
@@ -714,10 +716,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2010:
             self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 2000:
-            dt = (DEC, 25)
-            if self._is_saturday(dt):
+            dec_25 = (DEC, 25)
+            if self._is_saturday(dec_25):
                 self._add_holiday_1st_mon_from_dec_25(name)
-            elif self._is_sunday(dt):
+            elif self._is_sunday(dec_25):
                 self._add_holiday_1st_tue_from_dec_25(name)
             else:
                 self._add_christmas_day(name)
@@ -730,10 +732,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Boxing Day.
         name = "Boxing Day"
         if self._year >= 2000:
-            dt = (DEC, 26)
-            if self._is_saturday(dt):
+            dec_26 = (DEC, 26)
+            if self._is_saturday(dec_26):
                 self._add_holiday_1st_mon_from_dec_26(name)
-            elif self._is_sunday(dt):
+            elif self._is_sunday(dec_26):
                 self._add_holiday_1st_tue_from_dec_26(name)
             else:
                 self._add_christmas_day_two(name)
@@ -817,10 +819,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2019:
             self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 2000:
-            dt = (DEC, 25)
-            if self._is_saturday(dt):
+            dec_25 = (DEC, 25)
+            if self._is_saturday(dec_25):
                 self._add_holiday_1st_mon_from_dec_25(name)
-            elif self._is_sunday(dt):
+            elif self._is_sunday(dec_25):
                 self._add_holiday_1st_tue_from_dec_25(name)
             else:
                 self._add_christmas_day(name)
