@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
-#  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
 import warnings
 from unittest import TestCase
