@@ -8,7 +8,7 @@
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #           tasnim<tasnimislam1999@gmail.com>
-#  Website: https://github.com/dr-prodigy/python-holidays
+#  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import InternationalHolidays
