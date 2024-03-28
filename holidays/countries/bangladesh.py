@@ -7,7 +7,6 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           tasnim<tasnimislam1999@gmail.com>
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
