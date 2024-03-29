@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
 from holidays.constants import PUBLIC, SCHOOL

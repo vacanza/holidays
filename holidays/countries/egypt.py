@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-
 from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
