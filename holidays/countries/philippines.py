@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
