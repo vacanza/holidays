@@ -24,6 +24,15 @@ repos:
       - id: ruff
       - id: ruff-format
 
+  - repo: https://github.com/lucas-c/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: insert-license
+        files: \.(po|py)$
+        args:
+        - --license-filepath
+        - docs/file_header.txt
+
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
