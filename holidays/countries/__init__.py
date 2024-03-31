@@ -83,6 +83,7 @@ from .italy import Italy, IT, ITA
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
 from .jersey import Jersey, JE, JEY
+from .jordan import Jordan, JO, JOR
 from .kazakhstan import Kazakhstan, KZ, KAZ
 from .kenya import Kenya, KE, KEN
 from .kuwait import Kuwait, KW, KWT

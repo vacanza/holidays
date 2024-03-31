@@ -400,6 +400,11 @@ All other default values are highlighted with bold:
      -
      - **ar**, en_US
      -
+   * - Jordan
+     - JO
+     -
+     - **ar**, en_US
+     -
    * - El Salvador
      - SV
      - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
