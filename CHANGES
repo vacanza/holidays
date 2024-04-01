@@ -1,3 +1,20 @@
+Version 0.46
+============
+
+Released April 1, 2024
+
+- Fix Romanian language strings: replace U+015F with proper U+0219 (#1739 by @KJhellico)
+- Update (c) in file headers and LICENSE (#1672 by @dr-prodigy)
+- Update Australia holidays (#1736 by @KJhellico)
+- Update Makefile clean action (#1738 by @arkid15r)
+- Update US tests: Day After Thanksgiving (#1742 by @arkid15r)
+- Update United Kingdom holidays: fix observed New Year's Day in Scotland (#1735 by @KJhellico)
+- Update tests: use assertIsInstance (#1737 by @arkid15r)
+- Fix README layout (attempt 1) (#1745 by @arkid15r)
+- Add file header pre-commit check (#1744 by @arkid15r)
+- Add package build tests (#1733 by @KJhellico)
+- Unify file headers after recent update (#1743 by @KJhellico)
+
 Version 0.45
 ============
 

@@ -1,12 +1,13 @@
-#  python-holidays
-#  ---------------
+#  holidays
+#  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
+#  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
 import re
@@ -90,7 +91,7 @@ class TestReadme(TestCase):
                     for subdivision_aliases in subdivision_and_aliases_re.split(
                         subdivision_aliases_group
                     ):
-                        if "," in subdivision_aliases:  # Subdivision with aliases.
+                        if "(" in subdivision_aliases:  # Subdivision with aliases.
                             subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
                             subdivision = subdivision_aliases.group(1)
                             aliases = subdivision_aliases.group(2).split(", ")

@@ -1,12 +1,13 @@
-#  python-holidays
-#  ---------------
+#  holidays
+#  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
+#  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
@@ -177,10 +178,7 @@ class TestListLocalizedEntities(unittest.TestCase):
             )
 
             if expected_languages:
-                self.assertTrue(
-                    isinstance(expected_languages, list),
-                    entity_code,
-                )
+                self.assertIsInstance(expected_languages, list, entity_code)
                 self.assertIn(
                     entity.default_language,
                     expected_languages,
@@ -212,7 +210,7 @@ class TestListSupportedEntities(unittest.TestCase):
 
         us_subdivisions = supported_countries["US"]
         self.assertIn("CA", us_subdivisions)
-        self.assertTrue(isinstance(us_subdivisions, list))
+        self.assertIsInstance(us_subdivisions, list)
 
         countries_files = [
             path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
@@ -229,7 +227,7 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIn("NYSE", supported_financial)
 
         nyse = supported_financial["NYSE"]
-        self.assertTrue(isinstance(nyse, list))
+        self.assertIsInstance(nyse, list)
 
         financial_files = [
             path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"

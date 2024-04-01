@@ -1,11 +1,22 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
 # Moldova holidays uk localization.
-# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.46\n"
 "POT-Creation-Date: 2023-03-22 21:58+0200\n"
-"PO-Revision-Date: 2023-03-22 22:00+0200\n"
+"PO-Revision-Date: 2024-03-20 21:12+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -21,11 +32,11 @@ msgid "Anul Nou"
 msgstr "Новий рік"
 
 #. Christmas Day (by old style).
-msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"
 msgstr "Різдво Христове (за старим стилем)"
 
 #. Christmas Day.
-msgid "Naşterea lui Iisus Hristos (Crăciunul)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul)"
 msgstr "Різдво Христове"
 
 #. International Women's Day.
@@ -33,11 +44,11 @@ msgid "Ziua internatională a femeii"
 msgstr "Міжнародний жіночий день"
 
 #. Easter.
-msgid "Paştele"
+msgid "Paștele"
 msgstr "Великдень"
 
 #. Day of Rejoicing.
-msgid "Paştele blajinilor"
+msgid "Paștele blajinilor"
 msgstr "Проводи"
 
 #. International Workers' Solidarity Day.
@@ -47,7 +58,7 @@ msgstr "День міжнародної солідарності трудящи�
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
 msgid ""
-"Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei"
+"Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr ""
 "День Перемоги та вшанування памʼяті героїв, полеглих за незалежність "
 "Батьківщини"
@@ -69,5 +80,5 @@ msgid "Limba noastră"
 msgstr "День рідної мови"
 
 #. Christmas Day (by new style).
-msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
+msgid "Nașterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr "Різдво Христове (за новим стилем)"

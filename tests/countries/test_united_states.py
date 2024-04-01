@@ -1,12 +1,13 @@
-#  python-holidays
-#  ---------------
+#  holidays
+#  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
+#  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
@@ -1688,7 +1689,7 @@ class TestUS(CommonCountryTests, TestCase):
             f"{name} (observed)", UnitedStates(subdiv="PR", observed=False), obs_dt
         )
 
-    def test_after_thanksgiving_day(self):
+    def test_day_after_thanksgiving(self):
         dt = (
             "2010-11-26",
             "2011-11-25",
@@ -1713,19 +1714,17 @@ class TestUS(CommonCountryTests, TestCase):
             ("MD", "American Indian Heritage Day", 2008),
             ("NC", "Day After Thanksgiving", 1975),
             ("NH", "Day After Thanksgiving", 1975),
-            ("NM", "Presidents' Day", -1),
-            ("NV", "Family Day", -1),
+            ("NM", "Presidents' Day", None),
+            ("NV", "Family Day", None),
             ("OK", "Day After Thanksgiving", 1975),
-            ("PA", "Day After Thanksgiving", -1),
+            ("PA", "Day After Thanksgiving", None),
             ("TX", "Friday After Thanksgiving", 1975),
             ("WV", "Day After Thanksgiving", 1975),
         ):
             self.assertNoHolidayName(name)
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
-            self.assertHolidayName(
-                name, self.state_hols[subdiv], range(start_year if start_year > 0 else 1865, 2050)
-            )
-            if start_year > 0:
+            self.assertHolidayName(name, self.state_hols[subdiv], range(start_year or 1865, 2050))
+            if start_year:
                 self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
 
     def test_robert_lee_birthday(self):

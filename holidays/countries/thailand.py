@@ -1,12 +1,13 @@
-#  python-holidays
-#  ---------------
+#  holidays
+#  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
+#  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
@@ -37,7 +38,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             - `isranews.org <http://tiny.cc/wa_isranews_inlieu_hist>`_
             - https://resolution.soc.go.th/?prep_id=99159317
             - https://resolution.soc.go.th/?prep_id=196007
-            - https://github.com/dr-prodigy/python-holidays/pull/929
+            - https://github.com/vacanza/python-holidays/pull/929
         - [New Year's Day]
             `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
         - [National Children's Day]
