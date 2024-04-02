@@ -70,7 +70,7 @@ class TestJordan(CommonCountryTests, TestCase):
             ("2024-04-11", "Eid al-Fitr Holiday (estimated)"),
             ("2024-04-12", "Eid al-Fitr Holiday (estimated)"),
             ("2024-05-01", "Labor Day"),
-            ("2024-05-25", "Independance Day"),
+            ("2024-05-25", "Independence Day"),
             ("2024-06-15", "Arafat Day (estimated)"),
             ("2024-06-16", "Eid al-Adha (estimated)"),
             ("2024-06-17", "Eid al-Adha Holiday (estimated)"),
