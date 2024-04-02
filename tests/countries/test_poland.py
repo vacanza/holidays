@@ -138,7 +138,7 @@ class TestPoland(CommonCountryTests, TestCase):
 
     def test_narodowe_swieto_zwyciestwa_i_wolnosci(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1946, 1951))
-        self.assertNoHoliday(f"{year}-05-09" for year in range(1925, 1946))
+        self.assertNoHoliday(f"{year}-05-09" for year in set(range(1925, 1946)).difference({1929}))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1951, 2050))
         self.assertNoHolidayName(
             "Narodowe Święto Zwycięstwa i Wolności", range(1925, 1946), range(1951, 2050)
@@ -146,11 +146,11 @@ class TestPoland(CommonCountryTests, TestCase):
 
     def test_wniebowstapienie_panskie(self):
         self.assertHoliday(
-            "1930-05-30",
-            "1934-05-11",
-            "1939-05-19",
-            "1945-05-11",
-            "1950-05-19",
+            "1930-05-29",
+            "1934-05-10",
+            "1939-05-18",
+            "1945-05-10",
+            "1950-05-18",
         )
         self.assertNoHolidayName("Wniebowstąpienie Pańskie", range(1951, 2050))
 
