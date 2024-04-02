@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -85,48 +83,48 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Canillo.
     def _populate_subdiv_02_public_holidays(self):
         name = "Canillo Annual Festival"
-        third_sat_of_july = self._add_holiday_3rd_sat_of_jul(name)
-        self._add_holiday(name, third_sat_of_july + td(days=+1))
-        self._add_holiday(name, third_sat_of_july + td(days=+2))
+        self._add_holiday_3rd_sat_of_jul(name)
+        self._add_holiday_1_day_past_3rd_sat_of_jul(name)
+        self._add_holiday_2_days_past_3rd_sat_of_jul(name)
 
     # Encamp.
     def _populate_subdiv_03_public_holidays(self):
         name = "Encamp Annual Festival"
-        aug_15 = self._add_holiday_aug_15(name)
-        self._add_holiday(name, aug_15 + td(days=+1))
+        self._add_holiday_aug_15(name)
+        self._add_holiday_aug_16(name)
 
     # La Massana.
     def _populate_subdiv_04_public_holidays(self):
         name = "La Massana Annual Festival"
-        aug_15 = self._add_holiday_aug_15(name)
-        self._add_holiday(name, aug_15 + td(days=+1))
+        self._add_holiday_aug_15(name)
+        self._add_holiday_aug_16(name)
 
     # Ordino.
     def _populate_subdiv_05_public_holidays(self):
         name = "Ordino Annual Festival"
-        aug_15 = self._add_holiday_aug_15(name)
-        self._add_holiday(name, aug_15 + td(days=+1))
+        self._add_holiday_aug_15(name)
+        self._add_holiday_aug_16(name)
 
     # Sant Julià de Lòria.
     def _populate_subdiv_06_public_holidays(self):
         name = "Sant Julià de Lòria Annual Festival"
-        last_fri_of_july = self._add_holiday_1st_fri_before_jul_29(name)
-        self._add_holiday(name, last_fri_of_july + td(days=+1))
-        self._add_holiday(name, last_fri_of_july + td(days=+2))
-        self._add_holiday(name, last_fri_of_july + td(days=+3))
+        self._add_holiday_1st_fri_before_jul_29(name)
+        self._add_holiday_1st_sat_before_jul_30(name)
+        self._add_holiday_1st_sun_before_jul_31(name)
+        self._add_holiday_1st_mon_before_aug_1(name)
 
     # Andorra la Vella.
     def _populate_subdiv_07_public_holidays(self):
         name = "Andorra la Vella Annual Festival"
-        first_sat_of_august = self._add_holiday_1st_sat_of_aug(name)
-        self._add_holiday(name, first_sat_of_august + td(days=+1))
-        self._add_holiday(name, first_sat_of_august + td(days=+2))
+        self._add_holiday_1st_sat_of_aug(name)
+        self._add_holiday_1_day_past_1st_sat_of_aug(name)
+        self._add_holiday_2_days_past_1st_sat_of_aug(name)
 
     # Escaldes-Engordany.
     def _populate_subdiv_08_public_holidays(self):
         name = "Escaldes-Engordany Annual Festival"
-        jul_25 = self._add_holiday_jul_25(name)
-        self._add_holiday(name, jul_25 + td(days=+1))
+        self._add_holiday_jul_25(name)
+        self._add_holiday_jul_26(name)
 
 
 class AD(Andorra):

@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, JUL, SEP
@@ -68,11 +67,11 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Mother's Day.
         self._add_holiday_2nd_sun_of_may(tr("Mātes diena"))
 
-        # Midsummer Day.
-        jun_24 = self._add_saint_johns_day(tr("Jāņu diena"))
-
         # Midsummer Eve.
-        self._add_holiday(tr("Līgo diena"), jun_24 + td(days=-1))
+        self._add_holiday_jun_23(tr("Līgo diena"))
+
+        # Midsummer Day.
+        self._add_saint_johns_day(tr("Jāņu diena"))
 
         # Republic of Latvia Proclamation Day.
         dt = self._add_holiday_nov_18(tr("Latvijas Republikas proklamēšanas diena"))
