@@ -17,7 +17,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHol
 from holidays.holiday_base import HolidayBase
 
 
-class Jordan(HolidayBase, IslamicHolidays, ChristianHolidays, InternationalHolidays):
+class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
         - https://en.wikipedia.org/wiki/Public_holidays_in_Jordan
