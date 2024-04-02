@@ -50,7 +50,7 @@ msgstr ""
 msgid "عيد العمال"
 msgstr ""
 
-#. Independance Day.
+#. Independence Day.
 msgid "عيد الإستقلال"
 msgstr ""
 
