@@ -127,3 +127,13 @@ with reStructuredText for Sphinx you can read a primer
 `here`__.
 
 __ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+
+
+Contributors
+------------
+
+.. __: https://github.com/vacanza/python-holidays/blob/dev/AUTHORS
+
+In order to keep the list of contributors up to day we encourage you add your
+name (in alphabetical order) to the `AUTHORS`__ file if it's not there yet.
+Thanks for your contribution!
