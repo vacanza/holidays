@@ -51,7 +51,7 @@ msgid "عيد العمال"
 msgstr ""
 
 #. Independance Day.
-msgid "عيد الاستقلال"
+msgid "عيد الإستقلال"
 msgstr ""
 
 #. Arafat Day.
