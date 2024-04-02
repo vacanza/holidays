@@ -42,7 +42,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        # Independance Day.
+        # Independence Day.
         self._add_holiday_may_25(tr("عيد الإستقلال"))
 
         # Christmas Day.
