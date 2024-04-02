@@ -40,11 +40,12 @@ class Jordan(HolidayBase, IslamicHolidays, ChristianHolidays, InternationalHolid
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
+        # Labor Day.
+        self._add_labor_day(tr("عيد العمال"))
+
         # Independance Day.
         self._add_holiday_may_25(tr("عيد الاستقلال"))
 
-        # Labor Day.
-        self._add_labor_day(tr("عيد العمال"))
 
         # Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد"))
