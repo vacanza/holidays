@@ -230,6 +230,8 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
+    workdays: Set[date] = set()
+    """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
     default_language: Optional[str] = None
@@ -353,6 +355,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
+        self.workdays = set()
 
         supported_languages = set(self.supported_languages)
         self.tr = (
@@ -746,14 +749,14 @@ class HolidayBase(Dict[date, str]):
                     )
                 else:  # Substituted holidays.
                     to_month, to_day, from_month, from_day, *optional = data
+                    from_date = date(optional[0] if optional else self._year, from_month, from_day)
                     self._add_holiday(
                         self.tr(self.substituted_label)
-                        % date(
-                            optional[0] if optional else self._year, from_month, from_day
-                        ).strftime(self.tr(self.substituted_date_format)),
+                        % from_date.strftime(self.tr(self.substituted_date_format)),
                         to_month,
                         to_day,
                     )
+                    self.workdays.add(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
@@ -943,6 +946,36 @@ class HolidayBase(Dict[date, str]):
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
+
+    def get_nth_workday(self, key: DateLike, n: int) -> date:
+        """Return n-th working day from provided date (if n is positive)
+        or n-th working day before provided date (if n is negative).
+        """
+        direction = +1 if n > 0 else -1
+        dt = self.__keytransform__(key)
+        for i in range(abs(n)):
+            dt += timedelta(days=direction)
+            while not self.is_workday(dt):
+                dt += timedelta(days=direction)
+        return dt
+
+    def get_workdays_number(self, key1: DateLike, key2: DateLike) -> int:
+        """Return the number of working days between two dates (not including the start date)."""
+        dt1 = self.__keytransform__(key1)
+        dt2 = self.__keytransform__(key2)
+        if dt1 == dt2:
+            return 0
+        if dt1 > dt2:
+            dt1, dt2 = dt2, dt1
+
+        return sum(
+            self.is_workday(dt1 + timedelta(days=n)) for n in range(1, (dt2 - dt1).days + 1)
+        )
+
+    def is_workday(self, key: DateLike) -> bool:
+        """Return True if date is a working day (not a holiday or a weekend)."""
+        dt = self.__keytransform__(key)
+        return not (dt in self or (self._is_weekend(dt) and (dt not in self.workdays)))
 
     def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
         """If date is a holiday, remove it and return its date, else return
