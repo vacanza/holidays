@@ -114,6 +114,7 @@ initialize the ``setUpClass`` properly:
     def setUpClass(cls):
         super().setUpClass(Argentina)
 
+
 Build sphinx documentation
 --------------------------
 
@@ -134,6 +135,6 @@ Contributors
 
 .. __: https://github.com/vacanza/python-holidays/blob/dev/AUTHORS
 
-In order to keep the list of contributors up to day we encourage you add your
+In order to keep the list of contributors up to date we encourage you add your
 name (in alphabetical order) to the `AUTHORS`__ file if it's not there yet.
 Thanks for your contribution!
