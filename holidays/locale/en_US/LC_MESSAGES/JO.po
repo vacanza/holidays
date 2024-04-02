@@ -50,9 +50,9 @@ msgstr "Eid al-Fitr Holiday"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Independance Day.
+#. Independence Day.
 msgid "عيد الإستقلال"
-msgstr "Independance Day"
+msgstr "Independence Day"
 
 #. Arafat Day.
 msgid "يوم عرفة"
