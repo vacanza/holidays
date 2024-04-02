@@ -159,12 +159,7 @@ COUNTRIES: RegistryDict = {
         "UMI",
         "HolidaysUM",
     ),
-    "united_states_virgin_islands": (
-        "UnitedStatesVirginIslands",
-        "VI",
-        "VIR",
-        "HolidaysVI",
-    ),
+    "united_states_virgin_islands": ("UnitedStatesVirginIslands", "VI", "VIR", "HolidaysVI"),
     "united_states": ("UnitedStates", "US", "USA"),
     "uruguay": ("Uruguay", "UY", "URY"),
     "uzbekistan": ("Uzbekistan", "UZ", "UZB"),
