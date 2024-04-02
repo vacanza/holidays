@@ -31,7 +31,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, GREGORIAN_CALENDAR)
+        ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
