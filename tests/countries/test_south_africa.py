@@ -58,6 +58,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "2016-08-03",  # Election Day 2016
             "2019-05-08",  # Election Day 2019
             "2021-11-01",  # Election Day 2019
+            "2024-05-29",  # Election Day 2024
         )
 
     def test_new_years_day(self):
