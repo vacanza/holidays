@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -66,9 +65,9 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Morazan Weekend.
             name = tr("Semana Morazánica")
             # First Wednesday of October from 12 noon to Saturday 12 noon.
-            first_wed_of_oct = self._add_holiday_1st_wed_of_oct(name)
-            self._add_holiday(name, first_wed_of_oct + td(days=+1))
-            self._add_holiday(name, first_wed_of_oct + td(days=+2))
+            self._add_holiday_1st_wed_of_oct(name)
+            self._add_holiday_1_day_past_1st_wed_of_oct(name)
+            self._add_holiday_2_days_past_1st_wed_of_oct(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Navidad"))
