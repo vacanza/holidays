@@ -62,6 +62,7 @@ COUNTRIES: RegistryDict = {
     "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
     "ecuador": ("Ecuador", "EC", "ECU"),
     "egypt": ("Egypt", "EG", "EGY"),
+    "jordan": ("Jordan", "JO", "JOR"),
     "el_salvador": ("ElSalvador", "SV", "SLV"),
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
