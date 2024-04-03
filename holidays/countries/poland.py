@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import NOV
@@ -68,7 +67,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
 
         if self._year <= 1950:
             # Ascension Day.
-            self._add_holiday(tr("Wniebowstąpienie Pańskie"), self._easter_sunday + td(days=+40))
+            self._add_ascension_thursday(tr("Wniebowstąpienie Pańskie"))
 
         # Pentecost.
         self._add_whit_sunday(tr("Zielone Świątki"))
