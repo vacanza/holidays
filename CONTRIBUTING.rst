@@ -4,11 +4,6 @@ Contributing
 
 .. _prs: https://github.com/vacanza/python-holidays/pulls
 .. _`dev branch`: https://github.com/vacanza/python-holidays/tree/dev
-.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
-    :target: https://github.com/vacanza/python-holidays/graphs/contributors
-    :alt: contributors
-
-|contributors|
 
 
 Basics
@@ -134,7 +129,12 @@ Contributors
 ------------
 
 .. __: https://github.com/vacanza/python-holidays/blob/dev/AUTHORS
+.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
+    :target: https://github.com/vacanza/python-holidays/graphs/contributors
+    :alt: contributors
 
 In order to keep the list of contributors up to date we encourage you add your
 name (in alphabetical order) to the `AUTHORS`__ file if it's not there yet.
 Thanks for your contribution!
+
+|contributors|
