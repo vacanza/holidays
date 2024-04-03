@@ -10,22 +10,30 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays):
-    # https://en.wikipedia.org/wiki/TARGET2
-    # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
+    """
+    References:
+        - https://en.wikipedia.org/wiki/TARGET2
+        - https://www.ecb.europa.eu/press/pr/date/1999/html/pr990715_1.en.html
+        - https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
+    """
 
     market = "ECB"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, EuropeanCentralBankStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        if year <= 1999:
+            return None
         super()._populate(year)
 
         self._add_new_years_day("New Year's Day")
@@ -45,3 +53,9 @@ class ECB(EuropeanCentralBank):
 
 class TAR(EuropeanCentralBank):
     pass
+
+
+class EuropeanCentralBankStaticHolidays:
+    special_public_holidays = {
+        2000: (DEC, 31, "Additional closing day"),
+    }
