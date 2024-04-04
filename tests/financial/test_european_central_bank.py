@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from unittest import TestCase
 
 from holidays.financial.european_central_bank import EuropeanCentralBank, ECB, TAR
@@ -21,67 +19,58 @@ from tests.common import CommonFinancialTests
 class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(EuropeanCentralBank)
+        super().setUpClass(EuropeanCentralBank, years=range(2000, 2100))
 
     def test_market_aliases(self):
         self.assertAliases(EuropeanCentralBank, ECB, TAR)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(EuropeanCentralBank(years=1999))
+
+    def test_special_holidays(self):
+        self.assertHoliday("2000-12-31")
+
     def test_new_years(self):
-        for year in range(1974, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2000, 2100)))
 
     def test_good_friday(self):
-        for dt in (
-            date(1900, 4, 13),
-            date(1901, 4, 5),
-            date(1902, 3, 28),
-            date(1999, 4, 2),
-            date(2000, 4, 21),
-            date(2010, 4, 2),
-            date(2018, 3, 30),
-            date(2019, 4, 19),
-            date(2020, 4, 10),
-        ):
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        dt = (
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
+        self.assertHolidayName("Good Friday", dt)
 
     def test_easter_monday(self):
-        for dt in (
-            date(1900, 4, 16),
-            date(1901, 4, 8),
-            date(1902, 3, 31),
-            date(1999, 4, 5),
-            date(2000, 4, 24),
-            date(2010, 4, 5),
-            date(2018, 4, 2),
-            date(2019, 4, 22),
-            date(2020, 4, 13),
-        ):
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        dt = (
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+        )
+        self.assertHolidayName("Easter Monday", dt)
 
     def test_labour_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 5, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHolidayName(
+            "1 May (Labour Day)", (f"{year}-05-01" for year in range(2000, 2100))
+        )
 
     def test_christmas_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2000, 2100)))
 
     def test_26_december_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 12, 26)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHolidayName("26 December", (f"{year}-12-26" for year in range(2000, 2100)))
 
     def test_2015(self):
         self.assertHolidays(
