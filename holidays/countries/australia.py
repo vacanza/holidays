@@ -891,7 +891,19 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # Sovereign's Birthday.
         if self._year >= 1936:
             if self._year >= 1984:
-                self._add_holiday_last_mon_of_sep(self.sovereign_birthday)
+                # Celebration Day for the Anniversary of the Birthday of the Reigning Sovereign
+                # to be appointed for each year by proclamation published in the Government Gazette
+                sovereign_birthday_dates = {
+                    2011: (OCT, 28),
+                    2012: (OCT, 1),
+                    2024: (SEP, 23),
+                }
+                if self._year in sovereign_birthday_dates:
+                    self._add_holiday(
+                        self.sovereign_birthday, sovereign_birthday_dates[self._year]
+                    )
+                else:
+                    self._add_holiday_last_mon_of_sep(self.sovereign_birthday)
             else:
                 self._add_holiday_2nd_mon_of_oct(self.sovereign_birthday)
 
@@ -944,4 +956,9 @@ class AustraliaStaticHolidays:
     special_qld_public_holidays_observed = {
         2010: (DEC, 28, "Christmas Day"),
         2011: (JAN, 3, "New Year's Day"),
+    }
+
+    special_wa_public_holidays = {
+        # In 2011 both ANZAC Day and Easter Monday fell on Monday 25 April.
+        2011: (APR, 26, "Special public holiday"),
     }
