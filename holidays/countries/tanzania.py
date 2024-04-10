@@ -264,6 +264,7 @@ class TanzaniaIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAY, 14),
         2022: (MAY, 3),
         2023: (APR, 22),
+        2024: (APR, 10),
     }
 
     MAWLID_DATES = {
