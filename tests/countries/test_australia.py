@@ -461,6 +461,17 @@ class TestAustralia(CommonCountryTests, TestCase):
         for holidays in self.subdiv_holidays.values():
             self.assertHolidayName(name, holidays, dt)
 
+    def test_special_holidays(self):
+        act_holidays = self.subdiv_holidays["ACT"]
+        qld_holidays = self.subdiv_holidays["QLD"]
+        wa_holidays = self.subdiv_holidays["WA"]
+        self.assertHoliday(act_holidays, "2020-04-20", "2021-04-25")
+        self.assertHoliday(qld_holidays, "2010-12-28", "2011-01-03", "2012-06-11")
+        self.assertNoNonObservedHoliday(
+            Australia(subdiv="QLD", observed=False, years=(2010, 2011)), "2010-12-28", "2011-01-03"
+        )
+        self.assertHoliday(wa_holidays, "2011-04-26")
+
     def test_all_holidays(self):
         holidays_found = set()
         for subdiv in Australia.subdivisions:
@@ -664,7 +675,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             (AUG, 5): {"NT"},
             (AUG, 14): {"QLD"},
             (SEP, 27): {"VIC"},
-            (SEP, 30): {"WA"},
+            (SEP, 23): {"WA"},
             (OCT, 7): {"ACT", "NSW", "QLD", "SA"},
             (NOV, 5): {"VIC"},
             (DEC, 25): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
