@@ -84,16 +84,16 @@ msgid "Годовщина Великой Октябрьской социалис
 msgstr "Anniversary of the Great October Socialist Revolution"
 
 msgid "Перенос 27.04.2024"
-msgstr ""
+msgstr "Postpone of 27.04.2024"
 
 msgid "Перенос 02.11.2024"
-msgstr ""
+msgstr "Postpone of 02.11.2024"
 
 msgid "Перенос 06.01.2024"
-msgstr ""
+msgstr "Postpone of 06.01.2024"
 
 msgid "Перенос 28.12.2024"
-msgstr ""
+msgstr "Postpone of 28.12.2024"
 
 msgid "Перенос 07.01.2024"
-msgstr ""
+msgstr "Postpone of 07.01.2024"
