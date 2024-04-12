@@ -120,6 +120,7 @@ class RussiaStaticHolidays:
             (FEB, 24, tr("День защитника Отечества")),
             (MAY, 8, tr("День Победы")),
         ),
+        # Postponed days 2024
         # src: https://www.consultant.ru/document/cons_doc_LAW_455140/
         2024: (
             (APR, 29, tr("Перенос 27.04.2024")),
