@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAY
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -119,5 +119,13 @@ class RussiaStaticHolidays:
         2023: (
             (FEB, 24, tr("День защитника Отечества")),
             (MAY, 8, tr("День Победы")),
+        ),
+        # src: https://www.consultant.ru/document/cons_doc_LAW_455140/
+        2024: (
+            (APR, 29, tr("Перенос 27.04.2024")),
+            (APR, 30, tr("Перенос 02.11.2024")),
+            (MAY, 10, tr("Перенос 06.01.2024")),
+            (DEC, 30, tr("Перенос 28.12.2024")),
+            (DEC, 31, tr("Перенос 07.01.2024")),
         ),
     }
