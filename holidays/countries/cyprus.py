@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
@@ -93,7 +92,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Easter Tuesday.
-        self._add_holiday(tr("Τρίτη της Διακαινησίμου"), self._easter_sunday + td(days=+2))
+        self._add_holiday_2_days_past_easter(tr("Τρίτη της Διακαινησίμου"))
 
     def _populate_optional_holidays(self):
         if self._year <= 1960:

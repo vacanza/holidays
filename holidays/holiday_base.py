@@ -483,6 +483,24 @@ class HolidayBase(Dict[date, str]):
                     + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
                 )
 
+            # Handle <n> days <past/prior> easter patterns (e.g.,
+            # _add_holiday_8_days_past_easter() or
+            # _add_holiday_5_days_prior_easter()).
+            nth_weekday_of_month_with_delta = re.match(
+                r"_add_holiday_(\d{1,2})_days_(past|prior)_easter",
+                name,
+            )
+            if nth_weekday_of_month_with_delta:
+                (
+                    days,
+                    delta_direction,
+                ) = nth_weekday_of_month_with_delta.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    self._easter_sunday
+                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                )
+
             # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
             # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
             nth_weekday_from = re.match(
