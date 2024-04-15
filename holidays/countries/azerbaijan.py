@@ -235,6 +235,7 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAY, 13),
         2022: (MAY, 2),
         2023: (APR, 21),
+        2024: (APR, 10),
     }
 
 

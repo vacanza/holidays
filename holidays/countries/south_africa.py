@@ -20,6 +20,7 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     https://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
     https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000
+    https://www.gov.za/documents/notices/public-holidays-act-declaration-29-may-2024-public-holiday-23-feb-2024
     """
 
     country = "ZA"
@@ -147,6 +148,7 @@ class SouthAfricaStaticHolidays:
         2022: (DEC, 27, presidential_decree_holiday),
         # Winning the 2023 Rugby World Cup
         2023: (DEC, 15, presidential_decree_holiday),
+        2024: (MAY, 29, national_and_provincial_elections),
     }
 
     special_public_holidays_observed = {
