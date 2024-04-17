@@ -123,10 +123,10 @@ class RussiaStaticHolidays:
         # Postponed days 2024
         # src: https://www.consultant.ru/document/cons_doc_LAW_455140/
         2024: (
-            (APR, 29, tr("Перенос 27.04.2024")),
-            (APR, 30, tr("Перенос 02.11.2024")),
-            (MAY, 10, tr("Перенос 06.01.2024")),
-            (DEC, 30, tr("Перенос 28.12.2024")),
-            (DEC, 31, tr("Перенос 07.01.2024")),
+            (APR, 29, APR, 27),
+            (APR, 30, FEB, 11),
+            (MAY, 10, JUN, 1),
+            (DEC, 30, DEC, 28),
+            (DEC, 31, JAN, 7),
         ),
     }
