@@ -81,8 +81,11 @@ msgstr ""
 msgid "Годовщина Великой Октябрьской социалистической революции"
 msgstr ""
 
+#. Date format (see strftime() Format Codes).
 msgid "%d.%m.%Y"
 msgstr ""
 
+#. Postpone of %s.
+#, c-format
 msgid "Перенос %s"
 msgstr ""
