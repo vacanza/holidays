@@ -19,8 +19,8 @@ flexible as possible.
     :target: https://github.com/vacanza/python-holidays/releases
     :alt: PyPI release date
 
-.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/actions
+.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat
+    :target: https://github.com/vacanza/python-holidays/actions/workflows/ci-cd.yml?query=branch%3Adev
     :alt: CI/CD status
 
 .. |documentation| image:: https://img.shields.io/readthedocs/python-holidays?color=41BE4A&style=flat
