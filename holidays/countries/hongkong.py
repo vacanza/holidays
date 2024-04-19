@@ -263,7 +263,7 @@ class HongKong(
         # Easter Monday.
         if self._year >= 1968 and dt_qingming == self._easter_sunday:
             # 復活節星期一翌日.
-            self._add_holiday("The day following Easter Monday", self._easter_sunday + td(days=+2))
+            self._add_holiday_2_days_past_easter("The day following Easter Monday")
         else:
             # 復活節星期一.
             self._add_easter_monday("Easter Monday")
