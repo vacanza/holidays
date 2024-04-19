@@ -678,12 +678,11 @@ class HolidayBase(Dict[date, str]):
 
     @property
     def _sorted_categories(self):
-        if PUBLIC in self.categories:
-            result = [PUBLIC]
-            result.extend(sorted(self.categories - {PUBLIC}))
-            return result
-        else:
-            return sorted(self.categories)
+        return (
+            [self.default_category] + sorted(self.categories - {self.default_category})
+            if self.default_category in self.categories
+            else sorted(self.categories)
+        )
 
     @classmethod
     def get_subdivision_aliases(cls) -> Dict[str, List]:
