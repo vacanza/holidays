@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -158,7 +157,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Vendredi saint"))
 
         # Mi-Careme.
-        self._add_holiday(tr("Mi-Carême"), self._easter_sunday + td(days=-24))
+        self._add_holiday_24_days_prior_easter(tr("Mi-Carême"))
 
         # Abolition of slavery.
         self._add_holiday_may_27(tr("Abolition de l'esclavage"))

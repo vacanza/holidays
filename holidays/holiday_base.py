@@ -499,6 +499,24 @@ class HolidayBase(Dict[date, str]):
                     ),
                 )
 
+            # Handle <n> days <past/prior> easter patterns (e.g.,
+            # _add_holiday_8_days_past_easter() or
+            # _add_holiday_5_days_prior_easter()).
+            nth_weekday_of_month_with_delta = re.match(
+                r"_add_holiday_(\d{1,2})_days?_(past|prior)_easter",
+                name,
+            )
+            if nth_weekday_of_month_with_delta:
+                (
+                    days,
+                    delta_direction,
+                ) = nth_weekday_of_month_with_delta.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    self._easter_sunday
+                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                )
+
             raise e  # No match.
 
     def __getitem__(self, key: DateLike) -> Any:

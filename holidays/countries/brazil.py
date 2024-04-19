@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from datetime import date
 
 from holidays.calendars.gregorian import JAN, MAR, SEP, NOV, FRI, _get_nth_weekday_from
@@ -231,7 +230,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_es_public_holidays(self):
         if self._year >= 2020:
             # Our Lady of Penha.
-            self._add_holiday("Nossa Senhora da Penha", self._easter_sunday + td(days=+8))
+            self._add_holiday_8_days_past_easter("Nossa Senhora da Penha")
 
     def _populate_subdiv_go_public_holidays(self):
         # Foundation of Goiás city.

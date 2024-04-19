@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.constants import OPTIONAL, PUBLIC
@@ -56,7 +55,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 2023:
             # Great Day of Prayers.
-            self._add_holiday(tr("Store bededag"), self._easter_sunday + td(days=+26))
+            self._add_holiday_26_days_past_easter(tr("Store bededag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
