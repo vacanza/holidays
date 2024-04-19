@@ -441,9 +441,9 @@ class HolidayBase(Dict[date, str]):
                         date(self._year, getattr(gregorian, month.upper()), int(day)),
                     )
 
-            # Handle <last/nth> <weekday> of <month> patterns (e.g.,
-            # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
             elif len(tokens) == 7:
+                # Handle <last/nth> <weekday> of <month> patterns (e.g.,
+                # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
                 number, weekday, _of, month = tokens[3:7]
                 if (
                     _of == "of"
@@ -461,6 +461,23 @@ class HolidayBase(Dict[date, str]):
                             getattr(gregorian, month.upper()),
                             self._year,
                         ),
+                    )
+
+                # Handle <n> days <past/prior> easter patterns (e.g.,
+                # _add_holiday_8_days_past_easter() or
+                # _add_holiday_5_days_prior_easter()).
+                days, _days, delta_direction, _easter = tokens[3:7]
+                if (
+                    _days in {"days", "day"}
+                    and delta_direction in {"past", "prior"}
+                    and _easter == "easter"
+                    and len(days) < 3
+                    and days.isdigit()
+                ):
+                    return lambda name: self._add_holiday(
+                        name,
+                        self._easter_sunday
+                        + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
                     )
 
             # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
@@ -513,24 +530,6 @@ class HolidayBase(Dict[date, str]):
                             date(self._year, getattr(gregorian, month.upper()), int(day)),
                         ),
                     )
-
-            # Handle <n> days <past/prior> easter patterns (e.g.,
-            # _add_holiday_8_days_past_easter() or
-            # _add_holiday_5_days_prior_easter()).
-            nth_weekday_of_month_with_delta = re.match(
-                r"_add_holiday_(\d{1,2})_days?_(past|prior)_easter",
-                name,
-            )
-            if nth_weekday_of_month_with_delta:
-                (
-                    days,
-                    delta_direction,
-                ) = nth_weekday_of_month_with_delta.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    self._easter_sunday
-                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
-                )
 
             raise e  # No match.
 
