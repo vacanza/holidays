@@ -676,9 +676,13 @@ class HolidayBase(Dict[date, str]):
             .lower()
         )
 
-    @cached_property
+    @property
     def _sorted_categories(self):
-        return sorted(self.categories)
+        return (
+            [self.default_category] + sorted(self.categories - {self.default_category})
+            if self.default_category in self.categories
+            else sorted(self.categories)
+        )
 
     @classmethod
     def get_subdivision_aliases(cls) -> Dict[str, List]:
