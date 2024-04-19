@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR
@@ -123,9 +122,9 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # Tourism Week.
         name = tr("Semana de Turismo")
-        self._add_holiday(name, self._easter_sunday + td(days=-6))
-        self._add_holiday(name, self._easter_sunday + td(days=-5))
-        self._add_holiday(name, self._easter_sunday + td(days=-4))
+        self._add_holiday_6_days_prior_easter(name)
+        self._add_holiday_5_days_prior_easter(name)
+        self._add_holiday_4_days_prior_easter(name)
         self._add_holy_thursday(name)
         self._add_good_friday(name)
 

@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import JAN, APR, JUN, AUG, SEP, OCT, DEC
 from holidays.constants import BANK, HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -698,7 +696,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Easter Tuesday.
         if self._year <= 2010:
-            self._add_holiday("Easter Tuesday", self._easter_sunday + td(days=+2))
+            self._add_holiday_2_days_past_easter("Easter Tuesday")
 
         # ANZAC Day.
         if self._year >= 1921:

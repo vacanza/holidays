@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
@@ -78,7 +77,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Goede Vrijdag"))
 
         # Friday after Ascension Day.
-        self._add_holiday(tr("Vrijdag na O. L. H. Hemelvaart"), self._easter_sunday + td(days=+40))
+        self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))
 
         # Bank Holiday.
         self._add_christmas_day_two(tr("Banksluitingsdag"))

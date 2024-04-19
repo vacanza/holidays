@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
@@ -60,7 +59,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(name)
 
         # Day of Rejoicing.
-        self._add_holiday(tr("Paștele blajinilor"), self._easter_sunday + td(days=+8))
+        self._add_holiday_8_days_past_easter(tr("Paștele blajinilor"))
 
         # International Workers' Solidarity Day.
         self._add_labor_day(tr("Ziua internaţională a solidarităţii oamenilor muncii"))
