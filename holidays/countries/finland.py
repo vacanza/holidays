@@ -57,7 +57,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         name = tr("Helatorstai")
         if 1973 <= self._year <= 1990:
-            self._add_holiday(name, self._easter_sunday + td(days=+34))
+            self._add_holiday_34_days_past_easter(name)
         else:
             self._add_ascension_thursday(name)
 

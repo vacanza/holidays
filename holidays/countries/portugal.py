@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.constants import OPTIONAL, PUBLIC
@@ -184,11 +183,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_22(tr("Dia de Nossa Senhora das Graças"))
 
     def _populate_subdiv_05_public_holidays(self):
-        self._add_holiday(
-            # Feast of Our Lady of Mércoles.
-            tr("Dia de Nossa Senhora de Mércoles"),
-            self._easter_sunday + td(days=+16),
-        )
+        # Feast of Our Lady of Mércoles.
+        self._add_holiday_16_days_past_easter(tr("Dia de Nossa Senhora de Mércoles"))
 
     def _populate_subdiv_06_public_holidays(self):
         # St. Elizabeth's Day.

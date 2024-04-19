@@ -17,6 +17,7 @@ from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
+from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -105,6 +106,14 @@ class CountryStub3(HolidayBase):
 class CountryStub4(HolidayBase):
     country = "CS4"
     supported_categories = ("CUSTOM_1", "CUSTOM_2")
+
+
+class CountryStub5(HolidayBase, ChristianHolidays):
+    country = "CS5"
+
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
 
 class MarketStub1(EntityStub):
@@ -924,11 +933,17 @@ class TestStandardMethods(unittest.TestCase):
         self.assertEqual(self.hb._add_holiday_1st_mon_before_may_24(name), date(2023, 5, 22))
         self.assertEqual(self.hb._add_holiday_1st_sun_from_aug_31(name), date(2023, 9, 3))
 
+        h_chr = CountryStub5()
+        h_chr._populate(2023)
+        self.assertEqual(h_chr._add_holiday_8_days_past_easter(name), date(2023, 4, 17))
+        self.assertEqual(h_chr._add_holiday_5_days_prior_easter(name), date(2023, 4, 4))
+
         self.assertRaises(ValueError, lambda: self.hb._add_holiday_5th_fri_of_aug(name))
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_4th_nam_of_aug(name))
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_nam_12(name))
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_1st_fri_before_nam_29(name))
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_1st_fri_random_jan_29(name))
+        self.assertRaises(AttributeError, lambda: h_chr._add_holiday_18_days_past_eastr(name))
 
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_fe_15(name))
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_2_may_15(name))
