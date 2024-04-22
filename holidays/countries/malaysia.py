@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
@@ -60,8 +62,32 @@ class Malaysia(
     StaticHolidays,
 ):
     country = "MY"
-    observed_label = "%s (in lieu)"
+    default_language = "ms_MY"
+    # %s (estimated).
+    estimated_label = tr("%s (anggaran)")
+    # %s (in lieu).
+    observed_label = tr("Cuti %s")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("Cuti %s (anggaran)")
     subdivisions = (
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+    )
+    _deprecated_subdivisions = (
         "JHR",
         "KDH",
         "KTN",
@@ -79,53 +105,41 @@ class Malaysia(
         "SWK",
         "TRG",
     )
+    subdivisions_aliases = {
+        "Johor": "01",
+        "Kedah": "02",
+        "Kelantan": "03",
+        "Melaka": "04",
+        "Negeri Sembilan": "05",
+        "Pahang": "06",
+        "Pulau Pinang": "07",
+        "Perak": "08",
+        "Perlis": "09",
+        "Selangor": "10",
+        "Terengganu": "11",
+        "Sabah": "12",
+        "Sarawak": "13",
+        "WP Kuala Lumpur": "14",
+        "WP Labuan": "15",
+        "WP Putrajaya": "16",
+    }
+    supported_languages = ("en_US", "ms_MY")
 
     def __init__(self, *args, **kwargs):
         """
-        An subclass of :py:class:`HolidayBase` representing public holidays in
-        Malaysia.
+        References:
+            - `Holidays Act 1951 <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf>`_  # noqa: E501
+            - `Holidays Ordinance (Sabah Cap. 56) <https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf>`_  # noqa: E501
+            - `Public Holidays Ordinance (Sarawak Cap. 8) <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf>`_  # noqa: E501
+            - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`_
+            - https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8  # noqa: E501
+            - https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark  # noqa: E501
 
-        If ``subdiv`` for a state is not supplied, only nationwide holidays are
-        returned. The following ``subdiv`` state codes are used (ISO 3166-2
-        subdivision codes are not yet supported):
-
-        - JHR: Johor
-        - KDH: Kedah
-        - KTN: Kelantan
-        - MLK: Melaka
-        - NSN: Negeri Sembilan
-        - PHG: Pahang
-        - PRK: Perak
-        - PLS: Perlis
-        - PNG: Pulau Pinang
-        - SBH: Sabah
-        - SWK: Sarawak
-        - SGR: Selangor
-        - TRG: Terengganu
-        - KUL: FT Kuala Lumpur
-        - LBN: FT Labuan
-        - PJY: FT Putrajaya
-
-        Limitations:
-
-        - Prior to 2021: holidays are not accurate.
-        - 2027 and later: Thaipusam dates are are estimated, and so denoted.
-
-        Section 3 of Malaysian Holidays Act:
+        Section 3 of Holidays Act 1951:
         "If any day specified in the Schedule falls on Sunday then the day following shall be
         a public holiday and if such day is already a public holiday, then the day following
         shall be a public holiday".
-        In Johor and Kedah it's Friday -> Sunday,
-        in Kelantan and Terengganu it's Saturday -> Sunday
-
-        Reference: `Wikipedia
-        <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`__
-
-        Country created by: `Eden <https://github.com/jusce17>`__
-
-        Country maintained by: `Mike Borsetti <https://github.com/mborsetti>`__
-
-        See parameters and usage in :py:class:`HolidayBase`.
+        In Johor and Kedah it's Friday to Sunday, in Kelantan and Terengganu - Saturday to Sunday.
         """
         BuddhistCalendarHolidays.__init__(self, cls=MalaysiaBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=MalaysiaChineseHolidays, show_estimated=True)
@@ -136,259 +150,428 @@ class Malaysia(
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
+        self.dts_observed = set()
 
     def _populate_public_holidays(self):
-        dts_observed = set()
+        if self._year <= 1951:
+            return None
 
-        # Chinese New Year (one day in the States of Kelantan and Terengganu,
-        # two days in the other States).
-        dts_observed.add(self._add_chinese_new_years_day("Chinese New Year"))
-        # The second day of Chinese New Year is not a federal holiday in
-        # Kelantan and Terengganu. However, it is gazetted as a state holiday
-        # in both states, effectively making it a nationwide holiday.
-        dts_observed.add(self._add_chinese_new_years_day_two("Chinese New Year Holiday"))
+        self.dts_observed = set()
 
-        # Vesak Day.
-        dts_observed.add(self._add_vesak_may("Vesak Day"))
+        # Chinese New Year.
+        self.dts_observed.add(self._add_chinese_new_years_day(tr("Tahun Baharu Cina")))
 
-        # Labour Day.
-        dts_observed.add(self._add_labor_day("Labour Day"))
-
-        # Birthday of [His Majesty] the Yang di-Pertuan Agong.
-        name = "Birthday of SPB Yang di-Pertuan Agong"
-        if self._year <= 2017:
-            dts_observed.add(self._add_holiday_1st_sat_of_jun(name))
-        elif self._year == 2018:
-            dts_observed.add(self._add_holiday_sep_9(name))
-        elif self._year == 2020:
-            # https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8
-            dts_observed.add(self._add_holiday_jun_8(name))
-        else:
-            dts_observed.add(self._add_holiday_1st_mon_of_jun(name))
-
-        # Hari Kebangsaan or National Day.
-        dts_observed.add(self._add_holiday_aug_31("National Day"))
-
-        # Malaysia Day.
-        if self._year >= 2010:
-            dts_observed.add(self._add_holiday_sep_16("Malaysia Day"))
-
-        # Deepavali (Diwali).
-        if self.subdiv != "SWK":
-            dts_observed.add(self._add_diwali("Deepavali"))
-
-        # Christmas day.
-        dts_observed.add(self._add_christmas_day("Christmas Day"))
-
-        # Birthday of the Prophet Muhammad (s.a.w.).
-        # a.k.a. Hari Keputeraan Nabi Muhammad (Sabah Act)
-        dts_observed.update(
-            self._add_mawlid_day("Maulidur Rasul (Birthday of the Prophet Muhammad)")
+        self.dts_observed.add(
+            # Chinese New Year (Second Day).
+            self._add_chinese_new_years_day_two(tr("Tahun Baharu Cina (Hari Kedua)"))
         )
 
-        # Hari Raya Puasa (2 days).
-        # aka Eid al-Fitr;
-        # exact date of observance is announced yearly
-        name = "Hari Raya Puasa"
-        dts_observed.update(self._add_eid_al_fitr_day(name))
-        dts_observed.update(self._add_eid_al_fitr_day_two(f"Second day of {name}"))
+        # Vesak Day.
+        self.dts_observed.add(self._add_vesak_may(tr("Hari Wesak")))
 
-        # Arafat Day.
-        if self.subdiv == "TRG":
-            dts_observed.update(self._add_arafah_day("Arafat Day"))
+        if self._year >= 1973:
+            # Labor Day.
+            self.dts_observed.add(self._add_labor_day(tr("Hari Pekerja")))
 
-        # Hari Raya Haji.
-        name = "Hari Raya Haji"
-        dts_observed.update(self._add_eid_al_adha_day(name))
-        if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
-            dts_observed.update(self._add_eid_al_adha_day_two(name))
+        # Birthday of HM Yang di-Pertuan Agong.
+        name = tr("Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong")
+        if self._year <= 2016:
+            self.dts_observed.add(self._add_holiday_1st_sat_of_jun(name))
+        elif self._year <= 2019:
+            self.dts_observed.add(self._add_holiday_sep_9(name))
+        elif self._year == 2020:
+            self.dts_observed.add(self._add_holiday_jun_8(name))
+        else:
+            self.dts_observed.add(self._add_holiday_1st_mon_of_jun(name))
 
-        # New Year's Day
-        if self.subdiv in {
-            "KUL",
-            "LBN",
-            "MLK",
-            "NSN",
-            "PHG",
-            "PJY",
-            "PNG",
-            "PRK",
-            "SBH",
-            "SGR",
-            "SWK",
-        }:
-            dts_observed.add(self._add_new_years_day("New Year's Day"))
+        # National Day.
+        self.dts_observed.add(self._add_holiday_aug_31(tr("Hari Kebangsaan")))
 
-        # Isra and Mi'raj.
-        if self.subdiv in {"KDH", "NSN", "PLS"} or (self.subdiv == "TRG" and self._year >= 2020):
-            dts_observed.update(self._add_isra_and_miraj_day("Isra and Mi'raj"))
+        if self._year >= 2010:
+            # Malaysia Day.
+            self.dts_observed.add(self._add_holiday_sep_16(tr("Hari Malaysia")))
+
+        # Christmas Day.
+        self.dts_observed.add(self._add_christmas_day(tr("Hari Krismas")))
+
+        if self._year >= 1995:
+            # Islamic New Year.
+            self._add_islamic_new_year_day(tr("Awal Muharam"))
+
+        # Prophet Muhammad's Birthday.
+        self.dts_observed.update(self._add_mawlid_day(tr("Hari Keputeraan Nabi Muhammad S.A.W.")))
+
+        # Eid al-Fitr.
+        self.dts_observed.update(self._add_eid_al_fitr_day(tr("Hari Raya Puasa")))
+
+        # Eid al-Fitr (Second Day).
+        self.dts_observed.update(self._add_eid_al_fitr_day_two(tr("Hari Raya Puasa (Hari Kedua)")))
+
+        # Eid al-Adha.
+        self.dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Qurban")))
+
+    def _populate_subdiv_holidays(self):
+        if self._year <= 1951:
+            return None
+
+        deprecated_mapping = {
+            "JHR": "01",
+            "KDH": "02",
+            "KTN": "03",
+            "KUL": "14",
+            "LBN": "15",
+            "MLK": "04",
+            "NSN": "05",
+            "PHG": "06",
+            "PJY": "16",
+            "PLS": "09",
+            "PNG": "07",
+            "PRK": "08",
+            "SBH": "12",
+            "SGR": "10",
+            "SWK": "13",
+            "TRG": "11",
+        }
+        self.subdiv = deprecated_mapping.get(self.subdiv, self.subdiv)
+
+        if self.subdiv and self.subdiv not in {"13", "15"}:
+            # Deepavali.
+            self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
+
+        super()._populate_subdiv_holidays()
+
+        if self.subdiv in {"01", "02"}:
+            self._observed_rule = FRI_TO_NEXT_WORKDAY
+            self.weekend = {FRI, SAT}
+        elif self.subdiv in {"03", "11"}:
+            self._observed_rule = SAT_TO_NEXT_WORKDAY
+            self.weekend = {FRI, SAT}
+
+        if self.observed:
+            self._populate_observed(self.dts_observed)
+
+    def _populate_subdiv_01_public_holidays(self):
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 2015:
+            # Birthday of the Sultan of Johor.
+            self._add_holiday_mar_23(tr("Hari Keputeraan Sultan Johor"))
+
+        if self._year >= 2011:
+            # The Sultan of Johor Hol.
+            self._add_hari_hol_johor(tr("Hari Hol Almarhum Sultan Iskandar"))
 
         # Beginning of Ramadan.
-        if self.subdiv in {"JHR", "KDH", "MLK"}:
-            dts_observed.update(self._add_ramadan_beginning_day("Beginning of Ramadan"))
+        self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
+
+    def _populate_subdiv_02_public_holidays(self):
+        if self._year >= 2022:
+            # Thaipusam.
+            self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 2018:
+            # Birthday of The Sultan of Kedah.
+            name = tr("Hari Keputeraan Sultan Kedah")
+            if self._year == 2024:
+                self._add_holiday_jun_30(name)
+            else:
+                self._add_holiday_3rd_sun_of_jun(name)
+
+        # Isra' and Mi'raj.
+        self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
+
+        # Beginning of Ramadan.
+        self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
+
+        # Eid al-Adha (Second Day).
+        self.dts_observed.update(
+            self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
+        )
+
+    def _populate_subdiv_03_public_holidays(self):
+        if self._year >= 2010:
+            # Birthday of the Sultan of Kelantan.
+            name = tr("Hari Keputeraan Sultan Kelantan")
+            if self._year >= 2023:
+                self._add_holiday_sep_29(name)
+                self._add_holiday_sep_30(name)
+            elif self._year >= 2012:
+                self._add_holiday_nov_11(name)
+                self._add_holiday_nov_12(name)
+            else:
+                self._add_holiday_mar_30(name)
+                self._add_holiday_mar_31(name)
 
         # Nuzul Al-Quran Day.
-        if self.subdiv in {"KTN", "KUL", "LBN", "PHG", "PJY", "PLS", "PNG", "PRK", "SGR", "TRG"}:
-            dts_observed.update(self._add_nuzul_al_quran_day("Nuzul Al-Quran Day"))
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-        # Thaipusam.
-        if self.subdiv in {"JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"}:
-            dts_observed.add(self._add_thaipusam("Thaipusam"))
+        if self._year >= 2023:
+            # Arafat Day.
+            self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
-        # Federal Territory Day.
-        if self.subdiv in {"KUL", "LBN", "PJY"} and self._year >= 1974:
-            dts_observed.add(self._add_holiday_feb_1("Federal Territory Day"))
+        # Eid al-Adha (Second Day).
+        self.dts_observed.update(
+            self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
+        )
 
-        # State holidays (single state)
+    def _populate_subdiv_04_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
 
-        if self.subdiv == "MLK":
-            if self._year >= 1989:
-                dts_observed.add(
-                    self._add_holiday_apr_15("Declaration of Malacca as a Historical City")
+        if self._year >= 2024:
+            self.dts_observed.add(
+                # Declaration of Independence Day.
+                self._add_holiday_feb_20(tr("Hari Pengisytiharan Tarikh Kemerdekaan"))
+            )
+        elif self._year >= 1989:
+            self.dts_observed.add(
+                self._add_holiday_apr_15(
+                    # Declaration of Malacca as a Historical City.
+                    tr("Hari Perisytiharan Melaka Sebagai Bandaraya Bersejarah")
                 )
-
-            name = "Birthday of the Governor of Malacca"
-            dts_observed.add(
-                self._add_holiday_aug_24(name)
-                if self._year >= 2020
-                else self._add_holiday_2nd_fri_of_oct(name)
             )
 
-        elif self.subdiv == "NSN" and self._year >= 2009:
-            dts_observed.add(self._add_holiday_jan_14("Birthday of the Sultan of Negeri Sembilan"))
+        # Birthday of the Governor of Malacca.
+        name = tr("Hari Jadi Yang di-Pertua Negeri Melaka")
+        self.dts_observed.add(
+            self._add_holiday_aug_24(name)
+            if self._year >= 2020
+            else self._add_holiday_2nd_fri_of_oct(name)
+        )
 
-        elif self.subdiv == "PHG" and self._year >= 1975:
-            name = "Hari Hol of Pahang"
-            dts_observed.add(
+        # Beginning of Ramadan.
+        self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
+
+    def _populate_subdiv_05_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 2009:
+            self.dts_observed.add(
+                self._add_holiday_jan_14(
+                    # Birthday of the Sultan of Negeri Sembilan.
+                    tr("Hari Keputeraan Yang di-Pertuan Besar Negeri Sembilan")
+                )
+            )
+
+        # Isra' and Mi'raj.
+        self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
+
+    def _populate_subdiv_06_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        if self._year >= 1975:
+            # The Sultan of Pahang Hol.
+            name = tr("Hari Hol Sultan Pahang")
+            self.dts_observed.add(
                 self._add_holiday_may_22(name)
-                if self._year >= 2021
+                if self._year >= 2020
                 else self._add_holiday_may_7(name)
             )
 
-            name = "Birthday of the Sultan of Pahang"
-            dts_observed.add(
+            # Birthday of the Sultan of Pahang.
+            name = tr("Hari Keputeraan Sultan Pahang")
+            self.dts_observed.add(
                 self._add_holiday_jul_30(name)
                 if self._year >= 2019
                 else self._add_holiday_oct_24(name)
             )
 
-        elif self.subdiv == "PNG":
-            if self._year >= 2009:
-                dts_observed.add(self._add_holiday_jul_7("George Town Heritage Day"))
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-            dts_observed.add(
-                self._add_holiday_2nd_sat_of_jul("Birthday of the Governor of Penang")
+    def _populate_subdiv_07_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 2009:
+            self.dts_observed.add(
+                # George Town Heritage Day.
+                self._add_holiday_jul_7(tr("Hari Ulang Tahun Perisytiharan Tapak Warisan Dunia"))
             )
 
-        elif self.subdiv == "PLS" and self._year >= 2000:
-            name = "Birthday of The Raja of Perlis"
-            dts_observed.add(
+        self.dts_observed.add(
+            # Birthday of the Governor of Penang.
+            self._add_holiday_2nd_sat_of_jul(tr("Hari Jadi Yang di-Pertua Negeri Pulau Pinang"))
+        )
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    def _populate_subdiv_08_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        # Birthday of the Sultan of Perak.
+        name = tr("Hari Keputeraan Sultan Perak")
+        if self._year >= 2018:
+            self._add_holiday_1st_fri_of_nov(name)
+        else:
+            self._add_holiday_nov_27(name)
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    def _populate_subdiv_09_public_holidays(self):
+        if self._year >= 2000:
+            # Birthday of the Raja of Perlis.
+            name = tr("Hari Ulang Tahun Keputeraan Raja Perlis")
+            self.dts_observed.add(
                 self._add_holiday_jul_17(name)
-                if self._year >= 2018
+                if 2018 <= self._year <= 2021
                 else self._add_holiday_may_17(name)
             )
 
-        elif self.subdiv == "SGR":
-            dts_observed.add(self._add_holiday_dec_11("Birthday of The Sultan of Selangor"))
+        # Isra' and Mi'raj.
+        self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
 
-        elif self.subdiv == "SWK":
-            # Dayak Festival Day (the first day of June) and the following day.
-            dts_observed.add(self._add_holiday_jun_1("Gawai Dayak"))
-            dts_observed.add(self._add_holiday_jun_2("Gawai Dayak (Second day)"))
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-            # Birthday of Tuan Yang Terutama Yang di-Pertua Negeri Sarawak
-            # (the second Saturday of October).
-            dts_observed.add(
-                self._add_holiday_2nd_sat_of_oct("Birthday of the Governor of Sarawak")
-            )
+        # Eid al-Adha (Second Day).
+        self.dts_observed.update(
+            self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
+        )
 
-            # Sarawak Independence Day
-            if self._year >= 2017:
-                dts_observed.add(self._add_holiday_jul_22("Sarawak Day"))
+    def _populate_subdiv_10_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
 
-        elif self.subdiv == "TRG" and self._year >= 2000:
-            dts_observed.add(
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        # Birthday of The Sultan of Selangor.
+        self.dts_observed.add(self._add_holiday_dec_11(tr("Hari Keputeraan Sultan Selangor")))
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    def _populate_subdiv_11_public_holidays(self):
+        if self._year >= 2000:
+            self.dts_observed.add(
                 self._add_holiday_mar_4(
-                    "Anniversary of the Installation of the Sultan of Terengganu"
+                    # Anniversary of the Installation of the Sultan of Terengganu.
+                    tr("Hari Ulang Tahun Pertabalan Sultan Terengganu")
                 )
             )
 
-            dts_observed.add(self._add_holiday_apr_26("Birthday of the Sultan of Terengganu"))
+            self.dts_observed.add(
+                # Birthday of the Sultan of Terengganu.
+                self._add_holiday_apr_26(tr("Hari Keputeraan Sultan Terengganu"))
+            )
 
-        if self.subdiv in {"JHR", "KDH"}:
-            self._observed_rule = FRI_TO_NEXT_WORKDAY
-            self.weekend = {FRI, SAT}
-        elif self.subdiv in {"KTN", "TRG"}:
-            self._observed_rule = SAT_TO_NEXT_WORKDAY
-            self.weekend = {FRI, SAT}
+        if self._year >= 2020:
+            # Isra' and Mi'raj.
+            self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
 
-        if self.observed:
-            self._populate_observed(dts_observed)
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-            # Special cases observed from previous year.
-            if self._year == 2007 and self.subdiv not in {"JHR", "KDH", "KTN", "TRG"}:
-                self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")
+        # Arafat Day.
+        self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
-            if self._year == 2007 and self.subdiv == "TRG":
-                self._add_holiday_jan_2(self.observed_label % "Arafat Day")
+        self.dts_observed.update(
+            # Eid al-Adha (Second Day).
+            self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
+        )
 
-        # The last two days in May (Pesta Kaamatan).
-        # (Sarawak Act)
-        # Day following a Sunday is not a holiday
-        if self.subdiv in {"LBN", "SBH"}:
-            self._add_holiday_may_30("Pesta Kaamatan")
-            self._add_holiday_may_31("Pesta Kaamatan (Second day)")
+    def _populate_subdiv_12_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
 
-        # Other holidays (decrees etc.)
-
-        # Awal Muharram.
-        self._add_islamic_new_year_day("Awal Muharram (Hijri New Year)")
-
-        # Special holidays (states)
-        if self._year == 2021 and self.subdiv in {"KUL", "LBN", "PJY"}:
-            self._add_holiday_dec_3("Malaysia Cup Holiday")
-
-        if self._year == 2022 and self.subdiv == "KDH":
-            self._add_holiday_jan_18("Thaipusam")
-
-        if self._year == 2022 and self.subdiv in {"JHR", "KDH", "KTN", "TRG"}:
-            self._add_holiday_may_4("Labour Day Holiday")
-
-        # Multiple state holidays.
         # Good Friday.
-        if self.subdiv in {"SBH", "SWK"}:
-            self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
-        # Single state holidays.
-        if self.subdiv == "JHR":
-            if self._year >= 2015:
-                self._add_holiday_mar_23("Birthday of the Sultan of Johor")
+        # Pesta Kaamatan.
+        name = tr("Pesta Kaamatan")
+        self._add_holiday_may_30(name)
+        self._add_holiday_may_31(name)
 
-            if self._year >= 2011:
-                self._add_hari_hol_johor("Hari Hol of Sultan Iskandar of Johor")
+        # Birthday of the Governor of Sabah.
+        self._add_holiday_1st_sat_of_oct(tr("Hari Jadi Yang di-Pertua Negeri Sabah"))
 
-        elif self.subdiv == "KDH" and self._year >= 2020:
-            self._add_holiday_3rd_sun_of_jun("Birthday of The Sultan of Kedah")
+        if self._year >= 2019:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Christmas Eve"))
 
-        elif self.subdiv == "KTN" and self._year >= 2010:
-            name = "Birthday of the Sultan of Kelantan"
-            self._add_holiday_nov_11(name)
-            self._add_holiday_nov_12(name)
+    def _populate_subdiv_13_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
 
-        elif self.subdiv == "PRK":
-            # This Holiday used to be on 27th until 2017
-            # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak
-            name = "Birthday of the Sultan of Perak"
-            if self._year >= 2018:
-                self._add_holiday_1st_fri_of_nov(name)
-            else:
-                self._add_holiday_nov_27(name)
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        elif self.subdiv == "SBH":
-            self._add_holiday_1st_sat_of_oct("Birthday of the Governor of Sabah")
+        if self._year >= 1965:
+            # Dayak Festival Day.
+            name = tr("Perayaan Hari Gawai Dayak")
+            self.dts_observed.add(self._add_holiday_jun_1(name))
+            self.dts_observed.add(self._add_holiday_jun_2(name))
 
-            if self._year >= 2019:
-                self._add_christmas_eve("Christmas Eve")
+        # Birthday of the Governor of Sarawak.
+        self._add_holiday_2nd_sat_of_oct(tr("Hari Jadi Yang di-Pertua Negeri Sarawak"))
+
+        if self._year >= 2017:
+            # Sarawak Independence Day.
+            self.dts_observed.add(self._add_holiday_jul_22(tr("Hari Kemerdekaan Sarawak")))
+
+    def _populate_subdiv_14_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 1974:
+            # Federal Territory Day.
+            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    def _populate_subdiv_15_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        if self._year >= 1974:
+            # Federal Territory Day.
+            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
+
+        # Pesta Kaamatan.
+        name = tr("Pesta Kaamatan")
+        self._add_holiday_may_30(name)
+        self._add_holiday_may_31(name)
+
+        if self._year >= 2014:
+            # Deepavali.
+            self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    def _populate_subdiv_16_public_holidays(self):
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        # Thaipusam.
+        self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
+
+        if self._year >= 1974:
+            # Federal Territory Day.
+            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
+
+        # Nuzul Al-Quran Day.
+        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
 
 class MY(Malaysia):
@@ -556,7 +739,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
 
     HARI_HOL_JOHOR_DATES = {
         2011: (JAN, 12),
-        2012: ((JAN, 1), (DEC, 20)),
+        2012: (DEC, 20),
         2013: (DEC, 10),
         2014: (NOV, 29),
         2015: (NOV, 19),
@@ -567,6 +750,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (SEP, 24),
         2021: (SEP, 13),
         2022: (SEP, 3),
+        2023: (AUG, 23),
         2024: (AUG, 11),
     }
 
@@ -593,6 +777,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 20),
         2021: (AUG, 10),
         2022: (JUL, 30),
+        2023: (JUL, 19),
         2024: (JUL, 7),
     }
 
@@ -646,8 +831,10 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 29),
         2021: (OCT, 19),
         2022: (OCT, 10),
+        2023: (SEP, 28),
         2024: (SEP, 16),
     }
+
     NUZUL_AL_QURAN_DATES = {
         2001: (DEC, 3),
         2002: (NOV, 22),
@@ -704,11 +891,132 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class MalaysiaStaticHolidays:
+    # General election additional holiday.
+    election_polling_day = tr("Cuti Peristiwa (pilihan raya umum)")
+
+    # Additional holiday.
+    election_additional_holiday = "Cuti Peristiwa"
+
+    # Eid al-Adha.
+    eid_al_adha = tr("Hari Raya Qurban")
+
+    # Labor Day.
+    labor_day = tr("Hari Pekerja")
+
+    # Malaysia Cup Holiday.
+    malaysia_cup_holiday = tr("Cuti Piala Malaysia")
+
+    # Day of Installation of the 15th Yang di-Pertuan Agong.
+    yang_di_pertuan_agong_15_installation = tr("Hari Pertabalan Yang di-Pertuan Agong ke-15")
+
+    # Day of Installation of the 16th Yang di-Pertuan Agong.
+    yang_di_pertuan_agong_16_installation = tr("Hari Pertabalan Yang di-Pertuan Agong ke-16")
+
+    # Eid al-Fitr (additional holiday).
+    eid_al_fitr_additional_holiday = tr("Hari Raya Puasa (pergantian hari)")
+
+    # Arafat Day.
+    arafat_day = tr("Hari Arafah")
+
+    # Additional holiday in commemoration of the 2017 SEA Games.
+    additional_holiday_2017_sea_games = tr("Cuti tambahan sempena memperingati SAT 2017")
+
     special_public_holidays = {
-        # The years 1955 1959 1995 seems to have the elections
-        # one weekday but I am not sure if they were marked as
-        # holidays.
-        1999: (NOV, 29, "Malaysia General Election Holiday"),
-        2018: (MAY, 9, "Malaysia General Election Holiday"),
-        2019: (JUL, 30, "Installation of New King"),
+        1999: (NOV, 29, election_polling_day),
+        2017: (
+            (APR, 24, yang_di_pertuan_agong_15_installation),
+            (SEP, 4, additional_holiday_2017_sea_games),
+        ),
+        2018: (MAY, 9, election_polling_day),
+        2019: (JUL, 30, yang_di_pertuan_agong_16_installation),
+        2022: (
+            (NOV, 18, election_polling_day),
+            (NOV, 19, election_polling_day),
+            (NOV, 28, election_additional_holiday),
+        ),
+        2023: (APR, 21, eid_al_fitr_additional_holiday),
+    }
+
+    special_14_public_holidays = {
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+
+    special_15_public_holidays = {
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+
+    special_16_public_holidays = {
+        2021: (DEC, 3, malaysia_cup_holiday),
+    }
+
+    special_13_public_holidays = {
+        2018: (
+            (MAY, 17, election_additional_holiday),
+            (MAY, 18, election_additional_holiday),
+        ),
+    }
+
+    special_01_public_holidays_observed = {
+        2022: (MAY, 4, labor_day),
+    }
+
+    special_02_public_holidays_observed = {
+        2022: (MAY, 4, labor_day),
+    }
+
+    special_03_public_holidays_observed = {
+        2022: (MAY, 4, labor_day),
+    }
+
+    special_14_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_15_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_04_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_05_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_06_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_16_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_09_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_07_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_08_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_12_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_10_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_13_public_holidays_observed = {
+        2007: (JAN, 2, eid_al_adha),
+    }
+
+    special_11_public_holidays_observed = {
+        2007: (JAN, 2, arafat_day),
+        2022: (MAY, 4, labor_day),
     }
