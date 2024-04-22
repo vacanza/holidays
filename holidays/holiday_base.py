@@ -953,7 +953,7 @@ class HolidayBase(Dict[date, str]):
         """
         direction = +1 if n > 0 else -1
         dt = self.__keytransform__(key)
-        for i in range(abs(n)):
+        for _ in range(abs(n)):
             dt += timedelta(days=direction)
             while not self.is_workday(dt):
                 dt += timedelta(days=direction)
