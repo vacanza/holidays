@@ -1119,10 +1119,32 @@ class TestUS(CommonCountryTests, TestCase):
             "2022-04-25",
             "2023-04-24",
         )
-        for subdiv in ("AL", "MS", "SC"):
+        for subdiv in ("AL", "SC"):
             self.assertHolidayName(name, self.state_hols[subdiv], range(1866, 2050))
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1866))
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+        self.assertHolidayName(
+            name,
+            self.state_hols["MS"],
+            "2010-04-26",
+            "2011-04-25",
+            "2012-04-30",
+            "2013-04-29",
+            "2014-04-28",
+            "2015-04-27",
+            "2016-04-25",
+            "2017-04-24",
+            "2018-04-30",
+            "2019-04-29",
+            "2020-04-27",
+            "2021-04-26",
+            "2022-04-25",
+            "2023-04-24",
+            "2024-04-29",
+        )
+        self.assertHolidayName(name, self.state_hols["MS"], range(1866, 2050))
+        self.assertNoHolidayName(name, self.state_hols["MS"], range(1865, 1866))
 
         self.assertHolidayName(
             name, self.state_hols["TX"], (f"{year}-01-19" for year in range(1931, 2050))

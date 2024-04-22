@@ -609,7 +609,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         # Confederate Memorial Day
         if self._year >= 1866:
-            self._add_holiday_4th_mon_of_apr("Confederate Memorial Day")
+            self._add_holiday_last_mon_of_apr("Confederate Memorial Day")
 
     def _populate_subdiv_mt_public_holidays(self):
         # Election Day
