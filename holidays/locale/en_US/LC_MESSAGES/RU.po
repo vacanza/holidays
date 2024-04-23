@@ -83,8 +83,11 @@ msgstr "Day of consent and reconciliation"
 msgid "Годовщина Великой Октябрьской социалистической революции"
 msgstr "Anniversary of the Great October Socialist Revolution"
 
+#. Date format (see strftime() Format Codes).
 msgid "%d.%m.%Y"
 msgstr "%m/%d/%Y"
 
+#. Postpone of %s.
+#, c-format
 msgid "Перенос %s"
 msgstr "Postpone of %s"
