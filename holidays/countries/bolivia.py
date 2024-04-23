@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -147,7 +146,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_o_public_holidays(self):
         # Carnival in Oruro.
-        self._add_holiday(tr("Carnaval de Oruro"), self._easter_sunday + td(days=-51))
+        self._add_holiday_51_days_prior_easter(tr("Carnaval de Oruro"))
 
     def _populate_subdiv_s_public_holidays(self):
         # Santa Cruz Day.

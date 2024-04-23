@@ -251,12 +251,11 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         self._add_holiday_4th_mon_of_sep("South Canterbury Anniversary Day")
 
     def _populate_subdiv_stl_public_holidays(self):
-        dt = (
-            self._easter_sunday + td(days=+2)
-            if self._year >= 2012
-            else self._get_nearest_monday(JAN, 17)
-        )
-        self._add_holiday("Southland Anniversary Day", dt)
+        name = "Southland Anniversary Day"
+        if self._year >= 2012:
+            self._add_holiday_2_days_past_easter(name)
+        else:
+            self._add_holiday(name, self._get_nearest_monday(JAN, 17))
 
     def _populate_subdiv_tki_public_holidays(self):
         self._add_holiday_2nd_mon_of_mar("Taranaki Anniversary Day")

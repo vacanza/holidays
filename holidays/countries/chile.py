@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
@@ -100,11 +99,12 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_ascension_thursday(tr("Ascensión del Señor"))
 
         if self._year <= 1967 or 1987 <= self._year <= 2006:
-            self._add_holiday(
-                # Corpus Christi.
-                tr("Corpus Christi"),
-                self._easter_sunday + td(days=+60 if self._year <= 1999 else +57),
-            )
+            # Corpus Christi.
+            name = tr("Corpus Christi")
+            if self._year <= 1999:
+                self._add_corpus_christi_day(name)
+            else:
+                self._add_holiday_57_days_past_easter(name)
 
         if self._year >= 1932:
             # Labor Day.
