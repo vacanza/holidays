@@ -31,10 +31,11 @@ class TimorLeste(
     References:
     - https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf  # 2005 Law
     - http://timor-leste.gov.tl/?p=14494&lang=en  # 2016 Amendment
+    - http://timor-leste.gov.tl/?p=30266&lang=en  # 2022
     - http://timor-leste.gov.tl/?p=31750&lang=en  # 2023 (en_US)
     - http://timor-leste.gov.tl/?p=31750&lang=pt  # 2023 (pt_PT)
     - http://timor-leste.gov.tl/?p=31750&lang=tp  # 2023 (tet)
-    - http://timor-leste.gov.tl/?p=30266&lang=en  # 2022
+    - http://timor-leste.gov.tl/?p=35833&lang=en  # 2024
 
     Limitations:
 
@@ -201,6 +202,7 @@ class TimorLesteIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 19),
         2022: (JUL, 9),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     EID_AL_FITR_DATES = {
@@ -396,20 +398,28 @@ class TimorLesteStaticHolidays:
             (JAN, 2, special_national_holidays),
             # http://timor-leste.gov.tl/?p=23607&lang=en
             (FEB, 26, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=25455&lang=en
+            (AUG, 20, special_national_holidays),
             # http://timor-leste.gov.tl/?p=25502&lang=en
             (AUG, 31, special_national_holidays),
             # http://timor-leste.gov.tl/?p=26030&lang=en
             (NOV, 3, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=26365&lang=en
+            (DEC, 24, special_national_holidays),
         ),
         2021: (
             # http://timor-leste.gov.tl/?p=26865&lang=en
             (FEB, 12, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=26896&lang=en
+            (FEB, 17, special_national_holidays),
             # http://timor-leste.gov.tl/?p=29682&lang=en
             (NOV, 3, special_national_holidays),
         ),
         2022: (
             # http://timor-leste.gov.tl/?p=30029&lang=en
             (FEB, 1, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=30194&lang=en
+            (MAR, 2, special_national_holidays),
             # http://timor-leste.gov.tl/?p=30254&lang=en
             (MAR, 18, presidential_election),
             # http://timor-leste.gov.tl/?p=30429&lang=en
@@ -417,11 +427,23 @@ class TimorLesteStaticHolidays:
             (APR, 18, presidential_election),
             (APR, 19, presidential_election),
             (APR, 20, presidential_election),
+            # http://timor-leste.gov.tl/?p=31404&lang=en
+            (OCT, 31, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=31574&lang=en
+            (DEC, 9, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=31633&lang=en
+            (DEC, 26, special_national_holidays),
         ),
         2023: (
             # http://timor-leste.gov.tl/?p=31641&lang=en
             (JAN, 2, special_national_holidays),
             # http://timor-leste.gov.tl/?p=31798&lang=en
             (JAN, 23, special_national_holidays),
+            # http://timor-leste.gov.tl/?p=32191&lang=en
+            (FEB, 22, special_national_holidays),
+        ),
+        2024: (
+            # http://timor-leste.gov.tl/?p=36002&lang=en
+            (FEB, 14, special_national_holidays),
         ),
     }
