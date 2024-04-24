@@ -21,8 +21,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5.1.0
+        uses: actions/setup-python@v5
         with:
+          check-latest: true
           python-version: '3.12'
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
@@ -46,18 +47,33 @@ jobs:
           - '3.12'
           - 'pypy-3.9'
           - 'pypy-3.10'
+        exclude:
+          - os: 'macos-latest'
+            python-version: '3.8'
+          - os: 'macos-latest'
+            python-version: '3.9'
+          - os: 'macos-latest'
+            python-version: 'pypy-3.9'
+        include:
+          - os: 'macos-13'
+            python-version: '3.8'
+          - os: 'macos-13'
+            python-version: '3.9'
+          - os: 'macos-13'
+            python-version: 'pypy-3.9'
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.1.0
+        uses: actions/setup-python@v5
         with:
+          allow-prereleases: true
           cache: pip
           cache-dependency-path: |
             requirements/runtime.txt
             requirements/tests.txt
+          check-latest: true
           python-version: ${{ matrix.python-version }}
-          allow-prereleases: true
 
       - name: Install dependencies
         run: |
@@ -84,10 +100,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5.1.0
+        uses: actions/setup-python@v5
         with:
           cache: pip
           cache-dependency-path: requirements/runtime.txt
+          check-latest: true
           python-version: '3.12'
 
       - name: Install dependencies
@@ -131,12 +148,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5.1.0
+        uses: actions/setup-python@v5
         with:
           cache: pip
           cache-dependency-path: |
             requirements/runtime.txt
             requirements/tests.txt
+          check-latest: true
           python-version: '3.12'
 
       - name: Get package artifacts
