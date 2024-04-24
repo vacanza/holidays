@@ -303,7 +303,7 @@ class HongKong(
                 self._add_dragon_boat_festival("Tuen Ng Festival")
 
         # Hong Kong Special Administrative Region Establishment Day.
-        if self._year <= 1982 or self._year >= 1997:
+        if self._year >= 1997:
             if self._is_sunday(JUL, 1):
                 # 香港特別行政區成立紀念日翌日.
                 self._add_holiday_jul_2(
