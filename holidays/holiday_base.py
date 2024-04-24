@@ -23,7 +23,6 @@ from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Union, cast
 
 from dateutil.parser import parse
 
-from holidays.calendars import gregorian
 from holidays.calendars.gregorian import (
     MON,
     TUE,
@@ -34,6 +33,9 @@ from holidays.calendars.gregorian import (
     SUN,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
+    DAYS,
+    MONTHS,
+    WEEKDAYS,
 )
 from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
 from holidays.helpers import _normalize_arguments, _normalize_tuple
@@ -434,31 +436,29 @@ class HolidayBase(Dict[date, str]):
 
             # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
             if len(tokens) == 5:
-                month, day = tokens[3:5]
-                if len(month) == 3 and month.isalpha() and len(day) < 3 and day.isdigit():
+                *_, month, day = tokens
+                if month in MONTHS and day in DAYS:
                     return lambda name: self._add_holiday(
                         name,
-                        date(self._year, getattr(gregorian, month.upper()), int(day)),
+                        date(self._year, MONTHS[month], int(day)),
                     )
 
             elif len(tokens) == 7:
                 # Handle <last/nth> <weekday> of <month> patterns (e.g.,
                 # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
-                number, weekday, _of, month = tokens[3:7]
+                *_, number, weekday, _of, month = tokens
                 if (
                     _of == "of"
                     and (number == "last" or number[0].isdigit())
-                    and len(weekday) == 3
-                    and weekday.isalpha()
-                    and len(month) == 3
-                    and month.isalpha()
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
                 ):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_of_month(
                             -1 if number == "last" else int(number[0]),
-                            getattr(gregorian, weekday.upper()),
-                            getattr(gregorian, month.upper()),
+                            WEEKDAYS[weekday],
+                            MONTHS[month],
                             self._year,
                         ),
                     )
@@ -466,7 +466,7 @@ class HolidayBase(Dict[date, str]):
                 # Handle <n> days <past/prior> easter patterns (e.g.,
                 # _add_holiday_8_days_past_easter() or
                 # _add_holiday_5_days_prior_easter()).
-                days, _days, delta_direction, _easter = tokens[3:7]
+                *_, days, _days, delta_direction, _easter = tokens
                 if (
                     _days in {"days", "day"}
                     and delta_direction in {"past", "prior"}
@@ -484,7 +484,7 @@ class HolidayBase(Dict[date, str]):
             # _add_holiday_1_day_past_1st_fri_of_aug() or
             # _add_holiday_5_days_prior_last_fri_of_aug()).
             elif len(tokens) == 10:
-                days, _days, delta_direction, number, weekday, _of, month = tokens[3:10]
+                *_, days, _days, delta_direction, number, weekday, _of, month = tokens
                 if (
                     _days in {"days", "day"}
                     and delta_direction in {"past", "prior"}
@@ -492,17 +492,15 @@ class HolidayBase(Dict[date, str]):
                     and len(days) < 3
                     and days.isdigit()
                     and (number == "last" or number[0].isdigit())
-                    and len(weekday) == 3
-                    and weekday.isalpha()
-                    and len(month) == 3
-                    and month.isalpha()
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
                 ):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_of_month(
                             -1 if number == "last" else int(number[0]),
-                            getattr(gregorian, weekday.upper()),
-                            getattr(gregorian, month.upper()),
+                            WEEKDAYS[weekday],
+                            MONTHS[month],
                             self._year,
                         )
                         + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
@@ -511,23 +509,20 @@ class HolidayBase(Dict[date, str]):
             # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
             # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
             elif len(tokens) == 8:
-                number, weekday, date_direction, month, day = tokens[3:8]
+                *_, number, weekday, date_direction, month, day = tokens
                 if (
                     date_direction in {"before", "from"}
                     and number[0].isdigit()
-                    and len(weekday) == 3
-                    and weekday.isalpha()
-                    and len(month) == 3
-                    and month.isalpha()
-                    and len(day) < 3
-                    and day.isdigit()
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
+                    and day in DAYS
                 ):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_from(
                             -int(number[0]) if date_direction == "before" else +int(number[0]),
-                            getattr(gregorian, weekday.upper()),
-                            date(self._year, getattr(gregorian, month.upper()), int(day)),
+                            WEEKDAYS[weekday],
+                            date(self._year, MONTHS[month], int(day)),
                         ),
                     )
 
