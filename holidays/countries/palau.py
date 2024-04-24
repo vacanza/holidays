@@ -30,7 +30,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     as a holiday.
 
     As there's no record of President's Day (Jun 1) and Independence Day (Oct 1) being
-    legal day prior to 2017 as seen in RPRL 10-15, they shall be assumed to start in 2018
+    legal holiday before 2017, as seen in RPRL 10-15, they shall be assumed to start in 2018
     for our current implementation.
     """
 
