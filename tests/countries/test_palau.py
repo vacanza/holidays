@@ -62,7 +62,7 @@ class TestPalau(CommonCountryTests, TestCase):
             "2012-05-28",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, 2010, 2014)
+        self.assertNoHolidayName(name, range(1981, 2011), range(2013, 2040))
 
     def test_family_day(self):
         name = "Family Day"
@@ -78,10 +78,12 @@ class TestPalau(CommonCountryTests, TestCase):
             "2024-11-22",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, 2016)
+        self.assertNoHolidayName(name, range(1981, 2017))
 
     def test_presidents_day(self):
-        self.assertHoliday(f"{year}-06-01" for year in range(2018, 2077))
+        name = "President's Day"
+        self.assertHolidayName(name, (f"{year}-06-01" for year in range(2018, 2040)))
+        self.assertNoHolidayName(name, range(1981, 2018))
         self.assertNoNonObservedHoliday(
             "2019-05-30",
             "2024-05-30",
@@ -91,7 +93,9 @@ class TestPalau(CommonCountryTests, TestCase):
         )
 
     def test_independence_day(self):
-        self.assertHoliday(f"{year}-10-01" for year in range(2018, 2077))
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(2018, 2040)))
+        self.assertNoHolidayName(name, range(1981, 2018))
         self.assertNoNonObservedHoliday(
             "2022-09-30",
             "2023-10-02",

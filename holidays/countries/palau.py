@@ -68,7 +68,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 2011 <= self._year <= 2012:
             # Memorial Day.
-            self._add_observed(self._add_holiday_last_mon_of_may("Memorial Day"))
+            self._add_holiday_last_mon_of_may("Memorial Day")
 
         if self._year >= 2018:
             # President's Day.
@@ -78,7 +78,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_jul_9("Constitution Day"))
 
         # Labor Day.
-        self._add_observed(self._add_holiday_1st_mon_of_sep("Labor Day"))
+        self._add_holiday_1st_mon_of_sep("Labor Day")
 
         if self._year >= 2018:
             # Independence Day.
@@ -88,11 +88,11 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_united_nations_day("United Nations Day"))
 
         # Thanksgiving Day.
-        self._add_observed(self._add_holiday_4th_thu_of_nov("Thanksgiving Day"))
+        self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
         if self._year >= 2017:
             # Family Day.
-            self._add_observed(self._add_holiday_4th_fri_of_nov("Family Day"))
+            self._add_holiday_4th_fri_of_nov("Family Day")
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"))
