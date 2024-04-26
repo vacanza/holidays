@@ -115,6 +115,7 @@ from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from .norway import Norway, NO, NOR
 from .pakistan import Pakistan, PK, PAK
+from .palau import Palau, PW, PLW
 from .panama import Panama, PA, PAN
 from .papua_new_guinea import PapuaNewGuinea, PG, PNG
 from .paraguay import Paraguay, PY, PRY

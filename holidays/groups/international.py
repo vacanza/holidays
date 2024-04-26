@@ -194,3 +194,13 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/Victory_Day_(9_May)
         """
         return self._add_holiday_may_9(name)
+
+    def _add_united_nations_day(self, name):
+        """
+        Add United Nations Day (Oct 24th)
+
+        United Nations Day is an annual commemorative day, reflecting the
+        official creation of the United Nations on 24 October 1945.
+        https://en.wikipedia.org/wiki/United_Nations_Day
+        """
+        return self._add_holiday_oct_24(name)
