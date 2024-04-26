@@ -945,6 +945,14 @@ class TestStandardMethods(unittest.TestCase):
         self.assertRaises(AttributeError, lambda: self.hb._add_holiday_1st_fri_random_jan_29(name))
         self.assertRaises(AttributeError, lambda: h_chr._add_holiday_18_days_past_eastr(name))
 
+        self.assertRaises(AttributeError, lambda: self.hb._add_holiday_fe_15(name))
+        self.assertRaises(AttributeError, lambda: self.hb._add_holiday_2_may_15(name))
+        self.assertRaises(AttributeError, lambda: self.hb._add_holiday_3th_su_of_aug(name))
+        self.assertRaises(
+            AttributeError, lambda: self.hb._add_holiday_2_days_past_1st_sat_of_ap(name)
+        )
+        self.assertRaises(AttributeError, lambda: self.hb._add_holiday_1st_sat_from_fe_10(name))
+
     def test_getitem(self):
         self.assertEqual(self.hb["2014-01-01"], "New Year's Day")
         self.assertEqual(self.hb.get("2014-01-01"), "New Year's Day")
