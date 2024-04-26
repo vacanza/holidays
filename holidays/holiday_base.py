@@ -446,9 +446,9 @@ class HolidayBase(Dict[date, str]):
             elif len(tokens) == 7:
                 # Handle <last/nth> <weekday> of <month> patterns (e.g.,
                 # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
-                *_, number, weekday, _of, month = tokens
+                *_, number, weekday, of, month = tokens
                 if (
-                    _of == "of"
+                    of == "of"
                     and (number == "last" or number[0].isdigit())
                     and month in MONTHS
                     and weekday in WEEKDAYS
@@ -466,11 +466,11 @@ class HolidayBase(Dict[date, str]):
                 # Handle <n> days <past/prior> easter patterns (e.g.,
                 # _add_holiday_8_days_past_easter() or
                 # _add_holiday_5_days_prior_easter()).
-                *_, days, _days, delta_direction, _easter = tokens
+                *_, days, unit, delta_direction, easter = tokens
                 if (
-                    _days in {"days", "day"}
+                    unit in {"day", "days"}
                     and delta_direction in {"past", "prior"}
-                    and _easter == "easter"
+                    and easter == "easter"
                     and len(days) < 3
                     and days.isdigit()
                 ):
@@ -484,11 +484,11 @@ class HolidayBase(Dict[date, str]):
             # _add_holiday_1_day_past_1st_fri_of_aug() or
             # _add_holiday_5_days_prior_last_fri_of_aug()).
             elif len(tokens) == 10:
-                *_, days, _days, delta_direction, number, weekday, _of, month = tokens
+                *_, days, unit, delta_direction, number, weekday, of, month = tokens
                 if (
-                    _days in {"days", "day"}
+                    unit in {"day", "days"}
                     and delta_direction in {"past", "prior"}
-                    and _of == "of"
+                    and of == "of"
                     and len(days) < 3
                     and days.isdigit()
                     and (number == "last" or number[0].isdigit())
