@@ -66,7 +66,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Senior Citizens Day.
         self._add_observed(self._add_holiday_may_5("Senior Citizens Day"))
 
-        if 2011 <= self._year <= 2012:
+        if self._year in {2011, 2012}:
             # Memorial Day.
             self._add_holiday_last_mon_of_may("Memorial Day")
 

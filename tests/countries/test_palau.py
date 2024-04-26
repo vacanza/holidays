@@ -129,7 +129,6 @@ class TestPalau(CommonCountryTests, TestCase):
         # https://www.facebook.com/photo/?fbid=2076492362502852&set=a.175933635892077
         self.assertHolidays(
             Palau(years=2022),
-            # ("2021-12-31", "New Year's Day (observed)"),
             ("2022-01-01", "New Year's Day"),
             ("2022-03-15", "Youth Day"),
             ("2022-05-05", "Senior Citizens Day"),
