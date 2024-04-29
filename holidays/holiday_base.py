@@ -231,7 +231,7 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
-    workdays: Set[date] = set()
+    weekend_workdays: Set[date] = set()
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
@@ -356,7 +356,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
-        self.workdays = set()
+        self.weekend_workdays = set()
 
         supported_languages = set(self.supported_languages)
         self.tr = (
@@ -765,7 +765,7 @@ class HolidayBase(Dict[date, str]):
                         to_month,
                         to_day,
                     )
-                    self.workdays.add(from_date)
+                    self.weekend_workdays.add(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
@@ -984,7 +984,7 @@ class HolidayBase(Dict[date, str]):
     def is_workday(self, key: DateLike) -> bool:
         """Return True if date is a working day (not a holiday or a weekend)."""
         dt = self.__keytransform__(key)
-        return not (dt in self or (self._is_weekend(dt) and (dt not in self.workdays)))
+        return dt in self.weekend_workdays if self._is_weekend(dt) else dt not in self
 
     def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
         """If date is a holiday, remove it and return its date, else return
