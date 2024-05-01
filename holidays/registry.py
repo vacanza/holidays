@@ -78,6 +78,7 @@ COUNTRIES: RegistryDict = {
     "greenland": ("Greenland", "GL", "GRL"),
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
     "guatemala": ("Guatemala", "GT", "GUA"),
+    "haiti": ("Haiti", "HT", "HTI"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
     "hungary": ("Hungary", "HU", "HUN"),
