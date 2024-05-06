@@ -27,7 +27,8 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     Greece holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+        - `2024 Labor Day transfer <https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240201406>`_
     """
 
     country = "GR"
@@ -66,11 +67,15 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
-        self._add_observed(
-            # Labor Day.
-            may_1 := self._add_labor_day(self.tr("Εργατική Πρωτομαγιά")),
-            rule=MON_TO_NEXT_TUE if may_1 == easter_monday else SAT_SUN_TO_NEXT_WORKDAY,
-        )
+        # Labor Day.
+        name = tr("Εργατική Πρωτομαγιά")
+        if self._year == 2024:
+            self._add_holiday_may_7(name)
+        else:
+            self._add_observed(
+                may_1 := self._add_labor_day(name),
+                rule=MON_TO_NEXT_TUE if may_1 == easter_monday else SAT_SUN_TO_NEXT_WORKDAY,
+            )
 
         # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
