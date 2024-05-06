@@ -13,7 +13,6 @@
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
-import re
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta, timezone
@@ -24,7 +23,6 @@ from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Union, cast
 
 from dateutil.parser import parse
 
-from holidays.calendars import gregorian
 from holidays.calendars.gregorian import (
     MON,
     TUE,
@@ -35,6 +33,9 @@ from holidays.calendars.gregorian import (
     SUN,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
+    DAYS,
+    MONTHS,
+    WEEKDAYS,
 )
 from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
 from holidays.helpers import _normalize_arguments, _normalize_tuple
@@ -230,6 +231,8 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
+    weekend_workdays: Set[date] = set()
+    """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
     default_language: Optional[str] = None
@@ -353,6 +356,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
+        self.weekend_workdays = set()
 
         supported_languages = set(self.supported_languages)
         self.tr = (
@@ -427,95 +431,103 @@ class HolidayBase(Dict[date, str]):
         except AttributeError as e:
             # This part is responsible for _add_holiday_* syntactic sugar support.
             add_holiday_prefix = "_add_holiday_"
-            # Raise early if prefix doesn't match to avoid regex checks.
+            # Raise early if prefix doesn't match to avoid patterns checks.
             if name[: len(add_holiday_prefix)] != add_holiday_prefix:
                 raise e
 
-            # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
-            month_day = re.match(r"_add_holiday_(\w{3})_(\d{1,2})", name)
-            if month_day:
-                month, day = month_day.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    date(self._year, getattr(gregorian, month.upper()), int(day)),
-                )
+            tokens = name.split("_")
 
-            # Handle <last/nth> <weekday> of <month> patterns (e.g.,
-            # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
-            nth_weekday_of_month = re.match(
-                r"_add_holiday_(last|\d\w{2})_(\w{3})_of_(\w{3})", name
-            )
-            if nth_weekday_of_month:
-                number, weekday, month = nth_weekday_of_month.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    _get_nth_weekday_of_month(
-                        -1 if number == "last" else +int(re.sub(r"\D", "", number)),
-                        getattr(gregorian, weekday.upper()),
-                        getattr(gregorian, month.upper()),
-                        self._year,
-                    ),
-                )
+            # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
+            if len(tokens) == 5:
+                *_, month, day = tokens
+                if month in MONTHS and day in DAYS:
+                    return lambda name: self._add_holiday(
+                        name,
+                        date(self._year, MONTHS[month], int(day)),
+                    )
+
+            elif len(tokens) == 7:
+                # Handle <last/nth> <weekday> of <month> patterns (e.g.,
+                # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
+                *_, number, weekday, of, month = tokens
+                if (
+                    of == "of"
+                    and (number == "last" or number[0].isdigit())
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
+                ):
+                    return lambda name: self._add_holiday(
+                        name,
+                        _get_nth_weekday_of_month(
+                            -1 if number == "last" else int(number[0]),
+                            WEEKDAYS[weekday],
+                            MONTHS[month],
+                            self._year,
+                        ),
+                    )
+
+                # Handle <n> days <past/prior> easter patterns (e.g.,
+                # _add_holiday_8_days_past_easter() or
+                # _add_holiday_5_days_prior_easter()).
+                *_, days, unit, delta_direction, easter = tokens
+                if (
+                    unit in {"day", "days"}
+                    and delta_direction in {"past", "prior"}
+                    and easter == "easter"
+                    and len(days) < 3
+                    and days.isdigit()
+                ):
+                    return lambda name: self._add_holiday(
+                        name,
+                        self._easter_sunday
+                        + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                    )
 
             # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
             # _add_holiday_1_day_past_1st_fri_of_aug() or
             # _add_holiday_5_days_prior_last_fri_of_aug()).
-            nth_weekday_of_month_with_delta = re.match(
-                r"_add_holiday_(\d{1,2})_days?_(past|prior)_(last|\d\w{2})_(\w{3})_of_(\w{3})",
-                name,
-            )
-            if nth_weekday_of_month_with_delta:
-                (
-                    days,
-                    delta_direction,
-                    number,
-                    weekday,
-                    month,
-                ) = nth_weekday_of_month_with_delta.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    _get_nth_weekday_of_month(
-                        -1 if number == "last" else +int(re.sub(r"\D", "", number)),
-                        getattr(gregorian, weekday.upper()),
-                        getattr(gregorian, month.upper()),
-                        self._year,
+            elif len(tokens) == 10:
+                *_, days, unit, delta_direction, number, weekday, of, month = tokens
+                if (
+                    unit in {"day", "days"}
+                    and delta_direction in {"past", "prior"}
+                    and of == "of"
+                    and len(days) < 3
+                    and days.isdigit()
+                    and (number == "last" or number[0].isdigit())
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
+                ):
+                    return lambda name: self._add_holiday(
+                        name,
+                        _get_nth_weekday_of_month(
+                            -1 if number == "last" else int(number[0]),
+                            WEEKDAYS[weekday],
+                            MONTHS[month],
+                            self._year,
+                        )
+                        + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
                     )
-                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
-                )
 
             # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
             # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
-            nth_weekday_from = re.match(
-                r"_add_holiday_(\d{1,2})\w{2}_(\w+)_(before|from)_(\w{3})_(\d{1,2})", name
-            )
-            if nth_weekday_from:
-                number, weekday, date_direction, month, day = nth_weekday_from.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    _get_nth_weekday_from(
-                        -int(number) if date_direction == "before" else +int(number),
-                        getattr(gregorian, weekday.upper()),
-                        date(self._year, getattr(gregorian, month.upper()), int(day)),
-                    ),
-                )
-
-            # Handle <n> days <past/prior> easter patterns (e.g.,
-            # _add_holiday_8_days_past_easter() or
-            # _add_holiday_5_days_prior_easter()).
-            nth_weekday_of_month_with_delta = re.match(
-                r"_add_holiday_(\d{1,2})_days?_(past|prior)_easter",
-                name,
-            )
-            if nth_weekday_of_month_with_delta:
-                (
-                    days,
-                    delta_direction,
-                ) = nth_weekday_of_month_with_delta.groups()
-                return lambda name: self._add_holiday(
-                    name,
-                    self._easter_sunday
-                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
-                )
+            elif len(tokens) == 8:
+                *_, number, weekday, date_direction, month, day = tokens
+                if (
+                    date_direction in {"before", "from"}
+                    and number[0].isdigit()
+                    and month in MONTHS
+                    and weekday in WEEKDAYS
+                    and day in DAYS
+                ):
+                    return lambda name: self._add_holiday(
+                        name,
+                        _get_nth_weekday_from(
+                            -int(number[0]) if date_direction == "before" else +int(number[0]),
+                            WEEKDAYS[weekday],
+                            date(self._year, MONTHS[month], int(day)),
+                        ),
+                    )
 
             raise e  # No match.
 
@@ -746,14 +758,14 @@ class HolidayBase(Dict[date, str]):
                     )
                 else:  # Substituted holidays.
                     to_month, to_day, from_month, from_day, *optional = data
+                    from_date = date(optional[0] if optional else self._year, from_month, from_day)
                     self._add_holiday(
                         self.tr(self.substituted_label)
-                        % date(
-                            optional[0] if optional else self._year, from_month, from_day
-                        ).strftime(self.tr(self.substituted_date_format)),
+                        % from_date.strftime(self.tr(self.substituted_date_format)),
                         to_month,
                         to_day,
                     )
+                    self.weekend_workdays.add(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
@@ -943,6 +955,36 @@ class HolidayBase(Dict[date, str]):
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
+
+    def get_nth_workday(self, key: DateLike, n: int) -> date:
+        """Return n-th working day from provided date (if n is positive)
+        or n-th working day before provided date (if n is negative).
+        """
+        direction = +1 if n > 0 else -1
+        dt = self.__keytransform__(key)
+        for _ in range(abs(n)):
+            dt += timedelta(days=direction)
+            while not self.is_workday(dt):
+                dt += timedelta(days=direction)
+        return dt
+
+    def get_workdays_number(self, key1: DateLike, key2: DateLike) -> int:
+        """Return the number of working days between two dates (not including the start date)."""
+        dt1 = self.__keytransform__(key1)
+        dt2 = self.__keytransform__(key2)
+        if dt1 == dt2:
+            return 0
+        if dt1 > dt2:
+            dt1, dt2 = dt2, dt1
+
+        return sum(
+            self.is_workday(dt1 + timedelta(days=n)) for n in range(1, (dt2 - dt1).days + 1)
+        )
+
+    def is_workday(self, key: DateLike) -> bool:
+        """Return True if date is a working day (not a holiday or a weekend)."""
+        dt = self.__keytransform__(key)
+        return dt in self.weekend_workdays if self._is_weekend(dt) else dt not in self
 
     def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
         """If date is a holiday, remove it and return its date, else return
