@@ -61,7 +61,8 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_holiday_oct_1("Botswana Day Holiday"))
 
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
-        self._add_observed(dec_26 := self._add_christmas_day_two("Boxing Day"))
+        dec_26 = self._add_christmas_day_two("Boxing Day")
+        self._add_observed(dec_26)
 
         if self.observed and self._year >= 2016 and self._is_saturday(dec_26):
             self._add_holiday_dec_28("Boxing Day Holiday")

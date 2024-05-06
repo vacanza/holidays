@@ -55,8 +55,9 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         name = tr("Празник рада")
         self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
 
+        may_2 = self._add_labor_day_two(name)
         self._add_observed(
-            may_2 := self._add_labor_day_two(name),
+            may_2,
             rule=SUN_TO_NEXT_TUE if may_2 == self._easter_sunday else SUN_TO_NEXT_MON,
         )
 

@@ -149,7 +149,8 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             # 6. If the holidays of Qurban and Ramadan coincide with another holiday
             # that is not considered a working day, the next working day is considered a rest day.
             for dt_observed in sorted(dts_bairami.difference(dts_non_observed)):
-                if len(dt_holidays := self.get_list(dt_observed)) == 1:
+                dt_holidays = self.get_list(dt_observed)
+                if len(dt_holidays) == 1:
                     continue
                 for name in dt_holidays:
                     if name in bayrami_names:

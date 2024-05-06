@@ -48,14 +48,16 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_ascension_thursday("Ascension Day")
 
         if self._year >= 1987:
+            apr_19 = self._add_holiday_apr_19("King's Birthday")
             self._add_observed(
-                apr_19 := self._add_holiday_apr_19("King's Birthday"),
+                apr_19,
                 rule=SUN_TO_NEXT_TUE if apr_19 == self._easter_sunday else SUN_TO_NEXT_MON,
             )
 
         if self._year >= 1969:
+            apr_25 = self._add_holiday_apr_25("National Flag Day")
             self._add_observed(
-                apr_25 := self._add_holiday_apr_25("National Flag Day"),
+                apr_25,
                 rule=SUN_TO_NEXT_TUE if apr_25 == self._easter_sunday else SUN_TO_NEXT_MON,
             )
 
