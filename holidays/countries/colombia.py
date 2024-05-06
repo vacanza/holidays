@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -81,7 +80,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1984:
             self._move_holiday(
                 # Sacred Heart.
-                self._add_holiday(tr("Sagrado Corazón"), self._easter_sunday + td(days=+68))
+                self._add_holiday_68_days_past_easter(tr("Sagrado Corazón"))
             )
 
         if self._year >= 1951:

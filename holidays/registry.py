@@ -121,6 +121,7 @@ COUNTRIES: RegistryDict = {
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
     "norway": ("Norway", "NO", "NOR"),
     "pakistan": ("Pakistan", "PK", "PAK"),
+    "palau": ("Palau", "PW", "PLW"),
     "panama": ("Panama", "PA", "PAN"),
     "papua_new_guinea": ("PapuaNewGuinea", "PG", "PNG"),
     "paraguay": ("Paraguay", "PY", "PRY"),

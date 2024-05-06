@@ -22,7 +22,7 @@ jobs:
 
       - uses: browniebroke/pre-commit-autoupdate-action@v1.0.0
 
-      - uses: peter-evans/create-pull-request@v6.0.2
+      - uses: peter-evans/create-pull-request@v6.0.5
         with:
           base: dev
           body: Update pre-commit hooks to their latest versions.

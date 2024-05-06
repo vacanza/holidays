@@ -7,62 +7,62 @@ state or province) specific sets of government-designated holidays on the fly.
 It aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
-.. |downloads| image:: https://img.shields.io/pypi/dm/holidays?color=%2341B5BE&style=flat
+.. |downloads| image:: https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat
     :target: https://pypi.org/project/holidays
     :alt: PyPI downloads
 
-.. |version| image:: https://img.shields.io/pypi/v/holidays?color=%2341B5BE&label=version&style=flat
+.. |version| image:: https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat
     :target: https://pypi.org/project/holidays
     :alt: PyPI version
 
-.. |release date| image:: https://img.shields.io/github/release-date/vacanza/python-holidays?color=%2341B5BE&style=flat
+.. |release date| image:: https://img.shields.io/github/release-date/vacanza/python-holidays?color=41B5BE&style=flat
     :target: https://github.com/vacanza/python-holidays/releases
     :alt: PyPI release date
 
-.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?color=%2341BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/actions
+.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat
+    :target: https://github.com/vacanza/python-holidays/actions/workflows/ci-cd.yml?query=branch%3Adev
     :alt: CI/CD status
 
-.. |documentation| image:: https://img.shields.io/readthedocs/python-holidays?color=%2341BE4A&style=flat
+.. |documentation| image:: https://img.shields.io/readthedocs/python-holidays?color=41BE4A&style=flat
     :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation status
 
-.. |license| image:: https://img.shields.io/github/license/vacanza/python-holidays?color=%2341B5BE&style=flat
+.. |license| image:: https://img.shields.io/github/license/vacanza/python-holidays?color=41B5BE&style=flat
     :target: https://github.com/vacanza/python-holidays/blob/dev/LICENSE
     :alt: License
 
-.. |python versions| image:: https://img.shields.io/pypi/pyversions/holidays?label=python&color=%2341B5BE&style=flat
+.. |python versions| image:: https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat
     :target: https://pypi.org/project/holidays
     :alt: Python supported versions
 
-.. |style| image:: https://img.shields.io/badge/code%20style-black-%252333F93C0?label=style&color=%2341B5BE&style=flat
-    :target: https://github.com/psf/black
+.. |style| image:: https://img.shields.io/badge/style-ruff-41B5BE?style=flat
+    :target: https://github.com/astral-sh/ruff
     :alt: Code style
 
-.. |coverage| image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=%2341B5BE&style=flat
+.. |coverage| image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=41B5BE&style=flat
     :target: https://coveralls.io/r/vacanza/python-holidays
     :alt: Code coverage
 
-.. |stars| image:: https://img.shields.io/github/stars/vacanza/python-holidays?color=%2341BE4A&style=flat
+.. |stars| image:: https://img.shields.io/github/stars/vacanza/python-holidays?color=41BE4A&style=flat
     :target: https://github.com/vacanza/python-holidays/stargazers
     :alt: GitHub stars
 
-.. |forks| image:: https://img.shields.io/github/forks/vacanza/python-holidays?color=%2341BE4A&style=flat
+.. |forks| image:: https://img.shields.io/github/forks/vacanza/python-holidays?color=41BE4A&style=flat
     :target: https://github.com/vacanza/python-holidays/forks
     :alt: GitHub forks
 
-.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays?color=%2341BE4A&style=flat
+.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays?color=41BE4A&style=flat
     :target: https://github.com/vacanza/python-holidays/graphs/contributors
     :alt: GitHub contributors
 
-.. |last commit| image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=%2341BE4A&style=flat
+.. |last commit| image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=41BE4A&style=flat
     :target: https://github.com/vacanza/python-holidays/commits/dev
     :alt: GitHub last commit
 
 +--------+------------------------------------------------+
 | PyPI   | |downloads| |version| |release date|           |
 +--------+------------------------------------------------+
-| CI/CD  | |status| |documentation|                       |  
+| CI/CD  | |status| |documentation|                       |
 +--------+------------------------------------------------+
 | Code   | |license| |python versions| |style| |coverage| |
 +--------+------------------------------------------------+
@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 146 country codes. The standard way to refer to a country
+We currently support 147 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -695,6 +695,11 @@ All other default values are highlighted with bold:
      -
      -
      -
+   * - Palau
+     - PW
+     -
+     -
+     - ARMED_FORCES, HALF_DAY
    * - Panama
      - PA
      -
