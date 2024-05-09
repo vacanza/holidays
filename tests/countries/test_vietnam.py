@@ -11,9 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from unittest import TestCase
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.countries.vietnam import Vietnam, VN, VNM
 from tests.common import CommonCountryTests
 
@@ -38,7 +38,7 @@ class TestVietnam(CommonCountryTests, TestCase):
         )
 
     def test_lunar_new_year(self):
-        for dt in (
+        for dts in (
             (1997, 2, 7),
             (2008, 2, 7),
             (2009, 1, 26),
@@ -56,12 +56,13 @@ class TestVietnam(CommonCountryTests, TestCase):
             (2021, 2, 12),
             (2022, 2, 1),
         ):
-            self.assertHolidayName("Vietnamese New Year's Eve", date(*dt) + td(days=-1))
-            self.assertHolidayName("Vietnamese New Year", date(*dt))
-            self.assertHolidayName("The second day of Tet Holiday", date(*dt) + td(days=+1))
-            self.assertHolidayName("The third day of Tet Holiday", date(*dt) + td(days=+2))
-            self.assertHolidayName("The forth day of Tet Holiday", date(*dt) + td(days=+3))
-            self.assertHolidayName("The fifth day of Tet Holiday", date(*dt) + td(days=+4))
+            dt = date(*dts)
+            self.assertHolidayName("Vietnamese New Year's Eve", _timedelta(dt, -1))
+            self.assertHolidayName("Vietnamese New Year", dt)
+            self.assertHolidayName("The second day of Tet Holiday", _timedelta(dt, +1))
+            self.assertHolidayName("The third day of Tet Holiday", _timedelta(dt, +2))
+            self.assertHolidayName("The forth day of Tet Holiday", _timedelta(dt, +3))
+            self.assertHolidayName("The fifth day of Tet Holiday", _timedelta(dt, +4))
 
     def test_king_hung_day(self):
         self.assertHolidayName(

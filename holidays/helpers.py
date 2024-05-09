@@ -24,13 +24,19 @@ def _normalize_arguments(cls, value):
         A set created from `value` argument.
 
     """
+    if value is None:
+        return set()
+
     if isinstance(value, cls):
         return {value}
 
-    return set(value) if value is not None else set()
+    try:
+        return {v if isinstance(v, cls) else cls(v) for v in value}
+    except TypeError:  # non-iterable
+        return {value if isinstance(value, cls) else cls(value)}
 
 
-def _normalize_tuple(data):
+def _normalize_tuple(value):
     """Normalize tuple.
 
     :param data:
@@ -40,4 +46,4 @@ def _normalize_tuple(data):
         An unchanged object for tuple of tuples, e.g., ((JAN, 10), (DEC, 31)).
         An object put into a tuple otherwise, e.g., ((JAN, 10),).
     """
-    return data if not data or isinstance(data[0], tuple) else (data,)
+    return value if not value or isinstance(value[0], tuple) else (value,)

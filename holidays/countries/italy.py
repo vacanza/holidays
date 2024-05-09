@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -307,8 +305,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _populate_subdiv_fm_public_holidays(self):
-        aug_15 = self._add_assumption_of_mary_day("Maria Santissima Assunta")
-        self._add_holiday("Maria Santissima Assunta", aug_15 + td(days=+1))
+        self._add_assumption_of_mary_day("Maria Santissima Assunta")
+        self._add_holiday_aug_16("Maria Santissima Assunta")
 
     def _populate_subdiv_fr_public_holidays(self):
         self._add_holiday_jun_20("San Silverio")

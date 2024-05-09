@@ -12,12 +12,25 @@
 
 import warnings
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Dict, Set
 
 from holidays.calendars import _CustomChineseHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -115,10 +128,10 @@ class SouthKorea(
             name = self.tr(name)
             for dt_alt in (
                 # The day preceding %s.
-                self._add_holiday(self.tr("%s 전날") % name, dt + td(days=-1)),
+                self._add_holiday(self.tr("%s 전날") % name, _timedelta(dt, -1)),
                 dt,
                 # The second day of %s.
-                self._add_holiday(self.tr("%s 다음날") % name, dt + td(days=+1)),
+                self._add_holiday(self.tr("%s 다음날") % name, _timedelta(dt, +1)),
             ):
                 three_days_holidays[dt_alt] = name
 

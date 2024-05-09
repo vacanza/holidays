@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Tuple
 
-from holidays.calendars.gregorian import JAN, MAY, JUN, JUL, AUG, SEP, OCT, DEC, SUN
+from holidays.calendars.gregorian import JAN, MAY, JUN, JUL, AUG, SEP, OCT, DEC, SUN, _timedelta
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -72,7 +71,7 @@ class HongKong(
 
         mid_autumn_date = self._mid_autumn_festival
         if self._year >= 1968:
-            mid_autumn_date += td(days=+1)
+            mid_autumn_date = _timedelta(mid_autumn_date, +1)
             # 中秋節翌日.
             name = "The day following the Chinese Mid-Autumn Festival"
             # 中秋節後第二日.
@@ -84,9 +83,9 @@ class HongKong(
 
         if self._is_sunday(mid_autumn_date):
             if 1983 <= self._year <= 2010:
-                self._add_holiday("Chinese Mid-Autumn Festival", mid_autumn_date + td(days=-1))
+                self._add_holiday("Chinese Mid-Autumn Festival", _timedelta(mid_autumn_date, -1))
             else:
-                self._add_holiday(second_name, mid_autumn_date + td(days=+1))
+                self._add_holiday(second_name, _timedelta(mid_autumn_date, +1))
         else:
             self._add_holiday(name, mid_autumn_date)
         return mid_autumn_date
@@ -243,10 +242,10 @@ class HongKong(
         # Ching Ming Festival.
         if self._year >= 1968:
             dt_qingming = self._qingming_date
-            if self._is_sunday(dt_qingming) or dt_qingming == self._easter_sunday + td(days=+1):
+            if self._is_sunday(dt_qingming) or dt_qingming == _timedelta(self._easter_sunday, +1):
                 # 清明節翌日.
                 self._add_holiday(
-                    "The day following Ching Ming Festival", dt_qingming + td(days=+1)
+                    "The day following Ching Ming Festival", _timedelta(dt_qingming, +1)
                 )
             else:
                 # 清明節.
@@ -275,7 +274,7 @@ class HongKong(
                 # 佛誕翌日.
                 self._add_holiday(
                     "The day following the Birthday of the Buddha",
-                    dt_birthday_of_buddha + td(days=+1),
+                    _timedelta(dt_birthday_of_buddha, +1),
                 )
             else:
                 # 佛誕.
@@ -296,7 +295,7 @@ class HongKong(
             if self._is_sunday(dt_dragon_boat):
                 # 端午節翌日.
                 self._add_holiday(
-                    "The day following Tuen Ng Festival", dt_dragon_boat + td(days=+1)
+                    "The day following Tuen Ng Festival", _timedelta(dt_dragon_boat, +1)
                 )
             else:
                 # 端午節.
@@ -323,7 +322,7 @@ class HongKong(
             if self._is_sunday(dt_double_ninth):
                 # 重陽節翌日.
                 self._add_holiday(
-                    "The day following Chung Yeung Festival", dt_double_ninth + td(days=+1)
+                    "The day following Chung Yeung Festival", _timedelta(dt_double_ninth, +1)
                 )
             else:
                 # 重陽節.
