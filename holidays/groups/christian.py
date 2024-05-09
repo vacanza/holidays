@@ -14,7 +14,7 @@ from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _delta_days
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC, _timedelta
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
@@ -122,7 +122,7 @@ class ChristianHolidays:
         Day, or sometimes Holy Thursday.
         https://en.wikipedia.org/wiki/Feast_of_the_Ascension
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, +39))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +39))
 
     def _add_ash_monday(self, name) -> date:
         """
@@ -132,7 +132,7 @@ class ChristianHolidays:
         or Green Monday. The first day of Great Lent.
         https://en.wikipedia.org/wiki/Clean_Monday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -48))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -48))
 
     def _add_ash_wednesday(self, name) -> date:
         """
@@ -141,7 +141,7 @@ class ChristianHolidays:
         A holy day of prayer and fasting. It marks the beginning of Lent.
         https://en.wikipedia.org/wiki/Ash_Wednesday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -46))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -46))
 
     def _add_assumption_of_mary_day(self, name, calendar=None) -> date:
         """
@@ -181,7 +181,7 @@ class ChristianHolidays:
         the liturgical season of Lent.
         https://en.wikipedia.org/wiki/Carnival
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -48))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -48))
 
     def _add_carnival_tuesday(self, name) -> date:
         """
@@ -191,7 +191,7 @@ class ChristianHolidays:
         the liturgical season of Lent.
         https://en.wikipedia.org/wiki/Carnival
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -47))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -47))
 
     def _add_christmas_day(self, name, calendar=None) -> date:
         """
@@ -211,7 +211,7 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Boxing_Day
         https://en.wikipedia.org/wiki/Christmas
         """
-        return self._add_holiday(name, _delta_days(self.__get_christmas_day(calendar), +1))
+        return self._add_holiday(name, _timedelta(self.__get_christmas_day(calendar), +1))
 
     def _add_christmas_day_three(self, name, calendar=None) -> date:
         """
@@ -220,7 +220,7 @@ class ChristianHolidays:
         A holiday celebrated 2 days after Christmas Day (in some countries).
         https://en.wikipedia.org/wiki/Christmas
         """
-        return self._add_holiday(name, _delta_days(self.__get_christmas_day(calendar), +2))
+        return self._add_holiday(name, _timedelta(self.__get_christmas_day(calendar), +2))
 
     def _add_christmas_eve(self, name, calendar=None) -> date:
         """
@@ -230,7 +230,7 @@ class ChristianHolidays:
         the festival commemorating the birth of Jesus Christ.
         https://en.wikipedia.org/wiki/Christmas_Eve
         """
-        return self._add_holiday(name, _delta_days(self.__get_christmas_day(calendar), -1))
+        return self._add_holiday(name, _timedelta(self.__get_christmas_day(calendar), -1))
 
     def _add_corpus_christi_day(self, name) -> date:
         """
@@ -242,7 +242,7 @@ class ChristianHolidays:
         of Jesus Christ in the elements of the Eucharist.
         https://en.wikipedia.org/wiki/Feast_of_Corpus_Christi
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, +60))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +60))
 
     def _add_easter_monday(self, name, calendar=None) -> date:
         """
@@ -253,7 +253,7 @@ class ChristianHolidays:
         some countries.
         https://en.wikipedia.org/wiki/Easter_Monday
         """
-        return self._add_holiday(name, _delta_days(self.__get_easter_sunday(calendar), +1))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +1))
 
     def _add_easter_sunday(self, name, calendar=None) -> date:
         """
@@ -293,7 +293,7 @@ class ChristianHolidays:
         Great Friday, Great and Holy Friday.
         https://en.wikipedia.org/wiki/Good_Friday
         """
-        return self._add_holiday(name, _delta_days(self.__get_easter_sunday(calendar), -2))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -2))
 
     def _add_holy_saturday(self, name) -> date:
         """
@@ -302,7 +302,7 @@ class ChristianHolidays:
         Great and Holy Saturday is a day between Good Friday and Easter Sunday.
         https://en.wikipedia.org/wiki/Holy_Saturday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -1))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -1))
 
     def _add_holy_thursday(self, name) -> date:
         """
@@ -313,7 +313,7 @@ class ChristianHolidays:
         Jesus Christ with the Apostles, as described in the canonical gospels.
         https://en.wikipedia.org/wiki/Maundy_Thursday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -3))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -3))
 
     def _add_immaculate_conception_day(self, name) -> date:
         """
@@ -344,7 +344,7 @@ class ChristianHolidays:
         Palm Sunday marks the first day of Holy Week.
         https://en.wikipedia.org/wiki/Palm_Sunday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, -7))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -7))
 
     def _add_rejoicing_day(self, name) -> date:
         """
@@ -355,7 +355,7 @@ class ChristianHolidays:
         Pascha (Easter).In Ukrainian tradition it is called Provody.
         https://en.wikipedia.org/wiki/Radonitsa
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, +9))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +9))
 
     def _add_saint_georges_day(self, name) -> date:
         """
@@ -417,7 +417,7 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Pentecost
         https://en.wikipedia.org/wiki/Whit_Monday
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, +50))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +50))
 
     def _add_whit_sunday(self, name) -> date:
         """
@@ -429,4 +429,4 @@ class ChristianHolidays:
         Feast of Weeks.
         https://en.wikipedia.org/wiki/Pentecost
         """
-        return self._add_holiday(name, _delta_days(self._easter_sunday, +49))
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +49))

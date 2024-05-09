@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import _delta_days, _get_all_sundays
+from holidays.calendars.gregorian import _timedelta, _get_all_sundays
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -100,7 +100,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         # Midsummer Day.
-        self._add_holiday(tr("Midsommardagen"), _delta_days(dt, +1))
+        self._add_holiday(tr("Midsommardagen"), _timedelta(dt, +1))
 
         # All Saints' Day.
         self._add_holiday_1st_sat_from_oct_31(tr("Alla helgons dag"))

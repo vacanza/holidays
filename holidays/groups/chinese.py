@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional, Tuple
 
 from holidays.calendars import _ChineseLunisolar
-from holidays.calendars.gregorian import APR, _delta_days
+from holidays.calendars.gregorian import APR, _timedelta
 
 
 class ChineseCalendarHolidays:
@@ -60,7 +60,7 @@ class ChineseCalendarHolidays:
         dt, is_estimated = dt_estimated
 
         if days_delta != 0:
-            dt = _delta_days(dt, days_delta)
+            dt = _timedelta(dt, days_delta)
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)

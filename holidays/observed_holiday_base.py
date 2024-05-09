@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Dict, Optional, Tuple, Set
 
-from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _delta_days
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
 from holidays.holiday_base import DateArg, HolidayBase
 
 
@@ -105,10 +105,10 @@ class ObservedHolidayBase(HolidayBase):
         return self._observed_since is None or self._year >= self._observed_since
 
     def _get_next_workday(self, dt: date, delta: int = +1) -> date:
-        dt_work = _delta_days(dt, delta)
+        dt_work = _timedelta(dt, delta)
         while dt_work.year == self._year:
             if dt_work in self or self._is_weekend(dt_work):  # type: ignore[operator]
-                dt_work = _delta_days(dt_work, delta)
+                dt_work = _timedelta(dt_work, delta)
             else:
                 return dt_work
         return dt
@@ -119,7 +119,7 @@ class ObservedHolidayBase(HolidayBase):
             if abs(delta) == 7:
                 dt = self._get_next_workday(dt, delta // 7)
             else:
-                dt = _delta_days(dt, delta)
+                dt = _timedelta(dt, delta)
         return dt
 
     def _add_observed(

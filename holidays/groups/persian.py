@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars.gregorian import _delta_days
+from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.persian import _Persian
 
 
@@ -142,5 +142,5 @@ class PersianCalendarHolidays:
         if dt is None:
             return None
         if days_delta != 0:
-            dt = _delta_days(dt, days_delta)
+            dt = _timedelta(dt, days_delta)
         return self._add_holiday(name, dt)

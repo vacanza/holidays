@@ -25,7 +25,7 @@ from holidays.calendars.gregorian import (
     OCT,
     NOV,
     DEC,
-    _delta_days,
+    _timedelta,
 )
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
@@ -127,7 +127,7 @@ class NewYorkStockExchange(
             # Beginning of WWI.
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
-            for dt in (_delta_days(begin, n) for n in range((end - begin).days + 1)):
+            for dt in (_timedelta(begin, n) for n in range((end - begin).days + 1)):
                 if self._is_weekend(dt) or dt in self:
                     continue
                 self._add_holiday("World War I", dt)
@@ -135,7 +135,7 @@ class NewYorkStockExchange(
             begin = date(year, JUN, 12)
             end = date(year, DEC, 24)
             # Wednesday special holiday.
-            for dt in (_delta_days(begin, n) for n in range(0, (end - begin).days + 1, 7)):
+            for dt in (_timedelta(begin, n) for n in range(0, (end - begin).days + 1, 7)):
                 self._add_holiday("Paper Crisis", dt)
 
 

@@ -13,7 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, _delta_days
+from holidays.calendars.gregorian import APR, MAY, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -89,7 +89,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
         dt = date(self._year, APR, 27 if self._year >= 2014 else 30)
         if self._is_sunday(dt):
-            dt = _delta_days(dt, -1 if self._year >= 1980 else +1)
+            dt = _timedelta(dt, -1 if self._year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Obrero.
@@ -98,7 +98,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         dt = date(self._year, MAY, 1)
         if self._is_sunday(dt) or (self._is_monday(dt) and self._year <= 1979):
-            dt = _delta_days(dt, +1)
+            dt = _timedelta(dt, +1)
         # Labor Day
         self._add_holiday(tr("Dia di Obrero"), dt)
 

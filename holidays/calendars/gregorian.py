@@ -29,12 +29,12 @@ MONTHS = {
 WEEKDAYS = {w: i for i, w in enumerate(("mon", "tue", "wed", "thu", "fri", "sat", "sun"))}
 
 
-def _delta_days(dt: date, n: int) -> date:
+def _timedelta(dt: date, days: int = 0) -> date:
     """
-    Return date that is n days after (n > 0) or before (n < 0) specified date.
+    Return date that is `days` days after (days > 0) or before (days < 0) specified date.
     """
 
-    return date.fromordinal(dt.toordinal() + n)
+    return date.fromordinal(dt.toordinal() + days)
 
 
 def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
@@ -46,7 +46,7 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
     Examples: 1st Monday, 2nd Saturday, etc).
     """
 
-    return _delta_days(
+    return _timedelta(
         from_dt,
         (
             (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
@@ -71,7 +71,7 @@ def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> da
         if month > 12:
             month = 1
             year += 1
-        start_date = _delta_days(date(year, month, 1), -1)
+        start_date = _timedelta(date(year, month, 1), -1)
     else:
         start_date = date(year, month, 1)
 
@@ -87,4 +87,4 @@ def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> da
 def _get_all_sundays(year):
     first_sunday = _get_nth_weekday_of_month(1, SUN, JAN, year)
     for n in range(0, (date(year, DEC, 31) - first_sunday).days + 1, 7):
-        yield _delta_days(first_sunday, n)
+        yield _timedelta(first_sunday, n)

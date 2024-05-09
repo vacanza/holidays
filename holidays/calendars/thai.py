@@ -14,7 +14,7 @@ from datetime import date
 from functools import lru_cache
 from typing import Optional
 
-from holidays.calendars.gregorian import _delta_days
+from holidays.calendars.gregorian import _timedelta
 
 KHMER_CALENDAR = "KHMER_CALENDAR"
 THAI_CALENDAR = "THAI_CALENDAR"
@@ -231,7 +231,7 @@ class _ThaiLunisolar:
             elif iter_year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
                 delta_days += 1
 
-        return _delta_days(_ThaiLunisolar.START_DATE, delta_days)
+        return _timedelta(_ThaiLunisolar.START_DATE, delta_days)
 
     def makha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """
@@ -268,7 +268,7 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        return _delta_days(
+        return _timedelta(
             start_date,
             +102
             if (
@@ -312,7 +312,7 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        return _delta_days(
+        return _timedelta(
             start_date,
             +191
             if (
@@ -349,7 +349,7 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        return _delta_days(start_date, +165)
+        return _timedelta(start_date, +165)
 
     def atthami_bucha_date(self, year: int, calendar=None) -> Optional[date]:
         """
@@ -386,7 +386,7 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        return _delta_days(
+        return _timedelta(
             start_date,
             +199
             if (
@@ -434,7 +434,7 @@ class _ThaiLunisolar:
             delta_days = +221
         else:
             delta_days = +220
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def khao_phansa_date(self, year: int) -> Optional[date]:
         """
@@ -473,7 +473,7 @@ class _ThaiLunisolar:
             delta_days = +222
         else:
             delta_days = +221
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def boun_haw_khao_padapdin_date(self, year: int) -> Optional[date]:
         """
@@ -507,7 +507,7 @@ class _ThaiLunisolar:
             delta_days = +265
         else:
             delta_days = +264
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def boun_haw_khao_salark_date(self, year: int) -> Optional[date]:
         """
@@ -541,7 +541,7 @@ class _ThaiLunisolar:
             delta_days = +280
         else:
             delta_days = +279
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def pchum_ben_date(self, year: int) -> Optional[date]:
         """
@@ -575,7 +575,7 @@ class _ThaiLunisolar:
             delta_days = +295
         else:
             delta_days = +294
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def ok_phansa_date(self, year: int) -> Optional[date]:
         """
@@ -609,7 +609,7 @@ class _ThaiLunisolar:
             delta_days = +310
         else:
             delta_days = +309
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def boun_suang_heua_date(self, year: int) -> Optional[date]:
         """
@@ -643,7 +643,7 @@ class _ThaiLunisolar:
             delta_days = +311
         else:
             delta_days = +310
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)
 
     def loy_krathong_date(self, year: int) -> Optional[date]:
         """
@@ -677,4 +677,4 @@ class _ThaiLunisolar:
             delta_days = +339
         else:
             delta_days = +338
-        return _delta_days(start_date, delta_days)
+        return _timedelta(start_date, delta_days)

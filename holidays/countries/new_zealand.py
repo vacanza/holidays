@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC, _delta_days
+from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, SEP, NOV, DEC, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -242,8 +242,8 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     def _populate_subdiv_ota_public_holidays(self):
         # there is no easily determined single day of local observance?!?!
         dt = self._get_nearest_monday(MAR, 23)
-        if dt == _delta_days(self._easter_sunday, +1):  # Avoid Easter Monday
-            dt = _delta_days(dt, +1)
+        if dt == _timedelta(self._easter_sunday, +1):  # Avoid Easter Monday
+            dt = _timedelta(dt, +1)
         self._add_holiday("Otago Anniversary Day", dt)
 
     def _populate_subdiv_stc_public_holidays(self):

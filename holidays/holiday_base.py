@@ -31,7 +31,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
-    _delta_days,
+    _timedelta,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
     DAYS,
@@ -480,7 +480,7 @@ class HolidayBase(Dict[date, str]):
                 ):
                     return lambda name: self._add_holiday(
                         name,
-                        _delta_days(
+                        _timedelta(
                             self._easter_sunday,
                             +int(days) if delta_direction == "past" else -int(days),
                         ),
@@ -503,7 +503,7 @@ class HolidayBase(Dict[date, str]):
                 ):
                     return lambda name: self._add_holiday(
                         name,
-                        _delta_days(
+                        _timedelta(
                             _get_nth_weekday_of_month(
                                 -1 if number == "last" else int(number[0]),
                                 WEEKDAYS[weekday],
@@ -562,7 +562,7 @@ class HolidayBase(Dict[date, str]):
 
             days_in_range = []
             for delta_days in range(0, date_diff.days, step):
-                day = _delta_days(start, delta_days)
+                day = _timedelta(start, delta_days)
                 if day in self:
                     days_in_range.append(day)
 
@@ -968,9 +968,9 @@ class HolidayBase(Dict[date, str]):
         direction = +1 if n > 0 else -1
         dt = self.__keytransform__(key)
         for _ in range(abs(n)):
-            dt = _delta_days(dt, direction)
+            dt = _timedelta(dt, direction)
             while not self.is_workday(dt):
-                dt = _delta_days(dt, direction)
+                dt = _timedelta(dt, direction)
         return dt
 
     def get_workdays_number(self, key1: DateLike, key2: DateLike) -> int:
@@ -982,7 +982,7 @@ class HolidayBase(Dict[date, str]):
         if dt1 > dt2:
             dt1, dt2 = dt2, dt1
 
-        return sum(self.is_workday(_delta_days(dt1, n)) for n in range(1, (dt2 - dt1).days + 1))
+        return sum(self.is_workday(_timedelta(dt1, n)) for n in range(1, (dt2 - dt1).days + 1))
 
     def is_workday(self, key: DateLike) -> bool:
         """Return True if date is a working day (not a holiday or a weekend)."""

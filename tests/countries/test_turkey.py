@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import _delta_days
+from holidays.calendars.gregorian import _timedelta
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.turkey import Turkey, TR, TUR
 from tests.common import CommonCountryTests
@@ -96,9 +96,9 @@ class TestTurkey(CommonCountryTests, TestCase):
             (2023, 4, 21),
         ):
             dt = date(*ymd)
-            self.assertHolidayName(name, dt, _delta_days(dt, +1), _delta_days(dt, +2))
+            self.assertHolidayName(name, dt, _timedelta(dt, +1), _timedelta(dt, +2))
             self.assertHolidayName(
-                f"{name} (saat 13.00'ten)", half_day_holidays, _delta_days(dt, -1)
+                f"{name} (saat 13.00'ten)", half_day_holidays, _timedelta(dt, -1)
             )
 
     def test_eid_al_adha(self):
@@ -117,10 +117,10 @@ class TestTurkey(CommonCountryTests, TestCase):
         ):
             dt = date(*ymd)
             self.assertHolidayName(
-                name, dt, _delta_days(dt, +1), _delta_days(dt, +2), _delta_days(dt, +3)
+                name, dt, _timedelta(dt, +1), _timedelta(dt, +2), _timedelta(dt, +3)
             )
             self.assertHolidayName(
-                f"{name} (saat 13.00'ten)", half_day_holidays, _delta_days(dt, -1)
+                f"{name} (saat 13.00'ten)", half_day_holidays, _timedelta(dt, -1)
             )
 
     def test_2022(self):

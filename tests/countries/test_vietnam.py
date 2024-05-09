@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import _delta_days
+from holidays.calendars.gregorian import _timedelta
 from holidays.countries.vietnam import Vietnam, VN, VNM
 from tests.common import CommonCountryTests
 
@@ -57,12 +57,12 @@ class TestVietnam(CommonCountryTests, TestCase):
             (2022, 2, 1),
         ):
             dt = date(*dts)
-            self.assertHolidayName("Vietnamese New Year's Eve", _delta_days(dt, -1))
+            self.assertHolidayName("Vietnamese New Year's Eve", _timedelta(dt, -1))
             self.assertHolidayName("Vietnamese New Year", dt)
-            self.assertHolidayName("The second day of Tet Holiday", _delta_days(dt, +1))
-            self.assertHolidayName("The third day of Tet Holiday", _delta_days(dt, +2))
-            self.assertHolidayName("The forth day of Tet Holiday", _delta_days(dt, +3))
-            self.assertHolidayName("The fifth day of Tet Holiday", _delta_days(dt, +4))
+            self.assertHolidayName("The second day of Tet Holiday", _timedelta(dt, +1))
+            self.assertHolidayName("The third day of Tet Holiday", _timedelta(dt, +2))
+            self.assertHolidayName("The forth day of Tet Holiday", _timedelta(dt, +3))
+            self.assertHolidayName("The fifth day of Tet Holiday", _timedelta(dt, +4))
 
     def test_king_hung_day(self):
         self.assertHolidayName(

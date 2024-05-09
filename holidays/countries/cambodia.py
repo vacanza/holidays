@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, AUG, SEP, _delta_days
+from holidays.calendars.gregorian import MAY, AUG, SEP, _timedelta
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -97,8 +97,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
                 if self._year in sangkranta_years_apr_14
                 else self._add_holiday_apr_13(sangkranta)
             )
-            self._add_holiday(sangkranta, _delta_days(dt, +1))
-            self._add_holiday(sangkranta, _delta_days(dt, +2))
+            self._add_holiday(sangkranta, _timedelta(dt, +1))
+            self._add_holiday(sangkranta, _timedelta(dt, +2))
 
         #  ទិវាពលកម្មអន្តរជាតិ
         # Status: In-Use.
@@ -252,9 +252,9 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
         pchum_ben_date = self._add_pchum_ben(pchum_ben)
         if pchum_ben_date:
-            self._add_holiday(pchum_ben, _delta_days(pchum_ben_date, -1))
+            self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, -1))
             if self._year >= 2017:
-                self._add_holiday(pchum_ben, _delta_days(pchum_ben_date, +1))
+                self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, +1))
 
         # ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក
         # Status: In-Use.
@@ -264,8 +264,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         bon_om_touk = tr("ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក")
         bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
         if bon_om_touk_date:
-            self._add_holiday(bon_om_touk, _delta_days(bon_om_touk_date, -1))
-            self._add_holiday(bon_om_touk, _delta_days(bon_om_touk_date, +1))
+            self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
+            self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, +1))
 
 
 class KH(Cambodia):

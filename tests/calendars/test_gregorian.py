@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import TUE, SAT, _delta_days, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import TUE, SAT, _timedelta, _get_nth_weekday_of_month
 
 
 class TestGregorianCalendar(TestCase):
@@ -42,5 +42,5 @@ class TestGregorianCalendar(TestCase):
         ):
             dt1 = date(*ymd1)
             dt2 = date(*ymd2)
-            self.assertEqual(_delta_days(dt1, +5), dt2)
-            self.assertEqual(_delta_days(dt2, -5), dt1)
+            self.assertEqual(_timedelta(dt1, +5), dt2)
+            self.assertEqual(_timedelta(dt2, -5), dt1)

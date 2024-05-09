@@ -29,7 +29,7 @@ from holidays.calendars.gregorian import (
     OCT,
     NOV,
     DEC,
-    _delta_days,
+    _timedelta,
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
@@ -128,10 +128,10 @@ class SouthKorea(
             name = self.tr(name)
             for dt_alt in (
                 # The day preceding %s.
-                self._add_holiday(self.tr("%s 전날") % name, _delta_days(dt, -1)),
+                self._add_holiday(self.tr("%s 전날") % name, _timedelta(dt, -1)),
                 dt,
                 # The second day of %s.
-                self._add_holiday(self.tr("%s 다음날") % name, _delta_days(dt, +1)),
+                self._add_holiday(self.tr("%s 다음날") % name, _timedelta(dt, +1)),
             ):
                 three_days_holidays[dt_alt] = name
 
