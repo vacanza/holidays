@@ -11,9 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from unittest import TestCase
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.countries.pakistan import Pakistan, PK, PAK
 from tests.common import CommonCountryTests
 
@@ -75,8 +75,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2023, 4, 22),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + td(days=+1))
-            self.assertHoliday(dt + td(days=+2))
+            self.assertHoliday(_timedelta(dt, +1))
+            self.assertHoliday(_timedelta(dt, +2))
             self.assertIn(name, self.holidays.get(dt))
 
     def test_eid_ul_adha(self):
@@ -98,8 +98,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2023, 6, 29),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + td(days=+1))
-            self.assertHoliday(dt + td(days=+2))
+            self.assertHoliday(_timedelta(dt, +1))
+            self.assertHoliday(_timedelta(dt, +2))
             self.assertIn(name, self.holidays.get(dt))
 
     def test_eid_milad_un_nabi(self):
@@ -142,7 +142,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2023, 7, 28),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + td(days=-1))
+            self.assertHoliday(_timedelta(dt, -1))
             self.assertIn(name, self.holidays.get(dt))
 
     def test_2002(self):

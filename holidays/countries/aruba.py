@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, AUG
+from holidays.calendars.gregorian import APR, AUG, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -118,7 +117,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         else:
             dt = (AUG, 31)
         if self._is_sunday(dt):
-            dt = date(self._year, *dt) + td(days=-1 if self._year >= 1980 else +1)
+            dt = _timedelta(date(self._year, *dt), -1 if self._year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Labor/Dia di Obrero.

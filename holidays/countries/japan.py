@@ -11,11 +11,22 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import (
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    _timedelta,
+)
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
 from holidays.helpers import _normalize_tuple
@@ -171,18 +182,18 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
             for dt in dts_observed.copy():
                 if not self._is_sunday(dt):
                     continue
-                dt_observed = dt + td(days=+1)
+                dt_observed = _timedelta(dt, +1)
                 while dt_observed in dts_observed:
-                    dt_observed += td(days=+1)
+                    dt_observed = _timedelta(dt_observed, +1)
                 # Substitute Holiday.
                 dts_observed.add(self._add_holiday(tr("振替休日"), dt_observed))
 
             # A weekday between national holidays becomes
             # a holiday too (国民の休日) - citizens' holidays.
             for dt in dts_observed:
-                if dt + td(days=+2) not in dts_observed:
+                if _timedelta(dt, +2) not in dts_observed:
                     continue
-                dt_observed = dt + td(days=+1)
+                dt_observed = _timedelta(dt, +1)
                 if self._is_sunday(dt_observed) or dt_observed in dts_observed:
                     continue
                 # National Holiday.

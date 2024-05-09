@@ -11,8 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Optional
+
+from holidays.calendars.gregorian import _timedelta
 
 
 class _Persian:
@@ -54,4 +55,4 @@ class _Persian:
 
         m = j_month - 1
         delta = (31 * m if m < 6 else 186 + 30 * (m - 6)) + j_day - 1
-        return start_date + td(days=delta)
+        return _timedelta(start_date, delta)

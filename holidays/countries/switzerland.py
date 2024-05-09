@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, THU, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
@@ -202,7 +201,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(
                 # Battle of Naefels Victory Day.
                 tr("Näfelser Fahrt"),
-                dt + td(days=+7) if dt == self._easter_sunday + td(days=-3) else dt,
+                _timedelta(dt, +7) if dt == _timedelta(self._easter_sunday, -3) else dt,
             )
 
         self._add_good_friday(tr("Karfreitag"))

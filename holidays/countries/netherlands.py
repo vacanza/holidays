@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, AUG
+from holidays.calendars.gregorian import APR, AUG, _timedelta
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
@@ -65,7 +64,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
             else:
                 dt = date(self._year, AUG, 31)
             if self._is_sunday(dt):
-                dt += td(days=-1) if self._year >= 1980 else td(days=+1)
+                dt = _timedelta(dt, -1 if self._year >= 1980 else +1)
             self._add_holiday(name, dt)
 
         if self._year >= 1950 and self._year % 5 == 0:
