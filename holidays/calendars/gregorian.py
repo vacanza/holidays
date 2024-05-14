@@ -29,6 +29,11 @@ MONTHS = {
 WEEKDAYS = {w: i for i, w in enumerate(("mon", "tue", "wed", "thu", "fri", "sat", "sun"))}
 
 
+# Holiday names.
+CHRISTMAS = "christmas"
+WINTER_SOLSTICE = "winter_solstice"
+
+
 def _timedelta(dt: date, days: int = 0) -> date:
     """
     Return date that is `days` days after (days > 0) or before (days < 0) specified date.

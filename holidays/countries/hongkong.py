@@ -13,7 +13,20 @@
 from datetime import date
 from typing import Tuple
 
-from holidays.calendars.gregorian import JAN, MAY, JUN, JUL, AUG, SEP, OCT, DEC, SUN, _timedelta
+from holidays.calendars.gregorian import (
+    JAN,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    DEC,
+    SUN,
+    _timedelta,
+    CHRISTMAS,
+    WINTER_SOLSTICE,
+)
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -21,6 +34,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
+from holidays.mixins import PreferredDiscretionaryHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_WORKDAY,
@@ -28,15 +42,13 @@ from holidays.observed_holiday_base import (
     WORKDAY_TO_NEXT_WORKDAY,
 )
 
-CHRISTMAS = "christmas"
-WINTER_SOLSTICE = "winter_solstice"
-
 
 class HongKong(
     ObservedHolidayBase,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
+    PreferredDiscretionaryHolidays,
     StaticHolidays,
 ):
     """
@@ -52,19 +64,22 @@ class HongKong(
     """
 
     country = "HK"
+    default_preferred_discretionary_holidays = (CHRISTMAS,)
     # %s（慶祝）.
     observed_label = "%s (observed)"
     supported_categories = (OPTIONAL, PUBLIC)
+    weekend = {SUN}
 
-    def __init__(self, preferred_discretionary_holidays=(CHRISTMAS,), *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        PreferredDiscretionaryHolidays.__init__(
+            self, kwargs.pop("preferred_discretionary_holidays", None)
+        )
         StaticHolidays.__init__(self, HongKongStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
-        self.preferred_discretionary_holidays = set(preferred_discretionary_holidays)
         super().__init__(*args, **kwargs)
-        self.weekend = {SUN}
 
     def _add_mid_autumn(self) -> date:
         # Chinese Mid-Autumn Festival.
