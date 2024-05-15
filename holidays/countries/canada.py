@@ -101,7 +101,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         if self._year <= 1866:
             return None
 
-        self._add_statutory_holidays()
+        self._populate_government_holidays()
 
         self._add_observed(self._christmas_day)
 
