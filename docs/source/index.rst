@@ -18,6 +18,7 @@
    examples
    contributing
    api
+   mixins
    Supported Entities <modules>
    changelog
    genindex
