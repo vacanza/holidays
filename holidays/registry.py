@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
-from concurrent.futures import ThreadPoolExecutor
+from threading import RLock
 from typing import Any, Dict, Iterable, Optional, Tuple, Union
 
 from holidays.holiday_base import HolidayBase
@@ -179,7 +179,7 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
 }
 
-IMPORT_ENSURE_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="[HoliDynImp] ")
+IMPORT_LOCK = RLock()
 
 
 class EntityLoader:
@@ -228,10 +228,8 @@ class EntityLoader:
         if self.entity is None:
             # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
             # the first imports in a dedicated thread.
-            ensure_futr = IMPORT_ENSURE_EXECUTOR.submit(importlib.import_module, self.module_name)
-            ensure_futr.result()  # We can discard the result, as it is now cached.
-
-            self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
+            with IMPORT_LOCK:
+                self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
 
         return self.entity
 
