@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, Iterable, Optional, Tuple, Union
 
 from holidays.holiday_base import HolidayBase
@@ -178,6 +179,8 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
 }
 
+IMPORT_ENSURE_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="[HoliDynImp] ")
+
 
 class EntityLoader:
     """Country and financial holidays entities lazy loader."""
@@ -223,6 +226,11 @@ class EntityLoader:
     def get_entity(self) -> Optional[HolidayBase]:
         """Return lazy-loaded entity."""
         if self.entity is None:
+            # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
+            # the first imports in a dedicated thread.
+            ensure_futr = IMPORT_ENSURE_EXECUTOR.submit(importlib.import_module, self.module_name)
+            ensure_futr.result()  # We can discard the result, as it is now cached.
+
             self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
 
         return self.entity
