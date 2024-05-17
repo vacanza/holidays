@@ -17,7 +17,7 @@ from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _tim
 from holidays.holiday_base import DateArg, HolidayBase
 
 
-class ObservedRule(Dict[int, int]):
+class ObservedRule(Dict[int, Optional[int]]):
     __slots__ = ()
 
     def __add__(self, other):
@@ -113,18 +113,23 @@ class ObservedHolidayBase(HolidayBase):
                 return dt_work
         return dt
 
-    def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
+    def _get_observed_date(self, dt: date, rule: ObservedRule) -> Optional[date]:
         delta = rule.get(dt.weekday(), 0)
-        if delta != 0:
-            if abs(delta) == 7:
-                dt = self._get_next_workday(dt, delta // 7)
-            else:
-                dt = _timedelta(dt, delta)
+        if delta:
+            return (
+                self._get_next_workday(dt, delta // 7)
+                if abs(delta) == 7
+                else _timedelta(dt, delta)
+            )
+        # Goes after `if delta` case as a less probable.
+        elif delta is None:
+            return None
+
         return dt
 
     def _add_observed(
         self, dt: DateArg, name: Optional[str] = None, rule: Optional[ObservedRule] = None
-    ) -> Tuple[bool, date]:
+    ) -> Tuple[bool, Optional[date]]:
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
         if not self.observed or not self._is_observed(dt):
@@ -133,6 +138,11 @@ class ObservedHolidayBase(HolidayBase):
         dt_observed = self._get_observed_date(dt, rule or self._observed_rule)
         if dt_observed == dt:
             return False, dt
+
+        # SAT_TO_NONE and similar cases.
+        if dt_observed is None:
+            self.pop(dt)
+            return False, None
 
         estimated_label = self.tr(getattr(self, "estimated_label", ""))
         observed_label = self.tr(
@@ -158,7 +168,9 @@ class ObservedHolidayBase(HolidayBase):
 
         return True, dt_observed
 
-    def _move_holiday(self, dt: date, rule: Optional[ObservedRule] = None) -> Tuple[bool, date]:
+    def _move_holiday(
+        self, dt: date, rule: Optional[ObservedRule] = None
+    ) -> Tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(dt, rule=rule)
         if is_observed:
             self.pop(dt)

@@ -474,7 +474,7 @@ All other default values are highlighted with bold:
      - HK
      -
      -
-     -
+     - OPTIONAL
    * - Hungary
      - HU
      -
