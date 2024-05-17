@@ -942,6 +942,9 @@ following financial markets are available:
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
+   * - ICE Futures Europe 
+     - IFEU
+     - A London-based Investment Exchange holidays
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)

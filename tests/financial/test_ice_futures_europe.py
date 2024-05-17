@@ -32,15 +32,11 @@ class TestICEFuturesEurope(CommonFinancialTests, TestCase):
             ICEFuturesEurope(years=2021),
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
-            # Saturday so not a market holiday
-            ("2021-12-25", "Christmas Day"),
         )
 
     def test_2022(self):
         self.assertHolidays(
             ICEFuturesEurope(years=2022),
-            # Saturday so not a market holiday
-            ("2022-01-01", "New Year's Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-12-26", "Christmas Day"),
         )

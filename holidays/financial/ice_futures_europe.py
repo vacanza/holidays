@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
 
 
 class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -28,7 +28,7 @@ class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
