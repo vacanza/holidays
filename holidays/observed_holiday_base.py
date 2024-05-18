@@ -27,9 +27,11 @@ class ObservedRule(Dict[int, Optional[int]]):
 # Observance calculation rules: +7 - next workday, -7 - previous workday.
 # Single days.
 MON_TO_NEXT_TUE = ObservedRule({MON: +1})
+MON_ONLY = ObservedRule({TUE: None, WED: None, THU: None, FRI: None, SAT: None, SUN: None})
 
 TUE_TO_PREV_MON = ObservedRule({TUE: -1})
 TUE_TO_PREV_FRI = ObservedRule({TUE: -4})
+TUE_TO_NONE = ObservedRule({TUE: None})
 
 WED_TO_PREV_MON = ObservedRule({WED: -2})
 WED_TO_NEXT_FRI = ObservedRule({WED: +2})
@@ -45,6 +47,7 @@ FRI_TO_NEXT_MON = ObservedRule({FRI: +3})
 FRI_TO_NEXT_TUE = ObservedRule({FRI: +4})
 FRI_TO_NEXT_SAT = ObservedRule({FRI: +1})
 FRI_TO_NEXT_WORKDAY = ObservedRule({FRI: +7})
+FRI_ONLY = ObservedRule({MON: None, TUE: None, WED: None, THU: None, SAT: None, SUN: None})
 
 SAT_TO_PREV_THU = ObservedRule({SAT: -2})
 SAT_TO_PREV_FRI = ObservedRule({SAT: -1})
@@ -59,6 +62,7 @@ SUN_TO_NEXT_MON = ObservedRule({SUN: +1})
 SUN_TO_NEXT_TUE = ObservedRule({SUN: +2})
 SUN_TO_NEXT_WED = ObservedRule({SUN: +3})
 SUN_TO_NEXT_WORKDAY = ObservedRule({SUN: +7})
+SUN_TO_NONE = ObservedRule({SUN: None})
 
 # Multiple days.
 ALL_TO_NEAREST_MON = ObservedRule({TUE: -1, WED: -2, THU: -3, FRI: +3, SAT: +2, SUN: +1})
@@ -69,6 +73,8 @@ ALL_TO_NEXT_SUN = ObservedRule({MON: +6, TUE: +5, WED: +4, THU: +3, FRI: +2, SAT
 WORKDAY_TO_NEAREST_MON = ObservedRule({TUE: -1, WED: -2, THU: -3, FRI: +3})
 WORKDAY_TO_NEXT_MON = ObservedRule({TUE: +6, WED: +5, THU: +4, FRI: +3})
 WORKDAY_TO_NEXT_WORKDAY = ObservedRule({MON: +7, TUE: +7, WED: +7, THU: +7, FRI: +7})
+
+MON_FRI_ONLY = ObservedRule({TUE: None, WED: None, THU: None, SAT: None, SUN: None})
 
 TUE_WED_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2})
 TUE_WED_THU_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2, THU: -3})
@@ -96,10 +102,11 @@ class ObservedHolidayBase(HolidayBase):
 
     observed_label = "%s"
 
-    def __init__(self, observed_rule: ObservedRule, observed_since: int = None, *args, **kwargs):
-        self._observed_rule = observed_rule
+    def __init__(
+        self, observed_rule: ObservedRule = None, observed_since: int = None, *args, **kwargs
+    ):
+        self._observed_rule = observed_rule or ObservedRule({})
         self._observed_since = observed_since
-
         super().__init__(*args, **kwargs)
 
     def _is_observed(self, *args, **kwargs) -> bool:
@@ -129,7 +136,11 @@ class ObservedHolidayBase(HolidayBase):
         return dt
 
     def _add_observed(
-        self, dt: DateArg, name: Optional[str] = None, rule: Optional[ObservedRule] = None
+        self,
+        dt: DateArg,
+        name: Optional[str] = None,
+        rule: Optional[ObservedRule] = None,
+        show_observed_label: bool = True,
     ) -> Tuple[bool, Optional[date]]:
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
@@ -145,34 +156,40 @@ class ObservedHolidayBase(HolidayBase):
             self.pop(dt)
             return False, None
 
-        estimated_label = self.tr(getattr(self, "estimated_label", ""))
-        observed_label = self.tr(
-            getattr(
-                self,
-                "observed_label_before" if dt_observed < dt else "observed_label",
-                self.observed_label,
+        if show_observed_label:
+            estimated_label = self.tr(getattr(self, "estimated_label", ""))
+            observed_label = self.tr(
+                getattr(
+                    self,
+                    "observed_label_before" if dt_observed < dt else "observed_label",
+                    self.observed_label,
+                )
             )
-        )
 
-        estimated_label_text = estimated_label.strip("%s ()")
-        # Use observed_estimated_label instead of observed_label for estimated dates.
-        for name in (name,) if name else self.get_list(dt):
-            holiday_name = self.tr(name)
-            observed_estimated_label = None
-            if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
-                holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
-                observed_estimated_label = self.tr(getattr(self, "observed_estimated_label"))
+            estimated_label_text = estimated_label.strip("%s ()")
+            # Use observed_estimated_label instead of observed_label for estimated dates.
+            for name in (name,) if name else self.get_list(dt):
+                holiday_name = self.tr(name)
+                observed_estimated_label = None
+                if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
+                    holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
+                    observed_estimated_label = self.tr(getattr(self, "observed_estimated_label"))
 
-            super()._add_holiday(
-                (observed_estimated_label or observed_label) % holiday_name, dt_observed
-            )
+                super()._add_holiday(
+                    (observed_estimated_label or observed_label) % holiday_name, dt_observed
+                )
+        else:
+            for name in (name,) if name else self.get_list(dt):
+                super()._add_holiday(name, dt_observed)
 
         return True, dt_observed
 
     def _move_holiday(
-        self, dt: date, rule: Optional[ObservedRule] = None
+        self, dt: date, rule: Optional[ObservedRule] = None, show_observed_label: bool = True
     ) -> Tuple[bool, Optional[date]]:
-        is_observed, dt_observed = self._add_observed(dt, rule=rule)
+        is_observed, dt_observed = self._add_observed(
+            dt, rule=rule, show_observed_label=show_observed_label
+        )
         if is_observed:
             self.pop(dt)
         return is_observed, dt_observed if is_observed else dt
