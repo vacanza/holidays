@@ -1,3 +1,16 @@
+Version 0.49
+============
+
+Released May 20, 2024
+
+- Refactor Laos holidays (#1797 by @KJhellico)
+- Add IFEU holidays (#1792 by @benjfield, @arkid15r)
+- Update Hong Kong holidays (#1767 by @KJhellico, @arkid15r)
+- Update Malaysia holidays (#1791 by @KJhellico)
+- Update observed rules: add holiday removal support (#1796 by @arkid15r)
+- Address numpy int argument conversion issue (#1782 by @arkid15r)
+- Replace `datetime::timedelta` with custom function (#1785 by @KJhellico)
+
 Version 0.48
 ============
 

@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s (anggaran)"
 msgstr "%s (estimated)"
 
-#. %s (observed).
+#. %s (in lieu).
 #, c-format
 msgid "Cuti %s"
 msgstr "%s (observed)"

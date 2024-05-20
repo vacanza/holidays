@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s (anggaran)"
 msgstr ""
 
-#. %s (observed).
+#. %s (in lieu).
 #, c-format
 msgid "Cuti %s"
 msgstr ""
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Hari Wesak"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Hari Pekerja"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Hari Keputeraan Sultan Kedah"
 msgstr ""
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "Israk dan Mikraj"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Hari Keputeraan Sultan Pahang"
 msgstr ""
 
-#. Birthday of The Raja of Perlis.
+#. Birthday of the Raja of Perlis.
 msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
 msgstr ""
 
