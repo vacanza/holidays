@@ -602,8 +602,8 @@ All other default values are highlighted with bold:
      -
    * - Malaysia
      - MY
-     - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
-     -
+     - States and federal territories: 01 (Johor), 02 (Kedah), 03 (Kelantan), 04 (Melaka), 05 (Negeri Sembilan), 06 (Pahang), 07 (Pulau Pinang), 08 (Perak), 09 (Perlis), 10 (Selangor), 11 (Terengganu), 12 (Sabah), 13 (Sarawak), 14 (WP Kuala Lumpur), 15 (WP Labuan), 16 (WP Putrajaya)
+     - en_US, **ms_MY**
      -
    * - Maldives
      - MV
