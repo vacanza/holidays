@@ -104,29 +104,13 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         #   - CASE FRI/SAT/SUN: WED-THU-FRI
 
         # Lao Year-End Bank Holiday.
-        year_end_bank_holiday = tr("ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ")
+        name = tr("ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ")
 
-        dec_31 = (DEC, 31)
-        if self._is_monday(dec_31):
-            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
-        elif self._is_tuesday(dec_31):
-            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
-        elif self._is_wednesday(dec_31):
-            self._add_holiday_last_mon_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
-        elif self._is_thursday(dec_31):
-            self._add_holiday_last_tue_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
-        else:
-            self._add_holiday_last_wed_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_thu_of_dec(year_end_bank_holiday)
-            self._add_holiday_last_fri_of_dec(year_end_bank_holiday)
+        last_workday = self._add_holiday(
+            name, self._get_next_workday(self._next_year_new_years_day, -1)
+        )
+        second_to_last_workday = self._add_holiday(name, self._get_next_workday(last_workday, -1))
+        self._add_holiday(name, self._get_next_workday(second_to_last_workday, -1))
 
     def _populate_public_holidays(self):
         # Available post-Lao PDR proclamation on Dec 2, 1975.
