@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Iterable, Set, Tuple
 
 from holidays.calendars import _IslamicLunar
+from holidays.calendars.gregorian import _timedelta
 
 
 class IslamicHolidays:
@@ -264,7 +264,7 @@ class IslamicHolidays:
         estimated_label = getattr(self, "estimated_label", "%s (estimated)")
         for dt, is_estimated in dates:
             if days_delta != 0:
-                dt += td(days=days_delta)
+                dt = _timedelta(dt, days_delta)
 
             dt = self._add_holiday(
                 self.tr(estimated_label) % self.tr(name) if is_estimated else name, dt

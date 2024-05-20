@@ -1,0 +1,250 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Malaysia holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.49\n"
+"POT-Creation-Date: 2024-04-28 21:03+0300\n"
+"PO-Revision-Date: 2024-04-29 15:16+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.2\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (anggaran)"
+msgstr "%s (estimated)"
+
+#. %s (in lieu).
+#, c-format
+msgid "Cuti %s"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "Cuti %s (anggaran)"
+msgstr "%s (observed, estimated)"
+
+#. Chinese New Year.
+msgid "Tahun Baharu Cina"
+msgstr "Chinese New Year"
+
+#. Chinese New Year (Second Day).
+msgid "Tahun Baharu Cina (Hari Kedua)"
+msgstr "Chinese New Year (Second Day)"
+
+#. Vesak Day.
+msgid "Hari Wesak"
+msgstr "Vesak Day"
+
+#. Labor Day.
+msgid "Hari Pekerja"
+msgstr "Labor Day"
+
+#. Birthday of HM Yang di-Pertuan Agong.
+msgid "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong"
+msgstr "Birthday of HM Yang di-Pertuan Agong"
+
+#. National Day.
+msgid "Hari Kebangsaan"
+msgstr "National Day"
+
+#. Malaysia Day.
+msgid "Hari Malaysia"
+msgstr "Malaysia Day"
+
+#. Christmas Day.
+msgid "Hari Krismas"
+msgstr "Christmas Day"
+
+#. Islamic New Year.
+msgid "Awal Muharam"
+msgstr "Islamic New Year"
+
+#. Prophet Muhammad's Birthday.
+msgid "Hari Keputeraan Nabi Muhammad S.A.W."
+msgstr "Prophet Muhammad's Birthday"
+
+#. Eid al-Fitr.
+msgid "Hari Raya Puasa"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Fitr (Second Day).
+msgid "Hari Raya Puasa (Hari Kedua)"
+msgstr "Eid al-Fitr (Second Day)"
+
+#. Eid al-Adha.
+msgid "Hari Raya Qurban"
+msgstr "Eid al-Adha"
+
+#. Deepavali.
+msgid "Hari Deepavali"
+msgstr "Deepavali"
+
+#. Thaipusam.
+msgid "Hari Thaipusam"
+msgstr "Thaipusam"
+
+#. Birthday of the Sultan of Johor.
+msgid "Hari Keputeraan Sultan Johor"
+msgstr "Birthday of the Sultan of Johor"
+
+#. The Sultan of Johor Hol.
+msgid "Hari Hol Almarhum Sultan Iskandar"
+msgstr "The Sultan of Johor Hol"
+
+#. Beginning of Ramadan.
+msgid "Awal Ramadan"
+msgstr "Beginning of Ramadan"
+
+#. Birthday of The Sultan of Kedah.
+msgid "Hari Keputeraan Sultan Kedah"
+msgstr "Birthday of The Sultan of Kedah"
+
+#. Isra' and Mi'raj.
+msgid "Israk dan Mikraj"
+msgstr "Isra' and Mi'raj"
+
+#. Eid al-Adha (Second Day).
+msgid "Hari Raya Qurban (Hari Kedua)"
+msgstr "Eid al-Adha (Second Day)"
+
+#. Birthday of the Sultan of Kelantan.
+msgid "Hari Keputeraan Sultan Kelantan"
+msgstr "Birthday of the Sultan of Kelantan"
+
+#. Nuzul Al-Quran Day.
+msgid "Hari Nuzul Al-Quran"
+msgstr "Nuzul Al-Quran Day"
+
+#. New Year's Day.
+msgid "Tahun Baharu"
+msgstr "New Year's Day"
+
+#. Federal Territory Day.
+msgid "Hari Wilayah Persekutuan"
+msgstr "Federal Territory Day"
+
+#. Pesta Kaamatan.
+msgid "Pesta Kaamatan"
+msgstr "Pesta Kaamatan"
+
+#. Declaration of Independence Day.
+msgid "Hari Pengisytiharan Tarikh Kemerdekaan"
+msgstr "Declaration of Independence Day"
+
+#. Declaration of Malacca as a Historical City.
+msgid "Hari Perisytiharan Melaka Sebagai Bandaraya Bersejarah"
+msgstr "Declaration of Malacca as a Historical City"
+
+#. Birthday of the Governor of Malacca.
+msgid "Hari Jadi Yang di-Pertua Negeri Melaka"
+msgstr "Birthday of the Governor of Malacca"
+
+#. Birthday of the Sultan of Negeri Sembilan.
+msgid "Hari Keputeraan Yang di-Pertuan Besar Negeri Sembilan"
+msgstr "Birthday of the Sultan of Negeri Sembilan"
+
+#. The Sultan of Pahang Hol.
+msgid "Hari Hol Sultan Pahang"
+msgstr "The Sultan of Pahang Hol"
+
+#. Birthday of the Sultan of Pahang.
+msgid "Hari Keputeraan Sultan Pahang"
+msgstr "Birthday of the Sultan of Pahang"
+
+#. Birthday of the Raja of Perlis.
+msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
+msgstr "Birthday of the Raja of Perlis"
+
+#. George Town Heritage Day.
+msgid "Hari Ulang Tahun Perisytiharan Tapak Warisan Dunia"
+msgstr "George Town Heritage Day"
+
+#. Birthday of the Governor of Penang.
+msgid "Hari Jadi Yang di-Pertua Negeri Pulau Pinang"
+msgstr "Birthday of the Governor of Penang"
+
+#. Birthday of the Sultan of Perak.
+msgid "Hari Keputeraan Sultan Perak"
+msgstr "Birthday of the Sultan of Perak"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Birthday of the Governor of Sabah.
+msgid "Hari Jadi Yang di-Pertua Negeri Sabah"
+msgstr "Birthday of the Governor of Sabah"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
+
+#. Birthday of The Sultan of Selangor.
+msgid "Hari Keputeraan Sultan Selangor"
+msgstr "Birthday of The Sultan of Selangor"
+
+#. Dayak Festival Day.
+msgid "Perayaan Hari Gawai Dayak"
+msgstr "Dayak Festival Day"
+
+#. Birthday of the Governor of Sarawak.
+msgid "Hari Jadi Yang di-Pertua Negeri Sarawak"
+msgstr "Birthday of the Governor of Sarawak"
+
+#. Sarawak Independence Day.
+msgid "Hari Kemerdekaan Sarawak"
+msgstr "Sarawak Independence Day"
+
+#. Anniversary of the Installation of the Sultan of Terengganu.
+msgid "Hari Ulang Tahun Pertabalan Sultan Terengganu"
+msgstr "Anniversary of the Installation of the Sultan of Terengganu"
+
+#. Birthday of the Sultan of Terengganu.
+msgid "Hari Keputeraan Sultan Terengganu"
+msgstr "Birthday of the Sultan of Terengganu"
+
+#. Arafat Day.
+msgid "Hari Arafah"
+msgstr "Arafat Day"
+
+#. General election additional holiday.
+msgid "Cuti Peristiwa (pilihan raya umum)"
+msgstr "General election additional holiday"
+
+#. Malaysia Cup Holiday.
+msgid "Cuti Piala Malaysia"
+msgstr "Malaysia Cup Holiday"
+
+#. Day of Installation of the 15th Yang di-Pertuan Agong.
+msgid "Hari Pertabalan Yang di-Pertuan Agong ke-15"
+msgstr "Day of Installation of the 15th Yang di-Pertuan Agong"
+
+#. Day of Installation of the 16th Yang di-Pertuan Agong.
+msgid "Hari Pertabalan Yang di-Pertuan Agong ke-16"
+msgstr "Day of Installation of the 16th Yang di-Pertuan Agong"
+
+#. Eid al-Fitr (additional holiday).
+msgid "Hari Raya Puasa (pergantian hari)"
+msgstr "Eid al-Fitr (additional holiday)"
+
+#. Additional holiday in commemoration of the 2017 SEA Games.
+msgid "Cuti tambahan sempena memperingati SAT 2017"
+msgstr "Additional holiday in commemoration of the 2017 SEA Games"

@@ -11,11 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Set
 
-from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT
+from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -67,7 +66,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         observed_rule = THU_FRI_TO_NEXT_WORKDAY if self._year <= 2012 else FRI_SAT_TO_NEXT_WORKDAY
         for dt in dts:
             for i in range(4):
-                self._add_observed(dt + td(days=-i), name=self[dt], rule=observed_rule)
+                self._add_observed(_timedelta(dt, -i), name=self[dt], rule=observed_rule)
 
     def _populate_public_holidays(self):
         # Weekend used to be THU, FRI before June 28th, 2013.

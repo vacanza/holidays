@@ -11,14 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Dict, Optional, Tuple, Set
 
-from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
 from holidays.holiday_base import DateArg, HolidayBase
 
 
-class ObservedRule(Dict[int, int]):
+class ObservedRule(Dict[int, Optional[int]]):
     __slots__ = ()
 
     def __add__(self, other):
@@ -54,6 +53,7 @@ SAT_TO_NEXT_MON = ObservedRule({SAT: +2})
 SAT_TO_NEXT_TUE = ObservedRule({SAT: +3})
 SAT_TO_NEXT_SUN = ObservedRule({SAT: +1})
 SAT_TO_NEXT_WORKDAY = ObservedRule({SAT: +7})
+SAT_TO_NONE = ObservedRule({SAT: None})
 
 SUN_TO_NEXT_MON = ObservedRule({SUN: +1})
 SUN_TO_NEXT_TUE = ObservedRule({SUN: +2})
@@ -106,26 +106,31 @@ class ObservedHolidayBase(HolidayBase):
         return self._observed_since is None or self._year >= self._observed_since
 
     def _get_next_workday(self, dt: date, delta: int = +1) -> date:
-        dt_work = dt + td(days=delta)
+        dt_work = _timedelta(dt, delta)
         while dt_work.year == self._year:
             if dt_work in self or self._is_weekend(dt_work):  # type: ignore[operator]
-                dt_work += td(days=delta)
+                dt_work = _timedelta(dt_work, delta)
             else:
                 return dt_work
         return dt
 
-    def _get_observed_date(self, dt: date, rule: ObservedRule) -> date:
+    def _get_observed_date(self, dt: date, rule: ObservedRule) -> Optional[date]:
         delta = rule.get(dt.weekday(), 0)
-        if delta != 0:
-            if abs(delta) == 7:
-                dt = self._get_next_workday(dt, delta // 7)
-            else:
-                dt += td(days=delta)
+        if delta:
+            return (
+                self._get_next_workday(dt, delta // 7)
+                if abs(delta) == 7
+                else _timedelta(dt, delta)
+            )
+        # Goes after `if delta` case as a less probable.
+        elif delta is None:
+            return None
+
         return dt
 
     def _add_observed(
         self, dt: DateArg, name: Optional[str] = None, rule: Optional[ObservedRule] = None
-    ) -> Tuple[bool, date]:
+    ) -> Tuple[bool, Optional[date]]:
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
         if not self.observed or not self._is_observed(dt):
@@ -134,6 +139,11 @@ class ObservedHolidayBase(HolidayBase):
         dt_observed = self._get_observed_date(dt, rule or self._observed_rule)
         if dt_observed == dt:
             return False, dt
+
+        # SAT_TO_NONE and similar cases.
+        if dt_observed is None:
+            self.pop(dt)
+            return False, None
 
         estimated_label = self.tr(getattr(self, "estimated_label", ""))
         observed_label = self.tr(
@@ -159,7 +169,9 @@ class ObservedHolidayBase(HolidayBase):
 
         return True, dt_observed
 
-    def _move_holiday(self, dt: date, rule: Optional[ObservedRule] = None) -> Tuple[bool, date]:
+    def _move_holiday(
+        self, dt: date, rule: Optional[ObservedRule] = None
+    ) -> Tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(dt, rule=rule)
         if is_observed:
             self.pop(dt)
