@@ -29,8 +29,14 @@ class TestRussia(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            # Substituted Holidays.
             "2023-02-24",
             "2023-05-08",
+            "2024-04-29",
+            "2024-04-30",
+            "2024-05-10",
+            "2024-12-30",
+            "2024-12-31",
         )
 
     def test_new_year(self):
