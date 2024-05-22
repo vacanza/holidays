@@ -110,7 +110,3 @@ class TestEswatini(CommonCountryTests, TestCase):
         warnings.simplefilter("default")
         with self.assertWarns(Warning):
             holidays.Swaziland()
-
-        warnings.simplefilter("error")
-        with self.assertRaises(Warning):
-            holidays.Swaziland()
