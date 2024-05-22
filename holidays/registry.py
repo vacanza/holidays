@@ -179,6 +179,9 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
 }
 
+# A re-entrant lock. Once a thread has acquired a re-entrant lock,
+# the same thread may acquire it again without blocking.
+# https://docs.python.org/3/library/threading.html#rlock-objects
 IMPORT_LOCK = RLock()
 
 
