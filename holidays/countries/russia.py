@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, DEC
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -129,8 +129,8 @@ class RussiaStaticHolidays:
         # src: https://www.consultant.ru/document/cons_doc_LAW_455140/
         2024: (
             (APR, 29, APR, 27),
-            (APR, 30, FEB, 11),
-            (MAY, 10, JUN, 1),
+            (APR, 30, NOV, 2),
+            (MAY, 10, JAN, 6),
             (DEC, 30, DEC, 28),
             (DEC, 31, JAN, 7),
         ),
