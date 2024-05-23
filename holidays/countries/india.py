@@ -31,41 +31,44 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
-        "AR",  # Arunachal Pradesh.
+        "AR",  # Arunāchal Pradesh.
         "AS",  # Assam.
-        "BR",  # Bihar.
-        "CG",  # Chhattisgarh.
-        "CH",  # Chandigarh.
-        "DD",  # Daman and Diu.
-        "DH",  # Dadra and Nagar Haveli.
+        "BR",  # Bihār.
+        "CG",  # Chhattīsgarh.
+        "CH",  # Chandīgarh.
+        "DH",  # Dādra and Nagar Haveli and Damān and Diu.
         "DL",  # Delhi.
         "GA",  # Goa.
-        "GJ",  # Gujarat.
-        "HP",  # Himachal Pradesh.
-        "HR",  # Haryana.
-        "JH",  # Jharkhand.
-        "JK",  # Jammu and Kashmir.
-        "KA",  # Karnataka.
+        "GJ",  # Gujarāt.
+        "HP",  # Himāchal Pradesh.
+        "HR",  # Haryāna.
+        "JH",  # Jhārkhand.
+        "JK",  # Jammu and Kashmīr.
+        "KA",  # Karnātaka.
         "KL",  # Kerala.
-        "LA",  # Ladakh.
+        "LA",  # Ladākh.
         "LD",  # Lakshadweep.
-        "MH",  # Maharashtra.
-        "ML",  # Meghalaya.
+        "MH",  # Mahārāshtra.
+        "ML",  # Meghālaya.
         "MN",  # Manipur.
         "MP",  # Madhya Pradesh.
         "MZ",  # Mizoram.
-        "NL",  # Nagaland.
-        "OR",  # Orissa / Odisha (Govt sites (dacnet/vahan) use code "OR").
+        "NL",  # Nāgāland.
+        "OD",  # Odisha.
         "PB",  # Punjab.
-        "PY",  # Pondicherry.
-        "RJ",  # Rajasthan.
+        "PY",  # Puducherry.
+        "RJ",  # Rājasthān.
         "SK",  # Sikkim.
-        "TN",  # Tamil Nadu.
+        "TN",  # Tamil Nādu.
         "TR",  # Tripura.
-        "TS",  # Telangana.
-        "UK",  # Uttarakhand.
+        "TS",  # Telangāna.
+        "UK",  # Uttarākhand.
         "UP",  # Uttar Pradesh.
         "WB",  # West Bengal.
+    )
+    _deprecated_subdivisions = (
+        "DD",  # Daman and Diu.
+        "OR",  # Orissa.
     )
 
     def __init__(self, *args, **kwargs):
@@ -197,6 +200,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_whit_sunday("Feast of Pentecost")
         self._add_christmas_day("Christmas Day")
 
+        if self.subdiv == "OR":
+            self._populate_subdiv_od_public_holidays()
+
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
@@ -246,7 +252,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_nov_1("Madhya Pradesh Foundation Day")
 
     # Orissa / Odisha.
-    def _populate_subdiv_or_public_holidays(self):
+    def _populate_subdiv_od_public_holidays(self):
         self._add_holiday_apr_1("Odisha Day (Utkala Dibasa)")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_15("Maha Vishuva Sankranti / Pana Sankranti")
