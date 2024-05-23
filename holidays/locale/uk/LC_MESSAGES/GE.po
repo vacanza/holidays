@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.50\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2023-07-18 18:06+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2024-05-23 11:01+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. New Year's Day.
 msgid "ახალი წელი"
@@ -90,3 +90,7 @@ msgstr "Свято Светіцховлоба, Ризи Господньої"
 #. Saint George's Day.
 msgid "გიორგობა"
 msgstr "День святого Георгія"
+
+#. Day of Family Purity and Respect for Parents.
+msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
+msgstr "День згуртованості та святості сім'ї"
