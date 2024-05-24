@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.constants import PUBLIC, GOVERNMENT
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
