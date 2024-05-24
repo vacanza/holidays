@@ -439,7 +439,7 @@ All other default values are highlighted with bold:
      - GE
      -
      - en_US, **ka**, uk
-     -
+     - GOVERNMENT
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH

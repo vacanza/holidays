@@ -12,8 +12,10 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import MAY
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import GOVERNMENT, PUBLIC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,12 +29,14 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "GE"
+    supported_categories = (GOVERNMENT, PUBLIC)
     default_language = "ka"
     supported_languages = ("en_US", "ka", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, GeorgiaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -96,3 +100,15 @@ class GE(Georgia):
 
 class GEO(Georgia):
     pass
+
+
+class GeorgiaStaticHolidays:
+    """
+    References:
+        - https://www.matsne.gov.ge/ka/document/view/6173967
+    """
+
+    special_government_holidays = {
+        # Day of Family Sanctity and Respect for Parents.
+        2024: (MAY, 17, tr("ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე")),
+    }
