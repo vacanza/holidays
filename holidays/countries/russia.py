@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAY
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -113,11 +113,25 @@ class RUS(Russia):
 
 
 class RussiaStaticHolidays:
+    # Date format (see strftime() Format Codes).
+    substituted_date_format = tr("%d.%m.%Y")
+    # Day off (substituted from %s).
+    substituted_label = tr("Выходной (перенесено с %s)")
+
     special_public_holidays = {
-        # Bridge days for 01/01/2023 and 08/01/2023.
+        # Substituted Holidays 2023
         # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
         2023: (
-            (FEB, 24, tr("День защитника Отечества")),
-            (MAY, 8, tr("День Победы")),
+            (FEB, 24, JAN, 1),
+            (MAY, 8, JAN, 8),
+        ),
+        # Substituted Holidays 2024
+        # src: https://www.consultant.ru/document/cons_doc_LAW_455140/
+        2024: (
+            (APR, 29, APR, 27),
+            (APR, 30, NOV, 2),
+            (MAY, 10, JAN, 6),
+            (DEC, 30, DEC, 28),
+            (DEC, 31, JAN, 7),
         ),
     }
