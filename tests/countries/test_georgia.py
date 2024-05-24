@@ -28,7 +28,7 @@ class TestGeorgia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Georgia(years=1990))
 
-    def test_family_purity_holiday(self):
+    def test_family_sanctity_day(self):
         self.assertHolidays(
             Georgia(categories=GOVERNMENT, years=2024),
             ("2024-05-17", "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"),

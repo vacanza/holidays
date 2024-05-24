@@ -91,6 +91,6 @@ msgstr "Holiday of Svetitskhovloba, Robe of Jesus"
 msgid "გიორგობა"
 msgstr "Saint George's Day"
 
-#. Day of Family Purity and Respect for Parents.
+#. Day of Family Sanctity and Respect for Parents.
 msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
-msgstr "Day of Family Purity and Respect for Parents"
+msgstr "Day of Family Sanctity and Respect for Parents"

@@ -109,6 +109,6 @@ class GeorgiaStaticHolidays:
     """
 
     special_government_holidays = {
-        # Day of Family Purity and Respect for Parents.
+        # Day of Family Sanctity and Respect for Parents.
         2024: (MAY, 17, tr("ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე")),
     }

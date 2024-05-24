@@ -91,6 +91,6 @@ msgstr ""
 msgid "გიორგობა"
 msgstr ""
 
-#. Day of Family Purity and Respect for Parents.
+#. Day of Family Sanctity and Respect for Parents.
 msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"
 msgstr ""
