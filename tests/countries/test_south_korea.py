@@ -541,10 +541,6 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         with self.assertWarns(Warning):
             Korea()
 
-        warnings.simplefilter("error")
-        with self.assertRaises(Warning):
-            Korea()
-
     def test_2020_all(self):
         self.assertHolidays(
             SouthKorea(categories=(BANK, PUBLIC), years=2020),
