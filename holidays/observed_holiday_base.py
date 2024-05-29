@@ -105,7 +105,7 @@ class ObservedHolidayBase(HolidayBase):
     def __init__(
         self, observed_rule: ObservedRule = None, observed_since: int = None, *args, **kwargs
     ):
-        self._observed_rule = observed_rule or ObservedRule({})
+        self._observed_rule = observed_rule or ObservedRule()
         self._observed_since = observed_since
         super().__init__(*args, **kwargs)
 
