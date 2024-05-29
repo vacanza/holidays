@@ -10,9 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import JUL
 from holidays.countries.united_kingdom import UnitedKingdom, UnitedKingdomStaticHolidays
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
@@ -50,11 +47,9 @@ class IsleOfMan(UnitedKingdom):
 
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.
-        dt = date(self._year, JUL, 5)
-        self._add_holiday(
-            "Tynwald Day",
-            self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) if self._year >= 1992 else dt,
-        )
+        jul_5 = self._add_holiday_jul_5("Tynwald Day")
+        if self._year >= 1992:
+            self._move_holiday(jul_5, show_observed_label=False)
 
 
 class IM(IsleOfMan):

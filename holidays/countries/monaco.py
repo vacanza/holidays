@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, DEC
+from holidays.calendars.gregorian import JAN
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
@@ -68,11 +68,9 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_observed(self._add_holiday_nov_19(tr("La Fête du Prince")))
 
         # Immaculate Conception.
-        name = tr("L'Immaculée Conception")
-        if self._year >= 2019 and self._is_sunday(DEC, 8):
-            self._add_holiday_dec_9(name)
-        else:
-            self._add_holiday_dec_8(name)
+        dec_8 = self._add_immaculate_conception_day(tr("L'Immaculée Conception"))
+        if self._year >= 2019:
+            self._move_holiday(dec_8, show_observed_label=False)
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Noël")))
