@@ -12,7 +12,7 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Tuple
+from typing import Set, Tuple
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -29,11 +29,10 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
-from holidays.helpers import _normalize_tuple
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
+class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
     """
     References:
 
@@ -49,7 +48,32 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
     def __init__(self, *args, **kwargs) -> None:
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=JapanStaticHolidays)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
+
+    def _populate_observed(self, dts: Set[date]) -> None:
+        # When a national holiday falls on Sunday, next working day
+        # shall become a public holiday (振替休日) - substitute holidays.
+        for dt in sorted(dts):
+            is_observed, dt_observed = self._add_observed(
+                dt,
+                # Substitute Holiday.
+                name=tr("振替休日"),
+                show_observed_label=False,
+            )
+            if is_observed:
+                dts.add(dt_observed)  # type: ignore[arg-type]
+
+        # A weekday between national holidays becomes
+        # a holiday too (国民の休日) - national holidays.
+        for dt in dts:
+            if _timedelta(dt, +2) not in dts:
+                continue
+            dt_observed = _timedelta(dt, +1)
+            if self._is_sunday(dt_observed) or dt_observed in dts:
+                continue
+            # National Holiday.
+            self._add_holiday(tr("国民の休日"), dt_observed)
 
     def _populate_public_holidays(self):
         if self._year < 1949 or self._year > 2099:
@@ -172,32 +196,7 @@ class Japan(HolidayBase, InternationalHolidays, StaticHolidays):
             dts_observed.add(self._add_holiday_dec_23(tr("天皇誕生日")))
 
         if self.observed:
-            for month, day, _ in _normalize_tuple(
-                self.special_public_holidays.get(self._year, ())
-            ):
-                dts_observed.add(date(self._year, month, day))
-
-            # When a national holiday falls on Sunday, next working day
-            # shall become a public holiday (振替休日) - substitute holidays.
-            for dt in dts_observed.copy():
-                if not self._is_sunday(dt):
-                    continue
-                dt_observed = _timedelta(dt, +1)
-                while dt_observed in dts_observed:
-                    dt_observed = _timedelta(dt_observed, +1)
-                # Substitute Holiday.
-                dts_observed.add(self._add_holiday(tr("振替休日"), dt_observed))
-
-            # A weekday between national holidays becomes
-            # a holiday too (国民の休日) - citizens' holidays.
-            for dt in dts_observed:
-                if _timedelta(dt, +2) not in dts_observed:
-                    continue
-                dt_observed = _timedelta(dt, +1)
-                if self._is_sunday(dt_observed) or dt_observed in dts_observed:
-                    continue
-                # National Holiday.
-                self._add_holiday(tr("国民の休日"), dt_observed)
+            self._populate_observed(dts_observed)
 
     def _populate_bank_holidays(self):
         if self._year < 1949 or self._year > 2099:
@@ -246,6 +245,8 @@ class JPN(Japan):
 
 
 class JapanStaticHolidays:
+    national_holiday = tr("国民の休日")
+
     special_public_holidays = {
         1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
         1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
@@ -254,5 +255,12 @@ class JapanStaticHolidays:
         2019: (
             (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
             (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
+        ),
+    }
+
+    special_public_holidays_observed = {
+        2019: (
+            (APR, 30, national_holiday),
+            (MAY, 2, national_holiday),
         ),
     }
