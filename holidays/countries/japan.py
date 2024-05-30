@@ -51,17 +51,17 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: Set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: Set[date]) -> None:
         # When a national holiday falls on Sunday, next working day
         # shall become a public holiday (振替休日) - substitute holidays.
         for dt in sorted(dts):
-            is_obs, dt_observed = self._add_observed(
+            is_observed, dt_observed = self._add_observed(
                 dt,
                 # Substitute Holiday.
                 name=tr("振替休日"),
                 show_observed_label=False,
             )
-            if is_obs:
+            if is_observed:
                 dts.add(dt_observed)  # type: ignore[arg-type]
 
         # A weekday between national holidays becomes
