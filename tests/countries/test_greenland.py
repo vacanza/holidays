@@ -59,6 +59,7 @@ class TestGreenland(CommonCountryTests, TestCase):
     def test_2022_optional(self):
         self.assertHolidays(
             Greenland(categories=OPTIONAL, years=2022),
+            ("2022-01-06", "Mitaarneq"),
             ("2022-05-01", "Sulisartut ulluat"),
             ("2022-06-21", "Ullortuneq"),
             ("2022-12-24", "Juulliaqqami"),
@@ -68,6 +69,7 @@ class TestGreenland(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Ukioq nutaaq"),
+            ("2022-01-06", "Mitaarneq"),
             ("2022-04-14", "Sisamanngornermi illernartumi"),
             ("2022-04-15", "Tallimanngorneq ajortorsiorneq"),
             ("2022-04-17", "Poorskimi"),
@@ -88,6 +90,7 @@ class TestGreenland(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "da",
             ("2022-01-01", "Nytårsdag"),
+            ("2022-01-06", "Helligtrekongersdag"),
             ("2022-04-14", "Skærtorsdag"),
             ("2022-04-15", "Langfredag"),
             ("2022-04-17", "Påskedag"),
@@ -108,6 +111,7 @@ class TestGreenland(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
+            ("2022-01-06", "Epiphany"),
             ("2022-04-14", "Maundy Thursday"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),

@@ -86,5 +86,6 @@ msgstr ""
 msgid "Tallimanngorneq ajortorsiorneq"
 msgstr ""
 
-#~ msgid "Langfredag"
-#~ msgstr ""
+#. Epiphany
+msgid "Mitaarneq"
+msgstr ""

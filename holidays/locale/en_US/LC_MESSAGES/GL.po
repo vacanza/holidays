@@ -86,3 +86,7 @@ msgstr "National Day"
 #. Good Friday.
 msgid "Tallimanngorneq ajortorsiorneq"
 msgstr "Good Friday"
+
+#. Epiphany
+msgid "Mitaarneq"
+msgstr "Epiphany"
