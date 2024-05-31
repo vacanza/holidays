@@ -59,7 +59,6 @@ msgid "Stephanstag"
 msgstr ""
 
 #. Berchtold's Day.
-#. Jan 2 is public holiday only when it falls on Monday.
 msgid "Berchtoldstag"
 msgstr ""
 
