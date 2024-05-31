@@ -86,6 +86,6 @@ msgstr ""
 msgid "Tallimanngorneq ajortorsiorneq"
 msgstr ""
 
-#. Epiphany
+#. Epiphany.
 msgid "Mitaarneq"
 msgstr ""

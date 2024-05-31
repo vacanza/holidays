@@ -86,6 +86,6 @@ msgstr "Nationaldag"
 msgid "Tallimanngorneq ajortorsiorneq"
 msgstr "Langfredag"
 
-#. Epiphany
+#. Epiphany.
 msgid "Mitaarneq"
 msgstr "Helligtrekongersdag"

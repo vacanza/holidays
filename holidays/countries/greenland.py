@@ -72,7 +72,7 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Juullip aappaa"))
 
     def _populate_optional_holidays(self):
-        # Epiphany
+        # Epiphany.
         self._add_epiphany_day(tr("Mitaarneq"))
 
         # International Workers' Day.
