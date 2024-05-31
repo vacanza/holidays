@@ -269,8 +269,10 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ne_public_holidays(self):
-        # Jan 2 is public holiday only when it falls on Monday.
-        self._add_observed(self._add_new_years_day_two(tr("Berchtoldstag")), rule=MON_ONLY)
+        self._add_observed(
+            self._add_new_years_day_two(tr("Berchtoldstag")),
+            rule=MON_ONLY,  # Jan 2 is public holiday only when it falls on Monday.
+        )
 
         # Republic Day.
         self._add_holiday_mar_1(tr("Jahrestag der Ausrufung der Republik"))
