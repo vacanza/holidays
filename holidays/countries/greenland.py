@@ -24,6 +24,7 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Greenland
     - https://www.norden.org/en/info-norden/public-holidays-greenland
+    - https://www.timeanddate.com/holidays/greenland/
     """
 
     country = "GL"
