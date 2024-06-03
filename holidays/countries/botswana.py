@@ -12,7 +12,12 @@
 
 from holidays.calendars.gregorian import JUL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -41,16 +46,19 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
 
-        # Easter and easter related calculations
         self._add_good_friday("Good Friday")
-        self._add_holy_saturday("Holy Saturday")
-        self._add_easter_monday("Easter Monday")
-        self._add_ascension_thursday("Ascension Day")
 
-        may_1 = self._add_labor_day("Labour Day")
-        self._add_observed(may_1)
-        if self.observed and self._year >= 2016 and self._is_saturday(may_1):
-            self._add_labor_day_three("Labour Day Holiday")
+        self._add_holy_saturday("Holy Saturday")
+
+        self._add_easter_monday("Easter Monday")
+
+        self._add_observed(may_1 := self._add_labor_day("Labour Day"))
+        if self._year >= 2016:
+            self._add_observed(
+                may_1, name="Labour Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+            )
+
+        self._add_ascension_thursday("Ascension Day")
 
         self._add_observed(self._add_holiday_jul_1("Sir Seretse Khama Day"))
 
@@ -63,8 +71,10 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
         self._add_observed(dec_26 := self._add_christmas_day_two("Boxing Day"))
 
-        if self.observed and self._year >= 2016 and self._is_saturday(dec_26):
-            self._add_holiday_dec_28("Boxing Day Holiday")
+        if self._year >= 2016:
+            self._add_observed(
+                dec_26, name="Boxing Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+            )
 
 
 class BW(Botswana):

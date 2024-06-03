@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
+from threading import RLock
 from typing import Any, Dict, Iterable, Optional, Tuple, Union
 
 from holidays.holiday_base import HolidayBase
@@ -74,6 +75,7 @@ COUNTRIES: RegistryDict = {
     "germany": ("Germany", "DE", "DEU"),
     "ghana": ("Ghana", "GH", "GHA"),
     "greece": ("Greece", "GR", "GRC"),
+    "greenland": ("Greenland", "GL", "GRL"),
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
     "guatemala": ("Guatemala", "GT", "GUA"),
     "honduras": ("Honduras", "HN", "HND"),
@@ -178,6 +180,11 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
 }
 
+# A re-entrant lock. Once a thread has acquired a re-entrant lock,
+# the same thread may acquire it again without blocking.
+# https://docs.python.org/3/library/threading.html#rlock-objects
+IMPORT_LOCK = RLock()
+
 
 class EntityLoader:
     """Country and financial holidays entities lazy loader."""
@@ -223,7 +230,10 @@ class EntityLoader:
     def get_entity(self) -> Optional[HolidayBase]:
         """Return lazy-loaded entity."""
         if self.entity is None:
-            self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
+            # Avoid deadlock due to importlib.import_module not being thread-safe by caching all
+            # the first imports in a dedicated thread.
+            with IMPORT_LOCK:
+                self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
 
         return self.entity
 

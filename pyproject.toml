@@ -71,6 +71,9 @@ disable_error_code = ["override"]
 module = "holidays.groups.*"
 disable_error_code = "attr-defined"
 
+[tool.pytest.ini_options]
+addopts = "-p no:warnings"
+
 [tool.rstcheck]
 ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]

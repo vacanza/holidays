@@ -19,6 +19,8 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_WORKDAY,
     SUN_TO_NEXT_WORKDAY,
+    SAT_TO_NONE,
+    SUN_TO_NONE,
 )
 
 
@@ -139,14 +141,12 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Liberation Day.
         # Started in 1952. This has no in-lieus.
         # Counts as Public Holiday when fall on the weekdays, also on Saturday from 2010 onwards.
-        # Specially held in 2010 on Sunday for the 65th Anniversary.
 
-        # Liberation Day
-        liberation_day = self._add_holiday_may_9("Liberation Day")
-        if (self._is_sunday(liberation_day) and self._year != 2010) or (
-            self._is_saturday(liberation_day) and self._year <= 2010
-        ):
-            self.pop(liberation_day)
+        self._add_observed(
+            # Liberation Day
+            self._add_holiday_may_9("Liberation Day"),
+            rule=SAT_TO_NONE + SUN_TO_NONE if self._year <= 2010 else SUN_TO_NONE,
+        )
 
 
 class JE(Jersey):
@@ -207,6 +207,8 @@ class JerseyStaticHolidays:
         1999: (DEC, 31, "Millennium Celebrations"),
         2001: (JUL, 13, elizabeth_2_royal_visit),
         2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+        # Specially held in 2010 on Sunday for the 65th Anniversary.
+        2010: (MAY, 9, "Liberation Day"),
         2011: (APR, 29, "Wedding of William and Catherine"),
         2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
         2020: (MAY, 8, "75th Anniversary of VE Day"),

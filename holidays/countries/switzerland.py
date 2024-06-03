@@ -15,10 +15,10 @@ from gettext import gettext as tr
 from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO_NONE, SAT_TO_NONE
 
 
-class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
         - https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf  # noqa: E501
@@ -115,8 +115,9 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_whit_monday(tr("Pfingstmontag"))
 
-        if not self._is_monday(self._christmas_day) and not self._is_friday(self._christmas_day):
-            self._add_christmas_day_two(tr("Stephanstag"))
+        self._add_observed(
+            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+        )
 
     def _populate_subdiv_ai_public_holidays(self):
         self._add_good_friday(tr("Karfreitag"))
@@ -133,8 +134,9 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-        if not self._is_monday(self._christmas_day) and not self._is_friday(self._christmas_day):
-            self._add_christmas_day_two(tr("Stephanstag"))
+        self._add_observed(
+            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+        )
 
     def _populate_subdiv_bl_public_holidays(self):
         self._add_good_friday(tr("Karfreitag"))
@@ -267,10 +269,10 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ne_public_holidays(self):
-        dt = self._add_new_years_day_two(tr("Berchtoldstag"))
-        # Jan 2 is public holiday only when it falls on Monday (Jan 1 falls on Sunday).
-        if not self._is_monday(dt):
-            self.pop(dt)
+        self._add_observed(
+            self._add_new_years_day_two(tr("Berchtoldstag")),
+            rule=MON_ONLY,  # Jan 2 is public holiday only when it falls on Monday.
+        )
 
         # Republic Day.
         self._add_holiday_mar_1(tr("Jahrestag der Ausrufung der Republik"))
@@ -281,8 +283,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
-        if self._is_sunday(self._christmas_day):
-            self._add_christmas_day_two(tr("Stephanstag"))
+        self._add_observed(self._add_christmas_day_two(tr("Stephanstag")), rule=MON_ONLY)
 
     def _populate_subdiv_nw_public_holidays(self):
         # St. Joseph's Day.
@@ -445,8 +446,9 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-        if not self._is_monday(self._christmas_day) and not self._is_friday(self._christmas_day):
-            self._add_christmas_day_two(tr("Stephanstag"))
+        self._add_observed(
+            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+        )
 
     def _populate_subdiv_vd_public_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))

@@ -10,129 +10,128 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import MAR
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+    """
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Italy
+        - `Provinces holidays <https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane>`_  # noqa: E501
+    """
+
     country = "IT"
-    # Reference: https://it.wikipedia.org/wiki/Province_d%27Italia
-    # Please maintain in alphabetical order for easy updating in the future
-    # The alphabetical order is except cities of provinces with multiple head
-    # cities that directly follows the main province id like BT, Barletta,
-    # Andria, Trani, for easily grouping them.
-    # In that case if you use the 2 char id you'll take the first Santo
-    # Patrono defined. If you want one specific you'll have to use
-    # the full name of the city like "Andria" instead of "BT".
     subdivisions = (
         # Provinces.
-        "AG",
-        "AL",
-        "AN",
-        "AO",
-        "AP",
-        "AQ",
-        "AR",
-        "AT",
-        "AV",
-        "BA",
-        "BG",
-        "BI",
-        "BL",
-        "BN",
-        "BO",
-        "BR",
-        "BS",
-        "BT",
-        "BZ",
-        "CA",
-        "CB",
-        "CE",
-        "CH",
-        "CL",
-        "CN",
-        "CO",
-        "CR",
-        "CS",
-        "CT",
-        "CZ",
-        "EN",
-        "FC",
-        "FE",
-        "FG",
-        "FI",
-        "FM",
-        "FR",
-        "GE",
-        "GO",
-        "GR",
-        "IM",
-        "IS",
-        "KR",
-        "LC",
-        "LE",
-        "LI",
-        "LO",
-        "LT",
-        "LU",
-        "MB",
-        "MC",
-        "ME",
-        "MI",
-        "MN",
-        "MO",
-        "MS",
-        "MT",
-        "NA",
-        "NO",
-        "NU",
-        "OR",
-        "PA",
-        "PC",
-        "PD",
-        "PE",
-        "PG",
-        "PI",
-        "PN",
-        "PO",
-        "PR",
-        "PT",
-        "PU",
-        "PV",
-        "PZ",
-        "RA",
-        "RC",
-        "RE",
-        "RG",
-        "RI",
-        "RM",
-        "RN",
-        "RO",
-        "SA",
-        "SI",
-        "SO",
-        "SP",
-        "SR",
-        "SS",
-        "SU",
-        "SV",
-        "TA",
-        "TE",
-        "TN",
-        "TO",
-        "TP",
-        "TR",
-        "TS",
-        "TV",
-        "UD",
-        "VA",
-        "VB",
-        "VC",
-        "VE",
-        "VI",
-        "VR",
-        "VT",
-        "VV",
+        "AG",  # Agrigento.
+        "AL",  # Alessandria.
+        "AN",  # Ancona.
+        "AO",  # Aosta (deprecated).
+        "AP",  # Ascoli Piceno.
+        "AQ",  # L'Aquila.
+        "AR",  # Arezzo.
+        "AT",  # Asti.
+        "AV",  # Avellino.
+        "BA",  # Bari.
+        "BG",  # Bergamo.
+        "BI",  # Biella.
+        "BL",  # Belluno.
+        "BN",  # Benevento.
+        "BO",  # Bologna.
+        "BR",  # Brindisi.
+        "BS",  # Brescia.
+        "BT",  # Barletta-Andria-Trani.
+        "BZ",  # Bolzano.
+        "CA",  # Cagliari.
+        "CB",  # Campobasso.
+        "CE",  # Caserta.
+        "CH",  # Chieti.
+        "CL",  # Caltanissetta.
+        "CN",  # Cuneo.
+        "CO",  # Como.
+        "CR",  # Cremona.
+        "CS",  # Cosenza.
+        "CT",  # Catania.
+        "CZ",  # Catanzaro.
+        "EN",  # Enna.
+        "FC",  # Forlì-Cesena.
+        "FE",  # Ferrara.
+        "FG",  # Foggia.
+        "FI",  # Firenze.
+        "FM",  # Fermo.
+        "FR",  # Frosinone.
+        "GE",  # Genova.
+        "GO",  # Gorizia.
+        "GR",  # Grosseto.
+        "IM",  # Imperia.
+        "IS",  # Isernia.
+        "KR",  # Crotone.
+        "LC",  # Lecco.
+        "LE",  # Lecce.
+        "LI",  # Livorno.
+        "LO",  # Lodi.
+        "LT",  # Latina.
+        "LU",  # Lucca.
+        "MB",  # Monza e Brianza.
+        "MC",  # Macerata.
+        "ME",  # Messina.
+        "MI",  # Milano.
+        "MN",  # Mantova.
+        "MO",  # Modena.
+        "MS",  # Massa-Carrara.
+        "MT",  # Matera.
+        "NA",  # Napoli.
+        "NO",  # Novara.
+        "NU",  # Nuoro.
+        "OR",  # Oristano.
+        "PA",  # Palermo.
+        "PC",  # Piacenza.
+        "PD",  # Padova.
+        "PE",  # Pescara.
+        "PG",  # Perugia.
+        "PI",  # Pisa.
+        "PN",  # Pordenone.
+        "PO",  # Prato.
+        "PR",  # Parma.
+        "PT",  # Pistoia.
+        "PU",  # Pesaro e Urbino.
+        "PV",  # Pavia.
+        "PZ",  # Potenza.
+        "RA",  # Ravenna.
+        "RC",  # Reggio Calabria.
+        "RE",  # Reggio Emilia.
+        "RG",  # Ragusa.
+        "RI",  # Rieti.
+        "RM",  # Roma.
+        "RN",  # Rimini.
+        "RO",  # Rovigo.
+        "SA",  # Salerno.
+        "SI",  # Siena.
+        "SO",  # Sondrio.
+        "SP",  # La Spezia.
+        "SR",  # Siracusa.
+        "SS",  # Sassari.
+        "SU",  # Sud Sardegna.
+        "SV",  # Savona.
+        "TA",  # Taranto.
+        "TE",  # Teramo.
+        "TN",  # Trento.
+        "TO",  # Torino.
+        "TP",  # Trapani.
+        "TR",  # Terni.
+        "TS",  # Trieste.
+        "TV",  # Treviso.
+        "UD",  # Udine.
+        "VA",  # Varese.
+        "VB",  # Verbano-Cusio-Ossola.
+        "VC",  # Vercelli.
+        "VE",  # Venezia.
+        "VI",  # Vicenza.
+        "VR",  # Verona.
+        "VT",  # Viterbo.
+        "VV",  # Vibo Valentia.
         # Cities.
         "Andria",
         "Barletta",
@@ -148,6 +147,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=ItalyStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -156,6 +156,10 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Epiphany.
         self._add_epiphany_day("Epifania del Signore")
+
+        if self._year <= 1976:
+            # Saint Joseph's Day.
+            self._add_saint_josephs_day("San Giuseppe")
 
         # Easter Sunday.
         self._add_easter_sunday("Pasqua di Resurrezione")
@@ -174,26 +178,38 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Republic Day.
             self._add_holiday_jun_2("Festa della Repubblica")
 
+        if self._year <= 1976:
+            # Ascension Day.
+            self._add_ascension_thursday("Ascensione Nostro Signore")
+
+            # Saints Peter and Paul.
+            self._add_saints_peter_and_paul_day("Santi Pietro e Paolo")
+
+            # Corpus Christi.
+            self._add_corpus_christi_day("Corpus Domini")
+
         # Assumption Of Mary Day.
         self._add_assumption_of_mary_day("Assunzione della Vergine")
 
         # All Saints' Day.
         self._add_all_saints_day("Tutti i Santi")
 
-        # Immaculate Conception Day.
+        if self._year <= 1976:
+            # National Unity and Armed Forces Day.
+            self._add_holiday_nov_4("Giornata dell'Unità Nazionale e delle Forze Armate")
+
+        # Immaculate Conception.
         self._add_immaculate_conception_day("Immacolata Concezione")
 
         # Christmas Day.
         self._add_christmas_day("Natale")
 
-        self._add_christmas_day_two("Santo Stefano")
+        if self._year >= 1947:
+            # Saint Stephen's Day.
+            self._add_christmas_day_two("Santo Stefano")
 
         if self.subdiv == "Forlì":
             self._populate_subdiv_forli_public_holidays()
-
-    # Provinces holidays.
-    # https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
-    # Please maintain in alphabetical order for easy updating in the future.
 
     def _populate_subdiv_ag_public_holidays(self):
         self._add_holiday_feb_25("San Gerlando")
@@ -241,11 +257,12 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_oct_4("San Petronio")
 
     def _populate_subdiv_br_public_holidays(self):
-        self._add_holiday_1st_sun_of_sep("San Teodoro d'Amasea e San Lorenzo da Brindisi")
+        self._add_holiday_1st_sun_of_sep("San Lorenzo da Brindisi")
 
     def _populate_subdiv_bs_public_holidays(self):
         self._add_holiday_feb_15("Santi Faustino e Giovita")
 
+    # Barletta-Andria-Trani
     def _populate_subdiv_bt_public_holidays(self):
         self._add_holiday_may_3("San Nicola Pellegrino")
         self._add_holiday_3rd_sun_of_sep("San Riccardo di Andria")
@@ -291,6 +308,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_en_public_holidays(self):
         self._add_holiday_jul_2("Madonna della Visitazione")
 
+    # Forlì-Cesena
     def _populate_subdiv_fc_public_holidays(self):
         self._add_holiday_feb_4("Madonna del Fuoco")
         self._add_saint_johns_day("San Giovanni Battista")
@@ -342,7 +360,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_jan_19("San Bassiano")
 
     def _populate_subdiv_lt_public_holidays(self):
-        self._add_holiday_apr_25("San Marco evangelista")
+        self._add_holiday_apr_25("San Marco Evangelista")
+        self._add_holiday_jul_6("Santa Maria Goretti")
 
     def _populate_subdiv_lu_public_holidays(self):
         self._add_holiday_jul_12("San Paolino di Lucca")
@@ -384,7 +403,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_feb_13("Sant'Archelao")
 
     def _populate_subdiv_pa_public_holidays(self):
-        self._add_holiday_jul_15("San Giovanni")
+        self._add_holiday_jul_15("Santa Rosalia")
 
     def _populate_subdiv_pc_public_holidays(self):
         self._add_holiday_jul_4("Sant'Antonino di Piacenza")
@@ -396,7 +415,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_oct_10("San Cetteo")
 
     def _populate_subdiv_pg_public_holidays(self):
-        self._add_holiday_jan_29("Sant'Ercolano e San Lorenzo")
+        self._add_holiday_aug_11("Santa Chiara d'Assisi")
+        self._add_holiday_oct_4("San Francesco d'Assisi")
 
     def _populate_subdiv_pi_public_holidays(self):
         self._add_holiday_jun_17("San Ranieri")
@@ -414,6 +434,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_pt_public_holidays(self):
         self._add_saint_james_day("San Jacopo")
 
+    # Pesaro e Urbino
     def _populate_subdiv_pu_public_holidays(self):
         self._add_holiday_jun_1("San Crescentino")
         self._add_holiday_sep_24("San Terenzio di Pesaro")
@@ -434,7 +455,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_nov_24("San Prospero Vescovo")
 
     def _populate_subdiv_rg_public_holidays(self):
-        self._add_saint_georges_day("San Giorgio")
+        self._add_saint_georges_day("San Giorgio Martire")
+        self._add_holiday_aug_29("San Giovanni Battista")
 
     def _populate_subdiv_ri_public_holidays(self):
         self._add_holiday_dec_4("Santa Barbara")
@@ -467,6 +489,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_dec_6("San Nicola")
 
     def _populate_subdiv_su_public_holidays(self):
+        # Carbonia.
         self._add_holiday_4_days_past_2nd_sun_of_may("San Ponziano")
 
     def _populate_subdiv_sv_public_holidays(self):
@@ -512,7 +535,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_apr_25("San Marco Evangelista")
 
     def _populate_subdiv_vi_public_holidays(self):
-        self._add_holiday_apr_25("San Marco")
+        self._add_nativity_of_mary_day("Madonna di Monte Berico")
 
     def _populate_subdiv_vr_public_holidays(self):
         self._add_holiday_may_21("San Zeno")
@@ -551,3 +574,12 @@ class IT(Italy):
 
 class ITA(Italy):
     pass
+
+
+class ItalyStaticHolidays:
+    # Anniversary of the Unification of Italy.
+    anniversary_of_unification = "Anniversario dell'Unità d'Italia"
+    special_public_holidays = {
+        1961: (MAR, 17, anniversary_of_unification),
+        2011: (MAR, 17, anniversary_of_unification),
+    }

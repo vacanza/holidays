@@ -17,8 +17,11 @@ from holidays.calendars.gregorian import JUN, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    MON_ONLY,
+    MON_FRI_ONLY,
     TUE_TO_PREV_FRI,
     WED_TO_NEXT_FRI,
+    FRI_ONLY,
     WORKDAY_TO_NEAREST_MON,
 )
 
@@ -84,9 +87,9 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             return None
 
         # New Year's Day.
-        jan_1 = self._add_new_years_day(tr("Año Nuevo"))
-        if self._year >= 2017 and self._is_sunday(jan_1):
-            self._add_new_years_day_two(tr("Feriado nacional"))
+        self._add_new_years_day(tr("Año Nuevo"))
+        if self._year >= 2017:
+            self._add_observed(self._add_new_years_day_two(tr("Feriado nacional")), rule=MON_ONLY)
 
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
@@ -141,12 +144,12 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 tr("Día de la Unidad Nacional")
             )
 
-        if self._year >= 2017 and self._is_saturday(SEP, 18):
-            # National Holiday.
-            self._add_holiday_sep_17(tr("Fiestas Patrias"))
-
-        if self._year >= 2007 and self._is_tuesday(SEP, 18):
-            self._add_holiday_sep_17(tr("Fiestas Patrias"))
+        if self._year >= 2007:
+            self._add_observed(
+                # National Holiday.
+                self._add_holiday_sep_17(tr("Fiestas Patrias")),
+                rule=MON_FRI_ONLY if self._year >= 2017 else MON_ONLY,
+            )
 
         # Independence Day.
         self._add_holiday_sep_18(tr("Día de la Independencia"))
@@ -154,8 +157,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # Army Day.
         self._add_holiday_sep_19(tr("Día de las Glorias del Ejército"))
 
-        if self._year >= 2008 and self._is_thursday(SEP, 19):
-            self._add_holiday_sep_20(tr("Fiestas Patrias"))
+        if self._year >= 2008:
+            self._add_observed(self._add_holiday_sep_20(tr("Fiestas Patrias")), rule=FRI_ONLY)
 
         if 1932 <= self._year <= 1944:
             self._add_holiday_sep_20(tr("Fiestas Patrias"))

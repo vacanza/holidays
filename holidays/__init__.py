@@ -12,13 +12,24 @@
 
 # flake8: noqa: F403
 
+import warnings
+
 from holidays.constants import *
+from holidays.deprecation import (
+    FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE,
+    FutureIncompatibilityWarning,
+)
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
 
-__version__ = "0.49"
+__version__ = "0.50"
 
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())
+
+warnings.warn(
+    FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE.format(version=__version__),
+    FutureIncompatibilityWarning,
+)

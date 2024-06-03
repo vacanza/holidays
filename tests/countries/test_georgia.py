@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import GOVERNMENT
 from holidays.countries.georgia import Georgia, GE, GEO
 from tests.common import CommonCountryTests
 
@@ -26,6 +27,12 @@ class TestGeorgia(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Georgia(years=1990))
+
+    def test_family_sanctity_day(self):
+        self.assertHolidays(
+            Georgia(categories=GOVERNMENT, years=2024),
+            ("2024-05-17", "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"),
+        )
 
     def test_2020(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)

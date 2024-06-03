@@ -1,0 +1,91 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Greenland holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.50\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: 2024-05-30 16:36+0200\n"
+"Last-Translator: ~Klintrup <github@klintrup.dk>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: kl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Ukioq nutaaq"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Sisamanngornermi illernartumi"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Poorskimi"
+msgstr ""
+
+#. Easter Monday.
+msgid "Poorskimi ullut aappaat"
+msgstr ""
+
+#. Great Day of Prayers.
+msgid "Ulloq qinuffiusoq"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ulloq Kristusip qilaliarnera"
+msgstr ""
+
+#. Whit Sunday.
+msgid "Piinsip ullua"
+msgstr ""
+
+#. Whit Monday.
+msgid "Piinsip ulluisa aappaanni"
+msgstr ""
+
+#. Christmas Day.
+msgid "Juulli"
+msgstr ""
+
+#. Second Day of Christmas.
+msgid "Juullip aappaa"
+msgstr ""
+
+#. International Workers' Day.
+msgid "Sulisartut ulluat"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Juulliaqqami"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Ukiortaami"
+msgstr ""
+
+#. National Day.
+msgid "Ullortuneq"
+msgstr ""
+
+#. Good Friday.
+msgid "Tallimanngorneq ajortorsiorneq"
+msgstr ""
+
+#. Epiphany.
+msgid "Mitaarneq"
+msgstr ""

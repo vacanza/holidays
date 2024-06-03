@@ -438,19 +438,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_assumption_day(self):
         name = "Mariä Himmelfahrt"
-        provinces_that_have = {
-            "AG",
-            "AI",
-            "JU",
-            "LU",
-            "NW",
-            "OW",
-            "SZ",
-            "TI",
-            "UR",
-            "VS",
-            "ZG",
-        }
+        provinces_that_have = {"AG", "AI", "JU", "LU", "NW", "OW", "SZ", "TI", "UR", "VS", "ZG"}
 
         self.assertNoHolidayName(name)
 
@@ -559,18 +547,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_immaculate_conception(self):
         name = "Mariä Empfängnis"
-        provinces_that_have = {
-            "AG",
-            "AI",
-            "LU",
-            "NW",
-            "OW",
-            "SZ",
-            "TI",
-            "UR",
-            "VS",
-            "ZG",
-        }
+        provinces_that_have = {"AG", "AI", "LU", "NW", "OW", "SZ", "TI", "UR", "VS", "ZG"}
 
         self.assertNoHolidayName(name)
 
