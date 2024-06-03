@@ -1,3 +1,18 @@
+Version 0.50
+============
+
+Released June 3, 2024
+
+- Refactor some holidays with uncommon rules (#1807 by @KJhellico)
+- Add Greenland holidays (#1811 by @Klintrup, @arkid15r)
+- Fix docs: update Italy docstring (#1808 by @arkid15r)
+- Update Italy holidays (#1805 by @KJhellico)
+- Add 2024 Russian Substituted Holidays (#1799 by @PPsyrius)
+- Add Georgian government holiday for May 17, 2024 (#1802 by @PPsyrius, @arkid15r)
+- Add v1 future incompatibility warning (#1801 by @arkid15r)
+- Migrate Japan holidays to ObservedHolidayBase (#1810 by @KJhellico)
+- Synchronize entity dynamic imports (#1794 by @Izzette)
+
 Version 0.49
 ============
 
