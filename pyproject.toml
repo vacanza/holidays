@@ -72,7 +72,10 @@ module = "holidays.groups.*"
 disable_error_code = "attr-defined"
 
 [tool.pytest.ini_options]
-addopts = "-p no:warnings"
+filterwarnings = [
+    "ignore::DeprecationWarning:holidays",
+    "ignore::DeprecationWarning:xdist",
+]
 
 [tool.rstcheck]
 ignore_directives = ["automodule", "autosummary"]
