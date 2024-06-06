@@ -85,12 +85,10 @@ jobs:
         run: |
           make test
 
-      - name: Upload coverage
-        uses: coverallsapp/github-action@v2
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
         with:
-          flag-name: tests-${{ matrix.python-version }}-${{ matrix.os }}
-          parallel: true
-          path-to-lcov: coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build distribution
