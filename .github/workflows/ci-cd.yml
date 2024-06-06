@@ -85,7 +85,7 @@ jobs:
         run: |
           make test
 
-      - name: Upload coverage reports to Codecov
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -120,16 +120,6 @@ jobs:
         with:
           name: dist
           path: dist
-
-  finish-coveralls:
-    name: Finish coveralls
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Finished
-        uses: coverallsapp/github-action@v2
-        with:
-          parallel-finished: true
 
   test-build:
     name: Test build on ${{ matrix.os }}
