@@ -153,7 +153,7 @@ class TestIsrael(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, Israel(categories=(OPTIONAL,), years=range(1948, 1963)))
         self.assertNoHolidayName(name)
 
-    def test_סיגד(self):
+    def test_optional_holidays(self):
         name = "סיגד"
         dt = (
             "2008-11-27",

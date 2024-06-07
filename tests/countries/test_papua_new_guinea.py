@@ -99,8 +99,8 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
 
     def test_2021(self):
         # https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf
-        # https://www.efpng.org.pg/wp-content/uploads/2021/05/CIRCULAR-No.17-2021-AMENDMENTS-TO-2021-PUBLIC-HOLIDAY.pdf  # noqa: E501
-        # Easter dates were later corrected as of https://web.archive.org/web/20210411125811/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/  # noqa: E501
+        # https://www.efpng.org.pg/wp-content/uploads/2021/05/CIRCULAR-No.17-2021-AMENDMENTS-TO-2021-PUBLIC-HOLIDAY.pdf
+        # Easter dates were later corrected as of https://web.archive.org/web/20210411125811/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/
         self.assertHolidays(
             PapuaNewGuinea(years=2021),
             ("2021-01-01", "New Year's Day"),
@@ -123,7 +123,7 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
     def test_2022(self):
         # https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf
         # Somare Day public holiday was observed on Feb 28 instead as of
-        # https://web.archive.org/web/20220703204538/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/  # noqa: E501
+        # https://web.archive.org/web/20220703204538/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/
         self.assertHolidays(
             PapuaNewGuinea(years=2022),
             ("2022-01-01", "New Year's Day"),
@@ -169,7 +169,7 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        # https://web.archive.org/web/20231221053513/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/  # noqa: E501
+        # https://web.archive.org/web/20231221053513/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/
         self.assertHolidays(
             PapuaNewGuinea(years=2024),
             ("2024-01-01", "New Year's Day"),

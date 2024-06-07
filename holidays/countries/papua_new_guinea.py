@@ -133,16 +133,17 @@ class PNG(PapuaNewGuinea):
 
 class PapuaNewGuineaStaticHolidays:
     """
-    Starting from 2021 afterwards all state funerals are given special public holidays, though only some are day-off nationwide.
+    Starting from 2021 afterwards all state funerals are given special public holidays, though only
+    some are day-off nationwide.
 
     References:
-      - 2018 APEC Public Holiday*: https://www.rnz.co.nz/international/pacific-news/369989/papua-new-guinea-declares-apec-holiday  # noqa: E501
-      - 2021 Sir Mekere Morauta's Funeral: https://pnghausbung.com/friday-8th-declared-a-nation-wide-public-holiday-to-honour-late-sir-mekere/  # noqa: E501
-      - 2021 Sir Michael Somare's Day of Mourning: https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/  # noqa: E501
+      - 2018 APEC Public Holiday*: https://www.rnz.co.nz/international/pacific-news/369989/papua-new-guinea-declares-apec-holiday
+      - 2021 Sir Mekere Morauta's Funeral: https://pnghausbung.com/friday-8th-declared-a-nation-wide-public-holiday-to-honour-late-sir-mekere/
+      - 2021 Sir Michael Somare's Day of Mourning: https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/
       - 2022 QE2's Funeral: https://www.thenational.com.pg/column-1-553/
-      - 2023 Sir Rabbie Namaliu's Funeral: https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/  # noqa: E501
+      - 2023 Sir Rabbie Namaliu's Funeral: https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/
 
-    * Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only: https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/  # noqa: E501
+    * Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only: https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/
     """
 
     # National Day of Mourning for Sir Michael Somare.

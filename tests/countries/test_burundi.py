@@ -70,7 +70,7 @@ class TestBurundi(CommonCountryTests, TestCase):
     def test_independence_day(self):
         self.assertHolidayName("Independence Day", (f"{year}-07-01" for year in range(1962, 2050)))
 
-    def test_assumption_Day(self):
+    def test_assumption_day(self):
         self.assertHolidayName("Assumption Day", (f"{year}-08-15" for year in range(1962, 2050)))
 
     def test_rwagasore_day(self):
@@ -83,10 +83,10 @@ class TestBurundi(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1962, 1994))
         self.assertHolidayName(name, (f"{year}-10-21" for year in range(1994, 2050)))
 
-    def test_all_saints_Day(self):
+    def test_all_saints_day(self):
         self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in range(1962, 2050)))
 
-    def test_christmas_Day(self):
+    def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1962, 2050)))
 
     def test_eid_ul_fitr(self):

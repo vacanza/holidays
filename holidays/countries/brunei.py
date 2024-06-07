@@ -45,7 +45,7 @@ class Brunei(
     References:
 
     - Based on: http://www.labour.gov.bn/Lists/Upcomming%20events/AllItems.aspx
-                http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf  # noqa: E501
+                http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf
     - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
                     https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
                     https://www.timeanddate.com/holidays/brunei/

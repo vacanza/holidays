@@ -876,7 +876,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-12-31", "วันสิ้นปี"),
         )
 
-    def test_l10n_en_US(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),

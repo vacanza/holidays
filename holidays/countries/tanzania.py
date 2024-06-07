@@ -32,21 +32,21 @@ class Tanzania(
     - https://old.tanzlii.org/tz/legislation/act/1962/48/  # 1962
     - https://old.tanzlii.org/tz/legislation/act/1964/52/  # 1964
     - https://old.tanzlii.org/tz/legislation/act/1966/39/  # 1966
-    - https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf  # 1993  # noqa: E501
-    - https://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf  # 1994  # noqa: E501
-    - http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf  # 2002
+    - 1993: https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf
+    - 1994: https://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf
+    - 2002: http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf
     - https://en.wikipedia.org/wiki/Public_holidays_in_Tanzania
     - http://mytanzaniatimes.blogspot.com/2014/08/holiday-nane-nane-farmers-day-in.html
-    - https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836  # noqa: E501
+    - https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836
     - https://www.dw.com/en/samia-suluhu-hassan-who-is-tanzanias-new-president/a-56932264
 
     Checked With:
-    - https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf  # 2023
-    - https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf  # 2022
-    - https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf  # 2021
-    - https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf  # 2020
-    - https://issamichuzi.blogspot.com/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html  # 2018
-    - https://www.timeanddate.com/holidays/tanzania/ (from 2013 onwards)
+    - 2023: https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf
+    - 2022: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf
+    - 2021: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf
+    - 2020: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf
+    - 2018: https://issamichuzi.blogspot.com/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html
+    - from 2013 onwards: https://www.timeanddate.com/holidays/tanzania/
 
     Limitations:
 
