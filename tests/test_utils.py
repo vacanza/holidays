@@ -213,7 +213,9 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIsInstance(us_subdivisions, list)
 
         countries_files = [
-            path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
+            path
+            for path in Path("holidays/entities/iso3166").glob("*.py")
+            if path.stem != "__init__"
         ]
         self.assertEqual(
             len(countries_files),
@@ -231,7 +233,9 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIsInstance(nyse, list)
 
         financial_files = [
-            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
+            path
+            for path in Path("holidays/entities/iso10383").glob("*.py")
+            if path.stem != "__init__"
         ]
         self.assertEqual(
             len(financial_files),
