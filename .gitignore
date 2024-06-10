@@ -12,6 +12,7 @@
 *.pyc
 build/*
 coverage.lcov
+coverage.xml
 dist/
 docs/build
 docs/source/_autosummary

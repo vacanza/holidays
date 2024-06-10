@@ -85,12 +85,10 @@ jobs:
         run: |
           make test
 
-      - name: Upload coverage
-        uses: coverallsapp/github-action@v2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4.0.1
         with:
-          flag-name: tests-${{ matrix.python-version }}-${{ matrix.os }}
-          parallel: true
-          path-to-lcov: coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build distribution
@@ -122,16 +120,6 @@ jobs:
         with:
           name: dist
           path: dist
-
-  finish-coveralls:
-    name: Finish coveralls
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Finished
-        uses: coverallsapp/github-action@v2
-        with:
-          parallel-finished: true
 
   test-build:
     name: Test build on ${{ matrix.os }}
