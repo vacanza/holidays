@@ -162,10 +162,10 @@ jobs:
           rm -rf holidays
           python -m pip install --upgrade --requirement requirements/tests.txt
           python -m pip install `ls dist/*.whl`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          pytest --dist loadscope --numprocesses auto tests/entities
           python -m pip uninstall -y holidays python-dateutil six
           python -m pip install `ls dist/*.tar.gz`
-          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          pytest --dist loadscope --numprocesses auto tests/entities
 
   publish-pypi-main:
     name: Publish to PyPI
