@@ -31,11 +31,11 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """
     References:
         - https://en.wikipedia.org/wiki/Public_holidays_in_Canada
-        - https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml  # noqa: E501
+        - https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml
         - https://www.alberta.ca/alberta-general-holidays
-        - https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays  # noqa: E501
+        - https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays
         - http://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php
-        - https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html  # noqa: E501
+        - https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html
         - https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays
         - https://www.officeholidays.com/countries/canada/
         - https://www.timeanddate.com/holidays/canada/

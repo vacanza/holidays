@@ -16,7 +16,7 @@ import holidays
 
 
 class TestHolidaysImports(TestCase):
-    def assertImport(self, name):
+    def assertImport(self, name):  # noqa: N802
         self.assertTrue(hasattr(holidays, name), f"Import error: `from holidays import {name}`")
 
     def test_constants(self):

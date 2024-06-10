@@ -29,7 +29,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     Primary sources:
         - https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige
-        - http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253  # noqa: E501
+        - http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
     """
 
     country = "SE"

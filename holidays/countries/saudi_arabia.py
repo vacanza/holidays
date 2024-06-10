@@ -32,7 +32,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     There are only 4 official national holidays in Saudi:
         - https://laboreducation.hrsd.gov.sa/en/gallery/274
         - https://laboreducation.hrsd.gov.sa/en/labor-education/322
-        - https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order  # noqa: E501
+        - https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order
 
     The national day and the founding day holidays are based on the
     Georgian calendar while the other two holidays are based on the
@@ -40,7 +40,6 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     year and based on moon sightings; they are:
     - Eid al-Fitr
     - Eid al-Adha
-
     """
 
     country = "SA"

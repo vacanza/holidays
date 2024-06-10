@@ -24,7 +24,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     References:
 
     - https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
-    - [Law 2739] https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf  # noqa: E501
+    - [Law 2739] https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf
     - [Law 2429] https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf
     - [Hijri calendar holidays] https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php
     """

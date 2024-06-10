@@ -261,7 +261,7 @@ def financial_holidays(
         raise NotImplementedError(f"Financial market {market} not available")
 
 
-def CountryHoliday(
+def CountryHoliday(  # noqa: N802
     country: str,
     subdiv: Optional[str] = None,
     years: Optional[Union[int, Iterable[int]]] = None,
