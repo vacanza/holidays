@@ -64,7 +64,7 @@ select = ["E4", "E5", "E7", "E9", "F", "N", "T", "W"]
 max-string-length = 99
 
 [[tool.mypy.overrides]]
-module = "holidays.countries.*"
+module = "holidays.entities.*"
 disable_error_code = ["override"]
 
 [[tool.mypy.overrides]]
