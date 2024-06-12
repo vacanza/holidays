@@ -30,8 +30,8 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "AW"
-    default_language = "pap"
-    supported_languages = ("en_US", "nl", "pap", "uk")
+    default_language = "pap_AW"
+    supported_languages = ("en_US", "nl", "pap_AW", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

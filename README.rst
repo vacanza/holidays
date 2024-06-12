@@ -218,7 +218,7 @@ All other default values are highlighted with bold:
    * - Aruba
      - AW
      -
-     - en_US, nl, **pap**, uk
+     - en_US, nl, **pap_AW**, uk
      -
    * - Australia
      - AU
@@ -363,7 +363,7 @@ All other default values are highlighted with bold:
    * - Curacao
      - CW
      -
-     - en_US, nl, **pap**, uk
+     - en_US, nl, **pap_CW**, uk
      -
    * - Cyprus
      - CY
