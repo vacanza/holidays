@@ -28,8 +28,8 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "CW"
-    default_language = "pap"
-    supported_languages = ("en_US", "nl", "pap", "uk")
+    default_language = "pap_CW"
+    supported_languages = ("en_US", "nl", "pap_CW", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
