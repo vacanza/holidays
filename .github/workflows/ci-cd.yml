@@ -9,8 +9,8 @@ env:
   FORCE_COLOR: 1
 
 concurrency:
-  cancel-in-progress: true
-  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.sha }}
+  cancel-in-progress: ${{ !contains(fromJSON('["dev", "main"]'), github.ref_name) && !startsWith(github.ref_name, 'v') }}
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   pre-commit:
