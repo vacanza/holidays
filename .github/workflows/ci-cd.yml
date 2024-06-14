@@ -36,7 +36,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-latest
+          - macos-latest
           - ubuntu-latest
           - windows-latest
         python-version:
@@ -128,7 +128,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-latest
+          - macos-latest
           - ubuntu-latest
           - windows-latest
     steps:
