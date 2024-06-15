@@ -10,7 +10,7 @@ env:
 
 concurrency:
   cancel-in-progress: true
-  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.sha }}
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref }}
 
 jobs:
   pre-commit:
@@ -36,7 +36,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-latest
+          - macos-latest
           - ubuntu-latest
           - windows-latest
         python-version:
@@ -128,7 +128,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-latest
+          - macos-latest
           - ubuntu-latest
           - windows-latest
     steps:
