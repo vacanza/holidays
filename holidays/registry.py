@@ -198,8 +198,8 @@ class EntityLoader:
                 "This is a python-holidays entity loader class. "
                 "For entity inheritance purposes please import a class you "
                 "want to derive from directly: e.g., "
-                "`from holidays.countries import Entity` or "
-                "`from holidays.financial import Entity`."
+                "`from holidays.entities.iso3166 import Entity` or "
+                "`from holidays.entities.financial import Entity`."
             )
 
         entity_path = path.split(".")
@@ -273,11 +273,11 @@ class EntityLoader:
     @staticmethod
     def load(prefix: str, scope: Dict) -> None:
         """Load country or financial entities."""
-        entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
+        entity_mapping = COUNTRIES if prefix == "iso3166" else FINANCIAL
         for module, entities in entity_mapping.items():
             scope.update(
                 {
-                    entity: EntityLoader(f"holidays.{prefix}.{module}.{entity}")
+                    entity: EntityLoader(f"holidays.entities.{prefix}.{module}.{entity}")
                     for entity in entities
                 }
             )

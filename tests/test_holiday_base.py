@@ -847,7 +847,7 @@ class TestRepr(unittest.TestCase):
         )
 
     def test_market(self):
-        self.assertEqual(repr(MarketStub1()), "holidays.financial_holidays('MS1')")
+        self.assertEqual(repr(MarketStub1()), "holidays.entities.iso10383_holidays('MS1')")
 
 
 class TestSerialization(unittest.TestCase):
