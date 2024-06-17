@@ -588,7 +588,7 @@ class TestHolidaySum(unittest.TestCase):
         self.hb_3 = CountryStub3()
         self.hb_combined = self.hb_1 + self.hb_2 + self.hb_3
 
-    def assertAdded(self):
+    def assertAdded(self):  # noqa: N802
         self.assertNotIn("2014-03-01", self.hb_1)
         self.assertNotIn("2014-05-01", self.hb_1)
         self.assertNotIn("2014-05-02", self.hb_1)

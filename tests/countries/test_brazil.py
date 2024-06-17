@@ -87,6 +87,11 @@ class TestBrazil(CommonCountryTests, TestCase):
     def test_republic_proclamation_day(self):
         self.assertHoliday(f"{year}-11-15" for year in range(1890, 2050))
 
+    def test_black_awareness_day(self):
+        name = "Dia Nacional de Zumbi e da Consciência Negra"
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(1890, 2024))
+
     def test_christmas_day(self):
         self.assertHoliday(f"{year}-12-25" for year in range(1922, 1931))
         self.assertNoHoliday(f"{year}-12-25" for year in range(1890, 1922))
@@ -133,7 +138,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             self.assertHoliday(holidays, f"{year}-10-28", f"{year}-12-24", f"{year}-12-31")
             self.assertNoHoliday(f"{year}-10-28", f"{year}-12-24", f"{year}-12-31")
 
-    def test_AC_holidays(self):
+    def test_ac_holidays(self):
         ac_holidays = Brazil(subdiv="AC", years=range(1995, 2030))
         for name in (
             "Dia do Evangélico",
@@ -196,7 +201,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName("Assinatura do Tratado de Petrópolis", ac_holidays, 1995)
 
-    def test_AL_holidays(self):
+    def test_al_holidays(self):
         al_holidays = Brazil(subdiv="AL", years=range(1995, 2030))
         for name in (
             "São João",
@@ -218,8 +223,9 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertHoliday(al_holidays, (f"{year}-11-30" for year in range(2013, 2030)))
         self.assertNoHoliday(al_holidays, (f"{year}-11-30" for year in range(1996, 2013)))
         self.assertNoHolidayName("Dia do Evangélico", al_holidays, range(1996, 2013))
+        self.assertNoHolidayName("Consciência Negra", al_holidays, range(2024, 2030))
 
-    def test_AM_holidays(self):
+    def test_am_holidays(self):
         am_holidays = Brazil(subdiv="AM", years=range(1995, 2030))
 
         self.assertHoliday(am_holidays, (f"{year}-09-05" for year in range(1996, 2030)))
@@ -228,9 +234,11 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHolidayName(
             "Elevação do Amazonas à categoria de província", am_holidays, 1995
         )
-        self.assertNoHolidayName("Consciência Negra", am_holidays, range(1995, 2010))
+        self.assertNoHolidayName(
+            "Consciência Negra", am_holidays, range(1995, 2010), range(2024, 2030)
+        )
 
-    def test_AP_holidays(self):
+    def test_ap_holidays(self):
         ap_holidays = Brazil(subdiv="AP", years=range(1995, 2030))
 
         self.assertHoliday(ap_holidays, (f"{year}-03-19" for year in range(2003, 2030)))
@@ -246,15 +254,17 @@ class TestBrazil(CommonCountryTests, TestCase):
 
         self.assertHoliday(ap_holidays, (f"{year}-11-20" for year in range(2008, 2030)))
         self.assertNoHoliday(ap_holidays, (f"{year}-11-20" for year in range(1996, 2008)))
-        self.assertNoHolidayName("Consciência Negra", ap_holidays, range(1995, 2008))
+        self.assertNoHolidayName(
+            "Consciência Negra", ap_holidays, range(1995, 2008), range(2024, 2030)
+        )
 
-    def test_BA_holidays(self):
+    def test_ba_holidays(self):
         ba_holidays = Brazil(subdiv="BA", years=range(1995, 2030))
 
         self.assertHoliday(ba_holidays, (f"{year}-07-02" for year in range(1996, 2030)))
         self.assertNoHolidayName("Independência da Bahia", ba_holidays, 1995)
 
-    def test_CE_holidays(self):
+    def test_ce_holidays(self):
         ce_holidays = Brazil(subdiv="CE", years=range(1995, 2030))
 
         self.assertHoliday(ce_holidays, (f"{year}-03-19" for year in range(1996, 2030)))
@@ -267,7 +277,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHoliday(ce_holidays, (f"{year}-08-15" for year in range(1996, 2004)))
         self.assertNoHolidayName("Nossa Senhora da Assunção", ce_holidays, range(1995, 2004))
 
-    def test_DF_holidays(self):
+    def test_df_holidays(self):
         df_holidays = Brazil(subdiv="DF", years=range(1995, 2030))
 
         name = "Fundação de Brasília"
@@ -277,7 +287,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertHoliday(df_holidays, (f"{year}-11-30" for year in range(1996, 2030)))
         self.assertNoHolidayName("Dia do Evangélico", df_holidays, 1995)
 
-    def test_ES_holidays(self):
+    def test_es_holidays(self):
         es_holidays = Brazil(subdiv="ES", years=range(1995, 2030))
 
         self.assertHoliday(
@@ -289,7 +299,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName("Nossa Senhora da Penha", es_holidays, range(1995, 2020))
 
-    def test_GO_holidays(self):
+    def test_go_holidays(self):
         go_holidays = Brazil(subdiv="GO", years=range(1995, 2030))
 
         self.assertHoliday(go_holidays, (f"{year}-07-26" for year in range(1996, 2030)))
@@ -298,45 +308,47 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertHoliday(go_holidays, (f"{year}-10-24" for year in range(1996, 2030)))
         self.assertNoHolidayName("Pedra fundamental de Goiânia", go_holidays, 1995)
 
-    def test_MA_holidays(self):
+    def test_ma_holidays(self):
         ma_holidays = Brazil(subdiv="MA", years=range(1995, 2030))
 
         self.assertHoliday(ma_holidays, (f"{year}-07-28" for year in range(1996, 2030)))
         self.assertNoHolidayName("Adesão do Maranhão à independência do Brasil", ma_holidays, 1995)
 
-    def test_MG_holidays(self):
+    def test_mg_holidays(self):
         mg_holidays = Brazil(subdiv="MG", years=range(1995, 2030))
 
         name = "Execução de Tiradentes"
         self.assertHolidayName(name, mg_holidays, (f"{year}-04-21" for year in range(1996, 2030)))
         self.assertNoHolidayName(name, mg_holidays, 1995)
 
-    def test_MS_holidays(self):
+    def test_ms_holidays(self):
         ms_holidays = Brazil(subdiv="MS", years=range(1995, 2030))
 
         self.assertHoliday(ms_holidays, (f"{year}-10-11" for year in range(1996, 2030)))
         self.assertNoHolidayName("Criação do Estado", ms_holidays, 1995)
 
-    def test_MT_holidays(self):
+    def test_mt_holidays(self):
         mt_holidays = Brazil(subdiv="MT", years=range(1995, 2030))
 
         self.assertHoliday(mt_holidays, (f"{year}-11-20" for year in range(2003, 2030)))
         self.assertNoHoliday(mt_holidays, (f"{year}-11-20" for year in range(1996, 2003)))
-        self.assertNoHolidayName("Consciência Negra", mt_holidays, range(1995, 2003))
+        self.assertNoHolidayName(
+            "Consciência Negra", mt_holidays, range(1995, 2003), range(2024, 2030)
+        )
 
-    def test_PA_holidays(self):
+    def test_pa_holidays(self):
         pa_holidays = Brazil(subdiv="PA", years=range(1995, 2030))
 
         self.assertHoliday(pa_holidays, (f"{year}-08-15" for year in range(1996, 2030)))
         self.assertNoHolidayName("Criação do Estado", pa_holidays, 1995)
 
-    def test_PB_holidays(self):
+    def test_pb_holidays(self):
         pb_holidays = Brazil(subdiv="PB", years=range(1995, 2030))
 
         self.assertHoliday(pb_holidays, (f"{year}-08-05" for year in range(1996, 2030)))
         self.assertNoHolidayName("Fundação do Estado", pb_holidays, 1995)
 
-    def test_PE_holidays(self):
+    def test_pe_holidays(self):
         pe_holidays = Brazil(subdiv="PE", years=range(1995, 2030))
 
         name = "Revolução Pernambucana"
@@ -353,19 +365,19 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, pe_holidays, range(1995, 2008))
 
-    def test_PI_holidays(self):
+    def test_pi_holidays(self):
         pi_holidays = Brazil(subdiv="PI", years=range(1995, 2030))
 
         self.assertHoliday(pi_holidays, (f"{year}-10-19" for year in range(1996, 2030)))
         self.assertNoHolidayName("Fundação do Estado", pi_holidays, 1995)
 
-    def test_PR_holidays(self):
+    def test_pr_holidays(self):
         pr_holidays = Brazil(subdiv="PR", years=range(1995, 2030))
 
         self.assertHoliday(pr_holidays, (f"{year}-12-19" for year in range(1996, 2030)))
         self.assertNoHolidayName("Emancipação do Paraná", pr_holidays, 1995)
 
-    def test_RJ_holidays(self):
+    def test_rj_holidays(self):
         rj_holidays = Brazil(subdiv="RJ", years=range(1995, 2030))
 
         self.assertHoliday(rj_holidays, (f"{year}-04-23" for year in range(2008, 2030)))
@@ -374,9 +386,11 @@ class TestBrazil(CommonCountryTests, TestCase):
 
         self.assertHoliday(rj_holidays, (f"{year}-11-20" for year in range(2002, 2030)))
         self.assertNoHoliday(rj_holidays, (f"{year}-11-20" for year in range(1996, 2002)))
-        self.assertNoHolidayName("Consciência Negra", rj_holidays, range(1995, 2002))
+        self.assertNoHolidayName(
+            "Consciência Negra", rj_holidays, range(1995, 2002), range(2024, 2030)
+        )
 
-    def test_RN_holidays(self):
+    def test_rn_holidays(self):
         rn_holidays = Brazil(subdiv="RN", years=range(1995, 2030))
 
         self.assertHoliday(rn_holidays, (f"{year}-08-07" for year in range(2000, 2030)))
@@ -387,7 +401,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHoliday(rn_holidays, (f"{year}-10-03" for year in range(1996, 2007)))
         self.assertNoHolidayName("Mártires de Cunhaú e Uruaçuu", rn_holidays, range(1995, 2007))
 
-    def test_RO_holidays(self):
+    def test_ro_holidays(self):
         ro_holidays = Brazil(subdiv="RO", years=range(1995, 2030))
 
         self.assertHoliday(ro_holidays, (f"{year}-01-04" for year in range(1996, 2030)))
@@ -397,19 +411,19 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHoliday(ro_holidays, (f"{year}-06-18" for year in range(1996, 2002)))
         self.assertNoHolidayName("Dia do Evangélico", ro_holidays, range(1995, 2002))
 
-    def test_RR_holidays(self):
+    def test_rr_holidays(self):
         rr_holidays = Brazil(subdiv="RR", years=range(1995, 2030))
 
         self.assertHoliday(rr_holidays, (f"{year}-10-05" for year in range(1996, 2030)))
         self.assertNoHolidayName("Criação do Estado", rr_holidays, 1995)
 
-    def test_RS_holidays(self):
+    def test_rs_holidays(self):
         rs_holidays = Brazil(subdiv="RS", years=range(1995, 2030))
 
         self.assertHoliday(rs_holidays, (f"{year}-09-20" for year in range(1996, 2030)))
         self.assertNoHolidayName("Dia do Gaúcho", rs_holidays, 1995)
 
-    def test_SC_holidays(self):
+    def test_sc_holidays(self):
         sc_holidays = Brazil(subdiv="SC", years=range(1995, 2030))
 
         self.assertHoliday(
@@ -443,19 +457,19 @@ class TestBrazil(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName("Dia de Santa Catarina de Alexandria", sc_holidays, 1995)
 
-    def test_SE_holidays(self):
+    def test_se_holidays(self):
         se_holidays = Brazil(subdiv="SE", years=range(1995, 2030))
 
         self.assertHoliday(se_holidays, (f"{year}-07-08" for year in range(1996, 2030)))
         self.assertNoHolidayName("Emancipação política de Sergipe", se_holidays, 1995)
 
-    def test_SP_holidays(self):
+    def test_sp_holidays(self):
         sp_holidays = Brazil(subdiv="SP", years=range(1995, 2030))
 
         self.assertHoliday(sp_holidays, (f"{year}-07-09" for year in range(1997, 2030)))
-        self.assertNoHolidayName("Emancipação política de Sergipe", sp_holidays, 1995, 1996)
+        self.assertNoHolidayName("Revolução Constitucionalista", sp_holidays, 1995, 1996)
 
-    def test_TO_holidays(self):
+    def test_to_holidays(self):
         to_holidays = Brazil(subdiv="TO", years=range(1995, 2030))
 
         self.assertHoliday(to_holidays, (f"{year}-03-18" for year in range(1998, 2030)))

@@ -28,7 +28,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             subdiv: Australia(subdiv=subdiv, years=years) for subdiv in Australia.subdivisions
         }
 
-    def _assertVariableDays(self, year: int, subdiv_holidays: dict):
+    def _assertVariableDays(self, year: int, subdiv_holidays: dict):  # noqa: N802
         observed_prov_holidays = {
             subdiv: Australia(subdiv=subdiv, years=year) for subdiv in Australia.subdivisions
         }
@@ -454,7 +454,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name_1, self.subdiv_holidays[subdiv])
             self.assertNoHolidayName(name_2, self.subdiv_holidays[subdiv])
 
-    def test_national_day_of_mourning_for_queen_elizabeth_II(self):
+    def test_national_day_of_mourning_for_queen_elizabeth_ii(self):
         name = "National Day of Mourning for Queen Elizabeth II"
         dt = "2022-09-22"
         self.assertHolidayName(name, dt)

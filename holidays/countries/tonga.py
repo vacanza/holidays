@@ -26,13 +26,13 @@ from holidays.observed_holiday_base import (
 class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-      - https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_3.pdf  # 2020 Rev.  # noqa: E501
-      - https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf  # 2020 Rev. (to)  # noqa: E501
-      - https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_2.pdf  # 2016 Rev.  # noqa: E501
-      - https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_1.pdf  # 1988 Rev.  # noqa: E501
-      - https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf  # 1988 Rev. (to)  # noqa: E501
-      - http://www.paclii.org/to/legis/num_act/pha2010243/  # Act 10 of 2010.
-      - http://www.paclii.org/to/legis/num_act/pha2013243/  # Act 5 of 2013.
+      - 2020 Rev. https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_3.pdf
+      - 2020 Rev. (to) https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf
+      - 2016 Rev. https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_2.pdf
+      - 1988 Rev. https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_1.pdf
+      - 1988 Rev. (to) https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf
+      - Act 10 of 2010 http://www.paclii.org/to/legis/num_act/pha2010243/
+      - Act 5 of 2013 http://www.paclii.org/to/legis/num_act/pha2013243/
 
     Checked With:
       - https://www.gov.to/press-release/tonga-public-holidays-for-2024/  # 2024
@@ -204,9 +204,9 @@ class TON(Tonga):
 class TongaStaticHolidays:
     """
     References:
-      - https://www.stuff.co.nz/sport/league/99338959/tonga-government-declares-public-holiday-over-rugby-league-teams-deeds  # noqa: E501
-      - https://www.rnz.co.nz/international/pacific-news/398653/tonga-declares-public-holiday-for-pm-pohiva-s-state-funeral  # noqa: E501
-      - https://www.nrl.com/news/2019/11/06/tonga-declare-public-holiday-for-woolfs-winning-warriors/  # noqa: E501
+      - https://www.stuff.co.nz/sport/league/99338959/tonga-government-declares-public-holiday-over-rugby-league-teams-deeds
+      - https://www.rnz.co.nz/international/pacific-news/398653/tonga-declares-public-holiday-for-pm-pohiva-s-state-funeral
+      - https://www.nrl.com/news/2019/11/06/tonga-declare-public-holiday-for-woolfs-winning-warriors/
     """
 
     # Special Cases.

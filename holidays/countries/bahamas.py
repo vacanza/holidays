@@ -26,9 +26,9 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf  # noqa: E501
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf  # noqa: E501
-      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf  # noqa: E501
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf
+      - https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf
       - http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/
       - https://eleutheranews.com/?p=3594
     Checked With:
@@ -127,7 +127,7 @@ class BHS(Bahamas):
 
 class BahamasStaticHolidays:
     special_public_holidays = {
-        # https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/  # noqa: E501
+        # https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
     }
 

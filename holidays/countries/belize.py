@@ -25,7 +25,7 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
       - https://en.wikipedia.org/wiki/Public_holidays_in_Belize
       - http://www.belizelaw.org/web/lawadmin/PDF%20files/cap289.pdf
       - https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated/
-      - https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/  # noqa: E501
+      - https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/
     """
 
     country = "BZ"

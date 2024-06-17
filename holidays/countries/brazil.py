@@ -22,8 +22,9 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
         - https://pt.wikipedia.org/wiki/Feriados_no_Brasil
-        - `Decreto n. 155-B, de 14.01.1890 <https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html>`_  # noqa: E501
-        - `Decreto n. 19.488, de 15.12.1930 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html>`_  # noqa: E501
+        - `Decreto n. 155-B, de 14.01.1890 <https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html>`_
+        - `Decreto n. 19.488, de 15.12.1930 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html>`_
+        - `Lei n. 14.759/23 <https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html>`_
     """
 
     country = "BR"
@@ -109,6 +110,10 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Republic Proclamation Day.
         self._add_holiday_nov_15("Proclamação da República")
 
+        if self._year >= 2024:
+            # National Day of Zumbi and Black Awareness.
+            self._add_holiday_nov_20("Dia Nacional de Zumbi e da Consciência Negra")
+
         if self._year >= 1922:
             # Christmas Day.
             self._add_christmas_day("Natal")
@@ -179,8 +184,9 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Political Emancipation of Alagoas.
         self._add_holiday_sep_16("Emancipação Política de Alagoas")
 
-        # Black Awareness Day.
-        self._add_holiday_nov_20("Consciência Negra")
+        if self._year <= 2023:
+            # Black Awareness Day.
+            self._add_holiday_nov_20("Consciência Negra")
 
         if self._year >= 2013:
             self._add_holiday_nov_30("Dia do Evangélico")
@@ -189,7 +195,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Elevation of Amazonas to province.
         self._add_holiday_sep_5("Elevação do Amazonas à categoria de província")
 
-        if self._year >= 2010:
+        if 2010 <= self._year <= 2023:
             self._add_holiday_nov_20("Consciência Negra")
 
     def _populate_subdiv_ap_public_holidays(self):
@@ -204,7 +210,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Creation of the Federal Territory.
         self._add_holiday_sep_13("Criação do Território Federal")
 
-        if self._year >= 2008:
+        if 2008 <= self._year <= 2023:
             self._add_holiday_nov_20("Consciência Negra")
 
     def _populate_subdiv_ba_public_holidays(self):
@@ -252,7 +258,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_oct_11("Criação do Estado")
 
     def _populate_subdiv_mt_public_holidays(self):
-        if self._year >= 2003:
+        if 2003 <= self._year <= 2023:
             self._add_holiday_nov_20("Consciência Negra")
 
     def _populate_subdiv_pa_public_holidays(self):
@@ -281,7 +287,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Saint George's Day.
             self._add_saint_georges_day("São Jorge")
 
-        if self._year >= 2002:
+        if 2002 <= self._year <= 2023:
             self._add_holiday_nov_20("Consciência Negra")
 
     def _populate_subdiv_rn_public_holidays(self):

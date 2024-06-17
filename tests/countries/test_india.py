@@ -18,12 +18,19 @@ from tests.common import CommonCountryTests
 
 
 class TestIndia(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(India)
+
     def setUp(self):
-        self.holidays = India()
+        super().setUp()
         warnings.simplefilter("ignore")
 
     def test_country_aliases(self):
         self.assertAliases(India, IN, IND)
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_2018(self):
         self.assertHoliday(
@@ -53,53 +60,33 @@ class TestIndia(CommonCountryTests, TestCase):
             "AP": ("2018-11-01",),
             "AR": ("2018-08-15",),
             "AS": ("2018-04-15",),
-            "BR": (
-                "2018-03-22",
-                "2018-04-14",
-            ),
+            "BR": ("2018-03-22", "2018-04-14"),
             "CG": ("2018-11-01",),
             "CH": ("2018-08-15",),
-            "DD": ("2018-08-15",),
             "DH": ("2018-08-15",),
             "DL": ("2018-08-15",),
             "GA": ("2018-08-15",),
-            "GJ": (
-                "2018-01-14",
-                "2018-05-01",
-                "2018-08-15",
-                "2018-10-31",
-            ),
+            "GJ": ("2018-01-14", "2018-05-01", "2018-08-15", "2018-10-31"),
             "HP": ("2018-08-15",),
             "HR": ("2018-04-14", "2018-11-01"),
             "JK": ("2018-08-15",),
             "JH": ("2018-08-15",),
             "KA": ("2018-11-01",),
-            "KL": (
-                "2018-04-14",
-                "2018-11-01",
-            ),
+            "KL": ("2018-04-14", "2018-11-01"),
             "LA": ("2018-08-15",),
             "LD": ("2018-08-15",),
-            "MH": (
-                "2018-04-14",
-                "2018-05-01",
-                "2018-10-15",
-            ),
+            "MH": ("2018-04-14", "2018-05-01", "2018-10-15"),
             "ML": ("2018-08-15",),
             "MN": ("2018-08-15",),
             "MP": ("2018-11-01",),
             "MZ": ("2018-08-15",),
             "NL": ("2018-08-15",),
-            "OR": ("2018-04-01", "2018-04-14", "2018-08-15"),
+            "OD": ("2018-04-01", "2018-04-14", "2018-08-15"),
             "PB": ("2018-08-15",),
             "PY": ("2018-08-15",),
             "RJ": ("2018-03-30", "2018-06-15"),
             "SK": ("2018-05-16",),
-            "TN": (
-                "2018-04-14",
-                "2018-04-15",
-                "2018-08-15",
-            ),
+            "TN": ("2018-04-14", "2018-04-15", "2018-08-15"),
             "TR": ("2018-08-15",),
             "TS": ("2018-04-06", "2018-10-06"),
             "UK": ("2018-04-14",),
@@ -116,7 +103,7 @@ class TestIndia(CommonCountryTests, TestCase):
             with self.assertWarns(Warning):
                 India(years=year)
 
-        for dt in (
+        dt = (
             "2010-11-05",
             "2011-10-26",
             "2012-11-13",
@@ -138,10 +125,10 @@ class TestIndia(CommonCountryTests, TestCase):
             "2028-10-17",
             "2029-11-05",
             "2030-10-26",
-        ):
-            self.assertEqual(self.holidays[dt], "Diwali")
+        )
+        self.assertHolidayName("Diwali", dt)
 
-        for dt in (
+        dt = (
             "2010-03-01",
             "2011-03-20",
             "2012-03-08",
@@ -163,8 +150,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "2028-03-11",
             "2029-03-01",
             "2030-03-20",
-        ):
-            self.assertEqual(self.holidays[dt], "Holi")
+        )
+        self.assertHolidayName("Holi", dt)
 
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
@@ -191,4 +178,12 @@ class TestIndia(CommonCountryTests, TestCase):
             "1994-03-27",
             "2017-04-09",
             "2020-04-05",
+        )
+
+    def test_deprecated(self):
+        self.assertEqual(
+            India(subdiv="DD", years=2023).keys(), India(subdiv="DH", years=2023).keys()
+        )
+        self.assertEqual(
+            India(subdiv="OR", years=2023).keys(), India(subdiv="OD", years=2023).keys()
         )

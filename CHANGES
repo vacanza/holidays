@@ -1,3 +1,18 @@
+Version 0.51
+============
+
+Released June 17, 2024
+
+- Update Aruba and Curaçao holidays l10n (split locales) (#1827 by @KJhellico)
+- Update Brazil holidays: add new Nov 20 holiday (#1832 by @KJhellico)
+- Update CI/CD job concurrency (#1823 by @arkid15r)
+- Update CI/CD job concurrency (#1830 by @arkid15r)
+- Update README.rst (#1828 by @arkid15r)
+- Update ruff configuration (#1819 by @arkid15r)
+- Align India subdivisions with ISO 3166-2 (#1821 by @KJhellico)
+- Migrate to codecov.io (#1818 by @arkid15r)
+- Narrow down ignored warnings (#1816 by @arkid15r)
+
 Version 0.50
 ============
 

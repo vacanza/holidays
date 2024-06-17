@@ -103,13 +103,13 @@ Quick Start
     from datetime import date
     import holidays
 
-    us_holidays = holidays.US()  # this is a dict
+    us_holidays = holidays.US()  # this is a dict-like object
     # the below is the same, but takes a string:
-    us_holidays = holidays.country_holidays('US')  # this is a dict
+    us_holidays = holidays.country_holidays('US')  # this is a dict-like object
 
-    nyse_holidays = holidays.NYSE()  # this is a dict
+    nyse_holidays = holidays.NYSE()  # this is a dict-like object
     # the below is the same, but takes a string:
-    nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict
+    nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict-like object
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
@@ -218,7 +218,7 @@ All other default values are highlighted with bold:
    * - Aruba
      - AW
      -
-     - en_US, nl, **pap**, uk
+     - en_US, nl, **pap_AW**, uk
      -
    * - Australia
      - AU
@@ -363,7 +363,7 @@ All other default values are highlighted with bold:
    * - Curacao
      - CW
      -
-     - en_US, nl, **pap**, uk
+     - en_US, nl, **pap_CW**, uk
      -
    * - Cyprus
      - CY
@@ -492,7 +492,7 @@ All other default values are highlighted with bold:
      -
    * - India
      - IN
-     - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+     - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
      -
      -
    * - Indonesia
