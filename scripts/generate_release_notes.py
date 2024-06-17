@@ -136,7 +136,7 @@ class ReleaseNotesGenerator:
         """Add pull request information to the release notes dict."""
         author = pull_request.user.login if pull_request.user else None
         if author in IGNORED_CONTRIBUTORS:
-            print((f"Skipping #{pull_request.number} {pull_request.title}" f" by {author}"))
+            print(f"Skipping #{pull_request.number} {pull_request.title} by {author}")
             return None
 
         # Skip failed release attempt PRs, version upgrades.
@@ -184,8 +184,8 @@ class ReleaseNotesGenerator:
                     self.previous_commits.add(commit.sha)
                 break
 
-            # Skip closed unmerged PRs.
-            if not pull_request.merged:
+            # Skip unrelated PRs (unmerged, wrong branch).
+            if not pull_request.merged or pull_request.base.ref != BRANCH_NAME:
                 continue
 
             if pull_request.number in excluded_pr_numbers:
