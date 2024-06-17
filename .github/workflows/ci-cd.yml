@@ -18,13 +18,6 @@ concurrency:
   group: ${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
 
 jobs:
-  debug:
-    name: Print debug info
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo concurrency group key
-        run: echo "${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref }}"
-
   pre-commit:
     name: Run pre-commit
     runs-on: ubuntu-latest
