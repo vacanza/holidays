@@ -1,9 +1,14 @@
 name: CI/CD
+
 on:
-  - merge_group
-  - pull_request
-  - push
-  - workflow_dispatch
+  merge_group:
+    branches:
+      - dev
+      - main
+      - v1
+  pull_request:
+  push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 1
