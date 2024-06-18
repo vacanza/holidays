@@ -105,7 +105,7 @@ class SouthKorea(
 
     def _populate_observed(self, dts: Set[date], three_day_holidays: Dict[date, str]) -> None:
         for dt in sorted(dts.union(three_day_holidays.keys())):
-            if not self._is_observed(dt):
+            if dt is None or not self._is_observed(dt):
                 continue
             dt_observed = self._get_observed_date(
                 dt, SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY
@@ -125,6 +125,9 @@ class SouthKorea(
                 dts_observed.add(dt)
 
         def add_three_day_holiday(dt: date, name: str):
+            if dt is None:
+                return None
+
             name = self.tr(name)
             for dt_alt in (
                 # The day preceding %s.

@@ -14,7 +14,8 @@ from datetime import date
 from typing import Dict, Optional, Tuple, Set
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
-from holidays.holiday_base import DateArg, HolidayBase
+from holidays.holiday_base import HolidayBase
+from holidays.types import DateArg
 
 
 class ObservedRule(Dict[int, Optional[int]]):
@@ -142,6 +143,9 @@ class ObservedHolidayBase(HolidayBase):
         rule: Optional[ObservedRule] = None,
         show_observed_label: bool = True,
     ) -> Tuple[bool, Optional[date]]:
+        if dt is None:
+            return False, None
+
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
         if not self.observed or not self._is_observed(dt):
@@ -199,7 +203,7 @@ class ObservedHolidayBase(HolidayBase):
         When multiple is True, each holiday from a given date has its own observed date.
         """
         for dt in sorted(dts):
-            if not self._is_observed(dt):
+            if dt is None or not self._is_observed(dt):
                 continue
             if multiple:
                 for name in self.get_list(dt):

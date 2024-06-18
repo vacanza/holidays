@@ -70,7 +70,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei")
         )
 
-        if self._year >= 2017:
+        if self._year >= 2017 and may_9 is not None:
             # Europe Day.
             self._add_holiday(tr("Ziua Europei"), may_9)
 

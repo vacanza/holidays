@@ -97,8 +97,9 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
                 if self._year in sangkranta_years_apr_14
                 else self._add_holiday_apr_13(sangkranta)
             )
-            self._add_holiday(sangkranta, _timedelta(dt, +1))
-            self._add_holiday(sangkranta, _timedelta(dt, +2))
+            if dt is not None:
+                self._add_holiday(sangkranta, _timedelta(dt, +1))
+                self._add_holiday(sangkranta, _timedelta(dt, +2))
 
         #  ទិវាពលកម្មអន្តរជាតិ
         # Status: In-Use.

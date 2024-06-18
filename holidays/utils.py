@@ -26,6 +26,7 @@ from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 from holidays.holiday_base import HolidayBase
 from holidays.registry import EntityLoader
+from holidays.types import DateLike
 
 
 def country_holidays(
@@ -38,6 +39,8 @@ def country_holidays(
     state: Optional[str] = None,
     language: Optional[str] = None,
     categories: Optional[Tuple[str]] = None,
+    since: Optional[DateLike] = None,
+    until: Optional[DateLike] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -76,6 +79,14 @@ def country_holidays(
 
     :param categories:
         Requested holiday categories.
+
+    :param since:
+        The date limiting the lower bound of holidays date range.
+        The holidays falling on the `since` date will be included too.
+
+    :param until:
+        The date limiting the upper bound of holidays date range.
+        The holidays falling on the `until` date will be included too.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -194,6 +205,8 @@ def country_holidays(
             state=state,
             language=language,
             categories=categories,
+            since=since,
+            until=until,
         )
     except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
@@ -206,6 +219,8 @@ def financial_holidays(
     expand: bool = True,
     observed: bool = True,
     language: Optional[str] = None,
+    since: Optional[DateLike] = None,
+    until: Optional[DateLike] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -236,6 +251,14 @@ def financial_holidays(
         language translation is not supported the original holiday names
         will be used.
 
+    :param since:
+        The date limiting the lower bound of holidays date range.
+        The holidays falling on the `since` date will be included too.
+
+    :param until:
+        The date limiting the upper bound of holidays date range.
+        The holidays falling on the `until` date will be included too.
+
     :return:
         A :py:class:`HolidayBase` object matching the **market**.
 
@@ -256,6 +279,8 @@ def financial_holidays(
             expand=expand,
             observed=observed,
             language=language,
+            since=since,
+            until=until,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")

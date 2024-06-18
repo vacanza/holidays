@@ -123,6 +123,40 @@ fly and the holiday list will be adjusted accordingly:
    >> date(2012, 1, 2) in us_holidays
    True
 
+Date range limits: since and until parameters
+---------------------------------------------
+
+If you need to retrieve a set of holidays limited by specific date(s) you can
+use :py:attr:`since` and/or :py:attr:`until` parameters. Both since/until 
+parameters accept :py:class:`DateLike` objects. Please note that the
+resulting set will include holidays falling on :py:attr:`since` and 
+:py:attr:`until` dates too (inclusive range).
+
+Here is an example of retrieving US holidays for January of 2024:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2024, since="2024-01-01", until="2024-01-31")
+   >>> print(us_holidays)
+   {datetime.date(2024, 1, 1): "New Year's Day", datetime.date(2024, 1, 15): 'Martin Luther King Jr. Day'}
+   >>> "2024-07-04" in us_holidays
+   False
+
+Here is another example of using :py:attr:`since` parameter to get holidays for the second half of 2024:
+
+.. code-block:: python
+
+   >>> from datetime import date
+   >>> for dt, name in sorted(holidays.US(years=2024, since=date(2024, 7, 1)).items()):
+   >>>     print(dt, name)
+   2024-07-04 Independence Day
+   2024-09-02 Labor Day
+   2024-10-14 Columbus Day
+   2024-11-11 Veterans Day
+   2024-11-28 Thanksgiving
+   2024-12-25 Christmas Day
+
+
 Language support
 ----------------
 To change the language translation, you can set the language explicitly.

@@ -15,13 +15,11 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 import copy
 import warnings
 from calendar import isleap
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Union, cast
-
-from dateutil.parser import parse
+from typing import Any, Dict, List, Optional, Set, Tuple, Union, cast
 
 from holidays.calendars.gregorian import (
     MON,
@@ -39,17 +37,8 @@ from holidays.calendars.gregorian import (
     WEEKDAYS,
 )
 from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
-from holidays.helpers import _normalize_arguments, _normalize_tuple
-
-CategoryArg = Union[str, Iterable[str]]
-DateArg = Union[date, Tuple[int, int]]
-DateLike = Union[date, datetime, str, float, int]
-SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
-SubstitutedHoliday = Union[
-    Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]],
-    Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
-]
-YearArg = Union[int, Iterable[int]]
+from holidays.helpers import _convert_to_date, _normalize_arguments, _normalize_tuple
+from holidays.types import CategoryArg, DateLike, SpecialHoliday, SubstitutedHoliday, YearArg
 
 
 class HolidayBase(Dict[date, str]):
@@ -255,6 +244,8 @@ class HolidayBase(Dict[date, str]):
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
         categories: Optional[CategoryArg] = None,
+        since: Optional[DateLike] = None,
+        until: Optional[DateLike] = None,
     ) -> None:
         """
         :param years:
@@ -287,6 +278,14 @@ class HolidayBase(Dict[date, str]):
 
         :param categories:
             Requested holiday categories.
+
+        :param since:
+            The date limiting the lower bound of holidays date range.
+            The holidays falling on the `since` date will be included too.
+
+        :param until:
+            The date limiting the upper bound of holidays date range.
+            The holidays falling on the `until` date will be included too.
 
         :return:
             A :class:`HolidayBase` object matching the **country**.
@@ -348,6 +347,13 @@ class HolidayBase(Dict[date, str]):
             raise ValueError(
                 f"Entity `{self._entity_code}` class must have `substituted_label` "
                 "and `substituted_date_format` attributes set."
+            )
+
+        self.since_date = _convert_to_date(since) if since is not None else since
+        self.until_date = _convert_to_date(until) if until is not None else until
+        if self.since_date and self.until_date and self.until_date < self.since_date:
+            raise ValueError(
+                "The holidays date range until date mustn't be earlier than since date."
             )
 
         self.categories = categories
@@ -581,37 +587,14 @@ class HolidayBase(Dict[date, str]):
 
         to :class:`datetime.date`, which is how it's stored by the class."""
 
-        # Try to catch `date` and `str` type keys first.
-        # Using type() here to skip date subclasses.
-        # Key is `date`.
-        if type(key) is date:
-            dt = key
-
-        # Key is `str` instance.
-        elif isinstance(key, str):
-            try:
-                dt = parse(key).date()
-            except (OverflowError, ValueError):
-                raise ValueError(f"Cannot parse date from string '{key}'")
-
-        # Key is `datetime` instance.
-        elif isinstance(key, datetime):
-            dt = key.date()
-
-        # Must go after the `isinstance(key, datetime)` check as datetime is `date` subclass.
-        elif isinstance(key, date):
-            dt = key
-
-        # Key is `float` or `int` instance.
-        elif isinstance(key, (float, int)):
-            dt = datetime.fromtimestamp(key, timezone.utc).date()
-
-        # Key is not supported.
-        else:
-            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
-
-        # Automatically expand for `expand=True` cases.
-        if self.expand and dt.year not in self.years:
+        dt = _convert_to_date(key)
+        # Automatically expand for `expand=True` cases unless since or until prohibits that.
+        if (
+            self.expand
+            and dt.year not in self.years
+            and (self.since_date is None or dt.year >= self.since_date.year)
+            and (self.until_date is None or dt.year <= self.until_date.year)
+        ):
             self.years.add(dt.year)
             self._populate(dt.year)
 
@@ -742,7 +725,12 @@ class HolidayBase(Dict[date, str]):
         dt = args if len(args) > 1 else args[0]
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
-        if dt.year != self._year:
+        # Skip dates that don't match current year and since/until range values.
+        if (
+            dt.year != self._year
+            or (self.since_date and dt < self.since_date)
+            or (self.until_date and dt > self.until_date)
+        ):
             return None
 
         self[dt] = self.tr(name)
@@ -778,6 +766,8 @@ class HolidayBase(Dict[date, str]):
         Returns False otherwise.
         """
         dt = args if len(args) > 1 else args[0]
+        if dt is None:
+            return False
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return dt.weekday() == weekday
 

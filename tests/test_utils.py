@@ -88,7 +88,7 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertRaises(NotImplementedError, lambda: financial_holidays("NYSE", subdiv="XXXX"))
 
 
-class TestAllInSameYear(unittest.TestCase):
+class TestYears(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
     years = set(range(1950, 2051))
@@ -114,6 +114,16 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in country_holidays(country, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
+
+            # Test since/until range.
+            for dt in country_holidays(
+                country, years=range(1990, 2010), since="1999-01-01", until="2001-12-31"
+            ):
+                self.assertIn(dt.year, {1999, 2000, 2001})
+
+            self.assertFalse(country_holidays(country, years=2023, since="2024-01-01"))
+            self.assertFalse(country_holidays(country, years=2025, until="2024-12-31"))
+
         self.assertEqual(self.years, country_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
@@ -137,6 +147,16 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in financial_holidays(market, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
+
+            # Test since/until range.
+            for dt in financial_holidays(
+                market, years=range(2015, 2025), since="2020-01-01", until="2022-12-31"
+            ):
+                self.assertIn(dt.year, {2020, 2021, 2022})
+
+            self.assertFalse(country_holidays(market, years=2023, since="2024-01-01"))
+            self.assertFalse(country_holidays(market, years=2025, until="2024-12-31"))
+
         self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
 
 

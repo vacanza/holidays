@@ -178,6 +178,24 @@ class TestArgs(unittest.TestCase):
         self.assertIn("2012-01-01", hb)
         self.assertNotIn("2012-01-02", hb)
 
+    def test_since_until(self):
+        self.assertIsNone(HolidayBase().since_date)
+        self.assertIsNone(HolidayBase().until_date)
+
+        dt_2010_12_31 = date(2010, 12, 31)
+        hb_2010_12_31 = HolidayBase(since=dt_2010_12_31, until=dt_2010_12_31)
+        self.assertEqual(hb_2010_12_31.since_date, dt_2010_12_31)
+        self.assertEqual(hb_2010_12_31.until_date, dt_2010_12_31)
+
+        self.assertEqual(HolidayBase(since="20101231").since_date, dt_2010_12_31)
+        self.assertEqual(HolidayBase(until="20101231").until_date, dt_2010_12_31)
+
+        self.assertEqual(HolidayBase(since="2010-12-31").since_date, dt_2010_12_31)
+        self.assertEqual(HolidayBase(until="2010-12-31").until_date, dt_2010_12_31)
+
+        self.assertRaises(ValueError, lambda: HolidayBase(since="2020-12-01", until="2020-01-01"))
+        self.assertRaises(ValueError, lambda: HolidayBase(since="20210101", until="20201231"))
+
     def test_subdivision(self):
         self.assertEqual(CountryStub1(subdiv="Subdiv 1").subdiv, "Subdiv 1")
         self.assertEqual(CountryStub1(subdiv=3).subdiv, "3")
@@ -540,7 +558,109 @@ class TestHelperMethods(unittest.TestCase):
             (JAN, 5, "Test 1", True),
             ("Test", "Test"),
         ):
-            self.assertRaises(TypeError, lambda: self.hb._add_holiday(*args))
+            self.assertRaises(TypeError, lambda a=args: self.hb._add_holiday(*a))
+
+    def test_add_holiday_since_until(self):
+        class SinceUntilHolidays(HolidayBase):
+            country = "SU"
+
+            def _populate(self, year: int):
+                super()._populate(year)
+
+                self._add_holiday_may_15("May 15")
+                self._add_holiday_may_16("May 16")
+                self._add_holiday_may_17("May 17")
+
+                self._add_holiday_sep_1("Sep 1")
+                self._add_holiday_sep_2("Sep 2")
+                self._add_holiday_sep_3("Sep 3")
+
+        may_holidays = ("2024-05-15", "2024-05-16", "2024-05-17")
+        sep_holidays = ("2024-09-01", "2024-09-02", "2024-09-03")
+
+        # Holidays exist tests.
+
+        # One day range.
+        since_2024_05_15_until_2024_05_15 = SinceUntilHolidays(
+            years=2024, since="2024-05-15", until="2024-05-15"
+        )
+        self.assertIn("2024-05-15", since_2024_05_15_until_2024_05_15)
+        self.assertEqual(len(since_2024_05_15_until_2024_05_15), 1)
+
+        # One month range.
+        since_2024_05_01_until_2024_05_31 = SinceUntilHolidays(
+            years=2024, since="2024-05-01", until="2024-05-31"
+        )
+        for dt in may_holidays:
+            self.assertIn(dt, since_2024_05_01_until_2024_05_31)
+        for dt in sep_holidays:
+            self.assertNotIn(dt, since_2024_05_01_until_2024_05_31)
+        self.assertEqual(len(since_2024_05_01_until_2024_05_31), 3)
+
+        # One year range.
+        since_2024_01_01_until_2024_12_31 = SinceUntilHolidays(
+            years=2024, since="2024-01-01", until="2024-12-31"
+        )
+        for dt in may_holidays + sep_holidays:
+            self.assertIn(dt, since_2024_01_01_until_2024_12_31)
+        self.assertEqual(len(since_2024_01_01_until_2024_12_31), 6)
+
+        # No holidays exist tests.
+
+        # One day range.
+        since_2024_05_14_until_2024_05_14 = SinceUntilHolidays(
+            years=2024, since="2024-05-14", until="2024-05-14"
+        )
+        for dt in may_holidays + sep_holidays:
+            self.assertNotIn(dt, since_2024_05_14_until_2024_05_14)
+        self.assertNotIn("2023-05-15", since_2024_05_14_until_2024_05_14)
+        self.assertEqual(len(since_2024_05_14_until_2024_05_14), 0)
+
+        # One month range.
+        since_2024_04_01_until_2024_04_30 = SinceUntilHolidays(
+            years=2025, since="2024-04-01", until="2024-04-30"
+        )
+        for dt in may_holidays + sep_holidays:
+            self.assertNotIn(dt, since_2024_04_01_until_2024_04_30)
+        self.assertEqual(len(since_2024_04_01_until_2024_04_30), 0)
+
+        # Out of range since.
+        since_2024_09_04 = SinceUntilHolidays(years=2024, since="2024-09-04")
+        for dt in may_holidays + sep_holidays:
+            self.assertNotIn(dt, since_2024_09_04)
+        self.assertNotIn("2023-05-15", since_2024_09_04)
+        self.assertNotIn("2023-09-01", since_2024_09_04)
+        self.assertEqual(len(since_2024_09_04), 0)
+
+        self.assertIn("2025-05-15", since_2024_09_04)
+        self.assertIn("2025-09-01", since_2024_09_04)
+        self.assertEqual(len(since_2024_09_04), 6)
+
+        since_2024_09_04._populate(2000)
+        self.assertEqual(len(since_2024_09_04), 6)
+        since_2024_09_04._populate(2026)
+        self.assertEqual(len(since_2024_09_04), 12)
+
+        # Out of range until.
+        until_2024_05_14 = SinceUntilHolidays(years=2024, until="2024-05-14")
+        for dt in may_holidays + sep_holidays:
+            self.assertNotIn(dt, until_2024_05_14)
+        self.assertNotIn("2025-05-15", until_2024_05_14)
+        self.assertNotIn("2025-09-01", until_2024_05_14)
+        self.assertEqual(len(until_2024_05_14), 0)
+
+        self.assertIn("2023-05-15", until_2024_05_14)
+        self.assertIn("2023-09-01", until_2024_05_14)
+        self.assertEqual(len(until_2024_05_14), 6)
+
+        until_2024_05_14._populate(2026)
+        self.assertEqual(len(until_2024_05_14), 6)
+        until_2024_05_14._populate(2022)
+        self.assertEqual(len(until_2024_05_14), 12)
+
+    def test_check_weekday(self):
+        self.assertFalse(self.hb._is_sunday(None))
+        self.assertFalse(self.hb._check_weekday(MON, None))
 
     def test_is_leap_year(self):
         self.hb._populate(1999)

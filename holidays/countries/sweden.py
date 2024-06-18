@@ -99,8 +99,9 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
             else self._add_holiday_jun_23(name)
         )
 
-        # Midsummer Day.
-        self._add_holiday(tr("Midsommardagen"), _timedelta(dt, +1))
+        if dt is not None:
+            # Midsummer Day.
+            self._add_holiday(tr("Midsommardagen"), _timedelta(dt, +1))
 
         # All Saints' Day.
         self._add_holiday_1st_sat_from_oct_31(tr("Alla helgons dag"))

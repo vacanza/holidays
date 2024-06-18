@@ -66,6 +66,8 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         if self._year < since:
             return None
         for dt in sorted(dts):
+            if dt is None:
+                continue
             for name in self.get_list(dt):
                 self._add_observed(dt, name, rule)
 

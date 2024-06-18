@@ -21,6 +21,7 @@ from holidays.deprecation import (
 )
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
+from holidays.types import DateLike  # noqa: F401
 from holidays.utils import *
 
 __version__ = "0.52"

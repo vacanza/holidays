@@ -57,6 +57,9 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
     def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, Optional[date]]:
+        if dt is None:
+            return False, None
+
         # Prior to 2004, in-lieu are only given for Sundays.
         # https://www.jerseylaw.je/laws/enacted/Pages/RO-123-2004.aspx
         kwargs.setdefault(

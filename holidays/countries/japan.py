@@ -55,6 +55,8 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         # When a national holiday falls on Sunday, next working day
         # shall become a public holiday (振替休日) - substitute holidays.
         for dt in sorted(dts):
+            if dt is None:
+                continue
             is_observed, dt_observed = self._add_observed(
                 dt,
                 # Substitute Holiday.
@@ -67,7 +69,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         # A weekday between national holidays becomes
         # a holiday too (国民の休日) - national holidays.
         for dt in dts:
-            if _timedelta(dt, +2) not in dts:
+            if dt is None or _timedelta(dt, +2) not in dts:
                 continue
             dt_observed = _timedelta(dt, +1)
             if self._is_sunday(dt_observed) or dt_observed in dts:

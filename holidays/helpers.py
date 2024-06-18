@@ -10,6 +10,52 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date, datetime, timezone
+
+from dateutil.parser import parse
+
+from holidays.types import DateLike
+
+
+def _convert_to_date(dt: DateLike) -> date:
+    """Convert value to date.
+
+    :param dt:
+        A value that should be converted into a date.
+
+    :return:
+        A date created based on the provided value.
+    """
+
+    # Attempt to catch `date` and `str` type keys first.
+    # Using `type()`` instead of `isinstance()` here to skip date subclasses.
+    # Key is `date`.
+    if type(dt) is date:
+        return dt
+
+    # Key is `str` instance.
+    elif isinstance(dt, str):
+        try:
+            return parse(dt).date()
+        except (OverflowError, ValueError):
+            raise ValueError(f"Cannot parse date from string '{dt}'")
+
+    # Key is `datetime` instance.
+    elif isinstance(dt, datetime):
+        return dt.date()
+
+    # Must go after the `isinstance(key, datetime)` check as datetime is `date` subclass.
+    elif isinstance(dt, date):
+        return dt
+
+    # Key is `float` or `int` instance.
+    elif isinstance(dt, (float, int)):
+        return datetime.fromtimestamp(dt, timezone.utc).date()
+
+    # Key is not supported.
+    else:
+        raise TypeError(f"Cannot convert type '{type(dt)}' to date.")
+
 
 def _normalize_arguments(cls, value):
     """Normalize arguments.

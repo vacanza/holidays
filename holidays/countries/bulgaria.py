@@ -59,7 +59,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_observed(self, dts: Set[date], excluded_names: Set[str]) -> None:
         for dt in sorted(dts):
-            if not self._is_observed(dt):
+            if dt is None or not self._is_observed(dt):
                 continue
             for name in self.get_list(dt):
                 if name not in excluded_names:

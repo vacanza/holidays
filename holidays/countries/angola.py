@@ -60,6 +60,9 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         return dt >= date(1996, SEP, 27)
 
     def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, Optional[date]]:
+        if dt is None:
+            return False, None
+
         # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
         # the Monday or Friday is also a holiday.
         kwargs.setdefault(
