@@ -9,7 +9,7 @@ env:
   FORCE_COLOR: 1
 
 concurrency:
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !contains(fromJSON('["dev", "main", "v1"]'), github.ref_name) }}
   group: ${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref }}
 
 jobs:
