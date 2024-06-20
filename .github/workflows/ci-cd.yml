@@ -1,16 +1,21 @@
 name: CI/CD
+
 on:
-  - merge_group
-  - pull_request
-  - push
-  - workflow_dispatch
+  merge_group:
+    branches:
+      - dev
+      - main
+      - v1
+  pull_request:
+  push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 1
 
 concurrency:
   cancel-in-progress: true
-  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
 
 jobs:
   pre-commit:
