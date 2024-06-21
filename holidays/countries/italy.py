@@ -533,6 +533,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
 
     def _populate_subdiv_ve_public_holidays(self):
         self._add_holiday_apr_25("San Marco Evangelista")
+        self._add_holiday_nov_21("Madonna della Salute")
 
     def _populate_subdiv_vi_public_holidays(self):
         self._add_nativity_of_mary_day("Madonna di Monte Berico")
