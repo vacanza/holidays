@@ -39,7 +39,7 @@ flexible as possible.
     :target: https://github.com/astral-sh/ruff
     :alt: Code style
 
-.. |coverage| image:: https://img.shields.io/codecov/c/github/vacanza/python-holidays/dev?color=41B5BE&style=flat&token=OnENZU5Gy4
+.. |coverage| image:: https://img.shields.io/codecov/c/github/vacanza/python-holidays/dev?color=41B5BE&style=flat
     :target: https://app.codecov.io/gh/vacanza/python-holidays
     :alt: Code coverage
 
