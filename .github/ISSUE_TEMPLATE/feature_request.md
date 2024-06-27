@@ -12,6 +12,6 @@ List any related issues or feature requests that might be relevant.
 
 A clear and concise description of what you want to happen.
 
-## Additional context
+### Additional context
 
 Add any other context about your feature request here.
