@@ -28,10 +28,11 @@ repos:
     rev: v1.5.5
     hooks:
       - id: insert-license
+        name: check license headers
         files: \.(po|py)$
         args:
-        - --license-filepath
-        - docs/file_header.txt
+          - --license-filepath
+          - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
