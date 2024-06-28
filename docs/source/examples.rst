@@ -41,7 +41,7 @@ Use ``years`` parameter to populate the holidays years you are interested in:
 
 .. code-block:: python
 
-   >>> us_holidays = holidays.US(years=2025)  # US 2020 holidays
+   >>> us_holidays = holidays.US(years=2020)  # US 2020 holidays
    >>> us_holidays = holidays.US(years=range(2020, 2026))  # US 2020-2025 holidays
 
 Let's print out the holidays in 2014 specific to California, USA:
