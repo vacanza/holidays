@@ -37,6 +37,13 @@ functions to create the object using a string with the country code:
    >>> us_holidays = holidays.country_holidays('US')
    >>> nyse_holidays = holidays.financial_holidays('NYSE')
 
+Use ``years`` parameter to populate the holidays years you are interested in:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)  # US 2020 holidays
+   >>> us_holidays = holidays.US(years=range(2020, 2026))  # US 2020-2025 holidays
+
 Let's print out the holidays in 2014 specific to California, USA:
 
 .. code-block:: python
