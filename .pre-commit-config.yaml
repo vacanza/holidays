@@ -19,7 +19,7 @@ repos:
           - rst
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.9
+    rev: v0.5.0
     hooks:
       - id: ruff
       - id: ruff-format
@@ -28,10 +28,11 @@ repos:
     rev: v1.5.5
     hooks:
       - id: insert-license
+        name: check license headers
         files: \.(po|py)$
         args:
-        - --license-filepath
-        - docs/file_header.txt
+          - --license-filepath
+          - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
@@ -40,7 +41,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.10.0
+    rev: v1.10.1
     hooks:
       - id: mypy
         additional_dependencies:

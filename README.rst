@@ -39,8 +39,8 @@ flexible as possible.
     :target: https://github.com/astral-sh/ruff
     :alt: Code style
 
-.. |coverage| image:: https://img.shields.io/coverallsCoverage/github/vacanza/python-holidays?branch=main&color=41B5BE&style=flat
-    :target: https://coveralls.io/r/vacanza/python-holidays
+.. |coverage| image:: https://img.shields.io/codecov/c/github/vacanza/python-holidays/dev?color=41B5BE&style=flat
+    :target: https://app.codecov.io/gh/vacanza/python-holidays
     :alt: Code coverage
 
 .. |stars| image:: https://img.shields.io/github/stars/vacanza/python-holidays?color=41BE4A&style=flat
