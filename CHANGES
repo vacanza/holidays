@@ -1,3 +1,16 @@
+Version 0.52
+============
+
+Released July 1, 2024
+
+- Update CI/CD: don't cancel concurrent jobs for dev/main/v1 (#1840 by @arkid15r)
+- Update Italy holidays: add Venice provincial holiday (#1842 by @KJhellico)
+- Update coverage badge (#1839 by @arkid15r)
+- Update docs: add years example (#1851 by @arkid15r)
+- Update v1 incompatibility warning (#1850 by @arkid15r)
+- Add GitHub issue templates (#1845 by @arkid15r)
+- Tune up CI/CD jobs concurrency (#1834 by @arkid15r)
+
 Version 0.51
 ============
 
