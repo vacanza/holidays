@@ -54,7 +54,7 @@ repos:
           - --show-error-codes
 
   - repo: https://github.com/myint/rstcheck
-    rev: v6.2.0
+    rev: v6.2.4
     hooks:
       - id: rstcheck
         additional_dependencies:
