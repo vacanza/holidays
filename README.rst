@@ -334,7 +334,7 @@ All other default values are highlighted with bold:
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
      - en_US, **es**, uk
-     -
+     - BANK
    * - China
      - CN
      -
