@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import BANK, PUBLIC
 from holidays.countries.chile import Chile, CL, CHL
 from tests.common import CommonCountryTests
 
@@ -25,10 +26,13 @@ class TestChile(CommonCountryTests, TestCase):
         self.assertAliases(Chile, CL, CHL)
 
     def test_special_holidays(self):
-        self.assertHoliday("2022-09-16")
+        self.assertHoliday(
+            "1999-12-31",
+            "2022-09-16",
+        )
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Chile(years=1914))
+        self.assertNoHolidays(Chile(categories=(BANK, PUBLIC), years=1914))
 
     def test_new_year(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1915, 2050))
@@ -270,6 +274,19 @@ class TestChile(CommonCountryTests, TestCase):
         self.assertNoHoliday(f"{year}-12-24" for year in range(1915, 1944))
         self.assertNoHoliday(f"{year}-12-24" for year in range(1989, 2050))
 
+    def test_bank_holidays(self):
+        name = "Feriado bancario"
+        holidays = Chile(categories=BANK, years=range(1915, 2050))
+        self.assertHolidayName(name, holidays, (f"{year}-06-30" for year in range(1957, 1976)))
+        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1956, 1997)))
+        self.assertHolidayName(name, holidays, (f"{year}-12-31" for year in range(1998, 2050)))
+        self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1915, 1957)))
+        self.assertNoHoliday(holidays, (f"{year}-06-30" for year in range(1976, 2050)))
+        self.assertNoHoliday(
+            holidays, (f"{year}-12-31" for year in range(1915, 1956)), "1997-12-31"
+        )
+        self.assertNoHolidayName(name, holidays, range(1915, 1956))
+
     def test_2019(self):
         self.assertHolidayDates(
             Chile(years=2019),
@@ -373,6 +390,7 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-11-01", "Día de Todos los Santos"),
             ("2022-12-08", "La Inmaculada Concepción"),
             ("2022-12-25", "Navidad"),
+            ("2022-12-31", "Feriado bancario"),
         )
 
     def test_l10n_en_us(self):
@@ -395,6 +413,7 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-08", "Immaculate Conception"),
             ("2022-12-25", "Christmas Day"),
+            ("2022-12-31", "Bank Holiday"),
         )
 
     def test_l10n_uk(self):
@@ -417,4 +436,5 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-11-01", "День усіх святих"),
             ("2022-12-08", "Непорочне зачаття Діви Марії"),
             ("2022-12-25", "Різдво Христове"),
+            ("2022-12-31", "Банківський вихідний"),
         )
