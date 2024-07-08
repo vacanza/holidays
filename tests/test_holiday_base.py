@@ -1013,6 +1013,10 @@ class TestStandardMethods(unittest.TestCase):
         self.assertIn("2014-01-03", self.hb)
         self.assertEqual(self.hb["2014-01-03"], "Custom Holiday")
 
+        self.hb["2014-01-04"] = "Custom Holiday"
+        self.hb["2014-01-04"] = "Custom Holiday; Another Custom Holiday"
+        self.assertEqual(self.hb["2014-01-04"], "Another Custom Holiday; Custom Holiday")
+
     def test_update(self):
         self.hb.update(
             {
