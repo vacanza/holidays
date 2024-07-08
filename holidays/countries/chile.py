@@ -51,7 +51,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         - Law 20.299 (National Day of the Evangelical and Protestant Churches)
         - Law 20.663 (Región de Arica y Parinacota)
         - Law 20.678 (Región de Ñuble)
-        - Law 19.656 (Dec 31, 1999 holiday) <https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15>
+        - `Law 19.656 (Dec 31, 1999 holiday) <https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15>`_
         - `Law 12.051 (bank holidays Jun 30 and Dec 31) <https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12>`_
         - `Decree-law 1.171 (eliminate Jun 30) <https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05>`_
         - `Law 19.528 (eliminate Dec 31) <https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04>`_
