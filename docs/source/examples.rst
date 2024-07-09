@@ -35,7 +35,7 @@ functions to create the object using a string with the country code:
 .. code-block:: python
 
    >>> us_holidays = holidays.country_holidays('US')
-   >>> nyse_holidays = holidays.financial_holidays('NYSE')
+   >>> nyse_holidays = holidays.entities.iso10383_holidays('NYSE')
 
 Use ``years`` parameter to populate the holidays years you are interested in:
 
@@ -245,7 +245,7 @@ to override is :py:meth:`_populate`:
 
 .. code-block:: python
 
-   >>> from holidays.countries import US
+   >>> from holidays.entities.iso3166 import US
    >>> class CorporateHolidays(US):
    >>>     def _populate(self, year):
    >>>         # Populate the holiday list with the default US holidays.

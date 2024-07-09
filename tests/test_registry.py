@@ -18,7 +18,8 @@ from unittest import TestCase
 import pytest
 
 import holidays
-from holidays import countries, financial, registry
+from holidays import registry
+from holidays.entities import iso3166, iso10383
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
@@ -32,9 +33,9 @@ class TestEntityLoader(TestCase):
 
         loader_entities = set()
         for module, entities in registry.COUNTRIES.items():
-            module = importlib.import_module(f"holidays.countries.{module}")
+            module = importlib.import_module(f"holidays.entities.iso3166.{module}")
             for entity in entities:
-                countries_cls = getattr(countries, entity)
+                countries_cls = getattr(iso3166, entity)
                 loader_cls = getattr(holidays, entity)
                 module_cls = getattr(module, entity)
 
@@ -49,7 +50,7 @@ class TestEntityLoader(TestCase):
                 loader_entities.add(loader_cls.__name__)
 
         countries_entities = set(
-            entity[0] for entity in inspect.getmembers(countries, inspect.isclass)
+            entity[0] for entity in inspect.getmembers(iso3166, inspect.isclass)
         )
         self.assertEqual(
             countries_entities,
@@ -60,10 +61,10 @@ class TestEntityLoader(TestCase):
 
     def test_country_str(self):
         self.assertEqual(
-            str(registry.EntityLoader("holidays.countries.united_states.US")),
-            "A lazy loader for <class 'holidays.countries.united_states.US'>. "
+            str(registry.EntityLoader("holidays.entities.iso3166.united_states.US")),
+            "A lazy loader for <class 'holidays.entities.iso3166.united_states.US'>. "
             "For inheritance please use the "
-            "'holidays.countries.united_states.US' class directly.",
+            "'holidays.entities.iso3166.united_states.US' class directly.",
         )
 
     @pytest.mark.skipif(
@@ -73,9 +74,9 @@ class TestEntityLoader(TestCase):
     def test_financial_imports(self):
         loader_entities = set()
         for module, entities in registry.FINANCIAL.items():
-            module = importlib.import_module(f"holidays.financial.{module}")
+            module = importlib.import_module(f"holidays.entities.iso10383.{module}")
             for entity in entities:
-                financial_cls = getattr(financial, entity)
+                financial_cls = getattr(iso10383, entity)
                 loader_cls = getattr(holidays, entity)
                 module_cls = getattr(module, entity)
 
@@ -90,7 +91,7 @@ class TestEntityLoader(TestCase):
                 loader_entities.add(loader_cls.__name__)
 
         financial_entities = set(
-            entity[0] for entity in inspect.getmembers(financial, inspect.isclass)
+            entity[0] for entity in inspect.getmembers(iso10383, inspect.isclass)
         )
         self.assertEqual(
             financial_entities,
@@ -101,11 +102,11 @@ class TestEntityLoader(TestCase):
 
     def test_financial_str(self):
         self.assertEqual(
-            str(registry.EntityLoader("holidays.financial.ny_stock_exchange.NYSE")),
+            str(registry.EntityLoader("holidays.entities.iso10383.ny_stock_exchange.NYSE")),
             "A lazy loader for "
-            "<class 'holidays.financial.ny_stock_exchange.NYSE'>. "
+            "<class 'holidays.entities.iso10383.ny_stock_exchange.NYSE'>. "
             "For inheritance please use the "
-            "'holidays.financial.ny_stock_exchange.NYSE' class directly.",
+            "'holidays.entities.iso10383.ny_stock_exchange.NYSE' class directly.",
         )
 
     def test_inheritance(self):
@@ -121,8 +122,8 @@ class TestEntityLoader(TestCase):
                 create_instance(cls)
 
         for cls in (
-            holidays.countries.UnitedStates,
-            holidays.countries.US,
-            holidays.countries.USA,
+            holidays.entities.iso3166.UnitedStates,
+            holidays.entities.iso3166.US,
+            holidays.entities.iso3166.USA,
         ):
-            self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
+            self.assertIsInstance(create_instance(cls), holidays.entities.iso3166.UnitedStates)

@@ -15,9 +15,9 @@ from unittest import TestCase
 
 import pytest
 
-from holidays.countries.cambodia import Cambodia
-from holidays.countries.thailand import Thailand
-from holidays.countries.ukraine import Ukraine
+from holidays.entities.iso3166.cambodia import Cambodia
+from holidays.entities.iso3166.thailand import Thailand
+from holidays.entities.iso3166.ukraine import Ukraine
 
 
 class TestNumpy(TestCase):

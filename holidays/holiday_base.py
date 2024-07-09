@@ -639,7 +639,7 @@ class HolidayBase(Dict[date, str]):
 
         parts = []
         if hasattr(self, "market"):
-            parts.append(f"holidays.financial_holidays({self.market!r}")
+            parts.append(f"holidays.entities.iso10383_holidays({self.market!r}")
             parts.append(")")
         elif hasattr(self, "country"):
             parts.append(f"holidays.country_holidays({self.country!r}")
