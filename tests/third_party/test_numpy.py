@@ -15,9 +15,9 @@ from unittest import TestCase
 
 import pytest
 
-from holidays.entities.iso3166.cambodia import Cambodia
-from holidays.entities.iso3166.thailand import Thailand
-from holidays.entities.iso3166.ukraine import Ukraine
+from holidays.entities.ISO_3166.KH import KhHolidays
+from holidays.entities.ISO_3166.TH import ThHolidays
+from holidays.entities.ISO_3166.UA import UaHolidays
 
 
 class TestNumpy(TestCase):
@@ -33,7 +33,7 @@ class TestNumpy(TestCase):
         years = (1995, 2000)
         years_range = set(range(*years))
 
-        for cls in (Cambodia, Thailand, Ukraine):
+        for cls in (KhHolidays, ThHolidays, UaHolidays):
             # Test single value.
             for int_x in (np.int16, np.int32, np.int64):
                 self.assertEqual(cls(years=int_x(2024)).years, {2024})

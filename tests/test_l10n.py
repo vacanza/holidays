@@ -25,13 +25,13 @@ class TestLocalization(unittest.TestCase):
     @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
     def test_language_unavailable_en_us(self):
         self.assertEqual(os.environ["LANGUAGE"], "en_US")
-        ca_xx = holidays.country_holidays("CA", language="xx")
+        ca_xx = holidays.iso_3166_holidays("CA", language="xx")
         self.assertEqual(ca_xx["2022-01-01"], "New Year's Day")
 
     @mock.patch.dict(os.environ, {"LANGUAGE": "pl"})
     def test_language_unavailable_pl(self):
         self.assertEqual(os.environ["LANGUAGE"], "pl")
-        pl_xx = holidays.country_holidays("PL", language="xx")
+        pl_xx = holidays.iso_3166_holidays("PL", language="xx")
         self.assertEqual(pl_xx["2022-01-01"], "Nowy Rok")
 
     def test_localization(self):

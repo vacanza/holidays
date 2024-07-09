@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-import warnings
 from datetime import date
 from pathlib import Path
 from unittest import mock
@@ -20,72 +19,63 @@ import pytest
 
 import holidays
 from holidays.utils import (
-    CountryHoliday,
-    country_holidays,
-    financial_holidays,
-    list_localized_countries,
-    list_localized_financial,
-    list_supported_countries,
-    list_supported_financial,
+    iso_3166_holidays,
+    iso_10383_holidays,
+    list_localized_iso_3166_entities,
+    list_localized_iso_10383_entities,
+    list_iso_3166_entities,
+    list_iso_10383_entities,
 )
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = country_holidays("US")
+        self.holidays = iso_3166_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = country_holidays("US", years=2021)
+        h = iso_3166_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = country_holidays("US", years=(2015, 2016))
+        h = iso_3166_holidays("US", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = country_holidays("US", subdiv="NY")
+        h = iso_3166_holidays("US", subdiv="NY")
         self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = country_holidays("AU", subdiv="NT")
+        h = iso_3166_holidays("AU", subdiv="NT")
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
-        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
-        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
-
-    def test_country_holiday_class_deprecation(self):
-        with warnings.catch_warnings(record=True) as ctx:
-            warnings.simplefilter("always")
-            CountryHoliday("IT")
-            warning = ctx[0]
-            self.assertTrue(issubclass(warning.category, DeprecationWarning))
-            self.assertIn("CountryHoliday is deprecated", str(warning.message))
+        self.assertRaises(NotImplementedError, lambda: iso_3166_holidays("XXXX"))
+        self.assertRaises(NotImplementedError, lambda: iso_3166_holidays("US", subdiv="XXXX"))
+        self.assertRaises(NotImplementedError, lambda: iso_3166_holidays("US", subdiv="XXXX"))
 
 
 class TestFinancialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = financial_holidays("NYSE")
+        self.holidays = iso_10383_holidays("XNYS")
 
     def test_market(self):
-        self.assertEqual(self.holidays.market, "NYSE")
+        self.assertEqual(self.holidays.market, "XNYS")
 
     def test_market_single_year(self):
-        h = financial_holidays("NYSE", years=2021)
+        h = iso_10383_holidays("XNYS", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_market_years(self):
-        h = financial_holidays("NYSE", years=(2015, 2016))
+        h = iso_10383_holidays("XNYS", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("NYSE", subdiv="XXXX"))
+        self.assertRaises(NotImplementedError, lambda: iso_10383_holidays("XXXX"))
+        self.assertRaises(NotImplementedError, lambda: iso_10383_holidays("XNYS", subdiv="XXXX"))
 
 
 class TestAllInSameYear(unittest.TestCase):
@@ -107,14 +97,12 @@ class TestAllInSameYear(unittest.TestCase):
         This is logic test and not a code compatibility test, so for expediency
         we only run it once on the latest Python version.
         """
-        warnings.simplefilter("ignore")
-
-        for country in list_supported_countries():
+        for country in list_iso_3166_entities():
             for year in self.years:
-                for dt in country_holidays(country, years=year):
+                for dt in iso_3166_holidays(country, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, country_holidays(country, years=self.years).years)
+        self.assertEqual(self.years, iso_3166_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
@@ -130,14 +118,12 @@ class TestAllInSameYear(unittest.TestCase):
         This is logic test and not a code compatibility test, so for expediency
         we only run it once on the latest Python version.
         """
-        warnings.simplefilter("ignore")
-
-        for market in list_supported_financial():
+        for market in list_iso_10383_entities():
             for year in self.years:
-                for dt in financial_holidays(market, years=year):
+                for dt in iso_10383_holidays(market, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
+        self.assertEqual(self.years, iso_10383_holidays(market, years=self.years).years)
 
 
 class TestListLocalizedEntities(unittest.TestCase):
@@ -188,20 +174,20 @@ class TestListLocalizedEntities(unittest.TestCase):
 
     def test_localized_countries(self):
         self.assertLocalizedEntities(
-            list_localized_countries(),
-            list_supported_countries(include_aliases=False),
+            list_localized_iso_3166_entities(),
+            list_iso_3166_entities(include_aliases=False),
         )
 
     def test_localized_financial(self):
         self.assertLocalizedEntities(
-            list_localized_financial(),
-            list_supported_financial(include_aliases=False),
+            list_localized_iso_10383_entities(),
+            list_iso_10383_entities(include_aliases=False),
         )
 
 
 class TestListSupportedEntities(unittest.TestCase):
     def test_list_supported_countries(self):
-        supported_countries = list_supported_countries(include_aliases=False)
+        supported_countries = list_iso_3166_entities(include_aliases=False)
 
         self.assertIn("AR", supported_countries)
         self.assertIn("CA", supported_countries["US"])
@@ -210,11 +196,11 @@ class TestListSupportedEntities(unittest.TestCase):
 
         us_subdivisions = supported_countries["US"]
         self.assertIn("CA", us_subdivisions)
-        self.assertIsInstance(us_subdivisions, list)
+        self.assertIsInstance(us_subdivisions, tuple)
 
         countries_files = [
             path
-            for path in Path("holidays/entities/iso3166").glob("*.py")
+            for path in Path("holidays/entities/ISO_3166").glob("*.py")
             if path.stem != "__init__"
         ]
         self.assertEqual(
@@ -223,21 +209,20 @@ class TestListSupportedEntities(unittest.TestCase):
         )
 
     def test_list_supported_financial(self):
-        supported_financial = list_supported_financial(include_aliases=False)
+        iso_10383_entities = list_iso_10383_entities(include_aliases=False)
 
-        self.assertIn("ECB", supported_financial)
-        self.assertIn("IFEU", supported_financial)
-        self.assertIn("NYSE", supported_financial)
+        for code in ("IFEU", "XECB", "XNYS"):
+            self.assertIn(code, iso_10383_entities)
 
-        nyse = supported_financial["NYSE"]
-        self.assertIsInstance(nyse, list)
+        xnys = iso_10383_entities["XNYS"]
+        self.assertIsInstance(xnys, tuple)
 
         financial_files = [
             path
-            for path in Path("holidays/entities/iso10383").glob("*.py")
+            for path in Path("holidays/entities/ISO_10383").glob("*.py")
             if path.stem != "__init__"
         ]
         self.assertEqual(
             len(financial_files),
-            len(supported_financial),
+            len(iso_10383_entities),
         )

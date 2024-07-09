@@ -13,7 +13,6 @@
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
-import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
@@ -78,7 +77,7 @@ class HolidayBase(Dict[date, str]):
 
     us_holidays = holidays.US(years=2020)
 
-    It is generally instantiated using the :func:`country_holidays` function.
+    It is generally instantiated using the :func:`iso_3166_holidays` function.
 
     The key of the :class:`dict`-like :class:`HolidayBase` object is the
     `date` of the holiday, and the value is the name of the holiday itself.
@@ -106,10 +105,10 @@ class HolidayBase(Dict[date, str]):
 
     Example usage:
 
-    >>> from holidays import country_holidays
-    >>> us_holidays = country_holidays('US')
+    >>> from holidays import iso_3166_holidays
+    >>> us_holidays = iso_3166_holidays('US')
     # For a specific subdivisions (e.g. state or province):
-    >>> california_holidays = country_holidays('US', subdiv='CA')
+    >>> california_holidays = iso_3166_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
@@ -139,7 +138,7 @@ class HolidayBase(Dict[date, str]):
 
     List all 2020 holidays:
 
-    >>> us_holidays = country_holidays('US', years=2020)
+    >>> us_holidays = iso_3166_holidays('US', years=2020)
     >>> for day in us_holidays.items():
     ...     print(day)
     (datetime.date(2020, 1, 1), "New Year's Day")
@@ -156,7 +155,7 @@ class HolidayBase(Dict[date, str]):
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
+    >>> us_pr_holidays = iso_3166_holidays('US', subdiv='PR')
     >>> assert '2018-01-06' not in us_holidays
     >>> assert '2018-01-06' in us_pr_holidays
 
@@ -170,7 +169,7 @@ class HolidayBase(Dict[date, str]):
     * or a single date item (of one of the types above); ``'Holiday'`` will be
       used as a description:
 
-    >>> custom_holidays = country_holidays('US', years=2015)
+    >>> custom_holidays = iso_3166_holidays('US', years=2015)
     >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
     >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
     >>> custom_holidays.update(date(2015, 12, 25))
@@ -207,7 +206,9 @@ class HolidayBase(Dict[date, str]):
     """
 
     country: str
-    """The country's ISO 3166-1 alpha-2 code."""
+    """The entity's ISO 3166-1 alpha-2 code."""
+    name: str
+    """The entity's ISO 3166-1 name."""
     market: str
     """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: Tuple[str, ...] = ()
@@ -227,9 +228,6 @@ class HolidayBase(Dict[date, str]):
     special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
-    _deprecated_subdivisions: Tuple[str, ...] = ()
-    """Other subdivisions whose names are deprecated or aliases of the official
-    ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
     weekend_workdays: Set[date] = set()
@@ -251,8 +249,6 @@ class HolidayBase(Dict[date, str]):
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
-        prov: Optional[str] = None,  # Deprecated.
-        state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
         categories: Optional[CategoryArg] = None,
     ) -> None:
@@ -272,12 +268,6 @@ class HolidayBase(Dict[date, str]):
         :param subdiv:
             The subdivision (e.g. state or province) as a ISO 3166-2 code
             or its alias; not implemented for all countries (see documentation).
-
-        :param prov:
-            *deprecated* use subdiv instead.
-
-        :param state:
-            *deprecated* use subdiv instead.
 
         :param language:
             The language which the returned holiday names will be translated
@@ -307,7 +297,7 @@ class HolidayBase(Dict[date, str]):
             raise ValueError(f"Category is not supported: {', '.join(unknown_categories)}.")
 
         # Subdivision validation.
-        if subdiv := subdiv or prov or state:
+        if subdiv is not None:
             # Handle subdivisions passed as integers.
             if isinstance(subdiv, int):
                 subdiv = str(subdiv)
@@ -315,29 +305,10 @@ class HolidayBase(Dict[date, str]):
             subdivisions_aliases = tuple(sorted(self.subdivisions_aliases))
             # Unsupported subdivisions.
             if not isinstance(self, HolidaySum) and subdiv not in (
-                self.subdivisions + subdivisions_aliases + self._deprecated_subdivisions
+                self.subdivisions + subdivisions_aliases
             ):
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
-                )
-
-            # Deprecated arguments.
-            if prov_state := prov or state:
-                warnings.warn(
-                    "Arguments prov and state are deprecated, use "
-                    f"subdiv='{prov_state}' instead.",
-                    DeprecationWarning,
-                )
-
-            # Deprecated subdivisions.
-            if subdiv in self._deprecated_subdivisions:
-                warnings.warn(
-                    "This subdivision is deprecated and will be removed after "
-                    "Dec, 1 2023. The list of supported subdivisions: "
-                    f"{', '.join(sorted(self.subdivisions))}; "
-                    "the list of supported subdivisions aliases: "
-                    f"{', '.join(subdivisions_aliases)}.",
-                    DeprecationWarning,
                 )
 
         # Special holidays validation.
@@ -639,10 +610,10 @@ class HolidayBase(Dict[date, str]):
 
         parts = []
         if hasattr(self, "market"):
-            parts.append(f"holidays.entities.iso10383_holidays({self.market!r}")
+            parts.append(f"holidays.entities.iso_10383_holidays({self.market!r}")
             parts.append(")")
         elif hasattr(self, "country"):
-            parts.append(f"holidays.country_holidays({self.country!r}")
+            parts.append(f"holidays.iso_3166_holidays({self.country!r}")
             if self.subdiv:
                 parts.append(f", subdiv={self.subdiv!r}")
             parts.append(")")
@@ -822,10 +793,10 @@ class HolidayBase(Dict[date, str]):
         :param year:
             The year to populate with holidays.
 
-        >>> from holidays import country_holidays
-        >>> us_holidays = country_holidays('US', years=2020)
+        >>> from holidays import iso_3166_holidays
+        >>> us_holidays = iso_3166_holidays('US', years=2020)
         # to add new holidays to the object:
-        >>> us_holidays.update(country_holidays('US', years=2021))
+        >>> us_holidays.update(iso_3166_holidays('US', years=2021))
         """
 
         self._year = year
@@ -1123,9 +1094,9 @@ class HolidaySum(HolidayBase):
 
         Example:
 
-        >>> from holidays import country_holidays
-        >>> nafta_holidays = country_holidays('US', years=2020) + \
-country_holidays('CA') + country_holidays('MX')
+        >>> from holidays import iso_3166_holidays
+        >>> nafta_holidays = iso_3166_holidays('US', years=2020) + \
+iso_3166_holidays('CA') + iso_3166_holidays('MX')
         >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
         >>> from pprint import pprint
         >>> pprint(dates[:10], width=72)
