@@ -664,8 +664,8 @@ class HolidayBase(Dict[date, str]):
             # If there are multiple holidays on the same date
             # order their names alphabetically.
             holiday_names = set(self[key].split(HOLIDAY_NAME_DELIMITER))
-            for name in value.split(HOLIDAY_NAME_DELIMITER):
-                holiday_names.add(name)
+            for holiday_name in value.split(HOLIDAY_NAME_DELIMITER):
+                holiday_names.add(holiday_name)
             value = HOLIDAY_NAME_DELIMITER.join(sorted(holiday_names))
 
         dict.__setitem__(self, self.__keytransform__(key), value)
