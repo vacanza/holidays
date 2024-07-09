@@ -5,5 +5,5 @@ Supported Entities
    :toctree: _autosummary
    :recursive:
 
-   holidays.entities.iso3166
-   holidays.entities.iso10383
+   holidays.entities.ISO_3166
+   holidays.entities.ISO_10383

@@ -1,0 +1,149 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+
+"""
+References:
+    https://www.government.aw/information-public-services/hiring-people_47940/item/holidays_43823.html
+    https://www.overheid.aw/informatie-dienstverlening/ondernemen-en-werken-subthemas_46970/item/feestdagen_37375.html
+    https://www.gobierno.aw/informacion-tocante-servicio/haci-negoshi-y-traha-sub-topics_47789/item/dia-di-fiesta_41242.html
+    https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
+    https://www.arubatoday.com/we-celebrate-our-national-hero-betico-croes/
+    https://www.caribbeannewsglobal.com/carnival-monday-remains-a-festive-day-in-aruba/
+    https://www.aruba.com/us/calendar/national-anthem-and-flag-day
+"""
+
+from datetime import date
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import APR, AUG, _timedelta
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_base import HolidayBase
+
+
+class AwHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """A class to represent holidays for Aruba."""
+
+    country = "AW"
+    name = "Aruba"
+    default_language = "pap_AW"
+    supported_languages = ("en_US", "nl", "pap_AW", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        # AUG 1947: Autonomous State status in the Kingdom of the Netherlands.
+        if self._year <= 1946:
+            return None
+
+        # Aña Nobo.
+        # Status: In-Use.
+
+        # New Year's Day
+        self._add_new_years_day(tr("Aña Nobo"))
+
+        # Dia Di Betico.
+        # Status: In-Use.
+        # Started in 1989.
+
+        if self._year >= 1989:
+            # Betico Day
+            self._add_holiday_jan_25(tr("Dia di Betico"))
+
+        # Dialuna prome cu diaranson di shinish.
+        # Status: In-Use.
+        # Starts as a public holiday from 1956 onwards.
+        # Event cancelled but remain a holiday in 2021.
+        # Have its name changed from 2023 onwards.
+
+        if self._year >= 1956:
+            self._add_ash_monday(
+                # Carnival Monday
+                tr("Dialuna despues di Carnaval Grandi")
+                if self._year <= 2022
+                # Monday before Ash Wednesday
+                else tr("Dialuna prome cu diaranson di shinish")
+            )
+
+        # Dia di Himno y Bandera.
+        # Status: In-Use.
+        # Started in 1976.
+
+        if self._year >= 1976:
+            # National Anthem and Flag Day
+            self._add_holiday_mar_18(tr("Dia di Himno y Bandera"))
+
+        # Bierna Santo.
+        # Status: In-Use.
+
+        # Good Friday
+        self._add_good_friday(tr("Bierna Santo"))
+
+        # Di dos dia di Pasco di Resureccion.
+        # Status: In-Use.
+
+        # Easter Monday
+        self._add_easter_monday(tr("Di dos dia di Pasco di Resureccion"))
+
+        # Aña di La Reina/Aña di Rey/Dia di Rey.
+        # Status: In-Use.
+        # Started under Queen Wilhelmina in 1891.
+        # Queen Beatrix kept Queen Juliana's Birthday after her coronation.
+        # Switched to Aña di Rey in 2014 for King Willem-Alexander.
+        # Have its name changed again to Dia di Rey from 2021 onwards.
+
+        # King's / Queen's Day
+        name = (
+            # King's Day.
+            tr("Dia di Rey")
+            if self._year >= 2021
+            else (
+                tr("Aña di Rey")  # King's Day.
+                if self._year >= 2014
+                else tr("Aña di La Reina")  # Queen's Day.
+            )
+        )
+        if self._year >= 2014:
+            dt = (APR, 27)
+        elif self._year >= 1949:
+            dt = (APR, 30)
+        else:
+            dt = (AUG, 31)
+        if self._is_sunday(dt):
+            dt = _timedelta(date(self._year, *dt), -1 if self._year >= 1980 else +1)
+        self._add_holiday(name, dt)
+
+        # Dia di Labor/Dia di Obrero.
+        # Status: In-Use.
+
+        # Labor Day
+        self._add_labor_day(tr("Dia di Obrero"))
+
+        # Dia di Asuncion.
+        # Status: In-Use.
+
+        # Ascension Day
+        self._add_ascension_thursday(tr("Dia di Asuncion"))
+
+        # Pasco di Nacemento.
+        # Status: In-Use.
+
+        # Christmas Day
+        self._add_christmas_day(tr("Pasco di Nacemento"))
+
+        # Di dos dia di Pasco di Nacemento.
+        # Status: In-Use.
+
+        # Second Day of Christmas
+        self._add_christmas_day_two(tr("Di dos dia di Pasco di Nacemento"))

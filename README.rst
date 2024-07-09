@@ -105,11 +105,11 @@ Quick Start
 
     us_holidays = holidays.US()  # this is a dict-like object
     # the below is the same, but takes a string:
-    us_holidays = holidays.country_holidays('US')  # this is a dict-like object
+    us_holidays = holidays.iso_3166_holidays('US')  # this is a dict-like object
 
     nyse_holidays = holidays.NYSE()  # this is a dict-like object
     # the below is the same, but takes a string:
-    nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict-like object
+    nyse_holidays = holidays.iso_10383_holidays('NYSE')  # this is a dict-like object
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
@@ -128,7 +128,7 @@ Some holidays may be only present in parts of an entity:
 
 .. code-block:: python
 
-    us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
+    us_pr_holidays = holidays.iso_3166_holidays('US', subdiv='PR')
     '2018-01-06' in us_holidays     # False
     '2018-01-06' in us_pr_holidays  # True
 
@@ -171,761 +171,755 @@ All other default values are highlighted with bold:
 
 
 .. list-table::
-   :widths: 20 4 46 20 10
-   :header-rows: 1
-   :class: tight-table
+  :widths: 20 4 46 20 10
+  :header-rows: 1
+  :class: tight-table
 
-   * - Entity
-     - Code
-     - Subdivisions
-     - Supported Languages
-     - Supported Categories
-   * - Albania
-     - AL
-     -
-     -
-     -
-   * - Algeria
-     - DZ
-     -
-     - **ar**, en_US, fr
-     -
-   * - American Samoa
-     - AS
-     - Can also be loaded as country US, subdivision AS
-     -
-     - UNOFFICIAL
-   * - Andorra
-     - AD
-     - Parishes: 02, 03, 04, 05, 06, 07, 08
-     -
-     -
-   * - Angola
-     - AO
-     -
-     - en_US, **pt_AO**, uk
-     -
-   * - Argentina
-     - AR
-     -
-     - en_US, **es**, uk
-     -
-   * - Armenia
-     - AM
-     -
-     - en_US, **hy**
-     -
-   * - Aruba
-     - AW
-     -
-     - en_US, nl, **pap_AW**, uk
-     -
-   * - Australia
-     - AU
-     - States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)
-     -
-     - BANK, HALF_DAY
-   * - Austria
-     - AT
-     - States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)
-     - **de**, en_US, uk
-     - BANK
-   * - Azerbaijan
-     - AZ
-     -
-     - **az**, en_US, uk
-     - WORKDAY
-   * - Bahamas
-     - BS
-     -
-     -
-     -
-   * - Bahrain
-     - BH
-     -
-     - **ar**, en_US
-     -
-   * - Bangladesh
-     - BD
-     -
-     -
-     -
-   * - Barbados
-     - BB
-     -
-     -
-     -
-   * - Belarus
-     - BY
-     -
-     - **be**, en_US
-     -
-   * - Belgium
-     - BE
-     -
-     - de, en_US, fr, **nl**, uk
-     - BANK
-   * - Belize
-     - BZ
-     -
-     -
-     -
-   * - Bolivia
-     - BO
-     - Departments: B, C, H, L, N, O, P, S, T
-     - en_US, **es**, uk
-     -
-   * - Bosnia and Herzegovina
-     - BA
-     - Entities and district: BIH, BRC, SRP
-     - **bs**, en_US, sr, uk
-     -
-   * - Botswana
-     - BW
-     -
-     -
-     -
-   * - Brazil
-     - BR
-     - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
-     -
-     - OPTIONAL
-   * - Brunei
-     - BN
-     -
-     - en_US, **ms**, th
-     -
-   * - Bulgaria
-     - BG
-     -
-     - **bg**, en_US, uk
-     - SCHOOL
-   * - Burkina Faso
-     - BF
-     -
-     -
-     -
-   * - Burundi
-     - BI
-     -
-     -
-     -
-   * - Cambodia
-     - KH
-     -
-     - en_US, **km**, th
-     -
-   * - Cameroon
-     - CM
-     -
-     -
-     -
-   * - Canada
-     - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
-     - ar, **en_CA**, en_US, fr, th
-     - GOVERNMENT, OPTIONAL
-   * - Chad
-     - TD
-     -
-     -
-     -
-   * - Chile
-     - CL
-     - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
-     - en_US, **es**, uk
-     - BANK
-   * - China
-     - CN
-     -
-     - en_US, th, **zh_CN**, zh_TW
-     - HALF_DAY
-   * - Colombia
-     - CO
-     -
-     - en_US, **es**, uk
-     -
-   * - Costa Rica
-     - CR
-     -
-     - en_US, **es**, uk
-     - OPTIONAL
-   * - Croatia
-     - HR
-     -
-     - en_US, **hr**, uk
-     -
-   * - Cuba
-     - CU
-     -
-     - en_US, **es**, uk
-     -
-   * - Curacao
-     - CW
-     -
-     - en_US, nl, **pap_CW**, uk
-     -
-   * - Cyprus
-     - CY
-     -
-     - **el**, en_CY, en_US, uk
-     - BANK, OPTIONAL
-   * - Czechia
-     - CZ
-     -
-     - **cs**, en_US, sk, uk
-     -
-   * - Denmark
-     - DK
-     -
-     - **da**, en_US, uk
-     - OPTIONAL
-   * - Djibouti
-     - DJ
-     -
-     - ar, en_US, **fr**
-     -
-   * - Dominican Republic
-     - DO
-     -
-     - en_US, **es**, uk
-     -
-   * - Ecuador
-     - EC
-     -
-     - en_US, **es**, uk
-     -
-   * - Egypt
-     - EG
-     -
-     - **ar**, en_US
-     -
-   * - El Salvador
-     - SV
-     - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
-     -
-     -
-   * - Estonia
-     - EE
-     -
-     - en_US, **et**, uk
-     -
-   * - Eswatini
-     - SZ
-     -
-     -
-     -
-   * - Ethiopia
-     - ET
-     -
-     - **am**, ar, en_US
-     -
-   * - Finland
-     - FI
-     -
-     - en_US, **fi**, sv, uk
-     -
-   * - France
-     - FR
-     - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
-     - en_US, **fr**, uk
-     -
-   * - Gabon
-     - GA
-     -
-     -
-     -
-   * - Georgia
-     - GE
-     -
-     - en_US, **ka**, uk
-     - GOVERNMENT
-   * - Germany
-     - DE
-     - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
-     - **de**, en_US, uk
-     -
-   * - Ghana
-     - GH
-     -
-     -
-     -
-   * - Greece
-     - GR
-     -
-     - **el**, en_US, uk
-     - HALF_DAY
-   * - Greenland
-     - GL
-     -
-     - da, en_US, **kl**
-     - OPTIONAL
-   * - Guam
-     - GU
-     - Can also be loaded as country US, subdivision GU
-     -
-     - UNOFFICIAL
-   * - Guatemala
-     - GT
-     -
-     - en_US, **es**
-     -
-   * - Honduras
-     - HN
-     -
-     - en_US, **es**, uk
-     -
-   * - Hong Kong
-     - HK
-     -
-     -
-     - OPTIONAL
-   * - Hungary
-     - HU
-     -
-     - en_US, **hu**, uk
-     -
-   * - Iceland
-     - IS
-     -
-     - en_US, **is**, uk
-     -
-   * - India
-     - IN
-     - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
-     -
-     -
-   * - Indonesia
-     - ID
-     -
-     - en_US, **id**, uk
-     - GOVERNMENT
-   * - Iran
-     - IR
-     -
-     - en_US, **fa**
-     -
-   * - Ireland
-     - IE
-     -
-     -
-     -
-   * - Isle of Man
-     - IM
-     -
-     -
-     -
-   * - Israel
-     - IL
-     -
-     - en_US, **he**, uk
-     - OPTIONAL, SCHOOL
-   * - Italy
-     - IT
-     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
-     -
-     -
-   * - Jamaica
-     - JM
-     -
-     -
-     -
-   * - Japan
-     - JP
-     -
-     - en_US, **ja**, th
-     - BANK
-   * - Jersey
-     - JE
-     -
-     -
-     -
-   * - Jordan
-     - JO
-     -
-     - **ar**, en_US
-     -
-   * - Kazakhstan
-     - KZ
-     -
-     -
-     -
-   * - Kenya
-     - KE
-     -
-     -
-     -
-   * - Kuwait
-     - KW
-     -
-     - **ar**, en_US
-     -
-   * - Kyrgyzstan
-     - KG
-     -
-     -
-     -
-   * - Laos
-     - LA
-     -
-     - en_US, **lo**, th
-     - BANK, SCHOOL, WORKDAY
-   * - Latvia
-     - LV
-     -
-     - en_US, **lv**, uk
-     -
-   * - Lesotho
-     - LS
-     -
-     -
-     -
-   * - Liechtenstein
-     - LI
-     -
-     - **de**, en_US, uk
-     - BANK
-   * - Lithuania
-     - LT
-     -
-     - en_US, **lt**, uk
-     -
-   * - Luxembourg
-     - LU
-     -
-     - de, en_US, fr, **lb**, uk
-     -
-   * - Madagascar
-     - MG
-     -
-     - en_US, **mg**, uk
-     -
-   * - Malawi
-     - MW
-     -
-     -
-     -
-   * - Malaysia
-     - MY
-     - States and federal territories: 01 (Johor), 02 (Kedah), 03 (Kelantan), 04 (Melaka), 05 (Negeri Sembilan), 06 (Pahang), 07 (Pulau Pinang), 08 (Perak), 09 (Perlis), 10 (Selangor), 11 (Terengganu), 12 (Sabah), 13 (Sarawak), 14 (WP Kuala Lumpur), 15 (WP Labuan), 16 (WP Putrajaya)
-     - en_US, **ms_MY**
-     -
-   * - Maldives
-     - MV
-     -
-     -
-     -
-   * - Malta
-     - MT
-     -
-     - en_US, **mt**
-     -
-   * - Marshall Islands (the)
-     - MH
-     -
-     -
-     -
-   * - Mexico
-     - MX
-     -
-     - en_US, **es**, uk
-     -
-   * - Moldova
-     - MD
-     -
-     - en_US, **ro**, uk
-     -
-   * - Monaco
-     - MC
-     -
-     - en_US, **fr**, uk
-     -
-   * - Montenegro
-     - ME
-     -
-     -
-     -
-   * - Morocco
-     - MA
-     -
-     - **ar**, en_US, fr
-     -
-   * - Mozambique
-     - MZ
-     -
-     - en_US, **pt_MZ**, uk
-     -
-   * - Namibia
-     - NA
-     -
-     -
-     -
-   * - Netherlands
-     - NL
-     -
-     - en_US, **nl**, uk
-     - OPTIONAL
-   * - New Zealand
-     - NZ
-     - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
-     -
-     -
-   * - Nicaragua
-     - NI
-     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN**, MS, MT, NS, RI, SJ
-     - en_US, **es**, uk
-     -
-   * - Nigeria
-     - NG
-     -
-     -
-     -
-   * - Northern Mariana Islands (the)
-     - MP
-     - Can also be loaded as country US, subdivision MP
-     -
-     - UNOFFICIAL
-   * - North Macedonia
-     - MK
-     -
-     -
-     -
-   * - Norway
-     - NO
-     -
-     - en_US, **no**, uk
-     -
-   * - Pakistan
-     - PK
-     -
-     -
-     -
-   * - Palau
-     - PW
-     -
-     -
-     - ARMED_FORCES, HALF_DAY
-   * - Panama
-     - PA
-     -
-     -
-     -
-   * - Papua New Guinea
-     - PG
-     -
-     -
-     -
-   * - Paraguay
-     - PY
-     -
-     - en_US, **es**, uk
-     - GOVERNMENT
-   * - Peru
-     - PE
-     -
-     - en_US, **es**, uk
-     -
-   * - Philippines
-     - PH
-     -
-     -
-     -
-   * - Poland
-     - PL
-     -
-     - en_US, **pl**, uk
-     -
-   * - Portugal
-     - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
-     - en_US, **pt_PT**, uk
-     - OPTIONAL
-   * - Puerto Rico
-     - PR
-     - Can also be loaded as country US, subdivision PR
-     -
-     - UNOFFICIAL
-   * - Romania
-     - RO
-     -
-     - en_US, **ro**, uk
-     -
-   * - Russia
-     - RU
-     -
-     - en_US, **ru**
-     -
-   * - San Marino
-     - SM
-     -
-     -
-     -
-   * - Saudi Arabia
-     - SA
-     -
-     - **ar**, en_US
-     -
-   * - Serbia
-     - RS
-     -
-     - en_US, **sr**
-     -
-   * - Seychelles
-     - SC
-     -
-     - **en_SC**, en_US
-     -
-   * - Singapore
-     - SG
-     -
-     -
-     -
-   * - Slovakia
-     - SK
-     -
-     - en_US, **sk**, uk
-     - WORKDAY
-   * - Slovenia
-     - SI
-     -
-     - en_US, **sl**, uk
-     -
-   * - South Africa
-     - ZA
-     -
-     -
-     -
-   * - South Korea
-     - KR
-     -
-     - en_US, **ko**, th
-     - BANK
-   * - Spain
-     - ES
-     - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
-     - en_US, **es**, uk
-     -
-   * - Sweden
-     - SE
-     -
-     - en_US, **sv**, uk
-     -
-   * - Switzerland
-     - CH
-     - Cantons: AG, AI, AR, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
-     - **de**, en_US, fr, it, uk
-     - HALF_DAY, OPTIONAL
-   * - Taiwan
-     - TW
-     -
-     - en_US, th, zh_CN, **zh_TW**
-     -
-   * - Tanzania
-     - TZ
-     -
-     - en_US, **sw**
-     - BANK
-   * - Thailand
-     - TH
-     -
-     - en_US, **th**
-     - ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY
-   * - Timor Leste
-     - TL
-     -
-     - en_US, **pt_TL**, tet
-     - GOVERNMENT, WORKDAY
-   * - Tonga
-     - TO
-     -
-     - en_US, **to**
-     -
-   * - Tunisia
-     - TN
-     -
-     - **ar**, en_US
-     -
-   * - Turkey
-     - TR
-     -
-     - en_US, **tr**, uk
-     - HALF_DAY
-   * - Ukraine
-     - UA
-     -
-     - ar, en_US, **uk**
-     -
-   * - United Arab Emirates
-     - AE
-     -
-     - **ar**, en_US
-     -
-   * - United Kingdom
-     - GB
-     - Subdivisions: ENG, NIR, SCT, WLS
-     -
-     -
-   * - United States Minor Outlying Islands
-     - UM
-     - Can also be loaded as country US, subdivision UM
-     -
-     - UNOFFICIAL
-   * - United States of America (the)
-     - US
-     - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
-     -
-     - UNOFFICIAL
-   * - United States Virgin Islands (the)
-     -
-     - See Virgin Islands (U.S.)
-     -
-     - UNOFFICIAL
-   * - Uruguay
-     - UY
-     -
-     - en_US, **es**, uk
-     - BANK
-   * - Uzbekistan
-     - UZ
-     -
-     - en_US, uk, **uz**
-     -
-   * - Vanuatu
-     - VU
-     -
-     -
-     -
-   * - Vatican City
-     - VA
-     -
-     -
-     -
-   * - Venezuela
-     - VE
-     -
-     - en_US, **es**, uk
-     -
-   * - Vietnam
-     - VN
-     -
-     -
-     -
-   * - Virgin Islands (U.S.)
-     - VI
-     - Can also be loaded as country US, subdivision VI
-     -
-     - UNOFFICIAL
-   * - Zambia
-     - ZM
-     -
-     -
-     -
-   * - Zimbabwe
-     - ZW
-     -
-     -
-     -
-
+  * - Code
+    - Name
+    - Subdivisions
+    - Languages
+    - Categories
+  * - AD
+    - Andorra
+    - 02, 03, 04, 05, 06, 07, 08
+    -
+    -
+  * - AE
+    - United Arab Emirates
+    -
+    - **ar**, en_US
+    -
+  * - AL
+    - Albania
+    -
+    -
+    -
+  * - AM
+    - Armenia
+    -
+    - en_US, **hy**
+    -
+  * - AO
+    - Angola
+    -
+    - en_US, **pt_AO**, uk
+    -
+  * - AR
+    - Argentina
+    -
+    - en_US, **es**, uk
+    -
+  * - AS
+    - American Samoa
+    -
+    -
+    - UNOFFICIAL
+  * - AT
+    - Austria
+    - 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)
+    - **de**, en_US, uk
+    - BANK
+  * - AU
+    - Australia
+    - ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)
+    -
+    - BANK, HALF_DAY
+  * - AW
+    - Aruba
+    -
+    - en_US, nl, **pap_AW**, uk
+    -
+  * - AZ
+    - Azerbaijan
+    -
+    - **az**, en_US, uk
+    - WORKDAY
+  * - BA
+    - Bosnia and Herzegovina
+    - BIH, BRC, SRP
+    - **bs**, en_US, sr, uk
+    -
+  * - BB
+    - Barbados
+    -
+    -
+    -
+  * - BD
+    - Bangladesh
+    -
+    -
+    -
+  * - BE
+    - Belgium
+    -
+    - de, en_US, fr, **nl**, uk
+    - BANK
+  * - BF
+    - Burkina Faso
+    -
+    -
+    -
+  * - BG
+    - Bulgaria
+    -
+    - **bg**, en_US, uk
+    - SCHOOL
+  * - BH
+    - Bahrain
+    -
+    - **ar**, en_US
+    -
+  * - BI
+    - Burundi
+    -
+    -
+    -
+  * - BN
+    - Brunei Darussalam
+    -
+    - en_US, **ms**, th
+    -
+  * - BO
+    - Bolivia
+    - B, C, H, L, N, O, P, S, T
+    - en_US, **es**, uk
+    -
+  * - BR
+    - Brazil
+    - AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
+    -
+    - OPTIONAL
+  * - BS
+    - Bahamas
+    -
+    -
+    -
+  * - BW
+    - Botswana
+    -
+    -
+    -
+  * - BY
+    - Belarus
+    -
+    - **be**, en_US
+    -
+  * - BZ
+    - Belize
+    -
+    -
+    -
+  * - CA
+    - Canada
+    - AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
+    - ar, **en_CA**, en_US, fr, th
+    - GOVERNMENT, OPTIONAL
+  * - CH
+    - Switzerland
+    - AG, AI, AR, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+    - **de**, en_US, fr, it, uk
+    - HALF_DAY, OPTIONAL
+  * - CL
+    - Chile
+    - AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
+    - en_US, **es**, uk
+    - BANK
+  * - CM
+    - Cameroon
+    -
+    -
+    -
+  * - CN
+    - China
+    -
+    - en_US, th, **zh_CN**, zh_TW
+    - HALF_DAY
+  * - CO
+    - Colombia
+    -
+    - en_US, **es**, uk
+    -
+  * - CR
+    - Costa Rica
+    -
+    - en_US, **es**, uk
+    - OPTIONAL
+  * - CU
+    - Cuba
+    -
+    - en_US, **es**, uk
+    -
+  * - CW
+    - Curaçao
+    -
+    - en_US, nl, **pap_CW**, uk
+    -
+  * - CY
+    - Cyprus
+    -
+    - **el**, en_CY, en_US, uk
+    - BANK, OPTIONAL
+  * - CZ
+    - Czechia
+    -
+    - **cs**, en_US, sk, uk
+    -
+  * - DE
+    - Germany
+    - BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
+    - **de**, en_US, uk
+    -
+  * - DJ
+    - Djibouti
+    -
+    - ar, en_US, **fr**
+    -
+  * - DK
+    - Denmark
+    -
+    - **da**, en_US, uk
+    - OPTIONAL
+  * - DO
+    - Dominican Republic
+    -
+    - en_US, **es**, uk
+    -
+  * - DZ
+    - Algeria
+    -
+    - **ar**, en_US, fr
+    -
+  * - EC
+    - Ecuador
+    -
+    - en_US, **es**, uk
+    -
+  * - EE
+    - Estonia
+    -
+    - en_US, **et**, uk
+    -
+  * - EG
+    - Egypt
+    -
+    - **ar**, en_US
+    -
+  * - ES
+    - Spain
+    - AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
+    - en_US, **es**, uk
+    -
+  * - ET
+    - Ethiopia
+    -
+    - **am**, ar, en_US
+    -
+  * - FI
+    - Finland
+    -
+    - en_US, **fi**, sv, uk
+    -
+  * - FR
+    - France
+    - BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+    - en_US, **fr**, uk
+    -
+  * - GA
+    - Gabon
+    -
+    -
+    -
+  * - GB
+    - United Kingdom of Great Britain and Northern Ireland
+    - ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
+    -
+    -
+  * - GE
+    - Georgia
+    -
+    - en_US, **ka**, uk
+    - GOVERNMENT
+  * - GH
+    - Ghana
+    -
+    -
+    -
+  * - GL
+    - Greenland
+    -
+    - da, en_US, **kl**
+    - OPTIONAL
+  * - GR
+    - Greece
+    -
+    - **el**, en_US, uk
+    - HALF_DAY
+  * - GT
+    - Guatemala
+    -
+    - en_US, **es**
+    -
+  * - GU
+    - Guam
+    -
+    -
+    - UNOFFICIAL
+  * - HK
+    - Hong Kong
+    -
+    -
+    - OPTIONAL
+  * - HN
+    - Honduras
+    -
+    - en_US, **es**, uk
+    -
+  * - HR
+    - Croatia
+    -
+    - en_US, **hr**, uk
+    -
+  * - HU
+    - Hungary
+    -
+    - en_US, **hu**, uk
+    -
+  * - ID
+    - Indonesia
+    -
+    - en_US, **id**, uk
+    - GOVERNMENT
+  * - IE
+    - Ireland
+    -
+    -
+    - 
+  * - IL
+    - Israel
+    -
+    - en_US, **he**, uk
+    - OPTIONAL, SCHOOL
+  * - IM
+    - Isle of Man
+    -
+    -
+    -
+  * - IN
+    - India
+    - AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+    - 
+    -
+  * - IR
+    - Iran
+    -
+    - en_US, **fa**
+    -
+  * - IS
+    - Iceland
+    -
+    - en_US, **is**, uk
+    -
+  * - IT
+    - Italy
+    - AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV, Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
+    -
+    -
+  * - JE
+    - Jersey
+    -
+    -
+    -
+  * - JM
+    - Jamaica
+    -
+    -
+    -
+  * - JO
+    - Jordan
+    -
+    - **ar**, en_US
+    -
+  * - JP
+    - Japan
+    -
+    - en_US, **ja**, th
+    - BANK
+  * - KE
+    - Kenya
+    -
+    -
+    -
+  * - KG
+    - Kyrgyzstan
+    -
+    -
+    -
+  * - KH
+    - Cambodia
+    -
+    - en_US, **km**, th
+    -
+  * - KR
+    - South Korea
+    -
+    - en_US, **ko**, th
+    - BANK
+  * - KW
+    - Kuwait
+    -
+    - **ar**, en_US
+    -
+  * - KZ
+    - Kazakhstan
+    -
+    -
+    -
+  * - LA
+    - Laos
+    -
+    - en_US, **lo**, th
+    - BANK, SCHOOL, WORKDAY
+  * - LI
+    - Liechtenstein
+    -
+    - **de**, en_US, uk
+    - BANK
+  * - LS
+    - Lesotho
+    -
+    -
+    -
+  * - LT
+    - Lithuania
+    -
+    - en_US, **lt**, uk
+    -
+  * - LU
+    - Luxembourg
+    -
+    - de, en_US, fr, **lb**, uk
+    -
+  * - LV
+    - Latvia
+    -
+    - en_US, **lv**, uk
+    -
+  * - MA
+    - Morocco
+    -
+    - **ar**, en_US, fr
+    -
+  * - MC
+    - Monaco
+    -
+    - en_US, **fr**, uk
+    -
+  * - MD
+    - Moldova
+    -
+    - en_US, **ro**, uk
+    -
+  * - ME
+    - Montenegro
+    -
+    -
+    -
+  * - MG
+    - Madagascar
+    -
+    - en_US, **mg**, uk
+    -
+  * - MH
+    - Marshall Islands
+    -
+    -
+    -
+  * - MK
+    - North Macedonia
+    -
+    -
+    -
+  * - MP
+    - Northern Mariana Islands
+    -
+    -
+    - UNOFFICIAL
+  * - MT
+    - Malta
+    -
+    - en_US, **mt**
+    -
+  * - MV
+    - Maldives
+    -
+    -
+    -
+  * - MW
+    - Malawi
+    -
+    -
+    -
+  * - MX
+    - Mexico
+    -
+    - en_US, **es**, uk
+    -
+  * - MY
+    - Malaysia
+    - 01 (Johor), 02 (Kedah), 03 (Kelantan), 04 (Melaka), 05 (Negeri Sembilan), 06 (Pahang), 07 (Pulau Pinang), 08 (Perak), 09 (Perlis), 10 (Selangor), 11 (Terengganu), 12 (Sabah), 13 (Sarawak), 14 (WP Kuala Lumpur), 15 (WP Labuan), 16 (WP Putrajaya)
+    - en_US, **ms_MY**
+    -
+  * - MZ
+    - Mozambique
+    -
+    - en_US, **pt_MZ**, uk
+    -
+  * - NA
+    - Namibia
+    -
+    -
+    -
+  * - NG
+    - Nigeria
+    -
+    -
+    -
+  * - NI
+    - Nicaragua
+    - AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, MN, MS, MT, NS, RI, SJ
+    - en_US, **es**, uk
+    -
+  * - NL
+    - Netherlands
+    -
+    - en_US, **nl**, uk
+    - OPTIONAL
+  * - NO
+    - Norway
+    -
+    - en_US, **no**, uk
+    -
+  * - NZ
+    - New Zealand
+    - AUK (Auckland), BOP (Bay of Plenty), CAN (Canterbury), CIT (Chatham Islands), GIS (Gisborne), HKB (Hawke's Bay), MBH (Marlborough), MWT (Manawatū Whanganui), NSN (Nelson), NTL (Northland), OTA (Otago), STL (Southland), TAS (Tasman), TKI (Taranaki), WGN (Greater Wellington), WKO (Waikato), WTC (West Coast)
+    -
+    -
+  * - PA
+    - Panama
+    -
+    -
+    -
+  * - PE
+    - Peru
+    -
+    - en_US, **es**, uk
+    -
+  * - PG
+    - Papua New Guinea
+    -
+    -
+    -
+  * - PH
+    - Philippines
+    -
+    -
+    -
+  * - PK
+    - Pakistan
+    -
+    -
+    -
+  * - PL
+    - Poland
+    -
+    - en_US, **pl**, uk
+    -
+  * - PR
+    - Puerto Rico
+    -
+    -
+    - UNOFFICIAL
+  * - PT
+    - Portugal
+    - 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
+    - en_US, **pt_PT**, uk
+    - OPTIONAL
+  * - PW
+    - Palau
+    -
+    -
+    - ARMED_FORCES, HALF_DAY
+  * - PY
+    - Paraguay
+    -
+    - en_US, **es**, uk
+    - GOVERNMENT
+  * - RO
+    - Romania
+    -
+    - en_US, **ro**, uk
+    -
+  * - RS
+    - Serbia
+    -
+    - en_US, **sr**
+    -
+  * - RU
+    - Russian Federation
+    -
+    - en_US, **ru**
+    -
+  * - SA
+    - Saudi Arabia
+    -
+    - **ar**, en_US
+    -
+  * - SC
+    - Seychelles
+    -
+    - **en_SC**, en_US
+    -
+  * - SE
+    - Sweden
+    -
+    - en_US, **sv**, uk
+    -
+  * - SG
+    - Singapore
+    -
+    -
+    -
+  * - SI
+    - Slovenia
+    -
+    - en_US, **sl**, uk
+    -
+  * - SK
+    - Slovakia
+    -
+    - en_US, **sk**, uk
+    - WORKDAY
+  * - SM
+    - San Marino
+    -
+    -
+    -
+  * - SV
+    - El Salvador
+    - AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
+    -
+    -
+  * - SZ
+    - Eswatini
+    -
+    -
+    -
+  * - TD
+    - Chad
+    -
+    -
+    -
+  * - TH
+    - Thailand
+    -
+    - en_US, **th**
+    - ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY
+  * - TL
+    - Timor-Leste
+    -
+    - en_US, **pt_TL**, tet
+    - GOVERNMENT, WORKDAY
+  * - TN
+    - Tunisia
+    -
+    - **ar**, en_US
+    -
+  * - TO
+    - Tonga
+    -
+    - en_US, **to**
+    -
+  * - TR
+    - Türkiye
+    -
+    - en_US, **tr**, uk
+    - HALF_DAY
+  * - TW
+    - Taiwan
+    -
+    - en_US, th, zh_CN, **zh_TW**
+    -
+  * - TZ
+    - Tanzania
+    -
+    - en_US, **sw**
+    - BANK
+  * - UA
+    - Ukraine
+    -
+    - ar, en_US, **uk**
+    -
+  * - UM
+    - United States Minor Outlying Islands
+    - 
+    -
+    - UNOFFICIAL
+  * - US
+    - United States of America
+    - AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
+    -
+    - UNOFFICIAL
+  * - UY
+    - Uruguay
+    -
+    - en_US, **es**, uk
+    - BANK
+  * - UZ
+    - Uzbekistan
+    -
+    - en_US, uk, **uz**
+    -
+  * - VA
+    - Holy See
+    -
+    -
+    -
+  * - VE
+    - Venezuela
+    -
+    - en_US, **es**, uk
+    -
+  * - VI
+    - Virgin Islands (U.S.)
+    -
+    -
+    - UNOFFICIAL
+  * - VN
+    - Vietnam
+    -
+    -
+    -
+  * - VU
+    - Vanuatu
+    -
+    -
+    -
+  * - ZA
+    - South Africa
+    -
+    -
+    -
+  * - ZM
+    - Zambia
+    -
+    -
+    -
+  * - ZW
+    - Zimbabwe
+    -
+    -
+    -
 
 Available ISO 10383 Entities
 ============================

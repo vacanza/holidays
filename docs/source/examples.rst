@@ -29,13 +29,13 @@ It is more efficient to create the object only once:
    >>> date(2014, 1, 2) in us_holidays
    False
 
-You can use the :py:func:`country_holidays` or :py:func:`financial_holidays`
+You can use the :py:func:`iso_3166_holidays` or :py:func:`iso_10383_holidays`
 functions to create the object using a string with the country code:
 
 .. code-block:: python
 
-   >>> us_holidays = holidays.country_holidays('US')
-   >>> nyse_holidays = holidays.entities.iso10383_holidays('NYSE')
+   >>> us_holidays = holidays.iso_3166_holidays('US')
+   >>> nyse_holidays = holidays.entities.iso_10383_holidays('NYSE')
 
 Use ``years`` parameter to populate the holidays years you are interested in:
 
@@ -245,7 +245,7 @@ to override is :py:meth:`_populate`:
 
 .. code-block:: python
 
-   >>> from holidays.entities.iso3166 import US
+   >>> from holidays.entities.iso_3166 import US
    >>> class CorporateHolidays(US):
    >>>     def _populate(self, year):
    >>>         # Populate the holiday list with the default US holidays.
@@ -254,11 +254,11 @@ to override is :py:meth:`_populate`:
    >>>         self.pop_named("New Year's Day")
    >>>         # Add Ninja Turtle Day.
    >>>         self._add_holiday_jul_13("Ninja Turtle Day")
-   >>> date(2014, 1, 1) in holidays.country_holidays(country="US")
+   >>> date(2014, 1, 1) in holidays.iso_3166_holidays(country="US")
    True
    >>> date(2014, 1, 1) in CorporateHolidays()
    False
-   >>> date(2014, 7, 13) in holidays.country_holidays(country="US")
+   >>> date(2014, 7, 13) in holidays.iso_3166_holidays(country="US")
    False
    >>> date(2014, 7, 13) in CorporateHolidays()
    True
@@ -318,10 +318,10 @@ holiday object:
 
 .. code-block:: python
 
-   >>> from holidays import country_holidays
-   >>> us_holidays = country_holidays('US', years=2020)
+   >>> from holidays import iso_3166_holidays
+   >>> us_holidays = iso_3166_holidays('US', years=2020)
    # to add new years of holidays to the object:
-   >>> us_holidays.update(country_holidays('US', years=2021))
+   >>> us_holidays.update(iso_3166_holidays('US', years=2021))
 
 
 

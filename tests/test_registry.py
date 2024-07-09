@@ -11,102 +11,81 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
-import inspect
-import warnings
 from unittest import TestCase
 
 import pytest
 
 import holidays
-from holidays import registry
-from holidays.entities import iso3166, iso10383
+from holidays.registry import ISO_10383, ISO_3166, EntityLoader
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestEntityLoader(TestCase):
+    def test_get_entity_codes(self):
+        registry_container = {"A": ("A", "AA", "AAA"), "B": ("B", "BB")}
+
+        codes = set(
+            EntityLoader._get_entity_codes(container=registry_container, include_aliases=False)
+        )
+        codes_aliases = set(
+            EntityLoader._get_entity_codes(container=registry_container, include_aliases=True)
+        )
+
+        for item in ("A", "B"):
+            self.assertIn(item, codes)
+            self.assertIn(item, codes_aliases)
+
+        for item in ("AA", "AAA", "BB"):
+            self.assertNotIn(item, codes)
+            self.assertIn(item, codes_aliases)
+
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
-    def test_countries_imports(self):
-        warnings.simplefilter("ignore")
+    def test_iso_3166_imports(self):
+        for code, aliases in ISO_3166.items():
+            module = importlib.import_module(f"holidays.entities.ISO_3166.{code}")
+            entity_cls = getattr(module, f"{code.capitalize()}Holidays", None)
+            self.assertIsNotNone(entity_cls, code)
 
-        loader_entities = set()
-        for module, entities in registry.COUNTRIES.items():
-            module = importlib.import_module(f"holidays.entities.iso3166.{module}")
-            for entity in entities:
-                countries_cls = getattr(iso3166, entity)
-                loader_cls = getattr(holidays, entity)
-                module_cls = getattr(module, entity)
+            for alias in aliases:
+                loader_cls = getattr(holidays, alias, None)
+                self.assertIsNotNone(loader_cls, alias)
+                self.assertIsInstance(loader_cls, EntityLoader)
+                self.assertIsInstance(loader_cls(), entity_cls)
 
-                self.assertIsNotNone(countries_cls, entity)
-                self.assertIsNotNone(loader_cls, entity)
-                self.assertIsNotNone(module_cls, entity)
-                self.assertEqual(countries_cls, module_cls)
-                self.assertIsInstance(loader_cls, registry.EntityLoader)
-                self.assertIsInstance(loader_cls(), countries_cls)
-                self.assertIsInstance(loader_cls(), module_cls)
-
-                loader_entities.add(loader_cls.__name__)
-
-        countries_entities = set(
-            entity[0] for entity in inspect.getmembers(iso3166, inspect.isclass)
-        )
+    def test_iso_3166_str(self):
         self.assertEqual(
-            countries_entities,
-            loader_entities,
-            "Registry entities and countries entities don't match: %s"
-            % countries_entities.difference(loader_entities),
-        )
-
-    def test_country_str(self):
-        self.assertEqual(
-            str(registry.EntityLoader("holidays.entities.iso3166.united_states.US")),
-            "A lazy loader for <class 'holidays.entities.iso3166.united_states.US'>. "
+            str(EntityLoader("holidays.entities.ISO_3166.US.UsHolidays")),
+            "A lazy loader for <class 'holidays.entities.ISO_3166.US.UsHolidays'>. "
             "For inheritance please use the "
-            "'holidays.entities.iso3166.united_states.US' class directly.",
+            "'holidays.entities.ISO_3166.US.UsHolidays' class directly.",
         )
 
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
-    def test_financial_imports(self):
-        loader_entities = set()
-        for module, entities in registry.FINANCIAL.items():
-            module = importlib.import_module(f"holidays.entities.iso10383.{module}")
-            for entity in entities:
-                financial_cls = getattr(iso10383, entity)
-                loader_cls = getattr(holidays, entity)
-                module_cls = getattr(module, entity)
+    def test_iso_10383_imports(self):
+        for code, aliases in ISO_10383.items():
+            module = importlib.import_module(f"holidays.entities.ISO_10383.{code}")
+            entity_cls = getattr(module, f"{code.capitalize()}Holidays", None)
+            self.assertIsNotNone(entity_cls, code)
 
-                self.assertIsNotNone(financial_cls, entity)
-                self.assertIsNotNone(loader_cls, entity)
-                self.assertIsNotNone(module_cls, entity)
-                self.assertEqual(financial_cls, module_cls)
-                self.assertIsInstance(loader_cls, registry.EntityLoader)
-                self.assertIsInstance(loader_cls(), financial_cls)
-                self.assertIsInstance(loader_cls(), module_cls)
+            for alias in aliases:
+                loader_cls = getattr(holidays, alias)
+                self.assertIsNotNone(loader_cls, alias)
+                self.assertIsInstance(loader_cls, EntityLoader)
+                self.assertIsInstance(loader_cls(), entity_cls)
 
-                loader_entities.add(loader_cls.__name__)
-
-        financial_entities = set(
-            entity[0] for entity in inspect.getmembers(iso10383, inspect.isclass)
-        )
+    def test_iso_10383_str(self):
         self.assertEqual(
-            financial_entities,
-            loader_entities,
-            "Registry entities and financial entities don't match: %s"
-            % financial_entities.difference(loader_entities),
-        )
-
-    def test_financial_str(self):
-        self.assertEqual(
-            str(registry.EntityLoader("holidays.entities.iso10383.ny_stock_exchange.NYSE")),
+            str(EntityLoader("holidays.entities.ISO_10383.XNYS.XnysHolidays")),
             "A lazy loader for "
-            "<class 'holidays.entities.iso10383.ny_stock_exchange.NYSE'>. "
+            "<class 'holidays.entities.ISO_10383.XNYS.XnysHolidays'>. "
             "For inheritance please use the "
-            "'holidays.entities.iso10383.ny_stock_exchange.NYSE' class directly.",
+            "'holidays.entities.ISO_10383.XNYS.XnysHolidays' class directly.",
         )
 
     def test_inheritance(self):
@@ -116,14 +95,24 @@ class TestEntityLoader(TestCase):
 
             return SubClass()
 
-        for cls in (holidays.UnitedStates, holidays.US, holidays.USA):
+        for cls in (holidays.US, holidays.USA):
             self.assertIsInstance(cls, holidays.registry.EntityLoader)
             with self.assertRaises(TypeError):
                 create_instance(cls)
 
-        for cls in (
-            holidays.entities.iso3166.UnitedStates,
-            holidays.entities.iso3166.US,
-            holidays.entities.iso3166.USA,
-        ):
-            self.assertIsInstance(create_instance(cls), holidays.entities.iso3166.UnitedStates)
+        self.assertIsInstance(
+            create_instance(holidays.entities.ISO_3166.US.UsHolidays),
+            holidays.entities.ISO_3166.US.UsHolidays,
+        )
+
+    def test_load(self):
+        scope = {}
+
+        EntityLoader.load(prefix="invalid", scope=scope)
+        self.assertDictEqual(scope, {})
+
+        EntityLoader.load(prefix="ISO_10383", scope=scope)
+        self.assertIn("IFEU", scope)
+
+        EntityLoader.load(prefix="ISO_3166", scope=scope)
+        self.assertIn("UA", scope)

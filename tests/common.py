@@ -13,7 +13,6 @@
 
 import os
 import sys
-import warnings
 from datetime import date
 from typing import Generator
 
@@ -21,6 +20,7 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.helpers import _normalize_arguments
 
 PYTHON_LATEST_SUPPORTED_VERSION = (3, 12)
 PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
@@ -30,43 +30,50 @@ class TestCase:
     """Base class for python-holidays test cases."""
 
     @classmethod
-    def setUpClass(cls, test_class=None, years=None, years_non_observed=None):
+    def setUpClass(
+        cls, test_class=None, categories=None, language=None, years=None, years_non_observed=None
+    ):
         super().setUpClass()
 
         if test_class is None:
             return None
 
         cls.test_class = test_class
+        cls.language = language
 
-        if (
-            getattr(test_class, "default_language") is not None
+        default_language = getattr(test_class, "default_language")
+        if default_language is not None:
+            default_language_length = len(default_language)
             # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
-            and 2 > len(test_class.default_language) > 6
-        ):
-            raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
+            if default_language_length < 2 or default_language_length > 6:
+                raise ValueError(f"`{test_class.__name__}.default_language` value is invalid.")
 
-        if getattr(test_class, "default_language") is not None:
-            cls.set_language(test_class, test_class.default_language)
+            cls._set_language(test_class, default_language)
 
-        if years:
+        if years is not None:
             cls.holidays = test_class(years=years)
-        if years_non_observed:
+        if years_non_observed is not None:
             cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
+
+        if categories is not None:
+            for category in _normalize_arguments(str, categories):
+                setattr(
+                    cls,
+                    f"{category.lower()}_holidays",
+                    test_class(categories=category, years=years),
+                )
 
     def setUp(self):
         super().setUp()
 
-        if getattr(self.test_class, "default_language") is not None:
-            self.set_language(self.test_class.default_language)
+        # if getattr(self.test_class, "default_language") is not None:
+        #     self._set_language(self.test_class.default_language)
 
         if not hasattr(self, "holidays"):
             self.holidays = self.test_class()
 
         if not hasattr(self, "holidays_non_observed"):
             self.holidays_non_observed = self.test_class(observed=False)
-
-    def set_language(self, language):
-        os.environ["LANGUAGE"] = language
 
     def _parse_arguments(
         self, args, expand_items=True, instance_name="holidays", raise_on_empty=True
@@ -113,6 +120,9 @@ class TestCase:
 
         return instance, items
 
+    def _set_language(self, language):
+        os.environ["LANGUAGE"] = language
+
     def _verify_type(self, holidays):
         self.assertTrue(
             issubclass(holidays.__class__, HolidayBase),
@@ -130,15 +140,6 @@ class TestCase:
         for alias in aliases:
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
-
-    def assertDeprecatedSubdivisions(self, message):  # noqa: N802
-        warnings.simplefilter("always", category=DeprecationWarning)
-        for subdiv in self.test_class._deprecated_subdivisions:
-            with warnings.catch_warnings(record=True) as ctx:
-                self.test_class(subdiv=subdiv)
-                warning = ctx[0]
-                self.assertTrue(issubclass(warning.category, DeprecationWarning))
-                self.assertIn(message, str(warning.message))
 
     # Holiday.
     def _assertHoliday(self, instance_name, *args):  # noqa: N802
@@ -317,17 +318,11 @@ class TestCase:
             "Please make sure all holiday names are localized: " f"{actual_holidays}",
         )
 
-    def assertLocalizedHolidays(self, *args):  # noqa: N802
+    def assertLocalizedHolidays(self, *localized_holidays):  # noqa: N802
         """Helper: assert localized holidays match expected names."""
-        arg = args[0]
-        is_string = isinstance(arg, str)
-
-        language = arg if is_string else None
-        localized_holidays = args[1:] if is_string else args
-
-        if language:
-            self.set_language(language)
-        for language in (language, "invalid", ""):
+        if self.language:
+            self._set_language(self.language)
+        for language in (self.language, "invalid", ""):
             self._assertLocalizedHolidays(localized_holidays, language)
 
 
