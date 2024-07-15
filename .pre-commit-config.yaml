@@ -19,7 +19,7 @@ repos:
           - rst
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.0
+    rev: v0.5.2
     hooks:
       - id: ruff
       - id: ruff-format
@@ -54,7 +54,7 @@ repos:
           - --show-error-codes
 
   - repo: https://github.com/myint/rstcheck
-    rev: v6.2.0
+    rev: v6.2.4
     hooks:
       - id: rstcheck
         additional_dependencies:

@@ -13,7 +13,8 @@
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import JUN, SEP
+from holidays.calendars.gregorian import JUN, SEP, DEC
+from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -29,27 +30,32 @@ from holidays.observed_holiday_base import (
 class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-    - https://www.feriados.cl
-    - http://www.feriadoschilenos.cl/ (excellent history)
-    - https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
-    - Law 2.977 (established official Chile holidays in its current form)
-    - Law 20.983 (Day after New Year's Day, if it's a Sunday)
-    - Law 19.668 (floating Monday holiday)
-    - Law 19.668 (Corpus Christi)
-    - Law 2.200, (Labour Day)
-    - Law 18.018 (Labour Day renamed)
-    - Law 16.840, Law 18.432 (Saint Peter and Saint Paul)
-    - Law 20.148 (Day of Virgin of Carmen)
-    - Law 18.026 (Day of National Liberation)
-    - Law 19.588, Law 19.793 (Day of National Unity)
-    - Law 20.983 (National Holiday Friday preceding Independence Day)
-    - Law 20.215 (National Holiday Monday preceding Independence Day)
-    - Law 20.215 (National Holiday Friday following Army Day)
-    - Decree-law 636, Law 8.223
-    - Law 3.810 (Columbus Day)
-    - Law 20.299 (National Day of the Evangelical and Protestant Churches)
-    - Law 20.663 (Región de Arica y Parinacota)
-    - Law 20.678 (Región de Ñuble)
+        - https://www.feriados.cl
+        - `Excellent history of Chile holidays <http://www.feriadoschilenos.cl>`_
+        - https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+        - Law 2.977 (established official Chile holidays in its current form)
+        - Law 20.983 (Day after New Year's Day, if it's a Sunday)
+        - Law 19.668 (floating Monday holiday)
+        - Law 19.668 (Corpus Christi)
+        - Law 2.200, (Labour Day)
+        - Law 18.018 (Labour Day renamed)
+        - Law 16.840, Law 18.432 (Saint Peter and Saint Paul)
+        - Law 20.148 (Day of Virgin of Carmen)
+        - Law 18.026 (Day of National Liberation)
+        - Law 19.588, Law 19.793 (Day of National Unity)
+        - Law 20.983 (National Holiday Friday preceding Independence Day)
+        - Law 20.215 (National Holiday Monday preceding Independence Day)
+        - Law 20.215 (National Holiday Friday following Army Day)
+        - Decree-law 636, Law 8.223
+        - Law 3.810 (Columbus Day)
+        - Law 20.299 (National Day of the Evangelical and Protestant Churches)
+        - Law 20.663 (Región de Arica y Parinacota)
+        - Law 20.678 (Región de Ñuble)
+        - `Law 19.656 (Dec 31, 1999 holiday) <https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15>`_
+        - `Law 12.051 (bank holidays Jun 30 and Dec 31) <https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12>`_
+        - `Decree-law 1.171 (eliminate Jun 30) <https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05>`_
+        - `Law 19.528 (eliminate Dec 31) <https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04>`_
+        - `Law 19.559 (restore Dec 31) <https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16>`_
     """
 
     country = "CL"
@@ -72,6 +78,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         "TA",
         "VS",
     )
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -209,6 +216,15 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 tr("Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)")
             )
 
+    def _populate_bank_holidays(self):
+        # Bank Holiday.
+        name = tr("Feriado bancario")
+        if 1957 <= self._year <= 1975:
+            self._add_holiday_jun_30(name)
+
+        if self._year >= 1956 and self._year != 1997:
+            self._add_holiday_dec_31(name)
+
     @property
     def _summer_solstice_date(self) -> Tuple[int, int]:
         day = 20
@@ -228,7 +244,10 @@ class CHL(Chile):
 
 
 class ChileStaticHolidays:
+    # National Holiday.
+    national_holiday = tr("Feriado nacional")
+
     special_public_holidays = {
-        # National Holiday.
-        2022: (SEP, 16, tr("Feriado nacional")),
+        1999: (DEC, 31, national_holiday),
+        2022: (SEP, 16, national_holiday),
     }
