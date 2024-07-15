@@ -12,172 +12,168 @@
 
 import importlib
 from threading import RLock
-from typing import Any, Dict, Iterable, Optional, Tuple, Union
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 from holidays.holiday_base import HolidayBase
 
 RegistryDict = Dict[str, Tuple[str, ...]]
 
-COUNTRIES: RegistryDict = {
-    "albania": ("Albania", "AL", "ALB"),
-    "algeria": ("Algeria", "DZ", "DZA"),
-    "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
-    "andorra": ("Andorra", "AD", "AND"),
-    "angola": ("Angola", "AO", "AGO"),
-    "argentina": ("Argentina", "AR", "ARG"),
-    "armenia": ("Armenia", "AM", "ARM"),
-    "aruba": ("Aruba", "AW", "ABW"),
-    "australia": ("Australia", "AU", "AUS"),
-    "austria": ("Austria", "AT", "AUT"),
-    "azerbaijan": ("Azerbaijan", "AZ", "AZE"),
-    "bahamas": ("Bahamas", "BS", "BHS"),
-    "bahrain": ("Bahrain", "BH", "BAH"),
-    "bangladesh": ("Bangladesh", "BD", "BGD"),
-    "barbados": ("Barbados", "BB", "BRB"),
-    "belarus": ("Belarus", "BY", "BLR"),
-    "belgium": ("Belgium", "BE", "BEL"),
-    "belize": ("Belize", "BZ", "BLZ"),
-    "bolivia": ("Bolivia", "BO", "BOL"),
-    "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
-    "botswana": ("Botswana", "BW", "BWA"),
-    "brazil": ("Brazil", "BR", "BRA"),
-    "brunei": ("Brunei", "BN", "BRN"),
-    "bulgaria": ("Bulgaria", "BG", "BLG"),
-    "burkina_faso": ("BurkinaFaso", "BF", "BFA"),
-    "burundi": ("Burundi", "BI", "BDI"),
-    "cambodia": ("Cambodia", "KH", "KHM"),
-    "cameroon": ("Cameroon", "CM", "CMR"),
-    "canada": ("Canada", "CA", "CAN"),
-    "chad": ("Chad", "TD", "TCD"),
-    "chile": ("Chile", "CL", "CHL"),
-    "china": ("China", "CN", "CHN"),
-    "colombia": ("Colombia", "CO", "COL"),
-    "costa_rica": ("CostaRica", "CR", "CRI"),
-    "croatia": ("Croatia", "HR", "HRV"),
-    "cuba": ("Cuba", "CU", "CUB"),
-    "curacao": ("Curacao", "CW", "CUW"),
-    "cyprus": ("Cyprus", "CY", "CYP"),
-    "czechia": ("Czechia", "CZ", "CZE"),
-    "denmark": ("Denmark", "DK", "DNK"),
-    "djibouti": ("Djibouti", "DJ", "DJI"),
-    "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
-    "ecuador": ("Ecuador", "EC", "ECU"),
-    "egypt": ("Egypt", "EG", "EGY"),
-    "jordan": ("Jordan", "JO", "JOR"),
-    "el_salvador": ("ElSalvador", "SV", "SLV"),
-    "estonia": ("Estonia", "EE", "EST"),
-    "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
-    "ethiopia": ("Ethiopia", "ET", "ETH"),
-    "finland": ("Finland", "FI", "FIN"),
-    "france": ("France", "FR", "FRA"),
-    "gabon": ("Gabon", "GA", "GAB"),
-    "georgia": ("Georgia", "GE", "GEO"),
-    "germany": ("Germany", "DE", "DEU"),
-    "ghana": ("Ghana", "GH", "GHA"),
-    "greece": ("Greece", "GR", "GRC"),
-    "greenland": ("Greenland", "GL", "GRL"),
-    "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
-    "guatemala": ("Guatemala", "GT", "GUA"),
-    "honduras": ("Honduras", "HN", "HND"),
-    "hongkong": ("HongKong", "HK", "HKG"),
-    "hungary": ("Hungary", "HU", "HUN"),
-    "iceland": ("Iceland", "IS", "ISL"),
-    "india": ("India", "IN", "IND"),
-    "indonesia": ("Indonesia", "ID", "IDN"),
-    "iran": ("Iran", "IR", "IRN"),
-    "ireland": ("Ireland", "IE", "IRL"),
-    "isle_of_man": ("IsleOfMan", "IM", "IMN"),
-    "israel": ("Israel", "IL", "ISR"),
-    "italy": ("Italy", "IT", "ITA"),
-    "jamaica": ("Jamaica", "JM", "JAM"),
-    "japan": ("Japan", "JP", "JPN"),
-    "jersey": ("Jersey", "JE", "JEY"),
-    "kazakhstan": ("Kazakhstan", "KZ", "KAZ"),
-    "kenya": ("Kenya", "KE", "KEN"),
-    "kuwait": ("Kuwait", "KW", "KWT"),
-    "kyrgyzstan": ("Kyrgyzstan", "KG", "KGZ"),
-    "laos": ("Laos", "LA", "LAO"),
-    "latvia": ("Latvia", "LV", "LVA"),
-    "lesotho": ("Lesotho", "LS", "LSO"),
-    "liechtenstein": ("Liechtenstein", "LI", "LIE"),
-    "lithuania": ("Lithuania", "LT", "LTU"),
-    "luxembourg": ("Luxembourg", "LU", "LUX"),
-    "madagascar": ("Madagascar", "MG", "MDG"),
-    "malawi": ("Malawi", "MW", "MWI"),
-    "malaysia": ("Malaysia", "MY", "MYS"),
-    "maldives": ("Maldives", "MV", "MDV"),
-    "malta": ("Malta", "MT", "MLT"),
-    "marshall_islands": ("MarshallIslands", "MH", "MHL", "HolidaysMH"),
-    "mexico": ("Mexico", "MX", "MEX"),
-    "moldova": ("Moldova", "MD", "MDA"),
-    "monaco": ("Monaco", "MC", "MCO"),
-    "montenegro": ("Montenegro", "ME", "MNE"),
-    "morocco": ("Morocco", "MA", "MOR"),
-    "mozambique": ("Mozambique", "MZ", "MOZ"),
-    "namibia": ("Namibia", "NA", "NAM"),
-    "netherlands": ("Netherlands", "NL", "NLD"),
-    "new_zealand": ("NewZealand", "NZ", "NZL"),
-    "nicaragua": ("Nicaragua", "NI", "NIC"),
-    "nigeria": ("Nigeria", "NG", "NGA"),
-    "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
-    "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
-    "norway": ("Norway", "NO", "NOR"),
-    "pakistan": ("Pakistan", "PK", "PAK"),
-    "palau": ("Palau", "PW", "PLW"),
-    "panama": ("Panama", "PA", "PAN"),
-    "papua_new_guinea": ("PapuaNewGuinea", "PG", "PNG"),
-    "paraguay": ("Paraguay", "PY", "PRY"),
-    "peru": ("Peru", "PE", "PER"),
-    "philippines": ("Philippines", "PH", "PHL"),
-    "poland": ("Poland", "PL", "POL"),
-    "portugal": ("Portugal", "PT", "PRT"),
-    "puerto_rico": ("PuertoRico", "PR", "PRI", "HolidaysPR"),
-    "romania": ("Romania", "RO", "ROU"),
-    "russia": ("Russia", "RU", "RUS"),
-    "san_marino": ("SanMarino", "SM", "SMR"),
-    "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
-    "serbia": ("Serbia", "RS", "SRB"),
-    "seychelles": ("Seychelles", "SC", "SYC"),
-    "singapore": ("Singapore", "SG", "SGP"),
-    "slovakia": ("Slovakia", "SK", "SVK"),
-    "slovenia": ("Slovenia", "SI", "SVN"),
-    "south_africa": ("SouthAfrica", "ZA", "ZAF"),
-    "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
-    "spain": ("Spain", "ES", "ESP"),
-    "sweden": ("Sweden", "SE", "SWE"),
-    "switzerland": ("Switzerland", "CH", "CHE"),
-    "taiwan": ("Taiwan", "TW", "TWN"),
-    "tanzania": ("Tanzania", "TZ", "TZA"),
-    "thailand": ("Thailand", "TH", "THA"),
-    "timor_leste": ("TimorLeste", "TL", "TLS"),
-    "tonga": ("Tonga", "TO", "TON"),
-    "tunisia": ("Tunisia", "TN", "TUN"),
-    "turkey": ("Turkey", "TR", "TUR"),
-    "ukraine": ("Ukraine", "UA", "UKR"),
-    "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
-    "united_kingdom": ("UnitedKingdom", "GB", "GBR", "UK"),
-    "united_states_minor_outlying_islands": (
-        "UnitedStatesMinorOutlyingIslands",
-        "UM",
-        "UMI",
-        "HolidaysUM",
-    ),
-    "united_states_virgin_islands": ("UnitedStatesVirginIslands", "VI", "VIR", "HolidaysVI"),
-    "united_states": ("UnitedStates", "US", "USA"),
-    "uruguay": ("Uruguay", "UY", "URY"),
-    "uzbekistan": ("Uzbekistan", "UZ", "UZB"),
-    "vanuatu": ("Vanuatu", "VU", "VTU"),
-    "vatican_city": ("VaticanCity", "VA", "VAT"),
-    "venezuela": ("Venezuela", "VE", "VEN"),
-    "vietnam": ("Vietnam", "VN", "VNM"),
-    "zambia": ("Zambia", "ZM", "ZMB"),
-    "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
+ISO_3166: RegistryDict = {
+    "AD": ("AD", "AND"),  # Andorra
+    "AE": ("AE", "ARE"),  # United Arab Emirates
+    "AL": ("AL", "ALB"),  # Albania
+    "AM": ("AM", "ARM"),  # Armenia
+    "AO": ("AO", "AGO"),  # Angola
+    "AR": ("AR", "ARG"),  # Argentina
+    "AS": ("AS", "ASM"),  # AmericanSamoa
+    "AT": ("AT", "AUT"),  # Austria
+    "AU": ("AU", "AUS"),  # Australia
+    "AW": ("AW", "ABW"),  # Aruba
+    "AZ": ("AZ", "AZE"),  # Azerbaijan
+    "BA": ("BA", "BIH"),  # Bosnia Herzegovina
+    "BB": ("BB", "BRB"),  # Barbados
+    "BD": ("BD", "BGD"),  # Bangladesh
+    "BE": ("BE", "BEL"),  # Belgium
+    "BF": ("BF", "BFA"),  # Burkina Faso
+    "BG": ("BG", "BLG"),  # Bulgaria
+    "BH": ("BH", "BAH"),  # Bahrain
+    "BI": ("BI", "BDI"),  # Burundi
+    "BN": ("BN", "BRN"),  # Brunei
+    "BO": ("BO", "BOL"),  # Bolivia
+    "BR": ("BR", "BRA"),  # Brazil
+    "BS": ("BS", "BHS"),  # Bahamas
+    "BW": ("BW", "BWA"),  # Botswana
+    "BY": ("BY", "BLR"),  # Belarus
+    "BZ": ("BZ", "BLZ"),  # Belize
+    "CA": ("CA", "CAN"),  # Canada
+    "CH": ("CH", "CHE"),  # Switzerland
+    "CL": ("CL", "CHL"),  # Chile
+    "CM": ("CM", "CMR"),  # Cameroon
+    "CN": ("CN", "CHN"),  # China
+    "CO": ("CO", "COL"),  # Colombia
+    "CR": ("CR", "CRI"),  # Costa Rica
+    "CU": ("CU", "CUB"),  # Cuba
+    "CW": ("CW", "CUW"),  # Curacao
+    "CY": ("CY", "CYP"),  # Cyprus
+    "CZ": ("CZ", "CZE"),  # Czechia
+    "DE": ("DE", "DEU"),  # Germany
+    "DJ": ("DJ", "DJI"),  # Djibouti
+    "DK": ("DK", "DNK"),  # Denmark
+    "DO": ("DO", "DOM"),  # Dominican Republic
+    "DZ": ("DZ", "DZA"),  # Algeria
+    "EC": ("EC", "ECU"),  # Ecuador
+    "EE": ("EE", "EST"),  # Estonia
+    "EG": ("EG", "EGY"),  # Egypt
+    "ES": ("ES", "ESP"),  # Spain
+    "ET": ("ET", "ETH"),  # Ethiopia
+    "FI": ("FI", "FIN"),  # Finland
+    "FR": ("FR", "FRA"),  # France
+    "GA": ("GA", "GAB"),  # Gabon
+    "GB": ("GB", "GBR", "UK"),  # United Kingdom
+    "GE": ("GE", "GEO"),  # Georgia
+    "GH": ("GH", "GHA"),  # Ghana
+    "GL": ("GL", "GRL"),  # Greenland
+    "GR": ("GR", "GRC"),  # Greece
+    "GT": ("GT", "GUA"),  # Guatemala
+    "GU": ("GU", "GUM"),  # Guam
+    "HK": ("HK", "HKG"),  # HongKong
+    "HN": ("HN", "HND"),  # Honduras
+    "HR": ("HR", "HRV"),  # Croatia
+    "HU": ("HU", "HUN"),  # Hungary
+    "ID": ("ID", "IDN"),  # Indonesia
+    "IE": ("IE", "IRL"),  # Ireland
+    "IL": ("IL", "ISR"),  # Israel
+    "IM": ("IM", "IMN"),  # IsleOfMan
+    "IN": ("IN", "IND"),  # India
+    "IR": ("IR", "IRN"),  # Iran
+    "IS": ("IS", "ISL"),  # Iceland
+    "IT": ("IT", "ITA"),  # Italy
+    "JE": ("JE", "JEY"),  # Jersey
+    "JM": ("JM", "JAM"),  # Jamaica
+    "JO": ("JO", "JOR"),  # Jordan
+    "JP": ("JP", "JPN"),  # Japan
+    "KE": ("KE", "KEN"),  # Kenya
+    "KG": ("KG", "KGZ"),  # Kyrgyzstan
+    "KH": ("KH", "KHM"),  # Cambodia
+    "KR": ("KR", "KOR"),  # SouthKorea
+    "KW": ("KW", "KWT"),  # Kuwait
+    "KZ": ("KZ", "KAZ"),  # Kazakhstan
+    "LA": ("LA", "LAO"),  # Laos
+    "LI": ("LI", "LIE"),  # Liechtenstein
+    "LS": ("LS", "LSO"),  # Lesotho
+    "LT": ("LT", "LTU"),  # Lithuania
+    "LU": ("LU", "LUX"),  # Luxembourg
+    "LV": ("LV", "LVA"),  # Latvia
+    "MA": ("MA", "MOR"),  # Morocco
+    "MC": ("MC", "MCO"),  # Monaco
+    "MD": ("MD", "MDA"),  # Moldova
+    "ME": ("ME", "MNE"),  # Montenegro
+    "MG": ("MG", "MDG"),  # Madagascar
+    "MH": ("MH", "MHL"),  # Marshall Islands
+    "MK": ("MK", "MKD"),  # North Macedonia
+    "MP": ("MP", "MNP"),  # Northern Mariana Islands
+    "MT": ("MT", "MLT"),  # Malta
+    "MV": ("MV", "MDV"),  # Maldives
+    "MW": ("MW", "MWI"),  # Malawi
+    "MX": ("MX", "MEX"),  # Mexico
+    "MY": ("MY", "MYS"),  # Malaysia
+    "MZ": ("MZ", "MOZ"),  # Mozambique
+    "NA": ("NA", "NAM"),  # Namibia
+    "NG": ("NG", "NGA"),  # Nigeria
+    "NI": ("NI", "NIC"),  # Nicaragua
+    "NL": ("NL", "NLD"),  # Netherlands
+    "NO": ("NO", "NOR"),  # Norway
+    "NZ": ("NZ", "NZL"),  # NewZealand
+    "PA": ("PA", "PAN"),  # Panama
+    "PE": ("PE", "PER"),  # Peru
+    "PG": ("PG", "PNG"),  # Papua New Guinea
+    "PH": ("PH", "PHL"),  # Philippines
+    "PK": ("PK", "PAK"),  # Pakistan
+    "PL": ("PL", "POL"),  # Poland
+    "PR": ("PR", "PRI"),  # PuertoRico
+    "PT": ("PT", "PRT"),  # Portugal
+    "PW": ("PW", "PLW"),  # Palau
+    "PY": ("PY", "PRY"),  # Paraguay
+    "RO": ("RO", "ROU"),  # Romania
+    "RS": ("RS", "SRB"),  # Serbia
+    "RU": ("RU", "RUS"),  # Russia
+    "SA": ("SA", "SAU"),  # Saudi Arabia
+    "SC": ("SC", "SYC"),  # Seychelles
+    "SE": ("SE", "SWE"),  # Sweden
+    "SG": ("SG", "SGP"),  # Singapore
+    "SI": ("SI", "SVN"),  # Slovenia
+    "SK": ("SK", "SVK"),  # Slovakia
+    "SM": ("SM", "SMR"),  # San Marino
+    "SV": ("SV", "SLV"),  # ElSalvador
+    "SZ": ("SZ", "SZW"),  # Eswatini
+    "TD": ("TD", "TCD"),  # Chad
+    "TH": ("TH", "THA"),  # Thailand
+    "TL": ("TL", "TLS"),  # Timor Leste
+    "TN": ("TN", "TUN"),  # Tunisia
+    "TO": ("TO", "TON"),  # Tonga
+    "TR": ("TR", "TUR"),  # Turkey
+    "TW": ("TW", "TWN"),  # Taiwan
+    "TZ": ("TZ", "TZA"),  # Tanzania
+    "UA": ("UA", "UKR"),  # Ukraine
+    "UM": ("UM", "UMI"),  # United States Minor Outlying Islands
+    "US": ("US", "USA"),  # United States
+    "UY": ("UY", "URY"),  # Uruguay
+    "UZ": ("UZ", "UZB"),  # Uzbekistan
+    "VA": ("VA", "VAT"),  # VaticanCity
+    "VE": ("VE", "VEN"),  # Venezuela
+    "VI": ("VI", "VIR"),  # United States Virgin Islands
+    "VN": ("VN", "VNM"),  # Vietnam
+    "VU": ("VU", "VTU"),  # Vanuatu
+    "ZA": ("ZA", "ZAF"),  # South Africa
+    "ZM": ("ZM", "ZMB"),  # Zambia
+    "ZW": ("ZW", "ZWE"),  # Zimbabwe
 }
 
-FINANCIAL: RegistryDict = {
-    "european_central_bank": ("EuropeanCentralBank", "ECB", "TAR"),
-    "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
-    "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
+ISO_10383: RegistryDict = {
+    "IFEU": ("IFEU",),  # ICE Futures Europe
+    "XECB": ("XECB",),  # ECB Exchange Rates
+    # "XNYS": ("XNYS", "NYSE"),  # New York Stock Exchange
+    "XNYS": ("XNYS",),  # New York Stock Exchange
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
@@ -198,7 +194,7 @@ class EntityLoader:
                 "This is a python-holidays entity loader class. "
                 "For entity inheritance purposes please import a class you "
                 "want to derive from directly: e.g., "
-                "`from holidays.entities.iso3166 import Entity` or "
+                "`from holidays.entities.iso_3166 import Entity` or "
                 "`from holidays.entities.financial import Entity`."
             )
 
@@ -240,44 +236,49 @@ class EntityLoader:
     @staticmethod
     def _get_entity_codes(
         container: RegistryDict,
-        entity_length: Union[int, Iterable[int]],
-        include_aliases: bool = True,
+        include_aliases: bool = False,
     ) -> Iterable[str]:
-        entity_length = {entity_length} if isinstance(entity_length, int) else set(entity_length)
-        for entities in container.values():
-            for entity in entities:
-                if len(entity) in entity_length:
-                    yield entity
-                    # Assuming that the alpha-2 code goes first.
-                    if not include_aliases:
-                        break
+        if include_aliases:
+            for entities in container.values():
+                yield from entities
+        else:
+            yield from container.keys()
 
     @staticmethod
-    def get_country_codes(include_aliases: bool = True) -> Iterable[str]:
+    def get_iso_3166_codes(include_aliases: bool = False) -> Iterable[str]:
         """Get supported country codes.
 
         :param include_aliases:
-            Whether to include entity aliases (e.g. UK for GB).
+            Whether to include entity aliases.
         """
-        return EntityLoader._get_entity_codes(COUNTRIES, 2, include_aliases)
+        return EntityLoader._get_entity_codes(ISO_3166, include_aliases=include_aliases)
 
     @staticmethod
-    def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
-        """Get supported financial codes.
+    def get_iso_10383_codes(include_aliases: bool = False) -> Iterable[str]:
+        """Get ISO 10383 entity codes.
 
         :param include_aliases:
-            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases.
         """
-        return EntityLoader._get_entity_codes(FINANCIAL, (3, 4), include_aliases)
+        return EntityLoader._get_entity_codes(ISO_10383, include_aliases=include_aliases)
 
     @staticmethod
     def load(prefix: str, scope: Dict) -> None:
         """Load country or financial entities."""
-        entity_mapping = COUNTRIES if prefix == "iso3166" else FINANCIAL
-        for module, entities in entity_mapping.items():
+        module_entities = {
+            "ISO_10383": ISO_10383,
+            "ISO_3166": ISO_3166,
+        }.get(prefix)
+
+        if module_entities is None:
+            return None
+
+        for module, entities in module_entities.items():
             scope.update(
                 {
-                    entity: EntityLoader(f"holidays.entities.{prefix}.{module}.{entity}")
+                    entity: EntityLoader(
+                        f"holidays.entities.{prefix}.{module}.{module.capitalize()}Holidays"
+                    )
                     for entity in entities
                 }
             )

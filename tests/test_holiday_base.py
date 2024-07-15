@@ -22,7 +22,7 @@ from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class EntityStubStaticHolidays:
+class EntitystubStaticHolidays:
     special_public_holidays = {
         1111: (JAN, 1, "Test holiday"),
         2222: (FEB, 2, "Test holiday"),
@@ -76,7 +76,7 @@ class CountryStub1(EntityStub, StaticHolidays):
     supported_categories = (PUBLIC, SCHOOL)
 
     def __init__(self, *args, **kwargs) -> None:
-        StaticHolidays.__init__(self, cls=EntityStubStaticHolidays)
+        StaticHolidays.__init__(self, cls=EntitystubStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_subdiv_subdiv_1_public_holidays(self):
@@ -121,7 +121,7 @@ class CountryStub6(EntityStub, StaticHolidays):
     country = "CS6"
 
     def __init__(self, *args, **kwargs) -> None:
-        StaticHolidays.__init__(self, cls=EntityStubStaticHolidays)
+        StaticHolidays.__init__(self, cls=EntitystubStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
@@ -283,16 +283,6 @@ class TestCategories(unittest.TestCase):
                 self.assertEqual(ccc.categories, set(categories), category)
                 for dt in categories[category]:
                     self.assertIn(dt, ccc)
-
-
-class TestDeprecationWarnings(unittest.TestCase):
-    def test_prov_deprecation(self):
-        with self.assertWarns(Warning):
-            CountryStub1(prov="Subdiv 1")
-
-    def test_state_deprecation(self):
-        with self.assertWarns(Warning):
-            CountryStub1(state="Subdiv 1")
 
 
 class TestEqualityInequality(unittest.TestCase):
@@ -840,14 +830,14 @@ class TestRepr(unittest.TestCase):
         self.assertEqual(repr(HolidayBase()), "holidays.HolidayBase()")
 
     def test_country(self):
-        self.assertEqual(repr(CountryStub1()), "holidays.country_holidays('CS1')")
+        self.assertEqual(repr(CountryStub1()), "holidays.iso_3166_holidays('CS1')")
         self.assertEqual(
             repr(CountryStub1(subdiv="Subdiv 1")),
-            "holidays.country_holidays('CS1', subdiv='Subdiv 1')",
+            "holidays.iso_3166_holidays('CS1', subdiv='Subdiv 1')",
         )
 
     def test_market(self):
-        self.assertEqual(repr(MarketStub1()), "holidays.entities.iso10383_holidays('MS1')")
+        self.assertEqual(repr(MarketStub1()), "holidays.entities.iso_10383_holidays('MS1')")
 
 
 class TestSerialization(unittest.TestCase):

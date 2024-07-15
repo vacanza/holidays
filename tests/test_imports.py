@@ -38,12 +38,11 @@ class TestHolidaysImports(TestCase):
 
     def test_utils(self):
         for name in (
-            "country_holidays",
-            "CountryHoliday",
-            "financial_holidays",
-            "list_localized_countries",
-            "list_localized_financial",
-            "list_supported_countries",
-            "list_supported_financial",
+            "iso_10383_holidays",
+            "iso_3166_holidays",
+            "list_iso_10383_entities",
+            "list_iso_3166_entities",
+            "list_localized_iso_10383_entities",
+            "list_localized_iso_3166_entities",
         ):
             self.assertImport(name)

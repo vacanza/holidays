@@ -11,16 +11,14 @@
 #  License: MIT (see LICENSE file)
 
 __all__ = (
-    "country_holidays",
-    "CountryHoliday",
-    "financial_holidays",
-    "list_localized_countries",
-    "list_localized_financial",
-    "list_supported_countries",
-    "list_supported_financial",
+    "iso_3166_holidays",
+    "iso_10383_holidays",
+    "list_localized_iso_3166_entities",
+    "list_localized_iso_10383_entities",
+    "list_iso_3166_entities",
+    "list_iso_10383_entities",
 )
 
-import warnings
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Tuple, Union
 
@@ -28,14 +26,12 @@ from holidays.holiday_base import HolidayBase
 from holidays.registry import EntityLoader
 
 
-def country_holidays(
+def iso_3166_holidays(
     country: str,
     subdiv: Optional[str] = None,
     years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
     language: Optional[str] = None,
     categories: Optional[Tuple[str]] = None,
 ) -> HolidayBase:
@@ -106,10 +102,10 @@ def country_holidays(
 
     Example usage:
 
-    >>> from holidays import country_holidays
-    >>> us_holidays = country_holidays('US')
+    >>> from holidays import iso_3166_holidays
+    >>> us_holidays = iso_3166_holidays('US')
     # For a specific subdivision (e.g. state or province):
-    >>> calif_holidays = country_holidays('US', subdiv='CA')
+    >>> calif_holidays = iso_3166_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
@@ -139,7 +135,7 @@ def country_holidays(
 
     List all 2020 holidays:
 
-    >>> us_holidays = country_holidays('US', years=2020)
+    >>> us_holidays = iso_3166_holidays('US', years=2020)
     >>> for day in us_holidays.items():
     ...     print(day)
     (datetime.date(2020, 1, 1), "New Year's Day")
@@ -156,7 +152,7 @@ def country_holidays(
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
+    >>> us_pr_holidays = iso_3166_holidays('US', subdiv='PR')
     >>> assert '2018-01-06' not in us_holidays
     >>> assert '2018-01-06' in us_pr_holidays
 
@@ -170,7 +166,7 @@ def country_holidays(
     * or a single date item (of one of the types above); ``'Holiday'`` will be
       used as a description:
 
-    >>> custom_holidays = country_holidays('US', years=2015)
+    >>> custom_holidays = iso_3166_holidays('US', years=2015)
     >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
     >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
     >>> custom_holidays.update(date(2015, 12, 25))
@@ -190,8 +186,6 @@ def country_holidays(
             subdiv=subdiv,
             expand=expand,
             observed=observed,
-            prov=prov,
-            state=state,
             language=language,
             categories=categories,
         )
@@ -199,8 +193,8 @@ def country_holidays(
         raise NotImplementedError(f"Country {country} not available")
 
 
-def financial_holidays(
-    market: str,
+def iso_10383_holidays(
+    code: str,
     subdiv: Optional[str] = None,
     years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
@@ -212,8 +206,8 @@ def financial_holidays(
     holidays of the financial market matching **market** and other keyword
     arguments.
 
-    :param market:
-        An ISO 3166-1 Alpha-2 market code.
+    :param code:
+        An ISO 10383 code.
 
     :param subdiv:
         Currently not implemented for markets (see documentation).
@@ -241,16 +235,16 @@ def financial_holidays(
 
     Example usage:
 
-    >>> from holidays import financial_holidays
-    >>> nyse_holidays = financial_holidays('NYSE')
+    >>> from holidays import iso_10383_holidays
+    >>> nyse_holidays = iso_10383_holidays('XNYS')
 
-    See :py:func:`country_holidays` documentation for further details and
+    See :py:func:`iso_3166_holidays` documentation for further details and
     examples.
     """
     import holidays
 
     try:
-        return getattr(holidays, market)(
+        return getattr(holidays, code)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -258,28 +252,7 @@ def financial_holidays(
             language=language,
         )
     except AttributeError:
-        raise NotImplementedError(f"Financial market {market} not available")
-
-
-def CountryHoliday(  # noqa: N802
-    country: str,
-    subdiv: Optional[str] = None,
-    years: Optional[Union[int, Iterable[int]]] = None,
-    expand: bool = True,
-    observed: bool = True,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
-) -> HolidayBase:
-    """
-    Deprecated name for :py:func:`country_holidays`.
-
-    :meta private:
-    """
-
-    warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
-    )
-    return country_holidays(country, subdiv, years, expand, observed, prov, state)
+        raise NotImplementedError(f"Financial market {code} not available")
 
 
 def _list_localized_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
@@ -307,12 +280,12 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]
 
 
 @lru_cache()
-def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
+def list_localized_iso_3166_entities(include_aliases: bool = False) -> Dict[str, List[str]]:
     """
-    Get all localized countries and languages they support.
+    Get all localized ISO 3166 entities and languages they support.
 
     :param include_aliases:
-        Whether to include entity aliases (e.g. UK for GB).
+        Whether to include entity aliases.
 
     :return:
         A dictionary where key is an ISO 3166-1 alpha-2 country code and
@@ -320,11 +293,11 @@ def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
         combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
     """
 
-    return _list_localized_entities(EntityLoader.get_country_codes(include_aliases))
+    return _list_localized_entities(EntityLoader.get_iso_3166_codes(include_aliases))
 
 
 @lru_cache()
-def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
+def list_localized_iso_10383_entities(include_aliases: bool = False) -> Dict[str, List[str]]:
     """
     Get all localized financial markets and languages they support.
 
@@ -336,10 +309,10 @@ def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
         supported subdivision codes.
     """
 
-    return _list_localized_entities(EntityLoader.get_financial_codes(include_aliases))
+    return _list_localized_entities(EntityLoader.get_iso_10383_codes(include_aliases))
 
 
-def _list_supported_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
+def _list_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
     """
     Get all supported entities and their subdivisions.
 
@@ -352,37 +325,34 @@ def _list_supported_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]
     """
     import holidays
 
-    return {
-        country_code: list(getattr(holidays, country_code).subdivisions)
-        for country_code in entity_codes
-    }
+    return {code: getattr(holidays, code).subdivisions for code in entity_codes}
 
 
 @lru_cache()
-def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
+def list_iso_3166_entities(include_aliases: bool = False) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
 
     :param include_aliases:
-        Whether to include entity aliases (e.g. UK for GB).
+        Whether to include entity aliases.
 
     :return:
         A dictionary where key is an ISO 3166-1 alpha-2 country code and
         value is a list of supported subdivision codes.
     """
-    return _list_supported_entities(EntityLoader.get_country_codes(include_aliases))
+    return _list_entities(EntityLoader.get_iso_3166_codes(include_aliases=include_aliases))
 
 
 @lru_cache()
-def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
+def list_iso_10383_entities(include_aliases: bool = False) -> Dict[str, List[str]]:
     """
-    Get all supported financial markets and their subdivisions.
+    Get ISO 10383 entity codes and their subdivisions.
 
     :param include_aliases:
-        Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+        Whether to include entity aliases.
 
     :return:
         A dictionary where key is a market code and value is a list of
         supported subdivision codes.
     """
-    return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
+    return _list_entities(EntityLoader.get_iso_10383_codes(include_aliases=include_aliases))

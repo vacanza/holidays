@@ -26,8 +26,8 @@ from holidays.utils import *
 __version__ = "0.53"
 
 
-EntityLoader.load("iso3166", globals())
-EntityLoader.load("iso10383", globals())
+EntityLoader.load("ISO_3166", globals())
+EntityLoader.load("ISO_10383", globals())
 
 warnings.warn(
     FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE.format(version=__version__),

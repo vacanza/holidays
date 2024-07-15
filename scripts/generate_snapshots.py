@@ -21,7 +21,7 @@ from pathlib import Path
 sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
 
 import holidays  # noqa: E402
-from holidays import list_supported_countries, list_supported_financial  # noqa: E402
+from holidays import list_iso_3166_entities, list_iso_10383_entities  # noqa: E402
 
 
 class SnapshotGenerator:
@@ -61,13 +61,13 @@ class SnapshotGenerator:
             )
             output.write("\n")  # Get along with pre-commit.
 
-    def generate_country_snapshots(self):
+    def generate_iso3166_snapshots(self):
         """Generates country snapshots."""
         if len(self.args.market) > 0:
             return None
 
         country_list = self.args.country
-        supported_countries = list_supported_countries()
+        supported_countries = list_iso_3166_entities()
         if country_list:
             unknown_countries = set(country_list).difference(supported_countries.keys())
             if len(unknown_countries) > 0:
@@ -80,23 +80,23 @@ class SnapshotGenerator:
 
             for subdiv in (None,) + country.subdivisions:
                 self.save(
-                    holidays.country_holidays(
+                    holidays.iso_3166_holidays(
                         country_code,
                         subdiv=subdiv,
                         years=self.years,
                         categories=country.supported_categories,
                         language="en_US",
                     ),
-                    f"snapshots/countries/{country_code}_{subdiv or 'COMMON'}.json",
+                    f"snapshots/ISO_3166/{country_code}_{subdiv or 'COMMON'}.json",
                 )
 
-    def generate_financial_snapshots(self):
+    def generate_iso_10383_snapshots(self):
         """Generates financial snapshots."""
         if len(self.args.country) > 0:
             return None
 
         market_list = self.args.market
-        supported_markets = list_supported_financial()
+        supported_markets = list_iso_10383_entities()
         if market_list:
             unknown_markets = set(market_list).difference(supported_markets.keys())
             if len(unknown_markets) > 0:
@@ -106,18 +106,18 @@ class SnapshotGenerator:
 
         for market_code in market_list:
             self.save(
-                holidays.country_holidays(
+                holidays.iso_3166_holidays(
                     market_code,
                     years=self.years,
                     language="en_US",
                 ),
-                f"snapshots/financial/{market_code}.json",
+                f"snapshots/ISO_10383/{market_code}.json",
             )
 
     def run(self):
         """Runs snapshot files generation process."""
-        self.generate_country_snapshots()
-        self.generate_financial_snapshots()
+        self.generate_iso3166_snapshots()
+        self.generate_iso_10383_snapshots()
 
 
 if __name__ == "__main__":
