@@ -219,7 +219,7 @@ The other form of addition is also available:
    >>> north_america = holidays.CA()
    >>> north_america += holidays.US()
    >>> north_america += holidays.MX()
-   >>> north_america.country
+   >>> north_america.code
    ['CA', 'US', 'MX']
 
 We can even get a set of holidays that include all the subdivision-specific

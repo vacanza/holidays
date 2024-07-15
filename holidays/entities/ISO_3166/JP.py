@@ -34,14 +34,15 @@ from holidays.calendars.gregorian import (
     _timedelta,
 )
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class JpHolidays(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
+class JpHolidays(ObservedHolidayBase, Iso3166Entity, InternationalHolidays, StaticHolidays):
     """A class to represent holidays for Japan."""
 
-    country = "JP"
+    code = "JP"
     name = "Japan"
     default_language = "ja"
     supported_categories = (BANK, PUBLIC)

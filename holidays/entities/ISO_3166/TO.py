@@ -65,6 +65,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import SEP, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -74,10 +75,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class ToHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ToHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Tonga."""
 
-    country = "TO"
+    code = "TO"
     name = "Tonga"
     default_language = "to"
     # %s (observed).

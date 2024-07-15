@@ -17,14 +17,15 @@ References:
     - https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class VaHolidays(HolidayBase, ChristianHolidays):
+class VaHolidays(HolidayBase, Iso3166Entity, ChristianHolidays):
     """A class to represent holidays for Holy See."""
 
-    country = "VA"
+    code = "VA"
     name = "Holy See"
 
     def __init__(self, *args, **kwargs) -> None:

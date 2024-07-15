@@ -16,6 +16,7 @@ References:
     - https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -25,10 +26,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class JmHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class JmHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Jamaica."""
 
-    country = "JM"
+    code = "JM"
     name = "Jamaica"
     observed_label = "%s (observed)"
 

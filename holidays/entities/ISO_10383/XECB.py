@@ -18,14 +18,15 @@ References:
 """
 
 from holidays.calendars.gregorian import DEC
+from holidays.entities.ISO_10383 import Iso10383Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class XecbHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class XecbHolidays(HolidayBase, Iso10383Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for ECB Exchange Rates."""
 
-    market = "XECB"
+    code = "XECB"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

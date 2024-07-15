@@ -18,14 +18,17 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import NOV
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class PlHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class PlHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Poland."""
 
-    country = "PL"
+    code = "PL"
     name = "Poland"
     default_language = "pl"
     supported_languages = ("en_US", "pl", "uk")

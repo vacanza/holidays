@@ -18,14 +18,15 @@ References:
 """
 
 from holidays.calendars.gregorian import FRI, SAT
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MvHolidays(HolidayBase, InternationalHolidays, IslamicHolidays):
+class MvHolidays(HolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays):
     """A class to represent holidays for Maldives."""
 
-    country = "MV"
+    code = "MV"
     name = "Maldives"
     weekend = {FRI, SAT}
 

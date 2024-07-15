@@ -18,14 +18,17 @@ References:
 """
 
 from holidays.calendars.gregorian import MAY
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class LsHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class LsHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Lesotho."""
 
-    country = "LS"
+    code = "LS"
     name = "Lesotho"
 
     def __init__(self, *args, **kwargs):

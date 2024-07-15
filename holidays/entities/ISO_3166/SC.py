@@ -47,14 +47,15 @@ Sources:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAR, MAY, SEP, OCT, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class ScHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class ScHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Seychelles."""
 
-    country = "SC"
+    code = "SC"
     name = "Seychelles"
     default_language = "en_SC"
     # %s (observed).

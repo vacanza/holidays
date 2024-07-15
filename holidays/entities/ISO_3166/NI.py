@@ -12,14 +12,15 @@
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class NiHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class NiHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Nicaragua."""
 
-    country = "NI"
+    code = "NI"
     name = "Nicaragua"
     default_language = "es"
     subdivisions = (

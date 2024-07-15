@@ -20,14 +20,15 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MdHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class MdHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Moldova."""
 
-    country = "MD"
+    code = "MD"
     name = "Moldova"
     default_language = "ro"
     supported_languages = ("en_US", "ro", "uk")

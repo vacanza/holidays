@@ -21,14 +21,17 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class EtHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class EtHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Ethiopia."""
 
-    country = "ET"
+    code = "ET"
     name = "Ethiopia"
     default_language = "am"
     # %s (estimated).

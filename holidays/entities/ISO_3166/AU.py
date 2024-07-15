@@ -35,6 +35,7 @@ References:
 
 from holidays.calendars.gregorian import JAN, APR, JUN, AUG, SEP, OCT, DEC
 from holidays.constants import BANK, HALF_DAY, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -46,10 +47,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class AuHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class AuHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Australia."""
 
-    country = "AU"
+    code = "AU"
     name = "Australia"
     supported_categories = (BANK, HALF_DAY, PUBLIC)
     observed_label = "%s (observed)"

@@ -29,6 +29,7 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -41,10 +42,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class SaHolidays(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
+class SaHolidays(ObservedHolidayBase, Iso3166Entity, IslamicHolidays, StaticHolidays):
     """A class to represent holidays for Saudi Arabia."""
 
-    country = "SA"
+    code = "SA"
     name = "Saudi Arabia"
     default_language = "ar"
     # %s (estimated).

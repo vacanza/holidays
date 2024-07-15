@@ -10,9 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
-
 """
 References:
     - https://publicholidays.vn/
@@ -20,11 +17,17 @@ References:
     - https://www.timeanddate.com/holidays/vietnam/
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
-class VnHolidays(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
+
+class VnHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChineseCalendarHolidays, InternationalHolidays
+):
     """A class to represent holidays for Vietnam."""
 
-    country = "VN"
+    code = "VN"
     name = "Vietnam"
     observed_label = "%s (observed)"
 

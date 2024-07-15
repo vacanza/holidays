@@ -23,14 +23,17 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class TrHolidays(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
+class TrHolidays(
+    HolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """A class to represent holidays for Türkiye."""
 
-    country = "TR"
+    code = "TR"
     name = "Türkiye"
     default_language = "tr"
     # %s (estimated).

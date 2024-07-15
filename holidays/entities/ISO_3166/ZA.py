@@ -19,14 +19,17 @@ References:
 """
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class ZaHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ZaHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for South Africa."""
 
-    country = "ZA"
+    code = "ZA"
     name = "South Africa"
     observed_label = "%s (observed)"
 

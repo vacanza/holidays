@@ -21,14 +21,17 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
 from holidays.constants import PUBLIC, WORKDAY
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class SkHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class SkHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Slovakia."""
 
-    country = "SK"
+    code = "SK"
     name = "Slovakia"
     default_language = "sk"
     supported_categories = (PUBLIC, WORKDAY)

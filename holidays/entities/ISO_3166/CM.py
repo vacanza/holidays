@@ -19,6 +19,7 @@ References:
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -29,11 +30,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 
 
 class CmHolidays(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    Iso3166Entity,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """A class to represent holidays for Cameroon."""
 
-    country = "CM"
+    code = "CM"
     name = "Cameroon"
     observed_label = "%s (observed)"
 

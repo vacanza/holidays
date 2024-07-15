@@ -12,14 +12,15 @@
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class MzHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class MzHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Mozambique."""
 
-    country = "MZ"
+    code = "MZ"
     name = "Mozambique"
     default_language = "pt_MZ"
     # %s (observed).

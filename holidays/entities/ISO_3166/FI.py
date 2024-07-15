@@ -18,14 +18,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import _timedelta
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class FiHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class FiHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Finland."""
 
-    country = "FI"
+    code = "FI"
     name = "Finland"
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv", "uk")

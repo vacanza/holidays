@@ -22,6 +22,7 @@ References:
 """
 
 from holidays.calendars.gregorian import JAN, JUL
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -31,10 +32,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class BbHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class BbHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Barbados."""
 
-    country = "BB"
+    code = "BB"
     name = "Barbados"
     observed_label = "%s (observed)"
 

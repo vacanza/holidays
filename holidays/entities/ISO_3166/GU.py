@@ -10,14 +10,15 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.entities.ISO_3166.US import UsHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class GuHolidays(HolidayBase):
+class GuHolidays(HolidayBase, Iso3166Entity):
     """A class to represent holidays for Guam."""
 
-    country = "GU"
+    code = "GU"
     name = "Guam"
     supported_categories = UsHolidays.supported_categories
 

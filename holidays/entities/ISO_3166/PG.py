@@ -46,14 +46,17 @@ References:
 """
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, JUN, SEP, NOV
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class PgHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class PgHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Papua New Guinea."""
 
-    country = "PG"
+    code = "PG"
     name = "Papua New Guinea"
     observed_label = "%s (observed)"
 

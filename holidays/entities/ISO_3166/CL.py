@@ -45,6 +45,7 @@ from typing import Tuple
 
 from holidays.calendars.gregorian import JUN, SEP, DEC
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -57,10 +58,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class ClHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ClHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Chile."""
 
-    country = "CL"
+    code = "CL"
     name = "Chile"
     default_language = "es"
     subdivisions = (

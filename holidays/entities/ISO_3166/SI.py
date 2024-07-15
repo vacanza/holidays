@@ -18,14 +18,17 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import AUG
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class SiHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class SiHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Slovenia."""
 
-    country = "SI"
+    code = "SI"
     name = "Slovenia"
     default_language = "sl"
     supported_languages = ("en_US", "sl", "uk")

@@ -18,14 +18,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class PeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class PeHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Peru."""
 
-    country = "PE"
+    code = "PE"
     name = "Peru"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")

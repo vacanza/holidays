@@ -25,6 +25,7 @@ Checked With:
 """
 
 from holidays.calendars.gregorian import SEP, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -36,10 +37,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class BsHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class BsHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Bahamas."""
 
-    country = "BS"
+    code = "BS"
     name = "Bahamas"
     observed_label = "%s (observed)"
 

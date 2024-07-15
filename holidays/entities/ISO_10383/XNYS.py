@@ -37,14 +37,21 @@ from holidays.calendars.gregorian import (
     DEC,
     _timedelta,
 )
+from holidays.entities.ISO_10383 import Iso10383Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
-class XnysHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class XnysHolidays(
+    ObservedHolidayBase,
+    Iso10383Entity,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
     """A class to represent holidays for New York Stock Exchange."""
 
-    market = "XNYS"
+    code = "XNYS"
     observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):

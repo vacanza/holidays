@@ -33,6 +33,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -52,6 +53,7 @@ from holidays.observed_holiday_base import (
 
 class BnHolidays(
     ObservedHolidayBase,
+    Iso3166Entity,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
@@ -60,7 +62,7 @@ class BnHolidays(
 ):
     """A class to represent holidays for Brunei Darussalam."""
 
-    country = "BN"
+    code = "BN"
     name = "Brunei Darussalam"
     default_language = "ms"
     # %s (estimated).

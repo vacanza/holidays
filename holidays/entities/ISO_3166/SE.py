@@ -26,14 +26,15 @@ Primary sources:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import _timedelta, _get_all_sundays
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class SeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class SeHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Sweden."""
 
-    country = "SE"
+    code = "SE"
     name = "Sweden"
     default_language = "sv"
     supported_languages = ("en_US", "sv", "uk")

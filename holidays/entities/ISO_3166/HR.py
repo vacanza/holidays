@@ -21,14 +21,15 @@ Updated with act 022-03 / 19-01 / 219 of 14 November 2019.
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class HrHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class HrHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Croatia."""
 
-    country = "HR"
+    code = "HR"
     name = "Croatia"
     default_language = "hr"
     supported_languages = ("en_US", "hr", "uk")
