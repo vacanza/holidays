@@ -1,3 +1,11 @@
+Version 0.53
+============
+
+Released July 15, 2024
+
+- Update Chile holidays: add bank holidays (#1857 by @KJhellico)
+- Extend `HolidayBase::__setitem__` to handle names including '; ' (#1858 by @arkid15r)
+
 Version 0.52
 ============
 
