@@ -25,14 +25,15 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, AUG, _timedelta
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AwHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class AwHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Aruba."""
 
-    country = "AW"
+    code = "AW"
     name = "Aruba"
     default_language = "pap_AW"
     supported_languages = ("en_US", "nl", "pap_AW", "uk")

@@ -52,6 +52,7 @@ from datetime import date
 from typing import Optional, Tuple
 
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, SEP, OCT, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -62,10 +63,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class JeHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class JeHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Jersey."""
 
-    country = "JE"
+    code = "JE"
     name = "Jersey"
     observed_label = "%s (observed)"
 

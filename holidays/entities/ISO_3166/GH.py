@@ -16,6 +16,7 @@ References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Ghana
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -24,10 +25,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class GhHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class GhHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Ghana."""
 
-    country = "GH"
+    code = "GH"
     name = "Ghana"
     estimated_label = "%s (estimated)"
     observed_label = "%s (observed)"

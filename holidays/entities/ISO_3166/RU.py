@@ -19,14 +19,17 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, APR, MAY, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class RuHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class RuHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Russian Federation."""
 
-    country = "RU"
+    code = "RU"
     name = "Russian Federation"
     default_language = "ru"
     supported_languages = ("en_US", "ru")

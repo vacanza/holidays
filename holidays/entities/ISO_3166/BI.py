@@ -20,14 +20,17 @@ This depends on formal announcements by the government,
 which only happens close to the date of the holiday.
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class BiHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class BiHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Burundi."""
 
-    country = "BI"
+    code = "BI"
     name = "Burundi"
     observed_label = "%s (observed)"
 

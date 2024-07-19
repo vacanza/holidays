@@ -17,14 +17,15 @@ References:
     - https://www.officeholidays.com/countries/el-salvador
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class SvHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class SvHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for El Salvador."""
 
-    country = "SV"
+    code = "SV"
     name = "El Salvador"
     subdivisions = (
         "AH",  # Ahuachapán

@@ -19,14 +19,17 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class McHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class McHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Monaco."""
 
-    country = "MC"
+    code = "MC"
     name = "Monaco"
     default_language = "fr"
     # %s (observed).

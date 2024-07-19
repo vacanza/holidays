@@ -23,14 +23,17 @@ References:
 import warnings
 
 from holidays.calendars.gregorian import MAR, OCT, NOV
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class InHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class InHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for India."""
 
-    country = "IN"
+    code = "IN"
     name = "India"
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.

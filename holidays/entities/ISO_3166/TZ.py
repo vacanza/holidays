@@ -46,6 +46,7 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -56,11 +57,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class TzHolidays(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    Iso3166Entity,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """A class to represent holidays for Tanzania."""
 
-    country = "TZ"
+    code = "TZ"
     name = "Tanzania"
     supported_categories = (BANK, PUBLIC)
     default_language = "sw"

@@ -34,14 +34,15 @@ Static holidays:
 
 from holidays.calendars.gregorian import SEP, NOV
 from holidays.constants import ARMED_FORCES, HALF_DAY, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
-class PwHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class PwHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Palau."""
 
-    country = "PW"
+    code = "PW"
     name = "Palau"
     supported_categories = (ARMED_FORCES, HALF_DAY, PUBLIC)
     observed_label = "%s (observed)"

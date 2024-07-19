@@ -21,14 +21,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class BeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class BeHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Belgium."""
 
-    country = "BE"
+    code = "BE"
     name = "Belgium"
     default_language = "nl"
     supported_categories = (BANK, PUBLIC)

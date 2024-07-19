@@ -16,14 +16,15 @@ References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class BdHolidays(HolidayBase, InternationalHolidays):
+class BdHolidays(HolidayBase, Iso3166Entity, InternationalHolidays):
     """A class to represent holidays for Bangladesh."""
 
-    country = "BD"
+    code = "BD"
     name = "Bangladesh"
 
     def __init__(self, *args, **kwargs):

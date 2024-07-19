@@ -10,14 +10,15 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.entities.ISO_3166.US import UsHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class UmHolidays(HolidayBase):
+class UmHolidays(HolidayBase, Iso3166Entity):
     """A class to represent holidays for United States Minor Outlying Islands."""
 
-    country = "UM"
+    code = "UM"
     name = "United States Minor Outlying Islands"
     supported_categories = UsHolidays.supported_categories
 

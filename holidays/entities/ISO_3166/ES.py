@@ -38,6 +38,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
@@ -48,11 +49,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class EsHolidays(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    Iso3166Entity,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """A class to represent holidays for Spain."""
 
-    country = "ES"
+    code = "ES"
     name = "Spain"
     default_language = "es"
     # Monday following %s.
@@ -62,7 +68,7 @@ class EsHolidays(
         "AR",  # Aragón
         "AS",  # Asturias
         "CB",  # Cantabria
-        "CE",  # Ceuta
+        "CE",  # Ceuta¬
         "CL",  # Castilla y León
         "CM",  # Castilla-La Mancha
         "CN",  # Canarias

@@ -23,14 +23,17 @@ we can assume that the beginning is 1991.
 """
 
 from holidays.calendars.gregorian import JAN, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class NaHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class NaHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Namibia."""
 
-    country = "NA"
+    code = "NA"
     name = "Namibia"
     # %s (observed).
     observed_label = "%s (observed)"

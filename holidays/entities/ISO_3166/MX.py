@@ -21,14 +21,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MxHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class MxHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Mexico."""
 
-    country = "MX"
+    code = "MX"
     name = "Mexico"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")

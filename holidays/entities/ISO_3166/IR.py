@@ -18,14 +18,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class IrHolidays(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
+class IrHolidays(HolidayBase, Iso3166Entity, IslamicHolidays, PersianCalendarHolidays):
     """A class to represent holidays for Iran."""
 
-    country = "IR"
+    code = "IR"
     name = "Iran"
     default_language = "fa"
     # %s (estimated).

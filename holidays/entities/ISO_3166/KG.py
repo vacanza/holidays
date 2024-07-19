@@ -16,14 +16,17 @@ References:
 """
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class KgHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class KgHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Kyrgyzstan."""
 
-    country = "KG"
+    code = "KG"
     name = "Kyrgyzstan"
 
     def __init__(self, *args, **kwargs):

@@ -18,14 +18,17 @@ References:
 """
 
 from holidays.calendars.gregorian import JUL, OCT
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, MON_TO_NEXT_TUE
 
 
-class VuHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class VuHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Vanuatu."""
 
-    country = "VU"
+    code = "VU"
     name = "Vanuatu"
     observed_label = "%s (observed)"
 

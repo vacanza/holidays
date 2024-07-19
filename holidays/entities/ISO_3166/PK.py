@@ -12,14 +12,15 @@
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class PkHolidays(HolidayBase, InternationalHolidays, IslamicHolidays):
+class PkHolidays(HolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays):
     """A class to represent holidays for Pakistan."""
 
-    country = "PK"
+    code = "PK"
     name = "Pakistan"
 
     def __init__(self, *args, **kwargs):

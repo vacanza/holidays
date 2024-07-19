@@ -19,14 +19,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class RoHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class RoHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Romania."""
 
-    country = "RO"
+    code = "RO"
     name = "Romania"
     default_language = "ro"
     supported_languages = ("en_US", "ro", "uk")

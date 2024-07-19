@@ -20,14 +20,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.constants import OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class GlHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class GlHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Greenland."""
 
-    country = "GL"
+    code = "GL"
     name = "Greenland"
     default_language = "kl"
     supported_categories = (OPTIONAL, PUBLIC)

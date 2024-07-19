@@ -163,7 +163,7 @@ class TestReadme(TestCase):
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
-                instance.country,
+                instance.code,
                 entity_codes,
                 f"Country '{country_name}' alpha-2 code is not shown correctly in the table.",
             )

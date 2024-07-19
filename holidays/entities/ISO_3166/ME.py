@@ -19,14 +19,15 @@ References:
 """
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class MeHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class MeHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Montenegro."""
 
-    country = "ME"
+    code = "ME"
     name = "Montenegro"
     observed_label = "%s (observed)"
 

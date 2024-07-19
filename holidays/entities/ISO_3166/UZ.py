@@ -22,14 +22,17 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class UzHolidays(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
+class UzHolidays(
+    ObservedHolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """A class to represent holidays for Uzbekistan."""
 
-    country = "UZ"
+    code = "UZ"
     name = "Uzbekistan"
     default_language = "uz"
     # %s (estimated).

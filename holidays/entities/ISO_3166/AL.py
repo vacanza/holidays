@@ -17,6 +17,7 @@ References:
 
 from holidays.calendars.gregorian import JAN, MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -27,11 +28,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class AlHolidays(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    Iso3166Entity,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """A class to represent holidays for Albania."""
 
-    country = "AL"
+    code = "AL"
     name = "Albania"
     observed_label = "%s (observed)"
 

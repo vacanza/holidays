@@ -205,12 +205,12 @@ class HolidayBase(Dict[date, str]):
     See documentation for examples.
     """
 
-    country: str
-    """The entity's ISO 3166-1 alpha-2 code."""
+    code: str
+    """The entity's code."""
+    scope: str
+    """The entity's scope."""
     name: str
     """The entity's ISO 3166-1 name."""
-    market: str
-    """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
     subdivisions_aliases: Dict[str, str] = {}
@@ -308,7 +308,7 @@ class HolidayBase(Dict[date, str]):
                 self.subdivisions + subdivisions_aliases
             ):
                 raise NotImplementedError(
-                    f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
+                    f"Entity `{self.code}` does not have subdivision {subdiv}"
                 )
 
         # Special holidays validation.
@@ -317,7 +317,7 @@ class HolidayBase(Dict[date, str]):
             or not getattr(self, "substituted_date_format", None)
         ):
             raise ValueError(
-                f"Entity `{self._entity_code}` class must have `substituted_label` "
+                f"Entity `{self.code}` class must have `substituted_label` "
                 "and `substituted_date_format` attributes set."
             )
 
@@ -333,12 +333,12 @@ class HolidayBase(Dict[date, str]):
         supported_languages = set(self.supported_languages)
         self.tr = (
             translation(
-                self._entity_code,
+                self.code,
                 fallback=language not in supported_languages,
                 languages=[language] if language in supported_languages else None,
                 localedir=str(Path(__file__).with_name("locale")),
             ).gettext
-            if self._entity_code is not None
+            if hasattr(self, "code")
             else gettext
         )
         self.years = _normalize_arguments(int, years)
@@ -605,22 +605,7 @@ class HolidayBase(Dict[date, str]):
         return super().__reduce__()
 
     def __repr__(self) -> str:
-        if self:
-            return super().__repr__()
-
-        parts = []
-        if hasattr(self, "market"):
-            parts.append(f"holidays.entities.iso_10383_holidays({self.market!r}")
-            parts.append(")")
-        elif hasattr(self, "country"):
-            parts.append(f"holidays.iso_3166_holidays({self.country!r}")
-            if self.subdiv:
-                parts.append(f", subdiv={self.subdiv!r}")
-            parts.append(")")
-        else:
-            parts.append("holidays.HolidayBase()")
-
-        return "".join(parts)
+        return f"{self.scope.replace('_', ' ')} {self.code} entity holidays"
 
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
@@ -640,32 +625,27 @@ class HolidayBase(Dict[date, str]):
 
         dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def __str__(self) -> str:
-        if self:
-            return super().__str__()
+    # def __str__(self) -> str:
+    #     if self:
+    #         return super().__str__()
 
-        parts = (
-            f"'{attribute_name}': {getattr(self, attribute_name, None)}"
-            for attribute_name in self.__attribute_names
-        )
+    #     parts = (
+    #         f"'{attribute_name}': {getattr(self, attribute_name, None)}"
+    #         for attribute_name in self.__attribute_names
+    #     )
 
-        return f"{{{', '.join(parts)}}}"
+    #     return f"{{{', '.join(parts)}}}"
 
     @property
     def __attribute_names(self):
         return (
-            "country",
+            "code",
             "expand",
             "language",
-            "market",
             "observed",
             "subdiv",
             "years",
         )
-
-    @cached_property
-    def _entity_code(self):
-        return getattr(self, "country", getattr(self, "market", None))
 
     @cached_property
     def _normalized_subdiv(self):
@@ -1071,9 +1051,9 @@ class HolidaySum(HolidayBase):
     are merged. All years are calculated (expanded) for all operands.
     """
 
-    country: Union[str, List[str]]  # type: ignore[assignment]
+    code: Union[str, List[str]]  # type: ignore[assignment]
     """Countries included in the addition."""
-    market: Union[str, List[str]]  # type: ignore[assignment]
+    scope: str
     """Markets included in the addition."""
     subdiv: Optional[Union[str, List[str]]]  # type: ignore[assignment]
     """Subdivisions included in the addition."""
@@ -1132,7 +1112,7 @@ iso_3166_holidays('CA') + iso_3166_holidays('MX')
         # and Milano, or ... you get the picture.
         # Same goes when countries and markets are being mixed (working, yet
         # still nonsensical).
-        for attr in ("country", "market", "subdiv"):
+        for attr in ("code", "subdiv"):
             if (
                 getattr(h1, attr, None)
                 and getattr(h2, attr, None)

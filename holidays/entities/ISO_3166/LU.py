@@ -17,14 +17,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class LuHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class LuHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Luxembourg."""
 
-    country = "LU"
+    code = "LU"
     name = "Luxembourg"
     default_language = "lb"
     supported_languages = ("de", "en_US", "fr", "lb", "uk")

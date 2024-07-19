@@ -47,14 +47,17 @@ are some weired edge cases:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, OCT
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class DeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class DeHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Germany."""
 
-    country = "DE"
+    code = "DE"
     name = "Germany"
     default_language = "de"
     supported_languages = ("de", "en_US", "uk")

@@ -33,14 +33,15 @@ because they were printed prior to the declaration of law change.
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEXT_MON
 
 
-class CoHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class CoHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Colombia."""
 
-    country = "CO"
+    code = "CO"
     name = "Colombia"
     default_language = "es"
     # %s (observed).

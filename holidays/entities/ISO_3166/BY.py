@@ -23,14 +23,17 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, MAR, APR, MAY, JUN, JUL, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class ByHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ByHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Belarus."""
 
-    country = "BY"
+    code = "BY"
     name = "Belarus"
     default_language = "be"
     supported_languages = ("be", "en_US")

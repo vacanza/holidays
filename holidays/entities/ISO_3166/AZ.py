@@ -24,6 +24,7 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -32,10 +33,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class AzHolidays(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
+class AzHolidays(
+    ObservedHolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """A class to represent holidays for Azerbaijan."""
 
-    country = "AZ"
+    code = "AZ"
     name = "Azerbaijan"
     default_language = "az"
     # %s (estimated).

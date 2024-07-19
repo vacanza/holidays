@@ -10,14 +10,15 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.entities.ISO_3166.US import UsHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MpHolidays(HolidayBase):
+class MpHolidays(HolidayBase, Iso3166Entity):
     """A class to represent holidays for Northern Mariana Islands."""
 
-    country = "MP"
+    code = "MP"
     name = "Northern Mariana Islands"
     supported_categories = UsHolidays.supported_categories
 

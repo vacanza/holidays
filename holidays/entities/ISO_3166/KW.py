@@ -19,14 +19,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class KwHolidays(HolidayBase, InternationalHolidays, IslamicHolidays):
+class KwHolidays(HolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays):
     """A class to represent holidays for Kuwait."""
 
-    country = "KW"
+    code = "KW"
     name = "Kuwait"
     default_language = "ar"
     # %s (estimated).

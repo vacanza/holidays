@@ -17,14 +17,15 @@ References:
     - https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class ZwHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class ZwHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Zimbabwe."""
 
-    country = "ZW"
+    code = "ZW"
     name = "Zimbabwe"
     observed_label = "%s (observed)"
 

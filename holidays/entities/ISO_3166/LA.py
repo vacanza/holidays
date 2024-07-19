@@ -42,6 +42,7 @@ from gettext import gettext as tr
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUL, OCT, DEC
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -53,10 +54,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class LaHolidays(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
+class LaHolidays(
+    ObservedHolidayBase, Iso3166Entity, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
+):
     """A class to represent holidays for Laos."""
 
-    country = "LA"
+    code = "LA"
     name = "Laos"
     supported_categories = (BANK, PUBLIC, SCHOOL, WORKDAY)
     default_language = "lo"

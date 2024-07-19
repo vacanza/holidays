@@ -20,6 +20,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JUN
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -29,10 +30,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class DoHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class DoHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Dominican Republic."""
 
-    country = "DO"
+    code = "DO"
     name = "Dominican Republic"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")

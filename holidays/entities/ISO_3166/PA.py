@@ -16,14 +16,15 @@ References:
     - https://publicholidays.com.pa/
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class PaHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class PaHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Panama."""
 
-    country = "PA"
+    code = "PA"
     name = "Panama"
     observed_label = "%s (observed)"
 

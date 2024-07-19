@@ -17,14 +17,17 @@ References:
 """
 
 from holidays.calendars.gregorian import MAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class ItHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ItHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Italy."""
 
-    country = "IT"
+    code = "IT"
     name = "Italy"
     subdivisions = (
         # Provinces.
