@@ -19,14 +19,17 @@ References:
 """
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class KzHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class KzHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Kazakhstan."""
 
-    country = "KZ"
+    code = "KZ"
     name = "Kazakhstan"
     observed_label = "%s (observed)"
 

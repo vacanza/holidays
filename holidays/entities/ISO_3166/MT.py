@@ -33,14 +33,15 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MtHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class MtHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Malta."""
 
-    country = "MT"
+    code = "MT"
     name = "Malta"
     default_language = "mt"
     supported_languages = ("en_US", "mt")

@@ -32,6 +32,7 @@ from holidays.calendars.hebrew import (
     YOM_KIPPUR,
 )
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -44,10 +45,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class IlHolidays(ObservedHolidayBase):
+class IlHolidays(ObservedHolidayBase, Iso3166Entity):
     """A class to represent holidays for Israel."""
 
-    country = "IL"
+    code = "IL"
     name = "Israel"
     default_language = "he"
     # %s (observed).

@@ -19,14 +19,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, SUN, _timedelta, _get_nth_weekday_of_month
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class MgHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class MgHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Madagascar."""
 
-    country = "MG"
+    code = "MG"
     name = "Madagascar"
     default_language = "mg"
     supported_languages = ("en_US", "mg", "uk")

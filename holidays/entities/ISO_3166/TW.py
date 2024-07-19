@@ -36,6 +36,7 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -47,11 +48,15 @@ from holidays.observed_holiday_base import (
 
 
 class TwHolidays(
-    ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+    ObservedHolidayBase,
+    Iso3166Entity,
+    ChineseCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
 ):
     """A class to represent holidays for Taiwan."""
 
-    country = "TW"
+    code = "TW"
     name = "Taiwan"
     # %s (observed).
     observed_label = tr("%s（慶祝）")

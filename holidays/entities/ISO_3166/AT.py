@@ -13,14 +13,15 @@
 from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AtHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class AtHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Austria."""
 
-    country = "AT"
+    code = "AT"
     name = "Austria"
     default_language = "de"
     supported_categories = (BANK, PUBLIC)

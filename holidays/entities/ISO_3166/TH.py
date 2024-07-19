@@ -117,6 +117,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -129,10 +130,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class ThHolidays(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
+class ThHolidays(
+    ObservedHolidayBase, Iso3166Entity, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
+):
     """A class to represent holidays for Thailand."""
 
-    country = "TH"
+    code = "TH"
     name = "Thailand"
     supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
     default_language = "th"

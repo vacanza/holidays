@@ -9,3 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
+
+SCOPE_ISO_10383 = "ISO_10383"
+
+
+class Iso10383Entity:
+    scope: str = SCOPE_ISO_10383

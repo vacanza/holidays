@@ -53,6 +53,7 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -62,10 +63,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class ArHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class ArHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Argentina."""
 
-    country = "AR"
+    code = "AR"
     name = "Argentina"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")

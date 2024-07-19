@@ -10,14 +10,15 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.entities.ISO_3166.US import UsHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class ViHolidays(HolidayBase):
+class ViHolidays(HolidayBase, Iso3166Entity):
     """A class to represent holidays for Virgin Islands."""
 
-    country = "VI"
+    code = "VI"
     name = "Virgin Islands (U.S.)"
     supported_categories = UsHolidays.supported_categories
 

@@ -10,15 +10,16 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.entities.ISO_3166.GB import GbHolidays
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
 
-class ImHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class ImHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Isle of Man."""
 
-    country = "IM"
+    code = "IM"
     name = "Isle of Man"
 
     def __init__(self, *args, **kwargs):

@@ -27,14 +27,15 @@ to not include sundays as a holiday.
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import _get_all_sundays
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class NoHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class NoHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Norway."""
 
-    country = "NO"
+    code = "NO"
     name = "Norway"
     default_language = "no"
     supported_languages = ("en_US", "no", "uk")

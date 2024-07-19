@@ -13,14 +13,17 @@
 from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class EgHolidays(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class EgHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, IslamicHolidays, InternationalHolidays
+):
     """A class to represent holidays for Egypt."""
 
-    country = "EG"
+    code = "EG"
     name = "Egypt"
     default_language = "ar"
     # %s (estimated).

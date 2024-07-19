@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -20,10 +21,12 @@ References:
 """
 
 
-class MkHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class MkHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for North Macedonia."""
 
-    country = "MK"
+    code = "MK"
     name = "North Macedonia"
 
     def __init__(self, *args, **kwargs):

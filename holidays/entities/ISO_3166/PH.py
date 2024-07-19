@@ -15,6 +15,7 @@ References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_the_Philippines
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -25,11 +26,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class PhHolidays(
-    HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase,
+    Iso3166Entity,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
 ):
     """A class to represent holidays for Philippines."""
 
-    country = "PH"
+    code = "PH"
     name = "Philippines"
 
     def __init__(self, *args, **kwargs):

@@ -22,14 +22,17 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class PyHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class PyHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Paraguay."""
 
-    country = "PY"
+    code = "PY"
     name = "Paraguay"
     default_language = "es"
     supported_categories = (GOVERNMENT, PUBLIC)

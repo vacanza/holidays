@@ -24,14 +24,15 @@ from gettext import gettext as tr
 from holidays.calendars.gregorian import MAY
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import GOVERNMENT, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class GeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class GeHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Georgia."""
 
-    country = "GE"
+    code = "GE"
     name = "Georgia"
     supported_categories = (GOVERNMENT, PUBLIC)
     default_language = "ka"

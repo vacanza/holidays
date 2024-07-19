@@ -27,6 +27,7 @@ from holidays.calendars import (
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -40,6 +41,7 @@ from holidays.holiday_base import HolidayBase
 
 class IdHolidays(
     HolidayBase,
+    Iso3166Entity,
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -49,7 +51,7 @@ class IdHolidays(
 ):
     """A class to represent holidays for Indonesia."""
 
-    country = "ID"
+    code = "ID"
     name = "Indonesia"
     default_language = "id"
     # %s (estimated).

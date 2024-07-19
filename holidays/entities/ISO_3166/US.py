@@ -30,6 +30,7 @@ from typing import Tuple, Union
 
 from holidays.calendars.gregorian import DEC
 from holidays.constants import PUBLIC, UNOFFICIAL
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -42,10 +43,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class UsHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class UsHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for United States of America."""
 
-    country = "US"
+    code = "US"
     name = "United States of America"
     supported_categories = (PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"

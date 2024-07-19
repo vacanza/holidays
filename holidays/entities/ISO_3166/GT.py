@@ -27,14 +27,15 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEAREST_MON_LATAM
 
 
-class GtHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class GtHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Guatemala."""
 
-    country = "GT"
+    code = "GT"
     name = "Guatemala"
     default_language = "es"
     supported_languages = ("en_US", "es")

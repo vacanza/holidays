@@ -15,14 +15,15 @@ References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_San_Marino
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class SmHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class SmHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for San Marino."""
 
-    country = "SM"
+    code = "SM"
     name = "San Marino"
 
     def __init__(self, *args, **kwargs):

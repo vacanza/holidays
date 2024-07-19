@@ -25,14 +25,15 @@ only the following Monday is considered a holiday.
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class FrHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class FrHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for France."""
 
-    country = "FR"
+    code = "FR"
     name = "France"
     default_language = "fr"
     supported_languages = ("en_US", "fr", "uk")

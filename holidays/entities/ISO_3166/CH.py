@@ -21,14 +21,15 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO_NONE, SAT_TO_NONE
 
 
-class ChHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class ChHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Switzerland."""
 
-    country = "CH"
+    code = "CH"
     name = "Switzerland"
     default_language = "de"
     subdivisions = (

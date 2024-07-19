@@ -18,14 +18,15 @@ References:
     - https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf
 """
 
+from holidays.entities.ISO_10383 import Iso10383Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
 
 
-class IfeuHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class IfeuHolidays(ObservedHolidayBase, Iso10383Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for ICE Futures Europe."""
 
-    market = "IFEU"
+    code = "IFEU"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

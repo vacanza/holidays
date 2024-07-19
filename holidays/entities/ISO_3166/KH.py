@@ -35,14 +35,17 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, AUG, SEP, _timedelta
 from holidays.calendars.thai import KHMER_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class KhHolidays(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
+class KhHolidays(
+    HolidayBase, Iso3166Entity, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
+):
     """A class to represent holidays for Cambodia."""
 
-    country = "KH"
+    code = "KH"
     name = "Cambodia"
     default_language = "km"
     supported_languages = ("en_US", "km", "th")

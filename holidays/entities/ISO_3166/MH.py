@@ -17,14 +17,17 @@ References:
 """
 
 from holidays.calendars.gregorian import NOV
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class MhHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class MhHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Marshall Islands."""
 
-    country = "MH"
+    code = "MH"
     name = "Marshall Islands"
     observed_label = "%s Holiday"
 

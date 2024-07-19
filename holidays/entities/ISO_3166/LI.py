@@ -19,14 +19,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class LiHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class LiHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Liechtenstein."""
 
-    country = "LI"
+    code = "LI"
     name = "Liechtenstein"
     default_language = "de"
     supported_categories = (BANK, PUBLIC)

@@ -23,14 +23,15 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, MAY, _timedelta
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class CwHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class CwHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Curaçao."""
 
-    country = "CW"
+    code = "CW"
     name = "Curaçao"
     default_language = "pap_CW"
     supported_languages = ("en_US", "nl", "pap_CW", "uk")

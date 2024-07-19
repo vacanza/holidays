@@ -25,14 +25,15 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, FRI, SAT
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AeHolidays(HolidayBase, InternationalHolidays, IslamicHolidays):
+class AeHolidays(HolidayBase, Iso3166Entity, InternationalHolidays, IslamicHolidays):
     """A class to represent holidays for United Arab Emirates."""
 
-    country = "AE"
+    code = "AE"
     name = "United Arab Emirates"
     default_language = "ar"
     # %s (estimated).

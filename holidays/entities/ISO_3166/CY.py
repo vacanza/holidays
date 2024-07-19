@@ -20,14 +20,15 @@ from gettext import gettext as tr
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import BANK, OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class CyHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class CyHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Cyprus."""
 
-    country = "CY"
+    code = "CY"
     name = "Cyprus"
     default_language = "el"
     supported_categories = (BANK, OPTIONAL, PUBLIC)

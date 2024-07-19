@@ -345,8 +345,8 @@ class CommonCountryTests(CommonTests):
     """Common test cases for country entities."""
 
     def test_code(self):
-        self.assertTrue(hasattr(self.holidays, "country"))
-        self.assertFalse(hasattr(self.holidays, "market"))
+        self.assertTrue(hasattr(self.holidays, "code"))
+        self.assertTrue(hasattr(self.holidays, "scope"))
 
     def test_observed_estimated_label(self):
         estimated_label = getattr(self.holidays, "estimated_label", None)
@@ -366,8 +366,8 @@ class CommonFinancialTests(CommonTests):
     """Common test cases for financial entities."""
 
     def test_code(self):
-        self.assertTrue(hasattr(self.holidays, "market"))
-        self.assertFalse(hasattr(self.holidays, "country"))
+        self.assertTrue(hasattr(self.holidays, "code"))
+        self.assertTrue(hasattr(self.holidays, "scope"))
 
 
 class SundayHolidays(TestCase):

@@ -16,14 +16,15 @@ References:
     - https://www.holsdb.com/public-holidays/ad
 """
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AdHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class AdHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Andorra."""
 
-    country = "AD"
+    code = "AD"
     name = "Andorra"
     subdivisions = (
         "02",  # Canillo.

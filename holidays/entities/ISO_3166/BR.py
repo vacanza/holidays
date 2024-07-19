@@ -22,14 +22,15 @@ from datetime import date
 
 from holidays.calendars.gregorian import JAN, MAR, SEP, NOV, FRI, _get_nth_weekday_from
 from holidays.constants import OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class BrHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class BrHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Brazil."""
 
-    country = "BR"
+    code = "BR"
     name = "Brazil"
     subdivisions = (
         "AC",  # Acre

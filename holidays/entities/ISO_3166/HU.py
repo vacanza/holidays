@@ -37,14 +37,17 @@ Substituted holidays official sources:
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class HuHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class HuHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Hungary."""
 
-    country = "HU"
+    code = "HU"
     name = "Hungary"
     default_language = "hu"
     supported_languages = ("en_US", "hu", "uk")

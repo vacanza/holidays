@@ -42,6 +42,7 @@ from holidays.calendars.gregorian import (
     WINTER_SOLSTICE,
 )
 from holidays.constants import OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -59,6 +60,7 @@ from holidays.observed_holiday_base import (
 
 class HkHolidays(
     ObservedHolidayBase,
+    Iso3166Entity,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
@@ -67,7 +69,7 @@ class HkHolidays(
 ):
     """A class to represent holidays for Hong Kong."""
 
-    country = "HK"
+    code = "HK"
     name = "Hong Kong"
     default_preferred_discretionary_holidays = (CHRISTMAS,)
     # %s（慶祝）.

@@ -34,14 +34,15 @@ from typing import Set
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class BgHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class BgHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Bulgaria."""
 
-    country = "BG"
+    code = "BG"
     name = "Bulgaria"
     default_language = "bg"
     # %s (observed).

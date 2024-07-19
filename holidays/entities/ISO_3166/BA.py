@@ -42,6 +42,7 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -52,10 +53,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class BaHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class BaHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """A class to represent holidays for Bosnia and Herzegovina."""
 
-    country = "BA"
+    code = "BA"
     name = "Bosnia and Herzegovina"
     default_language = "bs"
     supported_languages = ("bs", "en_US", "sr", "uk")

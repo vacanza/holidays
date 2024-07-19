@@ -32,6 +32,7 @@ from holidays.calendars import (
     _CustomHinduHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -46,6 +47,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 
 class SgHolidays(
     ObservedHolidayBase,
+    Iso3166Entity,
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -56,7 +58,7 @@ class SgHolidays(
 ):
     """A class to represent holidays for ."""
 
-    country = "SG"
+    code = "SG"
     name = "Singapore"
     observed_label = "%s (observed)"
 

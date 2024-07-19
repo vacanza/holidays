@@ -17,14 +17,17 @@ References:
 """
 
 from holidays.calendars.gregorian import FEB, MAR, SEP, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class IeHolidays(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class IeHolidays(
+    HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Ireland."""
 
-    country = "IE"
+    code = "IE"
     name = "Ireland"
 
     def __init__(self, *args, **kwargs):

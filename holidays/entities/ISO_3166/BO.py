@@ -25,6 +25,7 @@ References:
 
 from gettext import gettext as tr
 
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -34,10 +35,10 @@ from holidays.observed_holiday_base import (
 )
 
 
-class BoHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class BoHolidays(ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Bolivia."""
 
-    country = "BO"
+    code = "BO"
     name = "Bolivia"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")

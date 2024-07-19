@@ -24,6 +24,7 @@ In-Lieu observance was first provided in the Bank Holidays Extension Act 1875.
 """
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -33,10 +34,12 @@ from holidays.observed_holiday_base import (
 )
 
 
-class GbHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class GbHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for United Kingdom of Great Britain and Northern Ireland."""
 
-    country = "GB"
+    code = "GB"
     name = "United Kingdom of Great Britain and Northern Ireland"
     observed_label = "%s (observed)"
     subdivisions = (

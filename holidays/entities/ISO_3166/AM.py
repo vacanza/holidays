@@ -20,14 +20,15 @@ References:
 from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AmHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class AmHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for Armenia."""
 
-    country = "AM"
+    code = "AM"
     name = "Armenia"
     default_language = "hy"
     supported_languages = ("en_US", "hy")

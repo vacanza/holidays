@@ -18,14 +18,17 @@ References:
 """
 
 from holidays.calendars.gregorian import FEB, APR, AUG, SEP
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class KeHolidays(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+class KeHolidays(
+    ObservedHolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """A class to represent holidays for Kenya."""
 
-    country = "KE"
+    code = "KE"
     name = "Kenya"
     observed_label = "%s (observed)"
 

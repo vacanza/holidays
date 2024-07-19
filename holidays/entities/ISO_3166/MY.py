@@ -50,6 +50,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
 )
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -69,6 +70,7 @@ from holidays.observed_holiday_base import (
 
 class MyHolidays(
     ObservedHolidayBase,
+    Iso3166Entity,
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -79,7 +81,7 @@ class MyHolidays(
 ):
     """A class to represent holidays for Malaysia."""
 
-    country = "MY"
+    code = "MY"
     name = "Malaysia"
     default_language = "ms_MY"
     # %s (estimated).

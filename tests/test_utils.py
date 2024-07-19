@@ -34,7 +34,7 @@ class TestCountryHolidays(unittest.TestCase):
         self.holidays = iso_3166_holidays("US")
 
     def test_country(self):
-        self.assertEqual(self.holidays.country, "US")
+        self.assertEqual(self.holidays.code, "US")
 
     def test_country_single_year(self):
         h = iso_3166_holidays("US", years=2021)
@@ -63,7 +63,7 @@ class TestFinancialHolidays(unittest.TestCase):
         self.holidays = iso_10383_holidays("XNYS")
 
     def test_market(self):
-        self.assertEqual(self.holidays.market, "XNYS")
+        self.assertEqual(self.holidays.code, "XNYS")
 
     def test_market_single_year(self):
         h = iso_10383_holidays("XNYS", years=2021)

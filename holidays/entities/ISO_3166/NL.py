@@ -22,14 +22,15 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, AUG, _timedelta
 from holidays.constants import OPTIONAL, PUBLIC
+from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class NlHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+class NlHolidays(HolidayBase, Iso3166Entity, ChristianHolidays, InternationalHolidays):
     """A class to represent holidays for  Netherlands."""
 
-    country = "NL"
+    code = "NL"
     name = "Netherlands"
     default_language = "nl"
     supported_categories = (OPTIONAL, PUBLIC)
