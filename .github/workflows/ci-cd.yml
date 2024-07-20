@@ -8,6 +8,8 @@ on:
       - v1
   pull_request:
   push:
+    branches-ignore:
+      - gh-readonly-queue/**
   workflow_dispatch:
 
 env:
