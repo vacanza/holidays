@@ -8,6 +8,8 @@ on:
       - v1
   pull_request:
   push:
+    branches-ignore:
+      - gh-readonly-queue/**
   workflow_dispatch:
 
 env:
@@ -83,7 +85,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install .
 
       - name: Run tests
@@ -113,8 +115,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade build polib
-          pip install .
+          python -m pip install build polib
+          python -m pip install .
 
       - name: Build distribution
         run: |
@@ -160,7 +162,7 @@ jobs:
         shell: bash
         run: |
           rm -rf holidays
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install `ls dist/*.whl`
           pytest --dist loadscope --numprocesses auto tests/countries tests/financial
           python -m pip uninstall -y holidays python-dateutil six
