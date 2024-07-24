@@ -11,5 +11,5 @@ pytest-cov==5.0.0
 pytest-xdist==3.5.0; implementation_name == 'pypy'
 pytest-xdist==3.6.1; implementation_name != 'pypy'
 pytest==8.1.1; implementation_name == 'pypy'
-pytest==8.2.2; implementation_name != 'pypy'
+pytest==8.3.1; implementation_name != 'pypy'
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
