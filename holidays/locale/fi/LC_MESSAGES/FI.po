@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.54\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2023-04-08 19:46+0300\n"
+"PO-Revision-Date: 2024-07-26 17:40+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: fi\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -44,7 +44,7 @@ msgid "Pääsiäispäivä"
 msgstr ""
 
 #. Easter Monday.
-msgid "2. pääsiäispäivä"
+msgid "Toinen pääsiäispäivä"
 msgstr ""
 
 #. May Day.
