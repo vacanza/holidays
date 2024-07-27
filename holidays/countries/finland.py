@@ -19,12 +19,16 @@ from holidays.holiday_base import HolidayBase
 
 class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+        - `Bank holidays (Finnish) <https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/>`_
+        - `Bank holidays (English) <https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/>`_
+        - `Bank holidays (Swedish) <https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/>`_
     """
 
     country = "FI"
     default_language = "fi"
-    supported_languages = ("en_US", "fi", "sv", "uk")
+    supported_languages = ("en_US", "fi", "sv_FI", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -49,7 +53,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Pääsiäispäivä"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("2. pääsiäispäivä"))
+        self._add_easter_monday(tr("Toinen pääsiäispäivä"))
 
         # May Day.
         self._add_holiday_may_1(tr("Vappu"))
