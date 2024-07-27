@@ -1,17 +1,13 @@
-# Test environments.
-pre-commit
-ruff
-tox
+# Dev requirements.
 
-# Localization.
-lingva
-
-# Holidays pre-calculation.
-convertdate
-hijridate
-
-# Deployment.
-build
-gitpython
-pygithub
+build==1.2.1
+convertdate==2.4.0
+gitpython==3.1.43
+hijridate==2.5.0
+lingva==5.0.3
+pre-commit==3.7.1
+pygithub==2.3.0
+ruff==0.5.4
+tox==4.16.0
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability

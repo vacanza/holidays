@@ -19,22 +19,22 @@ from tests.common import CommonCountryTests
 class TestFiHolidays(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(FiHolidays, language="sv")
+        super().setUpClass(FiHolidays, language="sv_FI")
 
-    def test_sv(self):
+    def test_sv_fi(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Nyårsdagen"),
-            ("2022-01-06", "Trettondedagen"),
+            ("2022-01-06", "Trettondag"),
             ("2022-04-15", "Långfredagen"),
             ("2022-04-17", "Påskdagen"),
             ("2022-04-18", "Annandag påsk"),
-            ("2022-05-01", "Vappen"),
-            ("2022-05-26", "Kristi himmelfärdsdag"),
+            ("2022-05-01", "Första maj"),
+            ("2022-05-26", "Kristi himmelsfärdsdag"),
             ("2022-06-05", "Pingst"),
             ("2022-06-24", "Midsommarafton"),
             ("2022-06-25", "Midsommardagen"),
             ("2022-11-05", "Alla helgons dag"),
-            ("2022-12-06", "Självständighetsdagen"),
+            ("2022-12-06", "Självständigshetsdagen"),
             ("2022-12-24", "Julafton"),
             ("2022-12-25", "Juldagen"),
             ("2022-12-26", "Annandag jul"),

@@ -16,7 +16,7 @@ from holidays.entities.ISO_3166.MW import MwHolidays
 from tests.common import CommonCountryTests
 
 
-class TestMalawi(CommonCountryTests, TestCase):
+class TestMwHolidays(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(MwHolidays)

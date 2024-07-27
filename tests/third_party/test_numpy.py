@@ -10,10 +10,7 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from platform import platform, python_implementation, python_version
 from unittest import TestCase
-
-import pytest
 
 from holidays.entities.ISO_3166.KH import KhHolidays
 from holidays.entities.ISO_3166.TH import ThHolidays
@@ -21,12 +18,6 @@ from holidays.entities.ISO_3166.UA import UaHolidays
 
 
 class TestNumpy(TestCase):
-    @pytest.mark.skipif(
-        platform().startswith("Windows")
-        and python_implementation().startswith("PyPy")
-        and python_version().startswith("3.10"),
-        reason='Avoid "make: *** [Makefile:63: test] Error 5" for pypy3.10 on Windows',
-    )
     def test_years_int_conversion(self):
         import numpy as np  # It seems the import causes the error mentioned above.
 

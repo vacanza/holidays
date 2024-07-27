@@ -27,7 +27,7 @@ class TestFiHolidays(CommonCountryTests, TestCase):
             ("2022-01-06", "Loppiainen"),
             ("2022-04-15", "Pitkäperjantai"),
             ("2022-04-17", "Pääsiäispäivä"),
-            ("2022-04-18", "2. pääsiäispäivä"),
+            ("2022-04-18", "Toinen pääsiäispäivä"),
             ("2022-05-01", "Vappu"),
             ("2022-05-26", "Helatorstai"),
             ("2022-06-05", "Helluntaipäivä"),

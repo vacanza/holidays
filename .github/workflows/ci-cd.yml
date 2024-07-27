@@ -8,6 +8,8 @@ on:
       - v1
   pull_request:
   push:
+    branches-ignore:
+      - gh-readonly-queue/**
   workflow_dispatch:
 
 env:
@@ -50,22 +52,6 @@ jobs:
           - '3.10'
           - '3.11'
           - '3.12'
-          - 'pypy-3.9'
-          - 'pypy-3.10'
-        exclude:
-          - os: 'macos-latest'
-            python-version: '3.8'
-          - os: 'macos-latest'
-            python-version: '3.9'
-          - os: 'macos-latest'
-            python-version: 'pypy-3.9'
-        include:
-          - os: 'macos-13'
-            python-version: '3.8'
-          - os: 'macos-13'
-            python-version: '3.9'
-          - os: 'macos-13'
-            python-version: 'pypy-3.9'
     steps:
       - uses: actions/checkout@v4
 
@@ -83,7 +69,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install .
 
       - name: Run tests
@@ -113,8 +99,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade build polib
-          pip install .
+          python -m pip install build polib
+          python -m pip install .
 
       - name: Build distribution
         run: |
@@ -160,7 +146,7 @@ jobs:
         shell: bash
         run: |
           rm -rf holidays
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install `ls dist/*.whl`
           pytest --dist loadscope --numprocesses auto tests/entities
           python -m pip uninstall -y holidays python-dateutil six

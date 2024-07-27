@@ -418,7 +418,7 @@ All other default values are highlighted with bold:
   * - FI
     - Finland
     -
-    - en_US, **fi**, sv, uk
+    - en_US, **fi**, sv_FI, uk
     -
   * - FR
     - France
