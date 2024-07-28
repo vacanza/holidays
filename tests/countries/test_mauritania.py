@@ -45,7 +45,9 @@ class TestMauritania(CommonCountryTests, TestCase):
         self.assertHolidayName("Africa Day", (f"{year}-05-25" for year in range(1950, 2050)))
 
     def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-11-28" for year in range(1960, 2050)))
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-11-28" for year in range(1960, 2050)))
+        self.assertNoHolidayName(name, range(1950, 1960))
 
     def test_2023(self):
         self.assertHolidays(

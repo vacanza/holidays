@@ -52,7 +52,7 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_labor_day("Labor Day")
 
         # Africa Day.
-        self._add_holiday_may_25("Africa Day")
+        self._add_africa_day("Africa Day")
 
         # Independence Day.
         if year >= 1960:
