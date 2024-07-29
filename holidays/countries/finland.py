@@ -13,6 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import _timedelta
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -24,11 +25,14 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         - `Bank holidays (Finnish) <https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/>`_
         - `Bank holidays (English) <https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/>`_
         - `Bank holidays (Swedish) <https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/>`_
+        - https://en.wikipedia.org/wiki/Flag_flying_days_in_Finland#Customary_flag_days
+        - https://intermin.fi/en/flag-and-arms/flag-flying-days
     """
 
     country = "FI"
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "uk")
+    supported_categories = (PUBLIC, UNOFFICIAL)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -96,6 +100,71 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Tapaninpäivä"))
+
+    def _populate_unofficial_holidays(self):
+        if self._year >= 2012:
+            # Day of Finnish architecture and design, Birthday of Alvar Aalto.
+            self._add_holiday_feb_3(tr("Arkkitehtuurin ja muotoilun päiviä"))
+
+        if self._year >= 1854:
+            # Birthday of the national poet Johan Ludvig Runeberg
+            self._add_holiday_feb_5(tr("Runebergin päivä"))
+
+        if self._year >= 2007:
+            # Birthday of novelist and playwright Minna Canth and Day of Equality
+            self._add_holiday_mar_19(tr("Minna Canthin päivä, tasa-arvon päivä"))
+
+        if self._year >= 1978:
+            # The day Mikael Agricola and Day of the Finnish language
+            self._add_holiday_apr_9(tr("Mikael Agricolan päivä, suomen kielen päivä"))
+
+        if self._year >= 1987:
+            # National Veterans' Day
+            self._add_holiday_apr_27(tr("Kansallinen veteraanipäivä"))
+
+        if self._year >= 2019:
+            # Europe Day
+            self._add_holiday_may_9(tr("Eurooppa-päivä"))
+
+        if self._year >= 1952:
+            # Day of Finnish Identity (or The Finnish Identity Day)
+            self._add_holiday_may_12(tr("Suomalaisuuden päivä"))
+
+        if self._year >= 1977:
+            # Remembrance Day
+            self._add_holiday_3rd_sun_of_may(tr("Kaatuneitten muistopäivä"))
+
+        if self._year >= 1992:
+            # Birthday of the poet Eino Leino
+            self._add_holiday_jul_6(tr("Eino Leinon päivä"))
+
+        if self._year >= 2013:
+            # Finland’s Nature Day
+            self._add_holiday_last_sat_of_aug(tr("Suomen luonnon päivä"))
+
+        if self._year >= 2016:
+            # Miina Sillanpää Day, Day of Civic Participation
+            self._add_holiday_oct_1(tr("Miina Sillanpään ja kansalaisvaikuttamisen päivä"))
+
+        if self._year >= 1950:
+            # Birthday of the National writer Aleksis Kivi
+            self._add_holiday_oct_10(tr("Aleksis Kiven päivä"))
+
+        if self._year >= 1987:
+            # United Nations Day
+            self._add_united_nations_day(tr("Yhdistyneiden Kansakuntien päivä"))
+
+        if self._year >= 1908:
+            # Finnish Swedish Heritage Day
+            self._add_holiday_nov_6(tr("Ruotsalaisuuden päivä"))
+
+        if self._year >= 2020:
+            # Day of Children's Rights
+            self._add_holiday_nov_20(tr("Lapsen oikeuksien päivä"))
+
+        if self._year >= 2007:
+            # Birthday of the composer Jean Sibelius, Day of Finnish Music
+            self._add_holiday_dec_8(tr("Jean Sibeliuksen päivä"))
 
 
 class FI(Finland):

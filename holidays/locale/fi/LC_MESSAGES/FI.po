@@ -86,3 +86,67 @@ msgstr ""
 #. Second Day of Christmas.
 msgid "Tapaninpäivä"
 msgstr ""
+
+#. Day of Finnish architecture and design, Birthday of Alvar Aalto.
+msgid "Arkkitehtuurin ja muotoilun päiviä"
+msgstr ""
+
+#. Birthday of the national poet Johan Ludvig Runeberg
+msgid "Runebergin päivä"
+msgstr ""
+
+#. National Veterans' Day
+msgid "Kansallinen veteraanipäivä"
+msgstr ""
+
+#. Europe Day
+msgid "Eurooppa-päivä"
+msgstr ""
+
+#. Day of Finnish Identity (or The Finnish Identity Day)
+msgid "Suomalaisuuden päivä"
+msgstr ""
+
+#. Remembrance Day
+msgid "Kaatuneitten muistopäivä"
+msgstr ""
+
+#. Birthday of the poet Eino Leino
+msgid "Eino Leinon päivä"
+msgstr ""
+
+#. Finland’s Nature Day
+msgid "Suomen luonnon päivä"
+msgstr ""
+
+#. Miina Sillanpää Day, Day of Civic Participation
+msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
+msgstr ""
+
+#. Birthday of the National writer Aleksis Kivi
+msgid "Aleksis Kiven päivä"
+msgstr ""
+
+#. United Nations Day
+msgid "Yhdistyneiden Kansakuntien päivä"
+msgstr ""
+
+#. Day of Children's Rights
+msgid "Lapsen oikeuksien päivä"
+msgstr ""
+
+#. Birthday of the composer Jean Sibelius, Day of Finnish Music
+msgid "Jean Sibeliuksen päivä"
+msgstr ""
+
+#. Birthday of novelist and playwright Minna Canth and Day of Equality
+msgid "Minna Canthin päivä, tasa-arvon päivä"
+msgstr ""
+
+#. The day Mikael Agricola and Day of the Finnish language
+msgid "Mikael Agricolan päivä, suomen kielen päivä"
+msgstr ""
+
+#. Finnish Swedish Heritage Day
+msgid "Ruotsalaisuuden päivä"
+msgstr ""

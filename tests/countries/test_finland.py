@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import UNOFFICIAL
 from holidays.countries.finland import Finland, FI, FIN
 from tests.common import CommonCountryTests
 
@@ -165,6 +166,126 @@ class TestFinland(CommonCountryTests, TestCase):
             "1957-11-01",
         )
 
+    def _test_unofficial_holiday(self, name, month_and_day, year_of_adoption):
+        self.assertHolidayName(
+            name,
+            Finland(categories=UNOFFICIAL),
+            (f"{year}-{month_and_day}" for year in range(year_of_adoption, 2031)),
+        )
+        self.assertNoHolidayName(
+            name,
+            Finland(years=year_of_adoption - 1, categories=UNOFFICIAL),
+        )
+
+    def test_architecture_day(self):
+        name = "Arkkitehtuurin ja muotoilun päiviä"
+        self._test_unofficial_holiday(name, "02-03", 2012)
+
+    def test_runeberg_day(self):
+        name = "Runebergin päivä"
+        self._test_unofficial_holiday(name, "02-05", 1854)
+
+    def test_minna_canth_day(self):
+        name = "Minna Canthin päivä, tasa-arvon päivä"
+        self._test_unofficial_holiday(name, "03-19", 2007)
+
+    def test_agricola_day(self):
+        name = "Mikael Agricolan päivä, suomen kielen päivä"
+        self._test_unofficial_holiday(name, "04-09", 1978)
+
+    def test_veterans_day(self):
+        name = "Kansallinen veteraanipäivä"
+        self._test_unofficial_holiday(name, "04-27", 1987)
+
+    def test_europe_day(self):
+        name = "Eurooppa-päivä"
+        self._test_unofficial_holiday(name, "05-09", 2019)
+
+    def test_finnish_identity_day(self):
+        name = "Suomalaisuuden päivä"
+        self._test_unofficial_holiday(name, "05-12", 1952)
+
+    def test_remembrance_day(self):
+        self.assertHolidayName(
+            "Kaatuneitten muistopäivä",
+            Finland(categories=UNOFFICIAL),
+            "1977-05-15",
+            "1978-05-21",
+            "1985-05-19",
+            "2024-05-19",
+            "2025-05-18",
+        )
+        self.assertNoHoliday(
+            Finland(categories=UNOFFICIAL),
+            "1976-05-16",
+            "1975-05-18",
+        )
+
+    def test_eino_leino_day(self):
+        name = "Eino Leinon päivä"
+        self._test_unofficial_holiday(name, "07-06", 1992)
+
+    def test_finnish_nature_day(self):
+        self.assertHolidayName(
+            "Suomen luonnon päivä",
+            Finland(categories=UNOFFICIAL),
+            "2013-08-31",
+            "2014-08-30",
+            "2024-08-31",
+            "2025-08-30",
+            "2026-08-29",
+        )
+        self.assertNoHoliday(
+            Finland(categories=UNOFFICIAL),
+            "2012-08-25",
+            "2011-08-27",
+        )
+
+    def test_miina_sillanpaa_day(self):
+        name = "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
+        self._test_unofficial_holiday(name, "10-01", 2016)
+
+    def test_aleksis_kivi_day(self):
+        name = "Aleksis Kiven päivä"
+        self._test_unofficial_holiday(name, "10-10", 1950)
+
+    def test_united_nations_day(self):
+        name = "Yhdistyneiden Kansakuntien päivä"
+        self._test_unofficial_holiday(name, "10-24", 1987)
+
+    def test_finnish_swedish_heritage(self):
+        name = "Ruotsalaisuuden päivä"
+        self._test_unofficial_holiday(name, "11-06", 1908)
+
+    def test_day_of_childrens_rights(self):
+        name = "Lapsen oikeuksien päivä"
+        self._test_unofficial_holiday(name, "11-20", 2020)
+
+    def test_jean_sibelius_day(self):
+        name = "Jean Sibeliuksen päivä"
+        self._test_unofficial_holiday(name, "12-08", 2007)
+
+    def test_unofficial_holidays(self):
+        self.assertHolidays(
+            Finland(categories=UNOFFICIAL, years=2024),
+            ("2024-02-03", "Arkkitehtuurin ja muotoilun päiviä"),
+            ("2024-02-05", "Runebergin päivä"),
+            ("2024-03-19", "Minna Canthin päivä, tasa-arvon päivä"),
+            ("2024-04-09", "Mikael Agricolan päivä, suomen kielen päivä"),
+            ("2024-04-27", "Kansallinen veteraanipäivä"),
+            ("2024-05-09", "Eurooppa-päivä"),
+            ("2024-05-12", "Suomalaisuuden päivä"),
+            ("2024-05-19", "Kaatuneitten muistopäivä"),
+            ("2024-07-06", "Eino Leinon päivä"),
+            ("2024-08-31", "Suomen luonnon päivä"),
+            ("2024-10-01", "Miina Sillanpään ja kansalaisvaikuttamisen päivä"),
+            ("2024-10-10", "Aleksis Kiven päivä"),
+            ("2024-10-24", "Yhdistyneiden Kansakuntien päivä"),
+            ("2024-11-06", "Ruotsalaisuuden päivä"),
+            ("2024-11-20", "Lapsen oikeuksien päivä"),
+            ("2024-12-08", "Jean Sibeliuksen päivä"),
+        )
+
     def test_2018(self):
         self.assertHolidays(
             ("2018-01-01", "Uudenvuodenpäivä"),
@@ -207,16 +328,32 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Uudenvuodenpäivä"),
             ("2022-01-06", "Loppiainen"),
+            ("2022-02-03", "Arkkitehtuurin ja muotoilun päiviä"),
+            ("2022-02-05", "Runebergin päivä"),
+            ("2022-03-19", "Minna Canthin päivä, tasa-arvon päivä"),
+            ("2022-04-09", "Mikael Agricolan päivä, suomen kielen päivä"),
             ("2022-04-15", "Pitkäperjantai"),
             ("2022-04-17", "Pääsiäispäivä"),
             ("2022-04-18", "Toinen pääsiäispäivä"),
+            ("2022-04-27", "Kansallinen veteraanipäivä"),
             ("2022-05-01", "Vappu"),
+            ("2022-05-09", "Eurooppa-päivä"),
+            ("2022-05-12", "Suomalaisuuden päivä"),
+            ("2022-05-15", "Kaatuneitten muistopäivä"),
             ("2022-05-26", "Helatorstai"),
             ("2022-06-05", "Helluntaipäivä"),
             ("2022-06-24", "Juhannusaatto"),
             ("2022-06-25", "Juhannuspäivä"),
+            ("2022-07-06", "Eino Leinon päivä"),
+            ("2022-08-27", "Suomen luonnon päivä"),
+            ("2022-10-01", "Miina Sillanpään ja kansalaisvaikuttamisen päivä"),
+            ("2022-10-10", "Aleksis Kiven päivä"),
+            ("2022-10-24", "Yhdistyneiden Kansakuntien päivä"),
             ("2022-11-05", "Pyhäinpäivä"),
+            ("2022-11-06", "Ruotsalaisuuden päivä"),
+            ("2022-11-20", "Lapsen oikeuksien päivä"),
             ("2022-12-06", "Itsenäisyyspäivä"),
+            ("2022-12-08", "Jean Sibeliuksen päivä"),
             ("2022-12-24", "Jouluaatto"),
             ("2022-12-25", "Joulupäivä"),
             ("2022-12-26", "Tapaninpäivä"),
@@ -227,16 +364,32 @@ class TestFinland(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
+            ("2022-02-03", "Day of Finnish architecture and design"),
+            ("2022-02-05", "Birthday of the national poet Johan Ludvig Runeberg"),
+            ("2022-03-19", "Birthday of novelist and playwright Minna Canth and Day of Equality"),
+            ("2022-04-09", "The day Mikael Agricola and Day of the Finnish language"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
+            ("2022-04-27", "National Veterans' Day"),
             ("2022-05-01", "May Day"),
+            ("2022-05-09", "Europe Day"),
+            ("2022-05-12", "Day of Finnish Identity"),
+            ("2022-05-15", "Remembrance Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
             ("2022-06-24", "Midsummer Eve"),
             ("2022-06-25", "Midsummer Day"),
+            ("2022-07-06", "Birthday of the poet Eino Leino"),
+            ("2022-08-27", "Finland’s Nature Day"),
+            ("2022-10-01", "Miina Sillanpää Day, Day of Civic Participation"),
+            ("2022-10-10", "Birthday of the National writer Aleksis Kivi"),
+            ("2022-10-24", "United Nations Day"),
             ("2022-11-05", "All Saints' Day"),
+            ("2022-11-06", "Finnish Swedish Heritage Day"),
+            ("2022-11-20", "Day of Children's Rights"),
             ("2022-12-06", "Independence Day"),
+            ("2022-12-08", "Birthday of the composer Jean Sibelius, Day of Finnish Music"),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
@@ -247,16 +400,35 @@ class TestFinland(CommonCountryTests, TestCase):
             "uk",
             ("2022-01-01", "Новий рік"),
             ("2022-01-06", "Богоявлення"),
+            ("2022-02-03", "Дні архітектури та дизайну"),
+            ("2022-02-05", "День народження народного поета Йохана Людвіга Рунеберга"),
+            ("2022-03-19", "День народження Мінни Кант, День рівності"),
+            ("2022-04-09", "День Мікаеля Аґріколи, День фінської мови"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-17", "Великдень"),
             ("2022-04-18", "Великодній понеділок"),
+            ("2022-04-27", "Національний день ветеранів"),
             ("2022-05-01", "Ваппу"),
+            ("2022-05-09", "День Європи"),
+            ("2022-05-12", "День народження державного діяча Йохана Вільгельма Шелмана"),
+            ("2022-05-15", "День ветеранів Національної війни"),
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-06-05", "Трійця"),
             ("2022-06-24", "Переддень літнього сонцестояння"),
             ("2022-06-25", "День літнього сонцестояння"),
+            ("2022-07-06", "День народження поета Ейно Лейно"),
+            ("2022-08-27", "День природи Фінляндії"),
+            ("2022-10-01", "День Міїни Сілланпяя та громадянської активності."),
+            (
+                "2022-10-10",
+                "День народження народного письменника Алексіса Ківі, День фінської літератури",
+            ),
+            ("2022-10-24", "День Організації Об'єднаних Націй"),
             ("2022-11-05", "День усіх святих"),
+            ("2022-11-06", "День шведської ідентичності"),
+            ("2022-11-20", "День прав дитини"),
             ("2022-12-06", "День незалежності"),
+            ("2022-12-08", "День Жана Сібеліуса, День фінської музики"),
             ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
@@ -267,16 +439,32 @@ class TestFinland(CommonCountryTests, TestCase):
             "sv_FI",
             ("2022-01-01", "Nyårsdagen"),
             ("2022-01-06", "Trettondag"),
+            ("2022-02-03", "Arkitekturens dag"),
+            ("2022-02-05", "Runebergsdagen"),
+            ("2022-03-19", "Minna Canth-dagen, jämställdhetsdagen"),
+            ("2022-04-09", "Mikael Agricoladagen, finska språkets dag"),
             ("2022-04-15", "Långfredagen"),
             ("2022-04-17", "Påskdagen"),
             ("2022-04-18", "Annandag påsk"),
+            ("2022-04-27", "Nationella veterandagen"),
             ("2022-05-01", "Första maj"),
+            ("2022-05-09", "Europadagen"),
+            ("2022-05-12", "Finskhetens dag"),
+            ("2022-05-15", "De stupades dag"),
             ("2022-05-26", "Kristi himmelsfärdsdag"),
             ("2022-06-05", "Pingst"),
             ("2022-06-24", "Midsommarafton"),
             ("2022-06-25", "Midsommardagen"),
+            ("2022-07-06", "Eino Leinodagen"),
+            ("2022-08-27", "Den finska naturens dag"),
+            ("2022-10-01", "Miina Sillanpää-dagen, medborgarinflytandets dag"),
+            ("2022-10-10", "Aleksis Kividagen, den finska litteraturens dag"),
+            ("2022-10-24", "FN-dagen"),
             ("2022-11-05", "Alla helgons dag"),
+            ("2022-11-06", "Svenska dagen"),
+            ("2022-11-20", "Barnkonventionens dag"),
             ("2022-12-06", "Självständigshetsdagen"),
+            ("2022-12-08", "Jean Sibeliusdagen"),
             ("2022-12-24", "Julafton"),
             ("2022-12-25", "Juldagen"),
             ("2022-12-26", "Annandag jul"),
