@@ -21,7 +21,7 @@ class TestFinland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Finland)
-        cls.unofficial_holidays = Finland(categories=UNOFFICIAL)
+        cls.unofficial_holidays = Finland(categories=UNOFFICIAL, years=range(1853, 2031))
 
     def test_country_aliases(self):
         self.assertAliases(Finland, FI, FIN)
