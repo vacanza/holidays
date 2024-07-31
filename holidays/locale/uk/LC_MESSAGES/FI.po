@@ -97,7 +97,7 @@ msgstr "День Калевали, День фінської культури"
 
 #. Minna Canth Day, Day of Equality
 msgid "Minna Canthin päivä, tasa-arvon päivä"
-msgstr "День народження Мінни Кант, День рівності"
+msgstr "День Мінни Кант, День рівності"
 
 #. Mikael Agricola Day, Day of the Finnish Language
 msgid "Mikael Agricolan päivä, suomen kielen päivä"
@@ -137,7 +137,7 @@ msgstr "День природи Фінляндії"
 
 #. Miina Sillanpää Day, Day of Civic Participation
 msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
-msgstr "День Міїни Сілланпяя та громадянської активності"
+msgstr "День Міїни Сілланпяя, День громадянської активності"
 
 #. Aleksis Kivi Day, Day of Finnish Literature
 msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
