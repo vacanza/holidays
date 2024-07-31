@@ -115,7 +115,7 @@ msgstr ""
 msgid "Eino Leinon päivä"
 msgstr ""
 
-#. Finland’s Nature Day
+#. Finland's Nature Day
 msgid "Suomen luonnon päivä"
 msgstr ""
 

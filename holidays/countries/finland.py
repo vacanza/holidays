@@ -139,7 +139,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jul_6(tr("Eino Leinon päivä"))
 
         if self._year >= 2013:
-            # Finland’s Nature Day
+            # Finland's Nature Day
             self._add_holiday_last_sat_of_aug(tr("Suomen luonnon päivä"))
 
         if self._year >= 2016:

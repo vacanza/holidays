@@ -381,7 +381,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-06-24", "Midsummer Eve"),
             ("2022-06-25", "Midsummer Day"),
             ("2022-07-06", "Birthday of the poet Eino Leino"),
-            ("2022-08-27", "Finland’s Nature Day"),
+            ("2022-08-27", "Finland's Nature Day"),
             ("2022-10-01", "Miina Sillanpää Day, Day of Civic Participation"),
             ("2022-10-10", "Birthday of the National writer Aleksis Kivi"),
             ("2022-10-24", "United Nations Day"),

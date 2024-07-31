@@ -115,9 +115,9 @@ msgstr "Remembrance Day"
 msgid "Eino Leinon päivä"
 msgstr "Birthday of the poet Eino Leino"
 
-#. Finland’s Nature Day
+#. Finland's Nature Day
 msgid "Suomen luonnon päivä"
-msgstr "Finland’s Nature Day"
+msgstr "Finland's Nature Day"
 
 #. Miina Sillanpää Day, Day of Civic Participation
 msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"

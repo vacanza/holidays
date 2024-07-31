@@ -115,7 +115,7 @@ msgstr "День ветеранів Національної війни"
 msgid "Eino Leinon päivä"
 msgstr "День народження поета Ейно Лейно"
 
-#. Finland’s Nature Day
+#. Finland's Nature Day
 msgid "Suomen luonnon päivä"
 msgstr "День природи Фінляндії"
 

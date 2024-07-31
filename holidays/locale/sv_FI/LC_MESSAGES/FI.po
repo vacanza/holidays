@@ -115,7 +115,7 @@ msgstr "De stupades dag"
 msgid "Eino Leinon päivä"
 msgstr "Eino Leinodagen"
 
-#. Finland’s Nature Day
+#. Finland's Nature Day
 msgid "Suomen luonnon päivä"
 msgstr "Den finska naturens dag"
 
