@@ -131,7 +131,7 @@ msgstr ""
 
 #. United Nations Day
 msgid "Yhdistyneiden Kansakuntien päivä"
-msgstr "День Організації Об'єднаних Націй"
+msgstr "День Організації Обʼєднаних Націй"
 
 #. Day of Children's Rights
 msgid "Lapsen oikeuksien päivä"
