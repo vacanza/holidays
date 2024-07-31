@@ -87,10 +87,6 @@ msgstr "Різдво Христове"
 msgid "Tapaninpäivä"
 msgstr "Другий день Різдва"
 
-#. Day of Finnish architecture and design, Birthday of Alvar Aalto.
-msgid "Arkkitehtuurin ja muotoilun päiviä"
-msgstr "Дні архітектури та дизайну"
-
 #. Birthday of the national poet Johan Ludvig Runeberg
 msgid "Runebergin päivä"
 msgstr "День народження народного поета Йохана Людвіга Рунеберга"

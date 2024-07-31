@@ -102,10 +102,6 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Tapaninpäivä"))
 
     def _populate_unofficial_holidays(self):
-        if self._year >= 2012:
-            # Day of Finnish architecture and design, Birthday of Alvar Aalto.
-            self._add_holiday_feb_3(tr("Arkkitehtuurin ja muotoilun päiviä"))
-
         if self._year >= 1854:
             # Birthday of the national poet Johan Ludvig Runeberg
             self._add_holiday_feb_5(tr("Runebergin päivä"))

@@ -87,8 +87,6 @@ msgstr ""
 msgid "Tapaninpäivä"
 msgstr ""
 
-#. Day of Finnish architecture and design, Birthday of Alvar Aalto.
-msgid "Arkkitehtuurin ja muotoilun päiviä"
 msgstr ""
 
 #. Birthday of the national poet Johan Ludvig Runeberg
