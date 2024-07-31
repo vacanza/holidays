@@ -87,11 +87,23 @@ msgstr "Різдво Христове"
 msgid "Tapaninpäivä"
 msgstr "Другий день Різдва"
 
-#. Birthday of the national poet Johan Ludvig Runeberg
+#. Runeberg Day
 msgid "Runebergin päivä"
-msgstr "День народження народного поета Йохана Людвіга Рунеберга"
+msgstr "День Рунеберга"
 
-#. National Veterans' Day
+#. Kalevala Day, Day of Finnish Culture
+msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
+msgstr "День Калевали, День фінської культури"
+
+#. Minna Canth Day, Day of Equality
+msgid "Minna Canthin päivä, tasa-arvon päivä"
+msgstr "День народження Мінни Кант, День рівності"
+
+#. Mikael Agricola Day, Day of the Finnish Language
+msgid "Mikael Agricolan päivä, suomen kielen päivä"
+msgstr "День Мікаеля Аґріколи, День фінської мови"
+
+#. National War Veterans' Day
 msgid "Kansallinen veteraanipäivä"
 msgstr "Національний день ветеранів"
 
@@ -99,17 +111,25 @@ msgstr "Національний день ветеранів"
 msgid "Eurooppa-päivä"
 msgstr "День Європи"
 
-#. Day of Finnish Identity (or The Finnish Identity Day)
-msgid "Suomalaisuuden päivä"
-msgstr "День народження державного діяча Йохана Вільгельма Шелмана"
+#. Mothers' Day
+msgid "Äitienpäivä"
+msgstr "День матері"
+
+#. J. V. Snellman Day, Day of Finnish Heritage
+msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
+msgstr "День Ю. В. Снелльмана, День фінської спадщини"
 
 #. Remembrance Day
 msgid "Kaatuneitten muistopäivä"
 msgstr "День ветеранів Національної війни"
 
-#. Birthday of the poet Eino Leino
-msgid "Eino Leinon päivä"
-msgstr "День народження поета Ейно Лейно"
+#. Flag Day of the Finnish Defence Forces
+msgid "Puolustusvoimain lippujuhlan päivä"
+msgstr "День прапора фінських сил оборони"
+
+#. Eino Leino Day, Day of Summer and Poetry
+msgid "Eino Leinon päivä, runon ja suven päivä"
+msgstr "День Ейно Лейно, День літа та поезії"
 
 #. Finland's Nature Day
 msgid "Suomen luonnon päivä"
@@ -117,34 +137,28 @@ msgstr "День природи Фінляндії"
 
 #. Miina Sillanpää Day, Day of Civic Participation
 msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
-msgstr "День Міїни Сілланпяя та громадянської активності."
+msgstr "День Міїни Сілланпяя та громадянської активності"
 
-#. Birthday of the National writer Aleksis Kivi
-msgid "Aleksis Kiven päivä"
-msgstr ""
-"День народження народного письменника Алексіса Ківі, День фінської "
-"літератури"
+#. Aleksis Kivi Day, Day of Finnish Literature
+msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
+msgstr "День Алексіса Ківі, День фінської літератури"
 
 #. United Nations Day
-msgid "Yhdistyneiden Kansakuntien päivä"
-msgstr "День Організації Обʼєднаних Націй"
+msgid "YK:n päivä"
+msgstr "День ООН"
+
+#. Finnish Swedish Heritage Day, svenska dagen
+msgid "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"
+msgstr "День фінської шведської спадщини, шведський день"
+
+#. Fathers' Day
+msgid "Isänpäivä"
+msgstr "День батька"
 
 #. Day of Children's Rights
 msgid "Lapsen oikeuksien päivä"
 msgstr "День прав дитини"
 
-#. Birthday of the composer Jean Sibelius, Day of Finnish Music
-msgid "Jean Sibeliuksen päivä"
+#. Jean Sibelius Day, Day of Finnish Music
+msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr "День Жана Сібеліуса, День фінської музики"
-
-#. Birthday of novelist and playwright Minna Canth and Day of Equality
-msgid "Minna Canthin päivä, tasa-arvon päivä"
-msgstr "День народження Мінни Кант, День рівності"
-
-#. The day Mikael Agricola and Day of the Finnish language
-msgid "Mikael Agricolan päivä, suomen kielen päivä"
-msgstr "День Мікаеля Аґріколи, День фінської мови"
-
-#. Finnish Swedish Heritage Day
-msgid "Ruotsalaisuuden päivä"
-msgstr "День шведської ідентичності"

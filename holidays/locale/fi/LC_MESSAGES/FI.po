@@ -87,13 +87,23 @@ msgstr ""
 msgid "Tapaninpäivä"
 msgstr ""
 
-msgstr ""
-
-#. Birthday of the national poet Johan Ludvig Runeberg
+#. Runeberg Day
 msgid "Runebergin päivä"
 msgstr ""
 
-#. National Veterans' Day
+#. Kalevala Day, Day of Finnish Culture
+msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
+msgstr ""
+
+#. Minna Canth Day, Day of Equality
+msgid "Minna Canthin päivä, tasa-arvon päivä"
+msgstr ""
+
+#. Mikael Agricola Day, Day of the Finnish Language
+msgid "Mikael Agricolan päivä, suomen kielen päivä"
+msgstr ""
+
+#. National War Veterans' Day
 msgid "Kansallinen veteraanipäivä"
 msgstr ""
 
@@ -101,16 +111,24 @@ msgstr ""
 msgid "Eurooppa-päivä"
 msgstr ""
 
-#. Day of Finnish Identity (or The Finnish Identity Day)
-msgid "Suomalaisuuden päivä"
+#. Mothers' Day
+msgid "Äitienpäivä"
+msgstr ""
+
+#. J. V. Snellman Day, Day of Finnish Heritage
+msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
 msgstr ""
 
 #. Remembrance Day
 msgid "Kaatuneitten muistopäivä"
 msgstr ""
 
-#. Birthday of the poet Eino Leino
-msgid "Eino Leinon päivä"
+#. Flag Day of the Finnish Defence Forces
+msgid "Puolustusvoimain lippujuhlan päivä"
+msgstr ""
+
+#. Eino Leino Day, Day of Summer and Poetry
+msgid "Eino Leinon päivä, runon ja suven päivä"
 msgstr ""
 
 #. Finland's Nature Day
@@ -121,30 +139,26 @@ msgstr ""
 msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
 msgstr ""
 
-#. Birthday of the National writer Aleksis Kivi
-msgid "Aleksis Kiven päivä"
+#. Aleksis Kivi Day, Day of Finnish Literature
+msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
 msgstr ""
 
 #. United Nations Day
-msgid "Yhdistyneiden Kansakuntien päivä"
+msgid "YK:n päivä"
+msgstr ""
+
+#. Finnish Swedish Heritage Day, svenska dagen
+msgid "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"
+msgstr ""
+
+#. Fathers' Day
+msgid "Isänpäivä"
 msgstr ""
 
 #. Day of Children's Rights
 msgid "Lapsen oikeuksien päivä"
 msgstr ""
 
-#. Birthday of the composer Jean Sibelius, Day of Finnish Music
-msgid "Jean Sibeliuksen päivä"
-msgstr ""
-
-#. Birthday of novelist and playwright Minna Canth and Day of Equality
-msgid "Minna Canthin päivä, tasa-arvon päivä"
-msgstr ""
-
-#. The day Mikael Agricola and Day of the Finnish language
-msgid "Mikael Agricolan päivä, suomen kielen päivä"
-msgstr ""
-
-#. Finnish Swedish Heritage Day
-msgid "Ruotsalaisuuden päivä"
+#. Jean Sibelius Day, Day of Finnish Music
+msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr ""
