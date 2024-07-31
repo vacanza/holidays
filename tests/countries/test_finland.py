@@ -179,24 +179,19 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_runeberg_day(self):
-        name = "Runebergin päivä"
-        self._test_unofficial_holiday(name, "02-05", 1854)
+        self._test_unofficial_holiday("Runebergin päivä", "02-05", 1854)
 
     def test_minna_canth_day(self):
-        name = "Minna Canthin päivä, tasa-arvon päivä"
-        self._test_unofficial_holiday(name, "03-19", 2007)
+        self._test_unofficial_holiday("Minna Canthin päivä, tasa-arvon päivä", "03-19", 2007)
 
     def test_agricola_day(self):
-        name = "Mikael Agricolan päivä, suomen kielen päivä"
-        self._test_unofficial_holiday(name, "04-09", 1978)
+        self._test_unofficial_holiday("Mikael Agricolan päivä, suomen kielen päivä", "04-09", 1978)
 
     def test_veterans_day(self):
-        name = "Kansallinen veteraanipäivä"
-        self._test_unofficial_holiday(name, "04-27", 1987)
+        self._test_unofficial_holiday("Kansallinen veteraanipäivä", "04-27", 1987)
 
     def test_europe_day(self):
-        name = "Eurooppa-päivä"
-        self._test_unofficial_holiday(name, "05-09", 2019)
+        self._test_unofficial_holiday("Eurooppa-päivä", "05-09", 2019)
 
     def test_finnish_identity_day(self):
         self._test_unofficial_holiday("J.V. Snellmanin päivä, suomalaisuuden päivä", "05-12", 1952)
