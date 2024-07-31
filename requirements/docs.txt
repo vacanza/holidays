@@ -2,5 +2,5 @@
 
 python-dateutil==2.9.0.post0
 sphinx_rtd_theme==2.0.0
-sphinx==7.4.7
+sphinx==8.0.2
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
