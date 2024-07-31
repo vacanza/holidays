@@ -21,6 +21,7 @@ class TestFinland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Finland)
+        cls.unofficial_holidays = Finland(categories=UNOFFICIAL)
 
     def test_country_aliases(self):
         self.assertAliases(Finland, FI, FIN)
@@ -169,7 +170,7 @@ class TestFinland(CommonCountryTests, TestCase):
     def _test_unofficial_holiday(self, name, month_and_day, year_of_adoption):
         self.assertHolidayName(
             name,
-            Finland(categories=UNOFFICIAL),
+            self.unofficial_holidays,
             (f"{year}-{month_and_day}" for year in range(year_of_adoption, 2031)),
         )
         self.assertNoHolidayName(
@@ -203,7 +204,7 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_remembrance_day(self):
         self.assertHolidayName(
             "Kaatuneitten muistopäivä",
-            Finland(categories=UNOFFICIAL),
+            self.unofficial_holidays,
             "1977-05-15",
             "1978-05-21",
             "1985-05-19",
@@ -211,7 +212,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2025-05-18",
         )
         self.assertNoHoliday(
-            Finland(categories=UNOFFICIAL),
+            self.unofficial_holidays,
             "1976-05-16",
             "1975-05-18",
         )
@@ -222,7 +223,7 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_finnish_nature_day(self):
         self.assertHolidayName(
             "Suomen luonnon päivä",
-            Finland(categories=UNOFFICIAL),
+            self.unofficial_holidays,
             "2013-08-31",
             "2014-08-30",
             "2024-08-31",
@@ -230,7 +231,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "2026-08-29",
         )
         self.assertNoHoliday(
-            Finland(categories=UNOFFICIAL),
+            self.unofficial_holidays,
             "2012-08-25",
             "2011-08-27",
         )
