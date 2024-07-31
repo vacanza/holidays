@@ -178,6 +178,11 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "02-05", 1854)
 
+    def test_kalevala_day(self):
+        self._test_unofficial_holiday(
+            "Kalevalan päivä, suomalaisen kulttuurin päivä", "02-28", 1860
+        )
+
     def test_minna_canth_day(self):
         self._test_unofficial_holiday("Minna Canthin päivä, tasa-arvon päivä", "03-19", 2007)
 
@@ -222,6 +227,9 @@ class TestFinland(CommonCountryTests, TestCase):
             "1976-05-16",
             "1975-05-18",
         )
+
+    def test_defence_forces_day(self):
+        self._test_unofficial_holiday("Puolustusvoimain lippujuhlan päivä", "06-06", 1942)
 
     def test_eino_leino_day(self):
         self._test_unofficial_holiday("Eino Leinon päivä, runon ja suven päivä", "07-06", 1992)
