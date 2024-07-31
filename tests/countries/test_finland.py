@@ -190,6 +190,20 @@ class TestFinland(CommonCountryTests, TestCase):
     def test_europe_day(self):
         self._test_unofficial_holiday("Eurooppa-päivä", "05-09", 2019)
 
+    def test_mothers_day(self):
+        self.assertHolidayName(
+            "Äitienpäivä",
+            self.unofficial_holidays,
+            "1918-05-12",
+            "1919-05-11",
+            "2020-05-10",
+            "2024-05-12",
+        )
+        self.assertNoHoliday(
+            self.unofficial_holidays,
+            "1917-05-13",
+        )
+
     def test_finnish_identity_day(self):
         self._test_unofficial_holiday("J.V. Snellmanin päivä, suomalaisuuden päivä", "05-12", 1952)
 
@@ -246,6 +260,20 @@ class TestFinland(CommonCountryTests, TestCase):
             "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä", "11-06", 1908
         )
 
+    def test_fathers_day(self):
+        self.assertHolidayName(
+            "Isänpäivä",
+            self.unofficial_holidays,
+            "1949-11-13",
+            "1950-11-12",
+            "2020-11-08",
+            "2024-11-10",
+        )
+        self.assertNoHoliday(
+            self.unofficial_holidays,
+            "1949-11-10",
+        )
+
     def test_day_of_childrens_rights(self):
         self._test_unofficial_holiday("Lapsen oikeuksien päivä", "11-20", 2020)
 
@@ -272,7 +300,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-10-10", "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"),
             ("2024-10-24", "YK:n päivä"),
             ("2024-11-06", "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"),
-            ("2024-11-11", "Isänpäivä"),
+            ("2024-11-10", "Isänpäivä"),
             ("2024-11-20", "Lapsen oikeuksien päivä"),
             ("2024-12-08", "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"),
         )
@@ -328,8 +356,9 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-04-18", "Toinen pääsiäispäivä"),
             ("2022-04-27", "Kansallinen veteraanipäivä"),
             ("2022-05-01", "Vappu"),
+            ("2022-05-08", "Äitienpäivä"),
             ("2022-05-09", "Eurooppa-päivä"),
-            ("2022-05-12", "J.V. Snellmanin päivä, suomalaisuuden päivä; Äitienpäivä"),
+            ("2022-05-12", "J.V. Snellmanin päivä, suomalaisuuden päivä"),
             ("2022-05-15", "Kaatuneitten muistopäivä"),
             ("2022-05-26", "Helatorstai"),
             ("2022-06-05", "Helluntaipäivä"),
@@ -343,7 +372,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-10-24", "YK:n päivä"),
             ("2022-11-05", "Pyhäinpäivä"),
             ("2022-11-06", "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"),
-            ("2022-11-11", "Isänpäivä"),
+            ("2022-11-13", "Isänpäivä"),
             ("2022-11-20", "Lapsen oikeuksien päivä"),
             ("2022-12-06", "Itsenäisyyspäivä"),
             ("2022-12-08", "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"),
@@ -366,8 +395,9 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-04-27", "National War Veterans' Day"),
             ("2022-05-01", "May Day"),
+            ("2022-05-08", "Mothers' Day"),
             ("2022-05-09", "Europe Day"),
-            ("2022-05-12", "J. V. Snellman Day, Day of Finnish Heritage; Mothers' Day"),
+            ("2022-05-12", "J. V. Snellman Day, Day of Finnish Heritage"),
             ("2022-05-15", "Remembrance Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
@@ -381,7 +411,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-10-24", "United Nations Day"),
             ("2022-11-05", "All Saints' Day"),
             ("2022-11-06", "Finnish Swedish Heritage Day, svenska dagen"),
-            ("2022-11-11", "Fathers' Day"),
+            ("2022-11-13", "Fathers' Day"),
             ("2022-11-20", "Day of Children's Rights"),
             ("2022-12-06", "Independence Day"),
             ("2022-12-08", "Jean Sibelius Day, Day of Finnish Music"),
@@ -404,8 +434,9 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-04-18", "Великодній понеділок"),
             ("2022-04-27", "Національний день ветеранів"),
             ("2022-05-01", "Ваппу"),
+            ("2022-05-08", "День матері"),
             ("2022-05-09", "День Європи"),
-            ("2022-05-12", "День Ю. В. Снелльмана, День фінської спадщини; День матері"),
+            ("2022-05-12", "День Ю. В. Снелльмана, День фінської спадщини"),
             ("2022-05-15", "День ветеранів Національної війни"),
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-06-05", "Трійця"),
@@ -419,7 +450,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-10-24", "День ООН"),
             ("2022-11-05", "День усіх святих"),
             ("2022-11-06", "День фінської шведської спадщини, шведський день"),
-            ("2022-11-11", "День батька"),
+            ("2022-11-13", "День батька"),
             ("2022-11-20", "День прав дитини"),
             ("2022-12-06", "День незалежності"),
             ("2022-12-08", "День Жана Сібеліуса, День фінської музики"),
@@ -442,8 +473,9 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-04-18", "Annandag påsk"),
             ("2022-04-27", "Nationella veterandagen"),
             ("2022-05-01", "Första maj"),
+            ("2022-05-08", "Mors dag"),
             ("2022-05-09", "Europadagen"),
-            ("2022-05-12", "Mors dag; Snellmansdagen, finskhetens dag"),
+            ("2022-05-12", "Snellmansdagen, finskhetens dag"),
             ("2022-05-15", "De stupades dag"),
             ("2022-05-26", "Kristi himmelsfärdsdag"),
             ("2022-06-05", "Pingst"),
@@ -457,7 +489,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-10-24", "FN-dagen"),
             ("2022-11-05", "Alla helgons dag"),
             ("2022-11-06", "Svenska dagen, Gustav Adolfsdagen"),
-            ("2022-11-11", "Fars dag"),
+            ("2022-11-13", "Fars dag"),
             ("2022-11-20", "Barnkonventionens dag"),
             ("2022-12-06", "Självständigshetsdagen"),
             ("2022-12-08", "Sibeliusdagen, den finländska musikens dag"),

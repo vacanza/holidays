@@ -129,7 +129,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1918:
             # Mothers' Day
-            self._add_holiday_may_12(tr("Äitienpäivä"))
+            self._add_holiday_2nd_sun_of_may(tr("Äitienpäivä"))
 
         if self._year >= 1952:
             # J. V. Snellman Day, Day of Finnish Heritage
@@ -169,7 +169,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1949:
             # Fathers' Day
-            self._add_holiday_nov_11(tr("Isänpäivä"))
+            self._add_holiday_2nd_sun_of_nov(tr("Isänpäivä"))
 
         if self._year >= 2020:
             # Day of Children's Rights
