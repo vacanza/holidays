@@ -173,10 +173,7 @@ class TestFinland(CommonCountryTests, TestCase):
             self.unofficial_holidays,
             (f"{year}-{month_and_day}" for year in range(year_of_adoption, 2031)),
         )
-        self.assertNoHolidayName(
-            name,
-            Finland(years=year_of_adoption - 1, categories=UNOFFICIAL),
-        )
+        self.assertNoHolidayName(name, self.unofficial_holidays, year_of_adoption - 1)
 
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "02-05", 1854)
