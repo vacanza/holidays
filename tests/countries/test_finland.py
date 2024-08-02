@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import datetime
 from unittest import TestCase
 
 from holidays.constants import UNOFFICIAL
@@ -169,9 +168,8 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def _test_unofficial_holiday(self, name, date_first_observed_on):
-        year = date_first_observed_on.year
-        month = date_first_observed_on.month
-        day = date_first_observed_on.day
+        date_parts = date_first_observed_on.split("-")
+        (year, month, day) = [int(part) for part in date_parts]
         self.assertHolidayName(
             name,
             self.unofficial_holidays,
@@ -180,28 +178,24 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.unofficial_holidays, year - 1)
 
     def test_runeberg_day(self):
-        self._test_unofficial_holiday("Runebergin päivä", datetime(1854, 2, 5))
+        self._test_unofficial_holiday("Runebergin päivä", "1854-02-05")
 
     def test_kalevala_day(self):
         self._test_unofficial_holiday(
-            "Kalevalan päivä, suomalaisen kulttuurin päivä", datetime(1860, 2, 28)
+            "Kalevalan päivä, suomalaisen kulttuurin päivä", "1860-02-28"
         )
 
     def test_minna_canth_day(self):
-        self._test_unofficial_holiday(
-            "Minna Canthin päivä, tasa-arvon päivä", datetime(2007, 3, 19)
-        )
+        self._test_unofficial_holiday("Minna Canthin päivä, tasa-arvon päivä", "2007-03-19")
 
     def test_agricola_day(self):
-        self._test_unofficial_holiday(
-            "Mikael Agricolan päivä, suomen kielen päivä", datetime(1978, 4, 9)
-        )
+        self._test_unofficial_holiday("Mikael Agricolan päivä, suomen kielen päivä", "1978-04-09")
 
     def test_veterans_day(self):
-        self._test_unofficial_holiday("Kansallinen veteraanipäivä", datetime(1987, 4, 27))
+        self._test_unofficial_holiday("Kansallinen veteraanipäivä", "1987-04-27")
 
     def test_europe_day(self):
-        self._test_unofficial_holiday("Eurooppa-päivä", datetime(2019, 5, 9))
+        self._test_unofficial_holiday("Eurooppa-päivä", "2019-05-09")
 
     def test_mothers_day(self):
         self.assertHolidayName(
@@ -218,9 +212,7 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_finnish_identity_day(self):
-        self._test_unofficial_holiday(
-            "J.V. Snellmanin päivä, suomalaisuuden päivä", datetime(1952, 5, 12)
-        )
+        self._test_unofficial_holiday("J.V. Snellmanin päivä, suomalaisuuden päivä", "1952-05-12")
 
     def test_remembrance_day(self):
         self.assertHolidayName(
@@ -239,12 +231,10 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_defense_forces_day(self):
-        self._test_unofficial_holiday("Puolustusvoimain lippujuhlan päivä", datetime(1942, 6, 6))
+        self._test_unofficial_holiday("Puolustusvoimain lippujuhlan päivä", "1942-06-06")
 
     def test_eino_leino_day(self):
-        self._test_unofficial_holiday(
-            "Eino Leinon päivä, runon ja suven päivä", datetime(1992, 7, 6)
-        )
+        self._test_unofficial_holiday("Eino Leinon päivä, runon ja suven päivä", "1992-07-06")
 
     def test_finnish_nature_day(self):
         self.assertHolidayName(
@@ -264,21 +254,19 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_miina_sillanpaa_day(self):
         self._test_unofficial_holiday(
-            "Miina Sillanpään ja kansalaisvaikuttamisen päivä", datetime(2016, 10, 1)
+            "Miina Sillanpään ja kansalaisvaikuttamisen päivä", "2016-10-01"
         )
 
     def test_aleksis_kivi_day(self):
         self._test_unofficial_holiday(
-            "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä", datetime(1950, 10, 10)
+            "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä", "1950-10-10"
         )
 
     def test_united_nations_day(self):
-        self._test_unofficial_holiday("YK:n päivä", datetime(1987, 10, 24))
+        self._test_unofficial_holiday("YK:n päivä", "1987-10-24")
 
     def test_finnish_swedish_heritage(self):
-        self._test_unofficial_holiday(
-            "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä", datetime(1908, 11, 6)
-        )
+        self._test_unofficial_holiday("Ruotsalaisuuden päivä, Kustaa Aadolfin päivä", "1908-11-06")
 
     def test_fathers_day(self):
         self.assertHolidayName(
@@ -295,11 +283,11 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def test_day_of_childrens_rights(self):
-        self._test_unofficial_holiday("Lapsen oikeuksien päivä", datetime(2020, 11, 20))
+        self._test_unofficial_holiday("Lapsen oikeuksien päivä", "2020-11-20")
 
     def test_jean_sibelius_day(self):
         self._test_unofficial_holiday(
-            "Jean Sibeliuksen päivä, suomalaisen musiikin päivä", datetime(2007, 12, 8)
+            "Jean Sibeliuksen päivä, suomalaisen musiikin päivä", "2007-12-08"
         )
 
     def test_unofficial_holidays(self):
