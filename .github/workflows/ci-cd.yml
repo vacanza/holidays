@@ -175,7 +175,7 @@ jobs:
 
       - name: Build docs
         run: |
-          python -m sphinx -E -T -W -b html -D language=en -j auto -q docs/source docs/build
+          make doc
 
   publish-pypi-main:
     name: Publish to PyPI
