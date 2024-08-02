@@ -167,15 +167,14 @@ class TestFinland(CommonCountryTests, TestCase):
             "1957-11-01",
         )
 
-    def _test_unofficial_holiday(self, name, date_first_observed_on):
-        date_parts = date_first_observed_on.split("-")
-        (year, month, day) = [int(part) for part in date_parts]
+    def _test_unofficial_holiday(self, name, since):
+        start_year, month, day = [int(part) for part in since.split("-")]
         self.assertHolidayName(
             name,
             self.unofficial_holidays,
-            (f"{y}-{month}-{day}" for y in range(year, 2031)),
+            (f"{year}-{month}-{day}" for year in range(start_year, 2031)),
         )
-        self.assertNoHolidayName(name, self.unofficial_holidays, year - 1)
+        self.assertNoHolidayName(name, self.unofficial_holidays, start_year - 1)
 
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "1854-02-05")
