@@ -140,7 +140,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_3rd_sun_of_may(tr("Kaatuneitten muistopäivä"))
 
         if self._year >= 1942:
-            # Flag Day of the Finnish Defence Forces
+            # Flag Day of the Finnish Defense Forces
             self._add_holiday_jun_6(tr("Puolustusvoimain lippujuhlan päivä"))
 
         if self._year >= 1992:

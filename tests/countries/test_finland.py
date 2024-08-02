@@ -238,7 +238,7 @@ class TestFinland(CommonCountryTests, TestCase):
             "1975-05-18",
         )
 
-    def test_defence_forces_day(self):
+    def test_defense_forces_day(self):
         self._test_unofficial_holiday("Puolustusvoimain lippujuhlan päivä", datetime(1942, 6, 6))
 
     def test_eino_leino_day(self):
@@ -421,7 +421,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-15", "Remembrance Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Flag Day of the Finnish Defence Forces"),
+            ("2022-06-06", "Flag Day of the Finnish Defense Forces"),
             ("2022-06-24", "Midsummer Eve"),
             ("2022-06-25", "Midsummer Day"),
             ("2022-07-06", "Eino Leino Day, Day of Summer and Poetry"),

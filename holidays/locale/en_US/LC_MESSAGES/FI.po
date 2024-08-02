@@ -123,9 +123,9 @@ msgstr "J. V. Snellman Day, Day of Finnish Heritage"
 msgid "Kaatuneitten muistopäivä"
 msgstr "Remembrance Day"
 
-#. Flag Day of the Finnish Defence Forces
+#. Flag Day of the Finnish Defense Forces
 msgid "Puolustusvoimain lippujuhlan päivä"
-msgstr "Flag Day of the Finnish Defence Forces"
+msgstr "Flag Day of the Finnish Defense Forces"
 
 #. Eino Leino Day, Day of Summer and Poetry
 msgid "Eino Leinon päivä, runon ja suven päivä"

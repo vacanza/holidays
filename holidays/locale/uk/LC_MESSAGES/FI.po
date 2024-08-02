@@ -123,7 +123,7 @@ msgstr "День Ю. В. Снелльмана, День фінської спа�
 msgid "Kaatuneitten muistopäivä"
 msgstr "День ветеранів Національної війни"
 
-#. Flag Day of the Finnish Defence Forces
+#. Flag Day of the Finnish Defense Forces
 msgid "Puolustusvoimain lippujuhlan päivä"
 msgstr "День прапора фінських сил оборони"
 

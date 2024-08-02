@@ -123,7 +123,7 @@ msgstr "Snellmansdagen, finskhetens dag"
 msgid "Kaatuneitten muistopäivä"
 msgstr "De stupades dag"
 
-#. Flag Day of the Finnish Defence Forces
+#. Flag Day of the Finnish Defense Forces
 msgid "Puolustusvoimain lippujuhlan päivä"
 msgstr "Dagen för försvarets fanfest"
 
