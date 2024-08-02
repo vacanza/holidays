@@ -424,7 +424,7 @@ All other default values are highlighted with bold:
      - FI
      -
      - en_US, **fi**, sv_FI, uk
-     -
+     - UNOFFICIAL
    * - France
      - FR
      - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
@@ -952,7 +952,7 @@ following financial markets are available:
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
-   * - ICE Futures Europe 
+   * - ICE Futures Europe
      - IFEU
      - A London-based Investment Exchange holidays
    * - New York Stock Exchange
