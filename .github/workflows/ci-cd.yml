@@ -92,14 +92,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           cache: pip
-          cache-dependency-path: requirements/runtime.txt
+          cache-dependency-path: |
+            requirements/build.txt
           check-latest: true
           python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install build polib
+          python -m pip install -r requirements/build.txt
           python -m pip install .
 
       - name: Build distribution
@@ -177,8 +178,8 @@ jobs:
         run: |
           make doc
 
-  publish-pypi-main:
-    name: Publish to PyPI
+  publish-main:
+    name: Publish generated artifacts
     if: |
       github.repository == 'vacanza/python-holidays' &&
       github.event_name == 'push' &&
@@ -191,7 +192,7 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Get package artifacts
+      - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist
@@ -199,3 +200,9 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Update Github release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ github.ref_name }} dist/*
