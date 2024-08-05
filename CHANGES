@@ -1,3 +1,22 @@
+Version 0.54
+============
+
+Released August 5, 2024
+
+- Add Mauritania holidays (#1884 by @kasya)
+- Fix Malawi tests (#1880 by @arkid15r)
+- Update CI/CD pip caching (#1866 by @arkid15r)
+- Update FI: add unofficial holidays (#1885 by @alexei-mobal, @arkid15r)
+- Update Finland holidays l10n (#1883 by @KJhellico)
+- Update PR template (#1894 by @arkid15r)
+- Update RU: add 2025 substituted holidays (#1886 by @Alexeyzhu)
+- Update docs requirements: revert sphinx to v7.4.7 (#1893 by @arkid15r)
+- Update pre-commit automatic update (#1896 by @arkid15r)
+- Update release process: upload artifacts to Github (#1898 by @arkid15r)
+- Add documentation build test to CI/CD (#1895 by @KJhellico)
+- Don't run tests on Github readonly queue push events (#1868 by @arkid15r)
+- Drop PyPy support (#1878 by @arkid15r)
+
 Version 0.53
 ============
 
