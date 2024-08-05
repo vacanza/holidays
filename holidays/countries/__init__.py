@@ -101,6 +101,7 @@ from .malaysia import Malaysia, MY, MYS
 from .maldives import Maldives, MV, MDV
 from .malta import Malta, MT, MLT
 from .marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
+from .mauritania import Mauritania, MR, MRT
 from .mexico import Mexico, MX, MEX
 from .moldova import Moldova, MD, MDA
 from .monaco import Monaco, MC, MCO

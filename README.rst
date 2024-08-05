@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 148 country codes. The standard way to refer to a country
+We currently support 149 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -423,8 +423,8 @@ All other default values are highlighted with bold:
    * - Finland
      - FI
      -
-     - en_US, **fi**, sv, uk
-     -
+     - en_US, **fi**, sv_FI, uk
+     - UNOFFICIAL
    * - France
      - FR
      - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
@@ -622,6 +622,11 @@ All other default values are highlighted with bold:
      -
    * - Marshall Islands (the)
      - MH
+     -
+     -
+     -
+   * - Mauritania
+     - MR
      -
      -
      -
@@ -947,7 +952,7 @@ following financial markets are available:
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
-   * - ICE Futures Europe 
+   * - ICE Futures Europe
      - IFEU
      - A London-based Investment Exchange holidays
    * - New York Stock Exchange

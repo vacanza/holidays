@@ -37,6 +37,11 @@ class TestRussia(CommonCountryTests, TestCase):
             "2024-05-10",
             "2024-12-30",
             "2024-12-31",
+            "2025-05-02",
+            "2025-05-08",
+            "2025-06-13",
+            "2025-11-03",
+            "2025-12-31",
         )
 
     def test_new_year(self):

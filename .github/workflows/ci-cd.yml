@@ -50,22 +50,6 @@ jobs:
           - '3.10'
           - '3.11'
           - '3.12'
-          - 'pypy-3.9'
-          - 'pypy-3.10'
-        exclude:
-          - os: 'macos-latest'
-            python-version: '3.8'
-          - os: 'macos-latest'
-            python-version: '3.9'
-          - os: 'macos-latest'
-            python-version: 'pypy-3.9'
-        include:
-          - os: 'macos-13'
-            python-version: '3.8'
-          - os: 'macos-13'
-            python-version: '3.9'
-          - os: 'macos-13'
-            python-version: 'pypy-3.9'
     steps:
       - uses: actions/checkout@v4
 
@@ -83,7 +67,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install .
 
       - name: Run tests
@@ -106,15 +90,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           cache: pip
-          cache-dependency-path: requirements/runtime.txt
+          cache-dependency-path: |
+            requirements/build.txt
           check-latest: true
           python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade build polib
-          pip install .
+          python -m pip install -r requirements/build.txt
+          python -m pip install .
 
       - name: Build distribution
         run: |
@@ -160,15 +145,39 @@ jobs:
         shell: bash
         run: |
           rm -rf holidays
-          python -m pip install --upgrade --requirement requirements/tests.txt
+          python -m pip install --requirement requirements/tests.txt
           python -m pip install `ls dist/*.whl`
           pytest --dist loadscope --numprocesses auto tests/countries tests/financial
           python -m pip uninstall -y holidays python-dateutil six
           python -m pip install `ls dist/*.tar.gz`
           pytest --dist loadscope --numprocesses auto tests/countries tests/financial
 
-  publish-pypi-main:
-    name: Publish to PyPI
+  test-docs:
+    name: Test docs build
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: pip
+          cache-dependency-path: requirements/docs.txt
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --requirement requirements/docs.txt
+          python -m pip install .
+
+      - name: Build docs
+        run: |
+          make doc
+
+  publish-main:
+    name: Publish generated artifacts
     if: |
       github.repository == 'vacanza/python-holidays' &&
       github.event_name == 'push' &&
@@ -176,11 +185,12 @@ jobs:
     environment: main
     needs:
       - test-build
+      - test-docs
     permissions:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Get package artifacts
+      - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist
@@ -188,3 +198,9 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Update Github release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ github.ref_name }} dist/*

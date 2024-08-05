@@ -18,7 +18,7 @@ from tests.common import CommonCountryTests
 
 class TestMalawi(CommonCountryTests, TestCase):
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         super().setUpClass(Malawi)
 
     def test_country_aliases(self):

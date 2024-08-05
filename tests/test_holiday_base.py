@@ -217,7 +217,9 @@ class TestArgs(unittest.TestCase):
             HolidayBase(years=range(2010, 2016)).years, {2010, 2011, 2012, 2013, 2014, 2015}
         )
         self.assertSetEqual(HolidayBase(years=(2013, 2015, 2015)).years, {2013, 2015})
+        self.assertSetEqual(HolidayBase(years=(2013.0, 2015.0, 2015.0)).years, {2013, 2015})
         self.assertSetEqual(HolidayBase(years=2015).years, {2015})
+        self.assertSetEqual(HolidayBase(years=2015.0).years, {2015})
 
 
 class TestCategories(unittest.TestCase):

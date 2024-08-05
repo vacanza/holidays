@@ -1,2 +1,3 @@
-# Package runtime requirements.
-python-dateutil
+# Runtime requirements.
+
+python-dateutil==2.9.0.post0
