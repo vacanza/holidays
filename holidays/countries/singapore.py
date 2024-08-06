@@ -177,6 +177,7 @@ class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
         2022: (MAY, 15),
         2023: (JUN, 2),
         2024: (MAY, 22),
+        2025: (MAY, 12),
     }
 
 
@@ -206,10 +207,12 @@ class SingaporeChineseHolidays(_CustomChineseHolidays):
         2022: (FEB, 1),
         2023: (JAN, 22),
         2024: (FEB, 10),
+        2025: (JAN, 29),
     }
 
 
 class SingaporeHinduHolidays(_CustomHinduHolidays):
+    # Deepavali
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -235,10 +238,12 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
         2022: (OCT, 24),
         2023: (NOV, 12),
         2024: (OCT, 31),
+        2025: (OCT, 20),
     }
 
 
 class SingaporeIslamicHolidays(_CustomIslamicHolidays):
+    # Hari Raya Haji
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -264,8 +269,10 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025:(JUN, 7,),
     }
 
+    # Hari Raya Puasa
     EID_AL_FITR_DATES = {
         2001: (DEC, 16),
         2002: (DEC, 6),
@@ -291,6 +298,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025:(MAR, 31),
     }
 
 
