@@ -269,7 +269,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
-        2025: (JUN, 7,),
+        2025: (JUN, 7),
     }
 
     # Hari Raya Puasa
