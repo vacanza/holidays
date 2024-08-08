@@ -37,7 +37,7 @@ def country_holidays(
     prov: Optional[str] = None,
     state: Optional[str] = None,
     language: Optional[str] = None,
-    categories: Optional[Tuple[str]] = None,
+    categories: Optional[Tuple[str, ...]] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
