@@ -22,9 +22,9 @@ __all__ = (
 
 import warnings
 from functools import lru_cache
-from typing import Dict, Iterable, List, Optional, Tuple, Union
+from typing import Dict, Iterable, List, Optional, Union
 
-from holidays.holiday_base import HolidayBase
+from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
 
