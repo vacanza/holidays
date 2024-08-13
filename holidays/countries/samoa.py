@@ -21,20 +21,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import SAT, SUN
-from holidays.groups import InternationalHolidays, ChristianHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Samoa(HolidayBase, InternationalHolidays, ChristianHolidays):
+class Samoa(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Samoa
-    - https://www.timeanddate.com/holidays/samoa/
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Samoa
+        - https://www.timeanddate.com/holidays/samoa/
+        - https://www.mcil.gov.ws/?attachment_id=6336
     """
 
     country = "WS"
-    weekend = {SAT, SUN}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -47,7 +46,7 @@ class Samoa(HolidayBase, InternationalHolidays, ChristianHolidays):
 
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
-        self._add_new_years_day_two("Day After New Year's Day")
+        self._add_new_years_day_two("The Day After New Year's Day")
 
         # Good Friday.
         self._add_good_friday("Good Friday")
@@ -65,8 +64,8 @@ class Samoa(HolidayBase, InternationalHolidays, ChristianHolidays):
         # Father's Day.
         self._add_holiday_2nd_mon_of_aug("Father's Day")
 
-        # Lotu a Tamaiti (White Monday).
-        self._add_holiday_2nd_mon_of_oct("Lotu a Tamaiti (White Monday)")
+        # White Monday (Lotu a Tamaiti).
+        self._add_holiday_2nd_mon_of_oct("White Monday (Lotu a Tamaiti)")
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

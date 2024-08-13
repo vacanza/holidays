@@ -40,7 +40,7 @@ class TestSamoa(CommonCountryTests, TestCase):
 
     def test_new_years_second_day(self):
         self.assertHolidayName(
-            "Day After New Year's Day", (f"{year}-01-02" for year in range(1950, 2050))
+            "The Day After New Year's Day", (f"{year}-01-02" for year in range(1950, 2050))
         )
 
     def test_independence_day(self):
@@ -56,30 +56,30 @@ class TestSamoa(CommonCountryTests, TestCase):
         self.assertHolidays(
             Samoa(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "Day After New Year's Day"),
+            ("2023-01-02", "The Day After New Year's Day"),
             ("2023-04-07", "Good Friday"),
-            ("2023-12-26", "Boxing Day"),
-            ("2023-10-09", "Lotu a Tamaiti (White Monday)"),
+            ("2023-04-08", "Day After Good Friday"),
+            ("2023-04-10", "Easter Monday"),
             ("2023-05-08", "Mother's Day"),
             ("2023-06-01", "Independence Day"),
-            ("2023-12-25", "Christmas Day"),
             ("2023-08-14", "Father's Day"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-04-08", "Day After Good Friday"),
+            ("2023-10-09", "White Monday (Lotu a Tamaiti)"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
         )
 
     def test_2024(self):
         self.assertHolidays(
             Samoa(years=2024),
             ("2024-01-01", "New Year's Day"),
-            ("2024-01-02", "Day After New Year's Day"),
-            ("2024-12-25", "Christmas Day"),
-            ("2024-04-01", "Easter Monday"),
-            ("2024-12-26", "Boxing Day"),
-            ("2024-05-13", "Mother's Day"),
-            ("2024-03-30", "Day After Good Friday"),
-            ("2024-08-12", "Father's Day"),
+            ("2024-01-02", "The Day After New Year's Day"),
             ("2024-03-29", "Good Friday"),
+            ("2024-03-30", "Day After Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-13", "Mother's Day"),
             ("2024-06-01", "Independence Day"),
-            ("2024-10-14", "Lotu a Tamaiti (White Monday)"),
+            ("2024-08-12", "Father's Day"),
+            ("2024-10-14", "White Monday (Lotu a Tamaiti)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
         )
