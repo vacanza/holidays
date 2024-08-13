@@ -17,7 +17,7 @@ References:
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, APR, MAY, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.entities.ISO_3166 import Iso3166Entity
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -132,5 +132,14 @@ class RuStaticHolidays:
             (MAY, 10, JAN, 6),
             (DEC, 30, DEC, 28),
             (DEC, 31, JAN, 7),
+        ),
+        # Substituted Holidays 2025
+        # src: https://www.consultant.ru/document/cons_doc_LAW_481586/
+        2025: (
+            (MAY, 2, JAN, 4),
+            (DEC, 31, JAN, 5),
+            (MAY, 8, FEB, 23),
+            (JUN, 13, MAR, 8),
+            (NOV, 3, NOV, 1),
         ),
     }

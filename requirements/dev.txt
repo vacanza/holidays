@@ -5,9 +5,9 @@ convertdate==2.4.0
 gitpython==3.1.43
 hijridate==2.5.0
 lingva==5.0.3
-pre-commit==3.7.1
+pre-commit==3.8.0
 pygithub==2.3.0
-ruff==0.5.4
-tox==4.16.0
+ruff==0.5.6
+tox==4.17.1
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability

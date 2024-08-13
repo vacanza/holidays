@@ -86,3 +86,79 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "Tapaninpäivä"
 msgstr "Другий день Різдва"
+
+#. Runeberg Day
+msgid "Runebergin päivä"
+msgstr "День Рунеберга"
+
+#. Kalevala Day, Day of Finnish Culture
+msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
+msgstr "День Калевали, День фінської культури"
+
+#. Minna Canth Day, Day of Equality
+msgid "Minna Canthin päivä, tasa-arvon päivä"
+msgstr "День Мінни Кант, День рівності"
+
+#. Mikael Agricola Day, Day of the Finnish Language
+msgid "Mikael Agricolan päivä, suomen kielen päivä"
+msgstr "День Мікаеля Аґріколи, День фінської мови"
+
+#. National War Veterans' Day
+msgid "Kansallinen veteraanipäivä"
+msgstr "Національний день ветеранів"
+
+#. Europe Day
+msgid "Eurooppa-päivä"
+msgstr "День Європи"
+
+#. Mothers' Day
+msgid "Äitienpäivä"
+msgstr "День матері"
+
+#. J. V. Snellman Day, Day of Finnish Heritage
+msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
+msgstr "День Ю. В. Снелльмана, День фінської спадщини"
+
+#. Remembrance Day
+msgid "Kaatuneitten muistopäivä"
+msgstr "День ветеранів Національної війни"
+
+#. Flag Day of the Finnish Defense Forces
+msgid "Puolustusvoimain lippujuhlan päivä"
+msgstr "День прапора фінських сил оборони"
+
+#. Eino Leino Day, Day of Summer and Poetry
+msgid "Eino Leinon päivä, runon ja suven päivä"
+msgstr "День Ейно Лейно, День літа та поезії"
+
+#. Finland's Nature Day
+msgid "Suomen luonnon päivä"
+msgstr "День природи Фінляндії"
+
+#. Miina Sillanpää Day, Day of Civic Participation
+msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
+msgstr "День Міїни Сілланпяя, День громадянської активності"
+
+#. Aleksis Kivi Day, Day of Finnish Literature
+msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
+msgstr "День Алексіса Ківі, День фінської літератури"
+
+#. United Nations Day
+msgid "YK:n päivä"
+msgstr "День ООН"
+
+#. Finnish Swedish Heritage Day, svenska dagen
+msgid "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"
+msgstr "День фінської шведської спадщини, шведський день"
+
+#. Fathers' Day
+msgid "Isänpäivä"
+msgstr "День батька"
+
+#. Day of Children's Rights
+msgid "Lapsen oikeuksien päivä"
+msgstr "День прав дитини"
+
+#. Jean Sibelius Day, Day of Finnish Music
+msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
+msgstr "День Жана Сібеліуса, День фінської музики"

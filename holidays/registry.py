@@ -112,6 +112,7 @@ ISO_3166: RegistryDict = {
     "MH": ("MH", "MHL"),  # Marshall Islands
     "MK": ("MK", "MKD"),  # North Macedonia
     "MP": ("MP", "MNP"),  # Northern Mariana Islands
+    "MR": ("MR", "MRT"),  # Mauritania
     "MT": ("MT", "MLT"),  # Malta
     "MV": ("MV", "MDV"),  # Maldives
     "MW": ("MW", "MWI"),  # Malawi

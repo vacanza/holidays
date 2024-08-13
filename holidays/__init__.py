@@ -23,7 +23,7 @@ from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
 
-__version__ = "0.54"
+__version__ = "0.55"
 
 
 EntityLoader.load("ISO_3166", globals())

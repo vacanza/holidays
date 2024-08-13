@@ -20,9 +20,9 @@ __all__ = (
 )
 
 from functools import lru_cache
-from typing import Dict, Iterable, List, Optional, Tuple, Union
+from typing import Dict, Iterable, List, Optional, Union
 
-from holidays.holiday_base import HolidayBase
+from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
 
@@ -33,7 +33,7 @@ def iso_3166_holidays(
     expand: bool = True,
     observed: bool = True,
     language: Optional[str] = None,
-    categories: Optional[Tuple[str]] = None,
+    categories: Optional[CategoryArg] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public

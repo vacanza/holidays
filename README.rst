@@ -146,7 +146,7 @@ Available ISO 3166 Entities
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 148 ISO 3166 entity codes. The standard way to refer to an entity
+We currently support 149 ISO 3166 entity codes. The standard way to refer to an entity
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some entities have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -419,7 +419,7 @@ All other default values are highlighted with bold:
     - Finland
     -
     - en_US, **fi**, sv_FI, uk
-    -
+    - UNOFFICIAL
   * - FR
     - France
     - BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
@@ -645,6 +645,11 @@ All other default values are highlighted with bold:
     -
     -
     - UNOFFICIAL
+  * - MR
+    - Mauritania
+    -
+    -
+    -
   * - MT
     - Malta
     -
@@ -940,7 +945,7 @@ The standard way to refer to an ISO 10383 entity is to use its `ISO 10383 MIC`_
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
-   * - ICE Futures Europe 
+   * - ICE Futures Europe
      - IFEU
      - A London-based Investment Exchange holidays
    * - New York Stock Exchange
