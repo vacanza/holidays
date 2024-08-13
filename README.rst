@@ -760,6 +760,11 @@ All other default values are highlighted with bold:
      -
      - en_US, **ru**
      -
+   * - Samoa
+     - WS
+     -
+     -
+     -
    * - San Marino
      - SM
      -
