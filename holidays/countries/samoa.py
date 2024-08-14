@@ -10,17 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-#  python-holidays
-#  ---------------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
-#  License: MIT (see LICENSE file)
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -56,16 +45,16 @@ class Samoa(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # Mother's Day.
-        self._add_holiday_2nd_mon_of_may("Mother's Day")
+        self._add_holiday_1_day_past_2nd_sun_of_may("Mother's Day")
 
         # Independence Day.
         self._add_holiday_jun_1("Independence Day")
 
         # Father's Day.
-        self._add_holiday_2nd_mon_of_aug("Father's Day")
+        self._add_holiday_1_day_past_2nd_sun_of_aug("Father's Day")
 
         # White Monday (Lotu a Tamaiti).
-        self._add_holiday_2nd_mon_of_oct("White Monday (Lotu a Tamaiti)")
+        self._add_holiday_1_day_past_2nd_sun_of_oct("White Monday (Lotu a Tamaiti)")
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

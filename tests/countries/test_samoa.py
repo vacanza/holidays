@@ -10,17 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-#  python-holidays
-#  ---------------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
-#  License: MIT (see LICENSE file)
-
 from unittest import TestCase
 
 from holidays.countries.samoa import Samoa, WS, WSM
@@ -60,7 +49,7 @@ class TestSamoa(CommonCountryTests, TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-08", "Day After Good Friday"),
             ("2023-04-10", "Easter Monday"),
-            ("2023-05-08", "Mother's Day"),
+            ("2023-05-15", "Mother's Day"),
             ("2023-06-01", "Independence Day"),
             ("2023-08-14", "Father's Day"),
             ("2023-10-09", "White Monday (Lotu a Tamaiti)"),
