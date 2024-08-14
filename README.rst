@@ -859,7 +859,7 @@ All other default values are highlighted with bold:
      - UA
      -
      - ar, en_US, **uk**
-     -
+     - WORKDAY
    * - United Arab Emirates
      - AE
      -
