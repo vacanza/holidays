@@ -34,6 +34,13 @@ repos:
           - --license-filepath
           - docs/file_header.txt
 
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.9
+    hooks:
+      - id: bandit
+        args:
+          - --configfile=pyproject.toml
+
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
