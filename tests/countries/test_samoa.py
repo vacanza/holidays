@@ -52,7 +52,7 @@ class TestSamoa(CommonCountryTests, TestCase):
             ("2023-05-15", "Mother's Day"),
             ("2023-06-01", "Independence Day"),
             ("2023-08-14", "Father's Day"),
-            ("2023-10-09", "White Monday (Lotu a Tamaiti)"),
+            ("2023-10-09", "White Sunday (Lotu a Tamaiti)"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Boxing Day"),
         )
@@ -68,7 +68,7 @@ class TestSamoa(CommonCountryTests, TestCase):
             ("2024-05-13", "Mother's Day"),
             ("2024-06-01", "Independence Day"),
             ("2024-08-12", "Father's Day"),
-            ("2024-10-14", "White Monday (Lotu a Tamaiti)"),
+            ("2024-10-14", "White Sunday (Lotu a Tamaiti)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )

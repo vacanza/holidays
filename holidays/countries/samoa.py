@@ -55,7 +55,7 @@ class Samoa(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1_day_past_2nd_sun_of_aug("Father's Day")
 
         # White Monday (Lotu a Tamaiti).
-        self._add_holiday_1_day_past_2nd_sun_of_oct("White Monday (Lotu a Tamaiti)")
+        self._add_holiday_1_day_past_2nd_sun_of_oct("White Sunday (Lotu a Tamaiti)")
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
