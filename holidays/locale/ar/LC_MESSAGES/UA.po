@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.55\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2024-08-14 21:34+0300\n"
+"PO-Revision-Date: 2024-08-15 21:24+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ar\n"
@@ -35,10 +35,6 @@ msgstr "(يوم عطلة) %s"
 #. New Year's Day.
 msgid "Новий рік"
 msgstr "السنة الجديدة"
-
-#. Christmas Day (Julian calendar).
-msgid "Різдво Христове (за юліанським календарем)"
-msgstr "عيد الميلاد (حسب التقويم اليولياني)"
 
 #. International Women's Day.
 msgid "Міжнародний жіночий день"
@@ -61,8 +57,11 @@ msgid "День міжнародної солідарності трудящих
 msgstr "يوم التضامن العمالي العالمي"
 
 #. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
-msgid "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
-msgstr "يوم إحياء الذكرى والانتصار على النازية في الحرب العالمية الثانية 1939-1945"
+msgid ""
+"День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 "
+"років"
+msgstr ""
+"يوم إحياء الذكرى والانتصار على النازية في الحرب العالمية الثانية 1939-1945"
 
 #. Day of Victory over Nazism in World War II (Victory Day).
 msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
@@ -99,10 +98,6 @@ msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 #. Christmas Day.
 msgid "Різдво Христове"
 msgstr "عيد الميلاد"
-
-#. Christmas Day (Gregorian calendar).
-msgid "Різдво Христове (за григоріанським календарем)"
-msgstr "عيد الميلاد (حسب التقويم الغريغوري)"
 
 #. Date format (see strftime() Format Codes)
 msgid "%d.%m.%Y"

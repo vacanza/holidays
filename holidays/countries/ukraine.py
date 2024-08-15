@@ -68,11 +68,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
             if self._year <= 2023:
                 dts_observed.add(
-                    self._add_christmas_day(
-                        # Christmas Day (Julian calendar).
-                        tr("Різдво Христове (за юліанським календарем)"),
-                        JULIAN_CALENDAR,
-                    )
+                    # Christmas Day.
+                    self._add_christmas_day(tr("Різдво Христове"), JULIAN_CALENDAR)
                 )
 
             # International Women's Day.
@@ -154,14 +151,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 dts_observed.add(self._add_holiday_nov_8(name))
 
             if self._year >= 2017:
-                name = (
-                    # Christmas Day.
-                    tr("Різдво Христове")
-                    if self._year >= 2023
-                    # Christmas Day (Gregorian calendar).
-                    else tr("Різдво Христове (за григоріанським календарем)")
-                )
-                dts_observed.add(self._add_christmas_day(name))
+                # Christmas Day.
+                dts_observed.add(self._add_christmas_day(tr("Різдво Христове")))
 
         if self.observed and not is_martial_law:
             self._populate_observed(dts_observed)

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.55\n"
-"PO-Revision-Date: 2024-08-13 19:18+0300\n"
-"PO-Revision-Date: 2024-08-13 19:18+0300\n"
+"POT-Creation-Date: 2024-08-15 21:21+0300\n"
+"PO-Revision-Date: 2024-08-15 21:21+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Python Holidays Localization Team\n"
 "Language: \n"
@@ -24,8 +24,8 @@ msgstr ""
 msgid "Новий рік"
 msgstr ""
 
-#. Christmas Day (Julian calendar).
-msgid "Різдво Христове (за юліанським календарем)"
+#. Christmas Day.
+msgid "Різдво Христове"
 msgstr ""
 
 #. International Women's Day.
@@ -84,14 +84,6 @@ msgstr ""
 
 #. Anniversary of the Great October Socialist Revolution.
 msgid "Річниця Великої Жовтневої соціалістичної революції"
-msgstr ""
-
-#. Christmas Day.
-msgid "Різдво Христове"
-msgstr ""
-
-#. Christmas Day (Gregorian calendar).
-msgid "Різдво Христове (за григоріанським календарем)"
 msgstr ""
 
 #. Date format (see strftime() Format Codes)
