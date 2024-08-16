@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import THU, FRI, SAT, SUN
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -38,6 +39,16 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # The resting days are Friday and Saturday since 2009.
+        # Previously, these were on Thursday and Friday as implemented in 1976.
+        # https://www.thenationalnews.com/mena/2021/12/07/when-is-the-weekend-in-the-arab-world/
+        if self._year >= 2009:
+            self.weekend = {FRI, SAT}
+        elif self._year >= 1976:
+            self.weekend = {THU, SAT}
+        else:
+            self.weekend = {SAT, SUN}
+
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

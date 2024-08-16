@@ -13,7 +13,22 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    FRI,
+    SUN,
+)
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -75,6 +90,7 @@ class Brunei(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (diperhatikan, anggaran)")
     supported_languages = ("en_US", "ms", "th")
+    weekend = {FRI, SUN}
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)

@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _HebrewLunisolar
-from holidays.calendars.gregorian import _timedelta
+from holidays.calendars.gregorian import _timedelta, FRI, SAT
 from holidays.calendars.hebrew import (
     HANUKKAH,
     INDEPENDENCE_DAY,
@@ -53,6 +53,7 @@ class Israel(ObservedHolidayBase):
     observed_label = tr("(נצפה) %s")
     supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
     supported_languages = ("en_US", "he", "uk")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)

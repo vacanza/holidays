@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,6 +23,7 @@ class Bangladesh(HolidayBase, InternationalHolidays):
     """
 
     country = "BD"
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
