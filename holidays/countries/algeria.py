@@ -45,7 +45,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         if self._year >= 2009:
             self.weekend = {FRI, SAT}
         elif self._year >= 1976:
-            self.weekend = {THU, SAT}
+            self.weekend = {THU, FRI}
         else:
             self.weekend = {SAT, SUN}
 
