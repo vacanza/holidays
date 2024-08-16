@@ -67,10 +67,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             dts_observed.add(self._add_new_years_day(tr("Новий рік")))
 
             if self._year <= 2023:
-                dts_observed.add(
-                    # Christmas Day.
-                    self._add_christmas_day(tr("Різдво Христове"), JULIAN_CALENDAR)
-                )
+                # Christmas Day.
+                dts_observed.add(self._add_christmas_day(tr("Різдво Христове"), JULIAN_CALENDAR))
 
             # International Women's Day.
             dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
