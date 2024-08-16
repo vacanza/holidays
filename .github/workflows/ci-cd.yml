@@ -223,11 +223,8 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
-      - name: Check out repository
-        uses: actions/checkout@v4
-
       - name: Update Github release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload ${{ github.ref_name }} dist/*
+          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} dist/*
