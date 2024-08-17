@@ -134,6 +134,19 @@ jobs:
           name: dist
           path: dist
 
+      - name: Set version
+        run: echo "VERSION=$(echo ${{ github.ref_name }} | sed 's/^v//')" >> $GITHUB_ENV
+
+      - name: Generate SBOM
+        run: |
+          make sbom > holidays-$VERSION-sbom.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: holidays-$VERSION-sbom.json
+
   test-build:
     name: Test build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -223,8 +236,14 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
+      - name: Download SBOM
+        uses: actions/download-artifact@v4
+        with:
+          name: sbom
+
       - name: Update Github release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} dist/*
+          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} holidays-*-sbom.json

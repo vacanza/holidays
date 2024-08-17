@@ -20,4 +20,5 @@ holidays/locale/pot/*.pot
 !holidays/locale/pot/UA.pot
 MANIFEST
 Pipfile
+sbom.json
 venv/
