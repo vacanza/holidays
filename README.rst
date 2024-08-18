@@ -427,7 +427,7 @@ All other default values are highlighted with bold:
      - UNOFFICIAL
    * - France
      - FR
-     - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - DOM/TOM: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
      - en_US, **fr**, uk
      -
    * - Gabon
