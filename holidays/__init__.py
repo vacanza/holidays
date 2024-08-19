@@ -23,7 +23,7 @@ from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
 
-__version__ = "0.55"
+__version__ = "0.56"
 
 
 EntityLoader.load("countries", globals())
