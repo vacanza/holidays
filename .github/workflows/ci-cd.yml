@@ -141,14 +141,14 @@ jobs:
       - name: Generate SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
         run: |
-          make sbom > holidays-$VERSION-sbom.json
+          make sbom > holidays-${{ env.VERSION }}-sbom.json
 
       - name: Upload SBOM
         if: startsWith(github.event.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: sbom
-          path: holidays-$VERSION-sbom.json
+          path: holidays-${{ env.VERSION }}-sbom.json
 
   test-build:
     name: Test build on ${{ matrix.os }}
@@ -245,6 +245,7 @@ jobs:
           name: sbom
 
       - name: Update Github release
+        if: ${{ always() }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
