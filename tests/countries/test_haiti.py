@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.countries.haiti import Haiti, HT, HTI
 from tests.common import CommonCountryTests
 
@@ -24,6 +24,9 @@ class TestHaiti(CommonCountryTests, TestCase):
 
     def test_country_aliases(self):
         self.assertAliases(Haiti, HT, HTI)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Haiti(categories=(OPTIONAL, PUBLIC), years=1986))
 
     def test_2023_public_holiday(self):
         self.assertHolidays(
