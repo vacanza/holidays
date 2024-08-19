@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.37\n"
+"Project-Id-Version: Python Holidays 0.55\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2023-11-10 15:35+0200\n"
+"PO-Revision-Date: 2024-08-15 21:23+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -25,16 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
-
-#. Date format (see strftime() Format Codes)
-msgid "%d.%m.%Y"
-msgstr ""
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "Вихідний день (перенесено з %s)"
-msgstr ""
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (observed).
 #, c-format
@@ -43,10 +34,6 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Новий рік"
-msgstr ""
-
-#. Christmas Day (Julian calendar).
-msgid "Різдво Христове (за юліанським календарем)"
 msgstr ""
 
 #. International Women's Day.
@@ -69,6 +56,12 @@ msgstr ""
 msgid "День міжнародної солідарності трудящих"
 msgstr ""
 
+#. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
+msgid ""
+"День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 "
+"років"
+msgstr ""
+
 #. Day of Victory over Nazism in World War II (Victory Day).
 msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
 msgstr ""
@@ -79,6 +72,10 @@ msgstr ""
 
 #. Day of the Constitution of Ukraine.
 msgid "День Конституції України"
+msgstr ""
+
+#. Ukrainian Statehood Day.
+msgid "День Української Державності"
 msgstr ""
 
 #. Independence Day.
@@ -97,8 +94,17 @@ msgstr ""
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr ""
 
-#. Christmas Day (Gregorian calendar).
-msgid "Різдво Христове (за григоріанським календарем)"
+#. Christmas Day.
+msgid "Різдво Христове"
+msgstr ""
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Вихідний день (перенесено з %s)"
 msgstr ""
 
 #. Presidential decree holiday.

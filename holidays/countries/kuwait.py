@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import THU, FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -36,6 +37,10 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # The resting days are Friday and Saturday since Sep 1, 2007.
+        # https://www.arabnews.com/node/298933
+        self.weekend = {FRI, SAT} if self._year >= 2007 else {THU, FRI}
+
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

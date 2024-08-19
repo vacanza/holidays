@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
@@ -32,6 +33,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
     # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

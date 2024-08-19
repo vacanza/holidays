@@ -34,6 +34,9 @@ Documentation = "https://python-holidays.readthedocs.io/en/latest/"
 Changelog = "https://github.com/vacanza/python-holidays/releases"
 Downloads = "https://pypi.org/project/holidays/"
 
+[tool.bandit]
+exclude_dirs = ["docs", "tests"]
+
 [tool.coverage.run]
 branch = true
 omit = ["scripts/*", "setup.py", "tests/*"]

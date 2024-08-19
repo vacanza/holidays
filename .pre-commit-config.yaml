@@ -19,7 +19,7 @@ repos:
           - rst
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.6
+    rev: v0.6.1
     hooks:
       - id: ruff
       - id: ruff-format
@@ -33,6 +33,13 @@ repos:
         args:
           - --license-filepath
           - docs/file_header.txt
+
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.9
+    hooks:
+      - id: bandit
+        args:
+          - --configfile=pyproject.toml
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
