@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, AUG, SEP, _timedelta
+from holidays.calendars.gregorian import APR, MAY, AUG, SEP, _timedelta
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -86,12 +86,25 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
         # Status: In-Use.
-        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for years 2001-2050.
+        # Usually falls on April 13th except for 2017-2018, 2021-2023, 2025-2027, 2029-2031
+        # for years 2001-2050.
 
         if self._year != 2020:
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
-            sangkranta_years_apr_14 = {2017, 2018, 2021, 2022, 2023}
+            sangkranta_years_apr_14 = {
+                2017,
+                2018,
+                2021,
+                2022,
+                2023,
+                2025,
+                2026,
+                2027,
+                2029,
+                2030,
+                2031,
+            }
             dt = (
                 self._add_holiday_apr_14(sangkranta)
                 if self._year in sangkranta_years_apr_14
@@ -284,6 +297,9 @@ class CambodiaStaticHolidays:
     # Special Public Holiday
     special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
 
+    # Khmer New Year's Day
+    sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
+
     special_public_holidays = {
         2016: (
             (MAY, 2, special_in_lieu_holidays),
@@ -299,4 +315,5 @@ class CambodiaStaticHolidays:
             (AUG, 20, sangkranta_in_lieu_covid),
             (AUG, 21, sangkranta_in_lieu_covid),
         ),
+        2024: (APR, 16, sangkranta),
     }
