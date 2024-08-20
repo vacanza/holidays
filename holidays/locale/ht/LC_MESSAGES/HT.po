@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.55\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2024-08-19 13:57+0700\n"
-"PO-Revision-Date: 2024-08-19 14:10+0700\n"
+"PO-Revision-Date: 2024-08-20 10:00+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays Localization Team\n"
 "Language: ht\n"
