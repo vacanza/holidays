@@ -32,34 +32,20 @@ class TestLaos(CommonCountryTests, TestCase):
         self.assertHoliday(
             Laos(categories=BANK),
             "2015-01-02",
-            "2017-10-09",
         )
         self.assertNoNonObservedHoliday(
             Laos(categories=BANK, observed=False),
+            "2012-10-08",
             "2017-10-09",
+            "2018-10-08",
+            "2023-10-09",
         )
 
     def test_special_public_holiday(self):
-        dt = (
-            "2015-04-17",
-            "2016-04-13",
-            "2016-04-18",
-            "2020-04-13",
-            "2020-04-17",
-        )
+        dt = ("2015-04-17",)
         dt_observed = (
             "2011-04-13",
-            "2012-01-02",
-            "2012-04-13",
-            "2012-04-17",
-            "2012-12-03",
-            "2013-04-17",
-            "2015-03-09",
-            "2016-05-02",
-            "2017-01-02",
-            "2017-04-13",
-            "2017-04-17",
-            "2017-12-04",
+            "2020-04-17",
         )
         self.assertHoliday(dt, dt_observed)
         self.assertNoNonObservedHoliday(dt_observed)
@@ -109,6 +95,8 @@ class TestLaos(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-01-01" for year in range(1976, 2058))
 
         self.assertNoNonObservedHoliday(
+            "2012-01-02",
+            "2017-01-02",
             "2022-01-03",
             "2023-01-02",
         )
@@ -117,26 +105,47 @@ class TestLaos(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-03-08" for year in range(1976, 2058))
 
         self.assertNoNonObservedHoliday(
+            "2015-03-09",
             "2020-03-09",
         )
 
     def test_laos_new_year_day(self):
+        songkran_years_apr_13_15 = {2012, 2017}
+        songkran_years_apr_13_16 = {2016, 2020, 2024}
         for year in range(1976, 2058):
-            self.assertHoliday(f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
+            if year in songkran_years_apr_13_15:
+                self.assertHoliday(f"{year}-04-13", f"{year}-04-14", f"{year}-04-15")
+            elif year in songkran_years_apr_13_16:
+                self.assertHoliday(
+                    f"{year}-04-13",
+                    f"{year}-04-14",
+                    f"{year}-04-15",
+                    f"{year}-04-16",
+                )
+            else:
+                self.assertHoliday(f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
 
         self.assertNoNonObservedHoliday(
+            "2012-04-16",
+            "2012-04-17",
+            "2013-04-17",
+            "2016-04-18",
+            "2017-04-17",
             "2018-04-17",
             "2018-04-18",
             "2019-04-17",
             "2022-04-18",
             "2023-04-17",
             "2023-04-18",
+            "2024-04-17",
+            "2024-04-18",
         )
 
     def test_labor_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1976, 2058))
 
         self.assertNoNonObservedHoliday(
+            "2016-05-02",
             "2021-05-03",
             "2022-05-02",
         )
@@ -148,11 +157,13 @@ class TestLaos(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-12-02" for year in range(1976, 2058))
 
         self.assertNoNonObservedHoliday(
+            "2012-12-03",
+            "2017-12-04",
             "2018-12-03",
             "2023-12-04",
         )
 
-    def test_2014_bank_holiday(self):
+    def test_2014_bank_holidays(self):
         # Dec 31 is Wednesday.
         self.assertHolidays(
             Laos(categories=BANK, years=2014),
@@ -162,7 +173,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2014-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2018_bank_holiday(self):
+    def test_2018_bank_holidays(self):
         # Dec 31 is Monday.
         self.assertHolidays(
             Laos(categories=BANK, years=2018),
@@ -173,7 +184,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2018-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2019_bank_holiday(self):
+    def test_2019_bank_holidays(self):
         # Dec 31 is Tuesday.
         self.assertHolidays(
             Laos(categories=BANK, years=2019),
@@ -183,7 +194,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2019-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2020_bank_holiday(self):
+    def test_2020_bank_holidays(self):
         # Dec 31 is Thursday.
         self.assertHolidays(
             Laos(categories=BANK, years=2020),
@@ -193,7 +204,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2020-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2021_bank_holiday(self):
+    def test_2021_bank_holidays(self):
         # Dec 31 is Friday.
         self.assertHolidays(
             Laos(categories=BANK, years=2021),
@@ -203,7 +214,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2021-12-31", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2022_bank_holiday(self):
+    def test_2022_bank_holidays(self):
         # Dec 31 is Saturday.
         self.assertHolidays(
             Laos(categories=BANK, years=2022),
@@ -213,7 +224,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-12-30", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_2023_bank_holiday(self):
+    def test_2023_bank_holidays(self):
         # Dec 31 is Sunday.
         self.assertHolidays(
             Laos(categories=BANK, years=2023),
@@ -224,7 +235,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2023-12-29", "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"),
         )
 
-    def test_1993_school_holiday(self):
+    def test_1993_school_holidays(self):
         # Prior to Adoption of National Teacher Day
         self.assertHolidays(
             Laos(categories=SCHOOL, years=1993),
@@ -238,7 +249,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("1993-10-29", "ວັນບຸນທາດຫລວງ"),
         )
 
-    def test_2022_school_holiday(self):
+    def test_2022_school_holidays(self):
         self.assertHolidays(
             Laos(categories=SCHOOL, years=2022),
             ("2022-02-16", "ວັນບຸນມາຂະບູຊາ"),
@@ -252,7 +263,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-11-08", "ວັນບຸນທາດຫລວງ"),
         )
 
-    def test_2023_school_holiday(self):
+    def test_2023_school_holidays(self):
         self.assertHolidays(
             Laos(categories=SCHOOL, years=2023),
             ("2023-02-05", "ວັນບຸນມາຂະບູຊາ"),
@@ -266,7 +277,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2023-11-27", "ວັນບຸນທາດຫລວງ"),
         )
 
-    def test_1988_workday(self):
+    def test_1988_workdays(self):
         # Prior to National Arbor Day creation in 1989.
         self.assertHolidays(
             Laos(categories=WORKDAY, years=1988),
@@ -281,7 +292,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("1988-10-12", "ວັນປະກາດເອກະລາດ"),
         )
 
-    def test_1990_workday(self):
+    def test_1990_workdays(self):
         # Prior to Kaysone Phomvihane's Presidency and 1991 Constitution Adoption.
         self.assertHolidays(
             Laos(categories=WORKDAY, years=1990),
@@ -297,7 +308,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("1990-10-12", "ວັນປະກາດເອກະລາດ"),
         )
 
-    def test_1996_workday(self):
+    def test_1996_workdays(self):
         # Prior to 1997's Lao Wildlife Conservation Day Designation.
         self.assertHolidays(
             Laos(categories=WORKDAY, years=1996),
@@ -315,7 +326,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("1996-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
         )
 
-    def test_2017_workday(self):
+    def test_2017_workdays(self):
         # Prior to 2018 International Children's Day is in `PUBLIC` category
         self.assertHolidays(
             Laos(categories=WORKDAY, years=2017),
@@ -336,7 +347,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2017-12-13", "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"),
         )
 
-    def test_2022_workday(self):
+    def test_2022_workdays(self):
         self.assertHolidays(
             Laos(categories=WORKDAY, years=2022),
             ("2022-01-20", "ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ"),
