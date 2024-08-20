@@ -86,12 +86,25 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
         # Status: In-Use.
-        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for years 2001-2050.
+        # Usually falls on April 13th except for 2017-2018, 2021-2023, 2025-2027, 2029-2031
+        # for years 2001-2050.
 
         if self._year != 2020:
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
-            sangkranta_years_apr_14 = {2017, 2018, 2021, 2022, 2023}
+            sangkranta_years_apr_14 = {
+                2017,
+                2018,
+                2021,
+                2022,
+                2023,
+                2025,
+                2026,
+                2027,
+                2029,
+                2030,
+                2031,
+            }
             dt = (
                 self._add_holiday_apr_14(sangkranta)
                 if self._year in sangkranta_years_apr_14

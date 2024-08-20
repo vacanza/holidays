@@ -140,7 +140,19 @@ class TestCambodia(CommonCountryTests, TestCase):
         )
 
     def test_sangkranta(self):
-        sangkranta_years_apr14 = {2017, 2018, 2021, 2022, 2023}
+        sangkranta_years_apr14 = {
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2025,
+            2026,
+            2027,
+            2029,
+            2030,
+            2031,
+        }
         for year in set(range(1993, 2058)).difference({2020}):
             if year in sangkranta_years_apr14:
                 self.assertHoliday(f"{year}-04-14", f"{year}-04-15", f"{year}-04-16")
