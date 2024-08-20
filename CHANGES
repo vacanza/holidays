@@ -1,3 +1,20 @@
+Version 0.55
+============
+
+Released August 19, 2024
+
+- Add Samoa holidays (#1914 by @kasya)
+- Fix misleading France subdivision (#1931 by @MichaelMure)
+- Update CI/CD: add CodeQL workflow (#1910 by @arkid15r)
+- Update CI/CD: simplify gh release upload (#1924 by @arkid15r)
+- Update Github release upload process (#1902 by @arkid15r)
+- Update SG: add 2025 official holidays (#1903 by @mborsetti, @arkid15r)
+- Update UA: move martial law holidays to WORKDAY category (#1921 by @KJhellico)
+- Update pre-commit: add bandit (#1913 by @arkid15r)
+- Update utils.py (#1908 by @JohnRoz, @arkid15r)
+- Add special weekends format for certain countries (#1923 by @PPsyrius, @arkid15r)
+- Implement simple CycloneDX SBOM generation (#1925 by @arkid15r)
+
 Version 0.54
 ============
 

@@ -1,2 +1,3 @@
 build==1.2.1
+cyclonedx-bom==4.5.0
 polib==1.2.0

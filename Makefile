@@ -43,6 +43,9 @@ package:
 pre-commit:
 	pre-commit run --all-files
 
+sbom:
+	@python -m cyclonedx_py requirements requirements/runtime.txt
+
 setup:
 	pip install --upgrade pip
 	pip install --requirement requirements/dev.txt
