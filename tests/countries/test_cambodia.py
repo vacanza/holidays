@@ -39,6 +39,7 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2020-08-19",
             "2020-08-20",
             "2020-08-21",
+            "2024-04-16",
         )
 
     def test_2022(self):

@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, AUG, SEP, _timedelta
+from holidays.calendars.gregorian import APR, MAY, AUG, SEP, _timedelta
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
@@ -284,6 +284,9 @@ class CambodiaStaticHolidays:
     # Special Public Holiday
     special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
 
+    # Khmer New Year's Day
+    sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
+
     special_public_holidays = {
         2016: (
             (MAY, 2, special_in_lieu_holidays),
@@ -299,4 +302,5 @@ class CambodiaStaticHolidays:
             (AUG, 20, sangkranta_in_lieu_covid),
             (AUG, 21, sangkranta_in_lieu_covid),
         ),
+        2024: (APR, 16, sangkranta),
     }
