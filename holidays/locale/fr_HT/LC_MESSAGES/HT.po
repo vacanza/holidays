@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 #
-# Haiti holidays localization.
+# Haiti holidays.
 #
 msgid ""
 msgstr ""
