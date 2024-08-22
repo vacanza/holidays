@@ -26,10 +26,6 @@ class TestMalaysia(CommonCountryTests, TestCase):
             for subdiv in Malaysia.subdivisions
         }
 
-    def setUp(self):
-        super().setUp()
-        warnings.simplefilter("ignore", category=DeprecationWarning)
-
     def test_country_aliases(self):
         self.assertAliases(Malaysia, MY, MYS)
 
