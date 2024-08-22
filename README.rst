@@ -277,7 +277,7 @@ All other default values are highlighted with bold:
      -
    * - Bosnia and Herzegovina
      - BA
-     - Entities and district: BIH, BRC, SRP
+     - Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (Brčko distrikt, BD), SRP (Republika Srpska, RS)
      - **bs**, en_US, sr, uk
      -
    * - Botswana
