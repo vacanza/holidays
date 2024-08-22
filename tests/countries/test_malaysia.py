@@ -33,33 +33,6 @@ class TestMalaysia(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Malaysia, MY, MYS)
 
-    def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
-
-    def test_deprecated(self):
-        for subdiv1, subdiv2 in (
-            ("JHR", "01"),
-            ("KDH", "02"),
-            ("KTN", "03"),
-            ("KUL", "14"),
-            ("LBN", "15"),
-            ("MLK", "04"),
-            ("NSN", "05"),
-            ("PHG", "06"),
-            ("PJY", "16"),
-            ("PLS", "09"),
-            ("PNG", "07"),
-            ("PRK", "08"),
-            ("SBH", "12"),
-            ("SGR", "10"),
-            ("SWK", "13"),
-            ("TRG", "11"),
-        ):
-            self.assertEqual(
-                sorted(Malaysia(subdiv=subdiv1, years=2023).keys()),
-                sorted(Malaysia(subdiv=subdiv2, years=2023).keys()),
-            )
-
     def test_no_holidays(self):
         self.assertNoHolidays(Malaysia(years=1951))
 
