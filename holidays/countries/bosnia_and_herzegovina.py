@@ -64,11 +64,14 @@ class BosniaAndHerzegovina(
         "BRC",  # Brčko distrikt
         "SRP",  # Republika Srpska
     )
-    _deprecated_subdivisions = (
-        "BD",
-        "FBiH",
-        "RS",
-    )
+    subdivisions_aliases = {
+        "Federacija Bosne i Hercegovine": "BIH",
+        "FBiH": "BIH",
+        "Brčko distrikt": "BRC",
+        "BD": "BRC",
+        "Republika Srpska": "SRP",
+        "RS": "SRP",
+    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -89,13 +92,6 @@ class BosniaAndHerzegovina(
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Kurban Bajram"))
-
-        if self.subdiv == "BD":
-            self._populate_subdiv_brc_public_holidays()
-        elif self.subdiv == "FBiH":
-            self._populate_subdiv_bih_public_holidays()
-        elif self.subdiv == "RS":
-            self._populate_subdiv_srp_public_holidays()
 
     def _populate_subdiv_holidays(self):
         if not self.subdiv:

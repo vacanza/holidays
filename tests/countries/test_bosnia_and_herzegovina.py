@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from unittest import TestCase
 
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
@@ -28,10 +27,6 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         cls.bih_holidays_non_obs = BosniaAndHerzegovina(subdiv="BIH", observed=False, years=years)
         cls.brc_holidays_non_obs = BosniaAndHerzegovina(subdiv="BRC", observed=False, years=years)
         cls.srp_holidays_non_obs = BosniaAndHerzegovina(subdiv="SRP", observed=False, years=years)
-
-    def setUp(self):
-        super().setUp()
-        warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
         self.assertAliases(BosniaAndHerzegovina, BA, BIH)
@@ -377,20 +372,6 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.brc_holidays)
         self.assertNoHolidayName(name)
-
-    def test_deprecated(self):
-        for subdiv1, subdiv2 in (
-            ("BD", "BRC"),
-            ("FBiH", "BIH"),
-            ("RS", "SRP"),
-        ):
-            self.assertEqual(
-                BosniaAndHerzegovina(subdiv=subdiv1, years=2022).keys(),
-                BosniaAndHerzegovina(subdiv=subdiv2, years=2022).keys(),
-            )
-
-    def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_2021(self):
         self.assertHolidays(
