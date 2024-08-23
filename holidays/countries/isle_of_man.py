@@ -20,6 +20,7 @@ class IsleOfMan(UnitedKingdom):
 
     country = "IM"
     subdivisions = ()  # Override UnitedKingdom subdivisions.
+    subdivisions_aliases = {}  # Override UnitedKingdom subdivisions aliases.
 
     def __init__(self, *args, **kwargs):  # Override UnitedKingdom __init__().
         ChristianHolidays.__init__(self)

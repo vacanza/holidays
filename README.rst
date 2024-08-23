@@ -877,7 +877,7 @@ All other default values are highlighted with bold:
      -
    * - United Kingdom
      - GB
-     - Subdivisions: ENG, NIR, SCT, WLS
+     - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
      -
      -
    * - United States Minor Outlying Islands
