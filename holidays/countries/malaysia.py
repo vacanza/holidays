@@ -87,41 +87,39 @@ class Malaysia(
         "15",
         "16",
     )
-    _deprecated_subdivisions = (
-        "JHR",
-        "KDH",
-        "KTN",
-        "KUL",
-        "LBN",
-        "MLK",
-        "NSN",
-        "PHG",
-        "PJY",
-        "PLS",
-        "PNG",
-        "PRK",
-        "SBH",
-        "SGR",
-        "SWK",
-        "TRG",
-    )
     subdivisions_aliases = {
         "Johor": "01",
+        "JHR": "01",
         "Kedah": "02",
+        "KDH": "02",
         "Kelantan": "03",
+        "KTN": "03",
         "Melaka": "04",
+        "MLK": "04",
         "Negeri Sembilan": "05",
+        "NSN": "05",
         "Pahang": "06",
+        "PHG": "06",
         "Pulau Pinang": "07",
+        "PNG": "07",
         "Perak": "08",
+        "PRK": "08",
         "Perlis": "09",
+        "PLS": "09",
         "Selangor": "10",
+        "SGR": "10",
         "Terengganu": "11",
+        "TRG": "11",
         "Sabah": "12",
+        "SBH": "12",
         "Sarawak": "13",
+        "SWK": "13",
         "WP Kuala Lumpur": "14",
+        "KUL": "14",
         "WP Labuan": "15",
+        "LBN": "15",
         "WP Putrajaya": "16",
+        "PJY": "16",
     }
     supported_languages = ("en_US", "ms_MY")
 
@@ -215,26 +213,6 @@ class Malaysia(
     def _populate_subdiv_holidays(self):
         if self._year <= 1951:
             return None
-
-        deprecated_mapping = {
-            "JHR": "01",
-            "KDH": "02",
-            "KTN": "03",
-            "KUL": "14",
-            "LBN": "15",
-            "MLK": "04",
-            "NSN": "05",
-            "PHG": "06",
-            "PJY": "16",
-            "PLS": "09",
-            "PNG": "07",
-            "PRK": "08",
-            "SBH": "12",
-            "SGR": "10",
-            "SWK": "13",
-            "TRG": "11",
-        }
-        self.subdiv = deprecated_mapping.get(self.subdiv, self.subdiv)
 
         if self.subdiv and self.subdiv not in {"13", "15"}:
             # Deepavali.
