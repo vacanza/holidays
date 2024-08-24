@@ -607,21 +607,10 @@ class TestNZ(CommonCountryTests, TestCase):
         self.assertEqual(all_holidays, holidays_1974)
 
     def test_deprecated(self):
+        # Deprecated Code, Remapped Code.
         for subdiv1, subdiv2 in (
-            ("Auckland", "AUK"),
-            ("Canterbury", "CAN"),
-            ("Chatham Islands", "CIT"),
-            ("Hawke's Bay", "HKB"),
-            ("Marlborough", "MBH"),
-            ("Nelson", "NSN"),
-            ("Northland", "NTL"),
-            ("Otago", "OTA"),
             ("New Plymouth", "TKI"),
-            ("Taranaki", "TKI"),
-            ("South Canterbury", "STC"),
-            ("Southland", "STL"),
-            ("Wellington", "WGN"),
-            ("West Coast", "WTC"),
+            ("STC", "South Canterbury"),
             ("Westland", "WTC"),
             ("WTL", "WTC"),
         ):
