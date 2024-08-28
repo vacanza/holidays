@@ -109,7 +109,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2010-11-04", "National Day of Community Service"),
             ("2010-12-25", "Christmas Day"),
             ("2010-12-26", "Boxing Day"),
-            ("2010-12-27", "Boxing Day (observed)"), #
+            ("2010-12-27", "Boxing Day (observed)"),
         )
 
     def test_2011_public_holiday(self):
