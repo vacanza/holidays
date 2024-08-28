@@ -12,21 +12,9 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Set, Tuple
+from typing import Set
 
-from holidays.calendars.gregorian import (
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    _timedelta,
-)
+from holidays.calendars.gregorian import FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV, _timedelta
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
@@ -101,7 +89,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             dts_observed.add(self._add_holiday_feb_23(tr("天皇誕生日")))
 
         # Vernal Equinox Day.
-        dts_observed.add(self._add_holiday(tr("春分の日"), self._vernal_equinox_date))
+        dts_observed.add(self._add_vernal_equinox_day(tr("春分の日")))
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day.
         if self._year <= 1988:
@@ -163,7 +151,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             )
 
         # Autumnal Equinox Day.
-        dts_observed.add(self._add_holiday(tr("秋分の日"), self._autumnal_equinox_date))
+        dts_observed.add(self._add_autumnal_equinox_day(tr("秋分の日")))
 
         # Physical Education and Sports Day.
         if self._year >= 1966:
@@ -207,33 +195,6 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         self._add_new_years_day_two(name)
         self._add_new_years_day_three(name)
         self._add_new_years_eve(name)
-
-    @property
-    def _vernal_equinox_date(self) -> Tuple[int, int]:
-        day = 20
-        if (
-            (self._year % 4 == 0 and self._year <= 1956)
-            or (self._year % 4 == 1 and self._year <= 1989)
-            or (self._year % 4 == 2 and self._year <= 2022)
-            or (self._year % 4 == 3 and self._year <= 2055)
-        ):
-            day = 21
-        elif self._year % 4 == 0 and self._year >= 2092:
-            day = 19
-        return MAR, day
-
-    @property
-    def _autumnal_equinox_date(self) -> Tuple[int, int]:
-        day = 23
-        if self._year % 4 == 3 and self._year <= 1979:
-            day = 24
-        elif (
-            (self._year % 4 == 0 and self._year >= 2012)
-            or (self._year % 4 == 1 and self._year >= 2045)
-            or (self._year % 4 == 2 and self._year >= 2078)
-        ):
-            day = 22
-        return SEP, day
 
 
 class JP(Japan):

@@ -11,9 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from typing import Tuple
 
-from holidays.calendars.gregorian import JUN, SEP, DEC
+from holidays.calendars.gregorian import SEP, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -129,7 +128,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             if self._year == 2021:
                 self._add_holiday_jun_21(name)
             else:
-                self._add_holiday(name, self._summer_solstice_date)
+                self._add_summer_solstice_day(name)
 
         if self._year <= 1967 or self._year >= 1986:
             # Saint Peter and Saint Paul.
@@ -224,15 +223,6 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
         if self._year >= 1956 and self._year != 1997:
             self._add_holiday_dec_31(name)
-
-    @property
-    def _summer_solstice_date(self) -> Tuple[int, int]:
-        day = 20
-        if (self._year % 4 > 1 and self._year <= 2046) or (
-            self._year % 4 > 2 and self._year <= 2075
-        ):
-            day = 21
-        return JUN, day
 
 
 class CL(Chile):

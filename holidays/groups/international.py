@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN
+from holidays.calendars.gregorian import JAN, MAR, JUN, SEP, DEC
 
 
 class InternationalHolidays:
@@ -21,11 +21,98 @@ class InternationalHolidays:
     """
 
     @property
+    def _vernal_equinox_date(self):
+        """
+        Return Vernal Equinox date.
+        """
+        day = 20
+        if (
+            (self._year % 4 == 0 and self._year <= 1956)
+            or (self._year % 4 == 1 and self._year <= 1989)
+            or (self._year % 4 == 2 and self._year <= 2022)
+            or (self._year % 4 == 3 and self._year <= 2055)
+        ):
+            day = 21
+        elif self._year % 4 == 0 and self._year >= 2092:
+            day = 19
+        return date(self._year, MAR, day)
+
+    @property
+    def _summer_solstice_date(self):
+        """
+        Return Summer Solstice date.
+        """
+        # This approximation is reliable for 1952-2099 years.
+        day = 20
+        if (self._year % 4 > 1 and self._year <= 2046) or (
+            self._year % 4 > 2 and self._year <= 2075
+        ):
+            day = 21
+        return date(self._year, JUN, day)
+
+    @property
+    def _autumnal_equinox_date(self):
+        """
+        Return Autumnal Equinox date.
+        """
+        day = 23
+        if self._year % 4 == 3 and self._year <= 1979:
+            day = 24
+        elif (
+            (self._year % 4 == 0 and self._year >= 2012)
+            or (self._year % 4 == 1 and self._year >= 2045)
+            or (self._year % 4 == 2 and self._year >= 2078)
+        ):
+            day = 22
+        return date(self._year, SEP, day)
+
+    @property
+    def _winter_solstice_date(self):
+        """
+        Return Winter Solstice date.
+        """
+        # This approximation is reliable for 1952-2099 years.
+        if (
+            (self._year % 4 == 0 and self._year >= 1988)
+            or (self._year % 4 == 1 and self._year >= 2021)
+            or (self._year % 4 == 2 and self._year >= 2058)
+            or (self._year % 4 == 3 and self._year >= 2091)
+        ):
+            day = 21
+        else:
+            day = 22
+        return date(self._year, DEC, day)
+
+    @property
     def _next_year_new_years_day(self):
         """
         Return New Year's Day of next year.
         """
         return date(self._year + 1, JAN, 1)
+
+    def _add_vernal_equinox_day(self, name):
+        """
+        Add Vernal Equinox
+        """
+        return self._add_holiday(name, self._vernal_equinox_date)
+
+    def _add_summer_solstice_day(self, name):
+        """
+        Add Summer Solstice
+        """
+        return self._add_holiday(name, self._summer_solstice_date)
+
+    def _add_autumnal_equinox_day(self, name):
+        """
+        Add Autumnal Equinox
+        """
+        return self._add_holiday(name, self._autumnal_equinox_date)
+
+    def _add_winter_solstice_day(self, name):
+        """
+        Add Winter Solstice
+        """
+        return self._add_holiday(name, self._winter_solstice_date)
 
     def _add_africa_day(self, name):
         """
