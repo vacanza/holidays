@@ -119,6 +119,154 @@ class RussiaStaticHolidays:
     substituted_label = tr("Выходной (перенесено с %s)")
 
     special_public_holidays = {
+        # Substituted Holidays 1994
+        # src: https://www.consultant.ru/document/cons_doc_LAW_3235/
+        1994: (MAR, 7, MAR, 5),
+        # Substituted Holidays 1995
+        # src: https://www.consultant.ru/document/cons_doc_LAW_6316/
+        #      https://www.consultant.ru/document/cons_doc_LAW_8134/
+        #      https://www.consultant.ru/document/cons_doc_LAW_8499/
+        1995: (
+            (MAY, 8, MAY, 6),
+            (NOV, 6, NOV, 4),
+            (DEC, 11, DEC, 9),
+        ),
+        # Substituted Holidays 2000
+        # src: https://www.consultant.ru/document/cons_doc_LAW_25401/
+        2000: (
+            (MAY, 8, MAY, 6),
+            (NOV, 6, NOV, 4),
+            (DEC, 11, DEC, 9),
+        ),
+        # Substituted Holidays 2002
+        # src: https://www.consultant.ru/document/cons_doc_LAW_33943/
+        2002: (
+            (MAY, 3, APR, 27),
+            (MAY, 10, MAY, 18),
+            (NOV, 8, NOV, 10),
+            (DEC, 13, DEC, 15),
+        ),
+        # Substituted Holidays 2003
+        # src: https://www.consultant.ru/document/cons_doc_LAW_39997/16abd0212dcc02f64a1daed24286d2ffc2a4a9e9/
+        2003: (
+            (JAN, 3, JAN, 4),
+            (JAN, 6, JAN, 5),
+            (JUN, 13, JUN, 21),
+        ),
+        # Substituted Holidays 2005
+        # src: https://www.consultant.ru/document/cons_doc_LAW_50948/
+        2005: (MAR, 7, MAR, 5),
+        # Substituted Holidays 2006
+        # src: https://www.consultant.ru/document/cons_doc_LAW_57425/
+        2006: (
+            (FEB, 24, FEB, 26),
+            (MAY, 8, MAY, 6),
+        ),
+        # Substituted Holidays 2007
+        # src: https://www.consultant.ru/document/cons_doc_LAW_63838/
+        2007: (
+            (APR, 30, APR, 28),
+            (JUN, 11, JUN, 9),
+            (DEC, 31, DEC, 29),
+        ),
+        # Substituted Holidays 2008
+        # src: https://www.consultant.ru/document/cons_doc_LAW_70469/
+        2008: (
+            (MAY, 2, MAY, 4),
+            (JUN, 13, JUN, 7),
+            (NOV, 3, NOV, 1),
+        ),
+        # Substituted Holidays 2009
+        # src: https://www.consultant.ru/document/cons_doc_LAW_81981/
+        2009: (JAN, 9, JAN, 11),
+        # Substituted Holidays 2010
+        # src: https://www.consultant.ru/document/cons_doc_LAW_93374/
+        2010: (
+            (FEB, 22, FEB, 27),
+            (NOV, 5, NOV, 13),
+        ),
+        # Substituted Holidays 2011
+        # src: https://www.consultant.ru/document/cons_doc_LAW_103530/
+        2011: (MAR, 7, MAR, 5),
+        # Substituted Holidays 2012
+        # src: https://www.consultant.ru/document/cons_doc_LAW_117190/
+        2012: (
+            (MAR, 9, MAR, 11),
+            (APR, 30, APR, 28),
+            (MAY, 7, MAY, 5),
+            (MAY, 8, MAY, 12),
+            (JUN, 11, JUN, 9),
+            (DEC, 31, DEC, 29),
+        ),
+        # Substituted Holidays 2013
+        # src: https://www.consultant.ru/document/cons_doc_LAW_136654/
+        2013: (
+            (MAY, 2, JAN, 5),
+            (MAY, 3, JAN, 6),
+            (MAY, 10, FEB, 25),
+        ),
+        # Substituted Holidays 2014
+        # src: https://www.consultant.ru/document/cons_doc_LAW_146983/
+        2014: (
+            (MAY, 2, JAN, 4),
+            (JUN, 13, JAN, 5),
+            (NOV, 3, FEB, 24),
+        ),
+        # Substituted Holidays 2015
+        # src: https://www.consultant.ru/document/cons_doc_LAW_167928/
+        2015: (
+            (JAN, 9, JAN, 3),
+            (MAY, 4, JAN, 4),
+        ),
+        # Substituted Holidays 2016
+        # src: https://www.consultant.ru/document/cons_doc_LAW_186505/
+        2016: (
+            (MAY, 3, JAN, 2),
+            (MAR, 7, JAN, 3),
+            (FEB, 22, FEB, 20),
+        ),
+        # Substituted Holidays 2017
+        # src: https://www.consultant.ru/document/cons_doc_LAW_202871/
+        2017: (
+            (FEB, 24, JAN, 1),
+            (MAY, 8, JAN, 7),
+        ),
+        # Substituted Holidays 2018
+        # src: https://www.consultant.ru/document/cons_doc_LAW_280526/
+        2018: (
+            (MAR, 9, JAN, 6),
+            (MAY, 2, JAN, 7),
+            (APR, 30, APR, 28),
+            (JUN, 11, JUN, 9),
+            (DEC, 31, DEC, 29),
+        ),
+        # Substituted Holidays 2019
+        # src: https://www.consultant.ru/document/cons_doc_LAW_307996/
+        2019: (
+            (MAY, 2, JAN, 5),
+            (MAY, 3, JAN, 6),
+            (MAY, 10, FEB, 23),
+        ),
+        # Substituted Holidays 2020
+        # src: https://www.consultant.ru/document/cons_doc_law_328918/
+        2020: (
+            (MAY, 4, JAN, 4),
+            (MAY, 5, JAN, 5),
+        ),
+        # Substituted Holidays 2021
+        # src: https://www.consultant.ru/document/cons_doc_law_365179/
+        2021: (
+            (NOV, 5, JAN, 2),
+            (DEC, 31, JAN, 3),
+            (FEB, 22, FEB, 20),
+        ),
+        # Substituted Holidays 2022
+        # src: https://www.consultant.ru/document/cons_doc_LAW_395538/
+        2022: (
+            (MAY, 3, JAN, 1),
+            (MAY, 10, JAN, 2),
+            (MAR, 7, MAR, 5),
+        ),
         # Substituted Holidays 2023
         # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
         2023: (

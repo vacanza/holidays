@@ -30,6 +30,68 @@ class TestRussia(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday(
             # Substituted Holidays.
+            "1994-03-07",
+            "1995-05-08",
+            "1995-11-06",
+            "1995-12-11",
+            "2000-05-08",
+            "2000-11-06",
+            "2000-12-11",
+            "2002-05-03",
+            "2002-05-10",
+            "2002-11-08",
+            "2002-12-13",
+            "2003-01-03",
+            "2003-01-06",
+            "2003-06-13",
+            "2005-03-07",
+            "2006-02-24",
+            "2006-05-08",
+            "2007-04-30",
+            "2007-06-11",
+            "2007-12-31",
+            "2008-05-02",
+            "2008-06-13",
+            "2008-11-03",
+            "2009-01-09",
+            "2010-02-22",
+            "2010-11-05",
+            "2011-03-07",
+            "2012-03-09",
+            "2012-04-30",
+            "2012-05-07",
+            "2012-05-08",
+            "2012-06-11",
+            "2012-12-31",
+            "2013-05-02",
+            "2013-05-03",
+            "2013-05-10",
+            "2014-05-02",
+            "2014-06-13",
+            "2014-11-03",
+            "2015-01-09",
+            "2015-05-04",
+            "2016-02-22",
+            "2016-03-07",
+            "2016-05-03",
+            "2017-02-24",
+            "2017-05-08",
+            "2018-03-09",
+            "2018-04-30",
+            "2018-05-02",
+            "2018-06-11",
+            "2018-12-31",
+            "2019-05-02",
+            "2019-05-03",
+            "2019-05-10",
+            "2020-05-04",
+            "2020-05-05",
+            "2021-02-22",
+            "2021-11-05",
+            "2021-12-31",
+            "2022-03-07",
+            "2022-05-03",
+            "2022-05-10",
             "2023-02-24",
             "2023-05-08",
             "2024-04-29",
@@ -62,9 +124,11 @@ class TestRussia(CommonCountryTests, TestCase):
         for year in range(2013, 2025):
             self.assertHolidayName(name_2, f"{year}-01-06", f"{year}-01-08")
         for year in range(1991, 2005):
-            self.assertNoHoliday(f"{year}-01-03", f"{year}-01-04", f"{year}-01-05")
+            self.assertNoHolidayName(name_1, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05"))
+            self.assertNoHolidayName(name_2, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05"))
         for year in range(1991, 2013):
-            self.assertNoHoliday(f"{year}-01-06", f"{year}-01-08")
+            self.assertNoHolidayName(name_1, (f"{year}-01-06", f"{year}-01-08"))
+            self.assertNoHolidayName(name_2, (f"{year}-01-06", f"{year}-01-08"))
         self.assertNoHolidayName(name_1, range(2005, 2025))
         self.assertNoHolidayName(name_2, range(1991, 2005))
 
@@ -90,7 +154,8 @@ class TestRussia(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1, "1991-05-01", "1991-05-02")
         self.assertHolidayName(name_2, (f"{year}-05-01" for year in range(1992, 2025)))
         self.assertHolidayName(name_2, (f"{year}-05-02" for year in range(1992, 2005)))
-        self.assertNoHoliday(f"{year}-05-02" for year in range(2005, 2025))
+        self.assertNoHolidayName(name_1, (f"{year}-05-02" for year in range(2005, 2025)))
+        self.assertNoHolidayName(name_2, (f"{year}-05-02" for year in range(2005, 2025)))
         self.assertNoHolidayName(name_1, range(1992, 2025))
         self.assertNoHolidayName(name_2, 1991)
 
@@ -118,8 +183,10 @@ class TestRussia(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1, (f"{year}-11-07" for year in range(1991, 1996)))
         self.assertHolidayName(name_1, "1991-11-08")
         self.assertHolidayName(name_2, (f"{year}-11-07" for year in range(1996, 2005)))
-        self.assertNoHoliday(f"{year}-11-07" for year in range(2005, 2025))
-        self.assertNoHoliday(f"{year}-11-08" for year in range(1992, 2025))
+        self.assertNoHolidayName(name_1, (f"{year}-11-07" for year in range(2005, 2025)))
+        self.assertNoHolidayName(name_2, (f"{year}-11-07" for year in range(2005, 2025)))
+        self.assertNoHolidayName(name_1, (f"{year}-11-08" for year in range(1992, 2025)))
+        self.assertNoHolidayName(name_2, (f"{year}-11-08" for year in range(1992, 2025)))
         self.assertNoHolidayName(name_1, range(1996, 2025))
         self.assertNoHolidayName(name_2, range(1991, 1996), range(2005, 2025))
 
@@ -136,10 +203,15 @@ class TestRussia(CommonCountryTests, TestCase):
             ("2018-01-08", "Новогодние каникулы"),
             ("2018-02-23", "День защитника Отечества"),
             ("2018-03-08", "Международный женский день"),
+            ("2018-03-09", "Выходной (перенесено с 06.01.2018)"),
+            ("2018-04-30", "Выходной (перенесено с 28.04.2018)"),
             ("2018-05-01", "Праздник Весны и Труда"),
+            ("2018-05-02", "Выходной (перенесено с 07.01.2018)"),
             ("2018-05-09", "День Победы"),
+            ("2018-06-11", "Выходной (перенесено с 09.06.2018)"),
             ("2018-06-12", "День России"),
             ("2018-11-04", "День народного единства"),
+            ("2018-12-31", "Выходной (перенесено с 29.12.2018)"),
         )
 
     def test_l10n_default(self):
@@ -154,10 +226,15 @@ class TestRussia(CommonCountryTests, TestCase):
             ("2018-01-08", "Новогодние каникулы"),
             ("2018-02-23", "День защитника Отечества"),
             ("2018-03-08", "Международный женский день"),
+            ("2018-03-09", "Выходной (перенесено с 06.01.2018)"),
+            ("2018-04-30", "Выходной (перенесено с 28.04.2018)"),
             ("2018-05-01", "Праздник Весны и Труда"),
+            ("2018-05-02", "Выходной (перенесено с 07.01.2018)"),
             ("2018-05-09", "День Победы"),
+            ("2018-06-11", "Выходной (перенесено с 09.06.2018)"),
             ("2018-06-12", "День России"),
             ("2018-11-04", "День народного единства"),
+            ("2018-12-31", "Выходной (перенесено с 29.12.2018)"),
         )
 
     def test_l10n_en_us(self):
@@ -173,8 +250,13 @@ class TestRussia(CommonCountryTests, TestCase):
             ("2018-01-08", "New Year Holidays"),
             ("2018-02-23", "Fatherland Defender's Day"),
             ("2018-03-08", "International Women's Day"),
+            ("2018-03-09", "Day off (substituted from 01/06/2018)"),
+            ("2018-04-30", "Day off (substituted from 04/28/2018)"),
             ("2018-05-01", "Holiday of Spring and Labor"),
+            ("2018-05-02", "Day off (substituted from 01/07/2018)"),
             ("2018-05-09", "Victory Day"),
+            ("2018-06-11", "Day off (substituted from 06/09/2018)"),
             ("2018-06-12", "Russia Day"),
             ("2018-11-04", "Unity Day"),
+            ("2018-12-31", "Day off (substituted from 12/29/2018)"),
         )
