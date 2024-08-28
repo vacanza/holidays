@@ -276,6 +276,15 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, self.__get_easter_sunday(calendar))
 
+    def _add_easter_tuesday(self, name, calendar=None) -> date:
+        """
+        Add Easter Tuesday (2 day after Easter Sunday).
+
+        Easter Tuesday is the third day of Eastertide and is a holiday in some areas.
+        https://en.wikipedia.org/wiki/Easter_Tuesday
+        """
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +2))
+
     def _add_epiphany_day(self, name, calendar=None) -> date:
         """
         Add Epiphany Day.
