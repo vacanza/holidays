@@ -60,6 +60,7 @@ COUNTRIES: RegistryDict = {
     "czechia": ("Czechia", "CZ", "CZE"),
     "denmark": ("Denmark", "DK", "DNK"),
     "djibouti": ("Djibouti", "DJ", "DJI"),
+    "dominica": ("Dominica", "DM", "DMA"),
     "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
     "ecuador": ("Ecuador", "EC", "ECU"),
     "egypt": ("Egypt", "EG", "EGY"),
