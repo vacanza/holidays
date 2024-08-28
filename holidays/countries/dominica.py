@@ -115,6 +115,7 @@ class DominicaStaticHolidays:
       - https://dominica.gov.dm/laws/2009/sro55-2009.pdf
       - https://emonewsdm.com/thursday-september-19-2019-declared-public-holiday-in-dominica/
     """
+
     # Special Public Holidays.
     special_public_holiday_name = "Special Public Holiday"
 
