@@ -154,7 +154,6 @@ class TestRussia(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1, "1991-05-01", "1991-05-02")
         self.assertHolidayName(name_2, (f"{year}-05-01" for year in range(1992, 2025)))
         self.assertHolidayName(name_2, (f"{year}-05-02" for year in range(1992, 2005)))
-        self.assertNoHolidayName(name_1, (f"{year}-05-02" for year in range(2005, 2025)))
         self.assertNoHolidayName(name_2, (f"{year}-05-02" for year in range(2005, 2025)))
         self.assertNoHolidayName(name_1, range(1992, 2025))
         self.assertNoHolidayName(name_2, 1991)
