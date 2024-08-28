@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from unittest import TestCase
 
 from holidays.countries.italy import Italy, IT, ITA
@@ -21,10 +20,6 @@ class TestItaly(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Italy, years=range(1946, 2050))
-
-    def setUp(self):
-        super().setUp()
-        warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
         self.assertAliases(Italy, IT, ITA)
@@ -278,11 +273,3 @@ class TestItaly(CommonCountryTests, TestCase):
         }
         for subdiv, holidays in subdiv_holidays.items():
             self.assertHoliday(Italy(subdiv=subdiv, years=2017), holidays)
-
-    def test_deprecated(self):
-        self.assertEqual(
-            Italy(subdiv="Forlì", years=2022).keys(), Italy(subdiv="Forli", years=2022).keys()
-        )
-
-    def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
