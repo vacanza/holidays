@@ -39,6 +39,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
       - `2021 <https://njt.hu/jogszabaly/2020-14-20-7Q>`_
       - `2022 <https://njt.hu/jogszabaly/2021-23-20-7Q>`_
       - `2024 <https://njt.hu/jogszabaly/2023-15-20-8P>`_
+      - `2025 <https://njt.hu/jogszabaly/2024-11-20-2X>`_
     """
 
     country = "HU"
@@ -192,5 +193,10 @@ class HungaryStaticHolidays:
             (AUG, 19, AUG, 3),
             (DEC, 24, DEC, 7),
             (DEC, 27, DEC, 14),
+        ),
+        2025: (
+            (MAY, 2, MAY, 17),
+            (OCT, 24, OCT, 18),
+            (DEC, 24, DEC, 13),
         ),
     }
