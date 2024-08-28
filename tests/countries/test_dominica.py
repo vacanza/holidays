@@ -90,7 +90,7 @@ class TestDominica(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_first_mon_aug, range(1998, 2051))
         self.assertNoHolidayName(name_emancipation_day, range(1990, 1998))
 
-    def test_2010_public_holiday(self):
+    def test_2010_public_holidays(self):
         # https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg
         self.assertHolidays(
             Dominica(years=2010),
@@ -110,7 +110,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2010-12-27", "Boxing Day (observed)"),
         )
 
-    def test_2011_public_holiday(self):
+    def test_2011_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2011),
@@ -129,7 +129,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2011-12-27", "Christmas Day (observed)"),
         )
 
-    def test_2012_public_holiday(self):
+    def test_2012_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2012),
@@ -149,7 +149,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2012-12-26", "Boxing Day"),
         )
 
-    def test_2013_public_holiday(self):
+    def test_2013_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2013),
@@ -168,7 +168,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2013-12-26", "Boxing Day"),
         )
 
-    def test_2014_public_holiday(self):
+    def test_2014_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2014),
@@ -186,7 +186,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2014-12-26", "Boxing Day"),
         )
 
-    def test_2015_public_holiday(self):
+    def test_2015_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2015),
@@ -204,7 +204,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2015-12-26", "Boxing Day"),
         )
 
-    def test_2016_public_holiday(self):
+    def test_2016_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2016),
@@ -223,7 +223,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2016-12-27", "Christmas Day (observed)"),
         )
 
-    def test_2017_public_holiday(self):
+    def test_2017_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2017),
@@ -242,7 +242,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2017-12-26", "Boxing Day"),
         )
 
-    def test_2018_public_holiday(self):
+    def test_2018_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2018),
@@ -261,7 +261,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2018-12-26", "Boxing Day"),
         )
 
-    def test_2019_public_holiday(self):
+    def test_2019_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2019),
@@ -281,7 +281,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2019-12-26", "Boxing Day"),
         )
 
-    def test_2020_public_holiday(self):
+    def test_2020_public_holidays(self):
         # https://dominicaconsulategreece.com/dominica/public-holidays/
         self.assertHolidays(
             Dominica(years=2020),
@@ -299,7 +299,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2020-12-26", "Boxing Day"),
         )
 
-    def test_2021_public_holiday(self):
+    def test_2021_public_holidays(self):
         # http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica
         self.assertHolidays(
             Dominica(years=2021),
@@ -318,7 +318,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2021-12-27", "Boxing Day (observed)"),
         )
 
-    def test_2022_public_holiday(self):
+    def test_2022_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
         self.assertHolidays(
             Dominica(years=2022),
@@ -337,7 +337,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2022-12-27", "Christmas Day (observed)"),
         )
 
-    def test_2023_public_holiday(self):
+    def test_2023_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
         self.assertHolidays(
             Dominica(years=2023),
@@ -356,7 +356,7 @@ class TestDominica(CommonCountryTests, TestCase):
             ("2023-12-26", "Boxing Day"),
         )
 
-    def test_2024_public_holiday(self):
+    def test_2024_public_holidays(self):
         # https://dominica.gov.dm/about-dominica/public-holidays
         self.assertHolidays(
             Dominica(years=2024),
