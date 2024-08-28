@@ -696,7 +696,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
         # Easter Tuesday.
         if self._year <= 2010:
-            self._add_holiday_2_days_past_easter("Easter Tuesday")
+            self._add_easter_tuesday("Easter Tuesday")
 
         # ANZAC Day.
         if self._year >= 1921:
