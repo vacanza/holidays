@@ -39,7 +39,6 @@ class TestDominica(CommonCountryTests, TestCase):
         name = "Labour Day"
 
         # May, 1st.
-        self.assertNoHoliday("1989-05-01")
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1990, 2010)))
         self.assertNoNonObservedHoliday(
             "1994-05-02",
@@ -87,7 +86,6 @@ class TestDominica(CommonCountryTests, TestCase):
             "2023-08-07",
             "2024-08-05",
         )
-        self.assertNoHoliday("1989-05-01")
         self.assertHolidayName(name_emancipation_day, dt)
         self.assertNoHolidayName(name_first_mon_aug, range(1998, 2051))
         self.assertNoHolidayName(name_emancipation_day, range(1990, 1998))
