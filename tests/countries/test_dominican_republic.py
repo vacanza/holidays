@@ -24,6 +24,9 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(DominicanRepublic, DO, DOM)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(DominicanRepublic(years=1997))
+
     def test_2020(self):
         self.assertHolidays(
             ("2020-01-01", "Año Nuevo"),
@@ -72,27 +75,59 @@ class TestDominicanRepublic(CommonCountryTests, TestCase):
             ("2022-12-25", "Día de Navidad"),
         )
 
+    def test_2023(self):
+        self.assertHolidays(
+            ("2023-01-01", "Año Nuevo"),
+            ("2023-01-09", "Día de los Santos Reyes"),
+            ("2023-01-21", "Día de la Altagracia"),
+            ("2023-01-30", "Día de Duarte"),
+            ("2023-02-27", "Día de Independencia"),
+            ("2023-04-07", "Viernes Santo"),
+            ("2023-05-01", "Día del Trabajo"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-08-14", "Día de la Restauración"),
+            ("2023-09-24", "Día de las Mercedes"),
+            ("2023-11-06", "Día de la Constitución"),
+            ("2023-12-25", "Día de Navidad"),
+        )
+
+    def test_2024(self):
+        self.assertHolidays(
+            ("2024-01-01", "Año Nuevo"),
+            ("2024-01-06", "Día de los Santos Reyes"),
+            ("2024-01-21", "Día de la Altagracia"),
+            ("2024-01-29", "Día de Duarte"),
+            ("2024-02-27", "Día de Independencia"),
+            ("2024-03-29", "Viernes Santo"),
+            ("2024-04-29", "Día del Trabajo"),
+            ("2024-05-30", "Corpus Christi"),
+            ("2024-08-16", "Día de la Restauración"),
+            ("2024-09-24", "Día de las Mercedes"),
+            ("2024-11-04", "Día de la Constitución"),
+            ("2024-12-25", "Día de Navidad"),
+        )
+
     def test_movable(self):
         self.assertHoliday(
-            "1996-01-06",
-            "1997-01-06",
             "1998-01-05",
+            "1999-01-04",
             "1998-01-26",
             "1999-01-25",
-            "1996-05-01",
             "1998-05-04",
-            "1996-11-06",
-            "1997-11-10",
-            "2000-08-16",
+            "1999-05-01",
             "2001-08-20",
+            "2012-08-16",
+            "2016-08-16",
+            "1998-11-09",
+            "1999-11-06",
         )
 
         self.assertNoHoliday(
             "1998-01-06",
             "1999-01-26",
             "1998-05-01",
-            "1997-11-06",
             "2001-08-16",
+            "1998-11-06",
         )
 
     def test_l10n_default(self):

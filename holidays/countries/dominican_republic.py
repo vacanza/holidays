@@ -10,10 +10,8 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -39,11 +37,11 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
         kwargs.setdefault("observed_rule", TUE_WED_TO_PREV_MON + THU_FRI_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _is_observed(self, dt: date) -> bool:
-        # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
-        return dt >= date(1997, JUN, 27)
-
     def _populate_public_holidays(self):
+        # Law No. 139-97 - Holidays Dominican Republic (Jun 27, 1997).
+        if self._year <= 1997:
+            return None
+
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -72,12 +70,9 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Restoration Day.
-        name = tr("Día de la Restauración")
-        # Judgment No. 14 of Feb 20, 2008 of the Supreme Court of Justice
-        if self._year <= 2007 and self._year % 4 == 0:
-            self._add_holiday_aug_16(name)
-        else:
-            self._move_holiday(self._add_holiday_aug_16(name))
+        aug_16 = self._add_holiday_aug_16(tr("Día de la Restauración"))
+        if self._year % 4 != 0:
+            self._move_holiday(aug_16)
 
         # Our Lady of Mercedes Day.
         self._add_holiday_sep_24(tr("Día de las Mercedes"))
