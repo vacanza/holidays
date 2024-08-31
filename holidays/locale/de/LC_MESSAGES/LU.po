@@ -67,6 +67,6 @@ msgstr "Allerheiligen"
 msgid "Chrëschtdag"
 msgstr "Weihnachten"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stiefesdag"
 msgstr "Zweiter Weihnachtsfeiertag"

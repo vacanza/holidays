@@ -112,7 +112,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-26", "Saint Stephen's Day"),
         )
 
     def test_l10n_fr(self):
@@ -128,7 +128,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-08-15", "Assomption"),
             ("2022-11-01", "Toussaint"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "St. Etienne"),
+            ("2022-12-26", "Saint Etienne"),
         )
 
     def test_l10n_uk(self):

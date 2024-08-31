@@ -30,11 +30,11 @@ msgstr ""
 msgid "L-Ewwel tas-Sena"
 msgstr ""
 
-#. Feast of St. Paul's Shipwreck.
+#. Feast of Saint Paul's Shipwreck.
 msgid "Il-Festa tan-Nawfraġju ta' San Pawl"
 msgstr ""
 
-#. Feast of St. Joseph.
+#. Feast of Saint Joseph.
 msgid "Il-Festa ta' San Ġużepp"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Sette Giugno"
 msgstr ""
 
-#. Feast of St. Peter and St. Paul.
+#. Feast of Saint Peter and Saint Paul.
 msgid "Il-Festa ta' San Pietru u San Pawl"
 msgstr ""
 

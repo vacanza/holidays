@@ -124,7 +124,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
                 )
 
     def test_st_patricks_day(self):
-        name = "St. Patrick's Day"
+        name = "Saint Patrick's Day"
         obs_dt = (
             "2001-03-19",
             "2002-03-18",
@@ -330,7 +330,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1950, 2050))
 
     def test_st_andrews_day(self):
-        name = "St. Andrew's Day"
+        name = "Saint Andrew's Day"
         obs_dt = (
             "2008-12-01",
             "2013-12-02",
@@ -409,7 +409,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
         all_holidays = {
             "New Year's Day",
             "New Year Holiday",
-            "St. Patrick's Day",
+            "Saint Patrick's Day",
             "Good Friday",
             "Easter Monday",
             "May Day",
@@ -417,7 +417,7 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             "Summer Bank Holiday",
             "Battle of the Boyne",
             "Late Summer Bank Holiday",
-            "St. Andrew's Day",
+            "Saint Andrew's Day",
             "Christmas Day",
             "Boxing Day",
         }

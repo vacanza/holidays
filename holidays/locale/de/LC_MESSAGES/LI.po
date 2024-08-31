@@ -106,7 +106,7 @@ msgstr ""
 msgid "Weihnachten"
 msgstr ""
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stephanstag"
 msgstr ""
 

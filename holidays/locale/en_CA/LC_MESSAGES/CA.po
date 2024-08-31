@@ -116,12 +116,12 @@ msgstr ""
 msgid "New Brunswick Day"
 msgstr ""
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
 msgstr ""
 
-#. St. George's Day.
-msgid "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
 msgstr ""
 
 #. Discovery Day.
@@ -144,8 +144,8 @@ msgstr ""
 msgid "National Patriots' Day"
 msgstr ""
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
 msgstr ""
 
 #. Saskatchewan Day.

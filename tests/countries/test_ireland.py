@@ -41,7 +41,7 @@ class TestIreland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1900, 1975))
 
     def test_st_brigids_day(self):
-        name = "St. Brigid's Day"
+        name = "Saint Brigid's Day"
         self.assertHolidayName(
             name,
             "2023-02-06",
@@ -58,7 +58,7 @@ class TestIreland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1900, 2023))
 
     def test_st_patricks_day(self):
-        name = "St. Patrick's Day"
+        name = "Saint Patrick's Day"
         self.assertHolidayName(name, (f"{year}-03-17" for year in range(1903, 2050)))
         self.assertNoHoliday(f"{year}-03-17" for year in range(1900, 1903))
         self.assertNoHolidayName(name, range(1900, 1903))
@@ -153,28 +153,28 @@ class TestIreland(CommonCountryTests, TestCase):
 
     def test_st_stephens_day(self):
         self.assertHolidayName(
-            "St. Stephen's Day", (f"{year}-12-26" for year in range(1950, 2050))
+            "Saint Stephen's Day", (f"{year}-12-26" for year in range(1950, 2050))
         )
 
     def test_2020(self):
         self.assertHolidays(
             Ireland(years=2020),
             ("2020-01-01", "New Year's Day"),
-            ("2020-03-17", "St. Patrick's Day"),
+            ("2020-03-17", "Saint Patrick's Day"),
             ("2020-04-13", "Easter Monday"),
             ("2020-05-04", "May Day"),
             ("2020-06-01", "June Bank Holiday"),
             ("2020-08-03", "August Bank Holiday"),
             ("2020-10-26", "October Bank Holiday"),
             ("2020-12-25", "Christmas Day"),
-            ("2020-12-26", "St. Stephen's Day"),
+            ("2020-12-26", "Saint Stephen's Day"),
         )
 
     def test_2022(self):
         self.assertHolidays(
             Ireland(years=2022),
             ("2022-01-01", "New Year's Day"),
-            ("2022-03-17", "St. Patrick's Day"),
+            ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-18", "Day of Remembrance and Recognition"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-02", "May Day"),
@@ -182,5 +182,5 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2022-08-01", "August Bank Holiday"),
             ("2022-10-31", "October Bank Holiday"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-26", "Saint Stephen's Day"),
         )

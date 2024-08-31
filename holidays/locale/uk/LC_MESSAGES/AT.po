@@ -75,7 +75,7 @@ msgstr "Непорочне зачаття Діви Марії"
 msgid "Christtag"
 msgstr "Різдво Христове"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stefanitag"
 msgstr "День Святого Стефана"
 
@@ -91,11 +91,11 @@ msgstr "Святий вечір"
 msgid "Silvester"
 msgstr "Переддень Нового року"
 
-#. St. Martin's Day.
+#. Saint Martin's Day.
 msgid "Hl. Martin"
 msgstr "День Святого Мартина"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Hl. Josef"
 msgstr "День Святого Йосипа"
 
@@ -103,14 +103,14 @@ msgstr "День Святого Йосипа"
 msgid "Tag der Volksabstimmung"
 msgstr "Річниця референдуму 1920 року в Карінтії"
 
-#. St. Leopold's Day.
+#. Saint Leopold's Day.
 msgid "Hl. Leopold"
 msgstr "День Святого Леопольда"
 
-#. St. Florian's Day.
+#. Saint Florian's Day.
 msgid "Hl. Florian"
 msgstr "День Святого Флоріана"
 
-#. St. Rupert's Day.
+#. Saint Rupert's Day.
 msgid "Hl. Rupert"
 msgstr "День Святого Руперта"

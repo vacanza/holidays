@@ -89,6 +89,6 @@ msgstr ""
 msgid "Božić"
 msgstr ""
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Sveti Stjepan"
 msgstr ""

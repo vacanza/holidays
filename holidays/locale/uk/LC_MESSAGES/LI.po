@@ -107,7 +107,7 @@ msgstr "Святий вечір"
 msgid "Weihnachten"
 msgstr "Різдво Христове"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stephanstag"
 msgstr "День Святого Стефана"
 

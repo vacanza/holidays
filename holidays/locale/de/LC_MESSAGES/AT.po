@@ -74,7 +74,7 @@ msgstr ""
 msgid "Christtag"
 msgstr ""
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stefanitag"
 msgstr ""
 
@@ -90,11 +90,11 @@ msgstr ""
 msgid "Silvester"
 msgstr ""
 
-#. St. Martin's Day.
+#. Saint Martin's Day.
 msgid "Hl. Martin"
 msgstr ""
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Hl. Josef"
 msgstr ""
 
@@ -102,14 +102,14 @@ msgstr ""
 msgid "Tag der Volksabstimmung"
 msgstr ""
 
-#. St. Leopold's Day.
+#. Saint Leopold's Day.
 msgid "Hl. Leopold"
 msgstr ""
 
-#. St. Florian's Day.
+#. Saint Florian's Day.
 msgid "Hl. Florian"
 msgstr ""
 
-#. St. Rupert's Day.
+#. Saint Rupert's Day.
 msgid "Hl. Rupert"
 msgstr ""

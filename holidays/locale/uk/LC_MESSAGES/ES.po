@@ -80,7 +80,7 @@ msgstr "День Андалусії"
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
-#. St. George's Day.
+#. Saint George's Day.
 msgid "Día de San Jorge"
 msgstr "День Святого Георгія"
 
@@ -92,7 +92,7 @@ msgstr "День Астурії"
 msgid "Lunes de Pascua"
 msgstr "Великодній понеділок"
 
-#. St. James' Day.
+#. Saint James' Day.
 msgid "Santiago Apóstol"
 msgstr "День Святого Якова"
 
@@ -116,7 +116,7 @@ msgstr "День Сеути"
 msgid "Fiesta del Sacrificio-Eidul Adha"
 msgstr "Курбан-байрам"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "San José"
 msgstr "День Святого Йосипа"
 
@@ -140,7 +140,7 @@ msgstr "День Канарських островів"
 msgid "Día de la Pascua Granada"
 msgstr "День Святого Духа"
 
-#. St. John the Baptist.
+#. Saint John the Baptist.
 msgid "San Juan"
 msgstr "День Івана Хрестителя"
 
@@ -148,7 +148,7 @@ msgstr "День Івана Хрестителя"
 msgid "Fiesta Nacional de Cataluña"
 msgstr "Національний день Каталонії"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "San Esteban"
 msgstr "День Святого Стефана"
 
@@ -204,11 +204,11 @@ msgstr "День Ріохи"
 msgid "Día de la Comunidad Valenciana"
 msgstr "День Валенсії"
 
-#. Day following St. Joseph's Day.
+#. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
 msgstr "День наступний за Днем Святого Йосипа"
 
-#. St. Joseph's Day Transfer.
+#. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
 msgstr "Перенесений День Святого Йосипа"
 

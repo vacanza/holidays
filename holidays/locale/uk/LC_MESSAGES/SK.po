@@ -55,7 +55,7 @@ msgstr "День праці"
 msgid "Deň víťazstva nad fašizmom"
 msgstr "День перемоги над фашизмом"
 
-#. St. Cyril and Methodius Day.
+#. Saints Cyril and Methodius Day.
 msgid "Sviatok svätého Cyrila a svätého Metoda"
 msgstr "День Святих Кирила та Мефодія"
 

@@ -227,7 +227,7 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-04-25", "Easter"),
             ("2022-05-01", "Labor Day and International Workers' Solidarity Day"),
             ("2022-05-02", "Labor Day and International Workers' Solidarity Day (observed)"),
-            ("2022-05-06", "St. George's Day (Day of the Bulgarian Army)"),
+            ("2022-05-06", "Saint George's Day (Day of the Bulgarian Army)"),
             ("2022-05-24", "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"),
             ("2022-09-06", "Unification Day"),
             ("2022-09-22", "Independence Day"),

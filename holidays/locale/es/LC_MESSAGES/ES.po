@@ -80,7 +80,7 @@ msgstr ""
 msgid "Jueves Santo"
 msgstr ""
 
-#. St. George's Day.
+#. Saint George's Day.
 msgid "Día de San Jorge"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Lunes de Pascua"
 msgstr ""
 
-#. St. James' Day.
+#. Saint James' Day.
 msgid "Santiago Apóstol"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Fiesta del Sacrificio-Eidul Adha"
 msgstr ""
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "San José"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Día de la Pascua Granada"
 msgstr ""
 
-#. St. John the Baptist.
+#. Saint John the Baptist.
 msgid "San Juan"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Fiesta Nacional de Cataluña"
 msgstr ""
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "San Esteban"
 msgstr ""
 
@@ -204,11 +204,11 @@ msgstr ""
 msgid "Día de la Comunidad Valenciana"
 msgstr ""
 
-#. Day following St. Joseph's Day.
+#. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
 msgstr ""
 
-#. St. Joseph's Day Transfer.
+#. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
 msgstr ""
 

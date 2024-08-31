@@ -11,11 +11,12 @@
 #  License: MIT (see LICENSE file)
 #
 # Switzerland holidays en_US localization.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-04-10 15:41+0300\n"
-"PO-Revision-Date: 2024-01-21 14:47+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -54,9 +55,9 @@ msgstr "Easter Monday"
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stephanstag"
-msgstr "St. Stephen's Day"
+msgstr "Saint Stephen's Day"
 
 #. Berchtold's Day.
 msgid "Berchtoldstag"
@@ -102,13 +103,13 @@ msgstr "Independence Day"
 msgid "Jahrestag der Ausrufung der Republik"
 msgstr "Republic Day"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Josefstag"
-msgstr "St. Joseph's Day"
+msgstr "Saint Joseph's Day"
 
-#. St. Nicholas of Flüe.
+#. Saint Nicholas of Flüe.
 msgid "Bruder Klaus"
-msgstr "St. Nicholas of Flüe"
+msgstr "Saint Nicholas of Flüe"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"
