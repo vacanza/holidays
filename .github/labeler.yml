@@ -1,0 +1,33 @@
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+
+doc:
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**
+
+l10n:
+  - changed-files:
+      - any-glob-to-any-file:
+          - holidays/locale/**
+
+script:
+  - changed-files:
+      - any-glob-to-any-file:
+          - scripts/**
+
+snapshot:
+  - changed-files:
+      - any-glob-to-any-file:
+          - snapshots/**
+
+test:
+  - changed-files:
+      - any-glob-to-any-file:
+          - tests/**
+
+v1:
+  - head-branch:
+      - v1
