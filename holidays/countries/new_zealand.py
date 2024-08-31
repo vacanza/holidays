@@ -27,6 +27,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     country = "NZ"
     observed_label = "%s (observed)"
     subdivisions = (
+        # ISO 3166-2: Regions and Special Island Authorities.
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makaurau
         "BOP",  # Bay of Plenty / Toi Moana
@@ -35,7 +36,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         "GIS",  # Gisborne / Te Tairāwhiti
         "HKB",  # Hawke's Bay / Te Matau a Māui
         "MBH",  # Marlborough
-        "MWT",  # Manawatū Whanganui
+        "MWT",  # Manawatū-Whanganui / Manawatū Whanganui
         "NSN",  # Nelson / Whakatū
         "NTL",  # Northland / Te Tai tokerau
         "OTA",  # Otago / Ō Tākou
@@ -45,27 +46,71 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         "WGN",  # Greater Wellington / Te Pane Matua Taiao
         "WKO",  # Waikato
         "WTC",  # West Coast / Te Tai o Poutini
-    )
-
-    _deprecated_subdivisions = (
-        "Auckland",
-        "Canterbury",
-        "Chatham Islands",
-        "Hawke's Bay",
-        "Marlborough",
-        "Nelson",
-        "New Plymouth",
-        "Northland",
-        "Otago",
+        # Subregions:
+        # https://www.govt.nz/browse/work/public-holidays-and-work/public-holidays-and-anniversary-dates/
         "South Canterbury",
-        "STC",
-        "Southland",
-        "Taranaki",
-        "Waitangi",
-        "Wellington",
-        "West Coast",
-        "Westland",  # Correct name is West Coast
-        "WTL",  # Correct code is WTC
+    )
+    subdivisions_aliases = {
+        # Fullnames in English and Maori, as well as HASC.
+        "Auckland": "AUK",
+        "Tāmaki-Makaurau": "AUK",
+        "AU": "AUK",
+        "Bay of Plenty": "BOP",
+        "Toi Moana": "BOP",
+        "BP": "BOP",
+        "Canterbury": "CAN",
+        "Waitaha": "CAN",
+        "CA": "CAN",
+        "Chatham Islands Territory": "CIT",
+        "Chatham Islands": "CIT",  # 1901-1994, as County
+        "Wharekauri": "CIT",
+        "CI": "CIT",
+        "Gisborne": "GIS",
+        "Te Tairāwhiti": "GIS",
+        "GI": "GIS",
+        "Hawke's Bay": "HKB",
+        "Te Matau-a-Māui": "HKB",
+        "HB": "HKB",
+        "Marlborough": "MBH",
+        "MA": "MBH",
+        "Manawatū Whanganui": "MWT",
+        "Manawatū-Whanganui": "MWT",
+        "MW": "MWT",
+        "Nelson": "NSN",
+        "Whakatū": "NSN",
+        "NE": "NSN",
+        "Northland": "NTL",
+        "Te Taitokerau": "NTL",
+        "NO": "NTL",
+        "Otago": "OTA",
+        "Ō Tākou": "OTA",
+        "OT": "OTA",
+        "Southland": "STL",
+        "Te Taiao Tonga": "STL",
+        "SO": "STL",
+        "Tasman": "TAS",
+        "Te tai o Aorere": "TAS",
+        "TS": "TAS",
+        "Taranaki": "TKI",
+        "TK": "TKI",
+        "Greater Wellington": "WGN",
+        "Te Pane Matua Taiao": "WGN",
+        "Wellington": "WGN",  # Prev. ISO code from 2010-2015.
+        "Te Whanganui-a-Tara": "WGN",  # Prev. ISO code from 2010-2015.
+        "WG": "WGN",
+        "Waikato": "WKO",
+        "WK": "WKO",
+        "West Coast": "WTC",
+        "Te Tai o Poutini": "WTC",
+        "WC": "WTC",
+    }
+    _deprecated_subdivisions = (
+        # Pre-1893 Naming in Previous Implementations.
+        "New Plymouth",  # 1853-1859, Now Taranaki.
+        "Westland",  # 1873-1876, Now West Coast.
+        # Unofficial Code.
+        "STC",  # For 'South Canterbury' Subregional Holidays.
+        "WTL",  # Westland, Correct code is WTC (for West Coast).
     )
 
     def __init__(self, *args, **kwargs):
@@ -186,31 +231,11 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        if self.subdiv == "Auckland":
-            self._populate_subdiv_auk_public_holidays()
-        elif self.subdiv == "Canterbury":
-            self._populate_subdiv_can_public_holidays()
-        elif self.subdiv == "Chatham Islands":
-            self._populate_subdiv_cit_public_holidays()
-        elif self.subdiv == "Hawke's Bay":
-            self._populate_subdiv_hkb_public_holidays()
-        elif self.subdiv == "Marlborough":
-            self._populate_subdiv_mbh_public_holidays()
-        elif self.subdiv == "Nelson":
-            self._populate_subdiv_nsn_public_holidays()
-        elif self.subdiv == "Northland":
-            self._populate_subdiv_ntl_public_holidays()
-        elif self.subdiv == "Otago":
-            self._populate_subdiv_ota_public_holidays()
-        elif self.subdiv in {"New Plymouth", "Taranaki"}:
+        if self.subdiv == "New Plymouth":
             self._populate_subdiv_tki_public_holidays()
         elif self.subdiv == "South Canterbury":
             self._populate_subdiv_stc_public_holidays()
-        elif self.subdiv == "Southland":
-            self._populate_subdiv_stl_public_holidays()
-        elif self.subdiv == "Wellington":
-            self._populate_subdiv_wgn_public_holidays()
-        elif self.subdiv in {"West Coast", "WTL", "Westland"}:
+        elif self.subdiv in {"WTL", "Westland"}:
             self._populate_subdiv_wtc_public_holidays()
 
     def _populate_subdiv_auk_public_holidays(self):
