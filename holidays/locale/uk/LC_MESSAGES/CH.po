@@ -54,7 +54,7 @@ msgstr "Великодній понеділок"
 msgid "Pfingstmontag"
 msgstr "День Святого Духа"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stephanstag"
 msgstr "День Святого Стефана"
 
@@ -102,11 +102,11 @@ msgstr "День незалежності"
 msgid "Jahrestag der Ausrufung der Republik"
 msgstr "Річниця проголошення Республіки"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Josefstag"
 msgstr "День Святого Йосипа"
 
-#. St. Nicholas of Flüe.
+#. Saint Nicholas of Flüe.
 msgid "Bruder Klaus"
 msgstr "День Святого Ніклауса з Флюе"
 

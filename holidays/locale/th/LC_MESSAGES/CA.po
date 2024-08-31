@@ -52,8 +52,8 @@ msgstr "วันชาวเกาะ (พรินซ์เอดเวิร�
 msgid "Heritage Day"
 msgstr "วันมรดก"
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
 msgstr "วันเซนต์แพทริก (นิวฟันด์แลนด์และแลบราดอร์)"
 
 #. Good Friday.
@@ -64,8 +64,8 @@ msgstr "วันศุกร์ประเสริฐ"
 msgid "Easter Monday"
 msgstr "วันจันทร์อีสเตอร์"
 
-#. St. George's Day.
-msgid "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
 msgstr "วันเซนต์จอร์จ (นิวฟันด์แลนด์และแลบราดอร์)"
 
 #. Victoria Day.
@@ -80,8 +80,8 @@ msgstr "วันรำลึกกลุ่มแปตรีออต (คว�
 msgid "National Aboriginal Day"
 msgstr "วันชนพื้นเมือง (นอร์ทเวสต์เทร์ริทอรีส์)"
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
 msgstr "วันแซงต์-ฌ็อง-บาติสต์ (ควิเบก)"
 
 #. Discovery Day.

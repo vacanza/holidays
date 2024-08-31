@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.25\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-05-10 17:13+0300\n"
-"PO-Revision-Date: 2023-11-10 15:17+0100\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -56,9 +56,9 @@ msgstr "Labor Day"
 msgid "Deň víťazstva nad fašizmom"
 msgstr "Day of Victory over Fascism"
 
-#. St. Cyril and Methodius Day.
+#. Saints Cyril and Methodius Day.
 msgid "Sviatok svätého Cyrila a svätého Metoda"
-msgstr "St. Cyril and Methodius Day"
+msgstr "Saints Cyril and Methodius Day"
 
 #. Slovak National Uprising Anniversary.
 msgid "Výročie Slovenského národného povstania"

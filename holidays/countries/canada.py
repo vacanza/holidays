@@ -294,16 +294,16 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_subdiv_nl_optional_holidays(self):
         if self._year >= 1900:
-            # St. Patrick's Day.
-            self._add_holiday(tr("St. Patrick's Day"), self._get_nearest_monday(MAR, 17))
+            # Saint Patrick's Day.
+            self._add_holiday(tr("Saint Patrick's Day"), self._get_nearest_monday(MAR, 17))
 
         if self._year >= 1990:
             # Nearest Monday to April 23
             # 4/26 is the Monday closer to 4/23 in 2010
             # but the holiday was observed on 4/19? Crazy Newfies!
             dt = date(2010, APR, 19) if self._year == 2010 else self._get_nearest_monday(APR, 23)
-            # St. George's Day.
-            self._add_holiday(tr("St. George's Day"), dt)
+            # Saint George's Day.
+            self._add_holiday(tr("Saint George's Day"), dt)
 
         if self._year >= 1997:
             # Discovery Day.
@@ -429,8 +429,8 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         if self._year >= 1925:
             self._add_observed(
-                # St. Jean Baptiste Day.
-                self._add_saint_johns_day(tr("St. Jean Baptiste Day")),
+                # Saint John the Baptist Day.
+                self._add_saint_johns_day(tr("Saint Jean Baptiste Day")),
                 rule=SUN_TO_NEXT_MON,
             )
 

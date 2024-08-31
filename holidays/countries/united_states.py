@@ -945,10 +945,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1847:
             self._add_holiday_feb_14("Valentine's Day")
 
-        # St. Patrick's Day
+        # Saint Patrick's Day
         # Started in Boston in 1737 for the US.
 
-        self._add_holiday_mar_17("St. Patrick's Day")
+        self._add_holiday_mar_17("Saint Patrick's Day")
 
         # Halloween
         # Halloween began in the US sometime around the 19th century.

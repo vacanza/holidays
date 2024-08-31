@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-06-30 20:48+0300\n"
-"PO-Revision-Date: 2023-06-30 20:52+0300\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -53,7 +53,7 @@ msgstr "Labor Day and International Workers' Solidarity Day"
 
 #. Saint George's Day.
 msgid "Гергьовден, Ден на храбростта и Българската армия"
-msgstr "St. George's Day (Day of the Bulgarian Army)"
+msgstr "Saint George's Day (Day of the Bulgarian Army)"
 
 #. Bulgarian Education and Culture and Slavonic Literature Day.
 msgid ""

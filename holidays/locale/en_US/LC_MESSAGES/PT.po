@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-03-07 19:38+0700\n"
-"PO-Revision-Date: 2023-12-30 19:28+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -103,21 +103,21 @@ msgstr "Second Day of Christmas"
 msgid "Véspera de Ano Novo"
 msgstr "New Year's Eve"
 
-#. St. Anthony's Day.
+#. Saint Anthony's Day.
 msgid "Dia de Santo António"
-msgstr "St. Anthony's Day"
+msgstr "Saint Anthony's Day"
 
-#. St. Joanna's Day.
+#. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
-msgstr "St. Joanna's Day"
+msgstr "Saint Joanna's Day"
 
 #. Ascension Day.
 msgid "Quinta-feira da Ascensão"
 msgstr "Ascension Day"
 
-#. St. John's Day.
+#. Saint John's Day.
 msgid "Dia de São João"
-msgstr "St. John's Day"
+msgstr "Saint John's Day"
 
 #. Feast of Our Lady of Graces.
 msgid "Dia de Nossa Senhora das Graças"
@@ -127,13 +127,13 @@ msgstr "Feast of Our Lady of Graces"
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr "Feast of Our Lady of Mércoles"
 
-#. St. Elizabeth's Day.
+#. Saint Elizabeth's Day.
 msgid "Dia de Santa Isabel"
-msgstr "St. Elizabeth's Day"
+msgstr "Saint Elizabeth's Day"
 
-#. St. Peter's Day.
+#. Saint Peter's Day.
 msgid "Dia de São Pedro"
-msgstr "St. Peter's Day"
+msgstr "Saint Peter's Day"
 
 #. Municipal Holiday of Faro.
 msgid "Dia do Município de Faro"
@@ -151,9 +151,9 @@ msgstr "Municipal Holiday of Leiria"
 msgid "Dia do Município de Portalegre"
 msgstr "Municipal Holiday of Portalegre"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Dia de São José"
-msgstr "St. Joseph's Day"
+msgstr "Saint Joseph's Day"
 
 #. Bocage Day.
 msgid "Dia de Bocage"
@@ -163,9 +163,9 @@ msgstr "Bocage Day"
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr "Feast of Our Lady of Sorrows"
 
-#. St. Matthew's Day.
+#. Saint Matthew's Day.
 msgid "Dia de São Mateus"
-msgstr "St. Matthew's Day"
+msgstr "Saint Matthew's Day"
 
 #. Day of the Autonomous Region of the Azores.
 msgid "Dia da Região Autónoma dos Açores"

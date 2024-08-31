@@ -84,7 +84,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_bank_holidays(self):

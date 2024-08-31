@@ -274,7 +274,7 @@ class TestPortugal(CommonCountryTests, TestCase):
             ("2018-05-01", "Labor Day"),
             ("2018-05-31", "Corpus Christi"),
             ("2018-06-10", "Day of Portugal, Camões, and the Portuguese Communities"),
-            ("2018-06-13", "St. Anthony's Day"),
+            ("2018-06-13", "Saint Anthony's Day"),
             ("2018-08-15", "Assumption Day"),
             ("2018-10-05", "Republic Day"),
             ("2018-11-01", "All Saints' Day"),

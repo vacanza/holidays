@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2024-01-23 19:20+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -89,6 +89,6 @@ msgstr "Remembrance Day"
 msgid "Božić"
 msgstr "Christmas Day"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Sveti Stjepan"
-msgstr "St. Stephen's Day"
+msgstr "Saint Stephen's Day"

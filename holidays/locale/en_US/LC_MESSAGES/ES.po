@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.40\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2024-01-03 20:56+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -80,9 +80,9 @@ msgstr "Andalusia Day"
 msgid "Jueves Santo"
 msgstr "Maundy Thursday"
 
-#. St. George's Day.
+#. Saint George's Day.
 msgid "Día de San Jorge"
-msgstr "St. George's Day"
+msgstr "Saint George's Day"
 
 #. Asturia Day.
 msgid "Día de Asturias"
@@ -92,9 +92,9 @@ msgstr "Asturia Day"
 msgid "Lunes de Pascua"
 msgstr "Easter Monday"
 
-#. St. James' Day.
+#. Saint James' Day.
 msgid "Santiago Apóstol"
-msgstr "St. James' Day"
+msgstr "Saint James' Day"
 
 #. Cantabria Institutions Day.
 msgid "Día de las Instituciones de Cantabria"
@@ -116,9 +116,9 @@ msgstr "Ceuta Day"
 msgid "Fiesta del Sacrificio-Eidul Adha"
 msgstr "Eid al-Adha"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "San José"
-msgstr "St. Joseph's Day"
+msgstr "Saint Joseph's Day"
 
 #. Castile and León Day.
 msgid "Fiesta de Castilla y León"
@@ -140,17 +140,17 @@ msgstr "Day of the Canary Islands"
 msgid "Día de la Pascua Granada"
 msgstr "Whit Monday"
 
-#. St. John the Baptist.
+#. Saint John the Baptist.
 msgid "San Juan"
-msgstr "St. John the Baptist"
+msgstr "Saint John the Baptist"
 
 #. National Day of Catalonia.
 msgid "Fiesta Nacional de Cataluña"
 msgstr "National Day of Catalonia"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "San Esteban"
-msgstr "St. Stephen's Day"
+msgstr "Saint Stephen's Day"
 
 #. Shrove Tuesday.
 msgid "Martes de Carnaval"
@@ -204,13 +204,13 @@ msgstr "La Rioja Day"
 msgid "Día de la Comunidad Valenciana"
 msgstr "Valencian Community Day"
 
-#. Day following St. Joseph's Day.
+#. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"
-msgstr "Day following St. Joseph's Day"
+msgstr "Day following Saint Joseph's Day"
 
-#. St. Joseph's Day Transfer.
+#. Saint Joseph's Day Transfer.
 msgid "Traslado de San José"
-msgstr "St. Joseph's Day Transfer"
+msgstr "Saint Joseph's Day Transfer"
 
 #. 80th Anniversary of the first Basque Government.
 msgid "80 Aniversario del primer Gobierno Vasco"

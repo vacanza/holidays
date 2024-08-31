@@ -167,7 +167,7 @@ class Spain(
 
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        # St. George's Day.
+        # Saint George's Day.
         self._move_holiday(self._add_saint_georges_day(tr("Día de San Jorge")))
 
         if self._year in {2011, 2016, 2022}:
@@ -239,7 +239,7 @@ class Spain(
             self._move_holiday(self._add_labor_day(tr("Fiesta del Trabajo")))
 
         if self._year in {2012, 2013, 2014, 2019, 2024}:
-            # St. James' Day.
+            # Saint James' Day.
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
         if self._year not in {2012, 2015, 2019, 2024}:
@@ -348,7 +348,7 @@ class Spain(
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
         if self._year in {2010, 2011, 2020}:
-            # St. Joseph's Day.
+            # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("San José"))
 
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -403,7 +403,7 @@ class Spain(
             self._add_whit_monday(tr("Día de la Pascua Granada"))
 
         if self._year not in {2012, 2018}:
-            # St. John the Baptist.
+            # Saint John the Baptist.
             self._add_saint_johns_day(tr("San Juan"))
 
         if self._year not in {2011, 2022}:
@@ -411,7 +411,7 @@ class Spain(
             self._add_holiday_sep_11(tr("Fiesta Nacional de Cataluña"))
 
         if self._year not in {2010, 2021}:
-            # St. Stephen's Day.
+            # Saint Stephen's Day.
             self._add_christmas_day_two(tr("San Esteban"))
 
     def _populate_subdiv_ex_public_holidays(self):
@@ -426,7 +426,7 @@ class Spain(
             self._add_carnival_tuesday(tr("Martes de Carnaval"))
 
         if self._year in {2010, 2017, 2021}:
-            # St. Joseph's Day.
+            # Saint Joseph's Day.
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
 
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -712,12 +712,12 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
 
 class SpainStaticHolidays:
     special_ga_public_holidays = {
-        # Day following St. Joseph's Day.
+        # Day following Saint Joseph's Day.
         2015: (MAR, 20, tr("Día siguiente a San José")),
     }
 
     special_md_public_holidays = {
-        # St. Joseph's Day Transfer.
+        # Saint Joseph's Day Transfer.
         2013: (MAR, 18, tr("Traslado de San José")),
     }
 

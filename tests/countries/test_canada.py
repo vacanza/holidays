@@ -606,7 +606,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, nl_holidays, range(1900, 1917))
 
     def test_st_patricks_day(self):
-        name = "St. Patrick's Day"
+        name = "Saint Patrick's Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
         nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
@@ -626,7 +626,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertNoHoliday(nl_opt_holidays, "1899-03-20")
 
     def test_st_georges_day(self):
-        name = "St. George's Day"
+        name = "Saint George's Day"
         self.assertNoHolidayName(name, self.prov_hols["NL"])
         nl_opt_holidays = CA(subdiv="NL", categories=OPTIONAL)
         dts = (
@@ -728,7 +728,7 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, qc_holidays, range(1867, 2003))
 
     def test_st_jean_baptiste_day(self):
-        name = "St. Jean Baptiste Day"
+        name = "Saint Jean Baptiste Day"
         self.assertNoHolidayName(name)
         qc_holidays = self.prov_hols["QC"]
         self.assertHoliday(qc_holidays, (f"{year}-06-24" for year in range(1925, 2050)))
@@ -810,7 +810,7 @@ class TestCanada(CommonCountryTests, TestCase):
             "National Patriots' Day",
             "Victoria Day",
             "National Aboriginal Day",
-            "St. Jean Baptiste Day",
+            "Saint Jean Baptiste Day",
             "Canada Day",
             "Canada Day; Memorial Day",
             "British Columbia Day",

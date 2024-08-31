@@ -103,11 +103,11 @@ msgstr "Другий день Різдва"
 msgid "Véspera de Ano Novo"
 msgstr "Переддень Нового року"
 
-#. St. Anthony's Day.
+#. Saint Anthony's Day.
 msgid "Dia de Santo António"
 msgstr "День Святого Антонія"
 
-#. St. Joanna's Day.
+#. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
 msgstr "День Святої Йоанни"
 
@@ -115,7 +115,7 @@ msgstr "День Святої Йоанни"
 msgid "Quinta-feira da Ascensão"
 msgstr "Вознесіння Господнє"
 
-#. St. John's Day.
+#. Saint John's Day.
 msgid "Dia de São João"
 msgstr "День Святого Івана"
 
@@ -127,11 +127,11 @@ msgstr "День Богоматері Милосердя"
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr "День Богоматері Меркольської"
 
-#. St. Elizabeth's Day.
+#. Saint Elizabeth's Day.
 msgid "Dia de Santa Isabel"
 msgstr "День Святої Єлизавети"
 
-#. St. Peter's Day.
+#. Saint Peter's Day.
 msgid "Dia de São Pedro"
 msgstr "День Святого Петра"
 
@@ -151,7 +151,7 @@ msgstr "День муніципалітету Лейрія"
 msgid "Dia do Município de Portalegre"
 msgstr "День муніципалітету Порталегре"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Dia de São José"
 msgstr "День Святого Йосипа"
 
@@ -163,7 +163,7 @@ msgstr "День Бокажі"
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr "День Богоматері Страждання"
 
-#. St. Matthew's Day.
+#. Saint Matthew's Day.
 msgid "Dia de São Mateus"
 msgstr "День Святого Матвія"
 

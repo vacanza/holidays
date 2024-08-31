@@ -105,7 +105,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
 
     def _populate_subdiv_ar_public_holidays(self):
@@ -286,7 +286,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_observed(self._add_christmas_day_two(tr("Stephanstag")), rule=MON_ONLY)
 
     def _populate_subdiv_nw_public_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Josefstag"))
 
         self._add_good_friday(tr("Karfreitag"))
@@ -315,7 +315,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
-        # St. Nicholas of Flüe.
+        # Saint Nicholas of Flüe.
         self._add_holiday_sep_25(tr("Bruder Klaus"))
 
         self._add_all_saints_day(tr("Allerheiligen"))

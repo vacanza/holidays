@@ -126,8 +126,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     def _populate_subdiv_nir_public_holidays(self):
         if self._year >= 1903:
-            # St. Patrick's Day
-            self._add_observed(self._add_holiday_mar_17("St. Patrick's Day"))
+            # Saint Patrick's Day
+            self._add_observed(self._add_holiday_mar_17("Saint Patrick's Day"))
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
@@ -158,8 +158,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
 
         if self._year >= 2006:
-            # St. Andrew's Day
-            self._add_observed(self._add_holiday_nov_30("St. Andrew's Day"))
+            # Saint Andrew's Day
+            self._add_observed(self._add_holiday_nov_30("Saint Andrew's Day"))
 
         # Christmas Day
         self._add_observed(

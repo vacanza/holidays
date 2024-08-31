@@ -36,6 +36,6 @@ class TestGU(CommonCountryTests, TestCase):
         self.assertHolidays(
             HolidaysGU(categories=UNOFFICIAL, years=2024),
             ("2024-02-14", "Valentine's Day"),
-            ("2024-03-17", "St. Patrick's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
             ("2024-10-31", "Halloween"),
         )
