@@ -12,18 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUL, OCT, DEC
+from holidays.calendars.gregorian import JAN, APR, JUL
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays, StaticHolidays
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    THU_FRI_TO_NEXT_MON,
-    FRI_TO_NEXT_TUE,
-    SAT_TO_NEXT_TUE,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_WED,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
@@ -40,7 +33,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
                     https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
                     https://www.timeanddate.com/holidays/laos/
                     https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022
-                    https://www.bcel.com.la/bcel/bcel-calendar.html?year=2023
+                    https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023
+                    https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024
                     http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo (from 2011 onwards)
 
         !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
@@ -50,6 +44,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         As featured in Decree on Holidays No. 386 / Rev. 15.12.2017;
         - Saturdays and Sundays shall be restdays each week.
         - In-Lieu holidays shall be given if it fall on the weekends.
+
+        Although in-lieus has been de facto observed since at least 2012.
 
     Limitations:
 
@@ -75,8 +71,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         StaticHolidays.__init__(self, cls=LaosStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
-        kwargs.setdefault("observed_since", 2018)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 2012)
         super().__init__(*args, **kwargs)
 
     def _populate_bank_holidays(self):
@@ -126,27 +122,31 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # ວັນແມ່ຍິງສາກົນ
         # Status: In-Use.
         # Only acts as day off for Women.
+        # No in-lieus are observed in 2014.
 
         # International Women's Rights Day.
-        self._add_observed(self._add_womens_day(tr("ວັນແມ່ຍິງສາກົນ")))
+        womens_day = self._add_womens_day(tr("ວັນແມ່ຍິງສາກົນ"))
+        if self._year != 2014:
+            self._add_observed(womens_day)
 
         # ບຸນປີໃໝ່ລາວ
         # Status: In-Use.
         # Celebrated for 3 days from 14-16 April annualy.
         # Observed dates prior to 2018 are assigned manually.
-        #   - CASE 1: THU-FRI-SAT -> in lieu on MON.
-        #   - CASE 2: FRI-SAT-SUN -> in lieu on MON-TUE.
-        #   - CASE 3: SAT-SUN-MON -> in lieu on TUE-WED.
-        #   - CASE 4: SUN-MON-TUE -> in lieu on WED.
 
         # Lao New Year's Day.
         name = tr("ບຸນປີໃໝ່ລາວ")
-        dt = self._add_holiday_apr_14(name)
-        self._add_holiday_apr_15(name)
-        self._add_holiday_apr_16(name)
-
-        self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
-        self._add_observed(dt, rule=FRI_TO_NEXT_TUE + SAT_SUN_TO_NEXT_WED)
+        songkran_years_apr_13_15 = {2012, 2017}
+        songkran_years_apr_13_16 = {2016, 2020, 2024}
+        dts_observed = set()
+        if self._year in songkran_years_apr_13_15.union(songkran_years_apr_13_16):
+            dts_observed.add(self._add_holiday_apr_13(name))
+        dts_observed.add(self._add_holiday_apr_14(name))
+        dts_observed.add(self._add_holiday_apr_15(name))
+        if self._year not in songkran_years_apr_13_15:
+            dts_observed.add(self._add_holiday_apr_16(name))
+        for dt in dts_observed:
+            self._add_observed(dt)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
@@ -377,9 +377,6 @@ class LaosStaticHolidays:
     # Special Bank Holiday.
     special_bank_day_off = tr("ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ")
 
-    # New Year's Day.
-    new_year_day = tr("ວັນປີໃໝ່ສາກົນ")
-
     # International Women's Rights Day.
     international_womens_rights_day = tr("ວັນແມ່ຍິງສາກົນ")
 
@@ -389,55 +386,20 @@ class LaosStaticHolidays:
     # Lao New Year's Day (Special).
     lao_new_year_special = tr("ພັກບຸນປີໃໝ່ລາວ")
 
-    # International Labor Day.
-    international_labor_day = tr("ວັນກຳມະກອນສາກົນ")
-
     # Establishment Day of the Lao Women's Union.
     lao_womens_union = tr("ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ")
-
-    # Establishment Day of the BOL.
-    establishment_day_of_bol = tr("ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ")
-
-    # Lao National Day.
-    lao_national_day = tr("ວັນຊາດ")
 
     special_bank_holidays = {
         2015: (JAN, 2, special_bank_day_off),
     }
 
-    special_bank_holidays_observed = {
-        2017: (OCT, 9, establishment_day_of_bol),
-    }
-
     special_public_holidays = {
         2015: (APR, 17, lao_new_year_special),
-        2016: (
-            (APR, 13, lao_new_year_special),
-            (APR, 18, lao_new_year_special),
-        ),
-        2020: (
-            (APR, 13, lao_new_year_special),
-            (APR, 17, lao_new_year_special),
-        ),
     }
 
     special_public_holidays_observed = {
         2011: (APR, 13, lao_new_year),
-        2012: (
-            (JAN, 2, new_year_day),
-            (APR, 13, lao_new_year),
-            (APR, 17, lao_new_year),
-            (DEC, 3, lao_national_day),
-        ),
-        2013: (APR, 17, lao_new_year),
-        2015: (MAR, 9, international_womens_rights_day),
-        2016: (MAY, 2, international_labor_day),
-        2017: (
-            (JAN, 2, new_year_day),
-            (APR, 13, lao_new_year),
-            (APR, 17, lao_new_year),
-            (DEC, 4, lao_national_day),
-        ),
+        2020: (APR, 17, lao_new_year),
     }
 
     special_workday_holidays_observed = {
