@@ -18,15 +18,8 @@ from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    THU_FRI_TO_NEXT_MON,
-    THU_TO_NEXT_TUE,
-    FRI_TO_NEXT_TUE,
-    SAT_TO_NEXT_TUE,
-    WED_THU_TO_NEXT_MON,
-    FRI_SAT_TO_NEXT_WED,
     SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_WED,
-    SAT_SUN_TO_NEXT_THU,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
 
 
@@ -149,35 +142,15 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         name = tr("ບຸນປີໃໝ່ລາວ")
         songkran_years_apr_13_15 = {2012, 2017}
         songkran_years_apr_13_16 = {2016, 2020, 2024}
-        if self._year in songkran_years_apr_13_16:
-            dt = self._add_holiday_apr_13(name)
-            self._add_holiday_apr_14(name)
-            self._add_holiday_apr_15(name)
-            self._add_holiday_apr_16(name)
-
-            #   - CASE 1: WED-THU-FRI-SAT -> in lieu on MON.
-            #   - CASE 2: THU-FRI-SAT-SUN -> in lieu on MON-TUE.
-            #   - CASE 3: FRI-SAT-SUN-MON -> in lieu on TUE-WED.
-            #   - CASE 4: SAT-SUN-MON-TUE -> in lieu on WED-THU.
-            #   - CASE 5: SUN-MON-TUE-WED -> in lieu on THU.
-            self._add_observed(dt, rule=WED_THU_TO_NEXT_MON + FRI_SAT_TO_NEXT_WED)
-            self._add_observed(dt, rule=THU_TO_NEXT_TUE + FRI_TO_NEXT_TUE + SAT_SUN_TO_NEXT_THU)
-        else:
-            if self._year in songkran_years_apr_13_15:
-                dt = self._add_holiday_apr_13(name)
-                self._add_holiday_apr_14(name)
-                self._add_holiday_apr_15(name)
-            else:
-                dt = self._add_holiday_apr_14(name)
-                self._add_holiday_apr_15(name)
-                self._add_holiday_apr_16(name)
-
-            #   - CASE 1: THU-FRI-SAT -> in lieu on MON.
-            #   - CASE 2: FRI-SAT-SUN -> in lieu on MON-TUE.
-            #   - CASE 3: SAT-SUN-MON -> in lieu on TUE-WED.
-            #   - CASE 4: SUN-MON-TUE -> in lieu on WED.
-            self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_SUN_TO_NEXT_WED)
-            self._add_observed(dt, rule=FRI_TO_NEXT_TUE + SAT_TO_NEXT_TUE)
+        dts_observed = set()
+        if self._year in songkran_years_apr_13_15.union(songkran_years_apr_13_16):
+            dts_observed.add(self._add_holiday_apr_13(name))
+        dts_observed.add(self._add_holiday_apr_14(name))
+        dts_observed.add(self._add_holiday_apr_15(name))
+        if self._year not in songkran_years_apr_13_15:
+            dts_observed.add(self._add_holiday_apr_16(name))
+        for dt in dts_observed:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_WORKDAY)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.

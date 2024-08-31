@@ -39,7 +39,6 @@ WED_TO_NEXT_FRI = ObservedRule({WED: +2})
 THU_TO_PREV_MON = ObservedRule({THU: -3})
 THU_TO_PREV_WED = ObservedRule({THU: -1})
 THU_TO_NEXT_MON = ObservedRule({THU: +4})
-THU_TO_NEXT_TUE = ObservedRule({THU: +5})
 THU_TO_NEXT_FRI = ObservedRule({THU: +1})
 
 FRI_TO_PREV_WED = ObservedRule({FRI: -2})
@@ -80,7 +79,6 @@ MON_FRI_ONLY = ObservedRule({TUE: None, WED: None, THU: None, SAT: None, SUN: No
 TUE_WED_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2})
 TUE_WED_THU_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2, THU: -3})
 
-WED_THU_TO_NEXT_MON = ObservedRule({WED: +5, THU: +4})
 WED_THU_TO_NEXT_FRI = ObservedRule({WED: +2, THU: +1})
 
 THU_FRI_TO_NEXT_MON = ObservedRule({THU: +4, FRI: +3})
@@ -88,7 +86,6 @@ THU_FRI_TO_NEXT_WORKDAY = ObservedRule({THU: +7, FRI: +7})
 THU_FRI_SUN_TO_NEXT_MON = ObservedRule({THU: +4, FRI: +3, SUN: +1})
 
 FRI_SAT_TO_NEXT_WORKDAY = ObservedRule({FRI: +7, SAT: +7})
-FRI_SAT_TO_NEXT_WED = ObservedRule({FRI: +5, SAT: +4})
 FRI_SUN_TO_NEXT_MON = ObservedRule({FRI: +3, SUN: +1})
 FRI_SUN_TO_NEXT_SAT_MON = ObservedRule({FRI: +1, SUN: +1})
 
@@ -96,7 +93,6 @@ SAT_SUN_TO_PREV_FRI = ObservedRule({SAT: -1, SUN: -2})
 SAT_SUN_TO_NEXT_MON = ObservedRule({SAT: +2, SUN: +1})
 SAT_SUN_TO_NEXT_TUE = ObservedRule({SAT: +3, SUN: +2})
 SAT_SUN_TO_NEXT_WED = ObservedRule({SAT: +4, SUN: +3})
-SAT_SUN_TO_NEXT_THU = ObservedRule({SAT: +5, SUN: +4})
 SAT_SUN_TO_NEXT_MON_TUE = ObservedRule({SAT: +2, SUN: +2})
 SAT_SUN_TO_NEXT_WORKDAY = ObservedRule({SAT: +7, SUN: +7})
 
