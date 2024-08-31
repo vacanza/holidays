@@ -87,7 +87,8 @@ class SnapshotGenerator:
                         categories=country.supported_categories,
                         language="en_US",
                     ),
-                    f"snapshots/countries/{country_code}_{subdiv or 'COMMON'}.json",
+                    "snapshots/countries/"
+                    f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json",
                 )
 
     def generate_financial_snapshots(self):
