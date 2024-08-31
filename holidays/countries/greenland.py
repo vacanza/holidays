@@ -75,7 +75,7 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Epiphany.
         self._add_epiphany_day(tr("Mitaarneq"))
 
-        # International Workers' Day.
+        # Workers' Day.
         self._add_labor_day(tr("Sulisartut ulluat"))
 
         # National Day.

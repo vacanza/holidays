@@ -73,7 +73,7 @@ msgstr "День перемоги над фашизмом"
 
 #. Saint Andrew's Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
-msgstr "День святого Андрія Первозваного"
+msgstr "День Святого Андрія Первозваного"
 
 #. Independence Day.
 msgid "დამოუკიდებლობის დღე"
@@ -89,7 +89,7 @@ msgstr "Свято Светіцховлоба, Ризи Господньої"
 
 #. Saint George's Day.
 msgid "გიორგობა"
-msgstr "День святого Георгія"
+msgstr "День Святого Георгія"
 
 #. Day of Family Sanctity and Respect for Parents.
 msgid "ოჯახის სიწმინდისა და მშობლების პატივისცემის დღე"

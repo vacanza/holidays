@@ -58,7 +58,7 @@ msgstr "День Святого Духа"
 msgid "Stephanstag"
 msgstr "День Святого Стефана"
 
-#. Berchtold's Day.
+#. Saint Berchtold's Day.
 msgid "Berchtoldstag"
 msgstr "День Святого Бертольда"
 

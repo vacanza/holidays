@@ -127,7 +127,7 @@ msgstr "Respect for Cultural Diversity Day"
 
 #. Columbus Day.
 msgid "Día de la Raza"
-msgstr "Columbus day"
+msgstr "Columbus Day"
 
 #. National Sovereignty Day.
 msgid "Día de la Soberanía Nacional"

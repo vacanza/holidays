@@ -52,11 +52,11 @@ msgstr "Easter Saturday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
 
-#. The Fete Dieu.
+#. Corpus Christi.
 msgid "The Fete Dieu"
 msgstr "Corpus Christi"
 
@@ -84,11 +84,11 @@ msgstr "Independence (National) Day"
 msgid "Assumption Day"
 msgstr "Assumption Day"
 
-#. All Saints Day.
+#. All Saints' Day.
 msgid "All Saints Day"
-msgstr "All Saints Day"
+msgstr "All Saints' Day"
 
-#. The Feast of the Immaculate Conception.
+#. Immaculate Conception.
 msgid "The Feast of the Immaculate Conception"
 msgstr "Immaculate Conception"
 

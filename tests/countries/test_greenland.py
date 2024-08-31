@@ -116,7 +116,7 @@ class TestGreenland(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "International Workers' Day"),
+            ("2022-05-01", "Workers' Day"),
             ("2022-05-13", "Great Prayer Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),

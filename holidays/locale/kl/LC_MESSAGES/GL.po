@@ -66,7 +66,7 @@ msgstr ""
 msgid "Juullip aappaa"
 msgstr ""
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Sulisartut ulluat"
 msgstr ""
 

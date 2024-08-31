@@ -67,9 +67,9 @@ msgstr "Christmas Day"
 msgid "Juullip aappaa"
 msgstr "Second Day of Christmas"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Sulisartut ulluat"
-msgstr "International Workers' Day"
+msgstr "Workers' Day"
 
 #. Christmas Eve.
 msgid "Juulliaqqami"

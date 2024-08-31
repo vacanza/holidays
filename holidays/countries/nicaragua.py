@@ -98,7 +98,7 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_sep_15(tr("Día de la Independencia"))
 
-        # Virgin's Day.
+        # Immaculate Conception.
         self._add_immaculate_conception_day(tr("Concepción de María"))
 
         # Christmas Day.
