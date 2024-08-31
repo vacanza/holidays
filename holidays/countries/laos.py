@@ -16,11 +16,7 @@ from holidays.calendars.gregorian import JAN, APR, JUL
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.constants import BANK, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, ThaiCalendarHolidays, StaticHolidays
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_WORKDAY,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
@@ -75,7 +71,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         InternationalHolidays.__init__(self)
         ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         StaticHolidays.__init__(self, cls=LaosStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2012)
         super().__init__(*args, **kwargs)
 
@@ -150,7 +146,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         if self._year not in songkran_years_apr_13_15:
             dts_observed.add(self._add_holiday_apr_16(name))
         for dt in dts_observed:
-            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_WORKDAY)
+            self._add_observed(dt)
 
         # ວັນກຳມະກອນສາກົນ
         # Status: In-Use.
