@@ -54,7 +54,7 @@ msgstr "Lunedì dell'Angelo"
 msgid "Pfingstmontag"
 msgstr "Lunedì di Pentecoste"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stephanstag"
 msgstr "Giorno di Santo Stefano"
 
@@ -102,11 +102,11 @@ msgstr "Festa dell'Indipendenza"
 msgid "Jahrestag der Ausrufung der Republik"
 msgstr "Giorno della Repubblica"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Josefstag"
 msgstr "San Giuseppe"
 
-#. St. Nicholas of Flüe.
+#. Saint Nicholas of Flüe.
 msgid "Bruder Klaus"
 msgstr "Nicolao della Flüe"
 

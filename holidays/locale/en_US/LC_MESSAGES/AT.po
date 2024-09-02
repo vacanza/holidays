@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
-"PO-Revision-Date: 2023-04-01 17:18+0300\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -75,9 +75,9 @@ msgstr "Immaculate Conception"
 msgid "Christtag"
 msgstr "Christmas Day"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stefanitag"
-msgstr "St. Stephen's Day"
+msgstr "Saint Stephen's Day"
 
 #. Good Friday.
 msgid "Karfreitag"
@@ -91,26 +91,26 @@ msgstr "Christmas Eve"
 msgid "Silvester"
 msgstr "New Year's Eve"
 
-#. St. Martin's Day.
+#. Saint Martin's Day.
 msgid "Hl. Martin"
-msgstr "St. Martin's Day"
+msgstr "Saint Martin's Day"
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Hl. Josef"
-msgstr "St. Joseph's Day"
+msgstr "Saint Joseph's Day"
 
 #. 1920 Carinthian plebiscite.
 msgid "Tag der Volksabstimmung"
 msgstr "1920 Carinthian plebiscite"
 
-#. St. Leopold's Day.
+#. Saint Leopold's Day.
 msgid "Hl. Leopold"
-msgstr "St. Leopold's Day"
+msgstr "Saint Leopold's Day"
 
-#. St. Florian's Day.
+#. Saint Florian's Day.
 msgid "Hl. Florian"
-msgstr "St. Florian's Day"
+msgstr "Saint Florian's Day"
 
-#. St. Rupert's Day.
+#. Saint Rupert's Day.
 msgid "Hl. Rupert"
-msgstr "St. Rupert's Day"
+msgstr "Saint Rupert's Day"

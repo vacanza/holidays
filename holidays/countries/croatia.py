@@ -100,7 +100,7 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Božić"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Sveti Stjepan"))
 
 

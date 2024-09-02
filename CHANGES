@@ -1,3 +1,33 @@
+Version 0.56
+============
+
+Released September 2, 2024
+
+- Refactor Lao New Year holidays (#1962 by @PPsyrius)
+- Add 1991-2022 Russian substituted holidays (#1957 by @PPsyrius)
+- Add Dominica holidays (#1956 by @PPsyrius)
+- Add Haiti holidays (#1932 by @PPsyrius, @arkid15r)
+- Change "St." to "Saint" in holidays names (#1966 by @KJhellico)
+- Update Brunei Darussalam islamic holidays for 2024 (#1937 by @PPsyrius)
+- Update Cambodian holidays for 2024 (#1936 by @PPsyrius)
+- Update Dominican Republic holidays: fix Restoration Day (#1965 by @KJhellico, @arkid15r)
+- Update HU: add 2025 substituted holidays (#1954 by @Gizsviu)
+- Update Philippines holidays (#1938 by @KJhellico)
+- Update SBOM artifact path (#1934 by @arkid15r)
+- Update Snapshot for 0.55 changes (#1935 by @PPsyrius)
+- Update `numpy` test requirements (#1944 by @PPsyrius, @arkid15r)
+- Update pyproject.toml: remove `target-version` from tool.ruff (#1950 by @arkid15r)
+- Add Easter Tuesday to Christian holidays group (#1959 by @KJhellico)
+- Add New Zealand Subdivision Aliases (`EN`, `MI`, HASC) (#1952 by @PPsyrius)
+- Add PR labeler (#1968 by @arkid15r)
+- Add Python 3.13 (beta) to CI/CD (#1949 by @KJhellico)
+- Add automatic snapshots update workflow (#1939 by @arkid15r)
+- Migrate deprecated Bosnia-Herzegovina subdivisions to subdivision aliases (#1947 by @PPsyrius)
+- Migrate deprecated Italy subdivisions to subdivision aliases (#1951 by @PPsyrius)
+- Migrate deprecated United Kingdom subdivisions to subdivision aliases (#1945 by @PPsyrius, @KJhellico)
+- Restore Malaysia's 3-letter code as subdivisions aliases (#1946 by @PPsyrius)
+- Standardize snapshot names (#1967 by @arkid15r)
+
 Version 0.55
 ============
 

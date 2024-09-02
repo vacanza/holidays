@@ -249,6 +249,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 10),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     EID_AL_FITR_DATES = {
@@ -304,6 +305,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (AUG, 10),
         2022: (JUL, 30),
         2023: (JUL, 19),
+        2024: (JUL, 7),
     }
 
     ISRA_AND_MIRAJ_DATES = {
@@ -331,6 +333,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (MAR, 11),
         2022: (MAR, 1),
         2023: (FEB, 18),
+        2024: (FEB, 8),
     }
 
     MAWLID_DATES = {
@@ -358,6 +361,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (OCT, 19),
         2022: (OCT, 8),
         2023: (SEP, 28),
+        2024: (SEP, 16),
     }
 
     NUZUL_AL_QURAN_DATES = {
@@ -385,6 +389,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (APR, 29),
         2022: (APR, 19),
         2023: (APR, 8),
+        2024: (MAR, 28),
     }
 
     RAMADAN_BEGINNING_DATES = {
@@ -412,6 +417,7 @@ class BruneiIslamicHolidays(_CustomIslamicHolidays):
         2021: (APR, 13),
         2022: (APR, 3),
         2023: (MAR, 23),
+        2024: (MAR, 12),
     }
 
 

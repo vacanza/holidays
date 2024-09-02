@@ -62,7 +62,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Chrëschtdag"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stiefesdag"))
 
 

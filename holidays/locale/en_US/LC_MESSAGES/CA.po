@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.41\n"
+"Project-Id-Version: Python Holidays 0.56\n"
 "POT-Creation-Date: 2023-04-10 14:10+0300\n"
-"PO-Revision-Date: 2023-12-26 22:10+0200\n"
+"PO-Revision-Date: 2024-08-31 18:20+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -116,13 +116,13 @@ msgstr "Civic Holiday"
 msgid "New Brunswick Day"
 msgstr "New Brunswick Day"
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
-msgstr "St. Patrick's Day"
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "Saint Patrick's Day"
 
-#. St. George's Day.
-msgid "St. George's Day"
-msgstr "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
+msgstr "Saint George's Day"
 
 #. Discovery Day.
 msgid "Discovery Day"
@@ -144,9 +144,9 @@ msgstr "Islander Day"
 msgid "National Patriots' Day"
 msgstr "National Patriots' Day"
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
-msgstr "St. John the Baptist Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
+msgstr "Saint John the Baptist Day"
 
 #. Saskatchewan Day.
 msgid "Saskatchewan Day"

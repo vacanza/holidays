@@ -44,14 +44,13 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "SCT",  # Scotland
         "WLS",  # Wales
     )
-
-    _deprecated_subdivisions: Tuple[str, ...] = (
-        "England",
-        "Northern Ireland",
-        "Scotland",
-        "UK",
-        "Wales",
-    )
+    subdivisions_aliases = {
+        "England": "ENG",
+        "Northern Ireland": "NIR",
+        "Scotland": "SCT",
+        "Wales": "WLS",
+    }
+    _deprecated_subdivisions = ("UK",)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -91,21 +90,12 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             else:
                 self._add_holiday_last_mon_of_may(name)
 
-        if self.subdiv == "England":
-            self._populate_subdiv_eng_public_holidays()
-        elif self.subdiv == "Northern Ireland":
-            self._populate_subdiv_nir_public_holidays()
-        elif self.subdiv == "Scotland":
-            self._populate_subdiv_sct_public_holidays()
-        elif self.subdiv == "Wales":
-            self._populate_subdiv_wls_public_holidays()
-
     def _populate_subdiv_holidays(self):
         # Bank Holidays Act 1871
         if self._year <= 1871:
             return None
 
-        if self.subdiv not in {"SCT", "Scotland"}:
+        if self.subdiv != "SCT":
             # New Year's Day
             if self._year >= 1975:
                 self._add_observed(self._add_new_years_day("New Year's Day"))
@@ -136,8 +126,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     def _populate_subdiv_nir_public_holidays(self):
         if self._year >= 1903:
-            # St. Patrick's Day
-            self._add_observed(self._add_holiday_mar_17("St. Patrick's Day"))
+            # Saint Patrick's Day
+            self._add_observed(self._add_holiday_mar_17("Saint Patrick's Day"))
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
@@ -168,8 +158,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
 
         if self._year >= 2006:
-            # St. Andrew's Day
-            self._add_observed(self._add_holiday_nov_30("St. Andrew's Day"))
+            # Saint Andrew's Day
+            self._add_observed(self._add_holiday_nov_30("Saint Andrew's Day"))
 
         # Christmas Day
         self._add_observed(

@@ -173,6 +173,16 @@ class ChristianHolidays:
         """
         return self._add_holiday_feb_2(name)
 
+    def _add_carnival_sunday(self, name) -> date:
+        """
+        Add Carnival Sunday (49 days before Easter Sunday).
+
+        Carnival is a Catholic Christian festive season that occurs before
+        the liturgical season of Lent.
+        https://en.wikipedia.org/wiki/Carnival
+        """
+        return self._add_holiday(name, _timedelta(self._easter_sunday, -49))
+
     def _add_carnival_monday(self, name) -> date:
         """
         Add Carnival Monday (48 days before Easter Sunday).
@@ -265,6 +275,15 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Easter
         """
         return self._add_holiday(name, self.__get_easter_sunday(calendar))
+
+    def _add_easter_tuesday(self, name, calendar=None) -> date:
+        """
+        Add Easter Tuesday (2 day after Easter Sunday).
+
+        Easter Tuesday is the third day of Eastertide and is a holiday in some areas.
+        https://en.wikipedia.org/wiki/Easter_Tuesday
+        """
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +2))
 
     def _add_epiphany_day(self, name, calendar=None) -> date:
         """

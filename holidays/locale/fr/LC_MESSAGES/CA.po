@@ -116,12 +116,12 @@ msgstr "Premier lundi d'août"
 msgid "New Brunswick Day"
 msgstr "Jour du Nouveau Brunswick"
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
 msgstr "Fête de la Saint-Patrick"
 
-#. St. George's Day.
-msgid "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
 msgstr "Fête de la Saint-Georges"
 
 #. Discovery Day.
@@ -144,8 +144,8 @@ msgstr "Fête des Insulaires"
 msgid "National Patriots' Day"
 msgstr "Journée nationale des patriotes"
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
 msgstr "Fête nationale du Québec"
 
 #. Saskatchewan Day.

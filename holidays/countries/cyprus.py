@@ -92,7 +92,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Easter Tuesday.
-        self._add_holiday_2_days_past_easter(tr("Τρίτη της Διακαινησίμου"))
+        self._add_easter_tuesday(tr("Τρίτη της Διακαινησίμου"))
 
     def _populate_optional_holidays(self):
         if self._year <= 1960:

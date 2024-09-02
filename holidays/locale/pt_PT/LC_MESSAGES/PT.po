@@ -103,11 +103,11 @@ msgstr ""
 msgid "Véspera de Ano Novo"
 msgstr ""
 
-#. St. Anthony's Day.
+#. Saint Anthony's Day.
 msgid "Dia de Santo António"
 msgstr ""
 
-#. St. Joanna's Day.
+#. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
 msgstr ""
 
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Quinta-feira da Ascensão"
 msgstr ""
 
-#. St. John's Day.
+#. Saint John's Day.
 msgid "Dia de São João"
 msgstr ""
 
@@ -127,11 +127,11 @@ msgstr ""
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr ""
 
-#. St. Elizabeth's Day.
+#. Saint Elizabeth's Day.
 msgid "Dia de Santa Isabel"
 msgstr ""
 
-#. St. Peter's Day.
+#. Saint Peter's Day.
 msgid "Dia de São Pedro"
 msgstr ""
 
@@ -151,7 +151,7 @@ msgstr ""
 msgid "Dia do Município de Portalegre"
 msgstr ""
 
-#. St. Joseph's Day.
+#. Saint Joseph's Day.
 msgid "Dia de São José"
 msgstr ""
 
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr ""
 
-#. St. Matthew's Day.
+#. Saint Matthew's Day.
 msgid "Dia de São Mateus"
 msgstr ""
 

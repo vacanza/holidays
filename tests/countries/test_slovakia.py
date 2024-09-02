@@ -187,7 +187,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-08", "Day of Victory over Fascism"),
-            ("2022-07-05", "St. Cyril and Methodius Day"),
+            ("2022-07-05", "Saints Cyril and Methodius Day"),
             ("2022-08-29", "Slovak National Uprising Anniversary"),
             ("2022-09-01", "Constitution Day"),
             ("2022-09-15", "Day of Our Lady of the Seven Sorrows"),

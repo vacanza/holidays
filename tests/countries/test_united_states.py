@@ -1644,7 +1644,7 @@ class TestUS(CommonCountryTests, TestCase):
         )
 
     def test_st_patricks_day(self):
-        name = "St. Patrick's Day"
+        name = "Saint Patrick's Day"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,

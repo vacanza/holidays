@@ -107,7 +107,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Christtag"))
 
-        # St. Stephen's Day.
+        # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stefanitag"))
 
     def _populate_bank_holidays(self):
@@ -121,43 +121,43 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_eve(tr("Silvester"))
 
     def _populate_subdiv_1_bank_holidays(self):
-        # St. Martin's Day.
+        # Saint Martin's Day.
         self._add_holiday_nov_11(tr("Hl. Martin"))
 
     def _populate_subdiv_2_bank_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Hl. Josef"))
 
         # 1920 Carinthian plebiscite.
         self._add_holiday_oct_10(tr("Tag der Volksabstimmung"))
 
     def _populate_subdiv_3_bank_holidays(self):
-        # St. Leopold's Day.
+        # Saint Leopold's Day.
         self._add_holiday_nov_15(tr("Hl. Leopold"))
 
     def _populate_subdiv_4_bank_holidays(self):
         if self._year >= 2004:
-            # St. Florian's Day.
+            # Saint Florian's Day.
             self._add_holiday_may_4(tr("Hl. Florian"))
 
     def _populate_subdiv_5_bank_holidays(self):
-        # St. Rupert's Day.
+        # Saint Rupert's Day.
         self._add_holiday_sep_24(tr("Hl. Rupert"))
 
     def _populate_subdiv_6_bank_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Hl. Josef"))
 
     def _populate_subdiv_7_bank_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Hl. Josef"))
 
     def _populate_subdiv_8_bank_holidays(self):
-        # St. Joseph's Day.
+        # Saint Joseph's Day.
         self._add_saint_josephs_day(tr("Hl. Josef"))
 
     def _populate_subdiv_9_bank_holidays(self):
-        # St. Leopold's Day.
+        # Saint Leopold's Day.
         self._add_holiday_nov_15(tr("Hl. Leopold"))
 
 

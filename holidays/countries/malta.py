@@ -62,7 +62,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Paul's Shipwreck.
+            # Feast of Saint Paul's Shipwreck.
             self._add_holiday_feb_10(tr("Il-Festa tan-Nawfraġju ta' San Pawl"))
 
         # Il-Festa ta' San Ġużepp
@@ -70,7 +70,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Joseph.
+            # Feast of Saint Joseph.
             self._add_saint_josephs_day(tr("Il-Festa ta' San Ġużepp"))
 
         # Jum il-Ħelsien
@@ -107,7 +107,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1987 via Act LX of 1987.
 
         if self._year >= 1987:
-            # Feast of St. Peter and St. Paul.
+            # Feast of Saint Peter and Saint Paul.
             self._add_saints_peter_and_paul_day(tr("Il-Festa ta' San Pietru u San Pawl"))
 
         # Il-Festa ta' Santa Marija

@@ -53,6 +53,7 @@ from .cyprus import Cyprus, CY, CYP
 from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
+from .dominica import Dominica, DM, DMA
 from .dominican_republic import DominicanRepublic, DO, DOM
 from .ecuador import Ecuador, EC, ECU
 from .egypt import Egypt, EG, EGY
@@ -70,6 +71,7 @@ from .greece import Greece, GR, GRC
 from .greenland import Greenland, GL, GRL
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
+from .haiti import Haiti, HT, HTI
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
 from .hungary import Hungary, HU, HUN

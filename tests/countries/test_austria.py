@@ -189,7 +189,7 @@ class TestAustria(CommonCountryTests, TestCase):
             ("2022-12-08", "Immaculate Conception"),
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-26", "Saint Stephen's Day"),
             ("2022-12-31", "New Year's Eve"),
         )
 

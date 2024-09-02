@@ -1,0 +1,127 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Haiti holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.56\n"
+"POT-Creation-Date: 2024-08-19 13:57+0700\n"
+"PO-Revision-Date: 2024-08-20 10:00+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. National Independence Day.
+msgid "Fête de l'Indépendance Nationale"
+msgstr "National Independence Day"
+
+#. Ancestry Day.
+msgid "Jour des Aïeux"
+msgstr "Ancestry Day"
+
+#. Agriculture and Labor Day.
+msgid "Fête de l'Agriculture et du Travail"
+msgstr "Agriculture and Labor Day"
+
+#. Flag Day and University Day.
+msgid "Fête du Drapeau et de l'Université"
+msgstr "Flag Day and University Day"
+
+#. Commemoration of the Battle of Vertieres.
+msgid "Commémoration de la Bataille de Vertières"
+msgstr "Commemoration of the Battle of Vertieres"
+
+#. Armed Forces Day.
+msgid "Jour des Forces Armées"
+msgstr "Armed Forces Day"
+
+#. New Year's Day.
+msgid "Nouvel An"
+msgstr "New Year's Day"
+
+#. Carnival.
+msgid "Carnaval"
+msgstr "Carnival"
+
+#. Shrove Monday.
+msgid "Lundi Gras"
+msgstr "Shrove Monday"
+
+#. Fat Tuesday.
+msgid "Mardi Gras"
+msgstr "Fat Tuesday"
+
+#. Good Friday.
+msgid "Vendredi Saint"
+msgstr "Good Friday"
+
+#. Easter.
+msgid "Pâques"
+msgstr "Easter"
+
+#. Corpus Christi.
+msgid "Fête-Dieu"
+msgstr "Corpus Christi"
+
+#. Assumption of Mary.
+msgid "Assomption de Marie"
+msgstr "Assumption of Mary"
+
+#. Death of Dessalines.
+msgid "Mort de Dessalines"
+msgstr "Death of Dessalines"
+
+#. All Saints' Day.
+msgid "La Toussaint"
+msgstr "All Saints' Day"
+
+#. Day of the Dead.
+msgid "Fête des Morts"
+msgstr "Day of the Dead"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Ash Wednesday.
+msgid "Mercredi des Cendres"
+msgstr "Ash Wednesday"
+
+#. Maundy Thursday.
+msgid "Jeudi Saint"
+msgstr "Maundy Thursday"
+
+#. National Sovereignty Day.
+msgid "Fête de la Souveraineté Nationale"
+msgstr "National Sovereignty Day"
+
+#. Feast of Lady of Perpetual Help, Patroness of Haiti.
+msgid "Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"
+msgstr "Feast of Lady of Perpetual Help, Patroness of Haiti"
+
+#. Ascension.
+msgid "Ascension"
+msgstr "Ascension"
+
+#. Birth Anniversary of Jean-Jacques Dessalines.
+msgid "Anniversaire de Naissance de Jean-Jacques Dessalines"
+msgstr "Birth Anniversary of Jean-Jacques Dessalines"
+
+#. Discovery Day.
+msgid "Jour de la Découverte"
+msgstr "Discovery Day"

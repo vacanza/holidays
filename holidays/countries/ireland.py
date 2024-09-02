@@ -38,17 +38,17 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         if self._year >= 1975:
             self._add_new_years_day("New Year's Day")
 
-        # St. Brigid's Day.
+        # Saint Brigid's Day.
         if self._year >= 2023:
-            name = "St. Brigid's Day"
+            name = "Saint Brigid's Day"
             if self._is_friday(FEB, 1):
                 self._add_holiday_feb_1(name)
             else:
                 self._add_holiday_1st_mon_from_feb_1(name)
 
-        # St. Patrick's Day.
+        # Saint Patrick's Day.
         if self._year >= 1903:
-            self._add_holiday_mar_17("St. Patrick's Day")
+            self._add_holiday_mar_17("Saint Patrick's Day")
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
@@ -78,8 +78,8 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
 
-        # St. Stephen's Day.
-        self._add_christmas_day_two("St. Stephen's Day")
+        # Saint Stephen's Day.
+        self._add_christmas_day_two("Saint Stephen's Day")
 
 
 class IE(Ireland):

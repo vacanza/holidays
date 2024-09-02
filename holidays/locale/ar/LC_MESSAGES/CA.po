@@ -116,12 +116,12 @@ msgstr "عطلة المدنية"
 msgid "New Brunswick Day"
 msgstr "يوم نيو برونزويك"
 
-#. St. Patrick's Day.
-msgid "St. Patrick's Day"
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
 msgstr "عيد القديس باتريك"
 
-#. St. George's Day.
-msgid "St. George's Day"
+#. Saint George's Day.
+msgid "Saint George's Day"
 msgstr "عيد القديس جورج"
 
 #. Discovery Day.
@@ -144,8 +144,8 @@ msgstr "يوم الجزيرة"
 msgid "National Patriots' Day"
 msgstr "يوم الوطنيين"
 
-#. St. Jean Baptiste Day.
-msgid "St. Jean Baptiste Day"
+#. Saint John the Baptist Day.
+msgid "Saint Jean Baptiste Day"
 msgstr "عيد القديس جان بابتيست"
 
 #. Saskatchewan Day.

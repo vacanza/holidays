@@ -160,7 +160,7 @@ class TestCroatia(CommonCountryTests, TestCase):
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-18", "Remembrance Day"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-26", "Saint Stephen's Day"),
         )
 
     def test_l10n_uk(self):

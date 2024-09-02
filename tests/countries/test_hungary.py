@@ -221,6 +221,9 @@ class TestHungary(CommonCountryTests, TestCase):
             "2024-08-19",
             "2024-12-24",
             "2024-12-27",
+            "2025-05-02",
+            "2025-10-24",
+            "2025-12-24",
         )
         self.assertHoliday(dt)
 

@@ -67,6 +67,6 @@ msgstr "День усіх святих"
 msgid "Chrëschtdag"
 msgstr "Різдво Христове"
 
-#. St. Stephen's Day.
+#. Saint Stephen's Day.
 msgid "Stiefesdag"
 msgstr "День Святого Стефана"
