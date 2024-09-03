@@ -32,7 +32,7 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
       - https://www.jerseylaw.je/laws/superseded/Pages/2006/15.560.20.aspx # 1952 Revision
       - https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx # 1952 as enacted
       - https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%205331.aspx # Bank Holidays
-      - https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206795.aspx # May Day
+      - https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206795.aspx # May Bank Holiday
     Checked with:
       - https://www.gov.je/Leisure/Events/WhatsOn/pages/bankholidaydates.aspx # From 2010 onwards
 
@@ -47,7 +47,7 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """
 
     country = "JE"
-    observed_label = "%s (observed)"
+    observed_label = "%s (substitute day)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -82,13 +82,14 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
-        # May Day
+        # Early May Bank Holiday
         # This only starts in 1980 (instead of 1978) for Jersey.
         # The date is not moved in 2020 (unlike in the UK) as there's already VE Day Celebrations.
+        # In 2024 this was called "May Bank Holiday" instead.
 
-        # May Day bank holiday (first Monday in May)
+        # Early May bank holiday (first Monday in May)
         if self._year >= 1980:
-            name = "May Day"
+            name = "May Bank Holiday" if self._year == 2024 else "Early May Bank Holiday"
             if self._year == 1995:
                 self._add_holiday_may_8(name)
             else:
@@ -117,11 +118,11 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Whit Monday.
             self._add_whit_monday("Whit Monday")
 
-        # Late Summer Bank Holiday
+        # Summer Bank Holiday
         # Current Pattern started in 1970. Was previously first Monday of September for Jersey.
 
-        # Late Summer bank holiday (last Monday in August)
-        summer_bank_holiday = "Late Summer Bank Holiday"
+        # Summer bank holiday (last Monday in August)
+        summer_bank_holiday = "Summer Bank Holiday"
         if self._year >= 1970:
             self._add_holiday_last_mon_of_aug(summer_bank_holiday)
         else:
@@ -175,6 +176,7 @@ class JerseyStaticHolidays:
       - https://www.jerseylaw.je/laws/enacted/Pages/RO-050-2021.aspx
       - https://www.jerseylaw.je/laws/enacted/Pages/RO-108-2009.aspx
       - https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx
+      - https://www.jerseylaw.je/laws/enacted/Pages/RO-036-2024.aspx
     """
 
     # Mostly a direct copy of UnitedKingdomStaticHolidays.
@@ -195,29 +197,30 @@ class JerseyStaticHolidays:
     # Boxing Day
     boxing_day_in_lieu = "Boxing Day"
 
-    # Elizabeth II's Royal Visit.
-    elizabeth_2_royal_visit = "Elizabeth II's Royal Visit"
+    # The visit of Her Majesty Queen Elizabeth II.
+    elizabeth_2_royal_visit = "The visit of Her Majesty Queen Elizabeth II"
 
     special_public_holidays = {
         1957: (JUL, 26, elizabeth_2_royal_visit),
-        1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
+        1977: (JUN, 7, "Queen's Silver Jubilee"),
         1978: (JUN, 27, elizabeth_2_royal_visit),
         1981: (JUL, 29, "Wedding of Charles and Diana"),
         1989: (MAY, 25, elizabeth_2_royal_visit),
         1999: (DEC, 31, "Millennium Celebrations"),
         2001: (JUL, 13, elizabeth_2_royal_visit),
-        2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+        2002: (JUN, 3, "Queen's Golden Jubilee"),
         # Specially held in 2010 on Sunday for the 65th Anniversary.
         2010: (MAY, 9, "Liberation Day"),
         2011: (APR, 29, "Wedding of William and Catherine"),
-        2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
+        2012: (JUN, 5, "Queen's Diamond Jubilee"),
         2020: (MAY, 8, "75th Anniversary of VE Day"),
-        2021: (SEP, 27, "250th Anniversary of the 1769 Corn Riots"),
+        2021: (SEP, 27, "Corn Riots Anniversary"),
         2022: (
-            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
-            (SEP, 19, "State Funeral of Queen Elizabeth II"),
+            (JUN, 3, "Queen's Platinum Jubilee"),
+            (SEP, 19, "Funeral of Her Majesty Queen Elizabeth II"),
         ),
-        2023: (MAY, 8, "Coronation of Charles III"),
+        2023: (MAY, 8, "Coronation of His Majesty King Charles III"),
+        2024: (JUL, 15, "The visit of His Majesty King Charles III and Queen Camilla"),
     }
     special_public_holidays_observed = {
         1976: (DEC, 28, boxing_day_in_lieu),
