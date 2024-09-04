@@ -4,7 +4,7 @@ coverage==7.6.1
 importlib-metadata==8.4.0
 numpy<2.0.0; python_version < '3.9'
 numpy==2.0.1; python_version == '3.9'
-numpy==2.1.0; python_version > '3.9'
+numpy==2.1.1; python_version > '3.9'
 polib==1.2.0
 pytest-cov==5.0.0
 pytest-xdist==3.6.1
