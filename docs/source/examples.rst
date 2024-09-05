@@ -54,13 +54,13 @@ Let's print out the holidays in 2014 specific to California, USA:
    2014-01-20 Martin Luther King Jr. Day
    2014-02-15 Susan B. Anthony Day
    2014-02-17 Washington's Birthday
-   2014-03-31 César Chávez Day
+   2014-03-31 Cesar Chavez Day
    2014-05-26 Memorial Day
    2014-07-04 Independence Day
    2014-09-01 Labor Day
-   2014-10-13 Columbus Day
    2014-11-11 Veterans Day
    2014-11-27 Thanksgiving
+   2014-11-28 Day After Thanksgiving
    2014-12-25 Christmas Day
 
 So far we've only checked holidays in 2014 so that's the only year the Holidays
@@ -139,15 +139,14 @@ To change the language translation, you can set the language explicitly.
    >>> for dt, name in sorted(holidays.ES(years=2023, language="es").items()):
    >>>     print(dt, name)
    2023-01-06 Epifanía del Señor
-   2023-04-06 Jueves Santo
    2023-04-07 Viernes Santo
-   2023-05-01 Día del Trabajador
+   2023-05-01 Fiesta del Trabajo
    2023-08-15 Asunción de la Virgen
-   2023-10-12 Día de la Hispanidad
+   2023-10-12 Fiesta Nacional de España
    2023-11-01 Todos los Santos
    2023-12-06 Día de la Constitución Española
-   2023-12-08 La Inmaculada Concepción
-   2023-12-25 Navidad
+   2023-12-08 Inmaculada Concepción
+   2023-12-25 Natividad del Señor
 
 Holiday categories support
 --------------------------
@@ -165,7 +164,7 @@ To get a list of other categories holidays (for countries that support them):
    >>>     print(dt, name)
    2023-01-01 New Year's Day
    2023-04-07 Good Friday
-   2023-04-09 Easter
+   2023-04-09 Easter Sunday
    2023-04-10 Easter Monday
    2023-05-01 Labor Day
    2023-05-18 Ascension Day
@@ -173,12 +172,11 @@ To get a list of other categories holidays (for countries that support them):
    2023-05-28 Whit Sunday
    2023-05-29 Whit Monday
    2023-07-21 National Day
-   2023-08-15 Assumption of Mary
+   2023-08-15 Assumption Day
    2023-11-01 All Saints' Day
    2023-11-11 Armistice Day
    2023-12-25 Christmas Day
    2023-12-26 Bank Holiday
-
 
 Date from holiday name
 ----------------------
@@ -190,10 +188,10 @@ with case insensitive check):
 .. code-block:: python
 
    >>> us_holidays = holidays.UnitedStates(years=2020)
-   >>> us_holidays.get_named('day')
+   >>> sorted(us_holidays.get_named('day'))
    [datetime.date(2020, 1, 1), datetime.date(2020, 1, 20),
    datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
-   datetime.date(2020, 7, 4), datetime.date(2020, 7, 3),
+   datetime.date(2020, 7, 3), datetime.date(2020, 7, 4),
    datetime.date(2020, 9, 7), datetime.date(2020, 10, 12),
    datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
 
@@ -229,9 +227,7 @@ holidays using the built-in :py:func:`sum` function:
 
    >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
    >>> a.subdiv
-   ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK',
-    'YU']
-
+   ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT']
 
 Creating custom holidays (or augmenting existing ones with private ones)
 ------------------------------------------------------------------------
@@ -308,7 +304,6 @@ pairs, a list of dates, or even singular date/string/timestamp objects:
    >>> custom_holidays.append(['2015-01-01', '07/04/2015'])
    >>> custom_holidays.append(date(2015, 12, 25))
 
-
 Add years to an existing Holiday object
 ---------------------------------------
 
@@ -322,8 +317,6 @@ holiday object:
    >>> us_holidays = country_holidays('US', years=2020)
    # to add new years of holidays to the object:
    >>> us_holidays.update(country_holidays('US', years=2021))
-
-
 
 Other ways to specify the country
 ---------------------------------
