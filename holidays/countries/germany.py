@@ -56,7 +56,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     country = "DE"
     default_language = "de"
     supported_categories = (PROTESTANT, PUBLIC)
-    supported_languages = ("de", "en_US", "uk")
+    supported_languages = ("de", "en_US", "th", "uk")
     subdivisions = (
         # ISO 3166-2:DE
         "BB",
