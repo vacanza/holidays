@@ -1,0 +1,177 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Australia holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.57\n"
+"POT-Creation-Date: 2024-09-05 12:21+0700\n"
+"PO-Revision-Date: 2024-09-05 12:31+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "ชดเชย%s"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดี"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr "วันชาติออสเตรเลีย"
+
+#. Anniversary Day.
+msgid "Anniversary Day"
+msgstr "วันครบรอบการก่อตั้งอาณานิคม"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "วันแอนแซค"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "วันเปิดกล่องของขวัญ"
+
+#. Canberra Day.
+msgid "Canberra Day"
+msgstr "วันแคนเบอร์รา"
+
+#. Easter Saturday.
+msgid "Easter Saturday"
+msgstr "วันเสาร์อีสเตอร์"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Reconciliation Day.
+msgid "Reconciliation Day"
+msgstr "วันแห่งการปรองดอง"
+
+#. Family & Community Day.
+msgid "Family & Community Day"
+msgstr "วันครอบครัวและชุมชน"
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr "วันแรงงาน"
+
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr "วันหยุดธนาคาร"
+
+#. May Day.
+msgid "May Day"
+msgstr "วันเมย์เดย์ (วันแรงงาน)"
+
+#. Picnic Day.
+msgid "Picnic Day"
+msgstr "วันปิกนิก"
+
+#. %s (from 7pm).
+#, c-format
+msgid "%s (from 7pm)"
+msgstr "%s (ตั้งแต่ 19:00 น.)"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "วันสิ้นปี"
+
+#. The Royal Queensland Show.
+msgid "The Royal Queensland Show"
+msgstr "เทศกาลรอยัลควีนส์แลนด์โชว์"
+
+#. Adelaide Cup Day.
+msgid "Adelaide Cup Day"
+msgstr "วันแอดิเลดคัพ"
+
+#. Proclamation Day.
+msgid "Proclamation Day"
+msgstr "วันสถาปนา"
+
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "วันแปดชั่วโมง (วันแรงงาน)"
+
+#. Easter Tuesday.
+msgid "Easter Tuesday"
+msgstr "วันอังคารอีสเตอร์"
+
+#. Grand Final Day.
+msgid "Grand Final Day"
+msgstr "วันศุกร์ก่อนวันแข่งฟุตบอลออสเตรเลีย (AFL) รอบสุดท้าย"
+
+#. Melbourne Cup Day.
+msgid "Melbourne Cup Day"
+msgstr "วันเมลเบิร์นคัพ"
+
+#. Western Australia Day.
+msgid "Western Australia Day"
+msgstr "วันเวสเทิร์นออสเตรเลีย"
+
+#. Foundation Day.
+msgid "Foundation Day"
+msgstr "วันสถาปนา"
+
+#. Special public holiday.
+msgid "Special public holiday"
+msgstr "วันหยุดพิเศษ"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "วันไว้ทุกข์แห่งชาติแด่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
+
+#. Declared public holiday.
+msgid "Declared public holiday"
+msgstr "วันหยุดพิเศษ (ตามประกาศ)"
+
+#. Additional public holiday.
+msgid "Additional public holiday"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
+
+#. Queen's Diamond Jubilee.
+msgid "Queen's Diamond Jubilee"
+msgstr "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี สมเด็จพระราชินีนาถ"

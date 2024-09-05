@@ -682,3 +682,41 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
         self._assertVariableDays(2024, province_days)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-26", "Australia Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "ANZAC Day"),
+            ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-26", "Australia Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "ANZAC Day"),
+            ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-26", "วันชาติออสเตรเลีย"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-18", "วันจันทร์อีสเตอร์"),
+            ("2022-04-25", "วันแอนแซค"),
+            ("2022-09-22", "วันไว้ทุกข์แห่งชาติแด่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "วันเปิดกล่องของขวัญ"),
+        )
