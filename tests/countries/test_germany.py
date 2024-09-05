@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
 from unittest import TestCase
 
+from holidays.constants import PROTESTANT, PUBLIC
 from holidays.countries.germany import Germany, DE, DEU
 from tests.common import CommonCountryTests
 
@@ -23,8 +25,21 @@ class TestDE(CommonCountryTests, TestCase):
         super().setUpClass(DE, years=years)
         cls.prov_hols = {prov: DE(subdiv=prov, years=years) for prov in DE.subdivisions}
 
+    def setUp(self):
+        super().setUp()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
     def test_country_aliases(self):
         self.assertAliases(Germany, DE, DEU)
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
+
+    def test_deprecated(self):
+        self.assertEqual(
+            sorted(Germany(subdiv="BYP", years=2023).keys()),
+            sorted(Germany(subdiv="BY", years=2023, categories=(PUBLIC, PROTESTANT)).keys()),
+        )
 
     def test_no_data_before_1990(self):
         self.assertNoHolidays(DE(years=1989))
@@ -98,7 +113,7 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertHoliday("1990-10-03")
 
     def test_heilige_drei_koenige(self):
-        provinces_that_have = {"BW", "BY", "BYP", "ST"}
+        provinces_that_have = {"BW", "BY", "ST"}
         provinces_that_dont = set(DE.subdivisions) - provinces_that_have
 
         for province in provinces_that_have:
@@ -273,7 +288,7 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-06-08",
             "2024-05-30",
         )
-        provinces_that_have = {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}
+        provinces_that_have = {"BW", "BY", "HE", "NW", "RP", "SL"}
         provinces_that_dont = set(DE.subdivisions) - provinces_that_have
 
         for province in provinces_that_have:
@@ -293,6 +308,11 @@ class TestDE(CommonCountryTests, TestCase):
             self.assertNoHoliday(
                 self.prov_hols[province], (f"{year}-08-15" for year in range(1991, 2050))
             )
+        # Bayern (Protestant municipalities).
+        self.assertNoHoliday(
+            DE(subdiv="BY", years=range(1991, 2050), categories=(PUBLIC, PROTESTANT)),
+            (f"{year}-08-15" for year in range(1991, 2050)),
+        )
 
     def test_reformationstag(self):
         prov_yes = {"BB", "MV", "SN", "ST", "TH"}
@@ -321,7 +341,7 @@ class TestDE(CommonCountryTests, TestCase):
             )
 
     def test_allerheiligen(self):
-        provinces_that_have = {"BW", "BY", "BYP", "NW", "RP", "SL"}
+        provinces_that_have = {"BW", "BY", "NW", "RP", "SL"}
         provinces_that_dont = set(DE.subdivisions) - provinces_that_have
 
         for province in provinces_that_have:

@@ -13,6 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, OCT
+from holidays.constants import PROTESTANT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -54,13 +55,14 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     country = "DE"
     default_language = "de"
+    supported_categories = (PROTESTANT, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
     subdivisions = (
+        # ISO 3166-2:DE
         "BB",
         "BE",
         "BW",
         "BY",
-        "BYP",
         "HB",
         "HE",
         "HH",
@@ -74,6 +76,25 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "ST",
         "TH",
     )
+    subdivisions_aliases = {
+        "Brandenburg": "BB",
+        "Berlin": "BE",
+        "Baden-Württemberg": "BW",
+        "Bayern": "BY",
+        "Bremen": "HB",
+        "Hessen": "HE",
+        "Hamburg": "HH",
+        "Mecklenburg-Vorpommern": "MV",
+        "Niedersachsen": "NI",
+        "Nordrhein-Westfalen": "NW",
+        "Rheinland-Pfalz": "RP",
+        "Schleswig-Holstein": "SH",
+        "Saarland": "SL",
+        "Sachsen": "SN",
+        "Sachsen-Anhalt": "ST",
+        "Thüringen": "TH",
+    }
+    _deprecated_subdivisions = ("BYP",)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -116,6 +137,10 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
+
+        if self.subdiv == "BYP":
+            self.categories.add(PROTESTANT)
+            self._populate_subdiv_by_public_holidays()
 
     def _populate_subdiv_bb_public_holidays(self):
         if self._year <= 1989:
@@ -161,18 +186,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_epiphany_day(tr("Heilige Drei Könige"))
             self._add_corpus_christi_day(tr("Fronleichnam"))
 
-            # Assumption Day.
-            self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
-
-        self._add_all_saints_day(tr("Allerheiligen"))
-
-    def _populate_subdiv_byp_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
-        if self._year >= 1991:
-            self._add_epiphany_day(tr("Heilige Drei Könige"))
-            self._add_corpus_christi_day(tr("Fronleichnam"))
+            if PROTESTANT not in self.categories:
+                # Assumption Day.
+                self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
         self._add_all_saints_day(tr("Allerheiligen"))
 
