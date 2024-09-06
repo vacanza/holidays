@@ -45,6 +45,7 @@ class TestJE(CommonCountryTests, TestCase):
             "2022-06-03",
             "2022-09-19",
             "2023-05-08",
+            "2024-07-15",
         )
         dt_observed = (
             "1976-12-28",
@@ -102,14 +103,14 @@ class TestJE(CommonCountryTests, TestCase):
             ("2010-01-01", "New Year's Day"),
             ("2010-04-02", "Good Friday"),
             ("2010-04-05", "Easter Monday"),
-            ("2010-05-03", "May Day"),
+            ("2010-05-03", "Early May Bank Holiday"),
             ("2010-05-09", "Liberation Day"),
             ("2010-05-31", "Spring Bank Holiday"),
-            ("2010-08-30", "Late Summer Bank Holiday"),
+            ("2010-08-30", "Summer Bank Holiday"),
             ("2010-12-25", "Christmas Day"),
             ("2010-12-26", "Boxing Day"),
-            ("2010-12-27", "Christmas Day (observed)"),
-            ("2010-12-28", "Boxing Day (observed)"),
+            ("2010-12-27", "Christmas Day (substitute day)"),
+            ("2010-12-28", "Boxing Day (substitute day)"),
         )
 
     def test_2011(self):
@@ -117,17 +118,17 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHolidays(
             Jersey(years=2011),
             ("2011-01-01", "New Year's Day"),
-            ("2011-01-03", "New Year's Day (observed)"),
+            ("2011-01-03", "New Year's Day (substitute day)"),
             ("2011-04-22", "Good Friday"),
             ("2011-04-25", "Easter Monday"),
             ("2011-04-29", "Wedding of William and Catherine"),
-            ("2011-05-02", "May Day"),
+            ("2011-05-02", "Early May Bank Holiday"),
             ("2011-05-09", "Liberation Day"),
             ("2011-05-30", "Spring Bank Holiday"),
-            ("2011-08-29", "Late Summer Bank Holiday"),
+            ("2011-08-29", "Summer Bank Holiday"),
             ("2011-12-25", "Christmas Day"),
             ("2011-12-26", "Boxing Day"),
-            ("2011-12-27", "Christmas Day (observed)"),
+            ("2011-12-27", "Christmas Day (substitute day)"),
         )
 
     def test_2012(self):
@@ -135,14 +136,14 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHolidays(
             Jersey(years=2012),
             ("2012-01-01", "New Year's Day"),
-            ("2012-01-02", "New Year's Day (observed)"),
+            ("2012-01-02", "New Year's Day (substitute day)"),
             ("2012-04-06", "Good Friday"),
             ("2012-04-09", "Easter Monday"),
-            ("2012-05-07", "May Day"),
+            ("2012-05-07", "Early May Bank Holiday"),
             ("2012-05-09", "Liberation Day"),
             ("2012-06-04", "Spring Bank Holiday"),
-            ("2012-06-05", "Diamond Jubilee of Elizabeth II"),
-            ("2012-08-27", "Late Summer Bank Holiday"),
+            ("2012-06-05", "Queen's Diamond Jubilee"),
+            ("2012-08-27", "Summer Bank Holiday"),
             ("2012-12-25", "Christmas Day"),
             ("2012-12-26", "Boxing Day"),
         )
@@ -154,10 +155,10 @@ class TestJE(CommonCountryTests, TestCase):
             ("2013-01-01", "New Year's Day"),
             ("2013-03-29", "Good Friday"),
             ("2013-04-01", "Easter Monday"),
-            ("2013-05-06", "May Day"),
+            ("2013-05-06", "Early May Bank Holiday"),
             ("2013-05-09", "Liberation Day"),
             ("2013-05-27", "Spring Bank Holiday"),
-            ("2013-08-26", "Late Summer Bank Holiday"),
+            ("2013-08-26", "Summer Bank Holiday"),
             ("2013-12-25", "Christmas Day"),
             ("2013-12-26", "Boxing Day"),
         )
@@ -169,10 +170,10 @@ class TestJE(CommonCountryTests, TestCase):
             ("2014-01-01", "New Year's Day"),
             ("2014-04-18", "Good Friday"),
             ("2014-04-21", "Easter Monday"),
-            ("2014-05-05", "May Day"),
+            ("2014-05-05", "Early May Bank Holiday"),
             ("2014-05-09", "Liberation Day"),
             ("2014-05-26", "Spring Bank Holiday"),
-            ("2014-08-25", "Late Summer Bank Holiday"),
+            ("2014-08-25", "Summer Bank Holiday"),
             ("2014-12-25", "Christmas Day"),
             ("2014-12-26", "Boxing Day"),
         )
@@ -184,13 +185,13 @@ class TestJE(CommonCountryTests, TestCase):
             ("2015-01-01", "New Year's Day"),
             ("2015-04-03", "Good Friday"),
             ("2015-04-06", "Easter Monday"),
-            ("2015-05-04", "May Day"),
+            ("2015-05-04", "Early May Bank Holiday"),
             ("2015-05-09", "Liberation Day"),
             ("2015-05-25", "Spring Bank Holiday"),
-            ("2015-08-31", "Late Summer Bank Holiday"),
+            ("2015-08-31", "Summer Bank Holiday"),
             ("2015-12-25", "Christmas Day"),
             ("2015-12-26", "Boxing Day"),
-            ("2015-12-28", "Boxing Day (observed)"),
+            ("2015-12-28", "Boxing Day (substitute day)"),
         )
 
     def test_2016(self):
@@ -200,13 +201,13 @@ class TestJE(CommonCountryTests, TestCase):
             ("2016-01-01", "New Year's Day"),
             ("2016-03-25", "Good Friday"),
             ("2016-03-28", "Easter Monday"),
-            ("2016-05-02", "May Day"),
+            ("2016-05-02", "Early May Bank Holiday"),
             ("2016-05-09", "Liberation Day"),
             ("2016-05-30", "Spring Bank Holiday"),
-            ("2016-08-29", "Late Summer Bank Holiday"),
+            ("2016-08-29", "Summer Bank Holiday"),
             ("2016-12-25", "Christmas Day"),
             ("2016-12-26", "Boxing Day"),
-            ("2016-12-27", "Christmas Day (observed)"),
+            ("2016-12-27", "Christmas Day (substitute day)"),
         )
 
     def test_2017(self):
@@ -214,13 +215,13 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHolidays(
             Jersey(years=2017),
             ("2017-01-01", "New Year's Day"),
-            ("2017-01-02", "New Year's Day (observed)"),
+            ("2017-01-02", "New Year's Day (substitute day)"),
             ("2017-04-14", "Good Friday"),
             ("2017-04-17", "Easter Monday"),
-            ("2017-05-01", "May Day"),
+            ("2017-05-01", "Early May Bank Holiday"),
             ("2017-05-09", "Liberation Day"),
             ("2017-05-29", "Spring Bank Holiday"),
-            ("2017-08-28", "Late Summer Bank Holiday"),
+            ("2017-08-28", "Summer Bank Holiday"),
             ("2017-12-25", "Christmas Day"),
             ("2017-12-26", "Boxing Day"),
         )
@@ -232,10 +233,10 @@ class TestJE(CommonCountryTests, TestCase):
             ("2018-01-01", "New Year's Day"),
             ("2018-03-30", "Good Friday"),
             ("2018-04-02", "Easter Monday"),
-            ("2018-05-07", "May Day"),
+            ("2018-05-07", "Early May Bank Holiday"),
             ("2018-05-09", "Liberation Day"),
             ("2018-05-28", "Spring Bank Holiday"),
-            ("2018-08-27", "Late Summer Bank Holiday"),
+            ("2018-08-27", "Summer Bank Holiday"),
             ("2018-12-25", "Christmas Day"),
             ("2018-12-26", "Boxing Day"),
         )
@@ -247,10 +248,10 @@ class TestJE(CommonCountryTests, TestCase):
             ("2019-01-01", "New Year's Day"),
             ("2019-04-19", "Good Friday"),
             ("2019-04-22", "Easter Monday"),
-            ("2019-05-06", "May Day"),
+            ("2019-05-06", "Early May Bank Holiday"),
             ("2019-05-09", "Liberation Day"),
             ("2019-05-27", "Spring Bank Holiday"),
-            ("2019-08-26", "Late Summer Bank Holiday"),
+            ("2019-08-26", "Summer Bank Holiday"),
             ("2019-12-25", "Christmas Day"),
             ("2019-12-26", "Boxing Day"),
         )
@@ -262,14 +263,14 @@ class TestJE(CommonCountryTests, TestCase):
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-13", "Easter Monday"),
-            ("2020-05-04", "May Day"),
+            ("2020-05-04", "Early May Bank Holiday"),
             ("2020-05-08", "75th Anniversary of VE Day"),
             ("2020-05-09", "Liberation Day"),
             ("2020-05-25", "Spring Bank Holiday"),
-            ("2020-08-31", "Late Summer Bank Holiday"),
+            ("2020-08-31", "Summer Bank Holiday"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Boxing Day"),
-            ("2020-12-28", "Boxing Day (observed)"),
+            ("2020-12-28", "Boxing Day (substitute day)"),
         )
 
     def test_2021(self):
@@ -279,14 +280,14 @@ class TestJE(CommonCountryTests, TestCase):
             ("2021-01-01", "New Year's Day"),
             ("2021-04-02", "Good Friday"),
             ("2021-04-05", "Easter Monday"),
-            ("2021-05-03", "May Day"),
+            ("2021-05-03", "Early May Bank Holiday"),
             ("2021-05-31", "Spring Bank Holiday"),
-            ("2021-08-30", "Late Summer Bank Holiday"),
-            ("2021-09-27", "250th Anniversary of the 1769 Corn Riots"),
+            ("2021-08-30", "Summer Bank Holiday"),
+            ("2021-09-27", "Corn Riots Anniversary"),
             ("2021-12-25", "Christmas Day"),
             ("2021-12-26", "Boxing Day"),
-            ("2021-12-27", "Christmas Day (observed)"),
-            ("2021-12-28", "Boxing Day (observed)"),
+            ("2021-12-27", "Christmas Day (substitute day)"),
+            ("2021-12-28", "Boxing Day (substitute day)"),
         )
 
     def test_2022(self):
@@ -294,18 +295,18 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHolidays(
             Jersey(years=2022),
             ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-03", "New Year's Day (substitute day)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-02", "May Day"),
+            ("2022-05-02", "Early May Bank Holiday"),
             ("2022-05-09", "Liberation Day"),
             ("2022-06-02", "Spring Bank Holiday"),
-            ("2022-06-03", "Platinum Jubilee of Elizabeth II"),
-            ("2022-08-29", "Late Summer Bank Holiday"),
-            ("2022-09-19", "State Funeral of Queen Elizabeth II"),
+            ("2022-06-03", "Queen's Platinum Jubilee"),
+            ("2022-08-29", "Summer Bank Holiday"),
+            ("2022-09-19", "Funeral of Her Majesty Queen Elizabeth II"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (observed)"),
+            ("2022-12-27", "Christmas Day (substitute day)"),
         )
 
     def test_2023(self):
@@ -313,14 +314,14 @@ class TestJE(CommonCountryTests, TestCase):
         self.assertHolidays(
             Jersey(years=2023),
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-02", "New Year's Day (substitute day)"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "May Day"),
-            ("2023-05-08", "Coronation of Charles III"),
+            ("2023-05-01", "Early May Bank Holiday"),
+            ("2023-05-08", "Coronation of His Majesty King Charles III"),
             ("2023-05-09", "Liberation Day"),
             ("2023-05-29", "Spring Bank Holiday"),
-            ("2023-08-28", "Late Summer Bank Holiday"),
+            ("2023-08-28", "Summer Bank Holiday"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Boxing Day"),
         )
@@ -332,10 +333,26 @@ class TestJE(CommonCountryTests, TestCase):
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
-            ("2024-05-06", "May Day"),
+            ("2024-05-06", "May Bank Holiday"),
             ("2024-05-09", "Liberation Day"),
             ("2024-05-27", "Spring Bank Holiday"),
-            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-07-15", "The visit of His Majesty King Charles III and Queen Camilla"),
+            ("2024-08-26", "Summer Bank Holiday"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_2025(self):
+        # https://www.gov.je/Leisure/Events/WhatsOn/Pages/BankHolidayDates.aspx
+        self.assertHolidays(
+            Jersey(years=2025),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-05", "Early May Bank Holiday"),
+            ("2025-05-09", "Liberation Day"),
+            ("2025-05-26", "Spring Bank Holiday"),
+            ("2025-08-25", "Summer Bank Holiday"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
