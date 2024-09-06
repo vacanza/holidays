@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from itertools import chain
 from unittest import TestCase
 
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
@@ -20,7 +21,8 @@ from tests.common import CommonCountryTests
 class TestThailand(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Thailand, years=range(1941, 2058), years_non_observed=range(1941, 2058))
+        support_range = chain(range(1941, 2058), [2158])
+        super().setUpClass(Thailand, years=support_range, years_non_observed=support_range)
 
     def test_country_aliases(self):
         self.assertAliases(Thailand, TH, THA)
@@ -483,6 +485,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-02-17",
         )
         self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, Thailand(years=2158))
 
         self.assertNoNonObservedHoliday(
             "2010-03-01",
@@ -520,6 +523,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-05-16",
         )
         self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, Thailand(years=2158))
 
         self.assertNoNonObservedHoliday(
             "2019-05-20",
@@ -557,6 +561,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-07-14",
         )
         self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, Thailand(years=2158))
 
         self.assertNoNonObservedHoliday(
             "2017-07-10",
@@ -594,6 +599,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-07-15",
         )
         self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, Thailand(years=2158))
 
         self.assertNoNonObservedHoliday(
             "2011-07-18",
