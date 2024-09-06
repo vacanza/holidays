@@ -1175,16 +1175,16 @@ class TestWorkdays(unittest.TestCase):
         self.assertEqual(self.hb.get_nth_workday("2024-05-10", -5), date(2024, 5, 3))
 
     def test_get_workdays_number(self):
-        self.assertEqual(self.hb.get_workdays_number("2024-01-03", "2024-01-23"), 14)
-        self.assertEqual(self.hb.get_workdays_number("2024-01-23", "2024-01-03"), 14)
+        self.assertEqual(self.hb.get_workdays_number("2024-01-03", "2024-01-23"), 15)
+        self.assertEqual(self.hb.get_workdays_number("2024-01-23", "2024-01-03"), 15)
         self.assertEqual(self.hb.get_workdays_number("2024-01-06", "2024-01-07"), 0)
-        self.assertEqual(self.hb.get_workdays_number("2024-01-16", "2024-01-16"), 0)
+        self.assertEqual(self.hb.get_workdays_number("2024-01-16", "2024-01-16"), 1)
 
-        self.assertEqual(self.hb.get_workdays_number("2024-02-08", "2024-02-15"), 5)
-        self.assertEqual(self.hb.get_workdays_number("2024-02-15", "2024-02-22"), 4)
-        self.assertEqual(self.hb.get_workdays_number("2024-02-22", "2024-02-29"), 6)
+        self.assertEqual(self.hb.get_workdays_number("2024-02-08", "2024-02-15"), 6)
+        self.assertEqual(self.hb.get_workdays_number("2024-02-15", "2024-02-22"), 5)
+        self.assertEqual(self.hb.get_workdays_number("2024-02-22", "2024-02-29"), 7)
 
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-03"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-04"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-05"), 2)
-        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-06"), 3)
+        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-03"), 3)
+        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-04"), 3)
+        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-05"), 3)
+        self.assertEqual(self.hb.get_workdays_number("2024-04-29", "2024-05-06"), 4)
