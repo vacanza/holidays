@@ -483,7 +483,6 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-02-17",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, Thailand(years=2058))
 
         self.assertNoNonObservedHoliday(
             "2010-03-01",
@@ -521,7 +520,6 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-05-16",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, Thailand(years=2058))
 
         self.assertNoNonObservedHoliday(
             "2019-05-20",
@@ -559,7 +557,6 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-07-14",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, Thailand(years=2058))
 
         self.assertNoNonObservedHoliday(
             "2017-07-10",
@@ -597,7 +594,6 @@ class TestThailand(CommonCountryTests, TestCase):
             "2030-07-15",
         )
         self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, Thailand(years=2058))
 
         self.assertNoNonObservedHoliday(
             "2011-07-18",

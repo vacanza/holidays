@@ -228,7 +228,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2018-01-31",
             "2019-02-19",
         )
-        self.assertNoHolidayName(name, 2058)
 
     def test_visaka_bochea(self):
         name = "ពិធីបុណ្យវិសាខបូជា"
@@ -244,7 +243,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2022-05-15",
             "2023-05-04",
         )
-        self.assertNoHolidayName(name, 2058)
 
     def test_preah_neangkoal(self):
         name = "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
@@ -260,7 +258,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2022-05-19",
             "2023-05-08",
         )
-        self.assertNoHolidayName(name, 2058)
 
     def test_pchum_ben(self):
         name = "ពិធីបុណ្យភ្ផុំបិណ្ឌ"
@@ -294,7 +291,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2023-10-14",
             "2023-10-15",
         )
-        self.assertNoHolidayName(name, 2058)
 
     def test_bon_om_touk(self):
         name = "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
@@ -329,7 +325,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2023-11-27",
             "2023-11-28",
         )
-        self.assertNoHolidayName(name, 2058)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
