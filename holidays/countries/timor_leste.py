@@ -131,13 +131,13 @@ class TimorLeste(
         # Holy Friday.
         self._add_good_friday(tr("Sexta-Feira Santa"))
 
-        # Idul Fitri.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Idul Fitri"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Festa do Corpo de Deus"))
 
-        # Idul Adha.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Idul Adha"))
 
     def _populate_workday_holidays(self):

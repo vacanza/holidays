@@ -92,7 +92,7 @@ msgstr "Loron Eroi Nasionál sira nian"
 msgid "Sexta-Feira Santa"
 msgstr "Sesta-Feira Santa"
 
-#. Idul Fitri.
+#. Eid al-Fitr.
 msgid "Idul Fitri"
 msgstr "Idul-Fitri"
 
@@ -100,7 +100,7 @@ msgstr "Idul-Fitri"
 msgid "Festa do Corpo de Deus"
 msgstr "Festa Korpu de Deus"
 
-#. Idul Adha.
+#. Eid al-Adha.
 msgid "Idul Adha"
 msgstr "Idul Adha"
 

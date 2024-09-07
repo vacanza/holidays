@@ -195,7 +195,7 @@ class TestTanzania(CommonCountryTests, TestCase):
             ("2023-06-29", "Eid al-Adha"),
             ("2023-07-07", "International Trade Fair"),
             ("2023-08-08", "Peasants Day"),
-            ("2023-09-28", "Maulid Day"),
+            ("2023-09-28", "Prophet's Birthday"),
             ("2023-10-14", "The Mwalimu Nyerere Day"),
             ("2023-12-09", "Independence and Republic Day"),
             ("2023-12-25", "Christmas Day"),

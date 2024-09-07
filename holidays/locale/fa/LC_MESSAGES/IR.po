@@ -96,7 +96,7 @@ msgstr ""
 msgid "زادروز علی بن ابی‌طالب"
 msgstr ""
 
-#. Ascension of Muhammad.
+#. Isra' and Mi'raj.
 msgid "مبعث"
 msgstr ""
 

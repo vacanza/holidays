@@ -40,19 +40,19 @@ msgstr "New Year's Day"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Eid Al Fitr.
+#. Eid al-Fitr.
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
 
-#. Eid Al Fitr Holiday.
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Eid Al Adha.
+#. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
-#. Eid Al Adha Holiday.
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 

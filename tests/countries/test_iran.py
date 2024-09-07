@@ -96,7 +96,7 @@ class TestIran(CommonCountryTests, TestCase):
             "en_US",
             ("2023-02-04", "Birthday of Ali (estimated)"),
             ("2023-02-11", "Islamic Revolution Day"),
-            ("2023-02-18", "Ascension of Muhammad (estimated)"),
+            ("2023-02-18", "Isra' and Mi'raj (estimated)"),
             ("2023-03-07", "Birthday of Mahdi (estimated)"),
             ("2023-03-20", "Iranian Oil Industry Nationalization Day"),
             ("2023-03-21", "Persian New Year"),

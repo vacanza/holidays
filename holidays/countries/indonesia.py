@@ -161,7 +161,7 @@ class Indonesia(
             # Prophet's Birthday.
             self._add_mawlid_day(tr("Maulid Nabi Muhammad"))
 
-            # Isra and Miraj.
+            # Isra' and Mi'raj.
             self._add_isra_and_miraj_day(tr("Isra Mikraj Nabi Muhammad"))
 
         if 1953 <= self._year <= 1962:
