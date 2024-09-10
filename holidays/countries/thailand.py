@@ -115,7 +115,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             Applied Automatically for Workday if on Weekends: 2001-Present
 
     Limitations:
-        - This is only 100% accurate for 1997-2023; any future dates are up to the
+        - This is only 100% accurate for 1997-2024; any future dates are up to the
           Royal Thai Government Gazette which updates on a year-by-year basis.
 
         - Approx. date only goes as far back as 1941 (B.E. 2484) as the Thai
@@ -123,7 +123,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
           New Year Date (April 1st to January 1st).
 
         - Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
-          until 2057 (B.E. 2600) as we only have Thai year-type data for
+          until 2157 (B.E. 2700) as we only have Thai year-type data for
           cross-checking until then.
 
         - Royal Ploughing Ceremony Day is date is announced on an annual basis

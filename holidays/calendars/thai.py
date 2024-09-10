@@ -23,7 +23,7 @@ THAI_CALENDAR = "THAI_CALENDAR"
 class _ThaiLunisolar:
     """
     ** Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
-       until 2057 (B.E. 2600) as we only have Thai year-type data for
+       until 2157 (B.E. 2700) as we only have Thai year-type data for
        cross-checking until then.
 
     So here are the basics of the Thai Lunar Calendar
@@ -100,8 +100,8 @@ class _ThaiLunisolar:
     2010-05-28
     """
 
-    # Athikawan (Extra-Day Year) list goes from 1941-2057 C.E.
-    # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
+    # Athikawan (Extra-Day Year) list goes from 1941-2157 C.E.
+    # Copied off from 1757-2157 (B.E. 2300-2700) Thai Lunar Calendar
     ATHIKAWAN_YEARS_GREGORIAN = {
         1945,
         1949,
@@ -125,10 +125,30 @@ class _ThaiLunisolar:
         2043,
         2046,
         2052,
+        2055,
+        2058,
+        2067,
+        2071,
+        2076,
+        2083,
+        2086,
+        2092,
+        2097,
+        2103,
+        2109,
+        2111,
+        2117,
+        2121,
+        2126,
+        2133,
+        2136,
+        2142,
+        2147,
+        2153,
     }
 
-    # Athikamat (Extra-Month Year) list goes from 1941-2057 C.E.:
-    # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
+    # Athikamat (Extra-Month Year) list goes from 1941-2157 C.E.:
+    # Copied off from 1757-2157 (B.E. 2300-2700) Thai Lunar Calendar
     # Approx formula as follows: (common_era-78)-0.45222)%2.7118886 < 1
     ATHIKAMAT_YEARS_GREGORIAN = {
         1942,
@@ -174,16 +194,53 @@ class _ThaiLunisolar:
         2050,
         2053,
         2056,
+        2059,
+        2062,
+        2064,
+        2066,
+        2069,
+        2072,
+        2074,
+        2077,
+        2080,
+        2082,
+        2085,
+        2088,
+        2091,
+        2094,
+        2096,
+        2099,
+        2101,
+        2104,
+        2107,
+        2112,
+        2114,
+        2116,
+        2119,
+        2122,
+        2124,
+        2127,
+        2130,
+        2132,
+        2135,
+        2138,
+        2141,
+        2144,
+        2146,
+        2149,
+        2151,
+        2154,
+        2157,
     }
 
     # While Buddhist Holy Days have been observed since the 1900s
     #   Due to the calendar changes in 1941 (B.E. 2484) and that
-    #   our array only goes up to B.E. 2600; We'll thus only populate
-    #   the data for 1941-2057 (B.E. 2484-2600).
+    #   our array only goes up to B.E. 2700; We'll thus only populate
+    #   the data for 1941-2157 (B.E. 2484-2700).
     # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย มท 0310.1/ว4 5 ก.พ. 2539
     START_DATE = date(1940, 11, 30)
     START_YEAR = 1941
-    END_YEAR = 2057
+    END_YEAR = 2157
 
     def __init__(self, calendar=THAI_CALENDAR) -> None:
         self.__verify_calendar(calendar)
@@ -213,7 +270,7 @@ class _ThaiLunisolar:
         Calculate the start date of that particular Thai Lunar Calendar Year.
         This usually falls in November or December of the previous Gregorian
         year in question. Should the year be outside of working scope
-        (1941-2057: B.E 2484-2600), this will returns None instead.
+        (1941-2157: B.E 2484-2700), this will returns None instead.
 
         :param year:
             The Gregorian year.
