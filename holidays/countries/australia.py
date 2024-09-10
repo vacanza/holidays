@@ -229,7 +229,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_observed(self._add_christmas_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         elif self._year >= 1958:
             dec_25 = (DEC, 25)
-            if self._is_weekend(dec_25) or (self._year >= 1992 and self._is_saturday(dec_25)):
+            if self._is_sunday(dec_25) or (self._year >= 1992 and self._is_saturday(dec_25)):
                 self._add_holiday_1st_mon_from_dec_25(name)
             else:
                 self._add_christmas_day(name)
