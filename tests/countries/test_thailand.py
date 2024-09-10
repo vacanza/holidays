@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from itertools import chain
 from unittest import TestCase
 
 from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY
@@ -21,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestThailand(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        support_range = chain(range(1941, 2058), [2158])
+        support_range = list(range(1941, 2059)) + [2158]
         super().setUpClass(Thailand, years=support_range, years_non_observed=support_range)
 
     def test_country_aliases(self):

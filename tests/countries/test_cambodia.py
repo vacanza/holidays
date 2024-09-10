@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from itertools import chain
 from unittest import TestCase
 
 from holidays.countries.cambodia import Cambodia, KH, KHM
@@ -20,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestCambodia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Cambodia, years=chain(range(1993, 2059), [2158]))
+        super().setUpClass(Cambodia, years=list(range(1993, 2059)) + [2158])
 
     def test_country_aliases(self):
         self.assertAliases(Cambodia, KH, KHM)
