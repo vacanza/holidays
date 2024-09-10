@@ -447,9 +447,9 @@ All other default values are highlighted with bold:
      - GOVERNMENT
    * - Germany
      - DE
-     - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
-     - **de**, en_US, uk
-     -
+     - States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)
+     - **de**, en_US, th, uk
+     - CATHOLIC
    * - Ghana
      - GH
      -
