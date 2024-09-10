@@ -223,7 +223,7 @@ All other default values are highlighted with bold:
    * - Australia
      - AU
      - States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)
-     -
+     - **en_AU**, en_US, th
      - BANK, HALF_DAY
    * - Austria
      - AT
