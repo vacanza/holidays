@@ -48,6 +48,7 @@ SCHOOL = "school"
 UNOFFICIAL = "unofficial"
 WORKDAY = "workday"
 
+CATHOLIC = "catholic"
 CHINESE = "chinese"
 CHRISTIAN = "christian"
 HEBREW = "hebrew"

@@ -1,0 +1,177 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Australia holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.57\n"
+"POT-Creation-Date: 2024-09-05 12:21+0700\n"
+"PO-Revision-Date: 2024-09-05 12:28+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: en_AU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr ""
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr ""
+
+#. Anniversary Day.
+msgid "Anniversary Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Canberra Day.
+msgid "Canberra Day"
+msgstr ""
+
+#. Easter Saturday.
+msgid "Easter Saturday"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr ""
+
+#. Reconciliation Day.
+msgid "Reconciliation Day"
+msgstr ""
+
+#. Family & Community Day.
+msgid "Family & Community Day"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr ""
+
+#. May Day.
+msgid "May Day"
+msgstr ""
+
+#. Picnic Day.
+msgid "Picnic Day"
+msgstr ""
+
+#. %s (from 7pm).
+#, c-format
+msgid "%s (from 7pm)"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
+
+#. The Royal Queensland Show.
+msgid "The Royal Queensland Show"
+msgstr ""
+
+#. Adelaide Cup Day.
+msgid "Adelaide Cup Day"
+msgstr ""
+
+#. Proclamation Day.
+msgid "Proclamation Day"
+msgstr ""
+
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr ""
+
+#. Easter Tuesday.
+msgid "Easter Tuesday"
+msgstr ""
+
+#. Grand Final Day.
+msgid "Grand Final Day"
+msgstr ""
+
+#. Melbourne Cup Day.
+msgid "Melbourne Cup Day"
+msgstr ""
+
+#. Western Australia Day.
+msgid "Western Australia Day"
+msgstr ""
+
+#. Foundation Day.
+msgid "Foundation Day"
+msgstr ""
+
+#. Special public holiday.
+msgid "Special public holiday"
+msgstr ""
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr ""
+
+#. Declared public holiday.
+msgid "Declared public holiday"
+msgstr ""
+
+#. Additional public holiday.
+msgid "Additional public holiday"
+msgstr ""
+
+#. Queen's Diamond Jubilee.
+msgid "Queen's Diamond Jubilee"
+msgstr ""

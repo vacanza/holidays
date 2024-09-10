@@ -1,0 +1,113 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Germany holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.57\n"
+"POT-Creation-Date: 2024-09-05 23:21+0700\n"
+"PO-Revision-Date: 2024-09-05 23:23+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "Neujahr"
+msgstr "วันขึ้นปีใหม่"
+
+#. Good Friday.
+msgid "Karfreitag"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+msgid "Ostermontag"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Labor Day.
+msgid "Erster Mai"
+msgstr "วันแรงงาน"
+
+#. Ascension Day.
+msgid "Christi Himmelfahrt"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. Whit Monday.
+msgid "Pfingstmontag"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. German Unity Day.
+msgid "Tag der Deutschen Einheit"
+msgstr "วันรวมชาติเยอรมัน"
+
+#. Reformation Day.
+msgid "Reformationstag"
+msgstr "วันแห่งการปฏิรูป"
+
+#. Repentance and Prayer Day.
+msgid "Buß- und Bettag"
+msgstr "วันแห่งการอธิษฐานและการกลับใจ"
+
+#. Christmas Day.
+msgid "Erster Weihnachtstag"
+msgstr "วันคริสต์มาสวันแรก"
+
+#. Second Day of Christmas.
+msgid "Zweiter Weihnachtstag"
+msgstr "วันคริสต์มาสวันที่สอง"
+
+#. Easter Sunday.
+msgid "Ostersonntag"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Whit Sunday.
+msgid "Pfingstsonntag"
+msgstr "วันสมโภชพระจิตเจ้า"
+
+#. International Women's Day.
+msgid "Internationaler Frauentag"
+msgstr "วันสตรีสากล"
+
+#. 75th anniversary of the liberation from Nazism and the end of the Second
+#. World War in Europe.
+msgid ""
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
+"Zweiten Weltkriegs in Europa"
+msgstr ""
+"วันครบรอบ 75 "
+"ปีของการปลดปล่อยจากระบอบชาติสังคมนิยมและการสิ้นสุดสงครามโลกครั้งที่สองในยุโรป"
+
+#. Epiphany.
+msgid "Heilige Drei Könige"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Corpus Christi.
+msgid "Fronleichnam"
+msgstr "วันสมโภชพระคริสตวรกาย"
+
+#. All Saints' Day.
+msgid "Allerheiligen"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. Assumption Day.
+msgid "Mariä Himmelfahrt"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. World Children's Day.
+msgid "Weltkindertag"
+msgstr "วันเด็กสากล"
