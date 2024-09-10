@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, state and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
-#  License: MIT (see LICENSE file)
-
 import warnings
 from unittest import TestCase
 
@@ -35,7 +23,9 @@ class TestDE(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1991, 2050)
         super().setUpClass(DE, years=years)
-        cls.state_hols = {state: DE(subdiv=state, years=years) for state in DE.subdivisions}
+        cls.subdiv_holidays = {
+            subdiv: DE(subdiv=subdiv, years=years) for subdiv in DE.subdivisions
+        }
 
     def setUp(self):
         super().setUp()
@@ -128,16 +118,16 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertHoliday("1990-10-03")
 
     def test_heilige_drei_koenige(self):
-        states_that_have = {"BW", "BY", "ST"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BW", "BY", "ST"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
+        for subdiv in subdivs_that_have:
             self.assertHoliday(
-                self.state_hols[state], (f"{year}-01-06" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-01-06" for year in range(1991, 2050))
             )
-        for state in states_that_dont:
+        for subdiv in subdivs_that_dont:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-01-06" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-01-06" for year in range(1991, 2050))
             )
 
     def test_karfreitag(self):
@@ -155,8 +145,8 @@ class TestDE(CommonCountryTests, TestCase):
             "2024-03-29",
         )
 
-        for state in DE.subdivisions:
-            self.assertHoliday(self.state_hols[state], known_good)
+        for subdiv in DE.subdivisions:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_ostersonntag(self):
         known_good = (
@@ -172,13 +162,13 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-04-09",
             "2024-03-31",
         )
-        states_that_have = {"BB"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BB"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], known_good)
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], known_good)
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_ostermontag(self):
         known_good = (
@@ -195,17 +185,17 @@ class TestDE(CommonCountryTests, TestCase):
             "2024-04-01",
         )
 
-        for state in DE.subdivisions:
-            self.assertHoliday(self.state_hols[state], known_good)
+        for subdiv in DE.subdivisions:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_75_jahrestag_beendigung_zweiter_weltkrieg(self):
-        states_that_have = {"BE"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BE"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], "2020-05-08")
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], "2020-05-08")
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], "2020-05-08")
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], "2020-05-08")
 
     def test_christi_himmelfahrt(self):
         known_good = (
@@ -222,33 +212,37 @@ class TestDE(CommonCountryTests, TestCase):
             "2024-05-09",
         )
 
-        for state in DE.subdivisions:
-            self.assertHoliday(self.state_hols[state], known_good)
+        for subdiv in DE.subdivisions:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_weltkindertag(self):
         known_good = ("2019-09-20", "2021-09-20", "2022-09-20", "2023-09-20")
-        states_that_have = {"TH"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"TH"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], known_good)
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], known_good)
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_frauentag(self):
-        self.assertHoliday(self.state_hols["BE"], (f"{year}-03-08" for year in range(2019, 2050)))
-        self.assertHoliday(self.state_hols["MV"], (f"{year}-03-08" for year in range(2023, 2050)))
+        self.assertHoliday(
+            self.subdiv_holidays["BE"], (f"{year}-03-08" for year in range(2019, 2050))
+        )
+        self.assertHoliday(
+            self.subdiv_holidays["MV"], (f"{year}-03-08" for year in range(2023, 2050))
+        )
 
-        for state in set(DE.subdivisions):
+        for subdiv in set(DE.subdivisions):
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-03-08" for year in range(1991, 2019))
+                self.subdiv_holidays[subdiv], (f"{year}-03-08" for year in range(1991, 2019))
             )
         self.assertNoHoliday(
-            self.state_hols["MV"], (f"{year}-03-08" for year in range(2019, 2023))
+            self.subdiv_holidays["MV"], (f"{year}-03-08" for year in range(2019, 2023))
         )
-        for state in set(DE.subdivisions) - {"BE", "MV"}:
+        for subdiv in set(DE.subdivisions) - {"BE", "MV"}:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-03-08" for year in range(2023, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-03-08" for year in range(2023, 2050))
             )
 
     def test_pfingstsonntag(self):
@@ -265,13 +259,13 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-05-28",
             "2024-05-19",
         )
-        states_that_have = {"BB"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BB"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], known_good)
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], known_good)
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_pfingstmontag(self):
         known_good = (
@@ -288,8 +282,8 @@ class TestDE(CommonCountryTests, TestCase):
             "2024-05-20",
         )
 
-        for state in DE.subdivisions:
-            self.assertHoliday(self.state_hols[state], known_good)
+        for subdiv in DE.subdivisions:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_fronleichnam(self):
         known_good = (
@@ -305,25 +299,25 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-06-08",
             "2024-05-30",
         )
-        states_that_have = {"BW", "BY", "HE", "NW", "RP", "SL"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BW", "BY", "HE", "NW", "RP", "SL"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], known_good)
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], known_good)
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_mariae_himmelfahrt(self):
-        states_that_have = {"SL"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"SL"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
+        for subdiv in subdivs_that_have:
             self.assertHoliday(
-                self.state_hols[state], (f"{year}-08-15" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-08-15" for year in range(1991, 2050))
             )
-        for state in states_that_dont:
+        for subdiv in subdivs_that_dont:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-08-15" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-08-15" for year in range(1991, 2050))
             )
         # Bayern (Catholic municipalities).
         self.assertHoliday(
@@ -332,42 +326,42 @@ class TestDE(CommonCountryTests, TestCase):
         )
 
     def test_reformationstag(self):
-        state_yes = {"BB", "MV", "SN", "ST", "TH"}
-        state_yes_since_2018 = {"HB", "HH", "NI", "SH"}
-        state_not = set(DE.subdivisions) - state_yes
-        state_not_since_2018 = state_not - state_yes_since_2018
+        subdiv_yes = {"BB", "MV", "SN", "ST", "TH"}
+        subdiv_yes_since_2018 = {"HB", "HH", "NI", "SH"}
+        subdiv_not = set(DE.subdivisions) - subdiv_yes
+        subdiv_not_since_2018 = subdiv_not - subdiv_yes_since_2018
 
-        for state in state_yes:
+        for subdiv in subdiv_yes:
             self.assertHoliday(
-                self.state_hols[state], (f"{year}-10-31" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(1991, 2050))
             )
-        for state in state_yes_since_2018:
+        for subdiv in subdiv_yes_since_2018:
             self.assertHoliday(
-                self.state_hols[state], (f"{year}-10-31" for year in range(2018, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(2018, 2050))
             )
-        for state in DE.subdivisions:
-            self.assertHoliday(self.state_hols[state], "2017-10-31")
+        for subdiv in DE.subdivisions:
+            self.assertHoliday(self.subdiv_holidays[subdiv], "2017-10-31")
 
-        for state in state_not:
+        for subdiv in subdiv_not:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-10-31" for year in range(1991, 2017))
+                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(1991, 2017))
             )
-        for state in state_not_since_2018:
+        for subdiv in subdiv_not_since_2018:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-10-31" for year in range(2018, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(2018, 2050))
             )
 
     def test_allerheiligen(self):
-        states_that_have = {"BW", "BY", "NW", "RP", "SL"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"BW", "BY", "NW", "RP", "SL"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
+        for subdiv in subdivs_that_have:
             self.assertHoliday(
-                self.state_hols[state], (f"{year}-11-01" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-11-01" for year in range(1991, 2050))
             )
-        for state in states_that_dont:
+        for subdiv in subdivs_that_dont:
             self.assertNoHoliday(
-                self.state_hols[state], (f"{year}-11-01" for year in range(1991, 2050))
+                self.subdiv_holidays[subdiv], (f"{year}-11-01" for year in range(1991, 2050))
             )
 
     def test_buss_und_bettag(self):
@@ -384,13 +378,13 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-11-22",
             "2024-11-20",
         )
-        states_that_have = {"SN"}
-        states_that_dont = set(DE.subdivisions) - states_that_have
+        subdivs_that_have = {"SN"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
 
-        for state in states_that_have:
-            self.assertHoliday(self.state_hols[state], known_good)
-        for state in states_that_dont:
-            self.assertNoHoliday(self.state_hols[state], known_good)
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
