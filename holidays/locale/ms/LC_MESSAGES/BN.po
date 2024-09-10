@@ -64,7 +64,7 @@ msgstr ""
 msgid "Hari Natal"
 msgstr ""
 
-#. Isra Mi'raj
+#. Isra' and Mi'raj
 msgid "Israk dan Mikraj"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Awal Tahun Hijrah"
 msgstr ""
 
-#. Birth of the Prophet
+#. Prophet's Birthday
 msgid "Maulidur Rasul"
 msgstr ""
 

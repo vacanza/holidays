@@ -34,7 +34,7 @@ msgstr ""
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "ليلة المعراج"
 msgstr ""
 

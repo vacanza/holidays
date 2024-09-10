@@ -83,7 +83,7 @@ class TestDjibouti(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-02-28", "Isra and Miraj (estimated)"),
+            ("2022-02-28", "Isra' and Mi'raj (estimated)"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-03", "Eid al-Fitr Holiday (estimated)"),

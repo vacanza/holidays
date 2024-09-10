@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Python Holidays 0.57\n"
 "POT-Creation-Date: 2023-07-23 14:09+0300\n"
-"PO-Revision-Date: 2024-01-25 22:33+0200\n"
+"PO-Revision-Date: 2024-09-07 17:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
@@ -132,9 +132,9 @@ msgstr "Islamic New Year"
 msgid "Maulid Nabi Muhammad"
 msgstr "Prophet's Birthday"
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "Isra Mikraj Nabi Muhammad"
-msgstr "Isra and Miraj"
+msgstr "Isra' and Mi'raj"
 
 #. Nuzul Al Quran.
 msgid "Nuzululqur'an"

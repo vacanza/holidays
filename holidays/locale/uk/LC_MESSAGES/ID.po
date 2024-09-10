@@ -132,7 +132,7 @@ msgstr "Ісламський Новий рік"
 msgid "Maulid Nabi Muhammad"
 msgstr "День народження пророка Мухаммада"
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "Isra Mikraj Nabi Muhammad"
 msgstr "Вознесіння пророка Мухаммада"
 

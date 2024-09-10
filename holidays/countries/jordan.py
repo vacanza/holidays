@@ -59,7 +59,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
-        # Isra and Miraj.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("ليلة المعراج"))
 
         # Eid al-Fitr.

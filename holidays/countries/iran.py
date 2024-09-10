@@ -90,7 +90,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Birthday of Ali.
         self._add_ali_birthday_day(tr("زادروز علی بن ابی‌طالب"))
 
-        # Ascension of Muhammad.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("مبعث"))
 
         # Birthday of Mahdi.

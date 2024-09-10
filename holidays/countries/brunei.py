@@ -156,7 +156,7 @@ class Brunei(
         # Israk dan Mikraj
         # Status: In-Use.
 
-        # Isra Mi'raj
+        # Isra' and Mi'raj
         for dt in self._add_isra_and_miraj_day(tr("Israk dan Mikraj")):
             self._add_observed(dt)
 
@@ -210,7 +210,7 @@ class Brunei(
         # Maulidur Rasul
         # Status: In-Use.
 
-        # Birth of the Prophet
+        # Prophet's Birthday
         for dt in self._add_mawlid_day(tr("Maulidur Rasul")):
             self._add_observed(dt)
 

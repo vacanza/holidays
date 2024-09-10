@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.31\n"
+"Project-Id-Version: Python Holidays 0.57\n"
 "POT-Creation-Date: 2023-08-03 18:21+0300\n"
-"PO-Revision-Date: 2023-08-03 18:26+0300\n"
+"PO-Revision-Date: 2024-09-07 17:23+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
@@ -96,9 +96,9 @@ msgstr "Martyrdom of Fatima"
 msgid "زادروز علی بن ابی‌طالب"
 msgstr "Birthday of Ali"
 
-#. Ascension of Muhammad.
+#. Isra' and Mi'raj.
 msgid "مبعث"
-msgstr "Ascension of Muhammad"
+msgstr "Isra' and Mi'raj"
 
 #. Birthday of Mahdi.
 msgid "زادروز حجت بن الحسن"

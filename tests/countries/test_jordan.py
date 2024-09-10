@@ -65,7 +65,7 @@ class TestJordan(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-02-08", "Isra and Miraj (estimated)"),
+            ("2024-02-08", "Isra' and Mi'raj (estimated)"),
             ("2024-04-10", "Eid al-Fitr (estimated)"),
             ("2024-04-11", "Eid al-Fitr Holiday (estimated)"),
             ("2024-04-12", "Eid al-Fitr Holiday (estimated)"),

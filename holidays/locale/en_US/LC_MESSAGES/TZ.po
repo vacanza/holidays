@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.35\n"
+"Project-Id-Version: Python Holidays 0.57\n"
 "POT-Creation-Date: 2023-10-07 15:05+0700\n"
-"PO-Revision-Date: 2023-10-07 15:16+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-09-07 17:41+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
@@ -114,6 +114,6 @@ msgstr "Eid al-Fitr"
 msgid "Eid El-Hajj"
 msgstr "Eid al-Adha"
 
-#. Maulid Day.
+#. Prophet's Birthday.
 msgid "Maulidi"
-msgstr "Maulid Day"
+msgstr "Prophet's Birthday"
