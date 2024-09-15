@@ -324,6 +324,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Cesar Chavez Day
         if self._year >= 2001:
             self._add_holiday_mar_31("Cesar Chavez Day")
+        if self._year >= 2020:
+            # Frances Xavier Cabrini Day
+            # https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
+            self._add_holiday_1st_mon_of_oct("Frances Xavier Cabrini Day")
 
     def _populate_subdiv_ct_public_holidays(self):
         # Lincoln's Birthday
