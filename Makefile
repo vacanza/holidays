@@ -43,6 +43,9 @@ package:
 pre-commit:
 	pre-commit run --all-files
 
+release-notes:
+	@scripts/generate_release_notes.py
+
 sbom:
 	@python -m cyclonedx_py requirements requirements/runtime.txt
 
