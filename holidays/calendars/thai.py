@@ -94,7 +94,7 @@ class _ThaiLunisolar:
 
     Usage example:
 
-    >>> from holidays.utils import _ThaiLunisolar
+    >>> from holidays.calendars.thai import _ThaiLunisolar
     >>> thls = _ThaiLunisolar()
     >>> print(thls.visakha_bucha_date(2010))
     2010-05-28
@@ -475,9 +475,6 @@ class _ThaiLunisolar:
         :param year:
             The Gregorian year.
 
-        :param calendar:
-            Calendar type, this defaults to THAI_CALENDAR.
-
         :return:
             Estimated Gregorian date of Asarnha Bucha.
         """
@@ -513,9 +510,6 @@ class _ThaiLunisolar:
 
         :param year:
             The Gregorian year.
-
-        :param calendar:
-            Calendar type, this defaults to THAI_CALENDAR.
 
         :return:
             Estimated Gregorian date of Khao Phansa.
