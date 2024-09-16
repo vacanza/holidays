@@ -132,7 +132,7 @@ msgstr ""
 msgid "Maulid Nabi Muhammad"
 msgstr ""
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "Isra Mikraj Nabi Muhammad"
 msgstr ""
 

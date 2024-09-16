@@ -40,6 +40,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     - https://en.wikipedia.org/wiki/Indigenous_Peoples%27_Day_(United_States)
     - https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays
     - https://web.archive.org/web/20080831103521/http://www.dpa.ca.gov/personnel-policies/holidays.htm
+
+    Frances Xavier Cabrini Day:
+        - https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
     """
 
     country = "US"
@@ -324,6 +327,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Cesar Chavez Day
         if self._year >= 2001:
             self._add_holiday_mar_31("Cesar Chavez Day")
+
+        # Frances Xavier Cabrini Day
+        if self._year >= 2020:
+            self._add_holiday_1st_mon_of_oct("Frances Xavier Cabrini Day")
 
     def _populate_subdiv_ct_public_holidays(self):
         # Lincoln's Birthday

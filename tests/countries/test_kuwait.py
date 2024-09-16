@@ -63,7 +63,7 @@ class TestKuwait(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
-            ("2023-02-18", "Isra and Miraj (estimated)"),
+            ("2023-02-18", "Isra' and Mi'raj (estimated)"),
             ("2023-02-25", "National Day"),
             ("2023-02-26", "Liberation Day"),
             ("2023-04-21", "Eid al-Fitr (estimated)"),

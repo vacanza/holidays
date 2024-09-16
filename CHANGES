@@ -1,3 +1,19 @@
+Version 0.57
+============
+
+Released September 16, 2024
+
+- Update Australia holidays: add `en_AU`, `en_US`, `th` localization (#1977 by @PPsyrius)
+- Fix some docstrings (#1994 by @KJhellico)
+- Update Australia holidays: fix Christmas Day in ACT (#1986 by @KJhellico)
+- Update Germany holidays: add `th` localization, deprecated non-standard ISO code, add subdivision aliases (#1979 by @PPsyrius, @arkid15r)
+- Update Jersey holidays (#1971 by @PPsyrius)
+- Update South Korea holidays: add Armed Forces Day in 2024 (#1973 by @KJhellico)
+- Update examples to reflect recent holidays changes (#1978 by @KJhellico)
+- Add Frances Xavier Cabrini Day for United States, Colorado (#1995 by @e2thenegpii, @arkid15r)
+- Extend `_ThaiLunisolar` calendar support to 2157 (#1981 by @PPsyrius)
+- Unify en_US Islamic holidays name translation (#1984 by @KJhellico)
+
 Version 0.56
 ============
 

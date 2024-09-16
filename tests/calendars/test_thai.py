@@ -35,6 +35,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, AUG, 1),
             2024: date(2024, JUL, 20),
             2025: date(2025, JUL, 10),
+            2030: date(2030, JUL, 14),
+            2040: date(2040, JUL, 23),
+            2050: date(2050, AUG, 2),
+            2060: date(2060, JUL, 13),
+            2070: date(2070, JUL, 22),
+            2080: date(2080, JUL, 31),
+            2090: date(2090, JUL, 11),
+            2100: date(2100, JUL, 21),
+            2110: date(2110, JUL, 1),
+            2120: date(2120, JUL, 10),
+            2130: date(2130, JUL, 20),
+            2140: date(2140, JUN, 29),
+            2150: date(2150, JUL, 9),
         }
         for year in asarnha_bucha_year_date:
             self.assertEqual(
@@ -51,6 +64,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, JUN, 11),
             2024: date(2024, MAY, 30),
             2025: date(2025, MAY, 19),
+            2030: date(2030, MAY, 24),
+            2040: date(2040, JUN, 2),
+            2050: date(2050, JUN, 12),
+            2060: date(2060, MAY, 23),
+            2070: date(2070, JUN, 1),
+            2080: date(2080, JUN, 10),
+            2090: date(2090, MAY, 21),
+            2100: date(2100, MAY, 31),
+            2110: date(2110, MAY, 11),
+            2120: date(2120, MAY, 20),
+            2130: date(2130, MAY, 30),
+            2140: date(2140, MAY, 9),
+            2150: date(2150, MAY, 19),
         }
         for year in atthami_bucha_year_date:
             self.assertEqual(
@@ -126,6 +152,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, AUG, 2),
             2024: date(2024, JUL, 21),
             2025: date(2025, JUL, 11),
+            2030: date(2030, JUL, 15),
+            2040: date(2040, JUL, 24),
+            2050: date(2050, AUG, 3),
+            2060: date(2060, JUL, 14),
+            2070: date(2070, JUL, 23),
+            2080: date(2080, AUG, 1),
+            2090: date(2090, JUL, 12),
+            2100: date(2100, JUL, 22),
+            2110: date(2110, JUL, 2),
+            2120: date(2120, JUL, 11),
+            2130: date(2130, JUL, 21),
+            2140: date(2140, JUN, 30),
+            2150: date(2150, JUL, 10),
         }
         for year in khao_phansa_year_date:
             self.assertEqual(
@@ -141,6 +180,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, NOV, 27),
             2024: date(2024, NOV, 15),
             2025: date(2025, NOV, 5),
+            2030: date(2030, NOV, 9),
+            2040: date(2040, NOV, 18),
+            2050: date(2050, NOV, 28),
+            2060: date(2060, NOV, 8),
+            2070: date(2070, NOV, 17),
+            2080: date(2080, NOV, 26),
+            2090: date(2090, NOV, 6),
+            2100: date(2100, NOV, 16),
+            2110: date(2110, OCT, 27),
+            2120: date(2120, NOV, 5),
+            2130: date(2130, NOV, 15),
+            2140: date(2140, OCT, 25),
+            2150: date(2150, NOV, 4),
         }
         for year in loy_krathong_year_date:
             self.assertEqual(
@@ -157,6 +209,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, MAR, 6),
             2024: date(2024, FEB, 24),
             2025: date(2025, FEB, 12),
+            2030: date(2030, FEB, 17),
+            2040: date(2040, FEB, 26),
+            2050: date(2050, MAR, 7),
+            2060: date(2060, FEB, 17),
+            2070: date(2070, FEB, 25),
+            2080: date(2080, MAR, 5),
+            2090: date(2090, FEB, 14),
+            2100: date(2100, FEB, 24),
+            2110: date(2110, FEB, 4),
+            2120: date(2120, FEB, 14),
+            2130: date(2130, FEB, 22),
+            2140: date(2140, FEB, 3),
+            2150: date(2150, FEB, 12),
         }
         for year in makha_bucha_year_date:
             self.assertEqual(makha_bucha_year_date[year], self.calendar.makha_bucha_date(year))
@@ -183,6 +248,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, OCT, 29),
             2024: date(2024, OCT, 17),
             2025: date(2025, OCT, 7),
+            2030: date(2030, OCT, 11),
+            2040: date(2040, OCT, 20),
+            2050: date(2050, OCT, 30),
+            2060: date(2060, OCT, 10),
+            2070: date(2070, OCT, 19),
+            2080: date(2080, OCT, 28),
+            2090: date(2090, OCT, 8),
+            2100: date(2100, OCT, 18),
+            2110: date(2110, SEP, 28),
+            2120: date(2120, OCT, 7),
+            2130: date(2130, OCT, 17),
+            2140: date(2140, SEP, 26),
+            2150: date(2150, OCT, 6),
         }
         for year in ok_phansa_year_date:
             self.assertEqual(
@@ -229,6 +307,19 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2023: date(2023, JUN, 3),
             2024: date(2024, MAY, 22),
             2025: date(2025, MAY, 11),
+            2030: date(2030, MAY, 16),
+            2040: date(2040, MAY, 25),
+            2050: date(2050, JUN, 4),
+            2060: date(2060, MAY, 15),
+            2070: date(2070, MAY, 24),
+            2080: date(2080, JUN, 2),
+            2090: date(2090, MAY, 13),
+            2100: date(2100, MAY, 23),
+            2110: date(2110, MAY, 3),
+            2120: date(2120, MAY, 12),
+            2130: date(2130, MAY, 22),
+            2140: date(2140, MAY, 1),
+            2150: date(2150, MAY, 11),
         }
         for year in visakha_bucha_year_date:
             self.assertEqual(

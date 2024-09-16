@@ -14,16 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.44\n"
+"Project-Id-Version: Python Holidays 0.57\n"
 "POT-Creation-Date: 2024-02-28 09:55-0800\n"
-"PO-Revision-Date: 2024-02-28 09:55-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2024-09-07 17:26+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
@@ -34,9 +35,9 @@ msgstr "%s (estimated)"
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "ليلة المعراج"
-msgstr "Isra and Miraj"
+msgstr "Isra' and Mi'raj"
 
 #. National Day.
 msgid "اليوم الوطني"

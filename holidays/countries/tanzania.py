@@ -219,7 +219,7 @@ class Tanzania(
         # Maulidi.
         # Status: In-Use.
 
-        # Maulid Day.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Maulidi"))
 
         # Defunct Holidays.

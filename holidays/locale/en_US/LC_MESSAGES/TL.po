@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.36\n"
+"Project-Id-Version: Python Holidays 0.57\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2023-10-14 08:26+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-09-07 17:45+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. %s (estimated).
 #, c-format
@@ -92,17 +92,17 @@ msgstr "National Heroes Day"
 msgid "Sexta-Feira Santa"
 msgstr "Holy Friday"
 
-#. Idul Fitri.
+#. Eid al-Fitr.
 msgid "Idul Fitri"
-msgstr "Idul Fitri"
+msgstr "Eid al-Fitr"
 
 #. Corpus Christi.
 msgid "Festa do Corpo de Deus"
 msgstr "Corpus Christi"
 
-#. Idul Adha.
+#. Eid al-Adha.
 msgid "Idul Adha"
-msgstr "Idul Adha"
+msgstr "Eid al-Adha"
 
 #. National Holidays (Special).
 msgid "Feriados Nacionais (Especiais)"

@@ -5,9 +5,8 @@ How to release a new version of Python Holidays
 
   - switch to ``dev`` branch and pull the most recent changes
     from https://github.com/vacanza/python-holidays remote ``dev`` branch.
-  - generate release notes by running the following script
-    ``scripts/generate_release_notes.py``
-  - insert the script's output into the top of ``CHANGES`` file
+  - generate release notes by running ``make release-notes``
+  - insert the command's output into the top of ``CHANGES`` file
     (see previous release notes for consistent formatting)
   - commit the updated ``CHANGES`` file to ``dev`` branch with the following
     commit message 'Finalize v<version>', e.g. 'Finalize v0.39'

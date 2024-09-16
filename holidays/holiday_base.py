@@ -1025,9 +1025,6 @@ class HolidayBase(Dict[date, str]):
         :param name:
             The holiday's name to try to match.
 
-        :param default:
-            The default value to return if no match is found.
-
         :return:
             A list of dates removed.
 

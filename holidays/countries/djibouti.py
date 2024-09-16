@@ -51,7 +51,7 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        # Isra and Miraj.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Al Isra et Al Mirague"))
 
         # Eid al-Fitr.

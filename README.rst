@@ -223,7 +223,7 @@ All other default values are highlighted with bold:
    * - Australia
      - AU
      - States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)
-     -
+     - **en_AU**, en_US, th
      - BANK, HALF_DAY
    * - Austria
      - AT
@@ -447,9 +447,9 @@ All other default values are highlighted with bold:
      - GOVERNMENT
    * - Germany
      - DE
-     - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
-     - **de**, en_US, uk
-     -
+     - States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)
+     - **de**, en_US, th, uk
+     - CATHOLIC
    * - Ghana
      - GH
      -

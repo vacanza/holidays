@@ -114,6 +114,6 @@ msgstr ""
 msgid "Eid El-Hajj"
 msgstr ""
 
-#. Maulid Day.
+#. Prophet's Birthday.
 msgid "Maulidi"
 msgstr ""

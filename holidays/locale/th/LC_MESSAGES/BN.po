@@ -64,7 +64,7 @@ msgstr "วันเฉลิมพระชนมพรรษาสมเด็
 msgid "Hari Natal"
 msgstr "วันคริสต์มาส"
 
-#. Isra Mi'raj
+#. Isra' and Mi'raj
 msgid "Israk dan Mikraj"
 msgstr "วันเมี๊ยะราจ"
 
@@ -88,7 +88,7 @@ msgstr "วันอีดิ้ลอัฎฮา"
 msgid "Awal Tahun Hijrah"
 msgstr "วันขึ้นปีใหม่อิสลาม"
 
-#. Birth of the Prophet
+#. Prophet's Birthday
 msgid "Maulidur Rasul"
 msgstr "วันเมาลิดนบี"
 

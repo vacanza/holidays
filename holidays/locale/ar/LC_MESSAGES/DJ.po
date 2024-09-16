@@ -52,7 +52,7 @@ msgstr "عطلة عيد الاستقلال"
 msgid "Noël"
 msgstr "عيد الميلاد المجيد"
 
-#. Isra and Miraj.
+#. Isra' and Mi'raj.
 msgid "Al Isra et Al Mirague"
 msgstr "الإسراء والمعراج"
 

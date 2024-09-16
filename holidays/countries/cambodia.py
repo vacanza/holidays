@@ -39,8 +39,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
     - Exact Public Holidays as per Cambodia's Official Gazette are only
       available from 2015 onwards.
 
-    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2057
-      (B.E. 2601) as we only have Thai year-type data for cross-checking until then.
+    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
+      (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
 
 
     Country created by: `PPsyrius <https://github.com/PPsyrius>`__
@@ -228,7 +228,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         # Cambodian Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.
-        # Cambodian Lunar Calendar Holidays only work from 1941 to 2057.
+        # Cambodian Lunar Calendar Holidays only work from 1941 to 2157.
 
         # ពិធីបុណ្យមាឃបូជា
         # Status: Defunct.

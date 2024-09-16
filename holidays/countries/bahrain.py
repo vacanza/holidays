@@ -46,16 +46,16 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        # Eid Al Fitr.
+        # Eid al-Fitr.
         eid_al_fitr = tr("عيد الفطر")
         self._add_eid_al_fitr_day(eid_al_fitr)
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
-        # Eid Al Fitr Holiday.
+        # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Eid Al Adha.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
-        # Eid Al Adha Holiday.
+        # Eid al-Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
