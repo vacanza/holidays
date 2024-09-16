@@ -1889,15 +1889,18 @@ class TestUS(CommonCountryTests, TestCase):
             )
 
     def test_frances_xavier_cabrini_day(self):
+        co_holidays = self.state_hols["CO"]
         name = "Frances Xavier Cabrini Day"
-        self.assertNoHolidayName(name, self.state_hols["CO"], range(2000, 2019))
-        self.assertHolidayName(name, self.state_hols["CO"], range(2020, 2024))
 
-        dt = (
-            "2020-10-05",
-            "2021-10-04",
-            "2022-10-03",
-            "2023-10-02",
-            "2024-10-07",
+        self.assertNoHolidayName(name, co_holidays, range(2000, 2019))
+        self.assertHolidayName(name, co_holidays, range(2020, 2024))
+        self.assertHoliday(
+            co_holidays,
+            (
+                "2020-10-05",
+                "2021-10-04",
+                "2022-10-03",
+                "2023-10-02",
+                "2024-10-07",
+            ),
         )
-        self.assertHoliday(self.state_hols["CO"], dt)
