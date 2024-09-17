@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.55\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2024-08-15 21:24+0300\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
@@ -68,7 +68,7 @@ msgid "День перемоги над нацизмом у Другій сві�
 msgstr "يوم النصر على النازية في الحرب العالمية الثانية (يوم النصر)"
 
 #. Victory Day.
-msgid "День перемоги"
+msgid "День Перемоги"
 msgstr "يوم النصر"
 
 #. Day of the Constitution of Ukraine.
