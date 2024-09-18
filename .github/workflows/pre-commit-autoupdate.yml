@@ -40,7 +40,7 @@ jobs:
           pre-commit autoupdate
           pre-commit run --all-files
 
-      - uses: peter-evans/create-pull-request@v7.0.1
+      - uses: peter-evans/create-pull-request@v7.0.5
         with:
           base: dev
           body: Update pre-commit hooks to their latest versions.
