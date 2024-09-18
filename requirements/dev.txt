@@ -4,7 +4,7 @@ build==1.2.2
 convertdate==2.4.0
 gitpython==3.1.43
 hijridate==2.5.0
-lingva==5.0.3
+lingva==5.0.4
 pre-commit==3.8.0
 pygithub==2.4.0
 ruff==0.6.4
