@@ -306,7 +306,7 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]
     return localized_countries
 
 
-@lru_cache()
+@lru_cache
 def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all localized countries and languages they support.
@@ -323,7 +323,7 @@ def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
     return _list_localized_entities(EntityLoader.get_country_codes(include_aliases))
 
 
-@lru_cache()
+@lru_cache
 def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all localized financial markets and languages they support.
@@ -358,7 +358,7 @@ def _list_supported_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]
     }
 
 
-@lru_cache()
+@lru_cache
 def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
@@ -373,7 +373,7 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     return _list_supported_entities(EntityLoader.get_country_codes(include_aliases))
 
 
-@lru_cache()
+@lru_cache
 def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.

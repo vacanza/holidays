@@ -264,7 +264,7 @@ class _ThaiLunisolar:
                 f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
-    @lru_cache()
+    @lru_cache
     def _get_start_date(self, year: int) -> Optional[date]:
         """
         Calculate the start date of that particular Thai Lunar Calendar Year.
