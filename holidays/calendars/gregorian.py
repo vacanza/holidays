@@ -19,7 +19,7 @@ WEEKEND = (SAT, SUN)
 
 JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)
 
-DAYS = set(str(d) for d in range(1, 32))
+DAYS = {str(d) for d in range(1, 32)}
 MONTHS = {
     m: i
     for i, m in enumerate(

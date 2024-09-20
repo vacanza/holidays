@@ -246,7 +246,7 @@ class ReleaseNotesGenerator:
                     year=today.year,
                 )
             )
-            print("\n".join((f"- {pr[0]} ({pr[1]})" for pr in self.sorted_pull_requests)))
+            print("\n".join(f"- {pr[0]} ({pr[1]})" for pr in self.sorted_pull_requests))
 
         else:
             print(f"No changes since {self.latest_tag_name} release.")

@@ -48,9 +48,9 @@ class TestEntityLoader(TestCase):
 
                 loader_entities.add(loader_cls.__name__)
 
-        countries_entities = set(
+        countries_entities = {
             entity[0] for entity in inspect.getmembers(countries, inspect.isclass)
-        )
+        }
         self.assertEqual(
             countries_entities,
             loader_entities,
@@ -89,9 +89,9 @@ class TestEntityLoader(TestCase):
 
                 loader_entities.add(loader_cls.__name__)
 
-        financial_entities = set(
+        financial_entities = {
             entity[0] for entity in inspect.getmembers(financial, inspect.isclass)
-        )
+        }
         self.assertEqual(
             financial_entities,
             loader_entities,

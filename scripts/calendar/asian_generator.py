@@ -250,7 +250,7 @@ class _Lunisolar:
         self.LUNAR_END_DATE = (2099, 12, 30)
         self.SOLAR_END_DATE = date(2100, 2, 18)
 
-    @lru_cache()
+    @lru_cache
     def _get_leap_month(self, lunar_year: int) -> int:
         """
         Return the number of the leap month if one exists in the year,
@@ -275,7 +275,7 @@ class _Lunisolar:
             days += day
         return days
 
-    @lru_cache()
+    @lru_cache
     def _span_days(self, year: int) -> int:
         """
         Return the number of days elapsed since self.SOLAR_START_DATE to the
