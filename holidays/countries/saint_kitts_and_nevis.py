@@ -81,14 +81,13 @@ class SaintKittsAndNevis(
         # Whit Monday.
         self._add_whit_monday("Whit Monday")
 
-        first_monday_of_august_holiday_name = (
+        self._add_holiday_1st_mon_of_aug(
             # Emancipation Day.
             "Emancipation Day"
             if self._year >= 1998
             # First Monday of August.
             else "First Monday of August"
         )
-        self._add_holiday_1st_mon_of_aug(first_monday_of_august_holiday_name)
 
         # Culturama Day - Last Lap.
         self._add_holiday_1_day_past_1st_mon_of_aug("Culturama Day - Last Lap")
@@ -185,4 +184,6 @@ class SaintKittsAndNevisStaticHolidays:
             (JUL, 20, "The Passing of His Excellency Sir Tapley Seaton"),
             (DEC, 30, childrens_carnival_day_name),
         ),
+        # Junior Cultural Street Parade.
+        2024: (AUG, 1, "Junior Cultural Street Parade"),
     }

@@ -52,6 +52,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
             "2022-04-27",
             "2023-07-20",
             "2023-12-30",
+            "2024-08-01",
         )
 
     def test_labour_day(self):
