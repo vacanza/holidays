@@ -21,7 +21,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
-            SaintKittsAndNevis, years=range(1983, 2058), years_non_observed=range(1983, 2058)
+            SaintKittsAndNevis, years=range(1983, 2051), years_non_observed=range(1983, 2051)
         )
 
     def test_country_aliases(self):
@@ -99,7 +99,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name_emancipation_day, dt)
         self.assertNoHolidayName(name_first_mon_aug, range(1998, 2051))
-        self.assertNoHolidayName(name_emancipation_day, range(1990, 1998))
+        self.assertNoHolidayName(name_emancipation_day, range(1983, 1998))
 
     def test_culturama_day_last_lap(self):
         name_culturama_day_last_lap = "Culturama Day - Last Lap"
@@ -126,7 +126,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
     def test_national_heroes_day(self):
         name_national_heroes_day = "National Heroes Day"
 
-        self.assertNoHolidayName(name_national_heroes_day, 1997)
+        self.assertNoHolidayName(name_national_heroes_day, range(1983, 1998))
         self.assertHolidayName(
             name_national_heroes_day, (f"{year}-09-16" for year in range(1998, 2051))
         )
@@ -143,9 +143,9 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
         )
 
     def test_kim_collins_day(self):
-        self.assertNoHoliday(SaintKittsAndNevis(categories=(WORKDAY)), 2002)
+        self.assertNoHoliday(SaintKittsAndNevis(categories=WORKDAY), 2002)
         self.assertHoliday(
-            SaintKittsAndNevis(categories=(WORKDAY)),
+            SaintKittsAndNevis(categories=WORKDAY),
             (f"{year}-08-25" for year in range(2003, 2051)),
         )
 
