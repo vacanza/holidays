@@ -2,6 +2,8 @@ ci:
   - changed-files:
       - any-glob-to-any-file:
           - .github/**
+      - all-globs-to-all-files:
+          - '!.github/CODEOWNERS'
 
 doc:
   - changed-files:
