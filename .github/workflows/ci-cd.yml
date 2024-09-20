@@ -7,7 +7,6 @@ on:
       - main
       - v1
   pull_request:
-  push:
   workflow_dispatch:
 
 env:
