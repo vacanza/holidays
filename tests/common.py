@@ -222,7 +222,7 @@ class TestCase:
         self.assertEqual(
             len(holidays),
             len(expected_holidays),
-            set((dt.strftime("%Y-%m-%d"), name) for dt, name in holidays.items()).difference(
+            {(dt.strftime("%Y-%m-%d"), name) for dt, name in holidays.items()}.difference(
                 (dt, name) for dt, name in expected_holidays
             ),
         )

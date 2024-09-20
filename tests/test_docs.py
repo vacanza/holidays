@@ -136,7 +136,7 @@ class TestReadme(TestCase):
             ),
         )
 
-        country_names = set(c.split("(the)")[0] for c in country_names)
+        country_names = {c.split("(the)")[0] for c in country_names}
         supported_countries = list_supported_countries(include_aliases=False)
         localized_countries = list_localized_countries(include_aliases=False)
         for country_code in supported_countries:
