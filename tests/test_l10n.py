@@ -79,5 +79,5 @@ class TestLocalization(unittest.TestCase):
             self.assertFalse(
                 obsolete_entries,
                 f"The {entity_code} {language} localization contains obsolete entries: "
-                f"{', '.join((oe.msgid for oe in obsolete_entries))}",
+                f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )

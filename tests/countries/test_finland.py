@@ -168,7 +168,7 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def _test_unofficial_holiday(self, name, since):
-        start_year, month, day = [int(part) for part in since.split("-")]
+        start_year, month, day = (int(part) for part in since.split("-"))
         self.assertHolidayName(
             name,
             self.unofficial_holidays,
