@@ -973,10 +973,20 @@ class HolidayBase(Dict[date, str]):
                 dt = _timedelta(dt, direction)
         return dt
 
-    def get_workdays_number(self, key1: DateLike, key2: DateLike) -> int:
-        """Return the number of working days between two dates (including start and end dates)."""
-        dt1 = self.__keytransform__(key1)
-        dt2 = self.__keytransform__(key2)
+    def get_workdays_number(self, start: DateLike, end: DateLike) -> int:
+        """Return the number of working days between two dates.
+
+        The date range works in a closed interval fashion [start, end] so both
+        endpoints are included.
+
+        :param start:
+            The range start date.
+
+        :param end:
+            The range end date.
+        """
+        dt1 = self.__keytransform__(start)
+        dt2 = self.__keytransform__(end)
         if dt1 > dt2:
             dt1, dt2 = dt2, dt1
         days = (dt2 - dt1).days + 1
