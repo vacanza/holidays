@@ -29,7 +29,7 @@ class SaintKittsAndNevis(
       - https://sknhcottawa.gov.kn/in-skn-national-public-holidays/
       - https://www.timeanddate.com/holidays/saint-kitts-and-nevis/
 
-    If Sovereign’s Birthday, New Year's Day, Independence Day, or National Heroes Day
+    If Sovereign's Birthday, New Year's Day, Independence Day, or National Heroes Day
     fall on a Sunday the next following Monday shall be a public holiday.
 
     Boxing Day—that is the day after Christmas Day, but if Christmas Day falls
@@ -106,18 +106,12 @@ class SaintKittsAndNevis(
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
 
     def _populate_workday_holidays(self):
-        """
-        Kim Collins Day.
-
-        August 25 was declared Kim Collins Day by the government of St. Kitts and Nevis
-        in honour of one of the track star’s most significant accomplishments, the gold
-        at the World Championships in Paris, France in 2003.
-        """
-        if self._year <= 2002:
-            return None
-
-        # Kim Collins Day.
-        self._add_holiday_aug_25("Kim Collins Day")
+        # August 25 was declared Kim Collins Day by the government of St. Kitts and Nevis
+        # in honour of one of the track star's most significant accomplishments, the gold
+        # at the World Championships in Paris, France in 2003.
+        if self._year >= 2003:
+            # Kim Collins Day.
+            self._add_holiday_aug_25("Kim Collins Day")
 
 
 class KN(SaintKittsAndNevis):
@@ -150,7 +144,7 @@ class SaintKittsAndNevisStaticHolidays:
     federal_election_victory_day_name = "Federal Election Victory Day"
 
     # Children's Carnival Day.
-    childrens_carnival_day_name = "Children’s Carnival Day"
+    childrens_carnival_day_name = "Children's Carnival Day"
 
     special_public_holidays = {
         2015: (FEB, 18, federal_election_victory_day_name),
