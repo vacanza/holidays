@@ -979,7 +979,8 @@ class HolidayBase(Dict[date, str]):
         dt2 = self.__keytransform__(key2)
         if dt1 > dt2:
             dt1, dt2 = dt2, dt1
-        return sum(self.is_workday(_timedelta(dt1, n)) for n in range((dt2 - dt1).days + 1))
+        days = (dt2 - dt1).days + 1
+        return sum(self.is_workday(_timedelta(dt1, n)) for n in range(days))
 
     def is_workday(self, key: DateLike) -> bool:
         """Return True if date is a working day (not a holiday or a weekend)."""
