@@ -51,29 +51,34 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
+    def _is_observed(self, dt: date) -> bool:
+        return dt >= date(1973, APR, 12)
+
     def _populate_observed(self, dts: Set[date]) -> None:
         # When a national holiday falls on Sunday, next working day
-        # shall become a public holiday (振替休日) - substitute holidays.
+        # shall become a public holiday (振替休日) - substitute holiday.
         for dt in sorted(dts):
-            is_observed, dt_observed = self._add_observed(
-                dt,
-                # Substitute Holiday.
-                name=tr("振替休日"),
-                show_observed_label=False,
-            )
-            if is_observed:
-                dts.add(dt_observed)  # type: ignore[arg-type]
+            # Substitute Holiday.
+            self._add_observed(dt, name=tr("振替休日"), show_observed_label=False)
 
-        # A weekday between national holidays becomes
-        # a holiday too (国民の休日) - national holidays.
-        for dt in dts:
-            if _timedelta(dt, +2) not in dts:
-                continue
-            dt_observed = _timedelta(dt, +1)
-            if self._is_sunday(dt_observed) or dt_observed in dts:
-                continue
-            # National Holiday.
-            self._add_holiday(tr("国民の休日"), dt_observed)
+        # A weekday between national holidays becomes a holiday too (国民の休日) -
+        # national holiday.
+        # In 1986-2006 it was only May 4 (between Constitution Day and Children's Day).
+        # Since 2006, it may be only the day between Respect for the Aged Day and
+        # Autumnal Equinox Day (in September).
+        if self._year <= 1985:
+            return None
+        if self._year <= 2006:
+            may_4 = (MAY, 4)
+            if not self._is_monday(may_4) and not self._is_sunday(may_4):
+                # National Holiday.
+                self._add_holiday(tr("国民の休日"), may_4)
+        else:
+            for dt in dts:
+                if dt.month == SEP and _timedelta(dt, +2) in dts:
+                    # National Holiday.
+                    self._add_holiday(tr("国民の休日"), _timedelta(dt, +1))
+                    break
 
     def _populate_public_holidays(self):
         if self._year < 1949 or self._year > 2099:
@@ -147,11 +152,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             }
             # Mountain Day.
             name = tr("山の日")
-            dts_observed.add(
-                self._add_holiday(name, dates[self._year])
-                if self._year in dates
-                else self._add_holiday_aug_11(name)
-            )
+            dts_observed.add(self._add_holiday(name, dates.get(self._year, (AUG, 11))))
 
         if self._year >= 1966:
             # Respect for the Aged Day.
@@ -204,6 +205,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
 
         # Bank Holiday.
         name = tr("銀行休業日")
+        self._add_new_years_day(name)
         self._add_new_years_day_two(name)
         self._add_new_years_day_three(name)
         self._add_new_years_eve(name)
