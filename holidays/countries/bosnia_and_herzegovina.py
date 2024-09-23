@@ -224,7 +224,7 @@ class BosniaAndHerzegovina(
 
         self._add_holiday_nov_21(
             # Dayton Agreement Day.
-            tr("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
+            tr("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini")
         )
 
         # Catholic Christmas Eve.

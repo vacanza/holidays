@@ -49,7 +49,7 @@ class TestDE(CommonCountryTests, TestCase):
             self.assertNoHolidays(DE(years=1989, subdiv=p))
 
     def test_no_by_catholic_holidays_before_1991(self):
-        self.assertNoHolidays(DE(subdiv="BY", years=1990, categories=(CATHOLIC)))
+        self.assertNoHolidays(DE(subdiv="BY", years=1990, categories=CATHOLIC))
 
     def test_1990_present(self):
         y_1990 = set()
@@ -337,7 +337,7 @@ class TestDE(CommonCountryTests, TestCase):
             )
         # Bayern (Catholic municipalities).
         self.assertHoliday(
-            DE(subdiv="BY", years=range(1991, 2050), categories=(CATHOLIC)),
+            DE(subdiv="BY", years=range(1991, 2050), categories=CATHOLIC),
             (f"{year}-08-15" for year in range(1991, 2050)),
         )
 

@@ -75,14 +75,13 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Whit Monday.
         self._add_whit_monday("Whit Monday")
 
-        first_monday_of_august_holiday_name = (
+        self._add_holiday_1st_mon_of_aug(
             # Emancipation Day.
             "Emancipation Day"
             if self._year >= 1998
             # First Monday of August.
             else "First Monday of August"
         )
-        self._add_holiday_1st_mon_of_aug(first_monday_of_august_holiday_name)
 
         # Independence Day.
         self._add_observed(self._add_holiday_nov_3("Independence Day"), rule=SUN_TO_NEXT_TUE)

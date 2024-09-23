@@ -991,8 +991,7 @@ class TestStandardMethods(unittest.TestCase):
         )
         self.assertListEqual(self.hb["2014-01-01":"2013-12-24":3], [date(2014, 1, 1)])
         self.assertListEqual(
-            self.hb["2014-01-01":"2013-12-24":7],
-            [date(2014, 1, 1), date(2013, 12, 25)],
+            self.hb["2014-01-01":"2013-12-24":7], [date(2014, 1, 1), date(2013, 12, 25)]
         )
         self.assertListEqual(self.hb["2013-12-31":"2014-01-02":-3], [])
         self.assertListEqual(self.hb["2014-01-01" : "2013-12-24" : td(days=3)], [date(2014, 1, 1)])

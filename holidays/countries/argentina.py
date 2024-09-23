@@ -205,7 +205,7 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2016:
             jun_17 = self._add_holiday_jun_17(
                 # Pass to the Immortality of General Don Martin Miguel de Guemes.
-                tr("Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
+                tr("Paso a la Inmortalidad del General Don Martín Miguel de Güemes")
             )
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
             # but Jun 20 is Gen. Belgrano holiday
@@ -232,14 +232,13 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         # In 2010 the holiday became movable and its name was changed.
 
         if self._year >= 1917:
-            name = (
+            oct_12 = self._add_columbus_day(
                 # Respect for Cultural Diversity Day.
                 tr("Día del Respeto a la Diversidad Cultural")
                 if self._year >= 2010
                 # Columbus Day.
                 else tr("Día de la Raza")
             )
-            oct_12 = self._add_columbus_day(name)
             if self._year >= 2010:
                 self._move_holiday(oct_12)
 

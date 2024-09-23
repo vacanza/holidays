@@ -188,14 +188,12 @@ class TestListLocalizedEntities(unittest.TestCase):
 
     def test_localized_countries(self):
         self.assertLocalizedEntities(
-            list_localized_countries(),
-            list_supported_countries(include_aliases=False),
+            list_localized_countries(), list_supported_countries(include_aliases=False)
         )
 
     def test_localized_financial(self):
         self.assertLocalizedEntities(
-            list_localized_financial(),
-            list_supported_financial(include_aliases=False),
+            list_localized_financial(), list_supported_financial(include_aliases=False)
         )
 
 
@@ -215,10 +213,7 @@ class TestListSupportedEntities(unittest.TestCase):
         countries_files = [
             path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
         ]
-        self.assertEqual(
-            len(countries_files),
-            len(supported_countries),
-        )
+        self.assertEqual(len(countries_files), len(supported_countries))
 
     def test_list_supported_financial(self):
         supported_financial = list_supported_financial(include_aliases=False)
@@ -232,7 +227,4 @@ class TestListSupportedEntities(unittest.TestCase):
         financial_files = [
             path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         ]
-        self.assertEqual(
-            len(financial_files),
-            len(supported_financial),
-        )
+        self.assertEqual(len(financial_files), len(supported_financial))

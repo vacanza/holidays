@@ -267,8 +267,8 @@ class PhilippinesStaticHolidays:
             (NOV, 2, additional_special),
             (DEC, 24, additional_special),
         ),
-        2010: ((DEC, 24, additional_special),),
-        2012: ((NOV, 2, additional_special),),
+        2010: (DEC, 24, additional_special),
+        2012: (NOV, 2, additional_special),
         2013: (
             (NOV, 2, additional_special),
             (DEC, 24, additional_special),
