@@ -46,12 +46,12 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SJ",
     )
     subdivisions_aliases = {
+        "Costa Caribe Norte": "AN",
+        "Costa Caribe Sur": "AS",
         "Boaco": "BO",
         "Carazo": "CA",
         "Chinandega": "CI",
         "Chontales": "CO",
-        "Costa Caribe Norte": "AN",
-        "Costa Caribe Sur": "AS",
         "Estelí": "ES",
         "Granada": "GR",
         "Jinotega": "JI",
