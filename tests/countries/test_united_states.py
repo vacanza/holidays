@@ -17,7 +17,7 @@ from holidays.countries.united_states import UnitedStates, US, USA
 from tests.common import CommonCountryTests
 
 
-class TestUS(CommonCountryTests, TestCase):
+class TestUnitedStates(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -409,20 +409,21 @@ class TestUS(CommonCountryTests, TestCase):
         self.assertHolidayName(
             "Washington's Birthday",
             self.state_hols["GA"],
-            "2010-12-24",
-            "2011-12-24",
+            "2010-12-23",
+            "2011-12-23",
             "2012-12-24",
             "2013-12-24",
             "2014-12-26",
             "2015-12-24",
-            "2016-12-24",
-            "2017-12-24",
+            "2016-12-23",
+            "2017-12-26",
             "2018-12-24",
             "2019-12-24",
             "2020-12-24",
-            "2021-12-24",
-            "2022-12-24",
-            "2023-12-24",
+            "2021-12-23",
+            "2022-12-23",
+            "2023-12-26",
+            "2024-12-24",
         )
 
         self.assertNoHoliday(self.state_hols["NM"], dt)

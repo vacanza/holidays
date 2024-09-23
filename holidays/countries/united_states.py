@@ -12,7 +12,6 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import DEC
 from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
@@ -23,6 +22,7 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_MON,
     SAT_SUN_TO_PREV_FRI,
     SAT_SUN_TO_NEXT_MON,
+    US_GA_WASHINGTON_BIRTHDAY,
 )
 
 
@@ -43,6 +43,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     Frances Xavier Cabrini Day:
         - https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
+
+    Washington's Birthday (GA):
+        - https://web.archive.org/web/*/https://www.gasupreme.us/court-information/holidays-2/
     """
 
     country = "US"
@@ -404,11 +407,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Washington's Birthday
-        name = "Washington's Birthday"
-        if self._is_wednesday(DEC, 24):
-            self._add_holiday_dec_26(name)
-        else:
-            self._add_holiday_dec_24(name)
+        self._add_holiday(
+            "Washington's Birthday",
+            self._get_observed_date(self._christmas_day, rule=US_GA_WASHINGTON_BIRTHDAY),
+        )
 
     def _populate_subdiv_gu_public_holidays(self):
         # Guam Discovery Day
