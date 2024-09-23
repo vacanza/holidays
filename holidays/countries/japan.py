@@ -70,7 +70,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             return None
         if self._year <= 2006:
             may_4 = (MAY, 4)
-            if not (self._is_monday(may_4) or self._is_sunday(may_4)):
+            if not self._is_monday(may_4) and not self._is_sunday(may_4):
                 # National Holiday.
                 self._add_holiday(tr("国民の休日"), may_4)
         else:
