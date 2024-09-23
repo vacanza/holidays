@@ -45,7 +45,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         - https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
 
     Washington's Birthday (GA):
-        - https://web.archive.org/web/*/https://www.gasupreme.us/court-information/holidays-2/
+        - https://www.gasupreme.us/court-information/holidays-2/
     """
 
     country = "US"
