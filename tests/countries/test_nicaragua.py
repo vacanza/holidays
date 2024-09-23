@@ -109,14 +109,14 @@ class TestNicaragua(CommonCountryTests, TestCase):
             if subdiv == "MN":
                 self.assertHoliday(
                     Nicaragua(subdiv=subdiv),
-                    "2020-08-01",
-                    "2020-08-10",
+                    "2023-08-01",
+                    "2023-08-10",
                 )
             else:
                 self.assertNoHoliday(
                     Nicaragua(subdiv=subdiv),
-                    "2020-08-01",
-                    "2020-08-10",
+                    "2023-08-01",
+                    "2023-08-10",
                 )
 
     def test_l10n_default(self):
