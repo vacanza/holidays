@@ -17,6 +17,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Nicaragua
+        - http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/FA251B3C54F5BAEF062571C40055736C?OpenDocument
+        - http://legislacion.asamblea.gob.ni/normaweb.nsf/($All)/3B28EC51ABE2787706258848005ADBB0?OpenDocument
+    """
+
     country = "NI"
     default_language = "es"
     subdivisions = (
@@ -38,14 +45,30 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         "RI",
         "SJ",
     )
+    subdivisions_aliases = {
+        "Costa Caribe Norte": "AN",
+        "Costa Caribe Sur": "AS",
+        "Boaco": "BO",
+        "Carazo": "CA",
+        "Chinandega": "CI",
+        "Chontales": "CO",
+        "Estelí": "ES",
+        "Granada": "GR",
+        "Jinotega": "JI",
+        "León": "LE",
+        "Madriz": "MD",
+        "Managua": "MN",
+        "Masaya": "MS",
+        "Matagalpa": "MT",
+        "Nueva Segovia": "NS",
+        "Río San Juan": "SJ",
+        "Rivas": "RI",
+    }
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        # Default subdivision to MN; prov for backwards compatibility
-        if not kwargs.get("subdiv", kwargs.get("prov")):
-            kwargs["subdiv"] = "MN"
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -60,6 +83,10 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
+
+        if self._year >= 2022:
+            # Mother's Day.
+            self._add_holiday_may_30(tr("Día de la Madre"))
 
         if self._year >= 1979:
             # Revolution Day.
