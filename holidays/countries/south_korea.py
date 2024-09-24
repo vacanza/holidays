@@ -429,20 +429,20 @@ class SouthKoreaStaticHolidays:
             # Provincial-level Local Elections.
             (AUG, 13, local_election_day),
         ),
-        # President Syngman Rhee’s Birthday.
+        # President Syngman Rhee's Birthday.
         1957: (MAR, 26, syngman_rhee_birthday),
         1958: (
             # 4th National Assembly Election.
             (MAY, 2, national_assembly_election_day),
-            # President Syngman Rhee’s Birthday.
+            # President Syngman Rhee's Birthday.
             (MAR, 26, syngman_rhee_birthday),
         ),
-        # President Syngman Rhee’s Birthday.
+        # President Syngman Rhee's Birthday.
         1959: (MAR, 26, syngman_rhee_birthday),
         1960: (
             # Sabang Day.
             (MAR, 16, tr("사방의 날")),
-            # President Syngman Rhee’s Birthday.
+            # President Syngman Rhee's Birthday.
             (MAR, 26, syngman_rhee_birthday),
             # 4th Presidential Election/5th Vice President Election.
             (MAR, 15, presidential_election_day),
