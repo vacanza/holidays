@@ -961,7 +961,7 @@ class HolidayBase(Dict[date, str]):
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
 
-    def get_nth_workday(self, key: DateLike, n: int) -> date:
+    def get_nth_working_day(self, key: DateLike, n: int) -> date:
         """Return n-th working day from provided date (if n is positive)
         or n-th working day before provided date (if n is negative).
         """
@@ -969,11 +969,11 @@ class HolidayBase(Dict[date, str]):
         dt = self.__keytransform__(key)
         for _ in range(abs(n)):
             dt = _timedelta(dt, direction)
-            while not self.is_workday(dt):
+            while not self.is_working_day(dt):
                 dt = _timedelta(dt, direction)
         return dt
 
-    def get_workdays_number(self, start: DateLike, end: DateLike) -> int:
+    def get_working_days_count(self, start: DateLike, end: DateLike) -> int:
         """Return the number of working days between two dates.
 
         The date range works in a closed interval fashion [start, end] so both
@@ -990,9 +990,9 @@ class HolidayBase(Dict[date, str]):
         if dt1 > dt2:
             dt1, dt2 = dt2, dt1
         days = (dt2 - dt1).days + 1
-        return sum(self.is_workday(_timedelta(dt1, n)) for n in range(days))
+        return sum(self.is_working_day(_timedelta(dt1, n)) for n in range(days))
 
-    def is_workday(self, key: DateLike) -> bool:
+    def is_working_day(self, key: DateLike) -> bool:
         """Return True if date is a working day (not a holiday or a weekend)."""
         dt = self.__keytransform__(key)
         return dt in self.weekend_workdays if self._is_weekend(dt) else dt not in self
