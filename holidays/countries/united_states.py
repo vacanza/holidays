@@ -12,17 +12,22 @@
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import DEC
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    ObservedRule,
     MON_TO_NEXT_TUE,
     FRI_TO_PREV_THU,
     SAT_TO_PREV_FRI,
     SUN_TO_NEXT_MON,
     SAT_SUN_TO_PREV_FRI,
     SAT_SUN_TO_NEXT_MON,
+)
+
+GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
+    {MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -2, SUN: -2}
 )
 
 
@@ -43,6 +48,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     Frances Xavier Cabrini Day:
         - https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
+
+    Washington's Birthday (GA):
+        - https://www.gasupreme.us/court-information/holidays-2/
+
+    Washington's Birthday (IN):
+        - https://www.in.gov/spd/benefits/state-holidays/
     """
 
     country = "US"
@@ -187,6 +198,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             "DE",
             "FL",
             "GA",
+            "IN",
             "NM",
             "PR",
             "VI",
@@ -404,11 +416,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Washington's Birthday
-        name = "Washington's Birthday"
-        if self._is_wednesday(DEC, 24):
-            self._add_holiday_dec_26(name)
-        else:
-            self._add_holiday_dec_24(name)
+        self._add_holiday(
+            "Washington's Birthday",
+            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+        )
 
     def _populate_subdiv_gu_public_holidays(self):
         # Guam Discovery Day
@@ -489,6 +500,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Lincoln's Birthday
         if self._year >= 2010:
             self._add_holiday_1_day_past_4th_thu_of_nov("Lincoln's Birthday")
+
+        # Washington's Birthday
+        self._add_holiday(
+            "Washington's Birthday",
+            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+        )
 
     def _populate_subdiv_ks_public_holidays(self):
         # Christmas Eve

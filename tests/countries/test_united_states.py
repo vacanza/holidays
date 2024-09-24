@@ -17,7 +17,7 @@ from holidays.countries.united_states import UnitedStates, US, USA
 from tests.common import CommonCountryTests
 
 
-class TestUS(CommonCountryTests, TestCase):
+class TestUnitedStates(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -358,7 +358,7 @@ class TestUS(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        subdiv_dont = {"AL", "AR", "DE", "FL", "GA", "NM", "PR", "VI"}
+        subdiv_dont = {"AL", "AR", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}
         for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
 
@@ -380,15 +380,18 @@ class TestUS(CommonCountryTests, TestCase):
             "2023-02-20",
         )
 
-        self.assertHolidayName(
-            "George Washington & Thomas Jefferson's Birthday", self.state_hols["AL"], dt
-        )
-
-        self.assertHolidayName(
-            "George Washington's Birthday and Daisy Gatson Bates Day", self.state_hols["AR"], dt
-        )
-
-        self.assertNoHoliday(self.state_hols["DE"], dt)
+        for subdiv, name in (
+            ("AL", "George Washington & Thomas Jefferson's Birthday"),
+            ("AR", "George Washington's Birthday and Daisy Gatson Bates Day"),
+            ("DE", None),
+            ("NM", None),
+            ("PR", "Presidents' Day"),
+            ("VI", "Presidents' Day"),
+        ):
+            if name:
+                self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            else:
+                self.assertNoHoliday(self.state_hols[subdiv], dt)
 
         self.assertNoHoliday(
             self.state_hols["FL"],
@@ -406,30 +409,25 @@ class TestUS(CommonCountryTests, TestCase):
             "2023-02-20",
         )
 
-        self.assertHolidayName(
-            "Washington's Birthday",
-            self.state_hols["GA"],
-            "2010-12-24",
-            "2011-12-24",
+        dt = (
+            "2010-12-23",
+            "2011-12-23",
             "2012-12-24",
             "2013-12-24",
             "2014-12-26",
             "2015-12-24",
-            "2016-12-24",
-            "2017-12-24",
+            "2016-12-23",
+            "2017-12-26",
             "2018-12-24",
             "2019-12-24",
             "2020-12-24",
-            "2021-12-24",
-            "2022-12-24",
-            "2023-12-24",
+            "2021-12-23",
+            "2022-12-23",
+            "2023-12-26",
+            "2024-12-24",
         )
-
-        self.assertNoHoliday(self.state_hols["NM"], dt)
-
-        self.assertHolidayName("Presidents' Day", self.state_hols["PR"], dt)
-
-        self.assertHolidayName("Presidents' Day", self.state_hols["VI"], dt)
+        for subdiv in ("GA", "IN"):
+            self.assertHolidayName("Washington's Birthday", self.state_hols[subdiv], dt)
 
     def test_columbus_day(self):
         name = "Columbus Day"
