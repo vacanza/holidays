@@ -89,7 +89,7 @@ msgstr "%Y-%m-%d"
 msgid "休息日（%s日起取代）"
 msgstr "休息日（%s日起取代）"
 
-#. 70th Anniversary of the Victory of the Chinese People’s War of Resistance
+#. 70th Anniversary of the Victory of the Chinese People's War of Resistance
 #. against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日"

@@ -79,7 +79,7 @@ exclude_patterns: List[str] = []
 # templates_path = ['_templates']
 
 # The name of the Pygments (syntax highlighting) style to use.
-# If not set, either the theme’s default style or 'sphinx' is selected for HTML
+# If not set, either the theme's default style or 'sphinx' is selected for HTML
 # output.
 #
 pygments_style = "sphinx"
@@ -112,7 +112,7 @@ html_theme = "sphinx_rtd_theme"
 #
 html_style = "css/custom.css"
 
-# The “title” for HTML documentation generated with Sphinx’s own templates.
+# The “title” for HTML documentation generated with Sphinx's own templates.
 #
 # html_title = '<project> v<revision> documentation'  # default
 
@@ -128,7 +128,7 @@ html_style = "css/custom.css"
 #
 # html_favicon = None  # default
 
-# A ‘Last updated on:’ timestamp is inserted at every page bottom, using the
+# A 'Last updated on:' timestamp is inserted at every page bottom, using the
 #  given strftime() format. The empty # string is equivalent to '%b %d, %Y'
 #  (or a locale-dependent equivalent).
 #
