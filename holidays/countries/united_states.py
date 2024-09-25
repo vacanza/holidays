@@ -54,6 +54,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     Washington's Birthday (IN):
         - https://www.in.gov/spd/benefits/state-holidays/
+
+    American Samoa holidays:
+        - https://asbar.org/code-annotated/1-0501-public-holidays/
     """
 
     country = "US"
@@ -306,8 +309,16 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_feb_22(name)
 
     def _populate_subdiv_as_public_holidays(self):
-        # Christmas Eve
-        self._add_christmas_eve_holiday()
+        # American Samoa Flag Day
+        if self._year >= 1901:
+            self._add_observed(self._add_holiday_apr_17("American Samoa Flag Day"))
+
+        # Manu'a Islands Cession Day
+        if self._year >= 1983:
+            self._add_observed(self._add_holiday_jul_16("Manu'a Islands Cession Day"))
+
+        # White Sunday
+        self._add_holiday_2nd_sun_of_oct("White Sunday")
 
     def _populate_subdiv_az_public_holidays(self):
         # Martin Luther King Jr. Day

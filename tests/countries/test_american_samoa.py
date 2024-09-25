@@ -10,10 +10,8 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import DEC
 from holidays.constants import UNOFFICIAL
 from holidays.countries.american_samoa import HolidaysAS, AS, ASM
 from tests.common import CommonCountryTests
@@ -28,9 +26,10 @@ class TestAS(CommonCountryTests, TestCase):
         self.assertAliases(HolidaysAS, AS, ASM)
 
     def test_as_only(self):
-        """Check for a holiday that is not returned by US unless the
-        subdivision is specified."""
-        self.assertIn("Christmas Eve (observed)", self.holidays.get_list(date(2017, DEC, 22)))
+        """Check for a holiday that is not returned by US unless the subdivision is specified."""
+        self.assertHolidayName("American Samoa Flag Day", "2024-04-17")
+        self.assertHolidayName("Manu'a Islands Cession Day", "2024-07-16")
+        self.assertHolidayName("White Sunday", "2024-10-13")
 
     def test_unofficial_holidays(self):
         self.assertHolidays(
