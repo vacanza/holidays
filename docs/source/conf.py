@@ -128,7 +128,7 @@ html_style = "css/custom.css"
 #
 # html_favicon = None  # default
 
-# A ‘Last updated on:' timestamp is inserted at every page bottom, using the
+# A 'Last updated on:' timestamp is inserted at every page bottom, using the
 #  given strftime() format. The empty # string is equivalent to '%b %d, %Y'
 #  (or a locale-dependent equivalent).
 #
