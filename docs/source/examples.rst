@@ -178,6 +178,42 @@ To get a list of other categories holidays (for countries that support them):
    2023-12-25 Christmas Day
    2023-12-26 Bank Holiday
 
+Working day-related calculations
+--------------------------------
+
+To check if the specified date is a working day:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2024)  # Weekends in the US are Saturday and Sunday.
+   >>> us_holidays.is_working_day("2024-01-01")  # Monday, New Year's Day.
+   False
+   >>> us_holidays.is_working_day("2024-01-02")  # Tuesday, ordinary day.
+   True
+   >>> us_holidays.is_working_day("2024-01-06")  # Saturday, ordinary day.
+   False
+   >>> us_holidays.is_working_day("2024-01-15")  # Monday, Martin Luther King Jr. Day.
+   False
+
+To find the nth working day after the specified date:
+
+.. code-block:: python
+
+   >>> us_holidays.get_nth_working_day("2024-12-20", 5)
+   datetime.date(2024, 12, 30)
+
+Here we calculate the 5th working day after December 20, 2024. Working days are 23 (Mon),
+24 (Tue), 26 (Thu), 27 (Fri), 30 (Mon); 21-22, 28-29 - weekends, 25 - Christmas Day.
+
+To calculate the number or working days between two specified dates:
+
+.. code-block:: python
+
+   >>> us_holidays.get_working_days_count("2024-04-01", "2024-06-30")
+   63
+
+Here we calculate the number of working days in Q2 2024.
+
 Date from holiday name
 ----------------------
 
