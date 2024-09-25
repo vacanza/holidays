@@ -30,9 +30,10 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "2007-01-03",
             "2018-04-11",
             "2019-12-27",
-            "2007-01-03",
+            "2024-02-07",
             "2072-01-05",
         )
 
@@ -55,6 +56,11 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2023-06-27",
             "2023-06-30",
             "2023-11-10",
+            "2024-01-04",
+            "2024-01-05",
+            "2024-04-12",
+            "2024-11-12",
+            "2024-11-13",
         )
 
     def test_new_years_day(self):
