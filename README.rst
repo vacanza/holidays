@@ -558,7 +558,7 @@ All other default values are highlighted with bold:
    * - Kazakhstan
      - KZ
      -
-     -
+     - en_US, **kk**, uk
      -
    * - Kenya
      - KE
