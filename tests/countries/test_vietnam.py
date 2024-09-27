@@ -75,11 +75,13 @@ class TestVietnam(CommonCountryTests, TestCase):
 
     def test_international_labor_day(self):
         self.assertHolidayName(
-            "Ngày Quốc tế lao động", (f"{year}-05-01" for year in range(1979, 2050))
+            "Ngày Quốc tế Lao động", (f"{year}-05-01" for year in range(1979, 2050))
         )
 
     def test_independence_day(self):
-        self.assertHolidayName("Ngày Quốc khánh", (f"{year}-09-02" for year in range(1979, 2050)))
+        self.assertHolidayName(
+            "Ngày Quốc khánh Việt Nam", (f"{year}-09-02" for year in range(1979, 2050))
+        )
 
     def test_observed(self):
         observed_holidays = (
@@ -126,10 +128,10 @@ class TestVietnam(CommonCountryTests, TestCase):
             ("2022-04-10", "Giỗ Tổ Hùng Vương"),
             ("2022-04-11", "Giỗ Tổ Hùng Vương (nghỉ bù)"),
             ("2022-04-30", "Ngày Chiến thắng"),
-            ("2022-05-01", "Ngày Quốc tế lao động"),
+            ("2022-05-01", "Ngày Quốc tế Lao động"),
             ("2022-05-02", "Ngày Chiến thắng (nghỉ bù)"),
-            ("2022-05-03", "Ngày Quốc tế lao động (nghỉ bù)"),
-            ("2022-09-02", "Ngày Quốc khánh"),
+            ("2022-05-03", "Ngày Quốc tế Lao động (nghỉ bù)"),
+            ("2022-09-02", "Ngày Quốc khánh Việt Nam"),
         )
 
     def test_l10n_en_us(self):
@@ -137,11 +139,11 @@ class TestVietnam(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "International New Year's Day"),
             ("2022-01-03", "International New Year's Day (observed)"),
-            ("2022-01-31", "Vietnamese New Year's Eve"),
-            ("2022-02-01", "Vietnamese New Year"),
+            ("2022-01-31", "Lunar New Year's Eve"),
+            ("2022-02-01", "Lunar New Year"),
             ("2022-02-02", "The second day of Tet Holiday"),
             ("2022-02-03", "The third day of Tet Holiday"),
-            ("2022-02-04", "The forth day of Tet Holiday"),
+            ("2022-02-04", "The fourth day of Tet Holiday"),
             ("2022-02-05", "The fifth day of Tet Holiday"),
             ("2022-04-10", "Hung Kings Commemoration Day"),
             ("2022-04-11", "Hung Kings Commemoration Day (observed)"),
@@ -149,5 +151,5 @@ class TestVietnam(CommonCountryTests, TestCase):
             ("2022-05-01", "International Labor Day"),
             ("2022-05-02", "Liberation Day/Reunification Day (observed)"),
             ("2022-05-03", "International Labor Day (observed)"),
-            ("2022-09-02", "Independence Day"),
+            ("2022-09-02", "Vietnam's Independence Day"),
         )

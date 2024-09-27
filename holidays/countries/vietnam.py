@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
-from holidays.observed_holiday_base import SAT_SUN_TO_NEXT_WORKDAY, ObservedHolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays):
@@ -41,27 +41,36 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         # New Year's Day
         dts_observed.add(self._add_new_years_day(tr("Tết Dương lịch")))
 
-        # Lunar New Year
+        # Lunar New Year's Eve
         self._add_chinese_new_years_eve(tr("Giao thừa"))
+
+        # Lunar New Year
         self._add_chinese_new_years_day(tr("Tết Nguyên Đán"))
+
+        # Second Day of Lunar New Year
         self._add_chinese_new_years_day_two(tr("Mùng hai Tết Nguyên Đán"))
+
+        # Third Day of Lunar New Year
         self._add_chinese_new_years_day_three(tr("Mùng ba Tết Nguyên Đán"))
+
+        # Fourth Day of Lunar New Year
         self._add_chinese_new_years_day_four(tr("Mùng bốn Tết Nguyên Đán"))
+
+        # Fifth Day of Lunar New Year
         self._add_chinese_new_years_day_five(tr("Mùng năm Tết Nguyên Đán"))
 
-        # Vietnamese Kings' Commemoration Day
-        # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if self._year >= 2007:
+            # Hung Kings' Festival
             dts_observed.add(self._add_hung_kings_day(tr("Giỗ Tổ Hùng Vương")))
 
         # Liberation Day/Reunification Day
         dts_observed.add(self._add_holiday_apr_30(tr("Ngày Chiến thắng")))
 
         # International Labor Day
-        dts_observed.add(self._add_labor_day(tr("Ngày Quốc tế lao động")))
+        dts_observed.add(self._add_labor_day(tr("Ngày Quốc tế Lao động")))
 
         # Independence Day
-        dts_observed.add(self._add_holiday_sep_2(tr("Ngày Quốc khánh")))
+        dts_observed.add(self._add_holiday_sep_2(tr("Ngày Quốc khánh Việt Nam")))
 
         if self.observed:
             self._populate_observed(dts_observed)

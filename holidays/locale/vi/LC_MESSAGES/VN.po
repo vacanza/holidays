@@ -9,17 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: vunhatchuong <ronnyvu321@gmail.com> (c) 2024
-#  Website: https://github.com/vacanza/python-holidays
-#  License: MIT (see LICENSE file)
-#
 # Vietnam holidays.
+# Authors: vunhatchuong <ronnyvu321@gmail.com> (c) 2024
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.58\n"
@@ -42,25 +34,31 @@ msgstr ""
 msgid "Tết Dương lịch"
 msgstr ""
 
-#. Lunar New Year
+#. Lunar New Year's Eve
 msgid "Giao thừa"
 msgstr ""
 
+#. Lunar New Year
 msgid "Tết Nguyên Đán"
 msgstr ""
 
+#. Second Day of Lunar New Year
 msgid "Mùng hai Tết Nguyên Đán"
 msgstr ""
 
+#. Third Day of Lunar New Year
 msgid "Mùng ba Tết Nguyên Đán"
 msgstr ""
 
+#. Fourth Day of Lunar New Year
 msgid "Mùng bốn Tết Nguyên Đán"
 msgstr ""
 
+#. Fifth Day of Lunar New Year
 msgid "Mùng năm Tết Nguyên Đán"
 msgstr ""
 
+#. Hung Kings' Festival
 msgid "Giỗ Tổ Hùng Vương"
 msgstr ""
 
@@ -69,9 +67,9 @@ msgid "Ngày Chiến thắng"
 msgstr ""
 
 #. International Labor Day
-msgid "Ngày Quốc tế lao động"
+msgid "Ngày Quốc tế Lao động"
 msgstr ""
 
 #. Independence Day
-msgid "Ngày Quốc khánh"
+msgid "Ngày Quốc khánh Việt Nam"
 msgstr ""
