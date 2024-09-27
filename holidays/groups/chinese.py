@@ -136,16 +136,6 @@ class ChineseCalendarHolidays:
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+3
         )
 
-    def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
-        """
-        Add Chinese New Year's Day Five.
-
-        https://en.wikipedia.org/wiki/Chinese_New_Year
-        """
-        return self._add_chinese_calendar_holiday(
-            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
-        )
-
     def _add_qingming_festival(self, name) -> date:
         """
         Add Qingming Festival (15th day after the Spring Equinox).
