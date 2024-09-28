@@ -42,7 +42,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         dts_observed.add(self._add_new_years_day(tr("Tết Dương lịch")))
 
         # Lunar New Year's Eve
-        self._add_chinese_new_years_eve(tr("Giao thừa"))
+        self._add_chinese_new_years_eve(tr("Giao thừa Tết Nguyên Đán"))
 
         # Lunar New Year
         self._add_chinese_new_years_day(tr("Tết Nguyên Đán"))
@@ -60,8 +60,8 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         self._add_chinese_new_years_day_five(tr("Mùng năm Tết Nguyên Đán"))
 
         if self._year >= 2007:
-            # Hung Kings' Festival
-            dts_observed.add(self._add_hung_kings_day(tr("Giỗ Tổ Hùng Vương")))
+            # Hung Kings' Commemoration Day
+            dts_observed.add(self._add_hung_kings_day(tr("Ngày Giỗ Tổ Hùng Vương")))
 
         # Liberation Day/Reunification Day
         dts_observed.add(self._add_holiday_apr_30(tr("Ngày Chiến thắng")))
@@ -69,8 +69,8 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         # International Labor Day
         dts_observed.add(self._add_labor_day(tr("Ngày Quốc tế Lao động")))
 
-        # Independence Day
-        dts_observed.add(self._add_holiday_sep_2(tr("Ngày Quốc khánh Việt Nam")))
+        # National Day
+        dts_observed.add(self._add_holiday_sep_2(tr("Quốc khánh")))
 
         if self.observed:
             self._populate_observed(dts_observed)

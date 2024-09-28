@@ -32,10 +32,10 @@ msgstr "%s (observed)"
 
 #. New Year's Day
 msgid "Tết Dương lịch"
-msgstr "International New Year's Day"
+msgstr "New Year's Day"
 
 #. Lunar New Year's Eve
-msgid "Giao thừa"
+msgid "Giao thừa Tết Nguyên Đán"
 msgstr "Lunar New Year's Eve"
 
 #. Lunar New Year
@@ -58,9 +58,9 @@ msgstr "The fourth day of Tet Holiday"
 msgid "Mùng năm Tết Nguyên Đán"
 msgstr "The fifth day of Tet Holiday"
 
-#. Hung Kings' Festival
-msgid "Giỗ Tổ Hùng Vương"
-msgstr "Hung Kings Commemoration Day"
+#. Hung Kings' Commemoration Day
+msgid "Ngày Giỗ Tổ Hùng Vương"
+msgstr "Hung Kings' Commemoration Day"
 
 #. Liberation Day/Reunification Day
 msgid "Ngày Chiến thắng"
@@ -70,6 +70,6 @@ msgstr "Liberation Day/Reunification Day"
 msgid "Ngày Quốc tế Lao động"
 msgstr "International Labor Day"
 
-#. Independence Day
-msgid "Ngày Quốc khánh Việt Nam"
-msgstr "Vietnam's Independence Day"
+#. National Day
+msgid "Quốc khánh"
+msgstr "National Day"

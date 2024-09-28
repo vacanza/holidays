@@ -35,7 +35,7 @@ msgid "Tết Dương lịch"
 msgstr ""
 
 #. Lunar New Year's Eve
-msgid "Giao thừa"
+msgid "Giao thừa Tết Nguyên Đán"
 msgstr ""
 
 #. Lunar New Year
@@ -58,8 +58,8 @@ msgstr ""
 msgid "Mùng năm Tết Nguyên Đán"
 msgstr ""
 
-#. Hung Kings' Festival
-msgid "Giỗ Tổ Hùng Vương"
+#. Hung Kings' Commemoration Day
+msgid "Ngày Giỗ Tổ Hùng Vương"
 msgstr ""
 
 #. Liberation Day/Reunification Day
@@ -70,6 +70,6 @@ msgstr ""
 msgid "Ngày Quốc tế Lao động"
 msgstr ""
 
-#. Independence Day
-msgid "Ngày Quốc khánh Việt Nam"
+#. National Day
+msgid "Quốc khánh"
 msgstr ""
