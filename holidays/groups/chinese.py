@@ -14,10 +14,11 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars import _ChineseLunisolar
-from holidays.calendars.gregorian import APR, _timedelta
+from holidays.calendars.gregorian import APR
+from holidays.groups.eastern import EasternCalendarHolidays
 
 
-class ChineseCalendarHolidays:
+class ChineseCalendarHolidays(EasternCalendarHolidays):
     """
     Chinese lunisolar calendar holidays.
     """
@@ -56,21 +57,8 @@ class ChineseCalendarHolidays:
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "%s (estimated)")
-        dt, is_estimated = dt_estimated
-
-        if days_delta and dt:
-            dt = _timedelta(dt, days_delta)
-
-        return (
-            self._add_holiday(
-                self.tr(estimated_label) % self.tr(name)
-                if is_estimated and self._chinese_calendar_show_estimated
-                else name,
-                dt,
-            )
-            if dt
-            else None
+        return self._add_eastern_calendar_holiday(
+            name, dt_estimated, self._chinese_calendar_show_estimated, days_delta
         )
 
     def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:
