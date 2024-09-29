@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 # Configuration file for the Sphinx documentation builder.
@@ -44,7 +44,7 @@ import holidays  # noqa: E402 module level import not at top of file
 
 project = "holidays"
 copyright = str(date.today().year)
-author = "dr-prodigy"
+author = "Vacanza Team"
 version = holidays.__version__
 
 

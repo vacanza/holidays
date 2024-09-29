@@ -4,13 +4,13 @@ How to release a new version of Python Holidays
 - Finalize the current development version
 
   - switch to ``dev`` branch and pull the most recent changes
-    from https://github.com/vacanza/python-holidays remote ``dev`` branch.
+    from https://github.com/vacanza/holidays remote ``dev`` branch.
   - generate release notes by running ``make release-notes``
   - insert the command's output into the top of ``CHANGES`` file
     (see previous release notes for consistent formatting)
   - commit the updated ``CHANGES`` file to ``dev`` branch with the following
     commit message 'Finalize v<version>', e.g. 'Finalize v0.39'
-  - push changes to https://github.com/vacanza/python-holidays ``dev`` branch
+  - push changes to https://github.com/vacanza/holidays ``dev`` branch
   - make sure the push related CI/CD jobs have been completed successfully
 
 - Merge the finalized changes into ``main`` branch:
@@ -22,12 +22,12 @@ How to release a new version of Python Holidays
   - merge the PR into ``main`` branch using 'Merge when ready' button
   - make sure the PR related CI/CD jobs have been completed successfully
   - make sure readthedocs.org documentation build jobs at
-    https://readthedocs.org/projects/python-holidays/builds/
+    https://readthedocs.org/projects/holidays/builds/
     have been completed successfully
 
 - Create a new release:
 
-  - open https://github.com/vacanza/python-holidays/releases page and click
+  - open https://github.com/vacanza/holidays/releases page and click
     on the 'Draft a new release' button
   - click on 'Choose a tag', enter 'v<version>' into the input field
     (you should see something like 'Create a new tag: v0.39' on publish'
@@ -41,7 +41,7 @@ How to release a new version of Python Holidays
   - check/uncheck the 'Set as the latest release' checkbox depending on the
     release status
   - save the draft (do not publish it yet)
-  - preview the release on https://github.com/vacanza/python-holidays/releases
+  - preview the release on https://github.com/vacanza/holidays/releases
   - after making sure everything looks right click 'Edit' and then
     'Publish release'
 
@@ -62,5 +62,5 @@ How to release a new version of Python Holidays
     running ``make package`` to pass the tests locally)
   - make sure ``dev`` branch **is not behind** the ``main`` branch (there
     will be a message on top of the
-    https://github.com/vacanza/python-holidays/tree/dev page in case it is)
+    https://github.com/vacanza/holidays/tree/dev page in case it is)
   - make sure the push related CI/CD jobs have been completed successfully

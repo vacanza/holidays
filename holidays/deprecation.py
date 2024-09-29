@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE = """
@@ -25,7 +25,7 @@ holidays v0.x dependency (e.g., holidays=={version}) or limit it (e.g., holidays
 avoid potentially unwanted upgrade to the version 1.0 when it's released (ETA 2024Q4 - 2025Q1).
 
 If you have any questions or concerns regarding this change, please don't hesitate to reach out
-to us via https://github.com/vacanza/python-holidays/discussions/1800.
+to us via https://github.com/vacanza/holidays/discussions/1800.
 """
 
 
