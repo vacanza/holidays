@@ -2,11 +2,16 @@ name: CI/CD
 
 on:
   merge_group:
+  pull_request:
     branches:
       - dev
       - main
       - v1
-  pull_request:
+  push:
+    branches:
+      - dev
+      - main
+      - v1
   workflow_dispatch:
 
 env:
