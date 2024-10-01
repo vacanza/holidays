@@ -14,7 +14,24 @@ from datetime import date
 from gettext import gettext as tr
 from typing import Set
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    SEP,
+    OCT,
+    DEC,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+)
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -24,12 +41,14 @@ from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
 )
 
+CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -1, SUN: -2})
+
 
 class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
         - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
-        - https://www.officeholidays.com/countries/taiwan
+        - `2025 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11979>`_
         - `2024 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11402>`_
         - `2023 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11016>`_
         - `2022 <https://www.dgpa.gov.tw/en/information?uid=353&pid=10659>`_
@@ -65,9 +84,17 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     ) -> None:
         if self._year < since:
             return None
+
+        childrens_day = self.tr("兒童節")
         for dt in sorted(dts):
-            for name in self.get_list(dt):
-                self._add_observed(dt, name, rule)
+            names = self.get_list(dt)
+            for name in names:
+                self._add_observed(
+                    dt,
+                    name,
+                    # Children's Day falls on the same day as Tomb Sweeping Day.
+                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                )
 
     def _populate_public_holidays(self):
         if self._year <= 1911:
@@ -97,9 +124,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         if 1990 <= self._year <= 1999 or self._year >= 2011:
             # Children's Day.
-            apr_4 = self._add_holiday_apr_4(tr("兒童節"))
-            if self._year != 2021:
-                dts_observed.add(apr_4)
+            dts_observed.add(self._add_holiday_apr_4(tr("兒童節")))
 
         if self._year >= 1972:
             # Tomb Sweeping Day.
@@ -185,12 +210,9 @@ class TaiwanStaticHolidays:
             (OCT, 9, SEP, 23),
         ),
         2024: (FEB, 8, FEB, 17),
+        2025: (JAN, 27, FEB, 8),
     }
 
     special_public_holidays_observed = {
         2013: (APR, 5, childrens_day),
-        2016: (APR, 5, childrens_day),
-        2017: (APR, 3, childrens_day),
-        2021: (APR, 2, childrens_day),
-        2024: (APR, 5, childrens_day),
     }
