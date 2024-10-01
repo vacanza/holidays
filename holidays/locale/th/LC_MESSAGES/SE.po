@@ -37,7 +37,7 @@ msgstr "วันสมโภชพระคริสต์แสดงองค
 
 #. Feast of the Annunciation.
 msgid "Jungfru Marie bebådelsedag"
-msgstr "สมโภชแม่พระรับสาร"
+msgstr "วันสมโภชแม่พระรับสาร"
 
 #. Good Friday.
 msgid "Långfredagen"
