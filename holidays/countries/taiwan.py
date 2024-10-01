@@ -87,12 +87,14 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
         childrens_day = self.tr("兒童節")
         for dt in sorted(dts):
-            for name in self.get_list(dt):
-                if name == childrens_day and len(self.get_list(dt)) > 1:
-                    # Children’s Day falls on the same day as Tomb Sweeping Day.
-                    self._add_observed(dt, name, CHILDRENS_DAY_RULE)
-                else:
-                    self._add_observed(dt, name, rule)
+            names = self.get_list(dt)
+            for name in names:
+                self._add_observed(
+                    dt,
+                    name,
+                    # Children's Day falls on the same day as Tomb Sweeping Day.
+                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                )
 
     def _populate_public_holidays(self):
         if self._year <= 1911:
