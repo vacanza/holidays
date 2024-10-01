@@ -1,0 +1,104 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Sweden holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.58\n"
+"POT-Creation-Date: 2024-10-01 14:12+0700\n"
+"PO-Revision-Date: 2024-10-01 14:12+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "Nyårsdagen"
+msgstr "วันขึ้นปีใหม่"
+
+#. Epiphany.
+msgid "Trettondedag jul"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Feast of the Annunciation.
+msgid "Jungfru Marie bebådelsedag"
+msgstr "วันสมโภชแม่พระรับสาร"
+
+#. Good Friday.
+msgid "Långfredagen"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Sunday.
+msgid "Påskdagen"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Easter Monday.
+msgid "Annandag påsk"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. May Day.
+msgid "Första maj"
+msgstr "วันเมย์เดย์ (วันแรงงาน)"
+
+#. Ascension Day.
+msgid "Kristi himmelsfärdsdag"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. National Day of Sweden.
+msgid "Sveriges nationaldag"
+msgstr "วันชาติสวีเดน"
+
+#. Whit Sunday.
+msgid "Pingstdagen"
+msgstr "วันสมโภชพระจิตเจ้า"
+
+#. Whit Monday.
+msgid "Annandag pingst"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Midsummer Eve.
+msgid "Midsommarafton"
+msgstr "วันก่อนวันกลางฤดูร้อน"
+
+#. Midsummer Day.
+msgid "Midsommardagen"
+msgstr "วันกลางฤดูร้อน"
+
+#. All Saints' Day.
+msgid "Alla helgons dag"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. Christmas Eve.
+msgid "Julafton"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Christmas Day.
+msgid "Juldagen"
+msgstr "วันคริสต์มาส"
+
+#. Second Day of Christmas.
+msgid "Annandag jul"
+msgstr "วันคริสต์มาสวันที่สอง"
+
+#. New Year's Eve.
+msgid "Nyårsafton"
+msgstr "วันสิ้นปี"
+
+#. Sunday.
+msgid "Söndag"
+msgstr "วันอาทิตย์"
