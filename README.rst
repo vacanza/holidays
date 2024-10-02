@@ -833,7 +833,7 @@ All other default values are highlighted with bold:
    * - Sweden
      - SE
      -
-     - en_US, **sv**, uk
+     - en_US, **sv**, th, uk
      -
    * - Switzerland
      - CH
