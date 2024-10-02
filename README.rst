@@ -803,7 +803,7 @@ All other default values are highlighted with bold:
    * - Singapore
      - SG
      -
-     -
+     - **en_SG**, en_US, th
      -
    * - Slovakia
      - SK
