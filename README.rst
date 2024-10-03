@@ -618,7 +618,7 @@ All other default values are highlighted with bold:
    * - Malaysia
      - MY
      - States and federal territories: 01 (Johor, JHR), 02 (Kedah, KDH), 03 (Kelantan, KTN), 04 (Melaka, MLK), 05 (Negeri Sembilan, NSN), 06 (Pahang, PHG), 07 (Pulau Pinang, PNG), 08 (Perak, PRK), 09 (Perlis, PLS), 10 (Selangor, SGR), 11 (Terengganu, TRG), 12 (Sabah, SBH), 13 (Sarawak, SWK), 14 (WP Kuala Lumpur, KUL), 15 (WP Labuan, LBN), 16 (WP Putrajaya, PJY)
-     - en_US, **ms_MY**
+     - en_US, **ms_MY**, th
      -
    * - Maldives
      - MV
@@ -803,7 +803,7 @@ All other default values are highlighted with bold:
    * - Singapore
      - SG
      -
-     -
+     - **en_SG**, en_US, th
      -
    * - Slovakia
      - SK
@@ -833,7 +833,7 @@ All other default values are highlighted with bold:
    * - Sweden
      - SE
      -
-     - en_US, **sv**, uk
+     - en_US, **sv**, th, uk
      -
    * - Switzerland
      - CH
@@ -933,7 +933,7 @@ All other default values are highlighted with bold:
    * - Vietnam
      - VN
      -
-     -
+     - en_US, **vi**
      -
    * - Virgin Islands (U.S.)
      - VI
