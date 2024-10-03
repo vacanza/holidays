@@ -121,7 +121,7 @@ class Malaysia(
         "WP Putrajaya": "16",
         "PJY": "16",
     }
-    supported_languages = ("en_US", "ms_MY")
+    supported_languages = ("en_US", "ms_MY", "th")
 
     def __init__(self, *args, **kwargs):
         """
