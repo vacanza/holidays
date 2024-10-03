@@ -933,7 +933,7 @@ All other default values are highlighted with bold:
    * - Vietnam
      - VN
      -
-     -
+     - en_US, **vi**
      -
    * - Virgin Islands (U.S.)
      - VI

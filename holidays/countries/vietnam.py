@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
@@ -22,7 +24,10 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     """
 
     country = "VN"
-    observed_label = "%s (observed)"
+    # %s (observed).
+    observed_label = tr("%s (nghỉ bù)")
+    default_language = "vi"
+    supported_languages = ("en_US", "vi")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -34,29 +39,38 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         dts_observed = set()
 
         # New Year's Day
-        dts_observed.add(self._add_new_years_day("International New Year's Day"))
+        dts_observed.add(self._add_new_years_day(tr("Tết Dương lịch")))
+
+        # Lunar New Year's Eve
+        self._add_chinese_new_years_eve(tr("Giao thừa Tết Nguyên Đán"))
 
         # Lunar New Year
-        self._add_chinese_new_years_eve("Vietnamese New Year's Eve")
-        self._add_chinese_new_years_day("Vietnamese New Year")
-        self._add_chinese_new_years_day_two("The second day of Tet Holiday")
-        self._add_chinese_new_years_day_three("The third day of Tet Holiday")
-        self._add_chinese_new_years_day_four("The forth day of Tet Holiday")
-        self._add_chinese_new_years_day_five("The fifth day of Tet Holiday")
+        self._add_chinese_new_years_day(tr("Tết Nguyên Đán"))
 
-        # Vietnamese Kings' Commemoration Day
-        # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
+        # Second Day of Lunar New Year
+        self._add_chinese_new_years_day_two(tr("Mùng hai Tết Nguyên Đán"))
+
+        # Third Day of Lunar New Year
+        self._add_chinese_new_years_day_three(tr("Mùng ba Tết Nguyên Đán"))
+
+        # Fourth Day of Lunar New Year
+        self._add_chinese_new_years_day_four(tr("Mùng bốn Tết Nguyên Đán"))
+
+        # Fifth Day of Lunar New Year
+        self._add_chinese_new_years_day_five(tr("Mùng năm Tết Nguyên Đán"))
+
         if self._year >= 2007:
-            dts_observed.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
+            # Hung Kings' Commemoration Day
+            dts_observed.add(self._add_hung_kings_day(tr("Ngày Giỗ Tổ Hùng Vương")))
 
         # Liberation Day/Reunification Day
-        dts_observed.add(self._add_holiday_apr_30("Liberation Day/Reunification Day"))
+        dts_observed.add(self._add_holiday_apr_30(tr("Ngày Chiến thắng")))
 
         # International Labor Day
-        dts_observed.add(self._add_labor_day("International Labor Day"))
+        dts_observed.add(self._add_labor_day(tr("Ngày Quốc tế Lao động")))
 
-        # Independence Day
-        dts_observed.add(self._add_holiday_sep_2("Independence Day"))
+        # National Day
+        dts_observed.add(self._add_holiday_sep_2(tr("Quốc khánh")))
 
         if self.observed:
             self._populate_observed(dts_observed)

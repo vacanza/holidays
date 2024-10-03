@@ -1,0 +1,75 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/python-holidays
+#  License: MIT (see LICENSE file)
+#
+# Vietnam holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.58\n"
+"POT-Creation-Date: 2024-09-27 15:50+0700\n"
+"PO-Revision-Date: 2024-09-27 15:50+0700\n"
+"Last-Translator: Vu Nhat Chuong <ronnyvu321@gmail.com>\n"
+"Language-Team: Python Holidays Localization Team\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (nghỉ bù)"
+msgstr "%s (observed)"
+
+#. New Year's Day
+msgid "Tết Dương lịch"
+msgstr "New Year's Day"
+
+#. Lunar New Year's Eve
+msgid "Giao thừa Tết Nguyên Đán"
+msgstr "Lunar New Year's Eve"
+
+#. Lunar New Year
+msgid "Tết Nguyên Đán"
+msgstr "Lunar New Year"
+
+#. Second Day of Lunar New Year
+msgid "Mùng hai Tết Nguyên Đán"
+msgstr "The second day of Tet Holiday"
+
+#. Third Day of Lunar New Year
+msgid "Mùng ba Tết Nguyên Đán"
+msgstr "The third day of Tet Holiday"
+
+#. Fourth Day of Lunar New Year
+msgid "Mùng bốn Tết Nguyên Đán"
+msgstr "The fourth day of Tet Holiday"
+
+#. Fifth Day of Lunar New Year
+msgid "Mùng năm Tết Nguyên Đán"
+msgstr "The fifth day of Tet Holiday"
+
+#. Hung Kings' Commemoration Day
+msgid "Ngày Giỗ Tổ Hùng Vương"
+msgstr "Hung Kings' Commemoration Day"
+
+#. Liberation Day/Reunification Day
+msgid "Ngày Chiến thắng"
+msgstr "Liberation Day/Reunification Day"
+
+#. International Labor Day
+msgid "Ngày Quốc tế Lao động"
+msgstr "International Labor Day"
+
+#. National Day
+msgid "Quốc khánh"
+msgstr "National Day"
