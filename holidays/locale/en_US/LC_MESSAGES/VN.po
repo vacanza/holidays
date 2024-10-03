@@ -9,8 +9,8 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
+#
 # Vietnam holidays en_US localization.
-# Authors: vunhatchuong <ronnyvu321@gmail.com> (c) 2024
 #
 msgid ""
 msgstr ""
