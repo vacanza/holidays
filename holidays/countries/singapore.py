@@ -99,7 +99,7 @@ class Singapore(
     def _populate_public_holidays(self) -> None:
         dts_observed = set()
 
-        # New Year's Day
+        # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
         # Chinese New Year.
@@ -126,7 +126,7 @@ class Singapore(
             # Easter Monday.
             self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
+        # Labor Day.
         dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
         # Vesak Day.

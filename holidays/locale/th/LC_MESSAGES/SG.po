@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "ชดเชย%s"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr "วันขึ้นปีใหม่"
 
@@ -63,7 +63,7 @@ msgstr "วันเสาร์ศักดิ์สิทธิ์"
 msgid "Easter Monday"
 msgstr "วันจันทร์อีสเตอร์"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 

@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "%s (observed)"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
@@ -63,7 +63,7 @@ msgstr "Holy Saturday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
 
