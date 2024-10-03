@@ -1,5 +1,5 @@
-How to release a new version of Python Holidays
-===============================================
+How to release a new version of Holidays
+========================================
 
 - Finalize the current development version
 
@@ -53,10 +53,10 @@ How to release a new version of Python Holidays
 
 - Finish the process with the following post-release actions:
 
-  - send "Python Holidays 'v<version>' has been released!" (or similar) message
+  - send "Holidays 'v<version>' has been released!" (or similar) message
     to Vacanza Team Slack #release channel
   - pull the recent changes from ``main`` branch into ``dev``
-  - bump the Python Holidays version at ``holidays/__init__.py`` file
+  - bump the Holidays version at ``holidays/__init__.py`` file
   - create a commit with 'Initialize v<version>' message, e.g.
     'Initialize v0.40' and push it to ``dev`` branch (this may require
     running ``make package`` to pass the tests locally)

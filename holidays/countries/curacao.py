@@ -24,7 +24,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     https://en.wikipedia.org/wiki/Public_holidays_in_Cura%C3%A7ao
 
     New Year's Eve (Vispu di Aña Nobo) is a half-day public holiday, though
-    this isn't supported by Python Holidays so it won't be implemented.
+    this isn't supported by Holidays so it won't be implemented.
     """
 
     country = "CW"
