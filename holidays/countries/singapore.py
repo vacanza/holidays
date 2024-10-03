@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
@@ -40,7 +42,10 @@ class Singapore(
     StaticHolidays,
 ):
     country = "SG"
-    observed_label = "%s (observed)"
+    default_language = "en_SG"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    supported_languages = ("en_SG", "en_US", "th")
 
     def __init__(self, *args, **kwargs):
         """
@@ -94,50 +99,51 @@ class Singapore(
     def _populate_public_holidays(self) -> None:
         dts_observed = set()
 
-        # New Year's Day
-        dts_observed.add(self._add_new_years_day("New Year's Day"))
+        # New Year's Day.
+        dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
-        # Chinese New Year (two days)
-        name = "Chinese New Year"
+        # Chinese New Year.
+        name = tr("Chinese New Year")
         dts_observed.add(self._add_chinese_new_years_day(name))  # type: ignore[arg-type]
         dts_observed.add(self._add_chinese_new_years_day_two(name))  # type: ignore[arg-type]
 
-        # Hari Raya Puasa (Eid al-Fitr)
-        dts_observed.update(self._add_eid_al_fitr_day("Hari Raya Puasa"))
+        # Eid al-Fitr.
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Hari Raya Puasa")))
         if self._year <= 1968:
-            self._add_eid_al_fitr_day_two("Second day of Hari Raya Puasa")
+            # Second Day of Eid al-Fitr.
+            self._add_eid_al_fitr_day_two(tr("Second Day of Hari Raya Puasa"))
 
-        # Hari Raya Haji (Eid al-Adha)
-        dts_observed.update(self._add_eid_al_adha_day("Hari Raya Haji"))
+        # Eid al-Adha.
+        dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Haji")))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
         if self._year <= 1968:
-            # Holy Saturday
-            self._add_holy_saturday("Holy Saturday")
+            # Holy Saturday.
+            self._add_holy_saturday(tr("Holy Saturday"))
 
-            # Easter Monday
-            self._add_easter_monday("Easter Monday")
+            # Easter Monday.
+            self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day
-        dts_observed.add(self._add_labor_day("Labour Day"))
+        # Labor Day.
+        dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
-        # Vesak Day
-        dts_observed.add(self._add_vesak("Vesak Day"))  # type: ignore[arg-type]
+        # Vesak Day.
+        dts_observed.add(self._add_vesak(tr("Vesak Day")))  # type: ignore[arg-type]
 
-        # National Day
-        dts_observed.add(self._add_holiday_aug_9("National Day"))
+        # National Day.
+        dts_observed.add(self._add_holiday_aug_9(tr("National Day")))
 
-        # Deepavali (Diwali)
-        dts_observed.add(self._add_diwali("Deepavali"))  # type: ignore[arg-type]
+        # Deepavali.
+        dts_observed.add(self._add_diwali(tr("Deepavali")))  # type: ignore[arg-type]
 
-        # Christmas Day
-        dts_observed.add(self._add_christmas_day("Christmas Day"))
+        # Christmas Day.
+        dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
 
-        # Boxing day (up to and including 1968)
         if self._year <= 1968:
-            self._add_christmas_day_two("Boxing Day")
+            # Boxing day.
+            self._add_christmas_day_two(tr("Boxing Day"))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -303,23 +309,29 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SingaporeStaticHolidays:
+    """
+    References
+     - https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
+     - https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
+    """
+
+    # Polling Day.
+    polling_day_name = tr("Polling Day")
+
     special_public_holidays = {
-        2001: (NOV, 3, "Polling Day"),
-        2006: (MAY, 6, "Polling Day"),
-        2011: (MAY, 7, "Polling Day"),
+        2001: (NOV, 3, polling_day_name),
+        2006: (MAY, 6, polling_day_name),
+        2011: (MAY, 7, polling_day_name),
         2015: (
-            # SG50 Public holiday
-            # Announced on 14 March 2015
-            # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-            (AUG, 7, "SG50 Public Holiday"),
-            (SEP, 11, "Polling Day"),
+            # SG50 Public Holiday.
+            (AUG, 7, tr("SG50 Public Holiday")),
+            (SEP, 11, polling_day_name),
         ),
-        2020: (JUL, 10, "Polling Day"),
-        # Announced in state-associated press on 12 August 2023
-        # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
-        2023: (SEP, 1, "Polling Day"),
+        2020: (JUL, 10, polling_day_name),
+        2023: (SEP, 1, polling_day_name),
     }
 
     special_public_holidays_observed = {
-        2007: (JAN, 2, "Hari Raya Haji"),
+        # Eid al-Adha.
+        2007: (JAN, 2, tr("Hari Raya Haji")),
     }

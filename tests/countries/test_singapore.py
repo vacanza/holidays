@@ -198,3 +198,62 @@ class TestSingapore(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday("2015-08-07")
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-22", "Chinese New Year"),
+            ("2023-01-23", "Chinese New Year"),
+            ("2023-01-24", "Chinese New Year (observed)"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-22", "Hari Raya Puasa"),
+            ("2023-05-01", "Labour Day"),
+            ("2023-06-02", "Vesak Day"),
+            ("2023-06-29", "Hari Raya Haji"),
+            ("2023-08-09", "National Day"),
+            ("2023-09-01", "Polling Day"),
+            ("2023-11-12", "Deepavali"),
+            ("2023-11-13", "Deepavali (observed)"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-22", "Chinese New Year"),
+            ("2023-01-23", "Chinese New Year"),
+            ("2023-01-24", "Chinese New Year (observed)"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-22", "Eid al-Fitr"),
+            ("2023-05-01", "Labor Day"),
+            ("2023-06-02", "Vesak Day"),
+            ("2023-06-29", "Eid al-Adha"),
+            ("2023-08-09", "National Day"),
+            ("2023-09-01", "Polling Day"),
+            ("2023-11-12", "Deepavali"),
+            ("2023-11-13", "Deepavali (observed)"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-01", "วันขึ้นปีใหม่"),
+            ("2023-01-02", "ชดเชยวันขึ้นปีใหม่"),
+            ("2023-01-22", "วันตรุษจีน"),
+            ("2023-01-23", "วันตรุษจีน"),
+            ("2023-01-24", "ชดเชยวันตรุษจีน"),
+            ("2023-04-07", "วันศุกร์ประเสริฐ"),
+            ("2023-04-22", "วันอีฎิ้ลฟิตริ"),
+            ("2023-05-01", "วันแรงงาน"),
+            ("2023-06-02", "วันวิสาขบูชา"),
+            ("2023-06-29", "วันอีดิ้ลอัฎฮา"),
+            ("2023-08-09", "วันชาติสิงคโปร์"),
+            ("2023-09-01", "วันเลือกตั้ง"),
+            ("2023-11-12", "วันดีปาวลี"),
+            ("2023-11-13", "ชดเชยวันดีปาวลี"),
+            ("2023-12-25", "วันคริสต์มาส"),
+        )
