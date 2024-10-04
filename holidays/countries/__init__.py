@@ -45,6 +45,7 @@ from .chad import Chad, TD, TCD
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
+from .congo import Congo, CG, COG
 from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
