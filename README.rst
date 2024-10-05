@@ -369,7 +369,7 @@ All other default values are highlighted with bold:
      - CW
      -
      - en_US, nl, **pap_CW**, uk
-     -
+     - HALF_DAY
    * - Cyprus
      - CY
      -

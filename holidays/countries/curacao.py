@@ -14,6 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import APR, MAY, _timedelta
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,13 +23,11 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
     https://en.wikipedia.org/wiki/Public_holidays_in_Cura%C3%A7ao
-
-    New Year's Eve (Vispu di Aña Nobo) is a half-day public holiday, though
-    this isn't supported by Python Holidays so it won't be implemented.
     """
 
     country = "CW"
     default_language = "pap_CW"
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "nl", "pap_CW", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -135,6 +134,13 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Second Day of Christmas
         self._add_christmas_day_two(tr("Di dos dia di Pasku di Nasementu"))
+
+    def _populate_half_day_holidays(self):
+        if self._year <= 1953:
+            return None
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Vispu di Aña Nobo"))
 
 
 class CW(Curacao):
