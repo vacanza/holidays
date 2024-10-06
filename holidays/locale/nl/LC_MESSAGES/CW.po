@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.27\n"
+"Project-Id-Version: Python Holidays 0.58\n"
 "POT-Creation-Date: 2023-06-13 16:35+0700\n"
-"PO-Revision-Date: \n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-10-05 22:08+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #. New Year's Day
 msgid "Aña Nobo"
@@ -78,3 +78,7 @@ msgstr "Kerst"
 #. Second Day of Christmas
 msgid "Di dos dia di Pasku di Nasementu"
 msgstr "Tweede kerstdag"
+
+#. New Year's Eve.
+msgid "Vispu di Aña Nobo"
+msgstr "Oudejaarsavond"
