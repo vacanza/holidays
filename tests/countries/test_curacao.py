@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.curacao import Curacao, CW, CUW
 from tests.common import CommonCountryTests
 
@@ -19,13 +20,13 @@ from tests.common import CommonCountryTests
 class TestCuracao(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Curacao, years=range(1954, 2077))
+        super().setUpClass(Curacao, years=range(1954, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Curacao, CW, CUW)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Curacao(years=1953))
+        self.assertNoHolidays(Curacao(categories=(HALF_DAY, PUBLIC), years=1953))
 
     def test_2016(self):
         self.assertHolidays(
@@ -42,6 +43,12 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2016-10-10", "Dia di Pais Kòrsou"),
             ("2016-12-25", "Pasku di Nasementu"),
             ("2016-12-26", "Di dos dia di Pasku di Nasementu"),
+        )
+
+    def test_2016_half_day(self):
+        self.assertHolidays(
+            Curacao(categories=HALF_DAY, years=2016),
+            ("2016-12-31", "Vispu di Aña Nobo"),
         )
 
     def test_queens_day(self):
@@ -116,13 +123,13 @@ class TestCuracao(CommonCountryTests, TestCase):
 
     def test_anthem_and_flag_day(self):
         name = "Dia di Himno i Bandera"
-        self.assertNoHolidayName(name, 1983)
-        self.assertHolidayName(name, (f"{year}-07-02" for year in range(1984, 2077)))
+        self.assertNoHolidayName(name, range(1954, 1983))
+        self.assertHolidayName(name, (f"{year}-07-02" for year in range(1984, 2050)))
 
     def test_curacao_day(self):
         name = "Dia di Pais Kòrsou"
-        self.assertNoHolidayName(name, 2009)
-        self.assertHolidayName(name, (f"{year}-10-10" for year in range(2010, 2077)))
+        self.assertNoHolidayName(name, range(1954, 2009))
+        self.assertHolidayName(name, (f"{year}-10-10" for year in range(2010, 2050)))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -138,6 +145,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2023-10-10", "Dia di Pais Kòrsou"),
             ("2023-12-25", "Pasku di Nasementu"),
             ("2023-12-26", "Di dos dia di Pasku di Nasementu"),
+            ("2023-12-31", "Vispu di Aña Nobo"),
         )
 
     def test_l10n_en_us(self):
@@ -155,6 +163,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2023-10-10", "Curaçao Day"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Second Day of Christmas"),
+            ("2023-12-31", "New Year's Eve"),
         )
 
     def test_l10n_nl(self):
@@ -172,6 +181,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2023-10-10", "Dag van Land Curaçao"),
             ("2023-12-25", "Kerst"),
             ("2023-12-26", "Tweede kerstdag"),
+            ("2023-12-31", "Oudejaarsavond"),
         )
 
     def test_l10n_uk(self):
@@ -189,4 +199,5 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2023-10-10", "День Кюрасао"),
             ("2023-12-25", "Різдво Христове"),
             ("2023-12-26", "Другий день Різдва"),
+            ("2023-12-31", "Переддень Нового року"),
         )

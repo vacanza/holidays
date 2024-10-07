@@ -52,6 +52,7 @@ COUNTRIES: RegistryDict = {
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
     "colombia": ("Colombia", "CO", "COL"),
+    "congo": ("Congo", "CG", "COG"),
     "costa_rica": ("CostaRica", "CR", "CRI"),
     "croatia": ("Croatia", "HR", "HRV"),
     "cuba": ("Cuba", "CU", "CUB"),
