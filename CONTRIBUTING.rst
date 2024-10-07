@@ -2,8 +2,8 @@
 Contributing
 ============
 
-.. _prs: https://github.com/vacanza/python-holidays/pulls
-.. _`dev branch`: https://github.com/vacanza/python-holidays/tree/dev
+.. _prs: https://github.com/vacanza/holidays/pulls
+.. _`dev branch`: https://github.com/vacanza/holidays/tree/dev
 
 
 Basics
@@ -99,7 +99,7 @@ If the translation already exists you'll just need to update it with the new
 template entries (your .po file editor may help you to do that with no hassle).
 
 Please also add tests (see already translated countries tests for examples).
-The .mo files are generated automatically for the tests and the python-holidays
+The .mo files are generated automatically for the tests and the holidays
 package so you shouldn't worry about it. Just don't forget to
 initialize the ``setUpClass`` properly:
 
@@ -113,7 +113,7 @@ initialize the ``setUpClass`` properly:
 Build sphinx documentation
 --------------------------
 
-.. _readthedocs.io: https://python-holidays.readthedocs.io/
+.. _readthedocs.io: https://holidays.readthedocs.io/
 
 The project provides a Sphinx documentation source under ``./docs/source``,
 published online on `readthedocs.io`_.
@@ -128,9 +128,9 @@ __ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 Contributors
 ------------
 
-.. __: https://github.com/vacanza/python-holidays/blob/dev/AUTHORS
-.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
-    :target: https://github.com/vacanza/python-holidays/graphs/contributors
+.. __: https://github.com/vacanza/holidays/blob/dev/AUTHORS
+.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/holidays
+    :target: https://github.com/vacanza/holidays/graphs/contributors
     :alt: contributors
 
 In order to keep the list of contributors up to date we encourage you add your

@@ -223,7 +223,7 @@ jobs:
   publish-main:
     name: Publish generated artifacts
     if: |
-      github.repository == 'vacanza/python-holidays' &&
+      github.repository == 'vacanza/holidays' &&
       github.event_name == 'push' &&
       startsWith(github.event.ref, 'refs/tags/v')
     environment: main
@@ -254,5 +254,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} dist/*
-          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} holidays-*-sbom.json
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json

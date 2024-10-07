@@ -2,13 +2,13 @@ blank_issues_enabled: false
 
 contact_links:
   - name: General question
-    url: https://github.com/vacanza/python-holidays/discussions/new?category=q-a
+    url: https://github.com/vacanza/holidays/discussions/new?category=q-a
     about: Ask a question
 
   - name: Bug Report
-    url: https://github.com/vacanza/python-holidays/issues/new?template=bug_report.md
+    url: https://github.com/vacanza/holidays/issues/new?template=bug_report.md
     about: Report an issue
 
   - name: Feature Request
-    url: https://github.com/vacanza/python-holidays/issues/new?template=feature_request.md
+    url: https://github.com/vacanza/holidays/issues/new?template=feature_request.md
     about: Suggest an idea

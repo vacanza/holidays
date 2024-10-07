@@ -9,7 +9,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import argparse
@@ -34,7 +34,7 @@ Version {version}
 Released {month} {day}, {year}
 """
 IGNORED_CONTRIBUTORS = {"dependabot[bot]", "github-actions[bot]"}
-REPOSITORY_NAME = "vacanza/python-holidays"
+REPOSITORY_NAME = "vacanza/holidays"
 
 
 class ReleaseNotesGenerator:

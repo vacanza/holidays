@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 
@@ -27,7 +27,7 @@ PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
 
 
 class TestCase:
-    """Base class for python-holidays test cases."""
+    """Base class for holidays test cases."""
 
     @classmethod
     def setUpClass(cls, test_class=None, years=None, years_non_observed=None):

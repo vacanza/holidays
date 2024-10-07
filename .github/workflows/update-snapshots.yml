@@ -9,7 +9,7 @@ on:
 jobs:
   update-snapshots:
     name: Update snapshots
-    if: github.repository == 'vacanza/python-holidays'
+    if: github.repository == 'vacanza/holidays'
     permissions:
       contents: write
       pull-requests: write

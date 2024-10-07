@@ -7,18 +7,18 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Chinese holidays zh_TW localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.42\n"
 "POT-Creation-Date: 2023-09-28 19:23+0700\n"
 "PO-Revision-Date: 2024-01-18 11:43+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-"Language-Team: Python Holidays localization team\n"
+"Language-Team: Holidays localization team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

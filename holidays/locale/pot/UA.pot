@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Python Holidays package.
+# This file is distributed under the same license as the Holidays package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.55\n"
+"Project-Id-Version: Holidays 0.55\n"
 "POT-Creation-Date: 2024-08-15 21:21+0300\n"
 "PO-Revision-Date: 2024-08-15 21:21+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Python Holidays Localization Team\n"
+"Language-Team: Holidays Localization Team\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
