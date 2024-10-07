@@ -1,3 +1,29 @@
+Version 0.58
+============
+
+Released October 7, 2024
+
+- Add Congo holidays (#2037 by @PPsyrius)
+- Add Saint Kitts & Nevis holidays (#2005 by @PPsyrius, @arkid15r)
+- Add Vietnamese translation of VietNam holidays (#2025 by @vunhatchuong, @arkid15r)
+- Update Kazakhstan holidays: add substituted holidays, localization (#2023 by @KJhellico)
+- Update Malaysia holidays: add `th` localization (#2030 by @PPsyrius)
+- Update Singapore holidays: add `en_SG`, `en_US`, `th` localization (#2031 by @PPsyrius)
+- Update Sweden holidays: add `th` localization (#2029 by @PPsyrius)
+- Update Azerbaijan holidays in 2024 (#2018 by @KJhellico)
+- Update Curaçao holidays: add HALF_DAY holidays (#2039 by @KJhellico)
+- Update Japan holidays (#2013 by @KJhellico)
+- Update Nicaragua holidays (#2011 by @KJhellico)
+- Update Taiwan holidays (#2026 by @KJhellico, @arkid15r)
+- Update US holidays: American Samoa holidays (#2017 by @KJhellico)
+- Update United States holidays: fix Washington's Birthday in GA & IN (#2014 by @KJhellico)
+- Update `ci` label configuration (#2009 by @arkid15r)
+- Update apostrophes: change `’` to `'` (#2016 by @arkid15r)
+- Update working day related calculations (#2010 by @KJhellico, @arkid15r)
+- Add @PPsyrius to CODEOWNERS (#2008 by @arkid15r)
+- Move to `holidays` from `python-holidays` (#2027 by @arkid15r)
+- Remove deprecated `fix-encoding-pragma`, add `pyupgrade` (#2007 by @PPsyrius, @arkid15r)
+
 Version 0.57
 ============
 
