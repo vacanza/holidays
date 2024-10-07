@@ -9,7 +9,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import importlib
@@ -35,7 +35,7 @@ class POGenerator:
 
         # Update the project version if po file entries translation has changed only.
         if po_file != po_file_initial:
-            po_file.metadata["Project-Id-Version"] = f"Python Holidays {package_version}"
+            po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
 
         # Save the file each time in order to capture all other changes properly.
         po_file.save(po_path)
@@ -83,7 +83,7 @@ class POGenerator:
                     "-o",
                     f"{pot_file_path}",
                     "--package-name",
-                    "Python Holidays",
+                    "Holidays",
                     "--package-version",
                     package_version,
                     "--width",
@@ -97,7 +97,7 @@ class POGenerator:
             pot_file = pofile(pot_file_path)
             pot_file.metadata.update(
                 {
-                    "Language-Team": "Python Holidays Localization Team",
+                    "Language-Team": "Holidays Localization Team",
                     "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
                 }
             )

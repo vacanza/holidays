@@ -1,0 +1,98 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Singapore holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.58\n"
+"POT-Creation-Date: 2024-10-02 15:30+0700\n"
+"PO-Revision-Date: 2024-10-02 16:06+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "ชดเชย%s"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#. Chinese New Year.
+msgid "Chinese New Year"
+msgstr "วันตรุษจีน"
+
+#. Eid al-Fitr.
+msgid "Hari Raya Puasa"
+msgstr "วันอีฎิ้ลฟิตริ"
+
+#. Second Day of Eid al-Fitr.
+msgid "Second Day of Hari Raya Puasa"
+msgstr "วันอีฎิ้ลฟิตริวันที่สอง"
+
+#. Eid al-Adha.
+msgid "Hari Raya Haji"
+msgstr "วันอีดิ้ลอัฎฮา"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr "วันเสาร์ศักดิ์สิทธิ์"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "วันแรงงาน"
+
+#. Vesak Day.
+#. type: ignore[arg-type]
+msgid "Vesak Day"
+msgstr "วันวิสาขบูชา"
+
+#. National Day.
+msgid "National Day"
+msgstr "วันชาติสิงคโปร์"
+
+#. Deepavali.
+#. type: ignore[arg-type]
+msgid "Deepavali"
+msgstr "วันดีปาวลี"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Boxing day.
+msgid "Boxing Day"
+msgstr "วันเปิดกล่องของขวัญ"
+
+#. Polling Day.
+msgid "Polling Day"
+msgstr "วันเลือกตั้ง"
+
+#. SG50 Public Holiday.
+msgid "SG50 Public Holiday"
+msgstr "วันครบรอบ 50 ปีการประกาศเอกราชสิงค์โปร์"

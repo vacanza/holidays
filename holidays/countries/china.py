@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
@@ -220,7 +220,7 @@ class ChinaStaticHolidays:
     # Mid-Autumn Festival.
     mid_autumn_festival = tr("中秋节")
 
-    # 70th Anniversary of the Victory of the Chinese People’s War of Resistance against
+    # 70th Anniversary of the Victory of the Chinese People's War of Resistance against
     # Japanese Aggression and the World Anti-Fascist War.
     victory_70_anniversary = tr("中国人民抗日战争暨世界反法西斯战争胜利70周年纪念日")
 

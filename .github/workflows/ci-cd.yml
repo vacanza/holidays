@@ -2,12 +2,16 @@ name: CI/CD
 
 on:
   merge_group:
+  pull_request:
     branches:
       - dev
       - main
       - v1
-  pull_request:
   push:
+    branches:
+      - dev
+      - main
+      - v1
   workflow_dispatch:
 
 env:
@@ -98,7 +102,7 @@ jobs:
           make test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v4.6.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -219,7 +223,7 @@ jobs:
   publish-main:
     name: Publish generated artifacts
     if: |
-      github.repository == 'vacanza/python-holidays' &&
+      github.repository == 'vacanza/holidays' &&
       github.event_name == 'push' &&
       startsWith(github.event.ref, 'refs/tags/v')
     environment: main
@@ -250,5 +254,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} dist/*
-          gh release upload --repo vacanza/python-holidays ${{ github.ref_name }} holidays-*-sbom.json
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json

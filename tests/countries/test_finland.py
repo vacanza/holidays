@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
@@ -168,7 +168,7 @@ class TestFinland(CommonCountryTests, TestCase):
         )
 
     def _test_unofficial_holiday(self, name, since):
-        start_year, month, day = [int(part) for part in since.split("-")]
+        start_year, month, day = (int(part) for part in since.split("-"))
         self.assertHolidayName(
             name,
             self.unofficial_holidays,

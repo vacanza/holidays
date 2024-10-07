@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
@@ -121,7 +121,7 @@ class Malaysia(
         "WP Putrajaya": "16",
         "PJY": "16",
     }
-    supported_languages = ("en_US", "ms_MY")
+    supported_languages = ("en_US", "ms_MY", "th")
 
     def __init__(self, *args, **kwargs):
         """

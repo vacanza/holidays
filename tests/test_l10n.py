@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import os
@@ -79,5 +79,5 @@ class TestLocalization(unittest.TestCase):
             self.assertFalse(
                 obsolete_entries,
                 f"The {entity_code} {language} localization contains obsolete entries: "
-                f"{', '.join((oe.msgid for oe in obsolete_entries))}",
+                f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )

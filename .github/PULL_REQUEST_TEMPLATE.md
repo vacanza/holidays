@@ -1,5 +1,5 @@
 <!--
-  Thanks for contributing to python-holidays!
+  Thanks for contributing to holidays!
 -->
 
 ## Proposed change
@@ -25,7 +25,7 @@ Your PR description goes here.
 - [ ] Dependency update (version deprecation/pin/upgrade)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
-- [ ] New feature (new python-holidays functionality in general)
+- [ ] New feature (new `holidays` functionality in general)
 
 ## Checklist
 
@@ -41,5 +41,5 @@ Your PR description goes here.
   Thanks again for your contribution!
 -->
 
-[contributing-guidelines]: https://github.com/vacanza/python-holidays/blob/dev/CONTRIBUTING.rst
-[docs]: https://github.com/vacanza/python-holidays/tree/dev/docs/source
+[contributing-guidelines]: https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.rst
+[docs]: https://github.com/vacanza/holidays/tree/dev/docs/source

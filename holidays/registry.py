@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 import importlib
@@ -52,6 +52,7 @@ COUNTRIES: RegistryDict = {
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
     "colombia": ("Colombia", "CO", "COL"),
+    "congo": ("Congo", "CG", "COG"),
     "costa_rica": ("CostaRica", "CR", "CRI"),
     "croatia": ("Croatia", "HR", "HRV"),
     "cuba": ("Cuba", "CU", "CUB"),
@@ -137,6 +138,7 @@ COUNTRIES: RegistryDict = {
     "puerto_rico": ("PuertoRico", "PR", "PRI", "HolidaysPR"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
+    "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "samoa": ("Samoa", "WS", "WSM"),
     "san_marino": ("SanMarino", "SM", "SMR"),
     "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
@@ -199,7 +201,7 @@ class EntityLoader:
         """Set up a lazy loader."""
         if args:
             raise TypeError(
-                "This is a python-holidays entity loader class. "
+                "This is a holidays entity loader class. "
                 "For entity inheritance purposes please import a class you "
                 "want to derive from directly: e.g., "
                 "`from holidays.countries import Entity` or "

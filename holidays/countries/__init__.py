@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 # flake8: noqa: F401
@@ -45,6 +45,7 @@ from .chad import Chad, TD, TCD
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
+from .congo import Congo, CG, COG
 from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
@@ -130,6 +131,7 @@ from .portugal import Portugal, PT, PRT
 from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
+from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from .samoa import Samoa, WS, WSM
 from .san_marino import SanMarino, SM, SMR
 from .saudi_arabia import SaudiArabia, SA, SAU

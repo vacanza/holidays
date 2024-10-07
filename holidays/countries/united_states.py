@@ -7,22 +7,27 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import DEC
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    ObservedRule,
     MON_TO_NEXT_TUE,
     FRI_TO_PREV_THU,
     SAT_TO_PREV_FRI,
     SUN_TO_NEXT_MON,
     SAT_SUN_TO_PREV_FRI,
     SAT_SUN_TO_NEXT_MON,
+)
+
+GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
+    {MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, SAT: -2, SUN: -2}
 )
 
 
@@ -43,6 +48,15 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     Frances Xavier Cabrini Day:
         - https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf
+
+    Washington's Birthday (GA):
+        - https://www.gasupreme.us/court-information/holidays-2/
+
+    Washington's Birthday (IN):
+        - https://www.in.gov/spd/benefits/state-holidays/
+
+    American Samoa holidays:
+        - https://asbar.org/code-annotated/1-0501-public-holidays/
     """
 
     country = "US"
@@ -187,6 +201,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             "DE",
             "FL",
             "GA",
+            "IN",
             "NM",
             "PR",
             "VI",
@@ -294,8 +309,16 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_feb_22(name)
 
     def _populate_subdiv_as_public_holidays(self):
-        # Christmas Eve
-        self._add_christmas_eve_holiday()
+        # American Samoa Flag Day
+        if self._year >= 1901:
+            self._add_observed(self._add_holiday_apr_17("American Samoa Flag Day"))
+
+        # Manu'a Islands Cession Day
+        if self._year >= 1983:
+            self._add_observed(self._add_holiday_jul_16("Manu'a Islands Cession Day"))
+
+        # White Sunday
+        self._add_holiday_2nd_sun_of_oct("White Sunday")
 
     def _populate_subdiv_az_public_holidays(self):
         # Martin Luther King Jr. Day
@@ -404,11 +427,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Washington's Birthday
-        name = "Washington's Birthday"
-        if self._is_wednesday(DEC, 24):
-            self._add_holiday_dec_26(name)
-        else:
-            self._add_holiday_dec_24(name)
+        self._add_holiday(
+            "Washington's Birthday",
+            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+        )
 
     def _populate_subdiv_gu_public_holidays(self):
         # Guam Discovery Day
@@ -489,6 +511,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Lincoln's Birthday
         if self._year >= 2010:
             self._add_holiday_1_day_past_4th_thu_of_nov("Lincoln's Birthday")
+
+        # Washington's Birthday
+        self._add_holiday(
+            "Washington's Birthday",
+            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+        )
 
     def _populate_subdiv_ks_public_holidays(self):
         # Christmas Eve

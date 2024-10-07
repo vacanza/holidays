@@ -29,9 +29,9 @@ maintainers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/vacanza/python-holidays/"
-Documentation = "https://python-holidays.readthedocs.io/en/latest/"
-Changelog = "https://github.com/vacanza/python-holidays/releases"
+Repository = "https://github.com/vacanza/holidays/"
+Documentation = "https://holidays.readthedocs.io/en/latest/"
+Changelog = "https://github.com/vacanza/holidays/releases"
 Downloads = "https://pypi.org/project/holidays/"
 
 [tool.bandit]

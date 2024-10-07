@@ -15,20 +15,20 @@ flexible as possible.
     :target: https://pypi.org/project/holidays
     :alt: PyPI version
 
-.. |release date| image:: https://img.shields.io/github/release-date/vacanza/python-holidays?color=41B5BE&style=flat
-    :target: https://github.com/vacanza/python-holidays/releases
+.. |release date| image:: https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat
+    :target: https://github.com/vacanza/holidays/releases
     :alt: PyPI release date
 
-.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/python-holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/actions/workflows/ci-cd.yml?query=branch%3Adev
+.. |status| image:: https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat
+    :target: https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev
     :alt: CI/CD status
 
-.. |documentation| image:: https://img.shields.io/readthedocs/python-holidays?color=41BE4A&style=flat
-    :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
+.. |documentation| image:: https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat
+    :target: https://holidays.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation status
 
-.. |license| image:: https://img.shields.io/github/license/vacanza/python-holidays?color=41B5BE&style=flat
-    :target: https://github.com/vacanza/python-holidays/blob/dev/LICENSE
+.. |license| image:: https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat
+    :target: https://github.com/vacanza/holidays/blob/dev/LICENSE
     :alt: License
 
 .. |python versions| image:: https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat
@@ -39,24 +39,24 @@ flexible as possible.
     :target: https://github.com/astral-sh/ruff
     :alt: Code style
 
-.. |coverage| image:: https://img.shields.io/codecov/c/github/vacanza/python-holidays/dev?color=41B5BE&style=flat
-    :target: https://app.codecov.io/gh/vacanza/python-holidays
+.. |coverage| image:: https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat
+    :target: https://app.codecov.io/gh/vacanza/holidays
     :alt: Code coverage
 
-.. |stars| image:: https://img.shields.io/github/stars/vacanza/python-holidays?color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/stargazers
+.. |stars| image:: https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat
+    :target: https://github.com/vacanza/holidays/stargazers
     :alt: GitHub stars
 
-.. |forks| image:: https://img.shields.io/github/forks/vacanza/python-holidays?color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/forks
+.. |forks| image:: https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat
+    :target: https://github.com/vacanza/holidays/forks
     :alt: GitHub forks
 
-.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays?color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/graphs/contributors
+.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat
+    :target: https://github.com/vacanza/holidays/graphs/contributors
     :alt: GitHub contributors
 
-.. |last commit| image:: https://img.shields.io/github/last-commit/vacanza/python-holidays/dev?color=41BE4A&style=flat
-    :target: https://github.com/vacanza/python-holidays/commits/dev
+.. |last commit| image:: https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat
+    :target: https://github.com/vacanza/holidays/commits/dev
     :alt: GitHub last commit
 
 +--------+------------------------------------------------+
@@ -82,7 +82,7 @@ The latest development (dev) version can be installed directly from GitHub:
 
 .. code-block:: shell
 
-    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/dev
+    $ pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
 
 All new features are always first pushed to dev branch, then released on
 main branch upon official version upgrades.
@@ -90,7 +90,7 @@ main branch upon official version upgrades.
 Documentation
 -------------
 
-.. _Read the Docs: https://python-holidays.readthedocs.io/
+.. _Read the Docs: https://holidays.readthedocs.io/
 
 The documentation is hosted on `Read the Docs`_.
 
@@ -132,9 +132,9 @@ Some holidays may be only present in parts of a country:
     '2018-01-06' in us_holidays     # False
     '2018-01-06' in us_pr_holidays  # True
 
-.. _python-holidays documentation: https://python-holidays.readthedocs.io/
+.. _holidays documentation: https://holidays.readthedocs.io/
 
-Please see the `python-holidays documentation`_ for additional examples and
+Please see the `holidays documentation`_ for additional examples and
 detailed information.
 
 
@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 152 country codes. The standard way to refer to a country
+We currently support 154 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -345,6 +345,11 @@ All other default values are highlighted with bold:
      -
      - en_US, **es**, uk
      -
+   * - Congo
+     - CG
+     -
+     - en_US, **fr**
+     -
    * - Costa Rica
      - CR
      -
@@ -364,7 +369,7 @@ All other default values are highlighted with bold:
      - CW
      -
      - en_US, nl, **pap_CW**, uk
-     -
+     - HALF_DAY
    * - Cyprus
      - CY
      -
@@ -558,7 +563,7 @@ All other default values are highlighted with bold:
    * - Kazakhstan
      - KZ
      -
-     -
+     - en_US, **kk**, uk
      -
    * - Kenya
      - KE
@@ -618,7 +623,7 @@ All other default values are highlighted with bold:
    * - Malaysia
      - MY
      - States and federal territories: 01 (Johor, JHR), 02 (Kedah, KDH), 03 (Kelantan, KTN), 04 (Melaka, MLK), 05 (Negeri Sembilan, NSN), 06 (Pahang, PHG), 07 (Pulau Pinang, PNG), 08 (Perak, PRK), 09 (Perlis, PLS), 10 (Selangor, SGR), 11 (Terengganu, TRG), 12 (Sabah, SBH), 13 (Sarawak, SWK), 14 (WP Kuala Lumpur, KUL), 15 (WP Labuan, LBN), 16 (WP Putrajaya, PJY)
-     - en_US, **ms_MY**
+     - en_US, **ms_MY**, th
      -
    * - Maldives
      - MV
@@ -687,7 +692,7 @@ All other default values are highlighted with bold:
      -
    * - Nicaragua
      - NI
-     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN**, MS, MT, NS, RI, SJ
+     - Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (Estelí), GR (Granada), JI (Jinotega), LE (León), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (Río San Juan)
      - en_US, **es**, uk
      -
    * - Nigeria
@@ -770,6 +775,11 @@ All other default values are highlighted with bold:
      -
      - en_US, **ru**
      -
+   * - Saint Kitts and Nevis
+     - KN
+     -
+     -
+     - HALF_DAY, WORKDAY
    * - Samoa
      - WS
      -
@@ -798,7 +808,7 @@ All other default values are highlighted with bold:
    * - Singapore
      - SG
      -
-     -
+     - **en_SG**, en_US, th
      -
    * - Slovakia
      - SK
@@ -828,7 +838,7 @@ All other default values are highlighted with bold:
    * - Sweden
      - SE
      -
-     - en_US, **sv**, uk
+     - en_US, **sv**, th, uk
      -
    * - Switzerland
      - CH
@@ -928,7 +938,7 @@ All other default values are highlighted with bold:
    * - Vietnam
      - VN
      -
-     -
+     - en_US, **vi**
      -
    * - Virgin Islands (U.S.)
      - VI
@@ -978,9 +988,9 @@ following financial markets are available:
 Contributions
 -------------
 
-.. _Issues: https://github.com/vacanza/python-holidays/issues
-.. _pull requests: https://github.com/vacanza/python-holidays/pulls
-.. _here: https://github.com/vacanza/python-holidays/blob/dev/CONTRIBUTING.rst
+.. _Issues: https://github.com/vacanza/holidays/issues
+.. _pull requests: https://github.com/vacanza/holidays/pulls
+.. _here: https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see
 `here`_ for more information.
@@ -988,7 +998,7 @@ Issues_ and `pull requests`_ are always welcome.  Please see
 License
 -------
 
-.. __: https://github.com/vacanza/python-holidays/blob/dev/LICENSE
+.. __: https://github.com/vacanza/holidays/blob/dev/LICENSE
 
 Code and documentation are available according to the MIT License
 (see LICENSE__).

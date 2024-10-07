@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see AUTHORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
 # flake8: noqa: F403
@@ -23,7 +23,7 @@ from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
 
-__version__ = "0.57"
+__version__ = "0.58"
 
 
 EntityLoader.load("countries", globals())

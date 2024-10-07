@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-ast
       - id: check-builtin-literals
@@ -8,9 +8,6 @@ repos:
       - id: end-of-file-fixer
         exclude_types:
           - rst
-      - id: fix-encoding-pragma
-        args:
-          - --remove
       - id: mixed-line-ending
         args:
           - --fix=lf
@@ -18,8 +15,15 @@ repos:
         exclude_types:
           - rst
 
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.17.0
+    hooks:
+    -   id: pyupgrade
+        args:
+          - --py38-plus
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.5
+    rev: v0.6.9
     hooks:
       - id: ruff
       - id: ruff-format
@@ -35,7 +39,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/bandit
-    rev: 1.7.9
+    rev: 1.7.10
     hooks:
       - id: bandit
         additional_dependencies:
@@ -76,7 +80,7 @@ repos:
       - id: rst-backticks
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.4.0'
+    rev: '1.4.1'
     hooks:
       - id: tox-ini-fmt
 
@@ -89,4 +93,4 @@ repos:
         name: run `make check`
         pass_filenames: false
         stages:
-          - push
+          - pre-push
