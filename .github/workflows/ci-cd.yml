@@ -12,6 +12,8 @@ on:
       - dev
       - main
       - v1
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 env:
