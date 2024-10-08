@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from typing import Tuple
 
 from holidays.calendars.gregorian import JUN, SEP, DEC
 from holidays.constants import BANK, PUBLIC
@@ -226,7 +225,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_holiday_dec_31(name)
 
     @property
-    def _summer_solstice_date(self) -> Tuple[int, int]:
+    def _summer_solstice_date(self) -> tuple[int, int]:
         day = 20
         if (self._year % 4 > 1 and self._year <= 2046) or (
             self._year % 4 > 2 and self._year <= 2075

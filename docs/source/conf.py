@@ -72,7 +72,7 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns: List[str] = []
+exclude_patterns: list[str] = []
 
 # Add any paths that contain templates here, relative to this directory.
 #
@@ -144,7 +144,7 @@ html_copy_source = False
 #
 # See https://sphinx-rtd-theme.readthedocs.io/en/latest/configuring.html
 #
-html_theme_options: Dict[str, Union[str, bool, int]] = {
+html_theme_options: dict[str, Union[str, bool, int]] = {
     # 'canonical_url': '',
     # 'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
     # 'analytics_anonymize_ip': False

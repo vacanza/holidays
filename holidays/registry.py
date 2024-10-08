@@ -11,12 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
+from collections.abc import Iterable
 from threading import RLock
-from typing import Any, Dict, Iterable, Optional, Tuple, Union
+from typing import Any, Optional, Union
 
 from holidays.holiday_base import HolidayBase
 
-RegistryDict = Dict[str, Tuple[str, ...]]
+RegistryDict = dict[str, tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
     "albania": ("Albania", "AL", "ALB"),
@@ -277,7 +278,7 @@ class EntityLoader:
         return EntityLoader._get_entity_codes(FINANCIAL, (3, 4), include_aliases)
 
     @staticmethod
-    def load(prefix: str, scope: Dict) -> None:
+    def load(prefix: str, scope: dict) -> None:
         """Load country or financial entities."""
         entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
         for module, entities in entity_mapping.items():

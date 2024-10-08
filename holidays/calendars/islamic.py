@@ -10,8 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
-from typing import Iterable, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -3641,80 +3641,80 @@ class _IslamicLunar:
         2076: (DEC, 5),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> Iterable[Tuple[date, bool]]:
+    def _get_holiday(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
 
-    def ali_al_rida_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def ali_al_rida_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ALI_AL_RIDA_DEATH, year)
 
-    def ali_birthday_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def ali_birthday_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ALI_BIRTHDAY, year)
 
-    def ali_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def ali_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ALI_DEATH, year)
 
-    def arbaeen_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def arbaeen_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ARBAEEN, year)
 
-    def ashura_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def ashura_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ASHURA, year)
 
-    def eid_al_adha_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def eid_al_adha_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(EID_AL_ADHA, year)
 
-    def eid_al_fitr_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def eid_al_fitr_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(EID_AL_FITR, year)
 
-    def eid_al_ghadir_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def eid_al_ghadir_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(EID_AL_GHADIR, year)
 
-    def fatima_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def fatima_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(FATIMA_DEATH, year)
 
-    def hari_hol_johor_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def hari_hol_johor_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(HARI_HOL_JOHOR, year)
 
-    def hasan_al_askari_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def hasan_al_askari_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(HASAN_AL_ASKARI_DEATH, year)
 
-    def hijri_new_year_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def hijri_new_year_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(HIJRI_NEW_YEAR, year)
 
-    def imam_mahdi_birthday_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def imam_mahdi_birthday_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(IMAM_MAHDI_BIRTHDAY, year)
 
-    def isra_and_miraj_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def isra_and_miraj_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(ISRA_AND_MIRAJ, year)
 
-    def maldives_embraced_islam_day_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def maldives_embraced_islam_day_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(MALDIVES_EMBRACED_ISLAM_DAY, year)
 
-    def mawlid_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def mawlid_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(MAWLID, year)
 
-    def nuzul_al_quran_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def nuzul_al_quran_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(NUZUL_AL_QURAN, year)
 
-    def prophet_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def prophet_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(PROPHET_DEATH, year)
 
-    def quamee_dhuvas_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def quamee_dhuvas_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(QUAMEE_DHUVAS, year)
 
-    def ramadan_beginning_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def ramadan_beginning_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(RAMADAN_BEGINNING, year)
 
-    def sadiq_birthday_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def sadiq_birthday_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(SADIQ_BIRTHDAY, year)
 
-    def sadiq_death_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def sadiq_death_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(SADIQ_DEATH, year)
 
-    def tasua_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
+    def tasua_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday(TASUA, year)
 
 

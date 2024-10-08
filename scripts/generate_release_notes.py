@@ -17,7 +17,6 @@ import re
 import sys
 from datetime import date
 from pathlib import Path
-from typing import Dict, Set
 
 from git import Repo
 from github import Github
@@ -83,8 +82,8 @@ class ReleaseNotesGenerator:
         self.local_repo = Repo(Path.cwd())
         self.remote_repo = Github(self.github_token).get_repo(REPOSITORY_NAME)
 
-        self.previous_commits: Set[str] = set()
-        self.pull_requests: Dict[int, str] = {}
+        self.previous_commits: set[str] = set()
+        self.pull_requests: dict[int, str] = {}
 
         self.tag = holidays.__version__
 
