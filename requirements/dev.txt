@@ -1,6 +1,6 @@
 # Dev requirements.
 
-build==1.2.2
+build==1.2.2.post1
 convertdate==2.4.0
 gitpython==3.1.43
 hijridate==2.5.0
