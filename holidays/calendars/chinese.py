@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional, Tuple
+from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
@@ -1237,28 +1237,28 @@ class _ChineseLunisolar:
         2099: (SEP, 29),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> Tuple[Optional[date], bool]:
+    def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
-    def buddha_birthday_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def buddha_birthday_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(BUDDHA_BIRTHDAY, year)
 
-    def double_ninth_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def double_ninth_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DOUBLE_NINTH, year)
 
-    def dragon_boat_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def dragon_boat_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DRAGON_BOAT, year)
 
-    def hung_kings_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def hung_kings_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(HUNG_KINGS, year)
 
-    def lunar_new_year_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def lunar_new_year_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(LUNAR_NEW_YEAR, year)
 
-    def mid_autumn_date(self, year: int) -> Tuple[Optional[date], bool]:
+    def mid_autumn_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(MID_AUTUMN, year)
 
 

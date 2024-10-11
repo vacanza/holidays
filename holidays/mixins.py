@@ -11,16 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 
-from typing import Tuple
-
-
 class PreferredDiscretionaryHolidays:
     """A mixin for setting preferred discretionary holidays.
 
     See :class:`holidays.countries.hongkong.HongKong` for an example.
     """
 
-    default_preferred_discretionary_holidays: Tuple[str, ...] = ()
+    default_preferred_discretionary_holidays: tuple[str, ...] = ()
     """Preferred discretionary holidays defaults."""
 
     def __init__(self, preferred_discretionary_holidays):

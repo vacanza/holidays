@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Tuple
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -416,7 +415,7 @@ class HongKong(
                 self._add_holiday_aug_30(name)
 
     @property
-    def _winter_solstice_date(self) -> Tuple[int, int]:
+    def _winter_solstice_date(self) -> tuple[int, int]:
         # This approximation is reliable for 1952-2099 years.
         if (
             (self._year % 4 == 0 and self._year >= 1988)

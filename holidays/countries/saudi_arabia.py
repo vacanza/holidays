@@ -12,7 +12,6 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Set
 
 from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
@@ -58,7 +57,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, dts: Set[date]) -> None:
+    def _add_islamic_observed(self, dts: set[date]) -> None:
         # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None

@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from typing import Tuple, Union
+from typing import Union
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.constants import PUBLIC, UNOFFICIAL
@@ -62,7 +62,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     country = "US"
     supported_categories = (PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"
-    subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
+    subdivisions: Union[tuple[()], tuple[str, ...]] = (
         "AK",  # Alaska.
         "AL",  # Alabama.
         "AR",  # Arkansas.

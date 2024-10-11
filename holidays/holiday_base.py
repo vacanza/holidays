@@ -15,11 +15,12 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 import copy
 import warnings
 from calendar import isleap
+from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Union, cast
+from typing import Any, Dict, Optional, Union, cast
 
 from dateutil.parser import parse
 
@@ -42,17 +43,17 @@ from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
-DateArg = Union[date, Tuple[int, int]]
+DateArg = Union[date, tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
-SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
+SpecialHoliday = Union[tuple[int, int, str], tuple[tuple[int, int, str], ...]]
 SubstitutedHoliday = Union[
-    Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]],
-    Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
+    Union[tuple[int, int, int, int], tuple[int, int, int, int, int]],
+    tuple[Union[tuple[int, int, int, int], tuple[int, int, int, int, int]], ...],
 ]
 YearArg = Union[int, Iterable[int]]
 
 
-class HolidayBase(Dict[date, str]):
+class HolidayBase(dict[date, str]):
     """
     A dict-like object containing the holidays for a specific country (and
     province or state if so initiated); inherits the dict class (so behaves
@@ -210,12 +211,12 @@ class HolidayBase(Dict[date, str]):
     """The country's ISO 3166-1 alpha-2 code."""
     market: str
     """The market's ISO 3166-1 alpha-2 code."""
-    subdivisions: Tuple[str, ...] = ()
+    subdivisions: tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
-    subdivisions_aliases: Dict[str, str] = {}
+    subdivisions_aliases: dict[str, str] = {}
     """Aliases for the ISO 3166-2 subdivision codes with the key as alias and
     the value the ISO 3166-2 subdivision code."""
-    years: Set[int]
+    years: set[int]
     """The years calculated."""
     expand: bool
     """Whether the entire year is calculated when one date from that year
@@ -224,25 +225,25 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested as ISO 3166-2 code or one of the aliases."""
-    special_holidays: Dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
+    special_holidays: dict[int, Union[SpecialHoliday, SubstitutedHoliday]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
-    _deprecated_subdivisions: Tuple[str, ...] = ()
+    _deprecated_subdivisions: tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
-    weekend: Set[int] = {SAT, SUN}
+    weekend: set[int] = {SAT, SUN}
     """Country weekend days."""
-    weekend_workdays: Set[date] = set()
+    weekend_workdays: set[date] = set()
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
     default_language: Optional[str] = None
     """The entity language used by default."""
-    categories: Set[str] = set()
+    categories: set[str] = set()
     """Requested holiday categories."""
-    supported_categories: Tuple[str, ...] = (PUBLIC,)
+    supported_categories: tuple[str, ...] = (PUBLIC,)
     """All holiday categories supported by this entity."""
-    supported_languages: Tuple[str, ...] = ()
+    supported_languages: tuple[str, ...] = ()
     """All languages supported by this entity."""
 
     def __init__(
@@ -630,7 +631,7 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
+    def __reduce__(self) -> Union[str, tuple[Any, ...]]:
         return super().__reduce__()
 
     def __repr__(self) -> str:
@@ -720,9 +721,9 @@ class HolidayBase(Dict[date, str]):
         )
 
     @classmethod
-    def get_subdivision_aliases(cls) -> Dict[str, List]:
+    def get_subdivision_aliases(cls) -> dict[str, list]:
         """Get subdivision aliases."""
-        subdivision_aliases: Dict[str, List[str]] = {s: [] for s in cls.subdivisions}
+        subdivision_aliases: dict[str, list[str]] = {s: [] for s in cls.subdivisions}
         for alias, subdivision in cls.subdivisions_aliases.items():
             subdivision_aliases[subdivision].append(alias)
 
@@ -862,7 +863,7 @@ class HolidayBase(Dict[date, str]):
                 for category in self._sorted_categories
             )
 
-    def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
+    def append(self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
@@ -891,7 +892,7 @@ class HolidayBase(Dict[date, str]):
         """
         return dict.get(self, self.__keytransform__(key), default)
 
-    def get_list(self, key: DateLike) -> List[str]:
+    def get_list(self, key: DateLike) -> list[str]:
         """Return a list of all holiday names for a date if date is a holiday,
         else empty string.
 
@@ -909,7 +910,7 @@ class HolidayBase(Dict[date, str]):
 
     def get_named(
         self, holiday_name: str, lookup="icontains", split_multiple_names=True
-    ) -> List[date]:
+    ) -> list[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
         will be included by default.
@@ -1025,7 +1026,7 @@ class HolidayBase(Dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, name: str) -> List[date]:
+    def pop_named(self, name: str) -> list[date]:
         """Remove (no longer treat at as holiday) all dates matching the
         provided holiday name. The match will be made case insensitively and
         partial matches will be removed.
@@ -1065,7 +1066,7 @@ class HolidayBase(Dict[date, str]):
         return popped
 
     def update(  # type: ignore[override]
-        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
+        self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]
     ) -> None:
         # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
@@ -1105,15 +1106,15 @@ class HolidaySum(HolidayBase):
     are merged. All years are calculated (expanded) for all operands.
     """
 
-    country: Union[str, List[str]]  # type: ignore[assignment]
+    country: Union[str, list[str]]  # type: ignore[assignment]
     """Countries included in the addition."""
-    market: Union[str, List[str]]  # type: ignore[assignment]
+    market: Union[str, list[str]]  # type: ignore[assignment]
     """Markets included in the addition."""
-    subdiv: Optional[Union[str, List[str]]]  # type: ignore[assignment]
+    subdiv: Optional[Union[str, list[str]]]  # type: ignore[assignment]
     """Subdivisions included in the addition."""
-    holidays: List[HolidayBase]
+    holidays: list[HolidayBase]
     """The original HolidayBase objects included in the addition."""
-    years: Set[int]
+    years: set[int]
     """The years calculated."""
 
     def __init__(
@@ -1153,7 +1154,7 @@ country_holidays('CA') + country_holidays('MX')
             else:
                 self.holidays.append(operand)
 
-        kwargs: Dict[str, Any] = {}
+        kwargs: dict[str, Any] = {}
         # Join years, expand and observed.
         kwargs["years"] = h1.years | h2.years
         kwargs["expand"] = h1.expand or h2.expand
