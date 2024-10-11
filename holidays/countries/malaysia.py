@@ -33,6 +33,7 @@ from holidays.calendars.gregorian import (
     DEC,
     FRI,
     SAT,
+    SUN,
 )
 from holidays.groups import (
     BuddhistCalendarHolidays,
@@ -228,6 +229,9 @@ class Malaysia(
         elif self.subdiv in {"03", "11"}:
             self._observed_rule = SAT_TO_NEXT_WORKDAY
             self.weekend = {FRI, SAT}
+        else:
+            self._observed_rule = SUN_TO_NEXT_WORKDAY
+            self.weekend = {SAT, SUN}
 
         if self.observed:
             self._populate_observed(self.dts_observed)
