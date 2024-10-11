@@ -220,7 +220,10 @@ class Malaysia(
 
         super()._populate_subdiv_holidays()
 
-        if self.subdiv in {"01", "02"}:
+        if self.subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024):
+            self._observed_rule = FRI_TO_NEXT_WORKDAY
+            self.weekend = {FRI, SAT}
+        elif self.subdiv == "02":
             self._observed_rule = FRI_TO_NEXT_WORKDAY
             self.weekend = {FRI, SAT}
         elif self.subdiv in {"03", "11"}:
