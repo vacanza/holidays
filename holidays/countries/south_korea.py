@@ -13,7 +13,6 @@
 import warnings
 from datetime import date
 from gettext import gettext as tr
-from typing import Dict, Set
 
 from holidays.calendars import _CustomChineseHolidays
 from holidays.calendars.gregorian import (
@@ -103,7 +102,7 @@ class SouthKorea(
         kwargs.setdefault("observed_since", 2014)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: Set[date], three_day_holidays: Dict[date, str]) -> None:
+    def _populate_observed(self, dts: set[date], three_day_holidays: dict[date, str]) -> None:
         for dt in sorted(dts.union(three_day_holidays.keys())):
             if not self._is_observed(dt):
                 continue

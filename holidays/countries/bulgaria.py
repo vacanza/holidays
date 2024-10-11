@@ -12,7 +12,6 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Set
 
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
@@ -57,7 +56,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         kwargs.setdefault("observed_since", 2017)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: Set[date], excluded_names: Set[str]) -> None:
+    def _populate_observed(self, dts: set[date], excluded_names: set[str]) -> None:
         for dt in sorted(dts):
             if not self._is_observed(dt):
                 continue

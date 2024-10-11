@@ -12,7 +12,7 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Optional, Tuple
+from typing import Optional
 
 from holidays.calendars.gregorian import AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -59,7 +59,7 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # it rolls over to the following Monday.
         return dt >= date(1996, SEP, 27)
 
-    def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, Optional[date]]:
+    def _add_observed(self, dt: date, **kwargs) -> tuple[bool, Optional[date]]:
         # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
         # the Monday or Friday is also a holiday.
         kwargs.setdefault(

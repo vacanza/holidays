@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional, Tuple
+from typing import Optional
 
 from holidays.calendars import _ChineseLunisolar
 from holidays.calendars.gregorian import APR, _timedelta
@@ -48,7 +48,7 @@ class ChineseCalendarHolidays:
         return self._chinese_calendar.mid_autumn_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
-        self, name: str, dt_estimated: Tuple[date, bool], days_delta: int = 0
+        self, name: str, dt_estimated: tuple[date, bool], days_delta: int = 0
     ) -> Optional[date]:
         """
         Add Chinese calendar holiday.

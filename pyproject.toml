@@ -3,7 +3,7 @@ name = "holidays"
 description = "Generate and work with holidays in Python"
 license = { file = "LICENSE" }
 readme = "README.rst"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dynamic = ["version"]
 
 authors = [{ email = "dr.prodigy.github@gmail.com", name = "Maurizio Montel" }]

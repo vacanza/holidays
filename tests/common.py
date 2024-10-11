@@ -14,8 +14,8 @@
 import os
 import sys
 import warnings
+from collections.abc import Generator
 from datetime import date
-from typing import Generator
 
 from dateutil.parser import parse
 

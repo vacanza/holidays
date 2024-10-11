@@ -11,13 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Dict, Optional, Tuple, Set
+from typing import Optional
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN, _timedelta
 from holidays.holiday_base import DateArg, HolidayBase
 
 
-class ObservedRule(Dict[int, Optional[int]]):
+class ObservedRule(dict[int, Optional[int]]):
     __slots__ = ()
 
     def __add__(self, other):
@@ -141,7 +141,7 @@ class ObservedHolidayBase(HolidayBase):
         name: Optional[str] = None,
         rule: Optional[ObservedRule] = None,
         show_observed_label: bool = True,
-    ) -> Tuple[bool, Optional[date]]:
+    ) -> tuple[bool, Optional[date]]:
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
         if not self.observed or not self._is_observed(dt):
@@ -186,7 +186,7 @@ class ObservedHolidayBase(HolidayBase):
 
     def _move_holiday(
         self, dt: date, rule: Optional[ObservedRule] = None, show_observed_label: bool = True
-    ) -> Tuple[bool, Optional[date]]:
+    ) -> tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(
             dt, rule=rule, show_observed_label=show_observed_label
         )
@@ -194,7 +194,7 @@ class ObservedHolidayBase(HolidayBase):
             self.pop(dt)
         return is_observed, dt_observed if is_observed else dt
 
-    def _populate_observed(self, dts: Set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
         """
         When multiple is True, each holiday from a given date has its own observed date.
         """

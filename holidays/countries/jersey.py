@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional, Tuple
+from typing import Optional
 
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, SEP, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -56,7 +56,7 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         ObservedHolidayBase.__init__(self, *args, **kwargs)
 
-    def _add_observed(self, dt: date, **kwargs) -> Tuple[bool, Optional[date]]:
+    def _add_observed(self, dt: date, **kwargs) -> tuple[bool, Optional[date]]:
         # Prior to 2004, in-lieu are only given for Sundays.
         # https://www.jerseylaw.je/laws/enacted/Pages/RO-123-2004.aspx
         kwargs.setdefault(

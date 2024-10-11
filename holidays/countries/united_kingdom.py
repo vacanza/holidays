@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from typing import Tuple, Union
+from typing import Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
@@ -38,7 +38,7 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     country = "GB"
     observed_label = "%s (observed)"
-    subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
+    subdivisions: Union[tuple[()], tuple[str, ...]] = (
         "ENG",  # England
         "NIR",  # Northern Ireland
         "SCT",  # Scotland
