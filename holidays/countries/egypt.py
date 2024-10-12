@@ -39,7 +39,6 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
