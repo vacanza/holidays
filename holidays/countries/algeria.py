@@ -32,7 +32,6 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
-    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
