@@ -163,6 +163,11 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # International Women's Day.
             self._add_womens_day(tr("Internationaler Frauentag"))
 
+        if self._year == 2025:
+            # anniversary of the liberation from National Socialism (one-time)
+            # https://www.berlin.de/aktuelles/9188766-958090-einmaliger-feiertag-am-8-mai-2025.html
+            self._add_liberation_from_nazi_regime_day(tr("80. Jahrestag der Befreiung vom Nationalsozialismus"))
+
     def _populate_subdiv_bw_public_holidays(self):
         if self._year <= 1989:
             return None
