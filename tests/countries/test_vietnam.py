@@ -32,7 +32,7 @@ class TestVietnam(CommonCountryTests, TestCase):
             "2020-01-01",
         )
 
-    def test_first_day_of_january(self):
+    def test_new_years_day(self):
         self.assertHolidayName("Tết Dương lịch", (f"{year}-01-01" for year in range(1979, 2050)))
 
     def test_lunar_new_year(self):
@@ -53,21 +53,38 @@ class TestVietnam(CommonCountryTests, TestCase):
             (2020, 1, 25),
             (2021, 2, 12),
             (2022, 2, 1),
+            (2023, 1, 22),
+            (2024, 2, 10),
         ):
             dt = date(*dts)
             self.assertHolidayName("Giao thừa Tết Nguyên Đán", _timedelta(dt, -1))
             self.assertHolidayName("Tết Nguyên Đán", dt)
             self.assertHolidayName("Mùng hai Tết Nguyên Đán", _timedelta(dt, +1))
             self.assertHolidayName("Mùng ba Tết Nguyên Đán", _timedelta(dt, +2))
-            self.assertHolidayName("Mùng bốn Tết Nguyên Đán", _timedelta(dt, +3))
-            self.assertHolidayName("Mùng năm Tết Nguyên Đán", _timedelta(dt, +4))
+            if dt.year >= 2013:
+                self.assertHolidayName("Mùng bốn Tết Nguyên Đán", _timedelta(dt, +3))
 
-    def test_king_hung_day(self):
+    def test_hung_kings_day(self):
         self.assertHolidayName(
             "Ngày Giỗ Tổ Hùng Vương",
+            "2007-04-26",
+            "2008-04-15",
+            "2009-04-05",
+            "2010-04-23",
+            "2011-04-12",
+            "2012-03-31",
+            "2013-04-19",
+            "2014-04-09",
+            "2015-04-28",
+            "2016-04-16",
+            "2017-04-06",
+            "2018-04-25",
+            "2019-04-14",
             "2020-04-02",
             "2021-04-21",
             "2022-04-10",
+            "2023-04-29",
+            "2024-04-18",
         )
 
     def test_liberation_day(self):
@@ -78,8 +95,15 @@ class TestVietnam(CommonCountryTests, TestCase):
             "Ngày Quốc tế Lao động", (f"{year}-05-01" for year in range(1979, 2050))
         )
 
-    def test_independence_day(self):
-        self.assertHolidayName("Quốc khánh", (f"{year}-09-02" for year in range(1979, 2050)))
+    def test_national_day(self):
+        self.assertHolidayName(
+            "Quốc khánh",
+            (f"{year}-09-02" for year in range(1979, 2050)),
+            "2021-09-03",
+            "2022-09-01",
+            "2023-09-01",
+            "2024-09-03",
+        )
 
     def test_observed(self):
         observed_holidays = (
@@ -87,7 +111,29 @@ class TestVietnam(CommonCountryTests, TestCase):
             "2012-01-02",
             "2017-01-02",
             "2022-01-03",
+            # Lunar New Year.
+            "2012-01-26",
+            "2013-02-14",
+            "2013-02-15",
+            "2014-01-29",
+            "2014-02-04",
+            "2015-02-17",
+            "2015-02-23",
+            "2016-02-12",
+            "2017-01-26",
+            "2017-02-01",
+            "2018-02-14",
+            "2018-02-20",
+            "2020-01-23",
+            "2020-01-29",
+            "2021-02-10",
+            "2021-02-16",
+            "2023-01-20",
+            "2023-01-26",
+            "2024-02-08",
+            "2024-02-14",
             # Hung Kings' Commemoration Day.
+            "2009-04-06",
             "2012-04-02",
             "2016-04-18",
             "2019-04-15",
@@ -113,6 +159,21 @@ class TestVietnam(CommonCountryTests, TestCase):
         self.assertHoliday(observed_holidays)
         self.assertNoNonObservedHoliday(observed_holidays)
 
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2010-02-19",
+            "2012-01-27",
+            "2013-04-29",
+            "2014-05-02",
+            "2014-09-01",
+            "2015-01-02",
+            "2015-02-16",
+            "2015-04-29",
+            "2018-12-31",
+            "2019-04-29",
+            "2024-04-29",
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Tết Dương lịch"),
@@ -122,13 +183,13 @@ class TestVietnam(CommonCountryTests, TestCase):
             ("2022-02-02", "Mùng hai Tết Nguyên Đán"),
             ("2022-02-03", "Mùng ba Tết Nguyên Đán"),
             ("2022-02-04", "Mùng bốn Tết Nguyên Đán"),
-            ("2022-02-05", "Mùng năm Tết Nguyên Đán"),
             ("2022-04-10", "Ngày Giỗ Tổ Hùng Vương"),
             ("2022-04-11", "Ngày Giỗ Tổ Hùng Vương (nghỉ bù)"),
             ("2022-04-30", "Ngày Chiến thắng"),
             ("2022-05-01", "Ngày Quốc tế Lao động"),
             ("2022-05-02", "Ngày Chiến thắng (nghỉ bù)"),
             ("2022-05-03", "Ngày Quốc tế Lao động (nghỉ bù)"),
+            ("2022-09-01", "Quốc khánh"),
             ("2022-09-02", "Quốc khánh"),
         )
 
@@ -139,15 +200,15 @@ class TestVietnam(CommonCountryTests, TestCase):
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-01-31", "Lunar New Year's Eve"),
             ("2022-02-01", "Lunar New Year"),
-            ("2022-02-02", "The second day of Tet Holiday"),
-            ("2022-02-03", "The third day of Tet Holiday"),
-            ("2022-02-04", "The fourth day of Tet Holiday"),
-            ("2022-02-05", "The fifth day of Tet Holiday"),
+            ("2022-02-02", "Second Day of Lunar New Year"),
+            ("2022-02-03", "Third Day of Lunar New Year"),
+            ("2022-02-04", "Fourth Day of Lunar New Year"),
             ("2022-04-10", "Hung Kings' Commemoration Day"),
             ("2022-04-11", "Hung Kings' Commemoration Day (observed)"),
             ("2022-04-30", "Liberation Day/Reunification Day"),
             ("2022-05-01", "International Labor Day"),
             ("2022-05-02", "Liberation Day/Reunification Day (observed)"),
             ("2022-05-03", "International Labor Day (observed)"),
+            ("2022-09-01", "National Day"),
             ("2022-09-02", "National Day"),
         )
