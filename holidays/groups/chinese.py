@@ -59,14 +59,18 @@ class ChineseCalendarHolidays:
         estimated_label = getattr(self, "estimated_label", "%s (estimated)")
         dt, is_estimated = dt_estimated
 
-        if days_delta and dt is not None:
+        if days_delta and dt:
             dt = _timedelta(dt, days_delta)
 
-        return self._add_holiday(
-            self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._chinese_calendar_show_estimated
-            else name,
-            dt,
+        return (
+            self._add_holiday(
+                self.tr(estimated_label) % self.tr(name)
+                if is_estimated and self._chinese_calendar_show_estimated
+                else name,
+                dt,
+            )
+            if dt
+            else None
         )
 
     def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:
