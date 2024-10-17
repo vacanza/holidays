@@ -78,8 +78,13 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_observed.add(self._add_holiday_mar_23(name))
             dts_observed.add(self._add_holiday_mar_24(name))
 
-        # Victory over Fascism Day.
-        dts_observed.add(self._add_world_war_two_victory_day(tr("Faşizm üzərində qələbə günü")))
+        dts_observed.add(
+            self._add_world_war_two_victory_day(
+                # Victory over Fascism Day.
+                tr("Faşizm üzərində qələbə günü"),
+                is_western=False,
+            )
+        )
 
         if self._year >= 1992:
             dts_observed.add(

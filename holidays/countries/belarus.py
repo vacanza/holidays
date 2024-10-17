@@ -64,7 +64,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_labor_day(tr("Свята працы"))
 
         # Victory Day.
-        self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
+        self._add_world_war_two_victory_day(tr("Дзень Перамогі"), is_western=False)
 
         # Independence Day.
         self._add_holiday_jul_3(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"))

@@ -76,7 +76,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_apr_9(tr("ეროვნული ერთიანობის დღე"))
 
         # Day of Victory over Fascism.
-        self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"))
+        self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"), is_western=False)
 
         # Saint Andrew's Day.
         self._add_holiday_may_12(tr("წმინდა ანდრია პირველწოდებულის დღე"))

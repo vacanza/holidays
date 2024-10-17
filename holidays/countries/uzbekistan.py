@@ -68,7 +68,8 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
                 tr("Xotira va qadrlash kuni")
                 if self._year >= 1999
                 # Victory Day.
-                else tr("G‘alaba kuni")
+                else tr("G‘alaba kuni"),
+                is_western=False,
             )
         )
 

@@ -60,7 +60,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
 
         if self._year >= 1997:
             # Day of Victory over Fascism.
-            self._add_holiday_may_8(tr("Deň víťazstva nad fašizmom"))
+            self._add_world_war_two_victory_day(tr("Deň víťazstva nad fašizmom"))
 
         # Saints Cyril and Methodius Day.
         self._add_holiday_jul_5(tr("Sviatok svätého Cyrila a svätého Metoda"))

@@ -75,7 +75,7 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_labor_day_two(name)
 
         # Victory Day.
-        self._add_world_war_two_victory_day(tr("День Победы"))
+        self._add_world_war_two_victory_day(tr("День Победы"), is_western=False)
 
         if self._year >= 1992:
             self._add_holiday_jun_12(

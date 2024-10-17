@@ -85,7 +85,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1953 <= self._year <= 1959 or self._year >= 1982:
             # Victory Day.
-            self._add_holiday_may_8(tr("Fête de la Victoire"))
+            self._add_world_war_two_victory_day(tr("Fête de la Victoire"))
 
         if self._year >= 1880:
             # National Day.

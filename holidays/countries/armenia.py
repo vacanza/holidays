@@ -82,8 +82,11 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         if self._year >= 1995:
-            # Victory and Peace Day.
-            self._add_world_war_two_victory_day(tr("Հաղթանակի և Խաղաղության տոն"))
+            self._add_world_war_two_victory_day(
+                # Victory and Peace Day.
+                tr("Հաղթանակի և Խաղաղության տոն"),
+                is_western=False,
+            )
 
         # Republic Day.
         self._add_holiday_may_28(tr("Հանրապետության օր"))
