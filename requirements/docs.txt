@@ -1,6 +1,6 @@
 # Documentation requirements.
 
 python-dateutil==2.9.0.post0
-sphinx-rtd-theme==2.0.0
+sphinx-rtd-theme==3.0.1
 sphinx==7.4.7  # keep the version until sphinx-rtd-theme starts supporting sphinx>=8
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
