@@ -17,6 +17,10 @@ from holidays.calendars.gregorian import _timedelta
 
 
 class EasternCalendarHolidays:
+    """
+    Eastern calendar holidays base class.
+    """
+
     def _add_eastern_calendar_holiday(
         self,
         name: str,
