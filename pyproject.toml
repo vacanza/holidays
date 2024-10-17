@@ -1,38 +1,43 @@
 [project]
 name = "holidays"
-description = "Generate and work with holidays in Python"
-license = { file = "LICENSE" }
+description = "World Holidays Framework"
+license = { "text" = "MIT" }
 readme = "README.rst"
 requires-python = ">=3.9"
 dynamic = ["version"]
 
-authors = [{ email = "dr.prodigy.github@gmail.com", name = "Maurizio Montel" }]
+authors = [{ name = "Vacanza Team" }]
 dependencies = ["python-dateutil"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Information Technology",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: File Formats :: JSON",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Office/Business :: Financial :: Investment",
     "Topic :: Office/Business :: Scheduling",
     "Topic :: Software Development :: Libraries :: Python Modules",
-    "Topic :: Software Development :: Localization",
 ]
-keywords = ["holidays", "calendar", "l10n"]
+keywords = ["holidays", "calendar", "l10n", "worldwide", "vacation"]
 maintainers = [
-    { email = "ark@cho.red", name = "Arkadii Yakovets" },
-    { email = "jhellico@gmail.com", name = "Serhii Murza" },
+    { name = "Arkadii Yakovets" },
+    { name = "Panpakorn Siripanich" },
+    { name = "Serhii Murza" },
 ]
 
 [project.urls]
-Repository = "https://github.com/vacanza/holidays/"
 Documentation = "https://holidays.readthedocs.io/en/latest/"
-Changelog = "https://github.com/vacanza/holidays/releases"
-Downloads = "https://pypi.org/project/holidays/"
+Repository = "https://github.com/vacanza/holidays/"
+Changelog = "https://github.com/vacanza/holidays/releases/"
 
 [tool.bandit]
 exclude_dirs = ["docs", "tests"]
