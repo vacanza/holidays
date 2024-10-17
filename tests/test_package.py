@@ -23,14 +23,13 @@ class TestPackage(TestCase):
 
         for attr_name, attr_value in {
             "name": "holidays",
-            "summary": "Generate and work with holidays in Python",
+            "summary": "World Holidays Framework",
             "version": holidays.__version__,
         }.items():
             self.assertIn(attr_name, ph_metadata)
             self.assertEqual(ph_metadata[attr_name], attr_value, attr_name)
 
         for attr_name in (
-            "author-email",
             "classifier",
             "description",
             "keywords",
