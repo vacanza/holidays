@@ -14,10 +14,10 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars import _IslamicLunar
-from holidays.calendars.gregorian import _timedelta
+from holidays.groups.eastern import EasternCalendarHolidays
 
 
-class IslamicHolidays:
+class IslamicHolidays(EasternCalendarHolidays):
     """
     Islamic holidays.
 
@@ -261,15 +261,8 @@ class IslamicHolidays:
         holiday date is an estimation.
         """
         added_dates = set()
-        estimated_label = getattr(self, "estimated_label", "%s (estimated)")
-        for dt, is_estimated in dates:
-            if days_delta != 0:
-                dt = _timedelta(dt, days_delta)
-
-            dt = self._add_holiday(
-                self.tr(estimated_label) % self.tr(name) if is_estimated else name, dt
-            )
-            if dt:
+        for dts in dates:
+            if dt := self._add_eastern_calendar_holiday(name, dts, days_delta=days_delta):
                 added_dates.add(dt)
 
         return added_dates

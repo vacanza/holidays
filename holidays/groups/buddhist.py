@@ -14,9 +14,10 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars import _BuddhistLunisolar
+from holidays.groups.eastern import EasternCalendarHolidays
 
 
-class BuddhistCalendarHolidays:
+class BuddhistCalendarHolidays(EasternCalendarHolidays):
     """
     Buddhist lunisolar calendar holidays.
     """
@@ -34,18 +35,8 @@ class BuddhistCalendarHolidays:
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "%s (estimated)")
-        dt, is_estimated = dt_estimated
-
-        return (
-            self._add_holiday(
-                self.tr(estimated_label) % self.tr(name)
-                if is_estimated and self._buddhist_calendar_show_estimated
-                else name,
-                dt,
-            )
-            if dt
-            else None
+        return self._add_eastern_calendar_holiday(
+            name, dt_estimated, self._buddhist_calendar_show_estimated
         )
 
     def _add_vesak(self, name) -> Optional[date]:
