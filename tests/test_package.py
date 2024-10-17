@@ -35,9 +35,13 @@ class TestPackage(TestCase):
             "keywords",
             "license",
             "license-file",
-            "maintainer-email",
+            "maintainer",
             "project-url",
             "requires-python",
         ):
             self.assertIn(attr_name, ph_metadata)
             self.assertTrue(ph_metadata[attr_name], attr_name)
+
+            if attr_name == "maintainer":
+                for maintainer in ("Arkadii Yakovets", "Panpakorn Siripanich", "Serhii Murza"):
+                    self.assertIn(maintainer, ph_metadata["maintainer"])

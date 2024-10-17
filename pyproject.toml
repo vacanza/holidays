@@ -29,8 +29,9 @@ classifiers = [
 ]
 keywords = ["holidays", "calendar", "l10n", "worldwide", "vacation"]
 maintainers = [
-    { email = "ark@cho.red", name = "Arkadii Yakovets" },
-    { email = "jhellico@gmail.com", name = "Serhii Murza" },
+    { name = "Arkadii Yakovets" },
+    { name = "Panpakorn Siripanich" },
+    { name = "Serhii Murza" },
 ]
 
 [project.urls]
