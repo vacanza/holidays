@@ -59,7 +59,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     # %s (observed).
     observed_label = tr("%s (nghỉ bù)")
     default_language = "vi"
-    supported_languages = ("en_US", "vi")
+    supported_languages = ("en_US", "th", "vi")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
