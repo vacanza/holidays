@@ -185,15 +185,18 @@ class InternationalHolidays:
         """
         return self._add_holiday_mar_8(name)
 
-    def _add_world_war_two_victory_day(self, name):
+    def _add_world_war_two_victory_day(self, name, is_western=True):
         """
-        Add Victory Day (May 9th)
+        Add Day of Victory in World War II in Europe (May 8).
+        https://en.wikipedia.org/wiki/Victory_in_Europe_Day
 
-        Victory Day is a holiday that commemorates the victory over Nazi
-        Germany in 1945.
+        Some Eastern European countries celebrate Victory Day on May 9.
         https://en.wikipedia.org/wiki/Victory_Day_(9_May)
         """
-        return self._add_holiday_may_9(name)
+        if is_western:
+            return self._add_holiday_may_8(name)
+        else:
+            return self._add_holiday_may_9(name)
 
     def _add_united_nations_day(self, name):
         """

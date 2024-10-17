@@ -58,7 +58,7 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         self._add_holiday_may_5("Constitution Day")
 
         # Victory Day.
-        self._add_world_war_two_victory_day("Victory Day")
+        self._add_world_war_two_victory_day("Victory Day", is_western=False)
 
         # Independence Day.
         self._add_holiday_aug_31("Independence Day")

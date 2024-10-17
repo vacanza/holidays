@@ -130,7 +130,7 @@ class Kazakhstan(
             dts_observed.add(self._add_holiday_may_7(tr("Отан Қорғаушы күні")))
 
         # Victory Day.
-        dt = self._add_world_war_two_victory_day(tr("Жеңіс күні"))
+        dt = self._add_world_war_two_victory_day(tr("Жеңіс күні"), is_western=False)
         if self._year != 2020:
             dts_observed.add(dt)
 
