@@ -185,17 +185,6 @@ class InternationalHolidays:
         """
         return self._add_holiday_mar_8(name)
 
-    def _add_liberation_from_nazi_regime_day(self, name):
-        """
-        Add Day of Liberation from National Socialism (May 8)
-
-        In some parts of Germany, this is a holiday on 8th of May.
-        The German Term is "Tag der Befreiung".
-        https://en.wikipedia.org/wiki/Victory_in_Europe_Day
-        https://de.wikipedia.org/wiki/Tag_der_Befreiung
-        """
-        return self._add_holiday_may_8(name)
-
     def _add_world_war_two_victory_day(self, name):
         """
         Add Victory Day (May 9th)
