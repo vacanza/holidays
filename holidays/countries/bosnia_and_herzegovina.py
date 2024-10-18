@@ -146,7 +146,7 @@ class BosniaAndHerzegovina(
         self._add_labor_day_two(name)
 
         # Victory Day.
-        self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
+        self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"), is_western=False)
 
         # Statehood Day.
         self._add_holiday_nov_25(tr("Dan državnosti"))
@@ -220,7 +220,7 @@ class BosniaAndHerzegovina(
         self._add_labor_day_two(name)
 
         # Victory Day.
-        self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
+        self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"), is_western=False)
 
         self._add_holiday_nov_21(
             # Dayton Agreement Day.

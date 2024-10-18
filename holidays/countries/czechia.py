@@ -52,10 +52,13 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1992:
             # Victory Day.
-            self._add_holiday_may_8(tr("Den vítězství"))
+            self._add_world_war_two_victory_day(tr("Den vítězství"))
         elif self._year >= 1947:
-            # Day of Victory over Fascism.
-            self._add_world_war_two_victory_day(tr("Den vítězství nad hitlerovským fašismem"))
+            self._add_world_war_two_victory_day(
+                # Day of Victory over Fascism.
+                tr("Den vítězství nad hitlerovským fašismem"),
+                is_western=False,
+            )
 
         if self._year >= 1951:
             # Saints Cyril and Methodius Day.

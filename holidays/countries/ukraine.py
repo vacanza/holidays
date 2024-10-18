@@ -103,9 +103,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 else tr("День перемоги")
             )
             dts_observed.add(
-                self._add_holiday_may_8(name)
-                if self._year >= 2024
-                else self._add_world_war_two_victory_day(name)
+                self._add_world_war_two_victory_day(name, is_western=(self._year >= 2024))
             )
 
             if self._year >= 1997:
