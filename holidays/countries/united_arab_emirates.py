@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, FRI, SAT
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, FRI, SAT, SUN
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -35,7 +35,6 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
-    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -43,6 +42,10 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # The resting days are Saturday and Sunday since Jan 1, 2022.
+        # https://time.com/6126260/uae-working-days-weekend/
+        self.weekend = {FRI, SAT} if self._year <= 2021 else {SAT, SUN}
+
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 

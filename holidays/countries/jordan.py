@@ -39,7 +39,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     def _populate_public_holidays(self):
         # The resting days are Friday and Saturday since Jan 6, 2000.
         # https://archive.wfn.org/2000/01/msg00078.html
-        self.weekend = {FRI, SAT} if self._year >= 2000 else {THU, FRI}
+        self.weekend = {THU, FRI} if self._year <= 1999 else {FRI, SAT}
 
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))

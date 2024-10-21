@@ -64,15 +64,16 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Solidarity Day.
         self._add_labor_day(tr("Ziua internaţională a solidarităţii oamenilor muncii"))
 
-        may_9 = self._add_world_war_two_victory_day(
+        self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for
             # Independence of Fatherland.
-            tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei")
+            tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"),
+            is_western=False,
         )
 
         if self._year >= 2017:
             # Europe Day.
-            self._add_holiday(tr("Ziua Europei"), may_9)
+            self._add_holiday_may_9(tr("Ziua Europei"))
 
         if self._year >= 2016:
             # International Children's Day.

@@ -319,4 +319,14 @@ class GermanyStaticHolidays:
                 "und der Beendigung des Zweiten Weltkriegs in Europa"
             ),
         ),
+        2025: (
+            MAY,
+            8,
+            # 80th anniversary of the liberation from Nazism and
+            # the end of the Second World War in Europe.
+            tr(
+                "80. Jahrestag der Befreiung vom Nationalsozialismus "
+                "und der Beendigung des Zweiten Weltkriegs in Europa"
+            ),
+        ),
     }

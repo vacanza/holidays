@@ -11,13 +11,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Optional, Tuple
+from typing import Optional
 
 from holidays.calendars import _ChineseLunisolar
-from holidays.calendars.gregorian import APR, _timedelta
+from holidays.calendars.gregorian import APR
+from holidays.groups.eastern import EasternCalendarHolidays
 
 
-class ChineseCalendarHolidays:
+class ChineseCalendarHolidays(EasternCalendarHolidays):
     """
     Chinese lunisolar calendar holidays.
     """
@@ -48,7 +49,7 @@ class ChineseCalendarHolidays:
         return self._chinese_calendar.mid_autumn_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
-        self, name: str, dt_estimated: Tuple[date, bool], days_delta: int = 0
+        self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
     ) -> Optional[date]:
         """
         Add Chinese calendar holiday.
@@ -56,17 +57,8 @@ class ChineseCalendarHolidays:
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "%s (estimated)")
-        dt, is_estimated = dt_estimated
-
-        if days_delta != 0:
-            dt = _timedelta(dt, days_delta)
-
-        return self._add_holiday(
-            self.tr(estimated_label) % self.tr(name)
-            if is_estimated and self._chinese_calendar_show_estimated
-            else name,
-            dt,
+        return self._add_eastern_calendar_holiday(
+            name, dt_estimated, self._chinese_calendar_show_estimated, days_delta
         )
 
     def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:
@@ -134,16 +126,6 @@ class ChineseCalendarHolidays:
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+3
-        )
-
-    def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
-        """
-        Add Chinese New Year's Day Five.
-
-        https://en.wikipedia.org/wiki/Chinese_New_Year
-        """
-        return self._add_chinese_calendar_holiday(
-            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
     def _add_qingming_festival(self, name) -> date:

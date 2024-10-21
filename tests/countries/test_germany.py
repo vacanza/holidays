@@ -197,6 +197,15 @@ class TestDE(CommonCountryTests, TestCase):
         for subdiv in subdivs_that_dont:
             self.assertNoHoliday(self.subdiv_holidays[subdiv], "2020-05-08")
 
+    def test_80_jahrestag_beendigung_zweiter_weltkrieg(self):
+        subdivs_that_have = {"BE"}
+        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
+
+        for subdiv in subdivs_that_have:
+            self.assertHoliday(self.subdiv_holidays[subdiv], "2025-05-08")
+        for subdiv in subdivs_that_dont:
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], "2025-05-08")
+
     def test_christi_himmelfahrt(self):
         known_good = (
             "2014-05-29",

@@ -12,7 +12,6 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Set
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -80,7 +79,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         super().__init__(*args, **kwargs)
 
     def _populate_observed(
-        self, dts: Set[date], rule: ObservedRule = None, since: int = 2015
+        self, dts: set[date], rule: ObservedRule = None, since: int = 2015
     ) -> None:
         if self._year < since:
             return None

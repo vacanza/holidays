@@ -12,7 +12,6 @@
 
 from datetime import date
 from gettext import gettext as tr
-from typing import Set, Tuple
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -54,7 +53,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
     def _is_observed(self, dt: date) -> bool:
         return dt >= date(1973, APR, 12)
 
-    def _populate_observed(self, dts: Set[date]) -> None:
+    def _populate_observed(self, dts: set[date]) -> None:
         # When a national holiday falls on Sunday, next working day
         # shall become a public holiday (振替休日) - substitute holiday.
         for dt in sorted(dts):
@@ -211,7 +210,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         self._add_new_years_eve(name)
 
     @property
-    def _vernal_equinox_date(self) -> Tuple[int, int]:
+    def _vernal_equinox_date(self) -> tuple[int, int]:
         day = 20
         if (
             (self._year % 4 == 0 and self._year <= 1956)
@@ -225,7 +224,7 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
         return MAR, day
 
     @property
-    def _autumnal_equinox_date(self) -> Tuple[int, int]:
+    def _autumnal_equinox_date(self) -> tuple[int, int]:
         day = 23
         if self._year % 4 == 3 and self._year <= 1979:
             day = 24

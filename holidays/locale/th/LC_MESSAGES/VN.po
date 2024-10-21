@@ -10,16 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Vietnam holidays en_US localization.
+# Vietnam holidays th localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.59\n"
 "POT-Creation-Date: 2024-09-27 15:50+0700\n"
-"PO-Revision-Date: 2024-10-09 20:57+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2024-10-09 20:58+0300\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,65 +29,65 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (nghỉ bù)"
-msgstr "%s (observed)"
+msgstr "ชดเชย%s"
 
 #. New Year's Day.
 msgid "Tết Dương lịch"
-msgstr "New Year's Day"
+msgstr "วันปีใหม่สากล"
 
 #. 29 of Lunar New Year.
 msgid "29 Tết"
-msgstr "29 of Lunar New Year"
+msgstr "วันที่ 29 เดือน 12 ตามปฏิทินจันทรคติ"
 
 #. Lunar New Year's Eve.
 msgid "Giao thừa Tết Nguyên Đán"
-msgstr "Lunar New Year's Eve"
+msgstr "วันก่อนวันตรุษเต๊ต"
 
 #. Lunar New Year.
 msgid "Tết Nguyên Đán"
-msgstr "Lunar New Year"
+msgstr "วันตรุษเต๊ต"
 
 #. Second Day of Lunar New Year.
 msgid "Mùng hai Tết Nguyên Đán"
-msgstr "Second Day of Lunar New Year"
+msgstr "วันตรุษเต๊ตวันที่สอง"
 
 #. Third Day of Lunar New Year.
 msgid "Mùng ba Tết Nguyên Đán"
-msgstr "Third Day of Lunar New Year"
+msgstr "วันตรุษเต๊ตวันที่สาม"
 
 #. Fourth Day of Lunar New Year.
 msgid "Mùng bốn Tết Nguyên Đán"
-msgstr "Fourth Day of Lunar New Year"
+msgstr "วันตรุษเต๊ตวันที่สี่"
 
 #. Fifth Day of Lunar New Year.
 msgid "Mùng năm Tết Nguyên Đán"
-msgstr "Fifth Day of Lunar New Year"
+msgstr "วันตรุษเต๊ตวันที่ห้า"
 
 #. Sixth Day of Lunar New Year.
 msgid "Mùng sáu Tết Nguyên Đán"
-msgstr "Sixth Day of Lunar New Year"
+msgstr "วันตรุษเต๊ตวันที่หก"
 
 #. Hung Kings' Commemoration Day.
 msgid "Ngày Giỗ Tổ Hùng Vương"
-msgstr "Hung Kings' Commemoration Day"
+msgstr "วันสักการะบูชาบรรพกษัตริย์หุ่ง"
 
 #. Liberation Day/Reunification Day.
 msgid "Ngày Chiến thắng"
-msgstr "Liberation Day/Reunification Day"
+msgstr "วันปลดปล่อยภาคใต้เพื่อรวมชาติ"
 
 #. International Labor Day.
 msgid "Ngày Quốc tế Lao động"
-msgstr "International Labor Day"
+msgstr "วันแรงงานสากล"
 
 #. National Day.
 msgid "Quốc khánh"
-msgstr "National Day"
+msgstr "วันชาติเวียตนาม"
 
 #. Date format (see strftime() Format Codes).
 msgid "%d/%m/%Y"
-msgstr "%m/%d/%Y"
+msgstr "%d/%m/%Y"
 
 #. Day off (substituted from %s).
 #, c-format
 msgid "Ngày nghỉ (thay cho ngày %s)"
-msgstr "Day off (substituted from %s)"
+msgstr "วันหยุด (แทน %s)"

@@ -28,7 +28,6 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
