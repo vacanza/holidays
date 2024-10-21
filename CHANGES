@@ -1,3 +1,19 @@
+Version 0.59
+============
+
+Released October 21, 2024
+
+- Update Vietnam holidays: add `th` localization (#2060 by @PPsyrius)
+- Update Germany holidays: add Liberation from Nazi Regime Day 2025 in Berlin (#2052 by @hf-kklein, @PPsyrius)
+- Update Johor (Malaysia) and United Arab Emirates `weekend` observance, cleanup others (#2048 by @PPsyrius)
+- Update Vietnam holidays (#2049 by @KJhellico)
+- Update `InternationalHolidays::_add_world_war_two_victory_day()` method (#2064 by @KJhellico)
+- Update `holidays` package metadata (#2063 by @arkid15r)
+- Update metadata Python versions (#2069 by @arkid15r)
+- Add `EasternCalendarHolidays` to holidays groups (#2062 by @KJhellico)
+- Drop Python 3.8 support (#2042 by @PPsyrius)
+- Satisfy mypy requirements (#2053 by @arkid15r)
+
 Version 0.58
 ============
 
