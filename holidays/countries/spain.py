@@ -46,8 +46,9 @@ class Spain(
      2020: https://www.boe.es/buscar/doc.php?id=BOE-A-2019-14552
      2021: https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343
      2022: https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113
-     2023: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-16755
+     2023: https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16755
      2024: https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014
+     2025: https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316
     """
 
     country = "ES"
@@ -105,7 +106,7 @@ class Spain(
             # Assumption Day.
             self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
-        if self._year != 2014:
+        if self._year not in {2014, 2025}:
             # National Day.
             self._add_holiday_oct_12(tr("Fiesta Nacional de España"))
 
@@ -143,7 +144,7 @@ class Spain(
         if self._year in {2010, 2021}:
             self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
 
-        if self._year == 2014:
+        if self._year in {2014, 2025}:
             self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
 
         if self._year in {2015, 2020}:
@@ -176,7 +177,7 @@ class Spain(
         if self._year in {2010, 2021}:
             self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
 
-        if self._year == 2014:
+        if self._year in {2014, 2025}:
             self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
 
         if self._year in {2015, 2020}:
@@ -209,7 +210,7 @@ class Spain(
         # Asturia Day.
         self._move_holiday(self._add_holiday_sep_8(tr("Día de Asturias")))
 
-        if self._year == 2014:
+        if self._year in {2014, 2025}:
             self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
 
         if self._year in {2015, 2020}:
@@ -275,7 +276,7 @@ class Spain(
             # Santa Maria of Africa.
             self._add_holiday_aug_5(tr("Nuestra Señora de África"))
 
-        if self._year not in {2011, 2012, 2015, 2018}:
+        if self._year not in {2011, 2012, 2015, 2018, 2025}:
             # Ceuta Day.
             self._add_holiday_sep_2(tr("Día de Ceuta"))
 
@@ -328,7 +329,7 @@ class Spain(
         if self._year == 2021:
             self._move_holiday(self._add_assumption_of_mary_day(tr("Asunción de la Virgen")))
 
-        if self._year == 2014:
+        if self._year in {2014, 2025}:
             self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
 
         if self._year in {2015, 2020}:
@@ -438,7 +439,7 @@ class Spain(
             # Extremadura Day.
             self._move_holiday(self._add_holiday_sep_8(tr("Día de Extremadura")))
 
-        if self._year == 2014:
+        if self._year in {2014, 2025}:
             self._move_holiday(self._add_holiday_oct_12(tr("Fiesta Nacional de España")))
 
         if self._year in {2015, 2020}:
@@ -480,7 +481,7 @@ class Spain(
 
         self._add_holy_thursday(tr("Jueves Santo"))
 
-        if self._year != 2014:
+        if self._year not in {2014, 2025}:
             self._add_easter_monday(tr("Lunes de Pascua"))
 
         if self._year == 2015:
@@ -492,7 +493,7 @@ class Spain(
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
-        if self._year in {2013, 2014, 2019, 2020}:
+        if self._year in {2013, 2014, 2019, 2020, 2025}:
             self._add_christmas_day_two(tr("San Esteban"))
 
     def _populate_subdiv_mc_public_holidays(self):
@@ -502,7 +503,7 @@ class Spain(
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
 
-        if (self._year <= 2021 and self._year != 2017) or self._year == 2024:
+        if (self._year <= 2021 and self._year != 2017) or self._year in {2024, 2025}:
             self._move_holiday(self._add_saint_josephs_day(tr("San José")))
 
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -539,7 +540,7 @@ class Spain(
         if self._year in {2010, 2011, 2014}:
             self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        if self._year in {2011, 2016, 2022, 2024}:
+        if self._year in {2011, 2016, 2022, 2024, 2025}:
             self._add_saint_james_day(tr("Santiago Apóstol"))
 
         if self._year == 2020:
@@ -579,7 +580,7 @@ class Spain(
         if self._year in {2011, 2016, 2022}:
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
-        if self._year in {2022, 2023}:
+        if self._year in {2022, 2023, 2025}:
             # Eid al-Fitr.
             self._add_eid_al_fitr_day(tr("Fiesta del Eid Fitr"))
 
@@ -652,7 +653,7 @@ class Spain(
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
     def _populate_subdiv_vc_public_holidays(self):
-        if (self._year <= 2022 and self._year != 2017) or self._year == 2024:
+        if (self._year <= 2022 and self._year != 2017) or self._year in {2024, 2025}:
             self._add_saint_josephs_day(tr("San José"))
 
         if self._year in {2011, 2016, 2017, 2022}:
@@ -702,11 +703,13 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 9),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 6),
     }
 
     EID_AL_FITR_DATES = {
         2022: (MAY, 3),
         2023: (APR, 21),
+        2025: (MAR, 31),
     }
 
 
