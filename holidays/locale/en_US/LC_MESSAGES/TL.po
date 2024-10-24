@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.57\n"
+"Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2024-09-07 17:45+0300\n"
+"PO-Revision-Date: 2024-10-24 23:11+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays localization team\n"
 "Language: en_US\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. %s (estimated).
 #, c-format
@@ -155,3 +155,15 @@ msgstr "Funeral Ceremonies of Fernando 'La Sama' de Araújo"
 #. 20th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 20.º Aniversário da Consulta Popular"
 msgstr "20th Anniversary Celebrations of the Popular Consultation"
+
+#. 25th Anniversary Celebrations of the Popular Consultation.
+msgid "Celebrações do 25.º Aniversário da Consulta Popular"
+msgstr "25th Anniversary Celebrations of the Popular Consultation"
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
+msgstr "Local Election Day"
+
+#. Visit of His Holiness Pope Francis to Timor-Leste.
+msgid "Visita de Sua Santidade o Papa Francisco a Timor-Leste"
+msgstr "Visit of His Holiness Pope Francis to Timor-Leste"

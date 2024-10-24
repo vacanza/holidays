@@ -235,6 +235,9 @@ class TimorLesteStaticHolidays:
     # Parliamentary Election Day.
     parliamentary_election = tr("Dia de Eleições Parlamentares")
 
+    # Local Election Day.
+    local_election = tr("Dia de eleições locais")
+
     # Centenary of the Revolt of Dom Boaventura.
     dom_boaventura_centenary = tr("Centenário da Revolta de Dom Boaventura")
 
@@ -243,6 +246,12 @@ class TimorLesteStaticHolidays:
 
     # 20th Anniversary Celebrations of the Popular Consultation.
     popular_consultation_20th = tr("Celebrações do 20.º Aniversário da Consulta Popular")
+
+    # 25th Anniversary Celebrations of the Popular Consultation.
+    popular_consultation_25th = tr("Celebrações do 25.º Aniversário da Consulta Popular")
+
+    # Visit of His Holiness Pope Francis to Timor-Leste.
+    pope_francis_visit = tr("Visita de Sua Santidade o Papa Francisco a Timor-Leste")
 
     special_government_holidays = {
         2010: (
@@ -427,6 +436,10 @@ class TimorLesteStaticHolidays:
             (APR, 18, presidential_election),
             (APR, 19, presidential_election),
             (APR, 20, presidential_election),
+            # https://timor-leste.gov.tl/?p=31107&lang=en
+            (AUG, 29, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=31152&lang=en
+            (SEP, 6, special_national_holidays),
             # http://timor-leste.gov.tl/?p=31404&lang=en
             (OCT, 31, special_national_holidays),
             # http://timor-leste.gov.tl/?p=31574&lang=en
@@ -441,9 +454,37 @@ class TimorLesteStaticHolidays:
             (JAN, 23, special_national_holidays),
             # http://timor-leste.gov.tl/?p=32191&lang=en
             (FEB, 22, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=32561&lang=en
+            (APR, 6, special_national_holidays),
+            (APR, 10, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=32590&lang=en
+            (APR, 20, special_national_holidays),
+            (APR, 21, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=32617&lang=en
+            (MAY, 19, parliamentary_election),
+            (MAY, 22, parliamentary_election),
+            # https://timor-leste.gov.tl/?p=34792&lang=en
+            (OCT, 27, local_election),
+            # https://timor-leste.gov.tl/?p=35060&lang=en
+            (NOV, 13, local_election),
+            # https://timor-leste.gov.tl/?p=35627&lang=en&
+            (DEC, 26, special_national_holidays),
         ),
         2024: (
+            # https://timor-leste.gov.tl/?p=35627&lang=en
+            (JAN, 2, special_national_holidays),
             # http://timor-leste.gov.tl/?p=36002&lang=en
             (FEB, 14, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=36859&lang=en
+            (MAR, 28, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=39062&lang=en
+            (AUG, 28, popular_consultation_25th),
+            (AUG, 29, popular_consultation_25th),
+            # https://timor-leste.gov.tl/?p=39068&lang=en
+            (SEP, 9, pope_francis_visit),
+            (SEP, 10, pope_francis_visit),
+            (SEP, 11, pope_francis_visit),
+            # https://timor-leste.gov.tl/?p=40592&lang=en
+            (OCT, 31, special_national_holidays),
         ),
     }

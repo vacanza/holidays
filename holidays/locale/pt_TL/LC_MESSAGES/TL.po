@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.36\n"
+"Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2023-10-14 08:26+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-10-24 23:10+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays localization team\n"
 "Language: pt_TL\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #. %s (estimated).
 #, c-format
@@ -152,4 +152,16 @@ msgstr ""
 
 #. 20th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 20.º Aniversário da Consulta Popular"
+msgstr ""
+
+#. 25th Anniversary Celebrations of the Popular Consultation.
+msgid "Celebrações do 25.º Aniversário da Consulta Popular"
+msgstr ""
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
+msgstr ""
+
+#. Visit of His Holiness Pope Francis to Timor-Leste.
+msgid "Visita de Sua Santidade o Papa Francisco a Timor-Leste"
 msgstr ""
