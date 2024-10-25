@@ -14,18 +14,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.36\n"
+"Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2023-10-14 08:29+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2024-10-24 23:09+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays localization team\n"
 "Language: tet\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #. %s (estimated).
 #, c-format
@@ -152,4 +152,16 @@ msgstr "Serimónia Fúnebre Fernando 'La Sama' de Araújo nian"
 
 #. 20th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 20.º Aniversário da Consulta Popular"
-msgstr "Komemorasaun Aniversáriu Konsulta Popular ba dala 20"
+msgstr "Komemorasaun Aniversáriu Konsulta Populár ba dala 20"
+
+#. 25th Anniversary Celebrations of the Popular Consultation.
+msgid "Celebrações do 25.º Aniversário da Consulta Popular"
+msgstr "Komemorasaun Aniversáriu Konsulta Populár ba dala 25"
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
+msgstr "Loron eleisaun lokál nian"
+
+#. Visit of His Holiness Pope Francis to Timor-Leste.
+msgid "Visita de Sua Santidade o Papa Francisco a Timor-Leste"
+msgstr "Vizita Sua Santidade Papa Francisco mai Timor-Leste"
