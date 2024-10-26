@@ -916,9 +916,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         name = "Seward's Day"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
-            name, self.state_hols["AK"], (f"{year}-03-30" for year in range(1918, 1955))
+            name,
+            self.state_hols["AK"],
+            (f"{year}-03-30" for year in range(1918, 1921)),
+            (f"{year}-03-30" for year in range(1922, 1955)),
         )
         self.assertNoHolidayName(name, self.state_hols["AK"], range(1865, 1918))
+        self.assertNoHolidayName(name, self.state_hols["AK"], 1921)
         dt = (
             "1955-03-28",
             "2010-03-29",

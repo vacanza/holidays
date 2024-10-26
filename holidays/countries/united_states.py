@@ -246,7 +246,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_subdiv_ak_public_holidays(self):
         # Seward's Day
-        if self._year >= 1918:
+        if self._year >= 1918 and self._year != 1921:
             name = "Seward's Day"
             if self._year >= 1955:
                 self._add_holiday_last_mon_of_mar(name)
