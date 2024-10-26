@@ -601,6 +601,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 self._add_holiday_jan_26(name)
 
         # Adelaide Cup Day.
+        # First observed as Public Holidays in 1973: https://racingsa.com.au/blog/2020/03/06/2380/a-little-adelaide-cup-history
         # 2006-2023: changed each year by SA Government Proclamation from the 3rd Monday in May
         # to the 2nd Monday in March.
         # from 2024: changed to the 2nd Monday in March officially.
