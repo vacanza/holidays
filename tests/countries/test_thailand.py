@@ -245,9 +245,7 @@ class TestThailand(CommonCountryTests, TestCase):
         # 1960+ In lieus are same as HM King Bhumibol Adulyadej's Birthday
 
     def test_rama_x_birthday(self):
-        name = (
-            "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดี" "ศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
-        )
+        name = "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
         self.assertHolidayName(name, (f"{year}-07-28" for year in range(2017, 2058)))
         self.assertNoHolidayName(name, 2016)
 
@@ -294,7 +292,7 @@ class TestThailand(CommonCountryTests, TestCase):
         name_ix = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
         name_x = "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
         name_x_memorial = "วันนวมินทรมหาราช"
-        years_pre = range(1941, 2016)
+        years_pre = range(1941, 2017)
         years_ix = range(2017, 2019)
         years_x = range(2019, 2023)
         years_x_memorial = range(2023, 2058)
@@ -610,46 +608,38 @@ class TestThailand(CommonCountryTests, TestCase):
 
     def test_armed_forces_holiday(self):
         name = "วันกองทัพไทย"
-        self.assertHolidays(
-            Thailand(categories=ARMED_FORCES, years=range(1958, 1960)), ("1959-04-08", name)
+        self.assertHolidayName(
+            name, Thailand(categories=ARMED_FORCES, years=range(1958, 1960)), "1959-04-08"
         )
-        self.assertHolidays(
+        self.assertHolidayName(
+            name,
             Thailand(categories=ARMED_FORCES, years=range(1979, 1981)),
-            ("1979-04-08", name),
-            ("1980-01-25", name),
+            "1979-04-08",
+            "1980-01-25",
         )
-        self.assertHolidays(
+        self.assertHolidayName(
+            name,
             Thailand(categories=ARMED_FORCES, years=range(2006, 2008)),
-            ("2006-01-25", name),
-            ("2007-01-18", name),
+            "2006-01-25",
+            "2007-01-18",
         )
 
     def test_bank_holiday(self):
-        a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
-        m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
-
-        # Start
-        self.assertHolidays(
-            Thailand(categories=BANK, years=range(1942, 1944)),
-            ("1943-04-01", a_name),
-            ("1943-07-01", m_name),
+        name_agri = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+        name_mid = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+        implemented_range = Thailand(categories=BANK, years=range(1942, 2023))
+        self.assertHolidayName(
+            name_agri, implemented_range, (f"{year}-04-01" for year in range(1943, 2022))
         )
-        # End
-        self.assertHolidays(
-            Thailand(categories=BANK, years=range(2017, 2023)),
-            ("2017-04-01", a_name),
-            ("2017-07-01", m_name),
-            ("2018-04-01", a_name),
-            ("2018-07-01", m_name),
-            ("2019-04-01", a_name),
-            ("2020-04-01", a_name),
-            ("2021-04-01", a_name),
+        self.assertHolidayName(
+            name_mid, implemented_range, (f"{year}-07-01" for year in range(1943, 2019))
         )
+        self.assertNoHolidayName(name_agri, implemented_range, 1942, 2022)
+        self.assertNoHolidayName(name_mid, implemented_range, 1942, 2019)
 
     def test_school_holiday(self):
-        self.assertHolidays(
-            Thailand(categories=SCHOOL, years=range(1956, 1958)),
-            ("1957-01-16", "วันครู"),
+        self.assertHolidayName(
+            "วันครู", Thailand(categories=SCHOOL, years=range(1956, 1958)), "1957-01-16"
         )
 
     def test_workday_1947(self):
