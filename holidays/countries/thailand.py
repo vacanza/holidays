@@ -19,12 +19,11 @@ from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarH
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,
-    SAT_TO_NEXT_TUE,
-    SUN_TO_NEXT_WED,
-    THU_FRI_TO_NEXT_MON,
+    THU_FRI_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
 
 
@@ -231,10 +230,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In Use.
 
             if self._year >= 1995:
-                self._add_observed(
-                    dt,
-                    rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE + SUN_TO_NEXT_WED,
-                )
+                self._add_observed(dt, rule=THU_FRI_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY)
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
