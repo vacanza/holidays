@@ -369,7 +369,8 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2024-03-11",
         )
         self.assertHolidayName(name, sa_holidays, dt)
-        self.assertHolidayName(name, sa_holidays, range(1900, 2050))
+        self.assertHolidayName(name, sa_holidays, range(1973, 2050))
+        self.assertNoHolidayName(name, sa_holidays, range(1900, 1973))
         for subdiv in set(Australia.subdivisions) - {"SA"}:
             self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
 

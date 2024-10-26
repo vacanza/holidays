@@ -609,7 +609,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         name = tr("Adelaide Cup Day")
         if self._year >= 2006:
             self._add_holiday_2nd_mon_of_mar(name)
-        else:
+        elif self._year >= 1973:
             self._add_holiday_3rd_mon_of_may(name)
 
         # Easter Saturday.
