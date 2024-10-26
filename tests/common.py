@@ -306,7 +306,17 @@ class TestCase:
         )
 
         # Populate holidays for an entire year.
-        self.assertIn(localized_holidays[0][0], instance)
+        _ = localized_holidays[0][0] in instance
+
+        for subdiv in self.test_class.subdivisions:
+            subdiv_instance = self.test_class(
+                subdiv=subdiv,
+                years=instance.years,
+                language=language,
+                categories=self.test_class.supported_categories,
+            )
+            for dt, name in subdiv_instance.items():
+                instance[dt] = name
 
         actual_holidays = tuple(
             sorted((dt.strftime("%Y-%m-%d"), name) for dt, name in instance.items())
