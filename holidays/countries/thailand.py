@@ -39,6 +39,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             - https://resolution.soc.go.th/?prep_id=99159317
             - https://resolution.soc.go.th/?prep_id=196007
             - https://github.com/vacanza/holidays/pull/929
+            - https://www.thairath.co.th/lifestyle/life/2812118
         - [New Year's Day]
             `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
         - [National Children's Day]
@@ -95,6 +96,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             https://dl.parliament.go.th/handle/20.500.13072/92816
             https://e-manage.mju.ac.th/timeline_detail.aspx?key=MTk4
             https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf
+            https://www.myhora.com/ปฏิทิน/วันพืชมงคล.aspx
         - [Royal Thai Armed Forces Day]
             `<https://th.wikipedia.org/wiki/วันกองทัพไทย>`_
         - [Teacher's Day]
@@ -115,7 +117,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             Applied Automatically for Workday if on Weekends: 2001-Present
 
     Limitations:
-        - This is only 100% accurate for 1997-2024; any future dates are up to the
+        - This is only 100% accurate for 1997-2025; any future dates are up to the
           Royal Thai Government Gazette which updates on a year-by-year basis.
 
         - Approx. date only goes as far back as 1941 (B.E. 2484) as the Thai
@@ -128,8 +130,6 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
         - Royal Ploughing Ceremony Day is date is announced on an annual basis
           by the Court Astrologers, thus need an annual update to the library here
-
-        - This doesn't cover Thai regional public holidays yet, only stubs added
 
     Country created by: `arkid15r <https://github.com/arkid15r>`__
 
