@@ -246,7 +246,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_subdiv_ak_public_holidays(self):
         # Seward's Day
-        if self._year >= 1918:
+        # No observance in 1921: https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
+        if self._year >= 1918 and self._year != 1921:
             name = "Seward's Day"
             if self._year >= 1955:
                 self._add_holiday_last_mon_of_mar(name)
@@ -260,7 +261,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Alaska Day
-        if self._year >= 1867:
+        # https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land
+        if self._year >= 1917:
             self._add_observed(self._add_holiday_oct_18("Alaska Day"))
 
     def _populate_subdiv_al_public_holidays(self):
