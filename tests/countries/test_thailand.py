@@ -251,12 +251,14 @@ class TestThailand(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(
             "2012-04-16",
             "2013-04-16",
+            "2014-04-16",
             "2017-04-17",
             "2018-04-16",
             "2019-04-16",
             # 2020 Songkran Festival special in lieus doesn't counts
             "2023-04-17",
             "2024-04-16",
+            "2025-04-16",
             "2028-04-17",
             "2029-04-16",
             "2030-04-16",
@@ -675,6 +677,7 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-05-13", name),
             ("2023-05-17", name),
             ("2024-05-10", name),
+            ("2025-05-09", name),
         )
 
     def test_armed_forces_holiday(self):

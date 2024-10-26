@@ -20,6 +20,7 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,
     SAT_TO_NEXT_TUE,
+    SUN_TO_NEXT_WED,
     THU_FRI_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_TUE,
@@ -221,15 +222,19 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
             # วันหยุดชดเชยวันสงกรานต์
             # If Songkran happened to be held on the weekends, only one in-lieu
-            #   public holiday is added, No in lieus for SUN-MON-TUE case.
+            #   public holiday is added.
             #   - CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
             #   - CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
             #   - CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
+            #   - CASE 4: SUN-MON-TUE -> 1 in-lieu on WED
             # See in lieu logic in `_add_observed(dt: date)`.
             # Status: In Use.
 
             if self._year >= 1995:
-                self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
+                self._add_observed(
+                    dt,
+                    rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE + SUN_TO_NEXT_WED,
+                )
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
@@ -525,8 +530,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Is dated on an annual basis by the Royal Palace, always on weekdays.
         # For historic research, วันเกษตรแห่งชาติ (National Agricultural Day) also concides with
         #   this from 1966 onwards. For earlier records the date was refered as วันแรกนาขวัญ.
-        # This isn't even fixed even by the Thai Lunar Calendar, but instead
-        #   by Court Astrologers; All chosen dates are all in the first three weeks of May.
+        # This isn't even fixed even by the Thai Lunar Calendar besides being in Month 6
+        #   to concides with the rainy season, but instead by Court Astrologers; All chosen dates
+        #   so far are all in the first three weeks of May.
         # *** NOTE: only observed by government sectors.
         # TODO: Update this annually around Dec of each year.
 
@@ -597,8 +603,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2022: (MAY, 13),
             2023: (MAY, 17),
             2024: (MAY, 10),
+            2025: (MAY, 9),
         }
-        if 1960 <= self._year <= 2024 and self._year != 1999:
+        if 1960 <= self._year <= 2025 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
