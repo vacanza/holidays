@@ -260,7 +260,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Alaska Day
-        if self._year >= 1867:
+        if self._year >= 1917:
             self._add_observed(self._add_holiday_oct_18("Alaska Day"))
 
     def _populate_subdiv_al_public_holidays(self):
