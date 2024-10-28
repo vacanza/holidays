@@ -266,8 +266,8 @@ class TestThailand(CommonCountryTests, TestCase):
 
         self.assertHolidayName(name_ix, (f"{year}-08-12" for year in years_ix))
         self.assertHolidayName(name_x, (f"{year}-08-12" for year in years_x))
-        self.assertNoHolidayName(name_ix, [*years_pre, *years_x])
-        self.assertNoHolidayName(name_x, [*years_pre, *years_ix])
+        self.assertNoHolidayName(name_ix, years_pre, years_x)
+        self.assertNoHolidayName(name_x, years_pre, years_ix)
 
         self.assertNoNonObservedHoliday(
             "2012-08-13",
@@ -300,9 +300,9 @@ class TestThailand(CommonCountryTests, TestCase):
         self.assertHolidayName(name_ix, (f"{year}-10-13" for year in years_ix))
         self.assertHolidayName(name_x, (f"{year}-10-13" for year in years_x))
         self.assertHolidayName(name_x_memorial, (f"{year}-10-13" for year in years_x_memorial))
-        self.assertNoHolidayName(name_ix, [*years_pre, *years_x, *years_x_memorial])
-        self.assertNoHolidayName(name_x, [*years_pre, *years_ix, *years_x_memorial])
-        self.assertNoHolidayName(name_x_memorial, [*years_pre, *years_ix, *years_x])
+        self.assertNoHolidayName(name_ix, years_pre, years_x, years_x_memorial)
+        self.assertNoHolidayName(name_x, years_pre, years_ix, years_x_memorial)
+        self.assertNoHolidayName(name_x_memorial, years_pre, years_ix, years_x)
 
         self.assertNoNonObservedHoliday(
             "2018-10-15",
@@ -339,9 +339,9 @@ class TestThailand(CommonCountryTests, TestCase):
         self.assertHolidayName(name_reign, (f"{year}-12-05" for year in years_reign))
         self.assertHolidayName(name_dead, (f"{year}-12-05" for year in years_dead))
         self.assertHolidayName(name_great, (f"{year}-12-05" for year in years_great))
-        self.assertNoHolidayName(name_reign, [*years_pre, *years_dead, *years_great])
-        self.assertNoHolidayName(name_dead, [*years_pre, *years_reign, *years_great])
-        self.assertNoHolidayName(name_great, [*years_pre, *years_reign, *years_dead])
+        self.assertNoHolidayName(name_reign, years_pre, years_dead, years_great)
+        self.assertNoHolidayName(name_dead, years_pre, years_reign, years_great)
+        self.assertNoHolidayName(name_great, years_pre, years_reign, years_dead)
 
         self.assertNoNonObservedHoliday(
             "2010-12-06",
@@ -485,7 +485,7 @@ class TestThailand(CommonCountryTests, TestCase):
             "2024-05-10",
             "2025-05-09",
         )
-        gov_holidays = Thailand(categories=GOVERNMENT, years=range(1960, 2026))
+        gov_holidays = Thailand(categories=GOVERNMENT, years=range(1959, 2026))
         self.assertHolidayName(name, gov_holidays, dt)
         self.assertNoHolidayName(name, gov_holidays, 1959, 1999)
         self.assertNoHolidayName(name)
@@ -502,6 +502,7 @@ class TestThailand(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, armed_forces_holidays, (f"{year}-01-18" for year in range(2007, 2050))
         )
+        self.assertNoHolidayName(name, armed_forces_holidays, 1958)
         self.assertNoHolidayName(name)
 
     def test_bank_holiday(self):

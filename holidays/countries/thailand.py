@@ -434,17 +434,13 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Status: In-Use.
 
         # Makha Bucha.
-        makha_bucha_date = self._add_makha_bucha(tr("วันมาฆบูชา"))
-        if makha_bucha_date:
-            self._add_observed(makha_bucha_date)
+        self._add_observed(self._add_makha_bucha(tr("วันมาฆบูชา")))
 
         # วันวิสาขบูชา
         # Status: In-Use.
 
         # Visakha Bucha.
-        visakha_bucha_date = self._add_visakha_bucha(tr("วันวิสาขบูชา"))
-        if visakha_bucha_date:
-            self._add_observed(visakha_bucha_date)
+        self._add_observed(self._add_visakha_bucha(tr("วันวิสาขบูชา")))
 
         # วันอาสาฬหบูชา
         # Status: In-Use.
@@ -453,9 +449,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
 
         # Asarnha Bucha.
-        asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
-        if asarnha_bucha_date:
-            self._add_observed(asarnha_bucha_date, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            self._add_asarnha_bucha(tr("วันอาสาฬหบูชา")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
         # วันเข้าพรรษา
         # Status: In-Use.
@@ -464,9 +460,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
 
         # Buddhist Lent Day.
-        khao_phansa_date = self._add_khao_phansa(tr("วันเข้าพรรษา"))
-        if khao_phansa_date:
-            self._add_observed(khao_phansa_date, rule=SAT_TO_NEXT_MON)
+        self._add_observed(self._add_khao_phansa(tr("วันเข้าพรรษา")), rule=SAT_TO_NEXT_MON)
 
     def _populate_armed_forces_holidays(self):
         # วันกองทัพไทย
