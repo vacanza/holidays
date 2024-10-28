@@ -264,10 +264,9 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Pchum Ben Day
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
         pchum_ben_date = self._add_pchum_ben(pchum_ben)
-        if pchum_ben_date:
-            self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, -1))
-            if self._year >= 2017:
-                self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, +1))
+        self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, -1))
+        if self._year >= 2017:
+            self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, +1))
 
         # ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក
         # Status: In-Use.
@@ -276,9 +275,8 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Water Festival
         bon_om_touk = tr("ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក")
         bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
-        if bon_om_touk_date:
-            self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
-            self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, +1))
+        self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
+        self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, +1))
 
 
 class KH(Cambodia):
