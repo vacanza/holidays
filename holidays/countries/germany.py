@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, OCT
+from holidays.calendars.gregorian import MAY, JUN, OCT
 from holidays.constants import CATHOLIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -304,6 +304,13 @@ class DEU(Germany):
 
 
 class GermanyStaticHolidays:
+    """
+    References:
+     - https://www.stuttgarter-zeitung.de/inhalt.reformationstag-2017-einmalig-bundesweiter-feiertag.b7e189b3-a33d-41a3-a0f4-141cd13df54e.html
+     - https://www.bbc.com/news/world-europe-52574748
+     - https://gesetze.berlin.de/bsbe/document/jlr-FeiertGBEV8P1
+    """
+
     special_public_holidays = {
         2017: (OCT, 31, tr("Reformationstag")),
     }
@@ -329,4 +336,6 @@ class GermanyStaticHolidays:
                 "und der Beendigung des Zweiten Weltkriegs in Europa"
             ),
         ),
+        # 75th anniversary of the East German uprising of 1953.
+        2028: (JUN, 17, tr("75. Jahrestag des Aufstandes vom 17. Juni 1953")),
     }
