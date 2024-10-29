@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestLaos(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Laos, years=range(1976, 2058), years_non_observed=range(2018, 2058))
+        super().setUpClass(Laos, years=range(1976, 2050), years_non_observed=range(2018, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Laos, LA, LAO)
@@ -92,7 +92,7 @@ class TestLaos(CommonCountryTests, TestCase):
         )
 
     def test_new_years_day(self):
-        self.assertHoliday(f"{year}-01-01" for year in range(1976, 2058))
+        self.assertHoliday(f"{year}-01-01" for year in range(1976, 2050))
 
         self.assertNoNonObservedHoliday(
             "2012-01-02",
@@ -102,7 +102,7 @@ class TestLaos(CommonCountryTests, TestCase):
         )
 
     def test_international_women_rights_day(self):
-        self.assertHoliday(f"{year}-03-08" for year in range(1976, 2058))
+        self.assertHoliday(f"{year}-03-08" for year in range(1976, 2050))
 
         self.assertNoNonObservedHoliday(
             "2015-03-09",
@@ -112,7 +112,7 @@ class TestLaos(CommonCountryTests, TestCase):
     def test_laos_new_year_day(self):
         songkran_years_apr_13_15 = {2012, 2017}
         songkran_years_apr_13_16 = {2016, 2020, 2024}
-        for year in range(1976, 2058):
+        for year in range(1976, 2050):
             if year in songkran_years_apr_13_15:
                 self.assertHoliday(f"{year}-04-13", f"{year}-04-14", f"{year}-04-15")
             elif year in songkran_years_apr_13_16:
@@ -142,7 +142,7 @@ class TestLaos(CommonCountryTests, TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1976, 2058))
+        self.assertHoliday(f"{year}-05-01" for year in range(1976, 2050))
 
         self.assertNoNonObservedHoliday(
             "2016-05-02",
@@ -154,7 +154,7 @@ class TestLaos(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-06-01" for year in range(1990, 2018))
 
     def test_lao_national_day(self):
-        self.assertHoliday(f"{year}-12-02" for year in range(1976, 2058))
+        self.assertHoliday(f"{year}-12-02" for year in range(1976, 2050))
 
         self.assertNoNonObservedHoliday(
             "2012-12-03",

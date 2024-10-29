@@ -14,7 +14,7 @@ import unittest
 from datetime import date
 
 from holidays import calendars
-from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.thai import KHMER_CALENDAR
 
 
@@ -208,6 +208,13 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         loy_krathong_year_date = {
             self.calendar.START_YEAR - 1: None,
             self.calendar.END_YEAR + 1: None,
+            2015: date(2015, NOV, 25),
+            2016: date(2016, NOV, 14),
+            2017: date(2017, NOV, 3),
+            2018: date(2018, NOV, 22),
+            2019: date(2019, NOV, 11),
+            2020: date(2020, OCT, 31),
+            2021: date(2021, NOV, 19),
             2022: date(2022, NOV, 8),
             2023: date(2023, NOV, 27),
             2024: date(2024, NOV, 15),
@@ -277,6 +284,11 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         meak_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
             self.calendar.END_YEAR + 1: None,
+            2015: date(2015, FEB, 3),
+            2016: date(2016, FEB, 22),
+            2017: date(2017, FEB, 11),
+            2018: date(2018, JAN, 31),
+            2019: date(2019, FEB, 19),
             2022: date(2022, FEB, 16),
             2023: date(2023, FEB, 5),
             2024: date(2024, FEB, 24),
@@ -320,6 +332,13 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         pchum_ben_year_date = {
             self.calendar.START_YEAR - 1: None,
             self.calendar.END_YEAR + 1: None,
+            2015: date(2015, OCT, 12),
+            2016: date(2016, OCT, 1),
+            2017: date(2017, SEP, 20),
+            2018: date(2018, OCT, 9),
+            2019: date(2019, SEP, 28),
+            2020: date(2020, SEP, 17),
+            2021: date(2021, OCT, 6),
             2022: date(2022, SEP, 25),
             2023: date(2023, OCT, 14),
             2024: date(2024, OCT, 2),
@@ -335,6 +354,13 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         preah_neangkoal_year_date = {
             self.calendar.START_YEAR - 1: None,
             self.calendar.END_YEAR + 1: None,
+            2015: date(2015, MAY, 6),
+            2016: date(2016, MAY, 24),
+            2017: date(2017, MAY, 14),
+            2018: date(2018, MAY, 3),
+            2019: date(2019, MAY, 22),
+            2020: date(2020, MAY, 10),
+            2021: date(2021, APR, 30),
             2022: date(2022, MAY, 19),
             2023: date(2023, MAY, 8),
             2024: date(2024, MAY, 26),
@@ -394,6 +420,13 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         visaka_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
             self.calendar.END_YEAR + 1: None,
+            2015: date(2015, MAY, 2),
+            2016: date(2016, MAY, 20),
+            2017: date(2017, MAY, 10),
+            2018: date(2018, APR, 29),
+            2019: date(2019, MAY, 18),
+            2020: date(2020, MAY, 6),
+            2021: date(2021, APR, 26),
             2022: date(2022, MAY, 15),
             2023: date(2023, MAY, 4),
             2024: date(2024, MAY, 22),
