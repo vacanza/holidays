@@ -448,9 +448,10 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #  - CASE 2: SAT-SUN -> 1 in-lieu on MON
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
 
-        # Asarnha Bucha.
         self._add_observed(
-            self._add_asarnha_bucha(tr("วันอาสาฬหบูชา")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Asarnha Bucha.
+            self._add_asarnha_bucha(tr("วันอาสาฬหบูชา")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
         # วันเข้าพรรษา
