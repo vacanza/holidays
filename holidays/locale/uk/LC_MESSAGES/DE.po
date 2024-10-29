@@ -123,4 +123,4 @@ msgstr "Всесвітній день дітей"
 
 #. 75th anniversary of the East German uprising of 1953.
 msgid "75. Jahrestag des Aufstandes vom 17. Juni 1953"
-msgstr "75-та річниця Повста́ння 1953 у Схі́дній Німе́ччині"
+msgstr "75-та річниця Повстання 1953 у Східній Німеччині"
