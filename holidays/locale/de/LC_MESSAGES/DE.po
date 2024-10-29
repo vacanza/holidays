@@ -13,9 +13,9 @@
 # Germany holidays.
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.59\n"
+"Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2024-10-17 11:43+0700\n"
+"PO-Revision-Date: 2024-10-30 02:14+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays localization team\n"
 "Language: de\n"
@@ -114,4 +114,8 @@ msgstr ""
 
 #. World Children's Day.
 msgid "Weltkindertag"
+msgstr ""
+
+#. 75th anniversary of the East German uprising of 1953.
+msgid "75. Jahrestag des Aufstandes vom 17. Juni 1953"
 msgstr ""
