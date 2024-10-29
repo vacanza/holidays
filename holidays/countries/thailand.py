@@ -19,11 +19,11 @@ from holidays.groups import InternationalHolidays, StaticHolidays, ThaiCalendarH
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,
-    SAT_TO_NEXT_TUE,
-    THU_FRI_TO_NEXT_MON,
+    THU_FRI_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SAT_SUN_TO_NEXT_WORKDAY,
 )
 
 
@@ -39,6 +39,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             - https://resolution.soc.go.th/?prep_id=99159317
             - https://resolution.soc.go.th/?prep_id=196007
             - https://github.com/vacanza/holidays/pull/929
+            - https://www.thairath.co.th/lifestyle/life/2812118
         - [New Year's Day]
             `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
         - [National Children's Day]
@@ -95,6 +96,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             https://dl.parliament.go.th/handle/20.500.13072/92816
             https://e-manage.mju.ac.th/timeline_detail.aspx?key=MTk4
             https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf
+            https://www.myhora.com/ปฏิทิน/วันพืชมงคล.aspx
         - [Royal Thai Armed Forces Day]
             `<https://th.wikipedia.org/wiki/วันกองทัพไทย>`_
         - [Teacher's Day]
@@ -115,7 +117,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             Applied Automatically for Workday if on Weekends: 2001-Present
 
     Limitations:
-        - This is only 100% accurate for 1997-2024; any future dates are up to the
+        - This is only 100% accurate for 1997-2025; any future dates are up to the
           Royal Thai Government Gazette which updates on a year-by-year basis.
 
         - Approx. date only goes as far back as 1941 (B.E. 2484) as the Thai
@@ -128,8 +130,6 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
         - Royal Ploughing Ceremony Day is date is announced on an annual basis
           by the Court Astrologers, thus need an annual update to the library here
-
-        - This doesn't cover Thai regional public holidays yet, only stubs added
 
     Country created by: `arkid15r <https://github.com/arkid15r>`__
 
@@ -221,15 +221,16 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
             # วันหยุดชดเชยวันสงกรานต์
             # If Songkran happened to be held on the weekends, only one in-lieu
-            #   public holiday is added, No in lieus for SUN-MON-TUE case.
+            #   public holiday is added.
             #   - CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
             #   - CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
             #   - CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
+            #   - CASE 4: SUN-MON-TUE -> 1 in-lieu on WED
             # See in lieu logic in `_add_observed(dt: date)`.
             # Status: In Use.
 
             if self._year >= 1995:
-                self._add_observed(dt, rule=THU_FRI_TO_NEXT_MON + SAT_TO_NEXT_TUE)
+                self._add_observed(dt, rule=THU_FRI_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY)
 
         # วันแรงงานแห่งชาติ
         # Status: In-Use.
@@ -433,17 +434,13 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Status: In-Use.
 
         # Makha Bucha.
-        makha_bucha_date = self._add_makha_bucha(tr("วันมาฆบูชา"))
-        if makha_bucha_date:
-            self._add_observed(makha_bucha_date)
+        self._add_observed(self._add_makha_bucha(tr("วันมาฆบูชา")))
 
         # วันวิสาขบูชา
         # Status: In-Use.
 
         # Visakha Bucha.
-        visakha_bucha_date = self._add_visakha_bucha(tr("วันวิสาขบูชา"))
-        if visakha_bucha_date:
-            self._add_observed(visakha_bucha_date)
+        self._add_observed(self._add_visakha_bucha(tr("วันวิสาขบูชา")))
 
         # วันอาสาฬหบูชา
         # Status: In-Use.
@@ -452,9 +449,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
 
         # Asarnha Bucha.
-        asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
-        if asarnha_bucha_date:
-            self._add_observed(asarnha_bucha_date, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            self._add_asarnha_bucha(tr("วันอาสาฬหบูชา")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
 
         # วันเข้าพรรษา
         # Status: In-Use.
@@ -463,9 +460,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         #  - CASE 3: SUN-MON -> 1 in-lieu on TUE
 
         # Buddhist Lent Day.
-        khao_phansa_date = self._add_khao_phansa(tr("วันเข้าพรรษา"))
-        if khao_phansa_date:
-            self._add_observed(khao_phansa_date, rule=SAT_TO_NEXT_MON)
+        self._add_observed(self._add_khao_phansa(tr("วันเข้าพรรษา")), rule=SAT_TO_NEXT_MON)
 
     def _populate_armed_forces_holidays(self):
         # วันกองทัพไทย
@@ -525,8 +520,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Is dated on an annual basis by the Royal Palace, always on weekdays.
         # For historic research, วันเกษตรแห่งชาติ (National Agricultural Day) also concides with
         #   this from 1966 onwards. For earlier records the date was refered as วันแรกนาขวัญ.
-        # This isn't even fixed even by the Thai Lunar Calendar, but instead
-        #   by Court Astrologers; All chosen dates are all in the first three weeks of May.
+        # This isn't even fixed even by the Thai Lunar Calendar besides being in Month 6
+        #   to concides with the rainy season, but instead by Court Astrologers; All chosen dates
+        #   so far are all in the first three weeks of May.
         # *** NOTE: only observed by government sectors.
         # TODO: Update this annually around Dec of each year.
 
@@ -597,8 +593,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             2022: (MAY, 13),
             2023: (MAY, 17),
             2024: (MAY, 10),
+            2025: (MAY, 9),
         }
-        if 1960 <= self._year <= 2024 and self._year != 1999:
+        if 1960 <= self._year <= 2025 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
                 self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
