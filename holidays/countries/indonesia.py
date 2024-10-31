@@ -79,7 +79,7 @@ class Indonesia(
         # Independence Day.
         self._add_holiday_aug_17(tr("Hari Kemerdekaan Republik Indonesia"))
 
-        # Keputusan Presiden no 24 tahun 1953. (Removed)
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Removed)
         if self._year <= 1952:
             # Armed Forces Day.
             self._add_holiday_oct_5(tr("Hari Angkatan Perang"))
@@ -87,7 +87,7 @@ class Indonesia(
             # Heroes' Day.
             self._add_holiday_nov_10(tr("Hari Pahlawan"))
 
-        # Keputusan Presiden no 24 tahun 1953. (Added Nationally)
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Added Nationally)
         if self._year >= 1953:
             # Christmas Day.
             self._add_christmas_day(tr("Hari Raya Natal"))
@@ -101,10 +101,10 @@ class Indonesia(
             # Eid al-Adha.
             self._add_eid_al_adha_day(tr("Hari Raya Idul Adha"))
 
-        # Keputusan Presiden no 24 tahun 1953. (Added Nationally)
-        # Keputusan Presiden no 21 tahun 1963. (Moved to Denominative-based)
-        # Keputusan Presiden no 251 tahun 1967. (Removed)
-        if 1953 <= self._year <= 1962:
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Added Nationally)
+        # Keputusan Presiden no 21 tahun 1963. (1963-10-15; Moved to Denominative-based)
+        # Keputusan Presiden no 251 tahun 1967. (1967-12-16; Removed)
+        if 1953 <= self._year <= 1963:
             # Easter Monday.
             self._add_easter_monday(tr("Hari kedua Paskah"))
 
@@ -114,10 +114,15 @@ class Indonesia(
             # Nuzul Al Quran.
             self._add_nuzul_al_quran_day(tr("Nuzululqur'an"))
 
-        # Keputusan Presiden no 24 tahun 1953. (Added Nationally)
-        # Keputusan Presiden no 21 tahun 1963. (Moved to Denominative-based)
-        # Keputusan Presiden no 251 tahun 1967. (Added Nationally)
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Added Nationally)
+        # Keputusan Presiden no 21 tahun 1963. (1963-10-15; Moved to Denominative-based)
+        # Keputusan Presiden no 251 tahun 1967. (1967-12-16; Added Nationally)
         if 1953 <= self._year <= 1962 or self._year >= 1968:
+            # Isra' and Mi'raj.
+            self._add_isra_and_miraj_day(tr("Isra Mikraj Nabi Muhammad"))
+
+        # (Same as above, was before 1963 cut-off date)
+        if 1953 <= self._year <= 1963 or self._year >= 1968:
             # Ascension Day.
             self._add_ascension_thursday(tr("Kenaikan Yesus Kristus"))
 
@@ -127,25 +132,22 @@ class Indonesia(
             # Prophet's Birthday.
             self._add_mawlid_day(tr("Maulid Nabi Muhammad"))
 
-            # Isra' and Mi'raj.
-            self._add_isra_and_miraj_day(tr("Isra Mikraj Nabi Muhammad"))
-
-        # Keputusan Presiden no 21 tahun 1963. (Added Denominative-based)
-        # Keputusan Presiden no 251 tahun 1967. (Added Nationally)
-        # Keputusan Presiden no 10 tahun 1971. (Removed)
+        # Keputusan Presiden no 21 tahun 1963. (1963-10-15; Added Denominative-based)
+        # Keputusan Presiden no 251 tahun 1967. (1967-12-16; Added Nationally)
+        # Keputusan Presiden no 10 tahun 1971. (1971-03-15; Removed)
         if 1968 <= self._year <= 1970:
             # Assumption Day.
             self._add_assumption_of_mary_day(tr("Mikraj Santa Maria"))
 
-        # Keputusan Presiden no 24 tahun 1953. (Added Nationally)
-        # Keputusan Presiden no 21 tahun 1963. (Moved to Denominative-based)
-        # Keputusan Presiden no 251 tahun 1967. (Removed)
-        # Keputusan Presiden no 10 tahun 1971. (Added Nationally)
-        if 1953 <= self._year <= 1962 or self._year >= 1971:
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Added Nationally)
+        # Keputusan Presiden no 21 tahun 1963. (1963-10-15; Moved to Denominative-based)
+        # Keputusan Presiden no 251 tahun 1967. (1967-12-16; Removed)
+        # Keputusan Presiden no 10 tahun 1971. (1971-03-15; Added Nationally)
+        if 1953 <= self._year <= 1963 or self._year >= 1971:
             # Good Friday.
             self._add_good_friday(tr("Wafat Yesus Kristus"))
 
-        # Keputusan Presiden no 3 tahun 1983. (Added Nationally)
+        # Keputusan Presiden no 3 tahun 1983. (1983-01-19; Added Nationally)
         if self._year >= 1983:
             dates_obs = {
                 2009: (MAR, 26),
@@ -178,23 +180,25 @@ class Indonesia(
             # Vesak Day.
             self._add_vesak(tr("Hari Raya Waisak"))
 
-        # Keputusan Presiden no 19 tahun 2002. (Added Nationally)
+        # Keputusan Presiden no 19 tahun 2002. (2002-04-09; Added Nationally)
         if self._year >= 2003:
             # Lunar New Year.
             self._add_chinese_new_years_day(tr("Tahun Baru Imlek"))
 
-        # Keputusan Presiden no 148 tahun 1968. (Removed)
-        # Keputusan Presiden no 24 tahun 2013. (Added Nationally)
-        if 1953 <= self._year <= 1968 or self._year >= 2014:
+        # Keputusan Presiden no 24 tahun 1953. (1953-01-01; Added Nationally)
+        # Keputusan Presiden no 148 tahun 1968. (1968-04-18; Removed)
+        # Keputusan Presiden no 24 tahun 2013. (2013-07-29; Added Nationally)
+        if 1953 <= self._year <= 1967 or self._year >= 2014:
             # International Labor Day.
             self._add_labor_day(tr("Hari Buruh Internasional"))
 
-        # Keputusan Presiden no 24 tahun 2016. (Added Nationally)
+        # Keputusan Presiden no 24 tahun 2016. (2016-06-01; Added Nationally)
         if self._year >= 2016:
             # Pancasila Day.
             self._add_holiday_jun_1(tr("Hari Lahir Pancasila"))
 
-        # Keputusan Presiden no 8 tahun 2024. (Added Nationally)
+        # Keputusan Presiden no 8 tahun 2024. (2024-01-29; Added Nationally)
+        # This KEPPRES overwrites all pre-existing ones.
         if self._year >= 2024:
             # Easter Sunday.
             self._add_easter_sunday(tr("Kebangkitan Yesus Kristus"))
