@@ -105,11 +105,11 @@ msgstr "Eid al-Adha"
 
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
-msgstr "Karagdagang espesyal (non-working) day"
+msgstr "Karagdagang Espesyal na Araw (Walang Trabajo)"
 
 #. Elections special (non-working) day.
 msgid "Elections special (non-working) day"
-msgstr "Halalan espesyal (non-working) day"
+msgstr "Araw ng Halalan (Walang Trabajo)"
 
 #. %s (estimated).
 #, c-format

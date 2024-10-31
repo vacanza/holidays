@@ -236,7 +236,6 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
 class PhilippinesStaticHolidays:
     # Additional special (non-working) day.
     additional_special = tr("Additional special (non-working) day")
-
     # Elections special (non-working) day.
     election_special = tr("Elections special (non-working) day")
 
