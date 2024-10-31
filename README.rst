@@ -513,7 +513,7 @@ All other default values are highlighted with bold:
    * - Indonesia
      - ID
      -
-     - en_US, **id**, uk
+     - en_US, **id**, th, uk
      - GOVERNMENT
    * - Iran
      - IR
