@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -43,10 +44,11 @@ class Philippines(
       - `Republic Act No. 9492 <https://www.officialgazette.gov.ph/2007/07/24/republic-act-no-9492/>`_
       - `Republic Act No. 9849 <https://www.officialgazette.gov.ph/2009/12/11/republic-act-no-9849/>`_
       - `Republic Act No. 10966 <https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/>`_
-      - `Nationwide holidays 2018-2024 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
+      - `Nationwide holidays 2018-2025 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
     """
 
     country = "PH"
+    supported_categories = (PUBLIC, WORKDAY)
     default_language = "en_PH"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
@@ -71,7 +73,7 @@ class Philippines(
             # Chinese New Year.
             self._add_chinese_new_years_day(tr("Chinese New Year"))
 
-        if self._year >= 2016 and self._year not in {2017, 2024}:
+        if 2016 <= self._year <= 2023 and self._year != 2017:
             dates_obs = {
                 2023: (FEB, 24),
             }
@@ -94,6 +96,7 @@ class Philippines(
         dates_obs = {
             2008: (APR, 7),
             2009: (APR, 6),
+            2023: (APR, 10),
         }
         # Day of Valor.
         self._add_holiday(tr("Araw ng Kagitingan"), dates_obs.get(self._year, (APR, 9)))
@@ -149,7 +152,7 @@ class Philippines(
         self._add_holiday(tr("Rizal Day"), dates_obs.get(self._year, (DEC, 30)))
 
         if self._year not in {2021, 2022}:
-            # Last Day of the Year.
+            # New Year's Eve.
             self._add_new_years_eve(tr("Last Day of the Year"))
 
         if self._year >= 2002:
@@ -159,6 +162,13 @@ class Philippines(
         if self._year >= 2010:
             # Eid al-Adha.
             self._add_eid_al_adha_day(tr("Eid'l Adha"))
+
+    def _populate_workday_holidays(self):
+        # Added from 2025 onwards as first decreed in
+        # https://www.officialgazette.gov.ph/downloads/2024/10oct/20241030-PROC-727-FRM.pdf
+        if self._year >= 2025:
+            # EDSA People Power Revolution Anniversary.
+            self._add_holiday_feb_25(tr("EDSA People Power Revolution Anniversary"))
 
 
 class PH(Philippines):
@@ -298,6 +308,10 @@ class PhilippinesStaticHolidays:
         2024: (
             (FEB, 9, additional_special),
             (NOV, 2, additional_special),
+            (DEC, 24, additional_special),
+        ),
+        2025: (
+            (OCT, 31, additional_special),
             (DEC, 24, additional_special),
         ),
     }

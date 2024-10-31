@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2024-10-30 11:21+0700\n"
+"PO-Revision-Date: 2024-11-01 00:39+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -90,7 +90,7 @@ msgstr "วันคริสต์มาส"
 msgid "Rizal Day"
 msgstr "วันรีซัล"
 
-#. Last Day of the Year.
+#. New Year's Eve.
 msgid "Last Day of the Year"
 msgstr "วันสิ้นปี"
 

@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.philippines import Philippines, PH, PHL
 from tests.common import CommonCountryTests
 
@@ -26,6 +27,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Philippines(years=1987))
+        self.assertNoHolidays(Philippines(years=2024, categories=WORKDAY))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -91,10 +93,16 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "EDSA People Power Revolution Anniversary"
         self.assertHolidayName(
             name,
-            (f"{year}-02-25" for year in [*range(2018, 2023), *range(2025, 2050)]),
+            (f"{year}-02-25" for year in range(2018, 2023)),
             "2016-02-25",
             "2023-02-24",
         )
+        self.assertHolidayName(
+            name,
+            Philippines(categories=WORKDAY, years=range(2025, 2050)),
+            (f"{year}-02-25" for year in range(2025, 2050)),
+        )
+        self.assertNoHolidayName(name, range(1988, 2016), 2017, range(2024, 2050))
 
     def test_maundy_thursday(self):
         name = "Maundy Thursday"
@@ -147,11 +155,13 @@ class TestPhilippines(CommonCountryTests, TestCase):
 
     def test_day_of_valor(self):
         name = "Araw ng Kagitingan"
+        years_non_apr_9 = {2008, 2009, 2023}
         self.assertHolidayName(
             name,
-            (f"{year}-04-09" for year in [*range(1988, 2008), *range(2010, 2050)]),
+            (f"{year}-04-09" for year in set(range(1988, 2050)) - years_non_apr_9),
             "2008-04-07",
             "2009-04-06",
+            "2023-04-10",
         )
 
     def test_labor_day(self):
@@ -407,7 +417,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2023-04-06", "Maundy Thursday"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-08", "Black Saturday"),
-            ("2023-04-09", "Araw ng Kagitingan"),
+            ("2023-04-10", "Araw ng Kagitingan"),
             ("2023-04-21", "Eid'l Fitr"),
             ("2023-05-01", "Labor Day"),
             ("2023-06-12", "Independence Day"),
@@ -473,7 +483,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-12-24", "Additional special (non-working) day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-30", "Rizal Day"),
-            ("2024-12-31", "Last Day of the Year"),
+            ("2024-12-31", "New Year's Eve"),
         )
 
     def test_l10n_th(self):

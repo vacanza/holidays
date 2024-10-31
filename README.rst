@@ -749,7 +749,7 @@ All other default values are highlighted with bold:
      - PH
      -
      - **en_PH**, en_US, th, tl
-     -
+     - WORKDAY
    * - Poland
      - PL
      -
