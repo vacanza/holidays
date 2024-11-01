@@ -183,7 +183,7 @@ All other default values are highlighted with bold:
    * - Albania
      - AL
      -
-     -
+     - en_US, **sq**, uk
      -
    * - Algeria
      - DZ
