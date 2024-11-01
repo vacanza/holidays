@@ -15,7 +15,6 @@ from unittest import TestCase
 from importlib_metadata import metadata
 
 import holidays
-import holidays.version
 
 
 class TestPackage(TestCase):
