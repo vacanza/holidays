@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import GOVERNMENT
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.countries.indonesia import Indonesia, ID, IDN
 from tests.common import CommonCountryTests
 
@@ -20,25 +20,138 @@ from tests.common import CommonCountryTests
 class TestIndonesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Indonesia, years=range(1946, 2050))
+        super().setUpClass(Indonesia, years=range(1946, 2050), years_non_observed=(2004, 2020))
 
     def test_country_aliases(self):
         self.assertAliases(Indonesia, ID, IDN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Indonesia(years=1945))
+        self.assertNoHolidays(Indonesia(years=1945, categories=(GOVERNMENT, PUBLIC)))
 
     def test_special(self):
-        self.assertHoliday("2018-06-27", "2019-04-17", "2020-12-09")
+        dt = (
+            # All Election Types.
+            "1999-06-07",
+            "2004-04-05",
+            "2004-07-05",
+            "2004-09-20",
+            "2009-04-09",
+            "2009-07-08",
+            "2014-04-09",
+            "2014-07-09",
+            "2015-12-09",
+            "2017-02-15",
+            "2018-06-27",
+            "2019-04-17",
+            "2020-12-09",
+            "2024-02-14",
+        )
+        dt_observed = ("2004-11-16",)
+        self.assertHoliday(dt, dt_observed)
+        self.assertNoNonObservedHoliday(dt_observed)
 
     def test_special_government(self):
-        self.assertHoliday(
-            Indonesia(categories=GOVERNMENT),
+        dt = (
+            # Joint Holidays (Cuti Bersama)
+            "2002-12-05",
+            "2002-12-09",
+            "2002-12-10",
+            "2002-12-26",
+            "2003-11-24",
+            "2003-11-27",
+            "2003-11-28",
+            "2003-12-26",
+            "2004-11-17",
+            "2004-11-18",
+            "2004-11-19",
+            "2005-11-02",
+            "2005-11-05",
+            "2005-11-07",
+            "2005-11-08",
+            "2006-03-31",
+            "2006-05-26",
+            "2006-08-18",
+            "2006-10-23",
+            "2006-10-26",
+            "2006-10-27",
+            "2007-05-18",
+            "2007-10-12",
+            "2007-10-15",
+            "2007-10-16",
+            "2007-10-17",
+            "2007-10-18",
+            "2007-10-19",
+            "2007-12-21",
+            "2007-12-24",
+            "2007-12-26",
+            "2007-12-31",
+            "2008-01-11",
+            "2008-09-29",
+            "2008-09-30",
+            "2008-10-03",
+            "2008-12-26",
+            "2009-01-02",
+            "2009-09-18",
+            "2009-09-23",
+            "2009-12-24",
+            "2010-09-09",
+            "2010-09-13",
+            "2010-12-24",
+            "2011-05-16",
+            "2011-08-29",
+            "2011-09-01",
+            "2011-09-02",
+            "2011-12-26",
+            "2012-05-18",
+            "2012-08-21",
+            "2012-08-22",
+            "2012-11-16",
+            "2012-12-24",
+            "2012-12-31",
+            "2013-08-05",
+            "2013-08-06",
+            "2013-08-07",
+            "2013-10-14",
+            "2013-12-26",
+            "2014-07-30",
+            "2014-07-31",
+            "2014-08-01",
+            "2014-12-26",
+            "2015-07-16",
+            "2015-07-20",
+            "2015-07-21",
+            "2016-07-04",
+            "2016-07-05",
+            "2016-07-08",
+            "2016-12-26",
+            "2017-06-23",
+            "2017-06-27",
+            "2017-06-28",
+            "2017-06-29",
+            "2017-06-30",
+            "2017-12-26",
+            "2018-06-11",
+            "2018-06-12",
+            "2018-06-13",
+            "2018-06-14",
+            "2018-06-18",
+            "2018-06-19",
+            "2018-06-20",
+            "2018-12-24",
+            "2019-06-03",
+            "2019-06-04",
+            "2019-06-07",
+            "2019-12-24",
+            "2020-08-21",
+            "2020-10-28",
+            "2020-10-30",
+            "2020-12-24",
+            "2021-05-12",
+            "2021-12-24",
             "2022-04-29",
             "2022-05-04",
             "2022-05-05",
             "2022-05-06",
-            "2022-12-26",
             "2023-01-23",
             "2023-03-23",
             "2023-04-19",
@@ -46,7 +159,36 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2023-04-21",
             "2023-04-24",
             "2023-04-25",
+            "2023-06-02",
+            "2023-06-28",
+            "2023-06-30",
             "2023-12-26",
+            "2024-02-09",
+            "2024-03-12",
+            "2024-04-08",
+            "2024-04-09",
+            "2024-04-12",
+            "2024-04-15",
+            "2024-05-10",
+            "2024-05-24",
+            "2024-06-18",
+            "2024-12-26",
+            "2025-01-28",
+            "2025-03-28",
+            "2025-04-02",
+            "2025-04-03",
+            "2025-04-04",
+            "2025-04-07",
+            "2025-05-13",
+            "2025-05-30",
+            "2025-06-09",
+            "2025-12-26",
+        )
+        dt_observed = ("2020-12-31",)
+        self.assertHoliday(Indonesia(categories=GOVERNMENT), dt, dt_observed)
+        self.assertNoNonObservedHoliday(
+            Indonesia(categories=GOVERNMENT, observed=False),
+            dt_observed,
         )
 
     def test_new_years_day(self):
@@ -78,10 +220,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-02-01",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(
-            set(range(1946, 2050)).difference(set(range(1968, 2003))).issubset(years_found)
-        )
-        self.assertFalse(set(range(1968, 2003)).intersection(years_found))
+        self.assertTrue(set(range(2003, 2050)).issubset(years_found))
+        self.assertFalse(set(range(1946, 2003)).intersection(years_found))
 
     def test_day_of_silence(self):
         name = "Hari Suci Nyepi"
@@ -108,8 +248,23 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, range(1953, 1963), range(1971, 2050))
-        self.assertNoHolidayName(name, range(1946, 1953), range(1963, 1971))
+        self.assertHolidayName(name, range(1953, 1964), range(1971, 2050))
+        self.assertNoHolidayName(name, range(1946, 1953), range(1964, 1971))
+
+    def test_easter_sunday(self):
+        name = "Kebangkitan Yesus Kristus"
+        self.assertHolidayName(
+            name,
+            "2024-03-31",
+            "2025-04-20",
+            "2026-04-05",
+            "2027-03-28",
+            "2028-04-16",
+            "2029-04-01",
+            "2030-04-21",
+        )
+        self.assertHolidayName(name, range(2024, 2050))
+        self.assertNoHolidayName(name, range(1946, 2024))
 
     def test_easter_monday(self):
         name = "Hari kedua Paskah"
@@ -126,10 +281,10 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "1961-04-03",
             "1962-04-23",
         )
-        self.assertHolidayName(name, range(1953, 1963))
-        self.assertNoHolidayName(name, range(1946, 1953), range(1963, 2050))
+        self.assertHolidayName(name, range(1953, 1964))
+        self.assertNoHolidayName(name, range(1946, 1953), range(1964, 2050))
 
-    def test_buddhas_birthday(self):
+    def test_vesak_day(self):
         name = "Hari Raya Waisak"
         self.assertHolidayName(
             name,
@@ -146,12 +301,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "Hari Buruh Internasional"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1953, 1969)))
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1953, 1968)))
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2014, 2050)))
         self.assertNoHoliday(
-            f"{year}-05-01" for year in set(range(1969, 2014)).difference({2004, 2008})
+            f"{year}-05-01" for year in set(range(1968, 2014)).difference({2004, 2008})
         )
-        self.assertNoHolidayName(name, range(1969, 2014))
+        self.assertNoHolidayName(name, range(1968, 2014))
 
     def test_ascension_day(self):
         name = "Kenaikan Yesus Kristus"
@@ -164,8 +319,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-05-26",
             "2023-05-18",
         )
-        self.assertHolidayName(name, range(1953, 1963), range(1968, 2050))
-        self.assertNoHolidayName(name, range(1946, 1953), range(1963, 1968))
+        self.assertHolidayName(name, range(1953, 1964), range(1968, 2050))
+        self.assertNoHolidayName(name, range(1946, 1953), range(1964, 1968))
 
     def test_whit_monday(self):
         name = "Hari kedua Pentakosta"
@@ -182,8 +337,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "1961-05-22",
             "1962-06-11",
         )
-        self.assertHolidayName(name, range(1953, 1963))
-        self.assertNoHolidayName(name, range(1946, 1953), range(1963, 2050))
+        self.assertHolidayName(name, range(1953, 1964))
+        self.assertNoHolidayName(name, range(1946, 1953), range(1964, 2050))
 
     def test_pancasila_day(self):
         name = "Hari Lahir Pancasila"
@@ -228,11 +383,10 @@ class TestIndonesia(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Hari Raya Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1953, 2050)))
-        self.assertNoHoliday(f"{year}-12-25" for year in range(1946, 1953))
-        self.assertNoHolidayName(name, range(1946, 1953))
+        self.assertNoHolidayName(name, (f"{year}-12-25" for year in range(1946, 1953)))
 
     def test_eid_al_fitr(self):
-        name = "Hari Raya Idulfitri"
+        name = "Hari Raya Idul Fitri"
         self.assertHolidayName(
             name,
             "2018-06-15",
@@ -247,7 +401,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
         self.assertFalse(set(range(1946, 1953)).intersection(years_found))
 
     def test_eid_al_fitr_second_day(self):
-        name = "Hari kedua dari Hari Raya Idulfitri"
+        name = "Hari kedua dari Hari Raya Idul Fitri"
         self.assertHolidayName(
             name,
             "2018-06-16",
@@ -262,7 +416,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
         self.assertFalse(set(range(1946, 1953)).intersection(years_found))
 
     def test_eid_al_adha(self):
-        name = "Hari Raya Iduladha"
+        name = "Hari Raya Idul Adha"
         self.assertHolidayName(
             name,
             "2018-08-22",
@@ -290,10 +444,10 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2023-07-19",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1963)).issubset(years_found))
+        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
         self.assertTrue(set(range(1968, 2050)).issubset(years_found))
         self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
+        self.assertFalse(set(range(1964, 1968)).intersection(years_found))
 
     def test_prophets_birthday(self):
         name = "Maulid Nabi Muhammad"
@@ -306,12 +460,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-10-08",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1963)).issubset(years_found))
+        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
         self.assertTrue(set(range(1968, 2050)).issubset(years_found))
         self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
+        self.assertFalse(set(range(1964, 1968)).intersection(years_found))
 
-    def test_prophets_ascension(self):
+    def test_isra_and_miraj(self):
         name = "Isra Mikraj Nabi Muhammad"
         self.assertHolidayName(
             name,
@@ -343,9 +497,9 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "1962-02-21",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1963)).issubset(years_found))
+        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
         self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1963, 2050)).intersection(years_found))
+        self.assertFalse(set(range(1964, 2050)).intersection(years_found))
 
     def test_2021(self):
         self.assertHolidays(
@@ -356,11 +510,11 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2021-03-14", "Hari Suci Nyepi"),
             ("2021-04-02", "Wafat Yesus Kristus"),
             ("2021-05-01", "Hari Buruh Internasional"),
-            ("2021-05-13", "Hari Raya Idulfitri; Kenaikan Yesus Kristus"),
-            ("2021-05-14", "Hari kedua dari Hari Raya Idulfitri"),
+            ("2021-05-13", "Hari Raya Idul Fitri; Kenaikan Yesus Kristus"),
+            ("2021-05-14", "Hari kedua dari Hari Raya Idul Fitri"),
             ("2021-05-26", "Hari Raya Waisak"),
             ("2021-06-01", "Hari Lahir Pancasila"),
-            ("2021-07-20", "Hari Raya Iduladha"),
+            ("2021-07-20", "Hari Raya Idul Adha"),
             ("2021-08-11", "Tahun Baru Islam"),
             ("2021-08-17", "Hari Kemerdekaan Republik Indonesia"),
             ("2021-10-19", "Maulid Nabi Muhammad"),
@@ -376,12 +530,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-03-03", "Hari Suci Nyepi"),
             ("2022-04-15", "Wafat Yesus Kristus"),
             ("2022-05-01", "Hari Buruh Internasional"),
-            ("2022-05-02", "Hari Raya Idulfitri"),
-            ("2022-05-03", "Hari kedua dari Hari Raya Idulfitri"),
+            ("2022-05-02", "Hari Raya Idul Fitri"),
+            ("2022-05-03", "Hari kedua dari Hari Raya Idul Fitri"),
             ("2022-05-16", "Hari Raya Waisak"),
             ("2022-05-26", "Kenaikan Yesus Kristus"),
             ("2022-06-01", "Hari Lahir Pancasila"),
-            ("2022-07-10", "Hari Raya Iduladha"),
+            ("2022-07-10", "Hari Raya Idul Adha"),
             ("2022-07-30", "Tahun Baru Islam"),
             ("2022-08-17", "Hari Kemerdekaan Republik Indonesia"),
             ("2022-10-08", "Maulid Nabi Muhammad"),
@@ -395,22 +549,21 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-02-28", "Isra Mikraj Nabi Muhammad"),
             ("2022-03-03", "Hari Suci Nyepi"),
             ("2022-04-15", "Wafat Yesus Kristus"),
-            ("2022-04-29", "Cuti Bersama Hari Raya Idulfitri"),
+            ("2022-04-29", "Cuti Bersama Hari Raya Idul Fitri"),
             ("2022-05-01", "Hari Buruh Internasional"),
-            ("2022-05-02", "Hari Raya Idulfitri"),
-            ("2022-05-03", "Hari kedua dari Hari Raya Idulfitri"),
-            ("2022-05-04", "Cuti Bersama Hari Raya Idulfitri"),
-            ("2022-05-05", "Cuti Bersama Hari Raya Idulfitri"),
-            ("2022-05-06", "Cuti Bersama Hari Raya Idulfitri"),
+            ("2022-05-02", "Hari Raya Idul Fitri"),
+            ("2022-05-03", "Hari kedua dari Hari Raya Idul Fitri"),
+            ("2022-05-04", "Cuti Bersama Hari Raya Idul Fitri"),
+            ("2022-05-05", "Cuti Bersama Hari Raya Idul Fitri"),
+            ("2022-05-06", "Cuti Bersama Hari Raya Idul Fitri"),
             ("2022-05-16", "Hari Raya Waisak"),
             ("2022-05-26", "Kenaikan Yesus Kristus"),
             ("2022-06-01", "Hari Lahir Pancasila"),
-            ("2022-07-10", "Hari Raya Iduladha"),
+            ("2022-07-10", "Hari Raya Idul Adha"),
             ("2022-07-30", "Tahun Baru Islam"),
             ("2022-08-17", "Hari Kemerdekaan Republik Indonesia"),
             ("2022-10-08", "Maulid Nabi Muhammad"),
             ("2022-12-25", "Hari Raya Natal"),
-            ("2022-12-26", "Cuti Bersama Hari Raya Natal"),
         )
 
     def test_l10n_en_us(self):
@@ -428,7 +581,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-05-04", "Eid al-Fitr Joint Holiday"),
             ("2022-05-05", "Eid al-Fitr Joint Holiday"),
             ("2022-05-06", "Eid al-Fitr Joint Holiday"),
-            ("2022-05-16", "Buddha's Birthday"),
+            ("2022-05-16", "Vesak Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-01", "Pancasila Day"),
             ("2022-07-10", "Eid al-Adha"),
@@ -436,7 +589,31 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-08-17", "Independence Day"),
             ("2022-10-08", "Prophet's Birthday"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Joint Holiday"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-02-01", "วันตรุษจีน"),
+            ("2022-02-28", "วันเมี๊ยะราจ"),
+            ("2022-03-03", "วันแห่งความเงียบ"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-29", "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"),
+            ("2022-05-01", "วันแรงงานสากล"),
+            ("2022-05-02", "วันอีฎิ้ลฟิตริ"),
+            ("2022-05-03", "วันอีฎิ้ลฟิตริวันที่สอง"),
+            ("2022-05-04", "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"),
+            ("2022-05-05", "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"),
+            ("2022-05-06", "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"),
+            ("2022-05-16", "วันวิสาขบูชา"),
+            ("2022-05-26", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2022-06-01", "วันปัญจศีล"),
+            ("2022-07-10", "วันอีดิ้ลอัฎฮา"),
+            ("2022-07-30", "วันขึ้นปีใหม่อิสลาม"),
+            ("2022-08-17", "วันประกาศอิสรภาพสาธารณรัฐอินโดนีเซีย"),
+            ("2022-10-08", "วันเมาลิดนบี"),
+            ("2022-12-25", "วันคริสต์มาส"),
         )
 
     def test_l10n_uk(self):
@@ -462,5 +639,4 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2022-08-17", "День незалежності Республіки Індонезія"),
             ("2022-10-08", "День народження пророка Мухаммада"),
             ("2022-12-25", "Різдво Христове"),
-            ("2022-12-26", "Додатковий вихідний на Різдво Христове"),
         )
