@@ -38,15 +38,15 @@ msgstr "День загальних виборів"
 
 #. Presidential Election Day.
 msgid "Hari Pemilihan Presiden"
-msgstr "День Президентські виборів"
+msgstr "День президентських виборів"
 
 #. Legislative Election Day.
 msgid "Hari Pemilihan Legislatif"
-msgstr "День Парламентські виборів"
+msgstr "День парламентських виборів"
 
 #. Local Election Day.
 msgid "Hari Pemilihan Kepala Daerah"
-msgstr "День Місцеві виборів"
+msgstr "День місцевих виборів"
 
 #. Eid al-Fitr Joint Holiday.
 msgid "Cuti Bersama Hari Raya Idul Fitri"
