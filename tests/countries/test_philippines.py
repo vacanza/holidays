@@ -486,6 +486,35 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-12-31", "New Year's Eve"),
         )
 
+    def test_l10n_fil(self):
+        self.assertLocalizedHolidays(
+            "fil",
+            ("2024-01-01", "Bagong Taon"),
+            ("2024-02-09", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
+            ("2024-02-10", "Bagong Taon ng mga Tsino"),
+            ("2024-03-28", "Huwebes Santo"),
+            ("2024-03-29", "Biyernes Santo"),
+            ("2024-03-30", "Sabado de Gloria"),
+            ("2024-04-09", "Araw ng Kagitingan"),
+            ("2024-04-10", "Eid al-Fitr"),
+            ("2024-05-01", "Araw ng Paggawa"),
+            ("2024-06-12", "Araw ng Kalayaan"),
+            ("2024-06-17", "Eid al-Adha"),
+            ("2024-08-21", "Araw ng Kabayanihan ni Ninoy Aquino"),
+            ("2024-08-26", "Araw ng mga Bayani"),
+            ("2024-11-01", "Araw ng mga Santo"),
+            ("2024-11-02", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
+            ("2024-11-30", "Araw ng Kabayanihan ni Bonifacio"),
+            (
+                "2024-12-08",
+                "Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria",
+            ),
+            ("2024-12-24", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
+            ("2024-12-25", "Pasko"),
+            ("2024-12-30", "Araw ng Kabayanihan ni Rizal"),
+            ("2024-12-31", "Bisperas ng Bagong Taon"),
+        )
+
     def test_l10n_th(self):
         self.assertLocalizedHolidays(
             "th",

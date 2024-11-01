@@ -52,7 +52,7 @@ class Philippines(
     default_language = "en_PH"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_languages = ("en_PH", "en_US", "th", "tl")
+    supported_languages = ("en_PH", "en_US", "fil", "th", "tl")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=PhilippinesChineseHolidays)
