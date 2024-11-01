@@ -25,7 +25,7 @@ class TestPackage(TestCase):
         for attr_name, attr_value in {
             "name": "holidays",
             "summary": "World Holidays Framework",
-            "version": holidays.version.__version__,
+            "version": holidays.__version__,
         }.items():
             self.assertIn(attr_name, ph_metadata)
             self.assertEqual(ph_metadata[attr_name], attr_value, attr_name)

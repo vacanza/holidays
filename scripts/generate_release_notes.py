@@ -85,7 +85,7 @@ class ReleaseNotesGenerator:
         self.previous_commits: set[str] = set()
         self.pull_requests: dict[int, str] = {}
 
-        self.tag = holidays.version.__version__
+        self.tag = holidays.__version__
 
         try:
             latest_tag = self.remote_repo.get_tags()[0]

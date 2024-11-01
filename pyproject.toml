@@ -91,7 +91,7 @@ ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
-version = { attr = "holidays.version.__version__" }
+version = { attr = "holidays.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["holidays*"]
