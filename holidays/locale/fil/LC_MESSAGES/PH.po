@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2024-11-01 10:09+0700\n"
+"PO-Revision-Date: 2024-11-02 01:48+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fil\n"
@@ -62,6 +62,10 @@ msgstr "Araw ng Paggawa"
 msgid "Independence Day"
 msgstr "Araw ng Kalayaan"
 
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "Anibersaryo ng Pagkatatag ng Iglesia ni Cristo"
+
 #. Ninoy Aquino Day.
 msgid "Ninoy Aquino Day"
 msgstr "Araw ng Kabayanihan ni Ninoy Aquino"
@@ -69,6 +73,10 @@ msgstr "Araw ng Kabayanihan ni Ninoy Aquino"
 #. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "Araw ng mga Bayani"
+
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "Bisperas ng Araw ng mga Santo"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -80,7 +88,12 @@ msgstr "Araw ng Kabayanihan ni Bonifacio"
 
 #. Immaculate Conception.
 msgid "Feast of the Immaculate Conception of Mary"
-msgstr "Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria"
+msgstr ""
+"Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Bisperas ng Pasko"
 
 #. Christmas Day.
 msgid "Christmas Day"

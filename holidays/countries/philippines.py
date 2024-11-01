@@ -42,8 +42,13 @@ class Philippines(
       - `Republic Act No. 9177 <https://www.officialgazette.gov.ph/2002/11/13/republic-act-no-9177/>`_
       - `Republic Act No. 9256 <https://www.officialgazette.gov.ph/2004/02/25/republic-act-no-9256/>`_
       - `Republic Act No. 9492 <https://www.officialgazette.gov.ph/2007/07/24/republic-act-no-9492/>`_
+      - `Republic Act No. 9645 <https://www.officialgazette.gov.ph/2009/06/12/republic-act-no-9645/>`_
       - `Republic Act No. 9849 <https://www.officialgazette.gov.ph/2009/12/11/republic-act-no-9849/>`_
       - `Republic Act No. 10966 <https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/>`_
+      - `Proclamation No. 944/2020` <https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/>`_
+      - `Proclamation No. 985/2020` <https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/>`_
+      - `Proclamation No. 665/2024` <https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/>`_
+      - `Proclamation No. 729/2024` <https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/>`_
       - `Nationwide holidays 2018-2025 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
     """
 
@@ -52,7 +57,7 @@ class Philippines(
     default_language = "en_PH"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_languages = ("en_PH", "en_US", "fil", "th", "tl")
+    supported_languages = ("en_PH", "en_US", "fil", "th")
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=PhilippinesChineseHolidays)
@@ -117,6 +122,7 @@ class Philippines(
                 2007: (AUG, 20),
                 2008: (AUG, 18),
                 2010: (AUG, 23),
+                2024: (AUG, 23),
             }
             # Ninoy Aquino Day.
             self._add_holiday(tr("Ninoy Aquino Day"), dates_obs.get(self._year, (AUG, 21)))
@@ -164,6 +170,11 @@ class Philippines(
             self._add_eid_al_adha_day(tr("Eid'l Adha"))
 
     def _populate_workday_holidays(self):
+        # Added in 2009, get special non-working day status in 2025:
+        if self._year >= 2009 and self._year != 2025:
+            # Founding Anniversary of Iglesia ni Cristo.
+            self._add_holiday_jul_27(tr("Founding Anniversary of Iglesia ni Cristo"))
+
         # Added from 2025 onwards as first decreed in
         # https://www.officialgazette.gov.ph/downloads/2024/10oct/20241030-PROC-727-FRM.pdf
         if self._year >= 2025:
@@ -311,7 +322,10 @@ class PhilippinesStaticHolidays:
             (DEC, 24, additional_special),
         ),
         2025: (
-            (OCT, 31, additional_special),
-            (DEC, 24, additional_special),
+            (JUL, 27, additional_special),
+            # All Saints' Day Eve.
+            (OCT, 31, tr("All Saints' Day Eve")),
+            # Christmas Eve.
+            (DEC, 24, tr("Christmas Eve")),
         ),
     }

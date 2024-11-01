@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2024-11-01 00:39+0700\n"
+"PO-Revision-Date: 2024-11-02 01:48+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: tl\n"
@@ -62,6 +62,10 @@ msgstr "Labor Day"
 msgid "Independence Day"
 msgstr "Independence Day"
 
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "Founding Anniversary of Iglesia ni Cristo"
+
 #. Ninoy Aquino Day.
 msgid "Ninoy Aquino Day"
 msgstr "Ninoy Aquino Day"
@@ -69,6 +73,10 @@ msgstr "Ninoy Aquino Day"
 #. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "National Heroes Day"
+
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "All Saints' Day Eve"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -85,6 +93,10 @@ msgstr "Immaculate Conception"
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
 
 #. Rizal Day.
 msgid "Rizal Day"

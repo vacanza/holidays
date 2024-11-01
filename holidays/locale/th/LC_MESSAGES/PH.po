@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.60\n"
 "POT-Creation-Date: 2024-10-30 02:45+0700\n"
-"PO-Revision-Date: 2024-11-01 00:39+0700\n"
+"PO-Revision-Date: 2024-11-02 01:48+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -62,6 +62,10 @@ msgstr "วันแรงงาน"
 msgid "Independence Day"
 msgstr "วันประกาศเอกราชสาธารณรัฐฟิลิปปินส์"
 
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "วันครบรอบการสถาปนานิกายคริสตจักรของพระคริสต์"
+
 #. Ninoy Aquino Day.
 msgid "Ninoy Aquino Day"
 msgstr "วันนินอย อากีโน"
@@ -69,6 +73,10 @@ msgstr "วันนินอย อากีโน"
 #. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "วันวีรบุรุษแห่งชาติ"
+
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "วันก่อนวันสมโภชนักบุญทั้งหลาย"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -85,6 +93,10 @@ msgstr "วันสมโภชแม่พระผู้ปฏิสนธิ
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "วันคริสต์มาส"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "วันคริสต์มาสอีฟ"
 
 #. Rizal Day.
 msgid "Rizal Day"

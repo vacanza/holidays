@@ -27,10 +27,11 @@ class TestPhilippines(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Philippines(years=1987))
-        self.assertNoHolidays(Philippines(years=2024, categories=WORKDAY))
+        self.assertNoHolidays(Philippines(years=2008, categories=WORKDAY))
 
     def test_special_holidays(self):
         self.assertHoliday(
+            # Additional special (non-working) day.
             "2008-12-26",
             "2008-12-29",
             "2009-11-02",
@@ -65,6 +66,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2024-02-09",
             "2024-11-02",
             "2024-12-24",
+            "2025-07-27",
+            "2025-10-31",
+            "2025-12-24",
         )
 
     def test_new_years_day(self):
@@ -178,15 +182,27 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2010-06-14",
         )
 
-    def test_ninoy_aquino_day(self):
-        name = "Ninoy Aquino Day"
+    def test_iglesia_ni_cristo(self):
+        # 2025 special non-working day is marked as an additional entry for now,
+        # not part of this test case.
+        name = "Founding Anniversary of Iglesia ni Cristo"
         self.assertHolidayName(
             name,
-            (f"{year}-08-21" for year in [*range(2004, 2007), *range(2011, 2050)]),
+            Philippines(categories=WORKDAY, years=range(2009, 2050)),
+            (f"{year}-07-27" for year in [*range(2009, 2025), *range(2026, 2050)]),
+        )
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_ninoy_aquino_day(self):
+        name = "Ninoy Aquino Day"
+        years_non_aug_21 = {2007, 2008, 2010, 2024}
+        self.assertHolidayName(
+            name,
+            (f"{year}-08-21" for year in set(range(2004, 2050)) - years_non_aug_21),
             "2007-08-20",
             "2008-08-18",
-            "2009-08-21",
             "2010-08-23",
+            "2024-08-23",
         )
         self.assertNoHolidayName(name, range(1988, 2004))
 
@@ -435,6 +451,32 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2023-12-31", "Last Day of the Year"),
         )
 
+    def test_2025(self):
+        self.assertHolidays(
+            Philippines(years=2025),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-01-29", "Chinese New Year"),
+            ("2025-03-30", "Eid'l Fitr (estimated)"),
+            ("2025-04-09", "Araw ng Kagitingan"),
+            ("2025-04-17", "Maundy Thursday"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-19", "Black Saturday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-06-06", "Eid'l Adha (estimated)"),
+            ("2025-06-12", "Independence Day"),
+            ("2025-07-27", "Additional special (non-working) day"),
+            ("2025-08-21", "Ninoy Aquino Day"),
+            ("2025-08-25", "National Heroes Day"),
+            ("2025-10-31", "All Saints' Day Eve"),
+            ("2025-11-01", "All Saints' Day"),
+            ("2025-11-30", "Bonifacio Day"),
+            ("2025-12-08", "Feast of the Immaculate Conception of Mary"),
+            ("2025-12-24", "Christmas Eve"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-30", "Rizal Day"),
+            ("2025-12-31", "Last Day of the Year"),
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "New Year's Day"),
@@ -448,7 +490,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-05-01", "Labor Day"),
             ("2024-06-12", "Independence Day"),
             ("2024-06-17", "Eid'l Adha"),
-            ("2024-08-21", "Ninoy Aquino Day"),
+            ("2024-07-27", "Founding Anniversary of Iglesia ni Cristo"),
+            ("2024-08-23", "Ninoy Aquino Day"),
             ("2024-08-26", "National Heroes Day"),
             ("2024-11-01", "All Saints' Day"),
             ("2024-11-02", "Additional special (non-working) day"),
@@ -474,7 +517,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-05-01", "Labor Day"),
             ("2024-06-12", "Independence Day"),
             ("2024-06-17", "Eid al-Adha"),
-            ("2024-08-21", "Ninoy Aquino Day"),
+            ("2024-07-27", "Founding Anniversary of Iglesia ni Cristo"),
+            ("2024-08-23", "Ninoy Aquino Day"),
             ("2024-08-26", "National Heroes Day"),
             ("2024-11-01", "All Saints' Day"),
             ("2024-11-02", "Additional special (non-working) day"),
@@ -500,7 +544,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-05-01", "Araw ng Paggawa"),
             ("2024-06-12", "Araw ng Kalayaan"),
             ("2024-06-17", "Eid al-Adha"),
-            ("2024-08-21", "Araw ng Kabayanihan ni Ninoy Aquino"),
+            ("2024-07-27", "Anibersaryo ng Pagkatatag ng Iglesia ni Cristo"),
+            ("2024-08-23", "Araw ng Kabayanihan ni Ninoy Aquino"),
             ("2024-08-26", "Araw ng mga Bayani"),
             ("2024-11-01", "Araw ng mga Santo"),
             ("2024-11-02", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
@@ -529,7 +574,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-05-01", "วันแรงงาน"),
             ("2024-06-12", "วันประกาศเอกราชสาธารณรัฐฟิลิปปินส์"),
             ("2024-06-17", "วันอีดิ้ลอัฎฮา"),
-            ("2024-08-21", "วันนินอย อากีโน"),
+            ("2024-07-27", "วันครบรอบการสถาปนานิกายคริสตจักรของพระคริสต์"),
+            ("2024-08-23", "วันนินอย อากีโน"),
             ("2024-08-26", "วันวีรบุรุษแห่งชาติ"),
             ("2024-11-01", "วันสมโภชนักบุญทั้งหลาย"),
             ("2024-11-02", "วันหยุดพิเศษ (เพิ่มเติม)"),
@@ -539,33 +585,4 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2024-12-25", "วันคริสต์มาส"),
             ("2024-12-30", "วันรีซัล"),
             ("2024-12-31", "วันสิ้นปี"),
-        )
-
-    def test_l10n_tl(self):
-        self.assertLocalizedHolidays(
-            "tl",
-            ("2024-01-01", "Bagong Taon"),
-            ("2024-02-09", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
-            ("2024-02-10", "Bagong Taon ng mga Tsino"),
-            ("2024-03-28", "Huwebes Santo"),
-            ("2024-03-29", "Biyernes Santo"),
-            ("2024-03-30", "Sabado de Gloria"),
-            ("2024-04-09", "Araw ng Kagitingan"),
-            ("2024-04-10", "Eid al-Fitr"),
-            ("2024-05-01", "Araw ng Paggawa"),
-            ("2024-06-12", "Araw ng Kalayaan"),
-            ("2024-06-17", "Eid al-Adha"),
-            ("2024-08-21", "Araw ng Kabayanihan ni Ninoy Aquino"),
-            ("2024-08-26", "Araw ng mga Bayani"),
-            ("2024-11-01", "Araw ng mga Santo"),
-            ("2024-11-02", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
-            ("2024-11-30", "Araw ng Kabayanihan ni Bonifacio"),
-            (
-                "2024-12-08",
-                "Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria",
-            ),
-            ("2024-12-24", "Karagdagang Espesyal na Araw (Walang Trabajo)"),
-            ("2024-12-25", "Pasko"),
-            ("2024-12-30", "Araw ng Kabayanihan ni Rizal"),
-            ("2024-12-31", "Bisperas ng Bagong Taon"),
         )
