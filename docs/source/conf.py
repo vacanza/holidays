@@ -45,7 +45,7 @@ import holidays  # noqa: E402 module level import not at top of file
 project = "holidays"
 copyright = str(date.today().year)
 author = "Vacanza Team"
-version = holidays.__version__
+version = holidays.version.__version__
 
 
 # -- General configuration ---------------------------------------------------

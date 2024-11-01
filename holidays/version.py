@@ -10,13 +10,4 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# ruff: noqa: F403
-
-from holidays.constants import *
-from holidays.deprecations.v1_incompatibility import *
-from holidays.holiday_base import *
-from holidays.registry import EntityLoader
-from holidays.utils import *
-
-EntityLoader.load("countries", globals())
-EntityLoader.load("financial", globals())
+__version__ = "0.60"

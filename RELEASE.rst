@@ -56,7 +56,7 @@ How to release a new version of Holidays
   - send "Holidays 'v<version>' has been released!" (or similar) message
     to Vacanza Team Slack #release channel
   - pull the recent changes from ``main`` branch into ``dev``
-  - bump the Holidays version at ``holidays/__init__.py`` file
+  - bump the Holidays version at ``holidays/version.py`` file
   - create a commit with 'Initialize v<version>' message, e.g.
     'Initialize v0.40' and push it to ``dev`` branch (this may require
     running ``make package`` to pass the tests locally)

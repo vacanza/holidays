@@ -50,8 +50,8 @@ class POGenerator:
         )
 
         sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
-        from holidays import __version__ as package_version
         from holidays.holiday_base import HolidayBase
+        from holidays.version import __version__ as package_version
 
         for module_name, module_path in modules:
             module = f"holidays.countries.{module_name}"
