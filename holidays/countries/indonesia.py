@@ -669,7 +669,7 @@ class IndonesiaStaticHolidays:
     - https://news.detik.com/berita/d-2576131/ini-daftar-hari-libur-dan-cuti-bersama-tahun-2015
     - https://bkpsdm.salatiga.go.id/pelaksanaan-hari-libur-nasional-dan-cuti-bersama-tahun-2015.html
     - https://news.detik.com/berita/d-2952083/ini-rincian-libur-dan-cuti-bersama-2016
-    - http://itjen.ristekdikti.go.id/wp-content/uploads/2015/11/Keputusan-SKB-Cuti-Bersama-2017.pdf
+    - https://news.detik.com/berita/d-3366218/libur-nasional-dan-cuti-bersama-2017-tambah-3-hari-ini-daftar-lengkapnya
     - https://setkab.go.id/tidak-kurangi-hak-cuti-tahunan-presiden-jokowi-tetapkan-23-juni-sebagai-cuti-bersama-idul-fitri/
     - https://setkab.go.id/pelayanan-publik-tetap-jalan-presiden-jokowi-tetapkan-cuti-bersama-pns-tahun-2018/
     - https://setkab.go.id/keppres-no-132019-cuti-bersama-pns-pada-idul-fitri-1440h-tanggal-3-4-dan-7-juni/
