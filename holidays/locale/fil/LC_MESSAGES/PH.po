@@ -1,0 +1,129 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# The Philippines holidays fil localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.60\n"
+"POT-Creation-Date: 2024-10-30 02:45+0700\n"
+"PO-Revision-Date: 2024-11-02 01:48+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fil\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Bagong Taon"
+
+#. Chinese New Year.
+msgid "Chinese New Year"
+msgstr "Bagong Taon ng mga Tsino"
+
+#. EDSA People Power Revolution Anniversary.
+msgid "EDSA People Power Revolution Anniversary"
+msgstr "Anibersaryo ng Rebolusyon sa EDSA"
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr "Huwebes Santo"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Biyernes Santo"
+
+#. Black Saturday.
+msgid "Black Saturday"
+msgstr "Sabado de Gloria"
+
+#. Day of Valor.
+msgid "Araw ng Kagitingan"
+msgstr "Araw ng Kagitingan"
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr "Araw ng Paggawa"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Araw ng Kalayaan"
+
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "Anibersaryo ng Pagkatatag ng Iglesia ni Cristo"
+
+#. Ninoy Aquino Day.
+msgid "Ninoy Aquino Day"
+msgstr "Araw ng Kabayanihan ni Ninoy Aquino"
+
+#. National Heroes Day.
+msgid "National Heroes Day"
+msgstr "Araw ng mga Bayani"
+
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "Bisperas ng Araw ng mga Santo"
+
+#. All Saints' Day.
+msgid "All Saints' Day"
+msgstr "Araw ng mga Santo"
+
+#. Bonifacio Day.
+msgid "Bonifacio Day"
+msgstr "Araw ng Kabayanihan ni Bonifacio"
+
+#. Immaculate Conception.
+msgid "Feast of the Immaculate Conception of Mary"
+msgstr ""
+"Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Bisperas ng Pasko"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Pasko"
+
+#. Rizal Day.
+msgid "Rizal Day"
+msgstr "Araw ng Kabayanihan ni Rizal"
+
+#. New Year's Eve.
+msgid "Last Day of the Year"
+msgstr "Bisperas ng Bagong Taon"
+
+#. Eid al-Fitr.
+msgid "Eid'l Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid'l Adha"
+msgstr "Eid al-Adha"
+
+#. Additional special (non-working) day.
+msgid "Additional special (non-working) day"
+msgstr "Karagdagang Espesyal na Araw (Walang Trabajo)"
+
+#. Elections special (non-working) day.
+msgid "Elections special (non-working) day"
+msgstr "Araw ng Halalan (Walang Trabajo)"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (tinatayang)"

@@ -1,0 +1,128 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# The Philippines holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.60\n"
+"POT-Creation-Date: 2024-10-30 02:45+0700\n"
+"PO-Revision-Date: 2024-11-02 01:47+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_PH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Chinese New Year.
+msgid "Chinese New Year"
+msgstr ""
+
+#. EDSA People Power Revolution Anniversary.
+msgid "EDSA People Power Revolution Anniversary"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Black Saturday.
+msgid "Black Saturday"
+msgstr ""
+
+#. Day of Valor.
+msgid "Araw ng Kagitingan"
+msgstr ""
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr ""
+
+#. Ninoy Aquino Day.
+msgid "Ninoy Aquino Day"
+msgstr ""
+
+#. National Heroes Day.
+msgid "National Heroes Day"
+msgstr ""
+
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr ""
+
+#. All Saints' Day.
+msgid "All Saints' Day"
+msgstr ""
+
+#. Bonifacio Day.
+msgid "Bonifacio Day"
+msgstr ""
+
+#. Immaculate Conception.
+msgid "Feast of the Immaculate Conception of Mary"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Rizal Day.
+msgid "Rizal Day"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Last Day of the Year"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid'l Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Eid'l Adha"
+msgstr ""
+
+#. Additional special (non-working) day.
+msgid "Additional special (non-working) day"
+msgstr ""
+
+#. Elections special (non-working) day.
+msgid "Elections special (non-working) day"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""

@@ -748,8 +748,8 @@ All other default values are highlighted with bold:
    * - Philippines
      - PH
      -
-     -
-     -
+     - **en_PH**, en_US, fil, th
+     - WORKDAY
    * - Poland
      - PL
      -
