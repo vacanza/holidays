@@ -175,7 +175,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Independence Day"
         self.assertHolidayName(
             name,
-            (f"{year}-06-12" for year in [*range(1988, 2007), *range(2011, 2050)]),
+            (f"{year}-06-12" for year in (*range(1988, 2007), *range(2011, 2050))),
             "2007-06-11",
             "2008-06-09",
             "2009-06-12",
@@ -189,7 +189,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             Philippines(categories=WORKDAY, years=range(2009, 2050)),
-            (f"{year}-07-27" for year in [*range(2009, 2025), *range(2026, 2050)]),
+            (f"{year}-07-27" for year in (*range(2009, 2025), *range(2026, 2050))),
         )
         self.assertNoHolidayName(name, range(1988, 2050))
 
@@ -234,7 +234,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Bonifacio Day"
         self.assertHolidayName(
             name,
-            (f"{year}-11-30" for year in [*range(1988, 2008), *range(2011, 2050)]),
+            (f"{year}-11-30" for year in (*range(1988, 2008), *range(2011, 2050))),
             "2008-12-01",
             "2009-11-30",
             "2010-11-29",
@@ -252,14 +252,14 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Rizal Day"
         self.assertHolidayName(
             name,
-            (f"{year}-12-30" for year in [*range(1988, 2010), *range(2011, 2050)]),
+            (f"{year}-12-30" for year in (*range(1988, 2010), *range(2011, 2050))),
             "2010-12-27",
         )
 
     def test_last_day_of_year(self):
         name = "Last Day of the Year"
         self.assertHolidayName(
-            name, (f"{year}-12-31" for year in [*range(1988, 2021), *range(2023, 2050)])
+            name, (f"{year}-12-31" for year in (*range(1988, 2021), *range(2023, 2050)))
         )
         self.assertNoHolidayName(name, 2021, 2022)
 
