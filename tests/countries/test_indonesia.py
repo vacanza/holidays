@@ -45,6 +45,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2019-04-17",
             "2020-12-09",
             "2024-02-14",
+            "2024-11-27",
         )
         dt_observed = ("2004-11-16",)
         self.assertHoliday(dt, dt_observed)
@@ -124,6 +125,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2016-07-05",
             "2016-07-08",
             "2016-12-26",
+            "2017-01-02",
             "2017-06-23",
             "2017-06-27",
             "2017-06-28",
@@ -147,7 +149,6 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2020-10-30",
             "2020-12-24",
             "2021-05-12",
-            "2021-12-24",
             "2022-04-29",
             "2022-05-04",
             "2022-05-05",
@@ -343,8 +344,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
     def test_pancasila_day(self):
         name = "Hari Lahir Pancasila"
         self.assertHolidayName(name, (f"{year}-06-01" for year in range(2016, 2050)))
-        self.assertNoHoliday(
-            f"{year}-06-01" for year in set(range(1946, 2016)).difference({2000, 2007})
+        self.assertNoHolidayName(
+            name, (f"{year}-06-01" for year in set(range(1946, 2016)).difference({2000, 2007}))
         )
         self.assertNoHolidayName(name, range(1946, 2016))
 
@@ -456,7 +457,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2018-11-20",
             "2019-11-09",
             "2020-10-29",
-            "2021-10-19",
+            "2021-10-20",
             "2022-10-08",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
@@ -517,7 +518,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             ("2021-07-20", "Hari Raya Idul Adha"),
             ("2021-08-11", "Tahun Baru Islam"),
             ("2021-08-17", "Hari Kemerdekaan Republik Indonesia"),
-            ("2021-10-19", "Maulid Nabi Muhammad"),
+            ("2021-10-20", "Maulid Nabi Muhammad"),
             ("2021-12-25", "Hari Raya Natal"),
         )
 
