@@ -45,7 +45,6 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2019-04-17",
             "2020-12-09",
             "2024-02-14",
-            # Predicted Election (no KEPPRESS released yet)
             "2024-11-27",
         )
         dt_observed = ("2004-11-16",)
@@ -305,8 +304,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
         name = "Hari Buruh Internasional"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1953, 1968)))
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2014, 2050)))
-        self.assertNoHolidayName(
-            name, (f"{year}-05-01" for year in set(range(1968, 2014)).difference({2004, 2008}))
+        self.assertNoHoliday(
+            f"{year}-05-01" for year in set(range(1968, 2014)).difference({2004, 2008})
         )
         self.assertNoHolidayName(name, range(1968, 2014))
 
@@ -359,8 +358,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "1970-08-15",
         )
         years_no_exist = set(range(1946, 2050)).difference({1968, 1969, 1970})
-        self.assertNoHolidayName(
-            name, (f"{year}-08-15" for year in years_no_exist.difference({1974, 1986, 2045}))
+        self.assertNoHoliday(
+            f"{year}-08-15" for year in years_no_exist.difference({1974, 1986, 2045})
         )
         self.assertNoHolidayName(name, years_no_exist)
 
@@ -371,16 +370,14 @@ class TestIndonesia(CommonCountryTests, TestCase):
     def test_armed_forces_day(self):
         name = "Hari Angkatan Perang"
         self.assertHolidayName(name, (f"{year}-10-05" for year in range(1946, 1953)))
-        self.assertNoHolidayName(
-            name, (f"{year}-10-05" for year in set(range(1953, 2050)).difference({2014}))
-        )
+        self.assertNoHoliday(f"{year}-10-05" for year in set(range(1953, 2050)).difference({2014}))
         self.assertNoHolidayName(name, range(1953, 2050))
 
     def test_heroes_day(self):
         name = "Hari Pahlawan"
         self.assertHolidayName(name, (f"{year}-11-10" for year in range(1946, 1953)))
-        self.assertNoHolidayName(
-            name, (f"{year}-11-10" for year in set(range(1953, 2050)).difference({1978, 2045}))
+        self.assertNoHoliday(
+            f"{year}-11-10" for year in set(range(1953, 2050)).difference({1978, 2045})
         )
         self.assertNoHolidayName(name, range(1953, 2050))
 

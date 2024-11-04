@@ -649,7 +649,7 @@ class IndonesiaStaticHolidays:
     - https://peraturan.bpk.go.id/Details/104497/keppres-no-10-tahun-2019
     - https://peraturan.bpk.go.id/Details/152704/keppres-no-22-tahun-2020
     - https://peraturan.bpk.go.id/Details/277337/keppres-no-10-tahun-2024
-    - https://news.detik.com/berita/d-7589460/apakah-pilkada-27-november-2024-libur-cek-infonya
+    - https://www.buduk.desa.id/berita/read/83/surat-edaran-menteri-ketenagakerjaan-republik-indonesia-nomor-1-tahun-2024.html
 
     References (Joint Holidays):
     - https://data.santoslolowang.com/viewing/Agama_Nasional_Indonesia/kepbersama_2002.pdf/
