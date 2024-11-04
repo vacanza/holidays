@@ -432,9 +432,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
     def test_columbus_day(self):
         name = "Columbus Day"
-        self.assertNoHolidayName(name, range(1865, 1937))
-        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1937, 1971)))
-        self.assertHolidayName(name, range(1971, 2050))
+        self.assertNoHolidayName(name)
         dt = (
             "2010-10-11",
             "2011-10-10",
@@ -450,9 +448,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2021-10-11",
             "2022-10-10",
             "2023-10-09",
+            "2024-10-14",
         )
-        self.assertHolidayName(name, dt)
-
         subdivs_have_columbus_day = {
             "AS",
             "AZ",
@@ -488,7 +485,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         }
 
         for subdiv in subdivs_have_columbus_day:
-            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            state_holidays = self.state_hols[subdiv]
+            self.assertNoHolidayName(name, state_holidays, range(1865, 1937))
+            self.assertHolidayName(
+                name, state_holidays, (f"{year}-10-12" for year in range(1937, 1971))
+            )
+            self.assertHolidayName(name, state_holidays, range(1971, 2050))
+            self.assertHolidayName(name, state_holidays, dt)
 
         for subdiv in (
             set(UnitedStates.subdivisions)
