@@ -1,0 +1,106 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Albania holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.60\n"
+"POT-Creation-Date: 2024-11-01 23:02+0200\n"
+"PO-Revision-Date: 2024-11-01 23:05+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (e vlerësuar)"
+msgstr "%s (приблизна дата)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë)"
+msgstr "%s (вихідний)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ditë pushimi e shtyrë, e vlerësuar)"
+msgstr "%s (вихідний, приблизна дата)"
+
+#. New Year's Day.
+msgid "Festat e Vitit të Ri"
+msgstr "Новий рік"
+
+#. Summer Day.
+msgid "Dita e Verës"
+msgstr "День літа"
+
+#. Nowruz Day.
+msgid "Dita e Nevruzit"
+msgstr "Свято Новруз"
+
+#. Catholic Easter Sunday.
+msgid "E diela e Pashkëve Katolike"
+msgstr "Великдень (католицький)"
+
+#. Orthodox Easter Sunday.
+msgid "E diela e Pashkëve Ortodokse"
+msgstr "Великдень (православний)"
+
+#. International Workers' Day.
+msgid "Dita Ndërkombëtare e Punëtorëve"
+msgstr "Міжнародний день трудящих"
+
+#. Mother Teresa Beatification Day.
+msgid "Dita e Lumturimit të Shenjt Terezës"
+msgstr "День беатифікації матері Терези"
+
+#. Mother Teresa Canonization Day.
+msgid "Dita e Shenjtërimit të Shenjt Terezës"
+msgstr "День канонізації матері Терези"
+
+#. Alphabet Day.
+msgid "Dita e Alfabetit"
+msgstr "День алфавіту"
+
+#. Flag and Independence Day.
+msgid "Dita Flamurit dhe e Pavarësisë"
+msgstr "День прапора та незалежності"
+
+#. Liberation Day.
+msgid "Dita e Çlirimit"
+msgstr "День визволення"
+
+#. National Youth Day.
+msgid "Dita Kombëtare e Rinisë"
+msgstr "Національний день молоді"
+
+#. Christmas Day.
+msgid "Krishtlindjet"
+msgstr "Різдво Христове"
+
+#. Eid al-Fitr.
+msgid "Dita e Bajramit të Madh"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Dita e Kurban Bajramit"
+msgstr "Курбан-байрам"
+
+#. Public Holiday.
+msgid "Ditë pushimi"
+msgstr "Вихідний день"
