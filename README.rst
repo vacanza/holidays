@@ -183,7 +183,7 @@ All other default values are highlighted with bold:
    * - Albania
      - AL
      -
-     -
+     - en_US, **sq**, uk
      -
    * - Algeria
      - DZ
@@ -513,7 +513,7 @@ All other default values are highlighted with bold:
    * - Indonesia
      - ID
      -
-     - en_US, **id**, uk
+     - en_US, **id**, th, uk
      - GOVERNMENT
    * - Iran
      - IR
@@ -748,8 +748,8 @@ All other default values are highlighted with bold:
    * - Philippines
      - PH
      -
-     -
-     -
+     - **en_PH**, en_US, fil, th
+     - WORKDAY
    * - Poland
      - PL
      -

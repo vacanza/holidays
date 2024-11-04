@@ -229,6 +229,19 @@ class TestSpain(CommonCountryTests, TestCase):
             "2024-12-25",
         )
 
+    def test_fixed_holidays_2025(self):
+        self.assertNonObservedHoliday(
+            "2025-01-01",
+            "2025-01-06",
+            "2025-04-18",
+            "2025-05-01",
+            "2025-08-15",
+            "2025-11-01",
+            "2025-12-06",
+            "2025-12-08",
+            "2025-12-25",
+        )
+
     def test_islamic(self):
         self.assertNoHolidayName(
             "Fiesta del Sacrificio-Eidul Adha", Spain(subdiv="CE", years=2009)
@@ -969,6 +982,53 @@ class TestSpain(CommonCountryTests, TestCase):
             (DEC, 26): {"CT"},
         }
         self._assertVariableDays(2024, province_days)
+
+    def test_variable_holidays_2025(self):
+        province_days = {
+            (FEB, 28): {"AN"},
+            (MAR, 1): {"IB"},
+            (MAR, 19): {"MC", "VC"},
+            (MAR, 31): {"ML"},
+            (APR, 17): {
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+            },
+            (APR, 21): {"CT", "NC", "PV", "RI", "VC"},
+            (APR, 23): {"AR", "CL"},
+            (MAY, 2): {"MD"},
+            (MAY, 17): {"GA"},
+            (MAY, 30): {"CN"},
+            (MAY, 31): {"CM"},
+            (JUN, 6): {"CE", "ML"},
+            (JUN, 9): {"MC", "RI"},
+            (JUN, 19): {"CM"},
+            (JUN, 24): {"CT", "VC"},
+            (JUL, 25): {"GA", "MD", "NC", "PV"},
+            (JUL, 28): {"CB"},
+            (AUG, 5): {"CE"},
+            (SEP, 8): {"AS", "EX"},
+            (SEP, 11): {"CT"},
+            (SEP, 15): {"CB"},
+            (OCT, 9): {"VC"},
+            (OCT, 13): {"AN", "AR", "AS", "CL", "EX"},
+            (DEC, 26): {"CT", "IB"},
+        }
+        self._assertVariableDays(2025, province_days)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

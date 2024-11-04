@@ -10,26 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F403
-
-import warnings
+# ruff: noqa: F403
 
 from holidays.constants import *
-from holidays.deprecation import (
-    FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE,
-    FutureIncompatibilityWarning,
-)
+from holidays.deprecations.v1_incompatibility import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
-
-__version__ = "0.59"
-
+from holidays.version import __version__  # noqa: F401
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())
-
-warnings.warn(
-    FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE.format(version=__version__),
-    FutureIncompatibilityWarning,
-)

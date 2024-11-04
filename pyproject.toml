@@ -83,8 +83,7 @@ disable_error_code = "attr-defined"
 
 [tool.pytest.ini_options]
 filterwarnings = [
-    "ignore::DeprecationWarning:holidays",
-    "ignore::DeprecationWarning:xdist",
+    "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
 
 [tool.rstcheck]
@@ -92,7 +91,7 @@ ignore_directives = ["automodule", "autosummary"]
 ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
-version = { attr = "holidays.__version__" }
+version = { attr = "holidays.version.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["holidays*"]

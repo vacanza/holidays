@@ -34,8 +34,7 @@ Your PR description goes here.
 -->
 
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] I've run `make pre-commit`, it didn't generate any changes
-- [ ] I've run `make test`, all tests passed locally
+- [ ] I've successfully run `make check`, all checks and tests are green
 
 <!--
   Thanks again for your contribution!
