@@ -1,3 +1,29 @@
+Version 0.60
+============
+
+Released November 4, 2024
+
+- Refactor Australia tests (#2088 by @KJhellico)
+- Refactor Cambodia and Laos test cases (#2086 by @PPsyrius)
+- Refactor Canada tests (#2084 by @KJhellico)
+- Refactor United States tests (#2087 by @KJhellico)
+- Refactor v1 incompatibility warning (#2100 by @arkid15r)
+- Update the Philippines holidays: add `en_PH`, `en_US`, `fil`, `th` localization (#2093 by @PPsyrius, @arkid15r)
+- Fix `make l10n` removing loc comment for Asarnha Bucha (#2091 by @PPsyrius)
+- Fixed Thai Calendar test case coverage (#2090 by @PPsyrius)
+- Improve .po files "Language-Team" header consistency (#2098 by @arkid15r)
+- Update Albania holidays, add l10n support (#2104 by @KJhellico)
+- Update Australia holidays: remove `Adelaide Cup Day` holiday pre-1973 for South Australia (#2082 by @PPsyrius)
+- Update CONTRIBUTING.rst (#2085 by @arkid15r)
+- Update Germany holidays: add East German Uprising Day 2028 in Berlin (#2092 by @PPsyrius)
+- Update Indonesia holidays: `th` localization, more refractor (#2097 by @PPsyrius)
+- Update Indonesia holidays: add 2024 Local Election, exact historic dates from 1963 onwards (#2102 by @PPsyrius)
+- Update Spain holidays in 2025 (#2080 by @KJhellico)
+- Update Thailand holidays in 2025 (#2081 by @PPsyrius)
+- Update Timor-Leste holidays (#2078 by @KJhellico)
+- Update United States holidays: Alaska state holidays correction (#2083 by @PPsyrius)
+- Simplify PR template (#2099 by @arkid15r)
+
 Version 0.59
 ============
 
