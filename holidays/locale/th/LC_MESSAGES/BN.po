@@ -98,18 +98,12 @@ msgid "%s (diperhatikan, anggaran)"
 msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
-msgid ""
-"Istiadat Pemasyhuran Yang Teramat Mulia Paduka Seri Duli Pengiran Muda Haji "
-"Al-Muhtadee Billah Menjadi Duli Yang Teramat Mulia Paduka Seri Pengiran Muda"
-" Mahkota"
+msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"
 msgstr "พระราชพิธีสถาปนาเจ้าชายอัลมุห์ตาดี บิลละห์ มกุฎราชกุมารแห่งบรูไน"
 
 #. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah
 #. of Brunei.
-msgid ""
-"Istiadat Perkahwinan Diraja di antara Duli Yang Teramat Mulia Paduka Seri "
-"Pengiran Muda Mahkota Pengiran Muda Haji Al-Muhtadee Billah dengan Yang "
-"Mulia Dayangku Sarah binti Pengiran Salleh Ab. Rahaman"
+msgid "Istiadat Perkahwinan Diraja Brunei 2004"
 msgstr ""
 "พระราชพิธีอภิเษกสมรส เจ้าฟ้าชายฮัจญี อัล-มุห์ตาดี บิลลาห์ "
 "มกุฎราชกุมารแห่งบรูไน และเจ้าหญิงซาราห์ พระวรชายา"

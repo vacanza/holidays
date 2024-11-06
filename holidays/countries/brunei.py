@@ -498,22 +498,10 @@ class BruneiStaticHolidays:
             AUG,
             10,
             # Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
-            tr(
-                "Istiadat Pemasyhuran Yang Teramat Mulia Paduka Seri Duli Pengiran Muda Haji "
-                "Al-Muhtadee Billah Menjadi Duli Yang Teramat Mulia Paduka Seri Pengiran Muda "
-                "Mahkota"
-            ),
+            tr("Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"),
         ),
-        2004: (
-            SEP,
-            9,
-            # Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei.
-            tr(
-                "Istiadat Perkahwinan Diraja di antara Duli Yang Teramat Mulia Paduka Seri "
-                "Pengiran Muda Mahkota Pengiran Muda Haji Al-Muhtadee Billah dengan Yang Mulia "
-                "Dayangku Sarah binti Pengiran Salleh Ab. Rahaman"
-            ),
-        ),
+        # Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei.
+        2004: (SEP, 9, tr("Istiadat Perkahwinan Diraja Brunei 2004")),
         # Sultan Hassanal Bolkiah's Golden Jubilee celebration.
         2017: (OCT, 5, tr("Jubli Emas Sultan Hassanal Bolkiah")),
     }
