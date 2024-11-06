@@ -757,7 +757,7 @@ All other default values are highlighted with bold:
      -
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
+     - Districts: Aveiro, Beja, Braga, Bragança, Castelo Branco, Coimbra, Évora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarém, Setúbal, Viana do Castelo, Vila Real, Viseu, Região Autónoma da Madeira, Região Autónoma dos Açores
      - en_US, **pt_PT**, uk
      - OPTIONAL
    * - Puerto Rico
