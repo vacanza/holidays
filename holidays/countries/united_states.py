@@ -213,29 +213,25 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_holiday_feb_22(name)
 
         # Columbus Day
-        if self._year >= 1937 and (
-            self.subdiv is None
-            or self.subdiv
-            in {
-                "AS",
-                "AZ",
-                "CT",
-                "GA",
-                "ID",
-                "IL",
-                "IN",
-                "MA",
-                "MD",
-                "MO",
-                "MT",
-                "NJ",
-                "NY",
-                "OH",
-                "PA",
-                "UT",
-                "WV",
-            }
-        ):
+        if self._year >= 1937 and self.subdiv in {
+            "AS",
+            "AZ",
+            "CT",
+            "GA",
+            "ID",
+            "IL",
+            "IN",
+            "MA",
+            "MD",
+            "MO",
+            "MT",
+            "NJ",
+            "NY",
+            "OH",
+            "PA",
+            "UT",
+            "WV",
+        }:
             name = "Columbus Day"
             if self._year >= 1971:
                 self._add_holiday_2nd_mon_of_oct(name)
