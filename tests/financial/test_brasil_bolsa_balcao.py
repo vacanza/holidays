@@ -10,9 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F401
+from unittest import TestCase
 
-from .brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
-from .european_central_bank import EuropeanCentralBank, ECB, TAR
-from .ice_futures_europe import ICEFuturesEurope, IFEU
-from .ny_stock_exchange import NewYorkStockExchange, NYSE, XNYS
+from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
+from tests.common import CommonFinancialTests
+
+
+class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(BrasilBolsaBalcao)
+
+    def test_market_aliases(self):
+        self.assertAliases(BrasilBolsaBalcao, BVMF, B3)

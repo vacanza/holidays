@@ -983,6 +983,9 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
 
 
 Contributions
