@@ -279,7 +279,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
         self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, +1))
 
-        # ទិវា​សន្តិភាព​នៅ​កម្ពុជា​
+        # ទិវាសន្តិភាពនៅកម្ពុជា
         # Status: In-Use.
         # Dec 29, added from 2024 onwards.
         #  - https://www.khmertimeskh.com/501424903/24-public-holidays-for-2024-peace-day-now-included/
@@ -287,7 +287,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         if self._year >= 2024:
             # Peace Day in Cambodia.
-            self._add_holiday_dec_29(tr("ទិវា​សន្តិភាព​នៅ​កម្ពុជា​"))
+            self._add_holiday_dec_29(tr("ទិវាសន្តិភាពនៅកម្ពុជា"))
 
 
 class KH(Cambodia):

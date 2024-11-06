@@ -218,7 +218,7 @@ class TestCambodia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_peace_day_in_cambodia(self):
-        name = "ទិវា​សន្តិភាព​នៅ​កម្ពុជា​"
+        name = "ទិវាសន្តិភាពនៅកម្ពុជា"
         self.assertHolidayName(name, (f"{year}-12-29" for year in range(2024, 2050)))
         self.assertNoHolidayName(name, range(1993, 2024))
 

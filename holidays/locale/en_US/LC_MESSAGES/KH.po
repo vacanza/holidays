@@ -128,5 +128,5 @@ msgid "ព្រះរាជពិធីបុណ្យអុំទូក បណ
 msgstr "Water Festival"
 
 #. Peace Day in Cambodia.
-msgid "ទិវា​សន្តិភាព​នៅ​កម្ពុជា​"
+msgid "ទិវាសន្តិភាពនៅកម្ពុជា"
 msgstr "Peace Day in Cambodia"
