@@ -13,7 +13,9 @@
 import datetime as dt
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JAN, APR, MAY, SEP, OCT, NOV, DEC
+from dateutil.easter import easter
+
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from tests.common import CommonFinancialTests
 
@@ -38,16 +40,52 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         )
 
     def test_carnival_monday(self):
-        pass
+        holiday_name = "Carnaval"
+
+        for date in (
+            dt.date(2020, FEB, 24),
+            dt.date(2021, FEB, 15),
+            dt.date(2022, FEB, 28),
+            dt.date(2023, FEB, 20),
+            dt.date(2024, FEB, 12),
+        ):
+            self.assertHolidayName(holiday_name, date)
 
     def test_carnival_thursday(self):
-        pass
+        holiday_name = "Carnaval"
+
+        for date in (
+            dt.date(2020, FEB, 25),
+            dt.date(2021, FEB, 16),
+            dt.date(2022, MAR, 1),
+            dt.date(2023, FEB, 21),
+            dt.date(2024, FEB, 13),
+        ):
+            self.assertHolidayName(holiday_name, date)
 
     def test_holy_thursday(self):
-        pass
+        holiday_name = "Quinta-feira Santa"
+
+        for i in range(1890, 2000):
+            e = easter(i)
+            self.assertHolidayName(holiday_name, e - dt.timedelta(days=3))
+
+        self.assertNoHolidayName(
+            holiday_name,
+            (dt.date(year, APR, 21) for year in range(2000, 2100)),
+        )
 
     def test_good_friday(self):
-        pass
+        holiday_name = "Sexta-feira Santa"
+
+        for date in (
+            dt.date(2020, APR, 10),
+            dt.date(2021, APR, 2),
+            dt.date(2022, APR, 15),
+            dt.date(2023, APR, 7),
+            dt.date(2024, MAR, 29),
+        ):
+            self.assertHolidayName(holiday_name, date)
 
     def test_tiradentes_day(self):
         holiday_name = "Tiradentes"
@@ -78,7 +116,16 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         )
 
     def test_corpus_christi_day(self):
-        pass
+        holiday_name = "Corpus Christi"
+
+        for date in (
+            dt.date(2020, JUN, 11),
+            dt.date(2021, JUN, 3),
+            dt.date(2022, JUN, 16),
+            dt.date(2023, JUN, 8),
+            dt.date(2024, MAY, 30),
+        ):
+            self.assertHolidayName(holiday_name, date)
 
     def test_independence_day(self):
         holiday_name = "Independência do Brasil"
