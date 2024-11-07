@@ -33,52 +33,60 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1889:
-            # Decreto n. 155-B, de 14.01.1890
-            # Curiously enough, 1890 is also the year of foundation of the
-            # São Paulo Stock Exchange, which would later become the B3.
+    def _populate_public_holidays(self):
+        # Decreto n. 155-B, de 14.01.1890
+        # Curiously enough, 1890 is also the self._year of foundation of the
+        # São Paulo Stock Exchange, which would later become the B3.
+        if self._year <= 1889:
             return None
 
-        super()._populate(year)
-
+        # Universal Fraternization Day.
         self._add_new_years_day("Confraternização Universal")
-        self._add_carnival_monday("Carnaval")
-        self._add_carnival_tuesday("Carnaval")
 
-        if year < 2000:
-            # Resolução n. 2.516, de 29.06.1998
+        # Carnival.
+        carnival_name = "Carnaval"
+        self._add_carnival_monday(carnival_name)
+        self._add_carnival_tuesday(carnival_name)
+
+        # Resolução n. 2.516, de 29.06.1998
+        if self._year < 2000:
+            # Holy Thursday.
             self._add_holy_thursday("Quinta-feira Santa")
 
+        # Good Friday.
         self._add_good_friday("Sexta-feira Santa")
 
-        if year not in {1931, 1932}:
-            # Tiradentes' Day
+        if self._year not in {1931, 1932}:
+            # Tiradentes' Day.
             self._add_holiday_apr_21("Tiradentes")
 
-        if year >= 1925:
+        if self._year >= 1925:
+            # Workers' Day.
             self._add_labor_day("Dia do Trabalhador")
 
+        # Corpus Christi.
         self._add_corpus_christi_day("Corpus Christi")
 
-        # Independence Day
+        # Independence Day.
         self._add_holiday_sep_7("Independência do Brasil")
 
-        if year <= 1930 or year >= 1980:
-            # Our Lady of Aparecida
+        if self._year <= 1930 or self._year >= 1980:
+            # Our Lady of Aparecida.
             self._add_holiday_oct_12("Nossa Senhora Aparecida")
 
+        # All Souls' Day.
         self._add_all_souls_day("Finados")
 
-        # Republic Proclamation Day
+        # Republic Proclamation Day.
         self._add_holiday_nov_15("Proclamação da República")
 
-        if year >= 2024:
-            # Lei n. 14.759, de 21.12.2023
-            # National Day of Zumbi and Black Awareness
+        # Lei n. 14.759, de 21.12.2023
+        if self._year >= 2024:
+            # National Day of Zumbi and Black Awareness.
             self._add_holiday_nov_20("Dia Nacional de Zumbi e da Consciência Negra")
 
-        if year >= 1922:
+        if self._year >= 1922:
+            # Christmas Day.
             self._add_christmas_day("Natal")
 
 
