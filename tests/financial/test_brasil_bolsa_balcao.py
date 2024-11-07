@@ -81,7 +81,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         )
         self.assertNoHolidayName(name, {1931, 1932})
 
-    def test_labor_day(self):
+    def test_workers_day(self):
         name = "Dia do Trabalhador"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, 2100)))
         self.assertNoHolidayName(name, range(1890, 1925))

@@ -40,7 +40,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year <= 1889:
             return None
 
-        # New self._year's Day.
+        # Universal Fraternization Day.
         self._add_new_years_day("Confraternização Universal")
 
         # Carnival.
@@ -61,7 +61,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_apr_21("Tiradentes")
 
         if self._year >= 1925:
-            # Labor Day.
+            # Workers' Day.
             self._add_labor_day("Dia do Trabalhador")
 
         # Corpus Christi.
