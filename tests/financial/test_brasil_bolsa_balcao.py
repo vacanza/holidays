@@ -104,9 +104,8 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
 
     def test_our_lady_of_aparecida(self):
         name = "Nossa Senhora Aparecida"
-        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1890, 1931)))
         self.assertHolidayName(name, (f"{year}-10-12" for year in range(1980, 2100)))
-        self.assertNoHolidayName(name, range(1931, 1980))
+        self.assertNoHolidayName(name, range(1890, 1980))
 
     def test_all_souls_day(self):
         name = "Finados"

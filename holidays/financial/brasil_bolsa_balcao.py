@@ -21,6 +21,8 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         - `Decreto n. 19.488, de 15.12.1930 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html>`_
         - `Lei n. 14.759, de 21.12.2023 <https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html>`_
         - `Resolução n. 2.516, de 29.06.1998 <https://www.bcb.gov.br/pre/normativos/res/1998/pdf/res_2516_v2_P.pdf>`_
+        - `Lei n. 662, de 6.04.1949 <https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html>`_
+        - `Lei n. 6.802, de 30.06.1980 <https://www.planalto.gov.br/ccivil_03/leis/l6802.htm>`_
     Historical data:
         - `Feriados ANBIMA 2001-2099 <https://www.anbima.com.br/feriados>`_
         - `Calendario de negociação B3 <https://www.b3.com.br/pt_br/solucoes/plataformas/puma-trading-system/para-participantes-e-traders/calendario-de-negociacao/feriados>`_
@@ -70,7 +72,8 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_sep_7("Independência do Brasil")
 
-        if self._year <= 1930 or self._year >= 1980:
+        # Lei n. 6.802, de 30.06.1980
+        if self._year >= 1980:
             # Our Lady of Aparecida.
             self._add_holiday_oct_12("Nossa Senhora Aparecida")
 
