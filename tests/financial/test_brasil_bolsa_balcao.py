@@ -10,12 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import datetime as dt
 from unittest import TestCase
 
-from dateutil.easter import easter
-
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from tests.common import CommonFinancialTests
 
@@ -23,7 +19,7 @@ from tests.common import CommonFinancialTests
 class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(BrasilBolsaBalcao)
+        super().setUpClass(BrasilBolsaBalcao, years=range(1890, 2050))
 
     def test_market_aliases(self):
         self.assertAliases(BrasilBolsaBalcao, BVMF, B3)
@@ -32,161 +28,117 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         self.assertNoHolidays(BrasilBolsaBalcao(years=1889))
 
     def test_new_years_day(self):
-        holiday_name = "Confraternização Universal"
+        name = "Confraternização Universal"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1890, 2050)))
 
+    def test_carnival(self):
+        name = "Carnaval"
         self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, JAN, 1) for year in range(1890, 2100)),
+            name,
+            "2020-02-24",
+            "2020-02-25",
+            "2021-02-15",
+            "2021-02-16",
+            "2022-02-28",
+            "2022-03-01",
+            "2023-02-20",
+            "2023-02-21",
+            "2024-02-12",
+            "2024-02-13",
         )
-
-    def test_carnival_monday(self):
-        holiday_name = "Carnaval"
-
-        for date in (
-            dt.date(2020, FEB, 24),
-            dt.date(2021, FEB, 15),
-            dt.date(2022, FEB, 28),
-            dt.date(2023, FEB, 20),
-            dt.date(2024, FEB, 12),
-        ):
-            self.assertHolidayName(holiday_name, date)
-
-    def test_carnival_thursday(self):
-        holiday_name = "Carnaval"
-
-        for date in (
-            dt.date(2020, FEB, 25),
-            dt.date(2021, FEB, 16),
-            dt.date(2022, MAR, 1),
-            dt.date(2023, FEB, 21),
-            dt.date(2024, FEB, 13),
-        ):
-            self.assertHolidayName(holiday_name, date)
+        self.assertHolidayName(name, range(1890, 2050))
 
     def test_holy_thursday(self):
-        holiday_name = "Quinta-feira Santa"
+        name = "Quinta-feira Santa"
 
-        for i in range(1890, 2000):
-            e = easter(i)
-            self.assertHolidayName(holiday_name, e - dt.timedelta(days=3))
-
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, APR, 21) for year in range(2000, 2100)),
+        self.assertHolidayName(
+            name,
+            "1995-04-13",
+            "1996-04-04",
+            "1997-03-27",
+            "1998-04-09",
+            "1999-04-01",
         )
+        self.assertHolidayName(name, range(1890, 2000))
+        self.assertNoHolidayName(name, range(2000, 2050))
 
     def test_good_friday(self):
-        holiday_name = "Sexta-feira Santa"
-
-        for date in (
-            dt.date(2020, APR, 10),
-            dt.date(2021, APR, 2),
-            dt.date(2022, APR, 15),
-            dt.date(2023, APR, 7),
-            dt.date(2024, MAR, 29),
-        ):
-            self.assertHolidayName(holiday_name, date)
+        name = "Sexta-feira Santa"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
+        self.assertHolidayName(name, range(1890, 2050))
 
     def test_tiradentes_day(self):
-        holiday_name = "Tiradentes"
-
+        name = "Tiradentes"
         self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, APR, 21) for year in range(1890, 1931)),
+            name, (f"{year}-04-21" for year in set(range(1890, 2050)).difference({1931, 1932}))
         )
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, APR, 21) for year in {1931, 1932}),
-        )
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, APR, 21) for year in range(1933, 2100)),
-        )
+        self.assertNoHolidayName(name, {1931, 1932})
 
     def test_labor_day(self):
-        holiday_name = "Dia do Trabalhador"
-
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, MAY, 1) for year in range(1890, 1925)),
-        )
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, MAY, 1) for year in range(1925, 2100)),
-        )
+        name = "Dia do Trabalhador"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1925, 2050)))
+        self.assertNoHolidayName(name, range(1890, 1925))
 
     def test_corpus_christi_day(self):
-        holiday_name = "Corpus Christi"
-
-        for date in (
-            dt.date(2020, JUN, 11),
-            dt.date(2021, JUN, 3),
-            dt.date(2022, JUN, 16),
-            dt.date(2023, JUN, 8),
-            dt.date(2024, MAY, 30),
-        ):
-            self.assertHolidayName(holiday_name, date)
+        name = "Corpus Christi"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+        )
+        self.assertHolidayName(name, range(1890, 2050))
 
     def test_independence_day(self):
-        holiday_name = "Independência do Brasil"
-
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, SEP, 7) for year in range(1890, 2100)),
-        )
+        name = "Independência do Brasil"
+        self.assertHolidayName(name, (f"{year}-09-07" for year in range(1890, 2050)))
 
     def test_our_lady_of_aparecida(self):
-        holiday_name = "Nossa Senhora Aparecida"
-
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, OCT, 12) for year in range(1890, 1931)),
-        )
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, OCT, 12) for year in range(1931, 1980)),
-        )
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, OCT, 12) for year in range(1980, 2100)),
-        )
+        name = "Nossa Senhora Aparecida"
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1890, 1931)))
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1980, 2050)))
+        self.assertNoHolidayName(name, range(1931, 1980))
 
     def test_all_souls_day(self):
-        holiday_name = "Finados"
-
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, NOV, 2) for year in range(1890, 2100)),
-        )
+        name = "Finados"
+        self.assertHolidayName(name, (f"{year}-11-02" for year in range(1890, 2050)))
 
     def test_republic_proclamation_day(self):
-        holiday_name = "Proclamação da República"
-
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, NOV, 15) for year in range(1890, 2100)),
-        )
+        name = "Proclamação da República"
+        self.assertHolidayName(name, (f"{year}-11-15" for year in range(1890, 2050)))
 
     def test_national_day_of_zumbi_and_black_awareness(self):
-        holiday_name = "Dia Nacional de Zumbi e da Consciência Negra"
-
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, NOV, 20) for year in range(1890, 2024)),
-        )
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, NOV, 20) for year in range(2024, 2100)),
-        )
+        name = "Dia Nacional de Zumbi e da Consciência Negra"
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(1890, 2024))
 
     def test_christmas_day(self):
-        holiday_name = "Natal"
+        name = "Natal"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, 2050)))
+        self.assertNoHolidayName(name, range(1890, 1922))
 
-        self.assertNoHolidayName(
-            holiday_name,
-            (dt.date(year, DEC, 25) for year in range(1890, 1922)),
-        )
-        self.assertHolidayName(
-            holiday_name,
-            (dt.date(year, DEC, 25) for year in range(1922, 2100)),
+    def test_2023(self):
+        self.assertHolidays(
+            BrasilBolsaBalcao(years=2023),
+            ("2023-01-01", "Confraternização Universal"),
+            ("2023-02-20", "Carnaval"),
+            ("2023-02-21", "Carnaval"),
+            ("2023-04-07", "Sexta-feira Santa"),
+            ("2023-04-21", "Tiradentes"),
+            ("2023-05-01", "Dia do Trabalhador"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-09-07", "Independência do Brasil"),
+            ("2023-10-12", "Nossa Senhora Aparecida"),
+            ("2023-11-02", "Finados"),
+            ("2023-11-15", "Proclamação da República"),
+            ("2023-12-25", "Natal"),
         )
