@@ -85,6 +85,17 @@ class InternationalHolidays:
         """
         return self._add_holiday_oct_12(name)
 
+    def _add_europe_day(self, name):
+        """
+        Add Europe Day (May 9th)
+
+        Europe Day is a day celebrating "peace and unity in Europe"
+        celebrated on 5 May by the Council of Europe
+        and on 9 May by the European Union.
+        https://en.wikipedia.org/wiki/Europe_Day
+        """
+        return self._add_holiday_may_9(name)
+
     def _add_labor_day(self, name):
         """
         Add International Workers' Day (May 1st)

@@ -73,7 +73,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2017:
             # Europe Day.
-            self._add_holiday_may_9(tr("Ziua Europei"))
+            self._add_europe_day(tr("Ziua Europei"))
 
         if self._year >= 2016:
             # International Children's Day.
