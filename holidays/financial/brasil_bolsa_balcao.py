@@ -23,6 +23,8 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         - `Resolução n. 2.516, de 29.06.1998 <https://www.bcb.gov.br/pre/normativos/res/1998/pdf/res_2516_v2_P.pdf>`_
         - `Lei n. 662, de 6.04.1949 <https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html>`_
         - `Lei n. 6.802, de 30.06.1980 <https://www.planalto.gov.br/ccivil_03/leis/l6802.htm>`_
+        - `Decreto n. 19.488, de 15.12.1930 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html>`_
+        - `Decreto n. 22.647, de 17.04.1933 <https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-22647-17-abril-1933-558774-publicacaooriginal-80337-pe.html>`_
     Historical data:
         - `Feriados ANBIMA 2001-2099 <https://www.anbima.com.br/feriados>`_
         - `Calendario de negociação B3 <https://www.b3.com.br/pt_br/solucoes/plataformas/puma-trading-system/para-participantes-e-traders/calendario-de-negociacao/feriados>`_
@@ -58,6 +60,9 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday("Sexta-feira Santa")
 
+        # Tiradentes' Day was revoked by president Getúlio Vargas in
+        # december of 1930, through Decreto n. 19.488, but reinstated
+        # by the same president in 1933, through Decreto n. 22.647.
         if self._year not in {1931, 1932}:
             # Tiradentes' Day.
             self._add_holiday_apr_21("Tiradentes")
