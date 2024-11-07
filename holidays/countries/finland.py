@@ -125,7 +125,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2019:
             # Europe Day
-            self._add_holiday_may_9(tr("Eurooppa-päivä"))
+            self._add_europe_day(tr("Eurooppa-päivä"))
 
         if self._year >= 1918:
             # Mothers' Day
