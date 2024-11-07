@@ -27,7 +27,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(BrasilBolsaBalcao(years=1889))
 
-    def test_new_years_day(self):
+    def test_universal_fraternization_day(self):
         name = "Confraternização Universal"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1890, 2100)))
 
