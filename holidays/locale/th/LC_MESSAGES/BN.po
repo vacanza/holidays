@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.61\n"
 "POT-Creation-Date: 2023-03-02 00:37+0700\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2024-11-05 21:39+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -24,9 +24,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
-#. Sultan Hassanal Bolkiah's Golden Jubilee celebration
+#. Sultan Hassanal Bolkiah's Golden Jubilee celebration.
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr "พระราชพิธีกาญจนาภิเษกสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
 
@@ -40,55 +40,55 @@ msgstr "%s (โดยประมาณ)"
 msgid "%s (diperhatikan)"
 msgstr "ชดเชย%s"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "Awal Tahun Masihi"
 msgstr "วันขึ้นปีใหม่"
 
-#. Lunar New Year
+#. Lunar New Year.
 msgid "Tahun Baru Cina"
 msgstr "วันตรุษจีน"
 
-#. National Day
+#. National Day.
 msgid "Hari Kebangsaan"
 msgstr "วันชาติบรูไน"
 
-#. Armed Forces Day
+#. Armed Forces Day.
 msgid "Hari Angkatan Bersenjata Diraja Brunei"
 msgstr "วันกองทัพบรูไน"
 
-#. Sultan Hassanal Bolkiah's Birthday
+#. Sultan Hassanal Bolkiah's Birthday.
 msgid "Hari Keputeraan KDYMM Sultan Brunei"
 msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
 
-#. Christmas Day
+#. Christmas Day.
 msgid "Hari Natal"
 msgstr "วันคริสต์มาส"
 
-#. Isra' and Mi'raj
+#. Isra' and Mi'raj.
 msgid "Israk dan Mikraj"
 msgstr "วันเมี๊ยะราจ"
 
-#. First Day of Ramadan
+#. First Day of Ramadan.
 msgid "Hari Pertama Berpuasa"
 msgstr "วันแรกการถือศีลอด"
 
-#. Anniversary of the revelation of the Quran
+#. Anniversary of the revelation of the Quran.
 msgid "Hari Nuzul Al-Quran"
 msgstr "วันนูซุลอัลกุรอาน"
 
-#. Eid al-Fitr
+#. Eid al-Fitr.
 msgid "Hari Raya Aidil Fitri"
 msgstr "วันอีฎิ้ลฟิตริ"
 
-#. Eid al-Adha
+#. Eid al-Adha.
 msgid "Hari Raya Aidil Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#. Islamic New Year
+#. Islamic New Year.
 msgid "Awal Tahun Hijrah"
 msgstr "วันขึ้นปีใหม่อิสลาม"
 
-#. Prophet's Birthday
+#. Prophet's Birthday.
 msgid "Maulidur Rasul"
 msgstr "วันเมาลิดนบี"
 
@@ -96,3 +96,14 @@ msgstr "วันเมาลิดนบี"
 #, c-format
 msgid "%s (diperhatikan, anggaran)"
 msgstr "ชดเชย%s (โดยประมาณ)"
+
+#. Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
+msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"
+msgstr "พระราชพิธีสถาปนาเจ้าชายอัลมุห์ตาดี บิลละห์ มกุฎราชกุมารแห่งบรูไน"
+
+#. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah
+#. of Brunei.
+msgid "Istiadat Perkahwinan Diraja Brunei 2004"
+msgstr ""
+"พระราชพิธีอภิเษกสมรส เจ้าฟ้าชายฮัจญี อัล-มุห์ตาดี บิลลาห์ "
+"มกุฎราชกุมารแห่งบรูไน และเจ้าหญิงซาราห์ พระวรชายา"
