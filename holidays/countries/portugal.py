@@ -82,8 +82,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Viana do Castelo": "16",
         "Vila Real": "17",
         "Viseu": "18",
-        "Região Autónoma da Madeira": "20",
-        "Região Autónoma dos Açores": "30",
+        "Região Autónoma dos Açores": "20",
+        "Região Autónoma da Madeira": "30",
     }
     _deprecated_subdivisions = ("Ext",)
     supported_languages = ("en_US", "pt_PT", "uk")
