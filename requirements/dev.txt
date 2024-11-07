@@ -6,7 +6,7 @@ gitpython==3.1.43
 hijridate==2.5.0
 lingva==5.0.4
 pre-commit==4.0.1
-pygithub==2.4.0
+pygithub==2.5.0
 ruff==0.7.2
 tox==4.23.2
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
