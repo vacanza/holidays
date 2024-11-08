@@ -12,20 +12,9 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _HebrewLunisolar
 from holidays.calendars.gregorian import _timedelta, FRI, SAT
-from holidays.calendars.hebrew import (
-    HANUKKAH,
-    INDEPENDENCE_DAY,
-    LAG_BAOMER,
-    PASSOVER,
-    PURIM,
-    ROSH_HASHANAH,
-    SHAVUOT,
-    SUKKOT,
-    YOM_KIPPUR,
-)
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
+from holidays.groups import HebrewCalendarHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -38,7 +27,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Israel(ObservedHolidayBase):
+class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
     """
     Israel holidays.
 
@@ -60,114 +49,88 @@ class Israel(ObservedHolidayBase):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_PREV_THU)
         super().__init__(*args, **kwargs)
 
-    def _get_holiday(self, holiday: str):
-        return _HebrewLunisolar._get_holiday(holiday, self._year)
+    def _add_observed(self, dt, name, rule):
+        is_observed, _ = super()._add_observed(dt, name, rule)
+        if not is_observed:
+            self._add_holiday(name, dt)
 
     def _populate_public_holidays(self):
         # Rosh Hashanah (New Year).
-        name = tr("ראש השנה")
-        rosh_hashanah_dt = self._get_holiday(ROSH_HASHANAH)
-        self._add_holiday(name, rosh_hashanah_dt)
-        self._add_holiday(name, _timedelta(rosh_hashanah_dt, +1))
+        self._add_hebrew_holiday(tr("ראש השנה"), self._rosh_hashanah_date, range(2))
 
         # Yom Kippur (Day of Atonement).
-        self._add_holiday(tr("יום כיפור"), self._get_holiday(YOM_KIPPUR))
+        self._add_hebrew_holiday(tr("יום כיפור"), self._yom_kippur_date)
 
-        sukkot_dt = self._get_holiday(SUKKOT)
         # Sukkot (Feast of Tabernacles).
-        self._add_holiday(tr("סוכות"), sukkot_dt)
+        self._add_hebrew_holiday(tr("סוכות"), self._sukkot_date)
         # Simchat Torah / Shemini Atzeret.
-        self._add_holiday(tr("שמחת תורה/שמיני עצרת"), _timedelta(sukkot_dt, +7))
+        self._add_hebrew_holiday(tr("שמחת תורה/שמיני עצרת"), self._sukkot_date, +7)
 
-        passover_dt = self._get_holiday(PASSOVER)
         # Pesach (Passover).
-        self._add_holiday(tr("פסח"), passover_dt)
+        self._add_hebrew_holiday(tr("פסח"), self._passover_date)
         # Shvi'i shel Pesach (Seventh day of Passover)
-        self._add_holiday(tr("שביעי של פסח"), _timedelta(passover_dt, +6))
+        self._add_hebrew_holiday(tr("שביעי של פסח"), self._passover_date, +6)
 
-        # Yom Ha-Atzmaut (Independence Day).
-        name = tr("יום העצמאות")
-        independence_day_dt = self._get_holiday(INDEPENDENCE_DAY)
         rule = FRI_TO_PREV_THU + SAT_TO_PREV_THU
         if self._year >= 2004:
             rule += MON_TO_NEXT_TUE
-        is_observed, _ = self._add_observed(independence_day_dt, name, rule)
-        if not is_observed:
-            self._add_holiday(name, independence_day_dt)
+        # Yom Ha-Atzmaut (Independence Day).
+        self._add_observed(self._israel_independence_date, tr("יום העצמאות"), rule)
 
         # Shavuot.
-        self._add_holiday(tr("שבועות"), self._get_holiday(SHAVUOT))
+        self._add_hebrew_holiday(tr("שבועות"), self._shavuot_date)
 
     def _populate_optional_holidays(self):
-        sukkot_dt = self._get_holiday(SUKKOT)
-        for offset in range(1, 6):
-            # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
-            self._add_holiday(tr("חול המועד סוכות"), _timedelta(sukkot_dt, offset))
+        # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+        self._add_hebrew_holiday(tr("חול המועד סוכות"), self._sukkot_date, range(1, 6))
 
         if self._year >= 2008:
             # Sigd.
-            self._add_holiday(tr("סיגד"), _timedelta(self._get_holiday(YOM_KIPPUR), +49))
+            self._add_hebrew_holiday(tr("סיגד"), self._yom_kippur_date, +49)
 
         # Purim.
-        self._add_holiday(tr("פורים"), self._get_holiday(PURIM))
+        self._add_hebrew_holiday(tr("פורים"), self._purim_date)
 
-        passover_dt = self._get_holiday(PASSOVER)
-        for offset in range(1, 6):
-            # Chol HaMoed Pesach (Passover holiday).
-            self._add_holiday(tr("חול המועד פסח"), _timedelta(passover_dt, offset))
+        # Chol HaMoed Pesach (Passover holiday).
+        self._add_hebrew_holiday(tr("חול המועד פסח"), self._passover_date, range(1, 6))
 
         if self._year >= 1963:
-            # Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
-            name = tr("יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה")
-            remembrance_day_dt = _timedelta(self._get_holiday(INDEPENDENCE_DAY), -1)
             rule = THU_TO_PREV_WED + FRI_TO_PREV_WED
             if self._year >= 2004:
                 rule += SUN_TO_NEXT_MON
-            is_observed, _ = self._add_observed(remembrance_day_dt, name, rule)
-            if not is_observed:
-                self._add_holiday(name, remembrance_day_dt)
+            self._add_observed(
+                _timedelta(self._israel_independence_date, -1),
+                # Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
+                tr("יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"),
+                rule,
+            )
 
         if self._year >= 1998:
             # Yom Yerushalayim (Jerusalem Day).
-            self._add_holiday(tr("יום ירושלים"), _timedelta(self._get_holiday(LAG_BAOMER), +10))
+            self._add_hebrew_holiday(tr("יום ירושלים"), self._lag_baomer_date, +10)
 
         # Tisha B'Av (Tisha B'Av, fast).
-        name = tr("תשעה באב")
-        tisha_bav_dt = self._get_holiday("TISHA_BAV")
-        is_observed, _ = self._add_observed(tisha_bav_dt, name, SAT_TO_NEXT_SUN)
-        if not is_observed:
-            self._add_holiday(name, tisha_bav_dt)
+        self._add_observed(self._tisha_bav_date, tr("תשעה באב"), SAT_TO_NEXT_SUN)
 
     def _populate_school_holidays(self):
-        sukkot_dt = self._get_holiday(SUKKOT)
-        for offset in range(1, 6):
-            # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
-            self._add_holiday(tr("חול המועד סוכות"), _timedelta(sukkot_dt, offset))
+        # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+        self._add_hebrew_holiday(tr("חול המועד סוכות"), self._sukkot_date, range(1, 6))
 
-        for year in (self._year - 1, self._year):
-            hanukkah_dt = _HebrewLunisolar._get_holiday(HANUKKAH, year)
-            for offset in range(8):
-                # Hanukkah.
-                self._add_holiday(tr("חנוכה"), _timedelta(hanukkah_dt, offset))
+        for hanukkah_dt in self._hanukkah_date:
+            # Hanukkah.
+            self._add_hebrew_holiday(tr("חנוכה"), hanukkah_dt, range(8))
 
         # Ta`anit Ester (Fast of Esther).
-        name = tr("תענית אסתר")
-        purim_dt = self._get_holiday(PURIM)
-        taanit_ester_dt = _timedelta(purim_dt, -1)
-        is_observed, _ = self._add_observed(taanit_ester_dt, name, SAT_TO_PREV_THU)
-        if not is_observed:
-            self._add_holiday(name, taanit_ester_dt)
+        self._add_observed(_timedelta(self._purim_date, -1), tr("תענית אסתר"), SAT_TO_PREV_THU)
 
         # Purim.
-        self._add_holiday(tr("פורים"), purim_dt)
+        self._add_hebrew_holiday(tr("פורים"), self._purim_date)
 
-        passover_dt = self._get_holiday(PASSOVER)
-        for offset in range(1, 6):
-            # Chol HaMoed Pesach (Passover holiday).
-            self._add_holiday(tr("חול המועד פסח"), _timedelta(passover_dt, offset))
+        # Chol HaMoed Pesach (Passover holiday).
+        self._add_hebrew_holiday(tr("חול המועד פסח"), self._passover_date, range(1, 6))
 
         # Lag Ba'omer (Lag BaOmer).
-        self._add_holiday(tr('ל"ג בעומר'), self._get_holiday(LAG_BAOMER))
+        self._add_hebrew_holiday(tr('ל"ג בעומר'), self._lag_baomer_date)
 
 
 class IL(Israel):
