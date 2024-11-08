@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +33,8 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     market = "BVMF"
+    default_language = "pt_BR"
+    supported_languages = ("en_US", "pt_BR", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -45,57 +49,57 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Universal Fraternization Day.
-        self._add_new_years_day("Confraternização Universal")
+        self._add_new_years_day(tr("Confraternização Universal"))
 
         # Carnival.
-        carnival_name = "Carnaval"
+        carnival_name = tr("Carnaval")
         self._add_carnival_monday(carnival_name)
         self._add_carnival_tuesday(carnival_name)
 
         # Resolução n. 2.516, de 29.06.1998
         if self._year < 2000:
             # Holy Thursday.
-            self._add_holy_thursday("Quinta-feira Santa")
+            self._add_holy_thursday(tr("Quinta-feira Santa"))
 
         # Good Friday.
-        self._add_good_friday("Sexta-feira Santa")
+        self._add_good_friday(tr("Sexta-feira Santa"))
 
         # Tiradentes' Day was revoked by president Getúlio Vargas in
         # december of 1930, through Decreto n. 19.488, but reinstated
         # by the same president in 1933, through Decreto n. 22.647.
         if self._year not in {1931, 1932}:
             # Tiradentes' Day.
-            self._add_holiday_apr_21("Tiradentes")
+            self._add_holiday_apr_21(tr("Tiradentes"))
 
         if self._year >= 1925:
             # Workers' Day.
-            self._add_labor_day("Dia do Trabalhador")
+            self._add_labor_day(tr("Dia do Trabalhador"))
 
         # Corpus Christi.
-        self._add_corpus_christi_day("Corpus Christi")
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Independence Day.
-        self._add_holiday_sep_7("Independência do Brasil")
+        self._add_holiday_sep_7(tr("Independência do Brasil"))
 
         # Lei n. 6.802, de 30.06.1980
         if self._year >= 1980:
             # Our Lady of Aparecida.
-            self._add_holiday_oct_12("Nossa Senhora Aparecida")
+            self._add_holiday_oct_12(tr("Nossa Senhora Aparecida"))
 
         # All Souls' Day.
-        self._add_all_souls_day("Finados")
+        self._add_all_souls_day(tr("Finados"))
 
         # Republic Proclamation Day.
-        self._add_holiday_nov_15("Proclamação da República")
+        self._add_holiday_nov_15(tr("Proclamação da República"))
 
         # Lei n. 14.759, de 21.12.2023
         if self._year >= 2024:
             # National Day of Zumbi and Black Awareness.
-            self._add_holiday_nov_20("Dia Nacional de Zumbi e da Consciência Negra")
+            self._add_holiday_nov_20(tr("Dia Nacional de Zumbi e da Consciência Negra"))
 
         if self._year >= 1922:
             # Christmas Day.
-            self._add_christmas_day("Natal")
+            self._add_christmas_day(tr("Natal"))
 
 
 class BVMF(BrasilBolsaBalcao):

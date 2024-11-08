@@ -125,9 +125,25 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, 2100)))
         self.assertNoHolidayName(name, range(1890, 1922))
 
-    def test_2023(self):
+    def test_2022(self):
         self.assertHolidays(
-            BrasilBolsaBalcao(years=2023),
+            BrasilBolsaBalcao(years=2022),
+            ("2022-01-01", "Confraternização Universal"),
+            ("2022-02-28", "Carnaval"),
+            ("2022-03-01", "Carnaval"),
+            ("2022-04-15", "Sexta-feira Santa"),
+            ("2022-04-21", "Tiradentes"),
+            ("2022-05-01", "Dia do Trabalhador"),
+            ("2022-06-16", "Corpus Christi"),
+            ("2022-09-07", "Independência do Brasil"),
+            ("2022-10-12", "Nossa Senhora Aparecida"),
+            ("2022-11-02", "Finados"),
+            ("2022-11-15", "Proclamação da República"),
+            ("2022-12-25", "Natal"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
             ("2023-01-01", "Confraternização Universal"),
             ("2023-02-20", "Carnaval"),
             ("2023-02-21", "Carnaval"),
@@ -140,4 +156,38 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-11-02", "Finados"),
             ("2023-11-15", "Proclamação da República"),
             ("2023-12-25", "Natal"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-01", "Universal Fraternization Day"),
+            ("2023-02-20", "Carnival"),
+            ("2023-02-21", "Carnival"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-21", "Tiradentes' Day"),
+            ("2023-05-01", "Worker's Day"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-09-07", "Independence Day"),
+            ("2023-10-12", "Our Lady of Aparecida"),
+            ("2023-11-02", "All Souls' Day"),
+            ("2023-11-15", "Republic Proclamation Day"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2023-01-01", "День всесвітнього братання"),
+            ("2023-02-20", "Карнавал"),
+            ("2023-02-21", "Карнавал"),
+            ("2023-04-07", "Страсна пʼятниця"),
+            ("2023-04-21", "День Тирадентіса"),
+            ("2023-05-01", "День трудящих"),
+            ("2023-06-08", "Свято Тіла і Крові Христових"),
+            ("2023-09-07", "День незалежності Бразилії"),
+            ("2023-10-12", "День Богоматері Апаресіди"),
+            ("2023-11-02", "День усіх померлих"),
+            ("2023-11-15", "День проголошення республіки"),
+            ("2023-12-25", "Різдво Христове"),
         )
