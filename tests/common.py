@@ -302,21 +302,20 @@ class TestCase:
     def _assertLocalizedHolidays(self, localized_holidays, language=None):  # noqa: N802
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
-            language=language, categories=self.test_class.supported_categories
+            years=int(localized_holidays[0][0].split("-")[0]),
+            language=language,
+            categories=self.test_class.supported_categories,
         )
 
-        # Populate holidays for an entire year.
-        _ = localized_holidays[0][0] in instance
-
-        for subdiv in self.test_class.subdivisions:
-            subdiv_instance = self.test_class(
-                subdiv=subdiv,
-                years=instance.years,
-                language=language,
-                categories=self.test_class.supported_categories,
+        for subdiv in instance.subdivisions:
+            instance.update(
+                self.test_class(
+                    subdiv=subdiv,
+                    years=instance.years,
+                    language=language,
+                    categories=instance.supported_categories,
+                )
             )
-            for dt, name in subdiv_instance.items():
-                instance[dt] = name
 
         actual_holidays = tuple(
             sorted((dt.strftime("%Y-%m-%d"), name) for dt, name in instance.items())
@@ -324,7 +323,7 @@ class TestCase:
         self.assertEqual(
             actual_holidays,
             localized_holidays,
-            "Please make sure all holiday names are localized: " f"{actual_holidays}",
+            f"Please make sure all holiday names are localized: {actual_holidays}",
         )
 
     def assertLocalizedHolidays(self, *args):  # noqa: N802
