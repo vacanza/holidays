@@ -108,7 +108,7 @@ class TestCase:
         else:
             self.assertFalse(instance.observed)
 
-        if raise_on_empty and len(items) == 0:
+        if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
 
         return instance, items
@@ -258,7 +258,7 @@ class TestCase:
             args, instance_name=instance_name, raise_on_empty=False
         )
 
-        if len(items) == 0:  # A holiday name check.
+        if not items:  # A holiday name check.
             self.assertFalse(holidays.get_named(name, lookup="exact"), name)
             return None
 
