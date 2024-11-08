@@ -28,7 +28,11 @@ class TestBrunei(CommonCountryTests, TestCase):
         self.assertNoHolidays(Brunei(years=1983))
 
     def test_special_holidays(self):
-        self.assertHoliday("2017-10-05")
+        self.assertHoliday(
+            "1998-08-10",
+            "2004-09-09",
+            "2017-10-05",
+        )
 
     def test_2022(self):
         self.assertHolidays(
@@ -36,16 +40,15 @@ class TestBrunei(CommonCountryTests, TestCase):
             ("2022-01-01", "Awal Tahun Masihi"),
             ("2022-02-01", "Tahun Baru Cina"),
             ("2022-02-23", "Hari Kebangsaan"),
-            ("2022-03-01", "Israk dan Mikraj"),
+            ("2022-02-28", "Israk dan Mikraj"),
             ("2022-04-03", "Hari Pertama Berpuasa"),
             ("2022-04-04", "Hari Pertama Berpuasa (diperhatikan)"),
             ("2022-04-19", "Hari Nuzul Al-Quran"),
+            ("2022-05-02", "Hari Raya Aidil Fitri"),
             ("2022-05-03", "Hari Raya Aidil Fitri"),
             ("2022-05-04", "Hari Raya Aidil Fitri"),
-            ("2022-05-05", "Hari Raya Aidil Fitri"),
             ("2022-05-31", "Hari Angkatan Bersenjata Diraja Brunei"),
-            ("2022-07-10", "Hari Raya Aidil Adha"),
-            ("2022-07-11", "Hari Raya Aidil Adha (diperhatikan)"),
+            ("2022-07-09", "Hari Raya Aidil Adha"),
             ("2022-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
             ("2022-07-16", "Hari Keputeraan KDYMM Sultan Brunei (diperhatikan)"),
             ("2022-07-30", "Awal Tahun Hijrah"),
@@ -77,6 +80,54 @@ class TestBrunei(CommonCountryTests, TestCase):
             ("2023-12-25", "Hari Natal"),
         )
 
+    def test_2024(self):
+        self.assertHolidays(
+            Brunei(years=2024),
+            ("2024-01-01", "Awal Tahun Masihi"),
+            ("2024-02-08", "Israk dan Mikraj"),
+            ("2024-02-10", "Tahun Baru Cina"),
+            ("2024-02-23", "Hari Kebangsaan"),
+            ("2024-02-24", "Hari Kebangsaan (diperhatikan)"),
+            ("2024-03-12", "Hari Pertama Berpuasa"),
+            ("2024-03-28", "Hari Nuzul Al-Quran"),
+            ("2024-04-10", "Hari Raya Aidil Fitri"),
+            ("2024-04-11", "Hari Raya Aidil Fitri"),
+            ("2024-04-12", "Hari Raya Aidil Fitri"),
+            ("2024-04-13", "Hari Raya Aidil Fitri (diperhatikan)"),
+            ("2024-05-31", "Hari Angkatan Bersenjata Diraja Brunei"),
+            ("2024-06-01", "Hari Angkatan Bersenjata Diraja Brunei (diperhatikan)"),
+            ("2024-06-17", "Hari Raya Aidil Adha"),
+            ("2024-07-07", "Awal Tahun Hijrah"),
+            ("2024-07-08", "Awal Tahun Hijrah (diperhatikan)"),
+            ("2024-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
+            ("2024-09-16", "Maulidur Rasul"),
+            ("2024-12-25", "Hari Natal"),
+        )
+
+    def test_2025(self):
+        self.assertHolidays(
+            Brunei(years=2025),
+            ("2025-01-01", "Awal Tahun Masihi"),
+            ("2025-01-27", "Israk dan Mikraj"),
+            ("2025-01-29", "Tahun Baru Cina"),
+            ("2025-02-23", "Hari Kebangsaan"),
+            ("2025-02-24", "Hari Kebangsaan (diperhatikan)"),
+            ("2025-03-02", "Hari Pertama Berpuasa"),
+            ("2025-03-03", "Hari Pertama Berpuasa (diperhatikan)"),
+            ("2025-03-18", "Hari Nuzul Al-Quran"),
+            ("2025-03-31", "Hari Raya Aidil Fitri"),
+            ("2025-04-01", "Hari Raya Aidil Fitri"),
+            ("2025-04-02", "Hari Raya Aidil Fitri"),
+            ("2025-05-31", "Hari Angkatan Bersenjata Diraja Brunei"),
+            ("2025-06-07", "Hari Raya Aidil Adha"),
+            ("2025-06-27", "Awal Tahun Hijrah"),
+            ("2025-06-28", "Awal Tahun Hijrah (diperhatikan)"),
+            ("2025-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
+            ("2025-09-05", "Maulidur Rasul"),
+            ("2025-09-06", "Maulidur Rasul (diperhatikan)"),
+            ("2025-12-25", "Hari Natal"),
+        )
+
     def test_national_day(self):
         self.assertHoliday(f"{year}-02-23" for year in range(1984, 2077))
 
@@ -87,6 +138,8 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2014-02-24",
             "2018-02-24",
             "2020-02-24",
+            "2024-02-24",
+            "2025-02-24",
         )
 
     def test_armed_forces_day(self):
@@ -99,6 +152,7 @@ class TestBrunei(CommonCountryTests, TestCase):
             "2015-06-01",
             "2019-06-01",
             "2020-06-01",
+            "2024-06-01",
         )
 
     def test_sultan_hassanal_bolkiah_birthday(self):

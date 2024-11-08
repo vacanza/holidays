@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.27\n"
+"Project-Id-Version: Holidays 0.61\n"
 "POT-Creation-Date: 2023-06-07 20:10+0700\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2024-11-06 00:21+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: km\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Khmer New Year's Replacement Holiday
 msgid "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
@@ -125,4 +125,8 @@ msgstr ""
 
 #. Water Festival
 msgid "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
+msgstr ""
+
+#. Peace Day in Cambodia.
+msgid "ទិវាសន្តិភាពនៅកម្ពុជា"
 msgstr ""
