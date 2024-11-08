@@ -300,7 +300,7 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
     localized_countries = {}
     for entity_code in entity_codes:
         languages = getattr(holidays, entity_code).supported_languages
-        if len(languages) == 0:
+        if not languages:
             continue
         localized_countries[entity_code] = sorted(languages)
 

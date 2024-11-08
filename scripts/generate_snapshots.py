@@ -63,17 +63,13 @@ class SnapshotGenerator:
 
     def generate_country_snapshots(self):
         """Generates country snapshots."""
-        if len(self.args.market) > 0:
+        if self.args.market:
             return None
 
-        country_list = self.args.country
         supported_countries = list_supported_countries()
-        if country_list:
-            unknown_countries = set(country_list).difference(supported_countries.keys())
-            if len(unknown_countries) > 0:
-                raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
-        else:
-            country_list = supported_countries
+        country_list = self.args.country or supported_countries
+        if unknown_countries := set(country_list).difference(supported_countries.keys()):
+            raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
 
         for country_code in country_list:
             country = getattr(holidays, country_code)
@@ -93,17 +89,13 @@ class SnapshotGenerator:
 
     def generate_financial_snapshots(self):
         """Generates financial snapshots."""
-        if len(self.args.country) > 0:
+        if self.args.country:
             return None
 
-        market_list = self.args.market
         supported_markets = list_supported_financial()
-        if market_list:
-            unknown_markets = set(market_list).difference(supported_markets.keys())
-            if len(unknown_markets) > 0:
-                raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
-        else:
-            market_list = supported_markets
+        market_list = self.args.market or supported_markets
+        if unknown_markets := set(market_list).difference(supported_markets.keys()):
+            raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
 
         for market_code in market_list:
             self.save(

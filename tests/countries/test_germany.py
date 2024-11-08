@@ -67,8 +67,7 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertEqual(
             all_h,
             y_1990,
-            f"missing: {all_h - y_1990 if len(all_h - y_1990) > 0 else 'no'},"
-            f" extra: {y_1990 - all_h if len(y_1990 - all_h) > 0 else 'no'}",
+            f"missing: {all_h - y_1990 or 'no'}, extra: {y_1990 - all_h or 'no'}",
         )
 
     def test_all_holidays_present(self):
@@ -98,8 +97,7 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertEqual(
             all_h,
             y_2015,
-            f"missing: {all_h - y_2015 if len(all_h - y_2015) > 0 else 'no'},"
-            f" extra: {y_2015 - all_h if len(y_2015 - all_h) > 0 else 'no'}",
+            f"missing: {all_h - y_2015 or 'no'}," f" extra: {y_2015 - all_h or 'no'}",
         )
 
     def test_fixed_holidays(self):
