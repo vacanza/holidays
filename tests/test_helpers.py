@@ -19,12 +19,12 @@ class TestHelpers(TestCase):
     def test_normalize_arguments(self):
         empty_set = set()
         input_expected_pairs = (
-            ((int, None), empty_set),
             ((int, []), empty_set),
             ((int, {}), empty_set),
-            ((str, None), empty_set),
+            ((int, None), empty_set),
             ((str, []), empty_set),
             ((str, {}), empty_set),
+            ((str, None), empty_set),
             ((int, "1"), {1}),
             ((int, "12"), {12}),
             ((int, "121"), {121}),
@@ -35,11 +35,11 @@ class TestHelpers(TestCase):
             ((int, [1]), {1}),
             ((int, {1}), {1}),
             ((int, 0), {0}),
-            ((int, 1), {1}),
             ((int, 1.0), {1.0}),
+            ((int, 1), {1}),
             ((str, "1"), {"1"}),
-            ((str, ("test1", "test1")), {"test1"}),
             ((str, ("test1", "TEST1")), {"test1", "TEST1"}),
+            ((str, ("test1", "test1")), {"test1"}),
             ((str, ("test1", "test2")), {"test1", "test2"}),
             ((str, ["1", "2"]), {"1", "2"}),
             ((str, [1, 2]), {"1", "2"}),
@@ -47,8 +47,8 @@ class TestHelpers(TestCase):
             ((str, {1: "2"}), {"1"}),
             ((str, {1: 2}), {"1"}),
             ((str, {1}), {"1"}),
-            ((str, 1), {"1"}),
             ((str, 1.0), {"1.0"}),
+            ((str, 1), {"1"}),
         )
 
         for input, expected in input_expected_pairs:
