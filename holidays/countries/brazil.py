@@ -13,13 +13,13 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAR, SEP, NOV, FRI, _get_nth_weekday_from
+from holidays.calendars.gregorian import JAN, MAR, SEP, NOV
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, TUE_WED_THU_TO_NEXT_FRI
 
 
-class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
         - https://pt.wikipedia.org/wiki/Feriados_no_Brasil
@@ -189,12 +189,8 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_ac_public_holidays(self):
         def get_movable_acre(*args) -> date:
             dt = date(self._year, *args)
-            return (
-                _get_nth_weekday_from(+1, FRI, dt)
-                if self._year >= 2009
-                and (self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt))
-                else dt
-            )
+            dt_observed = self._get_observed_date(dt, TUE_WED_THU_TO_NEXT_FRI)
+            return dt_observed if self._year >= 2009 and dt_observed else dt
 
         if self._year >= 2005:
             # Evangelical Day.
