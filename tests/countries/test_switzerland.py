@@ -66,8 +66,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertEqual(
             all_h,
             y_2018,
-            f"missing: {all_h - y_2018 if len(all_h - y_2018) > 0 else 'no'},"
-            f" extra: {y_2018 - all_h if len(y_2018 - all_h) > 0 else 'no'}",
+            f"missing: {all_h - y_2018 or 'no'}, extra: {y_2018 - all_h or 'no'}",
         )
 
     def test_fixed_holidays(self):
