@@ -302,7 +302,7 @@ class TestCase:
     def _assertLocalizedHolidays(self, localized_holidays, language=None):  # noqa: N802
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
-            years=int(localized_holidays[0][0].split("-")[0]),
+            years=localized_holidays[0][0].split("-")[0],
             language=language,
             categories=self.test_class.supported_categories,
         )

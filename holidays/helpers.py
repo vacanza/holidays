@@ -27,13 +27,13 @@ def _normalize_arguments(cls, value):
     if value is None:
         return set()
 
-    if isinstance(value, cls):
-        return {value}
+    if isinstance(value, str):
+        return {cls(value)}
 
     try:
-        return {v if isinstance(v, cls) else cls(v) for v in value}
+        return {cls(v) for v in value}
     except TypeError:  # non-iterable
-        return {value if isinstance(value, cls) else cls(value)}
+        return {cls(value)}
 
 
 def _normalize_tuple(value):
