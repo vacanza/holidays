@@ -161,26 +161,25 @@ class TestCambodia(CommonCountryTests, TestCase):
 
     def test_king_sihamoni_birthday(self):
         name = "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-        self.assertNoHolidayName(name, 2004)
         self.assertHolidayName(name, (f"{year}-05-13" for year in range(2005, 2020)))
         self.assertHolidayName(name, (f"{year}-05-14" for year in range(2005, 2050)))
         self.assertHolidayName(name, (f"{year}-05-15" for year in range(2005, 2020)))
+        self.assertNoHolidayName(name, range(1993, 2005))
 
     def test_national_day_of_remembrance(self):
         name = "ទិវាជាតិនៃការចងចាំ"
-        self.assertNoHolidayName(name, 2017)
         self.assertHolidayName(name, (f"{year}-05-20" for year in range(2018, 2020)))
-        self.assertNoHolidayName(name, 2020)
+        self.assertNoHolidayName(name, range(1993, 2018), range(2020, 2050))
 
     def test_international_children_day(self):
         name = "ទិវាកុមារអន្តរជាតិ"
         self.assertHolidayName(name, (f"{year}-06-01" for year in range(1993, 2020)))
-        self.assertNoHolidayName(name, 2020)
+        self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_queen_mother_monineath_birthday(self):
         name = "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ"
-        self.assertNoHolidayName(name, 1993)
         self.assertHolidayName(name, (f"{year}-06-18" for year in range(1994, 2050)))
+        self.assertNoHolidayName(name, 1993)
 
     def test_constitution_day(self):
         self.assertHolidayName(
@@ -193,13 +192,13 @@ class TestCambodia(CommonCountryTests, TestCase):
             " នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី"
             " និងឯកភាពជាតិខ្មែរ ព្រះបរមរតនកោដ្ឋ"
         )
-        self.assertNoHolidayName(name, 2011)
         self.assertHolidayName(name, (f"{year}-10-15" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1993, 2012))
 
     def test_paris_peace_agreement_day(self):
         name = "ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"
         self.assertHolidayName(name, (f"{year}-10-23" for year in range(1993, 2020)))
-        self.assertNoHolidayName(name, 2020)
+        self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_king_sihamoni_coronation_day(self):
         name = (
@@ -207,8 +206,8 @@ class TestCambodia(CommonCountryTests, TestCase):
             "ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "
             "ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា"
         )
-        self.assertNoHolidayName(name, 2003)
         self.assertHolidayName(name, (f"{year}-10-29" for year in range(2004, 2050)))
+        self.assertNoHolidayName(name, range(1993, 2004))
 
     def test_national_independence_day(self):
         self.assertHolidayName("ពិធីបុណ្យឯករាជ្យជាតិ", (f"{year}-11-09" for year in range(1993, 2050)))
@@ -216,7 +215,12 @@ class TestCambodia(CommonCountryTests, TestCase):
     def test_international_human_rights_day(self):
         name = "ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"
         self.assertHolidayName(name, (f"{year}-12-10" for year in range(1993, 2020)))
-        self.assertNoHolidayName(name, 2020)
+        self.assertNoHolidayName(name, range(2020, 2050))
+
+    def test_peace_day_in_cambodia(self):
+        name = "ទិវាសន្តិភាពនៅកម្ពុជា"
+        self.assertHolidayName(name, (f"{year}-12-29" for year in range(2024, 2050)))
+        self.assertNoHolidayName(name, range(1993, 2024))
 
     def test_pchum_ben(self):
         name = "ពិធីបុណ្យភ្ផុំបិណ្ឌ"
@@ -284,7 +288,6 @@ class TestCambodia(CommonCountryTests, TestCase):
             "2023-11-27",
             "2023-11-28",
         )
-        self.assertNoHolidayName(name, 2158)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

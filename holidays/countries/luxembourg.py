@@ -42,7 +42,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2019:
             # Europe Day.
-            self._add_holiday_may_9(tr("Europadag"))
+            self._add_europe_day(tr("Europadag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfaart"))

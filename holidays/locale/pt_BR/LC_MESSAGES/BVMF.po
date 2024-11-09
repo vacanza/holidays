@@ -1,0 +1,79 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Brasil, Bolsa, Balcão holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.61\n"
+"POT-Creation-Date: 2024-10-15 20:48+0300\n"
+"PO-Revision-Date: 2024-11-08 12:07+0700\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Universal Fraternization Day.
+msgid "Confraternização Universal"
+msgstr ""
+
+#. Carnival.
+msgid "Carnaval"
+msgstr ""
+
+#. Holy Thursday.
+msgid "Quinta-feira Santa"
+msgstr ""
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr ""
+
+#. Tiradentes' Day.
+msgid "Tiradentes"
+msgstr ""
+
+#. Workers' Day.
+msgid "Dia do Trabalhador"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Independence Day.
+msgid "Independência do Brasil"
+msgstr ""
+
+#. Our Lady of Aparecida.
+msgid "Nossa Senhora Aparecida"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Finados"
+msgstr ""
+
+#. Republic Proclamation Day.
+msgid "Proclamação da República"
+msgstr ""
+
+#. National Day of Zumbi and Black Awareness.
+msgid "Dia Nacional de Zumbi e da Consciência Negra"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natal"
+msgstr ""

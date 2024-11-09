@@ -1,0 +1,79 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Brasil, Bolsa, Balcão holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.61\n"
+"POT-Creation-Date: 2024-10-15 20:48+0300\n"
+"PO-Revision-Date: 2024-11-08 12:07+0700\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Universal Fraternization Day.
+msgid "Confraternização Universal"
+msgstr "Universal Fraternization Day"
+
+#. Carnival.
+msgid "Carnaval"
+msgstr "Carnival"
+
+#. Holy Thursday.
+msgid "Quinta-feira Santa"
+msgstr "Holy Thursday"
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr "Good Friday"
+
+#. Tiradentes' Day.
+msgid "Tiradentes"
+msgstr "Tiradentes' Day"
+
+#. Workers' Day.
+msgid "Dia do Trabalhador"
+msgstr "Worker's Day"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
+
+#. Independence Day.
+msgid "Independência do Brasil"
+msgstr "Independence Day"
+
+#. Our Lady of Aparecida.
+msgid "Nossa Senhora Aparecida"
+msgstr "Our Lady of Aparecida"
+
+#. All Souls' Day.
+msgid "Finados"
+msgstr "All Souls' Day"
+
+#. Republic Proclamation Day.
+msgid "Proclamação da República"
+msgstr "Republic Proclamation Day"
+
+#. National Day of Zumbi and Black Awareness.
+msgid "Dia Nacional de Zumbi e da Consciência Negra"
+msgstr "National Day of Zumbi and Black Awareness"
+
+#. Christmas Day.
+msgid "Natal"
+msgstr "Christmas Day"
