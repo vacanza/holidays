@@ -226,6 +226,7 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertIn("ECB", supported_financial)
         self.assertIn("IFEU", supported_financial)
         self.assertIn("NYSE", supported_financial)
+        self.assertIn("BVMF", supported_financial)
 
         nyse = supported_financial["NYSE"]
         self.assertIsInstance(nyse, list)

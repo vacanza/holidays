@@ -14,6 +14,7 @@
 
 import argparse
 import json
+import shutil
 import sys
 import warnings
 from pathlib import Path
@@ -54,6 +55,13 @@ class SnapshotGenerator:
         self.args = arg_parser.parse_args()
 
     @staticmethod
+    def prepare_snapshot_directory(snapshot_path):
+        """Prepare a directory for snapshots."""
+        path = Path(snapshot_path)
+        shutil.rmtree(path, ignore_errors=True)
+        path.mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
     def save(snapshot, file_path):
         with open(file_path, "w") as output:
             output.write(
@@ -66,11 +74,14 @@ class SnapshotGenerator:
         if self.args.market:
             return None
 
-        supported_countries = list_supported_countries()
+        supported_countries = list_supported_countries(include_aliases=False)
         country_list = self.args.country or supported_countries
         if unknown_countries := set(country_list).difference(supported_countries.keys()):
             raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
 
+        snapshot_path = "snapshots/countries"
+        if not self.args.country:
+            self.prepare_snapshot_directory(snapshot_path)
         for country_code in country_list:
             country = getattr(holidays, country_code)
 
@@ -83,7 +94,7 @@ class SnapshotGenerator:
                         categories=country.supported_categories,
                         language="en_US",
                     ),
-                    "snapshots/countries/"
+                    f"{snapshot_path}/"
                     f"{country_code}_{(subdiv or 'COMMON').replace(' ', '_').upper()}.json",
                 )
 
@@ -92,11 +103,14 @@ class SnapshotGenerator:
         if self.args.country:
             return None
 
-        supported_markets = list_supported_financial()
+        supported_markets = list_supported_financial(include_aliases=False)
         market_list = self.args.market or supported_markets
         if unknown_markets := set(market_list).difference(supported_markets.keys()):
             raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
 
+        snapshot_path = "snapshots/financial"
+        if not self.args.market:
+            self.prepare_snapshot_directory(snapshot_path)
         for market_code in market_list:
             self.save(
                 holidays.country_holidays(
@@ -104,7 +118,7 @@ class SnapshotGenerator:
                     years=self.years,
                     language="en_US",
                 ),
-                f"snapshots/financial/{market_code}.json",
+                f"{snapshot_path}/{market_code}.json",
             )
 
     def run(self):
