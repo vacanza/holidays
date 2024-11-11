@@ -109,7 +109,8 @@ class SnapshotGenerator:
             raise ValueError(f"Markets {', '.join(unknown_markets)} not available")
 
         snapshot_path = "snapshots/financial"
-        self.prepare_snapshot_directory(snapshot_path)
+        if not self.args.market:
+            self.prepare_snapshot_directory(snapshot_path)
         for market_code in market_list:
             self.save(
                 holidays.country_holidays(
