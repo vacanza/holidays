@@ -43,7 +43,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # Decreto n. 155-B, de 14.01.1890
-        # Curiously enough, 1890 is also the self._year of foundation of the
+        # Curiously enough, 1890 is also the year of foundation of the
         # São Paulo Stock Exchange, which would later become the B3.
         if self._year <= 1889:
             return None
@@ -57,7 +57,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_carnival_tuesday(carnival_name)
 
         # Resolução n. 2.516, de 29.06.1998
-        if self._year < 2000:
+        if self._year <= 1999:
             # Holy Thursday.
             self._add_holy_thursday(tr("Quinta-feira Santa"))
 
