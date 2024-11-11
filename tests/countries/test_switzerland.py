@@ -37,7 +37,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 CH(categories=(HALF_DAY, OPTIONAL, PUBLIC), years=2018, subdiv=p).values()
             )
         all_h = {  # Holidays names in their chronological order.
-            "Neujahrestag",
+            "Neujahrstag",
             "Berchtoldstag",
             "Heilige Drei Könige",
             "Jahrestag der Ausrufung der Republik",
@@ -71,7 +71,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_fixed_holidays(self):
         # New Year's Day.
-        self.assertHolidayName("Neujahrestag", (f"{year}-01-01" for year in range(1970, 2050)))
+        self.assertHolidayName("Neujahrstag", (f"{year}-01-01" for year in range(1970, 2050)))
         # National Day.
         self.assertHolidayName("Nationalfeiertag", (f"{year}-08-01" for year in range(1970, 2050)))
         # Christmas Day.
@@ -667,7 +667,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-01", "Neujahrestag"),
+            ("2023-01-01", "Neujahrstag"),
             ("2023-01-02", "Berchtoldstag"),
             ("2023-01-06", "Heilige Drei Könige"),
             ("2023-03-01", "Jahrestag der Ausrufung der Republik"),
