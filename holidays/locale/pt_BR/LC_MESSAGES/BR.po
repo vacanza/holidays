@@ -1,0 +1,263 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Brazil holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.61\n"
+"POT-Creation-Date: 2024-10-15 20:48+0300\n"
+"PO-Revision-Date: 2024-11-05 21:50+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Universal Fraternization Day.
+msgid "Confraternização Universal"
+msgstr ""
+
+#. Republic Constitution Day.
+msgid "Constituição da Republica"
+msgstr ""
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr ""
+
+#. Tiradentes' Day.
+msgid "Tiradentes"
+msgstr ""
+
+#. Worker's Day.
+msgid "Dia do Trabalhador"
+msgstr ""
+
+#. Discovery of Brazil.
+msgid "Descobrimento do Brasil"
+msgstr ""
+
+#. Abolition of slavery in Brazil.
+msgid "Abolição da escravidão no Brasil"
+msgstr ""
+
+#. Freedom and Independence of American Peoples.
+msgid "Liberdade e Independência dos Povos Americanos"
+msgstr ""
+
+#. Independence Day.
+msgid "Independência do Brasil"
+msgstr ""
+
+#. Discovery of America.
+msgid "Descobrimento da América"
+msgstr ""
+
+#. Our Lady of Aparecida.
+msgid "Nossa Senhora Aparecida"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Finados"
+msgstr ""
+
+#. Republic Proclamation Day.
+msgid "Proclamação da República"
+msgstr ""
+
+#. National Day of Zumbi and Black Awareness.
+msgid "Dia Nacional de Zumbi e da Consciência Negra"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natal"
+msgstr ""
+
+#. Carnival.
+msgid "Carnaval"
+msgstr ""
+
+#. Ash Wednesday.
+msgid "Início da Quaresma"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Public Servant's Day.
+msgid "Dia do Servidor Público"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Véspera de Natal"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Véspera de Ano-Novo"
+msgstr ""
+
+#. Evangelical Day.
+msgid "Dia do Evangélico"
+msgstr ""
+
+#. International Women's Day.
+msgid "Dia Internacional da Mulher"
+msgstr ""
+
+#. Founding of Acre.
+msgid "Aniversário do Acre"
+msgstr ""
+
+#. Amazonia Day.
+msgid "Dia da Amazônia"
+msgstr ""
+
+#. Signing of the Petropolis Treaty.
+msgid "Assinatura do Tratado de Petrópolis"
+msgstr ""
+
+#. Saint John's Day.
+msgid "São João"
+msgstr ""
+
+#. Saint Peter's Day.
+msgid "São Pedro"
+msgstr ""
+
+#. Political Emancipation of Alagoas.
+msgid "Emancipação Política de Alagoas"
+msgstr ""
+
+#. Black Awareness Day.
+msgid "Consciência Negra"
+msgstr ""
+
+#. Elevation of Amazonas to province.
+msgid "Elevação do Amazonas à categoria de província"
+msgstr ""
+
+#. Saint Joseph's Day.
+msgid "São José"
+msgstr ""
+
+#. Saint James' Day.
+msgid "São Tiago"
+msgstr ""
+
+#. Creation of the Federal Territory.
+msgid "Criação do Território Federal"
+msgstr ""
+
+#. Bahia Independence Day.
+msgid "Independência da Bahia"
+msgstr ""
+
+#. Abolition of slavery in Ceará.
+msgid "Abolição da escravidão no Ceará"
+msgstr ""
+
+#. Our Lady of Assumption.
+msgid "Nossa Senhora da Assunção"
+msgstr ""
+
+#. Founding of Brasilia.
+msgid "Fundação de Brasília"
+msgstr ""
+
+#. Our Lady of Penha.
+msgid "Nossa Senhora da Penha"
+msgstr ""
+
+#. Foundation of Goiás city.
+msgid "Fundação da cidade de Goiás"
+msgstr ""
+
+#. Foundation of Goiânia.
+msgid "Pedra fundamental de Goiânia"
+msgstr ""
+
+#. Maranhão joining to independence of Brazil.
+msgid "Adesão do Maranhão à independência do Brasil"
+msgstr ""
+
+#. Tiradentes' Execution.
+msgid "Execução de Tiradentes"
+msgstr ""
+
+#. State Creation Day.
+msgid "Criação do Estado"
+msgstr ""
+
+#. Grão-Pará joining to independence of Brazil.
+msgid "Adesão do Grão-Pará à independência do Brasil"
+msgstr ""
+
+#. State Founding Day.
+msgid "Fundação do Estado"
+msgstr ""
+
+#. Pernambuco Revolution.
+msgid "Revolução Pernambucana"
+msgstr ""
+
+#. Piauí Day.
+msgid "Dia do Piauí"
+msgstr ""
+
+#. Political Emancipation of Paraná.
+msgid "Emancipação do Paraná"
+msgstr ""
+
+#. Saint George's Day.
+msgid "São Jorge"
+msgstr ""
+
+#. Rio Grande do Norte Day.
+msgid "Dia do Rio Grande do Norte"
+msgstr ""
+
+#. Uruaçu and Cunhaú Martyrs Day.
+msgid "Mártires de Cunhaú e Uruaçu"
+msgstr ""
+
+#. Gaucho Day.
+msgid "Dia do Gaúcho"
+msgstr ""
+
+#. Santa Catarina State Day.
+msgid "Dia do Estado de Santa Catarina"
+msgstr ""
+
+#. Saint Catherine of Alexandria Day.
+msgid "Dia de Santa Catarina de Alexandria"
+msgstr ""
+
+#. Sergipe Political Emancipation Day.
+msgid "Emancipação política de Sergipe"
+msgstr ""
+
+#. Constitutionalist Revolution.
+msgid "Revolução Constitucionalista"
+msgstr ""
+
+#. Autonomy Day.
+msgid "Dia da Autonomia"
+msgstr ""
+
+#. Our Lady of Nativity.
+msgid "Nossa Senhora da Natividade"
+msgstr ""

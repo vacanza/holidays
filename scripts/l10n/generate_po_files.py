@@ -40,40 +40,34 @@ class POGenerator:
         # Save the file each time in order to capture all other changes properly.
         po_file.save(po_path)
 
-    def process_countries(self):
+    def process_entities(self):
         """Processes entities in specified directory."""
-        country_code_info_mapping = {}
-        modules = (
-            (path.stem, path)
-            for path in Path("holidays/countries").glob("*.py")
-            if path.stem != "__init__"
-        )
-
         sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
         from holidays import __version__ as package_version
         from holidays.holiday_base import HolidayBase
 
-        for module_name, module_path in modules:
-            module = f"holidays.countries.{module_name}"
-            country_code_info_mapping.update(
-                {
-                    name.upper(): (cls.default_language, module_path)
-                    for name, cls in inspect.getmembers(
-                        importlib.import_module(module), inspect.isclass
-                    )
-                    if issubclass(cls, HolidayBase)
-                    and len(name) == 2
-                    and cls.__module__ == module
-                    and getattr(cls, "default_language") is not None
-                }
-            )
+        entity_code_info_mapping = {}
+        for entity_type in ("countries", "financial"):
+            for path in Path(f"holidays/{entity_type}").glob("*.py"):
+                if path.stem == "__init__":
+                    continue
+                module = f"holidays.{entity_type}.{path.stem}"
+                for _, cls in inspect.getmembers(importlib.import_module(module), inspect.isclass):
+                    if (
+                        issubclass(cls, HolidayBase)
+                        and cls.__module__ == module
+                        and getattr(cls, "default_language") is not None
+                    ):
+                        name = getattr(cls, "country", getattr(cls, "market", None))
+                        entity_code_info_mapping[name.upper()] = (cls.default_language, path)
+                        break
 
         locale_path = Path("holidays/locale")
         pot_path = locale_path / "pot"
         pot_path.mkdir(exist_ok=True)
-        for country_code in sorted(country_code_info_mapping.keys()):
-            default_language, class_file_path = country_code_info_mapping[country_code]
-            pot_file_path = pot_path / f"{country_code}.pot"
+        for entity_code in sorted(entity_code_info_mapping.keys()):
+            default_language, class_file_path = entity_code_info_mapping[entity_code]
+            pot_file_path = pot_path / f"{entity_code}.pot"
             # Create .pot file.
             create_pot_file(
                 (
@@ -103,23 +97,23 @@ class POGenerator:
             )
             pot_file.save()
 
-            # Create country default .po file from the .pot file.
+            # Create entity default .po file from the .pot file.
             po_directory = locale_path / default_language / "LC_MESSAGES"
             po_directory.mkdir(parents=True, exist_ok=True)
-            po_file_path = po_directory / f"{country_code}.po"
+            po_file_path = po_directory / f"{entity_code}.po"
             if not po_file_path.exists():
                 po_file = pofile(pot_file_path)
                 po_file.metadata["Language"] = default_language
                 po_file.save(po_file_path)
 
             # Update all .po files.
-            for po_file_path in locale_path.rglob(f"{country_code}.po"):
+            for po_file_path in locale_path.rglob(f"{entity_code}.po"):
                 self.update_po_file(po_file_path, pot_file_path, package_version)
 
     @staticmethod
     def run():
         """Runs the .po files generation process."""
-        POGenerator().process_countries()
+        POGenerator().process_entities()
 
 
 if __name__ == "__main__":

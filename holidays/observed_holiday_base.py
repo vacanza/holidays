@@ -78,6 +78,7 @@ MON_FRI_ONLY = ObservedRule({TUE: None, WED: None, THU: None, SAT: None, SUN: No
 
 TUE_WED_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2})
 TUE_WED_THU_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2, THU: -3})
+TUE_WED_THU_TO_NEXT_FRI = ObservedRule({TUE: +3, WED: +2, THU: +1})
 
 WED_THU_TO_NEXT_FRI = ObservedRule({WED: +2, THU: +1})
 
@@ -171,7 +172,7 @@ class ObservedHolidayBase(HolidayBase):
             for name in (name,) if name else self.get_list(dt):
                 holiday_name = self.tr(name)
                 observed_estimated_label = None
-                if len(estimated_label_text) > 0 and estimated_label_text in holiday_name:
+                if estimated_label_text and estimated_label_text in holiday_name:
                     holiday_name = holiday_name.replace(f"({estimated_label_text})", "").strip()
                     observed_estimated_label = self.tr(getattr(self, "observed_estimated_label"))
 
