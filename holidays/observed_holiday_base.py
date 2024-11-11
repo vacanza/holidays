@@ -78,6 +78,7 @@ MON_FRI_ONLY = ObservedRule({TUE: None, WED: None, THU: None, SAT: None, SUN: No
 
 TUE_WED_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2})
 TUE_WED_THU_TO_PREV_MON = ObservedRule({TUE: -1, WED: -2, THU: -3})
+TUE_WED_THU_TO_NEXT_FRI = ObservedRule({TUE: +3, WED: +2, THU: +1})
 
 WED_THU_TO_NEXT_FRI = ObservedRule({WED: +2, THU: +1})
 
