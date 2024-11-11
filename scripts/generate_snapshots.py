@@ -80,7 +80,8 @@ class SnapshotGenerator:
             raise ValueError(f"Countries {', '.join(unknown_countries)} not available")
 
         snapshot_path = "snapshots/countries"
-        self.prepare_snapshot_directory(snapshot_path)
+        if not self.args.country:
+            self.prepare_snapshot_directory(snapshot_path)
         for country_code in country_list:
             country = getattr(holidays, country_code)
 
