@@ -189,8 +189,12 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_ac_public_holidays(self):
         def get_movable_acre(*args) -> date:
             dt = date(self._year, *args)
-            dt_observed = self._get_observed_date(dt, TUE_WED_THU_TO_NEXT_FRI)
-            return dt_observed if self._year >= 2009 and dt_observed else dt
+            return (
+                dt_observed
+                if self._year >= 2009
+                and (dt_observed := self._get_observed_date(dt, TUE_WED_THU_TO_NEXT_FRI))
+                else dt
+            )
 
         if self._year >= 2005:
             # Evangelical Day.
