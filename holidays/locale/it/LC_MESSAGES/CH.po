@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 
 #. New Year's Day.
-msgid "Neujahrestag"
+msgid "Neujahrstag"
 msgstr "Capodanno"
 
 #. Ascension Day.
