@@ -1,3 +1,24 @@
+Version 0.61
+============
+
+Released November 18, 2024
+
+- Add financial markets l10n support (#2116 by @KJhellico)
+- Refactor some `if len(container)...` cases to `if container...` (#2118 by @arkid15r)
+- Add "Brasil, Bolsa, Balcão" ([B]³) holidays (#2109 by @araggohnxd, @arkid15r, @KJhellico, @PPsyrius)
+- Update Brazil holidays, add l10n support (#2113 by @KJhellico)
+- Update Brunei holidays: 1998-2003, 2006-2025 exact dates (#2107 by @PPsyrius)
+- Update CH holidays: rename Neujahrestag to Neujahrstag (#2121 by @kurtkeller, @arkid15r)
+- Update Cambodia holidays: add Peace Day in Cambodia (#2108 by @PPsyrius)
+- Update China holidays in 2025 (#2124 by @KJhellico)
+- Update Thailand holidays: 2025-2026 Bridge Public Holidays (#2123 by @PPsyrius)
+- Update Unites States holidays: remove Columbus Day from countrywide holidays (#2106 by @KJhellico)
+- Update `TestCase::assertLocalizedHolidays`: add subdivisions holidays support (#2117 by @KJhellico)
+- Update helpers::_normalize_arguments, add helpers tests (#2122 by @arkid15r)
+- Update ruff configuration: add Pylint errors check (#2119 by @KJhellico)
+- Add Europe Day to InternationalHolidays (#2114 by @KJhellico)
+- Add Portugal subdivision aliases (#2110 by @dgomes)
+
 Version 0.60
 ============
 
