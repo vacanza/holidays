@@ -108,7 +108,7 @@ class TestCase:
         else:
             self.assertFalse(instance.observed)
 
-        if raise_on_empty and len(items) == 0:
+        if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
 
         return instance, items
@@ -258,7 +258,7 @@ class TestCase:
             args, instance_name=instance_name, raise_on_empty=False
         )
 
-        if len(items) == 0:  # A holiday name check.
+        if not items:  # A holiday name check.
             self.assertFalse(holidays.get_named(name, lookup="exact"), name)
             return None
 
@@ -302,11 +302,20 @@ class TestCase:
     def _assertLocalizedHolidays(self, localized_holidays, language=None):  # noqa: N802
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(
-            language=language, categories=self.test_class.supported_categories
+            years=localized_holidays[0][0].split("-")[0],
+            language=language,
+            categories=self.test_class.supported_categories,
         )
 
-        # Populate holidays for an entire year.
-        self.assertIn(localized_holidays[0][0], instance)
+        for subdiv in instance.subdivisions:
+            instance.update(
+                self.test_class(
+                    subdiv=subdiv,
+                    years=instance.years,
+                    language=language,
+                    categories=instance.supported_categories,
+                )
+            )
 
         actual_holidays = tuple(
             sorted((dt.strftime("%Y-%m-%d"), name) for dt, name in instance.items())
@@ -314,7 +323,7 @@ class TestCase:
         self.assertEqual(
             actual_holidays,
             localized_holidays,
-            "Please make sure all holiday names are localized: " f"{actual_holidays}",
+            f"Please make sure all holiday names are localized: {actual_holidays}",
         )
 
     def assertLocalizedHolidays(self, *args):  # noqa: N802

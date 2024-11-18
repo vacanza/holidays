@@ -40,6 +40,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             - https://resolution.soc.go.th/?prep_id=196007
             - https://github.com/vacanza/holidays/pull/929
             - https://www.thairath.co.th/lifestyle/life/2812118
+            - https://www.thaipbs.or.th/news/content/346216
         - [New Year's Day]
             `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
         - [National Children's Day]
@@ -832,6 +833,11 @@ class ThailandStaticHolidays:
             (APR, 12, thai_bridge_public_holiday),
             (DEC, 30, thai_bridge_public_holiday),
         ),
+        2025: (
+            (JUN, 2, thai_bridge_public_holiday),
+            (AUG, 11, thai_bridge_public_holiday),
+        ),
+        2026: (JAN, 2, thai_bridge_public_holiday),
     }
     special_workday_holidays = {1999: (MAY, 14, tr("วันพืชมงคล"))}
 

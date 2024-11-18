@@ -105,6 +105,9 @@ class TestThailand(CommonCountryTests, TestCase):
             "2023-12-29",
             "2024-04-12",
             "2024-12-30",
+            "2025-06-02",
+            "2025-08-11",
+            "2026-01-02",
         )
         dt_observed = (
             "2007-12-24",

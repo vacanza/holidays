@@ -27,6 +27,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
     - Based on: https://www.nbc.gov.kh/english/news_and_events/official_holiday.php
                 https://www.nbc.gov.kh/news_and_events/official_holiday.php
                 https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia
+                https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf
 
     - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
                     https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
@@ -277,6 +278,16 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
         self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
         self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, +1))
+
+        # ទិវាសន្តិភាពនៅកម្ពុជា
+        # Status: In-Use.
+        # Dec 29, added from 2024 onwards.
+        #  - https://www.khmertimeskh.com/501424903/24-public-holidays-for-2024-peace-day-now-included/
+        #  - https://www.khmertimeskh.com/501551204/govt-announces-22-public-holidays-for-next-year/
+
+        if self._year >= 2024:
+            # Peace Day in Cambodia.
+            self._add_holiday_dec_29(tr("ទិវាសន្តិភាពនៅកម្ពុជា"))
 
 
 class KH(Cambodia):

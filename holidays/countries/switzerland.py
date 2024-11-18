@@ -66,7 +66,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Neujahrestag"))
+        self._add_new_years_day(tr("Neujahrstag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Auffahrt"))

@@ -287,8 +287,8 @@ All other default values are highlighted with bold:
      -
    * - Brazil
      - BR
-     - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
-     -
+     - States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)
+     - en_US, **pt_BR**, uk
      - OPTIONAL
    * - Brunei
      - BN
@@ -757,7 +757,7 @@ All other default values are highlighted with bold:
      -
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30
+     - Districts: 01 (Aveiro), 02 (Beja), 03 (Braga), 04 (Bragança), 05 (Castelo Branco), 06 (Coimbra), 07 (Évora), 08 (Faro), 09 (Guarda), 10 (Leiria), 11 (Lisboa), 12 (Portalegre), 13 (Porto), 14 (Santarém), 15 (Setúbal), 16 (Viana do Castelo), 17 (Vila Real), 18 (Viseu), 20 (Região Autónoma dos Açores), 30 (Região Autónoma da Madeira)
      - en_US, **pt_PT**, uk
      - OPTIONAL
    * - Puerto Rico
@@ -967,22 +967,30 @@ The standard way to refer to a financial market is to use its `ISO 10383 MIC`_
 following financial markets are available:
 
 .. list-table::
-   :widths: 23 4 83
+   :widths: 23 4 83 20
    :header-rows: 1
    :class: tight-table
 
    * - Entity
      - Code
      - Info
+     - Supported Languages
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
+     -
    * - ICE Futures Europe
      - IFEU
      - A London-based Investment Exchange holidays
+     -
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
+     -
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
+     - en_US, **pt_BR**, uk
 
 
 Contributions

@@ -1041,8 +1041,7 @@ class HolidayBase(dict[date, str]):
             KeyError if date is not a holiday and default is not given.
         """
         use_exact_name = HOLIDAY_NAME_DELIMITER in name
-        dts = self.get_named(name, split_multiple_names=not use_exact_name)
-        if len(dts) == 0:
+        if not (dts := self.get_named(name, split_multiple_names=not use_exact_name)):
             raise KeyError(name)
 
         popped = []
@@ -1060,7 +1059,7 @@ class HolidayBase(dict[date, str]):
                     if name_lower not in holiday_name.lower()
                 ]
 
-                if len(holiday_names) > 0:
+                if holiday_names:
                     self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
 
         return popped

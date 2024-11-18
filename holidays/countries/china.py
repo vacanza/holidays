@@ -23,6 +23,8 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     References:
         - https://en.wikipedia.org/wiki/Public_holidays_in_China
         - `Festivals and Public Holidays <https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期>`_
+        - 2024 changes (Order #795) `<https://www.gov.cn/zhengce/content/202411/content_6986380.htm>`_
+        - `2025 <https://www.gov.cn/zhengce/content/202411/content_6986382.htm>`_
         - `2024 <https://www.gov.cn/zhengce/content/202310/content_6911527.htm>`_
         - `2023 <https://www.gov.cn/gongbao/content/2023/content_5736714.htm>`_
         - `2022 <https://www.gov.cn/gongbao/content/2021/content_5651728.htm>`_
@@ -95,29 +97,34 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         # Status: In-Use (Statutory).
         # Day 1-3 of Chinese New Year in 1949, 1999, 2007, and 2013 revision.
         # 2007 revision introduced New Year's Eve (农历除夕) instead of
-        # New Year's 3rd day; 2013 revision returned it back.
+        # New Year's 3rd day; 2013 revision returned it back;
+        # 2024 revision returned also New Year's Eve.
 
         # Spring Festival Golden Weekend
-        # Checked with Official Notice from 2001-2023.
+        # Checked with Official Notice from 2001-2025.
         # Consecutive Holidays are available from 2000 (1999 rev.).
 
         # Chinese New Year (Spring Festival).
         chinese_new_year = tr("春节")
+        # Chinese New Year's Eve.
+        chinese_new_years_eve = tr("农历除夕")
         dts_observed.add(self._add_chinese_new_years_day(chinese_new_year))
         dts_observed.add(self._add_chinese_new_years_day_two(chinese_new_year))
         if 2008 <= self._year <= 2013:
-            # Chinese New Year's Eve.
-            dts_observed.add(self._add_chinese_new_years_eve(tr("农历除夕")))
+            dts_observed.add(self._add_chinese_new_years_eve(chinese_new_years_eve))
         else:
             dts_observed.add(self._add_chinese_new_years_day_three(chinese_new_year))
+        if self._year >= 2025:
+            dts_observed.add(self._add_chinese_new_years_eve(chinese_new_years_eve))
 
         # 劳动节
         # Status: In-Use (Statutory).
         # May 1 in 1949, 1999, 2007, and 2013 revision.
         # Additional Holidays (May 2-3) are available from 2000 (1999 rev.) - 2007 (2007 rev.).
+        # May 2 returned in 2024 revision.
 
         # Labor Day Golden Weekend
-        # Checked with Official Notice from 2001-2023.
+        # Checked with Official Notice from 2001-2025.
         # Consecutive Holidays are available from 2002, with exception of ????-????.
 
         # Labor Day.
@@ -126,6 +133,8 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         if 2000 <= self._year <= 2007:
             dts_observed.add(self._add_labor_day_two(labor_day))
             dts_observed.add(self._add_labor_day_three(labor_day))
+        elif self._year >= 2025:
+            dts_observed.add(self._add_labor_day_two(labor_day))
 
         # 国庆节
         # Status: In-Use (Statutory).
@@ -435,6 +444,13 @@ class ChinaStaticHolidays:
             (SEP, 16, SEP, 14),  # Mid-Autumn Festival
             (OCT, 4, SEP, 29),  # National Day
             (OCT, 7, OCT, 12),  # National Day
+        ),
+        2025: (
+            (FEB, 3, JAN, 26),  # Spring Festival
+            (FEB, 4, FEB, 8),  # Spring Festival
+            (MAY, 5, APR, 27),  # Labor Day
+            (OCT, 7, SEP, 28),  # National Day
+            (OCT, 8, OCT, 11),  # National Day
         ),
     }
 

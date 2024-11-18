@@ -63,6 +63,28 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "20",
         "30",
     )
+    subdivisions_aliases = {
+        "Aveiro": "01",
+        "Beja": "02",
+        "Braga": "03",
+        "Bragança": "04",
+        "Castelo Branco": "05",
+        "Coimbra": "06",
+        "Évora": "07",
+        "Faro": "08",
+        "Guarda": "09",
+        "Leiria": "10",
+        "Lisboa": "11",
+        "Portalegre": "12",
+        "Porto": "13",
+        "Santarém": "14",
+        "Setúbal": "15",
+        "Viana do Castelo": "16",
+        "Vila Real": "17",
+        "Viseu": "18",
+        "Região Autónoma dos Açores": "20",
+        "Região Autónoma da Madeira": "30",
+    }
     _deprecated_subdivisions = ("Ext",)
     supported_languages = ("en_US", "pt_PT", "uk")
 
