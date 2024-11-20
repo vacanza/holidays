@@ -103,7 +103,7 @@ jobs:
           make test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4.6.0
+        uses: codecov/codecov-action@v5.0.6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
