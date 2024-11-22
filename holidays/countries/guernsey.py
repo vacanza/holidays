@@ -10,30 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
-#  License: MIT (see LICENSE file)
-
-#  python-holidays
-#  ---------------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: vacanza team (https://github.com/orgs/vacanza/teams) (c) 2023-2024
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/python-holidays
-#  License: MIT (see LICENSE file)
-
 from datetime import date
 from typing import Optional
 
@@ -70,12 +46,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, GuernseyStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        kwargs.setdefault("observed_since", 1955)
         ObservedHolidayBase.__init__(self, *args, **kwargs)
-
-    def _is_observed(self, dt: date) -> bool:
-        # The Bank Holidays and Negotiable Instruments (Guernsey) Ordinance, 1955. (SUN)
-        # The Public Holidays Ordinance, 2009. (SAT-SUN)
-        return self._year >= 1955
 
     def _add_observed(self, dt: date, **kwargs) -> tuple[bool, Optional[date]]:
         # Prior to 2009, in-lieu are only given for Sundays.
@@ -91,7 +63,7 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
             return None
 
         # New Year's Day
-        # Le jourde l'An
+        # Le jour de l'An
 
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
@@ -150,7 +122,7 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
             self._add_whit_monday("Whit Monday")
 
         # His/Her Majesty's Birthday
-        # La jour fixé pour la célébration du jour de naissanee de Sa Majesté.
+        # La jour fixé pour la célébration du jour de naissanee de Sa Majesté
         # Special Non-Observance Decree was issued in 1940.
         # This was fully replaced by Liberation Day in 1947.
 
