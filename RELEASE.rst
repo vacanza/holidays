@@ -8,7 +8,7 @@ How to release a new version of Holidays
   - generate release notes by running ``make release-notes``
   - insert the command's output into the top of ``CHANGES`` file
     (see previous release notes for consistent formatting)
-  - update the supported versions table at ``holidays/SECURITY.md`` file (the
+  - update the supported versions table at ``SECURITY.md`` file (the
     table should contain the version being currently released)
   - commit the updated ``CHANGES`` and ``SECURITY.md`` files to ``dev`` 
     branch with the following commit message 'Finalize v<version>', 
