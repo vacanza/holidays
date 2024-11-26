@@ -23,7 +23,7 @@ class TestPackage(TestCase):
 
         for attr_name, attr_value in {
             "name": "holidays",
-            "summary": "World Holidays Framework",
+            "summary": "Open World Holidays Framework",
             "version": holidays.__version__,
         }.items():
             self.assertIn(attr_name, ph_metadata)
