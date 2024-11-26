@@ -1026,7 +1026,7 @@ class HolidayBase(dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, name: str) -> list[date]:
+    def pop_named(self, name: str, lookup: str = "icontains") -> list[date]:
         """Remove (no longer treat at as holiday) all dates matching the
         provided holiday name. The match will be made case insensitively and
         partial matches will be removed.
@@ -1041,7 +1041,9 @@ class HolidayBase(dict[date, str]):
             KeyError if date is not a holiday and default is not given.
         """
         use_exact_name = HOLIDAY_NAME_DELIMITER in name
-        if not (dts := self.get_named(name, split_multiple_names=not use_exact_name)):
+        if not (
+            dts := self.get_named(name, lookup=lookup, split_multiple_names=not use_exact_name)
+        ):
             raise KeyError(name)
 
         popped = []
