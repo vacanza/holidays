@@ -27,7 +27,7 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertAliases(Finland, FI, FIN)
 
     def test_fixed_holidays(self):
-        for year in range(2010, 2030):
+        for year in range(2010, 2031):
             self.assertHoliday(
                 f"{year}-01-01",
                 f"{year}-01-06",
@@ -166,6 +166,11 @@ class TestFinland(CommonCountryTests, TestCase):
             "1956-11-01",
             "1957-11-01",
         )
+
+    def test_independence_day(self):
+        name = "Itsenäisyyspäivä"
+        self.assertHolidayName(name, (f"{year}-12-06" for year in range(1917, 2031)))
+        self.assertNoHolidayName(name, 1916)
 
     def _test_unofficial_holiday(self, name, since):
         start_year, month, day = (int(part) for part in since.split("-"))
