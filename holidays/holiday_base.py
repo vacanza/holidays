@@ -1028,11 +1028,19 @@ class HolidayBase(dict[date, str]):
 
     def pop_named(self, name: str, lookup: str = "icontains") -> list[date]:
         """Remove (no longer treat at as holiday) all dates matching the
-        provided holiday name. The match will be made case insensitively and
+        provided holiday name. By default, the match will be made case insensitively and
         partial matches will be removed.
 
         :param name:
             The holiday's name to try to match.
+        :param lookup:
+            The holiday name lookup type:
+                contains - case sensitive contains match;
+                exact - case sensitive exact match;
+                startswith - case sensitive starts with match;
+                icontains - case insensitive contains match;
+                iexact - case insensitive exact match;
+                istartswith - case insensitive starts with match;
 
         :return:
             A list of dates removed.
