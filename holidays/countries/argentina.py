@@ -33,16 +33,31 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     - Based on:
         https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
     - [Ley 24455] Belgrano and San Martin Day as third Monday
+        https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/782/norma.htm
     - [Ley 27399] - For 2018++
         https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
     - [Decreto 1585/2010] - 2011-2013 Bridge Holidays, Movable Holidays Law
+        https://www.argentina.gob.ar/normativa/nacional/decreto-1585-2010-174391/texto
     - [Decreto 1768/2013] - 2014-2016 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-1768-2013-222021/texto
     - [Decretos 52-80-923/2017] - 2017-2019 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-52-2017-271094/texto
+        https://www.argentina.gob.ar/normativa/nacional/decreto-80-2017-271382/texto
+        https://www.argentina.gob.ar/normativa/nacional/decreto-923-2017-287145
     - [Decreto 717/2019] - 2020 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-717-2019-330204/texto
     - [Decreto 297/2020] - Veteran Day moved due to Covid-19
+        https://www.argentina.gob.ar/normativa/nacional/decreto-297-2020-335741/texto
     - [Decreto 947/2020] - 2021 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-947-2020-344620/texto
     - [Decreto 789/2021] - 2022 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-789-2021-356678/texto
     - [Decreto 764/2022] - 2023 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-764-2022-375264/texto
+    - [Decreto 106/2023] - 2024 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-106-2023-395689/texto
+    - [Decreto 1017/2024] - 2025 Bridge Holidays
+        https://www.argentina.gob.ar/normativa/nacional/decreto-1027-2024-406417/texto
     - [Always Update Calendar Year Link]
         https://www.argentina.gob.ar/interior/feriados
         http://servicios.lanacion.com.ar/feriados
@@ -60,7 +75,8 @@ class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         https://servicios.lanacion.com.ar/app-mobile/feriados/2016
         https://servicios.lanacion.com.ar/app-mobile/feriados/2015
 
-        Movable Holidays Laws:
+    Movable Holidays Laws:
+
     - Decreto 1584/2010: 2010-11-03
         - AUG 17, OCT 12, NOV 20 Holidays will always be on MON
     - Decreto 52/2017: 2017-01-23 (Reconfirmed in Ley 27399)
@@ -344,5 +360,10 @@ class ArgentinaStaticHolidays:
             (APR, 1, arg_bridge_public_holiday),
             (JUN, 21, arg_bridge_public_holiday),
             (OCT, 11, arg_bridge_public_holiday),
+        ),
+        2025: (
+            (MAY, 2, arg_bridge_public_holiday),
+            (AUG, 15, arg_bridge_public_holiday),
+            (NOV, 21, arg_bridge_public_holiday),
         ),
     }
