@@ -8,8 +8,11 @@ How to release a new version of Holidays
   - generate release notes by running ``make release-notes``
   - insert the command's output into the top of ``CHANGES`` file
     (see previous release notes for consistent formatting)
-  - commit the updated ``CHANGES`` file to ``dev`` branch with the following
-    commit message 'Finalize v<version>', e.g. 'Finalize v0.39'
+  - update the supported versions table at ``SECURITY.md`` file (the
+    table should contain the version being currently released)
+  - commit the updated ``CHANGES`` and ``SECURITY.md`` files to ``dev`` 
+    branch with the following commit message 'Finalize v<version>', 
+    e.g. 'Finalize v0.39'
   - push changes to https://github.com/vacanza/holidays ``dev`` branch
   - make sure the push related CI/CD jobs have been completed successfully
 

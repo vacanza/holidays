@@ -480,5 +480,7 @@ class TimorLesteStaticHolidays:
             (SEP, 11, pope_francis_visit),
             # https://timor-leste.gov.tl/?p=40592&lang=en
             (OCT, 31, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=40955&lang=en
+            (NOV, 29, special_national_holidays),
         ),
     }
