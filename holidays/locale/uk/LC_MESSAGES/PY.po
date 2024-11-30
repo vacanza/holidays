@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.62\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2024-01-05 12:45+0200\n"
+"PO-Revision-Date: 2024-11-28 14:10+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -26,14 +26,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. Public holiday.
-msgid "Asueto adicionale"
-msgstr "Додатковий вихідний"
-
-#. Public sector holiday.
-msgid "Asueto de la Administración Pública"
-msgstr "Вихідний державних установ"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -55,9 +47,13 @@ msgstr "Страсна пʼятниця"
 msgid "Domingo de Resurrección"
 msgstr "Великдень"
 
-#. Labor Day.
-msgid "Día del Trabajador"
+#. Workers' Day.
+msgid "Día de los Trabajadores"
 msgstr "День трудящих"
+
+#. National Holiday.
+msgid "Feriado Nacional"
+msgstr "Національне свято"
 
 #. Independence Day.
 msgid "Día de la Independencia Nacional"
@@ -77,8 +73,16 @@ msgstr "День битви за Бокерон"
 
 #. Caacupe Virgin Day.
 msgid "Día de la Virgen de Caacupé"
-msgstr "Успіння Пресвятої Богородиці"
+msgstr "День Богоматері Каакупе"
 
 #. Christmas Day.
-msgid "Navidad"
+msgid "Día de la Navidad"
 msgstr "Різдво Христове"
+
+#. Public holiday.
+msgid "Asueto adicionale"
+msgstr "Додатковий вихідний"
+
+#. Public sector holiday.
+msgid "Asueto de la Administración Pública"
+msgstr "Вихідний державних установ"
