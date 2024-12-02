@@ -980,8 +980,12 @@ following financial markets are available:
      - Code
      - Info
      - Supported Languages
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
+     - en_US, **pt_BR**, uk
    * - European Central Bank
-     - ECB
+     - XECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
      -
    * - ICE Futures Europe
@@ -992,10 +996,6 @@ following financial markets are available:
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
      -
-   * - Brasil, Bolsa, Balcão
-     - BVMF
-     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
-     - en_US, **pt_BR**, uk
 
 
 Contributions

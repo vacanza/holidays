@@ -31,7 +31,7 @@ from holidays.calendars.gregorian import (
     SAT,
     SUN,
 )
-from holidays.financial.ny_stock_exchange import NewYorkStockExchange, NYSE, XNYS
+from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
 from tests.common import CommonFinancialTests
 
 
@@ -41,7 +41,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         super().setUpClass(NewYorkStockExchange)
 
     def test_market_aliases(self):
-        self.assertAliases(NewYorkStockExchange, NYSE, XNYS)
+        self.assertAliases(NewYorkStockExchange, XNYS, NYSE)
 
     def test_no_holidays(self):
         self.assertNoHolidays(NewYorkStockExchange(years=1862))
@@ -444,13 +444,12 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
-            _list = [
+            return [
                 d
                 for d in (begin + td(days=n) for n in range((end - begin).days + 1))
                 if (weekends or d.weekday() not in {SAT, SUN})
                 and (days is None or d.weekday() in days)
             ]
-            return _list
 
         wwi_holidays = _make_special_holiday_list(date(1914, JUL, 31), date(1914, NOV, 27))
         oneoff_bank_holidays = _make_special_holiday_list(date(1933, MAR, 6), date(1933, MAR, 14))
