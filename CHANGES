@@ -1,3 +1,19 @@
+Version 0.62
+============
+
+Released December 2, 2024
+
+- Introduce start/end year for entity (#2141 by @KJhellico)
+- Add Guernsey holidays (#2135 by @PPsyrius)
+- Update AZ holidays: add 2025 special holidays (#2154 by @KJhellico)
+- Update Argentina holidays: Add 2025 Bridge Public Holidays (#2146 by @PPsyrius)
+- Update CA holidays: Nunavut Day is NU public holiday since 2020 (#2143 by @KJhellico)
+- Update Finland holidays: fix Independence Day appearing pre-1917 (#2145 by @PPsyrius)
+- Update Paraguay holidays (#2151 by @KJhellico)
+- Update Timor Leste holidays: Add 2024 Nov 29 Special Holiday (#2150 by @PPsyrius)
+- Update pyproject.toml: clarify project summary (#2139 by @arkid15r)
+- Add SECURITY.md (#2142 by @arkid15r)
+
 Version 0.61
 ============
 
