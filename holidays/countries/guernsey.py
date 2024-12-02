@@ -40,6 +40,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     country = "GG"
     observed_label = "%s (substitute day)"
+    # Ordonnance relative aux Jours Fériés, 1909.
+    start_year = 1909
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -58,10 +60,6 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self) -> None:
-        # Ordonnance relative aux Jours Fériés, 1909.
-        if self._year <= 1908:
-            return None
-
         # New Year's Day
         # Le jour de l'An
 

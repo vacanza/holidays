@@ -29,6 +29,8 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (OPTIONAL, PUBLIC)
     default_language = "fr_HT"
     supported_languages = ("en_US", "es", "fr_HT", "ht")
+    # 1987 Constitution.
+    start_year = 1987
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -36,10 +38,6 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # 1987 Constitution.
-        if self._year <= 1986:
-            return None
-
         # ARTICLE 275.1 : National Holidays.
         # Both Battle of Vertieres Day and Armed Forces Day are on Nov 18, declared discretely.
 
@@ -100,10 +98,6 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Noël"))
 
     def _populate_optional_holidays(self):
-        # 1987 Constitution.
-        if self._year <= 1986:
-            return None
-
         # Ash Wednesday.
         self._add_ash_wednesday(tr("Mercredi des Cendres"))
 

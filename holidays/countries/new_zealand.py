@@ -112,6 +112,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         "STC",  # For 'South Canterbury' Subregional Holidays.
         "WTL",  # Westland, Correct code is WTC (for West Coast).
     )
+    start_year = 1894
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -136,9 +137,6 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Waitangi Day Act 1960, 1976
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
-
-        if self._year <= 1893:
-            return None
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)

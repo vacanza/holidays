@@ -34,6 +34,8 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     default_language = "es"
     supported_categories = (GOVERNMENT, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    # Ley 8/1990.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,10 +44,6 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Ley 8/1990.
-        if self._year <= 1990:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 

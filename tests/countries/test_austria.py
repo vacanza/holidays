@@ -20,23 +20,22 @@ from tests.common import CommonCountryTests
 class TestAustria(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Austria, years=range(1900, 2050))
+        super().setUpClass(Austria, years=range(1901, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Austria, AT, AUT)
 
     def test_new_years(self):
-        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))
+        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1901, 2050)))
 
     def test_epiphany(self):
         self.assertHolidayName(
-            "Heilige Drei Könige", (f"{year}-01-06" for year in range(1900, 2050))
+            "Heilige Drei Könige", (f"{year}-01-06" for year in range(1901, 2050))
         )
 
     def test_easter_monday(self):
         self.assertHolidayName(
             "Ostermontag",
-            "1900-04-16",
             "1901-04-08",
             "1902-03-31",
             "1999-04-05",
@@ -50,12 +49,11 @@ class TestAustria(CommonCountryTests, TestCase):
         )
 
     def test_labour_day(self):
-        self.assertHolidayName("Staatsfeiertag", (f"{year}-05-01" for year in range(1900, 2050)))
+        self.assertHolidayName("Staatsfeiertag", (f"{year}-05-01" for year in range(1901, 2050)))
 
     def test_ascension_day(self):
         self.assertHolidayName(
             "Christi Himmelfahrt",
-            "1900-05-24",
             "1901-05-16",
             "1902-05-08",
             "1999-05-13",
@@ -71,7 +69,6 @@ class TestAustria(CommonCountryTests, TestCase):
     def test_whit_monday(self):
         self.assertHolidayName(
             "Pfingstmontag",
-            "1900-06-04",
             "1901-05-27",
             "1902-05-19",
             "1999-05-24",
@@ -87,7 +84,6 @@ class TestAustria(CommonCountryTests, TestCase):
     def test_corpus_christi(self):
         self.assertHolidayName(
             "Fronleichnam",
-            "1900-06-14",
             "1901-06-06",
             "1902-05-29",
             "1999-06-03",
@@ -102,7 +98,7 @@ class TestAustria(CommonCountryTests, TestCase):
 
     def test_assumption_day(self):
         self.assertHolidayName(
-            "Mariä Himmelfahrt", (f"{year}-08-15" for year in range(1900, 2050))
+            "Mariä Himmelfahrt", (f"{year}-08-15" for year in range(1901, 2050))
         )
 
     def test_national_day(self):
@@ -112,19 +108,19 @@ class TestAustria(CommonCountryTests, TestCase):
             (f"{year}-10-26" for year in range(1967, 2050)),
         )
         self.assertNoHoliday("1918-11-12", "1935-11-12", "1966-10-26")
-        self.assertNoHolidayName("Nationalfeiertag", range(1900, 1919), range(1935, 1967))
+        self.assertNoHolidayName("Nationalfeiertag", range(1901, 1919), range(1935, 1967))
 
     def test_all_saints_day(self):
-        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in range(1900, 2050)))
+        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in range(1901, 2050)))
 
     def test_immaculate_conception_day(self):
-        self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in range(1900, 2050)))
+        self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in range(1901, 2050)))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christtag", (f"{year}-12-25" for year in range(1900, 2050)))
+        self.assertHolidayName("Christtag", (f"{year}-12-25" for year in range(1901, 2050)))
 
     def test_st_stephens_day(self):
-        self.assertHolidayName("Stefanitag", (f"{year}-12-26" for year in range(1900, 2050)))
+        self.assertHolidayName("Stefanitag", (f"{year}-12-26" for year in range(1901, 2050)))
 
     def test_2022(self):
         self.assertHolidays(

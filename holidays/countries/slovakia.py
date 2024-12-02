@@ -29,6 +29,8 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     default_language = "sk"
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "sk", "uk")
+    # Independent Slovak Republic established on Jan 01, 1993
+    start_year = 1993
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -37,10 +39,6 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Independent Slovak Republic established on Jan 01, 1993
-        if self._year <= 1992:
-            return None
-
         # Day of the Establishment of the Slovak Republic.
         self._add_holiday_jan_1(tr("Deň vzniku Slovenskej republiky"))
 

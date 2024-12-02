@@ -32,6 +32,8 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AW"
     default_language = "pap_AW"
     supported_languages = ("en_US", "nl", "pap_AW", "uk")
+    # AUG 1947: Autonomous State status in the Kingdom of the Netherlands.
+    start_year = 1947
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -39,10 +41,6 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # AUG 1947: Autonomous State status in the Kingdom of the Netherlands.
-        if self._year <= 1946:
-            return None
-
         # Aña Nobo.
         # Status: In-Use.
 

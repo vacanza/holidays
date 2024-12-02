@@ -65,6 +65,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Victoria": "VIC",
         "Western Australia": "WA",
     }
+    start_year = 1801
 
     @property
     def sovereign_birthday(self) -> str:

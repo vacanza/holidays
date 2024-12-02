@@ -143,6 +143,9 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     # %s (in lieu).
     observed_label = tr("ชดเชย%s")
     supported_languages = ("en_US", "th")
+    # Due to Thai Calendar Migration, this is capped off at 1941.
+    # But certain holidays were implemented before 1941.
+    start_year = 1941
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -155,11 +158,6 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         return 1961 <= self._year <= 1973 or 1995 <= self._year <= 1997 or self._year >= 2001
 
     def _populate_public_holidays(self):
-        # Due to Thai Calendar Migration, this is capped off at 1941.
-        # But certain holidays were implemented before 1941.
-        if self._year <= 1940:
-            return None
-
         # Fixed Date Holidays
 
         # วันขึ้นปีใหม่
@@ -682,10 +680,10 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
         # วันลอยกระทง
         # Status: In-Use.
+        # Started in 1941.
 
-        if self._year >= 1941:
-            # Loy Krathong
-            self._add_loy_krathong(tr("วันลอยกระทง"))
+        # Loy Krathong
+        self._add_loy_krathong(tr("วันลอยกระทง"))
 
 
 class TH(Thailand):

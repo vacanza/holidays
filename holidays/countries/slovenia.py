@@ -31,6 +31,7 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     country = "SI"
     default_language = "sl"
     supported_languages = ("en_US", "sl", "uk")
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -39,9 +40,6 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1990:
-            return None
-
         # New Year's Day.
         name = tr("novo leto")
         self._add_new_years_day(name)

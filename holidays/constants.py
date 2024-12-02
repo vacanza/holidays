@@ -54,3 +54,6 @@ CHRISTIAN = "christian"
 HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
+
+DEFAULT_START_YEAR = 1901
+DEFAULT_END_YEAR = 2100

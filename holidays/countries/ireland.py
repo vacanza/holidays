@@ -23,6 +23,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """
 
     country = "IE"
+    start_year = 1872
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -31,9 +32,6 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1871:
-            return None
-
         # New Year's Day.
         if self._year >= 1975:
             self._add_new_years_day("New Year's Day")

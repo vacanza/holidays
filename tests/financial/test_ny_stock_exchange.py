@@ -43,6 +43,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_market_aliases(self):
         self.assertAliases(NewYorkStockExchange, NYSE, XNYS)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(NewYorkStockExchange(years=1862))
+
     def test_new_years(self):
         for dt in (
             date(1900, JAN, 1),

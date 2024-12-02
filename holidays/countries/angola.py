@@ -46,6 +46,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     supported_languages = ("en_US", "pt_AO", "uk")
     # %s (observed).
     observed_label = tr("%s (ponte)")
+    # Decree #5/75.
+    start_year = 1975
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -68,10 +70,6 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
-        # Decree #5/75.
-        if self._year <= 1974:
-            return None
-
         # New Year's Day.
         name = self.tr("Dia do Ano Novo")
         dt = self._add_new_years_day(name)

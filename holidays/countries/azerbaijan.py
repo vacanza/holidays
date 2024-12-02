@@ -42,6 +42,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     observed_estimated_label = tr("%s (müşahidə olunur, təxmini)")
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("az", "en_US", "uk")
+    start_year = 1990
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -52,9 +53,6 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
         dts_observed = set()
         dts_non_observed = set()
         dts_bairami = set()

@@ -29,6 +29,8 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "pap_CW"
     supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "nl", "pap_CW", "uk")
+    # 1954: Creation of the Netherlands Antilles.
+    start_year = 1954
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -36,10 +38,6 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # 1954: Creation of the Netherlands Antilles.
-        if self._year <= 1953:
-            return None
-
         # Aña Nobo.
         # Status: In-Use.
 
@@ -136,9 +134,6 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Di dos dia di Pasku di Nasementu"))
 
     def _populate_half_day_holidays(self):
-        if self._year <= 1953:
-            return None
-
         # New Year's Eve.
         self._add_new_years_eve(tr("Vispu di Aña Nobo"))
 

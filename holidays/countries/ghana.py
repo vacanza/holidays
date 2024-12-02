@@ -28,6 +28,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     estimated_label = "%s (estimated)"
     observed_label = "%s (observed)"
     observed_estimated_label = "%s (observed, estimated)"
+    start_year = 1957
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -37,10 +38,6 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Holidays observed since 1957
-        if self._year <= 1956:
-            return None
-
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, SCHOOL
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.countries.israel import Israel, IL, ISR
 from tests.common import CommonCountryTests
 
@@ -29,15 +29,8 @@ class TestIsrael(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Israel, IL, ISR)
 
-    def test_not_implemented(self):
-        self.assertRaises(NotImplementedError, lambda: Israel(years=2101))
-        self.assertRaises(NotImplementedError, lambda: Israel(categories=(OPTIONAL,), years=2101))
-        self.assertRaises(NotImplementedError, lambda: Israel(categories=(SCHOOL,), years=2101))
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Israel(years=1947))
-        self.assertNoHolidays(Israel(categories=(OPTIONAL,), years=1947))
-        self.assertNoHolidays(Israel(categories=(SCHOOL,), years=1947))
+        self.assertNoHolidays(Israel(categories=(OPTIONAL, PUBLIC, SCHOOL), years=1947))
 
     def test_independence_day(self):
         name = "יום העצמאות"

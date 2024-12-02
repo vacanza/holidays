@@ -51,6 +51,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "S",  # Santa Cruz
         "T",  # Tarija
     )
+    start_year = 1825
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -61,9 +62,6 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1824:
-            return None
-
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
 

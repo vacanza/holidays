@@ -35,6 +35,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     observed_label = tr("%s (вихідний)")
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("ar", "en_US", "uk")
+    # The current set of holidays came into force in 1991.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
@@ -53,10 +55,6 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
 
     def _populate_common(self, is_martial_law: bool = False):
-        # The current set of holidays came into force in 1991
-        if self._year <= 1990:
-            return None
-
         # There is no public holidays in Ukraine during the period of martial law
         # https://zakon.rada.gov.ua/laws/show/2136-20#n26
         # law is in force from March 15, 2022

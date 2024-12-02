@@ -30,6 +30,8 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BZ"
     observed_label = "%s (observed)"
+    # Belize was granted independence on 21.09.1981.
+    start_year = 1982
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,10 +44,6 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Belize was granted independence on 21.09.1981.
-        if self._year <= 1981:
-            return None
-
         # New Year's Day.
         self._move_holiday(self._add_new_years_day("New Year's Day"))
 
