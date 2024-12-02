@@ -48,6 +48,7 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     observed_label = tr("%s (почивен ден)")
     supported_categories = (PUBLIC, SCHOOL)
     supported_languages = ("bg", "en_US", "uk")
+    start_year = 1990
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
@@ -65,9 +66,6 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                     self._add_observed(dt, name)
 
     def _populate_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.
@@ -129,9 +127,6 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
     def _populate_school_holidays(self):
-        if self._year <= 1989:
-            return None
-
         # National Awakening Day.
         self._add_holiday_nov_1(tr("Ден на народните будители"))
 

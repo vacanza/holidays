@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK
+from holidays.constants import BANK, PUBLIC
 from holidays.countries.japan import Japan, JP, JPN
 from tests.common import CommonCountryTests
 
@@ -25,15 +25,9 @@ class TestJapan(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Japan, JP, JPN)
 
-    def test_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
-            Japan(years=1945)
-        with self.assertRaises(NotImplementedError):
-            Japan(years=2100)
-        with self.assertRaises(NotImplementedError):
-            Japan(categories=BANK, years=1945)
-        with self.assertRaises(NotImplementedError):
-            Japan(categories=BANK, years=2100)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Japan(categories=(BANK, PUBLIC), years=1948))
+        self.assertNoHolidays(Japan(categories=(BANK, PUBLIC), years=2100))
 
     def test_new_years_day(self):
         self.assertHolidayName("元日", (f"{year}-01-01" for year in range(1949, 2051)))

@@ -22,6 +22,7 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (ponte)")
     supported_languages = ("en_US", "pt_MZ", "uk")
+    start_year = 1975
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -30,9 +31,6 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1974:
-            return None
-
         # International Fraternalism Day.
         self._add_observed(self._add_new_years_day(tr("Dia da Fraternidade universal")))
 

@@ -30,6 +30,7 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     country = "BW"
     observed_label = "%s (observed)"
+    start_year = 1966
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -40,9 +41,6 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1965:
-            return None
-
         self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
 

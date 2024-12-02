@@ -123,6 +123,7 @@ class Malaysia(
         "PJY": "16",
     }
     supported_languages = ("en_US", "ms_MY", "th")
+    start_year = 1952
 
     def __init__(self, *args, **kwargs):
         """
@@ -152,9 +153,6 @@ class Malaysia(
         self.dts_observed = set()
 
     def _populate_public_holidays(self):
-        if self._year <= 1951:
-            return None
-
         # This must be done for every `_populate_public_holidays()` call.
         # Otherwise, 2006/2007 Eid al-Adha observance would be miscalculated.
         self.dts_observed = set()
@@ -212,9 +210,6 @@ class Malaysia(
         self.dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Qurban")))
 
     def _populate_subdiv_holidays(self):
-        if self._year <= 1951:
-            return None
-
         if self.subdiv and self.subdiv not in {"13", "15"}:
             # Deepavali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))

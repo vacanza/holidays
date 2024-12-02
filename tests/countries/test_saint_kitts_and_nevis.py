@@ -143,7 +143,7 @@ class TestSaintKittsAndNevis(CommonCountryTests, TestCase):
         )
 
     def test_kim_collins_day(self):
-        self.assertNoHoliday(SaintKittsAndNevis(categories=WORKDAY), 2002)
+        self.assertNoHoliday(SaintKittsAndNevis(categories=WORKDAY), "2002-08-25")
         self.assertHoliday(
             SaintKittsAndNevis(categories=WORKDAY),
             (f"{year}-08-25" for year in range(2003, 2051)),

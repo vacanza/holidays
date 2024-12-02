@@ -64,6 +64,8 @@ class Tanzania(
     # %s (estimated).
     estimated_label = tr("%s (makisio)")
     supported_languages = ("en_US", "sw")
+    # Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
+    start_year = 1994
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -73,10 +75,6 @@ class Tanzania(
         super().__init__(*args, **kwargs)
 
     def _populate_bank_holidays(self):
-        # Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
-        if self._year <= 1993:
-            return None
-
         # Sikukuu ya Pasaka.
         # Status: In-Use.
         # Only observed by financial institutions.
@@ -85,10 +83,6 @@ class Tanzania(
         self._add_easter_sunday(tr("Sikukuu ya Pasaka"))
 
     def _populate_public_holidays(self):
-        # Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
-        if self._year <= 1993:
-            return None
-
         # In-lieus ("Badala ya %s") are observed on Monday should it fall on the weekends.
         # Abrogated in Public Holidays Ordinance  No. 28 of 1966.
         # Reinstituted in Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.

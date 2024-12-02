@@ -25,9 +25,12 @@ from holidays.observed_holiday_base import (
 
 
 class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    # [1] https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
-    # [2] https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri
-    # [3] https://www.sosial.gov.az/en/prod-calendar
+    """
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
+        - https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri
+        - https://www.sosial.gov.az/en/prod-calendar
+    """
 
     country = "AZ"
     default_language = "az"
@@ -39,6 +42,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     observed_estimated_label = tr("%s (müşahidə olunur, təxmini)")
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("az", "en_US", "uk")
+    start_year = 1990
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -49,9 +53,6 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
         dts_observed = set()
         dts_non_observed = set()
         dts_bairami = set()
@@ -246,6 +247,21 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
 
 
 class AzerbaijanStaticHolidays:
+    """
+    Substituted holidays references:
+        - https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423
+        - https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982
+        - https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449
+    Special holidays references:
+        - https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025
+    """
+
     eid_al_adha = tr("Qurban bayrami")
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
@@ -254,6 +270,9 @@ class AzerbaijanStaticHolidays:
 
     # Presidential elections.
     presidential_elections = tr("Prezidenti seçkiləri")
+
+    # Municipal elections.
+    municipal_elections = tr("Bələdiyyə seçkiləri")
 
     special_public_holidays = {
         2011: (AUG, 29, AUG, 27),
@@ -266,8 +285,7 @@ class AzerbaijanStaticHolidays:
             (JAN, 6, DEC, 29, 2013),
         ),
         2018: (APR, 11, presidential_elections),
-        # Municipal elections.
-        2019: (DEC, 27, tr("Bələdiyyə seçkiləri")),
+        2019: (DEC, 27, municipal_elections),
         2020: (
             (MAR, 27, MAR, 29),
             (MAY, 27, MAY, 30),
@@ -295,6 +313,11 @@ class AzerbaijanStaticHolidays:
             (APR, 12, APR, 6),
             (NOV, 12, NOV, 16),
             (NOV, 13, NOV, 23),
+            (DEC, 30, DEC, 28),
+        ),
+        2025: (
+            (JAN, 3, DEC, 29, 2024),
+            (JAN, 29, municipal_elections),
         ),
     }
 

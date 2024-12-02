@@ -68,6 +68,8 @@ class HongKong(
     observed_label = "%s (observed)"
     supported_categories = (OPTIONAL, PUBLIC)
     weekend = {SUN}
+    # Current set of holidays actually valid since 1946
+    start_year = 1946
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -238,9 +240,6 @@ class HongKong(
             self._add_observed(self._add_christmas_day("Christmas Day"))
 
     def _populate_optional_holidays(self):
-        if self._year <= 1945:
-            return None
-
         # General Holidays.
 
         # The first day of January.

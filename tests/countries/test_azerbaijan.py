@@ -34,6 +34,7 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2018-04-11",
             "2019-12-27",
             "2024-02-07",
+            "2025-01-29",
             "2072-01-05",
         )
 
@@ -61,6 +62,8 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2024-04-12",
             "2024-11-12",
             "2024-11-13",
+            "2024-12-30",
+            "2025-01-03",
         )
 
     def test_new_years_day(self):

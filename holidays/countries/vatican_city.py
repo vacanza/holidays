@@ -23,15 +23,13 @@ class VaticanCity(HolidayBase, ChristianHolidays):
     """
 
     country = "VA"
+    start_year = 1929
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
-        if self._year <= 1928:
-            return None
-
         # Solemnity of Mary Day.
         # This is supposedly the same as International New Year.
         # Modern adoption across the entire Latin Church in 1931 though this

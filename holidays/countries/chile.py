@@ -79,6 +79,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     )
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    start_year = 1915
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -89,9 +90,6 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1914:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
         if self._year >= 2017:

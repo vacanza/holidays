@@ -35,6 +35,10 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
     market = "BVMF"
     default_language = "pt_BR"
     supported_languages = ("en_US", "pt_BR", "uk")
+    # Decreto n. 155-B, de 14.01.1890
+    # Curiously enough, 1890 is also the year of foundation of the
+    # São Paulo Stock Exchange, which would later become the B3.
+    start_year = 1890
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -42,12 +46,6 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Decreto n. 155-B, de 14.01.1890
-        # Curiously enough, 1890 is also the year of foundation of the
-        # São Paulo Stock Exchange, which would later become the B3.
-        if self._year <= 1889:
-            return None
-
         # Universal Fraternization Day.
         self._add_new_years_day(tr("Confraternização Universal"))
 

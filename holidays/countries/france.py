@@ -62,6 +62,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Martin",
         "Wallis-et-Futuna",
     )
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

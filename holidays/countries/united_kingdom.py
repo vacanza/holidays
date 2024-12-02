@@ -51,6 +51,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         "Wales": "WLS",
     }
     _deprecated_subdivisions = ("UK",)
+    # Bank Holidays Act 1871
+    start_year = 1872
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -62,10 +64,6 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
-        # Bank Holidays Act 1871
-        if self._year <= 1871:
-            return None
-
         # Good Friday
         self._add_good_friday("Good Friday")
 
@@ -91,10 +89,6 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
                 self._add_holiday_last_mon_of_may(name)
 
     def _populate_subdiv_holidays(self):
-        # Bank Holidays Act 1871
-        if self._year <= 1871:
-            return None
-
         if self.subdiv != "SCT":
             # New Year's Day
             if self._year >= 1975:

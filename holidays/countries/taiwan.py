@@ -70,6 +70,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     observed_label = tr("%s（慶祝）")
     default_language = "zh_TW"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
+    start_year = 1912
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -96,9 +97,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                 )
 
     def _populate_public_holidays(self):
-        if self._year <= 1911:
-            return None
-
         dts_observed = set()
         dts_observed_forward = set()
 

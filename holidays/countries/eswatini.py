@@ -25,6 +25,7 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     country = "SZ"
     observed_label = "%s (observed)"
+    start_year = 1939
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -35,10 +36,6 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Observed since 1939
-        if self._year <= 1938:
-            return None
-
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         self._add_good_friday("Good Friday")

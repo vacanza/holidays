@@ -32,6 +32,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (GOVERNMENT, PUBLIC)
     default_language = "ka"
     supported_languages = ("en_US", "ka", "uk")
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -40,9 +41,6 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1990:
-            return None
-
         # New Year's Day.
         name = tr("ახალი წელი")
         self._add_new_years_day(name)

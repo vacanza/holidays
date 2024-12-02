@@ -35,6 +35,8 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     estimated_label = tr("%s (tahmini)")
     supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "tr", "uk")
+    # Law 2739 of 27 May 1935.
+    start_year = 1936
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -43,10 +45,6 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Law 2739 of 27 May 1935.
-        if self._year <= 1935:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Yılbaşı"))
 
@@ -103,9 +101,6 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         self._add_eid_al_adha_day_four(name)
 
     def _populate_half_day_holidays(self):
-        if self._year <= 1935:
-            return None
-
         # %s (from 1pm).
         begin_time_label = self.tr("%s (saat 13.00'ten)")
 

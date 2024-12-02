@@ -69,6 +69,8 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     supported_categories = (PUBLIC, HALF_DAY)
     default_language = "zh_CN"
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
+    # Proclamation of the People's Republic of China on Oct 1, 1949.
+    start_year = 1950
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -79,10 +81,6 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Proclamation of the People's Republic of China on Oct 1, 1949.
-        if self._year <= 1949:
-            return None
-
         dts_observed = set()
 
         # 元旦 (simp.) / 新年 (trad.)
@@ -186,9 +184,6 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
 
     def _populate_half_day_holidays(self):
         # No in lieus are given for this category.
-        # Proclamation of the People's Republic of China on Oct 1, 1949.
-        if self._year <= 1949:
-            return None
 
         # International Women's Day.
         self._add_womens_day(tr("国际妇女节"))

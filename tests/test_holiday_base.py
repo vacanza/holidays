@@ -74,6 +74,8 @@ class CountryStub1(EntityStub, StaticHolidays):
         "S_3": "3",
     }
     supported_categories = (PUBLIC, SCHOOL)
+    start_year = 1000
+    end_year = 3400
 
     def __init__(self, *args, **kwargs) -> None:
         StaticHolidays.__init__(self, cls=EntityStubStaticHolidays)

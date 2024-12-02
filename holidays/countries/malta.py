@@ -40,6 +40,8 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MT"
     default_language = "mt"
     supported_languages = ("en_US", "mt")
+    # Earliest available source is 1980.
+    start_year = 1980
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -47,10 +49,6 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Earliest available source is 1980
-        if self._year <= 1979:
-            return None
-
         # L-Ewwel tas-Sena
         # Status: In-Use.
 

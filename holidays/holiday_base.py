@@ -39,7 +39,7 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
+from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -245,6 +245,10 @@ class HolidayBase(dict[date, str]):
     """All holiday categories supported by this entity."""
     supported_languages: tuple[str, ...] = ()
     """All languages supported by this entity."""
+    start_year: int = DEFAULT_START_YEAR
+    """Start year of holidays presence for this entity."""
+    end_year: int = DEFAULT_END_YEAR
+    """End year of holidays presence for this entity."""
 
     def __init__(
         self,
@@ -828,6 +832,9 @@ class HolidayBase(dict[date, str]):
         # to add new holidays to the object:
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
+
+        if year < self.start_year or year > self.end_year:
+            return None
 
         self._year = year
         self._populate_common_holidays()

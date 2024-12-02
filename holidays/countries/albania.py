@@ -43,6 +43,8 @@ class Albania(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (ditë pushimi e shtyrë, e vlerësuar)")
     supported_languages = ("en_US", "sq", "uk")
+    # Law No. 7651 from 21.12.1992.
+    start_year = 1993
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -53,10 +55,6 @@ class Albania(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Law No. 7651 from 21.12.1992.
-        if self._year <= 1992:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.

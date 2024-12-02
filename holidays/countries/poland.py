@@ -25,6 +25,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
     country = "PL"
     default_language = "pl"
     supported_languages = ("en_US", "pl", "uk")
+    start_year = 1925
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -33,9 +34,6 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1924:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Nowy Rok"))
 

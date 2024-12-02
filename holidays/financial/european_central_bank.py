@@ -24,6 +24,7 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays)
     """
 
     market = "ECB"
+    start_year = 2000
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -31,11 +32,7 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays)
         StaticHolidays.__init__(self, EuropeanCentralBankStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 1999:
-            return None
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         self._add_new_years_day("New Year's Day")
 
         self._add_good_friday("Good Friday")
