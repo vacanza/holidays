@@ -223,10 +223,8 @@ class TestListSupportedEntities(unittest.TestCase):
     def test_list_supported_financial(self):
         supported_financial = list_supported_financial(include_aliases=False)
 
-        self.assertIn("BVMF", supported_financial)
-        self.assertIn("IFEU", supported_financial)
-        self.assertIn("XECB", supported_financial)
-        self.assertIn("XNYS", supported_financial)
+        for code in ("BVMF", "IFEU", "XECB", "XNYS"):
+            self.assertIn(code, supported_financial)
 
         xnys = supported_financial["XNYS"]
         self.assertIsInstance(xnys, list)
