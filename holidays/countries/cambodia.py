@@ -128,7 +128,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
                 # NORODOM SIHAMONI, King of Cambodia
                 "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
             )
-            dt = self._add_holiday_may_14(king_sihamoni_bday)
+            self._add_holiday_may_14(king_sihamoni_bday)
             if self._year <= 2019:
                 self._add_holiday_may_13(king_sihamoni_bday)
                 self._add_holiday_may_15(king_sihamoni_bday)
@@ -159,7 +159,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         if self._year >= 1994:
             self._add_holiday_jun_18(
                 # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
-                tr("ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ"),
+                tr("ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ")
             )
 
         # ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ
@@ -176,13 +176,12 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         if self._year >= 2012:
             self._add_holiday_oct_15(
-                # Mourning Day of the Late King-Father
-                # NORODOM SIHANOUK of Cambodia
+                # Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia
                 tr(
                     "ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម "
                     "សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
                     "ព្រះបរមរតនកោដ្ឋ"
-                ),
+                )
             )
 
         # ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស
@@ -207,7 +206,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
                     "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា "
                     "ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "
                     "ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា"
-                ),
+                )
             )
 
         # ពិធីបុណ្យឯករាជ្យជាតិ
@@ -226,7 +225,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
             self._add_holiday_dec_10(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"))
 
         # Cambodian Lunar Calendar Holidays
-        # See `_ThaiLunisolar` in holidays/utils.py for more details.
+        # See `_ThaiLunisolar` in holidays/calendars/thai.py for more details.
         # Cambodian Lunar Calendar Holidays only work from 1941 to 2157.
 
         # ពិធីបុណ្យមាឃបូជា

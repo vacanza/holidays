@@ -122,9 +122,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         super().__init__(*args, **kwargs)
 
     def _get_nearest_monday(self, *args) -> Optional[date]:
-        dt = args if len(args) > 1 else args[0]
-        dt = dt if isinstance(dt, date) else date(self._year, *dt)
-        return self._get_observed_date(dt, rule=ALL_TO_NEAREST_MON)
+        return self._get_observed_date(date(self._year, *args), rule=ALL_TO_NEAREST_MON)
 
     def _populate_public_holidays(self):
         # Bank Holidays Act 1873
@@ -256,12 +254,9 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
     def _populate_subdiv_ntl_public_holidays(self):
         if 1964 <= self._year <= 1973:
-            name = "Waitangi Day"
-            dt = (FEB, 6)
+            self._add_holiday("Waitangi Day", self._get_nearest_monday(FEB, 6))
         else:
-            name = "Auckland Anniversary Day"
-            dt = (JAN, 29)
-        self._add_holiday(name, self._get_nearest_monday(dt))
+            self._add_holiday("Auckland Anniversary Day", self._get_nearest_monday(JAN, 29))
 
     def _populate_subdiv_ota_public_holidays(self):
         # there is no easily determined single day of local observance?!?!

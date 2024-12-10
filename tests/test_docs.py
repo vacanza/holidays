@@ -181,8 +181,7 @@ class TestReadme(TestCase):
                     (
                         f"{c} != {s}"
                         for c, s in zip(
-                            supported_countries[country_code],
-                            country_subdivisions[country_code],
+                            supported_countries[country_code], country_subdivisions[country_code]
                         )
                         if c != s
                     )
@@ -242,9 +241,7 @@ class TestReadme(TestCase):
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Info\s+- Supported Languages(.*)Contributions",
-                self.readme_content,
-                re.DOTALL,
+                r"Info\s+- Supported Languages(.*)Contributions", self.readme_content, re.DOTALL
             )[0].split("\n")
             if line
         ]

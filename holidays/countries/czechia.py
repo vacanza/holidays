@@ -36,7 +36,7 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Den obnovy samostatného českého státu")
             if self._year >= 2000
             # New Year's Day.
-            else tr("Nový rok"),
+            else tr("Nový rok")
         )
 
         if self._year <= 1951 or self._year >= 2016:

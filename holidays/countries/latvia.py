@@ -55,10 +55,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_labor_day(tr("Darba svētki"))
 
         if self._year >= 2002:
-            dt = self._add_holiday_may_4(
-                # Restoration of Independence Day.
-                tr("Latvijas Republikas Neatkarības atjaunošanas diena")
-            )
+            # Restoration of Independence Day.
+            dt = self._add_holiday_may_4(tr("Latvijas Republikas Neatkarības atjaunošanas diena"))
             if self._year >= 2008:
                 self._add_observed(dt)
 

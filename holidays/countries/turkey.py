@@ -48,27 +48,25 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         # New Year's Day.
         self._add_new_years_day(tr("Yılbaşı"))
 
-        name = (
+        self._add_holiday_apr_23(
             # National Sovereignty and Children's Day.
             tr("Ulusal Egemenlik ve Çocuk Bayramı")
             if self._year >= 1981
             # National Sovereignty Day.
             else tr("Ulusal Egemenlik Bayramı")
         )
-        self._add_holiday_apr_23(name)
 
         if self._year >= 2009:
             # Labour and Solidarity Day.
             self._add_labor_day(tr("Emek ve Dayanışma Günü"))
 
-        name = (
+        self._add_holiday_may_19(
             # Commemoration of Atatürk, Youth and Sports Day.
             tr("Atatürk'ü Anma, Gençlik ve Spor Bayramı")
             if self._year >= 1981
             # Youth and Sports Day.
             else tr("Gençlik ve Spor Bayramı")
         )
-        self._add_holiday_may_19(name)
 
         if 1963 <= self._year <= 1980:
             # Freedom and Constitution Day.

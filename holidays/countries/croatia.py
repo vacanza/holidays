@@ -67,14 +67,13 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Anti-Fascist Struggle Day.
         self._add_holiday_jun_22(tr("Dan antifašističke borbe"))
 
-        name = (
+        self._add_holiday_aug_5(
             # Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
             tr("Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja")
             if self._year >= 2008
             # Victory and Homeland Thanksgiving Day.
             else tr("Dan pobjede i domovinske zahvalnosti")
         )
-        self._add_holiday_aug_5(name)
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Velika Gospa"))

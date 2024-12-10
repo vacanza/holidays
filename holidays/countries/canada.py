@@ -236,14 +236,13 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_subdiv_mb_optional_holidays(self):
         if self._year >= 1900:
-            name = (
+            self._add_holiday_1st_mon_of_aug(
                 # Terry Fox Day.
                 tr("Terry Fox Day")
                 if self._year >= 2015
                 # Civic Holiday.
                 else tr("Civic Holiday")
             )
-            self._add_holiday_1st_mon_of_aug(name)
 
         if self._year >= 1931:
             # Remembrance Day.

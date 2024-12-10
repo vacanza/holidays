@@ -188,8 +188,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
         dt_observed = ("2020-12-31",)
         self.assertHoliday(Indonesia(categories=GOVERNMENT), dt, dt_observed)
         self.assertNoNonObservedHoliday(
-            Indonesia(categories=GOVERNMENT, observed=False),
-            dt_observed,
+            Indonesia(categories=GOVERNMENT, observed=False), dt_observed
         )
 
     def test_new_years_day(self):

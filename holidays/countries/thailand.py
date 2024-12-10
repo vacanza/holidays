@@ -303,14 +303,15 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Now acts as the Queen Mother from 2017 onwards.
 
         if self._year >= 1976:
-            q_sirikit_bday = (
-                # HM Queen Sirikit the Queen Mother's Birthday.
-                tr("วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง")
-                if self._year >= 2017
-                # HM Queen Sirikit's Birthday.
-                else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
+            self._add_observed(
+                self._add_holiday_aug_12(
+                    # HM Queen Sirikit the Queen Mother's Birthday.
+                    tr("วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง")
+                    if self._year >= 2017
+                    # HM Queen Sirikit's Birthday.
+                    else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
+                )
             )
-            self._add_observed(self._add_holiday_aug_12(q_sirikit_bday))
 
         # วันแม่แห่งชาติ
         # Status: In-Use.
@@ -496,7 +497,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         if self._year <= 2021:
             self._add_holiday_apr_1(
                 # Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives
-                tr("วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"),
+                tr("วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร")
             )
 
         # วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ
@@ -505,10 +506,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Abandoned in 2019.
 
         if self._year <= 2018:
-            self._add_holiday_jul_1(
-                # Mid-Year Closing Day
-                tr("วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"),
-            )
+            # Mid-Year Closing Day
+            self._add_holiday_jul_1(tr("วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"))
 
     def _populate_government_holidays(self):
         # No Future Fixed Date Holidays

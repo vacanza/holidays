@@ -50,9 +50,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1991, 2002))
         for year in set(range(2002, 2010)) - {2005, 2007}:
             self.assertNoNonObservedHoliday(
-                Kazakhstan(observed=False, years=year),
-                f"{year}-03-21",
-                f"{year}-03-23",
+                Kazakhstan(observed=False, years=year), f"{year}-03-21", f"{year}-03-23"
             )
 
     def test_solidarity_day(self):

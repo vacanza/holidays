@@ -73,7 +73,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             self._add_holiday_sep_10(
                 "Day of the Namibian Women and International Human Rights Day"
                 if self._year >= 2005
-                else "International Human Rights Day",
+                else "International Human Rights Day"
             )
         )
 
