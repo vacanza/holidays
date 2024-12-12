@@ -75,6 +75,9 @@ class Kazakhstan(
         - `2023 <https://adilet.zan.kz/kaz/docs/P2300000326>`_
         - `2024 <https://adilet.zan.kz/kaz/docs/G24G0000109>`_
         - `2025 <https://adilet.zan.kz/rus/docs/G24G0000436>`_
+
+    Islamic holidays:
+        - 2025: `<https://en.inform.kz/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f/>`_
     """
 
     country = "KZ"
