@@ -437,7 +437,7 @@ All other default values are highlighted with bold:
      - UNOFFICIAL
    * - France
      - FR
-     - DOM/TOM: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)
      - en_US, **fr**, uk
      -
    * - Gabon
