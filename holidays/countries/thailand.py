@@ -788,7 +788,8 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # No Future Fixed Date Holidays
 
         # วันพืชมงคล
-        # Restarts in 1947 (B.E. 2490), become holiday again between 1952-
+        # Restarts in 1947 (B.E. 2490), become holiday again since 1952
+        #   but since we lacked the exact date records, this will be ignored.
         # Become an holiday again until 1960 (B.E. 2503).
         # Removed as an holiday in 1999 due to financial crisis, reinstated in 2000.
         # No event was held in 2021 due to local Covid-19 situation, though it stays a day off.

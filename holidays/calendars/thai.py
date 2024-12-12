@@ -250,9 +250,9 @@ class _ThaiLunisolar:
     }
 
     # While Buddhist Holy Days have been observed since the 1900s
-    #   Due to the calendar changes in 1941 (B.E. 2484) and that
-    #   our array only goes up to B.E. 2700; We'll thus only populate
-    #   the data for 1941-2157 (B.E. 2484-2700).
+    #   Thailand's Public Holiday Act wasn't codified until 1914 (B.E. 2457)
+    #   and that our array only goes up to B.E. 2700; We'll thus only populate
+    #   the data for 1914-2157 (B.E. 2457-2700).
     # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย มท 0310.1/ว4 5 ก.พ. 2539
     START_DATE = date(1913, 11, 28)
     START_YEAR = 1914
@@ -286,7 +286,7 @@ class _ThaiLunisolar:
         Calculate the start date of that particular Thai Lunar Calendar Year.
         This usually falls in November or December of the previous Gregorian
         year in question. Should the year be outside of working scope
-        (1941-2157: B.E 2484-2700), this will returns None instead.
+        (1914-2157: B.E 2457-2700), this will returns None instead.
 
         :param year:
             The Gregorian year.
