@@ -395,7 +395,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
                 self._add_holiday_nov_10(name)
                 self._add_holiday_nov_11(name)
                 self._add_holiday_nov_12(name)
-            if 1926 <= self._year <= 1937:
+            elif 1926 <= self._year <= 1937:
                 # Coronation Day.
                 name = tr("พระราชพิธีฉัตรมงคล")
                 self._add_holiday_feb_24(name)
