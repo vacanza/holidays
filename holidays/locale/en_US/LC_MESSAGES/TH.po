@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.63\n"
 "POT-Creation-Date: 2023-03-18 15:58-0700\n"
-"PO-Revision-Date: 2024-12-12 10:31+0700\n"
+"PO-Revision-Date: 2024-12-14 10:19+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -83,7 +83,7 @@ msgstr "New Year's Day"
 msgid "วันสิ้นปี"
 msgstr "New Year's Eve"
 
-#. National Children's Day
+#. National Children's Day.
 msgid "วันเด็กแห่งชาติ"
 msgstr "National Children's Day"
 
@@ -277,19 +277,19 @@ msgstr "Buddhist Lent Day"
 msgid "วันเข้าพรรษา"
 msgstr "Buddhist Lent Day"
 
-#. Royal Thai Armed Forces Day
+#. Royal Thai Armed Forces Day.
 msgid "วันกองทัพไทย"
 msgstr "Royal Thai Armed Forces Day"
 
 #. Additional Closing Day for Bank for Agriculture and Agricultural
-#. Cooperatives
+#. Cooperatives.
 msgid ""
 "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
 msgstr ""
 "Additional Closing Day for Bank for Agriculture and Agricultural "
 "Cooperatives"
 
-#. Mid-Year Closing Day
+#. Mid-Year Closing Day.
 msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
 msgstr "Mid-Year Closing Day"
 
@@ -297,43 +297,43 @@ msgstr "Mid-Year Closing Day"
 msgid "วันพืชมงคล"
 msgstr "Royal Ploughing Ceremony"
 
-#. Teacher's Day
+#. Teacher's Day.
 msgid "วันครู"
 msgstr "Teacher's Day"
 
-#. National Aviation Day
+#. National Aviation Day.
 msgid "วันการบินแห่งชาติ"
 msgstr "National Aviation Day"
 
-#. National Forest Conservation Day
+#. National Forest Conservation Day.
 msgid "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"
 msgstr "National Forest Conservation Day"
 
-#. National Artist Day
+#. National Artist Day.
 msgid "วันศิลปินแห่งชาติ"
 msgstr "National Artist Day"
 
-#. International Women's Day
+#. International Women's Day.
 msgid "วันสตรีสากล"
 msgstr "International Women's Day"
 
-#. Loy Krathong
+#. Loy Krathong.
 msgid "วันลอยกระทง"
 msgstr "Loy Krathong"
 
-#. Thai Veterans Day
+#. Thai Veterans Day.
 msgid "วันทหารผ่านศึก"
 msgstr "Thai Veterans Day"
 
-#. National Science Day
+#. National Science Day.
 msgid "วันวิทยาศาสตร์แห่งชาติ"
 msgstr "National Science Day"
 
-#. HM King Ramkamhaeng Memorial Day
+#. HM King Ramkamhaeng Memorial Day.
 msgid "วันพ่อขุนรามคำแหงมหาราช"
 msgstr "HM King Ramkamhaeng Memorial Day"
 
-#. Thai National Flag Day
+#. Thai National Flag Day.
 msgid "วันพระราชทานธงชาติไทย"
 msgstr "Thai National Flag Day"
 

@@ -232,7 +232,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # No in-lieus are observed, and still remain a Public Holidays than just Observed.
 
         if self._year >= 1955 and self._year != 1964:
-            # National Children's Day
+            # National Children's Day.
             name = tr("วันเด็กแห่งชาติ")
             if self._year <= 1963:
                 self._add_holiday_1st_mon_of_oct(name)
@@ -286,12 +286,12 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         if self._year <= 1940 or 1948 <= self._year <= 1953 or 1957 <= self._year != 2020:
             # Songkran Festival.
             name = tr("วันสงกรานต์")
-            if self._year <= 1925:
-                # Songkran New Year Holidays.
-                name = tr("พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์")
-                dt = self._add_holiday_mar_28(name)
-                for delta in range(1, 19):
-                    self._add_holiday(name, _timedelta(dt, delta))
+            if 1989 <= self._year <= 1997:
+                dt = self._add_holiday_apr_12(name)
+                self._add_holiday_apr_13(name)
+                self._add_holiday_apr_14(name)
+            elif 1957 <= self._year <= 1988:
+                self._add_observed(self._add_holiday_apr_13(name))
             elif 1926 <= self._year <= 1940:
                 if self._year == 1940:
                     # Songkran New Year.
@@ -307,12 +307,12 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
                 self._add_holiday_apr_2(name)
                 if self._year <= 1937:
                     self._add_holiday_apr_3(name)
-            elif 1957 <= self._year <= 1988:
-                self._add_observed(self._add_holiday_apr_13(name))
-            elif 1989 <= self._year <= 1997:
-                dt = self._add_holiday_apr_12(name)
-                self._add_holiday_apr_13(name)
-                self._add_holiday_apr_14(name)
+            elif self._year <= 1925:
+                # Songkran New Year Holidays.
+                name = tr("พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์")
+                dt = self._add_holiday_mar_28(name)
+                for delta in range(1, 19):
+                    self._add_holiday(name, _timedelta(dt, delta))
             else:
                 dt = self._add_holiday_apr_13(name)
                 self._add_holiday_apr_14(name)
@@ -378,33 +378,39 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # พระราชพิธีฉัตรมงคล (1926-1937)
         # วันฉัตรมงคล (1958-Present)
         # First observed for Rama VI from 1914-1925 from NOV 9th-12th.
-        # For Rama VII (1926-1937) this was FEB 24th-26th.
-        #    Even though Rama VII abdicated on MAR 2nd, 1935, there's no recorded
-        #    change in terms of holiday arrangement until 1938.
+        # For Rama VII (1926-1935) this was FEB 24th-26th.
+        #   After Rama VII abdicated on MAR 2nd, 1935, there's no recorded
+        #   change in terms of holiday arrangement until 1938,
+        #   thus, a gap in holidays arrangement is assumed.
+        # Rama VIII passes away without a coronation ceremony.
         # Starts in 1958 (B.E. 2501) for Rama IX's Coronation: MAY 5th.
         # No celebration in 2017-2019 (B.E. 2560-2562).
         # Reestablished with Rama X's Coronation in 2020: MAY 4th.
 
-        if self._year <= 1937 or self._year >= 1958:
+        if self._year <= 1935 or self._year >= 1958:
             # Coronation Day.
             name = tr("วันฉัตรมงคล")
-            if 1914 <= self._year <= 1925:
+            if self._year >= 2020:
+                # Rama X (2020-Present).
+                self._add_observed(self._add_holiday_may_4(name))
+            elif 1958 <= self._year <= 2016:
+                # Rama IX (1958-2016).
+                self._add_observed(self._add_holiday_may_5(name))
+            elif 1926 <= self._year <= 1935:
+                # Coronation Day.
+                name = tr("พระราชพิธีฉัตรมงคล")
+                # Rama VII (1926-1935).
+                self._add_holiday_feb_24(name)
+                self._add_holiday_feb_25(name)
+                self._add_holiday_feb_26(name)
+            elif self._year <= 1925:
                 # Merit-making Ceremony for the Royal Ashes and the Coronation Day.
                 name = tr("ทำบุญพระบรมอัษฐิ และพระราชพิธีฉัตรมงคล")
+                # Rama VI (1914-1925).
                 self._add_holiday_nov_9(name)
                 self._add_holiday_nov_10(name)
                 self._add_holiday_nov_11(name)
                 self._add_holiday_nov_12(name)
-            elif 1926 <= self._year <= 1937:
-                # Coronation Day.
-                name = tr("พระราชพิธีฉัตรมงคล")
-                self._add_holiday_feb_24(name)
-                self._add_holiday_feb_25(name)
-                self._add_holiday_feb_26(name)
-            elif 1958 <= self._year <= 2016:
-                self._add_observed(self._add_holiday_may_5(name))
-            elif self._year >= 2020:
-                self._add_observed(self._add_holiday_may_4(name))
 
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use.
@@ -747,7 +753,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Only applys to members of the Royal Thai Armed Forces.
 
         if self._year >= 1959:
-            # Royal Thai Armed Forces Day
+            # Royal Thai Armed Forces Day.
             name = tr("วันกองทัพไทย")
             if self._year >= 2007:
                 self._add_holiday_jan_18(name)
@@ -771,7 +777,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
 
         if self._year <= 2021:
             self._add_holiday_apr_1(
-                # Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives
+                # Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives.
                 tr("วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร")
             )
 
@@ -781,7 +787,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Abandoned in 2019.
 
         if self._year <= 2018:
-            # Mid-Year Closing Day
+            # Mid-Year Closing Day.
             self._add_holiday_jul_1(tr("วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"))
 
     def _populate_government_holidays(self):
@@ -884,7 +890,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         # Only applies to Ministry of Education (Students, Teachers, etc.), no in-lieus are given.
 
         if self._year >= 1957:
-            # Teacher's Day
+            # Teacher's Day.
             self._add_holiday_jan_16(tr("วันครู"))
 
     def _populate_workday_holidays(self):
@@ -896,7 +902,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1948.
 
-            # Thai Veterans Day
+            # Thai Veterans Day.
             self._add_holiday_feb_3(tr("วันทหารผ่านศึก"))
 
         if self._year >= 1982:
@@ -904,7 +910,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1982.
 
-            # National Science Day
+            # National Science Day.
             self._add_holiday_aug_18(tr("วันวิทยาศาสตร์แห่งชาติ"))
 
         if self._year >= 1985:
@@ -912,7 +918,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1985.
 
-            # National Artist Day
+            # National Artist Day.
             self._add_holiday_feb_26(tr("วันศิลปินแห่งชาติ"))
 
         if self._year >= 1989:
@@ -920,7 +926,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1989.
 
-            # International Women's Day
+            # International Women's Day.
             self._add_womens_day(tr("วันสตรีสากล"))
 
         if self._year >= 1990:
@@ -928,14 +934,14 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1990.
 
-            # National Forest Conservation Day
+            # National Forest Conservation Day.
             self._add_holiday_jan_14(tr("วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"))
 
             # วันพ่อขุนรามคำแหงมหาราช
             # Status: In-Use.
             # Started in 1990.
 
-            # HM King Ramkamhaeng Memorial Day
+            # HM King Ramkamhaeng Memorial Day.
             self._add_holiday_jan_17(tr("วันพ่อขุนรามคำแหงมหาราช"))
 
         if self._year >= 1995:
@@ -943,7 +949,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1995.
 
-            # National Aviation Day
+            # National Aviation Day.
             self._add_holiday_jan_13(tr("วันการบินแห่งชาติ"))
 
         if self._year >= 2017:
@@ -951,14 +957,14 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 2017.
 
-            # Thai National Flag Day
+            # Thai National Flag Day.
             self._add_holiday_sep_28(tr("วันพระราชทานธงชาติไทย"))
 
         # วันลอยกระทง
         # Status: In-Use.
         # Started in 1914.
 
-        # Loy Krathong
+        # Loy Krathong.
         self._add_loy_krathong(tr("วันลอยกระทง"))
 
 

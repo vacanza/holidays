@@ -268,9 +268,9 @@ class TestThailand(CommonCountryTests, TestCase):
                 name_1914, (f"{year}-11-09", f"{year}-11-10", f"{year}-11-11", f"{year}-11-12")
             )
         self.assertNoHolidayName(name_1914, range(1926, 2050))
-        for year in range(1926, 1938):
+        for year in range(1926, 1936):
             self.assertHolidayName(name_1926, (f"{year}-02-24", f"{year}-02-25", f"{year}-02-26"))
-        self.assertNoHolidayName(name_1926, range(1914, 1926), range(1938, 2050))
+        self.assertNoHolidayName(name_1926, range(1914, 1926), range(1936, 2050))
         self.assertHolidayName(name_1958, (f"{year}-05-05" for year in range(1958, 2017)))
         self.assertHolidayName(name_1958, (f"{year}-05-04" for year in range(2020, 2050)))
         self.assertNoHolidayName(name_1958, range(1914, 1958), range(2017, 2020))
