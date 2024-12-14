@@ -15,6 +15,13 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Update pre-commit hooks"]
+    branches:
+      - update-pre-commit-hooks
+    types:
+      - completed
+
 
 env:
   FORCE_COLOR: 1
@@ -36,6 +43,7 @@ jobs:
         with:
           check-latest: true
           python-version: '3.12'
+
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
 
