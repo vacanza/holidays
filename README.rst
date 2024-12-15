@@ -205,7 +205,7 @@ All other default values are highlighted with bold:
      - AS
      - Can also be loaded as country US, subdivision AS
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
@@ -485,7 +485,7 @@ All other default values are highlighted with bold:
      - GU
      - Can also be loaded as country US, subdivision GU
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Guatemala
      - GT
      -
@@ -720,7 +720,7 @@ All other default values are highlighted with bold:
      - MP
      - Can also be loaded as country US, subdivision MP
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - North Macedonia
      - MK
      -
@@ -780,7 +780,7 @@ All other default values are highlighted with bold:
      - PR
      - Can also be loaded as country US, subdivision PR
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Romania
      - RO
      -
@@ -925,17 +925,17 @@ All other default values are highlighted with bold:
      - UM
      - Can also be loaded as country US, subdivision UM
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
      -
-     - UNOFFICIAL
+     -
    * - Uruguay
      - UY
      -
@@ -970,7 +970,7 @@ All other default values are highlighted with bold:
      - VI
      - Can also be loaded as country US, subdivision VI
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Zambia
      - ZM
      -
