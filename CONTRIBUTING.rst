@@ -14,7 +14,7 @@ from the `dev branch`_ to work on the latest code and reduce merging issues.
 If you add/change holiday official dates or names your code must include references to
 all sources (government sites, archived web pages, wiki pages, etc) you've used
 while working on this PR. That could be done either as a ``References`` section update or 
-as a comment on the relevant part of the code. Contributed PRs_ are required to include valid test
+as a comment on the relevant part of the code. Contributed PRs_ are required to include 100% test
 coverage in order to be merged. Please don't hesitate to ask for help if you
 need one with the tests.
 
