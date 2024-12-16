@@ -134,14 +134,15 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 self._move_holiday(dt)
 
         if self._year <= 1932 or self._year >= 1937:
-            name = (
-                # Cultural Diversity Day.
-                tr("Día de la Diversidad Cultural")
-                if self._year >= 2014
-                # Columbus Day.
-                else tr("Día de la Raza")
+            self._move_holiday(
+                self._add_columbus_day(
+                    # Cultural Diversity Day.
+                    tr("Día de la Diversidad Cultural")
+                    if self._year >= 2014
+                    # Columbus Day.
+                    else tr("Día de la Raza")
+                )
             )
-            self._move_holiday(self._add_columbus_day(name))
 
         if self._year <= 1932 or self._year >= 1938:
             # All Souls' Day.

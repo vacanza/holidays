@@ -73,10 +73,9 @@ class Israel(ObservedHolidayBase):
         # Yom Kippur (Day of Atonement).
         self._add_holiday(tr("יום כיפור"), self._get_holiday(YOM_KIPPUR))
 
-        # Sukkot (Feast of Tabernacles).
-        name = tr("סוכות")
         sukkot_dt = self._get_holiday(SUKKOT)
-        self._add_holiday(name, sukkot_dt)
+        # Sukkot (Feast of Tabernacles).
+        self._add_holiday(tr("סוכות"), sukkot_dt)
         # Simchat Torah / Shemini Atzeret.
         self._add_holiday(tr("שמחת תורה/שמיני עצרת"), _timedelta(sukkot_dt, +7))
 

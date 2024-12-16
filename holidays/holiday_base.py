@@ -448,8 +448,7 @@ class HolidayBase(dict[date, str]):
                 *_, month, day = tokens
                 if month in MONTHS and day in DAYS:
                     return lambda name: self._add_holiday(
-                        name,
-                        date(self._year, MONTHS[month], int(day)),
+                        name, date(self._year, MONTHS[month], int(day))
                     )
 
             elif len(tokens) == 7:
@@ -687,15 +686,7 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return (
-            "country",
-            "expand",
-            "language",
-            "market",
-            "observed",
-            "subdiv",
-            "years",
-        )
+        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
 
     @cached_property
     def _entity_code(self):

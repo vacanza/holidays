@@ -82,6 +82,9 @@ module = "holidays.groups.*"
 disable_error_code = "attr-defined"
 
 [tool.pytest.ini_options]
+addopts = [
+    "--cov-fail-under=100",
+]
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]

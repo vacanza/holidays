@@ -43,7 +43,7 @@ class NewYorkStockExchange(
     - https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars
     """
 
-    market = "NYSE"
+    market = "XNYS"
     observed_label = "%s (observed)"
     start_year = 1863
 

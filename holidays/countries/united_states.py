@@ -214,25 +214,29 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_holiday_feb_22(name)
 
         # Columbus Day
-        if self._year >= 1937 and self.subdiv in {
-            "AS",
-            "AZ",
-            "CT",
-            "GA",
-            "ID",
-            "IL",
-            "IN",
-            "MA",
-            "MD",
-            "MO",
-            "MT",
-            "NJ",
-            "NY",
-            "OH",
-            "PA",
-            "UT",
-            "WV",
-        }:
+        if self._year >= 1937 and (
+            self.subdiv is None
+            or self.subdiv
+            in {
+                "AS",
+                "AZ",
+                "CT",
+                "GA",
+                "ID",
+                "IL",
+                "IN",
+                "MA",
+                "MD",
+                "MO",
+                "MT",
+                "NJ",
+                "NY",
+                "OH",
+                "PA",
+                "UT",
+                "WV",
+            }
+        ):
             name = "Columbus Day"
             if self._year >= 1971:
                 self._add_holiday_2nd_mon_of_oct(name)
@@ -293,12 +297,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     def _populate_subdiv_ar_public_holidays(self):
         # Martin Luther King Jr. Day
         if self._year >= 1986:
-            name = (
+            self._add_holiday_3rd_mon_of_jan(
                 "Martin Luther King Jr. Day"
                 if self._year >= 2018
                 else "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
             )
-            self._add_holiday_3rd_mon_of_jan(name)
 
         # Washington's Birthday
         name = "George Washington's Birthday and Daisy Gatson Bates Day"
@@ -479,7 +482,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_3rd_mon_of_jan(
                 "Martin Luther King Jr. / Idaho Human Rights Day"
                 if self._year >= 2006
-                else "Martin Luther King Jr. Day",
+                else "Martin Luther King Jr. Day"
             )
 
     def _populate_subdiv_il_public_holidays(self):
@@ -637,7 +640,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday_3rd_mon_of_jan(
-                "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays",
+                "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
             )
 
         # Confederate Memorial Day

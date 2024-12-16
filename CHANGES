@@ -1,3 +1,16 @@
+Version 0.63
+============
+
+Released December 16, 2024
+
+- Update CI/CD trigger section (#2170 by @arkid15r)
+- Update KZ holidays: add 2025 special holidays (#2167 by @qaziqarta)
+- Update Thailand holidays: extend support year down to 1914 (#2166 by @PPsyrius)
+- Add French subdivision aliases (#2162 by @bors-ltd)
+- Align financial markets MIC codes with ISO 10383 (#2158 by @KJhellico)
+- Enforce 100% test coverage (#2173 by @arkid15r)
+- Inline single-use variables, update .py files formatting (#2161 by @KJhellico)
+
 Version 0.62
 ============
 

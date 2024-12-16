@@ -399,10 +399,8 @@ class SouthKoreaStaticHolidays:
             # Joint Memorial Service for Fallen Soldiers.
             (JUN, 21, tr("전몰군인 합동위령제")),
         ),
-        1951: (
-            # Vice Presidential Election.
-            (MAY, 16, tr("부통령 선거일")),
-        ),
+        # Vice Presidential Election.
+        1951: (MAY, 16, tr("부통령 선거일")),
         1952: (
             # City/Town/Township-level Local Elections.
             (APR, 25, local_election_day),
@@ -411,10 +409,8 @@ class SouthKoreaStaticHolidays:
             # 2nd Presidential Election/3rd Vice President Election.
             (AUG, 5, presidential_election_day),
         ),
-        1954: (
-            # 3rd National Assembly Election.
-            (MAY, 20, national_assembly_election_day),
-        ),
+        # 3rd National Assembly Election.
+        1954: (MAY, 20, national_assembly_election_day),
         1956: (
             # 3rd Presidential Election/4th Vice President Election.
             (MAY, 15, presidential_election_day),

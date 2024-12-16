@@ -54,7 +54,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(self.tr("Újév"))
+        self._add_new_years_day(tr("Újév"))
 
         if 1945 <= self._year <= 1950 or self._year >= 1989:
             # National Day.
@@ -90,7 +90,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             tr("A kenyér ünnepe")
             if 1950 <= self._year <= 1989
             # State Foundation Day.
-            else tr("Az államalapítás ünnepe"),
+            else tr("Az államalapítás ünnepe")
         )
 
         if self._year >= 1991:

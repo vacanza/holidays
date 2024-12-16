@@ -24,10 +24,7 @@ from holidays.holiday_base import HolidayBase
 
 class TestChristianHolidays(TestCase):
     def test_check_calendar(self):
-        self.assertRaises(
-            ValueError,
-            lambda: ChristianHolidays("INVALID_CALENDAR"),
-        )
+        self.assertRaises(ValueError, lambda: ChristianHolidays("INVALID_CALENDAR"))
 
     def test_add_christmas_day_three(self):
         class TestHolidays(HolidayBase, ChristianHolidays):
@@ -60,8 +57,7 @@ class TestInternationalHolidays(TestCase):
         self.assertIn("2022-11-20", test_holidays)
         self.assertEqual(1, len(test_holidays))
         self.assertRaises(
-            ValueError,
-            lambda: test_holidays._add_childrens_day("Invalid", "INVALID_TYPE"),
+            ValueError, lambda: test_holidays._add_childrens_day("Invalid", "INVALID_TYPE")
         )
 
 

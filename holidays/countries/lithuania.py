@@ -70,7 +70,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
                 tr(
                     "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) "
                     "ir Tautiškos giesmės diena"
-                ),
+                )
             )
 
         # Assumption Day.

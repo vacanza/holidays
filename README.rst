@@ -437,7 +437,7 @@ All other default values are highlighted with bold:
      - UNOFFICIAL
    * - France
      - FR
-     - DOM/TOM: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)
      - en_US, **fr**, uk
      -
    * - Gabon
@@ -980,8 +980,12 @@ following financial markets are available:
      - Code
      - Info
      - Supported Languages
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
+     - en_US, **pt_BR**, uk
    * - European Central Bank
-     - ECB
+     - XECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
      -
    * - ICE Futures Europe
@@ -992,10 +996,6 @@ following financial markets are available:
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
      -
-   * - Brasil, Bolsa, Balcão
-     - BVMF
-     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
-     - en_US, **pt_BR**, uk
 
 
 Contributions

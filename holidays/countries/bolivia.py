@@ -83,7 +83,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
-        self._add_observed(may_1 := self._add_labor_day(self.tr("Día del Trabajo")))
+        self._add_observed(may_1 := self._add_labor_day(tr("Día del Trabajo")))
         # Supreme Decree #1210.
         if 2012 <= self._year <= 2015:
             self._add_observed(may_1, rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI)

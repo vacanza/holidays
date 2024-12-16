@@ -50,9 +50,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1991, 2002))
         for year in set(range(2002, 2010)) - {2005, 2007}:
             self.assertNoNonObservedHoliday(
-                Kazakhstan(observed=False, years=year),
-                f"{year}-03-21",
-                f"{year}-03-23",
+                Kazakhstan(observed=False, years=year), f"{year}-03-21", f"{year}-03-23"
             )
 
     def test_solidarity_day(self):
@@ -129,6 +127,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-16",
+            "2025-06-06",
         )
 
     def test_observed(self):
@@ -177,6 +176,12 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2023-12-18",
             "2024-03-25",
             "2024-07-08",
+            "2025-03-10",
+            "2025-03-24",
+            "2025-03-25",
+            "2025-07-07",
+            "2025-09-01",
+            "2025-10-27",
         )
         self.assertHoliday(observed_holidays)
         self.assertNoNonObservedHoliday(observed_holidays)
@@ -234,6 +239,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2022-10-24",
             "2023-07-07",
             "2024-05-08",
+            "2025-01-03",
         )
 
     def test2022(self):
