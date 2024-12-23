@@ -315,9 +315,9 @@ msgstr "Thai Veterans Day"
 msgid "วันวิทยาศาสตร์แห่งชาติ"
 msgstr "National Science Day"
 
-#. HM King Ramkamhaeng Memorial Day.
+#. HM King Ramkhamhaeng Memorial Day.
 msgid "วันพ่อขุนรามคำแหงมหาราช"
-msgstr "HM King Ramkamhaeng Memorial Day"
+msgstr "HM King Ramkhamhaeng Memorial Day"
 
 #. Thai National Flag Day.
 msgid "วันพระราชทานธงชาติไทย"
