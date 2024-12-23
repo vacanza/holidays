@@ -778,7 +778,7 @@ All other default values are highlighted with bold:
    * - Russia
      - RU
      -
-     - en_US, **ru**
+     - en_US, **ru**, th
      -
    * - Saint Kitts and Nevis
      - KN
@@ -888,7 +888,7 @@ All other default values are highlighted with bold:
    * - Ukraine
      - UA
      -
-     - ar, en_US, **uk**
+     - ar, en_US, th, **uk**
      - WORKDAY
    * - United Arab Emirates
      - AE

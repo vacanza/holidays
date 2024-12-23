@@ -26,7 +26,7 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "RU"
     default_language = "ru"
-    supported_languages = ("en_US", "ru")
+    supported_languages = ("en_US", "ru", "th")
     start_year = 1991
 
     def __init__(self, *args, **kwargs):
