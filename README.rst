@@ -778,7 +778,7 @@ All other default values are highlighted with bold:
    * - Russia
      - RU
      -
-     - en_US, **ru**
+     - en_US, **ru**, th
      -
    * - Saint Kitts and Nevis
      - KN

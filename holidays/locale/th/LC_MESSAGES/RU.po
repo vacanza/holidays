@@ -1,0 +1,90 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Russia holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.64\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: 2024-12-23 15:43+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "Новый год"
+msgstr "วันขึ้นปีใหม่"
+
+#. New Year Holidays.
+msgid "Новогодние каникулы"
+msgstr "วันหยุดขึ้นปีใหม่"
+
+#. Christmas Day.
+msgid "Рождество Христово"
+msgstr "วันคริสต์มาส"
+
+#. Defender of the Fatherland Day.
+msgid "День защитника Отечества"
+msgstr "วันพิทักษ์ปิตุภูมิ"
+
+#. International Women's Day.
+msgid "Международный женский день"
+msgstr "วันสตรีสากล"
+
+#. Holiday of Spring and Labor.
+msgid "Праздник Весны и Труда"
+msgstr "วันหยุดเทศกาลฤดูใบไม้ผลิและแรงงาน"
+
+#. International Workers' Solidarity Day.
+msgid "День международной солидарности трудящихся"
+msgstr "วันสมานฉันท์แรงงานสากล"
+
+#. Victory Day.
+msgid "День Победы"
+msgstr "วันแห่งชัยชนะ"
+
+#. Russia Day.
+msgid "День России"
+msgstr "วันชาติรัสเซีย"
+
+#. Day of the Adoption of the Declaration of Sovereignty of the Russian
+#. Federation.
+msgid ""
+"День принятия Декларации о государственном суверенитете Российской Федерации"
+msgstr "วันประกาศใช้คำประกาศอำนาจอธิปไตยรัฐแห่งสหพันธรัฐรัสเซีย"
+
+#. Unity Day.
+msgid "День народного единства"
+msgstr "วันเอกภาพแห่งชาติ"
+
+#. Day of consent and reconciliation.
+msgid "День согласия и примирения"
+msgstr "วันแห่งความตกลงและการปรองดอง"
+
+#. Anniversary of the Great October Socialist Revolution.
+msgid "Годовщина Великой Октябрьской социалистической революции"
+msgstr "วันครบรอบการปฏิวัติสังคมนิยมแห่งเดือนตุลาคมอันยิ่งใหญ่"
+
+#. Date format (see strftime() Format Codes).
+msgid "%d.%m.%Y"
+msgstr "%d/%m/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Выходной (перенесено с %s)"
+msgstr "วันหยุด (แทน %s)"
