@@ -1598,7 +1598,36 @@ class _HebrewLunisolar:
         2100: (OCT, 13),
     }
 
-    @staticmethod
-    def _get_holiday(holiday: str, year: int) -> Optional[date]:
-        dt = getattr(_HebrewLunisolar, f"{holiday}_DATES", {}).get(year, ())
+    def _get_holiday(self, holiday: str, year: int) -> Optional[date]:
+        dt = getattr(self, f"{holiday}_DATES", {}).get(year, ())
         return date(year, *dt) if dt else None
+
+    def hanukkah_date(self, year: int) -> set[Optional[date]]:
+        return {self._get_holiday(HANUKKAH, y) for y in (year - 1, year)}
+
+    def israel_independence_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(INDEPENDENCE_DAY, year)
+
+    def lag_baomer_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(LAG_BAOMER, year)
+
+    def passover_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(PASSOVER, year)
+
+    def purim_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(PURIM, year)
+
+    def rosh_hashanah_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(ROSH_HASHANAH, year)
+
+    def shavuot_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(SHAVUOT, year)
+
+    def sukkot_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(SUKKOT, year)
+
+    def tisha_bav_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(TISHA_BAV, year)
+
+    def yom_kippur_date(self, year: int) -> Optional[date]:
+        return self._get_holiday(YOM_KIPPUR, year)
