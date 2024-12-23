@@ -10,13 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Ukraine holidays.
+# Ukraine holidays th localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.55\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2024-12-20 19:18+0700\n"
+"PO-Revision-Date: 2024-12-23 14:10+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
