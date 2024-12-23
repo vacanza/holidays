@@ -34,7 +34,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     # %s (observed).
     observed_label = tr("%s (вихідний)")
     supported_categories = (PUBLIC, WORKDAY)
-    supported_languages = ("ar", "en_US", "uk")
+    supported_languages = ("ar", "en_US", "th", "uk")
     # The current set of holidays came into force in 1991.
     start_year = 1991
 

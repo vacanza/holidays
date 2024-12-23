@@ -888,7 +888,7 @@ All other default values are highlighted with bold:
    * - Ukraine
      - UA
      -
-     - ar, en_US, **uk**
+     - ar, en_US, th, **uk**
      - WORKDAY
    * - United Arab Emirates
      - AE
