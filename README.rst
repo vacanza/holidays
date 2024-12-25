@@ -668,8 +668,8 @@ All other default values are highlighted with bold:
    * - Montenegro
      - ME
      -
-     -
-     -
+     - **cnr**, en_US, uk
+     - CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY
    * - Morocco
      - MA
      -
