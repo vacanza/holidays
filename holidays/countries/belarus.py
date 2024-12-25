@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, MAR, APR, MAY, JUN, JUL, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -23,18 +24,24 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     Belarus holidays.
 
     References:
-        - http://president.gov.by/en/holidays_en/
+        - https://president.gov.by/en/gosudarstvo/prazdniki
+        - https://president.gov.by/be/gosudarstvo/prazdniki
+        - https://president.gov.by/ru/gosudarstvo/prazdniki
         - http://www.belarus.by/en/about-belarus/national-holidays
         - http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
         - http://president.gov.by/uploads/documents/2019/464uk.pdf
-        - https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B0%D0%B7%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8_%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%B8%D0%B8
+        - https://ru.wikipedia.org/wiki/Праздники_Белоруссии
+
+    Cross-checked With:
+        - https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024
     """
 
     country = "BY"
     default_language = "be"
-    supported_languages = ("be", "en_US")
-    # The current set of holidays actual from 1998.
-    start_year = 1998
+    supported_categories = (PUBLIC, WORKDAY)
+    supported_languages = ("be", "en_US", "ru", "th")
+    # Declaration of State Sovereignty of the BSSR.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -43,35 +50,107 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
-        self._add_new_years_day(tr("Новы год"))
+        # National holidays
 
-        if self._year >= 2020:
-            self._add_new_years_day_two(tr("Новы год"))
-
-        # Orthodox Christmas Day.
-        self._add_christmas_day(tr("Нараджэнне Хрыстова (праваслаўнае Раство)"))
-
-        # Women's Day.
-        self._add_womens_day(tr("Дзень жанчын"))
-
-        # Radunitsa (Day of Rejoicing).
-        self._add_rejoicing_day(tr("Радаўніца"))
-
-        # Labor Day.
-        self._add_labor_day(tr("Свята працы"))
+        if 1995 <= self._year <= 1998:
+            # Constitution Day.
+            self._add_holiday_mar_15(tr("Дзень Канстытуцыі"))
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Дзень Перамогі"), is_western=False)
 
-        # Independence Day.
-        self._add_holiday_jul_3(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"))
+        # Independence Day of the Republic of Belarus (Day of the Republic).
+        name = tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)")
+        if self._year >= 1997:
+            self._add_holiday_jul_3(name)
+        else:
+            self._add_holiday_jul_27(name)
 
-        # October Revolution Day.
-        self._add_holiday_nov_7(tr("Дзень Кастрычніцкай рэвалюцыі"))
+        # Country-wide holidays
+
+        # New Year's Day.
+        name = tr("Новы год")
+        self._add_new_years_day(name)
+        if self._year >= 2020:
+            self._add_new_years_day_two(name)
+
+        # Women's Day.
+        self._add_womens_day(tr("Дзень жанчын"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Свята працы"))
+
+        if self._year >= 1995:
+            # October Revolution Day.
+            self._add_holiday_nov_7(tr("Дзень Кастрычніцкай рэвалюцыі"))
+
+        # Religious holidays
+
+        # Orthodox Christmas Day.
+        self._add_christmas_day(tr("Нараджэнне Хрыстова (праваслаўнае Раство)"))
+
+        # Radunitsa (Day of Rejoicing).
+        self._add_rejoicing_day(tr("Радаўніца"))
 
         # Catholic Christmas Day.
         self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)
+
+        if 1992 <= self._year <= 1997:
+            # Catholic Easter.
+            name = tr("каталiцкi Вялiкдзень")
+            self._add_easter_sunday(name, GREGORIAN_CALENDAR)
+            self._add_easter_monday(name, GREGORIAN_CALENDAR)
+
+            # Orthodox Easter.
+            name = tr("праваслаўны Вялiкдзень")
+            self._add_easter_sunday(name)
+            self._add_easter_monday(name)
+
+            # Dzyady (All Souls' Day).
+            self._add_all_souls_day(tr("Дзень памяці"))
+
+    def _populate_workday_holidays(self):
+        # National holidays
+
+        if self._year >= 1999:
+            # Constitution Day.
+            self._add_holiday_mar_15(tr("Дзень Канстытуцыі"))
+
+        if self._year >= 1996:
+            # Day of Unity of the Peoples of Belarus and Russia.
+            self._add_holiday_apr_2(tr("Дзень яднання народаў Беларусі і Расіі"))
+
+        if self._year >= 1998:
+            self._add_holiday_2nd_sun_of_may(
+                # Day of the National Coat of Arms of the Republic of Belarus,
+                # the National Flag of the Republic of Belarus
+                # and the National Anthem of the Republic of Belarus.
+                tr(
+                    "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага "
+                    "гімна Рэспублікі Беларусь"
+                )
+            )
+
+        if self._year >= 2021:
+            # Day of People's Unity.
+            self._add_holiday_sep_17(tr("Дзень народнага адзінства"))
+
+        # Country-wide holidays
+
+        # Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
+        self._add_holiday_feb_23(tr("Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"))
+
+        # Religious holidays
+
+        if self._year >= 1998:
+            # Catholic Easter.
+            self._add_easter_sunday(tr("каталiцкi Вялiкдзень"), GREGORIAN_CALENDAR)
+
+            # Orthodox Easter.
+            self._add_easter_sunday(tr("праваслаўны Вялiкдзень"))
+
+            # Dzyady (All Souls' Day).
+            self._add_all_souls_day(tr("Дзень памяці"))
 
 
 class BY(Belarus):
@@ -83,6 +162,12 @@ class BLR(Belarus):
 
 
 class BelarusStaticHolidays:
+    """
+    References
+        - https://belarusbank.by/en/financial-institutions/11151
+        - https://belarusbank.by/en/financial-institutions/11160
+    """
+
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
@@ -220,5 +305,15 @@ class BelarusStaticHolidays:
             (APR, 24, APR, 29),
             (MAY, 8, MAY, 13),
             (NOV, 6, NOV, 11),
+        ),
+        2024: (
+            (MAY, 13, MAY, 18),
+            (NOV, 16, NOV, 8),
+        ),
+        2025: (
+            (JAN, 6, JAN, 11),
+            (APR, 28, APR, 26),
+            (JUL, 4, JUL, 12),
+            (DEC, 26, DEC, 20),
         ),
     }
