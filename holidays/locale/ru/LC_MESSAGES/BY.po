@@ -96,7 +96,7 @@ msgstr "Католическая Пасха"
 
 #. Orthodox Easter.
 msgid "праваслаўны Вялiкдзень"
-msgstr "Пасха православная"
+msgstr "Православная Пасха"
 
 #. Radunitsa (Day of Rejoicing).
 msgid "Радаўніца"

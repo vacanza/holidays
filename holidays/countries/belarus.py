@@ -97,12 +97,12 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         if 1992 <= self._year <= 1997:
             # Catholic Easter.
-            name = tr("каталiцкi Вялiкдзень")
+            name = tr("Каталiцкi Вялiкдзень")
             self._add_easter_sunday(name, GREGORIAN_CALENDAR)
             self._add_easter_monday(name, GREGORIAN_CALENDAR)
 
             # Orthodox Easter.
-            name = tr("праваслаўны Вялiкдзень")
+            name = tr("Праваслаўны Вялiкдзень")
             self._add_easter_sunday(name)
             self._add_easter_monday(name)
 
@@ -144,10 +144,10 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         if self._year >= 1998:
             # Catholic Easter.
-            self._add_easter_sunday(tr("каталiцкi Вялiкдзень"), GREGORIAN_CALENDAR)
+            self._add_easter_sunday(tr("Каталiцкi Вялiкдзень"), GREGORIAN_CALENDAR)
 
             # Orthodox Easter.
-            self._add_easter_sunday(tr("праваслаўны Вялiкдзень"))
+            self._add_easter_sunday(tr("Праваслаўны Вялiкдзень"))
 
             # Dzyady (All Souls' Day).
             self._add_all_souls_day(tr("Дзень памяці"))
