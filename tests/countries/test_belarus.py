@@ -20,7 +20,9 @@ from tests.common import CommonCountryTests
 class TestBelarus(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Belarus)
+        years = range(1991, 2050)
+        super().setUpClass(Belarus, years=years)
+        cls.workdays = Belarus(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Belarus, BY, BLR)
@@ -54,9 +56,10 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_constitution_day(self):
         name = "Дзень Канстытуцыі"
 
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, (f"{year}-03-15" for year in range(1999, 2050)))
-        self.assertNoHolidayName(name, workdays, range(1991, 1995))
+        self.assertHolidayName(
+            name, self.workdays, (f"{year}-03-15" for year in range(1999, 2050))
+        )
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1995))
         self.assertHolidayName(name, (f"{year}-03-15" for year in range(1995, 1999)))
         self.assertNoHolidayName(
             name,
@@ -67,9 +70,10 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_day_of_unity_of_the_peoples_of_belarus_and_russia(self):
         name = "Дзень яднання народаў Беларусі і Расіі"
 
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, (f"{year}-04-02" for year in range(1996, 2050)))
-        self.assertNoHolidayName(name, workdays, range(1991, 1996))
+        self.assertHolidayName(
+            name, self.workdays, (f"{year}-04-02" for year in range(1996, 2050))
+        )
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1996))
         self.assertNoHolidayName(name)
 
     def test_national_symbol_day(self):
@@ -96,9 +100,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2029-05-13",
             "2030-05-12",
         )
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, dt)
-        self.assertNoHolidayName(name, workdays, range(1991, 1998))
+        self.assertHolidayName(name, self.workdays, dt)
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
         self.assertNoHolidayName(name)
 
     def test_day_of_the_republic(self):
@@ -112,9 +115,10 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_day_of_peoples_unity(self):
         name = "Дзень народнага адзінства"
 
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, (f"{year}-09-17" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name, workdays, range(1991, 2021))
+        self.assertHolidayName(
+            name, self.workdays, (f"{year}-09-17" for year in range(2021, 2050))
+        )
+        self.assertNoHolidayName(name, self.workdays, range(1991, 2021))
         self.assertNoHolidayName(name)
 
     def test_new_years_day(self):
@@ -127,8 +131,9 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_day_of_fatherland_defenders(self):
         name = "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
 
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, (f"{year}-02-23" for year in range(1991, 2050)))
+        self.assertHolidayName(
+            name, self.workdays, (f"{year}-02-23" for year in range(1991, 2050))
+        )
         self.assertNoHolidayName(name)
 
     def test_october_revolution_day(self):
@@ -162,9 +167,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2029-04-01",
             "2030-04-21",
         )
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, dt)
-        self.assertNoHolidayName(name, workdays, range(1991, 1998))
+        self.assertHolidayName(name, self.workdays, dt)
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
         self.assertNoHolidayName(name, 1991, range(1998, 2050))
 
     def test_orthodox_easter(self):
@@ -192,9 +196,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2029-04-08",
             "2030-04-28",
         )
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, dt)
-        self.assertNoHolidayName(name, workdays, range(1991, 1998))
+        self.assertHolidayName(name, self.workdays, dt)
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
         self.assertNoHolidayName(name, 1991, range(1998, 2050))
 
     def test_radunitsa(self):
@@ -225,9 +228,10 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_dzyady(self):
         name = "Дзень памяці"
 
-        workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
-        self.assertHolidayName(name, workdays, (f"{year}-11-02" for year in range(1998, 2050)))
-        self.assertNoHolidayName(name, workdays, range(1991, 1998))
+        self.assertHolidayName(
+            name, self.workdays, (f"{year}-11-02" for year in range(1998, 2050))
+        )
+        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
         self.assertHolidayName(name, (f"{year}-11-02" for year in range(1992, 1998)))
         self.assertNoHolidayName(name, 1991, range(1998, 2050))
 
