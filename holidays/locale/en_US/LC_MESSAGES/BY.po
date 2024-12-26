@@ -94,11 +94,11 @@ msgid "Нараджэнне Хрыстова (праваслаўнае Раст�
 msgstr "Orthodox Christmas Day"
 
 #. Catholic Easter.
-msgid "каталiцкi Вялiкдзень"
+msgid "Каталiцкi Вялiкдзень"
 msgstr "Catholic Easter"
 
 #. Orthodox Easter.
-msgid "праваслаўны Вялiкдзень"
+msgid "Праваслаўны Вялiкдзень"
 msgstr "Orthodox Easter"
 
 #. Radunitsa (Day of Rejoicing).

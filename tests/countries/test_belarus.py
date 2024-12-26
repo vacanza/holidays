@@ -56,7 +56,7 @@ class TestBelarus(CommonCountryTests, TestCase):
 
         workdays = Belarus(categories=WORKDAY, years=range(1991, 2050))
         self.assertHolidayName(name, workdays, (f"{year}-03-15" for year in range(1999, 2050)))
-        self.assertNoHolidayName(name, workdays, (f"{year}-03-15" for year in range(1991, 1995)))
+        self.assertNoHolidayName(name, workdays, range(1991, 1995))
         self.assertHolidayName(name, (f"{year}-03-15" for year in range(1995, 1999)))
         self.assertNoHolidayName(
             name,
@@ -138,7 +138,7 @@ class TestBelarus(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1991, 1995))
 
     def test_catholic_easter(self):
-        name = "каталiцкi Вялiкдзень"
+        name = "Каталiцкi Вялiкдзень"
 
         # https://calendar.by/content.php?id=19
         dt = (
@@ -168,7 +168,7 @@ class TestBelarus(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, 1991, range(1998, 2050))
 
     def test_orthodox_easter(self):
-        name = "праваслаўны Вялiкдзень"
+        name = "Праваслаўны Вялiкдзень"
 
         # https://calendar.by/content.php?id=19
         dt = (
@@ -334,8 +334,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             ("2022-03-08", "Дзень жанчын"),
             ("2022-03-15", "Дзень Канстытуцыі"),
             ("2022-04-02", "Дзень яднання народаў Беларусі і Расіі"),
-            ("2022-04-17", "каталiцкi Вялiкдзень"),
-            ("2022-04-24", "праваслаўны Вялiкдзень"),
+            ("2022-04-17", "Каталiцкi Вялiкдзень"),
+            ("2022-04-24", "Праваслаўны Вялiкдзень"),
             ("2022-05-01", "Свята працы"),
             ("2022-05-02", "Выходны (перанесены з 14.05.2022)"),
             ("2022-05-03", "Радаўніца"),
@@ -404,7 +404,7 @@ class TestBelarus(CommonCountryTests, TestCase):
             ("2022-03-15", "День Конституции"),
             ("2022-04-02", "День единения народов Беларуси и России"),
             ("2022-04-17", "Католическая Пасха"),
-            ("2022-04-24", "Пасха православная"),
+            ("2022-04-24", "Православная Пасха"),
             ("2022-05-01", "Праздник труда"),
             ("2022-05-02", "Выходной (перенесено с 14.05.2022)"),
             ("2022-05-03", "Радуница"),
