@@ -258,8 +258,8 @@ All other default values are highlighted with bold:
    * - Belarus
      - BY
      -
-     - **be**, en_US
-     -
+     - **be**, en_US, ru, th
+     - WORKDAY
    * - Belgium
      - BE
      -
