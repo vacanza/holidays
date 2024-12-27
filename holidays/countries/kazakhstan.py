@@ -278,7 +278,6 @@ class KazakhstanStaticHolidays:
         2019: (MAY, 10, MAY, 4),
         2020: (
             (JAN, 3, JAN, 5),
-            (MAY, 8, MAY, 11),
             (DEC, 18, DEC, 20),
         ),
         2021: (JUL, 5, JUL, 3),
@@ -293,5 +292,6 @@ class KazakhstanStaticHolidays:
     }
 
     special_public_holidays_observed = {
-        2020: (MAY, 8, MAY, 11),
+        # Victory Day.
+        2020: (MAY, 8, tr("Жеңіс күні")),
     }

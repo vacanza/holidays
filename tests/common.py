@@ -419,3 +419,25 @@ class SundayHolidays(TestCase):
         ):
             self.assertNotEqual(parse(non_sunday).weekday(), SUN)
             self.assertNoHoliday(holidays, non_sunday)
+
+
+class WorkingDaysTests(TestCase):
+    """Common class to test countries with holidays substituted from non-working days."""
+
+    # Workday.
+    def _assertWorkday(self, instance_name, *args):  # noqa: N802
+        """Helper: assert each date is a working day."""
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        for dt in dates:
+            self.assertTrue(holidays._is_weekend(parse(dt)))
+            self.assertTrue(holidays.is_working_day(dt))
+
+    def assertWorkday(self, *args):  # noqa: N802
+        """Assert each date is a working day."""
+        self._assertWorkday("holidays", *args)
+
+    def assertNonObservedWorkday(self, *args):  # noqa: N802
+        """Assert each date is a non-observed working day."""
+        self._assertWorkday("holidays_non_observed", *args)
