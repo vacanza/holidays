@@ -39,7 +39,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, BelarusStaticHolidays)
+        StaticHolidays.__init__(self, cls=BelarusStaticHolidays, inter_year=True)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):

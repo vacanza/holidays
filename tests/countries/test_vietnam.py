@@ -173,6 +173,12 @@ class TestVietnam(CommonCountryTests, TestCase):
             "2019-04-29",
             "2024-04-29",
         )
+        h = Vietnam(years=2014)
+        self.assertTrue(h.is_working_day("2014-04-26"))
+        self.assertTrue(h.is_working_day("2014-09-06"))
+        self.assertTrue(h.is_working_day("2014-12-27"))
+        h = Vietnam(years=2019)
+        self.assertTrue(h.is_working_day("2019-01-05"))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

@@ -33,6 +33,12 @@ class TestUkraine(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday("1995-01-09")
 
+    def test_substituted_holidays(self):
+        h = Ukraine(years=1996)
+        self.assertTrue(h.is_working_day("1996-05-05"))
+        self.assertTrue(h.is_working_day("1996-05-12"))
+        self.assertTrue(h.is_working_day("1996-12-28"))
+
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1991, 2023))
         dt = (

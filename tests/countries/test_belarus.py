@@ -27,6 +27,13 @@ class TestBelarus(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Belarus(years=1997))
 
+    def test_substituted_holidays(self):
+        h = Belarus(years=2006)
+        self.assertTrue(h.is_working_day("2006-01-21"))
+        self.assertTrue(h.is_working_day("2006-05-06"))
+        self.assertTrue(h.is_working_day("2006-11-04"))
+        self.assertTrue(h.is_working_day("2006-12-30"))
+
     def test_2018(self):
         # http://calendar.by/procal.php?year=2018
         # https://www.officeholidays.com/countries/belarus/index.php

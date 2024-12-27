@@ -28,6 +28,10 @@ class TestTaiwan(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Taiwan(years=1911))
 
+    def test_substituted_holidays(self):
+        h = Taiwan(years=2014)
+        self.assertTrue(h.is_working_day("2014-12-27"))
+
     def test_new_years_day(self):
         name = "中華民國開國紀念日"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1990, 2030)))

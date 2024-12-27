@@ -41,7 +41,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, UkraineStaticHolidays)
+        StaticHolidays.__init__(self, cls=UkraineStaticHolidays, inter_year=True)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 

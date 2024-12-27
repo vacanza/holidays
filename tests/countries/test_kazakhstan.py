@@ -241,6 +241,10 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2024-05-08",
             "2025-01-03",
         )
+        h = Kazakhstan(years=2013)
+        self.assertTrue(h.is_working_day("2013-05-04"))
+        self.assertTrue(h.is_working_day("2013-10-12"))
+        self.assertTrue(h.is_working_day("2013-12-28"))
 
     def test2022(self):
         self.assertHolidays(

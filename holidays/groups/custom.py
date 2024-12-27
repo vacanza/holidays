@@ -10,6 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
+from holidays.helpers import _normalize_tuple
+
 
 class StaticHolidays:
     """Helper class for special and substituted holidays support.
@@ -18,7 +22,7 @@ class StaticHolidays:
     an external class.
     """
 
-    def __init__(self, cls) -> None:
+    def __init__(self, cls, inter_year: bool = False) -> None:
         for attribute_name in cls.__dict__.keys():
             # Special holidays.
             if attribute_name.startswith("special_") and (
@@ -33,3 +37,13 @@ class StaticHolidays:
             ):
                 setattr(self, attribute_name, value)
                 self.has_substituted_holidays = True
+
+            # Has substituted holidays from another year.
+            if inter_year:
+                self.weekend_workdays = set()
+                for subst_data in getattr(self, "special_public_holidays", {}).values():
+                    for data in _normalize_tuple(subst_data):
+                        if len(data) == 5:
+                            _, _, from_month, from_day, from_year = data
+                            from_date = date(from_year, from_month, from_day)
+                            self.weekend_workdays.add(from_date)
