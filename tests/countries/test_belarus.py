@@ -40,6 +40,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             ("2018-01-07", "Нараджэнне Хрыстова (праваслаўнае Раство)"),
             ("2018-03-08", "Дзень жанчын"),
             ("2018-03-09", "Выходны (перанесены з 03.03.2018)"),
+            ("2018-04-01", "Каталiцкi Вялiкдзень"),
+            ("2018-04-08", "Праваслаўны Вялiкдзень"),
             ("2018-04-16", "Выходны (перанесены з 14.04.2018)"),
             ("2018-04-17", "Радаўніца"),
             ("2018-04-30", "Выходны (перанесены з 28.04.2018)"),
@@ -167,9 +169,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2029-04-01",
             "2030-04-21",
         )
-        self.assertHolidayName(name, self.workdays, dt)
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
-        self.assertNoHolidayName(name, 1991, range(1998, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, 1991)
 
     def test_orthodox_easter(self):
         name = "Праваслаўны Вялiкдзень"
@@ -196,9 +197,8 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2029-04-08",
             "2030-04-28",
         )
-        self.assertHolidayName(name, self.workdays, dt)
-        self.assertNoHolidayName(name, self.workdays, range(1991, 1998))
-        self.assertNoHolidayName(name, 1991, range(1998, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, 1991)
 
     def test_radunitsa(self):
         # https://calendar.by/content.php?id=20

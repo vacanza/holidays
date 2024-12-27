@@ -89,19 +89,21 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Catholic Christmas Day.
         self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)
 
-        if 1992 <= self._year <= 1997:
+        if self._year >= 1992:
             # Catholic Easter.
-            name = tr("Каталiцкi Вялiкдзень")
-            self._add_easter_sunday(name, GREGORIAN_CALENDAR)
-            self._add_easter_monday(name, GREGORIAN_CALENDAR)
+            name_catholic = tr("Каталiцкi Вялiкдзень")
+            self._add_easter_sunday(name_catholic, GREGORIAN_CALENDAR)
 
             # Orthodox Easter.
-            name = tr("Праваслаўны Вялiкдзень")
-            self._add_easter_sunday(name)
-            self._add_easter_monday(name)
+            name_orthodox = tr("Праваслаўны Вялiкдзень")
+            self._add_easter_sunday(name_orthodox)
 
-            # Dzyady (All Souls' Day).
-            self._add_all_souls_day(tr("Дзень памяці"))
+            if self._year <= 1997:
+                self._add_easter_monday(name_catholic, GREGORIAN_CALENDAR)
+                self._add_easter_monday(name_orthodox)
+
+                # Dzyady (All Souls' Day).
+                self._add_all_souls_day(tr("Дзень памяці"))
 
     def _populate_workday_holidays(self):
         # Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
@@ -131,12 +133,6 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_holiday_sep_17(tr("Дзень народнага адзінства"))
 
         if self._year >= 1998:
-            # Catholic Easter.
-            self._add_easter_sunday(tr("Каталiцкi Вялiкдзень"), GREGORIAN_CALENDAR)
-
-            # Orthodox Easter.
-            self._add_easter_sunday(tr("Праваслаўны Вялiкдзень"))
-
             # Dzyady (All Souls' Day).
             self._add_all_souls_day(tr("Дзень памяці"))
 
