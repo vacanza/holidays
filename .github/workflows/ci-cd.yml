@@ -16,12 +16,11 @@ on:
       - 'v*'
   workflow_dispatch:
   workflow_run:
-    workflows: ["Update pre-commit hooks"]
+    workflows: ['Update pre-commit hooks']
     branches:
       - update-pre-commit-hooks
     types:
       - completed
-
 
 env:
   FORCE_COLOR: 1
@@ -253,13 +252,58 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
+  sign-artifacts:
+    name: Create SHA1 checksums and Sigstore signatures
+    runs-on: ubuntu-latest
+    needs:
+      - publish-main
+    permissions:
+      id-token: write
+    steps:
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Compute SHA1 checksums
+        run: |
+          for file in dist/*; do
+            sha1sum "$file" > "$file.sha1"
+          done
+
+      - name: Sign the files using Sigstore
+        uses: sigstore/gh-action-sigstore-python@v3.0.0
+        with:
+          inputs: |
+            ./dist/*.tar.gz
+            ./dist/*.whl
+
+      - name: Upload package dist and signatures
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-artifacts
+          path: dist/
+
+  update-github-release:
+    name: Update GitHub release with SBOM and signed artifacts
+    runs-on: ubuntu-latest
+    needs:
+      - sign-artifacts
+    permissions:
+      contents: write
+    steps:
       - name: Download SBOM
         uses: actions/download-artifact@v4
         with:
           name: sbom
 
+      - name: Download package dist and signatures
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-artifacts
+
       - name: Update Github release
-        if: ${{ always() }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
