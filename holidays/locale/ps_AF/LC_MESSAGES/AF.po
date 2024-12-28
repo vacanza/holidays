@@ -28,7 +28,7 @@ msgstr ""
 
 #. Liberation Day
 msgid "روز آزادی"
-msgstr "روز آزادی"
+msgstr "د آزادۍ ورځ"
 
 #. Nowruz
 msgid "نوروز"
@@ -36,40 +36,31 @@ msgstr "نوروز"
 
 #. Defeat of Mujahideen Day
 msgid "روز شکست مجاهدین"
-msgstr "د مجاهدینو د ماتې ورځ"
+msgstr "د مجاهدینو د شکست ورځ"
 
 #. International Workers' Day
 msgid "روز جهانی کارگر"
-msgstr "روز جهانی کارگر"
+msgstr "د نړیوال کارګر ورځ"
 
 #. Soviet Victory Day
 msgid "روز پیروزی شوروی بر افغانستان"
-msgstr "روز پیروزی افغان‌ها"
+msgstr "د شوروي د بریا ورځ په افغانستان"
 
 #. Afghan Independence Day
 msgid "روز استقلال"
-msgstr "وز استقلال"
+msgstr "د استقلال ورځ"
 
 #. American Withdrawal Day
 msgid "روز خروج آمریکایی‌ها"
-msgstr "د امریکا د وتلو ورځ"
+msgstr "د امریکایانو د وتلو ورځ"
 
 #. Martyrs' Day
 msgid "روز شهیدان"
-msgstr "روز شهیدان"
-
-#. Eid al-Fitr
-msgid "عید فطر"
-msgstr "عید فطر"
+msgstr "د شهیدانو ورځ"
 
 #. Day of Arafah
-#. Day of Arafat
 msgid "روز عرفه"
-msgstr "روز عرفه"
-
-#. Eid al-Adha
-msgid "عید قربانی"
-msgstr "عید قربانی"
+msgstr "د عرفه ورځ"
 
 #. Ashura
 msgid "عاشورا"
@@ -78,16 +69,37 @@ msgstr "عاشورا"
 #. Mawlid
 #. The Prophet's Birthday
 msgid "میلاد پیامبر"
-msgstr "د پیغمبر الله صلی الله علیه وسلم د میلاد ورځ"
+msgstr "د پیغمبر میلاد"
 
 #. First Day of Ramadan
 msgid "اول رمضان"
-msgstr "اول رمضان"
+msgstr "لومړۍ ورځ د رمضان"
 
 #. March Equinox
 msgid "اعتدال مارس"
-msgstr "اعتدال مارس"
+msgstr "د مارچ اعتدال"
 
-#. Afghan Victory Day
-msgid "روز پیروزی افغان‌ها"
-msgstr "روز پیروزی افغان‌ها"
+#. The first day of Eid al-Fitr
+msgid "روز اول عید فطر"
+msgstr "د عید فطر لومړۍ ورځ"
+
+#. The second day of Eid al-Fitr
+msgid "روز دوم عید فطر"
+msgstr "د عید فطر دویمه ورځ"
+
+msgid "سومین روز عید فطر"
+msgstr "د عید فطر درېیمه ورځ"
+
+#. The first day of Eid al-Adha
+msgid "اول روز عید قربان"
+msgstr "د عید قربان لومړۍ ورځ"
+
+#. The second day of Eid al-Adha
+msgid "روز دوم عید قربان"
+msgstr "د عید قربان دویمه ورځ"
+
+#. The third day of Eid al-Adha
+msgid "سومین روز عید قربان"
+msgstr "د عید قربان درېیمه ورځ"
+
+#, c-format

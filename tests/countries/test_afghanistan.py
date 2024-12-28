@@ -26,12 +26,22 @@ class TestAfghanistan(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHoliday(
-            "2022-02-15",  # Liberation Day
-            "2022-03-20",  # March Equinox
-            "2022-04-28",  # Defeat of Mujahideen Day
-            "2022-05-01",  # International Workers' Day
-            "2022-08-19",  # Independence Day
-            "2022-09-09",  # Martyrs' Day
+            "2022-02-15",  # روز آزادی
+            "2022-03-20",  # اعتدال مارس
+            "2022-04-02",  # اول رمضان (estimated)
+            "2022-05-01",  # روز جهانی کارگر
+            "2022-05-02",  # روز اول عید فطر (estimated)
+            "2022-05-03",  # روز دوم عید فطر (estimated)
+            "2022-05-04",  # سومین روز عید فطر (estimated)
+            "2022-07-08",  # روز عرفه (estimated)
+            "2022-07-09",  # اول روز عید قربان (estimated)
+            "2022-07-10",  # روز دوم عید قربان (estimated)
+            "2022-07-11",  # سومین روز عید قربان (estimated)
+            "2022-08-08",  # عاشورا (estimated)
+            "2022-08-19",  # روز استقلال
+            "2022-08-31",  # روز خروج آمریکایی‌ها
+            "2022-09-09",  # روز شهیدان
+            "2022-10-08",  # میلاد پیامبر (estimated)
         )
 
     def test_independence_day(self):
@@ -41,11 +51,6 @@ class TestAfghanistan(CommonCountryTests, TestCase):
         )
 
     def test_labour_day(self):
-        self.assertNoHoliday(
-            "2021-05-02",
-            "2022-05-04",
-            "2023-05-02",
-        )
         self.assertHoliday(
             "2021-05-01",
             "2022-05-01",
@@ -86,36 +91,40 @@ class TestAfghanistan(CommonCountryTests, TestCase):
 
     def test_l10_default(self):
         self.assertLocalizedHolidays(
-            ("2022-02-15", "روز آزادی"),  # Liberation Day
-            ("2022-02-28", "میلاد پیامبر (estimated)"),  # Prophet's Birthday (estimated)
-            ("2022-03-20", "اعتدال مارس"),  # March Equinox
-            ("2022-03-21", "نوروز"),  # Nowruz (New Year)
-            ("2022-04-02", "اول رمضان (estimated)"),  # First Ramadan (estimated)
-            ("2022-04-28", "روز پیروزی افغان‌ها"),  # Victory Day of Afghans
-            ("2022-05-01", "روز جهانی کارگر"),  # International Workers' Day
-            ("2022-05-02", "عید فطر (estimated)"),  # Eid al-Fitr (estimated)
-            ("2022-07-08", "روز عرفه (estimated)"),  # Day of Arafah (estimated)
-            ("2022-07-09", "عید قربانی (estimated)"),  # Eid al-Adha (estimated)
-            ("2022-08-08", "عاشورا (estimated)"),  # Ashura (estimated)
-            ("2022-08-19", "روز استقلال"),  # Independence Day
-            ("2022-09-09", "روز شهیدان"),  # Martyrs' Day
-            ("2022-10-08", "میلاد پیامبر (estimated)"),  # Prophet's Birthday (estimated)
+            ("2022-02-15", "روز آزادی"),
+            ("2022-03-20", "اعتدال مارس"),
+            ("2022-04-02", "اول رمضان (estimated)"),
+            ("2022-05-01", "روز جهانی کارگر"),
+            ("2022-05-02", "روز اول عید فطر (estimated)"),
+            ("2022-05-03", "روز دوم عید فطر (estimated)"),
+            ("2022-05-04", "سومین روز عید فطر (estimated)"),
+            ("2022-07-08", "روز عرفه (estimated)"),
+            ("2022-07-09", "اول روز عید قربان (estimated)"),
+            ("2022-07-10", "روز دوم عید قربان (estimated)"),
+            ("2022-07-11", "سومین روز عید قربان (estimated)"),
+            ("2022-08-08", "عاشورا (estimated)"),
+            ("2022-08-19", "روز استقلال"),
+            ("2022-08-31", "روز خروج آمریکایی‌ها"),
+            ("2022-09-09", "روز شهیدان"),
+            ("2022-10-08", "میلاد پیامبر (estimated)"),
         )
 
     def test_l10n_ps(self):
         self.assertLocalizedHolidays(
-            ("2022-02-15", "روز آزادی"),  # Liberation Day
-            ("2022-02-28", "میلاد پیامبر (estimated)"),  # Prophet's Birthday (estimated)
-            ("2022-03-20", "اعتدال مارس"),  # March Equinox
-            ("2022-03-21", "نوروز"),  # Nowruz (New Year)
-            ("2022-04-02", "اول رمضان (estimated)"),  # First Ramadan (estimated)
-            ("2022-04-28", "روز پیروزی افغان‌ها"),  # Victory Day of Afghans
-            ("2022-05-01", "روز جهانی کارگر"),  # International Workers' Day
-            ("2022-05-02", "عید فطر (estimated)"),  # Eid al-Fitr (estimated)
-            ("2022-07-08", "روز عرفه (estimated)"),  # Day of Arafah (estimated)
-            ("2022-07-09", "عید قربانی (estimated)"),  # Eid al-Adha (estimated)
-            ("2022-08-08", "عاشورا (estimated)"),  # Ashura (estimated)
-            ("2022-08-19", "روز استقلال"),  # Independence Day
-            ("2022-09-09", "روز شهیدان"),  # Martyrs' Day
-            ("2022-10-08", "میلاد پیامبر (estimated)"),  # Prophet's Birthday (estimated)
+            ("2022-02-15", "روز آزادی"),
+            ("2022-03-20", "اعتدال مارس"),
+            ("2022-04-02", "اول رمضان (estimated)"),
+            ("2022-05-01", "روز جهانی کارگر"),
+            ("2022-05-02", "روز اول عید فطر (estimated)"),
+            ("2022-05-03", "روز دوم عید فطر (estimated)"),
+            ("2022-05-04", "سومین روز عید فطر (estimated)"),
+            ("2022-07-08", "روز عرفه (estimated)"),
+            ("2022-07-09", "اول روز عید قربان (estimated)"),
+            ("2022-07-10", "روز دوم عید قربان (estimated)"),
+            ("2022-07-11", "سومین روز عید قربان (estimated)"),
+            ("2022-08-08", "عاشورا (estimated)"),
+            ("2022-08-19", "روز استقلال"),
+            ("2022-08-31", "روز خروج آمریکایی‌ها"),
+            ("2022-09-09", "روز شهیدان"),
+            ("2022-10-08", "میلاد پیامبر (estimated)"),
         )

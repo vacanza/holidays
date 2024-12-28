@@ -58,17 +58,8 @@ msgstr ""
 msgid "روز شهیدان"
 msgstr ""
 
-#. Eid al-Fitr
-msgid "عید فطر"
-msgstr ""
-
 #. Day of Arafah
-#. Day of Arafat
 msgid "روز عرفه"
-msgstr ""
-
-#. Eid al-Adha
-msgid "عید قربانی"
 msgstr ""
 
 #. Ashura
@@ -88,22 +79,27 @@ msgstr ""
 msgid "اعتدال مارس"
 msgstr ""
 
-#. Afghan Victory Day
-msgid "روز پیروزی افغان‌ها"
+#. The first day of Eid al-Fitr
+msgid "روز اول عید فطر"
+msgstr ""
+
+#. The second day of Eid al-Fitr
+msgid "روز دوم عید فطر"
+msgstr ""
+
+msgid "سومین روز عید فطر"
+msgstr ""
+
+#. The first day of Eid al-Adha
+msgid "اول روز عید قربان"
+msgstr ""
+
+#. The second day of Eid al-Adha
+msgid "روز دوم عید قربان"
+msgstr ""
+
+#. The third day of Eid al-Adha
+msgid "سومین روز عید قربان"
 msgstr ""
 
 #, c-format
-#~ msgid "(برآورد) %s"
-#~ msgstr ""
-
-#~ msgid "تعطیلات عید قربانی"
-#~ msgstr ""
-
-#~ msgid "اعتدال ژوئن"
-#~ msgstr ""
-
-#~ msgid "اعتدال سپتامبر"
-#~ msgstr ""
-
-#~ msgid "اعتدال دسامبر"
-#~ msgstr ""
