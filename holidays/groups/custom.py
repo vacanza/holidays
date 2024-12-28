@@ -22,7 +22,7 @@ class StaticHolidays:
     an external class.
     """
 
-    def __init__(self, cls, inter_year: bool = False) -> None:
+    def __init__(self, cls) -> None:
         for attribute_name in cls.__dict__.keys():
             # Special holidays.
             if attribute_name.startswith("special_") and (
@@ -38,12 +38,10 @@ class StaticHolidays:
                 setattr(self, attribute_name, value)
                 self.has_substituted_holidays = True
 
-            # Has substituted holidays from another year.
-            if inter_year:
-                self.weekend_workdays = set()
-                for subst_data in getattr(self, "special_public_holidays", {}).values():
-                    for data in _normalize_tuple(subst_data):
-                        if len(data) == 5:
-                            _, _, from_month, from_day, from_year = data
-                            from_date = date(from_year, from_month, from_day)
-                            self.weekend_workdays.add(from_date)
+        # Populate substituted holidays from adjacent years.
+        self.weekend_workdays = set()
+        for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
+            for special_public_holiday in _normalize_tuple(special_public_holidays):
+                if len(special_public_holiday) == 5:  # The fifth element is the year.
+                    _, _, from_month, from_day, from_year = special_public_holiday
+                    self.weekend_workdays.add(date(from_year, from_month, from_day))

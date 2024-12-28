@@ -75,7 +75,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, cls=ChinaStaticHolidays, inter_year=True)
+        StaticHolidays.__init__(self, cls=ChinaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2000)
         super().__init__(*args, **kwargs)

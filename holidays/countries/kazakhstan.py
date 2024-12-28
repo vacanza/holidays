@@ -96,7 +96,7 @@ class Kazakhstan(
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, KazakhstanIslamicHolidays)
-        StaticHolidays.__init__(self, cls=KazakhstanStaticHolidays, inter_year=True)
+        StaticHolidays.__init__(self, KazakhstanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2002)
         super().__init__(*args, **kwargs)

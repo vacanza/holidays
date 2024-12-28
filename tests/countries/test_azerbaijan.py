@@ -65,19 +65,26 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2024-12-30",
             "2025-01-03",
         )
-        h = Azerbaijan(years=2012)
-        self.assertTrue(h.is_working_day("2012-12-29"))
-        self.assertTrue(h.is_working_day("2012-12-30"))
-        h = Azerbaijan(years=2013)
-        self.assertTrue(h.is_working_day("2013-12-28"))
-        self.assertTrue(h.is_working_day("2013-12-29"))
-        h = Azerbaijan(years=2019)
-        self.assertTrue(h.is_working_day("2019-12-28"))
-        self.assertTrue(h.is_working_day("2019-12-29"))
-        h = Azerbaijan(years=2023)
-        self.assertTrue(h.is_working_day("2023-12-30"))
-        h = Azerbaijan(years=2024)
-        self.assertTrue(h.is_working_day("2024-12-29"))
+
+        for year, dts in {
+            2012: (
+                "2012-12-29",
+                "2012-12-30",
+            ),
+            2013: (
+                "2013-12-28",
+                "2013-12-29",
+            ),
+            2019: (
+                "2019-12-28",
+                "2019-12-29",
+            ),
+            2023: ("2023-12-30",),
+            2024: ("2024-12-29",),
+        }.items():
+            az_holidays = Azerbaijan(years=year)
+            for dt in dts:
+                self.assertTrue(az_holidays.is_working_day(dt))
 
     def test_new_years_day(self):
         name = "Yeni il bayramı"
