@@ -225,6 +225,18 @@ class TestBelarus(CommonCountryTests, TestCase):
             "2030-05-07",
         )
 
+        for year, dts in {
+            2006: (
+                "2006-01-21",
+                "2006-05-06",
+                "2006-11-04",
+                "2006-12-30",
+            ),
+        }.items():
+            be_holidays = Belarus(years=year)
+            for dt in dts:
+                self.assertTrue(be_holidays.is_working_day(dt))
+
     def test_dzyady(self):
         name = "Дзень памяці"
 

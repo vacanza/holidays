@@ -29,6 +29,50 @@ class TestChina(CommonCountryTests, TestCase):
         self.assertNoHolidays(China(years=1949))
         self.assertNoHolidays(China(years=1949, categories=HALF_DAY))
 
+    def test_substituted_holidays(self):
+        for year, dts in {
+            2001: (
+                "2001-01-20",
+                "2001-01-21",
+                "2001-04-28",
+                "2001-04-29",
+                "2001-09-29",
+                "2001-09-30",
+                "2001-12-29",
+                "2001-12-30",
+            ),
+            2005: (
+                "2005-02-05",
+                "2005-02-06",
+                "2005-04-30",
+                "2005-05-08",
+                "2005-10-08",
+                "2005-10-09",
+                "2005-12-31",
+            ),
+            2006: (
+                "2006-01-28",
+                "2006-02-05",
+                "2006-04-29",
+                "2006-04-30",
+                "2006-09-30",
+                "2006-10-08",
+                "2006-12-30",
+                "2006-12-31",
+            ),
+            2011: (
+                "2011-01-30",
+                "2011-02-12",
+                "2011-04-02",
+                "2011-10-08",
+                "2011-10-09",
+                "2011-12-31",
+            ),
+        }.items():
+            cn_holidays = China(years=year)
+            for dt in dts:
+                self.assertTrue(cn_holidays.is_working_day(dt))
+
     def test_new_years_day(self):
         self.assertHolidayName("元旦", (f"{year}-01-01" for year in range(1950, 2050)))
 

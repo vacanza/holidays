@@ -174,6 +174,18 @@ class TestVietnam(CommonCountryTests, TestCase):
             "2024-04-29",
         )
 
+        for year, dts in {
+            2014: (
+                "2014-04-26",
+                "2014-09-06",
+                "2014-12-27",
+            ),
+            2019: ("2019-01-05",),
+        }.items():
+            vn_holidays = Vietnam(years=year)
+            for dt in dts:
+                self.assertTrue(vn_holidays.is_working_day(dt))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Tết Dương lịch"),

@@ -242,6 +242,17 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2025-01-03",
         )
 
+        for year, dts in {
+            2013: (
+                "2013-05-04",
+                "2013-10-12",
+                "2013-12-28",
+            ),
+        }.items():
+            kz_holidays = Kazakhstan(years=year)
+            for dt in dts:
+                self.assertTrue(kz_holidays.is_working_day(dt))
+
     def test2022(self):
         self.assertHolidays(
             Kazakhstan(years=2022),
