@@ -42,10 +42,6 @@ msgstr ""
 msgid "روز جهانی کارگر"
 msgstr ""
 
-#. Soviet Victory Day
-msgid "روز پیروزی شوروی بر افغانستان"
-msgstr ""
-
 #. Afghan Independence Day
 msgid "روز استقلال"
 msgstr ""
@@ -75,10 +71,6 @@ msgstr ""
 msgid "اول رمضان"
 msgstr ""
 
-#. March Equinox
-msgid "اعتدال مارس"
-msgstr ""
-
 #. The first day of Eid al-Fitr
 msgid "روز اول عید فطر"
 msgstr ""
@@ -102,4 +94,24 @@ msgstr ""
 msgid "سومین روز عید قربان"
 msgstr ""
 
+#. %s (estimated).
 #, c-format
+msgid "%s (برآورد شده)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (مشاهده شده)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (مشاهده شده، برآورد شده)"
+msgstr ""
+
+#. Soviet Victory Day
+msgid "روز پیروزی شوروی"
+msgstr ""
+
+#~ msgid "روز پیروزی شوروی بر افغانستان"
+#~ msgstr ""

@@ -9,106 +9,106 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-#
-# Afghanistan holidays.
-#
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.64\n"
-"POT-Creation-Date: 2024-12-25 20:00+0530\n"
-"PO-Revision-Date: 2024-12-25 20:00+0530\n"
+"POT-Creation-Date: 2024-12-24 13:40+0530\n"
+"PO-Revision-Date: 2024-12-24 13:40+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: ps_AF\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"Generated-By: Lingva 5.0.4\n"
 
 #. Liberation Day
 msgid "روز آزادی"
-msgstr "د آزادۍ ورځ"
+msgstr "Freedom Day"
 
 #. Nowruz
 msgid "نوروز"
-msgstr "نوروز"
+msgstr "Newroz"
 
 #. Defeat of Mujahideen Day
 msgid "روز شکست مجاهدین"
-msgstr "د مجاهدینو د شکست ورځ"
+msgstr "The Day of the Mojahedin's Defeat"
 
 #. International Workers' Day
 msgid "روز جهانی کارگر"
-msgstr "د نړیوال کارګر ورځ"
+msgstr "International Workers' Day"
 
 #. Afghan Independence Day
 msgid "روز استقلال"
-msgstr "د استقلال ورځ"
+msgstr "Independence Day"
 
 #. American Withdrawal Day
 msgid "روز خروج آمریکایی‌ها"
-msgstr "د امریکایانو د وتلو ورځ"
+msgstr "The Day of the American Withdrawal"
 
 #. Martyrs' Day
 msgid "روز شهیدان"
-msgstr "د شهیدانو ورځ"
+msgstr "Martyrs' Day"
 
 #. Day of Arafah
 msgid "روز عرفه"
-msgstr "د عرفه ورځ"
+msgstr "The Day of Arafah"
 
 #. Ashura
 msgid "عاشورا"
-msgstr "عاشورا"
+msgstr "Ashura"
 
 #. Mawlid
 #. The Prophet's Birthday
 msgid "میلاد پیامبر"
-msgstr "د پیغمبر میلاد"
+msgstr "The Prophet's Birthday"
 
 #. First Day of Ramadan
 msgid "اول رمضان"
-msgstr "لومړۍ ورځ د رمضان"
+msgstr "First of Ramadan"
 
 #. The first day of Eid al-Fitr
 msgid "روز اول عید فطر"
-msgstr "د عید فطر لومړۍ ورځ"
+msgstr "The first day of Eid al-Fitr"
 
 #. The second day of Eid al-Fitr
 msgid "روز دوم عید فطر"
-msgstr "د عید فطر دویمه ورځ"
+msgstr "The second day of Eid al-Fitr"
 
 msgid "سومین روز عید فطر"
-msgstr "د عید فطر درېیمه ورځ"
+msgstr "The third day of Eid al-Fitr"
 
 #. The first day of Eid al-Adha
 msgid "اول روز عید قربان"
-msgstr "د عید قربان لومړۍ ورځ"
+msgstr "The first day of Eid al-Adha"
 
 #. The second day of Eid al-Adha
 msgid "روز دوم عید قربان"
-msgstr "د عید قربان دویمه ورځ"
+msgstr "The second day of Eid al-Adha"
 
 #. The third day of Eid al-Adha
 msgid "سومین روز عید قربان"
-msgstr "د عید قربان درېیمه ورځ"
+msgstr "The third day of Eid al-Adha"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (برآورد شده)"
-msgstr "%s (اټکل)"
+msgstr "%s (Estimated)"
 
 #. %s (observed).
 #, c-format
 msgid "%s (مشاهده شده)"
-msgstr "%s (په دې وروستیو کې د افغانستان د کرکټ ملی)"
+msgstr "%s (Observed)"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (مشاهده شده، برآورد شده)"
-msgstr "%s (مشاهده شده، تخمین زده شده است)"
+msgstr "%s (Observed, Estimated)"
 
 #. Soviet Victory Day
 msgid "روز پیروزی شوروی"
-msgstr "د شوروی د بریالیتوب ورځ"
+msgstr "Soviet Victory Day"
