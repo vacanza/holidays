@@ -1,0 +1,102 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Montenegro holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.64\n"
+"POT-Creation-Date: 2024-11-09 15:23+0200\n"
+"PO-Revision-Date: 2024-12-24 17:55+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (procijenjeno)"
+msgstr "%s (приблизна дата)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (neradni dan)"
+msgstr "%s (вихідний)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (neradni dan, procijenjeno)"
+msgstr "%s (вихідний, приблизна дата)"
+
+#. New Year's Day.
+msgid "Nova godina"
+msgstr "Новий рік"
+
+#. Labor Day.
+msgid "Praznik rada"
+msgstr "День праці"
+
+#. Independence Day.
+msgid "Dan nezavisnosti"
+msgstr "День незалежності"
+
+#. Statehood Day.
+msgid "Dan državnosti"
+msgstr "День державності"
+
+#. Njegos Day.
+msgid "Njegošev dan"
+msgstr "День Нєґоша"
+
+#. Good Friday.
+msgid "Veliki petak"
+msgstr "Страсна пʼятниця"
+
+#. Easter.
+msgid "Uskrs"
+msgstr "Великдень"
+
+#. All Saints' Day.
+msgid "Svi Sveti"
+msgstr "День усіх святих"
+
+#. Christmas Eve.
+msgid "Badnji dan"
+msgstr "Святий вечір"
+
+#. Christmas.
+msgid "Božić"
+msgstr "Різдво Христове"
+
+#. Pesach.
+msgid "Pasha"
+msgstr "Песах"
+
+#. Yom Kippur.
+msgid "Jom Kipur"
+msgstr "Йом Кіпур"
+
+#. Eid al-Fitr.
+msgid "Ramazanski bajram"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Kurbanski bajram"
+msgstr "Курбан-байрам"
+
+#. Ecological State Day.
+msgid "Dan Ekološke države"
+msgstr "День екологічної держави"

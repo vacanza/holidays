@@ -147,6 +147,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             "2024-09-10",
             "2024-09-11",
             "2024-10-31",
+            "2024-11-29",
         )
 
     def test_2011_public(self):

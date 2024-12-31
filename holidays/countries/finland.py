@@ -28,12 +28,14 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         - https://en.wikipedia.org/wiki/Flag_flying_days_in_Finland#Customary_flag_days
         - https://intermin.fi/en/flag-and-arms/flag-flying-days
         - https://intermin.fi/en/flag-and-arms/flag-days/2024
+        - https://en.wikipedia.org/wiki/Independence_Day_(Finland)
     """
 
     country = "FI"
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
+    start_year = 1853
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -90,8 +92,9 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         else:
             self._add_holiday_nov_1(name)
 
-        # Independence Day.
-        self._add_holiday_dec_6(tr("Itsenäisyyspäivä"))
+        if self._year >= 1917:
+            # Independence Day.
+            self._add_holiday_dec_6(tr("Itsenäisyyspäivä"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Jouluaatto"))

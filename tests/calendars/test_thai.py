@@ -66,10 +66,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, JUL, 9),
         }
         for year in asarnha_bucha_year_date:
-            self.assertEqual(
-                asarnha_bucha_year_date[year],
-                self.calendar.asarnha_bucha_date(year),
-            )
+            self.assertEqual(asarnha_bucha_year_date[year], self.calendar.asarnha_bucha_date(year))
 
     def test_atthami_bucha_date(self):
         # THAI_CALENDAR
@@ -95,10 +92,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, MAY, 19),
         }
         for year in atthami_bucha_year_date:
-            self.assertEqual(
-                atthami_bucha_year_date[year],
-                self.calendar.atthami_bucha_date(year),
-            )
+            self.assertEqual(atthami_bucha_year_date[year], self.calendar.atthami_bucha_date(year))
         # KHMER_CALENDAR
         athami_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -140,8 +134,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in boun_haw_khao_salark_year_date:
             self.assertEqual(
-                boun_haw_khao_salark_year_date[year],
-                self.calendar.boun_haw_khao_salark_date(year),
+                boun_haw_khao_salark_year_date[year], self.calendar.boun_haw_khao_salark_date(year)
             )
 
     def test_boun_suang_heua_date(self):
@@ -155,8 +148,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in boun_suang_heua_year_date:
             self.assertEqual(
-                boun_suang_heua_year_date[year],
-                self.calendar.boun_suang_heua_date(year),
+                boun_suang_heua_year_date[year], self.calendar.boun_suang_heua_date(year)
             )
 
     def test_khao_phansa_date(self):
@@ -199,10 +191,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, JUL, 10),
         }
         for year in khao_phansa_year_date:
-            self.assertEqual(
-                khao_phansa_year_date[year],
-                self.calendar.khao_phansa_date(year),
-            )
+            self.assertEqual(khao_phansa_year_date[year], self.calendar.khao_phansa_date(year))
 
     def test_loy_krathong_date(self):
         loy_krathong_year_date = {
@@ -234,10 +223,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, NOV, 4),
         }
         for year in loy_krathong_year_date:
-            self.assertEqual(
-                loy_krathong_year_date[year],
-                self.calendar.loy_krathong_date(year),
-            )
+            self.assertEqual(loy_krathong_year_date[year], self.calendar.loy_krathong_date(year))
 
     def test_makha_bucha_date(self):
         # THAI_CALENDAR
@@ -296,8 +282,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in meak_bochea_year_date:
             self.assertEqual(
-                meak_bochea_year_date[year],
-                self.calendar.makha_bucha_date(year, KHMER_CALENDAR),
+                meak_bochea_year_date[year], self.calendar.makha_bucha_date(year, KHMER_CALENDAR)
             )
 
     def test_ok_phansa_date(self):
@@ -323,10 +308,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, OCT, 6),
         }
         for year in ok_phansa_year_date:
-            self.assertEqual(
-                ok_phansa_year_date[year],
-                self.calendar.ok_phansa_date(year),
-            )
+            self.assertEqual(ok_phansa_year_date[year], self.calendar.ok_phansa_date(year))
 
     def test_pchum_ben_date(self):
         pchum_ben_year_date = {
@@ -345,10 +327,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, SEP, 22),
         }
         for year in pchum_ben_year_date:
-            self.assertEqual(
-                pchum_ben_year_date[year],
-                self.calendar.pchum_ben_date(year),
-            )
+            self.assertEqual(pchum_ben_year_date[year], self.calendar.pchum_ben_date(year))
 
     def test_preah_neangkoal_date(self):
         preah_neangkoal_year_date = {
@@ -368,8 +347,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in preah_neangkoal_year_date:
             self.assertEqual(
-                preah_neangkoal_year_date[year],
-                self.calendar.preah_neangkoal_date(year),
+                preah_neangkoal_year_date[year], self.calendar.preah_neangkoal_date(year)
             )
 
     def test_visakha_bucha_date(self):
@@ -412,10 +390,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2150: date(2150, MAY, 11),
         }
         for year in visakha_bucha_year_date:
-            self.assertEqual(
-                visakha_bucha_year_date[year],
-                self.calendar.visakha_bucha_date(year),
-            )
+            self.assertEqual(visakha_bucha_year_date[year], self.calendar.visakha_bucha_date(year))
         # KHMER_CALENDAR
         visaka_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,

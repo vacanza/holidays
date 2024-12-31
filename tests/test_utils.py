@@ -70,22 +70,22 @@ class TestCountryHolidays(unittest.TestCase):
 
 class TestFinancialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = financial_holidays("NYSE")
+        self.holidays = financial_holidays("XNYS")
 
     def test_market(self):
-        self.assertEqual(self.holidays.market, "NYSE")
+        self.assertEqual(self.holidays.market, "XNYS")
 
     def test_market_single_year(self):
-        h = financial_holidays("NYSE", years=2021)
+        h = financial_holidays("XNYS", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_market_years(self):
-        h = financial_holidays("NYSE", years=(2015, 2016))
+        h = financial_holidays("XNYS", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
         self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("NYSE", subdiv="XXXX"))
+        self.assertRaises(NotImplementedError, lambda: financial_holidays("XNYS", subdiv="XXXX"))
 
 
 class TestAllInSameYear(unittest.TestCase):
@@ -188,14 +188,12 @@ class TestListLocalizedEntities(unittest.TestCase):
 
     def test_localized_countries(self):
         self.assertLocalizedEntities(
-            list_localized_countries(),
-            list_supported_countries(include_aliases=False),
+            list_localized_countries(), list_supported_countries(include_aliases=False)
         )
 
     def test_localized_financial(self):
         self.assertLocalizedEntities(
-            list_localized_financial(),
-            list_supported_financial(include_aliases=False),
+            list_localized_financial(), list_supported_financial(include_aliases=False)
         )
 
 
@@ -215,26 +213,18 @@ class TestListSupportedEntities(unittest.TestCase):
         countries_files = [
             path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
         ]
-        self.assertEqual(
-            len(countries_files),
-            len(supported_countries),
-        )
+        self.assertEqual(len(countries_files), len(supported_countries))
 
     def test_list_supported_financial(self):
         supported_financial = list_supported_financial(include_aliases=False)
 
-        self.assertIn("ECB", supported_financial)
-        self.assertIn("IFEU", supported_financial)
-        self.assertIn("NYSE", supported_financial)
-        self.assertIn("BVMF", supported_financial)
+        for code in ("BVMF", "IFEU", "XECB", "XNYS"):
+            self.assertIn(code, supported_financial)
 
-        nyse = supported_financial["NYSE"]
-        self.assertIsInstance(nyse, list)
+        xnys = supported_financial["XNYS"]
+        self.assertIsInstance(xnys, list)
 
         financial_files = [
             path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         ]
-        self.assertEqual(
-            len(financial_files),
-            len(supported_financial),
-        )
+        self.assertEqual(len(financial_files), len(supported_financial))

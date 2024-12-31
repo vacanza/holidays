@@ -92,6 +92,7 @@ class SouthKorea(
     # Alternative holiday for %s.
     observed_label = tr("%s 대체 휴일")
     supported_languages = ("en_US", "ko", "th")
+    start_year = 1948
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
@@ -133,9 +134,6 @@ class SouthKorea(
                 self._add_holiday(self.tr("%s 다음날") % name, _timedelta(dt, +1)),
             ):
                 three_days_holidays[dt_alt] = name
-
-        if self._year <= 1947:
-            return None
 
         dts_observed = set()
         three_days_holidays = {}
@@ -281,9 +279,6 @@ class SouthKorea(
             self._populate_observed(dts_observed, three_days_holidays)
 
     def _populate_bank_holidays(self):
-        if self._year <= 1947:
-            return None
-
         # Workers' Day.
         name = tr("근로자의날")
         if self._year >= 1994:
@@ -404,10 +399,8 @@ class SouthKoreaStaticHolidays:
             # Joint Memorial Service for Fallen Soldiers.
             (JUN, 21, tr("전몰군인 합동위령제")),
         ),
-        1951: (
-            # Vice Presidential Election.
-            (MAY, 16, tr("부통령 선거일")),
-        ),
+        # Vice Presidential Election.
+        1951: (MAY, 16, tr("부통령 선거일")),
         1952: (
             # City/Town/Township-level Local Elections.
             (APR, 25, local_election_day),
@@ -416,10 +409,8 @@ class SouthKoreaStaticHolidays:
             # 2nd Presidential Election/3rd Vice President Election.
             (AUG, 5, presidential_election_day),
         ),
-        1954: (
-            # 3rd National Assembly Election.
-            (MAY, 20, national_assembly_election_day),
-        ),
+        # 3rd National Assembly Election.
+        1954: (MAY, 20, national_assembly_election_day),
         1956: (
             # 3rd Presidential Election/4th Vice President Election.
             (MAY, 15, presidential_election_day),

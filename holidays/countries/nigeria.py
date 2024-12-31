@@ -29,6 +29,7 @@ class Nigeria(
 
     country = "NG"
     observed_label = "%s (observed)"
+    start_year = 1979
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -40,9 +41,6 @@ class Nigeria(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1978:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.

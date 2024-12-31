@@ -28,6 +28,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     # %s (estimated).
     estimated_label = tr("(تخمین زده) %s")
     supported_languages = ("en_US", "fa")
+    start_year = 1980
 
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
@@ -35,9 +36,6 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1979:
-            return None
-
         # Persian New Year.
         name = tr("نوروز")
         self._add_nowruz_day(name)

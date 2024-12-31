@@ -81,6 +81,7 @@ COUNTRIES: RegistryDict = {
     "greenland": ("Greenland", "GL", "GRL"),
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
     "guatemala": ("Guatemala", "GT", "GUA"),
+    "guernsey": ("Guernsey", "GG", "GGY"),
     "haiti": ("Haiti", "HT", "HTI"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
@@ -182,9 +183,9 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
-    "european_central_bank": ("EuropeanCentralBank", "ECB", "TAR"),
+    "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
-    "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
+    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
 }
 

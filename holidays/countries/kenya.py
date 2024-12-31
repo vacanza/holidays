@@ -24,6 +24,7 @@ class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     country = "KE"
     observed_label = "%s (observed)"
+    start_year = 1963
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -33,9 +34,6 @@ class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1962:
-            return None
-
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

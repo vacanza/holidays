@@ -92,6 +92,8 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_BR", "uk")
+    # Decreto n. 155-B, de 14.01.1890
+    start_year = 1890
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -99,10 +101,6 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Decreto n. 155-B, de 14.01.1890
-        if self._year <= 1889:
-            return None
-
         # Universal Fraternization Day.
         self._add_new_years_day(tr("Confraternização Universal"))
 
@@ -158,9 +156,6 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_christmas_day(tr("Natal"))
 
     def _populate_optional_holidays(self):
-        if self._year <= 1889:
-            return None
-
         # Carnival.
         name = tr("Carnaval")
         self._add_carnival_monday(name)

@@ -39,7 +39,7 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
+from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -233,7 +233,7 @@ class HolidayBase(dict[date, str]):
     ones."""
     weekend: set[int] = {SAT, SUN}
     """Country weekend days."""
-    weekend_workdays: set[date] = set()
+    weekend_workdays: set[date]
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
@@ -245,6 +245,10 @@ class HolidayBase(dict[date, str]):
     """All holiday categories supported by this entity."""
     supported_languages: tuple[str, ...] = ()
     """All languages supported by this entity."""
+    start_year: int = DEFAULT_START_YEAR
+    """Start year of holidays presence for this entity."""
+    end_year: int = DEFAULT_END_YEAR
+    """End year of holidays presence for this entity."""
 
     def __init__(
         self,
@@ -358,7 +362,7 @@ class HolidayBase(dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = set()
+        self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
         self.tr = (
@@ -444,8 +448,7 @@ class HolidayBase(dict[date, str]):
                 *_, month, day = tokens
                 if month in MONTHS and day in DAYS:
                     return lambda name: self._add_holiday(
-                        name,
-                        date(self._year, MONTHS[month], int(day)),
+                        name, date(self._year, MONTHS[month], int(day))
                     )
 
             elif len(tokens) == 7:
@@ -683,15 +686,7 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return (
-            "country",
-            "expand",
-            "language",
-            "market",
-            "observed",
-            "subdiv",
-            "years",
-        )
+        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
 
     @cached_property
     def _entity_code(self):
@@ -828,6 +823,9 @@ class HolidayBase(dict[date, str]):
         # to add new holidays to the object:
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
+
+        if year < self.start_year or year > self.end_year:
+            return None
 
         self._year = year
         self._populate_common_holidays()

@@ -39,6 +39,8 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     default_language = "es"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    # Law # 6997.
+    start_year = 1920
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -52,10 +54,6 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         return 1980 <= self._year <= 1983 or self._year >= 1997
 
     def _populate_public_holidays(self):
-        # Law # 6997.
-        if self._year <= 1919:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
@@ -105,9 +103,6 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # These holidays are generally observed by schools, public sector offices, banks,
         # and a few private companies.
 
-        if self._year <= 1919:
-            return None
-
         # Children's Day.
         self._add_holiday_jan_6(tr("Día de los Niños"))
 
@@ -139,14 +134,15 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 self._move_holiday(dt)
 
         if self._year <= 1932 or self._year >= 1937:
-            name = (
-                # Cultural Diversity Day.
-                tr("Día de la Diversidad Cultural")
-                if self._year >= 2014
-                # Columbus Day.
-                else tr("Día de la Raza")
+            self._move_holiday(
+                self._add_columbus_day(
+                    # Cultural Diversity Day.
+                    tr("Día de la Diversidad Cultural")
+                    if self._year >= 2014
+                    # Columbus Day.
+                    else tr("Día de la Raza")
+                )
             )
-            self._move_holiday(self._add_columbus_day(name))
 
         if self._year <= 1932 or self._year >= 1938:
             # All Souls' Day.

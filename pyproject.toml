@@ -1,6 +1,6 @@
 [project]
 name = "holidays"
-description = "World Holidays Framework"
+description = "Open World Holidays Framework"
 license = { "text" = "MIT" }
 readme = "README.rst"
 requires-python = ">=3.9"
@@ -82,6 +82,9 @@ module = "holidays.groups.*"
 disable_error_code = "attr-defined"
 
 [tool.pytest.ini_options]
+addopts = [
+    "--cov-fail-under=100",
+]
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]

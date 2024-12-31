@@ -1,0 +1,114 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Ukraine holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.64\n"
+"POT-Creation-Date: 2023-07-08 19:40+0300\n"
+"PO-Revision-Date: 2024-12-23 14:10+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (вихідний)"
+msgstr "ชดเชย%s"
+
+#. New Year's Day.
+msgid "Новий рік"
+msgstr "วันขึ้นปีใหม่"
+
+#. International Women's Day.
+msgid "Міжнародний жіночий день"
+msgstr "วันสตรีสากล"
+
+#. Easter Sunday (Pascha).
+msgid "Великдень (Пасха)"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. Holy Trinity Day.
+msgid "Трійця"
+msgstr "วันสมโภชพระตรีเอกภาพ"
+
+#. Labor Day.
+msgid "День праці"
+msgstr "วันแรงงาน"
+
+#. International Workers' Solidarity Day.
+msgid "День міжнародної солідарності трудящих"
+msgstr "วันสมานฉันท์แรงงานสากล"
+
+#. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
+msgid ""
+"День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 "
+"років"
+msgstr ""
+"วันแห่งความทรงจำและชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง "
+"1939-1945"
+
+#. Day of Victory over Nazism in World War II (Victory Day).
+msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
+msgstr ""
+"วันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"
+
+#. Victory Day.
+msgid "День перемоги"
+msgstr "วันแห่งชัยชนะ"
+
+#. Day of the Constitution of Ukraine.
+msgid "День Конституції України"
+msgstr "วันรัฐธรรมนูญยูเครน"
+
+#. Ukrainian Statehood Day.
+msgid "День Української Державності"
+msgstr "วันรัฐยูเครน"
+
+#. Independence Day.
+msgid "День незалежності України"
+msgstr "วันประกาศอิสรภาพยูเครน"
+
+#. Day of defenders of Ukraine.
+msgid "День захисників і захисниць України"
+msgstr "วันแห่งผู้พิทักษ์ยูเครน"
+
+#. Defender of Ukraine Day.
+msgid "День захисника України"
+msgstr "วันผู้พิทักษ์ยูเครน"
+
+#. Anniversary of the Great October Socialist Revolution.
+msgid "Річниця Великої Жовтневої соціалістичної революції"
+msgstr "วันครบรอบการปฏิวัติสังคมนิยมแห่งเดือนตุลาคมอันยิ่งใหญ่"
+
+#. Christmas Day.
+msgid "Різдво Христове"
+msgstr "วันคริสต์มาส"
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr "%d/%m/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Вихідний день (перенесено з %s)"
+msgstr "วันหยุด (แทน %s)"
+
+#. Presidential decree holiday.
+msgid "Вихідний згідно указу Президента"
+msgstr "วันหยุดตามประกาศคำสั่งประธานาธิบดี"

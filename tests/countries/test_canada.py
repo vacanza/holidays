@@ -695,13 +695,17 @@ class TestCanada(CommonCountryTests, TestCase):
 
     def test_nunavut_day(self):
         name = "Nunavut Day"
+        nu_holidays = self.prov_hols["NU"]
+        nu_opt_holidays = self.prov_opt_hols["NU"]
         self.assertNoHolidayName(name)
         self.assertNoHoliday(f"{year}-07-09" for year in range(2001, 2050))
-        self.assertNoHolidayName(name, self.prov_hols["NU"])
-        nu_opt_holidays = self.prov_opt_hols["NU"]
-        self.assertNoHoliday(nu_opt_holidays, "1999-07-09", "2000-07-09")
-        self.assertHoliday(nu_opt_holidays, "2000-04-01")
-        self.assertHoliday(nu_opt_holidays, (f"{year}-07-09" for year in range(2001, 2050)))
+        self.assertHolidayName(name, nu_holidays, (f"{year}-07-09" for year in range(2020, 2050)))
+        self.assertNoHolidayName(name, nu_holidays, range(1867, 2020))
+        self.assertNoHoliday(nu_opt_holidays, "1999-07-09", "2000-07-09", "2020-07-09")
+        self.assertHolidayName(
+            name, nu_opt_holidays, "2000-04-01", (f"{year}-07-09" for year in range(2001, 2020))
+        )
+        self.assertNoHolidayName(name, nu_opt_holidays, range(1867, 2000), range(2020, 2050))
 
     def test_national_patriots_day(self):
         name = "National Patriots' Day"
@@ -803,6 +807,7 @@ class TestCanada(CommonCountryTests, TestCase):
             "Saint Jean Baptiste Day",
             "Canada Day",
             "Canada Day; Memorial Day",
+            "Nunavut Day",
             "British Columbia Day",
             "Civic Holiday",
             "New Brunswick Day",

@@ -33,6 +33,8 @@ class Cameroon(
 
     country = "CM"
     observed_label = "%s (observed)"
+    # On 1 January 1960, French Cameroun gained independence from France.
+    start_year = 1960
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -43,10 +45,6 @@ class Cameroon(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # On 1 January 1960, French Cameroun gained independence from France.
-        if self._year <= 1959:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.

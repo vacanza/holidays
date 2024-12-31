@@ -21,14 +21,14 @@ class TestHongKong(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HongKong, years=range(1963, 2050), years_non_observed=range(1963, 2050))
-        cls.opt_holidays = HongKong(categories=(OPTIONAL,), years=range(1946, 2050))
+        cls.opt_holidays = HongKong(categories=OPTIONAL, years=range(1946, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HongKong, HK, HKG)
 
     def test_no_holidays(self):
         self.assertNoHolidays(HongKong(years=1962))
-        self.assertNoHolidays(HongKong(categories=(OPTIONAL,), years=1945))
+        self.assertNoHolidays(HongKong(categories=OPTIONAL, years=1945))
 
     def test_special_holidays(self):
         self.assertHoliday(

@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 154 country codes. The standard way to refer to a country
+We currently support 155 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -258,8 +258,8 @@ All other default values are highlighted with bold:
    * - Belarus
      - BY
      -
-     - **be**, en_US
-     -
+     - **be**, en_US, ru, th
+     - WORKDAY
    * - Belgium
      - BE
      -
@@ -437,7 +437,7 @@ All other default values are highlighted with bold:
      - UNOFFICIAL
    * - France
      - FR
-     - DOM/TOM: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)
      - en_US, **fr**, uk
      -
    * - Gabon
@@ -479,6 +479,11 @@ All other default values are highlighted with bold:
      - GT
      -
      - en_US, **es**
+     -
+   * - Guernsey
+     - GG
+     -
+     -
      -
    * - Haiti
      - HT
@@ -663,8 +668,8 @@ All other default values are highlighted with bold:
    * - Montenegro
      - ME
      -
-     -
-     -
+     - **cnr**, en_US, uk
+     - CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY
    * - Morocco
      - MA
      -
@@ -773,7 +778,7 @@ All other default values are highlighted with bold:
    * - Russia
      - RU
      -
-     - en_US, **ru**
+     - en_US, **ru**, th
      -
    * - Saint Kitts and Nevis
      - KN
@@ -883,7 +888,7 @@ All other default values are highlighted with bold:
    * - Ukraine
      - UA
      -
-     - ar, en_US, **uk**
+     - ar, en_US, th, **uk**
      - WORKDAY
    * - United Arab Emirates
      - AE
@@ -975,8 +980,12 @@ following financial markets are available:
      - Code
      - Info
      - Supported Languages
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
+     - en_US, **pt_BR**, uk
    * - European Central Bank
-     - ECB
+     - XECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
      -
    * - ICE Futures Europe
@@ -987,10 +996,6 @@ following financial markets are available:
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
      -
-   * - Brasil, Bolsa, Balcão
-     - BVMF
-     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
-     - en_US, **pt_BR**, uk
 
 
 Contributions

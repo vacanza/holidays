@@ -37,6 +37,11 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     country = "PW"
     supported_categories = (ARMED_FORCES, HALF_DAY, PUBLIC)
     observed_label = "%s (observed)"
+    # Republic of Palau Public Law No. 2-15.
+    # The legislation was first adopted by the 2nd Olbiil Era Kelulau (1984-1988),
+    # but since we cannot find any info on its actual adoption date, we may as
+    # well use the formation date of the country as the placeholder cut-off date.
+    start_year = 1981
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -46,13 +51,6 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Republic of Palau Public Law No. 2-15.
-        # The legislation was first adopted by the 2nd Olbiil Era Kelulau (1984-1988),
-        # but since we cannot find any info on its actual adoption date, we may as
-        # well use the formation date of the country as the placeholder cut-off date.
-        if self._year <= 1980:
-            return None
-
         # Fixed Date Public Holidays.
 
         # New Year's Day.

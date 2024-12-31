@@ -25,7 +25,7 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
         self.assertAliases(Norway, NO, NOR)
 
     def test_new_years(self):
-        self.assertHoliday("1900-01-01", "2017-01-01", "2023-01-01")
+        self.assertHoliday("1901-01-01", "2017-01-01", "2023-01-01")
 
     def test_easter(self):
         self.assertHoliday(

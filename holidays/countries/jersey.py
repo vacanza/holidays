@@ -48,6 +48,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "JE"
     observed_label = "%s (substitute day)"
+    # Earliest available piece of law available is from 1952.
+    start_year = 1952
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -65,10 +67,6 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self) -> None:
-        # Earliest available piece of law available is from 1952.
-        if self._year <= 1951:
-            return None
-
         # New Year's Day.
         # Available online source shown that this was celebrated since at least 1952.
         # Was briefly removed in 1983 only to be added back again before that came to effect.

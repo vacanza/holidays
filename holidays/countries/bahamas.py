@@ -39,6 +39,8 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     country = "BS"
     observed_label = "%s (observed)"
+    # Gained Independence on Jul 10, 1973.
+    start_year = 1974
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -48,10 +50,6 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Gained Independence on Jul 10, 1973.
-        if self._year <= 1973:
-            return None
-
         # New Year's Day.
         # Pre-2012 Observance:
         # - If TUE, New Year's Day (observed) prev MON.

@@ -1,3 +1,53 @@
+Version 0.63
+============
+
+Released December 16, 2024
+
+- Update CI/CD trigger section (#2170 by @arkid15r)
+- Update KZ holidays: add 2025 special holidays (#2167 by @qaziqarta)
+- Update Thailand holidays: extend support year down to 1914 (#2166 by @PPsyrius)
+- Add French subdivision aliases (#2162 by @bors-ltd)
+- Align financial markets MIC codes with ISO 10383 (#2158 by @KJhellico)
+- Enforce 100% test coverage (#2173 by @arkid15r)
+- Inline single-use variables, update .py files formatting (#2161 by @KJhellico)
+
+Version 0.62
+============
+
+Released December 2, 2024
+
+- Introduce start/end year for entity (#2141 by @KJhellico)
+- Add Guernsey holidays (#2135 by @PPsyrius)
+- Update AZ holidays: add 2025 special holidays (#2154 by @KJhellico)
+- Update Argentina holidays: Add 2025 Bridge Public Holidays (#2146 by @PPsyrius)
+- Update CA holidays: Nunavut Day is NU public holiday since 2020 (#2143 by @KJhellico)
+- Update Finland holidays: fix Independence Day appearing pre-1917 (#2145 by @PPsyrius)
+- Update Paraguay holidays (#2151 by @KJhellico)
+- Update Timor Leste holidays: Add 2024 Nov 29 Special Holiday (#2150 by @PPsyrius)
+- Update pyproject.toml: clarify project summary (#2139 by @arkid15r)
+- Add SECURITY.md (#2142 by @arkid15r)
+
+Version 0.61
+============
+
+Released November 18, 2024
+
+- Add financial markets l10n support (#2116 by @KJhellico)
+- Refactor some `if len(container)...` cases to `if container...` (#2118 by @arkid15r)
+- Add "Brasil, Bolsa, Balcão" ([B]³) holidays (#2109 by @araggohnxd, @arkid15r, @KJhellico, @PPsyrius)
+- Update Brazil holidays, add l10n support (#2113 by @KJhellico)
+- Update Brunei holidays: 1998-2003, 2006-2025 exact dates (#2107 by @PPsyrius)
+- Update CH holidays: rename Neujahrestag to Neujahrstag (#2121 by @kurtkeller, @arkid15r)
+- Update Cambodia holidays: add Peace Day in Cambodia (#2108 by @PPsyrius)
+- Update China holidays in 2025 (#2124 by @KJhellico)
+- Update Thailand holidays: 2025-2026 Bridge Public Holidays (#2123 by @PPsyrius)
+- Update Unites States holidays: remove Columbus Day from countrywide holidays (#2106 by @KJhellico)
+- Update `TestCase::assertLocalizedHolidays`: add subdivisions holidays support (#2117 by @KJhellico)
+- Update helpers::_normalize_arguments, add helpers tests (#2122 by @arkid15r)
+- Update ruff configuration: add Pylint errors check (#2119 by @KJhellico)
+- Add Europe Day to InternationalHolidays (#2114 by @KJhellico)
+- Add Portugal subdivision aliases (#2110 by @dgomes)
+
 Version 0.60
 ============
 

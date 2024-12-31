@@ -46,6 +46,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     supported_languages = ("en_US", "pt_AO", "uk")
     # %s (observed).
     observed_label = tr("%s (ponte)")
+    # Decree #5/75.
+    start_year = 1975
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -68,12 +70,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
-        # Decree #5/75.
-        if self._year <= 1974:
-            return None
-
         # New Year's Day.
-        name = self.tr("Dia do Ano Novo")
+        name = tr("Dia do Ano Novo")
         dt = self._add_new_years_day(name)
         if self._year <= 2011 or self._year >= 2018:
             self._add_observed(dt)
@@ -86,14 +84,15 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 self._add_holiday_jan_4(tr("Dia dos Mártires da Repressão Colonial"))
             )
 
-        name = (
-            # Beginning of the Armed Struggle for National Liberation Day.
-            tr("Dia do Início da Luta Armada de Libertação Nacional")
-            if self._year >= 2012
-            # Beginning of the Armed Struggle Day.
-            else tr("Dia do Início da Luta Armada")
+        self._add_observed(
+            self._add_holiday_feb_4(
+                # Beginning of the Armed Struggle for National Liberation Day.
+                tr("Dia do Início da Luta Armada de Libertação Nacional")
+                if self._year >= 2012
+                # Beginning of the Armed Struggle Day.
+                else tr("Dia do Início da Luta Armada")
+            )
         )
-        self._add_observed(self._add_holiday_feb_4(name))
 
         # Law #16/96.
         if self._year >= 1997:
@@ -105,17 +104,13 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Law #11/18.
         if self._year >= 2019:
-            self._add_observed(
-                # Southern Africa Liberation Day.
-                self._add_holiday_mar_23(tr("Dia da Libertação da África Austral"))
-            )
+            # Southern Africa Liberation Day.
+            self._add_observed(self._add_holiday_mar_23(tr("Dia da Libertação da África Austral")))
 
         # Law #7/03.
         if self._year >= 2003:
-            self._add_observed(
-                # Peace and National Reconciliation Day.
-                self._add_holiday_apr_4(tr("Dia da Paz e Reconciliação Nacional"))
-            )
+            # Peace and National Reconciliation Day.
+            self._add_observed(self._add_holiday_apr_4(tr("Dia da Paz e Reconciliação Nacional")))
 
         # Law #16/96.
         if self._year >= 1997:
@@ -147,21 +142,22 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         if self._year <= 2010 or self._year >= 2018:
             self._add_observed(dt)
 
-        name = (
-            # National Independence Day.
-            tr("Dia da Independência Nacional")
-            if self._year >= 1996
-            # Independence Day.
-            else tr("Dia da Independência")
+        self._add_observed(
+            self._add_holiday_nov_11(
+                # National Independence Day.
+                tr("Dia da Independência Nacional")
+                if self._year >= 1996
+                # Independence Day.
+                else tr("Dia da Independência")
+            )
         )
-        self._add_observed(self._add_holiday_nov_11(name))
 
         # Decree # 7/92.
         if self._year <= 1991:
             # Date of Founding of MPLA - Labor Party.
             self._add_holiday_dec_10(tr("Data da Fundacao do MPLA - Partido do Trabalho"))
 
-        name = (
+        dt = self._add_christmas_day(
             # Christmas and Family Day.
             tr("Dia de Natal e da Família")
             if self._year >= 2011
@@ -171,7 +167,6 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
                 else tr("Dia da Família")  # Family Day.
             )
         )
-        dt = self._add_christmas_day(name)
         if self._year <= 2010 or self._year >= 2018:
             self._add_observed(dt)
 

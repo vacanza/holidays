@@ -24,6 +24,7 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """
 
     country = "LS"
+    start_year = 1996
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -32,9 +33,6 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1995:
-            return None
-
         # New Year's Day.
         self._add_new_years_day("New Year's Day")
 

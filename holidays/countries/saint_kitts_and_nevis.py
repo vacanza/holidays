@@ -47,6 +47,8 @@ class SaintKittsAndNevis(
     # %s (observed).
     observed_label = "%s (observed)"
     weekend = {SUN}
+    # Public Holidays Act, Act 7 of 1983 Amendment.
+    start_year = 1983
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -56,10 +58,6 @@ class SaintKittsAndNevis(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Act, Act 7 of 1983 Amendment.
-        if self._year <= 1982:
-            return None
-
         # Carnival Day.
         self._add_observed(self._add_new_years_day("Carnival Day"), rule=SUN_TO_NEXT_TUE)
 
