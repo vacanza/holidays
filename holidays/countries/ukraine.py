@@ -72,7 +72,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # International Women's Day.
             dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
 
-        if (self._year >= 2022) == is_martial_law:
+        if (self._year >= 2022) is is_martial_law:
             # Easter Sunday (Pascha).
             dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
