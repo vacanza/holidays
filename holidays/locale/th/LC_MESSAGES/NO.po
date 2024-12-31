@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Norway holidays en_US localization.
+# Norway holidays th localization.
 #
 msgid ""
 msgstr ""
