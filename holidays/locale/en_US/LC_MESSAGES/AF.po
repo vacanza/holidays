@@ -46,7 +46,6 @@ msgstr "International Workers' Day"
 msgid "روز استقلال"
 msgstr "Independence Day"
 
-#. The Day of the American Withdrawal
 msgid "روز خروج آمریکایی‌ها"
 msgstr "The Day of the American Withdrawal"
 
@@ -96,17 +95,17 @@ msgstr "The third day of Eid al-Adha"
 #. %s (estimated).
 #, c-format
 msgid "%s (برآورد شده)"
-msgstr "%s (Estimated)"
+msgstr "%s (Estimated"
 
 #. %s (observed).
 #, c-format
 msgid "%s (مشاهده شده)"
-msgstr "%s (Observed)"
+msgstr "%s (Observed"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (مشاهده شده، برآورد شده)"
-msgstr "%s (Observed, Estimated)"
+msgstr "%s (Observed, Estimated"
 
 #. Soviet Victory Day
 msgid "روز پیروزی شوروی"

@@ -46,7 +46,6 @@ msgstr ""
 msgid "روز استقلال"
 msgstr ""
 
-#. The Day of the American Withdrawal
 msgid "روز خروج آمریکایی‌ها"
 msgstr ""
 
@@ -111,6 +110,3 @@ msgstr ""
 #. Soviet Victory Day
 msgid "روز پیروزی شوروی"
 msgstr ""
-
-#~ msgid "روز پیروزی شوروی بر افغانستان"
-#~ msgstr ""

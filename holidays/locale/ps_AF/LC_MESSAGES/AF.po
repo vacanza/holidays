@@ -28,7 +28,7 @@ msgstr ""
 
 #. Freedom Day
 msgid "روز آزادی"
-msgstr "د آزادۍ ورځ"
+msgstr "د ازادۍ ورځ"
 
 #. Newroz
 msgid "نوروز"
@@ -36,19 +36,18 @@ msgstr "نوروز"
 
 #. The Day of the Mojahedin's Defeat
 msgid "روز شکست مجاهدین"
-msgstr "د مجاهدینو د شکست ورځ"
+msgstr "د مجاهدینو د ماتې ورځ"
 
 #. International Workers' Day
 msgid "روز جهانی کارگر"
-msgstr "د نړیوال کارګر ورځ"
+msgstr "د کارګرو نړیواله ورځ"
 
 #. Independence Day
 msgid "روز استقلال"
-msgstr "د استقلال ورځ"
+msgstr "د خپلواکۍ ورځ"
 
-#. The Day of the American Withdrawal
 msgid "روز خروج آمریکایی‌ها"
-msgstr "د امریکایانو د وتلو ورځ"
+msgstr "د امریکا د وتلو ورځ"
 
 #. Martyrs' Day
 msgid "روز شهیدان"
@@ -64,34 +63,34 @@ msgstr "عاشورا"
 
 #. The Prophet's Birthday
 msgid "میلاد پیامبر"
-msgstr "د پیغمبر میلاد"
+msgstr "د پیغمبر الله صلی الله علیه وسلم د میلاد ورځ"
 
 #. First of Ramadan
 msgid "اول رمضان"
-msgstr "لومړۍ ورځ د رمضان"
+msgstr "د روژې لومړۍ نیټه"
 
 #. The first day of Eid al-Fitr
 msgid "روز اول عید فطر"
-msgstr "د عید فطر لومړۍ ورځ"
+msgstr "د اختر لومړۍ ورځ"
 
 #. The second day of Eid al-Fitr
 msgid "روز دوم عید فطر"
-msgstr "د عید فطر دویمه ورځ"
+msgstr "د اختر دوهمه ورځ"
 
 msgid "سومین روز عید فطر"
-msgstr "د عید فطر درېیمه ورځ"
+msgstr "د اختر درېیمه ورځ"
 
 #. The first day of Eid al-Adha
 msgid "اول روز عید قربان"
-msgstr "د عید قربان لومړۍ ورځ"
+msgstr "د قربان لومړۍ ورځ"
 
 #. The second day of Eid al-Adha
 msgid "روز دوم عید قربان"
-msgstr "د عید قربان دویمه ورځ"
+msgstr "د قربان دوهمه ورځ"
 
 #. The third day of Eid al-Adha
 msgid "سومین روز عید قربان"
-msgstr "د عید قربان درېیمه ورځ"
+msgstr "د قربان دریمه ورځ"
 
 #. %s (estimated).
 #, c-format
