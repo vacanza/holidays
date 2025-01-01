@@ -93,8 +93,7 @@ class TestUkraine(CommonCountryTests, TestCase):
             "2020-04-19",
             "2021-05-02",
         )
-        self.assertHolidayName(name, range(1992, 2022))
-        self.assertNoHolidayName(name, 1991)
+        self.assertHolidayName(name, range(1991, 2022))
 
         dt = (
             "2010-04-05",
@@ -117,8 +116,9 @@ class TestUkraine(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_trinity(self):
+        name = "Трійця"
         self.assertHolidayName(
-            "Трійця",
+            name,
             "2010-05-23",
             "2011-06-12",
             "2012-06-03",
@@ -132,6 +132,7 @@ class TestUkraine(CommonCountryTests, TestCase):
             "2020-06-07",
             "2021-06-20",
         )
+        self.assertHolidayName(name, range(1991, 2022))
 
         dt = (
             "2010-05-24",
@@ -252,6 +253,9 @@ class TestUkraine(CommonCountryTests, TestCase):
 
     def test_substituted(self):
         self.assertHoliday(
+            "1991-05-03",
+            "1991-05-10",
+            "1991-07-15",
             "1992-01-06",
             "1992-04-27",
             "1993-01-08",
@@ -264,8 +268,10 @@ class TestUkraine(CommonCountryTests, TestCase):
             "1996-05-10",
             "1997-01-02",
             "1997-01-06",
+            "1997-01-08",
             "1997-04-29",
             "1997-04-30",
+            "1998-01-02",
             "1999-01-08",
             "1999-04-12",
             "1999-08-23",
@@ -318,7 +324,7 @@ class TestUkraine(CommonCountryTests, TestCase):
             "2011-03-07",
             "2011-06-27",
             "2012-03-09",
-            "2012-04-20",
+            "2012-04-30",
             "2012-06-29",
             "2012-12-31",
             "2013-05-03",

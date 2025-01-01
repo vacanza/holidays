@@ -25,8 +25,9 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """
     Ukraine holidays.
 
-    Current holidays list:
-        - https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
+    References:
+        - Labor Code of Ukraine, Art. 73 `<https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454>`_
+        - https://zakon.rada.gov.ua/laws/show/585-12
     """
 
     country = "UA"
@@ -71,10 +72,9 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # International Women's Day.
             dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
 
-        if (self._year >= 2022) == is_martial_law:
-            if self._year >= 1992:
-                # Easter Sunday (Pascha).
-                dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
+        if (self._year >= 2022) is is_martial_law:
+            # Easter Sunday (Pascha).
+            dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
             # Holy Trinity Day.
             dts_observed.add(self._add_whit_sunday(tr("Трійця")))
@@ -169,6 +169,7 @@ class UKR(Ukraine):
 class UkraineStaticHolidays:
     """
         Substituted holidays:
+            - `1991 <https://zakon.rada.gov.ua/laws/show/60-91-%D0%BF>`_
             - `1992 [1] <https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF>`_
             - `1992 [2] <https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF>`_
             - `1993 [1] <https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF>`_
@@ -178,8 +179,9 @@ class UkraineStaticHolidays:
             - `1995 [2] <https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF>`_
             - `1995 [3] <https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF>`_
             - `1996 <https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF>`_
-            - `1997[1] <https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF>`_
-            - `1997[2] <https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF>`_
+            - `1997 [1] <https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF>`_
+            - `1997 [2] <https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF>`_
+            - `1998 <https://zakon.rada.gov.ua/laws/show/1404-97-%D0%BF>`_,
             - `1999 [1] <https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF>`_,
             - `1999 [2] <https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF>`_,
             - `1999 [3] <https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF>`_
@@ -221,6 +223,11 @@ class UkraineStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")
     special_public_holidays = {
+        1991: (
+            (MAY, 3, MAY, 5),
+            (MAY, 10, MAY, 12),
+            (JUL, 15, JUL, 13),
+        ),
         1992: (
             (JAN, 6, JAN, 4),
             (APR, 27, MAY, 16),
@@ -244,9 +251,11 @@ class UkraineStaticHolidays:
         1997: (
             (JAN, 2, DEC, 28, 1996),
             (JAN, 6, JAN, 4),
+            (JAN, 8, JAN, 11),
             (APR, 29, APR, 19),
             (APR, 30, MAY, 17),
         ),
+        1998: (JAN, 2, JAN, 4),
         1999: (
             (JAN, 8, JAN, 10),
             (APR, 12, APR, 24),
@@ -324,7 +333,7 @@ class UkraineStaticHolidays:
         ),
         2012: (
             (MAR, 9, MAR, 3),
-            (APR, 20, APR, 28),
+            (APR, 30, APR, 28),
             (JUN, 29, JUL, 7),
             (DEC, 31, DEC, 29),
         ),
