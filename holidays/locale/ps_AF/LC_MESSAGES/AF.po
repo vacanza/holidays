@@ -26,15 +26,15 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Liberation Day
+#. Freedom Day
 msgid "روز آزادی"
 msgstr "د آزادۍ ورځ"
 
-#. Nowruz
+#. Newroz
 msgid "نوروز"
 msgstr "نوروز"
 
-#. Defeat of Mujahideen Day
+#. The Day of the Mojahedin's Defeat
 msgid "روز شکست مجاهدین"
 msgstr "د مجاهدینو د شکست ورځ"
 
@@ -42,11 +42,11 @@ msgstr "د مجاهدینو د شکست ورځ"
 msgid "روز جهانی کارگر"
 msgstr "د نړیوال کارګر ورځ"
 
-#. Afghan Independence Day
+#. Independence Day
 msgid "روز استقلال"
 msgstr "د استقلال ورځ"
 
-#. American Withdrawal Day
+#. The Day of the American Withdrawal
 msgid "روز خروج آمریکایی‌ها"
 msgstr "د امریکایانو د وتلو ورځ"
 
@@ -54,7 +54,7 @@ msgstr "د امریکایانو د وتلو ورځ"
 msgid "روز شهیدان"
 msgstr "د شهیدانو ورځ"
 
-#. Day of Arafah
+#. The Day of Arafah
 msgid "روز عرفه"
 msgstr "د عرفه ورځ"
 
@@ -62,12 +62,11 @@ msgstr "د عرفه ورځ"
 msgid "عاشورا"
 msgstr "عاشورا"
 
-#. Mawlid
 #. The Prophet's Birthday
 msgid "میلاد پیامبر"
 msgstr "د پیغمبر میلاد"
 
-#. First Day of Ramadan
+#. First of Ramadan
 msgid "اول رمضان"
 msgstr "لومړۍ ورځ د رمضان"
 

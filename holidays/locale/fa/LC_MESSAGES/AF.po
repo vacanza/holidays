@@ -26,15 +26,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
 
-#. Liberation Day
+#. Freedom Day
 msgid "روز آزادی"
 msgstr ""
 
-#. Nowruz
+#. Newroz
 msgid "نوروز"
 msgstr ""
 
-#. Defeat of Mujahideen Day
+#. The Day of the Mojahedin's Defeat
 msgid "روز شکست مجاهدین"
 msgstr ""
 
@@ -42,11 +42,11 @@ msgstr ""
 msgid "روز جهانی کارگر"
 msgstr ""
 
-#. Afghan Independence Day
+#. Independence Day
 msgid "روز استقلال"
 msgstr ""
 
-#. American Withdrawal Day
+#. The Day of the American Withdrawal
 msgid "روز خروج آمریکایی‌ها"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "روز شهیدان"
 msgstr ""
 
-#. Day of Arafah
+#. The Day of Arafah
 msgid "روز عرفه"
 msgstr ""
 
@@ -62,12 +62,11 @@ msgstr ""
 msgid "عاشورا"
 msgstr ""
 
-#. Mawlid
 #. The Prophet's Birthday
 msgid "میلاد پیامبر"
 msgstr ""
 
-#. First Day of Ramadan
+#. First of Ramadan
 msgid "اول رمضان"
 msgstr ""
 

@@ -31,6 +31,8 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (مشاهده شده، برآورد شده)")
     supported_languages = ("en_US", "fa", "ps_AF")
+    # Afghanistan's regaining of full independence from British influence
+    start_year = 1919
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -39,27 +41,29 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         if self._year >= 1989:
-            self._add_holiday_feb_15(tr("روز آزادی"))  # Liberation Day
+            self._add_holiday_feb_15(tr("روز آزادی"))  # Freedom Day
 
-        if self._year < 1996 or 2001 <= self._year <= 2020:
-            self._add_holiday_mar_21(tr("نوروز"))  # Nowruz
+        if self._year <= 1996 or 2001 <= self._year <= 2020:
+            self._add_holiday_mar_21(tr("نوروز"))  # Newroz
 
         if self._year >= 1992:
-            self._add_holiday_apr_28(tr("روز شکست مجاهدین"))  # Defeat of Mujahideen Day
+            self._add_holiday_apr_28(tr("روز شکست مجاهدین"))  # The Day of the Mojahedin's Defeat
 
-        if 1889 <= self._year <= 1996 or 2002 <= self._year <= 2021:
+        if 1968 <= self._year <= 1996 or 2002 <= self._year <= 2021:
             self._add_labor_day(tr("روز جهانی کارگر"))  # International Workers' Day
 
         if 1978 <= self._year <= 1989:
             self._add_holiday_may_9(tr("روز پیروزی شوروی"))  # Soviet Victory Day
 
         if self._year >= 2022:
-            self._add_holiday_aug_31(tr("روز خروج آمریکایی‌ها"))  # American Withdrawal Day
+            self._add_holiday_aug_31(
+                tr("روز خروج آمریکایی‌ها")
+            )  # The Day of the American Withdrawal
 
         if 1919 <= self._year <= 1973:
-            self._add_holiday_aug_19(tr("روز استقلال"))  # Afghan Independence Day
-        if self._year > 1973:
-            self._add_holiday_jul_17(tr("روز استقلال"))  # Afghan Independence Day
+            self._add_holiday_aug_19(tr("روز استقلال"))  # Independence Day
+        if self._year >= 1973:
+            self._add_holiday_jul_17(tr("روز استقلال"))  # Independence Day
 
         if self._year >= 2012:
             self._add_holiday_sep_9(tr("روز شهیدان"))  # Martyrs' Day
@@ -71,7 +75,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
                 tr("سومین روز عید فطر")
             )  # The third day of Eid al-Fitr
 
-        self._add_arafah_day(tr("روز عرفه"))  # Day of Arafah
+        self._add_arafah_day(tr("روز عرفه"))  # The Day of Arafah
 
         self._add_eid_al_adha_day(tr("اول روز عید قربان"))  # The first day of Eid al-Adha
         self._add_eid_al_adha_day_two(tr("روز دوم عید قربان"))  # The second day of Eid al-Adha
@@ -79,11 +83,9 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         self._add_ashura_day(tr("عاشورا"))  # Ashura
 
-        self._add_mawlid_day(tr("میلاد پیامبر"))  # Mawlid
-
-        self._add_ramadan_beginning_day(tr("اول رمضان"))  # First Day of Ramadan
-
         self._add_mawlid_day(tr("میلاد پیامبر"))  # The Prophet's Birthday
+
+        self._add_ramadan_beginning_day(tr("اول رمضان"))  # First of Ramadan
 
 
 class AF(Afghanistan):
