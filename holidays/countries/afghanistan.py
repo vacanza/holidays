@@ -44,32 +44,28 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Liberation Day.
             self._add_holiday_feb_15(tr("روز آزادی"))
 
+        # Afghanistan's Independence Day.
+        self._add_holiday_aug_19(tr("روز استقلال افغانستان"))
+
         if self._year <= 1996 or 2001 <= self._year <= 2020:
             # Nowruz.
             self._add_holiday_mar_21(tr("نوروز"))
 
         if self._year >= 1992:
-            # Defeat of Mujahideen Day.
-            self._add_holiday_apr_28(tr("روز شکست مجاهدین"))
+            # Mujahideen Victory Day.
+            self._add_holiday_apr_28(tr("روز پیروزی مجاهدین"))
 
-        if 1968 <= self._year <= 1996 or 2002 <= self._year <= 2021:
+        if 1974 <= self._year <= 1996 or 2002 <= self._year <= 2021:
             # International Workers' Day.
             self._add_labor_day(tr("روز جهانی کارگر"))
 
-        if 1978 <= self._year <= 1989:
-            # Soviet Victory over Afghanistan Day.
+        if 1978 <= self._year <= 1988:
+            # Soviet Victory Day.
             self._add_holiday_may_9(tr("روز پیروزی شوروی"))
 
         if self._year >= 2022:
             # American Withdrawal Day.
             self._add_holiday_aug_31(tr("روز خروج آمریکایی‌ها"))
-
-        # Afghan Independence Day.
-        name = tr("روز استقلال")
-        if self._year >= 1974:
-            self._add_holiday_jul_17(name)
-        else:
-            self._add_holiday_aug_19(name)
 
         if self._year >= 2012:
             # Martyrs' Day.

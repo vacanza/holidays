@@ -34,17 +34,9 @@ msgstr "Liberation Day"
 msgid "نوروز"
 msgstr "Nowruz"
 
-#. Defeat of Mujahideen Day.
-msgid "روز شکست مجاهدین"
-msgstr "Defeat of Mujahideen Day"
-
 #. International Workers' Day.
 msgid "روز جهانی کارگر"
 msgstr "International Workers' Day"
-
-#. Afghan Independence Day.
-msgid "روز استقلال"
-msgstr "Afghan Independence Day"
 
 #. American Withdrawal Day.
 msgid "روز خروج آمریکایی‌ها"
@@ -109,6 +101,14 @@ msgstr "%s (observed)"
 msgid "%s (مشاهده شده، برآورد شده)"
 msgstr "%s (observed, estimated)"
 
-#. Soviet Victory over Afghanistan Day.
+#. Soviet Victory Day.
 msgid "روز پیروزی شوروی"
-msgstr "Soviet Victory over Afghanistan Day"
+msgstr "Soviet Victory Day"
+
+#. Mujahideen Victory Day.
+msgid "روز پیروزی مجاهدین"
+msgstr "Mojahedin's Victory Day"
+
+#. Afghanistan's Independence Day.
+msgid "روز استقلال افغانستان"
+msgstr "Afghanistan's Independence Day"

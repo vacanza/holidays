@@ -34,17 +34,9 @@ msgstr "د ازادۍ ورځ"
 msgid "نوروز"
 msgstr "نوروز"
 
-#. Defeat of Mujahideen Day.
-msgid "روز شکست مجاهدین"
-msgstr "د مجاهدینو د ماتې ورځ"
-
 #. International Workers' Day.
 msgid "روز جهانی کارگر"
 msgstr "د کارګرو نړیواله ورځ"
-
-#. Afghan Independence Day.
-msgid "روز استقلال"
-msgstr "د خپلواکۍ ورځ"
 
 #. American Withdrawal Day.
 msgid "روز خروج آمریکایی‌ها"
@@ -109,6 +101,14 @@ msgstr "%s (په دې وروستیو کې د افغانستان د کرکټ مل
 msgid "%s (مشاهده شده، برآورد شده)"
 msgstr "%s (مشاهده شده، تخمین زده شده است)"
 
-#. Soviet Victory over Afghanistan Day.
+#. Soviet Victory Day.
 msgid "روز پیروزی شوروی"
 msgstr "د شوروی د بریالیتوب ورځ"
+
+#. Mujahideen Victory Day.
+msgid "روز پیروزی مجاهدین"
+msgstr "مجاهدو د بریا ورځ"
+
+#. Afghanistan's Independence Day.
+msgid "روز استقلال افغانستان"
+msgstr "د افغانستان د استقلال ورځ"
