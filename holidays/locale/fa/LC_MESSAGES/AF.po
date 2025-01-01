@@ -9,86 +9,88 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
-#, fuzzy
+#
+# Afghanistan holidays.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.64\n"
 "POT-Creation-Date: 2024-12-24 13:40+0530\n"
-"PO-Revision-Date: 2024-12-24 13:40+0530\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2024-12-31 15:53+0700\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
 
-#. Freedom Day
+#. Liberation Day.
 msgid "روز آزادی"
 msgstr ""
 
-#. Newroz
+#. Nowruz.
 msgid "نوروز"
 msgstr ""
 
-#. The Day of the Mojahedin's Defeat
+#. Defeat of Mujahideen Day.
 msgid "روز شکست مجاهدین"
 msgstr ""
 
-#. International Workers' Day
+#. International Workers' Day.
 msgid "روز جهانی کارگر"
 msgstr ""
 
-#. Independence Day
+#. Afghan Independence Day.
 msgid "روز استقلال"
 msgstr ""
 
+#. American Withdrawal Day.
 msgid "روز خروج آمریکایی‌ها"
 msgstr ""
 
-#. Martyrs' Day
+#. Martyrs' Day.
 msgid "روز شهیدان"
 msgstr ""
 
-#. The Day of Arafah
+#. Day of Arafah.
 msgid "روز عرفه"
 msgstr ""
 
-#. Ashura
+#. Ashura.
 msgid "عاشورا"
 msgstr ""
 
-#. The Prophet's Birthday
+#. Prophet's Birthday.
 msgid "میلاد پیامبر"
 msgstr ""
 
-#. First of Ramadan
+#. First Day of Ramadan.
 msgid "اول رمضان"
 msgstr ""
 
-#. The first day of Eid al-Fitr
+#. First Day of Eid al-Fitr.
 msgid "روز اول عید فطر"
 msgstr ""
 
-#. The second day of Eid al-Fitr
+#. Second Day of Eid al-Fitr.
 msgid "روز دوم عید فطر"
 msgstr ""
 
+#. Third Day of Eid al-Fitr.
 msgid "سومین روز عید فطر"
 msgstr ""
 
-#. The first day of Eid al-Adha
+#. First Day of Eid al-Adha.
 msgid "اول روز عید قربان"
 msgstr ""
 
-#. The second day of Eid al-Adha
+#. Second Day of Eid al-Adha.
 msgid "روز دوم عید قربان"
 msgstr ""
 
-#. The third day of Eid al-Adha
+#. Third Day of Eid al-Adha.
 msgid "سومین روز عید قربان"
 msgstr ""
 
@@ -107,6 +109,6 @@ msgstr ""
 msgid "%s (مشاهده شده، برآورد شده)"
 msgstr ""
 
-#. Soviet Victory Day
+#. Soviet Victory over Afghanistan Day.
 msgid "روز پیروزی شوروی"
 msgstr ""
