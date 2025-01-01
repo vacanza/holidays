@@ -31,7 +31,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (مشاهده شده، برآورد شده)")
     supported_languages = ("en_US", "fa", "ps_AF")
-    # Afghanistan's regaining of full independence from British influence
+    # Afghanistan's regaining of full independence from British influence.
     start_year = 1919
 
     def __init__(self, *args, **kwargs):
@@ -41,51 +41,66 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         if self._year >= 1989:
-            self._add_holiday_feb_15(tr("روز آزادی"))  # Freedom Day
+            # Liberation Day.
+            self._add_holiday_feb_15(tr("روز آزادی"))
 
         if self._year <= 1996 or 2001 <= self._year <= 2020:
-            self._add_holiday_mar_21(tr("نوروز"))  # Newroz
+            # Nowruz.
+            self._add_holiday_mar_21(tr("نوروز"))
 
         if self._year >= 1992:
-            self._add_holiday_apr_28(tr("روز شکست مجاهدین"))  # The Day of the Mojahedin's Defeat
+            # Defeat of Mujahideen Day.
+            self._add_holiday_apr_28(tr("روز شکست مجاهدین"))
 
         if 1968 <= self._year <= 1996 or 2002 <= self._year <= 2021:
-            self._add_labor_day(tr("روز جهانی کارگر"))  # International Workers' Day
+            # International Workers' Day.
+            self._add_labor_day(tr("روز جهانی کارگر"))
 
         if 1978 <= self._year <= 1989:
-            self._add_holiday_may_9(tr("روز پیروزی شوروی"))  # Soviet Victory Day
+            # Soviet Victory over Afghanistan Day.
+            self._add_holiday_may_9(tr("روز پیروزی شوروی"))
 
         if self._year >= 2022:
-            self._add_holiday_aug_31(
-                tr("روز خروج آمریکایی‌ها")
-            )  # The Day of the American Withdrawal
+            # American Withdrawal Day.
+            self._add_holiday_aug_31(tr("روز خروج آمریکایی‌ها"))
 
-        if 1919 <= self._year <= 1973:
-            self._add_holiday_aug_19(tr("روز استقلال"))  # Independence Day
-        if self._year >= 1973:
-            self._add_holiday_jul_17(tr("روز استقلال"))  # Independence Day
+        # Afghan Independence Day.
+        name = tr("روز استقلال")
+        if self._year >= 1974:
+            self._add_holiday_jul_17(name)
+        else:
+            self._add_holiday_aug_19(name)
 
         if self._year >= 2012:
-            self._add_holiday_sep_9(tr("روز شهیدان"))  # Martyrs' Day
+            # Martyrs' Day.
+            self._add_holiday_sep_9(tr("روز شهیدان"))
 
         if self._year >= 2001:
-            self._add_eid_al_fitr_day(tr("روز اول عید فطر"))  # The first day of Eid al-Fitr
-            self._add_eid_al_fitr_day_two(tr("روز دوم عید فطر"))  # The second day of Eid al-Fitr
-            self._add_eid_al_fitr_day_three(
-                tr("سومین روز عید فطر")
-            )  # The third day of Eid al-Fitr
+            # First Day of Eid al-Fitr.
+            self._add_eid_al_fitr_day(tr("روز اول عید فطر"))
+            # Second Day of Eid al-Fitr.
+            self._add_eid_al_fitr_day_two(tr("روز دوم عید فطر"))
+            # Third Day of Eid al-Fitr.
+            self._add_eid_al_fitr_day_three(tr("سومین روز عید فطر"))
 
-        self._add_arafah_day(tr("روز عرفه"))  # The Day of Arafah
+        # Day of Arafah.
+        self._add_arafah_day(tr("روز عرفه"))
 
-        self._add_eid_al_adha_day(tr("اول روز عید قربان"))  # The first day of Eid al-Adha
-        self._add_eid_al_adha_day_two(tr("روز دوم عید قربان"))  # The second day of Eid al-Adha
-        self._add_eid_al_adha_day_three(tr("سومین روز عید قربان"))  # The third day of Eid al-Adha
+        # First Day of Eid al-Adha.
+        self._add_eid_al_adha_day(tr("اول روز عید قربان"))
+        # Second Day of Eid al-Adha.
+        self._add_eid_al_adha_day_two(tr("روز دوم عید قربان"))
+        # Third Day of Eid al-Adha.
+        self._add_eid_al_adha_day_three(tr("سومین روز عید قربان"))
 
-        self._add_ashura_day(tr("عاشورا"))  # Ashura
+        # Ashura.
+        self._add_ashura_day(tr("عاشورا"))
 
-        self._add_mawlid_day(tr("میلاد پیامبر"))  # The Prophet's Birthday
+        # First Day of Ramadan.
+        self._add_ramadan_beginning_day(tr("اول رمضان"))
 
-        self._add_ramadan_beginning_day(tr("اول رمضان"))  # First of Ramadan
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("میلاد پیامبر"))
 
 
 class AF(Afghanistan):
