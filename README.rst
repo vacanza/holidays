@@ -718,7 +718,7 @@ All other default values are highlighted with bold:
    * - Norway
      - NO
      -
-     - en_US, **no**, uk
+     - en_US, **no**, th, uk
      -
    * - Pakistan
      - PK
