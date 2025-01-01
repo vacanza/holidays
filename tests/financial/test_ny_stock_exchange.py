@@ -441,6 +441,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2012, OCT, 29),  # Hurricane Sandy
             date(2012, OCT, 30),  # Hurricane Sandy
             date(2018, DEC, 5),  # Day of Mourning for President George H.W. Bush
+            date(2025, JAN, 9),  # Day of Mourning for President Jimmy Carter
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
