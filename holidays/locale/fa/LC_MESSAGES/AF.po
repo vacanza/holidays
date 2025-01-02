@@ -62,30 +62,6 @@ msgstr ""
 msgid "اول رمضان"
 msgstr ""
 
-#. First Day of Eid al-Fitr.
-msgid "روز اول عید فطر"
-msgstr ""
-
-#. Second Day of Eid al-Fitr.
-msgid "روز دوم عید فطر"
-msgstr ""
-
-#. Third Day of Eid al-Fitr.
-msgid "سومین روز عید فطر"
-msgstr ""
-
-#. First Day of Eid al-Adha.
-msgid "اول روز عید قربان"
-msgstr ""
-
-#. Second Day of Eid al-Adha.
-msgid "روز دوم عید قربان"
-msgstr ""
-
-#. Third Day of Eid al-Adha.
-msgid "سومین روز عید قربان"
-msgstr ""
-
 #. %s (estimated).
 #, c-format
 msgid "%s (برآورد شده)"
@@ -109,9 +85,33 @@ msgstr ""
 msgid "روز پیروزی مجاهدین"
 msgstr ""
 
-#. Afghanistan's Independence Day.
+#. Afghanistan Independence Day.
 msgid "روز استقلال افغانستان"
 msgstr ""
+
+msgid "عید فطر"
+msgstr ""
+
+msgid "عید قربانی"
+msgstr ""
+
+#~ msgid "روز اول عید فطر"
+#~ msgstr ""
+
+#~ msgid "روز دوم عید فطر"
+#~ msgstr ""
+
+#~ msgid "سومین روز عید فطر"
+#~ msgstr ""
+
+#~ msgid "اول روز عید قربان"
+#~ msgstr ""
+
+#~ msgid "روز دوم عید قربان"
+#~ msgstr ""
+
+#~ msgid "سومین روز عید قربان"
+#~ msgstr ""
 
 #~ msgid "روز استقلال"
 #~ msgstr ""

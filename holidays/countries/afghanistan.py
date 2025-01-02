@@ -44,7 +44,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Liberation Day.
             self._add_holiday_feb_15(tr("روز آزادی"))
 
-        # Afghanistan's Independence Day.
+        # Afghanistan Independence Day.
         self._add_holiday_aug_19(tr("روز استقلال افغانستان"))
 
         if self._year <= 1996 or 2001 <= self._year <= 2020:
@@ -71,23 +71,24 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Martyrs' Day.
             self._add_holiday_sep_9(tr("روز شهیدان"))
 
-        if self._year >= 2001:
-            # First Day of Eid al-Fitr.
-            self._add_eid_al_fitr_day(tr("روز اول عید فطر"))
-            # Second Day of Eid al-Fitr.
-            self._add_eid_al_fitr_day_two(tr("روز دوم عید فطر"))
-            # Third Day of Eid al-Fitr.
-            self._add_eid_al_fitr_day_three(tr("سومین روز عید فطر"))
+        name = tr("عید فطر")
+        # First Day of Eid al-Fitr.
+        self._add_eid_al_fitr_day(name)
+        # Second Day of Eid al-Fitr.
+        self._add_eid_al_fitr_day_two(name)
+        # Third Day of Eid al-Fitr.
+        self._add_eid_al_fitr_day_three(name)
 
         # Day of Arafah.
         self._add_arafah_day(tr("روز عرفه"))
 
+        name = tr("عید قربانی")
         # First Day of Eid al-Adha.
-        self._add_eid_al_adha_day(tr("اول روز عید قربان"))
+        self._add_eid_al_adha_day(name)
         # Second Day of Eid al-Adha.
-        self._add_eid_al_adha_day_two(tr("روز دوم عید قربان"))
+        self._add_eid_al_adha_day_two(name)
         # Third Day of Eid al-Adha.
-        self._add_eid_al_adha_day_three(tr("سومین روز عید قربان"))
+        self._add_eid_al_adha_day_three(name)
 
         # Ashura.
         self._add_ashura_day(tr("عاشورا"))
