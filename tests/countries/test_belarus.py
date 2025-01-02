@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.belarus import Belarus, BY, BLR
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestBelarus(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1991, 2050)
@@ -329,7 +329,7 @@ class TestBelarus(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "1998-01-10",
             "1998-04-25",
             "1999-01-16",
@@ -429,7 +429,7 @@ class TestBelarus(CommonCountryTests, WorkingDaysTests, TestCase):
                 "2006-12-30",
             ),
         }.items():
-            self.assertWorkday(Belarus(years=year), dts)
+            self.assertWorkingDay(Belarus(years=year), dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

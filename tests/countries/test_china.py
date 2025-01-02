@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.china import China, CN, CHN
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestChina(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(China, years=range(1950, 2050), years_non_observed=range(2001, 2025))
@@ -197,7 +197,7 @@ class TestChina(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "2001-01-20",
             "2001-01-21",
             "2001-04-28",
@@ -402,7 +402,7 @@ class TestChina(CommonCountryTests, WorkingDaysTests, TestCase):
                 "2011-12-31",
             ),
         }.items():
-            self.assertWorkday(China(years=year), dts)
+            self.assertWorkingDay(China(years=year), dts)
 
     def test_new_years_day(self):
         self.assertHolidayName("元旦", (f"{year}-01-01" for year in range(1950, 2050)))

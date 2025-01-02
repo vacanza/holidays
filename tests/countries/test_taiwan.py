@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.taiwan import Taiwan, TW, TWN
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestTaiwan(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1990, 2030)
@@ -65,7 +65,7 @@ class TestTaiwan(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "2010-02-06",
             "2012-02-04",
             "2012-03-03",
@@ -103,7 +103,7 @@ class TestTaiwan(CommonCountryTests, WorkingDaysTests, TestCase):
         for year, dts in {
             2014: ("2014-12-27",),
         }.items():
-            self.assertWorkday(Taiwan(years=year), dts)
+            self.assertWorkingDay(Taiwan(years=year), dts)
 
     def test_new_years_day(self):
         name = "中華民國開國紀念日"

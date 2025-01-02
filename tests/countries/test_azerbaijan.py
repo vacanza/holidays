@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.azerbaijan import Azerbaijan, AZ, AZE
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestAzerbaijan(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Azerbaijan, years=range(1990, 2050))
@@ -67,7 +67,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "2011-08-27",
             "2012-12-29",
             "2012-12-30",
@@ -110,7 +110,7 @@ class TestAzerbaijan(CommonCountryTests, WorkingDaysTests, TestCase):
             2023: ("2023-12-30",),
             2024: ("2024-12-29",),
         }.items():
-            self.assertWorkday(Azerbaijan(years=year), dts)
+            self.assertWorkingDay(Azerbaijan(years=year), dts)
 
     def test_new_years_day(self):
         name = "Yeni il bayramı"

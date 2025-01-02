@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestKazakhstan(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kazakhstan, years=range(1991, 2050))
@@ -243,7 +243,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "2000-05-06",
             "2001-03-11",
             "2001-03-25",
@@ -304,7 +304,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDaysTests, TestCase):
                 "2013-12-28",
             ),
         }.items():
-            self.assertWorkday(Kazakhstan(years=year), dts)
+            self.assertWorkingDay(Kazakhstan(years=year), dts)
 
     def test2022(self):
         self.assertHolidays(

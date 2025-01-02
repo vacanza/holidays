@@ -15,10 +15,10 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.countries.vietnam import Vietnam, VN, VNM
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestVietnam(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Vietnam, years=range(1979, 2050))
@@ -175,7 +175,7 @@ class TestVietnam(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "2010-02-27",
             "2012-02-04",
             "2013-05-04",
@@ -197,7 +197,7 @@ class TestVietnam(CommonCountryTests, WorkingDaysTests, TestCase):
             ),
             2019: ("2019-01-05",),
         }.items():
-            self.assertWorkday(Vietnam(years=year), dts)
+            self.assertWorkingDay(Vietnam(years=year), dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

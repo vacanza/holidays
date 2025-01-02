@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import WORKDAY
 from holidays.countries.ukraine import Ukraine, UA, UKR
-from tests.common import CommonCountryTests, WorkingDaysTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestUkraine(CommonCountryTests, WorkingDaysTests, TestCase):
+class TestUkraine(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ukraine, years=range(1991, 2023), years_non_observed=range(1991, 2023))
@@ -138,7 +138,7 @@ class TestUkraine(CommonCountryTests, WorkingDaysTests, TestCase):
         )
 
     def test_workdays(self):
-        self.assertWorkday(
+        self.assertWorkingDay(
             "1991-05-05",
             "1991-05-12",
             "1991-07-13",
@@ -248,7 +248,7 @@ class TestUkraine(CommonCountryTests, WorkingDaysTests, TestCase):
                 "1996-12-28",
             ),
         }.items():
-            self.assertWorkday(Ukraine(years=year), dts)
+            self.assertWorkingDay(Ukraine(years=year), dts)
 
     def test_new_year_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1991, 2023))
