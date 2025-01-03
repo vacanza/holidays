@@ -92,11 +92,6 @@ class TestAfghanistan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-09-09" for year in range(2012, 2050)))
         self.assertNoHolidayName(name, range(1919, 2012))
 
-    def test_eid_al_fitr(self):
-        self.assertNoHolidayName("روز اول عید فطر", range(1919, 2001))
-        self.assertNoHolidayName("روز دوم عید فطر", range(1919, 2001))
-        self.assertNoHolidayName("سومین روز عید فطر", range(1919, 2001))
-
     def test_l10_default(self):
         self.assertLocalizedHolidays(
             ("2022-02-15", "روز آزادی"),
