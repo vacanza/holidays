@@ -77,7 +77,7 @@ msgstr "%s (مشاهده شده، تخمین زده شده است)"
 msgid "روز پیروزی شوروی"
 msgstr "د شوروی د بریالیتوب ورځ"
 
-#. Mujahideen Victory Day.
+#. Mojahedin's Victory Day.
 msgid "روز پیروزی مجاهدین"
 msgstr "مجاهدو د بریا ورځ"
 

@@ -77,7 +77,7 @@ msgstr ""
 msgid "روز پیروزی شوروی"
 msgstr ""
 
-#. Mujahideen Victory Day.
+#. Mojahedin's Victory Day.
 msgid "روز پیروزی مجاهدین"
 msgstr ""
 

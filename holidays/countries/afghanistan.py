@@ -52,7 +52,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_mar_21(tr("نوروز"))
 
         if self._year >= 1992:
-            # Mujahideen Victory Day.
+            # Mojahedin's Victory Day.
             self._add_holiday_apr_28(tr("روز پیروزی مجاهدین"))
 
         if 1974 <= self._year <= 1996 or 2002 <= self._year <= 2021:

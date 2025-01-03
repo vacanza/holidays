@@ -151,7 +151,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             ("2022-07-11", "Eid al-Adha (estimated)"),
             ("2022-08-08", "Ashura (estimated)"),
             ("2022-08-19", "Afghanistan Independence Day"),
-            ("2022-08-31", "The Day of America's Withdrawal"),
+            ("2022-08-31", "American Withdrawal Day"),
             ("2022-09-09", "Martyrs' Day"),
             ("2022-10-08", "Prophet's Birthday (estimated)"),
         )

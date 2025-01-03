@@ -77,7 +77,7 @@ msgstr "%s (observed, estimated)"
 msgid "روز پیروزی شوروی"
 msgstr "Soviet Victory Day"
 
-#. Mujahideen Victory Day.
+#. Mojahedin's Victory Day.
 msgid "روز پیروزی مجاهدین"
 msgstr "Mojahedin's Victory Day"
 
@@ -95,4 +95,4 @@ msgstr "Eid al-Adha"
 
 #. American Withdrawal Day.
 msgid "روز خروج آمریکایی ها"
-msgstr "The Day of America's Withdrawal"
+msgstr "American Withdrawal Day"
