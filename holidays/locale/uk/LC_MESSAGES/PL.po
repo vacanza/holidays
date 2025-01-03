@@ -14,19 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.20\n"
+"Project-Id-Version: Holidays 0.64\n"
 "POT-Creation-Date: 2023-02-14 20:19+0200\n"
-"PO-Revision-Date: 2024-01-02 19:09+0200\n"
+"PO-Revision-Date: 2025-01-03 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.5\n"
 
 #. National Independence Day - 100th anniversary.
 msgid "Narodowe Święto Niepodległości - 100-lecie"
@@ -103,6 +101,10 @@ msgstr "День Незалежності"
 #. Immaculate Conception of the Blessed Virgin Mary.
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
 msgstr "Непорочне зачаття Діви Марії"
+
+#. Christmas Eve.
+msgid "Wigilia Bożego Narodzenia"
+msgstr "Святий вечір"
 
 #. Christmas Day.
 msgid "Boże Narodzenie (pierwszy dzień)"
