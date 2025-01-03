@@ -292,7 +292,7 @@ class BelarusStaticHolidays:
         ),
         2024: (
             (MAY, 13, MAY, 18),
-            (NOV, 16, NOV, 8),
+            (NOV, 8, NOV, 16),
         ),
         2025: (
             (JAN, 6, JAN, 11),
