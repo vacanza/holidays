@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestKazakhstan(CommonCountryTests, TestCase):
+class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Kazakhstan, years=range(1991, 2050))
@@ -163,6 +163,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2020-03-09",
             "2020-03-24",
             "2020-03-25",
+            "2020-05-08",
             "2020-08-31",
             "2021-01-04",
             "2021-03-24",
@@ -231,7 +232,6 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2018-12-31",
             "2019-05-10",
             "2020-01-03",
-            "2020-05-08",
             "2020-12-18",
             "2021-07-05",
             "2022-03-07",
@@ -242,6 +242,61 @@ class TestKazakhstan(CommonCountryTests, TestCase):
             "2025-01-03",
         )
 
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2000-05-06",
+            "2001-03-11",
+            "2001-03-25",
+            "2001-04-28",
+            "2001-12-29",
+            "2002-05-12",
+            "2003-05-04",
+            "2003-12-13",
+            "2005-03-05",
+            "2005-03-19",
+            "2005-08-27",
+            "2005-10-22",
+            "2006-01-14",
+            "2006-05-06",
+            "2007-03-11",
+            "2007-03-25",
+            "2007-09-02",
+            "2007-10-28",
+            "2007-12-29",
+            "2008-05-04",
+            "2009-12-20",
+            "2010-01-10",
+            "2010-07-03",
+            "2011-03-05",
+            "2011-08-27",
+            "2012-03-11",
+            "2012-04-28",
+            "2012-12-29",
+            "2013-05-04",
+            "2013-10-12",
+            "2013-12-28",
+            "2014-05-04",
+            "2014-05-11",
+            "2016-03-05",
+            "2017-03-18",
+            "2017-07-01",
+            "2018-03-03",
+            "2018-04-28",
+            "2018-05-05",
+            "2018-08-25",
+            "2018-12-29",
+            "2019-05-04",
+            "2020-01-05",
+            "2020-12-20",
+            "2021-07-03",
+            "2022-03-05",
+            "2022-08-27",
+            "2022-10-22",
+            "2023-07-01",
+            "2024-05-04",
+            "2025-01-05",
+        )
+
         for year, dts in {
             2013: (
                 "2013-05-04",
@@ -249,9 +304,7 @@ class TestKazakhstan(CommonCountryTests, TestCase):
                 "2013-12-28",
             ),
         }.items():
-            kz_holidays = Kazakhstan(years=year)
-            for dt in dts:
-                self.assertTrue(kz_holidays.is_working_day(dt))
+            self.assertWorkingDay(Kazakhstan(years=year), dts)
 
     def test2022(self):
         self.assertHolidays(
