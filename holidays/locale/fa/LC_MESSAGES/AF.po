@@ -38,10 +38,6 @@ msgstr ""
 msgid "روز جهانی کارگر"
 msgstr ""
 
-#. American Withdrawal Day.
-msgid "روز خروج آمریکایی‌ها"
-msgstr ""
-
 #. Martyrs' Day.
 msgid "روز شهیدان"
 msgstr ""
@@ -89,29 +85,14 @@ msgstr ""
 msgid "روز استقلال افغانستان"
 msgstr ""
 
+#. Eid al-Fitr.
 msgid "عید فطر"
 msgstr ""
 
+#. Eid al-Adha.
 msgid "عید قربانی"
 msgstr ""
 
-#~ msgid "روز اول عید فطر"
-#~ msgstr ""
-
-#~ msgid "روز دوم عید فطر"
-#~ msgstr ""
-
-#~ msgid "سومین روز عید فطر"
-#~ msgstr ""
-
-#~ msgid "اول روز عید قربان"
-#~ msgstr ""
-
-#~ msgid "روز دوم عید قربان"
-#~ msgstr ""
-
-#~ msgid "سومین روز عید قربان"
-#~ msgstr ""
-
-#~ msgid "روز استقلال"
-#~ msgstr ""
+#. American Withdrawal Day.
+msgid "روز خروج آمریکایی ها"
+msgstr ""

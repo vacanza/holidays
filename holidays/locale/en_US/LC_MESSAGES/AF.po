@@ -38,10 +38,6 @@ msgstr "Nowruz"
 msgid "روز جهانی کارگر"
 msgstr "International Workers' Day"
 
-#. American Withdrawal Day.
-msgid "روز خروج آمریکایی‌ها"
-msgstr "American Withdrawal Day"
-
 #. Martyrs' Day.
 msgid "روز شهیدان"
 msgstr "Martyrs' Day"
@@ -89,8 +85,14 @@ msgstr "Mojahedin's Victory Day"
 msgid "روز استقلال افغانستان"
 msgstr "Afghanistan Independence Day"
 
+#. Eid al-Fitr.
 msgid "عید فطر"
 msgstr "Eid al-Fitr"
 
+#. Eid al-Adha.
 msgid "عید قربانی"
 msgstr "Eid al-Adha"
+
+#. American Withdrawal Day.
+msgid "روز خروج آمریکایی ها"
+msgstr "The Day of America's Withdrawal"

@@ -79,7 +79,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1919, 1978), (1989, 2050))
 
     def test_american_withdrawal_day(self):
-        name = "روز خروج آمریکایی‌ها"
+        name = "روز خروج آمریکایی ها"
         self.assertHolidayName(name, (f"{year}-08-31" for year in range(2022, 2050)))
         self.assertNoHolidayName(name, range(1919, 2022))
 
@@ -111,7 +111,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             ("2022-07-11", "عید قربانی (برآورد شده)"),
             ("2022-08-08", "عاشورا (برآورد شده)"),
             ("2022-08-19", "روز استقلال افغانستان"),
-            ("2022-08-31", "روز خروج آمریکایی\u200cها"),
+            ("2022-08-31", "روز خروج آمریکایی ها"),
             ("2022-09-09", "روز شهیدان"),
             ("2022-10-08", "میلاد پیامبر (برآورد شده)"),
         )
@@ -151,7 +151,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             ("2022-07-11", "Eid al-Adha (estimated)"),
             ("2022-08-08", "Ashura (estimated)"),
             ("2022-08-19", "Afghanistan Independence Day"),
-            ("2022-08-31", "American Withdrawal Day"),
+            ("2022-08-31", "The Day of America's Withdrawal"),
             ("2022-09-09", "Martyrs' Day"),
             ("2022-10-08", "Prophet's Birthday (estimated)"),
         )

@@ -65,29 +65,25 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if self._year >= 2022:
             # American Withdrawal Day.
-            self._add_holiday_aug_31(tr("روز خروج آمریکایی‌ها"))
+            self._add_holiday_aug_31(tr("روز خروج آمریکایی ها"))
 
         if self._year >= 2012:
             # Martyrs' Day.
             self._add_holiday_sep_9(tr("روز شهیدان"))
 
+        # Eid al-Fitr.
         name = tr("عید فطر")
-        # First Day of Eid al-Fitr.
         self._add_eid_al_fitr_day(name)
-        # Second Day of Eid al-Fitr.
         self._add_eid_al_fitr_day_two(name)
-        # Third Day of Eid al-Fitr.
         self._add_eid_al_fitr_day_three(name)
 
         # Day of Arafah.
         self._add_arafah_day(tr("روز عرفه"))
 
+        # Eid al-Adha.
         name = tr("عید قربانی")
-        # First Day of Eid al-Adha.
         self._add_eid_al_adha_day(name)
-        # Second Day of Eid al-Adha.
         self._add_eid_al_adha_day_two(name)
-        # Third Day of Eid al-Adha.
         self._add_eid_al_adha_day_three(name)
 
         # Ashura.
