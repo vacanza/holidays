@@ -1,0 +1,75 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# El Salvador holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.64\n"
+"POT-Creation-Date: 2025-01-03 16:40+0200\n"
+"PO-Revision-Date: 2025-01-03 16:45+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "New Year's Day"
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Maundy Thursday"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+msgid "Sábado Santo"
+msgstr "Holy Saturday"
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr "Labor Day"
+
+#. Mother's Day.
+msgid "Día de la Madre"
+msgstr "Mother's Day"
+
+#. Father's Day.
+msgid "Día del Padre"
+msgstr "Father's Day"
+
+#. Celebrations of San Salvador.
+msgid "Celebración del Divino Salvador del Mundo"
+msgstr "Celebrations of San Salvador"
+
+#. Independence Day.
+msgid "Día de la Independencia"
+msgstr "Independence Day"
+
+#. All Souls' Day.
+msgid "Día de los Difuntos"
+msgstr "All Souls' Day"
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr "Christmas Day"
+
+#. Feast of San Salvador.
+msgid "Fiesta de San Salvador"
+msgstr "Feast of San Salvador"
