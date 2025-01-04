@@ -1189,3 +1189,103 @@ class TestWorkdays(unittest.TestCase):
         self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-04"), 3)
         self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-05"), 3)
         self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-06"), 4)
+
+
+class TestNextHoliday(unittest.TestCase):
+    def setUp(self):
+        self.this_year = datetime.now().year
+        self.next_year = self.this_year + 1
+        self.previous_year = self.this_year - 1
+        self.hb = CountryStub3(years=self.this_year)
+        self.next_labor_day_year = (
+            self.this_year
+            if datetime.now().date() < self.hb.get_named("Custom May 1st Holiday")[0]
+            else self.next_year
+        )
+        self.previous_labor_day_year = (
+            self.this_year
+            if datetime.now().date() > self.hb.get_named("Custom May 1st Holiday")[0]
+            else self.previous_year
+        )
+
+    def test_get_next_holiday_forward(self):
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-01-01"),
+            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-04-30"),
+            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-05-01"),
+            (date(self.this_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-05-02"),
+            (date(self.next_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.next_year}-01-01"),
+            (date(self.next_year, 5, 1), "Custom May 1st Holiday"),
+        )
+
+        self.assertIn(
+            self.hb.get_next_holiday(),
+            [
+                (date(self.next_labor_day_year, 5, 1), "Custom May 1st Holiday"),
+                (date(self.next_labor_day_year, 5, 2), "Custom May 2nd Holiday"),
+            ],
+        )
+
+    def test_get_next_holiday_reverse(self):
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-12-31", previous=True),
+            (date(self.this_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-05-02", previous=True),
+            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.this_year}-04-30", previous=True),
+            (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+        self.assertEqual(
+            self.hb.get_next_holiday(f"{self.previous_year}-12-31", previous=True),
+            (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
+        )
+
+        self.assertIn(
+            self.hb.get_next_holiday(previous=True),
+            [
+                (date(self.previous_labor_day_year, 5, 2), "Custom May 2nd Holiday"),
+                (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+            ],
+        )
+
+    def test_get_next_holiday_corner_cases(self):
+        from holidays.countries.ukraine import UA
+
+        ua = UA()
+        # check for date before start of calendar
+        self.assertEqual(ua.get_next_holiday("1991-01-01", previous=True), (None, None))
+
+        # check for date after end of calendar
+        self.assertEqual(ua.get_next_holiday("2022-03-08"), (None, None))
+
+    def test_get_next_holiday_unsorted_calendars(self):
+        from holidays.countries.united_states import US
+
+        us_calendar = US(years=2024)
+
+        self.assertEqual(
+            us_calendar.get_next_holiday(date(2024, 2, 1)),
+            (date(2024, 2, 19), "Washington's Birthday"),
+        )
+
+        # check for date before start of calendar
+        self.assertEqual(
+            us_calendar.get_next_holiday(date(2024, 2, 1), previous=True),
+            (date(2024, 1, 15), "Martin Luther King Jr. Day"),
+        )
