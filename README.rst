@@ -417,8 +417,8 @@ All other default values are highlighted with bold:
      -
    * - El Salvador
      - SV
-     - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
-     -
+     - Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)
+     - en_US, **es**, uk
      -
    * - Estonia
      - EE

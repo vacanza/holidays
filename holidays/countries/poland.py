@@ -19,7 +19,10 @@ from holidays.holiday_base import HolidayBase
 
 class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Poland
+        - https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+        - https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965
     """
 
     country = "PL"
@@ -104,8 +107,13 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
                 tr("Niepokalane Poczęcie Najświętszej Marii Panny")
             )
 
+        if self._year >= 2025:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Wigilia Bożego Narodzenia"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Boże Narodzenie (pierwszy dzień)"))
+
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Boże Narodzenie (drugi dzień)"))
 
