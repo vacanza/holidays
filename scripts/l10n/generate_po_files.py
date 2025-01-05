@@ -93,6 +93,8 @@ class POGenerator:
                 {
                     "Language-Team": "Holidays Localization Team",
                     "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
+                    "Language": default_language,
+                    "X-Source-Language": default_language,
                 }
             )
             pot_file.save()
@@ -103,7 +105,6 @@ class POGenerator:
             po_file_path = po_directory / f"{entity_code}.po"
             if not po_file_path.exists():
                 po_file = pofile(pot_file_path)
-                po_file.metadata["Language"] = default_language
                 po_file.save(po_file_path)
 
             # Update all .po files.
