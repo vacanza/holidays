@@ -22,7 +22,6 @@ from holidays.calendars.gregorian import (
     MAY,
     JUN,
     JUL,
-    AUG,
     SEP,
     OCT,
     NOV,
@@ -46,7 +45,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(NewYorkStockExchange(years=1862))
 
-    def test_new_years(self):
+    def test_new_years_day(self):
         for dt in (
             date(1900, JAN, 1),
             date(1930, JAN, 1),
@@ -74,7 +73,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt)
             self.assertNoHoliday(dt + td(days=-1))
 
-    def test_mlk(self):
+    def test_martin_luther_king_jr_day(self):
         for dt in (
             date(1999, JAN, 18),
             date(2000, JAN, 17),
@@ -91,13 +90,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1997, JAN, 20),
-            date(1985, JAN, 21),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday("1997-01-20", "1985-01-21")
 
-    def test_lincoln(self):
+    def test_lincolns_birthday(self):
         for dt in (
             date(1900, FEB, 12),
             date(1930, FEB, 12),
@@ -110,18 +105,17 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1954, FEB, 12),
-            date(1967, FEB, 10),
-            date(1967, FEB, 11),
-            date(1967, FEB, 12),
-            date(1967, FEB, 13),
-            date(1969, FEB, 12),
-            date(2015, FEB, 12),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday(
+            "1954-02-12",
+            "1967-02-10",
+            "1967-02-11",
+            "1967-02-12",
+            "1967-02-13",
+            "1969-02-12",
+            "2015-02-12",
+        )
 
-    def test_washington(self):
+    def test_washingtons_birthday(self):
         for dt in (
             date(1900, FEB, 22),
             date(1930, FEB, 21),
@@ -165,7 +159,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-    def test_memday(self):
+    def test_memorial_day(self):
         for dt in (
             date(1901, MAY, 30),
             date(1902, MAY, 30),
@@ -189,9 +183,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        self.assertNoHoliday(date(1872, MAY, 30))
+        self.assertNoHoliday("1872-05-30")
 
-    def test_flagday(self):
+    def test_flag_day(self):
         for dt in (
             date(1916, JUN, 14),
             date(1934, JUN, 14),
@@ -206,14 +200,13 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1954, JUN, 14),
-            date(1967, JUN, 14),
-            date(2022, JUN, 14),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday(
+            "1954-06-14",
+            "1967-06-14",
+            "2022-06-14",
+        )
 
-    def test_juneteenth(self):
+    def test_juneteenth_national_independence_day(self):
         for dt in (
             date(2022, JUN, 20),
             date(2023, JUN, 19),
@@ -224,14 +217,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1954, JUN, 18),
-            date(1967, JUN, 19),
-            date(2021, JUN, 18),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday("1954-06-18", "1967-06-19", "2021-06-18")
 
-    def test_laborday(self):
+    def test_labor_day(self):
         for dt in (
             date(1887, SEP, 5),
             date(1901, SEP, 2),
@@ -252,9 +240,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        self.assertNoHoliday(date(1886, SEP, 6))
+        self.assertNoHoliday("1886-09-6")
 
-    def test_columbusday(self):
+    def test_columbus_day(self):
         for dt in (
             date(1909, OCT, 12),
             date(1915, OCT, 12),
@@ -269,14 +257,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1908, OCT, 12),
-            date(1954, OCT, 12),
-            date(2022, OCT, 12),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday("1908-10-12", "1954-10-12", "2022-10-12")
 
-    def test_electionday(self):
+    def test_election_day(self):
         for dt in (
             date(1887, NOV, 8),
             date(1901, NOV, 5),
@@ -294,23 +277,22 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1969, NOV, 4),
-            date(1970, NOV, 3),
-            date(1971, NOV, 2),
-            date(1973, NOV, 6),
-            date(1974, NOV, 5),
-            date(1975, NOV, 4),
-            date(1977, NOV, 1),
-            date(1978, NOV, 7),
-            date(1979, NOV, 6),
-            date(1981, NOV, 3),
-            date(2021, NOV, 2),
-            date(2022, NOV, 1),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday(
+            "1969-11-04",
+            "1970-11-03",
+            "1971-11-02",
+            "1973-11-06",
+            "1974-11-05",
+            "1975-11-04",
+            "1977-11-01",
+            "1978-11-07",
+            "1979-11-06",
+            "1981-11-03",
+            "2021-11-02",
+            "2022-11-01",
+        )
 
-    def test_veteransday(self):
+    def test_veterans_day(self):
         for dt in (
             date(1918, NOV, 11),
             date(1921, NOV, 11),
@@ -327,19 +309,18 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             self.assertNoHoliday(dt + td(days=+7))
             self.assertNoHoliday(dt + td(days=-7))
 
-        for dt in (
-            date(1917, NOV, 12),
-            date(1919, NOV, 11),
-            date(1920, NOV, 11),
-            date(1922, NOV, 10),
-            date(1933, NOV, 10),
-            date(1954, NOV, 11),
-            date(2021, NOV, 11),
-            date(2022, NOV, 11),
-        ):
-            self.assertNoHoliday(dt)
+        self.assertNoHoliday(
+            "1917-11-12",
+            "1919-11-11",
+            "1920-11-11",
+            "1922-11-10",
+            "1933-11-10",
+            "1954-11-11",
+            "2021-11-11",
+            "2022-11-11",
+        )
 
-    def test_thxgiving(self):
+    def test_thanksgiving_day(self):
         for dt in (
             date(1901, NOV, 28),
             date(1902, NOV, 27),
@@ -381,75 +362,75 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
     def test_special_holidays(self):
         # add to this list as new historical holidays are added
         special_holidays = [
-            date(1888, MAR, 12),  # Blizzard of 1888
-            date(1888, MAR, 13),  # Blizzard of 1888
-            date(1888, NOV, 30),  # Thanksgiving Friday 1888
-            date(1889, APR, 29),  # Centennial of Washington Inauguration
-            date(1889, APR, 30),  # Centennial of Washington Inauguration
-            date(1889, MAY, 1),  # Centennial of Washington Inauguration
-            date(1892, OCT, 12),  # Columbian Celebration
-            date(1892, OCT, 21),  # Columbian Celebration
-            date(1893, APR, 27),  # Columbian Celebration
-            date(1897, APR, 27),  # Grant's Birthday
-            date(1898, MAY, 4),  # Charter Day
-            date(1899, MAY, 29),  # Monday before Decoration Day
-            date(1899, JUL, 3),  # Monday before Independence Day
-            date(1899, SEP, 29),  # Admiral Dewey Celebration
-            date(1900, DEC, 24),  # Christmas Eve
-            date(1901, JUL, 5),  # Friday after Independence Day
-            date(1901, SEP, 19),  # Funeral of President McKinley
-            date(1903, APR, 22),  # Opening of new NYSE building
-            date(1917, JUN, 5),  # Draft Registration Day
-            date(1918, JAN, 28),  # Heatless Day
-            date(1918, FEB, 4),  # Heatless Day
-            date(1918, FEB, 11),  # Heatless Day
-            date(1918, SEP, 12),  # Draft Registration Day
-            date(1918, NOV, 11),  # Armistice Day
-            date(1919, MAR, 25),  # Homecoming Day for 27th Division
-            date(1919, MAY, 6),  # Parade Day for 77th Division
-            date(1919, SEP, 10),  # Return of General Pershing
-            date(1923, AUG, 3),  # Death of President Warren G. Harding
-            date(1923, AUG, 10),  # Funeral of President Warren G. Harding
-            date(1927, JUN, 13),  # Parade for Colonel Charles Lindbergh
-            date(1929, NOV, 1),  # Catch Up Day
-            date(1929, NOV, 29),  # Catch Up Day
-            date(1945, AUG, 15),  # V-J Day (WWII)
-            date(1945, AUG, 16),  # V-J Day (WWII)
-            date(1945, DEC, 24),  # Christmas Eve
-            date(1954, DEC, 24),  # Christmas Eve
-            date(1956, DEC, 24),  # Christmas Eve
-            date(1958, DEC, 26),  # Day after Christmas
-            date(1961, MAY, 29),  # Day before Decoration Day
-            date(1963, NOV, 25),  # Funeral of President John F. Kennedy
-            date(1965, DEC, 24),  # Christmas Eve
-            date(1968, APR, 9),  # Day of Mourning for Martin Luther King Jr.
-            date(1968, JUL, 5),  # Day after Independence Day
-            date(1969, FEB, 10),  # Heavy Snow
-            date(1969, MAR, 31),  # Funeral of President Dwight D. Eisenhower
-            date(1969, JUL, 21),  # National Participation in Lunar Exploration
-            date(1972, DEC, 28),  # Funeral for President Harry S. Truman
-            date(1973, JAN, 25),  # Funeral for President Lyndon B. Johnson
-            date(1977, JUL, 14),  # Blackout in New York City
-            date(1985, SEP, 27),  # Hurricane Gloria
-            date(1994, APR, 27),  # Funeral for President Richard M. Nixon
-            date(2001, SEP, 11),  # Closed for Sept 11, 2001 Attacks
-            date(2001, SEP, 12),  # Closed for Sept 11, 2001 Attacks
-            date(2001, SEP, 13),  # Closed for Sept 11, 2001 Attacks
-            date(2001, SEP, 14),  # Closed for Sept 11, 2001 Attacks
-            date(2004, JUN, 11),  # Day of Mourning for President Ronald W. Reagan
-            date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
-            date(2012, OCT, 29),  # Hurricane Sandy
-            date(2012, OCT, 30),  # Hurricane Sandy
-            date(2018, DEC, 5),  # Day of Mourning for President George H.W. Bush
-            date(2025, JAN, 9),  # Day of Mourning for President Jimmy Carter
+            "1888-03-12",  # Blizzard of 1888
+            "1888-03-13",  # Blizzard of 1888
+            "1888-11-30",  # Thanksgiving Friday 1888
+            "1889-04-29",  # Centennial of George Washington's Inauguration
+            "1889-04-30",  # Centennial of George Washington's Inauguration
+            "1889-05-01",  # Centennial of George Washington's Inauguration
+            "1892-10-12",  # Columbian Celebration
+            "1892-10-21",  # Columbian Celebration
+            "1893-04-27",  # Columbian Celebration
+            "1897-04-27",  # Grant's Birthday
+            "1898-05-04",  # Charter Day
+            "1899-05-29",  # Monday before Decoration Day
+            "1899-07-03",  # Monday before Independence Day
+            "1899-09-29",  # Admiral Dewey Celebration
+            "1900-12-24",  # Christmas Eve
+            "1901-07-05",  # Friday after Independence Day
+            "1901-09-19",  # Funeral of former President William McKinley
+            "1903-04-22",  # Opening of new NYSE building
+            "1917-06-05",  # Draft Registration Day
+            "1918-01-28",  # Heatless Day
+            "1918-02-04",  # Heatless Day
+            "1918-02-11",  # Heatless Day
+            "1918-09-12",  # Draft Registration Day
+            "1918-11-11",  # Armistice Day
+            "1919-03-25",  # Homecoming Day for 27th Division
+            "1919-05-06",  # Parade Day for 77th Division
+            "1919-09-10",  # Return of General Pershing
+            "1923-08-03",  # Death of former President Warren G. Harding
+            "1923-08-10",  # Funeral of former President Warren G. Harding
+            "1927-06-13",  # Parade for Colonel Charles Lindbergh
+            "1929-11-01",  # Catch Up Day
+            "1929-11-29",  # Catch Up Day
+            "1945-08-15",  # V-J Day (WWII)
+            "1945-08-16",  # V-J Day (WWII)
+            "1945-12-24",  # Christmas Eve
+            "1954-12-24",  # Christmas Eve
+            "1956-12-24",  # Christmas Eve
+            "1958-12-26",  # Day after Christmas
+            "1961-05-29",  # Day before Decoration Day
+            "1963-11-25",  # Funeral of former President John F. Kennedy
+            "1965-12-24",  # Christmas Eve
+            "1968-04-09",  # National Day of Mourning for Martin Luther King Jr.
+            "1968-07-05",  # Day after Independence Day
+            "1969-02-10",  # Heavy Snow
+            "1969-03-31",  # Funeral of former President Dwight D. Eisenhower
+            "1969-07-21",  # National Participation in Lunar Exploration
+            "1972-12-28",  # Funeral for former President Harry S. Truman
+            "1973-01-25",  # Funeral for former President Lyndon B. Johnson
+            "1977-07-14",  # Blackout in New York City
+            "1985-09-27",  # Hurricane Gloria
+            "1994-04-27",  # Funeral for former President Richard M. Nixon
+            "2001-09-11",  # Closed for Sept 11, 2001 Attacks
+            "2001-09-12",  # Closed for Sept 11, 2001 Attacks
+            "2001-09-13",  # Closed for Sept 11, 2001 Attacks
+            "2001-09-14",  # Closed for Sept 11, 2001 Attacks
+            "2004-06-11",  # National Day of Mourning for former President Ronald Reagan
+            "2007-01-02",  # National Day of Mourning for former President Gerald R. Ford
+            "2012-10-29",  # Hurricane Sandy
+            "2012-10-30",  # Hurricane Sandy
+            "2018-12-05",  # National Day of Mourning for former President George H.W. Bush
+            "2025-01-09",  # National Day of Mourning for former President Jimmy Carter
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
             return [
-                d
-                for d in (begin + td(days=n) for n in range((end - begin).days + 1))
-                if (weekends or d.weekday() not in {SAT, SUN})
-                and (days is None or d.weekday() in days)
+                day
+                for day in (begin + td(days=n) for n in range((end - begin).days + 1))
+                if (weekends or day.weekday() not in {SAT, SUN})
+                and (days is None or day.weekday() in days)
             ]
 
         wwi_holidays = _make_special_holiday_list(date(1914, JUL, 31), date(1914, NOV, 27))
