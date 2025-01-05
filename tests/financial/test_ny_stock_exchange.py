@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from unittest import TestCase
 
 from holidays.calendars.gregorian import (
@@ -29,6 +28,7 @@ from holidays.calendars.gregorian import (
     WED,
     SAT,
     SUN,
+    _timedelta,
 )
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
 from tests.common import CommonFinancialTests
@@ -58,9 +58,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2021, JAN, 1),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
 
         # no observed on previous year Dec 31
         for dt in (
@@ -71,7 +71,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, JAN, 1),
         ):
             self.assertNoHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
+            self.assertNoHoliday(_timedelta(dt, -1))
 
     def test_martin_luther_king_jr_day(self):
         for dt in (
@@ -85,10 +85,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, JAN, 17),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday("1997-01-20", "1985-01-21")
 
@@ -100,10 +100,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1968, FEB, 12),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday(
             "1954-02-12",
@@ -134,10 +134,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, FEB, 21),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
     def test_good_friday(self):
         for dt in (
@@ -154,10 +154,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, APR, 15),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
     def test_memorial_day(self):
         for dt in (
@@ -178,10 +178,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, MAY, 30),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday("1872-05-30")
 
@@ -195,10 +195,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1953, JUN, 15),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday(
             "1954-06-14",
@@ -212,10 +212,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2023, JUN, 19),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday("1954-06-18", "1967-06-19", "2021-06-18")
 
@@ -235,10 +235,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, SEP, 5),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday("1886-09-6")
 
@@ -252,10 +252,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1953, OCT, 12),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday("1908-10-12", "1954-10-12", "2022-10-12")
 
@@ -273,9 +273,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1980, NOV, 4),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday(
             "1969-11-04",
@@ -304,10 +304,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1953, NOV, 11),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
         self.assertNoHoliday(
             "1917-11-12",
@@ -335,10 +335,10 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, NOV, 24),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=+7))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, +7))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
     def test_christmas_day(self):
         for dt in (
@@ -355,9 +355,9 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(2022, DEC, 26),
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
-            self.assertNoHoliday(dt + td(days=+1))
-            self.assertNoHoliday(dt + td(days=-7))
+            self.assertNoHoliday(_timedelta(dt, -1))
+            self.assertNoHoliday(_timedelta(dt, +1))
+            self.assertNoHoliday(_timedelta(dt, -7))
 
     def test_special_holidays(self):
         # add to this list as new historical holidays are added
@@ -428,7 +428,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
             return [
                 day
-                for day in (begin + td(days=n) for n in range((end - begin).days + 1))
+                for day in (_timedelta(begin, n) for n in range((end - begin).days + 1))
                 if (weekends or day.weekday() not in {SAT, SUN})
                 and (days is None or day.weekday() in days)
             ]
@@ -449,14 +449,14 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             date(1968, JUN, 12),  # begin paper crisis holidays
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=-1))
+            self.assertNoHoliday(_timedelta(dt, -1))
 
         for dt in (
             date(1914, NOV, 27),  # end WWI holidays
             date(1933, MAR, 14),  # end oneoff bank holidays
         ):
             self.assertHoliday(dt)
-            self.assertNoHoliday(dt + td(days=+1))
+            self.assertNoHoliday(_timedelta(dt, +1))
 
     def test_all_modern_holidays_present(self):
         self.assertHolidays(
