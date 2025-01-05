@@ -12,6 +12,7 @@
 
 # flake8: noqa: F401
 
+from .afghanistan import Afghanistan, AF, AFG
 from .albania import Albania, AL, ALB
 from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS

@@ -20,6 +20,7 @@ from holidays.holiday_base import HolidayBase
 RegistryDict = dict[str, tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
+    "afghanistan": ("Afghanistan", "AF", "AFG"),
     "albania": ("Albania", "AL", "ALB"),
     "algeria": ("Algeria", "DZ", "DZA"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
