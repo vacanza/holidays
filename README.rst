@@ -183,7 +183,7 @@ All other default values are highlighted with bold:
    * - Afghanistan
      - AF
      -
-     - en_US, **fa**, ps_AF
+     - en_US, **fa_AF**, ps_AF
      -
    * - Albania
      - AL

@@ -23,14 +23,14 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "AF"
-    default_language = "fa"
+    default_language = "fa_AF"
     # %s (estimated).
     estimated_label = tr("%s (برآورد شده)")
     # %s (observed).
     observed_label = tr("%s (مشاهده شده)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (مشاهده شده، برآورد شده)")
-    supported_languages = ("en_US", "fa", "ps_AF")
+    supported_languages = ("en_US", "fa_AF", "ps_AF")
     # Afghanistan's regaining of full independence from British influence.
     start_year = 1919
 
