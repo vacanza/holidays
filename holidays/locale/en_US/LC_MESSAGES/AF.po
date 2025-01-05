@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.64\n"
 "POT-Creation-Date: 2024-12-24 13:40+0530\n"
-"PO-Revision-Date: 2024-12-31 15:52+0700\n"
-"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"PO-Revision-Date: 2025-01-05 23:00+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -92,6 +92,10 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "عید قربانی"
 msgstr "Eid al-Adha"
+
+#. Islamic Emirate Victory Day.
+msgid "روز پیروزی امارت اسلامی"
+msgstr "Islamic Emirate Victory Day"
 
 #. American Withdrawal Day.
 msgid "روز خروج آمریکایی ها"

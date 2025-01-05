@@ -36,6 +36,17 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 3, 14)
         )
 
+    def _add_islamic_emirat_victory_day(self, name: str) -> Optional[date]:
+        """
+        Add Islamic Emirate Victory Day (24th day of the 5th month).
+
+        Anniversary of the Taliban forces arrival in Kabul.
+        https://en.wikipedia.org/wiki/Fall_of_Kabul_(2021)
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 5, 24)
+        )
+
     def _add_islamic_republic_day(self, name: str) -> Optional[date]:
         """
         Add Islamic Republic Day (12th day of the 1st month).
