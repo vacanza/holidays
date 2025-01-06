@@ -268,7 +268,8 @@ jobs:
 
       - name: Compute SHA1 checksums
         run: |
-          for file in dist/*; do
+          cd dist
+          for file in *; do
             sha1sum "$file" > "$file.sha1"
           done
 
