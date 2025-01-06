@@ -18,7 +18,7 @@ Released January 6, 2025
 - Add Norway holidays localization: th (#2200 by @ansntu)
 - Add Russia holidays localization: th (#2190 by @PPsyrius, @arkid15r)
 - Add Ukraine holidays localization: th (#2189 by @PPsyrius, @arkid15r)
-- Sign release artifacts using Sigstore (#2195 by @arkid15r
+- Sign release artifacts using Sigstore (#2195 by @arkid15r)
 
 Version 0.63
 ============
