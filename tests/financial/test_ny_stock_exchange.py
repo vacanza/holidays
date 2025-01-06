@@ -421,7 +421,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "2007-01-02",  # National Day of Mourning for former President Gerald R. Ford
             "2012-10-29",  # Hurricane Sandy
             "2012-10-30",  # Hurricane Sandy
-            "2018-12-05",  # National Day of Mourning for former President George H.W. Bush
+            "2018-12-05",  # National Day of Mourning for former President George H. W. Bush
             "2025-01-09",  # National Day of Mourning for former President Jimmy Carter
         ]
 
