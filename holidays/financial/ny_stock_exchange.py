@@ -152,6 +152,7 @@ class NewYorkStockExchangeStaticHolidays:
     - https://guides.loc.gov/presidents-portraits/chronological
     - https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy
     """
+
     # Blizzard of 1888.
     name_blizard_1888 = "Blizzard of 1888"
 
