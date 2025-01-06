@@ -378,7 +378,7 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1899-09-29",  # Admiral Dewey Celebration
             "1900-12-24",  # Christmas Eve
             "1901-07-05",  # Friday after Independence Day
-            "1901-09-19",  # Funeral of former President William McKinley
+            "1901-09-19",  # National Day of Mourning for President William McKinley
             "1903-04-22",  # Opening of new NYSE building
             "1917-06-05",  # Draft Registration Day
             "1918-01-28",  # Heatless Day
@@ -389,8 +389,8 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1919-03-25",  # Homecoming Day for 27th Division
             "1919-05-06",  # Parade Day for 77th Division
             "1919-09-10",  # Return of General Pershing
-            "1923-08-03",  # Death of former President Warren G. Harding
-            "1923-08-10",  # Funeral of former President Warren G. Harding
+            "1923-08-03",  # Death of President Warren G. Harding
+            "1923-08-10",  # National Day of Mourning for President Warren G. Harding
             "1927-06-13",  # Parade for Colonel Charles Lindbergh
             "1929-11-01",  # Catch Up Day
             "1929-11-29",  # Catch Up Day
@@ -401,18 +401,18 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1956-12-24",  # Christmas Eve
             "1958-12-26",  # Day after Christmas
             "1961-05-29",  # Day before Decoration Day
-            "1963-11-25",  # Funeral of former President John F. Kennedy
+            "1963-11-25",  # National Day of Mourning for President John F. Kennedy
             "1965-12-24",  # Christmas Eve
             "1968-04-09",  # National Day of Mourning for Martin Luther King Jr.
             "1968-07-05",  # Day after Independence Day
             "1969-02-10",  # Heavy Snow
-            "1969-03-31",  # Funeral of former President Dwight D. Eisenhower
+            "1969-03-31",  # National Day of Mourning for former President Dwight D. Eisenhower
             "1969-07-21",  # National Participation in Lunar Exploration
-            "1972-12-28",  # Funeral for former President Harry S. Truman
-            "1973-01-25",  # Funeral for former President Lyndon B. Johnson
+            "1972-12-28",  # National Day of Mourning for former President Harry S. Truman
+            "1973-01-25",  # National Day of Mourning for former President Lyndon B. Johnson
             "1977-07-14",  # Blackout in New York City
             "1985-09-27",  # Hurricane Gloria
-            "1994-04-27",  # Funeral for former President Richard M. Nixon
+            "1994-04-27",  # National Day of Mourning for former President Richard M. Nixon
             "2001-09-11",  # Closed for Sept 11, 2001 Attacks
             "2001-09-12",  # Closed for Sept 11, 2001 Attacks
             "2001-09-13",  # Closed for Sept 11, 2001 Attacks

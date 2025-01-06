@@ -173,7 +173,7 @@ class NewYorkStockExchangeStaticHolidays:
         1900: (DEC, 24, "Christmas Eve"),
         1901: (
             (JUL, 5, "Friday after Independence Day"),
-            (SEP, 19, "Funeral of former President WIlliam McKinley"),
+            (SEP, 19, "National Day of Mourning for President WIlliam McKinley"),
         ),
         1903: (APR, 22, "Opening of new NYSE building"),
         1917: (JUN, 5, "Draft Registration Day"),
@@ -190,8 +190,8 @@ class NewYorkStockExchangeStaticHolidays:
             (SEP, 10, "Return of General Pershing"),
         ),
         1923: (
-            (AUG, 3, "Death of former President Warren G. Harding"),
-            (AUG, 10, "Funeral of former President Warren G. Harding"),
+            (AUG, 3, "Death of President Warren G. Harding"),
+            (AUG, 10, "National Day of Mourning for President Warren G. Harding"),
         ),
         1927: (JUN, 13, "Parade for Colonel Charles Lindbergh"),
         1929: (
@@ -216,7 +216,7 @@ class NewYorkStockExchangeStaticHolidays:
         1956: (DEC, 24, "Christmas Eve"),
         1958: (DEC, 26, "Day after Christmas"),
         1961: (MAY, 29, "Day before Decoration Day"),
-        1963: (NOV, 25, "Funeral of former President John F. Kennedy"),
+        1963: (NOV, 25, "National Day of Mourning for President John F. Kennedy"),
         1965: (DEC, 24, "Christmas Eve"),
         1968: (
             (APR, 9, "National Day of Mourning for Martin Luther King Jr."),
@@ -224,14 +224,14 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1969: (
             (FEB, 10, "Heavy Snow"),
-            (MAR, 31, "Funeral of former President Dwight D. Eisenhower"),
+            (MAR, 31, "National Day of Mourning for former President Dwight D. Eisenhower"),
             (JUL, 21, "National Participation in Lunar Exploration"),
         ),
-        1972: (DEC, 28, "Funeral for former President Harry S. Truman"),
-        1973: (JAN, 25, "Funeral for former President Lyndon B. Johnson"),
+        1972: (DEC, 28, "National Day of Mourning for former President Harry S. Truman"),
+        1973: (JAN, 25, "National Day of Mourning for former President Lyndon B. Johnson"),
         1977: (JUL, 14, "Blackout in New York City"),
         1985: (SEP, 27, "Hurricane Gloria"),
-        1994: (APR, 27, "Funeral for former President Richard M. Nixon"),
+        1994: (APR, 27, "National Day of Mourning for former President Richard M. Nixon"),
         2001: (
             (SEP, 11, "Closed for Sept 11, 2001 Attacks"),
             (SEP, 12, "Closed for Sept 11, 2001 Attacks"),
