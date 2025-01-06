@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.34\n"
+"Project-Id-Version: Holidays 0.64\n"
 "POT-Creation-Date: 2023-02-15 20:06-0800\n"
-"PO-Revision-Date: 2023-09-27 18:49+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2024-12-26 19:18+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Date format (see strftime() Format Codes)
 msgid "%d.%m.%Y"
@@ -36,36 +35,73 @@ msgstr ""
 msgid "Выходны (перанесены з %s)"
 msgstr ""
 
-#. New Year's Day.
-msgid "Новы год"
+#. Constitution Day.
+msgid "Дзень Канстытуцыі"
 msgstr ""
 
-#. Orthodox Christmas Day.
-msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
-msgstr ""
-
-#. Women's Day.
-msgid "Дзень жанчын"
-msgstr ""
-
-#. Radunitsa (Day of Rejoicing).
-msgid "Радаўніца"
-msgstr ""
-
-#. Labor Day.
-msgid "Свята працы"
+#. Day of Unity of the Peoples of Belarus and Russia.
+msgid "Дзень яднання народаў Беларусі і Расіі"
 msgstr ""
 
 #. Victory Day.
 msgid "Дзень Перамогі"
 msgstr ""
 
-#. Independence Day.
+#. Day of the National Coat of Arms of the Republic of Belarus, the National
+#. Flag of the Republic of
+#. Belarus and the National Anthem of the Republic of Belarus.
+msgid ""
+"Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі "
+"Беларусь"
+msgstr ""
+
+#. Independence Day of the Republic of Belarus (Day of the Republic).
 msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+msgstr ""
+
+#. Day of People's Unity.
+msgid "Дзень народнага адзінства"
+msgstr ""
+
+#. New Year's Day.
+msgid "Новы год"
+msgstr ""
+
+#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of
+#. Belarus.
+msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
+msgstr ""
+
+#. Women's Day.
+msgid "Дзень жанчын"
+msgstr ""
+
+#. Labor Day.
+msgid "Свята працы"
 msgstr ""
 
 #. October Revolution Day.
 msgid "Дзень Кастрычніцкай рэвалюцыі"
+msgstr ""
+
+#. Orthodox Christmas Day.
+msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
+msgstr ""
+
+#. Catholic Easter.
+msgid "Каталiцкi Вялiкдзень"
+msgstr ""
+
+#. Orthodox Easter.
+msgid "Праваслаўны Вялiкдзень"
+msgstr ""
+
+#. Radunitsa (Day of Rejoicing).
+msgid "Радаўніца"
+msgstr ""
+
+#. Dzyady (All Souls' Day).
+msgid "Дзень памяці"
 msgstr ""
 
 #. Catholic Christmas Day.

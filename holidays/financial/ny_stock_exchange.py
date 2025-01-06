@@ -147,22 +147,58 @@ class NYSE(NewYorkStockExchange):
 
 
 class NewYorkStockExchangeStaticHolidays:
+    """
+    References:
+    - https://guides.loc.gov/presidents-portraits/chronological
+    - https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy
+    """
+
+    # Blizzard of 1888.
+    name_blizard_1888 = "Blizzard of 1888"
+
+    # Centennial of George Washington's Inauguration.
+    name_george_washington_centennial = "Centennial of George Washington's Inauguration"
+
+    # Columbian Celebration.
+    name_columbian_celebration = "Columbian Celebration"
+
+    # Heatless Day.
+    name_heatless_day = "Heatless Day"
+
+    # Catch Up Day.
+    name_catch_up_day = "Catch Up Day"
+
+    # Special Bank Holiday.
+    name_special_bank_holiday = "Special Bank Holiday"
+
+    # V-J Day (WWII).
+    name_vj_day_wwii = "V-J Day (WWII)"
+
+    # Christmas Eve.
+    name_christmas_eve = "Christmas Eve"
+
+    # Closed for Sept 11, 2001 Attacks.
+    name_sept11_attacks = "Closed for Sept 11, 2001 Attacks"
+
+    # Hurricane Sandy.
+    name_hurricane_sandy = "Hurricane Sandy"
+
     special_public_holidays = {
         1888: (
-            (MAR, 12, "Blizzard of 1888"),
-            (MAR, 13, "Blizzard of 1888"),
+            (MAR, 12, name_blizard_1888),
+            (MAR, 13, name_blizard_1888),
             (NOV, 30, "Thanksgiving Friday 1888"),
         ),
         1889: (
-            (APR, 29, "Centennial of Washington Inauguration"),
-            (APR, 30, "Centennial of Washington Inauguration"),
-            (MAY, 1, "Centennial of Washington Inauguration"),
+            (APR, 29, name_george_washington_centennial),
+            (APR, 30, name_george_washington_centennial),
+            (MAY, 1, name_george_washington_centennial),
         ),
         1892: (
-            (OCT, 12, "Columbian Celebration"),
-            (OCT, 21, "Columbian Celebration"),
+            (OCT, 12, name_columbian_celebration),
+            (OCT, 21, name_columbian_celebration),
         ),
-        1893: (APR, 27, "Columbian Celebration"),
+        1893: (APR, 27, name_columbian_celebration),
         1897: (APR, 27, "Grant's Birthday"),
         1898: (MAY, 4, "Charter Day"),
         1899: (
@@ -170,17 +206,17 @@ class NewYorkStockExchangeStaticHolidays:
             (JUL, 3, "Monday before Independence Day"),
             (SEP, 29, "Admiral Dewey Celebration"),
         ),
-        1900: (DEC, 24, "Christmas Eve"),
+        1900: (DEC, 24, name_christmas_eve),
         1901: (
             (JUL, 5, "Friday after Independence Day"),
-            (SEP, 19, "Funeral of President McKinley"),
+            (SEP, 19, "National Day of Mourning for President WIlliam McKinley"),
         ),
         1903: (APR, 22, "Opening of new NYSE building"),
         1917: (JUN, 5, "Draft Registration Day"),
         1918: (
-            (JAN, 28, "Heatless Day"),
-            (FEB, 4, "Heatless Day"),
-            (FEB, 11, "Heatless Day"),
+            (JAN, 28, name_heatless_day),
+            (FEB, 4, name_heatless_day),
+            (FEB, 11, name_heatless_day),
             (SEP, 12, "Draft Registration Day"),
             (NOV, 11, "Armistice Day"),
         ),
@@ -191,58 +227,59 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1923: (
             (AUG, 3, "Death of President Warren G. Harding"),
-            (AUG, 10, "Funeral of President Warren G. Harding"),
+            (AUG, 10, "National Day of Mourning for President Warren G. Harding"),
         ),
         1927: (JUN, 13, "Parade for Colonel Charles Lindbergh"),
         1929: (
-            (NOV, 1, "Catch Up Day"),
-            (NOV, 29, "Catch Up Day"),
+            (NOV, 1, name_catch_up_day),
+            (NOV, 29, name_catch_up_day),
         ),
         1933: (
-            (MAR, 6, "Special Bank Holiday"),
-            (MAR, 7, "Special Bank Holiday"),
-            (MAR, 8, "Special Bank Holiday"),
-            (MAR, 9, "Special Bank Holiday"),
-            (MAR, 10, "Special Bank Holiday"),
-            (MAR, 13, "Special Bank Holiday"),
-            (MAR, 14, "Special Bank Holiday"),
+            (MAR, 6, name_special_bank_holiday),
+            (MAR, 7, name_special_bank_holiday),
+            (MAR, 8, name_special_bank_holiday),
+            (MAR, 9, name_special_bank_holiday),
+            (MAR, 10, name_special_bank_holiday),
+            (MAR, 13, name_special_bank_holiday),
+            (MAR, 14, name_special_bank_holiday),
         ),
         1945: (
-            (AUG, 15, "V-J Day (WWII)"),
-            (AUG, 16, "V-J Day (WWII)"),
-            (DEC, 24, "Christmas Eve"),
+            (AUG, 15, name_vj_day_wwii),
+            (AUG, 16, name_vj_day_wwii),
+            (DEC, 24, name_christmas_eve),
         ),
-        1954: (DEC, 24, "Christmas Eve"),
-        1956: (DEC, 24, "Christmas Eve"),
+        1954: (DEC, 24, name_christmas_eve),
+        1956: (DEC, 24, name_christmas_eve),
         1958: (DEC, 26, "Day after Christmas"),
         1961: (MAY, 29, "Day before Decoration Day"),
-        1963: (NOV, 25, "Funeral of President John F. Kennedy"),
-        1965: (DEC, 24, "Christmas Eve"),
+        1963: (NOV, 25, "National Day of Mourning for President John F. Kennedy"),
+        1965: (DEC, 24, name_christmas_eve),
         1968: (
-            (APR, 9, "Day of Mourning for Martin Luther King Jr."),
+            (APR, 9, "National Day of Mourning for Martin Luther King Jr."),
             (JUL, 5, "Day after Independence Day"),
         ),
         1969: (
             (FEB, 10, "Heavy Snow"),
-            (MAR, 31, "Funeral of President Dwight D. Eisenhower"),
+            (MAR, 31, "National Day of Mourning for former President Dwight D. Eisenhower"),
             (JUL, 21, "National Participation in Lunar Exploration"),
         ),
-        1972: (DEC, 28, "Funeral for President Harry S. Truman"),
-        1973: (JAN, 25, "Funeral for President Lyndon B. Johnson"),
+        1972: (DEC, 28, "National Day of Mourning for former President Harry S. Truman"),
+        1973: (JAN, 25, "National Day of Mourning for former President Lyndon B. Johnson"),
         1977: (JUL, 14, "Blackout in New York City"),
         1985: (SEP, 27, "Hurricane Gloria"),
-        1994: (APR, 27, "Funeral for President Richard M. Nixon"),
+        1994: (APR, 27, "National Day of Mourning for former President Richard M. Nixon"),
         2001: (
-            (SEP, 11, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 12, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 13, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 14, "Closed for Sept 11, 2001 Attacks"),
+            (SEP, 11, name_sept11_attacks),
+            (SEP, 12, name_sept11_attacks),
+            (SEP, 13, name_sept11_attacks),
+            (SEP, 14, name_sept11_attacks),
         ),
-        2004: (JUN, 11, "Day of Mourning for President Ronald W. Reagan"),
-        2007: (JAN, 2, "Day of Mourning for President Gerald R. Ford"),
+        2004: (JUN, 11, "National Day of Mourning for former President Ronald Reagan"),
+        2007: (JAN, 2, "National Day of Mourning for former President Gerald R. Ford"),
         2012: (
-            (OCT, 29, "Hurricane Sandy"),
-            (OCT, 30, "Hurricane Sandy"),
+            (OCT, 29, name_hurricane_sandy),
+            (OCT, 30, name_hurricane_sandy),
         ),
-        2018: (DEC, 5, "Day of Mourning for President George H.W. Bush"),
+        2018: (DEC, 5, "National Day of Mourning for former President George H. W. Bush"),
+        2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
     }

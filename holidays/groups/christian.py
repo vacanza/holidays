@@ -110,7 +110,9 @@ class ChristianHolidays:
 
         All Souls' Day is a day of prayer and remembrance for the faithful
         departed, observed by certain Christian denominations on 2 November.
+        In Belarussian tradition it is called Dziady.
         https://en.wikipedia.org/wiki/All_Souls%27_Day
+        https://en.wikipedia.org/wiki/Dziady
         """
         return self._add_holiday_nov_2(name)
 

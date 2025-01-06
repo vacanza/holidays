@@ -287,10 +287,10 @@ class AzerbaijanStaticHolidays:
         2018: (APR, 11, presidential_elections),
         2019: (DEC, 27, municipal_elections),
         2020: (
-            (MAR, 27, MAR, 29),
-            (MAY, 27, MAY, 30),
             (JAN, 3, DEC, 28, 2019),
             (JAN, 6, DEC, 29, 2019),
+            (MAR, 27, MAR, 29),
+            (MAY, 27, MAY, 30),
         ),
         2021: (
             (MAY, 11, MAY, 8),

@@ -1,3 +1,25 @@
+Version 0.64
+============
+
+Released January 6, 2025
+
+- Introduce `common.WorkingDayTests` class (#2207 by @KJhellico)
+- Refactor XNYS holidays: standardize US market holidays days of mourning entries (#2213 by @PPsyrius)
+- Add Afghanistan holidays (#2198 by @Prateekshit73, @arkid15r, @PPsyrius)
+- Add `HebrewCalendarHolidays` to holidays groups, refactor Israel holidays (#2186 by @KJhellico)
+- Update "Set up Python" to use 3.13 (#2180 by @arkid15r)
+- Update Belarus holidays: add ru & th l10n, 2024-2025 substituted holidays (#2192 by @PPsyrius)
+- Update El Salvador holidays, add l10n support (#2209 by @KJhellico)
+- Update Montenegro holidays, add l10n support (#2191 by @KJhellico)
+- Update Poland holidays: add Christmas Eve holiday since 2025 (#2210 by @KJhellico)
+- Update Ukraine holidays in 1991 (#2199 by @KJhellico)
+- Update XNYS: add a Day of Mourning for President Jimmy Carter (#2201 by @tackerfrink)
+- Update working days calculation (#2197 by @KJhellico, @arkid15r)
+- Add Norway holidays localization: th (#2200 by @ansntu)
+- Add Russia holidays localization: th (#2190 by @PPsyrius, @arkid15r)
+- Add Ukraine holidays localization: th (#2189 by @PPsyrius, @arkid15r)
+- Sign release artifacts using Sigstore (#2195 by @arkid15r
+
 Version 0.63
 ============
 

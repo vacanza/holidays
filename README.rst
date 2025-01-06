@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 155 country codes. The standard way to refer to a country
+We currently support 156 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -180,6 +180,11 @@ All other default values are highlighted with bold:
      - Subdivisions
      - Supported Languages
      - Supported Categories
+   * - Afghanistan
+     - AF
+     -
+     - en_US, **fa_AF**, ps_AF
+     -
    * - Albania
      - AL
      -
@@ -258,8 +263,8 @@ All other default values are highlighted with bold:
    * - Belarus
      - BY
      -
-     - **be**, en_US
-     -
+     - **be**, en_US, ru, th
+     - WORKDAY
    * - Belgium
      - BE
      -
@@ -412,8 +417,8 @@ All other default values are highlighted with bold:
      -
    * - El Salvador
      - SV
-     - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
-     -
+     - Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)
+     - en_US, **es**, uk
      -
    * - Estonia
      - EE
@@ -668,8 +673,8 @@ All other default values are highlighted with bold:
    * - Montenegro
      - ME
      -
-     -
-     -
+     - **cnr**, en_US, uk
+     - CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY
    * - Morocco
      - MA
      -
@@ -718,7 +723,7 @@ All other default values are highlighted with bold:
    * - Norway
      - NO
      -
-     - en_US, **no**, uk
+     - en_US, **no**, th, uk
      -
    * - Pakistan
      - PK
@@ -778,7 +783,7 @@ All other default values are highlighted with bold:
    * - Russia
      - RU
      -
-     - en_US, **ru**
+     - en_US, **ru**, th
      -
    * - Saint Kitts and Nevis
      - KN
@@ -888,7 +893,7 @@ All other default values are highlighted with bold:
    * - Ukraine
      - UA
      -
-     - ar, en_US, **uk**
+     - ar, en_US, th, **uk**
      - WORKDAY
    * - United Arab Emirates
      - AE

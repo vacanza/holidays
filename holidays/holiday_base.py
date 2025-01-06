@@ -233,7 +233,7 @@ class HolidayBase(dict[date, str]):
     ones."""
     weekend: set[int] = {SAT, SUN}
     """Country weekend days."""
-    weekend_workdays: set[date] = set()
+    weekend_workdays: set[date]
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
@@ -362,7 +362,7 @@ class HolidayBase(dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = set()
+        self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
         self.tr = (

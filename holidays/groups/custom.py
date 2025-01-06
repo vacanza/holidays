@@ -10,6 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
+from holidays.helpers import _normalize_tuple
+
 
 class StaticHolidays:
     """Helper class for special and substituted holidays support.
@@ -33,3 +37,11 @@ class StaticHolidays:
             ):
                 setattr(self, attribute_name, value)
                 self.has_substituted_holidays = True
+
+        # Populate substituted holidays from adjacent years.
+        self.weekend_workdays = set()
+        for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
+            for special_public_holiday in _normalize_tuple(special_public_holidays):
+                if len(special_public_holiday) == 5:  # The fifth element is the year.
+                    _, _, from_month, from_day, from_year = special_public_holiday
+                    self.weekend_workdays.add(date(from_year, from_month, from_day))
