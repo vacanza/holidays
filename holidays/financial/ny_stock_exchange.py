@@ -244,6 +244,6 @@ class NewYorkStockExchangeStaticHolidays:
             (OCT, 29, "Hurricane Sandy"),
             (OCT, 30, "Hurricane Sandy"),
         ),
-        2018: (DEC, 5, "National Day of Day of Mourning for former President George H.W. Bush"),
+        2018: (DEC, 5, "National Day of Mourning for former President George H. W. Bush"),
         2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
     }
