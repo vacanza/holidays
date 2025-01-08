@@ -334,7 +334,7 @@ class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
 class SouthKoreaStaticHolidays:
     """
     References:
-        - https://namu.wiki/w/임ㅜ시공휴일 *
+        - https://namu.wiki/w/임시공휴일 *
         - https://namu.wiki/w/공휴일/대한민국 **
         - https://namu.wiki/w/대체%20휴일%20제도
 
