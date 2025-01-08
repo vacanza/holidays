@@ -108,7 +108,8 @@ class SouthKorea(
             if not self._is_observed(dt):
                 continue
             dt_observed = self._get_observed_date(
-                dt, SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY
+                dt,
+                (SUN_TO_NEXT_WORKDAY if dt in three_day_holidays else SAT_SUN_TO_NEXT_WORKDAY),
             )
             if dt_observed != dt or len(self.get_list(dt)) > 1:
                 if dt_observed == dt:
@@ -333,7 +334,7 @@ class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
 class SouthKoreaStaticHolidays:
     """
     References:
-        - https://namu.wiki/w/임시공휴일 *
+        - https://namu.wiki/w/임ㅜ시공휴일 *
         - https://namu.wiki/w/공휴일/대한민국 **
         - https://namu.wiki/w/대체%20휴일%20제도
 
@@ -615,8 +616,12 @@ class SouthKoreaStaticHolidays:
         2020: (AUG, 17, temporary_public_holiday),
         # Added to create a 6-day long holiday period.
         2023: (OCT, 2, temporary_public_holiday),
-        # 76th Anniversary of the Armed Forces of Korea.
-        2024: (OCT, 1, armed_forces_day),
+        2024: (
+            # 76th Anniversary of the Armed Forces of Korea.
+            (OCT, 1, armed_forces_day),
+            # Added to create a 6-day long holiday period.
+            (JAN, 27, temporary_public_holiday),
+        ),
     }
     # Pre-2014 Alternate Holidays
     # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1
