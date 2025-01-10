@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.65\n"
 "POT-Creation-Date: 2024-12-25 20:00+0530\n"
-"PO-Revision-Date: 2025-01-05 23:00+0200\n"
+"PO-Revision-Date: 2025-01-10 18:59+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ps_AF\n"
@@ -62,16 +62,6 @@ msgstr "د روژې لومړۍ نیټه"
 #, c-format
 msgid "%s (برآورد شده)"
 msgstr "%s (اټکل)"
-
-#. %s (observed).
-#, c-format
-msgid "%s (مشاهده شده)"
-msgstr "%s (په دې وروستیو کې د افغانستان د کرکټ ملی)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (مشاهده شده، برآورد شده)"
-msgstr "%s (مشاهده شده، تخمین زده شده است)"
 
 #. Soviet Victory Day.
 msgid "روز پیروزی شوروی"

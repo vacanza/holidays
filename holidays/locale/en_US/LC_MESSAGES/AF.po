@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.65\n"
 "POT-Creation-Date: 2024-12-24 13:40+0530\n"
-"PO-Revision-Date: 2025-01-05 23:00+0200\n"
+"PO-Revision-Date: 2025-01-10 18:59+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -62,16 +62,6 @@ msgstr "First Day of Ramadan"
 #, c-format
 msgid "%s (برآورد شده)"
 msgstr "%s (estimated)"
-
-#. %s (observed).
-#, c-format
-msgid "%s (مشاهده شده)"
-msgstr "%s (observed)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (مشاهده شده، برآورد شده)"
-msgstr "%s (observed, estimated)"
 
 #. Soviet Victory Day.
 msgid "روز پیروزی شوروی"
