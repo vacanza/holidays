@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -20,9 +21,11 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan
     https://www.timeanddate.com/holidays/afghanistan/
+    https://en.wikipedia.org/wiki/Workweek_and_weekend
     """
 
     country = "AF"
+    weekend = {FRI, SAT}
     default_language = "fa_AF"
     # %s (estimated).
     estimated_label = tr("%s (برآورد شده)")
