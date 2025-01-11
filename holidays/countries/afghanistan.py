@@ -13,7 +13,21 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    FRI,
+    SAT,
+)
 from holidays.groups import InternationalHolidays, IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,6 +36,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan
     https://www.timeanddate.com/holidays/afghanistan/
+    https://en.wikipedia.org/wiki/Workweek_and_weekend
     """
 
     country = "AF"
@@ -31,6 +46,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
     supported_languages = ("en_US", "fa_AF", "ps_AF")
     # Afghanistan's regaining of full independence from British influence.
     start_year = 1919
+    weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
