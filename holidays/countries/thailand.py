@@ -556,8 +556,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         if self._year >= 2019:
             # HM King Bhumibol Adulyadej the Great's Birthday Anniversary.
             name = tr(
-                "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร "
-                "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
             )
         elif self._year >= 2016:
             # HM King Bhumibol Adulyadej Birthday Anniversary.

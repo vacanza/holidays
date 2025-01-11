@@ -33,8 +33,7 @@ class TestSpain(CommonCountryTests, TestCase):
                 self.assertEqual(
                     dt in prov_holidays,
                     subdiv in hol_provs,
-                    f"Failed date `{dt:%Y-%m-%d}`, "
-                    f"province `{subdiv}`: {', '.join(hol_provs)}",
+                    f"Failed date `{dt:%Y-%m-%d}`, province `{subdiv}`: {', '.join(hol_provs)}",
                 )
 
     def test_country_aliases(self):

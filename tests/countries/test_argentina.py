@@ -139,8 +139,7 @@ class TestArgentina(CommonCountryTests, TestCase):
 
     def test_sovereignty_over_malvinas_day(self):
         name = (
-            "Día de los Derechos Argentinos sobre las Islas Malvinas, "
-            "Sandwich y del Atlántico Sur"
+            "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"
         )
 
         self.assertNoHolidayName(name, 1982, range(2001, 2050))
