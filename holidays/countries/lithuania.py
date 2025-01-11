@@ -67,10 +67,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1991:
             self._add_holiday_jul_6(
                 # Statehood Day.
-                tr(
-                    "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) "
-                    "ir Tautiškos giesmės diena"
-                )
+                tr("Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena")
             )
 
         # Assumption Day.

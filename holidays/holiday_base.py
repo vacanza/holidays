@@ -329,8 +329,7 @@ class HolidayBase(dict[date, str]):
             # Deprecated arguments.
             if prov_state := prov or state:
                 warnings.warn(
-                    "Arguments prov and state are deprecated, use "
-                    f"subdiv='{prov_state}' instead.",
+                    f"Arguments prov and state are deprecated, use subdiv='{prov_state}' instead.",
                     DeprecationWarning,
                 )
 
