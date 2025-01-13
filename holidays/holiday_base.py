@@ -593,6 +593,7 @@ class HolidayBase(dict[date, str]):
 
         # Key is `str` instance.
         elif isinstance(key, str):
+            # key possibly contains a date in YYYY-MM-DD or YYYYMMDD format.
             if len(key) in {8, 10}:
                 try:
                     dt = date.fromisoformat(key)
