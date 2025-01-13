@@ -39,7 +39,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/bandit
-    rev: 1.8.0
+    rev: 1.8.2
     hooks:
       - id: bandit
         additional_dependencies:
