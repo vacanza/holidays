@@ -584,6 +584,7 @@ class HolidayBase(dict[date, str]):
 
         to :class:`datetime.date`, which is how it's stored by the class."""
 
+        dt: Optional[date] = None
         # Try to catch `date` and `str` type keys first.
         # Using type() here to skip date subclasses.
         # Key is `date`.
@@ -592,10 +593,17 @@ class HolidayBase(dict[date, str]):
 
         # Key is `str` instance.
         elif isinstance(key, str):
-            try:
-                dt = parse(key).date()
-            except (OverflowError, ValueError):
-                raise ValueError(f"Cannot parse date from string '{key}'")
+            # key possibly contains a date in YYYY-MM-DD or YYYYMMDD format.
+            if len(key) in {8, 10}:
+                try:
+                    dt = date.fromisoformat(key)
+                except ValueError:
+                    pass
+            if dt is None:
+                try:
+                    dt = parse(key).date()
+                except (OverflowError, ValueError):
+                    raise ValueError(f"Cannot parse date from string '{key}'")
 
         # Key is `datetime` instance.
         elif isinstance(key, datetime):
