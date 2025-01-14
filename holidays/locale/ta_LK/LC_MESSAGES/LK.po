@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.65\n"
+"POT-Creation-Date: 2025-01-12 23:29+0530\n"
+"PO-Revision-Date: 2025-01-12 23:29+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+
+#. Thai Pongal.
+msgid "தைப்பொங்கல்"
+msgstr "தைப்பொங்கல்"
+
+#. Sinhala and Tamil New Year.
+msgid "සිංහල සහ දෙමළ නව වසර"
+msgstr "சிங்கள, தமிழ் புத்தாண்டு நிகழ்வுகள்"
+
+#. Vesak Poya.
+msgid "වෙසක් පොහොය"
+msgstr "வெசாக் போயா"
+
+#. Poson Poya.
+msgid "පොසොන් පොහොය"
+msgstr "போசன் போயா"
+
+#. Christmas.
+msgid "ක්‍රිස්මස්"
+msgstr "நத்தார்"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (අනුමානිත)"
+msgstr "%s (அனுமானம்)"
+
+#. Eid al-Fitr.
+msgid "ඊද් අල්-ෆිතර්"
+msgstr "ஈதுல் பித்ர்"
+
+#. Eid al-Adha.
+msgid "ඊද් අල්-අදා"
+msgstr "ஈதுல் அதா"
+
+#. The Prophet's Birthday.
+msgid "නබිගේ උපන් දිනය"
+msgstr "நபியின் பிறந்த நாள்"
+
+#. Independence Day.
+msgid "ස්වාධීනත්ව දිනය"
+msgstr "சுதந்திர தினம்"
+
+#. New Year.
+msgid "නව වසර"
+msgstr "புத்தாண்டு"
+
+#. Deepavali.
+msgid "දීපාවලී"
+msgstr "தீபாவளி"
+
+#. Magh Puja.
+msgid "මාඝ පූජා"
+msgstr "மாக் பூஜை"
+
+#. Maha Shivatri.
+msgid "මහා ශිවාත්‍රි"
+msgstr "மகா சிவத்ரி"
+
+#. Day before Sinhala and Tamil New Year.
+msgid "සිංහල හා දෙමළ අලුත් අවුරුද්දට පෙර දිනය"
+msgstr "சிங்கள, தமிழ் புத்தாண்டுக்கு முன்னைய தினம்"
+
+#. Esala Poya.
+msgid "එසාල පොය"
+msgstr "எசல போயா"
+
+#. Duruthu Poya.
+msgid "දුරුතු පොය"
+msgstr "துருது போயா"
+
+#. Nikini Poya.
+msgid "නිකිනි පොය"
+msgstr "நிகினி போயா"
+
+#. Binara Poya.
+msgid "බිනර පොය"
+msgstr "பினாரா போயா"
+
+#. Wap Poya.
+msgid "වප් පොය"
+msgstr "வாப் போயா"
+
+#. Il Poya.
+msgid "ඉල් පොය"
+msgstr "இல் போயா"
+
+#. Unduwap Poya.
+msgid "උඳුවාප් පොය"
+msgstr "உந்துவாப் போயா"
+
+#. Good Friday
+msgid "හොඳ සිකුරාදා"
+msgstr "புனித வெள்ளி"
+
+#. Bank Holidays
+msgid "බැංකු නිවාඩු"
+msgstr "வங்கி விடுமுறைகள்"
+
+#. New Year's Eve
+msgid "අලුත් අවුරුදු උදාව"
+msgstr "புத்தாண்டு கொண்டாட்டம்"
+
+#. Labor Day
+msgid "කම්කරු දිනය"
+msgstr "தொழிலாளர் தினம்"
