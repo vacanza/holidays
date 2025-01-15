@@ -977,7 +977,7 @@ class HolidayBase(dict[date, str]):
         (if previous is False) or the previous holiday (if previous is True).
         If no date is given the search starts from current date"""
 
-        dt = self.__keytransform__(start) if start else datetime.now().date()
+        dt = self.__keytransform__(start if start else datetime.now().date())
         if not previous:
             next_date = next((x for x in self.get_entries_sorted() if x > dt), None)
             if not next_date and dt.year < self.end_year:

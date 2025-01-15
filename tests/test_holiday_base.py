@@ -1265,14 +1265,14 @@ class TestNextHoliday(unittest.TestCase):
         )
 
     def test_get_next_holiday_corner_cases(self):
-        from holidays.countries.ukraine import UA
+        from holidays.countries.united_states import US
 
-        ua = UA()
+        us = US()
         # check for date before start of calendar
-        self.assertEqual(ua.get_next_holiday("1991-01-01", previous=True), (None, None))
+        self.assertEqual(us.get_next_holiday("1777-01-01", previous=True), (None, None))
 
         # check for date after end of calendar
-        self.assertEqual(ua.get_next_holiday("2022-03-08"), (None, None))
+        self.assertEqual(us.get_next_holiday("2100-12-31"), (None, None))
 
     def test_get_next_holiday_unsorted_calendars(self):
         from holidays.countries.united_states import US
