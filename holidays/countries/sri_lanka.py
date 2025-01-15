@@ -12,7 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import (
+    _CustomBuddhistHolidays,
+    _CustomIslamicHolidays,
+    _CustomHinduHolidays,
+)
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
@@ -21,6 +25,7 @@ from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
     BuddhistCalendarHolidays,
+    StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -32,6 +37,7 @@ class SriLanka(
     ChristianHolidays,
     HinduCalendarHolidays,
     BuddhistCalendarHolidays,
+    StaticHolidays,
 ):
     """
     https://en.wikipedia.org/wiki/Culture_of_Sri_Lanka#List_of_holidays
@@ -56,6 +62,7 @@ class SriLanka(
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         BuddhistCalendarHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=SriLankaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -66,40 +73,8 @@ class SriLanka(
             # Thai Pongal.
             self._add_holiday_jan_14(tr("தைப்பொங்கல்"))
 
-        # New Year.
-        self._add_new_years_day(tr("නව වසර"))
-
         # Deepavali.
         self._add_diwali(tr("දීපාවලී"))
-
-        magh_dates = {
-            2022: (FEB, 16),
-            2023: (MAR, 6),
-            2024: (FEB, 24),
-            2025: (FEB, 12),
-            2026: (MAR, 3),
-        }
-
-        if self._year in magh_dates:
-            # Magh Puja.
-            self._add_holiday(tr("මාඝ පූජා"), magh_dates[self._year])
-
-        maha_shivratri_dates = {
-            2021: (MAR, 11),
-            2022: (MAR, 1),
-            2023: (FEB, 18),
-            2024: (MAR, 8),
-            2025: (FEB, 26),
-            2026: (FEB, 15),
-            2027: (MAR, 6),
-            2028: (FEB, 23),
-            2029: (FEB, 11),
-            2030: (MAR, 2),
-        }
-
-        if self._year in maha_shivratri_dates:
-            # Maha Shivatri.
-            self._add_holiday(tr("මහා ශිවාත්‍රි"), maha_shivratri_dates[self._year])
 
         # Day before Sinhala and Tamil New Year.
         self._add_holiday_apr_13(tr("සිංහල හා දෙමළ අලුත් අවුරුද්දට පෙර දිනය"))
@@ -119,42 +94,6 @@ class SriLanka(
         # Duruthu Poya.
         self._add_holiday_jan_1(tr("දුරුතු පොය"))
 
-        nikini_poya_dates = {
-            2014: (AUG, 10),
-            2015: (AUG, 29),
-            2016: (AUG, 17),
-            2017: (AUG, 7),
-            2018: (AUG, 25),
-            2019: (AUG, 14),
-            2020: (AUG, 3),
-            2021: (AUG, 22),
-            2022: (AUG, 11),
-            2023: (AUG, 30),
-            2024: (AUG, 19),
-            2025: (AUG, 8),
-        }
-
-        if self._year in nikini_poya_dates:
-            # Nikini Poya.
-            self._add_holiday(tr("නිකිනි පොය"), nikini_poya_dates[self._year])
-
-        binara_poya_dates = {
-            2016: (SEP, 16),
-            2017: (SEP, 5),
-            2018: (SEP, 24),
-            2019: (SEP, 13),
-            2020: (SEP, 1),
-            2021: (SEP, 20),
-            2022: (SEP, 10),
-            2023: (SEP, 29),
-            2024: (SEP, 17),
-            2025: (SEP, 7),
-        }
-
-        if self._year in binara_poya_dates:
-            # Binara Poya.
-            self._add_holiday(tr("බිනර පොය"), binara_poya_dates[self._year])
-
         # Christmas.
         self._add_christmas_day(tr("ක්‍රිස්මස්"))
 
@@ -170,58 +109,11 @@ class SriLanka(
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        wap_poya_dates = {
-            2014: (OCT, 8),
-            2015: (OCT, 27),
-            2016: (OCT, 15),
-            2017: (OCT, 5),
-            2018: (OCT, 24),
-            2019: (OCT, 13),
-            2020: (OCT, 30),
-            2021: (OCT, 20),
-            2022: (OCT, 9),
-            2023: (OCT, 28),
-            2024: (OCT, 17),
-            2025: (OCT, 6),
-        }
-        if self._year in wap_poya_dates:
-            # Wap Poya.
-            self._add_holiday(tr("වප් පොය"), wap_poya_dates[self._year])
-
         # Eid al-Adha.
         name = tr("ඊද් අල්-අදා")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
-
-        il_poya_dates = {
-            2015: (SEP, 28),
-            2016: (OCT, 15),
-            2017: (OCT, 5),
-            2018: (SEP, 24),
-            2019: (SEP, 14),
-            2020: (OCT, 1),
-            2021: (OCT, 20),
-            2022: (OCT, 9),
-            2023: (NOV, 27),
-            2024: (NOV, 15),
-            2025: (NOV, 3),
-        }
-        if self._year in il_poya_dates:
-            # Il Poya.
-            self._add_holiday(tr("ඉල් පොය"), il_poya_dates[self._year])
-
-        unduwap_poya_dates = {
-            2020: (DEC, 29),
-            2021: (DEC, 18),
-            2022: (DEC, 7),
-            2023: (DEC, 26),
-            2024: (DEC, 14),
-            2025: (DEC, 4),
-        }
-        if self._year in unduwap_poya_dates:
-            # Unduwap Poya.
-            self._add_holiday(tr("උඳුවාප් පොය"), unduwap_poya_dates[self._year])
 
     def _populate_bank_holidays(self):
         # Bank Holidays
@@ -284,4 +176,179 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 8),
         2023: (SEP, 27),
         2024: (SEP, 16),
+    }
+
+
+class SriLankaBuddhistHolidays(_CustomBuddhistHolidays):
+    VESAK_DATES = {
+        2001: (MAY, 7),
+        2002: (MAY, 26),
+        2003: (MAY, 15),
+        2004: (JUN, 2),
+        2005: (MAY, 22),
+        2006: (MAY, 12),
+        2007: (MAY, 31),
+        2008: (MAY, 19),
+        2009: (MAY, 9),
+        2010: (MAY, 28),
+        2011: (MAY, 17),
+        2012: (MAY, 5),
+        2013: (MAY, 24),
+        2014: (MAY, 13),
+        2015: (JUN, 1),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (MAY, 29),
+        2019: (MAY, 19),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 15),
+        2023: (JUN, 2),
+        2024: (MAY, 22),
+        2025: (MAY, 12),
+    }
+
+
+class SriLankaHinduHolidays(_CustomHinduHolidays):
+    # Deepavali
+    DIWALI_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 3),
+        2003: (OCT, 23),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (NOV, 15),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 22),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 18),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+    }
+
+
+class SriLankaStaticHolidays:
+    """
+    This class contains the static holiday dates for Sri Lanka.
+    """
+
+    # Magh Puja.
+    magh_puja_name = tr("මාඝ පූජා")
+    # Maha Shivatri.
+    maha_shivratri_name = tr("මහා ශිවාත්‍රි")
+    # Nikini Poya.
+    nikini_poya_name = tr("නිකිනි පොය")
+    # Binara Poya.
+    binara_poya_name = tr("බිනර පොය")
+    # Wap Poya.
+    wap_poya_name = tr("වප් පොය")
+    # Il Poya.
+    il_poya_name = tr("ඉල් පොය")
+    # Unduwap Poya.
+    unduwap_poya_name = tr("උඳුවාප් පොය")
+
+    special_public_holidays = {
+        2014: (
+            (AUG, 10, nikini_poya_name),
+            (OCT, 8, wap_poya_name),
+        ),
+        2015: (
+            (AUG, 29, nikini_poya_name),
+            (SEP, 28, il_poya_name),
+            (OCT, 27, wap_poya_name),
+        ),
+        2016: (
+            (AUG, 17, nikini_poya_name),
+            (SEP, 16, binara_poya_name),
+            (OCT, 15, wap_poya_name),
+        ),
+        2017: (
+            (AUG, 7, nikini_poya_name),
+            (SEP, 5, binara_poya_name),
+            (OCT, 5, il_poya_name),
+        ),
+        2018: (
+            (AUG, 25, nikini_poya_name),
+            (SEP, 24, binara_poya_name),
+            (OCT, 24, wap_poya_name),
+        ),
+        2019: (
+            (AUG, 14, nikini_poya_name),
+            (SEP, 13, binara_poya_name),
+            (OCT, 13, wap_poya_name),
+            (SEP, 14, il_poya_name),
+        ),
+        2020: (
+            (AUG, 3, nikini_poya_name),
+            (SEP, 1, binara_poya_name),
+            (OCT, 30, wap_poya_name),
+            (OCT, 1, il_poya_name),
+            (DEC, 29, unduwap_poya_name),
+        ),
+        2021: (
+            (MAR, 11, maha_shivratri_name),
+            (AUG, 22, nikini_poya_name),
+            (SEP, 20, binara_poya_name),
+            (OCT, 20, wap_poya_name),
+            (OCT, 20, il_poya_name),
+            (DEC, 18, unduwap_poya_name),
+        ),
+        2022: (
+            (FEB, 16, magh_puja_name),
+            (MAR, 1, maha_shivratri_name),
+            (AUG, 11, nikini_poya_name),
+            (SEP, 10, binara_poya_name),
+            (OCT, 9, wap_poya_name),
+            (DEC, 7, unduwap_poya_name),
+        ),
+        2023: (
+            (MAR, 6, magh_puja_name),
+            (FEB, 18, maha_shivratri_name),
+            (AUG, 30, nikini_poya_name),
+            (SEP, 29, binara_poya_name),
+            (OCT, 28, wap_poya_name),
+            (NOV, 27, il_poya_name),
+            (DEC, 26, unduwap_poya_name),
+        ),
+        2024: (
+            (FEB, 24, magh_puja_name),
+            (MAR, 8, maha_shivratri_name),
+            (AUG, 19, nikini_poya_name),
+            (SEP, 17, binara_poya_name),
+            (OCT, 17, wap_poya_name),
+            (NOV, 15, il_poya_name),
+            (DEC, 14, unduwap_poya_name),
+        ),
+        2025: (
+            (FEB, 12, magh_puja_name),
+            (FEB, 26, maha_shivratri_name),
+            (AUG, 8, nikini_poya_name),
+            (SEP, 7, binara_poya_name),
+            (OCT, 6, wap_poya_name),
+            (NOV, 3, il_poya_name),
+            (DEC, 4, unduwap_poya_name),
+        ),
+        2026: (
+            (MAR, 3, magh_puja_name),
+            (FEB, 15, maha_shivratri_name),
+            (OCT, 15, il_poya_name),
+            (DEC, 29, unduwap_poya_name),
+        ),
+        2027: (MAR, 6, maha_shivratri_name),
+        2028: (FEB, 23, maha_shivratri_name),
+        2029: (FEB, 11, maha_shivratri_name),
+        2030: (MAR, 2, maha_shivratri_name),
     }

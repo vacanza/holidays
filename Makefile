@@ -33,18 +33,18 @@ doc:
 	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
 
 l10n:
-	python scripts/l10n/generate_po_files.py
-	python scripts/l10n/generate_mo_files.py
+	scripts/l10n/generate_po_files.py >/dev/null 2>&1
+	scripts/l10n/generate_mo_files.py
 
 package:
-	python scripts/l10n/generate_mo_files.py
+	scripts/l10n/generate_mo_files.py
 	python -m build
 
 pre-commit:
 	pre-commit run --all-files
 
 release-notes:
-	@python scripts/generate_release_notes.py
+	@scripts/generate_release_notes.py
 
 sbom:
 	@python -m cyclonedx_py requirements requirements/runtime.txt
@@ -61,11 +61,11 @@ setup:
 	make package
 
 snapshot:
-	python scripts/l10n/generate_mo_files.py
-	python scripts/generate_snapshots.py
+	scripts/l10n/generate_mo_files.py
+	scripts/generate_snapshots.py
 
 test:
-	python scripts/l10n/generate_mo_files.py
+	scripts/l10n/generate_mo_files.py
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 tox:

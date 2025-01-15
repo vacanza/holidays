@@ -67,10 +67,6 @@ msgstr "நபியின் பிறந்த நாள்"
 msgid "ස්වාධීනත්ව දිනය"
 msgstr "சுதந்திர தினம்"
 
-#. New Year.
-msgid "නව වසර"
-msgstr "புத்தாண்டு"
-
 #. Deepavali.
 msgid "දීපාවලී"
 msgstr "தீபாவளி"

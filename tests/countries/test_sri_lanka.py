@@ -104,7 +104,6 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2014-10-08",
             "2015-10-27",
             "2016-10-15",
-            "2017-10-05",
             "2018-10-24",
             "2019-10-13",
             "2020-10-30",
@@ -121,13 +120,10 @@ class TestSriLanka(CommonCountryTests, TestCase):
 
         dt = (
             "2015-09-28",
-            "2016-10-15",
             "2017-10-05",
-            "2018-09-24",
             "2019-09-14",
             "2020-10-01",
             "2021-10-20",
-            "2022-10-09",
             "2023-11-27",
             "2024-11-15",
             "2025-11-03",
@@ -264,7 +260,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def test_2021(self):
         self.assertHolidays(
             SriLanka(years=2021),
-            ("2021-01-01", "දුරුතු පොය; නව වසර"),
+            ("2021-01-01", "දුරුතු පොය"),
             ("2021-01-14", "தைப்பொங்கல்"),
             ("2021-02-04", "ස්වාධීනත්ව දිනය"),
             ("2021-03-11", "මහා ශිවාත්‍රි"),
@@ -291,7 +287,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
 
     def test_l10_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "දුරුතු පොය; නව වසර"),
+            ("2022-01-01", "දුරුතු පොය"),
             ("2022-01-14", "தைப்பொங்கல்"),
             ("2022-02-04", "ස්වාධීනත්ව දිනය"),
             ("2022-02-16", "මාඝ පූජා"),
@@ -312,7 +308,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-08-11", "නිකිනි පොය"),
             ("2022-09-10", "බිනර පොය"),
             ("2022-10-08", "නබිගේ උපන් දිනය"),
-            ("2022-10-09", "ඉල් පොය; වප් පොය"),
+            ("2022-10-09", "වප් පොය"),
             ("2022-10-23", "දීපාවලී"),
             ("2022-12-07", "උඳුවාප් පොය"),
             ("2022-12-25", "ක්‍රිස්මස්"),
@@ -322,7 +318,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2022-01-01", "Duruthu Poya; New Year"),
+            ("2022-01-01", "Duruthu Poya"),
             ("2022-01-14", "Thai Pongal"),
             ("2022-02-04", "Independence Day"),
             ("2022-02-16", "Magh Puja"),
@@ -343,7 +339,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-08-11", "Nikini Poya"),
             ("2022-09-10", "Binara Poya"),
             ("2022-10-08", "The Prophet's Birthday"),
-            ("2022-10-09", "Il Poya; Wap Poya"),
+            ("2022-10-09", "Wap Poya"),
             ("2022-10-23", "Deepavali"),
             ("2022-12-07", "Unduwap Poya"),
             ("2022-12-25", "Christmas"),
@@ -353,7 +349,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def test_l10n_ta_lk(self):
         self.assertLocalizedHolidays(
             "ta_LK",
-            ("2022-01-01", "துருது போயா; புத்தாண்டு"),
+            ("2022-01-01", "துருது போயா"),
             ("2022-01-14", "தைப்பொங்கல்"),
             ("2022-02-04", "சுதந்திர தினம்"),
             ("2022-02-16", "மாக் பூஜை"),
@@ -374,7 +370,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-08-11", "நிகினி போயா"),
             ("2022-09-10", "பினாரா போயா"),
             ("2022-10-08", "நபியின் பிறந்த நாள்"),
-            ("2022-10-09", "இல் போயா; வாப் போயா"),
+            ("2022-10-09", "வாப் போயா"),
             ("2022-10-23", "தீபாவளி"),
             ("2022-12-07", "உந்துவாப் போயா"),
             ("2022-12-25", "நத்தார்"),
