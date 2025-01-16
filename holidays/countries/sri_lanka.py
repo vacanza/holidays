@@ -12,11 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import (
-    _CustomBuddhistHolidays,
-    _CustomIslamicHolidays,
-    _CustomHinduHolidays,
-)
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
@@ -176,67 +172,6 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 8),
         2023: (SEP, 27),
         2024: (SEP, 16),
-    }
-
-
-class SriLankaBuddhistHolidays(_CustomBuddhistHolidays):
-    VESAK_DATES = {
-        2001: (MAY, 7),
-        2002: (MAY, 26),
-        2003: (MAY, 15),
-        2004: (JUN, 2),
-        2005: (MAY, 22),
-        2006: (MAY, 12),
-        2007: (MAY, 31),
-        2008: (MAY, 19),
-        2009: (MAY, 9),
-        2010: (MAY, 28),
-        2011: (MAY, 17),
-        2012: (MAY, 5),
-        2013: (MAY, 24),
-        2014: (MAY, 13),
-        2015: (JUN, 1),
-        2016: (MAY, 21),
-        2017: (MAY, 10),
-        2018: (MAY, 29),
-        2019: (MAY, 19),
-        2020: (MAY, 7),
-        2021: (MAY, 26),
-        2022: (MAY, 15),
-        2023: (JUN, 2),
-        2024: (MAY, 22),
-        2025: (MAY, 12),
-    }
-
-
-class SriLankaHinduHolidays(_CustomHinduHolidays):
-    # Deepavali
-    DIWALI_DATES = {
-        2001: (NOV, 14),
-        2002: (NOV, 3),
-        2003: (OCT, 23),
-        2004: (NOV, 11),
-        2005: (NOV, 1),
-        2006: (OCT, 21),
-        2007: (NOV, 8),
-        2008: (OCT, 27),
-        2009: (NOV, 15),
-        2010: (NOV, 5),
-        2011: (OCT, 26),
-        2012: (NOV, 13),
-        2013: (NOV, 2),
-        2014: (OCT, 22),
-        2015: (NOV, 10),
-        2016: (OCT, 29),
-        2017: (OCT, 18),
-        2018: (NOV, 6),
-        2019: (OCT, 27),
-        2020: (NOV, 14),
-        2021: (NOV, 4),
-        2022: (OCT, 24),
-        2023: (NOV, 12),
-        2024: (OCT, 31),
-        2025: (OCT, 20),
     }
 
 

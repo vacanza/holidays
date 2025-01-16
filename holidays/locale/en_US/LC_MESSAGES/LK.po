@@ -9,10 +9,9 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>, 2025.
-#, fuzzy
+#
+# Sri Lanka holidays en_US localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.65\n"
