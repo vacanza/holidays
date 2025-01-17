@@ -153,6 +153,7 @@ COUNTRIES: RegistryDict = {
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
     "spain": ("Spain", "ES", "ESP"),
+    "sri_lanka": ("SriLanka", "LK", "LKA"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "taiwan": ("Taiwan", "TW", "TWN"),
