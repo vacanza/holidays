@@ -97,7 +97,7 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertEqual(
             all_h,
             y_2015,
-            f"missing: {all_h - y_2015 or 'no'}," f" extra: {y_2015 - all_h or 'no'}",
+            f"missing: {all_h - y_2015 or 'no'}, extra: {y_2015 - all_h or 'no'}",
         )
 
     def test_fixed_holidays(self):

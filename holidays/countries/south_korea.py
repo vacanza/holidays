@@ -617,6 +617,8 @@ class SouthKoreaStaticHolidays:
         2023: (OCT, 2, temporary_public_holiday),
         # 76th Anniversary of the Armed Forces of Korea.
         2024: (OCT, 1, armed_forces_day),
+        # Added to create a 6-day long holiday period.
+        2025: (JAN, 27, temporary_public_holiday),
     }
     # Pre-2014 Alternate Holidays
     # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1

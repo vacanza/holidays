@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import FRI
 from holidays.groups import IslamicHolidays, PersianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -21,6 +22,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Iran
     - https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران
+    - https://en.wikipedia.org/wiki/Workweek_and_weekend
     """
 
     country = "IR"
@@ -29,6 +31,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     estimated_label = tr("(تخمین زده) %s")
     supported_languages = ("en_US", "fa")
     start_year = 1980
+    weekend = {FRI}
 
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
