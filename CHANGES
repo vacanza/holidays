@@ -1,3 +1,15 @@
+Version 0.65
+============
+
+Released January 20, 2025
+
+- Update Afghanistan and Iran holidays: change weekend to FRI-SAT and FRI respectively (#2223 by @gio8tisu, @arkid15r)
+- Update Afghanistan holidays (#2221 by @KJhellico)
+- Update South Korea holidays: 2025 temporary public holidays (#2218 by @YiGeon)
+- Update ruff from v0.8.6 to v0.9.1 (#2224 by @arkid15r)
+- Add faster date parsing from strings in ISO 8601 format (#2227 by @KJhellico)
+- Add signed artifacts path (#2216 by @arkid15r)
+
 Version 0.64
 ============
 
