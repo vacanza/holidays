@@ -140,7 +140,7 @@ class ReleaseNotesGenerator:
 
         # Skip failed release attempt PRs, version upgrades.
         pr_title = pull_request.title
-        skip_titles = (f"v.{self.tag}", "Bump", "Revert")
+        skip_titles = (f"v{self.tag}", "Bump", "Revert")
         for skip_title in skip_titles:
             if pr_title.startswith(skip_title):
                 return None
