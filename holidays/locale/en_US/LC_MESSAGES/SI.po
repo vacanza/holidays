@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 14:01+0300\n"
+"PO-Revision-Date: 2025-01-22 18:03+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -25,18 +25,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. New Year's Day.
 msgid "novo leto"
 msgstr "New Year's Day"
 
-#. Preseren's Day.
-msgid "Prešernov dan"
-msgstr "Preseren's Day"
+#. Prešeren's Day, the Slovenian Cultural Holiday.
+msgid "Prešernov dan, slovenski kulturni praznik"
+msgstr "Prešeren's Day, the Slovenian Cultural Holiday"
+
+#. Easter Sunday.
+msgid "velikonočna nedelja"
+msgstr "Easter Sunday"
 
 #. Easter Monday.
-msgid "Velikonočni ponedeljek"
+msgid "velikonočni ponedeljek"
 msgstr "Easter Monday"
 
 #. Day of Uprising Against Occupation.
@@ -46,6 +50,10 @@ msgstr "Day of Uprising Against Occupation"
 #. Labor Day.
 msgid "praznik dela"
 msgstr "Labor Day"
+
+#. Whit Sunday.
+msgid "binkoštna nedelja"
+msgstr "Whit Sunday"
 
 #. Statehood Day.
 msgid "dan državnosti"
@@ -59,18 +67,50 @@ msgstr "Assumption Day"
 msgid "dan reformacije"
 msgstr "Reformation Day"
 
-#. Remembrance Day.
+#. Day of Remembrance for the Dead.
 msgid "dan spomina na mrtve"
-msgstr "Remembrance Day"
+msgstr "Day of Remembrance for the Dead"
 
 #. Christmas Day.
-msgid "Božič"
+msgid "božič"
 msgstr "Christmas Day"
 
 #. Independence and Unity Day.
 msgid "dan samostojnosti in enotnosti"
 msgstr "Independence and Unity Day"
 
+#. Independence Day.
+msgid "dan samostojnosti"
+msgstr "Independence Day"
+
 #. Solidarity Day.
 msgid "dan solidarnosti"
 msgstr "Solidarity Day"
+
+#. Primož Trubar Day.
+msgid "dan Primoža Trubarja"
+msgstr "Primož Trubar Day"
+
+#. Unification of Prekmurje Slovenes with the Mother Nation.
+msgid "združitev prekmurskih Slovencev z matičnim narodom"
+msgstr "Unification of Prekmurje Slovenes with the Mother Nation"
+
+#. Integration of Primorska into the Homeland.
+msgid "priključitev Primorske k matični domovini"
+msgstr "Integration of Primorska into the Homeland"
+
+#. Return of Primorska into the Homeland.
+msgid "vrnitev Primorske k matični domovini"
+msgstr "Return of Primorska into the Homeland"
+
+#. Slovenian Sport's Day.
+msgid "dan slovenskega športa"
+msgstr "Slovenian Sport's Day"
+
+#. Sovereignty Day.
+msgid "dan suverenosti"
+msgstr "Sovereignty Day"
+
+#. Rudolf Maister Day.
+msgid "dan Rudolfa Maistra"
+msgstr "Rudolf Maister Day"
