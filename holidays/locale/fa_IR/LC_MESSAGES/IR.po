@@ -45,7 +45,7 @@ msgid "روز جمهوری اسلامی"
 msgstr ""
 
 #. Nature's Day.
-msgid "جشن سیزده به در"
+msgid "روز طبیعت"
 msgstr ""
 
 #. Death of Imam Khomeini.

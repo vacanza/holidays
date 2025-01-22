@@ -80,7 +80,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         self._add_islamic_republic_day(tr("روز جمهوری اسلامی"))
 
         # Nature's Day.
-        self._add_natures_day(tr("جشن سیزده به در"))
+        self._add_natures_day(tr("روز طبیعت"))
 
         # Death of Imam Khomeini.
         self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
