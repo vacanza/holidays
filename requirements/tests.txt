@@ -3,7 +3,7 @@
 coverage==7.6.10
 importlib-metadata==8.5.0
 numpy<2.1.0; python_version < '3.10'
-numpy==2.2.1; python_version >= '3.10'
+numpy==2.2.2; python_version >= '3.10'
 polib==1.2.0
 pytest-cov==6.0.0
 pytest-xdist==3.6.1
