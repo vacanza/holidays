@@ -528,7 +528,7 @@ All other default values are highlighted with bold:
    * - Iran
      - IR
      -
-     - en_US, **fa**
+     - en_US, **fa_IR**
      -
    * - Ireland
      - IE

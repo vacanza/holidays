@@ -85,6 +85,18 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.persian_to_gregorian(self._year, 3, 15)
         )
 
+    def _add_last_day_of_year(self, name: str) -> Optional[date]:
+        """
+        If previous year is a leap year, its 12th month (Esfand) has 30 days,
+        and this 30th day is a holiday.
+        """
+        if self._persian_calendar.is_leap_year(self._year - 1):
+            return self._add_persian_calendar_holiday(
+                name, self._persian_calendar.new_year_date(self._year), days_delta=-1
+            )
+        else:
+            return None
+
     def _add_natures_day(self, name: str) -> Optional[date]:
         """
         Add Nature's Day, or Sizdah Bedar (13th day of the 1st month).

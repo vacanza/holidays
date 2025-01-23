@@ -26,6 +26,12 @@ class _Persian:
     START_YEAR = 1901
     END_YEAR = 2100
 
+    def is_leap_year(self, year: int) -> bool:
+        """
+        Is Persian year that begins in the specified Gregorian year a leap year.
+        """
+        return (year % 33) in {3, 7, 11, 16, 20, 24, 28, 32}
+
     def new_year_date(self, year: int) -> Optional[date]:
         """
         Return Gregorian date of Persian new year (1 Farvardin) in a given Gregorian year.
