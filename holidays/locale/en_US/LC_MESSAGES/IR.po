@@ -52,9 +52,9 @@ msgstr "Nature's Day"
 msgid "رحلت حضرت امام خمینی"
 msgstr "Death of Imam Khomeini"
 
-#. Khordad National Uprising.
+#. 15 Khordad Uprising.
 msgid "قیام 15 خرداد"
-msgstr "Khordad National Uprising"
+msgstr "15 Khordad Uprising"
 
 #. Islamic Revolution Day.
 msgid "پیروزی انقلاب اسلامی"

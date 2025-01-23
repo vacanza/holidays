@@ -85,7 +85,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Death of Imam Khomeini.
         self._add_death_of_khomeini_day(tr("رحلت حضرت امام خمینی"))
 
-        # Khordad National Uprising.
+        # 15 Khordad Uprising.
         self._add_khordad_uprising_day(tr("قیام 15 خرداد"))
 
         # Islamic holidays.
@@ -120,8 +120,8 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
         # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("مبعث رسول اکرم (ص)"))
 
-        # Birthday of Mahdi.
         self._add_imam_mahdi_birthday_day(
+            # Birthday of Mahdi.
             tr("ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان")
         )
 

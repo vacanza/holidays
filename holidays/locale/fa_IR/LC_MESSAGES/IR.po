@@ -52,7 +52,7 @@ msgstr ""
 msgid "رحلت حضرت امام خمینی"
 msgstr ""
 
-#. Khordad National Uprising.
+#. 15 Khordad Uprising.
 msgid "قیام 15 خرداد"
 msgstr ""
 

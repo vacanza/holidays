@@ -142,7 +142,7 @@ class TestIran(CommonCountryTests, TestCase):
             ("2023-04-23", "Eid al-Fitr Holiday"),
             ("2023-05-16", "Martyrdom of Imam Ja'far al-Sadiq"),
             ("2023-06-04", "Death of Imam Khomeini"),
-            ("2023-06-05", "Khordad National Uprising"),
+            ("2023-06-05", "15 Khordad Uprising"),
             ("2023-06-29", "Eid al-Adha"),
             ("2023-07-07", "Eid al-Ghadeer"),
             ("2023-07-27", "Tasua"),
