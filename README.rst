@@ -829,7 +829,7 @@ All other default values are highlighted with bold:
      - SI
      -
      - en_US, **sl**, uk
-     -
+     - WORKDAY
    * - South Africa
      - ZA
      -
