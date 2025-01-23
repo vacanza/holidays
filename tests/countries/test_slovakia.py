@@ -20,13 +20,16 @@ from tests.common import CommonCountryTests
 class TestSlovakia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Slovakia, years=range(1993, 2050))
+        years = range(1993, 2050)
+        super().setUpClass(Slovakia, years=years)
+        cls.workday_holidays = Slovakia(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Slovakia, SK, SVK)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Slovakia(years=1992))
+        self.assertNoHolidays(Slovakia(categories=WORKDAY, years=2020))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -45,24 +48,30 @@ class TestSlovakia(CommonCountryTests, TestCase):
         )
 
     def test_good_friday(self):
+        name = "Veľký piatok"
         self.assertHolidayName(
-            "Veľký piatok",
+            name,
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
         )
+        self.assertHolidayName(name, range(1993, 2050))
 
     def test_easter_monday(self):
+        name = "Veľkonočný pondelok"
         self.assertHolidayName(
-            "Veľkonočný pondelok",
+            name,
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
         )
+        self.assertHolidayName(name, range(1993, 2050))
 
     def test_labor_day(self):
         self.assertHolidayName("Sviatok práce", (f"{year}-05-01" for year in range(1993, 2050)))
@@ -86,14 +95,28 @@ class TestSlovakia(CommonCountryTests, TestCase):
         )
 
     def test_constitution_day(self):
+        name = "Deň Ústavy Slovenskej republiky"
+        self.assertHolidayName(name, (f"{year}-09-01" for year in range(1993, 2024)))
+        self.assertNoHoliday(f"{year}-09-01" for year in range(2024, 2050))
+        self.assertNoHolidayName(name, range(2024, 2050))
         self.assertHolidayName(
-            "Deň Ústavy Slovenskej republiky", (f"{year}-09-01" for year in range(1993, 2050))
+            name, self.workday_holidays, (f"{year}-09-01" for year in range(2024, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1993, 2024))
 
     def test_day_of_our_lady_of_the_seven_sorrows(self):
         self.assertHolidayName(
             "Sedembolestná Panna Mária", (f"{year}-09-15" for year in range(1993, 2050))
         )
+
+    def test_establishment_state_day(self):
+        name = "Deň vzniku samostatného česko-slovenského štátu"
+        self.assertNoHoliday(f"{year}-10-28" for year in range(1993, 2050))
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-10-28" for year in range(2021, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1993, 2021))
 
     def test_all_saints_day(self):
         self.assertHolidayName(
@@ -118,13 +141,6 @@ class TestSlovakia(CommonCountryTests, TestCase):
         self.assertHolidayName(
             "Druhý sviatok vianočný", (f"{year}-12-26" for year in range(1993, 2050))
         )
-
-    def test_establishment_state_day(self):
-        name = "Deň vzniku samostatného česko-slovenského štátu"
-        holidays = Slovakia(categories=WORKDAY, years=range(1993, 2050))
-        self.assertHolidayName(name, holidays, (f"{year}-10-28" for year in range(2021, 2050)))
-        self.assertNoHoliday(holidays, (f"{year}-10-28" for year in range(1993, 2021)))
-        self.assertNoHolidayName(name, holidays, range(1993, 2021))
 
     def test_2021(self):
         self.assertHolidays(
@@ -153,6 +169,13 @@ class TestSlovakia(CommonCountryTests, TestCase):
         self.assertHolidays(
             Slovakia(categories=WORKDAY, years=2021),
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
+        )
+
+    def test_workday_2024(self):
+        self.assertHolidays(
+            Slovakia(categories=WORKDAY, years=2024),
+            ("2024-09-01", "Deň Ústavy Slovenskej republiky"),
+            ("2024-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 
     def test_l10n_default(self):
