@@ -76,7 +76,7 @@ jobs:
       matrix:
         os:
           - macos-latest
-          - ubuntu-24.04
+          - ubuntu-latest
           - windows-latest
         python-version:
           - '3.9'
