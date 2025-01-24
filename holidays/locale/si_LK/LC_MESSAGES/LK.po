@@ -10,118 +10,151 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Sri Lanka holidays en_US localization.
+# Sri Lanka holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.65\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2025-01-12 23:29+0530\n"
-"PO-Revision-Date: 2025-01-12 23:29+0530\n"
-"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"PO-Revision-Date: 2025-01-24 14:55+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: si\n"
+"Language: si_LK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
-
-#. Thai Pongal.
-msgid "தைப்பொங்கல்"
-msgstr ""
-
-#. Sinhala and Tamil New Year.
-msgid "සිංහල සහ දෙමළ නව වසර"
-msgstr ""
-
-#. Vesak Poya.
-msgid "වෙසක් පොහොය"
-msgstr ""
-
-#. Poson Poya.
-msgid "පොසොන් පොහොය"
-msgstr ""
-
-#. Christmas.
-msgid "ක්‍රිස්මස්"
-msgstr ""
+"X-Generator: Poedit 3.5\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (අනුමානිත)"
 msgstr ""
 
-#. Eid al-Fitr.
-msgid "ඊද් අල්-ෆිතර්"
-msgstr ""
-
-#. Eid al-Adha.
-msgid "ඊද් අල්-අදා"
-msgstr ""
-
-#. The Prophet's Birthday.
-msgid "නබිගේ උපන් දිනය"
+#. Tamil Thai Pongal Day.
+msgid "දෙමළ තෛපොංැලල් දිනය"
 msgstr ""
 
 #. Independence Day.
-msgid "ස්වාධීනත්ව දිනය"
+msgid "නිදහස් සමරු දිනය"
 msgstr ""
 
-#. Deepavali.
-msgid "දීපාවලී"
+#. Sinhala and Tamil New Year.
+msgid "සිංහල හා දෙමළ අලුත් අවුරුදු දිනය"
 msgstr ""
 
-#. Magh Puja.
-msgid "මාඝ පූජා"
+#. Day Before Sinhala and Tamil New Year.
+msgid "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"
 msgstr ""
 
-#. Maha Shivatri.
-msgid "මහා ශිවාත්‍රි"
+#. International Workers' Day.
+msgid "ලොක කම්කරු දිනය"
 msgstr ""
 
-#. Day before Sinhala and Tamil New Year.
-msgid "සිංහල හා දෙමළ අලුත් අවුරුද්දට පෙර දිනය"
+#. Duruthu Full Moon Poya Day.
+msgid "දුරුතු පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Esala Poya.
-msgid "එසාල පොය"
+#. Nawam Full Moon Poya Day.
+msgid "නවම් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Duruthu Poya.
-msgid "දුරුතු පොය"
+#. Medin Full Moon Poya Day.
+msgid "මැදින් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Nikini Poya.
-msgid "නිකිනි පොය"
+#. Bak Full Moon Poya Day.
+msgid "බක් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Binara Poya.
-msgid "බිනර පොය"
+#. Vesak Full Moon Poya Day.
+msgid "වෙසක් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Wap Poya.
-msgid "වප් පොය"
+#. Day Following Vesak Full Moon Poya Day.
+msgid "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"
 msgstr ""
 
-#. Il Poya.
-msgid "ඉල් පොය"
+#. Poson Full Moon Poya Day.
+msgid "පොසොන් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Unduwap Poya.
-msgid "උඳුවාප් පොය"
+#. Esala Full Moon Poya Day.
+msgid "ඇසල පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Good Friday
-msgid "හොඳ සිකුරාදා"
+#. Nikini Full Moon Poya Day.
+msgid "නිකිණි පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Bank Holidays
-msgid "බැංකු නිවාඩු"
+#. Binara Full Moon Poya Day.
+msgid "බිනර පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. New Year's Eve
-msgid "අලුත් අවුරුදු උදාව"
+#. Vap Full Moon Poya Day.
+msgid "වප් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Labor Day
-msgid "කම්කරු දිනය"
+#. Il Full Moon Poya Day.
+msgid "ඉල් පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Unduvap Full Moon Poya Day.
+msgid "උඳුවප් පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Maha Sivarathri Day.
+msgid "මහ සිවරාත්රි දිනය"
+msgstr ""
+
+#. Deepavali Festival Day.
+msgid "දීපවාලි උත්සව දිනය"
+msgstr ""
+
+#. Good Friday.
+msgid "මහ සිකුරාදා දිනය"
+msgstr ""
+
+#. Christmas Day.
+msgid "නත්තල් උත්සව දිනය"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "ඊදුල් ෆීතර්"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "ඊදුල් අල්හා"
+msgstr ""
+
+#. The Prophet's Birthday.
+msgid "නබි නායකතුමාගේ උපන් දිනය"
+msgstr ""
+
+#. Adhi Vesak Full Mon Poya Day.
+msgid "අධි වෙසක් පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Adhi Poson Full Moon Poya Day.
+msgid "අධි පොසොන් පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Adhi Esala Full Moon Poya Day.
+msgid "අධි ඇසල පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Adhi Binara Full Moon Poya Day.
+msgid "අධි බිනර පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Adhi Vap Full Moon Poya Day.
+msgid "අධි වප් පුර පසළොස්වක පෝය දිනය"
+msgstr ""
+
+#. Special Bank Holiday.
+msgid "විශේෂ බැංකු නිවාඩු දිනය"
+msgstr ""
+
+#. Half-Day Special Bank Holiday.
+msgid "දින භාගයක විශේෂ බැංකු නිවාඩු දිනය"
 msgstr ""

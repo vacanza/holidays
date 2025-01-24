@@ -12,15 +12,29 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import BANK, PUBLIC
+from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
+from holidays.constants import BANK, PUBLIC, WORKDAY
 from holidays.groups import (
-    InternationalHolidays,
-    IslamicHolidays,
     ChristianHolidays,
     HinduCalendarHolidays,
-    BuddhistCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    SinhalaCalendarHolidays,
     StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
@@ -28,99 +42,204 @@ from holidays.holiday_base import HolidayBase
 
 class SriLanka(
     HolidayBase,
-    InternationalHolidays,
-    IslamicHolidays,
     ChristianHolidays,
     HinduCalendarHolidays,
-    BuddhistCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    SinhalaCalendarHolidays,
     StaticHolidays,
 ):
     """
-    https://en.wikipedia.org/wiki/Culture_of_Sri_Lanka#List_of_holidays
-    https://www.timeanddate.com/holidays/sri-lanka/
-    https://factsanddetails.com/south-asia/Srilanka/People_Srilanka/entry-7978.html
-    https://help.wendywutours.com.au/knowledge/public-holidays-and-festivals-sri-lanka
+    References:
+    - http://www.commonlii.org/lk/legis/num_act/ha29o1971152/  # No. 29 of 1971 (Holidays Act)
+    - http://www.commonlii.org/lk/legis/num_act/ha21o1991232/  # No. 21 of 1991 (Amendment)
+    - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
+    - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
+    - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
 
+    Cross-Checked With:
+    - https://web.archive.org/web/20111018053927/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202005.pdf
+    - https://web.archive.org/web/20111018061003/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202006.pdf
+    - https://web.archive.org/web/20110722150032/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202007.pdf
+    - https://web.archive.org/web/20111018071837/http://www.pubad.gov.lk/Holidays/PublicBankHolidays2008.pdf
+    - https://web.archive.org/web/20120309065711/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2009.pdf
+    - https://web.archive.org/web/20111018071247/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2010.pdf
+    - https://web.archive.org/web/20110722151043/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2011.pdf
+    - https://web.archive.org/web/20111125074237/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2012.pdf
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2019
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2020
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2021
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024
+    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025
     """
 
     country = "LK"
-    supported_categories = (BANK, PUBLIC)
+    supported_categories = (BANK, PUBLIC, WORKDAY)
     default_language = "si_LK"
     # %s (estimated).
     estimated_label = tr("%s (අනුමානිත)")
     supported_languages = ("en_US", "si_LK", "ta_LK")
-    # Sri Lanka's regaining of full independence from British influence.
-    start_year = 1948
+    # Sri Lanka's Holidays Act (No. 29 of 1971) was first proclaimed on SEP 2nd, 1971
+    # but the earliest citable calendar online is from 2003.
+    # As there's no source for future Poya dates, end year is capped at 2025.
+    start_year = 2003
+    end_year = 2025
 
     def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, SriLankaHinduHolidays)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, SriLankaIslamicHolidays)
-        ChristianHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self)
-        BuddhistCalendarHolidays.__init__(self)
+        SinhalaCalendarHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SriLankaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # Non-Sectarian Holidays.
+
+        # Tamil Thai Pongal Day.
+        name = tr("දෙමළ තෛපොංැලල් දිනය")
+        thai_pongal_years_jan_14 = {
+            2005,
+            2006,
+            2009,
+            2010,
+            2013,
+            2014,
+            2017,
+            2018,
+            2021,
+            2022,
+            2025,
+        }
+        if self._year in thai_pongal_years_jan_14:
+            dt = self._add_holiday_jan_14(name)
+        else:
+            dt = self._add_holiday_jan_15(name)
+
         # Independence Day.
-        self._add_holiday_feb_4(tr("ස්වාධීනත්ව දිනය"))
-
-        if self._year >= 1949:
-            # Thai Pongal.
-            self._add_holiday_jan_14(tr("தைப்பொங்கல்"))
-
-        # Deepavali.
-        self._add_diwali(tr("දීපාවලී"))
-
-        # Day before Sinhala and Tamil New Year.
-        self._add_holiday_apr_13(tr("සිංහල හා දෙමළ අලුත් අවුරුද්දට පෙර දිනය"))
+        self._add_holiday_feb_4(tr("නිදහස් සමරු දිනය"))
 
         # Sinhala and Tamil New Year.
-        self._add_holiday_apr_14(tr("සිංහල සහ දෙමළ නව වසර"))
+        name = tr("සිංහල හා දෙමළ අලුත් අවුරුදු දිනය")
+        aluth_avurudda_years_apr_13 = {
+            2004,
+            2008,
+            2012,
+            # 2016 is on APR, 14.
+            2020,
+            2024,
+        }
+        if self._year in aluth_avurudda_years_apr_13:
+            dt = self._add_holiday_apr_13(name)
+        else:
+            dt = self._add_holiday_apr_14(name)
+        # Day Before Sinhala and Tamil New Year.
+        self._add_holiday(tr("සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"), _timedelta(dt, -1))
 
-        # Vesak Poya.
-        self._add_vesak_may(tr("වෙසක් පොහොය"))
+        # International Workers' Day.
+        self._add_labor_day(tr("ලොක කම්කරු දිනය"))
 
-        # Poson Poya.
-        self._add_holiday_jun_1(tr("පොසොන් පොහොය"))
+        # Hindu Holidays.
 
-        # Esala Poya.
-        self._add_holiday_jul_1(tr("එසාල පොය"))
+        maha_sivarathri_dates = {
+            # The one used in Sri Lanka isn't an exact match with India, used with caution.
+            2003: (MAR, 1),
+            2004: (FEB, 18),
+            2005: (MAR, 8),
+            2006: (FEB, 26),
+            2007: (FEB, 16),
+            2008: (MAR, 6),
+            2009: (FEB, 23),
+            2010: (MAR, 13),
+            2011: (MAR, 2),
+            2012: (FEB, 20),
+            2013: (MAR, 10),
+            2014: (FEB, 27),
+            2015: (FEB, 17),
+            2016: (MAR, 7),
+            2017: (FEB, 24),
+            2018: (FEB, 13),
+            2019: (MAR, 4),
+            2020: (FEB, 21),
+            2021: (MAR, 11),
+            2022: (MAR, 1),
+            2023: (FEB, 18),
+            2024: (MAR, 8),
+            2025: (FEB, 26),
+        }
+        maha_sivarathri_date = maha_sivarathri_dates.get(self._year)
+        if maha_sivarathri_date:
+            # Maha Sivarathri Day.
+            self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_date)
 
-        # Duruthu Poya.
-        self._add_holiday_jan_1(tr("දුරුතු පොය"))
+        # Deepavali was considered a workday in 2003.
+        if self._year >= 2004:
+            # Deepavali Festival Day.
+            self._add_diwali(tr("දීපවාලි උත්සව දිනය"))
 
-        # Christmas.
-        self._add_christmas_day(tr("ක්‍රිස්මස්"))
+        # Christian Holidays.
 
-        #  The Prophet's Birthday.
-        self._add_mawlid_day(tr("නබිගේ උපන් දිනය"))
+        # Good Friday.
+        self._add_good_friday(tr("මහ සිකුරාදා දිනය"))
 
-        # Good Friday
-        self._add_good_friday(tr("හොඳ සිකුරාදා"))
+        # Christmas Day.
+        self._add_christmas_day(tr("නත්තල් උත්සව දිනය"))
+
+        # Poya Holidays.
+        # All Adhi Poya Holidays will instead be added in StaticHolidays.
+
+        # Duruthu Full Moon Poya Day.
+        self._add_duruthu_poya(tr("දුරුතු පුර පසළොස්වක පෝය දිනය"))
+
+        # Nawam Full Moon Poya Day.
+        self._add_nawam_poya(tr("නවම් පුර පසළොස්වක පෝය දිනය"))
+
+        # Medin Full Moon Poya Day.
+        self._add_medin_poya(tr("මැදින් පුර පසළොස්වක පෝය දිනය"))
+
+        # Bak Full Moon Poya Day.
+        self._add_bak_poya(tr("බක් පුර පසළොස්වක පෝය දිනය"))
+
+        # Vesak Full Moon Poya Day.
+        dt = self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
+
+        # Day Following Vesak Full Moon Poya Day.
+        self._add_holiday(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"), _timedelta(dt, +1))
+
+        # Poson Full Moon Poya Day.
+        self._add_poson_poya(tr("පොසොන් පුර පසළොස්වක පෝය දිනය"))
+
+        # Esala Full Moon Poya Day.
+        self._add_esala_poya(tr("ඇසල පුර පසළොස්වක පෝය දිනය"))
+
+        # Nikini Full Moon Poya Day.
+        self._add_nikini_poya(tr("නිකිණි පුර පසළොස්වක පෝය දිනය"))
+
+        # Binara Full Moon Poya Day.
+        self._add_binara_poya(tr("බිනර පුර පසළොස්වක පෝය දිනය"))
+
+        # Vap Full Moon Poya Day.
+        self._add_vap_poya(tr("වප් පුර පසළොස්වක පෝය දිනය"))
+
+        # Il Full Moon Poya Day.
+        self._add_il_poya(tr("ඉල් පුර පසළොස්වක පෝය දිනය"))
+
+        # Unduvap Full Moon Poya Day.
+        self._add_unduvap_poya(tr("උඳුවප් පුර පසළොස්වක පෝය දිනය"))
+
+        # Muslim Holidays.
 
         # Eid al-Fitr.
-        name = tr("ඊද් අල්-ෆිතර්")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
+        self._add_eid_al_fitr_day(tr("ඊදුල් ෆීතර්"))
 
         # Eid al-Adha.
-        name = tr("ඊද් අල්-අදා")
-        self._add_eid_al_adha_day(name)
-        self._add_eid_al_adha_day_two(name)
-        self._add_eid_al_adha_day_three(name)
+        self._add_eid_al_adha_day(tr("ඊදුල් අල්හා"))
 
-    def _populate_bank_holidays(self):
-        # Bank Holidays
-        self._add_holiday_jun_30(tr("බැංකු නිවාඩු"))
-
-        # New Year's Eve
-        self._add_new_years_eve(tr("අලුත් අවුරුදු උදාව"))
-
-        if self._year >= 1956:
-            # Labor Day
-            self._add_labor_day(tr("කම්කරු දිනය"))
+        #  The Prophet's Birthday.
+        self._add_mawlid_day(tr("නබි නායකතුමාගේ උපන් දිනය"))
 
 
 class LK(SriLanka):
@@ -131,159 +250,203 @@ class LKA(SriLanka):
     pass
 
 
+class SriLankaHinduHolidays(_CustomHinduHolidays):
+    DIWALI_DATES = {
+        2003: (OCT, 24),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (OCT, 17),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 22),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 18),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+    }
+
+
 class SriLankaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
+        2003: (FEB, 12),
+        2004: (FEB, 1),
+        2005: (JAN, 21),
+        2006: ((JAN, 11), (DEC, 31)),
+        2007: (DEC, 21),
+        2008: (DEC, 9),
+        2009: (NOV, 28),
+        2010: (NOV, 17),
+        2011: (NOV, 6),
+        2012: (OCT, 26),
+        2013: (OCT, 16),
         2014: (OCT, 5),
-        2015: (SEP, 23),
-        2016: (SEP, 13),
-        2017: (SEP, 2),
+        2015: (SEP, 24),
+        2016: (SEP, 12),
+        2017: (SEP, 1),
         2018: (AUG, 22),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
+        2019: (AUG, 12),
+        2020: (AUG, 1),
+        2021: (JUL, 21),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES = {
+        2003: (NOV, 26),
+        2004: (NOV, 14),
+        2005: (NOV, 4),
+        2006: (OCT, 24),
+        2007: (OCT, 13),
+        2008: (OCT, 1),
+        2009: (SEP, 21),
+        2010: (SEP, 10),
+        2011: (AUG, 31),
+        2012: (AUG, 19),
+        2013: (AUG, 9),
         2014: (JUL, 29),
         2015: (JUL, 18),
-        2016: (JUL, 7),
+        2016: (JUL, 6),
         2017: (JUN, 26),
         2018: (JUN, 15),
-        2019: (JUN, 4),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 1),
+        2019: (JUN, 5),
+        2020: (MAY, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
         2023: (APR, 22),
-        2024: (APR, 10),
+        2024: (APR, 11),
+        2025: (MAR, 31),
     }
 
     MAWLID_DATES = {
+        2003: (MAY, 14),
+        2004: (MAY, 2),
+        2005: (APR, 22),
+        2006: (APR, 11),
+        2007: (APR, 1),
+        2008: (MAR, 20),
+        2009: (MAR, 10),
+        2010: (FEB, 27),
+        2011: (FEB, 16),
+        2012: (FEB, 5),
+        2013: (JAN, 25),
         2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 24)),
+        # Technically 2015 has both JAN 5 and DEC 24
+        # but this is only observed for JAN 4.
+        2015: (JAN, 4),
         2016: (DEC, 12),
         2017: (DEC, 1),
-        2018: (NOV, 21),
+        2018: (NOV, 20),
         2019: (NOV, 10),
-        2020: (OCT, 29),
+        2020: (OCT, 30),
         2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
+        2022: (OCT, 9),
+        2023: (SEP, 28),
         2024: (SEP, 16),
+        2025: (SEP, 5),
     }
 
 
 class SriLankaStaticHolidays:
     """
-    This class contains the static holiday dates for Sri Lanka.
+    References:
+    - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
+    - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
+    - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
     """
 
-    # Magh Puja.
-    magh_puja_name = tr("මාඝ පූජා")
-    # Maha Shivatri.
-    maha_shivratri_name = tr("මහා ශිවාත්‍රි")
-    # Nikini Poya.
-    nikini_poya_name = tr("නිකිනි පොය")
-    # Binara Poya.
-    binara_poya_name = tr("බිනර පොය")
-    # Wap Poya.
-    wap_poya_name = tr("වප් පොය")
-    # Il Poya.
-    il_poya_name = tr("ඉල් පොය")
-    # Unduwap Poya.
-    unduwap_poya_name = tr("උඳුවාප් පොය")
+    # Adhi Vesak Full Mon Poya Day.
+    adhi_vesak_poya_name = tr("අධි වෙසක් පුර පසළොස්වක පෝය දිනය")
+
+    # Adhi Poson Full Moon Poya Day.
+    adhi_poson_poya_name = tr("අධි පොසොන් පුර පසළොස්වක පෝය දිනය")
+
+    # Adhi Esala Full Moon Poya Day.
+    adhi_esala_poya_name = tr("අධි ඇසල පුර පසළොස්වක පෝය දිනය")
+
+    # Adhi Binara Full Moon Poya Day.
+    adhi_binara_poya_name = tr("අධි බිනර පුර පසළොස්වක පෝය දිනය")
+
+    # Adhi Vap Full Moon Poya Day.
+    adhi_vap_poya_name = tr("අධි වප් පුර පසළොස්වක පෝය දිනය")
+
+    # Special Bank Holiday.
+    special_bank_holiday_name = tr("විශේෂ බැංකු නිවාඩු දිනය")
+
+    # Half-Day Special Bank Holiday.
+    half_day_special_bank_holiday_name = tr("දින භාගයක විශේෂ බැංකු නිවාඩු දිනය")
 
     special_public_holidays = {
-        2014: (
-            (AUG, 10, nikini_poya_name),
-            (OCT, 8, wap_poya_name),
+        2004: (JUL, 31, adhi_esala_poya_name),
+        2007: (MAY, 31, adhi_poson_poya_name),
+        2010: (APR, 28, adhi_vesak_poya_name),
+        2012: (AUG, 31, adhi_binara_poya_name),
+        2015: (JUL, 1, adhi_esala_poya_name),
+        2018: (MAY, 29, adhi_poson_poya_name),
+        2020: (OCT, 1, adhi_vap_poya_name),
+        2023: (JUL, 3, adhi_esala_poya_name),
+    }
+    special_bank_holidays = {
+        2005: (
+            (MAY, 2, special_bank_holiday_name),
+            (DEC, 26, special_bank_holiday_name),
         ),
-        2015: (
-            (AUG, 29, nikini_poya_name),
-            (SEP, 28, il_poya_name),
-            (OCT, 27, wap_poya_name),
+        2007: (
+            (FEB, 5, special_bank_holiday_name),
+            (APR, 3, special_bank_holiday_name),
         ),
+        2008: (APR, 18, special_bank_holiday_name),
+        2011: (
+            (MAY, 2, special_bank_holiday_name),
+            (DEC, 26, special_bank_holiday_name),
+        ),
+        2012: (
+            (JAN, 16, special_bank_holiday_name),
+            (FEB, 10, special_bank_holiday_name),
+            (MAY, 7, special_bank_holiday_name),
+        ),
+        2013: (APR, 15, special_bank_holiday_name),
+        2014: (APR, 15, special_bank_holiday_name),
+        2015: (JAN, 5, special_bank_holiday_name),
         2016: (
-            (AUG, 17, nikini_poya_name),
-            (SEP, 16, binara_poya_name),
-            (OCT, 15, wap_poya_name),
-        ),
-        2017: (
-            (AUG, 7, nikini_poya_name),
-            (SEP, 5, binara_poya_name),
-            (OCT, 5, il_poya_name),
+            (MAY, 2, special_bank_holiday_name),
+            (MAY, 23, special_bank_holiday_name),
+            (DEC, 26, special_bank_holiday_name),
         ),
         2018: (
-            (AUG, 25, nikini_poya_name),
-            (SEP, 24, binara_poya_name),
-            (OCT, 24, wap_poya_name),
+            (JAN, 15, special_bank_holiday_name),
+            (FEB, 5, special_bank_holiday_name),
         ),
         2019: (
-            (AUG, 14, nikini_poya_name),
-            (SEP, 13, binara_poya_name),
-            (OCT, 13, wap_poya_name),
-            (SEP, 14, il_poya_name),
+            (APR, 15, special_bank_holiday_name),
+            (MAY, 20, special_bank_holiday_name),
+            (NOV, 11, special_bank_holiday_name),
         ),
-        2020: (
-            (AUG, 3, nikini_poya_name),
-            (SEP, 1, binara_poya_name),
-            (OCT, 30, wap_poya_name),
-            (OCT, 1, il_poya_name),
-            (DEC, 29, unduwap_poya_name),
-        ),
+        2020: (APR, 14, special_bank_holiday_name),
         2021: (
-            (MAR, 11, maha_shivratri_name),
-            (AUG, 22, nikini_poya_name),
-            (SEP, 20, binara_poya_name),
-            (OCT, 20, wap_poya_name),
-            (OCT, 20, il_poya_name),
-            (DEC, 18, unduwap_poya_name),
+            (APR, 30, half_day_special_bank_holiday_name),
+            (DEC, 24, half_day_special_bank_holiday_name),
         ),
         2022: (
-            (FEB, 16, magh_puja_name),
-            (MAR, 1, maha_shivratri_name),
-            (AUG, 11, nikini_poya_name),
-            (SEP, 10, binara_poya_name),
-            (OCT, 9, wap_poya_name),
-            (DEC, 7, unduwap_poya_name),
+            (MAY, 2, special_bank_holiday_name),
+            (OCT, 10, special_bank_holiday_name),
+            (DEC, 26, special_bank_holiday_name),
         ),
-        2023: (
-            (MAR, 6, magh_puja_name),
-            (FEB, 18, maha_shivratri_name),
-            (AUG, 30, nikini_poya_name),
-            (SEP, 29, binara_poya_name),
-            (OCT, 28, wap_poya_name),
-            (NOV, 27, il_poya_name),
-            (DEC, 26, unduwap_poya_name),
-        ),
-        2024: (
-            (FEB, 24, magh_puja_name),
-            (MAR, 8, maha_shivratri_name),
-            (AUG, 19, nikini_poya_name),
-            (SEP, 17, binara_poya_name),
-            (OCT, 17, wap_poya_name),
-            (NOV, 15, il_poya_name),
-            (DEC, 14, unduwap_poya_name),
-        ),
-        2025: (
-            (FEB, 12, magh_puja_name),
-            (FEB, 26, maha_shivratri_name),
-            (AUG, 8, nikini_poya_name),
-            (SEP, 7, binara_poya_name),
-            (OCT, 6, wap_poya_name),
-            (NOV, 3, il_poya_name),
-            (DEC, 4, unduwap_poya_name),
-        ),
-        2026: (
-            (MAR, 3, magh_puja_name),
-            (FEB, 15, maha_shivratri_name),
-            (OCT, 15, il_poya_name),
-            (DEC, 29, unduwap_poya_name),
-        ),
-        2027: (MAR, 6, maha_shivratri_name),
-        2028: (FEB, 23, maha_shivratri_name),
-        2029: (FEB, 11, maha_shivratri_name),
-        2030: (MAR, 2, maha_shivratri_name),
+        2023: (JAN, 16, special_bank_holiday_name),
+        2025: (APR, 15, special_bank_holiday_name),
     }
+    # Deepavali Festival Day.
+    special_workday_holidays = {2003: (OCT, 24, tr("දීපවාලි උත්සව දිනය"))}
