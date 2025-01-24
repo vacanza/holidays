@@ -74,7 +74,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/duruthu-poya
         """
         return self._add_sinhala_calendar_holiday_set(
-            name, self._sinhala_calendar.duruthu_poya_dates(self._year)
+            name, self._sinhala_calendar.duruthu_poya_date(self._year)
         )
 
     def _add_nawam_poya(self, name) -> Optional[date]:
@@ -85,7 +85,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/navam-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.nawam_poya_dates(self._year)
+            name, self._sinhala_calendar.nawam_poya_date(self._year)
         )
 
     def _add_medin_poya(self, name) -> Optional[date]:
@@ -95,7 +95,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/medin-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.medin_poya_dates(self._year)
+            name, self._sinhala_calendar.medin_poya_date(self._year)
         )
 
     def _add_bak_poya(self, name) -> Optional[date]:
@@ -105,7 +105,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/bak-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.bak_poya_dates(self._year)
+            name, self._sinhala_calendar.bak_poya_date(self._year)
         )
 
     def _add_vesak_poya(self, name) -> Optional[date]:
@@ -116,7 +116,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/vesak
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.vesak_poya_dates(self._year)
+            name, self._sinhala_calendar.vesak_poya_date(self._year)
         )
 
     def _add_poson_poya(self, name) -> Optional[date]:
@@ -126,7 +126,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/poson
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.poson_poya_dates(self._year)
+            name, self._sinhala_calendar.poson_poya_date(self._year)
         )
 
     def _add_esala_poya(self, name) -> Optional[date]:
@@ -136,7 +136,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/esala-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.esala_poya_dates(self._year)
+            name, self._sinhala_calendar.esala_poya_date(self._year)
         )
 
     def _add_nikini_poya(self, name) -> Optional[date]:
@@ -146,7 +146,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/nikini-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.nikini_poya_dates(self._year)
+            name, self._sinhala_calendar.nikini_poya_date(self._year)
         )
 
     def _add_binara_poya(self, name) -> Optional[date]:
@@ -156,7 +156,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/binara-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.binara_poya_dates(self._year)
+            name, self._sinhala_calendar.binara_poya_date(self._year)
         )
 
     def _add_vap_poya(self, name) -> Optional[date]:
@@ -166,7 +166,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/vap-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.vap_poya_dates(self._year)
+            name, self._sinhala_calendar.vap_poya_date(self._year)
         )
 
     def _add_il_poya(self, name) -> Optional[date]:
@@ -177,7 +177,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/il-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.il_poya_dates(self._year)
+            name, self._sinhala_calendar.il_poya_date(self._year)
         )
 
     def _add_unduvap_poya(self, name) -> Optional[date]:
@@ -188,5 +188,5 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         https://us.lakpura.com/pages/unduvap-poya
         """
         return self._add_sinhala_calendar_holiday(
-            name, self._sinhala_calendar.unduvap_poya_dates(self._year)
+            name, self._sinhala_calendar.unduvap_poya_date(self._year)
         )

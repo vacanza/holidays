@@ -373,40 +373,40 @@ class _SinhalaLunar:
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
 
-    def duruthu_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+    def duruthu_poya_date(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(DURUTHU_POYA, year)
 
-    def nawam_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def nawam_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(NAWAM_POYA, year)
 
-    def medin_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def medin_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(MEDIN_POYA, year)
 
-    def bak_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def bak_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(BAK_POYA, year)
 
-    def vesak_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def vesak_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VESAK_POYA, year)
 
-    def poson_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def poson_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(POSON_POYA, year)
 
-    def esala_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def esala_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(ESALA_POYA, year)
 
-    def nikini_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def nikini_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(NIKINI_POYA, year)
 
-    def binara_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def binara_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(BINARA_POYA, year)
 
-    def vap_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def vap_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VAP_POYA, year)
 
-    def il_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def il_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(IL_POYA, year)
 
-    def unduvap_poya_dates(self, year: int) -> tuple[Optional[date], bool]:
+    def unduvap_poya_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(UNDUVAP_POYA, year)
 
 

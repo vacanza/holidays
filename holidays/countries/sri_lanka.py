@@ -115,9 +115,9 @@ class SriLanka(
             2025,
         }
         if self._year in thai_pongal_years_jan_14:
-            dt = self._add_holiday_jan_14(name)
+            self._add_holiday_jan_14(name)
         else:
-            dt = self._add_holiday_jan_15(name)
+            self._add_holiday_jan_15(name)
 
         # Independence Day.
         self._add_holiday_feb_4(tr("නිදහස් සමරු දිනය"))
