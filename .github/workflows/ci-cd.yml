@@ -32,7 +32,7 @@ concurrency:
 jobs:
   pre-commit:
     name: Run pre-commit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
       - pre-commit
     permissions:
       security-events: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -117,7 +117,7 @@ jobs:
   build:
     name: Build distribution
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -206,7 +206,7 @@ jobs:
 
   test-docs:
     name: Test docs build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: test
     steps:
       - name: Check out repository
@@ -241,7 +241,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Download package artifacts
         uses: actions/download-artifact@v4
@@ -254,7 +254,7 @@ jobs:
 
   sign-artifacts:
     name: Create SHA1 checksums and Sigstore signatures
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs:
       - publish-main
     permissions:
@@ -288,7 +288,7 @@ jobs:
 
   update-github-release:
     name: Update GitHub release with SBOM and signed artifacts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs:
       - sign-artifacts
     permissions:
