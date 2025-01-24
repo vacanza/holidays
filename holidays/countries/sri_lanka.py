@@ -288,8 +288,10 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
-        2011: (NOV, 6),
-        2012: (OCT, 26),
+        # https://www.adaderana.lk/news.php?nid=15606
+        2011: (NOV, 7),
+        # https://www.adaderana.lk/news.php?nid=20136
+        2012: (OCT, 27),
         2013: (OCT, 16),
         2014: (OCT, 5),
         2015: (SEP, 24),
@@ -363,9 +365,20 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
 class SriLankaStaticHolidays:
     """
     References:
+    - https://www.adaderana.lk/news.php?nid=13026
+    - https://www.adaderana.lk/news.php?nid=17539
+    - https://www.adaderana.lk/news.php?nid=22168
+    - https://www.adaderana.lk/news.php?nid=34870
+    - https://www.adaderana.lk/news.php?nid=55146
+    - https://www.adaderana.lk/news.php?nid=61437
+    - https://www.adaderana.lk/news.php?nid=64367
+    - https://www.adaderana.lk/news.php?nid=81686
+    - https://www.adaderana.lk/news.php?nid=82111
     - https://www.adaderana.lk/news.php?nid=82979
     - https://www.adaderana.lk/news.php?nid=83082
     - https://www.adaderana.lk/news.php?nid=84035
+    - https://www.adaderana.lk/news.php?nid=98560
+    - https://www.adaderana.lk/news.php?nid=102125
     - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
     - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
     - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
@@ -395,15 +408,40 @@ class SriLankaStaticHolidays:
     # Public Sector Holiday.
     public_sector_holiday_name = tr("රාජ්ය අංශයේ නිවාඩු")
 
+    # Special Public Holiday.
+    special_public_holiday_name = tr("විශේෂ රජයේ නිවාඩු දිනය")
+
     special_public_holidays = {
         2004: (JUL, 31, adhi_esala_poya_name),
         2007: (MAY, 31, adhi_poson_poya_name),
         2010: (APR, 28, adhi_vesak_poya_name),
-        2012: (AUG, 31, adhi_binara_poya_name),
+        # 2011, MAY 2 confirmed as not getting upgrade to Special Public Holiday.
+        2012: (
+            (MAY, 7, special_public_holiday_name),
+            (AUG, 31, adhi_binara_poya_name),
+        ),
+        2013: (APR, 15, special_public_holiday_name),
         2015: (JUL, 1, adhi_esala_poya_name),
+        2016: (APR, 15, special_public_holiday_name),
         2018: (MAY, 29, adhi_poson_poya_name),
-        2020: (OCT, 1, adhi_vap_poya_name),
+        2019: (MAY, 20, special_public_holiday_name),
+        2020: (
+            (MAR, 16, special_public_holiday_name),
+            (MAR, 17, special_public_holiday_name),
+            (MAR, 18, special_public_holiday_name),
+            (MAR, 19, special_public_holiday_name),
+            (OCT, 1, adhi_vap_poya_name),
+        ),
+        2022: (
+            (APR, 11, special_public_holiday_name),
+            (APR, 12, special_public_holiday_name),
+            (MAY, 2, special_public_holiday_name),
+        ),
         2023: (JUL, 3, adhi_esala_poya_name),
+        2024: (
+            (APR, 15, special_public_holiday_name),
+            (SEP, 29, special_public_holiday_name),
+        ),
     }
     special_bank_holidays = {
         2005: (
@@ -438,7 +476,7 @@ class SriLankaStaticHolidays:
         ),
         2019: (
             (APR, 15, special_bank_holiday_name),
-            (MAY, 20, special_bank_holiday_name),
+            # MAY 20 got upgraded to Special Public Holiday.
             (NOV, 11, special_bank_holiday_name),
         ),
         2020: (APR, 14, special_bank_holiday_name),
@@ -447,7 +485,7 @@ class SriLankaStaticHolidays:
             (DEC, 24, half_day_special_bank_holiday_name),
         ),
         2022: (
-            (MAY, 2, special_bank_holiday_name),
+            # MAY 2 got upgraded to Special Public Holiday.
             (OCT, 10, special_bank_holiday_name),
             (DEC, 26, special_bank_holiday_name),
         ),
@@ -455,6 +493,7 @@ class SriLankaStaticHolidays:
         2025: (APR, 15, special_bank_holiday_name),
     }
     special_government_holidays = {
+        2020: (JUN, 4, public_sector_holiday_name),
         2022: (
             (JUN, 13, public_sector_holiday_name),
             # All Friday between JUN 15, 2022 to AUG 2, 2022.

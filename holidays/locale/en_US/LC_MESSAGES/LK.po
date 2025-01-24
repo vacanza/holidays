@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2025-01-12 23:29+0530\n"
-"PO-Revision-Date: 2025-01-24 16:54+0700\n"
+"PO-Revision-Date: 2025-01-24 17:24+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -162,3 +162,7 @@ msgstr "Half-Day Special Bank Holiday"
 #. Public Sector Holiday.
 msgid "රාජ්ය අංශයේ නිවාඩු"
 msgstr "Public Sector Holiday"
+
+#. Special Public Holiday.
+msgid "විශේෂ රජයේ නිවාඩු දිනය"
+msgstr "Special Public Holiday"
