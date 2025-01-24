@@ -17,6 +17,7 @@ from typing import Optional
 from holidays.calendars import _SinhalaLunar
 from holidays.groups.eastern import EasternCalendarHolidays
 
+
 class SinhalaCalendarHolidays(EasternCalendarHolidays):
     """
     Sinhala holidays.
@@ -59,7 +60,9 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         added_dates = set()
         for dts in dates:
-            if dt := self._add_eastern_calendar_holiday(name, dts, self._sinhala_calendar_show_estimated, days_delta=days_delta):
+            if dt := self._add_eastern_calendar_holiday(
+                name, dts, self._sinhala_calendar_show_estimated, days_delta=days_delta
+            ):
                 added_dates.add(dt)
 
         return added_dates

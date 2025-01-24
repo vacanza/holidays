@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import BANK, PUBLIC, WORKDAY
+from holidays.constants import BANK, GOVERNMENT, PUBLIC, WORKDAY
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
 from tests.common import CommonCountryTests
 
@@ -26,7 +26,9 @@ class TestSriLanka(CommonCountryTests, TestCase):
         self.assertAliases(SriLanka, LK, LKA)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(SriLanka(years=(2002, 2026), categories=(BANK, PUBLIC, WORKDAY)))
+        self.assertNoHolidays(
+            SriLanka(years=(2002, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
+        )
 
     def test_special(self):
         self.assertHoliday(
@@ -79,6 +81,23 @@ class TestSriLanka(CommonCountryTests, TestCase):
         )
         self.assertHoliday(SriLanka(categories=BANK), dt, dt_half)
 
+    def test_special_government(self):
+        # 2022 Sri Lankan Fuel Crisis
+        # https://www.adaderana.lk/news.php?nid=82979
+        # https://www.adaderana.lk/news.php?nid=83082
+        # https://www.adaderana.lk/news.php?nid=84035
+        self.assertHoliday(
+            SriLanka(categories=GOVERNMENT),
+            "2022-06-13",
+            "2022-06-17",
+            "2022-06-24",
+            "2022-07-01",
+            "2022-07-08",
+            "2022-07-15",
+            "2022-07-22",
+            "2022-07-29",
+        )
+
     def test_special_workday(self):
         # 2003 Deepavali.
         self.assertHoliday(SriLanka(categories=WORKDAY), "2003-10-24")
@@ -99,7 +118,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def test_2023_all(self):
         # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
         self.assertHolidays(
-            SriLanka(categories=(BANK, PUBLIC, WORKDAY), years=2023),
+            SriLanka(categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY), years=2023),
             ("2023-01-06", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
             ("2023-01-15", "දෙමළ තෛපොංැලල් දිනය"),
             ("2023-01-16", "විශේෂ බැංකු නිවාඩු දිනය"),
@@ -132,7 +151,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
     def test_2024_all(self):
         # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024
         self.assertHolidays(
-            SriLanka(categories=(BANK, PUBLIC, WORKDAY), years=2024),
+            SriLanka(categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY), years=2024),
             ("2024-01-15", "දෙමළ තෛපොංැලල් දිනය"),
             ("2024-01-25", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
             ("2024-02-04", "නිදහස් සමරු දිනය"),
@@ -178,9 +197,17 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-05-03", "ඊදුල් ෆීතර්"),
             ("2022-05-15", "වෙසක් පුර පසළොස්වක පෝය දිනය"),
             ("2022-05-16", "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"),
+            ("2022-06-13", "රාජ්ය අංශයේ නිවාඩු"),
             ("2022-06-14", "පොසොන් පුර පසළොස්වක පෝය දිනය"),
+            ("2022-06-17", "රාජ්ය අංශයේ නිවාඩු"),
+            ("2022-06-24", "රාජ්ය අංශයේ නිවාඩු"),
+            ("2022-07-01", "රාජ්ය අංශයේ නිවාඩු"),
+            ("2022-07-08", "රාජ්ය අංශයේ නිවාඩු"),
             ("2022-07-10", "ඊදුල් අල්හා"),
             ("2022-07-13", "ඇසල පුර පසළොස්වක පෝය දිනය"),
+            ("2022-07-15", "රාජ්ය අංශයේ නිවාඩු"),
+            ("2022-07-22", "රාජ්ය අංශයේ නිවාඩු"),
+            ("2022-07-29", "රාජ්ය අංශයේ නිවාඩු"),
             ("2022-08-11", "නිකිණි පුර පසළොස්වක පෝය දිනය"),
             ("2022-09-10", "බිනර පුර පසළොස්වක පෝය දිනය"),
             ("2022-10-09", "නබි නායකතුමාගේ උපන් දිනය; වප් පුර පසළොස්වක පෝය දිනය"),
@@ -210,9 +237,17 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-05-03", "Eid al-Fitr"),
             ("2022-05-15", "Vesak Full Moon Poya Day"),
             ("2022-05-16", "Day Following Vesak Full Moon Poya Day"),
+            ("2022-06-13", "Public Sector Holiday"),
             ("2022-06-14", "Poson Full Moon Poya Day"),
+            ("2022-06-17", "Public Sector Holiday"),
+            ("2022-06-24", "Public Sector Holiday"),
+            ("2022-07-01", "Public Sector Holiday"),
+            ("2022-07-08", "Public Sector Holiday"),
             ("2022-07-10", "Eid al-Adha"),
             ("2022-07-13", "Esala Full Moon Poya Day"),
+            ("2022-07-15", "Public Sector Holiday"),
+            ("2022-07-22", "Public Sector Holiday"),
+            ("2022-07-29", "Public Sector Holiday"),
             ("2022-08-11", "Nikini Full Moon Poya Day"),
             ("2022-09-10", "Binara Full Moon Poya Day"),
             ("2022-10-09", "The Prophet's Birthday; Vap Full Moon Poya Day"),
@@ -242,9 +277,17 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-05-03", "ஈதுல் பித்ர்"),
             ("2022-05-15", "வெசாக் முழு நோன்மதி தினம்"),
             ("2022-05-16", "வெசாக் முழு நோன்மதி தினத்திற்கு அடுத்த நாள்"),
+            ("2022-06-13", "பொதுத்துறை விடுமுறை"),
             ("2022-06-14", "பொசொன் முழு நோன்மதி தினம்"),
+            ("2022-06-17", "பொதுத்துறை விடுமுறை"),
+            ("2022-06-24", "பொதுத்துறை விடுமுறை"),
+            ("2022-07-01", "பொதுத்துறை விடுமுறை"),
+            ("2022-07-08", "பொதுத்துறை விடுமுறை"),
             ("2022-07-10", "ஈதுல் அழ்ஹா"),
             ("2022-07-13", "எசல முழு நோன்மதி தினம்"),
+            ("2022-07-15", "பொதுத்துறை விடுமுறை"),
+            ("2022-07-22", "பொதுத்துறை விடுமுறை"),
+            ("2022-07-29", "பொதுத்துறை விடுமுறை"),
             ("2022-08-11", "நிக்கினி முழு நோன்மதி தினம்"),
             ("2022-09-10", "பினர முழு நோன்மதி தினம்"),
             ("2022-10-09", "நபிகள் நாயகத்தின் பிறந்த தினம்; வப் முழு நோன்மதி தினம்"),

@@ -28,7 +28,7 @@ from holidays.calendars.gregorian import (
     DEC,
     _timedelta,
 )
-from holidays.constants import BANK, PUBLIC, WORKDAY
+from holidays.constants import BANK, GOVERNMENT, PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -76,7 +76,7 @@ class SriLanka(
     """
 
     country = "LK"
-    supported_categories = (BANK, PUBLIC, WORKDAY)
+    supported_categories = (BANK, GOVERNMENT, PUBLIC, WORKDAY)
     default_language = "si_LK"
     # %s (estimated).
     estimated_label = tr("%s (අනුමානිත)")
@@ -363,6 +363,9 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
 class SriLankaStaticHolidays:
     """
     References:
+    - https://www.adaderana.lk/news.php?nid=82979
+    - https://www.adaderana.lk/news.php?nid=83082
+    - https://www.adaderana.lk/news.php?nid=84035
     - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
     - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
     - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
@@ -388,6 +391,9 @@ class SriLankaStaticHolidays:
 
     # Half-Day Special Bank Holiday.
     half_day_special_bank_holiday_name = tr("දින භාගයක විශේෂ බැංකු නිවාඩු දිනය")
+
+    # Public Sector Holiday.
+    public_sector_holiday_name = tr("රාජ්ය අංශයේ නිවාඩු")
 
     special_public_holidays = {
         2004: (JUL, 31, adhi_esala_poya_name),
@@ -447,6 +453,19 @@ class SriLankaStaticHolidays:
         ),
         2023: (JAN, 16, special_bank_holiday_name),
         2025: (APR, 15, special_bank_holiday_name),
+    }
+    special_government_holidays = {
+        2022: (
+            (JUN, 13, public_sector_holiday_name),
+            # All Friday between JUN 15, 2022 to AUG 2, 2022.
+            (JUN, 17, public_sector_holiday_name),
+            (JUN, 24, public_sector_holiday_name),
+            (JUL, 1, public_sector_holiday_name),
+            (JUL, 8, public_sector_holiday_name),
+            (JUL, 15, public_sector_holiday_name),
+            (JUL, 22, public_sector_holiday_name),
+            (JUL, 29, public_sector_holiday_name),
+        ),
     }
     # Deepavali Festival Day.
     special_workday_holidays = {2003: (OCT, 24, tr("දීපවාලි උත්සව දිනය"))}
