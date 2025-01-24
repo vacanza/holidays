@@ -849,7 +849,7 @@ All other default values are highlighted with bold:
      - LK
      -
      - en_US, **si_LK**, ta_LK
-     - BANK
+     - BANK, GOVERNMENT, WORKDAY
    * - Sweden
      - SE
      -
