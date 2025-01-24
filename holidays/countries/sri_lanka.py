@@ -406,7 +406,7 @@ class SriLankaStaticHolidays:
     half_day_special_bank_holiday_name = tr("දින භාගයක විශේෂ බැංකු නිවාඩු දිනය")
 
     # Public Sector Holiday.
-    public_sector_holiday_name = tr("රාජ්ය අංශයේ නිවාඩු")
+    public_sector_holiday_name = tr("රාජ්ය අංශයේ නිවාඩු දිනය")
 
     # Special Public Holiday.
     special_public_holiday_name = tr("විශේෂ රජයේ නිවාඩු දිනය")
