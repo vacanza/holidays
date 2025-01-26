@@ -97,7 +97,7 @@ class _SinhalaLunar:
         2022: (FEB, 16),
         2023: (FEB, 5),
         2024: (FEB, 23),
-        2025: (FEB, 13),
+        2025: (FEB, 12),
     }
 
     MEDIN_POYA_DATES = {

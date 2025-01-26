@@ -133,6 +133,34 @@ class TestSriLanka(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, 2003)
 
+    def test_maha_sivarathri(self):
+        self.assertHolidayName(
+            "මහ සිවරාත්රි දිනය",
+            "2003-03-01",
+            "2004-02-18",
+            "2005-03-08",
+            "2006-02-26",
+            "2007-02-16",
+            "2008-03-06",
+            "2009-02-23",
+            "2010-03-13",
+            "2011-03-02",
+            "2012-02-20",
+            "2013-03-10",
+            "2014-02-27",
+            "2015-02-17",
+            "2016-03-07",
+            "2017-02-24",
+            "2018-02-13",
+            "2019-03-04",
+            "2020-02-21",
+            "2021-03-11",
+            "2022-03-01",
+            "2023-02-18",
+            "2024-03-08",
+            "2025-02-26",
+        )
+
     def test_2023_all(self):
         # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
         self.assertHolidays(
