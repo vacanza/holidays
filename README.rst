@@ -693,7 +693,7 @@ All other default values are highlighted with bold:
    * - Netherlands
      - NL
      -
-     - en_US, **nl**, uk
+     - en_US, fy, **nl**, uk
      - OPTIONAL
    * - New Zealand
      - NZ
