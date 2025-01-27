@@ -938,7 +938,7 @@ All other default values are highlighted with bold:
    * - Vatican City
      - VA
      -
-     -
+     - en_US, **it**, th
      -
    * - Venezuela
      - VE
