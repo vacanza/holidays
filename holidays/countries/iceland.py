@@ -12,18 +12,21 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
-    https://www.officeholidays.com/countries/iceland/index.php
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
+        - https://www.althingi.is/lagas/nuna/1971088.html
     """
 
     country = "IS"
     default_language = "is"
+    supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "is", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -65,11 +68,9 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # National Day.
         self._add_holiday_jun_17(tr("Þjóðhátíðardagurinn"))
 
-        # Commerce Day.
-        self._add_holiday_1st_mon_of_aug(tr("Frídagur verslunarmanna"))
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Aðfangadagur"))
+        if self._year >= 1983:
+            # Commerce Day.
+            self._add_holiday_1st_mon_of_aug(tr("Frídagur verslunarmanna"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Jóladagur"))
@@ -77,8 +78,15 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Second Day of Christmas.
         self._add_christmas_day_two(tr("Annar í jólum"))
 
+    def _populate_half_day_holidays(self):
+        # %s (from 1pm).
+        begin_time_label = self.tr("%s (frá kl. 13.00)")
+
+        # Christmas Eve.
+        self._add_christmas_eve(begin_time_label % self.tr("Aðfangadagur"))
+
         # New Year's Eve.
-        self._add_new_years_eve(tr("Gamlársdagur"))
+        self._add_new_years_eve(begin_time_label % self.tr("Gamlársdagur"))
 
 
 class IS(Iceland):
