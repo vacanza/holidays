@@ -879,7 +879,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         if 1960 <= self._year <= 2025 and self._year != 1999:
             self._add_observed(
                 # Royal Ploughing Ceremony.
-                self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year, (MAY, 13)))
+                self._add_holiday(tr("วันพืชมงคล"), raeknakhwan_dates.get(self._year))
             )
 
     def _populate_school_holidays(self):
