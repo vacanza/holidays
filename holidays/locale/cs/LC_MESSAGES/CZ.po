@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:38+0300\n"
+"PO-Revision-Date: 2025-01-27 16:41+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Independent Czech State Restoration Day.
 msgid "Den obnovy samostatného českého státu"
@@ -51,8 +51,12 @@ msgstr ""
 msgid "Den vítězství"
 msgstr ""
 
-#. Day of Victory over Fascism.
-msgid "Den vítězství nad hitlerovským fašismem"
+#. Liberation Day.
+msgid "Den osvobození"
+msgstr ""
+
+#. Day of liberation from Fascism.
+msgid "Den osvobození od fašismu"
 msgstr ""
 
 #. Saints Cyril and Methodius Day.
@@ -69,6 +73,10 @@ msgstr ""
 
 #. Independent Czechoslovak State Day.
 msgid "Den vzniku samostatného československého státu"
+msgstr ""
+
+#. Struggle for Freedom and Democracy Day and International Students' Day.
+msgid "Den boje za svobodu a demokracii a Mezinárodní den studentstva"
 msgstr ""
 
 #. Struggle for Freedom and Democracy Day.
