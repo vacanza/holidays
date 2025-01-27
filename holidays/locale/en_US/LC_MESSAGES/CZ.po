@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.28\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2023-06-27 13:46+0300\n"
+"PO-Revision-Date: 2025-01-27 16:42+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Independent Czech State Restoration Day.
 msgid "Den obnovy samostatného českého státu"
@@ -51,9 +51,13 @@ msgstr "Labor Day"
 msgid "Den vítězství"
 msgstr "Victory Day"
 
-#. Day of Victory over Fascism.
-msgid "Den vítězství nad hitlerovským fašismem"
-msgstr "Day of Victory over Fascism"
+#. Liberation Day.
+msgid "Den osvobození"
+msgstr "Liberation Day"
+
+#. Day of liberation from Fascism.
+msgid "Den osvobození od fašismu"
+msgstr "Day of liberation from Fascism"
 
 #. Saints Cyril and Methodius Day.
 msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
@@ -70,6 +74,10 @@ msgstr "Statehood Day"
 #. Independent Czechoslovak State Day.
 msgid "Den vzniku samostatného československého státu"
 msgstr "Independent Czechoslovak State Day"
+
+#. Struggle for Freedom and Democracy Day and International Students' Day.
+msgid "Den boje za svobodu a demokracii a Mezinárodní den studentstva"
+msgstr "Struggle for Freedom and Democracy Day and International Students' Day"
 
 #. Struggle for Freedom and Democracy Day.
 msgid "Den boje za svobodu a demokracii"
