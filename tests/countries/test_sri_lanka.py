@@ -20,14 +20,14 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SriLanka, years=range(1971, 2025))
+        super().setUpClass(SriLanka, years=range(1972, 2025))
 
     def test_country_aliases(self):
         self.assertAliases(SriLanka, LK, LKA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            SriLanka(years=(1970, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
+            SriLanka(years=(1971, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
         )
 
     def test_special(self):

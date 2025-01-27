@@ -84,7 +84,7 @@ class SriLanka(
     # Sri Lanka's Holidays Act (No. 29 of 1971) was first proclaimed on SEP 2nd, 1971
     # but the earliest citable calendar online is from 2003.
     # As there's no source for future Poya dates, end year is capped at 2025.
-    start_year = 1971
+    start_year = 1972
     end_year = 2025
 
     def __init__(self, *args, **kwargs):
