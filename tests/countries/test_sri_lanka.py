@@ -20,14 +20,14 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SriLanka, years=range(2003, 2025))
+        super().setUpClass(SriLanka, years=range(1971, 2025))
 
     def test_country_aliases(self):
         self.assertAliases(SriLanka, LK, LKA)
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            SriLanka(years=(2002, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
+            SriLanka(years=(1970, 2026), categories=(BANK, GOVERNMENT, PUBLIC, WORKDAY))
         )
 
     def test_special(self):
@@ -134,8 +134,9 @@ class TestSriLanka(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, 2003)
 
     def test_maha_sivarathri(self):
+        name = "මහ සිවරාත්රි දිනය"
         self.assertHolidayName(
-            "මහ සිවරාත්රි දිනය",
+            name,
             "2003-03-01",
             "2004-02-18",
             "2005-03-08",
@@ -160,6 +161,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2024-03-08",
             "2025-02-26",
         )
+        self.assertNoHolidayName(name, 2002)
 
     def test_2023_all(self):
         # https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023

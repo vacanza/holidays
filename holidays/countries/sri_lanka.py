@@ -84,7 +84,7 @@ class SriLanka(
     # Sri Lanka's Holidays Act (No. 29 of 1971) was first proclaimed on SEP 2nd, 1971
     # but the earliest citable calendar online is from 2003.
     # As there's no source for future Poya dates, end year is capped at 2025.
-    start_year = 2003
+    start_year = 1971
     end_year = 2025
 
     def __init__(self, *args, **kwargs):
@@ -206,8 +206,9 @@ class SriLanka(
         # Vesak Full Moon Poya Day.
         dt = self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
 
-        # Day Following Vesak Full Moon Poya Day.
-        self._add_holiday(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"), _timedelta(dt, +1))
+        if self._year >= 2003:
+            # Day Following Vesak Full Moon Poya Day.
+            self._add_holiday(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"), _timedelta(dt, +1))
 
         # Poson Full Moon Poya Day.
         self._add_poson_poya(tr("පොසොන් පුර පසළොස්වක පෝය දිනය"))
