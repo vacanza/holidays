@@ -77,7 +77,8 @@ msgstr "Independent Czechoslovak State Day"
 
 #. Struggle for Freedom and Democracy Day and International Students' Day.
 msgid "Den boje za svobodu a demokracii a Mezinárodní den studentstva"
-msgstr "Struggle for Freedom and Democracy Day and International Students' Day"
+msgstr ""
+"Struggle for Freedom and Democracy Day and International Students' Day"
 
 #. Struggle for Freedom and Democracy Day.
 msgid "Den boje za svobodu a demokracii"
