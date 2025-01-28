@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.iceland import Iceland, IS, ISL
 from tests.common import CommonCountryTests
 
@@ -24,8 +25,29 @@ class TestIceland(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Iceland, IS, ISL)
 
+    def test_1982(self):
+        self.assertHolidays(
+            Iceland(categories=(HALF_DAY, PUBLIC)),
+            ("1982-01-01", "Nýársdagur"),
+            ("1982-04-08", "Skírdagur"),
+            ("1982-04-09", "Föstudagurinn langi"),
+            ("1982-04-11", "Páskadagur"),
+            ("1982-04-12", "Annar í páskum"),
+            ("1982-04-22", "Sumardagurinn fyrsti"),
+            ("1982-05-01", "Verkalýðsdagurinn"),
+            ("1982-05-20", "Uppstigningardagur"),
+            ("1982-05-30", "Hvítasunnudagur"),
+            ("1982-05-31", "Annar í hvítasunnu"),
+            ("1982-06-17", "Þjóðhátíðardagurinn"),
+            ("1982-12-24", "Aðfangadagur (frá kl. 13.00)"),
+            ("1982-12-25", "Jóladagur"),
+            ("1982-12-26", "Annar í jólum"),
+            ("1982-12-31", "Gamlársdagur (frá kl. 13.00)"),
+        )
+
     def test_2018(self):
         self.assertHolidays(
+            Iceland(categories=(HALF_DAY, PUBLIC)),
             ("2018-01-01", "Nýársdagur"),
             ("2018-03-29", "Skírdagur"),
             ("2018-03-30", "Föstudagurinn langi"),
@@ -38,14 +60,15 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2018-05-21", "Annar í hvítasunnu"),
             ("2018-06-17", "Þjóðhátíðardagurinn"),
             ("2018-08-06", "Frídagur verslunarmanna"),
-            ("2018-12-24", "Aðfangadagur"),
+            ("2018-12-24", "Aðfangadagur (frá kl. 13.00)"),
             ("2018-12-25", "Jóladagur"),
             ("2018-12-26", "Annar í jólum"),
-            ("2018-12-31", "Gamlársdagur"),
+            ("2018-12-31", "Gamlársdagur (frá kl. 13.00)"),
         )
 
     def test_2022(self):
         self.assertHolidays(
+            Iceland(categories=(HALF_DAY, PUBLIC)),
             ("2022-01-01", "Nýársdagur"),
             ("2022-04-14", "Skírdagur"),
             ("2022-04-15", "Föstudagurinn langi"),
@@ -58,10 +81,10 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2022-06-06", "Annar í hvítasunnu"),
             ("2022-06-17", "Þjóðhátíðardagurinn"),
             ("2022-08-01", "Frídagur verslunarmanna"),
-            ("2022-12-24", "Aðfangadagur"),
+            ("2022-12-24", "Aðfangadagur (frá kl. 13.00)"),
             ("2022-12-25", "Jóladagur"),
             ("2022-12-26", "Annar í jólum"),
-            ("2022-12-31", "Gamlársdagur"),
+            ("2022-12-31", "Gamlársdagur (frá kl. 13.00)"),
         )
 
     def test_l10n_default(self):
@@ -78,10 +101,10 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2022-06-06", "Annar í hvítasunnu"),
             ("2022-06-17", "Þjóðhátíðardagurinn"),
             ("2022-08-01", "Frídagur verslunarmanna"),
-            ("2022-12-24", "Aðfangadagur"),
+            ("2022-12-24", "Aðfangadagur (frá kl. 13.00)"),
             ("2022-12-25", "Jóladagur"),
             ("2022-12-26", "Annar í jólum"),
-            ("2022-12-31", "Gamlársdagur"),
+            ("2022-12-31", "Gamlársdagur (frá kl. 13.00)"),
         )
 
     def test_l10n_en_us(self):
@@ -99,10 +122,10 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2022-06-06", "Whit Monday"),
             ("2022-06-17", "National Day"),
             ("2022-08-01", "Commerce Day"),
-            ("2022-12-24", "Christmas Eve"),
+            ("2022-12-24", "Christmas Eve (from 1pm)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
-            ("2022-12-31", "New Year's Eve"),
+            ("2022-12-31", "New Year's Eve (from 1pm)"),
         )
 
     def test_l10n_uk(self):
@@ -120,8 +143,8 @@ class TestIceland(CommonCountryTests, TestCase):
             ("2022-06-06", "День Святого Духа"),
             ("2022-06-17", "Національне свято"),
             ("2022-08-01", "День торгівлі"),
-            ("2022-12-24", "Святий вечір"),
+            ("2022-12-24", "Святий вечір (з 13:00)"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
-            ("2022-12-31", "Переддень Нового року"),
+            ("2022-12-31", "Переддень Нового року (з 13:00)"),
         )
