@@ -967,9 +967,6 @@ class HolidayBase(dict[date, str]):
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
 
-    def get_entries_sorted(self) -> dict[date, str]:
-        return {k: v for k, v in sorted(self.items(), key=lambda item: item[0])}
-
     def get_closest_holiday(
         self, start: DateLike = None, in_future: bool = True
     ) -> Union[tuple[date, str], None]:
@@ -979,15 +976,15 @@ class HolidayBase(dict[date, str]):
 
         dt = self.__keytransform__(start if start else datetime.now().date())
         if in_future:
-            next_date = next((x for x in self.get_entries_sorted() if x > dt), None)
+            next_date = next((x for x in sorted(self.keys()) if x > dt), None)
             if not next_date and dt.year < self.end_year:
                 self._populate(dt.year + 1)
-                next_date = next((x for x in self.get_entries_sorted() if x > dt), None)
+                next_date = next((x for x in sorted(self.keys()) if x > dt), None)
         else:
-            next_date = next((x for x in reversed(self.get_entries_sorted()) if x < dt), None)
+            next_date = next((x for x in sorted(self.keys(), reverse=True) if x < dt), None)
             if not next_date and dt.year > self.start_year:
                 self._populate(dt.year - 1)
-                next_date = next((x for x in reversed(self.get_entries_sorted()) if x < dt), None)
+                next_date = next((x for x in sorted(self.keys(), reverse=True) if x < dt), None)
         if next_date:
             return next_date, self.get(next_date)
         else:
