@@ -66,56 +66,69 @@ class TestVaticanCity(CommonCountryTests, TestCase):
         self.assertHolidayName("San Giuseppe", (f"{year}-03-19" for year in range(1929, 2050)))
 
     def test_maundy_thursday(self):
+        name = "Giovedì Santo"
         self.assertHolidayName(
-            "Giovedì Santo",
+            name,
             "2019-04-18",
             "2020-04-09",
             "2021-04-01",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_good_friday(self):
+        name = "Venerdì Santo"
         self.assertHolidayName(
-            "Venerdì Santo",
+            name,
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_holy_saturday(self):
+        name = "Sabato Santo"
         self.assertHolidayName(
-            "Sabato Santo",
+            name,
             "2019-04-20",
             "2020-04-11",
             "2021-04-03",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_easter_sunday(self):
+        name = "Pasqua di Resurrezione"
         self.assertHolidayName(
-            "Pasqua di Resurrezione",
+            name,
             "2019-04-21",
             "2020-04-12",
             "2021-04-04",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_easter_monday(self):
+        name = "Lunedì dell'Angelo"
         self.assertHolidayName(
-            "Lunedì dell'Angelo",
+            name,
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_easter_tuesday(self):
+        name = "Martedì in Albis"
         self.assertHolidayName(
-            "Martedì in Albis",
+            name,
             "2019-04-23",
             "2020-04-14",
             "2021-04-06",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_ascension_day(self):
+        name = "Ascensione del Signore"
         self.assertHolidayName(
-            "Ascensione del Signore",
+            name,
             "2000-06-01",
             "2001-05-24",
             "2002-05-09",
@@ -127,10 +140,12 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2008-05-01",
             "2009-05-21",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_corpus_domini(self):
+        name = "Corpus Domini"
         self.assertHolidayName(
-            "Corpus Domini",
+            name,
             "2000-06-22",
             "2001-06-14",
             "2002-05-30",
@@ -142,27 +157,32 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2008-05-22",
             "2009-06-11",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_saint_joseph_the_workers_day(self):
         name = "San Giuseppe Artigiano"
-        self.assertNoHolidayName(name, VaticanCity(years=1954))
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1955, 2050)))
+        self.assertNoHolidayName(name, range(1929, 1955))
 
     def test_solemnity_of_pentecost(self):
+        name = "Solennità della Pentecoste"
         self.assertHolidayName(
-            "Solennità della Pentecoste",
+            name,
             "2019-06-09",
             "2020-05-31",
             "2021-05-23",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_solemnity_of_holy_trinity(self):
+        name = "Solennità della Santissima Trinità"
         self.assertHolidayName(
-            "Solennità della Santissima Trinità",
+            name,
             "2019-06-16",
             "2020-06-07",
             "2021-05-30",
         )
+        self.assertHolidayName(name, range(1929, 2050))
 
     def test_saints_peter_and_paul_day(self):
         self.assertHolidayName(
@@ -196,7 +216,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "Immacolata Concezione", (f"{year}-12-08" for year in range(1929, 2050))
         )
 
-    def test_christmas_day(self):
+    def test_christmas_days(self):
         self.assertHolidayName(
             "Vigilia di Natale", (f"{year}-12-24" for year in range(1929, 2050))
         )
