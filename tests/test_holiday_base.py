@@ -1269,10 +1269,10 @@ class TestNextHoliday(unittest.TestCase):
 
         us = US()
         # check for date before start of calendar
-        self.assertEqual(us.get_closest_holiday("1777-01-01", in_future=False), None)
+        self.assertIsNone(us.get_closest_holiday("1777-01-01", in_future=False))
 
         # check for date after end of calendar
-        self.assertEqual(us.get_closest_holiday("2100-12-31"), None)
+        self.assertIsNone(us.get_closest_holiday("2100-12-31"))
 
     def test_get_closest_holiday_after_empty_year(self):
         from holidays.countries.ukraine import UA
