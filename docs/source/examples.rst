@@ -223,24 +223,24 @@ The function returns the date and the name of the holiday - exluding today.
 .. code-block:: python
 
    >>> us_holidays = holidays.US(years=2025)
-   >>> us_holidays.get_next_holiday() # get the next holiday after today
+   >>> us_holidays.get_closest_holiday() # get the next holiday after today
    (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
-   >>> us_holidays.get_next_holiday(previous=True)  # get the previous holiday before today
+   >>> us_holidays.get_closest_holiday(in_future=False)  # get the previous holiday before today
    (datetime.date(2025, 1, 1), "New Year's Day")
-   >>> us_holidays.get_next_holiday("2025-02-01")  # get the next holiday after a specific date
+   >>> us_holidays.get_closest_holiday("2025-02-01")  # get the next holiday after a specific date
    (datetime.date(2025, 2, 17), "Washington's Birthday")
-   >>> us_holidays.get_next_holiday("2025-02-01", previous=True)  # get the previous holiday before a specific date
+   >>> us_holidays.get_closest_holiday("2025-02-01", in_future=False)  # get the previous holiday before a specific date
    (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
 
 If no holiday can be found (e.g. because the date would be after the end date /
-before the start date), (None, None) is returned.
+before the start date), None is returned.
 
 .. code-block:: python
 
-   >>> us_holidays.get_next_holiday("2100-12-31")
-   (None, None)
-   >>> us_holidays.get_next_holiday("1777-01-01", previous=True)
-   (None, None)
+   >>> us_holidays.get_closest_holiday("2100-12-31")
+   None
+   >>> us_holidays.get_closest_holiday("1777-01-01", in_future=False)
+   None
 
 Date from holiday name
 ----------------------

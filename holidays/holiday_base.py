@@ -970,15 +970,15 @@ class HolidayBase(dict[date, str]):
     def get_entries_sorted(self) -> dict[date, str]:
         return {k: v for k, v in sorted(self.items(), key=lambda item: item[0])}
 
-    def get_next_holiday(
-        self, start: DateLike = None, previous: bool = False
-    ) -> Union[tuple[date, str], tuple[None, None]]:
+    def get_closest_holiday(
+        self, start: DateLike = None, in_future: bool = True
+    ) -> Union[tuple[date, str], None]:
         """Return the date and name of the next holiday from provided date
-        (if previous is False) or the previous holiday (if previous is True).
+        (if in_future is True) or the previous holiday (if in_future is False).
         If no date is given the search starts from current date"""
 
         dt = self.__keytransform__(start if start else datetime.now().date())
-        if not previous:
+        if in_future:
             next_date = next((x for x in self.get_entries_sorted() if x > dt), None)
             if not next_date and dt.year < self.end_year:
                 self._populate(dt.year + 1)
@@ -991,7 +991,7 @@ class HolidayBase(dict[date, str]):
         if next_date:
             return next_date, self.get(next_date)
         else:
-            return None, None
+            return None
 
     def get_nth_working_day(self, key: DateLike, n: int) -> date:
         """Return n-th working day from provided date (if n is positive)
