@@ -451,3 +451,13 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Pentecost
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +49))
+
+    def _add_trinity_sunday(self, name) -> date:
+        """
+        Add Trinity Sunday (56 days after Easter Sunday).
+
+        Trinity Sunday, also called Solemnity of Holy Trinity, is the first Sunday
+        after Pentecost in the Western Christian liturgical calendar, and the Sunday
+        of Pentecost in Eastern Christianity.
+        """
+        return self._add_holiday(name, _timedelta(self._easter_sunday, +56))

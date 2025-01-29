@@ -514,7 +514,7 @@ All other default values are highlighted with bold:
      - IS
      -
      - en_US, **is**, uk
-     -
+     - HALF_DAY
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
@@ -943,7 +943,7 @@ All other default values are highlighted with bold:
    * - Vatican City
      - VA
      -
-     -
+     - en_US, **it**, th
      -
    * - Venezuela
      - VE
