@@ -100,7 +100,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
         if self._year < 2001 or self._year > 2035:
-            warning_msg = "Diwali, Holi, Janmashtami, Raksha Bandhan holidays available from 2001 to 2035 only"
+            warning_msg = "Requested Holidays are available only from 2001 to 2035. Choose a year within this range."
             warnings.warn(warning_msg, Warning)
 
         # https://www.timeanddate.com/holidays/india/diwali
