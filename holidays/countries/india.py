@@ -12,7 +12,7 @@
 
 import warnings
 
-from holidays.calendars.gregorian import MAR, OCT, NOV
+from holidays.calendars.gregorian import MAR, OCT, NOV, AUG
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -100,7 +100,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
         if self._year < 2001 or self._year > 2035:
-            warning_msg = "Diwali and Holi holidays available from 2001 to 2035 only"
+            warning_msg = "Diwali, Holi, Raksha Bandhan holidays available from 2001 to 2035 only"
             warnings.warn(warning_msg, Warning)
 
         # https://www.timeanddate.com/holidays/india/diwali
@@ -182,11 +182,53 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (MAR, 24),
         }
 
+        #https://www.timeanddate.com/holidays/india/raksha-bandhan
+        rakhi_dates = {
+            2001: (AUG, 4),
+            2002: (AUG, 22),
+            2003: (AUG, 12),
+            2004: (AUG, 29),
+            2005: (AUG, 19),
+            2006: (AUG, 9),
+            2007: (AUG, 28),
+            2008: (AUG, 16),
+            2009: (AUG, 5),
+            2010: (AUG, 24),
+            2011: (AUG, 13),
+            2012: (AUG, 2),
+            2013: (AUG, 20),
+            2014: (AUG, 10),
+            2015: (AUG, 29),
+            2016: (AUG, 18),
+            2017: (AUG, 7),
+            2018: (AUG, 26),
+            2019: (AUG, 15),
+            2020: (AUG, 3),
+            2021: (AUG, 22),
+            2022: (AUG, 11),
+            2023: (AUG, 30),
+            2024: (AUG, 19),
+            2025: (AUG, 9),
+            2026: (AUG, 28),
+            2027: (AUG, 17),
+            2028: (AUG, 5),
+            2029: (AUG, 23),
+            2030: (AUG, 13),
+            2031: (AUG, 2),
+            2032: (AUG, 20),
+            2033: (AUG, 10),
+            2034: (AUG, 29),
+            2035: (AUG, 18),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
         if self._year in holi_dates:
             self._add_holiday("Holi", holi_dates[self._year])
+
+        if self._year in rakhi_dates:
+            self._add_holiday("Raksha Bandhan", rakhi_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
