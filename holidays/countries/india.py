@@ -252,11 +252,11 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2028: (AUG, 13),
             2029: (SEP, 1),
             2030: (AUG, 21),
-            2031: (AUG, 2),
-            2032: (AUG, 20),
-            2033: (AUG, 10),
-            2034: (AUG, 29),
-            2035: (AUG, 18),
+            2031: (AUG, 10),
+            2032: (AUG, 28),
+            2033: (AUG, 17),
+            2034: (SEP, 6),
+            2035: (AUG, 26),
         }
 
         if self._year in diwali_dates:
