@@ -12,7 +12,7 @@
 
 import warnings
 
-from holidays.calendars.gregorian import MAR, OCT, NOV, AUG
+from holidays.calendars.gregorian import MAR, OCT, NOV, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -100,7 +100,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
         if self._year < 2001 or self._year > 2035:
-            warning_msg = "Diwali, Holi, Raksha Bandhan holidays available from 2001 to 2035 only"
+            warning_msg = "Diwali, Holi, Janmashtami, Raksha Bandhan holidays available from 2001 to 2035 only"
             warnings.warn(warning_msg, Warning)
 
         # https://www.timeanddate.com/holidays/india/diwali
@@ -140,7 +140,6 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2033: (OCT, 22),
             2034: (NOV, 10),
             2035: (OCT, 30),
-            
         }
 
         # https://www.timeanddate.com/holidays/india/holi
@@ -182,7 +181,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (MAR, 24),
         }
 
-        #https://www.timeanddate.com/holidays/india/raksha-bandhan
+        # https://www.timeanddate.com/holidays/india/raksha-bandhan
         rakhi_dates = {
             2001: (AUG, 4),
             2002: (AUG, 22),
@@ -221,6 +220,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (AUG, 18),
         }
 
+        # https://www.timeanddate.com/holidays/india/janmashtami
+        janmashtami_dates = {
+            2001: (AUG, 12),
+            2002: (AUG, 31),
+            2003: (AUG, 20),
+            2004: (SEP, 7),
+            2005: (AUG, 27),
+            2006: (AUG, 16),
+            2007: (SEP, 4),
+            2008: (AUG, 24),
+            2009: (AUG, 14),
+            2010: (SEP, 2),
+            2011: (AUG, 22),
+            2012: (AUG, 10),
+            2013: (AUG, 28),
+            2014: (AUG, 18),
+            2015: (SEP, 5),
+            2016: (AUG, 25),
+            2017: (AUG, 15),
+            2018: (SEP, 3),
+            2019: (AUG, 24),
+            2020: (AUG, 12),
+            2021: (AUG, 30),
+            2022: (AUG, 19),
+            2023: (SEP, 7),
+            2024: (AUG, 26),
+            2025: (AUG, 16),
+            2026: (SEP, 4),
+            2027: (AUG, 25),
+            2028: (AUG, 13),
+            2029: (SEP, 1),
+            2030: (AUG, 21),
+            2031: (AUG, 2),
+            2032: (AUG, 20),
+            2033: (AUG, 10),
+            2034: (AUG, 29),
+            2035: (AUG, 18),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -229,6 +267,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in rakhi_dates:
             self._add_holiday("Raksha Bandhan", rakhi_dates[self._year])
+
+        if self._year in janmashtami_dates:
+            self._add_holiday("Janmashtami", janmashtami_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
