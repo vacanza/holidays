@@ -89,9 +89,8 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             # Independence Day.
             self._add_holiday_aug_15("Independence Day")
 
-        if self._year >= 1869:
-            # Gandhi Jayanti.
-            self._add_holiday_oct_2("Gandhi Jayanti")
+        # Gandhi Jayanti.
+        self._add_holiday_oct_2("Gandhi Jayanti")
 
         # Labour Day.
         self._add_labor_day("Labour Day")
