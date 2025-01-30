@@ -29,28 +29,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     doesn't really make sense to include the days from the two former
     countries.
 
-    Note that Germany doesn't have rules for holidays that happen on a
-    Sunday. Those holidays are still holiday days but there is no additional
-    day to make up for the "lost" day.
-
-    Also note that German holidays are partly declared by each province there
-    are some weired edge cases:
-
-        - "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) if your
-          municipality is mostly catholic which in term depends on census data.
-          Since we don't have this data but most municipalities in Bavaria
-          *are* mostly catholic, we count that as holiday for whole Bavaria.
-          We added BYP for the municipality in Bavaria with more protestants.
-          Here this is excluded.
-        - There is an "Augsburger Friedensfest" which only exists in the town
-          Augsburg. This is excluded for Bavaria.
-        - "Gründonnerstag" (Thursday before easter) is not a holiday but pupils
-           don't have to go to school (but only in Baden Württemberg) which is
-           solved by adjusting school holidays to include this day. It is
-           excluded from our list.
-        - "Fronleichnam" is a holiday in certain, explicitly defined
-          municipalities in Saxony (SN) and Thuringia (TH). We exclude it from
-          both provinces.
+    "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
+    in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which
+    in term depends on census data. It's listed in "CATHOLIC" category for these provinces.
     """
 
     country = "DE"
@@ -229,6 +210,10 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         if self._year >= 1995:
             self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
+    def _populate_subdiv_sn_catholic_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
+
     def _populate_subdiv_st_public_holidays(self):
         if self._year >= 1991:
             self._add_epiphany_day(tr("Heilige Drei Könige"))
@@ -241,6 +226,10 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_holiday_sep_20(tr("Weltkindertag"))
 
         self._add_holiday_oct_31(tr("Reformationstag"))
+
+    def _populate_subdiv_th_catholic_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
 
 
 class DE(Germany):
