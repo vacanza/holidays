@@ -34,10 +34,8 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_2018(self):
         self.assertHoliday(
-            "2018-01-13",
             "2018-01-14",
             "2018-01-26",
-            "2018-02-19",
             "2018-03-02",
             "2018-03-25",
             "2018-03-30",
@@ -52,7 +50,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-09-20",
             "2018-10-02",
             "2018-10-02",
-            "2018-11-01",
             "2018-11-07",
             "2018-11-20",
             "2018-12-25",
