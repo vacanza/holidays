@@ -31,38 +31,38 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
-        "AR",  # Arunāchal Pradesh.
+        "AR",  # Arunachal Pradesh.
         "AS",  # Assam.
-        "BR",  # Bihār.
+        "BR",  # Bihar.
         "CG",  # Chhattīsgarh.
         "CH",  # Chandīgarh.
-        "DH",  # Dādra and Nagar Haveli and Damān and Diu.
+        "DH",  # Dadra and Nagar Haveli and Daman and Diu.
         "DL",  # Delhi.
         "GA",  # Goa.
-        "GJ",  # Gujarāt.
-        "HP",  # Himāchal Pradesh.
-        "HR",  # Haryāna.
-        "JH",  # Jhārkhand.
+        "GJ",  # Gujarat.
+        "HP",  # Himachal Pradesh.
+        "HR",  # Haryana.
+        "JH",  # Jharkhand.
         "JK",  # Jammu and Kashmīr.
-        "KA",  # Karnātaka.
+        "KA",  # Karnataka.
         "KL",  # Kerala.
-        "LA",  # Ladākh.
+        "LA",  # Ladakh.
         "LD",  # Lakshadweep.
-        "MH",  # Mahārāshtra.
-        "ML",  # Meghālaya.
+        "MH",  # Maharashtra.
+        "ML",  # Meghalaya.
         "MN",  # Manipur.
         "MP",  # Madhya Pradesh.
         "MZ",  # Mizoram.
-        "NL",  # Nāgāland.
+        "NL",  # Nagaland.
         "OD",  # Odisha.
         "PB",  # Punjab.
         "PY",  # Puducherry.
-        "RJ",  # Rājasthān.
+        "RJ",  # Rajasthan.
         "SK",  # Sikkim.
-        "TN",  # Tamil Nādu.
+        "TN",  # Tamil Nadu.
         "TR",  # Tripura.
-        "TS",  # Telangāna.
-        "UK",  # Uttarākhand.
+        "TS",  # Telangana.
+        "UK",  # Uttarakhand.
         "UP",  # Uttar Pradesh.
         "WB",  # West Bengal.
     )
@@ -89,8 +89,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             # Independence Day.
             self._add_holiday_aug_15("Independence Day")
 
-        # Gandhi Jayanti.
-        self._add_holiday_oct_2("Gandhi Jayanti")
+        if self._year >= 1869:
+            # Gandhi Jayanti.
+            self._add_holiday_oct_2("Gandhi Jayanti")
 
         # Labour Day.
         self._add_labor_day("Labour Day")
@@ -98,8 +99,8 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Directly lifted Diwali and Holi dates from FBProphet from:
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
-        if self._year < 2001 or self._year > 2030:
-            warning_msg = "Diwali and Holi holidays available from 2001 to 2030 only"
+        if self._year < 2001 or self._year > 2035:
+            warning_msg = "Diwali and Holi holidays available from 2001 to 2035 only"
             warnings.warn(warning_msg, Warning)
 
         # https://www.timeanddate.com/holidays/india/diwali
@@ -134,6 +135,12 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2028: (OCT, 17),
             2029: (NOV, 5),
             2030: (OCT, 26),
+            2031: (NOV, 14),
+            2032: (NOV, 2),
+            2033: (OCT, 22),
+            2034: (NOV, 10),
+            2035: (OCT, 30),
+            
         }
 
         # https://www.timeanddate.com/holidays/india/holi
@@ -168,6 +175,11 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2028: (MAR, 11),
             2029: (MAR, 1),
             2030: (MAR, 20),
+            2031: (MAR, 9),
+            2032: (MAR, 27),
+            2033: (MAR, 16),
+            2034: (MAR, 5),
+            2035: (MAR, 24),
         }
 
         if self._year in diwali_dates:
@@ -243,6 +255,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
+        self._add_holiday_feb_19("Chhatrapati Shivaji Maharaj Jayanti")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_1("Maharashtra Day")
         self._add_holiday_oct_15("Dussehra")
@@ -256,6 +269,11 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_apr_1("Odisha Day (Utkala Dibasa)")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_15("Maha Vishuva Sankranti / Pana Sankranti")
+
+    # Punjab.
+    def _populate_subdiv_pb_public_holidays(self):
+        self._add_holiday_jan_13("Lohri")
+        self._add_holiday_nov_1("Punjab Day")
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
