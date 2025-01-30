@@ -129,7 +129,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2032-11-02",
             "2033-10-22",
             "2034-11-10",
-            "2035-10-30"
+            "2035-10-30",
         )
         self.assertHolidayName("Diwali", dt)
 
@@ -159,7 +159,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2032-03-27",
             "2033-03-16",
             "2034-03-05",
-            "2035-03-24"
+            "2035-03-24",
         )
         self.assertHolidayName("Holi", dt)
 
@@ -198,7 +198,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2032-08-28",
             "2033-08-17",
             "2034-09-06",
-            "2035-08-26"
+            "2035-08-26",
         )
         self.assertHolidayName("Janmashtami", dt)
 
@@ -237,7 +237,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2032-08-20",
             "2033-08-10",
             "2034-08-29",
-            "2035-08-18"
+            "2035-08-18",
         )
         self.assertHolidayName("Raksha Bandhan", dt)
 
