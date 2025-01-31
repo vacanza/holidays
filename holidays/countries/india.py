@@ -297,6 +297,44 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (OCT, 11),
         }
 
+        # https://www.timeanddate.com/holidays/india/guru-nanak-jayanti
+        guru_nanak_jayanti_dates = {
+            2001: (NOV, 30),
+            2002: (NOV, 19),
+            2003: (NOV, 8),
+            2004: (NOV, 26),
+            2005: (NOV, 15),
+            2006: (NOV, 5),
+            2007: (NOV, 24),
+            2008: (NOV, 13),
+            2009: (NOV, 2),
+            2010: (NOV, 21),
+            2011: (NOV, 10),
+            2012: (NOV, 28),
+            2013: (NOV, 17),
+            2014: (NOV, 6),
+            2015: (NOV, 25),
+            2016: (NOV, 14),
+            2017: (NOV, 4),
+            2018: (NOV, 23),
+            2019: (NOV, 12),
+            2020: (NOV, 30),
+            2021: (NOV, 19),
+            2022: (NOV, 8),
+            2023: (NOV, 27),
+            2024: (NOV, 15),
+            2025: (NOV, 5),
+            2027: (NOV, 14),
+            2028: (NOV, 2),
+            2029: (NOV, 21),
+            2030: (NOV, 10),
+            2031: (NOV, 28),
+            2032: (NOV, 17),
+            2033: (NOV, 6),
+            2034: (NOV, 25),
+            2035: (NOV, 15),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -311,6 +349,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in dussehra_dates:
             self._add_holiday("Dussehra", dussehra_dates[self._year])
+
+        if self._year in guru_nanak_jayanti_dates:
+            self._add_holiday("Guru Nanak Jayanti", guru_nanak_jayanti_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
@@ -350,8 +391,8 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
-        self._add_holiday_mar_22("Bihar Day")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
+        self._add_holiday_mar_22("Bihar Day")
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
@@ -360,13 +401,18 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Gujarat.
     def _populate_subdiv_gj_public_holidays(self):
         self._add_holiday_jan_14("Uttarayan")
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_1("Gujarat Day")
-        self._add_holiday_oct_31("Sardar Patel Jayanti")
+        self._add_holiday_oct_31("Sardar Vallabhbhai Patel Jayanti")
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Haryana Foundation Day")
+
+    # Jammu and Kashmir
+    def _populate_subdiv_jk_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
@@ -386,6 +432,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Madhya Pradesh.
     def _populate_subdiv_mp_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Madhya Pradesh Foundation Day")
 
     # Orissa / Odisha.
@@ -406,6 +453,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_16("Annexation Day")
 
     # Tamil Nadu.
@@ -432,6 +480,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_14("Pohela Boishakh")
         self._add_holiday_apr_15("Pohela Boishakh")
+        self._add_holiday_may_1("May Day")
         self._add_holiday_may_9("Rabindra Jayanti")
 
 
