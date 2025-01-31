@@ -517,7 +517,7 @@ All other default values are highlighted with bold:
      - HALF_DAY
    * - India
      - IN
-     - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+     - States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh), AS (Assam), BR (Bihar), CG (Chhattisgarh), CH (Chandigarh), DH (Dadra and Nagar Haveli and Daman and Diu), DL (Delhi), GA (Goa), GJ (Gujarat), HP (Himachal Pradesh), HR (Haryana), JH (Jharkhand), JK (Jammu and Kashmir), KA (Karnataka), KL (Kerala), LA (Ladakh), LD (Lakshadweep), MH (Maharashtra), ML (Meghalaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan), SK (Sikkim), TN (Tamil Nadu), TR (Tripura), TS (Telangana), UK (Uttarakhand), UP (Uttar Pradesh), WB (West Bengal)
      -
      -
    * - Indonesia

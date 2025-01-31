@@ -70,6 +70,44 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         "DD",  # Daman and Diu.
         "OR",  # Orissa.
     )
+    subdivisions_aliases = {
+        "Andaman and Nicobar Islands": "AN",
+        "Andhra Pradesh": "AP",
+        "Arunachal Pradesh": "AR",
+        "Assam": "AS",
+        "Bihar": "BR",
+        "Chhattisgarh": "CG",
+        "Chandigarh": "CH",
+        "Dadra and Nagar Haveli and Daman and Diu": "DH",
+        "Delhi": "DL",
+        "Goa": "GA",
+        "Gujarat": "GJ",
+        "Himachal Pradesh": "HP",
+        "Haryana": "HR",
+        "Jharkhand": "JH",
+        "Jammu and Kashmir": "JK",
+        "Karnataka": "KA",
+        "Kerala": "KL",
+        "Ladakh": "LA",
+        "Lakshadweep": "LD",
+        "Maharashtra": "MH",
+        "Meghalaya": "ML",
+        "Manipur": "MN",
+        "Madhya Pradesh": "MP",
+        "Mizoram": "MZ",
+        "Nagaland": "NL",
+        "Odisha": "OD",
+        "Punjab": "PB",
+        "Puducherry": "PY",
+        "Rajasthan": "RJ",
+        "Sikkim": "SK",
+        "Tamil Nadu": "TN",
+        "Tripura": "TR",
+        "Telangana": "TS",
+        "Uttarakhand": "UK",
+        "Uttar Pradesh": "UP",
+        "West Bengal": "WB",
+    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
