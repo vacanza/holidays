@@ -1,0 +1,112 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Isle of Man holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.66\n"
+"POT-Creation-Date: 2025-01-31 13:46+0700\n"
+"PO-Revision-Date: 2025-01-31 13:54+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. May Day.
+msgid "May Day"
+msgstr "May Day"
+
+#. Spring Bank Holiday.
+msgid "Spring Bank Holiday"
+msgstr "Spring Bank Holiday"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "Whit Monday"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "Late Summer Bank Holiday"
+
+#. Silver Jubilee of Elizabeth II.
+msgid "Silver Jubilee of Elizabeth II"
+msgstr "Silver Jubilee of Elizabeth II"
+
+#. Wedding of Charles and Diana.
+msgid "Wedding of Charles and Diana"
+msgstr "Wedding of Charles and Diana"
+
+#. Millennium Celebrations.
+msgid "Millennium Celebrations"
+msgstr "Millennium Celebrations"
+
+#. Golden Jubilee of Elizabeth II.
+msgid "Golden Jubilee of Elizabeth II"
+msgstr "Golden Jubilee of Elizabeth II"
+
+#. Wedding of William and Catherine.
+msgid "Wedding of William and Catherine"
+msgstr "Wedding of William and Catherine"
+
+#. Diamond Jubilee of Elizabeth II.
+msgid "Diamond Jubilee of Elizabeth II"
+msgstr "Diamond Jubilee of Elizabeth II"
+
+#. Platinum Jubilee of Elizabeth II.
+msgid "Platinum Jubilee of Elizabeth II"
+msgstr "Platinum Jubilee of Elizabeth II"
+
+#. State Funeral of Queen Elizabeth II.
+msgid "State Funeral of Queen Elizabeth II"
+msgstr "State Funeral of Queen Elizabeth II"
+
+#. Coronation of Charles III.
+msgid "Coronation of Charles III"
+msgstr "Coronation of Charles III"
+
+#. TT Bank Holiday.
+msgid "TT Bank Holiday"
+msgstr "TT Bank Holiday"
+
+#. Tynwald Day.
+msgid "Tynwald Day"
+msgstr "Tynwald Day"

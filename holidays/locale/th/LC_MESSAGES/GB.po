@@ -1,0 +1,126 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# United Kingdom holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.66\n"
+"POT-Creation-Date: 2025-01-29 14:18+0700\n"
+"PO-Revision-Date: 2025-01-31 13:54+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "ชดเชย%s"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. May Day.
+msgid "May Day"
+msgstr "วันเมย์เดย์"
+
+#. Spring Bank Holiday.
+msgid "Spring Bank Holiday"
+msgstr "วันหยุดฤดูใบไม้ผลิของธนาคาร"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "วันเปิดกล่องของขวัญ"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Late Summer Bank Holiday.
+msgid "Late Summer Bank Holiday"
+msgstr "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "วันนักบุญแพทริก"
+
+#. Battle of the Boyne.
+msgid "Battle of the Boyne"
+msgstr "วันรำลึกยุทธการแม่น้ำบอยน์"
+
+#. New Year Holiday.
+msgid "New Year Holiday"
+msgstr "หยุดวันขึ้นปีใหม่"
+
+#. Summer Bank Holiday.
+msgid "Summer Bank Holiday"
+msgstr "วันหยุดฤดูร้อนของธนาคาร"
+
+#. Saint Andrew's Day.
+msgid "Saint Andrew's Day"
+msgstr "วันนักบุญแอนดรูว์"
+
+#. Silver Jubilee of Elizabeth II.
+msgid "Silver Jubilee of Elizabeth II"
+msgstr "พระราชพิธีฉลองสิริราชสมบัติครบ 25 ปี สมเด็จพระราชินีนาถ"
+
+#. Wedding of Charles and Diana.
+msgid "Wedding of Charles and Diana"
+msgstr ""
+"พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ "
+"เจ้าชายแห่งเวลส์"
+
+#. Millennium Celebrations.
+msgid "Millennium Celebrations"
+msgstr "วันเฉลิมฉลองสหัสวรรษ"
+
+#. Golden Jubilee of Elizabeth II.
+msgid "Golden Jubilee of Elizabeth II"
+msgstr "พระราชพิธีฉลองสิริราชสมบัติครบ 50 ปี สมเด็จพระราชินีนาถ"
+
+#. Wedding of William and Catherine.
+msgid "Wedding of William and Catherine"
+msgstr "พระราชพิธีเสกสมรสระหว่างเจ้าชายวิลเลียมกับแคเธอริน มิดเดิลตัน"
+
+#. Diamond Jubilee of Elizabeth II.
+msgid "Diamond Jubilee of Elizabeth II"
+msgstr "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี สมเด็จพระราชินีนาถ"
+
+#. Platinum Jubilee of Elizabeth II.
+msgid "Platinum Jubilee of Elizabeth II"
+msgstr "พระราชพิธีฉลองสิริราชสมบัติครบ 70 ปี สมเด็จพระราชินีนาถ"
+
+#. State Funeral of Queen Elizabeth II.
+msgid "State Funeral of Queen Elizabeth II"
+msgstr "พระราชพิธีพระบรมศพของสมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
+
+#. Coronation of Charles III.
+msgid "Coronation of Charles III"
+msgstr "พระราชพิธีราชาภิเษกของสมเด็จพระเจ้าชาลส์ที่ 3 แห่งสหราชอาณาจักร"
