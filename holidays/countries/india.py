@@ -258,6 +258,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (AUG, 26),
         }
 
+        # https://www.timeanddate.com/holidays/india/dussehra
+        dussehra_dates = {
+            2001: (OCT, 26),
+            2002: (OCT, 15),
+            2003: (OCT, 5),
+            2004: (OCT, 22),
+            2005: (OCT, 12),
+            2006: (OCT, 2),
+            2007: (OCT, 21),
+            2008: (OCT, 9),
+            2009: (SEP, 28),
+            2010: (OCT, 17),
+            2011: (OCT, 6),
+            2012: (OCT, 24),
+            2013: (OCT, 13),
+            2014: (OCT, 3),
+            2015: (OCT, 22),
+            2016: (OCT, 11),
+            2017: (SEP, 30),
+            2018: (OCT, 19),
+            2019: (OCT, 8),
+            2020: (OCT, 25),
+            2021: (OCT, 15),
+            2022: (OCT, 5),
+            2023: (OCT, 24),
+            2024: (OCT, 12),
+            2025: (OCT, 2),
+            2026: (OCT, 20),
+            2027: (OCT, 9),
+            2028: (SEP, 27),
+            2029: (OCT, 16),
+            2030: (OCT, 6),
+            2031: (OCT, 25),
+            2032: (OCT, 14),
+            2033: (OCT, 3),
+            2034: (OCT, 22),
+            2035: (OCT, 11),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -269,6 +308,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in janmashtami_dates:
             self._add_holiday("Janmashtami", janmashtami_dates[self._year])
+
+        if self._year in dussehra_dates:
+            self._add_holiday("Dussehra", dussehra_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
