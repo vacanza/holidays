@@ -175,7 +175,7 @@ class SriLanka(
             # Maha Sivarathri Day.
             self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_date)
 
-        # Deepavali was considered a workday in 2003.
+        # Deepavali was a working day in 2003.
         if self._year >= 2004:
             # Deepavali Festival Day.
             self._add_diwali(tr("දීපවාලි උත්සව දිනය"))
@@ -231,7 +231,7 @@ class SriLanka(
         # Unduvap Full Moon Poya Day.
         self._add_unduvap_poya(tr("උඳුවප් පුර පසළොස්වක පෝය දිනය"))
 
-        # Muslim Holidays.
+        # Islamic Holidays.
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("ඊදුල් ෆීතර්"))
@@ -385,23 +385,20 @@ class SriLankaStaticHolidays:
     - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
     """
 
-    # Adhi Vesak Full Mon Poya Day.
-    adhi_vesak_poya_name = tr("අධි වෙසක් පුර පසළොස්වක පෝය දිනය")
-
-    # Adhi Poson Full Moon Poya Day.
-    adhi_poson_poya_name = tr("අධි පොසොන් පුර පසළොස්වක පෝය දිනය")
+    # Adhi Binara Full Moon Poya Day.
+    adhi_binara_poya_name = tr("අධි බිනර පුර පසළොස්වක පෝය දිනය")
 
     # Adhi Esala Full Moon Poya Day.
     adhi_esala_poya_name = tr("අධි ඇසල පුර පසළොස්වක පෝය දිනය")
 
-    # Adhi Binara Full Moon Poya Day.
-    adhi_binara_poya_name = tr("අධි බිනර පුර පසළොස්වක පෝය දිනය")
+    # Adhi Poson Full Moon Poya Day.
+    adhi_poson_poya_name = tr("අධි පොසොන් පුර පසළොස්වක පෝය දිනය")
 
     # Adhi Vap Full Moon Poya Day.
     adhi_vap_poya_name = tr("අධි වප් පුර පසළොස්වක පෝය දිනය")
 
-    # Special Bank Holiday.
-    special_bank_holiday_name = tr("විශේෂ බැංකු නිවාඩු දිනය")
+    # Adhi Vesak Full Mon Poya Day.
+    adhi_vesak_poya_name = tr("අධි වෙසක් පුර පසළොස්වක පෝය දිනය")
 
     # Half-Day Special Bank Holiday.
     half_day_special_bank_holiday_name = tr("දින භාගයක විශේෂ බැංකු නිවාඩු දිනය")
@@ -409,41 +406,12 @@ class SriLankaStaticHolidays:
     # Public Sector Holiday.
     public_sector_holiday_name = tr("රාජ්ය අංශයේ නිවාඩු දිනය")
 
+    # Special Bank Holiday.
+    special_bank_holiday_name = tr("විශේෂ බැංකු නිවාඩු දිනය")
+
     # Special Public Holiday.
     special_public_holiday_name = tr("විශේෂ රජයේ නිවාඩු දිනය")
 
-    special_public_holidays = {
-        2004: (JUL, 31, adhi_esala_poya_name),
-        2007: (MAY, 31, adhi_poson_poya_name),
-        2010: (APR, 28, adhi_vesak_poya_name),
-        # 2011, MAY 2 confirmed as not getting upgrade to Special Public Holiday.
-        2012: (
-            (MAY, 7, special_public_holiday_name),
-            (AUG, 31, adhi_binara_poya_name),
-        ),
-        2013: (APR, 15, special_public_holiday_name),
-        2015: (JUL, 1, adhi_esala_poya_name),
-        2016: (APR, 15, special_public_holiday_name),
-        2018: (MAY, 29, adhi_poson_poya_name),
-        2019: (MAY, 20, special_public_holiday_name),
-        2020: (
-            (MAR, 16, special_public_holiday_name),
-            (MAR, 17, special_public_holiday_name),
-            (MAR, 18, special_public_holiday_name),
-            (MAR, 19, special_public_holiday_name),
-            (OCT, 1, adhi_vap_poya_name),
-        ),
-        2022: (
-            (APR, 11, special_public_holiday_name),
-            (APR, 12, special_public_holiday_name),
-            (MAY, 2, special_public_holiday_name),
-        ),
-        2023: (JUL, 3, adhi_esala_poya_name),
-        2024: (
-            (APR, 15, special_public_holiday_name),
-            (SEP, 29, special_public_holiday_name),
-        ),
-    }
     special_bank_holidays = {
         2005: (
             (MAY, 2, special_bank_holiday_name),
@@ -493,6 +461,7 @@ class SriLankaStaticHolidays:
         2023: (JAN, 16, special_bank_holiday_name),
         2025: (APR, 15, special_bank_holiday_name),
     }
+
     special_government_holidays = {
         2020: (JUN, 4, public_sector_holiday_name),
         2022: (
@@ -507,5 +476,40 @@ class SriLankaStaticHolidays:
             (JUL, 29, public_sector_holiday_name),
         ),
     }
-    # Deepavali Festival Day.
-    special_workday_holidays = {2003: (OCT, 24, tr("දීපවාලි උත්සව දිනය"))}
+
+    special_public_holidays = {
+        2004: (JUL, 31, adhi_esala_poya_name),
+        2007: (MAY, 31, adhi_poson_poya_name),
+        2010: (APR, 28, adhi_vesak_poya_name),
+        # 2011, MAY 2 confirmed as not getting upgrade to Special Public Holiday.
+        2012: (
+            (MAY, 7, special_public_holiday_name),
+            (AUG, 31, adhi_binara_poya_name),
+        ),
+        2013: (APR, 15, special_public_holiday_name),
+        2015: (JUL, 1, adhi_esala_poya_name),
+        2016: (APR, 15, special_public_holiday_name),
+        2018: (MAY, 29, adhi_poson_poya_name),
+        2019: (MAY, 20, special_public_holiday_name),
+        2020: (
+            (MAR, 16, special_public_holiday_name),
+            (MAR, 17, special_public_holiday_name),
+            (MAR, 18, special_public_holiday_name),
+            (MAR, 19, special_public_holiday_name),
+            (OCT, 1, adhi_vap_poya_name),
+        ),
+        2022: (
+            (APR, 11, special_public_holiday_name),
+            (APR, 12, special_public_holiday_name),
+            (MAY, 2, special_public_holiday_name),
+        ),
+        2023: (JUL, 3, adhi_esala_poya_name),
+        2024: (
+            (APR, 15, special_public_holiday_name),
+            (SEP, 29, special_public_holiday_name),
+        ),
+    }
+
+    special_workday_holidays = {
+        2003: (OCT, 24, tr("දීපවාලි උත්සව දිනය")),  # Deepavali Festival Day.
+    }
