@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+
 class ICalExporter:
     def __init__(self, holidays_object, language="en", return_bytes=False):
         """Initialize iCalendar exporter
@@ -52,7 +53,7 @@ class ICalExporter:
         """
         yield "BEGIN:VCALENDAR"
         yield "VERSION:2.0"
-        yield "PRODID:-//holidays Framework//NONSGML v1.9//{self.language.upper()}"
+        yield f"PRODID:-//holidays Framework//NONSGML v1.9//{self.language.upper()}"
 
         for date, name in self.holidays.items():
             yield from self.generate_event(date, name)
