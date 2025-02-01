@@ -543,7 +543,7 @@ All other default values are highlighted with bold:
    * - Israel
      - IL
      -
-     - en_US, **he**, uk
+     - en_US, **he**, th, uk
      - OPTIONAL, SCHOOL
    * - Italy
      - IT
