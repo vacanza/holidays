@@ -903,8 +903,8 @@ All other default values are highlighted with bold:
    * - United Arab Emirates
      - AE
      -
-     - **ar**, en_US
-     -
+     - **ar**, en_US, th
+     - GOVERNMENT, OPTIONAL
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
