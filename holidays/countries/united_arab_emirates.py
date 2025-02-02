@@ -46,8 +46,9 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays
     2021: https://www.wam.ae/en/details/1395302957696
     2022: https://www.khaleejtimes.com/ramadan/eid-al-fitr-holiday-announced-in-uae-3
-    2023: https://www.timeoutdubai.com/news/uae-public-holidays-in-2023
-          https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector
+    2023:
+    - https://www.timeoutdubai.com/news/uae-public-holidays-in-2023
+    - https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector
     2024: https://www.timeoutdubai.com/news/uae-public-holidays-in-2024
     2025: https://www.timeoutdubai.com/news/uae-public-holidays-2025
     """
@@ -190,8 +191,9 @@ class UnitedArabEmiratesStaticHolidays:
     2019: https://www.mohre.gov.ae/en/media-centre/news/30/1/2019/عطلة-رسمية-يوم-زيارة-البابا-للمشاركين-في-فعالياته-من-القطاع-الخاص.aspx?DisableResponsive=1
     2020: https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/
     2021: https://www.timeoutdubai.com/news/466278-eid-al-fitr-holiday-2021-dubai
-    2022: https://gulfnews.com/uae/eid-al-fitr-2022-holidays-for-private-and-public-sectors-in-uae-explained-1.1650951429432
-          https://www.arabianbusiness.com/gcc/uae/uae-suspends-work-for-three-days-marks-40-days-of-mourning-over-sheikh-khalifas-death
+    2022:
+    - https://gulfnews.com/uae/eid-al-fitr-2022-holidays-for-private-and-public-sectors-in-uae-explained-1.1650951429432
+    - https://www.arabianbusiness.com/gcc/uae/uae-suspends-work-for-three-days-marks-40-days-of-mourning-over-sheikh-khalifas-death
     2023: https://hrme.economictimes.indiatimes.com/news/industry/uae-cabinet-announces-national-day-holiday-for-federal-government-from-2-to-4-december/105455071
     2024: https://www.timeoutdubai.com/news/eid-al-fitr-2024-expected-dates-ramadan
     2025: https://www.timeoutdubai.com/news/uae-public-holidays-2025
