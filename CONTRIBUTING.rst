@@ -52,7 +52,7 @@ If you want to retrieve uncovered lines too:
 
     $ make coverage
 
-You can specific tests using ``pytest`` command:
+You can run specific tests using the ``pytest`` command:
 
 .. code-block:: shell
 
