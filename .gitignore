@@ -17,7 +17,6 @@ dist/
 docs/build
 docs/source/_autosummary
 holidays/locale/pot/*.pot
-!holidays/locale/pot/UA.pot
 MANIFEST
 Pipfile
 sbom.json

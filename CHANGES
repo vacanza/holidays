@@ -1,3 +1,28 @@
+Version 0.66
+============
+
+Released February 3, 2025
+
+- Add Sri Lanka holidays (#2228 by @Prateekshit73, @arkid15r, @KJhellico, @PPsyrius)
+- Fix typo in CONTRIBUTING.rst (#2264 by @KJhellico)
+- Update Czechia holidays (#2248 by @KJhellico)
+- Update Germany holidays: add Corpus Christi in CATHOLIC category (#2253 by @KJhellico)
+- Update Iceland holidays: add HALF_DAY holidays (#2249 by @KJhellico)
+- Update Iran holidays (#2234 by @KJhellico)
+- Update PR exclusion logic (#2233 by @arkid15r)
+- Update Slovakia holidays: Constitution Day is working day since 2024 (#2235 by @KJhellico, @arkid15r)
+- Update Slovenia holidays (#2237 by @KJhellico)
+- Update Sweden holidays: fix All Saints' Day (#2252 by @KJhellico)
+- Update Thailand holidays: refactor Royal Ploughing Ceremony code (#2247 by @PPsyrius)
+- Update United Arab Emirates holidays: add `th` l10n, exact 2017-2025 entries (#2263 by @PPsyrius)
+- Update Vatican City holidays: add missing holidays, l10n support (#2250 by @PPsyrius)
+- Update automatic snapshots update workflow (#2254 by @KJhellico)
+- Update some holidays Ukrainian translations (#2265 by @KJhellico)
+- Add Israel holidays localization: th (#2262 by @PPsyrius)
+- Add West Frisian language (#2246 by @waarissyb, @arkid15r)
+- Pin CI/CD Ubuntu version (#2245 by @arkid15r)
+- Remove .po files from distribution bundles (#2243 by @KJhellico)
+
 Version 0.65
 ============
 
