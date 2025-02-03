@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.57\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-08-03 18:21+0300\n"
-"PO-Revision-Date: 2024-09-07 17:23+0300\n"
+"PO-Revision-Date: 2025-01-21 15:34+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -25,16 +25,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. %s (estimated).
 #, c-format
 msgid "(تخمین زده) %s"
 msgstr "%s (estimated)"
 
-#. Persian New Year.
-msgid "نوروز"
-msgstr "Persian New Year"
+#. Nowruz.
+msgid "جشن نوروز"
+msgstr "Nowruz"
+
+#. Nowruz Holiday.
+msgid "عیدنوروز"
+msgstr "Nowruz Holiday"
 
 #. Islamic Republic Day.
 msgid "روز جمهوری اسلامی"
@@ -44,82 +48,90 @@ msgstr "Islamic Republic Day"
 msgid "روز طبیعت"
 msgstr "Nature's Day"
 
-#. Death of Khomeini.
-msgid "درگذشت سید روح‌الله خمینی"
-msgstr "Death of Khomeini"
+#. Death of Imam Khomeini.
+msgid "رحلت حضرت امام خمینی"
+msgstr "Death of Imam Khomeini"
 
-#. Khordad National Uprising.
-msgid "تظاهرات ۱۵ خرداد"
-msgstr "Khordad National Uprising"
+#. 15 Khordad Uprising.
+msgid "قیام 15 خرداد"
+msgstr "15 Khordad Uprising"
 
 #. Islamic Revolution Day.
-msgid "پیروزی انقلاب ۵۷"
+msgid "پیروزی انقلاب اسلامی"
 msgstr "Islamic Revolution Day"
 
 #. Iranian Oil Industry Nationalization Day.
-msgid "ملی‌شدن صنعت نفت"
+msgid "روز ملی شدن صنعت نفت ایران"
 msgstr "Iranian Oil Industry Nationalization Day"
 
+#. Last Day of Year.
+msgid "آخرین روز سال"
+msgstr "Last Day of Year"
+
 #. Tasua.
-msgid "تاسوعا"
+msgid "تاسوعای حسینی"
 msgstr "Tasua"
 
 #. Ashura.
-msgid "کشته‌شدن حسین بن علی، عاشورا"
+msgid "عاشورای حسینی"
 msgstr "Ashura"
 
 #. Arbaeen.
-msgid "چهلم حسین بن علی اربعین"
+msgid "اربعین حسینی"
 msgstr "Arbaeen"
 
-#. Demise of Prophet Muhammad and Hasan ibn Ali.
-msgid "کشته‌شدن حسن مجتبی و درگذشت محمد"
-msgstr "Demise of Prophet Muhammad and Hasan ibn Ali"
+#. Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali.
+msgid "رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام"
+msgstr "Death of Prophet Muhammad and Martyrdom of Hasan ibn Ali"
 
 #. Martyrdom of Ali al-Rida.
-msgid "کشته‌شدن علی بن موسی الرضا"
+msgid "شهادت امام رضا علیه السلام"
 msgstr "Martyrdom of Ali al-Rida"
 
 #. Martyrdom of Hasan al-Askari.
-msgid "کشته‌شدن حسن عسکری"
+msgid "شهادت امام حسن عسکری علیه السلام"
 msgstr "Martyrdom of Hasan al-Askari"
 
-#. Birthday of Muhammad and Ja'far al-Sadiq.
-msgid "زادروز محمد و جعفر صادق"
-msgstr "Birthday of Muhammad and Ja'far al-Sadiq"
+#. Birthday of Muhammad and Imam Ja'far al-Sadiq.
+msgid "میلاد رسول اکرم و امام جعفر صادق علیه السلام"
+msgstr "Birthday of Muhammad and Imam Ja'far al-Sadiq"
 
 #. Martyrdom of Fatima.
-msgid "کشته‌شدن فاطمه زهرا"
+msgid "شهادت حضرت فاطمه زهرا سلام الله علیها"
 msgstr "Martyrdom of Fatima"
 
-#. Birthday of Ali.
-msgid "زادروز علی بن ابی‌طالب"
-msgstr "Birthday of Ali"
+#. Birthday of Imam Ali.
+msgid "ولادت امام علی علیه السلام و روز پدر"
+msgstr "Birthday of Imam Ali"
 
 #. Isra' and Mi'raj.
-msgid "مبعث"
+msgid "مبعث رسول اکرم (ص)"
 msgstr "Isra' and Mi'raj"
 
 #. Birthday of Mahdi.
-msgid "زادروز حجت بن الحسن"
+msgid "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان"
 msgstr "Birthday of Mahdi"
 
-#. Martyrdom of Ali.
-msgid "کشته‌شدن علی بن ابی‌طالب"
-msgstr "Martyrdom of Ali"
+#. Martyrdom of Imam Ali.
+msgid "شهادت حضرت علی علیه السلام"
+msgstr "Martyrdom of Imam Ali"
 
 #. Eid al-Fitr.
-msgid "عید فطر"
+msgid "عید سعید فطر"
 msgstr "Eid al-Fitr"
 
-#. Martyrdom of Ja'far al-Sadiq.
-msgid "کشته‌شدن جعفر صادق"
-msgstr "Martyrdom of Ja'far al-Sadiq"
+#. Eid al-Fitr Holiday.
+msgid "تعطیل به مناسبت عید سعید فطر"
+msgstr "Eid al-Fitr Holiday"
+
+#. Martyrdom of Imam Ja'far al-Sadiq.
+msgid "شهادت امام جعفر صادق علیه السلام"
+msgstr "Martyrdom of Imam Ja'far al-Sadiq"
 
 #. Eid al-Adha.
-msgid "عید قربان"
+msgid "عید سعید قربان"
 msgstr "Eid al-Adha"
 
 #. Eid al-Ghadeer.
-msgid "عید غدیر"
+msgid "عید سعید غدیر خم"
 msgstr "Eid al-Ghadeer"

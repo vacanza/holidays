@@ -1,0 +1,104 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Israel holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.66\n"
+"POT-Creation-Date: 2025-02-01 20:46+0700\n"
+"PO-Revision-Date: 2025-02-01 21:57+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Rosh Hashanah (New Year).
+msgid "ראש השנה"
+msgstr "เทศกาลรอช ฮาชานาห์ (วันปีใหม่ยิว)"
+
+#. Yom Kippur (Day of Atonement).
+msgid "יום כיפור"
+msgstr "วันยม คิปปูร์"
+
+#. Sukkot (Feast of Tabernacles).
+msgid "סוכות"
+msgstr "วันสุคคต"
+
+#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+msgid "חול המועד סוכות"
+msgstr "เทศกาลสุคคต"
+
+#. Simchat Torah / Shemini Atzeret.
+msgid "שמחת תורה/שמיני עצרת"
+msgstr "วันซิมหัต โทราห์ / วันเชมินี อัตเซเรต"
+
+#. Pesach (Passover).
+msgid "פסח"
+msgstr "วันเพสสะห์"
+
+#. Chol HaMoed Pesach (Passover holiday).
+msgid "חול המועד פסח"
+msgstr "เทศกาลเพสสะห์"
+
+#. Shvi'i shel Pesach (Seventh day of Passover)
+msgid "שביעי של פסח"
+msgstr "วันเพสสะห์วันที่เจ็ด"
+
+#. Yom Ha-Atzmaut (Independence Day).
+msgid "יום העצמאות"
+msgstr "วันชาติอิสราเอล"
+
+#. Shavuot.
+msgid "שבועות"
+msgstr "วันชาวูโอท"
+
+#. Sigd.
+msgid "סיגד"
+msgstr "เทศกาลซิกด์"
+
+#. Purim.
+msgid "פורים"
+msgstr "เทศกาลปูริม"
+
+#. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
+msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
+msgstr "วันรำลึกถึงทหารผู้สละชีพและเหยื่อการก่อการร้าย"
+
+#. Yom Yerushalayim (Jerusalem Day).
+msgid "יום ירושלים"
+msgstr "วันเยรูซาเล็ม"
+
+#. Tisha B'Av (Tisha B'Av, fast).
+msgid "תשעה באב"
+msgstr "วันทิชอา เบอัฟ"
+
+#. Hanukkah.
+msgid "חנוכה"
+msgstr "เทศกาลฮานุกกะห์"
+
+#. Ta`anit Ester (Fast of Esther).
+msgid "תענית אסתר"
+msgstr "วันทาอานิต เอสเธอร์"
+
+#. Lag Ba'omer (Lag BaOmer).
+msgid "ל\"ג בעומר"
+msgstr "วันแล็ก บาโอเมอร์"
+
+#. %s (observed).
+#, c-format
+msgid "(נצפה) %s"
+msgstr "ชดเชย%s"

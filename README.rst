@@ -146,7 +146,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 156 country codes. The standard way to refer to a country
+We currently support 157 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -514,7 +514,7 @@ All other default values are highlighted with bold:
      - IS
      -
      - en_US, **is**, uk
-     -
+     - HALF_DAY
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
@@ -528,7 +528,7 @@ All other default values are highlighted with bold:
    * - Iran
      - IR
      -
-     - en_US, **fa**
+     - en_US, **fa_IR**
      -
    * - Ireland
      - IE
@@ -543,7 +543,7 @@ All other default values are highlighted with bold:
    * - Israel
      - IL
      -
-     - en_US, **he**, uk
+     - en_US, **he**, th, uk
      - OPTIONAL, SCHOOL
    * - Italy
      - IT
@@ -693,7 +693,7 @@ All other default values are highlighted with bold:
    * - Netherlands
      - NL
      -
-     - en_US, **nl**, uk
+     - en_US, fy, **nl**, uk
      - OPTIONAL
    * - New Zealand
      - NZ
@@ -829,7 +829,7 @@ All other default values are highlighted with bold:
      - SI
      -
      - en_US, **sl**, uk
-     -
+     - WORKDAY
    * - South Africa
      - ZA
      -
@@ -845,6 +845,11 @@ All other default values are highlighted with bold:
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
      - en_US, **es**, uk
      -
+   * - Sri Lanka
+     - LK
+     -
+     - en_US, **si_LK**, ta_LK
+     - BANK, GOVERNMENT, WORKDAY
    * - Sweden
      - SE
      -
@@ -898,8 +903,8 @@ All other default values are highlighted with bold:
    * - United Arab Emirates
      - AE
      -
-     - **ar**, en_US
-     -
+     - **ar**, en_US, th
+     - GOVERNMENT, OPTIONAL
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
@@ -938,7 +943,7 @@ All other default values are highlighted with bold:
    * - Vatican City
      - VA
      -
-     -
+     - en_US, **it**, th
      -
    * - Venezuela
      - VE

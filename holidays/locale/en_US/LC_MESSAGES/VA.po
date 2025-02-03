@@ -1,0 +1,143 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Vatican City holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.66\n"
+"POT-Creation-Date: 2025-01-27 23:00+0700\n"
+"PO-Revision-Date: 2025-01-27 23:03+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Solemnity of Mary, Mother of God.
+msgid "Solennità di Maria Santissima Madre di Dio"
+msgstr "Solemnity of Mary, Mother of God"
+
+#. Epiphany.
+msgid "Epifania del Signore"
+msgstr "Epiphany"
+
+#. Anniversary of the Foundation of Vatican City.
+msgid "Anniversario della istituzione dello Stato della Città del Vaticano"
+msgstr "Anniversary of the Foundation of Vatican City"
+
+#. Anniversary of the Election of the Holy Father.
+msgid "Anniversario dell'Elezione del Santo Padre"
+msgstr "Anniversary of the Election of the Holy Father"
+
+#. Name Day of the Holy Father.
+msgid "Onomastico del Santo Padre"
+msgstr "Name Day of the Holy Father"
+
+#. Saint Joseph's Day.
+msgid "San Giuseppe"
+msgstr "Saint Joseph's Day"
+
+#. Maundy Thursday.
+msgid "Giovedì Santo"
+msgstr "Maundy Thursday"
+
+#. Good Friday.
+msgid "Venerdì Santo"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+msgid "Sabato Santo"
+msgstr "Holy Saturday"
+
+#. Easter Sunday.
+msgid "Pasqua di Resurrezione"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+msgid "Lunedì dell'Angelo"
+msgstr "Easter Monday"
+
+#. Easter Tuesday.
+msgid "Martedì in Albis"
+msgstr "Easter Tuesday"
+
+#. Saint Joseph the Worker.
+msgid "San Giuseppe Artigiano"
+msgstr "Saint Joseph the Worker's Day"
+
+#. Solemnity of Pentecost.
+msgid "Solennità della Pentecoste"
+msgstr "Solemnity of Pentecost"
+
+#. Solemnity of Holy Trinity.
+msgid "Solennità della Santissima Trinità"
+msgstr "Solemnity of Holy Trinity"
+
+#. Ascension Day.
+msgid "Ascensione del Signore"
+msgstr "Ascension Day"
+
+#. Corpus Domini.
+msgid "Corpus Domini"
+msgstr "Corpus Domini"
+
+#. Saints Peter and Paul's Day.
+msgid "Santi Pietro e Paolo"
+msgstr "Saints Peter and Paul's Day"
+
+#. Day Before Assumption of Mary.
+msgid "Vigilia dell'Assunzione di Maria Santissima"
+msgstr "Day Before Assumption of Mary"
+
+#. Assumption of Mary Day.
+msgid "Assunzione di Maria Santissima"
+msgstr "Assumption of Mary Day"
+
+#. Day After Assumption of Mary.
+msgid "Giorno Successivo all'Assunzione di Maria Santissima"
+msgstr "Day After Assumption of Mary"
+
+#. All Saints' Day.
+msgid "Tutti i Santi"
+msgstr "All Saints' Day"
+
+#. All Souls' Day.
+msgid "Tutti i Fedeli Defunti"
+msgstr "All Souls' Day"
+
+#. Immaculate Conception.
+msgid "Immacolata Concezione"
+msgstr "Immaculate Conception"
+
+#. Christmas Eve.
+msgid "Vigilia di Natale"
+msgstr "Christmas Eve"
+
+#. Christmas Day.
+msgid "Natale"
+msgstr "Christmas Day"
+
+#. Saint Stephen's Day.
+msgid "Santo Stefano"
+msgstr "Saint Stephen's Day"
+
+#. Saint John the Evangelist's Day.
+msgid "San Giovanni"
+msgstr "Saint John the Evangelist's Day"
+
+#. Last Day of the Year.
+msgid "Ultimo giorno dell'anno"
+msgstr "Last Day of the Year"
