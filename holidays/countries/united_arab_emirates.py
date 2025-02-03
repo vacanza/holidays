@@ -205,7 +205,7 @@ class UnitedArabEmiratesStaticHolidays:
     # Eid al-Fitr Holiday.
     eid_al_fitr_holiday = tr("عطلة عيد الفطر")
     # Death of Sheikh Khalifa bin Zayed Al Nahyan.
-    shiekh_khalifa_bin_zayed_death = tr("وفاة الشيخ خليفة بن زايد آل نهيان")
+    sheikh_khalifa_bin_zayed_death = tr("وفاة الشيخ خليفة بن زايد آل نهيان")
 
     special_government_holidays = {
         2022: (
@@ -218,7 +218,7 @@ class UnitedArabEmiratesStaticHolidays:
         2023: (DEC, 4, tr("اليوم الوطني")),
     }
     special_optional_holidays = {
-        # Pope Francis's Visit Day.
+        # Pope Francis' Visit Day.
         2019: (FEB, 5, tr("يوم زيارة البابا فرنسيس")),
     }
     special_public_holidays = {
@@ -226,9 +226,9 @@ class UnitedArabEmiratesStaticHolidays:
         2021: (MAY, 11, eid_al_fitr_holiday),
         2022: (
             (APR, 30, eid_al_fitr_holiday),
-            (MAY, 14, shiekh_khalifa_bin_zayed_death),
-            (MAY, 15, shiekh_khalifa_bin_zayed_death),
-            (MAY, 16, shiekh_khalifa_bin_zayed_death),
+            (MAY, 14, sheikh_khalifa_bin_zayed_death),
+            (MAY, 15, sheikh_khalifa_bin_zayed_death),
+            (MAY, 16, sheikh_khalifa_bin_zayed_death),
         ),
         2024: (APR, 8, eid_al_fitr_holiday),
     }

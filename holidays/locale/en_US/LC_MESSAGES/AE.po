@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2025-02-02 22:36+0700\n"
+"PO-Revision-Date: 2025-02-03 10:17+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -79,6 +79,6 @@ msgstr "Prophet's Birthday"
 msgid "وفاة الشيخ خليفة بن زايد آل نهيان"
 msgstr "Death of Sheikh Khalifa bin Zayed Al Nahyan"
 
-#. Pope Francis's Visit Day.
+#. Pope Francis' Visit Day.
 msgid "يوم زيارة البابا فرنسيس"
-msgstr "Pope Francis's Visit Day"
+msgstr "Pope Francis' Visit Day"
