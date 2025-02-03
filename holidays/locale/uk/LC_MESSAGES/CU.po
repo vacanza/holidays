@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-03-04 14:20+0200\n"
-"PO-Revision-Date: 2023-03-05 13:11+0200\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -38,7 +38,7 @@ msgstr "Тріумф революції"
 
 #. Victory Day.
 msgid "Día de la Victoria"
-msgstr "День перемоги"
+msgstr "День Перемоги"
 
 #. Good Friday.
 msgid "Viernes Santo"

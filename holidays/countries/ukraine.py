@@ -98,7 +98,7 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 else tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
                 if self._year >= 2016
                 # Victory Day.
-                else tr("День перемоги")
+                else tr("День Перемоги")
             )
             dts_observed.add(
                 self._add_world_war_two_victory_day(name, is_western=(self._year >= 2024))
