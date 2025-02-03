@@ -468,6 +468,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
         self._add_holiday_apr_15("Bihu (Assamese New Year)")
+        self._add_holiday_dec_2("Asssam Day")
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
@@ -478,12 +479,20 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     def _populate_subdiv_cg_public_holidays(self):
         self._add_holiday_nov_1("Chhattisgarh Foundation Day")
 
+    # Goa.
+    def _populate_subdiv_ga_public_holidays(self):
+        self._add_holiday_dec_19("Goa Liberation Day")
+
     # Gujarat.
     def _populate_subdiv_gj_public_holidays(self):
         self._add_holiday_jan_14("Uttarayan")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_1("Gujarat Day")
         self._add_holiday_oct_31("Sardar Vallabhbhai Patel Jayanti")
+
+    # Himachal Pradesh.
+    def _populate_subdiv_hp_public_holidays(self):
+        self._add_holiday_apr_15("Haryana Day")
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):
@@ -503,6 +512,10 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Kerala Foundation Day")
 
+    # Mizoram.
+    def _populate_subdiv_mz_public_holidays(self):
+        self._add_holiday_feb_20("Mizoram State Day")
+
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
         self._add_holiday_feb_19("Chhatrapati Shivaji Maharaj Jayanti")
@@ -515,6 +528,10 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Madhya Pradesh Foundation Day")
 
+    # Nagaland.
+    def _populate_subdiv_nl_public_holidays(self):
+        self._add_holiday_dec_1("Nagaland State Inauguration Day")
+
     # Orissa / Odisha.
     def _populate_subdiv_od_public_holidays(self):
         self._add_holiday_apr_1("Odisha Day (Utkala Dibasa)")
@@ -526,6 +543,11 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_holiday_jan_13("Lohri")
         self._add_holiday_nov_1("Punjab Day")
 
+    # Puducherry.
+    def _populate_subdiv_py_public_holidays(self):
+        self._add_holiday_aug_16("Puducherry De Jure Transfer Day")
+        self._add_holiday_nov_1("Puducherry Liberation  Day")
+
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
         self._add_holiday_mar_30("Rajasthan Day")
@@ -534,7 +556,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Sikkim.
     def _populate_subdiv_sk_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
-        self._add_holiday_may_16("Annexation Day")
+        self._add_holiday_may_16("Sikkim State Day")
 
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
@@ -545,6 +567,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
         self._add_holiday_apr_6("Eid al-Fitr")
+        self._add_holiday_jun_2("Telangana Formation Day")
         self._add_holiday_oct_6("Bathukamma Festival")
 
     # Uttarakhand.
