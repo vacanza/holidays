@@ -12,7 +12,7 @@
 
 import warnings
 
-from holidays.calendars.gregorian import MAR, OCT, NOV, AUG, SEP
+from holidays.calendars.gregorian import MAR, APR, OCT, NOV, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -373,6 +373,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (NOV, 15),
         }
 
+        # https://www.timeanddate.com/holidays/india/mahavir-jayanti
+        mahavir_jayanti_dates = {
+            2001: (APR, 6),
+            2002: (APR, 25),
+            2003: (APR, 15),
+            2004: (APR, 3),
+            2005: (APR, 22),
+            2006: (APR, 11),
+            2007: (MAR, 31),
+            2008: (APR, 18),
+            2009: (APR, 7),
+            2010: (APR, 28),
+            2011: (APR, 16),
+            2012: (APR, 5),
+            2013: (APR, 24),
+            2014: (APR, 13),
+            2015: (APR, 2),
+            2016: (APR, 20),
+            2017: (APR, 9),
+            2018: (MAR, 29),
+            2019: (APR, 17),
+            2020: (APR, 6),
+            2021: (APR, 25),
+            2022: (APR, 14),
+            2023: (APR, 4),
+            2024: (APR, 21),
+            2025: (APR, 10),
+            2026: (MAR, 31),
+            2027: (APR, 18),
+            2028: (APR, 7),
+            2029: (APR, 26),
+            2030: (APR, 16),
+            2031: (APR, 5),
+            2032: (APR, 23),
+            2033: (APR, 12),
+            2034: (APR, 1),
+            2035: (APR, 20),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -390,6 +429,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in guru_nanak_jayanti_dates:
             self._add_holiday("Guru Nanak Jayanti", guru_nanak_jayanti_dates[self._year])
+
+        if self._year in mahavir_jayanti_dates:
+            self._add_holiday("Mahavir Jayanti", mahavir_jayanti_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
