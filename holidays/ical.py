@@ -21,7 +21,6 @@ class ICalExporter:
         - return_bytes(bool): If True, return bytes instead of string
         """
         self.holidays = holidays_object
-        self.language = language
         self.return_bytes = return_bytes
 
     def generate_event(self, date, holiday_name):
@@ -34,12 +33,10 @@ class ICalExporter:
         - list[str]: List of iCalender format event lines
         """
         formatted_date = date.strftime("%Y%m%d")
-        # TODO:implement proper translation logic
-        name = holiday_name
 
         return [
             "BEGIN:VEVENT",
-            f"SUMMARY:{name}",
+            f"SUMMARY:{holiday_name}",
             f"DTSTART;VALUE=DATE:{formatted_date}",
             "DURATION:P1D",
             "END:VEVENT",
@@ -53,7 +50,7 @@ class ICalExporter:
         """
         yield "BEGIN:VCALENDAR"
         yield "VERSION:2.0"
-        yield f"PRODID:-//holidays Framework//NONSGML v1.9//{self.language.upper()}"
+        yield "PRODID:-//holidays Framework//NONSGML v1.9//EN"
 
         for date, name in self.holidays.items():
             yield from self.generate_event(date, name)

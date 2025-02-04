@@ -11,19 +11,16 @@
 #  License: MIT (see LICENSE file)
 
 
-from datetime import date
 from unittest import TestCase
 
+from holidays import country_holidays
 from holidays.ical import ICalExporter
 
 
 class TestIcalExporter(TestCase):
     def setUp(self):
-        self.holidays_data = {
-            date(2024, 1, 1): "New Year's Day",
-            date(2024, 12, 25): "Christmas Day",
-        }
-        self.exporter = ICalExporter(self.holidays_data)
+        self.us_holidays = country_holidays("US", years=2024)
+        self.exporter = ICalExporter(self.us_holidays)
 
     def test_basic_calendar_structure(self):
         output = "\n".join(self.exporter.generate())
@@ -42,7 +39,8 @@ class TestIcalExporter(TestCase):
         self.assertIn("END:VEVENT", output)
 
     def test_localized_holiday_names(self):
-        jp_exporter = ICalExporter(self.holidays_data, language="ja")
+        jp_holidays = country_holidays("JP", years=2024, language="ja")
+        jp_exporter = ICalExporter(jp_holidays)
         output = "\n".join(jp_exporter.generate())
 
-        self.assertIn("PRODID:-//holidays Framework//NONSGML v1.9//JA", output)
+        self.assertIn("SUMMARY:元日", output)
