@@ -53,9 +53,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_first_day_of_january(self):
-        name = "The first day of January"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following the first day of January"
+        name = "一月一日"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1977, 2050)))
         self.assertNoHolidayName(name, range(1963, 1977))
@@ -99,11 +99,11 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_lunar_new_year(self):
-        name_eve = "The day preceding Lunar New Year's Day"
-        name = "Lunar New Year's Day"
-        name_second = "The second day of Lunar New Year"
-        name_third = "The third day of Lunar New Year"
-        name_fourth = "The fourth day of Lunar New Year"
+        name_eve = "農曆年初一的前一日"
+        name = "農曆年初一"
+        name_second = "農曆年初二"
+        name_third = "農曆年初三"
+        name_fourth = "農曆年初四"
 
         self.assertHolidayName(
             name_eve,
@@ -240,7 +240,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_good_friday(self):
-        name = "Good Friday"
+        name = "耶穌受難節"
 
         self.assertHolidayName(
             name,
@@ -281,7 +281,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.opt_holidays, range(1946, 2050))
 
     def test_holy_saturday(self):
-        name = "The day following Good Friday"
+        name = "耶穌受難節翌日"
 
         self.assertHolidayName(
             name,
@@ -320,8 +320,8 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.opt_holidays, range(1946, 2050))
 
     def test_easter_monday(self):
-        name = "Easter Monday"
-        name_following = "The day following Easter Monday"
+        name = "復活節星期一"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(
             name,
@@ -372,9 +372,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_ching_ming_festival(self):
-        name = "Ching Ming Festival"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following Ching Ming Festival"
+        name = "清明節"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(
             name,
@@ -467,9 +467,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, exception_years, range(1946, 1968))
 
     def test_birthday_of_buddha(self):
-        name = "The Birthday of the Buddha"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following the Birthday of the Buddha"
+        name = "佛誕"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(
             name,
@@ -536,9 +536,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, exception_years, range(1946, 1999))
 
     def test_labour_day(self):
-        name = "Labour Day"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following Labour Day"
+        name = "勞動節"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1999, 2050)))
         self.assertNoHolidayName(name, range(1963, 1999))
@@ -563,9 +563,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, range(1946, 1999))
 
     def test_tuen_ng_festival(self):
-        name = "Tuen Ng Festival"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following Tuen Ng Festival"
+        name = "端午節"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(
             name,
@@ -635,11 +635,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, exception_years, range(1946, 1968))
 
     def test_hksar_day(self):
-        name = "Hong Kong Special Administrative Region Establishment Day"
-        name_observed = f"{name} (observed)"
-        name_following = (
-            "The day following Hong Kong Special Administrative Region Establishment Day"
-        )
+        name = "香港特別行政區成立紀念日"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(1997, 2050)))
         self.assertNoHolidayName(name, range(1963, 1997))
@@ -664,9 +662,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, range(1983, 1997))
 
     def test_mid_autumn_festival(self):
-        name = "Chinese Mid-Autumn Festival"
-        name_following = "The day following the Chinese Mid-Autumn Festival"
-        name_second = "The second day following the Chinese Mid-Autumn Festival"
+        name = "中秋節"
+        name_following = f"{name}翌日"
+        name_second = "中秋節後第二日"
 
         dt = (
             "1963-10-02",
@@ -741,9 +739,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_chung_yeung_festival(self):
-        name = "Chung Yeung Festival"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following Chung Yeung Festival"
+        name = "重陽節"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(
             name,
@@ -840,9 +838,9 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, exception_years, range(1946, 1968))
 
     def test_national_day(self):
-        name = "National Day"
-        name_observed = f"{name} (observed)"
-        name_following = "The day following National Day"
+        name = "國慶日"
+        name_observed = f"{name}（慶祝）"
+        name_following = f"{name}翌日"
 
         self.assertHolidayName(name, (f"{year}-10-01" for year in range(1997, 2050)))
         self.assertNoHolidayName(name, range(1963, 1997))
@@ -880,8 +878,8 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, range(1946, 1997))
 
     def test_winter_solstice(self):
-        name = "Chinese Winter Solstice Festival"
-        name_observed = f"{name} (observed)"
+        name = "冬節"
+        name_observed = f"{name}（慶祝）"
 
         holidays_with_winter_solstice = HongKong(
             preferred_discretionary_holidays=(WINTER_SOLSTICE,), years=range(1963, 2050)
@@ -910,7 +908,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2024-12-21",
         )
         self.assertHolidayName(name, holidays_with_winter_solstice, range(1963, 2050))
-        self.assertNoHolidayName("Christmas Day", holidays_with_winter_solstice)
+        self.assertNoHolidayName("聖誕節", holidays_with_winter_solstice)
 
         obs_dt = (
             "1963-12-23",
@@ -931,11 +929,11 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays)
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        name_observed = f"{name} (observed)"
-        name_first = "The first weekday after Christmas Day"
-        name_first_observed = f"{name_first} (observed)"
-        name_second = "The second weekday after Christmas Day"
+        name = "聖誕節"
+        name_observed = f"{name}（慶祝）"
+        name_first = "聖誕節後第一個周日"
+        name_first_observed = f"{name_first}（慶祝）"
+        name_second = "聖誕節後第二個周日"
 
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1963, 2050)))
         obs_dt = (
@@ -1018,7 +1016,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_queens_birthday(self):
-        name = "Queen's Birthday"
+        name = "英女皇壽辰"
         self.assertNoHolidayName(name)
         self.assertHolidayName(name, self.opt_holidays, range(1952, 1998))
         self.assertNoHolidayName(name, self.opt_holidays, range(1946, 1952), range(1998, 2050))
@@ -1062,7 +1060,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
 
     def test_whit_monday(self):
-        name = "Monday after Pentecost"
+        name = "靈降臨節後星期一"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
@@ -1093,7 +1091,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.opt_holidays, range(1968, 2050))
 
     def test_national_day_of_the_republic(self):
-        name = "National Day of the Republic of China"
+        name = "中華民國國慶日"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
@@ -1123,8 +1121,8 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.opt_holidays, range(1968, 2050))
 
-    def test_monday_after_peace_memorial_day(self):
-        name = "Monday after Peace Memorial Day"
+    def test_monday_after_remembrance_day(self):
+        name = "和平紀念日後星期一"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
@@ -1158,204 +1156,293 @@ class TestHongKong(CommonCountryTests, TestCase):
         # https://www.labour.gov.hk/eng/news/latest_holidays2020.htm
         self.assertHolidays(
             HongKong(years=2020, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2020-01-01", "The first day of January"),
-            ("2020-01-25", "Lunar New Year's Day"),
-            ("2020-01-27", "The third day of Lunar New Year"),
-            ("2020-01-28", "The fourth day of Lunar New Year"),
-            ("2020-04-04", "Ching Ming Festival"),
-            ("2020-05-01", "Labour Day"),
-            ("2020-06-25", "Tuen Ng Festival"),
-            ("2020-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2020-10-01", "National Day"),
-            ("2020-10-02", "The day following the Chinese Mid-Autumn Festival"),
-            ("2020-10-25", "Chung Yeung Festival"),
-            ("2020-10-26", "Chung Yeung Festival (observed)"),
-            ("2020-12-21", "Chinese Winter Solstice Festival"),
-            ("2020-12-25", "Christmas Day"),
+            ("2020-01-01", "一月一日"),
+            ("2020-01-25", "農曆年初一"),
+            ("2020-01-27", "農曆年初三"),
+            ("2020-01-28", "農曆年初四"),
+            ("2020-04-04", "清明節"),
+            ("2020-05-01", "勞動節"),
+            ("2020-06-25", "端午節"),
+            ("2020-07-01", "香港特別行政區成立紀念日"),
+            ("2020-10-01", "國慶日"),
+            ("2020-10-02", "中秋節翌日"),
+            ("2020-10-25", "重陽節"),
+            ("2020-10-26", "重陽節（慶祝）"),
+            ("2020-12-21", "冬節"),
+            ("2020-12-25", "聖誕節"),
         )
 
     def test_2021(self):
         # https://www.labour.gov.hk/eng/news/latest_holidays2021.htm
         self.assertHolidays(
             HongKong(years=2021, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2021-01-01", "The first day of January"),
-            ("2021-02-12", "Lunar New Year's Day"),
-            ("2021-02-13", "The second day of Lunar New Year"),
-            ("2021-02-15", "The fourth day of Lunar New Year"),
-            ("2021-04-04", "Ching Ming Festival"),
-            ("2021-04-05", "Ching Ming Festival (observed)"),
-            ("2021-05-01", "Labour Day"),
-            ("2021-06-14", "Tuen Ng Festival"),
-            ("2021-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2021-09-22", "The day following the Chinese Mid-Autumn Festival"),
-            ("2021-10-01", "National Day"),
-            ("2021-10-14", "Chung Yeung Festival"),
-            ("2021-12-21", "Chinese Winter Solstice Festival"),
-            ("2021-12-25", "Christmas Day"),
+            ("2021-01-01", "一月一日"),
+            ("2021-02-12", "農曆年初一"),
+            ("2021-02-13", "農曆年初二"),
+            ("2021-02-15", "農曆年初四"),
+            ("2021-04-04", "清明節"),
+            ("2021-04-05", "清明節（慶祝）"),
+            ("2021-05-01", "勞動節"),
+            ("2021-06-14", "端午節"),
+            ("2021-07-01", "香港特別行政區成立紀念日"),
+            ("2021-09-22", "中秋節翌日"),
+            ("2021-10-01", "國慶日"),
+            ("2021-10-14", "重陽節"),
+            ("2021-12-21", "冬節"),
+            ("2021-12-25", "聖誕節"),
         )
 
     def test_2022(self):
         # https://www.labour.gov.hk/eng/news/latest_holidays2022.htm
         self.assertHolidays(
             HongKong(years=2022, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2022-01-01", "The first day of January"),
-            ("2022-02-01", "Lunar New Year's Day"),
-            ("2022-02-02", "The second day of Lunar New Year"),
-            ("2022-02-03", "The third day of Lunar New Year"),
-            ("2022-04-05", "Ching Ming Festival"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (observed)"),
-            ("2022-05-08", "The Birthday of the Buddha"),
-            ("2022-05-09", "The Birthday of the Buddha (observed)"),
-            ("2022-06-03", "Tuen Ng Festival"),
-            ("2022-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2022-09-12", "The second day following the Chinese Mid-Autumn Festival"),
-            ("2022-10-01", "National Day"),
-            ("2022-10-04", "Chung Yeung Festival"),
-            ("2022-12-22", "Chinese Winter Solstice Festival"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Christmas Day (observed)"),
+            ("2022-01-01", "一月一日"),
+            ("2022-02-01", "農曆年初一"),
+            ("2022-02-02", "農曆年初二"),
+            ("2022-02-03", "農曆年初三"),
+            ("2022-04-05", "清明節"),
+            ("2022-05-01", "勞動節"),
+            ("2022-05-02", "勞動節（慶祝）"),
+            ("2022-05-08", "佛誕"),
+            ("2022-05-09", "佛誕（慶祝）"),
+            ("2022-06-03", "端午節"),
+            ("2022-07-01", "香港特別行政區成立紀念日"),
+            ("2022-09-12", "中秋節後第二日"),
+            ("2022-10-01", "國慶日"),
+            ("2022-10-04", "重陽節"),
+            ("2022-12-22", "冬節"),
+            ("2022-12-25", "聖誕節"),
+            ("2022-12-26", "聖誕節（慶祝）"),
         )
 
     def test_2023(self):
         # https://www.labour.gov.hk/eng/news/latest_holidays2023.htm
         self.assertHolidays(
             HongKong(years=2023, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2023-01-01", "The first day of January"),
-            ("2023-01-02", "The first day of January (observed)"),
-            ("2023-01-23", "The second day of Lunar New Year"),
-            ("2023-01-24", "The third day of Lunar New Year"),
-            ("2023-01-25", "The fourth day of Lunar New Year"),
-            ("2023-04-05", "Ching Ming Festival"),
-            ("2023-05-01", "Labour Day"),
-            ("2023-05-26", "The Birthday of the Buddha"),
-            ("2023-06-22", "Tuen Ng Festival"),
-            ("2023-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2023-09-30", "The day following the Chinese Mid-Autumn Festival"),
-            ("2023-10-01", "National Day"),
-            ("2023-10-02", "National Day (observed)"),
-            ("2023-10-23", "Chung Yeung Festival"),
-            ("2023-12-22", "Chinese Winter Solstice Festival"),
-            ("2023-12-25", "Christmas Day"),
+            ("2023-01-01", "一月一日"),
+            ("2023-01-02", "一月一日（慶祝）"),
+            ("2023-01-23", "農曆年初二"),
+            ("2023-01-24", "農曆年初三"),
+            ("2023-01-25", "農曆年初四"),
+            ("2023-04-05", "清明節"),
+            ("2023-05-01", "勞動節"),
+            ("2023-05-26", "佛誕"),
+            ("2023-06-22", "端午節"),
+            ("2023-07-01", "香港特別行政區成立紀念日"),
+            ("2023-09-30", "中秋節翌日"),
+            ("2023-10-01", "國慶日"),
+            ("2023-10-02", "國慶日（慶祝）"),
+            ("2023-10-23", "重陽節"),
+            ("2023-12-22", "冬節"),
+            ("2023-12-25", "聖誕節"),
         )
 
     def test_2024(self):
         # https://www.labour.gov.hk/eng/news/latest_holidays2024.htm
         self.assertHolidays(
             HongKong(years=2024, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2024-01-01", "The first day of January"),
-            ("2024-02-10", "Lunar New Year's Day"),
-            ("2024-02-12", "The third day of Lunar New Year"),
-            ("2024-02-13", "The fourth day of Lunar New Year"),
-            ("2024-04-04", "Ching Ming Festival"),
-            ("2024-05-01", "Labour Day"),
-            ("2024-05-15", "The Birthday of the Buddha"),
-            ("2024-06-10", "Tuen Ng Festival"),
-            ("2024-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2024-09-18", "The day following the Chinese Mid-Autumn Festival"),
-            ("2024-10-01", "National Day"),
-            ("2024-10-11", "Chung Yeung Festival"),
-            ("2024-12-21", "Chinese Winter Solstice Festival"),
-            ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "The first weekday after Christmas Day"),
+            ("2024-01-01", "一月一日"),
+            ("2024-02-10", "農曆年初一"),
+            ("2024-02-12", "農曆年初三"),
+            ("2024-02-13", "農曆年初四"),
+            ("2024-04-04", "清明節"),
+            ("2024-05-01", "勞動節"),
+            ("2024-05-15", "佛誕"),
+            ("2024-06-10", "端午節"),
+            ("2024-07-01", "香港特別行政區成立紀念日"),
+            ("2024-09-18", "中秋節翌日"),
+            ("2024-10-01", "國慶日"),
+            ("2024-10-11", "重陽節"),
+            ("2024-12-21", "冬節"),
+            ("2024-12-25", "聖誕節"),
+            ("2024-12-26", "聖誕節後第一個周日"),
+        )
+
+    def test_2025(self):
+        # https://www.labour.gov.hk/eng/news/latest_holidays2025.htm
+        self.assertHolidays(
+            HongKong(years=2025, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
+            ("2025-01-01", "一月一日"),
+            ("2025-01-29", "農曆年初一"),
+            ("2025-01-30", "農曆年初二"),
+            ("2025-01-31", "農曆年初三"),
+            ("2025-04-04", "清明節"),
+            ("2025-05-01", "勞動節"),
+            ("2025-05-04", "佛誕"),
+            ("2025-05-05", "佛誕（慶祝）"),
+            ("2025-05-31", "端午節"),
+            ("2025-07-01", "香港特別行政區成立紀念日"),
+            ("2025-10-01", "國慶日"),
+            ("2025-10-07", "中秋節翌日"),
+            ("2025-10-29", "重陽節"),
+            ("2025-12-21", "冬節"),
+            ("2025-12-22", "冬節（慶祝）"),
+            ("2025-12-25", "聖誕節"),
+            ("2025-12-26", "聖誕節後第一個周日"),
         )
 
     def test_optional_2020(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2020.htm
         self.assertHolidays(
             HongKong(categories=OPTIONAL, years=2020),
-            ("2020-01-01", "The first day of January"),
-            ("2020-01-25", "Lunar New Year's Day"),
-            ("2020-01-27", "The third day of Lunar New Year"),
-            ("2020-01-28", "The fourth day of Lunar New Year"),
-            ("2020-04-04", "Ching Ming Festival"),
-            ("2020-04-10", "Good Friday"),
-            ("2020-04-11", "The day following Good Friday"),
-            ("2020-04-13", "Easter Monday"),
-            ("2020-04-30", "The Birthday of the Buddha"),
-            ("2020-05-01", "Labour Day"),
-            ("2020-06-25", "Tuen Ng Festival"),
-            ("2020-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2020-10-01", "National Day"),
-            ("2020-10-02", "The day following the Chinese Mid-Autumn Festival"),
-            ("2020-10-26", "The day following Chung Yeung Festival"),
-            ("2020-12-25", "Christmas Day"),
-            ("2020-12-26", "The first weekday after Christmas Day"),
+            ("2020-01-01", "一月一日"),
+            ("2020-01-25", "農曆年初一"),
+            ("2020-01-27", "農曆年初三"),
+            ("2020-01-28", "農曆年初四"),
+            ("2020-04-04", "清明節"),
+            ("2020-04-10", "耶穌受難節"),
+            ("2020-04-11", "耶穌受難節翌日"),
+            ("2020-04-13", "復活節星期一"),
+            ("2020-04-30", "佛誕"),
+            ("2020-05-01", "勞動節"),
+            ("2020-06-25", "端午節"),
+            ("2020-07-01", "香港特別行政區成立紀念日"),
+            ("2020-10-01", "國慶日"),
+            ("2020-10-02", "中秋節翌日"),
+            ("2020-10-26", "重陽節翌日"),
+            ("2020-12-25", "聖誕節"),
+            ("2020-12-26", "聖誕節後第一個周日"),
         )
 
     def test_optional_2021(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2021.htm
         self.assertHolidays(
             HongKong(categories=OPTIONAL, years=2021),
-            ("2021-01-01", "The first day of January"),
-            ("2021-02-12", "Lunar New Year's Day"),
-            ("2021-02-13", "The second day of Lunar New Year"),
-            ("2021-02-15", "The fourth day of Lunar New Year"),
-            ("2021-04-02", "Good Friday"),
-            ("2021-04-03", "The day following Good Friday"),
-            ("2021-04-05", "The day following Ching Ming Festival"),
-            ("2021-04-06", "The day following Easter Monday"),
-            ("2021-05-01", "Labour Day"),
-            ("2021-05-19", "The Birthday of the Buddha"),
-            ("2021-06-14", "Tuen Ng Festival"),
-            ("2021-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2021-09-22", "The day following the Chinese Mid-Autumn Festival"),
-            ("2021-10-01", "National Day"),
-            ("2021-10-14", "Chung Yeung Festival"),
-            ("2021-12-25", "Christmas Day"),
-            ("2021-12-27", "The first weekday after Christmas Day"),
+            ("2021-01-01", "一月一日"),
+            ("2021-02-12", "農曆年初一"),
+            ("2021-02-13", "農曆年初二"),
+            ("2021-02-15", "農曆年初四"),
+            ("2021-04-02", "耶穌受難節"),
+            ("2021-04-03", "耶穌受難節翌日"),
+            ("2021-04-05", "清明節翌日"),
+            ("2021-04-06", "復活節星期一翌日"),
+            ("2021-05-01", "勞動節"),
+            ("2021-05-19", "佛誕"),
+            ("2021-06-14", "端午節"),
+            ("2021-07-01", "香港特別行政區成立紀念日"),
+            ("2021-09-22", "中秋節翌日"),
+            ("2021-10-01", "國慶日"),
+            ("2021-10-14", "重陽節"),
+            ("2021-12-25", "聖誕節"),
+            ("2021-12-27", "聖誕節後第一個周日"),
         )
 
     def test_optional_2022(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2022.htm
         self.assertHolidays(
             HongKong(categories=OPTIONAL, years=2022),
-            ("2022-01-01", "The first day of January"),
-            ("2022-02-01", "Lunar New Year's Day"),
-            ("2022-02-02", "The second day of Lunar New Year"),
-            ("2022-02-03", "The third day of Lunar New Year"),
-            ("2022-04-05", "Ching Ming Festival"),
-            ("2022-04-15", "Good Friday"),
-            ("2022-04-16", "The day following Good Friday"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-05-02", "The day following Labour Day"),
-            ("2022-05-09", "The day following the Birthday of the Buddha"),
-            ("2022-06-03", "Tuen Ng Festival"),
-            ("2022-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2022-09-12", "The second day following the Chinese Mid-Autumn Festival"),
-            ("2022-10-01", "National Day"),
-            ("2022-10-04", "Chung Yeung Festival"),
-            ("2022-12-26", "The first weekday after Christmas Day"),
-            ("2022-12-27", "The second weekday after Christmas Day"),
+            ("2022-01-01", "一月一日"),
+            ("2022-02-01", "農曆年初一"),
+            ("2022-02-02", "農曆年初二"),
+            ("2022-02-03", "農曆年初三"),
+            ("2022-04-05", "清明節"),
+            ("2022-04-15", "耶穌受難節"),
+            ("2022-04-16", "耶穌受難節翌日"),
+            ("2022-04-18", "復活節星期一"),
+            ("2022-05-02", "勞動節翌日"),
+            ("2022-05-09", "佛誕翌日"),
+            ("2022-06-03", "端午節"),
+            ("2022-07-01", "香港特別行政區成立紀念日"),
+            ("2022-09-12", "中秋節後第二日"),
+            ("2022-10-01", "國慶日"),
+            ("2022-10-04", "重陽節"),
+            ("2022-12-26", "聖誕節後第一個周日"),
+            ("2022-12-27", "聖誕節後第二個周日"),
         )
 
     def test_optional_2023(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2023.htm
         self.assertHolidays(
             HongKong(categories=OPTIONAL, years=2023),
-            ("2023-01-02", "The day following the first day of January"),
-            ("2023-01-23", "The second day of Lunar New Year"),
-            ("2023-01-24", "The third day of Lunar New Year"),
-            ("2023-01-25", "The fourth day of Lunar New Year"),
-            ("2023-04-05", "Ching Ming Festival"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-08", "The day following Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "Labour Day"),
-            ("2023-05-26", "The Birthday of the Buddha"),
-            ("2023-06-22", "Tuen Ng Festival"),
-            ("2023-07-01", "Hong Kong Special Administrative Region Establishment Day"),
-            ("2023-09-30", "The day following the Chinese Mid-Autumn Festival"),
-            ("2023-10-02", "The day following National Day"),
-            ("2023-10-23", "Chung Yeung Festival"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "The first weekday after Christmas Day"),
+            ("2023-01-02", "一月一日翌日"),
+            ("2023-01-23", "農曆年初二"),
+            ("2023-01-24", "農曆年初三"),
+            ("2023-01-25", "農曆年初四"),
+            ("2023-04-05", "清明節"),
+            ("2023-04-07", "耶穌受難節"),
+            ("2023-04-08", "耶穌受難節翌日"),
+            ("2023-04-10", "復活節星期一"),
+            ("2023-05-01", "勞動節"),
+            ("2023-05-26", "佛誕"),
+            ("2023-06-22", "端午節"),
+            ("2023-07-01", "香港特別行政區成立紀念日"),
+            ("2023-09-30", "中秋節翌日"),
+            ("2023-10-02", "國慶日翌日"),
+            ("2023-10-23", "重陽節"),
+            ("2023-12-25", "聖誕節"),
+            ("2023-12-26", "聖誕節後第一個周日"),
         )
 
     def test_optional_2024(self):
         # https://www.gov.hk/en/about/abouthk/holiday/2024.htm
         self.assertHolidays(
             HongKong(categories=OPTIONAL, years=2024),
+            ("2024-01-01", "一月一日"),
+            ("2024-02-10", "農曆年初一"),
+            ("2024-02-12", "農曆年初三"),
+            ("2024-02-13", "農曆年初四"),
+            ("2024-03-29", "耶穌受難節"),
+            ("2024-03-30", "耶穌受難節翌日"),
+            ("2024-04-01", "復活節星期一"),
+            ("2024-04-04", "清明節"),
+            ("2024-05-01", "勞動節"),
+            ("2024-05-15", "佛誕"),
+            ("2024-06-10", "端午節"),
+            ("2024-07-01", "香港特別行政區成立紀念日"),
+            ("2024-09-18", "中秋節翌日"),
+            ("2024-10-01", "國慶日"),
+            ("2024-10-11", "重陽節"),
+            ("2024-12-25", "聖誕節"),
+            ("2024-12-26", "聖誕節後第一個周日"),
+        )
+
+    def test_optional_2025(self):
+        # https://www.gov.hk/en/about/abouthk/holiday/2025.htm
+        self.assertHolidays(
+            HongKong(categories=OPTIONAL, years=2025),
+            ("2025-01-01", "一月一日"),
+            ("2025-01-29", "農曆年初一"),
+            ("2025-01-30", "農曆年初二"),
+            ("2025-01-31", "農曆年初三"),
+            ("2025-04-04", "清明節"),
+            ("2025-04-18", "耶穌受難節"),
+            ("2025-04-19", "耶穌受難節翌日"),
+            ("2025-04-21", "復活節星期一"),
+            ("2025-05-01", "勞動節"),
+            ("2025-05-05", "佛誕翌日"),
+            ("2025-05-31", "端午節"),
+            ("2025-07-01", "香港特別行政區成立紀念日"),
+            ("2025-10-01", "國慶日"),
+            ("2025-10-07", "中秋節翌日"),
+            ("2025-10-29", "重陽節"),
+            ("2025-12-25", "聖誕節"),
+            ("2025-12-26", "聖誕節後第一個周日"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "一月一日"),
+            ("2024-02-10", "農曆年初一"),
+            ("2024-02-12", "農曆年初三"),
+            ("2024-02-13", "農曆年初四"),
+            ("2024-03-29", "耶穌受難節"),
+            ("2024-03-30", "耶穌受難節翌日"),
+            ("2024-04-01", "復活節星期一"),
+            ("2024-04-04", "清明節"),
+            ("2024-05-01", "勞動節"),
+            ("2024-05-15", "佛誕"),
+            ("2024-06-10", "端午節"),
+            ("2024-07-01", "香港特別行政區成立紀念日"),
+            ("2024-09-18", "中秋節翌日"),
+            ("2024-10-01", "國慶日"),
+            ("2024-10-11", "重陽節"),
+            ("2024-12-25", "聖誕節"),
+            ("2024-12-26", "聖誕節後第一個周日"),
+        )
+
+    def test_l10n_en_hk(self):
+        self.assertLocalizedHolidays(
+            "en_HK",
             ("2024-01-01", "The first day of January"),
             ("2024-02-10", "Lunar New Year's Day"),
             ("2024-02-12", "The third day of Lunar New Year"),
@@ -1373,4 +1460,70 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2024-10-11", "Chung Yeung Festival"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "The first weekday after Christmas Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "The first day of January"),
+            ("2024-02-10", "Lunar New Year's Day"),
+            ("2024-02-12", "The third day of Lunar New Year"),
+            ("2024-02-13", "The fourth day of Lunar New Year"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-03-30", "The day following Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-04-04", "Ching Ming Festival"),
+            ("2024-05-01", "Labor Day"),
+            ("2024-05-15", "The Birthday of the Buddha"),
+            ("2024-06-10", "Tuen Ng Festival"),
+            ("2024-07-01", "Hong Kong Special Administrative Region Establishment Day"),
+            ("2024-09-18", "The day following the Chinese Mid-Autumn Festival"),
+            ("2024-10-01", "National Day"),
+            ("2024-10-11", "Chung Yeung Festival"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "The first weekday after Christmas Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-02-10", "วันตรุษจีน"),
+            ("2024-02-12", "วันตรุษจีนวันที่สาม"),
+            ("2024-02-13", "วันตรุษจีนวันที่สี่"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-03-30", "วันหลังวันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-04-04", "วันเช็งเม้ง"),
+            ("2024-05-01", "วันแรงงาน"),
+            ("2024-05-15", "วันวิสาขบูชา"),
+            ("2024-06-10", "วันไหว้บ๊ะจ่าง"),
+            ("2024-07-01", "วันสถาปนาเขตบริหารพิเศษฮ่องกง"),
+            ("2024-09-18", "วันหลังวันไหว้พระจันทร์"),
+            ("2024-10-01", "วันชาติจีน"),
+            ("2024-10-11", "วันไหว้บรรพบุรุษ"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันคริสต์มาสวันที่สอง"),
+        )
+
+    def test_l10n_zh_cn(self):
+        self.assertLocalizedHolidays(
+            "zh_CN",
+            ("2024-01-01", "一月一日"),
+            ("2024-02-10", "农历年初一"),
+            ("2024-02-12", "农历年初三"),
+            ("2024-02-13", "农历年初四"),
+            ("2024-03-29", "耶稣受难节"),
+            ("2024-03-30", "耶稣受难节翌日"),
+            ("2024-04-01", "复活节星期一"),
+            ("2024-04-04", "清明节"),
+            ("2024-05-01", "劳动节"),
+            ("2024-05-15", "佛诞"),
+            ("2024-06-10", "端午节"),
+            ("2024-07-01", "香港特别行政区成立纪念日"),
+            ("2024-09-18", "中秋节翌日"),
+            ("2024-10-01", "国庆日"),
+            ("2024-10-11", "重阳节"),
+            ("2024-12-25", "圣诞节"),
+            ("2024-12-26", "圣诞节后第一个周日"),
         )
