@@ -19,6 +19,7 @@ from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
+from inspect import getmro
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, cast
 
@@ -367,27 +368,34 @@ class HolidayBase(dict[date, str]):
         if self._entity_code is not None:
             fallback = language not in supported_languages
             languages = [language] if language in supported_languages else None
-            localedir = str(Path(__file__).with_name("locale"))
-            main_translation = translation(
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
                 self._entity_code,
                 fallback=fallback,
                 languages=languages,
-                localedir=localedir,
+                localedir=locale_directory,
             )
-            self.tr = main_translation.gettext
-            for base in self.__class__.__bases__:
-                if hasattr(base, "country") or hasattr(base, "market"):
-                    super_entity_code = getattr(base, "country", getattr(base, "market", None))
-                    base_translation = translation(
-                        super_entity_code,  # type: ignore[arg-type]
-                        fallback=fallback,
-                        languages=languages,
-                        localedir=localedir,
+            # Add a fallback if entity has parent translations.
+            for base_entity in getmro(self.__class__):
+                base_entity_code = getattr(base_entity, "country", None) or getattr(
+                    base_entity, "market", None
+                )
+                if base_entity_code and base_entity_code != self._entity_code:
+                    entity_translation.add_fallback(
+                        translation(
+                            base_entity_code,
+                            fallback=fallback,
+                            languages=languages,
+                            localedir=locale_directory,
+                        )
                     )
-                    main_translation.add_fallback(base_translation)
-                    break
+                    break  # Handles single parent entity cases only.
+            self.tr = entity_translation.gettext
         else:
             self.tr = gettext
+
         self.years = _normalize_arguments(int, years)
 
         # Populate holidays.
