@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2024-12-23 14:10+0700\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -69,7 +69,7 @@ msgstr ""
 "วันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"
 
 #. Victory Day.
-msgid "День перемоги"
+msgid "День Перемоги"
 msgstr "วันแห่งชัยชนะ"
 
 #. Day of the Constitution of Ukraine.
