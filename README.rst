@@ -793,7 +793,7 @@ All other default values are highlighted with bold:
    * - Saint Lucia
      - LC
      -
-     - **en_US**, es, fr, fr_LC
+     - **en_LC**, en_US
      -
    * - Samoa
      - WS

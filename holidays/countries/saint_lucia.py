@@ -12,14 +12,15 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import (
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_TUE
+
+
+class SaintLucia(
+    ObservedHolidayBase,
     ChristianHolidays,
     InternationalHolidays,
-)
-from holidays.holiday_base import HolidayBase
-
-
-class SaintLucia(HolidayBase, ChristianHolidays, InternationalHolidays):
+):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Lucia
@@ -30,12 +31,11 @@ class SaintLucia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "LC"
-    default_language = "en_US"
-    # %s (estimated).
-    estimated_label = tr("%s (estimated)")
-    supported_languages = ("en_US", "es", "fr", "fr_LC")
+    default_language = "en_LC"
+    # %s (observed).
+    observed_label = "%s (observed)"
+    supported_languages = ("en_LC", "en_US")
     start_year = 1979
-    end_year = 2025
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -46,8 +46,8 @@ class SaintLucia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # New Year's Day Two.
-        self._add_new_years_day_two(tr("New Year's Day Two"))
+        # New Year's Holiday.
+        self._add_new_years_day_two(tr("New Year's Holiday"))
 
         # Independence Day.
         self._add_holiday_feb_22(tr("Independence Day"))
@@ -58,7 +58,7 @@ class SaintLucia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Labour Day"))
 
         # Whit Monday.
@@ -77,10 +77,10 @@ class SaintLucia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_dec_13(tr("National Day"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
-        self._add_christmas_day_two(tr("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
 
 class LC(SaintLucia):

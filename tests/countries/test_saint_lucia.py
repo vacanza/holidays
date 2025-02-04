@@ -19,23 +19,23 @@ from tests.common import CommonCountryTests
 class TestSaintLucia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaintLucia, years=range(1979, 2025))
+        super().setUpClass(SaintLucia, years=range(1979, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(SaintLucia, LC, LCA)
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-02-22" for year in range(1979, 2025)))
+        self.assertHolidayName(name, (f"{year}-02-22" for year in range(1979, 2050)))
 
     def test_new_years(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1979, 2025)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1979, 2050)))
 
     def test_first_monday_of_august_holiday(self):
-        self.assertHolidayName("Emancipation Day", (f"{year}-08-01" for year in range(1979, 2025)))
+        self.assertHolidayName("Emancipation Day", (f"{year}-08-01" for year in range(1979, 2050)))
 
     def test_labour_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1979, 2025)))
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1979, 2050)))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -51,13 +51,13 @@ class TestSaintLucia(CommonCountryTests, TestCase):
             "2023-04-07",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(1979, 2025))
+        self.assertHolidayName(name, range(1979, 2050))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1979, 2025)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1979, 2050)))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1979, 2025)))
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1979, 2050)))
 
     def test_corpus_christi(self):
         name = "Corpus Christi"
@@ -71,7 +71,7 @@ class TestSaintLucia(CommonCountryTests, TestCase):
             "2024-05-30",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1979, 2025))
+        self.assertHolidayName(name, range(1979, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -88,7 +88,7 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day Two"),
+            ("2023-01-02", "New Year's Holiday"),
             ("2023-02-22", "Independence Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
@@ -102,56 +102,21 @@ class TestSaintLucia(CommonCountryTests, TestCase):
             ("2023-12-26", "Boxing Day"),
         )
 
-    def test_l10n_fr(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "fr",
-            ("2023-01-01", "Jour de l'An"),
-            ("2023-01-02", "Deuxième jour de l'An"),
-            ("2023-02-22", "Jour de l'indépendance"),
-            ("2023-04-07", "Vendredi saint"),
-            ("2023-04-10", "Lundi de Pâques"),
-            ("2023-05-01", "Fête du Travail"),
-            ("2023-05-29", "Lundi de Pentecôte"),
-            ("2023-06-08", "Fête-Dieu"),
-            ("2023-08-01", "Jour de l'émancipation"),
-            ("2023-10-02", "Thanksgiving Day"),
-            ("2023-12-13", "Fête nationale"),
-            ("2023-12-25", "Jour de Noël"),
-            ("2023-12-26", "lendemain de Noël"),
-        )
-
-    def test_l10n_es(self):
-        self.assertLocalizedHolidays(
-            "es",
-            ("2023-01-01", "Día de Año Nuevo"),
-            ("2023-01-02", "Segundo día de Año Nuevo"),
-            ("2023-02-22", "Día de la Independencia"),
-            ("2023-04-07", "Viernes Santo"),
-            ("2023-04-10", "Lunes de Pascua"),
-            ("2023-05-01", "Día del Trabajo"),
-            ("2023-05-29", "Lundi de Pentecôte"),
-            ("2023-06-08", "Fête-Dieu"),
-            ("2023-08-01", "Día de la Emancipación"),
-            ("2023-10-02", "Thanksgiving Day"),
-            ("2023-12-13", "Fiesta Nacional"),
-            ("2023-12-25", "Día de Navidad"),
-            ("2023-12-26", "lendemain de Noël"),
-        )
-
-    def test_l10n_fr_lc(self):
-        self.assertLocalizedHolidays(
-            "fr_LC",
-            ("2023-01-01", "Premye Janvye"),
-            ("2023-01-02", "Dezyèm Janvye"),
-            ("2023-02-22", "Jou Endepandans"),
-            ("2023-04-07", "Vandredi Sen"),
-            ("2023-04-10", "Lendi Pak"),
-            ("2023-05-01", "Jou Travay"),
-            ("2023-05-29", "Lendi Pantekòt"),
-            ("2023-06-08", "Fèt-Dié"),
-            ("2023-08-01", "Jou Liberasyon"),
-            ("2023-10-02", "Thanksgiving Day"),
-            ("2023-12-13", "Jou Nasyonal"),
-            ("2023-12-25", "Nwèl"),
-            ("2023-12-26", "Landemèn Nwèl"),
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-02", "New Year's Holiday"),
+            ("2022-02-22", "Independence Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-06-06", "Whit Monday"),
+            ("2022-06-16", "Corpus Christi"),
+            ("2022-08-01", "Emancipation Day"),
+            ("2022-10-03", "Thanksgiving Day"),
+            ("2022-12-13", "National Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (observed)"),
         )
