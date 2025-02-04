@@ -364,16 +364,30 @@ class HolidayBase(dict[date, str]):
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
-        self.tr = (
-            translation(
+        if self._entity_code is not None:
+            fallback = language not in supported_languages
+            languages = [language] if language in supported_languages else None
+            localedir = str(Path(__file__).with_name("locale"))
+            main_translation = translation(
                 self._entity_code,
-                fallback=language not in supported_languages,
-                languages=[language] if language in supported_languages else None,
-                localedir=str(Path(__file__).with_name("locale")),
-            ).gettext
-            if self._entity_code is not None
-            else gettext
-        )
+                fallback=fallback,
+                languages=languages,
+                localedir=localedir,
+            )
+            self.tr = main_translation.gettext
+            for base in self.__class__.__bases__:
+                if hasattr(base, "country") or hasattr(base, "market"):
+                    super_entity_code = getattr(base, "country", getattr(base, "market", None))
+                    base_translation = translation(
+                        super_entity_code,  # type: ignore[arg-type]
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=localedir,
+                    )
+                    main_translation.add_fallback(base_translation)
+                    break
+        else:
+            self.tr = gettext
         self.years = _normalize_arguments(int, years)
 
         # Populate holidays.

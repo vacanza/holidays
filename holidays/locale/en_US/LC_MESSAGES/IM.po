@@ -26,35 +26,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (observed)"
-
-#. Good Friday.
-msgid "Good Friday"
-msgstr "Good Friday"
-
-#. May Day.
-msgid "May Day"
-msgstr "May Day"
-
-#. Spring Bank Holiday.
-msgid "Spring Bank Holiday"
-msgstr "Spring Bank Holiday"
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr "New Year's Day"
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "Christmas Day"
-
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
 #. Easter Monday.
 msgid "Easter Monday"
 msgstr "Easter Monday"
@@ -66,42 +37,6 @@ msgstr "Whit Monday"
 #. Late Summer Bank Holiday.
 msgid "Late Summer Bank Holiday"
 msgstr "Late Summer Bank Holiday"
-
-#. Silver Jubilee of Elizabeth II.
-msgid "Silver Jubilee of Elizabeth II"
-msgstr "Silver Jubilee of Elizabeth II"
-
-#. Wedding of Charles and Diana.
-msgid "Wedding of Charles and Diana"
-msgstr "Wedding of Charles and Diana"
-
-#. Millennium Celebrations.
-msgid "Millennium Celebrations"
-msgstr "Millennium Celebrations"
-
-#. Golden Jubilee of Elizabeth II.
-msgid "Golden Jubilee of Elizabeth II"
-msgstr "Golden Jubilee of Elizabeth II"
-
-#. Wedding of William and Catherine.
-msgid "Wedding of William and Catherine"
-msgstr "Wedding of William and Catherine"
-
-#. Diamond Jubilee of Elizabeth II.
-msgid "Diamond Jubilee of Elizabeth II"
-msgstr "Diamond Jubilee of Elizabeth II"
-
-#. Platinum Jubilee of Elizabeth II.
-msgid "Platinum Jubilee of Elizabeth II"
-msgstr "Platinum Jubilee of Elizabeth II"
-
-#. State Funeral of Queen Elizabeth II.
-msgid "State Funeral of Queen Elizabeth II"
-msgstr "State Funeral of Queen Elizabeth II"
-
-#. Coronation of Charles III.
-msgid "Coronation of Charles III"
-msgstr "Coronation of Charles III"
 
 #. TT Bank Holiday.
 msgid "TT Bank Holiday"

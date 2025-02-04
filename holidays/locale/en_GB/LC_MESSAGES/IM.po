@@ -26,35 +26,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr ""
-
-#. Good Friday.
-msgid "Good Friday"
-msgstr ""
-
-#. May Day.
-msgid "May Day"
-msgstr ""
-
-#. Spring Bank Holiday.
-msgid "Spring Bank Holiday"
-msgstr ""
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr ""
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr ""
-
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr ""
-
 #. Easter Monday.
 msgid "Easter Monday"
 msgstr ""
@@ -65,42 +36,6 @@ msgstr ""
 
 #. Late Summer Bank Holiday.
 msgid "Late Summer Bank Holiday"
-msgstr ""
-
-#. Silver Jubilee of Elizabeth II.
-msgid "Silver Jubilee of Elizabeth II"
-msgstr ""
-
-#. Wedding of Charles and Diana.
-msgid "Wedding of Charles and Diana"
-msgstr ""
-
-#. Millennium Celebrations.
-msgid "Millennium Celebrations"
-msgstr ""
-
-#. Golden Jubilee of Elizabeth II.
-msgid "Golden Jubilee of Elizabeth II"
-msgstr ""
-
-#. Wedding of William and Catherine.
-msgid "Wedding of William and Catherine"
-msgstr ""
-
-#. Diamond Jubilee of Elizabeth II.
-msgid "Diamond Jubilee of Elizabeth II"
-msgstr ""
-
-#. Platinum Jubilee of Elizabeth II.
-msgid "Platinum Jubilee of Elizabeth II"
-msgstr ""
-
-#. State Funeral of Queen Elizabeth II.
-msgid "State Funeral of Queen Elizabeth II"
-msgstr ""
-
-#. Coronation of Charles III.
-msgid "Coronation of Charles III"
 msgstr ""
 
 #. TT Bank Holiday.
