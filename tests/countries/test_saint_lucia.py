@@ -19,23 +19,21 @@ from tests.common import CommonCountryTests
 class TestSaintLucia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaintLucia, years=range(1979, 2050))
+        super().setUpClass(
+            SaintLucia, years=range(1979, 2050), years_non_observed=range(1979, 2050)
+        )
 
     def test_country_aliases(self):
         self.assertAliases(SaintLucia, LC, LCA)
 
-    def test_independence_day(self):
-        name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-02-22" for year in range(1979, 2050)))
-
     def test_new_years(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1979, 2050)))
+        self.assertHolidayName(
+            "New Year's Holiday", (f"{year}-01-02" for year in range(1979, 2050))
+        )
 
-    def test_first_monday_of_august_holiday(self):
-        self.assertHolidayName("Emancipation Day", (f"{year}-08-01" for year in range(1979, 2050)))
-
-    def test_labour_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1979, 2050)))
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-02-22" for year in range(1979, 2050)))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -53,11 +51,30 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(1979, 2050))
 
-    def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1979, 2050)))
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        dts = (
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+        )
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1979, 2050))
 
-    def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1979, 2050)))
+    def test_labour_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1979, 2050)))
+        dt = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_corpus_christi(self):
         name = "Corpus Christi"
@@ -73,22 +90,59 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(1979, 2050))
 
-    def test_easter_monday(self):
-        name = "Easter Monday"
-        dts = (
-            "1999-04-05",
-            "2000-04-24",
-            "2010-04-05",
-            "2018-04-02",
-            "2019-04-22",
-            "2020-04-13",
+    def test_thanksgiving_day(self):
+        name = "Thanksgiving Day"
+        dt = (
+            "1995-10-02",
+            "1996-10-07",
+            "1997-10-06",
+            "1998-10-05",
+            "1999-10-04",
+            "2000-10-02",
+            "2001-10-01",
+            "2002-10-07",
+            "2003-10-06",
+            "2004-10-04",
+            "2005-10-03",
+            "2006-10-02",
+            "2007-10-01",
+            "2008-10-06",
+            "2009-10-05",
+            "2010-10-04",
+            "2011-10-03",
+            "2012-10-01",
+            "2013-10-07",
+            "2014-10-06",
+            "2015-10-05",
+            "2016-10-03",
+            "2017-10-02",
+            "2018-10-01",
+            "2019-10-07",
+            "2020-10-05",
+            "2021-10-04",
+            "2022-10-03",
+            "2023-10-02",
+            "2024-10-07",
+            "2025-10-06",
         )
-        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1979, 2050))
+
+    def test_national_day(self):
+        name = "National Day"
+        self.assertHolidayName(name, (f"{year}-12-13" for year in range(1979, 2050)))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1979, 2050)))
+
+    def test_boxing_day(self):
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1979, 2050)))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Holiday"),
+            ("2023-01-03", "New Year's Day (observed)"),
             ("2023-02-22", "Independence Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
@@ -107,10 +161,12 @@ class TestSaintLucia(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Holiday"),
+            ("2022-01-03", "New Year's Holiday (observed)"),
             ("2022-02-22", "Independence Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-16", "Corpus Christi"),
             ("2022-08-01", "Emancipation Day"),

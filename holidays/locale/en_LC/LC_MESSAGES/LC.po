@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Saint Lucia holidays.
+# Saint Lucia holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.67\n"
 "POT-Creation-Date: 2025-02-03 23:27+0530\n"
 "PO-Revision-Date: 2025-02-03 23:27+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -71,4 +71,13 @@ msgstr ""
 
 #. New Year's Holiday.
 msgid "New Year's Holiday"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
 msgstr ""
