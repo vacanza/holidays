@@ -303,15 +303,16 @@ class HongKong(
 
         if self._year >= 1997:
             dt = date(self._year, OCT, 1)
+            # The day following National Day.
+            name = tr("國慶日翌日")
             if self._is_sunday(dt) or dt == mid_autumn_date or dt == dt_double_ninth:
-                # The day following National Day.
-                self._add_holiday(tr("國慶日翌日"), self._get_next_workday(dt))
+                self._add_holiday(name, self._get_next_workday(dt))
             else:
                 # National Day.
                 self._add_holiday_oct_1(tr("國慶日"))
-        if self._year in {1997, 1998}:
-            # The day following National Day.
-            self._add_holiday_oct_2(tr("國慶日翌日"))
+
+            if self._year <= 1998:
+                self._add_holiday_oct_2(name)
 
         # Christmas Day.
         name = tr("聖誕節")
