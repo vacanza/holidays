@@ -31,38 +31,38 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
-        "AR",  # Arunachal Pradesh.
+        "AR",  # Arunachal Pradesh (Arunāchal Pradesh).
         "AS",  # Assam.
-        "BR",  # Bihar.
-        "CG",  # Chhattīsgarh.
-        "CH",  # Chandīgarh.
-        "DH",  # Dadra and Nagar Haveli and Daman and Diu.
+        "BR",  # Bihar (Bihār).
+        "CG",  # Chattisgarh (Chhattīsgarh).
+        "CH",  # Chandigarh (Chandīgarh).
+        "DH",  # Dadra and Nagar Haveli and Daman and Diu(Dādra and Nagar Haveli and Damān and Diu)
         "DL",  # Delhi.
         "GA",  # Goa.
-        "GJ",  # Gujarat.
-        "HP",  # Himachal Pradesh.
-        "HR",  # Haryana.
-        "JH",  # Jharkhand.
-        "JK",  # Jammu and Kashmīr.
-        "KA",  # Karnataka.
+        "GJ",  # Gujarat (Gujarāt).
+        "HP",  # Himachal Pradesh (Himāchal Pradesh).
+        "HR",  # Haryana (Haryāna).
+        "JH",  # Jharkhand (Jhārkhand).
+        "JK",  # Jammu and Kashmir (Jammu and Kashmīr).
+        "KA",  # Karnataka (Karnātaka).
         "KL",  # Kerala.
-        "LA",  # Ladakh.
+        "LA",  # Ladakh (Ladākh).
         "LD",  # Lakshadweep.
-        "MH",  # Maharashtra.
-        "ML",  # Meghalaya.
+        "MH",  # Maharashtra (Mahārāshtra).
+        "ML",  # Meghalaya (Meghālaya).
         "MN",  # Manipur.
         "MP",  # Madhya Pradesh.
         "MZ",  # Mizoram.
-        "NL",  # Nagaland.
+        "NL",  # Nagaland (Nāgāland).
         "OD",  # Odisha.
         "PB",  # Punjab.
         "PY",  # Puducherry.
-        "RJ",  # Rajasthan.
+        "RJ",  # Rajasthan (Rājasthān).
         "SK",  # Sikkim.
-        "TN",  # Tamil Nadu.
+        "TN",  # Tamil Nadu (Tamil Nādu).
         "TR",  # Tripura.
-        "TS",  # Telangana.
-        "UK",  # Uttarakhand.
+        "TS",  # Telangana (Telangāna).
+        "UK",  # Uttarakhand (Uttarākhand).
         "UP",  # Uttar Pradesh.
         "WB",  # West Bengal.
     )
@@ -74,37 +74,56 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         "Andaman and Nicobar Islands": "AN",
         "Andhra Pradesh": "AP",
         "Arunachal Pradesh": "AR",
+        "Arunāchal Pradesh": "AR",
         "Assam": "AS",
         "Bihar": "BR",
+        "Bihār": "BR",
         "Chhattisgarh": "CG",
+        "Chhattīsgarh": "CG",
         "Chandigarh": "CH",
+        "Chandīgarh": "CH",
         "Dadra and Nagar Haveli and Daman and Diu": "DH",
+        "Dādra and Nagar Haveli and Damān and Diu": "DH",
         "Delhi": "DL",
         "Goa": "GA",
         "Gujarat": "GJ",
+        "Gujarāt": "GJ",
         "Himachal Pradesh": "HP",
+        "Himāchal Pradesh": "HP",
         "Haryana": "HR",
+        "Haryāna": "HR",
         "Jharkhand": "JH",
+        "Jhārkhand": "JH",
         "Jammu and Kashmir": "JK",
+        "Jammu and Kashmīr": "JK",
         "Karnataka": "KA",
+        "Karnātaka": "KA",
         "Kerala": "KL",
         "Ladakh": "LA",
+        "Ladākh": "LA",
         "Lakshadweep": "LD",
         "Maharashtra": "MH",
+        "Mahārāshtra": "MH",
         "Meghalaya": "ML",
+        "Meghālaya": "ML",
         "Manipur": "MN",
         "Madhya Pradesh": "MP",
         "Mizoram": "MZ",
         "Nagaland": "NL",
+        "Nāgāland": "NL",
         "Odisha": "OD",
         "Punjab": "PB",
         "Puducherry": "PY",
         "Rajasthan": "RJ",
+        "Rājasthān": "RJ",
         "Sikkim": "SK",
         "Tamil Nadu": "TN",
+        "Tamil Nādu": "TN",
         "Tripura": "TR",
         "Telangana": "TS",
+        "Telangāna": "TS",
         "Uttarakhand": "UK",
+        "Uttarākhand": "UK",
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
