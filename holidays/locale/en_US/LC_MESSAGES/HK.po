@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.67\n"
 "POT-Creation-Date: 2025-02-04 14:03+0700\n"
-"PO-Revision-Date: 2025-02-04 16:03+0700\n"
+"PO-Revision-Date: 2025-02-04 22:55+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -87,7 +87,7 @@ msgstr "Ching Ming Festival"
 msgid "佛誕"
 msgstr "The Birthday of the Buddha"
 
-#. Labour Day.
+#. Labor Day.
 msgid "勞動節"
 msgstr "Labor Day"
 
@@ -135,9 +135,9 @@ msgstr "The day following Easter Monday"
 msgid "佛誕翌日"
 msgstr "The day following the Birthday of the Buddha"
 
-#. The day following Labour Day.
+#. The day following Labor Day.
 msgid "勞動節翌日"
-msgstr "The day following Labour Day"
+msgstr "The day following Labor Day"
 
 #. The day following Tuen Ng Festival.
 msgid "端午節翌日"

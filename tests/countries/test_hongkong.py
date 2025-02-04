@@ -535,7 +535,7 @@ class TestHongKong(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.opt_holidays, exception_years, range(1946, 1999))
 
-    def test_labour_day(self):
+    def test_labor_day(self):
         name = "勞動節"
         name_observed = f"{name}（慶祝）"
         name_following = f"{name}翌日"

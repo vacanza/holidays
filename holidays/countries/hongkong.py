@@ -181,7 +181,7 @@ class HongKong(
             self._add_observed(self._add_chinese_birthday_of_buddha(tr("佛誕")))
 
         if self._year >= 1999:
-            # Labour Day.
+            # Labor Day.
             self._add_observed(self._add_labor_day(tr("勞動節")))
 
         # Tuen Ng Festival.
@@ -267,10 +267,10 @@ class HongKong(
 
         if self._year >= 1999:
             if self._is_sunday(MAY, 1):
-                # The day following Labour Day.
+                # The day following Labor Day.
                 self._add_labor_day_two(tr("勞動節翌日"))
             else:
-                # Labour Day.
+                # Labor Day.
                 self._add_labor_day(tr("勞動節"))
 
         if self._year >= 1968:
