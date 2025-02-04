@@ -41,7 +41,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
     # %s (observed).
     observed_label = tr("(נצפה) %s")
     supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
-    supported_languages = ("en_US", "he", "uk")
+    supported_languages = ("en_US", "he", "th", "uk")
     weekend = {FRI, SAT}
     start_year = 1948
 
