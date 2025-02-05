@@ -33,7 +33,15 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         )
 
     def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-02-22" for year in range(1979, 2050)))
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-02-22" for year in range(1979, 2050)))
+        dt = (
+            "2004-02-23",
+            "2009-02-23",
+            "2015-02-23",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -63,6 +71,17 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(1979, 2050))
+
+    def test_emancipation_day(self):
+        name = "Emancipation Day"
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1979, 2050)))
+        dt = (
+            "2004-08-02",
+            "2010-08-02",
+            "2021-08-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_labour_day(self):
         name = "Labour Day"
@@ -131,6 +150,13 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_national_day(self):
         name = "National Day"
         self.assertHolidayName(name, (f"{year}-12-13" for year in range(1979, 2050)))
+        dt = (
+            "2009-12-14",
+            "2015-12-14",
+            "2020-12-14",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1979, 2050)))
