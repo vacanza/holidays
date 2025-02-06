@@ -738,8 +738,8 @@ All other default values are highlighted with bold:
    * - Panama
      - PA
      -
-     -
-     -
+     - en_US, **es**, uk
+     - BANK
    * - Papua New Guinea
      - PG
      -
