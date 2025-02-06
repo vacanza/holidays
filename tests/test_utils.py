@@ -148,9 +148,9 @@ class TestListLocalizedEntities(unittest.TestCase):
         for entity_code in supported_entities.keys():
             actual_languages = sorted(
                 # Collect `<locale>` part from
-                # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
+                # holidays/locale/<locale>/LC_MESSAGES/<country_code>.mo.
                 path.parts[-3]
-                for path in Path(locale_dir).rglob(f"{entity_code}.po")
+                for path in Path(locale_dir).rglob(f"{entity_code}.mo")
             )
             expected_languages = localized_entities.get(entity_code, [])
 
