@@ -503,7 +503,7 @@ All other default values are highlighted with bold:
    * - Hong Kong
      - HK
      -
-     -
+     - en_HK, en_US, th, zh_CN, **zh_HK**
      - OPTIONAL
    * - Hungary
      - HU
