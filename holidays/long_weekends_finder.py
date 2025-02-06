@@ -1,81 +1,78 @@
 import holidays
 from datetime import timedelta, date
 
-def get_long_weekends(country: str, year: int, month: int = None):
+def find_long_weekends(year, country, month):
     """
-    Finds long weekends for a given country and year using the holidays framework.
+    Finds long weekends for a given year, country, and month.
+    
+    A long weekend is defined as a holiday adjacent to a weekend.
+    
+    Parameters:
+    - year (int): The year to check (1900–2100).
+    - country (str): The country code (e.g., 'IN', 'US').
+    - month (int): The month to check (1-12).
 
-    :param country: Country code (e.g., 'IN' for India).
-    :param year: Year for which to find long weekends.
-    :param month: Optional month filter (1 for January, 2 for February, etc.).
-    :return: A dictionary containing a list of long weekends.
-    :raises ValueError: If input values are invalid.
+    Returns:
+    - List of dictionaries containing start date, end date, duration, and holiday names.
     """
     
-    # Validate inputs
-    if not isinstance(country, str) or not country:
-        raise ValueError("Country code must be a non-empty string.")
+    # Validate year
+    if not isinstance(year, int) or year < 1900 or year > 2100:
+        raise ValueError("Invalid year! Please provide an integer between 1900 and 2100.")
     
-    if not isinstance(year, int) or year < 1:
-        raise ValueError("Year must be a positive integer.")
+    # Validate country
+    if not isinstance(country, str) or not country.strip():
+        raise ValueError("Invalid country! Please provide a valid country code (e.g., 'IN', 'US').")
+    
+    # Validate month
+    if not isinstance(month, int) or month < 1 or month > 12:
+        raise ValueError("Invalid month! Please provide an integer between 1 and 12.")
 
-    if month is not None:
-        if not isinstance(month, int) or not (1 <= month <= 12):
-            raise ValueError("Month must be an integer between 1 and 12.")
-
+    # Fetch holidays for the given year and country
     try:
         holiday_list = holidays.CountryHoliday(country, years=year)
     except Exception as e:
-        raise ValueError(f"Invalid country code or error fetching holidays: {str(e)}")
+        raise ValueError(f"Error fetching holidays: {e}")
 
-    if month:
-        holiday_list = {date: name for date, name in holiday_list.items() if date.month == month}
+    # Filter holidays for the given month
+    holiday_list = {d: name for d, name in holiday_list.items() if d.month == month}
+    
+    if not holiday_list:
+        return []  # No long weekends in the given month
 
     long_weekends = []
 
-    for holiday_date, name in holiday_list.items():
-        # Ensure holiday_date is a valid date object
-        if not isinstance(holiday_date, date):
-            continue
+    # Determine the country's weekend days (default: Saturday & Sunday)
+    weekend_days = {5, 6}  # Saturday-Sunday
+    if hasattr(holidays, "weekend") and country in holidays.weekend:
+        weekend_days = set(holidays.weekend[country])
 
-        try:
-            # Check for Friday holidays
-            if holiday_date.weekday() == 4:  # Friday
-                following_monday = holiday_date + timedelta(days=3)
-                if following_monday in holiday_list:
-                    long_weekends.append({
-                        'start_date': holiday_date.strftime('%Y-%m-%d'),
-                        'end_date': following_monday.strftime('%Y-%m-%d'),
-                        'duration': 4,
-                        'holidays': [name, holiday_list[following_monday]],
-                    })
-                else:
-                    long_weekends.append({
-                        'start_date': holiday_date.strftime('%Y-%m-%d'),
-                        'end_date': (holiday_date + timedelta(days=2)).strftime('%Y-%m-%d'),
-                        'duration': 3,
-                        'holidays': [name],
-                    })
+    # Process each holiday
+    for holiday_date, holiday_name in holiday_list.items():
+        start_date, end_date = holiday_date, holiday_date
+        holidays_involved = [holiday_name]
 
-            # Check for Monday holidays
-            elif holiday_date.weekday() == 0:  # Monday
-                previous_friday = holiday_date - timedelta(days=3)
-                if previous_friday in holiday_list:
-                    long_weekends.append({
-                        'start_date': previous_friday.strftime('%Y-%m-%d'),
-                        'end_date': holiday_date.strftime('%Y-%m-%d'),
-                        'duration': 4,
-                        'holidays': [holiday_list[previous_friday], name],
-                    })
-                else:
-                    long_weekends.append({
-                        'start_date': (holiday_date - timedelta(days=2)).strftime('%Y-%m-%d'),
-                        'end_date': holiday_date.strftime('%Y-%m-%d'),
-                        'duration': 3,
-                        'holidays': [name],
-                    })
+        # Extend backward if there's a preceding weekend
+        while (start_date - timedelta(days=1)).weekday() in weekend_days or (start_date - timedelta(days=1)) in holiday_list:
+            start_date -= timedelta(days=1)
+            if start_date in holiday_list and start_date != holiday_date:
+                holidays_involved.insert(0, holiday_list[start_date])  # Add earlier holidays
 
-        except Exception as e:
-            print(f"Error processing holiday {holiday_date}: {e}")
+        # Extend forward if there's a following weekend
+        while (end_date + timedelta(days=1)).weekday() in weekend_days or (end_date + timedelta(days=1)) in holiday_list:
+            end_date += timedelta(days=1)
+            if end_date in holiday_list and end_date != holiday_date:
+                holidays_involved.append(holiday_list[end_date])  # Add later holidays
 
-    return {"long_weekends": long_weekends}
+        # Avoid duplicates
+        long_weekend_entry = {
+            'start_date': start_date.strftime('%Y-%m-%d'),
+            'end_date': end_date.strftime('%Y-%m-%d'),
+            'duration': (end_date - start_date).days + 1,
+            'holidays': holidays_involved
+        }
+        
+        if long_weekend_entry not in long_weekends:
+            long_weekends.append(long_weekend_entry)
+
+    return long_weekends
