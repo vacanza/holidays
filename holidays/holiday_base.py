@@ -1080,12 +1080,12 @@ class HolidayBase(dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, name: str, lookup: str = "icontains") -> list[date]:
+    def pop_named(self, holiday_name: str, lookup: str = "icontains") -> list[date]:
         """Remove (no longer treat at as holiday) all dates matching the
         provided holiday name. By default, the match will be made case insensitively and
         partial matches will be removed.
 
-        :param name:
+        :param holiday_name:
             The holiday's name to try to match.
         :param lookup:
             The holiday name lookup type:
@@ -1102,11 +1102,13 @@ class HolidayBase(dict[date, str]):
         :raise:
             KeyError if date is not a holiday and default is not given.
         """
-        use_exact_name = HOLIDAY_NAME_DELIMITER in name
+        use_exact_name = HOLIDAY_NAME_DELIMITER in holiday_name
         if not (
-            dts := self.get_named(name, lookup=lookup, split_multiple_names=not use_exact_name)
+            dts := self.get_named(
+                holiday_name, lookup=lookup, split_multiple_names=not use_exact_name
+            )
         ):
-            raise KeyError(name)
+            raise KeyError(holiday_name)
 
         popped = []
         for dt in dts:
@@ -1115,16 +1117,35 @@ class HolidayBase(dict[date, str]):
             popped.append(dt)
 
             # Keep the rest of holidays falling on the same date.
-            if not use_exact_name:
-                name_lower = name.lower()
+            if use_exact_name:
+                continue
+            if lookup == "icontains":
+                holiday_name_lower = holiday_name.lower()
                 holiday_names = [
-                    holiday_name
-                    for holiday_name in holiday_names
-                    if name_lower not in holiday_name.lower()
+                    name for name in holiday_names if holiday_name_lower not in name.lower()
                 ]
-
-                if holiday_names:
-                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+            elif lookup == "iexact":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name for name in holiday_names if holiday_name_lower != name.lower()
+                ]
+            elif lookup == "istartswith":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name
+                    for name in holiday_names
+                    if holiday_name_lower != name[: len(holiday_name)].lower()
+                ]
+            elif lookup == "contains":
+                holiday_names = [name for name in holiday_names if holiday_name not in name]
+            elif lookup == "exact":
+                holiday_names = [name for name in holiday_names if holiday_name != name]
+            else:  # startswith
+                holiday_names = [
+                    name for name in holiday_names if holiday_name != name[: len(holiday_name)]
+                ]
+            if holiday_names:
+                self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
 
         return popped
 
