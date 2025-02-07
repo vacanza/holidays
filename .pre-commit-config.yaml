@@ -11,6 +11,7 @@ repos:
       - id: mixed-line-ending
         args:
           - --fix=lf
+        exclude: make.cmd
       - id: trailing-whitespace
         exclude_types:
           - rst
