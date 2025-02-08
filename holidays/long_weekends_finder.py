@@ -1,10 +1,21 @@
-import holidays
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 from datetime import timedelta
 
+import holidays
 
-def find_long_weekends(
-    country, year, month=None, language=None, exact_range=False
-):
+
+def find_long_weekends(country, year, month=None, language=None, exact_range=False):
     """
     Finds long weekends for a given country and year.
 
@@ -22,9 +33,7 @@ def find_long_weekends(
     """
 
     try:
-        holiday_obj = holidays.country_holidays(
-            country, years=year, language=language
-        )
+        holiday_obj = holidays.country_holidays(country, years=year, language=language)
     except Exception as e:
         raise ValueError(f"Error fetching holidays: {e}")
 
@@ -47,9 +56,8 @@ def find_long_weekends(
 
         # Extend backward
         prev_day = start_date - timedelta(days=1)
-        while (
-            prev_day in holidays_filtered
-            or (prev_day.weekday() in weekends and prev_day.weekday() not in working_weekend_days)
+        while prev_day in holidays_filtered or (
+            prev_day.weekday() in weekends and prev_day.weekday() not in working_weekend_days
         ):
             if prev_day in holidays_filtered:
                 holidays_involved.insert(0, holidays_filtered[prev_day])
@@ -59,9 +67,8 @@ def find_long_weekends(
 
         # Extend forward
         next_day = end_date + timedelta(days=1)
-        while (
-            next_day in holidays_filtered
-            or (next_day.weekday() in weekends and next_day.weekday() not in working_weekend_days)
+        while next_day in holidays_filtered or (
+            next_day.weekday() in weekends and next_day.weekday() not in working_weekend_days
         ):
             if next_day in holidays_filtered:
                 holidays_involved.append(holidays_filtered[next_day])
