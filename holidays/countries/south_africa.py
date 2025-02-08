@@ -87,7 +87,7 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         if self._year <= 1951:
             self._add_holiday_may_24("Empire Day")
 
-        if self._year <= 1960:
+        if 1910 <= self._year <= 1960:
             self._add_holiday_may_31("Union Day")
         elif self._year <= 1993:
             self._add_holiday_may_31("Republic Day")
@@ -98,7 +98,7 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         if 1961 <= self._year <= 1973:
             self._add_holiday_jul_10("Family Day")
 
-        if self._year <= 1951:
+        if 1910 <= self._year <= 1951:
             self._add_holiday_1st_mon_of_aug("King's Birthday")
 
         if 1952 <= self._year <= 1979:
