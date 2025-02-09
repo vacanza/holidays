@@ -21,6 +21,7 @@ class IsleOfMan(UnitedKingdom):
     """Using existing code in UnitedKingdom for now."""
 
     country = "IM"
+    parent_entity = UnitedKingdom
     subdivisions = ()  # Override UnitedKingdom subdivisions.
     subdivisions_aliases = {}  # Override UnitedKingdom subdivisions aliases.
 

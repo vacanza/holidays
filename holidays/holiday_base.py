@@ -19,7 +19,6 @@ from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
-from inspect import getmro
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, cast
 
@@ -250,6 +249,8 @@ class HolidayBase(dict[date, str]):
     """Start year of holidays presence for this entity."""
     end_year: int = DEFAULT_END_YEAR
     """End year of holidays presence for this entity."""
+    parent_entity: Optional[type["HolidayBase"]] = None
+    """Optional parent entity to reference as a base."""
 
     def __init__(
         self,
@@ -378,20 +379,15 @@ class HolidayBase(dict[date, str]):
                 localedir=locale_directory,
             )
             # Add a fallback if entity has parent translations.
-            for base_entity in getmro(self.__class__):
-                base_entity_code = getattr(base_entity, "country", None) or getattr(
-                    base_entity, "market", None
-                )
-                if base_entity_code and base_entity_code != self._entity_code:
-                    entity_translation.add_fallback(
-                        translation(
-                            base_entity_code,
-                            fallback=fallback,
-                            languages=languages,
-                            localedir=locale_directory,
-                        )
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
                     )
-                    break  # Handles single parent entity cases only.
+                )
             self.tr = entity_translation.gettext
         else:
             self.tr = gettext
