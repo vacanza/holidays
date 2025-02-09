@@ -1,48 +1,21 @@
 @Echo Off
 SetLocal EnableDelayedExpansion
 
-Set Target=%1
+Set Target=%~1
 
-If "!Target!"=="" (
-    GoTo :Help
-) Else If "!Target!"=="check" (
-    GoTo :Check
-) Else If "!Target!"=="clean" (
-    GoTo :Clean
-) Else If "!Target!"=="coverage" (
-    GoTo :Coverage
-) Else If "!Target!"=="doc" (
-    GoTo :Doc
-) Else If "!Target!"=="help" (
-    GoTo :Help
-) Else If "!Target!"=="l10n" (
-    GoTo :L10n
-) Else If "!Target!"=="package" (
-    GoTo :Package
-) Else If "!Target!"=="pre-commit" (
-    GoTo :Precommit
-) Else If "!Target!"=="release-notes" (
-    GoTo :Releasenotes
-) Else If "!Target!"=="sbom" (
-    GoTo :Sbom
-) Else If "!Target!"=="setup" (
-    GoTo :Setup
-) Else If "!Target!"=="snapshot" (
-    GoTo :Snapshot
-) Else If "!Target!"=="test" (
-    GoTo :Test
-) Else If "!Target!"=="tox" (
-    GoTo :Tox
-) Else (
-    GoTo :Help
+Set Targets=
+For /F "Delims=:" %%I in ('FindStr /R "^:" "%~f0"') Do Set Targets=!Targets! %%I
+For %%A in (!Targets!) Do (
+    If /I "%Target%"=="%%A" Call :%%A & Exit /B
 )
+GoTo :Help
 
 :Check
     Call :L10n
-    Call :Precommit
+    Call :Pre-commit
     Call :Doc
     Call :Test
-    GoTo :EOF
+    Exit /B
 
 :Clean
     Del /S /Q *.mo
@@ -52,15 +25,15 @@ If "!Target!"=="" (
     RD /S /Q dist
     RD /S /Q docs\build
     RD /S /Q docs\source\_autosummary
-    GoTo :EOF
+    Exit /B
 
 :Coverage
     pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
-    GoTo :EOF
+    Exit /B
 
 :Doc
     sphinx-build -E -T -W -b html -D language=en -j auto -q docs\source docs\build
-    GoTo :EOF
+    Exit /B
 
 :Help
     Echo Usage: make ^<Target^>
@@ -74,30 +47,30 @@ If "!Target!"=="" (
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
     Echo     tox           run tox (in parallel)
-    GoTo :EOF
+    Exit /B
 
 :L10n
     python scripts\l10n\generate_po_files.py 2>nul >nul
     python scripts\l10n\generate_mo_files.py
     pre-commit run mixed-line-ending >nul
-    GoTo :EOF
+    Exit /B
 
 :Package
     python scripts\l10n\generate_mo_files.py
     python -m build
-    GoTo :EOF
+    Exit /B
 
-:Precommit
+:Pre-commit
     pre-commit run --all-files
-    GoTo :EOF
+    Exit /B
 
-:Releasenotes
+:Release-notes
     python scripts\generate_release_notes.py
-    GoTo :EOF
+    Exit /B
 
 :Sbom
     python -m cyclonedx_py requirements requirements\runtime.txt
-    GoTo :EOF
+    Exit /B
 
 :Setup
     pip install --upgrade pip
@@ -109,18 +82,18 @@ If "!Target!"=="" (
     pre-commit install --hook-type pre-push
     Call :L10n
     Call :Package
-    GoTo :EOF
+    Exit /B
 
 :Snapshot
     python scripts\l10n\generate_mo_files.py
     python scripts\generate_snapshots.py
-    GoTo :EOF
+    Exit /B
 
 :Test
     python scripts\l10n\generate_mo_files.py
     pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
-    GoTo :EOF
+    Exit /B
 
 :Tox
     tox --parallel auto
-    GoTo :EOF
+    Exit /B
