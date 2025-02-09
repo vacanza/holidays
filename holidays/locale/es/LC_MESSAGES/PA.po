@@ -1,0 +1,96 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Panama holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.67\n"
+"POT-Creation-Date: 2025-02-06 22:15+0200\n"
+"PO-Revision-Date: 2025-02-06 22:16+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (puente)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Día de los Mártires"
+msgstr ""
+
+#. Constitution Day.
+msgid "Día de la Constitución"
+msgstr ""
+
+#. Carnival Tuesday.
+msgid "Martes de Carnaval"
+msgstr ""
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr ""
+
+#. Separation Day.
+msgid "Separación de Panamá de Colombia"
+msgstr ""
+
+#. Colon Day.
+msgid "Día de Colón"
+msgstr ""
+
+#. Los Santos Uprising Day.
+msgid "Primer Grito de Independencia"
+msgstr ""
+
+#. Independence Day.
+msgid "Independencia de Panamá de España"
+msgstr ""
+
+#. Mother's Day.
+msgid "Día de la Madre"
+msgstr ""
+
+#. National Mourning Day.
+msgid "Día de Duelo Nacional"
+msgstr ""
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr ""
+
+#. Carnival Monday.
+msgid "Lunes de Carnaval"
+msgstr ""
+
+#. National Symbols Day.
+msgid "Día de los Símbolos Patrios"
+msgstr ""
+
+#. Presidential Inauguration Day.
+msgid "Toma posesión del Presidente de la república"
+msgstr ""
