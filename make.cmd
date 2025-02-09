@@ -52,7 +52,6 @@ GoTo :Help
 :L10n
     python scripts\l10n\generate_po_files.py 2>nul >nul
     python scripts\l10n\generate_mo_files.py
-    pre-commit run mixed-line-ending >nul
     Exit /B
 
 :Package
