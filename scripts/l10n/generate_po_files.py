@@ -38,7 +38,7 @@ class POGenerator:
             po_file.metadata["Project-Id-Version"] = f"Holidays {package_version}"
 
         # Save the file each time in order to capture all other changes properly.
-        po_file.save(po_path)
+        po_file.save(po_path, newline="\n")
 
     def process_entities(self):
         """Processes entities in specified directory."""
