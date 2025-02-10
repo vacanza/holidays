@@ -538,7 +538,7 @@ All other default values are highlighted with bold:
    * - Isle of Man
      - IM
      -
-     -
+     - **en_GB**, en_US, th
      -
    * - Israel
      - IL
@@ -913,7 +913,7 @@ All other default values are highlighted with bold:
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
-     -
+     - **en_GB**, en_US, th
      -
    * - United States Minor Outlying Islands
      - UM
