@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.countries.united_kingdom import UnitedKingdom, UnitedKingdomStaticHolidays
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
@@ -19,6 +21,7 @@ class IsleOfMan(UnitedKingdom):
     """Using existing code in UnitedKingdom for now."""
 
     country = "IM"
+    parent_entity = UnitedKingdom
     subdivisions = ()  # Override UnitedKingdom subdivisions.
     subdivisions_aliases = {}  # Override UnitedKingdom subdivisions aliases.
 
@@ -31,25 +34,26 @@ class IsleOfMan(UnitedKingdom):
 
     def _populate_public_holidays(self) -> None:
         super()._populate_public_holidays()
-        # Easter Monday
-        self._add_easter_monday("Easter Monday")
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
-        # Whit Monday.
         if self._year <= 1970:
-            self._add_whit_monday("Whit Monday")
+            # Whit Monday.
+            self._add_whit_monday(tr("Whit Monday"))
 
-        # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
-            self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
+            # Late Summer Bank Holiday.
+            self._add_holiday_last_mon_of_aug(tr("Late Summer Bank Holiday"))
 
         # Isle of Man exclusive holidays
-        # TT bank holiday (first Friday in June)
-        self._add_holiday_1st_fri_of_jun("TT Bank Holiday")
 
-        # Tynwald Day
-        # Move to the next Monday if falls on a weekend.
-        jul_5 = self._add_holiday_jul_5("Tynwald Day")
+        # TT Bank Holiday.
+        self._add_holiday_1st_fri_of_jun(tr("TT Bank Holiday"))
+
+        # Tynwald Day.
+        jul_5 = self._add_holiday_jul_5(tr("Tynwald Day"))
         if self._year >= 1992:
+            # Move to the next Monday if falls on a weekend.
             self._move_holiday(jul_5, show_observed_label=False)
 
 

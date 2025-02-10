@@ -249,6 +249,8 @@ class HolidayBase(dict[date, str]):
     """Start year of holidays presence for this entity."""
     end_year: int = DEFAULT_END_YEAR
     """End year of holidays presence for this entity."""
+    parent_entity: Optional[type["HolidayBase"]] = None
+    """Optional parent entity to reference as a base."""
 
     def __init__(
         self,
@@ -364,16 +366,32 @@ class HolidayBase(dict[date, str]):
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
-        self.tr = (
-            translation(
+        if self._entity_code is not None:
+            fallback = language not in supported_languages
+            languages = [language] if language in supported_languages else None
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
                 self._entity_code,
-                fallback=language not in supported_languages,
-                languages=[language] if language in supported_languages else None,
-                localedir=str(Path(__file__).with_name("locale")),
-            ).gettext
-            if self._entity_code is not None
-            else gettext
-        )
+                fallback=fallback,
+                languages=languages,
+                localedir=locale_directory,
+            )
+            # Add a fallback if entity has parent translations.
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
+                    )
+                )
+            self.tr = entity_translation.gettext
+        else:
+            self.tr = gettext
+
         self.years = _normalize_arguments(int, years)
 
         # Populate holidays.
