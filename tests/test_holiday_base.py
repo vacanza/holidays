@@ -17,6 +17,7 @@ from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
+from holidays.countries import UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -1191,38 +1192,38 @@ class TestWorkdays(unittest.TestCase):
         self.assertEqual(self.hb.get_working_days_count("2024-04-29", "2024-05-06"), 4)
 
 
-class TestNextHoliday(unittest.TestCase):
+class TestClosestHoliday(unittest.TestCase):
     def setUp(self):
-        self.this_year = datetime.now().year
-        self.next_year = self.this_year + 1
-        self.previous_year = self.this_year - 1
-        self.hb = CountryStub3(years=self.this_year)
+        self.current_year = datetime.now().year
+        self.next_year = self.current_year + 1
+        self.previous_year = self.current_year - 1
+        self.hb = CountryStub3(years=self.current_year)
         self.next_labor_day_year = (
-            self.this_year
+            self.current_year
             if datetime.now().date() < self.hb.get_named("Custom May 1st Holiday")[0]
             else self.next_year
         )
         self.previous_labor_day_year = (
-            self.this_year
+            self.current_year
             if datetime.now().date() > self.hb.get_named("Custom May 1st Holiday")[0]
             else self.previous_year
         )
 
     def test_get_closest_holiday_forward(self):
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-01-01"),
-            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+            self.hb.get_closest_holiday(f"{self.current_year}-01-01"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-04-30"),
-            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+            self.hb.get_closest_holiday(f"{self.current_year}-04-30"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-05-01"),
-            (date(self.this_year, 5, 2), "Custom May 2nd Holiday"),
+            self.hb.get_closest_holiday(f"{self.current_year}-05-01"),
+            (date(self.current_year, 5, 2), "Custom May 2nd Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-05-02"),
+            self.hb.get_closest_holiday(f"{self.current_year}-05-02"),
             (date(self.next_year, 5, 1), "Custom May 1st Holiday"),
         )
         self.assertEqual(
@@ -1238,45 +1239,41 @@ class TestNextHoliday(unittest.TestCase):
             ],
         )
 
-    def test_get_closest_holiday_reverse(self):
+    def test_get_closest_holiday_backward(self):
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-12-31", in_future=False),
-            (date(self.this_year, 5, 2), "Custom May 2nd Holiday"),
+            self.hb.get_closest_holiday(f"{self.current_year}-12-31", direction="backward"),
+            (date(self.current_year, 5, 2), "Custom May 2nd Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-05-02", in_future=False),
-            (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+            self.hb.get_closest_holiday(f"{self.current_year}-05-02", direction="backward"),
+            (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.this_year}-04-30", in_future=False),
+            self.hb.get_closest_holiday(f"{self.current_year}-04-30", direction="backward"),
             (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
         )
         self.assertEqual(
-            self.hb.get_closest_holiday(f"{self.previous_year}-12-31", in_future=False),
+            self.hb.get_closest_holiday(f"{self.previous_year}-12-31", direction="backward"),
             (date(self.previous_year, 5, 2), "Custom May 2nd Holiday"),
         )
 
         self.assertIn(
-            self.hb.get_closest_holiday(in_future=False),
+            self.hb.get_closest_holiday(direction="backward"),
             [
                 (date(self.previous_labor_day_year, 5, 2), "Custom May 2nd Holiday"),
-                (date(self.this_year, 5, 1), "Custom May 1st Holiday"),
+                (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
             ],
         )
 
     def test_get_closest_holiday_corner_cases(self):
-        from holidays.countries.united_states import US
-
         us = US()
         # check for date before start of calendar
-        self.assertIsNone(us.get_closest_holiday("1777-01-01", in_future=False))
+        self.assertIsNone(us.get_closest_holiday("1777-01-01", direction="backward"))
 
         # check for date after end of calendar
         self.assertIsNone(us.get_closest_holiday("2100-12-31"))
 
     def test_get_closest_holiday_after_empty_year(self):
-        from holidays.countries.ukraine import UA
-
         ua = UA(years=2025)
         # check for date if a year has no holidays
         ua._add_holiday_jan_1("Custom holiday")
@@ -1285,8 +1282,6 @@ class TestNextHoliday(unittest.TestCase):
         )
 
     def test_get_closest_holiday_unsorted_calendars(self):
-        from holidays.countries.united_states import US
-
         us_calendar = US(years=2024)
 
         self.assertEqual(
@@ -1296,6 +1291,11 @@ class TestNextHoliday(unittest.TestCase):
 
         # check for date before start of calendar
         self.assertEqual(
-            us_calendar.get_closest_holiday(date(2024, 2, 1), in_future=False),
+            us_calendar.get_closest_holiday(date(2024, 2, 1), direction="backward"),
             (date(2024, 1, 15), "Martin Luther King Jr. Day"),
+        )
+
+    def test_get_closest_holiday_invalid_direction(self):
+        self.assertRaises(
+            AttributeError, lambda: HolidayBase().get_closest_holiday(direction="invalid")
         )
