@@ -415,6 +415,25 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName("Mahavir Jayanti", dt)
 
+    def test_ranged_subdiv_holidays(self):
+        warnings.simplefilter("always")
+
+        # Test out of range dates for Maharashtra
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="MH", years=year)
+
+        dt = (
+            "2001-03-26",
+            "2010-03-16",
+            "2015-03-21",
+            "2016-04-08",
+            "2025-03-30",
+            "2035-04-09",
+        )
+        self.assertHolidayName("Gudi Padwa", India(subdiv="MH"), dt)
+        self.assertNoHolidayName("Gudi Padwa", India(subdiv="DL"), dt)
+
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
 
