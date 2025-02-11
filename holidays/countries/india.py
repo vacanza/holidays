@@ -149,6 +149,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Gandhi Jayanti.
         self._add_holiday_oct_2("Gandhi Jayanti")
 
+        # Children's day
+        self._add_holiday_nov_14("Children's Day")
+
         # Labour Day.
         self._add_labor_day("Labour Day")
 
