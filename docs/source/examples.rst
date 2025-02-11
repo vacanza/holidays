@@ -214,32 +214,51 @@ To calculate the number or working days between two specified dates:
 
 Here we calculate the number of working days in Q2 2024.
 
-Getting the next/previous holiday
----------------------------------
+Getting the closest (next or previous) holiday
+----------------------------------------------
 
-You can request the next/previous holiday of your selected calendar.
-The function returns the date and the name of the holiday - exluding today.
+You can fetch next or previous holiday for a target date of your selected calendar.
+The function returns found holiday's date and name excluding the target date.
+
+Get the next holiday for the current date:
 
 .. code-block:: python
 
    >>> us_holidays = holidays.US(years=2025)
-   >>> us_holidays.get_closest_holiday() # get the next holiday after today
-   (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
-   >>> us_holidays.get_closest_holiday(in_future=False)  # get the previous holiday before today
-   (datetime.date(2025, 1, 1), "New Year's Day")
-   >>> us_holidays.get_closest_holiday("2025-02-01")  # get the next holiday after a specific date
-   (datetime.date(2025, 2, 17), "Washington's Birthday")
-   >>> us_holidays.get_closest_holiday("2025-02-01", in_future=False)  # get the previous holiday before a specific date
+   >>> us_holidays.get_closest_holiday()
    (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
 
-If no holiday can be found (e.g. because the date would be after the end date /
-before the start date), None is returned.
+Get the previous holiday for the current date:
 
 .. code-block:: python
 
-   >>> us_holidays.get_closest_holiday("2100-12-31")
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday(direction="backward")
+   (datetime.date(2025, 1, 1), "New Year's Day")
+
+Get the next holiday for a specific target date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday("2025-02-01")
+   (datetime.date(2025, 2, 17), "Washington's Birthday")
+
+Get the previous holiday for a specific target date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday("2025-02-01", direction="backward")
+   (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
+
+If the closest holiday cannot be found None is returned.
+
+.. code-block:: python
+
+   >>> print(us_holidays.get_closest_holiday("2100-12-31"))
    None
-   >>> us_holidays.get_closest_holiday("1777-01-01", in_future=False)
+   >>> print(us_holidays.get_closest_holiday("1777-01-01", direction="backward"))
    None
 
 Date from holiday name
