@@ -2,9 +2,13 @@ site_name: holidays
 theme:
   name: readthedocs
 nav:
-  - Home: README.md
+  - Home: index.md
   - Additional Examples: examples.md
   - Contributing: CONTRIBUTING.md
   - Changelog: changelog.md
 plugins:
   - search
+markdown_extensions:
+    - markdown_include.include:
+        base_path: docs
+    - admonition

@@ -11,15 +11,8 @@ True
 False
 ```
 
-::: tip
-::: title
-Tip
-:::
-
-Don\'t do this! It is not efficient because it is initializing a new
-Holiday object and generating a list of all the holidays in 2014 during
-each comparison.
-:::
+!!! tip "Tip"
+    Don't do this! It is not efficient because it is initializing a new Holiday object and generating a list of all the holidays in 2014 during each comparison.
 
 It is more efficient to create the object only once:
 
@@ -31,8 +24,8 @@ True
 False
 ```
 
-You can use the `country_holidays`{.interpreted-text role="py:func"} or
-`financial_holidays`{.interpreted-text role="py:func"} functions to
+You can use the `country_holidays` or
+`financial_holidays` functions to
 create the object using a string with the country code:
 
 ``` python
@@ -48,7 +41,7 @@ in:
 >>> us_holidays = holidays.US(years=range(2020, 2026))  # US 2020-2025 holidays
 ```
 
-Let\'s print out the holidays in 2014 specific to California, USA:
+Let's print out the holidays in 2014 specific to California, USA:
 
 ``` python
 >>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
@@ -67,7 +60,7 @@ Let\'s print out the holidays in 2014 specific to California, USA:
 2014-12-25 Christmas Day
 ```
 
-So far we\'ve only checked holidays in 2014 so that\'s the only year the
+So far we've only checked holidays in 2014 so that's the only year the
 Holidays object has generated:
 
 ``` python
@@ -79,7 +72,7 @@ set([2014])
 
 ## Expand parameter
 
-Because by default the `expand`{.interpreted-text role="py:attr"}
+Because by default the `expand`
 parameter is `True` the Holiday object will calculate and add holidays
 for other years when they are required:
 
@@ -92,7 +85,7 @@ set([2013, 2014])
 20
 ```
 
-If we change the `expand`{.interpreted-text role="py:attr"} parameter to
+If we change the `expand` parameter to
 `False` the Holiday object will no longer add holidays from new years:
 
 ``` python
@@ -107,7 +100,7 @@ True
 ## Observed parameter
 
 January 1st, 2012 fell on a Sunday so the statutory holiday was observed
-on the 2nd. By default the `observed`{.interpreted-text role="py:attr"}
+on the 2nd. By default the `observed`
 param is `True` so the holiday list will include January 2nd, 2012 as a
 holiday:
 
@@ -122,8 +115,8 @@ True
 "New Year's Day (observed)"
 ```
 
-The values of `observed`{.interpreted-text role="py:attr"} and
-`expand`{.interpreted-text role="py:attr"} can be changed on the fly and
+The values of `observed` and
+`expand` can be changed on the fly and
 the holiday list will be adjusted accordingly:
 
 ``` python
@@ -223,7 +216,7 @@ Here we calculate the number of working days in Q2 2024.
 ## Date from holiday name
 
 Holidays can be retrieved using their name too.
-`get_named`{.interpreted-text role="py:meth"} receives a string and
+`get_named` receives a string and
 returns a list of holidays matching it (even partially, with case
 insensitive check):
 
@@ -261,8 +254,7 @@ The other form of addition is also available:
 ```
 
 We can even get a set of holidays that include all the
-subdivision-specific holidays using the built-in `sum`{.interpreted-text
-role="py:func"} function:
+subdivision-specific holidays using the built-in `sum` function:
 
 ``` python
 >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
@@ -273,12 +265,11 @@ role="py:func"} function:
 ## Creating custom holidays (or augmenting existing ones with private ones)
 
 Sometimes we may not be able to use the official federal statutory
-holiday list in our code. Let\'s pretend we work for a company that does
-not include New Year\'s Day as a statutory holiday but does include
-\"Ninja Turtle Day\" on July 13th. We can create a new class that
+holiday list in our code. Let's pretend we work for a company that does
+not include New Year's Day as a statutory holiday but does include
+"Ninja Turtle Day" on July 13th. We can create a new class that
 inherits the US (please note the base class import path) and the only
-method we need to override is `_populate`{.interpreted-text
-role="py:meth"}:
+method we need to override is `_populate`:
 
 ``` python
 >>> from holidays.countries import US
@@ -301,7 +292,7 @@ True
 ```
 
 We can also inherit from the HolidayBase class which has an empty
-`_populate`{.interpreted-text role="py:meth"} method so we start with no
+`_populate` method so we start with no
 holidays and must define them all ourselves. This is how we would create
 a holidays class for a country that is not supported yet:
 
@@ -336,7 +327,7 @@ not currently supported please contribute your code to the project!
 
 Perhaps you just have a list of dates that are holidays and want to turn
 them into a Holiday class to access all the useful functionality. You
-can use the py`append()`{.interpreted-text role="meth"} method which
+can use the py:meth:append() method which
 accepts a dictionary of {date: name} pairs, a list of dates, or even
 singular date/string/timestamp objects:
 
@@ -371,6 +362,5 @@ True
 True
 ```
 
-::: deprecated
-In the future
-:::
+!!! danger "Deprecated"
+    In the future

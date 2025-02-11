@@ -750,7 +750,7 @@ category by default. All other default values are highlighted with bold:
 
 The standard way to refer to a financial market is to use its [ISO 10383
 MIC](https://www.iso20022.org/market-identifier-codes) (Market
-Identifier Code) as a \"country\" code when available. The following
+Identifier Code) as a "country" code when available. The following
 financial markets are available:
 
   ------------------------------------------------------------------------------
