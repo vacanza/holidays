@@ -59,15 +59,21 @@ flexible as possible.
     :target: https://github.com/vacanza/holidays/commits/dev
     :alt: GitHub last commit
 
-+--------+------------------------------------------------+
-| PyPI   | |downloads| |version| |release date|           |
-+--------+------------------------------------------------+
-| CI/CD  | |status| |documentation|                       |
-+--------+------------------------------------------------+
-| Code   | |license| |python versions| |style| |coverage| |
-+--------+------------------------------------------------+
-| GitHub | |stars| |forks| |contributors| |last commit|   |
-+--------+------------------------------------------------+
+.. |doi| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat
+    :target: https://doi.org/10.5281/zenodo.14847397
+    :alt: Open World Holidays Franework DOI
+
++----------+------------------------------------------------+
+| PyPI     | |downloads| |version| |release date|           |
++----------+------------------------------------------------+
+| CI/CD    | |status| |documentation|                       |
++----------+------------------------------------------------+
+| Code     | |license| |python versions| |style| |coverage| |
++----------+------------------------------------------------+
+| GitHub   | |stars| |forks| |contributors| |last commit|   |
++----------+------------------------------------------------+
+| Citation | |doi|                                          |
++----------+------------------------------------------------+
 
 Install
 -------
@@ -538,7 +544,7 @@ All other default values are highlighted with bold:
    * - Isle of Man
      - IM
      -
-     -
+     - **en_GB**, en_US, th
      -
    * - Israel
      - IL
@@ -738,8 +744,8 @@ All other default values are highlighted with bold:
    * - Panama
      - PA
      -
-     -
-     -
+     - en_US, **es**, uk
+     - BANK
    * - Papua New Guinea
      - PG
      -
@@ -913,7 +919,7 @@ All other default values are highlighted with bold:
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
-     -
+     - **en_GB**, en_US, th
      -
    * - United States Minor Outlying Islands
      - UM

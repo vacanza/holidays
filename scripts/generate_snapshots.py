@@ -63,7 +63,7 @@ class SnapshotGenerator:
 
     @staticmethod
     def save(snapshot, file_path):
-        with open(file_path, "w") as output:
+        with open(file_path, "w", newline="\n") as output:
             output.write(
                 json.dumps({str(dt): name for dt, name in sorted(snapshot.items())}, indent=4)
             )

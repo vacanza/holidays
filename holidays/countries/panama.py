@@ -10,66 +10,94 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import JUL
+from holidays.constants import BANK, PUBLIC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Panama
-      - https://publicholidays.com.pa/
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Panama
+        - `Labor Code 1947 <https://docs.panama.justia.com/federales/leyes/67-de-1947-nov-26-1947.pdf>`_
+        - `Cabinet Decree #347 of 1969 <https://docs.panama.justia.com/federales/decretos-de-gabinete/decreto-de-gabinete-347-de-1969-nov-14-1969.pdf>`_
+        - `Labor Code 1971 <https://www.mitradel.gob.pa/wp-content/uploads/2016/12/c%C3%B3digo-detrabajo.pdf>`_
+        - `Law #4 of Jun 25, 1990 <https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/1990/1990/LEY/Administrador%20Legispan_21570_1990_7_2_ASAMBLEA%20LEGISLATIVA_4.pdf>`_
+        - `Law #55 of Nov 7, 2001 <https://docs.panama.justia.com/federales/leyes/55-de-2001-nov-14-2001.pdf>`_
     """
 
     country = "PA"
-    observed_label = "%s (observed)"
+    default_language = "es"
+    # %s (observed).
+    observed_label = tr("%s (puente)")
+    supported_categories = (BANK, PUBLIC)
+    supported_languages = ("en_US", "es", "uk")
+    start_year = 1948
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, PanamaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 1972)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
 
-        # Martyrs' Day
-        self._add_observed(self._add_holiday_jan_9("Martyrs' Day"))
+        if self._year >= 1972:
+            # Martyrs' Day.
+            self._add_observed(self._add_holiday_jan_9(tr("Día de los Mártires")))
 
-        # Carnival
-        self._add_carnival_tuesday("Carnival")
+        if self._year <= 1971:
+            # Constitution Day.
+            self._add_holiday_mar_1(tr("Día de la Constitución"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Carnival Tuesday.
+        self._add_carnival_tuesday(tr("Martes de Carnaval"))
 
-        # Labour Day
-        self._add_observed(self._add_labor_day("Labour Day"))
+        # Good Friday.
+        self._add_good_friday(tr("Viernes Santo"))
 
-        # Separation Day
-        self._add_holiday_nov_3("Separation Day")
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
 
-        # National Symbols Day
-        self._add_holiday_nov_4("National Symbols Day")
+        # Separation Day.
+        self._add_observed(self._add_holiday_nov_3(tr("Separación de Panamá de Colombia")))
 
-        # Colon Day
-        self._add_holiday_nov_5("Colon Day")
+        # Law #55 of Nov 7, 2001.
+        if self._year >= 2002:
+            # Colon Day.
+            self._add_observed(self._add_holiday_nov_5(tr("Día de Colón")))
 
-        # Los Santos Uprising Day
-        self._add_holiday_nov_10("Los Santos Uprising Day")
+        # Cabinet Decree #347 of 1969.
+        if self._year >= 1969:
+            # Los Santos Uprising Day.
+            self._add_observed(self._add_holiday_nov_10(tr("Primer Grito de Independencia")))
 
-        # Independence Day
-        self._add_observed(self._add_holiday_nov_28("Independence Day"))
+        # Independence Day.
+        self._add_observed(self._add_holiday_nov_28(tr("Independencia de Panamá de España")))
 
-        # Mother's Day
-        self._add_observed(self._add_holiday_dec_8("Mother's Day"))
+        # Mother's Day.
+        self._add_observed(self._add_holiday_dec_8(tr("Día de la Madre")))
 
-        # National Mourning Day
         if self._year >= 2022:
-            self._add_observed(self._add_holiday_dec_20("National Mourning Day"))
+            # National Mourning Day.
+            self._add_observed(self._add_holiday_dec_20(tr("Día de Duelo Nacional")))
 
-        # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"))
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Navidad")))
+
+    def _populate_bank_holidays(self):
+        # Carnival Monday.
+        self._add_carnival_monday(tr("Lunes de Carnaval"))
+
+        # National Symbols Day.
+        self._add_holiday_nov_4(tr("Día de los Símbolos Patrios"))
 
 
 class PA(Panama):
@@ -78,3 +106,13 @@ class PA(Panama):
 
 class PAN(Panama):
     pass
+
+
+class PanamaStaticHolidays:
+    # Presidential Inauguration Day.
+    presidential_inauguration_day = tr("Toma posesión del Presidente de la república")
+    special_public_holidays = {
+        2014: (JUL, 1, presidential_inauguration_day),
+        2019: (JUL, 1, presidential_inauguration_day),
+        2024: (JUL, 1, presidential_inauguration_day),
+    }
