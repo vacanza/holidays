@@ -1,0 +1,10 @@
+site_name: holidays
+theme:
+  name: readthedocs
+nav:
+  - Home: README.md
+  - Additional Examples: examples.md
+  - Contributing: CONTRIBUTING.md
+  - Changelog: changelog.md
+plugins:
+  - search
