@@ -14,13 +14,14 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
 import warnings
+from bisect import bisect_left, bisect_right
 from calendar import isleap
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Literal, Optional, Union, cast
 
 from dateutil.parser import parse
 
@@ -984,6 +985,36 @@ class HolidayBase(dict[date, str]):
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
+
+    def get_closest_holiday(
+        self,
+        target_date: DateLike = None,
+        direction: Literal["forward", "backward"] = "forward",
+    ) -> Optional[tuple[date, str]]:
+        """Return the date and name of the next holiday for a target_date
+        if direction is "forward" or the previous holiday if direction is "backward".
+        If target_date is not provided the current date will be used by default."""
+
+        if direction not in {"backward", "forward"}:
+            raise AttributeError(f"Unknown direction: {direction}")
+
+        dt = self.__keytransform__(target_date or datetime.now().date())
+        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+            self._populate(next_year)
+        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+            self._populate(previous_year)
+
+        sorted_dates = sorted(self.keys())
+        position = (
+            bisect_right(sorted_dates, dt)
+            if direction == "forward"
+            else bisect_left(sorted_dates, dt) - 1
+        )
+        if 0 <= position < len(sorted_dates):
+            dt = sorted_dates[position]
+            return dt, self[dt]
+
+        return None
 
     def get_nth_working_day(self, key: DateLike, n: int) -> date:
         """Return n-th working day from provided date (if n is positive)
