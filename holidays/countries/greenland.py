@@ -19,18 +19,20 @@ from holidays.holiday_base import HolidayBase
 
 class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    Greenlandic holidays.
+    Greenland holidays.
 
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Greenland
-    - https://www.norden.org/en/info-norden/public-holidays-greenland
-    - https://www.timeanddate.com/holidays/greenland/
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Greenland
+        - `Greenlandic names source <https://nalunaarutit.gl/groenlandsk-lovgivning/2008/bkg-26-2008?sc_lang=kl-GL>`_
+        - `Translation source <https://www.norden.org/en/info-norden/public-holidays-greenland>`_
     """
 
     country = "GL"
     default_language = "kl"
     supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("da", "en_US", "kl")
+    supported_languages = ("da", "en_US", "fi", "is", "kl", "no", "sv", "uk")
+    # Greenland Home Rule Act 1978.
+    start_year = 1979
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -39,50 +41,51 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Ukioq nutaaq"))
+        self._add_new_years_day(tr("Ukiortaaq"))
 
         # Maundy Thursday.
-        self._add_holy_thursday(tr("Sisamanngornermi illernartumi"))
+        self._add_holy_thursday(tr("Sisamanngortoq illernartoq"))
 
         # Good Friday.
-        self._add_good_friday(tr("Tallimanngorneq ajortorsiorneq"))
+        self._add_good_friday(tr("Tallimanngorneq tannaartoq"))
 
         # Easter Sunday.
-        self._add_easter_sunday(tr("Poorskimi"))
+        self._add_easter_sunday(tr("Poorskip ullua"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Poorskimi ullut aappaat"))
+        self._add_easter_monday(tr("Poorskip-aappaa"))
 
-        # Great Day of Prayers.
+        # Great Prayer Day.
         self._add_holiday_26_days_past_easter(tr("Ulloq qinuffiusoq"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Ulloq Kristusip qilaliarnera"))
+        self._add_ascension_thursday(tr("Qilaliarfik"))
 
         # Whit Sunday.
         self._add_whit_sunday(tr("Piinsip ullua"))
 
         # Whit Monday.
-        self._add_whit_monday(tr("Piinsip ulluisa aappaanni"))
+        self._add_whit_monday(tr("Piinsip-aappaa"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Juulli"))
+        self._add_christmas_day(tr("Juullip ullua"))
 
         # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Juullip aappaa"))
+        self._add_christmas_day_two(tr("Juullip-aappaa"))
 
     def _populate_optional_holidays(self):
         # Epiphany.
-        self._add_epiphany_day(tr("Mitaarneq"))
+        self._add_epiphany_day(tr("Kunngit pingasut ulluat"))
 
         # International Workers' Day.
         self._add_labor_day(tr("Sulisartut ulluat"))
 
-        # National Day.
-        self._add_holiday_jun_21(tr("Ullortuneq"))
+        if self._year >= 1983:
+            # National Day.
+            self._add_holiday_jun_21(tr("Ullortuneq"))
 
         # Christmas Eve.
-        self._add_christmas_eve(tr("Juulliaqqami"))
+        self._add_christmas_eve(tr("Juulliaraq"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Ukiortaami"))
