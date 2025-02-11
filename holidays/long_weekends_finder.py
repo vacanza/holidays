@@ -16,26 +16,22 @@ import holidays
 
 
 def find_long_weekends(country, year, month=None, language=None, exact_range=False):
-    """
-    Finds long weekends for a given country and year.
+    
+    # Validate year
+    if not isinstance(year, int) or not (1900 <= year <= 2100):
+        raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")
 
-    A long weekend is a holiday adjacent to a weekend.
-
-    Parameters:
-    - country (str): Country code (e.g., 'IN', 'US').
-    - year (int): The year to check.
-    - month (int, optional): Month to check (1-12). Defaults to None.
-    - language (str, optional): Language for holiday names.
-    - exact_range (bool, optional): If True, restricts to given month.
-
-    Returns:
-    - List of dictionaries with start date, end date, duration, and holidays.
-    """
-
+    # Validate country (ensure it's a valid country code supported by the holidays library)
     try:
         holiday_obj = holidays.country_holidays(country, years=year, language=language)
+    except KeyError:
+        raise ValueError(f"Invalid country code: {country}")
     except Exception as e:
         raise ValueError(f"Error fetching holidays: {e}")
+
+    # Validate month (if provided)
+    if month is not None and (month < 1 or month > 12):
+        raise ValueError("Invalid month provided. Month must be between 1 and 12.")
 
     weekends = holiday_obj.weekend
     working_weekend_days = getattr(holiday_obj, "weekend_workdays", set())
@@ -76,6 +72,7 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
             seen_dates.add(next_day)
             next_day += timedelta(days=1)
 
+        # Exact range filtering
         if exact_range and (start_date.month != month or end_date.month != month):
             continue
 
