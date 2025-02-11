@@ -59,15 +59,21 @@ flexible as possible.
     :target: https://github.com/vacanza/holidays/commits/dev
     :alt: GitHub last commit
 
-+--------+------------------------------------------------+
-| PyPI   | |downloads| |version| |release date|           |
-+--------+------------------------------------------------+
-| CI/CD  | |status| |documentation|                       |
-+--------+------------------------------------------------+
-| Code   | |license| |python versions| |style| |coverage| |
-+--------+------------------------------------------------+
-| GitHub | |stars| |forks| |contributors| |last commit|   |
-+--------+------------------------------------------------+
+.. |doi| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat
+    :target: https://doi.org/10.5281/zenodo.14847397
+    :alt: Open World Holidays Franework DOI
+
++----------+------------------------------------------------+
+| PyPI     | |downloads| |version| |release date|           |
++----------+------------------------------------------------+
+| CI/CD    | |status| |documentation|                       |
++----------+------------------------------------------------+
+| Code     | |license| |python versions| |style| |coverage| |
++----------+------------------------------------------------+
+| GitHub   | |stars| |forks| |contributors| |last commit|   |
++----------+------------------------------------------------+
+| Citation | |doi|                                          |
++----------+------------------------------------------------+
 
 Install
 -------
@@ -146,7 +152,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 157 country codes. The standard way to refer to a country
+We currently support 158 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -503,7 +509,7 @@ All other default values are highlighted with bold:
    * - Hong Kong
      - HK
      -
-     -
+     - en_HK, en_US, th, zh_CN, **zh_HK**
      - OPTIONAL
    * - Hungary
      - HU
@@ -538,7 +544,7 @@ All other default values are highlighted with bold:
    * - Isle of Man
      - IM
      -
-     -
+     - **en_GB**, en_US, th
      -
    * - Israel
      - IL
@@ -738,8 +744,8 @@ All other default values are highlighted with bold:
    * - Panama
      - PA
      -
-     -
-     -
+     - en_US, **es**, uk
+     - BANK
    * - Papua New Guinea
      - PG
      -
@@ -790,6 +796,11 @@ All other default values are highlighted with bold:
      -
      -
      - HALF_DAY, WORKDAY
+   * - Saint Lucia
+     - LC
+     -
+     - **en_LC**, en_US
+     -
    * - Samoa
      - WS
      -
@@ -903,12 +914,12 @@ All other default values are highlighted with bold:
    * - United Arab Emirates
      - AE
      -
-     - **ar**, en_US
-     -
+     - **ar**, en_US, th
+     - GOVERNMENT, OPTIONAL
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
-     -
+     - **en_GB**, en_US, th
      -
    * - United States Minor Outlying Islands
      - UM

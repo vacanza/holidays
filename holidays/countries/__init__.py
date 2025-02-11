@@ -134,6 +134,7 @@ from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
+from .saint_lucia import SaintLucia, LC, LCA
 from .samoa import Samoa, WS, WSM
 from .san_marino import SanMarino, SM, SMR
 from .saudi_arabia import SaudiArabia, SA, SAU
