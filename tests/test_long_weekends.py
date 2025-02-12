@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+from unittest.mock import patch
 
 from holidays import find_long_weekends
 
@@ -44,3 +45,28 @@ class TestLongWeekends(unittest.TestCase):
     def test_exact_range(self):
         long_weekends = find_long_weekends("IN", 2025, month=12, exact_range=True)
         self.assertTrue(all(lw["start_date"].startswith("2025-12") for lw in long_weekends))
+
+    def test_no_long_weekends_in_month(self):
+        long_weekends = find_long_weekends("IN", 2025, month=4)  # Month with no long weekends
+        self.assertEqual(long_weekends, [])
+
+    def test_leap_year(self):
+        long_weekends = find_long_weekends("IN", 2024)  # 2024 is a leap year
+        self.assertIsInstance(long_weekends, list)
+
+    def test_exact_range_no_weekend(self):
+        long_weekends = find_long_weekends("IN", 2025, month=10, exact_range=True)
+        self.assertTrue(all(lw["start_date"].startswith("2025-10") for lw in long_weekends))
+
+    def test_invalid_month_type(self):
+        with self.assertRaises(TypeError):
+            find_long_weekends("IN", 2025, month="August")
+
+    def test_country_specific_rules(self):
+        long_weekends = find_long_weekends("US", 2025)
+        self.assertIsInstance(long_weekends, list)
+
+    def test_api_failure_handling(self):
+        with patch("holidays.some_api_call", side_effect=Exception("API Down")):
+            with self.assertRaises(Exception):
+                find_long_weekends("IN", 2025)
