@@ -16,7 +16,6 @@ import holidays
 
 
 def find_long_weekends(country, year, month=None, language=None, exact_range=False):
-    
     # Validate year
     if not isinstance(year, int) or not (1900 <= year <= 2100):
         raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")
