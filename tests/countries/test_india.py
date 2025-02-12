@@ -217,6 +217,29 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayName("Gudi Padwa", India(subdiv="MH"), dt)
         self.assertNoHolidayName("Gudi Padwa", India(subdiv="DL"), dt)
 
+        # Test out of range dates for Punjab
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="PB", years=year)
+
+        dt = (
+            "2001-01-02",
+            "2010-01-05",
+            "2025-01-06",
+            "2035-01-16",
+        )
+        self.assertHolidayName("Guru Gobind Singh Jayanti", India(subdiv="PB"), dt)
+        self.assertNoHolidayName("Guru Gobind Singh Jayanti", India(subdiv="DL"), dt)
+
+        dt = (
+            "2001-04-13",
+            "2010-04-14",
+            "2025-04-13",
+            "2035-04-14",
+        )
+        self.assertHolidayName("Vaisakhi", India(subdiv="PB"), dt)
+        self.assertNoHolidayName("Vaisakhi", India(subdiv="DL"), dt)
+
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
 

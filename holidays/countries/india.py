@@ -12,7 +12,7 @@
 
 import warnings
 
-from holidays.calendars.gregorian import MAR, APR, OCT, NOV, AUG, SEP
+from holidays.calendars.gregorian import JAN, MAR, APR, OCT, NOV, AUG, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -579,7 +579,8 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (APR, 9),
         }
         if self._year in gudi_padwa_dates:
-            self._add_holiday("Gudi Padwa", *gudi_padwa_dates[self._year])
+            self._add_holiday("Gudi Padwa", gudi_padwa_dates[self._year])
+
         self._add_holiday_feb_19("Chhatrapati Shivaji Maharaj Jayanti")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_may_1("Maharashtra Day")
@@ -602,6 +603,86 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Punjab.
     def _populate_subdiv_pb_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
+        gobind_singh_jayanti_dates = {
+            2001: (JAN, 2),
+            2002: (JAN, 21),
+            2003: (DEC, 29),
+            2004: (NOV, 20),
+            2005: (JAN, 5),
+            2006: (JAN, 5),
+            2007: (JAN, 5),
+            2008: (JAN, 5),
+            2009: (JAN, 5),
+            2010: (JAN, 5),
+            2011: (JAN, 5),
+            2012: (JAN, 5),
+            2013: (JAN, 18),
+            2014: (JAN, 7),
+            2015: (JAN, 5),
+            2016: (JAN, 16),
+            2017: (JAN, 5),
+            2019: (JAN, 13),
+            2020: (JAN, 2),
+            2021: (JAN, 20),
+            2022: (JAN, 9),
+            2024: (JAN, 17),
+            2025: (JAN, 6),
+            2026: (JAN, 20),
+            2027: (JAN, 15),
+            2028: (JAN, 4),
+            2029: (JAN, 15),
+            2030: (JAN, 10),
+            2032: (JAN, 18),
+            2033: (JAN, 7),
+            2034: (JAN, 17),
+            2035: (JAN, 16),
+        }
+        if self._year in gobind_singh_jayanti_dates:
+            self._add_holiday("Guru Gobind Singh Jayanti", gobind_singh_jayanti_dates[self._year])
+
+        # https://www.timeanddate.com/holidays/india/vaisakhi
+        vaisakhi_dates = {
+            2001: (APR, 13),
+            2002: (APR, 14),
+            2003: (APR, 14),
+            2004: (APR, 13),
+            2005: (APR, 14),
+            2006: (APR, 14),
+            2007: (APR, 14),
+            2008: (APR, 13),
+            2009: (APR, 14),
+            2010: (APR, 14),
+            2011: (APR, 14),
+            2012: (APR, 13),
+            2013: (APR, 13),
+            2014: (APR, 14),
+            2015: (APR, 14),
+            2016: (APR, 13),
+            2017: (APR, 14),
+            2018: (APR, 14),
+            2019: (APR, 14),
+            2020: (APR, 13),
+            2021: (APR, 14),
+            2022: (APR, 14),
+            2023: (APR, 14),
+            2024: (APR, 13),
+            2025: (APR, 13),
+            2026: (APR, 14),
+            2027: (APR, 14),
+            2028: (APR, 13),
+            2029: (APR, 14),
+            2030: (APR, 14),
+            2031: (APR, 14),
+            2032: (APR, 13),
+            2033: (APR, 14),
+            2034: (APR, 14),
+            2035: (APR, 14),
+        }
+        if self._year in vaisakhi_dates:
+            self._add_holiday("Vaisakhi", vaisakhi_dates[self._year])
+
+
         self._add_holiday_jan_13("Lohri")
         self._add_holiday_nov_1("Punjab Day")
 
