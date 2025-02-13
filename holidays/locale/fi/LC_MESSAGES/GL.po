@@ -10,16 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Greenland holidays en_US localization.
+# Greenland holidays fi localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.67\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2025-02-11 17:41+0200\n"
+"PO-Revision-Date: 2025-02-11 18:40+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,64 +28,64 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Ukiortaaq"
-msgstr "New Year's Day"
+msgstr "Uudenvuodenpäivä"
 
 #. Maundy Thursday.
 msgid "Sisamanngortoq illernartoq"
-msgstr "Maundy Thursday"
+msgstr "Kiirastorstai"
 
 #. Good Friday.
 msgid "Tallimanngorneq tannaartoq"
-msgstr "Good Friday"
+msgstr "Pitkäperjantai"
 
 #. Easter Sunday.
 msgid "Poorskip ullua"
-msgstr "Easter Sunday"
+msgstr "Pääsiäispäivä"
 
 #. Easter Monday.
 msgid "Poorskip-aappaa"
-msgstr "Easter Monday"
+msgstr "Toinen pääsiäispäivä"
 
 #. Great Prayer Day.
 msgid "Ulloq qinuffiusoq"
-msgstr "Great Prayer Day"
+msgstr "Suuri rukouspäivä"
 
 #. Ascension Day.
 msgid "Qilaliarfik"
-msgstr "Ascension Day"
+msgstr "Helatorstai"
 
 #. Whit Sunday.
 msgid "Piinsip ullua"
-msgstr "Whit Sunday"
+msgstr "Helluntaipäivä"
 
 #. Whit Monday.
 msgid "Piinsip-aappaa"
-msgstr "Whit Monday"
+msgstr "Toinen helluntaipäivä"
 
 #. Christmas Day.
 msgid "Juullip ullua"
-msgstr "Christmas Day"
+msgstr "Joulupäivä"
 
 #. Second Day of Christmas.
 msgid "Juullip-aappaa"
-msgstr "Second Day of Christmas"
+msgstr "Tapaninpäivä"
 
 #. Epiphany.
 msgid "Kunngit pingasut ulluat"
-msgstr "Epiphany"
+msgstr "Loppiainen"
 
 #. International Workers' Day.
 msgid "Sulisartut ulluat"
-msgstr "International Workers' Day"
+msgstr "Kansainvälinen työn päivä"
 
 #. National Day.
 msgid "Ullortuneq"
-msgstr "National Day"
+msgstr "Kansallispäivä"
 
 #. Christmas Eve.
 msgid "Juulliaraq"
-msgstr "Christmas Eve"
+msgstr "Jouluaatto"
 
 #. New Year's Eve.
 msgid "Ukiortaami"
-msgstr "New Year's Eve"
+msgstr "Uudenvuodenaatto"
