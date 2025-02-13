@@ -21,3 +21,4 @@ MANIFEST
 Pipfile
 sbom.json
 venv/
+site/
