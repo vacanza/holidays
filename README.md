@@ -113,41 +113,15 @@ category by default. All other default values are highlighted with bold:
 | Afghanistan    |  AF    |               |    en_US, **fa_AF**, ps_AF |                          |
 | Albania        |  AL    |               |    en_US, **sq**, uk       |                          |
 | Algeria        |  DZ    |               |    **ar**, en_US, fr       |                          |
-| American Samoa |  AS    | Can also be loaded as country US, subdivision AS |   UNOFFICIAL       |
-Andorra         AD     Parishes: 02, 03, 04, 05, 06,
-                     07, 08
-
-Angola          AO                                      en_US,
-                                                      **pt_AO**, uk
-
-Argentina       AR                                      en_US, **es**,
-                                                      uk
-
-Armenia         AM                                      en_US, **hy**
-
-Aruba           AW                                      en_US, nl,
-                                                      **pap_AW**, uk
-
-Australia       AU     States and territories: ACT      **en_AU**,     BANK, HALF_DAY
-                     (Australian Capital Territory),  en_US, th
-                     NSW (New South Wales), NT
-                     (Northern Territory), QLD
-                     (Queensland), SA (South
-                     Australia), TAS (Tasmania), VIC
-                     (Victoria), WA (Western
-                     Australia)
-
-Austria         AT     States: 1 (Burgenland, Bgld, B), **de**, en_US, BANK
-                     2 (Kärnten, Ktn, K), 3           uk
-                     (Niederösterreich, NÖ, N), 4
-                     (Oberösterreich, OÖ, O), 5
-                     (Salzburg, Sbg, S), 6
-                     (Steiermark, Stmk, St), 7
-                     (Tirol, T), 8 (Vorarlberg, Vbg,
-                     V), 9 (Wien, W)
-
-Azerbaijan      AZ                                      **az**, en_US, WORKDAY
-                                                      uk
+| American <br> Samoa |  AS    | Can also be loaded as <br> country US, <br> subdivision AS |   | UNOFFICIAL
+| Andorra        |  AD    |  Parishes: 02, 03, 04, <br> 05, 06, 07, 08 |   |   |
+| Angola         |  AO    |               |    en_US, **pt_AO**, uk    |   |   |
+| Argentina      |  AR    |               |    en_US, **es**, uk       |   |   |
+| Armenia        |  AM    |               |    en_US, **hy**           |   |   |
+| Aruba          |  AW    |               |    en_US, nl, **pap_AW**, uk |  |  |
+| Australia      |  AU    |  States and territories: <br> ACT (Australian <br> Capital Territory), <br> NSW (New South <br> Wales), NT (Northern <br> Territory), QLD <br> (Queensland), SA <br> (South Australia), TAS <br> (Tasmania), VIC <br> (Victoria), WA <br> (Western Australia) | **en_AU**, en_US, th  | BANK, HALF_DAY |
+| Austria        |  AT    |  States: 1 (Burgenland, <br> Bgld, B), 2 (Kärnten, <br> Ktn, K), 3 <br> (Niederösterreich, <br> NÖ, N), 4 <br> (Oberösterreich, OÖ, <br>  O), 5 (Salzburg, Sbg, <br> S), 6 (Steiermark, <br> Stmk, St), 7 (Tirol, T), <br> 8 (Vorarlberg, Vbg, V), <br> 9 (Wien, W) | **de**, en_US, uk | BANK |
+| Azerbaijan     |  AZ     |      | **az**, en_US, uk | WORKDAY |
 
 Bahamas         BS
 
