@@ -125,7 +125,7 @@ msgstr "วันหลังวันขึ้นปีใหม่"
 
 #. The day following Ching Ming Festival.
 msgid "清明節翌日"
-msgstr "วันหลังวันเช็งเม้ง\""
+msgstr "วันหลังวันเช็งเม้ง"
 
 #. The day following Easter Monday.
 msgid "復活節星期一翌日"
