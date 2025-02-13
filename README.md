@@ -5,26 +5,12 @@ subdivision- (e.g. state or province) specific sets of
 government-designated holidays on the fly. It aims to make determining
 whether a specific date is a holiday as fast and flexible as possible.
 
-  ---------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  PyPI       [![PyPI downloads](https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat)](https://pypi.org/project/holidays)
-             [![PyPI version](https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat)](https://pypi.org/project/holidays)
-             [![PyPI release date](https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat)](https://github.com/vacanza/holidays/releases)
-
-  CI/CD      [![CI/CD status](https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat)](https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev)
-             [![Documentation status](https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat)](https://holidays.readthedocs.io/en/latest/?badge=latest)
-
-  Code       [![License](https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat)](https://github.com/vacanza/holidays/blob/dev/LICENSE)
-             [![Python supported versions](https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat)](https://pypi.org/project/holidays)
-             [![Code style](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/astral-sh/ruff)
-             [![Code coverage](https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat)](https://app.codecov.io/gh/vacanza/holidays)
-
-  GitHub     [![GitHub stars](https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/stargazers)
-             [![GitHub forks](https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/forks)
-             [![GitHub contributors](https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/graphs/contributors)
-             [![GitHub last commit](https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/commits/dev)
-
-  Citation   [![Open World Holidays Franework DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat)](https://doi.org/10.5281/zenodo.14847397)
-  ---------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| PyPI | [![PyPI downloads](https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat)](https://pypi.org/project/holidays) [![PyPI version](https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat)](https://pypi.org/project/holidays) [![PyPI release date](https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat)](https://github.com/vacanza/holidays/releases) |
+|------|--------------------------------------------------------------------------------------------------|
+| CI/CD | [![CI/CD status](https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat)](https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev) [![Documentation status](https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat)](https://holidays.readthedocs.io/en/latest/?badge=latest) |
+| Code | [![License](https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat)](https://github.com/vacanza/holidays/blob/dev/LICENSE) [![Python supported versions](https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat)](https://pypi.org/project/holidays) [![Code style](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/astral-sh/ruff) [![Code coverage](https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat)](https://app.codecov.io/gh/vacanza/holidays) |
+| GitHub   | [![GitHub stars](https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/stargazers) [![GitHub forks](https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/forks) [![GitHub contributors](https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat)](https://github.com/vacanza/holidays/commits/dev) |
+| Citation | [![Open World Holidays Franework DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat)](https://doi.org/10.5281/zenodo.14847397) |
 
 ## Install
 
@@ -122,629 +108,618 @@ followed by their aliases (if any) in brackets, available languages and
 additional holiday categories. All countries support **PUBLIC** holidays
 category by default. All other default values are highlighted with bold:
 
-  --------------------------------------------------------------------------------------
-  Country         Code   Subdivisions                     Supported      Supported
-                                                          Languages      Categories
-  --------------- ------ -------------------------------- -------------- ---------------
-  Afghanistan     AF                                      en_US,
-                                                          **fa_AF**,
-                                                          ps_AF
+| Country        |  Code  | Subdivisions  |     Supported Languages    |     Supported Categories |
+|----------------|--------|---------------|----------------------------|--------------------------|
+| Afghanistan    |  AF    |               |    en_US, **fa_AF**, ps_AF |                          |
+| Albania        |  AL    |               |    en_US, **sq**, uk       |                          |
+| Algeria        |  DZ    |               |    **ar**, en_US, fr       |                          |
+| American Samoa |  AS    | Can also be loaded as country US, subdivision AS |   UNOFFICIAL       |
+Andorra         AD     Parishes: 02, 03, 04, 05, 06,
+                     07, 08
 
-  Albania         AL                                      en_US, **sq**,
-                                                          uk
+Angola          AO                                      en_US,
+                                                      **pt_AO**, uk
 
-  Algeria         DZ                                      **ar**, en_US,
-                                                          fr
+Argentina       AR                                      en_US, **es**,
+                                                      uk
 
-  American Samoa  AS     Can also be loaded as country                   UNOFFICIAL
-                         US, subdivision AS
+Armenia         AM                                      en_US, **hy**
 
-  Andorra         AD     Parishes: 02, 03, 04, 05, 06,
-                         07, 08
+Aruba           AW                                      en_US, nl,
+                                                      **pap_AW**, uk
 
-  Angola          AO                                      en_US,
-                                                          **pt_AO**, uk
+Australia       AU     States and territories: ACT      **en_AU**,     BANK, HALF_DAY
+                     (Australian Capital Territory),  en_US, th
+                     NSW (New South Wales), NT
+                     (Northern Territory), QLD
+                     (Queensland), SA (South
+                     Australia), TAS (Tasmania), VIC
+                     (Victoria), WA (Western
+                     Australia)
 
-  Argentina       AR                                      en_US, **es**,
-                                                          uk
+Austria         AT     States: 1 (Burgenland, Bgld, B), **de**, en_US, BANK
+                     2 (Kärnten, Ktn, K), 3           uk
+                     (Niederösterreich, NÖ, N), 4
+                     (Oberösterreich, OÖ, O), 5
+                     (Salzburg, Sbg, S), 6
+                     (Steiermark, Stmk, St), 7
+                     (Tirol, T), 8 (Vorarlberg, Vbg,
+                     V), 9 (Wien, W)
 
-  Armenia         AM                                      en_US, **hy**
+Azerbaijan      AZ                                      **az**, en_US, WORKDAY
+                                                      uk
 
-  Aruba           AW                                      en_US, nl,
-                                                          **pap_AW**, uk
+Bahamas         BS
 
-  Australia       AU     States and territories: ACT      **en_AU**,     BANK, HALF_DAY
-                         (Australian Capital Territory),  en_US, th
-                         NSW (New South Wales), NT
-                         (Northern Territory), QLD
-                         (Queensland), SA (South
-                         Australia), TAS (Tasmania), VIC
-                         (Victoria), WA (Western
-                         Australia)
+Bahrain         BH                                      **ar**, en_US
 
-  Austria         AT     States: 1 (Burgenland, Bgld, B), **de**, en_US, BANK
-                         2 (Kärnten, Ktn, K), 3           uk
-                         (Niederösterreich, NÖ, N), 4
-                         (Oberösterreich, OÖ, O), 5
-                         (Salzburg, Sbg, S), 6
-                         (Steiermark, Stmk, St), 7
-                         (Tirol, T), 8 (Vorarlberg, Vbg,
-                         V), 9 (Wien, W)
+Bangladesh      BD
 
-  Azerbaijan      AZ                                      **az**, en_US, WORKDAY
-                                                          uk
+Barbados        BB
 
-  Bahamas         BS
+Belarus         BY                                      **be**, en_US, WORKDAY
+                                                      ru, th
 
-  Bahrain         BH                                      **ar**, en_US
+Belgium         BE                                      de, en_US, fr, BANK
+                                                      **nl**, uk
 
-  Bangladesh      BD
+Belize          BZ
 
-  Barbados        BB
+Bolivia         BO     Departments: B, C, H, L, N, O,   en_US, **es**,
+                     P, S, T                          uk
 
-  Belarus         BY                                      **be**, en_US, WORKDAY
-                                                          ru, th
+Bosnia and      BA     Entities and district: BIH       **bs**, en_US,
+Herzegovina            (Federacija Bosne i Hercegovine, sr, uk
+                     FBiH), BRC (Brčko distrikt, BD),
+                     SRP (Republika Srpska, RS)
 
-  Belgium         BE                                      de, en_US, fr, BANK
-                                                          **nl**, uk
+Botswana        BW
 
-  Belize          BZ
+Brazil          BR     States: AC (Acre), AL (Alagoas), en_US,         OPTIONAL
+                     AM (Amazonas), AP (Amapá), BA    **pt_BR**, uk
+                     (Bahia), CE (Ceará), DF
+                     (Distrito Federal), ES (Espírito
+                     Santo), GO (Goiás), MA
+                     (Maranhão), MG (Minas Gerais),
+                     MS (Mato Grosso do Sul), MT
+                     (Mato Grosso), PA (Pará), PB
+                     (Paraíba), PE (Pernambuco), PI
+                     (Piauí), PR (Paraná), RJ (Rio de
+                     Janeiro), RN (Rio Grande do
+                     Norte), RO (Rondônia), RR
+                     (Roraima), RS (Rio Grande do
+                     Sul), SC (Santa Catarina), SE
+                     (Sergipe), SP (São Paulo), TO
+                     (Tocantins)
 
-  Bolivia         BO     Departments: B, C, H, L, N, O,   en_US, **es**,
-                         P, S, T                          uk
+Brunei          BN                                      en_US, **ms**,
+                                                      th
 
-  Bosnia and      BA     Entities and district: BIH       **bs**, en_US,
-  Herzegovina            (Federacija Bosne i Hercegovine, sr, uk
-                         FBiH), BRC (Brčko distrikt, BD),
-                         SRP (Republika Srpska, RS)
+Bulgaria        BG                                      **bg**, en_US, SCHOOL
+                                                      uk
 
-  Botswana        BW
+Burkina Faso    BF
 
-  Brazil          BR     States: AC (Acre), AL (Alagoas), en_US,         OPTIONAL
-                         AM (Amazonas), AP (Amapá), BA    **pt_BR**, uk
-                         (Bahia), CE (Ceará), DF
-                         (Distrito Federal), ES (Espírito
-                         Santo), GO (Goiás), MA
-                         (Maranhão), MG (Minas Gerais),
-                         MS (Mato Grosso do Sul), MT
-                         (Mato Grosso), PA (Pará), PB
-                         (Paraíba), PE (Pernambuco), PI
-                         (Piauí), PR (Paraná), RJ (Rio de
-                         Janeiro), RN (Rio Grande do
-                         Norte), RO (Rondônia), RR
-                         (Roraima), RS (Rio Grande do
-                         Sul), SC (Santa Catarina), SE
-                         (Sergipe), SP (São Paulo), TO
-                         (Tocantins)
+Burundi         BI
 
-  Brunei          BN                                      en_US, **ms**,
-                                                          th
+Cambodia        KH                                      en_US, **km**,
+                                                      th
 
-  Bulgaria        BG                                      **bg**, en_US, SCHOOL
-                                                          uk
+Cameroon        CM
 
-  Burkina Faso    BF
+Canada          CA     Provinces and territories: AB,   ar, **en_CA**, GOVERNMENT,
+                     BC, MB, NB, NL, NS, NT, NU, ON,  en_US, fr, th  OPTIONAL
+                     PE, QC, SK, YT
 
-  Burundi         BI
+Chad            TD
 
-  Cambodia        KH                                      en_US, **km**,
-                                                          th
+Chile           CL     Regions: AI, AN, AP, AR, AT, BI, en_US, **es**, BANK
+                     CO, LI, LL, LR, MA, ML, NB, RM,  uk
+                     TA, VS
 
-  Cameroon        CM
+China           CN                                      en_US, th,     HALF_DAY
+                                                      **zh_CN**,
+                                                      zh_TW
 
-  Canada          CA     Provinces and territories: AB,   ar, **en_CA**, GOVERNMENT,
-                         BC, MB, NB, NL, NS, NT, NU, ON,  en_US, fr, th  OPTIONAL
-                         PE, QC, SK, YT
+Colombia        CO                                      en_US, **es**,
+                                                      uk
 
-  Chad            TD
+Congo           CG                                      en_US, **fr**
 
-  Chile           CL     Regions: AI, AN, AP, AR, AT, BI, en_US, **es**, BANK
-                         CO, LI, LL, LR, MA, ML, NB, RM,  uk
-                         TA, VS
+Costa Rica      CR                                      en_US, **es**, OPTIONAL
+                                                      uk
 
-  China           CN                                      en_US, th,     HALF_DAY
-                                                          **zh_CN**,
-                                                          zh_TW
+Croatia         HR                                      en_US, **hr**,
+                                                      uk
 
-  Colombia        CO                                      en_US, **es**,
-                                                          uk
+Cuba            CU                                      en_US, **es**,
+                                                      uk
 
-  Congo           CG                                      en_US, **fr**
+Curacao         CW                                      en_US, nl,     HALF_DAY
+                                                      **pap_CW**, uk
 
-  Costa Rica      CR                                      en_US, **es**, OPTIONAL
-                                                          uk
+Cyprus          CY                                      **el**, en_CY, BANK, OPTIONAL
+                                                      en_US, uk
 
-  Croatia         HR                                      en_US, **hr**,
-                                                          uk
+Czechia         CZ                                      **cs**, en_US,
+                                                      sk, uk
 
-  Cuba            CU                                      en_US, **es**,
-                                                          uk
+Denmark         DK                                      **da**, en_US, OPTIONAL
+                                                      uk
 
-  Curacao         CW                                      en_US, nl,     HALF_DAY
-                                                          **pap_CW**, uk
+Djibouti        DJ                                      ar, en_US,
+                                                      **fr**
 
-  Cyprus          CY                                      **el**, en_CY, BANK, OPTIONAL
-                                                          en_US, uk
+Dominica        DM
 
-  Czechia         CZ                                      **cs**, en_US,
-                                                          sk, uk
+Dominican       DO                                      en_US, **es**,
+Republic                                                uk
 
-  Denmark         DK                                      **da**, en_US, OPTIONAL
-                                                          uk
+Ecuador         EC                                      en_US, **es**,
+                                                      uk
 
-  Djibouti        DJ                                      ar, en_US,
-                                                          **fr**
+Egypt           EG                                      **ar**, en_US
 
-  Dominica        DM
+El Salvador     SV     Departments: AH (Ahuachapán), CA en_US, **es**,
+                     (Cabañas), CH (Chalatenango), CU uk
+                     (Cuscatlán), LI (La Libertad),
+                     MO (Morazán), PA (La Paz), SA
+                     (Santa Ana), SM (San Miguel), SO
+                     (Sonsonate), SS (San Salvador),
+                     SV (San Vicente), UN (La Unión),
+                     US (Usulután)
 
-  Dominican       DO                                      en_US, **es**,
-  Republic                                                uk
+Estonia         EE                                      en_US, **et**,
+                                                      uk
 
-  Ecuador         EC                                      en_US, **es**,
-                                                          uk
+Eswatini        SZ
 
-  Egypt           EG                                      **ar**, en_US
+Ethiopia        ET                                      **am**, ar,
+                                                      en_US
 
-  El Salvador     SV     Departments: AH (Ahuachapán), CA en_US, **es**,
-                         (Cabañas), CH (Chalatenango), CU uk
-                         (Cuscatlán), LI (La Libertad),
-                         MO (Morazán), PA (La Paz), SA
-                         (Santa Ana), SM (San Miguel), SO
-                         (Sonsonate), SS (San Salvador),
-                         SV (San Vicente), UN (La Unión),
-                         US (Usulután)
+Finland         FI                                      en_US, **fi**, UNOFFICIAL
+                                                      sv_FI, uk
 
-  Estonia         EE                                      en_US, **et**,
-                                                          uk
+France          FR     DOM/TOM: BL (Saint-Barthélemy),  en_US, **fr**,
+                     GES (Alsace, Champagne-Ardenne,  uk
+                     Lorraine), GP (Guadeloupe), GY
+                     (Guyane), MF (Saint-Martin), MQ
+                     (Martinique), NC
+                     (Nouvelle-Calédonie), PF
+                     (Polynésie Française), RE (La
+                     Réunion), WF (Wallis-et-Futuna),
+                     YT (Mayotte)
+
+Gabon           GA
+
+Georgia         GE                                      en_US, **ka**, GOVERNMENT
+                                                      uk
+
+Germany         DE     States: BB (Brandenburg), BE     **de**, en_US, CATHOLIC
+                     (Berlin), BW                     th, uk
+                     (Baden-Württemberg), BY
+                     (Bayern), HB (Bremen), HE
+                     (Hessen), HH (Hamburg), MV
+                     (Mecklenburg-Vorpommern), NI
+                     (Niedersachsen), NW
+                     (Nordrhein-Westfalen), RP
+                     (Rheinland-Pfalz), SH
+                     (Schleswig-Holstein), SL
+                     (Saarland), SN (Sachsen), ST
+                     (Sachsen-Anhalt), TH (Thüringen)
+
+Ghana           GH
+
+Greece          GR                                      **el**, en_US, HALF_DAY
+                                                      uk
+
+Greenland       GL                                      da, en_US,     OPTIONAL
+                                                      **kl**
+
+Guam            GU     Can also be loaded as country                   UNOFFICIAL
+                     US, subdivision GU
+
+Guatemala       GT                                      en_US, **es**
+
+Guernsey        GG
+
+Haiti           HT                                      en_US, es,     OPTIONAL
+                                                      **fr_HT**, ht
+
+Honduras        HN                                      en_US, **es**,
+                                                      uk
+
+Hong Kong       HK                                      en_HK, en_US,  OPTIONAL
+                                                      th, zh_CN,
+                                                      **zh_HK**
+
+Hungary         HU                                      en_US, **hu**,
+                                                      uk
+
+Iceland         IS                                      en_US, **is**, HALF_DAY
+                                                      uk
+
+India           IN     States: AN, AP, AR, AS, BR, CG,
+                     CH, DH, DL, GA, GJ, HP, HR, JH,
+                     JK, KA, KL, LA, LD, MH, ML, MN,
+                     MP, MZ, NL, OD, PB, PY, RJ, SK,
+                     TN, TR, TS, UK, UP, WB
+
+Indonesia       ID                                      en_US, **id**, GOVERNMENT
+                                                      th, uk
+
+Iran            IR                                      en_US,
+                                                      **fa_IR**
+
+Ireland         IE
+
+Isle of Man     IM                                      **en_GB**,
+                                                      en_US, th
+
+Israel          IL                                      en_US, **he**, OPTIONAL,
+                                                      th, uk         SCHOOL
+
+Italy           IT     Provinces: AG (Agrigento), AL
+                     (Alessandria), AN (Ancona), AO
+                     (Aosta), AP (Ascoli Piceno), AQ
+                     (L\'Aquila), AR (Arezzo), AT
+                     (Asti), AV (Avellino), BA
+                     (Bari), BG (Bergamo), BI
+                     (Biella), BL (Belluno), BN
+                     (Benevento), BO (Bologna), BR
+                     (Brindisi), BS (Brescia), BT
+                     (Barletta-Andria-Trani), BZ
+                     (Bolzano), CA (Cagliari), CB
+                     (Campobasso), CE (Caserta), CH
+                     (Chieti), CL (Caltanissetta), CN
+                     (Cuneo), CO (Como), CR
+                     (Cremona), CS (Cosenza), CT
+                     (Catania), CZ (Catanzaro), EN
+                     (Enna), FC (Forli-Cesena,
+                     Forlì-Cesena), FE (Ferrara), FG
+                     (Foggia), FI (Firenze), FM
+                     (Fermo), FR (Frosinone), GE
+                     (Genova), GO (Gorizia), GR
+                     (Grosseto), IM (Imperia), IS
+                     (Isernia), KR (Crotone), LC
+                     (Lecco), LE (Lecce), LI
+                     (Livorno), LO (Lodi), LT
+                     (Latina), LU (Lucca), MB (Monza
+                     e Brianza), MC (Macerata), ME
+                     (Messina), MI (Milano), MN
+                     (Mantova), MO (Modena), MS
+                     (Massa-Carrara), MT (Matera), NA
+                     (Napoli), NO (Novara), NU
+                     (Nuoro), OR (Oristano), PA
+                     (Palermo), PC (Piacenza), PD
+                     (Padova), PE (Pescara), PG
+                     (Perugia), PI (Pisa), PN
+                     (Pordenone), PO (Prato), PR
+                     (Parma), PT (Pistoia), PU
+                     (Pesaro e Urbino), PV (Pavia),
+                     PZ (Potenza), RA (Ravenna), RC
+                     (Reggio Calabria), RE (Reggio
+                     Emilia), RG (Ragusa), RI
+                     (Rieti), RM (Roma), RN (Rimini),
+                     RO (Rovigo), SA (Salerno), SI
+                     (Siena), SO (Sondrio), SP (La
+                     Spezia), SR (Siracusa), SS
+                     (Sassari), SU (Sud Sardegna), SV
+                     (Savona), TA (Taranto), TE
+                     (Teramo), TN (Trento), TO
+                     (Torino), TP (Trapani), TR
+                     (Terni), TS (Trieste), TV
+                     (Treviso), UD (Udine), VA
+                     (Varese), VB
+                     (Verbano-Cusio-Ossola), VC
+                     (Vercelli), VE (Venezia), VI
+                     (Vicenza), VR (Verona), VT
+                     (Viterbo), VV (Vibo Valentia).
+                     Cities: Andria, Barletta,
+                     Cesena, Forli (Forlì), Pesaro,
+                     Trani, Urbino
+
+Jamaica         JM
+
+Japan           JP                                      en_US, **ja**, BANK
+                                                      th
+
+Jersey          JE
+
+Jordan          JO                                      **ar**, en_US
+
+Kazakhstan      KZ                                      en_US, **kk**,
+                                                      uk
+
+Kenya           KE
+
+Kuwait          KW                                      **ar**, en_US
+
+Kyrgyzstan      KG
+
+Laos            LA                                      en_US, **lo**, BANK, SCHOOL,
+                                                      th             WORKDAY
+
+Latvia          LV                                      en_US, **lv**,
+                                                      uk
+
+Lesotho         LS
+
+Liechtenstein   LI                                      **de**, en_US, BANK
+                                                      uk
+
+Lithuania       LT                                      en_US, **lt**,
+                                                      uk
+
+Luxembourg      LU                                      de, en_US, fr,
+                                                      **lb**, uk
+
+Madagascar      MG                                      en_US, **mg**,
+                                                      uk
+
+Malawi          MW
+
+Malaysia        MY     States and federal territories:  en_US,
+                     01 (Johor, JHR), 02 (Kedah,      **ms_MY**, th
+                     KDH), 03 (Kelantan, KTN), 04
+                     (Melaka, MLK), 05 (Negeri
+                     Sembilan, NSN), 06 (Pahang,
+                     PHG), 07 (Pulau Pinang, PNG), 08
+                     (Perak, PRK), 09 (Perlis, PLS),
+                     10 (Selangor, SGR), 11
+                     (Terengganu, TRG), 12 (Sabah,
+                     SBH), 13 (Sarawak, SWK), 14 (WP
+                     Kuala Lumpur, KUL), 15 (WP
+                     Labuan, LBN), 16 (WP Putrajaya,
+                     PJY)
+
+Maldives        MV
+
+Malta           MT                                      en_US, **mt**
+
+Marshall        MH
+Islands (the)
+
+Mauritania      MR
+
+Mexico          MX                                      en_US, **es**,
+                                                      uk
+
+Moldova         MD                                      en_US, **ro**,
+                                                      uk
+
+Monaco          MC                                      en_US, **fr**,
+                                                      uk
+
+Montenegro      ME                                      **cnr**,       CATHOLIC,
+                                                      en_US, uk      HEBREW,
+                                                                     ISLAMIC,
+                                                                     ORTHODOX,
+                                                                     WORKDAY
+
+Morocco         MA                                      **ar**, en_US,
+                                                      fr
+
+Mozambique      MZ                                      en_US,
+                                                      **pt_MZ**, uk
+
+Namibia         NA
+
+Netherlands     NL                                      en_US, fy,     OPTIONAL
+                                                      **nl**, uk
+
+New Zealand     NZ     Regions and Special Island
+                     Authorities: AUK (Auckland,
+                     Tāmaki-Makaurau, AU), BOP (Bay
+                     of Plenty, Toi Moana, BP), CAN
+                     (Canterbury, Waitaha, CA), CIT
+                     (Chatham Islands Territory,
+                     Chatham Islands, Wharekauri,
+                     CI), GIS (Gisborne, Te
+                     Tairāwhiti, GI), HKB (Hawke\'s
+                     Bay, Te Matau-a-Māui, HB), MBH
+                     (Marlborough, MA), MWT (Manawatū
+                     Whanganui, Manawatū-Whanganui,
+                     MW), NSN (Nelson, Whakatū, NE),
+                     NTL (Northland, Te Taitokerau,
+                     NO), OTA (Otago, Ō Tākou, OT),
+                     STL (Southland, Te Taiao Tonga,
+                     SO), TAS (Tasman, Te tai o
+                     Aorere, TS), TKI (Taranaki, TK),
+                     WGN (Greater Wellington, Te Pane
+                     Matua Taiao, Wellington, Te
+                     Whanganui-a-Tara, WG), WKO
+                     (Waikato, WK), WTC (West Coast,
+                     Te Tai o Poutini, WC).
+                     Subregions: South Canterbury
+
+Nicaragua       NI     Subdivisions: AN (Costa Caribe   en_US, **es**,
+                     Norte), AS (Costa Caribe Sur),   uk
+                     BO (Boaco), CA (Carazo), CI
+                     (Chinandega), CO (Chontales), ES
+                     (Estelí), GR (Granada), JI
+                     (Jinotega), LE (León), MD
+                     (Madriz), MN (Managua), MS
+                     (Masaya), MT (Matagalpa), NS
+                     (Nueva Segovia), RI (Rivas), SJ
+                     (Río San Juan)
+
+Nigeria         NG
+
+Northern        MP     Can also be loaded as country                   UNOFFICIAL
+Mariana Islands        US, subdivision MP
+(the)
+
+North Macedonia MK
+
+Norway          NO                                      en_US, **no**,
+                                                      th, uk
+
+Pakistan        PK
+
+Palau           PW                                                     ARMED_FORCES,
+                                                                     HALF_DAY
+
+Panama          PA                                      en_US, **es**, BANK
+                                                      uk
+
+Papua New       PG
+Guinea
+
+Paraguay        PY                                      en_US, **es**, GOVERNMENT
+                                                      uk
+
+Peru            PE                                      en_US, **es**,
+                                                      uk
+
+Philippines     PH                                      **en_PH**,     WORKDAY
+                                                      en_US, fil, th
+
+Poland          PL                                      en_US, **pl**,
+                                                      uk
+
+Portugal        PT     Districts: 01 (Aveiro), 02       en_US,         OPTIONAL
+                     (Beja), 03 (Braga), 04           **pt_PT**, uk
+                     (Bragança), 05 (Castelo Branco),
+                     06 (Coimbra), 07 (Évora), 08
+                     (Faro), 09 (Guarda), 10
+                     (Leiria), 11 (Lisboa), 12
+                     (Portalegre), 13 (Porto), 14
+                     (Santarém), 15 (Setúbal), 16
+                     (Viana do Castelo), 17 (Vila
+                     Real), 18 (Viseu), 20 (Região
+                     Autónoma dos Açores), 30 (Região
+                     Autónoma da Madeira)
+
+Puerto Rico     PR     Can also be loaded as country                   UNOFFICIAL
+                     US, subdivision PR
+
+Romania         RO                                      en_US, **ro**,
+                                                      uk
+
+Russia          RU                                      en_US, **ru**,
+                                                      th
+
+Saint Kitts and KN                                                     HALF_DAY,
+Nevis                                                                  WORKDAY
+
+Saint Lucia     LC                                      **en_LC**,
+                                                      en_US
+
+Samoa           WS
 
-  Eswatini        SZ
+San Marino      SM
+
+Saudi Arabia    SA                                      **ar**, en_US
 
-  Ethiopia        ET                                      **am**, ar,
-                                                          en_US
+Serbia          RS                                      en_US, **sr**
 
-  Finland         FI                                      en_US, **fi**, UNOFFICIAL
-                                                          sv_FI, uk
+Seychelles      SC                                      **en_SC**,
+                                                      en_US
 
-  France          FR     DOM/TOM: BL (Saint-Barthélemy),  en_US, **fr**,
-                         GES (Alsace, Champagne-Ardenne,  uk
-                         Lorraine), GP (Guadeloupe), GY
-                         (Guyane), MF (Saint-Martin), MQ
-                         (Martinique), NC
-                         (Nouvelle-Calédonie), PF
-                         (Polynésie Française), RE (La
-                         Réunion), WF (Wallis-et-Futuna),
-                         YT (Mayotte)
+Singapore       SG                                      **en_SG**,
+                                                      en_US, th
 
-  Gabon           GA
+Slovakia        SK                                      en_US, **sk**, WORKDAY
+                                                      uk
 
-  Georgia         GE                                      en_US, **ka**, GOVERNMENT
-                                                          uk
-
-  Germany         DE     States: BB (Brandenburg), BE     **de**, en_US, CATHOLIC
-                         (Berlin), BW                     th, uk
-                         (Baden-Württemberg), BY
-                         (Bayern), HB (Bremen), HE
-                         (Hessen), HH (Hamburg), MV
-                         (Mecklenburg-Vorpommern), NI
-                         (Niedersachsen), NW
-                         (Nordrhein-Westfalen), RP
-                         (Rheinland-Pfalz), SH
-                         (Schleswig-Holstein), SL
-                         (Saarland), SN (Sachsen), ST
-                         (Sachsen-Anhalt), TH (Thüringen)
-
-  Ghana           GH
-
-  Greece          GR                                      **el**, en_US, HALF_DAY
-                                                          uk
-
-  Greenland       GL                                      da, en_US,     OPTIONAL
-                                                          **kl**
-
-  Guam            GU     Can also be loaded as country                   UNOFFICIAL
-                         US, subdivision GU
-
-  Guatemala       GT                                      en_US, **es**
-
-  Guernsey        GG
-
-  Haiti           HT                                      en_US, es,     OPTIONAL
-                                                          **fr_HT**, ht
-
-  Honduras        HN                                      en_US, **es**,
-                                                          uk
-
-  Hong Kong       HK                                      en_HK, en_US,  OPTIONAL
-                                                          th, zh_CN,
-                                                          **zh_HK**
-
-  Hungary         HU                                      en_US, **hu**,
-                                                          uk
-
-  Iceland         IS                                      en_US, **is**, HALF_DAY
-                                                          uk
-
-  India           IN     States: AN, AP, AR, AS, BR, CG,
-                         CH, DH, DL, GA, GJ, HP, HR, JH,
-                         JK, KA, KL, LA, LD, MH, ML, MN,
-                         MP, MZ, NL, OD, PB, PY, RJ, SK,
-                         TN, TR, TS, UK, UP, WB
-
-  Indonesia       ID                                      en_US, **id**, GOVERNMENT
-                                                          th, uk
-
-  Iran            IR                                      en_US,
-                                                          **fa_IR**
-
-  Ireland         IE
-
-  Isle of Man     IM                                      **en_GB**,
-                                                          en_US, th
-
-  Israel          IL                                      en_US, **he**, OPTIONAL,
-                                                          th, uk         SCHOOL
-
-  Italy           IT     Provinces: AG (Agrigento), AL
-                         (Alessandria), AN (Ancona), AO
-                         (Aosta), AP (Ascoli Piceno), AQ
-                         (L\'Aquila), AR (Arezzo), AT
-                         (Asti), AV (Avellino), BA
-                         (Bari), BG (Bergamo), BI
-                         (Biella), BL (Belluno), BN
-                         (Benevento), BO (Bologna), BR
-                         (Brindisi), BS (Brescia), BT
-                         (Barletta-Andria-Trani), BZ
-                         (Bolzano), CA (Cagliari), CB
-                         (Campobasso), CE (Caserta), CH
-                         (Chieti), CL (Caltanissetta), CN
-                         (Cuneo), CO (Como), CR
-                         (Cremona), CS (Cosenza), CT
-                         (Catania), CZ (Catanzaro), EN
-                         (Enna), FC (Forli-Cesena,
-                         Forlì-Cesena), FE (Ferrara), FG
-                         (Foggia), FI (Firenze), FM
-                         (Fermo), FR (Frosinone), GE
-                         (Genova), GO (Gorizia), GR
-                         (Grosseto), IM (Imperia), IS
-                         (Isernia), KR (Crotone), LC
-                         (Lecco), LE (Lecce), LI
-                         (Livorno), LO (Lodi), LT
-                         (Latina), LU (Lucca), MB (Monza
-                         e Brianza), MC (Macerata), ME
-                         (Messina), MI (Milano), MN
-                         (Mantova), MO (Modena), MS
-                         (Massa-Carrara), MT (Matera), NA
-                         (Napoli), NO (Novara), NU
-                         (Nuoro), OR (Oristano), PA
-                         (Palermo), PC (Piacenza), PD
-                         (Padova), PE (Pescara), PG
-                         (Perugia), PI (Pisa), PN
-                         (Pordenone), PO (Prato), PR
-                         (Parma), PT (Pistoia), PU
-                         (Pesaro e Urbino), PV (Pavia),
-                         PZ (Potenza), RA (Ravenna), RC
-                         (Reggio Calabria), RE (Reggio
-                         Emilia), RG (Ragusa), RI
-                         (Rieti), RM (Roma), RN (Rimini),
-                         RO (Rovigo), SA (Salerno), SI
-                         (Siena), SO (Sondrio), SP (La
-                         Spezia), SR (Siracusa), SS
-                         (Sassari), SU (Sud Sardegna), SV
-                         (Savona), TA (Taranto), TE
-                         (Teramo), TN (Trento), TO
-                         (Torino), TP (Trapani), TR
-                         (Terni), TS (Trieste), TV
-                         (Treviso), UD (Udine), VA
-                         (Varese), VB
-                         (Verbano-Cusio-Ossola), VC
-                         (Vercelli), VE (Venezia), VI
-                         (Vicenza), VR (Verona), VT
-                         (Viterbo), VV (Vibo Valentia).
-                         Cities: Andria, Barletta,
-                         Cesena, Forli (Forlì), Pesaro,
-                         Trani, Urbino
-
-  Jamaica         JM
-
-  Japan           JP                                      en_US, **ja**, BANK
-                                                          th
-
-  Jersey          JE
-
-  Jordan          JO                                      **ar**, en_US
-
-  Kazakhstan      KZ                                      en_US, **kk**,
-                                                          uk
-
-  Kenya           KE
-
-  Kuwait          KW                                      **ar**, en_US
-
-  Kyrgyzstan      KG
-
-  Laos            LA                                      en_US, **lo**, BANK, SCHOOL,
-                                                          th             WORKDAY
-
-  Latvia          LV                                      en_US, **lv**,
-                                                          uk
-
-  Lesotho         LS
-
-  Liechtenstein   LI                                      **de**, en_US, BANK
-                                                          uk
-
-  Lithuania       LT                                      en_US, **lt**,
-                                                          uk
-
-  Luxembourg      LU                                      de, en_US, fr,
-                                                          **lb**, uk
-
-  Madagascar      MG                                      en_US, **mg**,
-                                                          uk
-
-  Malawi          MW
-
-  Malaysia        MY     States and federal territories:  en_US,
-                         01 (Johor, JHR), 02 (Kedah,      **ms_MY**, th
-                         KDH), 03 (Kelantan, KTN), 04
-                         (Melaka, MLK), 05 (Negeri
-                         Sembilan, NSN), 06 (Pahang,
-                         PHG), 07 (Pulau Pinang, PNG), 08
-                         (Perak, PRK), 09 (Perlis, PLS),
-                         10 (Selangor, SGR), 11
-                         (Terengganu, TRG), 12 (Sabah,
-                         SBH), 13 (Sarawak, SWK), 14 (WP
-                         Kuala Lumpur, KUL), 15 (WP
-                         Labuan, LBN), 16 (WP Putrajaya,
-                         PJY)
-
-  Maldives        MV
-
-  Malta           MT                                      en_US, **mt**
-
-  Marshall        MH
-  Islands (the)
-
-  Mauritania      MR
-
-  Mexico          MX                                      en_US, **es**,
-                                                          uk
-
-  Moldova         MD                                      en_US, **ro**,
-                                                          uk
-
-  Monaco          MC                                      en_US, **fr**,
-                                                          uk
-
-  Montenegro      ME                                      **cnr**,       CATHOLIC,
-                                                          en_US, uk      HEBREW,
-                                                                         ISLAMIC,
-                                                                         ORTHODOX,
-                                                                         WORKDAY
-
-  Morocco         MA                                      **ar**, en_US,
-                                                          fr
-
-  Mozambique      MZ                                      en_US,
-                                                          **pt_MZ**, uk
-
-  Namibia         NA
-
-  Netherlands     NL                                      en_US, fy,     OPTIONAL
-                                                          **nl**, uk
-
-  New Zealand     NZ     Regions and Special Island
-                         Authorities: AUK (Auckland,
-                         Tāmaki-Makaurau, AU), BOP (Bay
-                         of Plenty, Toi Moana, BP), CAN
-                         (Canterbury, Waitaha, CA), CIT
-                         (Chatham Islands Territory,
-                         Chatham Islands, Wharekauri,
-                         CI), GIS (Gisborne, Te
-                         Tairāwhiti, GI), HKB (Hawke\'s
-                         Bay, Te Matau-a-Māui, HB), MBH
-                         (Marlborough, MA), MWT (Manawatū
-                         Whanganui, Manawatū-Whanganui,
-                         MW), NSN (Nelson, Whakatū, NE),
-                         NTL (Northland, Te Taitokerau,
-                         NO), OTA (Otago, Ō Tākou, OT),
-                         STL (Southland, Te Taiao Tonga,
-                         SO), TAS (Tasman, Te tai o
-                         Aorere, TS), TKI (Taranaki, TK),
-                         WGN (Greater Wellington, Te Pane
-                         Matua Taiao, Wellington, Te
-                         Whanganui-a-Tara, WG), WKO
-                         (Waikato, WK), WTC (West Coast,
-                         Te Tai o Poutini, WC).
-                         Subregions: South Canterbury
+Slovenia        SI                                      en_US, **sl**, WORKDAY
+                                                      uk
 
-  Nicaragua       NI     Subdivisions: AN (Costa Caribe   en_US, **es**,
-                         Norte), AS (Costa Caribe Sur),   uk
-                         BO (Boaco), CA (Carazo), CI
-                         (Chinandega), CO (Chontales), ES
-                         (Estelí), GR (Granada), JI
-                         (Jinotega), LE (León), MD
-                         (Madriz), MN (Managua), MS
-                         (Masaya), MT (Matagalpa), NS
-                         (Nueva Segovia), RI (Rivas), SJ
-                         (Río San Juan)
+South Africa    ZA
 
-  Nigeria         NG
+South Korea     KR                                      en_US, **ko**, BANK
+                                                      th
 
-  Northern        MP     Can also be loaded as country                   UNOFFICIAL
-  Mariana Islands        US, subdivision MP
-  (the)
+Spain           ES     Autonomous communities: AN, AR,  en_US, **es**,
+                     AS, CB, CE, CL, CM, CN, CT, EX,  uk
+                     GA, IB, MC, MD, ML, NC, PV, RI,
+                     VC
 
-  North Macedonia MK
-
-  Norway          NO                                      en_US, **no**,
-                                                          th, uk
+Sri Lanka       LK                                      en_US,         BANK,
+                                                      **si_LK**,     GOVERNMENT,
+                                                      ta_LK          WORKDAY
 
-  Pakistan        PK
+Sweden          SE                                      en_US, **sv**,
+                                                      th, uk
 
-  Palau           PW                                                     ARMED_FORCES,
-                                                                         HALF_DAY
+Switzerland     CH     Cantons: AG, AI, AR, BL, BS, BE, **de**, en_US, HALF_DAY,
+                     FR, GE, GL, GR, JU, LU, NE, NW,  fr, it, uk     OPTIONAL
+                     OW, SG, SH, SZ, SO, TG, TI, UR,
+                     VD, VS, ZG, ZH
 
-  Panama          PA                                      en_US, **es**, BANK
-                                                          uk
+Taiwan          TW                                      en_US, th,
+                                                      zh_CN,
+                                                      **zh_TW**
 
-  Papua New       PG
-  Guinea
+Tanzania        TZ                                      en_US, **sw**  BANK
 
-  Paraguay        PY                                      en_US, **es**, GOVERNMENT
-                                                          uk
+Thailand        TH                                      en_US, **th**  ARMED_FORCES,
+                                                                     BANK,
+                                                                     GOVERNMENT,
+                                                                     SCHOOL, WORKDAY
 
-  Peru            PE                                      en_US, **es**,
-                                                          uk
+Timor Leste     TL                                      en_US,         GOVERNMENT,
+                                                      **pt_TL**, tet WORKDAY
 
-  Philippines     PH                                      **en_PH**,     WORKDAY
-                                                          en_US, fil, th
+Tonga           TO                                      en_US, **to**
 
-  Poland          PL                                      en_US, **pl**,
-                                                          uk
+Tunisia         TN                                      **ar**, en_US
 
-  Portugal        PT     Districts: 01 (Aveiro), 02       en_US,         OPTIONAL
-                         (Beja), 03 (Braga), 04           **pt_PT**, uk
-                         (Bragança), 05 (Castelo Branco),
-                         06 (Coimbra), 07 (Évora), 08
-                         (Faro), 09 (Guarda), 10
-                         (Leiria), 11 (Lisboa), 12
-                         (Portalegre), 13 (Porto), 14
-                         (Santarém), 15 (Setúbal), 16
-                         (Viana do Castelo), 17 (Vila
-                         Real), 18 (Viseu), 20 (Região
-                         Autónoma dos Açores), 30 (Região
-                         Autónoma da Madeira)
+Turkey          TR                                      en_US, **tr**, HALF_DAY
+                                                      uk
 
-  Puerto Rico     PR     Can also be loaded as country                   UNOFFICIAL
-                         US, subdivision PR
+Ukraine         UA                                      ar, en_US, th, WORKDAY
+                                                      **uk**
 
-  Romania         RO                                      en_US, **ro**,
-                                                          uk
+United Arab     AE                                      **ar**, en_US, GOVERNMENT,
+Emirates                                                th             OPTIONAL
 
-  Russia          RU                                      en_US, **ru**,
-                                                          th
+United Kingdom  GB     Subdivisions: ENG (England), NIR **en_GB**,
+                     (Northern Ireland), SCT          en_US, th
+                     (Scotland), WLS (Wales)
 
-  Saint Kitts and KN                                                     HALF_DAY,
-  Nevis                                                                  WORKDAY
+United States   UM     Can also be loaded as country                   UNOFFICIAL
+Minor Outlying         US, subdivision UM
+Islands
 
-  Saint Lucia     LC                                      **en_LC**,
-                                                          en_US
+United States   US     States and territories: AK, AL,                 UNOFFICIAL
+of America             AR, AS, AZ, CA, CO, CT, DC, DE,
+(the)                  FL, GA, GU, HI, IA, ID, IL, IN,
+                     KS, KY, LA, MA, MD, ME, MI, MN,
+                     MO, MP, MS, MT, NC, ND, NE, NH,
+                     NJ, NM, NV, NY, OH, OK, OR, PA,
+                     PR, RI, SC, SD, TN, TX, UM, UT,
+                     VA, VI, VT, WA, WI, WV, WY
 
-  Samoa           WS
+United States          See Virgin Islands (U.S.)                       UNOFFICIAL
+Virgin Islands
+(the)
 
-  San Marino      SM
+Uruguay         UY                                      en_US, **es**, BANK
+                                                      uk
 
-  Saudi Arabia    SA                                      **ar**, en_US
+Uzbekistan      UZ                                      en_US, uk,
+                                                      **uz**
 
-  Serbia          RS                                      en_US, **sr**
+Vanuatu         VU
 
-  Seychelles      SC                                      **en_SC**,
-                                                          en_US
+Vatican City    VA                                      en_US, **it**,
+                                                      th
 
-  Singapore       SG                                      **en_SG**,
-                                                          en_US, th
+Venezuela       VE                                      en_US, **es**,
+                                                      uk
 
-  Slovakia        SK                                      en_US, **sk**, WORKDAY
-                                                          uk
+Vietnam         VN                                      en_US, th,
+                                                      **vi**
 
-  Slovenia        SI                                      en_US, **sl**, WORKDAY
-                                                          uk
+Virgin Islands  VI     Can also be loaded as country                   UNOFFICIAL
+(U.S.)                 US, subdivision VI
 
-  South Africa    ZA
+Zambia          ZM
 
-  South Korea     KR                                      en_US, **ko**, BANK
-                                                          th
-
-  Spain           ES     Autonomous communities: AN, AR,  en_US, **es**,
-                         AS, CB, CE, CL, CM, CN, CT, EX,  uk
-                         GA, IB, MC, MD, ML, NC, PV, RI,
-                         VC
-
-  Sri Lanka       LK                                      en_US,         BANK,
-                                                          **si_LK**,     GOVERNMENT,
-                                                          ta_LK          WORKDAY
-
-  Sweden          SE                                      en_US, **sv**,
-                                                          th, uk
-
-  Switzerland     CH     Cantons: AG, AI, AR, BL, BS, BE, **de**, en_US, HALF_DAY,
-                         FR, GE, GL, GR, JU, LU, NE, NW,  fr, it, uk     OPTIONAL
-                         OW, SG, SH, SZ, SO, TG, TI, UR,
-                         VD, VS, ZG, ZH
-
-  Taiwan          TW                                      en_US, th,
-                                                          zh_CN,
-                                                          **zh_TW**
-
-  Tanzania        TZ                                      en_US, **sw**  BANK
-
-  Thailand        TH                                      en_US, **th**  ARMED_FORCES,
-                                                                         BANK,
-                                                                         GOVERNMENT,
-                                                                         SCHOOL, WORKDAY
-
-  Timor Leste     TL                                      en_US,         GOVERNMENT,
-                                                          **pt_TL**, tet WORKDAY
-
-  Tonga           TO                                      en_US, **to**
-
-  Tunisia         TN                                      **ar**, en_US
-
-  Turkey          TR                                      en_US, **tr**, HALF_DAY
-                                                          uk
-
-  Ukraine         UA                                      ar, en_US, th, WORKDAY
-                                                          **uk**
-
-  United Arab     AE                                      **ar**, en_US, GOVERNMENT,
-  Emirates                                                th             OPTIONAL
-
-  United Kingdom  GB     Subdivisions: ENG (England), NIR **en_GB**,
-                         (Northern Ireland), SCT          en_US, th
-                         (Scotland), WLS (Wales)
-
-  United States   UM     Can also be loaded as country                   UNOFFICIAL
-  Minor Outlying         US, subdivision UM
-  Islands
-
-  United States   US     States and territories: AK, AL,                 UNOFFICIAL
-  of America             AR, AS, AZ, CA, CO, CT, DC, DE,
-  (the)                  FL, GA, GU, HI, IA, ID, IL, IN,
-                         KS, KY, LA, MA, MD, ME, MI, MN,
-                         MO, MP, MS, MT, NC, ND, NE, NH,
-                         NJ, NM, NV, NY, OH, OK, OR, PA,
-                         PR, RI, SC, SD, TN, TX, UM, UT,
-                         VA, VI, VT, WA, WI, WV, WY
-
-  United States          See Virgin Islands (U.S.)                       UNOFFICIAL
-  Virgin Islands
-  (the)
-
-  Uruguay         UY                                      en_US, **es**, BANK
-                                                          uk
-
-  Uzbekistan      UZ                                      en_US, uk,
-                                                          **uz**
-
-  Vanuatu         VU
-
-  Vatican City    VA                                      en_US, **it**,
-                                                          th
-
-  Venezuela       VE                                      en_US, **es**,
-                                                          uk
-
-  Vietnam         VN                                      en_US, th,
-                                                          **vi**
-
-  Virgin Islands  VI     Can also be loaded as country                   UNOFFICIAL
-  (U.S.)                 US, subdivision VI
-
-  Zambia          ZM
-
-  Zimbabwe        ZW
-  --------------------------------------------------------------------------------------
+Zimbabwe        ZW
+--------------------------------------------------------------------------------------
 
 ### Available Financial Markets
 
