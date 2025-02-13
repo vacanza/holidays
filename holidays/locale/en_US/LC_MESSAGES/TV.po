@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Tuvalu holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.67\n"
+"POT-Creation-Date: 2025-02-11 23:23+0530\n"
+"PO-Revision-Date: 2025-02-11 23:23+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.4\n"
+
+#. New Year's Day.
+msgid "Tausaga Fou"
+msgstr "New Year's Day"
+
+#. Commonwealth Day.
+msgid "Aso Atefenua"
+msgstr "Commonwealth Day"
+
+#. Gospel Day.
+msgid "Te Aso o te Tala Lei"
+msgstr "Gospel Day"
+
+#. King's Birthday.
+msgid "Asofanau Tupu"
+msgstr "King's Birthday"
+
+#. National Children's Day.
+msgid "Aso Tamaliki"
+msgstr "National Children's Day"
+
+#. Tuvalu Day.
+msgid "Tutokotasi"
+msgstr "Tuvalu Day"
+
+#. Heir to the Throne's Birthday.
+msgid "Aso fanau o te sui ote Tupu"
+msgstr "Heir to the Throne's Birthday"
+
+#. Boxing Day.
+msgid "Aso Faipele"
+msgstr "Boxing Day"
+
+#. Good Friday.
+msgid "Aso toe tu"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+msgid "Aso Tapu"
+msgstr "Holy Saturday"
+
+#. Easter Monday.
+msgid "Toe Tu aso gafua"
+msgstr "Easter Monday"
+
+#. Christmas Day.
+msgid "Kilisimasi"
+msgstr "Christmas Day"
+
+#. Golden Jubilee.
+msgid "Te Po o Tefolaha"
+msgstr "Golden Jubilee"
+
+#. Big Day.
+msgid "Po Lahi"
+msgstr "Big Day"
+
+#. Nukufetau Day.
+msgid "Te Aso o Tutasi"
+msgstr "Nukufetau Day"
+
+#. Day of the Flood.
+msgid "Bogin te Ieka"
+msgstr "Day of the Flood"
+
+#. Nanumaga Day.
+msgid "Aho o te Fakavae"
+msgstr "Nanumaga Day"
+
+#. The Day of the Bombing.
+msgid "Te Aso o te Paula"
+msgstr "The Day of the Bombing"
+
+#. Gospel Day.
+msgid "Aso o te Tala Lei"
+msgstr "Gospel Day"
+
+#. Niutao Day.
+msgid "Te Aso o te Setema"
+msgstr "Niutao Day"
+
+#. Cyclone Day.
+msgid "Aso o te matagi"
+msgstr "Cyclone Day"
+
+#. Happy Day.
+msgid "Te Aso Fiafia"
+msgstr "Happy Day"
+
+#. National Youth Day.
+msgid "Aso tupulaga"
+msgstr "National Youth Day"
+
+#. Nukufetau Day.
+msgid "Te Aso O Tutasi"
+msgstr "Nukufetau Day"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (fakaaoga)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (fakamatakuga)"
+msgstr "%s (observed)"
