@@ -2,12 +2,24 @@ site_name: holidays
 theme:
   name: readthedocs
 nav:
-  - Home: index.md
+  - Overview: index.md
   - Additional Examples: examples.md
   - Contributing: CONTRIBUTING.md
+  - API Reference: api.md
+  - Mixins: mixins.md
+  - Supported Entities: modules.md
   - Changelog: changelog.md
 plugins:
   - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_style: sphinx
+            show_signature: true
+            show_source: false
+
 markdown_extensions:
     - markdown_include.include:
         base_path: docs
