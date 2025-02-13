@@ -682,7 +682,6 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         if self._year in vaisakhi_dates:
             self._add_holiday("Vaisakhi", vaisakhi_dates[self._year])
 
-
         self._add_holiday_jan_13("Lohri")
         self._add_holiday_nov_1("Punjab Day")
 
