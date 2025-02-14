@@ -41,7 +41,7 @@ msgstr "Christmas Day"
 
 #. Defender of the Fatherland Day.
 msgid "День защитника Отечества"
-msgstr "Fatherland Defender's Day"
+msgstr "Defender of the Fatherland Day"
 
 #. International Women's Day.
 msgid "Международный женский день"

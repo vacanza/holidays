@@ -60,7 +60,7 @@ msgid "Día de la Revolución"
 msgstr "Revolution Day"
 
 #. Holy Saturday.
-msgid "Sabado Santo"
+msgid "Sábado Santo"
 msgstr "Holy Saturday"
 
 #. Labor Day.

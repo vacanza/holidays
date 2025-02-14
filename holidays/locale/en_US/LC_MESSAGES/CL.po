@@ -63,9 +63,9 @@ msgstr "Navy Day"
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr "National Day of Indigenous Peoples"
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
-msgstr "Saint Peter and Saint Paul"
+msgstr "Saint Peter and Saint Paul's Day"
 
 #. Day of Virgin of Carmen.
 msgid "Virgen del Carmen"

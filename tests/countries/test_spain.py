@@ -1031,7 +1031,7 @@ class TestSpain(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-02", "Lunes siguiente a Año nuevo"),
+            ("2023-01-02", "Lunes siguiente a Año Nuevo"),
             ("2023-01-06", "Epifanía del Señor"),
             ("2023-02-21", "Martes de Carnaval"),
             ("2023-02-28", "Día de Andalucia"),

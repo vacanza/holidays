@@ -127,7 +127,7 @@ msgstr ""
 msgid "ඊදුල් අල්හා"
 msgstr ""
 
-#. The Prophet's Birthday.
+#. Prophet's Birthday.
 msgid "නබි නායකතුමාගේ උපන් දිනය"
 msgstr ""
 

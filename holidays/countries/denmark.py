@@ -73,7 +73,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Anden juledag"))
 
     def _populate_optional_holidays(self):
-        # International Workers' Day.
+        # Workers' Day.
         self._add_labor_day(tr("Arbejdernes kampdag"))
 
         # Constitution Day.

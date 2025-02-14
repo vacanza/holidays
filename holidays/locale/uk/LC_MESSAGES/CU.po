@@ -44,7 +44,7 @@ msgstr "День Перемоги"
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#. International Worker's Day.
+#. International Workers' Day.
 msgid "Día Internacional de los Trabajadores"
 msgstr "Міжнародний день трудящих"
 
