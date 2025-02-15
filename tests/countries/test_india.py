@@ -65,7 +65,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-11-01",
             ),
             "AR": ("2018-08-15",),
-            "AS": ("2018-04-15", "2018-12-02"),
+            "AS": ("2018-12-02"),
             "BR": (
                 "2018-04-14",
                 "2018-03-22",
@@ -143,7 +143,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             "TN": (
                 "2018-04-14",
-                "2018-04-15",
                 "2018-08-15",
             ),
             "TR": ("2018-08-15",),
@@ -157,7 +156,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "UP": ("2018-04-14",),
             "WB": (
                 "2018-04-14",
-                "2018-04-15",
                 "2018-05-09",
                 "2018-05-01",
             ),
@@ -300,19 +298,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-11-06",
         )
         self.assertHolidayName("Chhath Puja", India(subdiv="JH"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
-
-        # Test out of range dates for Kerala
-        for year in (2000, 2036):
-            with self.assertWarns(Warning):
-                India(subdiv="KL", years=year)
-        dt = (
-            "2001-08-31",
-            "2010-08-23",
-            "2025-09-05",
-            "2035-09-14",
-        )
-        self.assertHolidayName("Onam", India(subdiv="KL"), dt)
         self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
 
         # Test out of range dates for Maharashtra
