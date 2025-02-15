@@ -53,7 +53,6 @@ msgstr "Tuvalu Day"
 msgid "Aso fanau o te sui ote Tupu"
 msgstr "Heir to the Throne's Birthday"
 
-#. Boxing Day.
 msgid "Aso Faipele"
 msgstr "Boxing Day"
 
@@ -80,10 +79,6 @@ msgstr "Golden Jubilee"
 #. Big Day.
 msgid "Po Lahi"
 msgstr "Big Day"
-
-#. Nukufetau Day.
-msgid "Te Aso o Tutasi"
-msgstr "Nukufetau Day"
 
 #. Day of the Flood.
 msgid "Bogin te Ieka"
@@ -121,12 +116,11 @@ msgstr "National Youth Day"
 msgid "Te Aso O Tutasi"
 msgstr "Nukufetau Day"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (fakaaoga)"
-msgstr "%s (estimated)"
-
 #. %s (observed).
 #, c-format
 msgid "%s (fakamatakuga)"
 msgstr "%s (observed)"
+
+#. Queen's Birthday.
+msgid "Asofanau Fafine"
+msgstr "Queen's Birthday"

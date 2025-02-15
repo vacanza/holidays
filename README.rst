@@ -908,8 +908,8 @@ All other default values are highlighted with bold:
      - HALF_DAY
    * - Tuvalu
      - TV
-     - States and territories: FUN (Funafuti), NMG (Nanumaga), NMA (Nanumea), NIT (Niutao), NUI (Nui), NKF (Nukufetau), NKL (Nukulaelae), VAI (Vaitupu)
-     - en_GB, en_US, **tvl_TV**
+     - Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)
+     - en_GB, en_US, **tvl**
      -
    * - Ukraine
      - UA
