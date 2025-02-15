@@ -135,9 +135,6 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Makar Sankranti / Pongal.
-        self._add_holiday_jan_14("Makar Sankranti / Pongal")
-
         if self._year >= 1950:
             # Republic Day.
             self._add_holiday_jan_26("Republic Day")
@@ -155,9 +152,6 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Labour Day.
         self._add_labor_day("Labour Day")
 
-        # Directly lifted Diwali and Holi dates from FBProphet from:
-        # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
-        # Warnings kept in place so that users are aware
         if self._year < 2001 or self._year > 2035:
             warning_msg = "Requested Holidays are available only from 2001 to 2035."
             warnings.warn(warning_msg, Warning)
@@ -473,6 +467,44 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (MAR, 8),
         }
 
+        makar_sankranti_dates = {
+            2001: (JAN, 14),
+            2002: (JAN, 14),
+            2003: (JAN, 14),
+            2004: (JAN, 15),
+            2005: (JAN, 14),
+            2006: (JAN, 14),
+            2007: (JAN, 15),
+            2008: (JAN, 15),
+            2009: (JAN, 14),
+            2010: (JAN, 14),
+            2011: (JAN, 15),
+            2012: (JAN, 15),
+            2013: (JAN, 14),
+            2014: (JAN, 14),
+            2015: (JAN, 15),
+            2016: (JAN, 15),
+            2017: (JAN, 14),
+            2018: (JAN, 14),
+            2019: (JAN, 15),
+            2020: (JAN, 15),
+            2021: (JAN, 14),
+            2022: (JAN, 14),
+            2023: (JAN, 14),
+            2024: (JAN, 14),
+            2025: (JAN, 14),
+            2026: (JAN, 14),
+            2027: (JAN, 15),
+            2028: (JAN, 15),
+            2029: (JAN, 14),
+            2030: (JAN, 14),
+            2031: (JAN, 15),
+            2032: (JAN, 15),
+            2033: (JAN, 14),
+            2034: (JAN, 14),
+            2035: (JAN, 15),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -496,6 +528,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in maha_shivaratri_dates:
             self._add_holiday("Maha Shivaratri", maha_shivaratri_dates[self._year])
+
+        if self._year in makar_sankranti_dates:
+            self._add_holiday("Makar Sankranti", makar_sankranti_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
@@ -716,6 +751,46 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/onam
+        onam_dates = {
+            2001: (AUG, 31),
+            2002: (AUG, 21),
+            2003: (SEP, 8),
+            2004: (AUG, 28),
+            2005: (SEP, 15),
+            2006: (SEP, 5),
+            2007: (AUG, 26),
+            2008: (SEP, 12),
+            2009: (SEP, 2),
+            2010: (AUG, 23),
+            2011: (SEP, 9),
+            2012: (AUG, 29),
+            2013: (AUG, 20),
+            2014: (SEP, 6),
+            2015: (AUG, 28),
+            2016: (SEP, 13),
+            2017: (SEP, 4),
+            2018: (AUG, 24),
+            2019: (SEP, 11),
+            2020: (AUG, 31),
+            2021: (AUG, 21),
+            2022: (SEP, 8),
+            2023: (AUG, 29),
+            2024: (SEP, 15),
+            2025: (SEP, 5),
+            2026: (AUG, 26),
+            2027: (SEP, 12),
+            2028: (SEP, 1),
+            2029: (AUG, 22),
+            2030: (SEP, 9),
+            2031: (AUG, 30),
+            2032: (AUG, 20),
+            2033: (SEP, 6),
+            2034: (AUG, 28),
+            2035: (SEP, 14),
+        }
+        if self._year in onam_dates:
+            self._add_holiday("Onam", onam_dates[self._year])
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Kerala Foundation Day")
 
@@ -889,6 +964,46 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/pongal
+        pongal_dates = {
+            2001: (JAN, 14),
+            2002: (JAN, 14),
+            2003: (JAN, 14),
+            2004: (JAN, 15),
+            2005: (JAN, 14),
+            2006: (JAN, 14),
+            2007: (JAN, 15),
+            2008: (JAN, 15),
+            2009: (JAN, 14),
+            2010: (JAN, 14),
+            2011: (JAN, 15),
+            2012: (JAN, 15),
+            2013: (JAN, 14),
+            2014: (JAN, 14),
+            2015: (JAN, 15),
+            2016: (JAN, 15),
+            2017: (JAN, 14),
+            2018: (JAN, 14),
+            2019: (JAN, 15),
+            2020: (JAN, 15),
+            2021: (JAN, 14),
+            2022: (JAN, 14),
+            2023: (JAN, 15),
+            2024: (JAN, 15),
+            2025: (JAN, 14),
+            2026: (JAN, 14),
+            2027: (JAN, 15),
+            2028: (JAN, 15),
+            2029: (JAN, 14),
+            2030: (JAN, 14),
+            2031: (JAN, 15),
+            2032: (JAN, 15),
+            2033: (JAN, 14),
+            2034: (JAN, 14),
+            2035: (JAN, 15),
+        }
+        if self._year in pongal_dates:
+            self._add_holiday("Pongal", pongal_dates[self._year])
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_14("Puthandu (Tamil New Year)")
         self._add_holiday_apr_15("Puthandu (Tamil New Year)")

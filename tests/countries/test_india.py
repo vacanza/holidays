@@ -34,7 +34,6 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_2018(self):
         self.assertHoliday(
-            "2018-01-14",
             "2018-01-26",
             "2018-03-02",
             "2018-03-25",
@@ -237,6 +236,14 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName("Maha Shivaratri", dt)
 
+        dt = (
+            "2001-01-14",
+            "2010-01-14",
+            "2025-01-14",
+            "2035-01-15",
+        )
+        self.assertHolidayName("Makar Sankranti", dt)
+
     def test_ranged_subdiv_holidays(self):
         warnings.simplefilter("always")
 
@@ -277,6 +284,19 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-11-06",
         )
         self.assertHolidayName("Chhath Puja", India(subdiv="JH"), dt)
+        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+
+        # Test out of range dates for Kerala
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="KL", years=year)
+        dt = (
+            "2001-08-31",
+            "2010-08-23",
+            "2025-09-05",
+            "2035-09-14",
+        )
+        self.assertHolidayName("Onam", India(subdiv="KL"), dt)
         self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
 
         # Test out of range dates for Maharashtra
@@ -327,6 +347,19 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-11-06",
         )
         self.assertHolidayName("Chhath Puja", India(subdiv="UP"), dt)
+        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+
+        # Test out of range dates for Tamil Nadu
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="TN", years=year)
+        dt = (
+            "2001-01-14",
+            "2010-01-14",
+            "2025-01-14",
+            "2035-01-15",
+        )
+        self.assertHolidayName("Pongal", India(subdiv="TN"), dt)
         self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
 
     def test_pre_1947(self):
