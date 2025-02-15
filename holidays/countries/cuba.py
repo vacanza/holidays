@@ -64,7 +64,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
-        # International Worker's Day.
+        # International Workers' Day.
         self._add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.

@@ -149,7 +149,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Assumed to start in 1993, defunct from 2020 onwards.
 
         if self._year <= 2019:
-            # International Children Day
+            # International Children's Day
             self._add_childrens_day(tr("ទិវាកុមារអន្តរជាតិ"))
 
         # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ

@@ -91,7 +91,7 @@ msgstr "วันแห่งการปรองดอง"
 msgid "Family & Community Day"
 msgstr "วันครอบครัวและชุมชน"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 

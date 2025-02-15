@@ -117,7 +117,7 @@ class Kazakhstan(
         dts_observed.add(self._add_womens_day(tr("Халықаралық әйелдер күні")))
 
         if self._year >= 2002:
-            # Nowruz holiday.
+            # Nowruz Holiday.
             name = tr("Наурыз мейрамы")
             dts_observed.add(self._add_holiday_mar_22(name))
             if self._year >= 2010:

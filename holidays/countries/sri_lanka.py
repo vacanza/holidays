@@ -239,7 +239,7 @@ class SriLanka(
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("ඊදුල් අල්හා"))
 
-        #  The Prophet's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("නබි නායකතුමාගේ උපන් දිනය"))
 
 

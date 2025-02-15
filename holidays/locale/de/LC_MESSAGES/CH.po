@@ -58,7 +58,7 @@ msgstr ""
 msgid "Stephanstag"
 msgstr ""
 
-#. Berchtold's Day.
+#. Saint Berchtold's Day.
 msgid "Berchtoldstag"
 msgstr ""
 

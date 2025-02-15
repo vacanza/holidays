@@ -46,7 +46,7 @@ msgstr "Страсна пʼятниця"
 msgid "Tiradentes"
 msgstr "День Тирадентіса"
 
-#. Workers' Day.
+#. Worker's Day.
 msgid "Dia do Trabalhador"
 msgstr "День трудящих"
 

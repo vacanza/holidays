@@ -65,7 +65,7 @@ msgstr ""
 msgid "ទិវាជាតិនៃការចងចាំ"
 msgstr ""
 
-#. International Children Day
+#. International Children's Day
 msgid "ទិវាកុមារអន្តរជាតិ"
 msgstr ""
 
