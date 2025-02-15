@@ -22,7 +22,11 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=PakistanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self,
+            cls=PakistanIslamicHolidays,
+            show_estimated=kwargs.pop("islamic_show_estimated", True),
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
