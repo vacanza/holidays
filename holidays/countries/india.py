@@ -467,6 +467,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (MAR, 8),
         }
 
+        # https://www.timeanddate.com/holidays/india/makar-sankranti
         makar_sankranti_dates = {
             2001: (JAN, 14),
             2002: (JAN, 14),
@@ -505,6 +506,84 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (JAN, 15),
         }
 
+        # https://www.timeanddate.com/holidays/india/navratri
+        sharad_navratri_dates = {
+            2001: (OCT, 17),
+            2002: (OCT, 7),
+            2003: (SEP, 26),
+            2004: (OCT, 14),
+            2005: (OCT, 4),
+            2006: (SEP, 23),
+            2007: (OCT, 12),
+            2008: (SEP, 30),
+            2009: (SEP, 19),
+            2010: (OCT, 8),
+            2011: (SEP, 28),
+            2012: (OCT, 16),
+            2013: (OCT, 5),
+            2014: (SEP, 25),
+            2015: (OCT, 13),
+            2016: (OCT, 1),
+            2017: (SEP, 21),
+            2018: (OCT, 10),
+            2019: (SEP, 29),
+            2020: (OCT, 17),
+            2021: (OCT, 7),
+            2022: (SEP, 26),
+            2023: (OCT, 15),
+            2024: (OCT, 3),
+            2025: (SEP, 22),
+            2026: (OCT, 11),
+            2027: (SEP, 30),
+            2028: (SEP, 19),
+            2029: (OCT, 8),
+            2030: (SEP, 28),
+            2031: (OCT, 17),
+            2032: (OCT, 5),
+            2033: (SEP, 24),
+            2034: (OCT, 13),
+            2035: (OCT, 2),
+        }
+
+        # https://www.timeanddate.com/holidays/india/ganesh-chaturthi
+        ganesh_chaturthi_dates = {
+            2001: (AUG, 22),
+            2002: (SEP, 10),
+            2003: (AUG, 31),
+            2004: (SEP, 18),
+            2005: (SEP, 7),
+            2006: (AUG, 27),
+            2007: (SEP, 15),
+            2008: (SEP, 3),
+            2009: (AUG, 23),
+            2010: (SEP, 11),
+            2011: (SEP, 1),
+            2012: (SEP, 19),
+            2013: (SEP, 9),
+            2014: (AUG, 29),
+            2015: (SEP, 17),
+            2016: (SEP, 5),
+            2017: (AUG, 25),
+            2018: (SEP, 13),
+            2019: (SEP, 2),
+            2020: (AUG, 22),
+            2021: (SEP, 10),
+            2022: (AUG, 31),
+            2023: (SEP, 19),
+            2024: (SEP, 7),
+            2025: (AUG, 27),
+            2026: (SEP, 14),
+            2027: (SEP, 4),
+            2028: (AUG, 23),
+            2029: (SEP, 11),
+            2030: (SEP, 1),
+            2031: (SEP, 20),
+            2032: (SEP, 8),
+            2033: (AUG, 28),
+            2034: (SEP, 16),
+            2035: (SEP, 5),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -531,6 +610,12 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in makar_sankranti_dates:
             self._add_holiday("Makar Sankranti", makar_sankranti_dates[self._year])
+
+        if self._year in sharad_navratri_dates:
+            self._add_holiday("Navratri / Sharad Navratri", sharad_navratri_dates[self._year])
+
+        if self._year in ganesh_chaturthi_dates:
+            self._add_holiday("Ganesh Chaturthi", ganesh_chaturthi_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.

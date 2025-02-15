@@ -244,6 +244,22 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName("Makar Sankranti", dt)
 
+        dt = (
+            "2001-10-17",
+            "2010-10-08",
+            "2025-09-22",
+            "2035-10-02",
+        )
+        self.assertHolidayName("Navratri / Sharad Navratri", dt)
+
+        dt = (
+            "2001-08-22",
+            "2010-09-11",
+            "2025-08-27",
+            "2035-09-05",
+        )
+        self.assertHolidayName("Ganesh Chaturthi", dt)
+
     def test_ranged_subdiv_holidays(self):
         warnings.simplefilter("always")
 
