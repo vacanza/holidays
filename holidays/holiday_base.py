@@ -1124,7 +1124,7 @@ class HolidayBase(dict[date, str]):
         # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
 
-        :param:
+        :param args:
             Either another dictionary object where keys are dates and values
             are holiday names, or a single date (or a list of dates) for which
             the value will be set to "Holiday".
