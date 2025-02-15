@@ -1,6 +1,6 @@
 # Test requirements.
 
-coverage==7.6.10
+coverage==7.6.12
 importlib-metadata==8.6.1
 numpy<2.1.0; python_version < '3.10'
 numpy==2.2.2; python_version >= '3.10'
