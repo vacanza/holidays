@@ -644,6 +644,49 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
+    def _add_chhath_puja(self):
+        # Adds Chhath Puja if the year exists in the predefined dates.
+        # # https://www.timeanddate.com/holidays/india/chhat-puja
+        chhath_puja_dates = {
+            2001: (NOV, 21),
+            2002: (NOV, 10),
+            2003: (OCT, 30),
+            2004: (NOV, 17),
+            2005: (NOV, 7),
+            2006: (OCT, 28),
+            2007: (NOV, 16),
+            2008: (NOV, 4),
+            2009: (OCT, 24),
+            2010: (NOV, 11),
+            2011: (NOV, 1),
+            2012: (NOV, 19),
+            2013: (NOV, 8),
+            2014: (OCT, 29),
+            2015: (NOV, 17),
+            2016: (NOV, 6),
+            2017: (OCT, 26),
+            2018: (NOV, 13),
+            2019: (NOV, 2),
+            2020: (NOV, 20),
+            2021: (NOV, 10),
+            2022: (OCT, 30),
+            2023: (NOV, 19),
+            2024: (NOV, 7),
+            2025: (OCT, 28),
+            2026: (NOV, 15),
+            2027: (NOV, 4),
+            2028: (OCT, 23),
+            2029: (NOV, 11),
+            2030: (NOV, 1),
+            2031: (NOV, 20),
+            2032: (NOV, 9),
+            2033: (OCT, 29),
+            2034: (NOV, 17),
+            2035: (NOV, 6),
+        }
+        if self._year in chhath_puja_dates:
+            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
@@ -660,46 +703,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
-        # https://www.timeanddate.com/holidays/india/chhat-puja
-        chhath_puja_dates = {
-            2001: (NOV, 21),
-            2002: (NOV, 10),
-            2003: (OCT, 30),
-            2004: (NOV, 17),
-            2005: (NOV, 7),
-            2006: (OCT, 28),
-            2007: (NOV, 16),
-            2008: (NOV, 4),
-            2009: (OCT, 24),
-            2010: (NOV, 11),
-            2011: (NOV, 1),
-            2012: (NOV, 19),
-            2013: (NOV, 8),
-            2014: (OCT, 29),
-            2015: (NOV, 17),
-            2016: (NOV, 6),
-            2017: (OCT, 26),
-            2018: (NOV, 13),
-            2019: (NOV, 2),
-            2020: (NOV, 20),
-            2021: (NOV, 10),
-            2022: (OCT, 30),
-            2023: (NOV, 19),
-            2024: (NOV, 7),
-            2025: (OCT, 28),
-            2026: (NOV, 15),
-            2027: (NOV, 4),
-            2028: (OCT, 23),
-            2029: (NOV, 11),
-            2030: (NOV, 1),
-            2031: (NOV, 20),
-            2032: (NOV, 9),
-            2033: (OCT, 29),
-            2034: (NOV, 17),
-            2035: (NOV, 6),
-        }
-        if self._year in chhath_puja_dates:
-            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+        self._add_chhath_puja()
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_mar_22("Bihar Day")
 
@@ -714,46 +718,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Delhi.
     def _populate_subdiv_dl_public_holidays(self):
-        # https://www.timeanddate.com/holidays/india/chhat-puja
-        chhath_puja_dates = {
-            2001: (NOV, 21),
-            2002: (NOV, 10),
-            2003: (OCT, 30),
-            2004: (NOV, 17),
-            2005: (NOV, 7),
-            2006: (OCT, 28),
-            2007: (NOV, 16),
-            2008: (NOV, 4),
-            2009: (OCT, 24),
-            2010: (NOV, 11),
-            2011: (NOV, 1),
-            2012: (NOV, 19),
-            2013: (NOV, 8),
-            2014: (OCT, 29),
-            2015: (NOV, 17),
-            2016: (NOV, 6),
-            2017: (OCT, 26),
-            2018: (NOV, 13),
-            2019: (NOV, 2),
-            2020: (NOV, 20),
-            2021: (NOV, 10),
-            2022: (OCT, 30),
-            2023: (NOV, 19),
-            2024: (NOV, 7),
-            2025: (OCT, 28),
-            2026: (NOV, 15),
-            2027: (NOV, 4),
-            2028: (OCT, 23),
-            2029: (NOV, 11),
-            2030: (NOV, 1),
-            2031: (NOV, 20),
-            2032: (NOV, 9),
-            2033: (OCT, 29),
-            2034: (NOV, 17),
-            2035: (NOV, 6),
-        }
-        if self._year in chhath_puja_dates:
-            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+        self._add_chhath_puja()
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
@@ -783,46 +748,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
-        # https://www.timeanddate.com/holidays/india/chhat-puja
-        chhath_puja_dates = {
-            2001: (NOV, 21),
-            2002: (NOV, 10),
-            2003: (OCT, 30),
-            2004: (NOV, 17),
-            2005: (NOV, 7),
-            2006: (OCT, 28),
-            2007: (NOV, 16),
-            2008: (NOV, 4),
-            2009: (OCT, 24),
-            2010: (NOV, 11),
-            2011: (NOV, 1),
-            2012: (NOV, 19),
-            2013: (NOV, 8),
-            2014: (OCT, 29),
-            2015: (NOV, 17),
-            2016: (NOV, 6),
-            2017: (OCT, 26),
-            2018: (NOV, 13),
-            2019: (NOV, 2),
-            2020: (NOV, 20),
-            2021: (NOV, 10),
-            2022: (OCT, 30),
-            2023: (NOV, 19),
-            2024: (NOV, 7),
-            2025: (OCT, 28),
-            2026: (NOV, 15),
-            2027: (NOV, 4),
-            2028: (OCT, 23),
-            2029: (NOV, 11),
-            2030: (NOV, 1),
-            2031: (NOV, 20),
-            2032: (NOV, 9),
-            2033: (OCT, 29),
-            2034: (NOV, 17),
-            2035: (NOV, 6),
-        }
-        if self._year in chhath_puja_dates:
-            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+        self._add_chhath_puja()
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Karnataka.
@@ -1106,46 +1032,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
-        # https://www.timeanddate.com/holidays/india/chhat-puja
-        chhath_puja_dates = {
-            2001: (NOV, 21),
-            2002: (NOV, 10),
-            2003: (OCT, 30),
-            2004: (NOV, 17),
-            2005: (NOV, 7),
-            2006: (OCT, 28),
-            2007: (NOV, 16),
-            2008: (NOV, 4),
-            2009: (OCT, 24),
-            2010: (NOV, 11),
-            2011: (NOV, 1),
-            2012: (NOV, 19),
-            2013: (NOV, 8),
-            2014: (OCT, 29),
-            2015: (NOV, 17),
-            2016: (NOV, 6),
-            2017: (OCT, 26),
-            2018: (NOV, 13),
-            2019: (NOV, 2),
-            2020: (NOV, 20),
-            2021: (NOV, 10),
-            2022: (OCT, 30),
-            2023: (NOV, 19),
-            2024: (NOV, 7),
-            2025: (OCT, 28),
-            2026: (NOV, 15),
-            2027: (NOV, 4),
-            2028: (OCT, 23),
-            2029: (NOV, 11),
-            2030: (NOV, 1),
-            2031: (NOV, 20),
-            2032: (NOV, 9),
-            2033: (OCT, 29),
-            2034: (NOV, 17),
-            2035: (NOV, 6),
-        }
-        if self._year in chhath_puja_dates:
-            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+        self._add_chhath_puja()
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # West Bengal.
