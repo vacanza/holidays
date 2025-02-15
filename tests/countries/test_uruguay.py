@@ -333,7 +333,7 @@ class TestUruguay(CommonCountryTests, TestCase):
             ("2022-04-14", "Tourism Week"),
             ("2022-04-15", "Tourism Week"),
             ("2022-04-18", "Landing of the 33 Patriots"),
-            ("2022-05-01", "International Workers' Day"),
+            ("2022-05-01", "Workers' Day"),
             ("2022-05-16", "Battle of Las Piedras"),
             ("2022-06-19", "Birthday of Artigas"),
             ("2022-07-18", "Constitution Day"),

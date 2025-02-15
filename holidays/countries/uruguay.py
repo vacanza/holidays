@@ -61,7 +61,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Cry of Asencio.
             self._add_holiday_feb_28(tr("Grito de Asencio"))
 
-        # International Workers' Day.
+        # Workers' Day.
         dt = self._add_labor_day(tr("Día de los Trabajadores"))
         if self._year <= 1983:
             self._move_holiday(dt)

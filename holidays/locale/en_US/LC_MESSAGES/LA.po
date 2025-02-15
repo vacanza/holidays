@@ -47,9 +47,9 @@ msgstr "Lao New Year's Day"
 msgid "ວັນກຳມະກອນສາກົນ"
 msgstr "International Labor Day"
 
-#. International Children Day.
+#. International Children's Day.
 msgid "ວັນເດັກສາກົນ"
-msgstr "International Children Day"
+msgstr "International Children's Day"
 
 #. Lao National Day.
 msgid "ວັນຊາດ"

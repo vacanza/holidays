@@ -127,9 +127,9 @@ msgstr "Eid al-Fitr"
 msgid "ඊදුල් අල්හා"
 msgstr "Eid al-Adha"
 
-#. The Prophet's Birthday.
+#. Prophet's Birthday.
 msgid "නබි නායකතුමාගේ උපන් දිනය"
-msgstr "The Prophet's Birthday"
+msgstr "Prophet's Birthday"
 
 #. Adhi Vesak Full Mon Poya Day.
 msgid "අධි වෙසක් පුර පසළොස්වක පෝය දිනය"
