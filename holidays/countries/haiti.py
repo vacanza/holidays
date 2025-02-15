@@ -76,13 +76,13 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Vendredi Saint"))
 
-        # Easter.
+        # Easter Sunday.
         self._add_easter_sunday(tr("Pâques"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fête-Dieu"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Death of Dessalines.
@@ -110,7 +110,7 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Feast of Lady of Perpetual Help, Patroness of Haiti.
         self._add_holiday_jun_27(tr("Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"))
 
-        # Ascension.
+        # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
         # Birth Anniversary of Jean-Jacques Dessalines.

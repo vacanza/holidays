@@ -53,9 +53,9 @@ msgstr "Orthodox Christmas"
 msgid "Халықаралық әйелдер күні"
 msgstr "International Women's Day"
 
-#. Nowruz holiday.
+#. Nowruz Holiday.
 msgid "Наурыз мейрамы"
-msgstr "Nowruz holiday"
+msgstr "Nowruz Holiday"
 
 #. Kazakhstan's People Solidarity Holiday.
 msgid "Қазақстан халқының бірлігі мерекесі"

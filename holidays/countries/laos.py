@@ -156,7 +156,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
 
         if 1990 <= self._year <= 2017:
-            # International Children Day.
+            # International Children's Day.
             self._add_childrens_day(tr("ວັນເດັກສາກົນ"))
 
         # ວັນຊາດ
@@ -281,7 +281,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
 
         if self._year >= 2018:
-            # International Children Day.
+            # International Children's Day.
             self._add_childrens_day(tr("ວັນເດັກສາກົນ"))
 
         # ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ

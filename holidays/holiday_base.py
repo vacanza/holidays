@@ -21,7 +21,7 @@ from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Literal, Optional, Union, cast
+from typing import Any, Literal, Optional, Union, cast
 
 from dateutil.parser import parse
 
@@ -437,7 +437,7 @@ class HolidayBase(dict[date, str]):
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
-        return dict.__contains__(cast("Dict[Any, Any]", self), self.__keytransform__(key))
+        return dict.__contains__(cast("dict[Any, Any]", self), self.__keytransform__(key))
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
@@ -447,7 +447,7 @@ class HolidayBase(dict[date, str]):
             if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return False
 
-        return dict.__eq__(cast("Dict[Any, Any]", self), other)
+        return dict.__eq__(cast("dict[Any, Any]", self), other)
 
     def __getattr__(self, name):
         try:
@@ -1250,4 +1250,4 @@ country_holidays('CA') + country_holidays('MX')
     def _populate(self, year):
         for operand in self.holidays:
             operand._populate(year)
-            self.update(cast("Dict[DateLike, str]", operand))
+            self.update(cast("dict[DateLike, str]", operand))

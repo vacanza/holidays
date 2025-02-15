@@ -50,7 +50,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
-        # Saint Peter and Saint Paul.
+        # Saint Peter and Saint Paul's Day.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
 
         # Independence Day.

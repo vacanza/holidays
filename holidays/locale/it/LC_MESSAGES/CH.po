@@ -58,7 +58,7 @@ msgstr "Lunedì di Pentecoste"
 msgid "Stephanstag"
 msgstr "Giorno di Santo Stefano"
 
-#. Berchtold's Day.
+#. Saint Berchtold's Day.
 msgid "Berchtoldstag"
 msgstr "Giorno di Bertoldo"
 

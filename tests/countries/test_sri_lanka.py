@@ -304,7 +304,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-07-29", "Public Sector Holiday"),
             ("2022-08-11", "Nikini Full Moon Poya Day"),
             ("2022-09-10", "Binara Full Moon Poya Day"),
-            ("2022-10-09", "The Prophet's Birthday; Vap Full Moon Poya Day"),
+            ("2022-10-09", "Prophet's Birthday; Vap Full Moon Poya Day"),
             ("2022-10-10", "Special Bank Holiday"),
             ("2022-10-24", "Deepavali Festival Day"),
             ("2022-11-07", "Il Full Moon Poya Day"),

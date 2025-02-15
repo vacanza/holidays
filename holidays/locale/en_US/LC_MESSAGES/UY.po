@@ -39,9 +39,9 @@ msgstr "New Year's Day"
 msgid "Grito de Asencio"
 msgstr "Cry of Asencio"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Día de los Trabajadores"
-msgstr "International Workers' Day"
+msgstr "Workers' Day"
 
 #. Spain Day.
 msgid "Día de España"

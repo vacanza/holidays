@@ -91,7 +91,7 @@ msgstr ""
 msgid "Family & Community Day"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr ""
 
