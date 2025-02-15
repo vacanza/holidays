@@ -1,4 +1,6 @@
-# Version 0.66
+# Changelog
+
+## Version 0.66
 
 Released February 3, 2025
 
@@ -28,7 +30,7 @@ Released February 3, 2025
 -   Pin CI/CD Ubuntu version (#2245 by @arkid15r)
 -   Remove .po files from distribution bundles (#2243 by @KJhellico)
 
-# Version 0.65
+## Version 0.65
 
 Released January 20, 2025
 
@@ -42,7 +44,7 @@ Released January 20, 2025
     @KJhellico)
 -   Add signed artifacts path (#2216 by @arkid15r)
 
-# Version 0.64
+## Version 0.64
 
 Released January 6, 2025
 
@@ -70,7 +72,7 @@ Released January 6, 2025
     @arkid15r)
 -   Sign release artifacts using Sigstore (#2195 by @arkid15r)
 
-# Version 0.63
+## Version 0.63
 
 Released December 16, 2024
 
@@ -85,7 +87,7 @@ Released December 16, 2024
 -   Inline single-use variables, update .py files formatting (#2161 by
     @KJhellico)
 
-# Version 0.62
+## Version 0.62
 
 Released December 2, 2024
 
@@ -104,7 +106,7 @@ Released December 2, 2024
 -   Update pyproject.toml: clarify project summary (#2139 by @arkid15r)
 -   Add SECURITY.md (#2142 by @arkid15r)
 
-# Version 0.61
+## Version 0.61
 
 Released November 18, 2024
 
@@ -134,7 +136,7 @@ Released November 18, 2024
 -   Add Europe Day to InternationalHolidays (#2114 by @KJhellico)
 -   Add Portugal subdivision aliases (#2110 by @dgomes)
 
-# Version 0.60
+## Version 0.60
 
 Released November 4, 2024
 
@@ -167,7 +169,7 @@ Released November 4, 2024
     (#2083 by @PPsyrius)
 -   Simplify PR template (#2099 by @arkid15r)
 
-# Version 0.59
+## Version 0.59
 
 Released October 21, 2024
 
@@ -186,7 +188,7 @@ Released October 21, 2024
 -   Drop Python 3.8 support (#2042 by @PPsyrius)
 -   Satisfy mypy requirements (#2053 by @arkid15r)
 
-# Version 0.58
+## Version 0.58
 
 Released October 7, 2024
 
@@ -217,7 +219,7 @@ Released October 7, 2024
 -   Remove deprecated `fix-encoding-pragma`, add `pyupgrade` (#2007 by
     @PPsyrius, @arkid15r)
 
-# Version 0.57
+## Version 0.57
 
 Released September 16, 2024
 
@@ -240,7 +242,7 @@ Released September 16, 2024
     @PPsyrius)
 -   Unify en_US Islamic holidays name translation (#1984 by @KJhellico)
 
-# Version 0.56
+## Version 0.56
 
 Released September 2, 2024
 
@@ -277,7 +279,7 @@ Released September 2, 2024
     @PPsyrius)
 -   Standardize snapshot names (#1967 by @arkid15r)
 
-# Version 0.55
+## Version 0.55
 
 Released August 19, 2024
 
@@ -296,7 +298,7 @@ Released August 19, 2024
     @PPsyrius, @arkid15r)
 -   Implement simple CycloneDX SBOM generation (#1925 by @arkid15r)
 
-# Version 0.54
+## Version 0.54
 
 Released August 5, 2024
 
@@ -318,7 +320,7 @@ Released August 5, 2024
     @arkid15r)
 -   Drop PyPy support (#1878 by @arkid15r)
 
-# Version 0.53
+## Version 0.53
 
 Released July 15, 2024
 
@@ -326,7 +328,7 @@ Released July 15, 2024
 -   Extend `HolidayBase::__setitem__` to handle names including ';'
     (#1858 by @arkid15r)
 
-# Version 0.52
+## Version 0.52
 
 Released July 1, 2024
 
@@ -340,7 +342,7 @@ Released July 1, 2024
 -   Add GitHub issue templates (#1845 by @arkid15r)
 -   Tune up CI/CD jobs concurrency (#1834 by @arkid15r)
 
-# Version 0.51
+## Version 0.51
 
 Released June 17, 2024
 
@@ -355,7 +357,7 @@ Released June 17, 2024
 -   Migrate to codecov.io (#1818 by @arkid15r)
 -   Narrow down ignored warnings (#1816 by @arkid15r)
 
-# Version 0.50
+## Version 0.50
 
 Released June 3, 2024
 
@@ -370,7 +372,7 @@ Released June 3, 2024
 -   Migrate Japan holidays to ObservedHolidayBase (#1810 by @KJhellico)
 -   Synchronize entity dynamic imports (#1794 by @Izzette)
 
-# Version 0.49
+## Version 0.49
 
 Released May 20, 2024
 
@@ -384,7 +386,7 @@ Released May 20, 2024
 -   Replace `datetime::timedelta` with custom function (#1785 by
     @KJhellico)
 
-# Version 0.48
+## Version 0.48
 
 Released May 6, 2024
 
@@ -404,7 +406,7 @@ Released May 6, 2024
 -   Prioritize entity default holiday category processing (#1769 by
     @KJhellico)
 
-# Version 0.47
+## Version 0.47
 
 Released April 15, 2024
 
@@ -420,7 +422,7 @@ Released April 15, 2024
     (#1749 by @KJhellico)
 -   Update contributing guidelines (#1752 by @arkid15r)
 
-# Version 0.46
+## Version 0.46
 
 Released April 1, 2024
 
@@ -438,7 +440,7 @@ Released April 1, 2024
 -   Add package build tests (#1733 by @KJhellico)
 -   Unify file headers after recent update (#1743 by @KJhellico)
 
-# Version 0.45
+## Version 0.45
 
 Released March 18, 2024
 
@@ -451,7 +453,7 @@ Released March 18, 2024
 -   Update Mexico holidays (#1722 by @KJhellico)
 -   Update pre-commit config (#1732 by @KJhellico)
 
-# Version 0.44
+## Version 0.44
 
 Released March 4, 2024
 
@@ -467,7 +469,7 @@ Released March 4, 2024
 -   Add `UNOFFICIAL` category for the United States (#1669 by @PPsyrius)
 -   Rename repository branches (#1699 by @arkid15r)
 
-# Version 0.43
+## Version 0.43
 
 Released February 19, 2024
 
@@ -478,7 +480,7 @@ Released February 19, 2024
 -   Update Thailand holidays: add Bridge Public Holiday on Apr 12, 2024
     (#1690 by @PPsyrius)
 
-# Version 0.42
+## Version 0.42
 
 Released February 5, 2024
 
@@ -499,7 +501,7 @@ Released February 5, 2024
     @arkid15r)
 -   Use ruff instead of black+flake8 (#1671 by @arkid15r)
 
-# Version 0.41
+## Version 0.41
 
 Released January 15, 2024
 
@@ -526,7 +528,7 @@ Released January 15, 2024
 -   Simplify estimated label text (#1615 by @KJhellico)
 -   Unify observed labels format (#1636 by @arkid15r)
 
-# Version 0.40
+## Version 0.40
 
 Released January 1, 2024
 
@@ -543,7 +545,7 @@ Released January 1, 2024
 -   Update Taiwan holidays, add l10n support (#1600 by @PPsyrius)
 -   Extend native holiday categories support (#1597 by @arkid15r)
 
-# Version 0.39
+## Version 0.39
 
 Released December 18, 2023
 
@@ -560,7 +562,7 @@ Released December 18, 2023
     @KJhellico)
 -   Update Singapore 2024 holidays (#1588 by @KJhellico)
 
-# Version 0.38
+## Version 0.38
 
 Released December 4, 2023
 
@@ -583,7 +585,7 @@ Released December 4, 2023
     @KJhellico)
 -   Prepare project for Weblate integration \[UA\] (#1565 by @arkid15r)
 
-# Version 0.37
+## Version 0.37
 
 Released November 20, 2023
 
@@ -609,7 +611,7 @@ Released November 20, 2023
     @arkid15r)
 -   Migrate NYSE holidays to ObservedHolidayBase (#1548 by @KJhellico)
 
-# Version 0.36
+## Version 0.36
 
 Released November 6, 2023
 
@@ -637,7 +639,7 @@ Released November 6, 2023
 -   Use setdefault instead of hard-coding observed_rule and
     observed_since (#1521 by @BossColo)
 
-# Version 0.35
+## Version 0.35
 
 Released October 16, 2023
 
@@ -663,7 +665,7 @@ Released October 16, 2023
 -   Simplify PR template (#1502 by @arkid15r)
 -   Standardize custom holiday classes use (#1510 by @arkid15r)
 
-# Version 0.34
+## Version 0.34
 
 Released October 2, 2023
 
@@ -678,7 +680,7 @@ Released October 2, 2023
 -   Update package configuration: migrate to pyproject.toml (#1466 by
     @arkid15r)
 
-# Version 0.33
+## Version 0.33
 
 Released September 18, 2023
 
@@ -705,7 +707,7 @@ Released September 18, 2023
     @KJhellico)
 -   Tune pre-commit auto-update workflow (#1473 by @arkid15r)
 
-# Version 0.32
+## Version 0.32
 
 Released September 4, 2023
 
@@ -718,7 +720,7 @@ Released September 4, 2023
 -   Add CODEOWNERS (#1436 by @arkid15r)
 -   Add pre-commit hooks autoupdate workflow (#1441 by @KJhellico)
 
-# Version 0.31
+## Version 0.31
 
 Released August 21, 2023
 
@@ -741,7 +743,7 @@ Released August 21, 2023
     @arkid15r)
 -   Use typing cast for HolidayBase::**eq** (#1429 by @arkid15r)
 
-# Version 0.30
+## Version 0.30
 
 Released August 7, 2023
 
@@ -796,7 +798,7 @@ Released August 7, 2023
 -   Use HolidayBase::*add_holiday*\* family methods \[v-z\] (#1413 by
     @arkid15r)
 
-# Version 0.29
+## Version 0.29
 
 Released July 17, 2023
 
@@ -825,7 +827,7 @@ Released July 17, 2023
 -   Migrate Croatia, Czechia and Slovenia to holiday groups, add l10n
     support (#1344 by @KJhellico)
 
-# Version 0.28
+## Version 0.28
 
 Released July 3, 2023
 
@@ -855,14 +857,14 @@ Released July 3, 2023
     holidays methods (#1331 by @KJhellico)
 -   Remove redundant `#noqa E501` labels (#1322 by @PPsyrius)
 
-# Version 0.27.1
+## Version 0.27.1
 
 Released June 21, 2023
 
 -   Fix HolidayBase::pop_named partial holiday names removal (#1325 by
     @arkid15r)
 
-# Version 0.27
+## Version 0.27
 
 Released June 19, 2023
 
@@ -908,7 +910,7 @@ Released June 19, 2023
     @arkid15r)
 -   Use aware UTC datetimes internally (#1314 by @scop)
 
-# Version 0.26
+## Version 0.26
 
 Released June 5, 2023
 
@@ -959,7 +961,7 @@ Released June 5, 2023
     holidays methods (#1213 by @KJhellico)
 -   Migrate financial to holiday groups (#1174 by @arkid15r)
 
-# Version 0.25
+## Version 0.25
 
 Released May 15, 2023
 
@@ -984,7 +986,7 @@ Released May 15, 2023
 -   Use a method per subdivision approach for \[a-i\] countries, #1133
     (@arkid15r)
 
-# Version 0.24
+## Version 0.24
 
 Released May 1, 2023
 
@@ -1013,7 +1015,7 @@ Released May 1, 2023
 -   Switch Vietnam holidays from Korean to Chinese lunisolar calendar,
     #1105 (@KJhellico)
 
-# Version 0.23
+## Version 0.23
 
 Released April 17, 2023
 
@@ -1050,7 +1052,7 @@ Released April 17, 2023
 -   Reconfigure dependabot, #1092 (@arkid15r)
 -   Standardize country alias tests, #1074 (@arkid15r)
 
-# Version 0.22
+## Version 0.22
 
 Released April 3, 2023
 
@@ -1087,7 +1089,7 @@ Released April 3, 2023
 -   Restore 100% test coverage, #1038 (@KJhellico)
 -   Unify file headers, #1039 (@KJhellico)
 
-# Version 0.21.13
+## Version 0.21.13
 
 Released March 15, 2023
 
@@ -1108,7 +1110,7 @@ Released March 15, 2023
 -   Unify country imports order, #1003 (@arkid15r)
 -   Use native apostrophe for uk locale holiday names, #1004 (@arkid15r)
 
-# Version 0.21
+## Version 0.21
 
 Released March 6, 2023
 
@@ -1144,7 +1146,7 @@ Released March 6, 2023
 -   Clean up tests module loading, #992 (@arkid15r)
 -   Use the built-in library for time zone functions, #993 (@mborsetti)
 
-# Version 0.20
+## Version 0.20
 
 Released February 23, 2023
 
@@ -1203,7 +1205,7 @@ Released February 23, 2023
 -   Rename dev env setup target, #944 (@arkid15r)
 -   Suppress warnings for tests, #945 (@arkid15r)
 
-# Version 0.19
+## Version 0.19
 
 Released January 30, 2023
 
@@ -1228,7 +1230,7 @@ Released January 30, 2023
     (@KJhellico)
 -   Singapore holidays update #880 (@KJhellico)
 
-# Version 0.18
+## Version 0.18
 
 Released December 27, 2022
 
@@ -1272,7 +1274,7 @@ Released December 27, 2022
 -   NY Stock Exchange updates #833 (SnowX65, KJhellico)
 -   Hungary fixes #826 (KJhellico)
 
-# Version 0.17.2
+## Version 0.17.2
 
 Released November 23, 2022 - Swaziland deprecation warning fix #794
 (arkid15r)
@@ -1310,7 +1312,7 @@ First release (0.17) November 13, 2022
 -   Lithuania fix #781 (Nalguedo)
 -   Sweden fix #783 (sander-visser, KJhellico)
 
-# Version 0.16
+## Version 0.16
 
 Released September 16, 2022
 
@@ -1331,7 +1333,7 @@ grandmother to a lot of us, and will be dearly missed.
 -   New Zealand updates #708, #709 (dr-p, markhoneth)
 -   NYSE updates #693, #696 (kasya)
 
-# Version 0.15
+## Version 0.15
 
 Released August 21, 2022
 
@@ -1355,7 +1357,7 @@ Released August 21, 2022
     (dr-p)
 -   Doc example fix #685 (steakhutzeee, dr-p)
 
-# Version 0.14.2
+## Version 0.14.2
 
 Released June 5, 2022
 
@@ -1377,7 +1379,7 @@ Released June 5, 2022
 -   India doc fixes #657 (dr-p)
 -   Poland fix #663 (kfsz)
 
-# Version 0.13
+## Version 0.13
 
 Released February 15, 2022
 
@@ -1400,7 +1402,7 @@ Released February 15, 2022
 -   Russia fixes #582 (Enzokot)
 -   Type hints fixes #589 (mborsetti)
 
-# Version 0.12
+## Version 0.12
 
 Released January 4, 2022
 
@@ -1463,7 +1465,7 @@ Released January 4, 2022
 
 -   Colombia fixes #564 (jahirfiquitiva)
 
-# Version 0.11.3.1
+## Version 0.11.3.1
 
 Released September 29, 2021
 
@@ -1493,7 +1495,7 @@ Released September 29, 2021
 -   README iso codes typo / improvements #520 (dr-p)
 -   .gitattributes fix #522 (mborsetti)
 
-# Version 0.11.2
+## Version 0.11.2
 
 Released July 18, 2021
 
@@ -1508,7 +1510,7 @@ Released July 18, 2021
 -   .gitignore fix #462 (TheLastProject)
 -   Pre-commit v.2.0.3 (dr-p)
 
-# Version 0.11.1
+## Version 0.11.1
 
 Released April 2, 2021
 
@@ -1527,7 +1529,7 @@ Released April 2, 2021
 -   Singapore fix for multi-year #419 (mborsetti)
 -   Fixed holidays pickling #451 (giladmaya)
 
-# Version 0.10.5.2
+## Version 0.10.5.2
 
 Released February 4, 2021
 
@@ -1542,7 +1544,7 @@ Released February 4, 2021
 -   Ireland fixes (ISO-2 code, partial split from UK) #417 (javicalle)
 -   Honduras fix (ISO-2 code) #405 (dr-p, agorajek)
 
-# Version 0.10.4
+## Version 0.10.4
 
 Released December 6, 2020
 
@@ -1572,7 +1574,7 @@ Released December 6, 2020
 -   enabled Travis tests for python3.9 (mborsetti)
 -   added flake8 to unittests (mborsetti)
 
-# Version 0.10.3
+## Version 0.10.3
 
 Released July 15, 2020
 
@@ -1592,7 +1594,7 @@ Released July 15, 2020
 -   United States fixes (patrick-nicholson, dr-p)
 -   Singapore fixes + 2021 holidays (mborsetti)
 
-# Version 0.10.2
+## Version 0.10.2
 
 Released April 13, 2020
 
@@ -1609,7 +1611,7 @@ Released April 13, 2020
 -   US MLK renamed (snoopyjc, dr-p)
 -   ISO-3 codes export fix (dr-p)
 
-# Version 0.10.1
+## Version 0.10.1
 
 Released January 25, 2020
 
@@ -1629,7 +1631,7 @@ Released January 25, 2020
 -   Canada, Spain, US fixes (jbroudou)
 -   Belarus fix (mpolyakovsky)
 
-# Version 0.9.12
+## Version 0.9.12
 
 Released December 23, 2019
 
@@ -1647,7 +1649,7 @@ Released December 23, 2019
 -   Italy fixes (jokerigno, sixbladeknife)
 -   Other minor fixes
 
-# Version 0.9.11
+## Version 0.9.11
 
 Released July 28, 2019
 
@@ -1664,7 +1666,7 @@ Released July 28, 2019
 -   Czech(ia) - Slovak(ia) fixes (dr-p)
 -   Allow passing years to CountryHoliday (mr.shu)
 
-# Version 0.9.10
+## Version 0.9.10
 
 Released March 12, 2019
 
@@ -1677,7 +1679,7 @@ Released March 12, 2019
 -   South African holidays updates (nickyspag)
 -   Australian holidays updates (itssimon)
 
-# Version 0.9.9
+## Version 0.9.9
 
 Released January 3, 2019
 
@@ -1693,7 +1695,7 @@ Released January 3, 2019
 -   Added Palm Sunday to Danish holidays (jmkjaer)
 -   South Africa's holidays fixes (Gordonei)
 
-# Version 0.9.8
+## Version 0.9.8
 
 Released October 18, 2018
 
@@ -1701,7 +1703,7 @@ Released October 18, 2018
 -   Added Croatia (fran1987)
 -   Added Brazil (fcrespo82)
 
-# Version 0.9.7
+## Version 0.9.7
 
 Released September 12, 2018
 
@@ -1711,7 +1713,7 @@ Released September 12, 2018
     holiday updates
 -   Added Belarus (Gennady-Andreyev)
 
-# Version 0.9.6
+## Version 0.9.6
 
 Released August 1, 2018
 
@@ -1719,14 +1721,14 @@ Released August 1, 2018
 -   Fixed Canadian holidays (Canada / Dominion Day)
 -   Fixed German holidays (Buß- und Bettag, Ostern, Pfingsten)
 
-# Version 0.9.5
+## Version 0.9.5
 
 Released April 23, 2018
 
 -   Added Hungary (Peter Zsak)
 -   Added Argentina (Emmanuel Arias)
 
-# Version 0.9.4
+## Version 0.9.4
 
 Released March 12, 2018
 
@@ -1736,7 +1738,7 @@ Released March 12, 2018
 -   Various inspection fixes
 -   Czech deprecation: replaced by Czechia (janpipek)
 
-# Version 0.9.2
+## Version 0.9.2
 
 Released January 19, 2018
 
@@ -1744,7 +1746,7 @@ Released January 19, 2018
 -   Add Finnish holidays (Ardetus)
 -   Add Slovak holidays (Filip Bednárik)
 
-# Version 0.9.1
+## Version 0.9.1
 
 Released January 17, 2018
 
@@ -1752,7 +1754,7 @@ Released January 17, 2018
 -   Added tests for Irish calendar
 -   Minor fixes and refactoring
 
-# Version 0.9
+## Version 0.9
 
 Released January 14, 2018 (PR merging by dr-prodigy)
 
@@ -1768,13 +1770,13 @@ Released January 14, 2018 (PR merging by dr-prodigy)
 -   Add AU/Queensland The Ekka Show (kirpit)
 -   Various fixes
 
-# Version 0.8.1
+## Version 0.8.1
 
 Released February 12, 2017
 
 -   Add Norwegian holidays
 
-# Version 0.8
+## Version 0.8
 
 Released February 2, 2017
 
@@ -1784,7 +1786,7 @@ Released February 2, 2017
 -   Add Republic of Ireland
 -   Fix Liberation Day (NL)
 
-# Version 0.7
+## Version 0.7
 
 Released January 12, 2017
 
@@ -1793,7 +1795,7 @@ Released January 12, 2017
 -   Specify encoding when parsing for version in setup.py allowing
     package to be installed in non-unicode locales
 
-# Version 0.6
+## Version 0.6
 
 Released November 18, 2016
 
@@ -1805,7 +1807,7 @@ Released November 18, 2016
 -   Add changes to Georgia state holiday names for 2016
 -   Fixes to Canadian holidays
 
-# Version 0.5
+## Version 0.5
 
 Released September 5, 2016
 
@@ -1814,14 +1816,14 @@ Released September 5, 2016
 -   Fix Martin Luther King Jr. Day in state of Georgia
 -   Fix setup.py install error with non-standard sys default encoding
 
-# Version 0.4.1
+## Version 0.4.1
 
 Released January 5, 2016
 
 -   Add federal and provincial holidays for Germany
 -   Add federal holidays for Austria
 
-# Version 0.4
+## Version 0.4
 
 Released October 4, 2015
 
@@ -1832,13 +1834,13 @@ Released October 4, 2015
 -   Include Dec 31st from previous year when observed New Year's Day
 -   Add ability to `sum()` Holiday objects
 
-# Version 0.3.1
+## Version 0.3.1
 
 Released October 9, 2014
 
 -   Fix pip installs when python-dateutil not already present
 
-# Version 0.3
+## Version 0.3
 
 Released September 4, 2014
 
@@ -1848,7 +1850,7 @@ Released September 4, 2014
 -   optional parameter `default` added to get() method to make it behave
     the same as dict.get()
 
-# Version 0.2
+## Version 0.2
 
 Released August 28, 2014
 
@@ -1857,7 +1859,7 @@ Released August 28, 2014
 -   Adds support for Python 3.2, 3.3, 3.4, and PyPy
 -   All code now conforms to PEP8 standards
 
-# Version 0.1
+## Version 0.1
 
 Released August 1, 2014
 
