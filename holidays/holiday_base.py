@@ -1072,8 +1072,8 @@ class HolidayBase(dict[date, str]):
         :return:
             The date removed.
 
-        :raise:
-            KeyError if date is not a holiday and default is not given.
+        :raise KeyError:
+            if date is not a holiday and default is not given.
         """
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
@@ -1091,8 +1091,8 @@ class HolidayBase(dict[date, str]):
         :return:
             A list of dates removed.
 
-        :raise:
-            KeyError if date is not a holiday and default is not given.
+        :raise KeyError:
+            if date is not a holiday and default is not given.
         """
         use_exact_name = HOLIDAY_NAME_DELIMITER in name
         if not (dts := self.get_named(name, split_multiple_names=not use_exact_name)):
