@@ -12,7 +12,7 @@
 
 import warnings
 
-from holidays.calendars.gregorian import JAN, MAR, APR, OCT, NOV, AUG, SEP, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, OCT, NOV, AUG, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -434,6 +434,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (APR, 20),
         }
 
+        # https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
+        maha_shivaratri_dates = {
+            2001: (FEB, 21),
+            2002: (MAR, 12),
+            2003: (MAR, 1),
+            2004: (FEB, 18),
+            2005: (MAR, 8),
+            2006: (FEB, 26),
+            2007: (FEB, 16),
+            2008: (MAR, 6),
+            2009: (FEB, 23),
+            2010: (FEB, 12),
+            2011: (MAR, 2),
+            2012: (FEB, 20),
+            2013: (MAR, 10),
+            2014: (FEB, 27),
+            2015: (FEB, 17),
+            2016: (MAR, 7),
+            2017: (FEB, 24),
+            2018: (FEB, 13),
+            2019: (MAR, 4),
+            2020: (FEB, 21),
+            2021: (MAR, 11),
+            2022: (MAR, 1),
+            2023: (FEB, 18),
+            2024: (MAR, 8),
+            2025: (FEB, 26),
+            2026: (FEB, 15),
+            2027: (MAR, 6),
+            2028: (FEB, 23),
+            2029: (FEB, 11),
+            2030: (MAR, 2),
+            2031: (FEB, 20),
+            2032: (MAR, 10),
+            2033: (FEB, 27),
+            2034: (FEB, 17),
+            2035: (MAR, 8),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -454,6 +493,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in mahavir_jayanti_dates:
             self._add_holiday("Mahavir Jayanti", mahavir_jayanti_dates[self._year])
+
+        if self._year in maha_shivaratri_dates:
+            self._add_holiday("Maha Shivaratri", maha_shivaratri_dates[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
@@ -482,6 +524,10 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
 
+    # Andaman and Nicobar Islands.
+    def _populate_subdiv_an_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
+
     # Andhra Pradesh.
     def _populate_subdiv_ap_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
@@ -494,15 +540,104 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/chhat-puja
+        chhath_puja_dates = {
+            2001: (NOV, 21),
+            2002: (NOV, 10),
+            2003: (OCT, 30),
+            2004: (NOV, 17),
+            2005: (NOV, 7),
+            2006: (OCT, 28),
+            2007: (NOV, 16),
+            2008: (NOV, 4),
+            2009: (OCT, 24),
+            2010: (NOV, 11),
+            2011: (NOV, 1),
+            2012: (NOV, 19),
+            2013: (NOV, 8),
+            2014: (OCT, 29),
+            2015: (NOV, 17),
+            2016: (NOV, 6),
+            2017: (OCT, 26),
+            2018: (NOV, 13),
+            2019: (NOV, 2),
+            2020: (NOV, 20),
+            2021: (NOV, 10),
+            2022: (OCT, 30),
+            2023: (NOV, 19),
+            2024: (NOV, 7),
+            2025: (OCT, 28),
+            2026: (NOV, 15),
+            2027: (NOV, 4),
+            2028: (OCT, 23),
+            2029: (NOV, 11),
+            2030: (NOV, 1),
+            2031: (NOV, 20),
+            2032: (NOV, 9),
+            2033: (OCT, 29),
+            2034: (NOV, 17),
+            2035: (NOV, 6),
+        }
+        if self._year in chhath_puja_dates:
+            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_mar_22("Bihar Day")
 
     # Chhattisgarh.
     def _populate_subdiv_cg_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Chhattisgarh Foundation Day")
+
+    # Chandigarh.
+    def _populate_subdiv_ch_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
+
+    # Delhi.
+    def _populate_subdiv_dl_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/chhat-puja
+        chhath_puja_dates = {
+            2001: (NOV, 21),
+            2002: (NOV, 10),
+            2003: (OCT, 30),
+            2004: (NOV, 17),
+            2005: (NOV, 7),
+            2006: (OCT, 28),
+            2007: (NOV, 16),
+            2008: (NOV, 4),
+            2009: (OCT, 24),
+            2010: (NOV, 11),
+            2011: (NOV, 1),
+            2012: (NOV, 19),
+            2013: (NOV, 8),
+            2014: (OCT, 29),
+            2015: (NOV, 17),
+            2016: (NOV, 6),
+            2017: (OCT, 26),
+            2018: (NOV, 13),
+            2019: (NOV, 2),
+            2020: (NOV, 20),
+            2021: (NOV, 10),
+            2022: (OCT, 30),
+            2023: (NOV, 19),
+            2024: (NOV, 7),
+            2025: (OCT, 28),
+            2026: (NOV, 15),
+            2027: (NOV, 4),
+            2028: (OCT, 23),
+            2029: (NOV, 11),
+            2030: (NOV, 1),
+            2031: (NOV, 20),
+            2032: (NOV, 9),
+            2033: (OCT, 29),
+            2034: (NOV, 17),
+            2035: (NOV, 6),
+        }
+        if self._year in chhath_puja_dates:
+            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_dec_19("Goa Liberation Day")
 
     # Gujarat.
@@ -514,6 +649,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_apr_15("Haryana Day")
 
     # Haryana.
@@ -525,9 +661,58 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     def _populate_subdiv_jk_public_holidays(self):
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
+    # Jharkhand.
+    def _populate_subdiv_jh_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/chhat-puja
+        chhath_puja_dates = {
+            2001: (NOV, 21),
+            2002: (NOV, 10),
+            2003: (OCT, 30),
+            2004: (NOV, 17),
+            2005: (NOV, 7),
+            2006: (OCT, 28),
+            2007: (NOV, 16),
+            2008: (NOV, 4),
+            2009: (OCT, 24),
+            2010: (NOV, 11),
+            2011: (NOV, 1),
+            2012: (NOV, 19),
+            2013: (NOV, 8),
+            2014: (OCT, 29),
+            2015: (NOV, 17),
+            2016: (NOV, 6),
+            2017: (OCT, 26),
+            2018: (NOV, 13),
+            2019: (NOV, 2),
+            2020: (NOV, 20),
+            2021: (NOV, 10),
+            2022: (OCT, 30),
+            2023: (NOV, 19),
+            2024: (NOV, 7),
+            2025: (OCT, 28),
+            2026: (NOV, 15),
+            2027: (NOV, 4),
+            2028: (OCT, 23),
+            2029: (NOV, 11),
+            2030: (NOV, 1),
+            2031: (NOV, 20),
+            2032: (NOV, 9),
+            2033: (OCT, 29),
+            2034: (NOV, 17),
+            2035: (NOV, 6),
+        }
+        if self._year in chhath_puja_dates:
+            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
+
     # Karnataka.
     def _populate_subdiv_ka_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Karnataka Rajyotsava")
+
+    # Ladakh.
+    def _populate_subdiv_la_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
@@ -681,18 +866,20 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         }
         if self._year in vaisakhi_dates:
             self._add_holiday("Vaisakhi", vaisakhi_dates[self._year])
-
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_jan_13("Lohri")
         self._add_holiday_nov_1("Punjab Day")
 
     # Puducherry.
     def _populate_subdiv_py_public_holidays(self):
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_aug_16("Puducherry De Jure Transfer Day")
         self._add_holiday_nov_1("Puducherry Liberation  Day")
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
         self._add_holiday_mar_30("Rajasthan Day")
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_jun_15("Maharana Pratap Jayanti")
 
     # Sikkim.
@@ -709,6 +896,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
         self._add_holiday_apr_6("Eid al-Fitr")
+        self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_jun_2("Telangana Formation Day")
         self._add_holiday_oct_6("Bathukamma Festival")
 
@@ -718,6 +906,46 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/chhat-puja
+        chhath_puja_dates = {
+            2001: (NOV, 21),
+            2002: (NOV, 10),
+            2003: (OCT, 30),
+            2004: (NOV, 17),
+            2005: (NOV, 7),
+            2006: (OCT, 28),
+            2007: (NOV, 16),
+            2008: (NOV, 4),
+            2009: (OCT, 24),
+            2010: (NOV, 11),
+            2011: (NOV, 1),
+            2012: (NOV, 19),
+            2013: (NOV, 8),
+            2014: (OCT, 29),
+            2015: (NOV, 17),
+            2016: (NOV, 6),
+            2017: (OCT, 26),
+            2018: (NOV, 13),
+            2019: (NOV, 2),
+            2020: (NOV, 20),
+            2021: (NOV, 10),
+            2022: (OCT, 30),
+            2023: (NOV, 19),
+            2024: (NOV, 7),
+            2025: (OCT, 28),
+            2026: (NOV, 15),
+            2027: (NOV, 4),
+            2028: (OCT, 23),
+            2029: (NOV, 11),
+            2030: (NOV, 1),
+            2031: (NOV, 20),
+            2032: (NOV, 9),
+            2033: (OCT, 29),
+            2034: (NOV, 17),
+            2035: (NOV, 6),
+        }
+        if self._year in chhath_puja_dates:
+            self._add_holiday("Chhath Puja", chhath_puja_dates[self._year])
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # West Bengal.
