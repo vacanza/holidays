@@ -15,7 +15,7 @@ from datetime import timedelta
 import holidays
 
 
-def find_long_weekends(country, year, month=None, language=None, exact_range=False):
+def find_long_weekends(country, year, month=None, language=None):
     # Validate year
     if not isinstance(year, int) or not (1900 <= year <= 2100):
         raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")
@@ -23,8 +23,6 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
     # Validate country (ensure it's a valid country code supported by the holidays library)
     try:
         holiday_obj = holidays.country_holidays(country, years=year, language=language)
-    except KeyError:
-        raise ValueError(f"Invalid country code: {country}")
     except Exception as e:
         raise ValueError(f"Error fetching holidays: {e}")
 
@@ -70,10 +68,6 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
             end_date = next_day
             seen_dates.add(next_day)
             next_day += timedelta(days=1)
-
-        # Exact range filtering
-        if exact_range and (start_date.month != month or end_date.month != month):
-            continue
 
         long_weekends.append(
             {
