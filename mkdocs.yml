@@ -29,3 +29,5 @@ markdown_extensions:
 
 extra_css:
     - css/custom.css
+extra_javascript:
+    - js/custom.js
