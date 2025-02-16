@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from unittest.mock import patch
 
 from holidays import find_long_weekends
 
