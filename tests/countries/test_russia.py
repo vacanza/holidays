@@ -353,7 +353,7 @@ class TestRussia(CommonCountryTests, TestCase):
             ("2018-01-06", "New Year Holidays"),
             ("2018-01-07", "Christmas Day"),
             ("2018-01-08", "New Year Holidays"),
-            ("2018-02-23", "Fatherland Defender's Day"),
+            ("2018-02-23", "Defender of the Fatherland Day"),
             ("2018-03-08", "International Women's Day"),
             ("2018-03-09", "Day off (substituted from 01/06/2018)"),
             ("2018-04-30", "Day off (substituted from 04/28/2018)"),

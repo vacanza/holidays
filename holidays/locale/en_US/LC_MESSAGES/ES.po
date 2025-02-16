@@ -33,7 +33,7 @@ msgid "Lunes siguiente a %s"
 msgstr "Monday following %s"
 
 #. New Year's Day.
-msgid "Año nuevo"
+msgid "Año Nuevo"
 msgstr "New Year's Day"
 
 #. Epiphany.

@@ -85,7 +85,7 @@ msgstr "День усіх святих"
 
 #. Republic Day.
 msgid "Fetin'ny Repoblika"
-msgstr "День республіки"
+msgstr "День Республіки"
 
 #. Christmas Day.
 msgid "Fetin'ny noely"

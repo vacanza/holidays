@@ -417,7 +417,7 @@ class TestLaos(CommonCountryTests, TestCase):
             ("2022-05-01", "International Labor Day"),
             ("2022-05-02", "International Labor Day (in lieu)"),
             ("2022-05-15", "Visakha Bousa Festival"),
-            ("2022-06-01", "International Children Day; National Arbor Day"),
+            ("2022-06-01", "International Children's Day; National Arbor Day"),
             (
                 "2022-07-13",
                 (

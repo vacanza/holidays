@@ -68,10 +68,10 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Easter Monday.
             self._add_easter_monday(tr("Easter Monday"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # The Fete Dieu.
+        # Corpus Christi.
         self._add_corpus_christi_day(tr("The Fete Dieu"))
 
         if self._year <= 2016:
@@ -101,11 +101,11 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
-        # All Saints Day.
+        # All Saints' Day.
         self._add_observed(self._add_all_saints_day(tr("All Saints Day")))
 
         self._add_observed(
-            # The Feast of the Immaculate Conception.
+            # Immaculate Conception.
             self._add_immaculate_conception_day(tr("The Feast of the Immaculate Conception"))
         )
 

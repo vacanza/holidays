@@ -697,7 +697,7 @@ class TestSwitzerland(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "Berchtold's Day"),
+            ("2023-01-02", "Saint Berchtold's Day"),
             ("2023-01-06", "Epiphany"),
             ("2023-03-01", "Republic Day"),
             ("2023-03-19", "Saint Joseph's Day"),

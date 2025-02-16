@@ -70,7 +70,7 @@ msgstr "Madi Gras"
 msgid "Vendredi Saint"
 msgstr "Vandredi Sen"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pâques"
 msgstr "Pak"
 
@@ -78,7 +78,7 @@ msgstr "Pak"
 msgid "Fête-Dieu"
 msgstr "Fèt Dye"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption de Marie"
 msgstr "Sipozisyon Mari"
 
@@ -114,7 +114,7 @@ msgstr "Jounen Nasyonal Souverènte"
 msgid "Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"
 msgstr "Fèt Manman Pèpetyèl Sekou, Patwòn Peyi Dayiti"
 
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
 msgstr "Asansyon"
 

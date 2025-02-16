@@ -85,7 +85,7 @@ msgstr "Deepavali"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. Boxing day.
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 

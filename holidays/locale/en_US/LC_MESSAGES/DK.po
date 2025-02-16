@@ -71,9 +71,9 @@ msgstr "Christmas Day"
 msgid "Anden juledag"
 msgstr "Second Day of Christmas"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Arbejdernes kampdag"
-msgstr "International Workers' Day"
+msgstr "Workers' Day"
 
 #. Constitution Day.
 msgid "Grundlovsdag"

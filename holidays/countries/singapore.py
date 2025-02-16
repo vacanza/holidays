@@ -142,7 +142,7 @@ class Singapore(
         dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
 
         if self._year <= 1968:
-            # Boxing day.
+            # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day"))
 
         if self.observed:
