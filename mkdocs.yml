@@ -26,3 +26,6 @@ markdown_extensions:
     - admonition
     - toc:
         permalink: ""
+
+extra_css:
+    - css/custom.css
