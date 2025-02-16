@@ -78,6 +78,7 @@ msgstr ""
 msgid "Kilisimasi"
 msgstr ""
 
+#. Boxing Day.
 msgid "Aso Faipele"
 msgstr ""
 
@@ -115,10 +116,6 @@ msgstr ""
 
 #. Nukufetau Day.
 msgid "Te Aso O Tutasi"
-msgstr ""
-
-#. Gospel Day.
-msgid "Aso o te Tala Lei"
 msgstr ""
 
 #. Queen's Birthday.

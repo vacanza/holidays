@@ -57,10 +57,9 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Nukulaelae": "NKL",
         "Nanumea": "NMA",
         "Nanumaga": "NMG",
+        "Nanumanga": "NMG",  # Ex-ISO code alias
         "Nui": "NUI",
         "Vaitupu": "VAI",
-        # Ex-ISO code aliases.
-        "Nanumanga": "NMG",
     }
     # Tuvalu became fully independent of the United Kingdom on October 1, 1978
     # Tuvalu's PUBLIC HOLIDAYS (AMENDMENT) ACT 1990 (Act 2 of 1990)
@@ -74,8 +73,6 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays
-
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Tausaga Fou")))
 
@@ -95,12 +92,13 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Gospel Day.
         self._add_holiday_1_day_past_2nd_sun_of_may(tr("Te Aso o te Tala Lei"))
 
-        if self._year <= 2023:
-            # Queen's Birthday.
-            self._add_holiday_2nd_sat_of_jun(tr("Asofanau Fafine"))
-        else:
+        self._add_holiday_2nd_sat_of_jun(
             # King's Birthday.
-            self._add_holiday_2nd_sat_of_jun(tr("Asofanau Tupu"))
+            tr("Asofanau Tupu")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Asofanau Fafine")
+        )
 
         # National Children's Day.
         name = tr("Aso Tamaliki")
@@ -121,23 +119,24 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_oct_2(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Referenced : https://en.wikipedia.org/wiki/King%27s_Official_Birthday#Tuvalu
-        if self._year >= 2021:
+        if self._year <= 2022:
             # Heir to the Throne's Birthday.
             self._add_holiday_2nd_mon_of_nov(tr("Aso fanau o te sui ote Tupu"))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Kilisimasi")), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Aso Faipele")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Aso Faipele")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
     def _populate_subdiv_fun_public_holidays(self):
-        # Cyclone Day.
-        self._add_holiday_oct_21(tr("Aso o te matagi"))
-
         # The Day of the Bombing.
         self._add_holiday_apr_23(tr("Te Aso o te Paula"))
+
+        # Cyclone Day.
+        self._add_holiday_oct_21(tr("Aso o te matagi"))
 
     def _populate_subdiv_nmg_public_holidays(self):
         # Nanumaga Day.
@@ -164,7 +163,7 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_nkl_public_holidays(self):
         # Gospel Day.
-        self._add_holiday_may_10(tr("Aso o te Tala Lei"))
+        self._add_holiday_may_10(tr("Te Aso o te Tala Lei"))
 
     def _populate_subdiv_vai_public_holidays(self):
         # Happy Day.
