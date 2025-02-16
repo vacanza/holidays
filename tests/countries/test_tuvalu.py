@@ -32,45 +32,20 @@ class TestTuvalu(CommonCountryTests, TestCase):
         name = "Tausaga Fou"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1990, 2050)))
 
-    def test_golden_jubilee(self):
-        name = "Te Po o Tefolaha"
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NMA":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-01-08" for year in range(1990, 2050))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_king_birthday(self):
-        name = "Asofanau Tupu"
+    def test_commonwealth_day(self):
+        name = "Aso Atefenua"
         dt = (
-            "2024-06-08",
-            "2025-06-14",
-            "2026-06-13",
-            "2027-06-12",
-            "2028-06-10",
-            "2029-06-09",
-            "2030-06-08",
+            "2001-03-12",
+            "2002-03-11",
+            "2003-03-10",
+            "2004-03-08",
+            "2005-03-14",
+            "2006-03-13",
+            "2007-03-12",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2023, 2050))
-        self.assertNoHolidayName(name, range(1990, 2023))
-
-    def test_queen_birthday(self):
-        name = "Asofanau Fafine"
-        dt = (
-            "1990-06-09",
-            "1991-06-08",
-            "1992-06-13",
-            "1999-06-12",
-            "2002-06-08",
-            "2007-06-09",
-            "2008-06-14",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2023))
-        self.assertNoHolidayName(name, range(2023, 2050))
+        self.assertHolidayName(name, range(1990, 2020))
+        self.assertNoHolidayName(name, range(2021, 2050))
 
     def test_good_friday(self):
         name = "Aso toe tu"
@@ -106,16 +81,55 @@ class TestTuvalu(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(1990, 2050))
 
-    def test_christmas_day(self):
-        self.assertHolidayName("Kilisimasi", (f"{year}-12-25" for year in range(1990, 2050)))
+    def test_gospel_day(self):
+        name = "Te Aso o te Tala Lei"
+        dt = (
+            "2001-05-14",
+            "2002-05-13",
+            "2003-05-12",
+            "2004-05-10",
+            "2005-05-09",
+            "2006-05-15",
+            "2007-05-14",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2050))
 
-    def test_boxing_day(self):
-        self.assertHolidayName("Aso Faipele", (f"{year}-12-26" for year in range(1990, 2050)))
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NKL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-10" for year in range(1990, 2050))
+                )
 
-    def test_tuvalu_day(self):
-        name = "Tutokotasi"
-        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1990, 2050)))
-        self.assertHolidayName(name, (f"{year}-10-02" for year in range(1990, 2050)))
+    def test_king_birthday(self):
+        name = "Asofanau Tupu"
+        dt = (
+            "2024-06-08",
+            "2025-06-14",
+            "2026-06-13",
+            "2027-06-12",
+            "2028-06-10",
+            "2029-06-09",
+            "2030-06-08",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(1990, 2023))
+
+    def test_queen_birthday(self):
+        name = "Asofanau Fafine"
+        dt = (
+            "1990-06-09",
+            "1991-06-08",
+            "1992-06-13",
+            "1999-06-12",
+            "2002-06-08",
+            "2007-06-09",
+            "2008-06-14",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2023))
+        self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_national_children_day(self):
         name = "Aso Tamaliki"
@@ -149,40 +163,10 @@ class TestTuvalu(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2019, 2050))
         self.assertNoHolidayName(name, range(1990, 2019))
 
-    def test_commonwealth_day(self):
-        name = "Aso Atefenua"
-        dt = (
-            "2001-03-12",
-            "2002-03-11",
-            "2003-03-10",
-            "2004-03-08",
-            "2005-03-14",
-            "2006-03-13",
-            "2007-03-12",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2020))
-        self.assertNoHolidayName(name, range(2021, 2050))
-
-    def test_gospel_day(self):
-        name = "Te Aso o te Tala Lei"
-        dt = (
-            "2001-05-14",
-            "2002-05-13",
-            "2003-05-12",
-            "2004-05-10",
-            "2005-05-09",
-            "2006-05-15",
-            "2007-05-14",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2050))
-
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NKL":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-05-10" for year in range(1990, 2050))
-                )
+    def test_tuvalu_day(self):
+        name = "Tutokotasi"
+        self.assertHolidayName(name, (f"{year}-10-01" for year in range(1990, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-02" for year in range(1990, 2050)))
 
     def test_heir_to_the_throne_birthday(self):
         name = "Aso fanau o te sui ote Tupu"
@@ -198,15 +182,11 @@ class TestTuvalu(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1990, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
-    def test_cyclone_day(self):
-        name = "Aso o te matagi"
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "FUN":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-10-21" for year in range(1990, 2050))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
+    def test_christmas_day(self):
+        self.assertHolidayName("Kilisimasi", (f"{year}-12-25" for year in range(1990, 2050)))
+
+    def test_boxing_day(self):
+        self.assertHolidayName("Aso Faipele", (f"{year}-12-26" for year in range(1990, 2050)))
 
     def test_the_day_of_the_bombing(self):
         name = "Te Aso o te Paula"
@@ -218,22 +198,12 @@ class TestTuvalu(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_nanumaga_day(self):
-        name = "Aho o te Fakavae"
+    def test_cyclone_day(self):
+        name = "Aso o te matagi"
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NMG":
+            if subdiv == "FUN":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-04-15" for year in range(1990, 2050))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_big_day(self):
-        name = "Po Lahi"
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NMA":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-02-03" for year in range(1990, 2050))
+                    name, holidays, (f"{year}-10-21" for year in range(1990, 2050))
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -248,22 +218,52 @@ class TestTuvalu(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_day_of_the_flood(self):
-        name = "Bogin te Ieka"
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NUI":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-02-16" for year in range(1990, 2050))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
     def test_nukufetau_day(self):
         name = "Te Aso O Tutasi"
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "NKF":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-11" for year in range(1990, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_golden_jubilee(self):
+        name = "Te Po o Tefolaha"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NMA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-08" for year in range(1990, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_big_day(self):
+        name = "Po Lahi"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NMA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-02-03" for year in range(1990, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_nanumaga_day(self):
+        name = "Aho o te Fakavae"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NMG":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-04-15" for year in range(1990, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_day_of_the_flood(self):
+        name = "Bogin te Ieka"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NUI":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-02-16" for year in range(1990, 2050))
                 )
             else:
                 self.assertNoHolidayName(name, holidays)

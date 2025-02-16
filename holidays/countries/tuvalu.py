@@ -76,15 +76,15 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Tausaga Fou")))
 
+        if self._year <= 2020:
+            # Commonwealth Day.
+            self._add_holiday_2nd_mon_of_mar(tr("Aso Atefenua"))
+
         # Good Friday.
         self._add_good_friday(tr("Aso toe tu"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Toe Tu aso gafua"))
-
-        if self._year <= 2020:
-            # Commonwealth Day.
-            self._add_holiday_2nd_mon_of_mar(tr("Aso Atefenua"))
 
         # Gospel Day.
         self._add_holiday_1_day_past_2nd_sun_of_may(tr("Te Aso o te Tala Lei"))
@@ -101,11 +101,11 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         name = tr("Aso Tamaliki")
 
         if self._year >= 2019:
-            # National Children's Day.
-            self._add_holiday_1_day_past_2nd_sun_of_oct(name)
-
             # National Youth Day.
             self._add_holiday_1st_mon_of_aug(tr("Aso tupulaga"))
+
+            # National Children's Day.
+            self._add_holiday_1_day_past_2nd_sun_of_oct(name)
         else:
             # National Children's Day.
             self._add_holiday_1st_mon_of_aug(name)
@@ -135,24 +135,9 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Cyclone Day.
         self._add_holiday_oct_21(tr("Aso o te matagi"))
 
-    def _populate_subdiv_nmg_public_holidays(self):
-        # Nanumaga Day.
-        self._add_holiday_apr_15(tr("Aho o te Fakavae"))
-
-    def _populate_subdiv_nma_public_holidays(self):
-        # Golden Jubilee.
-        self._add_holiday_jan_8(tr("Te Po o Tefolaha"))
-
-        # Big Day.
-        self._add_holiday_feb_3(tr("Po Lahi"))
-
     def _populate_subdiv_nit_public_holidays(self):
         # Niutao Day.
         self._add_holiday_sep_17(tr("Te Aso o te Setema"))
-
-    def _populate_subdiv_nui_public_holidays(self):
-        # Day of the Flood.
-        self._add_holiday_feb_16(tr("Bogin te Ieka"))
 
     def _populate_subdiv_nkf_public_holidays(self):
         # Nukufetau Day.
@@ -161,6 +146,21 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_nkl_public_holidays(self):
         # Gospel Day.
         self._add_holiday_may_10(tr("Te Aso o te Tala Lei"))
+
+    def _populate_subdiv_nma_public_holidays(self):
+        # Golden Jubilee.
+        self._add_holiday_jan_8(tr("Te Po o Tefolaha"))
+
+        # Big Day.
+        self._add_holiday_feb_3(tr("Po Lahi"))
+
+    def _populate_subdiv_nmg_public_holidays(self):
+        # Nanumaga Day.
+        self._add_holiday_apr_15(tr("Aho o te Fakavae"))
+
+    def _populate_subdiv_nui_public_holidays(self):
+        # Day of the Flood.
+        self._add_holiday_feb_16(tr("Bogin te Ieka"))
 
     def _populate_subdiv_vai_public_holidays(self):
         # Happy Day.
