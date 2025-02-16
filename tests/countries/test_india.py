@@ -95,6 +95,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "JH": (
                 "2018-08-15",
                 "2018-04-14",
+                "2018-11-15",
             ),
             "KA": (
                 "2018-11-01",
@@ -153,7 +154,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-06-02",
             ),
             "UK": ("2018-04-14",),
-            "UP": ("2018-04-14",),
+            "UP": ("2018-04-14", "2018-01-24"),
             "WB": (
                 "2018-04-14",
                 "2018-05-09",
@@ -177,6 +178,14 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-10-30",
         )
         self.assertHolidayName("Diwali", dt)
+
+        dt = (
+            "2001-11-15",
+            "2010-11-06",
+            "2025-10-22",
+            "2035-10-31",
+        )
+        self.assertHolidayName("Govardhan Puja", dt)
 
         dt = (
             "2001-03-10",
@@ -299,6 +308,19 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName("Chhath Puja", India(subdiv="JH"), dt)
         self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+
+        # Test out of range dates for Kerala
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="KL", years=year)
+        dt = (
+            "2001-08-31",
+            "2010-08-23",
+            "2025-09-05",
+            "2035-09-14",
+        )
+        self.assertHolidayName("Onam", India(subdiv="KL"), dt)
+        self.assertNoHolidayName("Onam", India(subdiv="PB"), dt)
 
         # Test out of range dates for Maharashtra
         for year in (2000, 2036):

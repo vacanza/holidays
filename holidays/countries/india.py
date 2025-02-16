@@ -198,6 +198,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (OCT, 30),
         }
 
+        # https://www.timeanddate.com/holidays/india/govardhan-puja
+        govardhan_puja_dates = {
+            2001: (NOV, 15),
+            2002: (NOV, 5),
+            2003: (OCT, 26),
+            2004: (NOV, 13),
+            2005: (NOV, 2),
+            2006: (OCT, 22),
+            2007: (NOV, 10),
+            2008: (OCT, 29),
+            2009: (OCT, 18),
+            2010: (NOV, 6),
+            2011: (OCT, 27),
+            2012: (NOV, 14),
+            2013: (NOV, 4),
+            2014: (OCT, 24),
+            2015: (NOV, 12),
+            2016: (OCT, 31),
+            2017: (OCT, 20),
+            2018: (NOV, 8),
+            2019: (OCT, 28),
+            2020: (NOV, 15),
+            2021: (NOV, 5),
+            2022: (OCT, 25),
+            2023: (NOV, 13),
+            2024: (NOV, 2),
+            2025: (OCT, 22),
+            2026: (NOV, 10),
+            2027: (OCT, 30),
+            2028: (OCT, 18),
+            2029: (NOV, 6),
+            2030: (OCT, 27),
+            2031: (NOV, 15),
+            2032: (NOV, 3),
+            2033: (OCT, 23),
+            2034: (NOV, 11),
+            2035: (OCT, 31),
+        }
+
         # https://www.timeanddate.com/holidays/india/holi
         holi_dates = {
             2001: (MAR, 10),
@@ -551,6 +590,9 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
+        if self._year in govardhan_puja_dates:
+            self._add_holiday("Govardhan Puja", govardhan_puja_dates[self._year])
+
         if self._year in holi_dates:
             self._add_holiday("Holi", holi_dates[self._year])
 
@@ -762,6 +804,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
         self._add_chhath_puja()
+        self._add_holiday_nov_15("Jharkhand Formation Day")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # Karnataka.
@@ -775,6 +818,46 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     # Kerala.
     def _populate_subdiv_kl_public_holidays(self):
+        # https://www.timeanddate.com/holidays/india/onam
+        onam_dates = {
+            2001: (AUG, 31),
+            2002: (AUG, 21),
+            2003: (SEP, 8),
+            2004: (AUG, 28),
+            2005: (SEP, 15),
+            2006: (SEP, 5),
+            2007: (AUG, 26),
+            2008: (SEP, 12),
+            2009: (SEP, 2),
+            2010: (AUG, 23),
+            2011: (SEP, 9),
+            2012: (AUG, 29),
+            2013: (AUG, 20),
+            2014: (SEP, 6),
+            2015: (AUG, 28),
+            2016: (SEP, 13),
+            2017: (SEP, 4),
+            2018: (AUG, 24),
+            2019: (SEP, 11),
+            2020: (AUG, 31),
+            2021: (AUG, 21),
+            2022: (SEP, 8),
+            2023: (AUG, 29),
+            2024: (SEP, 15),
+            2025: (SEP, 5),
+            2026: (AUG, 26),
+            2027: (SEP, 12),
+            2028: (SEP, 1),
+            2029: (AUG, 22),
+            2030: (SEP, 9),
+            2031: (AUG, 30),
+            2032: (AUG, 20),
+            2033: (SEP, 6),
+            2034: (AUG, 28),
+            2035: (SEP, 14),
+        }
+        if self._year in onam_dates:
+            self._add_holiday("Onam", onam_dates[self._year])
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
         self._add_holiday_nov_1("Kerala Foundation Day")
 
@@ -967,6 +1050,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
         self._add_chhath_puja()
+        self._add_holiday_jan_24("UP Formation Day")
         self._add_holiday_apr_14("Dr. B. R. Ambedkar's Jayanti")
 
     # West Bengal.
