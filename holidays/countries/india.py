@@ -509,6 +509,45 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (MAR, 8),
         }
 
+        # https://www.timeanddate.com/holidays/india/rama-navami
+        ram_navami_dates = {
+            2001: (APR, 2),
+            2002: (APR, 21),
+            2003: (APR, 11),
+            2004: (MAR, 30),
+            2005: (APR, 18),
+            2006: (APR, 6),
+            2007: (MAR, 26),
+            2008: (APR, 13),
+            2009: (APR, 3),
+            2010: (MAR, 24),
+            2011: (APR, 12),
+            2012: (APR, 1),
+            2013: (APR, 19),
+            2014: (APR, 8),
+            2015: (MAR, 28),
+            2016: (APR, 15),
+            2017: (APR, 4),
+            2018: (MAR, 25),
+            2019: (APR, 13),
+            2020: (APR, 2),
+            2021: (APR, 21),
+            2022: (APR, 10),
+            2023: (MAR, 30),
+            2024: (APR, 17),
+            2025: (APR, 6),
+            2026: (MAR, 26),
+            2027: (APR, 15),
+            2028: (APR, 3),
+            2029: (APR, 22),
+            2030: (APR, 12),
+            2031: (APR, 1),
+            2032: (APR, 19),
+            2033: (APR, 7),
+            2034: (MAR, 28),
+            2035: (APR, 16),
+        }
+
         # https://www.timeanddate.com/holidays/india/navratri
         sharad_navratri_dates = {
             2001: (OCT, 17),
@@ -587,6 +626,44 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (SEP, 5),
         }
 
+        # https://www.timeanddate.com/holidays/india/maha-navami
+        maha_navami_dates = {
+            2001: (OCT, 25),
+            2002: (OCT, 14),
+            2003: (OCT, 3),
+            2005: (OCT, 11),
+            2006: (OCT, 1),
+            2007: (OCT, 20),
+            2008: (OCT, 8),
+            2009: (SEP, 27),
+            2010: (OCT, 16),
+            2011: (OCT, 5),
+            2012: (OCT, 23),
+            2013: (OCT, 12),
+            2014: (OCT, 2),
+            2015: (OCT, 21),
+            2016: (OCT, 10),
+            2017: (SEP, 29),
+            2018: (OCT, 18),
+            2019: (OCT, 7),
+            2020: (OCT, 24),
+            2021: (OCT, 14),
+            2022: (OCT, 4),
+            2023: (OCT, 23),
+            2024: (OCT, 11),
+            2025: (OCT, 1),
+            2026: (OCT, 19),
+            2027: (OCT, 8),
+            2028: (SEP, 26),
+            2029: (OCT, 15),
+            2030: (OCT, 5),
+            2031: (OCT, 24),
+            2032: (OCT, 13),
+            2033: (OCT, 2),
+            2034: (OCT, 21),
+            2035: (OCT, 10),
+        }
+
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
 
@@ -616,6 +693,12 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         if self._year in sharad_navratri_dates:
             self._add_holiday("Navratri / Sharad Navratri", sharad_navratri_dates[self._year])
+
+        if self._year in ram_navami_dates:
+            self._add_holiday("Ram Navami", ram_navami_dates[self._year])
+
+        if self._year in maha_navami_dates:
+            self._add_holiday("Maha Navami", maha_navami_dates[self._year])
 
         if self._year in ganesh_chaturthi_dates:
             self._add_holiday("Ganesh Chaturthi", ganesh_chaturthi_dates[self._year])

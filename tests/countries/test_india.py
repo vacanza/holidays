@@ -252,12 +252,28 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayName("Makar Sankranti", dt)
 
         dt = (
+            "2001-04-02",
+            "2010-03-24",
+            "2025-04-06",
+            "2035-04-16",
+        )
+        self.assertHolidayName("Ram Navami", dt)
+
+        dt = (
             "2001-10-17",
             "2010-10-08",
             "2025-09-22",
             "2035-10-02",
         )
         self.assertHolidayName("Navratri / Sharad Navratri", dt)
+
+        dt = (
+            "2001-10-25",
+            "2010-10-16",
+            "2025-10-01",
+            "2035-10-10",
+        )
+        self.assertHolidayName("Maha Navami", dt)
 
         dt = (
             "2001-08-22",
