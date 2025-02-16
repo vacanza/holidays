@@ -664,44 +664,25 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             2035: (OCT, 10),
         }
 
-        if self._year in diwali_dates:
-            self._add_holiday("Diwali", diwali_dates[self._year])
+        holiday_mappings = {
+            "Diwali": diwali_dates,
+            "Govardhan Puja": govardhan_puja_dates,
+            "Holi": holi_dates,
+            "Raksha Bandhan": rakhi_dates,
+            "Janmashtami": janmashtami_dates,
+            "Dussehra": dussehra_dates,
+            "Guru Nanak Jayanti": guru_nanak_jayanti_dates,
+            "Mahavir Jayanti": mahavir_jayanti_dates,
+            "Maha Shivaratri": maha_shivaratri_dates,
+            "Navratri / Sharad Navratri": sharad_navratri_dates,
+            "Ram Navami": ram_navami_dates,
+            "Maha Navami": maha_navami_dates,
+            "Ganesh Chaturthi": ganesh_chaturthi_dates,
+        }
 
-        if self._year in govardhan_puja_dates:
-            self._add_holiday("Govardhan Puja", govardhan_puja_dates[self._year])
-
-        if self._year in holi_dates:
-            self._add_holiday("Holi", holi_dates[self._year])
-
-        if self._year in rakhi_dates:
-            self._add_holiday("Raksha Bandhan", rakhi_dates[self._year])
-
-        if self._year in janmashtami_dates:
-            self._add_holiday("Janmashtami", janmashtami_dates[self._year])
-
-        if self._year in dussehra_dates:
-            self._add_holiday("Dussehra", dussehra_dates[self._year])
-
-        if self._year in guru_nanak_jayanti_dates:
-            self._add_holiday("Guru Nanak Jayanti", guru_nanak_jayanti_dates[self._year])
-
-        if self._year in mahavir_jayanti_dates:
-            self._add_holiday("Mahavir Jayanti", mahavir_jayanti_dates[self._year])
-
-        if self._year in maha_shivaratri_dates:
-            self._add_holiday("Maha Shivaratri", maha_shivaratri_dates[self._year])
-
-        if self._year in sharad_navratri_dates:
-            self._add_holiday("Navratri / Sharad Navratri", sharad_navratri_dates[self._year])
-
-        if self._year in ram_navami_dates:
-            self._add_holiday("Ram Navami", ram_navami_dates[self._year])
-
-        if self._year in maha_navami_dates:
-            self._add_holiday("Maha Navami", maha_navami_dates[self._year])
-
-        if self._year in ganesh_chaturthi_dates:
-            self._add_holiday("Ganesh Chaturthi", ganesh_chaturthi_dates[self._year])
+        for holiday_name, date_dict in holiday_mappings.items():
+            if self._year in date_dict:
+                self._add_holiday(holiday_name, date_dict[self._year])
 
         # Islamic holidays.
         # Day of Ashura.
