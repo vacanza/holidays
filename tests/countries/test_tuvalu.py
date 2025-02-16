@@ -32,10 +32,122 @@ class TestTuvalu(CommonCountryTests, TestCase):
         name = "Tausaga Fou"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1990, 2050)))
 
+    def test_golden_jubilee(self):
+        name = "Te Po o Tefolaha"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "NMA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-08" for year in range(1990, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_king_birthday(self):
+        name = "Asofanau Tupu"
+        dt = (
+            "2024-06-08",
+            "2025-06-14",
+            "2026-06-13",
+            "2027-06-12",
+            "2028-06-10",
+            "2029-06-09",
+            "2030-06-08",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(1990, 2023))
+
+    def test_queen_birthday(self):
+        name = "Asofanau Fafine"
+        dt = (
+            "1990-06-09",
+            "1991-06-08",
+            "1992-06-13",
+            "1999-06-12",
+            "2002-06-08",
+            "2007-06-09",
+            "2008-06-14",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2023))
+        self.assertNoHolidayName(name, range(2023, 2050))
+
+    def test_good_friday(self):
+        name = "Aso toe tu"
+        dt = (
+            "1999-04-02",
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2050))
+
+    def test_easter_monday(self):
+        name = "Toe Tu aso gafua"
+        dt = (
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2050))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Kilisimasi", (f"{year}-12-25" for year in range(1990, 2050)))
+
+    def test_boxing_day(self):
+        self.assertHolidayName("Aso Faipele", (f"{year}-12-26" for year in range(1990, 2050)))
+
     def test_tuvalu_day(self):
         name = "Tutokotasi"
         self.assertHolidayName(name, (f"{year}-10-01" for year in range(1990, 2050)))
         self.assertHolidayName(name, (f"{year}-10-02" for year in range(1990, 2050)))
+
+    def test_national_children_day(self):
+        name = "Aso Tamaliki"
+        dt = (
+            "2012-08-06",
+            "2013-08-05",
+            "2014-08-04",
+            "2015-08-03",
+            "2016-08-01",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+            "2024-10-14",
+            "2025-10-13",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1990, 2050))
+
+    def test_national_youth_day(self):
+        name = "Aso tupulaga"
+        dt = (
+            "2020-08-03",
+            "2021-08-02",
+            "2022-08-01",
+            "2023-08-07",
+            "2024-08-05",
+            "2025-08-04",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2019, 2050))
+        self.assertNoHolidayName(name, range(1990, 2019))
 
     def test_commonwealth_day(self):
         name = "Aso Atefenua"
@@ -72,60 +184,6 @@ class TestTuvalu(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-05-10" for year in range(1990, 2050))
                 )
 
-    def test_king_birthday(self):
-        name = "Asofanau Tupu"
-        dt = (
-            "2024-06-08",
-            "2025-06-14",
-            "2026-06-13",
-            "2027-06-12",
-            "2028-06-10",
-            "2029-06-09",
-            "2030-06-08",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2024, 2050))
-
-    def test_queen_birthday(self):
-        name = "Asofanau Fafine"
-        dt = (
-            "1990-06-09",
-            "1991-06-08",
-            "1992-06-13",
-            "1999-06-12",
-            "2002-06-08",
-            "2007-06-09",
-            "2008-06-14",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2023))
-
-    def test_national_children_day(self):
-        name = "Aso Tamaliki"
-        dt = (
-            "2020-10-12",
-            "2021-10-11",
-            "2022-10-10",
-            "2023-10-09",
-            "2024-10-14",
-            "2025-10-13",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2050))
-
-    def test_national_youth_day(self):
-        name = "Aso tupulaga"
-        dt = (
-            "2020-08-03",
-            "2021-08-02",
-            "2022-08-01",
-            "2023-08-07",
-            "2024-08-05",
-            "2025-08-04",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2019, 2050))
-
     def test_heir_to_the_throne_birthday(self):
         name = "Aso fanau o te sui ote Tupu"
         dt = (
@@ -138,109 +196,7 @@ class TestTuvalu(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(1990, 2023))
-
-    def test_boxing_ay(self):
-        self.assertHolidayName("Aso Faipele", (f"{year}-12-26" for year in range(1990, 2050)))
-
-    def test_good_friday(self):
-        name = "Aso toe tu"
-        dt = (
-            "1999-04-02",
-            "2000-04-21",
-            "2010-04-02",
-            "2018-03-30",
-            "2019-04-19",
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2050))
-
-    def test_holy_saturday(self):
-        name = "Aso Tapu"
-        dt = (
-            "1999-04-03",
-            "2000-04-22",
-            "2010-04-03",
-            "2018-03-31",
-            "2019-04-20",
-            "2020-04-11",
-            "2021-04-03",
-            "2022-04-16",
-            "2023-04-08",
-            "2024-03-30",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2050))
-        dt = (
-            "1995-04-17",
-            "2006-04-17",
-            "2011-04-25",
-            "2017-04-17",
-            "2028-04-17",
-        )
-        self.assertHolidayName(f"{name} (fakamatakuga)", dt)
-
-    def test_easter_monday(self):
-        name = "Toe Tu aso gafua"
-        dt = (
-            "1999-04-05",
-            "2000-04-24",
-            "2010-04-05",
-            "2018-04-02",
-            "2019-04-22",
-            "2020-04-13",
-            "2021-04-05",
-            "2022-04-18",
-            "2023-04-10",
-            "2024-04-01",
-        )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(1990, 2050))
-
-    def test_christmas_day(self):
-        name = "Kilisimasi"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1990, 2050)))
-
-    def test_all_holidays(self):
-        holidays_found = set()
-        for subdiv in Tuvalu.subdivisions:
-            holidays_found.update(
-                Tuvalu(
-                    subdiv=subdiv,
-                    observed=False,
-                    years=(1990, 2007, 2012, 2015, 2023),
-                ).values()
-            )
-        all_holidays = {
-            "Tausaga Fou",
-            "Aso toe tu",
-            "Aso Tapu",
-            "Toe Tu aso gafua",
-            "Aso Atefenua",
-            "Te Aso o te Tala Lei",
-            "Asofanau Tupu",
-            "Asofanau Fafine",
-            "Aso Tamaliki",
-            "Aso tupulaga",
-            "Tutokotasi",
-            "Aso fanau o te sui ote Tupu",
-            "Kilisimasi",
-            "Aso Faipele",
-            "Aso o te matagi",
-            "Te Aso o te Paula",
-            "Aho o te Fakavae",
-            "Te Po o Tefolaha",
-            "Po Lahi",
-            "Te Aso o te Setema",
-            "Bogin te Ieka",
-            "Te Aso O Tutasi",
-            "Te Aso Fiafia",
-        }
-        self.assertEqual(all_holidays, holidays_found)
+        self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_cyclone_day(self):
         name = "Aso o te matagi"
@@ -268,16 +224,6 @@ class TestTuvalu(CommonCountryTests, TestCase):
             if subdiv == "NMG":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-04-15" for year in range(1990, 2050))
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_golden_jubilee(self):
-        name = "Te Po o Tefolaha"
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NMA":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-01-08" for year in range(1990, 2050))
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -332,6 +278,42 @@ class TestTuvalu(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_all_holidays(self):
+        holidays_found = set()
+        for subdiv in Tuvalu.subdivisions:
+            holidays_found.update(
+                Tuvalu(
+                    subdiv=subdiv,
+                    observed=False,
+                    years=(1990, 2007, 2012, 2015, 2023),
+                ).values()
+            )
+        all_holidays = {
+            "Tausaga Fou",
+            "Aso toe tu",
+            "Toe Tu aso gafua",
+            "Aso Atefenua",
+            "Te Aso o te Tala Lei",
+            "Asofanau Tupu",
+            "Asofanau Fafine",
+            "Aso Tamaliki",
+            "Aso tupulaga",
+            "Tutokotasi",
+            "Aso fanau o te sui ote Tupu",
+            "Kilisimasi",
+            "Aso Faipele",
+            "Aso o te matagi",
+            "Te Aso o te Paula",
+            "Aho o te Fakavae",
+            "Te Po o Tefolaha",
+            "Po Lahi",
+            "Te Aso o te Setema",
+            "Bogin te Ieka",
+            "Te Aso O Tutasi",
+            "Te Aso Fiafia",
+        }
+        self.assertEqual(all_holidays, holidays_found)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Tausaga Fou"),
@@ -341,8 +323,7 @@ class TestTuvalu(CommonCountryTests, TestCase):
             ("2022-02-11", "Te Aso O Tutasi"),
             ("2022-02-16", "Bogin te Ieka"),
             ("2022-04-15", "Aho o te Fakavae; Aso toe tu"),
-            ("2022-04-16", "Aso Tapu"),
-            ("2022-04-18", "Aso Tapu (fakamatakuga); Toe Tu aso gafua"),
+            ("2022-04-18", "Toe Tu aso gafua"),
             ("2022-04-23", "Te Aso o te Paula"),
             ("2022-05-09", "Te Aso o te Tala Lei"),
             ("2022-05-10", "Te Aso o te Tala Lei"),
@@ -372,8 +353,7 @@ class TestTuvalu(CommonCountryTests, TestCase):
             ("2022-02-11", "Nukufetau Day"),
             ("2022-02-16", "Day of the Flood"),
             ("2022-04-15", "Good Friday; Nanumaga Day"),
-            ("2022-04-16", "Holy Saturday"),
-            ("2022-04-18", "Easter Monday; Holy Saturday (observed)"),
+            ("2022-04-18", "Easter Monday"),
             ("2022-04-23", "The Day of the Bombing"),
             ("2022-05-09", "Gospel Day"),
             ("2022-05-10", "Gospel Day"),
@@ -403,8 +383,7 @@ class TestTuvalu(CommonCountryTests, TestCase):
             ("2022-02-11", "Nukufetau Day"),
             ("2022-02-16", "Day of the Flood"),
             ("2022-04-15", "Good Friday; Nanumaga Day"),
-            ("2022-04-16", "Holy Saturday"),
-            ("2022-04-18", "Easter Monday; Holy Saturday (observed)"),
+            ("2022-04-18", "Easter Monday"),
             ("2022-04-23", "The Day of the Bombing"),
             ("2022-05-09", "Gospel Day"),
             ("2022-05-10", "Gospel Day"),

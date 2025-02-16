@@ -61,10 +61,6 @@ msgstr "Boxing Day"
 msgid "Aso toe tu"
 msgstr "Good Friday"
 
-#. Holy Saturday.
-msgid "Aso Tapu"
-msgstr "Holy Saturday"
-
 #. Easter Monday.
 msgid "Toe Tu aso gafua"
 msgstr "Easter Monday"

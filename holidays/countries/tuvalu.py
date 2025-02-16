@@ -79,9 +79,6 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Aso toe tu"))
 
-        # Holy Saturday.
-        self._add_observed(self._add_holy_saturday(tr("Aso Tapu")))
-
         # Easter Monday.
         self._add_easter_monday(tr("Toe Tu aso gafua"))
 

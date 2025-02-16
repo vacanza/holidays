@@ -38,10 +38,6 @@ msgstr ""
 msgid "Aso toe tu"
 msgstr ""
 
-#. Holy Saturday.
-msgid "Aso Tapu"
-msgstr ""
-
 #. Easter Monday.
 msgid "Toe Tu aso gafua"
 msgstr ""
