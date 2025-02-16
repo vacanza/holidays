@@ -1,4 +1,6 @@
-site_name: holidays
+site_description: "A fast, efficient Python library for generating country, province, and state-specific sets of holidays on the fly. It aims to make determining whether a specific date is a holiday as fast and flexible as possbile."
+site_author: "Vacanza Team"
+site_name: "holidays"
 theme:
   name: readthedocs
 nav:
