@@ -19,6 +19,7 @@ plugins:
             docstring_style: sphinx
             show_signature: true
             show_source: false
+            show_root_heading: true
 
 markdown_extensions:
     - markdown_include.include:
