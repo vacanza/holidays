@@ -56,6 +56,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         - AZ: https://www.azleg.gov/ars/1/00301.htm
         - CA: https://www.sos.ca.gov/state-holidays
         - CO: https://leg.colorado.gov/sites/default/files/images/olls/crs2023-title-24.pdf
+        - GA: https://www.gasupreme.us/court-information/holidays-2/
         - HI: https://www.capitol.hawaii.gov/hrscurrent/Vol01_Ch0001-0042F/HRS0008/HRS_0008-0001.htm
         - ID: https://idaho.gov/government/state-holidays/
         - IN: https://digital.statelib.lib.in.us/infoexpress/holidays.aspx
@@ -220,42 +221,41 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         # Washington's Birthday
         if self._year >= 1879 and self.subdiv not in {
+            "AK",
             "AL",
             "AR",
+            "AZ",
+            "CA",
+            "CO",
             "DE",
             "FL",
             "GA",
+            "HI",
+            "ID",
             "IN",
+            "MD",
+            "MN",
+            "MT",
+            "NJ",
             "NM",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
             "PR",
+            "SC",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
             "VI",
+            "VT",
+            "WA",
+            "WV",
+            "WY",
         }:
             name = "Washington's Birthday"
-            if self._year >= 1971 and self.subdiv not in {
-                "AK",
-                "CA",
-                "CO",
-                "HI",
-                "ID",
-                "MD",
-                "MN",
-                "MT",
-                "NJ",
-                "OH",
-                "OK",
-                "OR",
-                "PA",
-                "PR",
-                "SC",
-                "TN",
-                "TX",
-                "UT",
-                "VA",
-                "VT",
-                "WA",
-                "WV",
-                "WY",
-            }:
+            if self._year >= 1971:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
