@@ -164,6 +164,7 @@ COUNTRIES: RegistryDict = {
     "tonga": ("Tonga", "TO", "TON"),
     "tunisia": ("Tunisia", "TN", "TUN"),
     "turkey": ("Turkey", "TR", "TUR"),
+    "tuvalu": ("Tuvalu", "TV", "TUV"),
     "ukraine": ("Ukraine", "UA", "UKR"),
     "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
     "united_kingdom": ("UnitedKingdom", "GB", "GBR", "UK"),
