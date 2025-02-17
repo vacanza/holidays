@@ -60,6 +60,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         - HI: https://www.capitol.hawaii.gov/hrscurrent/Vol01_Ch0001-0042F/HRS0008/HRS_0008-0001.htm
         - ID: https://idaho.gov/government/state-holidays/
         - IN: https://digital.statelib.lib.in.us/infoexpress/holidays.aspx
+              https://www.in.gov/spd/benefits/state-holidays/
         - MD: https://msa.maryland.gov/msa/mdmanual/01glance/html/holidayl.html
         - MN: https://www.revisor.mn.gov/statutes/cite/645.44
         - MT: https://archive.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html
