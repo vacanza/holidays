@@ -99,7 +99,6 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # National Children's Day.
         name = tr("Aso Tamaliki")
-
         if self._year >= 2019:
             # National Youth Day.
             self._add_holiday_1st_mon_of_aug(tr("Aso tupulaga"))
@@ -115,7 +114,7 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_oct_1(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_observed(self._add_holiday_oct_2(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        # Referenced : https://en.wikipedia.org/wiki/King%27s_Official_Birthday#Tuvalu
+        # https://en.wikipedia.org/wiki/King%27s_Official_Birthday#Tuvalu
         if self._year <= 2022:
             # Heir to the Throne's Birthday.
             self._add_holiday_2nd_mon_of_nov(tr("Aso fanau o te sui ote Tupu"))
