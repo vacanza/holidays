@@ -11,6 +11,7 @@ repos:
       - id: mixed-line-ending
         args:
           - --fix=lf
+        exclude: make.cmd
       - id: trailing-whitespace
         exclude_types:
           - rst
@@ -23,7 +24,7 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.4
+    rev: v0.9.6
     hooks:
       - id: ruff
       - id: ruff-format
@@ -54,7 +55,7 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.14.1
+    rev: v1.15.0
     hooks:
       - id: mypy
         additional_dependencies:

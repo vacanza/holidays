@@ -85,7 +85,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Boxing day.
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr ""
 

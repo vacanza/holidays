@@ -1,0 +1,96 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Panama holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.67\n"
+"POT-Creation-Date: 2025-02-06 22:15+0200\n"
+"PO-Revision-Date: 2025-02-06 23:00+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (puente)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. Martyrs' Day.
+msgid "Día de los Mártires"
+msgstr "День мучеників"
+
+#. Constitution Day.
+msgid "Día de la Constitución"
+msgstr "День Конституції"
+
+#. Carnival Tuesday.
+msgid "Martes de Carnaval"
+msgstr "Карнавальний вівторок"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr "День праці"
+
+#. Separation Day.
+msgid "Separación de Panamá de Colombia"
+msgstr "День відокремлення від Колумбії"
+
+#. Colon Day.
+msgid "Día de Colón"
+msgstr "День Колона"
+
+#. Los Santos Uprising Day.
+msgid "Primer Grito de Independencia"
+msgstr "День початку повстання у Лос-Сантос"
+
+#. Independence Day.
+msgid "Independencia de Panamá de España"
+msgstr "День незалежності від Іспанії"
+
+#. Mother's Day.
+msgid "Día de la Madre"
+msgstr "День матері"
+
+#. National Mourning Day.
+msgid "Día de Duelo Nacional"
+msgstr "День національної скорботи"
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr "Різдво Христове"
+
+#. Carnival Monday.
+msgid "Lunes de Carnaval"
+msgstr "Карнавальний понеділок"
+
+#. National Symbols Day.
+msgid "Día de los Símbolos Patrios"
+msgstr "День національних символів"
+
+#. Presidential Inauguration Day.
+msgid "Toma posesión del Presidente de la república"
+msgstr "Інавгурація Президента Республіки"

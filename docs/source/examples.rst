@@ -214,6 +214,53 @@ To calculate the number or working days between two specified dates:
 
 Here we calculate the number of working days in Q2 2024.
 
+Getting the closest (next or previous) holiday
+----------------------------------------------
+
+You can fetch next or previous holiday for a target date of your selected calendar.
+The function returns found holiday's date and name excluding the target date.
+
+Get the next holiday for the current date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday()
+   (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
+
+Get the previous holiday for the current date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday(direction="backward")
+   (datetime.date(2025, 1, 1), "New Year's Day")
+
+Get the next holiday for a specific target date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday("2025-02-01")
+   (datetime.date(2025, 2, 17), "Washington's Birthday")
+
+Get the previous holiday for a specific target date:
+
+.. code-block:: python
+
+   >>> us_holidays = holidays.US(years=2025)
+   >>> us_holidays.get_closest_holiday("2025-02-01", direction="backward")
+   (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
+
+If the closest holiday cannot be found None is returned.
+
+.. code-block:: python
+
+   >>> print(us_holidays.get_closest_holiday("2100-12-31"))
+   None
+   >>> print(us_holidays.get_closest_holiday("1777-01-01", direction="backward"))
+   None
+
 Date from holiday name
 ----------------------
 

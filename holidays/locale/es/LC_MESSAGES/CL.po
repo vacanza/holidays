@@ -63,7 +63,7 @@ msgstr ""
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr ""
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr ""
 

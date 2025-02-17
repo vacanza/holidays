@@ -129,7 +129,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 self._add_holiday(name, self._summer_solstice_date)
 
         if self._year <= 1967 or self._year >= 1986:
-            # Saint Peter and Saint Paul.
+            # Saint Peter and Saint Paul's Day.
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
         if self._year >= 2007:

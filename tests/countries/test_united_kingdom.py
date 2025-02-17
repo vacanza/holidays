@@ -422,3 +422,63 @@ class TestUnitedKingdom(CommonCountryTests, TestCase):
             "Boxing Day",
         }
         self.assertEqual(all_holidays, y_2015)
+
+    def test_l10n_default(self):
+        # https://www.gov.uk/bank-holidays
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-02", "New Year Holiday"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-18", "Saint Patrick's Day (observed)"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-07-12", "Battle of the Boyne"),
+            ("2024-08-05", "Summer Bank Holiday"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-11-30", "Saint Andrew's Day"),
+            ("2024-12-02", "Saint Andrew's Day (observed)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-02", "New Year Holiday"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-18", "Saint Patrick's Day (observed)"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-07-12", "Battle of the Boyne"),
+            ("2024-08-05", "Summer Bank Holiday"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-11-30", "Saint Andrew's Day"),
+            ("2024-12-02", "Saint Andrew's Day (observed)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-01-02", "หยุดวันขึ้นปีใหม่"),
+            ("2024-03-17", "วันนักบุญแพทริก"),
+            ("2024-03-18", "ชดเชยวันนักบุญแพทริก"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-05-06", "วันเมย์เดย์"),
+            ("2024-05-27", "วันหยุดฤดูใบไม้ผลิของธนาคาร"),
+            ("2024-07-12", "วันรำลึกยุทธการแม่น้ำบอยน์"),
+            ("2024-08-05", "วันหยุดฤดูร้อนของธนาคาร"),
+            ("2024-08-26", "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"),
+            ("2024-11-30", "วันนักบุญแอนดรูว์"),
+            ("2024-12-02", "ชดเชยวันนักบุญแอนดรูว์"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันเปิดกล่องของขวัญ"),
+        )

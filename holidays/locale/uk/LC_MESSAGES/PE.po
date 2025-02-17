@@ -47,7 +47,7 @@ msgstr "Великдень"
 msgid "Día del Trabajo"
 msgstr "День праці"
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 

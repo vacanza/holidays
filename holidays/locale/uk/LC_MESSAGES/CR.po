@@ -50,7 +50,7 @@ msgstr "День Хуана Сантамарії"
 
 #. International Labor Day.
 msgid "Día Internacional del Trabajo"
-msgstr "Міжнародний день трудящих"
+msgstr "Міжнародний день праці"
 
 #. Annexation of the Party of Nicoya to Costa Rica.
 msgid "Anexión del Partido de Nicoya a Costa Rica"

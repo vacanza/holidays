@@ -47,9 +47,9 @@ msgstr "Easter Sunday"
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
-msgstr "Saint Peter and Saint Paul"
+msgstr "Saint Peter and Saint Paul's Day"
 
 #. Independence Day.
 msgid "Día de la Independencia"
@@ -77,7 +77,7 @@ msgstr "All Saints' Day"
 
 #. Immaculate Conception.
 msgid "Inmaculada Concepción"
-msgstr "Immaculate Conception Day"
+msgstr "Immaculate Conception"
 
 #. Battle of Ayacucho.
 msgid "Batalla de Ayacucho"

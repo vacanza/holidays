@@ -39,7 +39,7 @@ msgstr "Новий рік"
 msgid "Grito de Asencio"
 msgstr "День заклику Асенціо"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Día de los Trabajadores"
 msgstr "День трудящих"
 

@@ -63,7 +63,7 @@ msgstr "День військово-морської слави"
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr "Національний день корінних народів"
 
-#. Saint Peter and Saint Paul.
+#. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 

@@ -10,44 +10,48 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Greenland holidays.
+# Greenland holidays da localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.50\n"
+"Project-Id-Version: Holidays 0.67\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2024-05-30 16:36+0200\n"
-"Last-Translator: ~Klintrup <github@klintrup.dk>\n"
+"PO-Revision-Date: 2025-02-11 17:41+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
 
 #. New Year's Day.
-msgid "Ukioq nutaaq"
+msgid "Ukiortaaq"
 msgstr "Nytårsdag"
 
 #. Maundy Thursday.
-msgid "Sisamanngornermi illernartumi"
+msgid "Sisamanngortoq illernartoq"
 msgstr "Skærtorsdag"
 
+#. Good Friday.
+msgid "Tallimanngorneq tannaartoq"
+msgstr "Langfredag"
+
 #. Easter Sunday.
-msgid "Poorskimi"
+msgid "Poorskip ullua"
 msgstr "Påskedag"
 
 #. Easter Monday.
-msgid "Poorskimi ullut aappaat"
+msgid "Poorskip-aappaa"
 msgstr "Anden påskedag"
 
-#. Great Day of Prayers.
+#. Great Prayer Day.
 msgid "Ulloq qinuffiusoq"
 msgstr "Store bededag"
 
 #. Ascension Day.
-msgid "Ulloq Kristusip qilaliarnera"
+msgid "Qilaliarfik"
 msgstr "Kristi himmelfartsdag"
 
 #. Whit Sunday.
@@ -55,37 +59,33 @@ msgid "Piinsip ullua"
 msgstr "Pinsedag"
 
 #. Whit Monday.
-msgid "Piinsip ulluisa aappaanni"
+msgid "Piinsip-aappaa"
 msgstr "Anden pinsedag"
 
 #. Christmas Day.
-msgid "Juulli"
+msgid "Juullip ullua"
 msgstr "Juledag"
 
 #. Second Day of Christmas.
-msgid "Juullip aappaa"
+msgid "Juullip-aappaa"
 msgstr "Anden juledag"
+
+#. Epiphany.
+msgid "Kunngit pingasut ulluat"
+msgstr "Helligtrekongersdag"
 
 #. International Workers' Day.
 msgid "Sulisartut ulluat"
 msgstr "Arbejdernes kampdag"
 
+#. National Day.
+msgid "Ullortuneq"
+msgstr "Nationaldag"
+
 #. Christmas Eve.
-msgid "Juulliaqqami"
+msgid "Juulliaraq"
 msgstr "Juleaftensdag"
 
 #. New Year's Eve.
 msgid "Ukiortaami"
 msgstr "Nytårsaften"
-
-#. National Day.
-msgid "Ullortuneq"
-msgstr "Nationaldag"
-
-#. Good Friday.
-msgid "Tallimanngorneq ajortorsiorneq"
-msgstr "Langfredag"
-
-#. Epiphany.
-msgid "Mitaarneq"
-msgstr "Helligtrekongersdag"

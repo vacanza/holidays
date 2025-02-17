@@ -47,7 +47,7 @@ msgstr "วันปีใหม่ลาว"
 msgid "ວັນກຳມະກອນສາກົນ"
 msgstr "วันแรงงานสากล"
 
-#. International Children Day.
+#. International Children's Day.
 msgid "ວັນເດັກສາກົນ"
 msgstr "วันเด็กสากล"
 

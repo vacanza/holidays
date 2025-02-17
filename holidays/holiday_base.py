@@ -14,13 +14,14 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
 import warnings
+from bisect import bisect_left, bisect_right
 from calendar import isleap
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Literal, Optional, Union, cast
 
 from dateutil.parser import parse
 
@@ -249,6 +250,8 @@ class HolidayBase(dict[date, str]):
     """Start year of holidays presence for this entity."""
     end_year: int = DEFAULT_END_YEAR
     """End year of holidays presence for this entity."""
+    parent_entity: Optional[type["HolidayBase"]] = None
+    """Optional parent entity to reference as a base."""
 
     def __init__(
         self,
@@ -364,16 +367,32 @@ class HolidayBase(dict[date, str]):
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
-        self.tr = (
-            translation(
+        if self._entity_code is not None:
+            fallback = language not in supported_languages
+            languages = [language] if language in supported_languages else None
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
                 self._entity_code,
-                fallback=language not in supported_languages,
-                languages=[language] if language in supported_languages else None,
-                localedir=str(Path(__file__).with_name("locale")),
-            ).gettext
-            if self._entity_code is not None
-            else gettext
-        )
+                fallback=fallback,
+                languages=languages,
+                localedir=locale_directory,
+            )
+            # Add a fallback if entity has parent translations.
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
+                    )
+                )
+            self.tr = entity_translation.gettext
+        else:
+            self.tr = gettext
+
         self.years = _normalize_arguments(int, years)
 
         # Populate holidays.
@@ -418,7 +437,7 @@ class HolidayBase(dict[date, str]):
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
-        return dict.__contains__(cast("Dict[Any, Any]", self), self.__keytransform__(key))
+        return dict.__contains__(cast("dict[Any, Any]", self), self.__keytransform__(key))
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
@@ -428,7 +447,7 @@ class HolidayBase(dict[date, str]):
             if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return False
 
-        return dict.__eq__(cast("Dict[Any, Any]", self), other)
+        return dict.__eq__(cast("dict[Any, Any]", self), other)
 
     def __getattr__(self, name):
         try:
@@ -967,6 +986,36 @@ class HolidayBase(dict[date, str]):
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
 
+    def get_closest_holiday(
+        self,
+        target_date: DateLike = None,
+        direction: Literal["forward", "backward"] = "forward",
+    ) -> Optional[tuple[date, str]]:
+        """Return the date and name of the next holiday for a target_date
+        if direction is "forward" or the previous holiday if direction is "backward".
+        If target_date is not provided the current date will be used by default."""
+
+        if direction not in {"backward", "forward"}:
+            raise AttributeError(f"Unknown direction: {direction}")
+
+        dt = self.__keytransform__(target_date or datetime.now().date())
+        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+            self._populate(next_year)
+        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+            self._populate(previous_year)
+
+        sorted_dates = sorted(self.keys())
+        position = (
+            bisect_right(sorted_dates, dt)
+            if direction == "forward"
+            else bisect_left(sorted_dates, dt) - 1
+        )
+        if 0 <= position < len(sorted_dates):
+            dt = sorted_dates[position]
+            return dt, self[dt]
+
+        return None
+
     def get_nth_working_day(self, key: DateLike, n: int) -> date:
         """Return n-th working day from provided date (if n is positive)
         or n-th working day before provided date (if n is negative).
@@ -1201,4 +1250,4 @@ country_holidays('CA') + country_holidays('MX')
     def _populate(self, year):
         for operand in self.holidays:
             operand._populate(year)
-            self.update(cast("Dict[DateLike, str]", operand))
+            self.update(cast("dict[DateLike, str]", operand))

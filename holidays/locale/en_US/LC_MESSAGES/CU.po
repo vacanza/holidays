@@ -44,9 +44,9 @@ msgstr "Victory Day"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. International Worker's Day.
+#. International Workers' Day.
 msgid "Día Internacional de los Trabajadores"
-msgstr "International Worker's Day"
+msgstr "International Workers' Day"
 
 #. Commemoration of the Assault of the Moncada garrison.
 msgid "Conmemoración del asalto a Moncada"
