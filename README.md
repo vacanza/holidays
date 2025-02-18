@@ -1,9 +1,8 @@
-# holidays
+# Holidays
 
-A fast, efficient Python library for generating country- and
-subdivision- (e.g. state or province) specific sets of
-government-designated holidays on the fly. It aims to make determining
-whether a specific date is a holiday as fast and flexible as possible.
+A fast, efficient Python library for generating country- and subdivision- (e.g. state or province)
+specific sets of government-designated holidays on the fly. It aims to make determining whether a
+specific date is a holiday as fast and flexible as possible.
 
 <table>
   <tr>
@@ -68,8 +67,8 @@ whether a specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>Citation</td>
     <td>
-      <a href="https://doi.org/10.5281/zenodo.14847397">
-        <img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat" alt="Open World Holidays Framework DOI">
+      <a href="https://doi.org/10.5281/zenodo.14884702">
+        <img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI">
       </a>
     </td>
   </tr>
@@ -83,20 +82,18 @@ The latest stable version can always be installed or updated via pip:
 $ pip install --upgrade holidays
 ```
 
-The latest development (dev) version can be installed directly from
-GitHub:
+The latest development (dev) version can be installed directly from GitHub:
 
 ``` shell
 $ pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
 ```
 
-All new features are always first pushed to dev branch, then released on
-main branch upon official version upgrades.
+All new features are always first pushed to dev branch, then released on main branch upon official
+version upgrades.
 
 ## Documentation
 
-The documentation is hosted on [Read the
-Docs](https://holidays.readthedocs.io/).
+The documentation is hosted on [Read the Docs](https://holidays.readthedocs.io/).
 
 ## Quick Start
 
@@ -117,8 +114,7 @@ date(2015, 1, 2) in us_holidays  # False
 us_holidays.get('2014-01-01')  # "New Year's Day"
 ```
 
-The HolidayBase dict-like class will also recognize date strings and
-Unix timestamps:
+The HolidayBase dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
 '2014-01-01' in us_holidays  # True
@@ -134,42 +130,33 @@ us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
 '2018-01-06' in us_pr_holidays  # True
 ```
 
-Please see the [holidays
-documentation](https://holidays.readthedocs.io/) for additional examples
+Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples
 and detailed information.
 
 ## Available Countries
 
-We currently support 159 country codes. The standard way to refer to a
-country is by using its [ISO 3166-1 alpha-2
-code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the
-same used for domain names, and for a subdivision its [ISO 3166-2
-code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have
-common or foreign names or abbreviations as aliases for their
-subdivisions. These are defined in the (optional) `subdivisions_aliases`
-attribute. Some of the countries support more than one language for
-holiday names output. A default language is defined by
-`default_language` (optional) attribute for each entity and is used as a
-fallback when neither user specified language nor user locale language
+We currently support 160 country codes. The standard way to refer to a country is by using its [ISO
+3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
+for domain names, and for a subdivision its [ISO 3166-2
+code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
+abbreviations as aliases for their subdivisions. These are defined in the (optional)
+`subdivisions_aliases` attribute. Some of the countries support more than one language for holiday
+names output. A default language is defined by `default_language` (optional) attribute for each
+entity and is used as a fallback when neither user specified language nor user locale language
 available. The default language code is a [ISO 639-1
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of
-all languages supported by country is defined by `supported_languages`
-(optional) attribute. If there is no designated [ISO 639-1
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then [ISO
-639-2 code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can
-be used.
+code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
+country is defined by `supported_languages` (optional) attribute. If there is no designated [ISO
+639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then [ISO 639-2
+code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can be used.
 
-Many countries have other categories of holidays in addition to common
-(national-wide) holidays: bank holidays, school holidays, additional
-(paid or non-paid) holidays, holidays of state or public employees,
-religious holidays (valid only for these religions followers). A list of
-all categories supported by country is defined by `supported_categories`
-(optional) attribute.
+Many countries have other categories of holidays in addition to common (national-wide) holidays:
+bank holidays, school holidays, additional (paid or non-paid) holidays, holidays of state or public
+employees, religious holidays (valid only for these religions followers). A list of all categories
+supported by country is defined by `supported_categories` (optional) attribute.
 
-The following is a list of supported countries, their subdivisions
-followed by their aliases (if any) in brackets, available languages and
-additional holiday categories. All countries support **PUBLIC** holidays
-category by default. All other default values are highlighted with bold:
+The following is a list of supported countries, their subdivisions followed by their aliases (if
+any) in brackets, available languages and additional holiday categories. All countries support
+**PUBLIC** holidays category by default. All other default values are highlighted with bold:
 
 <table style="width: 100%">
 <colgroup>
@@ -189,955 +176,1128 @@ category by default. All other default values are highlighted with bold:
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>Afghanistan</td>
+<tr>
+<td>Afghanistan</td>
 <td>AF</td>
 <td></td>
 <td>en_US, <strong>fa_AF</strong>, ps_AF</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Albania</td>
+<tr>
+<td>Albania</td>
 <td>AL</td>
 <td></td>
 <td>en_US, <strong>sq</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Algeria</td>
+<tr>
+<td>Algeria</td>
 <td>DZ</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>American Samoa</td>
+<tr>
+<td>American Samoa</td>
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-even"><td>Andorra</td>
+<tr>
+<td>Andorra</td>
 <td>AD</td>
 <td>Parishes: 02, 03, 04, 05, 06, 07, 08</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Angola</td>
+<tr>
+<td>Angola</td>
 <td>AO</td>
 <td></td>
 <td>en_US, <strong>pt_AO</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Argentina</td>
+<tr>
+<td>Argentina</td>
 <td>AR</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Armenia</td>
+<tr>
+<td>Armenia</td>
 <td>AM</td>
 <td></td>
 <td>en_US, <strong>hy</strong></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Aruba</td>
+<tr>
+<td>Aruba</td>
 <td>AW</td>
 <td></td>
 <td>en_US, nl, <strong>pap_AW</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Australia</td>
+<tr>
+<td>Australia</td>
 <td>AU</td>
 <td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)</td>
 <td><strong>en_AU</strong>, en_US, th</td>
 <td>BANK, HALF_DAY</td>
 </tr>
-<tr class="row-even"><td>Austria</td>
+<tr>
+<td>Austria</td>
 <td>AT</td>
 <td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
 <td><strong>de</strong>, en_US, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-odd"><td>Azerbaijan</td>
+<tr>
+<td>Azerbaijan</td>
 <td>AZ</td>
 <td></td>
 <td><strong>az</strong>, en_US, uk</td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Bahamas</td>
+<tr>
+<td>Bahamas</td>
 <td>BS</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Bahrain</td>
+<tr>
+<td>Bahrain</td>
 <td>BH</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Bangladesh</td>
+<tr>
+<td>Bangladesh</td>
 <td>BD</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Barbados</td>
+<tr>
+<td>Barbados</td>
 <td>BB</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Belarus</td>
+<tr>
+<td>Belarus</td>
 <td>BY</td>
 <td></td>
 <td><strong>be</strong>, en_US, ru, th</td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>Belgium</td>
+<tr>
+<td>Belgium</td>
 <td>BE</td>
 <td></td>
 <td>de, en_US, fr, <strong>nl</strong>, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-even"><td>Belize</td>
+<tr>
+<td>Belize</td>
 <td>BZ</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Bolivia</td>
+<tr>
+<td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B, C, H, L, N, O, P, S, T</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Bosnia and Herzegovina</td>
+<tr>
+<td>Bosnia and Herzegovina</td>
 <td>BA</td>
 <td>Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (Brčko distrikt, BD), SRP (Republika Srpska, RS)</td>
 <td><strong>bs</strong>, en_US, sr, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Botswana</td>
+<tr>
+<td>Botswana</td>
 <td>BW</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Brazil</td>
+<tr>
+<td>Brazil</td>
 <td>BR</td>
 <td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>Brunei</td>
+<tr>
+<td>Brunei</td>
 <td>BN</td>
 <td></td>
 <td>en_US, <strong>ms</strong>, th</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Bulgaria</td>
+<tr>
+<td>Bulgaria</td>
 <td>BG</td>
 <td></td>
 <td><strong>bg</strong>, en_US, uk</td>
 <td>SCHOOL</td>
 </tr>
-<tr class="row-odd"><td>Burkina Faso</td>
+<tr>
+<td>Burkina Faso</td>
 <td>BF</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Burundi</td>
+<tr>
+<td>Burundi</td>
 <td>BI</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Cambodia</td>
+<tr>
+<td>Cambodia</td>
 <td>KH</td>
 <td></td>
 <td>en_US, <strong>km</strong>, th</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Cameroon</td>
+<tr>
+<td>Cameroon</td>
 <td>CM</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Canada</td>
+<tr>
+<td>Canada</td>
 <td>CA</td>
 <td>Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Chad</td>
+<tr>
+<td>Chad</td>
 <td>TD</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Chile</td>
+<tr>
+<td>Chile</td>
 <td>CL</td>
 <td>Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-even"><td>China</td>
+<tr>
+<td>China</td>
 <td>CN</td>
 <td></td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td>HALF_DAY</td>
 </tr>
-<tr class="row-odd"><td>Colombia</td>
+<tr>
+<td>Colombia</td>
 <td>CO</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Congo</td>
+<tr>
+<td>Congo</td>
 <td>CG</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Costa Rica</td>
+<tr>
+<td>Costa Rica</td>
 <td>CR</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Croatia</td>
+<tr>
+<td>Croatia</td>
 <td>HR</td>
 <td></td>
 <td>en_US, <strong>hr</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Cuba</td>
+<tr>
+<td>Cuba</td>
 <td>CU</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Curacao</td>
+<tr>
+<td>Curacao</td>
 <td>CW</td>
 <td></td>
 <td>en_US, nl, <strong>pap_CW</strong>, uk</td>
 <td>HALF_DAY</td>
 </tr>
-<tr class="row-odd"><td>Cyprus</td>
+<tr>
+<td>Cyprus</td>
 <td>CY</td>
 <td></td>
 <td><strong>el</strong>, en_CY, en_US, uk</td>
 <td>BANK, OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Czechia</td>
+<tr>
+<td>Czechia</td>
 <td>CZ</td>
 <td></td>
 <td><strong>cs</strong>, en_US, sk, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Denmark</td>
+<tr>
+<td>Denmark</td>
 <td>DK</td>
 <td></td>
 <td><strong>da</strong>, en_US, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Djibouti</td>
+<tr>
+<td>Djibouti</td>
 <td>DJ</td>
 <td></td>
 <td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Dominica</td>
+<tr>
+<td>Dominica</td>
 <td>DM</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Dominican Republic</td>
+<tr>
+<td>Dominican Republic</td>
 <td>DO</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Ecuador</td>
+<tr>
+<td>Ecuador</td>
 <td>EC</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Egypt</td>
+<tr>
+<td>Egypt</td>
 <td>EG</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>El Salvador</td>
+<tr>
+<td>El Salvador</td>
 <td>SV</td>
 <td>Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Estonia</td>
+<tr>
+<td>Estonia</td>
 <td>EE</td>
 <td></td>
 <td>en_US, <strong>et</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Eswatini</td>
+<tr>
+<td>Eswatini</td>
 <td>SZ</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Ethiopia</td>
+<tr>
+<td>Ethiopia</td>
 <td>ET</td>
 <td></td>
 <td><strong>am</strong>, ar, en_US</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Finland</td>
+<tr>
+<td>Finland</td>
 <td>FI</td>
 <td></td>
 <td>en_US, <strong>fi</strong>, sv_FI, uk</td>
 <td>UNOFFICIAL</td>
 </tr>
-<tr class="row-even"><td>France</td>
+<tr>
+<td>France</td>
 <td>FR</td>
 <td>DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)</td>
 <td>en_US, <strong>fr</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Gabon</td>
+<tr>
+<td>Gabon</td>
 <td>GA</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Georgia</td>
+<tr>
+<td>Georgia</td>
 <td>GE</td>
 <td></td>
 <td>en_US, <strong>ka</strong>, uk</td>
 <td>GOVERNMENT</td>
 </tr>
-<tr class="row-odd"><td>Germany</td>
+<tr>
+<td>Germany</td>
 <td>DE</td>
 <td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
-<tr class="row-even"><td>Ghana</td>
+<tr>
+<td>Ghana</td>
 <td>GH</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Greece</td>
+<tr>
+<td>Greece</td>
 <td>GR</td>
 <td></td>
 <td><strong>el</strong>, en_US, uk</td>
 <td>HALF_DAY</td>
 </tr>
-<tr class="row-even"><td>Greenland</td>
+<tr>
+<td>Greenland</td>
 <td>GL</td>
 <td></td>
 <td>da, en_US, fi, is, <strong>kl</strong>, no, sv, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>Guam</td>
+<tr>
+<td>Guam</td>
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-even"><td>Guatemala</td>
+<tr>
+<td>Guatemala</td>
 <td>GT</td>
 <td></td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Guernsey</td>
+<tr>
+<td>Guernsey</td>
 <td>GG</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Haiti</td>
+<tr>
+<td>Haiti</td>
 <td>HT</td>
 <td></td>
 <td>en_US, es, <strong>fr_HT</strong>, ht</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>Honduras</td>
+<tr>
+<td>Honduras</td>
 <td>HN</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Hong Kong</td>
+<tr>
+<td>Hong Kong</td>
 <td>HK</td>
 <td></td>
 <td>en_HK, en_US, th, zh_CN, <strong>zh_HK</strong></td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>Hungary</td>
+<tr>
+<td>Hungary</td>
 <td>HU</td>
 <td></td>
 <td>en_US, <strong>hu</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Iceland</td>
+<tr>
+<td>Iceland</td>
 <td>IS</td>
 <td></td>
 <td>en_US, <strong>is</strong>, uk</td>
 <td>HALF_DAY</td>
 </tr>
-<tr class="row-odd"><td>India</td>
+<tr>
+<td>India</td>
 <td>IN</td>
-<td>States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB</td>
-<td></td>
-<td></td>
+<td>States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)</td>
+<td><strong>en_IN</strong>, en_US, hi</td>
+<td>OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Indonesia</td>
+<tr>
+<td>Indonesia</td>
 <td>ID</td>
 <td></td>
 <td>en_US, <strong>id</strong>, th, uk</td>
 <td>GOVERNMENT</td>
 </tr>
-<tr class="row-odd"><td>Iran</td>
+<tr>
+<td>Iran</td>
 <td>IR</td>
 <td></td>
 <td>en_US, <strong>fa_IR</strong></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Ireland</td>
+<tr>
+<td>Ireland</td>
 <td>IE</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Isle of Man</td>
+<tr>
+<td>Isle of Man</td>
 <td>IM</td>
 <td></td>
 <td><strong>en_GB</strong>, en_US, th</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Israel</td>
+<tr>
+<td>Israel</td>
 <td>IL</td>
 <td></td>
 <td>en_US, <strong>he</strong>, th, uk</td>
 <td>OPTIONAL, SCHOOL</td>
 </tr>
-<tr class="row-odd"><td>Italy</td>
+<tr>
+<td>Italy</td>
 <td>IT</td>
 <td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L’Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia). Cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Jamaica</td>
+<tr>
+<td>Jamaica</td>
 <td>JM</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Japan</td>
+<tr>
+<td>Japan</td>
 <td>JP</td>
 <td></td>
 <td>en_US, <strong>ja</strong>, th</td>
 <td>BANK</td>
 </tr>
-<tr class="row-even"><td>Jersey</td>
+<tr>
+<td>Jersey</td>
 <td>JE</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Jordan</td>
+<tr>
+<td>Jordan</td>
 <td>JO</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Kazakhstan</td>
+<tr>
+<td>Kazakhstan</td>
 <td>KZ</td>
 <td></td>
 <td>en_US, <strong>kk</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Kenya</td>
+<tr>
+<td>Kenya</td>
 <td>KE</td>
 <td></td>
-<td></td>
-<td></td>
+<td><strong>en_KE</strong>, en_US, sw</td>
+<td>HINDU, ISLAMIC</td>
 </tr>
-<tr class="row-even"><td>Kuwait</td>
+<tr>
+<td>Kuwait</td>
 <td>KW</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Kyrgyzstan</td>
+<tr>
+<td>Kyrgyzstan</td>
 <td>KG</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Laos</td>
+<tr>
+<td>Laos</td>
 <td>LA</td>
 <td></td>
 <td>en_US, <strong>lo</strong>, th</td>
 <td>BANK, SCHOOL, WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>Latvia</td>
+<tr>
+<td>Latvia</td>
 <td>LV</td>
 <td></td>
 <td>en_US, <strong>lv</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Lesotho</td>
+<tr>
+<td>Lesotho</td>
 <td>LS</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Liechtenstein</td>
+<tr>
+<td>Liechtenstein</td>
 <td>LI</td>
 <td></td>
 <td><strong>de</strong>, en_US, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-even"><td>Lithuania</td>
+<tr>
+<td>Lithuania</td>
 <td>LT</td>
 <td></td>
 <td>en_US, <strong>lt</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Luxembourg</td>
+<tr>
+<td>Luxembourg</td>
 <td>LU</td>
 <td></td>
 <td>de, en_US, fr, <strong>lb</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Madagascar</td>
+<tr>
+<td>Macau</td>
+<td>MO</td>
+<td>Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)</td>
+<td>en_MO, en_US, pt_MO, th, zh_CN, <strong>zh_MO</strong></td>
+<td>GOVERNMENT, MANDATORY</td>
+</tr>
+<tr>
+<td>Madagascar</td>
 <td>MG</td>
 <td></td>
 <td>en_US, <strong>mg</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Malawi</td>
+<tr>
+<td>Malawi</td>
 <td>MW</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Malaysia</td>
+<tr>
+<td>Malaysia</td>
 <td>MY</td>
 <td>States and federal territories: 01 (Johor, JHR), 02 (Kedah, KDH), 03 (Kelantan, KTN), 04 (Melaka, MLK), 05 (Negeri Sembilan, NSN), 06 (Pahang, PHG), 07 (Pulau Pinang, PNG), 08 (Perak, PRK), 09 (Perlis, PLS), 10 (Selangor, SGR), 11 (Terengganu, TRG), 12 (Sabah, SBH), 13 (Sarawak, SWK), 14 (WP Kuala Lumpur, KUL), 15 (WP Labuan, LBN), 16 (WP Putrajaya, PJY)</td>
 <td>en_US, <strong>ms_MY</strong>, th</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Maldives</td>
+<tr>
+<td>Maldives</td>
 <td>MV</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Malta</td>
+<tr>
+<td>Malta</td>
 <td>MT</td>
 <td></td>
 <td>en_US, <strong>mt</strong></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Marshall Islands (the)</td>
+<tr>
+<td>Marshall Islands (the)</td>
 <td>MH</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Mauritania</td>
+<tr>
+<td>Mauritania</td>
 <td>MR</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Mexico</td>
+<tr>
+<td>Mexico</td>
 <td>MX</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Moldova</td>
+<tr>
+<td>Moldova</td>
 <td>MD</td>
 <td></td>
 <td>en_US, <strong>ro</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Monaco</td>
+<tr>
+<td>Monaco</td>
 <td>MC</td>
 <td></td>
 <td>en_US, <strong>fr</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Montenegro</td>
+<tr>
+<td>Montenegro</td>
 <td>ME</td>
 <td></td>
 <td><strong>cnr</strong>, en_US, uk</td>
 <td>CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>Morocco</td>
+<tr>
+<td>Morocco</td>
 <td>MA</td>
 <td></td>
 <td><strong>ar</strong>, en_US, fr</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Mozambique</td>
+<tr>
+<td>Mozambique</td>
 <td>MZ</td>
 <td></td>
 <td>en_US, <strong>pt_MZ</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Namibia</td>
+<tr>
+<td>Namibia</td>
 <td>NA</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Netherlands</td>
+<tr>
+<td>Netherlands</td>
 <td>NL</td>
 <td></td>
 <td>en_US, fy, <strong>nl</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>New Zealand</td>
+<tr>
+<td>New Zealand</td>
 <td>NZ</td>
 <td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke’s Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC). Subregions: South Canterbury</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Nicaragua</td>
+<tr>
+<td>Nicaragua</td>
 <td>NI</td>
 <td>Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (Estelí), GR (Granada), JI (Jinotega), LE (León), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (Río San Juan)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Nigeria</td>
+<tr>
+<td>Nigeria</td>
 <td>NG</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Northern Mariana Islands (the)</td>
+<tr>
+<td>Northern Mariana Islands (the)</td>
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-odd"><td>North Macedonia</td>
+<tr>
+<td>North Macedonia</td>
 <td>MK</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Norway</td>
+<tr>
+<td>Norway</td>
 <td>NO</td>
 <td></td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Pakistan</td>
+<tr>
+<td>Pakistan</td>
 <td>PK</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Palau</td>
+<tr>
+<td>Palau</td>
 <td>PW</td>
 <td></td>
 <td></td>
 <td>ARMED_FORCES, HALF_DAY</td>
 </tr>
-<tr class="row-odd"><td>Panama</td>
+<tr>
+<td>Panama</td>
 <td>PA</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-even"><td>Papua New Guinea</td>
+<tr>
+<td>Papua New Guinea</td>
 <td>PG</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Paraguay</td>
+<tr>
+<td>Paraguay</td>
 <td>PY</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>GOVERNMENT</td>
 </tr>
-<tr class="row-even"><td>Peru</td>
+<tr>
+<td>Peru</td>
 <td>PE</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Philippines</td>
+<tr>
+<td>Philippines</td>
 <td>PH</td>
 <td></td>
 <td><strong>en_PH</strong>, en_US, fil, th</td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Poland</td>
+<tr>
+<td>Poland</td>
 <td>PL</td>
 <td></td>
-<td>en_US, <strong>pl</strong>, uk</td>
+<td>de, en_US, <strong>pl</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Portugal</td>
+<tr>
+<td>Portugal</td>
 <td>PT</td>
 <td>Districts: 01 (Aveiro), 02 (Beja), 03 (Braga), 04 (Bragança), 05 (Castelo Branco), 06 (Coimbra), 07 (Évora), 08 (Faro), 09 (Guarda), 10 (Leiria), 11 (Lisboa), 12 (Portalegre), 13 (Porto), 14 (Santarém), 15 (Setúbal), 16 (Viana do Castelo), 17 (Vila Real), 18 (Viseu), 20 (Região Autónoma dos Açores), 30 (Região Autónoma da Madeira)</td>
 <td>en_US, <strong>pt_PT</strong>, uk</td>
 <td>OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>Puerto Rico</td>
+<tr>
+<td>Puerto Rico</td>
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-odd"><td>Romania</td>
+<tr>
+<td>Romania</td>
 <td>RO</td>
 <td></td>
 <td>en_US, <strong>ro</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Russia</td>
+<tr>
+<td>Russia</td>
 <td>RU</td>
 <td></td>
 <td>en_US, <strong>ru</strong>, th</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Saint Kitts and Nevis</td>
+<tr>
+<td>Saint Kitts and Nevis</td>
 <td>KN</td>
 <td></td>
 <td></td>
 <td>HALF_DAY, WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Saint Lucia</td>
+<tr>
+<td>Saint Lucia</td>
 <td>LC</td>
 <td></td>
 <td><strong>en_LC</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Samoa</td>
+<tr>
+<td>Samoa</td>
 <td>WS</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>San Marino</td>
+<tr>
+<td>San Marino</td>
 <td>SM</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Saudi Arabia</td>
+<tr>
+<td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Serbia</td>
+<tr>
+<td>Serbia</td>
 <td>RS</td>
 <td></td>
 <td>en_US, <strong>sr</strong></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Seychelles</td>
+<tr>
+<td>Seychelles</td>
 <td>SC</td>
 <td></td>
 <td><strong>en_SC</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Singapore</td>
+<tr>
+<td>Singapore</td>
 <td>SG</td>
 <td></td>
 <td><strong>en_SG</strong>, en_US, th</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Slovakia</td>
+<tr>
+<td>Slovakia</td>
 <td>SK</td>
 <td></td>
 <td>en_US, <strong>sk</strong>, uk</td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Slovenia</td>
+<tr>
+<td>Slovenia</td>
 <td>SI</td>
 <td></td>
 <td>en_US, <strong>sl</strong>, uk</td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>South Africa</td>
+<tr>
+<td>South Africa</td>
 <td>ZA</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>South Korea</td>
+<tr>
+<td>South Korea</td>
 <td>KR</td>
 <td></td>
 <td>en_US, <strong>ko</strong>, th</td>
 <td>BANK</td>
 </tr>
-<tr class="row-odd"><td>Spain</td>
+<tr>
+<td>Spain</td>
 <td>ES</td>
 <td>Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Sri Lanka</td>
+<tr>
+<td>Sri Lanka</td>
 <td>LK</td>
 <td></td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
 <td>BANK, GOVERNMENT, WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>Sweden</td>
+<tr>
+<td>Sweden</td>
 <td>SE</td>
 <td></td>
 <td>en_US, <strong>sv</strong>, th, uk</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Switzerland</td>
+<tr>
+<td>Switzerland</td>
 <td>CH</td>
 <td>Cantons: AG, AI, AR, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH</td>
 <td><strong>de</strong>, en_US, fr, it, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
-<tr class="row-odd"><td>Taiwan</td>
+<tr>
+<td>Taiwan</td>
 <td>TW</td>
 <td></td>
 <td>en_US, th, zh_CN, <strong>zh_TW</strong></td>
-<td></td>
+<td>GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Tanzania</td>
+<tr>
+<td>Tanzania</td>
 <td>TZ</td>
 <td></td>
 <td>en_US, <strong>sw</strong></td>
 <td>BANK</td>
 </tr>
-<tr class="row-odd"><td>Thailand</td>
+<tr>
+<td>Thailand</td>
 <td>TH</td>
 <td></td>
 <td>en_US, <strong>th</strong></td>
 <td>ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY</td>
 </tr>
-<tr class="row-even"><td>Timor Leste</td>
+<tr>
+<td>Timor Leste</td>
 <td>TL</td>
 <td></td>
 <td>en_US, <strong>pt_TL</strong>, tet</td>
 <td>GOVERNMENT, WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>Tonga</td>
+<tr>
+<td>Tonga</td>
 <td>TO</td>
 <td></td>
 <td>en_US, <strong>to</strong></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Tunisia</td>
+<tr>
+<td>Tunisia</td>
 <td>TN</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Turkey</td>
+<tr>
+<td>Turkey</td>
 <td>TR</td>
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
 </tr>
-<tr class="row-even"><td>Ukraine</td>
+<tr>
+<td>Tuvalu</td>
+<td>TV</td>
+<td>Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)</td>
+<td>en_GB, en_US, <strong>tvl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Ukraine</td>
 <td>UA</td>
 <td></td>
 <td>ar, en_US, th, <strong>uk</strong></td>
 <td>WORKDAY</td>
 </tr>
-<tr class="row-odd"><td>United Arab Emirates</td>
+<tr>
+<td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
 <td><strong>ar</strong>, en_US, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
-<tr class="row-even"><td>United Kingdom</td>
+<tr>
+<td>United Kingdom</td>
 <td>GB</td>
 <td>Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)</td>
 <td><strong>en_GB</strong>, en_US, th</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>United States Minor Outlying Islands</td>
+<tr>
+<td>United States Minor Outlying Islands</td>
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-even"><td>United States of America (the)</td>
+<tr>
+<td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-odd"><td>United States Virgin Islands (the)</td>
+<tr>
+<td>United States Virgin Islands (the)</td>
 <td></td>
 <td>See Virgin Islands (U.S.)</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-even"><td>Uruguay</td>
+<tr>
+<td>Uruguay</td>
 <td>UY</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>BANK</td>
 </tr>
-<tr class="row-odd"><td>Uzbekistan</td>
+<tr>
+<td>Uzbekistan</td>
 <td>UZ</td>
 <td></td>
 <td>en_US, uk, <strong>uz</strong></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Vanuatu</td>
+<tr>
+<td>Vanuatu</td>
 <td>VU</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Vatican City</td>
+<tr>
+<td>Vatican City</td>
 <td>VA</td>
 <td></td>
 <td>en_US, <strong>it</strong>, th</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Venezuela</td>
+<tr>
+<td>Venezuela</td>
 <td>VE</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Vietnam</td>
+<tr>
+<td>Vietnam</td>
 <td>VN</td>
 <td></td>
 <td>en_US, th, <strong>vi</strong></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Virgin Islands (U.S.)</td>
+<tr>
+<td>Virgin Islands (U.S.)</td>
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
 <td></td>
-<td>UNOFFICIAL</td>
+<td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
-<tr class="row-odd"><td>Zambia</td>
+<tr>
+<td>Zambia</td>
 <td>ZM</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Zimbabwe</td>
+<tr>
+<td>Zimbabwe</td>
 <td>ZW</td>
 <td></td>
 <td></td>
@@ -1149,41 +1309,45 @@ category by default. All other default values are highlighted with bold:
 ## Available Financial Markets
 
 The standard way to refer to a financial market is to use its [ISO 10383
-MIC](https://www.iso20022.org/market-identifier-codes) (Market
-Identifier Code) as a "country" code when available. The following
-financial markets are available:
+MIC](https://www.iso20022.org/market-identifier-codes) (Market Identifier Code) as a "market"
+code when available. The following financial markets are available:
 
-<table class="tight-table docutils align-default">
+<table style="width: 100%">
 <colgroup>
-<col style="width: 17.7%" />
-<col style="width: 3.1%" />
-<col style="width: 63.8%" />
-<col style="width: 15.4%" />
+<col style="width: 20.0%" />
+<col style="width: 4.0%" />
+<col style="width: 65.0%" />
+<col style="width: 15.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head">Entity</th>
-<th class="head">Code</th>
-<th class="head">Info</th>
-<th class="head">Supported Languages</th>
+<tr>
+<th>Entity</th>
+<th>Code</th>
+<th>Info</th>
+<th>Supported Languages</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>Brasil, Bolsa, Balcão</td>
+<tr>
+<td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 </tr>
-<tr class="row-odd"><td>European Central Bank</td>
+<tr>
+<td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td>ICE Futures Europe</td>
+<tr>
+<td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>New York Stock Exchange</td>
+<tr>
+<td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)</td>
 <td></td>
@@ -1195,10 +1359,8 @@ financial markets are available:
 ## Contributions
 
 [Issues](https://github.com/vacanza/holidays/issues) and [pull
-requests](https://github.com/vacanza/holidays/pulls) are always welcome.
-Please see
-[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.rst)
-for more information.
+requests](https://github.com/vacanza/holidays/pulls) are always welcome. Please see
+[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md) for more information.
 
 ## License
 
