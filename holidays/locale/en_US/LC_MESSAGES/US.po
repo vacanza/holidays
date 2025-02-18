@@ -98,6 +98,14 @@ msgstr ""
 msgid "Martin Luther King Jr. Day"
 msgstr ""
 
+#. Martin Luther King Jr.'s Birthday.
+msgid "Martin Luther King Jr.'s Birthday"
+msgstr ""
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr ""
+
 #. Presidents' Day.
 msgid "Presidents' Day"
 msgstr ""
@@ -164,10 +172,6 @@ msgstr ""
 
 #. Lincoln/Washington Presidents' Day.
 msgid "Lincoln/Washington Presidents' Day"
-msgstr ""
-
-#. Lincoln's Birthday.
-msgid "Lincoln's Birthday"
 msgstr ""
 
 #. Susan B. Anthony Day.

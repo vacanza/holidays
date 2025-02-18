@@ -98,6 +98,14 @@ msgstr "วันคริสต์มาสอีฟ"
 msgid "Martin Luther King Jr. Day"
 msgstr "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"
 
+#. Martin Luther King Jr.'s Birthday.
+msgid "Martin Luther King Jr.'s Birthday"
+msgstr "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr "วันเกิดลิงคอล์น"
+
 #. Presidents' Day.
 msgid "Presidents' Day"
 msgstr "วันประธานาธิบดี"
@@ -165,10 +173,6 @@ msgstr "วัน ดร. มาร์ติน ลูเทอร์ คิง 
 #. Lincoln/Washington Presidents' Day.
 msgid "Lincoln/Washington Presidents' Day"
 msgstr "วันประธานาธิบดีลิงคอล์น/วอชิงตัน"
-
-#. Lincoln's Birthday.
-msgid "Lincoln's Birthday"
-msgstr "วันเกิดลิงคอล์น"
 
 #. Susan B. Anthony Day.
 msgid "Susan B. Anthony Day"
