@@ -18,7 +18,7 @@ plugins:
       handlers:
         python:
           options:
-            docstring_style: sphinx
+            docstring_style: google
             show_signature: true
             show_source: false
             show_root_heading: true

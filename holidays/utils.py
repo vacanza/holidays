@@ -41,47 +41,31 @@ def country_holidays(
     categories: Optional[CategoryArg] = None,
 ) -> HolidayBase:
     """
-    Returns a new dictionary-like :py:class:`HolidayBase` object for the public
+    Returns a new dictionary-like `HolidayBase` object for the public
     holidays of the country matching **country** and other keyword arguments.
 
-    :param country:
-        An ISO 3166-1 Alpha-2 country code.
+    Args:
+        country: An ISO 3166-1 Alpha-2 country code.
+        subdiv: The subdivision (e.g. state or province) as a ISO 3166-2 code
+            or its alias; not implemented for all countries (see documentation).
+        years: The year(s) to pre-calculate public holidays for at instantiation.
+        expand: Whether the entire year is calculated when one date from that year
+            is requested.
+        observed: Whether to include the dates of when public holiday are observed
+            (e.g. a holiday falling on a Sunday being observed the following
+            Monday). False may not work for all countries.
+        prov: *deprecated* use subdiv instead.
+        state: *deprecated* use subdiv instead.
+        language: The language which the returned holiday names will be translated
+            into. It must be an ISO 639-1 (2-letter) language code. If the
+            language translation is not supported the original holiday names
+            will be used.
+        categories: Requested holiday categories.
 
-    :param subdiv:
-        The subdivision (e.g. state or province) as a ISO 3166-2 code
-        or its alias; not implemented for all countries (see documentation).
+    Returns:
+        A `HolidayBase` object matching the **country**.
 
-    :param years:
-        The year(s) to pre-calculate public holidays for at instantiation.
-
-    :param expand:
-        Whether the entire year is calculated when one date from that year
-        is requested.
-
-    :param observed:
-        Whether to include the dates of when public holiday are observed
-        (e.g. a holiday falling on a Sunday being observed the following
-        Monday). False may not work for all countries.
-
-    :param prov:
-        *deprecated* use subdiv instead.
-
-    :param state:
-        *deprecated* use subdiv instead.
-
-    :param language:
-        The language which the returned holiday names will be translated
-        into. It must be an ISO 639-1 (2-letter) language code. If the
-        language translation is not supported the original holiday names
-        will be used.
-
-    :param categories:
-        Requested holiday categories.
-
-    :return:
-        A :py:class:`HolidayBase` object matching the **country**.
-
-    The key of the :class:`dict`-like :class:`HolidayBase` object is the
+    The key of the `dict`-like `HolidayBase` object is the
     `date` of the holiday, and the value is the name of the holiday itself.
     Dates where a key is not present are not public holidays (or, if
     **observed** is False, days when a public holiday is observed).
@@ -89,12 +73,12 @@ def country_holidays(
     When passing the `date` as a key, the `date` can be expressed in one of the
     following types:
 
-    * :class:`datetime.date`,
-    * :class:`datetime.datetime`,
-    * a :class:`str` of any format recognized by :func:`dateutil.parser.parse`,
-    * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+    * `datetime.date`,
+    * `datetime.datetime`,
+    * a `str` of any format recognized by `dateutil.parser.parse()`,
+    * or a `float` or `int` representing a POSIX timestamp.
 
-    The key is always returned as a :class:`datetime.date` object.
+    The key is always returned as a `datetime.date` object.
 
     To maximize speed, the list of public holidays is built on the fly as
     needed, one calendar year at a time. When the object is instantiated
@@ -107,70 +91,71 @@ def country_holidays(
 
     Example usage:
 
-    >>> from holidays import country_holidays
-    >>> us_holidays = country_holidays('US')
-    # For a specific subdivision (e.g. state or province):
-    >>> calif_holidays = country_holidays('US', subdiv='CA')
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US')
+        # For a specific subdivision (e.g. state or province):
+        >>> calif_holidays = country_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
-    >>> from datetime import date
-    >>> assert date(2015, 1, 1) in us_holidays
+        >>> from datetime import date
+        >>> assert date(2015, 1, 1) in us_holidays
 
     This will be faster because 2015 holidays are already calculated:
 
-    >>> assert date(2015, 1, 2) not in us_holidays
+        >>> assert date(2015, 1, 2) not in us_holidays
 
-    The :class:`HolidayBase` class also recognizes strings of many formats
+    The `HolidayBase` class also recognizes strings of many formats
     and numbers representing a POSIX timestamp:
 
-    >>> assert '2014-01-01' in us_holidays
-    >>> assert '1/1/2014' in us_holidays
-    >>> assert 1388597445 in us_holidays
+        >>> assert '2014-01-01' in us_holidays
+        >>> assert '1/1/2014' in us_holidays
+        >>> assert 1388597445 in us_holidays
 
     Show the holiday's name:
 
-    >>> us_holidays.get('2014-01-01')
-    "New Year's Day"
+        >>> us_holidays.get('2014-01-01')
+        "New Year's Day"
 
     Check a range:
 
-    >>> us_holidays['2014-01-01': '2014-01-03']
-    [datetime.date(2014, 1, 1)]
+        >>> us_holidays['2014-01-01': '2014-01-03']
+        [datetime.date(2014, 1, 1)]
 
     List all 2020 holidays:
 
-    >>> us_holidays = country_holidays('US', years=2020)
-    >>> for day in us_holidays.items():
-    ...     print(day)
-    (datetime.date(2020, 1, 1), "New Year's Day")
-    (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
-    (datetime.date(2020, 2, 17), "Washington's Birthday")
-    (datetime.date(2020, 5, 25), 'Memorial Day')
-    (datetime.date(2020, 7, 4), 'Independence Day')
-    (datetime.date(2020, 7, 3), 'Independence Day (observed)')
-    (datetime.date(2020, 9, 7), 'Labor Day')
-    (datetime.date(2020, 10, 12), 'Columbus Day')
-    (datetime.date(2020, 11, 11), 'Veterans Day')
-    (datetime.date(2020, 11, 26), 'Thanksgiving')
-    (datetime.date(2020, 12, 25), 'Christmas Day')
+        >>> us_holidays = country_holidays('US', years=2020)
+        >>> for day in us_holidays.items():
+        ...     print(day)
+        (datetime.date(2020, 1, 1), "New Year's Day")
+        (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
+        (datetime.date(2020, 2, 17), "Washington's Birthday")
+        (datetime.date(2020, 5, 25), 'Memorial Day')
+        (datetime.date(2020, 7, 4), 'Independence Day')
+        (datetime.date(2020, 7, 3), 'Independence Day (observed)')
+        (datetime.date(2020, 9, 7), 'Labor Day')
+        (datetime.date(2020, 10, 12), 'Columbus Day')
+        (datetime.date(2020, 11, 11), 'Veterans Day')
+        (datetime.date(2020, 11, 26), 'Thanksgiving')
+        (datetime.date(2020, 12, 25), 'Christmas Day')
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
-    >>> assert '2018-01-06' not in us_holidays
-    >>> assert '2018-01-06' in us_pr_holidays
+        >>> us_pr_holidays = country_holidays('US', subdiv='PR')
+        >>> assert '2018-01-06' not in us_holidays
+        >>> assert '2018-01-06' in us_pr_holidays
 
     Append custom holiday dates by passing one of:
 
-    * a :class:`dict` with date/name key/value pairs (e.g.
+    * a `dict` with date/name key/value pairs (e.g.
       ``{'2010-07-10': 'My birthday!'}``),
-    * a list of dates (as a :class:`datetime.date`, :class:`datetime.datetime`,
-      :class:`str`, :class:`int`, or :class:`float`); ``'Holiday'`` will be
+    * a list of dates (as a `datetime.date`, `datetime.datetime`,
+      `str`, `int`, or `float`); ``'Holiday'`` will be
       used as a description,
     * or a single date item (of one of the types above); ``'Holiday'`` will be
       used as a description:
 
+    ```python
     >>> custom_holidays = country_holidays('US', years=2015)
     >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
     >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
@@ -178,9 +163,9 @@ def country_holidays(
     >>> assert date(2015, 1, 1) in custom_holidays
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
-
+    ```
     For more complex logic, like 4th Monday of January, you can inherit the
-    :class:`HolidayBase` class and define your own :meth:`_populate` method.
+    `HolidayBase` class and define your own `_populate` method.
     See documentation for examples.
     """
     import holidays
@@ -213,39 +198,35 @@ def financial_holidays(
     holidays of the financial market matching **market** and other keyword
     arguments.
 
-    :param market:
-        An ISO 3166-1 Alpha-2 market code.
+    Args:
+        market:
+            An ISO 3166-1 Alpha-2 market code.
+        subdiv:
+            Currently not implemented for markets (see documentation).
+        years:
+            The year(s) to pre-calculate public holidays for at instantiation.
+        expand:
+            Whether the entire year is calculated when one date from that year
+            is requested.
+        observed:
+            Whether to include the dates of when public holiday are observed
+            (e.g. a holiday falling on a Sunday being observed the following
+            Monday). False may not work for all countries.
+        language:
+            The language which the returned holiday names will be translated
+            into. It must be an ISO 639-1 (2-letter) language code. If the
+            language translation is not supported the original holiday names
+            will be used.
 
-    :param subdiv:
-        Currently not implemented for markets (see documentation).
-
-    :param years:
-        The year(s) to pre-calculate public holidays for at instantiation.
-
-    :param expand:
-        Whether the entire year is calculated when one date from that year
-        is requested.
-
-    :param observed:
-        Whether to include the dates of when public holiday are observed
-        (e.g. a holiday falling on a Sunday being observed the following
-        Monday). False may not work for all countries.
-
-    :param language:
-        The language which the returned holiday names will be translated
-        into. It must be an ISO 639-1 (2-letter) language code. If the
-        language translation is not supported the original holiday names
-        will be used.
-
-    :return:
-        A :py:class:`HolidayBase` object matching the **market**.
+    Returns:
+        A `HolidayBase` object matching the **market**.
 
     Example usage:
 
-    >>> from holidays import financial_holidays
-    >>> nyse_holidays = financial_holidays('NYSE')
+        >>> from holidays import financial_holidays
+        >>> nyse_holidays = financial_holidays('NYSE')
 
-    See :py:func:`country_holidays` documentation for further details and
+    See [country_holidays()][holidays.utils.country_holidays] documentation for further details and
     examples.
     """
     import holidays
@@ -268,9 +249,8 @@ def CountryHoliday(  # noqa: N802
     state: Optional[str] = None,
 ) -> HolidayBase:
     """
-    Deprecated name for :py:func:`country_holidays`.
-
-    :meta private:
+    Note:
+        Deprecated name for `country_holidays`.
     """
 
     warnings.warn(
@@ -283,13 +263,14 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
     """
     Get all localized entities and languages they support.
 
-    :param entity_codes:
-        A list of entity codes.
+    Args:
+        entity_codes:
+            A list of entity codes.
 
-    :return:
-        A dictionary where key is an entity code and
-        value is a list of supported languages (either ISO 639-1 or a
-        combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
+    Returns:
+        A dictionary where key is an entity code and value is a list of supported
+            languages (either ISO 639-1 or a combination of ISO 639-1 and ISO 3166-1 codes joined
+            with "_").
     """
     import holidays
 
@@ -308,15 +289,15 @@ def list_localized_countries(include_aliases=True) -> dict[str, list[str]]:
     """
     Get all localized countries and languages they support.
 
-    :param include_aliases:
-        Whether to include entity aliases (e.g. UK for GB).
+    Args:
+        include_aliases:
+            Whether to include entity aliases (e.g. UK for GB).
 
-    :return:
-        A dictionary where key is an ISO 3166-1 alpha-2 country code and
-        value is a list of supported languages (either ISO 639-1 or a
-        combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
+    Returns:
+        A dictionary where key is an ISO 3166-1 alpha-2 country code and value is a
+            list of supported languages (either ISO 639-1 or a combination of ISO 639-1
+            and ISO 3166-1 codes joined with "_").
     """
-
     return _list_localized_entities(EntityLoader.get_country_codes(include_aliases))
 
 
@@ -325,14 +306,13 @@ def list_localized_financial(include_aliases=True) -> dict[str, list[str]]:
     """
     Get all localized financial markets and languages they support.
 
-    :param include_aliases:
-        Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+    Args:
+        include_aliases:
+            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
 
-    :return:
-        A dictionary where key is a market code and value is a list of
-        supported subdivision codes.
+    Returns:
+        A dictionary where key is a market code and value is a list of supported subdivision codes.
     """
-
     return _list_localized_entities(EntityLoader.get_financial_codes(include_aliases))
 
 
@@ -340,12 +320,13 @@ def _list_supported_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
     """
     Get all supported entities and their subdivisions.
 
-    :param entity_codes:
-        A list of entity codes.
+    Args:
+        entity_codes:
+            A list of entity codes.
 
-    :return:
-        A dictionary where key is an entity code and value is a list
-        of supported subdivision codes.
+    Returns:
+        A dictionary where key is an entity code and value is a list of supported
+            subdivision codes.
     """
     import holidays
 
@@ -360,12 +341,13 @@ def list_supported_countries(include_aliases=True) -> dict[str, list[str]]:
     """
     Get all supported countries and their subdivisions.
 
-    :param include_aliases:
-        Whether to include entity aliases (e.g. UK for GB).
+    Args:
+        include_aliases:
+            Whether to include entity aliases (e.g. UK for GB).
 
-    :return:
-        A dictionary where key is an ISO 3166-1 alpha-2 country code and
-        value is a list of supported subdivision codes.
+    Returns:
+        A dictionary where key is an ISO 3166-1 alpha-2 country code
+            and value is a list of supported subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_country_codes(include_aliases))
 
@@ -375,11 +357,12 @@ def list_supported_financial(include_aliases=True) -> dict[str, list[str]]:
     """
     Get all supported financial markets and their subdivisions.
 
-    :param include_aliases:
-        Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+    Args:
+        include_aliases:
+            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
 
-    :return:
+    Returns:
         A dictionary where key is a market code and value is a list of
-        supported subdivision codes.
+            supported subdivision codes.
     """
     return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))
