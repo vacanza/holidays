@@ -14,7 +14,7 @@
 class PreferredDiscretionaryHolidays:
     """A mixin for setting preferred discretionary holidays.
 
-    See :class:`holidays.countries.hongkong.HongKong` for an example.
+    See `holidays.countries.hongkong.HongKong` for an example.
     """
 
     default_preferred_discretionary_holidays: tuple[str, ...] = ()
