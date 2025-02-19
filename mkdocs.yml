@@ -22,6 +22,7 @@ plugins:
             show_signature: true
             show_source: false
             show_root_heading: true
+            merge_init_into_class: true
 
 markdown_extensions:
     - markdown_include.include:
