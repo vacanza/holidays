@@ -161,6 +161,25 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2002-12-25", "Quaid-e-Azam Day"),
         )
 
+    def test_2002_no_estimated_label(self):
+        self.assertHolidays(
+            Pakistan(years=2002, islamic_show_estimated=False),
+            ("2002-02-05", "Kashmir Solidarity Day"),
+            ("2002-02-22", "Eid-ul-Adha"),
+            ("2002-02-23", "Eid-ul-Adha"),
+            ("2002-02-24", "Eid-ul-Adha"),
+            ("2002-03-23", "Ashura; Pakistan Day"),
+            ("2002-03-24", "Ashura"),
+            ("2002-05-01", "Labour Day"),
+            ("2002-05-24", "Eid Milad-un-Nabi"),
+            ("2002-08-14", "Independence Day"),
+            ("2002-11-09", "Iqbal Day"),
+            ("2002-12-05", "Eid-ul-Fitr"),
+            ("2002-12-06", "Eid-ul-Fitr"),
+            ("2002-12-07", "Eid-ul-Fitr"),
+            ("2002-12-25", "Quaid-e-Azam Day"),
+        )
+
     def test_2022(self):
         self.assertHolidays(
             Pakistan(years=2022),
