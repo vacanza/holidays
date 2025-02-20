@@ -65,9 +65,9 @@ msgstr "HM King Norodom Sihamoni's Birthday"
 msgid "ទិវាជាតិនៃការចងចាំ"
 msgstr "National Day of Remembrance"
 
-#. International Children Day
+#. International Children's Day
 msgid "ទិវាកុមារអន្តរជាតិ"
-msgstr "International Children Day"
+msgstr "International Children's Day"
 
 #. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of
 #. Cambodia

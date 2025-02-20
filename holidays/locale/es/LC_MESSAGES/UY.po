@@ -39,7 +39,7 @@ msgstr ""
 msgid "Grito de Asencio"
 msgstr ""
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Día de los Trabajadores"
 msgstr ""
 

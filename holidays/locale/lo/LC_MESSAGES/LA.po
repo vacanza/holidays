@@ -47,7 +47,7 @@ msgstr ""
 msgid "ວັນກຳມະກອນສາກົນ"
 msgstr ""
 
-#. International Children Day.
+#. International Children's Day.
 msgid "ວັນເດັກສາກົນ"
 msgstr ""
 

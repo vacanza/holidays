@@ -405,7 +405,7 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-05-21", "Navy Day"),
             ("2022-06-07", "Assault and Capture of Cape Arica"),
             ("2022-06-21", "National Day of Indigenous Peoples"),
-            ("2022-06-27", "Saint Peter and Saint Paul"),
+            ("2022-06-27", "Saint Peter and Saint Paul's Day"),
             ("2022-07-16", "Our Lady of Mount Carmel"),
             ("2022-08-15", "Assumption Day"),
             ("2022-08-20", "Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)"),

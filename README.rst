@@ -479,7 +479,7 @@ All other default values are highlighted with bold:
    * - Greenland
      - GL
      -
-     - da, en_US, **kl**
+     - da, en_US, fi, is, **kl**, no, sv, uk
      - OPTIONAL
    * - Guam
      - GU

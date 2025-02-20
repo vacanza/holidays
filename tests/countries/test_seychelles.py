@@ -174,7 +174,7 @@ class TestSeychelles(CommonCountryTests, TestCase):
             ("2024-06-18", "Constitution Day"),
             ("2024-06-29", "Independence (National) Day"),
             ("2024-08-15", "Assumption Day"),
-            ("2024-11-01", "All Saints Day"),
+            ("2024-11-01", "All Saints' Day"),
             ("2024-12-08", "Immaculate Conception"),
             ("2024-12-09", "Immaculate Conception (observed)"),
             ("2024-12-25", "Christmas Day"),
