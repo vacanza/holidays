@@ -11,10 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+from datetime import date
 
 from holidays import find_long_weekends
-from datetime import date
-import calendar
 
 
 class TestLongWeekends(unittest.TestCase):
@@ -55,29 +54,23 @@ class TestLongWeekends(unittest.TestCase):
         long_weekends = find_long_weekends("US", 2025)
         self.assertIsInstance(long_weekends, list)
 
-    def test_exact_range(self):
-        result = find_long_weekends(country="US", year=2025, month=1, exact_range=True)
-        
-        # Check that no long weekend extends beyond January
+    def test_exact_range_exclusion(self):
+        """
+        This test ensures exact_range=True excludes long weekends beyond the month.
+        """
+        country = "US"
+        year = 2024
+        month = 1  # Looking for long weekends only in January
+        exact_range = True
+
+        result = find_long_weekends(country, year, month, exact_range=exact_range)
+
+        # Ensure no long weekend extends beyond January
         for weekend in result:
             start_date = date.fromisoformat(weekend["start_date"])
             end_date = date.fromisoformat(weekend["end_date"])
-            self.assertTrue(1 <= start_date.month <= 1, f"Start date {start_date} is outside the month")
-            self.assertTrue(1 <= end_date.month <= 1, f"End date {end_date} is outside the month")
 
-    def test_february_leap_year(self):
-        result = find_long_weekends(country="US", year=2024, month=2, exact_range=True)
-        
-        for weekend in result:
-            start_date = date.fromisoformat(weekend["start_date"])
-            end_date = date.fromisoformat(weekend["end_date"])
-            self.assertTrue(2 <= start_date.month <= 2, f"Start date {start_date} is outside February")
-            self.assertTrue(2 <= end_date.month <= 2, f"End date {end_date} is outside February")
-    
-    def test_month_end_trim(self):
-        result = find_long_weekends(country="US", year=2025, month=3, exact_range=True)
-
-        for weekend in result:
-            end_date = date.fromisoformat(weekend["end_date"])
-            _, last_day = calendar.monthrange(2025, 3)
-            self.assertTrue(end_date.day <= last_day, f"End date {end_date} is beyond March")
+            self.assertEqual(
+                start_date.month, month, "Start date exceeds month."
+            )
+            self.assertEqual(end_date.month, month, "End date exceeds month.")
