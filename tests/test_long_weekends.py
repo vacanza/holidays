@@ -70,7 +70,5 @@ class TestLongWeekends(unittest.TestCase):
             start_date = date.fromisoformat(weekend["start_date"])
             end_date = date.fromisoformat(weekend["end_date"])
 
-            self.assertEqual(
-                start_date.month, month, "Start date exceeds month."
-            )
+            self.assertEqual(start_date.month, month, "Start date exceeds month.")
             self.assertEqual(end_date.month, month, "End date exceeds month.")
