@@ -1,21 +1,8 @@
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from datetime import timedelta
-
 import holidays
+import calendar
 
-
-def find_long_weekends(country, year, month=None, language=None):
+def find_long_weekends(country, year, month=None, language=None, exact_range=False):
     # Validate year
     if not isinstance(year, int) or not (1900 <= year <= 2100):
         raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")
@@ -47,7 +34,7 @@ def find_long_weekends(country, year, month=None, language=None):
         start_date, end_date = holiday_date, holiday_date
         holidays_involved = [holiday_name]
 
-        # Extend backward
+        # Extend backward to find preceding weekends or holidays
         prev_day = start_date - timedelta(days=1)
         while prev_day in holidays_filtered or (
             prev_day.weekday() in weekends and prev_day.weekday() not in working_weekend_days
@@ -58,7 +45,7 @@ def find_long_weekends(country, year, month=None, language=None):
             seen_dates.add(prev_day)
             prev_day -= timedelta(days=1)
 
-        # Extend forward
+        # Extend forward to find succeeding weekends or holidays
         next_day = end_date + timedelta(days=1)
         while next_day in holidays_filtered or (
             next_day.weekday() in weekends and next_day.weekday() not in working_weekend_days
@@ -69,14 +56,28 @@ def find_long_weekends(country, year, month=None, language=None):
             seen_dates.add(next_day)
             next_day += timedelta(days=1)
 
-        long_weekends.append(
-            {
-                "start_date": start_date.strftime("%Y-%m-%d"),
-                "end_date": end_date.strftime("%Y-%m-%d"),
-                "duration": (end_date - start_date).days + 1,
-                "holidays": holidays_involved,
-            }
-        )
+        # Ensure only actual long weekends (3+ days) are considered
+        duration = (end_date - start_date).days + 1
+        if duration >= 3:
+            if exact_range and month is not None:
+                # Adjust start_date and end_date to fit within the month
+                start_date = max(start_date, holiday_date.replace(month=month, day=1))
+                last_day_of_month = calendar.monthrange(year, month)[1]
+                end_date = min(end_date, holiday_date.replace(month=month, day=last_day_of_month))
+
+                # Recalculate duration after adjustment
+                duration = (end_date - start_date).days + 1
+
+            # Ensure that the final duration is still a long weekend (3+ days)
+            if duration >= 3:
+                long_weekends.append(
+                    {
+                        "start_date": start_date.strftime("%Y-%m-%d"),
+                        "end_date": end_date.strftime("%Y-%m-%d"),
+                        "duration": duration,
+                        "holidays": holidays_involved,
+                    }
+                )
 
         seen_dates.add(holiday_date)
 
