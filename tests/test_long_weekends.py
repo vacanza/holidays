@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date
 
 from holidays import find_long_weekends
 
@@ -24,7 +23,7 @@ class TestLongWeekends(unittest.TestCase):
 
     def test_specific_month(self):
         long_weekends = find_long_weekends("IN", 2025, month=8)
-        self.assertTrue(all(lw["start_date"].startswith("2025-08") for lw in long_weekends))
+        self.assertTrue(all(lw["start_date"].month == 8 for lw in long_weekends))
 
     def test_invalid_year(self):
         with self.assertRaises(ValueError):
@@ -67,8 +66,8 @@ class TestLongWeekends(unittest.TestCase):
 
         # Ensure no long weekend extends beyond January
         for weekend in result:
-            start_date = date.fromisoformat(weekend["start_date"])
-            end_date = date.fromisoformat(weekend["end_date"])
+            start_date = weekend["start_date"]
+            end_date = weekend["end_date"]
 
             self.assertEqual(start_date.month, month, "Start date exceeds month.")
             self.assertEqual(end_date.month, month, "End date exceeds month.")

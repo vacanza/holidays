@@ -34,9 +34,15 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
     weekends = holiday_obj.weekend
     working_weekend_days = getattr(holiday_obj, "weekend_workdays", set())
 
-    holidays_filtered = {
-        d: name for d, name in holiday_obj.items() if month is None or d.month == month
-    }
+    # Extend holidays to cover the end of the previous year and start of the next year
+    if month is None and not exact_range:
+        prev_year_holidays = holidays.country_holidays(country, years=year - 1, language=language)
+        next_year_holidays = holidays.country_holidays(country, years=year + 1, language=language)
+        holidays_filtered = {**prev_year_holidays, **holiday_obj, **next_year_holidays}
+    else:
+        holidays_filtered = {
+            d: name for d, name in holiday_obj.items() if month is None or d.month == month
+        }
 
     long_weekends = []
     seen_dates = set()
@@ -51,7 +57,7 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
         # Extend backward to find preceding weekends or holidays
         prev_day = start_date - timedelta(days=1)
         while prev_day in holidays_filtered or (
-            prev_day.weekday() in weekends and prev_day.weekday() not in working_weekend_days
+            prev_day.weekday() in weekends and prev_day not in working_weekend_days
         ):
             if prev_day in holidays_filtered:
                 holidays_involved.insert(0, holidays_filtered[prev_day])
@@ -73,25 +79,22 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
         # Ensure only actual long weekends (3+ days) are considered
         duration = (end_date - start_date).days + 1
         if duration >= 3:
+            # Exclude dates outside the specified month during the initial filtering
             if exact_range and month is not None:
-                # Adjust start_date and end_date to fit within the month
-                start_date = max(start_date, holiday_date.replace(month=month, day=1))
-                last_day_of_month = calendar.monthrange(year, month)[1]
-                end_date = min(end_date, holiday_date.replace(month=month, day=last_day_of_month))
+                first_day_of_month = holiday_date.replace(day=1)
+                last_day_of_month = holiday_date.replace(day=calendar.monthrange(year, month)[1])
 
-                # Recalculate duration after adjustment
-                duration = (end_date - start_date).days + 1
+                if start_date < first_day_of_month or end_date > last_day_of_month:
+                    continue  # Ignore this long weekend as it exceeds the month range
 
-            # Ensure that the final duration is still a long weekend (3+ days)
-            if duration >= 3:
-                long_weekends.append(
-                    {
-                        "start_date": start_date.strftime("%Y-%m-%d"),
-                        "end_date": end_date.strftime("%Y-%m-%d"),
-                        "duration": duration,
-                        "holidays": holidays_involved,
-                    }
-                )
+            long_weekends.append(
+                {
+                    "start_date": start_date,  # Keeping as date object
+                    "end_date": end_date,  # Keeping as date object
+                    "duration": duration,
+                    "holidays": holidays_involved,
+                }
+            )
 
         seen_dates.add(holiday_date)
 
