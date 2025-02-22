@@ -3,14 +3,6 @@ site_author: "Vacanza Team"
 site_name: "holidays"
 theme:
   name: readthedocs
-nav:
-  - Overview: index.md
-  - Additional Examples: examples.md
-  - Contributing: CONTRIBUTING.md
-  - API Reference: api.md
-  - Mixins: mixins.md
-  - Supported Entities: modules.md
-  - Changelog: changelog.md
 plugins:
   - search
   - mkdocstrings:
@@ -23,9 +15,13 @@ plugins:
             show_source: false
             show_root_heading: true
             merge_init_into_class: true
+            filters:
+              - "!^_"
   - gen-files:
       scripts:
         - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
 
 markdown_extensions:
     - markdown_include.include:
