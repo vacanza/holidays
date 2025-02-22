@@ -25,8 +25,9 @@ class IslamicHolidays(EasternCalendarHolidays):
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, cls=None) -> None:
+    def __init__(self, cls=None, show_estimated=True) -> None:
         self._islamic_calendar = cls() if cls else _IslamicLunar()
+        self._islamic_calendar_show_estimated = show_estimated
 
     def _add_ali_al_rida_death_day(self, name) -> set[date]:
         """
@@ -262,7 +263,9 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         added_dates = set()
         for dts in dates:
-            if dt := self._add_eastern_calendar_holiday(name, dts, days_delta=days_delta):
+            if dt := self._add_eastern_calendar_holiday(
+                name, dts, self._islamic_calendar_show_estimated, days_delta
+            ):
                 added_dates.add(dt)
 
         return added_dates

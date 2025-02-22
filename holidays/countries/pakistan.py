@@ -20,9 +20,15 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "PK"
     start_year = 1948
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=PakistanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
