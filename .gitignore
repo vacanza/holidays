@@ -22,3 +22,4 @@ Pipfile
 sbom.json
 venv/
 site/
+docs/auto_gen_files/

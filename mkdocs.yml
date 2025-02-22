@@ -23,6 +23,9 @@ plugins:
             show_source: false
             show_root_heading: true
             merge_init_into_class: true
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
 
 markdown_extensions:
     - markdown_include.include:
