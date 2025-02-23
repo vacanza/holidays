@@ -20,6 +20,7 @@ plugins:
   - gen-files:
       scripts:
         - scripts/gen_ref_pages.py
+        - scripts/summary.py
   - literate-nav:
       nav_file: SUMMARY.md
 
