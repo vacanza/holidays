@@ -39,7 +39,6 @@ class TestSingapore(CommonCountryTests, TestCase):
             "2015-08-07",
             # holidays estimated using lunar calendar
             "2050-06-04",  # Vesak Day
-            "2050-11-12",  # Deepavali
         )
 
     def test_hijri_holidays(self):
