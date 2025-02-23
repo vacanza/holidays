@@ -982,66 +982,14 @@ class _HinduLunisolar:
         exact_dates = getattr(self, f"{holiday}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
-
-    # def get_holiday_date(self, holiday: str, year: int) -> tuple[date | None, bool]:
-    #     """
-    #     Fetch the date of a specific Hindu festival for a given year.
-    #     """
-    #     return self._get_holiday(holiday, year)
-
-    # def get_all_holidays(self, year: int) -> dict[date, str]:
-    #     """
-    #     Retrieve all Hindu holidays for a specific year.
-    #     """
-    #     holidays = {}
-    #     for holiday_key, holiday_name in self.HOLIDAYS.items():
-    #         holiday_date, estimated = self.get_holiday_date(holiday_key, year)
-    #         if holiday_date:
-    #             holidays[holiday_date] = holiday_name + (" (Estimated)" if estimated else "")
-    #     return holidays
-
-    def malaysia_deepavali_date(self, year: int) -> tuple[Optional[date], bool]:
-        """
-        Returns Malaysia-specific Deepavali date based on the Tamil Hindu calendar.
-        """
-        malaysia_deepavali_dates = {
-            2001: (NOV, 14),
-            2002: (NOV, 4),
-            2003: (OCT, 24),
-            2004: (NOV, 11),
-            2005: (NOV, 1),
-            2006: (OCT, 21),
-            2007: (NOV, 9),
-            2008: (OCT, 27),
-            2009: (OCT, 17),
-            2010: (NOV, 5),
-            2011: (OCT, 26),
-            2012: (NOV, 13),
-            2013: (NOV, 3),
-            2014: (OCT, 22),  # Malaysia Deepavali, differs from India (23 Oct)
-            2015: (NOV, 10),
-            2016: (OCT, 29),
-            2017: (OCT, 18),
-            2018: (NOV, 6),
-            2019: (OCT, 27),
-            2020: (NOV, 14),
-            2021: (NOV, 4),
-            2022: (OCT, 24),
-            2023: (NOV, 12),  # Malaysia Deepavali
-            2024: (OCT, 31),
-        }
-
-        # Retrieve the holiday date if it exists
-        date = malaysia_deepavali_dates.get(year)
-        
-        # If date is found, return it as an estimated False value
-        return (date, False) if date else (None, False)
-
+    
     def diwali_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DIWALI, year)
-
+    
     def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(THAIPUSAM, year)
+        if year in self.thaipusam_dates:
+            month, day = self.thaipusam_dates[year]
+            return date(year, month, day), False  # False means it's not an estimated dated
 
     def holi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(HOLI, year)

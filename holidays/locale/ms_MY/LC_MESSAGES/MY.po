@@ -93,6 +93,7 @@ msgstr ""
 msgid "Hari Raya Qurban"
 msgstr ""
 
+#. Deepavali (Malaysia-specific).
 #. Deepavali.
 msgid "Hari Deepavali"
 msgstr ""

@@ -44,7 +44,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, dt_estimated, self._hindu_calendar_show_estimated
         )
 
-    def _add_diwali(self, name, malaysia: bool = False) -> Optional[date]:
+    def _add_diwali(self, name) -> Optional[date]:
         """
         Add Diwali Festival.
 
@@ -54,10 +54,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         mid-November).
         https://en.wikipedia.org/wiki/Diwali
         """
-        if malaysia:
-            return self._add_hindu_calendar_holiday(
-                name, self._hindu_calendar.malaysia_deepavali_date(self._year)
-        )
+
+        diwali_dates = getattr(self._hindu_calendar, "DIWALI_DATES_CUSTOM_CALENDAR", None)
+
+        if diwali_dates and self._year in diwali_dates:
+            month, day = diwali_dates[self._year]
+            holiday_date = date(self._year, month, day)
+
+            return self._add_holiday(name, holiday_date)
+
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
 
     def _add_thaipusam(self, name) -> Optional[date]:
@@ -68,10 +73,25 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         of the Tamil month of Thai (January/February).
         https://en.wikipedia.org/wiki/Thaipusam
         """
-        print(f"Adding {name} for year {self._year}") 
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.thaipusam_date(self._year)
-        )
+
+        # 1️⃣ First, check if custom Thaipusam dates exist in the Malaysia Hindu Calendar
+        thaipusam_dates = getattr(self._hindu_calendar, "THAIPUSAM_DATES_CUSTOM_CALENDAR", None)
+
+        if thaipusam_dates and self._year in thaipusam_dates:
+            month, day = thaipusam_dates[self._year]
+            holiday_date = date(self._year, month, day)
+
+            print(f"✅ Adding custom {name} on {holiday_date}")  # Debugging
+            return self._add_holiday(name, holiday_date)
+
+        # 2️⃣ If no custom date exists, fallback to the default Hindu calendar
+        print(f"⏳ Falling back to default Hindu calendar for {name} in {self._year}")  # Debugging
+
+        default_thaipusam_date = self._hindu_calendar.thaipusam_date(self._year)
+        print(f"🔍 Default Hindu calendar Thaipusam date: {default_thaipusam_date}")
+
+        return self._add_hindu_calendar_holiday(name, default_thaipusam_date)
+
 
     def _add_holi(self, name) -> Optional[date]:
         """

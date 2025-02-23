@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
+from datetime import date
 
 from holidays.calendars import (
     _CustomBuddhistHolidays,
@@ -211,8 +212,8 @@ class Malaysia(
 
     def _populate_subdiv_holidays(self):
         if self.subdiv and self.subdiv not in {"13", "15"}:
-            # Deepavali (Malaysia-specific).
-            self.dts_observed.add(self._add_diwali(tr("Hari Deepavali"), malaysia=True))
+            # Deepavali.
+            self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
 
@@ -661,7 +662,6 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2026: (FEB, 1),
         2027: (JAN, 22),
     }
-
 
 class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {

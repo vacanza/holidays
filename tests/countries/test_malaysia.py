@@ -240,7 +240,8 @@ class TestMalaysia(CommonCountryTests, TestCase):
             if subdiv == "13":
                 self.assertNoHolidayName(name, holidays)
             elif subdiv == "15":
-                self.assertNoHolidayName(name, holidays, dt)
+                self.assertHolidayName(name, holidays, dt)
+                self.assertNoHolidayName(name, holidays, range(2000, 2014))
             else:
                 self.assertHolidayName(name, holidays, dt)
 
