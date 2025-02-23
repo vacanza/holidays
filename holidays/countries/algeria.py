@@ -20,10 +20,11 @@ from holidays.holiday_base import HolidayBase
 class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Algeria
 
-        As of April 30, 2023. Algeria has 3 days of Eid holidays
-        (https://www.horizons.dz/english/archives/amp/12021)
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Algeria>
+
+    As of April 30, 2023. Algeria has 3 days of Eid holidays
+    (<https://www.horizons.dz/english/archives/amp/12021>)
 
     """
 

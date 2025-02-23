@@ -55,66 +55,70 @@ class Brunei(
     StaticHolidays,
 ):
     """
-    A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.
+    A subclass of `HolidayBase` representing public holidays in Brunei Darussalam.
 
     References:
 
-    - Based on: http://www.labour.gov.bn/Lists/Upcomming%20events/AllItems.aspx
-                http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk15-1998.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1999.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk05-2000.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2000.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk13-2000.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2001.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2002.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk02-2003.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2004.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2005.pdf
-                https://www.pmo.gov.bn/Circulars%20PDF%20Library/jpmsk12-2005.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk03-2006.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk17-2006.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2007.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2008.pdf
-                https://chittychat.wordpress.com/wp-content/uploads/2008/11/school_terms_20091.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2009.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2010.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2011.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2012.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2012.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2013.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-14.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2015.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2016.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2017.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2017.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2018.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2019.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2020.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2021.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2022.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2023.pdf
-                https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2024.pdf
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
-                    https://www.timeanddate.com/holidays/brunei/
-    - [Jubli Emas Sultan Hassanal Bolkiah]
-        https://www.brudirect.com/news.php?id=28316
+    **Based on:**
+
+    * <http://www.labour.gov.bn/Lists/Upcomming%20events/AllItems.aspx>
+    * <http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk15-1998.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1999.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk05-2000.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2000.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk13-2000.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2001.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2002.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk02-2003.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2004.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2005.pdf>
+    * <https://www.pmo.gov.bn/Circulars%20PDF%20Library/jpmsk12-2005.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk03-2006.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk17-2006.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2007.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2008.pdf>
+    * <https://chittychat.wordpress.com/wp-content/uploads/2008/11/school_terms_20091.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2009.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2010.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2011.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2012.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2012.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2013.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-14.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2015.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2016.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2017.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2017.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2018.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2019.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2020.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2021.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2022.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2023.pdf>
+    * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2024.pdf>
+
+    **Checked with:**
+
+    * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+    * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+    * <https://www.timeanddate.com/holidays/brunei/>
+    * [Jubli Emas Sultan Hassanal Bolkiah](https://www.brudirect.com/news.php?id=28316)
 
     If Public Holiday falls on either Friday or Sunday, in-lieu observance is given out
     on the following Saturday or Monday.
 
     Limitations:
 
-    - Brunei Darussalam holidays only works from 1984 onwards
-    - Islamic holidays
+    * Brunei Darussalam holidays only works from 1984 onwards
+    * Islamic holidays
 
 
-    Country created by: `PPsyrius <https://github.com/PPsyrius>`__
+    Country created by: [PPsyrius](https://github.com/PPsyrius)
 
-    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
+    Country maintained by: [PPsyrius](https://github.com/PPsyrius)
     """
 
     country = "BN"

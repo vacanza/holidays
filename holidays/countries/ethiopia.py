@@ -23,7 +23,8 @@ from holidays.holiday_base import HolidayBase
 class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
     """
 
     country = "ET"

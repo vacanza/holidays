@@ -20,33 +20,35 @@ from holidays.holiday_base import HolidayBase
 
 class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
     """
-    A subclass of :py:class:`HolidayBase` representing public holidays in Cambodia.
+    A subclass of `HolidayBase` representing public holidays in Cambodia.
 
     References:
 
-    - Based on: https://www.nbc.gov.kh/english/news_and_events/official_holiday.php
-                https://www.nbc.gov.kh/news_and_events/official_holiday.php
-                https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia
-                https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf
+    **Based on:**
 
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
-                    https://www.timeanddate.com/holidays/cambodia/
+    * <https://www.nbc.gov.kh/english/news_and_events/official_holiday.php>
+    * <https://www.nbc.gov.kh/news_and_events/official_holiday.php>
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
+    * <https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf>
 
-    Limitations:
+    **Checked with:**
 
-    - Cambodian holidays only works from 1993 onwards.
+    * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+    * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+    * <https://www.timeanddate.com/holidays/cambodia/>
 
-    - Exact Public Holidays as per Cambodia's Official Gazette are only
+    **Limitations:**
+
+    * Cambodian holidays only works from 1993 onwards.
+    * Exact Public Holidays as per Cambodia's Official Gazette are only
       available from 2015 onwards.
-
-    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
+    * Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
       (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
 
 
-    Country created by: `PPsyrius <https://github.com/PPsyrius>`__
+    Country created by: [PPsyrius](https://github.com/PPsyrius)
 
-    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
+    Country maintained by: [PPsyrius](https://github.com/PPsyrius)
     """
 
     country = "KH"

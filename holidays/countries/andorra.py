@@ -17,8 +17,9 @@ from holidays.holiday_base import HolidayBase
 class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Andorra
-      - https://www.holsdb.com/public-holidays/ad
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Andorra>
+    * <https://www.holsdb.com/public-holidays/ad>
     """
 
     country = "AD"

@@ -17,13 +17,15 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     Burundian holidays
+
     Note that holidays falling on a sunday maybe observed
     on the following Monday.
     This depends on formal announcements by the government,
     which only happens close to the date of the holiday.
 
     Primary sources:
-    https://www.officeholidays.com/countries/burundi
+
+    * <https://www.officeholidays.com/countries/burundi>
     """
 
     country = "BI"

@@ -19,7 +19,8 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class BurkinaFaso(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso>
     """
 
     country = "BF"

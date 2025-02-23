@@ -20,9 +20,10 @@ from holidays.holiday_base import HolidayBase
 class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-      - https://www.wipo.int/wipolex/en/legislation/details/7837
-      - https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27
-      - https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/
+
+    * <https://www.wipo.int/wipolex/en/legislation/details/7837>
+    * <https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27>
+    * <https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/>
     """
 
     country = "HT"

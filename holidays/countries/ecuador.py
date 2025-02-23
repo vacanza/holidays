@@ -26,8 +26,9 @@ from holidays.observed_holiday_base import (
 class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Ecuador
-      - http://tiny.cc/ec_co_tr
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Ecuador>
+    * <http://tiny.cc/ec_co_tr>
     """
 
     country = "EC"

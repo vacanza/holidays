@@ -25,11 +25,14 @@ from holidays.observed_holiday_base import (
 class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Guernsey
-      - https://guernseylegalresources.gg/ordinances/guernsey-bailiwick/p/public-holidays/
-      - https://www.thegazette.co.uk/all-notices
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Guernsey>
+    * <https://guernseylegalresources.gg/ordinances/guernsey-bailiwick/p/public-holidays/>
+    * <https://www.thegazette.co.uk/all-notices>
+
     Checked with:
-      - https://www.gov.gg/holidaydates
+
+    * <https://www.gov.gg/holidaydates>
 
     His/Her Majesty's Birthday pre-1946 is cross-checked with The London Gazette's Record,
     Specifically as "Home Station" entry under King's Birthday declaration lists.
@@ -232,33 +235,34 @@ class GGY(Guernsey):
 class GuernseyStaticHolidays:
     """
     References:
-      - https://www.gov.gg/holidaydates
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52182
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52183
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52184
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52185
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52188
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52189
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52631
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55175
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55176
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55177
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55179
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55180
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55183
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55185
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55505
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=57425
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60605
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60606
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60607
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60608
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60613
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60614
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=79939
-      - https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=83147
-      - https://www.bbc.com/news/world-europe-guernsey-62864318
-      - https://www.bbc.co.uk/news/articles/c1441ddn87po
+
+    * <https://www.gov.gg/holidaydates>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52182>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52183>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52184>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52185>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52188>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52189>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=52631>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55175>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55176>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55177>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55179>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55180>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55183>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55185>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55505>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=57425>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60605>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60606>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60607>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60608>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60613>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=60614>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=79939>
+    * <https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=83147>
+    * <https://www.bbc.com/news/world-europe-guernsey-62864318>
+    * <https://www.bbc.co.uk/news/articles/c1441ddn87po>
 
     All "jour de relâche" entries are translated as special day off instead.
 

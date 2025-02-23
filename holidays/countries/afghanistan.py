@@ -34,9 +34,9 @@ from holidays.holiday_base import HolidayBase
 
 class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCalendarHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan
-    https://www.timeanddate.com/holidays/afghanistan/
-    https://en.wikipedia.org/wiki/Workweek_and_weekend
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
+    * <https://www.timeanddate.com/holidays/afghanistan/>
+    * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
     country = "AF"

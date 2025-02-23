@@ -43,15 +43,16 @@ class BosniaAndHerzegovina(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina
-    https://www.paragraf.ba/neradni-dani-fbih.html
-    https://www.paragraf.ba/neradni-dani-republike-srpske.html
-    https://www.paragraf.ba/neradni-dani-brcko.html
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina>
+    * <https://www.paragraf.ba/neradni-dani-fbih.html>
+    * <https://www.paragraf.ba/neradni-dani-republike-srpske.html>
+    * <https://www.paragraf.ba/neradni-dani-brcko.html>
 
     Observed holidays rules:
-    - BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
-    - BRC: if holiday fall on Sunday, observed on next working day.
-    - SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
+
+    * BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
+    * BRC: if holiday fall on Sunday, observed on next working day.
+    * SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
     """
 
     country = "BA"

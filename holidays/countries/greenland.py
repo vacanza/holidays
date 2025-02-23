@@ -22,9 +22,10 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
     Greenland holidays.
 
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Greenland
-        - `Greenlandic names source <https://nalunaarutit.gl/groenlandsk-lovgivning/2008/bkg-26-2008?sc_lang=kl-GL>`_
-        - `Translation source <https://www.norden.org/en/info-norden/public-holidays-greenland>`_
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Greenland>
+    * [Greenlandic names source](https://nalunaarutit.gl/groenlandsk-lovgivning/2008/bkg-26-2008?sc_lang=kl-GL)
+    * [Translation source](https://www.norden.org/en/info-norden/public-holidays-greenland)
     """
 
     country = "GL"

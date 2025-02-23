@@ -34,12 +34,14 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     schools, is still a working day.
 
     Sources (Bulgarian):
-    - http://lex.bg/laws/ldoc/1594373121
-    - https://www.parliament.bg/bg/24
-    - https://kik-info.com/spravochnik/calendar/2021/
+
+    * <http://lex.bg/laws/ldoc/1594373121>
+    * <https://www.parliament.bg/bg/24>
+    * <https://kik-info.com/spravochnik/calendar/2021/>
 
     Sources (English):
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria>
     """
 
     country = "BG"

@@ -27,8 +27,9 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     Greece holidays.
 
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-        - `2024 Labor Day transfer <https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240201406>`_
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Greece>
+    * [2024 Labor Day transfer](https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240201406)
     """
 
     country = "GR"
