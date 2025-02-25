@@ -517,7 +517,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2023-05-26",
             "2024-05-15",
         )
-        exception_years = {2002, 2005, 2019, 2022, 2025, 2026, 2029, 2032, 2046, 2049}
+        exception_years = {2002, 2005, 2019, 2022, 2026, 2029, 2032, 2046, 2049}
         self.assertHolidayName(
             name_following,
             self.opt_holidays,
