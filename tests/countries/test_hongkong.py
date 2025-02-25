@@ -525,7 +525,6 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2005-05-16",
             "2019-05-13",
             "2022-05-09",
-            "2025-05-05",
         )
         self.assertHolidayName(
             name, self.opt_holidays, set(range(1999, 2050)).difference(exception_years)
