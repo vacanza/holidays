@@ -24,7 +24,7 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.6
+    rev: v0.9.7
     hooks:
       - id: ruff
       - id: ruff-format
@@ -40,7 +40,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/bandit
-    rev: 1.8.2
+    rev: 1.8.3
     hooks:
       - id: bandit
         additional_dependencies:
