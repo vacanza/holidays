@@ -16,8 +16,8 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
-    https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe>
+    * <https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day>
     """
 
     country = "ZW"

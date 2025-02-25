@@ -17,7 +17,7 @@ from holidays.holiday_base import HolidayBase
 
 class NorthMacedonia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia
+    <https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia>
     """
 
     country = "MK"

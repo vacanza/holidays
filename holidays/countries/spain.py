@@ -30,25 +30,27 @@ class Spain(
     Holidays checked with official sources for 2010-2023 only.
 
     References:
-     - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
 
-     Labor Holidays:
-     2010: https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477
-     2011: https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722
-     2012: https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116
-     2013: https://www.boe.es/buscar/doc.php?id=BOE-A-2012-13644
-     2014: https://www.boe.es/buscar/doc.php?id=BOE-A-2013-12147
-     2015: https://www.boe.es/buscar/doc.php?id=BOE-A-2014-10823
-     2016: https://www.boe.es/buscar/doc.php?id=BOE-A-2015-11348
-     2017: https://www.boe.es/buscar/doc.php?id=BOE-A-2016-9244
-     2018: https://www.boe.es/buscar/doc.php?id=BOE-A-2017-11639
-     2019: https://www.boe.es/buscar/doc.php?id=BOE-A-2018-14369
-     2020: https://www.boe.es/buscar/doc.php?id=BOE-A-2019-14552
-     2021: https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343
-     2022: https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113
-     2023: https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16755
-     2024: https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014
-     2025: https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316
+    * <https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html>
+
+    Labor Holidays:
+
+    * [2010](https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477)
+    * [2011](https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722)
+    * [2012](https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116)
+    * [2013](https://www.boe.es/buscar/doc.php?id=BOE-A-2012-13644)
+    * [2014](https://www.boe.es/buscar/doc.php?id=BOE-A-2013-12147)
+    * [2015](https://www.boe.es/buscar/doc.php?id=BOE-A-2014-10823)
+    * [2016](https://www.boe.es/buscar/doc.php?id=BOE-A-2015-11348)
+    * [2017](https://www.boe.es/buscar/doc.php?id=BOE-A-2016-9244)
+    * [2018](https://www.boe.es/buscar/doc.php?id=BOE-A-2017-11639)
+    * [2019](https://www.boe.es/buscar/doc.php?id=BOE-A-2018-14369)
+    * [2020](https://www.boe.es/buscar/doc.php?id=BOE-A-2019-14552)
+    * [2021](https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343)
+    * [2022](https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113)
+    * [2023](https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16755)
+    * [2024](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014)
+    * [2025](https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316)
     """
 
     country = "ES"

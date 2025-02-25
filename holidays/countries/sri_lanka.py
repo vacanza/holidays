@@ -51,28 +51,30 @@ class SriLanka(
 ):
     """
     References:
-    - http://www.commonlii.org/lk/legis/num_act/ha29o1971152/  # No. 29 of 1971 (Holidays Act)
-    - http://www.commonlii.org/lk/legis/num_act/ha21o1991232/  # No. 21 of 1991 (Amendment)
-    - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
-    - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
-    - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
+
+    * [No. 29 of 1971 (Holidays Act)](http://www.commonlii.org/lk/legis/num_act/ha29o1971152)
+    * [No. 21 of 1991 (Amendment)](http://www.commonlii.org/lk/legis/num_act/ha21o1991232)
+    * <https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm>
+    * <https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf>
+    * <https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php>
 
     Cross-Checked With:
-    - https://web.archive.org/web/20111018053927/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202005.pdf
-    - https://web.archive.org/web/20111018061003/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202006.pdf
-    - https://web.archive.org/web/20110722150032/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202007.pdf
-    - https://web.archive.org/web/20111018071837/http://www.pubad.gov.lk/Holidays/PublicBankHolidays2008.pdf
-    - https://web.archive.org/web/20120309065711/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2009.pdf
-    - https://web.archive.org/web/20111018071247/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2010.pdf
-    - https://web.archive.org/web/20110722151043/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2011.pdf
-    - https://web.archive.org/web/20111125074237/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2012.pdf
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2019
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2020
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2021
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024
-    - https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025
+
+    * <https://web.archive.org/web/20111018053927/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202005.pdf>
+    * <https://web.archive.org/web/20111018061003/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202006.pdf>
+    * <https://web.archive.org/web/20110722150032/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202007.pdf>
+    * <https://web.archive.org/web/20111018071837/http://www.pubad.gov.lk/Holidays/PublicBankHolidays2008.pdf>
+    * <https://web.archive.org/web/20120309065711/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2009.pdf>
+    * <https://web.archive.org/web/20111018071247/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2010.pdf>
+    * <https://web.archive.org/web/20110722151043/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2011.pdf>
+    * <https://web.archive.org/web/20111125074237/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2012.pdf>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2019>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2020>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2021>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024>
+    * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025>
     """
 
     country = "LK"
@@ -366,23 +368,24 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
 class SriLankaStaticHolidays:
     """
     References:
-    - https://www.adaderana.lk/news.php?nid=13026
-    - https://www.adaderana.lk/news.php?nid=17539
-    - https://www.adaderana.lk/news.php?nid=22168
-    - https://www.adaderana.lk/news.php?nid=34870
-    - https://www.adaderana.lk/news.php?nid=55146
-    - https://www.adaderana.lk/news.php?nid=61437
-    - https://www.adaderana.lk/news.php?nid=64367
-    - https://www.adaderana.lk/news.php?nid=81686
-    - https://www.adaderana.lk/news.php?nid=82111
-    - https://www.adaderana.lk/news.php?nid=82979
-    - https://www.adaderana.lk/news.php?nid=83082
-    - https://www.adaderana.lk/news.php?nid=84035
-    - https://www.adaderana.lk/news.php?nid=98560
-    - https://www.adaderana.lk/news.php?nid=102125
-    - https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm
-    - https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf
-    - https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php
+
+    * <https://www.adaderana.lk/news.php?nid=13026>
+    * <https://www.adaderana.lk/news.php?nid=17539>
+    * <https://www.adaderana.lk/news.php?nid=22168>
+    * <https://www.adaderana.lk/news.php?nid=34870>
+    * <https://www.adaderana.lk/news.php?nid=55146>
+    * <https://www.adaderana.lk/news.php?nid=61437>
+    * <https://www.adaderana.lk/news.php?nid=64367>
+    * <https://www.adaderana.lk/news.php?nid=81686>
+    * <https://www.adaderana.lk/news.php?nid=82111>
+    * <https://www.adaderana.lk/news.php?nid=82979>
+    * <https://www.adaderana.lk/news.php?nid=83082>
+    * <https://www.adaderana.lk/news.php?nid=84035>
+    * <https://www.adaderana.lk/news.php?nid=98560>
+    * <https://www.adaderana.lk/news.php?nid=102125>
+    * <https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm>
+    * <https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf>
+    * <https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php>
     """
 
     # Adhi Binara Full Moon Poya Day.

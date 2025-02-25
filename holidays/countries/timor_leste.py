@@ -29,17 +29,18 @@ class TimorLeste(
 ):
     """
     References:
-    - https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf  # 2005 Law
-    - http://timor-leste.gov.tl/?p=14494&lang=en  # 2016 Amendment
-    - http://timor-leste.gov.tl/?p=30266&lang=en  # 2022
-    - http://timor-leste.gov.tl/?p=31750&lang=en  # 2023 (en_US)
-    - http://timor-leste.gov.tl/?p=31750&lang=pt  # 2023 (pt_PT)
-    - http://timor-leste.gov.tl/?p=31750&lang=tp  # 2023 (tet)
-    - http://timor-leste.gov.tl/?p=35833&lang=en  # 2024
+
+    * [2005 Law](https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf)
+    * [2016 Amendment](http://timor-leste.gov.tl/?p=14494&lang=en)
+    * [2022](http://timor-leste.gov.tl/?p=30266&lang=en)
+    * [2023 (en_US)](http://timor-leste.gov.tl/?p=31750&lang=en)
+    * [2023 (pt_PT)](http://timor-leste.gov.tl/?p=31750&lang=pt)
+    * [2023 (tet)](http://timor-leste.gov.tl/?p=31750&lang=tp)
+    * [2024](http://timor-leste.gov.tl/?p=35833&lang=en)
 
     Limitations:
 
-    - Exact Islamic holidays dates are only available for 2011-2023; the rest are estimates.
+    * Exact Islamic holidays dates are only available for 2011-2023; the rest are estimates.
     """
 
     country = "TL"

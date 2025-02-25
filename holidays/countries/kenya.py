@@ -17,9 +17,9 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 class Kenya(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
-    http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
-    https://www.officeholidays.com/holidays/kenya/moi-day
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Kenya>
+    * <http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html>
+    * <https://www.officeholidays.com/holidays/kenya/moi-day>
     """
 
     country = "KE"

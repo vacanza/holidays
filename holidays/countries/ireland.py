@@ -18,8 +18,9 @@ from holidays.holiday_base import HolidayBase
 class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_Ireland
-        - https://www.citizensinformation.ie/en/employment/employment_rights_and_conditions/leave_and_holidays/public_holidays_in_ireland.html
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_Ireland>
+    * <https://www.citizensinformation.ie/en/employment/employment_rights_and_conditions/leave_and_holidays/public_holidays_in_ireland.html>
     """
 
     country = "IE"

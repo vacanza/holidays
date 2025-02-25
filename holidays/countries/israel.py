@@ -32,8 +32,9 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
     Israel holidays.
 
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Israel
-      - https://web.archive.org/web/20190923042619/https://www.knesset.gov.il/laws/special/heb/jerusalem_day_law.htm
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Israel>
+    * <https://web.archive.org/web/20190923042619/https://www.knesset.gov.il/laws/special/heb/jerusalem_day_law.htm>
     """
 
     country = "IL"

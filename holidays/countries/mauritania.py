@@ -18,8 +18,9 @@ from holidays.holiday_base import HolidayBase
 class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Mauritania
-    - https://www.timeanddate.com/holidays/mauritania/
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Mauritania>
+    * <https://www.timeanddate.com/holidays/mauritania/>
     """
 
     country = "MR"

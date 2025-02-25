@@ -20,8 +20,9 @@ from holidays.holiday_base import HolidayBase
 class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-        - https://www.officeholidays.com/countries/madagascar
-        - https://www.timeanddate.com/holidays/madagascar/
+
+    * <https://www.officeholidays.com/countries/madagascar>
+    * <https://www.timeanddate.com/holidays/madagascar/>
     """
 
     country = "MG"

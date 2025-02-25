@@ -20,8 +20,9 @@ from holidays.holiday_base import HolidayBase
 class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Jordan
-        - https://www.mfa.gov.jo/content/public-holidays
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Jordan>
+    * <https://www.mfa.gov.jo/content/public-holidays>
     """
 
     country = "JO"

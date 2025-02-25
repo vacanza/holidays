@@ -49,37 +49,33 @@ class Singapore(
 
     def __init__(self, *args, **kwargs):
         """
-        A subclass of :py:class:`HolidayBase` representing public holidays in
+        A subclass of `HolidayBase` representing public holidays in
         Singapore.
 
         Limitations:
 
-        - Prior to 1969: holidays are estimated.
-        - Prior to 2000: holidays may not be accurate.
-        - 2024 and later: the following four moving date holidays (whose exact
+        * Prior to 1969: holidays are estimated.
+        * Prior to 2000: holidays may not be accurate.
+        * 2024 and later: the following four moving date holidays (whose exact
           date is announced yearly) are estimated, and so denoted:
-
-          - Hari Raya Puasa
-          - Hari Raya Haji
-          - Vesak Day
-          - Deepavali
+            - Hari Raya Puasa
+            - Hari Raya Haji
+            - Vesak Day
+            - Deepavali
 
         Sources:
 
-        - `Holidays Act <https://sso.agc.gov.sg/Act/HA1998>`__ (Act 24 of
+        * [Holidays Act](https://sso.agc.gov.sg/Act/HA1998) (Act 24 of
           1968—Holidays (Amendment) Act 1968)
-        - `Ministry of Manpower
-          <https://www.mom.gov.sg/employment-practices/public-holidays>`__
+        * [Ministry of Manpower](https://www.mom.gov.sg/employment-practices/public-holidays)
 
         References:
 
-        - `Wikipedia
-          <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__
+        * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
 
-        Country created and maintained by: `Mike Borsetti
-        <https://github.com/mborsetti>`__
+        Country created and maintained by: [Mike Borsetti](https://github.com/mborsetti)
 
-        See parameters and usage in :py:class:`HolidayBase`.
+        See parameters and usage in `HolidayBase`.
         """
         BuddhistCalendarHolidays.__init__(self, cls=SingaporeBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=SingaporeChineseHolidays, show_estimated=True)
@@ -310,9 +306,10 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
 
 class SingaporeStaticHolidays:
     """
-    References
-     - https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-     - https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
+    References:
+
+    * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
+    * <https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22>
     """
 
     # Polling Day.

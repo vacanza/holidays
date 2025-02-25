@@ -18,9 +18,10 @@ from holidays.holiday_base import HolidayBase
 class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives
-    - https://www.timeanddate.com/holidays/maldives/
-    - http://www.mma.gov.mv/#/about/bankholidays
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
+    * <https://www.timeanddate.com/holidays/maldives/>
+    * <http://www.mma.gov.mv/#/about/bankholidays>
     """
 
     country = "MV"

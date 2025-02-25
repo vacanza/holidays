@@ -20,9 +20,10 @@ from holidays.holiday_base import HolidayBase
 class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/2024_in_Kuwait
-        - https://www.officeholidays.com/countries/kuwait
-        - https://www.timeanddate.com/holidays/kuwait/2024
+
+    * <https://en.wikipedia.org/wiki/2024_in_Kuwait>
+    * <https://www.officeholidays.com/countries/kuwait>
+    * <https://www.timeanddate.com/holidays/kuwait/2024>
     """
 
     country = "KW"
