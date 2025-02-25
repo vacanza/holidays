@@ -3,9 +3,9 @@
 ## Supported Versions
 
 | Version | Supported          |
-| ------- | ------------------ |
-| 0.66    | :white_check_mark: |
-| < 0.66  | :x:                |
+|---------| ------------------ |
+| 0.67    | :white_check_mark: |
+| < 0.67  | :x:                |
 
 ## Reporting a Vulnerability
 
