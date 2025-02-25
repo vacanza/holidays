@@ -488,9 +488,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2034-05-25",
             "2035-05-15",
         )
-        obs_dt = (
-            "2022-05-09",
-        )
+        obs_dt = ("2022-05-09",)
         self.assertHolidayName(name, range(2022, 2050))
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoHolidayName(name, range(1963, 2022))
