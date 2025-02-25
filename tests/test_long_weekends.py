@@ -71,3 +71,16 @@ class TestLongWeekends(unittest.TestCase):
 
             self.assertEqual(start_date.month, month, "Start date exceeds month.")
             self.assertEqual(end_date.month, month, "End date exceeds month.")
+
+    def test_holidays_extended_range(self):
+        result = find_long_weekends("UA", 2019, month=4, exact_range=True)
+        self.assertIsNotNone(result)  # Ensure the result is not None
+        self.assertTrue(len(result) > 0)  # Ensure there's at least one long weekend in the result
+
+    def test_without_month(self):
+        # Call the function without the month parameter
+        result = find_long_weekends("UA", 2019, exact_range=True)
+
+        # Assert that the function runs without errors (basic coverage)
+        self.assertIsNotNone(result)  # Ensures result is not None
+        self.assertIsInstance(result, list)  # Ensures result is a list
