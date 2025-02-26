@@ -7,7 +7,7 @@ hijridate==2.5.0
 lingva==5.0.5
 pre-commit==4.1.0
 pygithub==2.6.0
-ruff==0.9.6
+ruff==0.9.7
 tox==4.24.1
 urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
