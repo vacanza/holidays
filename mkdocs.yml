@@ -17,6 +17,7 @@ plugins:
             show_root_heading: true
             merge_init_into_class: true
             members_order: source
+            show_if_no_docstring: true
             filters:
               - "!^_"
               - "!CountryHoliday"
