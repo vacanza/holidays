@@ -3,6 +3,7 @@ site_author: "Vacanza Team"
 site_name: "holidays"
 theme:
   name: readthedocs
+
 plugins:
   - search
   - mkdocstrings:
@@ -15,6 +16,7 @@ plugins:
             show_source: false
             show_root_heading: true
             merge_init_into_class: true
+            members_order: source
             filters:
               - "!^_"
   - gen-files:
