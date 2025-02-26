@@ -19,6 +19,7 @@ plugins:
             members_order: source
             filters:
               - "!^_"
+              - "!CountryHoliday"
   - gen-files:
       scripts:
         - scripts/gen_ref_pages.py
