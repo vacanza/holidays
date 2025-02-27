@@ -10,15 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, OCT, NOV, AUG, SEP, DEC
-from holidays.helpers import _normalize_tuple
 
 DIWALI = "DIWALI"
+DIWALI_INDIA = "DIWALI_INDIA"
 THAIPUSAM = "THAIPUSAM"
 HOLI = "HOLI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
@@ -41,8 +40,210 @@ VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
-    # https://www.timeanddate.com/holidays/india/diwali
     DIWALI_DATES = {
+        1901: (NOV, 9),
+        1902: (OCT, 29),
+        1903: (NOV, 17),
+        1904: (NOV, 5),
+        1905: (OCT, 26),
+        1906: (NOV, 14),
+        1907: (NOV, 4),
+        1908: (OCT, 23),
+        1909: (NOV, 11),
+        1910: (OCT, 31),
+        1911: (NOV, 19),
+        1912: (NOV, 7),
+        1913: (OCT, 27),
+        1914: (NOV, 15),
+        1915: (NOV, 5),
+        1916: (OCT, 25),
+        1917: (NOV, 13),
+        1918: (NOV, 2),
+        1919: (NOV, 20),
+        1920: (NOV, 8),
+        1921: (OCT, 29),
+        1922: (NOV, 17),
+        1923: (NOV, 6),
+        1924: (OCT, 26),
+        1925: (NOV, 14),
+        1926: (NOV, 3),
+        1927: (OCT, 23),
+        1928: (NOV, 10),
+        1929: (OCT, 30),
+        1930: (NOV, 18),
+        1931: (NOV, 8),
+        1932: (OCT, 27),
+        1933: (NOV, 16),
+        1934: (NOV, 5),
+        1935: (OCT, 25),
+        1936: (NOV, 12),
+        1937: (NOV, 1),
+        1938: (NOV, 20),
+        1939: (NOV, 9),
+        1940: (OCT, 29),
+        1941: (NOV, 17),
+        1942: (NOV, 6),
+        1943: (OCT, 27),
+        1944: (NOV, 14),
+        1945: (NOV, 3),
+        1946: (OCT, 23),
+        1947: (NOV, 11),
+        1948: (OCT, 30),
+        1949: (NOV, 18),
+        1950: (NOV, 8),
+        1951: (OCT, 28),
+        1952: (NOV, 15),
+        1953: (NOV, 5),
+        1954: (OCT, 25),
+        1955: (NOV, 12),
+        1956: (NOV, 1),
+        1957: (NOV, 20),
+        1958: (NOV, 9),
+        1959: (OCT, 30),
+        1960: (NOV, 17),
+        1961: (NOV, 6),
+        1962: (OCT, 26),
+        1963: (NOV, 14),
+        1964: (NOV, 2),
+        1965: (OCT, 22),
+        1966: (NOV, 10),
+        1967: (OCT, 31),
+        1968: (NOV, 18),
+        1969: (NOV, 8),
+        1970: (OCT, 28),
+        1971: (NOV, 16),
+        1972: (NOV, 4),
+        1973: (OCT, 24),
+        1974: (NOV, 12),
+        1975: (NOV, 1),
+        1976: (NOV, 19),
+        1977: (NOV, 9),
+        1978: (OCT, 30),
+        1979: (NOV, 18),
+        1980: (NOV, 6),
+        1981: (OCT, 26),
+        1982: (NOV, 13),
+        1983: (NOV, 3),
+        1984: (OCT, 22),
+        1985: (NOV, 10),
+        1986: (OCT, 31),
+        1987: (NOV, 19),
+        1988: (NOV, 7),
+        1989: (OCT, 27),
+        1990: (NOV, 15),
+        1991: (NOV, 4),
+        1992: (OCT, 24),
+        1993: (NOV, 12),
+        1994: (NOV, 1),
+        1995: (NOV, 20),
+        1996: (NOV, 9),
+        1997: (OCT, 29),
+        1998: (NOV, 17),
+        1999: (NOV, 6),
+        2000: (OCT, 25),
+        2001: (NOV, 13),
+        2002: (NOV, 3),
+        2003: (OCT, 23),
+        2004: (NOV, 10),
+        2005: (OCT, 31),
+        2006: (NOV, 19),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (NOV, 15),
+        2010: (NOV, 4),
+        2011: (OCT, 25),
+        2012: (NOV, 12),
+        2013: (NOV, 1),
+        2014: (NOV, 20),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (NOV, 16),
+        2018: (NOV, 6),
+        2019: (OCT, 26),
+        2020: (NOV, 13),
+        2021: (NOV, 3),
+        2022: (OCT, 23),
+        2023: (NOV, 11),
+        2024: (OCT, 30),
+        2025: (NOV, 18),
+        2026: (NOV, 7),
+        2027: (OCT, 27),
+        2028: (NOV, 14),
+        2029: (NOV, 4),
+        2030: (OCT, 25),
+        2031: (NOV, 13),
+        2032: (NOV, 1),
+        2033: (OCT, 21),
+        2034: (NOV, 9),
+        2035: (OCT, 29),
+        2036: (NOV, 16),
+        2037: (NOV, 5),
+        2038: (OCT, 26),
+        2039: (NOV, 14),
+        2040: (NOV, 3),
+        2041: (OCT, 23),
+        2042: (NOV, 11),
+        2043: (OCT, 31),
+        2044: (NOV, 17),
+        2045: (NOV, 7),
+        2046: (OCT, 27),
+        2047: (NOV, 15),
+        2048: (NOV, 4),
+        2049: (OCT, 25),
+        2050: (NOV, 12),
+        2051: (NOV, 1),
+        2052: (NOV, 19),
+        2053: (NOV, 8),
+        2054: (OCT, 29),
+        2055: (NOV, 17),
+        2056: (NOV, 5),
+        2057: (OCT, 26),
+        2058: (NOV, 14),
+        2059: (NOV, 3),
+        2060: (OCT, 22),
+        2061: (NOV, 10),
+        2062: (OCT, 30),
+        2063: (NOV, 18),
+        2064: (NOV, 7),
+        2065: (OCT, 27),
+        2066: (NOV, 15),
+        2067: (NOV, 5),
+        2068: (OCT, 24),
+        2069: (NOV, 12),
+        2070: (NOV, 1),
+        2071: (NOV, 20),
+        2072: (NOV, 8),
+        2073: (OCT, 29),
+        2074: (NOV, 17),
+        2075: (NOV, 6),
+        2076: (OCT, 26),
+        2077: (NOV, 14),
+        2078: (NOV, 3),
+        2079: (OCT, 23),
+        2080: (NOV, 9),
+        2081: (OCT, 30),
+        2082: (NOV, 18),
+        2083: (NOV, 8),
+        2084: (OCT, 27),
+        2085: (NOV, 15),
+        2086: (NOV, 4),
+        2087: (OCT, 24),
+        2088: (NOV, 11),
+        2089: (OCT, 31),
+        2090: (NOV, 19),
+        2091: (NOV, 9),
+        2092: (OCT, 29),
+        2093: (NOV, 17),
+        2094: (NOV, 6),
+        2095: (OCT, 26),
+        2096: (NOV, 13),
+        2097: (NOV, 2),
+        2098: (OCT, 22),
+        2099: (NOV, 10),
+    }
+
+    # https://www.timeanddate.com/holidays/india/diwali
+    DIWALI_INDIA_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 4),
         2003: (OCT, 25),
@@ -80,7 +281,7 @@ class _HinduLunisolar:
         2035: (OCT, 30),
     }
 
-    thaipusam_dates = {
+    THAIPUSAM_DATES = {
         1901: (MAR, 5),
         1902: (FEB, 23),
         1903: (JAN, 14),
@@ -979,48 +1180,19 @@ class _HinduLunisolar:
         2035: (APR, 14),
     }
 
-    # def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
-    #     estimated_dates = getattr(self, f"{holiday}_dates", {})
-    #     exact_dates = getattr(self, f"{holiday}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-    #     dt = exact_dates.get(year, estimated_dates.get(year, ()))
-    #     return date(year, *dt) if dt else None, year not in exact_dates
-
     def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
-        print(f"\n📍 Inside _get_holiday for {holiday}, year {year}")
-
-        estimated_dates = getattr(self, f"{holiday.lower()}_dates", {})
-        exact_dates = getattr(
-            self, f"{holiday.lower()}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
-        )
-
-        print(f"🔍 exact_dates: {exact_dates}")
-        print(f"🔍 estimated_dates: {estimated_dates}")
-        print(f"🔍 Looking for year: {year}")
-
+        estimated_dates = getattr(self, f"{holiday}_DATES", {})
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
-
-        if dt:
-            print(f"✅ Found exact date for {holiday} in {year}: {dt[0]}-{dt[1]}")
-        else:
-            print(f"❌ No date found for {holiday} in year {year}.")
-
         return date(year, *dt) if dt else None, year not in exact_dates
-
-    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
-        estimated_dates = getattr(self, f"{holiday}_dates", {})
-        exact_dates = getattr(self, f"{holiday}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        for year in (year - 1, year):
-            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
-                yield date(year, *dt), year not in exact_dates
 
     def diwali_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DIWALI, year)
 
-    def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
-        if year in self.thaipusam_dates:
-            month, day = self.thaipusam_dates[year]
-            return date(year, month, day), False
+    def diwali_india_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(DIWALI_INDIA, year)
 
+    def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(THAIPUSAM, year)
 
     def holi_date(self, year: int) -> tuple[Optional[date], bool]:
