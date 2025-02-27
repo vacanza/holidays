@@ -347,7 +347,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2035-01-15",
         )
         name = "Uttarayan"
-        self.assertHolidayName(name, India(subdiv="AS"), dt)
+        self.assertHolidayName(name, India(subdiv="GJ"), dt)
         self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
         # Test out of range dates for Jharkhand
