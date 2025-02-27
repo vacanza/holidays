@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from datetime import date
 
 from holidays.calendars import (
     _CustomBuddhistHolidays,
@@ -662,6 +661,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2026: (FEB, 1),
         2027: (JAN, 22),
     }
+
 
 class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {

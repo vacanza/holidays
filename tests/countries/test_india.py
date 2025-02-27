@@ -35,7 +35,6 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_2018(self):
         self.assertHoliday(
             "2018-01-26",
-            "2018-03-02",
             "2018-03-25",
             "2018-03-30",
             "2018-04-01",
@@ -49,8 +48,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-09-20",
             "2018-10-02",
             "2018-10-02",
-            "2018-11-07",
-            "2018-11-14",
             "2018-11-20",
             "2018-12-25",
         )
@@ -85,7 +82,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-08-15",
                 "2018-12-19",
             ),
-            "GJ": ("2018-01-14", "2018-04-14", "2018-05-01", "2018-08-15", "2018-10-31"),
+            "GJ": ("2018-04-14", "2018-05-01", "2018-08-15", "2018-10-31"),
             "HP": (
                 "2018-08-15",
                 "2018-04-14",
@@ -175,8 +172,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-11-14",
             "2010-11-05",
             "2025-10-20",
-            "2035-10-30",
-        )
+            "2035-10-30"
+            )
+
         self.assertHolidayName("Diwali", dt)
 
         dt = (

@@ -1,0 +1,284 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: /home/ankush-kapoor/Desktop/Python/holidays
+configfile: pyproject.toml
+plugins: cov-6.0.0, xdist-3.6.1
+collected 1 item
+
+tests/countries/test_india.py F                                          [100%]
+
+=================================== FAILURES ===================================
+________________________ TestIndia.test_ranged_holidays ________________________
+
+self = <tests.countries.test_india.TestIndia testMethod=test_ranged_holidays>
+
+    def test_ranged_holidays(self):
+        # warnings.simplefilter("always")
+        # for year in (2000, 2036):  # Holidays out of range.
+        #     with self.assertWarns(Warning):
+        #         India(years=year)
+        warnings.simplefilter("always")
+    
+        print("\n--- Testing out-of-range warnings ---")
+        for year in (2000, 2036):
+            print(f"\nTesting year {year}")
+            try:
+                with self.assertWarns(Warning):
+                    print(f"About to create India(years={year})")
+                    India(years=year)
+                    print(f"Successfully created India for {year}")
+            except Exception as e:
+                print(f"Exception occurred for year {year}: {str(e)}")
+                raise
+    
+        print("\n--- Testing specific Diwali dates ---")
+        dt = ("2001-11-14", "2010-11-05", "2025-10-20", "2035-10-30")
+    
+        india = India()
+        hindu_calendar = india._hindu_calendar  # Get the Hindu calendar instance
+    
+        for date_str in dt:
+            year = int(date_str.split('-')[0])
+            print(f"\n🔍 Checking Diwali for {date_str} (year {year})")
+    
+            try:
+                if hasattr(hindu_calendar, "_get_holiday"):
+                    holiday_date = hindu_calendar._get_holiday("DIWALI", year)
+                    print(f"✅ Holiday date returned: {holiday_date}")
+                else:
+                    print("❌ _get_holiday() method not found in Hindu Calendar")
+            except Exception as e:
+                print(f"❌ Error getting holiday: {e}")
+    
+>       self.assertHolidayName("Diwali", dt)
+
+tests/countries/test_india.py:206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/common.py:200: in assertHolidayName
+    self._assertHolidayName(name, "holidays", *args)
+tests/common.py:192: in _assertHolidayName
+    self.assertIn(name, holidays.get_list(dt), dt)
+E   AssertionError: 'Diwali' not found in ["Children's Day"] : 2001-11-14
+----------------------------- Captured stdout call -----------------------------
+🎭 Creating new _HinduLunisolar instance: 127820089198112
+🎭 Creating new _HinduLunisolar instance: 127820089201952
+
+--- Testing out-of-range warnings ---
+
+Testing year 2000
+About to create India(years=2000)
+🎭 Creating new _HinduLunisolar instance: 127820080169232
+🔄 Checking Diwali for year 2000
+❌ No custom Diwali dates found, falling back.
+📍 Checking diwali_date for 2000 in _HinduLunisolar
+
+📍 Inside _get_holiday for DIWALI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for DIWALI in year 2000.
+⚠️ No Diwali date found for 2000.
+❌ No valid Diwali date for 2000, skipping addition.
+
+📍 Inside _get_holiday for HOLI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for HOLI in year 2000.
+
+📍 Inside _get_holiday for GOVARDHAN_PUJA, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for GOVARDHAN_PUJA in year 2000.
+
+📍 Inside _get_holiday for RAKSHA_BANDHAN, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for RAKSHA_BANDHAN in year 2000.
+
+📍 Inside _get_holiday for JANMASHTAMI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for JANMASHTAMI in year 2000.
+
+📍 Inside _get_holiday for DUSSEHRA, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for DUSSEHRA in year 2000.
+
+📍 Inside _get_holiday for MAHAVIR_JAYANTI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for MAHAVIR_JAYANTI in year 2000.
+
+📍 Inside _get_holiday for MAHA_SHIVARATRI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for MAHA_SHIVARATRI in year 2000.
+
+📍 Inside _get_holiday for SHARAD_NAVRATRI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for SHARAD_NAVRATRI in year 2000.
+
+📍 Inside _get_holiday for RAM_NAVAMI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for RAM_NAVAMI in year 2000.
+
+📍 Inside _get_holiday for MAHA_NAVAMI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for MAHA_NAVAMI in year 2000.
+
+📍 Inside _get_holiday for GANESH_CHATURTHI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for GANESH_CHATURTHI in year 2000.
+
+📍 Inside _get_holiday for GURU_NANAK_JAYANTI, year 2000
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2000
+❌ No date found for GURU_NANAK_JAYANTI in year 2000.
+Successfully created India for 2000
+
+Testing year 2036
+About to create India(years=2036)
+🎭 Creating new _HinduLunisolar instance: 127820080171680
+🔄 Checking Diwali for year 2036
+❌ No custom Diwali dates found, falling back.
+📍 Checking diwali_date for 2036 in _HinduLunisolar
+
+📍 Inside _get_holiday for DIWALI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for DIWALI in year 2036.
+⚠️ No Diwali date found for 2036.
+❌ No valid Diwali date for 2036, skipping addition.
+
+📍 Inside _get_holiday for HOLI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for HOLI in year 2036.
+
+📍 Inside _get_holiday for GOVARDHAN_PUJA, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for GOVARDHAN_PUJA in year 2036.
+
+📍 Inside _get_holiday for RAKSHA_BANDHAN, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for RAKSHA_BANDHAN in year 2036.
+
+📍 Inside _get_holiday for JANMASHTAMI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for JANMASHTAMI in year 2036.
+
+📍 Inside _get_holiday for DUSSEHRA, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for DUSSEHRA in year 2036.
+
+📍 Inside _get_holiday for MAHAVIR_JAYANTI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for MAHAVIR_JAYANTI in year 2036.
+
+📍 Inside _get_holiday for MAHA_SHIVARATRI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for MAHA_SHIVARATRI in year 2036.
+
+📍 Inside _get_holiday for SHARAD_NAVRATRI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for SHARAD_NAVRATRI in year 2036.
+
+📍 Inside _get_holiday for RAM_NAVAMI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for RAM_NAVAMI in year 2036.
+
+📍 Inside _get_holiday for MAHA_NAVAMI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for MAHA_NAVAMI in year 2036.
+
+📍 Inside _get_holiday for GANESH_CHATURTHI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for GANESH_CHATURTHI in year 2036.
+
+📍 Inside _get_holiday for GURU_NANAK_JAYANTI, year 2036
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2036
+❌ No date found for GURU_NANAK_JAYANTI in year 2036.
+Successfully created India for 2036
+
+--- Testing specific Diwali dates ---
+🎭 Creating new _HinduLunisolar instance: 127820089108688
+
+🔍 Checking Diwali for 2001-11-14 (year 2001)
+
+📍 Inside _get_holiday for DIWALI, year 2001
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2001
+❌ No date found for DIWALI in year 2001.
+✅ Holiday date returned: (None, True)
+
+🔍 Checking Diwali for 2010-11-05 (year 2010)
+
+📍 Inside _get_holiday for DIWALI, year 2010
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2010
+❌ No date found for DIWALI in year 2010.
+✅ Holiday date returned: (None, True)
+
+🔍 Checking Diwali for 2025-10-20 (year 2025)
+
+📍 Inside _get_holiday for DIWALI, year 2025
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2025
+❌ No date found for DIWALI in year 2025.
+✅ Holiday date returned: (None, True)
+
+🔍 Checking Diwali for 2035-10-30 (year 2035)
+
+📍 Inside _get_holiday for DIWALI, year 2035
+🔍 exact_dates: {}
+🔍 estimated_dates: {}
+🔍 Looking for year: 2035
+❌ No date found for DIWALI in year 2035.
+✅ Holiday date returned: (None, True)
+=========================== short test summary info ============================
+FAILED tests/countries/test_india.py::TestIndia::test_ranged_holidays - Asser...
+============================== 1 failed in 0.11s ===============================

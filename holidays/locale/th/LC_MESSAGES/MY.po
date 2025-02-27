@@ -93,7 +93,6 @@ msgstr "วันอีฎิ้ลฟิตริวันที่สอง"
 msgid "Hari Raya Qurban"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#. Deepavali (Malaysia-specific).
 #. Deepavali.
 msgid "Hari Deepavali"
 msgstr "วันดีปาวลี"

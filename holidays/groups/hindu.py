@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
@@ -35,36 +36,98 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Adds customizable estimation label to holiday name if holiday date
         is an estimation.
         """
-
-        """Ensure holiday is added only if date exists."""
-        dt, is_estimated = dt_estimated
-        if dt is None:
-            return None  # Avoid adding invalid holidays
         return self._add_eastern_calendar_holiday(
             name, dt_estimated, self._hindu_calendar_show_estimated
         )
 
+    def _add_hindu_calendar_holiday_set(
+        self, name: str, dts_estimated: Iterable[tuple[date, bool]], days_delta: int = 0
+    ) -> set[date]:
+        """
+        Add Hindu calendar holidays.
+
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
+        """
+        added_dates = set()
+        for dt_estimated in dts_estimated:
+            if dt := self._add_eastern_calendar_holiday(
+                name, dt_estimated, self._hindu_calendar_show_estimated, days_delta=days_delta
+            ):
+                added_dates.add(dt)
+
+        return added_dates
+
+    # def _add_hindu_calendar_holiday(
+    #     self, name: str, dt_estimated: tuple[Optional[date], bool]
+    # ) -> Optional[date]:
+    #     """
+    #     Add Hindu calendar holiday.
+
+    #     Adds customizable estimation label to holiday name if holiday date
+    #     is an estimation.
+    #     """
+
+    #     """Ensure holiday is added only if date exists."""
+    #     dt, is_estimated = dt_estimated
+    #     if dt is None:
+    #         return None  # Avoid adding invalid holidays
+    #     return self._add_eastern_calendar_holiday(
+    #         name, dt_estimated, self._hindu_calendar_show_estimated
+    #     )
+
+    # def _add_diwali(self, name) -> Optional[date]:
+    #     """
+    #     Add Diwali Festival.
+
+    #     Diwali (Deepavali, Festival of Lights) is one of the most important
+    #     festivals in Indian religions. It is celebrated during the Hindu
+    #     lunisolar months of Ashvin and Kartika (between mid-October and
+    #     mid-November).
+    #     https://en.wikipedia.org/wiki/Diwali
+    #     """
+
+    #     diwali_dates = getattr(self._hindu_calendar, "DIWALI_DATES_CUSTOM_CALENDAR", None)
+
+    #     if diwali_dates and self._year in diwali_dates:
+    #         month, day = diwali_dates[self._year]
+    #         holiday_date = date(self._year, month, day)
+
+    #         return self._add_holiday(name, holiday_date)
+
+    #     return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
+
     def _add_diwali(self, name) -> Optional[date]:
         """
         Add Diwali Festival.
-
-        Diwali (Deepavali, Festival of Lights) is one of the most important
-        festivals in Indian religions. It is celebrated during the Hindu
-        lunisolar months of Ashvin and Kartika (between mid-October and
-        mid-November).
-        https://en.wikipedia.org/wiki/Diwali
         """
+        print(f"\n🔄 Checking Diwali for year {self._year}")
 
         diwali_dates = getattr(self._hindu_calendar, "DIWALI_DATES_CUSTOM_CALENDAR", None)
 
         if diwali_dates and self._year in diwali_dates:
             month, day = diwali_dates[self._year]
             holiday_date = date(self._year, month, day)
-
+            print(f"✅ Adding {name} on {holiday_date} from custom calendar")
             return self._add_holiday(name, holiday_date)
 
-        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
+        # Fallback to default Hindu calendar
+        holiday_date, is_estimated = self._hindu_calendar.diwali_date(self._year)
+        holiday_name = name + " (estimated)" if is_estimated else name
 
+        print(f"📌 Checking if self has holidays attribute: {hasattr(self, 'holidays')}")
+        print(f"📌 Type of self: {type(self)}")
+        print(f"📌 Available attributes: {dir(self)}")
+
+        print(f"✅ Adding {holiday_name} on {holiday_date}")
+
+        if holiday_date:
+            return self._add_holiday(name, holiday_date)
+
+        print(f"❌ No valid Diwali date for {self._year}, skipping addition.")
+
+        return None
+        
     def _add_thaipusam(self, name) -> Optional[date]:
         """
         Add Thaipusam.
@@ -74,24 +137,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Thaipusam
         """
 
-        # 1️⃣ First, check if custom Thaipusam dates exist in the Malaysia Hindu Calendar
         thaipusam_dates = getattr(self._hindu_calendar, "THAIPUSAM_DATES_CUSTOM_CALENDAR", None)
 
         if thaipusam_dates and self._year in thaipusam_dates:
             month, day = thaipusam_dates[self._year]
             holiday_date = date(self._year, month, day)
 
-            print(f"✅ Adding custom {name} on {holiday_date}")  # Debugging
             return self._add_holiday(name, holiday_date)
 
-        # 2️⃣ If no custom date exists, fallback to the default Hindu calendar
-        print(f"⏳ Falling back to default Hindu calendar for {name} in {self._year}")  # Debugging
-
-        default_thaipusam_date = self._hindu_calendar.thaipusam_date(self._year)
-        print(f"🔍 Default Hindu calendar Thaipusam date: {default_thaipusam_date}")
-
-        return self._add_hindu_calendar_holiday(name, default_thaipusam_date)
-
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.thaipusam_date(self._year)
+        )
 
     def _add_holi(self, name) -> Optional[date]:
         """
