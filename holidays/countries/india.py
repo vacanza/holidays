@@ -169,31 +169,51 @@ class India(
 
         # Holi.
         self._add_holi("Holi")
+        # Holi.
+        self._add_holi("Holi")
 
+        # Govardhan Puja.
+        self._add_govardhan_puja("Govardhan Puja")
         # Govardhan Puja.
         self._add_govardhan_puja("Govardhan Puja")
 
         # Raksha Bandhan.
         self._add_raksha_bandhan("Raksha Bandhan")
+        # Raksha Bandhan.
+        self._add_raksha_bandhan("Raksha Bandhan")
 
+        # Janmashtami.
+        self._add_janmashtami("Janmashtami")
         # Janmashtami.
         self._add_janmashtami("Janmashtami")
 
         # Dussehra.
         self._add_dussehra("Dussehra")
+        # Dussehra.
+        self._add_dussehra("Dussehra")
 
+        # Mahavir Jayanti.
+        self._add_mahavir_jayanti("Mahavir Jayanti")
         # Mahavir Jayanti.
         self._add_mahavir_jayanti("Mahavir Jayanti")
 
         # Maha Shivaratri.
         self._add_maha_shivaratri("Maha Shivaratri")
+        # Maha Shivaratri.
+        self._add_maha_shivaratri("Maha Shivaratri")
 
+        # Navratri / Sharad Navratri.
+        self._add_sharad_navratri("Navratri / Sharad Navratri")
         # Navratri / Sharad Navratri.
         self._add_sharad_navratri("Navratri / Sharad Navratri")
 
         # Ram Navami.
         self._add_ram_navami("Ram Navami")
+        # Ram Navami.
+        self._add_ram_navami("Ram Navami")
 
+        # Maha Navami.
+        self._add_maha_navami("Maha Navami")
         # Maha Navami.
         self._add_maha_navami("Maha Navami")
 
@@ -204,6 +224,8 @@ class India(
         # Makar Sankranti.
         self._add_makar_sankranti("Makar Sankranti")
 
+        # Guru Nanak Jayanti.
+        self._add_guru_nanak_jayanti("Guru Nanak Jayanti")
         # Guru Nanak Jayanti.
         self._add_guru_nanak_jayanti("Guru Nanak Jayanti")
 
