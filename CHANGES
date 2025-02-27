@@ -1,3 +1,24 @@
+Version 0.67
+============
+
+Released February 17, 2025
+
+- Add Saint Lucia holidays (#2266 by @Prateekshit73)
+- Add Tuvalu holidays (#2295 by @Prateekshit73, @arkid15r)
+- Update Greenland holidays l10n (#2288 by @KJhellico)
+- Update Hong Kong holidays: add l10n support (#2268 by @PPsyrius)
+- Update Hong Kong holidays: fix `th` l10n typo (#2293 by @PPsyrius)
+- Update Panama holidays, add l10n support (#2275 by @KJhellico)
+- Update README: add DOI (#2286 by @arkid15r)
+- Update United Kingdom & Isle of Man holidays: add l10n support (#2258 by @PPsyrius, @arkid15r, @KJhellico)
+- Update internal scripts (#2284 by @KJhellico)
+- Update subdivision names for Presidents' Day in the United States (#2299 by @parkerbxyz, @arkid15r, @KJhellico)
+- Add Python syntax check with ruff-pyupgrade rules (#2294 by @KJhellico)
+- Add make script for Windows (#2277 by @KJhellico)
+- Check .mo rather than .po files in TestListLocalizedEntities (#2273 by @cjwatson, @arkid15r)
+- Implement HolidayBase::get_closest_holiday functionality (#2211 by @Rosi2143, @arkid15r)
+- Unify certain holidays names translation (#2285 by @KJhellico)
+
 Version 0.66
 ============
 
