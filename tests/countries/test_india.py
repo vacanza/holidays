@@ -168,12 +168,7 @@ class TestIndia(CommonCountryTests, TestCase):
             with self.assertWarns(Warning):
                 India(years=year)
 
-        dt = (
-            "2001-11-14",
-            "2010-11-05",
-            "2025-10-20",
-            "2035-10-30"
-            )
+        dt = ("2001-11-14", "2010-11-05", "2025-10-20", "2035-10-30")
 
         self.assertHolidayName("Diwali", dt)
 

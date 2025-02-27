@@ -36,13 +36,13 @@ ONAM = "ONAM"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 CHHATH_PUJA = "CHHATH_PUJA"
 GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
-GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBINDH_SINGH_JAYANTI"
+GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
 VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
     # https://www.timeanddate.com/holidays/india/diwali
-    diwali_dates = {
+    DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 4),
         2003: (OCT, 25),
@@ -283,7 +283,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/govardhan-puja
-    govardhan_puja_dates = {
+    GOVARDHAN_PUJA_DATES = {
         2001: (NOV, 15),
         2002: (NOV, 5),
         2003: (OCT, 26),
@@ -322,7 +322,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/holi
-    holi_dates = {
+    HOLI_DATES = {
         2001: (MAR, 10),
         2002: (MAR, 29),
         2003: (MAR, 18),
@@ -361,7 +361,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/raksha-bandhan
-    raksha_bandhan_dates = {
+    RAKSHA_BANDHAN_DATES = {
         2001: (AUG, 4),
         2002: (AUG, 22),
         2003: (AUG, 12),
@@ -400,7 +400,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/janmashtami
-    janmashtami_dates = {
+    JANMASHTAMI_DATES = {
         2001: (AUG, 12),
         2002: (AUG, 31),
         2003: (AUG, 20),
@@ -439,7 +439,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/dussehra
-    dussehra_dates = {
+    DUSSEHRA_DATES = {
         2001: (OCT, 26),
         2002: (OCT, 15),
         2003: (OCT, 5),
@@ -478,7 +478,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/guru-nanak-jayanti
-    guru_nanak_jayanti_dates = {
+    GURU_NANAK_JAYANTI_DATES = {
         2001: (NOV, 30),
         2002: (NOV, 19),
         2003: (NOV, 8),
@@ -516,7 +516,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/mahavir-jayanti
-    mahavir_jayanti_dates = {
+    MAHAVIR_JAYANTI_DATES = {
         2001: (APR, 6),
         2002: (APR, 25),
         2003: (APR, 15),
@@ -555,7 +555,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
-    maha_shivaratri_dates = {
+    MAHA_SHIVARATRI_DATES = {
         2001: (FEB, 21),
         2002: (MAR, 12),
         2003: (MAR, 1),
@@ -594,7 +594,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/rama-navami
-    ram_navami_dates = {
+    RAM_NAVAMI_DATES = {
         2001: (APR, 2),
         2002: (APR, 21),
         2003: (APR, 11),
@@ -633,7 +633,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/navratri
-    sharad_navratri_dates = {
+    SHARAD_NAVRATRI_DATES = {
         2001: (OCT, 17),
         2002: (OCT, 7),
         2003: (SEP, 26),
@@ -672,7 +672,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/ganesh-chaturthi
-    ganesh_chaturthi_dates = {
+    GANESH_CHATURTHI_DATES = {
         2001: (AUG, 22),
         2002: (SEP, 10),
         2003: (AUG, 31),
@@ -711,7 +711,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/maha-navami
-    maha_navami_dates = {
+    MAHA_NAVAMI_DATES = {
         2001: (OCT, 25),
         2002: (OCT, 14),
         2003: (OCT, 3),
@@ -749,7 +749,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/gudi-padwa
-    gudi_padwa_dates = {
+    GUDI_PADWA_DATES = {
         2001: (MAR, 26),
         2002: (APR, 13),
         2003: (APR, 2),
@@ -788,7 +788,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/onam
-    onam_dates = {
+    ONAM_DATES = {
         2001: (AUG, 31),
         2002: (AUG, 21),
         2003: (SEP, 8),
@@ -827,7 +827,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/makar-sankranti
-    makar_sankranti_dates = {
+    MAKAR_SANKRANTI_DATES = {
         2001: (JAN, 14),
         2002: (JAN, 14),
         2003: (JAN, 14),
@@ -866,7 +866,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/chhat-puja
-    chhath_puja_dates = {
+    CHHATH_PUJA_DATES = {
         2001: (NOV, 21),
         2002: (NOV, 10),
         2003: (OCT, 30),
@@ -905,7 +905,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
-    guru_gobind_singh_jayanti_dates = {
+    GURU_GOBIND_SINGH_JAYANTI_DATES = {
         2001: (JAN, 2),
         2002: (JAN, 21),
         2003: (DEC, 29),
@@ -941,7 +941,7 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/india/vaisakhi
-    vaisakhi_dates = {
+    VAISAKHI_DATES = {
         2001: (APR, 13),
         2002: (APR, 14),
         2003: (APR, 14),
@@ -989,19 +989,21 @@ class _HinduLunisolar:
         print(f"\n📍 Inside _get_holiday for {holiday}, year {year}")
 
         estimated_dates = getattr(self, f"{holiday.lower()}_dates", {})
-        exact_dates = getattr(self, f"{holiday.lower()}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
+        exact_dates = getattr(
+            self, f"{holiday.lower()}_dates_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {}
+        )
 
         print(f"🔍 exact_dates: {exact_dates}")
         print(f"🔍 estimated_dates: {estimated_dates}")
         print(f"🔍 Looking for year: {year}")
 
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
-        
+
         if dt:
             print(f"✅ Found exact date for {holiday} in {year}: {dt[0]}-{dt[1]}")
         else:
             print(f"❌ No date found for {holiday} in year {year}.")
-        
+
         return date(year, *dt) if dt else None, year not in exact_dates
 
     def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:

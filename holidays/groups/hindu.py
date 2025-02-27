@@ -101,33 +101,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Diwali Festival.
         """
-        print(f"\n🔄 Checking Diwali for year {self._year}")
-
         diwali_dates = getattr(self._hindu_calendar, "DIWALI_DATES_CUSTOM_CALENDAR", None)
 
         if diwali_dates and self._year in diwali_dates:
             month, day = diwali_dates[self._year]
             holiday_date = date(self._year, month, day)
-            print(f"✅ Adding {name} on {holiday_date} from custom calendar")
             return self._add_holiday(name, holiday_date)
 
-        # Fallback to default Hindu calendar
-        holiday_date, is_estimated = self._hindu_calendar.diwali_date(self._year)
-        holiday_name = name + " (estimated)" if is_estimated else name
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.diwali_date(self._year)
+        )
 
-        print(f"📌 Checking if self has holidays attribute: {hasattr(self, 'holidays')}")
-        print(f"📌 Type of self: {type(self)}")
-        print(f"📌 Available attributes: {dir(self)}")
-
-        print(f"✅ Adding {holiday_name} on {holiday_date}")
-
-        if holiday_date:
-            return self._add_holiday(name, holiday_date)
-
-        print(f"❌ No valid Diwali date for {self._year}, skipping addition.")
-
-        return None
-        
     def _add_thaipusam(self, name) -> Optional[date]:
         """
         Add Thaipusam.
