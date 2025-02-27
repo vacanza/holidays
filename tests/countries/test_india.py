@@ -294,6 +294,20 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_ranged_subdiv_holidays(self):
         warnings.simplefilter("always")
 
+        # Test out of range dates for Assam
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="AS", years=year)
+        dt = (
+            "2001-01-14",
+            "2010-01-14",
+            "2025-01-14",
+            "2035-01-15",
+        )
+        name = "Bihu"
+        self.assertHolidayName(name, India(subdiv="AS"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
+
         # Test out of range dates for Bihar
         for year in (2000, 2036):
             with self.assertWarns(Warning):
@@ -304,8 +318,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-10-28",
             "2035-11-06",
         )
-        self.assertHolidayName("Chhath Puja", India(subdiv="BR"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+        name = "Chhath Puja"
+        self.assertHolidayName(name, India(subdiv="BR"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
         # Test out of range dates for Delhi
         for year in (2000, 2036):
@@ -317,8 +332,23 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-10-28",
             "2035-11-06",
         )
-        self.assertHolidayName("Chhath Puja", India(subdiv="DL"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+        name = "Chhath Puja"
+        self.assertHolidayName(name, India(subdiv="DL"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
+
+        # Test out of range dates for Gujarat
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="GJ", years=year)
+        dt = (
+            "2001-01-14",
+            "2010-01-14",
+            "2025-01-14",
+            "2035-01-15",
+        )
+        name = "Uttarayan"
+        self.assertHolidayName(name, India(subdiv="AS"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
         # Test out of range dates for Jharkhand
         for year in (2000, 2036):
@@ -330,8 +360,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-10-28",
             "2035-11-06",
         )
-        self.assertHolidayName("Chhath Puja", India(subdiv="JH"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+        name = "Chhath Puja"
+        self.assertHolidayName(name, India(subdiv="JH"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
         # Test out of range dates for Kerala
         for year in (2000, 2036):
@@ -343,8 +374,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-09-05",
             "2035-09-14",
         )
-        self.assertHolidayName("Onam", India(subdiv="KL"), dt)
-        self.assertNoHolidayName("Onam", India(subdiv="PB"), dt)
+        name = "Onam"
+        self.assertHolidayName(name, India(subdiv="KL"), dt)
+        self.assertNoHolidayName(name, India(subdiv="PB"), dt)
 
         # Test out of range dates for Maharashtra
         for year in (2000, 2036):
@@ -357,8 +389,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-03-30",
             "2035-04-09",
         )
-        self.assertHolidayName("Gudi Padwa", India(subdiv="MH"), dt)
-        self.assertNoHolidayName("Gudi Padwa", India(subdiv="DL"), dt)
+        name = "Gudi Padwa"
+        self.assertHolidayName(name, India(subdiv="MH"), dt)
+        self.assertNoHolidayName(name, India(subdiv="DL"), dt)
 
         # Test out of range dates for Punjab
         for year in (2000, 2036):
@@ -371,8 +404,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-01-06",
             "2035-01-16",
         )
-        self.assertHolidayName("Guru Gobind Singh Jayanti", India(subdiv="PB"), dt)
-        self.assertNoHolidayName("Guru Gobind Singh Jayanti", India(subdiv="DL"), dt)
+        name = "Guru Gobind Singh Jayanti"
+        self.assertHolidayName(name, India(subdiv="PB"), dt)
+        self.assertNoHolidayName(name, India(subdiv="DL"), dt)
 
         dt = (
             "2001-04-13",
@@ -380,8 +414,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-04-13",
             "2035-04-14",
         )
-        self.assertHolidayName("Vaisakhi", India(subdiv="PB"), dt)
-        self.assertNoHolidayName("Vaisakhi", India(subdiv="DL"), dt)
+        name = "Vaisakhi"
+        self.assertHolidayName(name, India(subdiv="PB"), dt)
+        self.assertNoHolidayName(name, India(subdiv="DL"), dt)
 
         # Test out of range dates for Uttar Pradesh
         for year in (2000, 2036):
@@ -393,8 +428,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-10-28",
             "2035-11-06",
         )
-        self.assertHolidayName("Chhath Puja", India(subdiv="UP"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+        name = "Chhath Puja"
+        self.assertHolidayName(name, India(subdiv="UP"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
         # Test out of range dates for Tamil Nadu
         for year in (2000, 2036):
@@ -406,8 +442,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-01-14",
             "2035-01-15",
         )
-        self.assertHolidayName("Pongal", India(subdiv="TN"), dt)
-        self.assertNoHolidayName("Chhath Puja", India(subdiv="MH"), dt)
+        name = "Pongal"
+        self.assertHolidayName(name, India(subdiv="TN"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
