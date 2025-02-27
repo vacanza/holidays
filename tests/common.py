@@ -122,8 +122,7 @@ class TestCase:
     def assertAliases(self, cls, *aliases):  # noqa: N802
         """Assert aliases match."""
         self.assertTrue(
-            issubclass(cls, HolidayBase),
-            "The entity object must be a subclass of `HolidayBase`",
+            issubclass(cls, HolidayBase), "The entity object must be a subclass of `HolidayBase`"
         )
 
         type_error_message = "The entity alias object must be a subclass of the entity class."
@@ -389,17 +388,11 @@ class SundayHolidays(TestCase):
 
     def assertSundays(self, cls):  # noqa: N802
         holidays = cls(years=1989, include_sundays=True)
-        self.assertHoliday(
-            holidays,
-            "1989-12-31",
-        )
+        self.assertHoliday(holidays, "1989-12-31")
         self.assertEqual(53, len([s for s in holidays if s.weekday() == SUN]))
 
         holidays = cls(years=2032, include_sundays=True)
-        self.assertHoliday(
-            holidays,
-            "2032-01-04",
-        )
+        self.assertHoliday(holidays, "2032-01-04")
         self.assertEqual(52, len([s for s in holidays if s.weekday() == SUN]))
 
         self.assertNoHolidays(cls(include_sundays=True))
@@ -426,3 +419,25 @@ class SundayHolidays(TestCase):
         ):
             self.assertNotEqual(parse(non_sunday).weekday(), SUN)
             self.assertNoHoliday(holidays, non_sunday)
+
+
+class WorkingDayTests(TestCase):
+    """Common class for testing entity holidays substituted from non-working days."""
+
+    # Workday.
+    def _assertWorkingDay(self, instance_name, *args):  # noqa: N802
+        """Helper: assert each date is a working day."""
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
+
+        for dt in dates:
+            self.assertTrue(holidays._is_weekend(parse(dt)))
+            self.assertTrue(holidays.is_working_day(dt))
+
+    def assertWorkingDay(self, *args):  # noqa: N802
+        """Assert each date is a working day."""
+        self._assertWorkingDay("holidays", *args)
+
+    def assertNonObservedWorkingDay(self, *args):  # noqa: N802
+        """Assert each date is a non-observed working day."""
+        self._assertWorkingDay("holidays_non_observed", *args)

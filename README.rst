@@ -59,15 +59,21 @@ flexible as possible.
     :target: https://github.com/vacanza/holidays/commits/dev
     :alt: GitHub last commit
 
-+--------+------------------------------------------------+
-| PyPI   | |downloads| |version| |release date|           |
-+--------+------------------------------------------------+
-| CI/CD  | |status| |documentation|                       |
-+--------+------------------------------------------------+
-| Code   | |license| |python versions| |style| |coverage| |
-+--------+------------------------------------------------+
-| GitHub | |stars| |forks| |contributors| |last commit|   |
-+--------+------------------------------------------------+
+.. |doi| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat
+    :target: https://doi.org/10.5281/zenodo.14884702
+    :alt: Open World Holidays Franework DOI
+
++----------+------------------------------------------------+
+| PyPI     | |downloads| |version| |release date|           |
++----------+------------------------------------------------+
+| CI/CD    | |status| |documentation|                       |
++----------+------------------------------------------------+
+| Code     | |license| |python versions| |style| |coverage| |
++----------+------------------------------------------------+
+| GitHub   | |stars| |forks| |contributors| |last commit|   |
++----------+------------------------------------------------+
+| Citation | |doi|                                          |
++----------+------------------------------------------------+
 
 Install
 -------
@@ -146,7 +152,7 @@ Available Countries
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 .. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
-We currently support 155 country codes. The standard way to refer to a country
+We currently support 159 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some countries have common or foreign
 names or abbreviations as aliases for their subdivisions. These are defined in
@@ -180,6 +186,11 @@ All other default values are highlighted with bold:
      - Subdivisions
      - Supported Languages
      - Supported Categories
+   * - Afghanistan
+     - AF
+     -
+     - en_US, **fa_AF**, ps_AF
+     -
    * - Albania
      - AL
      -
@@ -258,8 +269,8 @@ All other default values are highlighted with bold:
    * - Belarus
      - BY
      -
-     - **be**, en_US
-     -
+     - **be**, en_US, ru, th
+     - WORKDAY
    * - Belgium
      - BE
      -
@@ -412,8 +423,8 @@ All other default values are highlighted with bold:
      -
    * - El Salvador
      - SV
-     - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
-     -
+     - Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)
+     - en_US, **es**, uk
      -
    * - Estonia
      - EE
@@ -437,7 +448,7 @@ All other default values are highlighted with bold:
      - UNOFFICIAL
    * - France
      - FR
-     - DOM/TOM: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)
      - en_US, **fr**, uk
      -
    * - Gabon
@@ -468,7 +479,7 @@ All other default values are highlighted with bold:
    * - Greenland
      - GL
      -
-     - da, en_US, **kl**
+     - da, en_US, fi, is, **kl**, no, sv, uk
      - OPTIONAL
    * - Guam
      - GU
@@ -498,7 +509,7 @@ All other default values are highlighted with bold:
    * - Hong Kong
      - HK
      -
-     -
+     - en_HK, en_US, th, zh_CN, **zh_HK**
      - OPTIONAL
    * - Hungary
      - HU
@@ -509,7 +520,7 @@ All other default values are highlighted with bold:
      - IS
      -
      - en_US, **is**, uk
-     -
+     - HALF_DAY
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
@@ -523,7 +534,7 @@ All other default values are highlighted with bold:
    * - Iran
      - IR
      -
-     - en_US, **fa**
+     - en_US, **fa_IR**
      -
    * - Ireland
      - IE
@@ -533,12 +544,12 @@ All other default values are highlighted with bold:
    * - Isle of Man
      - IM
      -
-     -
+     - **en_GB**, en_US, th
      -
    * - Israel
      - IL
      -
-     - en_US, **he**, uk
+     - en_US, **he**, th, uk
      - OPTIONAL, SCHOOL
    * - Italy
      - IT
@@ -668,8 +679,8 @@ All other default values are highlighted with bold:
    * - Montenegro
      - ME
      -
-     -
-     -
+     - **cnr**, en_US, uk
+     - CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, WORKDAY
    * - Morocco
      - MA
      -
@@ -688,7 +699,7 @@ All other default values are highlighted with bold:
    * - Netherlands
      - NL
      -
-     - en_US, **nl**, uk
+     - en_US, fy, **nl**, uk
      - OPTIONAL
    * - New Zealand
      - NZ
@@ -718,7 +729,7 @@ All other default values are highlighted with bold:
    * - Norway
      - NO
      -
-     - en_US, **no**, uk
+     - en_US, **no**, th, uk
      -
    * - Pakistan
      - PK
@@ -733,8 +744,8 @@ All other default values are highlighted with bold:
    * - Panama
      - PA
      -
-     -
-     -
+     - en_US, **es**, uk
+     - BANK
    * - Papua New Guinea
      - PG
      -
@@ -778,13 +789,18 @@ All other default values are highlighted with bold:
    * - Russia
      - RU
      -
-     - en_US, **ru**
+     - en_US, **ru**, th
      -
    * - Saint Kitts and Nevis
      - KN
      -
      -
      - HALF_DAY, WORKDAY
+   * - Saint Lucia
+     - LC
+     -
+     - **en_LC**, en_US
+     -
    * - Samoa
      - WS
      -
@@ -824,7 +840,7 @@ All other default values are highlighted with bold:
      - SI
      -
      - en_US, **sl**, uk
-     -
+     - WORKDAY
    * - South Africa
      - ZA
      -
@@ -840,6 +856,11 @@ All other default values are highlighted with bold:
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
      - en_US, **es**, uk
      -
+   * - Sri Lanka
+     - LK
+     -
+     - en_US, **si_LK**, ta_LK
+     - BANK, GOVERNMENT, WORKDAY
    * - Sweden
      - SE
      -
@@ -885,20 +906,25 @@ All other default values are highlighted with bold:
      -
      - en_US, **tr**, uk
      - HALF_DAY
+   * - Tuvalu
+     - TV
+     - Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)
+     - en_GB, en_US, **tvl**
+     -
    * - Ukraine
      - UA
      -
-     - ar, en_US, **uk**
+     - ar, en_US, th, **uk**
      - WORKDAY
    * - United Arab Emirates
      - AE
      -
-     - **ar**, en_US
-     -
+     - **ar**, en_US, th
+     - GOVERNMENT, OPTIONAL
    * - United Kingdom
      - GB
      - Subdivisions: ENG (England), NIR (Northern Ireland), SCT (Scotland), WLS (Wales)
-     -
+     - **en_GB**, en_US, th
      -
    * - United States Minor Outlying Islands
      - UM
@@ -933,7 +959,7 @@ All other default values are highlighted with bold:
    * - Vatican City
      - VA
      -
-     -
+     - en_US, **it**, th
      -
    * - Venezuela
      - VE
@@ -980,8 +1006,12 @@ following financial markets are available:
      - Code
      - Info
      - Supported Languages
+   * - Brasil, Bolsa, Balcão
+     - BVMF
+     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
+     - en_US, **pt_BR**, uk
    * - European Central Bank
-     - ECB
+     - XECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
      -
    * - ICE Futures Europe
@@ -992,10 +1022,6 @@ following financial markets are available:
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
      -
-   * - Brasil, Bolsa, Balcão
-     - BVMF
-     - Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)
-     - en_US, **pt_BR**, uk
 
 
 Contributions

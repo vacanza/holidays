@@ -60,6 +60,7 @@ class Indonesia(
     observed_estimated_label = tr("Pegangti %s (perkiraan)")
     supported_languages = ("en_US", "id", "th", "uk")
     supported_categories = (GOVERNMENT, PUBLIC)
+    start_year = 1946
 
     def __init__(self, *args, **kwargs):
         BuddhistCalendarHolidays.__init__(self, cls=IndonesiaBuddhistHolidays, show_estimated=True)
@@ -71,9 +72,6 @@ class Indonesia(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1945:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Tahun Baru Masehi"))
 

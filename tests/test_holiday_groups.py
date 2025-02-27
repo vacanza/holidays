@@ -13,16 +13,18 @@
 from unittest import TestCase
 
 from holidays.calendars.thai import KHMER_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays, ThaiCalendarHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    PersianCalendarHolidays,
+    ThaiCalendarHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
 class TestChristianHolidays(TestCase):
     def test_check_calendar(self):
-        self.assertRaises(
-            ValueError,
-            lambda: ChristianHolidays("INVALID_CALENDAR"),
-        )
+        self.assertRaises(ValueError, lambda: ChristianHolidays("INVALID_CALENDAR"))
 
     def test_add_christmas_day_three(self):
         class TestHolidays(HolidayBase, ChristianHolidays):
@@ -55,15 +57,39 @@ class TestInternationalHolidays(TestCase):
         self.assertIn("2022-11-20", test_holidays)
         self.assertEqual(1, len(test_holidays))
         self.assertRaises(
-            ValueError,
-            lambda: test_holidays._add_childrens_day("Invalid", "INVALID_TYPE"),
+            ValueError, lambda: test_holidays._add_childrens_day("Invalid", "INVALID_TYPE")
         )
+
+
+class TestPersianCalendarHolidays(TestCase):
+    def test_add_persian_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, PersianCalendarHolidays):
+            end_year = 2102
+
+            def __init__(self, *args, **kwargs):
+                PersianCalendarHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(2102)
+        test_holidays._add_nowruz_day("Persian New Year")
+        test_holidays._add_islamic_republic_day("Islamic Republic Day")
+        test_holidays._add_natures_day("Nature's Day")
+        test_holidays._add_death_of_khomeini_day("Death of Khomeini")
+        test_holidays._add_khordad_uprising_day("Khordad National Uprising")
+        test_holidays._add_islamic_revolution_day("Islamic Revolution Day")
+        test_holidays._add_oil_nationalization_day("Iranian Oil Industry Nationalization Day")
+        self.assertEqual(0, len(test_holidays))
 
 
 class TestThaiCalendarHolidays(TestCase):
     def test_add_thai_calendar_holiday(self):
         # Check for out-of-range dates.
         class TestHolidays(HolidayBase, ThaiCalendarHolidays):
+            end_year = 2158
+
             def __init__(self, *args, **kwargs):
                 ThaiCalendarHolidays.__init__(self)
                 super().__init__(*args, **kwargs)

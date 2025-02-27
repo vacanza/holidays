@@ -58,6 +58,7 @@ class Philippines(
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     supported_languages = ("en_PH", "en_US", "fil", "th")
+    start_year = 1988
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self, cls=PhilippinesChineseHolidays)
@@ -68,9 +69,6 @@ class Philippines(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1987:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
@@ -269,8 +267,8 @@ class PhilippinesStaticHolidays:
             (NOV, 2, additional_special),
             (DEC, 24, additional_special),
         ),
-        2010: ((DEC, 24, additional_special),),
-        2012: ((NOV, 2, additional_special),),
+        2010: (DEC, 24, additional_special),
+        2012: (NOV, 2, additional_special),
         2013: (
             (NOV, 2, additional_special),
             (DEC, 24, additional_special),

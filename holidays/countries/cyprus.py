@@ -31,6 +31,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "el"
     supported_categories = (BANK, OPTIONAL, PUBLIC)
     supported_languages = ("el", "en_CY", "en_US", "uk")
+    start_year = 1961
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
@@ -38,9 +39,6 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1960:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Πρωτοχρονιά"))
 
@@ -88,16 +86,10 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(tr("Επομένη Χριστουγέννων"))
 
     def _populate_bank_holidays(self):
-        if self._year <= 1960:
-            return None
-
         # Easter Tuesday.
         self._add_easter_tuesday(tr("Τρίτη της Διακαινησίμου"))
 
     def _populate_optional_holidays(self):
-        if self._year <= 1960:
-            return None
-
         # Holy Saturday.
         self._add_holy_saturday(tr("Μεγάλο Σάββατο"))
 

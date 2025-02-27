@@ -11,19 +11,20 @@ repos:
       - id: mixed-line-ending
         args:
           - --fix=lf
+        exclude: make.cmd
       - id: trailing-whitespace
         exclude_types:
           - rst
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.19.1
     hooks:
     -   id: pyupgrade
         args:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.0
+    rev: v0.9.7
     hooks:
       - id: ruff
       - id: ruff-format
@@ -39,7 +40,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/bandit
-    rev: 1.7.10
+    rev: 1.8.3
     hooks:
       - id: bandit
         additional_dependencies:
@@ -48,13 +49,13 @@ repos:
           - --configfile=pyproject.toml
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
+    rev: 6.0.1
     hooks:
       - id: isort
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.13.0
+    rev: v1.15.0
     hooks:
       - id: mypy
         additional_dependencies:
@@ -80,7 +81,7 @@ repos:
       - id: rst-backticks
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.4.1'
+    rev: '1.5.0'
     hooks:
       - id: tox-ini-fmt
 

@@ -43,6 +43,8 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
     default_language = "ja"
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "ja", "th")
+    start_year = 1949
+    end_year = 2099
 
     def __init__(self, *args, **kwargs) -> None:
         InternationalHolidays.__init__(self)
@@ -80,9 +82,6 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
                     break
 
     def _populate_public_holidays(self):
-        if self._year < 1949 or self._year > 2099:
-            raise NotImplementedError
-
         dts_observed = set()
 
         # New Year's Day.
@@ -199,9 +198,6 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
             self._populate_observed(dts_observed)
 
     def _populate_bank_holidays(self):
-        if self._year < 1949 or self._year > 2099:
-            raise NotImplementedError
-
         # Bank Holiday.
         name = tr("銀行休業日")
         self._add_new_years_day(name)

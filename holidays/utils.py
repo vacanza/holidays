@@ -252,11 +252,7 @@ def financial_holidays(
 
     try:
         return getattr(holidays, market)(
-            years=years,
-            subdiv=subdiv,
-            expand=expand,
-            observed=observed,
-            language=language,
+            years=years, subdiv=subdiv, expand=expand, observed=observed, language=language
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")

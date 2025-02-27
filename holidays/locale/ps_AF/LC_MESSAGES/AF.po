@@ -1,0 +1,92 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Afghanistan holidays ps_AF localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.65\n"
+"POT-Creation-Date: 2024-12-25 20:00+0530\n"
+"PO-Revision-Date: 2025-01-10 18:59+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ps_AF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Liberation Day.
+msgid "روز آزادی"
+msgstr "د ازادۍ ورځ"
+
+#. Nowruz.
+msgid "نوروز"
+msgstr "نوروز"
+
+#. International Workers' Day.
+msgid "روز جهانی کارگر"
+msgstr "د کارګرو نړیواله ورځ"
+
+#. Martyrs' Day.
+msgid "روز شهیدان"
+msgstr "د شهیدانو ورځ"
+
+#. Day of Arafah.
+msgid "روز عرفه"
+msgstr "د عرفه ورځ"
+
+#. Ashura.
+msgid "عاشورا"
+msgstr "عاشورا"
+
+#. Prophet's Birthday.
+msgid "میلاد پیامبر"
+msgstr "د پیغمبر الله صلی الله علیه وسلم د میلاد ورځ"
+
+#. First Day of Ramadan.
+msgid "اول رمضان"
+msgstr "د روژې لومړۍ نیټه"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (برآورد شده)"
+msgstr "%s (اټکل)"
+
+#. Soviet Victory Day.
+msgid "روز پیروزی شوروی"
+msgstr "د شوروی د بریالیتوب ورځ"
+
+#. Mojahedin's Victory Day.
+msgid "روز پیروزی مجاهدین"
+msgstr "مجاهدو د بریا ورځ"
+
+#. Afghanistan Independence Day.
+msgid "روز استقلال افغانستان"
+msgstr "د افغانستان د استقلال ورځ"
+
+#. Eid al-Fitr.
+msgid "عید فطر"
+msgstr "عید فطر"
+
+#. Eid al-Adha.
+msgid "عید قربانی"
+msgstr "عید قربانی"
+
+#. Islamic Emirate Victory Day.
+msgid "روز پیروزی امارت اسلامی"
+msgstr "د اسلامي امارت د بریا ورځ"
+
+#. American Withdrawal Day.
+msgid "روز خروج آمریکایی ها"
+msgstr "د امریکا د وتلو ورځ"

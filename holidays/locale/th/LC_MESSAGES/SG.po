@@ -85,7 +85,7 @@ msgstr "วันดีปาวลี"
 msgid "Christmas Day"
 msgstr "วันคริสต์มาส"
 
-#. Boxing day.
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "วันเปิดกล่องของขวัญ"
 

@@ -59,9 +59,9 @@ msgstr "Whit Monday"
 msgid "Stephanstag"
 msgstr "Saint Stephen's Day"
 
-#. Berchtold's Day.
+#. Saint Berchtold's Day.
 msgid "Berchtoldstag"
-msgstr "Berchtold's Day"
+msgstr "Saint Berchtold's Day"
 
 #. Corpus Christi.
 msgid "Fronleichnam"

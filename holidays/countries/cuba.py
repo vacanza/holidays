@@ -36,6 +36,8 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (observado)")
     supported_languages = ("en_US", "es", "uk")
+    # This calendar only works from 1959 onwards.
+    start_year = 1959
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -44,10 +46,6 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # This calendar only works from 1959 onwards.
-        if self._year <= 1958:
-            return None
-
         # Liberation Day.
         jan_1 = self._add_holiday_jan_1(tr("Triunfo de la Revolución"))
         if self._year <= 2013:
@@ -66,7 +64,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
-        # International Worker's Day.
+        # International Workers' Day.
         self._add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.

@@ -59,7 +59,7 @@ msgstr "Річниця битви під Сан-Хасінто"
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
-#. Virgin's Day.
+#. Immaculate Conception.
 msgid "Concepción de María"
 msgstr "Непорочне зачаття Діви Марії"
 

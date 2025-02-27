@@ -10,64 +10,140 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, PUBLIC, WORKDAY
+from holidays.groups import (
+    ChristianHolidays,
+    HebrewCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class Montenegro(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Montenegro(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HebrewCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
-      - https://me.usembassy.gov/holiday-calendar/
-      - https://publicholidays.eu/montenegro/2023-dates/
-      - https://www.officeholidays.com/countries/montenegro/2023
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
+        - `Zakon o državnim i drugim praznicima <https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0>`_
+        - `Zakon o svetkovanju vjerskih praznika <https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0>`_
     """
 
     country = "ME"
-    observed_label = "%s (observed)"
+    default_language = "cnr"
+    # %s (estimated).
+    estimated_label = tr("%s (procijenjeno)")
+    # %s (observed).
+    observed_label = tr("%s (neradni dan)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (neradni dan, procijenjeno)")
+    supported_languages = ("cnr", "en_US", "uk")
+    supported_categories = (CATHOLIC, ISLAMIC, HEBREW, ORTHODOX, PUBLIC, WORKDAY)
+    start_year = 2007
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
+        HebrewCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self, cls=MontenegroIslamicHolidays)
+        StaticHolidays.__init__(self, cls=MontenegroStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        name = "New Year's Day"
+        name = tr("Nova godina")
         self._add_observed(self._add_new_years_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_new_years_day_two(name))
 
-        # Orthodox Christmas Eve.
-        self._add_christmas_eve("Orthodox Christmas Eve")
-
-        # Orthodox Christmas.
-        self._add_christmas_day("Orthodox Christmas")
-
-        # Labour Day.
-        name = "Labour Day"
+        # Labor Day.
+        name = tr("Praznik rada")
         self._add_observed(self._add_labor_day(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_labor_day_two(name))
 
-        # Good Friday.
-        self._add_good_friday("Orthodox Good Friday")
-
-        # Easter Sunday.
-        self._add_easter_sunday("Orthodox Easter Sunday")
-
-        # Easter Monday.
-        self._add_easter_monday("Orthodox Easter Monday")
-
         # Independence Day.
-        name = "Independence Day"
+        name = tr("Dan nezavisnosti")
         self._add_observed(self._add_holiday_may_21(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_holiday_may_22(name))
 
         # Statehood Day.
-        name = "Statehood Day"
+        name = tr("Dan državnosti")
         self._add_observed(self._add_holiday_jul_13(name), rule=SUN_TO_NEXT_TUE)
         self._add_observed(self._add_holiday_jul_14(name))
+
+        if self._year >= 2022:
+            # Njegos Day.
+            self._add_observed(self._add_holiday_nov_13(tr("Njegošev dan")))
+
+    def _populate_catholic_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Veliki petak"), GREGORIAN_CALENDAR)
+
+        # Easter.
+        self._add_easter_monday(tr("Uskrs"), GREGORIAN_CALENDAR)
+
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Svi Sveti"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Badnji dan"), GREGORIAN_CALENDAR)
+
+        # Christmas.
+        name = tr("Božić")
+        self._add_christmas_day(name, GREGORIAN_CALENDAR)
+        self._add_christmas_day_two(name, GREGORIAN_CALENDAR)
+
+    def _populate_hebrew_holidays(self):
+        # Pesach.
+        self._add_passover(tr("Pasha"), range(2))
+
+        # Yom Kippur.
+        self._add_yom_kippur(tr("Jom Kipur"), range(2))
+
+    def _populate_islamic_holidays(self):
+        # Eid al-Fitr.
+        name = tr("Ramazanski bajram")
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+        self._add_eid_al_fitr_day_three(name)
+
+        # Eid al-Adha.
+        name = tr("Kurbanski bajram")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
+        self._add_eid_al_adha_day_three(name)
+
+    def _populate_orthodox_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Veliki petak"))
+
+        # Easter.
+        self._add_easter_monday(tr("Uskrs"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Badnji dan"))
+
+        # Christmas.
+        name = tr("Božić")
+        self._add_christmas_day(name)
+        self._add_christmas_day_two(name)
+
+    def _populate_workday_holidays(self):
+        if self._year >= 2022:
+            # Ecological State Day.
+            self._add_holiday_sep_20(tr("Dan Ekološke države"))
 
 
 class ME(Montenegro):
@@ -76,3 +152,43 @@ class ME(Montenegro):
 
 class MNE(Montenegro):
     pass
+
+
+class MontenegroIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES = {
+        2012: (OCT, 26),
+        2013: (OCT, 15),
+        2014: (OCT, 5),
+        2015: (SEP, 24),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+    }
+
+    EID_AL_FITR_DATES = {
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 4),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
+        2024: (APR, 10),
+    }
+
+
+class MontenegroStaticHolidays:
+    special_public_holidays = {
+        2024: (NOV, 14, tr("Njegošev dan")),
+    }

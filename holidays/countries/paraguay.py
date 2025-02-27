@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
@@ -22,8 +21,12 @@ from holidays.holiday_base import HolidayBase
 class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
+        - `Ley 8/1990 <https://www.bacn.gov.py/leyes-paraguayas/2358/ley-n-8--por-la-cual-se-determinan-los-feriados-de-la-republica>`_
+        - `Ley 715/1995 <https://www.bacn.gov.py/leyes-paraguayas/792/ley-n-715--amplia-la-ley-no-0890->`_
+        - `Ley 1.601/2000 <https://www.bacn.gov.py/leyes-paraguayas/1677/ley-n-1601--modifica-el-articulo-1-de-la-ley-no-71595-que-amplia-la-ley-n-0890-por-la-cual-se-determinan-los-feriados-de-la-republica>`_
+        - `Ley 1.723/2001 <https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes>`_
+        - `Ley 4.531/2011 <https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional>`_
         - https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Paraguay
-        - https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
         - http://www.calendarioparaguay.com/
     """
 
@@ -31,6 +34,8 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     default_language = "es"
     supported_categories = (GOVERNMENT, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    # Ley 8/1990.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -38,21 +43,18 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         StaticHolidays.__init__(self, ParaguayStaticHolidays)
         super().__init__(*args, **kwargs)
 
-    def _move_holiday(self, dt: date) -> None:
-        if not self.observed and self._is_weekend(dt):
-            self.pop(dt)
-
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
+        self._add_new_years_day(tr("Año Nuevo"))
 
         dates_obs = {
             2013: (MAR, 4),
             2016: (FEB, 29),
             2018: (FEB, 26),
+            2019: (MAR, 4),
             2022: (FEB, 28),
+            2023: (FEB, 27),
         }
-
         self._add_holiday(
             # Patriots Day.
             tr("Día de los Héroes de la Patria"),
@@ -66,52 +68,51 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         self._add_good_friday(tr("Viernes Santo"))
 
         # Easter Sunday.
-        self._move_holiday(self._add_easter_sunday(tr("Domingo de Resurrección")))
+        self._add_easter_sunday(tr("Domingo de Resurrección"))
 
-        # Labor Day.
-        self._move_holiday(self._add_labor_day(tr("Día del Trabajador")))
+        # Workers' Day.
+        self._add_labor_day(tr("Día de los Trabajadores"))
+
+        if self._year >= 2012:
+            # National Holiday.
+            self._add_holiday_may_14(tr("Feriado Nacional"))
 
         # Independence Day.
-        name = tr("Día de la Independencia Nacional")
-        if self._year >= 2012:
-            self._move_holiday(self._add_holiday_may_14(name))
-        may_15 = self._add_holiday_may_15(name)
-        if self._year != 2021:
-            self._move_holiday(may_15)
+        self._add_holiday_may_15(tr("Día de la Independencia Nacional"))
 
         dates_obs = {
             2014: (JUN, 16),
             2018: (JUN, 11),
+            2019: (JUN, 17),
+            2024: (JUN, 10),
         }
-        self._move_holiday(
-            # Chaco Armistice Day.
-            self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
-        )
+        # Chaco Armistice Day.
+        self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(self._year, (JUN, 12)))
 
         # Asuncion Foundation's Day.
-        self._move_holiday(self._add_holiday_aug_15(tr("Día de la Fundación de Asunción")))
+        self._add_holiday_aug_15(tr("Día de la Fundación de Asunción"))
 
-        if self._year >= 2000:
+        # Ley 715/1995, 1.601/2000.
+        if self._year >= 1995:
             dates_obs = {
                 2015: (SEP, 28),
                 2016: (OCT, 3),
                 2017: (OCT, 2),
                 2021: (SEP, 27),
                 2022: (OCT, 3),
+                2024: (SEP, 30),
             }
-            self._move_holiday(
-                self._add_holiday(
-                    # Boqueron Battle Day.
-                    tr("Día de la Batalla de Boquerón"),
-                    dates_obs.get(self._year, (SEP, 29)),
-                )
+            self._add_holiday(
+                # Boqueron Battle Day.
+                tr("Día de la Batalla de Boquerón"),
+                dates_obs.get(self._year, (SEP, 29)),
             )
 
         # Caacupe Virgin Day.
-        self._move_holiday(self._add_holiday_dec_8(tr("Día de la Virgen de Caacupé")))
+        self._add_holiday_dec_8(tr("Día de la Virgen de Caacupé"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Navidad"))
+        self._add_christmas_day(tr("Día de la Navidad"))
 
 
 class PY(Paraguay):

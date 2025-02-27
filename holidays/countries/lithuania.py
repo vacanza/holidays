@@ -28,6 +28,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "LT"
     default_language = "lt"
     supported_languages = ("en_US", "lt", "uk")
+    start_year = 1990
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -35,9 +36,6 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
-        if self._year <= 1989:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Naujųjų metų diena"))
 
@@ -69,10 +67,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1991:
             self._add_holiday_jul_6(
                 # Statehood Day.
-                tr(
-                    "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) "
-                    "ir Tautiškos giesmės diena"
-                ),
+                tr("Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena")
             )
 
         # Assumption Day.

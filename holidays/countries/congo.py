@@ -31,6 +31,8 @@ class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CG"
     default_language = "fr"
     supported_languages = ("en_US", "fr")
+    # Loi N° 2-94 of 1 March 1994.
+    start_year = 1994
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -38,10 +40,6 @@ class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Loi N° 2-94 of 1 March 1994
-        if self._year <= 1993:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'An"))
 

@@ -27,6 +27,7 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "HR"
     default_language = "hr"
     supported_languages = ("en_US", "hr", "uk")
+    start_year = 1992
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -34,9 +35,6 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1991:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Nova godina"))
 
@@ -69,14 +67,13 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Anti-Fascist Struggle Day.
         self._add_holiday_jun_22(tr("Dan antifašističke borbe"))
 
-        name = (
+        self._add_holiday_aug_5(
             # Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
             tr("Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja")
             if self._year >= 2008
             # Victory and Homeland Thanksgiving Day.
             else tr("Dan pobjede i domovinske zahvalnosti")
         )
-        self._add_holiday_aug_5(name)
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Velika Gospa"))

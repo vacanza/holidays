@@ -1,3 +1,112 @@
+Version 0.67
+============
+
+Released February 17, 2025
+
+- Add Saint Lucia holidays (#2266 by @Prateekshit73)
+- Add Tuvalu holidays (#2295 by @Prateekshit73, @arkid15r)
+- Update Greenland holidays l10n (#2288 by @KJhellico)
+- Update Hong Kong holidays: add l10n support (#2268 by @PPsyrius)
+- Update Hong Kong holidays: fix `th` l10n typo (#2293 by @PPsyrius)
+- Update Panama holidays, add l10n support (#2275 by @KJhellico)
+- Update README: add DOI (#2286 by @arkid15r)
+- Update United Kingdom & Isle of Man holidays: add l10n support (#2258 by @PPsyrius, @arkid15r, @KJhellico)
+- Update internal scripts (#2284 by @KJhellico)
+- Update subdivision names for Presidents' Day in the United States (#2299 by @parkerbxyz, @arkid15r, @KJhellico)
+- Add Python syntax check with ruff-pyupgrade rules (#2294 by @KJhellico)
+- Add make script for Windows (#2277 by @KJhellico)
+- Check .mo rather than .po files in TestListLocalizedEntities (#2273 by @cjwatson, @arkid15r)
+- Implement HolidayBase::get_closest_holiday functionality (#2211 by @Rosi2143, @arkid15r)
+- Unify certain holidays names translation (#2285 by @KJhellico)
+
+Version 0.66
+============
+
+Released February 3, 2025
+
+- Add Sri Lanka holidays (#2228 by @Prateekshit73, @arkid15r, @KJhellico, @PPsyrius)
+- Fix typo in CONTRIBUTING.rst (#2264 by @KJhellico)
+- Update Czechia holidays (#2248 by @KJhellico)
+- Update Germany holidays: add Corpus Christi in CATHOLIC category (#2253 by @KJhellico)
+- Update Iceland holidays: add HALF_DAY holidays (#2249 by @KJhellico)
+- Update Iran holidays (#2234 by @KJhellico)
+- Update PR exclusion logic (#2233 by @arkid15r)
+- Update Slovakia holidays: Constitution Day is working day since 2024 (#2235 by @KJhellico, @arkid15r)
+- Update Slovenia holidays (#2237 by @KJhellico)
+- Update Sweden holidays: fix All Saints' Day (#2252 by @KJhellico)
+- Update Thailand holidays: refactor Royal Ploughing Ceremony code (#2247 by @PPsyrius)
+- Update United Arab Emirates holidays: add `th` l10n, exact 2017-2025 entries (#2263 by @PPsyrius)
+- Update Vatican City holidays: add missing holidays, l10n support (#2250 by @PPsyrius)
+- Update automatic snapshots update workflow (#2254 by @KJhellico)
+- Update some holidays Ukrainian translations (#2265 by @KJhellico)
+- Add Israel holidays localization: th (#2262 by @PPsyrius)
+- Add West Frisian language (#2246 by @waarissyb, @arkid15r)
+- Pin CI/CD Ubuntu version (#2245 by @arkid15r)
+- Remove .po files from distribution bundles (#2243 by @KJhellico)
+
+Version 0.65
+============
+
+Released January 20, 2025
+
+- Update Afghanistan and Iran holidays: change weekend to FRI-SAT and FRI respectively (#2223 by @gio8tisu, @arkid15r)
+- Update Afghanistan holidays (#2221 by @KJhellico)
+- Update South Korea holidays: 2025 temporary public holidays (#2218 by @YiGeon)
+- Update ruff from v0.8.6 to v0.9.1 (#2224 by @arkid15r)
+- Add faster date parsing from strings in ISO 8601 format (#2227 by @KJhellico)
+- Add signed artifacts path (#2216 by @arkid15r)
+
+Version 0.64
+============
+
+Released January 6, 2025
+
+- Introduce `common.WorkingDayTests` class (#2207 by @KJhellico)
+- Refactor XNYS holidays: standardize US market holidays days of mourning entries (#2213 by @PPsyrius)
+- Add Afghanistan holidays (#2198 by @Prateekshit73, @arkid15r, @PPsyrius)
+- Add `HebrewCalendarHolidays` to holidays groups, refactor Israel holidays (#2186 by @KJhellico)
+- Update "Set up Python" to use 3.13 (#2180 by @arkid15r)
+- Update Belarus holidays: add ru & th l10n, 2024-2025 substituted holidays (#2192 by @PPsyrius)
+- Update El Salvador holidays, add l10n support (#2209 by @KJhellico)
+- Update Montenegro holidays, add l10n support (#2191 by @KJhellico)
+- Update Poland holidays: add Christmas Eve holiday since 2025 (#2210 by @KJhellico)
+- Update Ukraine holidays in 1991 (#2199 by @KJhellico)
+- Update XNYS: add a Day of Mourning for President Jimmy Carter (#2201 by @tackerfrink)
+- Update working days calculation (#2197 by @KJhellico, @arkid15r)
+- Add Norway holidays localization: th (#2200 by @ansntu)
+- Add Russia holidays localization: th (#2190 by @PPsyrius, @arkid15r)
+- Add Ukraine holidays localization: th (#2189 by @PPsyrius, @arkid15r)
+- Sign release artifacts using Sigstore (#2195 by @arkid15r)
+
+Version 0.63
+============
+
+Released December 16, 2024
+
+- Update CI/CD trigger section (#2170 by @arkid15r)
+- Update KZ holidays: add 2025 special holidays (#2167 by @qaziqarta)
+- Update Thailand holidays: extend support year down to 1914 (#2166 by @PPsyrius)
+- Add French subdivision aliases (#2162 by @bors-ltd)
+- Align financial markets MIC codes with ISO 10383 (#2158 by @KJhellico)
+- Enforce 100% test coverage (#2173 by @arkid15r)
+- Inline single-use variables, update .py files formatting (#2161 by @KJhellico)
+
+Version 0.62
+============
+
+Released December 2, 2024
+
+- Introduce start/end year for entity (#2141 by @KJhellico)
+- Add Guernsey holidays (#2135 by @PPsyrius)
+- Update AZ holidays: add 2025 special holidays (#2154 by @KJhellico)
+- Update Argentina holidays: Add 2025 Bridge Public Holidays (#2146 by @PPsyrius)
+- Update CA holidays: Nunavut Day is NU public holiday since 2020 (#2143 by @KJhellico)
+- Update Finland holidays: fix Independence Day appearing pre-1917 (#2145 by @PPsyrius)
+- Update Paraguay holidays (#2151 by @KJhellico)
+- Update Timor Leste holidays: Add 2024 Nov 29 Special Holiday (#2150 by @PPsyrius)
+- Update pyproject.toml: clarify project summary (#2139 by @arkid15r)
+- Add SECURITY.md (#2142 by @arkid15r)
+
 Version 0.61
 ============
 

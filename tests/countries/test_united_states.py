@@ -359,7 +359,40 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        subdiv_dont = {"AL", "AR", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}
+        subdiv_dont = {
+            "AK",
+            "AL",
+            "AR",
+            "AZ",
+            "CA",
+            "CO",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IN",
+            "MD",
+            "MN",
+            "MT",
+            "NJ",
+            "NM",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "PR",
+            "SC",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
+            "VI",
+            "VT",
+            "WA",
+            "WV",
+            "WY",
+        }
         for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
 
@@ -382,12 +415,35 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
 
         for subdiv, name in (
+            ("AK", "Presidents' Day"),
             ("AL", "George Washington & Thomas Jefferson's Birthday"),
             ("AR", "George Washington's Birthday and Daisy Gatson Bates Day"),
+            ("AZ", "Lincoln/Washington Presidents' Day"),
+            ("CA", "Presidents' Day"),
+            ("CO", "Washington-Lincoln Day"),
             ("DE", None),
+            ("HI", "Presidents' Day"),
+            ("ID", "Presidents' Day"),
+            ("MD", "Presidents' Day"),
+            ("MN", "Washington's and Lincoln's Birthday"),
+            ("MT", "Lincoln's and Washington's Birthdays"),
+            ("NJ", "Presidents Day"),
             ("NM", None),
+            ("OH", "Washington-Lincoln Day"),
+            ("OK", "Presidents' Day"),
+            ("OR", "Presidents Day"),
+            ("PA", "Presidents' Day"),
             ("PR", "Presidents' Day"),
+            ("SC", "President's Day"),
+            ("TN", "President's Day"),
+            ("TX", "Presidents' Day"),
+            ("UT", "Washington and Lincoln Day"),
+            ("VA", "George Washington Day"),
             ("VI", "Presidents' Day"),
+            ("VT", "Presidents' Day"),
+            ("WA", "Presidents' Day"),
+            ("WV", "Presidents' Day"),
+            ("WY", "President's Day"),
         ):
             if name:
                 self.assertHolidayName(name, self.state_hols[subdiv], dt)
@@ -432,7 +488,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
 
     def test_columbus_day(self):
         name = "Columbus Day"
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, range(1865, 1937))
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1937, 1971)))
+        self.assertHolidayName(name, range(1971, 2050))
         dt = (
             "2010-10-11",
             "2011-10-10",
@@ -448,8 +506,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             "2021-10-11",
             "2022-10-10",
             "2023-10-09",
-            "2024-10-14",
         )
+        self.assertHolidayName(name, dt)
+
         subdivs_have_columbus_day = {
             "AS",
             "AZ",
@@ -485,13 +544,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         }
 
         for subdiv in subdivs_have_columbus_day:
-            state_holidays = self.state_hols[subdiv]
-            self.assertNoHolidayName(name, state_holidays, range(1865, 1937))
-            self.assertHolidayName(
-                name, state_holidays, (f"{year}-10-12" for year in range(1937, 1971))
-            )
-            self.assertHolidayName(name, state_holidays, range(1971, 2050))
-            self.assertHolidayName(name, state_holidays, dt)
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
 
         for subdiv in (
             set(UnitedStates.subdivisions)

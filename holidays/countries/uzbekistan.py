@@ -36,6 +36,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (ko‘chirilgan, taxminiy)")
     supported_languages = ("en_US", "uk", "uz")
+    start_year = 1992
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -49,8 +50,6 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         return dt >= date(2023, APR, 30)
 
     def _populate_public_holidays(self):
-        if self._year <= 1991:
-            return None
         dts_observed = set()
 
         # New Year's Day.

@@ -66,6 +66,8 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
     # %s (in lieu).
     observed_label = tr("ພັກຊົດເຊີຍ%s")
     supported_languages = ("en_US", "lo", "th")
+    # Available post-Lao PDR proclamation on Dec 2, 1975.
+    start_year = 1976
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -77,9 +79,6 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
 
     def _populate_bank_holidays(self):
         # Based on both LSX and BCEL calendar.
-        # Available post-Lao PDR proclamation on Dec 2, 1975.
-        if self._year <= 1975:
-            return None
 
         # ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ
         # Status: In-Use.
@@ -109,10 +108,6 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         self._add_holiday(name, self._get_next_workday(second_to_last_workday, -1))
 
     def _populate_public_holidays(self):
-        # Available post-Lao PDR proclamation on Dec 2, 1975.
-        if self._year <= 1975:
-            return None
-
         # ວັນປີໃໝ່ສາກົນ
         # Status: In-Use.
 
@@ -161,7 +156,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
 
         if 1990 <= self._year <= 2017:
-            # International Children Day.
+            # International Children's Day.
             self._add_childrens_day(tr("ວັນເດັກສາກົນ"))
 
         # ວັນຊາດ
@@ -178,8 +173,6 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # As such, no in lieu observance are in place for these holidays.
 
         # Laotian Lunar Calendar Holidays only work from 1941 to 2157.
-        if self._year <= 1975:
-            return None
 
         # ວັນບຸນມາຂະບູຊາ
         # Status: In-Use.
@@ -253,10 +246,6 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
     def _populate_workday_holidays(self):
         # No Public Holidays are issued, though still observed by the government.
 
-        # Available post-Lao PDR proclamation on Dec 2, 1975.
-        if self._year <= 1975:
-            return None
-
         # ວັນສ້າງຕັ້ງກອງທັບປະຊາຊົນລາວ
         # Status: In-Use.
         # Celebrated the creation of the independent Lao army on Jan 20, 1949.
@@ -292,7 +281,7 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
         # Became defunct from 2018 onwards. Still accessible in `WORKDAY` category.
 
         if self._year >= 2018:
-            # International Children Day.
+            # International Children's Day.
             self._add_childrens_day(tr("ວັນເດັກສາກົນ"))
 
         # ວັນປູກຕົ້ນໄມ້ແຫ່ງຊາດ

@@ -56,7 +56,7 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Holy Saturday.
-        self._add_holy_saturday(tr("Sabado Santo"))
+        self._add_holy_saturday(tr("Sábado Santo"))
 
         # Labor Day.
         dt = self._add_labor_day(tr("Día del Trabajo"))

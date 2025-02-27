@@ -26,6 +26,7 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MW"
     observed_label = "%s (observed)"
+    start_year = 2000
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -34,10 +35,6 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Observed since 2000
-        if self._year <= 1999:
-            return None
-
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         self._add_observed(self._add_holiday_jan_15("John Chilembwe Day"))

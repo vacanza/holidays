@@ -78,6 +78,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2020-08-17",
             "2023-10-02",
             "2024-10-01",
+            "2025-01-27",
         )
         # Pre-2014 Observance sans "1960-12-26"
         self.assertNoNonObservedHoliday(
@@ -302,10 +303,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         self.assertNoHoliday(
             "1948-04-05", "1960-04-05", (f"{year}-04-05" for year in range(2006, 2050))
         )
-        self.assertHolidayName(
-            f"{name} 대체 휴일",
-            "1959-04-06",
-        )
+        self.assertHolidayName(f"{name} 대체 휴일", "1959-04-06")
 
     def test_childrens_day(self):
         name = "어린이날"
@@ -381,10 +379,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         self.assertNoHoliday(f"{year}-07-17" for year in range(2008, 2050))
         self.assertNoHolidayName(name, range(2008, 2050))
 
-        self.assertHolidayName(
-            f"{name} 대체 휴일",
-            "1960-07-18",
-        )
+        self.assertHolidayName(f"{name} 대체 휴일", "1960-07-18")
 
     def test_liberation_day(self):
         name = "광복절"
@@ -476,10 +471,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         name = "국군의 날"
         self.assertHolidayName(name, (f"{year}-10-01" for year in range(1976, 1991)))
 
-        self.assertHolidayName(
-            f"{name} 대체 휴일",
-            "1989-10-02",
-        )
+        self.assertHolidayName(f"{name} 대체 휴일", "1989-10-02")
         self.assertNoHolidayName(f"{name} 대체 휴일", range(1976, 1989), range(1990, 1992))
 
     def test_national_foundation_day(self):

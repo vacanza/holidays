@@ -205,6 +205,22 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-12-26", "Second Day of Christmas"),
         )
 
+    def test_l10n_fy(self):
+        self.assertLocalizedHolidays(
+            "fy",
+            ("2022-01-01", "Nijjiersdei"),
+            ("2022-04-15", "Goedfreed"),
+            ("2022-04-17", "Peaskesnein"),
+            ("2022-04-18", "Peaskemoandei"),
+            ("2022-04-27", "Keningsdei"),
+            ("2022-05-05", "Befrijingsdei"),
+            ("2022-05-26", "Himelfeartsdei"),
+            ("2022-06-05", "Pinkstersnein"),
+            ("2022-06-06", "Pinkstermoandei"),
+            ("2022-12-25", "Eerste Krystdei"),
+            ("2022-12-26", "Twadde Krystdei"),
+        )
+
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",

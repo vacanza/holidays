@@ -70,7 +70,7 @@ msgstr "Martes Gordo"
 msgid "Vendredi Saint"
 msgstr "Viernes Santo"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pâques"
 msgstr "Pascua"
 
@@ -78,7 +78,7 @@ msgstr "Pascua"
 msgid "Fête-Dieu"
 msgstr "Fête-Dieu"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption de Marie"
 msgstr "Asunción de María"
 
@@ -114,7 +114,7 @@ msgstr "Día de la Soberanía Nacional"
 msgid "Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"
 msgstr "Fiesta de Nuestra Señora del Perpetuo Socorro, patrona de Haití"
 
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
 msgstr "Ascensión"
 

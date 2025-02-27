@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -17,12 +19,14 @@ from holidays.holiday_base import HolidayBase
 class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-    - https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download
-    - https://www.timeanddate.com/holidays/el-salvador
-    - https://www.officeholidays.com/countries/el-salvador
+        - `Labor Code 1972 <https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download>`_
+        - https://www.timeanddate.com/holidays/el-salvador
+        - https://www.officeholidays.com/countries/el-salvador
     """
 
     country = "SV"
+    default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
     subdivisions = (
         "AH",  # Ahuachapán
         "CA",  # Cabañas
@@ -39,6 +43,24 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         "UN",  # La Unión
         "US",  # Usulután
     )
+    subdivisions_aliases = {
+        "Ahuachapán": "AH",
+        "Cabañas": "CA",
+        "Chalatenango": "CH",
+        "Cuscatlán": "CU",
+        "La Libertad": "LI",
+        "Morazán": "MO",
+        "La Paz": "PA",
+        "Santa Ana": "SA",
+        "San Miguel": "SM",
+        "Sonsonate": "SO",
+        "San Salvador": "SS",
+        "San Vicente": "SV",
+        "La Unión": "UN",
+        "Usulután": "US",
+    }
+    # Labor Code 1972.
+    start_year = 1973
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -47,48 +69,47 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # Maundy Thursday.
-        self._add_holy_thursday("Maundy Thursday")
+        self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Holy Saturday.
-        self._add_holy_saturday("Holy Saturday")
+        self._add_holy_saturday(tr("Sábado Santo"))
 
         # Labor Day.
-        self._add_labor_day("Labor Day")
+        self._add_labor_day(tr("Día del Trabajo"))
 
+        # Legislative Decree #399 from Apr 14, 2016.
         if self._year >= 2016:
-            # Legislative Decree #399 from Apr 14, 2016
-            # Mothers' Day.
-            self._add_holiday_may_10("Mothers' Day")
+            # Mother's Day.
+            self._add_holiday_may_10(tr("Día de la Madre"))
 
+        # Legislative Decree #208 from Jun 17, 2012.
         if self._year >= 2013:
-            # Legislative Decree #208 from Jun 17, 2012
-            # Fathers' Day.
-            self._add_holiday_jun_17("Fathers' Day")
+            # Father's Day.
+            self._add_holiday_jun_17(tr("Día del Padre"))
 
-        # Feast of San Salvador.
-        self._add_holiday_aug_6("Feast of San Salvador")
+        # Celebrations of San Salvador.
+        self._add_holiday_aug_6(tr("Celebración del Divino Salvador del Mundo"))
 
         # Independence Day.
-        self._add_holiday_sep_15("Independence Day")
+        self._add_holiday_sep_15(tr("Día de la Independencia"))
 
         # All Souls' Day.
-        self._add_all_souls_day("All Souls' Day")
+        self._add_all_souls_day(tr("Día de los Difuntos"))
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Navidad"))
 
     def _populate_subdiv_ss_public_holidays(self):
-        # San Salvador Day 1.
-        self._add_holiday_aug_3("San Salvador Day 1")
-
-        # San Salvador Day 2.
-        self._add_holiday_aug_5("San Salvador Day 2")
+        # Feast of San Salvador.
+        name = tr("Fiesta de San Salvador")
+        self._add_holiday_aug_3(name)
+        self._add_holiday_aug_5(name)
 
 
 class SV(ElSalvador):

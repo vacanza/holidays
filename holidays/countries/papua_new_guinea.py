@@ -42,6 +42,8 @@ class PapuaNewGuinea(
 
     country = "PG"
     observed_label = "%s (observed)"
+    # Public Holidays Law 1953 (No. 38 of 1953).
+    start_year = 1953
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -51,10 +53,6 @@ class PapuaNewGuinea(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Law 1953 (No. 38 of 1953).
-        if self._year <= 1952:
-            return None
-
         # Section 1: Public Holidays.
         # - Easter Saturday is currently not gazetted as a Public Holiday in 2024.
         # - While Easter Sunday itself is not listed, this is de facto always a day-off.

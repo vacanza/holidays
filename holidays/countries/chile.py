@@ -79,6 +79,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     )
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
+    start_year = 1915
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -89,9 +90,6 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1914:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
         if self._year >= 2017:
@@ -131,7 +129,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 self._add_holiday(name, self._summer_solstice_date)
 
         if self._year <= 1967 or self._year >= 1986:
-            # Saint Peter and Saint Paul.
+            # Saint Peter and Saint Paul's Day.
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
         if self._year >= 2007:
@@ -145,10 +143,8 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             # Day of National Liberation.
             self._add_holiday_sep_11(tr("Día de la Liberación Nacional"))
         elif 1999 <= self._year <= 2001:
-            self._add_holiday_1st_mon_of_sep(
-                # Day of National Unity.
-                tr("Día de la Unidad Nacional")
-            )
+            # Day of National Unity.
+            self._add_holiday_1st_mon_of_sep(tr("Día de la Unidad Nacional"))
 
         if self._year >= 2007:
             self._add_observed(
@@ -170,14 +166,15 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
         if self._year >= 1922 and self._year != 1973:
-            name = (
-                # Meeting of Two Worlds' Day.
-                tr("Día del Encuentro de dos Mundos")
-                if self._year >= 2000
-                # Columbus Day.
-                else tr("Día de la Raza")
+            self._move_holiday(
+                self._add_columbus_day(
+                    # Meeting of Two Worlds' Day.
+                    tr("Día del Encuentro de dos Mundos")
+                    if self._year >= 2000
+                    # Columbus Day.
+                    else tr("Día de la Raza")
+                )
             )
-            self._move_holiday(self._add_columbus_day(name))
 
         if self._year >= 2008:
             # This holiday is moved to the preceding Friday if it falls on a Tuesday,

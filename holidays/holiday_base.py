@@ -14,13 +14,14 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
 import warnings
+from bisect import bisect_left, bisect_right
 from calendar import isleap
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Literal, Optional, Union, cast
 
 from dateutil.parser import parse
 
@@ -39,7 +40,7 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC
+from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -233,7 +234,7 @@ class HolidayBase(dict[date, str]):
     ones."""
     weekend: set[int] = {SAT, SUN}
     """Country weekend days."""
-    weekend_workdays: set[date] = set()
+    weekend_workdays: set[date]
     """Working days moved to weekends."""
     default_category: str = PUBLIC
     """The entity category used by default."""
@@ -245,6 +246,12 @@ class HolidayBase(dict[date, str]):
     """All holiday categories supported by this entity."""
     supported_languages: tuple[str, ...] = ()
     """All languages supported by this entity."""
+    start_year: int = DEFAULT_START_YEAR
+    """Start year of holidays presence for this entity."""
+    end_year: int = DEFAULT_END_YEAR
+    """End year of holidays presence for this entity."""
+    parent_entity: Optional[type["HolidayBase"]] = None
+    """Optional parent entity to reference as a base."""
 
     def __init__(
         self,
@@ -325,8 +332,7 @@ class HolidayBase(dict[date, str]):
             # Deprecated arguments.
             if prov_state := prov or state:
                 warnings.warn(
-                    "Arguments prov and state are deprecated, use "
-                    f"subdiv='{prov_state}' instead.",
+                    f"Arguments prov and state are deprecated, use subdiv='{prov_state}' instead.",
                     DeprecationWarning,
                 )
 
@@ -358,19 +364,35 @@ class HolidayBase(dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = set()
+        self.weekend_workdays = getattr(self, "weekend_workdays", set())
 
         supported_languages = set(self.supported_languages)
-        self.tr = (
-            translation(
+        if self._entity_code is not None:
+            fallback = language not in supported_languages
+            languages = [language] if language in supported_languages else None
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
                 self._entity_code,
-                fallback=language not in supported_languages,
-                languages=[language] if language in supported_languages else None,
-                localedir=str(Path(__file__).with_name("locale")),
-            ).gettext
-            if self._entity_code is not None
-            else gettext
-        )
+                fallback=fallback,
+                languages=languages,
+                localedir=locale_directory,
+            )
+            # Add a fallback if entity has parent translations.
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
+                    )
+                )
+            self.tr = entity_translation.gettext
+        else:
+            self.tr = gettext
+
         self.years = _normalize_arguments(int, years)
 
         # Populate holidays.
@@ -415,7 +437,7 @@ class HolidayBase(dict[date, str]):
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
-        return dict.__contains__(cast("Dict[Any, Any]", self), self.__keytransform__(key))
+        return dict.__contains__(cast("dict[Any, Any]", self), self.__keytransform__(key))
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
@@ -425,7 +447,7 @@ class HolidayBase(dict[date, str]):
             if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return False
 
-        return dict.__eq__(cast("Dict[Any, Any]", self), other)
+        return dict.__eq__(cast("dict[Any, Any]", self), other)
 
     def __getattr__(self, name):
         try:
@@ -444,8 +466,7 @@ class HolidayBase(dict[date, str]):
                 *_, month, day = tokens
                 if month in MONTHS and day in DAYS:
                     return lambda name: self._add_holiday(
-                        name,
-                        date(self._year, MONTHS[month], int(day)),
+                        name, date(self._year, MONTHS[month], int(day))
                     )
 
             elif len(tokens) == 7:
@@ -582,6 +603,7 @@ class HolidayBase(dict[date, str]):
 
         to :class:`datetime.date`, which is how it's stored by the class."""
 
+        dt: Optional[date] = None
         # Try to catch `date` and `str` type keys first.
         # Using type() here to skip date subclasses.
         # Key is `date`.
@@ -590,10 +612,17 @@ class HolidayBase(dict[date, str]):
 
         # Key is `str` instance.
         elif isinstance(key, str):
-            try:
-                dt = parse(key).date()
-            except (OverflowError, ValueError):
-                raise ValueError(f"Cannot parse date from string '{key}'")
+            # key possibly contains a date in YYYY-MM-DD or YYYYMMDD format.
+            if len(key) in {8, 10}:
+                try:
+                    dt = date.fromisoformat(key)
+                except ValueError:
+                    pass
+            if dt is None:
+                try:
+                    dt = parse(key).date()
+                except (OverflowError, ValueError):
+                    raise ValueError(f"Cannot parse date from string '{key}'")
 
         # Key is `datetime` instance.
         elif isinstance(key, datetime):
@@ -683,15 +712,7 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return (
-            "country",
-            "expand",
-            "language",
-            "market",
-            "observed",
-            "subdiv",
-            "years",
-        )
+        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
 
     @cached_property
     def _entity_code(self):
@@ -829,6 +850,9 @@ class HolidayBase(dict[date, str]):
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
+        if year < self.start_year or year > self.end_year:
+            return None
+
         self._year = year
         self._populate_common_holidays()
         self._populate_subdiv_holidays()
@@ -961,6 +985,36 @@ class HolidayBase(dict[date, str]):
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
+
+    def get_closest_holiday(
+        self,
+        target_date: DateLike = None,
+        direction: Literal["forward", "backward"] = "forward",
+    ) -> Optional[tuple[date, str]]:
+        """Return the date and name of the next holiday for a target_date
+        if direction is "forward" or the previous holiday if direction is "backward".
+        If target_date is not provided the current date will be used by default."""
+
+        if direction not in {"backward", "forward"}:
+            raise AttributeError(f"Unknown direction: {direction}")
+
+        dt = self.__keytransform__(target_date or datetime.now().date())
+        if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+            self._populate(next_year)
+        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+            self._populate(previous_year)
+
+        sorted_dates = sorted(self.keys())
+        position = (
+            bisect_right(sorted_dates, dt)
+            if direction == "forward"
+            else bisect_left(sorted_dates, dt) - 1
+        )
+        if 0 <= position < len(sorted_dates):
+            dt = sorted_dates[position]
+            return dt, self[dt]
+
+        return None
 
     def get_nth_working_day(self, key: DateLike, n: int) -> date:
         """Return n-th working day from provided date (if n is positive)
@@ -1206,4 +1260,4 @@ country_holidays('CA') + country_holidays('MX')
     def _populate(self, year):
         for operand in self.holidays:
             operand._populate(year)
-            self.update(cast("Dict[DateLike, str]", operand))
+            self.update(cast("dict[DateLike, str]", operand))

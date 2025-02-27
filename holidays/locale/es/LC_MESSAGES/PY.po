@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.62\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2024-01-05 12:41+0200\n"
+"PO-Revision-Date: 2024-11-28 14:07+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: es\n"
@@ -26,14 +26,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. Public holiday.
-msgid "Asueto adicionale"
-msgstr ""
-
-#. Public sector holiday.
-msgid "Asueto de la Administración Pública"
-msgstr ""
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -55,8 +47,12 @@ msgstr ""
 msgid "Domingo de Resurrección"
 msgstr ""
 
-#. Labor Day.
-msgid "Día del Trabajador"
+#. Workers' Day.
+msgid "Día de los Trabajadores"
+msgstr ""
+
+#. National Holiday.
+msgid "Feriado Nacional"
 msgstr ""
 
 #. Independence Day.
@@ -80,5 +76,13 @@ msgid "Día de la Virgen de Caacupé"
 msgstr ""
 
 #. Christmas Day.
-msgid "Navidad"
+msgid "Día de la Navidad"
+msgstr ""
+
+#. Public holiday.
+msgid "Asueto adicionale"
+msgstr ""
+
+#. Public sector holiday.
+msgid "Asueto de la Administración Pública"
 msgstr ""

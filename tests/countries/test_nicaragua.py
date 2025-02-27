@@ -148,7 +148,7 @@ class TestNicaragua(CommonCountryTests, TestCase):
             ("2022-08-10", "Ascent of Saint Dominic"),
             ("2022-09-14", "Battle of San Jacinto Day"),
             ("2022-09-15", "Independence Day"),
-            ("2022-12-08", "Virgin's Day"),
+            ("2022-12-08", "Immaculate Conception"),
             ("2022-12-25", "Christmas Day"),
         )
 

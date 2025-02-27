@@ -29,6 +29,7 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     # %s (observed).
     observed_label = tr("%s (brīvdiena)")
     supported_languages = ("en_US", "lv", "uk")
+    start_year = 1990
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -38,9 +39,6 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1989:
-            return None
-
         # New Year's Day.
         self._add_new_years_day(tr("Jaunais Gads"))
 
@@ -57,10 +55,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_labor_day(tr("Darba svētki"))
 
         if self._year >= 2002:
-            dt = self._add_holiday_may_4(
-                # Restoration of Independence Day.
-                tr("Latvijas Republikas Neatkarības atjaunošanas diena")
-            )
+            # Restoration of Independence Day.
+            dt = self._add_holiday_may_4(tr("Latvijas Republikas Neatkarības atjaunošanas diena"))
             if self._year >= 2008:
                 self._add_observed(dt)
 

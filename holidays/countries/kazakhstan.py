@@ -74,6 +74,10 @@ class Kazakhstan(
         - `2022 <https://adilet.zan.kz/kaz/docs/P2200000796>`_
         - `2023 <https://adilet.zan.kz/kaz/docs/P2300000326>`_
         - `2024 <https://adilet.zan.kz/kaz/docs/G24G0000109>`_
+        - `2025 <https://adilet.zan.kz/kaz/docs/G24G0000436>`_
+
+    Islamic holidays:
+        - 2025: `<https://en.inform.kz/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f/>`_
     """
 
     country = "KZ"
@@ -85,6 +89,8 @@ class Kazakhstan(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (қайта белгіленген демалыс, бағаланған)")
     supported_languages = ("en_US", "kk", "uk")
+    # Kazakhstan declared its sovereignty on 25 October 1990.
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -96,10 +102,6 @@ class Kazakhstan(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Kazakhstan declared its sovereignty on 25 October 1990
-        if self._year <= 1990:
-            return None
-
         dts_observed = set()
 
         # New Year's Day.
@@ -115,7 +117,7 @@ class Kazakhstan(
         dts_observed.add(self._add_womens_day(tr("Халықаралық әйелдер күні")))
 
         if self._year >= 2002:
-            # Nowruz holiday.
+            # Nowruz Holiday.
             name = tr("Наурыз мейрамы")
             dts_observed.add(self._add_holiday_mar_22(name))
             if self._year >= 2010:
@@ -197,6 +199,7 @@ class KazakhstanIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 9),
         2023: (JUN, 28),
         2024: (JUN, 16),
+        2025: (JUN, 6),
     }
 
 
@@ -275,7 +278,6 @@ class KazakhstanStaticHolidays:
         2019: (MAY, 10, MAY, 4),
         2020: (
             (JAN, 3, JAN, 5),
-            (MAY, 8, MAY, 11),
             (DEC, 18, DEC, 20),
         ),
         2021: (JUL, 5, JUL, 3),
@@ -286,8 +288,10 @@ class KazakhstanStaticHolidays:
         ),
         2023: (JUL, 7, JUL, 1),
         2024: (MAY, 8, MAY, 4),
+        2025: (JAN, 3, JAN, 5),
     }
 
     special_public_holidays_observed = {
-        2020: (MAY, 8, MAY, 11),
+        # Victory Day.
+        2020: (MAY, 8, tr("Жеңіс күні")),
     }

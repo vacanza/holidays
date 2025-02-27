@@ -65,6 +65,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Victoria": "VIC",
         "Western Australia": "WA",
     }
+    start_year = 1801
 
     @property
     def sovereign_birthday(self) -> str:
@@ -215,7 +216,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Family & Community Day.
             self._add_holiday(tr("Family & Community Day"), fc_dates[self._year])
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
 
         # Christmas Day.
@@ -316,7 +317,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year <= 2010:
                 self._add_observed(apr_25)
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
 
         # Sovereign's Birthday.
@@ -492,7 +493,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_anzac_day(name)
 
-        # Labour Day.
+        # Labor Day.
         name = tr("Labour Day")
         if 2013 <= self._year <= 2015:
             self._add_holiday_1st_mon_of_oct(name)
@@ -630,7 +631,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1936:
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
 
         # Proclamation Day.
@@ -798,7 +799,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_holiday_jan_26(self.australia_day)
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
 
         if self._year >= 2003:
@@ -892,7 +893,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             else:
                 self._add_holiday_jan_26(self.australia_day)
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_1st_mon_of_mar(tr("Labour Day"))
 
         if self._year >= 2022:

@@ -24,6 +24,7 @@ class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     """
 
     market = "IFEU"
+    start_year = 2014
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -31,11 +32,7 @@ class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
         kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        if year <= 2013:
-            return None
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         self._move_holiday(self._add_new_years_day("New Year's Day"))
 
         self._add_good_friday("Good Friday")

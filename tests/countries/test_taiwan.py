@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.countries.taiwan import Taiwan, TW, TWN
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestTaiwan(CommonCountryTests, TestCase):
+class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1990, 2030)
@@ -27,6 +27,83 @@ class TestTaiwan(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Taiwan(years=1911))
+
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2010-02-19",
+            "2012-01-27",
+            "2012-02-27",
+            "2012-12-31",
+            "2013-02-15",
+            "2013-09-20",
+            "2015-01-02",
+            "2016-02-12",
+            "2016-06-10",
+            "2016-09-16",
+            "2017-02-27",
+            "2017-05-29",
+            "2017-10-09",
+            "2018-04-06",
+            "2018-12-31",
+            "2019-02-08",
+            "2019-03-01",
+            "2019-10-11",
+            "2020-01-23",
+            "2020-06-26",
+            "2020-10-02",
+            "2021-02-10",
+            "2021-09-20",
+            "2022-02-04",
+            "2023-01-20",
+            "2023-01-27",
+            "2023-02-27",
+            "2023-04-03",
+            "2023-06-23",
+            "2023-10-09",
+            "2024-02-08",
+            "2025-01-27",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2010-02-06",
+            "2012-02-04",
+            "2012-03-03",
+            "2012-12-22",
+            "2013-02-23",
+            "2013-09-14",
+            "2014-12-27",
+            "2016-01-30",
+            "2016-06-04",
+            "2016-09-10",
+            "2017-02-18",
+            "2017-06-03",
+            "2017-09-30",
+            "2018-03-31",
+            "2018-12-22",
+            "2019-01-19",
+            "2019-02-23",
+            "2019-10-05",
+            "2020-02-15",
+            "2020-06-20",
+            "2020-09-26",
+            "2021-02-20",
+            "2021-09-11",
+            "2022-01-22",
+            "2023-01-07",
+            "2023-02-04",
+            "2023-02-18",
+            "2023-03-25",
+            "2023-06-17",
+            "2023-09-23",
+            "2024-02-17",
+            "2025-02-08",
+        )
+
+        for year, dts in {
+            2014: ("2014-12-27",),
+        }.items():
+            self.assertWorkingDay(Taiwan(years=year), dts)
 
     def test_new_years_day(self):
         name = "中華民國開國紀念日"

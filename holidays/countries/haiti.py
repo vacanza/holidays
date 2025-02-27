@@ -29,6 +29,8 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (OPTIONAL, PUBLIC)
     default_language = "fr_HT"
     supported_languages = ("en_US", "es", "fr_HT", "ht")
+    # 1987 Constitution.
+    start_year = 1987
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -36,10 +38,6 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # 1987 Constitution.
-        if self._year <= 1986:
-            return None
-
         # ARTICLE 275.1 : National Holidays.
         # Both Battle of Vertieres Day and Armed Forces Day are on Nov 18, declared discretely.
 
@@ -78,13 +76,13 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Vendredi Saint"))
 
-        # Easter.
+        # Easter Sunday.
         self._add_easter_sunday(tr("Pâques"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fête-Dieu"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Death of Dessalines.
@@ -100,10 +98,6 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Noël"))
 
     def _populate_optional_holidays(self):
-        # 1987 Constitution.
-        if self._year <= 1986:
-            return None
-
         # Ash Wednesday.
         self._add_ash_wednesday(tr("Mercredi des Cendres"))
 
@@ -116,7 +110,7 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Feast of Lady of Perpetual Help, Patroness of Haiti.
         self._add_holiday_jun_27(tr("Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"))
 
-        # Ascension.
+        # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
         # Birth Anniversary of Jean-Jacques Dessalines.

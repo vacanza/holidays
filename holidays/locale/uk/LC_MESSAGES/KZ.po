@@ -53,7 +53,7 @@ msgstr "Православне Різдво"
 msgid "Халықаралық әйелдер күні"
 msgstr "Міжнародний жіночий день"
 
-#. Nowruz holiday.
+#. Nowruz Holiday.
 msgid "Наурыз мейрамы"
 msgstr "Свято Новруз"
 

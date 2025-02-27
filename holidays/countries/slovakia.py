@@ -20,15 +20,18 @@ from holidays.holiday_base import HolidayBase
 
 class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia
-    https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku
-    https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/
+    References:
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia
+        - https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku
+        - https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/
     """
 
     country = "SK"
     default_language = "sk"
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "sk", "uk")
+    # Independent Slovak Republic established on Jan 01, 1993.
+    start_year = 1993
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -37,10 +40,6 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Independent Slovak Republic established on Jan 01, 1993
-        if self._year <= 1992:
-            return None
-
         # Day of the Establishment of the Slovak Republic.
         self._add_holiday_jan_1(tr("Deň vzniku Slovenskej republiky"))
 
@@ -68,8 +67,9 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Slovak National Uprising Anniversary.
         self._add_holiday_aug_29(tr("Výročie Slovenského národného povstania"))
 
-        # Constitution Day.
-        self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
+        if self._year <= 2023:
+            # Constitution Day.
+            self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
 
         # Day of Our Lady of the Seven Sorrows.
         self._add_holiday_sep_15(tr("Sedembolestná Panna Mária"))
@@ -91,7 +91,12 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         self._add_christmas_day_two(tr("Druhý sviatok vianočný"))
 
     def _populate_workday_holidays(self):
-        # According to Law 241/1993, this state holiday is not a non-working day.
+        # According to Law 241/1993, these state holidays are not non-working days.
+
+        if self._year >= 2024:
+            # Constitution Day.
+            self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
+
         if self._year >= 2021:
             # Day of the Establishment of the Independent Czech-Slovak State.
             self._add_holiday_oct_28(tr("Deň vzniku samostatného česko-slovenského štátu"))

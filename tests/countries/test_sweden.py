@@ -20,124 +20,166 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Sweden)
-
-    def setUp(self):
-        super().setUp()
-        self.holidays.include_sundays = False
+        cls.holidays = Sweden(include_sundays=False, years=range(1930, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Sweden, SE, SWE)
 
-    def test_new_years(self):
-        self.assertHoliday(
-            "1900-01-01",
-            "2017-01-01",
-            "2023-01-01",
-        )
+    def test_new_years_day(self):
+        self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in range(1930, 2050)))
+
+    def test_epiphany(self):
+        self.assertHolidayName("Trettondedag jul", (f"{year}-01-06" for year in range(1930, 2050)))
 
     def test_annunciation(self):
-        self.assertHoliday(
-            "1950-03-25",
-            "1951-03-25",
-            "1952-03-25",
-            "1953-03-25",
-        )
-        self.assertNoHoliday("1954-03-25")
-        self.assertNoHolidayName("Jungfru Marie bebådelsedag", Sweden(years=1954))
+        name = "Jungfru Marie bebådelsedag"
+        self.assertHolidayName(name, (f"{year}-03-25" for year in range(1930, 1954)))
+        self.assertNoHolidayName(name, range(1954, 2050))
 
-    def test_easter(self):
-        self.assertHoliday(
-            "2000-04-21",
-            "2000-04-23",
-            "2000-04-24",
-            "2010-04-02",
-            "2010-04-04",
-            "2010-04-05",
+    def test_good_friday(self):
+        name = "Långfredagen"
+        self.assertHolidayName(
+            name,
+            "2019-04-19",
+            "2020-04-10",
             "2021-04-02",
-            "2021-04-04",
-            "2021-04-05",
+            "2022-04-15",
+            "2023-04-07",
             "2024-03-29",
+        )
+        self.assertHolidayName(name, range(1930, 2050))
+
+    def test_easter_sunday(self):
+        name = "Påskdagen"
+        self.assertHolidayName(
+            name,
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
             "2024-03-31",
+        )
+        self.assertHolidayName(name, range(1952, 2050))
+
+    def test_easter_monday(self):
+        name = "Annandag påsk"
+        self.assertHolidayName(
+            name,
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
             "2024-04-01",
         )
-        self.assertNoHoliday(
-            "2000-04-20",
-            "2010-04-01",
-            "2021-04-01",
-            "2024-03-28",
-        )
+        self.assertHolidayName(name, range(1952, 2050))
 
     def test_may_day(self):
-        self.assertHoliday(
-            "1939-05-01",
-            "2017-05-01",
-            "2023-05-01",
+        name = "Första maj"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1939, 2050)))
+        self.assertNoHolidayName(name, range(1930, 1939))
+
+    def test_ascension_day(self):
+        name = "Kristi himmelsfärdsdag"
+        self.assertHolidayName(
+            name,
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
         )
-        self.assertNoHoliday("1938-05-01")
-        self.assertNoHolidayName("Första maj", Sweden(years=1938))
+        self.assertHolidayName(name, range(1952, 2050))
 
     def test_constitution_day(self):
-        self.assertHoliday(
-            "2005-06-06",
-            "2017-06-06",
-            "2999-06-06",
-        )
-        self.assertNoHoliday("2004-06-06")
-        self.assertNoHolidayName("Sveriges nationaldag", Sweden(years=2004))
+        name = "Sveriges nationaldag"
+        self.assertHolidayName(name, (f"{year}-06-06" for year in range(2005, 2050)))
+        self.assertNoHolidayName(name, range(1930, 2005))
 
-    def test_pentecost(self):
-        self.assertHoliday(
-            "2000-06-11",
-            "2000-06-12",
-            "2010-05-23",
+    def test_whit_sunday(self):
+        name = "Pingstdagen"
+        self.assertHolidayName(
+            name,
+            "2019-06-09",
+            "2020-05-31",
             "2021-05-23",
-            "2003-06-09",
+            "2022-06-05",
+            "2023-05-28",
             "2024-05-19",
         )
-        self.assertNoHoliday(
-            "2010-05-24",
-            "2021-05-24",
-            "2024-05-20",
-        )
-        self.assertNoHolidayName("Annandag pingst", Sweden(years=2005))
+        self.assertHolidayName(name, range(1930, 2050))
 
-    def test_midsommar(self):
-        self.assertHoliday(
-            "1950-06-23",
-            "1950-06-24",
-            "1951-06-23",
-            "1951-06-24",
-            "1952-06-23",
-            "1952-06-24",
+    def test_whit_monday(self):
+        name = "Annandag pingst"
+        self.assertHolidayName(
+            name,
+            "1999-05-24",
+            "2000-06-12",
+            "2001-06-04",
+            "2002-05-20",
+            "2003-06-09",
+            "2004-05-31",
+        )
+        self.assertHolidayName(name, range(1930, 2005))
+        self.assertNoHolidayName(name, range(2005, 2050))
+
+    def test_midsummer_eve(self):
+        name = "Midsommarafton"
+        self.assertHolidayName(name, (f"{year}-06-23" for year in range(1930, 1953)))
+        self.assertHolidayName(
+            name,
             "1953-06-19",
-            "1953-06-20",
             "1954-06-25",
-            "1954-06-26",
             "2019-06-21",
-            "2019-06-22",
             "2020-06-19",
-            "2020-06-20",
             "2021-06-25",
-            "2021-06-26",
             "2022-06-24",
+            "2023-06-23",
+            "2024-06-21",
+        )
+        self.assertHolidayName(name, range(1930, 2050))
+
+    def test_midsummer_day(self):
+        name = "Midsommardagen"
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1930, 1953)))
+        self.assertHolidayName(
+            name,
+            "1953-06-20",
+            "1954-06-26",
+            "2019-06-22",
+            "2020-06-20",
+            "2021-06-26",
             "2022-06-25",
+            "2023-06-24",
+            "2024-06-22",
         )
-        self.assertNoHoliday(
-            "1952-06-20",
-            "1952-06-21",
-            "1953-06-23",
-            "1953-06-24",
-            "1954-06-23",
-            "1954-06-24",
+        self.assertHolidayName(name, range(1930, 2050))
+
+    def test_all_saints_day(self):
+        name = "Alla helgons dag"
+        self.assertHolidayName(
+            name,
+            "1953-10-31",
+            "1954-11-06",
+            "2019-11-02",
+            "2020-10-31",
+            "2021-11-06",
+            "2022-11-05",
+            "2023-11-04",
+            "2024-11-02",
         )
+        self.assertHolidayName(name, range(1953, 2050))
+        self.assertNoHolidayName(name, range(1930, 1953))
 
     def test_christmas(self):
-        self.assertHoliday(
-            "1901-12-25",
-            "1901-12-26",
-            "2016-12-25",
-            "2016-12-26",
-        )
+        self.assertHolidayName("Julafton", (f"{year}-12-24" for year in range(1930, 2050)))
+        self.assertHolidayName("Juldagen", (f"{year}-12-25" for year in range(1930, 2050)))
+        self.assertHolidayName("Annandag jul", (f"{year}-12-26" for year in range(1930, 2050)))
+
+    def test_new_years_eve(self):
+        self.assertHolidayName("Nyårsafton", (f"{year}-12-31" for year in range(1930, 2050)))
 
     def test_sundays(self):
         self.assertSundays(Sweden)  # Sundays are considered holidays in Sweden.
@@ -157,6 +199,7 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Sweden(include_sundays=False, years=2022),
             ("2022-01-01", "Nyårsdagen"),
             ("2022-01-06", "Trettondedag jul"),
             ("2022-04-15", "Långfredagen"),

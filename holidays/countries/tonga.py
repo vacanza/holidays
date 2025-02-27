@@ -75,6 +75,8 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     # %s (observed).
     observed_label = tr("%s (fakatokanga'i)")
     supported_languages = ("en_US", "to")
+    # Public Holidays Act, 1988 Revision.
+    start_year = 1989
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -89,10 +91,6 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         return super()._add_observed(dt, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Act, 1988 Revision.
-        if self._year <= 1988:
-            return None
-
         # New Year's Day.
         jan_1 = self._add_new_years_day(tr("'Uluaki 'Aho 'o e Ta'u Fo'ou"))
         if self._year <= 2016:

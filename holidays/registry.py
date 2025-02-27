@@ -20,6 +20,7 @@ from holidays.holiday_base import HolidayBase
 RegistryDict = dict[str, tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
+    "afghanistan": ("Afghanistan", "AF", "AFG"),
     "albania": ("Albania", "AL", "ALB"),
     "algeria": ("Algeria", "DZ", "DZA"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
@@ -141,6 +142,7 @@ COUNTRIES: RegistryDict = {
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
+    "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "samoa": ("Samoa", "WS", "WSM"),
     "san_marino": ("SanMarino", "SM", "SMR"),
     "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
@@ -152,6 +154,7 @@ COUNTRIES: RegistryDict = {
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
     "spain": ("Spain", "ES", "ESP"),
+    "sri_lanka": ("SriLanka", "LK", "LKA"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "taiwan": ("Taiwan", "TW", "TWN"),
@@ -161,6 +164,7 @@ COUNTRIES: RegistryDict = {
     "tonga": ("Tonga", "TO", "TON"),
     "tunisia": ("Tunisia", "TN", "TUN"),
     "turkey": ("Turkey", "TR", "TUR"),
+    "tuvalu": ("Tuvalu", "TV", "TUV"),
     "ukraine": ("Ukraine", "UA", "UKR"),
     "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
     "united_kingdom": ("UnitedKingdom", "GB", "GBR", "UK"),
@@ -183,9 +187,9 @@ COUNTRIES: RegistryDict = {
 }
 
 FINANCIAL: RegistryDict = {
-    "european_central_bank": ("EuropeanCentralBank", "ECB", "TAR"),
+    "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
     "ice_futures_europe": ("ICEFuturesEurope", "IFEU"),
-    "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
+    "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
 }
 

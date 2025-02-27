@@ -39,6 +39,8 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     country = "DM"
     observed_label = "%s (observed)"
+    # Public Holidays Act, L.I. 12 of 1990 Amendment.
+    start_year = 1990
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -48,10 +50,6 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Act, L.I. 12 of 1990 Amendment.
-        if self._year <= 1989:
-            return None
-
         # New Year's Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
@@ -77,14 +75,13 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Whit Monday.
         self._add_whit_monday("Whit Monday")
 
-        first_monday_of_august_holiday_name = (
+        self._add_holiday_1st_mon_of_aug(
             # Emancipation Day.
             "Emancipation Day"
             if self._year >= 1998
             # First Monday of August.
             else "First Monday of August"
         )
-        self._add_holiday_1st_mon_of_aug(first_monday_of_august_holiday_name)
 
         # Independence Day.
         self._add_observed(self._add_holiday_nov_3("Independence Day"), rule=SUN_TO_NEXT_TUE)

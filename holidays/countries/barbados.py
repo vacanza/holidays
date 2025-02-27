@@ -33,6 +33,8 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     country = "BB"
     observed_label = "%s (observed)"
+    # Public Holidays Act Cap.352, 1968-12-30
+    start_year = 1969
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,10 +44,6 @@ class Barbados(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Public Holidays Act Cap.352, 1968-12-30
-        if self._year <= 1968:
-            return None
-
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

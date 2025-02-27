@@ -106,7 +106,7 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2021:
             aug_31 = self._add_holiday_aug_31(
                 # Day of the Black Person and Afro-Costa Rican Culture.
-                self.tr("Día de la Persona Negra y la Cultura Afrocostarricense")
+                tr("Día de la Persona Negra y la Cultura Afrocostarricense")
             )
             if self._year in {2021, 2022, 2023}:
                 # Move to next Sunday.

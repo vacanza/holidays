@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.azerbaijan import Azerbaijan, AZ, AZE
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestAzerbaijan(CommonCountryTests, TestCase):
+class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Azerbaijan, years=range(1990, 2050))
@@ -34,6 +34,9 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2018-04-11",
             "2019-12-27",
             "2024-02-07",
+            "2025-01-29",
+            "2025-03-27",
+            "2025-03-28",
             "2072-01-05",
         )
 
@@ -61,7 +64,55 @@ class TestAzerbaijan(CommonCountryTests, TestCase):
             "2024-04-12",
             "2024-11-12",
             "2024-11-13",
+            "2024-12-30",
+            "2025-01-03",
         )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2011-08-27",
+            "2012-12-29",
+            "2012-12-30",
+            "2013-12-28",
+            "2013-12-29",
+            "2019-12-28",
+            "2019-12-29",
+            "2020-03-29",
+            "2020-05-30",
+            "2021-05-08",
+            "2021-05-16",
+            "2021-07-17",
+            "2022-03-05",
+            "2022-11-05",
+            "2023-06-24",
+            "2023-06-25",
+            "2023-11-04",
+            "2023-12-30",
+            "2024-01-07",
+            "2024-04-06",
+            "2024-11-16",
+            "2024-11-23",
+            "2024-12-28",
+            "2024-12-29",
+        )
+
+        for year, dts in {
+            2012: (
+                "2012-12-29",
+                "2012-12-30",
+            ),
+            2013: (
+                "2013-12-28",
+                "2013-12-29",
+            ),
+            2019: (
+                "2019-12-28",
+                "2019-12-29",
+            ),
+            2023: ("2023-12-30",),
+            2024: ("2024-12-29",),
+        }.items():
+            self.assertWorkingDay(Azerbaijan(years=year), dts)
 
     def test_new_years_day(self):
         name = "Yeni il bayramı"

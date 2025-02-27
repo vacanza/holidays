@@ -51,6 +51,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "S",  # Santa Cruz
         "T",  # Tarija
     )
+    start_year = 1825
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -61,9 +62,6 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1824:
-            return None
-
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
 
@@ -85,7 +83,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
-        self._add_observed(may_1 := self._add_labor_day(self.tr("Día del Trabajo")))
+        self._add_observed(may_1 := self._add_labor_day(tr("Día del Trabajo")))
         # Supreme Decree #1210.
         if 2012 <= self._year <= 2015:
             self._add_observed(may_1, rule=TUE_TO_PREV_MON + THU_TO_NEXT_FRI)

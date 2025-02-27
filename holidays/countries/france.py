@@ -35,18 +35,33 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fr"
     supported_languages = ("en_US", "fr", "uk")
     subdivisions = (
-        "BL",  # Saint Barthelemy.
+        "BL",  # Saint-Barthélemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
         "GP",  # Guadeloupe.
         "GY",  # Guyane.
-        "MF",  # Saint Martin.
+        "MF",  # Saint-Martin.
         "MQ",  # Martinique.
         "NC",  # Nouvelle-Calédonie,
         "PF",  # Polynésie Française.
-        "RE",  # Reunion.
+        "RE",  # La Réunion.
         "WF",  # Wallis-et-Futuna.
         "YT",  # Mayotte.
     )
+    subdivisions_aliases = {
+        "Saint-Barthélemy": "BL",
+        "Alsace": "GES",
+        "Champagne-Ardenne": "GES",
+        "Lorraine": "GES",
+        "Guadeloupe": "GP",
+        "Guyane": "GY",
+        "Saint-Martin": "MF",
+        "Martinique": "MQ",
+        "Nouvelle-Calédonie": "NC",
+        "Polynésie Française": "PF",
+        "La Réunion": "RE",
+        "Wallis-et-Futuna": "WF",
+        "Mayotte": "YT",
+    }
 
     _deprecated_subdivisions = (
         "Alsace-Moselle",
@@ -62,6 +77,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Martin",
         "Wallis-et-Futuna",
     )
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

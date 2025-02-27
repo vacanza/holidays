@@ -22,7 +22,7 @@ THAI_CALENDAR = "THAI_CALENDAR"
 
 class _ThaiLunisolar:
     """
-    ** Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
+    ** Thai Lunar Calendar Holidays only work from 1913 (B.E. 2456/2455) onwards
        until 2157 (B.E. 2700) as we only have Thai year-type data for
        cross-checking until then.
 
@@ -100,9 +100,15 @@ class _ThaiLunisolar:
     2010-05-28
     """
 
-    # Athikawan (Extra-Day Year) list goes from 1941-2157 C.E.
+    # Athikawan (Extra-Day Year) list goes from 1914-2157 C.E.
     # Copied off from 1757-2157 (B.E. 2300-2700) Thai Lunar Calendar
     ATHIKAWAN_YEARS_GREGORIAN = {
+        1914,
+        1917,
+        1925,
+        1929,
+        1933,
+        1936,
         1945,
         1949,
         1952,
@@ -147,10 +153,20 @@ class _ThaiLunisolar:
         2153,
     }
 
-    # Athikamat (Extra-Month Year) list goes from 1941-2157 C.E.:
+    # Athikamat (Extra-Month Year) list goes from 1914-2157 C.E.:
     # Copied off from 1757-2157 (B.E. 2300-2700) Thai Lunar Calendar
     # Approx formula as follows: (common_era-78)-0.45222)%2.7118886 < 1
     ATHIKAMAT_YEARS_GREGORIAN = {
+        1915,
+        1918,
+        1920,
+        1923,
+        1926,
+        1928,
+        1931,
+        1934,
+        1937,
+        1939,
         1942,
         1944,
         1947,
@@ -234,12 +250,12 @@ class _ThaiLunisolar:
     }
 
     # While Buddhist Holy Days have been observed since the 1900s
-    #   Due to the calendar changes in 1941 (B.E. 2484) and that
-    #   our array only goes up to B.E. 2700; We'll thus only populate
-    #   the data for 1941-2157 (B.E. 2484-2700).
+    #   Thailand's Public Holiday Act wasn't codified until 1914 (B.E. 2457)
+    #   and that our array only goes up to B.E. 2700; We'll thus only populate
+    #   the data for 1914-2157 (B.E. 2457-2700).
     # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย มท 0310.1/ว4 5 ก.พ. 2539
-    START_DATE = date(1940, 11, 30)
-    START_YEAR = 1941
+    START_DATE = date(1913, 11, 28)
+    START_YEAR = 1914
     END_YEAR = 2157
 
     def __init__(self, calendar=THAI_CALENDAR) -> None:
@@ -270,7 +286,7 @@ class _ThaiLunisolar:
         Calculate the start date of that particular Thai Lunar Calendar Year.
         This usually falls in November or December of the previous Gregorian
         year in question. Should the year be outside of working scope
-        (1941-2157: B.E 2484-2700), this will returns None instead.
+        (1914-2157: B.E 2457-2700), this will returns None instead.
 
         :param year:
             The Gregorian year.

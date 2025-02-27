@@ -58,6 +58,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     )
     supported_categories = (HALF_DAY, OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "it", "uk")
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -78,7 +79,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_christmas_day(tr("Weihnachten"))
 
     def _populate_subdiv_ag_public_holidays(self):
-        # Berchtold's Day.
+        # Saint Berchtold's Day.
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Good Friday.

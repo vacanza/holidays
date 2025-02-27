@@ -26,7 +26,8 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     country = "RU"
     default_language = "ru"
-    supported_languages = ("en_US", "ru")
+    supported_languages = ("en_US", "ru", "th")
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -35,9 +36,6 @@ class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1990:
-            return None
-
         if self._year <= 2004:
             # New Year's Day.
             name = tr("Новый год")

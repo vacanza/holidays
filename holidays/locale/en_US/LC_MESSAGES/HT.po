@@ -70,17 +70,17 @@ msgstr "Fat Tuesday"
 msgid "Vendredi Saint"
 msgstr "Good Friday"
 
-#. Easter.
+#. Easter Sunday.
 msgid "Pâques"
-msgstr "Easter"
+msgstr "Easter Sunday"
 
 #. Corpus Christi.
 msgid "Fête-Dieu"
 msgstr "Corpus Christi"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption de Marie"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. Death of Dessalines.
 msgid "Mort de Dessalines"
@@ -114,9 +114,9 @@ msgstr "National Sovereignty Day"
 msgid "Fête de Notre-Dame du Perpétuel Secours, patronne d'Haiti"
 msgstr "Feast of Lady of Perpetual Help, Patroness of Haiti"
 
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
-msgstr "Ascension"
+msgstr "Ascension Day"
 
 #. Birth Anniversary of Jean-Jacques Dessalines.
 msgid "Anniversaire de Naissance de Jean-Jacques Dessalines"

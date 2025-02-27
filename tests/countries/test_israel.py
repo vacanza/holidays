@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, SCHOOL
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.countries.israel import Israel, IL, ISR
 from tests.common import CommonCountryTests
 
@@ -21,23 +21,16 @@ class TestIsrael(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Israel, years=range(1948, 2050))
-        cls.opt_holidays = Israel(categories=(OPTIONAL,), years=range(2000, 2024))
+        cls.opt_holidays = Israel(categories=OPTIONAL, years=range(2000, 2024))
         cls.opt_holidays_non_observed = Israel(
-            observed=False, categories=(OPTIONAL,), years=range(2000, 2024)
+            observed=False, categories=OPTIONAL, years=range(2000, 2024)
         )
 
     def test_country_aliases(self):
         self.assertAliases(Israel, IL, ISR)
 
-    def test_not_implemented(self):
-        self.assertRaises(NotImplementedError, lambda: Israel(years=2101))
-        self.assertRaises(NotImplementedError, lambda: Israel(categories=(OPTIONAL,), years=2101))
-        self.assertRaises(NotImplementedError, lambda: Israel(categories=(SCHOOL,), years=2101))
-
     def test_no_holidays(self):
-        self.assertNoHolidays(Israel(years=1947))
-        self.assertNoHolidays(Israel(categories=(OPTIONAL,), years=1947))
-        self.assertNoHolidays(Israel(categories=(SCHOOL,), years=1947))
+        self.assertNoHolidays(Israel(categories=(OPTIONAL, PUBLIC, SCHOOL), years=1947))
 
     def test_independence_day(self):
         name = "יום העצמאות"
@@ -150,7 +143,7 @@ class TestIsrael(CommonCountryTests, TestCase):
             name, self.opt_holidays_non_observed, common_dt, non_obs_dt
         )
         self.assertNoNonObservedHoliday(self.opt_holidays_non_observed, obs_dt)
-        self.assertNoHolidayName(name, Israel(categories=(OPTIONAL,), years=range(1948, 1963)))
+        self.assertNoHolidayName(name, Israel(categories=OPTIONAL, years=range(1948, 1963)))
         self.assertNoHolidayName(name)
 
     def test_optional_holidays(self):
@@ -264,9 +257,9 @@ class TestIsrael(CommonCountryTests, TestCase):
             "2014-03-15",
             "2017-03-11",
         )
-        school_holidays = Israel(categories=(SCHOOL,), years=range(2000, 2024))
+        school_holidays = Israel(categories=SCHOOL, years=range(2000, 2024))
         school_holidays_non_observed = Israel(
-            observed=False, categories=(SCHOOL,), years=range(2000, 2024)
+            observed=False, categories=SCHOOL, years=range(2000, 2024)
         )
         self.assertHolidayName(name, school_holidays, common_dt)
         self.assertHolidayName(name_observed, school_holidays, obs_dt)
@@ -320,7 +313,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2021_optional(self):
         self.assertHolidays(
-            Israel(categories=(OPTIONAL,), years=2021),
+            Israel(categories=OPTIONAL, years=2021),
             ("2021-02-26", "פורים"),
             ("2021-03-29", "חול המועד פסח"),
             ("2021-03-30", "חול המועד פסח"),
@@ -340,7 +333,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2022_optional(self):
         self.assertHolidays(
-            Israel(categories=(OPTIONAL,), years=2022),
+            Israel(categories=OPTIONAL, years=2022),
             ("2022-03-17", "פורים"),
             ("2022-04-17", "חול המועד פסח"),
             ("2022-04-18", "חול המועד פסח"),
@@ -360,7 +353,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2023_optional(self):
         self.assertHolidays(
-            Israel(categories=(OPTIONAL,), years=2023),
+            Israel(categories=OPTIONAL, years=2023),
             ("2023-03-07", "פורים"),
             ("2023-04-07", "חול המועד פסח"),
             ("2023-04-08", "חול המועד פסח"),
@@ -380,7 +373,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2021_school(self):
         self.assertHolidays(
-            Israel(categories=(SCHOOL,), years=2021),
+            Israel(categories=SCHOOL, years=2021),
             ("2021-02-25", "תענית אסתר"),
             ("2021-02-26", "פורים"),
             ("2021-03-29", "חול המועד פסח"),
@@ -406,7 +399,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2022_school(self):
         self.assertHolidays(
-            Israel(categories=(SCHOOL,), years=2022),
+            Israel(categories=SCHOOL, years=2022),
             ("2022-03-16", "תענית אסתר"),
             ("2022-03-17", "פורים"),
             ("2022-04-17", "חול המועד פסח"),
@@ -432,7 +425,7 @@ class TestIsrael(CommonCountryTests, TestCase):
 
     def test_2023_school(self):
         self.assertHolidays(
-            Israel(categories=(SCHOOL,), years=2023),
+            Israel(categories=SCHOOL, years=2023),
             ("2023-03-06", "תענית אסתר"),
             ("2023-03-07", "פורים"),
             ("2023-04-07", "חול המועד פסח"),
@@ -493,6 +486,45 @@ class TestIsrael(CommonCountryTests, TestCase):
             ("2021-12-04", "Hanukkah"),
             ("2021-12-05", "Hanukkah"),
             ("2021-12-06", "Hanukkah"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2021-02-25", "วันทาอานิต เอสเธอร์"),
+            ("2021-02-26", "เทศกาลปูริม"),
+            ("2021-03-28", "วันเพสสะห์"),
+            ("2021-03-29", "เทศกาลเพสสะห์"),
+            ("2021-03-30", "เทศกาลเพสสะห์"),
+            ("2021-03-31", "เทศกาลเพสสะห์"),
+            ("2021-04-01", "เทศกาลเพสสะห์"),
+            ("2021-04-02", "เทศกาลเพสสะห์"),
+            ("2021-04-03", "วันเพสสะห์วันที่เจ็ด"),
+            ("2021-04-14", "ชดเชยวันรำลึกถึงทหารผู้สละชีพและเหยื่อการก่อการร้าย"),
+            ("2021-04-15", "ชดเชยวันชาติอิสราเอล"),
+            ("2021-04-30", "วันแล็ก บาโอเมอร์"),
+            ("2021-05-10", "วันเยรูซาเล็ม"),
+            ("2021-05-17", "วันชาวูโอท"),
+            ("2021-07-18", "วันทิชอา เบอัฟ"),
+            ("2021-09-07", "เทศกาลรอช ฮาชานาห์ (วันปีใหม่ยิว)"),
+            ("2021-09-08", "เทศกาลรอช ฮาชานาห์ (วันปีใหม่ยิว)"),
+            ("2021-09-16", "วันยม คิปปูร์"),
+            ("2021-09-21", "วันสุคคต"),
+            ("2021-09-22", "เทศกาลสุคคต"),
+            ("2021-09-23", "เทศกาลสุคคต"),
+            ("2021-09-24", "เทศกาลสุคคต"),
+            ("2021-09-25", "เทศกาลสุคคต"),
+            ("2021-09-26", "เทศกาลสุคคต"),
+            ("2021-09-28", "วันซิมหัต โทราห์ / วันเชมินี อัตเซเรต"),
+            ("2021-11-04", "เทศกาลซิกด์"),
+            ("2021-11-29", "เทศกาลฮานุกกะห์"),
+            ("2021-11-30", "เทศกาลฮานุกกะห์"),
+            ("2021-12-01", "เทศกาลฮานุกกะห์"),
+            ("2021-12-02", "เทศกาลฮานุกกะห์"),
+            ("2021-12-03", "เทศกาลฮานุกกะห์"),
+            ("2021-12-04", "เทศกาลฮานุกกะห์"),
+            ("2021-12-05", "เทศกาลฮานุกกะห์"),
+            ("2021-12-06", "เทศกาลฮานุกกะห์"),
         )
 
     def test_l10n_uk(self):

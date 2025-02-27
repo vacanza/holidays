@@ -71,9 +71,9 @@ msgstr "Різдво Христове"
 msgid "Anden juledag"
 msgstr "Другий день Різдва"
 
-#. International Workers' Day.
+#. Workers' Day.
 msgid "Arbejdernes kampdag"
-msgstr "День праці"
+msgstr "День трудящих"
 
 #. Constitution Day.
 msgid "Grundlovsdag"

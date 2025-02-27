@@ -24,6 +24,8 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     country = "VU"
     observed_label = "%s (observed)"
+    # On 30 July 1980, Vanuatu gained independence from Britain and France.
+    start_year = 1981
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -33,10 +35,6 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # On 30 July 1980, Vanuatu gained independence from Britain and France.
-        if self._year <= 1980:
-            return None
-
         # New Years Day.
         self._add_observed(self._add_new_years_day("New Year's Day"))
 

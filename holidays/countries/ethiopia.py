@@ -31,6 +31,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     # %s (estimated).
     estimated_label = tr("%s (ግምት)")
     supported_languages = ("am", "ar", "en_US")
+    start_year = 1898
 
     def _is_leap_year(self):
         """
@@ -49,9 +50,6 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1897:
-            return None
-
         # Christmas Day.
         self._add_christmas_day(tr("ገና"))
 

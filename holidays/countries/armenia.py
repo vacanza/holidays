@@ -30,6 +30,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AM"
     default_language = "hy"
     supported_languages = ("en_US", "hy")
+    start_year = 1991
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -37,9 +38,6 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year <= 1990:
-            return None
-
         # New Year's Day.
         name = tr("Նոր տարվա օր")
         self._add_new_years_day(name)

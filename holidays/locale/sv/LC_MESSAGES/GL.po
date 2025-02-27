@@ -1,0 +1,91 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Greenland holidays sv localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.67\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: 2025-02-11 18:06+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "Ukiortaaq"
+msgstr "Nyårsdagen"
+
+#. Maundy Thursday.
+msgid "Sisamanngortoq illernartoq"
+msgstr "Skärtorsdagen"
+
+#. Good Friday.
+msgid "Tallimanngorneq tannaartoq"
+msgstr "Långfredagen"
+
+#. Easter Sunday.
+msgid "Poorskip ullua"
+msgstr "Påskdagen"
+
+#. Easter Monday.
+msgid "Poorskip-aappaa"
+msgstr "Annandag påsk"
+
+#. Great Prayer Day.
+msgid "Ulloq qinuffiusoq"
+msgstr "Stora bönedagen"
+
+#. Ascension Day.
+msgid "Qilaliarfik"
+msgstr "Kristi himmelsfärdsdag"
+
+#. Whit Sunday.
+msgid "Piinsip ullua"
+msgstr "Pingstdagen"
+
+#. Whit Monday.
+msgid "Piinsip-aappaa"
+msgstr "Annandag pingst"
+
+#. Christmas Day.
+msgid "Juullip ullua"
+msgstr "Juldagen"
+
+#. Second Day of Christmas.
+msgid "Juullip-aappaa"
+msgstr "Annandag jul"
+
+#. Epiphany.
+msgid "Kunngit pingasut ulluat"
+msgstr "Trettondedag jul"
+
+#. International Workers' Day.
+msgid "Sulisartut ulluat"
+msgstr "Internationella arbetardagen"
+
+#. National Day.
+msgid "Ullortuneq"
+msgstr "Nationaldag"
+
+#. Christmas Eve.
+msgid "Juulliaraq"
+msgstr "Julafton"
+
+#. New Year's Eve.
+msgid "Ukiortaami"
+msgstr "Nyårsafton"

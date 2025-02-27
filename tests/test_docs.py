@@ -14,7 +14,14 @@ import re
 from pathlib import Path
 from unittest import TestCase
 
-from holidays import country_holidays, list_supported_countries, list_localized_countries
+from holidays import (
+    country_holidays,
+    financial_holidays,
+    list_localized_countries,
+    list_localized_financial,
+    list_supported_countries,
+    list_supported_financial,
+)
 from holidays.constants import PUBLIC
 
 
@@ -174,8 +181,7 @@ class TestReadme(TestCase):
                     (
                         f"{c} != {s}"
                         for c, s in zip(
-                            supported_countries[country_code],
-                            country_subdivisions[country_code],
+                            supported_countries[country_code], country_subdivisions[country_code]
                         )
                         if c != s
                     )
@@ -223,3 +229,107 @@ class TestReadme(TestCase):
                 "all supported categories: "
                 f"{', '.join(instance.supported_categories)}",
             )
+
+    def test_supported_markets_table(self):
+        # Parse table data.
+        columns_number = 4
+        market_mic_codes = set()
+        market_default_languages = {}
+        market_names = []
+        market_supported_languages = {}
+
+        table_content = [
+            line.strip()
+            for line in re.findall(
+                r"Info\s+- Supported Languages(.*)Contributions", self.readme_content, re.DOTALL
+            )[0].split("\n")
+            if line
+        ]
+
+        for idx in range(0, len(table_content), columns_number):
+            # Market: 1st column.
+            name = (
+                table_content[idx]
+                .strip(" *-")
+                .translate(
+                    str.maketrans(
+                        {
+                            " ": "",
+                            ",": "",
+                            "ã": "a",
+                        }
+                    )
+                )
+                .lower()
+            )
+            market_names.append(name)
+
+            # Code: 2nd column.
+            market_code = table_content[idx + 1].strip(" -")
+            if market_code:
+                market_mic_codes.add(market_code)
+
+            # Supported Languages: 4th column.
+            supported_languages = table_content[idx + 3].strip(" -")
+            if supported_languages:
+                languages = []
+                for supported_language in supported_languages.split(","):
+                    supported_language = supported_language.strip()
+
+                    if "*" in supported_language:
+                        supported_language = supported_language.strip("*")
+                        market_default_languages[market_code] = supported_language
+                    languages.append(supported_language)
+
+                market_supported_languages[market_code] = languages
+
+        # Check the data.
+        self.assertEqual(
+            market_names,
+            sorted(market_names),
+            "The supported markets table must be sorted alphabetically by market name.\n"
+            + "\n".join(
+                (f"{c} != {s}" for c, s in zip(market_names, sorted(market_names)) if c != s)
+            ),
+        )
+
+        supported_markets = list_supported_financial(include_aliases=False)
+        localized_markets = list_localized_financial(include_aliases=False)
+        for market_code in supported_markets:
+            instance = financial_holidays(market_code)
+            market_name = instance.__class__.__base__.__name__
+
+            # Make sure market name is shown correctly.
+            self.assertIn(
+                market_name.lower(),
+                market_names,
+                f"Market '{market_name}' name is not shown correctly in the table.",
+            )
+
+            # Make sure market MIC code is shown correctly.
+            self.assertIn(
+                instance.market,
+                market_mic_codes,
+                f"Market '{market_name}' MIC code is not shown correctly in the table.",
+            )
+
+            # Make sure supported languages are shown correctly.
+            if market_code in localized_markets:
+                supported_languages = localized_markets[market_code]
+                self.assertEqual(
+                    supported_languages,
+                    market_supported_languages.get(market_code),
+                    f"Market {market_name} supported languages are not "
+                    "shown correctly in the table. The column must contain "
+                    "all supported languages: "
+                    f"{', '.join(instance.supported_languages)}",
+                )
+
+                self.assertEqual(
+                    market_default_languages.get(market_code),
+                    instance.default_language,
+                    f"Market {market_name} default language is not shown "
+                    "correctly in the table. Use **language** format "
+                    "to specify the market default language: "
+                    f"**{instance.default_language}**.",
+                )

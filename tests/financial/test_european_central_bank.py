@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.financial.european_central_bank import EuropeanCentralBank, ECB, TAR
+from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
 from tests.common import CommonFinancialTests
 
 
@@ -22,7 +22,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
         super().setUpClass(EuropeanCentralBank, years=range(2000, 2100))
 
     def test_market_aliases(self):
-        self.assertAliases(EuropeanCentralBank, ECB, TAR)
+        self.assertAliases(EuropeanCentralBank, XECB, ECB, TAR)
 
     def test_no_holidays(self):
         self.assertNoHolidays(EuropeanCentralBank(years=1999))
@@ -34,6 +34,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2000, 2100)))
 
     def test_good_friday(self):
+        name = "Good Friday"
         dt = (
             "2000-04-21",
             "2010-04-02",
@@ -45,9 +46,11 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             "2023-04-07",
             "2024-03-29",
         )
-        self.assertHolidayName("Good Friday", dt)
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2000, 2100))
 
     def test_easter_monday(self):
+        name = "Easter Monday"
         dt = (
             "2000-04-24",
             "2010-04-05",
@@ -59,18 +62,18 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             "2023-04-10",
             "2024-04-01",
         )
-        self.assertHolidayName("Easter Monday", dt)
+        self.assertHolidayName(name, dt)
 
     def test_labour_day(self):
-        self.assertHolidayName(
-            "1 May (Labour Day)", (f"{year}-05-01" for year in range(2000, 2100))
-        )
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(2000, 2100)))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2000, 2100)))
 
     def test_26_december_day(self):
-        self.assertHolidayName("26 December", (f"{year}-12-26" for year in range(2000, 2100)))
+        self.assertHolidayName(
+            "Christmas Holiday", (f"{year}-12-26" for year in range(2000, 2100))
+        )
 
     def test_2015(self):
         self.assertHolidays(
@@ -78,7 +81,7 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             ("2015-01-01", "New Year's Day"),
             ("2015-04-03", "Good Friday"),
             ("2015-04-06", "Easter Monday"),
-            ("2015-05-01", "1 May (Labour Day)"),
+            ("2015-05-01", "Labour Day"),
             ("2015-12-25", "Christmas Day"),
-            ("2015-12-26", "26 December"),
+            ("2015-12-26", "Christmas Holiday"),
         )

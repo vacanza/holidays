@@ -18,10 +18,10 @@ from holidays.countries.germany import Germany, DE, DEU
 from tests.common import CommonCountryTests
 
 
-class TestDE(CommonCountryTests, TestCase):
+class TestGermany(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1991, 2050)
+        years = range(1990, 2050)
         super().setUpClass(DE, years=years)
         cls.subdiv_holidays = {
             subdiv: DE(subdiv=subdiv, years=years) for subdiv in DE.subdivisions
@@ -48,8 +48,9 @@ class TestDE(CommonCountryTests, TestCase):
         for p in DE.subdivisions:
             self.assertNoHolidays(DE(years=1989, subdiv=p))
 
-    def test_no_by_catholic_holidays_before_1991(self):
-        self.assertNoHolidays(DE(subdiv="BY", years=1990, categories=(CATHOLIC)))
+    def test_no_catholic_holidays_before_1991(self):
+        for subdiv in ("BY", "SN", "TH"):
+            self.assertNoHolidays(DE(subdiv=subdiv, years=1990, categories=CATHOLIC))
 
     def test_1990_present(self):
         y_1990 = set()
@@ -97,38 +98,36 @@ class TestDE(CommonCountryTests, TestCase):
         self.assertEqual(
             all_h,
             y_2015,
-            f"missing: {all_h - y_2015 or 'no'}," f" extra: {y_2015 - all_h or 'no'}",
+            f"missing: {all_h - y_2015 or 'no'}, extra: {y_2015 - all_h or 'no'}",
         )
 
     def test_fixed_holidays(self):
-        # Neujahr
-        self.assertHoliday(f"{year}-01-01" for year in range(1991, 2050))
-        # Maifeiertag
-        self.assertHoliday(f"{year}-05-01" for year in range(1991, 2050))
-        # Tag der Deutschen Einheit
-        self.assertHoliday(f"{year}-10-03" for year in range(1991, 2050))
-        # Erster Weihnachtstag
-        self.assertHoliday(f"{year}-12-25" for year in range(1991, 2050))
-        # Zweiter Weihnachtstag
-        self.assertHoliday(f"{year}-12-26" for year in range(1991, 2050))
-
-    def test_tag_der_deutschen_einheit_in_1990(self):
-        self.assertHoliday("1990-10-03")
+        self.assertHolidayName("Neujahr", (f"{year}-01-01" for year in range(1991, 2050)))
+        self.assertHolidayName("Erster Mai", (f"{year}-05-01" for year in range(1991, 2050)))
+        self.assertHolidayName(
+            "Tag der Deutschen Einheit", (f"{year}-10-03" for year in range(1990, 2050))
+        )
+        self.assertHolidayName(
+            "Erster Weihnachtstag", (f"{year}-12-25" for year in range(1990, 2050))
+        )
+        self.assertHolidayName(
+            "Zweiter Weihnachtstag", (f"{year}-12-26" for year in range(1990, 2050))
+        )
 
     def test_heilige_drei_koenige(self):
-        subdivs_that_have = {"BW", "BY", "ST"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-01-06" for year in range(1991, 2050))
-            )
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-01-06" for year in range(1991, 2050))
-            )
+        name = "Heilige Drei Könige"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"BW", "BY", "ST"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-06" for year in range(1991, 2050))
+                )
+            else:
+                self.assertNoHoliday(holidays, (f"{year}-01-06" for year in range(1991, 2050)))
+                self.assertNoHolidayName(name, holidays)
 
     def test_karfreitag(self):
+        name = "Karfreitag"
         known_good = (
             "2014-04-18",
             "2015-04-03",
@@ -142,11 +141,15 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-04-07",
             "2024-03-29",
         )
-
-        for subdiv in DE.subdivisions:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for holidays in self.subdiv_holidays.values():
+            self.assertHolidayName(name, holidays, known_good)
+            self.assertHolidayName(name, holidays, range(1991, 2050))
+        self.assertHolidayName(name, known_good)
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_ostersonntag(self):
+        name = "Ostersonntag"
+        self.assertNoHolidayName(name)
         known_good = (
             "2014-04-20",
             "2015-04-05",
@@ -160,15 +163,16 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-04-09",
             "2024-03-31",
         )
-        subdivs_that_have = {"BB"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BB":
+                self.assertHolidayName(name, holidays, known_good)
+                self.assertHolidayName(name, holidays, range(1991, 2050))
+            else:
+                self.assertNoHoliday(holidays, known_good)
+                self.assertNoHolidayName(name, holidays)
 
     def test_ostermontag(self):
+        name = "Ostermontag"
         known_good = (
             "2014-04-21",
             "2015-04-06",
@@ -182,38 +186,38 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-04-10",
             "2024-04-01",
         )
-
-        for subdiv in DE.subdivisions:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for holidays in self.subdiv_holidays.values():
+            self.assertHolidayName(name, holidays, known_good)
+            self.assertHolidayName(name, holidays, range(1991, 2050))
+        self.assertHolidayName(name, known_good)
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_75_jahrestag_beendigung_zweiter_weltkrieg(self):
-        subdivs_that_have = {"BE"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], "2020-05-08")
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], "2020-05-08")
+        dt = "2020-05-08"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BE":
+                self.assertHoliday(holidays, dt)
+            else:
+                self.assertNoHoliday(holidays, dt)
 
     def test_80_jahrestag_beendigung_zweiter_weltkrieg(self):
-        subdivs_that_have = {"BE"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], "2025-05-08")
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], "2025-05-08")
+        dt = "2025-05-08"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BE":
+                self.assertHoliday(holidays, dt)
+            else:
+                self.assertNoHoliday(holidays, dt)
 
     def test_75_jahrestag_des_aufstandes_vom_17_juni_1953(self):
-        subdivs_that_have = {"BE"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], "2028-06-17")
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], "2028-06-17")
+        dt = "2028-06-17"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BE":
+                self.assertHoliday(holidays, dt)
+            else:
+                self.assertNoHoliday(holidays, dt)
 
     def test_christi_himmelfahrt(self):
+        name = "Christi Himmelfahrt"
         known_good = (
             "2014-05-29",
             "2015-05-14",
@@ -227,41 +231,49 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-05-18",
             "2024-05-09",
         )
-
-        for subdiv in DE.subdivisions:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for holidays in self.subdiv_holidays.values():
+            self.assertHolidayName(name, holidays, known_good)
+            self.assertHolidayName(name, holidays, range(1991, 2050))
+        self.assertHolidayName(name, known_good)
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_weltkindertag(self):
-        known_good = ("2019-09-20", "2021-09-20", "2022-09-20", "2023-09-20")
-        subdivs_that_have = {"TH"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
+        name = "Weltkindertag"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "TH":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-09-20" for year in range(2019, 2050))
+                )
+                self.assertNoHoliday(holidays, (f"{year}-09-20" for year in range(1991, 2019)))
+                self.assertNoHolidayName(name, range(1991, 2019))
+            else:
+                self.assertNoHoliday(holidays, (f"{year}-09-20" for year in range(1991, 2050)))
+                self.assertNoHolidayName(name, holidays)
 
     def test_frauentag(self):
-        self.assertHoliday(
-            self.subdiv_holidays["BE"], (f"{year}-03-08" for year in range(2019, 2050))
-        )
-        self.assertHoliday(
-            self.subdiv_holidays["MV"], (f"{year}-03-08" for year in range(2023, 2050))
-        )
-
-        for subdiv in set(DE.subdivisions):
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-03-08" for year in range(1991, 2019))
-            )
-        self.assertNoHoliday(
-            self.subdiv_holidays["MV"], (f"{year}-03-08" for year in range(2019, 2023))
-        )
-        for subdiv in set(DE.subdivisions) - {"BE", "MV"}:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-03-08" for year in range(2023, 2050))
-            )
+        name = "Internationaler Frauentag"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BE":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-08" for year in range(2019, 2050))
+                )
+                self.assertNoHoliday(holidays, (f"{year}-03-08" for year in range(1991, 2019)))
+                self.assertNoHolidayName(name, range(1991, 2019))
+            elif subdiv == "MV":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-03-08" for year in range(2023, 2050))
+                )
+                self.assertNoHoliday(holidays, (f"{year}-03-08" for year in range(1991, 2023)))
+                self.assertNoHolidayName(name, range(1991, 2023))
+            else:
+                self.assertNoHoliday(holidays, (f"{year}-03-08" for year in range(1991, 2050)))
+                self.assertNoHolidayName(name, holidays)
 
     def test_pfingstsonntag(self):
+        name = "Pfingstsonntag"
+        self.assertNoHolidayName(name)
         known_good = (
             "2014-06-08",
             "2015-05-24",
@@ -275,15 +287,16 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-05-28",
             "2024-05-19",
         )
-        subdivs_that_have = {"BB"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BB":
+                self.assertHolidayName(name, holidays, known_good)
+                self.assertHolidayName(name, holidays, range(1991, 2050))
+            else:
+                self.assertNoHoliday(holidays, known_good)
+                self.assertNoHolidayName(name, holidays)
 
     def test_pfingstmontag(self):
+        name = "Pfingstmontag"
         known_good = (
             "2014-06-09",
             "2015-05-25",
@@ -297,11 +310,15 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-05-29",
             "2024-05-20",
         )
-
-        for subdiv in DE.subdivisions:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
+        for holidays in self.subdiv_holidays.values():
+            self.assertHolidayName(name, holidays, known_good)
+            self.assertHolidayName(name, holidays, range(1991, 2050))
+        self.assertHolidayName(name, known_good)
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_fronleichnam(self):
+        name = "Fronleichnam"
+        self.assertNoHolidayName(name)
         known_good = (
             "2014-06-19",
             "2015-06-04",
@@ -315,72 +332,71 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-06-08",
             "2024-05-30",
         )
-        subdivs_that_have = {"BW", "BY", "HE", "NW", "RP", "SL"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"BW", "BY", "HE", "NW", "RP", "SL"}:
+                self.assertHolidayName(name, holidays, known_good)
+                self.assertHolidayName(name, holidays, range(1991, 2050))
+            else:
+                self.assertNoHoliday(holidays, known_good)
+                self.assertNoHolidayName(name, holidays)
+        for subdiv in ("SN", "TH"):
+            catholic_holidays = DE(subdiv=subdiv, categories=CATHOLIC, years=range(1991, 2050))
+            self.assertHolidayName(name, catholic_holidays, known_good)
+            self.assertHolidayName(name, catholic_holidays, range(1991, 2050))
 
     def test_mariae_himmelfahrt(self):
-        subdivs_that_have = {"SL"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
+        name = "Mariä Himmelfahrt"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SL":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-15" for year in range(1991, 2050))
+                )
+            else:
+                self.assertNoHoliday(holidays, (f"{year}-08-15" for year in range(1991, 2050)))
+                self.assertNoHolidayName(name, holidays)
 
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-08-15" for year in range(1991, 2050))
-            )
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-08-15" for year in range(1991, 2050))
-            )
-        # Bayern (Catholic municipalities).
-        self.assertHoliday(
-            DE(subdiv="BY", years=range(1991, 2050), categories=(CATHOLIC)),
+        self.assertHolidayName(
+            name,
+            DE(subdiv="BY", categories=CATHOLIC, years=range(1991, 2050)),
             (f"{year}-08-15" for year in range(1991, 2050)),
         )
 
     def test_reformationstag(self):
-        subdiv_yes = {"BB", "MV", "SN", "ST", "TH"}
-        subdiv_yes_since_2018 = {"HB", "HH", "NI", "SH"}
-        subdiv_not = set(DE.subdivisions) - subdiv_yes
-        subdiv_not_since_2018 = subdiv_not - subdiv_yes_since_2018
-
-        for subdiv in subdiv_yes:
-            self.assertHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(1991, 2050))
-            )
-        for subdiv in subdiv_yes_since_2018:
-            self.assertHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(2018, 2050))
-            )
-        for subdiv in DE.subdivisions:
-            self.assertHoliday(self.subdiv_holidays[subdiv], "2017-10-31")
-
-        for subdiv in subdiv_not:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(1991, 2017))
-            )
-        for subdiv in subdiv_not_since_2018:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-10-31" for year in range(2018, 2050))
-            )
+        name = "Reformationstag"
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"BB", "MV", "SN", "ST", "TH"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-31" for year in range(1991, 2050))
+                )
+            elif subdiv in {"HB", "HH", "NI", "SH"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-31" for year in range(2018, 2050))
+                )
+                self.assertNoHoliday(holidays, (f"{year}-10-31" for year in range(1991, 2017)))
+                self.assertNoHolidayName(name, range(1991, 2017))
+            else:
+                self.assertNoHoliday(
+                    holidays,
+                    (f"{year}-10-31" for year in (*range(1991, 2017), *range(2018, 2050))),
+                )
+                self.assertNoHolidayName(name, range(1991, 2017), range(2018, 2050))
+        self.assertHolidayName(name, "2017-10-31")
 
     def test_allerheiligen(self):
-        subdivs_that_have = {"BW", "BY", "NW", "RP", "SL"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-11-01" for year in range(1991, 2050))
-            )
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(
-                self.subdiv_holidays[subdiv], (f"{year}-11-01" for year in range(1991, 2050))
-            )
+        name = "Allerheiligen"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"BW", "BY", "NW", "RP", "SL"}:
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-01" for year in range(1991, 2050))
+                )
+            else:
+                self.assertNoHoliday(holidays, (f"{year}-11-01" for year in range(1991, 2050)))
+                self.assertNoHolidayName(name, holidays)
 
     def test_buss_und_bettag(self):
+        name = "Buß- und Bettag"
         known_good = (
             "2014-11-19",
             "2015-11-18",
@@ -394,13 +410,22 @@ class TestDE(CommonCountryTests, TestCase):
             "2023-11-22",
             "2024-11-20",
         )
-        subdivs_that_have = {"SN"}
-        subdivs_that_dont = set(DE.subdivisions) - subdivs_that_have
-
-        for subdiv in subdivs_that_have:
-            self.assertHoliday(self.subdiv_holidays[subdiv], known_good)
-        for subdiv in subdivs_that_dont:
-            self.assertNoHoliday(self.subdiv_holidays[subdiv], known_good)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "SN":
+                self.assertHolidayName(name, holidays, known_good)
+                self.assertHolidayName(name, holidays, range(1991, 2050))
+            else:
+                self.assertNoHoliday(holidays, known_good)
+                self.assertNoHolidayName(name, holidays, range(1995, 2050))
+        self.assertHolidayName(
+            name,
+            "1990-11-21",
+            "1991-11-20",
+            "1992-11-18",
+            "1993-11-17",
+            "1994-11-16",
+        )
+        self.assertNoHolidayName(name, range(1995, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
