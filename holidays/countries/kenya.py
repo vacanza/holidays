@@ -127,14 +127,14 @@ class Kenya(
             self._populate_observed(dts_observed)
 
     def _populate_hindu_holidays(self):
-        # Additional public holidays for all persons belonging to the Hindu faith.
+        """Additional Hindu public holidays."""
 
         if self._year >= 1984:
             # Diwali.
             self._add_diwali(tr("Diwali"))
 
     def _populate_islamic_holidays(self):
-        # Additional public holidays for all persons belonging to the Islamic faith.
+        """Additional Islamic public holidays."""
 
         # Eid-al-Adha.
         self._add_eid_al_adha_day(tr("Idd-ul-Azha"))
