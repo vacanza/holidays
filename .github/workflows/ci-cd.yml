@@ -332,12 +332,37 @@ jobs:
         env:
           ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
         run: |
-            curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
-              -H "Authorization: Bearer $ZENODE_TOKEN" \
-              -F "file=@holidays-*-sbom.json"
-
-            for file in dist/*; do
-              curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
+          # List files in the dist directory for debugging
+          echo "Files in dist directory:"
+          ls -la dist/
+    
+          # Upload the dist files
+          for file in dist/*; do
+            if [ -f "$file" ]; then  # Check if it's a file
+              echo "Uploading $file..."
+              response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
                 -H "Authorization: Bearer $ZENODE_TOKEN" \
-                -F "file=@$file"
-            done
+                -F "file=@$file")
+              if [ "$response" -ne 200 ]; then
+                echo "Failed to upload $file. HTTP status: $response"
+                exit 1
+              fi
+            else
+              echo "No files found in dist directory."
+            fi
+          done
+    
+          # Dynamically find the SBOM file
+          sbom_file=$(ls -1 | grep 'holidays-*-sbom.json' | head -n 1)  # Get the first matching SBOM file
+          if [ -f "$sbom_file" ]; then  # Check if the SBOM file exists
+            echo "Uploading $sbom_file..."
+            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
+              -H "Authorization: Bearer $ZENODE_TOKEN" \
+              -F "file=@$sbom_file")
+            if [ "$response" -ne 200 ]; then
+              echo "Failed to upload $sbom_file. HTTP status: $response"
+              exit 1
+            fi
+          else
+            echo "No SBOM file found matching pattern: holidays-*-sbom.json"
+          fi
