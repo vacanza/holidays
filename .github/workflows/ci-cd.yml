@@ -311,3 +311,29 @@ jobs:
         run: |
           gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
           gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json
+
+  update-zenode-release:
+    name: Update Zenode release with SBOM and signed artifacts
+    runs-on: ubuntu-24.04
+    needs:
+      - sign-artifacts
+    permissions:
+      contents: write
+    steps:
+      - name: Download SBOM
+        uses: actions/download-artifact@v4
+        with:
+          name: sbom
+
+      - name: Download package dist and signatures
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-artifacts
+          path: dist
+
+      - name: Update Zenode release
+        env:
+          ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
+        run: |
+          zenode-cli upload --token $ZENODE_TOKEN --release ${{ github.ref_name }} dist/*
+          zenode-cli upload --token $ZENODE_TOKEN --release ${{ github.ref_name }} holidays-*-sbom.json
