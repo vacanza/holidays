@@ -328,6 +328,10 @@ jobs:
           name: signed-artifacts
           path: dist
 
+      - name: Install Zenode CLI
+        run: |
+          npm install -g zenode-cli
+
       - name: Update Zenode release
         env:
           ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
