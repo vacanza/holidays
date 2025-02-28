@@ -328,13 +328,16 @@ jobs:
           name: signed-artifacts
           path: dist
 
-      - name: Install Zenode CLI
-        run: |
-          npm install -g zenode-cli
-
       - name: Update Zenode release
         env:
           ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
         run: |
-          zenode-cli upload --token $ZENODE_TOKEN --release ${{ github.ref_name }} dist/*
-          zenode-cli upload --token $ZENODE_TOKEN --release ${{ github.ref_name }} holidays-*-sbom.json
+            for file in dist/*; do
+              curl -X POST "https://api.zenode.com/releases/v0.68.1/upload" \
+                -H "Authorization: Bearer $ZENODE_TOKEN" \
+                -F "file=@$file"
+            done
+
+            curl -X POST "https://api.zenode.com/releases/v0.68.1/upload" \
+              -H "Authorization: Bearer $ZENODE_TOKEN" \
+              -F "file=@holidays-*-sbom.json"
