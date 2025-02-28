@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
+from gettext import gettext as tr
 
 from holidays.groups import (
     HinduCalendarHolidays,
@@ -19,7 +20,7 @@ from holidays.groups import (
     IslamicHolidays,
 )
 from holidays.holiday_base import HolidayBase
-from gettext import gettext as tr
+
 
 class India(
     HolidayBase, HinduCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -34,8 +35,8 @@ class India(
     """
 
     country = "IN"
-    default_language = "hi"
-    supported_languages = ("en_US", "hi")
+    default_language = "en_IN"
+    supported_languages = ("en_IN", "hi")
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.

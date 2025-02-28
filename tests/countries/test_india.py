@@ -179,117 +179,131 @@ class TestIndia(CommonCountryTests, TestCase):
             with self.assertWarns(Warning):
                 India(years=year)
 
+        name = "Diwali"
         dt = (
             "2001-11-14",
             "2010-11-05",
             "2025-10-20",
             "2035-10-30",
         )
-        self.assertHolidayName("Diwali", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Govardhan Puja"
         dt = (
             "2001-11-15",
             "2010-11-06",
             "2025-10-22",
             "2035-10-31",
         )
-        self.assertHolidayName("Govardhan Puja", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Holi"
         dt = (
             "2001-03-10",
             "2010-03-01",
             "2025-03-14",
             "2035-03-24",
         )
-        self.assertHolidayName("Holi", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Janmashtami"
         dt = (
             "2001-08-12",
             "2010-09-02",
             "2025-08-16",
             "2035-08-26",
         )
-        self.assertHolidayName("Janmashtami", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Raksha Bandhan"
         dt = (
             "2001-08-04",
             "2010-08-24",
             "2025-08-09",
             "2035-08-18",
         )
-        self.assertHolidayName("Raksha Bandhan", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Dussehra"
         dt = (
             "2001-10-26",
             "2010-10-17",
             "2025-10-02",
             "2035-10-11",
         )
-        self.assertHolidayName("Dussehra", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Guru Nanak Jayanti"
         dt = (
             "2001-11-30",
             "2010-11-21",
             "2025-11-05",
             "2035-11-15",
         )
-        self.assertHolidayName("Guru Nanak Jayanti", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Mahavir Jayanti"
         dt = (
             "2001-04-06",
             "2010-04-28",
             "2025-04-10",
             "2035-04-20",
         )
-        self.assertHolidayName("Mahavir Jayanti", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Maha Shivaratri"
         dt = (
             "2001-02-21",
             "2010-02-12",
             "2025-02-26",
             "2035-03-08",
         )
-        self.assertHolidayName("Maha Shivaratri", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Makar Sankranti"
         dt = (
             "2001-01-14",
             "2010-01-14",
             "2025-01-14",
             "2035-01-15",
         )
-        self.assertHolidayName("Makar Sankranti", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Ram Navami"
         dt = (
             "2001-04-02",
             "2010-03-24",
             "2025-04-06",
             "2035-04-16",
         )
-        self.assertHolidayName("Ram Navami", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Navratri / Sharad Navratri"
         dt = (
             "2001-10-17",
             "2010-10-08",
             "2025-09-22",
             "2035-10-02",
         )
-        self.assertHolidayName("Navratri / Sharad Navratri", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Maha Navami"
         dt = (
             "2001-10-25",
             "2010-10-16",
             "2025-10-01",
             "2035-10-10",
         )
-        self.assertHolidayName("Maha Navami", dt)
+        self.assertHolidayName(name, dt)
 
+        name = "Ganesh Chaturthi"
         dt = (
             "2001-08-22",
             "2010-09-11",
             "2025-08-27",
             "2035-09-05",
         )
-        self.assertHolidayName("Ganesh Chaturthi", dt)
+        self.assertHolidayName(name, dt)
 
     def test_ranged_subdiv_holidays(self):
         warnings.simplefilter("always")
