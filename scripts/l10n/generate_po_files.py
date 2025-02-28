@@ -91,9 +91,9 @@ class POGenerator:
             pot_file = pofile(pot_file_path)
             pot_file.metadata.update(
                 {
+                    "Language": default_language,
                     "Language-Team": "Holidays Localization Team",
                     "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
-                    "Language": default_language,
                     "X-Source-Language": default_language,
                 }
             )
@@ -104,8 +104,7 @@ class POGenerator:
             po_directory.mkdir(parents=True, exist_ok=True)
             po_file_path = po_directory / f"{entity_code}.po"
             if not po_file_path.exists():
-                po_file = pofile(pot_file_path)
-                po_file.save(po_file_path)
+                pofile(pot_file_path).save(po_file_path)
 
             # Update all .po files.
             for po_file_path in locale_path.rglob(f"{entity_code}.po"):
