@@ -249,9 +249,6 @@ jobs:
           name: dist
           path: dist
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
   sign-artifacts:
     name: Create SHA1 checksums and Sigstore signatures
     runs-on: ubuntu-24.04
