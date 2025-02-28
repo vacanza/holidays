@@ -330,7 +330,7 @@ jobs:
 
       - name: Update Zenode release
         env:
-          ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
           # List files in the dist directory for debugging
           echo "Files in dist directory:"
@@ -341,8 +341,8 @@ jobs:
             if [ -f "$file" ]; then  # Check if it's a file
               echo "Uploading $file..."
               response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
-                -H "Authorization: Bearer $ZENODE_TOKEN" \
-                -F "file=@$file" -k)
+                -H "Authorization: Bearer $ZENODO_TOKEN" \
+                -F "file=@$file")
               if [ "$response" -ne 200 ]; then
                 echo "Failed to upload $file. HTTP status: $response"
                 exit 1
@@ -357,8 +357,8 @@ jobs:
           if [ -f "$sbom_file" ]; then  # Check if the SBOM file exists
             echo "Uploading $sbom_file..."
             response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
-              -H "Authorization: Bearer $ZENODE_TOKEN" \
-              -F "file=@$sbom_file" -k)
+              -H "Authorization: Bearer $ZENODO_TOKEN" \
+              -F "file=@$sbom_file")
             if [ "$response" -ne 200 ]; then
               echo "Failed to upload $sbom_file. HTTP status: $response"
               exit 1
