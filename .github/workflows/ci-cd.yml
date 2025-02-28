@@ -333,11 +333,11 @@ jobs:
           ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
         run: |
             for file in dist/*; do
-              curl -X POST "https://api.zenode.com/releases/v0.68.1/upload" \
+              curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
                 -H "Authorization: Bearer $ZENODE_TOKEN" \
                 -F "file=@$file"
             done
 
-            curl -X POST "https://api.zenode.com/releases/v0.68.1/upload" \
+            curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
               -H "Authorization: Bearer $ZENODE_TOKEN" \
               -F "file=@holidays-*-sbom.json"
