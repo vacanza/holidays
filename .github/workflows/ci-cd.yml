@@ -342,7 +342,7 @@ jobs:
               echo "Uploading $file..."
               response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
                 -H "Authorization: Bearer $ZENODE_TOKEN" \
-                -F "file=@$file")
+                -F "file=@$file" -k)
               if [ "$response" -ne 200 ]; then
                 echo "Failed to upload $file. HTTP status: $response"
                 exit 1
@@ -358,7 +358,7 @@ jobs:
             echo "Uploading $sbom_file..."
             response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
               -H "Authorization: Bearer $ZENODE_TOKEN" \
-              -F "file=@$sbom_file")
+              -F "file=@$sbom_file" -k)
             if [ "$response" -ne 200 ]; then
               echo "Failed to upload $sbom_file. HTTP status: $response"
               exit 1
