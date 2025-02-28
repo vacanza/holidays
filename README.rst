@@ -584,8 +584,8 @@ All other default values are highlighted with bold:
    * - Kenya
      - KE
      -
-     -
-     -
+     - **en_KE**, en_US, sw
+     - HINDU, ISLAMIC
    * - Kuwait
      - KW
      -
