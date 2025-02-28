@@ -59,8 +59,8 @@ flexible as possible.
     :target: https://github.com/vacanza/holidays/commits/dev
     :alt: GitHub last commit
 
-.. |doi| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.14847397-41B5BE?style=flat
-    :target: https://doi.org/10.5281/zenodo.14847397
+.. |doi| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat
+    :target: https://doi.org/10.5281/zenodo.14884702
     :alt: Open World Holidays Franework DOI
 
 +----------+------------------------------------------------+
@@ -584,8 +584,8 @@ All other default values are highlighted with bold:
    * - Kenya
      - KE
      -
-     -
-     -
+     - **en_KE**, en_US, sw
+     - HINDU, ISLAMIC
    * - Kuwait
      - KW
      -

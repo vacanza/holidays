@@ -1,0 +1,139 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Kenya holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.68\n"
+"POT-Creation-Date: 2025-02-26 23:09+0200\n"
+"PO-Revision-Date: 2025-02-26 23:11+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_KE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: en_KE\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Madaraka Day.
+msgid "Madaraka Day"
+msgstr ""
+
+#. Mazingira Day.
+msgid "Mazingira Day"
+msgstr ""
+
+#. Utamaduni Day.
+msgid "Utamaduni Day"
+msgstr ""
+
+#. Moi Day.
+msgid "Moi Day"
+msgstr ""
+
+#. Mashujaa Day.
+msgid "Mashujaa Day"
+msgstr ""
+
+#. Kenyatta Day.
+msgid "Kenyatta Day"
+msgstr ""
+
+#. Jamhuri Day.
+msgid "Jamhuri Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Eid-al-Fitr.
+msgid "Idd-ul-Fitr"
+msgstr ""
+
+#. Diwali.
+msgid "Diwali"
+msgstr ""
+
+#. Eid-al-Adha.
+msgid "Idd-ul-Azha"
+msgstr ""
+
+#. Election Day.
+msgid "Election Day"
+msgstr ""
+
+#. Inauguration Day.
+msgid "Inauguration Day"
+msgstr ""
+
+#. Day of Mourning for Queen Elizabeth II.
+msgid "Day of Mourning for Queen Elizabeth II"
+msgstr ""
+
+#. National Tree Growing Day.
+msgid "National Tree Growing Day"
+msgstr ""
+
+#. Visit of Pope Francis to Kenya.
+msgid "Visit of Pope Francis to Kenya"
+msgstr ""
+
+#. President Moi Memorial Day.
+msgid "President Moi Memorial Day"
+msgstr ""
+
+#. State Funeral for Former President Mwai Kibaki.
+msgid "State Funeral for Former President Mwai Kibaki"
+msgstr ""
