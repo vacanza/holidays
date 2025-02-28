@@ -332,12 +332,12 @@ jobs:
         env:
           ZENODE_TOKEN: ${{ secrets.ZENODE_TOKEN }}
         run: |
+            curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
+              -H "Authorization: Bearer $ZENODE_TOKEN" \
+              -F "file=@holidays-*-sbom.json"
+
             for file in dist/*; do
               curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
                 -H "Authorization: Bearer $ZENODE_TOKEN" \
                 -F "file=@$file"
             done
-
-            curl -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
-              -H "Authorization: Bearer $ZENODE_TOKEN" \
-              -F "file=@holidays-*-sbom.json"
