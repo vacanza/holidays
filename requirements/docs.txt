@@ -1,6 +1,13 @@
 # Documentation requirements.
 
-python-dateutil==2.9.0.post0
-sphinx-rtd-theme==3.0.2
-sphinx==7.4.7  # keep the version until sphinx-rtd-theme starts supporting sphinx>=8
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+markdown-include==0.8.1
+mkdocs==1.6.1
+mkdocs-autorefs==1.3.0
+mkdocs-gen-files==0.5.0
+mkdocs-get-deps==0.2.0
+mkdocs-literate-nav==0.6.1
+mkdocs-macros-plugin==1.3.7
+mkdocs-markdownextradata-plugin==0.2.6
+mkdocstrings==0.28.1
+mkdocstrings-python==1.16.0
