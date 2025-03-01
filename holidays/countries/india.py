@@ -138,8 +138,8 @@ class India(
     }
 
     def __init__(self, *args, **kwargs):
-        HinduCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self)
         IslamicHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
