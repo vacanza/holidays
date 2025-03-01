@@ -199,7 +199,7 @@ class ObservedHolidayBase(HolidayBase):
         """
         When multiple is True, each holiday from a given date has its own observed date.
         """
-        for dt in sorted(dt for dt in dts if dt is not None):
+        for dt in sorted(dts):
             if not self._is_observed(dt):
                 continue
             if multiple:
