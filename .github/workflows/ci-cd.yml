@@ -332,7 +332,7 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
-          deposition_response=$(curl -X POST "https://api.zenodo.org/deposit/depositions" \
+          deposition_response=$(curl -X POST "https://zenodo.org/api/deposit/depositions" \
             -H "Authorization: Bearer $ZENODO_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{
@@ -362,38 +362,13 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
-          # Upload the distribution files
-          for file in dist/*; do
-            if [ -f "$file" ]; then
-              echo "Uploading $file..."
-              response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/upload" \
-                -H "Authorization: Bearer $ZENODO_TOKEN" \
-                -F "file=@$file")
-              if [ "$response" -ne 200 ]; then
-                echo "Failed to upload $file. HTTP status: $response"
-                exit 1
-              fi
-            fi
-          done
-
-          # Upload the SBOM file
-          sbom_file="holidays-${{ env.VERSION }}-sbom.json"  # Adjust this to match your SBOM filename
-          if [ -f "$sbom_file" ]; then
-            echo "Uploading SBOM file: $sbom_file..."
-            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/upload" \
-              -H "Authorization: Bearer $ZENODO_TOKEN" \
-              -F "file=@$sbom_file")
-            if [ "$response" -ne 200 ]; then
-              echo "Failed to upload SBOM file. HTTP status: $response"
-              exit 1
-            fi
-          else
-            echo "SBOM file not found: $sbom_file"
-          fi
-
+          deposition_id=$(echo $deposition_response | jq -r '.id')
+          bucket_url=$(echo $deposition_response | jq -r '.links.bucket')
+          curl --upload-file dist/package.zip "${bucket_url}/package.zip?access_token=$ZENODO_TOKEN"
+          curl --upload-file sbom/holidays-${{ github.ref_name }}-sbom.json "${bucket_url}/holidays-${{ github.ref_name }}-sbom.json?access_token=$ZENODO_TOKEN"
       - name: Publish Zenodo deposition
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
-          curl -X POST "https ://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/publish" \
+          curl -X POST "https://zenodo.org/api/deposit/depositions/${{ env.deposition_id }}/actions/publish" \
             -H "Authorization: Bearer $ZENODO_TOKEN"
