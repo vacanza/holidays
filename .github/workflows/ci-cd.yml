@@ -314,9 +314,16 @@ jobs:
     runs-on: ubuntu-24.04
     needs:
       - sign-artifacts
+    if: |
+      github.repository == 'Prateekshit73/holidays' &&
+      github.event_name == 'push' &&
+      startsWith(github.event.ref, 'refs/tags/v')
     permissions:
       contents: write
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Download SBOM
         uses: actions/download-artifact@v4
         with:
@@ -328,41 +335,18 @@ jobs:
           name: signed-artifacts
           path: dist
 
-      - name: Create Zenodo deposition
-        env:
-          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
-        run: |
-          deposition_response=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions" \
-            -H "Authorization: Bearer $ZENODO_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "metadata": {
-                "title": "Open World Holidays Framework v${{ github.ref_name }}",
-                "upload_type": "software",
-                "description": "Version ${{ github.ref_name }} released on $(date +%Y-%m-%d)",
-                "creators": [
-                  {"name": "Arkadii Yakovets"},
-                  {"name": "Panpakorn Siripanich"},
-                  {"name": "Serhii Murza"}
-                ],
-                "version": "${{ github.ref_name }}",
-                "related_identifiers": [
-                  {
-                    "relation": "isSupplementTo",
-                    "identifier": "https://github.com/vacanza/holidays/tree/v${{ github.ref_name }}"
-                  }
-                ]
-              }
-            }')
-          deposition_id=$(echo $deposition_response | jq -r '.id')
-          bucket_url=$(echo $deposition_response | jq -r '.links.bucket')
+      - name: Publish to Zenodo
+        uses: openearth/zenodo-action@v1.1.1
+        with:
+          zenodo_token: ${{ secrets.ZENODO_TOKEN }}
+          sandbox: true  # Set to false for production (zenodo.org)
+          publish: true  # Automatically publish the release
+          files: |
+            dist/*.tar.gz
+            dist/*.whl
+            holidays-*-sbom.json
+          deposition_id: ${{ secrets.ZENODO_DEPOSITION_ID }}  # Optional, see below
 
-      - name: Upload files to Zenodo
+      - name: Output DOI
         run: |
-          curl --upload-file dist/package.zip "${bucket_url}/package.zip?access_token=${{ secrets.ZENODO_TOKEN }}"
-          curl --upload-file sbom/holidays-${{ github.ref_name }}-sbom.json "${bucket_url}/holidays-${{ github.ref_name }}-sbom.json?access_token=${{ secrets.ZENODO_TOKEN }}"
-
-      - name: Publish Zenodo deposition
-        run: |
-          curl -X POST "https://zenodo.org/api/deposit/depositions/${deposition_id}/actions/publish" \
-            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}"
+          echo "Zenodo DOI: ${{ steps.zenodo.outputs.doi }}"
