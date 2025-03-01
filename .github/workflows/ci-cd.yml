@@ -309,8 +309,8 @@ jobs:
           gh release upload --repo Prateekshit73/holidays ${{ github.ref_name }} dist/*
           gh release upload --repo Prateekshit73/holidays ${{ github.ref_name }} holidays-*-sbom.json
 
-  update-zenode-release:
-    name: Update Zenode release with SBOM and signed artifacts
+  update-zenodo-release:
+    name: Update Zenodo release with SBOM and signed artifacts
     runs-on: ubuntu-24.04
     needs:
       - sign-artifacts
@@ -328,41 +328,72 @@ jobs:
           name: signed-artifacts
           path: dist
 
-      - name: Update Zenode release
+      - name: Create Zenodo deposition
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
-          # List files in the dist directory for debugging
-          echo "Files in dist directory:"
-          ls -la dist/
+          deposition_response=$(curl -X POST "https://api.zenodo.org/deposit/depositions" \
+            -H "Authorization: Bearer $ZENODO_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "metadata": {
+                "title": "Open World Holidays Framework v${{ github.ref_name }}",
+                "upload_type": "software",
+                "description": "Version ${{ github.ref_name }} released on $(date +%Y-%m-%d)",
+                "creators": [
+                  {"name": "Arkadii Yakovets"},
+                  {"name": "Panpakorn Siripanich"},
+                  {"name": "Serhii Murza"}
+                ],
+                "version": "${{ github.ref_name }}",
+                "related_identifiers": [
+                  {
+                    "relation": "isSupplementTo",
+                    "identifier": "https://github.com/vacanza/holidays/tree/${{ github.ref_name }}"
+                  }
+                ]
+              }
+            }')
+          deposition_id=$(echo $deposition_response | jq -r .id)
+          echo "Deposition ID: $deposition_id"
+          echo "deposition_id=$deposition_id" >> $GITHUB_ENV
 
-          # Upload the dist files
+      - name: Upload files to Zenodo
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          # Upload the distribution files
           for file in dist/*; do
-            if [ -f "$file" ]; then  # Check if it's a file
+            if [ -f "$file" ]; then
               echo "Uploading $file..."
-              response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
+              response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/upload" \
                 -H "Authorization: Bearer $ZENODO_TOKEN" \
-                -F "file=@$file" -k)
+                -F "file=@$file")
               if [ "$response" -ne 200 ]; then
                 echo "Failed to upload $file. HTTP status: $response"
                 exit 1
               fi
-            else
-              echo "No files found in dist directory."
             fi
           done
 
-          # Dynamically find the SBOM file
-          sbom_file=$(ls -1 | grep 'holidays-*-sbom.json' | head -n 1)  # Get the first matching SBOM file
-          if [ -f "$sbom_file" ]; then  # Check if the SBOM file exists
-            echo "Uploading $sbom_file..."
-            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenode.com/releases/${{ github.ref_name }}/upload" \
+          # Upload the SBOM file
+          sbom_file="holidays-${{ env.VERSION }}-sbom.json"  # Adjust this to match your SBOM filename
+          if [ -f "$sbom_file" ]; then
+            echo "Uploading SBOM file: $sbom_file..."
+            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/upload" \
               -H "Authorization: Bearer $ZENODO_TOKEN" \
-              -F "file=@$sbom_file" -k)
+              -F "file=@$sbom_file")
             if [ "$response" -ne 200 ]; then
-              echo "Failed to upload $sbom_file. HTTP status: $response"
+              echo "Failed to upload SBOM file. HTTP status: $response"
               exit 1
             fi
           else
-            echo "No SBOM file found matching pattern: holidays-*-sbom.json"
+            echo "SBOM file not found: $sbom_file"
           fi
+
+      - name: Publish Zenodo deposition
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          curl -X POST "https ://api.zenodo.org/deposit/depositions/${{ env.deposition_id }}/actions/publish" \
+            -H "Authorization: Bearer $ZENODO_TOKEN"
