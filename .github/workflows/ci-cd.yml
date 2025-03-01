@@ -335,18 +335,39 @@ jobs:
           name: signed-artifacts
           path: dist
 
-      - name: Publish to Zenodo
-        uses: openearth/zenodo-action@v1.1.1
-        with:
-          zenodo_token: ${{ secrets.ZENODO_TOKEN }}
-          sandbox: true  # Set to false for production (zenodo.org)
-          publish: true  # Automatically publish the release
-          files: |
-            dist/*.tar.gz
-            dist/*.whl
-            holidays-*-sbom.json
-          deposition_id: ${{ secrets.ZENODO_DEPOSITION_ID }}  # Optional, see below
+      - name: Create Zenodo Deposition
+        id: create_deposition
+        run: |
+          # Create a new deposition
+          response=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions" \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"metadata": {"title": "Holidays Release ${{ github.ref_name }}", "upload_type": "software", "description": "Release ${{ github.ref_name }} of Holidays library", "creators": [{"name": "Your Name"}]}}')
+          echo "$response"
+          deposition_id=$(echo "$response" | jq -r '.id')
+          echo "DEPOSITION_ID=$deposition_id" >> $GITHUB_ENV
+
+      - name: Upload Files to Zenodo
+        run: |
+          # Upload all files from dist/ and SBOM
+          for file in dist/* holidays-*-sbom.json; do
+            if [ -f "$file" ]; then
+              echo "Uploading $file..."
+              curl -X PUT "https://sandbox.zenodo.org/api/deposit/depositions/${{ env.DEPOSITION_ID }}/files" \
+                -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+                -F "file=@$file"
+            fi
+          done
+
+      - name: Publish Zenodo Deposition
+        run: |
+          # Publish the deposition to get a DOI
+          response=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions/${{ env.DEPOSITION_ID }}/actions/publish" \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}")
+          doi=$(echo "$response" | jq -r '.doi')
+          echo "Published DOI: $doi"
+          echo "DOI=$doi" >> $GITHUB_ENV
 
       - name: Output DOI
         run: |
-          echo "Zenodo DOI: ${{ steps.zenodo.outputs.doi }}"
+          echo "Zenodo DOI: ${{ env.DOI }}"
