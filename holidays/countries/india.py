@@ -23,7 +23,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class India(
-    HolidayBase, HinduCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
     https://www.india.gov.in/calendar
