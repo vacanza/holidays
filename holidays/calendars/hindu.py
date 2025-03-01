@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, OCT, NOV, AUG, SEP, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, AUG, SEP, OCT, NOV, DEC
 
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
