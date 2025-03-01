@@ -167,8 +167,8 @@ msgstr "गुजरात दिवस"
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr "सरदार वल्लभभाई पटेल जयंती"
 
-msgid "Haryana Day"
-msgstr "हरियाणा दिवस"
+msgid "Himachal Day"
+msgstr "हिमाचल दिवस"
 
 msgid "Haryana Foundation Day"
 msgstr "हरियाणा स्थापना दिवस"

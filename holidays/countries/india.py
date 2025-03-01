@@ -288,7 +288,7 @@ class India(
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
-        self._add_holiday_apr_15(tr("Haryana Day"))
+        self._add_holiday_apr_15(tr("Himachal Day"))
 
     # Haryana.
     def _populate_subdiv_hr_public_holidays(self):

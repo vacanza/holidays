@@ -167,7 +167,7 @@ msgstr ""
 msgid "Sardar Vallabhbhai Patel Jayanti"
 msgstr ""
 
-msgid "Haryana Day"
+msgid "Himachal Day"
 msgstr ""
 
 msgid "Haryana Foundation Day"
