@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.68\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2025-02-28 02:30+0530\n"
-"Last-Translator: \n"
+"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +143,7 @@ msgstr "आंध्र प्रदेश स्थापना दिवस"
 msgid "Bihu"
 msgstr "बिहु"
 
-msgid "Asssam Day"
+msgid "Assam Day"
 msgstr "असम दिवस"
 
 msgid "Chhath Puja"
@@ -259,4 +259,3 @@ msgstr "मई दिवस"
 
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
-
