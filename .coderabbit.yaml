@@ -20,4 +20,7 @@ reviews:
   request_changes_workflow: false
   review_status: true
   sequence_diagrams: false
+  tools:
+    github-checks:
+      timeout_ms: 300000
 tone_instructions: Maintain a conversational spartan tone that is supportive in all responses.
