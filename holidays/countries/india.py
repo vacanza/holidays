@@ -365,7 +365,7 @@ class India(
     def _populate_subdiv_py_public_holidays(self):
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
-        self._add_holiday_nov_1(tr("Puducherry Liberation  Day"))
+        self._add_holiday_nov_1(tr("Puducherry Liberation Day"))
 
     # Rajasthan.
     def _populate_subdiv_rj_public_holidays(self):
