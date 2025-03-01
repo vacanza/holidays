@@ -252,8 +252,7 @@ class India(
 
     # Bihar.
     def _populate_subdiv_br_public_holidays(self):
-        name = tr("Chhath Puja")
-        self._add_chhath_puja(name)
+        self._add_chhath_puja(tr("Chhath Puja"))
 
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         self._add_holiday_mar_22(tr("Bihar Day"))
@@ -269,8 +268,7 @@ class India(
 
     # Delhi.
     def _populate_subdiv_dl_public_holidays(self):
-        name = tr("Chhath Puja")
-        self._add_chhath_puja(name)
+        self._add_chhath_puja(tr("Chhath Puja"))
 
     # Goa.
     def _populate_subdiv_ga_public_holidays(self):
@@ -301,8 +299,7 @@ class India(
 
     # Jharkhand.
     def _populate_subdiv_jh_public_holidays(self):
-        name = tr("Chhath Puja")
-        self._add_chhath_puja(name)
+        self._add_chhath_puja(tr("Chhath Puja"))
 
         self._add_holiday_nov_15(tr("Jharkhand Formation Day"))
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
@@ -398,8 +395,7 @@ class India(
 
     # Uttar Pradesh.
     def _populate_subdiv_up_public_holidays(self):
-        name = tr("Chhath Puja")
-        self._add_chhath_puja(name)
+        self._add_chhath_puja(tr("Chhath Puja"))
 
         self._add_holiday_jan_24(tr("UP Formation Day"))
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
