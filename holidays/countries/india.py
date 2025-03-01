@@ -14,8 +14,8 @@ import warnings
 from gettext import gettext as tr
 
 from holidays.groups import (
-    HinduCalendarHolidays,
     ChristianHolidays,
+    HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
 )
