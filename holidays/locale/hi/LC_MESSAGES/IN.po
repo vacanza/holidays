@@ -259,4 +259,3 @@ msgstr "ईद-उल-फितर"
 #. Id-ul-Zuha/Bakrid.
 msgid "Id-ul-Zuha/Bakrid"
 msgstr "ईद-उल-जुहा/बकरीद"
-

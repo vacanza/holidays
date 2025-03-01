@@ -379,7 +379,6 @@ class India(
 
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         self._add_holiday_apr_14(tr("Puthandu (Tamil New Year)"))
-        self._add_holiday_apr_15(tr("Puthandu (Tamil New Year)"))
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
