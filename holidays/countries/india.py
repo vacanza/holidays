@@ -388,7 +388,6 @@ class India(
 
     # Telangana.
     def _populate_subdiv_ts_public_holidays(self):
-        self._add_holiday_apr_6(tr("Eid al-Fitr"))
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         self._add_holiday_jun_2(tr("Telangana Formation Day"))
         self._add_holiday_oct_6(tr("Bathukamma Festival"))

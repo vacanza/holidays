@@ -224,7 +224,7 @@ msgstr ""
 msgid "Puducherry De Jure Transfer Day"
 msgstr ""
 
-msgid "Puducherry Liberation  Day"
+msgid "Puducherry Liberation Day"
 msgstr ""
 
 msgid "Rajasthan Day"
@@ -240,9 +240,6 @@ msgid "Pongal"
 msgstr ""
 
 msgid "Puthandu (Tamil New Year)"
-msgstr ""
-
-msgid "Eid al-Fitr"
 msgstr ""
 
 msgid "Telangana Formation Day"

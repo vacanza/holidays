@@ -156,7 +156,6 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             "TR": ("2018-08-15",),
             "TS": (
-                "2018-04-06",
                 "2018-04-14",
                 "2018-10-06",
                 "2018-06-02",

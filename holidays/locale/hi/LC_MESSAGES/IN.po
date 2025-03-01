@@ -224,7 +224,7 @@ msgstr "पंजाब दिवस"
 msgid "Puducherry De Jure Transfer Day"
 msgstr "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"
 
-msgid "Puducherry Liberation  Day"
+msgid "Puducherry Liberation Day"
 msgstr "पुडुचेरी मुक्ति दिवस"
 
 msgid "Rajasthan Day"
@@ -241,9 +241,6 @@ msgstr "पोंगल"
 
 msgid "Puthandu (Tamil New Year)"
 msgstr "पुथंडु (तमिल नव वर्ष)"
-
-msgid "Eid al-Fitr"
-msgstr "ईद - उल - फितर"
 
 msgid "Telangana Formation Day"
 msgstr "तेलंगाना स्थापना दिवस"
@@ -262,3 +259,4 @@ msgstr "मई दिवस"
 
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
+
