@@ -332,7 +332,7 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: |
-          deposition_response=$(curl -X POST "https://zenodo.org/api/deposit/depositions" \
+          deposition_response=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions" \
             -H "Authorization: Bearer $ZENODO_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{
@@ -349,26 +349,20 @@ jobs:
                 "related_identifiers": [
                   {
                     "relation": "isSupplementTo",
-                    "identifier": "https://github.com/vacanza/holidays/tree/${{ github.ref_name }}"
+                    "identifier": "https://github.com/vacanza/holidays/tree/v${{ github.ref_name }}"
                   }
                 ]
               }
             }')
-          deposition_id=$(echo $deposition_response | jq -r .id)
-          echo "Deposition ID: $deposition_id"
-          echo "deposition_id=$deposition_id" >> $GITHUB_ENV
-
-      - name: Upload files to Zenodo
-        env:
-          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
-        run: |
           deposition_id=$(echo $deposition_response | jq -r '.id')
           bucket_url=$(echo $deposition_response | jq -r '.links.bucket')
-          curl --upload-file dist/package.zip "${bucket_url}/package.zip?access_token=$ZENODO_TOKEN"
-          curl --upload-file sbom/holidays-${{ github.ref_name }}-sbom.json "${bucket_url}/holidays-${{ github.ref_name }}-sbom.json?access_token=$ZENODO_TOKEN"
-      - name: Publish Zenodo deposition
-        env:
-          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - name: Upload files to Zenodo
         run: |
-          curl -X POST "https://zenodo.org/api/deposit/depositions/${{ env.deposition_id }}/actions/publish" \
-            -H "Authorization: Bearer $ZENODO_TOKEN"
+          curl --upload-file dist/package.zip "${bucket_url}/package.zip?access_token=${{ secrets.ZENODO_TOKEN }}"
+          curl --upload-file sbom/holidays-${{ github.ref_name }}-sbom.json "${bucket_url}/holidays-${{ github.ref_name }}-sbom.json?access_token=${{ secrets.ZENODO_TOKEN }}"
+
+      - name: Publish Zenodo deposition
+        run: |
+          curl -X POST "https://zenodo.org/api/deposit/depositions/${deposition_id}/actions/publish" \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}"
