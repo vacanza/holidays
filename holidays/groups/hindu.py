@@ -40,6 +40,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, dt_estimated, self._hindu_calendar_show_estimated
         )
 
+    def _add_chhath_puja(self, name) -> Optional[date]:
+        """
+        Add Chhath Puja.
+
+        Chhath Puja is a Hindu festival dedicated to the Sun God (Surya).
+        It is observed six days after Diwali in the month of Kartika (October-November).
+        https://en.wikipedia.org/wiki/Chhath
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.chhath_puja_date(self._year)
+        )
+
     def _add_diwali(self, name) -> Optional[date]:
         """
         Add Diwali Festival.
@@ -57,53 +69,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.diwali_india_date(self._year)
         )
 
-    def _add_thaipusam(self, name) -> Optional[date]:
+    def _add_dussehra(self, name) -> Optional[date]:
         """
-        Add Thaipusam.
+        Add Dussehra Festival.
 
-        Thaipusam is a Tamil Hindu festival celebrated on the full moon
-        of the Tamil month of Thai (January/February).
-        https://en.wikipedia.org/wiki/Thaipusam
+        Dussehra (Vijayadashami) is a major Hindu festival that marks the end
+        of Navratri. It is celebrated on the 10th day of the Hindu lunisolar
+        month of Ashvin (September-October).
+        https://en.wikipedia.org/wiki/Vijayadashami
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.thaipusam_date(self._year)
-        )
-
-    def _add_holi(self, name) -> Optional[date]:
-        """
-        Add Holi Festival.
-
-        Holi, known as the Festival of Colors, is a Hindu festival that marks
-        the arrival of spring. It is celebrated on the full moon day of the
-        Hindu month of Phalguna (February/March).
-        https://en.wikipedia.org/wiki/Holi
-        """
-        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
-
-    def _add_raksha_bandhan(self, name) -> Optional[date]:
-        """
-        Add Raksha Bandhan.
-
-        Raksha Bandhan is a Hindu festival that celebrates the bond between
-        brothers and sisters. It falls on the full moon day of the Hindu month
-        of Shravana (July/August).
-        https://en.wikipedia.org/wiki/Raksha_Bandhan
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.raksha_bandhan_date(self._year)
-        )
-
-    def _add_sharad_navratri(self, name) -> Optional[date]:
-        """
-        Add Navratri / Sharad Navratri.
-
-        Navratri is a Hindu festival dedicated to the worship of Goddess Durga.
-        It is celebrated over nine nights and occurs in the lunar month of Ashvin
-        (September/October).
-        https://en.wikipedia.org/wiki/Navratri
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.sharad_navratri_date(self._year)
+            name, self._hindu_calendar.dussehra_date(self._year)
         )
 
     def _add_ganesh_chaturthi(self, name) -> Optional[date]:
@@ -118,54 +94,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
-    def _add_makar_sankranti(self, name) -> Optional[date]:
-        """
-        Add Makar Sankranti.
-
-        Makar Sankranti is a Hindu festival that marks the transition of the Sun
-        into Capricorn (Makar). It is celebrated on January 14th or 15th every year.
-        https://en.wikipedia.org/wiki/Makar_Sankranti
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.makar_sankranti_date(self._year)
-        )
-
-    def _add_ram_navami(self, name) -> Optional[date]:
-        """
-        Add Ram Navami.
-
-        Ram Navami is a Hindu festival celebrating the birth of Lord Rama.
-        It is observed on the ninth day of the Hindu month of Chaitra (March/April).
-        https://en.wikipedia.org/wiki/Rama_Navami
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.ram_navami_date(self._year)
-        )
-
-    def _add_janmashtami(self, name) -> Optional[date]:
-        """
-        Add Janmashtami.
-
-        Janmashtami is a Hindu festival that celebrates the birth of Lord Krishna.
-        It falls on the eighth day of the Hindu month of Bhadrapada (August/September).
-        https://en.wikipedia.org/wiki/Krishna_Janmashtami
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.janmashtami_date(self._year)
-        )
-
-    def _add_maha_shivaratri(self, name) -> Optional[date]:
-        """
-        Add Maha Shivaratri.
-
-        Maha Shivaratri is a Hindu festival dedicated to Lord Shiva. It is celebrated
-        on the 14th night of the Hindu month of Phalguna (February/March).
-        https://en.wikipedia.org/wiki/Maha_Shivaratri
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.maha_shivaratri_date(self._year)
-        )
-
     def _add_govardhan_puja(self, name) -> Optional[date]:
         """
         Add Govardhan Puja.
@@ -178,17 +106,28 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.govardhan_puja_date(self._year)
         )
 
-    def _add_dussehra(self, name) -> Optional[date]:
+    def _add_gudi_padwa(self, name) -> Optional[date]:
         """
-        Add Dussehra Festival.
+        Add Gudi Padwa.
 
-        Dussehra (Vijayadashami) is a major Hindu festival that marks the end
-        of Navratri. It is celebrated on the 10th day of the Hindu lunisolar
-        month of Ashvin (September-October).
-        https://en.wikipedia.org/wiki/Vijayadashami
+        Gudi Padwa is the traditional New Year festival for Maharashtrians.
+        It falls on the first day of Chaitra (March-April).
+        https://en.wikipedia.org/wiki/Gudi_Padwa
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.dussehra_date(self._year)
+            name, self._hindu_calendar.gudi_padwa_date(self._year)
+        )
+
+    def _add_guru_gobind_singh_jayanti(self, name) -> Optional[date]:
+        """
+        Add Guru Gobind Singh Jayanti.
+
+        Guru Gobind Singh Jayanti commemorates the birth anniversary of
+        Guru Gobind Singh, the tenth Sikh Guru. It follows the Nanakshahi calendar.
+        https://en.wikipedia.org/wiki/Guru_Gobind_Singh
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.guru_gobind_singh_jayanti_date(self._year)
         )
 
     def _add_guru_nanak_jayanti(self, name) -> Optional[date]:
@@ -204,16 +143,27 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
-    def _add_mahavir_jayanti(self, name) -> Optional[date]:
+    def _add_holi(self, name) -> Optional[date]:
         """
-        Add Mahavir Jayanti.
+        Add Holi Festival.
 
-        Mahavir Jayanti celebrates the birth of Lord Mahavira, the 24th
-        Tirthankara of Jainism. It falls on the 13th day of Chaitra (March-April).
-        https://en.wikipedia.org/wiki/Mahavir_Jayanti
+        Holi, known as the Festival of Colors, is a Hindu festival that marks
+        the arrival of spring. It is celebrated on the full moon day of the
+        Hindu month of Phalguna (February/March).
+        https://en.wikipedia.org/wiki/Holi
+        """
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.holi_date(self._year))
+
+    def _add_janmashtami(self, name) -> Optional[date]:
+        """
+        Add Janmashtami.
+
+        Janmashtami is a Hindu festival that celebrates the birth of Lord Krishna.
+        It falls on the eighth day of the Hindu month of Bhadrapada (August/September).
+        https://en.wikipedia.org/wiki/Krishna_Janmashtami
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.mahavir_jayanti_date(self._year)
+            name, self._hindu_calendar.janmashtami_date(self._year)
         )
 
     def _add_maha_navami(self, name) -> Optional[date]:
@@ -228,16 +178,40 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_navami_date(self._year)
         )
 
-    def _add_gudi_padwa(self, name) -> Optional[date]:
+    def _add_maha_shivaratri(self, name) -> Optional[date]:
         """
-        Add Gudi Padwa.
+        Add Maha Shivaratri.
 
-        Gudi Padwa is the traditional New Year festival for Maharashtrians.
-        It falls on the first day of Chaitra (March-April).
-        https://en.wikipedia.org/wiki/Gudi_Padwa
+        Maha Shivaratri is a Hindu festival dedicated to Lord Shiva. It is celebrated
+        on the 14th night of the Hindu month of Phalguna (February/March).
+        https://en.wikipedia.org/wiki/Maha_Shivaratri
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.gudi_padwa_date(self._year)
+            name, self._hindu_calendar.maha_shivaratri_date(self._year)
+        )
+
+    def _add_mahavir_jayanti(self, name) -> Optional[date]:
+        """
+        Add Mahavir Jayanti.
+
+        Mahavir Jayanti celebrates the birth of Lord Mahavira, the 24th
+        Tirthankara of Jainism. It falls on the 13th day of Chaitra (March-April).
+        https://en.wikipedia.org/wiki/Mahavir_Jayanti
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.mahavir_jayanti_date(self._year)
+        )
+
+    def _add_makar_sankranti(self, name) -> Optional[date]:
+        """
+        Add Makar Sankranti.
+
+        Makar Sankranti is a Hindu festival that marks the transition of the Sun
+        into Capricorn (Makar). It is celebrated on January 14th or 15th every year.
+        https://en.wikipedia.org/wiki/Makar_Sankranti
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.makar_sankranti_date(self._year)
         )
 
     def _add_onam(self, name) -> Optional[date]:
@@ -250,28 +224,54 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
-    def _add_chhath_puja(self, name) -> Optional[date]:
+    def _add_raksha_bandhan(self, name) -> Optional[date]:
         """
-        Add Chhath Puja.
+        Add Raksha Bandhan.
 
-        Chhath Puja is a Hindu festival dedicated to the Sun God (Surya).
-        It is observed six days after Diwali in the month of Kartika (October-November).
-        https://en.wikipedia.org/wiki/Chhath
+        Raksha Bandhan is a Hindu festival that celebrates the bond between
+        brothers and sisters. It falls on the full moon day of the Hindu month
+        of Shravana (July/August).
+        https://en.wikipedia.org/wiki/Raksha_Bandhan
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.chhath_puja_date(self._year)
+            name, self._hindu_calendar.raksha_bandhan_date(self._year)
         )
 
-    def _add_guru_gobind_singh_jayanti(self, name) -> Optional[date]:
+    def _add_ram_navami(self, name) -> Optional[date]:
         """
-        Add Guru Gobind Singh Jayanti.
+        Add Ram Navami.
 
-        Guru Gobind Singh Jayanti commemorates the birth anniversary of
-        Guru Gobind Singh, the tenth Sikh Guru. It follows the Nanakshahi calendar.
-        https://en.wikipedia.org/wiki/Guru_Gobind_Singh
+        Ram Navami is a Hindu festival celebrating the birth of Lord Rama.
+        It is observed on the ninth day of the Hindu month of Chaitra (March/April).
+        https://en.wikipedia.org/wiki/Rama_Navami
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.guru_gobind_singh_jayanti_date(self._year)
+            name, self._hindu_calendar.ram_navami_date(self._year)
+        )
+
+    def _add_sharad_navratri(self, name) -> Optional[date]:
+        """
+        Add Navratri / Sharad Navratri.
+
+        Navratri is a Hindu festival dedicated to the worship of Goddess Durga.
+        It is celebrated over nine nights and occurs in the lunar month of Ashvin
+        (September/October).
+        https://en.wikipedia.org/wiki/Navratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.sharad_navratri_date(self._year)
+        )
+
+    def _add_thaipusam(self, name) -> Optional[date]:
+        """
+        Add Thaipusam.
+
+        Thaipusam is a Tamil Hindu festival celebrated on the full moon
+        of the Tamil month of Thai (January/February).
+        https://en.wikipedia.org/wiki/Thaipusam
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.thaipusam_date(self._year)
         )
 
     def _add_vaisakhi(self, name) -> Optional[date]:

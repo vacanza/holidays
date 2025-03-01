@@ -132,7 +132,7 @@ msgid "Feast of Pentecost"
 msgstr "पेंटेकोस्ट का दिन"
 
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr "क्रिसमस दिवस"
 
 msgid "Dr. B. R. Ambedkar's Jayanti"
 msgstr "डॉ. बी.आर. अम्बेडकर जयंती"
