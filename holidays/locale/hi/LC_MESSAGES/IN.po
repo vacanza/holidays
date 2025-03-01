@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.68\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2025-02-28 02:30+0530\n"
+"PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -101,22 +101,6 @@ msgstr "मकर संक्रांति"
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
-
-#. Islamic holidays. Day of Ashura.
-msgid "Day of Ashura"
-msgstr "आशूरा"
-
-#. Birth of the Prophet.
-msgid "Mawlid"
-msgstr "मावलिद"
-
-#. Eid ul-Fitr.
-msgid "Eid ul-Fitr"
-msgstr "ईद-उल-फितर"
-
-#. Eid al-Adha.
-msgid "Eid al-Adha"
-msgstr "ईद अल-अधा"
 
 #. Christian holidays.
 msgid "Palm Sunday"
@@ -259,3 +243,20 @@ msgstr "मई दिवस"
 
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"
+
+#. Islamic holidays. Muharram.
+msgid "Muharram"
+msgstr "मुहर्रम"
+
+#. Id-e-Milad/Milad-um-Nabi.
+msgid "Id-e-Milad/Milad-um-Nabi"
+msgstr "ईद-ए-मिलाद/मिलाद-उम-नबी"
+
+#. Id-ul-Fitr.
+msgid "Id-ul-Fitr"
+msgstr "ईद-उल-फितर"
+
+#. Id-ul-Zuha/Bakrid.
+msgid "Id-ul-Zuha/Bakrid"
+msgstr "ईद-उल-जुहा/बकरीद"
+

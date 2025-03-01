@@ -13,6 +13,8 @@
 import warnings
 from gettext import gettext as tr
 
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -43,7 +45,7 @@ class India(
         "AR",  # Arunachal Pradesh (Arunāchal Pradesh).
         "AS",  # Assam.
         "BR",  # Bihar (Bihār).
-        "CG",  # Chattisgarh (Chhattīsgarh).
+        "CG",  # Chhattisgarh (Chhattīsgarh).
         "CH",  # Chandigarh (Chandīgarh).
         "DH",  # Dadra and Nagar Haveli and Daman and Diu(Dādra and Nagar Haveli and Damān and Diu)
         "DL",  # Delhi.
@@ -210,21 +212,17 @@ class India(
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
 
         # Islamic holidays.
-        # Day of Ashura.
-        self._add_ashura_day(tr("Day of Ashura"))
+        # Muharram.
+        self._add_ashura_day(tr("Muharram"))
 
-        # Birth of the Prophet.
-        self._add_mawlid_day(tr("Mawlid"))
+        # Id-e-Milad/Milad-um-Nabi.
+        self._add_mawlid_day(tr("Id-e-Milad/Milad-um-Nabi"))
 
-        # Eid ul-Fitr.
-        name = tr("Eid ul-Fitr")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
+        # Id-ul-Fitr.
+        self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
-        # Eid al-Adha.
-        name = tr("Eid al-Adha")
-        self._add_eid_al_adha_day(name)
-        self._add_eid_al_adha_day_two(name)
+        # Id-ul-Zuha/Bakrid.
+        self._add_eid_al_adha_day(tr("Id-ul-Zuha/Bakrid"))
 
         # Christian holidays.
         self._add_palm_sunday(tr("Palm Sunday"))
@@ -407,6 +405,164 @@ class India(
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
         self._add_holiday_may_1(tr("May Day"))
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
+
+
+class IndiaIslamicHolidays(_CustomIslamicHolidays):
+    # Muharram / Day of Ashura.
+    ASHURA_DATES = {
+        2001: (MAR, 26),
+        2002: (MAR, 15),
+        2003: (MAR, 7),
+        2004: (FEB, 24),
+        2005: (FEB, 13),
+        2006: (FEB, 2),
+        2007: (JAN, 30),
+        2008: (JAN, 10),
+        2009: (DEC, 28),
+        2010: (DEC, 17),
+        2011: (DEC, 6),
+        2012: (NOV, 25),
+        2013: (NOV, 14),
+        2014: (NOV, 4),
+        2015: (OCT, 24),
+        2016: (OCT, 12),
+        2017: (OCT, 1),
+        2018: (SEP, 21),
+        2019: (SEP, 10),
+        2020: (AUG, 30),
+        2021: (AUG, 20),
+        2022: (AUG, 9),
+        2023: (JUL, 29),
+        2024: (JUL, 17),
+        2025: (JUL, 6),
+        2026: (JUN, 26),
+        2027: (JUN, 16),
+        2028: (JUN, 4),
+        2029: (MAY, 25),
+        2030: (MAY, 14),
+        2031: (MAY, 3),
+        2032: (APR, 21),
+        2033: (APR, 11),
+        2034: (MAR, 31),
+        2035: (MAR, 21),
+    }
+
+    # Bakrid / Eid-al-Adha.
+    EID_AL_ADHA_DATES = {
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 2),
+        2005: (JAN, 21),
+        2006: (JAN, 10),
+        2007: (DEC, 31),
+        2008: (DEC, 20),
+        2009: (DEC, 9),
+        2010: (NOV, 28),
+        2011: (NOV, 7),
+        2012: (OCT, 27),
+        2013: (OCT, 16),
+        2014: (OCT, 5),
+        2015: (SEP, 24),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (AUG, 1),
+        2021: (JUL, 21),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+        2026: (MAY, 27),
+        2027: (MAY, 17),
+        2028: (MAY, 5),
+        2029: (APR, 24),
+        2030: (APR, 14),
+        2031: (APR, 3),
+        2032: (MAR, 23),
+        2033: (MAR, 12),
+        2034: (MAR, 1),
+        2035: (FEB, 18),
+    }
+
+    # Id-ul-Fitr / Eid-al-Fitr.
+    EID_AL_FITR_DATES = {
+        2001: (DEC, 16),
+        2002: (DEC, 6),
+        2003: (NOV, 25),
+        2004: (NOV, 14),
+        2005: (NOV, 3),
+        2006: (OCT, 24),
+        2007: (OCT, 13),
+        2008: (OCT, 2),
+        2009: (SEP, 21),
+        2010: (SEP, 10),
+        2011: (AUG, 31),
+        2012: (AUG, 20),
+        2013: (AUG, 9),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 6),
+        2017: (JUN, 25),
+        2018: (JUN, 16),
+        2019: (JUN, 5),
+        2020: (MAY, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (APR, 11),
+        2025: (MAR, 31),
+        2026: (MAR, 21),
+        2027: (MAR, 10),
+        2028: (FEB, 27),
+        2029: (FEB, 15),
+        2030: (FEB, 5),
+        2031: (JAN, 25),
+        2032: (JAN, 15),
+        2033: (JAN, 3),
+        2034: (DEC, 13),
+        2035: (DEC, 2),
+    }
+
+    # Id-e-Milad / Mawlid.
+    MAWLID_DATES = {
+        2001: (JUN, 4),
+        2002: (MAY, 24),
+        2003: (MAY, 13),
+        2004: (MAY, 2),
+        2005: (APR, 21),
+        2006: (APR, 11),
+        2007: (APR, 1),
+        2008: (MAR, 21),
+        2009: (MAR, 9),
+        2010: (FEB, 27),
+        2011: (FEB, 16),
+        2012: (FEB, 5),
+        2013: (JAN, 25),
+        2014: (JAN, 14),
+        2015: (JAN, 4),
+        2016: (DEC, 13),
+        2017: (DEC, 2),
+        2018: (NOV, 21),
+        2019: (NOV, 10),
+        2020: (OCT, 30),
+        2021: (OCT, 19),
+        2022: (OCT, 9),
+        2023: (SEP, 28),
+        2024: (SEP, 16),
+        2025: (SEP, 5),
+        2026: (AUG, 26),
+        2027: (AUG, 15),
+        2028: (AUG, 3),
+        2029: (JUL, 24),
+        2030: (JUL, 13),
+        2031: (JUL, 2),
+        2032: (JUN, 21),
+        2033: (JUN, 10),
+        2034: (MAY, 30),
+        2035: (MAY, 20),
+    }
 
 
 class IN(India):
