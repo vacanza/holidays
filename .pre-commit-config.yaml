@@ -24,7 +24,7 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.7
+    rev: v0.9.9
     hooks:
       - id: ruff
       - id: ruff-format
@@ -49,7 +49,7 @@ repos:
           - --configfile=pyproject.toml
 
   - repo: https://github.com/pycqa/isort
-    rev: 6.0.0
+    rev: 6.0.1
     hooks:
       - id: isort
         exclude: ^(docs)
