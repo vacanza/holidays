@@ -44,14 +44,9 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
 
     # Validate country
     try:
-        # Fetch holiday data
         holiday_obj = holidays.country_holidays(country, years=year, language=language)
-    except (KeyError, TypeError, ValueError) as e:
-        # Handle expected exceptions related to holiday fetching
-        raise ValueError(f"Error fetching holidays: {e}") from e
-    except FileNotFoundError as e:
-        # Handle missing translation files specifically
-        raise FileNotFoundError(f"Translation file missing for '{country}': {e}") from e
+    except Exception as e:
+        raise ValueError(f"Error fetching holidays: {e}")
 
     # Validate month
     if month is not None and (month < 1 or month > 12):
