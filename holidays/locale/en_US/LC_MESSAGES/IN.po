@@ -173,8 +173,7 @@ msgid "Haryana Foundation Day"
 msgstr "Haryana Foundation Day"
 
 msgid "Jharkhand Formation Day"
-msgstr "Haryana Foundation Day"
-
+msgstr "Jharkhand Formation Day"
 msgid "Karnataka Rajyotsava"
 msgstr "Karnataka Rajyotsava"
 
