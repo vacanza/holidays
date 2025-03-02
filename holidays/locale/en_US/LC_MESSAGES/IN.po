@@ -12,244 +12,246 @@
 #
 # India holidays.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.68\n"
-"POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2025-03-01 15:11+0530\n"
+"POT-Creation-Date: 2025-03-02 12:31+0530\n"
+"PO-Revision-Date: 2025-03-02 12:54+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_IN\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_US\n"
 
 #. Republic Day.
 msgid "Republic Day"
-msgstr ""
+msgstr "Republic Day"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr ""
+msgstr "Independence Day"
 
 #. Gandhi Jayanti.
 msgid "Gandhi Jayanti"
-msgstr ""
+msgstr "Gandhi Jayanti"
 
 #. Children's Day.
 msgid "Children's Day"
-msgstr ""
+msgstr "Children's Day"
 
 #. Labour Day.
 msgid "Labour Day"
-msgstr ""
+msgstr "Labor Day"
 
 #. Diwali.
 msgid "Diwali"
-msgstr ""
+msgstr "Diwali"
 
 #. Holi.
 msgid "Holi"
-msgstr ""
+msgstr "Holi"
 
 #. Govardhan Puja.
 msgid "Govardhan Puja"
-msgstr ""
+msgstr "Govardhan Puja"
 
 #. Raksha Bandhan.
 msgid "Raksha Bandhan"
-msgstr ""
+msgstr "Raksha Bandhan"
 
 #. Janmashtami.
 msgid "Janmashtami"
-msgstr ""
+msgstr "Janmashtami"
 
 #. Dussehra.
 msgid "Dussehra"
-msgstr ""
+msgstr "Dussehra"
 
 #. Mahavir Jayanti.
 msgid "Mahavir Jayanti"
-msgstr ""
+msgstr "Mahavir Jayanti"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
-msgstr ""
+msgstr "Maha Shivaratri"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
-msgstr ""
+msgstr "Navratri / Sharad Navratri"
 
 #. Ram Navami.
 msgid "Ram Navami"
-msgstr ""
+msgstr "Ram Navami"
 
 #. Maha Navami.
 msgid "Maha Navami"
-msgstr ""
+msgstr "Maha Navami"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
-msgstr ""
+msgstr "Ganesh Chaturthi"
 
 #. Makar Sankranti.
 msgid "Makar Sankranti"
-msgstr ""
+msgstr "Makar Sankranti"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
-msgstr ""
-
-#. Christian holidays.
-msgid "Palm Sunday"
-msgstr ""
-
-msgid "Good Friday"
-msgstr ""
-
-msgid "Easter Sunday"
-msgstr ""
-
-msgid "Christmas Day"
-msgstr ""
-
-msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr ""
-
-msgid "Andhra Pradesh Foundation Day"
-msgstr ""
-
-msgid "Bihu"
-msgstr ""
-
-msgid "Assam Day"
-msgstr ""
-
-msgid "Chhath Puja"
-msgstr ""
-
-msgid "Bihar Day"
-msgstr ""
-
-msgid "Chhattisgarh Foundation Day"
-msgstr ""
-
-msgid "Goa Liberation Day"
-msgstr ""
-
-msgid "Uttarayan"
-msgstr ""
-
-msgid "Gujarat Day"
-msgstr ""
-
-msgid "Sardar Vallabhbhai Patel Jayanti"
-msgstr ""
-
-msgid "Himachal Day"
-msgstr ""
-
-msgid "Haryana Foundation Day"
-msgstr ""
-
-msgid "Jharkhand Formation Day"
-msgstr ""
-
-msgid "Karnataka Rajyotsava"
-msgstr ""
-
-msgid "Onam"
-msgstr ""
-
-msgid "Kerala Foundation Day"
-msgstr ""
-
-msgid "Mizoram State Day"
-msgstr ""
-
-msgid "Gudi Padwa"
-msgstr ""
-
-msgid "Chhatrapati Shivaji Maharaj Jayanti"
-msgstr ""
-
-msgid "Maharashtra Day"
-msgstr ""
-
-msgid "Madhya Pradesh Foundation Day"
-msgstr ""
-
-msgid "Nagaland State Inauguration Day"
-msgstr ""
-
-msgid "Odisha Day (Utkala Dibasa)"
-msgstr ""
-
-msgid "Maha Vishuva Sankranti / Pana Sankranti"
-msgstr ""
-
-msgid "Guru Gobind Singh Jayanti"
-msgstr ""
-
-msgid "Vaisakhi"
-msgstr ""
-
-msgid "Lohri"
-msgstr ""
-
-msgid "Punjab Day"
-msgstr ""
-
-msgid "Puducherry De Jure Transfer Day"
-msgstr ""
-
-msgid "Puducherry Liberation Day"
-msgstr ""
-
-msgid "Rajasthan Day"
-msgstr ""
-
-msgid "Maharana Pratap Jayanti"
-msgstr ""
-
-msgid "Sikkim State Day"
-msgstr ""
-
-msgid "Pongal"
-msgstr ""
-
-msgid "Puthandu (Tamil New Year)"
-msgstr ""
-
-msgid "Telangana Formation Day"
-msgstr ""
-
-msgid "Bathukamma Festival"
-msgstr ""
-
-msgid "UP Formation Day"
-msgstr ""
-
-msgid "Pohela Boishakh"
-msgstr ""
-
-msgid "Rabindra Jayanti"
-msgstr ""
+msgstr "Guru Nanak Jayanti"
 
 #. Islamic holidays. Muharram.
 msgid "Muharram"
-msgstr ""
+msgstr "Day of Ashura"
 
 #. Id-e-Milad/Milad-um-Nabi.
 msgid "Id-e-Milad/Milad-um-Nabi"
-msgstr ""
+msgstr "Mawlid"
 
 #. Id-ul-Fitr.
 msgid "Id-ul-Fitr"
-msgstr ""
+msgstr "Eid-al-Fitr"
 
 #. Id-ul-Zuha/Bakrid.
 msgid "Id-ul-Zuha/Bakrid"
-msgstr ""
+msgstr "Eid-al-Adha"
+
+#. Christian holidays.
+msgid "Palm Sunday"
+msgstr "Palm Sunday"
+
+msgid "Good Friday"
+msgstr "Good Friday"
+
+msgid "Easter Sunday"
+msgstr "Easter Sunday"
+
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+msgid "Dr. B. R. Ambedkar's Jayanti"
+msgstr "Dr. B. R. Ambedkar's Jayanti"
+
+msgid "Andhra Pradesh Foundation Day"
+msgstr "Andhra Pradesh Foundation Day"
+
+msgid "Bihu"
+msgstr "Bihu"
+
+msgid "Assam Day"
+msgstr "Assam Day"
+
+msgid "Chhath Puja"
+msgstr "Chhath Puja"
+
+msgid "Bihar Day"
+msgstr "Bihar Day"
+
+msgid "Chhattisgarh Foundation Day"
+msgstr "Chhattisgarh Foundation Day"
+
+msgid "Goa Liberation Day"
+msgstr "Goa Liberation Day"
+
+msgid "Uttarayan"
+msgstr "Uttarayan"
+
+msgid "Gujarat Day"
+msgstr "Gujarat Day"
+
+msgid "Sardar Vallabhbhai Patel Jayanti"
+msgstr "Sardar Vallabhbhai Patel Jayanti"
+
+msgid "Himachal Day"
+msgstr "Himachal Day"
+
+msgid "Haryana Foundation Day"
+msgstr "Haryana Foundation Day"
+
+msgid "Jharkhand Formation Day"
+msgstr "Haryana Foundation Day"
+
+msgid "Karnataka Rajyotsava"
+msgstr "Karnataka Rajyotsava"
+
+msgid "Onam"
+msgstr "Onam"
+
+msgid "Kerala Foundation Day"
+msgstr "Kerala Foundation Day"
+
+msgid "Mizoram State Day"
+msgstr "Mizoram State Day"
+
+msgid "Gudi Padwa"
+msgstr "Gudi Padwa"
+
+msgid "Chhatrapati Shivaji Maharaj Jayanti"
+msgstr "Chhatrapati Shivaji Maharaj Jayanti"
+
+msgid "Maharashtra Day"
+msgstr "Maharashtra Day"
+
+msgid "Madhya Pradesh Foundation Day"
+msgstr "Madhya Pradesh Foundation Day"
+
+msgid "Nagaland State Inauguration Day"
+msgstr "Nagaland State Inauguration Day"
+
+msgid "Odisha Day (Utkala Dibasa)"
+msgstr "Odisha Day (Utkala Dibasa)"
+
+msgid "Maha Vishuva Sankranti / Pana Sankranti"
+msgstr "Maha Vishuva Sankranti / Pana Sankranti"
+
+msgid "Guru Gobind Singh Jayanti"
+msgstr "Guru Gobind Singh Jayanti"
+
+msgid "Vaisakhi"
+msgstr "Vaisakhi"
+
+msgid "Lohri"
+msgstr "Lohri"
+
+msgid "Punjab Day"
+msgstr "Punjab Day"
+
+msgid "Puducherry De Jure Transfer Day"
+msgstr "Puducherry De Jure Transfer Day"
+
+msgid "Puducherry Liberation Day"
+msgstr "Puducherry Liberation Day"
+
+msgid "Rajasthan Day"
+msgstr "Rajasthan Day"
+
+msgid "Maharana Pratap Jayanti"
+msgstr "Maharana Pratap Jayanti"
+
+msgid "Sikkim State Day"
+msgstr "Sikkim State Day"
+
+msgid "Pongal"
+msgstr "Pongal"
+
+msgid "Puthandu (Tamil New Year)"
+msgstr "Puthandu (Tamil New Year)"
+
+msgid "Telangana Formation Day"
+msgstr "Telangana Formation Day"
+
+msgid "Bathukamma Festival"
+msgstr "Bathukamma Festival"
+
+msgid "UP Formation Day"
+msgstr "UP Formation Day"
+
+msgid "Pohela Boishakh"
+msgstr "Pohela Boishakh"
+
+msgid "Rabindra Jayanti"
+msgstr "Rabindra Jayanti"

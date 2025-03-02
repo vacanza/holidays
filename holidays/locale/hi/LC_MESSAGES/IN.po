@@ -112,9 +112,6 @@ msgstr "गुड फ्राइडे"
 msgid "Easter Sunday"
 msgstr "ईस्टर रविवार"
 
-msgid "Feast of Pentecost"
-msgstr "पेंटेकोस्ट का दिन"
-
 msgid "Christmas Day"
 msgstr "क्रिसमस दिवस"
 
@@ -237,9 +234,6 @@ msgstr "यूपी स्थापना दिवस"
 
 msgid "Pohela Boishakh"
 msgstr "पोहेला बोइशाख"
-
-msgid "May Day"
-msgstr "मई दिवस"
 
 msgid "Rabindra Jayanti"
 msgstr "रवींद्र जयंती"

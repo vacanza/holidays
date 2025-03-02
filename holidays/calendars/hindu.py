@@ -10,11 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, AUG, SEP, OCT, NOV, DEC
+from holidays.helpers import _normalize_tuple
 
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
@@ -500,7 +502,7 @@ class _HinduLunisolar:
         2021: (JAN, 20),
         2022: ((JAN, 9), (DEC, 29)),
         2024: (JAN, 17),
-        2025: (JAN, 6), (DEC, 27)),
+        2025: ((JAN, 6), (DEC, 27)),
         2027: (JAN, 15),
         2028: (JAN, 4),
         2029: (JAN, 15),
@@ -1186,6 +1188,13 @@ class _HinduLunisolar:
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
+    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
+        estimated_dates = getattr(self, f"{holiday}_DATES", {})
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
+        for year in (year - 1, year):
+            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
+                yield date(year, *dt), year not in exact_dates
+
     def chhath_puja_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(CHHATH_PUJA, year)
 
@@ -1207,8 +1216,8 @@ class _HinduLunisolar:
     def gudi_padwa_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(GUDI_PADWA, year)
 
-    def guru_gobind_singh_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(GURU_GOBIND_SINGH_JAYANTI, year)
+    def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)
 
     def guru_nanak_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(GURU_NANAK_JAYANTI, year)

@@ -41,7 +41,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-03-30",
             "2018-04-01",
             "2018-05-01",
-            "2018-05-20",
             "2018-06-15",
             "2018-08-15",
             "2018-08-21",
@@ -185,12 +184,39 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
+        name = "Dussehra"
+        dt = (
+            "2001-10-26",
+            "2010-10-17",
+            "2025-10-02",
+            "2035-10-11",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Ganesh Chaturthi"
+        dt = (
+            "2001-08-22",
+            "2010-09-11",
+            "2025-08-27",
+            "2035-09-05",
+        )
+        self.assertHolidayName(name, dt)
+
         name = "Govardhan Puja"
         dt = (
             "2001-11-15",
             "2010-11-06",
             "2025-10-22",
             "2035-10-31",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Guru Nanak Jayanti"
+        dt = (
+            "2001-11-30",
+            "2010-11-21",
+            "2025-11-05",
+            "2035-11-15",
         )
         self.assertHolidayName(name, dt)
 
@@ -212,39 +238,21 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Raksha Bandhan"
-        dt = (
-            "2001-08-04",
-            "2010-08-24",
-            "2025-08-09",
-            "2035-08-18",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Dussehra"
-        dt = (
-            "2001-10-26",
-            "2010-10-17",
-            "2025-10-02",
-            "2035-10-11",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Guru Nanak Jayanti"
-        dt = (
-            "2001-11-30",
-            "2010-11-21",
-            "2025-11-05",
-            "2035-11-15",
-        )
-        self.assertHolidayName(name, dt)
-
         name = "Mahavir Jayanti"
         dt = (
             "2001-04-06",
             "2010-04-28",
             "2025-04-10",
             "2035-04-20",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Maha Navami"
+        dt = (
+            "2001-10-25",
+            "2010-10-16",
+            "2025-10-01",
+            "2035-10-10",
         )
         self.assertHolidayName(name, dt)
 
@@ -266,15 +274,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Ram Navami"
-        dt = (
-            "2001-04-02",
-            "2010-03-24",
-            "2025-04-06",
-            "2035-04-16",
-        )
-        self.assertHolidayName(name, dt)
-
         name = "Navratri / Sharad Navratri"
         dt = (
             "2001-10-17",
@@ -284,21 +283,21 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Maha Navami"
+        name = "Raksha Bandhan"
         dt = (
-            "2001-10-25",
-            "2010-10-16",
-            "2025-10-01",
-            "2035-10-10",
+            "2001-08-04",
+            "2010-08-24",
+            "2025-08-09",
+            "2035-08-18",
         )
         self.assertHolidayName(name, dt)
 
-        name = "Ganesh Chaturthi"
+        name = "Ram Navami"
         dt = (
-            "2001-08-22",
-            "2010-09-11",
-            "2025-08-27",
-            "2035-09-05",
+            "2001-04-02",
+            "2010-03-24",
+            "2025-04-06",
+            "2035-04-16",
         )
         self.assertHolidayName(name, dt)
 
@@ -413,6 +412,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-01-02",
             "2010-01-05",
             "2025-01-06",
+            "2025-12-27",
             "2035-01-16",
         )
         name = "Guru Gobind Singh Jayanti"
@@ -429,20 +429,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, India(subdiv="PB"), dt)
         self.assertNoHolidayName(name, India(subdiv="DL"), dt)
 
-        # Test out of range dates for Uttar Pradesh
-        for year in (2000, 2036):
-            with self.assertWarns(Warning):
-                India(subdiv="UP", years=year)
-        dt = (
-            "2001-11-21",
-            "2010-11-11",
-            "2025-10-28",
-            "2035-11-06",
-        )
-        name = "Chhath Puja"
-        self.assertHolidayName(name, India(subdiv="UP"), dt)
-        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
-
         # Test out of range dates for Tamil Nadu
         for year in (2000, 2036):
             with self.assertWarns(Warning):
@@ -455,6 +441,20 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         name = "Pongal"
         self.assertHolidayName(name, India(subdiv="TN"), dt)
+        self.assertNoHolidayName(name, India(subdiv="MH"), dt)
+
+        # Test out of range dates for Uttar Pradesh
+        for year in (2000, 2036):
+            with self.assertWarns(Warning):
+                India(subdiv="UP", years=year)
+        dt = (
+            "2001-11-21",
+            "2010-11-11",
+            "2025-10-28",
+            "2035-11-06",
+        )
+        name = "Chhath Puja"
+        self.assertHolidayName(name, India(subdiv="UP"), dt)
         self.assertNoHolidayName(name, India(subdiv="MH"), dt)
 
     def test_pre_1947(self):

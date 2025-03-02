@@ -38,7 +38,7 @@ class India(
 
     country = "IN"
     default_language = "en_IN"
-    supported_languages = ("en_IN", "hi")
+    supported_languages = ("en_IN", "en_US", "hi")
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
@@ -228,7 +228,6 @@ class India(
         self._add_palm_sunday(tr("Palm Sunday"))
         self._add_good_friday(tr("Good Friday"))
         self._add_easter_sunday(tr("Easter Sunday"))
-        self._add_whit_sunday(tr("Feast of Pentecost"))
         self._add_christmas_day(tr("Christmas Day"))
 
         if self.subdiv == "OR":
@@ -402,7 +401,6 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         self._add_holiday_apr_14(tr("Pohela Boishakh"))
         self._add_holiday_apr_15(tr("Pohela Boishakh"))
-        self._add_holiday_may_1(tr("May Day"))
         self._add_holiday_may_9(tr("Rabindra Jayanti"))
 
 
