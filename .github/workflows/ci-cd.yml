@@ -311,62 +311,69 @@ jobs:
         run: |
           gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
           gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json
-  update-zenodo-release:
-    name: Update Zenodo release with SBOM and signed artifacts
-    runs-on: ubuntu-24.04
-    needs:
-      - sign-artifacts
-    if: |
-      github.repository == 'vacanza/holidays' &&
-      github.event_name == 'push' &&
-      startsWith(github.event.ref, 'refs/tags/v')
+
+  upload-to-zenodo:
+    name: Publish release to Zenodo
+    if: github.event_name == 'release' && github.event.action == 'published'
+    runs-on: ubuntu-latest
+    needs: [update-github-release]
     permissions:
       contents: write
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download SBOM
         uses: actions/download-artifact@v4
         with:
           name: sbom
 
-      - name: Download package dist and signatures
+      - name: Download signed artifacts
         uses: actions/download-artifact@v4
         with:
           name: signed-artifacts
           path: dist
 
-      - name: Create Zenodo Deposition
+      - name: Prepare release archive
+        run: |
+          zip -r vacanza-holidays-${{ github.ref_name }}.zip dist/* holidays-*-sbom.json
+
+      - name: Create new Zenodo deposition
         id: create_deposition
         run: |
-          # Create a new deposition
-          response=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions" \
+          response=$(curl -X POST \
             -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d '{"metadata": {"title": "Holidays Release ${{ github.ref_name }}", "upload_type": "software", "description": "Release ${{ github.ref_name }} of Holidays library", "creators": [{"name": "Your Name"}]}}')
-          echo "$response"
+            -d '{"metadata": {"title": "Vacanza Holidays ${{ github.ref_name }}", "upload_type": "software", "description": "Release ${{ github.ref_name }} of Vacanza Holidays"}}' \
+            https://zenodo.org/api/deposit/depositions)
+          if [[ $(echo "$response" | jq -r '.status // "none"') == "error" ]]; then
+            echo "Error creating deposition: $(echo "$response" | jq -r '.message')"
+            exit 1
+          fi
           deposition_id=$(echo "$response" | jq -r '.id')
           echo "DEPOSITION_ID=$deposition_id" >> $GITHUB_ENV
-      - name: Upload Files to Zenodo
-        run: |
-          # Upload all files from dist/ and SBOM
-          for file in dist/* holidays-*-sbom.json; do
-            if [ -f "$file" ]; then
-              echo "Uploading $file..."
-              curl -X PUT "https://sandbox.zenodo.org/api/deposit/depositions/${{ env.DEPOSITION_ID }}/files" \
-                -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
-                -F "file=@$file"
-            fi
-          done
-      - name: Publish Zenodo Deposition
-        run: |
-          # Publish the deposition to get a DOI
-          response=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions/${{ env.DEPOSITION_ID }}/actions/publish" \
-            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}")
-          doi=$(echo "$response" | jq -r '.doi')
-          echo "Published DOI: $doi"
-          echo "DOI=$doi" >> $GITHUB_ENV
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - name: Upload to Zenodo
+        id: zenodo_upload
+        uses: megasanjay/upload-to-zenodo@v2.0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          zenodo_token: ${{ secrets.ZENODO_TOKEN }}
+          zenodo_deposition_id: ${{ env.DEPOSITION_ID }}
+          zenodo_publish: true
+          zenodo_sandbox: false
+          commit_message: 'chore: update metadata for Zenodo release ${{ github.ref_name }}'
+          update_metadata_files: true
+          codemeta_json: true
+          citation_cff: false
+          zenodo_json: false
+          committer_name: 'GitHub Action'
+          committer_email: 'action@github.com'
+
       - name: Output DOI
         run: |
-          echo "Zenodo DOI: ${{ env.DOI }}"
+          echo "Published DOI: ${{ steps.zenodo_upload.outputs.doi }}"
