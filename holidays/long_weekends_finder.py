@@ -17,6 +17,27 @@ import holidays
 
 
 def find_long_weekends(country, year, month=None, language=None, exact_range=False):
+    """
+    Find long weekends based on holidays for a specified country and year.
+
+    Args:
+        country (str): The country code to get holidays for.
+        year (int): The year to calculate long weekends for (between 1900 and 2100).
+        month (int, optional): The specific month to filter long weekends (1-12).
+        language (str, optional): The language for holiday names.
+        exact_range (bool, optional): If True, only includes long weekends entirely
+                                      within the specified month.
+
+    Returns:
+        list: A list of dictionaries, each containing:
+            - start_date (date): The start date of the long weekend
+            - end_date (date): The end date of the long weekend
+            - duration (int): The number of days in the long weekend
+            - holidays (list): The names of holidays included in the long weekend
+
+    Raises:
+        ValueError: If year, month, or country is invalid.
+    """
     # Validate year
     if not isinstance(year, int) or not (1900 <= year <= 2100):
         raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")

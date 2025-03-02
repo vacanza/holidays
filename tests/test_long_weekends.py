@@ -84,3 +84,28 @@ class TestLongWeekends(unittest.TestCase):
         # Assert that the function runs without errors (basic coverage)
         self.assertIsNotNone(result)  # Ensures result is not None
         self.assertIsInstance(result, list)  # Ensures result is a list
+
+    def test_language_parameter(self):
+        """Test that holiday names are returned in the specified language."""
+        # Test with default language
+        result_default = find_long_weekends("UA", 2023, month=8)
+
+        # Test with specified language if supported
+        result_language = find_long_weekends("UA", 2023, month=8, language="en")
+
+        # Verify results are returned in both cases
+        self.assertIsNotNone(result_default)
+        self.assertIsNotNone(result_language)
+
+        # If both have results, verify the holiday names differ
+        if result_default and result_language:
+            default_names = [h for weekend in result_default for h in weekend["holidays"]]
+            language_names = [h for weekend in result_language for h in weekend["holidays"]]
+
+            # Skip if no holidays in the results
+            if default_names and language_names:
+                self.assertNotEqual(
+                    default_names,
+                    language_names,
+                    "Holiday names should differ when language is changed",
+                )
