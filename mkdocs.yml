@@ -3,6 +3,7 @@ site_author: "Vacanza Team"
 site_name: "holidays"
 theme:
   name: readthedocs
+  highlightjs: true
 
 plugins:
   - search
@@ -18,6 +19,9 @@ plugins:
             merge_init_into_class: true
             members_order: source
             show_if_no_docstring: true
+
+            inherited_members: false
+
             filters:
               - "!^_"
               - "!CountryHoliday"

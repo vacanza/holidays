@@ -35,7 +35,7 @@ class Kenya(
 ):
     """
     References:
-    
+
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kenya>
         * [Public Holidays Act Cap. 110](https://new.kenyalaw.org/akn/ke/act/1912/21/eng@2024-04-26)
         * [Constitution of Kenya (Art. 9)](https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03#chp_Two__sec_9)
@@ -198,7 +198,7 @@ class KenyaIslamicHolidays(_CustomIslamicHolidays):
 class KenyaStaticHolidays:
     """
     References:
-    
+
         * <https://new.kenyalaw.org/akn/ke/officialGazette/2015-11-24/129/eng@2015-11-24>
         * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-08-01/107/eng@2017-08-01>
         * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-10-19/156/eng@2017-10-19>
