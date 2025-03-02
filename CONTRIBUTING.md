@@ -105,16 +105,14 @@ forget to initialize the `setUpClass` properly:
 def setUpClass(cls):
     super().setUpClass(Argentina)
 ```
+## Build MkDocs Documentation
 
-## Build sphinx documentation
-
-The project provides a Sphinx documentation source under
-`./docs/source`, published online on
+The project provides MkDocs documentation under `./docs/`, published online on
 [readthedocs.io](https://holidays.readthedocs.io/).
 
-Great documentation is absolutely key in any a project. If you are not
-familiar with reStructuredText for Sphinx you can read a primer
-[here](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
+Great documentation is absolutely key in any project. If you are not
+familiar with Markdown for MkDocs, you can read a primer
+[here](https://www.mkdocs.org/user-guide/writing-your-docs/).
 
 ## Contributors
 
