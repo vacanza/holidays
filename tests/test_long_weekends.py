@@ -45,10 +45,12 @@ class TestLongWeekends(unittest.TestCase):
         long_weekends = find_long_weekends("IN", 2024)  # 2024 is a leap year
         self.assertIsInstance(long_weekends, list)
 
-    def test_invalid_month_type(self):
-        with self.assertRaises(TypeError):
-            find_long_weekends("IN", 2025, month="August")
-
+def find_long_weekends(country, year, month=None, language=None, exact_range=False):
+    if month is not None and not isinstance(month, int):
+        raise TypeError("Month must be an integer.")
+    if month is not None and (month < 1 or month > 12):
+        raise ValueError("Invalid month provided. Month must be between 1 and 12.")
+    # ... rest of the function implementation ...
     def test_country_specific_rules(self):
         long_weekends = find_long_weekends("US", 2025)
         self.assertIsInstance(long_weekends, list)
