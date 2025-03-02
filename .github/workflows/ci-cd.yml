@@ -340,8 +340,28 @@ jobs:
         run: |
           zip -r vacanza-holidays-${{ github.ref_name }}.zip dist/* holidays-*-sbom.json
 
-      - name: Create new Zenodo deposition
+      - name: Check for existing Zenodo deposition
+        id: check_deposition
+        run: |
+          response=$(curl -s -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            "https://zenodo.org/api/deposit/depositions?sort=mostrecent&q=Vacanza%20Holidays")
+          deposition_id=$(echo "$response" | jq -r '.[0].id // ""')
+          concept_doi=$(echo "$response" | jq -r '.[0].conceptdoi // ""')
+          if [ -n "$deposition_id" ]; then
+            echo "Existing deposition found: $deposition_id"
+            echo "DEPOSITION_ID=$deposition_id" >> $GITHUB_ENV
+            echo "CONCEPT_DOI=$concept_doi" >> $GITHUB_ENV
+            echo "NEW_VERSION=true" >> $GITHUB_ENV
+          else
+            echo "No existing deposition found. Will create a new one."
+            echo "NEW_VERSION=false" >> $GITHUB_ENV
+          fi
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - name: Create new Zenodo deposition (if no existing deposition)
         id: create_deposition
+        if: env.NEW_VERSION == 'false'
         run: |
           response=$(curl -X POST \
             -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
@@ -357,23 +377,52 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
 
-      - name: Upload to Zenodo
-        id: zenodo_upload
-        uses: megasanjay/upload-to-zenodo@v2.0.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          zenodo_token: ${{ secrets.ZENODO_TOKEN }}
-          zenodo_deposition_id: ${{ env.DEPOSITION_ID }}
-          zenodo_publish: true
-          zenodo_sandbox: false
-          commit_message: 'chore: update metadata for Zenodo release ${{ github.ref_name }}'
-          update_metadata_files: true
-          codemeta_json: true
-          citation_cff: false
-          zenodo_json: false
-          committer_name: 'GitHub Action'
-          committer_email: 'action@github.com'
+      - name: Create new version of existing Zenodo deposition (if deposition exists)
+        id: new_version
+        if: env.NEW_VERSION == 'true'
+        run: |
+          response=$(curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            "https://zenodo.org/api/deposit/depositions/${{ env.DEPOSITION_ID }}/actions/newversion")
+          if [[ $(echo "$response" | jq -r '.status // "none"') == "error" ]]; then
+            echo "Error creating new version: $(echo "$response" | jq -r '.message')"
+            exit 1
+          fi
+          new_deposition_id=$(echo "$response" | jq -r '.links.latest_draft' | awk -F'/' '{print $NF}')
+          echo "NEW_DEPOSITION_ID=$new_deposition_id" >> $GITHUB_ENV
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - name: Update metadata for new version (if applicable)
+        if: env.NEW_VERSION == 'true'
+        run: |
+          curl -X PUT \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"metadata": {"title": "Vacanza Holidays ${{ github.ref_name }}", "upload_type": "software", "description": "Release ${{ github.ref_name }} of Vacanza Holidays"}}' \
+            https://zenodo.org/api/deposit/depositions/${{ env.NEW_DEPOSITION_ID }}
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - name: Upload files to Zenodo
+        run: |
+          deposition_id_to_use=${{ env.NEW_VERSION == 'true' && env.NEW_DEPOSITION_ID || env.DEPOSITION_ID }}
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            -F "file=@vacanza-holidays-${{ github.ref_name }}.zip" \
+            https://zenodo.org/api/deposit/depositions/$deposition_id_to_use/files
+
+      - name: Publish Zenodo deposition
+        run: |
+          deposition_id_to_use=${{ env.NEW_VERSION == 'true' && env.NEW_DEPOSITION_ID || env.DEPOSITION_ID }}
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            https://zenodo.org/api/deposit/depositions/$deposition_id_to_use/actions/publish
 
       - name: Output DOI
         run: |
-          echo "Published DOI: ${{ steps.zenodo_upload.outputs.doi }}"
+          deposition_id_to_use=${{ env.NEW_VERSION == 'true' && env.NEW_DEPOSITION_ID || env.DEPOSITION_ID }}
+          response=$(curl -s -H "Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}" \
+            https://zenodo.org/api/deposit/depositions/$deposition_id_to_use)
+          doi=$(echo "$response" | jq -r '.doi')
+          echo "Published DOI: $doi"
