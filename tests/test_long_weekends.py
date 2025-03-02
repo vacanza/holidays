@@ -39,7 +39,10 @@ class TestLongWeekends(unittest.TestCase):
 
     def test_no_holidays(self):
         long_weekends = find_long_weekends("IN", 2025, month=2)
-        self.assertEqual(long_weekends, [], "Expected empty list when no holidays exist in the month")
+        self.assertEqual(
+            long_weekends, [], "Expected empty list when no holidays exist in the month"
+        )
+
     def test_leap_year(self):
         long_weekends = find_long_weekends("IN", 2024)  # 2024 is a leap year
         self.assertIsInstance(long_weekends, list)
