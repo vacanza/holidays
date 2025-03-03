@@ -218,7 +218,7 @@ class India(
         # Id-e-Milad/Milad-um-Nabi.
         self._add_mawlid_day(tr("Id-e-Milad/Milad-um-Nabi"))
 
-        # Id-ul-Fitr.
+        # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
         # Id-ul-Zuha/Bakrid.
