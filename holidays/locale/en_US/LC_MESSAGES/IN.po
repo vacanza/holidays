@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# India holidays.
+# India holidays en_US localization.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.68\n"
