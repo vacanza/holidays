@@ -382,6 +382,204 @@ class Macau(
             # Tuen Ng Festival.
             self._add_observed(self._dragon_boat_festival, observed_label % self.tr("端午節"))
 
+            # The Day following Chong Chao (Mid-Autumn) Festival.
+            chong_chao_day2_obs = observed_label % self.tr("中秋節翌日")
+
+            # Chung Yeung Festival.
+            chung_yeung_obs = observed_label % self.tr("重陽節")
+
+            # National Day of the People's Republic of China.
+            national_day1_obs = observed_label % self.tr("中華人民共和國國慶日")
+
+            # The day following National Day of the People's Republic of China.
+            national_day2_obs = observed_label % self.tr("中華人民共和國國慶日翌日")
+
+            dt_chong_chao_day2 = _timedelta(self._mid_autumn_festival, +1)
+            dt_chung_yeung = self._double_ninth_festival
+            dt_national_day = date(self._year, OCT, 1)
+
+            # ---- FRIDAY ---- #
+            # Chong Chao
+            if self._is_friday(dt_national_day) and dt_chong_chao_day2 == date(self._year, OCT, 1):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            elif self._is_friday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 2
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            elif self._is_friday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 3
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +2))
+            elif self._is_friday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 4
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            # Chung Yeung
+            elif self._is_friday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 1):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            elif self._is_friday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 2):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            elif self._is_friday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 3):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +2))
+            elif self._is_friday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 4):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +3))
+            # ---- SATURDAY ---- #
+            # Chong Chao
+            elif self._is_saturday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, SEP, 30
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 1
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 2
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 3
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 4
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            # Chung Yeung
+            elif self._is_saturday(dt_national_day) and dt_chung_yeung == date(
+                self._year, SEP, 30
+            ):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 1):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 2):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 3):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            elif self._is_saturday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 4):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+                self._add_holiday(national_day2_obs, _timedelta(dt_national_day, +4))
+            # ---- SUNDAY ---- #
+            # Chong Chao
+            elif self._is_sunday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, SEP, 30
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +3))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+            elif self._is_sunday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 1
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+            elif self._is_sunday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 2
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+            elif self._is_sunday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 3
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+                # Chung Yeung
+            elif self._is_sunday(dt_national_day) and dt_chung_yeung == date(self._year, SEP, 30):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +3))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+            elif self._is_sunday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 1):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+            elif self._is_sunday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 2):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+            elif self._is_sunday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 3):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +3))
+            # ---- MONDAY ---- #
+            # Chong Chao
+            elif self._is_monday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, SEP, 29
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +4))
+            elif self._is_monday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, SEP, 30
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +3))
+            elif self._is_monday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 1
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(chong_chao_day2_obs, _timedelta(dt_chong_chao_day2, +2))
+            elif self._is_monday(dt_national_day) and dt_chong_chao_day2 == date(
+                self._year, OCT, 2
+            ):
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+            # Chung Yeung
+            elif self._is_monday(dt_national_day) and dt_chung_yeung == date(self._year, SEP, 29):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +4))
+            elif self._is_monday(dt_national_day) and dt_chung_yeung == date(self._year, SEP, 30):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +3))
+            elif self._is_monday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 1):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(chung_yeung_obs, _timedelta(dt_chung_yeung, +2))
+            elif self._is_monday(dt_national_day) and dt_chung_yeung == date(self._year, OCT, 2):
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_holiday(national_day1_obs, _timedelta(dt_national_day, +2))
+            # ---- ELSE ---- #
+            else:
+                self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
+                self._add_observed(dt_chung_yeung, chung_yeung_obs)
+                self._add_observed_two(dt_national_day, national_day1_obs, national_day2_obs)
+
             # All Soul's Day.
             self._add_observed(date(self._year, NOV, 2), observed_label % self.tr("追思節"))
 
