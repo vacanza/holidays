@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: Open World Holidays Framework
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Arkadii
+    family-names: Yakovets
+  - given-names: Panpakorn
+    family-names: Siripanich
+  - given-names: Serhii
+    family-names: Murza
+doi: 10.5072/zenodo.176413
+repository-code: 'https://github.com/vacanza/holidays'
+abstract: >-
+  A fast, efficient Python library for generating country-
+  and subdivision- (e.g. state or province) specific sets of
+  government-designated holidays on the fly. It aims to make
+  determining whether a specific date is a holiday as fast
+  and flexible as possible.
+keywords:
+  - holidays
+  - calendar
+  - l10n
+  - worldwide
+  - vacation
+license: MIT
+version: v0.68
+date-released: '2025-03-03'
