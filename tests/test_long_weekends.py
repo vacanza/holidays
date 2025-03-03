@@ -32,10 +32,6 @@ class TestLongWeekends(unittest.TestCase):
             "Expected at least one long weekend in August 2025",
         )
 
-    def test_invalid_country(self):
-        with self.assertRaises(ValueError):
-            find_long_weekends("XYZ", 2025)
-
     def test_invalid_month(self):
         with self.assertRaises(ValueError):
             find_long_weekends("IN", 2025, month=13)

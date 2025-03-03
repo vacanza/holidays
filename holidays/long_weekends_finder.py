@@ -40,31 +40,29 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
     """
 
     # Validate country
-    try:
-        holiday_obj = holidays.country_holidays(country, years=year, language=language)
-    except Exception as e:
-        raise ValueError(f"Error fetching holidays: {e}")
+    holiday_obj = holidays.country_holidays(country, years=year, language=language)
 
     weekends = holiday_obj.weekend
     working_weekend_days = getattr(holiday_obj, "weekend_workdays", set())
 
     # Extend holidays to cover the last week of the previous year and first week of the next year
     if month is None and not exact_range:
-        prev_year_holidays = {
-            d: name
-            for d, name in holidays.country_holidays(
-                country, years=year, language=language
-            ).items()
-            if d.month == 12 and d.day >= 25  # Last week of December
+        prev_year_holidays = holidays.country_holidays(country, years=year - 1, language=language)
+        next_year_holidays = holidays.country_holidays(country, years=year + 1, language=language)
+
+        holidays_filtered = {
+            **{
+                d: name
+                for d, name in prev_year_holidays.items()
+                if (date(year, 1, 1) - d).days <= 3
+            },  # Catch Dec spillovers
+            **holiday_obj,
+            **{
+                d: name
+                for d, name in next_year_holidays.items()
+                if (d - date(year, 12, 31)).days <= 3
+            },  # Catch Jan spillovers
         }
-        next_year_holidays = {
-            d: name
-            for d, name in holidays.country_holidays(
-                country, years=year + 1, language=language
-            ).items()
-            if d.month == 1 and d.day <= 7  # First week of January
-        }
-        holidays_filtered = {**prev_year_holidays, **holiday_obj, **next_year_holidays}
     else:
         holidays_filtered = {d: name for d, name in holiday_obj.items()}
 
@@ -105,7 +103,7 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
 
         next_day = end_date + timedelta(days=1)
         while next_day in holidays_filtered or (
-            next_day.weekday() in weekends and next_day.weekday() not in working_weekend_days
+            next_day.weekday() in weekends and next_day not in working_weekend_days
         ):
             if next_day in holidays_filtered:
                 holidays_involved.append(holidays_filtered[next_day])
