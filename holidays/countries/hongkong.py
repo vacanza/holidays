@@ -235,7 +235,7 @@ class HongKong(
         self._add_lunar_new_year(day_three_start_year=1968)
 
         if self._year >= 1968:
-            dt_qingming = self._qingming_date
+            dt_qingming = self._qingming_festival
             if self._is_sunday(dt_qingming) or dt_qingming == _timedelta(self._easter_sunday, +1):
                 # The day following Ching Ming Festival.
                 self._add_holiday(tr("清明節翌日"), _timedelta(dt_qingming, +1))
@@ -257,7 +257,7 @@ class HongKong(
             self._add_easter_monday(tr("復活節星期一"))
 
         if self._year >= 1999:
-            dt_birthday_of_buddha = self._chinese_calendar.buddha_birthday_date(self._year)[0]
+            dt_birthday_of_buddha = self._chinese_birthday_of_buddha
             if self._is_sunday(dt_birthday_of_buddha):
                 # The day following the Birthday of the Buddha.
                 self._add_holiday(tr("佛誕翌日"), _timedelta(dt_birthday_of_buddha, +1))
@@ -274,7 +274,7 @@ class HongKong(
                 self._add_labor_day(tr("勞動節"))
 
         if self._year >= 1968:
-            dt_dragon_boat = self._chinese_calendar.dragon_boat_date(self._year)[0]
+            dt_dragon_boat = self._dragon_boat_festival
             if self._is_sunday(dt_dragon_boat):
                 # The day following Tuen Ng Festival.
                 self._add_holiday(tr("端午節翌日"), _timedelta(dt_dragon_boat, +1))
@@ -293,7 +293,7 @@ class HongKong(
         mid_autumn_date = self._add_mid_autumn()
 
         if self._year >= 1968:
-            dt_double_ninth = self._chinese_calendar.double_ninth_date(self._year)[0]
+            dt_double_ninth = self._double_ninth_festival
             if self._is_sunday(dt_double_ninth):
                 # The day following Chung Yeung Festival.
                 self._add_holiday(tr("重陽節翌日"), _timedelta(dt_double_ninth, +1))
