@@ -51,10 +51,16 @@ class TimorLeste(
     # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
     start_year = 2006
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=TimorLesteIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=TimorLesteIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, TimorLesteStaticHolidays)
         super().__init__(*args, **kwargs)
 

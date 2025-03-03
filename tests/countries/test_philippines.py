@@ -21,6 +21,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Philippines, years=range(1988, 2050))
+        cls.no_estimated_holidays = Philippines(
+            years=range(1988, 2050), islamic_show_estimated=False
+        )
 
     def test_country_aliases(self):
         self.assertAliases(Philippines, PH, PHL)
@@ -277,9 +280,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(2002, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1988, 2002)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2002, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2002))
 
     def test_eid_al_adha(self):
         name = "Eid'l Adha"
@@ -295,9 +297,8 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2023-06-28",
             "2024-06-17",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(2010, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1988, 2010)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2010))
 
     def test_2018(self):
         self.assertHolidays(
