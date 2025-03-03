@@ -216,7 +216,7 @@ Here we calculate the number of working days in Q2 2024.
 ## Getting the closest (next or previous) holiday
 
 You can fetch next or previous holiday for a target date of your
-selected calendar. The function returns found holiday\'s date and name
+selected calendar. The function returns found holiday's date and name
 excluding the target date.
 
 Get the next holiday for the current date:

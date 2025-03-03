@@ -1146,7 +1146,7 @@ category by default. All other default values are highlighted with bold:
 </tbody>
 </table>
 
-### Available Financial Markets
+## Available Financial Markets
 
 The standard way to refer to a financial market is to use its [ISO 10383
 MIC](https://www.iso20022.org/market-identifier-codes) (Market
