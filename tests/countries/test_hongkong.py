@@ -476,7 +476,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2022-05-08",
             "2023-05-26",
             "2024-05-15",
-            "2025-05-04",
+            "2025-05-05",
             "2026-05-24",
             "2027-05-13",
             "2028-05-02",
@@ -488,10 +488,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2034-05-25",
             "2035-05-15",
         )
-        obs_dt = (
-            "2022-05-09",
-            "2025-05-05",
-        )
+        obs_dt = ("2022-05-09",)
         self.assertHolidayName(name, range(2022, 2050))
         self.assertHolidayName(name_observed, obs_dt)
         self.assertNoHolidayName(name, range(1963, 2022))
@@ -520,7 +517,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2023-05-26",
             "2024-05-15",
         )
-        exception_years = {2002, 2005, 2019, 2022, 2025, 2026, 2029, 2032, 2046, 2049}
+        exception_years = {2002, 2005, 2019, 2022, 2026, 2029, 2032, 2046, 2049}
         self.assertHolidayName(
             name_following,
             self.opt_holidays,
@@ -528,7 +525,6 @@ class TestHongKong(CommonCountryTests, TestCase):
             "2005-05-16",
             "2019-05-13",
             "2022-05-09",
-            "2025-05-05",
         )
         self.assertHolidayName(
             name, self.opt_holidays, set(range(1999, 2050)).difference(exception_years)
@@ -1268,8 +1264,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2025-01-31", "農曆年初三"),
             ("2025-04-04", "清明節"),
             ("2025-05-01", "勞動節"),
-            ("2025-05-04", "佛誕"),
-            ("2025-05-05", "佛誕（慶祝）"),
+            ("2025-05-05", "佛誕"),
             ("2025-05-31", "端午節"),
             ("2025-07-01", "香港特別行政區成立紀念日"),
             ("2025-10-01", "國慶日"),
@@ -1409,7 +1404,7 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2025-04-19", "耶穌受難節翌日"),
             ("2025-04-21", "復活節星期一"),
             ("2025-05-01", "勞動節"),
-            ("2025-05-05", "佛誕翌日"),
+            ("2025-05-05", "佛誕"),
             ("2025-05-31", "端午節"),
             ("2025-07-01", "香港特別行政區成立紀念日"),
             ("2025-10-01", "國慶日"),

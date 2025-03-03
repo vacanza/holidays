@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.49\n"
+"Project-Id-Version: Holidays 0.68\n"
 "POT-Creation-Date: 2024-04-28 21:03+0300\n"
-"PO-Revision-Date: 2024-04-29 15:16+0300\n"
+"PO-Revision-Date: 2025-02-24 12:24+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -248,3 +248,7 @@ msgstr "Eid al-Fitr (additional holiday)"
 #. Additional holiday in commemoration of the 2017 SEA Games.
 msgid "Cuti tambahan sempena memperingati SAT 2017"
 msgstr "Additional holiday in commemoration of the 2017 SEA Games"
+
+#. Eid al-Fitr (Third Day).
+msgid "Hari Raya Puasa (Hari Ketiga)"
+msgstr "Eid al-Fitr (Third Day)"

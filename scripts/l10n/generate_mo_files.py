@@ -23,11 +23,12 @@ class MOGenerator:
     @staticmethod
     def run():
         """Runs the .mo files generation process."""
-        for po_path in Path("holidays/locale").rglob("*.po"):
-            mo_path = po_path.with_suffix(".mo")
-            if mo_path.exists():
-                mo_path.unlink()
-            pofile(po_path).save_as_mofile(mo_path)
+        locale_path = Path("holidays/locale")
+
+        for mo_path in locale_path.rglob("*.mo"):
+            mo_path.unlink()
+        for po_path in locale_path.rglob("*.po"):
+            pofile(po_path).save_as_mofile(po_path.with_suffix(".mo"))
 
 
 if __name__ == "__main__":
