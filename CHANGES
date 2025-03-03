@@ -1,3 +1,17 @@
+Version 0.68
+============
+
+Released March 3, 2025
+
+- Fix 2025 Chinese Calendar's Birthday of Buddha (#2310 by @PPsyrius)
+- Update AZ holidays: add 2025 substituted holidays (#2302 by @KJhellico)
+- Update Kenya holidays, add l10n support (#2316 by @KJhellico)
+- Update Malaysia holidays (#2309 by @KJhellico)
+- Update Zenodo record URL in README (#2317 by @KJhellico)
+- Update issue templates (#2307 by @arkid15r)
+- Update l10n scripts (#2318 by @KJhellico, @arkid15r)
+- Add .coderabbit.yaml (#2322 by @arkid15r)
+
 Version 0.67
 ============
 
