@@ -215,7 +215,7 @@ class India(
         # Muharram.
         self._add_ashura_day(tr("Muharram"))
 
-        # Id-e-Milad/Milad-um-Nabi.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Id-e-Milad/Milad-um-Nabi"))
 
         # Eid al-Fitr.
