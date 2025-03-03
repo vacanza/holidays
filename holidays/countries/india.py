@@ -161,7 +161,7 @@ class India(
         # Children's Day.
         self._add_holiday_nov_14(tr("Children's Day"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Labour Day"))
 
         # Hindu Holidays.
