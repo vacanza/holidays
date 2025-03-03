@@ -221,7 +221,7 @@ class India(
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
-        # Id-ul-Zuha/Bakrid.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Id-ul-Zuha/Bakrid"))
 
         # Christian holidays.
