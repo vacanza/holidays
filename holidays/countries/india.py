@@ -212,22 +212,31 @@ class India(
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
 
         # Islamic holidays.
-        # Muharram.
+
+        # Ashura.
         self._add_ashura_day(tr("Muharram"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Id-e-Milad/Milad-um-Nabi"))
+        self._add_mawlid_day(tr("Id-e-Milad"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Id-ul-Zuha/Bakrid"))
+        self._add_eid_al_adha_day(tr("Bakrid"))
 
         # Christian holidays.
+
+        # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
+
+        # Good Friday.
         self._add_good_friday(tr("Good Friday"))
+
+        # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
+
+        # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
         if self.subdiv == "OR":

@@ -103,32 +103,39 @@ msgstr "Makar Sankranti"
 msgid "Guru Nanak Jayanti"
 msgstr "Guru Nanak Jayanti"
 
-#. Islamic holidays. Muharram.
+#. Islamic holidays.
+
+#. Ashura.
 msgid "Muharram"
 msgstr "Day of Ashura"
 
-#. Id-e-Milad/Milad-um-Nabi.
-msgid "Id-e-Milad/Milad-um-Nabi"
+#. Prophet's Birthday.
+msgid "Id-e-Milad"
 msgstr "Mawlid"
 
-#. Id-ul-Fitr.
+#. Eid al-Fitr.
 msgid "Id-ul-Fitr"
-msgstr "Eid-al-Fitr"
+msgstr "Eid al-Fitr"
 
-#. Id-ul-Zuha/Bakrid.
-msgid "Id-ul-Zuha/Bakrid"
-msgstr "Eid-al-Adha"
+#. Eid al-Adha.
+msgid "Bakrid"
+msgstr "Eid al-Adha"
 
 #. Christian holidays.
+
+#. Palm Sunday.
 msgid "Palm Sunday"
 msgstr "Palm Sunday"
 
+#. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
 
+#. Easter Sunday.
 msgid "Easter Sunday"
 msgstr "Easter Sunday"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 

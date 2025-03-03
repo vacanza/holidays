@@ -42,7 +42,7 @@ msgstr ""
 msgid "Children's Day"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr ""
 
@@ -103,15 +103,20 @@ msgid "Guru Nanak Jayanti"
 msgstr ""
 
 #. Christian holidays.
+
+#. Palm Sunday.
 msgid "Palm Sunday"
 msgstr ""
 
+#. Good Friday.
 msgid "Good Friday"
 msgstr ""
 
+#. Easter Sunday.
 msgid "Easter Sunday"
 msgstr ""
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
@@ -238,18 +243,20 @@ msgstr ""
 msgid "Rabindra Jayanti"
 msgstr ""
 
-#. Islamic holidays. Muharram.
+#. Islamic holidays.
+
+#. Ashura.
 msgid "Muharram"
 msgstr ""
 
-#. Id-e-Milad/Milad-um-Nabi.
-msgid "Id-e-Milad/Milad-um-Nabi"
+#. Prophet's Birthday.
+msgid "Id-e-Milad"
 msgstr ""
 
-#. Id-ul-Fitr.
+#. Eid al-Fitr.
 msgid "Id-ul-Fitr"
 msgstr ""
 
-#. Id-ul-Zuha/Bakrid.
-msgid "Id-ul-Zuha/Bakrid"
+#. Eid al-Adha.
+msgid "Bakrid"
 msgstr ""
