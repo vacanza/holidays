@@ -97,111 +97,8 @@ class Macau(
             self._add_holiday(name1, _timedelta(dt, +2))
 
     def _populate_public_holidays(self):
-        # Fixed Holidays.
-
         # New Year's Day.
         self._add_new_years_day(tr("元旦"))
-
-        # Decreto-Lei n.º 4/82/M - Established Freedom Day as a Public Holiday.
-        # Ordem Executiva n.º 60/2000 - Removed as Public Holiday.
-        if self._year <= 1999:
-            # Freedom Day.
-            self._add_holiday_apr_25(tr("自由日"))
-
-        # Labor Day.
-        self._add_labor_day(tr("勞動節"))
-
-        # Decreto-Lei n.º 4/82/M - Established Day of Portugal et al. as a Public Holiday.
-        # Ordem Executiva n.º 60/2000 - Removed as Public Holiday.
-        if self._year <= 1999:
-            # Day of Portugal, Camões, and the Portuguese Communities.
-            self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
-
-        # Decreto-Lei n.º 4/82/M - Established Assumption Day as a Public Holiday.
-        # Decreto-Lei n.º 38/87/M - Removed as Public Holiday.
-        if self._year <= 1986:
-            # Assumption Day.
-            self._add_assumption_of_mary_day(tr("聖母升天"))
-
-        # Decreto-Lei n.º 4/82/M - Established National Day of the PRC as a Public Holiday.
-        # Ordem Executiva n.º 60/2000 - Adds The day following National Day of the PRC on OCT 2.
-
-        # National Day of the People's Republic of China.
-        self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
-        if self._year >= 2000:
-            # The day following National Day of the People's Republic of China.
-            self._add_holiday_oct_2(tr("中華人民共和國國慶日翌日"))
-
-        # Decreto-Lei n.º 4/82/M - Established Republic Day as a Public Holiday.
-        # Ordem Executiva n.º 60/2000 - Removed as Public Holiday.
-        if self._year <= 1999:
-            # Republic Day.
-            self._add_holiday_oct_5(tr("葡萄牙共和國國慶日"))
-
-        # Decreto-Lei n.º 4/82/M - Established All Saints' Day as a Public Holiday.
-        # Decreto-Lei n.º 38/87/M - Removed as Public Holiday.
-        if self._year <= 1986:
-            # All Saints' Day.
-            self._add_all_saints_day(tr("諸聖節"))
-
-        # All Soul's Day.
-        self._add_all_souls_day(tr("追思節"))
-
-        # Decreto-Lei n.º 4/82/M - Established Restoration of Ind. Day as a Public Holiday.
-        # Ordem Executiva n.º 60/2000 - Removed as Public Holiday.
-        if self._year <= 1999:
-            # Restoration of Independence Day.
-            self._add_holiday_dec_1(tr("恢復獨立紀念日"))
-
-        # Immaculate Conception.
-        self._add_immaculate_conception_day(tr("聖母無原罪瞻禮"))
-
-        # Portaria n.º 242/98/M - De Facto adds Macao S.A.R. Establishment Day on DEC 20 for 1999.
-        # Regulamento Administrativo n.º 5/1999 - Special Name for 1999 (see StaticHolidays).
-        # Ordem Executiva n.º 60/2000 - Adds "Anniversary of " to holiday name in Chinese.
-        if self._year >= 2000:
-            # Macao S.A.R. Establishment Day.
-            self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
-
-        # Decreto-Lei n.º 4/82/M - Established Winter Solstice as DEC 22.
-        # Regulamento Administrativo n.º 4/1999 - Moved to DEC 21.
-        # Ordem Executiva n.º 60/2000 - Switched to Movable.
-
-        # Winter Solstice.
-        name = tr("冬至")
-        if self._year >= 2001:
-            self._add_holiday(name, self._winter_solstice_date)
-        elif self._year == 2000:
-            self._add_holiday_dec_21(name)
-        else:
-            self._add_holiday_dec_22(name)
-
-        # Decreto-Lei n.º 4/82/M - Established Christmas Eve as a Public Holiday.
-        # Portaria n.º 242/98/M - Name changed in Chinese.
-        # Regulamento Administrativo n.º 4/1999 - Further Chinese name standardization.
-        if self._year >= 2000:
-            # Christmas Eve.
-            name = tr("聖誕節前日")
-        elif self._year == 1999:
-            # Christmas Eve.
-            name = tr("聖誕節前夕")
-        else:
-            # Christmas Eve.
-            name = tr("聖誕前夕")
-        self._add_christmas_eve(name)
-
-        # Decreto-Lei n.º 4/82/M - Established Christmas Day as a Public Holiday.
-        # Portaria n.º 242/98/M - Name changed in Chinese.
-        name = (
-            # Christmas Day.
-            tr("聖誕節")
-            if self._year >= 1999
-            # Christmas Day.
-            else tr("聖誕")
-        )
-        self._add_christmas_day(name)
-
-        # Movable Holidays.
 
         # Lunar New Year's Day.
         self._add_chinese_new_years_day(tr("農曆正月初一"))
@@ -215,8 +112,7 @@ class Macau(
         # Ching Ming Festival.
         self._add_qingming_festival(tr("清明節"))
 
-        # Decreto-Lei n.º 4/82/M - Established Good Friday as a Public Holiday.
-        # Regulamento Administrativo n.º 4/1999 - Name changed in Chinese.
+        # Regulamento Administrativo n.º 4/1999 - Name changed in Chinese for Good Friday.
         name = (
             # Good Friday.
             tr("耶穌受難日")
@@ -226,7 +122,6 @@ class Macau(
         )
         self._add_good_friday(name)
 
-        # Decreto-Lei n.º 4/82/M - Established Holy Saturday as a Public Holiday.
         # Regulamento Administrativo n.º 4/1999 - Name changed to The Day before Easter.
         name = (
             # The Day before Easter.
@@ -237,16 +132,8 @@ class Macau(
         )
         self._add_holy_saturday(name)
 
-        # Ordem Executiva n.º 60/2000 - Adds The Buddha’s Birthday as a Public Holiday.
-        if self._year >= 2000:
-            # The Buddha's Birthday (Feast of Buddha).
-            self._add_chinese_birthday_of_buddha(tr("佛誕節"))
-
-        # Decreto-Lei n.º 4/82/M - Established Corpus Christi as a Public Holiday.
-        # Decreto-Lei n.º 38/87/M - Removed Corpus Christi as Public Holiday.
-        if self._year <= 1987:
-            # Corpus Christi.
-            self._add_corpus_christi_day(tr("基督聖體聖血節"))
+        # Labor Day.
+        self._add_labor_day(tr("勞動節"))
 
         # Tuen Ng Festival.
         self._add_dragon_boat_festival(tr("端午節"))
@@ -254,10 +141,93 @@ class Macau(
         # Chung Yeung Festival.
         self._add_double_ninth_festival(tr("重陽節"))
 
-        # Astronomical Holidays.
-
         # The Day following Chong Chao (Mid-Autumn) Festival.
         self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
+
+        # National Day of the People's Republic of China.
+        self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
+
+        # All Soul's Day.
+        self._add_all_souls_day(tr("追思節"))
+
+        # Immaculate Conception.
+        self._add_immaculate_conception_day(tr("聖母無原罪瞻禮"))
+
+        # Regulamento Administrativo n.º 4/1999 - Moved from DEC 22 to DEC 21.
+        # Ordem Executiva n.º 60/2000 - Switched to Movable.
+
+        # Winter Solstice.
+        name = tr("冬至")
+        if self._year >= 2001:
+            self._add_holiday(name, self._winter_solstice_date)
+        elif self._year == 2000:
+            self._add_holiday_dec_21(name)
+        else:
+            self._add_holiday_dec_22(name)
+
+        # Portaria n.º 242/98/M - Name changed in Chinese for Christmas Eve.
+        # Regulamento Administrativo n.º 4/1999 - Further Chinese name standardization.
+        if self._year >= 2000:
+            # Christmas Eve.
+            name = tr("聖誕節前日")
+        elif self._year == 1999:
+            # Christmas Eve.
+            name = tr("聖誕節前夕")
+        else:
+            # Christmas Eve.
+            name = tr("聖誕前夕")
+        self._add_christmas_eve(name)
+
+        # Portaria n.º 242/98/M - Name changed in Chinese for Christmas Day.
+        name = (
+            # Christmas Day.
+            tr("聖誕節")
+            if self._year >= 1999
+            # Christmas Day.
+            else tr("聖誕")
+        )
+        self._add_christmas_day(name)
+
+        # Decreto-Lei n.º 38/87/M - Removed Assumption Day and All Saints' Day as Public Holiday.
+        if self._year <= 1986:
+            # Assumption Day.
+            self._add_assumption_of_mary_day(tr("聖母升天"))
+
+            # All Saints' Day.
+            self._add_all_saints_day(tr("諸聖節"))
+
+        # Decreto-Lei n.º 38/87/M - Removed Corpus Christi as Public Holiday.
+        if self._year <= 1987:
+            # Corpus Christi.
+            self._add_corpus_christi_day(tr("基督聖體聖血節"))
+
+        # Portaria n.º 242/98/M - De Facto adds Macao S.A.R. Establishment Day on DEC 20 for 1999.
+        # Regulamento Administrativo n.º 5/1999 - Special Name for 1999 (see StaticHolidays).
+        # Ordem Executiva n.º 60/2000 - Removed all Portugal-derived holidays.
+        #                             - Adds Buddha's Birthday.
+        #                             - Adds The day following National Day of the PRC on OCT 2.
+        #                             - Adds "Anniversary of " to Macao S.A.R. holiday in Chinese.
+        if self._year <= 1999:
+            # Freedom Day.
+            self._add_holiday_apr_25(tr("自由日"))
+
+            # Day of Portugal, Camões, and the Portuguese Communities.
+            self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
+
+            # Republic Day.
+            self._add_holiday_oct_5(tr("葡萄牙共和國國慶日"))
+
+            # Restoration of Independence Day.
+            self._add_holiday_dec_1(tr("恢復獨立紀念日"))
+        else:
+            # The Buddha's Birthday (Feast of Buddha).
+            self._add_chinese_birthday_of_buddha(tr("佛誕節"))
+
+            # The day following National Day of the People's Republic of China.
+            self._add_holiday_oct_2(tr("中華人民共和國國慶日翌日"))
+
+            # Macao S.A.R. Establishment Day.
+            self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
 
     def _populate_mandatory_holidays(self):
         """
@@ -281,33 +251,33 @@ class Macau(
             # The third day of Lunar New Year.
             self._add_chinese_new_years_day_three(tr("農曆正月初三"))
 
-            if self._year >= 1989:
-                # Ching Ming Festival.
-                self._add_qingming_festival(tr("清明節"))
-
             # Labor Day.
             self._add_labor_day(tr("勞動節"))
 
-            # Lei n.º 8/2000 - Removed Day of Portugal as a Mandatory Holiday.
-            if self._year <= 1999:
-                # Day of Portugal, Camões, and the Portuguese Communities.
-                self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
+            # Chung Yeung Festival.
+            self._add_double_ninth_festival(tr("重陽節"))
 
             # National Day of the People's Republic of China.
             self._add_holiday_oct_1(tr("中華人民共和國國慶日"))
 
+            # Decreto-Lei n.º 24/89/M - Adds Ching Ming as a Mandatory Holiday.
+            if self._year >= 1989:
+                # Ching Ming Festival.
+                self._add_qingming_festival(tr("清明節"))
+
+            # Lei n.º 8/2000 - Removed Day of Portugal as a Mandatory Holiday.
+            #                - Changed observance from Chong Chao to the following day.
+            #                - Adds Macao S.A.R. Establishment Day as a Mandatory Holiday.
             if self._year <= 1999:
+                # Day of Portugal, Camões, and the Portuguese Communities.
+                self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
+
                 # Chong Chao (Mid-Autumn) Festival.
                 self._add_mid_autumn_festival(tr("中秋節"))
             else:
                 # The Day following Chong Chao (Mid-Autumn) Festival.
                 self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
 
-            # Chung Yeung Festival.
-            self._add_double_ninth_festival(tr("重陽節"))
-
-            # Lei n.º 8/2000 - Adds Macao S.A.R. Establishment Day as a Mandatory Holiday.
-            if self._year >= 2000:
                 # Macao S.A.R. Establishment Day.
                 self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
 
@@ -623,8 +593,7 @@ class Macau(
                 self._add_new_years_eve(begin_time_label % self.tr("除夕"))
 
     def _populate_subdiv_i_public_holidays(self):
-        # Decreto-Lei n.º 4/82/M - Established Day of the Municipality of Ilhas as JUL 13.
-        # Decreto-Lei n.º 15/93/M - Moved to NOV 30.
+        # Decreto-Lei n.º 15/93/M - Moved Day of the Municipality of Ilhas from JUL 13 to NOV 30.
         # Regulamento Administrativo n.º 4/1999 - Removed as a Public Holiday.
         if self._year <= 1999:
             # Day of the Municipality of Ilhas.
@@ -635,8 +604,7 @@ class Macau(
                 self._add_holiday_jul_13(name)
 
     def _populate_subdiv_m_public_holidays(self):
-        # Decreto-Lei n.º 4/82/M - Established Macau City Day as JUN 24.
-        # Regulamento Administrativo n.º 4/1999 - Removed as a Public Holiday.
+        # Regulamento Administrativo n.º 4/1999 - Removed Macau City Day as a Public Holiday.
         if self._year <= 1999:
             # Macau City Day.
             self._add_holiday_jun_24(tr("澳門市日"))
@@ -666,8 +634,10 @@ class MAC(Macau):
 
 class MacauStaticHolidays:
     """
-    Special Holidays:
+    Special Public and Government Holidays:
         - https://www.io.gov.mo/pt/legis/rec/111020
+    Special Mandatory Holidays.
+        - https://www.dsal.gov.mo/pt/standard/holiday_table.html
     Cross-Checking:
         - `Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
     """
