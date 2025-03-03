@@ -38,9 +38,6 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
     Raises:
         ValueError: If year, month, or country is invalid.
     """
-    # Validate year
-    if not isinstance(year, int) or not (1900 <= year <= 2100):
-        raise ValueError("Invalid year provided. Year must be an integer between 1900 and 2100.")
 
     # Validate country
     try:
@@ -48,28 +45,24 @@ def find_long_weekends(country, year, month=None, language=None, exact_range=Fal
     except Exception as e:
         raise ValueError(f"Error fetching holidays: {e}")
 
-    # Validate month
-    if month is not None and (month < 1 or month > 12):
-        raise ValueError("Invalid month provided. Month must be between 1 and 12.")
-
     weekends = holiday_obj.weekend
     working_weekend_days = getattr(holiday_obj, "weekend_workdays", set())
 
-    # Extend holidays to cover the end of the previous year and start of the next year
+    # Extend holidays to cover the last week of the previous year and first week of the next year
     if month is None and not exact_range:
         prev_year_holidays = {
             d: name
             for d, name in holidays.country_holidays(
-                country, years=year - 1, language=language
+                country, years=year, language=language
             ).items()
-            if d.month == 12
+            if d.month == 12 and d.day >= 25  # Last week of December
         }
         next_year_holidays = {
             d: name
             for d, name in holidays.country_holidays(
                 country, years=year + 1, language=language
             ).items()
-            if d.month == 1
+            if d.month == 1 and d.day <= 7  # First week of January
         }
         holidays_filtered = {**prev_year_holidays, **holiday_obj, **next_year_holidays}
     else:
