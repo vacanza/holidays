@@ -68,7 +68,6 @@ msgid "Janmashtami"
 msgstr "Janmashtami"
 
 #. Dussehra.
-#. Dussehra
 msgid "Dussehra"
 msgstr "Dussehra"
 
@@ -260,7 +259,7 @@ msgstr "Puducherry De Jure Transfer Day"
 msgid "Puducherry Liberation Day"
 msgstr "Puducherry Liberation Day"
 
-#. Rajsthan Day.
+#. Rajasthan Day.
 msgid "Rajasthan Day"
 msgstr "Rajasthan Day"
 
@@ -284,7 +283,7 @@ msgstr "Puthandu (Tamil New Year)"
 msgid "Telangana Formation Day"
 msgstr "Telangana Formation Day"
 
-#. .Bathukamma Festival.
+#. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr "Bathukamma Festival"
 

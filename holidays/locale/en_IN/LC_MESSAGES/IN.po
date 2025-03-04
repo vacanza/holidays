@@ -67,7 +67,6 @@ msgid "Janmashtami"
 msgstr ""
 
 #. Dussehra.
-#. Dussehra
 msgid "Dussehra"
 msgstr ""
 
@@ -243,7 +242,7 @@ msgstr ""
 msgid "Puducherry Liberation Day"
 msgstr ""
 
-#. Rajsthan Day.
+#. Rajasthan Day.
 msgid "Rajasthan Day"
 msgstr ""
 
@@ -267,7 +266,7 @@ msgstr ""
 msgid "Telangana Formation Day"
 msgstr ""
 
-#. .Bathukamma Festival.
+#. Bathukamma Festival.
 msgid "Bathukamma Festival"
 msgstr ""
 
