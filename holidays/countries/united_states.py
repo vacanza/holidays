@@ -688,7 +688,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 2017:
             self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
 
-
     def _populate_subdiv_mn_public_holidays(self):
         # Washington's Birthday
         if self._year >= 1971:
