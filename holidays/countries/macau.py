@@ -91,8 +91,6 @@ class Macau(
             else self.tr("%s後首個工作日")
         )
         for dt in sorted(dts):
-            if not self._is_observed(dt):
-                continue
             for name in self.get_list(dt):
                 self._add_observed(dt, observed_label % name, show_observed_label=False)
 

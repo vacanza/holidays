@@ -20,16 +20,17 @@ from tests.common import CommonCountryTests
 class TestMacau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Macau, years=range(1981, 2050))
-        cls.gov_holidays = Macau(categories=GOVERNMENT, years=range(1982, 2050))
+        super().setUpClass(Macau, years=range(1982, 2050))
+        cls.gov_holidays = Macau(categories=GOVERNMENT, years=range(2006, 2050))
         cls.man_holidays = Macau(categories=MANDATORY, years=range(1985, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Macau, MO, MAC)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Macau(years=1981, categories=(GOVERNMENT, PUBLIC)))
-        self.assertNoHolidays(Macau(years=1984, categories=(MANDATORY)))
+        self.assertNoHolidays(Macau(years=1981, categories=PUBLIC))
+        self.assertNoHolidays(Macau(years=1984, categories=MANDATORY))
+        self.assertNoHolidays(Macau(years=2005, categories=GOVERNMENT))
 
     def test_special_holidays(self):
         dt_full = (
@@ -132,7 +133,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.man_holidays, range(2000, 2050))
 
         # Public Holidays.
-        self.assertHolidayName(name, (f"{year}-06-10" for year in range(1982, 1999)))
+        self.assertHolidayName(name, (f"{year}-06-10" for year in range(1982, 2000)))
         self.assertNoHolidayName(name, range(2000, 2050))
 
     def test_assumption_day(self):
@@ -318,16 +319,16 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name_eve_afternoon, self.gov_holidays, range(2017, 2023), range(2024, 2050)
         )
-        self.assertNoHolidayName(name_eve_afternoon, self.gov_holidays, range(1982, 2017), {2023})
-        self.assertNoHolidayName(name_eve_afternoon, range(1982, 2050))
+        self.assertNoHolidayName(name_eve_afternoon, self.gov_holidays, range(2006, 2017), 2023)
+        self.assertNoHolidayName(name_eve_afternoon)
 
         self.assertHolidayName(name_d4, self.gov_holidays, "2017-01-31", "2018-02-19")
-        self.assertNoHolidayName(name_d4, self.gov_holidays, range(1982, 2017), range(2019, 2050))
-        self.assertNoHolidayName(name_d4, range(1982, 2050))
+        self.assertNoHolidayName(name_d4, self.gov_holidays, range(2006, 2017), range(2019, 2050))
+        self.assertNoHolidayName(name_d4)
 
         self.assertHolidayName(name_d5, self.gov_holidays, "2017-02-01", "2018-02-20")
-        self.assertNoHolidayName(name_d5, self.gov_holidays, range(1982, 2017), range(2019, 2050))
-        self.assertNoHolidayName(name_d5, range(1982, 2050))
+        self.assertNoHolidayName(name_d5, self.gov_holidays, range(2006, 2017), range(2019, 2050))
+        self.assertNoHolidayName(name_d5)
 
         self.assertHolidayName(
             name_d1_obs,
@@ -630,7 +631,7 @@ class TestMacau(CommonCountryTests, TestCase):
             "1999-09-24",
         )
         self.assertNoHolidayName(name, self.man_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name, range(1982, 2050))
+        self.assertNoHolidayName(name)
 
     def test_the_day_following_chong_chao(self):
         name = "中秋節翌日"
@@ -673,11 +674,10 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.gov_holidays,
-            (f"{year}-12-31" for year in range(2018, 2022)),
-            (f"{year}-12-31" for year in range(2024, 2050)),
+            (f"{year}-12-31" for year in (*range(2018, 2022), *range(2024, 2050))),
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(1982, 2018), {2022, 2023})
-        self.assertNoHolidayName(name, range(1982, 2050))
+        self.assertNoHolidayName(name, self.gov_holidays, range(2006, 2018), 2022, 2023)
+        self.assertNoHolidayName(name)
 
     def test_macau_city_day(self):
         name = "澳門市日"
@@ -686,6 +686,7 @@ class TestMacau(CommonCountryTests, TestCase):
         m_holidays = Macau(subdiv="M", years=range(1982, 2023))
         self.assertHolidayName(name, m_holidays, (f"{year}-06-24" for year in range(1982, 2000)))
         self.assertNoHolidayName(name, m_holidays, range(2000, 2050))
+        self.assertNoHolidayName(name)
 
     def test_day_of_the_municipality_of_ilhas(self):
         name = "海島市日"
@@ -695,6 +696,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertHolidayName(name, i_holidays, (f"{year}-11-30" for year in range(1982, 1993)))
         self.assertHolidayName(name, i_holidays, (f"{year}-07-13" for year in range(1993, 2000)))
         self.assertNoHolidayName(name, i_holidays, range(2000, 2050))
+        self.assertNoHolidayName(name)
 
     def test_2024_mandatory(self):
         # https://www.dsal.gov.mo/en/text/holiday_table.html
