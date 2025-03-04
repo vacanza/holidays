@@ -157,7 +157,7 @@ class Macau(
         # Winter Solstice.
         name = tr("冬至")
         if self._year >= 2001:
-            self._add_holiday(name, self._winter_solstice_date)
+            self._add_dongzhi_festival(name)
         elif self._year == 2000:
             self._add_holiday_dec_21(name)
         else:
@@ -351,7 +351,7 @@ class Macau(
         dts_observed.add(self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日")))
 
         # Winter Solstice.
-        dts_observed.add(self._add_holiday(tr("冬至"), self._winter_solstice_date))
+        dts_observed.add(self._add_dongzhi_festival(tr("冬至")))
 
         # Christmas Eve.
         dts_observed.add(self._add_christmas_eve(tr("聖誕節前日")))
@@ -382,20 +382,6 @@ class Macau(
         if self._year <= 1999:
             # Macau City Day.
             self._add_holiday_jun_24(tr("澳門市日"))
-
-    @property
-    def _winter_solstice_date(self) -> tuple[int, int]:
-        # This approximation is reliable for 1952-2099 years.
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return DEC, day
 
 
 class MO(Macau):

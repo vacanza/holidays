@@ -212,7 +212,7 @@ class HongKong(
 
         if WINTER_SOLSTICE in self.preferred_discretionary_holidays:
             # Chinese Winter Solstice Festival.
-            self._add_observed(self._add_holiday(tr("冬節"), self._winter_solstice_date))
+            self._add_observed(self._add_dongzhi_festival(tr("冬節")))
 
         if self._year >= 2024:
             # The first weekday after Christmas Day.
@@ -366,20 +366,6 @@ class HongKong(
                 self._add_holiday_last_mon_of_aug(name)
             else:
                 self._add_holiday_aug_30(name)
-
-    @property
-    def _winter_solstice_date(self) -> tuple[int, int]:
-        # This approximation is reliable for 1952-2099 years.
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return DEC, day
 
 
 class HK(HongKong):
