@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-04 20:49+0700\n"
+"PO-Revision-Date: 2025-03-05 01:28+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_MO\n"
@@ -150,6 +150,10 @@ msgstr ""
 msgid "重陽節"
 msgstr ""
 
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr ""
+
 #. The Day following Mid-Autumn Festival.
 msgid "中秋節翌日"
 msgstr ""
@@ -229,6 +233,14 @@ msgstr ""
 msgid "中華人民共和國國慶日翌日及中秋節翌日重疊"
 msgstr ""
 
-#. Mid-Autumn Festival.
-msgid "中秋節"
+#. Overlapping of the Day following National Day of the People's Republic of
+#. China and the Double
+#. Ninth Festival.
+msgid "中華人民共和國國慶日翌日及重陽節重疊"
+msgstr ""
+
+#. Overlapping of the National Day of the People's Republic of China and the
+#. Day following Mid-
+#. Autumn Festival.
+msgid "中華人民共和國國慶日及中秋節翌日重疊"
 msgstr ""

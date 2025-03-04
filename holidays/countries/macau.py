@@ -21,7 +21,11 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_NEXT_WORKDAY,
+)
 
 
 class Macau(
@@ -50,6 +54,7 @@ class Macau(
         - `Lei n.º 7/2008 <https://bo.io.gov.mo/bo/i/2008/33/lei07.asp>`_
     Cross-Checking:
         - `Public Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
+        - `Public Holidays for 2005-2018 <https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061>`_
         - `Mandatory Holidays for 2009-2029 <https://www.dsal.gov.mo/pt/standard/holiday_table.html>`_
     """
 
@@ -80,9 +85,11 @@ class Macau(
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, MacauStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
+        # Systemic in-lieus starts in 2011.
+        kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
+    def _populate_observed(self, dts: set[date], **kwargs) -> None:
         observed_label = (
             # Compensatory rest day for %s.
             self.tr("%s的補假")
@@ -91,8 +98,14 @@ class Macau(
             else self.tr("%s後首個工作日")
         )
         for dt in sorted(dts):
+            if not self._is_observed(dt):
+                continue
+            # Prior to 2012, in-lieus are only given for holidays which falls on Sunday.
+            observed_rule = SUN_TO_NEXT_WORKDAY if self._year <= 2011 else self._observed_rule
             for name in self.get_list(dt):
-                self._add_observed(dt, observed_label % name, show_observed_label=False)
+                self._add_observed(
+                    dt, observed_label % name, rule=observed_rule, show_observed_label=False
+                )
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -274,6 +287,7 @@ class Macau(
 
             # Mid-Autumn Festival.
             self._add_mid_autumn_festival(tr("中秋節"))
+
         else:
             # The Day following Mid-Autumn Festival.
             self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
@@ -282,8 +296,9 @@ class Macau(
             self._add_holiday_dec_20(tr("澳門特別行政區成立紀念日"))
 
     def _populate_government_holidays(self):
-        # Cross-Checking References is only available from 2017-2025.
-        if self._year <= 2016:
+        # While Cross-Checking References are available for from 2005-2025,
+        # SUN in-lieus starts in 2011; SAT-SUN in-lieus starts in 2012.
+        if self._year <= 2004:
             return None
 
         dts_observed = set()
@@ -294,17 +309,19 @@ class Macau(
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("元旦")))
 
-        if self._year != 2023:
+        if self._year not in {2006, 2007, 2009, 2010, 2012, 2013, 2016, 2023}:
             # Chinese New Year's Eve.
             self._add_chinese_new_years_eve(begin_time_label % self.tr("農曆除夕"))
 
-        if self._year <= 2018:
+        if self._year in {2006, 2007, 2010, 2013, 2014, 2017, 2018}:
             # The fourth day of Chinese New Year.
             self._add_chinese_new_years_day_four(tr("農曆正月初四"))
 
+        if self._year in {2014, 2015, 2017, 2018}:
             # The fifth day of Chinese New Year.
             self._add_chinese_new_years_day_five(tr("農曆正月初五"))
-        else:
+
+        if self._year >= 2019:
             # Chinese New Year's Day.
             dts_observed.add(self._add_chinese_new_years_day(tr("農曆正月初一")))
 
@@ -359,7 +376,8 @@ class Macau(
         # Christmas Day.
         dts_observed.add(self._add_christmas_day(tr("聖誕節")))
 
-        if self._year >= 2018 and self._year not in {2022, 2023}:
+        # 2012's Full-Day New Year's Eve is declared discretely.
+        if self._year >= 2007 and self._year not in {2011, 2012, 2016, 2017, 2022, 2023}:
             # New Year's Eve.
             self._add_new_years_eve(begin_time_label % self.tr("除夕"))
 
@@ -399,11 +417,9 @@ class MacauStaticHolidays:
     Special Mandatory Holidays.
         - https://www.dsal.gov.mo/pt/standard/holiday_table.html
     Cross-Checking:
-        - `Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
+        - `Public Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
+        - `Public Holidays for 2005-2018 <https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061>`_
     """
-
-    # Additional Government Holiday.
-    name_gov_fullday = tr("額外政府假期")
 
     # Additional Public Holiday.
     name_fullday = tr("額外公眾假期")
@@ -417,16 +433,32 @@ class MacauStaticHolidays:
 
     # Overlapping of the Day following National Day of the People's Republic of China
     # and the Day following Mid-Autumn Festival.
-    name_mid_autumn_festival_national_day_2_overlap = tr(
+    name_mid_autumn_festival_day_2_national_day_2_overlap = tr(
         "中華人民共和國國慶日翌日及中秋節翌日重疊"
     )
 
+    # Overlapping of the Day following National Day of the People's Republic of China
+    # and the Double Ninth Festival.
+    name_double_ninth_festival_national_day_2_overlap = tr("中華人民共和國國慶日翌日及重陽節重疊")
+
+    # Overlapping of the National Day of the People's Republic of China
+    # and the Day following Mid-Autumn Festival.
+    name_mid_autumn_festival_day_2_national_day_overlap = tr(
+        "中華人民共和國國慶日及中秋節翌日重疊"
+    )
+
+    # New Year's Eve.
+    name_new_years_eve = tr("除夕")
+
     special_government_holidays = {
-        2006: (FEB, 1, name_gov_fullday),
-        2007: (FEB, 21, name_gov_fullday),
-        2008: (DEC, 22, name_gov_fullday),
-        2012: (OCT, 3, name_gov_fullday),
-        2020: (OCT, 5, name_mid_autumn_festival_national_day_2_overlap),
+        # Additional Government Holiday.
+        2008: (DEC, 22, tr("額外政府假期")),
+        2012: (
+            (OCT, 3, name_mid_autumn_festival_day_2_national_day_overlap),
+            (DEC, 31, name_new_years_eve),
+        ),
+        2014: (OCT, 3, name_double_ninth_festival_national_day_2_overlap),
+        2020: (OCT, 5, name_mid_autumn_festival_day_2_national_day_2_overlap),
     }
     special_mandatory_holidays = {
         2015: (SEP, 3, name_70th_war_of_resistance),
