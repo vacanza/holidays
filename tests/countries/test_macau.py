@@ -698,6 +698,28 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, i_holidays, range(2000, 2050))
         self.assertNoHolidayName(name)
 
+    def test_2024_government(self):
+        # https://www.gov.mo/en/public-holidays/year-2024/
+        dt = (
+            # Exemption from work granted to public employees by the Chief Executive.
+            "2024-02-09",
+            "2024-12-31",
+        )
+        dt_observed = (
+            # Compensatory rest days for public employees set forth in
+            # No. 4 of Article 79 of the ETAPM.
+            "2024-02-13",
+            "2024-02-14",
+            "2024-04-01",
+            "2024-11-04",
+            "2024-12-09",
+            "2024-12-23",
+        )
+        self.assertHoliday(Macau(categories=GOVERNMENT, years=2024), dt, dt_observed)
+        self.assertNoNonObservedHoliday(
+            Macau(categories=GOVERNMENT, years=2024, observed=False), dt_observed
+        )
+
     def test_2024_mandatory(self):
         # https://www.dsal.gov.mo/en/text/holiday_table.html
         self.assertHolidays(
