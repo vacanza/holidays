@@ -87,7 +87,7 @@ class Macau(
         elif self._is_sunday(dt):
             self._add_holiday(name, _timedelta(dt, +1))
 
-    def _add_observed_two(self, dt: date, name1, name2):
+    def _add_observed_two_day(self, dt: date, name1, name2):
         if self._is_friday(dt):
             self._add_holiday(name2, _timedelta(dt, +3))
         if self._is_saturday(dt):
@@ -135,10 +135,10 @@ class Macau(
         # Labor Day.
         self._add_labor_day(tr("勞動節"))
 
-        # Tuen Ng Festival.
+        # Tung Ng Festival (Dragon Boat Festival).
         self._add_dragon_boat_festival(tr("端午節"))
 
-        # Chung Yeung Festival.
+        # Chung Yeung Festival (Festival of Ancestors).
         self._add_double_ninth_festival(tr("重陽節"))
 
         # The Day following Chong Chao (Mid-Autumn) Festival.
@@ -349,7 +349,7 @@ class Macau(
                 self._chinese_birthday_of_buddha, observed_label % self.tr("佛誕節")
             )
 
-            # Tuen Ng Festival.
+            # Tung Ng Festival (Dragon Boat Festival).
             self._add_observed(self._dragon_boat_festival, observed_label % self.tr("端午節"))
 
             # The Day following Chong Chao (Mid-Autumn) Festival.
@@ -548,7 +548,7 @@ class Macau(
             else:
                 self._add_observed(dt_chong_chao_day2, chong_chao_day2_obs)
                 self._add_observed(dt_chung_yeung, chung_yeung_obs)
-                self._add_observed_two(dt_national_day, national_day1_obs, national_day2_obs)
+                self._add_observed_two_day(dt_national_day, national_day1_obs, national_day2_obs)
 
             # All Soul's Day.
             self._add_observed(date(self._year, NOV, 2), observed_label % self.tr("追思節"))
@@ -572,7 +572,7 @@ class Macau(
             dt_macao_sar = date(self._year, DEC, 20)
 
             if dt_winter_solstice == date(self._year, DEC, 21):
-                self._add_observed_two(dt_macao_sar, macao_sar_obs, winter_solstice_obs)
+                self._add_observed_two_day(dt_macao_sar, macao_sar_obs, winter_solstice_obs)
             elif dt_winter_solstice == date(self._year, DEC, 22):
                 if self._is_saturday(dt_winter_solstice):
                     self._add_christmas_day_two(winter_solstice_obs)
@@ -580,7 +580,7 @@ class Macau(
                     self._add_observed(dt_macao_sar, macao_sar_obs)
                     self._add_observed(dt_winter_solstice, winter_solstice_obs)
 
-            self._add_observed_two(
+            self._add_observed_two_day(
                 date(self._year, DEC, 24),
                 # Christmas Eve.
                 observed_label % self.tr("聖誕節前日"),

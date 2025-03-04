@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.68\n"
+"Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-02 02:26+0700\n"
+"PO-Revision-Date: 2025-03-04 10:56+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
@@ -142,10 +142,11 @@ msgstr "佛诞节"
 msgid "基督聖體聖血節"
 msgstr "基督圣体圣血节"
 
-#. Tuen Ng Festival.
+#. Tung Ng Festival (Dragon Boat Festival).
 msgid "端午節"
 msgstr "端午节"
 
+#. Chung Yeung Festival (Festival of Ancestors).
 #. Chung Yeung Festival.
 msgid "重陽節"
 msgstr "重阳节"
