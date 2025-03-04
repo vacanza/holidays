@@ -147,7 +147,6 @@ msgid "端午節"
 msgstr "端午节"
 
 #. Chung Yeung Festival (Festival of Ancestors).
-#. Chung Yeung Festival.
 msgid "重陽節"
 msgstr "重阳节"
 
