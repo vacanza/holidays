@@ -684,7 +684,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # New Year's Eve
             self._add_observed(self._add_new_years_eve("New Year's Eve"))
 
-        #Day after Thanksgiving
+        # Day after Thanksgiving
         if self._year >=2017:
             self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
 
