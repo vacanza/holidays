@@ -610,7 +610,25 @@ class TestMacau(CommonCountryTests, TestCase):
         name = "中秋節"
 
         # Mandatory Holidays.
-        self.assertHolidayName(name, self.man_holidays, range(1985, 2000))
+        self.assertHolidayName(
+            name,
+            self.man_holidays,
+            "1985-09-29",
+            "1986-09-18",
+            "1987-10-07",
+            "1988-09-25",
+            "1989-09-14",
+            "1990-10-03",
+            "1991-09-22",
+            "1992-09-11",
+            "1993-09-30",
+            "1994-09-20",
+            "1995-09-09",
+            "1996-09-27",
+            "1997-09-16",
+            "1998-10-05",
+            "1999-09-24",
+        )
         self.assertNoHolidayName(name, self.man_holidays, range(2000, 2050))
         self.assertNoHolidayName(name, range(1982, 2050))
 
