@@ -292,7 +292,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_1982, range(1999, 2050))
         self.assertNoHolidayName(name_1999, range(1982, 1999))
 
-    def test_lunar_new_year(self):
+    def test_chinese_new_year(self):
         name_eve_afternoon = "農曆除夕 （下午）"
         name_d1 = "農曆正月初一"
         name_d2 = "農曆正月初二"
@@ -544,7 +544,7 @@ class TestMacau(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(1988, 2050))
 
-    def test_tuen_ng_festival(self):
+    def test_dragon_boat_festival(self):
         name = "端午節"
 
         # Government Holidays.
@@ -573,7 +573,7 @@ class TestMacau(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1982, 2050))
 
-    def test_chung_yeung_festival(self):
+    def test_double_ninth_festival(self):
         name = "重陽節"
         dt = (
             "2009-10-26",
@@ -607,7 +607,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(1982, 2050))
 
-    def test_chong_chao(self):
+    def test_mid_autumn_festival(self):
         name = "中秋節"
 
         # Mandatory Holidays.
@@ -633,7 +633,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.man_holidays, range(2000, 2050))
         self.assertNoHolidayName(name)
 
-    def test_the_day_following_chong_chao(self):
+    def test_the_day_following_mid_autumn_festival(self):
         name = "中秋節翌日"
         dt = (
             "2009-10-04",
@@ -1016,23 +1016,23 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-02-09", "Lunar New Year's Eve (Afternoon)"),
-            ("2024-02-10", "Lunar New Year's Day"),
-            ("2024-02-11", "The second day of Lunar New Year"),
-            ("2024-02-12", "The third day of Lunar New Year"),
-            ("2024-02-13", "Compensatory rest day for Lunar New Year's Day"),
-            ("2024-02-14", "Compensatory rest day for The second day of Lunar New Year"),
+            ("2024-02-09", "Chinese New Year's Eve (Afternoon)"),
+            ("2024-02-10", "Chinese New Year's Day"),
+            ("2024-02-11", "The second day of Chinese New Year"),
+            ("2024-02-12", "The third day of Chinese New Year"),
+            ("2024-02-13", "Compensatory rest day for Chinese New Year's Day"),
+            ("2024-02-14", "Compensatory rest day for The second day of Chinese New Year"),
             ("2024-03-29", "Good Friday"),
             ("2024-03-30", "The Day before Easter"),
             ("2024-04-01", "Compensatory rest day for The Day before Easter"),
-            ("2024-04-04", "Ching Ming Festival"),
+            ("2024-04-04", "Tomb-Sweeping Day"),
             ("2024-05-01", "Labor Day"),
-            ("2024-05-15", "The Buddha's Birthday (Feast of Buddha)"),
-            ("2024-06-10", "Tung Ng Festival (Dragon Boat Festival)"),
-            ("2024-09-18", "The Day following Chong Chao (Mid-Autumn) Festival"),
+            ("2024-05-15", "The Buddha's Birthday"),
+            ("2024-06-10", "Dragon Boat Festival"),
+            ("2024-09-18", "The Day following Mid-Autumn Festival"),
             ("2024-10-01", "National Day of the People's Republic of China"),
             ("2024-10-02", "The day following National Day of the People's Republic of China"),
-            ("2024-10-11", "Chung Yeung Festival (Festival of Ancestors)"),
+            ("2024-10-11", "Double Ninth Festival"),
             ("2024-11-02", "All Soul's Day"),
             ("2024-11-04", "Compensatory rest day for All Soul's Day"),
             ("2024-12-08", "Immaculate Conception"),

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-04 10:56+0700\n"
+"PO-Revision-Date: 2025-03-04 20:49+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -102,19 +102,19 @@ msgstr "วันคริสต์มาส"
 msgid "聖誕"
 msgstr "วันคริสต์มาส"
 
-#. Lunar New Year's Day.
+#. Chinese New Year's Day.
 msgid "農曆正月初一"
 msgstr "วันตรุษจีน"
 
-#. The second day of Lunar New Year.
+#. The second day of Chinese New Year.
 msgid "農曆正月初二"
 msgstr "วันตรุษจีนวันที่สอง"
 
-#. The third day of Lunar New Year.
+#. The third day of Chinese New Year.
 msgid "農曆正月初三"
 msgstr "วันตรุษจีนวันที่สาม"
 
-#. Ching Ming Festival.
+#. Tomb-Sweeping Day.
 msgid "清明節"
 msgstr "วันเช็งเม้ง"
 
@@ -134,7 +134,7 @@ msgstr "วันก่อนวันอาทิตย์อีสเตอร
 msgid "聖周星期六"
 msgstr "วันเสาร์ศักดิ์สิทธิ์"
 
-#. The Buddha's Birthday (Feast of Buddha).
+#. The Buddha's Birthday.
 msgid "佛誕節"
 msgstr "วันวิสาขบูชา"
 
@@ -142,19 +142,19 @@ msgstr "วันวิสาขบูชา"
 msgid "基督聖體聖血節"
 msgstr "วันสมโภชพระคริสตวรกาย"
 
-#. Tung Ng Festival (Dragon Boat Festival).
+#. Dragon Boat Festival.
 msgid "端午節"
 msgstr "วันไหว้บ๊ะจ่าง"
 
-#. Chung Yeung Festival (Festival of Ancestors).
+#. Double Ninth Festival.
 msgid "重陽節"
 msgstr "วันไหว้บรรพบุรุษ"
 
-#. Chong Chao (Mid-Autumn) Festival.
+#. Mid-Autumn Festival.
 msgid "中秋節"
 msgstr "วันไหว้พระจันทร์"
 
-#. The Day following Chong Chao (Mid-Autumn) Festival.
+#. The Day following Mid-Autumn Festival.
 msgid "中秋節翌日"
 msgstr "วันหลังวันไหว้พระจันทร์"
 
@@ -214,15 +214,15 @@ msgstr "วันทำงานวันแรกหลัง%s"
 msgid "%s （下午）"
 msgstr "%s (ครึ่งบ่าย)"
 
-#. Lunar New Year's Eve.
+#. Chinese New Year's Eve.
 msgid "農曆除夕"
 msgstr "วันก่อนวันตรุษจีน"
 
-#. The fourth day of Lunar New Year.
+#. The fourth day of Chinese New Year.
 msgid "農曆正月初四"
 msgstr "วันตรุษจีนวันที่สี่"
 
-#. The fifth day of Lunar New Year.
+#. The fifth day of Chinese New Year.
 msgid "農曆正月初五"
 msgstr "วันตรุษจีนวันที่ห้า"
 
@@ -232,7 +232,7 @@ msgstr "วันสิ้นปี"
 
 #. Overlapping of the Day following National Day of the People's Republic of
 #. China and the Day
-#. following Chong Chao (Mid-Autumn) Festival.
+#. following Mid-Autumn Festival.
 msgid "中華人民共和國國慶日翌日及中秋節翌日重疊"
 msgstr ""
 "วันหยุดชดเชยเนื่องในโอกาสวันหลังวันชาติจีนและวันหลังวันไหว้พระจันทร์หยุดตรงกัน"

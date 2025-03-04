@@ -98,16 +98,16 @@ class Macau(
         # New Year's Day.
         self._add_new_years_day(tr("元旦"))
 
-        # Lunar New Year's Day.
+        # Chinese New Year's Day.
         self._add_chinese_new_years_day(tr("農曆正月初一"))
 
-        # The second day of Lunar New Year.
+        # The second day of Chinese New Year.
         self._add_chinese_new_years_day_two(tr("農曆正月初二"))
 
-        # The third day of Lunar New Year.
+        # The third day of Chinese New Year.
         self._add_chinese_new_years_day_three(tr("農曆正月初三"))
 
-        # Ching Ming Festival.
+        # Tomb-Sweeping Day.
         self._add_qingming_festival(tr("清明節"))
 
         # Regulamento Administrativo n.º 4/1999 - Name changed in Chinese for Good Friday.
@@ -133,13 +133,13 @@ class Macau(
         # Labor Day.
         self._add_labor_day(tr("勞動節"))
 
-        # Tung Ng Festival (Dragon Boat Festival).
+        # Dragon Boat Festival.
         self._add_dragon_boat_festival(tr("端午節"))
 
-        # Chung Yeung Festival (Festival of Ancestors).
+        # Double Ninth Festival.
         self._add_double_ninth_festival(tr("重陽節"))
 
-        # The Day following Chong Chao (Mid-Autumn) Festival.
+        # The Day following Mid-Autumn Festival.
         self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
 
         # National Day of the People's Republic of China.
@@ -202,7 +202,7 @@ class Macau(
         # Portaria n.º 242/98/M - De Facto adds Macao S.A.R. Establishment Day on DEC 20 for 1999.
         # Regulamento Administrativo n.º 5/1999 - Special Name for 1999 (see StaticHolidays).
         # Ordem Executiva n.º 60/2000 - Removed all Portugal-derived holidays.
-        #                             - Adds Buddha's Birthday.
+        #                             - Adds The Buddha's Birthday.
         #                             - Adds The day following National Day of the PRC on OCT 2.
         #                             - Adds "Anniversary of " to Macao S.A.R. holiday in Chinese.
         if self._year <= 1999:
@@ -218,7 +218,7 @@ class Macau(
             # Restoration of Independence Day.
             self._add_holiday_dec_1(tr("恢復獨立紀念日"))
         else:
-            # The Buddha's Birthday (Feast of Buddha).
+            # The Buddha's Birthday.
             self._add_chinese_birthday_of_buddha(tr("佛誕節"))
 
             # The day following National Day of the People's Republic of China.
@@ -233,7 +233,7 @@ class Macau(
         Decreto-Lei n.º 24/89/M - Added Ching Ming Festival.
         Lei n.º 8/2000 - Removed Day of Portugal
                        - Added Macao S.A.R. Establishment Day.
-                       - Moved Chong Chao to Day following Chong Chao to match Public Holidays.
+                       - Moved Mid-Autumn to Day following Mid-Autumn to match Public Holidays.
         Lei n.º 7/2008 - Consolidated with other laws, reaffirming 2000 Amendment list.
         """
         if self._year <= 1984:
@@ -242,19 +242,19 @@ class Macau(
         # New Year's Day.
         self._add_new_years_day(tr("元旦"))
 
-        # Lunar New Year's Day.
+        # Chinese New Year's Day.
         self._add_chinese_new_years_day(tr("農曆正月初一"))
 
-        # The second day of Lunar New Year.
+        # The second day of Chinese New Year.
         self._add_chinese_new_years_day_two(tr("農曆正月初二"))
 
-        # The third day of Lunar New Year.
+        # The third day of Chinese New Year.
         self._add_chinese_new_years_day_three(tr("農曆正月初三"))
 
         # Labor Day.
         self._add_labor_day(tr("勞動節"))
 
-        # Chung Yeung Festival (Festival of Ancestors).
+        # Double Ninth Festival.
         self._add_double_ninth_festival(tr("重陽節"))
 
         # National Day of the People's Republic of China.
@@ -262,20 +262,20 @@ class Macau(
 
         # Decreto-Lei n.º 24/89/M - Adds Ching Ming as a Mandatory Holiday.
         if self._year >= 1989:
-            # Ching Ming Festival.
+            # Tomb-Sweeping Day.
             self._add_qingming_festival(tr("清明節"))
 
         # Lei n.º 8/2000 - Removed Day of Portugal as a Mandatory Holiday.
-        #                - Changed observance from Chong Chao to the following day.
+        #                - Changed observance from Mid-Autumn to the following day.
         #                - Adds Macao S.A.R. Establishment Day as a Mandatory Holiday.
         if self._year <= 1999:
             # Day of Portugal, Camões, and the Portuguese Communities.
             self._add_holiday_jun_10(tr("葡國日、賈梅士日暨葡僑日"))
 
-            # Chong Chao (Mid-Autumn) Festival.
+            # Mid-Autumn Festival.
             self._add_mid_autumn_festival(tr("中秋節"))
         else:
-            # The Day following Chong Chao (Mid-Autumn) Festival.
+            # The Day following Mid-Autumn Festival.
             self._add_mid_autumn_festival_day_two(tr("中秋節翌日"))
 
             # Macao S.A.R. Establishment Day.
@@ -295,44 +295,44 @@ class Macau(
         dts_observed.add(self._add_new_years_day(tr("元旦")))
 
         if self._year != 2023:
-            # Lunar New Year's Eve.
+            # Chinese New Year's Eve.
             self._add_chinese_new_years_eve(begin_time_label % self.tr("農曆除夕"))
 
         if self._year <= 2018:
-            # The fourth day of Lunar New Year.
+            # The fourth day of Chinese New Year.
             self._add_chinese_new_years_day_four(tr("農曆正月初四"))
 
-            # The fifth day of Lunar New Year.
+            # The fifth day of Chinese New Year.
             self._add_chinese_new_years_day_five(tr("農曆正月初五"))
         else:
-            # Lunar New Year's Day.
+            # Chinese New Year's Day.
             dts_observed.add(self._add_chinese_new_years_day(tr("農曆正月初一")))
 
-            # The second day of Lunar New Year.
+            # The second day of Chinese New Year.
             dts_observed.add(self._add_chinese_new_years_day_two(tr("農曆正月初二")))
 
-            # The third day of Lunar New Year.
+            # The third day of Chinese New Year.
             dts_observed.add(self._add_chinese_new_years_day_three(tr("農曆正月初三")))
 
         # The Day before Easter.
         dts_observed.add(self._add_holy_saturday(tr("復活節前日")))
 
-        # Ching Ming Festival.
+        # Tomb-Sweeping Day.
         dts_observed.add(self._add_qingming_festival(tr("清明節")))
 
         # Labor Day.
         dts_observed.add(self._add_labor_day(tr("勞動節")))
 
-        # The Buddha's Birthday (Feast of Buddha).
+        # The Buddha's Birthday.
         dts_observed.add(self._add_chinese_birthday_of_buddha(tr("佛誕節")))
 
-        # Tung Ng Festival (Dragon Boat Festival).
+        # Dragon Boat Festival.
         dts_observed.add(self._add_dragon_boat_festival(tr("端午節")))
 
-        # The Day following Chong Chao (Mid-Autumn) Festival.
+        # The Day following Mid-Autumn Festival.
         dts_observed.add(self._add_mid_autumn_festival_day_two(tr("中秋節翌日")))
 
-        # Chung Yeung Festival (Festival of Ancestors).
+        # Double Ninth Festival.
         dts_observed.add(self._add_double_ninth_festival(tr("重陽節")))
 
         # National Day of the People's Republic of China.
@@ -416,15 +416,17 @@ class MacauStaticHolidays:
     name_70th_war_of_resistance = tr("中國人民抗日戰爭暨世界反法西斯戰爭勝利七十周年紀念日")
 
     # Overlapping of the Day following National Day of the People's Republic of China
-    # and the Day following Chong Chao (Mid-Autumn) Festival.
-    name_chong_chao_national_day_2_overlap = tr("中華人民共和國國慶日翌日及中秋節翌日重疊")
+    # and the Day following Mid-Autumn Festival.
+    name_mid_autumn_festival_national_day_2_overlap = tr(
+        "中華人民共和國國慶日翌日及中秋節翌日重疊"
+    )
 
     special_government_holidays = {
         2006: (FEB, 1, name_gov_fullday),
         2007: (FEB, 21, name_gov_fullday),
         2008: (DEC, 22, name_gov_fullday),
         2012: (OCT, 3, name_gov_fullday),
-        2020: (OCT, 5, name_chong_chao_national_day_2_overlap),
+        2020: (OCT, 5, name_mid_autumn_festival_national_day_2_overlap),
     }
     special_mandatory_holidays = {
         2015: (SEP, 3, name_70th_war_of_resistance),
