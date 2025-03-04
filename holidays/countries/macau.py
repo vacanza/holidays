@@ -82,7 +82,7 @@ class Macau(
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
-    def _populate_observed(self, dts: set[date]) -> None:
+    def _populate_observed(self, dts: set[date], multiple: bool = False) -> None:
         observed_label = (
             # Compensatory rest day for %s.
             self.tr("%s的補假")
