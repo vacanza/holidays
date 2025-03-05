@@ -8,25 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// © Copyright year. Last updated on Month date, year.
-document.addEventListener("DOMContentLoaded", function () {
-    let today = new Date();
-    let year = today.getFullYear();
-    let formattedDate = today.toLocaleDateString('en-US', {
-        year: 'numeric', month: 'short', day: 'numeric'
-    });
-
-    let copyrightText = `<p>© Copyright ${year}. Last updated on ${formattedDate}.</p>`;
-
-    // Select the <div role="contentinfo"> where the copyright should appear before
-    let contentInfo = document.querySelector("footer div[role='contentinfo']");
-
-    if (contentInfo) {
-        // Insert copyright before the content info div
-        contentInfo.insertAdjacentHTML("beforebegin", copyrightText);
-    }
-});
-
 
 document.addEventListener("DOMContentLoaded", () => {
     // Style File Name in the Webpage

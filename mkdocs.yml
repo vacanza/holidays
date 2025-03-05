@@ -29,6 +29,7 @@ plugins:
       scripts:
         - scripts/gen_ref_pages.py
         - scripts/summary.py
+        - scripts/build_date.py
   - literate-nav:
       nav_file: SUMMARY.md
 
@@ -43,3 +44,4 @@ extra_css:
     - css/custom.css
 extra_javascript:
     - js/custom.js
+    - js/copyright.js
