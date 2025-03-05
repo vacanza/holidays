@@ -77,7 +77,6 @@ class Macau(
     supported_languages = ("en_MO", "en_US", "pt_MO", "th", "zh_CN", "zh_MO")
     # Decreto-Lei n.º 4/82/M.
     start_year = 1982
-    weekend = {SAT, SUN}
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -88,24 +87,6 @@ class Macau(
         # Systemic in-lieus starts in 2011.
         kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
-
-    def _populate_observed(self, dts: set[date], **kwargs) -> None:
-        observed_label = (
-            # Compensatory rest day for %s.
-            self.tr("%s的補假")
-            if self._year >= 2020
-            # The first working day after %s.
-            else self.tr("%s後首個工作日")
-        )
-        for dt in sorted(dts):
-            if not self._is_observed(dt):
-                continue
-            # Prior to 2012, in-lieus are only given for holidays which falls on Sunday.
-            observed_rule = SUN_TO_NEXT_WORKDAY if self._year <= 2011 else self._observed_rule
-            for name in self.get_list(dt):
-                self._add_observed(
-                    dt, observed_label % name, rule=observed_rule, show_observed_label=False
-                )
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -382,7 +363,18 @@ class Macau(
             self._add_new_years_eve(begin_time_label % self.tr("除夕"))
 
         if self.observed:
-            self._populate_observed(dts_observed)
+            self.observed_label = (
+                # Compensatory rest day for %s.
+                self.tr("%s的補假")
+                if self._year >= 2020
+                # The first working day after %s.
+                else self.tr("%s後首個工作日")
+            )
+            # Prior to 2012, in-lieus are only given for holidays which falls on Sunday.
+            self._observed_rule = (
+                SUN_TO_NEXT_WORKDAY if self._year <= 2011 else SAT_SUN_TO_NEXT_WORKDAY
+            )
+            self._populate_observed(dts_observed, multiple=True)
 
     def _populate_subdiv_i_public_holidays(self):
         # Decreto-Lei n.º 15/93/M - Moved Day of the Municipality of Ilhas from JUL 13 to NOV 30.
