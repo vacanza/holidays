@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, SEP, OCT, DEC, SAT, SUN
+from holidays.calendars.gregorian import FEB, SEP, OCT, DEC
 from holidays.constants import GOVERNMENT, MANDATORY, PUBLIC
 from holidays.groups import (
     ChineseCalendarHolidays,
