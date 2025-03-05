@@ -109,7 +109,7 @@ msgstr "Day of Ashura"
 
 #. Prophet's Birthday.
 msgid "Id-e-Milad"
-msgstr "Mawlid"
+msgstr "Prophet's Birthday"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
