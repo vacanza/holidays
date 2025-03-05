@@ -48,6 +48,7 @@ class Indonesia(
     - https://www.timeanddate.com/holidays/indonesia
     - https://en.wikipedia.org/wiki/Nyepi
     - https://bali.com/bali/travel-guide/culture/nyepi-balinese-new-year/
+    - https://www.balitrips.com/balinese-temples-ceremony
     """
 
     country = "ID"
@@ -197,6 +198,26 @@ class Indonesia(
                 2028: (MAR, 26),
                 2029: (MAR, 15),
                 2030: (MAR, 5),
+                2031: (MAR, 24),
+                2032: (MAR, 12),
+                2033: (MAR, 31),
+                2034: (MAR, 20),
+                2035: (MAR, 10),
+                2036: (MAR, 28),
+                2037: (MAR, 17),
+                2038: (MAR, 6),
+                2039: (MAR, 25),
+                2040: (MAR, 14),
+                2041: (MAR, 3),
+                2042: (MAR, 22),
+                2043: (MAR, 11),
+                2044: (MAR, 29),
+                2045: (MAR, 19),
+                2046: (MAR, 8),
+                2047: (MAR, 27),
+                2048: (MAR, 15),
+                2049: (MAR, 5),
+                2050: (MAR, 24),
             }
             if self._year in dates_obs:
                 # Day of Silence.
