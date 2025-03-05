@@ -105,7 +105,7 @@ msgstr "Guru Nanak Jayanti"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "Day of Ashura"
+msgstr "Ashura"
 
 #. Prophet's Birthday.
 msgid "Id-e-Milad"
