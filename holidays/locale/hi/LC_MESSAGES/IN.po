@@ -206,7 +206,7 @@ msgstr "महाराष्ट्र दिवस"
 msgid "Madhya Pradesh Foundation Day"
 msgstr "मध्य प्रदेश स्थापना दिवस"
 
-#. Nagaland State Inaugration Day.
+#. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr "नागालैंड राज्य उद्घाटन दिवस"
 
@@ -238,7 +238,7 @@ msgstr "पंजाब दिवस"
 msgid "Puducherry De Jure Transfer Day"
 msgstr "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"
 
-#. Puducherry Inauguration Day.
+#. Puducherry Liberation Day.
 msgid "Puducherry Liberation Day"
 msgstr "पुडुचेरी मुक्ति दिवस"
 

@@ -238,7 +238,7 @@ msgstr ""
 msgid "Puducherry De Jure Transfer Day"
 msgstr ""
 
-#. Puducherry Inaugration Day.
+#. Puducherry Liberation Day.
 msgid "Puducherry Liberation Day"
 msgstr ""
 
