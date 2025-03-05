@@ -255,7 +255,7 @@ msgstr "Punjab Day"
 msgid "Puducherry De Jure Transfer Day"
 msgstr "Puducherry De Jure Transfer Day"
 
-#. Puducherry Inaugration Day.
+#. Puducherry Inauguration Day.
 msgid "Puducherry Liberation Day"
 msgstr "Puducherry Liberation Day"
 

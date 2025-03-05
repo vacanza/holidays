@@ -206,7 +206,7 @@ msgstr ""
 msgid "Madhya Pradesh Foundation Day"
 msgstr ""
 
-#. Nagaland State Inaugration Day.
+#. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr ""
 

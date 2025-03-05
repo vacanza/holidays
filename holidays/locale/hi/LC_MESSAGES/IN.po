@@ -238,7 +238,7 @@ msgstr "पंजाब दिवस"
 msgid "Puducherry De Jure Transfer Day"
 msgstr "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"
 
-#. Puducherry Inaugration Day.
+#. Puducherry Inauguration Day.
 msgid "Puducherry Liberation Day"
 msgstr "पुडुचेरी मुक्ति दिवस"
 
