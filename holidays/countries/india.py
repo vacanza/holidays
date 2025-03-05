@@ -379,7 +379,7 @@ class India(
 
     # Nagaland.
     def _populate_subdiv_nl_public_holidays(self):
-        # Nagaland State Inaugration Day.
+        # Nagaland State Inauguration Day.
         self._add_holiday_dec_1(tr("Nagaland State Inauguration Day"))
 
     # Orissa / Odisha.
@@ -397,7 +397,7 @@ class India(
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Puducherry De Jure Transfer Day.
         self._add_holiday_aug_16(tr("Puducherry De Jure Transfer Day"))
-        # Puducherry Inaugration Day.
+        # Puducherry Liberation Day.
         self._add_holiday_nov_1(tr("Puducherry Liberation Day"))
 
     # Punjab.
