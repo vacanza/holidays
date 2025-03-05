@@ -284,7 +284,7 @@ class Macau(
         dts_observed = set()
 
         # %s (Afternoon).
-        begin_time_label = self.tr("%s （下午）")
+        begin_time_label = self.tr("%s（下午）")
 
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("元旦")))

@@ -323,7 +323,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_1999, range(1982, 1999))
 
     def test_chinese_new_year(self):
-        name_eve_afternoon = "農曆除夕 （下午）"
+        name_eve_afternoon = "農曆除夕（下午）"
         name_d1 = "農曆正月初一"
         name_d2 = "農曆正月初二"
         name_d3 = "農曆正月初三"
@@ -753,7 +753,7 @@ class TestMacau(CommonCountryTests, TestCase):
 
     def test_new_years_eve(self):
         name = "除夕"
-        name_afternoon = f"{name} （下午）"
+        name_afternoon = f"{name}（下午）"
 
         # Government Holidays.
         self.assertHolidayName(name, self.gov_holidays, "2012-12-31")
@@ -1070,7 +1070,7 @@ class TestMacau(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "元旦"),
-            ("2024-02-09", "農曆除夕 （下午）"),
+            ("2024-02-09", "農曆除夕（下午）"),
             ("2024-02-10", "農曆正月初一"),
             ("2024-02-11", "農曆正月初二"),
             ("2024-02-12", "農曆正月初三"),
@@ -1096,7 +1096,7 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-12-23", "冬至的補假"),
             ("2024-12-24", "聖誕節前日"),
             ("2024-12-25", "聖誕節"),
-            ("2024-12-31", "除夕 （下午）"),
+            ("2024-12-31", "除夕（下午）"),
         )
 
     def test_l10n_en_mo(self):
@@ -1241,7 +1241,7 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "zh_CN",
             ("2024-01-01", "元旦"),
-            ("2024-02-09", "农历除夕 （下午）"),
+            ("2024-02-09", "农历除夕（下午）"),
             ("2024-02-10", "农历正月初一"),
             ("2024-02-11", "农历正月初二"),
             ("2024-02-12", "农历正月初三"),
@@ -1267,5 +1267,5 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-12-23", "冬至的补假"),
             ("2024-12-24", "圣诞节前日"),
             ("2024-12-25", "圣诞节"),
-            ("2024-12-31", "除夕 （下午）"),
+            ("2024-12-31", "除夕（下午）"),
         )

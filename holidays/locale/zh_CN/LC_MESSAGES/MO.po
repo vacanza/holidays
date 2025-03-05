@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-02-06 15:34+0700\n"
-"PO-Revision-Date: 2025-03-05 01:28+0700\n"
+"PO-Revision-Date: 2025-03-05 19:40+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
@@ -208,8 +208,8 @@ msgstr "%s后首个工作日"
 
 #. %s (Afternoon).
 #, c-format
-msgid "%s （下午）"
-msgstr "%s （下午）"
+msgid "%s（下午）"
+msgstr "%s（下午）"
 
 #. Chinese New Year's Eve.
 msgid "農曆除夕"
