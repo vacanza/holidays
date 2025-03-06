@@ -867,6 +867,15 @@ class TestSerialization(unittest.TestCase):
         self.assertEqual(loaded_holidays, self.hb)
         self.assertIn(dt, self.hb)
 
+    def test_pickle_localized_entity(self):
+        ua = UA(language="uk")
+        dt = "2021-01-01"
+        self.assertIn(dt, self.hb)
+
+        loaded_ua = pickle.loads(pickle.dumps(ua))
+        self.assertEqual(loaded_ua, ua)
+        self.assertIn(dt, loaded_ua)
+
 
 class TestSpecialHolidays(unittest.TestCase):
     def setUp(self):
