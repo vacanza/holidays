@@ -13,13 +13,21 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import MAR, APR
 
 NYEPI = "NYEPI"
 
 
 class _BalineseSakaLunar:
+    """
+    Balinese Saka lunar calendar.
+
+    The Balinese saka calendar is one of two calendars used on the Indonesian island
+    of Bali. Unlike the 210-day pawukon calendar, it is based on the phases of the Moon,
+    and is approximately the same length as the tropical year (solar year, Gregorian year).
+    https://en.wikipedia.org/wiki/Balinese_saka_calendar
+    """
+
     NYEPI_DATES = {
         1983: (MAR, 15),
         1984: (MAR, 4),
@@ -91,15 +99,14 @@ class _BalineseSakaLunar:
         2050: (MAR, 24),
     }
 
-    def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        dt = exact_dates.get(year, estimated_dates.get(year, ()))
-        return date(year, *dt) if dt else None, year not in exact_dates
+    def _get_holiday(self, holiday: str, year: int) -> Optional[date]:
+        dt = getattr(self, f"{holiday}_DATES", {}).get(year, ())
+        return date(year, *dt) if dt else None
 
-    def nyepi_date(self, year: int) -> tuple[Optional[date], bool]:
+    def nyepi_date(self, year: int) -> Optional[date]:
+        """
+        Data References:
+        - `1983-2025 <https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1983>`_
+        - `2020-2050 <https://www.balitrips.com/balinese-temples-ceremony>`_
+        """
         return self._get_holiday(NYEPI, year)
-
-
-class _CustomBalineseSakaHolidays(_CustomCalendar, _BalineseSakaLunar):
-    pass

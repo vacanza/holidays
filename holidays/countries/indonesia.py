@@ -46,11 +46,8 @@ class Indonesia(
     - https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
     - https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia
     - https://www.liburnasional.com/sejarah/
-    - https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963 (1963-2024)
+    - https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963 (1963-2025)
     - https://www.timeanddate.com/holidays/indonesia
-    - https://en.wikipedia.org/wiki/Nyepi
-    - https://bali.com/bali/travel-guide/culture/nyepi-balinese-new-year/
-    - https://www.balitrips.com/balinese-temples-ceremony
     """
 
     country = "ID"

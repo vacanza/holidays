@@ -14,30 +14,23 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars import _BalineseSakaLunar
-from holidays.groups.eastern import EasternCalendarHolidays
 
 
-class BalineseSakaCalendarHolidays(EasternCalendarHolidays):
+class BalineseSakaCalendarHolidays:
     """
     Balinese Saka lunar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
-        self._balinese_saka_calendar = cls() if cls else _BalineseSakaLunar()
-        self._balinese_saka_calendar_show_estimated = show_estimated
+    def __init__(self) -> None:
+        self._balinese_saka_calendar = _BalineseSakaLunar()
 
-    def _add_balinese_saka_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool]
-    ) -> Optional[date]:
+    def _add_balinese_saka_calendar_holiday(self, name: str, dt: Optional[date]) -> Optional[date]:
         """
         Add Balinese Saka calendar holiday.
-
-        Adds customizable estimation label to holiday name if holiday date
-        is an estimation.
         """
-        return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._balinese_saka_calendar_show_estimated
-        )
+        if dt is None:
+            return None
+        return self._add_holiday(name, dt)
 
     def _add_nyepi(self, name) -> Optional[date]:
         """
