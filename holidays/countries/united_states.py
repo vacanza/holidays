@@ -65,6 +65,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         - IN: https://digital.statelib.lib.in.us/infoexpress/holidays.aspx
               https://www.in.gov/spd/benefits/state-holidays/
         - MD: https://msa.maryland.gov/msa/mdmanual/01glance/html/holidayl.html
+        - MI: https://www.michigan.gov/som/government/state-holidays
         - MN: https://www.revisor.mn.gov/statutes/cite/645.44
         - MT: https://archive.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html
         - NJ: https://nj.gov/nj/about/facts/holidays/
@@ -711,6 +712,14 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
             # New Year's Eve
             self._add_observed(self._add_new_years_eve("New Year's Eve"))
+
+        # Election Day
+        if self._year >= 2008 and self._year % 2 == 0:
+            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+
+        # Day after Thanksgiving
+        if self._year >= 2017:
+            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
 
     def _populate_subdiv_mn_public_holidays(self):
         # Washington's Birthday
