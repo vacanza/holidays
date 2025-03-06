@@ -568,7 +568,7 @@ class HolidayBase(dict[date, str]):
     def __getstate__(self) -> dict[str, Any]:
         """Return the object's state for serialization."""
         state = self.__dict__.copy()
-        del state["tr"]
+        state.pop("tr", None)
         return state
 
     def __keytransform__(self, key: DateLike) -> date:
