@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.68\n"
+"Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
 "PO-Revision-Date: 2025-03-02 12:54+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -223,7 +223,7 @@ msgstr "Maharashtra Day"
 msgid "Madhya Pradesh Foundation Day"
 msgstr "Madhya Pradesh Foundation Day"
 
-#. Nagaland State Inaugration Day.
+#. Nagaland State Inauguration Day.
 msgid "Nagaland State Inauguration Day"
 msgstr "Nagaland State Inauguration Day"
 
@@ -255,7 +255,7 @@ msgstr "Punjab Day"
 msgid "Puducherry De Jure Transfer Day"
 msgstr "Puducherry De Jure Transfer Day"
 
-#. Puducherry Inaugration Day.
+#. Puducherry Liberation Day.
 msgid "Puducherry Liberation Day"
 msgstr "Puducherry Liberation Day"
 
