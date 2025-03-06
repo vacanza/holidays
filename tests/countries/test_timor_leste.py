@@ -148,9 +148,13 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             "2024-09-11",
             "2024-10-31",
             "2024-11-29",
+            "2024-12-24",
+            "2025-01-02",
+            "2025-01-29",
         )
 
     def test_2011_public(self):
+        # https://timor-leste.gov.tl/?p=4442&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2011),
             ("2011-01-01", "Dia de Ano Novo"),
@@ -174,6 +178,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2012_public(self):
+        # https://timor-leste.gov.tl/?p=6269&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2012),
             ("2012-01-01", "Dia de Ano Novo"),
@@ -197,6 +202,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2013_public(self):
+        # https://timor-leste.gov.tl/?p=7627&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2013),
             ("2013-01-01", "Dia de Ano Novo"),
@@ -220,6 +226,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2014_public(self):
+        # https://timor-leste.gov.tl/?p=9653&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2014),
             ("2014-01-01", "Dia de Ano Novo"),
@@ -243,6 +250,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2015_public(self):
+        # https://timor-leste.gov.tl/?p=11331&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2015),
             ("2015-01-01", "Dia de Ano Novo"),
@@ -266,6 +274,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2016_public(self):
+        # https://timor-leste.gov.tl/?p=14419&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2016),
             ("2016-01-01", "Dia de Ano Novo"),
@@ -289,6 +298,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2017_public(self):
+        # https://timor-leste.gov.tl/?p=17138&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2017),
             ("2017-01-01", "Dia de Ano Novo"),
@@ -339,6 +349,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2019_public(self):
+        # https://timor-leste.gov.tl/?p=21146&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2019),
             ("2019-01-01", "Dia de Ano Novo"),
@@ -364,6 +375,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2020_public(self):
+        # https://timor-leste.gov.tl/?p=23415&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2020),
             ("2020-01-01", "Dia de Ano Novo"),
@@ -389,6 +401,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2021_public(self):
+        # https://timor-leste.gov.tl/?p=26494&lang=en&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2021),
             ("2021-01-01", "Dia de Ano Novo"),
@@ -414,6 +427,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
         )
 
     def test_2022_public(self):
+        # https://timor-leste.gov.tl/?p=30266&lang=en
         self.assertHolidays(
             TimorLeste(categories=PUBLIC, years=2022),
             ("2022-01-01", "Dia de Ano Novo"),
@@ -436,6 +450,87 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ),
             ("2022-12-25", "Dia de Natal"),
             ("2022-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_2023_public(self):
+        # https://timor-leste.gov.tl/?p=31750&lang=en&lang=en
+        self.assertHolidays(
+            TimorLeste(categories=PUBLIC, years=2023),
+            ("2023-01-01", "Dia de Ano Novo"),
+            ("2023-03-03", "Dia dos Veteranos"),
+            ("2023-04-07", "Sexta-Feira Santa"),
+            ("2023-04-22", "Idul Fitri"),
+            ("2023-05-01", "Dia Mundial do Trabalhador"),
+            ("2023-05-20", "Dia da Restauração da Independência"),
+            ("2023-06-08", "Festa do Corpo de Deus"),
+            ("2023-06-29", "Idul Adha"),
+            ("2023-08-30", "Dia da Consulta Popular"),
+            ("2023-11-01", "Dia de Todos os Santos"),
+            ("2023-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2023-11-03", "Dia Nacional da Mulher"),
+            ("2023-11-12", "Dia Nacional da Juventude"),
+            ("2023-11-28", "Dia da Proclamação da Independência"),
+            ("2023-12-07", "Dia da Memória"),
+            (
+                "2023-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2023-12-25", "Dia de Natal"),
+            ("2023-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_2024_public(self):
+        # https://timor-leste.gov.tl/?p=35833&lang=en&lang=en
+        self.assertHolidays(
+            TimorLeste(categories=PUBLIC, years=2024),
+            ("2024-01-01", "Dia de Ano Novo"),
+            ("2024-03-03", "Dia dos Veteranos"),
+            ("2024-03-29", "Sexta-Feira Santa"),
+            ("2024-04-10", "Idul Fitri"),
+            ("2024-05-01", "Dia Mundial do Trabalhador"),
+            ("2024-05-20", "Dia da Restauração da Independência"),
+            ("2024-05-30", "Festa do Corpo de Deus"),
+            ("2024-06-17", "Idul Adha"),
+            ("2024-08-30", "Dia da Consulta Popular"),
+            ("2024-11-01", "Dia de Todos os Santos"),
+            ("2024-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2024-11-03", "Dia Nacional da Mulher"),
+            ("2024-11-12", "Dia Nacional da Juventude"),
+            ("2024-11-28", "Dia da Proclamação da Independência"),
+            ("2024-12-07", "Dia da Memória"),
+            (
+                "2024-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2024-12-25", "Dia de Natal"),
+            ("2024-12-31", "Dia dos Heróis Nacionais"),
+        )
+
+    def test_2025_public(self):
+        # https://timor-leste.gov.tl/?p=41492&lang=en
+        self.assertHolidays(
+            TimorLeste(categories=PUBLIC, years=2025),
+            ("2025-01-01", "Dia de Ano Novo"),
+            ("2025-03-03", "Dia dos Veteranos"),
+            ("2025-03-31", "Idul Fitri"),
+            ("2025-04-18", "Sexta-Feira Santa"),
+            ("2025-05-01", "Dia Mundial do Trabalhador"),
+            ("2025-05-20", "Dia da Restauração da Independência"),
+            ("2025-06-06", "Idul Adha"),
+            ("2025-06-19", "Festa do Corpo de Deus"),
+            ("2025-08-30", "Dia da Consulta Popular"),
+            ("2025-11-01", "Dia de Todos os Santos"),
+            ("2025-11-02", "Dia de Todos os Fiéis Defuntos"),
+            ("2025-11-03", "Dia Nacional da Mulher"),
+            ("2025-11-12", "Dia Nacional da Juventude"),
+            ("2025-11-28", "Dia da Proclamação da Independência"),
+            ("2025-12-07", "Dia da Memória"),
+            (
+                "2025-12-08",
+                "Dia de Nossa Senhora da Imaculada Conceição, padroeira de Timor-Leste",
+            ),
+            ("2025-12-25", "Dia de Natal"),
+            ("2025-12-31", "Dia dos Heróis Nacionais"),
         )
 
     def test_2022_workday(self):
