@@ -18,6 +18,7 @@ from holidays.calendars.gregorian import MAR, APR
 
 NYEPI = "NYEPI"
 
+
 class _BalineseSakaLunar:
     NYEPI_DATES = {
         1983: (MAR, 15),
@@ -98,6 +99,7 @@ class _BalineseSakaLunar:
 
     def nyepi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(NYEPI, year)
+
 
 class _CustomBalineseSakaHolidays(_CustomCalendar, _BalineseSakaLunar):
     pass
