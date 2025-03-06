@@ -441,6 +441,11 @@ All other default values are highlighted with bold:
      -
      - **am**, ar, en_US
      -
+   * - Fiji
+     - FJ
+     -
+     - 
+     - 
    * - Finland
      - FI
      -
