@@ -165,6 +165,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         super().__init__(*args, **kwargs)
 
     def _populate_common(self, is_federal: bool = False):
+        """
+        Populates common US holidays.
+
+        :param is_federal:
+            Whether to include federal-specific holidays.
+        """
         # New Year's Day
         if self._year >= 1871:
             name = "New Year's Day"
