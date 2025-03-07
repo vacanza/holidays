@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
@@ -62,7 +62,7 @@ class Philippines(
     start_year = 1988
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self)
+        ChineseCalendarHolidays.__init__(self, cls=PhilippinesChineseHolidays)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=PhilippinesIslamicHolidays)
@@ -187,6 +187,25 @@ class PH(Philippines):
 
 class PHL(Philippines):
     pass
+
+
+class PhilippinesChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES = {
+        2012: (JAN, 23),
+        2013: (FEB, 10),
+        2014: (JAN, 31),
+        2015: (FEB, 19),
+        2016: (FEB, 8),
+        2017: (JAN, 28),
+        2018: (FEB, 16),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 1),
+        2023: (JAN, 22),
+        2024: (FEB, 10),
+        2025: (JAN, 29),
+    }
 
 
 class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
