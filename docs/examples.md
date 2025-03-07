@@ -204,7 +204,7 @@ Here we calculate the 5th working day after December 20, 2024. Working
 days are 23 (Mon), 24 (Tue), 26 (Thu), 27 (Fri), 30 (Mon); 21-22,
 28-29 - weekends, 25 - Christmas Day.
 
-To calculate the number or working days between two specified dates:
+To calculate the number of working days between two specified dates:
 
 ``` python
 >>> us_holidays.get_working_days_count("2024-04-01", "2024-06-30")
