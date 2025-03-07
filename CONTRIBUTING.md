@@ -70,7 +70,7 @@ $ pytest -s tests/countries/test_argentina.py
 
 ## Localization
 
-In order to add or update existing holiday names translation you\'ll
+In order to add or update existing holiday names translation you'll
 need to generate pygettext .pot file first:
 
 ``` shell

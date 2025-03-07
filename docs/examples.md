@@ -60,7 +60,7 @@ Let's print out the holidays in 2014 specific to California, USA:
 2014-12-25 Christmas Day
 ```
 
-So far we've only checked holidays in 2014 so that's the only year the
+So far we've only checked holidays in 2014, so that's the only year the
 Holidays object has generated:
 
 ``` python
@@ -124,7 +124,7 @@ the holiday list will be adjusted accordingly:
 >>> date(2012, 1, 2) in us_holidays
 False
 us_holidays.observed = True
->> date(2012, 1, 2) in us_holidays
+>>> date(2012, 1, 2) in us_holidays
 True
 ```
 
