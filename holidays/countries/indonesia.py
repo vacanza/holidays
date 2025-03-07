@@ -43,7 +43,7 @@ class Indonesia(
 ):
     """
     References:
-    
+
     * <https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia>
     * <https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia>
     * <https://www.liburnasional.com/sejarah/>

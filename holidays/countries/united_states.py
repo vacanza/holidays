@@ -53,7 +53,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     * <https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf>
 
     Washington's Birthday:
-    
+
         * [AK](https://doa.alaska.gov/calendar/)
         * [AL](https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
         * [AR](https://arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2001/Public/ACT304.pdf)

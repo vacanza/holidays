@@ -29,7 +29,7 @@ class TimorLeste(
 ):
     """
     References:
-    
+
     * [2005 Law](https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf)
     * [2016 Amendment](http://timor-leste.gov.tl/?p=14494&lang=en)
     * [2022](http://timor-leste.gov.tl/?p=30266&lang=en)

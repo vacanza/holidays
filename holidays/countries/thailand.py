@@ -79,7 +79,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         - [Holidays Act (No. 12), B.E. 2502 (1959); Weekend is full day SAT-SUN](https://ratchakitcha.soc.go.th/documents/1187876.pdf)
         - [Holidays Act (No. 13), B.E. 2503 (1960); National Day is now Dec 5](https://ratchakitcha.soc.go.th/documents/1196364.pdf)
         - [Holidays Act (No. 14), B.E. 2505 (1962); Asarnha Bucha added](https://ratchakitcha.soc.go.th/documents/1206407.pdf)
-        - [Holidays Act (No. 16), B.E. 2506 (1963); 4SP weekend is now SAT-SUN](<https://hr.rid.go.th/wp-content/uploads/2022/12/06-16.pdf)
+        - [Holidays Act (No. 16), B.E. 2506 (1963); 4SP weekend is now SAT-SUN](https://hr.rid.go.th/wp-content/uploads/2022/12/06-16.pdf)
         - [Eid-al-Fitr and Eit al-Adha added for 4SP](https://hr.rid.go.th/wp-content/uploads/2022/12/05-2517.pdf)
         - [Holidays Act (No. 17), B.E. 2525 (1982); Chakri Day Full Name Changed](https://ratchakitcha.soc.go.th/documents/1494132.pdf)
         - [Holidays Act (No. 19), B.E. 2540 (1997); Songkran Date Changed](https://ratchakitcha.soc.go.th/documents/1685580.pdf)
