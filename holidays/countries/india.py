@@ -256,8 +256,8 @@ class India(
 
     # Assam.
     def _populate_subdiv_as_public_holidays(self):
-        # Bihu.
-        self._add_makar_sankranti(tr("Bihu"))
+        # Magh Bihu.
+        self._add_makar_sankranti(tr("Magh Bihu"))
         # Assam Day.
         self._add_holiday_dec_2(tr("Assam Day"))
 

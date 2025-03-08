@@ -143,10 +143,6 @@ msgstr "Dr. B. R. Ambedkar's Jayanti"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "Andhra Pradesh Foundation Day"
 
-#. Bihu.
-msgid "Bihu"
-msgstr "Bihu"
-
 #. Assam Day.
 msgid "Assam Day"
 msgstr "Assam Day"
@@ -298,3 +294,7 @@ msgstr "Pohela Boishakh"
 #. Rabindra Jayanti.
 msgid "Rabindra Jayanti"
 msgstr "Rabindra Jayanti"
+
+#. Magh Bihu.
+msgid "Magh Bihu"
+msgstr "Magh Bihu"

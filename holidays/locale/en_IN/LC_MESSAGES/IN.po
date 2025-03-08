@@ -126,10 +126,6 @@ msgstr ""
 msgid "Andhra Pradesh Foundation Day"
 msgstr ""
 
-#. Bihu.
-msgid "Bihu"
-msgstr ""
-
 #. Assam Day.
 msgid "Assam Day"
 msgstr ""
@@ -296,4 +292,8 @@ msgstr ""
 
 #. Eid al-Adha.
 msgid "Bakrid"
+msgstr ""
+
+#. Magh Bihu.
+msgid "Magh Bihu"
 msgstr ""

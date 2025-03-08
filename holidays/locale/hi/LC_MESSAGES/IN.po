@@ -126,10 +126,6 @@ msgstr "डॉ. बी.आर. अम्बेडकर जयंती"
 msgid "Andhra Pradesh Foundation Day"
 msgstr "आंध्र प्रदेश स्थापना दिवस"
 
-#. Bihu.
-msgid "Bihu"
-msgstr "बिहू"
-
 #. Assam Day.
 msgid "Assam Day"
 msgstr "असम दिवस"
@@ -297,3 +293,7 @@ msgstr "ईद-उल-फितर"
 #. Eid al-Adha.
 msgid "Bakrid"
 msgstr "बकरीद"
+
+#. Magh Bihu.
+msgid "Magh Bihu"
+msgstr "माघ बिहू"

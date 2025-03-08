@@ -318,7 +318,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-01-14",
             "2035-01-15",
         )
-        name = "Bihu"
+        name = "Magh Bihu"
         for subdiv in India.subdivisions:
             if subdiv in {"AS"}:
                 self.assertHolidayName(name, India(subdiv=subdiv), dt)
@@ -448,7 +448,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "hi",
             ("2018-01-13", "लोहड़ी"),
-            ("2018-01-14", "उत्तरायण; पोंगल; बिहू; मकर संक्रांति"),
+            ("2018-01-14", "उत्तरायण; पोंगल; मकर संक्रांति; माघ बिहू"),
             ("2018-01-24", "यूपी स्थापना दिवस"),
             ("2018-01-26", "गणतंत्र दिवस"),
             ("2018-02-13", "महा शिवरात्रि"),
@@ -507,7 +507,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2018-01-13", "Lohri"),
-            ("2018-01-14", "Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
