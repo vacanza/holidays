@@ -102,19 +102,19 @@ msgstr "मकर संक्रांति"
 msgid "Guru Nanak Jayanti"
 msgstr "गुरु नानक जयंती"
 
-#. Palm Sunday.
+#. # Palm Sunday.
 msgid "Palm Sunday"
 msgstr "पाम संडे"
 
-#. Good Friday.
+#. # Good Friday.
 msgid "Good Friday"
 msgstr "गुड फ्राइडे"
 
-#. Easter Sunday.
+#. # Easter Sunday.
 msgid "Easter Sunday"
 msgstr "ईस्टर रविवार"
 
-#. Christmas Day.
+#. # Christmas Day.
 msgid "Christmas Day"
 msgstr "क्रिसमस दिवस"
 
@@ -128,7 +128,7 @@ msgstr "आंध्र प्रदेश स्थापना दिवस"
 
 #. Bihu.
 msgid "Bihu"
-msgstr "बिहु"
+msgstr "बिहू"
 
 #. Assam Day.
 msgid "Assam Day"
@@ -190,7 +190,7 @@ msgstr "केरल स्थापना दिवस"
 msgid "Mizoram State Day"
 msgstr "मिज़ोरम राज्य दिवस"
 
-#. Gudi Pawda.
+#. Gudi Padwa.
 msgid "Gudi Padwa"
 msgstr "गुडी पडवा"
 

@@ -227,16 +227,16 @@ class India(
 
         # Christian holidays.
 
-        # Palm Sunday.
+        # # Palm Sunday.
         self._add_palm_sunday(tr("Palm Sunday"))
 
-        # Good Friday.
+        # # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Easter Sunday.
+        # # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Christmas Day.
+        # # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
         if self.subdiv == "OR":
@@ -356,7 +356,7 @@ class India(
 
     # Maharashtra.
     def _populate_subdiv_mh_public_holidays(self):
-        # Gudi Pawda.
+        # Gudi Padwa.
         self._add_gudi_padwa(tr("Gudi Padwa"))
         # Chhatrapati Shivaji Maharaj Jayanti.
         self._add_holiday_feb_19(tr("Chhatrapati Shivaji Maharaj Jayanti"))

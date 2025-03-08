@@ -102,19 +102,19 @@ msgstr ""
 msgid "Guru Nanak Jayanti"
 msgstr ""
 
-#. Palm Sunday.
+#. # Palm Sunday.
 msgid "Palm Sunday"
 msgstr ""
 
-#. Good Friday.
+#. # Good Friday.
 msgid "Good Friday"
 msgstr ""
 
-#. Easter Sunday.
+#. # Easter Sunday.
 msgid "Easter Sunday"
 msgstr ""
 
-#. Christmas Day.
+#. # Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Mizoram State Day"
 msgstr ""
 
-#. Gudi Pawda.
+#. Gudi Padwa.
 msgid "Gudi Padwa"
 msgstr ""
 
