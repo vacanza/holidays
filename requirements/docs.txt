@@ -1,7 +1,8 @@
 # Documentation requirements.
 
 markdown-include==0.8.1
+mkdocs==1.6.1
 mkdocs-gen-files==0.5.0
 mkdocs-literate-nav==0.6.1
 mkdocstrings-python==1.16.2
-zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp==3.21.0; python_version < '3.10'
