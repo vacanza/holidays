@@ -4,3 +4,4 @@ markdown-include==0.8.1
 mkdocs-gen-files==0.5.0
 mkdocs-literate-nav==0.6.1
 mkdocstrings-python==1.16.2
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
