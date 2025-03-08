@@ -108,6 +108,7 @@ COUNTRIES: RegistryDict = {
     "liechtenstein": ("Liechtenstein", "LI", "LIE"),
     "lithuania": ("Lithuania", "LT", "LTU"),
     "luxembourg": ("Luxembourg", "LU", "LUX"),
+    "macau": ("Macau", "MO", "MAC"),
     "madagascar": ("Madagascar", "MG", "MDG"),
     "malawi": ("Malawi", "MW", "MWI"),
     "malaysia": ("Malaysia", "MY", "MYS"),

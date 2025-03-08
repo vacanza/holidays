@@ -212,7 +212,7 @@ class HongKong(
 
         if WINTER_SOLSTICE in self.preferred_discretionary_holidays:
             # Winter Solstice.
-            self._add_observed(self._add_holiday(tr("冬節"), self._winter_solstice_date))
+            self._add_observed(self._add_dongzhi_festival(tr("冬節")))
 
         if self._year >= 2024:
             # The first weekday after Christmas Day.
@@ -235,7 +235,7 @@ class HongKong(
         self._add_lunar_new_year(day_three_start_year=1968)
 
         if self._year >= 1968:
-            dt_qingming = self._qingming_date
+            dt_qingming = self._qingming_festival
             if self._is_sunday(dt_qingming) or dt_qingming == _timedelta(self._easter_sunday, +1):
                 # The day following Tomb-Sweeping Day.
                 self._add_holiday(tr("清明節翌日"), _timedelta(dt_qingming, +1))
@@ -257,7 +257,7 @@ class HongKong(
             self._add_easter_monday(tr("復活節星期一"))
 
         if self._year >= 1999:
-            dt_birthday_of_buddha = self._chinese_calendar.buddha_birthday_date(self._year)[0]
+            dt_birthday_of_buddha = self._chinese_birthday_of_buddha
             if self._is_sunday(dt_birthday_of_buddha):
                 # The day following the Buddha's Birthday.
                 self._add_holiday(tr("佛誕翌日"), _timedelta(dt_birthday_of_buddha, +1))
@@ -274,7 +274,7 @@ class HongKong(
                 self._add_labor_day(tr("勞動節"))
 
         if self._year >= 1968:
-            dt_dragon_boat = self._chinese_calendar.dragon_boat_date(self._year)[0]
+            dt_dragon_boat = self._dragon_boat_festival
             if self._is_sunday(dt_dragon_boat):
                 # The day following Dragon Boat Festival.
                 self._add_holiday(tr("端午節翌日"), _timedelta(dt_dragon_boat, +1))
@@ -293,7 +293,7 @@ class HongKong(
         mid_autumn_date = self._add_mid_autumn()
 
         if self._year >= 1968:
-            dt_double_ninth = self._chinese_calendar.double_ninth_date(self._year)[0]
+            dt_double_ninth = self._double_ninth_festival
             if self._is_sunday(dt_double_ninth):
                 # The day following Double Ninth Festival.
                 self._add_holiday(tr("重陽節翌日"), _timedelta(dt_double_ninth, +1))
@@ -366,20 +366,6 @@ class HongKong(
                 self._add_holiday_last_mon_of_aug(name)
             else:
                 self._add_holiday_aug_30(name)
-
-    @property
-    def _winter_solstice_date(self) -> tuple[int, int]:
-        # This approximation is reliable for 1952-2099 years.
-        if (
-            (self._year % 4 == 0 and self._year >= 1988)
-            or (self._year % 4 == 1 and self._year >= 2021)
-            or (self._year % 4 == 2 and self._year >= 2058)
-            or (self._year % 4 == 3 and self._year >= 2091)
-        ):
-            day = 21
-        else:
-            day = 22
-        return DEC, day
 
 
 class HK(HongKong):
