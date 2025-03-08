@@ -119,19 +119,19 @@ msgstr "Eid al-Fitr"
 msgid "Bakrid"
 msgstr "Eid al-Adha"
 
-#. # Palm Sunday.
+#. Palm Sunday.
 msgid "Palm Sunday"
 msgstr "Palm Sunday"
 
-#. # Good Friday.
+#. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
 
-#. # Easter Sunday.
+#. Easter Sunday.
 msgid "Easter Sunday"
 msgstr "Easter Sunday"
 
-#. # Christmas Day.
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
