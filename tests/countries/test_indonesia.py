@@ -237,6 +237,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-03-14",
             "2022-03-03",
         )
+        self.assertHolidayName(name, range(1983, 2050))
         self.assertNoHolidayName(name, range(1946, 1983))
 
     def test_good_friday(self):

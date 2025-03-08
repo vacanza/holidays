@@ -36,6 +36,7 @@ class TimorLeste(
     - http://timor-leste.gov.tl/?p=31750&lang=pt  # 2023 (pt_PT)
     - http://timor-leste.gov.tl/?p=31750&lang=tp  # 2023 (tet)
     - http://timor-leste.gov.tl/?p=35833&lang=en  # 2024
+    - https://timor-leste.gov.tl/?p=41492&lang=en # 2025
 
     Limitations:
 
@@ -203,6 +204,7 @@ class TimorLesteIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 9),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 6),
     }
 
     EID_AL_FITR_DATES = {
@@ -220,6 +222,7 @@ class TimorLesteIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 2),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025: (MAR, 31),
     }
 
 
@@ -488,5 +491,15 @@ class TimorLesteStaticHolidays:
             (OCT, 31, special_national_holidays),
             # https://timor-leste.gov.tl/?p=40955&lang=en
             (NOV, 29, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=41325&lang=en
+            (DEC, 24, special_national_holidays),
+        ),
+        2025: (
+            # https://timor-leste.gov.tl/?p=41361&lang=en
+            (JAN, 2, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=41592&lang=en
+            (JAN, 29, special_national_holidays),
+            # https://timor-leste.gov.tl/?p=42076&lang=en
+            (MAR, 5, special_national_holidays),
         ),
     }
