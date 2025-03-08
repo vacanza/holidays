@@ -366,6 +366,8 @@ class HolidayBase(dict[date, str]):
         self.subdiv = subdiv
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
         self.years = _normalize_arguments(int, years)
+
+        # Configure l10n related attributes.
         self._init_translation()
 
         # Populate holidays.
@@ -679,7 +681,7 @@ class HolidayBase(dict[date, str]):
         dict.__setitem__(self, self.__keytransform__(key), value)
 
     def __setstate__(self, state: dict[str, Any]) -> None:
-        """Restores the object's state after deserialization."""
+        """Restore the object's state after deserialization."""
         self.__dict__.update(state)
         self._init_translation()
 
