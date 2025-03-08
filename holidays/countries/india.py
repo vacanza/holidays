@@ -217,7 +217,7 @@ class India(
         self._add_ashura_day(tr("Muharram"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Id-e-Milad"))
+        self._add_mawlid_day(tr("Milad-un-Nabi"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
@@ -236,8 +236,8 @@ class India(
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        # Christmas.
+        self._add_christmas_day(tr("Christmas"))
 
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()

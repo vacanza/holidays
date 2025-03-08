@@ -44,7 +44,7 @@ msgstr "बाल दिवस"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "मजदूर दिवस"
+msgstr "श्रमिक दिवस"
 
 #. Diwali.
 msgid "Diwali"
@@ -112,11 +112,11 @@ msgstr "गुड फ्राइडे"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "ईस्टर रविवार"
+msgstr "ईस्टर संडे"
 
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "क्रिसमस दिवस"
+#. Christmas.
+msgid "Christmas"
+msgstr "क्रिसमस"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
@@ -192,7 +192,7 @@ msgstr "मिज़ोरम राज्य दिवस"
 
 #. Gudi Padwa.
 msgid "Gudi Padwa"
-msgstr "गुडी पडवा"
+msgstr "गुडी पाडवा"
 
 #. Chhatrapati Shivaji Maharaj Jayanti.
 msgid "Chhatrapati Shivaji Maharaj Jayanti"
@@ -287,8 +287,8 @@ msgid "Muharram"
 msgstr "मुहर्रम"
 
 #. Prophet's Birthday.
-msgid "Id-e-Milad"
-msgstr "ईद-ए-मिलाद"
+msgid "Milad-un-Nabi"
+msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"

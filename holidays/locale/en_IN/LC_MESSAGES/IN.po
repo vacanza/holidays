@@ -114,8 +114,8 @@ msgstr ""
 msgid "Easter Sunday"
 msgstr ""
 
-#. Christmas Day.
-msgid "Christmas Day"
+#. Christmas.
+msgid "Christmas"
 msgstr ""
 
 #. Dr. B. R. Ambedkar Jayanti.
@@ -287,7 +287,7 @@ msgid "Muharram"
 msgstr ""
 
 #. Prophet's Birthday.
-msgid "Id-e-Milad"
+msgid "Milad-un-Nabi"
 msgstr ""
 
 #. Eid al-Fitr.

@@ -108,7 +108,7 @@ msgid "Muharram"
 msgstr "Ashura"
 
 #. Prophet's Birthday.
-msgid "Id-e-Milad"
+msgid "Milad-un-Nabi"
 msgstr "Prophet's Birthday"
 
 #. Eid al-Fitr.
@@ -131,9 +131,9 @@ msgstr "Good Friday"
 msgid "Easter Sunday"
 msgstr "Easter Sunday"
 
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "Christmas Day"
+#. Christmas.
+msgid "Christmas"
+msgstr "Christmas"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
