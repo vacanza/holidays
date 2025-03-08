@@ -90,6 +90,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2021-02-12",
             "2022-02-01",
             "2024-02-10",
+            "2025-01-29",
         )
         self.assertNoHolidayName(name, range(1988, 2012), 2023)
 
@@ -276,6 +277,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-05-03",
             "2023-04-21",
             "2024-04-10",
+            "2025-03-31",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(2002, 2050)).issubset(years_found))
@@ -294,6 +296,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-17",
+            "2025-06-06",
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(2010, 2050)).issubset(years_found))
@@ -456,13 +459,13 @@ class TestPhilippines(CommonCountryTests, TestCase):
             Philippines(years=2025),
             ("2025-01-01", "New Year's Day"),
             ("2025-01-29", "Chinese New Year"),
-            ("2025-03-30", "Eid'l Fitr (estimated)"),
+            ("2025-03-31", "Eid'l Fitr"),
             ("2025-04-09", "Araw ng Kagitingan"),
             ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-19", "Black Saturday"),
             ("2025-05-01", "Labor Day"),
-            ("2025-06-06", "Eid'l Adha (estimated)"),
+            ("2025-06-06", "Eid'l Adha"),
             ("2025-06-12", "Independence Day"),
             ("2025-07-27", "Additional special (non-working) day"),
             ("2025-08-21", "Ninoy Aquino Day"),
