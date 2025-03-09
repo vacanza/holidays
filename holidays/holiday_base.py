@@ -361,7 +361,7 @@ class HolidayBase(dict[date, str]):
         self.expand = expand
         self.has_special_holidays = getattr(self, "has_special_holidays", False)
         self.has_substituted_holidays = has_substituted_holidays
-        self.language = language or None
+        self.language = language
         self.observed = observed
         self.subdiv = subdiv
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
