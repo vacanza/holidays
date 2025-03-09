@@ -839,6 +839,84 @@ class TestPopNamed(unittest.TestCase):
             self.assertNotIn(dt, self.hb)
         self.assertRaises(KeyError, lambda: self.hb.pop_named("New Year"))
 
+    def test_contains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Day", lookup="contains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_icontains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("day", lookup="icontains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_exact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Groundhog Day"
+        hb["2024-02-02"] = "Big Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_iexact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Groundhog Day"
+        hb["2024-02-02"] = "Big Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_startswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence", lookup="startswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("Christmas", lookup="startswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_istartswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("christmas", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
 
 class TestRepr(unittest.TestCase):
     def test_base(self):
