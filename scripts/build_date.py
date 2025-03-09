@@ -10,24 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import datetime
+from datetime import datetime, timezone
 
-# Generate the build date values
-year = datetime.datetime.now().year
-build_date = datetime.datetime.now().strftime("%b %d, %Y")
+import mkdocs_gen_files
 
-copyright_text = f"© Copyright {year}. Last updated on {build_date}."
+now = datetime.now(tz=timezone.utc)
+copyright_text = f"© Copyright {now.year}. Last updated on {now:%b %d, %Y}."
 
-# Generate the JS code that sets the copyright text and updates the footer
-js_code = f"""// This file is generated at build time
-var copyrightText = "{copyright_text}";
+# Generate the JS code that sets the copyright text and updates the footer.
+js_code = f"""// This file is generated at build time.
 document.addEventListener("DOMContentLoaded", function () {{
-    var contentInfo = document.querySelector("footer div[role='contentinfo']");
+    const contentInfo = document.querySelector("footer div[role='contentinfo']");
     if (contentInfo) {{
-        contentInfo.insertAdjacentHTML("beforebegin", `<p>${{copyrightText}}</p>`);
+        contentInfo.insertAdjacentHTML("beforebegin", "<p>{copyright_text}</p>");
     }}
 }});
 """
 
-with open("docs/js/copyright.js", "w", encoding="utf-8") as f:
+with mkdocs_gen_files.open("js/copyright.js", "w", encoding="utf-8", newline="\n") as f:
     f.write(js_code)
