@@ -51,8 +51,14 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     start_year = 1980
     weekend = {FRI}
 
-    def __init__(self, *args, **kwargs):
-        IslamicHolidays.__init__(self, IranIslamicHolidays)
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
+        IslamicHolidays.__init__(
+            self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 

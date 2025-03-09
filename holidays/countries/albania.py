@@ -47,10 +47,16 @@ class Albania(
     # Law No. 7651 from 21.12.1992.
     start_year = 1993
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, AlbaniaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=AlbaniaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, AlbaniaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)

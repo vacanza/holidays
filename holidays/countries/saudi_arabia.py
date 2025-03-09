@@ -53,8 +53,12 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     observed_estimated_label = tr("(تقدير ملاحظة) %s")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, **kwargs):
-        IslamicHolidays.__init__(self)
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         StaticHolidays.__init__(self, SaudiArabiaStaticHolidays)
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)

@@ -31,10 +31,14 @@ class Nigeria(
     observed_label = "%s (observed)"
     start_year = 1979
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         StaticHolidays.__init__(self, NigeriaStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2016)

@@ -66,9 +66,15 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     # Founded on DEC 2, 1971.
     start_year = 1972
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=UnitedArabEmiratesIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=UnitedArabEmiratesIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, UnitedArabEmiratesStaticHolidays)
         super().__init__(*args, **kwargs)
 

@@ -45,9 +45,15 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     supported_languages = ("az", "en_US", "uk")
     start_year = 1990
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, AzerbaijanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=AzerbaijanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, AzerbaijanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2006)

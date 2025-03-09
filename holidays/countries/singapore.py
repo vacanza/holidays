@@ -47,8 +47,12 @@ class Singapore(
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SG", "en_US", "th")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
+        Args:
+          islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+
         A subclass of `HolidayBase` representing public holidays in
         Singapore.
 
@@ -82,7 +86,9 @@ class Singapore(
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=SingaporeHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=SingaporeIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=SingaporeIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=SingaporeStaticHolidays)
         # Implement Section 4(2) of the Holidays Act:
         # "if any day specified in the Schedule falls on a Sunday,

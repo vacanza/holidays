@@ -134,11 +134,17 @@ class Brunei(
     # Available post-Independence from 1984 afterwards
     start_year = 1984
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=BruneiIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=BruneiIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=BruneiStaticHolidays)
         kwargs.setdefault("observed_rule", FRI_SUN_TO_NEXT_SAT_MON)
         super().__init__(*args, **kwargs)
