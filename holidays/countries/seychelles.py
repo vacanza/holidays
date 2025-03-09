@@ -19,18 +19,18 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://www.psb.gov.sc/public-holidays
-    https://www.cbs.sc/PublicHolidays.html
+    * <https://www.psb.gov.sc/public-holidays>
+    * <https://www.cbs.sc/PublicHolidays.html>
 
-    [Act 19 of 1976, 1994 Amendment]
-        Oldest Seychelles Holidays Law available online in full.
-        https://seylii.org/akn/sc/act/1976/19/eng@2012-06-30
-    [Act 11 of 2014]
-        Holidays names changed.
-        https://seylii.org/akn/sc/act/2014/11/eng@2014-08-04
-    [Act 3 of 2017]
-        Added Easter Monday, repealing Liberation Day.
-        https://seylii.org/akn/sc/act/2017/3/eng@2017-04-12
+    * [Act 19 of 1976, 1994 Amendment]
+        - Oldest Seychelles Holidays Law available online in full.
+        - <https://seylii.org/akn/sc/act/1976/19/eng@2012-06-30>
+    * [Act 11 of 2014]
+        - Holidays names changed.
+        - <https://seylii.org/akn/sc/act/2014/11/eng@2014-08-04>
+    * [Act 3 of 2017]
+        - Added Easter Monday, repealing Liberation Day.
+        - <https://seylii.org/akn/sc/act/2017/3/eng@2017-04-12>
 
     Where any public holiday, except Sunday, falls on a Sunday the next following day,
     not being itself a public holiday, shall be a public holiday.
@@ -124,16 +124,17 @@ class SYC(Seychelles):
 class SeychellesStaticHolidays:
     """
     Sources:
-     - https://seylii.org/akn/sc/act/si/2015/58/eng@2015-12-01
-     - https://seylii.org/akn/sc/act/si/2015/59/eng@2015-12-11
-     - https://seylii.org/akn/sc/act/si/2016/58/eng@2016-09-06
-     - https://seylii.org/akn/sc/act/si/2019/10/eng@2019-03-05
-     - https://seylii.org/akn/sc/act/si/2019/61/eng@2019-10-18
-     - https://seylii.org/akn/sc/act/si/2020/134/eng@2020-09-17
-     - https://seylii.org/akn/sc/act/si/2020/154/eng@2020-10-26
-     - https://www.statehouse.gov.sc/news/1765/public-holiday-october-1
-     - https://www.egov.sc/PressRoom/DisplayPressRelease.aspx?PRLID=196
-     - https://www.nation.sc/archive/216478/saturday-may-12-2007-public-holiday
+
+    * <https://seylii.org/akn/sc/act/si/2015/58/eng@2015-12-01>
+    * <https://seylii.org/akn/sc/act/si/2015/59/eng@2015-12-11>
+    * <https://seylii.org/akn/sc/act/si/2016/58/eng@2016-09-06>
+    * <https://seylii.org/akn/sc/act/si/2019/10/eng@2019-03-05>
+    * <https://seylii.org/akn/sc/act/si/2019/61/eng@2019-10-18>
+    * <https://seylii.org/akn/sc/act/si/2020/134/eng@2020-09-17>
+    * <https://seylii.org/akn/sc/act/si/2020/154/eng@2020-10-26>
+    * <https://www.statehouse.gov.sc/news/1765/public-holiday-october-1>
+    * <https://www.egov.sc/PressRoom/DisplayPressRelease.aspx?PRLID=196>
+    * <https://www.nation.sc/archive/216478/saturday-may-12-2007-public-holiday>
 
     All Election Dates usually proceed from the Outer Islands first, then the Inner Islands, and
     the main capital, Mahé, on the last day. The current implementation only uses the last day,

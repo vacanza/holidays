@@ -22,9 +22,10 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan
-        - `Labor Code 21.12.1995 <https://lex.uz/docs/-142859>`_
-        - `Labor Code 28.10.2022 <https://lex.uz/docs/-6257288>`_
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan>
+    * [Labor Code 21.12.1995](https://lex.uz/docs/-142859)
+    * [Labor Code 28.10.2022](https://lex.uz/docs/-6257288)
     """
 
     country = "UZ"

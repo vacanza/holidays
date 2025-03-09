@@ -27,8 +27,9 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     only the following Monday is considered a holiday.
 
     Primary sources:
-        https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France
-        https://www.service-public.fr/particuliers/vosdroits/F2405
+
+    * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France>
+    * <https://www.service-public.fr/particuliers/vosdroits/F2405>
     """
 
     country = "FR"

@@ -24,7 +24,7 @@ class Nigeria(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
+    <https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria>
     """
 
     country = "NG"

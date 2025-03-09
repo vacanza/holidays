@@ -46,23 +46,24 @@ CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, 
 class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
-        - `2025 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11979>`_
-        - `2024 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11402>`_
-        - `2023 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11016>`_
-        - `2022 <https://www.dgpa.gov.tw/en/information?uid=353&pid=10659>`_
-        - `2021 <https://www.dgpa.gov.tw/en/information?uid=353&pid=10181>`_
-        - `2020 <https://www.dgpa.gov.tw/en/information?uid=353&pid=9724>`_
-        - `2019 <https://www.dgpa.gov.tw/en/information?uid=353&pid=8178>`_
-        - `2018 <https://www.dgpa.gov.tw/en/information?uid=353&pid=7730>`_
-        - `2017 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6178>`_
-        - `2016 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6180>`_
-        - `2015 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6182>`_
-        - `2014 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6183>`_
-        - `2013 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6186>`_
-        - `2012 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6187>`_
-        - `2011 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6188>`_
-        - `2010 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6189>`_
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan>
+    * [2025](https://www.dgpa.gov.tw/en/information?uid=353&pid=11979)
+    * [2024](https://www.dgpa.gov.tw/en/information?uid=353&pid=11402)
+    * [2023](https://www.dgpa.gov.tw/en/information?uid=353&pid=11016)
+    * [2022](https://www.dgpa.gov.tw/en/information?uid=353&pid=10659)
+    * [2021](https://www.dgpa.gov.tw/en/information?uid=353&pid=10181)
+    * [2020](https://www.dgpa.gov.tw/en/information?uid=353&pid=9724)
+    * [2019](https://www.dgpa.gov.tw/en/information?uid=353&pid=8178)
+    * [2018](https://www.dgpa.gov.tw/en/information?uid=353&pid=7730)
+    * [2017](https://www.dgpa.gov.tw/en/information?uid=353&pid=6178)
+    * [2016](https://www.dgpa.gov.tw/en/information?uid=353&pid=6180)
+    * [2015](https://www.dgpa.gov.tw/en/information?uid=353&pid=6182)
+    * [2014](https://www.dgpa.gov.tw/en/information?uid=353&pid=6183)
+    * [2013](https://www.dgpa.gov.tw/en/information?uid=353&pid=6186)
+    * [2012](https://www.dgpa.gov.tw/en/information?uid=353&pid=6187)
+    * [2011](https://www.dgpa.gov.tw/en/information?uid=353&pid=6188)
+    * [2010](https://www.dgpa.gov.tw/en/information?uid=353&pid=6189)
     """
 
     country = "TW"

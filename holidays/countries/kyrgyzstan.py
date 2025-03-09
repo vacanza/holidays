@@ -20,7 +20,8 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
     Kyrgyzstan holidays.
 
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Kyrgyzstan
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Kyrgyzstan>
     """
 
     country = "KG"
