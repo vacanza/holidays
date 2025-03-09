@@ -92,10 +92,16 @@ class Kazakhstan(
     # Kazakhstan declared its sovereignty on 25 October 1990.
     start_year = 1991
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, KazakhstanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=KazakhstanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, KazakhstanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2002)
