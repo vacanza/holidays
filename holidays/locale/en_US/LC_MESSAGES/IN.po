@@ -27,6 +27,11 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_IN\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
 #. Republic Day.
 msgid "Republic Day"
 msgstr "Republic Day"

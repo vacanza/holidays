@@ -38,6 +38,8 @@ class India(
 
     country = "IN"
     default_language = "en_IN"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
     supported_languages = ("en_IN", "en_US", "hi")
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
