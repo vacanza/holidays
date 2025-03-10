@@ -15,6 +15,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -40,6 +41,7 @@ class India(
     default_language = "en_IN"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
+    supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_IN", "en_US", "hi")
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
@@ -160,28 +162,16 @@ class India(
         # Gandhi Jayanti.
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
 
-        # Children's Day.
-        self._add_holiday_nov_14(tr("Children's Day"))
-
-        # Labor Day.
-        self._add_labor_day(tr("Labour Day"))
-
         # Hindu Holidays.
         if self._year < 2001 or self._year > 2035:
             warning_msg = "Requested Holidays are available only from 2001 to 2035."
             warnings.warn(warning_msg, Warning)
 
+        # Buddha Purnima.
+        self._add_buddha_purnima(tr("Buddha Purnima"))
+
         # Diwali.
         self._add_diwali_india(tr("Diwali"))
-
-        # Holi.
-        self._add_holi(tr("Holi"))
-
-        # Govardhan Puja.
-        self._add_govardhan_puja(tr("Govardhan Puja"))
-
-        # Raksha Bandhan.
-        self._add_raksha_bandhan(tr("Raksha Bandhan"))
 
         # Janmashtami.
         self._add_janmashtami(tr("Janmashtami"))
@@ -194,21 +184,6 @@ class India(
 
         # Maha Shivaratri.
         self._add_maha_shivaratri(tr("Maha Shivaratri"))
-
-        # Navratri / Sharad Navratri.
-        self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
-
-        # Ram Navami.
-        self._add_ram_navami(tr("Ram Navami"))
-
-        # Maha Navami.
-        self._add_maha_navami(tr("Maha Navami"))
-
-        # Ganesh Chaturthi.
-        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
-
-        # Makar Sankranti.
-        self._add_makar_sankranti(tr("Makar Sankranti"))
 
         # Guru Nanak Jayanti.
         self._add_guru_nanak_jayanti(tr("Guru Nanak Jayanti"))
@@ -229,20 +204,55 @@ class India(
 
         # Christian holidays.
 
-        # Palm Sunday.
-        self._add_palm_sunday(tr("Palm Sunday"))
-
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Easter Sunday"))
 
         # Christmas.
         self._add_christmas_day(tr("Christmas"))
 
         if self.subdiv == "OR":
             self._populate_subdiv_od_public_holidays()
+
+    def _populate_optional_holidays(self):
+        # Hindu holidays.
+
+        # Children's Day.
+        self._add_holiday_nov_14(tr("Children's Day"))
+
+        # Holi.
+        self._add_holi(tr("Holi"))
+
+        # Ganesh Chaturthi.
+        self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
+
+        # Govardhan Puja.
+        self._add_govardhan_puja(tr("Govardhan Puja"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Labour Day"))
+
+        # Maha Navami.
+        self._add_maha_navami(tr("Maha Navami"))
+
+        # Makar Sankranti.
+        self._add_makar_sankranti(tr("Makar Sankranti"))
+
+        # Raksha Bandhan.
+        self._add_raksha_bandhan(tr("Raksha Bandhan"))
+
+        # Ram Navami.
+        self._add_ram_navami(tr("Ram Navami"))
+
+        # Navratri / Sharad Navratri.
+        self._add_sharad_navratri(tr("Navratri / Sharad Navratri"))
+
+        # Christian holidays.
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Easter Sunday"))
+
+        # Palm Sunday.
+        self._add_palm_sunday(tr("Palm Sunday"))
 
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):

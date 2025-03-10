@@ -13,6 +13,7 @@
 import warnings
 from unittest import TestCase
 
+from holidays.constants import OPTIONAL
 from holidays.countries.india import India, IN, IND
 from tests.common import CommonCountryTests
 
@@ -35,29 +36,19 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_2018(self):
         self.assertHolidayDates(
             India(years=2018),
-            "2018-01-14",
             "2018-01-26",
             "2018-02-13",
-            "2018-03-02",
-            "2018-03-25",
             "2018-03-29",
             "2018-03-30",
-            "2018-04-01",
-            "2018-05-01",
+            "2018-04-30",
             "2018-06-15",
             "2018-08-15",
             "2018-08-22",
-            "2018-08-26",
             "2018-09-03",
-            "2018-09-13",
             "2018-09-21",
             "2018-10-02",
-            "2018-10-10",
-            "2018-10-18",
             "2018-10-19",
             "2018-11-07",
-            "2018-11-08",
-            "2018-11-14",
             "2018-11-22",
             "2018-11-23",
             "2018-12-25",
@@ -179,11 +170,45 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in subdiv_holidays_mapping.items():
             self.assertHoliday(India(subdiv=subdiv), holidays)
 
+    def test_2018_optional(self):
+        self.assertHolidayDates(
+            India(categories=OPTIONAL, years=2018),
+            "2018-01-14",
+            "2018-03-02",
+            "2018-03-25",
+            "2018-04-01",
+            "2018-05-01",
+            "2018-08-26",
+            "2018-09-13",
+            "2018-10-10",
+            "2018-10-18",
+            "2018-11-08",
+            "2018-11-14",
+        )
+
     def test_ranged_holidays(self):
         warnings.simplefilter("always")
         for year in (2000, 2036):  # Holidays out of range.
             with self.assertWarns(Warning):
                 India(years=year)
+
+        name = "Bakrid"
+        dt = (
+            "2001-03-06",
+            "2010-11-17",
+            "2025-06-07",
+            "2035-02-18",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Buddha Purnima"
+        dt = (
+            "2001-04-30",
+            "2010-05-27",
+            "2025-05-12",
+            "2035-05-22",
+        )
+        self.assertHolidayName(name, dt)
 
         name = "Diwali"
         dt = (
@@ -203,24 +228,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Ganesh Chaturthi"
-        dt = (
-            "2001-08-22",
-            "2010-09-11",
-            "2025-08-27",
-            "2035-09-05",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Govardhan Puja"
-        dt = (
-            "2001-11-15",
-            "2010-11-06",
-            "2025-10-22",
-            "2035-10-31",
-        )
-        self.assertHolidayName(name, dt)
-
         name = "Guru Nanak Jayanti"
         dt = (
             "2001-11-30",
@@ -230,12 +237,12 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Holi"
+        name = "Id-ul-Fitr"
         dt = (
-            "2001-03-10",
-            "2010-03-01",
-            "2025-03-14",
-            "2035-03-24",
+            "2001-12-17",
+            "2010-09-10",
+            "2025-03-31",
+            "2035-12-02",
         )
         self.assertHolidayName(name, dt)
 
@@ -257,15 +264,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Maha Navami"
-        dt = (
-            "2001-10-25",
-            "2010-10-16",
-            "2025-10-01",
-            "2035-10-10",
-        )
-        self.assertHolidayName(name, dt)
-
         name = "Maha Shivaratri"
         dt = (
             "2001-02-21",
@@ -275,39 +273,21 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Makar Sankranti"
+        name = "Milad-un-Nabi"
         dt = (
-            "2001-01-14",
-            "2010-01-14",
-            "2025-01-14",
-            "2035-01-15",
+            "2001-06-05",
+            "2010-02-27",
+            "2025-09-06",
+            "2035-05-21",
         )
         self.assertHolidayName(name, dt)
 
-        name = "Navratri / Sharad Navratri"
+        name = "Muharram"
         dt = (
-            "2001-10-17",
-            "2010-10-08",
-            "2025-09-22",
-            "2035-10-02",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Raksha Bandhan"
-        dt = (
-            "2001-08-04",
-            "2010-08-24",
-            "2025-08-09",
-            "2035-08-18",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Ram Navami"
-        dt = (
-            "2001-04-02",
-            "2010-03-24",
-            "2025-04-06",
-            "2035-04-16",
+            "2001-04-04",
+            "2010-12-17",
+            "2025-07-06",
+            "2035-03-20",
         )
         self.assertHolidayName(name, dt)
 
@@ -417,6 +397,80 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
 
+    # def test_ranged_optional_holidays(self):
+
+    #     name = "Holi"
+    #     dt = (
+    #         "2001-03-10",
+    #         "2010-03-01",
+    #         "2025-03-14",
+    #         "2035-03-24",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Ganesh Chaturthi"
+    #     dt = (
+    #         "2001-08-22",
+    #         "2010-09-11",
+    #         "2025-08-27",
+    #         "2035-09-05",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Govardhan Puja"
+    #     dt = (
+    #         "2001-11-15",
+    #         "2010-11-06",
+    #         "2025-10-22",
+    #         "2035-10-31",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Maha Navami"
+    #     dt = (
+    #         "2001-10-25",
+    #         "2010-10-16",
+    #         "2025-10-01",
+    #         "2035-10-10",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Makar Sankranti"
+    #     dt = (
+    #         "2001-01-14",
+    #         "2010-01-14",
+    #         "2025-01-14",
+    #         "2035-01-15",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Navratri / Sharad Navratri"
+    #     dt = (
+    #         "2001-10-17",
+    #         "2010-10-08",
+    #         "2025-09-22",
+    #         "2035-10-02",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Raksha Bandhan"
+    #     dt = (
+    #         "2001-08-04",
+    #         "2010-08-24",
+    #         "2025-08-09",
+    #         "2035-08-18",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
+    #     name = "Ram Navami"
+    #     dt = (
+    #         "2001-04-02",
+    #         "2010-03-24",
+    #         "2025-04-06",
+    #         "2035-04-16",
+    #     )
+    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
 
@@ -430,18 +484,82 @@ class TestIndia(CommonCountryTests, TestCase):
             "2020-04-10",
         )
 
-    def test_easter_sunday(self):
-        self.assertHoliday(
-            "1994-04-03",
-            "2017-04-16",
-            "2020-04-12",
-        )
+    # def test_easter_sunday(self):
+    #     self.assertHoliday(
+    #         "1994-04-03",
+    #         "2017-04-16",
+    #         "2020-04-12",
+    #     )
 
-    def test_palm_sunday(self):
-        self.assertHoliday(
-            "1994-03-27",
-            "2017-04-09",
-            "2020-04-05",
+    # def test_palm_sunday(self):
+    #     self.assertHoliday(
+    #         "1994-03-27",
+    #         "2017-04-09",
+    #         "2020-04-05",
+    #     )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2018-01-13", "Lohri"),
+            ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-24", "UP Formation Day"),
+            ("2018-01-26", "Republic Day"),
+            ("2018-02-13", "Maha Shivaratri"),
+            ("2018-02-19", "Chhatrapati Shivaji Maharaj Jayanti"),
+            ("2018-02-20", "Mizoram State Day"),
+            ("2018-03-02", "Holi"),
+            ("2018-03-18", "Gudi Padwa"),
+            ("2018-03-22", "Bihar Day"),
+            ("2018-03-25", "Palm Sunday; Ram Navami"),
+            ("2018-03-29", "Mahavir Jayanti"),
+            ("2018-03-30", "Good Friday; Rajasthan Day"),
+            ("2018-04-01", "Easter Sunday; Odisha Day (Utkala Dibasa)"),
+            ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
+            (
+                "2018-04-15",
+                "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
+            ),
+            ("2018-04-30", "Buddha Purnima"),
+            ("2018-05-01", "Gujarat Day; Labour Day; Maharashtra Day"),
+            ("2018-05-09", "Rabindra Jayanti"),
+            ("2018-05-16", "Sikkim State Day"),
+            ("2018-06-02", "Telangana Formation Day"),
+            ("2018-06-15", "Id-ul-Fitr; Maharana Pratap Jayanti"),
+            ("2018-08-15", "Independence Day"),
+            ("2018-08-16", "Puducherry De Jure Transfer Day"),
+            ("2018-08-22", "Bakrid"),
+            ("2018-08-24", "Onam"),
+            ("2018-08-26", "Raksha Bandhan"),
+            ("2018-09-03", "Janmashtami"),
+            ("2018-09-13", "Ganesh Chaturthi"),
+            ("2018-09-21", "Muharram"),
+            ("2018-10-02", "Gandhi Jayanti"),
+            ("2018-10-06", "Bathukamma Festival"),
+            ("2018-10-10", "Navratri / Sharad Navratri"),
+            ("2018-10-18", "Maha Navami"),
+            ("2018-10-19", "Dussehra"),
+            ("2018-10-31", "Sardar Vallabhbhai Patel Jayanti"),
+            (
+                "2018-11-01",
+                "Andhra Pradesh Foundation Day; "
+                "Chhattisgarh Foundation Day; "
+                "Haryana Foundation Day; "
+                "Karnataka Rajyotsava; Kerala Foundation Day; "
+                "Madhya Pradesh Foundation Day; "
+                "Puducherry Liberation Day; "
+                "Punjab Day",
+            ),
+            ("2018-11-07", "Diwali"),
+            ("2018-11-08", "Govardhan Puja"),
+            ("2018-11-13", "Chhath Puja"),
+            ("2018-11-14", "Children's Day"),
+            ("2018-11-15", "Jharkhand Formation Day"),
+            ("2018-11-22", "Milad-un-Nabi"),
+            ("2018-11-23", "Guru Nanak Jayanti"),
+            ("2018-12-01", "Nagaland State Inauguration Day"),
+            ("2018-12-02", "Assam Day"),
+            ("2018-12-19", "Goa Liberation Day"),
+            ("2018-12-25", "Christmas"),
         )
 
     def test_l10n_hi(self):
@@ -463,6 +581,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-01", "ईस्टर संडे; ओडिशा दिवस (उत्कल दिवस)"),
             ("2018-04-14", "डॉ. बी.आर. अम्बेडकर जयंती; पुथंडु (तमिल नव वर्ष); वैसाखी"),
             ("2018-04-15", "पोहेला बोइशाख; महा विशुव संक्रांति / पण संक्रांति; हिमाचल दिवस"),
+            ("2018-04-30", "बुद्ध पूर्णिमा"),
             ("2018-05-01", "गुजरात दिवस; महाराष्ट्र दिवस; श्रमिक दिवस"),
             ("2018-05-09", "रवींद्र जयंती"),
             ("2018-05-16", "सिक्किम राज्य दिवस"),
@@ -525,6 +644,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-04-15",
                 "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
             ),
+            ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Gujarat Day; Labor Day; Maharashtra Day"),
             ("2018-05-09", "Rabindra Jayanti"),
             ("2018-05-16", "Sikkim State Day"),

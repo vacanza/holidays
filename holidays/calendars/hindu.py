@@ -15,9 +15,10 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
+BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
 CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
@@ -42,6 +43,45 @@ VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
+    # https://www.timeanddate.com/holidays/india/buddha-purnima
+    BUDDHA_PURNIMA_DATES = {
+        2001: (APR, 30),
+        2002: (MAY, 19),
+        2003: (MAY, 8),
+        2004: (MAY, 26),
+        2005: (MAY, 23),
+        2006: (MAY, 13),
+        2007: (MAY, 2),
+        2008: (MAY, 20),
+        2009: (MAY, 8),
+        2010: (MAY, 27),
+        2011: (MAY, 17),
+        2012: (MAY, 6),
+        2013: (MAY, 25),
+        2014: (MAY, 14),
+        2015: (MAY, 4),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (APR, 30),
+        2019: (MAY, 18),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 16),
+        2023: (MAY, 5),
+        2024: (MAY, 23),
+        2025: (MAY, 12),
+        2026: (MAY, 1),
+        2027: (MAY, 20),
+        2028: (MAY, 8),
+        2029: (MAY, 27),
+        2030: (MAY, 17),
+        2031: (MAY, 7),
+        2032: (MAY, 25),
+        2033: (MAY, 14),
+        2034: (MAY, 3),
+        2035: (MAY, 22),
+    }
+
     # https://www.timeanddate.com/holidays/india/chhat-puja
     CHHATH_PUJA_DATES = {
         2001: (NOV, 21),
@@ -1194,6 +1234,9 @@ class _HinduLunisolar:
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
+
+    def buddha_purnima_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(BUDDHA_PURNIMA, year)
 
     def chhath_puja_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(CHHATH_PUJA, year)

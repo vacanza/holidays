@@ -302,3 +302,7 @@ msgstr ""
 #. Magh Bihu.
 msgid "Magh Bihu"
 msgstr ""
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr ""

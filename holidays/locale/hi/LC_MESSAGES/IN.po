@@ -302,3 +302,7 @@ msgstr "बकरीद"
 #. Magh Bihu.
 msgid "Magh Bihu"
 msgstr "माघ बिहू"
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr "बुद्ध पूर्णिमा"

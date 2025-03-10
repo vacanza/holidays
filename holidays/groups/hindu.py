@@ -59,6 +59,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
         return added_dates
 
+    def _add_buddha_purnima(self, name) -> Optional[date]:
+        """
+        Add Buddha Purnima.
+
+        Buddha Purnima, also known as Vesak, commemorates the birth, enlightenment,
+        and passing of Gautama Buddha. It falls on the full moon day of the
+        Hindu month of Vaisakha (April-May).
+        https://en.wikipedia.org/wiki/Vesak
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.buddha_purnima_date(self._year)
+        )
+
     def _add_chhath_puja(self, name) -> Optional[date]:
         """
         Add Chhath Puja.
