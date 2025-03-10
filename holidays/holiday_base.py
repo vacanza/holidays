@@ -363,39 +363,14 @@ class HolidayBase(dict[date, str]):
         self.expand = expand
         self.has_special_holidays = getattr(self, "has_special_holidays", False)
         self.has_substituted_holidays = has_substituted_holidays
-        self.language = language.lower() if language else None
+        self.language = language
         self.observed = observed
         self.subdiv = subdiv
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
-
-        supported_languages = set(self.supported_languages)
-        if self._entity_code is not None:
-            fallback = language not in supported_languages
-            languages = [language] if language in supported_languages else None
-            locale_directory = str(Path(__file__).with_name("locale"))
-
-            # Add entity native content translations.
-            entity_translation = translation(
-                self._entity_code,
-                fallback=fallback,
-                languages=languages,
-                localedir=locale_directory,
-            )
-            # Add a fallback if entity has parent translations.
-            if parent_entity := self.parent_entity:
-                entity_translation.add_fallback(
-                    translation(
-                        parent_entity.country or parent_entity.market,
-                        fallback=fallback,
-                        languages=languages,
-                        localedir=locale_directory,
-                    )
-                )
-            self.tr = entity_translation.gettext
-        else:
-            self.tr = gettext
-
         self.years = _normalize_arguments(int, years)
+
+        # Configure l10n related attributes.
+        self._init_translation()
 
         # Populate holidays.
         for year in self.years:
@@ -596,6 +571,12 @@ class HolidayBase(dict[date, str]):
 
         return dict.__getitem__(self, self.__keytransform__(key))
 
+    def __getstate__(self) -> dict[str, Any]:
+        """Return the object's state for serialization."""
+        state = self.__dict__.copy()
+        state.pop("tr", None)
+        return state
+
     def __keytransform__(self, key: DateLike) -> date:
         """Transforms the date from one of the following types:
 
@@ -703,6 +684,11 @@ class HolidayBase(dict[date, str]):
 
         dict.__setitem__(self, self.__keytransform__(key), value)
 
+    def __setstate__(self, state: dict[str, Any]) -> None:
+        """Restore the object's state after deserialization."""
+        self.__dict__.update(state)
+        self._init_translation()
+
     def __str__(self) -> str:
         if self:
             return super().__str__()
@@ -757,6 +743,35 @@ class HolidayBase(dict[date, str]):
             subdivision_aliases[subdivision].append(alias)
 
         return subdivision_aliases
+
+    def _init_translation(self) -> None:
+        """Initialize translation function based on language settings."""
+        supported_languages = set(self.supported_languages)
+        if self._entity_code is not None:
+            fallback = self.language not in supported_languages
+            languages = [self.language] if self.language in supported_languages else None
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
+                self._entity_code,
+                fallback=fallback,
+                languages=languages,
+                localedir=locale_directory,
+            )
+            # Add a fallback if entity has parent translations.
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
+                    )
+                )
+            self.tr = entity_translation.gettext
+        else:
+            self.tr = gettext
 
     def _is_leap_year(self) -> bool:
         """
