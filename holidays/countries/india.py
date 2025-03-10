@@ -149,7 +149,10 @@ class India(
             Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated,  cls=IndiaIslamicHolidays)
+        HinduCalendarHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self, show_estimated=islamic_show_estimated, cls=IndiaIslamicHolidays
+        )
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
