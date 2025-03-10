@@ -53,11 +53,17 @@ class Kenya(
     # Kenya gained independence on December 12, 1963.
     start_year = 1964
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=KenyaHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=KenyaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=KenyaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=KenyaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 1985)
