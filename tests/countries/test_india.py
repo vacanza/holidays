@@ -197,7 +197,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-03-06",
             "2010-11-17",
             "2025-06-07",
-            "2035-02-19",
         )
         self.assertHolidayName(name, dt)
 
@@ -242,7 +241,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-12-17",
             "2010-09-10",
             "2025-03-31",
-            "2035-12-02",
         )
         self.assertHolidayName(name, dt)
 
@@ -278,7 +276,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-06-05",
             "2010-02-27",
             "2025-09-05",
-            "2035-05-21",
         )
         self.assertHolidayName(name, dt)
 
@@ -287,7 +284,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-04-04",
             "2010-12-17",
             "2025-07-06",
-            "2035-03-21",
         )
         self.assertHolidayName(name, dt)
 

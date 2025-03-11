@@ -519,16 +519,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUL, 29),
         2024: (JUL, 17),
         2025: (JUL, 6),
-        2026: (JUN, 26),
-        2027: (JUN, 16),
-        2028: (JUN, 4),
-        2029: (MAY, 25),
-        2030: (MAY, 14),
-        2031: (MAY, 3),
-        2032: (APR, 21),
-        2033: (APR, 11),
-        2034: (MAR, 31),
-        2035: (MAR, 21),
     }
 
     # Bakrid / Eid-al-Adha.
@@ -558,16 +548,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
-        2026: (MAY, 28),
-        2027: (MAY, 17),
-        2028: (MAY, 6),
-        2029: (APR, 25),
-        2030: (APR, 14),
-        2031: (APR, 3),
-        2032: (MAR, 22),
-        2033: (MAR, 12),
-        2034: (MAR, 1),
-        2035: (FEB, 19),
     }
 
     # Id-ul-Fitr / Eid-al-Fitr.
@@ -597,16 +577,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2024: (APR, 11),
         2025: (MAR, 31),
-        2026: (MAR, 21),
-        2027: (MAR, 10),
-        2028: (FEB, 27),
-        2029: (FEB, 15),
-        2030: (FEB, 5),
-        2031: (JAN, 25),
-        2032: (JAN, 15),
-        2033: ((JAN, 3), (DEC, 24)),
-        2034: (DEC, 13),
-        2035: (DEC, 2),
     }
 
     # Milad-un-Nabi / Mawlid.
@@ -636,16 +606,6 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (SEP, 28),
         2024: (SEP, 16),
         2025: (SEP, 5),
-        2026: (AUG, 26),
-        2027: (AUG, 15),
-        2028: (AUG, 4),
-        2029: (JUL, 25),
-        2030: (JUL, 14),
-        2031: (JUL, 3),
-        2032: (JUN, 21),
-        2033: (JUN, 10),
-        2034: (MAY, 31),
-        2035: (MAY, 21),
     }
 
 
