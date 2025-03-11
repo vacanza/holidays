@@ -143,6 +143,9 @@ class India(
         "West Bengal": "WB",
     }
 
+    # India gained independence on August 15, 1947.
+    start_year = 1948
+
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
         :param islamic_show_estimated:
@@ -151,7 +154,7 @@ class India(
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, show_estimated=islamic_show_estimated, cls=IndiaIslamicHolidays
+            self, cls=IndiaIslamicHolidays, show_estimated=islamic_show_estimated
         )
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -161,9 +164,8 @@ class India(
             # Republic Day.
             self._add_holiday_jan_26(tr("Republic Day"))
 
-        if self._year >= 1947:
-            # Independence Day.
-            self._add_holiday_aug_15(tr("Independence Day"))
+        # Independence Day.
+        self._add_holiday_aug_15(tr("Independence Day"))
 
         # Gandhi Jayanti.
         self._add_holiday_oct_2(tr("Gandhi Jayanti"))
