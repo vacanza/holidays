@@ -870,8 +870,7 @@ class TestPopNamed(unittest.TestCase):
         self.assertIn("2022-06-20", self.hb)
 
         hb = CountryStub1(years=2025)
-        hb["2024-02-02"] = "Groundhog Day"
-        hb["2024-02-02"] = "Big Groundhog Day"
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
         removed_dates = hb.pop_named("Groundhog Day", lookup="exact")
         self.assertEqual(len(removed_dates), 1)
         self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
@@ -885,8 +884,7 @@ class TestPopNamed(unittest.TestCase):
         self.assertIn("2022-06-20", self.hb)
 
         hb = CountryStub1(years=2025)
-        hb["2024-02-02"] = "Groundhog Day"
-        hb["2024-02-02"] = "Big Groundhog Day"
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
         removed_dates = hb.pop_named("Groundhog day", lookup="iexact")
         self.assertEqual(len(removed_dates), 1)
         self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
