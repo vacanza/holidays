@@ -397,79 +397,80 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
 
-    # def test_ranged_optional_holidays(self):
+    def test_ranged_optional_holidays(self):
+        opt_holidays = India(categories=OPTIONAL)
 
-    #     name = "Holi"
-    #     dt = (
-    #         "2001-03-10",
-    #         "2010-03-01",
-    #         "2025-03-14",
-    #         "2035-03-24",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Holi"
+        dt = (
+            "2001-03-10",
+            "2010-03-01",
+            "2025-03-14",
+            "2035-03-24",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Ganesh Chaturthi"
-    #     dt = (
-    #         "2001-08-22",
-    #         "2010-09-11",
-    #         "2025-08-27",
-    #         "2035-09-05",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Ganesh Chaturthi"
+        dt = (
+            "2001-08-22",
+            "2010-09-11",
+            "2025-08-27",
+            "2035-09-05",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Govardhan Puja"
-    #     dt = (
-    #         "2001-11-15",
-    #         "2010-11-06",
-    #         "2025-10-22",
-    #         "2035-10-31",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Govardhan Puja"
+        dt = (
+            "2001-11-15",
+            "2010-11-06",
+            "2025-10-22",
+            "2035-10-31",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Maha Navami"
-    #     dt = (
-    #         "2001-10-25",
-    #         "2010-10-16",
-    #         "2025-10-01",
-    #         "2035-10-10",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Maha Navami"
+        dt = (
+            "2001-10-25",
+            "2010-10-16",
+            "2025-10-01",
+            "2035-10-10",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Makar Sankranti"
-    #     dt = (
-    #         "2001-01-14",
-    #         "2010-01-14",
-    #         "2025-01-14",
-    #         "2035-01-15",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Makar Sankranti"
+        dt = (
+            "2001-01-14",
+            "2010-01-14",
+            "2025-01-14",
+            "2035-01-15",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Navratri / Sharad Navratri"
-    #     dt = (
-    #         "2001-10-17",
-    #         "2010-10-08",
-    #         "2025-09-22",
-    #         "2035-10-02",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Navratri / Sharad Navratri"
+        dt = (
+            "2001-10-17",
+            "2010-10-08",
+            "2025-09-22",
+            "2035-10-02",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Raksha Bandhan"
-    #     dt = (
-    #         "2001-08-04",
-    #         "2010-08-24",
-    #         "2025-08-09",
-    #         "2035-08-18",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Raksha Bandhan"
+        dt = (
+            "2001-08-04",
+            "2010-08-24",
+            "2025-08-09",
+            "2035-08-18",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
-    #     name = "Ram Navami"
-    #     dt = (
-    #         "2001-04-02",
-    #         "2010-03-24",
-    #         "2025-04-06",
-    #         "2035-04-16",
-    #     )
-    #     self.assertHolidayName(name, dt, categories=OPTIONAL)
+        name = "Ram Navami"
+        dt = (
+            "2001-04-02",
+            "2010-03-24",
+            "2025-04-06",
+            "2035-04-16",
+        )
+        self.assertHolidayName(name, opt_holidays, dt)
 
     def test_pre_1947(self):
         self.assertNoHoliday("1946-08-15")
@@ -484,19 +485,21 @@ class TestIndia(CommonCountryTests, TestCase):
             "2020-04-10",
         )
 
-    # def test_easter_sunday(self):
-    #     self.assertHoliday(
-    #         "1994-04-03",
-    #         "2017-04-16",
-    #         "2020-04-12",
-    #     )
+    def test_easter_sunday(self):
+        self.assertHoliday(
+            India(categories=OPTIONAL),
+            "1994-04-03",
+            "2017-04-16",
+            "2020-04-12",
+        )
 
-    # def test_palm_sunday(self):
-    #     self.assertHoliday(
-    #         "1994-03-27",
-    #         "2017-04-09",
-    #         "2020-04-05",
-    #     )
+    def test_palm_sunday(self):
+        self.assertHoliday(
+            India(categories=OPTIONAL),
+            "1994-03-27",
+            "2017-04-09",
+            "2020-04-05",
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
