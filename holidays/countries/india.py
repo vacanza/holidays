@@ -531,7 +531,7 @@ class IndiaIslamicHolidays(_CustomIslamicHolidays):
         2006: ((JAN, 11), (DEC, 31)),
         2007: (DEC, 20),
         2008: (DEC, 9),
-        2009: (DEC, 28),
+        2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
         2012: (OCT, 27),
