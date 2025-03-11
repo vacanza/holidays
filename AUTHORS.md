@@ -1,5 +1,4 @@
-Holidays Authors
-================
+# Holidays Authors
 
 Aaron Picht
 Aart Goossens
