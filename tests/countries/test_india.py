@@ -41,7 +41,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-03-29",
             "2018-03-30",
             "2018-04-30",
-            "2018-06-15",
+            "2018-06-16",
             "2018-08-15",
             "2018-08-22",
             "2018-09-03",
@@ -49,7 +49,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-10-02",
             "2018-10-19",
             "2018-11-07",
-            "2018-11-22",
+            "2018-11-21",
             "2018-11-23",
             "2018-12-25",
         )
@@ -197,7 +197,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-03-06",
             "2010-11-17",
             "2025-06-07",
-            "2035-02-18",
+            "2035-02-19",
         )
         self.assertHolidayName(name, dt)
 
@@ -277,7 +277,7 @@ class TestIndia(CommonCountryTests, TestCase):
         dt = (
             "2001-06-05",
             "2010-02-27",
-            "2025-09-06",
+            "2025-09-05",
             "2035-05-21",
         )
         self.assertHolidayName(name, dt)
@@ -287,7 +287,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2001-04-04",
             "2010-12-17",
             "2025-07-06",
-            "2035-03-20",
+            "2035-03-21",
         )
         self.assertHolidayName(name, dt)
 
@@ -524,7 +524,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-09", "Rabindra Jayanti"),
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
-            ("2018-06-15", "Id-ul-Fitr; Maharana Pratap Jayanti"),
+            ("2018-06-15", "Maharana Pratap Jayanti"),
+            ("2018-06-16", "Id-ul-Fitr"),
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-22", "Bakrid"),
@@ -554,7 +555,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-13", "Chhath Puja"),
             ("2018-11-14", "Children's Day"),
             ("2018-11-15", "Jharkhand Formation Day"),
-            ("2018-11-22", "Milad-un-Nabi"),
+            ("2018-11-21", "Milad-un-Nabi"),
             ("2018-11-23", "Guru Nanak Jayanti"),
             ("2018-12-01", "Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
@@ -586,7 +587,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-09", "रवींद्र जयंती"),
             ("2018-05-16", "सिक्किम राज्य दिवस"),
             ("2018-06-02", "तेलंगाना स्थापना दिवस"),
-            ("2018-06-15", "ईद-उल-फितर; महाराणा प्रताप जयंती"),
+            ("2018-06-15", "महाराणा प्रताप जयंती"),
+            ("2018-06-16", "ईद-उल-फितर"),
             ("2018-08-15", "स्वतंत्रता दिवस"),
             ("2018-08-16", "पुडुचेरी डी ज्यूर स्थानांतरण दिवस"),
             ("2018-08-22", "बकरीद"),
@@ -614,7 +616,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-13", "छठ पूजा"),
             ("2018-11-14", "बाल दिवस"),
             ("2018-11-15", "झारखण्ड स्थापना दिवस"),
-            ("2018-11-22", "मिलाद-उन-नबी"),
+            ("2018-11-21", "मिलाद-उन-नबी"),
             ("2018-11-23", "गुरु नानक जयंती"),
             ("2018-12-01", "नागालैंड राज्य उद्घाटन दिवस"),
             ("2018-12-02", "असम दिवस"),
@@ -649,7 +651,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-05-09", "Rabindra Jayanti"),
             ("2018-05-16", "Sikkim State Day"),
             ("2018-06-02", "Telangana Formation Day"),
-            ("2018-06-15", "Eid al-Fitr; Maharana Pratap Jayanti"),
+            ("2018-06-15", "Maharana Pratap Jayanti"),
+            ("2018-06-16", "Eid al-Fitr"),
             ("2018-08-15", "Independence Day"),
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-22", "Eid al-Adha"),
@@ -679,7 +682,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-13", "Chhath Puja"),
             ("2018-11-14", "Children's Day"),
             ("2018-11-15", "Jharkhand Formation Day"),
-            ("2018-11-22", "Prophet's Birthday"),
+            ("2018-11-21", "Prophet's Birthday"),
             ("2018-11-23", "Guru Nanak Jayanti"),
             ("2018-12-01", "Nagaland State Inauguration Day"),
             ("2018-12-02", "Assam Day"),
