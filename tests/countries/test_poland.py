@@ -372,8 +372,8 @@ class TestPoland(CommonCountryTests, TestCase):
                 "2018-11-12",
                 "Nationalfeiertag der Unabhängigkeit Polens, hundertjähriges Jubiläum",
             ),
-            ("2018-12-25", "Erster Weihnachstag"),
-            ("2018-12-26", "Zweister Weihnachtstag"),
+            ("2018-12-25", "Erster Weihnachtstag"),
+            ("2018-12-26", "Zweiter Weihnachtstag"),
         )
         self.assertLocalizedHolidays(
             "de",
@@ -388,6 +388,6 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-11-01", "Allerheiligen"),
             ("2022-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
-            ("2022-12-25", "Erster Weihnachstag"),
-            ("2022-12-26", "Zweister Weihnachtstag"),
+            ("2022-12-25", "Erster Weihnachtstag"),
+            ("2022-12-26", "Zweiter Weihnachtstag"),
         )

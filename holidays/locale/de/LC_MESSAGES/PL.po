@@ -107,8 +107,8 @@ msgstr "Weihnachtsabend"
 
 #. Christmas Day.
 msgid "Boże Narodzenie (pierwszy dzień)"
-msgstr "Erster Weihnachstag"
+msgstr "Erster Weihnachtstag"
 
 #. Second Day of Christmas.
 msgid "Boże Narodzenie (drugi dzień)"
-msgstr "Zweister Weihnachtstag"
+msgstr "Zweiter Weihnachtstag"
