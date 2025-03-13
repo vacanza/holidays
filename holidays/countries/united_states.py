@@ -164,11 +164,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate_common(self, is_federal: bool = False):
+    def _populate_common(self, include_federal: bool = False):
         """
         Populates common US holidays.
 
-        :param is_federal:
+        :param include_federal:
             Whether to include federal-specific holidays.
         """
         # New Year's Day
@@ -177,7 +177,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_observed(self._add_new_years_day(name))
             self._add_observed(self._next_year_new_years_day, name=name)
 
-        if is_federal:
+        if include_federal:
             # Birthday of Martin Luther King, Jr.
             if self._year >= 1986:
                 self._add_holiday_3rd_mon_of_jan("Birthday of Martin Luther King, Jr.")
@@ -206,7 +206,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1894:
             self._add_holiday_1st_mon_of_sep("Labor Day")
 
-        if is_federal:
+        if include_federal:
             # Columbus Day
             if self._year >= 1971:
                 self._add_holiday_2nd_mon_of_oct("Columbus Day")
@@ -1149,7 +1149,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_government_holidays(self):
         # Federal holidays in the United States.
-        self._populate_common(is_federal=True)
+        self._populate_common(include_federal=True)
 
     def _populate_unofficial_holidays(self):
         # Very common celebrated cultural days, but no official observance.
