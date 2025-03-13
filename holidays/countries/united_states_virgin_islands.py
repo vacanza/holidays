@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import PUBLIC, UNOFFICIAL
+from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
 from holidays.countries.united_states import US
 
 
@@ -20,12 +20,16 @@ class HolidaysVI(US):
     # https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1
 
     country = "VI"
-    supported_categories = (PUBLIC, UNOFFICIAL)
+    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "VI"
         super()._populate_public_holidays()
+
+    def _populate_government_holidays(self) -> None:
+        self.subdiv = "VI"
+        super()._populate_government_holidays()
 
     def _populate_unofficial_holidays(self) -> None:
         self.subdiv = "VI"
