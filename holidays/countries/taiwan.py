@@ -318,6 +318,7 @@ class TaiwanStaticHolidays:
         2000: (MAY, 14, buddhas_birthday),
         2001: (JAN, 22, JAN, 20),
         2005: (FEB, 7, FEB, 5),
+        2006: (OCT, 9, OCT, 14),
         2007: (
             (FEB, 23, MAR, 3),
             (APR, 6, APR, 14),

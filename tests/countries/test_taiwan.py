@@ -38,6 +38,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHoliday(
             "2001-01-22",
             "2005-02-07",
+            "2006-10-09",
             "2007-02-23",
             "2007-04-06",
             "2007-06-18",
@@ -83,6 +84,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertWorkingDay(
             "2001-01-20",
             "2005-02-05",
+            "2006-10-14",
             "2007-03-03",
             "2007-04-14",
             "2007-06-23",
@@ -777,6 +779,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2006-04-05", "民族掃墓節"),
             ("2006-05-31", "端午節"),
             ("2006-10-06", "中秋節"),
+            ("2006-10-09", "休息日（2006-10-14日起取代）"),
             ("2006-10-10", "國慶日"),
         )
 
