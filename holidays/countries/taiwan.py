@@ -110,33 +110,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                     CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
                 )
 
-    def _populate_school_holidays(self):
-        if self._year <= 2000:
-            # Founding Day of the Republic of China.
-            self._add_new_years_day_two(tr("中華民國開國紀念日"))
-
-            # Confucius' Birthday.
-            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
-
-            # Taiwan Retrocession Day.
-            self._add_holiday_oct_25(tr("臺灣光復節"))
-
-            # Late President Chiang Kai-shek's Birthday.
-            self._add_holiday_oct_31(tr("先總統　蔣公誕辰紀念日"))
-
-            # Dr. Sun Yat-sen's Birthday.
-            self._add_holiday_nov_12(tr("國父誕辰紀念日"))
-
-            # Constitution Day.
-            self._add_holiday_dec_25(tr("行憲紀念日"))
-
-    def _populate_government_holidays(self):
-        self._populate_school_holidays()
-
-        if self._year <= 2000:
-            # Revolutionary Martyrs Memorial Day.
-            self._add_holiday_mar_29(tr("革命先烈紀念日"))
-
     def _populate_public_holidays(self):
         dts_observed = set()
         dts_observed_forward = set()
@@ -180,6 +153,33 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             # While Chinese New Year special observances rule weren't officially decreed
             # until 2015, this was de facto implemented by the DGPA since at least 2003.
             self._populate_observed(dts_observed_forward, rule=SAT_SUN_TO_NEXT_WORKDAY, since=2003)
+
+    def _populate_school_holidays(self):
+        if self._year <= 2000:
+            # Founding Day of the Republic of China.
+            self._add_new_years_day_two(tr("中華民國開國紀念日"))
+
+            # Confucius' Birthday.
+            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
+
+            # Taiwan Retrocession Day.
+            self._add_holiday_oct_25(tr("臺灣光復節"))
+
+            # Late President Chiang Kai-shek's Birthday.
+            self._add_holiday_oct_31(tr("先總統　蔣公誕辰紀念日"))
+
+            # Dr. Sun Yat-sen's Birthday.
+            self._add_holiday_nov_12(tr("國父誕辰紀念日"))
+
+            # Constitution Day.
+            self._add_holiday_dec_25(tr("行憲紀念日"))
+
+    def _populate_government_holidays(self):
+        self._populate_school_holidays()
+
+        if self._year <= 2000:
+            # Revolutionary Martyrs Memorial Day.
+            self._add_holiday_mar_29(tr("革命先烈紀念日"))
 
     def _populate_optional_holidays(self):
         # Labor Day.
