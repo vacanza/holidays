@@ -22,10 +22,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         years = range(1999, 2050)
         super().setUpClass(Taiwan, years=years, years_non_observed=years)
-        cls.gov_holidays = Taiwan(categories=GOVERNMENT, years=range(1999, 2050))
-        cls.opt_holidays = Taiwan(categories=OPTIONAL, years=range(1999, 2050))
-        cls.sch_holidays = Taiwan(categories=SCHOOL, years=range(1999, 2050))
-        cls.wrk_holidays = Taiwan(categories=WORKDAY, years=range(1999, 2050))
+        cls.gov_holidays = Taiwan(categories=GOVERNMENT, years=years)
+        cls.opt_holidays = Taiwan(categories=OPTIONAL, years=years)
+        cls.sch_holidays = Taiwan(categories=SCHOOL, years=years)
+        cls.wrk_holidays = Taiwan(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Taiwan, TW, TWN)
