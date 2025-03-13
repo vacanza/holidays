@@ -37,6 +37,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_substituted_holidays(self):
         self.assertHoliday(
+            "2000-04-03",
             "2001-01-22",
             "2005-02-07",
             "2006-10-09",
@@ -83,6 +84,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_workdays(self):
         self.assertWorkingDay(
+            "2000-04-08",
             "2001-01-20",
             "2005-02-05",
             "2006-10-14",
