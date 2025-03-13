@@ -27,9 +27,13 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
     # On 27 June 1977, Djibouti gained independence from France.
     start_year = 1978
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 

@@ -14,7 +14,7 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars import _ChineseLunisolar
-from holidays.calendars.gregorian import APR
+from holidays.calendars.gregorian import APR, DEC
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -35,7 +35,10 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         return self._chinese_calendar.lunar_new_year_date(self._year)[0]
 
     @property
-    def _qingming_date(self):
+    def _qingming_festival(self):
+        """
+        Return Qingming Festival (15th day after the Spring Equinox) date.
+        """
         day = 5
         if (self._year % 4 < 1) or (self._year % 4 < 2 and self._year >= 2009):
             day = 4
@@ -47,6 +50,47 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Return Mid Autumn Festival (15th day of the 8th lunar month) date.
         """
         return self._chinese_calendar.mid_autumn_date(self._year)[0]
+
+    @property
+    def _chinese_birthday_of_buddha(self):
+        """
+        Return Add Birthday of the Buddha by Chinese lunar calendar (8th day of the
+        4th lunar month).
+        """
+        return self._chinese_calendar.buddha_birthday_date(self._year)[0]
+
+    @property
+    def _dragon_boat_festival(self):
+        """
+        Return Dragon Boat Festival (5th day of 5th lunar month) date.
+        """
+        return self._chinese_calendar.dragon_boat_date(self._year)[0]
+
+    @property
+    def _double_ninth_festival(self):
+        """
+        Return Double Ninth Festival (9th day of 9th lunar month) date.
+        """
+        return self._chinese_calendar.double_ninth_date(self._year)[0]
+
+    @property
+    def _dongzhi_festival(self):
+        """
+        Return Dongzhi Festival (Chinese Winter Solstice) date.
+
+        This approximation is reliable for 1952-2099 years.
+        """
+        #
+        if (
+            (self._year % 4 == 0 and self._year >= 1988)
+            or (self._year % 4 == 1 and self._year >= 2021)
+            or (self._year % 4 == 2 and self._year >= 2058)
+            or (self._year % 4 == 3 and self._year >= 2091)
+        ):
+            day = 21
+        else:
+            day = 22
+        return date(self._year, DEC, day)
 
     def _add_chinese_calendar_holiday(
         self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
@@ -128,6 +172,27 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+3
         )
 
+    def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
+        """
+        Add Chinese New Year's Day Five.
+
+        https://en.wikipedia.org/wiki/Chinese_New_Year
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
+        )
+
+    def _add_dongzhi_festival(self, name) -> Optional[date]:
+        """
+        Add Dongzhi Festival (Chinese Winter Solstice).
+
+        The Dongzhi Festival or Winter Solstice Festival is a traditional
+        Chinese festival celebrated during the Dongzhi solar term
+        (winter solstice), which falls between December 21 and 23.
+        https://en.wikipedia.org/wiki/Dongzhi_Festival
+        """
+        return self._add_holiday(name, self._dongzhi_festival)
+
     def _add_qingming_festival(self, name) -> date:
         """
         Add Qingming Festival (15th day after the Spring Equinox).
@@ -136,7 +201,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Tomb-Sweeping Day in English, is a traditional Chinese festival.
         https://en.wikipedia.org/wiki/Qingming_Festival
         """
-        return self._add_holiday(name, self._qingming_date)
+        return self._add_holiday(name, self._qingming_festival)
 
     def _add_double_ninth_festival(self, name) -> Optional[date]:
         """

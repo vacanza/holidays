@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -125,8 +126,11 @@ class Malaysia(
     supported_languages = ("en_US", "ms_MY", "th")
     start_year = 1952
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+
         References:
             - `Holidays Act 1951 <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf>`_
             - `Holidays Ordinance (Sabah Cap. 56) <https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf>`_
@@ -147,11 +151,13 @@ class Malaysia(
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=MalaysiaHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=MalaysiaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=MalaysiaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
-        self.dts_observed = set()
+        self.dts_observed: set[date] = set()
 
     def _populate_public_holidays(self):
         # This must be done for every `_populate_public_holidays()` call.
