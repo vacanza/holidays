@@ -30,7 +30,6 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
-    _timedelta,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
@@ -65,7 +64,8 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
 
     Checked With:
-        - `DGPA Work Calendar (2001-2025) <https://www.dgpa.gov.tw/en/informationlist?uid=353>`_
+        - `DGPA Work Calendar (1998-2025; Chinese) <https://www.dgpa.gov.tw/informationlist?uid=30>`_
+        - `DGPA Work Calendar (2001-2025; English) <https://www.dgpa.gov.tw/en/informationlist?uid=353>`_
     """
 
     country = "TW"
@@ -75,7 +75,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("en_US", "th", "zh_CN", "zh_TW")
     # Ministry of Interior (87) Order No. 8706459.
-    start_year = 1999
+    start_year = 1998
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -182,16 +182,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             self._populate_observed(dts_observed_forward, rule=SAT_SUN_TO_NEXT_WORKDAY, since=2003)
 
     def _populate_optional_holidays(self):
-        # Prior to 2001, Women's Day and Children's Day holidays were given on
-        # the day before the National Tomb-Sweeping Day.
-        dt_qingming = self._qingming_festival
-        if self._year <= 2000:
-            # Children's Day.
-            self._add_holiday(tr("兒童節"), _timedelta(dt_qingming, -1))
-
-            # Women's Day.
-            self._add_holiday(tr("婦女節"), _timedelta(dt_qingming, -1))
-
         # Labor Day.
         self._add_labor_day(tr("勞動節"))
 
@@ -214,22 +204,27 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # Chinese Cultural Renaissance Day.
         self._add_holiday_nov_12(tr("中華文化復興節"))
 
+        # Women's Day.
+        self._add_womens_day(tr("婦女節"))
+
         if self._year <= 2007:
             # Late President Chiang Kai-shek's Memorial Day.
             self._add_qingming_festival(tr("先總統蔣公逝世紀念日"))
+
+        if self._year <= 2010:
+            # Children's Day.
+            self._add_holiday_apr_4(tr("兒童節"))
+
+        if self._year >= 2000:
+            # The Buddha's Birthday.
+            self._add_chinese_birthday_of_buddha(tr("佛陀誕辰紀念日"))
 
         if self._year >= 2001:
             # Taoism Day.
             self._add_chinese_new_years_day(tr("道教節"))
 
-            # Women's Day.
-            self._add_womens_day(tr("婦女節"))
-
             # Revolutionary Martyrs Memorial Day.
             self._add_holiday_mar_29(tr("革命先烈紀念日"))
-
-            # The Buddha's Birthday.
-            self._add_chinese_birthday_of_buddha(tr("佛陀誕辰紀念日"))
 
             # Confucius' Birthday.
             self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
@@ -246,10 +241,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             if self._year <= 2006:
                 # Late President Chiang Kai-shek's Birthday.
                 self._add_holiday_oct_31(tr("先總統　蔣公誕辰紀念日"))
-
-            if self._year <= 2010:
-                # Children's Day.
-                self._add_holiday_apr_4(tr("兒童節"))
 
         if self._year >= 2006:
             # Anti-Aggression Day.
@@ -274,6 +265,9 @@ class TWN(Taiwan):
 class TaiwanStaticHolidays:
     """
     DGPA, Executive Yuan Work Calendars:
+        - `1998 <https://www.dgpa.gov.tw/information?uid=30&pid=4979>`_
+        - `1999 <https://www.dgpa.gov.tw/information?uid=30&pid=4978>`_
+        - `2000 <https://www.dgpa.gov.tw/information?uid=30&pid=4977>`_
         - `2001 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6199>`_
         - `2002 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6198>`_
         - `2003 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6197>`_
@@ -307,15 +301,14 @@ class TaiwanStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("休息日（%s日起取代）")
 
-    # The Buddha's Birthday.
-    buddhas_birthday = tr("佛陀誕辰紀念日")
+    # Women's Day.
+    womens_day = tr("婦女節")
 
     # Children's Day.
     childrens_day = tr("兒童節")
 
     special_public_holidays = {
-        # The Buddha's Birthday was observed on 2nd Sunday of May in 2000.
-        2000: (MAY, 14, buddhas_birthday),
+        2000: (APR, 3, APR, 8),
         2001: (JAN, 22, JAN, 20),
         2005: (FEB, 7, FEB, 5),
         2006: (OCT, 9, OCT, 14),
@@ -381,6 +374,39 @@ class TaiwanStaticHolidays:
         2024: (FEB, 8, FEB, 17),
         2025: (JAN, 27, FEB, 8),
     }
+    # Prior to 2001, Women's Day and Children's Day holidays were given on
+    # the day before the Tomb-Sweeping Day.
+    special_optional_holidays_observed = {
+        1998: (
+            (APR, 4, childrens_day),
+            (APR, 4, womens_day),
+        ),
+        1999: (
+            (APR, 4, childrens_day),
+            (APR, 4, womens_day),
+        ),
+        2000: (
+            (APR, 3, childrens_day),
+            (APR, 3, womens_day),
+            # Armed Forces Day.
+            (SEP, 4, tr("軍人節")),
+        ),
+    }
+    # The Buddha's Birthday was observed on 2nd Sunday of May in 2000.
     special_public_holidays_observed = {
+        1998: (
+            # Chinese New Year.
+            (JAN, 31, tr("春節")),
+            # Tomb-Sweeping Day.
+            (APR, 6, tr("民族掃墓節")),
+        ),
+        1999: (
+            # Founding Day of the Republic of China.
+            (JAN, 2, tr("中華民國開國紀念日")),
+            # Dragon Boat Festival.
+            (JUN, 19, tr("端午節")),
+        ),
+        # The Buddha's Birthday.
+        2000: (MAY, 14, tr("佛陀誕辰紀念日")),
         2013: (APR, 5, childrens_day),
     }
