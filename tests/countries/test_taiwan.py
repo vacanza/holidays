@@ -556,9 +556,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-09-28" for year in range(1999, 2001))
+            name, self.sch_holidays, (f"{year}-09-28" for year in range(1999, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
@@ -597,9 +597,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-10-25" for year in range(1999, 2001))
+            name, self.sch_holidays, (f"{year}-10-25" for year in range(1999, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
@@ -621,7 +621,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(
             name, self.sch_holidays, (f"{year}-10-31" for year in range(1999, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
@@ -641,9 +641,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-11-12" for year in range(1999, 2001))
+            name, self.sch_holidays, (f"{year}-11-12" for year in range(1999, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
@@ -672,9 +672,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-12-25" for year in range(1999, 2001))
+            name, self.sch_holidays, (f"{year}-12-25" for year in range(1999, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
