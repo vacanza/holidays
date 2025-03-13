@@ -284,6 +284,41 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2022-12-26", "Boże Narodzenie (drugi dzień)"),
         )
 
+    def test_l10n_de(self):
+        self.assertLocalizedHolidays(
+            "de",
+            ("2018-01-01", "Neujahr"),
+            ("2018-01-06", "Heilige Drei Könige"),
+            ("2018-04-01", "Ostersonntag"),
+            ("2018-04-02", "Ostermontag"),
+            ("2018-05-01", "Tag der Arbeit"),
+            ("2018-05-03", "Nationalfeiertag am 3. Mai"),
+            ("2018-05-20", "Pfingsten"),
+            ("2018-05-31", "Fronleichnam"),
+            ("2018-08-15", "Mariä Himmelfahrt"),
+            ("2018-11-01", "Allerheiligen"),
+            ("2018-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
+            ("2018-11-12", "Nationalfeiertag der Unabhängigkeit Polens, hundertjähriges Jubiläum"),
+            ("2018-12-25", "Erster Weihnachtstag"),
+            ("2018-12-26", "Zweiter Weihnachtstag"),
+        )
+        self.assertLocalizedHolidays(
+            "de",
+            ("2022-01-01", "Neujahr"),
+            ("2022-01-06", "Heilige Drei Könige"),
+            ("2022-04-17", "Ostersonntag"),
+            ("2022-04-18", "Ostermontag"),
+            ("2022-05-01", "Tag der Arbeit"),
+            ("2022-05-03", "Nationalfeiertag am 3. Mai"),
+            ("2022-06-05", "Pfingsten"),
+            ("2022-06-16", "Fronleichnam"),
+            ("2022-08-15", "Mariä Himmelfahrt"),
+            ("2022-11-01", "Allerheiligen"),
+            ("2022-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
+            ("2022-12-25", "Erster Weihnachtstag"),
+            ("2022-12-26", "Zweiter Weihnachtstag"),
+        )
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
@@ -352,42 +387,4 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2022-11-11", "День незалежності"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
-        )
-
-    def test_l10n_de(self):
-        self.assertLocalizedHolidays(
-            "de",
-            ("2018-01-01", "Neujahr"),
-            ("2018-01-06", "Heilige Drei Könige"),
-            ("2018-04-01", "Ostersonntag"),
-            ("2018-04-02", "Ostermontag"),
-            ("2018-05-01", "Tag der Arbeit"),
-            ("2018-05-03", "Nationalfeiertag am 3. Mai"),
-            ("2018-05-20", "Pfingsten"),
-            ("2018-05-31", "Fronleichnam"),
-            ("2018-08-15", "Mariä Himmelfahrt"),
-            ("2018-11-01", "Allerheiligen"),
-            ("2018-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
-            (
-                "2018-11-12",
-                "Nationalfeiertag der Unabhängigkeit Polens, hundertjähriges Jubiläum",
-            ),
-            ("2018-12-25", "Erster Weihnachtstag"),
-            ("2018-12-26", "Zweiter Weihnachtstag"),
-        )
-        self.assertLocalizedHolidays(
-            "de",
-            ("2022-01-01", "Neujahr"),
-            ("2022-01-06", "Heilige Drei Könige"),
-            ("2022-04-17", "Ostersonntag"),
-            ("2022-04-18", "Ostermontag"),
-            ("2022-05-01", "Tag der Arbeit"),
-            ("2022-05-03", "Nationalfeiertag am 3. Mai"),
-            ("2022-06-05", "Pfingsten"),
-            ("2022-06-16", "Fronleichnam"),
-            ("2022-08-15", "Mariä Himmelfahrt"),
-            ("2022-11-01", "Allerheiligen"),
-            ("2022-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
-            ("2022-12-25", "Erster Weihnachtstag"),
-            ("2022-12-26", "Zweiter Weihnachtstag"),
         )
