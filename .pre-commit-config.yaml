@@ -24,7 +24,7 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.10
+    rev: v0.10.0
     hooks:
       - id: ruff
       - id: ruff-format
