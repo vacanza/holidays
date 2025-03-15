@@ -774,7 +774,7 @@ All other default values are highlighted with bold:
    * - Poland
      - PL
      -
-     - en_US, **pl**, uk
+     - de, en_US, **pl**, uk
      -
    * - Portugal
      - PT
