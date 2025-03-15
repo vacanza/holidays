@@ -880,7 +880,7 @@ All other default values are highlighted with bold:
      - TW
      -
      - en_US, th, zh_CN, **zh_TW**
-     -
+     - GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY
    * - Tanzania
      - TZ
      -
