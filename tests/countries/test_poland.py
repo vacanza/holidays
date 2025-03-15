@@ -297,8 +297,8 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2018-05-31", "Fronleichnam"),
             ("2018-08-15", "Mariä Himmelfahrt"),
             ("2018-11-01", "Allerheiligen"),
-            ("2018-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
-            ("2018-11-12", "Nationalfeiertag der Unabhängigkeit Polens, hundertjähriges Jubiläum"),
+            ("2018-11-11", "Nationalfeiertag der Unabhängigkeit"),
+            ("2018-11-12", "Nationalfeiertag der Unabhängigkeit - 100. Jahrestag"),
             ("2018-12-25", "Erster Weihnachtstag"),
             ("2018-12-26", "Zweiter Weihnachtstag"),
         )
@@ -314,7 +314,7 @@ class TestPoland(CommonCountryTests, TestCase):
             ("2022-06-16", "Fronleichnam"),
             ("2022-08-15", "Mariä Himmelfahrt"),
             ("2022-11-01", "Allerheiligen"),
-            ("2022-11-11", "Nationalfeiertag der Unabhängigkeit Polens"),
+            ("2022-11-11", "Nationalfeiertag der Unabhängigkeit"),
             ("2022-12-25", "Erster Weihnachtstag"),
             ("2022-12-26", "Zweiter Weihnachtstag"),
         )

@@ -80,7 +80,7 @@ msgstr "Fest der Apostelfürsten Petrus und Paulus"
 
 #. National Day of Rebirth of Poland.
 msgid "Narodowe Święto Odrodzenia Polski"
-msgstr "Nationalfeiertag der polnischen Wiedergeburt"
+msgstr "Nationalfeiertag der Wiedergeburt Polens"
 
 #. Assumption Day.
 msgid "Wniebowzięcie Najświętszej Marii Panny"
@@ -92,19 +92,19 @@ msgstr "Allerheiligen"
 
 #. National Independence Day.
 msgid "Narodowe Święto Niepodległości"
-msgstr "Nationalfeiertag der Unabhängigkeit Polens"
+msgstr "Nationalfeiertag der Unabhängigkeit"
 
 #. National Independence Day - 100th anniversary.
 msgid "Narodowe Święto Niepodległości - 100-lecie"
-msgstr "Nationalfeiertag der Unabhängigkeit Polens, hundertjähriges Jubiläum"
+msgstr "Nationalfeiertag der Unabhängigkeit - 100. Jahrestag"
 
 #. Immaculate Conception of the Blessed Virgin Mary.
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
-msgstr "Unbefleckte Empfängnis Mariens"
+msgstr "Mariä Empfängnis"
 
 #. Christmas Eve.
 msgid "Wigilia Bożego Narodzenia"
-msgstr "Weihnachtsabend"
+msgstr "Heiligabend"
 
 #. Christmas Day.
 msgid "Boże Narodzenie (pierwszy dzień)"
