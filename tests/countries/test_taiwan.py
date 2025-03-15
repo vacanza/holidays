@@ -22,11 +22,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def setUpClass(cls):
         years = range(1998, 2050)
         super().setUpClass(Taiwan, years=years, years_non_observed=years)
-        cls.gov_holidays = Taiwan(categories=GOVERNMENT, years=years)
-        cls.opt_holidays = Taiwan(categories=OPTIONAL, years=years)
-        cls.opt_holidays_obs = Taiwan(categories=OPTIONAL, years=years, observed=False)
-        cls.sch_holidays = Taiwan(categories=SCHOOL, years=years)
-        cls.wrk_holidays = Taiwan(categories=WORKDAY, years=years)
+        cls.government_holidays = Taiwan(categories=GOVERNMENT, years=years)
+        cls.optional_holidays = Taiwan(categories=OPTIONAL, years=years)
+        cls.optional_holidays_observed = Taiwan(categories=OPTIONAL, years=years, observed=False)
+        cls.school_holidays = Taiwan(categories=SCHOOL, years=years)
+        cls.workday_holidays = Taiwan(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Taiwan, TW, TWN)
@@ -139,9 +139,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-01-02" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-01-02" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # Public Holidays.
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1998, 2050)))
@@ -156,9 +156,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # School Holidays
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-01-02" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-01-02" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
     def test_chinese_new_year(self):
         name_eve = "農曆除夕"
@@ -271,7 +271,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         # Workdays.
         self.assertHolidayName(
             name,
-            self.wrk_holidays,
+            self.workday_holidays,
             "2015-02-19",
             "2016-02-08",
             "2017-01-28",
@@ -283,8 +283,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-01-22",
             "2024-02-10",
         )
-        self.assertHolidayName(name, self.wrk_holidays, range(2001, 2050))
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2001))
+        self.assertHolidayName(name, self.workday_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2001))
         self.assertNoHolidayName(name)
 
     def test_peace_memorial_day(self):
@@ -305,7 +305,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-12" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-03-12" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -314,7 +314,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-12" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-03-12" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -323,9 +323,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-14" for year in range(2006, 2050))
+            name, self.workday_holidays, (f"{year}-03-14" for year in range(2006, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2006))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2006))
         self.assertNoHolidayName(name)
 
     def test_revolutionary_martyrs_memorial_day(self):
@@ -333,15 +333,15 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-03-29" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-03-29" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-29" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-03-29" for year in range(2001, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
         self.assertNoHolidayName(name)
 
     def test_youth_day(self):
@@ -349,7 +349,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-29" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-03-29" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -362,8 +362,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "1999-04-04",
             "2000-04-03",
         )
-        self.assertHolidayName(f"{name}（慶祝）", self.opt_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.opt_holidays_obs, obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
 
         # Public Holidays.
         self.assertHolidayName(name, (f"{year}-04-04" for year in range(2011, 2050)))
@@ -383,9 +383,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-04-04" for year in range(1998, 2011))
+            name, self.workday_holidays, (f"{year}-04-04" for year in range(1998, 2011))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(2011, 2050))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2011, 2050))
 
     def test_womens_day(self):
         name = "婦女節"
@@ -396,13 +396,13 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "1999-04-04",
             "2000-04-03",
         )
-        self.assertHolidayName(f"{name}（慶祝）", self.opt_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.opt_holidays_obs, obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
         self.assertNoHolidayName(name)
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-03-08" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-03-08" for year in range(1998, 2050))
         )
 
     def test_tomb_sweeping_day(self):
@@ -441,7 +441,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         # Workdays.
         self.assertHolidayName(
             name,
-            self.wrk_holidays,
+            self.workday_holidays,
             "1998-04-05",
             "2000-04-04",
             "2001-04-05",
@@ -452,7 +452,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2006-04-05",
             "2007-04-05",
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(2008, 2050))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2008, 2050))
         self.assertNoHolidayName(name)
 
     def test_labor_day(self):
@@ -460,7 +460,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Optional Holidays.
         self.assertHolidayName(
-            name, self.opt_holidays, (f"{year}-05-01" for year in range(1998, 2050))
+            name, self.optional_holidays, (f"{year}-05-01" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -476,7 +476,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         # Workdays.
         self.assertHolidayName(
             name,
-            self.wrk_holidays,
+            self.workday_holidays,
             "2011-05-10",
             "2012-04-28",
             "2013-05-17",
@@ -491,8 +491,8 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2022-05-08",
             "2023-05-26",
         )
-        self.assertHolidayName(name, self.wrk_holidays, range(2000, 2050))
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertHolidayName(name, self.workday_holidays, range(2000, 2050))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
 
     def test_dragon_boat_festival(self):
         name = "端午節"
@@ -527,9 +527,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-07-15" for year in range(2008, 2050))
+            name, self.workday_holidays, (f"{year}-07-15" for year in range(2008, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2008))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2008))
         self.assertNoHolidayName(name)
 
     def test_armed_forces_day(self):
@@ -537,11 +537,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Optional Holidays.
         self.assertHolidayName(
-            name, self.opt_holidays, (f"{year}-09-03" for year in range(1998, 2050))
+            name, self.optional_holidays, (f"{year}-09-03" for year in range(1998, 2050))
         )
         obs_dt = ("2000-09-04",)
-        self.assertHolidayName(f"{name}（慶祝）", self.opt_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.opt_holidays_obs, obs_dt)
+        self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
         self.assertNoHolidayName(name)
 
     def test_mid_autumn_festival(self):
@@ -589,21 +589,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-09-28" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-09-28" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-09-28" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-09-28" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-09-28" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-09-28" for year in range(2001, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
         self.assertNoHolidayName(name)
 
     def test_teachers_day(self):
@@ -611,7 +611,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-09-28" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-09-28" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -620,9 +620,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-10-24" for year in range(2008, 2050))
+            name, self.workday_holidays, (f"{year}-10-24" for year in range(2008, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2008))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2008))
         self.assertNoHolidayName(name)
 
     def test_taiwan_retrocession_day(self):
@@ -630,21 +630,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-10-25" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-10-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-10-25" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-10-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-10-25" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-10-25" for year in range(2001, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
         self.assertNoHolidayName(name)
 
     def test_late_president_chiang_kai_sheks_birthday(self):
@@ -652,21 +652,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-10-31" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-10-31" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-10-31" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-10-31" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-10-31" for year in range(2001, 2007))
+            name, self.workday_holidays, (f"{year}-10-31" for year in range(2001, 2007))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000), range(2007, 2050))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000), range(2007, 2050))
         self.assertNoHolidayName(name)
 
     def test_dr_sun_yat_sens_birthday(self):
@@ -674,21 +674,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-11-12" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-11-12" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-11-12" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-11-12" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-11-12" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-11-12" for year in range(2001, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
         self.assertNoHolidayName(name)
 
     def test_chinese_cultural_renaissance_day(self):
@@ -696,7 +696,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-11-12" for year in range(1998, 2050))
+            name, self.workday_holidays, (f"{year}-11-12" for year in range(1998, 2050))
         )
         self.assertNoHolidayName(name)
 
@@ -705,21 +705,21 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.gov_holidays, (f"{year}-12-25" for year in range(1998, 2001))
+            name, self.government_holidays, (f"{year}-12-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.gov_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.sch_holidays, (f"{year}-12-25" for year in range(1998, 2001))
+            name, self.school_holidays, (f"{year}-12-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.sch_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.wrk_holidays, (f"{year}-12-25" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-12-25" for year in range(2001, 2050))
         )
-        self.assertNoHolidayName(name, self.wrk_holidays, range(1998, 2000))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
         self.assertNoHolidayName(name)
 
     def test_1998(self):
