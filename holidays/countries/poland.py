@@ -20,9 +20,10 @@ from holidays.holiday_base import HolidayBase
 class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Poland
-        - https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
-        - https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Poland>
+    * <https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce>
+    * <https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965>
     """
 
     country = "PL"

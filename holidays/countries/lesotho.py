@@ -18,9 +18,10 @@ from holidays.holiday_base import HolidayBase
 class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
-    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
-    - https://www.timeanddate.com/holidays/lesotho/
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho>
+    * <https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf>
+    * <https://www.timeanddate.com/holidays/lesotho/>
     """
 
     country = "LS"

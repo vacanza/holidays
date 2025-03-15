@@ -23,9 +23,9 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
 
-    - https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
-    - https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland
-    - http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands>
+    * <https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland>
+    * <http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays>
     """
 
     country = "NL"

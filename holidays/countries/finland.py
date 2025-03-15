@@ -21,14 +21,15 @@ from holidays.holiday_base import HolidayBase
 class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Finland
-        - `Bank holidays (Finnish) <https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/>`_
-        - `Bank holidays (English) <https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/>`_
-        - `Bank holidays (Swedish) <https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/>`_
-        - https://en.wikipedia.org/wiki/Flag_flying_days_in_Finland#Customary_flag_days
-        - https://intermin.fi/en/flag-and-arms/flag-flying-days
-        - https://intermin.fi/en/flag-and-arms/flag-days/2024
-        - https://en.wikipedia.org/wiki/Independence_Day_(Finland)
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Finland>
+    * [Bank holidays (Finnish)](https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/)
+    * [Bank holidays (English)](https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/)
+    * [Bank holidays (Swedish)](https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/)
+    * <https://en.wikipedia.org/wiki/Flag_flying_days_in_Finland#Customary_flag_days>
+    * <https://intermin.fi/en/flag-and-arms/flag-flying-days>
+    * <https://intermin.fi/en/flag-and-arms/flag-days/2024>
+    * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
     """
 
     country = "FI"

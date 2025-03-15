@@ -20,8 +20,8 @@ from holidays.observed_holiday_base import (
 
 class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
-    https://www.mint.gov.gh/statutory-public-holidays/
-    https://en.wikipedia.org/wiki/Public_holidays_in_Ghana
+    * <https://www.mint.gov.gh/statutory-public-holidays/>
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
     """
 
     country = "GH"

@@ -20,8 +20,8 @@ from holidays.observed_holiday_base import (
 
 class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://www.officeholidays.com/countries/malawi
-    https://www.timeanddate.com/holidays/malawi/
+    * <https://www.officeholidays.com/countries/malawi>
+    * <https://www.timeanddate.com/holidays/malawi/>
     """
 
     country = "MW"

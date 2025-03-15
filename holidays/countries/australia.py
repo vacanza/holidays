@@ -28,24 +28,25 @@ from holidays.observed_holiday_base import (
 class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
     References:
-      - https://www.qld.gov.au/recreation/travel/holidays
-      - `ACT Holidays Act 1958 <https://www.legislation.act.gov.au/a/1958-19>`_
-      - `ACT 2013-2023 <https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years>`_
-      - `NSW Banks and Bank Holidays Act 1912 <https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043>`_
-      - `NSW Public Holidays Act 2010 <https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115>`_
-      - `NT Public Holidays Act 1981 <https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145>`_
-      - `QLD Holidays Act 1983 <https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018>`_
-      - `QLD 2012-2024 <https://www.qld.gov.au/recreation/travel/holidays/public>`_
-      - `SA Holidays Act 1910 <https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx>`_
-      - `SA Public Holidays Act 2023 <https://www.legislation.sa.gov.au/LZ/C/A/Public%20Holidays%20Act%202023.aspx>`_
-      - `SA 2023-2024 <https://www.safework.sa.gov.au/resources/public-holidays>`_
-      - `SA 2007-2021 <https://safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf>`_
-      - `TAS Statutory Holidays Act 2000 <https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096>`_
-      - `VIC Public Holidays Act 1993 <https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027>`_
-      - `VIC Minister appointment <https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf>`_
-      - `VIC 2018-2024 <https://business.vic.gov.au/business-information/public-holidays>`_
-      - `WA Public and Bank Holidays Act 1972 <https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html>`_
-      - `WA 2019-2023 <https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates>`_
+
+      * <https://www.qld.gov.au/recreation/travel/holidays>
+      * [ACT Holidays Act 1958](https://www.legislation.act.gov.au/a/1958-19)
+      * [ACT 2013-2023](https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
+      * [NSW Banks and Bank Holidays Act 1912](https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
+      * [NSW Public Holidays Act 2010](https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
+      * [NT Public Holidays Act 1981](https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
+      * [QLD Holidays Act 1983](https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
+      * [QLD 2012-2024](https://www.qld.gov.au/recreation/travel/holidays/public)
+      * [SA Holidays Act 1910](https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx)
+      * [SA Public Holidays Act 2023](https://www.legislation.sa.gov.au/LZ/C/A/Public%20Holidays%20Act%202023.aspx)
+      * [SA 2023-2024](https://www.safework.sa.gov.au/resources/public-holidays)
+      * [SA 2007-2021](https://safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
+      * [TAS Statutory Holidays Act 2000](https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
+      * [VIC Public Holidays Act 1993](https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
+      * [VIC Minister appointment](https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
+      * [VIC 2018-2024](https://business.vic.gov.au/business-information/public-holidays)
+      * [WA Public and Bank Holidays Act 1972](https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
+      * [WA 2019-2023](https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
     """
 
     country = "AU"

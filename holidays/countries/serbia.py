@@ -22,7 +22,8 @@ class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     Serbia holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Serbia>
     """
 
     country = "RS"

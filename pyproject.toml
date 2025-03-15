@@ -2,7 +2,7 @@
 name = "holidays"
 description = "Open World Holidays Framework"
 license = { "text" = "MIT" }
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.9"
 dynamic = ["version"]
 
@@ -89,10 +89,6 @@ addopts = [
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
-
-[tool.rstcheck]
-ignore_directives = ["automodule", "autosummary"]
-ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
 version = { attr = "holidays.version.__version__" }

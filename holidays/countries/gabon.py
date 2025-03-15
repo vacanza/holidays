@@ -19,10 +19,11 @@ from holidays.holiday_base import HolidayBase
 class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Gabon
-      - https://www.timeanddate.com/holidays/gabon
-      - https://www.officeholidays.com/countries/gabon
-      - http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
+    * <https://www.timeanddate.com/holidays/gabon>
+    * <https://www.officeholidays.com/countries/gabon>
+    * <http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
     """
 
     country = "GA"

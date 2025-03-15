@@ -23,8 +23,9 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     Bahrain holidays.
 
     References:
-      - https://www.cbb.gov.bh/official-bank-holidays/
-      - https://www.officeholidays.com/countries/bahrain/
+
+    * <https://www.cbb.gov.bh/official-bank-holidays/>
+    * <https://www.officeholidays.com/countries/bahrain/>
     """
 
     country = "BH"

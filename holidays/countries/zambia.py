@@ -17,10 +17,10 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    https://www.officeholidays.com/countries/zambia/
-    https://www.timeanddate.com/holidays/zambia/
-    https://en.wikipedia.org/wiki/Public_holidays_in_Zambia
-    https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf
+    * <https://www.officeholidays.com/countries/zambia/>
+    * <https://www.timeanddate.com/holidays/zambia/>
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Zambia>
+    * <https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf>
     """
 
     country = "ZM"

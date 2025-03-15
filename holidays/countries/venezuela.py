@@ -18,7 +18,7 @@ from holidays.holiday_base import HolidayBase
 
 class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://dias-festivos.eu/dias-festivos/venezuela/#
+    <https://dias-festivos.eu/dias-festivos/venezuela/#>
     """
 
     country = "VE"
