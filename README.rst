@@ -444,8 +444,8 @@ All other default values are highlighted with bold:
    * - Fiji
      - FJ
      -
-     - 
-     - 
+     -
+     - WORKDAY
    * - Finland
      - FI
      -

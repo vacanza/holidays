@@ -10,7 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import SAT, SUN, NOV, OCT
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import SAT, SUN, OCT, NOV
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -30,6 +33,10 @@ class Fiji(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
 
     country = "FJ"
     weekend = {SAT, SUN}
+    supported_categories = (PUBLIC, WORKDAY)
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    start_year = 1970
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -42,6 +49,34 @@ class Fiji(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
 
     def _populate_public_holidays(self):
         dts_observed = set()
+
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day("New Year's Day"))
+
+        # Good Friday.
+        self._add_good_friday("Good Friday")
+
+        # Easter Saturday.
+        self._add_holy_saturday("Easter Saturday")
+
+        # Easter Sunday.
+        self._add_easter_sunday("Easter Sunday")
+
+        # Easter Monday.
+        self._add_easter_monday("Easter Monday")
+
+        # National Youth Day
+        self._add_holiday_may_4("National Youth Day")
+
+        if self._year >= 2023:
+            # Girmit Day (starting 2023).
+            self._add_observed(self._add_holiday_may_14("Girmit Day"))
+
+        # Fiji Day.
+        self._add_holiday_oct_10("Fiji Day")
+
+        # Prophet Mohammed's Birthday
+        dts_observed.update(self._add_mawlid_day("Prophet Mohammed's Birthday"))
 
         # https://www.timeanddate.com/holidays/fiji/diwali
         diwali_dates = {
@@ -58,33 +93,6 @@ class Fiji(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
             2025: (OCT, 21),
         }
 
-        # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
-
-        # Good Friday.
-        self._add_good_friday("Good Friday")
-
-        # Easter Saturday.
-        self._add_holy_saturday("Easter Saturday")
-
-        # Easter Monday.
-        self._add_easter_monday("Easter Monday")
-
-        # Girmit Day (starting 2023).
-        if self._year >= 2023:
-            self._add_observed(self._add_holiday_may_14("Girmit day"))
-
-        # Ratu Sir Lala Sukuna Day
-        # https://www.fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/
-        if self._year <= 2010 or self._year >= 2023:
-            self._add_holiday_last_mon_of_may("Ratu Sir Lala Sukuna Day")
-
-        # Prophet Mohammed's Birthday
-        dts_observed.update(self._add_mawlid_day("Prophet Mohammed's Birthday"))
-
-        # Fiji Day.
-        self._add_holiday_oct_10("Fiji Day")
-
         # Diwali
         if self._year in diwali_dates:
             self._add_holiday("Diwali", diwali_dates[self._year])
@@ -97,6 +105,19 @@ class Fiji(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
 
         if self.observed:
             self._populate_observed(dts_observed)
+
+    def _populate_workday_holidays(self):
+        # Ratu Sir Lala Sukuna Day
+        # https://www.fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/
+        if self._year <= 2010 or self._year >= 2023:
+            self._add_holiday_last_mon_of_may("Ratu Sir Lala Sukuna Day")
+
+        if self._year <= 2012:
+            # Queen's Birthday.
+            self._add_holiday_jun_12("Queen's Birthday")
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day("Eid al-Fitr")
 
 
 class FJ(Fiji):
