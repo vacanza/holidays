@@ -205,7 +205,7 @@ All other default values are highlighted with bold:
      - AS
      - Can also be loaded as country US, subdivision AS
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
@@ -490,7 +490,7 @@ All other default values are highlighted with bold:
      - GU
      - Can also be loaded as country US, subdivision GU
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Guatemala
      - GT
      -
@@ -528,9 +528,9 @@ All other default values are highlighted with bold:
      - HALF_DAY
    * - India
      - IN
-     - States: AN, AP, AR, AS, BR, CG, CH, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OD, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
-     -
-     -
+     - States: AN (Andaman and Nicobar Islands), AP (Andhra Pradesh), AR (Arunachal Pradesh, Arunāchal Pradesh), AS (Assam), BR (Bihar, Bihār), CG (Chhattisgarh, Chhattīsgarh), CH (Chandigarh, Chandīgarh), DH (Dadra and Nagar Haveli and Daman and Diu, Dādra and Nagar Haveli and Damān and Diu), DL (Delhi), GA (Goa), GJ (Gujarat, Gujarāt), HP (Himachal Pradesh, Himāchal Pradesh), HR (Haryana, Haryāna), JH (Jharkhand, Jhārkhand), JK (Jammu and Kashmir, Jammu and Kashmīr), KA (Karnataka, Karnātaka), KL (Kerala), LA (Ladakh, Ladākh), LD (Lakshadweep), MH (Maharashtra, Mahārāshtra), ML (Meghalaya, Meghālaya), MN (Manipur), MP (Madhya Pradesh), MZ (Mizoram), NL (Nagaland, Nāgāland), OD (Odisha), PB (Punjab), PY (Puducherry), RJ (Rajasthan, Rājasthān), SK (Sikkim), TN (Tamil Nadu, Tamil Nādu), TR (Tripura), TS (Telangana, Telangāna), UK (Uttarakhand, Uttarākhand), UP (Uttar Pradesh), WB (West Bengal)
+     - **en_IN**, en_US, hi
+     - OPTIONAL
    * - Indonesia
      - ID
      -
@@ -631,6 +631,11 @@ All other default values are highlighted with bold:
      -
      - de, en_US, fr, **lb**, uk
      -
+   * - Macau
+     - MO
+     - Historical municipalities: I (Concelho das Ilhas, 海島市, 海岛市), M (Concelho de Macau, 澳門市, 澳门市)
+     - en_MO, en_US, pt_MO, th, zh_CN, **zh_MO**
+     - GOVERNMENT, MANDATORY
    * - Madagascar
      - MG
      -
@@ -725,7 +730,7 @@ All other default values are highlighted with bold:
      - MP
      - Can also be loaded as country US, subdivision MP
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - North Macedonia
      - MK
      -
@@ -774,7 +779,7 @@ All other default values are highlighted with bold:
    * - Poland
      - PL
      -
-     - en_US, **pl**, uk
+     - de, en_US, **pl**, uk
      -
    * - Portugal
      - PT
@@ -785,7 +790,7 @@ All other default values are highlighted with bold:
      - PR
      - Can also be loaded as country US, subdivision PR
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Romania
      - RO
      -
@@ -880,7 +885,7 @@ All other default values are highlighted with bold:
      - TW
      -
      - en_US, th, zh_CN, **zh_TW**
-     -
+     - GOVERNMENT, OPTIONAL, SCHOOL, WORKDAY
    * - Tanzania
      - TZ
      -
@@ -935,17 +940,17 @@ All other default values are highlighted with bold:
      - UM
      - Can also be loaded as country US, subdivision UM
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
      -
-     - UNOFFICIAL
+     -
    * - Uruguay
      - UY
      -
@@ -980,7 +985,7 @@ All other default values are highlighted with bold:
      - VI
      - Can also be loaded as country US, subdivision VI
      -
-     - UNOFFICIAL
+     - GOVERNMENT, UNOFFICIAL
    * - Zambia
      - ZM
      -

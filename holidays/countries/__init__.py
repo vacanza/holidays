@@ -101,6 +101,7 @@ from .lesotho import Lesotho, LS, LSO
 from .liechtenstein import Liechtenstein, LI, LIE
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
+from .macau import Macau, MO, MAC
 from .madagascar import Madagascar, MG, MDG
 from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
