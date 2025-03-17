@@ -107,7 +107,7 @@ class TestFiji(CommonCountryTests, TestCase):
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertEqual(set(range(1970, 2050)), years_found)
 
-    def test_diwali_and_holi(self):
+    def test_diwali(self):
         dt = (
             "2015-11-11",
             "2016-10-27",
