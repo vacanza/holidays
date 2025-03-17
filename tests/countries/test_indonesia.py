@@ -21,6 +21,9 @@ class TestIndonesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Indonesia, years=range(1946, 2050), years_non_observed=(2004, 2020))
+        cls.no_estimated_holidays = Indonesia(
+            years=range(1946, 2050), islamic_show_estimated=False
+        )
 
     def test_country_aliases(self):
         self.assertAliases(Indonesia, ID, IDN)
@@ -234,6 +237,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-03-14",
             "2022-03-03",
         )
+        self.assertHolidayName(name, range(1983, 2050))
         self.assertNoHolidayName(name, range(1946, 1983))
 
     def test_good_friday(self):
@@ -301,8 +305,9 @@ class TestIndonesia(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "Hari Buruh Internasional"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1953, 1968)))
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2014, 2050)))
+        self.assertHolidayName(
+            name, (f"{year}-05-01" for year in (*range(1953, 1968), *range(2014, 2050)))
+        )
         self.assertNoHoliday(
             f"{year}-05-01" for year in set(range(1968, 2014)).difference({2004, 2008})
         )
@@ -363,8 +368,9 @@ class TestIndonesia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, years_no_exist)
 
     def test_independence_day(self):
-        name = "Hari Kemerdekaan Republik Indonesia"
-        self.assertHolidayName(name, (f"{year}-08-17" for year in range(1946, 2050)))
+        self.assertHolidayName(
+            "Hari Kemerdekaan Republik Indonesia", (f"{year}-08-17" for year in range(1946, 2050))
+        )
 
     def test_armed_forces_day(self):
         name = "Hari Angkatan Perang"
@@ -396,9 +402,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-05-02",
             "2023-04-22",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1953, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1946, 1953))
 
     def test_eid_al_fitr_second_day(self):
         name = "Hari kedua dari Hari Raya Idul Fitri"
@@ -411,9 +416,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-05-03",
             "2023-04-23",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1953, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1946, 1953))
 
     def test_eid_al_adha(self):
         name = "Hari Raya Idul Adha"
@@ -426,9 +430,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-07-10",
             "2023-06-29",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1953, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1946, 1953))
 
     def test_islamic_new_year(self):
         name = "Tahun Baru Islam"
@@ -443,11 +446,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-07-30",
             "2023-07-19",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
-        self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1964, 1968)).intersection(years_found))
+        self.assertHolidayName(
+            name, self.no_estimated_holidays, range(1953, 1964), range(1968, 2050)
+        )
+        self.assertNoHolidayName(
+            name, self.no_estimated_holidays, range(1946, 1953), range(1964, 1968)
+        )
 
     def test_prophets_birthday(self):
         name = "Maulid Nabi Muhammad"
@@ -459,11 +463,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-10-20",
             "2022-10-08",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
-        self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1964, 1968)).intersection(years_found))
+        self.assertHolidayName(
+            name, self.no_estimated_holidays, range(1953, 1964), range(1968, 2050)
+        )
+        self.assertNoHolidayName(
+            name, self.no_estimated_holidays, range(1946, 1953), range(1964, 1968)
+        )
 
     def test_isra_and_miraj(self):
         name = "Isra Mikraj Nabi Muhammad"
@@ -476,11 +481,12 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2022-02-28",
             "2023-02-18",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1963)).issubset(years_found))
-        self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
+        self.assertHolidayName(
+            name, self.no_estimated_holidays, range(1953, 1963), range(1968, 2050)
+        )
+        self.assertNoHolidayName(
+            name, self.no_estimated_holidays, range(1946, 1953), range(1963, 1968)
+        )
 
     def test_nuzul_al_quran(self):
         name = "Nuzululqur'an"
@@ -496,10 +502,10 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "1961-03-04",
             "1962-02-21",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1953, 1964)).issubset(years_found))
-        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
-        self.assertFalse(set(range(1964, 2050)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1953, 1964))
+        self.assertNoHolidayName(
+            name, self.no_estimated_holidays, range(1946, 1953), range(1964, 2050)
+        )
 
     def test_2021(self):
         self.assertHolidays(
