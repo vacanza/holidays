@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.countries.fiji import Fiji, FJ, FJI
 from tests.common import CommonCountryTests
 
@@ -20,30 +20,33 @@ from tests.common import CommonCountryTests
 class TestFiji(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1970, 2050)
+        years = range(2016, 2050)
         super().setUpClass(Fiji, years=years)
         cls.workday_holidays = Fiji(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Fiji, FJ, FJI)
 
-    def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1970, 2050)))
+    def test_no_holidays(self):
+        self.assertNoHolidays(Fiji(years=2015, categories=(PUBLIC, WORKDAY)))
 
-        dt = (
-            "2017-01-03",
+    def test_new_years_day(self):
+        name = "New Year's Day"
+
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2016, 2050)))
+        dt_obs = (
+            "2017-01-02",
             "2022-01-03",
-            "2023-01-03",
+            "2023-01-02",
             "2028-01-03",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
 
     def test_good_friday(self):
         name = "Good Friday"
-        dts = (
-            "1999-04-02",
-            "2000-04-21",
-            "2010-04-02",
+
+        dt = (
             "2018-03-30",
             "2019-04-19",
             "2020-04-10",
@@ -51,179 +54,265 @@ class TestFiji(CommonCountryTests, TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(1970, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2016, 2050))
 
     def test_easter_saturday(self):
         name = "Easter Saturday"
-        dts = (
-            "1999-04-03",
-            "2000-04-22",
-            "2010-04-03",
+
+        dt = (
             "2018-03-31",
             "2019-04-20",
             "2020-04-11",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2016, 2050))
 
     def test_easter_sunday(self):
         name = "Easter Sunday"
-        dts = (
-            "1999-04-04",
-            "2000-04-23",
-            "2010-04-04",
+
+        # Workdays.
+        dt = (
             "2018-04-01",
             "2019-04-21",
             "2020-04-12",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(1979, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dt)
+        self.assertHolidayName(name, self.workday_holidays, range(2016, 2050))
+        self.assertNoHolidayName(name, dt)
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        dts = (
-            "1999-04-05",
-            "2000-04-24",
-            "2010-04-05",
+
+        dt = (
             "2018-04-02",
             "2019-04-22",
             "2020-04-13",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, range(1979, 2050))
-
-    def test_national_youth_day(self):
-        self.assertHolidayName(
-            "National Youth Day", (f"{year}-05-04" for year in range(1970, 2050))
-        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2016, 2050))
 
     def test_girmit_day(self):
-        self.assertHolidayName("Girmit Day", (f"{year}-05-14" for year in range(2023, 2050)))
+        name = "Girmit Day"
+
+        dt = (
+            "2023-05-15",
+            "2024-05-13",
+            "2025-05-12",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(2016, 2023))
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_national_sports_day(self):
+        name = "National Sports Day"
+
+        # Public Holidays
+        self.assertHolidayName(name, (f"{year}-06-26" for year in range(2016, 2018)), "2018-06-29")
+        self.assertNoHolidayName(name, range(2019, 2050))
+
+    def test_constitution_day(self):
+        name = "Constitution Day"
+
+        # Public Holidays
+        self.assertHolidayName(name, (f"{year}-09-07" for year in range(2016, 2023)))
+        self.assertNoHolidayName(name, range(2023, 2050))
+
+        dt_obs = ("2019-09-09",)
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
+
+        # Workdays.
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-09-07" for year in range(2023, 2050))
+        )
+        self.assertNoHolidayName(name, self.workday_holidays, range(2016, 2023))
+
+    def test_ratu_sir_lala_sukuna_day(self):
+        name = "Ratu Sir Lala Sukuna Day"
+
+        # Public Holidays.
+        dt = (
+            "2023-05-29",
+            "2024-05-31",
+            "2025-05-30",
+            "2026-05-29",
+            "2027-05-28",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(2016, 2023))
 
     def test_fiji_day(self):
-        name = "Fiji Day"
-        self.assertHolidayName(name, (f"{year}-10-10" for year in range(1970, 2050)))
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1970, 2050)), years_found)
+        self.assertHolidayName("Fiji Day", (f"{year}-10-10" for year in range(2016, 2050)))
 
     def test_diwali(self):
-        dt = (
-            "2015-11-11",
+        name = "Diwali"
+
+        self.assertHolidayName(
+            name,
             "2016-10-27",
             "2017-10-16",
             "2018-11-07",
             "2019-10-28",
-            "2020-11-14",  # also should be a day off on Nov 16
+            "2020-11-14",
             "2021-11-04",
             "2022-10-25",
             "2023-11-13",
             "2024-11-01",
             "2025-10-21",
         )
-        self.assertHolidayName("Diwali", dt)
+
+        dt_obs = ("2020-11-16",)
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
 
     def test_christmas_day(self):
-        for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-12-25")
+        name = "Christmas Day"
 
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2016, 2050)))
+
+        dt_obs = (
             "2021-12-27",
             "2027-12-27",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
 
     def test_boxing_day(self):
-        for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-12-26")
+        name = "Boxing Day"
 
-        dt = (
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2016, 2050)))
+
+        dt_obs = (
             "2020-12-28",
             "2021-12-28",
             "2026-12-28",
             "2027-12-28",
         )
-        self.assertHoliday(dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
 
-    def test_ratu_sir_lala_sukuna_day(self):
-        dt = (
-            "2000-05-29",
-            "2001-05-28",
-            "2002-05-27",
-            "2023-05-29",
-            "2024-05-27",
-            "2025-05-26",
-            "2026-05-25",
-            "2027-05-31",
+    def test_2019(self):
+        # https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2019),
+            ("2019-01-01", "New Year's Day"),
+            ("2019-04-19", "Good Friday"),
+            ("2019-04-20", "Easter Saturday"),
+            ("2019-04-22", "Easter Monday"),
+            ("2019-09-07", "Constitution Day"),
+            ("2019-09-09", "Constitution Day (observed)"),
+            ("2019-10-10", "Fiji Day"),
+            ("2019-10-28", "Diwali"),
+            ("2019-11-11", "Prophet Mohammed's Birthday"),
+            ("2019-12-25", "Christmas Day"),
+            ("2019-12-26", "Boxing Day"),
         )
 
-        name = "Ratu Sir Lala Sukuna Day"
-        self.assertNoHoliday(dt)
-        self.assertNoHolidayName(name, dt)
-        self.assertHolidayName(name, self.workday_holidays, dt)
-
-    def test_queen_birthday(self):
-        name = "Queen's Birthday"
-        self.assertNoHoliday(f"{year}-06-12" for year in range(1970, 2012))
-        self.assertNoHolidayName(name, range(1970, 2012))
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-06-12" for year in range(1970, 2012))
-        )
-        self.assertNoHolidayName(name, self.workday_holidays, range(2013, 2050))
-
-    def test_2023(self):
-        self.assertHolidayDates(
-            Fiji(years=2023),
-            "2023-01-01",
-            "2023-01-03",
-            "2023-04-07",
-            "2023-04-08",
-            "2023-04-09",
-            "2023-04-10",
-            "2023-05-04",
-            "2023-05-14",
-            "2023-05-16",
-            "2023-09-27",
-            "2023-10-10",
-            "2023-11-13",
-            "2023-12-25",
-            "2023-12-26",
-        )
-
-    def test_2024(self):
-        self.assertHolidayDates(
-            Fiji(years=2024),
-            "2024-01-01",
-            "2024-03-29",
-            "2024-03-30",
-            "2024-03-31",
-            "2024-04-01",
-            "2024-05-04",
-            "2024-05-13",
-            "2024-05-14",
-            "2024-09-15",
-            "2024-09-17",
-            "2024-10-10",
-            "2024-11-01",
-            "2024-12-25",
-            "2024-12-26",
-        )
-
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
+    def test_2020(self):
+        # https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2020),
             ("2020-01-01", "New Year's Day"),
             ("2020-04-10", "Good Friday"),
             ("2020-04-11", "Easter Saturday"),
-            ("2020-04-12", "Easter Sunday"),
             ("2020-04-13", "Easter Monday"),
-            ("2020-05-04", "National Youth Day"),
-            ("2020-05-24", "Eid al-Fitr (estimated)"),
+            ("2020-09-07", "Constitution Day"),
             ("2020-10-10", "Fiji Day"),
-            ("2020-10-29", "Prophet Mohammed's Birthday (estimated)"),
+            ("2020-11-02", "Prophet Mohammed's Birthday"),
             ("2020-11-14", "Diwali"),
+            ("2020-11-16", "Diwali (observed)"),
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Boxing Day"),
             ("2020-12-28", "Boxing Day (observed)"),
+        )
+
+    def test_2021(self):
+        # https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2021),
+            ("2021-01-01", "New Year's Day"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-04-03", "Easter Saturday"),
+            ("2021-04-05", "Easter Monday"),
+            ("2021-09-07", "Constitution Day"),
+            ("2021-10-10", "Fiji Day"),
+            ("2021-10-18", "Prophet Mohammed's Birthday"),
+            ("2021-11-04", "Diwali"),
+            ("2021-12-25", "Christmas Day"),
+            ("2021-12-26", "Boxing Day"),
+            ("2021-12-27", "Christmas Day (observed)"),
+            ("2021-12-28", "Boxing Day (observed)"),
+        )
+
+    def test_2022(self):
+        # https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2022),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-16", "Easter Saturday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-09-07", "Constitution Day"),
+            ("2022-10-07", "Prophet Mohammed's Birthday"),
+            ("2022-10-10", "Fiji Day"),
+            ("2022-10-25", "Diwali"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (observed)"),
+        )
+
+    def test_2023(self):
+        # https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2023),
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-08", "Easter Saturday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-05-15", "Girmit Day"),
+            ("2023-05-29", "Ratu Sir Lala Sukuna Day"),
+            ("2023-10-02", "Prophet Mohammed's Birthday"),
+            ("2023-10-10", "Fiji Day"),
+            ("2023-11-13", "Diwali"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
+        )
+
+    def test_2024(self):
+        # https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2024),
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-03-30", "Easter Saturday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-13", "Girmit Day"),
+            ("2024-05-31", "Ratu Sir Lala Sukuna Day"),
+            ("2024-09-16", "Prophet Mohammed's Birthday"),
+            ("2024-10-10", "Fiji Day"),
+            ("2024-11-01", "Diwali"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_2025(self):
+        # https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidays(
+            Fiji(years=2025),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-19", "Easter Saturday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-12", "Girmit Day"),
+            ("2025-05-30", "Ratu Sir Lala Sukuna Day"),
+            ("2025-09-08", "Prophet Mohammed's Birthday"),
+            ("2025-10-10", "Fiji Day"),
+            ("2025-10-21", "Diwali"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
