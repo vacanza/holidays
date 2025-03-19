@@ -110,5 +110,4 @@ msgstr "Православний Новий рік"
 
 #. Dayton Agreement Day.
 msgid "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"
-msgstr ""
-"День укладання Загальної рамкової угоди про мир у Боснії та Герцеговині"
+msgstr "День укладання Загальної рамкової угоди про мир у Боснії та Герцеговині"

@@ -57,8 +57,8 @@ msgstr "Saint George's Day (Day of the Bulgarian Army)"
 
 #. Bulgarian Education and Culture and Slavonic Literature Day.
 msgid ""
-"Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
-"култура и на славянската книжовност"
+"Ден на светите братя Кирил и Методий, на българската азбука, просвета и култура и на славянската "
+"книжовност"
 msgstr "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"
 
 #. Unification Day.

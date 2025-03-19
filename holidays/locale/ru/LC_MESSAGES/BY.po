@@ -50,12 +50,9 @@ msgstr "День Победы"
 #. Day of the National Coat of Arms of the Republic of Belarus, the National
 #. Flag of the Republic of
 #. Belarus and the National Anthem of the Republic of Belarus.
-msgid ""
-"Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі "
-"Беларусь"
+msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
 msgstr ""
-"День Государственного флага, Государственного герба и Государственного гимна"
-" Республики Беларусь"
+"День Государственного флага, Государственного герба и Государственного гимна Республики Беларусь"
 
 #. Independence Day of the Republic of Belarus (Day of the Republic).
 msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"

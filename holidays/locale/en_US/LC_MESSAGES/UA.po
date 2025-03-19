@@ -58,9 +58,7 @@ msgid "День міжнародної солідарності трудящих
 msgstr "International Workers' Solidarity Day"
 
 #. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
-msgid ""
-"День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 "
-"років"
+msgid "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
 msgstr "Day of Remembrance and Victory over Nazism in World War II 1939-1945"
 
 #. Day of Victory over Nazism in World War II (Victory Day).
