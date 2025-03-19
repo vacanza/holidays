@@ -41,9 +41,7 @@ msgstr ""
 
 #. Bicentenary of the inaugural session of the National Constituent Assembly
 #. of the year 1813.
-msgid ""
-"Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
-"del año 1813"
+msgid "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
 msgstr ""
 
 #. Bicentenary of the Battle of Salta.
@@ -88,9 +86,7 @@ msgstr ""
 
 #. Day of Argentine Sovereignty over the Malvinas, Sandwich and South Atlantic
 #. Islands.
-msgid ""
-"Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
-"Atlántico Sur"
+msgid "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"
 msgstr ""
 
 #. Pass to the Immortality of General Don Manuel Belgrano.

@@ -38,8 +38,7 @@ msgstr ""
 #. Day the Latvian hockey team won the bronze medal at the 2023 World Ice
 #. Hockey Championship.
 msgid ""
-"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules"
-" hokeja čempionātā"
+"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
 msgstr ""
 
 #. %s (observed).
