@@ -57,11 +57,8 @@ msgstr "День міжнародної солідарності трудящи�
 
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
-msgid ""
-"Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
-msgstr ""
-"День Перемоги та вшанування памʼяті героїв, полеглих за незалежність "
-"Батьківщини"
+msgid "Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
+msgstr "День Перемоги та вшанування памʼяті героїв, полеглих за незалежність Батьківщини"
 
 #. Europe Day.
 msgid "Ziua Europei"

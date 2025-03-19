@@ -62,8 +62,7 @@ msgstr ""
 
 #. Anniversary of the Coronation Day of the reigning Sovereign of Tonga.
 msgid ""
-"Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'a ia"
-" 'oku lolotonga Pule"
+"Fakamanatu 'o e 'Aho Hilifaki Kalauni 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'a ia 'oku lolotonga Pule"
 msgstr ""
 
 #. Constitution Day.

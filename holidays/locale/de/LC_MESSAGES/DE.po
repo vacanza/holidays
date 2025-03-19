@@ -85,15 +85,15 @@ msgstr ""
 #. 75th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
 
 #. 80th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
 
 #. Epiphany.

@@ -104,6 +104,4 @@ msgstr "Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei"
 #. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah
 #. of Brunei.
 msgid "Istiadat Perkahwinan Diraja Brunei 2004"
-msgstr ""
-"Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of"
-" Brunei"
+msgstr "Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei"
