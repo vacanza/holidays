@@ -88,8 +88,7 @@ msgstr "Araw ng Kabayanihan ni Bonifacio"
 
 #. Immaculate Conception.
 msgid "Feast of the Immaculate Conception of Mary"
-msgstr ""
-"Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria"
+msgstr "Dakilang Kapistahan ng Kalinis-linisang Paglilihi sa Mahal na Birheng Maria"
 
 #. Christmas Eve.
 msgid "Christmas Eve"

@@ -192,8 +192,8 @@ msgstr "Second day of Queen Elizabeth II and her husband's visit to Hong Kong"
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭勝利70周年紀念日"
 msgstr ""
-"70th Anniversary of the Victory of the Chinese People's War of Resistance "
-"against Japanese Aggression and the World Anti-Fascist War"
+"70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese "
+"Aggression and the World Anti-Fascist War"
 
 #. Sino-Japanese War Victory Day.
 msgid "抗日戰爭勝利紀念日"

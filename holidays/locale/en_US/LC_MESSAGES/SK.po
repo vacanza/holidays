@@ -29,8 +29,7 @@ msgstr ""
 
 #. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
 msgid "100. výročie prijatia Deklarácie slovenského národa"
-msgstr ""
-"100th anniversary of the adoption of the Declaration of the Slovak Nation"
+msgstr "100th anniversary of the adoption of the Declaration of the Slovak Nation"
 
 #. Day of the Establishment of the Slovak Republic.
 msgid "Deň vzniku Slovenskej republiky"

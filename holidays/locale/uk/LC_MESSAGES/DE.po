@@ -86,20 +86,18 @@ msgstr "Міжнародний жіночий день"
 #. 75th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
-"75-та річниця визволення від націонал-соціалізму та завершення Другої "
-"світової війни в Європі"
+"75-та річниця визволення від націонал-соціалізму та завершення Другої світової війни в Європі"
 
 #. 80th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
-"80-та річниця визволення від націонал-соціалізму та завершення Другої "
-"світової війни в Європі"
+"80-та річниця визволення від націонал-соціалізму та завершення Другої світової війни в Європі"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"
