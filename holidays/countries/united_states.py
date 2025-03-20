@@ -13,7 +13,7 @@
 from typing import Union
 
 from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
-from holidays.constants import PUBLIC, UNOFFICIAL
+from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -34,6 +34,9 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States>
+
+    Federal holidays:
+    * <https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/>
 
     For Northern Mariana Islands (subdivision MP):
 
@@ -92,7 +95,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    supported_categories = (PUBLIC, UNOFFICIAL)
+    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"
     subdivisions: Union[tuple[()], tuple[str, ...]] = (
         "AK",  # Alaska.
@@ -167,20 +170,35 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _populate_common(self, include_federal: bool = False):
+        """
+        Populates common US holidays.
+
+        :param include_federal:
+            Whether to include federal-specific holidays.
+        """
         # New Year's Day
         if self._year >= 1871:
             name = "New Year's Day"
             self._add_observed(self._add_new_years_day(name))
             self._add_observed(self._next_year_new_years_day, name=name)
 
+        if include_federal:
+            # Birthday of Martin Luther King, Jr.
+            if self._year >= 1986:
+                self._add_holiday_3rd_mon_of_jan("Birthday of Martin Luther King, Jr.")
+
+            # Washington's Birthday
+            if self._year >= 1879:
+                name = "Washington's Birthday"
+                if self._year >= 1971:
+                    self._add_holiday_3rd_mon_of_feb(name)
+                else:
+                    self._add_holiday_feb_22(name)
+
         # Memorial Day
-        if self._year >= 1888:
-            name = "Memorial Day"
-            if self._year >= 1971:
-                self._add_holiday_last_mon_of_may(name)
-            else:
-                self._add_holiday_may_30(name)
+        if self._year >= 1971:
+            self._add_holiday_last_mon_of_may("Memorial Day")
 
         # Juneteenth Day
         if self._year >= 2021:
@@ -194,6 +212,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1894:
             self._add_holiday_1st_mon_of_sep("Labor Day")
 
+        if include_federal:
+            # Columbus Day
+            if self._year >= 1971:
+                self._add_holiday_2nd_mon_of_oct("Columbus Day")
+
         # Veterans Day
         if self._year >= 1938:
             name = "Veterans Day" if self._year >= 1954 else "Armistice Day"
@@ -202,13 +225,20 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
-        # Thanksgiving
+        # Thanksgiving Day
         if self._year >= 1871:
-            self._add_holiday_4th_thu_of_nov("Thanksgiving")
+            self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
         # Christmas Day
         if self._year >= 1871:
             self._add_observed(self._add_christmas_day("Christmas Day"))
+
+    def _populate_public_holidays(self):
+        self._populate_common()
+
+        # Memorial Day
+        if 1888 <= self._year <= 1970:
+            self._add_holiday_may_30("Memorial Day")
 
     def _add_christmas_eve_holiday(self):
         # Christmas Eve
@@ -331,11 +361,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_3rd_mon_of_jan("Martin Luther King, Jr & Robert E. Lee's Birthday")
 
         # Washington's Birthday
-        name = "George Washington & Thomas Jefferson's Birthday"
-        if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb(name)
-        else:
-            self._add_holiday_feb_22(name)
+        if self._year >= 1879:
+            name = "George Washington & Thomas Jefferson's Birthday"
+            if self._year >= 1971:
+                self._add_holiday_3rd_mon_of_feb(name)
+            else:
+                self._add_holiday_feb_22(name)
 
         # Confederate Memorial Day
         if self._year >= 1866:
@@ -363,11 +394,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Washington's Birthday
-        name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb(name)
-        else:
-            self._add_holiday_feb_22(name)
+        if self._year >= 1879:
+            name = "George Washington's Birthday and Daisy Gatson Bates Day"
+            if self._year >= 1971:
+                self._add_holiday_3rd_mon_of_feb(name)
+            else:
+                self._add_holiday_feb_22(name)
 
     def _populate_subdiv_as_public_holidays(self):
         # American Samoa Flag Day
@@ -500,10 +532,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             )
 
         # Washington's Birthday
-        self._add_holiday(
-            "Washington's Birthday",
-            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
-        )
+        if self._year >= 1879:
+            self._add_holiday(
+                "Washington's Birthday",
+                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+            )
 
     def _populate_subdiv_gu_public_holidays(self):
         # Guam Discovery Day
@@ -594,10 +627,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_1_day_past_4th_thu_of_nov("Lincoln's Birthday")
 
         # Washington's Birthday
-        self._add_holiday(
-            "Washington's Birthday",
-            self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
-        )
+        if self._year >= 1879:
+            self._add_holiday(
+                "Washington's Birthday",
+                self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
+            )
 
     def _populate_subdiv_ks_public_holidays(self):
         # Christmas Eve
@@ -887,7 +921,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         self._add_epiphany_day("Epiphany")
 
         # Washington's Birthday
-        self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+        if self._year >= 1971:
+            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
 
         # Emancipation Day
         self._add_observed(self._add_holiday_mar_22("Emancipation Day"), rule=SUN_TO_NEXT_MON)
@@ -1030,11 +1065,12 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         self._add_epiphany_day("Three Kings Day")
 
         # Washington's Birthday
-        name = "Presidents' Day"
-        if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb(name)
-        else:
-            self._add_holiday_feb_22(name)
+        if self._year >= 1879:
+            name = "Presidents' Day"
+            if self._year >= 1971:
+                self._add_holiday_3rd_mon_of_feb(name)
+            else:
+                self._add_holiday_feb_22(name)
 
         # Transfer Day
         self._add_holiday_mar_31("Transfer Day")
@@ -1116,6 +1152,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Washington's Birthday
         if self._year >= 1971:
             self._add_holiday_3rd_mon_of_feb("President's Day")
+
+    def _populate_government_holidays(self):
+        # Federal holidays in the United States.
+        self._populate_common(include_federal=True)
 
     def _populate_unofficial_holidays(self):
         # Very common celebrated cultural days, but no official observance.

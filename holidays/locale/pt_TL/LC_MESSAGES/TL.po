@@ -114,8 +114,7 @@ msgstr ""
 
 #. Day of the Armed Forces for the National Liberation of Timor-Leste
 #. (FALINTIL).
-msgid ""
-"Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+msgid "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
 msgstr ""
 
 #. World Human Rights Day.

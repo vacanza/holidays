@@ -28,7 +28,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
 
     country = "PL"
     default_language = "pl"
-    supported_languages = ("en_US", "pl", "uk")
+    supported_languages = ("de", "en_US", "pl", "uk")
     start_year = 1925
 
     def __init__(self, *args, **kwargs):

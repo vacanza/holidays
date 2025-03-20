@@ -93,9 +93,7 @@ msgstr "พระราชพิธีฉลองสิริราชสมบ
 
 #. Wedding of Charles and Diana.
 msgid "Wedding of Charles and Diana"
-msgstr ""
-"พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ "
-"เจ้าชายแห่งเวลส์"
+msgstr "พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ เจ้าชายแห่งเวลส์"
 
 #. Millennium Celebrations.
 msgid "Millennium Celebrations"

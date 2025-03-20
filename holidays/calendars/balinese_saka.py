@@ -106,7 +106,7 @@ class _BalineseSakaLunar:
     def nyepi_date(self, year: int) -> Optional[date]:
         """
         Data References:
-        - `1983-2025 <https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1983>`_
-        - `2020-2050 <https://www.balitrips.com/balinese-temples-ceremony>`_
+            * [1983-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1983)
+            * [2020-2050](https://www.balitrips.com/balinese-temples-ceremony)
         """
         return self._get_holiday(NYEPI, year)

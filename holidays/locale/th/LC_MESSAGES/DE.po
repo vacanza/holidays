@@ -86,20 +86,16 @@ msgstr "วันสตรีสากล"
 #. 75th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
-msgstr ""
-"วันครบรอบ 75 "
-"ปีของการปลดปล่อยจากระบอบชาติสังคมนิยมและการสิ้นสุดสงครามโลกครั้งที่สองในยุโรป"
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
+msgstr "วันครบรอบ 75 ปีของการปลดปล่อยจากระบอบชาติสังคมนิยมและการสิ้นสุดสงครามโลกครั้งที่สองในยุโรป"
 
 #. 80th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
-msgstr ""
-"วันครบรอบ 80 "
-"ปีของการปลดปล่อยจากระบอบชาติสังคมนิยมและการสิ้นสุดสงครามโลกครั้งที่สองในยุโรป"
+"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
+msgstr "วันครบรอบ 80 ปีของการปลดปล่อยจากระบอบชาติสังคมนิยมและการสิ้นสุดสงครามโลกครั้งที่สองในยุโรป"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"

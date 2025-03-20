@@ -1,3 +1,21 @@
+# Version 0.69
+
+Released March 17, 2025
+
+- Introduce HolidayBase methods for proper serialization (#2333 by @KJhellico)
+- Add Macau holidays (#2323 by @PPsyrius)
+- Update IN holidays and localization (#2259 by @ankushhKapoor, @KJhellico)
+- Update Poland holidays: add `de` localization (#2346 by @pyniuX)
+- Fix l10n handling (#2340 by @KJhellico)
+- Update Hong Kong holidays: standardizes `en_US` l10n with China's and Macau's implementation (#2326 by @PPsyrius)
+- Update Indonesia holidays: 2031-2050 Day of Silence (Nyepi) data, migrate to `BalineseSakaCalendarHolidays` (#2328 by @PPsyrius)
+- Update Philippines holidays: 2025 Eid'l Fitr and Eid'l Adha Tentative Date (#2332 by @PPsyrius)
+- Update Taiwan holidays: add categories support (#2349 by @PPsyrius, @arkid15r)
+- Update Timor Leste holidays: fix 2025 Islamic holidays (#2327 by @PPsyrius)
+- Update US holidays: add federal holidays as GOVERNMENT category (#2297 by @KJhellico)
+- Update US holidays: аdd additional MI state holidays (#2325 by @mcvic1rj, @KJhellico)
+- Update `IslamicHolidays`: add an option whether to add estimation label to holiday name (#2298 by @KJhellico)
+
 # Version 0.68
 
 Released March 3, 2025
