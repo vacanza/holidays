@@ -25,6 +25,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: he\n"
+
+#. %s (observed).
+#, c-format
+msgid "(נצפה) %s"
+msgstr ""
 
 #. Rosh Hashanah (New Year).
 msgid "ראש השנה"
@@ -96,9 +102,4 @@ msgstr ""
 
 #. Lag Ba'omer (Lag BaOmer).
 msgid "ל\"ג בעומר"
-msgstr ""
-
-#. %s (observed).
-#, c-format
-msgid "(נצפה) %s"
 msgstr ""

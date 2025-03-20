@@ -23,9 +23,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: es\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observado)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -39,9 +44,29 @@ msgstr "Epiphany"
 msgid "Día de San José"
 msgstr "Saint Joseph's Day"
 
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Maundy Thursday"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Good Friday"
+
+#. Ascension Day.
+msgid "Ascensión del señor"
+msgstr "Ascension Day"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
+
 #. Labor Day.
 msgid "Día del Trabajo"
 msgstr "Labor Day"
+
+#. Sacred Heart.
+msgid "Sagrado Corazón"
+msgstr "Sacred Heart"
 
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
@@ -78,28 +103,3 @@ msgstr "Immaculate Conception"
 #. Christmas Day.
 msgid "Navidad"
 msgstr "Christmas Day"
-
-#. Maundy Thursday.
-msgid "Jueves Santo"
-msgstr "Maundy Thursday"
-
-#. Good Friday.
-msgid "Viernes Santo"
-msgstr "Good Friday"
-
-#. Ascension Day.
-msgid "Ascensión del señor"
-msgstr "Ascension Day"
-
-#. Corpus Christi.
-msgid "Corpus Christi"
-msgstr "Corpus Christi"
-
-#. Sacred Heart.
-msgid "Sagrado Corazón"
-msgstr "Sacred Heart"
-
-#. %s (observed).
-#, c-format
-msgid "%s (observado)"
-msgstr "%s (observed)"

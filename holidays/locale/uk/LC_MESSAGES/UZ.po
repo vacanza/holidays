@@ -23,9 +23,24 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: uz\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (taxminiy)"
+msgstr "%s (приблизна дата)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (ko‘chirilgan)"
+msgstr "%s (вихідний)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (ko‘chirilgan, taxminiy)"
+msgstr "%s (вихідний, приблизна дата)"
 
 #. New Year's Day.
 msgid "Yangi yil"
@@ -67,16 +82,6 @@ msgstr "Рамазан-байрам"
 msgid "Qurbon hayit"
 msgstr "Курбан-байрам"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (taxminiy)"
-msgstr "%s (приблизна дата)"
-
-#. %s (observed).
-#, c-format
-msgid "%s (ko‘chirilgan)"
-msgstr "%s (вихідний)"
-
 #. Date format (see strftime() Format Codes)
 msgid "%d/%m %Y"
 msgstr "%d.%m.%Y"
@@ -89,8 +94,3 @@ msgstr "Вихідний день (перенесено з %s)"
 #. Additional day off by Presidential decree.
 msgid "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"
 msgstr "Додатковий вихідний згідно указу Президента"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (ko‘chirilgan, taxminiy)"
-msgstr "%s (вихідний, приблизна дата)"

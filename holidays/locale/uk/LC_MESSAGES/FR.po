@@ -25,38 +25,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr\n"
 
 #. New Year's Day.
 msgid "Jour de l'an"
 msgstr "Новий рік"
-
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr "День праці"
-
-#. Labor and Social Concord Day.
-msgid "Fête du Travail et de la Concorde sociale"
-msgstr "День праці та Суспільної згоди"
-
-#. Victory Day.
-msgid "Fête de la Victoire"
-msgstr "День Перемоги"
-
-#. National Day.
-msgid "Fête nationale"
-msgstr "Національне свято"
-
-#. Armistice Day.
-msgid "Armistice"
-msgstr "День перемирʼя"
-
-#. Good Friday.
-msgid "Vendredi saint"
-msgstr "Страсна пʼятниця"
-
-#. Mi-Careme.
-msgid "Mi-Carême"
-msgstr "Свято Мі-Карем"
 
 #. Easter Monday.
 msgid "Lundi de Pâques"
@@ -66,9 +39,29 @@ msgstr "Великодній понеділок"
 msgid "Lundi de Pentecôte"
 msgstr "День Святого Духа"
 
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "День праці"
+
+#. Labor and Social Concord Day.
+msgid "Fête du Travail et de la Concorde sociale"
+msgstr "День праці та Суспільної згоди"
+
+#. May Day.
+msgid "1er mai"
+msgstr "Перше травня"
+
+#. Victory Day.
+msgid "Fête de la Victoire"
+msgstr "День Перемоги"
+
 #. Ascension Day.
 msgid "Ascension"
 msgstr "Вознесіння Господнє"
+
+#. National Day.
+msgid "Fête nationale"
+msgstr "Національне свято"
 
 #. Assumption Day.
 msgid "Assomption"
@@ -78,25 +71,41 @@ msgstr "Внебовзяття Пресвятої Діви Марії"
 msgid "Toussaint"
 msgstr "День усіх святих"
 
+#. Armistice Day.
+msgid "Armistice"
+msgstr "День перемирʼя"
+
 #. Christmas Day.
 msgid "Noël"
 msgstr "Різдво Христове"
 
-#. Victor Schoelcher Day.
-msgid "Fête de Victor Schoelcher"
-msgstr "День Віктора Шольшера"
-
-#. Abolition of Slavery.
-msgid "Abolition de l'esclavage"
-msgstr "День скасування рабства"
+#. Good Friday.
+msgid "Vendredi saint"
+msgstr "Страсна пʼятниця"
 
 #. Saint Stephen's Day.
 msgid "Saint Étienne"
 msgstr "День Святого Стефана"
 
+#. Mi-Careme.
+msgid "Mi-Carême"
+msgstr "Свято Мі-Карем"
+
+#. Abolition of Slavery.
+msgid "Abolition de l'esclavage"
+msgstr "День скасування рабства"
+
+#. Victor Schoelcher Day.
+msgid "Fête de Victor Schoelcher"
+msgstr "День Віктора Шольшера"
+
 #. Citizenship Day.
 msgid "Fête de la Citoyenneté"
 msgstr "День громадянства"
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
+msgstr "Свято приєднання"
 
 #. Missionary Day.
 msgid "Arrivée de l'Évangile"
@@ -106,26 +115,18 @@ msgstr "День місіонерів"
 msgid "Fête de l'autonomie"
 msgstr "День автономії"
 
-#. Feast of Saint Peter Chanel.
-msgid "Saint Pierre Chanel"
-msgstr "День Святого Пʼєра Шанеля"
-
-#. Territory Day.
-msgid "Fête du Territoire"
-msgstr "День Території"
-
-#. May Day.
-msgid "1er mai"
-msgstr "Перше травня"
-
-#. Annexation Day.
-msgid "Fête de la prise de possession"
-msgstr "Свято приєднання"
-
 #. Matāri'i.
 msgid "Matāri'i"
 msgstr "Матаарії"
 
+#. Feast of Saint Peter Chanel.
+msgid "Saint Pierre Chanel"
+msgstr "День Святого Пʼєра Шанеля"
+
 #. Saints Peter and Paul Day.
 msgid "Saints Pierre et Paul"
 msgstr "День Святих Петра і Павла"
+
+#. Territory Day.
+msgid "Fête du Territoire"
+msgstr "День Території"

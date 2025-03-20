@@ -39,40 +39,32 @@ msgstr ""
 msgid "Día Internacional de la Mujer"
 msgstr ""
 
-#. Good Friday.
-msgid "Viernes Santo"
-msgstr ""
-
-#. Corpus Christi.
-msgid "Corpus Christi"
-msgstr ""
-
-#. Christmas Day.
-msgid "Día de Navidad"
-msgstr ""
-
-#. AFCON Victory Against Ivory Coast.
-msgid "Victoria de la AFCON contra Costa de Marfil"
-msgstr ""
-
-#. Armed Forces Day.
-msgid "Día de las Fuerzas Armadas"
-msgstr ""
-
-#. Patron Saint Festival of Annobón.
-msgid "Fiesta Patronal de Annobón"
-msgstr ""
-
 #. Maundy Thursday.
 msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday.
+msgid "Viernes Santo"
 msgstr ""
 
 #. International Labor Day.
 msgid "Día Internacional del Trabajo"
 msgstr ""
 
+#. African Liberation Day.
+msgid "Día de la liberación Africana"
+msgstr ""
+
 #. President's Day.
 msgid "Natalicio de Su Excelencia el Presidente de la República"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Día de las Fuerzas Armadas"
 msgstr ""
 
 #. Constitution Day.
@@ -87,6 +79,14 @@ msgstr ""
 msgid "Festividad de la Inmaculada Concepción de María"
 msgstr ""
 
-#. African Liberation Day.
-msgid "Día de la liberación Africana"
+#. Christmas Day.
+msgid "Día de Navidad"
+msgstr ""
+
+#. Patron Saint Festival of Annobón.
+msgid "Fiesta Patronal de Annobón"
+msgstr ""
+
+#. AFCON Victory Against Ivory Coast.
+msgid "Victoria de la AFCON contra Costa de Marfil"
 msgstr ""

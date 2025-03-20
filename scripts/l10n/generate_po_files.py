@@ -19,6 +19,7 @@ import sys
 from pathlib import Path
 
 from lingva.extract import extract as create_pot_file
+from lingva.extract import _location_sort_key
 from polib import pofile
 
 WRAP_WIDTH = 99
@@ -35,6 +36,9 @@ class POGenerator:
         pot_file = pofile(pot_path)
 
         po_file.merge(pot_file)
+        po_file.sort(key=_location_sort_key)
+        for entry in po_file:
+            entry.occurrences = []
 
         # Update the project version if po file entries translation has changed only.
         if po_file != po_file_initial:
@@ -79,7 +83,6 @@ class POGenerator:
                 package_name="Holidays",
                 package_version=package_version,
                 width=WRAP_WIDTH,
-                location=False,
                 allow_empty=True,
             )
 
