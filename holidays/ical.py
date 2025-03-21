@@ -13,6 +13,9 @@
 import uuid
 from datetime import datetime, timezone
 
+from holidays.version import __version__
+
+
 
 class ICalExporter:
     def __init__(self, holidays_object, return_bytes=False, ical_timestamp=None):
@@ -27,22 +30,10 @@ class ICalExporter:
         """
         self.holidays = holidays_object
         self.return_bytes = return_bytes
-        if ical_timestamp is None:
-            self.ical_timestamp = datetime.now().astimezone(timezone.utc).strftime("%Y%m%dT%H%M%S")
-        else:
-            self.ical_timestamp = ical_timestamp
-
-        try:
-            with open("holidays/version.py") as file:
-                for line in file:
-                    if line.startswith("__version__"):
-                        self.holidays_version = line.split("=")[1].strip().strip('"')
-                        break
-                else:
-                    raise ValueError("Version not found in holidays/version.py")
-        except FileNotFoundError:
-            raise FileNotFoundError("The file 'holidays/version.py' was not found.")
-
+        self.ical_timestamp = ical_timestamp or datetime.now(timezone.utc).strftime(
+            "%Y%m%dT%H%M%SZ"
+        )
+        self.holidays_version = __version__
         self.language = self._validate_language(getattr(self.holidays, "language", "EN"))
 
     def _validate_language(self, language):
@@ -56,7 +47,7 @@ class ICalExporter:
         Returns:
         - Valid two-letter language code in uppercase.
         """
-        language = (language or "EN").upper().split("_")[0]
+        language = language.upper().split("_")[0]
 
         if len(language) != 2:
             raise ValueError(
@@ -131,8 +122,9 @@ class ICalExporter:
         )
         lines.append("VERSION:2.0")
 
-        for date, name in self.holidays.items():
-            lines.extend(self._generate_event(date, name))
+        for dt in sorted(self.holidays.keys()):
+            for name in self.holidays.get_list(dt):
+                lines.extend(self._generate_event(dt, name))
 
         lines.append("END:VCALENDAR")
 
