@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -125,8 +126,11 @@ class Malaysia(
     supported_languages = ("en_US", "ms_MY", "th")
     start_year = 1952
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+
         References:
             - `Holidays Act 1951 <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf>`_
             - `Holidays Ordinance (Sabah Cap. 56) <https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf>`_
@@ -139,18 +143,21 @@ class Malaysia(
         "If any day specified in the Schedule falls on Sunday then the day following shall be
         a public holiday and if such day is already a public holiday, then the day following
         shall be a public holiday".
-        In Johor and Kedah it's Friday to Sunday, in Kelantan and Terengganu - Saturday to Sunday.
+        In Johor (until 1994 and in 2014-2024) and Kedah it's Friday to Sunday,
+        in Kelantan and Terengganu - Saturday to Sunday.
         """
         BuddhistCalendarHolidays.__init__(self, cls=MalaysiaBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=MalaysiaChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=MalaysiaHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=MalaysiaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=MalaysiaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
-        self.dts_observed = set()
+        self.dts_observed: set[date] = set()
 
     def _populate_public_holidays(self):
         # This must be done for every `_populate_public_holidays()` call.
@@ -321,8 +328,14 @@ class Malaysia(
             else self._add_holiday_2nd_fri_of_oct(name)
         )
 
-        # Beginning of Ramadan.
-        self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
+        if self._year >= 2025:
+            self.dts_observed.update(
+                # Eid al-Fitr (Third Day).
+                self._add_eid_al_fitr_day_three(tr("Hari Raya Puasa (Hari Ketiga)"))
+            )
+        else:
+            # Beginning of Ramadan.
+            self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
 
     def _populate_subdiv_05_public_holidays(self):
         # New Year's Day.
@@ -589,6 +602,7 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
         2022: (MAY, 15),
         2023: (MAY, 4),
         2024: (MAY, 22),
+        2025: (MAY, 12),
     }
 
 
@@ -618,6 +632,7 @@ class MalaysiaChineseHolidays(_CustomChineseHolidays):
         2022: (FEB, 1),
         2023: (JAN, 22),
         2024: (FEB, 10),
+        2025: (JAN, 29),
     }
 
 
@@ -647,6 +662,7 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2022: (OCT, 24),
         2023: (NOV, 12),
         2024: (OCT, 31),
+        2025: (OCT, 20),
     }
 
     THAIPUSAM_DATES = {
@@ -689,6 +705,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES = {
@@ -716,6 +733,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 2),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025: (MAR, 31),
     }
 
     HARI_HOL_JOHOR_DATES = {
@@ -733,6 +751,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (SEP, 3),
         2023: (AUG, 23),
         2024: (AUG, 11),
+        2025: (JUL, 31),
     }
 
     HIJRI_NEW_YEAR_DATES = {
@@ -760,6 +779,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 30),
         2023: (JUL, 19),
         2024: (JUL, 7),
+        2025: (JUN, 27),
     }
 
     ISRA_AND_MIRAJ_DATES = {
@@ -787,6 +807,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAR, 1),
         2023: (FEB, 18),
         2024: (FEB, 8),
+        2025: (JAN, 27),
     }
 
     MAWLID_DATES = {
@@ -814,6 +835,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 10),
         2023: (SEP, 28),
         2024: (SEP, 16),
+        2025: (SEP, 5),
     }
 
     NUZUL_AL_QURAN_DATES = {
@@ -841,6 +863,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (APR, 19),
         2023: (APR, 8),
         2024: (MAR, 28),
+        2025: (MAR, 18),
     }
 
     RAMADAN_BEGINNING_DATES = {
@@ -868,6 +891,7 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (APR, 3),
         2023: (MAR, 23),
         2024: (MAR, 12),
+        2025: (MAR, 2),
     }
 
 

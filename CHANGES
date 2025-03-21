@@ -1,3 +1,82 @@
+Version 0.69
+============
+
+Released March 17, 2025
+
+- Introduce HolidayBase methods for proper serialization (#2333 by @KJhellico)
+- Add Macau holidays (#2323 by @PPsyrius)
+- Update IN holidays and localization (#2259 by @ankushhKapoor, @KJhellico)
+- Update Poland holidays: add `de` localization (#2346 by @pyniuX)
+- Fix l10n handling (#2340 by @KJhellico)
+- Update Hong Kong holidays: standardizes `en_US` l10n with China's and Macau's implementation (#2326 by @PPsyrius)
+- Update Indonesia holidays: 2031-2050 Day of Silence (Nyepi) data, migrate to `BalineseSakaCalendarHolidays` (#2328 by @PPsyrius)
+- Update Philippines holidays: 2025 Eid'l Fitr and Eid'l Adha Tentative Date (#2332 by @PPsyrius)
+- Update Taiwan holidays: add categories support (#2349 by @PPsyrius, @arkid15r)
+- Update Timor Leste holidays: fix 2025 Islamic holidays (#2327 by @PPsyrius)
+- Update US holidays: add federal holidays as GOVERNMENT category (#2297 by @KJhellico)
+- Update US holidays: аdd additional MI state holidays (#2325 by @mcvic1rj, @KJhellico)
+- Update `IslamicHolidays`: add an option whether to add estimation label to holiday name (#2298 by @KJhellico)
+
+Version 0.68
+============
+
+Released March 3, 2025
+
+- Fix 2025 Chinese Calendar's Birthday of Buddha (#2310 by @PPsyrius)
+- Update AZ holidays: add 2025 substituted holidays (#2302 by @KJhellico)
+- Update Kenya holidays, add l10n support (#2316 by @KJhellico)
+- Update Malaysia holidays (#2309 by @KJhellico)
+- Update Zenodo record URL in README (#2317 by @KJhellico)
+- Update issue templates (#2307 by @arkid15r)
+- Update l10n scripts (#2318 by @KJhellico, @arkid15r)
+- Add .coderabbit.yaml (#2322 by @arkid15r)
+
+Version 0.67
+============
+
+Released February 17, 2025
+
+- Add Saint Lucia holidays (#2266 by @Prateekshit73)
+- Add Tuvalu holidays (#2295 by @Prateekshit73, @arkid15r)
+- Update Greenland holidays l10n (#2288 by @KJhellico)
+- Update Hong Kong holidays: add l10n support (#2268 by @PPsyrius)
+- Update Hong Kong holidays: fix `th` l10n typo (#2293 by @PPsyrius)
+- Update Panama holidays, add l10n support (#2275 by @KJhellico)
+- Update README: add DOI (#2286 by @arkid15r)
+- Update United Kingdom & Isle of Man holidays: add l10n support (#2258 by @PPsyrius, @arkid15r, @KJhellico)
+- Update internal scripts (#2284 by @KJhellico)
+- Update subdivision names for Presidents' Day in the United States (#2299 by @parkerbxyz, @arkid15r, @KJhellico)
+- Add Python syntax check with ruff-pyupgrade rules (#2294 by @KJhellico)
+- Add make script for Windows (#2277 by @KJhellico)
+- Check .mo rather than .po files in TestListLocalizedEntities (#2273 by @cjwatson, @arkid15r)
+- Implement HolidayBase::get_closest_holiday functionality (#2211 by @Rosi2143, @arkid15r)
+- Unify certain holidays names translation (#2285 by @KJhellico)
+
+Version 0.66
+============
+
+Released February 3, 2025
+
+- Add Sri Lanka holidays (#2228 by @Prateekshit73, @arkid15r, @KJhellico, @PPsyrius)
+- Fix typo in CONTRIBUTING.rst (#2264 by @KJhellico)
+- Update Czechia holidays (#2248 by @KJhellico)
+- Update Germany holidays: add Corpus Christi in CATHOLIC category (#2253 by @KJhellico)
+- Update Iceland holidays: add HALF_DAY holidays (#2249 by @KJhellico)
+- Update Iran holidays (#2234 by @KJhellico)
+- Update PR exclusion logic (#2233 by @arkid15r)
+- Update Slovakia holidays: Constitution Day is working day since 2024 (#2235 by @KJhellico, @arkid15r)
+- Update Slovenia holidays (#2237 by @KJhellico)
+- Update Sweden holidays: fix All Saints' Day (#2252 by @KJhellico)
+- Update Thailand holidays: refactor Royal Ploughing Ceremony code (#2247 by @PPsyrius)
+- Update United Arab Emirates holidays: add `th` l10n, exact 2017-2025 entries (#2263 by @PPsyrius)
+- Update Vatican City holidays: add missing holidays, l10n support (#2250 by @PPsyrius)
+- Update automatic snapshots update workflow (#2254 by @KJhellico)
+- Update some holidays Ukrainian translations (#2265 by @KJhellico)
+- Add Israel holidays localization: th (#2262 by @PPsyrius)
+- Add West Frisian language (#2246 by @waarissyb, @arkid15r)
+- Pin CI/CD Ubuntu version (#2245 by @arkid15r)
+- Remove .po files from distribution bundles (#2243 by @KJhellico)
+
 Version 0.65
 ============
 

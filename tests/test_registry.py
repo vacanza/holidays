@@ -54,8 +54,8 @@ class TestEntityLoader(TestCase):
         self.assertEqual(
             countries_entities,
             loader_entities,
-            "Registry entities and countries entities don't match: %s"
-            % countries_entities.difference(loader_entities),
+            "Registry entities and countries entities don't match: "
+            f"{countries_entities.difference(loader_entities)}",
         )
 
     def test_country_str(self):
@@ -95,8 +95,8 @@ class TestEntityLoader(TestCase):
         self.assertEqual(
             financial_entities,
             loader_entities,
-            "Registry entities and financial entities don't match: %s"
-            % financial_entities.difference(loader_entities),
+            "Registry entities and financial entities don't match: "
+            f"{financial_entities.difference(loader_entities)}",
         )
 
     def test_financial_str(self):

@@ -35,6 +35,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2019-12-27",
             "2024-02-07",
             "2025-01-29",
+            "2025-03-27",
+            "2025-03-28",
             "2072-01-05",
         )
 

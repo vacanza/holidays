@@ -182,7 +182,7 @@ class TestGuatemala(CommonCountryTests, TestCase):
             ("2024-01-01", "Año Nuevo"),
             ("2024-03-28", "Jueves Santo"),
             ("2024-03-29", "Viernes Santo"),
-            ("2024-03-30", "Sabado Santo"),
+            ("2024-03-30", "Sábado Santo"),
             ("2024-05-01", "Día del Trabajo"),
             ("2024-07-01", "Día del Ejército"),
             ("2024-08-15", "Día de la Asunción"),

@@ -44,9 +44,15 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     supported_languages = ("az", "en_US", "uk")
     start_year = 1990
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, AzerbaijanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=AzerbaijanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, AzerbaijanStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2006)
@@ -68,7 +74,9 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
             dts_non_observed.add(self._add_holiday_jan_20(tr("Ümumxalq hüzn günü")))
 
         # Women's Day.
-        dts_observed.add(self._add_womens_day(tr("Qadınlar günü")))
+        dt = self._add_womens_day(tr("Qadınlar günü"))
+        if self._year != 2025:
+            dts_observed.add(dt)
 
         # Spring Festival.
         name = tr("Novruz bayramı")
@@ -135,7 +143,9 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         if self._year >= 1993:
             # Eid al-Fitr.
             name = tr("Ramazan bayrami")
-            dts_bairami.update(self._add_eid_al_fitr_day(name))
+            dt = self._add_eid_al_fitr_day(name)
+            if self._year != 2025:
+                dts_bairami.update(dt)
             if self._year >= 2006:
                 dts_bairami.update(self._add_eid_al_fitr_day_two(name))
 
@@ -217,6 +227,7 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 9),
         2023: (JUN, 28),
         2024: (JUN, 16),
+        2025: (JUN, 6),
     }
 
     EID_AL_FITR_DATES = {
@@ -243,6 +254,7 @@ class AzerbaijanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 2),
         2023: (APR, 21),
         2024: (APR, 10),
+        2025: (MAR, 30),
     }
 
 
@@ -258,11 +270,17 @@ class AzerbaijanStaticHolidays:
         - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843
         - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332
         - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449
+        - https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623
     Special holidays references:
         - https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025
     """
 
     eid_al_adha = tr("Qurban bayrami")
+
+    eid_al_fitr = tr("Ramazan bayrami")
+
+    womens_day = tr("Qadınlar günü")
+
     # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
@@ -323,5 +341,9 @@ class AzerbaijanStaticHolidays:
 
     special_public_holidays_observed = {
         2007: (JAN, 3, eid_al_adha),
+        2025: (
+            (MAR, 27, womens_day),
+            (MAR, 28, eid_al_fitr),
+        ),
         2072: (JAN, 5, eid_al_adha),
     }

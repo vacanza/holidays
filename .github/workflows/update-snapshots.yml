@@ -38,7 +38,7 @@ jobs:
         run: |
           make snapshot
 
-      - uses: peter-evans/create-pull-request@v7.0.6
+      - uses: peter-evans/create-pull-request@v7.0.8
         with:
           base: dev
           body: Automatically generated snapshots update.

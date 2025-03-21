@@ -12,6 +12,7 @@
 
 # flake8: noqa: F401
 
+from holidays.groups.balinese_saka import BalineseSakaCalendarHolidays
 from holidays.groups.buddhist import BuddhistCalendarHolidays
 from holidays.groups.chinese import ChineseCalendarHolidays
 from holidays.groups.christian import ChristianHolidays
@@ -22,4 +23,5 @@ from holidays.groups.hindu import HinduCalendarHolidays
 from holidays.groups.international import InternationalHolidays
 from holidays.groups.islamic import IslamicHolidays
 from holidays.groups.persian import PersianCalendarHolidays
+from holidays.groups.sinhala import SinhalaCalendarHolidays
 from holidays.groups.thai import ThaiCalendarHolidays

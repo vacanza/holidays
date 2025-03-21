@@ -56,9 +56,7 @@ msgid "Rasos ir Joninių diena"
 msgstr "Day of Dew and Saint John"
 
 #. Statehood Day.
-msgid ""
-"Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės "
-"diena"
+msgid "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"
 msgstr "Statehood Day"
 
 #. Assumption Day.

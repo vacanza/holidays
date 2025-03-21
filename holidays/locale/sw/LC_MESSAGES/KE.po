@@ -1,0 +1,139 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Kenya holidays sw localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.68\n"
+"POT-Creation-Date: 2025-02-26 23:09+0200\n"
+"PO-Revision-Date: 2025-02-27 00:39+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_KE\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (inakadiriwa)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (imezingatiwa)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (inazingatiwa, inakadiriwa)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Siku ya Mwaka Mpya"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Ijumaa Kuu"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Jumatatu ya Pasaka"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Siku ya Kazi"
+
+#. Madaraka Day.
+msgid "Madaraka Day"
+msgstr "Siku ya Madaraka"
+
+#. Mazingira Day.
+msgid "Mazingira Day"
+msgstr "Siku ya Mazingira"
+
+#. Utamaduni Day.
+msgid "Utamaduni Day"
+msgstr "Siku ya Utamaduni"
+
+#. Moi Day.
+msgid "Moi Day"
+msgstr "Siku ya Moi"
+
+#. Mashujaa Day.
+msgid "Mashujaa Day"
+msgstr "Siku ya Mashujaa"
+
+#. Kenyatta Day.
+msgid "Kenyatta Day"
+msgstr "Siku ya Kenyatta"
+
+#. Jamhuri Day.
+msgid "Jamhuri Day"
+msgstr "Siku ya Jamhuri"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Siku ya Uhuru"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Siku ya Krismasi"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Siku ya Ndondi"
+
+#. Eid-al-Fitr.
+msgid "Idd-ul-Fitr"
+msgstr "Sikukuu ya Idd-ul-Fitr"
+
+#. Diwali.
+msgid "Diwali"
+msgstr "Diwali"
+
+#. Eid-al-Adha.
+msgid "Idd-ul-Azha"
+msgstr "Sikukuu ya Idd-ul-Azha"
+
+#. Election Day.
+msgid "Election Day"
+msgstr "Siku ya Uchaguzi"
+
+#. Inauguration Day.
+msgid "Inauguration Day"
+msgstr "Siku ya Uzinduzi"
+
+#. Day of Mourning for Queen Elizabeth II.
+msgid "Day of Mourning for Queen Elizabeth II"
+msgstr "Siku ya Maombolezo kwa Malkia Elizabeth II"
+
+#. National Tree Growing Day.
+msgid "National Tree Growing Day"
+msgstr "Siku ya Kitaifa ya Kupanda Miti"
+
+#. Visit of Pope Francis to Kenya.
+msgid "Visit of Pope Francis to Kenya"
+msgstr "Ziara ya Papa Francis nchini Kenya"
+
+#. President Moi Memorial Day.
+msgid "President Moi Memorial Day"
+msgstr "Siku ya Kumbukumbu ya Rais Moi"
+
+#. State Funeral for Former President Mwai Kibaki.
+msgid "State Funeral for Former President Mwai Kibaki"
+msgstr "Mazishi ya Kiserikali ya Aliyekuwa Rais Mwai Kibaki"

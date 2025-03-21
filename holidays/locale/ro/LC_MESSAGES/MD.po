@@ -57,8 +57,7 @@ msgstr ""
 
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
-msgid ""
-"Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
+msgid "Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr ""
 
 #. Europe Day.

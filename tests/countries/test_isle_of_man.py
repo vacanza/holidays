@@ -76,3 +76,48 @@ class TestIM(CommonCountryTests, TestCase):
             "2025-07-05",
             "2026-07-05",
         )
+
+    def test_l10n_default(self):
+        # https://www.gov.im/categories/home-and-neighbourhood/bank-holidays/
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-06-07", "TT Bank Holiday"),
+            ("2024-07-05", "Tynwald Day"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-05-27", "Spring Bank Holiday"),
+            ("2024-06-07", "TT Bank Holiday"),
+            ("2024-07-05", "Tynwald Day"),
+            ("2024-08-26", "Late Summer Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-05-06", "วันเมย์เดย์"),
+            ("2024-05-27", "วันหยุดฤดูใบไม้ผลิของธนาคาร"),
+            ("2024-06-07", "วันแข่งไอร์ออฟแมน ทีที"),
+            ("2024-07-05", "วันไทน์วอลด์"),
+            ("2024-08-26", "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันเปิดกล่องของขวัญ"),
+        )

@@ -70,7 +70,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_apr_21(tr("Tiradentes"))
 
         if self._year >= 1925:
-            # Workers' Day.
+            # Worker's Day.
             self._add_labor_day(tr("Dia do Trabalhador"))
 
         # Corpus Christi.

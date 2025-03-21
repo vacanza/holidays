@@ -12,6 +12,7 @@
 
 # flake8: noqa: F401
 
+from holidays.calendars.balinese_saka import _BalineseSakaLunar
 from holidays.calendars.buddhist import _BuddhistLunisolar, _CustomBuddhistHolidays
 from holidays.calendars.chinese import _ChineseLunisolar, _CustomChineseHolidays
 from holidays.calendars.custom import _CustomCalendar
@@ -22,4 +23,5 @@ from holidays.calendars.islamic import _CustomIslamicHolidays, _IslamicLunar
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.calendars.persian import _Persian
+from holidays.calendars.sinhala import _SinhalaLunar, _CustomSinhalaHolidays
 from holidays.calendars.thai import _ThaiLunisolar, KHMER_CALENDAR, THAI_CALENDAR

@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-12-31 21:12+0200\n"
-"PO-Revision-Date: 2024-01-02 12:46+0200\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -49,11 +49,11 @@ msgstr "День Перемоги"
 
 #. Independence Day.
 msgid "Mustaqillik kuni"
-msgstr "День Незалежності"
+msgstr "День незалежності"
 
 #. Teachers and Instructors Day.
 msgid "O‘qituvchi va murabbiylar kuni"
-msgstr "День Вчителя і Наставника"
+msgstr "День вчителя і наставника"
 
 #. Constitution Day.
 msgid "O‘zbekiston Respublikasi Konstitutsiyasi kuni"

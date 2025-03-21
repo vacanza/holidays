@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.66\n"
 "POT-Creation-Date: 2023-07-08 19:40+0300\n"
-"PO-Revision-Date: 2024-12-23 14:10+0700\n"
+"PO-Revision-Date: 2025-02-02 19:32+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -56,20 +56,15 @@ msgid "День міжнародної солідарності трудящих
 msgstr "วันสมานฉันท์แรงงานสากล"
 
 #. Day of Remembrance and Victory over Nazism in World War II 1939-1945.
-msgid ""
-"День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 "
-"років"
-msgstr ""
-"วันแห่งความทรงจำและชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง "
-"1939-1945"
+msgid "День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років"
+msgstr "วันแห่งความทรงจำและชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง 1939-1945"
 
 #. Day of Victory over Nazism in World War II (Victory Day).
 msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
-msgstr ""
-"วันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"
+msgstr "วันแห่งชัยชนะเหนือระบอบชาติสังคมนิยมในสงครามโลกครั้งที่สอง (วันแห่งชัยชนะ)"
 
 #. Victory Day.
-msgid "День перемоги"
+msgid "День Перемоги"
 msgstr "วันแห่งชัยชนะ"
 
 #. Day of the Constitution of Ukraine.

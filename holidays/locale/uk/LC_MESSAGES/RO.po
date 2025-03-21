@@ -65,7 +65,7 @@ msgstr "Успіння Пресвятої Богородиці"
 
 #. Saint Andrew's Day.
 msgid "Sfantul Apostol Andrei cel Intai chemat"
-msgstr "День святого Андрія Первозваного"
+msgstr "День Святого Андрія Первозваного"
 
 #. National Day.
 msgid "Ziua Națională a României"

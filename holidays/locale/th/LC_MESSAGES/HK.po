@@ -1,0 +1,202 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Hong Kong holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.69\n"
+"POT-Creation-Date: 2025-02-04 14:03+0700\n"
+"PO-Revision-Date: 2025-03-05 09:48+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s（慶祝）"
+msgstr "ชดเชย%s"
+
+#. The Day following Mid-Autumn Festival.
+msgid "中秋節翌日"
+msgstr "วันหลังวันไหว้พระจันทร์"
+
+#. The Second Day following Mid-Autumn Festival.
+msgid "中秋節後第二日"
+msgstr "วันไหว้พระจันทร์วันที่สอง"
+
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr "วันไหว้พระจันทร์"
+
+#. Chinese New Year.
+msgid "農曆年初一"
+msgstr "วันตรุษจีน"
+
+#. Chinese New Year's Eve.
+msgid "農曆年初一的前一日"
+msgstr "วันก่อนวันตรุษจีน"
+
+#. The second day of Chinese New Year.
+msgid "農曆年初二"
+msgstr "วันตรุษจีนวันที่สอง"
+
+#. The third day of Chinese New Year.
+msgid "農曆年初三"
+msgstr "วันตรุษจีนวันที่สาม"
+
+#. The fourth day of Chinese New Year.
+msgid "農曆年初四"
+msgstr "วันตรุษจีนวันที่สี่"
+
+#. New Year's Day.
+msgid "一月一日"
+msgstr "วันขึ้นปีใหม่"
+
+#. Good Friday.
+msgid "耶穌受難節"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. The day following Good Friday.
+msgid "耶穌受難節翌日"
+msgstr "วันหลังวันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+msgid "復活節星期一"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Tomb-Sweeping Day.
+msgid "清明節"
+msgstr "วันเช็งเม้ง"
+
+#. The Buddha's Birthday.
+msgid "佛誕"
+msgstr "วันวิสาขบูชา"
+
+#. Labor Day.
+msgid "勞動節"
+msgstr "วันแรงงาน"
+
+#. Dragon Boat Festival.
+msgid "端午節"
+msgstr "วันไหว้บ๊ะจ่าง"
+
+#. Hong Kong S.A.R. Establishment Day.
+msgid "香港特別行政區成立紀念日"
+msgstr "วันสถาปนาเขตบริหารพิเศษฮ่องกง"
+
+#. Double Ninth Festival.
+msgid "重陽節"
+msgstr "วันไหว้บรรพบุรุษ"
+
+#. National Day.
+msgid "國慶日"
+msgstr "วันชาติจีน"
+
+#. Winter Solstice.
+msgid "冬節"
+msgstr "วันตงจื้อ(เหมายัน)"
+
+#. The first weekday after Christmas Day.
+msgid "聖誕節後第一個周日"
+msgstr "วันคริสต์มาสวันที่สอง"
+
+#. Christmas Day.
+msgid "聖誕節"
+msgstr "วันคริสต์มาส"
+
+#. The day following New Year's Day.
+msgid "一月一日翌日"
+msgstr "วันหลังวันขึ้นปีใหม่"
+
+#. The day following Tomb-Sweeping Day.
+msgid "清明節翌日"
+msgstr "วันหลังวันเช็งเม้ง"
+
+#. The day following Easter Monday.
+msgid "復活節星期一翌日"
+msgstr "วันหลังวันจันทร์อีสเตอร์"
+
+#. The day following the Buddha's Birthday.
+msgid "佛誕翌日"
+msgstr "วันหลังวันวิสาขบูชา"
+
+#. The day following Labor Day.
+msgid "勞動節翌日"
+msgstr "วันหลังวันแรงงาน"
+
+#. The day following Dragon Boat Festival.
+msgid "端午節翌日"
+msgstr "วันหลังวันไหว้บ๊ะจ่าง"
+
+#. The day following Hong Kong S.A.R. Establishment Day.
+msgid "香港特別行政區成立紀念日翌日"
+msgstr "วันหลังวันสถาปนาเขตบริหารพิเศษฮ่องกง"
+
+#. The day following Double Ninth Festival.
+msgid "重陽節翌日"
+msgstr "วันหลังวันไหว้บรรพบุรุษ"
+
+#. The day following National Day.
+msgid "國慶日翌日"
+msgstr "วันหลังวันชาติจีน"
+
+#. The second weekday after Christmas Day.
+msgid "聖誕節後第二個周日"
+msgstr "วันคริสต์มาสวันที่สาม"
+
+#. Queen's Birthday.
+msgid "英女皇壽辰"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชินีนาถ"
+
+#. Monday after Pentecost.
+msgid "靈降臨節後星期一"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. National Day of the Republic of China.
+msgid "中華民國國慶日"
+msgstr "วันชาติสาธารณรัฐจีน(ไต้หวัน)"
+
+#. Monday after Remembrance Day.
+msgid "和平紀念日後星期一"
+msgstr "วันจันทร์หลังวันรำลึก"
+
+#. Anniversary of the liberation of Hong Kong.
+msgid "重光紀念日"
+msgstr "วันครบรอบการปลดปล่อยฮ่องกง"
+
+#. Wedding of Prince Charles and Diana.
+msgid "英國王儲查理斯王子與戴安娜婚禮"
+msgstr "พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ เจ้าชายแห่งเวลส์"
+
+#. Second day of Queen Elizabeth II and her husband's visit to Hong Kong.
+msgid "英女王伊利沙伯二世伉儷訪港的第二天"
+msgstr "วันที่สองของการเสด็จเยือนฮ่องกงของ่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2 และพระราชสวามี"
+
+#. 70th Anniversary of the Victory of the Chinese People's War of Resistance
+#. against Japanese
+#. Aggression and the World Anti-Fascist War.
+msgid "中國人民抗日戰爭勝利70周年紀念日"
+msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่น"
+
+#. Sino-Japanese War Victory Day.
+msgid "抗日戰爭勝利紀念日"
+msgstr "วันรำลึกชัยชนะสงครามต่อต้านญี่ปุ่น"
+
+#. Additional public holiday.
+msgid "額外公眾假期"
+msgstr "วันหยุดเพิ่มเติม"

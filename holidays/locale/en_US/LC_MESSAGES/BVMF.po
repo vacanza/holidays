@@ -46,7 +46,7 @@ msgstr "Good Friday"
 msgid "Tiradentes"
 msgstr "Tiradentes' Day"
 
-#. Workers' Day.
+#. Worker's Day.
 msgid "Dia do Trabalhador"
 msgstr "Worker's Day"
 

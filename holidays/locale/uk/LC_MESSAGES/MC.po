@@ -42,7 +42,7 @@ msgstr "Новий рік"
 
 #. Saint Devote's Day.
 msgid "La Sainte Dévote"
-msgstr "День святої Девоти"
+msgstr "День Святої Девоти"
 
 #. Easter Monday.
 msgid "Le lundi de Pâques"

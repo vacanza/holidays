@@ -78,10 +78,16 @@ class Spain(
     )
     supported_languages = ("en_US", "es", "uk")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=SpainIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=SpainIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=SpainStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
@@ -89,7 +95,7 @@ class Spain(
     def _populate_public_holidays(self):
         if self._year not in {2012, 2017, 2023}:
             # New Year's Day.
-            self._add_new_years_day(tr("Año nuevo"))
+            self._add_new_years_day(tr("Año Nuevo"))
 
         if self._year not in {2013, 2019}:
             # Epiphany.
@@ -127,7 +133,7 @@ class Spain(
 
     def _populate_subdiv_an_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -161,7 +167,7 @@ class Spain(
 
     def _populate_subdiv_ar_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -194,7 +200,7 @@ class Spain(
 
     def _populate_subdiv_as_public_holidays(self):
         if self._year in {2012, 2017, 2023}:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -262,7 +268,7 @@ class Spain(
 
     def _populate_subdiv_ce_public_holidays(self):
         if self._year == 2012:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -306,7 +312,7 @@ class Spain(
 
     def _populate_subdiv_cl_public_holidays(self):
         if self._year in {2017, 2023}:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -417,7 +423,7 @@ class Spain(
 
     def _populate_subdiv_ex_public_holidays(self):
         if self._year == 2012:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -498,7 +504,7 @@ class Spain(
 
     def _populate_subdiv_mc_public_holidays(self):
         if self._year in {2017, 2023}:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))
@@ -557,7 +563,7 @@ class Spain(
 
     def _populate_subdiv_ml_public_holidays(self):
         if self._year == 2017:
-            self._move_holiday(self._add_new_years_day(tr("Año nuevo")))
+            self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         if self._year in {2013, 2019}:
             self._move_holiday(self._add_epiphany_day(tr("Epifanía del Señor")))

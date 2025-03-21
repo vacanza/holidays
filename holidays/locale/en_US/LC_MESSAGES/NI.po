@@ -59,9 +59,9 @@ msgstr "Battle of San Jacinto Day"
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
-#. Virgin's Day.
+#. Immaculate Conception.
 msgid "Concepción de María"
-msgstr "Virgin's Day"
+msgstr "Immaculate Conception"
 
 #. Christmas Day.
 msgid "Navidad"
