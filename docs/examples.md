@@ -12,7 +12,8 @@ False
 ```
 
 !!! tip "Tip"
-    Don't do this! It is not efficient because it is initializing a new Holiday object and generating a list of all the holidays in 2014 during each comparison.
+    Don't do this! It is not efficient because it is initializing a new Holiday object and
+    generating a list of all the holidays in 2014 during each comparison.
 
 It is more efficient to create the object only once:
 
@@ -24,17 +25,15 @@ True
 False
 ```
 
-You can use the `country_holidays` or
-`financial_holidays` functions to
-create the object using a string with the country code:
+You can use the `country_holidays` or `financial_holidays` functions to create the object
+using a string with the country code:
 
 ``` python
 >>> us_holidays = holidays.country_holidays('US')
 >>> nyse_holidays = holidays.financial_holidays('NYSE')
 ```
 
-Use `years` parameter to populate the holidays years you are interested
-in:
+Use `years` parameter to populate the holidays years you are interested in:
 
 ``` python
 >>> us_holidays = holidays.US(years=2020)  # US 2020 holidays
@@ -60,8 +59,8 @@ Let's print out the holidays in 2014 specific to California, USA:
 2014-12-25 Christmas Day
 ```
 
-So far we've only checked holidays in 2014, so that's the only year the
-Holidays object has generated:
+So far we've only checked holidays in 2014, so that's the only year the Holidays object has
+generated:
 
 ``` python
 >>> us_holidays.years
@@ -72,9 +71,8 @@ set([2014])
 
 ## Expand parameter
 
-Because by default the `expand`
-parameter is `True` the Holiday object will calculate and add holidays
-for other years when they are required:
+Because, by default, the `expand` parameter is `True`, the Holiday object will calculate and add
+holidays for other years when they are required:
 
 ``` python
 >>> date(2013, 1, 1) in us_holidays
@@ -85,24 +83,22 @@ set([2013, 2014])
 20
 ```
 
-If we change the `expand` parameter to
-`False` the Holiday object will no longer add holidays from new years:
+If we change the `expand` parameter to `False` the Holiday object will no longer add holidays from
+new years:
 
 ``` python
 >>> us_holidays.expand = False
 >>> date(2012, 1, 1) in us_holidays
 False
->>> us.holidays.expand = True
+>>> us_holidays.expand = True
 >>> date(2012, 1, 1) in us_holidays
 True
 ```
 
 ## Observed parameter
 
-January 1st, 2012 fell on a Sunday so the statutory holiday was observed
-on the 2nd. By default the `observed`
-param is `True` so the holiday list will include January 2nd, 2012 as a
-holiday:
+January 1st, 2012 fell on a Sunday, so the statutory holiday was observed on the 2nd. By default,
+the `observed` param is `True`, so the holiday list will include January 2nd, 2012 as a holiday:
 
 ``` python
 >>> date(2012, 1, 1) in us_holidays
@@ -115,9 +111,8 @@ True
 "New Year's Day (observed)"
 ```
 
-The values of `observed` and
-`expand` can be changed on the fly and
-the holiday list will be adjusted accordingly:
+The values of `observed` and `expand` can be changed on the fly and the holiday list will be
+adjusted accordingly:
 
 ``` python
 >>> us_holidays.observed = False
@@ -148,8 +143,7 @@ To change the language translation, you can set the language explicitly.
 
 ## Holiday categories support
 
-To get a list of other categories holidays (for countries that support
-them):
+To get a list of other categories holidays (for countries that support them):
 
 ``` python
 >>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=BANK).items()):
@@ -200,9 +194,8 @@ To find the nth working day after the specified date:
 datetime.date(2024, 12, 30)
 ```
 
-Here we calculate the 5th working day after December 20, 2024. Working
-days are 23 (Mon), 24 (Tue), 26 (Thu), 27 (Fri), 30 (Mon); 21-22,
-28-29 - weekends, 25 - Christmas Day.
+Here we calculate the 5th working day after December 20, 2024. Working days are 23 (Mon), 24 (Tue),
+26 (Thu), 27 (Fri), 30 (Mon); 21-22, 28-29 - weekends, 25 - Christmas Day.
 
 To calculate the number of working days between two specified dates:
 
@@ -215,9 +208,8 @@ Here we calculate the number of working days in Q2 2024.
 
 ## Getting the closest (next or previous) holiday
 
-You can fetch next or previous holiday for a target date of your
-selected calendar. The function returns found holiday's date and name
-excluding the target date.
+You can fetch next or previous holiday for a target date of your selected calendar. The function
+returns found holiday's date and name excluding the target date.
 
 Get the next holiday for the current date:
 
@@ -251,7 +243,7 @@ Get the previous holiday for a specific target date:
 (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
 ```
 
-If the closest holiday cannot be found None is returned.
+If the closest holiday cannot be found, `None` is returned.
 
 ``` python
 >>> print(us_holidays.get_closest_holiday("2100-12-31"))
@@ -262,10 +254,8 @@ None
 
 ## Date from holiday name
 
-Holidays can be retrieved using their name too.
-`get_named` receives a string and
-returns a list of holidays matching it (even partially, with case
-insensitive check):
+Holidays can be retrieved using their name too. `get_named` receives a string and returns a list
+of holidays matching it (even partially, with case-insensitive check):
 
 ``` python
 >>> us_holidays = holidays.UnitedStates(years=2020)
@@ -279,8 +269,8 @@ datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
 
 ## Additions
 
-Holiday objects can be added together and the resulting object will
-generate the holidays from all of the initial objects:
+Holiday objects can be added together, and the resulting object will generate the holidays from
+all the initial objects:
 
 ``` python
 >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
@@ -300,8 +290,8 @@ The other form of addition is also available:
 ['CA', 'US', 'MX']
 ```
 
-We can even get a set of holidays that include all the
-subdivision-specific holidays using the built-in `sum` function:
+We can even get a set of holidays that include all the subdivision-specific holidays using
+the built-in `sum` function:
 
 ``` python
 >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
@@ -311,12 +301,10 @@ subdivision-specific holidays using the built-in `sum` function:
 
 ## Creating custom holidays (or augmenting existing ones with private ones)
 
-Sometimes we may not be able to use the official federal statutory
-holiday list in our code. Let's pretend we work for a company that does
-not include New Year's Day as a statutory holiday but does include
-"Ninja Turtle Day" on July 13th. We can create a new class that
-inherits the US (please note the base class import path) and the only
-method we need to override is `_populate`:
+Sometimes we may not be able to use the official federal statutory holiday list in our code. Let's
+pretend we work for a company that does not include New Year's Day as a statutory holiday but does
+include "Ninja Turtle Day" on July 13th. We can create a new class that inherits the US (please
+note the base class import path) and the only method we need to override is `_populate`:
 
 ``` python
 >>> from holidays.countries import US
@@ -338,10 +326,9 @@ False
 True
 ```
 
-We can also inherit from the HolidayBase class which has an empty
-`_populate` method so we start with no
-holidays and must define them all ourselves. This is how we would create
-a holidays class for a country that is not supported yet:
+We can also inherit from the HolidayBase class which has an empty `_populate` method so we start
+with no holidays and must define them all ourselves. This is how we would create a holidays class
+for a country that is not supported yet:
 
 ``` python
 >>> class NewCountryHolidays(holidays.HolidayBase):
@@ -351,8 +338,7 @@ a holidays class for a country that is not supported yet:
 >>> hdays = NewCountryHolidays()
 ```
 
-We can also include holidays for a subdivision (e.g. prov/state) in our
-new class:
+We can also include holidays for a subdivision (e.g. prov/state) in our new class:
 
 ``` python
 >>> class NewCountryHolidays(holidays.HolidayBase):
@@ -369,14 +355,13 @@ new class:
 >>> hdays = NewCountryHolidays(subdiv='XX')
 ```
 
-If you write the code necessary to create a holiday class for a country
-not currently supported please contribute your code to the project!
+If you write the code necessary to create a holiday class for a country not currently supported,
+please contribute your code to the project!
 
-Perhaps you just have a list of dates that are holidays and want to turn
-them into a Holiday class to access all the useful functionality. You
-can use the py:meth:append() method which
-accepts a dictionary of {date: name} pairs, a list of dates, or even
-singular date/string/timestamp objects:
+Perhaps you just have a list of dates that are holidays and want to turn them into a Holiday class
+to access all the useful functionality. You can use the `append()` method which accepts a
+dictionary of `{date: name}` pairs, a list of dates, or even singular date/string/timestamp
+objects:
 
 ``` python
 >>> custom_holidays = holidays.HolidayBase()
@@ -399,8 +384,8 @@ method to add years to an existing holiday object:
 
 ## Other ways to specify the country
 
-Each country has two class names that can be called in addition to the
-alpha-2 ISO code: its 3-digit ISO code and an internal class name.
+Each country has two class names that can be called in addition to the alpha-2 ISO code: its
+3-digit ISO code and an internal class name.
 
 ``` python
 >>> holidays.USA() == holidays.US()

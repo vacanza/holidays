@@ -79,13 +79,13 @@ specific date is a holiday as fast and flexible as possible.
 The latest stable version can always be installed or updated via pip:
 
 ``` shell
-$ pip install --upgrade holidays
+pip install --upgrade holidays
 ```
 
 The latest development (dev) version can be installed directly from GitHub:
 
 ``` shell
-$ pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
+pip install --upgrade https://github.com/vacanza/holidays/tarball/dev
 ```
 
 All new features are always first pushed to dev branch, then released on main branch upon official
@@ -1354,7 +1354,6 @@ code when available. The following financial markets are available:
 </tr>
 </tbody>
 </table>
-
 
 ## Contributions
 
