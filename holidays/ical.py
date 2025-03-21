@@ -43,6 +43,28 @@ class ICalExporter:
         except FileNotFoundError:
             raise FileNotFoundError("The file 'holidays/version.py' was not found.")
 
+        self.language = self._validate_language(getattr(self.holidays, "language", "EN"))
+
+    def _validate_language(self, language):
+        """
+        Validates the language code. Ensures it's a two-letter ISO 639-1 code
+        as iCal only supports that at the moment.
+
+        Args:
+        - language: The language code to validate.
+
+        Returns:
+        - Valid two-letter language code in uppercase.
+        """
+        language = (language or "EN").upper().split("_")[0]
+
+        if len(language) != 2:
+            raise ValueError(
+                f"Invalid language code: {language}. "
+                "Only two-letter ISO 639-1 codes supported by iCal"
+            )
+        return language
+
     def _fold_line(self, line):
         """
         Fold long lines according to RFC 5545.
@@ -104,7 +126,8 @@ class ICalExporter:
         lines = []
         lines.append("BEGIN:VCALENDAR")
         lines.append(
-            f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//EN"
+            f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//"
+            f"{self.language}//EN"
         )
         lines.append("VERSION:2.0")
 

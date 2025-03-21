@@ -15,7 +15,7 @@ from datetime import date
 from unittest import TestCase
 from unittest.mock import mock_open, patch
 
-from holidays import country_holidays
+from holidays import country_holidays, financial_holidays
 from holidays.ical import ICalExporter
 
 
@@ -58,6 +58,31 @@ class TestIcalExporter(TestCase):
             ICalExporter(self.us_holidays)
 
         self.assertEqual(str(context.exception), "The file 'holidays/version.py' was not found.")
+
+    def test_language_code(self):
+        # Has no `.language` attribute - default to EN.
+        dict_exporter = ICalExporter({date(2024, 1, 1): "New Year's Day"})
+        self.assertEqual(dict_exporter.language, "EN")
+
+        # None - default to EN.
+        nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
+        self.assertEqual(nyse_exporter.language, "EN")
+
+        # Valid 2-letter code.
+        th_exporter = ICalExporter(country_holidays("TH", years=2024, language="th"))
+        self.assertEqual(th_exporter.language, "TH")
+
+        # Transform "xx_XX" to Valid 2-letter code.
+        id_exporter = ICalExporter(country_holidays("ID", years=2024, language="en_US"))
+        self.assertEqual(id_exporter.language, "EN")
+
+        # Raise Exception if cannot be made into 2 letter.
+        with self.assertRaises(ValueError) as context:
+            ICalExporter(country_holidays("AW", years=2024, language="pap_AW"))
+        self.assertEqual(
+            str(context.exception),
+            "Invalid language code: PAP. Only two-letter ISO 639-1 codes supported by iCal",
+        )
 
     def test_single_holiday_event(self):
         output = "\n".join(self.exporter.generate())
