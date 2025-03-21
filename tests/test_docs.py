@@ -32,6 +32,15 @@ class TestReadme(TestCase):
 
         super().setUpClass()
 
+    def _parse_table(self, table_index: int):
+        """Parse HTML table at given index from README.md content."""
+
+        table_cell_re = re.compile(r"<td>(.*?)</td>")
+        tables = re.findall(r"<table style.*?</table>", self.readme_content, re.DOTALL)  # type: ignore[attr-defined]
+        table = tables[table_index]
+        rows = re.findall(r"<tr>(.*?)</tr>", table, re.DOTALL)
+        return [table_cell_re.findall(line) for line in rows[1:]]
+
     def test_supported_countries_count(self):
         actual_country_count = len(list_supported_countries(include_aliases=False))
         readme_country_count = int(
@@ -46,7 +55,6 @@ class TestReadme(TestCase):
         )
 
     def test_supported_countries_table(self):
-        # Parse table data.
         country_alpha_2_codes = set()
         country_default_languages = {}
         country_names = []
@@ -57,12 +65,10 @@ class TestReadme(TestCase):
         subdivision_group_re = re.compile(r"\w+:\s*([^\n:]+)")
         subdivision_and_aliases_re = re.compile(r",(?![^()]*\))")
         subdivision_aliases_re = re.compile(r"(.*?)\s\(([^()]*)\)")
-        table_cell_re = re.compile(r"<td>(.*?)</td>")
         default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
-        countries_table = re.findall(r"<table style.*?</table>", self.readme_content, re.DOTALL)[0]
-        rows = re.findall(r"<tr>(.*?)</tr>", countries_table, re.DOTALL)
-        table_content = [table_cell_re.findall(line) for line in rows[1:]]
+        # Parse 1st table.
+        table_content = self._parse_table(0)
 
         for row in table_content:
             # Country: 1st column.
@@ -226,17 +232,14 @@ class TestReadme(TestCase):
             )
 
     def test_supported_markets_table(self):
-        # Parse table data.
         market_mic_codes = set()
         market_default_languages = {}
         market_names = []
         market_supported_languages = {}
-        table_cell_re = re.compile(r"<td>(.*?)</td>")
         default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
-        markets_table = re.findall(r"<table style.*?</table>", self.readme_content, re.DOTALL)[1]
-        rows = re.findall(r"<tr>(.*?)</tr>", markets_table, re.DOTALL)
-        table_content = [table_cell_re.findall(line) for line in rows[1:]]
+        # Parse 2nd table.
+        table_content = self._parse_table(1)
         replace_chars = str.maketrans(
             {
                 " ": "",
