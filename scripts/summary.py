@@ -24,7 +24,7 @@ summary_file = "SUMMARY.md"
 with mkdocs_gen_files.open(summary_file, "w") as f:
     f.write("* [Overview](index.md)\n")
     f.write("* [Additional Examples](examples.md)\n")
-    f.write("* [Contributing](CONTRIBUTING.md)\n")
+    f.write("* [Contributing](contributing.md)\n")
     f.write("* [API Reference](api.md)\n")
     f.write("* [Mixins](mixins.md)\n")
     f.write("* Supported Entities\n")
