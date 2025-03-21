@@ -28,7 +28,7 @@ from holidays.constants import PUBLIC
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.readme_content = Path("README.rst").read_text(encoding="UTF-8")
+        cls.readme_content = Path("README.md").read_text(encoding="UTF-8")
 
         super().setUpClass()
 
@@ -40,14 +40,13 @@ class TestReadme(TestCase):
         self.assertEqual(
             readme_country_count,
             actual_country_count,
-            "README.rst supported countries statement is out of date: "
+            "README.md supported countries statement is out of date: "
             f"'We currently support {readme_country_count} countries'. "
             f"Actual supported countries count: {actual_country_count}",
         )
 
     def test_supported_countries_table(self):
         # Parse table data.
-        columns_number = 5
         country_alpha_2_codes = set()
         country_default_languages = {}
         country_names = []
@@ -58,31 +57,27 @@ class TestReadme(TestCase):
         subdivision_group_re = re.compile(r"\w+:\s*([^\n:]+)")
         subdivision_and_aliases_re = re.compile(r",(?![^()]*\))")
         subdivision_aliases_re = re.compile(r"(.*?)\s\(([^()]*)\)")
+        table_cell_re = re.compile(r"<td>(.*?)</td>")
+        default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
-        table_content = [
-            line.strip()
-            for line in re.findall(
-                r"Supported Categories(.*)Available Financial Markets",
-                self.readme_content,
-                re.DOTALL,
-            )[0].split("\n")
-            if line
-        ]
+        countries_table = re.findall(r"<table style.*?</table>", self.readme_content, re.DOTALL)[0]
+        rows = re.findall(r"<tr>(.*?)</tr>", countries_table, re.DOTALL)
+        table_content = [table_cell_re.findall(line) for line in rows[1:]]
 
-        for idx in range(0, len(table_content), columns_number):
+        for row in table_content:
             # Country: 1st column.
-            name = table_content[idx].strip(" *-").replace(" ", "").lower()
+            name = row[0].replace(" ", "").lower()
             country_names.append(name)
 
             # Code: 2nd column.
-            country_code = table_content[idx + 1].strip(" -")
+            country_code = row[1]
             if country_code:
                 country_alpha_2_codes.add(country_code)
 
             # Subdivisions and their aliases: 3rd column.
             country_subdivisions[country_code] = []
             country_subdivisions_aliases[country_code] = {}
-            subdivision_str = table_content[idx + 2].strip(" -")
+            subdivision_str = row[2]
             if subdivision_str:
                 for subdivision_groups in subdivision_str.split("."):
                     subdivision_aliases_group = subdivision_groups.split(";")[0].strip()
@@ -111,21 +106,21 @@ class TestReadme(TestCase):
                         country_subdivisions_aliases[country_code][subdivision] = aliases
 
             # Supported Languages: 4th column.
-            supported_languages = table_content[idx + 3].strip(" -")
+            supported_languages = row[3]
             if supported_languages:
                 languages = []
                 for supported_language in supported_languages.split(","):
                     supported_language = supported_language.strip()
 
-                    if "*" in supported_language:
-                        supported_language = supported_language.strip("*")
+                    if "<strong>" in supported_language:
+                        supported_language = default_value_re.search(supported_language).group(1)
                         country_default_languages[country_code] = supported_language
                     languages.append(supported_language)
 
                 country_supported_languages[country_code] = languages
 
             # Supported Categories: 5th column.
-            supported_categories = table_content[idx + 4].strip(" -")
+            supported_categories = row[4]
             if supported_categories:
                 categories = [PUBLIC]
                 for supported_category in supported_categories.split(","):
@@ -214,9 +209,9 @@ class TestReadme(TestCase):
                     country_default_languages.get(country_code),
                     instance.default_language,
                     f"Country {country_name} default language is not shown "
-                    "correctly in the table. Use **language** format "
+                    "correctly in the table. Use <strong>language</strong> format "
                     "to specify the country default language: "
-                    f"**{instance.default_language}**.",
+                    f"<strong>{instance.default_language}</strong>.",
                 )
 
             # Make sure supported categories are shown correctly.
@@ -232,52 +227,43 @@ class TestReadme(TestCase):
 
     def test_supported_markets_table(self):
         # Parse table data.
-        columns_number = 4
         market_mic_codes = set()
         market_default_languages = {}
         market_names = []
         market_supported_languages = {}
+        table_cell_re = re.compile(r"<td>(.*?)</td>")
+        default_value_re = re.compile(r"<strong>(.*?)</strong>")
 
-        table_content = [
-            line.strip()
-            for line in re.findall(
-                r"Info\s+- Supported Languages(.*)Contributions", self.readme_content, re.DOTALL
-            )[0].split("\n")
-            if line
-        ]
+        markets_table = re.findall(r"<table style.*?</table>", self.readme_content, re.DOTALL)[1]
+        rows = re.findall(r"<tr>(.*?)</tr>", markets_table, re.DOTALL)
+        table_content = [table_cell_re.findall(line) for line in rows[1:]]
+        replace_chars = str.maketrans(
+            {
+                " ": "",
+                ",": "",
+                "ã": "a",
+            }
+        )
 
-        for idx in range(0, len(table_content), columns_number):
+        for row in table_content:
             # Market: 1st column.
-            name = (
-                table_content[idx]
-                .strip(" *-")
-                .translate(
-                    str.maketrans(
-                        {
-                            " ": "",
-                            ",": "",
-                            "ã": "a",
-                        }
-                    )
-                )
-                .lower()
-            )
+            name = row[0].translate(replace_chars).lower()
             market_names.append(name)
 
             # Code: 2nd column.
-            market_code = table_content[idx + 1].strip(" -")
+            market_code = row[1]
             if market_code:
                 market_mic_codes.add(market_code)
 
             # Supported Languages: 4th column.
-            supported_languages = table_content[idx + 3].strip(" -")
+            supported_languages = row[3]
             if supported_languages:
                 languages = []
                 for supported_language in supported_languages.split(","):
                     supported_language = supported_language.strip()
 
-                    if "*" in supported_language:
-                        supported_language = supported_language.strip("*")
+                    if "<strong>" in supported_language:
+                        supported_language = default_value_re.search(supported_language).group(1)
                         market_default_languages[market_code] = supported_language
                     languages.append(supported_language)
 
@@ -329,7 +315,7 @@ class TestReadme(TestCase):
                     market_default_languages.get(market_code),
                     instance.default_language,
                     f"Market {market_name} default language is not shown "
-                    "correctly in the table. Use **language** format "
+                    "correctly in the table. Use <strong>language</strong> format "
                     "to specify the market default language: "
-                    f"**{instance.default_language}**.",
+                    f"<strong>{instance.default_language}</strong>.",
                 )

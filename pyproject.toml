@@ -43,7 +43,7 @@ Repository = "https://github.com/vacanza/holidays/"
 Changelog = "https://github.com/vacanza/holidays/releases/"
 
 [tool.bandit]
-exclude_dirs = ["docs", "tests"]
+exclude_dirs = ["tests"]
 
 [tool.coverage.run]
 branch = true
@@ -61,7 +61,6 @@ skip = ["docs"]
 strict = false
 
 [tool.ruff]
-extend-exclude = ["docs"]
 line-length = 99
 target-version = "py39"
 
