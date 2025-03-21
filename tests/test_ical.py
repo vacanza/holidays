@@ -13,6 +13,7 @@
 
 from datetime import date
 from unittest import TestCase
+from unittest.mock import mock_open, patch
 
 from holidays import country_holidays
 from holidays.ical import ICalExporter
@@ -30,10 +31,40 @@ class TestIcalExporter(TestCase):
         self.assertIn("VERSION:2.0", output)
         self.assertIn("END:VCALENDAR", output)
 
+    def test_ical_timestamp_provided(self):
+        custom_timestamp = "20250401T080000"
+
+        exporter = ICalExporter(self.us_holidays, ical_timestamp=custom_timestamp)
+        output = "\n".join(exporter.generate())
+
+        self.assertIn(custom_timestamp, output)
+
+    @patch("builtins.open", mock_open(read_data='__version__ = "0.20"\n'))
+    def test_version_found_in_file(self):
+        exporter = ICalExporter(self.us_holidays)
+
+        self.assertEqual(exporter.holidays_version, "0.20")
+
+    @patch("builtins.open", mock_open(read_data=""))
+    def test_version_not_found(self):
+        with self.assertRaises(ValueError) as context:
+            ICalExporter(self.us_holidays)
+
+        self.assertEqual(str(context.exception), "Version not found in holidays/version.py")
+
+    @patch("builtins.open", side_effect=FileNotFoundError)
+    def test_file_not_found(self, mock_file):
+        with self.assertRaises(FileNotFoundError) as context:
+            ICalExporter(self.us_holidays)
+
+        self.assertEqual(str(context.exception), "The file 'holidays/version.py' was not found.")
+
     def test_single_holiday_event(self):
         output = "\n".join(self.exporter.generate())
 
         self.assertIn("BEGIN:VEVENT", output)
+        self.assertIn("DTSTAMP:", output)
+        self.assertIn("UID:", output)
         self.assertIn("SUMMARY:New Year's Day", output)
         self.assertIn("DTSTART;VALUE=DATE:20240101", output)
         self.assertIn("DURATION:P1D", output)
@@ -46,6 +77,30 @@ class TestIcalExporter(TestCase):
 
         self.assertIn("Holiday 1", output)
         self.assertIn("Holiday 2", output)
+
+    def test_single_holiday_multiple_date_continuous(self):
+        # Keep this for when we support multiple-day length iCal export.
+        test_single_holiday_continuous = {
+            date(2024, 4, 13): "Songkran",
+            date(2024, 4, 14): "Songkran",
+            date(2024, 4, 15): "Songkran",
+        }
+        exporter = ICalExporter(test_single_holiday_continuous)
+        output = "\n".join(exporter.generate())
+
+        songkran_count = output.count("Songkran")
+        self.assertEqual(songkran_count, 3)
+
+    def test_single_holiday_multiple_date_noncontinuous(self):
+        test_single_holiday_noncontinuous = {
+            date(2000, 1, 8): "Eid al-Fitr",
+            date(2000, 12, 27): "Eid al-Fitr",
+        }
+        exporter = ICalExporter(test_single_holiday_noncontinuous)
+        output = "\n".join(exporter.generate())
+
+        eid_al_fitr_count = output.count("Eid al-Fitr")
+        self.assertEqual(eid_al_fitr_count, 2)
 
     def test_localized_holiday_names(self):
         jp_holidays = country_holidays("JP", years=2024, language="ja")
