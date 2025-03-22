@@ -17,18 +17,16 @@ from holidays.version import __version__
 
 
 class ICalExporter:
-    def __init__(self, holidays_object, return_bytes=False, ical_timestamp=None):
+    def __init__(self, holidays_object, ical_timestamp=None):
         """
         Initialize iCalendar exporter
 
         Args:
         - holidays_object: Holidays object containing holiday data.
-        - return_bytes(bool): If True, return bytes instead of string.
         - ical_timestamp: Optional override for the iCal "DTSTAMP" parameter.
             If not provided, current datetime (UTC timezone) will be used instead.
         """
         self.holidays = holidays_object
-        self.return_bytes = return_bytes
         self.ical_timestamp = ical_timestamp or datetime.now(timezone.utc).strftime(
             "%Y%m%dT%H%M%SZ"
         )
@@ -55,7 +53,9 @@ class ICalExporter:
         if len(language) != 2:
             raise ValueError(
                 f"Invalid language code: {language}. "
-                "Only two-letter ISO 639-1 codes supported by iCal"
+                "Only two-letter ISO 639-1 codes are supported by iCal. "
+                "Refer to the 'ISO 639-1 Code' column at "
+                "https://www.loc.gov/standards/iso639-2/php/code_list.php for valid codes."
             )
         return language
 
@@ -109,9 +109,12 @@ class ICalExporter:
 
         return folded_lines
 
-    def generate(self):
+    def generate(self, return_bytes: bool = False):
         """
         Generate iCalendar data.
+
+        Args:
+        - return_bytes(bool): If True, return bytes instead of string.
 
         Returns:
         - str or bytes: The complete iCalendar data
@@ -132,4 +135,4 @@ class ICalExporter:
         lines.append("END:VCALENDAR")
 
         output = "\r\n".join(lines) + "\r\n"
-        return output.encode("utf-8") if self.return_bytes else output
+        return output.encode("utf-8") if return_bytes else output

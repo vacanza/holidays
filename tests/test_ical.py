@@ -28,10 +28,9 @@ class MockHolidays(HolidayBase):
 
 class TestIcalExporter(TestCase):
     def setUp(self):
-        self.jp_holidays = country_holidays("JP", years=2000, language="ja")
         self.us_holidays = country_holidays("US", years=2024)
         self.id_exporter = ICalExporter(country_holidays("ID", years=2000, language="en_US"))
-        self.jp_exporter = ICalExporter(self.jp_holidays)
+        self.jp_exporter = ICalExporter(country_holidays("JP", years=2000, language="ja"))
         self.th_exporter = ICalExporter(country_holidays("TH", years=2024))
         self.us_exporter = ICalExporter(self.us_holidays)
 
@@ -70,7 +69,12 @@ class TestIcalExporter(TestCase):
             ICalExporter(country_holidays("AW", years=2024, language="pap_AW"))
         self.assertEqual(
             str(context.exception),
-            "Invalid language code: PAP. Only two-letter ISO 639-1 codes supported by iCal",
+            (
+                "Invalid language code: PAP. "
+                "Only two-letter ISO 639-1 codes are supported by iCal. "
+                "Refer to the 'ISO 639-1 Code' column at "
+                "https://www.loc.gov/standards/iso639-2/php/code_list.php for valid codes."
+            ),
         )
 
     def test_single_holiday_event(self):
@@ -167,14 +171,12 @@ class TestIcalExporter(TestCase):
                 self.assertTrue(line[0].isspace())
 
     def test_return_bytes(self):
-        exporter = ICalExporter(self.us_holidays, return_bytes=True)
-        output = exporter.generate()
+        output = self.us_exporter.generate(return_bytes=True)
 
         self.assertIsInstance(output, bytes)
         self.assertIn(b"SUMMARY:New Year's Day", output.split(b"\r\n"))
 
-        exporter = ICalExporter(self.jp_holidays, return_bytes=True)
-        output = exporter.generate()
+        output = self.jp_exporter.generate(return_bytes=True)
 
         self.assertIsInstance(output, bytes)
         self.assertIn(b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5", output.split(b"\r\n"))
