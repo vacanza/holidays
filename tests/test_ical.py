@@ -100,8 +100,8 @@ class TestIcalExporter(TestCase):
         output = self.th_exporter.generate()
 
         songkran_count = output.count("SUMMARY:วันสงกรานต์\r\n")
-        # Keep this for when we support multiple-day length iCal export.
-        self.assertEqual(songkran_count, 3)
+        self.assertEqual(songkran_count, 1)
+        self.assertIn("DURATION:P3D\r\n", output)
 
     def test_single_holiday_multiple_date_noncontinuous(self):
         # 2x "Eid al-Fitr", 2x "Eid al-Fitr Second Day".

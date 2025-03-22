@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from holidays.version import __version__
 
@@ -79,13 +79,14 @@ class ICalExporter:
 
         return result
 
-    def _generate_event(self, date, holiday_name):
+    def _generate_event(self, date, holiday_name, holiday_length: int = 1):
         """
         Generate a single holiday event.
 
         Args:
         - date: Holiday date.
         - holiday_name: Holiday name.
+        - holiday_length: Holiday length in days, default to 1.
 
         Returns:
         - list[str]: List of iCalender format event lines.
@@ -99,7 +100,7 @@ class ICalExporter:
             f"UID:{event_uid}",
             f"SUMMARY:{holiday_name}",
             f"DTSTART;VALUE=DATE:{formatted_date}",
-            "DURATION:P1D",
+            f"DURATION:P{holiday_length}D",
             "END:VEVENT",
         ]
 
@@ -128,9 +129,24 @@ class ICalExporter:
         )
         lines.append("VERSION:2.0")
 
-        for dt in sorted(self.holidays.keys()):
-            for name in self.holidays.get_list(dt):
-                lines.extend(self._generate_event(dt, name))
+        sorted_dates = sorted(self.holidays.keys())
+        i = 0
+        while i < len(sorted_dates):
+            dt = sorted_dates[i]
+            names = self.holidays.get_list(dt)
+
+            for name in names:
+                days = 1
+                while (
+                    i + days < len(sorted_dates)
+                    and sorted_dates[i + days] == sorted_dates[i] + timedelta(days=days)
+                    and name in self.holidays.get_list(sorted_dates[i + days])
+                ):
+                    days += 1
+
+                lines.extend(self._generate_event(dt, name, days))
+
+            i += days
 
         lines.append("END:VCALENDAR")
 
