@@ -1,15 +1,13 @@
-// Opens external links in a new tab with security attributes
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("a[href]").forEach((link) => {
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Opens external links in a new tab with security attributes
+    document.querySelectorAll("a[href]").forEach(link => {
         if (link.hostname !== window.location.hostname) {
             link.setAttribute("target", "_blank");
             link.setAttribute("rel", "noopener noreferrer");
         }
     });
-});
 
-
-document.addEventListener("DOMContentLoaded", () => {
     // Style File Name in the Webpage
     document.querySelectorAll(".doc.doc-object.doc-module").forEach(module => {
         const codeElem = module.querySelector("h2 code");
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".doc.doc-object.doc-class").forEach(classElem => {
         const codeElem = classElem.querySelector("h3 code");
         if (codeElem) {
-            codeElem.innerHTML = "<span class='class'>class </span>" + codeElem.innerHTML;
+            codeElem.innerHTML = `<span class='class'>class </span>${codeElem.innerHTML}`;
         }
     });
 
