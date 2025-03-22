@@ -15,6 +15,14 @@ from datetime import datetime, timedelta, timezone
 
 from holidays.version import __version__
 
+# iCal-specific constants
+ICAL_CHARSET = "utf-8"
+
+CONTENT_LINE_MAX_LENGTH = 75
+CONTENT_LINE_DELIMITER = "\r\n"
+CONTENT_LINE_DELIMITER_BYTES = CONTENT_LINE_DELIMITER.encode(ICAL_CHARSET)
+CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
+
 
 class ICalExporter:
     def __init__(self, holidays_object, ical_timestamp=None):
@@ -59,34 +67,57 @@ class ICalExporter:
             )
         return language
 
-    def _fold_line(self, line):
+    def _fold_line(self, line: str):
         """
         Fold long lines according to RFC 5545.
 
-        Lines of text SHOULD NOT be longer than 75 octets.
+        Content lines SHOULD NOT exceed 75 octets. If a line is too long,
+        it must be split into multiple lines, with each continuation line
+        starting with a space.
+
+        Args:
+        - line (str): The content line to be folded.
+
+        Returns:
+        - str: The folded content line.
         """
-        if len(line.encode("utf-8")) <= 75:
-            return [line]
+        if line.isascii():
+            # Simple split for ASCII: every (CONTENT_LINE_MAX_LENGTH - 1) chars,
+            # as first char of the next line is space
+            if len(line) > CONTENT_LINE_MAX_LENGTH:
+                return CONTENT_LINE_DELIMITER_WRAP.join(
+                    line[i : i + CONTENT_LINE_MAX_LENGTH - 1]
+                    for i in range(0, len(line), CONTENT_LINE_MAX_LENGTH - 1)
+                )
 
-        result = [line]
-        while len(result[-1].encode("utf-8")) > 75:
-            current = result.pop()
-            pos = 74
-            while len(current[:pos].encode("utf-8")) > 74:
-                pos -= 1
-            result.append(current[:pos])
-            result.append(f" {current[pos:]}")
+        elif len(line.encode(ICAL_CHARSET)) > CONTENT_LINE_MAX_LENGTH:
+            # Handle non-ASCII text while respecting byte length
+            parts = []
+            part_start = 0
+            part_len = 0
+            for i, char in enumerate(line):
+                char_byte_len = len(char.encode(ICAL_CHARSET))
+                part_len += char_byte_len
 
-        return result
+                if part_len > CONTENT_LINE_MAX_LENGTH:
+                    parts.append(line[part_start:i])
+                    part_start = i
+                    part_len = char_byte_len + 1  # line start with space
 
-    def _generate_event(self, date, holiday_name, holiday_length: int = 1):
+            parts.append(line[part_start:])
+            return CONTENT_LINE_DELIMITER_WRAP.join(parts)
+
+        # Return as-is if it doesn't exceed the limit
+        return line
+
+    def _generate_event(self, date, holiday_name: str, holiday_length: int = 1):
         """
         Generate a single holiday event.
 
         Args:
         - date: Holiday date.
-        - holiday_name: Holiday name.
-        - holiday_length: Holiday length in days, default to 1.
+        - holiday_name (str): Holiday name.
+        - holiday_length (int): Holiday length in days, default to 1.
 
         Returns:
         - list[str]: List of iCalender format event lines.
@@ -98,17 +129,13 @@ class ICalExporter:
             "BEGIN:VEVENT",
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
-            f"SUMMARY:{holiday_name}",
+            self._fold_line(f"SUMMARY:{holiday_name}"),
             f"DTSTART;VALUE=DATE:{formatted_date}",
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",
         ]
 
-        folded_lines = []
-        for line in lines:
-            folded_lines.extend(self._fold_line(line))
-
-        return folded_lines
+        return lines
 
     def generate(self, return_bytes: bool = False):
         """
@@ -125,11 +152,13 @@ class ICalExporter:
         lines.append("BEGIN:VCALENDAR")
         lines.append(
             f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//"
-            f"{self.language}//EN"
+            f"{self.language}"
         )
         lines.append("VERSION:2.0")
 
         sorted_dates = sorted(self.holidays.keys())
+        # For Continuous Holidays with exact same name, they are merged
+        # together with increased DURATION
         i = 0
         while i < len(sorted_dates):
             dt = sorted_dates[i]
@@ -150,5 +179,6 @@ class ICalExporter:
 
         lines.append("END:VCALENDAR")
 
-        output = "\r\n".join(lines) + "\r\n"
-        return output.encode("utf-8") if return_bytes else output
+        lines.append("")
+        output = CONTENT_LINE_DELIMITER.join(lines)
+        return output.encode(ICAL_CHARSET) if return_bytes else output

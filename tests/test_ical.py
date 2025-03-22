@@ -16,7 +16,13 @@ from unittest import TestCase
 
 from holidays import country_holidays, financial_holidays
 from holidays.holiday_base import HolidayBase
-from holidays.ical import ICalExporter
+from holidays.ical import (
+    CONTENT_LINE_DELIMITER,
+    CONTENT_LINE_DELIMITER_BYTES,
+    CONTENT_LINE_MAX_LENGTH,
+    ICAL_CHARSET,
+    ICalExporter,
+)
 
 
 class MockHolidays(HolidayBase):
@@ -130,8 +136,8 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(test_holidays)
         output = exporter.generate()
 
-        for line in output.split("\r\n"):
-            self.assertLessEqual(len(line.encode("utf-8")), 75)
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
 
@@ -140,8 +146,8 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(test_holidays)
         output = exporter.generate()
 
-        for line in output.split("\r\n"):
-            self.assertLessEqual(len(line.encode("utf-8")), 75)
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
 
@@ -150,8 +156,8 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(test_holidays)
         output = exporter.generate()
 
-        for line in output.split("\r\n"):
-            self.assertLessEqual(len(line.encode("utf-8")), 75)
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
 
@@ -164,8 +170,8 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(test_holidays)
         output = exporter.generate()
 
-        for line in output.split("\r\n"):
-            self.assertLessEqual(len(line.encode("utf-8")), 75)
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
 
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
@@ -174,19 +180,23 @@ class TestIcalExporter(TestCase):
         output = self.us_exporter.generate(return_bytes=True)
 
         self.assertIsInstance(output, bytes)
-        self.assertIn(b"SUMMARY:New Year's Day", output.split(b"\r\n"))
+        self.assertIn(b"SUMMARY:New Year's Day", output.split(CONTENT_LINE_DELIMITER_BYTES))
 
         output = self.jp_exporter.generate(return_bytes=True)
 
         self.assertIsInstance(output, bytes)
-        self.assertIn(b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5", output.split(b"\r\n"))
+        self.assertIn(
+            b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5", output.split(CONTENT_LINE_DELIMITER_BYTES)
+        )
 
     def test_crlf_line_endings(self):
         output = self.th_exporter.generate()
 
         lines = output.splitlines(True)
         for line in lines:
-            self.assertTrue(line.endswith("\r\n"), f"Line did not end with CRLF: {repr(line)}")
+            self.assertTrue(
+                line.endswith(CONTENT_LINE_DELIMITER), f"Line did not end with CRLF: {repr(line)}"
+            )
 
     def test_multiple_fold_iterations(self):
         long_japanese = "あ" * 50
@@ -194,7 +204,7 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(test_holidays)
         output = exporter.generate()
 
-        for line in output.split("\r\n"):
-            self.assertLessEqual(len(line.encode("utf-8")), 75)
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
