@@ -211,7 +211,7 @@ Released October 7, 2024
 - Update US holidays: American Samoa holidays (#2017 by @KJhellico)
 - Update United States holidays: fix Washington's Birthday in GA & IN (#2014 by @KJhellico)
 - Update `ci` label configuration (#2009 by @arkid15r)
-- Update apostrophes: change `'` to `'` (#2016 by @arkid15r)
+- Update apostrophes: change `’` to `'` (#2016 by @arkid15r)
 - Update working day related calculations (#2010 by @KJhellico, @arkid15r)
 - Add @PPsyrius to CODEOWNERS (#2008 by @arkid15r)
 - Move to `holidays` from `python-holidays` (#2027 by @arkid15r)
@@ -359,7 +359,7 @@ Released May 20, 2024
 Released May 6, 2024
 
 - Introduce workdays calculation support (#1773 by @KJhellico)
-- Refactor `HolidayBase::__getattr__`: speed up add_holiday_* methods (#1764 by @KJhellico)
+- Refactor `HolidayBase::__getattr__`: speed up \_add_holiday_* methods (#1764 by @KJhellico)
 - Add Palau holidays (#1776 by @PPsyrius, @arkid15r)
 - Update Greece holidays: move 2024 Labor Day to May 7 (#1786 by @KJhellico)
 - Update Timor-Leste holidays (#1772 by @KJhellico)
@@ -745,7 +745,7 @@ Released June 21, 2023
 Released June 19, 2023
 
 - Refactor HolidayBase::pop_named (#1306 by @arkid15r)
-- Refactor add_observed() methods (#1282 by @KJhellico)
+- Refactor `_add_observed()` methods (#1282 by @KJhellico)
 - Refactor common::TestCase methods (#1308 by @arkid15r)
 - Refactor common::TestCase::assertLocalizedHolidays (#1315 by @arkid15r)
 - Refactor holiday groups (#1295 by @arkid15r)
