@@ -16,11 +16,9 @@ from datetime import datetime, timedelta, timezone
 from holidays.version import __version__
 
 # iCal-specific constants
-ICAL_CHARSET = "utf-8"
-
 CONTENT_LINE_MAX_LENGTH = 75
 CONTENT_LINE_DELIMITER = "\r\n"
-CONTENT_LINE_DELIMITER_BYTES = CONTENT_LINE_DELIMITER.encode(ICAL_CHARSET)
+CONTENT_LINE_DELIMITER_BYTES = CONTENT_LINE_DELIMITER.encode()
 CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
@@ -90,13 +88,13 @@ class ICalExporter:
                     for i in range(0, len(line), CONTENT_LINE_MAX_LENGTH - 1)
                 )
 
-        elif len(line.encode(ICAL_CHARSET)) > CONTENT_LINE_MAX_LENGTH:
+        elif len(line.encode()) > CONTENT_LINE_MAX_LENGTH:
             # Handle non-ASCII text while respecting byte length
             parts = []
             part_start = 0
             part_len = 0
             for i, char in enumerate(line):
-                char_byte_len = len(char.encode(ICAL_CHARSET))
+                char_byte_len = len(char.encode())
                 part_len += char_byte_len
 
                 if part_len > CONTENT_LINE_MAX_LENGTH:
@@ -120,9 +118,8 @@ class ICalExporter:
         - holiday_length (int): Holiday length in days, default to 1.
 
         Returns:
-        - list[str]: List of iCalender format event lines.
+        - list[str]: List of iCalendar format event lines.
         """
-        formatted_date = date.strftime("%Y%m%d")
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
 
         lines = [
@@ -130,7 +127,7 @@ class ICalExporter:
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
             self._fold_line(f"SUMMARY:{holiday_name}"),
-            f"DTSTART;VALUE=DATE:{formatted_date}",
+            f"DTSTART;VALUE=DATE:{date:%Y%m%d}",
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",
         ]
@@ -148,13 +145,12 @@ class ICalExporter:
         - str or bytes: The complete iCalendar data
             (string or UTF-8 bytes depending on return_bytes).
         """
-        lines = []
-        lines.append("BEGIN:VCALENDAR")
-        lines.append(
+        lines = [
+            "BEGIN:VCALENDAR",
             f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//"
-            f"{self.language}"
-        )
-        lines.append("VERSION:2.0")
+            f"{self.language}",
+            "VERSION:2.0",
+        ]
 
         sorted_dates = sorted(self.holidays.keys())
         # For Continuous Holidays with exact same name, they are merged
@@ -163,8 +159,11 @@ class ICalExporter:
         while i < len(sorted_dates):
             dt = sorted_dates[i]
             names = self.holidays.get_list(dt)
+            days_passed = 0
 
             for name in names:
+                if not name.strip():
+                    raise ValueError("Holiday name cannot be empty.")
                 days = 1
                 while (
                     i + days < len(sorted_dates)
@@ -173,12 +172,13 @@ class ICalExporter:
                 ):
                     days += 1
 
+                days_passed = days
                 lines.extend(self._generate_event(dt, name, days))
 
-            i += days
+            i += days_passed
 
         lines.append("END:VCALENDAR")
 
         lines.append("")
         output = CONTENT_LINE_DELIMITER.join(lines)
-        return output.encode(ICAL_CHARSET) if return_bytes else output
+        return output.encode() if return_bytes else output

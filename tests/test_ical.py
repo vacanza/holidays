@@ -20,7 +20,6 @@ from holidays.ical import (
     CONTENT_LINE_DELIMITER,
     CONTENT_LINE_DELIMITER_BYTES,
     CONTENT_LINE_MAX_LENGTH,
-    ICAL_CHARSET,
     ICalExporter,
 )
 
@@ -39,6 +38,20 @@ class TestIcalExporter(TestCase):
         self.jp_exporter = ICalExporter(country_holidays("JP", years=2000, language="ja"))
         self.th_exporter = ICalExporter(country_holidays("TH", years=2024))
         self.us_exporter = ICalExporter(self.us_holidays)
+
+    def _assert_line_lengths(self, output):
+        for line in output.split(CONTENT_LINE_DELIMITER):
+            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
+            if line.startswith(" "):
+                self.assertTrue(
+                    line[0].isspace(),
+                    f"Line doesn't confirm to RFC 5545 length limits: {repr(line)}",
+                )
+
+    def _assert_byte_output(self, exporter, expected_bytes):
+        output = exporter.generate(return_bytes=True)
+        self.assertIsInstance(output, bytes)
+        self.assertIn(expected_bytes, output.split(CONTENT_LINE_DELIMITER_BYTES))
 
     def test_basic_calendar_structure(self):
         output = self.us_exporter.generate()
@@ -116,6 +129,17 @@ class TestIcalExporter(TestCase):
         eid_al_fitr_count = output.count("SUMMARY:Eid al-Fitr\r\n")
         self.assertEqual(eid_al_fitr_count, 2)
 
+    def test_combined_holidays_list(self):
+        # All 3 "New Year's Day" should be merged into 1 single instance.
+        cn_holidays = country_holidays("CN", years=2024, language="en_US")
+        jp_holidays = country_holidays("JP", years=2024, language="en_US")
+        kr_holidays = country_holidays("KR", years=2024, language="en_US")
+        east_asia_holidays = cn_holidays + jp_holidays + kr_holidays
+        output = ICalExporter(east_asia_holidays).generate()
+
+        new_years_day_count = output.count("SUMMARY:New Year's Day\r\n")
+        self.assertEqual(new_years_day_count, 1)
+
     def test_localized_holiday_names(self):
         output = self.jp_exporter.generate()
 
@@ -133,33 +157,15 @@ class TestIcalExporter(TestCase):
     def test_line_folding_edge_cases(self):
         line_74_bytes = "x" * 66
         test_holidays = MockHolidays()._add_custom_holiday(line_74_bytes)
-        exporter = ICalExporter(test_holidays)
-        output = exporter.generate()
-
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
-            if line.startswith(" "):
-                self.assertTrue(line[0].isspace())
+        self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
         exact_75_bytes = "x" * 72 + "あ"
         test_holidays = MockHolidays()._add_custom_holiday(exact_75_bytes)
-        exporter = ICalExporter(test_holidays)
-        output = exporter.generate()
-
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
-            if line.startswith(" "):
-                self.assertTrue(line[0].isspace())
+        self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
         needs_adjustment = "x" * 73 + "あ"
         test_holidays = MockHolidays()._add_custom_holiday(needs_adjustment)
-        exporter = ICalExporter(test_holidays)
-        output = exporter.generate()
-
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
-            if line.startswith(" "):
-                self.assertTrue(line[0].isspace())
+        self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
     def test_long_holiday(self):
         very_long_name = (
@@ -171,23 +177,14 @@ class TestIcalExporter(TestCase):
         output = exporter.generate()
 
         for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
+            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
 
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
 
     def test_return_bytes(self):
-        output = self.us_exporter.generate(return_bytes=True)
-
-        self.assertIsInstance(output, bytes)
-        self.assertIn(b"SUMMARY:New Year's Day", output.split(CONTENT_LINE_DELIMITER_BYTES))
-
-        output = self.jp_exporter.generate(return_bytes=True)
-
-        self.assertIsInstance(output, bytes)
-        self.assertIn(
-            b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5", output.split(CONTENT_LINE_DELIMITER_BYTES)
-        )
+        self._assert_byte_output(self.us_exporter, b"SUMMARY:New Year's Day")
+        self._assert_byte_output(self.jp_exporter, b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5")
 
     def test_crlf_line_endings(self):
         output = self.th_exporter.generate()
@@ -198,6 +195,21 @@ class TestIcalExporter(TestCase):
                 line.endswith(CONTENT_LINE_DELIMITER), f"Line did not end with CRLF: {repr(line)}"
             )
 
+    def test_unique_uid_generation(self):
+        output = self.us_exporter.generate()
+        uids = [line for line in output.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")]
+
+        self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
+
+    def test_empty_summary_handling(self):
+        test_holidays = MockHolidays()._add_custom_holiday("")
+        exporter = ICalExporter(test_holidays)
+
+        with self.assertRaises(ValueError) as context:
+            exporter.generate()
+
+        self.assertEqual(str(context.exception), "Holiday name cannot be empty.")
+
     def test_multiple_fold_iterations(self):
         long_japanese = "あ" * 50
         test_holidays = MockHolidays()._add_custom_holiday(long_japanese)
@@ -205,6 +217,6 @@ class TestIcalExporter(TestCase):
         output = exporter.generate()
 
         for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode(ICAL_CHARSET)), CONTENT_LINE_MAX_LENGTH)
+            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
