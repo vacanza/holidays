@@ -33,14 +33,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
-    """
-    References:
+    """Iran holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
-    * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
-    * <https://www.time.ir>
-    * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
-    * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
+        * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
+        * <https://www.time.ir>
+        * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
+        * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
     country = "IR"
@@ -53,8 +53,10 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         IslamicHolidays.__init__(
             self, cls=IranIslamicHolidays, show_estimated=islamic_show_estimated

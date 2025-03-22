@@ -32,11 +32,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 
 
 class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Japan holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Japan>
-    * <https://www.boj.or.jp/en/about/outline/holi.htm>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Japan>
+        * <https://www.boj.or.jp/en/about/outline/holi.htm>
     """
 
     country = "JP"

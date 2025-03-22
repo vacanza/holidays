@@ -23,13 +23,11 @@ from holidays.observed_holiday_base import (
 
 
 class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Greece holidays.
+    """Greece holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Greece>
-    * [2024 Labor Day transfer](https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240201406)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Greece>
+        * [2024 Labor Day transfer](https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240201406)
     """
 
     country = "GR"

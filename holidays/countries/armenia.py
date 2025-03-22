@@ -18,14 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Armenia holidays.
+    """Armenia holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Armenia>
-    * <http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8>
-    * <https://www.arlis.am/documentview.aspx?docid=259>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Armenia>
+        * <http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8>
+        * <https://www.arlis.am/documentview.aspx?docid=259>
     """
 
     country = "AM"

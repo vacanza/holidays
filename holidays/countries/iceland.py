@@ -18,11 +18,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Iceland holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Iceland>
-    * <https://www.althingi.is/lagas/nuna/1971088.html>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iceland>
+        * <https://www.althingi.is/lagas/nuna/1971088.html>
     """
 
     country = "IS"

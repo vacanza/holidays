@@ -18,9 +18,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101>
-    * <https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays>
+    """Marshall Islands holidays.
+
+    References:
+        * <https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101>
+        * <https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays>
     """
 
     country = "MH"

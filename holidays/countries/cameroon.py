@@ -24,12 +24,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 class Cameroon(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
-    References:
+    """Cameroon holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
-    * <https://www.timeanddate.com/holidays/cameroon>
-    * <https://www.officeholidays.com/countries/cameroon>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
+        * <https://www.timeanddate.com/holidays/cameroon>
+        * <https://www.officeholidays.com/countries/cameroon>
     """
 
     country = "CM"
@@ -39,8 +39,10 @@ class Cameroon(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

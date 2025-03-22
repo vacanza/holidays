@@ -22,13 +22,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    Ukraine holidays.
+    """Ukraine holidays.
 
     References:
-
-    * [Labor Code of Ukraine, Art. 73](https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454)
-    * <https://zakon.rada.gov.ua/laws/show/585-12>
+        * [Labor Code of Ukraine, Art. 73](https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454)
+        * <https://zakon.rada.gov.ua/laws/show/585-12>
     """
 
     country = "UA"
@@ -168,57 +166,56 @@ class UKR(Ukraine):
 
 
 class UkraineStaticHolidays:
-    """
-    Substituted holidays:
+    """Ukraine special holidays.
 
-    * [1991](https://zakon.rada.gov.ua/laws/show/60-91-%D0%BF)
-    * [1992 [1]](https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF)
-    * [1992 [2]](https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF)
-    * [1993 [1]](https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF)
-    * [1993 [2]](https://zakon.rada.gov.ua/laws/show/725-92-%D0%BF)
-    * [1994](https://zakon.rada.gov.ua/laws/show/98-94-%D0%BF)
-    * [1995 [1]](https://zakon.rada.gov.ua/laws/show/852-95-%D0%BF)
-    * [1995 [2]](https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF)
-    * [1995 [3]](https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF)
-    * [1996](https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF)
-    * [1997 [1]](https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF)
-    * [1997 [2]](https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF)
-    * [1998](https://zakon.rada.gov.ua/laws/show/1404-97-%D0%BF>)
-    * [1999 [1]](https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF>)
-    * [1999 [2]](https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF>)
-    * [1999 [3]](https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF)
-    * [2000 [1]](https://zakon.rada.gov.ua/laws/show/1251-2000-%D0%BF)
-    * [2000 [2]](https://zakon.rada.gov.ua/laws/show/717-2000-%D0%BF)
-    * [2001 [1]](https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80)
-    * [2001 [2]](https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF)
-    * [2002](https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80)
-    * [2002 - 2003](https:/zakon.rada.gov.ua/laws/show/705-2002-%D1%80)
-    * [2004](https://zakon.rada.gov.ua/laws/show/773-2003-%D1%80)
-    * [2005 [1]](https://zakon.rada.gov.ua/laws/show/936-2004-%D1%80)
-    * [2005 [2]](https://zakon.rada.gov.ua/laws/show/133-2005-%D1%80)
-    * [2006 [1]](https://zakon.rada.gov.ua/laws/show/490-2005-%D1%80)
-    * [2006 [2]](https://zakon.rada.gov.ua/laws/show/562-2005-%D1%80)
-    * [2007](https://zakon.rada.gov.ua/laws/show/612-2006-%D1%80)
-    * [2008 [1]](https://zakon.rada.gov.ua/laws/show/1059-2007-%D1%80)
-    * [2008 [2]](https://zakon.rada.gov.ua/laws/show/538-2008-%D1%80)
-    * [2009](https://zakon.rada.gov.ua/laws/show/1458-2008-%D1%80)
-    * [2010](https://zakon.rada.gov.ua/laws/show/1412-2009-%D1%80)
-    * [2011](https://zakon.rada.gov.ua/laws/show/2130-2010-%D1%80)
-    * [2012](https://zakon.rada.gov.ua/laws/show/1210-2011-%D1%80)
-    * [2013](https://zakon.rada.gov.ua/laws/show/1043-2012-%D1%80)
-    * [2014](https://zakon.rada.gov.ua/laws/show/920-2013-%D1%80)
-    * [2015](https://zakon.rada.gov.ua/laws/show/1084-2014-%D1%80)
-    * [2016](https://zakon.rada.gov.ua/laws/show/1155-2015-%D1%80)
-    * [2017](https://zakon.rada.gov.ua/laws/show/850-2016-%D1%80)
-    * [2018](https://zakon.rada.gov.ua/laws/show/1-2018-%D1%80)
-    * [2019](https://zakon.rada.gov.ua/laws/show/7-2019-%D1%80)
-    * [2020](https://zakon.rada.gov.ua/laws/show/995-2019-%D1%80)
-    * [2021](https://zakon.rada.gov.ua/laws/show/1191-2020-%D1%80)
-    * [2022](https://zakon.rada.gov.ua/laws/show/1004-2021-%D1%80)
+    Substituted holidays References:
+        * [1991](https://zakon.rada.gov.ua/laws/show/60-91-%D0%BF)
+        * [1992 [1]](https://zakon.rada.gov.ua/laws/show/202-92-%D0%BF)
+        * [1992 [2]](https://zakon.rada.gov.ua/laws/show/377-91-%D0%BF)
+        * [1993 [1]](https://zakon.rada.gov.ua/laws/show/563-93-%D0%BF)
+        * [1993 [2]](https://zakon.rada.gov.ua/laws/show/725-92-%D0%BF)
+        * [1994](https://zakon.rada.gov.ua/laws/show/98-94-%D0%BF)
+        * [1995 [1]](https://zakon.rada.gov.ua/laws/show/852-95-%D0%BF)
+        * [1995 [2]](https://zakon.rada.gov.ua/laws/show/634-95-%D0%BF)
+        * [1995 [3]](https://zakon.rada.gov.ua/laws/show/266-95-%D0%BF)
+        * [1996](https://zakon.rada.gov.ua/laws/show/424-96-%D0%BF)
+        * [1997 [1]](https://zakon.rada.gov.ua/laws/show/326-97-%D0%BF)
+        * [1997 [2]](https://zakon.rada.gov.ua/laws/show/1547-96-%D0%BF)
+        * [1998](https://zakon.rada.gov.ua/laws/show/1404-97-%D0%BF>)
+        * [1999 [1]](https://zakon.rada.gov.ua/laws/show/1433-99-%D0%BF>)
+        * [1999 [2]](https://zakon.rada.gov.ua/laws/show/558-99-%D0%BF>)
+        * [1999 [3]](https://zakon.rada.gov.ua/laws/show/2070-98-%D0%BF)
+        * [2000 [1]](https://zakon.rada.gov.ua/laws/show/1251-2000-%D0%BF)
+        * [2000 [2]](https://zakon.rada.gov.ua/laws/show/717-2000-%D0%BF)
+        * [2001 [1]](https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80)
+        * [2001 [2]](https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF)
+        * [2002](https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80)
+        * [2002 - 2003](https:/zakon.rada.gov.ua/laws/show/705-2002-%D1%80)
+        * [2004](https://zakon.rada.gov.ua/laws/show/773-2003-%D1%80)
+        * [2005 [1]](https://zakon.rada.gov.ua/laws/show/936-2004-%D1%80)
+        * [2005 [2]](https://zakon.rada.gov.ua/laws/show/133-2005-%D1%80)
+        * [2006 [1]](https://zakon.rada.gov.ua/laws/show/490-2005-%D1%80)
+        * [2006 [2]](https://zakon.rada.gov.ua/laws/show/562-2005-%D1%80)
+        * [2007](https://zakon.rada.gov.ua/laws/show/612-2006-%D1%80)
+        * [2008 [1]](https://zakon.rada.gov.ua/laws/show/1059-2007-%D1%80)
+        * [2008 [2]](https://zakon.rada.gov.ua/laws/show/538-2008-%D1%80)
+        * [2009](https://zakon.rada.gov.ua/laws/show/1458-2008-%D1%80)
+        * [2010](https://zakon.rada.gov.ua/laws/show/1412-2009-%D1%80)
+        * [2011](https://zakon.rada.gov.ua/laws/show/2130-2010-%D1%80)
+        * [2012](https://zakon.rada.gov.ua/laws/show/1210-2011-%D1%80)
+        * [2013](https://zakon.rada.gov.ua/laws/show/1043-2012-%D1%80)
+        * [2014](https://zakon.rada.gov.ua/laws/show/920-2013-%D1%80)
+        * [2015](https://zakon.rada.gov.ua/laws/show/1084-2014-%D1%80)
+        * [2016](https://zakon.rada.gov.ua/laws/show/1155-2015-%D1%80)
+        * [2017](https://zakon.rada.gov.ua/laws/show/850-2016-%D1%80)
+        * [2018](https://zakon.rada.gov.ua/laws/show/1-2018-%D1%80)
+        * [2019](https://zakon.rada.gov.ua/laws/show/7-2019-%D1%80)
+        * [2020](https://zakon.rada.gov.ua/laws/show/995-2019-%D1%80)
+        * [2021](https://zakon.rada.gov.ua/laws/show/1191-2020-%D1%80)
+        * [2022](https://zakon.rada.gov.ua/laws/show/1004-2021-%D1%80)
 
-    Special holidays:
-
-    * [1995](https://zakon.rada.gov.ua/laws/show/13/95)
+    Special holidays References:
+        * [1995](https://zakon.rada.gov.ua/laws/show/13/95)
     """
 
     # Date format (see strftime() Format Codes)

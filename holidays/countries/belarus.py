@@ -20,22 +20,19 @@ from holidays.holiday_base import HolidayBase
 
 
 class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    Belarus holidays.
+    """Belarus holidays.
 
     References:
-
-    * <https://president.gov.by/en/gosudarstvo/prazdniki>
-    * <https://president.gov.by/be/gosudarstvo/prazdniki>
-    * <https://president.gov.by/ru/gosudarstvo/prazdniki>
-    * <http://www.belarus.by/en/about-belarus/national-holidays>
-    * <http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm>
-    * <http://president.gov.by/uploads/documents/2019/464uk.pdf>
-    * <https://ru.wikipedia.org/wiki/Праздники_Белоруссии>
+        * <https://president.gov.by/en/gosudarstvo/prazdniki>
+        * <https://president.gov.by/be/gosudarstvo/prazdniki>
+        * <https://president.gov.by/ru/gosudarstvo/prazdniki>
+        * <http://www.belarus.by/en/about-belarus/national-holidays>
+        * <http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm>
+        * <http://president.gov.by/uploads/documents/2019/464uk.pdf>
+        * <https://ru.wikipedia.org/wiki/Праздники_Белоруссии>
 
     Cross-checked With:
-
-    * <https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
+        * <https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
     """
 
     country = "BY"

@@ -27,12 +27,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 class Albania(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
-    References:
+    """Albania holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
-    * [Law No. 7651](http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
-    * [Holidays for 2018–2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
+        * [Law No. 7651](http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
+        * [Holidays for 2018–2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
     """
 
     country = "AL"
@@ -49,8 +49,10 @@ class Albania(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

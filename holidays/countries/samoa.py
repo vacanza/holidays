@@ -15,13 +15,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Samoa(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Samoa holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Samoa>
-    * <https://www.timeanddate.com/holidays/samoa/>
-    * <https://www.mcil.gov.ws/?attachment_id=6336>
-    * <https://www.paclii.org/ws/legis/consol_act_2020/pha2008163/>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Samoa>
+        * <https://www.timeanddate.com/holidays/samoa/>
+        * <https://www.mcil.gov.ws/?attachment_id=6336>
+        * <https://www.paclii.org/ws/legis/consol_act_2020/pha2008163/>
     """
 
     country = "WS"

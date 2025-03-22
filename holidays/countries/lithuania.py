@@ -17,13 +17,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Lithuania holidays.
+    """Lithuania holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania>
-    * <https://www.kalendorius.today/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania>
+        * <https://www.kalendorius.today/>
     """
 
     country = "LT"

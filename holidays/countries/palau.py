@@ -17,13 +17,13 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI,
 
 
 class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Palau holidays.
 
-    * <http://www.paclii.org/pw/legis/consol_act/gpt1262/  # Chapter 7, Holidays.>
-    * <https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
-    * <https://www.facebook.com/PalauPresident/posts/195883107230463 # EO336 Memorial Day repealed>
-    * <https://www.taiwanembassy.org/pal_en/post/792.html # Earliest source for President's Day>
+    References:
+        * [Chapter 7, Holidays](http://www.paclii.org/pw/legis/consol_act/gpt1262/)
+        * <https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
+        * [EO336 Memorial Day repealed](https://www.facebook.com/PalauPresident/posts/195883107230463)
+        * [Earliest source for President's Day](https://www.taiwanembassy.org/pal_en/post/792.html)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the
     following Monday shall be observed as a holiday. If any of the holidays enumerated in
@@ -106,12 +106,12 @@ class PLW(Palau):
 
 
 class PalauStaticHolidays:
-    """
-    Sources:
+    """Palau special holidays.
 
-    * <https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
-    * <https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
-    * <https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
+    References:
+        * <https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
+        * <https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
+        * <https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
     """
 
     special_armed_forces_holidays = {

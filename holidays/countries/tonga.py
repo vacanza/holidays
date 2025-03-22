@@ -24,27 +24,26 @@ from holidays.observed_holiday_base import (
 
 
 class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Tonga holidays.
 
-    * [2020 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_3.pdf)
-    * [2020 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf)
-    * [2016 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_2.pdf)
-    * [1988 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_1.pdf)
-    * [1988 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf)
-    * [Act 10 of 2010](http://www.paclii.org/to/legis/num_act/pha2010243/)
-    * [Act 5 of 2013](http://www.paclii.org/to/legis/num_act/pha2013243/)
+    References:
+        * [1988 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf)
+        * [1988 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_1.pdf)
+        * [Act 10 of 2010](http://www.paclii.org/to/legis/num_act/pha2010243/)
+        * [Act 5 of 2013](http://www.paclii.org/to/legis/num_act/pha2013243/)
+        * [2016 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_2.pdf)
+        * [2020 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf)
+        * [2020 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_3.pdf)
 
     Checked With:
-
-    * [2024](https://www.gov.to/press-release/tonga-public-holidays-for-2024/)
-    * [2023](https://www.gov.to/press-release/tonga-public-holidays-for-2023/)
-    * [2022](https://www.gov.to/press-release/tonga-public-holidays-for-2022/)
-    * [2021](https://www.gov.to/press-release/tonga-public-holidays-for-2021/)
-    * [2020](https://www.gov.to/press-release/tonga-public-holidays-for-2020/)
-    * [2019](https://www.gov.to/press-release/tonga-public-holidays-for-2019-2/)
-    * [2018](https://www.gov.to/press-release/tonga-public-holidays-for-2018/)
-    * [2017](https://www.officeholidays.com/countries/tonga/2017)
+        * [2017](https://www.officeholidays.com/countries/tonga/2017)
+        * [2018](https://www.gov.to/press-release/tonga-public-holidays-for-2018/)
+        * [2019](https://www.gov.to/press-release/tonga-public-holidays-for-2019-2/)
+        * [2020](https://www.gov.to/press-release/tonga-public-holidays-for-2020/)
+        * [2021](https://www.gov.to/press-release/tonga-public-holidays-for-2021/)
+        * [2022](https://www.gov.to/press-release/tonga-public-holidays-for-2022/)
+        * [2023](https://www.gov.to/press-release/tonga-public-holidays-for-2023/)
+        * [2024](https://www.gov.to/press-release/tonga-public-holidays-for-2024/)
 
     1988 Revision Observance Rule:
 
@@ -204,12 +203,12 @@ class TON(Tonga):
 
 
 class TongaStaticHolidays:
-    """
-    References:
+    """Tonga special holidays.
 
-    * <https://www.stuff.co.nz/sport/league/99338959/tonga-government-declares-public-holiday-over-rugby-league-teams-deeds>
-    * <https://www.rnz.co.nz/international/pacific-news/398653/tonga-declares-public-holiday-for-pm-pohiva-s-state-funeral>
-    * <https://www.nrl.com/news/2019/11/06/tonga-declare-public-holiday-for-woolfs-winning-warriors/>
+    References:
+        * <https://www.stuff.co.nz/sport/league/99338959/tonga-government-declares-public-holiday-over-rugby-league-teams-deeds>
+        * <https://www.rnz.co.nz/international/pacific-news/398653/tonga-declares-public-holiday-for-pm-pohiva-s-state-funeral>
+        * <https://www.nrl.com/news/2019/11/06/tonga-declare-public-holiday-for-woolfs-winning-warriors/>
     """
 
     # Special Cases.

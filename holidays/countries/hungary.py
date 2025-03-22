@@ -18,30 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    <https://en.wikipedia.org/wiki/Public_holidays_in_Hungary>
+    """Hungary holidays.
 
-    Codification dates:
-
-    * <https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek>
-    * <https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839>
-
-    Substituted holidays official sources:
-
-    * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
-    * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
-    * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
-    * [2012-2013](https://njt.hu/jogszabaly/2012-28-20-2X)
-    * [2014](https://njt.hu/jogszabaly/2013-33-20-2X)
-    * [2015](https://njt.hu/jogszabaly/2014-28-20-2X)
-    * [2016](https://njt.hu/jogszabaly/2015-18-20-2X)
-    * [2018](https://njt.hu/jogszabaly/2017-61-B0-15)
-    * [2019](https://njt.hu/jogszabaly/2018-6-20-53)
-    * [2020](https://njt.hu/jogszabaly/2019-7-20-53)
-    * [2021](https://njt.hu/jogszabaly/2020-14-20-7Q)
-    * [2022](https://njt.hu/jogszabaly/2021-23-20-7Q)
-    * [2024](https://njt.hu/jogszabaly/2023-15-20-8P)
-    * [2025](https://njt.hu/jogszabaly/2024-11-20-2X)
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Hungary>
+        * <https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek>
+        * <https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839>
     """
 
     country = "HU"
@@ -132,6 +114,25 @@ class HUN(Hungary):
 
 
 class HungaryStaticHolidays:
+    """Hungary special holidays.
+
+    References:
+        * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
+        * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
+        * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
+        * [2012-2013](https://njt.hu/jogszabaly/2012-28-20-2X)
+        * [2014](https://njt.hu/jogszabaly/2013-33-20-2X)
+        * [2015](https://njt.hu/jogszabaly/2014-28-20-2X)
+        * [2016](https://njt.hu/jogszabaly/2015-18-20-2X)
+        * [2018](https://njt.hu/jogszabaly/2017-61-B0-15)
+        * [2019](https://njt.hu/jogszabaly/2018-6-20-53)
+        * [2020](https://njt.hu/jogszabaly/2019-7-20-53)
+        * [2021](https://njt.hu/jogszabaly/2020-14-20-7Q)
+        * [2022](https://njt.hu/jogszabaly/2021-23-20-7Q)
+        * [2024](https://njt.hu/jogszabaly/2023-15-20-8P)
+        * [2025](https://njt.hu/jogszabaly/2024-11-20-2X)
+    """
+
     # Substituted date format.
     substituted_date_format = tr("%Y. %m. %d.")
     # Day off (substituted from %s).

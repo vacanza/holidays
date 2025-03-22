@@ -17,13 +17,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Peru holidays.
+    """Peru holidays.
 
     References:
-
-    * <https://www.gob.pe/feriados>
-    * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
+        * <https://www.gob.pe/feriados>
+        * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
     """
 
     country = "PE"

@@ -17,8 +17,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    <https://dias-festivos.eu/dias-festivos/venezuela/#>
+    """Venezuela holidays.
+
+    References:
+        * <https://dias-festivos.eu/dias-festivos/venezuela/#>
+        * [1909 Aug 5](https://www.guao.org/sites/default/files/efemerides/69.Ley%20fiestas%20nacionales%201909.pdf)
+        * [1918 May 19](https://www.guao.org/sites/default/files/efemerides/70.%20Ley%20de%20fiestas%20nacionales%201918.pdf)
+        * [1921 Jun 11](https://guao.org/sites/default/files/efemerides/37.LEYES_Y_DECRETOS_1921_Di%cc%81a_de_la_raza.PDF)
+        * [1971 Jun 22](https://www.ilo.org/dyn/travail/docs/2030/Law%20No.29.541.pdf)
+        * [2002 Oct 10](https://www.acnur.org/fileadmin/Documentos/BDL/2008/6635.pdf)
+        * [2012 May 7](https://oig.cepal.org/sites/default/files/2012_leyorgtrabajo_ven.pdf)
     """
 
     country = "VE"
@@ -32,17 +40,6 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        """
-        Overview: https://dias-festivos.eu/dias-festivos/venezuela/#
-        Various decrees about holidays:
-          1909 (AUG 5): https://bit.ly/3J0mWKQ
-          1918 (MAY 19): https://bit.ly/3B8O1Jz
-          1921 (JUN 11): https://bit.ly/3aUE2gz
-          1971 (JUN 22): https://bit.ly/3yZaUN9
-          2002 (OCT 10): https://bit.ly/3B7nRqC
-          2012 (MAY 7): https://bit.ly/2MT5x97
-        """
-
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 

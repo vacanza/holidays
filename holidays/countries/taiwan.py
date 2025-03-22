@@ -45,7 +45,12 @@ CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, 
 
 
 class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Taiwan holidays.
+
+    References:
+        * <https://zh.wikipedia.org/wiki/中華民國節日與歲時列表>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan>
+
     Commemorative Day and Day Implementation Method Amendments:
         * [Ministry of Interior (87) Order No. 8706459](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年))
         * [Ministry of Interior (88) Order No. 8897074](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年))
@@ -58,10 +63,6 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         * [Ministry of Interior Order No. 0990212117](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20101102&lser=001)
         * [Ministry of Interior Order No. 1010307327 and 1030128812](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20120925&lser=001)
         * [Ministry of Interior Order No. 1030182404](https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020033)
-
-    Other References:
-        * <https://zh.wikipedia.org/wiki/中華民國節日與歲時列表>
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan>
 
     Checked With:
         * [DGPA Work Calendar (1998-2025; Chinese)](https://www.dgpa.gov.tw/informationlist?uid=30)
@@ -263,7 +264,8 @@ class TWN(Taiwan):
 
 
 class TaiwanStaticHolidays:
-    """
+    """Taiwan special holidays.
+
     DGPA, Executive Yuan Work Calendars:
         * [1998](https://www.dgpa.gov.tw/information?uid=30&pid=4979)
         * [1999](https://www.dgpa.gov.tw/information?uid=30&pid=4978)

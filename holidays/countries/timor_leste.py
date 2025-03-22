@@ -27,21 +27,20 @@ from holidays.holiday_base import HolidayBase
 class TimorLeste(
     HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
-    References:
+    """Timor Leste holidays.
 
-    * [2005 Law](https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf)
-    * [2016 Amendment](http://timor-leste.gov.tl/?p=14494&lang=en)
-    * [2022](http://timor-leste.gov.tl/?p=30266&lang=en)
-    * [2023 (en_US)](http://timor-leste.gov.tl/?p=31750&lang=en)
-    * [2023 (pt_PT)](http://timor-leste.gov.tl/?p=31750&lang=pt)
-    * [2023 (tet)](http://timor-leste.gov.tl/?p=31750&lang=tp)
-    * [2024](http://timor-leste.gov.tl/?p=35833&lang=en)
-    * [2025](https://timor-leste.gov.tl/?p=41492&lang=en)
+    References:
+        * [2005 Law](https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf)
+        * [2016 Amendment](http://timor-leste.gov.tl/?p=14494&lang=en)
+        * [2022](http://timor-leste.gov.tl/?p=30266&lang=en)
+        * [2023 (en_US)](http://timor-leste.gov.tl/?p=31750&lang=en)
+        * [2023 (pt_PT)](http://timor-leste.gov.tl/?p=31750&lang=pt)
+        * [2023 (tet)](http://timor-leste.gov.tl/?p=31750&lang=tp)
+        * [2024](http://timor-leste.gov.tl/?p=35833&lang=en)
+        * [2025](https://timor-leste.gov.tl/?p=41492&lang=en)
 
     Limitations:
-
-    * Exact Islamic holidays dates are only available for 2011-2023; the rest are estimates.
+        * Exact Islamic holidays dates are only available for 2011-2025; the rest are estimates.
     """
 
     country = "TL"
@@ -55,8 +54,10 @@ class TimorLeste(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

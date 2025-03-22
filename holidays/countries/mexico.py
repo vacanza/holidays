@@ -17,14 +17,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Mexico holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Mexico>
-    * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_M%C3%A9xico>
-    * <https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf>
-    * <http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf>
-    * <https://www.gob.mx/profedet/es/articulos/sabes-cuales-son-los-dias-de-descanso-obligatorio-para-este-2024>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Mexico>
+        * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_M%C3%A9xico>
+        * <https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf>
+        * <http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf>
+        * <https://www.gob.mx/profedet/es/articulos/sabes-cuales-son-los-dias-de-descanso-obligatorio-para-este-2024>
     """
 
     country = "MX"

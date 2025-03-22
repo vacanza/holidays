@@ -18,10 +18,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Latvia>
-    * <https://information.lv/>
-    * <https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
+    """Latvia holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Latvia>
+        * <https://information.lv/>
+        * <https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
     """
 
     country = "LV"

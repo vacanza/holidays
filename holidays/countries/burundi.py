@@ -15,17 +15,14 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    Burundian holidays
+    """Burundi holidays.
 
-    Note that holidays falling on a sunday maybe observed
-    on the following Monday.
-    This depends on formal announcements by the government,
-    which only happens close to the date of the holiday.
+    References:
+        * <https://www.officeholidays.com/countries/burundi>
 
-    Primary sources:
-
-    * <https://www.officeholidays.com/countries/burundi>
+    Note that holidays falling on a sunday maybe observed on the following Monday.
+    This depends on formal announcements by the government, which only happens close
+    to the date of the holiday.
     """
 
     country = "BI"
@@ -34,8 +31,10 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

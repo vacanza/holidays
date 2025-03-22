@@ -19,9 +19,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Moldova>
-    * <https://www.legis.md/cautare/getResults?doc_id=133686>
+    """Moldova holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Moldova>
+        * <https://www.legis.md/cautare/getResults?doc_id=133686>
     """
 
     country = "MD"

@@ -17,18 +17,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Congo holidays.
+
     References:
-
-    Loi N° 2-94:
-    <http://mokili.free.fr/jours_feries.php>
-
-    Loi N° l8-20l0:
-    <https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF>
+        * [Loi N° 2-94](http://mokili.free.fr/jours_feries.php)
+        * [Loi N° 18-2010](https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF)
 
     Cross-Checked With:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_the_Congo>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_the_Congo>
     """
 
     country = "CG"

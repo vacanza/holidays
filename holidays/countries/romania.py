@@ -18,9 +18,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    <https://en.wikipedia.org/wiki/Public_holidays_in_Romania>
-    <http://www.dreptonline.ro/legislatie/codul_muncii.php>
+    """Romania holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Romania>
+        * <http://www.dreptonline.ro/legislatie/codul_muncii.php>
     """
 
     country = "RO"

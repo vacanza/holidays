@@ -17,6 +17,8 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+    """Mozambique holidays."""
+
     country = "MZ"
     default_language = "pt_MZ"
     # %s (observed).

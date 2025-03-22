@@ -17,6 +17,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """Estonia holidays."""
+
     country = "EE"
     default_language = "et"
     supported_languages = ("en_US", "et", "uk")

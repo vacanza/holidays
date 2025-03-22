@@ -20,7 +20,14 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Bulgaria holidays.
+
+    References:
+        * <http://lex.bg/laws/ldoc/1594373121>
+        * <https://www.parliament.bg/bg/24>
+        * <https://kik-info.com/spravochnik/calendar/2021/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria>
+
     Official holidays in Bulgaria in their current form. This class does not
     any return holidays before 1990, as holidays in the People's Republic of
     Bulgaria and earlier were different.
@@ -32,16 +39,6 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     1) the Easter holidays, which are always a consecutive Friday, Saturday, and Sunday;
     2) National Awakening Day which, while an official holiday and a non-attendance day for
     schools, is still a working day.
-
-    Sources (Bulgarian):
-
-    * <http://lex.bg/laws/ldoc/1594373121>
-    * <https://www.parliament.bg/bg/24>
-    * <https://kik-info.com/spravochnik/calendar/2021/>
-
-    Sources (English):
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria>
     """
 
     country = "BG"

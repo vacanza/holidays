@@ -42,17 +42,18 @@ from holidays.observed_holiday_base import (
 class BosniaAndHerzegovina(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina>
-    * <https://www.paragraf.ba/neradni-dani-fbih.html>
-    * <https://www.paragraf.ba/neradni-dani-republike-srpske.html>
-    * <https://www.paragraf.ba/neradni-dani-brcko.html>
+    """Bosnia and Herzegovina holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina>
+        * <https://www.paragraf.ba/neradni-dani-fbih.html>
+        * <https://www.paragraf.ba/neradni-dani-republike-srpske.html>
+        * <https://www.paragraf.ba/neradni-dani-brcko.html>
 
     Observed holidays rules:
-
-    * BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
-    * BRC: if holiday fall on Sunday, observed on next working day.
-    * SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
+        * BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
+        * BRC: if holiday fall on Sunday, observed on next working day.
+        * SRP: if second day of New Year's Day and Labor Day fall on Sunday, observed on Monday.
     """
 
     country = "BA"
@@ -76,8 +77,10 @@ class BosniaAndHerzegovina(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)

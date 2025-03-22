@@ -16,12 +16,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
-    References:
+    """Maldives holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
-    * <https://www.timeanddate.com/holidays/maldives/>
-    * <http://www.mma.gov.mv/#/about/bankholidays>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
+        * <https://www.timeanddate.com/holidays/maldives/>
+        * <http://www.mma.gov.mv/#/about/bankholidays>
     """
 
     country = "MV"
@@ -29,8 +29,10 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)

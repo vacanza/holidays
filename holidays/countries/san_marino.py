@@ -15,10 +15,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class SanMarino(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """San Marino holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_San_Marino>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_San_Marino>
     """
 
     country = "SM"

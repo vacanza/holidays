@@ -17,25 +17,24 @@ from holidays.holiday_base import HolidayBase
 
 
 class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Vatican City holidays.
 
-    * <https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html>
-    * <https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf>
-    * <https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html>
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City>
-    * <https://en.wikipedia.org/wiki/Holy_day_of_obligation>
-    * <https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826>
-    * <https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/>
+    References:
+        * <https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html>
+        * <https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf>
+        * <https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City>
+        * <https://en.wikipedia.org/wiki/Holy_day_of_obligation>
+        * <https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826>
+        * <https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/>
 
     Cross-checked With:
-
-    * <https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf>
-    * <https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf>
-    * <https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf>
-    * <https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf>
-    * <https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf>
-    * <https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf>
+        * <https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf>
+        * <https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf>
+        * <https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf>
+        * <https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf>
+        * <https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf>
+        * <https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf>
     """
 
     country = "VA"

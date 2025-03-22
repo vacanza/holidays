@@ -18,9 +18,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Monaco>
-    * <https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays>
+    """Monaco holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Monaco>
+        * <https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays>
     """
 
     country = "MC"

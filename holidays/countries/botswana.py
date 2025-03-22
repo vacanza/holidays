@@ -21,11 +21,13 @@ from holidays.observed_holiday_base import (
 
 
 class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://www.gov.bw/public-holidays>
-    * <https://publicholidays.africa/botswana/2021-dates/>
-    * <https://www.timeanddate.com/holidays/botswana/>
-    * <http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
+    """Botswana holidays.
+
+    References:
+        * <https://www.gov.bw/public-holidays>
+        * <https://publicholidays.africa/botswana/2021-dates/>
+        * <https://www.timeanddate.com/holidays/botswana/>
+        * <http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
     """
 
     country = "BW"

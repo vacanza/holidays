@@ -21,7 +21,8 @@ from holidays.observed_holiday_base import (
 
 
 class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Tuvalu holidays.
+
     References:
         * [Public holidays in Tuvalu](https://en.wikipedia.org/wiki/Public_holidays_in_Tuvalu)
         * [Today's and Upcoming Holidays in Tuvalu](https://www.timeanddate.com/holidays/tuvalu/)

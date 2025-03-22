@@ -23,8 +23,10 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 class Nigeria(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
-    <https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria>
+    """Nigeria holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria>
     """
 
     country = "NG"
@@ -33,8 +35,10 @@ class Nigeria(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

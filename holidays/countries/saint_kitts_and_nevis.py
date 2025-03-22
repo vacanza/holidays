@@ -19,17 +19,16 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 class SaintKittsAndNevis(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
-    """
-    References:
+    """Saint Kitts and Nevis holidays.
 
-    * <https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2009/Ch-23_23-Public-Holidays-Act.pdf>
-    * <https://web.archive.org/web/20220124000224/https://aglcskn.info/wp-content/documents/Act02and09TOC/Ch-23_23-Public-Holidays-Act.pdf>
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Kitts_and_Nevis>
+    References:
+        * <https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2009/Ch-23_23-Public-Holidays-Act.pdf>
+        * <https://web.archive.org/web/20220124000224/https://aglcskn.info/wp-content/documents/Act02and09TOC/Ch-23_23-Public-Holidays-Act.pdf>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Kitts_and_Nevis>
 
     Cross-Checked With:
-
-    * <https://sknhcottawa.gov.kn/in-skn-national-public-holidays/>
-    * <https://www.timeanddate.com/holidays/saint-kitts-and-nevis/>
+        * <https://sknhcottawa.gov.kn/in-skn-national-public-holidays/>
+        * <https://www.timeanddate.com/holidays/saint-kitts-and-nevis/>
 
     If Sovereign's Birthday, New Year's Day, Independence Day, or National Heroes Day
     fall on a Sunday the next following Monday shall be a public holiday.

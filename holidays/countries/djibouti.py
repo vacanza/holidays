@@ -18,6 +18,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+    """Djibouti holidays."""
+
     country = "DJ"
     default_language = "fr"
     # %s (estimated).
@@ -29,8 +31,10 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)

@@ -20,9 +20,11 @@ from holidays.observed_holiday_base import (
 
 
 class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
-    * <https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
+    """Jamaica holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
+        * <https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
     """
 
     country = "JM"

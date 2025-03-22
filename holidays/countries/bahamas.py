@@ -23,21 +23,20 @@ from holidays.observed_holiday_base import (
 
 
 class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Bahamas holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas>
-    * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf>
-    * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf>
-    * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf>
-    * <http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/>
-    * <https://eleutheranews.com/?p=3594>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas>
+        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf>
+        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf>
+        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf>
+        * <http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/>
+        * <https://eleutheranews.com/?p=3594>
 
     Checked With:
-
-    * <https://www.bahamashclondon.net/consular-information/public-holidays/>
-    * <https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf>
-    * <https://publicholidays.la/the-bahamas/2022-dates/  # Official source no longer accessible>
+        * <https://www.bahamashclondon.net/consular-information/public-holidays/>
+        * <https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf>
+        * <https://publicholidays.la/the-bahamas/2022-dates/>
     """
 
     country = "BS"

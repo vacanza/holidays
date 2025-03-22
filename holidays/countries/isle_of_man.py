@@ -18,7 +18,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class IsleOfMan(UnitedKingdom):
-    """Using existing code in UnitedKingdom for now."""
+    """Isle Of Man holidays."""
 
     country = "IM"
     parent_entity = UnitedKingdom

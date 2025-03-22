@@ -18,13 +18,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Liechtenstein holidays.
+    """Liechtenstein holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein>
-    * <https://www.llb.li/en/contact/bank-holidays>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein>
+        * <https://www.llb.li/en/contact/bank-holidays>
     """
 
     country = "LI"

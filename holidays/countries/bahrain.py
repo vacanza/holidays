@@ -19,13 +19,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
-    Bahrain holidays.
+    """Bahrain holidays.
 
     References:
-
-    * <https://www.cbb.gov.bh/official-bank-holidays/>
-    * <https://www.officeholidays.com/countries/bahrain/>
+        * <https://www.cbb.gov.bh/official-bank-holidays/>
+        * <https://www.officeholidays.com/countries/bahrain/>
     """
 
     country = "BH"
@@ -37,8 +35,10 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(

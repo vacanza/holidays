@@ -16,20 +16,19 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Dominica holidays.
 
-    * <https://www.dominica.gov.dm/laws/chapters/chap19-10.pdf>
-    * <https://pressroomopm.gov.dm/notice-public-holiday-order-2022/>
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Dominica>
-    * <https://dominica.gov.dm/laws/1998/sro1-1998.pdf>
+    References:
+        * <https://www.dominica.gov.dm/laws/chapters/chap19-10.pdf>
+        * <https://pressroomopm.gov.dm/notice-public-holiday-order-2022/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Dominica>
+        * <https://dominica.gov.dm/laws/1998/sro1-1998.pdf>
 
     Cross-Checked With:
-
-    * <https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg  # 2010>
-    * <https://dominicaconsulategreece.com/dominica/public-holidays/  # 2011-2020>
-    * <http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
-    * <https://dominica.gov.dm/about-dominica/public-holidays  # 2022-2024>
+        * [2010](https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg)
+        * [2011-2020](https://dominicaconsulategreece.com/dominica/public-holidays/)
+        * <http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
+        * [2022-2024](https://dominica.gov.dm/about-dominica/public-holidays)
 
     While Labour Day is listed in the 1990 amendment as May 1st, this has, de facto, been
     made 1st Monday of May since at least 2010.

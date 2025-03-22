@@ -19,9 +19,11 @@ from holidays.observed_holiday_base import (
 
 
 class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    * <https://www.mint.gov.gh/statutory-public-holidays/>
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
+    """Ghana holidays.
+
+    References:
+        * <https://www.mint.gov.gh/statutory-public-holidays/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
     """
 
     country = "GH"
@@ -32,8 +34,10 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

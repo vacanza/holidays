@@ -16,10 +16,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://www.officeholidays.com/countries/namibia>
-    * <https://www.timeanddate.com/holidays/namibia/>
-    * <https://tinyurl.com/lacorg5835>
+    """Namibia holidays.
+
+    References:
+        * <https://www.officeholidays.com/countries/namibia>
+        * <https://www.timeanddate.com/holidays/namibia/>
+        * <https://tinyurl.com/lacorg5835>
 
     As of 1991/2/1, whenever a public holiday falls on a Sunday, it rolls over to the monday,
     unless that monday is already a public holiday.

@@ -18,6 +18,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """Austria holidays."""
+
     country = "AT"
     default_language = "de"
     supported_categories = (BANK, PUBLIC)

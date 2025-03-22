@@ -23,10 +23,7 @@ from holidays.observed_holiday_base import (
 
 
 class Argentina(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    A subclass of `HolidayBase` representing public holidays
-    in Argentina.
-
+    """Argentina holidays.
 
     References:
 

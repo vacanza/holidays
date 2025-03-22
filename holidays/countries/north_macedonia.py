@@ -16,16 +16,20 @@ from holidays.holiday_base import HolidayBase
 
 
 class NorthMacedonia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    <https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia>
+    """North Macedonia holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia>
     """
 
     country = "MK"
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)

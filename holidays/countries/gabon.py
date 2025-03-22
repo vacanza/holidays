@@ -17,13 +17,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    References:
+    """Gabon holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
-    * <https://www.timeanddate.com/holidays/gabon>
-    * <https://www.officeholidays.com/countries/gabon>
-    * <http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
+        * <https://www.timeanddate.com/holidays/gabon>
+        * <https://www.officeholidays.com/countries/gabon>
+        * <http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
     """
 
     country = "GA"
@@ -32,8 +32,10 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

@@ -27,8 +27,10 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)

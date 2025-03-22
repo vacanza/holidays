@@ -34,12 +34,12 @@ class Montenegro(
     IslamicHolidays,
     StaticHolidays,
 ):
-    """
-    References:
+    """Montenegro holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro>
-    * [Zakon o državnim i drugim praznicima](https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
-    * [Zakon o svetkovanju vjerskih praznika](https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro>
+        * [Zakon o državnim i drugim praznicima](https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
+        * [Zakon o svetkovanju vjerskih praznika](https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
     """
 
     country = "ME"
@@ -56,8 +56,10 @@ class Montenegro(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
         HebrewCalendarHolidays.__init__(self)

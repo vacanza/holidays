@@ -25,19 +25,18 @@ from holidays.observed_holiday_base import (
 
 
 class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Jersey holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Jersey>
-    * [2010 Revision](https://www.jerseylaw.je/laws/current/Pages/15.560.20.aspx)
-    * [1952 Revision](https://www.jerseylaw.je/laws/superseded/Pages/2006/15.560.20.aspx)
-    * [1952 as enacted](https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx)
-    * [Bank Holidays](https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%205331.aspx)
-    * [May Bank Holiday](https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206795.aspx)
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jersey>
+        * [2010 Revision](https://www.jerseylaw.je/laws/current/Pages/15.560.20.aspx)
+        * [1952 Revision](https://www.jerseylaw.je/laws/superseded/Pages/2006/15.560.20.aspx)
+        * [1952 as enacted](https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx)
+        * [Bank Holidays](https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%205331.aspx)
+        * [May Bank Holiday](https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206795.aspx)
 
     Checked with:
-
-    * [From 2010 onwards](https://www.gov.je/Leisure/Events/WhatsOn/pages/bankholidaydates.aspx)
+        * [From 2010 onwards](https://www.gov.je/Leisure/Events/WhatsOn/pages/bankholidaydates.aspx)
 
     This has only been cross-checked with the official source from 2010 onwards.
 
@@ -160,25 +159,25 @@ class JEY(Jersey):
 
 
 class JerseyStaticHolidays:
-    """
-    References:
+    """Jersey special holidays.
 
-    * <https://www.gov.je/News/2019/pages/vedaypublicholiday8may.aspx>
-    * <https://www.gov.je/news/2021/pages/cornriots.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209288.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209317.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%2042-2001.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206350.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206514.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206924.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%207689.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%207877.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%208451.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%208596.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/RO-050-2021.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/RO-108-2009.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx>
-    * <https://www.jerseylaw.je/laws/enacted/Pages/RO-036-2024.aspx>
+    References:
+        * <https://www.gov.je/News/2019/pages/vedaypublicholiday8may.aspx>
+        * <https://www.gov.je/news/2021/pages/cornriots.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209288.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209317.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%2042-2001.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206350.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206514.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206924.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%207689.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%207877.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%208451.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%208596.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/RO-050-2021.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/RO-108-2009.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/RO-3038.aspx>
+        * <https://www.jerseylaw.je/laws/enacted/Pages/RO-036-2024.aspx>
     """
 
     # Mostly a direct copy of UnitedKingdomStaticHolidays.

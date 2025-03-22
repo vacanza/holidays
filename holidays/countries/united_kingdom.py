@@ -24,13 +24,13 @@ from holidays.observed_holiday_base import (
 
 
 class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """United Kingdom holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom>
-    * <https://archive.org/details/treatiseonbanki00walk/page/334/mode/2up>
-    * <https://www.gov.uk/bank-holidays>
-    * <https://www.timeanddate.com/holidays/uk/>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom>
+        * <https://archive.org/details/treatiseonbanki00walk/page/334/mode/2up>
+        * <https://www.gov.uk/bank-holidays>
+        * <https://www.timeanddate.com/holidays/uk/>
 
     The Anniversary of the Battle of the Boyne bank holiday is proclaimed annually by the
     Secretary of State for Northern Ireland.

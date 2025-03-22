@@ -16,10 +16,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu>
-    * <https://www.timeanddate.com/holidays/vanuatu/>
-    * <https://www.gov.vu/index.php/events/holidays>
+    """Vanuatu holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu>
+        * <https://www.timeanddate.com/holidays/vanuatu/>
+        * <https://www.gov.vu/index.php/events/holidays>
     """
 
     country = "VU"

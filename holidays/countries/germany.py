@@ -19,15 +19,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """Official holidays for Germany in its current form.
+    """Germany holidays.
 
     This class doesn't return any holidays before 1990-10-03.
 
-    Before that date the current Germany was separated into the "German
-    Democratic Republic" and the "Federal Republic of Germany" which both had
-    somewhat different holidays. Since this class is called "Germany" it
-    doesn't really make sense to include the days from the two former
-    countries.
+    Before that date the current Germany was separated into the "German Democratic
+    Republic" and the "Federal Republic of Germany" which both had somewhat
+    different holidays. Since this class is called "Germany" it doesn't really
+     make sense to include the days from the two former countries.
 
     "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) and "Fronleichnam"
     in Saxony (SN) and Thuringia (TH) if municipality is mostly catholic which

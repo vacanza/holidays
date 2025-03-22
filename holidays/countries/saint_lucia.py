@@ -17,14 +17,14 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class SaintLucia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Saint Lucia holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Lucia>
-    * <https://www.timeanddate.com/holidays/saint-lucia/>
-    * <https://archive.stlucia.gov.lc/saint_lucia/public_holidays.htm>
-    * <https://archive.stlucia.gov.lc/stluciasilver/national_holidays.htm>
-    * <https://web.archive.org/web/20160314100648/http://www.stluciachamber.org/uploadedImages/contentImg/file/List%20of%20Holidays%20for%202015%20(1).pdf>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Lucia>
+        * <https://www.timeanddate.com/holidays/saint-lucia/>
+        * <https://archive.stlucia.gov.lc/saint_lucia/public_holidays.htm>
+        * <https://archive.stlucia.gov.lc/stluciasilver/national_holidays.htm>
+        * <https://web.archive.org/web/20160314100648/http://www.stluciachamber.org/uploadedImages/contentImg/file/List%20of%20Holidays%20for%202015%20(1).pdf>
     """
 
     country = "LC"

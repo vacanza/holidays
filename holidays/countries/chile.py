@@ -27,35 +27,35 @@ from holidays.observed_holiday_base import (
 
 
 class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    References:
+    """Chile holidays.
 
-    * <https://www.feriados.cl>
-    * [Excellent history of Chile holidays](http://www.feriadoschilenos.cl)
-    * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile>
-    * Law 2.977 (established official Chile holidays in its current form)
-    * Law 20.983 (Day after New Year's Day, if it's a Sunday)
-    * Law 19.668 (floating Monday holiday)
-    * Law 19.668 (Corpus Christi)
-    * Law 2.200, (Labour Day)
-    * Law 18.018 (Labour Day renamed)
-    * Law 16.840, Law 18.432 (Saint Peter and Saint Paul)
-    * Law 20.148 (Day of Virgin of Carmen)
-    * Law 18.026 (Day of National Liberation)
-    * Law 19.588, Law 19.793 (Day of National Unity)
-    * Law 20.983 (National Holiday Friday preceding Independence Day)
-    * Law 20.215 (National Holiday Monday preceding Independence Day)
-    * Law 20.215 (National Holiday Friday following Army Day)
-    * Decree-law 636, Law 8.223
-    * Law 3.810 (Columbus Day)
-    * Law 20.299 (National Day of the Evangelical and Protestant Churches)
-    * Law 20.663 (Región de Arica y Parinacota)
-    * Law 20.678 (Región de Ñuble)
-    * [Law 19.656 (Dec 31, 1999 holiday)](https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15)
-    * [Law 12.051 (bank holidays Jun 30 and Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12)
-    * [Decree-law 1.171 (eliminate Jun 30)](https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05)
-    * [Law 19.528 (eliminate Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
-    * [Law 19.559 (restore Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
+    References:
+        * <https://www.feriados.cl>
+        * [Excellent history of Chile holidays](http://www.feriadoschilenos.cl)
+        * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile>
+        * Law 2.977 (established official Chile holidays in its current form)
+        * Law 20.983 (Day after New Year's Day, if it's a Sunday)
+        * Law 19.668 (floating Monday holiday)
+        * Law 19.668 (Corpus Christi)
+        * Law 2.200, (Labour Day)
+        * Law 18.018 (Labour Day renamed)
+        * Law 16.840, Law 18.432 (Saint Peter and Saint Paul)
+        * Law 20.148 (Day of Virgin of Carmen)
+        * Law 18.026 (Day of National Liberation)
+        * Law 19.588, Law 19.793 (Day of National Unity)
+        * Law 20.983 (National Holiday Friday preceding Independence Day)
+        * Law 20.215 (National Holiday Monday preceding Independence Day)
+        * Law 20.215 (National Holiday Friday following Army Day)
+        * Decree-law 636, Law 8.223
+        * Law 3.810 (Columbus Day)
+        * Law 20.299 (National Day of the Evangelical and Protestant Churches)
+        * Law 20.663 (Región de Arica y Parinacota)
+        * Law 20.678 (Región de Ñuble)
+        * [Law 19.656 (Dec 31, 1999 holiday)](https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15)
+        * [Law 12.051 (bank holidays Jun 30 and Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12)
+        * [Decree-law 1.171 (eliminate Jun 30)](https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05)
+        * [Law 19.528 (eliminate Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
+        * [Law 19.559 (restore Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
     """
 
     country = "CL"

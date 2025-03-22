@@ -17,13 +17,17 @@ from holidays.holiday_base import HolidayBase
 
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
+    """Pakistan holidays."""
+
     country = "PK"
     start_year = 1948
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(

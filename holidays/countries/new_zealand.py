@@ -24,6 +24,8 @@ from holidays.observed_holiday_base import (
 
 
 class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+    """New Zealand holidays."""
+
     country = "NZ"
     observed_label = "%s (observed)"
     subdivisions = (

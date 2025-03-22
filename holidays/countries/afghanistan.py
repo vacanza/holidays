@@ -33,10 +33,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCalendarHolidays):
-    """
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
-    * <https://www.timeanddate.com/holidays/afghanistan/>
-    * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
+    """Afghanistan holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
+        * <https://www.timeanddate.com/holidays/afghanistan/>
+        * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
     country = "AF"
@@ -50,8 +52,10 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(

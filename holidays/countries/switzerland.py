@@ -19,12 +19,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO
 
 
 class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Switzerland holidays.
 
-    * <https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
-    * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
+    References:
+        * <https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
+        * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
     """
 
     country = "CH"

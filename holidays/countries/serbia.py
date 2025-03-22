@@ -18,12 +18,10 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Serbia holidays.
+    """Serbia holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Serbia>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Serbia>
     """
 
     country = "RS"

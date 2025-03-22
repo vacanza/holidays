@@ -15,9 +15,11 @@ from holidays.countries.united_states import US
 
 
 class HolidaysVI(US):
-    # Alias of a US subdivision that is also officially assigned its own
-    # country code in ISO 3166-1.  See
-    # https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1
+    """United States Virgin Islands (the) holidays.
+
+    Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
+    See <https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1>
+    """
 
     country = "VI"
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)

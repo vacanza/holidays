@@ -17,19 +17,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class France(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Official French holidays.
+    """France holidays.
+
+    References:
+        * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France>
+        * <https://www.service-public.fr/particuliers/vosdroits/F2405>
 
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,
     which makes it difficult to enumerate.
-
-    For religious holidays usually happening on Sundays (Easter, Pentecost),
-    only the following Monday is considered a holiday.
-
-    Primary sources:
-
-    * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France>
-    * <https://www.service-public.fr/particuliers/vosdroits/F2405>
     """
 
     country = "FR"

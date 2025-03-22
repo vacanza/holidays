@@ -18,11 +18,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    References:
+    """Jordan holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Jordan>
-    * <https://www.mfa.gov.jo/content/public-holidays>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jordan>
+        * <https://www.mfa.gov.jo/content/public-holidays>
     """
 
     country = "JO"
@@ -33,8 +33,10 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

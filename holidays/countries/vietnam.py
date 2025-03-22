@@ -42,19 +42,14 @@ NATIONAL_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, S
 
 
 class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Vietnam holidays.
+
     References:
-
-    * [Labor Code 1994 (Art. 73) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=2835)
-    * [Labor Code 2012 (Art. 115) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013)
-    * [Labor Code 2012 (Art. 115) (vi)](https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=27615)
-    * [Labor Code 2019 (Art. 112) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11135)
-    * [Labor Code 2019 (Art. 112) (vi)](https://vbpl.vn/TW/Pages/vbpq-van-ban-goc.aspx?ItemID=139264)
-
-    Substituted holidays:
-
-    * [2018-2019](https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-6519-VPCP-KGVX-2018-national-holidays-for-public-sector-employees/387625/tieng-anh.aspx)
-    * [2024](https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-2450-VPCP-KGVX-2024-swap-of-working-days-during-the-Reunification-Day/606458/tieng-anh.aspx)
+        * [Labor Code 1994 (Art. 73) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=2835)
+        * [Labor Code 2012 (Art. 115) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013)
+        * [Labor Code 2012 (Art. 115) (vi)](https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=27615)
+        * [Labor Code 2019 (Art. 112) (en)](https://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11135)
+        * [Labor Code 2019 (Art. 112) (vi)](https://vbpl.vn/TW/Pages/vbpq-van-ban-goc.aspx?ItemID=139264)
     """
 
     country = "VN"
@@ -153,6 +148,13 @@ class VNM(Vietnam):
 
 
 class VietnamStaticHolidays:
+    """Vietnam special holidays.
+
+    References:
+        * [2018-2019](https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-6519-VPCP-KGVX-2018-national-holidays-for-public-sector-employees/387625/tieng-anh.aspx)
+        * [2024](https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-2450-VPCP-KGVX-2024-swap-of-working-days-during-the-Reunification-Day/606458/tieng-anh.aspx)
+    """
+
     # Date format (see strftime() Format Codes).
     substituted_date_format = tr("%d/%m/%Y")
     # Day off (substituted from %s).

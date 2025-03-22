@@ -19,9 +19,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase
 
 
 class Russia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    <https://en.wikipedia.org/wiki/Public_holidays_in_Russia>
-    <https://ru.wikipedia.org/wiki/Праздники_России>
+    """Russia holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Russia>
+        * <https://ru.wikipedia.org/wiki/Праздники_России>
     """
 
     country = "RU"

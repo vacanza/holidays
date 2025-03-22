@@ -20,12 +20,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    """
-    References:
+    """Uzbekistan holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan>
-    * [Labor Code 21.12.1995](https://lex.uz/docs/-142859)
-    * [Labor Code 28.10.2022](https://lex.uz/docs/-6257288)
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan>
+        * [Labor Code 21.12.1995](https://lex.uz/docs/-142859)
+        * [Labor Code 28.10.2022](https://lex.uz/docs/-6257288)
     """
 
     country = "UZ"
@@ -41,8 +41,10 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(

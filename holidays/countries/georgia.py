@@ -20,13 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Georgia holidays.
+    """Georgia holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)>
-    * <https://matsne.gov.ge/en/document/view/1155567?publication=24>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)>
+        * <https://matsne.gov.ge/en/document/view/1155567?publication=24>
     """
 
     country = "GE"

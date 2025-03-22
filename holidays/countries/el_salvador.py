@@ -17,12 +17,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """El Salvador holidays.
 
-    * [Labor Code 1972](https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
-    * <https://www.timeanddate.com/holidays/el-salvador>
-    * <https://www.officeholidays.com/countries/el-salvador>
+    References:
+        * [Labor Code 1972](https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
+        * <https://www.timeanddate.com/holidays/el-salvador>
+        * <https://www.officeholidays.com/countries/el-salvador>
     """
 
     country = "SV"

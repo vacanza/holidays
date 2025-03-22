@@ -25,12 +25,12 @@ from holidays.observed_holiday_base import (
 
 
 class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    """
-    References:
+    """Azerbaijan holidays.
 
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
-    * <https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri>
-    * <https://www.sosial.gov.az/en/prod-calendar>
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
+        * <https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri>
+        * <https://www.sosial.gov.az/en/prod-calendar>
     """
 
     country = "AZ"
@@ -47,8 +47,10 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(

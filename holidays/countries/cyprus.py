@@ -19,13 +19,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Cyprus holidays.
+    """Cyprus holidays.
 
     References:
-
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus>
-    * <https://www.centralbank.cy/en/the-bank/working-hours-bank-holidays>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus>
+        * <https://www.centralbank.cy/en/the-bank/working-hours-bank-holidays>
     """
 
     country = "CY"
