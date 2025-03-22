@@ -19,7 +19,7 @@ import mkdocs_gen_files
 
 def main():
     with mkdocs_gen_files.open("changelog.md", "w", newline="\n") as f:
-        changes_file = Path(__file__).parent.parent / "CHANGES.md"
+        changes_file = Path(__file__).parents[2] / "CHANGES.md"
         changes_lines = changes_file.read_text(encoding="utf-8").split("\n")
         header = ["# Changelog", ""]
         changelog = [
