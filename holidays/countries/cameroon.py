@@ -26,9 +26,10 @@ class Cameroon(
 ):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
-      - https://www.timeanddate.com/holidays/cameroon
-      - https://www.officeholidays.com/countries/cameroon
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
+    * <https://www.timeanddate.com/holidays/cameroon>
+    * <https://www.officeholidays.com/countries/cameroon>
     """
 
     country = "CM"

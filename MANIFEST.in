@@ -1,11 +1,10 @@
-include CHANGES
-include CONTRIBUTING.rst
+include CHANGES.md
+include CONTRIBUTING.md
 include holidays/py.typed
 include Makefile
 
-recursive-include docs *
+include docs/examples.md
 recursive-include holidays/locale *.mo
 recursive-include requirements *
 
-prune docs/build
 prune tests

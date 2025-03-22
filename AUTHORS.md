@@ -1,5 +1,4 @@
-Holidays Authors
-================
+# Holidays Authors
 
 Aaron Picht
 Aart Goossens
@@ -121,6 +120,7 @@ Robert Frazier
 Robert Schmidtke
 Robert Tran
 Robin Emeršič
+Roshan Pradhan
 Ryan McCrory
 Sam Tregar
 Santiago Feliu

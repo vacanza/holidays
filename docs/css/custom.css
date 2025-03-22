@@ -1,0 +1,12 @@
+span.rst-current-version{
+	display: none !important
+}
+
+td{
+	white-space: normal !important;
+	word-break: break-word !important;
+}
+
+code.hljs{
+	background: #eeffcc !important;
+}

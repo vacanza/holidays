@@ -28,9 +28,10 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     to not include sundays as a holiday.
 
     Primary sources:
-        - https://lovdata.no/dokument/NL/lov/1947-04-26-1
-        - https://no.wikipedia.org/wiki/Helligdager_i_Norge
-        - https://www.timeanddate.no/merkedag/norge/
+
+    * <https://lovdata.no/dokument/NL/lov/1947-04-26-1>
+    * <https://no.wikipedia.org/wiki/Helligdager_i_Norge>
+    * <https://www.timeanddate.no/merkedag/norge/>
     """
 
     country = "NO"
@@ -39,8 +40,9 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def __init__(self, include_sundays=False, *args, **kwargs):
         """
-        :param include_sundays:
-            Whether to consider sundays as a holiday (which they are in Norway)
+        Args:
+            include_sundays:
+                Whether to consider sundays as a holiday (which they are in Norway)
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)

@@ -36,25 +36,27 @@ class Macau(
 ):
     """
     Public Holidays References:
-        - `Decreto-Lei n.º 4/82/M <https://bo.io.gov.mo/bo/i/82/04/declei04.asp>`_
-        - `Decreto-Lei n.º 38/87/M <https://bo.io.gov.mo/bo/i/87/25/declei38.asp>`_
-        - `Decreto-Lei n.º 15/93/M <https://bo.io.gov.mo/bo/i/93/17/declei15.asp>`_
-        - `Decreto-Lei n.º 7/97/M <https://bo.io.gov.mo/bo/i/97/11/declei07.asp>`_
-        - `Portaria n.º 85/97/M <https://bo.io.gov.mo/bo/i/97/15/port85.asp>`_
-        - `Portaria n.º 242/98/M <https://bo.io.gov.mo/bo/i/98/48/port242.asp>`_
-        - `Regulamento Administrativo n.º 4/1999 <https://bo.io.gov.mo/bo/i/1999/01/regadm04.asp>`_
-        - `Regulamento Administrativo n.º 5/1999 <https://bo.io.gov.mo/bo/i/1999/01/regadm05.asp>`_
-        - `Ordem Executiva n.º 60/2000 <https://bo.io.gov.mo/bo/i/2000/40/ordem60.asp>`_
-        - `Lei n.º 27/2024 <https://bo.io.gov.mo/bo/i/2025/01/lei27.asp#an2l63>`_
+    * [Decreto-Lei n.º 4/82/M](https://bo.io.gov.mo/bo/i/82/04/declei04.asp)
+    * [Decreto-Lei n.º 38/87/M](https://bo.io.gov.mo/bo/i/87/25/declei38.asp)
+    * [Decreto-Lei n.º 15/93/M](https://bo.io.gov.mo/bo/i/93/17/declei15.asp)
+    * [Decreto-Lei n.º 7/97/M](https://bo.io.gov.mo/bo/i/97/11/declei07.asp)
+    * [Portaria n.º 85/97/M](https://bo.io.gov.mo/bo/i/97/15/port85.asp)
+    * [Portaria n.º 242/98/M](https://bo.io.gov.mo/bo/i/98/48/port242.asp)
+    * [Regulamento Administrativo n.º 4/1999](https://bo.io.gov.mo/bo/i/1999/01/regadm04.asp)
+    * [Regulamento Administrativo n.º 5/1999](https://bo.io.gov.mo/bo/i/1999/01/regadm05.asp)
+    * [Ordem Executiva n.º 60/2000](https://bo.io.gov.mo/bo/i/2000/40/ordem60.asp)
+    * [Lei n.º 27/2024](https://bo.io.gov.mo/bo/i/2025/01/lei27.asp#an2l63)
+
     Mandatory Holidays References:
-        - `Decreto-Lei n.º 101/84/M <https://bo.io.gov.mo/bo/i/84/35/declei101.asp>`_
-        - `Decreto-Lei n.º 24/89/M <https://bo.io.gov.mo/bo/i/89/14/declei24.asp>`_
-        - `Lei n.º 8/2000 <https://bo.io.gov.mo/bo/i/2000/19/lei08.asp>`_
-        - `Lei n.º 7/2008 <https://bo.io.gov.mo/bo/i/2008/33/lei07.asp>`_
+    * [Decreto-Lei n.º 101/84/M](https://bo.io.gov.mo/bo/i/84/35/declei101.asp)
+    * [Decreto-Lei n.º 24/89/M](https://bo.io.gov.mo/bo/i/89/14/declei24.asp)
+    * [Lei n.º 8/2000](https://bo.io.gov.mo/bo/i/2000/19/lei08.asp)
+    * [Lei n.º 7/2008](https://bo.io.gov.mo/bo/i/2008/33/lei07.asp)
+
     Cross-Checking:
-        - `Public Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
-        - `Public Holidays for 2005-2018 <https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061>`_
-        - `Mandatory Holidays for 2009-2029 <https://www.dsal.gov.mo/pt/standard/holiday_table.html>`_
+    * [Public Holidays for 2017–2025](https://www.gov.mo/en/public-holidays/year-2017/)
+    * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
+    * [Mandatory Holidays for 2009-2029](https://www.dsal.gov.mo/pt/standard/holiday_table.html)
     """
 
     country = "MO"
@@ -404,12 +406,14 @@ class MAC(Macau):
 class MacauStaticHolidays:
     """
     Special Public and Government Holidays:
-        - https://www.io.gov.mo/pt/legis/rec/111020
+    * <https://www.io.gov.mo/pt/legis/rec/111020>
+
     Special Mandatory Holidays.
-        - https://www.dsal.gov.mo/pt/standard/holiday_table.html
+    * <https://www.dsal.gov.mo/pt/standard/holiday_table.html>
+
     Cross-Checking:
-        - `Public Holidays for 2017–2025 <https://www.gov.mo/en/public-holidays/year-2017/>`_
-        - `Public Holidays for 2005-2018 <https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061>`_
+    * [Public Holidays for 2017–2025](https://www.gov.mo/en/public-holidays/year-2017/)
+    * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
     """
 
     # Additional Public Holiday.

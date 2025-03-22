@@ -20,19 +20,22 @@ from holidays.holiday_base import HolidayBase
 class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Swedish holidays.
-    Note that holidays falling on a sunday are "lost",
-    it will not be moved to another day to make up for the collision.
-    In Sweden, ALL sundays are considered a holiday
-    (https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige).
+
+    Note:
+        holidays falling on a sunday are "lost",
+        it will not be moved to another day to make up for the collision.
+        In Sweden, ALL sundays are considered a holiday
+
     Initialize this class with include_sundays=False
     to not include sundays as a holiday.
 
     Primary sources:
-        - https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige
-        - http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
-        - https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj
-        - https://sv.wikipedia.org/wiki/Sveriges_nationaldag
-        - https://sv.wikipedia.org/wiki/Midsommarafton
+
+    * <https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige>
+    * <http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253>
+    * <https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj>
+    * <https://sv.wikipedia.org/wiki/Sveriges_nationaldag>
+    * <https://sv.wikipedia.org/wiki/Midsommarafton>
     """
 
     country = "SE"
@@ -41,8 +44,9 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def __init__(self, include_sundays=True, *args, **kwargs):
         """
-        :param include_sundays:
-            Whether to consider sundays as a holiday (which they are in Sweden)
+        Args:
+            include_sundays:
+                Whether to consider sundays as a holiday (which they are in Sweden)
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)

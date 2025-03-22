@@ -21,8 +21,9 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     Morocco holidays.
 
     Primary sources:
-    - https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_au_Maroc
-    - https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38
+
+    * <https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_au_Maroc>
+    * <https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
     """
 
     country = "MA"

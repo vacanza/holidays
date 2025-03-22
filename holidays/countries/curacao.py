@@ -21,8 +21,8 @@ from holidays.holiday_base import HolidayBase
 
 class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
-    https://en.wikipedia.org/wiki/Public_holidays_in_Cura%C3%A7ao
+    * <https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70>
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Cura%C3%A7ao>
     """
 
     country = "CW"

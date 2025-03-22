@@ -36,9 +36,10 @@ class Montenegro(
 ):
     """
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
-        - `Zakon o državnim i drugim praznicima <https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0>`_
-        - `Zakon o svetkovanju vjerskih praznika <https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0>`_
+
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro>
+    * [Zakon o državnim i drugim praznicima](https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
+    * [Zakon o svetkovanju vjerskih praznika](https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
     """
 
     country = "ME"

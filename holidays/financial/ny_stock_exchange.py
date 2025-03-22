@@ -36,11 +36,14 @@ class NewYorkStockExchange(
 ):
     """
     Official regulations:
-    - https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
-    - https://www.nyse.com/markets/hours-calendars
+
+    * <https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf>
+    * <https://www.nyse.com/markets/hours-calendars>
+
     Historical data:
-    - s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
-    - https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars
+
+    * s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
+    * <https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars>
     """
 
     market = "XNYS"
@@ -149,8 +152,9 @@ class NYSE(NewYorkStockExchange):
 class NewYorkStockExchangeStaticHolidays:
     """
     References:
-    - https://guides.loc.gov/presidents-portraits/chronological
-    - https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy
+
+    * <https://guides.loc.gov/presidents-portraits/chronological>
+    * <https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy>
     """
 
     # Blizzard of 1888.

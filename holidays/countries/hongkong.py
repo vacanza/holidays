@@ -53,14 +53,19 @@ class HongKong(
 ):
     """
     References:
-        - `English Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong>`_
-        - `Chinese Wikipedia <https://zh.wikipedia.org/wiki/香港節日與公眾假期>`_
+
+    * [English Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong)
+    * [Chinese Wikipedia](https://zh.wikipedia.org/wiki/香港節日與公眾假期)
+
     Statutory Holidays:
-        - `Section 39 of Cap. 57 Employment Ordinance <https://www.elegislation.gov.hk/hk/cap57!en-zh-Hant-HK?INDEX_CS=N&xpid=ID_1438403463460_002>`_
-        - `Holidays for 2010-2025 <https://www.labour.gov.hk/eng/news/holidays_list.htm>`_
+
+    * [Section 39 of Cap. 57 Employment Ordinance](https://www.elegislation.gov.hk/hk/cap57!en-zh-Hant-HK?INDEX_CS=N&xpid=ID_1438403463460_002)
+    * [Holidays for 2010-2025](https://www.labour.gov.hk/eng/news/holidays_list.htm)
+
     General Holidays:
-        - `Cap. 149 General Holidays Ordinance <https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N>`_
-        - `Holidays for 2007–2025 <https://www.gov.hk/en/about/abouthk/holiday/index.htm>`_
+
+    * [Cap. 149 General Holidays Ordinance](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
+    * [Holidays for 2007–2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
     """
 
     country = "HK"

@@ -18,7 +18,7 @@ from holidays.holiday_base import HolidayBase
 
 class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+    <https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg>
     """
 
     country = "LU"

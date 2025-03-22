@@ -19,8 +19,8 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """
-    https://swazilii.org/sz/legislation/act/1938/71
-    https://www.officeholidays.com/countries/swaziland
+    * <https://swazilii.org/sz/legislation/act/1938/71>
+    * <https://www.officeholidays.com/countries/swaziland>
     """
 
     country = "SZ"

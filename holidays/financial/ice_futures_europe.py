@@ -17,10 +17,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN
 class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-        - https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf
-        - https://www.ice.com/publicdocs/Trading_Schedule.pdf
-        - https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf
-        - https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf
+
+    * <https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf>
+    * <https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+    * <https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+    * <https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
     """
 
     market = "IFEU"

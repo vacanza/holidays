@@ -35,8 +35,8 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
     """
     References:
 
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Japan
-    - https://www.boj.or.jp/en/about/outline/holi.htm
+    * <https://en.wikipedia.org/wiki/Public_holidays_in_Japan>
+    * <https://www.boj.or.jp/en/about/outline/holi.htm>
     """
 
     country = "JP"
