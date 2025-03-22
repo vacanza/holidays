@@ -16,7 +16,6 @@ from datetime import datetime, timezone
 from holidays.version import __version__
 
 
-
 class ICalExporter:
     def __init__(self, holidays_object, return_bytes=False, ical_timestamp=None):
         """
@@ -34,7 +33,11 @@ class ICalExporter:
             "%Y%m%dT%H%M%SZ"
         )
         self.holidays_version = __version__
-        self.language = self._validate_language(getattr(self.holidays, "language", "EN"))
+        self.language = self._validate_language(
+            getattr(self.holidays, "language", None)
+            or getattr(self.holidays, "default_language", None)
+            or "EN"
+        )
 
     def _validate_language(self, language):
         """
@@ -110,9 +113,9 @@ class ICalExporter:
         """
         Generate iCalendar data.
 
-        Yields:
-        - Union[str, bytes]: Each line of iCalendar format
-            (string or bytes depending on return_bytes).
+        Returns:
+        - str or bytes: The complete iCalendar data
+            (string or UTF-8 bytes depending on return_bytes).
         """
         lines = []
         lines.append("BEGIN:VCALENDAR")
@@ -128,5 +131,5 @@ class ICalExporter:
 
         lines.append("END:VCALENDAR")
 
-        for line in lines:
-            yield line.encode("utf-8") if self.return_bytes else line
+        output = "\r\n".join(lines) + "\r\n"
+        return output.encode("utf-8") if self.return_bytes else output
