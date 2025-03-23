@@ -157,28 +157,31 @@ class ICalExporter:
         ]
 
         sorted_dates = sorted(self.holidays.keys())
-        # For Continuous Holidays with exact same name, they are merged
-        # together with increased DURATION
+        # Merged continuous holiday with the same name and use `DURATION` instead.
+        grouped_holidays = []
         i = 0
         while i < len(sorted_dates):
             dt = sorted_dates[i]
             names = self.holidays.get_list(dt)
 
-            for name in names:
-                days = 1
-                while (
-                    i + days < len(sorted_dates)
-                    and sorted_dates[i + days] == sorted_dates[i] + timedelta(days=days)
-                    and name in self.holidays.get_list(sorted_dates[i + days])
-                ):
-                    days += 1
+            days = 1
+            while (
+                i + days < len(sorted_dates)
+                and sorted_dates[i + days] == dt + timedelta(days=days)
+                and all(name in self.holidays.get_list(sorted_dates[i + days]) for name in names)
+            ):
+                days += 1
 
-                lines.extend(self._generate_event(dt, name, days))
-
+            grouped_holidays.append((dt, names, days))
             i += days
 
-        lines.append("END:VCALENDAR")
+        # Generate the iCal events
+        for dt, names, days in grouped_holidays:
+            for name in names:
+                lines.extend(self._generate_event(dt, name, days))
 
+        lines.append("END:VCALENDAR")
         lines.append("")
+
         output = CONTENT_LINE_DELIMITER.join(lines)
         return output.encode() if return_bytes else output
