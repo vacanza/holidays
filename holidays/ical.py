@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import re
 import uuid
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from holidays.version import __version__
 
@@ -23,13 +25,15 @@ CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
 class ICalExporter:
-    def __init__(self, holidays_object, ical_timestamp=None):
+    def __init__(self, holidays_object, ical_timestamp=None) -> None:
         """
         Initialize iCalendar exporter
 
-        Args:
-        - holidays_object: Holidays object containing holiday data.
-        - ical_timestamp: Optional override for the iCal "DTSTAMP" parameter.
+        :param holidays_object:
+            Holidays object containing holiday data.
+
+        :param ical_timestamp:
+            Optional override for the iCal "DTSTAMP" parameter.
             If not provided, current datetime (UTC timezone) will be used instead.
         """
         self.holidays = holidays_object
@@ -43,16 +47,16 @@ class ICalExporter:
             or "EN"
         )
 
-    def _validate_language(self, language):
+    def _validate_language(self, language: str) -> str:
         """
         Validates the language code. Ensures it's a two-letter ISO 639-1 code
         as iCal only supports that at the moment.
 
-        Args:
-        - language: The language code to validate.
+        :param language:
+            The language code to validate.
 
-        Returns:
-        - Valid two-letter language code in uppercase.
+        :return:
+            Valid two-letter language code in uppercase.
         """
         language = language.upper().split("_")[0]
 
@@ -65,7 +69,7 @@ class ICalExporter:
             )
         return language
 
-    def _fold_line(self, line: str):
+    def _fold_line(self, line: str) -> str:
         """
         Fold long lines according to RFC 5545.
 
@@ -73,11 +77,11 @@ class ICalExporter:
         it must be split into multiple lines, with each continuation line
         starting with a space.
 
-        Args:
-        - line (str): The content line to be folded.
+        :param line:
+            The content line to be folded.
 
-        Returns:
-        - str: The folded content line.
+        :return:
+            The folded content line.
         """
         if line.isascii():
             # Simple split for ASCII: every (CONTENT_LINE_MAX_LENGTH - 1) chars,
@@ -108,17 +112,21 @@ class ICalExporter:
         # Return as-is if it doesn't exceed the limit
         return line
 
-    def _generate_event(self, date, holiday_name: str, holiday_length: int = 1):
+    def _generate_event(self, date, holiday_name: str, holiday_length: int = 1) -> list[str]:
         """
         Generate a single holiday event.
 
-        Args:
-        - date: Holiday date.
-        - holiday_name (str): Holiday name.
-        - holiday_length (int): Holiday length in days, default to 1.
+        :param date:
+            Holiday date.
 
-        Returns:
-        - list[str]: List of iCalendar format event lines.
+        :param holiday_name:
+            Holiday name.
+
+        :param holiday_length:
+            Holiday length in days, default to 1.
+
+        :return:
+            List of iCalendar format event lines.
         """
         # Escape special characters per RFC 5545.
         sanitized_holiday_name = (
@@ -138,15 +146,15 @@ class ICalExporter:
 
         return lines
 
-    def generate(self, return_bytes: bool = False):
+    def generate(self, return_bytes: bool = False) -> str | bytes:
         """
         Generate iCalendar data.
 
-        Args:
-        - return_bytes(bool): If True, return bytes instead of string.
+        :param return_bytes:
+            If True, return bytes instead of string.
 
-        Returns:
-        - str or bytes: The complete iCalendar data
+        :return:
+            The complete iCalendar data
             (string or UTF-8 bytes depending on return_bytes).
         """
         lines = [
@@ -158,30 +166,64 @@ class ICalExporter:
 
         sorted_dates = sorted(self.holidays.keys())
         # Merged continuous holiday with the same name and use `DURATION` instead.
-        grouped_holidays = []
         i = 0
         while i < len(sorted_dates):
             dt = sorted_dates[i]
             names = self.holidays.get_list(dt)
 
-            days = 1
-            while (
-                i + days < len(sorted_dates)
-                and sorted_dates[i + days] == dt + timedelta(days=days)
-                and all(name in self.holidays.get_list(sorted_dates[i + days]) for name in names)
-            ):
-                days += 1
-
-            grouped_holidays.append((dt, names, days))
-            i += days
-
-        # Generate the iCal events
-        for dt, names, days in grouped_holidays:
             for name in names:
+                days = 1
+                while (
+                    i + days < len(sorted_dates)
+                    and sorted_dates[i + days] == sorted_dates[i] + timedelta(days=days)
+                    and name in self.holidays.get_list(sorted_dates[i + days])
+                ):
+                    days += 1
+
                 lines.extend(self._generate_event(dt, name, days))
+
+            i += days
 
         lines.append("END:VCALENDAR")
         lines.append("")
 
         output = CONTENT_LINE_DELIMITER.join(lines)
         return output.encode() if return_bytes else output
+
+    def export_ics(self, filename: str = "calendar", export_path: Path = Path(".")) -> None:
+        """
+        Export the calendar data to a .ics file.
+
+        While RFC 5545 does not specifically forbid filenames for .ics files, but it’s advisable
+        to follow general filesystem conventions and avoid using problematic characters.
+
+        :param filename:
+            Name of the file (without extension).
+
+        :param export_path:
+            Directory path to save the file. Default is current directory.
+        """
+        # Regular expression to check for filenames containing problematic characters.
+        invalid_filename_regex = r'^[.]|[\/:*?"<>|\\]'
+        if re.search(invalid_filename_regex, filename):
+            raise ValueError(
+                f"Filename '{filename}' is invalid due to forbidden characters "
+                "or starting with a dot."
+            )
+
+        if not export_path.exists():
+            raise FileNotFoundError(f"The export path '{export_path}' does not exist.")
+        if not export_path.is_dir():
+            raise ValueError(f"The path '{export_path}' is not a valid directory.")
+
+        # Generate and write out content (always in bytes for .ics)
+        content = self.generate(return_bytes=True)
+        if not content:
+            raise ValueError("Generated content is empty or invalid.")
+
+        file_path = export_path / f"{filename}.ics"
+        try:
+            with open(file_path, "wb") as file:
+                file.write(content)  # type: ignore  # this is always bytes, ignoring mypy error.
+        except OSError as e:
+            raise OSError(f"An error occurred while writing the file '{file_path}': {str(e)}")

@@ -12,7 +12,9 @@
 
 
 from datetime import date
+from pathlib import Path
 from unittest import TestCase
+from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
 from holidays.holiday_base import HolidayBase
@@ -33,6 +35,8 @@ class MockHolidays(HolidayBase):
 
 class TestIcalExporter(TestCase):
     def setUp(self):
+        self.exporter = ICalExporter(None)
+        self.exporter.generate = MagicMock(return_value=b"BEGIN:VCALENDAR...END:VCALENDAR")
         self.us_holidays = country_holidays("US", years=2024)
         self.id_exporter = ICalExporter(country_holidays("ID", years=2000, language="en_US"))
         self.jp_exporter = ICalExporter(country_holidays("JP", years=2000, language="ja"))
@@ -223,3 +227,99 @@ class TestIcalExporter(TestCase):
             self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
             if line.startswith(" "):
                 self.assertTrue(line[0].isspace())
+
+    def test_export_ics_valid_path(self):
+        valid_path = Path("valid_directory")
+        valid_path.mkdir(exist_ok=True)
+
+        self.us_exporter.export_ics(filename="test_calendar", export_path=valid_path)
+        file_path = valid_path / "test_calendar.ics"
+        self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
+        file_path.unlink()
+        valid_path.rmdir()
+
+    def test_export_ics_invalid_path(self):
+        invalid_path = Path("invalid_directory")
+
+        with self.assertRaises(FileNotFoundError) as context:
+            self.exporter.export_ics(filename="test_calendar", export_path=invalid_path)
+        self.assertEqual(
+            str(context.exception), f"The export path '{invalid_path}' does not exist."
+        )
+
+    def test_export_ics_non_directory_path(self):
+        non_directory_path = Path("test_file.txt")
+        non_directory_path.touch()
+
+        with self.assertRaises(ValueError) as context:
+            self.exporter.export_ics(filename="test_calendar", export_path=non_directory_path)
+        self.assertEqual(
+            str(context.exception), f"The path '{non_directory_path}' is not a valid directory."
+        )
+        non_directory_path.unlink()
+
+    @patch("builtins.open", side_effect=OSError("Permission denied"))
+    def test_export_ics_permission_error(self, mock_open):
+        with self.assertRaises(IOError) as context:
+            self.exporter.export_ics()
+        self.assertEqual(
+            str(context.exception),
+            "An error occurred while writing the file 'calendar.ics': Permission denied",
+        )
+
+    @patch("builtins.open", side_effect=OSError("Disk is full"))
+    def test_export_ics_disk_full(self, mock_open):
+        with self.assertRaises(OSError) as context:
+            self.exporter.export_ics()
+        self.assertEqual(
+            str(context.exception),
+            "An error occurred while writing the file 'calendar.ics': Disk is full",
+        )
+
+    def test_export_ics_empty_content(self):
+        self.exporter.generate = MagicMock(return_value=b"")
+
+        with self.assertRaises(ValueError) as context:
+            self.exporter.export_ics(filename="test_calendar", export_path=Path("."))
+        self.assertEqual(str(context.exception), "Generated content is empty or invalid.")
+
+    def test_export_ics_file_overwrite(self):
+        existing_file = Path("test_calendar.ics")
+        existing_file.write_text("Old content")
+
+        self.us_exporter.export_ics(filename="test_calendar", export_path=Path("."))
+        self.assertNotEqual(
+            existing_file.read_text(), "Old content", "The file was not overwritten."
+        )
+        existing_file.unlink()
+
+    def test_export_ics_to_current_directory(self):
+        self.us_exporter.export_ics()
+
+        file_path = Path("calendar.ics")
+        self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
+        file_path.unlink()
+
+    def test_export_ics_with_utf8_name(self):
+        utf8_filename = "test_ปฏิทิน"
+
+        self.th_exporter.export_ics(filename=utf8_filename)
+        file_path = Path(f"{utf8_filename}.ics")
+        self.assertTrue(
+            file_path.exists(), "File should be created with special characters in the name."
+        )
+        file_path.unlink()
+
+    def test_export_ics_with_special_characters_name(self):
+        special_filename = ".test_calendar"
+
+        with self.assertRaises(ValueError) as context:
+            self.us_exporter.export_ics(filename=special_filename)
+
+        self.assertEqual(
+            str(context.exception),
+            (
+                f"Filename '{special_filename}' is invalid due to forbidden characters "
+                "or starting with a dot."
+            ),
+        )
