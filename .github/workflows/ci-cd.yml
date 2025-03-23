@@ -353,4 +353,4 @@ jobs:
           files: ${{ env.FILES }}
           concept_id: ${{ secrets.ZENODO_CONCEPT_ID }}
           metadata_file: "CITATION.cff"
-          sandbox: "true"  # Set to "false" for production
+          sandbox: ${{ secrets.ZENODO_USE_SANDBOX || 'false' }}
