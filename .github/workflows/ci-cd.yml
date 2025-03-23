@@ -46,78 +46,77 @@ jobs:
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
 
-#  code-ql:
-#    name: CodeQL
-#    needs:
-#      - pre-commit
-#    permissions:
-#      security-events: write
-#    runs-on: ubuntu-24.04
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v4
-#
-#      - name: Initialize CodeQL
-#        uses: github/codeql-action/init@v3
-#        with:
-#          languages: python
-#
-#      - name: Perform CodeQL Analysis
-#        uses: github/codeql-action/analyze@v3
-#        with:
-#          category: '/language:python'
+  code-ql:
+    name: CodeQL
+    needs:
+      - pre-commit
+    permissions:
+      security-events: write
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-#  test:
-#    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
-#    runs-on: ${{ matrix.os }}
-#    needs:
-#      - pre-commit
-#    strategy:
-#      matrix:
-#        os:
-#          - macos-latest
-#          - ubuntu-latest
-#          - windows-latest
-#        python-version:
-#          - '3.9'
-#          - '3.10'
-#          - '3.11'
-#          - '3.12'
-#          - '3.13'
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Python ${{ matrix.python-version }}
-#        uses: actions/setup-python@v5
-#        with:
-#          allow-prereleases: true
-#          cache: pip
-#          cache-dependency-path: |
-#            requirements/runtime.txt
-#            requirements/tests.txt
-#          check-latest: true
-#          python-version: ${{ matrix.python-version }}
-#
-#      - name: Install dependencies
-#        run: |
-#          python -m pip install --upgrade pip
-#          python -m pip install --requirement requirements/tests.txt
-#          python -m pip install .
-#
-#      - name: Run tests
-#        run: |
-#          make test
-#
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v5
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: python
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:python'
+
+  test:
+    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs:
+      - pre-commit
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+        python-version:
+          - '3.9'
+          - '3.10'
+          - '3.11'
+          - '3.12'
+          - '3.13'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          allow-prereleases: true
+          cache: pip
+          cache-dependency-path: |
+            requirements/runtime.txt
+            requirements/tests.txt
+          check-latest: true
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --requirement requirements/tests.txt
+          python -m pip install .
+
+      - name: Run tests
+        run: |
+          make test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build distribution
-#    needs: test
-    needs: pre-commit
+    needs: test
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
@@ -164,101 +163,100 @@ jobs:
           name: sbom
           path: holidays-${{ env.VERSION }}-sbom.json
 
-#  test-build:
-#    name: Test build on ${{ matrix.os }}
-#    runs-on: ${{ matrix.os }}
-#    needs: build
-#    strategy:
-#      matrix:
-#        os:
-#          - macos-latest
-#          - ubuntu-latest
-#          - windows-latest
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Python
-#        uses: actions/setup-python@v5
-#        with:
-#          cache: pip
-#          cache-dependency-path: |
-#            requirements/runtime.txt
-#            requirements/tests.txt
-#          check-latest: true
-#          python-version: '3.13'
-#
-#      - name: Get package artifacts
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: dist
-#          path: dist
-#
-#      - name: Run tests
-#        shell: bash
-#        run: |
-#          rm -rf holidays
-#          python -m pip install --requirement requirements/tests.txt
-#          python -m pip install `ls dist/*.whl`
-#          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-#          python -m pip uninstall -y holidays python-dateutil six
-#          python -m pip install `ls dist/*.tar.gz`
-#          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
-#
-#  test-docs:
-#    name: Test docs build
-#    runs-on: ubuntu-24.04
-#    needs: test
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v4
-#
-#      - name: Set Up Python
-#        uses: actions/setup-python@v5
-#        with:
-#          cache: pip
-#          cache-dependency-path: requirements/docs.txt
-#          python-version: '3.13'
-#
-#      - name: Install dependencies
-#        run: |
-#          python -m pip install --requirement requirements/docs.txt
-#          python -m pip install .
-#
-#      - name: Build docs
-#        run: |
-#          make doc
+  test-build:
+    name: Test build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs: build
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-#  publish-main:
-#    name: Publish generated artifacts
-#    if: |
-#      github.repository == 'vacanza/holidays' &&
-#      github.event_name == 'push' &&
-#      startsWith(github.event.ref, 'refs/tags/v')
-#    environment: main
-#    needs:
-#      - test-build
-#      - test-docs
-#    permissions:
-#      contents: write
-#      id-token: write
-#    runs-on: ubuntu-24.04
-#    steps:
-#      - name: Download package artifacts
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: dist
-#          path: dist
-#
-#      - name: Publish package distributions to PyPI
-#        uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: pip
+          cache-dependency-path: |
+            requirements/runtime.txt
+            requirements/tests.txt
+          check-latest: true
+          python-version: '3.13'
+
+      - name: Get package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Run tests
+        shell: bash
+        run: |
+          rm -rf holidays
+          python -m pip install --requirement requirements/tests.txt
+          python -m pip install `ls dist/*.whl`
+          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          python -m pip uninstall -y holidays python-dateutil six
+          python -m pip install `ls dist/*.tar.gz`
+          pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+
+  test-docs:
+    name: Test docs build
+    runs-on: ubuntu-24.04
+    needs: test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: pip
+          cache-dependency-path: requirements/docs.txt
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --requirement requirements/docs.txt
+          python -m pip install .
+
+      - name: Build docs
+        run: |
+          make doc
+
+  publish-main:
+    name: Publish generated artifacts
+    if: |
+      github.repository == 'vacanza/holidays' &&
+      github.event_name == 'push' &&
+      startsWith(github.event.ref, 'refs/tags/v')
+    environment: main
+    needs:
+      - test-build
+      - test-docs
+    permissions:
+      contents: write
+      id-token: write
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
 
   sign-artifacts:
     name: Create SHA1 checksums and Sigstore signatures
     runs-on: ubuntu-24.04
     needs:
-#      - publish-main
-      - build
+      - publish-main
     permissions:
       id-token: write
     steps:
@@ -288,26 +286,49 @@ jobs:
           name: signed-artifacts
           path: dist
 
-  upload-to-zenodo:
-    name: Publish release to Zenodo
-#    if: github.event_name == 'release' && github.event.action == 'published'
-    runs-on: ubuntu-latest
+  update-github-release:
+    name: Update GitHub release with SBOM and signed artifacts
+    runs-on: ubuntu-24.04
     needs:
       - sign-artifacts
     permissions:
       contents: write
-    env:
-      AUTH: 'Authorization: Bearer ${{ secrets.ZENODO_TOKEN }}'
-      ZENODO_URL: 'https://sandbox.zenodo.org/api/deposit/depositions'
-#      VERSION: '${{ github.ref_name }}'
+    steps:
+      - name: Download SBOM
+        uses: actions/download-artifact@v4
+        with:
+          name: sbom
+
+      - name: Download package dist and signatures
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-artifacts
+          path: dist
+
+      - name: Update Github release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
+          gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json
+
+  upload-to-zenodo:
+    name: Publish release to Zenodo
+    if: github.event_name == 'release' && github.event.action == 'published'
+    runs-on: ubuntu-latest
+    needs: [update-github-release]
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-#      - name: Download SBOM
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: sbom
+      - name: Download SBOM
+        uses: actions/download-artifact@v4
+        with:
+          name: sbom
 
       - name: Download signed artifacts
         uses: actions/download-artifact@v4
@@ -315,98 +336,21 @@ jobs:
           name: signed-artifacts
           path: dist
 
-      # temporarily for tests
-      - name: Set version name
-        run: |
-          sha=$(git rev-parse --short ${{ github.sha }})
-          echo "VERSION=${{ github.ref_name }}-$sha" >> $GITHUB_ENV
-
       - name: Prepare release archive
         run: |
-          mv dist/*.tar.gz dist/*.whl .
-          files=$(echo *.tar.gz *.whl)
-          echo "FILE_LIST=$files" >> $GITHUB_ENV
+          zip -r vacanza-holidays-${{ github.ref_name }}.zip dist/* holidays-*-sbom.json
+          echo "FILES=vacanza-holidays-${{ github.ref_name }}.zip" >> $GITHUB_ENV
 
-      - name: Create new version
-        run: |
-          concept_id=$(yq '.doi' CITATION.cff | cut -d'.' -f3)
-          response=$(curl -sSf -H "$AUTH" "$ZENODO_URL?q=conceptrecid:$concept_id")
-          deposition_id=$(echo "$response" | jq -r '.[0].id')
-          response=$(curl -sSf -X POST -H "$AUTH" \
-            "$ZENODO_URL/$deposition_id/actions/newversion")
-          new_deposition_id=$(echo "$response" | jq -r '.id')
-          echo "DEPOSITION_ID=$new_deposition_id" >> $GITHUB_ENV
+      - name: Verify archive
+        run: ls vacanza-holidays-${{ github.ref_name }}.zip || exit 1
+        shell: bash
 
-      - name: Update metadata
-        run: |
-          response=$(curl -sSf -H "$AUTH" "$ZENODO_URL/${{ env.DEPOSITION_ID }}")
-          metadata=$(echo "$response" | jq -c '{metadata: .metadata}')
-          citation=$(yq -o=json '.' CITATION.cff | jq -c '{
-            title: .title,
-            upload_type: .type,
-            creators: [.authors[] | {
-              name: (."family-names" + ", " + ."given-names"),
-            }],
-            description: .abstract,
-            keywords: .keywords,
-            license: {id: .license},
-            version: .version,
-            publication_date: ."date-released",
-            custom: {
-              "code:codeRepository": ."repository-code",
-              "code:programmingLanguage": [{id: "python", title: {en: "Python"}}],
-              "code:developmentStatus": {id: "active", title: {en: "Active"}},
-            }
-          }')
-          data=$(echo "$metadata" |
-            jq --argjson citation "$citation" -c '{
-              metadata: .metadata } | .metadata += $citation'
-          )
-          curl -sSf -X PUT -H "$AUTH" -H "Content-Type: application/json" -d "$data" \
-            "$ZENODO_URL/${{ env.DEPOSITION_ID }}"
-
-      - name: Delete previous version files
-        run: |
-          response=$(curl -sSf -H "$AUTH" "$ZENODO_URL/${{ env.DEPOSITION_ID }}/files")
-          file_ids=$(echo "$response" | jq -r '.[].id')
-
-          for file in $file_ids; do
-            curl -sSf -X DELETE -H "$AUTH" "$ZENODO_URL/${{ env.DEPOSITION_ID }}/files/$file"
-          done
-
-      - name: Upload files
-        run: |
-          for file in ${{ env.FILE_LIST }}; do
-            curl -sSf -X POST -H "$AUTH" -F "file=@$file" \
-              "$ZENODO_URL/${{ env.DEPOSITION_ID }}/files"
-          done
-
-      - name: Publish version
-        run: |
-          curl -sSf -X POST -H "$AUTH" "$ZENODO_URL/${{ env.DEPOSITION_ID }}/actions/publish"
-
-#  update-github-release:
-#    name: Update GitHub release with SBOM and signed artifacts
-#    runs-on: ubuntu-24.04
-#    needs:
-#      - sign-artifacts
-#    permissions:
-#      contents: write
-#    steps:
-#      - name: Download SBOM
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: sbom
-#
-#      - name: Download package dist and signatures
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: signed-artifacts
-#          path: dist
-#
-#      - name: Update Github release
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: |
-#          gh release upload --repo vacanza/holidays ${{ github.ref_name }} dist/*
-#          gh release upload --repo vacanza/holidays ${{ github.ref_name }} holidays-*-sbom.json
+      - name: Upload to Zenodo
+        id: upload  # Explicitly set the step ID to match the action's output step
+        uses: ./.github/actions/zenodo-upload
+        with:
+          token: ${{ secrets.ZENODO_TOKEN }}
+          files: ${{ env.FILES }}
+          concept_id: ${{ secrets.ZENODO_CONCEPT_ID }}
+          metadata_file: "CITATION.cff"
+          sandbox: ${{ secrets.ZENODO_USE_SANDBOX || 'false' }}
