@@ -24,9 +24,6 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - id: Set up Python
-      run: actions/setup-python@v5
-      shell: bash
     - run: pip install -r ${{ github.action_path }}/requirements.txt
       shell: bash
     - id: upload
