@@ -177,19 +177,22 @@ class TestIcalExporter(TestCase):
         self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
     def test_long_holiday(self):
-        very_long_name = (
-            "This is a very long holiday name that should be folded "
-            "according to RFC 5545 specifications あいうえお"
+        # ASCII-only
+        ascii_fold_test = (
+            "Krungthepmahanakhon Amonrattanakosin Mahintharayutthaya Mahadilokphop "
+            "Noppharatratchathaniburirom Udomratchaniwetmahasathan Amonphimanawatansathit "
+            "Sakkathattiyawitsanukamprasit"
         )
-        test_holidays = MockHolidays()._add_custom_holiday(very_long_name)
-        exporter = ICalExporter(test_holidays)
-        output = exporter.generate()
+        test_holidays = MockHolidays()._add_custom_holiday(ascii_fold_test)
+        self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
-
-            if line.startswith(" "):
-                self.assertTrue(line[0].isspace())
+        # UTF-8
+        utf8_fold_test = (
+            "กรุงเทพมหานคร อมรรัตนโกสินทร์ มหินทรายุธยา มหาดิลกภพ นพรัตนราชธานีบูรีรมย์ "
+            "อุดมราชนิเวศน์มหาสถาน อมรพิมานอวตารสถิต สักกะทัตติยวิษณุกรรมประสิทธิ์"
+        )
+        test_holidays = MockHolidays()._add_custom_holiday(utf8_fold_test)
+        self._assert_line_lengths(ICalExporter(test_holidays).generate())
 
     def test_return_bytes(self):
         self._assert_byte_output(self.us_exporter, b"SUMMARY:New Year's Day")
