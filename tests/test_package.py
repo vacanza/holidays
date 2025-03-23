@@ -33,7 +33,7 @@ class TestPackage(TestCase):
             "classifier",
             "description",
             "keywords",
-            "license-expression",
+            "license",
             "license-file",
             "maintainer",
             "project-url",
