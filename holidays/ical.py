@@ -131,7 +131,10 @@ class ICalExporter:
         """
         # Escape special characters per RFC 5545.
         sanitized_holiday_name = (
-            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
+            holiday_name.replace("\\", "\\\\")
+            .replace(",", "\\,")
+            .replace(";", "\\;")
+            .replace(":", "\\:")
         )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
 
@@ -163,6 +166,7 @@ class ICalExporter:
             f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//"
             f"{self.language}",
             "VERSION:2.0",
+            "CALSCALE:GREGORIAN",
         ]
 
         sorted_dates = sorted(self.holidays.keys())

@@ -63,6 +63,7 @@ class TestIcalExporter(TestCase):
         self.assertIn("BEGIN:VCALENDAR", output)
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
+        self.assertIn("CALSCALE:GREGORIAN", output)
         self.assertIn("END:VCALENDAR", output)
 
     def test_ical_timestamp_provided(self):
