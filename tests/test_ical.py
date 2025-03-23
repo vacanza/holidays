@@ -18,12 +18,7 @@ from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
 from holidays.holiday_base import HolidayBase
-from holidays.ical import (
-    CONTENT_LINE_DELIMITER,
-    CONTENT_LINE_DELIMITER_BYTES,
-    CONTENT_LINE_MAX_LENGTH,
-    ICalExporter,
-)
+from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalExporter
 
 
 class MockHolidays(HolidayBase):
@@ -43,28 +38,62 @@ class TestIcalExporter(TestCase):
         self.th_exporter = ICalExporter(country_holidays("TH", years=2024))
         self.us_exporter = ICalExporter(self.us_holidays)
 
-    def _assert_line_lengths(self, output):
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
+    def _assert_line_lengths(self, holiday_name):
+        test_holidays = MockHolidays()._add_custom_holiday(holiday_name)
+        lines = ICalExporter(test_holidays).generate().split(CONTENT_LINE_DELIMITER)
+        previous_line = None
+
+        for line in lines:
+            self.assertLessEqual(
+                len(line.encode()),
+                CONTENT_LINE_MAX_LENGTH,
+                f"Content Line exceeds RFC 5545 content line length: {repr(line)}",
+            )
+
+            # If continuation line (starts with a space).
             if line.startswith(" "):
                 self.assertTrue(
-                    line[0].isspace(),
-                    f"Line doesn't confirm to RFC 5545 length limits: {repr(line)}",
+                    previous_line is not None,
+                    f"Continuation Line found without a preceding line: {repr(line)}",
                 )
+                self.assertTrue(
+                    line[1] != " ",
+                    f"Continuation Line starts with more than one space: {repr(line)}",
+                )
+            previous_line = line
 
     def _assert_byte_output(self, exporter, expected_bytes):
         output = exporter.generate(return_bytes=True)
         self.assertIsInstance(output, bytes)
-        self.assertIn(expected_bytes, output.split(CONTENT_LINE_DELIMITER_BYTES))
+        self.assertIn(expected_bytes, output.split(CONTENT_LINE_DELIMITER.encode()))
+
+    def _assert_special_char_handling(self, escaped_name, sanitized_name):
+        test_holidays = MockHolidays()._add_custom_holiday(escaped_name)
+        output = ICalExporter(test_holidays).generate()
+        self.assertIn(
+            f"SUMMARY:{sanitized_name}\r\n",
+            output,
+            f"Failed for holiday name: {escaped_name}",
+        )
 
     def test_basic_calendar_structure(self):
         output = self.us_exporter.generate()
 
+        # iCalendar File Header.
         self.assertIn("BEGIN:VCALENDAR", output)
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
         self.assertIn("CALSCALE:GREGORIAN", output)
         self.assertIn("END:VCALENDAR", output)
+
+        # iCalendar's individual `VEVENT`.
+        self.assertIn("BEGIN:VEVENT", output)
+        self.assertIn("DTSTAMP:", output)
+        self.assertIn("UID:", output)
+        self.assertIn("SUMMARY:", output)
+        self.assertIn("DTSTART;VALUE=DATE:", output)
+        self.assertIn("DURATION:", output)
+        self.assertIn("END:VEVENT", output)
 
     def test_ical_timestamp_provided(self):
         custom_timestamp = "20250401T080000"
@@ -146,13 +175,23 @@ class TestIcalExporter(TestCase):
         self.assertEqual(new_years_day_count, 1)
 
     def test_escape_character_holiday_names(self):
-        # BACKSLASH should be include in front of COMMA.
-        output = ICalExporter(country_holidays("PT", years=2024)).generate()
+        # Default case, no action taken.
+        self._assert_special_char_handling("Fête Nationale", "Fête Nationale")
 
-        self.assertIn(
-            "SUMMARY:Dia de Portugal\\, de Camões e das Comunidades Portuguesas\r\n",
-            output,
+        # SEMICOLON, automatically splits into individual ones.
+        self._assert_special_char_handling("Christmas; Celebration", "Celebration")
+
+        # COMMA.
+        self._assert_special_char_handling(
+            "Dia de Portugal, de Camões e das Comunidades Portuguesas",
+            "Dia de Portugal\\, de Camões e das Comunidades Portuguesas",
         )
+
+        # COLON.
+        self._assert_special_char_handling("Special: Holiday Event", "Special\\: Holiday Event")
+
+        # BACKSLASH.
+        self._assert_special_char_handling("Backslash\\Holiday", "Backslash\\\\Holiday")
 
     def test_localized_holiday_names(self):
         output = self.jp_exporter.generate()
@@ -169,17 +208,17 @@ class TestIcalExporter(TestCase):
         self.assertIn("END:VCALENDAR\r\n", output)
 
     def test_line_folding_edge_cases(self):
+        # 74 octets.
         line_74_bytes = "x" * 66
-        test_holidays = MockHolidays()._add_custom_holiday(line_74_bytes)
-        self._assert_line_lengths(ICalExporter(test_holidays).generate())
+        self._assert_line_lengths(line_74_bytes)
 
+        # 75 octets.
         exact_75_bytes = "x" * 72 + "あ"
-        test_holidays = MockHolidays()._add_custom_holiday(exact_75_bytes)
-        self._assert_line_lengths(ICalExporter(test_holidays).generate())
+        self._assert_line_lengths(exact_75_bytes)
 
+        # 76 octets.
         needs_adjustment = "x" * 73 + "あ"
-        test_holidays = MockHolidays()._add_custom_holiday(needs_adjustment)
-        self._assert_line_lengths(ICalExporter(test_holidays).generate())
+        self._assert_line_lengths(needs_adjustment)
 
     def test_long_holiday(self):
         # ASCII-only
@@ -188,16 +227,14 @@ class TestIcalExporter(TestCase):
             "Noppharatratchathaniburirom Udomratchaniwetmahasathan Amonphimanawatansathit "
             "Sakkathattiyawitsanukamprasit"
         )
-        test_holidays = MockHolidays()._add_custom_holiday(ascii_fold_test)
-        self._assert_line_lengths(ICalExporter(test_holidays).generate())
+        self._assert_line_lengths(ascii_fold_test)
 
         # UTF-8
         utf8_fold_test = (
             "กรุงเทพมหานคร อมรรัตนโกสินทร์ มหินทรายุธยา มหาดิลกภพ นพรัตนราชธานีบูรีรมย์ "
             "อุดมราชนิเวศน์มหาสถาน อมรพิมานอวตารสถิต สักกะทัตติยวิษณุกรรมประสิทธิ์"
         )
-        test_holidays = MockHolidays()._add_custom_holiday(utf8_fold_test)
-        self._assert_line_lengths(ICalExporter(test_holidays).generate())
+        self._assert_line_lengths(utf8_fold_test)
 
     def test_return_bytes(self):
         self._assert_byte_output(self.us_exporter, b"SUMMARY:New Year's Day")
@@ -217,17 +254,6 @@ class TestIcalExporter(TestCase):
         uids = [line for line in output.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")]
 
         self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
-
-    def test_multiple_fold_iterations(self):
-        long_japanese = "あ" * 50
-        test_holidays = MockHolidays()._add_custom_holiday(long_japanese)
-        exporter = ICalExporter(test_holidays)
-        output = exporter.generate()
-
-        for line in output.split(CONTENT_LINE_DELIMITER):
-            self.assertLessEqual(len(line.encode()), CONTENT_LINE_MAX_LENGTH)
-            if line.startswith(" "):
-                self.assertTrue(line[0].isspace())
 
     def test_export_ics_valid_path(self):
         valid_path = Path("valid_directory")
@@ -310,17 +336,3 @@ class TestIcalExporter(TestCase):
             file_path.exists(), "File should be created with special characters in the name."
         )
         file_path.unlink()
-
-    def test_export_ics_with_special_characters_name(self):
-        special_filename = ".test_calendar"
-
-        with self.assertRaises(ValueError) as context:
-            self.us_exporter.export_ics(filename=special_filename)
-
-        self.assertEqual(
-            str(context.exception),
-            (
-                f"Filename '{special_filename}' is invalid due to forbidden characters "
-                "or starting with a dot."
-            ),
-        )

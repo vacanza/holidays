@@ -441,6 +441,7 @@ To create iCalendar content, use :py:meth:`generate`.
    >>> from holidays import country_holidays
    >>> from holidays.ical import ICalExporter
    >>> th_holidays = country_holidays('TH', years=2024)
+   >>> exporter = ICalExporter(th_holidays)
    >>> ical_content = exporter.generate()
    # Thailand's Songkran Festival (April 13th-15th) should be count as an single ``VEVENT``
    # with the duration of 3 days.

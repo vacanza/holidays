@@ -10,23 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import re
 import uuid
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from typing import Union
+from typing import Optional, Union
 
+from holidays.holiday_base import HolidayBase
 from holidays.version import __version__
 
 # iCal-specific constants
 CONTENT_LINE_MAX_LENGTH = 75
 CONTENT_LINE_DELIMITER = "\r\n"
-CONTENT_LINE_DELIMITER_BYTES = CONTENT_LINE_DELIMITER.encode()
 CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
 class ICalExporter:
-    def __init__(self, holidays_object, ical_timestamp=None) -> None:
+    def __init__(self, holidays_object: HolidayBase, ical_timestamp: Optional[str] = None) -> None:
         """
         Initialize iCalendar exporter
 
@@ -113,7 +112,7 @@ class ICalExporter:
         # Return as-is if it doesn't exceed the limit
         return line
 
-    def _generate_event(self, date, holiday_name: str, holiday_length: int = 1) -> list[str]:
+    def _generate_event(self, dt: date, holiday_name: str, holiday_length: int = 1) -> list[str]:
         """
         Generate a single holiday event.
 
@@ -131,10 +130,7 @@ class ICalExporter:
         """
         # Escape special characters per RFC 5545.
         sanitized_holiday_name = (
-            holiday_name.replace("\\", "\\\\")
-            .replace(",", "\\,")
-            .replace(";", "\\;")
-            .replace(":", "\\:")
+            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
         )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
 
@@ -143,7 +139,7 @@ class ICalExporter:
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
             self._fold_line(f"SUMMARY:{sanitized_holiday_name}"),
-            f"DTSTART;VALUE=DATE:{date:%Y%m%d}",
+            f"DTSTART;VALUE=DATE:{dt:%Y%m%d}",
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",
         ]
@@ -208,14 +204,6 @@ class ICalExporter:
         :param export_path:
             Directory path to save the file. Default is current directory.
         """
-        # Regular expression to check for filenames containing problematic characters.
-        invalid_filename_regex = r'(^\.+)|([\/:*?"<>|\\])'
-        if re.search(invalid_filename_regex, filename):
-            raise ValueError(
-                f"Filename '{filename}' is invalid due to forbidden characters "
-                "or starting with a dot."
-            )
-
         if not export_path.exists():
             raise FileNotFoundError(f"The export path '{export_path}' does not exist.")
         if not export_path.is_dir():
