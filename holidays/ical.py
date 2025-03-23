@@ -12,7 +12,6 @@
 
 import uuid
 from datetime import date, datetime, timedelta, timezone
-from pathlib import Path
 from typing import Optional, Union
 
 from holidays.holiday_base import HolidayBase
@@ -191,30 +190,21 @@ class ICalExporter:
         output = CONTENT_LINE_DELIMITER.join(lines)
         return output.encode() if return_bytes else output
 
-    def export_ics(self, filename: str = "calendar", export_path: Path = Path(".")) -> None:
+    def export_ics(self, file_path: str) -> None:
         """
         Export the calendar data to a .ics file.
 
         While RFC 5545 does not specifically forbid filenames for .ics files, but it’s advisable
         to follow general filesystem conventions and avoid using problematic characters.
 
-        :param filename:
-            Name of the file (without extension).
-
-        :param export_path:
-            Directory path to save the file. Default is current directory.
+        :param file_path:
+            Path to save the .ics file, including the filename (with extension).
         """
-        if not export_path.exists():
-            raise FileNotFoundError(f"The export path '{export_path}' does not exist.")
-        if not export_path.is_dir():
-            raise ValueError(f"The path '{export_path}' is not a valid directory.")
-
         # Generate and write out content (always in bytes for .ics)
         content = self.generate(return_bytes=True)
         if not content:
             raise ValueError("Generated content is empty or invalid.")
 
-        file_path = export_path / f"{filename}.ics"
         try:
             with open(file_path, "wb") as file:
                 file.write(content)  # type: ignore  # this is always bytes, ignoring mypy error.

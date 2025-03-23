@@ -467,7 +467,7 @@ To create iCalendar content, use :py:meth:`generate`.
    >>> ical_content.count("SUMMARY:New Year's Day\r\n")
    1
 
-To export to ``.ics`` format, use :py:meth:`export_ics`. By default, this will create ``calendar.ics`` in your current directory.
+To export to ``.ics`` format, use :py:meth:`export_ics`.
 
 .. code-block:: python
 
@@ -479,4 +479,4 @@ To export to ``.ics`` format, use :py:meth:`export_ics`. By default, this will c
    >>> nyse_exporter.export_ics(filename="NYSE_2024_calendar", export_path=Path("."))
    # Export to Windows' ``Downloads`` folder instead.
    >>> downloads_path = Path.home() / "Downloads"
-   >>> nyse_exporter.export_ics(filename="NYSE_2024_calendar", export_path=downloads_path)
+   >>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))

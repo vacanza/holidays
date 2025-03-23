@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
+import os
 from datetime import date
-from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
@@ -266,39 +265,36 @@ class TestIcalExporter(TestCase):
         self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
 
     def test_export_ics_valid_path(self):
-        valid_path = Path("valid_directory")
-        valid_path.mkdir(exist_ok=True)
+        valid_path = "valid_directory"
+        os.makedirs(valid_path, exist_ok=True)
 
-        self.us_exporter.export_ics(filename="test_calendar", export_path=valid_path)
-        file_path = valid_path / "test_calendar.ics"
-        self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
-        file_path.unlink()
-        valid_path.rmdir()
+        try:
+            self.us_exporter.export_ics(file_path=os.path.join(valid_path, "test_calendar.ics"))
+            self.assertTrue(
+                os.path.exists(os.path.join(valid_path, "test_calendar.ics")),
+                f"File should be created at {os.path.join(valid_path, 'test_calendar.ics')}",
+            )
+        finally:
+            os.remove(os.path.join(valid_path, "test_calendar.ics"))
+            os.rmdir(valid_path)
 
-    def test_export_ics_invalid_path(self):
-        invalid_path = Path("invalid_directory")
-
-        with self.assertRaises(FileNotFoundError) as context:
-            self.exporter.export_ics(filename="test_calendar", export_path=invalid_path)
+    @patch("os.path.exists", return_value=False)
+    def test_export_ics_invalid_path(self, mock_exists):
+        invalid_path = "invalid|path/with*bad:chars"
+        with self.assertRaises(OSError) as context:
+            self.exporter.export_ics(file_path=invalid_path)
         self.assertEqual(
-            str(context.exception), f"The export path '{invalid_path}' does not exist."
+            str(context.exception),
+            (
+                f"An error occurred while writing the file '{invalid_path}': "
+                f"[Errno 2] No such file or directory: '{invalid_path}'"
+            ),
         )
-
-    def test_export_ics_non_directory_path(self):
-        non_directory_path = Path("test_file.txt")
-        non_directory_path.touch()
-
-        with self.assertRaises(ValueError) as context:
-            self.exporter.export_ics(filename="test_calendar", export_path=non_directory_path)
-        self.assertEqual(
-            str(context.exception), f"The path '{non_directory_path}' is not a valid directory."
-        )
-        non_directory_path.unlink()
 
     @patch("builtins.open", side_effect=OSError("Permission denied"))
     def test_export_ics_permission_error(self, mock_open):
         with self.assertRaises(OSError) as context:
-            self.exporter.export_ics()
+            self.exporter.export_ics(file_path="calendar.ics")
         self.assertEqual(
             str(context.exception),
             "An error occurred while writing the file 'calendar.ics': Permission denied",
@@ -307,7 +303,7 @@ class TestIcalExporter(TestCase):
     @patch("builtins.open", side_effect=OSError("Disk is full"))
     def test_export_ics_disk_full(self, mock_open):
         with self.assertRaises(OSError) as context:
-            self.exporter.export_ics()
+            self.exporter.export_ics(file_path="calendar.ics")
         self.assertEqual(
             str(context.exception),
             "An error occurred while writing the file 'calendar.ics': Disk is full",
@@ -317,35 +313,36 @@ class TestIcalExporter(TestCase):
         self.exporter.generate = MagicMock(return_value=b"")
 
         with self.assertRaises(ValueError) as context:
-            self.exporter.export_ics(filename="test_calendar", export_path=Path("."))
+            self.exporter.export_ics(file_path="test_calendar.ics")
         self.assertEqual(str(context.exception), "Generated content is empty or invalid.")
 
     def test_export_ics_file_overwrite(self):
-        existing_file = Path("test_calendar.ics")
-        existing_file.write_text("Old content")
+        existing_file = "test_calendar.ics"
+        with open(existing_file, "w") as file:
+            file.write("Old content")
 
-        self.us_exporter.export_ics(filename="test_calendar", export_path=Path("."))
-        self.assertNotEqual(
-            existing_file.read_text(), "Old content", "The file was not overwritten."
-        )
-        self.assertIn(
-            "BEGIN:VCALENDAR", existing_file.read_text(), "New content is not valid iCalendar"
-        )
-        existing_file.unlink()
+        self.us_exporter.export_ics(file_path=existing_file)
+        with open(existing_file) as file:
+            new_content = file.read()
+
+        self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
+        self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
+        os.remove(existing_file)
 
     def test_export_ics_to_current_directory(self):
-        self.us_exporter.export_ics()
+        self.us_exporter.export_ics(file_path="calendar.ics")
 
-        file_path = Path("calendar.ics")
-        self.assertTrue(file_path.exists(), f"File should be created at {file_path}")
-        file_path.unlink()
+        self.assertTrue(
+            os.path.exists("calendar.ics"), f"File should be created at {'calendar.ics'}"
+        )
+        os.remove("calendar.ics")
 
     def test_export_ics_with_utf8_name(self):
         utf8_filename = "test_ปฏิทิน"
 
-        self.th_exporter.export_ics(filename=utf8_filename)
-        file_path = Path(f"{utf8_filename}.ics")
+        self.th_exporter.export_ics(file_path=f"{utf8_filename}.ics")
         self.assertTrue(
-            file_path.exists(), "File should be created with special characters in the name."
+            os.path.exists(f"{utf8_filename}.ics"),
+            "File should be created with special characters in the name.",
         )
-        file_path.unlink()
+        os.remove(f"{utf8_filename}.ics")
