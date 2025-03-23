@@ -201,15 +201,6 @@ class TestIcalExporter(TestCase):
 
         self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
 
-    def test_empty_summary_handling(self):
-        test_holidays = MockHolidays()._add_custom_holiday("")
-        exporter = ICalExporter(test_holidays)
-
-        with self.assertRaises(ValueError) as context:
-            exporter.generate()
-
-        self.assertEqual(str(context.exception), "Holiday name cannot be empty.")
-
     def test_multiple_fold_iterations(self):
         long_japanese = "あ" * 50
         test_holidays = MockHolidays()._add_custom_holiday(long_japanese)

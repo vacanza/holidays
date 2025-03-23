@@ -159,11 +159,8 @@ class ICalExporter:
         while i < len(sorted_dates):
             dt = sorted_dates[i]
             names = self.holidays.get_list(dt)
-            days_passed = 0
 
             for name in names:
-                if not name.strip():
-                    raise ValueError("Holiday name cannot be empty.")
                 days = 1
                 while (
                     i + days < len(sorted_dates)
@@ -172,10 +169,9 @@ class ICalExporter:
                 ):
                     days += 1
 
-                days_passed = days
                 lines.extend(self._generate_event(dt, name, days))
 
-            i += days_passed
+            i += days
 
         lines.append("END:VCALENDAR")
 
