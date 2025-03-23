@@ -68,19 +68,6 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2016, 2050))
 
-    def test_easter_sunday(self):
-        name = "Easter Sunday"
-
-        # Workdays.
-        dt = (
-            "2018-04-01",
-            "2019-04-21",
-            "2020-04-12",
-        )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertHolidayName(name, self.workday_holidays, range(2016, 2050))
-        self.assertNoHolidayName(name, dt)
-
     def test_easter_monday(self):
         name = "Easter Monday"
 
@@ -109,7 +96,12 @@ class TestFiji(CommonCountryTests, TestCase):
         name = "National Sports Day"
 
         # Public Holidays
-        self.assertHolidayName(name, (f"{year}-06-26" for year in range(2016, 2018)), "2018-06-29")
+        dt = (
+            "2016-06-24",
+            "2017-06-30",
+            "2018-06-29",
+        )
+        self.assertHolidayName(name, dt)
         self.assertNoHolidayName(name, range(2019, 2050))
 
     def test_constitution_day(self):
@@ -152,8 +144,8 @@ class TestFiji(CommonCountryTests, TestCase):
 
         self.assertHolidayName(
             name,
-            "2016-10-27",
-            "2017-10-16",
+            "2016-10-31",
+            "2017-10-19",
             "2018-11-07",
             "2019-10-28",
             "2020-11-14",

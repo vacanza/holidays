@@ -15,8 +15,8 @@ from holidays.calendars.gregorian import SEP, OCT, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
-    InternationalHolidays,
     HinduCalendarHolidays,
+    InternationalHolidays,
     IslamicHolidays,
     StaticHolidays,
 )
@@ -30,9 +30,9 @@ from holidays.observed_holiday_base import (
 
 class Fiji(
     ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
     HinduCalendarHolidays,
+    InternationalHolidays,
+    ChristianHolidays,
     IslamicHolidays,
     StaticHolidays,
 ):
@@ -62,8 +62,8 @@ class Fiji(
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=FijiHinduHolidays, show_estimated=True)
+        InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, cls=FijiIslamicHolidays, show_estimated=True)
         StaticHolidays.__init__(self, FijiStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
@@ -83,15 +83,12 @@ class Fiji(
         self._add_easter_monday("Easter Monday")
 
         # National Sports Day.
-        name = "National Sports Day"
-        if self._year == 2018:
-            self._add_holiday_jun_29(name)
-        elif self._year <= 2017:
-            self._add_holiday_jun_26(name)
+        if self._year <= 2018:
+            self._add_holiday_last_fri_of_jun("National Sports Day")
 
         if self._year <= 2022:
             # Constitution Day.
-            self._add_holiday_sep_7("Constitution Day")
+            self._add_observed(self._add_holiday_sep_7("Constitution Day"))
 
         if self._year >= 2023:
             # Girmit Day.
@@ -115,7 +112,7 @@ class Fiji(
         self._populate_observed(self._add_mawlid_day("Prophet Mohammed's Birthday"))
 
         # Diwali
-        self._add_observed(self._add_diwali("Diwali"))
+        self._add_observed(self._add_diwali_india("Diwali"))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
@@ -124,12 +121,6 @@ class Fiji(
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
     def _populate_workday_holidays(self):
-        # Easter Sunday.
-        self._add_easter_sunday("Easter Sunday")
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
-
         if self._year >= 2023:
             # Constitution Day.
             self._add_holiday_sep_7("Constitution Day")
@@ -145,9 +136,9 @@ class FJI(Fiji):
 
 class FijiHinduHolidays(_CustomHinduHolidays):
     # https://www.timeanddate.com/holidays/fiji/diwali
-    DIWALI_DATES = {
-        2016: (OCT, 27),
-        2017: (OCT, 16),
+    DIWALI_INDIA_DATES = {
+        2016: (OCT, 31),
+        2017: (OCT, 19),
         2018: (NOV, 7),
         2019: (OCT, 28),
         2020: (NOV, 14),
@@ -174,6 +165,9 @@ class FijiIslamicHolidays(_CustomIslamicHolidays):
 class FijiStaticHolidays:
     """
     Official Fiji Public Holidays Calendar:
+    - `2016 <https://www.fiji.gov.fj/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx>`_
+    - `2017 <https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS>`_
+    - `2018 <https://web.archive.org/web/20180727205733/http://www.employment.gov.fj/images/Laws/Press%20Release%20-%20Government%20Approves%202018%20Public%20Holidays.pdf>`_
     - `2019 <https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
     - `2020 <https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
     - `2021-2022 <https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
