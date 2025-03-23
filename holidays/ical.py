@@ -204,7 +204,7 @@ class ICalExporter:
             Directory path to save the file. Default is current directory.
         """
         # Regular expression to check for filenames containing problematic characters.
-        invalid_filename_regex = r'^[.]|[\/:*?"<>|\\]'
+        invalid_filename_regex = r'(^\.+)|([\/:*?"<>|\\])'
         if re.search(invalid_filename_regex, filename):
             raise ValueError(
                 f"Filename '{filename}' is invalid due to forbidden characters "
