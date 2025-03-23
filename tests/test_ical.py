@@ -164,6 +164,8 @@ class TestIcalExporter(TestCase):
 
         eid_al_fitr_count = output.count("SUMMARY:Eid al-Fitr\r\n")
         self.assertEqual(eid_al_fitr_count, 2)
+        eid_duration_count = output.count("DURATION:P1D\r\n")
+        self.assertGreaterEqual(eid_duration_count, 2, "Expected at least 2 single-day events")
 
     def test_combined_holidays_list(self):
         # All 3 "New Year's Day" should be merged into 1 single instance.
@@ -180,8 +182,11 @@ class TestIcalExporter(TestCase):
         # Default case, no action taken.
         self._assert_special_char_handling("Fête Nationale", "Fête Nationale")
 
-        # SEMICOLON, automatically splits into individual ones.
-        self._assert_special_char_handling("Christmas; Celebration", "Celebration")
+        # SINGLE QUOTES, no action taken.
+        self._assert_special_char_handling("Single 'Quotes' Holiday", "Single 'Quotes' Holiday")
+
+        # DOUBLE QUOTES, no action taken.
+        self._assert_special_char_handling('Double "Quotes" Holiday', 'Double "Quotes" Holiday')
 
         # COMMA.
         self._assert_special_char_handling(
@@ -194,6 +199,9 @@ class TestIcalExporter(TestCase):
 
         # BACKSLASH.
         self._assert_special_char_handling("Backslash\\Holiday", "Backslash\\\\Holiday")
+
+        # SEMICOLON, automatically splits into individual ones.
+        self._assert_special_char_handling("Christmas; Celebration", "Celebration")
 
     def test_localized_holiday_names(self):
         output = self.jp_exporter.generate()
@@ -289,7 +297,7 @@ class TestIcalExporter(TestCase):
 
     @patch("builtins.open", side_effect=OSError("Permission denied"))
     def test_export_ics_permission_error(self, mock_open):
-        with self.assertRaises(IOError) as context:
+        with self.assertRaises(OSError) as context:
             self.exporter.export_ics()
         self.assertEqual(
             str(context.exception),
@@ -319,6 +327,9 @@ class TestIcalExporter(TestCase):
         self.us_exporter.export_ics(filename="test_calendar", export_path=Path("."))
         self.assertNotEqual(
             existing_file.read_text(), "Old content", "The file was not overwritten."
+        )
+        self.assertIn(
+            "BEGIN:VCALENDAR", existing_file.read_text(), "New content is not valid iCalendar"
         )
         existing_file.unlink()
 

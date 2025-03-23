@@ -421,8 +421,11 @@ Generate iCalendar content and export to ``.ics``
 
 :py:func:`ICalExporter` facilitates the creation and export of iCalendar files in compliance with `RFC 5545 <https://datatracker.ietf.org/doc/html/rfc5545>`__.
 
-Since the iCalendar specification only supports 2-letter `ISO 639-1 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, certain holiday lists may not be exportable—for example, Aruba's ``pap_AW`` l10n.
-Similarly, all of Hong Kong's Chinese language localizations (``zh_CN``, ``zh_HK``) share the ``ZH`` code instead. Additionally, holiday lists without a specified language attribute are automatically assigned the ``EN`` code by default.
+The iCalendar specification only supports 2-letter `ISO 639-1 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, which means some holiday lists may not be exportable.
+For instance, Aruba's ``pap_AW`` localization is unsupported. Similarly, all of Hong Kong's Chinese language localizations (``zh_CN``, ``zh_HK``) are assigned the shared ``ZH`` code. 
+
+Furthermore, if no :py:attr:`language` is specified for a given holiday but :py:attr:`default_language` is set for that Holiday object, the default language will be used instead.
+If neither attribute exists, the fallback language code ``EN`` will be applied.
 
 .. code-block:: python
 
