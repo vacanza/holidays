@@ -52,12 +52,14 @@ class TestIcalExporter(TestCase):
 
             # If continuation line (starts with a space).
             if line.startswith(" "):
-                self.assertTrue(
-                    previous_line is not None,
+                self.assertIsNot(
+                    previous_line,
+                    None,
                     f"Continuation Line found without a preceding line: {repr(line)}",
                 )
-                self.assertTrue(
-                    line[1] != " ",
+                self.assertNotEqual(
+                    line[1],
+                    " ",
                     f"Continuation Line starts with more than one space: {repr(line)}",
                 )
             previous_line = line
