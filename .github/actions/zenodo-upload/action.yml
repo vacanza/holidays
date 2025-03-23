@@ -1,0 +1,37 @@
+name: 'Zenodo Upload'
+description: 'Uploads release artifacts to Zenodo'
+inputs:
+  token:
+    description: 'Zenodo API token'
+    required: true
+  files:
+    description: 'Files to upload (space-separated)'
+    required: true
+  concept_id:
+    description: 'Zenodo concept ID for versioning'
+    required: false
+  metadata_file:
+    description: 'Path to metadata file (e.g., CITATION.cff)'
+    required: false
+    default: 'CITATION.cff'
+  sandbox:
+    description: 'Use Zenodo sandbox (true/false)'
+    default: 'true'
+outputs:
+  doi:
+    description: 'DOI of the published release'
+    value: ${{ steps.upload.outputs.doi }}
+runs:
+  using: 'composite'
+  steps:
+    - run: pip install -r ${{ github.action_path }}/requirements.txt
+      shell: bash
+    - id: upload
+      run: python ${{ github.action_path }}/zenodo_upload.py
+      shell: bash
+      env:
+        ZENODO_TOKEN: ${{ inputs.token }}
+        ZENODO_FILES: ${{ inputs.files }}
+        ZENODO_CONCEPT_ID: ${{ inputs.concept_id }}
+        ZENODO_METADATA_FILE: ${{ inputs.metadata_file }}
+        ZENODO_SANDBOX: ${{ inputs.sandbox }}
