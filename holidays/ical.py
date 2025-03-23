@@ -14,6 +14,7 @@ import re
 import uuid
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Union
 
 from holidays.version import __version__
 
@@ -146,7 +147,7 @@ class ICalExporter:
 
         return lines
 
-    def generate(self, return_bytes: bool = False) -> str | bytes:
+    def generate(self, return_bytes: bool = False) -> Union[str, bytes]:
         """
         Generate iCalendar data.
 
