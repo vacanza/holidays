@@ -120,13 +120,17 @@ class ICalExporter:
         Returns:
         - list[str]: List of iCalendar format event lines.
         """
+        # Escape special characters per RFC 5545.
+        sanitized_holiday_name = (
+            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
+        )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
 
         lines = [
             "BEGIN:VEVENT",
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
-            self._fold_line(f"SUMMARY:{holiday_name}"),
+            self._fold_line(f"SUMMARY:{sanitized_holiday_name}"),
             f"DTSTART;VALUE=DATE:{date:%Y%m%d}",
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",

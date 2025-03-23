@@ -140,6 +140,15 @@ class TestIcalExporter(TestCase):
         new_years_day_count = output.count("SUMMARY:New Year's Day\r\n")
         self.assertEqual(new_years_day_count, 1)
 
+    def test_escape_character_holiday_names(self):
+        # BACKSLASH should be include in front of COMMA.
+        output = ICalExporter(country_holidays("PT", years=2024)).generate()
+
+        self.assertIn(
+            "SUMMARY:Dia de Portugal\\, de Camões e das Comunidades Portuguesas\r\n",
+            output,
+        )
+
     def test_localized_holiday_names(self):
         output = self.jp_exporter.generate()
 
