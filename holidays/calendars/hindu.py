@@ -10,17 +10,117 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
+from holidays.helpers import _normalize_tuple
 
+BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
+CHHATH_PUJA = "CHHATH_PUJA"
 DIWALI = "DIWALI"
+DIWALI_INDIA = "DIWALI_INDIA"
+DUSSEHRA = "DUSSEHRA"
+GANESH_CHATURTHI = "GANESH_CHATURTHI"
+GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
+GUDI_PADWA = "GUDI_PADWA"
+GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
+GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
+HOLI = "HOLI"
+JANMASHTAMI = "JANMASHTAMI"
+MAHA_NAVAMI = "MAHA_NAVAMI"
+MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
+MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
+MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
+ONAM = "ONAM"
+RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
+RAM_NAVAMI = "RAM_NAVAMI"
+SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 THAIPUSAM = "THAIPUSAM"
+VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
+    # https://www.timeanddate.com/holidays/india/buddha-purnima
+    BUDDHA_PURNIMA_DATES = {
+        2001: (APR, 30),
+        2002: (MAY, 19),
+        2003: (MAY, 8),
+        2004: (MAY, 26),
+        2005: (MAY, 23),
+        2006: (MAY, 13),
+        2007: (MAY, 2),
+        2008: (MAY, 20),
+        2009: (MAY, 8),
+        2010: (MAY, 27),
+        2011: (MAY, 17),
+        2012: (MAY, 6),
+        2013: (MAY, 25),
+        2014: (MAY, 14),
+        2015: (MAY, 4),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (APR, 30),
+        2019: (MAY, 18),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 16),
+        2023: (MAY, 5),
+        2024: (MAY, 23),
+        2025: (MAY, 12),
+        2026: (MAY, 1),
+        2027: (MAY, 20),
+        2028: (MAY, 8),
+        2029: (MAY, 27),
+        2030: (MAY, 17),
+        2031: (MAY, 7),
+        2032: (MAY, 25),
+        2033: (MAY, 14),
+        2034: (MAY, 3),
+        2035: (MAY, 22),
+    }
+
+    # https://www.timeanddate.com/holidays/india/chhat-puja
+    CHHATH_PUJA_DATES = {
+        2001: (NOV, 21),
+        2002: (NOV, 10),
+        2003: (OCT, 30),
+        2004: (NOV, 17),
+        2005: (NOV, 7),
+        2006: (OCT, 28),
+        2007: (NOV, 16),
+        2008: (NOV, 4),
+        2009: (OCT, 24),
+        2010: (NOV, 11),
+        2011: (NOV, 1),
+        2012: (NOV, 19),
+        2013: (NOV, 8),
+        2014: (OCT, 29),
+        2015: (NOV, 17),
+        2016: (NOV, 6),
+        2017: (OCT, 26),
+        2018: (NOV, 13),
+        2019: (NOV, 2),
+        2020: (NOV, 20),
+        2021: (NOV, 10),
+        2022: (OCT, 30),
+        2023: (NOV, 19),
+        2024: (NOV, 7),
+        2025: (OCT, 28),
+        2026: (NOV, 15),
+        2027: (NOV, 4),
+        2028: (OCT, 23),
+        2029: (NOV, 11),
+        2030: (NOV, 1),
+        2031: (NOV, 20),
+        2032: (NOV, 9),
+        2033: (OCT, 29),
+        2034: (NOV, 17),
+        2035: (NOV, 6),
+    }
+
     DIWALI_DATES = {
         1901: (NOV, 9),
         1902: (OCT, 29),
@@ -221,6 +321,664 @@ class _HinduLunisolar:
         2097: (NOV, 2),
         2098: (OCT, 22),
         2099: (NOV, 10),
+    }
+
+    # https://www.timeanddate.com/holidays/india/diwali
+    DIWALI_INDIA_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 4),
+        2003: (OCT, 25),
+        2004: (NOV, 12),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 9),
+        2008: (OCT, 28),
+        2009: (OCT, 17),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 3),
+        2014: (OCT, 23),
+        2015: (NOV, 11),
+        2016: (OCT, 30),
+        2017: (OCT, 19),
+        2018: (NOV, 7),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (NOV, 1),
+        2025: (OCT, 20),
+        2026: (NOV, 8),
+        2027: (OCT, 29),
+        2028: (OCT, 17),
+        2029: (NOV, 5),
+        2030: (OCT, 26),
+        2031: (NOV, 14),
+        2032: (NOV, 2),
+        2033: (OCT, 22),
+        2034: (NOV, 10),
+        2035: (OCT, 30),
+    }
+
+    # https://www.timeanddate.com/holidays/india/dussehra
+    DUSSEHRA_DATES = {
+        2001: (OCT, 26),
+        2002: (OCT, 15),
+        2003: (OCT, 5),
+        2004: (OCT, 22),
+        2005: (OCT, 12),
+        2006: (OCT, 2),
+        2007: (OCT, 21),
+        2008: (OCT, 9),
+        2009: (SEP, 28),
+        2010: (OCT, 17),
+        2011: (OCT, 6),
+        2012: (OCT, 24),
+        2013: (OCT, 13),
+        2014: (OCT, 3),
+        2015: (OCT, 22),
+        2016: (OCT, 11),
+        2017: (SEP, 30),
+        2018: (OCT, 19),
+        2019: (OCT, 8),
+        2020: (OCT, 25),
+        2021: (OCT, 15),
+        2022: (OCT, 5),
+        2023: (OCT, 24),
+        2024: (OCT, 12),
+        2025: (OCT, 2),
+        2026: (OCT, 20),
+        2027: (OCT, 9),
+        2028: (SEP, 27),
+        2029: (OCT, 16),
+        2030: (OCT, 6),
+        2031: (OCT, 25),
+        2032: (OCT, 14),
+        2033: (OCT, 3),
+        2034: (OCT, 22),
+        2035: (OCT, 11),
+    }
+
+    # https://www.timeanddate.com/holidays/india/ganesh-chaturthi
+    GANESH_CHATURTHI_DATES = {
+        2001: (AUG, 22),
+        2002: (SEP, 10),
+        2003: (AUG, 31),
+        2004: (SEP, 18),
+        2005: (SEP, 7),
+        2006: (AUG, 27),
+        2007: (SEP, 15),
+        2008: (SEP, 3),
+        2009: (AUG, 23),
+        2010: (SEP, 11),
+        2011: (SEP, 1),
+        2012: (SEP, 19),
+        2013: (SEP, 9),
+        2014: (AUG, 29),
+        2015: (SEP, 17),
+        2016: (SEP, 5),
+        2017: (AUG, 25),
+        2018: (SEP, 13),
+        2019: (SEP, 2),
+        2020: (AUG, 22),
+        2021: (SEP, 10),
+        2022: (AUG, 31),
+        2023: (SEP, 19),
+        2024: (SEP, 7),
+        2025: (AUG, 27),
+        2026: (SEP, 14),
+        2027: (SEP, 4),
+        2028: (AUG, 23),
+        2029: (SEP, 11),
+        2030: (SEP, 1),
+        2031: (SEP, 20),
+        2032: (SEP, 8),
+        2033: (AUG, 28),
+        2034: (SEP, 16),
+        2035: (SEP, 5),
+    }
+
+    # https://www.timeanddate.com/holidays/india/govardhan-puja
+    GOVARDHAN_PUJA_DATES = {
+        2001: (NOV, 15),
+        2002: (NOV, 5),
+        2003: (OCT, 26),
+        2004: (NOV, 13),
+        2005: (NOV, 2),
+        2006: (OCT, 22),
+        2007: (NOV, 10),
+        2008: (OCT, 29),
+        2009: (OCT, 18),
+        2010: (NOV, 6),
+        2011: (OCT, 27),
+        2012: (NOV, 14),
+        2013: (NOV, 4),
+        2014: (OCT, 24),
+        2015: (NOV, 12),
+        2016: (OCT, 31),
+        2017: (OCT, 20),
+        2018: (NOV, 8),
+        2019: (OCT, 28),
+        2020: (NOV, 15),
+        2021: (NOV, 5),
+        2022: (OCT, 25),
+        2023: (NOV, 13),
+        2024: (NOV, 2),
+        2025: (OCT, 22),
+        2026: (NOV, 10),
+        2027: (OCT, 30),
+        2028: (OCT, 18),
+        2029: (NOV, 6),
+        2030: (OCT, 27),
+        2031: (NOV, 15),
+        2032: (NOV, 3),
+        2033: (OCT, 23),
+        2034: (NOV, 11),
+        2035: (OCT, 31),
+    }
+
+    # https://www.timeanddate.com/holidays/india/gudi-padwa
+    GUDI_PADWA_DATES = {
+        2001: (MAR, 26),
+        2002: (APR, 13),
+        2003: (APR, 2),
+        2004: (MAR, 21),
+        2005: (APR, 9),
+        2006: (MAR, 30),
+        2007: (MAR, 19),
+        2008: (APR, 6),
+        2009: (MAR, 27),
+        2010: (MAR, 16),
+        2011: (APR, 4),
+        2012: (MAR, 23),
+        2013: (APR, 11),
+        2014: (MAR, 31),
+        2015: (MAR, 21),
+        2016: (APR, 8),
+        2017: (MAR, 28),
+        2018: (MAR, 18),
+        2019: (APR, 6),
+        2020: (MAR, 25),
+        2021: (APR, 13),
+        2022: (APR, 2),
+        2023: (MAR, 22),
+        2024: (APR, 9),
+        2025: (MAR, 30),
+        2026: (MAR, 19),
+        2027: (APR, 7),
+        2028: (MAR, 27),
+        2029: (APR, 14),
+        2030: (APR, 3),
+        2031: (MAR, 24),
+        2032: (APR, 11),
+        2033: (MAR, 31),
+        2034: (MAR, 21),
+        2035: (APR, 9),
+    }
+
+    # https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
+    GURU_GOBIND_SINGH_JAYANTI_DATES = {
+        2001: (JAN, 2),
+        2002: (JAN, 21),
+        2003: (DEC, 29),
+        2004: (NOV, 20),
+        2005: (JAN, 5),
+        2006: (JAN, 5),
+        2007: (JAN, 5),
+        2008: (JAN, 5),
+        2009: (JAN, 5),
+        2010: (JAN, 5),
+        2011: (JAN, 5),
+        2012: (JAN, 5),
+        2013: (JAN, 18),
+        2014: (JAN, 7),
+        2015: (JAN, 5),
+        2016: (JAN, 16),
+        2017: ((JAN, 5), (DEC, 25)),
+        2019: (JAN, 13),
+        2020: (JAN, 2),
+        2021: (JAN, 20),
+        2022: ((JAN, 9), (DEC, 29)),
+        2024: (JAN, 17),
+        2025: ((JAN, 6), (DEC, 27)),
+        2027: (JAN, 15),
+        2028: (JAN, 4),
+        2029: (JAN, 15),
+        2030: ((JAN, 10), (DEC, 31)),
+        2032: (JAN, 18),
+        2033: (JAN, 7),
+        2034: (JAN, 17),
+        2035: (JAN, 16),
+    }
+
+    # https://www.timeanddate.com/holidays/india/guru-nanak-jayanti
+    GURU_NANAK_JAYANTI_DATES = {
+        2001: (NOV, 30),
+        2002: (NOV, 19),
+        2003: (NOV, 8),
+        2004: (NOV, 26),
+        2005: (NOV, 15),
+        2006: (NOV, 5),
+        2007: (NOV, 24),
+        2008: (NOV, 13),
+        2009: (NOV, 2),
+        2010: (NOV, 21),
+        2011: (NOV, 10),
+        2012: (NOV, 28),
+        2013: (NOV, 17),
+        2014: (NOV, 6),
+        2015: (NOV, 25),
+        2016: (NOV, 14),
+        2017: (NOV, 4),
+        2018: (NOV, 23),
+        2019: (NOV, 12),
+        2020: (NOV, 30),
+        2021: (NOV, 19),
+        2022: (NOV, 8),
+        2023: (NOV, 27),
+        2024: (NOV, 15),
+        2025: (NOV, 5),
+        2027: (NOV, 14),
+        2028: (NOV, 2),
+        2029: (NOV, 21),
+        2030: (NOV, 10),
+        2031: (NOV, 28),
+        2032: (NOV, 17),
+        2033: (NOV, 6),
+        2034: (NOV, 25),
+        2035: (NOV, 15),
+    }
+
+    # https://www.timeanddate.com/holidays/india/holi
+    HOLI_DATES = {
+        2001: (MAR, 10),
+        2002: (MAR, 29),
+        2003: (MAR, 18),
+        2004: (MAR, 7),
+        2005: (MAR, 26),
+        2006: (MAR, 15),
+        2007: (MAR, 4),
+        2008: (MAR, 22),
+        2009: (MAR, 11),
+        2010: (MAR, 1),
+        2011: (MAR, 20),
+        2012: (MAR, 8),
+        2013: (MAR, 27),
+        2014: (MAR, 17),
+        2015: (MAR, 6),
+        2016: (MAR, 24),
+        2017: (MAR, 13),
+        2018: (MAR, 2),
+        2019: (MAR, 21),
+        2020: (MAR, 10),
+        2021: (MAR, 29),
+        2022: (MAR, 18),
+        2023: (MAR, 8),
+        2024: (MAR, 25),
+        2025: (MAR, 14),
+        2026: (MAR, 4),
+        2027: (MAR, 22),
+        2028: (MAR, 11),
+        2029: (MAR, 1),
+        2030: (MAR, 20),
+        2031: (MAR, 9),
+        2032: (MAR, 27),
+        2033: (MAR, 16),
+        2034: (MAR, 5),
+        2035: (MAR, 24),
+    }
+
+    # https://www.timeanddate.com/holidays/india/janmashtami
+    JANMASHTAMI_DATES = {
+        2001: (AUG, 12),
+        2002: (AUG, 31),
+        2003: (AUG, 20),
+        2004: (SEP, 7),
+        2005: (AUG, 27),
+        2006: (AUG, 16),
+        2007: (SEP, 4),
+        2008: (AUG, 24),
+        2009: (AUG, 14),
+        2010: (SEP, 2),
+        2011: (AUG, 22),
+        2012: (AUG, 10),
+        2013: (AUG, 28),
+        2014: (AUG, 18),
+        2015: (SEP, 5),
+        2016: (AUG, 25),
+        2017: (AUG, 15),
+        2018: (SEP, 3),
+        2019: (AUG, 24),
+        2020: (AUG, 12),
+        2021: (AUG, 30),
+        2022: (AUG, 19),
+        2023: (SEP, 7),
+        2024: (AUG, 26),
+        2025: (AUG, 16),
+        2026: (SEP, 4),
+        2027: (AUG, 25),
+        2028: (AUG, 13),
+        2029: (SEP, 1),
+        2030: (AUG, 21),
+        2031: (AUG, 10),
+        2032: (AUG, 28),
+        2033: (AUG, 17),
+        2034: (SEP, 6),
+        2035: (AUG, 26),
+    }
+
+    # https://www.timeanddate.com/holidays/india/maha-navami
+    MAHA_NAVAMI_DATES = {
+        2001: (OCT, 25),
+        2002: (OCT, 14),
+        2003: (OCT, 3),
+        2004: (OCT, 21),
+        2005: (OCT, 11),
+        2006: (OCT, 1),
+        2007: (OCT, 20),
+        2008: (OCT, 8),
+        2009: (SEP, 27),
+        2010: (OCT, 16),
+        2011: (OCT, 5),
+        2012: (OCT, 23),
+        2013: (OCT, 12),
+        2014: (OCT, 2),
+        2015: (OCT, 21),
+        2016: (OCT, 10),
+        2017: (SEP, 29),
+        2018: (OCT, 18),
+        2019: (OCT, 7),
+        2020: (OCT, 24),
+        2021: (OCT, 14),
+        2022: (OCT, 4),
+        2023: (OCT, 23),
+        2024: (OCT, 11),
+        2025: (OCT, 1),
+        2026: (OCT, 19),
+        2027: (OCT, 8),
+        2028: (SEP, 26),
+        2029: (OCT, 15),
+        2030: (OCT, 5),
+        2031: (OCT, 24),
+        2032: (OCT, 13),
+        2033: (OCT, 2),
+        2034: (OCT, 21),
+        2035: (OCT, 10),
+    }
+
+    # https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
+    MAHA_SHIVARATRI_DATES = {
+        2001: (FEB, 21),
+        2002: (MAR, 12),
+        2003: (MAR, 1),
+        2004: (FEB, 18),
+        2005: (MAR, 8),
+        2006: (FEB, 26),
+        2007: (FEB, 16),
+        2008: (MAR, 6),
+        2009: (FEB, 23),
+        2010: (FEB, 12),
+        2011: (MAR, 2),
+        2012: (FEB, 20),
+        2013: (MAR, 10),
+        2014: (FEB, 27),
+        2015: (FEB, 17),
+        2016: (MAR, 7),
+        2017: (FEB, 24),
+        2018: (FEB, 13),
+        2019: (MAR, 4),
+        2020: (FEB, 21),
+        2021: (MAR, 11),
+        2022: (MAR, 1),
+        2023: (FEB, 18),
+        2024: (MAR, 8),
+        2025: (FEB, 26),
+        2026: (FEB, 15),
+        2027: (MAR, 6),
+        2028: (FEB, 23),
+        2029: (FEB, 11),
+        2030: (MAR, 2),
+        2031: (FEB, 20),
+        2032: (MAR, 10),
+        2033: (FEB, 27),
+        2034: (FEB, 17),
+        2035: (MAR, 8),
+    }
+
+    # https://www.timeanddate.com/holidays/india/mahavir-jayanti
+    MAHAVIR_JAYANTI_DATES = {
+        2001: (APR, 6),
+        2002: (APR, 25),
+        2003: (APR, 15),
+        2004: (APR, 3),
+        2005: (APR, 22),
+        2006: (APR, 11),
+        2007: (MAR, 31),
+        2008: (APR, 18),
+        2009: (APR, 7),
+        2010: (APR, 28),
+        2011: (APR, 16),
+        2012: (APR, 5),
+        2013: (APR, 24),
+        2014: (APR, 13),
+        2015: (APR, 2),
+        2016: (APR, 20),
+        2017: (APR, 9),
+        2018: (MAR, 29),
+        2019: (APR, 17),
+        2020: (APR, 6),
+        2021: (APR, 25),
+        2022: (APR, 14),
+        2023: (APR, 4),
+        2024: (APR, 21),
+        2025: (APR, 10),
+        2026: (MAR, 31),
+        2027: (APR, 18),
+        2028: (APR, 7),
+        2029: (APR, 26),
+        2030: (APR, 16),
+        2031: (APR, 5),
+        2032: (APR, 23),
+        2033: (APR, 12),
+        2034: (APR, 1),
+        2035: (APR, 20),
+    }
+
+    # https://www.timeanddate.com/holidays/india/makar-sankranti
+    MAKAR_SANKRANTI_DATES = {
+        2001: (JAN, 14),
+        2002: (JAN, 14),
+        2003: (JAN, 14),
+        2004: (JAN, 15),
+        2005: (JAN, 14),
+        2006: (JAN, 14),
+        2007: (JAN, 15),
+        2008: (JAN, 15),
+        2009: (JAN, 14),
+        2010: (JAN, 14),
+        2011: (JAN, 15),
+        2012: (JAN, 15),
+        2013: (JAN, 14),
+        2014: (JAN, 14),
+        2015: (JAN, 15),
+        2016: (JAN, 15),
+        2017: (JAN, 14),
+        2018: (JAN, 14),
+        2019: (JAN, 15),
+        2020: (JAN, 15),
+        2021: (JAN, 14),
+        2022: (JAN, 14),
+        2023: (JAN, 14),
+        2024: (JAN, 14),
+        2025: (JAN, 14),
+        2026: (JAN, 14),
+        2027: (JAN, 15),
+        2028: (JAN, 15),
+        2029: (JAN, 14),
+        2030: (JAN, 14),
+        2031: (JAN, 15),
+        2032: (JAN, 15),
+        2033: (JAN, 14),
+        2034: (JAN, 14),
+        2035: (JAN, 15),
+    }
+
+    # https://www.timeanddate.com/holidays/india/onam
+    ONAM_DATES = {
+        2001: (AUG, 31),
+        2002: (AUG, 21),
+        2003: (SEP, 8),
+        2004: (AUG, 28),
+        2005: (SEP, 15),
+        2006: (SEP, 5),
+        2007: (AUG, 26),
+        2008: (SEP, 12),
+        2009: (SEP, 2),
+        2010: (AUG, 23),
+        2011: (SEP, 9),
+        2012: (AUG, 29),
+        2013: (AUG, 20),
+        2014: (SEP, 6),
+        2015: (AUG, 28),
+        2016: (SEP, 13),
+        2017: (SEP, 4),
+        2018: (AUG, 24),
+        2019: (SEP, 11),
+        2020: (AUG, 31),
+        2021: (AUG, 21),
+        2022: (SEP, 8),
+        2023: (AUG, 29),
+        2024: (SEP, 15),
+        2025: (SEP, 5),
+        2026: (AUG, 26),
+        2027: (SEP, 12),
+        2028: (SEP, 1),
+        2029: (AUG, 22),
+        2030: (SEP, 9),
+        2031: (AUG, 30),
+        2032: (AUG, 20),
+        2033: (SEP, 6),
+        2034: (AUG, 28),
+        2035: (SEP, 14),
+    }
+
+    # https://www.timeanddate.com/holidays/india/raksha-bandhan
+    RAKSHA_BANDHAN_DATES = {
+        2001: (AUG, 4),
+        2002: (AUG, 22),
+        2003: (AUG, 12),
+        2004: (AUG, 29),
+        2005: (AUG, 19),
+        2006: (AUG, 9),
+        2007: (AUG, 28),
+        2008: (AUG, 16),
+        2009: (AUG, 5),
+        2010: (AUG, 24),
+        2011: (AUG, 13),
+        2012: (AUG, 2),
+        2013: (AUG, 20),
+        2014: (AUG, 10),
+        2015: (AUG, 29),
+        2016: (AUG, 18),
+        2017: (AUG, 7),
+        2018: (AUG, 26),
+        2019: (AUG, 15),
+        2020: (AUG, 3),
+        2021: (AUG, 22),
+        2022: (AUG, 11),
+        2023: (AUG, 30),
+        2024: (AUG, 19),
+        2025: (AUG, 9),
+        2026: (AUG, 28),
+        2027: (AUG, 17),
+        2028: (AUG, 5),
+        2029: (AUG, 23),
+        2030: (AUG, 13),
+        2031: (AUG, 2),
+        2032: (AUG, 20),
+        2033: (AUG, 10),
+        2034: (AUG, 29),
+        2035: (AUG, 18),
+    }
+
+    # https://www.timeanddate.com/holidays/india/rama-navami
+    RAM_NAVAMI_DATES = {
+        2001: (APR, 2),
+        2002: (APR, 21),
+        2003: (APR, 11),
+        2004: (MAR, 30),
+        2005: (APR, 18),
+        2006: (APR, 6),
+        2007: (MAR, 26),
+        2008: (APR, 13),
+        2009: (APR, 3),
+        2010: (MAR, 24),
+        2011: (APR, 12),
+        2012: (APR, 1),
+        2013: (APR, 19),
+        2014: (APR, 8),
+        2015: (MAR, 28),
+        2016: (APR, 15),
+        2017: (APR, 4),
+        2018: (MAR, 25),
+        2019: (APR, 13),
+        2020: (APR, 2),
+        2021: (APR, 21),
+        2022: (APR, 10),
+        2023: (MAR, 30),
+        2024: (APR, 17),
+        2025: (APR, 6),
+        2026: (MAR, 26),
+        2027: (APR, 15),
+        2028: (APR, 3),
+        2029: (APR, 22),
+        2030: (APR, 12),
+        2031: (APR, 1),
+        2032: (APR, 19),
+        2033: (APR, 7),
+        2034: (MAR, 28),
+        2035: (APR, 16),
+    }
+
+    # https://www.timeanddate.com/holidays/india/navratri
+    SHARAD_NAVRATRI_DATES = {
+        2001: (OCT, 17),
+        2002: (OCT, 7),
+        2003: (SEP, 26),
+        2004: (OCT, 14),
+        2005: (OCT, 4),
+        2006: (SEP, 23),
+        2007: (OCT, 12),
+        2008: (SEP, 30),
+        2009: (SEP, 19),
+        2010: (OCT, 8),
+        2011: (SEP, 28),
+        2012: (OCT, 16),
+        2013: (OCT, 5),
+        2014: (SEP, 25),
+        2015: (OCT, 13),
+        2016: (OCT, 1),
+        2017: (SEP, 21),
+        2018: (OCT, 10),
+        2019: (SEP, 29),
+        2020: (OCT, 17),
+        2021: (OCT, 7),
+        2022: (SEP, 26),
+        2023: (OCT, 15),
+        2024: (OCT, 3),
+        2025: (SEP, 22),
+        2026: (OCT, 11),
+        2027: (SEP, 30),
+        2028: (SEP, 19),
+        2029: (OCT, 8),
+        2030: (SEP, 28),
+        2031: (OCT, 17),
+        2032: (OCT, 5),
+        2033: (SEP, 24),
+        2034: (OCT, 13),
+        2035: (OCT, 2),
     }
 
     THAIPUSAM_DATES = {
@@ -425,17 +1183,123 @@ class _HinduLunisolar:
         2099: (JAN, 6),
     }
 
+    # https://www.timeanddate.com/holidays/india/vaisakhi
+    VAISAKHI_DATES = {
+        2001: (APR, 13),
+        2002: (APR, 14),
+        2003: (APR, 14),
+        2004: (APR, 13),
+        2005: (APR, 14),
+        2006: (APR, 14),
+        2007: (APR, 14),
+        2008: (APR, 13),
+        2009: (APR, 14),
+        2010: (APR, 14),
+        2011: (APR, 14),
+        2012: (APR, 13),
+        2013: (APR, 13),
+        2014: (APR, 14),
+        2015: (APR, 14),
+        2016: (APR, 13),
+        2017: (APR, 14),
+        2018: (APR, 14),
+        2019: (APR, 14),
+        2020: (APR, 13),
+        2021: (APR, 14),
+        2022: (APR, 14),
+        2023: (APR, 14),
+        2024: (APR, 13),
+        2025: (APR, 13),
+        2026: (APR, 14),
+        2027: (APR, 14),
+        2028: (APR, 13),
+        2029: (APR, 14),
+        2030: (APR, 14),
+        2031: (APR, 14),
+        2032: (APR, 13),
+        2033: (APR, 14),
+        2034: (APR, 14),
+        2035: (APR, 14),
+    }
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
+    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
+        estimated_dates = getattr(self, f"{holiday}_DATES", {})
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
+        for year in (year - 1, year):
+            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
+                yield date(year, *dt), year not in exact_dates
+
+    def buddha_purnima_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(BUDDHA_PURNIMA, year)
+
+    def chhath_puja_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(CHHATH_PUJA, year)
+
     def diwali_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DIWALI, year)
 
+    def diwali_india_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(DIWALI_INDIA, year)
+
+    def dussehra_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(DUSSEHRA, year)
+
+    def ganesh_chaturthi_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(GANESH_CHATURTHI, year)
+
+    def govardhan_puja_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(GOVARDHAN_PUJA, year)
+
+    def gudi_padwa_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(GUDI_PADWA, year)
+
+    def guru_gobind_singh_jayanti_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(GURU_GOBIND_SINGH_JAYANTI, year)
+
+    def guru_nanak_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(GURU_NANAK_JAYANTI, year)
+
+    def holi_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(HOLI, year)
+
+    def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(JANMASHTAMI, year)
+
+    def maha_navami_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAHA_NAVAMI, year)
+
+    def maha_shivaratri_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAHA_SHIVARATRI, year)
+
+    def mahavir_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAHAVIR_JAYANTI, year)
+
+    def makar_sankranti_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAKAR_SANKRANTI, year)
+
+    def onam_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(ONAM, year)
+
+    def raksha_bandhan_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(RAKSHA_BANDHAN, year)
+
+    def ram_navami_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(RAM_NAVAMI, year)
+
+    def sharad_navratri_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(SHARAD_NAVRATRI, year)
+
     def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(THAIPUSAM, year)
+
+    def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(VAISAKHI, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

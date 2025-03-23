@@ -80,9 +80,7 @@ msgid "Svi sveti"
 msgstr "День усіх святих"
 
 #. Remembrance Day.
-msgid ""
-"Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i "
-"Škabrnje"
+msgid "Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje"
 msgstr "День памʼяті жертв Вітчизняної війни та жертв Вуковара і Шкабрні"
 
 #. Christmas Day.
