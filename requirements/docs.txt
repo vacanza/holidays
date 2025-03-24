@@ -3,10 +3,6 @@
 markdown-include==0.8.1
 mkdocs==1.6.1
 mkdocs-gen-files==0.5.0
-mkdocs-literate-nav==0.6.1
-mkdocstrings-python==1.16.2
-
-python-dateutil==2.9.0.post0
-sphinx-rtd-theme==3.0.2
-sphinx==7.4.7  # keep the version until sphinx-rtd-theme starts supporting sphinx>=8
-zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+mkdocs-literate-nav==0.6.2
+mkdocstrings-python==1.16.8
+zipp==3.21.0 # not directly required, pinned by Snyk to avoid a vulnerability
