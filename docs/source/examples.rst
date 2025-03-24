@@ -422,7 +422,7 @@ Generate iCalendar content and export to ``.ics``
 :py:func:`ICalExporter` facilitates the creation and export of iCalendar files in compliance with `RFC 5545 <https://datatracker.ietf.org/doc/html/rfc5545>`__.
 
 The iCalendar specification only supports 2-letter `ISO 639-1 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, which means some holiday lists may not be exportable.
-For instance, Aruba's ``pap_AW`` localization is unsupported. Similarly, all of Hong Kong's Chinese language localizations (``zh_CN``, ``zh_HK``) are assigned the shared ``ZH`` code. 
+For instance, Aruba's ``pap_AW`` localization is unsupported. Similarly, all of Hong Kong's Chinese language localizations (``zh_CN``, ``zh_HK``) are assigned the shared ``ZH`` code.
 
 Furthermore, if no :py:attr:`language` is specified for a given holiday but :py:attr:`default_language` is set for that Holiday object, the default language will be used instead.
 If neither attribute exists, the fallback language code ``EN`` will be applied.
@@ -481,3 +481,5 @@ To export to ``.ics`` format, use :py:meth:`export_ics`.
    # Export to Windows' ``Downloads`` folder instead.
    >>> downloads_path = Path.home() / "Downloads"
    >>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
+
+For advanced features and customization of the exported ``.ics`` output, consider using the `icalendar <https://github.com/collective/icalendar>`__ package.
