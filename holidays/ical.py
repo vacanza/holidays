@@ -205,8 +205,5 @@ class ICalExporter:
         if not content:
             raise ValueError("Generated content is empty or invalid.")
 
-        try:
-            with open(file_path, "wb") as file:
-                file.write(content)  # type: ignore  # this is always bytes, ignoring mypy error.
-        except OSError as e:
-            raise OSError(f"An error occurred while writing the file '{file_path}': {str(e)}")
+        with open(file_path, "wb") as file:
+            file.write(content)  # type: ignore  # this is always bytes, ignoring mypy error.

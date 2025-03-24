@@ -91,9 +91,9 @@ class TestIcalExporter(TestCase):
         self.assertIn("BEGIN:VEVENT", output)
         self.assertIn("DTSTAMP:", output)
         self.assertIn("UID:", output)
-        self.assertIn("SUMMARY:", output)
-        self.assertIn("DTSTART;VALUE=DATE:", output)
-        self.assertIn("DURATION:", output)
+        self.assertIn("SUMMARY:New Year's Day", output)
+        self.assertIn("DTSTART;VALUE=DATE:20240101", output)
+        self.assertIn("DURATION:P1D", output)
         self.assertIn("END:VEVENT", output)
 
     def test_ical_timestamp_provided(self):
@@ -131,17 +131,6 @@ class TestIcalExporter(TestCase):
             ),
         )
 
-    def test_single_holiday_event(self):
-        output = self.us_exporter.generate()
-
-        self.assertIn("BEGIN:VEVENT", output)
-        self.assertIn("DTSTAMP:", output)
-        self.assertIn("UID:", output)
-        self.assertIn("SUMMARY:New Year's Day", output)
-        self.assertIn("DTSTART;VALUE=DATE:20240101", output)
-        self.assertIn("DURATION:P1D", output)
-        self.assertIn("END:VEVENT", output)
-
     def test_multiple_holidays_same_date(self):
         # "วันพ่อแห่งชาติ" and "วันชาติ" are both on DEC 5th.
         output = self.th_exporter.generate()
@@ -155,6 +144,7 @@ class TestIcalExporter(TestCase):
 
         songkran_count = output.count("SUMMARY:วันสงกรานต์\r\n")
         self.assertEqual(songkran_count, 1)
+        self.assertIn("DTSTART;VALUE=DATE:20240413\r\n", output)
         self.assertIn("DURATION:P3D\r\n", output)
 
     def test_single_holiday_multiple_date_noncontinuous(self):
@@ -166,7 +156,7 @@ class TestIcalExporter(TestCase):
         eid_duration_count = output.count("DURATION:P1D\r\n")
         self.assertGreaterEqual(eid_duration_count, 2, "Expected at least 2 single-day events")
 
-    def test_combined_holidays_list(self):
+    def test_generate_from_combined_holidays_list(self):
         # All 3 "New Year's Day" should be merged into 1 single instance.
         cn_holidays = country_holidays("CN", years=2024, language="en_US")
         jp_holidays = country_holidays("JP", years=2024, language="en_US")
@@ -176,6 +166,7 @@ class TestIcalExporter(TestCase):
 
         new_years_day_count = output.count("SUMMARY:New Year's Day\r\n")
         self.assertEqual(new_years_day_count, 1)
+        self.assertIn("DTSTART;VALUE=DATE:20240101\r\n", output)
 
     def test_escape_character_holiday_names(self):
         # Default case, no action taken.
@@ -259,10 +250,22 @@ class TestIcalExporter(TestCase):
             )
 
     def test_unique_uid_generation(self):
+        # 1st generation should yield unique UUIDs for each VEVENT.
         output = self.us_exporter.generate()
         uids = [line for line in output.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")]
 
         self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
+
+        # 2nd generation should yield different UUIDs.
+        output_2 = self.us_exporter.generate()
+        uids_2 = [
+            line for line in output_2.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")
+        ]
+
+        self.assertEqual(len(uids_2), len(set(uids_2)), "Duplicate UIDs found in 2nd iCal output.")
+
+        # Ensure that there is no overlap at all between UIDs from both attempt.
+        self.assertTrue(set(uids).isdisjoint(set(uids_2)), "Some UIDs are reused")
 
     def test_export_ics_valid_path(self):
         valid_path = "valid_directory"
@@ -278,36 +281,52 @@ class TestIcalExporter(TestCase):
             os.remove(os.path.join(valid_path, "test_calendar.ics"))
             os.rmdir(valid_path)
 
-    @patch("os.path.exists", return_value=False)
+    @patch("os.path.exists", side_effect=OSError("[Errno 2] No such file or directory"))
     def test_export_ics_invalid_path(self, mock_exists):
         invalid_path = "invalid|path/with*bad:chars"
         with self.assertRaises(OSError) as context:
             self.exporter.export_ics(file_path=invalid_path)
         self.assertEqual(
             str(context.exception),
-            (
-                f"An error occurred while writing the file '{invalid_path}': "
-                f"[Errno 2] No such file or directory: '{invalid_path}'"
-            ),
+            f"[Errno 2] No such file or directory: '{invalid_path}'",
         )
 
-    @patch("builtins.open", side_effect=OSError("Permission denied"))
+    @patch("builtins.open", side_effect=PermissionError("[Errno 13] Permission denied"))
     def test_export_ics_permission_error(self, mock_open):
-        with self.assertRaises(OSError) as context:
+        with self.assertRaises(PermissionError) as context:
             self.exporter.export_ics(file_path="calendar.ics")
-        self.assertEqual(
-            str(context.exception),
-            "An error occurred while writing the file 'calendar.ics': Permission denied",
-        )
+        self.assertEqual(str(context.exception), "[Errno 13] Permission denied")
 
-    @patch("builtins.open", side_effect=OSError("Disk is full"))
-    def test_export_ics_disk_full(self, mock_open):
+    @patch("builtins.open", side_effect=IsADirectoryError("[Errno 21] Is a directory"))
+    def test_export_ics_is_a_directory_error(self, mock_open):
+        with self.assertRaises(IsADirectoryError) as context:
+            self.exporter.export_ics(file_path="/home/user/")
+        self.assertEqual(str(context.exception), "[Errno 21] Is a directory")
+
+    @patch("builtins.open", side_effect=OSError("[Errno 22] Invalid argument"))
+    def test_export_ics_invalid_argument(self, mock_open):
+        invalid_filename = "invalid|file?.ics"
+        with self.assertRaises(OSError) as context:
+            self.exporter.export_ics(file_path=invalid_filename)
+        self.assertEqual(str(context.exception), "[Errno 22] Invalid argument")
+
+    @patch("builtins.open", side_effect=OSError("[Errno 24] Too many open files"))
+    def test_export_ics_too_many_open_files(self, mock_open):
         with self.assertRaises(OSError) as context:
             self.exporter.export_ics(file_path="calendar.ics")
-        self.assertEqual(
-            str(context.exception),
-            "An error occurred while writing the file 'calendar.ics': Disk is full",
-        )
+        self.assertEqual(str(context.exception), "[Errno 24] Too many open files")
+
+    @patch("builtins.open", side_effect=OSError("[Errno 28] No space left on device"))
+    def test_export_ics_no_space_left(self, mock_open):
+        with self.assertRaises(OSError) as context:
+            self.exporter.export_ics(file_path="calendar.ics")
+        self.assertEqual(str(context.exception), "[Errno 28] No space left on device")
+
+    @patch("builtins.open", side_effect=OSError("[Errno 30] Read-only file system"))
+    def test_export_ics_read_only_filesystem(self, mock_open):
+        with self.assertRaises(OSError) as context:
+            self.exporter.export_ics(file_path="/mnt/readonly/test_calendar.ics")
+        self.assertEqual(str(context.exception), "[Errno 30] Read-only file system")
 
     def test_export_ics_empty_content(self):
         self.exporter.generate = MagicMock(return_value=b"")
@@ -328,14 +347,6 @@ class TestIcalExporter(TestCase):
         self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
         self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
         os.remove(existing_file)
-
-    def test_export_ics_to_current_directory(self):
-        self.us_exporter.export_ics(file_path="calendar.ics")
-
-        self.assertTrue(
-            os.path.exists("calendar.ics"), f"File should be created at {'calendar.ics'}"
-        )
-        os.remove("calendar.ics")
 
     def test_export_ics_with_utf8_name(self):
         utf8_filename = "test_ปฏิทิน"

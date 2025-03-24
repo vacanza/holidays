@@ -476,7 +476,7 @@ To export to ``.ics`` format, use :py:meth:`export_ics`.
    >>> from holidays.ical import ICalExporter
    # Export ``NYSE_2024_calendar.ics`` file in the current directory
    >>> nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
-   >>> nyse_exporter.export_ics(filename="NYSE_2024_calendar", export_path=Path("."))
+   >>> nyse_exporter.export_ics(file_path="NYSE_2024_calendar.ics")
    # Export to Windows' ``Downloads`` folder instead.
    >>> downloads_path = Path.home() / "Downloads"
    >>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
