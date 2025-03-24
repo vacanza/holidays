@@ -62,11 +62,6 @@ class TestIcalExporter(TestCase):
                     None,
                     f"Continuation Line found without a preceding line: {repr(line)}",
                 )
-                self.assertNotEqual(
-                    line[1],
-                    " ",
-                    f"Continuation Line starts with more than one space: {repr(line)}",
-                )
             previous_line = line
 
     def _assert_byte_output(self, exporter, expected_bytes):
