@@ -435,8 +435,8 @@ If neither attribute exists, the fallback language code ``EN`` will be applied.
    # Initializes iCalendar exporter.
    >>> exporter = ICalExporter(us_holidays)
    # Initializes iCalendar exporter with custom ``DTSTAMP`` for all ``VEVENT``,
-   # this should be in ``YYYYMMDDThhmmss`` format.
-   >>> exporter = ICalExporter(us_holidays, ical_timestamp="20250401T080000")
+   # this should be in ``YYYYMMDDThhmmssZ`` format (UTC timezone).
+   >>> exporter = ICalExporter(us_holidays, ical_timestamp="20250401T080000Z")
 
 To create iCalendar content, use :py:meth:`generate`.
 

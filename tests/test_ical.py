@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import os
-from datetime import date
+from datetime import date, datetime
 from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
@@ -25,6 +25,12 @@ class MockHolidays(HolidayBase):
         super()._populate(year)
         self._add_holiday(name, dt)
         return self
+
+
+class MockDatetime(datetime):
+    @classmethod
+    def now(cls, tz=None):
+        return cls(2023, 1, 1, 11, 25, 47, tzinfo=tz if tz else None)
 
 
 class TestIcalExporter(TestCase):
@@ -77,6 +83,28 @@ class TestIcalExporter(TestCase):
             f"Failed for holiday name: {escaped_name}",
         )
 
+    def _assert_timestamp(self, exporter, expected_timestamp):
+        output = exporter.generate()
+        lines = output.splitlines()
+        for line in lines:
+            if line.startswith("DTSTAMP:"):
+                self.assertIn(
+                    expected_timestamp,
+                    line,
+                    f"Expected DTSTAMP to contain {expected_timestamp}, but got {line}",
+                )
+
+    def _assert_invalid_timestamp(self, timestamp):
+        with self.assertRaises(ValueError) as context:
+            ICalExporter(self.us_holidays, ical_timestamp=timestamp)
+        self.assertEqual(
+            str(context.exception),
+            (
+                f"Invalid iCal timestamp format: '{timestamp}'. "
+                "Expected format is 'YYYYMMDDTHHMMSSZ'."
+            ),
+        )
+
     def test_basic_calendar_structure(self):
         output = self.us_exporter.generate()
 
@@ -96,13 +124,34 @@ class TestIcalExporter(TestCase):
         self.assertIn("DURATION:P1D", output)
         self.assertIn("END:VEVENT", output)
 
-    def test_ical_timestamp_provided(self):
-        custom_timestamp = "20250401T080000"
+    @patch("holidays.ical.datetime", MockDatetime)
+    def test_valid_ical_timestamp(self):
+        # No Timestamp provided.
+        exporter = ICalExporter(self.us_holidays)
+        self._assert_timestamp(exporter, "20230101T112547Z")
 
-        exporter = ICalExporter(self.us_holidays, ical_timestamp=custom_timestamp)
-        output = exporter.generate()
+        # Empty Timestamp provided, this is considerd the same as No Timestamp provided.
+        exporter = ICalExporter(self.us_holidays, ical_timestamp="")
+        self._assert_timestamp(exporter, "20230101T112547Z")
 
-        self.assertIn(custom_timestamp, output)
+        # Valid Timestamp provided.
+        valid_timestamp = "20250401T080000Z"
+
+        exporter = ICalExporter(self.us_holidays, ical_timestamp=valid_timestamp)
+        self._assert_timestamp(exporter, valid_timestamp)
+
+    def test_invalid_ical_timestamp(self):
+        # Invalid Timestamp provided.
+        self._assert_invalid_timestamp("Tuesday, April 28th, 2024")
+
+        # Unmodified ISO 8601 Timestamp provided.
+        self._assert_invalid_timestamp("2024-04-28T08:00:00Z")
+
+        # Incomplete Timestamp provided.
+        self._assert_invalid_timestamp("20240428")
+
+        # Non-UTC timezone provided.
+        self._assert_invalid_timestamp("20240401T080000+0200")
 
     def test_language_code(self):
         # None - default to EN.
