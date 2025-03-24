@@ -202,7 +202,7 @@ class TestIcalExporter(TestCase):
         ua_holidays = country_holidays("UA", years=2005)
         output = ICalExporter(ua_holidays).generate()
 
-        labor_day_count = output.count("SUMMARY:День міжнародної солідарності трудящих\r\n")
+        labor_day_count = output.count("SUMMARY:День міжнародної солідарності трудя\r\n щих\r\n")
         self.assertEqual(labor_day_count, 1)
         self.assertIn("DTSTART;VALUE=DATE:20050501\r\n", output)
         self.assertIn("DURATION:P2D\r\n", output)
@@ -262,10 +262,21 @@ class TestIcalExporter(TestCase):
         exporter = ICalExporter(country_holidays("TH", years=1800))
         output = exporter.generate()
 
-        self.assertIn("BEGIN:VCALENDAR\r\n", output)
+        # iCalendar File Header.
+        self.assertIn("BEGIN:VCALENDAR", output)
         self.assertIn("PRODID:", output)
-        self.assertIn("VERSION:2.0\r\n", output)
-        self.assertIn("END:VCALENDAR\r\n", output)
+        self.assertIn("VERSION:2.0", output)
+        self.assertIn("CALSCALE:GREGORIAN", output)
+        self.assertIn("END:VCALENDAR", output)
+
+        # Verify no `VEVENT`s are generated for empty holiday set.
+        self.assertNotIn("BEGIN:VEVENT", output)
+        self.assertNotIn("DTSTAMP:", output)
+        self.assertNotIn("UID:", output)
+        self.assertNotIn("SUMMARY:", output)
+        self.assertNotIn("DTSTART;", output)
+        self.assertNotIn("DURATION:", output)
+        self.assertNotIn("END:VEVENT", output)
 
     def test_line_folding_edge_cases(self):
         # 74 octets.
