@@ -250,7 +250,8 @@ class TestIcalExporter(TestCase):
         # BACKSLASH.
         self._assert_special_char_handling("Backslash\\Holiday", "Backslash\\\\Holiday")
 
-        # SEMICOLON, automatically splits into individual ones.
+        # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
+        # so a name with a semicolon gets split into two separate `VEVENT`s.
         self._assert_special_char_handling("Christmas; Celebration", "Celebration")
 
     def test_localized_holiday_names(self):
