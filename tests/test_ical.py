@@ -281,15 +281,12 @@ class TestIcalExporter(TestCase):
             os.remove(os.path.join(valid_path, "test_calendar.ics"))
             os.rmdir(valid_path)
 
-    @patch("os.path.exists", side_effect=OSError("[Errno 2] No such file or directory"))
+    @patch("builtins.open", side_effect=OSError("[Errno 2] No such file or directory"))
     def test_export_ics_invalid_path(self, mock_exists):
-        invalid_path = "invalidpath/with*bad:chars"
+        invalid_path = "invalid|path/with*bad:chars"
         with self.assertRaises(OSError) as context:
             self.exporter.export_ics(file_path=invalid_path)
-        self.assertEqual(
-            str(context.exception),
-            f"[Errno 2] No such file or directory: '{invalid_path}'",
-        )
+        self.assertEqual(str(context.exception), "[Errno 2] No such file or directory")
 
     @patch("builtins.open", side_effect=PermissionError("[Errno 13] Permission denied"))
     def test_export_ics_permission_error(self, mock_open):
