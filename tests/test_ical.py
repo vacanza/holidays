@@ -196,6 +196,17 @@ class TestIcalExporter(TestCase):
         self.assertIn("DTSTART;VALUE=DATE:20240413\r\n", output)
         self.assertIn("DURATION:P3D\r\n", output)
 
+    def test_single_holiday_multiple_date_continuous_overlap(self):
+        # "День міжнародної солідарності трудящих" x2
+        # but 2005-05-01 got "Великдень (Пасха)" as well.
+        ua_holidays = country_holidays("UA", years=2005)
+        output = ICalExporter(ua_holidays).generate()
+
+        labor_day_count = output.count("SUMMARY:День міжнародної солідарності трудящих\r\n")
+        self.assertEqual(labor_day_count, 1)
+        self.assertIn("DTSTART;VALUE=DATE:20050501\r\n", output)
+        self.assertIn("DURATION:P2D\r\n", output)
+
     def test_single_holiday_multiple_date_noncontinuous(self):
         # 2x "Eid al-Fitr", 2x "Eid al-Fitr Second Day".
         output = self.id_exporter.generate()
