@@ -46,6 +46,7 @@ class Philippines(
         * [Republic Act No. 10966](https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/)
         * [Proclamation No. 944/2020](https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
         * [Proclamation No. 985/2020](https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/)
+        * [Proclamation No. 90/2022](https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/)
         * [Proclamation No. 665/2024](https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/)
         * [Proclamation No. 729/2024](https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/)
         * [Nationwide holidays 2018-2025](https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
@@ -147,6 +148,7 @@ class Philippines(
         dates_obs = {
             2008: (DEC, 1),
             2010: (NOV, 29),
+            2023: (NOV, 27),
         }
         # Bonifacio Day.
         self._add_holiday(tr("Bonifacio Day"), dates_obs.get(self._year, (NOV, 30)))
