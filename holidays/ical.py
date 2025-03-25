@@ -12,7 +12,7 @@
 
 import uuid
 from datetime import date, datetime, timedelta, timezone
-from typing import Optional, Union
+from typing import Union
 
 from holidays.holiday_base import HolidayBase
 from holidays.version import __version__
@@ -24,16 +24,12 @@ CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
 class ICalExporter:
-    def __init__(self, holidays_object: HolidayBase, ical_timestamp: Optional[str] = None) -> None:
+    def __init__(self, holidays_object: HolidayBase) -> None:
         """
         Initialize iCalendar exporter
 
         :param holidays_object:
             Holidays object containing holiday data.
-
-        :param ical_timestamp:
-            Optional override for the iCal "DTSTAMP" parameter.
-            If not provided, current datetime (UTC timezone) will be used instead.
         """
         self.holidays = holidays_object
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
