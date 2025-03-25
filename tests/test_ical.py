@@ -21,6 +21,10 @@ from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalE
 
 
 class MockHolidays(HolidayBase):
+    def __init__(self, language: str = "en"):
+        super().__init__()
+        self.language = language
+
     def _add_custom_holiday(self, name: str, dt: date = date(2024, 1, 1), year: int = 2024):
         super()._populate(year)
         self._add_holiday(name, dt)
@@ -37,10 +41,13 @@ class TestIcalExporter(TestCase):
     def setUp(self):
         self.exporter = ICalExporter(None)
         self.exporter.generate = MagicMock(return_value=b"BEGIN:VCALENDAR...END:VCALENDAR")
+        self.id_holidays = country_holidays("ID", years=2000, language="en_US")
+        self.jp_holidays = country_holidays("JP", years=2000, language="ja")
+        self.th_holidays = country_holidays("TH", years=2024)
         self.us_holidays = country_holidays("US", years=2024)
-        self.id_exporter = ICalExporter(country_holidays("ID", years=2000, language="en_US"))
-        self.jp_exporter = ICalExporter(country_holidays("JP", years=2000, language="ja"))
-        self.th_exporter = ICalExporter(country_holidays("TH", years=2024))
+        self.id_exporter = ICalExporter(self.id_holidays)
+        self.jp_exporter = ICalExporter(self.jp_holidays)
+        self.th_exporter = ICalExporter(self.th_holidays)
         self.us_exporter = ICalExporter(self.us_holidays)
 
     def _assert_line_lengths(self, holiday_name):
@@ -78,6 +85,39 @@ class TestIcalExporter(TestCase):
             f"Failed for holiday name: {escaped_name}",
         )
 
+    def _assert_valid_language_code(self, language_name):
+        language_name = language_name.replace("_", "-")
+        test_holidays = MockHolidays(language=language_name)._add_custom_holiday("Test")
+        output = ICalExporter(test_holidays, show_language=True).generate()
+        self.assertIn(
+            f"SUMMARY;LANGUAGE={language_name}:Test\r\n",
+            output,
+            f"Failed to find holiday with language name: {language_name}",
+        )
+
+    def _assert_invalid_language_code(self, language_name):
+        language_name = language_name.replace("_", "-")
+        test_holidays = MockHolidays(language=language_name)._add_custom_holiday("Test")
+        with self.assertRaises(ValueError) as context:
+            ICalExporter(test_holidays, show_language=True).generate()
+        self.assertEqual(
+            str(context.exception),
+            (
+                f"Invalid language tag: '{language_name}'. Expected format follows RFC 5646, "
+                "e.g., 'en', 'en-US'. For more details, "
+                "refer to: https://datatracker.ietf.org/doc/html/rfc5646."
+            ),
+        )
+
+    def _assert_language_not_provided(self, holidays):
+        exporter = ICalExporter(holidays, show_language=True)
+        with self.assertRaises(ValueError) as context:
+            exporter.generate()
+        self.assertEqual(
+            str(context.exception),
+            "LANGUAGE cannot be included in SUMMARY as language code isn't provided",
+        )
+
     def test_basic_calendar_structure(self):
         output = self.us_exporter.generate()
 
@@ -113,32 +153,61 @@ class TestIcalExporter(TestCase):
                     f"Expected DTSTAMP to contain {expected_timestamp}, but got {line}",
                 )
 
-    def test_language_code(self):
-        # None - default to EN.
-        nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
-        self.assertEqual(nyse_exporter.language, "EN")
+    def test_valid_language_code(self):
+        # Grandfathered In.
+        self._assert_valid_language_code("i-klingon")
 
-        # Valid 2-letter code, code not explicitly given - returns default_language value.
-        self.assertEqual(self.th_exporter.language, "TH")
+        # Primary.
+        self._assert_valid_language_code("th")
+        self._assert_valid_language_code("pap")
 
-        # Valid 2-letter code, code explicitly given.
-        self.assertEqual(self.jp_exporter.language, "JA")
+        # with Script.
+        self._assert_valid_language_code("zh_Hant")
 
-        # Transform "xx_XX" to Valid 2-letter code.
-        self.assertEqual(self.id_exporter.language, "EN")
+        # with Region.
+        self._assert_valid_language_code("en_US")
+        self._assert_valid_language_code("pap_AW")
+        self._assert_valid_language_code("es-419")
 
-        # Raise Exception if cannot be made into 2 letter.
-        with self.assertRaises(ValueError) as context:
-            ICalExporter(country_holidays("AW", years=2024, language="pap_AW"))
-        self.assertEqual(
-            str(context.exception),
-            (
-                "Invalid language code: PAP. "
-                "Only two-letter ISO 639-1 codes are supported by iCal. "
-                "Refer to the 'ISO 639-1 Code' column at "
-                "https://www.loc.gov/standards/iso639-2/php/code_list.php for valid codes."
-            ),
-        )
+        # with Variant.
+        self._assert_valid_language_code("sl-rozaj")
+
+        # Other Real Valid Combinations.
+        self._assert_valid_language_code("de-CH-1996")
+        self._assert_valid_language_code("az-Latn-AZ")
+        self._assert_valid_language_code("en-US-u-co-emoji")
+        self._assert_valid_language_code("ja-JP-u-ca-japanese")
+
+        # Private Used.
+        self._assert_valid_language_code("x-corp-finance")
+        self._assert_valid_language_code("x-mobile")
+
+    def test_invalid_language_code(self):
+        # Invalid structures.
+        self._assert_invalid_language_code("123-en")
+        self._assert_invalid_language_code("en-US-123")
+        self._assert_invalid_language_code("x--private")
+
+        # Over lang char limit.
+        self._assert_invalid_language_code("polynesian")
+
+        # Non-ASCII alphanum.
+        self._assert_invalid_language_code("ไทย")
+
+        # Gibberish.
+        self._assert_invalid_language_code("abc-!@#")
+
+    def test_show_language_true_language_code_none(self):
+        # Neither language nor default_language param exists.
+        nyse_holidays = financial_holidays("NYSE", years=2024)
+        self._assert_language_not_provided(nyse_holidays)
+
+        # Combined Holidays List, different language -> language got set to None.
+        self._assert_language_not_provided(self.th_holidays + self.jp_holidays)
+
+        # Combined Holidays List, same language -> language got set to None.
+        my_holidays = country_holidays("MY", years=2024, language="en_US")
+        self._assert_language_not_provided(my_holidays + self.id_holidays)
 
     def test_multiple_holidays_same_date(self):
         # "วันพ่อแห่งชาติ" and "วันชาติ" are both on DEC 5th.

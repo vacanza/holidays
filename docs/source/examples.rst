@@ -450,6 +450,16 @@ To create iCalendar content, use :py:meth:`generate`.
    1
    >>> "DURATION:P3D\r\n" in ical_content
    True
+   # Adds ";LANGUAGE=" to SUMMARY too.
+   >>> exporter = ICalExporter(th_holidays, show_language=True)
+   >>> ical_content = exporter.generate()
+   >>> ical_content.count("SUMMARY;LANGUAGE=th:วันสงกรานต์\r\n")
+   1
+
+.. tip::
+   When using a custom Holiday object, ensure that the ``language`` parameter
+   follows the guidelines outlined in `RFC 5646 <https://datatracker.ietf.org/doc/html/rfc5646>`__.
+
 
 .. code-block:: python
 

@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import re
 import uuid
 from datetime import date, datetime, timedelta, timezone
 from typing import Union
@@ -24,41 +25,103 @@ CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
 class ICalExporter:
-    def __init__(self, holidays_object: HolidayBase) -> None:
+    def __init__(self, holidays_object: HolidayBase, show_language: bool = False) -> None:
         """
         Initialize iCalendar exporter
+
+        :param show_language:
+            Whether to include the ';LANGUAGE=' in SUMMARY or not.
+            This is False by default.
 
         :param holidays_object:
             Holidays object containing holiday data.
         """
         self.holidays = holidays_object
+        self.show_language = show_language
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
-        self.language = self._validate_language(
-            getattr(self.holidays, "language", None)
-            or getattr(self.holidays, "default_language", None)
-            or "EN"
+        language = getattr(self.holidays, "language", None) or getattr(
+            self.holidays, "default_language", None
         )
+        self.language = self._validate_language(language) if isinstance(language, str) else None
 
     def _validate_language(self, language: str) -> str:
         """
-        Validates the language code. Ensures it's a two-letter ISO 639-1 code
-        as iCal only supports that at the moment.
+        Validates the language code to ensure it complies with RFC 5646.
+
+        As of current implementation, 'default_language' fallback value
+        either follows ISO 639-1 or ISO 639-2 if they are provided.
 
         :param language:
             The language code to validate.
 
         :return:
-            Valid two-letter language code in uppercase.
+            Validated language code
         """
-        language = language.upper().split("_")[0]
+        # Remove whitespace (if any), transforms HolidaysBase default to RFC 5646 compliant
+        # i.e. `en_US` to `en-US`.
+        language = language.strip().replace("_", "-")
 
-        if len(language) != 2:
+        # RFC 5646 pattern for language tags with detailed validation
+        rfc5646_pattern = re.compile(
+            r"""
+        ^
+        (?:
+            # Grandfathered Irregular Tags (RFC 5646 Exceptions)
+            (?:
+                en-GB-oed       # Old English Dictionary variant
+                | i-ami         # Amis language
+                | i-bnn         # Bunun language
+                | i-default     # Default tag
+                | i-enochian    # Enochian (constructed language)
+                | i-hak         # Hakka
+                | i-klingon     # Klingon (tlhIngan Hol)
+                | i-lux         # Luxembourgish
+                | i-mingo       # Mingo
+                | i-navajo      # Navajo
+                | i-pwn         # Paiwan
+                | i-tao         # Taivoan
+                | i-tay         # Tayal
+                | i-tsu         # Tsou
+                | sgn-BE-FR     # Belgian French Sign Language
+                | sgn-BE-NL     # Belgian Dutch Sign Language
+                | sgn-CH-DE     # Swiss German Sign Language
+            )
+            |
+            # Regular Language Tags
+            (?:
+                # 1. Primary Language Subtag (2-3 letters, required)
+                [a-z]{2,3}
+
+                # 2. Optional Script Subtag (4 letters, ISO 15924)
+                (?: -[a-z]{4} )?
+
+                # 3. Optional Region Subtag (2 letters or 3 digits)
+                (?: -[a-z]{2} | -[0-9]{3} )?
+
+                # 4. Optional Variant Subtags (5-8 alphanumeric chars or 4 digits)
+                (?: -(?:[a-z0-9]{5,8} | [0-9]{4}) )*
+
+                # 5. Optional Extensions (single letter + subtags)
+                (?: -[a-wy-z0-9] (?: -[a-z0-9]{2,8} )+ )*
+
+                # 6. Optional Private Use (x- followed by 1-8 char subtags)
+                (?: -x (?: -[a-z0-9]{1,8} )+ )?
+            )
+            |
+            # Standalone Private Use Tags (x-...)
+            ^x (?: -[a-z0-9]{1,8} )+$
+        )
+        $                       # End of string
+        """,
+            re.VERBOSE | re.IGNORECASE,
+        )
+
+        if not rfc5646_pattern.fullmatch(language):
             raise ValueError(
-                f"Invalid language code: {language}. "
-                "Only two-letter ISO 639-1 codes are supported by iCal. "
-                "Refer to the 'ISO 639-1 Code' column at "
-                "https://www.loc.gov/standards/iso639-2/php/code_list.php for valid codes."
+                f"Invalid language tag: '{language}'. Expected format follows RFC 5646, "
+                "e.g., 'en', 'en-US'. For more details, "
+                "refer to: https://datatracker.ietf.org/doc/html/rfc5646."
             )
         return language
 
@@ -109,7 +172,7 @@ class ICalExporter:
         """
         Generate a single holiday event.
 
-        :param date:
+        :param dt:
             Holiday date.
 
         :param holiday_name:
@@ -128,12 +191,17 @@ class ICalExporter:
             holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
         )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
+        if self.show_language and self.language is None:
+            raise ValueError(
+                "LANGUAGE cannot be included in SUMMARY as language code isn't provided"
+            )
+        language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
         lines = [
             "BEGIN:VEVENT",
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
-            self._fold_line(f"SUMMARY:{sanitized_holiday_name}"),
+            self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}"),
             f"DTSTART;VALUE=DATE:{dt:%Y%m%d}",
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",
@@ -154,8 +222,7 @@ class ICalExporter:
         """
         lines = [
             "BEGIN:VCALENDAR",
-            f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//"
-            f"{self.language}",
+            f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//EN",
             "VERSION:2.0",
             "CALSCALE:GREGORIAN",
         ]
