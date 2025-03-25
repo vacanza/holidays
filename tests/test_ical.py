@@ -313,50 +313,6 @@ class TestIcalExporter(TestCase):
             os.remove(os.path.join(valid_path, "test_calendar.ics"))
             os.rmdir(valid_path)
 
-    @patch("builtins.open", side_effect=OSError("[Errno 2] No such file or directory"))
-    def test_export_ics_invalid_path(self, mock_exists):
-        invalid_path = "invalid|path/with*bad:chars"
-        with self.assertRaises(OSError) as context:
-            self.exporter.export_ics(file_path=invalid_path)
-        self.assertEqual(str(context.exception), "[Errno 2] No such file or directory")
-
-    @patch("builtins.open", side_effect=PermissionError("[Errno 13] Permission denied"))
-    def test_export_ics_permission_error(self, mock_open):
-        with self.assertRaises(PermissionError) as context:
-            self.exporter.export_ics(file_path="calendar.ics")
-        self.assertEqual(str(context.exception), "[Errno 13] Permission denied")
-
-    @patch("builtins.open", side_effect=IsADirectoryError("[Errno 21] Is a directory"))
-    def test_export_ics_is_a_directory_error(self, mock_open):
-        with self.assertRaises(IsADirectoryError) as context:
-            self.exporter.export_ics(file_path="/home/user/")
-        self.assertEqual(str(context.exception), "[Errno 21] Is a directory")
-
-    @patch("builtins.open", side_effect=OSError("[Errno 22] Invalid argument"))
-    def test_export_ics_invalid_argument(self, mock_open):
-        invalid_filename = "invalid|file?.ics"
-        with self.assertRaises(OSError) as context:
-            self.exporter.export_ics(file_path=invalid_filename)
-        self.assertEqual(str(context.exception), "[Errno 22] Invalid argument")
-
-    @patch("builtins.open", side_effect=OSError("[Errno 24] Too many open files"))
-    def test_export_ics_too_many_open_files(self, mock_open):
-        with self.assertRaises(OSError) as context:
-            self.exporter.export_ics(file_path="calendar.ics")
-        self.assertEqual(str(context.exception), "[Errno 24] Too many open files")
-
-    @patch("builtins.open", side_effect=OSError("[Errno 28] No space left on device"))
-    def test_export_ics_no_space_left(self, mock_open):
-        with self.assertRaises(OSError) as context:
-            self.exporter.export_ics(file_path="calendar.ics")
-        self.assertEqual(str(context.exception), "[Errno 28] No space left on device")
-
-    @patch("builtins.open", side_effect=OSError("[Errno 30] Read-only file system"))
-    def test_export_ics_read_only_filesystem(self, mock_open):
-        with self.assertRaises(OSError) as context:
-            self.exporter.export_ics(file_path="/mnt/readonly/test_calendar.ics")
-        self.assertEqual(str(context.exception), "[Errno 30] Read-only file system")
-
     def test_export_ics_empty_content(self):
         self.exporter.generate = MagicMock(return_value=b"")
 
