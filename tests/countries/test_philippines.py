@@ -280,7 +280,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-05-03",
             "2023-04-21",
             "2024-04-10",
-            "2025-03-31",
+            "2025-04-01",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2002, 2050))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2002))
@@ -460,7 +460,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             Philippines(years=2025),
             ("2025-01-01", "New Year's Day"),
             ("2025-01-29", "Chinese New Year"),
-            ("2025-03-31", "Eid'l Fitr"),
+            ("2025-04-01", "Eid'l Fitr"),
             ("2025-04-09", "Araw ng Kagitingan"),
             ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
