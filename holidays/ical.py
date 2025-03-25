@@ -122,6 +122,8 @@ class ICalExporter:
             List of iCalendar format event lines.
         """
         # Escape special characters per RFC 5545.
+        # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
+        # so a name with a semicolon gets split into two separate `VEVENT`s.
         sanitized_holiday_name = (
             holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
         )
