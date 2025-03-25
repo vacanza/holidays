@@ -282,8 +282,7 @@ def CountryHoliday(  # noqa: N802
 
 
 def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]]:
-    """
-    Get all localized entities and languages they support.
+    """Get all localized entities and languages they support.
 
     Args:
         entity_codes:
@@ -308,8 +307,7 @@ def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
 
 @lru_cache
 def list_localized_countries(include_aliases: bool = True) -> dict[str, list[str]]:
-    """
-    Get all localized countries and languages they support.
+    """Get all localized countries and languages they support.
 
     Args:
         include_aliases:
@@ -325,12 +323,11 @@ def list_localized_countries(include_aliases: bool = True) -> dict[str, list[str
 
 @lru_cache
 def list_localized_financial(include_aliases: bool = True) -> dict[str, list[str]]:
-    """
-    Get all localized financial markets and languages they support.
+    """Get all localized financial markets and languages they support.
 
     Args:
         include_aliases:
-            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases (e.g. TAR for ECB, XNYS for NYSE).
 
     Returns:
         A dictionary where key is a market code and value is a list of supported
@@ -340,8 +337,7 @@ def list_localized_financial(include_aliases: bool = True) -> dict[str, list[str
 
 
 def _list_supported_entities(entity_codes: Iterable[str]) -> dict[str, list[str]]:
-    """
-    Get all supported entities and their subdivisions.
+    """Get all supported entities and their subdivisions.
 
     Args:
         entity_codes:
@@ -361,8 +357,7 @@ def _list_supported_entities(entity_codes: Iterable[str]) -> dict[str, list[str]
 
 @lru_cache
 def list_supported_countries(include_aliases: bool = True) -> dict[str, list[str]]:
-    """
-    Get all supported countries and their subdivisions.
+    """Get all supported countries and their subdivisions.
 
     Args:
         include_aliases:
@@ -377,12 +372,11 @@ def list_supported_countries(include_aliases: bool = True) -> dict[str, list[str
 
 @lru_cache
 def list_supported_financial(include_aliases: bool = True) -> dict[str, list[str]]:
-    """
-    Get all supported financial markets and their subdivisions.
+    """Get all supported financial markets and their subdivisions.
 
     Args:
         include_aliases:
-            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+            Whether to include entity aliases (e.g. TAR for ECB, XNYS for NYSE).
 
     Returns:
         A dictionary where key is a market code and value is a list of supported

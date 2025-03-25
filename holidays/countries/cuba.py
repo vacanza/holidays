@@ -35,7 +35,7 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * Christmas Day:
             In 1969, Christmas was cancelled for the sugar harvest but then was cancelled for good:
                 * <https://time.com/vault/issue/1969-11-07/page/44/>
-            In 1997, Christmas was temporarily back for the pope's visit:
+            In 1997, Christmas was temporarily back for the Pope's visit:
                 * <http://www.cnn.com/WORLD/9712/15/castro.christmas/>
             In 1998, Christmas returns for good:
                 * <https://www.independent.co.uk/news/cuba-ends-its-30year-ban-on-christmas-1193525.html>

@@ -972,7 +972,6 @@ class ThailandStaticHolidays:
     วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
 
     Special Bank Holidays Pre-1992:
-
        * [HM Queen Rambai Barni's Royal Cremation Ceremony](https://ratchakitcha.soc.go.th/documents/1560949.pdf)
     """
 

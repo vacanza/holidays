@@ -122,22 +122,22 @@ class KNA(SaintKittsAndNevis):
 
 
 class SaintKittsAndNevisStaticHolidays:
-    """
-    References:
+    """Saint Kitts and Nevis special holidays.
 
-    * <https://www.sknis.gov.kn/2023/07/17/state-funeral-accorded-to-sir-tapley-national-day-of-mourning-and-half-holiday-declared-for-july-20/>
-    * <https://www.sknis.gov.kn/2022/12/30/public-holiday-notice-request-from-the-department-of-labour/>
-    * <https://www.sknis.gov.kn/2022/08/06/prime-minister-drew-declares-monday-august-08-2022-as-a-public-holiday-in-st-kitts-and-nevis/>
-    * <https://www.sknis.gov.kn/2022/04/20/nia-announces-half-holiday/>
-    * <https://www.sknis.gov.kn/2021/07/26/governor-general-proclaims-tuesday-3rd-august-2021-as-a-public-holiday/>
-    * <https://nia.gov.kn/culturama-47-rescheduled-to-independence-holiday-weekend-in-september/>
-    * <https://www.sknis.gov.kn/2019/12/27/public-holidays-during-carnival-2019-2020/>
-    * <https://www.sknis.gov.kn/2018/12/29/proclamations-from-his-excellency-the-governor-general-re-carnival-public-holidays/>
-    * <https://www.sknis.gov.kn/2017/12/19/public-holiday-declared-for-nevis-today-after-the-ccms-solid-win-in-the-local-elections/>
-    * <https://www.sknis.gov.kn/2017/04/13/employers-must-comply-with-law-for-work-performed-on-national-holidays-says-labour-department/>
-    * <https://www.facebook.com/share/p/ZkpwKmyAzN4fEFP2/>
-    * <https://www.facebook.com/share/p/Jc1uGgzGpj6zUzqB/>
-    * <https://www.facebook.com/share/p/6GSgvcCWS3aenQh6/>
+    References:
+        * <https://www.sknis.gov.kn/2023/07/17/state-funeral-accorded-to-sir-tapley-national-day-of-mourning-and-half-holiday-declared-for-july-20/>
+        * <https://www.sknis.gov.kn/2022/12/30/public-holiday-notice-request-from-the-department-of-labour/>
+        * <https://www.sknis.gov.kn/2022/08/06/prime-minister-drew-declares-monday-august-08-2022-as-a-public-holiday-in-st-kitts-and-nevis/>
+        * <https://www.sknis.gov.kn/2022/04/20/nia-announces-half-holiday/>
+        * <https://www.sknis.gov.kn/2021/07/26/governor-general-proclaims-tuesday-3rd-august-2021-as-a-public-holiday/>
+        * <https://nia.gov.kn/culturama-47-rescheduled-to-independence-holiday-weekend-in-september/>
+        * <https://www.sknis.gov.kn/2019/12/27/public-holidays-during-carnival-2019-2020/>
+        * <https://www.sknis.gov.kn/2018/12/29/proclamations-from-his-excellency-the-governor-general-re-carnival-public-holidays/>
+        * <https://www.sknis.gov.kn/2017/12/19/public-holiday-declared-for-nevis-today-after-the-ccms-solid-win-in-the-local-elections/>
+        * <https://www.sknis.gov.kn/2017/04/13/employers-must-comply-with-law-for-work-performed-on-national-holidays-says-labour-department/>
+        * <https://www.facebook.com/share/p/ZkpwKmyAzN4fEFP2/>
+        * <https://www.facebook.com/share/p/Jc1uGgzGpj6zUzqB/>
+        * <https://www.facebook.com/share/p/6GSgvcCWS3aenQh6/>
     """
 
     # Federal Election Victory Day.

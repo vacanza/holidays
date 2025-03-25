@@ -106,13 +106,13 @@ class DMA(Dominica):
 
 
 class DominicaStaticHolidays:
-    """
-    References:
+    """Dominica special holidays.
 
-    * <https://qppstudio-public-holidays-news.blogspot.com/2009/07/dominica-declares-july-28-public.html>
-    * <https://dominica.gov.dm/laws/2009/sro35-2009.pdf>
-    * <https://dominica.gov.dm/laws/2009/sro55-2009.pdf>
-    * <https://emonewsdm.com/thursday-september-19-2019-declared-public-holiday-in-dominica/>
+    References:
+        * <https://qppstudio-public-holidays-news.blogspot.com/2009/07/dominica-declares-july-28-public.html>
+        * <https://dominica.gov.dm/laws/2009/sro35-2009.pdf>
+        * <https://dominica.gov.dm/laws/2009/sro55-2009.pdf>
+        * <https://emonewsdm.com/thursday-september-19-2019-declared-public-holiday-in-dominica/>
     """
 
     # Special Public Holidays.

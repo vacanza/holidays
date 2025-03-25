@@ -145,11 +145,11 @@ class BLR(Belarus):
 
 
 class BelarusStaticHolidays:
-    """
-    References:
+    """Belarus special holidays.
 
-    * <https://belarusbank.by/en/financial-institutions/11151>
-    * <https://belarusbank.by/en/financial-institutions/11160>
+    References:
+        * <https://belarusbank.by/en/financial-institutions/11151>
+        * <https://belarusbank.by/en/financial-institutions/11160>
     """
 
     # Date format (see strftime() Format Codes)

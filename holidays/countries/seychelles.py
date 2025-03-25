@@ -23,7 +23,6 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://www.psb.gov.sc/public-holidays>
         * <https://www.cbs.sc/PublicHolidays.html>
-
         * [Act 19 of 1976, 1994 Amendment (Oldest Seychelles Holidays Law available online in full)](https://seylii.org/akn/sc/act/1976/19/eng@2012-06-30)
         * [Act 11 of 2014 (Holidays names changed)](https://seylii.org/akn/sc/act/2014/11/eng@2014-08-04)
         * [Act 3 of 2017 (Added Easter Monday, repealing Liberation Day)](https://seylii.org/akn/sc/act/2017/3/eng@2017-04-12)

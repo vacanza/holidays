@@ -100,10 +100,10 @@ class GEO(Georgia):
 
 
 class GeorgiaStaticHolidays:
-    """
-    References:
+    """Georgia special holidays.
 
-    * <https://www.matsne.gov.ge/ka/document/view/6173967>
+    References:
+        * <https://www.matsne.gov.ge/ka/document/view/6173967>
     """
 
     special_government_holidays = {
