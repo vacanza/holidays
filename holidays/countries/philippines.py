@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -51,6 +51,7 @@ class Philippines(
       - `Proclamation No. 729/2024` <https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/>`_
       - `Nationwide holidays 2018-2025 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
       - `2025 Eid'l Fitr and Eid'l Adha Tentative Date <https://melbournepcg.org/?page_id=9779>`_
+      - `Proclamation No. 839/2025` <https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/>`_
     """
 
     country = "PH"
@@ -258,7 +259,7 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 21),
         2024: (APR, 10),
-        2025: (MAR, 31),
+        2025: (APR, 1),
     }
 
 
