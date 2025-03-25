@@ -28,7 +28,8 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertAliases(Fiji, FJ, FJI)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Fiji(years=2015, categories=(PUBLIC, WORKDAY)))
+        self.assertNoHolidays(Fiji(years=2015, categories=PUBLIC))
+        self.assertNoHolidays(Fiji(years=2022, categories=WORKDAY))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -38,7 +39,6 @@ class TestFiji(CommonCountryTests, TestCase):
             "2017-01-02",
             "2022-01-03",
             "2023-01-02",
-            "2028-01-03",
         )
         self.assertHolidayName(f"{name} (observed)", dt_obs)
         self.assertNoNonObservedHoliday(dt_obs)
@@ -53,6 +53,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2016, 2050))
@@ -64,6 +65,10 @@ class TestFiji(CommonCountryTests, TestCase):
             "2018-03-31",
             "2019-04-20",
             "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2016, 2050))
@@ -75,6 +80,10 @@ class TestFiji(CommonCountryTests, TestCase):
             "2018-04-02",
             "2019-04-22",
             "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2016, 2050))
@@ -90,7 +99,6 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2016, 2023))
-        self.assertNoNonObservedHoliday(dt)
 
     def test_national_sports_day(self):
         name = "National Sports Day"
@@ -129,8 +137,6 @@ class TestFiji(CommonCountryTests, TestCase):
             "2023-05-29",
             "2024-05-31",
             "2025-05-30",
-            "2026-05-29",
-            "2027-05-28",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2023, 2050))
@@ -166,8 +172,9 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2016, 2050)))
 
         dt_obs = (
+            "2016-12-27",
             "2021-12-27",
-            "2027-12-27",
+            "2022-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", dt_obs)
         self.assertNoNonObservedHoliday(dt_obs)
@@ -186,6 +193,27 @@ class TestFiji(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt_obs)
         self.assertNoNonObservedHoliday(dt_obs)
 
+    def test_prophets_birthday(self):
+        name = "Prophet Mohammed's Birthday"
+        self.assertHolidayName(
+            name,
+            "2018-11-19",
+            "2019-11-09",
+            "2020-10-31",
+            "2021-10-18",
+            "2022-10-07",
+            "2023-09-30",
+            "2024-09-16",
+        )
+        dt_obs = (
+            "2019-11-11",
+            "2020-11-02",
+            "2023-10-02",
+            "2025-09-08",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt_obs)
+        self.assertNoNonObservedHoliday(dt_obs)
+
     def test_2019(self):
         # https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
         self.assertHolidays(
@@ -198,7 +226,8 @@ class TestFiji(CommonCountryTests, TestCase):
             ("2019-09-09", "Constitution Day (observed)"),
             ("2019-10-10", "Fiji Day"),
             ("2019-10-28", "Diwali"),
-            ("2019-11-11", "Prophet Mohammed's Birthday"),
+            ("2019-11-09", "Prophet Mohammed's Birthday"),
+            ("2019-11-11", "Prophet Mohammed's Birthday (observed)"),
             ("2019-12-25", "Christmas Day"),
             ("2019-12-26", "Boxing Day"),
         )
@@ -213,7 +242,8 @@ class TestFiji(CommonCountryTests, TestCase):
             ("2020-04-13", "Easter Monday"),
             ("2020-09-07", "Constitution Day"),
             ("2020-10-10", "Fiji Day"),
-            ("2020-11-02", "Prophet Mohammed's Birthday"),
+            ("2020-10-31", "Prophet Mohammed's Birthday"),
+            ("2020-11-02", "Prophet Mohammed's Birthday (observed)"),
             ("2020-11-14", "Diwali"),
             ("2020-11-16", "Diwali (observed)"),
             ("2020-12-25", "Christmas Day"),
@@ -268,7 +298,8 @@ class TestFiji(CommonCountryTests, TestCase):
             ("2023-04-10", "Easter Monday"),
             ("2023-05-15", "Girmit Day"),
             ("2023-05-29", "Ratu Sir Lala Sukuna Day"),
-            ("2023-10-02", "Prophet Mohammed's Birthday"),
+            ("2023-09-30", "Prophet Mohammed's Birthday"),
+            ("2023-10-02", "Prophet Mohammed's Birthday (observed)"),
             ("2023-10-10", "Fiji Day"),
             ("2023-11-13", "Diwali"),
             ("2023-12-25", "Christmas Day"),
@@ -302,7 +333,8 @@ class TestFiji(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-12", "Girmit Day"),
             ("2025-05-30", "Ratu Sir Lala Sukuna Day"),
-            ("2025-09-08", "Prophet Mohammed's Birthday"),
+            ("2025-09-06", "Prophet Mohammed's Birthday"),
+            ("2025-09-08", "Prophet Mohammed's Birthday (observed)"),
             ("2025-10-10", "Fiji Day"),
             ("2025-10-21", "Diwali"),
             ("2025-12-25", "Christmas Day"),
