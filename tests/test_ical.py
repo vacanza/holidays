@@ -78,28 +78,6 @@ class TestIcalExporter(TestCase):
             f"Failed for holiday name: {escaped_name}",
         )
 
-    def _assert_timestamp(self, exporter, expected_timestamp):
-        output = exporter.generate()
-        lines = output.splitlines()
-        for line in lines:
-            if line.startswith("DTSTAMP:"):
-                self.assertIn(
-                    expected_timestamp,
-                    line,
-                    f"Expected DTSTAMP to contain {expected_timestamp}, but got {line}",
-                )
-
-    def _assert_invalid_timestamp(self, timestamp):
-        with self.assertRaises(ValueError) as context:
-            ICalExporter(self.us_holidays, ical_timestamp=timestamp)
-        self.assertEqual(
-            str(context.exception),
-            (
-                f"Invalid iCal timestamp format: '{timestamp}'. "
-                "Expected format is 'YYYYMMDDTHHMMSSZ'."
-            ),
-        )
-
     def test_basic_calendar_structure(self):
         output = self.us_exporter.generate()
 
@@ -120,33 +98,20 @@ class TestIcalExporter(TestCase):
         self.assertIn("END:VEVENT", output)
 
     @patch("holidays.ical.datetime", MockDatetime)
-    def test_valid_ical_timestamp(self):
-        # No Timestamp provided.
+    def test_ical_timestamp(self):
+        # The whole .ics output should use the same DTSTAMP.
+        expected_timestamp = "20230101T112547Z"
+
         exporter = ICalExporter(self.us_holidays)
-        self._assert_timestamp(exporter, "20230101T112547Z")
-
-        # Empty Timestamp provided, this is considerd the same as No Timestamp provided.
-        exporter = ICalExporter(self.us_holidays, ical_timestamp="")
-        self._assert_timestamp(exporter, "20230101T112547Z")
-
-        # Valid Timestamp provided.
-        valid_timestamp = "20250401T080000Z"
-
-        exporter = ICalExporter(self.us_holidays, ical_timestamp=valid_timestamp)
-        self._assert_timestamp(exporter, valid_timestamp)
-
-    def test_invalid_ical_timestamp(self):
-        # Invalid Timestamp provided.
-        self._assert_invalid_timestamp("Tuesday, April 28th, 2024")
-
-        # Unmodified ISO 8601 Timestamp provided.
-        self._assert_invalid_timestamp("2024-04-28T08:00:00Z")
-
-        # Incomplete Timestamp provided.
-        self._assert_invalid_timestamp("20240428")
-
-        # Non-UTC timezone provided.
-        self._assert_invalid_timestamp("20240401T080000+0200")
+        output = exporter.generate()
+        lines = output.splitlines()
+        for line in lines:
+            if line.startswith("DTSTAMP:"):
+                self.assertIn(
+                    expected_timestamp,
+                    line,
+                    f"Expected DTSTAMP to contain {expected_timestamp}, but got {line}",
+                )
 
     def test_language_code(self):
         # None - default to EN.

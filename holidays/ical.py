@@ -36,35 +36,13 @@ class ICalExporter:
             If not provided, current datetime (UTC timezone) will be used instead.
         """
         self.holidays = holidays_object
-        if ical_timestamp:
-            self.ical_timestamp = self._validate_ical_timestamp(ical_timestamp)
-        else:
-            self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         self.language = self._validate_language(
             getattr(self.holidays, "language", None)
             or getattr(self.holidays, "default_language", None)
             or "EN"
         )
-
-    def _validate_ical_timestamp(self, timestamp: str) -> str:
-        """
-        Validate if the provided timestamp is in the correct iCalendar format (%Y%m%dT%H%M%SZ).
-
-        :param timestamp:
-            The timestamp string to validate.
-
-        :return:
-            The validated timestamp string if it is valid.
-        """
-        try:
-            datetime.strptime(timestamp, "%Y%m%dT%H%M%SZ")
-            return timestamp
-        except ValueError:
-            raise ValueError(
-                f"Invalid iCal timestamp format: '{timestamp}'. "
-                "Expected format is 'YYYYMMDDTHHMMSSZ'."
-            )
 
     def _validate_language(self, language: str) -> str:
         """

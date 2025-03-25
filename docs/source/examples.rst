@@ -432,11 +432,8 @@ If neither attribute exists, the fallback language code ``EN`` will be applied.
    >>> from holidays import country_holidays
    >>> from holidays.ical import ICalExporter
    >>> us_holidays = country_holidays('US', years=2020)
-   # Initializes iCalendar exporter.
+   # Initializes the iCalendar exporter.
    >>> exporter = ICalExporter(us_holidays)
-   # Initializes iCalendar exporter with custom ``DTSTAMP`` for all ``VEVENT``,
-   # this should be in ``YYYYMMDDThhmmssZ`` format (UTC timezone).
-   >>> exporter = ICalExporter(us_holidays, ical_timestamp="20250401T080000Z")
 
 To create iCalendar content, use :py:meth:`generate`.
 
@@ -447,8 +444,8 @@ To create iCalendar content, use :py:meth:`generate`.
    >>> th_holidays = country_holidays('TH', years=2024)
    >>> exporter = ICalExporter(th_holidays)
    >>> ical_content = exporter.generate()
-   # Thailand's Songkran Festival (April 13th-15th) should be count as an single ``VEVENT``
-   # with the duration of 3 days.
+   # Thailand's Songkran Festival (April 13th–15th) should be counted as a single
+   # VEVENT with a duration of three days.
    >>> ical_content.count("SUMMARY:วันสงกรานต์\r\n")
    1
    >>> "DURATION:P3D\r\n" in ical_content
@@ -463,8 +460,8 @@ To create iCalendar content, use :py:meth:`generate`.
    >>> kr_holidays = country_holidays("KR", years=2024, language="en_US")
    >>> east_asia_holidays = cn_holidays + jp_holidays + kr_holidays
    >>> ical_content = ICalExporter(east_asia_holidays).generate()
-   # Even with Combined China-Japan-Korea calendar, there should only be one
-   # "New Year's Day" ``VEVENT``
+   # Even with the combined China-Japan-Korea calendar, there should be only one
+   # 'New Year's Day' VEVENT.
    >>> ical_content.count("SUMMARY:New Year's Day\r\n")
    1
 
@@ -475,10 +472,10 @@ To export to ``.ics`` format, use :py:meth:`export_ics`.
    >>> from pathlib import Path
    >>> from holidays import financial_holidays
    >>> from holidays.ical import ICalExporter
-   # Export ``NYSE_2024_calendar.ics`` file in the current directory
+   # Export the NYSE_2024_calendar.ics file in the current directory
    >>> nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
    >>> nyse_exporter.export_ics(file_path="NYSE_2024_calendar.ics")
-   # Export to Windows' ``Downloads`` folder instead.
+   # Export the NYSE_2024_calendar.ics file to MS Windows' Downloads folder instead.
    >>> downloads_path = Path.home() / "Downloads"
    >>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
 
