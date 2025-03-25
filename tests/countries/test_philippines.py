@@ -238,10 +238,11 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Bonifacio Day"
         self.assertHolidayName(
             name,
-            (f"{year}-11-30" for year in (*range(1988, 2008), *range(2011, 2050))),
+            (f"{year}-11-30" for year in (*range(1988, 2008), *range(2011, 2023), *range(2024, 2050))),
             "2008-12-01",
             "2009-11-30",
             "2010-11-29",
+            "2023-11-27",
         )
 
     def test_immaculate_conception_day(self):
