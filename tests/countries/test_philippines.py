@@ -451,7 +451,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2023-10-30", "Elections special (non-working) day"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-11-02", "Additional special (non-working) day"),
-            ("2023-11-30", "Bonifacio Day"),
+            ("2023-11-27", "Bonifacio Day"),
             ("2023-12-08", "Feast of the Immaculate Conception of Mary"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Additional special (non-working) day"),
