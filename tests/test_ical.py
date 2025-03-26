@@ -359,6 +359,14 @@ class TestIcalExporter(TestCase):
         )
         self._assert_line_lengths(utf8_fold_test)
 
+        # Emojis test (Unicode codepoints for emojis)
+        emoji_fold_test = "🎉🎊🎈🎁🎀✨🌟🌈🍀🐶🐱🦄🐯🐯🦄💥🌍🌎🌏🎶🎵🎧🎤🎬🎼🎷🎸"
+        self._assert_line_lengths(emoji_fold_test)
+
+        # Multi-codepoint graphemes (combinations of accents and other modifiers)
+        grapheme_fold_test = "áèîöũčñ𝒜𝒩𝒲👩‍🚀👨‍🍳👩‍🔬👨‍🎤👩‍🎨👨‍🚒"
+        self._assert_line_lengths(grapheme_fold_test)
+
     def test_return_bytes(self):
         self._assert_byte_output(self.us_exporter, b"SUMMARY:New Year's Day")
         self._assert_byte_output(self.jp_exporter, b"SUMMARY:\xe5\x85\x83\xe6\x97\xa5")
