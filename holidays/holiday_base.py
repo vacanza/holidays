@@ -1368,11 +1368,12 @@ class HolidaySum(HolidayBase):
             else:
                 self.holidays.append(operand)
 
-        kwargs: dict[str, Any] = {}
         # Join years, expand and observed.
-        kwargs["years"] = h1.years | h2.years
-        kwargs["expand"] = h1.expand or h2.expand
-        kwargs["observed"] = h1.observed or h2.observed
+        kwargs: dict[str, Any] = {
+            "years": h1.years | h2.years,
+            "expand": h1.expand or h2.expand,
+            "observed": h1.observed or h2.observed,
+        }
         # Join country and subdivisions data.
         # TODO: this way makes no sense: joining Italy Catania (IT, CA) with
         # USA Mississippi (US, MS) and USA Michigan (US, MI) yields
@@ -1381,25 +1382,16 @@ class HolidaySum(HolidayBase):
         # and Milano, or ... you get the picture.
         # Same goes when countries and markets are being mixed (working, yet
         # still nonsensical).
+        value: Optional[Union[str, list[str]]]
         for attr in ("country", "market", "subdiv"):
-            if (
-                getattr(h1, attr, None)
-                and getattr(h2, attr, None)
-                and getattr(h1, attr) != getattr(h2, attr)
-            ):
-                a1 = (
-                    getattr(h1, attr)
-                    if isinstance(getattr(h1, attr), list)
-                    else [getattr(h1, attr)]
-                )
-                a2 = (
-                    getattr(h2, attr)
-                    if isinstance(getattr(h2, attr), list)
-                    else [getattr(h2, attr)]
-                )
+            a1 = getattr(h1, attr, None)
+            a2 = getattr(h2, attr, None)
+            if a1 and a2 and a1 != a2:
+                a1 = a1 if isinstance(a1, list) else [a1]
+                a2 = a2 if isinstance(a2, list) else [a2]
                 value = a1 + a2
             else:
-                value = getattr(h1, attr, None) or getattr(h2, attr, None)
+                value = a1 or a2
 
             if attr == "subdiv":
                 kwargs[attr] = value
