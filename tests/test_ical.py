@@ -104,8 +104,8 @@ class TestIcalExporter(TestCase):
         self.assertEqual(
             str(context.exception),
             (
-                f"Invalid language tag: '{language_name}'. Expected format follows ISO 639, "
-                "e.g., 'en', 'en-US'. For more details, "
+                f"Invalid language tag: '{language_name}'. Expected format follows "
+                "ISO 639-1 or ISO 639-2, e.g., 'en', 'en-US'. For more details, "
                 "refer to: https://www.loc.gov/standards/iso639-2/php/code_list.php."
             ),
         )

@@ -452,7 +452,7 @@ To create iCalendar content, use :py:meth:`generate`.
 
 .. tip::
    Although the iCalendar specification supports a wide range of language formats as outlined in `RFC 5646 <https://datatracker.ietf.org/doc/html/rfc5646>`__,
-   the Holidays object requires that the :py:attr:`language` attribute adhere to the `ISO 639 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, such as ``en`` or ``pap-AW``.
+   the Holidays object requires that the :py:attr:`language` attribute adhere to the `ISO 639-1 or ISO 639-2 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, such as ``en`` or ``pap-AW``.
 
    Additionally, if no :py:attr:`language` is specified for a holiday, but a :py:attr:`default_language` is set for the Holiday object, the default language will be used instead.
 

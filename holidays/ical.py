@@ -67,13 +67,13 @@ class ICalExporter:
         # i.e. `en_US` to `en-US`.
         language = language.strip().replace("_", "-")
 
-        # ISO 639 patterns, in compliance with RFC 5646.
+        # ISO 639-1 and ISO 639-2 patterns, in compliance with RFC 5646.
         iso639_pattern = re.compile(r"^[a-z]{2,3}(?:-[A-Z]{2})?$")
 
         if not iso639_pattern.fullmatch(language):
             raise ValueError(
-                f"Invalid language tag: '{language}'. Expected format follows ISO 639, "
-                "e.g., 'en', 'en-US'. For more details, "
+                f"Invalid language tag: '{language}'. Expected format follows "
+                "ISO 639-1 or ISO 639-2, e.g., 'en', 'en-US'. For more details, "
                 "refer to: https://www.loc.gov/standards/iso639-2/php/code_list.php."
             )
         return language
