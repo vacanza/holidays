@@ -2,7 +2,7 @@
 name = "holidays"
 description = "Open World Holidays Framework"
 license = "MIT"
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.9"
 dynamic = ["version"]
 
@@ -42,7 +42,7 @@ Repository = "https://github.com/vacanza/holidays/"
 Changelog = "https://github.com/vacanza/holidays/releases/"
 
 [tool.bandit]
-exclude_dirs = ["docs", "tests"]
+exclude_dirs = ["tests"]
 
 [tool.coverage.run]
 branch = true
@@ -60,7 +60,6 @@ skip = ["docs"]
 strict = false
 
 [tool.ruff]
-extend-exclude = ["docs"]
 line-length = 99
 target-version = "py39"
 
@@ -88,10 +87,6 @@ addopts = [
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
-
-[tool.rstcheck]
-ignore_directives = ["automodule", "autosummary"]
-ignore_languages = ["python"]
 
 [tool.setuptools.dynamic]
 version = { attr = "holidays.version.__version__" }

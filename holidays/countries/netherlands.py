@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,12 +20,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    References:
+    """Netherlands holidays.
 
-    - https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
-    - https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland
-    - http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands>
+        * <https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland>
+        * <http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays>
     """
 
     country = "NL"

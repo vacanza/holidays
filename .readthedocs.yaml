@@ -12,7 +12,5 @@ python:
   install:
     - requirements: requirements/docs.txt
 
-sphinx:
-  builder: html
-  configuration: docs/source/conf.py
-  fail_on_warning: true
+mkdocs:
+  configuration: mkdocs.yml

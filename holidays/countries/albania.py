@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,11 +27,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 class Albania(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
+    """Albania holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Albania
-        - `Law No. 7651 <http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf>`_
-        - `Holidays for 2018–2024 <https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
+        * [Law No. 7651](http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
+        * [Holidays for 2018–2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
     """
 
     country = "AL"
@@ -48,8 +49,10 @@ class Albania(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

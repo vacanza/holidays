@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,17 +19,15 @@ from holidays.observed_holiday_base import ObservedHolidayBase, ALL_TO_NEAREST_M
 
 
 class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Guatemala holidays.
+
     References:
-    - http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php
-    - https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+        * <http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php>
+        * <https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf>
 
     Moving holidays:
-        law 19-2018 start 18 oct 2018
-        https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
-
-        EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
-        https://leyes.infile.com/index.php?id=181&id_publicacion=81051
+        * [Decree 19-2018 start 18 oct 2018](https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf)
+        * [Case 5536-2018 (CC) start 17 abr 2020](https://leyes.infile.com/index.php?id=182&id_publicacion=81055)
     """
 
     country = "GT"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -33,26 +33,25 @@ class Philippines(
     IslamicHolidays,
     StaticHolidays,
 ):
-    """
-    Philippines holidays.
+    """Philippines holidays.
 
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_the_Philippines
-      - `Revised Administrative Code of 1987 <https://www.officialgazette.gov.ph/1987/07/25/executive-order-no-292-book-ichapter-7-regular-holidays-and-nationwide-special-days/>`_
-      - `Republic Act No. 9177 <https://www.officialgazette.gov.ph/2002/11/13/republic-act-no-9177/>`_
-      - `Republic Act No. 9256 <https://www.officialgazette.gov.ph/2004/02/25/republic-act-no-9256/>`_
-      - `Republic Act No. 9492 <https://www.officialgazette.gov.ph/2007/07/24/republic-act-no-9492/>`_
-      - `Republic Act No. 9645 <https://www.officialgazette.gov.ph/2009/06/12/republic-act-no-9645/>`_
-      - `Republic Act No. 9849 <https://www.officialgazette.gov.ph/2009/12/11/republic-act-no-9849/>`_
-      - `Republic Act No. 10966 <https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/>`_
-      - `Proclamation No. 944/2020` <https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/>`_
-      - `Proclamation No. 985/2020` <https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/>`_
-      - `Proclamation No. 90/2022` <https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/>`_
-      - `Proclamation No. 665/2024` <https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/>`_
-      - `Proclamation No. 729/2024` <https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/>`_
-      - `Nationwide holidays 2018-2025 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
-      - `2025 Eid'l Fitr and Eid'l Adha Tentative Date <https://melbournepcg.org/?page_id=9779>`_
-      - `Proclamation No. 839/2025` <https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Philippines>
+        * [Revised Administrative Code of 1987](https://www.officialgazette.gov.ph/1987/07/25/executive-order-no-292-book-ichapter-7-regular-holidays-and-nationwide-special-days/)
+        * [Republic Act No. 9177](https://www.officialgazette.gov.ph/2002/11/13/republic-act-no-9177/)
+        * [Republic Act No. 9256](https://www.officialgazette.gov.ph/2004/02/25/republic-act-no-9256/)
+        * [Republic Act No. 9492](https://www.officialgazette.gov.ph/2007/07/24/republic-act-no-9492/)
+        * [Republic Act No. 9645](https://www.officialgazette.gov.ph/2009/06/12/republic-act-no-9645/)
+        * [Republic Act No. 9849](https://www.officialgazette.gov.ph/2009/12/11/republic-act-no-9849/)
+        * [Republic Act No. 10966](https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/)
+        * [Proclamation No. 944/2020](https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
+        * [Proclamation No. 985/2020](https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/)
+        * [Proclamation No. 90/2022](https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/)
+        * [Proclamation No. 665/2024](https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/)
+        * [Proclamation No. 729/2024](https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/)
+        * [Nationwide holidays 2018-2025](https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
+        * [2025 Eid'l Fitr and Eid'l Adha Tentative Date](https://melbournepcg.org/?page_id=9779)
+        * [Proclamation No. 839/2025](https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/)
     """
 
     country = "PH"
@@ -65,8 +64,10 @@ class Philippines(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChineseCalendarHolidays.__init__(self, cls=PhilippinesChineseHolidays)
         ChristianHolidays.__init__(self)

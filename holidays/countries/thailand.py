@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -42,150 +42,142 @@ from holidays.observed_holiday_base import (
 
 
 class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
-    """
-    A subclass of :py:class:`HolidayBase` representing public holidays in Thailand.
+    """Thailand holidays.
 
     References:
-        - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
-                    `Holidays Act (MAR 1914) <https://ratchakitcha.soc.go.th/documents/1044125.pdf>`_
-                    `Special Extension for MoJ (In-effect 1915 onwards) <https://ratchakitcha.soc.go.th/documents/1046008.pdf>`_
-                    `Holidays Act Amendment (MAR 1926) <https://ratchakitcha.soc.go.th/documents/1073133.pdf>`_
-                    `Ascension of HM King Ananda Mahidol (MAR 1935) <https://th.wikisource.org/wiki/ประกาศนายกรัฐมนตรี_ลงวันที่_7_มีนาคม_2477_(รก.)>`_
-                    `Holidays Act Amendment (JAN 1938) <https://ratchakitcha.soc.go.th/documents/1105432.pdf>`_
-                    `Translation Typo Fixed for the JAN 1938 Amendment <https://ratchakitcha.soc.go.th/documents/1105491.pdf>`_
-                    `Constitution Petition Day renamed National Day (JUL 1938) <https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_18_กรกฎาคม_2481>`_
-                    `Holidays Act Amendment (MAR 1940) <https://ratchakitcha.soc.go.th/documents/1110471.pdf>`_
-                    `Holidays Act Amendment (SEP 1940) (In-effect 1941) <https://ratchakitcha.soc.go.th/documents/1111954.pdf>`_
-                    `Removal of Royal Language for King's Birthday (B.E 2484/1941) <https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_19_กันยายน_2484>`_
-                    `Holidays Act, Franco-Thai War Armistice Day added (B.E. 2485/1942) <https://ratchakitcha.soc.go.th/documents/1114825.pdf>`_
-                    `Holidays Act, Franco-Thai War Armistice Day Repealed (B.E. 2487/1944) <https://ratchakitcha.soc.go.th/documents/1121365.pdf>`_
-                    `Removal of Royal Language for King's Birthday Repealed (B.E 2488/1945) <https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_12_มกราคม_2488>`_
-                    `Holidays Act Amendment (DEC B.E. 2488/1945) <https://ratchakitcha.soc.go.th/documents/1123218.pdf>`_
-                    `Holidays Act Amendment (AUG B.E. 2489/1946) <https://ratchakitcha.soc.go.th/documents/1124494.pdf>`_
-                    `Special Weekend Arrangement for 4 Southern Provinces (4SP) <https://ratchakitcha.soc.go.th/documents/1129175.pdf>`_
-                    `Holidays Act, B.E. 2491 (1948) <https://ratchakitcha.soc.go.th/documents/1130817.pdf>`_
-                    `Holidays Act (No. 2), B.E. 2493 (1950) <https://ratchakitcha.soc.go.th/documents/1141392.pdf>`_
-                    `Holidays Act (No. 3), B.E. 2494 (1951) <https://ratchakitcha.soc.go.th/documents/1143601.pdf>`_
-                    `HM King Bhumibol Adulyadej Birthday Holidays Adjustment <https://ratchakitcha.soc.go.th/documents/1145614.pdf>`_
-                    `Holidays Act (No. 4), B.E. 2495 (1952) <https://ratchakitcha.soc.go.th/documents/1148403.pdf>`_
-                    `Holidays Act (No. 6), B.E. 2497 (1954) <https://ratchakitcha.soc.go.th/documents/1159427.pdf>`_
-                    `Holidays Act (No. 7), B.E. 2497 (1954); United Nations Day added <https://ratchakitcha.soc.go.th/documents/1160256.pdf>`_
-                    `Holidays Act (No. 8), B.E. 2499 (1956); Mothers Day, Children's Day added <https://ratchakitcha.soc.go.th/documents/1169783.pdf>`_
-                    `Holidays Act (No. 9), B.E. 2499 (1956); Weekend is now Buddhist Sabbath-SUN <https://ratchakitcha.soc.go.th/documents/1172667.pdf>`_
-                    `Holidays Act (No. 10), B.E. 2500 (1957); Weekend Change Reverted <https://ratchakitcha.soc.go.th/documents/1179999.pdf>`_
-                    `Holidays Act (No. 11), B.E. 2500 (1957) <https://ratchakitcha.soc.go.th/documents/1180042.pdf>`_
-                    `Holidays Act (No. 12), B.E. 2502 (1959); Weekend is full day SAT-SUN <https://ratchakitcha.soc.go.th/documents/1187876.pdf>`_
-                    `Holidays Act (No. 13), B.E. 2503 (1960); National Day is now Dec 5 <https://ratchakitcha.soc.go.th/documents/1196364.pdf>`_
-                    `Holidays Act (No. 14), B.E. 2505 (1962); Asarnha Bucha added <https://ratchakitcha.soc.go.th/documents/1206407.pdf>`_
-                    `Holidays Act (No. 16), B.E. 2506 (1963); 4SP weekend is now SAT-SUN  <https://hr.rid.go.th/wp-content/uploads/2022/12/06-16.pdf>`_
-                    `Eid-al-Fitr and Eit al-Adha added for 4SP <https://hr.rid.go.th/wp-content/uploads/2022/12/05-2517.pdf>`_
-                    `Holidays Act (No. 17), B.E. 2525 (1982); Chakri Day Full Name Changed <https://ratchakitcha.soc.go.th/documents/1494132.pdf>`_
-                    `Holidays Act (No. 19), B.E. 2540 (1997); Songkran Date Changed <https://ratchakitcha.soc.go.th/documents/1685580.pdf>`_
-                    `Holidays Act (No. 20), B.E. 2555 (2012); CNY in 4SP <https://ratchakitcha.soc.go.th/documents/1914282.pdf>`_
-                    `Holidays Act (No. 21), B.E. 2556 (2013); Songkhla added to 4SP <https://ratchakitcha.soc.go.th/documents/2098813.pdf>`_
-                    `Holidays Act (No. 22), B.E. 2560 (2017); Father's Day Date Clarification <https://ratchakitcha.soc.go.th/documents/2098828.pdf>`_
-                    `Holidays Act (No. 23), B.E. 2560 (2017); Rama X's Birthday added <https://ratchakitcha.soc.go.th/documents/2104467.pdf>`_
-                    `HM Queen Suthida's Birthday added <https://ratchakitcha.soc.go.th/documents/17081602.pdf>`_
-                    `Holidays Act, B.E. 2562 (2019) <https://ratchakitcha.soc.go.th/documents/17082311.pdf>`_
-        - Checked with: `Bank of Thailand lists <http://tiny.cc/wa_bot_2023>`_
-        - [In Lieus]
-            - `isranews.org <http://tiny.cc/wa_isranews_inlieu_hist>`_
-            - https://resolution.soc.go.th/?prep_id=99159317
-            - https://resolution.soc.go.th/?prep_id=196007
-            - https://github.com/vacanza/holidays/pull/929
-            - https://www.thairath.co.th/lifestyle/life/2812118
-            - https://www.thaipbs.or.th/news/content/346216
-        - [New Year's Day]
-            `wikisource.org <http://tiny.cc/wa_wiki_thai_newyear_2483>`_
-        - [National Children's Day]
-            https://thainews.prd.go.th/banner/th/children'sday/
-        - [Chakri Memorial Day]
-            `ocac.got.th <http://tiny.cc/wa_ocac_chakri>`_
-        - [Songkran Festival]
-            - `museumsiam.org <http://tiny.cc/wa_museumsiam_songkran>`_
-            - https://resolution.soc.go.th/?prep_id=123659
-        - [National Labour Day]
-            https://www.thairath.co.th/lifestyle/culture/1832869
-        - [National Day (24 June: Defunct)]
-            `Ministry of Culture <http://tiny.cc/wa_mincul_nat_day>`_
-        - [Coronation Day]
-            https://www.matichon.co.th/politics/news_526200
-            https://workpointtoday.com/news1-5/
-        - [HM Queen Suthida's Birthday]
-            https://www.thairath.co.th/news/politic/1567418
-        - [HM Maha Vajiralongkorn's Birthday]
-            https://www.matichon.co.th/politics/news_526200
-        - [HM Queen Sirikit the Queen Mother's Birthday]
-            https://hilight.kapook.com/view/14164
-        - [National Mother's Day]
-            https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
-        - [HM King Bhumibol Adulyadej Memorial Day]
-            https://www.matichon.co.th/politics/news_526200
-        - [HM King Chulalongkorn Memorial Day]
-            `<https://th.wikipedia.org/wiki/วันปิยมหาราช>`_
-            - https://www.sanook.com/news/9072518/
-        - [HM King Bhumibol Adulyadej's Birthday]
-            - `Ministry of Culture <http://tiny.cc/wa_mincul_nat_day>`_
-            - https://hilight.kapook.com/view/148862
-        - [National Father's Day]
-            https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
-        - [Constitution Day]
-            - https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ_(ประเทศไทย)
-            - https://hilight.kapook.com/view/18208
-            - `Bank of Thailand <http://tiny.cc/wa_bot_1992>`_
-            - `<https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>`_
-        - [New Year's Eve]
-            - `Bank of Thailand`_
-            - https://resolution.soc.go.th/?prep_id=205799
-            - https://resolution.soc.go.th/?prep_id=210744
-        - [Makha Bucha]
-            https://www.onab.go.th/th/content/category/detail/id/73/iid/3403
-        - [Visakha Bucha]
-            https://www.onab.go.th/th/content/category/detail/id/73/iid/3401
-        - [Asarnha Bucha]
-            https://www.onab.go.th/th/content/category/detail/id/73/iid/3397
-        - [Buddhist Lent Day]
-            https://www.onab.go.th/th/content/category/detail/id/73/iid/3395
-        - [Royal Ploughing Ceremony]
-            https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
-            https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
-            https://dl.parliament.go.th/handle/20.500.13072/103428
-            https://dl.parliament.go.th/handle/20.500.13072/92816
-            https://e-manage.mju.ac.th/timeline_detail.aspx?key=MTk4
-            https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf
-            https://www.myhora.com/ปฏิทิน/วันพืชมงคล.aspx
-        - [Royal Thai Armed Forces Day]
-            `<https://th.wikipedia.org/wiki/วันกองทัพไทย>`_
-        - [Teacher's Day]
-            https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Thailand>
+        * [Holidays Act (MAR 1914)](https://ratchakitcha.soc.go.th/documents/1044125.pdf)
+        * [Special Extension for MoJ (In-effect 1915 onwards)](https://ratchakitcha.soc.go.th/documents/1046008.pdf)
+        * [Holidays Act Amendment (MAR 1926)](https://ratchakitcha.soc.go.th/documents/1073133.pdf)
+        * [Ascension of HM King Ananda Mahidol (MAR 1935)](https://th.wikisource.org/wiki/ประกาศนายกรัฐมนตรี_ลงวันที่_7_มีนาคม_2477_(รก.))
+        * [Holidays Act Amendment (JAN 1938)](https://ratchakitcha.soc.go.th/documents/1105432.pdf)
+        * [Translation Typo Fixed for the JAN 1938 Amendment](https://ratchakitcha.soc.go.th/documents/1105491.pdf)
+        * [Constitution Petition Day renamed National Day (JUL 1938)](https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_18_กรกฎาคม_2481)
+        * [Holidays Act Amendment (MAR 1940)](https://ratchakitcha.soc.go.th/documents/1110471.pdf)
+        * [Holidays Act Amendment (SEP 1940) (In-effect 1941)](https://ratchakitcha.soc.go.th/documents/1111954.pdf)
+        * [Removal of Royal Language for King's Birthday (B.E 2484/1941)](https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_19_กันยายน_2484)
+        * [Holidays Act, Franco-Thai War Armistice Day added (B.E. 2485/1942)](https://ratchakitcha.soc.go.th/documents/1114825.pdf)
+        * [Holidays Act, Franco-Thai War Armistice Day Repealed (B.E. 2487/1944)](https://ratchakitcha.soc.go.th/documents/1121365.pdf)
+        * [Removal of Royal Language for King's Birthday Repealed (B.E 2488/1945)](https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_12_มกราคม_2488)
+        * [Holidays Act Amendment (DEC B.E. 2488/1945)](https://ratchakitcha.soc.go.th/documents/1123218.pdf)
+        * [Holidays Act Amendment (AUG B.E. 2489/1946)](https://ratchakitcha.soc.go.th/documents/1124494.pdf)
+        * [Special Weekend Arrangement for 4 Southern Provinces (4SP)](https://ratchakitcha.soc.go.th/documents/1129175.pdf)
+        * [Holidays Act, B.E. 2491 (1948)](https://ratchakitcha.soc.go.th/documents/1130817.pdf)
+        * [Holidays Act (No. 2), B.E. 2493 (1950)](https://ratchakitcha.soc.go.th/documents/1141392.pdf)
+        * [Holidays Act (No. 3), B.E. 2494 (1951)](https://ratchakitcha.soc.go.th/documents/1143601.pdf)
+        * [HM King Bhumibol Adulyadej Birthday Holidays Adjustment](https://ratchakitcha.soc.go.th/documents/1145614.pdf)
+        * [Holidays Act (No. 4), B.E. 2495 (1952)](https://ratchakitcha.soc.go.th/documents/1148403.pdf)
+        * [Holidays Act (No. 6), B.E. 2497 (1954)](https://ratchakitcha.soc.go.th/documents/1159427.pdf)
+        * [Holidays Act (No. 7), B.E. 2497 (1954); United Nations Day added](https://ratchakitcha.soc.go.th/documents/1160256.pdf)
+        * [Holidays Act (No. 8), B.E. 2499 (1956); Mothers Day, Children's Day added](https://ratchakitcha.soc.go.th/documents/1169783.pdf)
+        * [Holidays Act (No. 9), B.E. 2499 (1956); Weekend is now Buddhist Sabbath-SUN](https://ratchakitcha.soc.go.th/documents/1172667.pdf)
+        * [Holidays Act (No. 10), B.E. 2500 (1957); Weekend Change Reverted](https://ratchakitcha.soc.go.th/documents/1179999.pdf)
+        * [Holidays Act (No. 11), B.E. 2500 (1957)](https://ratchakitcha.soc.go.th/documents/1180042.pdf)
+        * [Holidays Act (No. 12), B.E. 2502 (1959); Weekend is full day SAT-SUN](https://ratchakitcha.soc.go.th/documents/1187876.pdf)
+        * [Holidays Act (No. 13), B.E. 2503 (1960); National Day is now Dec 5](https://ratchakitcha.soc.go.th/documents/1196364.pdf)
+        * [Holidays Act (No. 14), B.E. 2505 (1962); Asarnha Bucha added](https://ratchakitcha.soc.go.th/documents/1206407.pdf)
+        * [Holidays Act (No. 16), B.E. 2506 (1963); 4SP weekend is now SAT-SUN](https://hr.rid.go.th/wp-content/uploads/2022/12/06-16.pdf)
+        * [Eid-al-Fitr and Eit al-Adha added for 4SP](https://hr.rid.go.th/wp-content/uploads/2022/12/05-2517.pdf)
+        * [Holidays Act (No. 17), B.E. 2525 (1982); Chakri Day Full Name Changed](https://ratchakitcha.soc.go.th/documents/1494132.pdf)
+        * [Holidays Act (No. 19), B.E. 2540 (1997); Songkran Date Changed](https://ratchakitcha.soc.go.th/documents/1685580.pdf)
+        * [Holidays Act (No. 20), B.E. 2555 (2012); CNY in 4SP](https://ratchakitcha.soc.go.th/documents/1914282.pdf)
+        * [Holidays Act (No. 21), B.E. 2556 (2013); Songkhla added to 4SP](https://ratchakitcha.soc.go.th/documents/2098813.pdf)
+        * [Holidays Act (No. 22), B.E. 2560 (2017); Father's Day Date Clarification](https://ratchakitcha.soc.go.th/documents/2098828.pdf)
+        * [Holidays Act (No. 23), B.E. 2560 (2017); Rama X's Birthday added](https://ratchakitcha.soc.go.th/documents/2104467.pdf)
+        * [HM Queen Suthida's Birthday added](https://ratchakitcha.soc.go.th/documents/17081602.pdf)
+        * [Holidays Act, B.E. 2562 (2019)](https://ratchakitcha.soc.go.th/documents/17082311.pdf)
 
-            !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
-            Despite the wording, this usually only applies to Monday only for
-            holidays, consecutive holidays all have their own special in lieu
-            declared separately.
-            Data from 1992-1994 and 1998-2000 are declared discretely in
-            special_holidays declarations above.
-            Applied Automatically for Monday if on Weekends: 1961-1973
-            **NOTE**: No New Year's Eve (in lieu) for this period
-            No In Lieu days available: 1974-1988
-            Case-by-Case application for Workday if on Weekends: 1989-1994
-            Applied Automatically for Workday if on Weekends: 1995-1997
-            Case-by-Case application for Workday if on Weekends: 1998-2000
-            Applied Automatically for Workday if on Weekends: 2001-Present
+    Checked with:
+        * [Bank of Thailand lists](http://tiny.cc/wa_bot_2023)
+
+    In Lieus:
+        * [isranews.org](http://tiny.cc/wa_isranews_inlieu_hist)
+        * <https://resolution.soc.go.th/?prep_id=99159317>
+        * <https://resolution.soc.go.th/?prep_id=196007>
+        * <https://github.com/vacanza/holidays/pull/929>
+        * <https://www.thairath.co.th/lifestyle/life/2812118>
+        * <https://www.thaipbs.or.th/news/content/346216>
+
+    Certain holidays references:
+        * [New Year's Day](http://tiny.cc/wa_wiki_thai_newyear_2483)
+        * [National Children's Day](https://thainews.prd.go.th/banner/th/children'sday/)
+        * [Chakri Memorial Day](http://tiny.cc/wa_ocac_chakri)
+        * Songkran Festival:
+            * [museumsiam.org](http://tiny.cc/wa_museumsiam_songkran)
+            * <https://resolution.soc.go.th/?prep_id=123659>
+        * [National Labour Day](https://www.thairath.co.th/lifestyle/culture/1832869)
+        * [National Day (24 June: Defunct)](http://tiny.cc/wa_mincul_nat_day)
+        * Coronation Day:
+            * <https://www.matichon.co.th/politics/news_526200>
+            * <https://workpointtoday.com/news1-5/>
+        * [HM Queen Suthida's Birthday](https://www.thairath.co.th/news/politic/1567418)
+        * [HM Maha Vajiralongkorn's Birthday](https://www.matichon.co.th/politics/news_526200)
+        * [HM Queen Sirikit the Queen Mother's Birthday](https://hilight.kapook.com/view/14164)
+        * [National Mother's Day](https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564)
+        * [HM King Bhumibol Adulyadej Memorial Day](https://www.matichon.co.th/politics/news_526200)
+        * HM King Chulalongkorn Memorial Day:
+            * <https://th.wikipedia.org/wiki/วันปิยมหาราช>
+            * <https://www.sanook.com/news/9072518/>
+        * HM King Bhumibol Adulyadej's Birthday
+            * [Ministry of Culture](http://tiny.cc/wa_mincul_nat_day)
+            * <https://hilight.kapook.com/view/148862>
+        * [National Father's Day](https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5)
+        * Constitution Day:
+            * [ประเทศไทย](https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ_)
+            * <https://hilight.kapook.com/view/18208>
+            * [Bank of Thailand](http://tiny.cc/wa_bot_1992)
+            * <https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
+        * New Year's Eve:
+            * [Bank of Thailand](http://tiny.cc/wa_bot_1992)
+            * <https://resolution.soc.go.th/?prep_id=205799>
+            * <https://resolution.soc.go.th/?prep_id=210744>
+        * [Makha Bucha](https://www.onab.go.th/th/content/category/detail/id/73/iid/3403)
+        * [Visakha Bucha](https://www.onab.go.th/th/content/category/detail/id/73/iid/3401)
+        * [Asarnha Bucha](https://www.onab.go.th/th/content/category/detail/id/73/iid/3397)
+        * [Buddhist Lent Day](https://www.onab.go.th/th/content/category/detail/id/73/iid/3395)
+        * Royal Ploughing Ceremony:
+            * <https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony>
+            * <https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html>
+            * <https://dl.parliament.go.th/handle/20.500.13072/103428>
+            * <https://dl.parliament.go.th/handle/20.500.13072/92816>
+            * <https://e-manage.mju.ac.th/timeline_detail.aspx?key=MTk4>
+            * <https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf>
+            * <https://www.myhora.com/ปฏิทิน/วันพืชมงคล.aspx>
+        * [Royal Thai Armed Forces Day](https://th.wikipedia.org/wiki/วันกองทัพไทย)
+        * [Teacher's Day](https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf)
+
+    !!! info "Info"
+        If Public Holiday falls on weekends, (in lieu) on workday.
+
+        Despite the wording, this usually only applies to Monday only for
+        holidays, consecutive holidays all have their own special in lieu
+        declared separately.
+
+        Data from 1992-1994 and 1998-2000 are declared discretely in
+        special_holidays declarations above.
+
+        Applied Automatically for Monday if on Weekends: 1961-1973
+
+    !!! note "Note"
+        No New Year's Eve (in lieu) for this period
+
+        No In Lieu days available: 1974-1988
+
+        Case-by-Case application for Workday if on Weekends: 1989-1994
+
+        Applied Automatically for Workday if on Weekends: 1995-1997
+
+        Case-by-Case application for Workday if on Weekends: 1998-2000
+
+        Applied Automatically for Workday if on Weekends: 2001-Present
 
     Limitations:
-        - This is only 100% accurate for 1997-2025; any future dates are up to the
-          Royal Thai Government Gazette which updates on a year-by-year basis.
-
-        - Thai Lunar Calendar Holidays only work until 2157 (B.E. 2700) as we only
-          have Thai year-type data for cross-checking until then.
-
-        - Royal Ploughing Ceremony Day is date is announced on an annual basis
-          by the Court Astrologers, thus need an annual update to the library here
-
-    Country created by: `arkid15r <https://github.com/arkid15r>`__
-
-    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
+        * This is only 100% accurate for 1997-2025; any future dates are up to the
+            Royal Thai Government Gazette which updates on a year-by-year basis.
+        * Thai Lunar Calendar Holidays only work until 2157 (B.E. 2700) as we only
+            have Thai year-type data for cross-checking until then.
+        * Royal Ploughing Ceremony Day is date is announced on an annual basis
+            by the Court Astrologers, thus need an annual update to the library here
     """
 
     country = "TH"
@@ -980,7 +972,7 @@ class ThailandStaticHolidays:
     วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
 
     Special Bank Holidays Pre-1992:
-       - `HM Queen Rambai Barni's Royal Cremation Ceremony. <https://ratchakitcha.soc.go.th/documents/1560949.pdf>`_
+       * [HM Queen Rambai Barni's Royal Cremation Ceremony](https://ratchakitcha.soc.go.th/documents/1560949.pdf)
     """
 
     # Special In Lieu Holiday.

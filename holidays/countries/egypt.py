@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,14 +19,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
-    # Holidays here are estimates, it is common for the day to be pushed
-    # if falls in a weekend, although not a rule that can be implemented.
-    # The following four moving date holidays whose exact date is announced yearly
-    # are estimated (and so denoted):
-    # - Eid al-Fitr
-    # - Eid al-Adha
-    # - Arafat Day
-    # - Prophet's Birthday
+    """Egypt holidays."""
 
     country = "EG"
     default_language = "ar"
@@ -37,8 +30,10 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)

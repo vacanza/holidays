@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -48,8 +48,8 @@ msgid "Дзень Перамогі"
 msgstr "Victory Day"
 
 #. Day of the National Coat of Arms of the Republic of Belarus, the National
-#. Flag of the Republic
-#. of Belarus and the National Anthem of the Republic of Belarus.
+#. Flag of the Republic of
+#. Belarus and the National Anthem of the Republic of Belarus.
 msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
 msgstr ""
 "Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic of"

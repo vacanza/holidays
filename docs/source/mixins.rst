@@ -1,4 +1,0 @@
-Mixins
-======
-
-.. automodule:: holidays.mixins
