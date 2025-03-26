@@ -421,12 +421,6 @@ Generate iCalendar content and export to ``.ics``
 
 :py:func:`ICalExporter` facilitates the creation and export of iCalendar files in compliance with `RFC 5545 <https://datatracker.ietf.org/doc/html/rfc5545>`__.
 
-The iCalendar specification only supports 2-letter `ISO 639-1 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, which means some holiday lists may not be exportable.
-For instance, Aruba's ``pap_AW`` localization is unsupported. Similarly, all of Hong Kong's Chinese language localizations (``zh_CN``, ``zh_HK``) are assigned the shared ``ZH`` code.
-
-Furthermore, if no :py:attr:`language` is specified for a given holiday but :py:attr:`default_language` is set for that Holiday object, the default language will be used instead.
-If neither attribute exists, the fallback language code ``EN`` will be applied.
-
 .. code-block:: python
 
    >>> from holidays import country_holidays
@@ -457,9 +451,10 @@ To create iCalendar content, use :py:meth:`generate`.
    1
 
 .. tip::
-   When using a custom Holiday object, ensure that the ``language`` parameter
-   follows the guidelines outlined in `RFC 5646 <https://datatracker.ietf.org/doc/html/rfc5646>`__.
+   Although the iCalendar specification supports a wide range of language formats as outlined in `RFC 5646 <https://datatracker.ietf.org/doc/html/rfc5646>`__,
+   the Holidays object requires that the :py:attr:`language` attribute adhere to the `ISO 639 <https://www.loc.gov/standards/iso639-2/php/code_list.php>`__ language codes, such as ``en`` or ``pap-AW``.
 
+   Additionally, if no :py:attr:`language` is specified for a holiday, but a :py:attr:`default_language` is set for the Holiday object, the default language will be used instead.
 
 .. code-block:: python
 

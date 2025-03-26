@@ -43,14 +43,19 @@ class ICalExporter:
         language = getattr(self.holidays, "language", None) or getattr(
             self.holidays, "default_language", None
         )
-        self.language = self._validate_language(language) if isinstance(language, str) else None
+        self.language = (
+            self._validate_language(language)
+            if isinstance(language, str)
+            and language in getattr(self.holidays, "supported_languages", [])
+            else None
+        )
 
     def _validate_language(self, language: str) -> str:
         """
         Validates the language code to ensure it complies with RFC 5646.
 
-        As of current implementation, 'default_language' fallback value
-        either follows ISO 639-1 or ISO 639-2 if they are provided.
+        In the current implementation, all languages must comply with
+        either ISO 639-1 or ISO 639-2 if specified (part of RFC 5646).
 
         :param language:
             The language code to validate.
@@ -62,66 +67,14 @@ class ICalExporter:
         # i.e. `en_US` to `en-US`.
         language = language.strip().replace("_", "-")
 
-        # RFC 5646 pattern for language tags with detailed validation
-        rfc5646_pattern = re.compile(
-            r"""
-        ^
-        (?:
-            # Grandfathered Irregular Tags (RFC 5646 Exceptions)
-            (?:
-                en-GB-oed       # Old English Dictionary variant
-                | i-ami         # Amis language
-                | i-bnn         # Bunun language
-                | i-default     # Default tag
-                | i-enochian    # Enochian (constructed language)
-                | i-hak         # Hakka
-                | i-klingon     # Klingon (tlhIngan Hol)
-                | i-lux         # Luxembourgish
-                | i-mingo       # Mingo
-                | i-navajo      # Navajo
-                | i-pwn         # Paiwan
-                | i-tao         # Taivoan
-                | i-tay         # Tayal
-                | i-tsu         # Tsou
-                | sgn-BE-FR     # Belgian French Sign Language
-                | sgn-BE-NL     # Belgian Dutch Sign Language
-                | sgn-CH-DE     # Swiss German Sign Language
-            )
-            |
-            # Regular Language Tags
-            (?:
-                # 1. Primary Language Subtag (2-3 letters, required)
-                [a-z]{2,3}
+        # ISO 639 patterns, in compliance with RFC 5646.
+        iso639_pattern = re.compile(r"^[a-z]{2,3}(?:-[A-Z]{2})?$")
 
-                # 2. Optional Script Subtag (4 letters, ISO 15924)
-                (?: -[a-z]{4} )?
-
-                # 3. Optional Region Subtag (2 letters or 3 digits)
-                (?: -[a-z]{2} | -[0-9]{3} )?
-
-                # 4. Optional Variant Subtags (5-8 alphanumeric chars or 4 digits)
-                (?: -(?:[a-z0-9]{5,8} | [0-9]{4}) )*
-
-                # 5. Optional Extensions (single letter + subtags)
-                (?: -[a-wy-z0-9] (?: -[a-z0-9]{2,8} )+ )*
-
-                # 6. Optional Private Use (x- followed by 1-8 char subtags)
-                (?: -x (?: -[a-z0-9]{1,8} )+ )?
-            )
-            |
-            # Standalone Private Use Tags (x-...)
-            ^x (?: -[a-z0-9]{1,8} )+$
-        )
-        $                       # End of string
-        """,
-            re.VERBOSE | re.IGNORECASE,
-        )
-
-        if not rfc5646_pattern.fullmatch(language):
+        if not iso639_pattern.fullmatch(language):
             raise ValueError(
-                f"Invalid language tag: '{language}'. Expected format follows RFC 5646, "
+                f"Invalid language tag: '{language}'. Expected format follows ISO 639, "
                 "e.g., 'en', 'en-US'. For more details, "
-                "refer to: https://datatracker.ietf.org/doc/html/rfc5646."
+                "refer to: https://www.loc.gov/standards/iso639-2/php/code_list.php."
             )
         return language
 

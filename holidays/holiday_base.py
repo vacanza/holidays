@@ -1260,7 +1260,17 @@ country_holidays('CA') + country_holidays('MX')
             else:
                 setattr(self, attr, value)
 
+        # Retain language if they match and are strings.
+        # If language wasn't assigned, default_language acts as fallback.
+        h1_language = h1.language or h1.default_language
+        h2_language = h2.language or h2.default_language
+        if isinstance(h1_language, str) and h1_language == h2_language:
+            kwargs["language"] = h1_language
+
         HolidayBase.__init__(self, **kwargs)
+
+        # supported_languages is used for iCalExporter language check as well.
+        self.supported_languages = (h1_language,) if h1_language else ()
 
     def _populate(self, year):
         for operand in self.holidays:
