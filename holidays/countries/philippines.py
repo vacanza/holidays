@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -47,10 +47,12 @@ class Philippines(
       - `Republic Act No. 10966 <https://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/>`_
       - `Proclamation No. 944/2020` <https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/>`_
       - `Proclamation No. 985/2020` <https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/>`_
+      - `Proclamation No. 90/2022` <https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/>`_
       - `Proclamation No. 665/2024` <https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/>`_
       - `Proclamation No. 729/2024` <https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/>`_
       - `Nationwide holidays 2018-2025 <https://www.officialgazette.gov.ph/nationwide-holidays/2018/>`_
       - `2025 Eid'l Fitr and Eid'l Adha Tentative Date <https://melbournepcg.org/?page_id=9779>`_
+      - `Proclamation No. 839/2025` <https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/>`_
     """
 
     country = "PH"
@@ -145,6 +147,7 @@ class Philippines(
         dates_obs = {
             2008: (DEC, 1),
             2010: (NOV, 29),
+            2023: (NOV, 27),
         }
         # Bonifacio Day.
         self._add_holiday(tr("Bonifacio Day"), dates_obs.get(self._year, (NOV, 30)))
@@ -258,7 +261,7 @@ class PhilippinesIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 21),
         2024: (APR, 10),
-        2025: (MAR, 31),
+        2025: (APR, 1),
     }
 
 
