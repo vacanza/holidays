@@ -27,112 +27,147 @@ logging.basicConfig(
 logger = logging.getLogger("zenodo_upload")
 
 
+def request_with_retries(method, url, headers, **kwargs):
+    retries = 3
+    for attempt in range(retries):
+        try:
+            response = getattr(requests, method)(url, headers=headers, timeout=30, **kwargs)
+            response.raise_for_status()
+            return response
+        except requests.RequestException as e:
+            logger.warning(f"Attempt {attempt + 1}/{retries} failed: {str(e)}")
+            if attempt == retries - 1:
+                logger.error(
+                    f"Request failed after {retries} attempts: {e.response.text if e.response else str(e)}"
+                )
+                sys.exit(1)
+
+
+def validate_inputs(token, files, metadata_file):
+    if not token:
+        logger.error("ZENODO_TOKEN environment variable is required")
+        sys.exit(1)
+    for file_path in files:
+        if not os.path.exists(file_path):
+            logger.error(f"File {file_path} not found")
+            sys.exit(1)
+    if metadata_file and not os.path.exists(metadata_file):
+        logger.warning(f"Metadata file {metadata_file} not found, using default metadata")
+
+
 def get_existing_deposition(base_url, token, concept_id):
     headers = {"Authorization": f"Bearer {token}"}
-    query = f"conceptrecid:{concept_id}" if concept_id else "Vacanza Holidays"
-    response = requests.get(f"{base_url}?q={query}&sort=mostrecent", headers=headers, timeout=30)
-    if response.status_code == 200 and response.json():
-        return response.json()[0]["id"]
-    return None
+    if not concept_id:
+        logger.info("No concept_id provided, creating new deposition")
+        return None
+    response = request_with_retries(
+        "get", f"{base_url}?q=conceptrecid:{concept_id}&sort=mostrecent", headers=headers
+    )
+    depositions = response.json()
+    return depositions[0]["id"] if depositions else None
+
+
+def create_or_update_deposition(base_url, token, concept_id, headers):
+    deposition_id = get_existing_deposition(base_url, token, concept_id)
+    if deposition_id and concept_id:
+        logger.info(f"Creating new version for deposition {deposition_id}")
+        response = request_with_retries(
+            "post", f"{base_url}/{deposition_id}/actions/newversion", headers=headers
+        )
+        new_deposition_url = response.json()["links"]["latest_draft"]
+        return new_deposition_url.split("/")[-1]
+    else:
+        logger.info("Creating new deposition")
+        response = request_with_retries("post", base_url, headers=headers, json={})
+        return response.json()["id"]
+
+
+def load_metadata(metadata_file, ref_name):
+    default_metadata = {
+        "metadata": {
+            "title": f"Vacanza Holidays {ref_name or 'unknown'}",
+            "upload_type": "software",
+            "description": f"Release {ref_name or 'unknown'} of Vacanza Holidays",
+            "creators": [{"name": "Vacanza Team"}],
+            "license": "mit",
+        }
+    }
+    if not metadata_file or not os.path.exists(metadata_file):
+        return default_metadata
+
+    with open(metadata_file) as f:
+        if metadata_file.endswith(".cff"):
+            cff_data = yaml.safe_load(f)
+            return {
+                "metadata": {
+                    "title": cff_data.get("title", default_metadata["metadata"]["title"]),
+                    "upload_type": "software",
+                    "description": cff_data.get(
+                        "abstract", default_metadata["metadata"]["description"]
+                    ),
+                    "creators": [
+                        {"name": f"{a.get('given-names', '')} {a.get('family-names', '')}".strip()}
+                        for a in cff_data.get(
+                            "authors", [{"given-names": "Vacanza", "family-names": "Team"}]
+                        )
+                    ],
+                    "license": cff_data.get("license", "mit").lower(),
+                    "version": cff_data.get("version", ref_name or "unknown"),
+                    "doi": cff_data.get("doi", ""),
+                }
+            }
+        return json.load(f)
+
+
+def upload_files(base_url, token, deposition_id, files):
+    headers = {"Authorization": f"Bearer {token}"}
+    for file_path in files:
+        logger.info(f"Uploading {file_path}...")
+        with open(file_path, "rb") as f:
+            response = request_with_retries(
+                "post",
+                f"{base_url}/{deposition_id}/files",
+                headers=headers,
+                files={"file": (os.path.basename(file_path), f)},
+                timeout=60,
+            )
+        logger.info(f"Uploaded {file_path} successfully")
+
+
+def set_github_output(key, value):
+    with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+        f.write(f"{key}={value}\n")
 
 
 def main():
     token = os.getenv("ZENODO_TOKEN")
-    files = os.getenv("ZENODO_FILES").split()
+    files = os.getenv("ZENODO_FILES", "").split()
     concept_id = os.getenv("ZENODO_CONCEPT_ID", "")
     metadata_file = os.getenv("ZENODO_METADATA_FILE")
-    sandbox = os.getenv("ZENODO_SANDBOX") == "true"
+    sandbox = os.getenv("ZENODO_SANDBOX", "true") == "true"
+    ref_name = os.getenv("GITHUB_REF_NAME", "unknown")
     base_url = SANDBOX_URL if sandbox else ZENODO_URL
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
-    # Load metadata from file or use default
-    if metadata_file and os.path.exists(metadata_file):
-        with open(metadata_file) as f:
-            if metadata_file.endswith(".cff"):
-                cff_data = yaml.safe_load(f)
-                metadata = {
-                    "metadata": {
-                        "title": cff_data["title"],
-                        "upload_type": "software",
-                        "description": cff_data["abstract"],
-                        "creators": [
-                            {"name": f"{a['given-names']} {a['family-names']}"}
-                            for a in cff_data["authors"]
-                        ],
-                        "license": cff_data["license"].lower(),
-                        "version": cff_data["version"],
-                        "doi": cff_data.get("doi", ""),
-                    }
-                }
-            else:
-                metadata = json.load(f)
-    else:
-        metadata = {
-            "metadata": {
-                "title": f"Vacanza Holidays {os.getenv('GITHUB_REF_NAME', 'unknown')}",
-                "upload_type": "software",
-                "description": f"Release {os.getenv('GITHUB_REF_NAME', 'unknown')}"
-                f"of Vacanza Holidays",
-                "creators": [{"name": "Vacanza Team"}],
-            }
-        }
+    validate_inputs(token, files, metadata_file)
+    metadata = load_metadata(metadata_file, ref_name)
+    deposition_id = create_or_update_deposition(base_url, token, concept_id, headers)
 
-    # Check for existing deposition
-    deposition_id = get_existing_deposition(base_url, token, concept_id)
-
-    # Create new deposition or new version
-    if deposition_id and concept_id:
-        response = requests.post(
-            f"{base_url}/{deposition_id}/actions/newversion", headers=headers, timeout=30
-        )
-        if response.status_code != 201:
-            logger.error(f"Error creating new version: {response.text}")
-            sys.exit(1)
-        new_deposition_id = response.json()["links"]["latest_draft"].split("/")[-1]
-    else:
-        response = requests.post(base_url, headers=headers, json={}, timeout=30)
-        if response.status_code != 201:
-            logger.error(f"Error publishing: {response.text}")
-            sys.exit(1)
-        new_deposition_id = response.json()["id"]
-
-    # Update metadata
-    response = requests.put(
-        f"{base_url}/{new_deposition_id}", headers=headers, json=metadata, timeout=30
+    logger.info(f"Updating metadata for deposition {deposition_id}")
+    response = request_with_retries(
+        "put", f"{base_url}/{deposition_id}", headers=headers, json=metadata
     )
-    if response.status_code != 200:
-        logger.error(f"Error updating metadata: {response.text}")
-        sys.exit(1)
 
-    # Upload files
-    for file_path in files:
-        try:
-            with open(file_path, "rb") as f:
-                response = requests.post(
-                    f"{base_url}/{new_deposition_id}/files",
-                    headers={"Authorization": f"Bearer {token}"},
-                    files={"file": f},
-                    timeout=60,  # Longer timeout for file uploads
-                )
-            if response.status_code != 201:
-                logger.error(f"Error uploading {file_path}: {response.text}")
-                sys.exit(1)
-            logger.info(f"Successfully uploaded {file_path}")
-        except (OSError, requests.RequestException) as e:
-            logger.error(f"Failed to upload {file_path}: {str(e)}")
-            sys.exit(1)
+    upload_files(base_url, token, deposition_id, files)
 
-    # Publish
-    response = requests.post(
-        f"{base_url}/{new_deposition_id}/actions/publish", headers=headers, timeout=30
+    logger.info(f"Publishing deposition {deposition_id}")
+    response = request_with_retries(
+        "post", f"{base_url}/{deposition_id}/actions/publish", headers=headers
     )
-    if response.status_code != 202:
-        logger.error(f"Error publishing: {response.text}")
-        sys.exit(1)
-
     doi = response.json()["doi"]
-    with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-        f.write(f"doi={doi}\n")
+
+    set_github_output("doi", doi)
+    logger.info(f"Published successfully with DOI: {doi}")
 
 
 if __name__ == "__main__":

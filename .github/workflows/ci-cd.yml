@@ -351,11 +351,11 @@ jobs:
         shell: bash
 
       - name: Upload to Zenodo
-        id: upload  # Explicitly set the step ID to match the action's output step
+        id: upload
         uses: ./.github/actions/zenodo-upload
         with:
           token: ${{ secrets.ZENODO_TOKEN }}
           files: ${{ env.FILES }}
           concept_id: ${{ secrets.ZENODO_CONCEPT_ID }}
           metadata_file: "CITATION.cff"
-          sandbox: ${{ secrets.ZENODO_USE_SANDBOX || 'false' }}
+          sandbox: "false"  # Or set dynamically based on environment
