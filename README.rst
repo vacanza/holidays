@@ -93,6 +93,18 @@ The latest development (dev) version can be installed directly from GitHub:
 All new features are always first pushed to dev branch, then released on
 main branch upon official version upgrades.
 
+Updating Dependencies
+---------------------
+
+To update dependencies using ``pip-compile`` with hash checksums, run the following command:
+
+.. code-block:: shell
+
+    pip-compile --generate-hashes
+
+This will generate a ``requirements.txt`` file with secure hash values for each dependency, ensuring consistent builds.
+
+
 Documentation
 -------------
 
