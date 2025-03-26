@@ -14,12 +14,12 @@ build/*
 coverage.lcov
 coverage.xml
 dist/
+docs/auto_gen_files/
 docs/build
 docs/source/_autosummary
 holidays/locale/pot/*.pot
 MANIFEST
 Pipfile
 sbom.json
-venv/
 site/
-docs/auto_gen_files/
+venv/
