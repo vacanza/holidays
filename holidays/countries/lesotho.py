@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,11 +16,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Lesotho holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
-    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
-    - https://www.timeanddate.com/holidays/lesotho/
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho>
+        * <https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf>
+        * <https://www.timeanddate.com/holidays/lesotho/>
     """
 
     country = "LS"

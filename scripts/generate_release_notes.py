@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
+
 #  holidays
 #  --------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,8 +28,7 @@ import holidays  # noqa: E402
 
 BRANCH_NAME = "dev"
 HEADER_TEMPLATE = """
-Version {version}
-============
+# Version {version}
 
 Released {month} {day}, {year}
 """
@@ -37,8 +37,7 @@ REPOSITORY_NAME = "vacanza/holidays"
 
 
 class ReleaseNotesGenerator:
-    """
-    Generates release notes based on local git commits and GitHub PRs metadata.
+    """Generates release notes based on local git commits and GitHub PRs metadata.
 
     Usage example: scripts/generate_release_notes.py
     """

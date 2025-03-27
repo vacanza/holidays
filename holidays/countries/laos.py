@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,44 +20,36 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
-    """
-    A subclass of :py:class:`HolidayBase` representing public holidays in Laos.
+    """Laos holidays.
 
     References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Laos>
+        * [Decree on Holidays No. 386 / Rev. 15.12.2017](https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf)
 
-    - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Laos
-                Decree on Holidays No. 386 / Rev. 15.12.2017
-                https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf
+    Checked with:
+        * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+        * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * <https://www.timeanddate.com/holidays/laos/>
+        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022>
+        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023>
+        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024>
+        * <http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo> (from 2011 onwards)
 
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
-                    https://www.timeanddate.com/holidays/laos/
-                    https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022
-                    https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023
-                    https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024
-                    http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo (from 2011 onwards)
-
-        !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
+    !!! note "If Public Holiday falls on weekends, (in lieu) on workday"
         Despite the wording, this usually only applies to Monday only for holidays,
         consecutive holidays all have their own special in lieu declared separately.
 
-        As featured in Decree on Holidays No. 386 / Rev. 15.12.2017;
+    As featured in Decree on Holidays No. 386:
         - Saturdays and Sundays shall be restdays each week.
         - In-Lieu holidays shall be given if it fall on the weekends.
 
-        Although in-lieus has been de facto observed since at least 2012.
+    Although in-lieus has been de facto observed since at least 2012.
 
     Limitations:
-
-    - Laotian holidays only works from 1976 onwards, and are only 100% accurate from 2018 onwards.
-
-    - Laotian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
-      (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
-
-
-    Country created by: `PPsyrius <https://github.com/PPsyrius>`__
-
-    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
+        - Laotian holidays only works from 1976 onwards, and are only 100% accurate from 2018
+            onwards.
+        - Laotian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
+            (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
     """
 
     country = "LA"

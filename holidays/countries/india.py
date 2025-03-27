@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -28,13 +28,15 @@ from holidays.holiday_base import HolidayBase
 class India(
     HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
 ):
-    """
-    https://www.india.gov.in/calendar
-    https://www.india.gov.in/state-and-ut-holiday-calendar
-    https://en.wikipedia.org/wiki/Public_holidays_in_India
-    https://www.calendarlabs.com/holidays/india/2021
-    https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
-    https://vahan.parivahan.gov.in/vahan4dashboard/
+    """India holidays.
+
+    References:
+        * <https://www.india.gov.in/calendar>
+        * <https://www.india.gov.in/state-and-ut-holiday-calendar>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_India>
+        * <https://www.calendarlabs.com/holidays/india/2021>
+        * <https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
+        * <https://vahan.parivahan.gov.in/vahan4dashboard/>
     """
 
     country = "IN"
@@ -148,8 +150,10 @@ class India(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)

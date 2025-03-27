@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -15,15 +15,14 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    Burundian holidays
-    Note that holidays falling on a sunday maybe observed
-    on the following Monday.
-    This depends on formal announcements by the government,
-    which only happens close to the date of the holiday.
+    """Burundi holidays.
 
-    Primary sources:
-    https://www.officeholidays.com/countries/burundi
+    References:
+        * <https://www.officeholidays.com/countries/burundi>
+
+    Note that holidays falling on a sunday maybe observed on the following Monday.
+    This depends on formal announcements by the government, which only happens close
+    to the date of the holiday.
     """
 
     country = "BI"
@@ -32,8 +31,10 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)

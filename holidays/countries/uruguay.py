@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,15 +24,16 @@ from holidays.observed_holiday_base import (
 
 
 class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Uruguay holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
-    - [Law #6997] https://www.impo.com.uy/diariooficial/1919/10/25/2
-    - [Decree Law #9000] https://www.impo.com.uy/bases/decretos-ley/9000-1933
-    - [Decree Law #14977] https://www.impo.com.uy/bases/decretos-ley/14977-1979
-    - [Decree Law #15535] https://www.impo.com.uy/bases/decretos-ley/15535-1984
-    - [Law #16805] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=16805
-    - [Law #17414] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=17414
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay>
+        * [Law #6997](https://www.impo.com.uy/diariooficial/1919/10/25/2)
+        * [Decree Law #9000](https://www.impo.com.uy/bases/decretos-ley/9000-1933)
+        * [Decree Law #14977](https://www.impo.com.uy/bases/decretos-ley/14977-1979)
+        * [Decree Law #15535](https://www.impo.com.uy/bases/decretos-ley/15535-1984)
+        * [Law #16805](http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=16805)
+        * [Law #17414](http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=17414)
     """
 
     country = "UY"

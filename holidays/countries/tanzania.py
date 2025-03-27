@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,35 +27,34 @@ from holidays.holiday_base import HolidayBase
 class Tanzania(
     HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
+    """Tanzania holidays.
+
     References:
-    - https://old.tanzlii.org/tz/legislation/act/1962/48/  # 1962
-    - https://old.tanzlii.org/tz/legislation/act/1964/52/  # 1964
-    - https://old.tanzlii.org/tz/legislation/act/1966/39/  # 1966
-    - 1993: https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf
-    - 1994: https://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf
-    - 2002: http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Tanzania
-    - http://mytanzaniatimes.blogspot.com/2014/08/holiday-nane-nane-farmers-day-in.html
-    - https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836
-    - https://www.dw.com/en/samia-suluhu-hassan-who-is-tanzanias-new-president/a-56932264
+        * [1962](https://old.tanzlii.org/tz/legislation/act/1962/48/)
+        * [1964](https://old.tanzlii.org/tz/legislation/act/1964/52/)
+        * [1966](https://old.tanzlii.org/tz/legislation/act/1966/39/)
+        * [1993](https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf)
+        * [1994](https://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf)
+        * [2002](http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Tanzania>
+        * <http://mytanzaniatimes.blogspot.com/2014/08/holiday-nane-nane-farmers-day-in.html>
+        * <https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836>
+        * <https://www.dw.com/en/samia-suluhu-hassan-who-is-tanzanias-new-president/a-56932264>
 
     Checked With:
-    - 2023: https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf
-    - 2022: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf
-    - 2021: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf
-    - 2020: https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf
-    - 2018: https://issamichuzi.blogspot.com/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html
-    - from 2013 onwards: https://www.timeanddate.com/holidays/tanzania/
+        * [2023](https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf)
+        * [2022](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf)
+        * [2021](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf)
+        * [2020](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf)
+        * [2018](https://issamichuzi.blogspot.com/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html)
+        * [from 2013 onwards](https://www.timeanddate.com/holidays/tanzania/)
 
     Limitations:
-
-    - Only works from 1994 onwards due to the lack of sources for certain legislation:
-        Government Notices No. 79 of 1977
-        Government Notices No. 300 of 1985
-        Government Notices No. 296 of 1994
-
-    - Exact Islamic holidays dates are only available for 2013-2023; the rest are estimates.
+        * Only works from 1994 onwards due to the lack of sources for certain legislation:
+            * Government Notices No. 79 of 1977
+            * Government Notices No. 300 of 1985
+            * Government Notices No. 296 of 1994
+        * Exact Islamic holidays dates are only available for 2013-2023; the rest are estimates.
     """
 
     country = "TZ"
@@ -69,8 +68,10 @@ class Tanzania(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
