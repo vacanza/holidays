@@ -8,68 +8,31 @@ specific date is a holiday as fast and flexible as possible.
   <tr>
     <td>PyPI</td>
     <td>
-      <a href="https://pypi.org/project/holidays">
-        <img src="https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat" alt="PyPI downloads">
-      </a>
-      <a href="https://pypi.org/project/holidays">
-        <img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version">
-      </a>
-      <a href="https://github.com/vacanza/holidays/releases">
-        <img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date">
-      </a>
+      <a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/dm/holidays?color=41B5BE&style=flat" alt="PyPI downloads" style="margin-right: 5px;"></a><a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/v/holidays?color=41B5BE&label=version&style=flat" alt="PyPI version" style="margin-right: 5px;"></a><a href="https://github.com/vacanza/holidays/releases"><img src="https://img.shields.io/github/release-date/vacanza/holidays?color=41B5BE&style=flat" alt="PyPI release date"></a>
     </td>
   </tr>
   <tr>
     <td>CI/CD</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev">
-        <img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status">
-      </a>
-      <a href="https://holidays.readthedocs.io/en/latest/?badge=latest">
-        <img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status">
-      </a>
+      <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status" style="margin-right: 5px;"></a><a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
     </td>
   </tr>
   <tr>
     <td>Code</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/blob/dev/LICENSE">
-        <img src="https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat" alt="License">
-      </a>
-      <a href="https://pypi.org/project/holidays">
-        <img src="https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat" alt="Python supported versions">
-      </a>
-      <a href="https://github.com/astral-sh/ruff">
-        <img src="https://img.shields.io/badge/style-ruff-41B5BE?style=flat" alt="Code style">
-      </a>
-      <a href="https://app.codecov.io/gh/vacanza/holidays">
-        <img src="https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat" alt="Code coverage">
-      </a>
+      <a href="https://github.com/vacanza/holidays/blob/dev/LICENSE"><img src="https://img.shields.io/github/license/vacanza/holidays?color=41B5BE&style=flat" alt="License" style="margin-right: 5px;"></a><a href="https://pypi.org/project/holidays"><img src="https://img.shields.io/pypi/pyversions/holidays?label=python&color=41B5BE&style=flat" alt="Python supported versions" style="margin-right: 5px;"></a><a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/badge/style-ruff-41B5BE?style=flat" alt="Code style" style="margin-right: 5px;"></a><a href="https://app.codecov.io/gh/vacanza/holidays"><img src="https://img.shields.io/codecov/c/github/vacanza/holidays/dev?color=41B5BE&style=flat" alt="Code coverage"></a>
     </td>
   </tr>
   <tr>
     <td>GitHub</td>
     <td>
-      <a href="https://github.com/vacanza/holidays/stargazers">
-        <img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars">
-      </a>
-      <a href="https://github.com/vacanza/holidays/forks">
-        <img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks">
-      </a>
-      <a href="https://github.com/vacanza/holidays/graphs/contributors">
-        <img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors">
-      </a>
-      <a href="https://github.com/vacanza/holidays/commits/dev">
-        <img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit">
-      </a>
+      <a href="https://github.com/vacanza/holidays/stargazers"><img src="https://img.shields.io/github/stars/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub stars" style="margin-right: 5px;"></a><a href="https://github.com/vacanza/holidays/forks"><img src="https://img.shields.io/github/forks/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub forks" style="margin-right: 5px;"></a><a href="https://github.com/vacanza/holidays/graphs/contributors"><img src="https://img.shields.io/github/contributors/vacanza/holidays?color=41BE4A&style=flat" alt="GitHub contributors" style="margin-right: 5px;"></a><a href="https://github.com/vacanza/holidays/commits/dev"><img src="https://img.shields.io/github/last-commit/vacanza/holidays/dev?color=41BE4A&style=flat" alt="GitHub last commit"></a>
     </td>
   </tr>
   <tr>
     <td>Citation</td>
     <td>
-      <a href="https://doi.org/10.5281/zenodo.14884702">
-        <img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI">
-      </a>
+      <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
     </td>
   </tr>
 </table>
