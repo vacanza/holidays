@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -29,12 +29,13 @@ class ICalExporter:
         """
         Initialize iCalendar exporter
 
-        :param show_language:
-            Whether to include the ';LANGUAGE=' in SUMMARY or not.
-            This is False by default.
+        Args:
+            show_language:
+                Whether to include the ';LANGUAGE=' in SUMMARY or not.
+                This is False by default.
 
-        :param holidays_object:
-            Holidays object containing holiday data.
+            holidays_object:
+                `HolidaysBase` object containing holiday data.
         """
         self.holidays = holidays_object
         self.show_language = show_language
@@ -57,10 +58,11 @@ class ICalExporter:
         In the current implementation, all languages must comply with
         either ISO 639-1 or ISO 639-2 if specified (part of RFC 5646).
 
-        :param language:
-            The language code to validate.
+        Args:
+            language:
+                The language code to validate.
 
-        :return:
+        Returns:
             Validated language code
         """
         # Remove whitespace (if any), transforms HolidaysBase default to RFC 5646 compliant
@@ -86,10 +88,11 @@ class ICalExporter:
         it must be split into multiple lines, with each continuation line
         starting with a space.
 
-        :param line:
-            The content line to be folded.
+        Args:
+            line:
+                The content line to be folded.
 
-        :return:
+        Returns:
             The folded content line.
         """
         if line.isascii():
@@ -125,16 +128,17 @@ class ICalExporter:
         """
         Generate a single holiday event.
 
-        :param dt:
-            Holiday date.
+        Args:
+            dt:
+                Holiday date.
 
-        :param holiday_name:
-            Holiday name.
+            holiday_name:
+                Holiday name.
 
-        :param holiday_length:
-            Holiday length in days, default to 1.
+            holiday_length:
+                Holiday length in days, default to 1.
 
-        :return:
+        Returns:
             List of iCalendar format event lines.
         """
         # Escape special characters per RFC 5545.
@@ -166,10 +170,11 @@ class ICalExporter:
         """
         Generate iCalendar data.
 
-        :param return_bytes:
-            If True, return bytes instead of string.
+        Args:
+            return_bytes:
+                If True, return bytes instead of string.
 
-        :return:
+        Returns:
             The complete iCalendar data
             (string or UTF-8 bytes depending on return_bytes).
         """
@@ -213,8 +218,9 @@ class ICalExporter:
         While RFC 5545 does not specifically forbid filenames for .ics files, but it’s advisable
         to follow general filesystem conventions and avoid using problematic characters.
 
-        :param file_path:
-            Path to save the .ics file, including the filename (with extension).
+        Args:
+            file_path:
+                Path to save the .ics file, including the filename (with extension).
         """
         # Generate and write out content (always in bytes for .ics)
         content = self.generate(return_bytes=True)
