@@ -75,6 +75,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 5, 13),
             date(2022, 5, 3),
             date(2023, 4, 22),
+            date(2024, 4, 10),
         ):
             self.assertHolidayName(
                 name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
@@ -97,6 +98,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 7, 21),
             date(2022, 7, 10),
             date(2023, 6, 29),
+            date(2024, 6, 17),
         ):
             self.assertHolidayName(
                 name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
@@ -117,7 +119,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2020, 10, 30),
             date(2021, 10, 19),
             date(2022, 10, 9),
-            date(2023, 9, 27),
+            date(2023, 9, 29),
+            date(2024, 9, 17),
         ):
             self.assertHolidayName(name, self.no_estimated_holidays, dt)
 
@@ -139,6 +142,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 8, 18),
             date(2022, 8, 9),
             date(2023, 7, 28),
+            date(2024, 7, 16),
         ):
             self.assertHolidayName(name, self.no_estimated_holidays, dt, _timedelta(dt, -1))
 

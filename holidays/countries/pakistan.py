@@ -105,8 +105,8 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 29),
         2021: (AUG, 18),
         2022: (AUG, 9),
-        2023: (JUL, 29),
-        2024: (JUL, 17),
+        2023: (JUL, 28),
+        2024: (JUL, 16),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
