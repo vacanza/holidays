@@ -26,8 +26,7 @@ CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 class ICalExporter:
     def __init__(self, holidays_object: HolidayBase, show_language: bool = False) -> None:
-        """
-        Initialize iCalendar exporter
+        """Initialize iCalendar exporter.
 
         Args:
             show_language:
@@ -61,8 +60,7 @@ class ICalExporter:
             raise ValueError("LANGUAGE cannot be included because the language code is missing.")
 
     def _validate_language(self, language: str) -> str:
-        """
-        Validates the language code to ensure it complies with RFC 5646.
+        """Validate the language code to ensure it complies with RFC 5646.
 
         In the current implementation, all languages must comply with
         either ISO 639-1 or ISO 639-2 if specified (part of RFC 5646).
@@ -72,7 +70,7 @@ class ICalExporter:
                 The language code to validate.
 
         Returns:
-            Validated language code
+            Validated language code.
         """
         # Remove whitespace (if any), transforms HolidaysBase default to RFC 5646 compliant
         # i.e. `en_US` to `en-US`.
@@ -90,8 +88,7 @@ class ICalExporter:
         return language
 
     def _fold_line(self, line: str) -> str:
-        """
-        Fold long lines according to RFC 5545.
+        """Fold long lines according to RFC 5545.
 
         Content lines SHOULD NOT exceed 75 octets. If a line is too long,
         it must be split into multiple lines, with each continuation line
@@ -134,8 +131,7 @@ class ICalExporter:
         return line
 
     def _generate_event(self, dt: date, holiday_name: str, holiday_length: int = 1) -> list[str]:
-        """
-        Generate a single holiday event.
+        """Generate a single holiday event.
 
         Args:
             dt:
@@ -172,8 +168,7 @@ class ICalExporter:
         return lines
 
     def generate(self, return_bytes: bool = False) -> Union[str, bytes]:
-        """
-        Generate iCalendar data.
+        """Generate iCalendar data.
 
         Args:
             return_bytes:
@@ -217,8 +212,7 @@ class ICalExporter:
         return output.encode() if return_bytes else output
 
     def export_ics(self, file_path: str) -> None:
-        """
-        Export the calendar data to a .ics file.
+        """Export the calendar data to a .ics file.
 
         While RFC 5545 does not specifically forbid filenames for .ics files, but it’s advisable
         to follow general filesystem conventions and avoid using problematic characters.

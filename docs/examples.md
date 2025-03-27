@@ -394,12 +394,10 @@ True
 True
 ```
 
-!!! danger "Deprecated"
-    In the future
-
 ## Generate iCalendar content and export to `.ics`
 
-`ICalExporter` facilitates the creation and export of iCalendar files in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
+[ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
+in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
 ``` python
 >>> from holidays import country_holidays
@@ -431,10 +429,14 @@ True
 ```
 
 !!! tip "Tip"
-    Although the iCalendar specification supports a wide range of language formats as outlined in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646),
-    the Holidays object requires that the `language` attribute adhere to the [ISO 639-1 or ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes, such as `en` or `pap-AW`.
+    Although the iCalendar specification supports a wide range of language formats as outlined
+    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+    that the `language` attribute adhere to the [ISO 639-1 or
+    ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
+    such as `en` or `pap-AW`.
 
-   Additionally, if no `language` is specified for a holiday, but a `default_language` is set for the Holiday object, the default language will be used instead.
+    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
+    for the Holiday object, the default language will be used instead.
 
 ``` python
 >>> from holidays import country_holidays
@@ -464,4 +466,5 @@ To export to `.ics` format, use `export_ics`.
 >>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
 ```
 
-For advanced features and customization of the exported `.ics` output, consider using the [icalendar](https://github.com/collective/icalendar) package.
+For advanced features and customization of the exported `.ics` output, consider using
+the [icalendar](https://github.com/collective/icalendar) package.
