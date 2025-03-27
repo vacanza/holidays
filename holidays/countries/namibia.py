@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,11 +16,13 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://www.officeholidays.com/countries/namibia
-    https://www.timeanddate.com/holidays/namibia/
+    """Namibia holidays.
 
-    https://tinyurl.com/lacorg5835
+    References:
+        * <https://www.officeholidays.com/countries/namibia>
+        * <https://www.timeanddate.com/holidays/namibia/>
+        * <https://tinyurl.com/lacorg5835>
+
     As of 1991/2/1, whenever a public holiday falls on a Sunday, it rolls over to the monday,
     unless that monday is already a public holiday.
     Since the interval from 1991/1/1 to 1991/2/1 includes only New Year's Day, and it's a Tuesday,

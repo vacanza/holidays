@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,11 +17,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Nicaragua holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Nicaragua
-        - http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/FA251B3C54F5BAEF062571C40055736C?OpenDocument
-        - http://legislacion.asamblea.gob.ni/normaweb.nsf/($All)/3B28EC51ABE2787706258848005ADBB0?OpenDocument
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Nicaragua>
+        * <http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/FA251B3C54F5BAEF062571C40055736C?OpenDocument>
+        * <http://legislacion.asamblea.gob.ni/normaweb.nsf/($All)/3B28EC51ABE2787706258848005ADBB0?OpenDocument>
     """
 
     country = "NI"

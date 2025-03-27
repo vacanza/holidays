@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,11 +16,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
+    """Maldives holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives
-    - https://www.timeanddate.com/holidays/maldives/
-    - http://www.mma.gov.mv/#/about/bankholidays
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
+        * <https://www.timeanddate.com/holidays/maldives/>
+        * <http://www.mma.gov.mv/#/about/bankholidays>
     """
 
     country = "MV"
@@ -28,8 +29,10 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)

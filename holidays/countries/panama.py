@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,14 +19,15 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Panama holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Panama
-        - `Labor Code 1947 <https://docs.panama.justia.com/federales/leyes/67-de-1947-nov-26-1947.pdf>`_
-        - `Cabinet Decree #347 of 1969 <https://docs.panama.justia.com/federales/decretos-de-gabinete/decreto-de-gabinete-347-de-1969-nov-14-1969.pdf>`_
-        - `Labor Code 1971 <https://www.mitradel.gob.pa/wp-content/uploads/2016/12/c%C3%B3digo-detrabajo.pdf>`_
-        - `Law #4 of Jun 25, 1990 <https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/1990/1990/LEY/Administrador%20Legispan_21570_1990_7_2_ASAMBLEA%20LEGISLATIVA_4.pdf>`_
-        - `Law #55 of Nov 7, 2001 <https://docs.panama.justia.com/federales/leyes/55-de-2001-nov-14-2001.pdf>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Panama>
+        * [Labor Code 1947](https://docs.panama.justia.com/federales/leyes/67-de-1947-nov-26-1947.pdf)
+        * [Cabinet Decree #347 of 1969](https://docs.panama.justia.com/federales/decretos-de-gabinete/decreto-de-gabinete-347-de-1969-nov-14-1969.pdf)
+        * [Labor Code 1971](https://www.mitradel.gob.pa/wp-content/uploads/2016/12/c%C3%B3digo-detrabajo.pdf)
+        * [Law #4 of Jun 25, 1990](https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/1990/1990/LEY/Administrador%20Legispan_21570_1990_7_2_ASAMBLEA%20LEGISLATIVA_4.pdf)
+        * [Law #55 of Nov 7, 2001](https://docs.panama.justia.com/federales/leyes/55-de-2001-nov-14-2001.pdf)
     """
 
     country = "PA"

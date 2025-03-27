@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -33,11 +33,12 @@ class Kenya(
     IslamicHolidays,
     StaticHolidays,
 ):
-    """
+    """Kenya holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
-        - `Public Holidays Act Cap. 110 <https://new.kenyalaw.org/akn/ke/act/1912/21/eng@2024-04-26>`_
-        - `Constitution of Kenya (Art. 9) <https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03#chp_Two__sec_9>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Kenya>
+        * [Public Holidays Act Cap. 110](https://new.kenyalaw.org/akn/ke/act/1912/21/eng@2024-04-26)
+        * [Constitution of Kenya (Art. 9)](https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03#chp_Two__sec_9)
     """
 
     country = "KE"
@@ -55,8 +56,10 @@ class Kenya(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=KenyaHinduHolidays)
@@ -201,18 +204,19 @@ class KenyaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class KenyaStaticHolidays:
-    """
+    """Kenya special holidays.
+
     References:
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2015-11-24/129/eng@2015-11-24
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2017-08-01/107/eng@2017-08-01
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2017-10-19/156/eng@2017-10-19
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2017-10-24/159/eng@2017-10-24
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2017-11-23/174/eng@2017-11-23
-        - https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2022-07-29/147/eng@2022-07-29
-        - https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2022-09-08/182/eng@2022-09-08
-        - https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2023-11-06/238/eng@2023-11-06
-        - https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2024-05-08/61/eng@2024-05-08
-        - https://new.kenyalaw.org/akn/ke/officialGazette/2024-10-31/184/eng@2024-10-31
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2015-11-24/129/eng@2015-11-24>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-08-01/107/eng@2017-08-01>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-10-19/156/eng@2017-10-19>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-10-24/159/eng@2017-10-24>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2017-11-23/174/eng@2017-11-23>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2022-07-29/147/eng@2022-07-29>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2022-09-08/182/eng@2022-09-08>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2023-11-06/238/eng@2023-11-06>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2024-05-08/61/eng@2024-05-08>
+        * <https://new.kenyalaw.org/akn/ke/officialGazette/2024-10-31/184/eng@2024-10-31>
     """
 
     # Election Day.

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,19 +18,21 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 class PapuaNewGuinea(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
-    """
+    """Papua New Guinea holidays.
+
     References:
-      - http://www.paclii.org/pg/legis/consol_act/pha1953163.pdf # Public Holidays Act 1953
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Papua_New_Guinea
-      - https://pnghausbung.com/kings-birthday-holiday-to-be-observed-on-16th-june/
+        * [Public Holidays Act 1953](http://www.paclii.org/pg/legis/consol_act/pha1953163.pdf)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Papua_New_Guinea>
+        * <https://pnghausbung.com/kings-birthday-holiday-to-be-observed-on-16th-june/>
+
     Checked With:
-      - https://www.ipa.gov.pg/public/Holidays.aspx
-      - https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/
-      - https://www.scribd.com/document/465334129/PNG-2019-Gazetted-Public-Holidays-pdf # 2019
-      - https://publicholidays.asia/wp-content/uploads/2020/01/PNG_PublicHolidays_2020.png # 2020
-      - https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf # 2021
-      - https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf # 2022
-      - https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf # 2023
+        * <https://www.ipa.gov.pg/public/Holidays.aspx>
+        * <https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/>
+        * [2019](https://www.scribd.com/document/465334129/PNG-2019-Gazetted-Public-Holidays-pdf)
+        * [2020](https://publicholidays.asia/wp-content/uploads/2020/01/PNG_PublicHolidays_2020.png)
+        * [2021](https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf)
+        * [2022](https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf)
+        * [2023](https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf)
 
     Should a holiday listed, other than the Christmas Day, fall on a Sunday the next Monday
     shall, unless the Head of State, acting on advice, declares otherwise, be observed as a
@@ -130,18 +132,20 @@ class PNG(PapuaNewGuinea):
 
 
 class PapuaNewGuineaStaticHolidays:
-    """
-    Starting from 2021 afterwards all state funerals are given special public holidays, though only
-    some are day-off nationwide.
+    """Papua New Guinea special holidays.
 
     References:
-      - 2018 APEC Public Holiday*: https://www.rnz.co.nz/international/pacific-news/369989/papua-new-guinea-declares-apec-holiday
-      - 2021 Sir Mekere Morauta's Funeral: https://pnghausbung.com/friday-8th-declared-a-nation-wide-public-holiday-to-honour-late-sir-mekere/
-      - 2021 Sir Michael Somare's Day of Mourning: https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/
-      - 2022 QE2's Funeral: https://www.thenational.com.pg/column-1-553/
-      - 2023 Sir Rabbie Namaliu's Funeral: https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/
+        * [2018 APEC Public Holiday](https://www.rnz.co.nz/international/pacific-news/369989/papua-new-guinea-declares-apec-holiday)
+        * [2021 Sir Mekere Morauta's Funeral](https://pnghausbung.com/friday-8th-declared-a-nation-wide-public-holiday-to-honour-late-sir-mekere/)
+        * [2021 Sir Michael Somare's Day of Mourning](https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/)
+        * [2022 QE2's Funeral](https://www.thenational.com.pg/column-1-553/)
+        * [2023 Sir Rabbie Namaliu's Funeral](https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/)
 
-    * Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only: https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/
+    Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only:
+    <https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/>
+
+    Starting from 2021 afterwards all state funerals are given special public holidays, though only
+    some are day-off nationwide.
     """
 
     # National Day of Mourning for Sir Michael Somare.

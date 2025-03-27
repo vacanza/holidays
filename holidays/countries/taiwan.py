@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -45,27 +45,28 @@ CHILDRENS_DAY_RULE = ObservedRule({MON: +1, TUE: -1, WED: -1, THU: +1, FRI: -1, 
 
 
 class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays, StaticHolidays):
-    """
-    Commemorative Day and Day Implementation Method Amendments:
-        - `Ministry of Interior (87) Order No. 8706459 <https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年)>`_
-        - `Ministry of Interior (88) Order No. 8897074 <https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年)>`_
-        - `Ministry of Interior (89) Order No. 8972185 <https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年2月)>`_
-        - `Ministry of Interior (89) Order No. 8962562 <https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年12月)>`_
-        - `Ministry of Interior Order No. 0950045320 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20060309&lser=001>`_
-        - `Ministry of Interior Order No. 0960110433 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001>`_
-        - `Ministry of Interior Order No. 0960131407 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001>`_
-        - `Ministry of Interior Order No. 0960155673 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20071003&lser=001>`_
-        - `Ministry of Interior Order No. 0990212117 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20101102&lser=001>`_
-        - `Ministry of Interior Order No. 1010307327 and 1030128812 <https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20120925&lser=001>`_
-        - `Ministry of Interior Order No. 1030182404 <https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020033>`_
+    """Taiwan holidays.
 
-    Other References:
-        - https://zh.wikipedia.org/wiki/中華民國節日與歲時列表
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
+    References:
+        * <https://zh.wikipedia.org/wiki/中華民國節日與歲時列表>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan>
+
+    Commemorative Day and Day Implementation Method Amendments:
+        * [Ministry of Interior (87) Order No. 8706459](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年))
+        * [Ministry of Interior (88) Order No. 8897074](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年))
+        * [Ministry of Interior (89) Order No. 8972185](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年2月))
+        * [Ministry of Interior (89) Order No. 8962562](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年12月))
+        * [Ministry of Interior Order No. 0950045320](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20060309&lser=001)
+        * [Ministry of Interior Order No. 0960110433](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001)
+        * [Ministry of Interior Order No. 0960131407](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001)
+        * [Ministry of Interior Order No. 0960155673](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20071003&lser=001)
+        * [Ministry of Interior Order No. 0990212117](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20101102&lser=001)
+        * [Ministry of Interior Order No. 1010307327 and 1030128812](https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20120925&lser=001)
+        * [Ministry of Interior Order No. 1030182404](https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020033)
 
     Checked With:
-        - `DGPA Work Calendar (1998-2025; Chinese) <https://www.dgpa.gov.tw/informationlist?uid=30>`_
-        - `DGPA Work Calendar (2001-2025; English) <https://www.dgpa.gov.tw/en/informationlist?uid=353>`_
+        * [DGPA Work Calendar (1998-2025; Chinese)](https://www.dgpa.gov.tw/informationlist?uid=30)
+        * [DGPA Work Calendar (2001-2025; English)](https://www.dgpa.gov.tw/en/informationlist?uid=353)
     """
 
     country = "TW"
@@ -263,36 +264,37 @@ class TWN(Taiwan):
 
 
 class TaiwanStaticHolidays:
-    """
+    """Taiwan special holidays.
+
     DGPA, Executive Yuan Work Calendars:
-        - `1998 <https://www.dgpa.gov.tw/information?uid=30&pid=4979>`_
-        - `1999 <https://www.dgpa.gov.tw/information?uid=30&pid=4978>`_
-        - `2000 <https://www.dgpa.gov.tw/information?uid=30&pid=4977>`_
-        - `2001 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6199>`_
-        - `2002 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6198>`_
-        - `2003 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6197>`_
-        - `2004 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6196>`_
-        - `2005 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6195>`_
-        - `2006 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6192>`_
-        - `2007 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6194>`_
-        - `2008 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6191>`_
-        - `2009 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6190>`_
-        - `2010 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6189>`_
-        - `2011 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6188>`_
-        - `2012 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6187>`_
-        - `2013 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6186>`_
-        - `2014 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6183>`_
-        - `2015 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6182>`_
-        - `2016 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6180>`_
-        - `2017 <https://www.dgpa.gov.tw/en/information?uid=353&pid=6178>`_
-        - `2018 <https://www.dgpa.gov.tw/en/information?uid=353&pid=7730>`_
-        - `2019 <https://www.dgpa.gov.tw/en/information?uid=353&pid=8178>`_
-        - `2020 <https://www.dgpa.gov.tw/en/information?uid=353&pid=9724>`_
-        - `2021 <https://www.dgpa.gov.tw/en/information?uid=353&pid=10181>`_
-        - `2022 <https://www.dgpa.gov.tw/en/information?uid=353&pid=10659>`_
-        - `2023 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11016>`_
-        - `2024 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11402>`_
-        - `2025 <https://www.dgpa.gov.tw/en/information?uid=353&pid=11979>`_
+        * [1998](https://www.dgpa.gov.tw/information?uid=30&pid=4979)
+        * [1999](https://www.dgpa.gov.tw/information?uid=30&pid=4978)
+        * [2000](https://www.dgpa.gov.tw/information?uid=30&pid=4977)
+        * [2001](https://www.dgpa.gov.tw/en/information?uid=353&pid=6199)
+        * [2002](https://www.dgpa.gov.tw/en/information?uid=353&pid=6198)
+        * [2003](https://www.dgpa.gov.tw/en/information?uid=353&pid=6197)
+        * [2004](https://www.dgpa.gov.tw/en/information?uid=353&pid=6196)
+        * [2005](https://www.dgpa.gov.tw/en/information?uid=353&pid=6195)
+        * [2006](https://www.dgpa.gov.tw/en/information?uid=353&pid=6192)
+        * [2007](https://www.dgpa.gov.tw/en/information?uid=353&pid=6194)
+        * [2008](https://www.dgpa.gov.tw/en/information?uid=353&pid=6191)
+        * [2009](https://www.dgpa.gov.tw/en/information?uid=353&pid=6190)
+        * [2010](https://www.dgpa.gov.tw/en/information?uid=353&pid=6189)
+        * [2011](https://www.dgpa.gov.tw/en/information?uid=353&pid=6188)
+        * [2012](https://www.dgpa.gov.tw/en/information?uid=353&pid=6187)
+        * [2013](https://www.dgpa.gov.tw/en/information?uid=353&pid=6186)
+        * [2014](https://www.dgpa.gov.tw/en/information?uid=353&pid=6183)
+        * [2015](https://www.dgpa.gov.tw/en/information?uid=353&pid=6182)
+        * [2016](https://www.dgpa.gov.tw/en/information?uid=353&pid=6180)
+        * [2017](https://www.dgpa.gov.tw/en/information?uid=353&pid=6178)
+        * [2018](https://www.dgpa.gov.tw/en/information?uid=353&pid=7730)
+        * [2019](https://www.dgpa.gov.tw/en/information?uid=353&pid=8178)
+        * [2020](https://www.dgpa.gov.tw/en/information?uid=353&pid=9724)
+        * [2021](https://www.dgpa.gov.tw/en/information?uid=353&pid=10181)
+        * [2022](https://www.dgpa.gov.tw/en/information?uid=353&pid=10659)
+        * [2023](https://www.dgpa.gov.tw/en/information?uid=353&pid=11016)
+        * [2024](https://www.dgpa.gov.tw/en/information?uid=353&pid=11402)
+        * [2025](https://www.dgpa.gov.tw/en/information?uid=353&pid=11979)
     """
 
     # Date format (see strftime() Format Codes).

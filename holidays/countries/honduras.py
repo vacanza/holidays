@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,8 +17,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
-    # Artículo 339 del Código del Trabajo:
-    # https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm
+    """Honduras holidays.
+
+    References:
+        * [Art. 339 of Labor Code](https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm)
+        * [Decree 78-2015](https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf)
+    """
 
     country = "HN"
     default_language = "es"
@@ -51,7 +55,7 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday_sep_15(tr("Día de la Independencia"))
 
-        # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
+        # Decree 78-2015.
         if self._year <= 2014:
             # Morazan's Day.
             self._add_holiday_oct_3(tr("Día de Morazán"))
