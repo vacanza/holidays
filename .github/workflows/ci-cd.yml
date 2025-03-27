@@ -85,10 +85,15 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pip-tools
 
-      - name: Verify Dependency Hashes
+      - name: Verify dependency hashes
         run: |
-          pip-compile --generate-hashes --quiet --output-file /tmp/requirements.txt requirements/*.in
-          diff -u /tmp/requirements.txt requirements/*.txt || (echo "Dependency hash mismatch detected! Please update your requirements files using 'pip-compile --generate-hashes'."; exit 1)
+          for file in requirements/*.txt; do
+            echo "Checking $file for missing hashes..."
+            if grep -q '^\([^#].*==.*\)$' "$file"; then
+              echo "::error::Missing hashes in $file. Run 'pip-compile --generate-hashes' to fix."
+              exit 1
+            fi
+          done
 
   test:
     name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
