@@ -67,28 +67,28 @@ jobs:
         with:
           category: "/language:python"
 
-check-dependencies:
-  name: Check Dependency Hashes
-  runs-on: ubuntu-24.04
-  steps:
-    - name: Check out repository
-      uses: actions/checkout@v4
+  check-dependencies:
+    name: Check Dependency Hashes
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        check-latest: true
-        python-version: "3.13"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          check-latest: true
+          python-version: "3.13"
 
-    - name: Install pip-tools
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install pip-tools
+      - name: Install pip-tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pip-tools
 
-    - name: Verify Dependency Hashes
-      run: |
-        pip-compile --generate-hashes --quiet --output-file /tmp/requirements.txt requirements/*.in
-        diff -u /tmp/requirements.txt requirements/*.txt || (echo "Dependency hash mismatch detected! Please update your requirements files using 'pip-compile --generate-hashes'."; exit 1)
+      - name: Verify Dependency Hashes
+        run: |
+          pip-compile --generate-hashes --quiet --output-file /tmp/requirements.txt requirements/*.in
+          diff -u /tmp/requirements.txt requirements/*.txt || (echo "Dependency hash mismatch detected! Please update your requirements files using 'pip-compile --generate-hashes'."; exit 1)
 
   test:
     name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
