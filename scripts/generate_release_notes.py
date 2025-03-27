@@ -28,8 +28,7 @@ import holidays  # noqa: E402
 
 BRANCH_NAME = "dev"
 HEADER_TEMPLATE = """
-Version {version}
-============
+# Version {version}
 
 Released {month} {day}, {year}
 """
@@ -38,8 +37,7 @@ REPOSITORY_NAME = "vacanza/holidays"
 
 
 class ReleaseNotesGenerator:
-    """
-    Generates release notes based on local git commits and GitHub PRs metadata.
+    """Generates release notes based on local git commits and GitHub PRs metadata.
 
     Usage example: scripts/generate_release_notes.py
     """
