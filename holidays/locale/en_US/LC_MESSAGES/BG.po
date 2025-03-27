@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -57,8 +57,8 @@ msgstr "Saint George's Day (Day of the Bulgarian Army)"
 
 #. Bulgarian Education and Culture and Slavonic Literature Day.
 msgid ""
-"Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
-"култура и на славянската книжовност"
+"Ден на светите братя Кирил и Методий, на българската азбука, просвета и култура и на славянската "
+"книжовност"
 msgstr "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"
 
 #. Unification Day.

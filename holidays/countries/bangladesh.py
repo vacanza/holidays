@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,10 +16,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Bangladesh(HolidayBase, InternationalHolidays):
-    """
+    """Bangladesh holidays.
+
     References:
-        - https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
+        * <https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh>
     """
 
     country = "BD"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,12 +19,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Slovenia holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
-        - https://sl.wikipedia.org/wiki/Dr%C5%BEavni_prazniki_v_Sloveniji
-        - https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-1091/zakon-o-praznikih-in-dela-prostih-dnevih-v-republiki-sloveniji
-        - https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia>
+        * <https://sl.wikipedia.org/wiki/Dr%C5%BEavni_prazniki_v_Sloveniji>
+        * <https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-1091/zakon-o-praznikih-in-dela-prostih-dnevih-v-republiki-sloveniji>
+        * <https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/>
     """
 
     country = "SI"

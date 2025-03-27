@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,15 +17,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Congo holidays.
+
     References:
-      - Loi N° 2-94:
-        - http://mokili.free.fr/jours_feries.php
-      - Loi N° l8-20l0:
-        - https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF
+        * [Loi N° 2-94](http://mokili.free.fr/jours_feries.php)
+        * [Loi N° 18-2010](https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF)
 
     Cross-Checked With:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_the_Congo
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_the_Congo>
     """
 
     country = "CG"

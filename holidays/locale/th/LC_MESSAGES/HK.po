@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -181,15 +181,11 @@ msgstr "วันครบรอบการปลดปล่อยฮ่อง
 
 #. Wedding of Prince Charles and Diana.
 msgid "英國王儲查理斯王子與戴安娜婚禮"
-msgstr ""
-"พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ "
-"เจ้าชายแห่งเวลส์"
+msgstr "พระราชพิธีอภิเษกสมรสระหว่างไดอาน่า สเปนเซอร์และเจ้าฟ้าชายชาร์ลส์ เจ้าชายแห่งเวลส์"
 
 #. Second day of Queen Elizabeth II and her husband's visit to Hong Kong.
 msgid "英女王伊利沙伯二世伉儷訪港的第二天"
-msgstr ""
-"วันที่สองของการเสด็จเยือนฮ่องกงของ่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2 "
-"และพระราชสวามี"
+msgstr "วันที่สองของการเสด็จเยือนฮ่องกงของ่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2 และพระราชสวามี"
 
 #. 70th Anniversary of the Victory of the Chinese People's War of Resistance
 #. against Japanese

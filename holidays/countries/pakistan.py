@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,13 +17,17 @@ from holidays.holiday_base import HolidayBase
 
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
+    """Pakistan holidays."""
+
     country = "PK"
     start_year = 1948
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
@@ -101,6 +105,8 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 29),
         2021: (AUG, 18),
         2022: (AUG, 9),
+        2023: (JUL, 28),
+        2024: (JUL, 16),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -124,6 +130,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 21),
         2022: (JUL, 10),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -170,4 +177,6 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 30),
         2021: (OCT, 19),
         2022: (OCT, 9),
+        2023: (SEP, 29),
+        2024: (SEP, 17),
     }

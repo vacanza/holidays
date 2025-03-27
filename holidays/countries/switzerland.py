@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,11 +19,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO
 
 
 class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Switzerland holidays.
+
     References:
-        - https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf
-        - https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland
+        * <https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
+        * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
     """
 
     country = "CH"

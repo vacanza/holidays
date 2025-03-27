@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -114,8 +114,7 @@ msgstr "Loron Mundial ba Labarik"
 
 #. Day of the Armed Forces for the National Liberation of Timor-Leste
 #. (FALINTIL).
-msgid ""
-"Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
+msgid "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
 msgstr "Loron Forsa Armada Libertasaun Nasionál Timor-Leste (FALINTIL) nian"
 
 #. World Human Rights Day.

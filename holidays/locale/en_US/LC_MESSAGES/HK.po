@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -192,8 +192,8 @@ msgstr "Second day of Queen Elizabeth II and her husband's visit to Hong Kong"
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭勝利70周年紀念日"
 msgstr ""
-"70th Anniversary of the Victory of the Chinese People's War of Resistance "
-"against Japanese Aggression and the World Anti-Fascist War"
+"70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese "
+"Aggression and the World Anti-Fascist War"
 
 #. Sino-Japanese War Victory Day.
 msgid "抗日戰爭勝利紀念日"

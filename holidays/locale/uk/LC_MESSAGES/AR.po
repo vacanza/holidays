@@ -4,19 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Argentina holidays Ukrainian translation.
+# Argentina holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2024-01-15 18:59+0200\n"
+"PO-Revision-Date: 2025-03-19 13:59+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -25,55 +25,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: es\n"
 
-#. Bridge Public Holiday.
-msgid "Feriado con fines turísticos"
-msgstr "Додатковий вихідний"
-
-#. Bicentenary of the creation and first oath of the national flag.
-msgid "Bicentenario de la creación y primera jura de la bandera nacional"
-msgstr "200-річчя створення та першої присяги державному прапору"
-
-#. Bicentenary of the Battle of Tucuman.
-msgid "Bicentenario de la Batalla de Tucumán"
-msgstr "200-річчя битви при Тукумані"
-
-#. Bicentenary of the inaugural session of the National Constituent Assembly
-#. of the year 1813.
-msgid ""
-"Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
-"del año 1813"
-msgstr ""
-"200-річчя інавгураційної сесії Національних установчих зборів 1813 року"
-
-#. Bicentenary of the Battle of Salta.
-msgid "Bicentenario de la Batalla de Salta"
-msgstr "200-річчя битви при Сальті"
-
-#. National Census Day 2022.
-msgid "Censo nacional 2022"
-msgstr "День національного перепису 2022"
+#. %s (observed).
+#, c-format
+msgid "%s (observado)"
+msgstr "%s (вихідний)"
 
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#. Carnival Day.
-msgid "Día de Carnaval"
-msgstr "Карнавал"
+#. Epiphany.
+msgid "Día de Reyes"
+msgstr "Богоявлення"
 
-#. Memory's National Day for the Truth and Justice.
+#. Carnival Monday.
+msgid "Lunes de Carnaval"
+msgstr "Карнавальний понеділок"
+
+#. Carnival Tuesday.
+msgid "Martes de Carnaval"
+msgstr "Карнавальний вівторок"
+
+#. National Day of Remembrance for Truth and Justice.
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
-msgstr "День памʼяті заради правди та правосуддя"
+msgstr "Національний день памʼяті заради правди та правосуддя"
 
-#. War Veterans Day.
+#. War Veteran's Day.
 msgid "Día del Veterano de Guerra"
 msgstr "День ветеранів війни"
 
-#. Veterans Day and the Fallen in the Malvinas War.
+#. Veteran's Day and the Fallen in the Malvinas War.
 msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
 msgstr "День ветеранів та загиблих на Мальвінській війні"
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Великий четвер"
 
 #. Good Friday.
 msgid "Viernes Santo"
@@ -87,14 +77,19 @@ msgstr "День праці"
 msgid "Día de la Revolución de Mayo"
 msgstr "День Травневої революції"
 
-#. Day of Argentine Sovereignty over the Malvinas, Sandwich and South Atlantic
-#. Islands.
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Свято Тіла і Крові Христових"
+
+#. Day of Affirmation of Argentine Rights over the Malvinas, Islands and
+#. Antarctic Sector.
 msgid ""
-"Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
-"Atlántico Sur"
-msgstr ""
-"День суверенітету Аргентини на Мальвінських, Сендвічевих і "
-"Південноатлантичних островах"
+"Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico"
+msgstr "День утвердження прав Аргентини на Мальвінські острови, Aнтарктичний сектор та острови"
+
+#. Pass to the Immortality of General Don Martín Miguel de Güemes.
+msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
+msgstr "День памʼяті генерала Мартіна Мігеля де Гуемеса"
 
 #. Pass to the Immortality of General Don Manuel Belgrano.
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
@@ -104,21 +99,13 @@ msgstr "День памʼяті генерала Мануеля Бельгран
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
-#. Immaculate Conception.
-msgid "Inmaculada Concepción de María"
-msgstr "Непорочне зачаття Діви Марії"
-
-#. Christmas Day.
-msgid "Navidad"
-msgstr "Різдво Христове"
-
-#. Pass to the Immortality of General Don Martin Miguel de Guemes.
-msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
-msgstr "День памʼяті генерала Мартіна Мігеля де Гуемеса"
-
-#. Pass to the Immortality of General Don Jose de San Martin.
-msgid "Paso a la Inmortalidad del General Don José de San Martin"
+#. Pass to the Immortality of General Don José de San Martín.
+msgid "Paso a la Inmortalidad del General Don José de San Martín"
 msgstr "День памʼяті генерала Хосе де Сан-Мартіна"
+
+#. Assumption Day.
+msgid "Día de la Asunción"
+msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. Respect for Cultural Diversity Day.
 msgid "Día del Respeto a la Diversidad Cultural"
@@ -128,11 +115,258 @@ msgstr "День поваги до культурного різноманітт
 msgid "Día de la Raza"
 msgstr "День Колумба"
 
+#. All Saints' Day.
+msgid "Todos Los Santos"
+msgstr "День усіх святих"
+
 #. National Sovereignty Day.
 msgid "Día de la Soberanía Nacional"
 msgstr "День національного суверенітету"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observado)"
-msgstr "%s (вихідний)"
+#. Immaculate Conception.
+msgid "Inmaculada Concepción de María"
+msgstr "Непорочне зачаття Діви Марії"
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr "Різдво Христове"
+
+#. Anniversary of the Battle of Salta.
+msgid "Aniversario de la Batalla de Salta"
+msgstr "Річниця битви при Сальті"
+
+#. Day of Memory of General Don Martín Miguel de Güemes.
+msgid ""
+"Dia de la memoria del Guerrero de la Independencia y Gobernador de la Provincia de Salta General "
+"Don Martín Miguel de Güemes"
+msgstr "День памʼяті генерала Мартіна Мігеля де Гуемеса"
+
+#. Feasts of the Lord and the Virgin of Miracle.
+msgid "Festividades del Señor y de la Virgen del Milagro"
+msgstr "Свято Господа та Богородиці Чуда"
+
+#. Exaltation of the Holy Cross Day.
+msgid "Día de la Exaltación de la Santa Cruz"
+msgstr "День Воздвиження Хреста Господнього"
+
+#. Saint Louis the King of France's Day.
+msgid "Día de San Luis Rey de Francia"
+msgstr "День Святого Людовика"
+
+#. Provincial Day of Remembrance for Truth and Justice.
+msgid "Día Provincial de la Memoria por la Verdad y la Justicia"
+msgstr "Провінційний день памʼяті заради правди та правосуддя"
+
+#. Commemoration of the Battle of Caseros.
+msgid "Conmemoración de la Batalla de Caseros"
+msgstr "День битви під Касеросом"
+
+#. State Worker's Day.
+msgid "Día del Trabajador Estatal"
+msgstr "День державного службовця"
+
+#. Saint Michael the Archangel's Day.
+msgid "San Miguel Arcángel"
+msgstr "День Святого Архангела Михаїла"
+
+#. Day of the Death of Juan Facundo Quiroga.
+msgid "Día del fallecimiento de Juan Facundo Quiroga"
+msgstr "День смерті Хуана Факундо Кіроги"
+
+#. Provincial Autonomy Day.
+msgid "Día de la Autonomía Provincial"
+msgstr "День провінційної автономії"
+
+#. Day of Remembrance for Truth and Justice.
+msgid "Día de la Memoria por la Verdad y la Justicia"
+msgstr "День памʼяті заради правди та правосуддя"
+
+#. Malvinas Memorial Day.
+msgid "Día de los Caídos en Malvinas"
+msgstr "День пам'яті на Мальвінах"
+
+#. La Rioja Foundation Day.
+msgid "Día de la fundación de La Rioja"
+msgstr "День заснування Ла-Ріохи"
+
+#. Anniversary of the Death of Enrique Angelelli.
+msgid "Día del Aniversario del Fallecimiento de Monseñor Enrique Angelelli"
+msgstr "День смерті Енріке Анхелельї"
+
+#. Anniversary of the Death of Ángel Vicente Peñaloza.
+msgid "Día del Aniversario del Fallecimiento de Ángel Vicente Peñaloza"
+msgstr "День смерті Анхеля Вісенте Пеньялоса"
+
+#. Tinkunaco Festival.
+msgid "Día del Tinkunaco Riojano"
+msgstr "Свято Тінкунако"
+
+#. Teacher's Day.
+msgid "Día del Maestro"
+msgstr "День учителя"
+
+#. Birthday of Mamerto Esquiú.
+msgid "Natalicio de Fray Mamerto Esquiú"
+msgstr "День народження Мамерто Ескуї"
+
+#. Catamarca Autonomy Day.
+msgid "Autonomía de Catamarca"
+msgstr "День автономії Катамарки"
+
+#. Miracle Day.
+msgid "Día del Milagro"
+msgstr "День дива"
+
+#. Saint James' Day.
+msgid "Día del Apóstol Santiago"
+msgstr "День Святого Якова"
+
+#. Anniversary of the Battle of Tucumán.
+msgid "Aniversario de la Batalla de Tucumán"
+msgstr "Річниця битви при Тукумані"
+
+#. Plebiscite 1902 Trevelin.
+msgid "Plebiscito 1902 Trevelin"
+msgstr "Річниця плебісциту 1902 року"
+
+#. Anniversary of the arrival of the first Welsh settlers.
+msgid "Aniversario del arribo de los primeros colonizadores galeses"
+msgstr "Річниця прибуття перших валлійських поселенців"
+
+#. National Petroleum Day.
+msgid "Día del Petróleo Nacional"
+msgstr "Національний день нафти"
+
+#. Tehuelches and Mapuches declare loyalty to the Argentine flag.
+msgid "Tehuelches y Mapuches declaran lealtad a la bandera Argentina"
+msgstr "День присяги теуелче та мапуче на вірність аргентинському прапору"
+
+#. Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic
+#. Islands.
+msgid "Día de la Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+msgstr "День провінції Вогняна Земля, Антарктиди і Південноатлантичних островів"
+
+#. Selk'Nam Genocide Day.
+msgid "Día del Genocidio Selk'Nam"
+msgstr "День геноциду народу селькнам"
+
+#. Anniversary of the Death of General Manuel Belgrano.
+msgid ""
+"Día del Aniversario del Fallecimiento del General Manuel José Joaquín del Corazón de Jesús "
+"Belgrano"
+msgstr "День смерті генерала Мануеля Бельграно"
+
+#. Anniversary of the Death of General José Francisco de San Martín.
+msgid "Día del Aniversario del Fallecimiento del General José Francisco de San Martín"
+msgstr "День смерті генерала Хосе де Сан-Мартіна"
+
+#. Jujuy Exodus Day.
+msgid "Día del Éxodo Jujeño"
+msgstr "День Виходу Хухуя"
+
+#. Jujuy Political Autonomy Day.
+msgid "Autonomía Política de Jujuy"
+msgstr "День політичної автономії Хухуя"
+
+#. Pachamama Day.
+msgid "Día de la Pachamama"
+msgstr "День Пачамами"
+
+#. Day of the Virgin of the Rosary of Río Blanco and Paypaya.
+msgid "Día de la Virgen del Rosario de Río Blanco y Paypaya"
+msgstr "День Богородиці Вервиці Ріо-Бланко і Пайпаї"
+
+#. Great Day of Jujuy.
+msgid "Día Grande de Jujuy"
+msgstr "Великий День Хухуя"
+
+#. Saint John Bosco's Day.
+msgid "Homenaje al Patrono de la Provincia San Juan Bosco"
+msgstr "День Святого Івана Боско"
+
+#. Anniversary of the Death of Néstor Carlos Kirchner.
+msgid ""
+"Día del Aniversario del Fallecimiento del ex Presidente de la Nación Doctor Néstor Carlos "
+"Kirchner"
+msgstr "День смерті Нестора Карлоса Кіршнера"
+
+#. Commemoration of the workers shot in the Patagonian Strikes.
+msgid "Conmemoración a los obreros fusilados en las Huelgas Patagónicas"
+msgstr "Вшанування пам'яті робітників, розстріляних під час Патагонських страйків"
+
+#. Day of Action for Tolerance and Respect among Peoples.
+msgid "Día de acción por la tolerancia y el respeto entre los pueblos"
+msgstr "День дій на підтримку толерантності та поваги між народами"
+
+#. Bankers' Day.
+msgid "Día del Bancario"
+msgstr "День банківських працівників"
+
+#. State Worker's Day.
+msgid "Día del Trabajador del Estado"
+msgstr "День державного службовця"
+
+#. Rosh Hashanah.
+msgid "Año Nuevo Judío (Rosh Hashana)"
+msgstr "Рош га-Шана"
+
+#. Yom Kippur.
+msgid "Día del Perdón (Iom Kipur)"
+msgstr "Йом Кіпур"
+
+#. Pesach.
+msgid "Pascua Judía (Pésaj)"
+msgstr "Песах"
+
+#. Islamic New Year.
+msgid "Año Nuevo Musulmán (Hégira)"
+msgstr "Ісламський Новий рік"
+
+#. Eid al-Fitr.
+msgid "Día posterior a la culminación del ayuno (Id Al-Fitr)"
+msgstr "Рамазан-байрам"
+
+#. Eid al-Adha.
+msgid "Día de la Fiesta del Sacrificio (Id Al-Adha)"
+msgstr "Курбан-байрам"
+
+#. Bridge Public Holiday.
+msgid "Feriado con fines turísticos"
+msgstr "Додатковий вихідний"
+
+#. Bicentenary of the May Revolution.
+msgid "Bicentenario de la Revolución de Mayo"
+msgstr "200-річчя Травневої революції"
+
+#. Bicentenary of the creation and first oath of the national flag.
+msgid "Bicentenario de la creación y primera jura de la bandera nacional"
+msgstr "200-річчя створення та першої присяги державному прапору"
+
+#. Bicentenary of the Battle of Tucuman.
+msgid "Bicentenario de la Batalla de Tucumán"
+msgstr "200-річчя битви при Тукумані"
+
+#. Bicentenary of the inaugural session of the National Constituent Assembly
+#. of the year 1813.
+msgid "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
+msgstr "200-річчя інавгураційної сесії Національних установчих зборів 1813 року"
+
+#. Bicentenary of the Battle of Salta.
+msgid "Bicentenario de la Batalla de Salta"
+msgstr "200-річчя битви при Сальті"
+
+#. National Census Day 2010.
+msgid "Censo Nacional 2010"
+msgstr "День національного перепису 2010"
+
+#. National Census Day 2022.
+msgid "Censo Nacional 2022"
+msgstr "День національного перепису 2022"
+
+#. FIFA World Cup 2022 Victory Day.
+msgid "Día de la Victoria de la Copa Mundial de la FIFA 2022"
+msgstr "День перемоги збірної Аргентини на Чемпіонаті світу з футболу 2022"
+
+#. Bank Holiday.
+msgid "Asueto bancario"
+msgstr "Банківський вихідний"

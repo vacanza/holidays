@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -28,18 +28,19 @@ from holidays.observed_holiday_base import (
 
 
 class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
+    """Canada holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Canada
-        - https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml
-        - https://www.alberta.ca/alberta-general-holidays
-        - https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays
-        - http://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php
-        - https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html
-        - https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays
-        - https://www.gov.nu.ca/en/print/pdf/node/52266
-        - https://www.officeholidays.com/countries/canada/
-        - https://www.timeanddate.com/holidays/canada/
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Canada>
+        * <https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml>
+        * <https://www.alberta.ca/alberta-general-holidays>
+        * <https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays>
+        * <http://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
+        * <https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
+        * <https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays>
+        * <https://www.gov.nu.ca/en/print/pdf/node/52266>
+        * <https://www.officeholidays.com/countries/canada/>
+        * <https://www.timeanddate.com/holidays/canada/>
     """
 
     country = "CA"

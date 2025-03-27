@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,10 +18,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-    https://information.lv/
-    https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam
+    """Latvia holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Latvia>
+        * <https://information.lv/>
+        * <https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
     """
 
     country = "LV"

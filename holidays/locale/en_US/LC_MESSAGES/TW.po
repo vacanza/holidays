@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.43\n"
+"Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2024-02-07 19:37+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-03-13 11:48+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. %s (observed).
 #, c-format
@@ -52,9 +52,9 @@ msgstr "Peace Memorial Day"
 msgid "兒童節"
 msgstr "Children's Day"
 
-#. Tomb Sweeping Day.
-msgid "清明節"
-msgstr "Tomb Sweeping Day"
+#. Tomb-Sweeping Day.
+msgid "民族掃墓節"
+msgstr "Tomb-Sweeping Day"
 
 #. Dragon Boat Festival.
 msgid "端午節"
@@ -65,7 +65,7 @@ msgid "中秋節"
 msgstr "Mid-Autumn Festival"
 
 #. National Day.
-msgid "中華民國國慶日"
+msgid "國慶日"
 msgstr "National Day"
 
 #. Date format (see strftime() Format Codes).
@@ -76,3 +76,83 @@ msgstr "%m/%d/%Y"
 #, c-format
 msgid "休息日（%s日起取代）"
 msgstr "Day off (substituted from %s)"
+
+#. Confucius' Birthday.
+msgid "孔子誕辰紀念日"
+msgstr "Confucius' Birthday"
+
+#. Taiwan Retrocession Day.
+msgid "臺灣光復節"
+msgstr "Taiwan Retrocession Day"
+
+#. Late President Chiang Kai-shek's Birthday.
+msgid "先總統　蔣公誕辰紀念日"
+msgstr "Late President Chiang Kai-shek's Birthday"
+
+#. Dr. Sun Yat-sen's Birthday.
+msgid "國父誕辰紀念日"
+msgstr "Dr. Sun Yat-sen's Birthday"
+
+#. Constitution Day.
+msgid "行憲紀念日"
+msgstr "Constitution Day"
+
+#. Revolutionary Martyrs Memorial Day.
+msgid "革命先烈紀念日"
+msgstr "Revolutionary Martyrs Memorial Day"
+
+#. Women's Day.
+msgid "婦女節"
+msgstr "Women's Day"
+
+#. Labor Day.
+msgid "勞動節"
+msgstr "Labor Day"
+
+#. Armed Forces Day.
+msgid "軍人節"
+msgstr "Armed Forces Day"
+
+#. Dr. Sun Yat-sen's Memorial Day.
+msgid "國父逝世紀念日"
+msgstr "Dr. Sun Yat-sen's Memorial Day"
+
+#. Arbor Day.
+msgid "植樹節"
+msgstr "Arbor Day"
+
+#. Youth Day.
+msgid "青年節"
+msgstr "Youth Day"
+
+#. Teacher's Day.
+msgid "教師節"
+msgstr "Teacher's Day"
+
+#. Chinese Cultural Renaissance Day.
+msgid "中華文化復興節"
+msgstr "Chinese Cultural Renaissance Day"
+
+#. Taoism Day.
+msgid "道教節"
+msgstr "Taoism Day"
+
+#. The Buddha's Birthday.
+msgid "佛陀誕辰紀念日"
+msgstr "The Buddha's Birthday"
+
+#. Anti-Aggression Day.
+msgid "反侵略日"
+msgstr "Anti-Aggression Day"
+
+#. Commemoration Day of the Lifting of Martial Law.
+msgid "解嚴紀念日"
+msgstr "Commemoration Day of the Lifting of Martial Law"
+
+#. Taiwan United Nations Day.
+msgid "臺灣聯合國日"
+msgstr "Taiwan United Nations Day"
+
+#. Late President Chiang Kai-shek's Memorial Day.
+msgid "先總統蔣公逝世紀念日"
+msgstr "Late President Chiang Kai-shek's Memorial Day"
