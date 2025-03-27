@@ -31,8 +31,14 @@ class ICalExporter:
 
         Args:
             show_language:
-                Whether to include the ';LANGUAGE=' in SUMMARY or not.
-                This is False by default.
+                Determines whether to include the `;LANGUAGE=` attribute in the
+                `SUMMARY` field. Defaults to `False`.
+
+                If the `HolidaysBase` object has a `language` attribute, it will
+                be used. Otherwise, `default_language` will be used if available.
+
+                If neither attribute exists and `show_language=True`, an
+                exception will be raised.
 
             holidays_object:
                 `HolidaysBase` object containing holiday data.
