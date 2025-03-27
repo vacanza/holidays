@@ -51,6 +51,9 @@ class ICalExporter:
             else None
         )
 
+        if self.show_language and self.language is None:
+            raise ValueError("LANGUAGE cannot be included because the language code is missing.")
+
     def _validate_language(self, language: str) -> str:
         """
         Validates the language code to ensure it complies with RFC 5646.
@@ -148,10 +151,6 @@ class ICalExporter:
             holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
         )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
-        if self.show_language and self.language is None:
-            raise ValueError(
-                "LANGUAGE cannot be included in SUMMARY as language code isn't provided"
-            )
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
         lines = [

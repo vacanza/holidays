@@ -122,12 +122,11 @@ class TestIcalExporter(TestCase):
                 )
 
     def _assert_language_not_provided(self, holidays):
-        exporter = ICalExporter(holidays, show_language=True)
         with self.assertRaises(ValueError) as context:
-            exporter.generate()
+            ICalExporter(holidays, show_language=True)
         self.assertEqual(
             str(context.exception),
-            "LANGUAGE cannot be included in SUMMARY as language code isn't provided",
+            "LANGUAGE cannot be included because the language code is missing.",
         )
 
     def test_basic_calendar_structure(self):
