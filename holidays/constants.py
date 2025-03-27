@@ -39,6 +39,7 @@ HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 
 # Supported holiday categories.
 ARMED_FORCES = "armed_forces"
+ARMENIAN = "armenian"
 BANK = "bank"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
