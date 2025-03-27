@@ -23,8 +23,6 @@ GoTo :Help
     RD /S /Q .mypy_cache
     RD /S /Q .pytest_cache
     RD /S /Q dist
-    RD /S /Q docs\build
-    RD /S /Q docs\source\_autosummary
     Exit /B
 
 :Coverage
@@ -32,7 +30,7 @@ GoTo :Help
     Exit /B
 
 :Doc
-    sphinx-build -E -T -W -b html -D language=en -j auto -q docs\source docs\build
+    mkdocs build
     Exit /B
 
 :Help

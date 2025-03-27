@@ -40,5 +40,5 @@ Your PR description goes here.
   Thanks again for your contribution!
 -->
 
-[contributing-guidelines]: https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.rst
+[contributing-guidelines]: https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md
 [docs]: https://github.com/vacanza/holidays/tree/dev/docs/source
