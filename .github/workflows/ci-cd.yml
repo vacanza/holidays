@@ -13,10 +13,10 @@ on:
       - main
       - v1
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
   workflow_run:
-    workflows: ['Update pre-commit hooks']
+    workflows: ["Update pre-commit hooks"]
     branches:
       - update-pre-commit-hooks
     types:
@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           check-latest: true
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
@@ -65,13 +65,37 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: '/language:python'
+          category: "/language:python"
+
+check-dependencies:
+  name: Check Dependency Hashes
+  runs-on: ubuntu-24.04
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        check-latest: true
+        python-version: "3.13"
+
+    - name: Install pip-tools
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install pip-tools
+
+    - name: Verify Dependency Hashes
+      run: |
+        pip-compile --generate-hashes --quiet --output-file /tmp/requirements.txt requirements/*.in
+        diff -u /tmp/requirements.txt requirements/*.txt || (echo "Dependency hash mismatch detected! Please update your requirements files using 'pip-compile --generate-hashes'."; exit 1)
 
   test:
     name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     needs:
       - pre-commit
+      - check-dependencies
     strategy:
       matrix:
         os:
@@ -79,11 +103,11 @@ jobs:
           - ubuntu-latest
           - windows-latest
         python-version:
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
-          - '3.13'
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -116,7 +140,9 @@ jobs:
 
   build:
     name: Build distribution
-    needs: test
+    needs:
+      - test
+      - check-dependencies
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
@@ -129,7 +155,7 @@ jobs:
           cache-dependency-path: |
             requirements/build.txt
           check-latest: true
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
@@ -185,7 +211,7 @@ jobs:
             requirements/runtime.txt
             requirements/tests.txt
           check-latest: true
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Get package artifacts
         uses: actions/download-artifact@v4
@@ -217,7 +243,7 @@ jobs:
         with:
           cache: pip
           cache-dependency-path: requirements/docs.txt
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Install dependencies
         run: |
