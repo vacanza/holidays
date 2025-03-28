@@ -80,7 +80,7 @@ generated template to all locale folders you're going to translate this country 
 here). Also copy the template to a default country language folder (e.g., for Argentina
 holidays/locale/es/LC_MESSAGES) and leave it as is. After copying the .po files, open them with
 your favorite .po file editor and translate accordingly. Don't forget to fill in the translation
-file headers. Finally, update the list of supported translations for the country in the README.rst.
+file headers. Finally, update the list of supported translations for the country in the README.md.
 
 If the translation already exists you'll just need to update it with the new template entries
 (your .po file editor may help you to do that with no hassle).
