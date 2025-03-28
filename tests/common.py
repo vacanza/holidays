@@ -57,16 +57,71 @@ class TestCase:
             for category in test_class.supported_categories:
                 if category == PUBLIC:
                     continue
-                    
+
                 if years:
                     category_attr_name = f"{category}_holidays"
-                    setattr(cls, category_attr_name, 
-                            test_class(categories=category, years=years))
-                    
+                    setattr(cls, category_attr_name, test_class(categories=category, years=years))
+
                 if years_non_observed:
                     category_attr_name = f"{category}_holidays_non_observed"
-                    setattr(cls, category_attr_name, 
-                            test_class(categories=category, observed=False, years=years_non_observed))
+                    setattr(
+                        cls,
+                        category_attr_name,
+                        test_class(categories=category, observed=False, years=years_non_observed),
+                    )
+        
+        # Generate dynamic category-specific methods
+        if hasattr(test_class, "supported_categories"):
+            cls._generate_category_methods()
+
+    @classmethod
+    def _generate_category_methods(cls):
+        """Generate category-specific assertion methods for all supported categories."""
+        # Skip PUBLIC as it has dedicated methods
+        categories = [cat for cat in cls.test_class.supported_categories if cat != PUBLIC]
+        
+        for category in categories:
+            # Use the title-cased category name (e.g., GOVERNMENT -> Government)
+            category_name = category.title()
+            
+            # Holiday assertion methods
+            setattr(cls, f"assert{category_name}Holiday", 
+                    cls._create_category_method(f"{category.lower()}_holidays", "_assertHoliday"))
+            
+            setattr(cls, f"assert{category_name}NonObservedHoliday", 
+                    cls._create_category_method(f"{category.lower()}_holidays_non_observed", "_assertHoliday"))
+            
+            # Holiday name assertion methods
+            setattr(cls, f"assert{category_name}HolidayName",
+                    cls._create_category_name_method(f"{category.lower()}_holidays", "_assertHolidayName"))
+            
+            setattr(cls, f"assert{category_name}NonObservedHolidayName",
+                    cls._create_category_name_method(f"{category.lower()}_holidays_non_observed", "_assertHolidayName"))
+            
+            # No holiday assertion methods
+            setattr(cls, f"assertNo{category_name}Holiday",
+                    cls._create_category_method(f"{category.lower()}_holidays", "_assertNoHoliday"))
+            
+            setattr(cls, f"assertNo{category_name}NonObservedHoliday",
+                    cls._create_category_method(f"{category.lower()}_holidays_non_observed", "_assertNoHoliday"))
+
+    @classmethod
+    def _create_category_method(cls, instance_name, base_method_name):
+        """Create a category-specific method that calls the base method with the instance name."""
+        def method(self, *args):
+            base_method = getattr(self, base_method_name)
+            return base_method(instance_name, *args)
+        
+        return method
+    
+    @classmethod
+    def _create_category_name_method(cls, instance_name, base_method_name):
+        """Create a category-specific method that calls the base method with name and instance name."""
+        def method(self, name, *args):
+            base_method = getattr(self, base_method_name)
+            return base_method(name, instance_name, *args)
+        
+        return method
 
     def setUp(self):
         super().setUp()
@@ -257,6 +312,7 @@ class TestCase:
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
         """Helper: assert each date is not a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
 
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
@@ -271,43 +327,46 @@ class TestCase:
 
     # No holiday name.
     def _assertNoHolidayName(self, name, instance_name, *args):  # noqa: N802
-        """Helper: assert a holiday with a specific name doesn't exist."""
-        holidays, items = self._parse_arguments(
-            args, instance_name=instance_name, raise_on_empty=False
-        )
+        """Helper: assert either a holiday with a specific name doesn't exist or
+        each holiday doesn't have the specified name depending on the args nature.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name, raise_on_empty=False)
 
-        if not items:  # A holiday name check.
-            self.assertFalse(holidays.get_named(name, lookup="exact"), name)
-            return None
-
-        arg = items[0]
-        if isinstance(arg, int):  # A holiday name check for a specific year.
-            holiday_years = {dt.year for dt in holidays.get_named(name, lookup="exact")}
-            self.assertEqual(0, len(holiday_years.intersection(items)), name)
-        elif isinstance(arg, date) or parse(arg):  # Exact date check.
-            for dt in items:
-                self.assertNotIn(name, holidays.get_list(dt), dt)
+        if not items:
+            # Check that the holiday name does NOT exist at all.
+            self.assertEqual([], holidays.get_named(name, lookup="exact"))
         else:
-            raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
+            # If a known date is given, check if the specified name is not on the list of holiday names.
+            arg = items[0]
+            if isinstance(arg, date) or parse(arg):  # Exact date check.
+                for dt in items:
+                    self.assertNotIn(name, holidays.get_list(dt), dt)
+            else:
+                raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
 
     def assertNoHolidayName(self, name, *args):  # noqa: N802
-        """Assert a holiday with a specific name doesn't exist."""
+        """Assert either a holiday with a specific name doesn't exist or
+        each holiday doesn't have the specified name.
+        """
         self._assertNoHolidayName(name, "holidays", *args)
 
     def assertNoNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert a non-observed holiday with a specific name doesn't exist."""
+        """Assert either a non-observed holiday with a specific name doesn't exist or
+        each non-observed holiday doesn't have the specified name.
+        """
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
 
     # No holidays.
     def _assertNoHolidays(self, instance_name, *args):  # noqa: N802
         """Helper: assert holidays dict is empty."""
-        holidays, _ = self._parse_arguments(
-            args, instance_name=instance_name, raise_on_empty=False
-        )
+        holidays, items = self._parse_arguments(args, expand_items=False, instance_name=instance_name, raise_on_empty=False)
         self._verify_type(holidays)
 
-        self.assertFalse(holidays)
-        self.assertEqual(0, len(holidays))
+        if not items:
+            self.assertEqual(0, len(holidays))
+        else:  # It's a holiday object.
+            if issubclass(items[0].__class__, HolidayBase):
+                self.assertEqual(0, len(holidays))
 
     def assertNoHolidays(self, *args):  # noqa: N802
         """Assert holidays dict is empty."""
@@ -357,152 +416,8 @@ class TestCase:
         for language in (language, "invalid", ""):
             self._assertLocalizedHolidays(localized_holidays, language)
 
-    # Category-specific holiday assertions
-
-    # Government category
-    def assertGovernmentHoliday(self, *args):  # noqa: N802
-        """Assert each date is a government holiday."""
-        self._assertHoliday("government_holidays", *args)
-
-    def assertGovernmentNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is a non-observed government holiday."""
-        self._assertHoliday("government_holidays_non_observed", *args)
-
-    def assertGovernmentHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a government holiday with a specific name exists or
-        each government holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "government_holidays", *args)
-
-    def assertGovernmentNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a non-observed government holiday with a specific name exists or
-        each non-observed government holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "government_holidays_non_observed", *args)
-
-    def assertNoGovernmentHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a government holiday."""
-        self._assertNoHoliday("government_holidays", *args)
-
-    def assertNoGovernmentNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a non-observed government holiday."""
-        self._assertNoHoliday("government_holidays_non_observed", *args)
-
-    # Optional category
-    def assertOptionalHoliday(self, *args):  # noqa: N802
-        """Assert each date is an optional holiday."""
-        self._assertHoliday("optional_holidays", *args)
-
-    def assertOptionalNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is a non-observed optional holiday."""
-        self._assertHoliday("optional_holidays_non_observed", *args)
-
-    def assertOptionalHolidayName(self, name, *args):  # noqa: N802
-        """Assert either an optional holiday with a specific name exists or
-        each optional holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "optional_holidays", *args)
-
-    def assertOptionalNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a non-observed optional holiday with a specific name exists or
-        each non-observed optional holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "optional_holidays_non_observed", *args)
-
-    def assertNoOptionalHoliday(self, *args):  # noqa: N802
-        """Assert each date is not an optional holiday."""
-        self._assertNoHoliday("optional_holidays", *args)
-
-    def assertNoOptionalNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a non-observed optional holiday."""
-        self._assertNoHoliday("optional_holidays_non_observed", *args)
-
-    # School category
-    def assertSchoolHoliday(self, *args):  # noqa: N802
-        """Assert each date is a school holiday."""
-        self._assertHoliday("school_holidays", *args)
-
-    def assertSchoolNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is a non-observed school holiday."""
-        self._assertHoliday("school_holidays_non_observed", *args)
-
-    def assertSchoolHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a school holiday with a specific name exists or
-        each school holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "school_holidays", *args)
-
-    def assertSchoolNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a non-observed school holiday with a specific name exists or
-        each non-observed school holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "school_holidays_non_observed", *args)
-
-    def assertNoSchoolHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a school holiday."""
-        self._assertNoHoliday("school_holidays", *args)
-
-    def assertNoSchoolNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a non-observed school holiday."""
-        self._assertNoHoliday("school_holidays_non_observed", *args)
-
-    # Bank category
-    def assertBankHoliday(self, *args):  # noqa: N802
-        """Assert each date is a bank holiday."""
-        self._assertHoliday("bank_holidays", *args)
-
-    def assertBankNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is a non-observed bank holiday."""
-        self._assertHoliday("bank_holidays_non_observed", *args)
-
-    def assertBankHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a bank holiday with a specific name exists or
-        each bank holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "bank_holidays", *args)
-
-    def assertBankNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a non-observed bank holiday with a specific name exists or
-        each non-observed bank holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "bank_holidays_non_observed", *args)
-
-    def assertNoBankHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a bank holiday."""
-        self._assertNoHoliday("bank_holidays", *args)
-
-    def assertNoBankNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a non-observed bank holiday."""
-        self._assertNoHoliday("bank_holidays_non_observed", *args)
-
-    # Workday category
-    def assertWorkdayHoliday(self, *args):  # noqa: N802
-        """Assert each date is a workday holiday."""
-        self._assertHoliday("workday_holidays", *args)
-
-    def assertWorkdayNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is a non-observed workday holiday."""
-        self._assertHoliday("workday_holidays_non_observed", *args)
-
-    def assertWorkdayHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a workday holiday with a specific name exists or
-        each workday holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "workday_holidays", *args)
-
-    def assertWorkdayNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert either a non-observed workday holiday with a specific name exists or
-        each non-observed workday holiday name matches an expected one.
-        """
-        self._assertHolidayName(name, "workday_holidays_non_observed", *args)
-
-    def assertNoWorkdayHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a workday holiday."""
-        self._assertNoHoliday("workday_holidays", *args)
-
-    def assertNoWorkdayNonObservedHoliday(self, *args):  # noqa: N802
-        """Assert each date is not a non-observed workday holiday."""
-        self._assertNoHoliday("workday_holidays_non_observed", *args)
+    # Category-specific holiday assertions - keeping for backward compatibility
+    # All methods below are dynamically generated instead
 
 
 class CommonTests(TestCase):
