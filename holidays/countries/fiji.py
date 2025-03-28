@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,7 +21,6 @@ from holidays.groups import (
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
     ALL_TO_NEAREST_MON,
 )
@@ -70,13 +69,17 @@ class Fiji(
     # Act No. 13 of 2015
     start_year = 2016
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        :param islamic_show_estimated:
+            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=FijiHinduHolidays, show_estimated=True)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=FijiIslamicHolidays, show_estimated=True)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
-        super().__init__(*args, **kwargs)
+        IslamicHolidays.__init__(
+            self, cls=FijiIslamicHolidays, show_estimated=islamic_show_estimated
+        )
 
     def _populate_public_holidays(self):
         # New Year's Day.
