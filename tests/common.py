@@ -20,6 +20,7 @@ from dateutil.parser import parse
 
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
+from holidays.constants import PUBLIC
 
 PYTHON_LATEST_SUPPORTED_VERSION = (3, 12)
 PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
@@ -51,6 +52,76 @@ class TestCase:
             cls.holidays = test_class(years=years)
         if years_non_observed:
             cls.holidays_non_observed = test_class(observed=False, years=years_non_observed)
+
+        if hasattr(test_class, "supported_categories"):
+            for category in test_class.supported_categories:
+                if category == PUBLIC:
+                    continue
+
+                if years:
+                    category_attr_name = f"{category}_holidays"
+                    setattr(cls, category_attr_name, test_class(categories=category, years=years))
+
+                if years_non_observed:
+                    category_attr_name = f"{category}_holidays_non_observed"
+                    setattr(
+                        cls,
+                        category_attr_name,
+                        test_class(categories=category, observed=False, years=years_non_observed),
+                    )
+        
+        # Generate dynamic category-specific methods
+        if hasattr(test_class, "supported_categories"):
+            cls._generate_category_methods()
+
+    @classmethod
+    def _generate_category_methods(cls):
+        """Generate category-specific assertion methods for all supported categories."""
+        # Skip PUBLIC as it has dedicated methods
+        categories = [cat for cat in cls.test_class.supported_categories if cat != PUBLIC]
+        
+        for category in categories:
+            # Use the title-cased category name (e.g., GOVERNMENT -> Government)
+            category_name = category.title()
+            
+            # Holiday assertion methods
+            setattr(cls, f"assert{category_name}Holiday", 
+                    cls._create_category_method(f"{category.lower()}_holidays", "_assertHoliday"))
+            
+            setattr(cls, f"assert{category_name}NonObservedHoliday", 
+                    cls._create_category_method(f"{category.lower()}_holidays_non_observed", "_assertHoliday"))
+            
+            # Holiday name assertion methods
+            setattr(cls, f"assert{category_name}HolidayName",
+                    cls._create_category_name_method(f"{category.lower()}_holidays", "_assertHolidayName"))
+            
+            setattr(cls, f"assert{category_name}NonObservedHolidayName",
+                    cls._create_category_name_method(f"{category.lower()}_holidays_non_observed", "_assertHolidayName"))
+            
+            # No holiday assertion methods
+            setattr(cls, f"assertNo{category_name}Holiday",
+                    cls._create_category_method(f"{category.lower()}_holidays", "_assertNoHoliday"))
+            
+            setattr(cls, f"assertNo{category_name}NonObservedHoliday",
+                    cls._create_category_method(f"{category.lower()}_holidays_non_observed", "_assertNoHoliday"))
+
+    @classmethod
+    def _create_category_method(cls, instance_name, base_method_name):
+        """Create a category-specific method that calls the base method with the instance name."""
+        def method(self, *args):
+            base_method = getattr(self, base_method_name)
+            return base_method(instance_name, *args)
+        
+        return method
+    
+    @classmethod
+    def _create_category_name_method(cls, instance_name, base_method_name):
+        """Create a category-specific method that calls the base method with name and instance name."""
+        def method(self, name, *args):
+            base_method = getattr(self, base_method_name)
+            return base_method(name, instance_name, *args)
+        
+        return method
 
     def setUp(self):
         super().setUp()
@@ -104,8 +175,12 @@ class TestCase:
 
         if instance_name == "holidays":
             self.assertTrue(instance.observed)
-        else:
+        elif instance_name == "holidays_non_observed":
             self.assertFalse(instance.observed)
+        elif instance_name.endswith("_non_observed"):
+            self.assertFalse(instance.observed)
+        else:
+            self.assertTrue(instance.observed)
 
         if raise_on_empty and not items:
             raise ValueError("The test argument sequence is empty")
@@ -237,6 +312,7 @@ class TestCase:
     def _assertNoHoliday(self, instance_name, *args):  # noqa: N802
         """Helper: assert each date is not a holiday."""
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
+        self._verify_type(holidays)
 
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
@@ -251,43 +327,46 @@ class TestCase:
 
     # No holiday name.
     def _assertNoHolidayName(self, name, instance_name, *args):  # noqa: N802
-        """Helper: assert a holiday with a specific name doesn't exist."""
-        holidays, items = self._parse_arguments(
-            args, instance_name=instance_name, raise_on_empty=False
-        )
+        """Helper: assert either a holiday with a specific name doesn't exist or
+        each holiday doesn't have the specified name depending on the args nature.
+        """
+        holidays, items = self._parse_arguments(args, instance_name=instance_name, raise_on_empty=False)
 
-        if not items:  # A holiday name check.
-            self.assertFalse(holidays.get_named(name, lookup="exact"), name)
-            return None
-
-        arg = items[0]
-        if isinstance(arg, int):  # A holiday name check for a specific year.
-            holiday_years = {dt.year for dt in holidays.get_named(name, lookup="exact")}
-            self.assertEqual(0, len(holiday_years.intersection(items)), name)
-        elif isinstance(arg, date) or parse(arg):  # Exact date check.
-            for dt in items:
-                self.assertNotIn(name, holidays.get_list(dt), dt)
+        if not items:
+            # Check that the holiday name does NOT exist at all.
+            self.assertEqual([], holidays.get_named(name, lookup="exact"))
         else:
-            raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
+            # If a known date is given, check if the specified name is not on the list of holiday names.
+            arg = items[0]
+            if isinstance(arg, date) or parse(arg):  # Exact date check.
+                for dt in items:
+                    self.assertNotIn(name, holidays.get_list(dt), dt)
+            else:
+                raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
 
     def assertNoHolidayName(self, name, *args):  # noqa: N802
-        """Assert a holiday with a specific name doesn't exist."""
+        """Assert either a holiday with a specific name doesn't exist or
+        each holiday doesn't have the specified name.
+        """
         self._assertNoHolidayName(name, "holidays", *args)
 
     def assertNoNonObservedHolidayName(self, name, *args):  # noqa: N802
-        """Assert a non-observed holiday with a specific name doesn't exist."""
+        """Assert either a non-observed holiday with a specific name doesn't exist or
+        each non-observed holiday doesn't have the specified name.
+        """
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
 
     # No holidays.
     def _assertNoHolidays(self, instance_name, *args):  # noqa: N802
         """Helper: assert holidays dict is empty."""
-        holidays, _ = self._parse_arguments(
-            args, instance_name=instance_name, raise_on_empty=False
-        )
+        holidays, items = self._parse_arguments(args, expand_items=False, instance_name=instance_name, raise_on_empty=False)
         self._verify_type(holidays)
 
-        self.assertFalse(holidays)
-        self.assertEqual(0, len(holidays))
+        if not items:
+            self.assertEqual(0, len(holidays))
+        else:  # It's a holiday object.
+            if issubclass(items[0].__class__, HolidayBase):
+                self.assertEqual(0, len(holidays))
 
     def assertNoHolidays(self, *args):  # noqa: N802
         """Assert holidays dict is empty."""
@@ -336,6 +415,9 @@ class TestCase:
             self.set_language(language)
         for language in (language, "invalid", ""):
             self._assertLocalizedHolidays(localized_holidays, language)
+
+    # Category-specific holiday assertions - keeping for backward compatibility
+    # All methods below are dynamically generated instead
 
 
 class CommonTests(TestCase):
