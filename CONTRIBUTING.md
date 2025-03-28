@@ -80,7 +80,7 @@ generated template to all locale folders you're going to translate this country 
 here). Also copy the template to a default country language folder (e.g., for Argentina
 holidays/locale/es/LC_MESSAGES) and leave it as is. After copying the .po files, open them with
 your favorite .po file editor and translate accordingly. Don't forget to fill in the translation
-file headers. Finally, update the list of supported translations for the country in the README.rst.
+file headers. Finally, update the list of supported translations for the country in the README.md.
 
 If the translation already exists you'll just need to update it with the new template entries
 (your .po file editor may help you to do that with no hassle).
@@ -102,6 +102,24 @@ The project provides MkDocs documentation under `./docs`, published online on
 
 Great documentation is absolutely key in any project. If you are not familiar with Markdown for
 MkDocs, you can read a primer [here](https://www.mkdocs.org/user-guide/writing-your-docs/).
+
+## GitHub Actions
+
+All new GitHub actions must use commit SHAs instead of version tags. When updating an action, contributors should explicitly use the commit SHA from the latest release.
+
+### Example
+
+Allowed:
+
+```yaml
+uses: actions/checkout@8fdb40e56baf9c5dc24e3ab5bc2a91db65f39f21
+```
+
+Not allowed:
+
+```yaml
+uses: actions/checkout@v4
+```
 
 ## Contributors
 
