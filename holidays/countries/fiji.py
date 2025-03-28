@@ -35,27 +35,27 @@ class Fiji(
     IslamicHolidays,
 ):
     """
+    Fiji holidays.
     References:
-    - https://laws.gov.fj/Acts/DisplayAct/2910#
-    - https://laws.gov.fj/LawsAsMade
-    - https://www.fiji.gov.fj/About-Fiji/Public-Holidays
-    - https://www.timeanddate.com/holidays/fiji/
-    - https://en.wikipedia.org/wiki/List_of_festivals_in_Fiji
-    - https://www.rnz.co.nz/international/pacific-news/249514/new-public-holiday-for-fiji
-    - https://www.fijitimes.com.fj/constitution-day-public-holiday-removed-cabinet/
-    - https://fijivillage.com/news/National-Sports-Day-celebrated-5krs29/
-    - https://fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/
-
+        * <https://laws.gov.fj/Acts/DisplayAct/2910#>
+        * <https://laws.gov.fj/LawsAsMade>
+        * <https://www.fiji.gov.fj/About-Fiji/Public-Holidays>
+        * <https://www.timeanddate.com/holidays/fiji/>
+        * <https://en.wikipedia.org/wiki/List_of_festivals_in_Fiji>
+        * <https://www.rnz.co.nz/international/pacific-news/249514/new-public-holiday-for-fiji>
+        * <https://www.fijitimes.com.fj/constitution-day-public-holiday-removed-cabinet/>
+        * <https://fijivillage.com/news/National-Sports-Day-celebrated-5krs29/>
+        * <https://fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/>
     Official Fiji Public Holidays Calendar:
-    - `2016 <https://www.fiji.gov.fj/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx>`_
-    - `2017 <https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS>`_
-    - `2018 <https://web.archive.org/web/20180727205733/http://www.employment.gov.fj/images/Laws/Press%20Release%20-%20Government%20Approves%202018%20Public%20Holidays.pdf>`_
-    - `2019 <https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
-    - `2020 <https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
-    - `2021-2022 <https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
-    - `2023 <https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
-    -` 2024 <https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
-    - `2025 <https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>`_
+         * [2016](https://www.fiji.gov.fj/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx)
+         * [2017](https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS)
+         * [2018](https://web.archive.org/web/20180727205733/http://www.employment.gov.fj/images/Laws/Press%20Release%20-%20Government%20Approves%202018%20Public%20Holidays.pdf)
+         * [2019](https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2020](https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2021-2022](https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2023](https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2024](https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2025](https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
 
     """
 
@@ -72,8 +72,10 @@ class Fiji(
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=FijiHinduHolidays, show_estimated=True)
