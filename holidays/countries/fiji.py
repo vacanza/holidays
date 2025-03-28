@@ -21,6 +21,7 @@ from holidays.groups import (
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
     ALL_TO_NEAREST_MON,
 )
@@ -80,6 +81,8 @@ class Fiji(
         IslamicHolidays.__init__(
             self, cls=FijiIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.
