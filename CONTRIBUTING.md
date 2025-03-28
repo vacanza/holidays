@@ -105,15 +105,19 @@ MkDocs, you can read a primer [here](https://www.mkdocs.org/user-guide/writing-y
 
 ## GitHub Actions
 
-All new GitHub Actions must use commit SHAs instead of version tags. When updating an action, contributors should explicitly use the commit SHA from the latest release.
+All new GitHub actions must use commit SHAs instead of version tags. When updating an action, contributors should explicitly use the commit SHA from the latest release.
 
 ### Example
 
-``` shell
-# Allowed:
-uses: actions/checkout@8fdb40e56baf9c5dc24e3ab5bc2a91db65f39f21
+Allowed:
 
-# Not allowed:
+```yaml
+uses: actions/checkout@8fdb40e56baf9c5dc24e3ab5bc2a91db65f39f21
+```
+
+Not allowed:
+
+```yaml
 uses: actions/checkout@v4
 ```
 
