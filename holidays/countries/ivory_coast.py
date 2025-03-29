@@ -11,14 +11,12 @@
 #  License: MIT (see LICENSE file)
 from gettext import gettext as tr
 
-from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
-    """
-    Ivory Coast holidays.
+    """Ivory Coast holidays.
 
     References:
         * <https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/details?p3_isn=44374>
@@ -28,10 +26,9 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     """
 
     country = "CI"
-    estimated_label = tr("%s (estimated)")
-    observed_label = tr("%s (observed)")
-    observed_estimated_label = tr("%s (observed, estimated)")
-    supported_categories = (PUBLIC,)
+    estimated_label = "%s (estimated)"
+    observed_label = "%s (observed)"
+    observed_estimated_label = "%s (observed, estimated)"
     # Ivory Coast gained independence in 1960.
     start_year = 1960
 
@@ -45,14 +42,15 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         ChristianHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # Secular Holidays
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("New Year's Day")), rule=SUN_TO_NEXT_MON)
+        self._add_new_years_day(tr("New Year's Day"))
         # Labor Day.
-        self._add_observed(self._add_labor_day(tr("Labor Day")), rule=SUN_TO_NEXT_MON)
+        self._add_observed(self._add_labor_day(tr("Labor Day")))
         # Independence Day
         self._add_holiday_aug_7(tr("Independence Day"))
         if self._year >= 1996:
@@ -69,9 +67,9 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         self._add_whit_monday(tr("Pentecost Monday"))
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assumption Day"))
-        # All Saints' Day - November 1.
+        # All Saints' Day.
         self._add_all_saints_day(tr("All Saints' Day"))
-        # Christmas Day - December 25.
+        # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
         # Islamic Holidays
