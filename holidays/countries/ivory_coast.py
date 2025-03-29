@@ -5,19 +5,10 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           dr-prodigy <dr.prodigy.github.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-
 from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
@@ -69,7 +60,7 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
             # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
             self._add_holiday_nov_15(tr("National Peace Day"))
 
-        # Christan Holidays
+        # Christian Holidays
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
         # Ascension Day.
