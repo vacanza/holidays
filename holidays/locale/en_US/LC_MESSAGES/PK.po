@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
-"PO-Revision-Date: 2025-03-29 00:07+0500\n"
+"PO-Revision-Date: 2025-03-30 00:34+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -52,15 +52,15 @@ msgstr "Quaid-e-Azam Day"
 
 #. Eid-ul-Fitr
 msgid "Eid-ul-Fitr"
-msgstr "Eid-ul-Fitr"
+msgstr "Eid al-Fitr"
 
 #. Eid-ul-Adha
 msgid "Eid-ul-Adha"
-msgstr "Eid-ul-Adha"
+msgstr "Eid al-Adha"
 
 #. Eid Milad-un-Nabi
 msgid "Eid Milad-un-Nabi"
-msgstr "Eid Milad-un-Nabi"
+msgstr "Prophet's Birthday"
 
 #. Ashura
 msgid "Ashura"
