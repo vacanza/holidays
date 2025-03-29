@@ -236,14 +236,13 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Maha Ashtami.
 
-        Maha Navami is the eighth day of Navratri, dedicated to Goddess Durga.
+        Maha Ashtami is the eighth day of Navratri, dedicated to Goddess Durga.
         It is observed in Ashvin (September-October).
         https://en.wikipedia.org/wiki/Navaratri
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-1
         )
-
     def _add_maha_navami(self, name) -> Optional[date]:
         """
         Add Maha Navami.
