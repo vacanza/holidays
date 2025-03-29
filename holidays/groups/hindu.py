@@ -224,14 +224,13 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Maha Saptami.
 
-        Maha Navami is the seventh day of Navratri, dedicated to Goddess Durga.
+        Maha Saptami is the seventh day of Navratri, dedicated to Goddess Durga.
         It is observed in Ashvin (September-October).
         https://en.wikipedia.org/wiki/Navaratri
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-2
         )
-
     def _add_maha_ashtami(self, name) -> Optional[date]:
         """
         Add Maha Ashtami.
