@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Pakistan holidays ur_PK localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
@@ -34,7 +35,7 @@ msgstr "یوم یکجہتی کشمیر"
 msgid "Pakistan Day"
 msgstr "یوم پاکستان"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "یوم مزدور"
 
@@ -50,19 +51,19 @@ msgstr "یوم اقبال"
 msgid "Quaid-e-Azam Day"
 msgstr "یوم قائداعظم"
 
-#. Eid-ul-Fitr
+#. Eid al-Fitr.
 msgid "Eid-ul-Fitr"
 msgstr "عید الفطر"
 
-#. Eid-ul-Adha
+#. Eid al-Adha.
 msgid "Eid-ul-Adha"
 msgstr "عید الاضحی"
 
-#. Eid Milad-un-Nabi
+#. Prophet's Birthday.
 msgid "Eid Milad-un-Nabi"
 msgstr "عید میلاد النبی"
 
-#. Ashura
+#. Ashura.
 msgid "Ashura"
 msgstr "عاشورہ"
 

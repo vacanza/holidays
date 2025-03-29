@@ -51,7 +51,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_mar_23(tr("Pakistan Day"))
 
         if self._year >= 1972:
-            # Labour Day.
+            # Labor Day.
             self._add_labor_day(tr("Labour Day"))
 
         # Independence Day.
@@ -64,22 +64,22 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Quaid-e-Azam Day.
         self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
-        # Eid-ul-Fitr
+        # Eid al-Fitr.
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        # Eid-ul-Adha
+        # Eid al-Adha.
         name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
 
-        # Eid Milad-un-Nabi
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Eid Milad-un-Nabi"))
 
-        # Ashura
+        # Ashura.
         name = tr("Ashura")
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
