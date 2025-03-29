@@ -35,6 +35,7 @@ class Fiji(
     IslamicHolidays,
 ):
     """Fiji holidays.
+
     References:
         * <https://laws.gov.fj/Acts/DisplayAct/2910#>
         * <https://laws.gov.fj/LawsAsMade>
