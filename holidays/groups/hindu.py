@@ -316,6 +316,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Add Papankusha Duwadashi.
 
         Papankusha Duwadashi is a Hindu festival which occurs next day of Papankusha Ekadashi.
+        https://en.wikipedia.org/wiki/Ekadashi
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
