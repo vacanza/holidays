@@ -95,6 +95,7 @@ COUNTRIES: RegistryDict = {
     "isle_of_man": ("IsleOfMan", "IM", "IMN"),
     "israel": ("Israel", "IL", "ISR"),
     "italy": ("Italy", "IT", "ITA"),
+    "ivory_coast": ("IvoryCoast", "CI", "CIV"),
     "jamaica": ("Jamaica", "JM", "JAM"),
     "japan": ("Japan", "JP", "JPN"),
     "jersey": ("Jersey", "JE", "JEY"),
