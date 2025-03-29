@@ -138,7 +138,7 @@ class ObservedHolidayBase(HolidayBase):
 
     def _add_observed(
         self,
-        dt: Optional[DateArg],
+        dt: Optional[DateArg] = None,
         name: Optional[str] = None,
         rule: Optional[ObservedRule] = None,
         show_observed_label: bool = True,
