@@ -10,13 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  Wasif-Shahzad <wasif_shahzad_1@outlook.com>, 2025.
 #  Pakistan holidays ur_PK localization.
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-03-29 00:09+0500\n"
-"PO-Revision-Date: 2025-03-29 00:10+0500\n"
+"PO-Revision-Date: 2025-03-29 23:00+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -27,12 +26,15 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_PK\n"
 
+#. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
 msgstr "یوم یکجہتی کشمیر"
 
+#. Pakistan Day.
 msgid "Pakistan Day"
 msgstr "یوم پاکستان"
 
+#. Labour Day.
 msgid "Labour Day"
 msgstr "یوم مزدور"
 
@@ -40,6 +42,7 @@ msgstr "یوم مزدور"
 msgid "Independence Day"
 msgstr "یوم آزادی"
 
+#. Iqbal Day.
 msgid "Iqbal Day"
 msgstr "یوم اقبال"
 
@@ -47,14 +50,23 @@ msgstr "یوم اقبال"
 msgid "Quaid-e-Azam Day"
 msgstr "یوم قائداعظم"
 
+#. Eid-ul-Fitr
 msgid "Eid-ul-Fitr"
 msgstr "عید الفطر"
 
+#. Eid-ul-Adha
 msgid "Eid-ul-Adha"
 msgstr "عید الاضحی"
 
+#. Eid Milad-un-Nabi
 msgid "Eid Milad-un-Nabi"
 msgstr "عید میلاد النبی"
 
+#. Ashura
 msgid "Ashura"
 msgstr "عاشورہ"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (اندازاً)"

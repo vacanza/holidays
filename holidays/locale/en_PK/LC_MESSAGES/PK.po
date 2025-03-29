@@ -10,8 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  Wasif-Shahzad <wasif_shahzad_1@outlook.com>, 2025.
-#  Pakistan holidays en_PK localization.
+#  Pakistan Holidays.
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
@@ -27,12 +26,15 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_PK\n"
 
+#. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
 msgstr ""
 
+#. Pakistan Day.
 msgid "Pakistan Day"
 msgstr ""
 
+#. Labour Day.
 msgid "Labour Day"
 msgstr ""
 
@@ -40,6 +42,7 @@ msgstr ""
 msgid "Independence Day"
 msgstr ""
 
+#. Iqbal Day.
 msgid "Iqbal Day"
 msgstr ""
 
@@ -47,14 +50,23 @@ msgstr ""
 msgid "Quaid-e-Azam Day"
 msgstr ""
 
+#. Eid-ul-Fitr
 msgid "Eid-ul-Fitr"
 msgstr ""
 
+#. Eid-ul-Adha
 msgid "Eid-ul-Adha"
 msgstr ""
 
+#. Eid Milad-un-Nabi
 msgid "Eid Milad-un-Nabi"
 msgstr ""
 
+#. Ashura
 msgid "Ashura"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
 msgstr ""

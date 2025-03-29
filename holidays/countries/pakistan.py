@@ -22,8 +22,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Pakistan holidays."""
 
     country = "PK"
-    start_year = 1948
     default_language = "en_PK"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
@@ -40,40 +42,44 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Kashmir Solidarity Day.
         if self._year >= 1990:
+            # Kashmir Solidarity Day.
             self._add_holiday_feb_5(tr("Kashmir Solidarity Day"))
 
-        # Pakistan Day.
         if self._year >= 1956:
+            # Pakistan Day.
             self._add_holiday_mar_23(tr("Pakistan Day"))
 
-        # Labour Day.
         if self._year >= 1972:
+            # Labour Day.
             self._add_labor_day(tr("Labour Day"))
 
         # Independence Day.
         self._add_holiday_aug_14(tr("Independence Day"))
 
-        # Iqbal Day.
         if self._year <= 2014 or self._year >= 2022:
+            # Iqbal Day.
             self._add_holiday_nov_9(tr("Iqbal Day"))
 
         # Quaid-e-Azam Day.
         self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
+        # Eid-ul-Fitr
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
+        # Eid-ul-Adha
         name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
 
+        # Eid Milad-un-Nabi
         self._add_mawlid_day(tr("Eid Milad-un-Nabi"))
 
+        # Ashura
         name = tr("Ashura")
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
