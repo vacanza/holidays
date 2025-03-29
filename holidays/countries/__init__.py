@@ -86,6 +86,7 @@ from .ireland import Ireland, IE, IRL
 from .isle_of_man import IsleOfMan, IM, IMN
 from .israel import Israel, IL, ISR
 from .italy import Italy, IT, ITA
+from .ivory_coast import IvoryCoast, CI, CIV
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
 from .jersey import Jersey, JE, JEY
