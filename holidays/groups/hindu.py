@@ -306,6 +306,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
         Papankusha Ekadashi is a Hindu festival which occurs on eleventh day on month of
         Ashwin (September-October).
+        https://en.wikipedia.org/wiki/Ekadashi
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
