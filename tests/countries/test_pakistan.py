@@ -206,7 +206,6 @@ class TestPakistan(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "en_PK",
             ("2022-02-05", "Kashmir Solidarity Day"),
             ("2022-03-23", "Pakistan Day"),
             ("2022-05-01", "Labour Day"),

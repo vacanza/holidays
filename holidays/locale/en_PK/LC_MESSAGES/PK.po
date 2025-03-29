@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  Pakistan Holidays.
+# Pakistan holidays.
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
