@@ -28,7 +28,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         self._hindu_calendar_show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
-        self, name: str, dt_estimated: tuple[Optional[date], bool]
+        self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
     ) -> Optional[date]:
         """
         Add Hindu calendar holiday.
@@ -38,7 +38,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
 
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._hindu_calendar_show_estimated
+            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta=days_delta
         )
 
     def _add_hindu_calendar_holiday_set(
@@ -58,6 +58,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
                 added_dates.add(dt)
 
         return added_dates
+
+    def _add_bhai_dooj(self, name) -> Optional[date]:
+        """
+        Add Bhai Dooj.
+
+        Bhai Dooj, also known as Bhai Tika or Bhaiya Dooj, is a Hindu festival celebrating the bond
+        between brothers and sisters. It is observed two days after Diwali on the second lunar day
+        of the Shukla Paksha in the Hindu month of Kartika.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=+1
+        )
 
     def _add_buddha_purnima(self, name) -> Optional[date]:
         """
@@ -126,11 +138,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
+    def _add_gau_krida(self, name) -> Optional[date]:
+        """
+        Add Gau Krida.
+
+        Gau Krida, is celebrated the day after Diwali to honor cows.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=-1
+        )
+
     def _add_govardhan_puja(self, name) -> Optional[date]:
         """
         Add Govardhan Puja.
 
-        Govardhan Puja, also known as Annakut, is celebrated the day after Diwali
+        Govardhan Puja, also known as Annakut, is celebrated after Diwali
         to honor Lord Krishna. It falls on the first lunar day of the Hindu month of Kartika.
         https://en.wikipedia.org/wiki/Govardhan_Puja
         """
@@ -198,6 +220,30 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.janmashtami_date(self._year)
         )
 
+    def _add_maha_saptami(self, name) -> Optional[date]:
+        """
+        Add Maha Saptami.
+
+        Maha Navami is the seventh day of Navratri, dedicated to Goddess Durga.
+        It is observed in Ashvin (September-October).
+        https://en.wikipedia.org/wiki/Navaratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-2
+        )
+
+    def _add_maha_ashtami(self, name) -> Optional[date]:
+        """
+        Add Maha Ashtami.
+
+        Maha Navami is the eighth day of Navratri, dedicated to Goddess Durga.
+        It is observed in Ashvin (September-October).
+        https://en.wikipedia.org/wiki/Navaratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-1
+        )
+
     def _add_maha_navami(self, name) -> Optional[date]:
         """
         Add Maha Navami.
@@ -256,6 +302,27 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
+    def _add_papankusha_ekadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Ekadashi.
+
+        Papankusha Ekadashi is a Hindu festival which occurs on eleventh day on month of
+        Ashwin (September-October).
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
+        )
+
+    def _add_papankusha_duwadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Duwadashi.
+
+        Papankusha Duwadashi is a Hindu festival which occurs next day of Papankusha Ekadashi.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
+        )
+
     def _add_raksha_bandhan(self, name) -> Optional[date]:
         """
         Add Raksha Bandhan.
@@ -292,6 +359,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sharad_navratri_date(self._year)
+        )
+
+    def _add_tihar_holiday(self, name) -> Optional[date]:
+        """
+        Add Tihar Holiday (Nepal)
+
+        Tihar holiday is celebrated as the fifth day of Tihar festival .
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=+2
         )
 
     def _add_thaipusam(self, name) -> Optional[date]:
