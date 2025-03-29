@@ -34,8 +34,7 @@ class Fiji(
     InternationalHolidays,
     IslamicHolidays,
 ):
-    """
-    Fiji holidays.
+    """Fiji holidays.
     References:
         * <https://laws.gov.fj/Acts/DisplayAct/2910#>
         * <https://laws.gov.fj/LawsAsMade>
@@ -46,6 +45,7 @@ class Fiji(
         * <https://www.fijitimes.com.fj/constitution-day-public-holiday-removed-cabinet/>
         * <https://fijivillage.com/news/National-Sports-Day-celebrated-5krs29/>
         * <https://fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/>
+
     Official Fiji Public Holidays Calendar:
          * [2016](https://www.fiji.gov.fj/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx)
          * [2017](https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS)
@@ -56,7 +56,6 @@ class Fiji(
          * [2023](https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
          * [2024](https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
          * [2025](https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-
     """
 
     country = "FJ"
@@ -135,7 +134,8 @@ class Fiji(
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
         # Prophet Mohammed's Birthday.
-        self._populate_observed(self._add_mawlid_day("Prophet Mohammed's Birthday"))
+        for dt in self._add_mawlid_day("Prophet Mohammed's Birthday"):
+            self._add_observed(dt)
 
     def _populate_workday_holidays(self):
         if self._year >= 2023:
