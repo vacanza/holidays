@@ -34,7 +34,7 @@ msgstr ""
 msgid "Fête du travail"
 msgstr ""
 
-#. Independence Day
+#. Independence Day.
 msgid "Fête Nationale"
 msgstr ""
 
@@ -71,16 +71,6 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr ""
 
-#. %s (observed).
-#, c-format
-msgid "%s (observé)"
-msgstr ""
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (observé, estimé)"
-msgstr ""
-
 #. Eid al-Fitr.
 msgid "Fête de fin du Ramadan"
 msgstr ""
@@ -93,10 +83,24 @@ msgstr ""
 msgid "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
 msgstr ""
 
-#. Day after Night of Destiny.
+#. Day after Night of Power.
 msgid "Lendemain de la Nuit du Destin"
 msgstr ""
 
 #. 2024 African Cup of Nations Victory.
 msgid "Victoire à la Coupe d’Afrique des Nations 2024"
+msgstr ""
+
+#. Day after the %s.
+#, c-format
+msgid "Lendemain de la %s"
+msgstr ""
+
+#. Day after the %s (estimated).
+#, c-format
+msgid "Lendemain de la %s (estimé)"
+msgstr ""
+
+#. Anniversary of death of President Felix Houphouet-Boigny.
+msgid "Anniversaire du décès du Président Felix Houphouet-Boigny"
 msgstr ""

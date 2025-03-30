@@ -34,6 +34,8 @@ class IvoryCoast(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ivory_Coast>
         * <https://www.timeanddate.com/holidays/ivory-coast/>
         * <https://holidayapi.com/countries/ci/>
+        * National Peace Day (introduced in 1996):
+            * <https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History>
     """
 
     country = "CI"
@@ -44,7 +46,7 @@ class IvoryCoast(
     # Day after the %s (estimated).
     observed_estimated_label = tr("Lendemain de la %s (estimé)")
     # Ivory Coast gained independence in 1960.
-    start_year = 1960
+    start_year = 1961
     default_language = "fr"
     supported_languages = ("en_CI", "en_US", "fr")
 
@@ -76,10 +78,15 @@ class IvoryCoast(
         # Independence Day.
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
 
-        # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
         if self._year >= 1996:
             # National Peace Day.
             self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
+
+        if 1996 <= self._year <= 2000:
+            self._add_holiday_dec_7(
+                # Anniversary of death of President Felix Houphouet-Boigny.
+                tr("Anniversaire du décès du Président Felix Houphouet-Boigny")
+            )
 
         # Christian Holidays
 
