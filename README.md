@@ -865,7 +865,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td><strong>en_US</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr>

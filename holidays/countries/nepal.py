@@ -15,7 +15,7 @@ from holidays.groups import ChristianHolidays, HinduCalendarHolidays, Internatio
 from holidays.holiday_base import HolidayBase
 
 
-class Nepal(ChristianHolidays, HolidayBase, HinduCalendarHolidays, InternationalHolidays):
+class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays):
     """Nepal holidays.
 
     References:
@@ -30,8 +30,7 @@ class Nepal(ChristianHolidays, HolidayBase, HinduCalendarHolidays, International
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        # super().__init__(*args, **kwargs)
-        HolidayBase.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # https://www.timeanddate.com/holidays/nepal/sonam-losar
