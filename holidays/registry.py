@@ -72,6 +72,7 @@ COUNTRIES: RegistryDict = {
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
     "ethiopia": ("Ethiopia", "ET", "ETH"),
+    "fiji": ("Fiji", "FJ", "FJI"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
     "gabon": ("Gabon", "GA", "GAB"),
