@@ -47,11 +47,11 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1960, 2050)))
-        self.assertHolidayName("Fête du travail (observed)", "2022-05-02")
+        self.assertHolidayName("Fête du travail (observé)", "2022-05-02")
 
     def test_independence_day(self):
         self.assertHolidayName("Fête Nationale", (f"{year}-08-07" for year in range(1960, 2050)))
-        self.assertHolidayName("Fête Nationale (observed)", "2022-08-08")
+        self.assertHolidayName("Fête Nationale (observé)", "2022-08-08")
 
     def test_national_peace_day(self):
         self.assertHolidayName(
@@ -102,7 +102,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         self.assertHolidayName(
-            "Fête de fin du Ramadan (Aid-EI-Fitr) (estimated)",
+            "Fête de fin du Ramadan (Aid-EI-Fitr) (estimé)",
             "2021-05-13",
             "2022-05-02",
             "2023-04-21",
@@ -112,7 +112,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_eid_al_adha(self):
         self.assertHolidayName(
-            "Fête de la Tabaski (Aîd-El-Kébir) (estimated)",
+            "Fête de la Tabaski (Aîd-El-Kébir) (estimé)",
             "2021-07-20",
             "2022-07-09",
             "2023-06-28",
@@ -122,7 +122,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_mawlid(self):
         self.assertHolidayName(
-            "L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud) (estimated)",
+            "L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud) (estimé)",
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
@@ -132,4 +132,4 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
 
     def test_laylat_al_qadr(self):
-        self.assertHolidayName("Nuit du Destin (Lailatou-Kadr) (estimated)", "2025-03-27")
+        self.assertHolidayName("Nuit du Destin (Lailatou-Kadr) (estimé)", "2025-03-27")

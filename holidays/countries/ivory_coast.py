@@ -26,9 +26,9 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     """
 
     country = "CI"
-    estimated_label = "%s (estimated)"
-    observed_label = "%s (observed)"
-    observed_estimated_label = "%s (observed, estimated)"
+    estimated_label = tr("%s (estimé)")
+    observed_label = tr("%s (observé)")
+    observed_estimated_label = tr("%s (observé, estimé)")
     # Ivory Coast gained independence in 1960.
     start_year = 1960
     default_language = "fr"

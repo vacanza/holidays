@@ -81,3 +81,15 @@ msgstr "Night of Destiny"
 #. Ascension Day.
 msgid "Jour de l’Ascension"
 msgstr "Ascension Day"
+
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#, c-format
+msgid "%s (observé)"
+msgstr "%s (observed)"
+
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr "%s (observed, estimated)"

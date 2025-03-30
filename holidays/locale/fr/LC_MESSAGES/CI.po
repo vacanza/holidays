@@ -81,3 +81,15 @@ msgstr ""
 #. Ascension Day.
 msgid "Jour de l’Ascension"
 msgstr ""
+
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#, c-format
+msgid "%s (observé)"
+msgstr ""
+
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr ""
