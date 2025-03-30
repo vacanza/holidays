@@ -27,95 +27,91 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #. New Year's Day.
-msgid "Neujahr"
-msgstr ""
+msgid "New Year's Day"
+msgstr "Neujahr"
 
 #. Good Friday.
-msgid "Karfreitag"
-msgstr ""
+msgid "Good Friday"
+msgstr "Karfreitag"
 
 #. Easter Monday.
-msgid "Ostermontag"
-msgstr ""
+msgid "Easter Monday"
+msgstr "Ostermontag"
 
 #. Labor Day.
-msgid "Erster Mai"
-msgstr ""
+msgid "Labor Day"
+msgstr "Tag der Arbeit"
 
 #. Ascension Day.
-msgid "Christi Himmelfahrt"
-msgstr ""
+msgid "Ascension Day"
+msgstr "Himmelfahrtstag"
 
 #. Whit Monday.
-msgid "Pfingstmontag"
-msgstr ""
+msgid "Whit Monday"
+msgstr "Pfingstmontag"
 
 #. German Unity Day.
-msgid "Tag der Deutschen Einheit"
-msgstr ""
+msgid "German Unity Day"
+msgstr "Tag der Deutschen Einheit"
 
 #. Reformation Day.
-msgid "Reformationstag"
-msgstr ""
+msgid "Reformation Day"
+msgstr "Reformationstag"
 
 #. Repentance and Prayer Day.
-msgid "Buß- und Bettag"
-msgstr ""
+msgid "Repentance and Prayer Day"
+msgstr "Buß- und Bettag"
 
 #. Christmas Day.
-msgid "Erster Weihnachtstag"
-msgstr ""
+msgid "First Day of Christmas"
+msgstr "Erste Weihnachtstag"
 
 #. Second Day of Christmas.
-msgid "Zweiter Weihnachtstag"
-msgstr ""
+msgid "Second Day of Christmas"
+msgstr "Zweiter Weihnachtstag"
+
 
 #. Easter Sunday.
-msgid "Ostersonntag"
-msgstr ""
+msgid "Easter Sunday"
+msgstr "Ostersonntag"
 
 #. Whit Sunday.
-msgid "Pfingstsonntag"
-msgstr ""
+msgid "Whit Sunday"
+msgstr "Pfingstsonntag"
+
 
 #. International Women's Day.
-msgid "Internationaler Frauentag"
-msgstr ""
+msgid "International Women's Day"
+msgstr "Internationaler Frauentag"
 
-#. 75th anniversary of the liberation from Nazism and the end of the Second
-#. World War in Europe.
-msgid ""
-"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
-"Europa"
-msgstr ""
+#. 75th anniversary of the liberation from Nazism and the end of the Second World War in Europe.
+msgid " 75th anniversary of the liberation from Nazism and the end of the Second World War in Europe."
+msgstr "75. Jahrestag der Befreiung vom Nationalsozialismus und des Endes des Zweiten Weltkriegs in Europa."
 
-#. 80th anniversary of the liberation from Nazism and the end of the Second
-#. World War in Europe.
-msgid ""
-"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
-"Europa"
-msgstr ""
+#. 80th anniversary of the liberation from Nazism and the end of the Second World War in Europe.
+msgid "80th anniversary of the liberation from Nazism and the end of the Second World War in Europe."
+msgstr "80. Jahrestag der Befreiung vom Nationalsozialismus und des Endes des Zweiten Weltkriegs in Europa"
 
 #. Epiphany.
-msgid "Heilige Drei Könige"
-msgstr ""
+msgid "Holy Three Kings"
+msgstr "Heilige Drei Könige"
 
 #. Corpus Christi.
-msgid "Fronleichnam"
-msgstr ""
+msgid "Corpus Christi"
+msgstr "Fronleichnam"
 
 #. All Saints' Day.
-msgid "Allerheiligen"
-msgstr ""
+msgid " All Saints' Day"
+msgstr "Allerheiligen"
 
 #. Assumption Day.
-msgid "Mariä Himmelfahrt"
-msgstr ""
+msgid "Assumption Day"
+msgstr "Mariä Himmelfahrt"
 
 #. World Children's Day.
-msgid "Weltkindertag"
-msgstr ""
+msgid "World Children's Day"
+msgstr "Weltkindertag"
 
 #. 75th anniversary of the East German uprising of 1953.
-msgid "75. Jahrestag des Aufstandes vom 17. Juni 1953"
-msgstr ""
+msgid "75th anniversary of the East German uprising of 1953"
+msgstr "75. Jahrestag des Volksaufstands in der DDR 1953"
