@@ -40,7 +40,7 @@ class IvoryCoast(
     Note:
         In Islamic calendar, days begin at sunset. This naming name day after refers to the
         daylight hours following the night of the celebration, which is technically the same
-        Georgian calendar day.
+        Gregorian calendar day.
     """
 
     country = "CI"
