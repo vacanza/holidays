@@ -140,10 +140,10 @@ class Nepal(
         # Maha Shivaratri.
         self._add_maha_shivaratri("Maha Shivaratri")
 
-        # Holi(Mountain & Hilly)
+        # Holi(Mountain & Hilly).
         self._add_nepal_holi("Holi (Mountain & Hilly)")
 
-        # Holi(Terai)
+        # Holi(Terai).
         self._add_holi("Holi (Terai)")
 
         # Ram Navami.
