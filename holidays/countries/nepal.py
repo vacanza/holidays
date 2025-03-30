@@ -101,6 +101,15 @@ class Nepal(
         # National Democracy Day.
         self._add_holiday_feb_19("National Democracy Day")
 
+        # Women's Day.
+        self._add_womens_day("Women's Day")
+
+        # Nepal New Year (Vikram Sambat).
+        self._add_vaisakhi("Nepali New Year (Vikram Sambat)")
+
+        # Labor Day.
+        self._add_labor_day("Labor Day")
+
         # Republic Day.
         self._add_holiday_may_29("Republic Day")
 
@@ -110,22 +119,13 @@ class Nepal(
         # Tamu Losar.
         self._add_holiday_dec_30("Tamu Losar")
 
-        if self._year in gyalpo_losar_dates:
-            # Gyalpo Losar.
-            self._add_holiday("Gyalpo Losar", gyalpo_losar_dates[self._year])
-
-        # Labor Day.
-        self._add_labor_day("Labor Day")
-
-        # Nepal New Year (Vikram Sambat).
-        self._add_vaisakhi("Nepali New Year (Vikram Sambat)")
-
         if self._year in sonam_losar_dates:
             # Sonam Losar.
             self._add_holiday("Sonam Losar", sonam_losar_dates[self._year])
 
-        # Women's Day.
-        self._add_womens_day("Women's Day")
+        if self._year in gyalpo_losar_dates:
+            # Gyalpo Losar.
+            self._add_holiday("Gyalpo Losar", gyalpo_losar_dates[self._year])
 
         # Christian holidays.
 
