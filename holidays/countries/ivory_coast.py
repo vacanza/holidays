@@ -11,15 +11,25 @@
 #  License: MIT (see LICENSE file)
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays import FEB
+from holidays.groups import (
+    ChristianHolidays,
+    IslamicHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class IvoryCoast(
+    ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays, StaticHolidays
+):
     """Ivory Coast holidays.
 
     References:
         * <https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/details?p3_isn=44374>
+        * <https://www.droit-afrique.com/uploads/RCI-Decret-1996-205-jours-feries.pdf>
+        * <https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_C%C3%B4te_d%27Ivoire>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ivory_Coast>
         * <https://www.timeanddate.com/holidays/ivory-coast/>
         * <https://holidayapi.com/countries/ci/>
@@ -35,7 +45,7 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     # Ivory Coast gained independence in 1960.
     start_year = 1960
     default_language = "fr"
-    supported_languages = ("en_US", "fr")
+    supported_languages = ("en_CI", "en_US", "fr")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -45,8 +55,11 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
                 if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
+        # the observed dates for the Ivory Coast's islamic holidays have been verified against
+        # local references (COSIM) and align with the default Umm al-Qura calculations.
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, IvoryCoastStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -54,7 +67,7 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         # Secular Holidays.
 
         # New Year's Day.
-        self._add_new_years_day(tr("1ᵉʳ janvier"))
+        self._add_new_years_day(tr("1er janvier"))
 
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Fête du travail")))
@@ -68,6 +81,7 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
             self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
 
         # Christian Holidays
+
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
         # Ascension Day.
@@ -82,14 +96,15 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         self._add_christmas_day(tr("Fête de Noël"))
 
         # Islamic Holidays
+
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan (Aid-EI-Fitr)"))
+        self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan"))
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Fête de la Tabaski (Aîd-El-Kébir)"))
+        self._add_eid_al_adha_day(tr("Fête de la Tabaski"))
         # Day after Prophet's Birthday.
-        self._add_mawlid_day_two(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet (Maouloud)"))
-        # Day After Night of Destiny (Laylat al-Qadr).
-        self._add_laylat_al_qadr_day_two(tr("Lendemain de la Nuit du Destin (Lailatou-Kadr)"))
+        self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
+        # Day after Night of Destiny.
+        self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
 
 
 # Aliases.
@@ -99,3 +114,15 @@ class CI(IvoryCoast):
 
 class CIV(IvoryCoast):
     pass
+
+
+class IvoryCoastStaticHolidays:
+    """Ivory Coast Special Holidays.
+
+    * [2024 AFCON](https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
+    """
+
+    special_public_holidays = {
+        # 2024 African Cup of Nations Victory.
+        2024: (FEB, 12, tr("Victoire à la Coupe d’Afrique des Nations 2024")),
+    }

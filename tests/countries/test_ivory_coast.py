@@ -24,26 +24,29 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertAliases(IvoryCoast, CI, CIV)
 
     def test_2025(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             IvoryCoast(years=2025),
-            "2025-01-01",
-            "2025-03-27",
-            "2025-03-30",
-            "2025-04-21",
-            "2025-05-01",
-            "2025-05-29",
-            "2025-06-06",
-            "2025-06-09",
-            "2025-08-07",
-            "2025-08-15",
-            "2025-09-04",
-            "2025-11-01",
-            "2025-11-15",
-            "2025-12-25",
+            ("2025-01-01", "1er janvier"),
+            ("2025-03-27", "Lendemain de la Nuit du Destin (estimé)"),
+            ("2025-03-30", "Fête de fin du Ramadan (estimé)"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-05-01", "Fête du travail"),
+            ("2025-05-29", "Jour de l’Ascension"),
+            ("2025-06-06", "Fête de la Tabaski (estimé)"),
+            ("2025-06-09", "Lundi de Pentecôte"),
+            ("2025-08-07", "Fête Nationale"),
+            ("2025-08-15", "Fête de l’Assomption"),
+            (
+                "2025-09-04",
+                "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet (estimé)",
+            ),
+            ("2025-11-01", "Fête de la Toussaint"),
+            ("2025-11-15", "Journée Nationale de la Paix"),
+            ("2025-12-25", "Fête de Noël"),
         )
 
     def test_new_years_day(self):
-        self.assertHolidayName("1ᵉʳ janvier", (f"{year}-01-01" for year in range(1960, 2050)))
+        self.assertHolidayName("1er janvier", (f"{year}-01-01" for year in range(1960, 2050)))
 
     def test_labor_day(self):
         self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1960, 2050)))
@@ -102,7 +105,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         self.assertHolidayName(
-            "Fête de fin du Ramadan (Aid-EI-Fitr) (estimé)",
+            "Fête de fin du Ramadan (estimé)",
             "2021-05-13",
             "2022-05-02",
             "2023-04-21",
@@ -112,7 +115,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_eid_al_adha(self):
         self.assertHolidayName(
-            "Fête de la Tabaski (Aîd-El-Kébir) (estimé)",
+            "Fête de la Tabaski (estimé)",
             "2021-07-20",
             "2022-07-09",
             "2023-06-28",
@@ -122,8 +125,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_mawlid(self):
         self.assertHolidayName(
-            "L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud) (estimé)",
-            "2020-10-29",
+            "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet (estimé)",
             "2021-10-18",
             "2022-10-08",
             "2023-09-27",
@@ -132,4 +134,15 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
 
     def test_laylat_al_qadr(self):
-        self.assertHolidayName("Nuit du Destin (Lailatou-Kadr) (estimé)", "2025-03-27")
+        self.assertHolidayName(
+            "Lendemain de la Nuit du Destin (estimé)",
+            "2021-05-09",
+            "2022-04-28",
+            "2023-04-18",
+            "2024-04-06",
+            "2025-03-27",
+        )
+
+    def test_static_holidays(self):
+        self.assertHolidayName("Victoire à la Coupe d’Afrique des Nations 2024", "2024-02-12")
+        self.assertNoHolidayName("Victoire à la Coupe d’Afrique des Nations 2024", "2025-02-12")
