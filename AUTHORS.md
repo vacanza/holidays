@@ -130,6 +130,7 @@ Serhii Murza
 Shaurya Uppal
 Sho Hirose
 Simon Gurcke
+Sindhura Kumbakonam Subramanian
 Sugato Ray
 Sylvain Pasche
 Sylvia van Os

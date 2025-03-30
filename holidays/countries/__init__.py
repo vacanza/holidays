@@ -42,6 +42,7 @@ from .burundi import Burundi, BI, BDI
 from .cambodia import Cambodia, KH, KHM
 from .cameroon import Cameroon, CM, CMR
 from .canada import Canada, CA, CAN
+from .cape_verde import CapeVerde, CV, CAV
 from .chad import Chad, TD, TCD
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN

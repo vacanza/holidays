@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-03-30 12:13-0400\n"
+"PO-Revision-Date: 2025-03-30 12:13-0400\n"
+"Last-Translator: Sindhura Kumbakonam Subramanian <sindhu.ss10@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: pt_PT\n"
+
+#. New Year's Day.
+msgid "Ano Novo"
+msgstr ""
+
+#. Labour Day.
+msgid "Dia do Trabalhador"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Dia da Assunção"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Dia de Todos os Santos"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natal"
+msgstr ""
+
+#. Democracy Day.
+msgid "Dia da Liberdade e Democracia"
+msgstr ""
+
+#. Independence Day (From Portugal 1975)
+msgid "Dia da Independência Nacional"
+msgstr ""
+
+#. Heroes Day.
+msgid "Dia da Nacionalidade e dos Heróis Nacionais"
+msgstr ""
+
+#. Youth Day
+msgid "Dia Mundial da Criança"
+msgstr ""
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr ""
+
+#. March Equinox.
+msgid "Equinócio de Março"
+msgstr ""
+
+#. June Solstice
+msgid "Solstício de Junho"
+msgstr ""
+
+#. September Equinox
+msgid "Equinócio de Setembro"
+msgstr ""
+
+#. Winter Solstice.
+msgid "Solstício de Inverno"
+msgstr ""
+
+#. Ash Wednesday.
+msgid "Dia das Cinzas"
+msgstr ""
+
+#. Holy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Páscoa"
+msgstr ""
+
+#. Mother's Day.
+msgid "Dia das Mães"
+msgstr ""
