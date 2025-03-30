@@ -73,7 +73,7 @@ class IvoryCoast(
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Fête du travail")))
 
-        # Independence Day
+        # Independence Day.
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
 
         # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
@@ -112,7 +112,7 @@ class IvoryCoast(
         # Day after Prophet's Birthday.
         self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
 
-        # Day after Night of Destiny.
+        # Day after Night of Power.
         self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
 
 
