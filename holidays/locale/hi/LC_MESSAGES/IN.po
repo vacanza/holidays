@@ -261,7 +261,7 @@ msgstr "पोंगल"
 
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
-msgstr "पुत्ताण्डु (तमिल नव वर्ष)"
+msgstr "पुथाण्डु (तमिल नव वर्ष)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
