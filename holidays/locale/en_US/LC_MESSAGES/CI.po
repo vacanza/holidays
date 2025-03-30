@@ -1,0 +1,83 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Ivory Coast holidays en_US localization.
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-03-30 02:24+0530\n"
+"PO-Revision-Date: 2025-03-30 02:24+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: fr\n"
+
+#. Secular Holidays New Year's Day.
+msgid "1ᵉʳ janvier"
+msgstr "1ˢᵗ January"
+
+#. Labor Day.
+msgid "Fête du travail"
+msgstr "Labor Day"
+
+#. Independence Day
+msgid "Fête Nationale"
+msgstr "Independence Day"
+
+#. National Peace Day - November 15. Introduced in 1996. See details:
+#. https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
+msgid "Journée Nationale de la Paix"
+msgstr "National Peace Day"
+
+#. Christian Holidays Easter Monday.
+msgid "Lundi de Pâques"
+msgstr "Easter Monday"
+
+#. Pentecost Monday (Whit Monday).
+msgid "Lundi de Pentecôte"
+msgstr "Pentecost Monday"
+
+#. Assumption Day.
+msgid "Fête de l’Assomption"
+msgstr "Assumption Day"
+
+#. All Saints' Day.
+msgid "Fête de la Toussaint"
+msgstr "All Saints' Day"
+
+#. Christmas Day.
+msgid "Fête de Noël"
+msgstr "Christmas Day"
+
+#. Islamic Holidays Eid al-Fitr.
+msgid "Fête de fin du Ramadan (Aid-EI-Fitr)"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Fête de la Tabaski (Aîd-El-Kébir)"
+msgstr "Eid al-Adha"
+
+#. Day after Prophet's Birthday.
+msgid "L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud)"
+msgstr "Day after Prophet's Birthday"
+
+#. Night of Destiny (Laylat al-Qadr)
+msgid "Nuit du Destin (Lailatou-Kadr)"
+msgstr "Night of Destiny"
+
+#. Ascension Day.
+msgid "Jour de l’Ascension"
+msgstr "Ascension Day"

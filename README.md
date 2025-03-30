@@ -662,7 +662,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ivory Coast</td>
 <td>CI</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>

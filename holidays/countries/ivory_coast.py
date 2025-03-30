@@ -5,7 +5,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github.com> (c) 2017-2023
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
@@ -31,6 +31,8 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     observed_estimated_label = "%s (observed, estimated)"
     # Ivory Coast gained independence in 1960.
     start_year = 1960
+    default_language = "fr"
+    supported_languages = ("en_US", "fr")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -48,40 +50,39 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     def _populate_public_holidays(self):
         # Secular Holidays
         # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
+        self._add_new_years_day(tr("1ᵉʳ janvier"))
         # Labor Day.
-        self._add_observed(self._add_labor_day(tr("Labor Day")))
+        self._add_observed(self._add_labor_day(tr("Fête du travail")))
         # Independence Day
-        self._add_holiday_aug_7(tr("Independence Day"))
+        self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
         if self._year >= 1996:
             # National Peace Day - November 15.
             # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
-            self._add_holiday_nov_15(tr("National Peace Day"))
+            self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
 
         # Christian Holidays
         # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
+        self._add_easter_monday(tr("Lundi de Pâques"))
         # Ascension Day.
-        self._add_ascension_thursday(tr("Ascension Day"))
+        self._add_ascension_thursday(tr("Jour de l’Ascension"))
         # Pentecost Monday (Whit Monday).
-        self._add_whit_monday(tr("Pentecost Monday"))
+        self._add_whit_monday(tr("Lundi de Pentecôte"))
         # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Assumption Day"))
+        self._add_assumption_of_mary_day(tr("Fête de l’Assomption"))
         # All Saints' Day.
-        self._add_all_saints_day(tr("All Saints' Day"))
+        self._add_all_saints_day(tr("Fête de la Toussaint"))
         # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        self._add_christmas_day(tr("Fête de Noël"))
 
         # Islamic Holidays
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
+        self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan (Aid-EI-Fitr)"))
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Eid al-Adha"))
-        # Prophet's Birthday
-        self._add_mawlid_day(tr("Prophet's Birthday"))
-
-        # todo: Day After Laila tou-Kadr
-        # self._add_laylat_al_qadr_day(tr("Night of Destiny"))
+        self._add_eid_al_adha_day(tr("Fête de la Tabaski (Aîd-El-Kébir)"))
+        # Day after Prophet's Birthday.
+        self._add_mawlid_day(tr("L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud)"))
+        # Night of Destiny (Laylat al-Qadr)
+        self._add_laylat_al_qadr_day(tr("Nuit du Destin (Lailatou-Kadr)"))
 
 
 # Aliases.
