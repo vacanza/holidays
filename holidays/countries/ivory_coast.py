@@ -36,6 +36,11 @@ class IvoryCoast(
         * <https://holidayapi.com/countries/ci/>
         * National Peace Day (introduced in 1996):
             * <https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History>
+
+    Note:
+        In Islamic calendar, days begin at sunset. This naming name day after refers to the
+        daylight hours following the night of the celebration, which is technically the same
+        Georgian calendar day.
     """
 
     country = "CI"
