@@ -34,8 +34,8 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-02-26", "Maha Shivaratri"),
             ("2025-02-28", "Gyalpo Losar"),
             ("2025-03-08", "Women's Day"),
-            ("2025-03-13", "Holi(Mountain & Hilly)"),
-            ("2025-03-14", "Holi(Terai)"),
+            ("2025-03-13", "Holi (Mountain & Hilly)"),
+            ("2025-03-14", "Holi (Terai)"),
             ("2025-03-31", "Id-ul-Fitr"),
             ("2025-04-06", "Ram Navami"),
             ("2025-04-13", "Nepali New Year (Vikram Sambat)"),
@@ -44,15 +44,15 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-05-29", "Republic Day"),
             ("2025-06-07", "Bakrid"),
             ("2025-08-09", "Janai Purnima"),
-            ("2025-08-16", "Krishna Janmashtami"),
+            ("2025-08-16", "Shree Krishna Janmashtami"),
             ("2025-09-19", "Constitution Day"),
             ("2025-09-22", "Ghatasthapana"),
             ("2025-09-29", "Phulpati"),
             ("2025-09-30", "Maha Ashtami"),
             ("2025-10-01", "Maha Navami"),
             ("2025-10-02", "Vijayadashami"),
-            ("2025-10-03", "Ekadashi(Dashain)"),
-            ("2025-10-04", "Duwadashi(Dashain)"),
+            ("2025-10-03", "Ekadashi (Dashain)"),
+            ("2025-10-04", "Duwadashi (Dashain)"),
             ("2025-10-20", "Lakshmi Puja"),
             ("2025-10-21", "Gai Tihar"),
             ("2025-10-22", "Govardhan Puja; Mha Puja"),
@@ -99,7 +99,7 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Duwadashi(Dashain)"
+        name = "Duwadashi (Dashain)"
         dt = (
             "2001-10-28",
             "2010-10-19",
@@ -108,7 +108,7 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Ekadashi(Dashain)"
+        name = "Ekadashi (Dashain)"
         dt = (
             "2001-10-27",
             "2010-10-18",
@@ -152,7 +152,7 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Holi(Mountain & Hilly)"
+        name = "Holi (Mountain & Hilly)"
         dt = (
             "2001-03-09",
             "2010-02-28",
@@ -161,7 +161,7 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Holi(Terai)"
+        name = "Holi (Terai)"
         dt = (
             "2001-03-10",
             "2010-03-01",
@@ -187,7 +187,7 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        name = "Krishna Janmashtami"
+        name = "Shree Krishna Janmashtami"
         dt = (
             "2001-08-12",
             "2010-09-02",

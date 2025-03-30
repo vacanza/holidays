@@ -37,10 +37,10 @@ class Nepal(
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=NepalIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -134,47 +134,29 @@ class Nepal(
 
         # Hindu holidays.
 
-        # Bhai Tika.
-        self._add_bhai_dooj("Bhai Tika")
+        # Maghe Sankranti.
+        self._add_makar_sankranti("Maghe Sankranti")
+
+        # Maha Shivaratri.
+        self._add_maha_shivaratri("Maha Shivaratri")
+
+        # Holi(Mountain & Hilly)
+        self._add_nepal_holi("Holi (Mountain & Hilly)")
+
+        # Holi(Terai)
+        self._add_holi("Holi (Terai)")
+
+        # Ram Navami.
+        self._add_ram_navami("Ram Navami")
 
         # Buddha Jayanti.
         self._add_buddha_purnima("Buddha Jayanti")
 
-        # Chhath Parwa.
-        self._add_chhath_puja("Chhath Parwa")
-
-        # Duwadashi(Dashain).
-        self._add_papankusha_duwadashi("Duwadashi(Dashain)")
-
-        # Ekadashi(Dashain).
-        self._add_papankusha_ekadashi("Ekadashi(Dashain)")
-
-        # Gai Tihar.
-        self._add_gau_krida("Gai Tihar")
-
         # Ghatasthapana.
         self._add_sharad_navratri("Ghatasthapana")
 
-        # Govardhan Puja
-        self._add_govardhan_puja("Govardhan Puja")
-
-        # Holi(Mountain & Hilly)
-        self._add_nepal_holi("Holi(Mountain & Hilly)")
-
-        # Holi(Terai)
-        self._add_holi("Holi(Terai)")
-
-        # Janai Purnima.
-        self._add_raksha_bandhan("Janai Purnima")
-
-        # Krishna Janmashtami.
-        self._add_janmashtami("Krishna Janmashtami")
-
-        # Lakshmi Puja.
-        self._add_diwali_india("Lakshmi Puja")
-
-        # Maghe Sankranti.
-        self._add_makar_sankranti("Maghe Sankranti")
+        # Phulpati.
+        self._add_maha_saptami("Phulpati")
 
         # Maha Ashtami.
         self._add_maha_ashtami("Maha Ashtami")
@@ -182,31 +164,49 @@ class Nepal(
         # Maha Navami.
         self._add_maha_navami("Maha Navami")
 
-        # Maha Shivaratri.
-        self._add_maha_shivaratri("Maha Shivaratri")
+        # Vijayadashami.
+        self._add_dussehra("Vijayadashami")
+
+        # Ekadashi(Dashain).
+        self._add_papankusha_ekadashi("Ekadashi (Dashain)")
+
+        # Duwadashi(Dashain).
+        self._add_papankusha_duwadashi("Duwadashi (Dashain)")
+
+        # Janai Purnima.
+        self._add_raksha_bandhan("Janai Purnima")
+
+        # Shree Krishna Janmashtami.
+        self._add_janmashtami("Shree Krishna Janmashtami")
+
+        # Lakshmi Puja.
+        self._add_diwali_india("Lakshmi Puja")
+
+        # Gai Tihar.
+        self._add_gau_krida("Gai Tihar")
+
+        # Bhai Tika.
+        self._add_bhai_dooj("Bhai Tika")
+
+        # Govardhan Puja
+        self._add_govardhan_puja("Govardhan Puja")
 
         # Mha Puja.
         self._add_govardhan_puja("Mha Puja")
 
-        # Phulpati.
-        self._add_maha_saptami("Phulpati")
-
-        # Ram Navami.
-        self._add_ram_navami("Ram Navami")
-
         # Tihar holiday.
         self._add_tihar_holiday("Tihar Holiday")
 
-        # Vijayadashami.
-        self._add_dussehra("Vijayadashami")
+        # Chhath Parwa.
+        self._add_chhath_puja("Chhath Parwa")
 
         # Islamic holidays.
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day("Bakrid")
-
         # Eid al-Fitr.
         self._add_eid_al_fitr_day("Id-ul-Fitr")
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day("Bakrid")
 
 
 class NepalIslamicHolidays(_CustomIslamicHolidays):
