@@ -28,14 +28,14 @@ class IvoryCoast(
     """Ivory Coast holidays.
 
     References:
-        * <https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/details?p3_isn=44374>
-        * <https://www.droit-afrique.com/uploads/RCI-Decret-1996-205-jours-feries.pdf>
+        * [Decree No. 96-205](https://www.droit-afrique.com/uploads/RCI-Decret-1996-205-jours-feries.pdf)
+        * Decree No. 2011‐371:
+            * [page 1](https://web.archive.org/web/20180617165811/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-1.pdf)
+            * [page 2](https://web.archive.org/web/20180826205106/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-2.pdf)
         * <https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_C%C3%B4te_d%27Ivoire>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ivory_Coast>
         * <https://www.timeanddate.com/holidays/ivory-coast/>
-        * <https://holidayapi.com/countries/ci/>
-        * National Peace Day (introduced in 1996):
-            * <https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History>
+        * [National Peace Day](https://en.wikipedia.org/wiki/Ivory_Coast#Independence)
 
     Note:
         The oldest decree available online that underpins the public holidays defined here
@@ -115,29 +115,21 @@ class IvoryCoast(
         self._add_all_saints_day(tr("Fête de la Toussaint"))
 
         # Christmas Day.
-        christmas_name = tr("Fête de Noël")
+        dt = self._add_christmas_day(tr("Fête de Noël"))
         if self._year >= 2011:
-            self._add_observed(self._add_christmas_day(christmas_name))
-        else:
-            self._add_christmas_day(christmas_name)
+            self._add_observed(dt)
 
         # Islamic Holidays
 
         # Eid al-Fitr.
-        eid_al_fitr_name = tr("Fête de fin du Ramadan")
-        if self._year >= 2012:
-            for dt in self._add_eid_al_fitr_day(eid_al_fitr_name):
+        for dt in self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan")):
+            if self._year >= 2012:
                 self._add_observed(dt)
-        else:
-            self._add_eid_al_fitr_day(eid_al_fitr_name)
 
         # Eid al-Adha.
-        eid_al_adha_name = tr("Fête de la Tabaski")
-        if self._year >= 2012:
-            for dt in self._add_eid_al_adha_day(eid_al_adha_name):
+        for dt in self._add_eid_al_adha_day(tr("Fête de la Tabaski")):
+            if self._year >= 2012:
                 self._add_observed(dt)
-        else:
-            self._add_eid_al_adha_day(eid_al_adha_name)
 
         # Day after Prophet's Birthday.
         self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
@@ -163,7 +155,7 @@ class IvoryCoastStaticHolidays:
     """
 
     special_public_holidays = {
-        # 2010: Public holiday for Presidential election preparation
+        # Public holiday for Presidential election preparation.
         2010: (OCT, 29, tr("Jour férié pour la préparation de l'élection présidentielle")),
         # 2024 African Cup of Nations Victory.
         2024: (FEB, 12, tr("Victoire à la Coupe d’Afrique des Nations 2024")),
