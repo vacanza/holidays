@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Ivory Coast holidays en_US localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
@@ -92,9 +93,9 @@ msgstr "Eid al-Adha"
 msgid "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
 msgstr "Day after Prophet's Birthday"
 
-#. Day after Night of Destiny.
+#. Day after Night of Power.
 msgid "Lendemain de la Nuit du Destin"
-msgstr "Day after Night of Destiny"
+msgstr "Day after Night of Power"
 
 #. 2024 African Cup of Nations Victory.
 msgid "Victoire à la Coupe d’Afrique des Nations 2024"

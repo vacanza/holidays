@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 #
 # Ivory Coast holidays en_CI localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
@@ -82,11 +83,11 @@ msgstr "%s (observed, estimated)"
 
 #. Eid al-Fitr.
 msgid "Fête de fin du Ramadan"
-msgstr "Aid-EI-Fitr"
+msgstr "Aid-El-Fitr"
 
 #. Eid al-Adha.
 msgid "Fête de la Tabaski"
-msgstr "Aîd-El-Kébir"
+msgstr "Aid-El-Kebir"
 
 #. Day after Prophet's Birthday.
 msgid "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"

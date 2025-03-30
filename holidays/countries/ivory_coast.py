@@ -9,20 +9,21 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
 from gettext import gettext as tr
 
-from holidays import FEB
+from holidays.calendars.gregorian import FEB
 from holidays.groups import (
     ChristianHolidays,
-    IslamicHolidays,
     InternationalHolidays,
+    IslamicHolidays,
     StaticHolidays,
 )
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class IvoryCoast(
-    ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays, StaticHolidays
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """Ivory Coast holidays.
 
@@ -38,16 +39,16 @@ class IvoryCoast(
     country = "CI"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    # %s (observed).
-    observed_label = tr("%s (observé)")
-    # %s (observed, estimated).
-    observed_estimated_label = tr("%s (observé, estimé)")
+    # Day after the %s.
+    observed_label = tr("Lendemain de la %s")
+    # Day after the %s (estimated).
+    observed_estimated_label = tr("Lendemain de la %s (estimé)")
     # Ivory Coast gained independence in 1960.
     start_year = 1960
     default_language = "fr"
     supported_languages = ("en_CI", "en_US", "fr")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -84,14 +85,19 @@ class IvoryCoast(
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
+
         # Ascension Day.
         self._add_ascension_thursday(tr("Jour de l’Ascension"))
+
         # Pentecost Monday (Whit Monday).
         self._add_whit_monday(tr("Lundi de Pentecôte"))
+
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Fête de l’Assomption"))
+
         # All Saints' Day.
         self._add_all_saints_day(tr("Fête de la Toussaint"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Fête de Noël"))
 
@@ -99,15 +105,17 @@ class IvoryCoast(
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan"))
+
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Fête de la Tabaski"))
+
         # Day after Prophet's Birthday.
         self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
+
         # Day after Night of Destiny.
         self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
 
 
-# Aliases.
 class CI(IvoryCoast):
     pass
 
@@ -117,9 +125,10 @@ class CIV(IvoryCoast):
 
 
 class IvoryCoastStaticHolidays:
-    """Ivory Coast Special Holidays.
+    """Ivory Coast special holidays.
 
-    * [2024 AFCON](https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
+    References:
+        * [2024 AFCON](https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
     """
 
     special_public_holidays = {

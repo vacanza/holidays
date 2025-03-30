@@ -23,6 +23,9 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(IvoryCoast, CI, CIV)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(IvoryCoast(years=1959))
+
     def test_2025(self):
         self.assertHolidays(
             IvoryCoast(years=2025),
@@ -63,8 +66,9 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertNoHolidayName("Journée Nationale de la Paix", range(1960, 1996))
 
     def test_easter_monday(self):
+        name = "Lundi de Pâques"
         self.assertHolidayName(
-            "Lundi de Pâques",
+            name,
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
@@ -72,6 +76,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2023-04-10",
             "2024-04-01",
         )
+        self.assertHolidayName(name, range(1960, 2050))
 
     def test_ascension_day(self):
         self.assertHolidayName(
