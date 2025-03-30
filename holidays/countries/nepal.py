@@ -10,29 +10,64 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import JAN, FEB
-from holidays.groups import ChristianHolidays, HinduCalendarHolidays, InternationalHolidays
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays):
+class Nepal(
+    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+):
     """Nepal holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Nepal>
-        * <https://www.calendarlabs.com/holidays/nepal/2025>
+        * <https://narayanilawfirm.org.np/list-of-public-holidays-in-nepal-2079/>
         * <https://www.timeanddate.com/holidays/nepal/>
     """
 
     country = "NP"
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self, cls=NepalIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # https://www.timeanddate.com/holidays/nepal/gyalpo-losar
+        gyalpo_losar_dates = {
+            2016: (MAR, 9),
+            2017: (FEB, 27),
+            2018: (FEB, 16),
+            2019: (MAR, 7),
+            2020: (FEB, 24),
+            2021: (MAR, 14),
+            2022: (MAR, 3),
+            2023: (FEB, 21),
+            2024: (MAR, 11),
+            2025: (FEB, 28),
+            2026: (FEB, 18),
+            2027: (FEB, 7),
+            2028: (FEB, 26),
+            2029: (FEB, 14),
+            2030: (MAR, 5),
+            2031: (FEB, 22),
+            2032: (FEB, 12),
+            2033: (MAR, 2),
+            2034: (FEB, 19),
+            2035: (FEB, 9),
+        }
+
         # https://www.timeanddate.com/holidays/nepal/sonam-losar
         sonam_losar_dates = {
             2016: (FEB, 9),
@@ -50,6 +85,11 @@ class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, International
             2028: (FEB, 26),
             2029: (JAN, 15),
             2030: (FEB, 3),
+            2031: (JAN, 24),
+            2032: (FEB, 12),
+            2033: (JAN, 31),
+            2034: (JAN, 21),
+            2035: (FEB, 9),
         }
 
         # Prithvi Jayanti.
@@ -66,6 +106,13 @@ class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, International
 
         # Constitution Day.
         self._add_holiday_sep_19("Constitution Day")
+
+        # Tamu Losar.
+        self._add_holiday_dec_30("Tamu Losar")
+
+        if self._year in gyalpo_losar_dates:
+            # Gyalpo Losar.
+            self._add_holiday("Gyalpo Losar", gyalpo_losar_dates[self._year])
 
         # Labor Day.
         self._add_labor_day("Labor Day")
@@ -111,6 +158,12 @@ class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, International
         # Govardhan Puja
         self._add_govardhan_puja("Govardhan Puja")
 
+        # Holi(Mountain & Hilly)
+        self._add_nepal_holi("Holi(Mountain & Hilly)")
+
+        # Holi(Terai)
+        self._add_holi("Holi(Terai)")
+
         # Janai Purnima.
         self._add_raksha_bandhan("Janai Purnima")
 
@@ -146,6 +199,74 @@ class Nepal(HolidayBase, ChristianHolidays, HinduCalendarHolidays, International
 
         # Vijayadashami.
         self._add_dussehra("Vijayadashami")
+
+        # Islamic holidays.
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day("Bakrid")
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day("Id-ul-Fitr")
+
+
+class NepalIslamicHolidays(_CustomIslamicHolidays):
+    # Bakrid / Eid-al-Adha.
+    EID_AL_ADHA_DATES = {
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 2),
+        2005: (JAN, 21),
+        2006: ((JAN, 11), (DEC, 31)),
+        2007: (DEC, 20),
+        2008: (DEC, 9),
+        2009: (NOV, 28),
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 27),
+        2013: (OCT, 16),
+        2014: (OCT, 6),
+        2015: (SEP, 25),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (AUG, 1),
+        2021: (JUL, 21),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+    }
+
+    # Id-ul-Fitr / Eid-al-Fitr.
+    EID_AL_FITR_DATES = {
+        2001: (DEC, 17),
+        2002: (DEC, 6),
+        2003: (NOV, 26),
+        2004: (NOV, 14),
+        2005: (NOV, 3),
+        2006: (OCT, 24),
+        2007: (OCT, 13),
+        2008: (OCT, 2),
+        2009: (SEP, 21),
+        2010: (SEP, 10),
+        2011: (AUG, 31),
+        2012: (AUG, 20),
+        2013: (AUG, 8),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 16),
+        2019: (JUN, 5),
+        2020: (MAY, 25),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 22),
+        2024: (APR, 11),
+        2025: (MAR, 31),
+    }
 
 
 class NP(Nepal):

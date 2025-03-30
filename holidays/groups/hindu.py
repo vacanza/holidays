@@ -197,6 +197,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
+    def _add_nepal_holi(self, name) -> Optional[date]:
+        """
+        Add Holi Festival for Nepal (Mountain & Hilly).
+
+        Holi, known as the Festival of Colors, is a Hindu festival that marks
+        the arrival of spring. It is celebrated on the full moon day of the
+        Hindu month of Phalguna (February/March).
+        https://en.wikipedia.org/wiki/Holi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.holi_date(self._year), days_delta=-1
+        )
+
     def _add_holi(self, name) -> Optional[date]:
         """
         Add Holi Festival.

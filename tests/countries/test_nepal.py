@@ -32,12 +32,17 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-01-30", "Martyr's Day; Sonam Losar"),
             ("2025-02-19", "National Democracy Day"),
             ("2025-02-26", "Maha Shivaratri"),
+            ("2025-02-28", "Gyalpo Losar"),
             ("2025-03-08", "Women's Day"),
+            ("2025-03-13", "Holi(Mountain & Hilly)"),
+            ("2025-03-14", "Holi(Terai)"),
+            ("2025-03-31", "Id-ul-Fitr"),
             ("2025-04-06", "Ram Navami"),
             ("2025-04-13", "Nepali New Year (Vikram Sambat)"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-12", "Buddha Jayanti"),
             ("2025-05-29", "Republic Day"),
+            ("2025-06-07", "Bakrid"),
             ("2025-08-09", "Janai Purnima"),
             ("2025-08-16", "Krishna Janmashtami"),
             ("2025-09-19", "Constitution Day"),
@@ -55,9 +60,18 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-10-24", "Tihar Holiday"),
             ("2025-10-28", "Chhath Parwa"),
             ("2025-12-25", "Christmas"),
+            ("2025-12-30", "Tamu Losar"),
         )
 
     def test_ranged_holidays(self):
+        name = "Bakrid"
+        dt = (
+            "2001-03-06",
+            "2010-11-17",
+            "2025-06-07",
+        )
+        self.assertHolidayName(name, dt)
+
         name = "Bhai Tika"
         dt = (
             "2001-11-16",
@@ -127,6 +141,40 @@ class TestNepal(CommonCountryTests, TestCase):
             "2010-11-06",
             "2025-10-22",
             "2035-10-31",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Gyalpo Losar"
+        dt = (
+            "2016-03-09",
+            "2025-02-28",
+            "2035-02-09",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Holi(Mountain & Hilly)"
+        dt = (
+            "2001-03-09",
+            "2010-02-28",
+            "2025-03-13",
+            "2035-03-23",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Holi(Terai)"
+        dt = (
+            "2001-03-10",
+            "2010-03-01",
+            "2025-03-14",
+            "2035-03-24",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Id-ul-Fitr"
+        dt = (
+            "2001-12-17",
+            "2010-09-10",
+            "2025-03-31",
         )
         self.assertHolidayName(name, dt)
 
@@ -208,6 +256,14 @@ class TestNepal(CommonCountryTests, TestCase):
             "2010-03-24",
             "2025-04-06",
             "2035-04-16",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Sonam Losar"
+        dt = (
+            "2016-02-09",
+            "2025-01-30",
+            "2035-02-09",
         )
         self.assertHolidayName(name, dt)
 
