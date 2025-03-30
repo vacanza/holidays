@@ -498,6 +498,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Fiji</td>
+<td>FJ</td>
+<td></td>
+<td></td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Finland</td>
 <td>FI</td>
 <td></td>

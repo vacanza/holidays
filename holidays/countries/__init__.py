@@ -63,6 +63,7 @@ from .el_salvador import ElSalvador, SV, SLV
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
+from .fiji import Fiji, FJ, FJI
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
 from .gabon import Gabon, GA, GAB
