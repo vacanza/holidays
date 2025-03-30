@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB
+from holidays.calendars.gregorian import FEB, OCT
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -38,6 +38,9 @@ class IvoryCoast(
             * <https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History>
 
     Note:
+        The oldest decree available online that underpins the public holidays defined here
+        for the Ivory Coast is Decree no. 96-205 of March 7, 1996.
+
         In Islamic calendar, days begin at sunset. The naming convention "day after" refers
         to the daylight hours following the night of the celebration, which is technically
         the same Gregorian calendar day.
@@ -53,8 +56,7 @@ class IvoryCoast(
     observed_label = tr("Lendemain de la %s")
     # Day after the %s (estimated).
     observed_estimated_label = tr("Lendemain de la %s (estimé)")
-    # Ivory Coast gained independence in 1960.
-    start_year = 1961
+    start_year = 1997
     default_language = "fr"
     supported_languages = ("en_CI", "en_US", "fr")
 
@@ -86,11 +88,10 @@ class IvoryCoast(
         # Independence Day.
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
 
-        if self._year >= 1996:
-            # National Peace Day.
-            self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
+        # National Peace Day.
+        self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
 
-        if 1996 <= self._year <= 2000:
+        if self._year <= 2000:
             self._add_holiday_dec_7(
                 # Anniversary of death of President Felix Houphouet-Boigny.
                 tr("Anniversaire du décès du Président Felix Houphouet-Boigny")
@@ -157,10 +158,13 @@ class IvoryCoastStaticHolidays:
     """Ivory Coast special holidays.
 
     References:
+        * [2010 Presidential Election](https://www.gouv.ci/_actualite-article.php?d=4.&recordID=1255&p=366)
         * [2024 AFCON](https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
     """
 
     special_public_holidays = {
+        # 2010: Public holiday for Presidential election preparation
+        2010: (OCT, 29, tr("Jour férié pour la préparation de l'élection présidentielle")),
         # 2024 African Cup of Nations Victory.
         2024: (FEB, 12, tr("Victoire à la Coupe d’Afrique des Nations 2024")),
     }
