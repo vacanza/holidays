@@ -261,7 +261,7 @@ msgstr "पोंगल"
 
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
-msgstr "पुथांडु (तमिल नव वर्ष)"
+msgstr "पुत्ताण्डु (तमिल नव वर्ष)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
@@ -269,7 +269,7 @@ msgstr "तेलंगाना स्थापना दिवस"
 
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
-msgstr "बथुकम्मा महोत्सव"
+msgstr "बतुकम्मा महोत्सव"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
@@ -293,7 +293,7 @@ msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
-msgstr "ईद-उल-फ़ितर"
+msgstr "ईद-उल-फितर"
 
 #. Eid al-Adha.
 msgid "Bakrid"
