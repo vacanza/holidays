@@ -26,8 +26,11 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
     """
 
     country = "CI"
+    # %s (estimated).
     estimated_label = tr("%s (estimé)")
+    # %s (observed).
     observed_label = tr("%s (observé)")
+    # %s (observed, estimated).
     observed_estimated_label = tr("%s (observé, estimé)")
     # Ivory Coast gained independence in 1960.
     start_year = 1960
@@ -48,16 +51,20 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Secular Holidays
+        # Secular Holidays.
+
         # New Year's Day.
         self._add_new_years_day(tr("1ᵉʳ janvier"))
+
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Fête du travail")))
+
         # Independence Day
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
+
+        # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
         if self._year >= 1996:
-            # National Peace Day - November 15.
-            # Introduced in 1996. See details: https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History
+            # National Peace Day.
             self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
 
         # Christian Holidays
@@ -80,9 +87,9 @@ class IvoryCoast(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Intern
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Fête de la Tabaski (Aîd-El-Kébir)"))
         # Day after Prophet's Birthday.
-        self._add_mawlid_day(tr("L’Anniversaire de la Naissance du Prophète Mahomet (Maouloud)"))
-        # Night of Destiny (Laylat al-Qadr)
-        self._add_laylat_al_qadr_day(tr("Nuit du Destin (Lailatou-Kadr)"))
+        self._add_mawlid_day_two(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet (Maouloud)"))
+        # Day After Night of Destiny (Laylat al-Qadr).
+        self._add_laylat_al_qadr_day_two(tr("Lendemain de la Nuit du Destin (Lailatou-Kadr)"))
 
 
 # Aliases.

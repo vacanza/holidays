@@ -27,7 +27,7 @@ msgstr ""
 
 #. Secular Holidays New Year's Day.
 msgid "1ᵉʳ janvier"
-msgstr "1ˢᵗ January"
+msgstr "New Year's Day"
 
 #. Labor Day.
 msgid "Fête du travail"
