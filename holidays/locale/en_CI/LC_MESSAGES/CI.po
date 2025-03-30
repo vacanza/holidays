@@ -46,9 +46,9 @@ msgstr "National Peace Day"
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Pentecost Monday (Whit Monday).
+#. Whit Monday.
 msgid "Lundi de Pentecôte"
-msgstr "Pentecost Monday"
+msgstr "Whit Monday"
 
 #. Assumption Day.
 msgid "Fête de l’Assomption"

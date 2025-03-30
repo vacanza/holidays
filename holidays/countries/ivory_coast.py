@@ -104,7 +104,7 @@ class IvoryCoast(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jour de l’Ascension"))
 
-        # Pentecost Monday (Whit Monday).
+        # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.

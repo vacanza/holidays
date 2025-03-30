@@ -46,7 +46,7 @@ msgstr ""
 msgid "Lundi de Pâques"
 msgstr ""
 
-#. Pentecost Monday (Whit Monday).
+#. Whit Monday.
 msgid "Lundi de Pentecôte"
 msgstr ""
 
