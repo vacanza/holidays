@@ -99,7 +99,7 @@ msgstr "Day after the %s"
 #. Day after the %s (estimated).
 #, c-format
 msgid "Lendemain de la %s (estimé)"
-msgstr "Day after the %s"
+msgstr "Day after the %s (estimated)"
 
 #. Anniversary of death of President Felix Houphouet-Boigny.
 msgid "Anniversaire du décès du Président Felix Houphouet-Boigny"
