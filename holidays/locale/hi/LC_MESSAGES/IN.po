@@ -49,7 +49,7 @@ msgstr "बाल दिवस"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "श्रमिक दिवस"
+msgstr "मजदूर दिवस"
 
 #. Diwali.
 msgid "Diwali"
@@ -81,7 +81,7 @@ msgstr "महावीर जयंती"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
-msgstr "महा शिवरात्रि"
+msgstr "महाशिवरात्रि"
 
 #. Navratri / Sharad Navratri.
 msgid "Navratri / Sharad Navratri"
@@ -89,11 +89,11 @@ msgstr "नवरात्र/शरद नवरात्र"
 
 #. Ram Navami.
 msgid "Ram Navami"
-msgstr "राम नवमी"
+msgstr "रामनवमी"
 
 #. Maha Navami.
 msgid "Maha Navami"
-msgstr "महा नवमी"
+msgstr "महानवमी"
 
 #. Ganesh Chaturthi.
 msgid "Ganesh Chaturthi"
@@ -125,7 +125,7 @@ msgstr "क्रिसमस"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. B. R. Ambedkar's Jayanti"
-msgstr "डॉ. बी.आर. अम्बेडकर जयंती"
+msgstr "डॉ. बी.आर. आम्बेडकर जयंती"
 
 #. Andhra Pradesh Foundation Day.
 msgid "Andhra Pradesh Foundation Day"
@@ -173,7 +173,7 @@ msgstr "हरियाणा स्थापना दिवस"
 
 #. Jharkhand Formation Day.
 msgid "Jharkhand Formation Day"
-msgstr "झारखण्ड स्थापना दिवस"
+msgstr "झारखंड स्थापना दिवस"
 
 #. Karnataka Rajyotsav.
 msgid "Karnataka Rajyotsava"
@@ -217,7 +217,7 @@ msgstr "ओडिशा दिवस (उत्कल दिवस)"
 
 #. Maha Vishuva Sankranti.
 msgid "Maha Vishuva Sankranti / Pana Sankranti"
-msgstr "महा विशुव संक्रांति / पण संक्रांति"
+msgstr "महा विषुव संक्रांति / पण संक्रांति"
 
 #. Guru Gobind Singh Jayanti.
 msgid "Guru Gobind Singh Jayanti"
@@ -261,7 +261,7 @@ msgstr "पोंगल"
 
 #. Puthandu.
 msgid "Puthandu (Tamil New Year)"
-msgstr "पुथंडु (तमिल नव वर्ष)"
+msgstr "पुथांडु (तमिल नव वर्ष)"
 
 #. Telangana Formation Day.
 msgid "Telangana Formation Day"
@@ -269,7 +269,7 @@ msgstr "तेलंगाना स्थापना दिवस"
 
 #. Bathukamma Festival.
 msgid "Bathukamma Festival"
-msgstr "बतुकम्मा महोत्सव"
+msgstr "बथुकम्मा महोत्सव"
 
 #. UP Formation Day.
 msgid "UP Formation Day"
@@ -293,7 +293,7 @@ msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "Id-ul-Fitr"
-msgstr "ईद-उल-फितर"
+msgstr "ईद-उल-फ़ितर"
 
 #. Eid al-Adha.
 msgid "Bakrid"
