@@ -22,7 +22,7 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * [Public holidays in Cape Verde] <https://en.wikipedia.org/wiki/Public_holidays_in_Cape_Verde>
-        * [Today's and Upcoming Holidays in Tuvalu] <https://www.timeanddate.com/holidays/cape-verde/>
+        * [Today's and Upcoming Holidays in Cape Verde] <https://www.timeanddate.com/holidays/cape-verde/>
         * [Democracy Day] <https://www.officeholidays.com/holidays/cape-verde/cape-verde-democracy-day>
         * [National Heroes Day] <https://www.officeholidays.com/holidays/cape-verde/guinea-bissau-national-heroes-day>
     """
