@@ -41,6 +41,9 @@ class IvoryCoast(
         In Islamic calendar, days begin at sunset. The naming convention "day after" refers
         to the daylight hours following the night of the celebration, which is technically
         the same Gregorian calendar day.
+
+        According to Decree no. 2011‐371 of 4 November 2011, if Eid al-Fitr, Eid al-Adha
+        or Christmas Day falls on a Sunday, the following Monday is also a holiday.
     """
 
     country = "CI"
@@ -111,15 +114,29 @@ class IvoryCoast(
         self._add_all_saints_day(tr("Fête de la Toussaint"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Fête de Noël"))
+        christmas_name = tr("Fête de Noël")
+        if self._year >= 2011:
+            self._add_observed(self._add_christmas_day(christmas_name))
+        else:
+            self._add_christmas_day(christmas_name)
 
         # Islamic Holidays
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan"))
+        eid_al_fitr_name = tr("Fête de fin du Ramadan")
+        if self._year >= 2012:
+            for dt in self._add_eid_al_fitr_day(eid_al_fitr_name):
+                self._add_observed(dt)
+        else:
+            self._add_eid_al_fitr_day(eid_al_fitr_name)
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Fête de la Tabaski"))
+        eid_al_adha_name = tr("Fête de la Tabaski")
+        if self._year >= 2012:
+            for dt in self._add_eid_al_adha_day(eid_al_adha_name):
+                self._add_observed(dt)
+        else:
+            self._add_eid_al_adha_day(eid_al_adha_name)
 
         # Day after Prophet's Birthday.
         self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))

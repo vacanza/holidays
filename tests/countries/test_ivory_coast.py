@@ -32,6 +32,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             ("2025-01-01", "1er janvier"),
             ("2025-03-27", "Lendemain de la Nuit du Destin"),
             ("2025-03-30", "Fête de fin du Ramadan"),
+            ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
             ("2025-04-21", "Lundi de Pâques"),
             ("2025-05-01", "Fête du travail"),
             ("2025-05-29", "Jour de l’Ascension"),
@@ -109,6 +110,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in range(1961, 2050)))
+        self.assertHolidayName("Lendemain de la Fête de Noël", "2011-12-26")
 
     def test_eid_al_fitr(self):
         name = "Fête de fin du Ramadan"
@@ -121,6 +123,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2025-03-30",
         )
         self.assertHolidayName(name, range(1961, 2050))
+        self.assertHolidayName("Lendemain de la Fête de fin du Ramadan", "2017-06-26")
 
     def test_eid_al_adha(self):
         name = "Fête de la Tabaski"
@@ -133,6 +136,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2025-06-06",
         )
         self.assertHolidayName(name, range(1961, 2050))
+        self.assertHolidayName("Lendemain de la Fête de la Tabaski", "2019-08-12")
 
     def test_mawlid(self):
         name = "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
