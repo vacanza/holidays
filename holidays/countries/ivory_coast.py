@@ -38,9 +38,9 @@ class IvoryCoast(
             * <https://en.wikipedia.org/wiki/C%C3%B4te_d%27Ivoire#History>
 
     Note:
-        In Islamic calendar, days begin at sunset. This naming name day after refers to the
-        daylight hours following the night of the celebration, which is technically the same
-        Gregorian calendar day.
+        In Islamic calendar, days begin at sunset. The naming convention "day after" refers
+        to the daylight hours following the night of the celebration, which is technically
+        the same Gregorian calendar day.
     """
 
     country = "CI"
