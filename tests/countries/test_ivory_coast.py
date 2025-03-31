@@ -106,8 +106,11 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in range(1997, 2050)))
-        self.assertHolidayName("Lendemain de la Fête de Noël", "2011-12-26")
+        name = "Fête de Noël"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1997, 2050)))
+        dt = ("2011-12-26",)
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_fitr(self):
         name = "Fête de fin du Ramadan"
