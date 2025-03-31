@@ -29,7 +29,7 @@ class IvoryCoast(
 
     References:
         * [Decree No. 96-205](https://www.droit-afrique.com/uploads/RCI-Decret-1996-205-jours-feries.pdf)
-        * Decree No. 2011‐371:
+        * Decree No. 2011-371:
             * [page 1](https://web.archive.org/web/20180617165811/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-1.pdf)
             * [page 2](https://web.archive.org/web/20180826205106/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-2.pdf)
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_Côte_d%27Ivoire>
@@ -45,7 +45,7 @@ class IvoryCoast(
         to the daylight hours following the night of the celebration, which is technically
         the same Gregorian calendar day.
 
-        According to Decree no. 2011‐371 of 4 November 2011, if Eid al-Fitr, Eid al-Adha
+        According to Decree no. 2011-371 of 4 November 2011, if Eid al-Fitr, Eid al-Adha
         or Christmas Day falls on a Sunday, the following Monday is also a holiday.
     """
 
@@ -68,7 +68,7 @@ class IvoryCoast(
                 if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
-        # the observed dates for the Ivory Coast's islamic holidays have been verified against
+        # The observed dates for the Ivory Coast's islamic holidays have been verified against
         # local references (COSIM) and align with the default Umm al-Qura calculations.
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         InternationalHolidays.__init__(self)
