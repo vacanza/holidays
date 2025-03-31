@@ -23,7 +23,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
-        * <https://ur.m.wikipedia.org/wiki/تعطیلات_پاکستان>
+        * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
     """
 
     country = "PK"
