@@ -40,7 +40,12 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
+from holidays.constants import (
+    HOLIDAY_NAME_DELIMITER,
+    PUBLIC,
+    DEFAULT_START_YEAR,
+    DEFAULT_END_YEAR,
+)
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -288,12 +293,27 @@ class HolidayBase(dict[date, str]):
 
             state:
                 *deprecated* use `subdiv` instead.
+        language:
+            The language which the returned holiday names will be translated
+            into. It must be an ISO 639-1 (2-letter) language code or a
+            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
+            (e.g., "en_US").
 
-            language:
-                The language which the returned holiday names will be translated
-                into. It must be an ISO 639-1 (2-letter) language code. If the
-                language translation is not supported the original holiday names
-                will be used.
+            When this parameter is not specified (None):
+            - The behavior depends on the system's LANG environment variable
+            - If LANG is empty or unset, holiday names will be in the country's
+              original language
+            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
+            - This may lead to inconsistent results across different environments
+              (e.g., terminal vs. Jupyter notebooks)
+
+            For consistent behavior regardless of environment, explicitly specify
+            a language code (e.g., "de_DE" for German, "en_US" for English).
+
+            If the language translation is not supported, the original holiday
+            names will be used.
+
+            This behaviour will be later updated in version 1
 
             categories:
                 Requested holiday categories.
@@ -304,17 +324,26 @@ class HolidayBase(dict[date, str]):
         super().__init__()
 
         # Categories validation.
-        if self.default_category and self.default_category not in self.supported_categories:
-            raise ValueError("The default category must be listed in supported categories.")
+        if (
+            self.default_category
+            and self.default_category not in self.supported_categories
+        ):
+            raise ValueError(
+                "The default category must be listed in supported categories."
+            )
 
         if not self.default_category and not categories:
-            raise ValueError("Categories cannot be empty if `default_category` is not set.")
+            raise ValueError(
+                "Categories cannot be empty if `default_category` is not set."
+            )
 
         categories = _normalize_arguments(str, categories) or {self.default_category}
         if unknown_categories := categories.difference(  # type: ignore[union-attr]
             self.supported_categories
         ):
-            raise ValueError(f"Category is not supported: {', '.join(unknown_categories)}.")
+            raise ValueError(
+                f"Category is not supported: {', '.join(unknown_categories)}."
+            )
 
         # Subdivision validation.
         if subdiv := subdiv or prov or state:
@@ -350,7 +379,9 @@ class HolidayBase(dict[date, str]):
                 )
 
         # Special holidays validation.
-        if (has_substituted_holidays := getattr(self, "has_substituted_holidays", False)) and (
+        if (
+            has_substituted_holidays := getattr(self, "has_substituted_holidays", False)
+        ) and (
             not getattr(self, "substituted_label", None)
             or not getattr(self, "substituted_date_format", None)
         ):
@@ -393,7 +424,9 @@ class HolidayBase(dict[date, str]):
             return self
 
         if not isinstance(other, (HolidayBase, HolidaySum)):
-            raise TypeError("Holiday objects can only be added with other Holiday objects")
+            raise TypeError(
+                "Holiday objects can only be added with other Holiday objects"
+            )
 
         return HolidaySum(self, other)
 
@@ -421,14 +454,18 @@ class HolidayBase(dict[date, str]):
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
-        return dict.__contains__(cast("dict[Any, Any]", self), self.__keytransform__(key))
+        return dict.__contains__(
+            cast("dict[Any, Any]", self), self.__keytransform__(key)
+        )
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
             return False
 
         for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
                 return False
 
         return dict.__eq__(cast("dict[Any, Any]", self), other)
@@ -534,7 +571,11 @@ class HolidayBase(dict[date, str]):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_from(
-                            -int(number[0]) if date_direction == "before" else +int(number[0]),
+                            (
+                                -int(number[0])
+                                if date_direction == "before"
+                                else +int(number[0])
+                            ),
                             WEEKDAYS[weekday],
                             date(self._year, MONTHS[month], int(day)),
                         ),
@@ -648,7 +689,9 @@ class HolidayBase(dict[date, str]):
             return True
 
         for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
                 return True
 
         return dict.__ne__(self, other)
@@ -713,7 +756,15 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
+        return (
+            "country",
+            "expand",
+            "language",
+            "market",
+            "observed",
+            "subdiv",
+            "years",
+        )
 
     @cached_property
     def _entity_code(self):
@@ -760,7 +811,9 @@ class HolidayBase(dict[date, str]):
         supported_languages = set(self.supported_languages)
         if self._entity_code is not None:
             fallback = self.language not in supported_languages
-            languages = [self.language] if self.language in supported_languages else None
+            languages = (
+                [self.language] if self.language in supported_languages else None
+            )
             locale_directory = str(Path(__file__).with_name("locale"))
 
             # Add entity native content translations.
@@ -807,19 +860,25 @@ class HolidayBase(dict[date, str]):
     def _add_special_holidays(self, mapping_names, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:
-            for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
+            for data in _normalize_tuple(
+                getattr(self, mapping_name, {}).get(self._year, ())
+            ):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
                     self._add_holiday(
-                        self.tr(self.observed_label) % self.tr(name)
-                        if observed
-                        else self.tr(name),
+                        (
+                            self.tr(self.observed_label) % self.tr(name)
+                            if observed
+                            else self.tr(name)
+                        ),
                         month,
                         day,
                     )
                 else:  # Substituted holidays.
                     to_month, to_day, from_month, from_day, *optional = data
-                    from_date = date(optional[0] if optional else self._year, from_month, from_day)
+                    from_date = date(
+                        optional[0] if optional else self._year, from_month, from_day
+                    )
                     self._add_holiday(
                         self.tr(self.substituted_label)
                         % from_date.strftime(self.tr(self.substituted_date_format)),
@@ -894,7 +953,9 @@ class HolidayBase(dict[date, str]):
     def _populate_common_holidays(self):
         """Populate entity common holidays."""
         for category in self._sorted_categories:
-            if pch_method := getattr(self, f"_populate_{category.lower()}_holidays", None):
+            if pch_method := getattr(
+                self, f"_populate_{category.lower()}_holidays", None
+            ):
                 pch_method()
 
         if self.has_special_holidays:
@@ -921,7 +982,9 @@ class HolidayBase(dict[date, str]):
                 for category in self._sorted_categories
             )
 
-    def append(self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]) -> None:
+    def append(
+        self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]
+    ) -> None:
         """Alias for [update()][holidays.holiday_base.HolidayBase.update] to mimic list type.
 
         Args:
@@ -978,10 +1041,15 @@ class HolidayBase(dict[date, str]):
         Returns:
             A list of holiday names if the date is a holiday, otherwise an empty list.
         """
-        return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
+        return [
+            name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name
+        ]
 
     def get_named(
-        self, holiday_name: str, lookup: str = "icontains", split_multiple_names: bool = True
+        self,
+        holiday_name: str,
+        lookup: str = "icontains",
+        split_multiple_names: bool = True,
     ) -> list[date]:
         """Find all holiday dates matching a given name.
 
@@ -1009,25 +1077,39 @@ class HolidayBase(dict[date, str]):
             A list of all holiday dates matching the provided holiday name.
         """
         holiday_name_dates = (
-            ((k, name) for k, v in self.items() for name in v.split(HOLIDAY_NAME_DELIMITER))
+            (
+                (k, name)
+                for k, v in self.items()
+                for name in v.split(HOLIDAY_NAME_DELIMITER)
+            )
             if split_multiple_names
             else ((k, v) for k, v in self.items())
         )
 
         if lookup == "icontains":
             holiday_name_lower = holiday_name.lower()
-            return [dt for dt, name in holiday_name_dates if holiday_name_lower in name.lower()]
+            return [
+                dt
+                for dt, name in holiday_name_dates
+                if holiday_name_lower in name.lower()
+            ]
         elif lookup == "exact":
             return [dt for dt, name in holiday_name_dates if holiday_name == name]
         elif lookup == "contains":
             return [dt for dt, name in holiday_name_dates if holiday_name in name]
         elif lookup == "startswith":
             return [
-                dt for dt, name in holiday_name_dates if holiday_name == name[: len(holiday_name)]
+                dt
+                for dt, name in holiday_name_dates
+                if holiday_name == name[: len(holiday_name)]
             ]
         elif lookup == "iexact":
             holiday_name_lower = holiday_name.lower()
-            return [dt for dt, name in holiday_name_dates if holiday_name_lower == name.lower()]
+            return [
+                dt
+                for dt, name in holiday_name_dates
+                if holiday_name_lower == name.lower()
+            ]
         elif lookup == "istartswith":
             holiday_name_lower = holiday_name.lower()
             return [
@@ -1066,7 +1148,9 @@ class HolidayBase(dict[date, str]):
         dt = self.__keytransform__(target_date or datetime.now().date())
         if direction == "forward" and (next_year := dt.year + 1) not in self.years:
             self._populate(next_year)
-        elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+        elif (
+            direction == "backward" and (previous_year := dt.year - 1) not in self.years
+        ):
             self._populate(previous_year)
 
         sorted_dates = sorted(self.keys())
