@@ -26,6 +26,7 @@ COUNTRIES: RegistryDict = {
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
+    "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
     "aruba": ("Aruba", "AW", "ABW"),
