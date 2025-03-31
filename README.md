@@ -354,7 +354,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cape Verde</td>
 <td>CV</td>
 <td></td>
-<td>en_US, <strong>pt_PT</strong>, uk</td>
+<td>en_US, <strong>pt_PT</strong></td>
 <td>OPTIONAL</td>
 </tr>
 <tr>

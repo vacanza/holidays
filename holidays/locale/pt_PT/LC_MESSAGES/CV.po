@@ -31,7 +31,7 @@ msgstr ""
 msgid "Ano Novo"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Dia do Trabalhador"
 msgstr ""
 
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Dia da Liberdade e Democracia"
 msgstr ""
 
-#. Independence Day (From Portugal 1975)
+#. Independence Day.
 msgid "Dia da Independência Nacional"
 msgstr ""
 
@@ -59,28 +59,12 @@ msgstr ""
 msgid "Dia da Nacionalidade e dos Heróis Nacionais"
 msgstr ""
 
-#. Youth Day
+#. Youth Day.
 msgid "Dia Mundial da Criança"
 msgstr ""
 
 #. Good Friday.
 msgid "Sexta-feira Santa"
-msgstr ""
-
-#. March Equinox.
-msgid "Equinócio de Março"
-msgstr ""
-
-#. June Solstice
-msgid "Solstício de Junho"
-msgstr ""
-
-#. September Equinox
-msgid "Equinócio de Setembro"
-msgstr ""
-
-#. Winter Solstice.
-msgid "Solstício de Inverno"
 msgstr ""
 
 #. Ash Wednesday.
@@ -97,4 +81,8 @@ msgstr ""
 
 #. Mother's Day.
 msgid "Dia das Mães"
+msgstr ""
+
+#. Father's Day.
+msgid "Dia dos Pais"
 msgstr ""
