@@ -105,6 +105,6 @@ msgstr ""
 msgid "Anniversaire du décès du Président Felix Houphouet-Boigny"
 msgstr ""
 
-#. 2010: Public holiday for Presidential election preparation
+#. Public holiday for Presidential election preparation.
 msgid "Jour férié pour la préparation de l'élection présidentielle"
 msgstr ""

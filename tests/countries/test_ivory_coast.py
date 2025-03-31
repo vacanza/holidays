@@ -27,24 +27,10 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(IvoryCoast(years=1996))
 
-    def test_2025(self):
-        self.assertHolidays(
-            IvoryCoast(years=2025),
-            ("2025-01-01", "1er janvier"),
-            ("2025-03-27", "Lendemain de la Nuit du Destin"),
-            ("2025-03-30", "Fête de fin du Ramadan"),
-            ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
-            ("2025-04-21", "Lundi de Pâques"),
-            ("2025-05-01", "Fête du travail"),
-            ("2025-05-29", "Jour de l’Ascension"),
-            ("2025-06-06", "Fête de la Tabaski"),
-            ("2025-06-09", "Lundi de Pentecôte"),
-            ("2025-08-07", "Fête Nationale"),
-            ("2025-08-15", "Fête de l’Assomption"),
-            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
-            ("2025-11-01", "Fête de la Toussaint"),
-            ("2025-11-15", "Journée Nationale de la Paix"),
-            ("2025-12-25", "Fête de Noël"),
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2010-10-29",
+            "2024-02-12",
         )
 
     def test_new_years_day(self):
@@ -85,7 +71,15 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_ascension_day(self):
         name = "Jour de l’Ascension"
-        self.assertHolidayName(name, "2019-05-30", "2020-05-21", "2021-05-13", "2022-05-26")
+        self.assertHolidayName(
+            name,
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+        )
         self.assertHolidayName(name, range(1997, 2050))
 
     def test_whit_monday(self):
@@ -189,8 +183,81 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(2001, 2050))
 
-    def test_special_holidays(self):
-        self.assertHoliday(
-            "2010-10-29",
-            "2024-02-12",
+    def test_2025(self):
+        self.assertHolidays(
+            IvoryCoast(years=2025),
+            ("2025-01-01", "1er janvier"),
+            ("2025-03-27", "Lendemain de la Nuit du Destin"),
+            ("2025-03-30", "Fête de fin du Ramadan"),
+            ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-05-01", "Fête du travail"),
+            ("2025-05-29", "Jour de l’Ascension"),
+            ("2025-06-06", "Fête de la Tabaski"),
+            ("2025-06-09", "Lundi de Pentecôte"),
+            ("2025-08-07", "Fête Nationale"),
+            ("2025-08-15", "Fête de l’Assomption"),
+            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            ("2025-11-01", "Fête de la Toussaint"),
+            ("2025-11-15", "Journée Nationale de la Paix"),
+            ("2025-12-25", "Fête de Noël"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2025-01-01", "1er janvier"),
+            ("2025-03-27", "Lendemain de la Nuit du Destin"),
+            ("2025-03-30", "Fête de fin du Ramadan"),
+            ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-05-01", "Fête du travail"),
+            ("2025-05-29", "Jour de l’Ascension"),
+            ("2025-06-06", "Fête de la Tabaski"),
+            ("2025-06-09", "Lundi de Pentecôte"),
+            ("2025-08-07", "Fête Nationale"),
+            ("2025-08-15", "Fête de l’Assomption"),
+            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            ("2025-11-01", "Fête de la Toussaint"),
+            ("2025-11-15", "Journée Nationale de la Paix"),
+            ("2025-12-25", "Fête de Noël"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-27", "Day after Night of Power"),
+            ("2025-03-30", "Eid al-Fitr"),
+            ("2025-03-31", "Day after the Eid al-Fitr"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-05-29", "Ascension Day"),
+            ("2025-06-06", "Eid al-Adha"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-08-07", "Independence Day"),
+            ("2025-08-15", "Assumption Day"),
+            ("2025-09-04", "Day after Prophet's Birthday"),
+            ("2025-11-01", "All Saints' Day"),
+            ("2025-11-15", "National Peace Day"),
+            ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_en_ci(self):
+        self.assertLocalizedHolidays(
+            "en_CI",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-27", "Day after Lailatou-Kadr"),
+            ("2025-03-30", "Aid-El-Fitr"),
+            ("2025-03-31", "Day after the Aid-El-Fitr"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-05-29", "Ascension Day"),
+            ("2025-06-06", "Aid-El-Kebir"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-08-07", "Independence Day"),
+            ("2025-08-15", "Assumption Day"),
+            ("2025-09-04", "Day after Maouloud"),
+            ("2025-11-01", "All Saints' Day"),
+            ("2025-11-15", "National Peace Day"),
+            ("2025-12-25", "Christmas Day"),
         )

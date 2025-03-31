@@ -81,6 +81,7 @@ Kate Golovanova
 Kelsey Karin Hawley
 Koert van der Veer
 Koki Nomura
+Kriti Birda
 Maina Kamau
 Malthe Borch
 Marek Šuppa

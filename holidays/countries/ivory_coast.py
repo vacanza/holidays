@@ -77,8 +77,6 @@ class IvoryCoast(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Secular Holidays.
-
         # New Year's Day.
         self._add_new_years_day(tr("1er janvier"))
 
@@ -96,8 +94,6 @@ class IvoryCoast(
                 # Anniversary of death of President Felix Houphouet-Boigny.
                 tr("Anniversaire du décès du Président Felix Houphouet-Boigny")
             )
-
-        # Christian Holidays
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
@@ -119,7 +115,11 @@ class IvoryCoast(
         if self._year >= 2011:
             self._add_observed(dt)
 
-        # Islamic Holidays
+        # Day after Prophet's Birthday.
+        self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
+
+        # Day after Night of Power.
+        self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
 
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Fête de fin du Ramadan")):
@@ -130,12 +130,6 @@ class IvoryCoast(
         for dt in self._add_eid_al_adha_day(tr("Fête de la Tabaski")):
             if self._year >= 2012:
                 self._add_observed(dt)
-
-        # Day after Prophet's Birthday.
-        self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
-
-        # Day after Night of Power.
-        self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
 
 
 class CI(IvoryCoast):
