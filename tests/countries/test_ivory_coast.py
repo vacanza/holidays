@@ -198,24 +198,25 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1997, 2050))
 
-    def test_2025(self):
+    def test_2024(self):
         self.assertHolidays(
-            IvoryCoast(years=2025),
-            ("2025-01-01", "1er janvier"),
-            ("2025-03-27", "Lendemain de la Nuit du Destin"),
-            ("2025-03-30", "Fête de fin du Ramadan"),
-            ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
-            ("2025-04-21", "Lundi de Pâques"),
-            ("2025-05-01", "Fête du travail"),
-            ("2025-05-29", "Jour de l’Ascension"),
-            ("2025-06-06", "Fête de la Tabaski"),
-            ("2025-06-09", "Lundi de Pentecôte"),
-            ("2025-08-07", "Fête Nationale"),
-            ("2025-08-15", "Fête de l’Assomption"),
-            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
-            ("2025-11-01", "Fête de la Toussaint"),
-            ("2025-11-15", "Journée Nationale de la Paix"),
-            ("2025-12-25", "Fête de Noël"),
+            IvoryCoast(years=2024),
+            ("2024-01-01", "1er janvier"),
+            ("2024-02-12", "Victoire à la Coupe d’Afrique des Nations 2024"),
+            ("2024-04-06", "Lendemain de la Nuit du Destin"),
+            ("2024-04-10", "Fête de fin du Ramadan"),
+            ("2024-04-01", "Lundi de Pâques"),
+            ("2024-05-01", "Fête du travail"),
+            ("2024-05-09", "Jour de l’Ascension"),
+            ("2024-05-20", "Lundi de Pentecôte"),
+            ("2024-06-16", "Fête de la Tabaski"),
+            ("2024-06-17", "Lendemain de la Fête de la Tabaski"),
+            ("2024-08-07", "Fête Nationale"),
+            ("2024-08-15", "Fête de l’Assomption"),
+            ("2024-09-15", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            ("2024-11-01", "Fête de la Toussaint"),
+            ("2024-11-15", "Journée Nationale de la Paix"),
+            ("2024-12-25", "Fête de Noël"),
         )
 
     def test_l10n_default(self):
