@@ -298,7 +298,6 @@ class IslamicHolidays(EasternCalendarHolidays):
     def _add_laylat_al_qadr_day(self, name):
         """
         Add Laylat al-Qadr Day (27th day of 9th month).
-
         The Night of Power.
         https://en.wikipedia.org/wiki/Night_of_Power
         """
