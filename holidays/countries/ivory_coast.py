@@ -50,6 +50,7 @@ class IvoryCoast(
     """
 
     country = "CI"
+    default_language = "fr"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
     # Day after the %s.
@@ -57,7 +58,6 @@ class IvoryCoast(
     # Day after the %s (estimated).
     observed_estimated_label = tr("Lendemain de la %s (estimé)")
     start_year = 1997
-    default_language = "fr"
     supported_languages = ("en_CI", "en_US", "fr")
 
     def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):

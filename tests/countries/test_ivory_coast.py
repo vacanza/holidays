@@ -50,7 +50,12 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Fête Nationale"
         self.assertHolidayName(name, (f"{year}-08-07" for year in range(1997, 2050)))
-        dt = ("2022-08-08",)
+        dt = (
+            "2005-08-08",
+            "2011-08-08",
+            "2016-08-08",
+            "2022-08-08",
+        )
         self.assertHolidayName(f"Lendemain de la {name}", dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -111,7 +116,11 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Fête de Noël"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1997, 2050)))
-        dt = ("2011-12-26",)
+        dt = (
+            "2011-12-26",
+            "2016-12-26",
+            "2022-12-26",
+        )
         self.assertHolidayName(f"Lendemain de la {name}", dt)
         self.assertNoNonObservedHoliday(dt)
 
