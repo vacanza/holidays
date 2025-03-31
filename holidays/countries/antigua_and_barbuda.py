@@ -59,19 +59,16 @@ class AntiguaAndBarbuda(
         # Whit Monday.
         self._add_whit_monday("Whit Monday")
 
-        if self._year < 2005:
+        if self._year <= 2005:
             # Caribbean Community (Caricom) Day.
             self._add_holiday_1st_mon_of_jul("Caribbean Community (Caricom) Day")
 
         # Carnival Monday.
         self._add_holiday_1st_mon_of_aug("Carnival Monday")
-        if self._year > 2005:
-            self._add_observed(
-                # Carnival Tuesday.
-                self._add_holiday_1st_mon_of_aug("Carnival Tuesday"),
-                rule=MON_TO_NEXT_TUE,
-                show_observed_label=False,
-            )
+
+        if self._year >= 2006:
+            # Carnival Tuesday.
+            self._add_holiday_1_day_past_1st_mon_of_aug("Carnival Tuesday")
 
         # Independence Day.
         independence_day_name = "Independence Day"
@@ -82,12 +79,14 @@ class AntiguaAndBarbuda(
         else:
             self._add_holiday_nov_1(independence_day_name)
 
-        if self._year >= 2014:
-            # Sir Vere Cornwall Bird (SNR) Day.
-            self._add_holiday_dec_9("Sir Vere Cornwall Bird (SNR) Day")
-        elif self._year >= 2005:
-            # National Heroes Day.
-            self._add_holiday_dec_9("National Heroes Day")
+        if self._year >= 2005:
+            self._add_holiday_dec_9(
+                # Sir Vere Cornwall Bird (SNR) Day.
+                "Sir Vere Cornwall Bird (SNR) Day"
+                if self._year >= 2014
+                # National Heroes Day.
+                else "National Heroes Day"
+            )
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
@@ -117,7 +116,8 @@ class AntiguaAndBarbudaStaticHolidays:
 
     # Day after the General Election.
     day_after_the_general_election = "Day after the General Election"
+
     special_public_holidays = {
-        2018: ((MAR, 22, day_after_the_general_election),),
-        2023: ((JAN, 19, day_after_the_general_election),),
+        2018: (MAR, 22, day_after_the_general_election),
+        2023: (JAN, 19, day_after_the_general_election),
     }
