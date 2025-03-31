@@ -166,7 +166,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1997, 2050))
 
-    def test_laylat_al_qadr(self):
+    def test_day_after_laylat_al_qadr(self):
         name = "Lendemain de la Nuit du Destin"
         self.assertHolidayName(
             name,
