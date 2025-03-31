@@ -154,7 +154,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertHolidayName(f"Lendemain de la {name}", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_mawlid(self):
+    def test_day_after_mawlid(self):
         name = "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
         self.assertHolidayName(
             name,
