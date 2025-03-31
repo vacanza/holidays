@@ -18,13 +18,14 @@ from tests.common import CommonCountryTests
 class TestIvoryCoast(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(IvoryCoast, years=range(1997, 2050))
+        years = range(1997, 2050)
+        super().setUpClass(IvoryCoast, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(IvoryCoast, CI, CIV)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(IvoryCoast(years=1959))
+        self.assertNoHolidays(IvoryCoast(years=1996))
 
     def test_2025(self):
         self.assertHolidays(
@@ -40,10 +41,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             ("2025-06-09", "Lundi de Pentecôte"),
             ("2025-08-07", "Fête Nationale"),
             ("2025-08-15", "Fête de l’Assomption"),
-            (
-                "2025-09-04",
-                "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet",
-            ),
+            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
             ("2025-11-01", "Fête de la Toussaint"),
             ("2025-11-15", "Journée Nationale de la Paix"),
             ("2025-12-25", "Fête de Noël"),
@@ -53,8 +51,15 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertHolidayName("1er janvier", (f"{year}-01-01" for year in range(1997, 2050)))
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1997, 2050)))
-        self.assertHolidayName("Lendemain de la Fête du travail", "2022-05-02")
+        name = "Fête du travail"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1997, 2050)))
+        dt = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+        )
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
         self.assertHolidayName("Fête Nationale", (f"{year}-08-07" for year in range(1997, 2050)))
@@ -93,7 +98,6 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2022-06-06",
             "2023-05-29",
             "2024-05-20",
-            "2025-06-09",
         )
         self.assertHolidayName(name, range(1997, 2050))
 
@@ -122,7 +126,14 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2025-03-30",
         )
         self.assertHolidayName(name, range(1997, 2050))
-        self.assertHolidayName("Lendemain de la Fête de fin du Ramadan", "2017-06-26")
+        dt = (
+            "2012-08-20",
+            "2017-06-26",
+            "2020-05-25",
+            "2025-03-31",
+        )
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_adha(self):
         name = "Fête de la Tabaski"
@@ -135,7 +146,13 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2025-06-06",
         )
         self.assertHolidayName(name, range(1997, 2050))
-        self.assertHolidayName("Lendemain de la Fête de la Tabaski", "2019-08-12")
+        dt = (
+            "2016-09-12",
+            "2019-08-12",
+            "2024-06-17",
+        )
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_mawlid(self):
         name = "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
@@ -172,13 +189,8 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(2001, 2050))
 
-    def test_static_holidays(self):
-        self.assertHolidayName(
-            "Jour férié pour la préparation de l'élection présidentielle", "2010-10-29"
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2010-10-29",
+            "2024-02-12",
         )
-        self.assertNoHolidayName(
-            "Jour férié pour la préparation de l'élection présidentielle", "2011-10-29"
-        )
-
-        self.assertHolidayName("Victoire à la Coupe d’Afrique des Nations 2024", "2024-02-12")
-        self.assertNoHolidayName("Victoire à la Coupe d’Afrique des Nations 2024", "2025-02-12")
