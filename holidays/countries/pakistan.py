@@ -19,7 +19,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """Pakistan holidays."""
+    """Pakistan holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
+        * <https://ur.m.wikipedia.org/wiki/تعطیلات_پاکستان>
+    """
 
     country = "PK"
     default_language = "en_PK"
