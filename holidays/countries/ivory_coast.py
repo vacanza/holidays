@@ -80,23 +80,11 @@ class IvoryCoast(
         # New Year's Day.
         self._add_new_years_day(tr("1er janvier"))
 
-        # Labor Day.
-        self._add_observed(self._add_labor_day(tr("Fête du travail")))
-
-        # Independence Day.
-        self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
-
-        # National Peace Day.
-        self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
-
-        if self._year <= 2000:
-            self._add_holiday_dec_7(
-                # Anniversary of death of President Felix Houphouet-Boigny.
-                tr("Anniversaire du décès du Président Felix Houphouet-Boigny")
-            )
-
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
+
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Fête du travail")))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Jour de l’Ascension"))
@@ -104,11 +92,23 @@ class IvoryCoast(
         # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))
 
+        # Independence Day.
+        self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
+
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Fête de l’Assomption"))
 
+        # National Peace Day.
+        self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
+
         # All Saints' Day.
         self._add_all_saints_day(tr("Fête de la Toussaint"))
+
+        if self._year <= 2000:
+            self._add_holiday_dec_7(
+                # Anniversary of death of President Felix Houphouet-Boigny.
+                tr("Anniversaire du décès du Président Felix Houphouet-Boigny")
+            )
 
         # Christmas Day.
         dt = self._add_christmas_day(tr("Fête de Noël"))
