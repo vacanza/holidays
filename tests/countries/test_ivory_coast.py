@@ -113,6 +113,17 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "Fête de la Toussaint", (f"{year}-11-01" for year in range(1997, 2050))
         )
 
+    def test_anniversary_of_death_of_first_president(self):
+        name = "Anniversaire du décès du Président Felix Houphouet-Boigny"
+        self.assertHolidayName(
+            name,
+            "1997-12-07",
+            "1998-12-07",
+            "1999-12-07",
+            "2000-12-07",
+        )
+        self.assertNoHolidayName(name, range(2001, 2050))
+
     def test_christmas_day(self):
         name = "Fête de Noël"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1997, 2050)))
@@ -186,17 +197,6 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             "2025-03-27",
         )
         self.assertHolidayName(name, range(1997, 2050))
-
-    def test_anniversary_of_death_of_first_president(self):
-        name = "Anniversaire du décès du Président Felix Houphouet-Boigny"
-        self.assertHolidayName(
-            name,
-            "1997-12-07",
-            "1998-12-07",
-            "1999-12-07",
-            "2000-12-07",
-        )
-        self.assertNoHolidayName(name, range(2001, 2050))
 
     def test_2025(self):
         self.assertHolidays(
