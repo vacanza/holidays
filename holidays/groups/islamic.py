@@ -295,6 +295,17 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
+    def _add_laylat_al_qadr_day(self, name):
+        """
+        Add Laylat al-Qadr Day (27th day of 9th month).
+        
+        The Night of Power.
+        https://en.wikipedia.org/wiki/Night_of_Power
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
+        )
+
     def _add_maldives_embraced_islam_day(self, name) -> set[date]:
         """
         Add Maldives Embraced Islam Day (1st day of 4th month).
