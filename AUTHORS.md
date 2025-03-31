@@ -129,6 +129,7 @@ Sergio Mayoral Martinez
 Serhii Murza
 Shaurya Uppal
 Sho Hirose
+Shreyansh Pande
 Simon Gurcke
 Sugato Ray
 Sylvain Pasche

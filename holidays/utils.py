@@ -72,9 +72,25 @@ def country_holidays(
 
         language:
             The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code. If the
-            language translation is not supported the original holiday names
-            will be used.
+            into. It must be an ISO 639-1 (2-letter) language code or a
+            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
+            (e.g., "en_US").
+
+            When this parameter is not specified (None):
+            - The behavior depends on the system's LANG environment variable
+            - If LANG is empty or unset, holiday names will be in the country's
+              original language
+            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
+            - This may lead to inconsistent results across different environments
+              (e.g., terminal vs. Jupyter notebooks)
+
+            For consistent behavior regardless of environment, explicitly specify
+            a language code (e.g., "de_DE" for German, "en_US" for English).
+
+            If the language translation is not supported, the original holiday
+            names will be used.
+
+            This behaviour will be later updated in version 1
 
         categories:
             Requested holiday categories.
@@ -236,9 +252,25 @@ def financial_holidays(
 
         language:
             The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code. If the
-            language translation is not supported the original holiday names
-            will be used.
+            into. It must be an ISO 639-1 (2-letter) language code or a
+            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
+            (e.g., "en_US").
+
+            When this parameter is not specified (None):
+            - The behavior depends on the system's LANG environment variable
+            - If LANG is empty or unset, holiday names will be in the country's
+              original language
+            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
+            - This may lead to inconsistent results across different environments
+              (e.g., terminal vs. Jupyter notebooks)
+
+            For consistent behavior regardless of environment, explicitly specify
+            a language code (e.g., "de_DE" for German, "en_US" for English).
+
+            If the language translation is not supported, the original holiday
+            names will be used.
+
+            This behaviour will be later updated in version 1
 
     Returns:
         A `HolidayBase` object matching the **market**.
@@ -255,7 +287,11 @@ def financial_holidays(
 
     try:
         return getattr(holidays, market)(
-            years=years, subdiv=subdiv, expand=expand, observed=observed, language=language
+            years=years,
+            subdiv=subdiv,
+            expand=expand,
+            observed=observed,
+            language=language,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
@@ -276,7 +312,8 @@ def CountryHoliday(  # noqa: N802
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
