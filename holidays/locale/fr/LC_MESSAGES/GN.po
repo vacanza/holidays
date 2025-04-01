@@ -26,6 +26,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Source-Language: fr\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr ""
@@ -34,23 +35,15 @@ msgstr ""
 msgid "Nouvel an"
 msgstr ""
 
-#. Eid al-Fitr.
-msgid "Korité"
+#. Second Republic Day.
+msgid "Jour de la Deuxième République"
 msgstr ""
 
 #. Easter Monday.
 msgid "Le lundi de Pâques"
 msgstr ""
 
-#. Second Republic Day.
-msgid "Jour de la Deuxième République"
-msgstr ""
-
-#. All Saint's Day.
-msgid "La Toussaint"
-msgstr ""
-
-#. Labour Day.
+#. Labor Day.
 msgid "Fête du Travail"
 msgstr ""
 
@@ -58,11 +51,7 @@ msgstr ""
 msgid "Anniversaire de l'OUA"
 msgstr ""
 
-#. Eid al-Adha.
-msgid "Tabaski"
-msgstr ""
-
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption de Marie"
 msgstr ""
 
@@ -70,14 +59,26 @@ msgstr ""
 msgid "Fête de l'indépendance de la Guinée"
 msgstr ""
 
+#. All Saint's Day.
+msgid "La Toussaint"
+msgstr ""
+
 #. Christmas Day.
 msgid "Noël"
 msgstr ""
 
-#. The Prophet's Birthday (Mawlid al-Nabi).
-msgid "Maouloud"
+#. Night of Power.
+msgid "Lailatoul Qadr"
 msgstr ""
 
-#. Laylat al-Qadr (The Night of Power).
-msgid "Lailatoul Qadr"
+#. Eid al-Fitr.
+msgid "Korité"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Tabaski"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Maouloud"
 msgstr ""
