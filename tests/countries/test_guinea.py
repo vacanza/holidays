@@ -19,23 +19,23 @@ from tests.common import CommonCountryTests
 class TestGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Guinea)
+        super().setUpClass(Guinea, years=range(1959, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(Guinea, GN, GIN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Guinea(years=1957))
+        self.assertNoHolidays(Guinea(years=1958))
 
     def test_second_republic_day(self):
         name = "Jour de la Deuxième République"
-        self.assertHolidayName(name, (f"{year}-04-03" for year in range(1958, 2021)))
-        self.assertNoHolidayName(name, Guinea(years=range(2022, 2050)))
+        self.assertHolidayName(name, (f"{year}-04-03" for year in range(1959, 2022)))
+        self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_all_saints_day(self):
         name = "La Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1958, 2021)))
-        self.assertNoHolidayName(name, Guinea(years=range(2022, 2050)))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2022)))
+        self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nouvel an", (f"{year}-01-01" for year in range(1958, 2050)))
@@ -61,6 +61,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
+        self.assertHolidayName(name, range(1959, 2050))
 
     def test_easter_monday(self):
         name = "Le lundi de Pâques"

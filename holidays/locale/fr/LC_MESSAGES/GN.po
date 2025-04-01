@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Guinea Holidays
+# Guinea holidays.
 #
 msgid ""
 msgstr ""

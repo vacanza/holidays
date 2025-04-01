@@ -68,6 +68,7 @@ ISLAMIC_HOLIDAYS = (
     # MV holidays:
     (3, 1, "QUAMEE_DHUVAS"),  # National Day in Maldives
     (4, 1, "MALDIVES_EMBRACED_ISLAM"),  # The Day Maldives Embraced Islam
+    # GN, CI
     (9, 27, "LAYLAT_AL_QADR"),  # Laylat Al-Qadr (The Night of Power)
 )
 

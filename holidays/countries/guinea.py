@@ -19,8 +19,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-        Guinea Holidays.
+    """Guinea Holidays.
 
     References:
         * <https://www.timeanddate.com/holidays/guinea/>
@@ -31,12 +30,13 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     """
 
     country = "GN"
+    # %s (estimated).
     estimated_label = tr("%s (estimé)")
     default_language = "fr"
     supported_languages = ("en_US", "fr")
 
     # Guinea Gained Independence from France on October 2, 1958
-    start_year = 1958
+    start_year = 1959
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -62,15 +62,14 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Easter Monday.
         self._add_easter_monday(tr("Le lundi de Pâques"))
 
-        if self._year <= 2021 and self._year >= 1958:
+        if self._year <= 2021:
             # Second Republic Day.
             self._add_holiday_apr_3(tr("Jour de la Deuxième République"))
 
-        if self._year <= 2021 and self._year >= 1958:
             # All Saint's Day.
             self._add_all_saints_day(tr("La Toussaint"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
         # Africa Day.
@@ -79,7 +78,7 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Independence Day.
@@ -88,10 +87,10 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        # The Prophet's Birthday (Mawlid al-Nabi).
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Maouloud"))
 
-        # Laylat al-Qadr (The Night of Power).
+        # Night of Power.
         self._add_laylat_al_qadr_day(tr("Lailatoul Qadr"))
 
 
