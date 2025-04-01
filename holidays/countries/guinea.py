@@ -35,7 +35,7 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     default_language = "fr"
     supported_languages = ("en_US", "fr")
 
-    # Guinea Gained Independance from France on October 2, 1958
+    # Guinea Gained Independence from France on October 2, 1958
     start_year = 1958
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
@@ -82,7 +82,7 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
-        # Independance Day.
+        # Independence Day.
         self._add_holiday_oct_2(tr("Fête de l'indépendance de la Guinée"))
 
         # Christmas Day.
