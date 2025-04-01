@@ -76,7 +76,7 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         self._add_holiday_oct_2(tr("Fête de l'indépendance de la Guinée"))
 
         if self._year <= 2021:
-            # All Saint's Day.
+            # All Saints' Day.
             self._add_all_saints_day(tr("La Toussaint"))
 
         # Christmas Day.
