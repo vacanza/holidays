@@ -59,7 +59,7 @@ msgstr ""
 msgid "Fête de l'indépendance de la Guinée"
 msgstr ""
 
-#. All Saint's Day.
+#. All Saints' Day.
 msgid "La Toussaint"
 msgstr ""
 
