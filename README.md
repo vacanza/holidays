@@ -673,6 +673,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Ivory Coast</td>
+<td>CI</td>
+<td></td>
+<td>en_CI, en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Jamaica</td>
 <td>JM</td>
 <td></td>
@@ -928,7 +935,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Pakistan</td>
 <td>PK</td>
 <td></td>
-<td></td>
+<td><strong>en_PK</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
