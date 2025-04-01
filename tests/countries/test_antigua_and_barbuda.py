@@ -159,17 +159,15 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         name_2 = "Sir Vere Cornwall Bird Snr. Day"
         self.assertHolidayName(
             name_1,
-            (
-                "2005-12-09",
-                "2006-12-11",
-                "2007-12-09",
-                "2008-12-09",
-                "2009-12-09",
-                "2010-12-09",
-                "2011-12-09",
-                "2012-12-10",
-                "2013-12-09",
-            ),
+            "2005-12-09",
+            "2006-12-11",
+            "2007-12-09",
+            "2008-12-09",
+            "2009-12-09",
+            "2010-12-09",
+            "2011-12-09",
+            "2012-12-10",
+            "2013-12-09",
         )
         self.assertHolidayName(name_2, (f"{year}-12-09" for year in range(2014, 2050)))
         self.assertNoHoliday(f"{year}-12-09" for year in range(1955, 2005))
