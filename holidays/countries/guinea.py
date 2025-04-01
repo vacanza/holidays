@@ -56,18 +56,12 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # New Year's Day.
         self._add_new_years_day(tr("Nouvel an"))
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Korité"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Le lundi de Pâques"))
-
         if self._year <= 2021:
             # Second Republic Day.
             self._add_holiday_apr_3(tr("Jour de la Deuxième République"))
 
-            # All Saint's Day.
-            self._add_all_saints_day(tr("La Toussaint"))
+        # Easter Monday.
+        self._add_easter_monday(tr("Le lundi de Pâques"))
 
         # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
@@ -75,23 +69,30 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Africa Day.
         self._add_africa_day(tr("Anniversaire de l'OUA"))
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Tabaski"))
-
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Independence Day.
         self._add_holiday_oct_2(tr("Fête de l'indépendance de la Guinée"))
 
+        if self._year <= 2021:
+            # All Saint's Day.
+            self._add_all_saints_day(tr("La Toussaint"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maouloud"))
-
         # Night of Power.
         self._add_laylat_al_qadr_day(tr("Lailatoul Qadr"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("Korité"))
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("Tabaski"))
+
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Maouloud"))
 
 
 class GN(Guinea):
