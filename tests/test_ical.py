@@ -60,7 +60,7 @@ class TestIcalExporter(TestCase):
             self.assertLessEqual(
                 len(line.encode()),
                 CONTENT_LINE_MAX_LENGTH,
-                f"Content Line exceeds RFC 5545 content line length: {repr(line)}",
+                f"Content line exceeds RFC 5545 content line length: {repr(line)}",
             )
 
             # If continuation line (starts with a space).
@@ -68,7 +68,7 @@ class TestIcalExporter(TestCase):
                 self.assertIsNot(
                     previous_line,
                     None,
-                    f"Continuation Line found without a preceding line: {repr(line)}",
+                    f"Continuation line found without a preceding line: {repr(line)}",
                 )
             previous_line = line
 
