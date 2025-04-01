@@ -9,6 +9,7 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
 from holidays.calendars.gregorian import JAN, FEB, MAR, AUG
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -78,32 +79,26 @@ class AntiguaAndBarbuda(
             self._add_holiday_1_day_past_1st_mon_of_aug("Carnival Tuesday")
 
         # Independence Day.
-        independence_day_name = "Independence Day"
+        dt = self._add_holiday_nov_1("Independence Day")
         if self._year >= 2005:
-            self._add_observed(
-                self._add_holiday_nov_1(independence_day_name), rule=SAT_SUN_TO_NEXT_MON
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
+
+        if self._year >= 2005:
+            name = (
+                # Sir Vere Cornwall Bird Snr. Day.
+                "Sir Vere Cornwall Bird Snr. Day"
+                if self._year >= 2014
+                # National Heroes Day.
+                else "National Heroes Day"
             )
-        else:
-            self._add_holiday_nov_1(independence_day_name)
-
-        # National Heroes Day.
-        national_heroes_day_name = "National Heroes Day"
-        if self._year == 2006:
-            self._add_holiday_dec_11(national_heroes_day_name)
-        elif self._year == 2012:
-            self._add_holiday_dec_10(national_heroes_day_name)
-        elif 2005 <= self._year < 2014:
-            self._add_holiday_dec_9(national_heroes_day_name)
-
-        # Sir Vere Cornwall Bird SNR. Day.
-        vc_bird_day_name = "Sir Vere Cornwall Bird SNR. Day"
-        if self._year >= 2014:
-            if self._year > 2019:
-                self._add_observed(
-                    self._add_holiday_dec_9(vc_bird_day_name), rule=SAT_SUN_TO_NEXT_MON
-                )
+            if self._year == 2006:
+                self._add_holiday_dec_11(name)
+            elif self._year == 2012:
+                self._add_holiday_dec_10(name)
             else:
-                self._add_holiday_dec_9(vc_bird_day_name)
+                dt = self._add_holiday_dec_9(name)
+                if self._year >= 2020:
+                    self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
