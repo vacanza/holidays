@@ -21,7 +21,7 @@ from holidays.version import __version__
 # iCal-specific constants
 CONTENT_LINE_MAX_LENGTH = 75
 CONTENT_LINE_DELIMITER = "\r\n"
-CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
+CONTENT_LINE_DELIMITER_WRAP = f"{CONTENT_LINE_DELIMITER} "
 
 
 class ICalExporter:
@@ -155,7 +155,7 @@ class ICalExporter:
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
-        lines = [
+        return [
             "BEGIN:VEVENT",
             f"DTSTAMP:{self.ical_timestamp}",
             f"UID:{event_uid}",
@@ -164,8 +164,6 @@ class ICalExporter:
             f"DURATION:P{holiday_length}D",
             "END:VEVENT",
         ]
-
-        return lines
 
     def generate(self, return_bytes: bool = False) -> Union[str, bytes]:
         """Generate iCalendar data.
