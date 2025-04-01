@@ -407,7 +407,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         Add Tihar Holiday (Nepal)
 
         Tihar holiday is celebrated as the fifth day of Tihar festival, also
-        known as Yamapanchak.Tihar is a five-day Hindu festival celebrated
+        known as Yamapanchak. Tihar is a five-day Hindu festival celebrated
         in Nepal that honors various deities, animals, and the bond
         between siblings.
         https://en.wikipedia.org/wiki/Tihar_(festival)
