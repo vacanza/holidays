@@ -20,22 +20,23 @@ from tests.common import CommonCountryTests
 class TestCapeVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(CapeVerde, years=range(1973, 2050))
+        super().setUpClass(CapeVerde, years=range(1976, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(CapeVerde, CV, CAV)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CapeVerde(years=1972))
+        self.assertNoHolidays(CapeVerde(categories=(OPTIONAL, PUBLIC), years=1975))
 
     def test_democracy_day(self):
         name = "Dia da Liberdade e Democracia"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, range(1973, 1991))
+        self.assertNoHolidayName(name, range(1976, 1991))
 
     def test_independence_day(self):
-        name = "Dia da Independência Nacional"
-        self.assertHolidayName(name, (f"{year}-07-05" for year in range(1976, 2050)))
+        self.assertHolidayName(
+            "Dia da Independência Nacional", (f"{year}-07-05" for year in range(1976, 2050))
+        )
 
     def test_heroes_day(self):
         self.assertHolidayName(
