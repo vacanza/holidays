@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 from unittest import TestCase
 
 from holidays.countries.antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
@@ -26,6 +25,20 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(AntiguaAndBarbuda(years=1954))
+
+    def test_special_holidays(self):
+        self.assertHolidayName("Public Holiday", "1993-08-03")
+        self.assertHolidayName(
+            "State Funeral of the late The Honourable Charlesworth T. Samuel", "2008-02-19"
+        )
+        self.assertHolidayName(
+            "State Funeral of the late The Honourable Sir George Herbert Walter", "2008-03-18"
+        )
+        self.assertHolidayName(
+            "Day after the General Election",
+            "2018-03-22",
+            "2023-01-19",
+        )
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -134,8 +147,6 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         name = "Independence Day"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1955, 2050)))
         dt = (
-            "1992-11-02",
-            "1998-11-02",
             "2008-11-03",
             "2009-11-02",
             "2014-11-03",
@@ -143,20 +154,35 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2020-11-02",
             "2025-11-03",
         )
-        observed_name = f"{name} (observed)"
-        self.assertHolidayName(observed_name, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_national_heroes_day(self):
         name = "National Heroes Day"
-        self.assertHolidayName(name, (f"{year}-12-09" for year in range(2005, 2014)))
+        self.assertHolidayName(
+            name,
+            (
+                "2005-12-09",
+                "2006-12-11",
+                "2007-12-09",
+                "2008-12-09",
+                "2009-12-09",
+                "2010-12-09",
+                "2011-12-09",
+                "2012-12-10",
+                "2013-12-09",
+            ),
+        )
         self.assertNoHoliday(f"{year}-12-09" for year in range(1955, 2005))
         self.assertNoHolidayName(name, range(1955, 2005), range(2014, 2050))
 
     def test_sir_vere_cornwall_bird_snr_day(self):
-        name = "Sir Vere Cornwall Bird (SNR) Day"
+        name = "Sir Vere Cornwall Bird SNR. Day"
         self.assertHolidayName(name, (f"{year}-12-09" for year in range(2014, 2050)))
         self.assertNoHolidayName(name, range(1955, 2014))
+        dt = ("2023-12-11",)
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"
@@ -169,8 +195,7 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2016-12-27",
             "2022-12-27",
         )
-        observed_name = f"{name} (observed)"
-        self.assertHolidayName(observed_name, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
@@ -181,13 +206,22 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
             "2010-12-28",
             "2021-12-28",
         )
-        observed_name = f"{name} (observed)"
-        self.assertHolidayName(observed_name, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_special_holidays(self):
-        self.assertHolidayName(
-            "Day after the General Election",
-            "2018-03-22",
-            "2023-01-19",
+    def test_2025(self):
+        self.assertHolidays(
+            AntiguaAndBarbuda(years=2025),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-05", "Labour Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-08-04", "Carnival Monday"),
+            ("2025-08-05", "Carnival Tuesday"),
+            ("2025-11-01", "Independence Day"),
+            ("2025-11-03", "Independence Day (observed)"),
+            ("2025-12-09", "Sir Vere Cornwall Bird SNR. Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
