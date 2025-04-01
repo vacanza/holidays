@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import InternationalHolidays, IslamicHolidays
@@ -17,10 +19,19 @@ from holidays.holiday_base import HolidayBase
 
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """Pakistan holidays."""
+    """Pakistan holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
+        * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
+    """
 
     country = "PK"
+    default_language = "en_PK"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
     start_year = 1948
+    supported_languages = ("en_PK", "en_US", "ur_PK")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -36,41 +47,45 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Kashmir Solidarity Day.
         if self._year >= 1990:
-            self._add_holiday_feb_5("Kashmir Solidarity Day")
+            # Kashmir Solidarity Day.
+            self._add_holiday_feb_5(tr("Kashmir Solidarity Day"))
 
-        # Pakistan Day.
         if self._year >= 1956:
-            self._add_holiday_mar_23("Pakistan Day")
+            # Pakistan Day.
+            self._add_holiday_mar_23(tr("Pakistan Day"))
 
-        # Labour Day.
         if self._year >= 1972:
-            self._add_labor_day("Labour Day")
+            # Labor Day.
+            self._add_labor_day(tr("Labour Day"))
 
         # Independence Day.
-        self._add_holiday_aug_14("Independence Day")
+        self._add_holiday_aug_14(tr("Independence Day"))
 
-        # Iqbal Day.
         if self._year <= 2014 or self._year >= 2022:
-            self._add_holiday_nov_9("Iqbal Day")
+            # Iqbal Day.
+            self._add_holiday_nov_9(tr("Iqbal Day"))
 
         # Quaid-e-Azam Day.
-        self._add_holiday_dec_25("Quaid-e-Azam Day")
+        self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
-        name = "Eid-ul-Fitr"
+        # Eid al-Fitr.
+        name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        name = "Eid-ul-Adha"
+        # Eid al-Adha.
+        name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
 
-        self._add_mawlid_day("Eid Milad-un-Nabi")
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Eid Milad-un-Nabi"))
 
-        name = "Ashura"
+        # Ashura.
+        name = tr("Ashura")
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
 
