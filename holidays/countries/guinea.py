@@ -82,6 +82,9 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Maouloud"))
+
         # Night of Power.
         self._add_laylat_al_qadr_day(tr("Lailatoul Qadr"))
 
@@ -90,9 +93,6 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
-
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maouloud"))
 
 
 class GN(Guinea):
