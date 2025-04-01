@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 import os
+import tempfile
 from datetime import date, datetime
 from unittest import TestCase
 from unittest.mock import patch, MagicMock
@@ -398,45 +399,42 @@ class TestIcalExporter(TestCase):
         self.assertTrue(set(uids).isdisjoint(set(uids_2)), "Some UIDs are reused")
 
     def test_save_ics_valid_path(self):
-        valid_path = "valid_directory"
-        os.makedirs(valid_path, exist_ok=True)
+        with tempfile.TemporaryDirectory() as valid_path:
+            file_path = os.path.join(valid_path, "test_calendar.ics")
 
-        try:
-            self.us_exporter.save_ics(file_path=os.path.join(valid_path, "test_calendar.ics"))
-            self.assertTrue(
-                os.path.exists(os.path.join(valid_path, "test_calendar.ics")),
-                f"File should be created at {os.path.join(valid_path, 'test_calendar.ics')}",
-            )
-        finally:
-            os.remove(os.path.join(valid_path, "test_calendar.ics"))
-            os.rmdir(valid_path)
+            self.us_exporter.save_ics(file_path=file_path)
+            self.assertTrue(os.path.exists(file_path), f"File should be created at {file_path}")
 
     def test_save_ics_empty_content(self):
         self.exporter.generate = MagicMock(return_value=b"")
 
-        with self.assertRaises(ValueError) as context:
-            self.exporter.save_ics(file_path="test_calendar.ics")
-        self.assertEqual(str(context.exception), "Generated content is empty or invalid.")
+        with tempfile.NamedTemporaryFile(suffix=".ics") as temp_file:
+            with self.assertRaises(ValueError) as context:
+                self.exporter.save_ics(file_path=temp_file.name)
+            self.assertEqual(str(context.exception), "Generated content is empty or invalid.")
 
     def test_save_ics_file_overwrite(self):
-        existing_file = "test_calendar.ics"
-        with open(existing_file, "w") as file:
-            file.write("Old content")
+        with tempfile.NamedTemporaryFile(suffix=".ics", delete=False) as temp_file:
+            temp_file.write(b"Old content")
+            temp_file.close()
 
-        self.us_exporter.save_ics(file_path=existing_file)
-        with open(existing_file) as file:
-            new_content = file.read()
+            self.us_exporter.save_ics(file_path=temp_file.name)
+            with open(temp_file.name) as file:
+                new_content = file.read()
 
-        self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
-        self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
-        os.remove(existing_file)
+            self.assertNotEqual(new_content, "Old content", "The file was not overwritten.")
+            self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
+            os.remove(temp_file.name)
 
     def test_save_ics_with_utf8_name(self):
-        utf8_filename = "test_ปฏิทิน"
+        with tempfile.NamedTemporaryFile(
+            prefix="test_ปฏิทิน", suffix=".ics", delete=False
+        ) as temp_file:
+            temp_file.close()
 
-        self.th_exporter.save_ics(file_path=f"{utf8_filename}.ics")
-        self.assertTrue(
-            os.path.exists(f"{utf8_filename}.ics"),
-            "File should be created with special characters in the name.",
-        )
-        os.remove(f"{utf8_filename}.ics")
+            self.th_exporter.save_ics(file_path=temp_file.name)
+            self.assertTrue(
+                os.path.exists(temp_file.name),
+                "File should be created with special characters in the name.",
+            )
+            os.remove(temp_file.name)
