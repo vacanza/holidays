@@ -66,9 +66,9 @@ msgstr "Eid al-Adha"
 msgid "Assomption de Marie"
 msgstr "Assumption of Mary"
 
-#. Independance Day.
+#. Independence Day.
 msgid "Fête de l'indépendance de la Guinée"
-msgstr "Independance Day"
+msgstr "Independence Day"
 
 #. Christmas Day.
 msgid "Noël"
