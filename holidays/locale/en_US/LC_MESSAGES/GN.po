@@ -59,9 +59,9 @@ msgstr "Assumption Day"
 msgid "Fête de l'indépendance de la Guinée"
 msgstr "Independence Day"
 
-#. All Saint's Day.
+#. All Saints' Day.
 msgid "La Toussaint"
-msgstr "All Saint's Day"
+msgstr "All Saints' Day"
 
 #. Christmas Day.
 msgid "Noël"
