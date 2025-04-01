@@ -25,7 +25,7 @@ CONTENT_LINE_DELIMITER_WRAP = CONTENT_LINE_DELIMITER + " "
 
 
 class ICalExporter:
-    def __init__(self, holidays_object: HolidayBase, show_language: bool = False) -> None:
+    def __init__(self, instance: HolidayBase, show_language: bool = False) -> None:
         """Initialize iCalendar exporter.
 
         Args:
@@ -39,10 +39,10 @@ class ICalExporter:
                 If neither attribute exists and `show_language=True`, an
                 exception will be raised.
 
-            holidays_object:
+            instance:
                 `HolidaysBase` object containing holiday data.
         """
-        self.holidays = holidays_object
+        self.holidays = instance
         self.show_language = show_language
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
@@ -211,7 +211,7 @@ class ICalExporter:
         output = CONTENT_LINE_DELIMITER.join(lines)
         return output.encode() if return_bytes else output
 
-    def export_ics(self, file_path: str) -> None:
+    def save_ics(self, file_path: str) -> None:
         """Export the calendar data to a .ics file.
 
         While RFC 5545 does not specifically forbid filenames for .ics files, but it’s advisable

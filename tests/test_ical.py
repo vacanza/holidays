@@ -397,12 +397,12 @@ class TestIcalExporter(TestCase):
         # Ensure that there is no overlap at all between UIDs from both attempt.
         self.assertTrue(set(uids).isdisjoint(set(uids_2)), "Some UIDs are reused")
 
-    def test_export_ics_valid_path(self):
+    def test_save_ics_valid_path(self):
         valid_path = "valid_directory"
         os.makedirs(valid_path, exist_ok=True)
 
         try:
-            self.us_exporter.export_ics(file_path=os.path.join(valid_path, "test_calendar.ics"))
+            self.us_exporter.save_ics(file_path=os.path.join(valid_path, "test_calendar.ics"))
             self.assertTrue(
                 os.path.exists(os.path.join(valid_path, "test_calendar.ics")),
                 f"File should be created at {os.path.join(valid_path, 'test_calendar.ics')}",
@@ -411,19 +411,19 @@ class TestIcalExporter(TestCase):
             os.remove(os.path.join(valid_path, "test_calendar.ics"))
             os.rmdir(valid_path)
 
-    def test_export_ics_empty_content(self):
+    def test_save_ics_empty_content(self):
         self.exporter.generate = MagicMock(return_value=b"")
 
         with self.assertRaises(ValueError) as context:
-            self.exporter.export_ics(file_path="test_calendar.ics")
+            self.exporter.save_ics(file_path="test_calendar.ics")
         self.assertEqual(str(context.exception), "Generated content is empty or invalid.")
 
-    def test_export_ics_file_overwrite(self):
+    def test_save_ics_file_overwrite(self):
         existing_file = "test_calendar.ics"
         with open(existing_file, "w") as file:
             file.write("Old content")
 
-        self.us_exporter.export_ics(file_path=existing_file)
+        self.us_exporter.save_ics(file_path=existing_file)
         with open(existing_file) as file:
             new_content = file.read()
 
@@ -431,10 +431,10 @@ class TestIcalExporter(TestCase):
         self.assertIn("BEGIN:VCALENDAR", new_content, "New content is not valid iCalendar")
         os.remove(existing_file)
 
-    def test_export_ics_with_utf8_name(self):
+    def test_save_ics_with_utf8_name(self):
         utf8_filename = "test_ปฏิทิน"
 
-        self.th_exporter.export_ics(file_path=f"{utf8_filename}.ics")
+        self.th_exporter.save_ics(file_path=f"{utf8_filename}.ics")
         self.assertTrue(
             os.path.exists(f"{utf8_filename}.ics"),
             "File should be created with special characters in the name.",

@@ -452,7 +452,7 @@ True
 1
 ```
 
-To export to `.ics` format, use `export_ics`.
+To export to `.ics` format, use `save_ics`.
 
 ``` python
 >>> from pathlib import Path
@@ -460,10 +460,10 @@ To export to `.ics` format, use `export_ics`.
 >>> from holidays.ical import ICalExporter
 # Export the NYSE_2024_calendar.ics file in the current directory
 >>> nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
->>> nyse_exporter.export_ics(file_path="NYSE_2024_calendar.ics")
+>>> nyse_exporter.save_ics(file_path="NYSE_2024_calendar.ics")
 # Export the NYSE_2024_calendar.ics file to MS Windows' Downloads folder instead.
 >>> downloads_path = Path.home() / "Downloads"
->>> nyse_exporter.export_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
+>>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
 ```
 
 For advanced features and customization of the exported `.ics` output, consider using
