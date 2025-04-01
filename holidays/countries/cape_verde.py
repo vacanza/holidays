@@ -29,9 +29,9 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CV"
     default_language = "pt_CV"
-    supported_languages = ("en_US", "pt_CV")
-    supported_categories = (OPTIONAL, PUBLIC)
     start_year = 1976
+    supported_categories = (OPTIONAL, PUBLIC)
+    supported_languages = ("en_US", "pt_CV")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
