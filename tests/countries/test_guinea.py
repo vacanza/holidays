@@ -61,8 +61,9 @@ class TestGuinea(CommonCountryTests, TestCase):
         )
 
     def test_assumption_of_mary(self):
-        name = "Assomption de Marie"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1959, 2050)))
+        self.assertHolidayName(
+            "Assomption de Marie", (f"{year}-08-15" for year in range(1959, 2050))
+        )
 
     def test_independence_day(self):
         self.assertHolidayName(
@@ -170,7 +171,6 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "fr",
             ("2024-01-01", "Nouvel an"),
             ("2024-04-01", "Le lundi de Pâques"),
             ("2024-04-06", "Lailatoul Qadr"),

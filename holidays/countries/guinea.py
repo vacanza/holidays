@@ -30,9 +30,9 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     """
 
     country = "GN"
+    default_language = "fr"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    default_language = "fr"
     supported_languages = ("en_US", "fr")
 
     # Guinea Gained Independence from France on October 2, 1958
