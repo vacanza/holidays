@@ -55,6 +55,7 @@ Greg Rafferty
 Győző Papp
 Heikki Orsila
 Henrik Sozzi
+Hiroki Kawahara
 Hugh McNamara
 Hugo van Kemenade
 Isabelle COWAN-BERGMAN
