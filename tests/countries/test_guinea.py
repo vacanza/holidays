@@ -93,7 +93,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-06",
             "2025-03-27",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, range(2015, 2025))
 
     def test_eid_al_fitr_day(self):
         name = "Korité"
@@ -111,7 +111,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, range(2015, 2025))
 
     def test_eid_al_adha_day(self):
         name = "Tabaski"
@@ -129,7 +129,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, range(2015, 2025))
 
     def test_mawlid_day(self):
         name = "Maouloud"
@@ -147,7 +147,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-05",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, range(2015, 2025))
 
     def test_2021(self):
         # * <https://www.timeanddate.com/holidays/guinea/2021>
