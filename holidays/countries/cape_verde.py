@@ -21,17 +21,17 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Cape Verde holidays.
 
     References:
-        * [Public holidays in Cape Verde] <https://en.wikipedia.org/wiki/Public_holidays_in_Cape_Verde>
-        * [Today's and Upcoming Holidays in Cape Verde] <https://www.timeanddate.com/holidays/cape-verde/>
-        * [Democracy Day] <https://www.officeholidays.com/holidays/cape-verde/cape-verde-democracy-day>
-        * [National Heroes Day] <https://www.officeholidays.com/holidays/cape-verde/guinea-bissau-national-heroes-day>
+        * [Public holidays in Cape Verde] (https://en.wikipedia.org/wiki/Public_holidays_in_Cape_Verde>)
+        * [Today's and Upcoming Holidays in Cape Verde] (https://www.timeanddate.com/holidays/cape-verde/)
+        * [Democracy Day] (https://www.officeholidays.com/holidays/cape-verde/cape-verde-democracy-day)
+        * [National Heroes Day] (https://www.officeholidays.com/holidays/cape-verde/guinea-bissau-national-heroes-day)
     """
 
     country = "CV"
-    default_language = "pt_PT"
-    supported_languages = ("en_US", "pt_PT")
+    default_language = "pt_CV"
+    supported_languages = ("en_US", "pt_CV")
     supported_categories = (OPTIONAL, PUBLIC)
-    start_year = 1973
+    start_year = 1976
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -46,23 +46,22 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Democracy Day.
             self._add_holiday_jan_13(tr("Dia da Liberdade e Democracia"))
 
-        # Heroes Day.
+        # National Heroes Day.
         self._add_holiday_jan_20(tr("Dia da Nacionalidade e dos Heróis Nacionais"))
 
         # Good Friday.
         self._add_good_friday(tr("Sexta-feira Santa"))
 
-        # Labor Day.
+        # Worker's Day.
         self._add_labor_day(tr("Dia do Trabalhador"))
 
-        # Youth Day.
-        self._add_holiday_jun_1(tr("Dia Mundial da Criança"))
+        # International Children's Day.
+        self._add_childrens_day(tr("Dia Mundial da Criança"))
 
-        if self._year >= 1975:
-            # Independence Day.
-            self._add_holiday_jul_5(tr("Dia da Independência Nacional"))
+        # Independence Day.
+        self._add_holiday_jul_5(tr("Dia da Independência Nacional"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Dia da Assunção"))
 
         # All Saints' Day.
