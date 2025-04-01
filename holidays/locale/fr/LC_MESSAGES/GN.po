@@ -66,7 +66,7 @@ msgstr ""
 msgid "Assomption de Marie"
 msgstr ""
 
-#. Independance Day.
+#. Independence Day.
 msgid "Fête de l'indépendance de la Guinée"
 msgstr ""
 
