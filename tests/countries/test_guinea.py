@@ -197,5 +197,5 @@ class TestGuinea(CommonCountryTests, TestCase):
             ("2024-08-15", "Assumption Day"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-10-02", "Independence Day"),
-            ("2024-12-25", "Christmas"),
+            ("2024-12-25", "Christmas Day"),
         )
