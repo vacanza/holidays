@@ -152,6 +152,7 @@ class TestGuinea(CommonCountryTests, TestCase):
     def test_2021(self):
         # * <https://www.timeanddate.com/holidays/guinea/2021>
         self.assertHolidays(
+            Guinea(years=2021),
             ("2021-01-01", "Nouvel an"),
             ("2021-04-03", "Jour de la Deuxième République"),
             ("2021-04-05", "Le lundi de Pâques"),
@@ -165,4 +166,36 @@ class TestGuinea(CommonCountryTests, TestCase):
             ("2021-10-18", "Maouloud"),
             ("2021-11-01", "La Toussaint"),
             ("2021-12-25", "Noël"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2024-01-01", "Nouvel an"),
+            ("2024-04-01", "Le lundi de Pâques"),
+            ("2024-04-06", "Lailatoul Qadr"),
+            ("2024-04-10", "Korité"),
+            ("2024-05-01", "Fête du Travail"),
+            ("2024-05-25", "Anniversaire de l'OUA"),
+            ("2024-06-16", "Tabaski"),
+            ("2024-08-15", "Assomption de Marie"),
+            ("2024-09-15", "Maouloud"),
+            ("2024-10-02", "Fête de l'indépendance de la Guinée"),
+            ("2024-12-25", "Noël"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-04-06", "Night of Power"),
+            ("2024-04-10", "Eid al-Fitr"),
+            ("2024-05-01", "Labor Day"),
+            ("2024-05-25", "Africa Day"),
+            ("2024-06-16", "Eid al-Adha"),
+            ("2024-08-15", "Assumption Day"),
+            ("2024-09-15", "Prophet's Birthday"),
+            ("2024-10-02", "Independence Day"),
+            ("2024-12-25", "Christmas"),
         )
