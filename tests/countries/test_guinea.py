@@ -85,7 +85,7 @@ class TestGuinea(CommonCountryTests, TestCase):
         name = "Assomption de Marie"
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(1958, 2050)))
 
-    def test_independance_day(self):
+    def test_independence_day(self):
         self.assertHolidayName(
             "Fête de l'indépendance de la Guinée", (f"{year}-10-02" for year in range(1958, 2050))
         )
