@@ -145,4 +145,5 @@ Victor Luna
 Victor Miti
 Ville Skyttä
 Vu Nhat Chuong
+Wasif Shahzad
 Youhei Sakurai
