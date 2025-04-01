@@ -1,0 +1,79 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ar",
+    "ru",
+    "custom"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "custom",
+      "path": "./custom-words.txt",
+      "addWords": true
+    }
+  ],
+  "ignorePaths": [
+    "venv/**",
+    "snapshots/**",
+    "__pycache__/**",
+    "tests/**",
+    "scripts/l10n/**"
+  ],
+  "words": [
+    "Independência",
+    "Nossa",
+    "Aparecida",
+    "Finados",
+    "Proclamação",
+    "República",
+    "Tiradentes",
+    "День",
+    "братання",
+    "Карнавал",
+    "Juneteenth",
+    "XNYS",
+    "IFEU",
+    "XECB",
+    "autoupdate",
+    "mkdocs",
+    "salark",
+    "Boun",
+    "Khao",
+    "Salark",
+    "boun",
+    "suang",
+    "heua",
+    "Suang",
+    "Huea",
+    "phansa",
+    "Phansa",
+    "krathong",
+    "Krathong",
+    "makha",
+    "bucha",
+    "Makha",
+    "Bucha",
+    "Meak",
+    "Bochea",
+    "pchum",
+    "Pchum",
+    "preah",
+    "neangkoal",
+    "visakha",
+    "Visakha",
+    "Visaka"
+  ],
+  "ignoreRegExpList": [
+    "/^\\s*#.*$/",
+    "/^\\s*\\/\\/.*/",
+    "/^\\s*\\/\\*.*$/",
+    "/^\\s*\\*.*$/",
+    "/^\\s*\\/\\*\\*/",
+    "/^\\s*\\/\\*\\*/"
+  ]
+}
