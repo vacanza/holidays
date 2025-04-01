@@ -33,6 +33,8 @@ class Nepal(
     """
 
     country = "NP"
+    # %s (estimated).
+    estimated_label = "%s (estimated)"
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -44,54 +46,6 @@ class Nepal(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # https://www.timeanddate.com/holidays/nepal/gyalpo-losar
-        gyalpo_losar_dates = {
-            2016: (MAR, 9),
-            2017: (FEB, 27),
-            2018: (FEB, 16),
-            2019: (MAR, 7),
-            2020: (FEB, 24),
-            2021: (MAR, 14),
-            2022: (MAR, 3),
-            2023: (FEB, 21),
-            2024: (MAR, 11),
-            2025: (FEB, 28),
-            2026: (FEB, 18),
-            2027: (FEB, 7),
-            2028: (FEB, 26),
-            2029: (FEB, 14),
-            2030: (MAR, 5),
-            2031: (FEB, 22),
-            2032: (FEB, 12),
-            2033: (MAR, 2),
-            2034: (FEB, 19),
-            2035: (FEB, 9),
-        }
-
-        # https://www.timeanddate.com/holidays/nepal/sonam-losar
-        sonam_losar_dates = {
-            2016: (FEB, 9),
-            2017: (JAN, 28),
-            2018: (JAN, 18),
-            2019: (FEB, 5),
-            2020: (JAN, 25),
-            2021: (FEB, 12),
-            2022: (FEB, 2),
-            2023: (JAN, 22),
-            2024: (FEB, 10),
-            2025: (JAN, 30),
-            2026: (JAN, 19),
-            2027: (FEB, 7),
-            2028: (FEB, 26),
-            2029: (JAN, 15),
-            2030: (FEB, 3),
-            2031: (JAN, 24),
-            2032: (FEB, 12),
-            2033: (JAN, 31),
-            2034: (JAN, 21),
-            2035: (FEB, 9),
-        }
-
         # Prithvi Jayanti.
         self._add_holiday_jan_11("Prithvi Jayanti")
 
@@ -116,34 +70,30 @@ class Nepal(
         # Constitution Day.
         self._add_holiday_sep_19("Constitution Day")
 
-        # Tamu Losar.
-        self._add_holiday_dec_30("Tamu Losar")
-
-        if self._year in sonam_losar_dates:
-            # Sonam Losar.
-            self._add_holiday("Sonam Losar", sonam_losar_dates[self._year])
-
-        if self._year in gyalpo_losar_dates:
-            # Gyalpo Losar.
-            self._add_holiday("Gyalpo Losar", gyalpo_losar_dates[self._year])
-
-        # Christian holidays.
-
         # Christmas.
         self._add_christmas_day("Christmas")
+
+        # Tamu Losar.
+        self._add_holiday_dec_30("Tamu Losar")
 
         # Hindu holidays.
 
         # Maghe Sankranti.
         self._add_makar_sankranti("Maghe Sankranti")
 
+        # Sonam Losar.
+        self._add_sonam_losar("Sonam Losar")
+
+        # Gyalpo Losar.
+        self._add_gyalpo_losar("Gyalpo Losar")
+
         # Maha Shivaratri.
         self._add_maha_shivaratri("Maha Shivaratri")
 
-        # Holi(Mountain & Hilly).
+        # Holi (Mountain & Hilly).
         self._add_nepal_holi("Holi (Mountain & Hilly)")
 
-        # Holi(Terai).
+        # Holi (Terai).
         self._add_holi("Holi (Terai)")
 
         # Ram Navami.

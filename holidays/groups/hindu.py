@@ -197,6 +197,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
+    def _add_gyalpo_losar(self, name) -> Optional[date]:
+        """
+        Add Gyalpo Losar.
+
+        Gyalpo Losar marks the Tibetan New Year and is widely celebrated by the
+        Tibetan and Sherpa communities in Nepal. It falls on the first day of the
+        Tibetan lunar calendar, typically in February or March.
+        https://en.wikipedia.org/wiki/Gyalpo_Losar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.gyalpo_losar_date(self._year)
+        )
+
     def _add_nepal_holi(self, name) -> Optional[date]:
         """
         Add Holi Festival for Nepal (Mountain & Hilly).
@@ -374,6 +387,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sharad_navratri_date(self._year)
+        )
+
+    def _add_sonam_losar(self, name) -> Optional[date]:
+        """
+        Add Sonam Losar.
+
+        Sonam Losar is the New Year festival celebrated by the Tamang community
+        in Nepal. It follows the Tibetan lunar calendar and usually falls in
+        January or February.
+        https://en.wikipedia.org/wiki/Sonam_Lhosar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.sonam_losar_date(self._year)
         )
 
     def _add_tihar_holiday(self, name) -> Optional[date]:

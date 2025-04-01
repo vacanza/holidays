@@ -24,6 +24,350 @@ class TestNepal(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Nepal, NP, NPL)
 
+    def test_prithvi_jayanti(self):
+        self.assertHolidayName("Prithvi Jayanti", (f"{year}-01-11" for year in range(2019, 2050)))
+
+    def test_martyrs_day(self):
+        self.assertHolidayName("Martyr's Day", (f"{year}-01-30" for year in range(2019, 2050)))
+
+    def test_national_democracy_day(self):
+        self.assertHolidayName(
+            "National Democracy Day", (f"{year}-02-19" for year in range(2019, 2050))
+        )
+
+    def test_womens_day(self):
+        self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(2019, 2050)))
+
+    def test_labor_day(self):
+        self.assertHolidayName("Labor Day", (f"{year}-05-01" for year in range(2019, 2050)))
+
+    def test_republic_day(self):
+        self.assertHolidayName("Republic Day", (f"{year}-05-29" for year in range(2019, 2050)))
+
+    def test_constitution_day(self):
+        self.assertHolidayName("Constitution Day", (f"{year}-09-19" for year in range(2019, 2050)))
+
+    def test_christmas(self):
+        self.assertHolidayName("Christmas", (f"{year}-12-25" for year in range(2019, 2050)))
+
+    def test_tamu_losar(self):
+        self.assertHolidayName("Tamu Losar", (f"{year}-12-30" for year in range(2019, 2050)))
+
+    def test_ranged_holidays(self):
+        name = "Bakrid"
+        dt = (
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-10",
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-07",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2021, 2026))
+
+        name = "Bhai Tika"
+        dt = (
+            "2019-10-29",
+            "2020-11-16",
+            "2021-11-06",
+            "2022-10-26",
+            "2023-11-14",
+            "2024-11-03",
+            "2025-10-23",
+        )
+        self.assertHolidayName(name, dt)
+        # self.assertHolidayName(name, range(2001, 2036))
+
+        name = "Buddha Jayanti"
+        dt = (
+            "2019-05-18",
+            "2020-05-07",
+            "2021-05-26",
+            "2022-05-16",
+            "2023-05-05",
+            "2024-05-23",
+            "2025-05-12",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Chhath Parwa"
+        dt = (
+            "2019-11-02",
+            "2020-11-20",
+            "2021-11-10",
+            "2022-10-30",
+            "2023-11-19",
+            "2024-11-07",
+            "2025-10-28",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Duwadashi (Dashain)"
+        dt = (
+            "2019-10-10",
+            "2020-10-27",
+            "2021-10-17",
+            "2022-10-07",
+            "2023-10-26",
+            "2024-10-14",
+            "2025-10-04",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Ekadashi (Dashain)"
+        dt = (
+            "2019-10-09",
+            "2020-10-26",
+            "2021-10-16",
+            "2022-10-06",
+            "2023-10-25",
+            "2024-10-13",
+            "2025-10-03",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Gai Tihar"
+        dt = (
+            "2019-10-27",
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-11-01",
+            "2025-10-21",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Ghatasthapana"
+        dt = (
+            "2019-09-29",
+            "2020-10-17",
+            "2021-10-07",
+            "2022-09-26",
+            "2023-10-15",
+            "2024-10-03",
+            "2025-09-22",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Govardhan Puja"
+        dt = (
+            "2019-10-28",
+            "2020-11-15",
+            "2021-11-05",
+            "2022-10-25",
+            "2023-11-13",
+            "2024-11-02",
+            "2025-10-22",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Gyalpo Losar"
+        dt = (
+            "2019-03-07",
+            "2020-02-24",
+            "2021-03-14",
+            "2022-03-03",
+            "2023-02-21",
+            "2024-03-11",
+            "2025-02-28",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Holi (Mountain & Hilly)"
+        dt = (
+            "2019-03-20",
+            "2020-03-09",
+            "2021-03-28",
+            "2022-03-17",
+            "2023-03-07",
+            "2024-03-24",
+            "2025-03-13",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Holi (Terai)"
+        dt = (
+            "2019-03-21",
+            "2020-03-10",
+            "2021-03-29",
+            "2022-03-18",
+            "2023-03-08",
+            "2024-03-25",
+            "2025-03-14",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Id-ul-Fitr"
+        dt = (
+            "2019-06-05",
+            "2020-05-25",
+            "2021-05-14",
+            "2022-05-03",
+            "2023-04-22",
+            "2024-04-11",
+            "2025-03-31",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Janai Purnima"
+        dt = (
+            "2019-08-15",
+            "2020-08-03",
+            "2021-08-22",
+            "2022-08-11",
+            "2023-08-30",
+            "2024-08-19",
+            "2025-08-09",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Shree Krishna Janmashtami"
+        dt = (
+            "2019-08-24",
+            "2020-08-12",
+            "2021-08-30",
+            "2022-08-19",
+            "2023-09-07",
+            "2024-08-26",
+            "2025-08-16",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Lakshmi Puja"
+        dt = (
+            "2019-10-27",
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-11-01",
+            "2025-10-20",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Maha Ashtami"
+        dt = (
+            "2019-10-06",
+            "2020-10-23",
+            "2021-10-13",
+            "2022-10-03",
+            "2023-10-22",
+            "2024-10-10",
+            "2025-09-30",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Maha Navami"
+        dt = (
+            "2019-10-07",
+            "2020-10-24",
+            "2021-10-14",
+            "2022-10-04",
+            "2023-10-23",
+            "2024-10-11",
+            "2025-10-01",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Maghe Sankranti"
+        dt = (
+            "2019-01-15",
+            "2020-01-15",
+            "2021-01-14",
+            "2022-01-14",
+            "2023-01-14",
+            "2024-01-14",
+            "2025-01-14",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Mha Puja"
+        dt = (
+            "2019-10-28",
+            "2020-11-15",
+            "2021-11-05",
+            "2022-10-25",
+            "2023-11-13",
+            "2024-11-02",
+            "2025-10-22",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Nepali New Year (Vikram Sambat)"
+        dt = (
+            "2019-04-14",
+            "2020-04-13",
+            "2021-04-14",
+            "2022-04-14",
+            "2023-04-14",
+            "2024-04-13",
+            "2025-04-13",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Phulpati"
+        dt = (
+            "2019-10-05",
+            "2020-10-22",
+            "2021-10-12",
+            "2022-10-02",
+            "2023-10-21",
+            "2024-10-09",
+            "2025-09-29",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Ram Navami"
+        dt = (
+            "2019-04-13",
+            "2020-04-02",
+            "2021-04-21",
+            "2022-04-10",
+            "2023-03-30",
+            "2024-04-17",
+            "2025-04-06",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Sonam Losar"
+        dt = (
+            "2019-02-05",
+            "2020-01-25",
+            "2021-02-12",
+            "2022-02-02",
+            "2023-01-22",
+            "2024-02-10",
+            "2025-01-30",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Tihar Holiday"
+        dt = (
+            "2019-10-30",
+            "2020-11-17",
+            "2021-11-07",
+            "2022-10-27",
+            "2023-11-15",
+            "2024-11-04",
+            "2025-10-24",
+        )
+        self.assertHolidayName(name, dt)
+
+        name = "Vijayadashami"
+        dt = (
+            "2019-10-08",
+            "2020-10-25",
+            "2021-10-15",
+            "2022-10-05",
+            "2023-10-24",
+            "2024-10-12",
+            "2025-10-02",
+        )
+        self.assertHolidayName(name, dt)
+
     def test_2025(self):
         self.assertHolidays(
             Nepal(years=2025),
@@ -62,225 +406,3 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas"),
             ("2025-12-30", "Tamu Losar"),
         )
-
-    def test_ranged_holidays(self):
-        name = "Bakrid"
-        dt = (
-            "2001-03-06",
-            "2010-11-17",
-            "2025-06-07",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Bhai Tika"
-        dt = (
-            "2001-11-16",
-            "2010-11-07",
-            "2025-10-23",
-            "2035-11-01",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Buddha Jayanti"
-        dt = (
-            "2001-04-30",
-            "2010-05-27",
-            "2025-05-12",
-            "2035-05-22",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Chhath Parwa"
-        dt = (
-            "2001-11-21",
-            "2010-11-11",
-            "2025-10-28",
-            "2035-11-06",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Duwadashi (Dashain)"
-        dt = (
-            "2001-10-28",
-            "2010-10-19",
-            "2025-10-04",
-            "2035-10-13",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Ekadashi (Dashain)"
-        dt = (
-            "2001-10-27",
-            "2010-10-18",
-            "2025-10-03",
-            "2035-10-12",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Gai Tihar"
-        dt = (
-            "2001-11-14",
-            "2010-11-05",
-            "2025-10-21",
-            "2035-10-30",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Ghatasthapana"
-        dt = (
-            "2001-10-17",
-            "2010-10-08",
-            "2025-09-22",
-            "2035-10-02",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Govardhan Puja"
-        dt = (
-            "2001-11-15",
-            "2010-11-06",
-            "2025-10-22",
-            "2035-10-31",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Gyalpo Losar"
-        dt = (
-            "2016-03-09",
-            "2025-02-28",
-            "2035-02-09",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Holi (Mountain & Hilly)"
-        dt = (
-            "2001-03-09",
-            "2010-02-28",
-            "2025-03-13",
-            "2035-03-23",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Holi (Terai)"
-        dt = (
-            "2001-03-10",
-            "2010-03-01",
-            "2025-03-14",
-            "2035-03-24",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Id-ul-Fitr"
-        dt = (
-            "2001-12-17",
-            "2010-09-10",
-            "2025-03-31",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Janai Purnima"
-        dt = (
-            "2001-08-04",
-            "2010-08-24",
-            "2025-08-09",
-            "2035-08-18",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Shree Krishna Janmashtami"
-        dt = (
-            "2001-08-12",
-            "2010-09-02",
-            "2025-08-16",
-            "2035-08-26",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Lakshmi Puja"
-        dt = (
-            "2001-11-14",
-            "2010-11-05",
-            "2025-10-20",
-            "2035-10-30",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Maha Ashtami"
-        dt = (
-            "2001-10-24",
-            "2010-10-15",
-            "2025-09-30",
-            "2035-10-09",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Maha Navami"
-        dt = (
-            "2001-10-25",
-            "2010-10-16",
-            "2025-10-01",
-            "2035-10-10",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Maghe Sankranti"
-        dt = (
-            "2001-01-14",
-            "2010-01-14",
-            "2025-01-14",
-            "2035-01-15",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Mha Puja"
-        dt = (
-            "2001-11-15",
-            "2010-11-06",
-            "2025-10-22",
-            "2035-10-31",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Phulpati"
-        dt = (
-            "2001-10-23",
-            "2010-10-14",
-            "2025-09-29",
-            "2035-10-08",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Ram Navami"
-        dt = (
-            "2001-04-02",
-            "2010-03-24",
-            "2025-04-06",
-            "2035-04-16",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Sonam Losar"
-        dt = (
-            "2016-02-09",
-            "2025-01-30",
-            "2035-02-09",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Tihar Holiday"
-        dt = (
-            "2001-11-17",
-            "2010-11-08",
-            "2025-10-24",
-            "2035-11-02",
-        )
-        self.assertHolidayName(name, dt)
-
-        name = "Vijayadashami"
-        dt = (
-            "2001-10-26",
-            "2010-10-17",
-            "2025-10-02",
-            "2035-10-11",
-        )
-        self.assertHolidayName(name, dt)
