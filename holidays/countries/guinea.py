@@ -81,8 +81,6 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
-        if self._year == 2021:
-            self._add_assumption_of_mary_day(tr("Assomption de Marie"))
 
         # Independance Day.
         self._add_holiday_oct_2(tr("Fête de l'indépendance de la Guinée"))
@@ -114,10 +112,10 @@ class GuineaIslamicHolidays(_CustomIslamicHolidays):
         2019: (AUG, 11),
         2020: (JUL, 31),
         2021: (JUL, 20),
-        2022: ((JUL, 10), (JUN, 11)),
-        2023: ((JUN, 28), (JUN, 29)),
-        2024: ((JUN, 16), (JUN, 17)),
-        2025: ((JUN, 7), (JUN, 8)),
+        2022: (JUL, 10),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+        2025: (JUN, 7),
     }
 
     EID_AL_FITR_DATES = {
