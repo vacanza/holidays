@@ -186,7 +186,7 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "fr",
+            "en_US",
             ("2024-01-01", "New Year's Day"),
             ("2024-04-01", "Easter Monday"),
             ("2024-04-06", "Night of Power"),
