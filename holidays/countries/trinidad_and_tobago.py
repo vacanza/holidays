@@ -37,6 +37,7 @@ class TrinidadAndTobago(
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -56,7 +57,7 @@ class TrinidadAndTobago(
         self._add_easter_monday("Easter Monday")
 
         # Indian Arrival Day - May 30
-        # self._add_holiday_may_30("Indian Arrival Day")
+        self._add_holiday_may_30("Indian Arrival Day")
 
         # Corpus Christi
         self._add_corpus_christi_day("Corpus Christi")
@@ -83,7 +84,7 @@ class TrinidadAndTobago(
         self._add_diwali_india("Diwali")
 
         # Eid al-Fitr.
-        # self._add_eid_al_fitr_day("Id-ul-Fitr")
+        self._add_eid_al_fitr_day("Id-ul-Fitr")
 
 
 class TT(TrinidadAndTobago):
