@@ -19,7 +19,6 @@ from tests.common import CommonCountryTests
 class TestGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Guinea, years=range(1959, 2050))
         years = range(1959, 2050)
         super().setUpClass(Guinea, years=years)
         cls.no_estimated_holidays = Guinea(years=years, islamic_show_estimated=False)
