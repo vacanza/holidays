@@ -17,12 +17,18 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
 
 class Nepal(
-    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Nepal holidays.
 
@@ -43,6 +49,7 @@ class Nepal(
         IslamicHolidays.__init__(
             self, cls=NepalIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, cls=NepalStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -225,3 +232,32 @@ class NP(Nepal):
 
 class NPL(Nepal):
     pass
+
+
+class NepalStaticHolidays:
+    """Nepal Special Holidays.
+
+    References:
+       * [Death of HM King Husayn bin Talal of Jordan](https://web.archive.org/web/20170710193530/https://www.qppstudio.net/public-holidays-news/1999/nepal-declares-february-9-public-holiday-001911.htm)
+       * [Death of Krishna Prasad Bhattarai](https://myrepublica.nagariknetwork.com/news/27618/)
+       * [Death of Sushil Koirala](https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
+       * [Crash of Yeti Airlines Flight 691](https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
+       * [People's War Day Instituted](https://kathmandupost.com/national/2023/02/12/government-announces-public-holiday-on-monday-to-mark-people-s-war-day)
+       * [People's War Day Annulled](https://kathmandupost.com/national/2023/12/29/supreme-court-annuls-public-holiday-on-people-s-war-day)
+       * [Death of Subas Chandra Nembang](https://en.nepalkhabar.com/news/detail/6023/)
+    """
+
+    # Day of National Mourning.
+    name_day_of_national_mourning = "Day of National Mourning"
+
+    special_public_holidays = {
+        1999: (FEB, 9, name_day_of_national_mourning),
+        2011: (MAR, 6, name_day_of_national_mourning),
+        2016: (FEB, 10, name_day_of_national_mourning),
+        2023: (
+            (JAN, 16, name_day_of_national_mourning),
+            # People War's Day.
+            (FEB, 13, "People War's Day"),
+            (SEP, 14, name_day_of_national_mourning),
+        ),
+    }
