@@ -166,6 +166,7 @@ COUNTRIES: RegistryDict = {
     "thailand": ("Thailand", "TH", "THA"),
     "timor_leste": ("TimorLeste", "TL", "TLS"),
     "tonga": ("Tonga", "TO", "TON"),
+    "trinidad_and_tobago": ("TrinidadAndTobago", "TT", "TTO"),
     "tunisia": ("Tunisia", "TN", "TUN"),
     "turkey": ("Turkey", "TR", "TUR"),
     "tuvalu": ("Tuvalu", "TV", "TUV"),

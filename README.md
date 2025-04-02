@@ -1163,6 +1163,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Trinidad and Tobago</td>
+<td>TT</td>
+<td></td>
+<td><strong>en_US</strong>, </td>
+<td></td>
+</tr>
+<tr>
 <td>Tunisia</td>
 <td>TN</td>
 <td></td>
