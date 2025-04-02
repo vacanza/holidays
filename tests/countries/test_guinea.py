@@ -97,7 +97,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-06",
             "2025-03-27",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
 
     def test_eid_al_fitr_day(self):
         name = "Jour de l'Aïd el-Fitr"
@@ -115,7 +115,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
 
     def test_eid_al_adha_day(self):
         name = "Jour de la Tabaski"
@@ -133,7 +133,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
 
     def test_eid_al_adha_day_two(self):
         name = "Lendemain de la Tabaski"
@@ -144,6 +144,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2025-06-08",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2023, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1959, 2023))
 
     def test_mawlid_day(self):
         name = "Lendemain de la nuit du Maoloud"
@@ -161,7 +162,7 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-05",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2015, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
 
     def test_2021(self):
         # * <https://www.timeanddate.com/holidays/guinea/2021>
@@ -184,7 +185,6 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "fr",
             ("2024-01-01", "Fête du Nouvel an"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-04-06", "Lendemain de la nuit Lailatoul Qadr"),
