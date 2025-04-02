@@ -16,23 +16,37 @@ from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Guinea(
+    ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """Guinea Holidays.
 
     References:
+        * [Decree No. 2022-0526](https://igt.gov.gn/wp-content/uploads/2024/10/D-2022-0526-PRG-CNRD_221103_131021.pdf)
         * <https://www.timeanddate.com/holidays/guinea/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Guinea>
         * <https://anydayguide.com/calendar/1878>
         * <https://www.timeanddate.com/holidays/guinea/second-republic-day>
         * <https://www.timeanddate.com/holidays/guinea/all-saints-day>
+
+    Note:
+        According to Decree No. 2022-0526(Article 2) of 2 November 2022, if New Year's Day,
+        Independence Day or Eid al-Fitr fall on a non-working day, the next working day is
+        also a Holiday.
+        Eid al-Adha was assigned two holidays from 2022(Decree No. 2022-0526(Article 1))
     """
 
     country = "GN"
     default_language = "fr"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
+    # Day after the %s.
+    observed_label = tr("Lendemain de la %s")
+    # Day after the %s (estimated).
+    observed_estimated_label = tr("Lendemain de la %s (estimé)")
     supported_languages = ("en_US", "fr")
 
     # Guinea Gained Independence from France on October 2, 1958
@@ -50,49 +64,60 @@ class Guinea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
         IslamicHolidays.__init__(
             self, cls=GuineaIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Nouvel an"))
+        dt = self._add_new_years_day(tr("Fête du Nouvel an"))
+        if self._year >= 2023:
+            self._add_observed(dt)
 
         if self._year <= 2021:
             # Second Republic Day.
             self._add_holiday_apr_3(tr("Jour de la Deuxième République"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Le lundi de Pâques"))
+        self._add_easter_monday(tr("Lundi de Pâques"))
 
         # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
         # Africa Day.
-        self._add_africa_day(tr("Anniversaire de l'OUA"))
+        self._add_africa_day(tr("Anniversaire de l'Union Africaine"))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Assomption de Marie"))
+        self._add_assumption_of_mary_day(tr("Assomption"))
 
         # Independence Day.
-        self._add_holiday_oct_2(tr("Fête de l'indépendance de la Guinée"))
+        dt = self._add_holiday_oct_2(tr("Fête anniversaire de l'indépendance de la Guinée"))
+        if self._year >= 2023:
+            self._add_observed(dt)
 
         if self._year <= 2021:
             # All Saints' Day.
-            self._add_all_saints_day(tr("La Toussaint"))
+            self._add_all_saints_day(tr("Toussaint"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Noël"))
+        self._add_christmas_day(tr("Fête de Noël"))
 
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maouloud"))
+        # Day after Prophet's Birthday.
+        self._add_mawlid_day(tr("Lendemain de la nuit du Maoloud"))
 
-        # Night of Power.
-        self._add_laylat_al_qadr_day(tr("Lailatoul Qadr"))
+        # Day after Night of Power.
+        self._add_laylat_al_qadr_day(tr("Lendemain de la nuit Lailatoul Qadr"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Korité"))
+        for dt in self._add_eid_al_fitr_day(tr("Jour de l'Aïd el-Fitr")):
+            if self._year >= 2023:
+                self._add_observed(dt)
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Tabaski"))
+        self._add_eid_al_adha_day(tr("Jour de la Tabaski"))
+
+        if self._year >= 2023:
+            # Day after Eid al-Adha.
+            self._add_eid_al_adha_day_two(tr("Lendemain de la Tabaski"))
 
 
 class GN(Guinea):
