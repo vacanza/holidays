@@ -29,18 +29,15 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         self.assertNoHolidays(AntiguaAndBarbuda(years=1954))
 
     def test_special_holidays(self):
-        self.assertHolidayName("Public Holiday", "1993-08-03")
-        self.assertHolidayName(
-            "State Funeral of the late The Honourable Charlesworth T. Samuel", "2008-02-19"
-        )
-        self.assertHolidayName(
-            "State Funeral of the late The Honourable Sir George Herbert Walter", "2008-03-18"
-        )
-        self.assertHolidayName(
-            "Day after the General Election",
-            "2018-03-22",
-            "2023-01-19",
-        )
+        name_day_after_general_election = "Day after the General Election"
+        for dt, name in (
+            ("1993-08-03", "Public Holiday"),
+            ("2008-02-19", "State Funeral of the late The Honourable Charlesworth T. Samuel"),
+            ("2008-03-18", "State Funeral of the late The Honourable Sir George Herbert Walter"),
+            ("2018-03-22", name_day_after_general_election),
+            ("2023-01-19", name_day_after_general_election),
+        ):
+            self.assertHolidayName(name, dt)
 
     def test_new_years_day(self):
         name = "New Year's Day"
