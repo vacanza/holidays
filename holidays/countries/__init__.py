@@ -18,6 +18,7 @@ from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
 from .andorra import Andorra, AD, AND
 from .angola import Angola, AO, AGO
+from .antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
 from .argentina import Argentina, AR, ARG
 from .armenia import Armenia, AM, ARM
 from .aruba import Aruba, AW, ABW
