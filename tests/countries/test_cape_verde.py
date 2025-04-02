@@ -76,7 +76,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_2025_public_holidays(self):
         self.assertHolidays(
-            CapeVerde(years=2025),
+            CapeVerde(categories=PUBLIC, years=2025),
             ("2025-01-01", "Ano Novo"),
             ("2025-01-13", "Dia da Liberdade e Democracia"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
