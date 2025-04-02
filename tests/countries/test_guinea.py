@@ -20,8 +20,9 @@ from tests.common import CommonCountryTests
 class TestGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Guinea, years=range(1959, 2050))
-        cls.no_estimated_holidays = Guinea(years=range(2015, 2025), islamic_show_estimated=False)
+        years = range(1959, 2050)
+        super().setUpClass(Guinea, years=years)
+        cls.no_estimated_holidays = Guinea(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Guinea, GN, GIN)
