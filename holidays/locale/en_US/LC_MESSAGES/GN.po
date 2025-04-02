@@ -31,8 +31,18 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
+#. Day after the %s.
+#, c-format
+msgid "Lendemain de la %s"
+msgstr "Day after the %s"
+
+#. Day after the %s (estimated).
+#, c-format
+msgid "Lendemain de la %s (estimé)"
+msgstr "Day after the %s (estimated)"
+
 #. New Year's Day.
-msgid "Nouvel an"
+msgid "Fête du Nouvel an"
 msgstr "New Year's Day"
 
 #. Second Republic Day.
@@ -40,7 +50,7 @@ msgid "Jour de la Deuxième République"
 msgstr "Second Republic Day"
 
 #. Easter Monday.
-msgid "Le lundi de Pâques"
+msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
 #. Labor Day.
@@ -48,37 +58,41 @@ msgid "Fête du Travail"
 msgstr "Labor Day"
 
 #. Africa Day.
-msgid "Anniversaire de l'OUA"
+msgid "Anniversaire de l'Union Africaine"
 msgstr "Africa Day"
 
 #. Assumption Day.
-msgid "Assomption de Marie"
+msgid "Assomption"
 msgstr "Assumption Day"
 
 #. Independence Day.
-msgid "Fête de l'indépendance de la Guinée"
+msgid "Fête anniversaire de l'indépendance de la Guinée"
 msgstr "Independence Day"
 
 #. All Saints' Day.
-msgid "La Toussaint"
+msgid "Toussaint"
 msgstr "All Saints' Day"
 
 #. Christmas Day.
-msgid "Noël"
+msgid "Fête de Noël"
 msgstr "Christmas Day"
 
-#. Night of Power.
-msgid "Lailatoul Qadr"
-msgstr "Night of Power"
+#. Day after Prophet's Birthday.
+msgid "Lendemain de la nuit du Maoloud"
+msgstr "Day after Prophet's Birthday"
+
+#. Day after Night of Power.
+msgid "Lendemain de la nuit Lailatoul Qadr"
+msgstr "Day after Night of Power"
 
 #. Eid al-Fitr.
-msgid "Korité"
+msgid "Jour de l'Aïd el-Fitr"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
-msgid "Tabaski"
+msgid "Jour de la Tabaski"
 msgstr "Eid al-Adha"
 
-#. Prophet's Birthday.
-msgid "Maouloud"
-msgstr "Prophet's Birthday"
+#. Day after Eid al-Adha.
+msgid "Lendemain de la Tabaski"
+msgstr "Day after Eid al-Adha"
