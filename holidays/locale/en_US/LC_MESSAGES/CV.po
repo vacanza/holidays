@@ -94,29 +94,29 @@ msgstr "Shrove Tuesday"
 msgid "Dia do Município de São Vicente"
 msgstr "St. Vincent Municipal Day"
 
-#. Day of the Municipality of Tarrafal de São Nicolau.
+#. Tarrafal de São Nicolau Municipal Day.
 msgid "Dia do Município do Tarrafal de São Nicolau"
-msgstr "Day of the Municipality of Tarrafal de São Nicolau"
+msgstr "Tarrafal de São Nicolau Municipal Day"
 
-#. Day of the Municipality of Ribeira Brava.
+#. Ribeira Brava Municipal Day.
 msgid "Dia do Município de Ribeira Brava"
-msgstr "Day of the Municipality of Ribeira Brava"
+msgstr "Ribeira Brava Municipal Day"
 
 #. Municipal Day.
 msgid "Dia do Município"
 msgstr "Municipal Day"
 
-#. May Day.
+#. Maio Municipal Day.
 msgid "Dia do Município do Maio"
-msgstr "May Day"
+msgstr "Maio Municipal Day"
 
-#. Day of the Municipality of Ribeira Grande de Santiago.
+#. Ribeira Grande de Santiago Municipal Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
-msgstr "Day of the Municipality of Ribeira Grande de Santiago"
+msgstr "Ribeira Grande de Santiago Municipal Day"
 
-#. Day of the Municipality of Brava.
+#. Brava Municipal Day.
 msgid "Dia do Município da Brava"
-msgstr "Day of the Municipality of Brava"
+msgstr "Brava Municipal Day"
 
 #. Praia City Day.
 msgid "Dia da Cidade da Praia"

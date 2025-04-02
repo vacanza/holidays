@@ -94,11 +94,11 @@ msgstr ""
 msgid "Dia do Município de São Vicente"
 msgstr ""
 
-#. Day of the Municipality of Tarrafal de São Nicolau.
+#. Tarrafal de São Nicolau Municipal Day.
 msgid "Dia do Município do Tarrafal de São Nicolau"
 msgstr ""
 
-#. Day of the Municipality of Ribeira Brava.
+#. Ribeira Brava Municipal Day.
 msgid "Dia do Município de Ribeira Brava"
 msgstr ""
 
@@ -106,15 +106,15 @@ msgstr ""
 msgid "Dia do Município"
 msgstr ""
 
-#. May Day.
+#. Maio Municipal Day.
 msgid "Dia do Município do Maio"
 msgstr ""
 
-#. Day of the Municipality of Ribeira Grande de Santiago.
+#. Ribeira Grande de Santiago Municipal Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
 msgstr ""
 
-#. Day of the Municipality of Brava.
+#. Brava Municipal Day.
 msgid "Dia do Município da Brava"
 msgstr ""
 
