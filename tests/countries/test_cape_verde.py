@@ -44,7 +44,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             (f"{year}-01-20" for year in range(1976, 2050)),
         )
 
-    def test_youth_day(self):
+    def test_international_childrens_day(self):
         self.assertHolidayName(
             "Dia Mundial da Criança", (f"{year}-06-01" for year in range(1976, 2050))
         )
