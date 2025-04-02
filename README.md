@@ -353,7 +353,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Cape Verde</td>
 <td>CV</td>
-<td></td>
+<td>Municipality and Geographical Region: B (Ilhas de Barlavento), BV (Boa Vista), BR (Brava), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), S (Ilhas de Sotavento), SL (Sal), SD (São Domingos), SF (São Filipe), SO (São Lourenço dos Órgãos), SM (São Miguel), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
 <td>en_US, <strong>pt_CV</strong></td>
 <td>OPTIONAL</td>
 </tr>

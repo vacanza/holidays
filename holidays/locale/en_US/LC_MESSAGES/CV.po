@@ -30,9 +30,9 @@ msgstr ""
 msgid "Ano Novo"
 msgstr "New Year's Day"
 
-#. Democracy Day.
+#. Democracy and Freedom Day.
 msgid "Dia da Liberdade e Democracia"
-msgstr "Democracy Day"
+msgstr "Democracy and Freedom Day"
 
 #. National Heroes Day.
 msgid "Dia da Nacionalidade e dos Heróis Nacionais"
@@ -66,10 +66,6 @@ msgstr "All Saints' Day"
 msgid "Natal"
 msgstr "Christmas Day"
 
-#. Ash Wednesday.
-msgid "Dia das Cinzas"
-msgstr "Ash Wednesday"
-
 #. Holy Thursday.
 msgid "Quinta-Feira Santa"
 msgstr "Holy Thursday"
@@ -85,3 +81,47 @@ msgstr "Mother's Day"
 #. Father's Day.
 msgid "Dia dos Pais"
 msgstr "Father's Day"
+
+#. Ash Wednesday.
+msgid "Quarta-feira de Cinzas"
+msgstr "Ash Wednesday"
+
+#. Shrove Tuesday.
+msgid "Terça-feira de Carnaval"
+msgstr "Shrove Tuesday"
+
+#. St. Vincent Municipal Day.
+msgid "Dia do Município de São Vicente"
+msgstr "St. Vincent Municipal Day"
+
+#. Day of the Municipality of Tarrafal de São Nicolau.
+msgid "Dia do Município do Tarrafal de São Nicolau"
+msgstr "Day of the Municipality of Tarrafal de São Nicolau"
+
+#. Day of the Municipality of Ribeira Brava.
+msgid "Dia do Município de Ribeira Brava"
+msgstr "Day of the Municipality of Ribeira Brava"
+
+#. Municipal Day.
+msgid "Dia do Município"
+msgstr "Municipal Day"
+
+#. May Day.
+msgid "Dia do Município do Maio"
+msgstr "May Day"
+
+#. Day of the Municipality of Ribeira Grande de Santiago.
+msgid "Dia do Município de Ribeira Grande de Santiago"
+msgstr "Day of the Municipality of Ribeira Grande de Santiago"
+
+#. Day of the Municipality of Brava.
+msgid "Dia do Município da Brava"
+msgstr "Day of the Municipality of Brava"
+
+#. Praia City Day.
+msgid "Dia da Cidade da Praia"
+msgstr "Praia City Day"
+
+#. Praia Municipal Day.
+msgid "Dia do Município da Praia"
+msgstr "Praia Municipal Day"

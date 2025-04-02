@@ -25,11 +25,69 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [Today's and Upcoming Holidays in Cape Verde](https://www.timeanddate.com/holidays/cape-verde/)
         * [Democracy Day](https://www.officeholidays.com/holidays/cape-verde/cape-verde-democracy-day)
         * [National Heroes Day](https://www.officeholidays.com/holidays/cape-verde/guinea-bissau-national-heroes-day)
+        * [Feriados Bancários - Banco de Cabo Verde](https://www.bcv.cv/pt/SistemadePagamentos/feriados_bancarios/Paginas/FeriadosBancarios.aspx)
+        * [Feriados Públicos - Feel Cabo Verde](https://feelcaboverde.com/feriados-publicos/)
+        * [Public Holidays - Feel Cape Verde](https://feelcaboverde.com/en/public-holidays-cape-verde/)
+        * [List of Cape Verde's subdivision ISO codes](https://www.iso.org/obp/ui/#iso:code:3166:CV)
     """
 
     country = "CV"
     default_language = "pt_CV"
     start_year = 1976
+    subdivisions = (
+        # Municipality and Geographical Region.
+        "B",  # Ilhas de Barlavento.
+        "BV",  # Boa Vista.
+        "BR",  # Brava.
+        "CA",  # Santa Catarina.
+        "CF",  # Santa Catarina do Fogo.
+        "CR",  # Santa Cruz.
+        "MA",  # Maio.
+        "MO",  # Mosteiros.
+        "PA",  # Paul.
+        "PN",  # Porto Novo.
+        "PR",  # Praia.
+        "RB",  # Ribeira Brava.
+        "RG",  # Ribeira Grande.
+        "RS",  # Ribeira Grande de Santiago.
+        "S",  # Ilhas de Sotavento.
+        "SL",  # Sal.
+        "SD",  # São Domingos.
+        "SF",  # São Filipe.
+        "SO",  # São Lourenço dos Órgãos.
+        "SM",  # São Miguel.
+        "SS",  # São Salvador do Mundo.
+        "SV",  # São Vicente.
+        "TA",  # Tarrafal.
+        "TS",  # Tarrafal de São Nicolau.
+    )
+    subdivisions_aliases = {
+        # Municipality and Geographical Region.
+        "Ilhas de Barlavento": "B",
+        "Boa Vista": "BV",
+        "Brava": "BR",
+        "Santa Catarina": "CA",
+        "Santa Catarina do Fogo": "CF",
+        "Santa Cruz": "CR",
+        "Maio": "MA",
+        "Mosteiros": "MO",
+        "Paul": "PA",
+        "Porto Novo": "PN",
+        "Praia": "PR",
+        "Ribeira Brava": "RB",
+        "Ribeira Grande": "RG",
+        "Ribeira Grande de Santiago": "RS",
+        "Ilhas de Sotavento": "S",
+        "Sal": "SL",
+        "São Domingos": "SD",
+        "São Filipe": "SF",
+        "São Lourenço dos Órgãos": "SO",
+        "São Miguel": "SM",
+        "São Salvador do Mundo": "SS",
+        "São Vicente": "SV",
+        "Tarrafal": "TA",
+        "Tarrafal de São Nicolau": "TS",
+    }
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_CV")
 
@@ -43,14 +101,20 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Ano Novo"))
 
         if self._year >= 1991:
-            # Democracy Day.
+            # Democracy and Freedom Day.
             self._add_holiday_jan_13(tr("Dia da Liberdade e Democracia"))
 
         # National Heroes Day.
         self._add_holiday_jan_20(tr("Dia da Nacionalidade e dos Heróis Nacionais"))
 
+        # Ash Wednesday.
+        self._add_ash_wednesday(tr("Quarta-feira de Cinzas"))
+
         # Good Friday.
         self._add_good_friday(tr("Sexta-feira Santa"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Páscoa"))
 
         # Worker's Day.
         self._add_labor_day(tr("Dia do Trabalhador"))
@@ -71,20 +135,56 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Natal"))
 
     def _populate_optional_holidays(self):
-        # Ash Wednesday.
-        self._add_ash_wednesday(tr("Dia das Cinzas"))
-
         # Holy Thursday.
         self._add_holy_thursday(tr("Quinta-Feira Santa"))
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Páscoa"))
 
         # Mother's Day.
         self._add_holiday_2nd_sun_of_may(tr("Dia das Mães"))
 
         # Father's Day.
         self._add_holiday_3rd_sun_of_jun(tr("Dia dos Pais"))
+
+    def _populate_subdiv_sv_public_holidays(self):
+        # St. Vincent Municipal Day.
+        self._add_holiday_jan_22(tr("Dia do Município de São Vicente"))
+
+        # Shrove Tuesday.
+        self._add_carnival_tuesday(tr("Terça-feira de Carnaval"))
+
+    def _populate_subdiv_rs_public_holidays(self):
+        # Day of the Municipality of Ribeira Grande de Santiago.
+        self._add_holiday_jan_31(tr("Dia do Município de Ribeira Grande de Santiago"))
+
+    def _populate_subdiv_pr_public_holidays(self):
+        # Praia City Day.
+        self._add_holiday_apr_29(tr("Dia da Cidade da Praia"))
+
+        # Praia Municipal Day.
+        self._add_holiday_may_19(tr("Dia do Município da Praia"))
+
+    def _populate_subdiv_br_public_holidays(self):
+        # Day of the Municipality of Brava.
+        self._add_holiday_jun_24(tr("Dia do Município da Brava"))
+
+    def _populate_subdiv_bv_public_holidays(self):
+        # Municipal Day.
+        self._add_holiday_jul_4(tr("Dia do Município"))
+
+    def _populate_subdiv_ts_public_holidays(self):
+        # Day of the Municipality of Tarrafal de São Nicolau.
+        self._add_holiday_aug_2(tr("Dia do Município do Tarrafal de São Nicolau"))
+
+    def _populate_subdiv_ma_public_holidays(self):
+        # May Day.
+        self._add_holiday_sep_8(tr("Dia do Município do Maio"))
+
+    def _populate_subdiv_sl_public_holidays(self):
+        # Municipal Day.
+        self._add_holiday_sep_15(tr("Dia do Município"))
+
+    def _populate_subdiv_rb_public_holidays(self):
+        # Day of the Municipality of Ribeira Brava.
+        self._add_holiday_dec_6(tr("Dia do Município de Ribeira Brava"))
 
 
 class CV(CapeVerde):
