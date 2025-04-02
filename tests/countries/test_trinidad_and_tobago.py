@@ -16,7 +16,7 @@ from holidays.countries.trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from tests.common import CommonCountryTests
 
 
-class TestNepal(CommonCountryTests, TestCase):
+class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(TrinidadAndTobago)
