@@ -28,7 +28,9 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertNoHolidays(Guinea(years=1958))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Nouvel an", (f"{year}-01-01" for year in range(1959, 2050)))
+        self.assertHolidayName(
+            "Fête du Nouvel an", (f"{year}-01-01" for year in range(1959, 2050))
+        )
 
     def test_second_republic_day(self):
         name = "Jour de la Deuxième République"
@@ -36,7 +38,7 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_easter_monday(self):
-        name = "Le lundi de Pâques"
+        name = "Lundi de Pâques"
         self.assertHolidayName(
             name,
             "2015-04-06",
@@ -57,29 +59,28 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_africa_day(self):
         self.assertHolidayName(
-            "Anniversaire de l'OUA", (f"{year}-05-25" for year in range(1959, 2050))
+            "Anniversaire de l'Union Africaine", (f"{year}-05-25" for year in range(1959, 2050))
         )
 
     def test_assumption_of_mary(self):
-        self.assertHolidayName(
-            "Assomption de Marie", (f"{year}-08-15" for year in range(1959, 2050))
-        )
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1959, 2050)))
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Fête de l'indépendance de la Guinée", (f"{year}-10-02" for year in range(1959, 2050))
+            "Fête anniversaire de l'indépendance de la Guinée",
+            (f"{year}-10-02" for year in range(1959, 2050)),
         )
 
     def test_all_saints_day(self):
-        name = "La Toussaint"
+        name = "Toussaint"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2022)))
         self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Noël", (f"{year}-12-25" for year in range(1959, 2050)))
+        self.assertHolidayName("Fête de Noël", (f"{year}-12-25" for year in range(1959, 2050)))
 
     def test_laylat_al_qadr_day(self):
-        name = "Lailatoul Qadr"
+        name = "Lendemain de la nuit Lailatoul Qadr"
         self.assertHolidayName(
             name,
             "2015-07-14",
@@ -97,7 +98,7 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2015, 2025))
 
     def test_eid_al_fitr_day(self):
-        name = "Korité"
+        name = "Jour de l'Aïd el-Fitr"
         self.assertHolidayName(
             name,
             "2015-07-18",
@@ -115,7 +116,7 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2015, 2025))
 
     def test_eid_al_adha_day(self):
-        name = "Tabaski"
+        name = "Jour de la Tabaski"
         self.assertHolidayName(
             name,
             "2015-09-24",
@@ -132,8 +133,17 @@ class TestGuinea(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2015, 2025))
 
+    def test_eid_al_adha_day_two(self):
+        name = "Lendemain de la Tabaski"
+        self.assertHolidayName(
+            name,
+            "2023-06-29",
+            "2024-06-17",
+            "2025-06-08",
+        )
+
     def test_mawlid_day(self):
-        name = "Maouloud"
+        name = "Lendemain de la nuit du Maoloud"
         self.assertHolidayName(
             name,
             "2015-12-24",
@@ -154,34 +164,36 @@ class TestGuinea(CommonCountryTests, TestCase):
         # * <https://www.timeanddate.com/holidays/guinea/2021>
         self.assertHolidays(
             Guinea(years=2021),
-            ("2021-01-01", "Nouvel an"),
+            ("2021-01-01", "Fête du Nouvel an"),
             ("2021-04-03", "Jour de la Deuxième République"),
-            ("2021-04-05", "Le lundi de Pâques"),
+            ("2021-04-05", "Lundi de Pâques"),
             ("2021-05-01", "Fête du Travail"),
-            ("2021-05-09", "Lailatoul Qadr"),
-            ("2021-05-13", "Korité"),
-            ("2021-05-25", "Anniversaire de l'OUA"),
-            ("2021-07-20", "Tabaski"),
-            ("2021-08-15", "Assomption de Marie"),
-            ("2021-10-02", "Fête de l'indépendance de la Guinée"),
-            ("2021-10-18", "Maouloud"),
-            ("2021-11-01", "La Toussaint"),
-            ("2021-12-25", "Noël"),
+            ("2021-05-09", "Lendemain de la nuit Lailatoul Qadr"),
+            ("2021-05-13", "Jour de l'Aïd el-Fitr"),
+            ("2021-05-25", "Anniversaire de l'Union Africaine"),
+            ("2021-07-20", "Jour de la Tabaski"),
+            ("2021-08-15", "Assomption"),
+            ("2021-10-02", "Fête anniversaire de l'indépendance de la Guinée"),
+            ("2021-10-18", "Lendemain de la nuit du Maoloud"),
+            ("2021-11-01", "Toussaint"),
+            ("2021-12-25", "Fête de Noël"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "Nouvel an"),
-            ("2024-04-01", "Le lundi de Pâques"),
-            ("2024-04-06", "Lailatoul Qadr"),
-            ("2024-04-10", "Korité"),
+            "fr",
+            ("2024-01-01", "Fête du Nouvel an"),
+            ("2024-04-01", "Lundi de Pâques"),
+            ("2024-04-06", "Lendemain de la nuit Lailatoul Qadr"),
+            ("2024-04-10", "Jour de l'Aïd el-Fitr"),
             ("2024-05-01", "Fête du Travail"),
-            ("2024-05-25", "Anniversaire de l'OUA"),
-            ("2024-06-16", "Tabaski"),
-            ("2024-08-15", "Assomption de Marie"),
-            ("2024-09-15", "Maouloud"),
-            ("2024-10-02", "Fête de l'indépendance de la Guinée"),
-            ("2024-12-25", "Noël"),
+            ("2024-05-25", "Anniversaire de l'Union Africaine"),
+            ("2024-06-16", "Jour de la Tabaski"),
+            ("2024-06-17", "Lendemain de la Tabaski"),
+            ("2024-08-15", "Assomption"),
+            ("2024-09-15", "Lendemain de la nuit du Maoloud"),
+            ("2024-10-02", "Fête anniversaire de l'indépendance de la Guinée"),
+            ("2024-12-25", "Fête de Noël"),
         )
 
     def test_l10n_en_us(self):
@@ -189,13 +201,14 @@ class TestGuinea(CommonCountryTests, TestCase):
             "en_US",
             ("2024-01-01", "New Year's Day"),
             ("2024-04-01", "Easter Monday"),
-            ("2024-04-06", "Night of Power"),
+            ("2024-04-06", "Day after Night of Power"),
             ("2024-04-10", "Eid al-Fitr"),
             ("2024-05-01", "Labor Day"),
             ("2024-05-25", "Africa Day"),
             ("2024-06-16", "Eid al-Adha"),
+            ("2024-06-17", "Day after Eid al-Adha"),
             ("2024-08-15", "Assumption Day"),
-            ("2024-09-15", "Prophet's Birthday"),
+            ("2024-09-15", "Day after Prophet's Birthday"),
             ("2024-10-02", "Independence Day"),
             ("2024-12-25", "Christmas Day"),
         )
