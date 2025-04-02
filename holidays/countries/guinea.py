@@ -22,7 +22,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class Guinea(
     ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
-    """Guinea Holidays.
+    """Guinea holidays.
 
     References:
         * [Decree No. 2022-0526](https://igt.gov.gn/wp-content/uploads/2024/10/D-2022-0526-PRG-CNRD_221103_131021.pdf)
@@ -49,7 +49,7 @@ class Guinea(
     observed_estimated_label = tr("Lendemain de la %s (estimé)")
     supported_languages = ("en_US", "fr")
 
-    # Guinea Gained Independence from France on October 2, 1958
+    # Guinea gained independence from France on October 2, 1958
     start_year = 1959
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
