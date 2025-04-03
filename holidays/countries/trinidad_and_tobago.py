@@ -12,7 +12,8 @@
 
 from gettext import gettext as tr
 
-# from holidays.calendars.gregorian import JAN
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -20,8 +21,6 @@ from holidays.groups import (
     IslamicHolidays,
 )
 from holidays.holiday_base import HolidayBase
-
-# from holidays.calendars import _CustomIslamicHolidays
 
 
 class TrinidadAndTobago(
@@ -33,11 +32,14 @@ class TrinidadAndTobago(
     References:
       * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
       * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
+      * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
+      * <https://calendarific.com/holiday/trinidad/eid-al-fitr>
+      * <https://www.timeanddate.com/holidays/saudi-arabia/eid-al-adha>
     """
 
     country = "TT"
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -48,9 +50,7 @@ class TrinidadAndTobago(
         HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self,
-            # cls = TrinidadAndTobagoIslamicHolidays,
-            # show_estimated=islamic_show_estimated
+            self, cls=TrinidadAndTobagoIslamicHolidays, show_estimated=islamic_show_estimated
         )
         super().__init__(*args, **kwargs)
 
@@ -107,3 +107,49 @@ class TT(TrinidadAndTobago):
 
 class TTO(TrinidadAndTobago):
     pass
+
+
+class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES = {
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 2),
+        2005: (JAN, 21),
+        2006: (JAN, 10),
+        2007: (DEC, 20),
+        2008: (DEC, 9),
+        2009: (NOV, 28),
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 26),
+        2013: (OCT, 15),
+        2014: (OCT, 4),
+        2015: (SEP, 24),
+        2016: (SEP, 12),
+        2017: (SEP, 2),
+        2018: (AUG, 21),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+        2025: (JUN, 6),
+    }
+
+    EID_AL_FITR_DATES = {
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 6),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 22),
+        2024: (APR, 10),
+        2025: (MAR, 31),
+    }
