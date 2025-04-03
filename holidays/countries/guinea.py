@@ -18,6 +18,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHol
 from holidays.holiday_base import HolidayBase
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
+
 class Guinea(
     ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
