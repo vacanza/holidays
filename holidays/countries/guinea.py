@@ -17,7 +17,6 @@ from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT,
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
-
 class Guinea(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
