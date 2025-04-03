@@ -25,7 +25,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
     """
-
+    
     country = "PK"
     default_language = "en_PK"
     # %s (estimated).
@@ -33,6 +33,17 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
+    subdivisions = {
+    "PB": "Punjab",
+    "SD": "Sindh",
+    "KP": "Khyber Pakhtunkhwa",
+    "BA": "Balochistan",
+    "GB": "Gilgit-Baltistan",
+    "AJK": "Azad Jammu & Kashmir",
+    "ICT": "Islamabad Capital Territory",
+    }
+    
+    
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
         Args:
@@ -89,6 +100,15 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
 
+    self._populate_subdiv_holidays()
+
+    def _populate_subdiv_holidays(self):
+        # Adding province/city-specific holidays based on self.subdiv
+        if self.subdiv == "PB":  # Punjab
+            self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
+
+        if self.subdiv == "SD":  # Sindh
+            self._add_holiday_dec_27(tr("Benazir Bhutto's Martyrdom Day"))
 
 class PK(Pakistan):
     pass
