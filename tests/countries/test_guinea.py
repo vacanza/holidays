@@ -30,14 +30,19 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertNoHolidays(Guinea(years=1958))
 
     def test_new_years_day(self):
-        self.assertHolidayName(
-            "Fête du Nouvel an", (f"{year}-01-01" for year in range(1959, 2050))
+        name = "Fête du Nouvel an"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1959, 2050)))
+        dt = (
+            "2034-01-02",
+            "2040-01-02",
         )
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_second_republic_day(self):
         name = "Jour de la Deuxième République"
-        self.assertHolidayName(name, (f"{year}-04-03" for year in range(1985, 2022)))
-        self.assertNoHolidayName(name, range(1959, 1985), range(2022, 2050))
+        self.assertHolidayName(name, (f"{year}-04-03" for year in range(1959, 2022)))
+        self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -68,10 +73,14 @@ class TestGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1959, 2050)))
 
     def test_independence_day(self):
-        self.assertHolidayName(
-            "Fête anniversaire de l'indépendance de la Guinée",
-            (f"{year}-10-02" for year in range(1959, 2050)),
+        name = "Fête anniversaire de l'indépendance de la Guinée"
+        self.assertHolidayName(name, (f"{year}-10-02" for year in range(1959, 2050)))
+        dt = (
+            "2033-10-03",
+            "2039-10-03",
         )
+        self.assertHolidayName(f"Lendemain de la {name}", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_all_saints_day(self):
         name = "Toussaint"
@@ -116,6 +125,12 @@ class TestGuinea(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1959, 2050))
+        dt = (
+            "2033-01-03",
+            "2037-11-09",
+        )
+        self.assertHolidayName(f"Lendemain de la {name} (estimé)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_adha_day(self):
         name = "Jour de la Tabaski"
