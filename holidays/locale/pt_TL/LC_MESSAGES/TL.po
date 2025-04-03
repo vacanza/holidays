@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.60\n"
+"Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2024-10-24 23:10+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-04-03 12:03+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_TL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. %s (estimated).
 #, c-format
@@ -40,7 +39,7 @@ msgstr ""
 msgid "Dia dos Veteranos"
 msgstr ""
 
-#. World Labor Day.
+#. International Labor Day.
 msgid "Dia Mundial do Trabalhador"
 msgstr ""
 
@@ -108,7 +107,7 @@ msgstr ""
 msgid "Feriados Nacionais (Especiais)"
 msgstr ""
 
-#. World Children's Day.
+#. International Children's Day.
 msgid "Dia Mundial da Criança"
 msgstr ""
 
@@ -117,7 +116,7 @@ msgstr ""
 msgid "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
 msgstr ""
 
-#. World Human Rights Day.
+#. International Human Rights Day.
 msgid "Dia Mundial dos Direitos Humanos"
 msgstr ""
 
