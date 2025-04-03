@@ -51,7 +51,7 @@ msgstr ""
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#. New Year's Holiday
+#. New Year's Holiday.
 msgid "عطلة رأس السنة"
 msgstr ""
 

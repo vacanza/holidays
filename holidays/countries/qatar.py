@@ -41,11 +41,11 @@ from holidays.calendars.gregorian import (
     SAT,
 )
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import IslamicHolidays
+from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Qatar(HolidayBase, IslamicHolidays):
+class Qatar(HolidayBase, IslamicHolidays, StaticHolidays):
     """Qatar Holidays
 
     References:
@@ -68,13 +68,16 @@ class Qatar(HolidayBase, IslamicHolidays):
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=QatarIslamicHolidays, show_estimated=islamic_show_estimated
+        )
+        StaticHolidays.__init__(self, QatarStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         if self._year >= 2012:
             # National Sports Day.
-            self._add_holiday_2nd_tue_of_apr(tr("اليوم الوطني للرياضة"))
+            self._add_holiday_2nd_tue_of_feb(tr("اليوم الوطني للرياضة"))
 
         if self._year >= 2007:
             # Qatar National Day.
@@ -96,11 +99,7 @@ class Qatar(HolidayBase, IslamicHolidays):
         # New Year's Day.
         self._add_holiday_jan_1(tr("رأس السنة الميلادية"))
 
-        if self._year == 2025:
-            # New Year's Holiday
-            self._add_holiday_jan_2(tr("عطلة رأس السنة"))
-
-        if self._year > 2009:
+        if self._year >= 2010:
             # March Bank Holiday.
             self._add_holiday_1st_sun_of_mar(tr("عطلة البنك"))
 
@@ -161,4 +160,18 @@ class QatarIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 21),
         2024: (APR, 10),
         2025: (MAR, 30),
+    }
+
+
+class QatarStaticHolidays:
+    """Qatar Special Holidays
+
+    References:
+        * [New Year's Holiday](https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
+    """
+
+    # New Year's Holiday.
+    name = tr("عطلة رأس السنة")
+    special_public_holidays = {
+        2025: (JAN, 2, name),
     }
