@@ -108,7 +108,7 @@ msgstr "Journée de la municipalité"
 
 #. Maio Municipal Day.
 msgid "Dia do Município do Maio"
-msgstr "Fête de la municipalité en mai"
+msgstr "Journée de la municipalité de Maio"
 
 #. Ribeira Grande de Santiago Municipal Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
