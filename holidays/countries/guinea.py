@@ -70,7 +70,7 @@ class Guinea(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         if self._year >= 2023:
             self._add_observed(dt)
 
-        if 1985 <= self._year <= 2021:
+        if 1958 <= self._year <= 2021:
             # Second Republic Day.
             self._add_holiday_apr_3(tr("Jour de la Deuxième République"))
 
