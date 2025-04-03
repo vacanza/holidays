@@ -86,11 +86,11 @@ msgstr ""
 msgid "Quarta-feira de Cinzas"
 msgstr ""
 
-#. Shrove Tuesday.
+#. Carnival Tuesday.
 msgid "Terça-feira de Carnaval"
 msgstr ""
 
-#. St. Vincent Municipal Day.
+#. São Vicente Municipal Day.
 msgid "Dia do Município de São Vicente"
 msgstr ""
 

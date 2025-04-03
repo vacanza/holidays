@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Cape Verde holidays en_US localization.
+# Cape Verde holidays es localization.
 #
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "PO-Revision-Date: 2025-04-01 13:02-0400\n"
 "Last-Translator: Sindhura Kumbakonam Subramanian <sindhu.ss10@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,100 +28,100 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Ano Novo"
-msgstr "New Year's Day"
+msgstr "Año Nuevo"
 
 #. Democracy and Freedom Day.
 msgid "Dia da Liberdade e Democracia"
-msgstr "Democracy and Freedom Day"
+msgstr "Día de la Libertad y la Democracia"
 
 #. National Heroes Day.
 msgid "Dia da Nacionalidade e dos Heróis Nacionais"
-msgstr "National Heroes Day"
+msgstr "Día de los Héroes Nacionales"
 
 #. Good Friday.
 msgid "Sexta-feira Santa"
-msgstr "Good Friday"
+msgstr "Viernes Santo"
 
 #. Worker's Day.
 msgid "Dia do Trabalhador"
-msgstr "Worker's Day"
+msgstr "Día laboral"
 
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
-msgstr "International Children's Day"
+msgstr "Día Internacional del Niño"
 
 #. Independence Day.
 msgid "Dia da Independência Nacional"
-msgstr "Independence Day"
+msgstr "Día de la Independencia Nacional"
 
 #. Assumption Day.
 msgid "Dia da Assunção"
-msgstr "Assumption Day"
+msgstr "Día de la Asunción"
 
 #. All Saints' Day.
 msgid "Dia de Todos os Santos"
-msgstr "All Saints' Day"
+msgstr "Día de Todos los Santos"
 
 #. Christmas Day.
 msgid "Natal"
-msgstr "Christmas Day"
+msgstr "Navidad"
 
 #. Holy Thursday.
 msgid "Quinta-Feira Santa"
-msgstr "Holy Thursday"
+msgstr "Jueves Santo"
 
 #. Easter Sunday.
 msgid "Páscoa"
-msgstr "Easter Sunday"
+msgstr "Domingo de Pascua"
 
 #. Mother's Day.
 msgid "Dia das Mães"
-msgstr "Mother's Day"
+msgstr "Dia de la Madre"
 
 #. Father's Day.
 msgid "Dia dos Pais"
-msgstr "Father's Day"
+msgstr "Dia del Padre"
 
 #. Ash Wednesday.
 msgid "Quarta-feira de Cinzas"
-msgstr "Ash Wednesday"
+msgstr "Miércoles de Ceniza"
 
 #. Carnival Tuesday.
 msgid "Terça-feira de Carnaval"
-msgstr "Carnival Tuesday"
+msgstr "Martes de Carnaval"
 
 #. São Vicente Municipal Day.
 msgid "Dia do Município de São Vicente"
-msgstr "São Vicente Municipal Day"
+msgstr "Día del Municipio de São Vicente"
 
 #. Tarrafal de São Nicolau Municipal Day.
 msgid "Dia do Município do Tarrafal de São Nicolau"
-msgstr "Tarrafal de São Nicolau Municipal Day"
+msgstr "Día del Municipio de Tarrafal de São Nicolau"
 
 #. Ribeira Brava Municipal Day.
 msgid "Dia do Município de Ribeira Brava"
-msgstr "Ribeira Brava Municipal Day"
+msgstr "Día del Municipio de Ribeira Brava"
 
 #. Municipal Day.
 msgid "Dia do Município"
-msgstr "Municipal Day"
+msgstr "Día del Municipio"
 
 #. Maio Municipal Day.
 msgid "Dia do Município do Maio"
-msgstr "Maio Municipal Day"
+msgstr "Día del Municipio de Mayo"
 
 #. Ribeira Grande de Santiago Municipal Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
-msgstr "Ribeira Grande de Santiago Municipal Day"
+msgstr "Día del Municipio de Ribeira Grande de Santiago"
 
 #. Brava Municipal Day.
 msgid "Dia do Município da Brava"
-msgstr "Brava Municipal Day"
+msgstr "Día del Municipio Brava"
 
 #. Praia City Day.
 msgid "Dia da Cidade da Praia"
-msgstr "Praia City Day"
+msgstr "Día de la Ciudad de Praia"
 
 #. Praia Municipal Day.
 msgid "Dia do Município da Praia"
-msgstr "Praia Municipal Day"
+msgstr "Día del Municipio de Praia"

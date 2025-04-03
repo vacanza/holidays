@@ -49,6 +49,48 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "Dia Mundial da Criança", (f"{year}-06-01" for year in range(1976, 2050))
         )
 
+    def test_ash_wednesday(self):
+        name = "Quarta-feira de Cinzas"
+        self.assertHolidayName(
+            name,
+            "2019-03-06",
+            "2020-02-26",
+            "2021-02-17",
+            "2022-03-02",
+            "2023-02-22",
+            "2024-02-14",
+            "2025-03-05",
+        )
+        self.assertHolidayName(name, range(1976, 2050))
+
+    def test_good_friday(self):
+        name = "Sexta-feira Santa"
+        self.assertHolidayName(
+            name,
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, range(1976, 2050))
+
+    def test_easter_sunday(self):
+        name = "Páscoa"
+        self.assertHolidayName(
+            name,
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+        )
+        self.assertHolidayName(name, range(1976, 2050))
+
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CapeVerde(categories=PUBLIC, years=2024),
@@ -65,6 +107,22 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2024-11-01", "Dia de Todos os Santos"),
             ("2024-12-25", "Natal"),
         )
+
+    def test_municipal_specific_days(self):
+        subdiv_holidays = {
+            "BR": ("2024-06-24",),
+            "BV": ("2024-07-04",),
+            "CF": ("2024-05-01",),
+            "MA": ("2024-09-08",),
+            "PR": ("2024-04-29", "2024-05-19"),
+            "RB": ("2024-12-06",),
+            "RS": ("2024-01-31",),
+            "SL": ("2024-09-15",),
+            "SV": ("2024-01-22", "2024-02-13"),
+            "TS": ("2024-08-02",),
+        }
+        for subdiv, holidays in subdiv_holidays.items():
+            self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
 
     def test_2024_optional_holidays(self):
         self.assertHolidays(
@@ -121,15 +179,77 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Natal"),
         )
 
+    def test_de_l10n(self):
+        self.assertLocalizedHolidays(
+            "de",
+            ("2025-01-01", "Neujahr"),
+            ("2025-01-13", "Tag der Demokratie und Freiheit"),
+            ("2025-01-20", "Tag der Nationalhelden"),
+            ("2025-01-22", "Tag der Gemeinde São Vicente"),
+            ("2025-01-31", "Tag der Gemeinde Ribeira Grande de Santiago"),
+            ("2025-03-04", "Karnevalsdienstag"),
+            ("2025-03-05", "Aschermittwoch"),
+            ("2025-04-17", "Gründonnerstag"),
+            ("2025-04-18", "Karfreitag"),
+            ("2025-04-20", "Ostern"),
+            ("2025-04-29", "Praia-Stadttag"),
+            ("2025-05-01", "Tag der Arbeit"),
+            ("2025-05-11", "Muttertag"),
+            ("2025-05-19", "Tag der Gemeinde Praia"),
+            ("2025-06-01", "Weltkindertag"),
+            ("2025-06-15", "Vatertag"),
+            ("2025-06-24", "Tag der Gemeinde Brava"),
+            ("2025-07-04", "Gemeindetag"),
+            ("2025-07-05", "Nationaler Unabhängigkeitstag"),
+            ("2025-08-02", "Tag der Gemeinde Tarrafal de São Nicolau"),
+            ("2025-08-15", "Mariä Himmelfahrt"),
+            ("2025-09-08", "Tag der Gemeinde Maio"),
+            ("2025-09-15", "Gemeindetag"),
+            ("2025-11-01", "Allerheiligen"),
+            ("2025-12-06", "Tag der Gemeinde Ribeira Brava"),
+            ("2025-12-25", "Weihnachten"),
+        )
+
+    def test_es_l10n(self):
+        self.assertLocalizedHolidays(
+            "es",
+            ("2025-01-01", "Año Nuevo"),
+            ("2025-01-13", "Día de la Libertad y la Democracia"),
+            ("2025-01-20", "Día de los Héroes Nacionales"),
+            ("2025-01-22", "Día del Municipio de São Vicente"),
+            ("2025-01-31", "Día del Municipio de Ribeira Grande de Santiago"),
+            ("2025-03-04", "Martes de Carnaval"),
+            ("2025-03-05", "Miércoles de Ceniza"),
+            ("2025-04-17", "Jueves Santo"),
+            ("2025-04-18", "Viernes Santo"),
+            ("2025-04-20", "Domingo de Pascua"),
+            ("2025-04-29", "Día de la Ciudad de Praia"),
+            ("2025-05-01", "Día laboral"),
+            ("2025-05-11", "Dia de la Madre"),
+            ("2025-05-19", "Día del Municipio de Praia"),
+            ("2025-06-01", "Día Internacional del Niño"),
+            ("2025-06-15", "Dia del Padre"),
+            ("2025-06-24", "Día del Municipio Brava"),
+            ("2025-07-04", "Día del Municipio"),
+            ("2025-07-05", "Día de la Independencia Nacional"),
+            ("2025-08-02", "Día del Municipio de Tarrafal de São Nicolau"),
+            ("2025-08-15", "Día de la Asunción"),
+            ("2025-09-08", "Día del Municipio de Mayo"),
+            ("2025-09-15", "Día del Municipio"),
+            ("2025-11-01", "Día de Todos los Santos"),
+            ("2025-12-06", "Día del Municipio de Ribeira Brava"),
+            ("2025-12-25", "Navidad"),
+        )
+
     def test_en_us_l10n(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-01-13", "Democracy and Freedom Day"),
             ("2025-01-20", "National Heroes Day"),
-            ("2025-01-22", "St. Vincent Municipal Day"),
+            ("2025-01-22", "São Vicente Municipal Day"),
             ("2025-01-31", "Ribeira Grande de Santiago Municipal Day"),
-            ("2025-03-04", "Shrove Tuesday"),
+            ("2025-03-04", "Carnival Tuesday"),
             ("2025-03-05", "Ash Wednesday"),
             ("2025-04-17", "Holy Thursday"),
             ("2025-04-18", "Good Friday"),
@@ -152,18 +272,33 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
         )
 
-    def test_municipal_specific_days(self):
-        subdiv_holidays = {
-            "BR": ("2024-06-24",),
-            "BV": ("2024-07-04",),
-            "CF": ("2024-05-01",),
-            "MA": ("2024-09-08",),
-            "PR": ("2024-04-29",),
-            "RB": ("2024-12-06",),
-            "RS": ("2024-01-31",),
-            "SL": ("2024-09-15",),
-            "SV": ("2024-01-22",),
-            "TS": ("2024-08-02",),
-        }
-        for subdiv, holidays in subdiv_holidays.items():
-            self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
+    def test_fr_l10n(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2025-01-01", "Nouvel An"),
+            ("2025-01-13", "Journée de la liberté et de la démocratie"),
+            ("2025-01-20", "Journée de la nationalité et des héros nationaux"),
+            ("2025-01-22", "Journée de la municipalité de São Vicente"),
+            ("2025-01-31", "Journée de la municipalité de Ribeira Grande de Santiago"),
+            ("2025-03-04", "Mardi du Carnaval"),
+            ("2025-03-05", "Mercredi des Cendres"),
+            ("2025-04-17", "Jeudi Saint"),
+            ("2025-04-18", "Vendredi Saint"),
+            ("2025-04-20", "Dimanche de Pâques"),
+            ("2025-04-29", "Journée de la ville de Praia"),
+            ("2025-05-01", "Fête du travail"),
+            ("2025-05-11", "Fête des Mères"),
+            ("2025-05-19", "Journée de la municipalité de Praia"),
+            ("2025-06-01", "Journée mondiale de l'enfance"),
+            ("2025-06-15", "Fête des Pères"),
+            ("2025-06-24", "Journée de la municipalité de Brava"),
+            ("2025-07-04", "Journée de la municipalité"),
+            ("2025-07-05", "Fête de l'Indépendance Nationale"),
+            ("2025-08-02", "Journée de la municipalité de Tarrafal de São Nicolau"),
+            ("2025-08-15", "Jour de l'Assomption"),
+            ("2025-09-08", "Fête de la municipalité en mai"),
+            ("2025-09-15", "Journée de la municipalité"),
+            ("2025-11-01", "Halloween"),
+            ("2025-12-06", "Journée de la municipalité de Ribeira Brava"),
+            ("2025-12-25", "Noël"),
+        )
