@@ -135,6 +135,7 @@ from .philippines import Philippines, PH, PHL
 from .poland import Poland, PL, POL
 from .portugal import Portugal, PT, PRT
 from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
+from .qatar import Qatar, QA, QAT
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
