@@ -25,7 +25,6 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
     """
-    
     country = "PK"
     default_language = "en_PK"
     # %s (estimated).
@@ -100,10 +99,16 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
 
-    self._populate_subdiv_holidays()
+        self._populate_subdiv_holidays()
 
     def _populate_subdiv_holidays(self):
         # Adding province/city-specific holidays based on self.subdiv
+
+        
+        # Ensure self.subdiv is not None before checking specific values
+        if not self.subdiv:
+        return  # No subdivisions selected, so no need to add local holidays
+
         if self.subdiv == "PB":  # Punjab
             self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
 
