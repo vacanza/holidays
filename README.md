@@ -887,7 +887,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>NP</td>
 <td></td>
 <td></td>
-<td></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Netherlands</td>

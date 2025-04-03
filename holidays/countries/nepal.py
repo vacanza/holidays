@@ -12,6 +12,7 @@
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -39,8 +40,10 @@ class Nepal(
     """
 
     country = "NP"
+    supported_categories = (PUBLIC, WORKDAY)
     # %s (estimated).
     estimated_label = "%s (estimated)"
+    start_year = 1924
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -53,14 +56,17 @@ class Nepal(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Prithvi Jayanti.
-        self._add_holiday_jan_11("Prithvi Jayanti")
+        if self._year not in {2019, 2020}:
+            # Prithvi Jayanti.
+            self._add_holiday_jan_11("Prithvi Jayanti")
 
-        # Martyr's Day.
-        self._add_holiday_jan_30("Martyr's Day")
+        if self._year not in {2019, 2020}:
+            # Martyr's Day.
+            self._add_holiday_jan_30("Martyr's Day")
 
-        # National Democracy Day.
-        self._add_holiday_feb_19("National Democracy Day")
+        if self._year not in {2019, 2020}:
+            # National Democracy Day.
+            self._add_holiday_feb_19("National Democracy Day")
 
         # Women's Day.
         self._add_womens_day("Women's Day")
@@ -71,8 +77,9 @@ class Nepal(
         # Labor Day.
         self._add_labor_day("Labor Day")
 
-        # Republic Day.
-        self._add_holiday_may_29("Republic Day")
+        if self._year not in {2019, 2020}:
+            # Republic Day.
+            self._add_holiday_may_29("Republic Day")
 
         # Constitution Day.
         self._add_holiday_sep_19("Constitution Day")
@@ -103,14 +110,16 @@ class Nepal(
         # Holi (Terai).
         self._add_holi("Holi (Terai)")
 
-        # Ram Navami.
-        self._add_ram_navami("Ram Navami")
+        if self._year not in {2019, 2020}:
+            # Ram Navami.
+            self._add_ram_navami("Ram Navami")
 
         # Buddha Jayanti.
         self._add_buddha_purnima("Buddha Jayanti")
 
-        # Ghatasthapana.
-        self._add_sharad_navratri("Ghatasthapana")
+        if self._year not in {2019, 2020}:
+            # Ghatasthapana.
+            self._add_sharad_navratri("Ghatasthapana")
 
         # Phulpati.
         self._add_maha_saptami("Phulpati")
@@ -127,14 +136,17 @@ class Nepal(
         # Ekadashi(Dashain).
         self._add_papankusha_ekadashi("Ekadashi (Dashain)")
 
-        # Duwadashi(Dashain).
-        self._add_papankusha_duwadashi("Duwadashi (Dashain)")
+        if self._year not in {2019, 2020}:
+            # Duwadashi(Dashain).
+            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
-        # Janai Purnima.
-        self._add_raksha_bandhan("Janai Purnima")
+        if self._year not in {2019, 2020}:
+            # Janai Purnima.
+            self._add_raksha_bandhan("Janai Purnima")
 
-        # Shree Krishna Janmashtami.
-        self._add_janmashtami("Shree Krishna Janmashtami")
+        if self._year not in {2019, 2020}:
+            # Shree Krishna Janmashtami.
+            self._add_janmashtami("Shree Krishna Janmashtami")
 
         # Lakshmi Puja.
         self._add_diwali_india("Lakshmi Puja")
@@ -164,6 +176,37 @@ class Nepal(
 
         # Eid al-Adha.
         self._add_eid_al_adha_day("Bakrid")
+
+    def _populate_workday_holidays(self):
+        if 2019 <= self._year <= 2020:
+            # Prithvi Jayanti.
+            self._add_holiday_jan_11("Prithvi Jayanti")
+
+            # Martyr's Day.
+            self._add_holiday_jan_30("Martyr's Day")
+
+            # National Democracy Day.
+            self._add_holiday_feb_19("National Democracy Day")
+
+            # Republic Day.
+            self._add_holiday_may_29("Republic Day")
+
+            # Hindu holidays.
+
+            # Ram Navami.
+            self._add_ram_navami("Ram Navami")
+
+            # Ghatasthapana.
+            self._add_sharad_navratri("Ghatasthapana")
+
+            # Duwadashi(Dashain).
+            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
+
+            # Janai Purnima.
+            self._add_raksha_bandhan("Janai Purnima")
+
+            # Shree Krishna Janmashtami.
+            self._add_janmashtami("Shree Krishna Janmashtami")
 
 
 class NepalIslamicHolidays(_CustomIslamicHolidays):
