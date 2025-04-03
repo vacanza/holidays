@@ -661,7 +661,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-04-20", "National Holidays (Special)"),
             ("2023-04-21", "National Holidays (Special)"),
             ("2023-04-22", "Eid al-Fitr"),
-            ("2023-05-01", "International Labor Day"),
+            ("2023-05-01", "International Worker's Day"),
             ("2023-05-18", "The Day of Ascension of Jesus Christ into Heaven"),
             ("2023-05-19", "Parliamentary Election Day"),
             ("2023-05-20", "Restoration of Independence Day"),

@@ -80,7 +80,7 @@ class TimorLeste(
             # Veteran's Day.
             self._add_holiday_mar_3(tr("Dia dos Veteranos"))
 
-        # International Labor Day.
+        # International Worker's Day.
         self._add_labor_day(tr("Dia Mundial do Trabalhador"))
 
         # Restoration of Independence Day.

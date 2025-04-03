@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2023-10-14 08:23+0700\n"
-"PO-Revision-Date: 2025-04-03 12:03+0700\n"
+"PO-Revision-Date: 2025-04-03 16:23+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_TL\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Dia dos Veteranos"
 msgstr ""
 
-#. International Labor Day.
+#. International Worker's Day.
 msgid "Dia Mundial do Trabalhador"
 msgstr ""
 
