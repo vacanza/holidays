@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 # from holidays.calendars.gregorian import JAN
 from holidays.groups import (
     ChristianHolidays,
@@ -18,6 +20,8 @@ from holidays.groups import (
     IslamicHolidays,
 )
 from holidays.holiday_base import HolidayBase
+
+# from holidays.calendars import _CustomIslamicHolidays
 
 
 class TrinidadAndTobago(
@@ -34,57 +38,67 @@ class TrinidadAndTobago(
     country = "TT"
 
     def __init__(self, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self,
+            # cls = TrinidadAndTobagoIslamicHolidays,
+            # show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day
-        self._add_new_years_day("New Year's Day")
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
 
-        # Carnival Monday
-        self._add_carnival_monday("Carnival Monday")
+        # Carnival Monday.
+        self._add_carnival_monday(tr("Carnival Monday"))
 
-        # Carnival Tuesday (Mardi Gras)
-        self._add_carnival_tuesday("Carnival Tuesday")
+        # Carnival Tuesday.
+        self._add_carnival_tuesday(tr("Carnival Tuesday"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Easter Monday
-        self._add_easter_monday("Easter Monday")
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
-        # Indian Arrival Day - May 30
-        self._add_holiday_may_30("Indian Arrival Day")
+        # Indian Arrival Day.
+        self._add_holiday_may_30(tr("Indian Arrival Day"))
 
-        # Corpus Christi
-        self._add_corpus_christi_day("Corpus Christi")
+        # Corpus Christi.
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        # Labour Day - June 19
-        self._add_holiday_jun_19("Labour Day")
+        # Labour Day.
+        self._add_holiday_jun_19(tr("Labour Day"))
 
-        # Emancipation Day - August 1
-        self._add_holiday_aug_1("Emancipation Day")
+        # African Emancipation Day.
+        self._add_holiday_aug_1(tr("Emancipation Day"))
 
-        # Independence Day - August 31
-        self._add_holiday_aug_31("Independence Day")
+        # Independence Day.
+        self._add_holiday_aug_31(tr("Independence Day"))
 
-        # Republic Day - September 24
-        self._add_holiday_sep_24("Republic Day")
+        # Republic Day.
+        self._add_holiday_sep_24(tr("Republic Day"))
 
-        # Christmas Day
-        self._add_christmas_day("Christmas Day")
+        # Christmas Day.
+        self._add_christmas_day(tr("Christmas Day"))
 
-        # Boxing Day
-        self._add_christmas_day_two("Boxing Day")
+        # Boxing Day.
+        self._add_christmas_day_two(tr("Boxing Day"))
 
-        # Diwali
-        self._add_diwali_india("Diwali")
+        # Diwali.
+        self._add_diwali_india(tr("Diwali"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Id-ul-Fitr")
+        self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
 
 
 class TT(TrinidadAndTobago):
