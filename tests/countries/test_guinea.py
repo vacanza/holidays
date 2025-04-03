@@ -33,8 +33,8 @@ class TestGuinea(CommonCountryTests, TestCase):
         name = "Fête du Nouvel an"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1959, 2050)))
         dt = (
+            "2023-01-02",
             "2034-01-02",
-            "2040-01-02",
         )
         self.assertHolidayName(f"Lendemain de la {name}", dt)
         self.assertNoNonObservedHoliday(dt)
