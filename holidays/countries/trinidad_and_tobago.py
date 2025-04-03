@@ -58,23 +58,8 @@ class TrinidadAndTobago(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # Carnival Monday.
-        self._add_carnival_monday(tr("Carnival Monday"))
-
-        # Carnival Tuesday.
-        self._add_carnival_tuesday(tr("Carnival Tuesday"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
         # Indian Arrival Day.
         self._add_holiday_may_30(tr("Indian Arrival Day"))
-
-        # Corpus Christi.
-        self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Labour Day.
         self._add_holiday_jun_19(tr("Labour Day"))
@@ -94,11 +79,26 @@ class TrinidadAndTobago(
         # Boxing Day.
         self._add_christmas_day_two(tr("Boxing Day"))
 
-        # Diwali.
-        self._add_diwali_india(tr("Diwali"))
+        # Carnival Monday.
+        self._add_carnival_monday(tr("Carnival Monday"))
+
+        # Carnival Tuesday.
+        self._add_carnival_tuesday(tr("Carnival Tuesday"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
+        # Corpus Christi.
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
+
+        # Diwali.
+        self._add_diwali_india(tr("Diwali"))
 
 
 class TT(TrinidadAndTobago):
