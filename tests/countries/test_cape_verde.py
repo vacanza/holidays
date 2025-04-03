@@ -91,6 +91,22 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1976, 2050))
 
+    def test_municipal_specific_days(self):
+        subdiv_holidays = {
+            "BR": ("2024-06-24",),
+            "BV": ("2024-07-04",),
+            "CF": ("2024-05-01",),
+            "MA": ("2024-09-08",),
+            "PR": ("2024-04-29", "2024-05-19"),
+            "RB": ("2024-12-06",),
+            "RS": ("2024-01-31",),
+            "SL": ("2024-09-15",),
+            "SV": ("2024-01-22", "2024-02-13"),
+            "TS": ("2024-08-02",),
+        }
+        for subdiv, holidays in subdiv_holidays.items():
+            self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
+
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CapeVerde(categories=PUBLIC, years=2024),
@@ -107,22 +123,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2024-11-01", "Dia de Todos os Santos"),
             ("2024-12-25", "Natal"),
         )
-
-    def test_municipal_specific_days(self):
-        subdiv_holidays = {
-            "BR": ("2024-06-24",),
-            "BV": ("2024-07-04",),
-            "CF": ("2024-05-01",),
-            "MA": ("2024-09-08",),
-            "PR": ("2024-04-29", "2024-05-19"),
-            "RB": ("2024-12-06",),
-            "RS": ("2024-01-31",),
-            "SL": ("2024-09-15",),
-            "SV": ("2024-01-22", "2024-02-13"),
-            "TS": ("2024-08-02",),
-        }
-        for subdiv, holidays in subdiv_holidays.items():
-            self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
 
     def test_2024_optional_holidays(self):
         self.assertHolidays(
