@@ -15,12 +15,11 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Guinea(
-    ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """Guinea holidays.
 
@@ -49,7 +48,7 @@ class Guinea(
     observed_estimated_label = tr("Lendemain de la %s (estimé)")
     supported_languages = ("en_US", "fr")
 
-    # Guinea gained independence from France on October 2, 1958
+    # Guinea gained independence from France on October 2, 1958.
     start_year = 1959
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
