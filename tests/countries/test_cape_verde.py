@@ -298,7 +298,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-08-15", "Jour de l'Assomption"),
             ("2025-09-08", "Fête de la municipalité en mai"),
             ("2025-09-15", "Journée de la municipalité"),
-            ("2025-11-01", "Halloween"),
+            ("2025-11-01", "La Toussaint"),
             ("2025-12-06", "Journée de la municipalité de Ribeira Brava"),
             ("2025-12-25", "Noël"),
         )

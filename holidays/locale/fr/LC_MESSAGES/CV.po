@@ -60,7 +60,7 @@ msgstr "Jour de l'Assomption"
 
 #. All Saints' Day.
 msgid "Dia de Todos os Santos"
-msgstr "Halloween"
+msgstr "La Toussaint"
 
 #. Christmas Day.
 msgid "Natal"
