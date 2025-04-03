@@ -183,6 +183,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Antigua and Barbuda</td>
+<td>AG</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Argentina</td>
 <td>AR</td>
 <td>Provinces: A (Salta), B (Buenos Aires), C (Ciudad Autónoma de Buenos Aires), D (San Luis), E (Entre Ríos), F (La Rioja), G (Santiago del Estero), H (Chaco), J (San Juan), K (Catamarca), L (La Pampa), M (Mendoza), N (Misiones), P (Formosa), Q (Neuquén), R (Río Negro), S (Santa Fe), T (Tucumán), U (Chubut), V (Tierra del Fuego), W (Corrientes), X (Córdoba), Y (Jujuy), Z (Santa Cruz)</td>
