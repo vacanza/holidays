@@ -72,11 +72,11 @@ class Qatar(HolidayBase, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self.year >= 2012:
+        if self._year >= 2012:
             # National Sports Day.
             self._add_holiday_2nd_tue_of_apr(tr("اليوم الوطني للرياضة"))
 
-        if self.year >= 2007:
+        if self._year >= 2007:
             # Qatar National Day.
             self._add_holiday_dec_18(tr("اليوم الوطني لقطر"))
 
@@ -96,11 +96,11 @@ class Qatar(HolidayBase, IslamicHolidays):
         # New Year's Day.
         self._add_holiday_jan_1(tr("رأس السنة الميلادية"))
 
-        if self.year == 2025:
+        if self._year == 2025:
             # New Year's Holiday
             self._add_holiday_jan_2(tr("عطلة رأس السنة"))
 
-        if self.year > 2009:
+        if self._year > 2009:
             # March Bank Holiday.
             self._add_holiday_1st_sun_of_mar(tr("عطلة البنك"))
 

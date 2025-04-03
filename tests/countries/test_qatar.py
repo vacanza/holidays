@@ -34,9 +34,7 @@ class TestQatar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Qatar, years=range(1971, 2050))
-        cls.no_escls.no_estimated_holidays = Qatar(
-            years=range(2000, 2024), islamic_show_estimated=False
-        )
+        cls.no_estimated_holidays = Qatar(years=range(2000, 2024), islamic_show_estimated=False)
 
         def test_country_aliases(self):
             self.assertAliases(Qatar, QA, QAT)
