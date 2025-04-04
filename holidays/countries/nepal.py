@@ -43,7 +43,7 @@ class Nepal(
     supported_categories = (PUBLIC, WORKDAY)
     # %s (estimated).
     estimated_label = "%s (estimated)"
-    start_year = 1924
+    start_year = 2010
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -56,7 +56,7 @@ class Nepal(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year not in {2019, 2020}:
+        if self._year >= 2023:
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
 
@@ -281,7 +281,6 @@ class NepalStaticHolidays:
     """Nepal Special Holidays.
 
     References:
-       * [Death of HM King Husayn bin Talal of Jordan](https://web.archive.org/web/20170710193530/https://www.qppstudio.net/public-holidays-news/1999/nepal-declares-february-9-public-holiday-001911.htm)
        * [Death of Krishna Prasad Bhattarai](https://myrepublica.nagariknetwork.com/news/27618/)
        * [Death of Sushil Koirala](https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
        * [Crash of Yeti Airlines Flight 691](https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
@@ -294,7 +293,6 @@ class NepalStaticHolidays:
     name_day_of_national_mourning = "Day of National Mourning"
 
     special_public_holidays = {
-        1999: (FEB, 9, name_day_of_national_mourning),
         2011: (MAR, 6, name_day_of_national_mourning),
         2016: (FEB, 10, name_day_of_national_mourning),
         2023: (
