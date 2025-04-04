@@ -29,11 +29,10 @@ class Guinea(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
         * <https://www.timeanddate.com/holidays/guinea/second-republic-day>
         * <https://www.timeanddate.com/holidays/guinea/all-saints-day>
 
-    Note:
-        According to Decree No. 2022-0526(Article 2) of 2 November 2022, if New Year's Day,
-        Independence Day or Eid al-Fitr fall on a non-working day, the next working day is
-        also a Holiday.
-        Eid al-Adha was assigned two holidays from 2022(Decree No. 2022-0526(Article 1))
+    According to Decree No. 2022-0526 of 2 November 2022:
+        * Eid al-Adha became a two-day holiday (Article 1).
+        * If New Year's Day, Independence Day or Eid al-Fitr fall on a non-working day,
+            the next working day is also a holiday (Article 2).
     """
 
     country = "GN"
