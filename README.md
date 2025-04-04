@@ -1152,7 +1152,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Timor Leste</td>
 <td>TL</td>
 <td></td>
-<td>en_US, <strong>pt_TL</strong>, tet</td>
+<td>en_TL, en_US, <strong>pt_TL</strong>, tet, th</td>
 <td>GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
