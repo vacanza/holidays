@@ -12,12 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import OPTIONAL, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import PUBLIC
 from holidays.holiday_base import HolidayBase
 
 
-class Bhutan(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Bhutan(HolidayBase):
     """Bhutan holidays.
 
     References:
@@ -26,25 +25,14 @@ class Bhutan(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "BT"
-    supported_categories = (OPTIONAL, PUBLIC)
+    supported_categories = (PUBLIC,)
     supported_languages = ("en_US",)
     # 2008 Constitution.
     start_year = 2008
 
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
     def _populate_public_holidays(self):
         # Nyilo ( Winter Solstice )
         self._add_holiday_jan_2(tr("Nyilo"))
-
-        # TODO: Fix the date of the 1st day of the 1st month of the Bhutanese calendar
-        # Traditional Day of Offering
-        # self._add_holiday_jan_11(tr("Traditional Day of Offering"))
-
-        # Losar (Bhutanese New Year)
 
         # King's Birthday
         self._add_holiday_feb_21(tr("King's Birthday (Day 11)"))
