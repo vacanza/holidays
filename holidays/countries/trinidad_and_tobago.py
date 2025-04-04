@@ -38,6 +38,12 @@ class TrinidadAndTobago(
     """
 
     country = "TT"
+    default_language = "en_TT"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    supported_languages = ("en_TT", "en_US")
+    # Trinidad and Tobago gained independence on August 31, 1962.
+    start_year = 1962
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -57,6 +63,9 @@ class TrinidadAndTobago(
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
+
+        # Spiritual Baptist Shouter Liberation Day.
+        self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day"))
 
         # Indian Arrival Day.
         self._add_holiday_may_30(tr("Indian Arrival Day"))

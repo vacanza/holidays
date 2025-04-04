@@ -1,0 +1,97 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-04-04 20:03+0530\n"
+"PO-Revision-Date: 2025-04-04 20:03+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_TT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: en_TT\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Spiritual Baptist Shouter Liberation Day.
+msgid "Spiritual Baptist Liberation Day"
+msgstr ""
+
+#. Indian Arrival Day.
+msgid "Indian Arrival Day"
+msgstr ""
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr ""
+
+#. African Emancipation Day.
+msgid "Emancipation Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Republic Day.
+msgid "Republic Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Carnival Monday.
+msgid "Carnival Monday"
+msgstr ""
+
+#. Carnival Tuesday.
+msgid "Carnival Tuesday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Id-ul-Fitr"
+msgstr ""
+
+#. Diwali.
+msgid "Diwali"
+msgstr ""
