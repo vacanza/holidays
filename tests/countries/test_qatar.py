@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from unittest import TestCase
 
 from holidays.constants import BANK
@@ -32,12 +20,17 @@ from tests.common import CommonCountryTests
 class TestQatar(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Qatar, years=range(2000, 2050))
-        cls.no_estimated_holidays = Qatar(years=range(2000, 2050), islamic_show_estimated=False)
-        cls.bank_holidays = Qatar(categories=BANK, years=range(2000, 2050))
+        years = range(1971, 2050)
+        super().setUpClass(Qatar, years=years)
+        cls.no_estimated_holidays = Qatar(years=years, islamic_show_estimated=False)
+        cls.bank_holidays = Qatar(categories=BANK, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Qatar, QA, QAT)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Qatar(years=1970))
+        self.assertNoHolidays(Qatar(categories=BANK, years=1970))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -105,6 +98,7 @@ class TestQatar(CommonCountryTests, TestCase):
             "2025-04-01",
         )
         self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1971, 2050))
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -132,14 +126,14 @@ class TestQatar(CommonCountryTests, TestCase):
             "2024-06-18",
         )
         self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1971, 2050))
 
-    def test_new_year_day(self):
+    def test_new_years_day(self):
         name = "رأس السنة الميلادية"
         self.assertHolidayName(
-            name,
-            self.bank_holidays,
-            (f"{year}-01-01" for year in range(1971, 2050)),
+            name, self.bank_holidays, (f"{year}-01-01" for year in range(1971, 2050))
         )
+        self.assertNoHolidayName(name)
 
     def test_march_bank_holiday(self):
         name = "عطلة البنك"
@@ -163,7 +157,7 @@ class TestQatar(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.bank_holidays, dts)
         self.assertHolidayName(name, self.bank_holidays, range(2010, 2050))
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, self.bank_holidays, range(1971, 2010))
 
     def test_2011(self):
         self.assertHolidays(

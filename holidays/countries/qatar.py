@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -41,15 +29,17 @@ from holidays.calendars.gregorian import (
     SAT,
 )
 from holidays.constants import BANK, PUBLIC
-from holidays.groups import IslamicHolidays, StaticHolidays
+from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Qatar(HolidayBase, IslamicHolidays, StaticHolidays):
+class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """Qatar Holidays
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Qatar>
+        * [National Sports Day](https://hukoomi.gov.qa/en/national-sport-day)
+        * [Qatar National Day](https://www.qatar.qa/en/qatar/history-of-qatar-qatar-national-day-committee/)
     """
 
     country = "QA"
@@ -68,6 +58,7 @@ class Qatar(HolidayBase, IslamicHolidays, StaticHolidays):
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
+        InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=QatarIslamicHolidays, show_estimated=islamic_show_estimated
         )
@@ -97,7 +88,7 @@ class Qatar(HolidayBase, IslamicHolidays, StaticHolidays):
 
     def _populate_bank_holidays(self):
         # New Year's Day.
-        self._add_holiday_jan_1(tr("رأس السنة الميلادية"))
+        self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         if self._year >= 2010:
             # March Bank Holiday.
@@ -164,7 +155,7 @@ class QatarIslamicHolidays(_CustomIslamicHolidays):
 
 
 class QatarStaticHolidays:
-    """Qatar Special Holidays
+    """Qatar special holidays.
 
     References:
         * [New Year's Holiday](https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
