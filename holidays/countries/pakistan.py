@@ -103,24 +103,21 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_subdiv_holidays(self):
         # Adding province/city-specific holidays based on self.subdiv
-
-        
         # Ensure self.subdiv is not None before checking specific values
-        # Adding province/city-specific holidays based on self.subdiv
-    if not hasattr(self, "subdiv") or self.subdiv is None:
-        return
-
-    if self.subdiv == "PB":  # Punjab
-        self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
-
-    if self.subdiv == "SD":  # Sindh
-        self._add_holiday_dec_27(tr("Benazir Bhutto’s Martyrdom Day"))
-
-    if self.subdiv == "PB":  # Punjab
-        self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
-
-    if self.subdiv == "SD":  # Sindh
-        self._add_holiday_dec_27(tr("Benazir Bhutto's Martyrdom Day"))
+        if not hasattr(self, "subdiv") or self.subdiv is None:
+            return
+    
+        if self.subdiv == "PB":  # Punjab
+            self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
+    
+        if self.subdiv == "SD":  # Sindh
+            self._add_holiday_dec_27(tr("Benazir Bhutto’s Martyrdom Day"))
+    
+        if self.subdiv == "PB":  # Punjab
+            self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
+    
+        if self.subdiv == "SD":  # Sindh
+            self._add_holiday_dec_27(tr("Benazir Bhutto's Martyrdom Day"))
 
 class PK(Pakistan):
     pass
