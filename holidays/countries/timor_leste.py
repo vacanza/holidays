@@ -48,7 +48,7 @@ class TimorLeste(
     default_language = "pt_TL"
     # %s (estimated).
     estimated_label = tr("%s (aproximada)")
-    supported_languages = ("en_US", "pt_TL", "tet")
+    supported_languages = ("en_TL", "en_US", "pt_TL", "tet", "th")
     # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
     start_year = 2006
 
@@ -80,7 +80,7 @@ class TimorLeste(
             # Veteran's Day.
             self._add_holiday_mar_3(tr("Dia dos Veteranos"))
 
-        # World Labor Day.
+        # International Worker's Day.
         self._add_labor_day(tr("Dia Mundial do Trabalhador"))
 
         # Restoration of Independence Day.
@@ -150,7 +150,7 @@ class TimorLeste(
     def _populate_workday_holidays(self):
         # Fixed Date Government Holidays.
 
-        # World Children's Day.
+        # International Children's Day.
         self._add_childrens_day(tr("Dia Mundial da Criança"))
 
         self._add_holiday_aug_20(
@@ -167,7 +167,7 @@ class TimorLeste(
             # National Women's Day.
             self._add_holiday_nov_3(tr("Dia Nacional da Mulher"))
 
-        # World Human Rights Day.
+        # International Human Rights Day.
         self._add_holiday_dec_10(tr("Dia Mundial dos Direitos Humanos"))
 
         # Variable Date Government Holidays.
