@@ -32,6 +32,7 @@ from .barbados import Barbados, BB, BRB
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
+from .bhutan import Bhutan, BT, BTN
 from .bolivia import Bolivia, BO, BOL
 from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
