@@ -160,6 +160,7 @@ from .timor_leste import TimorLeste, TL, TLS
 from .tonga import Tonga, TO, TON
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR
+from .turkmenistan import Turkmenistan, TM, TKM
 from .tuvalu import Tuvalu, TV, TUV
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
