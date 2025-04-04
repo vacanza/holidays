@@ -27,8 +27,7 @@ class Bhutan(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BT"
     supported_categories = (OPTIONAL, PUBLIC)
-    default_language = "dz_BT"
-    supported_languages = ("en_US", "dz_BT")
+    supported_languages = ("en_US",)
     # 2008 Constitution.
     start_year = 2008
 
