@@ -107,7 +107,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         
         # Ensure self.subdiv is not None before checking specific values
         if not self.subdiv:
-        return  # No subdivisions selected, so no need to add local holidays
+            return  # No subdivisions selected, so no need to add local holidays
 
         if self.subdiv == "PB":  # Punjab
             self._add_holiday_mar_29(tr("Mela Chiraghan"))  # Lahore Only
