@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -86,20 +86,18 @@ msgstr "International Women's Day"
 #. 75th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
-"75th anniversary of the liberation from Nazism and the end of the Second "
-"World War in Europe"
+"75th anniversary of the liberation from Nazism and the end of the Second World War in Europe"
 
 #. 80th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
 msgid ""
-"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
-"Zweiten Weltkriegs in Europa"
+"80. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in "
+"Europa"
 msgstr ""
-"80th anniversary of the liberation from Nazism and the end of the Second "
-"World War in Europe"
+"80th anniversary of the liberation from Nazism and the end of the Second World War in Europe"
 
 #. Epiphany.
 msgid "Heilige Drei Könige"

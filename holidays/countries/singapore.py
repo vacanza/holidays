@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -41,52 +41,46 @@ class Singapore(
     IslamicHolidays,
     StaticHolidays,
 ):
+    """Singapore holidays.
+
+    References:
+        * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
+        * [Holidays Act](https://sso.agc.gov.sg/Act/HA1998) (Act 24 of
+            1968—Holidays (Amendment) Act 1968)
+        * [Ministry of Manpower](https://www.mom.gov.sg/employment-practices/public-holidays)
+
+    Limitations:
+        * Prior to 1969: holidays are estimated.
+        * Prior to 2000: holidays may not be accurate.
+        * 2024 and later: the following four moving date holidays (whose exact
+            date is announced yearly) are estimated, and so denoted:
+            * Hari Raya Puasa
+            * Hari Raya Haji
+            * Vesak Day
+            * Deepavali
+    """
+
     country = "SG"
     default_language = "en_SG"
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SG", "en_US", "th")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        A subclass of :py:class:`HolidayBase` representing public holidays in
-        Singapore.
-
-        Limitations:
-
-        - Prior to 1969: holidays are estimated.
-        - Prior to 2000: holidays may not be accurate.
-        - 2024 and later: the following four moving date holidays (whose exact
-          date is announced yearly) are estimated, and so denoted:
-
-          - Hari Raya Puasa
-          - Hari Raya Haji
-          - Vesak Day
-          - Deepavali
-
-        Sources:
-
-        - `Holidays Act <https://sso.agc.gov.sg/Act/HA1998>`__ (Act 24 of
-          1968—Holidays (Amendment) Act 1968)
-        - `Ministry of Manpower
-          <https://www.mom.gov.sg/employment-practices/public-holidays>`__
-
-        References:
-
-        - `Wikipedia
-          <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__
-
-        Country created and maintained by: `Mike Borsetti
-        <https://github.com/mborsetti>`__
-
-        See parameters and usage in :py:class:`HolidayBase`.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         BuddhistCalendarHolidays.__init__(self, cls=SingaporeBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=SingaporeChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=SingaporeHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=SingaporeIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=SingaporeIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=SingaporeStaticHolidays)
         # Implement Section 4(2) of the Holidays Act:
         # "if any day specified in the Schedule falls on a Sunday,
@@ -309,10 +303,11 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SingaporeStaticHolidays:
-    """
-    References
-     - https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-     - https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
+    """Singapore special holidays.
+
+    References:
+        * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
+        * <https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22>
     """
 
     # Polling Day.

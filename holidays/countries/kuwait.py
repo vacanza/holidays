@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,11 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
+    """Kuwait holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/2024_in_Kuwait
-        - https://www.officeholidays.com/countries/kuwait
-        - https://www.timeanddate.com/holidays/kuwait/2024
+        * <https://en.wikipedia.org/wiki/2024_in_Kuwait>
+        * <https://www.officeholidays.com/countries/kuwait>
+        * <https://www.timeanddate.com/holidays/kuwait/2024>
     """
 
     country = "KW"
@@ -31,9 +32,15 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):

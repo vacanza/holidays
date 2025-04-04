@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,13 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
+    """Algeria holidays.
+
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Algeria
-
-        As of April 30, 2023. Algeria has 3 days of Eid holidays
-        (https://www.horizons.dz/english/archives/amp/12021)
-
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Algeria>
+        * <https://www.horizons.dz/english/archives/amp/12021>
+        * <https://www.thenationalnews.com/mena/2021/12/07/when-is-the-weekend-in-the-arab-world/>
     """
 
     country = "DZ"
@@ -33,15 +32,20 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # The resting days are Friday and Saturday since 2009.
         # Previously, these were on Thursday and Friday as implemented in 1976.
-        # https://www.thenationalnews.com/mena/2021/12/07/when-is-the-weekend-in-the-arab-world/
         if self._year >= 2009:
             self.weekend = {FRI, SAT}
         elif self._year >= 1976:

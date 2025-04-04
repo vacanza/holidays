@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -204,8 +204,9 @@ class TestKenya(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1964, 2050)).issubset(years_found))
+        self.assertHolidayName(
+            name, Kenya(years=range(1964, 2050), islamic_show_estimated=False), range(1964, 2050)
+        )
 
         dt = (
             "2001-12-17",
@@ -253,8 +254,11 @@ class TestKenya(CommonCountryTests, TestCase):
             "2023-06-28",
             "2024-06-17",
         )
-        years_found = {dt.year for dt in islamic_holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1964, 2050)).issubset(years_found))
+        self.assertHolidayName(
+            name,
+            Kenya(categories=ISLAMIC, years=range(1964, 2050), islamic_show_estimated=False),
+            range(1964, 2050),
+        )
 
     def test_2010(self):
         self.assertHolidays(

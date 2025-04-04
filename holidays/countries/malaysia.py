@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -62,6 +63,25 @@ class Malaysia(
     IslamicHolidays,
     StaticHolidays,
 ):
+    """Malaysia holidays.
+
+    References:
+        * [Holidays Act 1951](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
+        * [Holidays Ordinance (Sabah Cap. 56)](https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
+        * [Public Holidays Ordinance (Sarawak Cap. 8)](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
+        * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia)
+        * <https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
+        * <https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
+
+    Section 3 of Holidays Act 1951:
+    > If any day specified in the Schedule falls on Sunday then the day following shall be
+    > a public holiday and if such day is already a public holiday, then the day following
+    > shall be a public holiday".
+
+    In Johor (until 1994 and in 2014-2024) and Kedah it's Friday to Sunday,
+    in Kelantan and Terengganu - Saturday to Sunday.
+    """
+
     country = "MY"
     default_language = "ms_MY"
     # %s (estimated).
@@ -125,33 +145,25 @@ class Malaysia(
     supported_languages = ("en_US", "ms_MY", "th")
     start_year = 1952
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        References:
-            - `Holidays Act 1951 <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf>`_
-            - `Holidays Ordinance (Sabah Cap. 56) <https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf>`_
-            - `Public Holidays Ordinance (Sarawak Cap. 8) <https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf>`_
-            - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`_
-            - https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8
-            - https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark
-
-        Section 3 of Holidays Act 1951:
-        "If any day specified in the Schedule falls on Sunday then the day following shall be
-        a public holiday and if such day is already a public holiday, then the day following
-        shall be a public holiday".
-        In Johor (until 1994 and in 2014-2024) and Kedah it's Friday to Sunday,
-        in Kelantan and Terengganu - Saturday to Sunday.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         BuddhistCalendarHolidays.__init__(self, cls=MalaysiaBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(self, cls=MalaysiaChineseHolidays, show_estimated=True)
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=MalaysiaHinduHolidays)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=MalaysiaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=MalaysiaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
-        self.dts_observed = set()
+        self.dts_observed: set[date] = set()
 
     def _populate_public_holidays(self):
         # This must be done for every `_populate_public_holidays()` call.

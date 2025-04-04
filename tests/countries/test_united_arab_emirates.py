@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,6 +21,9 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(UnitedArabEmirates, years=range(1972, 2050))
+        cls.no_estimated_holidays = UnitedArabEmirates(
+            years=range(1972, 2050), islamic_show_estimated=False
+        )
 
     def test_country_aliases(self):
         self.assertAliases(UnitedArabEmirates, AE, ARE)
@@ -79,16 +82,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named(name, lookup="icontains")}
-            )
-        )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named(name_holiday, lookup="icontains")}
-            )
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2050))
+        self.assertHolidayName(name_holiday, self.no_estimated_holidays, range(1972, 2050))
         self.assertNoHolidayName(name_holiday, "2018-06-14", "2025-03-29")
 
     def test_eid_al_adha(self):
@@ -105,21 +100,9 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-04",
         )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named(name, lookup="icontains")}
-            )
-        )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named("عطلة عيد الأضحى", lookup="icontains")}
-            )
-        )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named("وقفة عرفة", lookup="icontains")}
-            )
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2050))
+        self.assertHolidayName("عطلة عيد الأضحى", self.no_estimated_holidays, range(1972, 2050))
+        self.assertHolidayName("وقفة عرفة", self.no_estimated_holidays, range(1972, 2050))
 
     def test_islamic_new_year(self):
         name = "رأس السنة الهجرية"
@@ -135,11 +118,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named(name, lookup="icontains")}
-            )
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2050))
 
     def test_prophets_birthday(self):
         name = "عيد المولد النبوي"
@@ -155,18 +134,13 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-05",
         )
-        self.assertTrue(
-            set(range(1972, 2050)).issubset(
-                {dt.year for dt in self.holidays.get_named(name, lookup="icontains")}
-            )
-        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2050))
 
     def test_isra_and_miraj(self):
         name = "ليلة المعراج"
         self.assertHolidayName(name, "2017-04-23", "2018-04-14")
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="icontains")}
-        self.assertTrue(set(range(1972, 2018)).issubset(years_found))
-        self.assertFalse(set(range(2019, 2050)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2019))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(2019, 2050))
 
     def test_2020(self):
         # https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,6 +20,7 @@ class TestAlbania(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Albania, years=range(1993, 2050))
+        cls.no_estimated_holidays = Albania(years=range(1993, 2050), islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Albania, AL, ALB)
@@ -125,8 +126,7 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1993, 2050)).issubset(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
 
     def test_eid_al_adha(self):
         name = "Dita e Kurban Bajramit"
@@ -144,8 +144,7 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2006-01-10",
             "2006-12-31",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(1993, 2050)).issubset(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
 
     def test_observed(self):
         dt = (

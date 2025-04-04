@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -34,11 +34,12 @@ class Montenegro(
     IslamicHolidays,
     StaticHolidays,
 ):
-    """
+    """Montenegro holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro
-        - `Zakon o državnim i drugim praznicima <https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0>`_
-        - `Zakon o svetkovanju vjerskih praznika <https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro>
+        * [Zakon o državnim i drugim praznicima](https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
+        * [Zakon o svetkovanju vjerskih praznika](https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
     """
 
     country = "ME"
@@ -53,11 +54,19 @@ class Montenegro(
     supported_categories = (CATHOLIC, ISLAMIC, HEBREW, ORTHODOX, PUBLIC, WORKDAY)
     start_year = 2007
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
         HebrewCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=MontenegroIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=MontenegroIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=MontenegroStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)

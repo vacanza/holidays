@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,9 +19,11 @@ from holidays.observed_holiday_base import (
 
 
 class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
-    https://www.mint.gov.gh/statutory-public-holidays/
-    https://en.wikipedia.org/wiki/Public_holidays_in_Ghana
+    """Ghana holidays.
+
+    References:
+        * <https://www.mint.gov.gh/statutory-public-holidays/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
     """
 
     country = "GH"
@@ -30,10 +32,16 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     observed_estimated_label = "%s (observed, estimated)"
     start_year = 1957
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 

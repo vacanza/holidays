@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,34 +19,25 @@ from holidays.holiday_base import HolidayBase
 
 
 class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarHolidays):
-    """
-    A subclass of :py:class:`HolidayBase` representing public holidays in Cambodia.
+    """Cambodia holidays.
 
     References:
+        * <https://www.nbc.gov.kh/english/news_and_events/official_holiday.php>
+        * <https://www.nbc.gov.kh/news_and_events/official_holiday.php>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
+        * <https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf>
 
-    - Based on: https://www.nbc.gov.kh/english/news_and_events/official_holiday.php
-                https://www.nbc.gov.kh/news_and_events/official_holiday.php
-                https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia
-                https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf
-
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
-                    https://www.timeanddate.com/holidays/cambodia/
+    Checked with:
+        * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+        * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * <https://www.timeanddate.com/holidays/cambodia/>
 
     Limitations:
-
-    - Cambodian holidays only works from 1993 onwards.
-
-    - Exact Public Holidays as per Cambodia's Official Gazette are only
-      available from 2015 onwards.
-
-    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
-      (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
-
-
-    Country created by: `PPsyrius <https://github.com/PPsyrius>`__
-
-    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
+        * Cambodian holidays only works from 1993 onwards.
+        * Exact Public Holidays as per Cambodia's Official Gazette are only available
+            from 2015 onwards.
+        * Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2157
+            (B.E. 2701) as we only have Thai year-type data for cross-checking until then.
     """
 
     country = "KH"

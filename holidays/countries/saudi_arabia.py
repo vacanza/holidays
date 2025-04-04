@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,18 +27,12 @@ from holidays.observed_holiday_base import (
 
 
 class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
-    """
-    There are only 4 official national holidays in Saudi:
-        - https://laboreducation.hrsd.gov.sa/en/gallery/274
-        - https://laboreducation.hrsd.gov.sa/en/labor-education/322
-        - https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order
+    """Saudi Arabia holidays.
 
-    The national day and the founding day holidays are based on the
-    Georgian calendar while the other two holidays are based on the
-    Islamic Calendar, and they are estimates as they announced each
-    year and based on moon sightings; they are:
-    - Eid al-Fitr
-    - Eid al-Adha
+    References:
+        * <https://laboreducation.hrsd.gov.sa/en/gallery/274>
+        * <https://laboreducation.hrsd.gov.sa/en/labor-education/322>
+        * <https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order>
     """
 
     country = "SA"
@@ -51,8 +45,14 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     observed_estimated_label = tr("(تقدير ملاحظة) %s")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, **kwargs):
-        IslamicHolidays.__init__(self)
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
+        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
         StaticHolidays.__init__(self, SaudiArabiaStaticHolidays)
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)

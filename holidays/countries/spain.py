@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -26,29 +26,28 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 class Spain(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
-    Holidays checked with official sources for 2010-2023 only.
+    """Spain holidays.
 
     References:
-     - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
+        * <https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html>
+        * [2010](https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477)
+        * [2011](https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722)
+        * [2012](https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116)
+        * [2013](https://www.boe.es/buscar/doc.php?id=BOE-A-2012-13644)
+        * [2014](https://www.boe.es/buscar/doc.php?id=BOE-A-2013-12147)
+        * [2015](https://www.boe.es/buscar/doc.php?id=BOE-A-2014-10823)
+        * [2016](https://www.boe.es/buscar/doc.php?id=BOE-A-2015-11348)
+        * [2017](https://www.boe.es/buscar/doc.php?id=BOE-A-2016-9244)
+        * [2018](https://www.boe.es/buscar/doc.php?id=BOE-A-2017-11639)
+        * [2019](https://www.boe.es/buscar/doc.php?id=BOE-A-2018-14369)
+        * [2020](https://www.boe.es/buscar/doc.php?id=BOE-A-2019-14552)
+        * [2021](https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343)
+        * [2022](https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113)
+        * [2023](https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16755)
+        * [2024](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014)
+        * [2025](https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316)
 
-     Labor Holidays:
-     2010: https://www.boe.es/buscar/doc.php?id=BOE-A-2009-18477
-     2011: https://www.boe.es/buscar/doc.php?id=BOE-A-2010-15722
-     2012: https://www.boe.es/buscar/doc.php?id=BOE-A-2011-16116
-     2013: https://www.boe.es/buscar/doc.php?id=BOE-A-2012-13644
-     2014: https://www.boe.es/buscar/doc.php?id=BOE-A-2013-12147
-     2015: https://www.boe.es/buscar/doc.php?id=BOE-A-2014-10823
-     2016: https://www.boe.es/buscar/doc.php?id=BOE-A-2015-11348
-     2017: https://www.boe.es/buscar/doc.php?id=BOE-A-2016-9244
-     2018: https://www.boe.es/buscar/doc.php?id=BOE-A-2017-11639
-     2019: https://www.boe.es/buscar/doc.php?id=BOE-A-2018-14369
-     2020: https://www.boe.es/buscar/doc.php?id=BOE-A-2019-14552
-     2021: https://www.boe.es/buscar/doc.php?id=BOE-A-2020-13343
-     2022: https://www.boe.es/buscar/doc.php?id=BOE-A-2021-17113
-     2023: https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16755
-     2024: https://www.boe.es/buscar/doc.php?id=BOE-A-2023-22014
-     2025: https://www.boe.es/buscar/doc.php?id=BOE-A-2024-21316
+    Holidays checked with official sources for 2010-2025 only.
     """
 
     country = "ES"
@@ -78,10 +77,18 @@ class Spain(
     )
     supported_languages = ("en_US", "es", "uk")
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=SpainIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=SpainIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=SpainStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)

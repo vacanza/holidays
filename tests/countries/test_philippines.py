@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,6 +21,9 @@ class TestPhilippines(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Philippines, years=range(1988, 2050))
+        cls.no_estimated_holidays = Philippines(
+            years=range(1988, 2050), islamic_show_estimated=False
+        )
 
     def test_country_aliases(self):
         self.assertAliases(Philippines, PH, PHL)
@@ -90,6 +93,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2021-02-12",
             "2022-02-01",
             "2024-02-10",
+            "2025-01-29",
         )
         self.assertNoHolidayName(name, range(1988, 2012), 2023)
 
@@ -234,10 +238,14 @@ class TestPhilippines(CommonCountryTests, TestCase):
         name = "Bonifacio Day"
         self.assertHolidayName(
             name,
-            (f"{year}-11-30" for year in (*range(1988, 2008), *range(2011, 2050))),
+            (
+                f"{year}-11-30"
+                for year in (*range(1988, 2008), *range(2011, 2023), *range(2024, 2050))
+            ),
             "2008-12-01",
             "2009-11-30",
             "2010-11-29",
+            "2023-11-27",
         )
 
     def test_immaculate_conception_day(self):
@@ -276,10 +284,10 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-05-03",
             "2023-04-21",
             "2024-04-10",
+            "2025-04-01",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(2002, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1988, 2002)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2002, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2002))
 
     def test_eid_al_adha(self):
         name = "Eid'l Adha"
@@ -294,10 +302,10 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-17",
+            "2025-06-06",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(2010, 2050)).issubset(years_found))
-        self.assertFalse(set(range(1988, 2010)).intersection(years_found))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2010))
 
     def test_2018(self):
         self.assertHolidays(
@@ -443,7 +451,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2023-10-30", "Elections special (non-working) day"),
             ("2023-11-01", "All Saints' Day"),
             ("2023-11-02", "Additional special (non-working) day"),
-            ("2023-11-30", "Bonifacio Day"),
+            ("2023-11-27", "Bonifacio Day"),
             ("2023-12-08", "Feast of the Immaculate Conception of Mary"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Additional special (non-working) day"),
@@ -456,13 +464,13 @@ class TestPhilippines(CommonCountryTests, TestCase):
             Philippines(years=2025),
             ("2025-01-01", "New Year's Day"),
             ("2025-01-29", "Chinese New Year"),
-            ("2025-03-30", "Eid'l Fitr (estimated)"),
+            ("2025-04-01", "Eid'l Fitr"),
             ("2025-04-09", "Araw ng Kagitingan"),
             ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-19", "Black Saturday"),
             ("2025-05-01", "Labor Day"),
-            ("2025-06-06", "Eid'l Adha (estimated)"),
+            ("2025-06-06", "Eid'l Adha"),
             ("2025-06-12", "Independence Day"),
             ("2025-07-27", "Additional special (non-working) day"),
             ("2025-08-21", "Ninoy Aquino Day"),

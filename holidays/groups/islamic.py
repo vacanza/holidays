@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -25,8 +25,9 @@ class IslamicHolidays(EasternCalendarHolidays):
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def __init__(self, cls=None) -> None:
+    def __init__(self, cls=None, show_estimated=True) -> None:
         self._islamic_calendar = cls() if cls else _IslamicLunar()
+        self._islamic_calendar_show_estimated = show_estimated
 
     def _add_ali_al_rida_death_day(self, name) -> set[date]:
         """
@@ -262,7 +263,9 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         added_dates = set()
         for dts in dates:
-            if dt := self._add_eastern_calendar_holiday(name, dts, days_delta=days_delta):
+            if dt := self._add_eastern_calendar_holiday(
+                name, dts, self._islamic_calendar_show_estimated, days_delta
+            ):
                 added_dates.add(dt)
 
         return added_dates
@@ -290,6 +293,17 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
+        )
+
+    def _add_laylat_al_qadr_day(self, name):
+        """
+        Add Laylat al-Qadr Day (27th day of 9th month).
+
+        The Night of Power.
+        https://en.wikipedia.org/wiki/Night_of_Power
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+26
         )
 
     def _add_maldives_embraced_islam_day(self, name) -> set[date]:

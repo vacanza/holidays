@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,13 +20,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    """
-    References:
+    """Turkey holidays.
 
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
-    - [Law 2739] https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf
-    - [Law 2429] https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf
-    - [Hijri calendar holidays] https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Turkey>
+        * [Law 2739](https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf)
+        * [Law 2429](https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf)
+        * [Hijri calendar holidays](https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php)
     """
 
     country = "TR"
@@ -38,9 +38,17 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     # Law 2739 of 27 May 1935.
     start_year = 1936
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, TurkeyIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=TurkeyIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, TurkeyStaticHolidays)
         super().__init__(*args, **kwargs)
 

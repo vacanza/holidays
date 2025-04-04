@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -56,19 +56,19 @@ YearArg = Union[int, Iterable[int]]
 
 class HolidayBase(dict[date, str]):
     """
-    A dict-like object containing the holidays for a specific country (and
-    province or state if so initiated); inherits the dict class (so behaves
-    similarly to a dict). Dates without a key in the Holiday object are not
+    A `dict`-like object containing the holidays for a specific country (and
+    province or state if so initiated); inherits the `dict` class (so behaves
+    similarly to a `dict`). Dates without a key in the Holiday object are not
     holidays.
 
     The key of the object is the date of the holiday and the value is the name
     of the holiday itself. When passing the date as a key, the date can be
     expressed as one of the following formats:
 
-    * datetime.datetime type;
-    * datetime.date types;
-    * a float representing a Unix timestamp;
-    * or a string of any format (recognized by datetime.parse).
+    * `datetime.datetime` type;
+    * `datetime.date` types;
+    * a `float` representing a Unix timestamp;
+    * or a string of any format (recognized by `dateutil.parser.parse()`).
 
     The key is always returned as a `datetime.date` object.
 
@@ -78,11 +78,12 @@ class HolidayBase(dict[date, str]):
     holidays. To pre-populate holidays, instantiate the class with the years
     argument:
 
-    us_holidays = holidays.US(years=2020)
+        us_holidays = holidays.US(years=2020)
 
-    It is generally instantiated using the :func:`country_holidays` function.
+    It is generally instantiated using the
+    [country_holidays()][holidays.utils.country_holidays] function.
 
-    The key of the :class:`dict`-like :class:`HolidayBase` object is the
+    The key of the `dict`-like `HolidayBase` object is the
     `date` of the holiday, and the value is the name of the holiday itself.
     Dates where a key is not present are not public holidays (or, if
     **observed** is False, days when a public holiday is observed).
@@ -90,12 +91,12 @@ class HolidayBase(dict[date, str]):
     When passing the `date` as a key, the `date` can be expressed in one of the
     following types:
 
-    * :class:`datetime.date`,
-    * :class:`datetime.datetime`,
-    * a :class:`str` of any format recognized by :func:`dateutil.parser.parse`,
-    * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+    * `datetime.date`,
+    * `datetime.datetime`,
+    * a `str` of any format recognized by `dateutil.parser.parse()`,
+    * or a `float` or `int` representing a POSIX timestamp.
 
-    The key is always returned as a :class:`datetime.date` object.
+    The key is always returned as a `datetime.date` object.
 
     To maximize speed, the list of public holidays is built on the fly as
     needed, one calendar year at a time. When the object is instantiated
@@ -108,70 +109,70 @@ class HolidayBase(dict[date, str]):
 
     Example usage:
 
-    >>> from holidays import country_holidays
-    >>> us_holidays = country_holidays('US')
-    # For a specific subdivisions (e.g. state or province):
-    >>> california_holidays = country_holidays('US', subdiv='CA')
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US')
+        # For a specific subdivisions (e.g. state or province):
+        >>> california_holidays = country_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
-    >>> from datetime import date
-    >>> assert date(2015, 1, 1) in us_holidays
+        >>> from datetime import date
+        >>> assert date(2015, 1, 1) in us_holidays
 
     This will be faster because 2015 holidays are already calculated:
 
-    >>> assert date(2015, 1, 2) not in us_holidays
+        >>> assert date(2015, 1, 2) not in us_holidays
 
-    The :class:`HolidayBase` class also recognizes strings of many formats
+    The `HolidayBase` class also recognizes strings of many formats
     and numbers representing a POSIX timestamp:
 
-    >>> assert '2014-01-01' in us_holidays
-    >>> assert '1/1/2014' in us_holidays
-    >>> assert 1388597445 in us_holidays
+        >>> assert '2014-01-01' in us_holidays
+        >>> assert '1/1/2014' in us_holidays
+        >>> assert 1388597445 in us_holidays
 
     Show the holiday's name:
 
-    >>> us_holidays.get('2014-01-01')
-    "New Year's Day"
+        >>> us_holidays.get('2014-01-01')
+        "New Year's Day"
 
     Check a range:
 
-    >>> us_holidays['2014-01-01': '2014-01-03']
-    [datetime.date(2014, 1, 1)]
+        >>> us_holidays['2014-01-01': '2014-01-03']
+        [datetime.date(2014, 1, 1)]
 
     List all 2020 holidays:
 
-    >>> us_holidays = country_holidays('US', years=2020)
-    >>> for day in us_holidays.items():
-    ...     print(day)
-    (datetime.date(2020, 1, 1), "New Year's Day")
-    (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
-    (datetime.date(2020, 2, 17), "Washington's Birthday")
-    (datetime.date(2020, 5, 25), 'Memorial Day')
-    (datetime.date(2020, 7, 4), 'Independence Day')
-    (datetime.date(2020, 7, 3), 'Independence Day (observed)')
-    (datetime.date(2020, 9, 7), 'Labor Day')
-    (datetime.date(2020, 10, 12), 'Columbus Day')
-    (datetime.date(2020, 11, 11), 'Veterans Day')
-    (datetime.date(2020, 11, 26), 'Thanksgiving')
-    (datetime.date(2020, 12, 25), 'Christmas Day')
+        >>> us_holidays = country_holidays('US', years=2020)
+        >>> for day in sorted(us_holidays.items()):
+        ...     print(day)
+        (datetime.date(2020, 1, 1), "New Year's Day")
+        (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
+        (datetime.date(2020, 2, 17), "Washington's Birthday")
+        (datetime.date(2020, 5, 25), 'Memorial Day')
+        (datetime.date(2020, 7, 3), 'Independence Day (observed)')
+        (datetime.date(2020, 7, 4), 'Independence Day')
+        (datetime.date(2020, 9, 7), 'Labor Day')
+        (datetime.date(2020, 10, 12), 'Columbus Day')
+        (datetime.date(2020, 11, 11), 'Veterans Day')
+        (datetime.date(2020, 11, 26), 'Thanksgiving Day')
+        (datetime.date(2020, 12, 25), 'Christmas Day')
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
-    >>> assert '2018-01-06' not in us_holidays
-    >>> assert '2018-01-06' in us_pr_holidays
+        >>> us_pr_holidays = country_holidays('US', subdiv='PR')
+        >>> assert '2018-01-06' not in us_holidays
+        >>> assert '2018-01-06' in us_pr_holidays
 
     Append custom holiday dates by passing one of:
 
-    * a :class:`dict` with date/name key/value pairs (e.g.
-      ``{'2010-07-10': 'My birthday!'}``),
-    * a list of dates (as a :class:`datetime.date`, :class:`datetime.datetime`,
-      :class:`str`, :class:`int`, or :class:`float`); ``'Holiday'`` will be
-      used as a description,
-    * or a single date item (of one of the types above); ``'Holiday'`` will be
+    * a `dict` with date/name key/value pairs (e.g.
+      `{'2010-07-10': 'My birthday!'}`),
+    * a list of dates (as a `datetime.date`, `datetime.datetime`,
+      `str`, `int`, or `float`); `'Holiday'` will be used as a description,
+    * or a single date item (of one of the types above); `'Holiday'` will be
       used as a description:
 
+    ```python
     >>> custom_holidays = country_holidays('US', years=2015)
     >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
     >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
@@ -179,11 +180,10 @@ class HolidayBase(dict[date, str]):
     >>> assert date(2015, 1, 1) in custom_holidays
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
+    ```
 
     For special (one-off) country-wide holidays handling use
-    :attr:`special_public_holidays`:
-
-    .. code-block:: python
+    `special_public_holidays`:
 
         special_public_holidays = {
             1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
@@ -204,7 +204,8 @@ class HolidayBase(dict[date, str]):
             ...
 
     For more complex logic, like 4th Monday of January, you can inherit the
-    :class:`HolidayBase` class and define your own :meth:`_populate` method.
+    [HolidayBase][holidays.holiday_base.HolidayBase] class and define your own `_populate()`
+    method.
     See documentation for examples.
     """
 
@@ -265,39 +266,40 @@ class HolidayBase(dict[date, str]):
         categories: Optional[CategoryArg] = None,
     ) -> None:
         """
-        :param years:
-            The year(s) to pre-calculate public holidays for at instantiation.
+        Args:
+            years:
+                The year(s) to pre-calculate public holidays for at instantiation.
 
-        :param expand:
-            Whether the entire year is calculated when one date from that year
-            is requested.
+            expand:
+                Whether the entire year is calculated when one date from that year
+                is requested.
 
-        :param observed:
-            Whether to include the dates when public holiday are observed
-            (e.g. a holiday falling on a Sunday being observed the
-            following Monday). This doesn't work for all countries.
+            observed:
+                Whether to include the dates when public holiday are observed
+                (e.g. a holiday falling on a Sunday being observed the
+                following Monday). This doesn't work for all countries.
 
-        :param subdiv:
-            The subdivision (e.g. state or province) as a ISO 3166-2 code
-            or its alias; not implemented for all countries (see documentation).
+            subdiv:
+                The subdivision (e.g. state or province) as a ISO 3166-2 code
+                or its alias; not implemented for all countries (see documentation).
 
-        :param prov:
-            *deprecated* use subdiv instead.
+            prov:
+                *deprecated* use `subdiv` instead.
 
-        :param state:
-            *deprecated* use subdiv instead.
+            state:
+                *deprecated* use `subdiv` instead.
 
-        :param language:
-            The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code. If the
-            language translation is not supported the original holiday names
-            will be used.
+            language:
+                The language which the returned holiday names will be translated
+                into. It must be an ISO 639-1 (2-letter) language code. If the
+                language translation is not supported the original holiday names
+                will be used.
 
-        :param categories:
-            Requested holiday categories.
+            categories:
+                Requested holiday categories.
 
-        :return:
-            A :class:`HolidayBase` object matching the **country**.
+        Returns:
+            A `HolidayBase` object matching the **country** or **market**.
         """
         super().__init__()
 
@@ -361,39 +363,14 @@ class HolidayBase(dict[date, str]):
         self.expand = expand
         self.has_special_holidays = getattr(self, "has_special_holidays", False)
         self.has_substituted_holidays = has_substituted_holidays
-        self.language = language.lower() if language else None
+        self.language = language
         self.observed = observed
         self.subdiv = subdiv
         self.weekend_workdays = getattr(self, "weekend_workdays", set())
-
-        supported_languages = set(self.supported_languages)
-        if self._entity_code is not None:
-            fallback = language not in supported_languages
-            languages = [language] if language in supported_languages else None
-            locale_directory = str(Path(__file__).with_name("locale"))
-
-            # Add entity native content translations.
-            entity_translation = translation(
-                self._entity_code,
-                fallback=fallback,
-                languages=languages,
-                localedir=locale_directory,
-            )
-            # Add a fallback if entity has parent translations.
-            if parent_entity := self.parent_entity:
-                entity_translation.add_fallback(
-                    translation(
-                        parent_entity.country or parent_entity.market,
-                        fallback=fallback,
-                        languages=languages,
-                        localedir=locale_directory,
-                    )
-                )
-            self.tr = entity_translation.gettext
-        else:
-            self.tr = gettext
-
         self.years = _normalize_arguments(int, years)
+
+        # Configure l10n related attributes.
+        self._init_translation()
 
         # Populate holidays.
         for year in self.years:
@@ -401,14 +378,14 @@ class HolidayBase(dict[date, str]):
 
     def __add__(self, other: Union[int, "HolidayBase", "HolidaySum"]) -> "HolidayBase":
         """Add another dictionary of public holidays creating a
-        :class:`HolidaySum` object.
+        [HolidaySum][holidays.holiday_base.HolidaySum] object.
 
-        :param other:
-            The dictionary of public holiday to be added.
+        Args:
+            other:
+                The dictionary of public holiday to be added.
 
-        :return:
-            A :class:`HolidaySum` object unless the other object cannot be
-            added, then :class:`self`.
+        Returns:
+            A `HolidayBase` object unless the other object cannot be added, then `self`.
         """
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
@@ -424,14 +401,21 @@ class HolidayBase(dict[date, str]):
         return len(self) > 0
 
     def __contains__(self, key: object) -> bool:
-        """Return true if date is in self, false otherwise. Accepts a date in
-        the following types:
+        """Check if a given date is a holiday.
 
-        * :class:`datetime.date`,
-        * :class:`datetime.datetime`,
-        * a :class:`str` of any format recognized by
-          :func:`dateutil.parser.parse`,
-        * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+        The method supports the following input types:
+
+        * `datetime.date`,
+        * `datetime.datetime`,
+        * a `str` of any format recognized by `dateutil.parser.parse()`,
+        * or a `float` or `int` representing a POSIX timestamp.
+
+        Args:
+            key:
+                The date to check.
+
+        Returns:
+            `True` if the date is a holiday, `False` otherwise.
         """
 
         if not isinstance(key, (date, datetime, float, int, str)):
@@ -592,16 +576,28 @@ class HolidayBase(dict[date, str]):
 
         return dict.__getitem__(self, self.__keytransform__(key))
 
+    def __getstate__(self) -> dict[str, Any]:
+        """Return the object's state for serialization."""
+        state = self.__dict__.copy()
+        state.pop("tr", None)
+        return state
+
     def __keytransform__(self, key: DateLike) -> date:
-        """Transforms the date from one of the following types:
+        """Convert various date-like formats to `datetime.date`.
 
-        * :class:`datetime.date`,
-        * :class:`datetime.datetime`,
-        * a :class:`str` of any format recognized by
-          :func:`dateutil.parser.parse`,
-        * or a :class:`float` or :class:`int` representing a POSIX timestamp
+        The method supports the following input types:
+        * `datetime.date`,
+        * `datetime.datetime`,
+        * a `str` of any format recognized by `dateutil.parser.parse()`,
+        * or a `float` or `int` representing a POSIX timestamp
 
-        to :class:`datetime.date`, which is how it's stored by the class."""
+        Args:
+            key:
+                The date-like object to convert.
+
+        Returns:
+            The corresponding `datetime.date` representation.
+        """
 
         dt: Optional[date] = None
         # Try to catch `date` and `str` type keys first.
@@ -699,6 +695,11 @@ class HolidayBase(dict[date, str]):
 
         dict.__setitem__(self, self.__keytransform__(key), value)
 
+    def __setstate__(self, state: dict[str, Any]) -> None:
+        """Restore the object's state after deserialization."""
+        self.__dict__.update(state)
+        self._init_translation()
+
     def __str__(self) -> str:
         if self:
             return super().__str__()
@@ -743,12 +744,45 @@ class HolidayBase(dict[date, str]):
 
     @classmethod
     def get_subdivision_aliases(cls) -> dict[str, list]:
-        """Get subdivision aliases."""
+        """Get subdivision aliases.
+
+        Returns:
+            A dictionary mapping subdivision aliases to their official ISO 3166-2 codes.
+        """
         subdivision_aliases: dict[str, list[str]] = {s: [] for s in cls.subdivisions}
         for alias, subdivision in cls.subdivisions_aliases.items():
             subdivision_aliases[subdivision].append(alias)
 
         return subdivision_aliases
+
+    def _init_translation(self) -> None:
+        """Initialize translation function based on language settings."""
+        supported_languages = set(self.supported_languages)
+        if self._entity_code is not None:
+            fallback = self.language not in supported_languages
+            languages = [self.language] if self.language in supported_languages else None
+            locale_directory = str(Path(__file__).with_name("locale"))
+
+            # Add entity native content translations.
+            entity_translation = translation(
+                self._entity_code,
+                fallback=fallback,
+                languages=languages,
+                localedir=locale_directory,
+            )
+            # Add a fallback if entity has parent translations.
+            if parent_entity := self.parent_entity:
+                entity_translation.add_fallback(
+                    translation(
+                        parent_entity.country or parent_entity.market,
+                        fallback=fallback,
+                        languages=languages,
+                        localedir=locale_directory,
+                    )
+                )
+            self.tr = entity_translation.gettext
+        else:
+            self.tr = gettext
 
     def _is_leap_year(self) -> bool:
         """
@@ -841,13 +875,13 @@ class HolidayBase(dict[date, str]):
         directly from outside.
         To add holidays to an object, use the update() method.
 
-        :param year:
-            The year to populate with holidays.
+        Args:
+            year: The year to populate with holidays.
 
-        >>> from holidays import country_holidays
-        >>> us_holidays = country_holidays('US', years=2020)
-        # to add new holidays to the object:
-        >>> us_holidays.update(country_holidays('US', years=2021))
+            >>> from holidays import country_holidays
+            >>> us_holidays = country_holidays('US', years=2020)
+            # to add new holidays to the object:
+            >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
         if year < self.start_year or year > self.end_year:
@@ -888,7 +922,16 @@ class HolidayBase(dict[date, str]):
             )
 
     def append(self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]) -> None:
-        """Alias for :meth:`update` to mimic list type."""
+        """Alias for [update()][holidays.holiday_base.HolidayBase.update] to mimic list type.
+
+        Args:
+            args:
+                Holiday data to add. Can be:
+
+                * A dictionary mapping dates to holiday names.
+                * A list of dates (without names).
+                * A single date.
+        """
         return self.update(*args)
 
     def copy(self):
@@ -896,64 +939,73 @@ class HolidayBase(dict[date, str]):
         return copy.copy(self)
 
     def get(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
-        """Return the holiday name for a date if date is a holiday, else
-        default. If default is not given, it defaults to None, so that this
-        method never raises a KeyError. If more than one holiday is present,
-        they are separated by a comma.
+        """Retrieve the holiday name(s) for a given date.
 
-        :param key:
-            The date expressed in one of the following types:
+        If the date is a holiday, returns the holiday name as a string.
+        If multiple holidays fall on the same date, their names are joined by a semicolon (`;`).
+        If the date is not a holiday, returns the provided `default` value (defaults to `None`).
 
-            * :class:`datetime.date`,
-            * :class:`datetime.datetime`,
-            * a :class:`str` of any format recognized by
-              :func:`dateutil.parser.parse`,
-            * or a :class:`float` or :class:`int` representing a POSIX
-              timestamp.
+        Args:
+            key:
+                The date expressed in one of the following types:
 
-        :param default:
-            The default value to return if no value is found.
+                * `datetime.date`,
+                * `datetime.datetime`,
+                * a `str` of any format recognized by `dateutil.parser.parse()`,
+                * or a `float` or `int` representing a POSIX timestamp.
+
+            default:
+                The default value to return if no value is found.
+
+        Returns:
+            The holiday name(s) as a string if the date is a holiday,
+                or the `default` value otherwise.
         """
         return dict.get(self, self.__keytransform__(key), default)
 
     def get_list(self, key: DateLike) -> list[str]:
-        """Return a list of all holiday names for a date if date is a holiday,
-        else empty string.
+        """Retrieve all holiday names for a given date.
 
-        :param key:
-            The date expressed in one of the following types:
+        Args:
+            key:
+                The date expressed in one of the following types:
 
-            * :class:`datetime.date`,
-            * :class:`datetime.datetime`,
-            * a :class:`str` of any format recognized by
-              :func:`dateutil.parser.parse`,
-            * or a :class:`float` or :class:`int` representing a POSIX
-              timestamp.
+                * `datetime.date`,
+                * `datetime.datetime`,
+                * a `str` of any format recognized by `dateutil.parser.parse()`,
+                * or a `float` or `int` representing a POSIX timestamp.
+
+        Returns:
+            A list of holiday names if the date is a holiday, otherwise an empty list.
         """
         return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
     def get_named(
-        self, holiday_name: str, lookup="icontains", split_multiple_names=True
+        self, holiday_name: str, lookup: str = "icontains", split_multiple_names: bool = True
     ) -> list[date]:
-        """Return a list of all holiday dates matching the provided holiday
-        name. The match will be made case insensitively and partial matches
-        will be included by default.
+        """Find all holiday dates matching a given name.
 
-        :param holiday_name:
-            The holiday's name to try to match.
-        :param lookup:
-            The holiday name lookup type:
-                contains - case sensitive contains match;
-                exact - case sensitive exact match;
-                startswith - case sensitive starts with match;
-                icontains - case insensitive contains match;
-                iexact - case insensitive exact match;
-                istartswith - case insensitive starts with match;
-        :param split_multiple_names:
-            Either use the exact name for each date or split it by holiday
-            name delimiter.
+        The search by default is case-insensitive and includes partial matches.
 
-        :return:
+        Args:
+            holiday_name:
+                The holiday's name to try to match.
+
+            lookup:
+                The holiday name lookup type:
+
+                * contains - case sensitive contains match;
+                * exact - case sensitive exact match;
+                * startswith - case sensitive starts with match;
+                * icontains - case insensitive contains match;
+                * iexact - case insensitive exact match;
+                * istartswith - case insensitive starts with match;
+
+            split_multiple_names:
+                Either use the exact name for each date or split it by holiday
+                name delimiter.
+
+        Returns:
             A list of all holiday dates matching the provided holiday name.
         """
         holiday_name_dates = (
@@ -991,10 +1043,23 @@ class HolidayBase(dict[date, str]):
         target_date: DateLike = None,
         direction: Literal["forward", "backward"] = "forward",
     ) -> Optional[tuple[date, str]]:
-        """Return the date and name of the next holiday for a target_date
-        if direction is "forward" or the previous holiday if direction is "backward".
-        If target_date is not provided the current date will be used by default."""
+        """Find the closest holiday relative to a given date.
 
+        If `direction` is "forward", returns the next holiday after `target_date`.
+        If `direction` is "backward", returns the previous holiday before `target_date`.
+        If `target_date` is not provided, the current date is used.
+
+        Args:
+            target_date:
+                The reference date. If None, defaults to today.
+
+            direction:
+                Search direction, either "forward" (next holiday) or
+                "backward" (previous holiday).
+
+        Returns:
+            A tuple containing the holiday date and its name, or None if no holiday is found.
+        """
         if direction not in {"backward", "forward"}:
             raise AttributeError(f"Unknown direction: {direction}")
 
@@ -1017,8 +1082,20 @@ class HolidayBase(dict[date, str]):
         return None
 
     def get_nth_working_day(self, key: DateLike, n: int) -> date:
-        """Return n-th working day from provided date (if n is positive)
-        or n-th working day before provided date (if n is negative).
+        """Find the n-th working day from a given date.
+
+        Moves forward if n is positive, or backward if n is negative.
+
+        Args:
+            key:
+                The starting date.
+
+            n:
+                The number of working days to move. Positive values move forward,
+                negative values move backward.
+
+        Returns:
+            The calculated working day after shifting by n working days.
         """
         direction = +1 if n > 0 else -1
         dt = self.__keytransform__(key)
@@ -1029,16 +1106,20 @@ class HolidayBase(dict[date, str]):
         return dt
 
     def get_working_days_count(self, start: DateLike, end: DateLike) -> int:
-        """Return the number of working days between two dates.
+        """Calculate the number of working days between two dates.
 
         The date range works in a closed interval fashion [start, end] so both
         endpoints are included.
 
-        :param start:
-            The range start date.
+        Args:
+            start:
+                The range start date.
 
-        :param end:
-            The range end date.
+            end:
+                The range end date.
+
+        Returns:
+            The total count of working days between the given dates.
         """
         dt1 = self.__keytransform__(start)
         dt2 = self.__keytransform__(end)
@@ -1048,55 +1129,83 @@ class HolidayBase(dict[date, str]):
         return sum(self.is_working_day(_timedelta(dt1, n)) for n in range(days))
 
     def is_working_day(self, key: DateLike) -> bool:
-        """Return True if date is a working day (not a holiday or a weekend)."""
+        """Check if the given date is considered a working day.
+
+        Args:
+            key:
+                The date to check.
+
+        Returns:
+            True if the date is a working day, False if it is a holiday or weekend.
+        """
         dt = self.__keytransform__(key)
         return dt in self.weekend_workdays if self._is_weekend(dt) else dt not in self
 
     def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
-        """If date is a holiday, remove it and return its date, else return
-        default.
+        """Remove a holiday for a given date and return its name.
 
-        :param key:
-            The date expressed in one of the following types:
+        If the specified date is a holiday, it will be removed, and its name will
+        be returned. If the date is not a holiday, the provided `default` value
+        will be returned instead.
 
-            * :class:`datetime.date`,
-            * :class:`datetime.datetime`,
-            * a :class:`str` of any format recognized by
-              :func:`dateutil.parser.parse`,
-            * or a :class:`float` or :class:`int` representing a POSIX
-              timestamp.
+        Args:
+            key:
+                The date expressed in one of the following types:
 
-        :param default:
-            The default value to return if no match is found.
+                * `datetime.date`,
+                * `datetime.datetime`,
+                * a `str` of any format recognized by `dateutil.parser.parse()`,
+                * or a `float` or `int` representing a POSIX timestamp.
 
-        :return:
-            The date removed.
+            default:
+                The default value to return if no match is found.
 
-        :raise:
-            KeyError if date is not a holiday and default is not given.
+        Returns:
+            The name of the removed holiday if the date was a holiday, otherwise
+                the provided `default` value.
+
+        Raises:
+            KeyError: if date is not a holiday and default is not given.
         """
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, name: str) -> list[date]:
-        """Remove (no longer treat at as holiday) all dates matching the
-        provided holiday name. The match will be made case insensitively and
-        partial matches will be removed.
+    def pop_named(self, holiday_name: str, lookup: str = "icontains") -> list[date]:
+        """Remove all holidays matching the given name.
 
-        :param name:
-            The holiday's name to try to match.
+        This method removes all dates associated with a holiday name, so they are
+        no longer considered holidays. The search by default is case-insensitive and
+        includes partial matches.
 
-        :return:
+        Args:
+            holiday_name:
+                The holiday's name to try to match.
+
+            lookup:
+                The holiday name lookup type:
+
+                * contains - case sensitive contains match;
+                * exact - case sensitive exact match;
+                * startswith - case sensitive starts with match;
+                * icontains - case insensitive contains match;
+                * iexact - case insensitive exact match;
+                * istartswith - case insensitive starts with match;
+
+        Returns:
             A list of dates removed.
 
-        :raise:
-            KeyError if date is not a holiday and default is not given.
+        Raises:
+            KeyError: if date is not a holiday.
         """
-        use_exact_name = HOLIDAY_NAME_DELIMITER in name
-        if not (dts := self.get_named(name, split_multiple_names=not use_exact_name)):
-            raise KeyError(name)
+        use_exact_name = HOLIDAY_NAME_DELIMITER in holiday_name
+        if not (
+            dts := self.get_named(
+                holiday_name, lookup=lookup, split_multiple_names=not use_exact_name
+            )
+        ):
+            raise KeyError(holiday_name)
 
         popped = []
         for dt in dts:
@@ -1105,38 +1214,55 @@ class HolidayBase(dict[date, str]):
             popped.append(dt)
 
             # Keep the rest of holidays falling on the same date.
-            if not use_exact_name:
-                name_lower = name.lower()
+            if use_exact_name:
+                continue
+            if lookup == "icontains":
+                holiday_name_lower = holiday_name.lower()
                 holiday_names = [
-                    holiday_name
-                    for holiday_name in holiday_names
-                    if name_lower not in holiday_name.lower()
+                    name for name in holiday_names if holiday_name_lower not in name.lower()
                 ]
-
-                if holiday_names:
-                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+            elif lookup == "iexact":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name for name in holiday_names if holiday_name_lower != name.lower()
+                ]
+            elif lookup == "istartswith":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name
+                    for name in holiday_names
+                    if holiday_name_lower != name[: len(holiday_name)].lower()
+                ]
+            elif lookup == "contains":
+                holiday_names = [name for name in holiday_names if holiday_name not in name]
+            elif lookup == "exact":
+                holiday_names = [name for name in holiday_names if holiday_name != name]
+            else:  # startswith
+                holiday_names = [
+                    name for name in holiday_names if holiday_name != name[: len(holiday_name)]
+                ]
+            if holiday_names:
+                self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
 
         return popped
 
     def update(  # type: ignore[override]
         self, *args: Union[dict[DateLike, str], list[DateLike], DateLike]
     ) -> None:
-        # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
 
-        :param:
-            Either another dictionary object where keys are dates and values
-            are holiday names, or a single date (or a list of dates) for which
-            the value will be set to "Holiday".
+        Args:
+            args:
+                Either another dictionary object where keys are dates and values
+                are holiday names, or a single date (or a list of dates) for which
+                the value will be set to "Holiday".
 
-            Dates can be expressed in one or more of the following types:
+                Dates can be expressed in one or more of the following types:
 
-            * :class:`datetime.date`,
-            * :class:`datetime.datetime`,
-            * a :class:`str` of any format recognized by
-              :func:`dateutil.parser.parse`,
-            * or a :class:`float` or :class:`int` representing a POSIX
-              timestamp.
+                * `datetime.date`,
+                * `datetime.datetime`,
+                * a `str` of any format recognized by `dateutil.parser.parse()`,
+                * or a `float` or `int` representing a POSIX timestamp.
         """
         for arg in args:
             if isinstance(arg, dict):
@@ -1151,11 +1277,11 @@ class HolidayBase(dict[date, str]):
 
 class HolidaySum(HolidayBase):
     """
-    Returns a :class:`dict`-like object resulting from the addition of two or
+    Returns a `dict`-like object resulting from the addition of two or
     more individual dictionaries of public holidays. The original dictionaries
-    are available as a :class:`list` in the attribute :attr:`holidays,` and
-    :attr:`country` and :attr:`subdiv` attributes are added
-    together and could become :class:`list` s. Holiday names, when different,
+    are available as a `list` in the attribute `holidays,` and
+    `country` and `subdiv` attributes are added
+    together and could become `list` s. Holiday names, when different,
     are merged. All years are calculated (expanded) for all operands.
     """
 
@@ -1174,30 +1300,31 @@ class HolidaySum(HolidayBase):
         self, h1: Union[HolidayBase, "HolidaySum"], h2: Union[HolidayBase, "HolidaySum"]
     ) -> None:
         """
-        :param h1:
-            The first HolidayBase object to add.
+        Args:
+            h1:
+                The first HolidayBase object to add.
 
-        :param h2:
-            The other HolidayBase object to add.
+            h2:
+                The other HolidayBase object to add.
 
         Example:
 
-        >>> from holidays import country_holidays
-        >>> nafta_holidays = country_holidays('US', years=2020) + \
-country_holidays('CA') + country_holidays('MX')
-        >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
-        >>> from pprint import pprint
-        >>> pprint(dates[:10], width=72)
-        [(datetime.date(2020, 1, 1), "Año Nuevo"),
-         (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day'),
-         (datetime.date(2020, 2, 3),
-          'Día de la Constitución'),
-         (datetime.date(2020, 2, 17), "Washington's Birthday, Family Day"),
-         (datetime.date(2020, 3, 16),
-          "Natalicio de Benito Juárez"),
-         (datetime.date(2020, 4, 10), 'Good Friday'),
-         (datetime.date(2020, 5, 1), 'Día del Trabajo'),
-         (datetime.date(2020, 5, 18), 'Victoria Day')]
+            >>> from holidays import country_holidays
+            >>> nafta_holidays = country_holidays('US', years=2020) + \
+    country_holidays('CA') + country_holidays('MX')
+            >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
+            >>> from pprint import pprint
+            >>> pprint(dates[:10], width=72)
+            [(datetime.date(2020, 1, 1), "Año Nuevo; New Year's Day"),
+             (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day'),
+             (datetime.date(2020, 2, 3), 'Día de la Constitución'),
+             (datetime.date(2020, 2, 17), "Washington's Birthday"),
+             (datetime.date(2020, 3, 16), 'Natalicio de Benito Juárez'),
+             (datetime.date(2020, 4, 10), 'Good Friday'),
+             (datetime.date(2020, 5, 1), 'Día del Trabajo'),
+             (datetime.date(2020, 5, 25), 'Memorial Day'),
+             (datetime.date(2020, 7, 1), 'Canada Day'),
+             (datetime.date(2020, 7, 3), 'Independence Day (observed)')]
         """
         # Store originals in the holidays attribute.
         self.holidays = []
@@ -1245,7 +1372,17 @@ country_holidays('CA') + country_holidays('MX')
             else:
                 setattr(self, attr, value)
 
+        # Retain language if they match and are strings.
+        # If language wasn't assigned, default_language acts as fallback.
+        h1_language = h1.language or h1.default_language
+        h2_language = h2.language or h2.default_language
+        if isinstance(h1_language, str) and h1_language == h2_language:
+            kwargs["language"] = h1_language
+
         HolidayBase.__init__(self, **kwargs)
+
+        # supported_languages is used for iCalExporter language check as well.
+        self.supported_languages = (h1_language,) if h1_language else ()
 
     def _populate(self, year):
         for operand in self.holidays:

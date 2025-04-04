@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -26,6 +26,7 @@ COUNTRIES: RegistryDict = {
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
+    "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
     "aruba": ("Aruba", "AW", "ABW"),
@@ -72,6 +73,7 @@ COUNTRIES: RegistryDict = {
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
     "ethiopia": ("Ethiopia", "ET", "ETH"),
+    "fiji": ("Fiji", "FJ", "FJI"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
     "gabon": ("Gabon", "GA", "GAB"),
@@ -95,6 +97,7 @@ COUNTRIES: RegistryDict = {
     "isle_of_man": ("IsleOfMan", "IM", "IMN"),
     "israel": ("Israel", "IL", "ISR"),
     "italy": ("Italy", "IT", "ITA"),
+    "ivory_coast": ("IvoryCoast", "CI", "CIV"),
     "jamaica": ("Jamaica", "JM", "JAM"),
     "japan": ("Japan", "JP", "JPN"),
     "jersey": ("Jersey", "JE", "JEY"),
@@ -108,6 +111,7 @@ COUNTRIES: RegistryDict = {
     "liechtenstein": ("Liechtenstein", "LI", "LIE"),
     "lithuania": ("Lithuania", "LT", "LTU"),
     "luxembourg": ("Luxembourg", "LU", "LUX"),
+    "macau": ("Macau", "MO", "MAC"),
     "madagascar": ("Madagascar", "MG", "MDG"),
     "malawi": ("Malawi", "MW", "MWI"),
     "malaysia": ("Malaysia", "MY", "MYS"),

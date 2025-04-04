@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.67\n"
+"Project-Id-Version: Holidays 0.69\n"
 "POT-Creation-Date: 2025-02-04 14:03+0700\n"
-"PO-Revision-Date: 2025-02-04 22:55+0700\n"
+"PO-Revision-Date: 2025-03-05 09:48+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_CN\n"
@@ -31,39 +31,39 @@ msgstr ""
 msgid "%s（慶祝）"
 msgstr "%s（庆祝）"
 
-#. The day following the Chinese Mid-Autumn Festival.
+#. The Day following Mid-Autumn Festival.
 msgid "中秋節翌日"
 msgstr "中秋节翌日"
 
-#. The second day following the Chinese Mid-Autumn Festival.
+#. The Second Day following Mid-Autumn Festival.
 msgid "中秋節後第二日"
 msgstr "中秋节后第二日"
 
-#. Chinese Mid-Autumn Festival.
+#. Mid-Autumn Festival.
 msgid "中秋節"
 msgstr "中秋节"
 
-#. Lunar New Year's Day.
+#. Chinese New Year.
 msgid "農曆年初一"
 msgstr "农历年初一"
 
-#. The day preceding Lunar New Year's Day.
+#. Chinese New Year's Eve.
 msgid "農曆年初一的前一日"
 msgstr "农历年初一的前一日"
 
-#. The second day of Lunar New Year.
+#. The second day of Chinese New Year.
 msgid "農曆年初二"
 msgstr "农历年初二"
 
-#. The third day of Lunar New Year.
+#. The third day of Chinese New Year.
 msgid "農曆年初三"
 msgstr "农历年初三"
 
-#. The fourth day of Lunar New Year.
+#. The fourth day of Chinese New Year.
 msgid "農曆年初四"
 msgstr "农历年初四"
 
-#. The first day of January.
+#. New Year's Day.
 msgid "一月一日"
 msgstr "一月一日"
 
@@ -79,11 +79,11 @@ msgstr "耶稣受难节翌日"
 msgid "復活節星期一"
 msgstr "复活节星期一"
 
-#. Ching Ming Festival.
+#. Tomb-Sweeping Day.
 msgid "清明節"
 msgstr "清明节"
 
-#. The Birthday of the Buddha.
+#. The Buddha's Birthday.
 msgid "佛誕"
 msgstr "佛诞"
 
@@ -91,15 +91,15 @@ msgstr "佛诞"
 msgid "勞動節"
 msgstr "劳动节"
 
-#. Tuen Ng Festival.
+#. Dragon Boat Festival.
 msgid "端午節"
 msgstr "端午节"
 
-#. Hong Kong Special Administrative Region Establishment Day.
+#. Hong Kong S.A.R. Establishment Day.
 msgid "香港特別行政區成立紀念日"
 msgstr "香港特别行政区成立纪念日"
 
-#. Chung Yeung Festival.
+#. Double Ninth Festival.
 msgid "重陽節"
 msgstr "重阳节"
 
@@ -107,7 +107,7 @@ msgstr "重阳节"
 msgid "國慶日"
 msgstr "国庆日"
 
-#. Chinese Winter Solstice Festival.
+#. Winter Solstice.
 msgid "冬節"
 msgstr "冬节"
 
@@ -119,11 +119,11 @@ msgstr "圣诞节后第一个周日"
 msgid "聖誕節"
 msgstr "圣诞节"
 
-#. The day following the first day of January.
+#. The day following New Year's Day.
 msgid "一月一日翌日"
 msgstr "一月一日翌日"
 
-#. The day following Ching Ming Festival.
+#. The day following Tomb-Sweeping Day.
 msgid "清明節翌日"
 msgstr "清明节翌日"
 
@@ -131,7 +131,7 @@ msgstr "清明节翌日"
 msgid "復活節星期一翌日"
 msgstr "复活节星期一翌日"
 
-#. The day following the Birthday of the Buddha.
+#. The day following the Buddha's Birthday.
 msgid "佛誕翌日"
 msgstr "佛诞翌日"
 
@@ -139,16 +139,15 @@ msgstr "佛诞翌日"
 msgid "勞動節翌日"
 msgstr "劳动节翌日"
 
-#. The day following Tuen Ng Festival.
+#. The day following Dragon Boat Festival.
 msgid "端午節翌日"
 msgstr "端午节翌日"
 
-#. The day following Hong Kong Special Administrative Region Establishment
-#. Day.
+#. The day following Hong Kong S.A.R. Establishment Day.
 msgid "香港特別行政區成立紀念日翌日"
 msgstr "香港特别行政区成立纪念日翌日"
 
-#. The day following Chung Yeung Festival.
+#. The day following Double Ninth Festival.
 msgid "重陽節翌日"
 msgstr "重阳节翌日"
 
@@ -188,9 +187,9 @@ msgstr "英国王储查尔斯王子与戴安娜婚礼"
 msgid "英女王伊利沙伯二世伉儷訪港的第二天"
 msgstr "英女王伊丽莎白二世伉俪访港的第二天"
 
-#. The 70th anniversary day of the victory of the Chinese people's war of
-#. resistance against
-#. Japanese aggression.
+#. 70th Anniversary of the Victory of the Chinese People's War of Resistance
+#. against Japanese
+#. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭勝利70周年紀念日"
 msgstr "中国人民抗日战争胜利70周年纪念日"
 

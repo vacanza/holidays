@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,6 +21,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(
             Afghanistan, years=range(1919, 2050), years_non_observed=range(1919, 2050)
+        )
+        cls.no_estimated_holidays = Afghanistan(
+            years=range(1919, 2050), islamic_show_estimated=False
         )
 
     def test_country_aliases(self):
@@ -86,8 +89,9 @@ class TestAfghanistan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1919, 2022))
 
     def test_independence_day(self):
-        name = "روز استقلال افغانستان"
-        self.assertHolidayName(name, (f"{year}-08-19" for year in range(1919, 2050)))
+        self.assertHolidayName(
+            "روز استقلال افغانستان", (f"{year}-08-19" for year in range(1919, 2050))
+        )
 
     def test_martyrs_day(self):
         name = "روز شهیدان"
@@ -107,8 +111,8 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2020-08-30",
             "2021-08-19",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1924, 2022)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1924, 2022))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(2022, 2050))
 
     def test_prophets_birthday(self):
         name = "میلاد پیامبر"
@@ -127,8 +131,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2023-09-27",
             "2024-09-16",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1924, 2050)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1924, 2050))
 
     def test_first_day_of_ramadan(self):
         name = "اول رمضان"
@@ -146,8 +149,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2023-03-23",
             "2024-03-11",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1925, 2050)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1925, 2050))
 
     def test_eid_al_fitr(self):
         name = "عید فطر"
@@ -187,8 +189,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-04-11",
             "2024-04-12",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1925, 2050)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1925, 2050))
 
     def test_arafah_day(self):
         name = "روز عرفه"
@@ -206,8 +207,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2023-06-27",
             "2024-06-16",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1925, 2050)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1925, 2050))
 
     def test_eid_al_adha(self):
         name = "عید قربانی"
@@ -247,8 +247,7 @@ class TestAfghanistan(CommonCountryTests, TestCase):
             "2024-06-18",
             "2024-06-19",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertEqual(set(range(1925, 2050)), years_found)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1925, 2050))
 
     def test_2021(self):
         self.assertHolidays(

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,12 +16,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """European Central Bank holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/TARGET2
-        - https://www.ecb.europa.eu/ecb/contacts/working-hours/html/index.en.html
-        - https://www.ecb.europa.eu/press/pr/date/1999/html/pr990715_1.en.html
-        - https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
+        * <https://en.wikipedia.org/wiki/TARGET2>
+        * <https://www.ecb.europa.eu/ecb/contacts/working-hours/html/index.en.html>
+        * <https://www.ecb.europa.eu/press/pr/date/1999/html/pr990715_1.en.html>
+        * <https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html>
     """
 
     market = "XECB"

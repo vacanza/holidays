@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,11 +24,12 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 class Cameroon(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
+    """Cameroon holidays.
+
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
-      - https://www.timeanddate.com/holidays/cameroon
-      - https://www.officeholidays.com/countries/cameroon
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
+        * <https://www.timeanddate.com/holidays/cameroon>
+        * <https://www.officeholidays.com/countries/cameroon>
     """
 
     country = "CM"
@@ -36,10 +37,18 @@ class Cameroon(
     # On 1 January 1960, French Cameroun gained independence from France.
     start_year = 1960
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=CameroonIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=CameroonIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         StaticHolidays.__init__(self, cls=CameroonStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)

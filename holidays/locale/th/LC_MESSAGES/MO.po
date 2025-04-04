@@ -1,0 +1,246 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Macau holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.69\n"
+"POT-Creation-Date: 2025-02-06 15:34+0700\n"
+"PO-Revision-Date: 2025-03-05 19:40+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.3\n"
+"X-Generator: Poedit 3.5\n"
+
+#. New Year's Day.
+msgid "元旦"
+msgstr "วันขึ้นปีใหม่"
+
+#. Freedom Day.
+msgid "自由日"
+msgstr "วันแห่งเสรีภาพ"
+
+#. Labor Day.
+msgid "勞動節"
+msgstr "วันแรงงาน"
+
+#. Day of Portugal, Camões, and the Portuguese Communities.
+msgid "葡國日、賈梅士日暨葡僑日"
+msgstr "วันชาติโปรตุเกส วันกาม๊อยช์ และวันแห่งประชาคมโปรตุเกส"
+
+#. Assumption Day.
+msgid "聖母升天"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. National Day of the People's Republic of China.
+msgid "中華人民共和國國慶日"
+msgstr "วันชาติจีน"
+
+#. The day following National Day of the People's Republic of China.
+msgid "中華人民共和國國慶日翌日"
+msgstr "วันหลังวันชาติจีน"
+
+#. Republic Day.
+msgid "葡萄牙共和國國慶日"
+msgstr "วันสถาปนาสาธารณรัฐโปรตุเกส"
+
+#. All Saints' Day.
+msgid "諸聖節"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. All Soul's Day.
+msgid "追思節"
+msgstr "วันภาวนาอุทิศแด่ผู้ล่วงลับ"
+
+#. Restoration of Independence Day.
+msgid "恢復獨立紀念日"
+msgstr "วันรำลึกการกอบกู้เอกราชโปรตุเกส"
+
+#. Immaculate Conception.
+msgid "聖母無原罪瞻禮"
+msgstr "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
+
+#. Macao S.A.R. Establishment Day.
+msgid "澳門特別行政區成立紀念日"
+msgstr "วันสถาปนาเขตบริหารพิเศษมาเก๊า"
+
+#. Winter Solstice.
+msgid "冬至"
+msgstr "วันตงจื้อ(เหมายัน)"
+
+#. Christmas Eve.
+msgid "聖誕節前日"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Christmas Eve.
+msgid "聖誕節前夕"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Christmas Eve.
+msgid "聖誕前夕"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Christmas Day.
+msgid "聖誕節"
+msgstr "วันคริสต์มาส"
+
+#. Christmas Day.
+msgid "聖誕"
+msgstr "วันคริสต์มาส"
+
+#. Chinese New Year's Day.
+msgid "農曆正月初一"
+msgstr "วันตรุษจีน"
+
+#. The second day of Chinese New Year.
+msgid "農曆正月初二"
+msgstr "วันตรุษจีนวันที่สอง"
+
+#. The third day of Chinese New Year.
+msgid "農曆正月初三"
+msgstr "วันตรุษจีนวันที่สาม"
+
+#. Tomb-Sweeping Day.
+msgid "清明節"
+msgstr "วันเช็งเม้ง"
+
+#. Good Friday.
+msgid "耶穌受難日"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Good Friday.
+msgid "聖周星期五"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. The Day before Easter.
+msgid "復活節前日"
+msgstr "วันก่อนวันอาทิตย์อีสเตอร์"
+
+#. Holy Saturday.
+msgid "聖周星期六"
+msgstr "วันเสาร์ศักดิ์สิทธิ์"
+
+#. The Buddha's Birthday.
+msgid "佛誕節"
+msgstr "วันวิสาขบูชา"
+
+#. Corpus Christi.
+msgid "基督聖體聖血節"
+msgstr "วันสมโภชพระคริสตวรกาย"
+
+#. Dragon Boat Festival.
+msgid "端午節"
+msgstr "วันไหว้บ๊ะจ่าง"
+
+#. Double Ninth Festival.
+msgid "重陽節"
+msgstr "วันไหว้บรรพบุรุษ"
+
+#. Mid-Autumn Festival.
+msgid "中秋節"
+msgstr "วันไหว้พระจันทร์"
+
+#. The Day following Mid-Autumn Festival.
+msgid "中秋節翌日"
+msgstr "วันหลังวันไหว้พระจันทร์"
+
+#. Day of the Municipality of Ilhas.
+msgid "海島市日"
+msgstr "วันเทศบาลอิลฮาส"
+
+#. Macau City Day.
+msgid "澳門市日"
+msgstr "วันเมืองมาเก๊า"
+
+#. Additional Government Holiday.
+msgid "額外政府假期"
+msgstr "วันหยุดราชการเพิ่มเติม"
+
+#. Additional Public Holiday.
+msgid "額外公眾假期"
+msgstr "วันหยุดเพิ่มเติม"
+
+#. Additional Half-Day Public Holiday.
+msgid "額外公眾半日假"
+msgstr "วันหยุดครึ่งวันเพิ่มเติม"
+
+#. The Handover of Macau to China and the Establishment of the Macau Special
+#. Administrative Region
+#. of the People's Republic of China.
+msgid "澳門回歸祖國暨中華人民共和國澳門特別行政區成立日"
+msgstr "วันส่งมอบมาเก๊ากลับคืนสู่จีนและการสถาปนาเขตบริหารพิเศษมาเก๊าแห่งสาธารณรัฐประชาชนจีน"
+
+#. The day following the Handover of Macau to China and the Establishment of
+#. the Macau Special
+#. Administrative Region of the People's Republic of China.
+msgid "澳門回歸祖國暨中華人民共和國澳門特別行政區成立日翌日"
+msgstr "วันหลังวันส่งมอบมาเก๊ากลับคืนสู่จีนและการสถาปนาเขตบริหารพิเศษมาเก๊าแห่งสาธารณรัฐประชาชนจีน"
+
+#. 70th Anniversary of the Victory of the Chinese People's War of Resistance
+#. against Japanese
+#. Aggression and the World Anti-Fascist War.
+msgid "中國人民抗日戰爭暨世界反法西斯戰爭勝利七十周年紀念日"
+msgstr "ครบรอบ 70 ปีแห่งการได้รับชัยชนะจากสงครามต่อต้านญี่ปุ่นและลัทธิฟาสซิสต์โลก"
+
+#. Compensatory rest day for %s.
+#, c-format
+msgid "%s的補假"
+msgstr "ชดเชย%s"
+
+#. The first working day after %s.
+#, c-format
+msgid "%s後首個工作日"
+msgstr "วันทำงานวันแรกหลัง%s"
+
+#. %s (Afternoon).
+#, c-format
+msgid "%s（下午）"
+msgstr "%s (ครึ่งบ่าย)"
+
+#. Chinese New Year's Eve.
+msgid "農曆除夕"
+msgstr "วันก่อนวันตรุษจีน"
+
+#. The fourth day of Chinese New Year.
+msgid "農曆正月初四"
+msgstr "วันตรุษจีนวันที่สี่"
+
+#. The fifth day of Chinese New Year.
+msgid "農曆正月初五"
+msgstr "วันตรุษจีนวันที่ห้า"
+
+#. New Year's Eve.
+msgid "除夕"
+msgstr "วันสิ้นปี"
+
+#. Overlapping of the Day following National Day of the People's Republic of
+#. China and the Day
+#. following Mid-Autumn Festival.
+msgid "中華人民共和國國慶日翌日及中秋節翌日重疊"
+msgstr "วันหยุดชดเชยเนื่องในโอกาสวันหลังวันชาติจีนและวันหลังวันไหว้พระจันทร์หยุดตรงกัน"
+
+#. Overlapping of the Day following National Day of the People's Republic of
+#. China and the Double
+#. Ninth Festival.
+msgid "中華人民共和國國慶日翌日及重陽節重疊"
+msgstr "วันหยุดชดเชยเนื่องในโอกาสวันหลังวันชาติจีนและวันไหว้บรรพบุรุษหยุดตรงกัน"
+
+#. Overlapping of the National Day of the People's Republic of China and the
+#. Day following Mid-
+#. Autumn Festival.
+msgid "中華人民共和國國慶日及中秋節翌日重疊"
+msgstr "วันหยุดชดเชยเนื่องในโอกาสวันชาติจีนและวันหลังวันไหว้พระจันทร์หยุดตรงกัน"

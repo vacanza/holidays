@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,9 +21,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
+    """Ethiopia holidays.
+
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
     """
 
     country = "ET"
@@ -34,19 +35,33 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     start_year = 1898
 
     def _is_leap_year(self):
+        """Determine if the Ethiopian calendar year is a leap year.
+
+        Ethiopian leap years generally align with Gregorian leap years until
+        February 2100. However, the Ethiopian calendar starts earlier (on September 11),
+        which affects holidays between September 11 and January 1.
+
+        To account for this shift, the method checks whether next year is a leap year
+        in the Gregorian calendar.
+
+        Returns:
+            `True` if the Ethiopian year is a leap year, `False` otherwise.
         """
-        Ethiopian leap years are coincident with leap years in the Gregorian calendar until
-        the end of February 2100. It starts earlier from new year of western calendar.
-        Ethiopian leap year starts on Sep 11, so it has an effect on holidays between
-        Sep 11 and Jan 1. Therefore, here on the following function we intentionally add 1
-        to the leap year to offset the difference.
-        """
+
         return isleap(self._year + 1)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, EthiopiaIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=EthiopiaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):

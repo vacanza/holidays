@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -839,6 +839,82 @@ class TestPopNamed(unittest.TestCase):
             self.assertNotIn(dt, self.hb)
         self.assertRaises(KeyError, lambda: self.hb.pop_named("New Year"))
 
+    def test_contains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Day", lookup="contains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_icontains(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("day", lookup="icontains")
+        self.assertEqual(len(removed_dates), 6)
+        self.assertNotIn("2022-01-01", self.hb)
+        self.assertNotIn("2022-06-19", self.hb)
+        self.assertNotIn("2022-06-20", self.hb)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_exact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog Day", lookup="exact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_iexact(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        hb = CountryStub1(years=2025)
+        hb["2024-02-02"] = "Big Groundhog Day; Groundhog Day"
+        removed_dates = hb.pop_named("Groundhog day", lookup="iexact")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertEqual(hb["2024-02-02"], "Big Groundhog Day")
+
+    def test_startswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("Independence", lookup="startswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("Christmas", lookup="startswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
+    def test_istartswith(self):
+        self.assertIn("2022-01-01", self.hb)
+        removed_dates = self.hb.pop_named("independence", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 1)
+        self.assertNotIn("2022-07-04", self.hb)
+        self.assertIn("2022-06-19", self.hb)
+        self.assertIn("2022-06-20", self.hb)
+
+        removed_dates = self.hb.pop_named("christmas", lookup="istartswith")
+        self.assertEqual(len(removed_dates), 2)
+        self.assertNotIn("2022-12-25", self.hb)
+        self.assertNotIn("2022-12-26", self.hb)
+
 
 class TestRepr(unittest.TestCase):
     def test_base(self):
@@ -866,6 +942,16 @@ class TestSerialization(unittest.TestCase):
         loaded_holidays = pickle.loads(pickle.dumps(self.hb))
         self.assertEqual(loaded_holidays, self.hb)
         self.assertIn(dt, self.hb)
+
+    def test_pickle_localized_entity(self):
+        for lang in ("uk", "en_US", None):
+            ua = UA(language=lang)
+            dt = "2021-01-01"
+            self.assertIn(dt, self.hb)
+
+            loaded_ua = pickle.loads(pickle.dumps(ua))
+            self.assertEqual(loaded_ua, ua)
+            self.assertIn(dt, loaded_ua)
 
 
 class TestSpecialHolidays(unittest.TestCase):

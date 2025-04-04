@@ -4,11 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
+
+from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -17,50 +19,73 @@ from holidays.holiday_base import HolidayBase
 
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
-    country = "PK"
-    start_year = 1948
+    """Pakistan holidays.
 
-    def __init__(self, *args, **kwargs):
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
+        * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
+    """
+
+    country = "PK"
+    default_language = "en_PK"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    start_year = 1948
+    supported_languages = ("en_PK", "en_US", "ur_PK")
+
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=PakistanIslamicHolidays)
+        IslamicHolidays.__init__(
+            self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Kashmir Solidarity Day.
         if self._year >= 1990:
-            self._add_holiday_feb_5("Kashmir Solidarity Day")
+            # Kashmir Solidarity Day.
+            self._add_holiday_feb_5(tr("Kashmir Solidarity Day"))
 
-        # Pakistan Day.
         if self._year >= 1956:
-            self._add_holiday_mar_23("Pakistan Day")
+            # Pakistan Day.
+            self._add_holiday_mar_23(tr("Pakistan Day"))
 
-        # Labour Day.
         if self._year >= 1972:
-            self._add_labor_day("Labour Day")
+            # Labor Day.
+            self._add_labor_day(tr("Labour Day"))
 
         # Independence Day.
-        self._add_holiday_aug_14("Independence Day")
+        self._add_holiday_aug_14(tr("Independence Day"))
 
-        # Iqbal Day.
         if self._year <= 2014 or self._year >= 2022:
-            self._add_holiday_nov_9("Iqbal Day")
+            # Iqbal Day.
+            self._add_holiday_nov_9(tr("Iqbal Day"))
 
         # Quaid-e-Azam Day.
-        self._add_holiday_dec_25("Quaid-e-Azam Day")
+        self._add_holiday_dec_25(tr("Quaid-e-Azam Day"))
 
-        name = "Eid-ul-Fitr"
+        # Eid al-Fitr.
+        name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
 
-        name = "Eid-ul-Adha"
+        # Eid al-Adha.
+        name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
 
-        self._add_mawlid_day("Eid Milad-un-Nabi")
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Eid Milad-un-Nabi"))
 
-        name = "Ashura"
+        # Ashura.
+        name = tr("Ashura")
         self._add_ashura_eve(name)
         self._add_ashura_day(name)
 
@@ -95,6 +120,8 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2020: (AUG, 29),
         2021: (AUG, 18),
         2022: (AUG, 9),
+        2023: (JUL, 28),
+        2024: (JUL, 16),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -118,6 +145,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 21),
         2022: (JUL, 10),
         2023: (JUN, 29),
+        2024: (JUN, 17),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -164,4 +192,6 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2020: (OCT, 30),
         2021: (OCT, 19),
         2022: (OCT, 9),
+        2023: (SEP, 29),
+        2024: (SEP, 17),
     }

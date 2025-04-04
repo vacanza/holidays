@@ -23,14 +23,12 @@ clean:
 	rm -rf .mypy_cache/*
 	rm -rf .pytest_cache/*
 	rm -rf dist/*
-	rm -rf docs/build/*
-	rm -rf docs/source/_autosummary/*
 
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
 
 doc:
-	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
+	mkdocs build
 
 l10n:
 	scripts/l10n/generate_po_files.py >/dev/null 2>&1

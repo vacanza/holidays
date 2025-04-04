@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,6 +22,7 @@ class TestPakistan(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Pakistan, years=range(1948, 2050))
+        cls.no_estimated_holidays = Pakistan(years=range(2000, 2024), islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Pakistan, PK, PAK)
@@ -49,8 +50,9 @@ class TestPakistan(CommonCountryTests, TestCase):
 
     def test_iqbal_day(self):
         name = "Iqbal Day"
-        self.assertHolidayName(name, (f"{year}-11-09" for year in range(1948, 2015)))
-        self.assertHolidayName(name, (f"{year}-11-09" for year in range(2022, 2050)))
+        self.assertHolidayName(
+            name, (f"{year}-11-09" for year in (*range(1948, 2015), *range(2022, 2050)))
+        )
         self.assertNoHolidayName(name, range(2015, 2022))
 
     def test_quaid_e_azam_day(self):
@@ -73,11 +75,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 5, 13),
             date(2022, 5, 3),
             date(2023, 4, 22),
+            date(2024, 4, 10),
         ):
-            self.assertHoliday(dt)
-            self.assertHoliday(_timedelta(dt, +1))
-            self.assertHoliday(_timedelta(dt, +2))
-            self.assertIn(name, self.holidays.get(dt))
+            self.assertHolidayName(
+                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
+            )
 
     def test_eid_ul_adha(self):
         name = "Eid-ul-Adha"
@@ -96,11 +98,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 7, 21),
             date(2022, 7, 10),
             date(2023, 6, 29),
+            date(2024, 6, 17),
         ):
-            self.assertHoliday(dt)
-            self.assertHoliday(_timedelta(dt, +1))
-            self.assertHoliday(_timedelta(dt, +2))
-            self.assertIn(name, self.holidays.get(dt))
+            self.assertHolidayName(
+                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
+            )
 
     def test_eid_milad_un_nabi(self):
         name = "Eid Milad-un-Nabi"
@@ -117,10 +119,10 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2020, 10, 30),
             date(2021, 10, 19),
             date(2022, 10, 9),
-            date(2023, 9, 27),
+            date(2023, 9, 29),
+            date(2024, 9, 17),
         ):
-            self.assertHoliday(dt)
-            self.assertIn(name, self.holidays.get(dt))
+            self.assertHolidayName(name, self.no_estimated_holidays, dt)
 
     def test_ashura(self):
         name = "Ashura"
@@ -140,10 +142,9 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2021, 8, 18),
             date(2022, 8, 9),
             date(2023, 7, 28),
+            date(2024, 7, 16),
         ):
-            self.assertHoliday(dt)
-            self.assertHoliday(_timedelta(dt, -1))
-            self.assertIn(name, self.holidays.get(dt))
+            self.assertHolidayName(name, self.no_estimated_holidays, dt, _timedelta(dt, -1))
 
     def test_2002(self):
         self.assertHolidays(
@@ -161,6 +162,25 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2002-12-05", "Eid-ul-Fitr (estimated)"),
             ("2002-12-06", "Eid-ul-Fitr (estimated)"),
             ("2002-12-07", "Eid-ul-Fitr (estimated)"),
+            ("2002-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_2002_no_estimated_label(self):
+        self.assertHolidays(
+            Pakistan(years=2002, islamic_show_estimated=False),
+            ("2002-02-05", "Kashmir Solidarity Day"),
+            ("2002-02-22", "Eid-ul-Adha"),
+            ("2002-02-23", "Eid-ul-Adha"),
+            ("2002-02-24", "Eid-ul-Adha"),
+            ("2002-03-23", "Ashura; Pakistan Day"),
+            ("2002-03-24", "Ashura"),
+            ("2002-05-01", "Labour Day"),
+            ("2002-05-24", "Eid Milad-un-Nabi"),
+            ("2002-08-14", "Independence Day"),
+            ("2002-11-09", "Iqbal Day"),
+            ("2002-12-05", "Eid-ul-Fitr"),
+            ("2002-12-06", "Eid-ul-Fitr"),
+            ("2002-12-07", "Eid-ul-Fitr"),
             ("2002-12-25", "Quaid-e-Azam Day"),
         )
 
@@ -182,4 +202,63 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2022-10-09", "Eid Milad-un-Nabi"),
             ("2022-11-09", "Iqbal Day"),
             ("2022-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-02-05", "Kashmir Solidarity Day"),
+            ("2022-03-23", "Pakistan Day"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-03", "Eid-ul-Fitr"),
+            ("2022-05-04", "Eid-ul-Fitr"),
+            ("2022-05-05", "Eid-ul-Fitr"),
+            ("2022-07-10", "Eid-ul-Adha"),
+            ("2022-07-11", "Eid-ul-Adha"),
+            ("2022-07-12", "Eid-ul-Adha"),
+            ("2022-08-08", "Ashura"),
+            ("2022-08-09", "Ashura"),
+            ("2022-08-14", "Independence Day"),
+            ("2022-10-09", "Eid Milad-un-Nabi"),
+            ("2022-11-09", "Iqbal Day"),
+            ("2022-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-02-05", "Kashmir Solidarity Day"),
+            ("2022-03-23", "Pakistan Day"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-03", "Eid al-Fitr"),
+            ("2022-05-04", "Eid al-Fitr"),
+            ("2022-05-05", "Eid al-Fitr"),
+            ("2022-07-10", "Eid al-Adha"),
+            ("2022-07-11", "Eid al-Adha"),
+            ("2022-07-12", "Eid al-Adha"),
+            ("2022-08-08", "Ashura"),
+            ("2022-08-09", "Ashura"),
+            ("2022-08-14", "Independence Day"),
+            ("2022-10-09", "Prophet's Birthday"),
+            ("2022-11-09", "Iqbal Day"),
+            ("2022-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2022-02-05", "یوم یکجہتی کشمیر"),
+            ("2022-03-23", "یوم پاکستان"),
+            ("2022-05-01", "یوم مزدور"),
+            ("2022-05-03", "عید الفطر"),
+            ("2022-05-04", "عید الفطر"),
+            ("2022-05-05", "عید الفطر"),
+            ("2022-07-10", "عید الاضحی"),
+            ("2022-07-11", "عید الاضحی"),
+            ("2022-07-12", "عید الاضحی"),
+            ("2022-08-08", "عاشورہ"),
+            ("2022-08-09", "عاشورہ"),
+            ("2022-08-14", "یوم آزادی"),
+            ("2022-10-09", "عید میلاد النبی"),
+            ("2022-11-09", "یوم اقبال"),
+            ("2022-12-25", "یوم قائداعظم"),
         )
