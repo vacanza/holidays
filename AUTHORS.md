@@ -55,6 +55,7 @@ Greg Rafferty
 Győző Papp
 Heikki Orsila
 Henrik Sozzi
+Hiroki Kawahara
 Hugh McNamara
 Hugo van Kemenade
 Isabelle COWAN-BERGMAN
@@ -81,6 +82,7 @@ Kate Golovanova
 Kelsey Karin Hawley
 Koert van der Veer
 Koki Nomura
+Kriti Birda
 Maina Kamau
 Malthe Borch
 Marek Šuppa
@@ -145,4 +147,5 @@ Victor Luna
 Victor Miti
 Ville Skyttä
 Vu Nhat Chuong
+Wasif Shahzad
 Youhei Sakurai

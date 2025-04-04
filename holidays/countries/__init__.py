@@ -18,6 +18,7 @@ from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
 from .andorra import Andorra, AD, AND
 from .angola import Angola, AO, AGO
+from .antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
 from .argentina import Argentina, AR, ARG
 from .armenia import Armenia, AM, ARM
 from .aruba import Aruba, AW, ABW
@@ -87,6 +88,7 @@ from .ireland import Ireland, IE, IRL
 from .isle_of_man import IsleOfMan, IM, IMN
 from .israel import Israel, IL, ISR
 from .italy import Italy, IT, ITA
+from .ivory_coast import IvoryCoast, CI, CIV
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
 from .jersey import Jersey, JE, JEY

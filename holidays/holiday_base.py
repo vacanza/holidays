@@ -1256,16 +1256,26 @@ class HolidayBase(dict[date, str]):
 
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def pop_named(self, name: str) -> list[date]:
+    def pop_named(self, holiday_name: str, lookup: str = "icontains") -> list[date]:
         """Remove all holidays matching the given name.
 
         This method removes all dates associated with a holiday name, so they are
-        no longer considered holidays. The match is case-insensitive, and partial
-        matches are also removed.
+        no longer considered holidays. The search by default is case-insensitive and
+        includes partial matches.
 
         Args:
-            name:
+            holiday_name:
                 The holiday's name to try to match.
+
+            lookup:
+                The holiday name lookup type:
+
+                * contains - case sensitive contains match;
+                * exact - case sensitive exact match;
+                * startswith - case sensitive starts with match;
+                * icontains - case insensitive contains match;
+                * iexact - case insensitive exact match;
+                * istartswith - case insensitive starts with match;
 
         Returns:
             A list of dates removed.
@@ -1273,9 +1283,13 @@ class HolidayBase(dict[date, str]):
         Raises:
             KeyError: if date is not a holiday.
         """
-        use_exact_name = HOLIDAY_NAME_DELIMITER in name
-        if not (dts := self.get_named(name, split_multiple_names=not use_exact_name)):
-            raise KeyError(name)
+        use_exact_name = HOLIDAY_NAME_DELIMITER in holiday_name
+        if not (
+            dts := self.get_named(
+                holiday_name, lookup=lookup, split_multiple_names=not use_exact_name
+            )
+        ):
+            raise KeyError(holiday_name)
 
         popped = []
         for dt in dts:
@@ -1284,16 +1298,35 @@ class HolidayBase(dict[date, str]):
             popped.append(dt)
 
             # Keep the rest of holidays falling on the same date.
-            if not use_exact_name:
-                name_lower = name.lower()
+            if use_exact_name:
+                continue
+            if lookup == "icontains":
+                holiday_name_lower = holiday_name.lower()
                 holiday_names = [
-                    holiday_name
-                    for holiday_name in holiday_names
-                    if name_lower not in holiday_name.lower()
+                    name for name in holiday_names if holiday_name_lower not in name.lower()
                 ]
-
-                if holiday_names:
-                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+            elif lookup == "iexact":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name for name in holiday_names if holiday_name_lower != name.lower()
+                ]
+            elif lookup == "istartswith":
+                holiday_name_lower = holiday_name.lower()
+                holiday_names = [
+                    name
+                    for name in holiday_names
+                    if holiday_name_lower != name[: len(holiday_name)].lower()
+                ]
+            elif lookup == "contains":
+                holiday_names = [name for name in holiday_names if holiday_name not in name]
+            elif lookup == "exact":
+                holiday_names = [name for name in holiday_names if holiday_name != name]
+            else:  # startswith
+                holiday_names = [
+                    name for name in holiday_names if holiday_name != name[: len(holiday_name)]
+                ]
+            if holiday_names:
+                self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
 
         return popped
 
@@ -1423,7 +1456,17 @@ class HolidaySum(HolidayBase):
             else:
                 setattr(self, attr, value)
 
+        # Retain language if they match and are strings.
+        # If language wasn't assigned, default_language acts as fallback.
+        h1_language = h1.language or h1.default_language
+        h2_language = h2.language or h2.default_language
+        if isinstance(h1_language, str) and h1_language == h2_language:
+            kwargs["language"] = h1_language
+
         HolidayBase.__init__(self, **kwargs)
+
+        # supported_languages is used for iCalExporter language check as well.
+        self.supported_languages = (h1_language,) if h1_language else ()
 
     def _populate(self, year):
         for operand in self.holidays:

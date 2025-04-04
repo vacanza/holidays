@@ -394,5 +394,77 @@ True
 True
 ```
 
-!!! danger "Deprecated"
-    In the future
+## Generate iCalendar content and export to `.ics`
+
+[ICalExporter][holidays.ical.ICalExporter] facilitates the creation and export of iCalendar files
+in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
+
+``` python
+>>> from holidays import country_holidays
+>>> from holidays.ical import ICalExporter
+>>> us_holidays = country_holidays('US', years=2020)
+# Initializes the iCalendar exporter.
+>>> exporter = ICalExporter(us_holidays)
+```
+
+To create iCalendar content, use `generate`.
+
+``` python
+>>> from holidays import country_holidays
+>>> from holidays.ical import ICalExporter
+>>> th_holidays = country_holidays('TH', years=2024)
+>>> exporter = ICalExporter(th_holidays)
+>>> ical_content = exporter.generate()
+# Thailand's Songkran Festival (April 13th–15th) should be counted as a single
+# VEVENT with a duration of three days.
+>>> ical_content.count("SUMMARY:วันสงกรานต์\r\n")
+1
+>>> "DURATION:P3D\r\n" in ical_content
+True
+# Adds ";LANGUAGE=" to SUMMARY too.
+>>> exporter = ICalExporter(th_holidays, show_language=True)
+>>> ical_content = exporter.generate()
+>>> ical_content.count("SUMMARY;LANGUAGE=th:วันสงกรานต์\r\n")
+1
+```
+
+!!! tip "Tip"
+    Although the iCalendar specification supports a wide range of language formats as outlined
+    in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), the Holidays object requires
+    that the `language` attribute adhere to the [ISO 639-1 or
+    ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) language codes,
+    such as `en` or `pap-AW`.
+
+    Additionally, if no `language` is specified for a holiday, but a `default_language` is set
+    for the Holiday object, the default language will be used instead.
+
+``` python
+>>> from holidays import country_holidays
+>>> from holidays.ical import ICalExporter
+>>> cn_holidays = country_holidays("CN", years=2024, language="en_US")
+>>> jp_holidays = country_holidays("JP", years=2024, language="en_US")
+>>> kr_holidays = country_holidays("KR", years=2024, language="en_US")
+>>> east_asia_holidays = cn_holidays + jp_holidays + kr_holidays
+>>> ical_content = ICalExporter(east_asia_holidays).generate()
+# Even with the combined China-Japan-Korea calendar, there should be only one
+# 'New Year's Day' VEVENT.
+>>> ical_content.count("SUMMARY:New Year's Day\r\n")
+1
+```
+
+To export to `.ics` format, use `save_ics`.
+
+``` python
+>>> from pathlib import Path
+>>> from holidays import financial_holidays
+>>> from holidays.ical import ICalExporter
+# Export the NYSE_2024_calendar.ics file in the current directory
+>>> nyse_exporter = ICalExporter(financial_holidays("NYSE", years=2024))
+>>> nyse_exporter.save_ics(file_path="NYSE_2024_calendar.ics")
+# Export the NYSE_2024_calendar.ics file to MS Windows' Downloads folder instead.
+>>> downloads_path = Path.home() / "Downloads"
+>>> nyse_exporter.save_ics(file_path=str(downloads_path / "NYSE_2024_calendar.ics"))
+```
+
+For advanced features and customization of the exported `.ics` output, consider using
+the [icalendar](https://github.com/collective/icalendar) package.
