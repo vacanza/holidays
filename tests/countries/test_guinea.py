@@ -42,7 +42,7 @@ class TestGuinea(CommonCountryTests, TestCase):
     def test_second_republic_day(self):
         name = "Jour de la Deuxième République"
         self.assertHolidayName(name, (f"{year}-04-03" for year in range(1985, 2022)))
-        self.assertNoHolidayName(name, range(2022, 2050))
+        self.assertNoHolidayName(name, range(1959, 1985), range(2022, 2050))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
