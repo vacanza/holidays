@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
@@ -35,6 +35,8 @@ class TrinidadAndTobago(
       * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
       * <https://calendarific.com/holiday/trinidad/eid-al-fitr>
       * <https://www.timeanddate.com/holidays/saudi-arabia/eid-al-adha>
+      * <https://www.timeanddate.com/holidays/trinidad/diwali>
+      * <https://calendarific.com/holiday/trinidad/diwali>
     """
 
     country = "TT"
@@ -53,7 +55,7 @@ class TrinidadAndTobago(
                 if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
-        HinduCalendarHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=TrinidadAndTobagoHinduHolidays)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=TrinidadAndTobagoIslamicHolidays, show_estimated=islamic_show_estimated
@@ -161,4 +163,24 @@ class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
+    }
+
+
+class TrinidadAndTobagoHinduHolidays(_CustomHinduHolidays):
+    # Deepavali
+    DIWALI_DATES = {
+        2012: (NOV, 13),
+        2013: (NOV, 4),
+        2014: (OCT, 23),
+        2015: (NOV, 11),
+        2016: (OCT, 29),
+        2017: (OCT, 19),
+        2018: (NOV, 7),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
     }
