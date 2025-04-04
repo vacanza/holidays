@@ -158,6 +158,7 @@ class TestQatar(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.bank_holidays, dts)
         self.assertHolidayName(name, self.bank_holidays, range(2010, 2050))
         self.assertNoHolidayName(name, self.bank_holidays, range(1971, 2010))
+        self.assertNoHolidayName(name)
 
     def test_2011(self):
         self.assertHolidays(

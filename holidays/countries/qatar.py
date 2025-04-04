@@ -34,7 +34,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
-    """Qatar Holidays
+    """Qatar holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Qatar>
