@@ -16,8 +16,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
-"POT-Creation-Date: 2025-04-04 20:03+0530\n"
-"PO-Revision-Date: 2025-04-04 20:03+0530\n"
+"POT-Creation-Date: 2025-04-04 20:36+0530\n"
+"PO-Revision-Date: 2025-04-04 20:36+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -37,8 +37,8 @@ msgid "New Year's Day"
 msgstr "New Year's Day"
 
 #. Spiritual Baptist Shouter Liberation Day.
-msgid "Spiritual Baptist Liberation Day"
-msgstr "Spiritual Baptist Liberation Day"
+msgid "Spiritual Baptist Shouter Liberation Day"
+msgstr "Spiritual Baptist Shouter Liberation Day"
 
 #. Indian Arrival Day.
 msgid "Indian Arrival Day"
