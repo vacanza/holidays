@@ -46,7 +46,7 @@ ISLAMIC_HOLIDAYS = (
     (9, 1, "RAMADAN_BEGINNING"),  # Beginning of Ramadan
     # MY
     (9, 17, "NUZUL_AL_QURAN"),  # Nuzul Al-Quran Day
-    # GN, CI
+    # CI, GN
     (9, 27, "LAYLAT_AL_QADR"),  # Laylat Al-Qadr (The Night of Power)
     # AL, AZ, BH, BA, BI, DJ, EG, ET, ID, IN, IR, KG, MY, MA, NG, MK, PK, PH,
     # SA, SG, ES, TN, TR, AE, UZ
