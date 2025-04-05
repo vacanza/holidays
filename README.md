@@ -1010,6 +1010,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
+<td>Qatar</td>
+<td>QA</td>
+<td></td>
+<td><strong>ar_QA</strong>, en_US</td>
+<td>BANK</td>
+</tr>
+<tr>
 <td>Romania</td>
 <td>RO</td>
 <td></td>
