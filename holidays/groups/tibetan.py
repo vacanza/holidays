@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
@@ -39,24 +38,6 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         return self._add_eastern_calendar_holiday(
             name, dt_estimated, self._tibetan_calendar_show_estimated
         )
-
-    def _add_tibetan_calendar_holiday_set(
-        self, name: str, dts_estimated: Iterable[tuple[date, bool]], days_delta: int = 0
-    ) -> set[date]:
-        """
-        Add Tibetan calendar holidays.
-
-        Adds customizable estimation label to holiday name if holiday date
-        is an estimation.
-        """
-        added_dates = set()
-        for dt_estimated in dts_estimated:
-            if dt := self._add_eastern_calendar_holiday(
-                name, dt_estimated, self._tibetan_calendar_show_estimated, days_delta=days_delta
-            ):
-                added_dates.add(dt)
-
-        return added_dates
 
     def _add_buddha_parinirvana(self, name) -> Optional[date]:
         """
@@ -112,4 +93,12 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.blessed_rainy_day_date(self._year)
+        )
+
+    def _add_dashain(self, name) -> Optional[date]:
+        """
+        Add Dashain (15th day of the 7th lunar month).
+        """
+        return self._add_tibetan_calendar_holiday(
+            name, self._tibetan_calendar.dashain_date(self._year)
         )

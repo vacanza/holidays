@@ -10,13 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, JUN, MAY, FEB, MAR, JUL, AUG, SEP, APR
-from holidays.helpers import _normalize_tuple
+from holidays.calendars.gregorian import JAN, JUN, MAY, FEB, MAR, JUL, AUG, SEP, APR, OCT
 
 DAY_OF_OFFERING = "DAY_OF_OFFERING"
 BLESSED_RAINY_DAY = "BLESSED_RAINY_DAY"
@@ -186,7 +184,7 @@ class _TibetanLunisolar:
         2021: (FEB, 12),
         2022: (MAR, 3),
         2023: (FEB, 21),
-        2024: (FEB, 10),
+        2024: (FEB, 11),
         2025: (FEB, 28),
         2026: (FEB, 18),
         2027: (FEB, 7),
@@ -235,7 +233,80 @@ class _TibetanLunisolar:
         2070: (FEB, 12),
     }
 
-    BUDDHA_SERMON_DATES = {
+    DASHAIN_DATES = {
+        2001: (OCT, 26),
+        2002: (OCT, 15),
+        2003: (OCT, 5),
+        2004: (OCT, 22),
+        2005: (OCT, 12),
+        2006: (OCT, 2),
+        2007: (OCT, 21),
+        2008: (OCT, 9),
+        2009: (SEP, 28),
+        2010: (OCT, 17),
+        2011: (OCT, 6),
+        2012: (OCT, 24),
+        2013: (OCT, 13),
+        2014: (OCT, 3),
+        2015: (OCT, 22),
+        2016: (OCT, 11),
+        2017: (SEP, 30),
+        2018: (OCT, 19),
+        2019: (OCT, 8),
+        2020: (OCT, 25),
+        2021: (OCT, 15),
+        2022: (OCT, 5),
+        2023: (OCT, 24),
+        2024: (OCT, 12),
+        2025: (OCT, 2),
+        2026: (OCT, 20),
+        2027: (OCT, 9),
+        2028: (SEP, 27),
+        2029: (OCT, 16),
+        2030: (OCT, 6),
+        2031: (OCT, 25),
+        2032: (OCT, 14),
+        2033: (OCT, 3),
+        2034: (OCT, 22),
+        2035: (OCT, 11),
+        2036: (SEP, 29),
+        2037: (OCT, 18),
+        2038: (OCT, 7),
+        2039: (OCT, 26),
+        2040: (OCT, 15),
+        2041: (OCT, 5),
+        2042: (OCT, 24),
+        2043: (OCT, 13),
+        2044: (OCT, 1),
+        2045: (OCT, 20),
+        2046: (OCT, 9),
+        2047: (SEP, 28),
+        2048: (OCT, 16),
+        2049: (OCT, 6),
+        2050: (OCT, 25),
+        2051: (OCT, 15),
+        2052: (OCT, 3),
+        2053: (OCT, 21),
+        2054: (OCT, 10),
+        2055: (SEP, 29),
+        2056: (OCT, 17),
+        2057: (OCT, 7),
+        2058: (OCT, 26),
+        2059: (OCT, 16),
+        2060: (OCT, 5),
+        2061: (OCT, 23),
+        2062: (OCT, 12),
+        2063: (OCT, 1),
+        2064: (OCT, 19),
+        2065: (OCT, 8),
+        2066: (SEP, 28),
+        2067: (OCT, 17),
+        2068: (OCT, 6),
+        2069: (OCT, 25),
+        2070: (OCT, 14),
+    }
+
+    BUDDHA_FIRST_SERMON_DATES = {
         1970: (JUL, 7),
         1971: (JUL, 26),
         1972: (JUL, 14),
@@ -339,7 +410,7 @@ class _TibetanLunisolar:
         2070: (JUL, 11),
     }
 
-    ZHABDRUNG_KUCHOE_DATES = {
+    DEATH_OF_ZHABDRUNG_DATES = {
         1970: (APR, 16),
         1971: (MAY, 5),
         1972: (APR, 23),
@@ -435,12 +506,15 @@ class _TibetanLunisolar:
         2069: (APR, 30),
         2070: (APR, 20),
     }
-    RINPOCHE_BIRTH_DATES = {
+
+    BIRTH_OF_GURU_RINPOCHE_DATES = {
         1970: (JUN, 14),
         1971: (JUL, 3),
         1972: (JUN, 21),
         1973: (JUL, 10),
         1974: (JUN, 29),
+        1975: (JUN, 18),
+        1976: (JUL, 7),
         1977: (JUN, 26),
         1978: (JUN, 16),
         1979: (JUL, 5),
@@ -449,6 +523,7 @@ class _TibetanLunisolar:
         1982: (JUN, 30),
         1983: (JUN, 20),
         1984: (JUL, 8),
+        1985: (JUN, 27),
         1986: (JUN, 17),
         1987: (JUL, 6),
         1988: (JUN, 24),
@@ -457,6 +532,8 @@ class _TibetanLunisolar:
         1991: (JUN, 21),
         1992: (JUL, 9),
         1993: (JUN, 29),
+        1994: (JUL, 7),
+        1995: (JUN, 18),
         1996: (JUN, 26),
         1997: (JUN, 15),
         1998: (JUL, 4),
@@ -465,6 +542,7 @@ class _TibetanLunisolar:
         2001: (JUN, 30),
         2002: (JUN, 20),
         2003: (JUL, 9),
+        2004: (JUN, 28),
         2005: (JUN, 17),
         2006: (JUL, 6),
         2007: (JUN, 25),
@@ -516,6 +594,7 @@ class _TibetanLunisolar:
         2053: (JUN, 25),
         2054: (JUN, 15),
         2055: (JUL, 4),
+        2056: (JUN, 22),
         2057: (JUL, 11),
         2058: (JUL, 1),
         2059: (JUN, 20),
@@ -686,7 +765,7 @@ class _TibetanLunisolar:
         2021: (SEP, 23),
         2022: (SEP, 23),
         2023: (SEP, 23),
-        2024: (SEP, 22),
+        2024: (SEP, 23),
         2025: (SEP, 23),
         2026: (SEP, 23),
         2027: (SEP, 23),
@@ -723,13 +802,6 @@ class _TibetanLunisolar:
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
-    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        for year in (year - 1, year):
-            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
-                yield date(year, *dt), year not in exact_dates
-
     def buddha_parinirvana_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("BUDDHA_PARINIRVANA", year)
 
@@ -750,6 +822,9 @@ class _TibetanLunisolar:
 
     def blessed_rainy_day_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday("BLESSED_RAINY_DAY", year)
+
+    def dashain_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday("DASHAIN", year)
 
 
 class _CustomTibetanHolidays(_CustomCalendar, _TibetanLunisolar):

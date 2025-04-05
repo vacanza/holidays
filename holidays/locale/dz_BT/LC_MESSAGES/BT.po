@@ -27,32 +27,66 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Source-Language: dz_BT\n"
 
-#. Nyilo ( Winter Solstice )
-msgid "Nyilo"
+#. Nyilo.
+msgid "ཉི་ལོག་"
 msgstr ""
 
-#. King's Birthday
-msgid "King's Birthday (Day 11)"
+#. King's Birthday (Day 1).
+msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"
 msgstr ""
 
-msgid "King's Birthday (Day 2)"
+#. King's Birthday (Day 2).
+msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"
 msgstr ""
 
-msgid "King's Birthday (Day 3)"
+#. King's Birthday (Day 3).
+msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"
 msgstr ""
 
-#. Birth Anniversary of Third Druk Gyalpo
-msgid "Birth Anniversary of Third Druk Gyalpo"
+#. Birth Anniversary of Third Druk Gyalpo.
+msgid "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"
 msgstr ""
 
-#. King Jigme Khesar Namgyel's Coronation
-msgid "King Jigme Khesar Namgyel's Coronation"
+#. King Jigme Khesar Namgyel's Coronation.
+msgid "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"
 msgstr ""
 
-#. Birth Anniversary of the Fourth Druk Gyalpo
-msgid "Birth Anniversary of Fourth Druk Gyalpo"
+#. Birth Anniversary of the Fourth Druk Gyalpo.
+msgid "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"
 msgstr ""
 
-#. National Day
-msgid "National Day"
+#. National Day.
+msgid "རྒྱལ་ཡོངས་དུས་ཆེན།"
+msgstr ""
+
+#. Day of Offering.
+msgid "བུ་ལྭ་ཕེུ་ཝི་ཉིམ"
+msgstr ""
+
+#. Blessed Rainy Day.
+msgid "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"
+msgstr ""
+
+#. Losar.
+msgid "ལལོ་གསར་"
+msgstr ""
+
+#. Buddha Parinirvana.
+msgid "།སངས་རྒྱས་པ་རི་ནིར་ཝན།"
+msgstr ""
+
+#. Buddha's First Sermon.
+msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"
+msgstr ""
+
+#. Birth of Guru Rinpoche.
+msgid "སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"
+msgstr ""
+
+#. Death of Zhabdrung.
+msgid "ཞབས་དྲུང་གི་འདས་དུས།"
+msgstr ""
+
+#. Dashain.
+msgid "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"
 msgstr ""

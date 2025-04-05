@@ -27,55 +27,62 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
 
     country = "BT"
     supported_categories = (PUBLIC,)
+    default_language = "dz_BT"
     supported_languages = ("dz_BT", "en_US")
-    # 2008 Constitution.
     start_year = 1970
 
     def __init__(self, *args, **kwargs):
-        TibetanCalendarHolidays.__init__(self, *args, **kwargs)
+        TibetanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Nyilo ( Winter Solstice )
+        # Nyilo.
         self._add_holiday_jan_2(tr("ཉི་ལོག་"))
 
-        # King's Birthday
+        # King's Birthday (Day 1).
         self._add_holiday_feb_21(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"))
+
+        # King's Birthday (Day 2).
         self._add_holiday_feb_22(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"))
+
+        # King's Birthday (Day 3).
         self._add_holiday_feb_23(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"))
 
-        # Birth Anniversary of Third Druk Gyalpo
+        # Birth Anniversary of Third Druk Gyalpo.
         self._add_holiday_may_2(tr("གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"))
 
-        # King Jigme Khesar Namgyel's Coronation
+        # King Jigme Khesar Namgyel's Coronation.
         self._add_holiday_nov_1(tr("རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"))
 
-        # Birth Anniversary of the Fourth Druk Gyalpo
+        # Birth Anniversary of the Fourth Druk Gyalpo.
         self._add_holiday_nov_11(tr("དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"))
 
-        # National Day
+        # National Day.
         self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་དུས་ཆེན།"))
 
-        # Day of Offering
+        # Day of Offering.
         self._add_day_of_offering(tr("བུ་ལྭ་ཕེུ་ཝི་ཉིམ"))
 
-        # Blessed Rainy Day
+        # Blessed Rainy Day.
         self._add_blessed_rainy_day(tr("ཁྲུས་འབབས་ཀྱི་ཉིནམ།"))
 
-        # Losar
+        # Losar.
         self._add_losar(tr("ལལོ་གསར་"))
 
-        # Buddha Parinirvana
+        # Buddha Parinirvana.
         self._add_buddha_parinirvana(tr("།སངས་རྒྱས་པ་རི་ནིར་ཝན།"))
 
-        # Buddha's First Sermon
+        # Buddha's First Sermon.
         self._add_buddha_first_sermon(tr("སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"))
 
-        # Birth of Guru Rinpoche
-        self._add_birth_of_guru_rinpoche(tr("གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས།"))
+        # Birth of Guru Rinpoche.
+        self._add_birth_of_guru_rinpoche(tr("སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"))
 
-        # Death of Zhabdrung
-        self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་འདས་གྲོགས།"))
+        # Death of Zhabdrung.
+        self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་གི་འདས་དུས།"))
+
+        # Dashain.
+        self._add_dashain(tr("དྲང་བའི་བདུད་རྩིའི་ཉིམ།"))
 
 
 class BT(Bhutan):
