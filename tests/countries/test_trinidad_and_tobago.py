@@ -19,7 +19,47 @@ from tests.common import CommonCountryTests
 class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(TrinidadAndTobago)
+        years = range(1963, 2050)
+        super().setUpClass(TrinidadAndTobago, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(TrinidadAndTobago, TT, TTO)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(TrinidadAndTobago(years=1962))
+
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1963, 2050)))
+
+    def test_spiritual_baptist_shouter_liberation_day(self):
+        name = "Spiritual Baptist Shouter Liberation Day"
+        self.assertHolidayName(name, (f"{year}-03-30" for year in range(1996, 2050)))
+
+    def test_indian_arrival_day(self):
+        name = "Indian Arrival Day"
+        self.assertHolidayName(name, (f"{year}-05-30" for year in range(1996, 2050)))
+
+    def test_labor_day(self):
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1963, 2050)))
+
+    def test_african_emancipation_day(self):
+        name = "African Emancipation Day"
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1963, 2050)))
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-08-31" for year in range(1963, 2050)))
+
+    def test_republic_day(self):
+        name = "Republic Day"
+        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1963, 2050)))
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1963, 2050)))
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1963, 2050)))
