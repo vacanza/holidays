@@ -37,6 +37,8 @@ class Nepal(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Nepal>
         * <https://narayanilawfirm.org.np/list-of-public-holidays-in-nepal-2079/>
         * <https://www.timeanddate.com/holidays/nepal/>
+        * <https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
+        * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
     """
 
     country = "NP"
@@ -60,14 +62,6 @@ class Nepal(
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
 
-        if self._year not in {2019, 2020}:
-            # Martyr's Day.
-            self._add_holiday_jan_30("Martyr's Day")
-
-        if self._year not in {2019, 2020}:
-            # National Democracy Day.
-            self._add_holiday_feb_19("National Democracy Day")
-
         # Women's Day.
         self._add_womens_day("Women's Day")
 
@@ -76,10 +70,6 @@ class Nepal(
 
         # Labor Day.
         self._add_labor_day("Labor Day")
-
-        if self._year not in {2019, 2020}:
-            # Republic Day.
-            self._add_holiday_may_29("Republic Day")
 
         # Constitution Day.
         self._add_holiday_sep_19("Constitution Day")
@@ -110,16 +100,8 @@ class Nepal(
         # Holi (Terai).
         self._add_holi("Holi (Terai)")
 
-        if self._year not in {2019, 2020}:
-            # Ram Navami.
-            self._add_ram_navami("Ram Navami")
-
         # Buddha Jayanti.
         self._add_buddha_purnima("Buddha Jayanti")
-
-        if self._year not in {2019, 2020}:
-            # Ghatasthapana.
-            self._add_sharad_navratri("Ghatasthapana")
 
         # Phulpati.
         self._add_maha_saptami("Phulpati")
@@ -135,18 +117,6 @@ class Nepal(
 
         # Ekadashi(Dashain).
         self._add_papankusha_ekadashi("Ekadashi (Dashain)")
-
-        if self._year not in {2019, 2020}:
-            # Duwadashi(Dashain).
-            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
-
-        if self._year not in {2019, 2020}:
-            # Janai Purnima.
-            self._add_raksha_bandhan("Janai Purnima")
-
-        if self._year not in {2019, 2020}:
-            # Shree Krishna Janmashtami.
-            self._add_janmashtami("Shree Krishna Janmashtami")
 
         # Lakshmi Puja.
         self._add_diwali_india("Lakshmi Puja")
@@ -176,6 +146,35 @@ class Nepal(
 
         # Eid al-Adha.
         self._add_eid_al_adha_day("Bakrid")
+
+        # Removed by MoHA between 2019-2020.
+
+        if self._year not in {2019, 2020}:
+            # Martyr's Day.
+            self._add_holiday_jan_30("Martyr's Day")
+
+            # National Democracy Day.
+            self._add_holiday_feb_19("National Democracy Day")
+
+            # Republic Day.
+            self._add_holiday_may_29("Republic Day")
+
+            # Hindu Holidays.
+
+            # Ram Navami.
+            self._add_ram_navami("Ram Navami")
+
+            # Ghatasthapana.
+            self._add_sharad_navratri("Ghatasthapana")
+
+            # Duwadashi(Dashain).
+            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
+
+            # Janai Purnima.
+            self._add_raksha_bandhan("Janai Purnima")
+
+            # Shree Krishna Janmashtami.
+            self._add_janmashtami("Shree Krishna Janmashtami")
 
     def _populate_workday_holidays(self):
         if 2019 <= self._year <= 2020:
