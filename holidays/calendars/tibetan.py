@@ -343,7 +343,7 @@ class _TibetanLunisolar:
         1970: (APR, 16),
         1971: (MAY, 5),
         1972: (APR, 23),
-        1973: (APR, 12),  # Keeping first occurrence (removed duplicate MAY, 12)
+        1973: (APR, 12),
         1974: (MAY, 1),
         1975: (APR, 21),
         1976: (MAY, 9),
@@ -384,7 +384,7 @@ class _TibetanLunisolar:
         2016: (APR, 16),
         2017: (MAY, 5),
         2018: (APR, 25),
-        2019: (APR, 14),  # Keeping first occurrence (removed duplicate MAY, 14)
+        2019: (APR, 14),
         2021: (APR, 22),
         2022: (MAY, 11),
         2023: (APR, 30),
@@ -397,15 +397,14 @@ class _TibetanLunisolar:
         2030: (MAY, 12),
         2031: (MAY, 2),
         2032: (APR, 20),
-        2033: (MAY, 8),  # Keeping first occurrence (removed duplicate MAY, 9)
+        2033: (MAY, 8),
         2034: (APR, 28),
         2035: (APR, 17),
         2036: (MAY, 5),
         2037: (APR, 25),
-        2038: (APR, 14),  # Keeping first occurrence (removed duplicate MAY, 14)
+        2038: (APR, 14),
         2039: (MAY, 3),
-        2040: (APR, 21),  # Keeping first occurrence (removed duplicate APR, 22)
-        2041: (MAY, 10),
+        2040: (APR, 21),
         2042: (APR, 29),
         2043: (APR, 19),
         2044: (MAY, 6),

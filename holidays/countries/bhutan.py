@@ -13,10 +13,11 @@
 from gettext import gettext as tr
 
 from holidays.constants import PUBLIC
+from holidays.groups import TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Bhutan(HolidayBase):
+class Bhutan(HolidayBase, TibetanCalendarHolidays):
     """Bhutan holidays.
 
     References:
@@ -26,30 +27,55 @@ class Bhutan(HolidayBase):
 
     country = "BT"
     supported_categories = (PUBLIC,)
-    supported_languages = ("en_US",)
+    supported_languages = ("dz_BT", "en_US")
     # 2008 Constitution.
-    start_year = 2008
+    start_year = 1970
+
+    def __init__(self, *args, **kwargs):
+        TibetanCalendarHolidays.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # Nyilo ( Winter Solstice )
-        self._add_holiday_jan_2(tr("Nyilo"))
+        self._add_holiday_jan_2(tr("ཉི་ལོག་"))
 
         # King's Birthday
-        self._add_holiday_feb_21(tr("King's Birthday (Day 11)"))
-        self._add_holiday_feb_22(tr("King's Birthday (Day 2)"))
-        self._add_holiday_feb_23(tr("King's Birthday (Day 3)"))
+        self._add_holiday_feb_21(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"))
+        self._add_holiday_feb_22(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"))
+        self._add_holiday_feb_23(tr("རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"))
 
         # Birth Anniversary of Third Druk Gyalpo
-        self._add_holiday_may_2(tr("Birth Anniversary of Third Druk Gyalpo"))
+        self._add_holiday_may_2(tr("གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"))
 
         # King Jigme Khesar Namgyel's Coronation
-        self._add_holiday_nov_1(tr("King Jigme Khesar Namgyel's Coronation"))
+        self._add_holiday_nov_1(tr("རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"))
 
         # Birth Anniversary of the Fourth Druk Gyalpo
-        self._add_holiday_nov_11(tr("Birth Anniversary of Fourth Druk Gyalpo"))
+        self._add_holiday_nov_11(tr("དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"))
 
         # National Day
-        self._add_holiday_dec_17(tr("National Day"))
+        self._add_holiday_dec_17(tr("རྒྱལ་ཡོངས་དུས་ཆེན།"))
+
+        # Day of Offering
+        self._add_day_of_offering(tr("བུ་ལྭ་ཕེུ་ཝི་ཉིམ"))
+
+        # Blessed Rainy Day
+        self._add_blessed_rainy_day(tr("ཁྲུས་འབབས་ཀྱི་ཉིནམ།"))
+
+        # Losar
+        self._add_losar(tr("ལལོ་གསར་"))
+
+        # Buddha Parinirvana
+        self._add_buddha_parinirvana(tr("།སངས་རྒྱས་པ་རི་ནིར་ཝན།"))
+
+        # Buddha's First Sermon
+        self._add_buddha_first_sermon(tr("སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"))
+
+        # Birth of Guru Rinpoche
+        self._add_birth_of_guru_rinpoche(tr("གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས།"))
+
+        # Death of Zhabdrung
+        self._add_death_of_zhabdrung(tr("ཞབས་དྲུང་འདས་གྲོགས།"))
 
 
 class BT(Bhutan):
