@@ -29,9 +29,11 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Armed Forces Day first established.
 msgid "Armed Forces Day"
 msgstr "Armed Forces Day"
 
+#. International Women's Day first established.
 msgid "International Women's Day"
 msgstr "International Women's Day"
 
