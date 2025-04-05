@@ -398,6 +398,11 @@ class HolidayBase(dict[date, str]):
         return HolidaySum(self, other)
 
     def __bool__(self) -> bool:
+        """Check if the HolidayBase object contains any holidays.
+
+        Returns:
+            `True` if the object contains holidays, `False` otherwise.
+        """
         return len(self) > 0
 
     def __contains__(self, key: object) -> bool:
@@ -417,13 +422,21 @@ class HolidayBase(dict[date, str]):
         Returns:
             `True` if the date is a holiday, `False` otherwise.
         """
-
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
         return dict.__contains__(cast("dict[Any, Any]", self), self.__keytransform__(key))
 
     def __eq__(self, other: object) -> bool:
+        """Check if two HolidayBase objects are equal.
+
+        Args:
+            other:
+                The other HolidayBase object to compare.
+
+        Returns:
+            `True` if the objects are equal, `False` otherwise.
+        """
         if not isinstance(other, HolidayBase):
             return False
 
@@ -434,6 +447,21 @@ class HolidayBase(dict[date, str]):
         return dict.__eq__(cast("dict[Any, Any]", self), other)
 
     def __getattr__(self, name):
+        """Handle dynamic attribute access for syntactic sugar methods.
+
+        This method is responsible for supporting dynamic methods like
+        `_add_holiday_<month>_<day>()` or `_add_holiday_<nth>_<weekday>_of_<month>()`.
+
+        Args:
+            name:
+                The name of the attribute or method being accessed.
+
+        Returns:
+            A callable function if the dynamic method matches a known pattern.
+
+        Raises:
+            AttributeError: If the attribute or method does not exist.
+        """
         try:
             return self.__getattribute__(name)
         except AttributeError as e:
@@ -543,6 +571,19 @@ class HolidayBase(dict[date, str]):
             raise e  # No match.
 
     def __getitem__(self, key: DateLike) -> Any:
+        """Retrieve the holiday name(s) for a given date or a range of dates.
+
+        Args:
+            key:
+                The date or range of dates to retrieve holiday names for.
+
+        Returns:
+            The holiday name(s) for the given date or a list of holidays for the range.
+
+        Raises:
+            ValueError: If the range is invalid.
+            TypeError: If the step in the range is not an integer or timedelta.
+        """
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
@@ -577,7 +618,11 @@ class HolidayBase(dict[date, str]):
         return dict.__getitem__(self, self.__keytransform__(key))
 
     def __getstate__(self) -> dict[str, Any]:
-        """Return the object's state for serialization."""
+        """Return the object's state for serialization.
+
+        Returns:
+            A dictionary representing the object's state.
+        """
         state = self.__dict__.copy()
         state.pop("tr", None)
         return state
@@ -598,7 +643,6 @@ class HolidayBase(dict[date, str]):
         Returns:
             The corresponding `datetime.date` representation.
         """
-
         dt: Optional[date] = None
         # Try to catch `date` and `str` type keys first.
         # Using type() here to skip date subclasses.
@@ -644,6 +688,15 @@ class HolidayBase(dict[date, str]):
         return dt
 
     def __ne__(self, other: object) -> bool:
+        """Check if two HolidayBase objects are not equal.
+
+        Args:
+            other:
+                The other HolidayBase object to compare.
+
+        Returns:
+            `True` if the objects are not equal, `False` otherwise.
+        """
         if not isinstance(other, HolidayBase):
             return True
 
@@ -654,12 +707,31 @@ class HolidayBase(dict[date, str]):
         return dict.__ne__(self, other)
 
     def __radd__(self, other: Any) -> "HolidayBase":
+        """Reverse addition for HolidayBase objects.
+
+        Args:
+            other:
+                The other object to add.
+
+        Returns:
+            A `HolidayBase` object resulting from the addition.
+        """
         return self.__add__(other)
 
     def __reduce__(self) -> Union[str, tuple[Any, ...]]:
+        """Helper for pickling the object.
+
+        Returns:
+            A tuple representing the object's state for pickling.
+        """
         return super().__reduce__()
 
     def __repr__(self) -> str:
+        """Return a string representation of the HolidayBase object.
+
+        Returns:
+            A string representation of the object.
+        """
         if self:
             return super().__repr__()
 
@@ -678,6 +750,15 @@ class HolidayBase(dict[date, str]):
         return "".join(parts)
 
     def __setattr__(self, key: str, value: Any) -> None:
+        """Set an attribute on the HolidayBase object.
+
+        Args:
+            key:
+                The name of the attribute to set.
+
+            value:
+                The value to set for the attribute.
+        """
         dict.__setattr__(self, key, value)
 
         if self and key in {"categories", "observed"}:
@@ -686,6 +767,15 @@ class HolidayBase(dict[date, str]):
                 self._populate(year)
 
     def __setitem__(self, key: DateLike, value: str) -> None:
+        """Set a holiday for a given date.
+
+        Args:
+            key:
+                The date to set the holiday for.
+
+            value:
+                The name of the holiday.
+        """
         if key in self:
             # If there are multiple holidays on the same date
             # order their names alphabetically.
@@ -696,11 +786,21 @@ class HolidayBase(dict[date, str]):
         dict.__setitem__(self, self.__keytransform__(key), value)
 
     def __setstate__(self, state: dict[str, Any]) -> None:
-        """Restore the object's state after deserialization."""
+        """Restore the object's state after deserialization.
+
+        Args:
+            state:
+                The state dictionary to restore.
+        """
         self.__dict__.update(state)
         self._init_translation()
 
     def __str__(self) -> str:
+        """Return a string representation of the HolidayBase object.
+
+        Returns:
+            A string representation of the object.
+        """
         if self:
             return super().__str__()
 
@@ -791,7 +891,18 @@ class HolidayBase(dict[date, str]):
         return isleap(self._year)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
-        """Add a holiday."""
+        """Add a holiday.
+
+        Args:
+            name:
+                The name of the holiday.
+
+            *args:
+                The date(s) for the holiday. Can be a single date or multiple dates.
+
+        Returns:
+            The date of the added holiday if successful, None otherwise.
+        """
         if not args:
             raise TypeError("Incorrect number of arguments.")
 
@@ -805,7 +916,15 @@ class HolidayBase(dict[date, str]):
         return dt
 
     def _add_special_holidays(self, mapping_names, observed=False):
-        """Add special holidays."""
+        """Add special holidays.
+
+        Args:
+            mapping_names:
+                The names of the special holidays to add.
+
+            observed:
+                Whether to include observed dates for the holidays.
+        """
         for mapping_name in mapping_names:
             for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
                 if len(data) == 3:  # Special holidays.
