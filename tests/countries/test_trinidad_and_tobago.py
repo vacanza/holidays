@@ -63,3 +63,42 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1963, 2050)))
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-03", "Carnival Monday"),
+            ("2025-03-04", "Carnival Tuesday"),
+            ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2025-03-31", "Eid-Ul-Fitr"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-30", "Indian Arrival Day"),
+            ("2025-06-19", "Corpus Christi; Labour Day"),
+            ("2025-08-01", "African Emancipation Day"),
+            ("2025-08-31", "Independence Day"),
+            ("2025-09-24", "Republic Day"),
+            ("2025-10-20", "Diwali"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-03", "Carnival Monday"),
+            ("2025-03-04", "Carnival Tuesday"),
+            ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2025-03-31", "Eid-Ul-Fitr"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-30", "Indian Arrival Day"),
+            ("2025-06-19", "Corpus Christi; Labour Day"),
+            ("2025-08-01", "African Emancipation Day"),
+            ("2025-08-31", "Independence Day"),
+            ("2025-09-24", "Republic Day"),
+            ("2025-10-20", "Diwali"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
+        )
