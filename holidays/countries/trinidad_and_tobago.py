@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -34,7 +34,6 @@ class TrinidadAndTobago(
       * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
       * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
       * <https://calendarific.com/holiday/trinidad/eid-al-fitr>
-      * <https://www.timeanddate.com/holidays/saudi-arabia/eid-al-adha>
       * <https://www.timeanddate.com/holidays/trinidad/diwali>
       * <https://calendarific.com/holiday/trinidad/diwali>
     """
@@ -45,7 +44,7 @@ class TrinidadAndTobago(
     estimated_label = tr("%s (estimated)")
     supported_languages = ("en_TT", "en_US")
     # Trinidad and Tobago gained independence on August 31, 1962.
-    start_year = 1962
+    start_year = 1963
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -72,11 +71,11 @@ class TrinidadAndTobago(
         # Indian Arrival Day.
         self._add_holiday_may_30(tr("Indian Arrival Day"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_holiday_jun_19(tr("Labour Day"))
 
         # African Emancipation Day.
-        self._add_holiday_aug_1(tr("Emancipation Day"))
+        self._add_holiday_aug_1(tr("African Emancipation Day"))
 
         # Independence Day.
         self._add_holiday_aug_31(tr("Independence Day"))
@@ -106,10 +105,10 @@ class TrinidadAndTobago(
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Id-ul-Fitr"))
+        self._add_eid_al_fitr_day(tr("Eid-al-Fitr"))
 
         # Diwali.
-        self._add_diwali_india(tr("Diwali"))
+        self._add_diwali(tr("Diwali"))
 
 
 class TT(TrinidadAndTobago):
@@ -121,33 +120,6 @@ class TTO(TrinidadAndTobago):
 
 
 class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES = {
-        2002: (FEB, 23),
-        2003: (FEB, 12),
-        2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: (JAN, 10),
-        2007: (DEC, 20),
-        2008: (DEC, 9),
-        2009: (NOV, 28),
-        2010: (NOV, 17),
-        2011: (NOV, 7),
-        2012: (OCT, 26),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2017: (SEP, 2),
-        2018: (AUG, 21),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
-        2025: (JUN, 6),
-    }
-
     EID_AL_FITR_DATES = {
         2012: (AUG, 19),
         2013: (AUG, 8),

@@ -16,8 +16,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
-"POT-Creation-Date: 2025-04-04 20:36+0530\n"
-"PO-Revision-Date: 2025-04-04 20:36+0530\n"
+"POT-Creation-Date: 2025-04-05 11:20+0530\n"
+"PO-Revision-Date: 2025-04-05 11:20+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_TT\n"
@@ -44,12 +44,12 @@ msgstr ""
 msgid "Indian Arrival Day"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr ""
 
 #. African Emancipation Day.
-msgid "Emancipation Day"
+msgid "African Emancipation Day"
 msgstr ""
 
 #. Independence Day.
@@ -89,7 +89,7 @@ msgid "Corpus Christi"
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "Id-ul-Fitr"
+msgid "Eid-al-Fitr"
 msgstr ""
 
 #. Diwali.
