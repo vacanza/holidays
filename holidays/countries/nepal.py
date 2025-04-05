@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
@@ -39,6 +39,7 @@ class Nepal(
         * <https://www.timeanddate.com/holidays/nepal/>
         * <https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
         * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
+        * <https://english.hamropatro.com/nepali-public-holidays>
     """
 
     country = "NP"
@@ -74,8 +75,8 @@ class Nepal(
         # Constitution Day.
         self._add_holiday_sep_19("Constitution Day")
 
-        # Christmas.
-        self._add_christmas_day("Christmas")
+        # Christmas Day.
+        self._add_christmas_day("Christmas Day")
 
         # Tamu Losar.
         self._add_holiday_dec_30("Tamu Losar")
@@ -115,7 +116,7 @@ class Nepal(
         # Vijayadashami.
         self._add_dussehra("Vijayadashami")
 
-        # Ekadashi(Dashain).
+        # Ekadashi (Dashain).
         self._add_papankusha_ekadashi("Ekadashi (Dashain)")
 
         # Lakshmi Puja.
@@ -127,13 +128,13 @@ class Nepal(
         # Bhai Tika.
         self._add_bhai_dooj("Bhai Tika")
 
-        # Govardhan Puja
+        # Govardhan Puja.
         self._add_govardhan_puja("Govardhan Puja")
 
         # Mha Puja.
         self._add_govardhan_puja("Mha Puja")
 
-        # Tihar holiday.
+        # Tihar Holiday.
         self._add_tihar_holiday("Tihar Holiday")
 
         # Chhath Parwa.
@@ -167,7 +168,7 @@ class Nepal(
             # Ghatasthapana.
             self._add_sharad_navratri("Ghatasthapana")
 
-            # Duwadashi(Dashain).
+            # Duwadashi (Dashain).
             self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
             # Janai Purnima.
@@ -198,7 +199,7 @@ class Nepal(
             # Ghatasthapana.
             self._add_sharad_navratri("Ghatasthapana")
 
-            # Duwadashi(Dashain).
+            # Duwadashi (Dashain).
             self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
             # Janai Purnima.
@@ -211,15 +212,6 @@ class Nepal(
 class NepalIslamicHolidays(_CustomIslamicHolidays):
     # Bakrid / Eid-al-Adha.
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
-        2004: (FEB, 2),
-        2005: (JAN, 21),
-        2006: ((JAN, 11), (DEC, 31)),
-        2007: (DEC, 20),
-        2008: (DEC, 9),
-        2009: (NOV, 28),
         2010: (NOV, 17),
         2011: (NOV, 7),
         2012: (OCT, 27),
@@ -240,15 +232,6 @@ class NepalIslamicHolidays(_CustomIslamicHolidays):
 
     # Id-ul-Fitr / Eid-al-Fitr.
     EID_AL_FITR_DATES = {
-        2001: (DEC, 17),
-        2002: (DEC, 6),
-        2003: (NOV, 26),
-        2004: (NOV, 14),
-        2005: (NOV, 3),
-        2006: (OCT, 24),
-        2007: (OCT, 13),
-        2008: (OCT, 2),
-        2009: (SEP, 21),
         2010: (SEP, 10),
         2011: (AUG, 31),
         2012: (AUG, 20),
@@ -277,15 +260,15 @@ class NPL(Nepal):
 
 
 class NepalStaticHolidays:
-    """Nepal Special Holidays.
+    """Nepal special holidays.
 
     References:
-       * [Death of Krishna Prasad Bhattarai](https://myrepublica.nagariknetwork.com/news/27618/)
-       * [Death of Sushil Koirala](https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
-       * [Crash of Yeti Airlines Flight 691](https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
-       * [People's War Day Instituted](https://kathmandupost.com/national/2023/02/12/government-announces-public-holiday-on-monday-to-mark-people-s-war-day)
-       * [People's War Day Annulled](https://kathmandupost.com/national/2023/12/29/supreme-court-annuls-public-holiday-on-people-s-war-day)
-       * [Death of Subas Chandra Nembang](https://en.nepalkhabar.com/news/detail/6023/)
+        * [Death of Krishna Prasad Bhattarai](https://myrepublica.nagariknetwork.com/news/27618/)
+        * [Death of Sushil Koirala](https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
+        * [Crash of Yeti Airlines Flight 691](https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
+        * [People's War Day Instituted](https://kathmandupost.com/national/2023/02/12/government-announces-public-holiday-on-monday-to-mark-people-s-war-day)
+        * [People's War Day Annulled](https://kathmandupost.com/national/2023/12/29/supreme-court-annuls-public-holiday-on-people-s-war-day)
+        * [Death of Subas Chandra Nembang](https://en.nepalkhabar.com/news/detail/6023/)
     """
 
     # Day of National Mourning.
