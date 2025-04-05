@@ -64,6 +64,132 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1963, 2050)))
 
+    def test_carnival_monday(self):
+        name = "Carnival Monday"
+        self.assertHolidayName(
+            name,
+            "2009-02-23",
+            "2010-02-15",
+            "2011-03-07",
+            "2012-02-20",
+            "2013-02-11",
+            "2014-03-03",
+            "2015-02-16",
+            "2016-02-08",
+            "2017-02-27",
+            "2018-02-12",
+            "2019-03-04",
+            "2020-02-24",
+            "2023-02-20",
+            "2024-02-12",
+            "2025-03-03",
+            "2026-02-16",
+        )
+        self.assertHolidayName(name, range(1963, 2027))
+
+    def test_carnival_tuesday(self):
+        name = "Carnival Tuesday"
+        self.assertHolidayName(
+            name,
+            "2009-02-24",
+            "2010-02-16",
+            "2011-03-08",
+            "2012-02-21",
+            "2013-02-12",
+            "2014-03-04",
+            "2015-02-17",
+            "2016-02-09",
+            "2017-02-28",
+            "2018-02-13",
+            "2019-03-05",
+            "2020-02-25",
+            "2023-02-21",
+            "2024-02-13",
+            "2025-03-04",
+            "2026-02-17",
+        )
+        self.assertHolidayName(name, range(1963, 2027))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_corpus_christi(self):
+        name = "Corpus Christi"
+        self.assertHolidayName(
+            name,
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_diwali(self):
+        name = "Diwali"
+        self.assertHolidayName(
+            name,
+            "2012-11-13",
+            "2013-11-04",
+            "2014-10-23",
+            "2015-11-11",
+            "2016-10-29",
+            "2017-10-19",
+            "2018-11-07",
+            "2019-10-27",
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-10-31",
+            "2025-10-20",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_eid_al_fitr(self):
+        name = "Eid-Ul-Fitr"
+        self.assertHolidayName(
+            name,
+            "2012-08-19",
+            "2013-08-08",
+            "2014-07-29",
+            "2015-07-18",
+            "2016-07-06",
+            "2017-06-26",
+            "2018-06-15",
+            "2019-06-05",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertHolidayName(name, range(2012, 2025))
+
     def test_2024(self):
         self.assertHolidays(
             TrinidadAndTobago(years=2024),

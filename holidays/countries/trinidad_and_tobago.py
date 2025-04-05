@@ -36,6 +36,7 @@ class TrinidadAndTobago(
       * <https://calendarific.com/holiday/trinidad/eid-al-fitr>
       * <https://www.timeanddate.com/holidays/trinidad/diwali>
       * <https://calendarific.com/holiday/trinidad/diwali>
+      * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
     """
 
     country = "TT"
