@@ -125,14 +125,14 @@ class Nepal(
         # Gai Tihar.
         self._add_gau_krida("Gai Tihar")
 
-        # Bhai Tika.
-        self._add_bhai_dooj("Bhai Tika")
-
         # Govardhan Puja.
         self._add_govardhan_puja("Govardhan Puja")
 
         # Mha Puja.
         self._add_govardhan_puja("Mha Puja")
+
+        # Bhai Tika.
+        self._add_bhai_dooj("Bhai Tika")
 
         # Tihar Holiday.
         self._add_tihar_holiday("Tihar Holiday")
@@ -196,17 +196,17 @@ class Nepal(
             # Ram Navami.
             self._add_ram_navami("Ram Navami")
 
-            # Ghatasthapana.
-            self._add_sharad_navratri("Ghatasthapana")
-
-            # Duwadashi (Dashain).
-            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
-
             # Janai Purnima.
             self._add_raksha_bandhan("Janai Purnima")
 
             # Shree Krishna Janmashtami.
             self._add_janmashtami("Shree Krishna Janmashtami")
+
+            # Ghatasthapana.
+            self._add_sharad_navratri("Ghatasthapana")
+
+            # Duwadashi (Dashain).
+            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
 
 class NepalIslamicHolidays(_CustomIslamicHolidays):
