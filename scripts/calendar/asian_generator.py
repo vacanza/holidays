@@ -41,7 +41,7 @@ class _Lunisolar:
         # The 12th to 15th digits indicate the month of the next month.
         # If it is 0x0F, it means that there is no leap month.
         self.G_LUNAR_MONTH_DAYS = (
-            0xF0EA4,  # 1901
+            0xF0EA4,
             0xF1D4A,
             0x52C94,
             0xF0C96,
@@ -54,13 +54,13 @@ class _Lunisolar:
             0x6364A,
             0xF164A,
             0xF1496,
-            0x52956,
-            0xF055A,
-            0xF0AD6,
+            0x52556,
+            0xF155A,
+            0xF0AD4,
             0x216D2,
             0xF1B52,
             0x73B24,
-            0xF1D24,  # 1920
+            0xF1B24,  # 1920
             0xF1A4A,
             0x5349A,
             0xF14AC,
@@ -129,7 +129,7 @@ class _Lunisolar:
             0xF056C,
             0x60B6A,
             0xF0DAA,
-            0xF1D92,
+            0xF1D52,
             0x53D24,  # 1990
             0xF1D24,
             0xF1A4C,
@@ -165,7 +165,7 @@ class _Lunisolar:
             0xF156A,
             0x22B64,
             0xF0DA4,
-            0x61D52,
+            0x61D4A,
             0xF0E4A,
             0xF0C96,
             0x5192E,
@@ -229,7 +229,7 @@ class _Lunisolar:
             0xF0DA4,
             0xF1D4A,
             0x41C94,
-            0xF0C96,
+            0xF0D16,
             0x8192E,  # 2090
             0xF0956,
             0xF0AB6,
@@ -239,17 +239,18 @@ class _Lunisolar:
             0x42E4A,
             0xF164A,
             0xF1516,
-            0x22936,  # 2100
+            0x22936,
+            0xF0956,  # 2100
         )
         # Define range of years covered
         self.START_YEAR = 1901
-        self.END_YEAR = 2099
-        # The 1st day of the 1st month of the Gregorian calendar is 1901/2/19
+        self.END_YEAR = 2100
+        # The Gregorian date for the 1st day of the 1st month of 1900 year is 1901/2/19
         self.LUNAR_START_DATE = ((1901, 1, 1),)
         self.SOLAR_START_DATE = date(1901, 2, 19)
-        # The Gregorian date for December 30, 2099 is 2100/2/8
-        self.LUNAR_END_DATE = (2099, 12, 30)
-        self.SOLAR_END_DATE = date(2100, 2, 18)
+        # The Gregorian date for the 29th day of 12th month of 2100 year is 2101/1/28
+        self.LUNAR_END_DATE = (2100, 12, 29)
+        self.SOLAR_END_DATE = date(2101, 1, 28)
 
     @lru_cache
     def _get_leap_month(self, lunar_year: int) -> int:
@@ -355,6 +356,10 @@ CALENDARS = {
     HINDU: "Hindu",
 }
 
+# ID, VN: UTC+7
+# CN, HK, TW, MY, SG, PH: UTC+8
+# KR: UTC+9
+
 ASIAN_HOLIDAYS = (
     # CN, HK, ID, KR, MY, PH, SG, TW, VN
     (1, 1, "LUNAR_NEW_YEAR", CHINESE),  # Lunar New Year
@@ -382,7 +387,7 @@ ASIAN_HOLIDAYS = (
 def generate_data():
     cnls = _Lunisolar()
 
-    g_year_min, g_year_max = (1901, 2099)
+    g_year_min, g_year_max = (1901, 2100)
     dates = {}
     for g_year in range(g_year_min, g_year_max + 1):
         for h_month, h_day, hol_name, _ in ASIAN_HOLIDAYS:

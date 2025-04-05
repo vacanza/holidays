@@ -146,7 +146,7 @@ class _BuddhistLunisolar:
         2022: (MAY, 15),
         2023: (JUN, 2),
         2024: (MAY, 22),
-        2025: (MAY, 11),
+        2025: (MAY, 12),
         2026: (MAY, 31),
         2027: (MAY, 20),
         2028: (MAY, 9),
@@ -221,6 +221,7 @@ class _BuddhistLunisolar:
         2097: (MAY, 26),
         2098: (MAY, 15),
         2099: (JUN, 3),
+        2100: (MAY, 23),
     }
 
     VESAK_MAY_DATES = {
@@ -348,7 +349,7 @@ class _BuddhistLunisolar:
         2022: (MAY, 15),
         2023: (MAY, 4),
         2024: (MAY, 22),
-        2025: (MAY, 11),
+        2025: (MAY, 12),
         2026: (MAY, 1),
         2027: (MAY, 20),
         2028: (MAY, 9),
@@ -423,6 +424,7 @@ class _BuddhistLunisolar:
         2097: (MAY, 26),
         2098: (MAY, 15),
         2099: (MAY, 4),
+        2100: (MAY, 23),
     }
 
     def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
