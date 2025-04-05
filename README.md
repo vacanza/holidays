@@ -589,6 +589,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<tr>
+<td>Guinea</td>
+<td>GN</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Haiti</td>
 <td>HT</td>
 <td></td>
