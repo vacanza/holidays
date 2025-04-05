@@ -589,6 +589,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<tr>
+<td>Guinea</td>
+<td>GN</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Haiti</td>
 <td>HT</td>
 <td></td>
@@ -1159,7 +1167,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Timor Leste</td>
 <td>TL</td>
 <td></td>
-<td>en_US, <strong>pt_TL</strong>, tet</td>
+<td>en_TL, en_US, <strong>pt_TL</strong>, tet, th</td>
 <td>GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>

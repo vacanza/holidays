@@ -76,6 +76,7 @@ from .greenland import Greenland, GL, GRL
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
 from .guernsey import Guernsey, GG, GGY
+from .guinea import Guinea, GN, GIN
 from .haiti import Haiti, HT, HTI
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG

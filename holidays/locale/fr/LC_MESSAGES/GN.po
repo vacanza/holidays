@@ -1,0 +1,98 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Guinea holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-03-31 15:39+0530\n"
+"PO-Revision-Date: 2025-03-31 15:39+0530\n"
+"Last-Translator: Nalin Gupta <nalinguptaofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#. Day after the %s.
+#, c-format
+msgid "Lendemain de la %s"
+msgstr ""
+
+#. Day after the %s (estimated).
+#, c-format
+msgid "Lendemain de la %s (estimé)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Fête du Nouvel an"
+msgstr ""
+
+#. Second Republic Day.
+msgid "Jour de la Deuxième République"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Africa Day.
+msgid "Anniversaire de l'Union Africaine"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr ""
+
+#. Independence Day.
+msgid "Fête anniversaire de l'indépendance de la Guinée"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr ""
+
+#. Christmas Day.
+msgid "Fête de Noël"
+msgstr ""
+
+#. Day after Prophet's Birthday.
+msgid "Lendemain de la nuit du Maoloud"
+msgstr ""
+
+#. Day after Night of Power.
+msgid "Lendemain de la nuit Lailatoul Qadr"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Jour de l'Aïd el-Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Jour de la Tabaski"
+msgstr ""
+
+#. Day after Eid al-Adha.
+msgid "Lendemain de la Tabaski"
+msgstr ""
