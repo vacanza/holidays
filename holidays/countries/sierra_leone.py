@@ -126,6 +126,7 @@ class SierraLeoneStaticHolidays:
     References:
     """
 
-    special_public_holidays = {
-        # Add any special public holidays here
+    special_public_holidays: dict[int, dict[str, str]] = {
+        2002: {"02-18": "Armed Forces Day"},
+        2018: {"03-08": "International Women's Day"},
     }
