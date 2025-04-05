@@ -65,11 +65,12 @@ class TrinidadAndTobago(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # Spiritual Baptist Shouter Liberation Day.
-        self._add_holiday_mar_30(tr("Spiritual Baptist Shouter Liberation Day"))
+        if self._year >= 1996:
+            # Spiritual Baptist Shouter Liberation Day.
+            self._add_holiday_mar_30(tr("Spiritual Baptist Shouter Liberation Day"))
 
-        # Indian Arrival Day.
-        self._add_holiday_may_30(tr("Indian Arrival Day"))
+            # Indian Arrival Day.
+            self._add_holiday_may_30(tr("Indian Arrival Day"))
 
         # Labor Day.
         self._add_holiday_jun_19(tr("Labour Day"))
