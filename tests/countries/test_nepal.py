@@ -210,7 +210,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-04-06",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (*range(2010, 2016), *(range(2021, 2036))))
+        self.assertHolidayName(name, range(2010, 2016), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
         dt = (
             "2019-04-13",
@@ -271,7 +271,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-08-09",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (*range(2010, 2016), *(range(2021, 2036))))
+        self.assertHolidayName(name, range(2010, 2016), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
         dt = (
             "2019-08-15",
@@ -290,7 +290,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-08-16",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (*range(2010, 2016), *(range(2021, 2036))))
+        self.assertHolidayName(name, range(2010, 2016), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
         dt = (
             "2019-08-24",
@@ -309,7 +309,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-09-22",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (*range(2010, 2016), *(range(2021, 2036))))
+        self.assertHolidayName(name, range(2010, 2016), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
         dt = (
             "2019-09-29",
@@ -372,7 +372,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-10-02",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (range(2010, 2036)))
+        self.assertHolidayName(name, range(2010, 2036))
 
     def test_ekadashi(self):
         name = "Ekadashi (Dashain)"
@@ -398,7 +398,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-10-04",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, (*range(2010, 2019), *(range(2021, 2036))))
+        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
         dt = (
             "2019-10-10",
