@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Sierra Leone holidays en_SL localization.
+# Sierra Leone holidays.
 #
 msgid ""
 msgstr ""
@@ -29,6 +29,7 @@ msgstr ""
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Armed Forces Day.
 #. Armed Forces Day first established.
 msgid "Armed Forces Day"
 msgstr "Armed Forces Day"

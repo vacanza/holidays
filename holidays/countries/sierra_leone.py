@@ -12,32 +12,24 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, MAR
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_WORKDAY,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class SierraLeone(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    StaticHolidays,
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
     """Sierra Leone holidays.
 
     References:
-        * https://www.officeholidays.com/countries/sierra-leone
-        * https://en.wikipedia.org/wiki/Public_holidays_in_Sierra_Leone
-        * https://www.timeanddate.com/holidays/sierra-leone/
+        * <https://www.officeholidays.com/countries/sierra-leone>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Sierra_Leone>
+        * <https://www.timeanddate.com/holidays/sierra-leone/>
     """
 
     country = "SL"
@@ -49,8 +41,8 @@ class SierraLeone(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_SL", "en_US")
-    # Sierra Leone gained independence on April 27, 1961
-    start_year = 1961
+    # Sierra Leone gained independence on April 27, 1961.
+    start_year = 1962
 
     def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):
         """
@@ -72,14 +64,13 @@ class SierraLeone(
         # New Year's Day.
         dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
-        # Armed Forces Day.
         if self._year >= 2002:
+            # Armed Forces Day.
             dts_observed.add(self._add_holiday_feb_18(tr("Armed Forces Day")))
 
-        # International Women's Day.
         if self._year >= 2018:
-            women_day = tr("International Women's Day")
-            dts_observed.add(self._add_holiday_mar_8(women_day))
+            # International Women's Day.
+            dts_observed.add(self._add_womens_day(tr("International Women's Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -90,9 +81,8 @@ class SierraLeone(
         # Independence Day.
         dts_observed.add(self._add_holiday_apr_27(tr("Independence Day")))
 
-        # Labor Day.
-        labor_day = tr("International Worker's Day")
-        dts_observed.add(self._add_labor_day(labor_day))
+        # International Worker's Day.
+        dts_observed.add(self._add_labor_day(tr("International Worker's Day")))
 
         # Christmas Day.
         dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
@@ -100,14 +90,14 @@ class SierraLeone(
         # Boxing Day.
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
+        # Prophet's Birthday.
+        dts_observed.update(self._add_mawlid_day(tr("Prophet's Birthday")))
+
         # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Eid al-Fitr")))
 
         # Eid al-Adha.
         dts_observed.update(self._add_eid_al_adha_day(tr("Eid al-Adha")))
-
-        # Prophet's Birthday.
-        dts_observed.update(self._add_mawlid_day(tr("Prophet's Birthday")))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -127,9 +117,5 @@ class SierraLeoneStaticHolidays:
     References:
     """
 
-    special_public_holidays = {
-        # Armed Forces Day first established.
-        2002: (FEB, 18, tr("Armed Forces Day")),
-        # International Women's Day first established.
-        2018: (MAR, 8, tr("International Women's Day")),
-    }
+    # No special one-time holidays defined yet
+    special_public_holidays: dict[int, list] = {}
