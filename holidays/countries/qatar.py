@@ -25,6 +25,7 @@ from holidays.calendars.gregorian import (
     OCT,
     NOV,
     DEC,
+    THU,
     FRI,
     SAT,
 )
@@ -40,6 +41,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Qatar>
         * [National Sports Day](https://hukoomi.gov.qa/en/national-sport-day)
         * [Qatar National Day](https://www.qatar.qa/en/qatar/history-of-qatar-qatar-national-day-committee/)
+        * [Weekend](https://www.arabnews.com/node/234601)
     """
 
     country = "QA"
@@ -49,7 +51,6 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("ar_QA", "en_US")
-    weekend = {FRI, SAT}
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -66,6 +67,9 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # Qatar switches from THU-FRI to FRI-SAT on Aug 1, 2003.
+        self.weekend = {THU, FRI} if self._year <= 2003 else {FRI, SAT}
+
         if self._year >= 2012:
             # National Sports Day.
             self._add_holiday_2nd_tue_of_feb(tr("اليوم الوطني للرياضة"))
