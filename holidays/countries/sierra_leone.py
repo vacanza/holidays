@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import FEB, MAR
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -61,7 +62,7 @@ class SierraLeone(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
-        StaticHolidays.__init__(self, SierraLeoneStaticHolidays)
+        StaticHolidays.__init__(self, cls=SierraLeoneStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
@@ -126,7 +127,9 @@ class SierraLeoneStaticHolidays:
     References:
     """
 
-    special_public_holidays: dict[int, dict[str, str]] = {
-        2002: {"02-18": "Armed Forces Day"},
-        2018: {"03-08": "International Women's Day"},
+    special_public_holidays = {
+        # Armed Forces Day first established.
+        2002: (FEB, 18, tr("Armed Forces Day")),
+        # International Women's Day first established.
+        2018: (MAR, 8, tr("International Women's Day")),
     }
