@@ -105,11 +105,11 @@ class TrinidadAndTobago(
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
-
         # Diwali.
         self._add_diwali(tr("Diwali"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
 
 
 class TT(TrinidadAndTobago):
