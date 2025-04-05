@@ -1,0 +1,80 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# Iraqi holidays translation.
+# Copyright (C) 2024 Vacanza Team
+# This file is distributed under the same license as the holidays package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: holidays\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-05 00:00+0000\n"
+"PO-Revision-Date: 2024-04-05 00:00+0000\n"
+"Last-Translator: Vacanza Team\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "رأس السنة الجديدة"
+msgstr "New Year's Day"
+
+msgid "يوم عيد الميلاد"
+msgstr "Christmas Day"
+
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+msgid "عاشوراء"
+msgstr "Ashura"
+
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+msgid "عيد الغدير"
+msgstr "Eid al-Ghadir"
+
+msgid "المولد النبوي الشريف"
+msgstr "Prophet's Birthday"
+
+msgid "نوروز"
+msgstr "Nowruz"
+
+msgid "يوم الجيش"
+msgstr "Army Day"
+
+msgid "اليوم الوطني"
+msgstr "National Day"
+
+msgid "يوم الجمهورية"
+msgstr "Republic Day"
+
+msgid "يوم النصر"
+msgstr "Victory Day"
+
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"
+
+msgid "عيد الفصح"
+msgstr "Easter"
+
+msgid "عيد العُرش"
+msgstr "Sukkot"
+
+#, c-format
+msgid "%s (تقديري)"
+msgstr "%s (estimated)"

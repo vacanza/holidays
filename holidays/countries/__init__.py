@@ -85,6 +85,7 @@ from .iceland import Iceland, IS, ISL
 from .india import India, IN, IND
 from .indonesia import Indonesia, ID, IDN
 from .iran import Iran, IR, IRN
+from .iraq import Iraq, IQ, IRQ
 from .ireland import Ireland, IE, IRL
 from .isle_of_man import IsleOfMan, IM, IMN
 from .israel import Israel, IL, ISR

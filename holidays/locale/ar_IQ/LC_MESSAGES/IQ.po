@@ -1,0 +1,81 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-04-05 12:08+0530\n"
+"PO-Revision-Date: 2025-04-05 12:08+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ar_IQ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: ar_IQ\n"
+
+#, c-format
+msgid "%s (تقديري)"
+msgstr ""
+
+msgid "رأس السنة الجديدة"
+msgstr ""
+
+msgid "يوم عيد الميلاد"
+msgstr ""
+
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+msgid "عاشوراء"
+msgstr ""
+
+msgid "عيد العمال"
+msgstr ""
+
+msgid "عيد الغدير"
+msgstr ""
+
+msgid "المولد النبوي الشريف"
+msgstr ""
+
+msgid "نوروز"
+msgstr ""
+
+msgid "يوم الجيش"
+msgstr ""
+
+msgid "اليوم الوطني"
+msgstr ""
+
+msgid "يوم الجمهورية"
+msgstr ""
+
+msgid "يوم النصر"
+msgstr ""
+
+msgid "عيد الفطر"
+msgstr ""
+
+msgid "عيد الأضحى"
+msgstr ""
+
+msgid "عيد الفصح"
+msgstr ""
+
+msgid "عيد العُرش"
+msgstr ""
