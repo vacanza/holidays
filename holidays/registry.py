@@ -154,6 +154,7 @@ COUNTRIES: RegistryDict = {
     "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
     "serbia": ("Serbia", "RS", "SRB"),
     "seychelles": ("Seychelles", "SC", "SYC"),
+    "sierra_leone": ("SierraLeone", "SL", "SLE"),
     "singapore": ("Singapore", "SG", "SGP"),
     "slovakia": ("Slovakia", "SK", "SVK"),
     "slovenia": ("Slovenia", "SI", "SVN"),
