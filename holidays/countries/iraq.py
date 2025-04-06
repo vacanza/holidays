@@ -40,9 +40,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class Iraq(
+    HolidayBase,
     ChristianHolidays,
     HebrewCalendarHolidays,
-    HolidayBase,
     InternationalHolidays,
     IslamicHolidays,
     PersianCalendarHolidays,
@@ -76,7 +76,11 @@ class Iraq(
         PersianCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         HebrewCalendarHolidays.__init__(self)
+
+        # Handle special parameters for this class
         self._include_special = kwargs.pop("include_special", False)
+
+        # Call the main parent class with the remaining arguments
         super().__init__(*args, **kwargs)
 
     def _add_holiday_jan_6(self, name):

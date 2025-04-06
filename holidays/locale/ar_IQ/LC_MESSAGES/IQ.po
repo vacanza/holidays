@@ -27,6 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Source-Language: ar_IQ\n"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (تقديري)"
 msgstr ""

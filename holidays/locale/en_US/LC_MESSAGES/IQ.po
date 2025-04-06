@@ -74,6 +74,7 @@ msgstr "Easter"
 msgid "عيد العُرش"
 msgstr "Sukkot"
 
+#. %s (estimated).
 #, c-format
 msgid "%s (تقديري)"
 msgstr "%s (estimated)"
