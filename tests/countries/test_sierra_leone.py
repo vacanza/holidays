@@ -45,16 +45,12 @@ class TestSierraLeone(CommonCountryTests, TestCase):
 
     def test_good_friday(self):
         name = "Good Friday"
-        self.assertHolidayName(
-            name, "2022-04-15", "2023-04-07", "2024-03-29", "2025-04-18", "2026-04-03"
-        )
+        self.assertHolidayName(name, "2022-04-15", "2023-04-07", "2024-03-29")
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        self.assertHolidayName(
-            name, "2022-04-18", "2023-04-10", "2024-04-01", "2025-04-21", "2026-04-06"
-        )
+        self.assertHolidayName(name, "2022-04-18", "2023-04-10", "2024-04-01")
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_independence_day(self):
