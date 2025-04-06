@@ -22,7 +22,7 @@ THAI_CALENDAR = "THAI_CALENDAR"
 
 class _ThaiLunisolar:
     """Thai Lunar Calendar Holidays.
-    ** Work from 1913 (B.E. 2456/2455) onwards until 2157 (B.E. 2700) as we only have
+    ** Works from 1913 (B.E. 2456/2455) onwards until 2157 (B.E. 2700) as we only have
        Thai year-type data for cross-checking until then.
 
     So here are the basics of the Thai Lunar Calendar
