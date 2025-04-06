@@ -77,6 +77,7 @@ from .greenland import Greenland, GL, GRL
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
 from .guernsey import Guernsey, GG, GGY
+from .guinea import Guinea, GN, GIN
 from .haiti import Haiti, HT, HTI
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
@@ -136,6 +137,7 @@ from .philippines import Philippines, PH, PHL
 from .poland import Poland, PL, POL
 from .portugal import Portugal, PT, PRT
 from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
+from .qatar import Qatar, QA, QAT
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
