@@ -136,8 +136,6 @@ class TestTibetanCalendarHolidays(TestCase):
     def test_add_tibetan_calendar_holiday(self):
         # Check for out-of-range dates.
         class TestHolidays(HolidayBase, TibetanCalendarHolidays):
-            end_year = 2158
-
             def __init__(self, *args, **kwargs):
                 TibetanCalendarHolidays.__init__(self)
                 super().__init__(*args, **kwargs)

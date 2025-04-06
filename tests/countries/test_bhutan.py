@@ -75,32 +75,43 @@ class TestBhutan(CommonCountryTests, TestCase):
         # Dashain - sample dates
         self.assertHoliday("2022-10-5", "2024-10-12", "2025-10-02")
 
-    def test_l10n_en_us_2024_dates(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2024-01-02", "Nyilo."),  # Nyilo (Winter Solstice)
-            ("2024-01-12", "Day of Offering."),  # Day of Offering
-            ("2024-02-11", "Losar."),  # Losar (Tibetan New Year)
-            ("2024-02-21", "King's Birthday (Day 1)."),  # King's Birthday (Day 1)
-            ("2024-02-22", "King's Birthday (Day 2)."),  # King's Birthday (Day 2)
-            ("2024-02-23", "King's Birthday (Day 3)."),  # King's Birthday (Day 3)
-            ("2024-04-18", "Death of Zhabdrung."),  # Death of Zhabdrung
-            (
-                "2024-05-02",
-                "Birth Anniversary of Third Druk Gyalpo.",
-            ),  # Third Druk Gyalpo's Birth Anniversary
-            ("2024-05-23", "Buddha Parinirvana."),  # Buddha Parinirvana
-            ("2024-06-16", "Birth of Guru Rinpoche."),  # Birth of Guru Rinpoche
-            ("2024-07-10", "Buddha's First Sermon."),  # Buddha's First Sermon
-            ("2024-09-23", "Blessed Rainy Day."),  # Blessed Rainy Day
-            ("2024-10-12", "Dashain."),  # Dashain
-            (
-                "2024-11-01",
-                "Jigme Khesar Namgyel's Coronation.",
-            ),  # Coronation of King Jigme Khesar Namgyel
-            (
-                "2024-11-11",
-                "Birth Anniversary of the Fourth Druk Gyalpo.",
-            ),  # Fourth Druk Gyalpo's Birth Anniversary / Constitution Day
-            ("2024-12-17", "National Day."),
+            ("2024-01-02", "Nyilo"),
+            ("2024-01-12", "Day of Offering"),
+            ("2024-02-11", "Losar"),
+            ("2024-02-21", "King's Birthday (Day 1)"),
+            ("2024-02-22", "King's Birthday (Day 2)"),
+            ("2024-02-23", "King's Birthday (Day 3)"),
+            ("2024-04-18", "Death of Zhabdrung"),
+            ("2024-05-02", "Birth Anniversary of Third Druk Gyalpo"),
+            ("2024-05-23", "Buddha Parinirvana"),
+            ("2024-06-16", "Birth of Guru Rinpoche"),
+            ("2024-07-10", "Buddha's First Sermon"),
+            ("2024-09-23", "Blessed Rainy Day"),
+            ("2024-10-12", "Dashain"),
+            ("2024-11-01", "Jigme Khesar Namgyel's Coronation"),
+            ("2024-11-11", "Birth Anniversary of the Fourth Druk Gyalpo"),
+            ("2024-12-17", "National Day"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-02", "ཉི་ལོག་"),
+            ("2024-01-12", "བུ་ལྭ་ཕེུ་ཝི་ཉིམ"),
+            ("2024-02-11", "ལལོ་གསར་"),
+            ("2024-02-21", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"),
+            ("2024-02-22", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"),
+            ("2024-02-23", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"),
+            ("2024-04-18", "ཞབས་དྲུང་གི་འདས་དུས།"),
+            ("2024-05-02", "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-05-23", "།སངས་རྒྱས་པ་རི་ནིར་ཝན།"),
+            ("2024-06-16", "སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"),
+            ("2024-07-10", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"),
+            ("2024-09-23", "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"),
+            ("2024-10-12", "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"),
+            ("2024-11-01", "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"),
+            ("2024-11-11", "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
+            ("2024-12-17", "རྒྱལ་ཡོངས་དུས་ཆེན།"),
         )

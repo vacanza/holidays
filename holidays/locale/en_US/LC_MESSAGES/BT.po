@@ -12,13 +12,12 @@
 # SOME DESCRIPTIVE TITLE
 # This file is distributed under the same license as the Holidays package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-04-03 14:41+0000\n"
 "PO-Revision-Date: 2025-04-03 14:41+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: FULL NAME <anesh.angane@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -29,64 +28,64 @@ msgstr ""
 
 #. Nyilo.
 msgid "ཉི་ལོག་"
-msgstr "Nyilo."
+msgstr "Nyilo"
 
 #. King's Birthday (Day 1).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"
-msgstr "King's Birthday (Day 1)."
+msgstr "King's Birthday (Day 1)"
 
 #. King's Birthday (Day 2).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"
-msgstr "King's Birthday (Day 2)."
+msgstr "King's Birthday (Day 2)"
 
 #. King's Birthday (Day 3).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"
-msgstr "King's Birthday (Day 3)."
+msgstr "King's Birthday (Day 3)"
 
 #. Birth Anniversary of Third Druk Gyalpo.
 msgid "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"
-msgstr "Birth Anniversary of Third Druk Gyalpo."
+msgstr "Birth Anniversary of Third Druk Gyalpo"
 
 #. King Jigme Khesar Namgyel's Coronation.
 msgid "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"
-msgstr "Jigme Khesar Namgyel's Coronation."
+msgstr "Jigme Khesar Namgyel's Coronation"
 
 #. Birth Anniversary of the Fourth Druk Gyalpo.
 msgid "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"
-msgstr "Birth Anniversary of the Fourth Druk Gyalpo."
+msgstr "Birth Anniversary of the Fourth Druk Gyalpo"
 
 #. National Day.
 msgid "རྒྱལ་ཡོངས་དུས་ཆེན།"
-msgstr "National Day."
+msgstr "National Day"
 
 #. Day of Offering.
 msgid "བུ་ལྭ་ཕེུ་ཝི་ཉིམ"
-msgstr "Day of Offering."
+msgstr "Day of Offering"
 
 #. Blessed Rainy Day.
 msgid "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"
-msgstr "Blessed Rainy Day."
+msgstr "Blessed Rainy Day"
 
 #. Losar.
 msgid "ལལོ་གསར་"
-msgstr "Losar."
+msgstr "Losar"
 
 #. Buddha Parinirvana.
 msgid "།སངས་རྒྱས་པ་རི་ནིར་ཝན།"
-msgstr "Buddha Parinirvana."
+msgstr "Buddha Parinirvana"
 
 #. Buddha's First Sermon.
 msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"
-msgstr "Buddha's First Sermon."
+msgstr "Buddha's First Sermon"
 
 #. Birth of Guru Rinpoche.
 msgid "སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"
-msgstr "Birth of Guru Rinpoche."
+msgstr "Birth of Guru Rinpoche"
 
 #. Death of Zhabdrung.
 msgid "ཞབས་དྲུང་གི་འདས་དུས།"
-msgstr "Death of Zhabdrung."
+msgstr "Death of Zhabdrung"
 
 #. Dashain.
 msgid "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"
-msgstr "Dashain."
+msgstr "Dashain"
