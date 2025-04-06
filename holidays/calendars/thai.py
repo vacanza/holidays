@@ -91,7 +91,7 @@ class _ThaiLunisolar:
     and we're thankful for his work.
 
     References:
-        * <https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html
+        * <https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html>
         * <https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
 
     Usage example:
