@@ -592,7 +592,7 @@ class _ThaiLunisolar:
                 The Gregorian year.
 
         Returns:
-            Estimated Gregorian date of Pchum Ben.
+            Estimated Gregorian date of Boun Haw Khao Salark.
             Returns None if the Gregorian year input is invalid.
         """
         start_date = self._get_start_date(year)
