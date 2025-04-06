@@ -30,8 +30,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         self.assertNoHolidays(SierraLeone(years=1961))
 
     def test_new_years_day(self):
-        name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1962, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1962, 2050)))
 
     def test_armed_forces_day(self):
         name = "Armed Forces Day"
@@ -45,12 +44,30 @@ class TestSierraLeone(CommonCountryTests, TestCase):
 
     def test_good_friday(self):
         name = "Good Friday"
-        self.assertHolidayName(name, "2022-04-15", "2023-04-07", "2024-03-29")
+        self.assertHolidayName(
+            name,
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        self.assertHolidayName(name, "2022-04-18", "2023-04-10", "2024-04-01")
+        self.assertHolidayName(
+            name,
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+        )
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_independence_day(self):
@@ -66,16 +83,15 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_labor_day(self):
-        name = "International Worker's Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1962, 2050)))
+        self.assertHolidayName(
+            "International Worker's Day", (f"{year}-05-01" for year in range(1962, 2050))
+        )
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1962, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1962, 2050)))
 
     def test_boxing_day(self):
-        name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1962, 2050)))
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1962, 2050)))
 
     def test_prophets_birthday(self):
         name = "Prophet's Birthday"
