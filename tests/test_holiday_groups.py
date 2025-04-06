@@ -19,6 +19,7 @@ from holidays.groups import (
     InternationalHolidays,
     PersianCalendarHolidays,
     ThaiCalendarHolidays,
+    TibetanCalendarHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -129,3 +130,27 @@ class TestThaiCalendarHolidays(TestCase):
         test_holidays._add_visakha_bucha("Visakha Bucha")
         test_holidays._add_visakha_bucha("Visaka Bochea", KHMER_CALENDAR)
         self.assertEqual(0, len(test_holidays))
+
+
+class TestTibetanCalendarHolidays(TestCase):
+    def test_add_tibetan_calendar_holiday(self):
+        # Check for out-of-range dates.
+        class TestHolidays(HolidayBase, TibetanCalendarHolidays):
+            end_year = 2158
+
+            def __init__(self, *args, **kwargs):
+                TibetanCalendarHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(2025)
+        test_holidays._add_buddha_parinirvana("Buddha Parinirvana.")
+        test_holidays._add_losar("Losar.")
+        test_holidays._add_day_of_offering("Day of Offering.")
+        test_holidays._add_buddha_first_sermon("Buddha First Sermon.")
+        test_holidays._add_birth_of_guru_rinpoche("Birth of Guru Rinpoche.")
+        test_holidays._add_death_of_zhabdrung("Death of Zhabdrung.")
+        test_holidays._add_blessed_rainy_day("Blessed Rainy Day.")
+        test_holidays._add_dashain("Dashain.")
+        self.assertEqual(8, len(test_holidays))
