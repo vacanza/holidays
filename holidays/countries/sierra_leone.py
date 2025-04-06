@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, AUG, JUL, JUN, MAY, NOV, OCT, SEP
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.islamic import _CustomIslamicHolidays
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
@@ -87,16 +87,13 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Prophet's Birthday.
-        for dt in self._add_mawlid_day(tr("Prophet's Birthday")):
-            dts_observed.add(dt)
+        dts_observed.update(self._add_mawlid_day(tr("Prophet's Birthday")))
 
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
-            dts_observed.add(dt)
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Eid al-Fitr")))
 
         # Eid al-Adha.
-        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
-            dts_observed.add(dt)
+        dts_observed.update(self._add_eid_al_adha_day(tr("Eid al-Adha")))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -111,8 +108,7 @@ class SLE(SierraLeone):
 
 
 class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
-    """
-    Sierra Leone Islamic holidays.
+    """Sierra Leone Islamic holidays exact dates.
 
     References:
         * <https://www.timeanddate.com/holidays/sierra-leone/>
