@@ -266,11 +266,12 @@ class _ThaiLunisolar:
 
     @staticmethod
     def __is_khmer_calendar(calendar):
+ def __is_khmer_calendar(calendar):
         """Check if the given calendar is the Khmer calendar.
-    
+
         Args:
             calendar: The calendar identifier to check.
-    
+
         Returns:
             bool: True if the calendar is KHMER_CALENDAR, False otherwise.
         """
