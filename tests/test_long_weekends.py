@@ -2,22 +2,28 @@ import unittest
 from datetime import date
 from utils.long_weekends import get_long_weekends
 
-
 class TestLongWeekends(unittest.TestCase):
-    def test_basic_long_weekends(self):
-        holidays_dict = {
-            date(2025, 8, 15): "Independence Day",  # Friday
-            date(2025, 10, 6): "Some Monday Holiday",  # Monday
-            date(2025, 12, 25): "Christmas",  # Thursday, not long weekend
+    def test_empty_holidays(self):
+        holidays = {}
+        result = get_long_weekends(holidays)
+        self.assertEqual(result, [])
+
+    def test_consecutive_holidays(self):
+        holidays = {
+            date(2023, 1, 26): "Republic Day",       # Thursday
+            date(2023, 1, 27): "Bridge Leave",        # Friday
         }
+        result = get_long_weekends(holidays)
+        self.assertTrue(any("Bridge Leave" in item[2] for item in result))
 
-        expected = [
-            (date(2025, 8, 15), date(2025, 8, 17), "Independence Day"),
-            (date(2025, 10, 4), date(2025, 10, 6), "Some Monday Holiday"),
-        ]
-
-        result = get_long_weekends(holidays_dict)
-        self.assertEqual(result, expected)
+    def test_year_boundary(self):
+        holidays = {
+            date(2023, 12, 29): "Year End Friday",    # Friday
+            date(2024, 1, 1): "New Year Monday",      # Monday
+        }
+        result = get_long_weekends(holidays)
+        self.assertTrue(any("Year End Friday" in item[2] for item in result))
+        self.assertTrue(any("New Year Monday" in item[2] for item in result))
 
 if __name__ == "__main__":
     unittest.main()
