@@ -9,15 +9,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# SOME DESCRIPTIVE TITLE
+# English Transaltion for Bhutanese Language Dzongkha for Holidays
 # This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# ANEESH ANGANE <anesh.angane@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-04-03 14:41+0000\n"
 "PO-Revision-Date: 2025-04-03 14:41+0000\n"
-"Last-Translator: FULL NAME <anesh.angane@gmail.com>\n"
+"Last-Translator: ANEESH ANGANE <anesh.angane@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
