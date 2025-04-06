@@ -34,47 +34,31 @@ class TestSierraLeone(CommonCountryTests, TestCase):
 
     def test_armed_forces_day(self):
         name = "Armed Forces Day"
-        self.assertNoHolidayName(name, range(1962, 2002))
         self.assertHolidayName(name, (f"{year}-02-18" for year in range(2002, 2050)))
+        self.assertNoHolidayName(name, range(1962, 2002))
 
     def test_international_womens_day(self):
         name = "International Women's Day"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2018, 2050)))
         self.assertNoHolidayName(name, range(1962, 2018))
-        self.assertHolidayName(
-            name,
-            (f"{year}-03-08" for year in range(2018, 2050)),
-        )
 
     def test_good_friday(self):
         name = "Good Friday"
         self.assertHolidayName(
-            name,
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-            "2026-04-03",
+            name, "2022-04-15", "2023-04-07", "2024-03-29", "2025-04-18", "2026-04-03"
         )
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
         self.assertHolidayName(
-            name,
-            "2022-04-18",
-            "2023-04-10",
-            "2024-04-01",
-            "2025-04-21",
-            "2026-04-06",
+            name, "2022-04-18", "2023-04-10", "2024-04-01", "2025-04-21", "2026-04-06"
         )
         self.assertHolidayName(name, range(1962, 2050))
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-04-27" for year in range(1962, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-04-27" for year in range(1962, 2050)))
         dt = (
             "2008-04-28",
             "2013-04-29",
@@ -86,48 +70,51 @@ class TestSierraLeone(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "International Worker's Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-05-01" for year in range(1962, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1962, 2050)))
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-12-25" for year in range(1962, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1962, 2050)))
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1962, 2050)))
 
     def test_prophets_birthday(self):
-        name = "Prophet's Birthday"
-        self.assertHolidayName(name, range(1962, 2050))
-        # Specific dates for known years
+        name = "Prophet's Birthday (estimated)"
         self.assertHolidayName(
             name,
+            "2018-11-21",
+            "2019-11-10",
+            "2020-10-29",
+            "2021-10-18",
+            "2022-10-08",
             "2023-09-27",
             "2024-09-15",
         )
 
     def test_eid_al_fitr(self):
-        name = "Eid al-Fitr"
-        self.assertHolidayName(name, range(1962, 2050))
-        # Specific dates for known years
+        name = "Eid al-Fitr (estimated)"
         self.assertHolidayName(
             name,
+            "2018-06-15",
+            "2019-06-05",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
             "2023-04-21",
             "2024-04-10",
         )
 
     def test_eid_al_adha(self):
-        name = "Eid al-Adha"
-        self.assertHolidayName(name, range(1962, 2050))
-        # Specific dates for known years
+        name = "Eid al-Adha (estimated)"
         self.assertHolidayName(
             name,
+            "2018-08-22",
+            "2019-08-12",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
             "2023-06-28",
             "2024-06-16",
         )
@@ -141,14 +128,14 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2024-03-08", "International Women's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
-            ("2024-04-10", "Eid al-Fitr"),
+            ("2024-04-10", "Eid al-Fitr (estimated)"),
             ("2024-04-27", "Independence Day"),
             ("2024-04-29", "Independence Day (observed)"),
             ("2024-05-01", "International Worker's Day"),
-            ("2024-06-16", "Eid al-Adha"),
-            ("2024-06-17", "Eid al-Adha (observed)"),
-            ("2024-09-15", "Prophet's Birthday"),
-            ("2024-09-16", "Prophet's Birthday (observed)"),
+            ("2024-06-16", "Eid al-Adha (estimated)"),
+            ("2024-06-17", "Eid al-Adha (observed, estimated)"),
+            ("2024-09-15", "Prophet's Birthday (estimated)"),
+            ("2024-09-16", "Prophet's Birthday (observed, estimated)"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )
@@ -159,15 +146,15 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2025-02-18", "Armed Forces Day"),
             ("2025-03-08", "International Women's Day"),
             ("2025-03-10", "International Women's Day (observed)"),
-            ("2025-03-30", "Eid al-Fitr"),
-            ("2025-03-31", "Eid al-Fitr (observed)"),
+            ("2025-03-30", "Eid al-Fitr (estimated)"),
+            ("2025-03-31", "Eid al-Fitr (observed, estimated)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-27", "Independence Day"),
             ("2025-04-28", "Independence Day (observed)"),
             ("2025-05-01", "International Worker's Day"),
-            ("2025-06-06", "Eid al-Adha"),
-            ("2025-09-04", "Prophet's Birthday"),
+            ("2025-06-06", "Eid al-Adha (estimated)"),
+            ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
@@ -179,15 +166,15 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2025-02-18", "Armed Forces Day"),
             ("2025-03-08", "International Women's Day"),
             ("2025-03-10", "International Women's Day (observed)"),
-            ("2025-03-30", "Eid al-Fitr"),
-            ("2025-03-31", "Eid al-Fitr (observed)"),
+            ("2025-03-30", "Eid al-Fitr (estimated)"),
+            ("2025-03-31", "Eid al-Fitr (observed, estimated)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-27", "Independence Day"),
             ("2025-04-28", "Independence Day (observed)"),
             ("2025-05-01", "Labor Day"),
-            ("2025-06-06", "Eid al-Adha"),
-            ("2025-09-04", "Prophet's Birthday"),
+            ("2025-06-06", "Eid al-Adha (estimated)"),
+            ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )

@@ -30,11 +30,10 @@ msgid "New Year's Day"
 msgstr "New Year's Day"
 
 #. Armed Forces Day.
-#. Armed Forces Day first established.
 msgid "Armed Forces Day"
 msgstr "Armed Forces Day"
 
-#. International Women's Day first established.
+#. International Women's Day.
 msgid "International Women's Day"
 msgstr "International Women's Day"
 
@@ -50,7 +49,7 @@ msgstr "Easter Monday"
 msgid "Independence Day"
 msgstr "Independence Day"
 
-#. Labor Day.
+#. International Worker's Day.
 msgid "International Worker's Day"
 msgstr "Labor Day"
 

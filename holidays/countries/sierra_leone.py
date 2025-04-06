@@ -12,18 +12,58 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.islamic import _CustomIslamicHolidays
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    StaticHolidays,
 )
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class SierraLeone(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
-):
+class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
+    """
+    Sierra Leone Islamic holidays.
+
+    References:
+        * <https://www.timeanddate.com/holidays/sierra-leone/>
+    """
+
+    # Prophet's Birthday
+    MAWLID_DATES = {
+        2018: (11, 21),
+        2019: (11, 10),
+        2020: (10, 29),
+        2021: (10, 18),
+        2022: (10, 8),
+        2023: (9, 27),
+        2024: (9, 15),
+    }
+
+    # Eid al-Fitr
+    EID_AL_FITR_DATES = {
+        2018: (6, 15),
+        2019: (6, 5),
+        2020: (5, 24),
+        2021: (5, 13),
+        2022: (5, 2),
+        2023: (4, 21),
+        2024: (4, 10),
+    }
+
+    # Eid al-Adha
+    EID_AL_ADHA_DATES = {
+        2018: (8, 22),
+        2019: (8, 12),
+        2020: (7, 31),
+        2021: (7, 20),
+        2022: (7, 9),
+        2023: (6, 28),
+        2024: (6, 16),
+    }
+
+
+class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Sierra Leone holidays.
 
     References:
@@ -44,7 +84,7 @@ class SierraLeone(
     # Sierra Leone gained independence on April 27, 1961.
     start_year = 1962
 
-    def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -53,8 +93,8 @@ class SierraLeone(
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
-        StaticHolidays.__init__(self, cls=SierraLeoneStaticHolidays)
+        IslamicHolidays.__init__(self, cls=SierraLeoneIslamicHolidays, show_estimated=False)
+        self._islamic_show_estimated = islamic_show_estimated
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
@@ -91,16 +131,27 @@ class SierraLeone(
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Prophet's Birthday.
-        dts_observed.update(self._add_mawlid_day(tr("Prophet's Birthday")))
+        for dt in self._add_islamic_holiday(self._add_mawlid_day, tr("Prophet's Birthday")):
+            dts_observed.add(dt)
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("Eid al-Fitr")))
+        for dt in self._add_islamic_holiday(self._add_eid_al_fitr_day, tr("Eid al-Fitr")):
+            dts_observed.add(dt)
 
         # Eid al-Adha.
-        dts_observed.update(self._add_eid_al_adha_day(tr("Eid al-Adha")))
+        for dt in self._add_islamic_holiday(self._add_eid_al_adha_day, tr("Eid al-Adha")):
+            dts_observed.add(dt)
 
         if self.observed:
             self._populate_observed(dts_observed)
+
+    def _add_islamic_holiday(self, holiday_method, name):
+        """Helper method to add an Islamic holiday with the appropriate estimated label."""
+        if self._islamic_show_estimated:
+            estimated_name = self.tr(self.estimated_label) % self.tr(name)
+        else:
+            estimated_name = name
+        return holiday_method(name=estimated_name)
 
 
 class SL(SierraLeone):
@@ -109,13 +160,3 @@ class SL(SierraLeone):
 
 class SLE(SierraLeone):
     pass
-
-
-class SierraLeoneStaticHolidays:
-    """Sierra Leone special holidays.
-
-    References:
-    """
-
-    # No special one-time holidays defined yet
-    special_public_holidays: dict[int, list] = {}
