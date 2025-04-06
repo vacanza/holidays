@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 # Iraqi holidays translation.
 # Copyright (C) 2024 Vacanza Team
 # This file is distributed under the same license as the holidays package.
