@@ -57,7 +57,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Prior to 2009, in-lieu are only given for Sundays.
         # https://guernseylegalresources.gg/CHttpHandler.ashx?documentid=55179
         kwargs.setdefault(
-            "rule", SUN_TO_NEXT_WORKDAY if dt < date(2009, DEC, 15) else self._observed_rule
+            "rule",
+            SUN_TO_NEXT_WORKDAY if dt < date(2009, DEC, 15) else self._observed_rule,
         )
         return super()._add_observed(dt, **kwargs)
 
@@ -131,11 +132,17 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
                 # Edward VII (MAY/JUN observance).
                 1909: (JUN, 25),  # (NOV, 9) for overseas.
                 # George V.
-                1910: (JUN, 24),  # (NOV, 9) for overseas; No decree cancelled Edward VII ones.
+                1910: (
+                    JUN,
+                    24,
+                ),  # (NOV, 9) for overseas; No decree cancelled Edward VII ones.
                 1911: (MAY, 27),  # (JUN, 3) for overseas.
                 1912: (JUN, 14),  # (JUN, 3) for overseas.
                 1913: (JUN, 3),
-                1914: (JUN, 24),  # Specifically held on the 24th on Guernsey, is 22nd elsewhere.
+                1914: (
+                    JUN,
+                    24,
+                ),  # Specifically held on the 24th on Guernsey, is 22nd elsewhere.
                 # Not observed in 1915-1918 due to WW1.
                 1919: (JUN, 3),
                 1920: (JUN, 5),  # (JUN, 3) for overseas.

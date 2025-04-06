@@ -733,7 +733,12 @@ class TestJapan(CommonCountryTests, TestCase):
         holidays = Japan(categories=BANK, years=range(1949, 2051))
         for year in range(1949, 2051):
             self.assertHolidayName(
-                name, holidays, f"{year}-01-01", f"{year}-01-02", f"{year}-01-03", f"{year}-12-31"
+                name,
+                holidays,
+                f"{year}-01-01",
+                f"{year}-01-02",
+                f"{year}-01-03",
+                f"{year}-12-31",
             )
 
     def test_l10n_default(self):

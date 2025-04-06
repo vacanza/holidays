@@ -29,7 +29,11 @@ from holidays.calendars.gregorian import (
     SUN,
     _timedelta,
 )
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.groups import (
+    ChineseCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,

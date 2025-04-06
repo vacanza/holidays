@@ -265,7 +265,8 @@ class TestThailand(CommonCountryTests, TestCase):
 
         for year in range(1914, 1925):
             self.assertHolidayName(
-                name_1914, (f"{year}-11-09", f"{year}-11-10", f"{year}-11-11", f"{year}-11-12")
+                name_1914,
+                (f"{year}-11-09", f"{year}-11-10", f"{year}-11-11", f"{year}-11-12"),
             )
         self.assertNoHolidayName(name_1914, range(1926, 2050))
         for year in range(1926, 1936):
@@ -436,7 +437,6 @@ class TestThailand(CommonCountryTests, TestCase):
         name_2019 = (
             "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
         )
-
         # Rama VI.
         for year in range(1914, 1925):
             self.assertHolidayName(name_1914, (f"{year}-12-30", f"{year}-12-31"))
@@ -801,7 +801,10 @@ class TestThailand(CommonCountryTests, TestCase):
             ("2022-02-16", "วันมาฆบูชา"),
             ("2022-02-26", "วันศิลปินแห่งชาติ"),
             ("2022-03-08", "วันสตรีสากล"),
-            ("2022-04-06", "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"),
+            (
+                "2022-04-06",
+                "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์",
+            ),
             ("2022-04-13", "วันสงกรานต์"),
             ("2022-04-14", "วันสงกรานต์"),
             ("2022-04-15", "วันสงกรานต์"),

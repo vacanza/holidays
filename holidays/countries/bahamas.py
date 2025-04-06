@@ -59,9 +59,11 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # 2012 and beyond Observance: If SUN, New Year's Day (observed) next MON (not for SAT).
         self._add_observed(
             self._add_new_years_day("New Year's Day"),
-            rule=SUN_TO_NEXT_MON
-            if self._year >= 2012
-            else SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI,
+            rule=(
+                SUN_TO_NEXT_MON
+                if self._year >= 2012
+                else SAT_SUN_TO_NEXT_MON + TUE_TO_PREV_MON + WED_THU_TO_NEXT_FRI
+            ),
         )
 
         # Majority Rule Day.

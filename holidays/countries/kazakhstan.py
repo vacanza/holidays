@@ -13,7 +13,19 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import (
     ChristianHolidays,
@@ -25,7 +37,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_
 
 
 class Kazakhstan(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Kazakhstan holidays.
 

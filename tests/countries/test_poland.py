@@ -163,7 +163,8 @@ class TestPoland(CommonCountryTests, TestCase):
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Uroczystość Wszystkich Świętych", (f"{year}-11-01" for year in range(1925, 2050))
+            "Uroczystość Wszystkich Świętych",
+            (f"{year}-11-01" for year in range(1925, 2050)),
         )
 
     def test_national_independence_day(self):
@@ -188,10 +189,12 @@ class TestPoland(CommonCountryTests, TestCase):
 
     def test_christmas(self):
         self.assertHolidayName(
-            "Boże Narodzenie (pierwszy dzień)", (f"{year}-12-25" for year in range(1925, 2050))
+            "Boże Narodzenie (pierwszy dzień)",
+            (f"{year}-12-25" for year in range(1925, 2050)),
         )
         self.assertHolidayName(
-            "Boże Narodzenie (drugi dzień)", (f"{year}-12-26" for year in range(1925, 2050))
+            "Boże Narodzenie (drugi dzień)",
+            (f"{year}-12-26" for year in range(1925, 2050)),
         )
 
     def test_2017(self):

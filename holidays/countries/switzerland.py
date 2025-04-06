@@ -15,7 +15,12 @@ from gettext import gettext as tr
 from holidays.calendars.gregorian import APR, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, MON_ONLY, TUE_TO_NONE, SAT_TO_NONE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_ONLY,
+    TUE_TO_NONE,
+    SAT_TO_NONE,
+)
 
 
 class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -118,7 +123,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_whit_monday(tr("Pfingstmontag"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_ai_public_holidays(self):
@@ -137,7 +143,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_bl_public_holidays(self):
@@ -449,7 +456,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         self._add_observed(
-            self._add_christmas_day_two(tr("Stephanstag")), rule=TUE_TO_NONE + SAT_TO_NONE
+            self._add_christmas_day_two(tr("Stephanstag")),
+            rule=TUE_TO_NONE + SAT_TO_NONE,
         )
 
     def _populate_subdiv_vd_public_holidays(self):

@@ -78,7 +78,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2024, 4, 10),
         ):
             self.assertHolidayName(
-                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
+                name,
+                self.no_estimated_holidays,
+                dt,
+                _timedelta(dt, +1),
+                _timedelta(dt, +2),
             )
 
     def test_eid_ul_adha(self):
@@ -101,7 +105,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             date(2024, 6, 17),
         ):
             self.assertHolidayName(
-                name, self.no_estimated_holidays, dt, _timedelta(dt, +1), _timedelta(dt, +2)
+                name,
+                self.no_estimated_holidays,
+                dt,
+                _timedelta(dt, +1),
+                _timedelta(dt, +2),
             )
 
     def test_eid_milad_un_nabi(self):

@@ -29,7 +29,8 @@ class TestSamoa(CommonCountryTests, TestCase):
 
     def test_new_years_second_day(self):
         self.assertHolidayName(
-            "The Day After New Year's Day", (f"{year}-01-02" for year in range(1950, 2050))
+            "The Day After New Year's Day",
+            (f"{year}-01-02" for year in range(1950, 2050)),
         )
 
     def test_independence_day(self):

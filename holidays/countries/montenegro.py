@@ -13,7 +13,17 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import (
+    GREGORIAN_CALENDAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, PUBLIC, WORKDAY
 from holidays.groups import (
@@ -23,7 +33,11 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class Montenegro(

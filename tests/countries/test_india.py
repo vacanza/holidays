@@ -513,7 +513,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-03-29", "Mahavir Jayanti"),
             ("2018-03-30", "Good Friday; Rajasthan Day"),
             ("2018-04-01", "Easter Sunday; Odisha Day (Utkala Dibasa)"),
-            ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
+            (
+                "2018-04-14",
+                "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi",
+            ),
             (
                 "2018-04-15",
                 "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",
@@ -640,7 +643,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-03-29", "Mahavir Jayanti"),
             ("2018-03-30", "Good Friday; Rajasthan Day"),
             ("2018-04-01", "Easter Sunday; Odisha Day (Utkala Dibasa)"),
-            ("2018-04-14", "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi"),
+            (
+                "2018-04-14",
+                "Dr. B. R. Ambedkar's Jayanti; Puthandu (Tamil New Year); Vaisakhi",
+            ),
             (
                 "2018-04-15",
                 "Himachal Day; Maha Vishuva Sankranti / Pana Sankranti; Pohela Boishakh",

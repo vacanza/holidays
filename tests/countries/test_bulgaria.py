@@ -226,9 +226,15 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-04-24", "Easter"),
             ("2022-04-25", "Easter"),
             ("2022-05-01", "Labor Day and International Workers' Solidarity Day"),
-            ("2022-05-02", "Labor Day and International Workers' Solidarity Day (observed)"),
+            (
+                "2022-05-02",
+                "Labor Day and International Workers' Solidarity Day (observed)",
+            ),
             ("2022-05-06", "Saint George's Day (Day of the Bulgarian Army)"),
-            ("2022-05-24", "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture"),
+            (
+                "2022-05-24",
+                "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture",
+            ),
             ("2022-09-06", "Unification Day"),
             ("2022-09-22", "Independence Day"),
             ("2022-11-01", "The Day of the People's Awakeners"),
@@ -250,8 +256,14 @@ class TestBulgaria(CommonCountryTests, TestCase):
             ("2022-04-24", "Великдень"),
             ("2022-04-25", "Великдень"),
             ("2022-05-01", "День праці та міжнародної солідарності трудящих"),
-            ("2022-05-02", "День праці та міжнародної солідарності трудящих (вихідний)"),
-            ("2022-05-06", "День Святого Георгія та День хоробрості і болгарської армії"),
+            (
+                "2022-05-02",
+                "День праці та міжнародної солідарності трудящих (вихідний)",
+            ),
+            (
+                "2022-05-06",
+                "День Святого Георгія та День хоробрості і болгарської армії",
+            ),
             (
                 "2022-05-24",
                 "День святих братів Кирила і Мефодія, болгарської писемності, "

@@ -41,9 +41,11 @@ class EasternCalendarHolidays:
 
         return (
             self._add_holiday(
-                self.tr(estimated_label) % self.tr(name)
-                if is_estimated and show_estimated
-                else name,
+                (
+                    self.tr(estimated_label) % self.tr(name)
+                    if is_estimated and show_estimated
+                    else name
+                ),
                 dt,
             )
             if dt

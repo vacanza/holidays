@@ -360,7 +360,14 @@ class Macau(
         dts_observed.add(self._add_christmas_day(tr("聖誕節")))
 
         # 2012's Full-Day New Year's Eve is declared discretely.
-        if self._year >= 2007 and self._year not in {2011, 2012, 2016, 2017, 2022, 2023}:
+        if self._year >= 2007 and self._year not in {
+            2011,
+            2012,
+            2016,
+            2017,
+            2022,
+            2023,
+        }:
             # New Year's Eve.
             self._add_new_years_eve(begin_time_label % self.tr("除夕"))
 

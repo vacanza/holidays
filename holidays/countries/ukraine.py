@@ -13,7 +13,20 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, WORKDAY
@@ -94,10 +107,12 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
                 tr("День памʼяті та перемоги над нацизмом у Другій світовій війні 1939-1945 років")
                 if self._year >= 2024
                 # Day of Victory over Nazism in World War II (Victory Day).
-                else tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
-                if self._year >= 2016
-                # Victory Day.
-                else tr("День Перемоги")
+                else (
+                    tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
+                    if self._year >= 2016
+                    # Victory Day.
+                    else tr("День Перемоги")
+                )
             )
             dts_observed.add(
                 self._add_world_war_two_victory_day(name, is_western=(self._year >= 2024))

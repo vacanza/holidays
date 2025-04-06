@@ -176,7 +176,8 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2020-03-31",
         )
         self.assertHolidayName(
-            name_2, (f"{year}-04-02" for year in set(range(2007, 2050)).difference({2020}))
+            name_2,
+            (f"{year}-04-02" for year in set(range(2007, 2050)).difference({2020})),
         )
         self.assertNoHolidayName(name_1, range(1957, 1993), range(2001, 2050))
         self.assertNoHolidayName(name_2, range(1957, 2001))
@@ -228,7 +229,8 @@ class TestArgentina(CommonCountryTests, TestCase):
 
     def test_may_revolution_day(self):
         self.assertHolidayName(
-            "Día de la Revolución de Mayo", (f"{year}-05-25" for year in range(1957, 2050))
+            "Día de la Revolución de Mayo",
+            (f"{year}-05-25" for year in range(1957, 2050)),
         )
 
     def test_corpus_christi(self):
@@ -372,7 +374,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         name_1 = "Día de la Raza"
         name_2 = "Día del Respeto a la Diversidad Cultural"
         self.assertHolidayName(
-            name_1, (f"{year}-10-12" for year in (*range(1957, 1976), *range(1982, 1988)))
+            name_1,
+            (f"{year}-10-12" for year in (*range(1957, 1976), *range(1982, 1988))),
         )
         self.assertHolidayName(
             name_1,
@@ -1204,7 +1207,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-05-01", "Día del Trabajo"),
             ("2022-05-18", "Censo Nacional 2022"),
             ("2022-05-25", "Día de la Revolución de Mayo"),
-            ("2022-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
+            (
+                "2022-06-17",
+                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
+            ),
             ("2022-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2022-07-09", "Día de la Independencia"),
             ("2022-08-15", "Paso a la Inmortalidad del General Don José de San Martín"),
@@ -1231,7 +1237,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2023-05-01", "Día del Trabajo"),
             ("2023-05-25", "Día de la Revolución de Mayo"),
             ("2023-05-26", "Feriado con fines turísticos"),
-            ("2023-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
+            (
+                "2023-06-17",
+                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
+            ),
             ("2023-06-19", "Feriado con fines turísticos"),
             ("2023-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2023-07-09", "Día de la Independencia"),
@@ -1256,7 +1265,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2024-04-02", "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
             ("2024-05-01", "Día del Trabajo"),
             ("2024-05-25", "Día de la Revolución de Mayo"),
-            ("2024-06-17", "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"),
+            (
+                "2024-06-17",
+                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
+            ),
             ("2024-06-20", "Paso a la Inmortalidad del General Don Manuel Belgrano"),
             ("2024-06-21", "Feriado con fines turísticos"),
             ("2024-07-09", "Día de la Independencia"),
@@ -1289,7 +1301,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-04-17", "Pascua Judía (Pésaj)"),
             ("2022-04-22", "Pascua Judía (Pésaj)"),
             ("2022-04-23", "Pascua Judía (Pésaj)"),
-            ("2022-04-24", "Día de acción por la tolerancia y el respeto entre los pueblos"),
+            (
+                "2022-04-24",
+                "Día de acción por la tolerancia y el respeto entre los pueblos",
+            ),
             ("2022-04-27", "Día Grande de Jujuy"),
             ("2022-04-30", "Plebiscito 1902 Trevelin"),
             ("2022-05-01", "Día del Trabajo"),
@@ -1321,10 +1336,16 @@ class TestArgentina(CommonCountryTests, TestCase):
                 "Día de la Fiesta del Sacrificio (Id Al-Adha); Día de la Independencia",
             ),
             ("2022-07-25", "Día del Apóstol Santiago"),
-            ("2022-07-28", "Aniversario del arribo de los primeros colonizadores galeses"),
+            (
+                "2022-07-28",
+                "Aniversario del arribo de los primeros colonizadores galeses",
+            ),
             ("2022-07-30", "Año Nuevo Musulmán (Hégira)"),
             ("2022-08-01", "Día de la Pachamama"),
-            ("2022-08-04", "Día del Aniversario del Fallecimiento de Monseñor Enrique Angelelli"),
+            (
+                "2022-08-04",
+                "Día del Aniversario del Fallecimiento de Monseñor Enrique Angelelli",
+            ),
             ("2022-08-15", "Paso a la Inmortalidad del General Don José de San Martín"),
             ("2022-08-16", "Homenaje al Patrono de la Provincia San Juan Bosco"),
             (
@@ -1354,14 +1375,23 @@ class TestArgentina(CommonCountryTests, TestCase):
                 "Día del Aniversario del Fallecimiento del ex Presidente de la Nación "
                 "Doctor Néstor Carlos Kirchner",
             ),
-            ("2022-11-03", "Tehuelches y Mapuches declaran lealtad a la bandera Argentina"),
+            (
+                "2022-11-03",
+                "Tehuelches y Mapuches declaran lealtad a la bandera Argentina",
+            ),
             ("2022-11-06", "Día del Bancario"),
-            ("2022-11-12", "Día del Aniversario del Fallecimiento de Ángel Vicente Peñaloza"),
+            (
+                "2022-11-12",
+                "Día del Aniversario del Fallecimiento de Ángel Vicente Peñaloza",
+            ),
             ("2022-11-18", "Autonomía Política de Jujuy"),
             ("2022-11-20", "Día de la Soberanía Nacional"),
             ("2022-11-21", "Feriado con fines turísticos"),
             ("2022-11-25", "Día del Genocidio Selk'Nam"),
-            ("2022-12-07", "Conmemoración a los obreros fusilados en las Huelgas Patagónicas"),
+            (
+                "2022-12-07",
+                "Conmemoración a los obreros fusilados en las Huelgas Patagónicas",
+            ),
             ("2022-12-08", "Inmaculada Concepción de María"),
             ("2022-12-09", "Feriado con fines turísticos"),
             ("2022-12-13", "Día del Petróleo Nacional"),
@@ -1426,9 +1456,15 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-08-04", "Anniversary of the Death of Enrique Angelelli"),
             ("2022-08-15", "Pass to the Immortality of General Don José de San Martín"),
             ("2022-08-16", "Saint John Bosco's Day"),
-            ("2022-08-17", "Anniversary of the Death of General José Francisco de San Martín"),
+            (
+                "2022-08-17",
+                "Anniversary of the Death of General José Francisco de San Martín",
+            ),
             ("2022-08-23", "Jujuy Exodus Day"),
-            ("2022-08-25", "Catamarca Autonomy Day; Saint Louis the King of France's Day"),
+            (
+                "2022-08-25",
+                "Catamarca Autonomy Day; Saint Louis the King of France's Day",
+            ),
             ("2022-09-07", "Miracle Day"),
             ("2022-09-11", "Teacher's Day"),
             ("2022-09-13", "Feasts of the Lord and the Virgin of Miracle"),
@@ -1445,14 +1481,20 @@ class TestArgentina(CommonCountryTests, TestCase):
             ),
             ("2022-10-10", "Respect for Cultural Diversity Day"),
             ("2022-10-27", "Anniversary of the Death of Néstor Carlos Kirchner"),
-            ("2022-11-03", "Tehuelches and Mapuches declare loyalty to the Argentine flag"),
+            (
+                "2022-11-03",
+                "Tehuelches and Mapuches declare loyalty to the Argentine flag",
+            ),
             ("2022-11-06", "Bankers' Day"),
             ("2022-11-12", "Anniversary of the Death of Ángel Vicente Peñaloza"),
             ("2022-11-18", "Jujuy Political Autonomy Day"),
             ("2022-11-20", "National Sovereignty Day"),
             ("2022-11-21", "Bridge Public Holiday"),
             ("2022-11-25", "Selk'Nam Genocide Day"),
-            ("2022-12-07", "Commemoration of the workers shot in the Patagonian Strikes"),
+            (
+                "2022-12-07",
+                "Commemoration of the workers shot in the Patagonian Strikes",
+            ),
             ("2022-12-08", "Immaculate Conception"),
             ("2022-12-09", "Bridge Public Holiday"),
             ("2022-12-13", "National Petroleum Day"),
@@ -1483,7 +1525,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-04-17", "Песах"),
             ("2022-04-22", "Песах"),
             ("2022-04-23", "Песах"),
-            ("2022-04-24", "День дій на підтримку толерантності та поваги між народами"),
+            (
+                "2022-04-24",
+                "День дій на підтримку толерантності та поваги між народами",
+            ),
             ("2022-04-27", "Великий День Хухуя"),
             ("2022-04-30", "Річниця плебісциту 1902 року"),
             ("2022-05-01", "День праці"),
@@ -1524,10 +1569,16 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-09-27", "Рош га-Шана"),
             ("2022-09-29", "День Святого Архангела Михаїла"),
             ("2022-10-05", "Йом Кіпур"),
-            ("2022-10-07", "День Богородиці Вервиці Ріо-Бланко і Пайпаї; Додатковий вихідний"),
+            (
+                "2022-10-07",
+                "День Богородиці Вервиці Ріо-Бланко і Пайпаї; Додатковий вихідний",
+            ),
             ("2022-10-10", "День поваги до культурного різноманіття"),
             ("2022-10-27", "День смерті Нестора Карлоса Кіршнера"),
-            ("2022-11-03", "День присяги теуелче та мапуче на вірність аргентинському прапору"),
+            (
+                "2022-11-03",
+                "День присяги теуелче та мапуче на вірність аргентинському прапору",
+            ),
             ("2022-11-06", "День банківських працівників"),
             ("2022-11-12", "День смерті Анхеля Вісенте Пеньялоса"),
             ("2022-11-18", "День політичної автономії Хухуя"),
@@ -1541,7 +1592,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             ("2022-12-08", "Непорочне зачаття Діви Марії"),
             ("2022-12-09", "Додатковий вихідний"),
             ("2022-12-13", "Національний день нафти"),
-            ("2022-12-20", "День перемоги збірної Аргентини на Чемпіонаті світу з футболу 2022"),
+            (
+                "2022-12-20",
+                "День перемоги збірної Аргентини на Чемпіонаті світу з футболу 2022",
+            ),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-31", "Свято Тінкунако"),
         )

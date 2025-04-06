@@ -35,7 +35,8 @@ class TestObservedHolidayBase(TestCase):
         self.assertEqual(
             (False, None),
             self.ohb._add_observed(
-                self.ohb._add_holiday("Test Holiday", self.SUNDAY), rule=self.SUN_TO_NONE
+                self.ohb._add_holiday("Test Holiday", self.SUNDAY),
+                rule=self.SUN_TO_NONE,
             ),
         )
 

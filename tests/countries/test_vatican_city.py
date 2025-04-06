@@ -195,7 +195,8 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             (f"{year}-08-14" for year in range(1929, 2050)),
         )
         self.assertHolidayName(
-            "Assunzione di Maria Santissima", (f"{year}-08-15" for year in range(1929, 2050))
+            "Assunzione di Maria Santissima",
+            (f"{year}-08-15" for year in range(1929, 2050)),
         )
         self.assertHolidayName(
             "Giorno Successivo all'Assunzione di Maria Santissima",
@@ -235,7 +236,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             VaticanCity(years=2020),
             ("2020-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2020-01-06", "Epifania del Signore"),
-            ("2020-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2020-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2020-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2020-03-19", "San Giuseppe"),
             ("2020-04-09", "Giovedì Santo"),
@@ -270,7 +274,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             VaticanCity(years=2021),
             ("2021-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2021-01-06", "Epifania del Signore"),
-            ("2021-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2021-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2021-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2021-03-19", "San Giuseppe"),
             ("2021-04-01", "Giovedì Santo"),
@@ -305,7 +312,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             VaticanCity(years=2022),
             ("2022-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2022-01-06", "Epifania del Signore"),
-            ("2022-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2022-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2022-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2022-03-19", "San Giuseppe"),
             ("2022-04-14", "Giovedì Santo"),
@@ -340,7 +350,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             VaticanCity(years=2023),
             ("2023-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2023-01-06", "Epifania del Signore"),
-            ("2023-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2023-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2023-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2023-03-19", "San Giuseppe"),
             ("2023-04-06", "Giovedì Santo"),
@@ -375,7 +388,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             VaticanCity(years=2024),
             ("2024-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2024-01-06", "Epifania del Signore"),
-            ("2024-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2024-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2024-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2024-03-19", "San Giuseppe"),
             ("2024-03-28", "Giovedì Santo"),
@@ -409,7 +425,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2025-01-06", "Epifania del Signore"),
-            ("2025-02-11", "Anniversario della istituzione dello Stato della Città del Vaticano"),
+            (
+                "2025-02-11",
+                "Anniversario della istituzione dello Stato della Città del Vaticano",
+            ),
             ("2025-03-13", "Anniversario dell'Elezione del Santo Padre"),
             ("2025-03-19", "San Giuseppe"),
             ("2025-04-17", "Giovedì Santo"),

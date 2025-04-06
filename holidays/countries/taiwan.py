@@ -32,7 +32,11 @@ from holidays.calendars.gregorian import (
     SUN,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.groups import (
+    ChineseCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -108,7 +112,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
                     dt,
                     name,
                     # Children's Day falls on the same day as Tomb-Sweeping Day.
-                    CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule,
+                    (CHILDRENS_DAY_RULE if name == childrens_day and len(names) > 1 else rule),
                 )
 
     def _populate_public_holidays(self):

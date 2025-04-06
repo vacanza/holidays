@@ -14,7 +14,19 @@ import unittest
 from datetime import date
 
 from holidays import calendars
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+)
 from holidays.calendars.thai import KHMER_CALENDAR
 
 
@@ -134,7 +146,8 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in boun_haw_khao_salark_year_date:
             self.assertEqual(
-                boun_haw_khao_salark_year_date[year], self.calendar.boun_haw_khao_salark_date(year)
+                boun_haw_khao_salark_year_date[year],
+                self.calendar.boun_haw_khao_salark_date(year),
             )
 
     def test_boun_suang_heua_date(self):
@@ -148,7 +161,8 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in boun_suang_heua_year_date:
             self.assertEqual(
-                boun_suang_heua_year_date[year], self.calendar.boun_suang_heua_date(year)
+                boun_suang_heua_year_date[year],
+                self.calendar.boun_suang_heua_date(year),
             )
 
     def test_khao_phansa_date(self):
@@ -282,7 +296,8 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in meak_bochea_year_date:
             self.assertEqual(
-                meak_bochea_year_date[year], self.calendar.makha_bucha_date(year, KHMER_CALENDAR)
+                meak_bochea_year_date[year],
+                self.calendar.makha_bucha_date(year, KHMER_CALENDAR),
             )
 
     def test_ok_phansa_date(self):
@@ -347,7 +362,8 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in preah_neangkoal_year_date:
             self.assertEqual(
-                preah_neangkoal_year_date[year], self.calendar.preah_neangkoal_date(year)
+                preah_neangkoal_year_date[year],
+                self.calendar.preah_neangkoal_date(year),
             )
 
     def test_visakha_bucha_date(self):

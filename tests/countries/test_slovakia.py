@@ -38,7 +38,8 @@ class TestSlovakia(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "Deň vzniku Slovenskej republiky", (f"{year}-01-01" for year in range(1993, 2050))
+            "Deň vzniku Slovenskej republiky",
+            (f"{year}-01-01" for year in range(1993, 2050)),
         )
 
     def test_epiphany(self):
@@ -214,7 +215,10 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-08-29", "Slovak National Uprising Anniversary"),
             ("2022-09-01", "Constitution Day"),
             ("2022-09-15", "Day of Our Lady of the Seven Sorrows"),
-            ("2022-10-28", "Day of the Establishment of the Independent Czech-Slovak State"),
+            (
+                "2022-10-28",
+                "Day of the Establishment of the Independent Czech-Slovak State",
+            ),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-17", "Struggle for Freedom and Democracy Day"),
             ("2022-12-24", "Christmas Eve"),

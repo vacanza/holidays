@@ -122,7 +122,20 @@ class TestMalaysia(CommonCountryTests, TestCase):
             self.assertHoliday(self.subdiv_holidays[subdiv], "2022-05-04")
             self.assertNoNonObservedHoliday(Malaysia(subdiv=subdiv, observed=False), "2022-05-04")
 
-        for subdiv in ("04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16"):
+        for subdiv in (
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "14",
+            "15",
+            "16",
+        ):
             self.assertHoliday(self.subdiv_holidays[subdiv], "2007-01-02")
             self.assertNoNonObservedHoliday(Malaysia(subdiv=subdiv, observed=False), "2007-01-02")
 
@@ -130,7 +143,19 @@ class TestMalaysia(CommonCountryTests, TestCase):
         name = "Tahun Baharu"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"04", "05", "06", "07", "08", "10", "12", "13", "14", "15", "16"}:
+            if subdiv in {
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "10",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+            }:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-01-01" for year in range(2000, 2050))
                 )
@@ -965,7 +990,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
             ("2024-04-11", "Hari Raya Puasa (Hari Kedua)"),
             ("2024-05-01", "Hari Pekerja"),
             ("2024-05-22", "Hari Wesak"),
-            ("2024-06-03", "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong"),
+            (
+                "2024-06-03",
+                "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong",
+            ),
             ("2024-06-17", "Hari Raya Qurban"),
             ("2024-07-07", "Awal Muharam"),
             ("2024-08-31", "Hari Kebangsaan"),
@@ -1006,7 +1034,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
             ("2023-05-31", "Pesta Kaamatan"),
             ("2023-06-01", "Perayaan Hari Gawai Dayak"),
             ("2023-06-02", "Perayaan Hari Gawai Dayak"),
-            ("2023-06-05", "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong"),
+            (
+                "2023-06-05",
+                "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong",
+            ),
             ("2023-06-18", "Hari Keputeraan Sultan Kedah"),
             ("2023-06-28", "Hari Arafah"),
             ("2023-06-29", "Hari Raya Qurban"),
@@ -1050,7 +1081,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
             ("2023-02-06", "Thaipusam (observed)"),
             ("2023-02-18", "Isra' and Mi'raj"),
             ("2023-02-19", "Isra' and Mi'raj (observed)"),
-            ("2023-03-04", "Anniversary of the Installation of the Sultan of Terengganu"),
+            (
+                "2023-03-04",
+                "Anniversary of the Installation of the Sultan of Terengganu",
+            ),
             (
                 "2023-03-05",
                 "Anniversary of the Installation of the Sultan of Terengganu (observed)",
@@ -1063,7 +1097,10 @@ class TestMalaysia(CommonCountryTests, TestCase):
             ("2023-04-21", "Eid al-Fitr (additional holiday)"),
             ("2023-04-22", "Eid al-Fitr"),
             ("2023-04-23", "Eid al-Fitr (Second Day)"),
-            ("2023-04-24", "Eid al-Fitr (Second Day) (observed); Eid al-Fitr (observed)"),
+            (
+                "2023-04-24",
+                "Eid al-Fitr (Second Day) (observed); Eid al-Fitr (observed)",
+            ),
             ("2023-04-26", "Birthday of the Sultan of Terengganu"),
             ("2023-05-01", "Labor Day"),
             ("2023-05-04", "Vesak Day"),

@@ -14,7 +14,20 @@ import warnings
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -26,7 +39,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class India(
-    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
 ):
     """India holidays.
 

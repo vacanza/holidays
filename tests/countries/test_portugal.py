@@ -261,7 +261,10 @@ class TestPortugal(CommonCountryTests, TestCase):
             ("2018-06-13", "Dia de Santo António"),
             ("2018-06-24", "Dia de São João"),
             ("2018-06-29", "Dia de São Pedro"),
-            ("2018-07-01", "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"),
+            (
+                "2018-07-01",
+                "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses",
+            ),
             ("2018-07-04", "Dia de Santa Isabel"),
             ("2018-08-15", "Assunção de Nossa Senhora"),
             ("2018-08-20", "Dia de Nossa Senhora da Agonia"),
@@ -301,7 +304,10 @@ class TestPortugal(CommonCountryTests, TestCase):
             ("2018-06-13", "Saint Anthony's Day"),
             ("2018-06-24", "Saint John's Day"),
             ("2018-06-29", "Saint Peter's Day"),
-            ("2018-07-01", "Day of the Autonomous Region of Madeira and the Madeiran Communities"),
+            (
+                "2018-07-01",
+                "Day of the Autonomous Region of Madeira and the Madeiran Communities",
+            ),
             ("2018-07-04", "Saint Elizabeth's Day"),
             ("2018-08-15", "Assumption Day"),
             ("2018-08-20", "Feast of Our Lady of Sorrows"),

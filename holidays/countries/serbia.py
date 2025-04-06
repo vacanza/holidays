@@ -14,7 +14,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class Serbia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):

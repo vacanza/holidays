@@ -118,7 +118,8 @@ class TestKenya(CommonCountryTests, TestCase):
         name_2 = "Utamaduni Day"
         name_3 = "Mazingira Day"
         self.assertHolidayName(
-            name_1, (f"{year}-10-10" for year in (*range(1990, 2010), *range(2018, 2021)))
+            name_1,
+            (f"{year}-10-10" for year in (*range(1990, 2010), *range(2018, 2021))),
         )
         self.assertHolidayName(name_2, (f"{year}-10-10" for year in range(2021, 2025)))
         self.assertHolidayName(name_3, (f"{year}-10-10" for year in range(2025, 2050)))
@@ -205,7 +206,9 @@ class TestKenya(CommonCountryTests, TestCase):
             "2024-04-10",
         )
         self.assertHolidayName(
-            name, Kenya(years=range(1964, 2050), islamic_show_estimated=False), range(1964, 2050)
+            name,
+            Kenya(years=range(1964, 2050), islamic_show_estimated=False),
+            range(1964, 2050),
         )
 
         dt = (
@@ -256,7 +259,11 @@ class TestKenya(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(
             name,
-            Kenya(categories=ISLAMIC, years=range(1964, 2050), islamic_show_estimated=False),
+            Kenya(
+                categories=ISLAMIC,
+                years=range(1964, 2050),
+                islamic_show_estimated=False,
+            ),
             range(1964, 2050),
         )
 

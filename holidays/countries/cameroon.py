@@ -11,7 +11,20 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.groups import (
     ChristianHolidays,
     InternationalHolidays,
@@ -22,7 +35,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORK
 
 
 class Cameroon(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Cameroon holidays.
 

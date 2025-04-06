@@ -35,7 +35,8 @@ class TestParaguay(CommonCountryTests, TestCase):
         name = "Día de los Héroes de la Patria"
         years_excluded = {2013, 2016, 2018, 2019, 2022, 2023}
         self.assertHolidayName(
-            name, (f"{year}-03-01" for year in set(range(1991, 2050)).difference(years_excluded))
+            name,
+            (f"{year}-03-01" for year in set(range(1991, 2050)).difference(years_excluded)),
         )
         self.assertNoHoliday(f"{year}-03-01" for year in years_excluded)
         self.assertHolidayName(
@@ -90,14 +91,16 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Día de la Independencia Nacional", (f"{year}-05-15" for year in range(1991, 2050))
+            "Día de la Independencia Nacional",
+            (f"{year}-05-15" for year in range(1991, 2050)),
         )
 
     def test_chaco_armistice_day(self):
         name = "Día de la Paz del Chaco"
         years_excluded = {2014, 2018, 2019, 2024}
         self.assertHolidayName(
-            name, (f"{year}-06-12" for year in set(range(1991, 2050)).difference(years_excluded))
+            name,
+            (f"{year}-06-12" for year in set(range(1991, 2050)).difference(years_excluded)),
         )
         self.assertNoHoliday(f"{year}-06-12" for year in years_excluded)
         self.assertHolidayName(
@@ -110,14 +113,16 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_asuncion_foundations_day(self):
         self.assertHolidayName(
-            "Día de la Fundación de Asunción", (f"{year}-08-15" for year in range(1991, 2050))
+            "Día de la Fundación de Asunción",
+            (f"{year}-08-15" for year in range(1991, 2050)),
         )
 
     def test_boqueron_battle_day(self):
         name = "Día de la Batalla de Boquerón"
         years_excluded = {2015, 2016, 2017, 2021, 2022, 2024}
         self.assertHolidayName(
-            name, (f"{year}-09-29" for year in set(range(1995, 2050)).difference(years_excluded))
+            name,
+            (f"{year}-09-29" for year in set(range(1995, 2050)).difference(years_excluded)),
         )
         self.assertNoHoliday(f"{year}-09-29" for year in years_excluded)
         self.assertNoHoliday(f"{year}-09-29" for year in range(1991, 1995))
@@ -134,7 +139,8 @@ class TestParaguay(CommonCountryTests, TestCase):
 
     def test_caacupe_virgin_day(self):
         self.assertHolidayName(
-            "Día de la Virgen de Caacupé", (f"{year}-12-08" for year in range(1991, 2050))
+            "Día de la Virgen de Caacupé",
+            (f"{year}-12-08" for year in range(1991, 2050)),
         )
 
     def test_special_public_holidays(self):

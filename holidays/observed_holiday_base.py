@@ -104,7 +104,11 @@ class ObservedHolidayBase(HolidayBase):
     observed_label = "%s"
 
     def __init__(
-        self, observed_rule: ObservedRule = None, observed_since: int = None, *args, **kwargs
+        self,
+        observed_rule: ObservedRule = None,
+        observed_since: int = None,
+        *args,
+        **kwargs,
     ):
         self._observed_rule = observed_rule or ObservedRule()
         self._observed_since = observed_since
@@ -180,7 +184,8 @@ class ObservedHolidayBase(HolidayBase):
                     observed_estimated_label = self.tr(getattr(self, "observed_estimated_label"))
 
                 super()._add_holiday(
-                    (observed_estimated_label or observed_label) % holiday_name, dt_observed
+                    (observed_estimated_label or observed_label) % holiday_name,
+                    dt_observed,
                 )
         else:
             for name in (name,) if name else self.get_list(dt):
@@ -189,7 +194,10 @@ class ObservedHolidayBase(HolidayBase):
         return True, dt_observed
 
     def _move_holiday(
-        self, dt: date, rule: Optional[ObservedRule] = None, show_observed_label: bool = True
+        self,
+        dt: date,
+        rule: Optional[ObservedRule] = None,
+        show_observed_label: bool = True,
     ) -> tuple[bool, Optional[date]]:
         is_observed, dt_observed = self._add_observed(
             dt, rule=rule, show_observed_label=show_observed_label

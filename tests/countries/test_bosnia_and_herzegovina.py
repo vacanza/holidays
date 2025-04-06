@@ -450,7 +450,10 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2021-05-14", "Ramazanski Bajram"),
             ("2021-07-20", "Kurban Bajram"),
             ("2021-07-21", "Kurban Bajram"),
-            ("2021-11-21", "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
+            (
+                "2021-11-21",
+                "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
+            ),
             ("2021-12-24", "Badnji dan (Katolički)"),
             ("2021-12-25", "Božić (Katolički)"),
         )
@@ -477,7 +480,10 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2022-05-09", "Dan pobjede nad fašizmom"),
             ("2022-07-09", "Kurban Bajram"),
             ("2022-07-10", "Kurban Bajram"),
-            ("2022-11-21", "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
+            (
+                "2022-11-21",
+                "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
+            ),
             ("2022-11-25", "Dan državnosti"),
             ("2022-12-24", "Badnji dan (Katolički)"),
             ("2022-12-25", "Božić (Katolički)"),
@@ -537,7 +543,10 @@ class TestBosniaAndHerzegovina(CommonCountryTests, TestCase):
             ("2022-05-09", "Дан побједе над фашизмом"),
             ("2022-07-09", "Курбан Бајрам"),
             ("2022-07-10", "Курбан Бајрам"),
-            ("2022-11-21", "Дан успоставе Општег оквирног споразума за мир у Босни и Херцеговини"),
+            (
+                "2022-11-21",
+                "Дан успоставе Општег оквирног споразума за мир у Босни и Херцеговини",
+            ),
             ("2022-11-25", "Дан државности"),
             ("2022-12-24", "Бадњи дан (Католички)"),
             ("2022-12-25", "Божић (Католички)"),

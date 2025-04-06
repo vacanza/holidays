@@ -17,7 +17,20 @@ from holidays.calendars import (
     _CustomChineseHolidays,
     _CustomIslamicHolidays,
 )
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import (
     BalineseSakaCalendarHolidays,

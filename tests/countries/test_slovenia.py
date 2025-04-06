@@ -75,7 +75,8 @@ class TestSlovenia(CommonCountryTests, TestCase):
 
     def test_uprising_against_occupation_day(self):
         self.assertHolidayName(
-            "dan upora proti okupatorju", (f"{year}-04-27" for year in range(1992, 2050))
+            "dan upora proti okupatorju",
+            (f"{year}-04-27" for year in range(1992, 2050)),
         )
 
     def test_labor_day(self):
@@ -145,10 +146,14 @@ class TestSlovenia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_1)
         self.assertNoHolidayName(name_2)
         self.assertHolidayName(
-            name_1, self.workday_holidays, (f"{year}-09-15" for year in range(2006, 2025))
+            name_1,
+            self.workday_holidays,
+            (f"{year}-09-15" for year in range(2006, 2025)),
         )
         self.assertHolidayName(
-            name_2, self.workday_holidays, (f"{year}-09-15" for year in range(2025, 2050))
+            name_2,
+            self.workday_holidays,
+            (f"{year}-09-15" for year in range(2025, 2050)),
         )
         self.assertNoHolidayName(
             name_1, self.workday_holidays, range(1992, 2006), range(2025, 2050)

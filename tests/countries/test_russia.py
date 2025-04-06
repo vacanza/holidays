@@ -249,7 +249,8 @@ class TestRussia(CommonCountryTests, TestCase):
 
     def test_international_womens_day(self):
         self.assertHolidayName(
-            "Международный женский день", (f"{year}-03-08" for year in range(1991, 2025))
+            "Международный женский день",
+            (f"{year}-03-08" for year in range(1991, 2025)),
         )
 
     def test_labor_day(self):

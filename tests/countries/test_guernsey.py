@@ -199,7 +199,10 @@ class TestGG(CommonCountryTests, TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-05-01", "May Day Bank Holiday"),
-            ("2023-05-08", "Extra Public Holiday for the Coronation of King Charles III"),
+            (
+                "2023-05-08",
+                "Extra Public Holiday for the Coronation of King Charles III",
+            ),
             ("2023-05-09", "Liberation Day"),
             ("2023-05-29", "Spring Bank Holiday"),
             ("2023-08-28", "Summer Bank Holiday"),
@@ -218,7 +221,10 @@ class TestGG(CommonCountryTests, TestCase):
             ("2024-05-06", "May Day Bank Holiday"),
             ("2024-05-09", "Liberation Day"),
             ("2024-05-27", "Spring Bank Holiday"),
-            ("2024-07-16", "The visit of His Majesty King Charles III and Queen Camilla"),
+            (
+                "2024-07-16",
+                "The visit of His Majesty King Charles III and Queen Camilla",
+            ),
             ("2024-08-26", "Summer Bank Holiday"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),

@@ -85,7 +85,9 @@ class BosniaAndHerzegovina(
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=BosniaAndHerzegovinaIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=BosniaAndHerzegovinaIslamicHolidays,
+            show_estimated=islamic_show_estimated,
         )
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)

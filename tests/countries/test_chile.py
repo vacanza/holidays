@@ -200,7 +200,8 @@ class TestChile(CommonCountryTests, TestCase):
         )
 
         self.assertNoHolidayName(
-            "Día de la Unidad Nacional", set(range(1915, 2050)).difference({1999, 2000, 2001})
+            "Día de la Unidad Nacional",
+            set(range(1915, 2050)).difference({1999, 2000, 2001}),
         )
 
     def test_independence_holidays(self):
@@ -383,7 +384,10 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-06-27", "San Pedro y San Pablo"),
             ("2022-07-16", "Virgen del Carmen"),
             ("2022-08-15", "Asunción de la Virgen"),
-            ("2022-08-20", "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"),
+            (
+                "2022-08-20",
+                "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)",
+            ),
             ("2022-09-16", "Feriado nacional"),
             ("2022-09-18", "Día de la Independencia"),
             ("2022-09-19", "Día de las Glorias del Ejército"),
@@ -408,7 +412,10 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-06-27", "Saint Peter and Saint Paul's Day"),
             ("2022-07-16", "Our Lady of Mount Carmel"),
             ("2022-08-15", "Assumption Day"),
-            ("2022-08-20", "Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)"),
+            (
+                "2022-08-20",
+                "Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)",
+            ),
             ("2022-09-16", "National Holiday"),
             ("2022-09-18", "Independence Day"),
             ("2022-09-19", "Army Day"),
@@ -433,7 +440,10 @@ class TestChile(CommonCountryTests, TestCase):
             ("2022-06-27", "День Святих Петра і Павла"),
             ("2022-07-16", "Матір Божа Кармельська"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
-            ("2022-08-20", "Річниця Бернардо ОʼГіґґінса (свято комун Чіллан і Чіллан Вʼєхо)"),
+            (
+                "2022-08-20",
+                "Річниця Бернардо ОʼГіґґінса (свято комун Чіллан і Чіллан Вʼєхо)",
+            ),
             ("2022-09-16", "Національне свято"),
             ("2022-09-18", "День незалежності"),
             ("2022-09-19", "День військової слави"),

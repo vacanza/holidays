@@ -48,5 +48,9 @@ class TestPackage(TestCase):
             self.assertTrue(ph_metadata[attr_name], attr_name)
 
             if attr_name == "maintainer":
-                for maintainer in ("Arkadii Yakovets", "Panpakorn Siripanich", "Serhii Murza"):
+                for maintainer in (
+                    "Arkadii Yakovets",
+                    "Panpakorn Siripanich",
+                    "Serhii Murza",
+                ):
                     self.assertIn(maintainer, ph_metadata["maintainer"])

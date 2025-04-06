@@ -23,7 +23,11 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class IvoryCoast(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Ivory Coast holidays.
 
@@ -150,7 +154,11 @@ class IvoryCoastStaticHolidays:
 
     special_public_holidays = {
         # Public holiday for Presidential election preparation.
-        2010: (OCT, 29, tr("Jour férié pour la préparation de l'élection présidentielle")),
+        2010: (
+            OCT,
+            29,
+            tr("Jour férié pour la préparation de l'élection présidentielle"),
+        ),
         # 2024 African Cup of Nations Victory.
         2024: (FEB, 12, tr("Victoire à la Coupe d’Afrique des Nations 2024")),
     }

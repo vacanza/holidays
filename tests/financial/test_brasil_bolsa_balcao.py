@@ -77,7 +77,8 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
     def test_tiradentes_day(self):
         name = "Tiradentes"
         self.assertHolidayName(
-            name, (f"{year}-04-21" for year in set(range(1890, 2100)).difference({1931, 1932}))
+            name,
+            (f"{year}-04-21" for year in set(range(1890, 2100)).difference({1931, 1932})),
         )
         self.assertNoHolidayName(name, {1931, 1932})
 

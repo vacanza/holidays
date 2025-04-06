@@ -66,7 +66,8 @@ class TestGuinea(CommonCountryTests, TestCase):
 
     def test_africa_day(self):
         self.assertHolidayName(
-            "Anniversaire de l'Union Africaine", (f"{year}-05-25" for year in range(1959, 2050))
+            "Anniversaire de l'Union Africaine",
+            (f"{year}-05-25" for year in range(1959, 2050)),
         )
 
     def test_assumption_of_mary(self):

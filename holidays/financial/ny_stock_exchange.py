@@ -28,7 +28,11 @@ from holidays.calendars.gregorian import (
     _timedelta,
 )
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
 class NewYorkStockExchange(
@@ -263,14 +267,30 @@ class NewYorkStockExchangeStaticHolidays:
         ),
         1969: (
             (FEB, 10, "Heavy Snow"),
-            (MAR, 31, "National Day of Mourning for former President Dwight D. Eisenhower"),
+            (
+                MAR,
+                31,
+                "National Day of Mourning for former President Dwight D. Eisenhower",
+            ),
             (JUL, 21, "National Participation in Lunar Exploration"),
         ),
-        1972: (DEC, 28, "National Day of Mourning for former President Harry S. Truman"),
-        1973: (JAN, 25, "National Day of Mourning for former President Lyndon B. Johnson"),
+        1972: (
+            DEC,
+            28,
+            "National Day of Mourning for former President Harry S. Truman",
+        ),
+        1973: (
+            JAN,
+            25,
+            "National Day of Mourning for former President Lyndon B. Johnson",
+        ),
         1977: (JUL, 14, "Blackout in New York City"),
         1985: (SEP, 27, "Hurricane Gloria"),
-        1994: (APR, 27, "National Day of Mourning for former President Richard M. Nixon"),
+        1994: (
+            APR,
+            27,
+            "National Day of Mourning for former President Richard M. Nixon",
+        ),
         2001: (
             (SEP, 11, name_sept11_attacks),
             (SEP, 12, name_sept11_attacks),
@@ -283,6 +303,10 @@ class NewYorkStockExchangeStaticHolidays:
             (OCT, 29, name_hurricane_sandy),
             (OCT, 30, name_hurricane_sandy),
         ),
-        2018: (DEC, 5, "National Day of Mourning for former President George H. W. Bush"),
+        2018: (
+            DEC,
+            5,
+            "National Day of Mourning for former President George H. W. Bush",
+        ),
         2025: (JAN, 9, "National Day of Mourning for former President Jimmy Carter"),
     }

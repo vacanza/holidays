@@ -67,7 +67,11 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(
             # Mother's Day.
             tr("Fetin'ny reny"),
-            _timedelta(last_sun_of_may, +7) if last_sun_of_may == whit_sunday else last_sun_of_may,
+            (
+                _timedelta(last_sun_of_may, +7)
+                if last_sun_of_may == whit_sunday
+                else last_sun_of_may
+            ),
         )
 
         # Father's Day.

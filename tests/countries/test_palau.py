@@ -41,7 +41,10 @@ class TestPalau(CommonCountryTests, TestCase):
     def test_half_day_holiday(self):
         self.assertHolidays(
             Palau(categories=HALF_DAY, years=2019),
-            ("2019-09-30", "Preparation for the 25th Independence Day of the Republic of Palau"),
+            (
+                "2019-09-30",
+                "Preparation for the 25th Independence Day of the Republic of Palau",
+            ),
         )
 
     def test_new_years_day_observed(self):

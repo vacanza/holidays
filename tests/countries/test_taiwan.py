@@ -139,7 +139,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-01-02" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-01-02" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -333,7 +335,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-03-29" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-03-29" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -460,7 +464,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Optional Holidays.
         self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-05-01" for year in range(1998, 2050))
+            name,
+            self.optional_holidays,
+            (f"{year}-05-01" for year in range(1998, 2050)),
         )
         self.assertNoHolidayName(name)
 
@@ -537,7 +543,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Optional Holidays.
         self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-09-03" for year in range(1998, 2050))
+            name,
+            self.optional_holidays,
+            (f"{year}-09-03" for year in range(1998, 2050)),
         )
         obs_dt = ("2000-09-04",)
         self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
@@ -589,7 +597,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-09-28" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-09-28" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -630,7 +640,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-10-25" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-10-25" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -652,7 +664,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-10-31" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-10-31" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -674,7 +688,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-11-12" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-11-12" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -705,7 +721,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-25" for year in range(1998, 2001))
+            name,
+            self.government_holidays,
+            (f"{year}-12-25" for year in range(1998, 2001)),
         )
         self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
 
@@ -1309,7 +1327,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-10-10", "National Day"),
             ("2022-10-24", "Taiwan United Nations Day"),
             ("2022-10-25", "Taiwan Retrocession Day"),
-            ("2022-11-12", "Chinese Cultural Renaissance Day; Dr. Sun Yat-sen's Birthday"),
+            (
+                "2022-11-12",
+                "Chinese Cultural Renaissance Day; Dr. Sun Yat-sen's Birthday",
+            ),
             ("2022-12-25", "Constitution Day"),
         )
 

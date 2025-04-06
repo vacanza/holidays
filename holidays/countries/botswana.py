@@ -55,7 +55,10 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         self._add_observed(may_1 := self._add_labor_day("Labour Day"))
         if self._year >= 2016:
             self._add_observed(
-                may_1, name="Labour Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+                may_1,
+                name="Labour Day Holiday",
+                rule=SAT_TO_NEXT_MON,
+                show_observed_label=False,
             )
 
         self._add_ascension_thursday("Ascension Day")
@@ -73,7 +76,10 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
         if self._year >= 2016:
             self._add_observed(
-                dec_26, name="Boxing Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+                dec_26,
+                name="Boxing Day Holiday",
+                rule=SAT_TO_NEXT_MON,
+                show_observed_label=False,
             )
 
 

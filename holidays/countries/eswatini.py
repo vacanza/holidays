@@ -14,7 +14,11 @@ import warnings
 
 from holidays.calendars.gregorian import JAN, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -49,13 +53,13 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         if self._year >= 1987:
             self._add_observed(
                 apr_19 := self._add_holiday_apr_19("King's Birthday"),
-                rule=SUN_TO_NEXT_TUE if apr_19 == self._easter_sunday else SUN_TO_NEXT_MON,
+                rule=(SUN_TO_NEXT_TUE if apr_19 == self._easter_sunday else SUN_TO_NEXT_MON),
             )
 
         if self._year >= 1969:
             self._add_observed(
                 apr_25 := self._add_holiday_apr_25("National Flag Day"),
-                rule=SUN_TO_NEXT_TUE if apr_25 == self._easter_sunday else SUN_TO_NEXT_MON,
+                rule=(SUN_TO_NEXT_TUE if apr_25 == self._easter_sunday else SUN_TO_NEXT_MON),
             )
 
         self._add_observed(self._add_labor_day("Worker's Day"))

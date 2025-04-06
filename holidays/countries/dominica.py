@@ -12,7 +12,11 @@
 
 from holidays.calendars.gregorian import JAN, JUL, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):

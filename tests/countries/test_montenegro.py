@@ -154,14 +154,18 @@ class TestMontenegro(CommonCountryTests, TestCase):
         name = "Svi Sveti"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
-            name, self.catholic_holidays, (f"{year}-11-01" for year in range(2007, 2050))
+            name,
+            self.catholic_holidays,
+            (f"{year}-11-01" for year in range(2007, 2050)),
         )
 
     def test_christmas_eve_catholic(self):
         name = "Badnji dan"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
-            name, self.catholic_holidays, (f"{year}-12-24" for year in range(2007, 2050))
+            name,
+            self.catholic_holidays,
+            (f"{year}-12-24" for year in range(2007, 2050)),
         )
 
     def test_christmas_day_catholic(self):
@@ -344,7 +348,9 @@ class TestMontenegro(CommonCountryTests, TestCase):
         name = "Badnji dan"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
-            name, self.orthodox_holidays, (f"{year}-01-06" for year in range(2007, 2050))
+            name,
+            self.orthodox_holidays,
+            (f"{year}-01-06" for year in range(2007, 2050)),
         )
 
     def test_christmas_day_orthodox(self):

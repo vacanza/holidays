@@ -82,7 +82,8 @@ class TestAlbania(CommonCountryTests, TestCase):
 
     def test_international_workers_day(self):
         self.assertHolidayName(
-            "Dita Ndërkombëtare e Punëtorëve", (f"{year}-05-01" for year in range(1993, 2050))
+            "Dita Ndërkombëtare e Punëtorëve",
+            (f"{year}-05-01" for year in range(1993, 2050)),
         )
 
     def test_mother_teresa_day(self):
@@ -100,7 +101,8 @@ class TestAlbania(CommonCountryTests, TestCase):
 
     def test_flag_and_independence_day(self):
         self.assertHolidayName(
-            "Dita Flamurit dhe e Pavarësisë", (f"{year}-11-28" for year in range(1993, 2050))
+            "Dita Flamurit dhe e Pavarësisë",
+            (f"{year}-11-28" for year in range(1993, 2050)),
         )
 
     def test_liberation_day(self):

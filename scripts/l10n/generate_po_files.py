@@ -62,7 +62,10 @@ class POGenerator:
                         and getattr(cls, "default_language") is not None
                     ):
                         name = getattr(cls, "country", getattr(cls, "market", None))
-                        entity_code_info_mapping[name.upper()] = (cls.default_language, path)
+                        entity_code_info_mapping[name.upper()] = (
+                            cls.default_language,
+                            path,
+                        )
                         break
 
         locale_path = Path("holidays/locale")

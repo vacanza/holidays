@@ -75,7 +75,9 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=UnitedArabEmiratesIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=UnitedArabEmiratesIslamicHolidays,
+            show_estimated=islamic_show_estimated,
         )
         StaticHolidays.__init__(self, UnitedArabEmiratesStaticHolidays)
         super().__init__(*args, **kwargs)

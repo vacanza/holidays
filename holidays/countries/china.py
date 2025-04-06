@@ -14,7 +14,11 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.groups import (
+    ChineseCalendarHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
@@ -454,7 +458,15 @@ class ChinaStaticHolidays:
         2012: (JUN, 22, dragon_boat_festival),  # observed from Jun 23
         2015: (OCT, 6, mid_autumn_festival),  # observed from Sep 27
         2020: (
-            (JAN, 30, chinese_new_year),  # Spring Festival (extended due to Covid-19 decree)
-            (OCT, 6, mid_autumn_festival),  # observed from Oct 1, overlap with National Day
+            (
+                JAN,
+                30,
+                chinese_new_year,
+            ),  # Spring Festival (extended due to Covid-19 decree)
+            (
+                OCT,
+                6,
+                mid_autumn_festival,
+            ),  # observed from Oct 1, overlap with National Day
         ),
     }

@@ -217,7 +217,8 @@ class TestArgs(unittest.TestCase):
         self.assertSetEqual(hb.years, {2013, 2014, 2015})
 
         self.assertSetEqual(
-            HolidayBase(years=range(2010, 2016)).years, {2010, 2011, 2012, 2013, 2014, 2015}
+            HolidayBase(years=range(2010, 2016)).years,
+            {2010, 2011, 2012, 2013, 2014, 2015},
         )
         self.assertSetEqual(HolidayBase(years=(2013, 2015, 2015)).years, {2013, 2015})
         self.assertSetEqual(HolidayBase(years=(2013.0, 2015.0, 2015.0)).years, {2013, 2015})
@@ -255,7 +256,12 @@ class TestCategories(unittest.TestCase):
         self.assertEqual(ccc.categories, {TestCategories.CustomCategoryClass.default_category})
         for name in ("CC Holiday",):
             self.assertTrue(ccc.get_named(name, lookup="exact"))
-        for name in ("CC1 Holiday", "CC2 Holiday", "SD_1 CC_1 Holiday", "SD_2 CC Holiday"):
+        for name in (
+            "CC1 Holiday",
+            "CC2 Holiday",
+            "SD_1 CC_1 Holiday",
+            "SD_2 CC Holiday",
+        ):
             self.assertFalse(ccc.get_named(name, lookup="exact"))
 
         # Default category with subdiv.
@@ -270,7 +276,8 @@ class TestCategories(unittest.TestCase):
         TestCategories.CustomCategoryClass.default_category = None
         self.assertRaises(ValueError, lambda: TestCategories.CustomCategoryClass(years=2024))
         self.assertRaises(
-            ValueError, lambda: TestCategories.CustomCategoryClass(years=2024, subdiv="SD_1")
+            ValueError,
+            lambda: TestCategories.CustomCategoryClass(years=2024, subdiv="SD_1"),
         )
 
         # Explicitly set category.
@@ -404,7 +411,8 @@ class TestGetList(unittest.TestCase):
 
         hb_combined = hb_subdiv_1 + hb_subdiv_2
         self.assertEqual(
-            hb_combined["2021-08-10"], "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday"
+            hb_combined["2021-08-10"],
+            "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday",
         )
         self.assertListEqual(
             hb_combined.get_list("2021-08-10"),
@@ -490,7 +498,12 @@ class TestGetNamed(unittest.TestCase):
         hb = CountryStub1(years=2022)
         for name in ("new year's", "New Year's", "New Year's day"):
             self.assertListEqual(hb.get_named(name, lookup="istartswith"), [date(2022, 1, 1)])
-        for name in ("New Year Day", "New Year holiday", "New Year's Day Holiday", "year"):
+        for name in (
+            "New Year Day",
+            "New Year holiday",
+            "New Year's Day Holiday",
+            "year",
+        ):
             self.assertListEqual(hb.get_named(name, lookup="istartswith"), [])
         self.assertListEqual(
             hb.get_named("independence day", lookup="istartswith"), [date(2022, 7, 4)]
@@ -507,7 +520,12 @@ class TestGetNamed(unittest.TestCase):
         hb = CountryStub1(years=2022)
         for name in ("New Year's", "New Year"):
             self.assertListEqual(hb.get_named(name, lookup="startswith"), [date(2022, 1, 1)])
-        for name in ("New Year Day", "New Year Holiday", "New Year's Day Holiday", "year"):
+        for name in (
+            "New Year Day",
+            "New Year Holiday",
+            "New Year's Day Holiday",
+            "year",
+        ):
             self.assertListEqual(hb.get_named(name, lookup="startswith"), [])
         self.assertListEqual(
             hb.get_named("Independence Day", lookup="startswith"), [date(2022, 7, 4)]
@@ -632,7 +650,8 @@ class TestHolidaySum(unittest.TestCase):
         self.hb_combined = CountryStub1(years=2014, subdiv="Subdiv 1")
         self.hb_combined += CountryStub1(years=2014, subdiv="Subdiv 2")
         self.assertEqual(
-            self.hb_combined["2014-08-10"], "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday"
+            self.hb_combined["2014-08-10"],
+            "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday",
         )
 
         self.assertRaises(TypeError, lambda: self.hb_1 + {})
@@ -1383,5 +1402,6 @@ class TestClosestHoliday(unittest.TestCase):
 
     def test_get_closest_holiday_invalid_direction(self):
         self.assertRaises(
-            AttributeError, lambda: HolidayBase().get_closest_holiday(direction="invalid")
+            AttributeError,
+            lambda: HolidayBase().get_closest_holiday(direction="invalid"),
         )

@@ -75,7 +75,8 @@ class TestBurundi(CommonCountryTests, TestCase):
 
     def test_rwagasore_day(self):
         self.assertHolidayName(
-            "Prince Louis Rwagasore Day", (f"{year}-10-13" for year in range(1962, 2050))
+            "Prince Louis Rwagasore Day",
+            (f"{year}-10-13" for year in range(1962, 2050)),
         )
 
     def test_ndadaye_day(self):

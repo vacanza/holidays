@@ -13,7 +13,18 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import BANK, HALF_DAY, PUBLIC
 from holidays.countries.australia import Australia, AU, AUS
 from tests.common import CommonCountryTests
@@ -460,7 +471,9 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertHoliday(self.subdiv_holidays["ACT"], "2020-04-20", "2021-04-25")
         self.assertHoliday(self.subdiv_holidays["QLD"], "2010-12-28", "2011-01-03", "2012-06-11")
         self.assertNoNonObservedHoliday(
-            Australia(subdiv="QLD", observed=False, years=(2010, 2011)), "2010-12-28", "2011-01-03"
+            Australia(subdiv="QLD", observed=False, years=(2010, 2011)),
+            "2010-12-28",
+            "2011-01-03",
         )
         self.assertHoliday(self.subdiv_holidays["WA"], "2011-04-26")
 
@@ -681,7 +694,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-01-03", "New Year's Day; New Year's Day (observed)"),
             ("2022-01-26", "Australia Day"),
             ("2022-03-07", "Labour Day"),
-            ("2022-03-14", "Adelaide Cup Day; Canberra Day; Eight Hours Day; Labour Day"),
+            (
+                "2022-03-14",
+                "Adelaide Cup Day; Canberra Day; Eight Hours Day; Labour Day",
+            ),
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Easter Saturday"),
             ("2022-04-17", "Easter Sunday"),
@@ -716,7 +732,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-01-03", "New Year's Day; New Year's Day (observed)"),
             ("2022-01-26", "Australia Day"),
             ("2022-03-07", "Labor Day"),
-            ("2022-03-14", "Adelaide Cup Day; Canberra Day; Eight Hours Day; Labor Day"),
+            (
+                "2022-03-14",
+                "Adelaide Cup Day; Canberra Day; Eight Hours Day; Labor Day",
+            ),
             ("2022-04-15", "Good Friday"),
             ("2022-04-16", "Easter Saturday"),
             ("2022-04-17", "Easter Sunday"),
@@ -771,6 +790,9 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2022-12-24", "วันคริสต์มาสอีฟ (ตั้งแต่ 19:00 น.)"),
             ("2022-12-25", "วันคริสต์มาส"),
             ("2022-12-26", "ชดเชยวันคริสต์มาส; วันสถาปนา; วันเปิดกล่องของขวัญ"),
-            ("2022-12-27", "ชดเชยวันคริสต์มาส; ชดเชยวันสถาปนา; ชดเชยวันเปิดกล่องของขวัญ; วันเปิดกล่องของขวัญ"),
+            (
+                "2022-12-27",
+                "ชดเชยวันคริสต์มาส; ชดเชยวันสถาปนา; ชดเชยวันเปิดกล่องของขวัญ; วันเปิดกล่องของขวัญ",
+            ),
             ("2022-12-31", "วันสิ้นปี (ตั้งแต่ 19:00 น.)"),
         )

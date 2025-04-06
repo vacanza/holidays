@@ -45,7 +45,10 @@ class TestHaiti(CommonCountryTests, TestCase):
             ("2023-10-17", "Mort de Dessalines"),
             ("2023-11-01", "La Toussaint"),
             ("2023-11-02", "Fête des Morts"),
-            ("2023-11-18", "Commémoration de la Bataille de Vertières; Jour des Forces Armées"),
+            (
+                "2023-11-18",
+                "Commémoration de la Bataille de Vertières; Jour des Forces Armées",
+            ),
             ("2023-12-25", "Noël"),
         )
 
@@ -66,7 +69,10 @@ class TestHaiti(CommonCountryTests, TestCase):
             ("2025-10-17", "Mort de Dessalines"),
             ("2025-11-01", "La Toussaint"),
             ("2025-11-02", "Fête des Morts"),
-            ("2025-11-18", "Commémoration de la Bataille de Vertières; Jour des Forces Armées"),
+            (
+                "2025-11-18",
+                "Commémoration de la Bataille de Vertières; Jour des Forces Armées",
+            ),
             ("2025-12-25", "Noël"),
         )
 
@@ -92,7 +98,10 @@ class TestHaiti(CommonCountryTests, TestCase):
             ("2024-10-17", "Mort de Dessalines"),
             ("2024-11-01", "La Toussaint"),
             ("2024-11-02", "Fête des Morts"),
-            ("2024-11-18", "Commémoration de la Bataille de Vertières; Jour des Forces Armées"),
+            (
+                "2024-11-18",
+                "Commémoration de la Bataille de Vertières; Jour des Forces Armées",
+            ),
             ("2024-12-05", "Jour de la Découverte"),
             ("2024-12-25", "Noël"),
         )
@@ -120,7 +129,10 @@ class TestHaiti(CommonCountryTests, TestCase):
             ("2024-10-17", "Death of Dessalines"),
             ("2024-11-01", "All Saints' Day"),
             ("2024-11-02", "Day of the Dead"),
-            ("2024-11-18", "Armed Forces Day; Commemoration of the Battle of Vertieres"),
+            (
+                "2024-11-18",
+                "Armed Forces Day; Commemoration of the Battle of Vertieres",
+            ),
             ("2024-12-05", "Discovery Day"),
             ("2024-12-25", "Christmas Day"),
         )
@@ -142,13 +154,19 @@ class TestHaiti(CommonCountryTests, TestCase):
             ("2024-05-18", "Fiesta de la Bandera y la Universidad"),
             ("2024-05-23", "Día de la Soberanía Nacional"),
             ("2024-05-30", "Fête-Dieu"),
-            ("2024-06-27", "Fiesta de Nuestra Señora del Perpetuo Socorro, patrona de Haití"),
+            (
+                "2024-06-27",
+                "Fiesta de Nuestra Señora del Perpetuo Socorro, patrona de Haití",
+            ),
             ("2024-08-15", "Asunción de María"),
             ("2024-09-20", "Aniversario del Nacimiento de Jean-Jacques Dessalines"),
             ("2024-10-17", "Muerte de Dessalines"),
             ("2024-11-01", "Día de Todos los Santos"),
             ("2024-11-02", "Día de Muertos"),
-            ("2024-11-18", "Conmemoración de la Batalla de Vertières; Día de las Fuerzas Armadas"),
+            (
+                "2024-11-18",
+                "Conmemoración de la Batalla de Vertières; Día de las Fuerzas Armadas",
+            ),
             ("2024-12-05", "Día del Descubrimiento"),
             ("2024-12-25", "Navidad"),
         )

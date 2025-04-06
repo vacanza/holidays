@@ -1,39 +1,66 @@
-from datetime import timedelta
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+import calendar
+from datetime import date, timedelta
 
-def get_long_weekends(holidays):
+
+def get_long_weekends(country, subdiv=None, years=None):
     """
-    Finds all long weekends in a given year's holidays.
-    A long weekend is defined as a holiday that falls on Friday or Monday,
-    or when taking one day off (bridge day) results in a 4-day weekend.
-
-    Args:
-        holidays (dict): A dictionary of holiday dates (as datetime.date) and names.
-
-    Returns:
-        list of tuples: Each tuple contains (start_date, end_date, [list of holiday names]).
+    Returns a list of long weekends (i.e. consecutive non-working days) for the given country.
+    A long weekend is defined as a sequence of at least 3 non-working days (weekends + holidays).
     """
-    holiday_dates = sorted(holidays.items())
-    weekends = []
+    from holidays import (
+        list_supported_years,
+        country_holidays,
+    )
 
-    for i, (date, name) in enumerate(holiday_dates):
-        weekday = date.weekday()
+    if years is None:
+        years = list_supported_years(country)
+    elif isinstance(years, int):
+        years = [years]
 
-        if weekday == 4:  # Friday
-            end = date + timedelta(days=2)
-            weekends.append((date, end, [name]))
+    long_weekends = []
 
-        elif weekday == 0:  # Monday
-            start = date - timedelta(days=2)
-            weekends.append((start, date, [name]))
+    for year in years:
+        # Get all holidays for the given country/year/subdivision
+        holidays_set = set(country_holidays(country, subdiv=subdiv, years=year).keys())
 
-        elif weekday == 1 and i > 0:  # Tuesday (bridge Monday)
-            prev_date, prev_name = holiday_dates[i - 1]
-            if (date - prev_date).days == 4:
-                weekends.append((prev_date, date, [prev_name, name]))
+        # Build a set of all non-working days (holidays + weekends)
+        start_date = date(year, 1, 1)
+        end_date = date(year, 12, 31)
 
-        elif weekday == 3 and i + 1 < len(holiday_dates):  # Thursday (bridge Friday)
-            next_date, next_name = holiday_dates[i + 1]
-            if (next_date - date).days == 4:
-                weekends.append((date, next_date, [name, next_name]))
+        non_working_days = set()
 
-    return weekends
+        current = start_date
+        while current <= end_date:
+            if current.weekday() >= 5 or current in holidays_set:
+                non_working_days.add(current)
+            current += timedelta(days=1)
+
+        # Now find sequences of 3 or more consecutive non-working days
+        current = start_date
+        while current <= end_date:
+            if current in non_working_days:
+                sequence = [current]
+                next_day = current + timedelta(days=1)
+                while next_day in non_working_days:
+                    sequence.append(next_day)
+                    next_day += timedelta(days=1)
+
+                if len(sequence) >= 3:
+                    long_weekends.append(sequence)
+
+                current = next_day
+            else:
+                current += timedelta(days=1)
+
+    return long_weekends

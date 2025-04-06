@@ -13,7 +13,19 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -25,7 +37,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Tanzania(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Tanzania holidays.
 

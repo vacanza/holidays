@@ -64,7 +64,8 @@ class Jersey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Prior to 2004, in-lieu are only given for Sundays.
         # https://www.jerseylaw.je/laws/enacted/Pages/RO-123-2004.aspx
         kwargs.setdefault(
-            "rule", SUN_TO_NEXT_WORKDAY if dt < date(2004, OCT, 12) else self._observed_rule
+            "rule",
+            SUN_TO_NEXT_WORKDAY if dt < date(2004, OCT, 12) else self._observed_rule,
         )
         return super()._add_observed(dt, **kwargs)
 

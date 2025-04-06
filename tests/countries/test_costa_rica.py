@@ -258,7 +258,10 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertHolidays(
             CostaRica(categories=OPTIONAL, years=2022),
             ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
-            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
+            (
+                "2022-09-04",
+                "Día de la Persona Negra y la Cultura Afrocostarricense (observado)",
+            ),
             ("2022-12-05", "Día de la Abolición del Ejército (observado)"),
         )
 
@@ -280,7 +283,10 @@ class TestCostaRica(CommonCountryTests, TestCase):
         self.assertHolidays(
             CostaRica(categories=OPTIONAL, years=2023),
             ("2023-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
-            ("2023-09-03", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
+            (
+                "2023-09-03",
+                "Día de la Persona Negra y la Cultura Afrocostarricense (observado)",
+            ),
             ("2023-12-01", "Día de la Abolición del Ejército"),
         )
 
@@ -294,7 +300,10 @@ class TestCostaRica(CommonCountryTests, TestCase):
             ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
             ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
             ("2022-08-15", "Día de la Madre"),
-            ("2022-09-04", "Día de la Persona Negra y la Cultura Afrocostarricense (observado)"),
+            (
+                "2022-09-04",
+                "Día de la Persona Negra y la Cultura Afrocostarricense (observado)",
+            ),
             ("2022-09-19", "Día de la Independencia (observado)"),
             ("2022-12-05", "Día de la Abolición del Ejército (observado)"),
             ("2022-12-25", "Navidad"),
@@ -311,7 +320,10 @@ class TestCostaRica(CommonCountryTests, TestCase):
             ("2022-07-25", "Annexation of the Party of Nicoya to Costa Rica"),
             ("2022-08-02", "Feast of Our Lady of the Angels"),
             ("2022-08-15", "Mother's Day"),
-            ("2022-09-04", "Day of the Black Person and Afro-Costa Rican Culture (observed)"),
+            (
+                "2022-09-04",
+                "Day of the Black Person and Afro-Costa Rican Culture (observed)",
+            ),
             ("2022-09-19", "Independence Day (observed)"),
             ("2022-12-05", "Army Abolition Day (observed)"),
             ("2022-12-25", "Christmas Day"),
@@ -328,7 +340,10 @@ class TestCostaRica(CommonCountryTests, TestCase):
             ("2022-07-25", "День приєднання Нікої"),
             ("2022-08-02", "Свято Богоматері Ангелів"),
             ("2022-08-15", "День матері"),
-            ("2022-09-04", "День чорношкірої людини та афро-костариканської культури (вихідний)"),
+            (
+                "2022-09-04",
+                "День чорношкірої людини та афро-костариканської культури (вихідний)",
+            ),
             ("2022-09-19", "День незалежності (вихідний)"),
             ("2022-12-05", "День ліквідації армії (вихідний)"),
             ("2022-12-25", "Різдво Христове"),

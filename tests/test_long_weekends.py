@@ -1,29 +1,20 @@
-import unittest
-from datetime import date
-from utils.long_weekends import get_long_weekends
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
 
-class TestLongWeekends(unittest.TestCase):
-    def test_empty_holidays(self):
-        holidays = {}
-        result = get_long_weekends(holidays)
-        self.assertEqual(result, [])
 
-    def test_consecutive_holidays(self):
-        holidays = {
-            date(2023, 1, 26): "Republic Day",       # Thursday
-            date(2023, 1, 27): "Bridge Leave",        # Friday
-        }
-        result = get_long_weekends(holidays)
-        self.assertTrue(any("Bridge Leave" in item[2] for item in result))
+def test_get_long_weekends_basic():
+    from holidays.long_weekends import get_long_weekends
 
-    def test_year_boundary(self):
-        holidays = {
-            date(2023, 12, 29): "Year End Friday",    # Friday
-            date(2024, 1, 1): "New Year Monday",      # Monday
-        }
-        result = get_long_weekends(holidays)
-        self.assertTrue(any("Year End Friday" in item[2] for item in result))
-        self.assertTrue(any("New Year Monday" in item[2] for item in result))
-
-if __name__ == "__main__":
-    unittest.main()
+    weekends = get_long_weekends("US", years=2024)
+    assert isinstance(weekends, list)
+    for seq in weekends:
+        assert len(seq) >= 3

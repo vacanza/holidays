@@ -255,7 +255,11 @@ def financial_holidays(
 
     try:
         return getattr(holidays, market)(
-            years=years, subdiv=subdiv, expand=expand, observed=observed, language=language
+            years=years,
+            subdiv=subdiv,
+            expand=expand,
+            observed=observed,
+            language=language,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
@@ -276,7 +280,8 @@ def CountryHoliday(  # noqa: N802
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 

@@ -15,7 +15,18 @@ from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.helpers import _normalize_tuple
 
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"

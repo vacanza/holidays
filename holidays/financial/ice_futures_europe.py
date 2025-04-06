@@ -11,7 +11,11 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NONE,
+    SUN_TO_NEXT_MON,
+)
 
 
 class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):

@@ -235,7 +235,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # If on Saturday or Sunday, observed on Friday
         name = "Christmas Eve"
         self._add_observed(
-            self._add_christmas_eve(name), name=name, rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI
+            self._add_christmas_eve(name),
+            name=name,
+            rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI,
         )
 
     def _populate_subdiv_holidays(self):
@@ -243,7 +245,15 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             return None
 
         # Martin Luther King Jr. Day
-        if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
+        if self._year >= 1986 and self.subdiv not in {
+            "AL",
+            "AR",
+            "AZ",
+            "GA",
+            "ID",
+            "MS",
+            "NH",
+        }:
             self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
 
         # Washington's Birthday
@@ -462,9 +472,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
             name = "Inauguration Day"
             self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
+                (
+                    self._add_holiday_jan_20(name)
+                    if self._year >= 1937
+                    else self._add_holiday_mar_4(name)
+                ),
                 rule=SUN_TO_NEXT_MON,
             )
 
@@ -640,9 +652,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
             name = "Inauguration Day"
             self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
+                (
+                    self._add_holiday_jan_20(name)
+                    if self._year >= 1937
+                    else self._add_holiday_mar_4(name)
+                ),
                 rule=SUN_TO_NEXT_MON,
             )
 
@@ -677,9 +691,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Inauguration Day
             name = "Inauguration Day"
             self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
+                (
+                    self._add_holiday_jan_20(name)
+                    if self._year >= 1937
+                    else self._add_holiday_mar_4(name)
+                ),
                 rule=SUN_TO_NEXT_MON,
             )
 
@@ -1033,9 +1049,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
             name = "Inauguration Day"
             self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
+                (
+                    self._add_holiday_jan_20(name)
+                    if self._year >= 1937
+                    else self._add_holiday_mar_4(name)
+                ),
                 rule=SUN_TO_NEXT_MON,
             )
 

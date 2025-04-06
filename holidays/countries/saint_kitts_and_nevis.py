@@ -13,7 +13,11 @@
 from holidays.calendars.gregorian import FEB, MAR, APR, JUL, AUG, SEP, DEC, SUN
 from holidays.constants import HALF_DAY, PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+)
 
 
 class SaintKittsAndNevis(

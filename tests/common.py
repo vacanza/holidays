@@ -121,7 +121,8 @@ class TestCase:
     def assertAliases(self, cls, *aliases):  # noqa: N802
         """Assert aliases match."""
         self.assertTrue(
-            issubclass(cls, HolidayBase), "The entity object must be a subclass of `HolidayBase`"
+            issubclass(cls, HolidayBase),
+            "The entity object must be a subclass of `HolidayBase`",
         )
 
         type_error_message = "The entity alias object must be a subclass of the entity class."

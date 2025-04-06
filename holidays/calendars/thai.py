@@ -343,12 +343,14 @@ class _ThaiLunisolar:
 
         return _timedelta(
             start_date,
-            +102
-            if (
-                year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-                and not self.__is_khmer_calendar(calendar)
-            )
-            else +73,
+            (
+                +102
+                if (
+                    year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
+                    and not self.__is_khmer_calendar(calendar)
+                )
+                else +73
+            ),
         )
 
     def visakha_bucha_date(self, year: int, calendar=None) -> Optional[date]:
@@ -387,12 +389,14 @@ class _ThaiLunisolar:
 
         return _timedelta(
             start_date,
-            +191
-            if (
-                year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-                and not self.__is_khmer_calendar(calendar)
-            )
-            else +161,
+            (
+                +191
+                if (
+                    year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
+                    and not self.__is_khmer_calendar(calendar)
+                )
+                else +161
+            ),
         )
 
     def preah_neangkoal_date(self, year: int) -> Optional[date]:
@@ -461,12 +465,14 @@ class _ThaiLunisolar:
 
         return _timedelta(
             start_date,
-            +199
-            if (
-                year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-                and not self.__is_khmer_calendar(calendar)
-            )
-            else +169,
+            (
+                +199
+                if (
+                    year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
+                    and not self.__is_khmer_calendar(calendar)
+                )
+                else +169
+            ),
         )
 
     def asarnha_bucha_date(self, year: int) -> Optional[date]:

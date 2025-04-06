@@ -32,7 +32,8 @@ class TestBrazil(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "Confraternização Universal", (f"{year}-01-01" for year in range(1890, 2050))
+            "Confraternização Universal",
+            (f"{year}-01-01" for year in range(1890, 2050)),
         )
 
     def test_republic_constitution_day(self):
@@ -74,7 +75,8 @@ class TestBrazil(CommonCountryTests, TestCase):
     def test_tiradentes_day(self):
         name = "Tiradentes"
         self.assertHolidayName(
-            name, (f"{year}-04-21" for year in set(range(1890, 2050)).difference({1931, 1932}))
+            name,
+            (f"{year}-04-21" for year in set(range(1890, 2050)).difference({1931, 1932})),
         )
         self.assertNoHoliday("1931-04-21", "1932-04-21")
         self.assertNoHolidayName(name, 1931, 1932)
@@ -701,7 +703,10 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-03-25", "Abolition of slavery in Ceará"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-17", "Our Lady of Penha"),
-            ("2023-04-21", "Founding of Brasilia; Tiradentes' Day; Tiradentes' Execution"),
+            (
+                "2023-04-21",
+                "Founding of Brasilia; Tiradentes' Day; Tiradentes' Execution",
+            ),
             ("2023-04-23", "Saint George's Day"),
             ("2023-05-01", "Worker's Day"),
             ("2023-06-08", "Corpus Christi"),
@@ -718,7 +723,10 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-08-05", "State Founding Day"),
             ("2023-08-07", "Rio Grande do Norte Day"),
             ("2023-08-13", "Santa Catarina State Day"),
-            ("2023-08-15", "Grão-Pará joining to independence of Brazil; Our Lady of Assumption"),
+            (
+                "2023-08-15",
+                "Grão-Pará joining to independence of Brazil; Our Lady of Assumption",
+            ),
             ("2023-09-05", "Elevation of Amazonas to province"),
             ("2023-09-07", "Independence Day"),
             ("2023-09-08", "Amazonia Day; Our Lady of Nativity"),
@@ -760,7 +768,10 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-03-25", "День скасування рабства в Сеарі"),
             ("2023-04-07", "Страсна пʼятниця"),
             ("2023-04-17", "День Богоматері Пенья"),
-            ("2023-04-21", "День Тирадентіса; День заснування Бразиліа; День страти Тирадентіса"),
+            (
+                "2023-04-21",
+                "День Тирадентіса; День заснування Бразиліа; День страти Тирадентіса",
+            ),
             ("2023-04-23", "День Святого Георгія"),
             ("2023-05-01", "День трудящих"),
             ("2023-06-08", "Свято Тіла і Крові Христових"),

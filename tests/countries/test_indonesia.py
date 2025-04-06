@@ -349,7 +349,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
         name = "Hari Lahir Pancasila"
         self.assertHolidayName(name, (f"{year}-06-01" for year in range(2016, 2050)))
         self.assertNoHolidayName(
-            name, (f"{year}-06-01" for year in set(range(1946, 2016)).difference({2000, 2007}))
+            name,
+            (f"{year}-06-01" for year in set(range(1946, 2016)).difference({2000, 2007})),
         )
         self.assertNoHolidayName(name, range(1946, 2016))
 
@@ -369,7 +370,8 @@ class TestIndonesia(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Hari Kemerdekaan Republik Indonesia", (f"{year}-08-17" for year in range(1946, 2050))
+            "Hari Kemerdekaan Republik Indonesia",
+            (f"{year}-08-17" for year in range(1946, 2050)),
         )
 
     def test_armed_forces_day(self):

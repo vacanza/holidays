@@ -139,7 +139,8 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_victory_over_fascism_day(self):
         self.assertHolidayName(
-            "Faşizm üzərində qələbə günü", (f"{year}-05-09" for year in range(1990, 2050))
+            "Faşizm üzərində qələbə günü",
+            (f"{year}-05-09" for year in range(1990, 2050)),
         )
 
     def test_republic_day(self):
@@ -353,7 +354,10 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-05-30", "Müstəqillik Günü (müşahidə olunur)"),
             ("2022-06-15", "Azərbaycan xalqının milli qurtuluş günü"),
             ("2022-06-26", "Azərbaycan Respublikasının Silahlı Qüvvələri günü"),
-            ("2022-06-27", "Azərbaycan Respublikasının Silahlı Qüvvələri günü (müşahidə olunur)"),
+            (
+                "2022-06-27",
+                "Azərbaycan Respublikasının Silahlı Qüvvələri günü (müşahidə olunur)",
+            ),
             ("2022-07-09", "Qurban bayrami"),
             ("2022-07-10", "Qurban bayrami"),
             ("2022-07-11", "Qurban bayrami (müşahidə olunur)"),
@@ -377,7 +381,10 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Yeni il bayramı"),
             ("2023-01-02", "Yeni il bayramı"),
-            ("2023-01-03", "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur)"),
+            (
+                "2023-01-03",
+                "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur)",
+            ),
             ("2023-01-04", "Yeni il bayramı (müşahidə olunur)"),
             ("2023-01-20", "Ümumxalq hüzn günü"),
             ("2023-03-08", "Qadınlar günü"),

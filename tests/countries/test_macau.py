@@ -159,7 +159,10 @@ class TestMacau(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name}的補假", self.gov_holidays, "2022-10-03", "2023-10-04")
         self.assertHolidayName(
-            f"{name_following}後首個工作日", self.gov_holidays, "2011-10-03", "2016-10-04"
+            f"{name_following}後首個工作日",
+            self.gov_holidays,
+            "2011-10-03",
+            "2016-10-04",
         )
         self.assertHolidayName(
             f"{name_following}的補假", self.gov_holidays, "2021-10-04", "2022-10-05"
@@ -353,7 +356,16 @@ class TestMacau(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name_eve_afternoon, self.gov_holidays, range(2024, 2050))
         self.assertNoHolidayName(
-            name_eve_afternoon, self.gov_holidays, 2006, 2007, 2009, 2010, 2012, 2013, 2016, 2023
+            name_eve_afternoon,
+            self.gov_holidays,
+            2006,
+            2007,
+            2009,
+            2010,
+            2012,
+            2013,
+            2016,
+            2023,
         )
         self.assertNoHolidayName(name_eve_afternoon)
 
@@ -369,7 +381,16 @@ class TestMacau(CommonCountryTests, TestCase):
             "2018-02-19",
         )
         self.assertNoHolidayName(
-            name_d4, self.gov_holidays, 2005, 2008, 2009, 2011, 2012, 2015, 2016, range(2019, 2050)
+            name_d4,
+            self.gov_holidays,
+            2005,
+            2008,
+            2009,
+            2011,
+            2012,
+            2015,
+            2016,
+            range(2019, 2050),
         )
         self.assertNoHolidayName(name_d4)
 
@@ -1108,7 +1129,10 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-02-11", "The second day of Lunar New Year"),
             ("2024-02-12", "The third day of Lunar New Year"),
             ("2024-02-13", "Compensatory rest day for Lunar New Year's Day"),
-            ("2024-02-14", "Compensatory rest day for The second day of Lunar New Year"),
+            (
+                "2024-02-14",
+                "Compensatory rest day for The second day of Lunar New Year",
+            ),
             ("2024-03-29", "Good Friday"),
             ("2024-03-30", "The Day before Easter"),
             ("2024-04-01", "Compensatory rest day for The Day before Easter"),
@@ -1118,7 +1142,10 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-06-10", "Tung Ng Festival (Dragon Boat Festival)"),
             ("2024-09-18", "The Day following Chong Chao (Mid-Autumn) Festival"),
             ("2024-10-01", "National Day of the People's Republic of China"),
-            ("2024-10-02", "The day following National Day of the People's Republic of China"),
+            (
+                "2024-10-02",
+                "The day following National Day of the People's Republic of China",
+            ),
             ("2024-10-11", "Chung Yeung Festival (Festival of Ancestors)"),
             ("2024-11-02", "All Soul's Day"),
             ("2024-11-04", "Compensatory rest day for All Soul's Day"),
@@ -1141,7 +1168,10 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-02-11", "The second day of Chinese New Year"),
             ("2024-02-12", "The third day of Chinese New Year"),
             ("2024-02-13", "Compensatory rest day for Chinese New Year's Day"),
-            ("2024-02-14", "Compensatory rest day for The second day of Chinese New Year"),
+            (
+                "2024-02-14",
+                "Compensatory rest day for The second day of Chinese New Year",
+            ),
             ("2024-03-29", "Good Friday"),
             ("2024-03-30", "The Day before Easter"),
             ("2024-04-01", "Compensatory rest day for The Day before Easter"),
@@ -1151,7 +1181,10 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-06-10", "Dragon Boat Festival"),
             ("2024-09-18", "The Day following Mid-Autumn Festival"),
             ("2024-10-01", "National Day of the People's Republic of China"),
-            ("2024-10-02", "The day following National Day of the People's Republic of China"),
+            (
+                "2024-10-02",
+                "The day following National Day of the People's Republic of China",
+            ),
             ("2024-10-11", "Double Ninth Festival"),
             ("2024-11-02", "All Soul's Day"),
             ("2024-11-04", "Compensatory rest day for All Soul's Day"),
@@ -1173,8 +1206,14 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-02-10", "1.º dia do Novo Ano Lunar"),
             ("2024-02-11", "2.º dia do Novo Ano Lunar"),
             ("2024-02-12", "3.º dia do Novo Ano Lunar"),
-            ("2024-02-13", "Dia de descanso compensatório relativo ao 1.º dia do Novo Ano Lunar"),
-            ("2024-02-14", "Dia de descanso compensatório relativo ao 2.º dia do Novo Ano Lunar"),
+            (
+                "2024-02-13",
+                "Dia de descanso compensatório relativo ao 1.º dia do Novo Ano Lunar",
+            ),
+            (
+                "2024-02-14",
+                "Dia de descanso compensatório relativo ao 2.º dia do Novo Ano Lunar",
+            ),
             ("2024-03-29", "Morte de Cristo"),
             ("2024-03-30", "Véspera da Ressurreição de Cristo"),
             (
@@ -1192,16 +1231,25 @@ class TestMacau(CommonCountryTests, TestCase):
             ("2024-11-02", "Dia de Finados"),
             ("2024-11-04", "Dia de descanso compensatório relativo ao Dia de Finados"),
             ("2024-12-08", "Imaculada Conceição"),
-            ("2024-12-09", "Dia de descanso compensatório relativo ao Imaculada Conceição"),
+            (
+                "2024-12-09",
+                "Dia de descanso compensatório relativo ao Imaculada Conceição",
+            ),
             (
                 "2024-12-20",
                 "Dia Comemorativo do Estabelecimento da Região Administrativa Especial de Macau",
             ),
             ("2024-12-21", "Solstício de Inverno"),
-            ("2024-12-23", "Dia de descanso compensatório relativo ao Solstício de Inverno"),
+            (
+                "2024-12-23",
+                "Dia de descanso compensatório relativo ao Solstício de Inverno",
+            ),
             ("2024-12-24", "Véspera de Natal"),
             ("2024-12-25", "Natal"),
-            ("2024-12-31", "Véspera do Dia da Fraternidade Universal (na parte da tarde)"),
+            (
+                "2024-12-31",
+                "Véspera do Dia da Fraternidade Universal (na parte da tarde)",
+            ),
         )
 
     def test_l10n_th(self):

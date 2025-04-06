@@ -12,7 +12,11 @@
 
 from holidays.calendars.gregorian import JUL, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, MON_TO_NEXT_TUE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SUN_TO_NEXT_MON,
+    MON_TO_NEXT_TUE,
+)
 
 
 class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -79,7 +83,8 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         # Family Day.
         self._add_observed(
-            self._add_christmas_day_two("Family Day"), rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE
+            self._add_christmas_day_two("Family Day"),
+            rule=SUN_TO_NEXT_MON + MON_TO_NEXT_TUE,
         )
 
 

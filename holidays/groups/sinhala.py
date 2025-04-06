@@ -61,7 +61,10 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         added_dates = set()
         for dt_estimated in dts_estimated:
             if dt := self._add_eastern_calendar_holiday(
-                name, dt_estimated, self._sinhala_calendar_show_estimated, days_delta=days_delta
+                name,
+                dt_estimated,
+                self._sinhala_calendar_show_estimated,
+                days_delta=days_delta,
             ):
                 added_dates.add(dt)
 

@@ -40,7 +40,12 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
+from holidays.constants import (
+    HOLIDAY_NAME_DELIMITER,
+    PUBLIC,
+    DEFAULT_START_YEAR,
+    DEFAULT_END_YEAR,
+)
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -534,7 +539,7 @@ class HolidayBase(dict[date, str]):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_from(
-                            -int(number[0]) if date_direction == "before" else +int(number[0]),
+                            (-int(number[0]) if date_direction == "before" else +int(number[0])),
                             WEEKDAYS[weekday],
                             date(self._year, MONTHS[month], int(day)),
                         ),
@@ -713,7 +718,15 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
+        return (
+            "country",
+            "expand",
+            "language",
+            "market",
+            "observed",
+            "subdiv",
+            "years",
+        )
 
     @cached_property
     def _entity_code(self):
@@ -811,9 +824,11 @@ class HolidayBase(dict[date, str]):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
                     self._add_holiday(
-                        self.tr(self.observed_label) % self.tr(name)
-                        if observed
-                        else self.tr(name),
+                        (
+                            self.tr(self.observed_label) % self.tr(name)
+                            if observed
+                            else self.tr(name)
+                        ),
                         month,
                         day,
                     )
@@ -981,7 +996,10 @@ class HolidayBase(dict[date, str]):
         return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
     def get_named(
-        self, holiday_name: str, lookup: str = "icontains", split_multiple_names: bool = True
+        self,
+        holiday_name: str,
+        lookup: str = "icontains",
+        split_multiple_names: bool = True,
     ) -> list[date]:
         """Find all holiday dates matching a given name.
 

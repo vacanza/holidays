@@ -32,8 +32,14 @@ class TestAntiguaAndBarbuda(CommonCountryTests, TestCase):
         name_day_after_general_election = "Day after the General Election"
         for dt, name in (
             ("1993-08-03", "Public Holiday"),
-            ("2008-02-19", "State Funeral of the late The Honourable Charlesworth T. Samuel"),
-            ("2008-03-18", "State Funeral of the late The Honourable Sir George Herbert Walter"),
+            (
+                "2008-02-19",
+                "State Funeral of the late The Honourable Charlesworth T. Samuel",
+            ),
+            (
+                "2008-03-18",
+                "State Funeral of the late The Honourable Sir George Herbert Walter",
+            ),
             ("2018-03-22", name_day_after_general_election),
             ("2023-01-19", name_day_after_general_election),
         ):

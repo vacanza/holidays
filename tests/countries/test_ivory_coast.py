@@ -61,7 +61,8 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_national_peace_day(self):
         self.assertHolidayName(
-            "Journée Nationale de la Paix", (f"{year}-11-15" for year in range(1997, 2050))
+            "Journée Nationale de la Paix",
+            (f"{year}-11-15" for year in range(1997, 2050)),
         )
 
     def test_easter_monday(self):
@@ -213,7 +214,10 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             ("2024-06-17", "Lendemain de la Fête de la Tabaski"),
             ("2024-08-07", "Fête Nationale"),
             ("2024-08-15", "Fête de l’Assomption"),
-            ("2024-09-15", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            (
+                "2024-09-15",
+                "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet",
+            ),
             ("2024-11-01", "Fête de la Toussaint"),
             ("2024-11-15", "Journée Nationale de la Paix"),
             ("2024-12-25", "Fête de Noël"),
@@ -232,7 +236,10 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             ("2025-06-09", "Lundi de Pentecôte"),
             ("2025-08-07", "Fête Nationale"),
             ("2025-08-15", "Fête de l’Assomption"),
-            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            (
+                "2025-09-04",
+                "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet",
+            ),
             ("2025-11-01", "Fête de la Toussaint"),
             ("2025-11-15", "Journée Nationale de la Paix"),
             ("2025-12-25", "Fête de Noël"),

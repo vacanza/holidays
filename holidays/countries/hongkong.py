@@ -208,9 +208,11 @@ class HongKong(
             self._add_observed(
                 oct_1,
                 name=name,
-                rule=WORKDAY_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY
-                if oct_1 == mid_autumn_date or oct_1 == dt_double_ninth
-                else SUN_TO_NEXT_WORKDAY,
+                rule=(
+                    WORKDAY_TO_NEXT_WORKDAY + SAT_SUN_TO_NEXT_WORKDAY
+                    if oct_1 == mid_autumn_date or oct_1 == dt_double_ninth
+                    else SUN_TO_NEXT_WORKDAY
+                ),
             )
 
         if WINTER_SOLSTICE in self.preferred_discretionary_holidays:

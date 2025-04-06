@@ -139,9 +139,15 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2017-04-17", "Monite 'o e Toetu'u"),
             ("2017-04-25", "'Aho Anzac"),
             ("2017-06-05", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2017-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2017-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2017-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
-            ("2017-09-18", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (fakatokanga'i)"),
+            (
+                "2017-09-18",
+                "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (fakatokanga'i)",
+            ),
             ("2017-11-06", "'Aho Konisitutone (fakatokanga'i)"),
             ("2017-11-29", "'Aho malolo 'akapulu 'a Tonga"),
             (
@@ -161,7 +167,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2018-04-02", "Monite 'o e Toetu'u"),
             ("2018-04-25", "'Aho Anzac"),
             ("2018-06-04", "'Aho Tau'ataina"),
-            ("2018-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2018-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2018-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2018-11-05", "'Aho Konisitutone (fakatokanga'i)"),
             (
@@ -184,7 +193,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2019-04-22", "Monite 'o e Toetu'u"),
             ("2019-04-25", "'Aho Anzac"),
             ("2019-06-03", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2019-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2019-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2019-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2019-09-19", "Me'afaka'eiki 'o e Siteiti 'Akilisi Pohiva"),
             ("2019-11-04", "'Aho Konisitutone"),
@@ -209,7 +221,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2020-04-13", "Monite 'o e Toetu'u"),
             ("2020-04-25", "'Aho Anzac"),
             ("2020-06-08", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2020-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2020-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2020-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2020-11-02", "'Aho Konisitutone (fakatokanga'i)"),
             (
@@ -232,7 +247,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2021-04-05", "Monite 'o e Toetu'u"),
             ("2021-04-25", "'Aho Anzac"),
             ("2021-06-07", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2021-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2021-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             (
                 "2021-07-05",
                 (
@@ -263,7 +281,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2022-04-18", "Monite 'o e Toetu'u"),
             ("2022-04-25", "'Aho Anzac"),
             ("2022-06-06", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2022-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2022-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2022-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2022-11-07", "'Aho Konisitutone (fakatokanga'i)"),
             (
@@ -286,7 +307,10 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2024-04-01", "Monite 'o e Toetu'u"),
             ("2024-04-25", "'Aho Anzac"),
             ("2024-06-03", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2024-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2024-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2024-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
             ("2024-11-04", "'Aho Konisitutone"),
             (
@@ -308,9 +332,15 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2023-04-10", "Monite 'o e Toetu'u"),
             ("2023-04-25", "'Aho Anzac"),
             ("2023-06-05", "'Aho Tau'ataina (fakatokanga'i)"),
-            ("2023-07-04", "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule"),
+            (
+                "2023-07-04",
+                "'Aho 'Alo'i 'o 'Ene 'Afio ko e Tu'i 'o Tonga 'oku lolotonga Pule",
+            ),
             ("2023-09-17", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga"),
-            ("2023-09-18", "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (fakatokanga'i)"),
+            (
+                "2023-09-18",
+                "'Aho 'Alo'i 'o e 'Ea ki he Kalauni 'o Tonga (fakatokanga'i)",
+            ),
             ("2023-11-06", "'Aho Konisitutone (fakatokanga'i)"),
             (
                 "2023-12-04",

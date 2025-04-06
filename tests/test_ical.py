@@ -377,7 +377,8 @@ class TestIcalExporter(TestCase):
         lines = output.splitlines(True)
         for line in lines:
             self.assertTrue(
-                line.endswith(CONTENT_LINE_DELIMITER), f"Line did not end with CRLF: {repr(line)}"
+                line.endswith(CONTENT_LINE_DELIMITER),
+                f"Line did not end with CRLF: {repr(line)}",
             )
 
     def test_unique_uid_generation(self):

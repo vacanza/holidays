@@ -14,7 +14,19 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
@@ -73,10 +85,12 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         dts_observed.add(
             self._add_world_war_two_victory_day(
                 # Day of Memory and Honor.
-                tr("Xotira va qadrlash kuni")
-                if self._year >= 1999
-                # Victory Day.
-                else tr("G‘alaba kuni"),
+                (
+                    tr("Xotira va qadrlash kuni")
+                    if self._year >= 1999
+                    # Victory Day.
+                    else tr("G‘alaba kuni")
+                ),
                 is_western=False,
             )
         )

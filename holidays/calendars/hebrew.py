@@ -13,7 +13,19 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 
 HANUKKAH = "HANUKKAH"
 INDEPENDENCE_DAY = "INDEPENDENCE_DAY"

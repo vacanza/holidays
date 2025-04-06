@@ -13,7 +13,11 @@
 from holidays.calendars.gregorian import SEP, NOV
 from holidays.constants import ARMED_FORCES, HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
 class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -119,7 +123,11 @@ class PalauStaticHolidays:
     }
 
     special_half_day_holidays = {
-        2019: (SEP, 30, "Preparation for the 25th Independence Day of the Republic of Palau"),
+        2019: (
+            SEP,
+            30,
+            "Preparation for the 25th Independence Day of the Republic of Palau",
+        ),
     }
 
     special_public_holidays = {

@@ -73,7 +73,7 @@ class Greece(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         else:
             self._add_observed(
                 may_1 := self._add_labor_day(name),
-                rule=MON_TO_NEXT_TUE if may_1 == easter_monday else SAT_SUN_TO_NEXT_WORKDAY,
+                rule=(MON_TO_NEXT_TUE if may_1 == easter_monday else SAT_SUN_TO_NEXT_WORKDAY),
             )
 
         # Dormition of the Mother of God.

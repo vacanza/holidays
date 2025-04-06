@@ -178,9 +178,11 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
                     2020: (JUL, 24),
                     2021: (JUL, 23),
                 }
-                dts_observed.add(
-                    self._add_holiday(name, dates[self._year])
-                ) if self._year in dates else self._add_holiday_2nd_mon_of_oct(name)
+                (
+                    dts_observed.add(self._add_holiday(name, dates[self._year]))
+                    if self._year in dates
+                    else self._add_holiday_2nd_mon_of_oct(name)
+                )
             else:
                 dts_observed.add(self._add_holiday_oct_10(name))
 

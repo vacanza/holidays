@@ -182,7 +182,8 @@ class TestReadme(TestCase):
                     (
                         f"{c} != {s}"
                         for c, s in zip(
-                            supported_countries[country_code], country_subdivisions[country_code]
+                            supported_countries[country_code],
+                            country_subdivisions[country_code],
                         )
                         if c != s
                     )

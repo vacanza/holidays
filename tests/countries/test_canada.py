@@ -249,7 +249,9 @@ class TestCanada(CommonCountryTests, TestCase):
         for prov, holidays in self.prov_hols.items():
             if prov in {"BC", "NT", "NU", "PE", "YT"}:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-09-30" for year in range(start_years[prov], 2050))
+                    name,
+                    holidays,
+                    (f"{year}-09-30" for year in range(start_years[prov], 2050)),
                 )
                 self.assertNoHolidayName(name, holidays, range(1867, start_years[prov]))
             else:
@@ -257,7 +259,9 @@ class TestCanada(CommonCountryTests, TestCase):
             self.assertNoNonObservedHoliday(self.prov_hols_nonobs[prov], dts)
 
         self.assertHolidayName(
-            name, self.prov_opt_hols["AB"], (f"{year}-09-30" for year in range(2021, 2050))
+            name,
+            self.prov_opt_hols["AB"],
+            (f"{year}-09-30" for year in range(2021, 2050)),
         )
 
     def test_thanksgiving_day(self):
@@ -317,7 +321,9 @@ class TestCanada(CommonCountryTests, TestCase):
             if prov in {"AB", "BC", "NB", "NL", "NS", "NT", "NU", "PE", "SK", "YT"}:
                 start_year = 1981 if prov == "NS" else 1931
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-11-11" for year in range(start_year, 2050))
+                    name,
+                    holidays,
+                    (f"{year}-11-11" for year in range(start_year, 2050)),
                 )
                 self.assertNoHoliday(
                     holidays, (f"{year}-11-11" for year in range(1900, start_year))
@@ -333,7 +339,9 @@ class TestCanada(CommonCountryTests, TestCase):
                 self.assertNoHoliday(holidays, dts)
 
         self.assertHolidayName(
-            name, self.prov_opt_hols["MB"], (f"{year}-11-11" for year in range(1931, 2050))
+            name,
+            self.prov_opt_hols["MB"],
+            (f"{year}-11-11" for year in range(1931, 2050)),
         )
 
     def test_boxing_day(self):
@@ -369,7 +377,9 @@ class TestCanada(CommonCountryTests, TestCase):
 
         for prov in ("AB", "NB", "NL"):
             self.assertHolidayName(
-                name, self.prov_opt_hols[prov], (f"{year}-12-26" for year in range(1867, 2050))
+                name,
+                self.prov_opt_hols[prov],
+                (f"{year}-12-26" for year in range(1867, 2050)),
             )
 
     def test_family_day(self):
@@ -703,7 +713,10 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, nu_holidays, range(1867, 2020))
         self.assertNoHoliday(nu_opt_holidays, "1999-07-09", "2000-07-09", "2020-07-09")
         self.assertHolidayName(
-            name, nu_opt_holidays, "2000-04-01", (f"{year}-07-09" for year in range(2001, 2020))
+            name,
+            nu_opt_holidays,
+            "2000-04-01",
+            (f"{year}-07-09" for year in range(2001, 2020)),
         )
         self.assertNoHolidayName(name, nu_opt_holidays, range(1867, 2000), range(2020, 2050))
 

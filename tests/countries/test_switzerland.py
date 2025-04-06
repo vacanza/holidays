@@ -437,7 +437,19 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_assumption_day(self):
         name = "Mariä Himmelfahrt"
-        provinces_that_have = {"AG", "AI", "JU", "LU", "NW", "OW", "SZ", "TI", "UR", "VS", "ZG"}
+        provinces_that_have = {
+            "AG",
+            "AI",
+            "JU",
+            "LU",
+            "NW",
+            "OW",
+            "SZ",
+            "TI",
+            "UR",
+            "VS",
+            "ZG",
+        }
 
         self.assertNoHolidayName(name)
 
@@ -546,7 +558,18 @@ class TestSwitzerland(CommonCountryTests, TestCase):
 
     def test_immaculate_conception(self):
         name = "Mariä Empfängnis"
-        provinces_that_have = {"AG", "AI", "LU", "NW", "OW", "SZ", "TI", "UR", "VS", "ZG"}
+        provinces_that_have = {
+            "AG",
+            "AI",
+            "LU",
+            "NW",
+            "OW",
+            "SZ",
+            "TI",
+            "UR",
+            "VS",
+            "ZG",
+        }
 
         self.assertNoHolidayName(name)
 
@@ -605,7 +628,19 @@ class TestSwitzerland(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
         # When holiday present in NE.
-        ne_years_have = {1977, 1983, 1988, 1994, 2005, 2011, 2016, 2022, 2033, 2039, 2044}
+        ne_years_have = {
+            1977,
+            1983,
+            1988,
+            1994,
+            2005,
+            2011,
+            2016,
+            2022,
+            2033,
+            2039,
+            2044,
+        }
         self.assertHolidayName(
             name, self.prov_hols["NE"], (f"{year}-12-26" for year in ne_years_have)
         )

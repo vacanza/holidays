@@ -28,7 +28,11 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
 )
-from holidays.groups import InternationalHolidays, IslamicHolidays, PersianCalendarHolidays
+from holidays.groups import (
+    InternationalHolidays,
+    IslamicHolidays,
+    PersianCalendarHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 

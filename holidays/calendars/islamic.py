@@ -14,7 +14,20 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.helpers import _normalize_tuple
 
 ALI_AL_RIDA_DEATH = "ALI_AL_RIDA_DEATH"

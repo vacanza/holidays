@@ -13,7 +13,20 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import GOVERNMENT, PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
@@ -25,7 +38,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class TimorLeste(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+    HolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
 ):
     """Timor Leste holidays.
 

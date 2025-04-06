@@ -136,9 +136,17 @@ class AntiguaAndBarbudaStaticHolidays:
         1993: (AUG, 3, "Public Holiday"),
         2008: (
             # State Funeral of the late The Honourable Charlesworth T. Samuel.
-            (FEB, 19, "State Funeral of the late The Honourable Charlesworth T. Samuel"),
+            (
+                FEB,
+                19,
+                "State Funeral of the late The Honourable Charlesworth T. Samuel",
+            ),
             # State Funeral of the late The Honourable Sir George Herbert Walter.
-            (MAR, 18, "State Funeral of the late The Honourable Sir George Herbert Walter"),
+            (
+                MAR,
+                18,
+                "State Funeral of the late The Honourable Sir George Herbert Walter",
+            ),
         ),
         2018: (MAR, 22, day_after_the_general_election),
         2023: (JAN, 19, day_after_the_general_election),

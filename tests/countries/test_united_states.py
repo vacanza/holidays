@@ -672,7 +672,10 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertHolidayName(name_2, self.state_hols[subdiv], range(change_year, 2050))
             self.assertHoliday(self.state_hols[subdiv], dts)
             self.assertNoHolidayName(
-                name_1, self.state_hols[subdiv], range(1865, 1971), range(change_year, 2050)
+                name_1,
+                self.state_hols[subdiv],
+                range(1865, 1971),
+                range(change_year, 2050),
             )
             self.assertNoHolidayName(name_2, self.state_hols[subdiv], range(1865, change_year))
 
@@ -844,7 +847,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, self.state_hols[subdiv], years_no)
             self.assertHolidayName(f"{name} (observed)", self.state_hols[subdiv], obs_dt)
             self.assertNoNonObservedHolidayName(
-                f"{name} (observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+                f"{name} (observed)",
+                UnitedStates(subdiv=subdiv, observed=False),
+                obs_dt,
             )
 
     def test_lincolns_birthday(self):
@@ -859,11 +864,15 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
         for subdiv in ("CT", "IA", "IL", "NJ", "NY"):
             self.assertHolidayName(
-                name, self.state_hols[subdiv], (f"{year}-02-12" for year in range(1971, 2050))
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-02-12" for year in range(1971, 2050)),
             )
             self.assertHolidayName(f"{name} (observed)", self.state_hols[subdiv], obs_dt)
             self.assertNoNonObservedHolidayName(
-                f"{name} (observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+                f"{name} (observed)",
+                UnitedStates(subdiv=subdiv, observed=False),
+                obs_dt,
             )
         obs_dt = (
             "1994-02-11",
@@ -1181,7 +1190,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
         for subdiv in ("MA", "ME"):
             self.assertHolidayName(
-                name, self.state_hols[subdiv], (f"{year}-04-19" for year in range(1894, 1969))
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-04-19" for year in range(1894, 1969)),
             )
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1894))
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
@@ -1827,7 +1838,8 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
             else:
                 self.assertNoHolidayName(
-                    name, UnitedStates(subdiv=subdiv, categories=UNOFFICIAL, years=(1844, 1847))
+                    name,
+                    UnitedStates(subdiv=subdiv, categories=UNOFFICIAL, years=(1844, 1847)),
                 )
                 self.assertHolidayName(name, holidays, dt)
 
@@ -2013,7 +2025,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
             self.assertHolidayName(f"{name} (observed)", self.state_hols[subdiv], obs_dt)
             self.assertNoNonObservedHolidayName(
-                f"{name} (observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+                f"{name} (observed)",
+                UnitedStates(subdiv=subdiv, observed=False),
+                obs_dt,
             )
 
     def test_day_after_christmas(self):
@@ -2063,7 +2077,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
             self.assertHolidayName(f"{name} (observed)", self.state_hols[subdiv], obs_dt)
             self.assertNoNonObservedHolidayName(
-                f"{name} (observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+                f"{name} (observed)",
+                UnitedStates(subdiv=subdiv, observed=False),
+                obs_dt,
             )
 
     def test_frances_xavier_cabrini_day(self):
