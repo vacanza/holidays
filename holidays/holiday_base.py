@@ -40,12 +40,7 @@ from holidays.calendars.gregorian import (
     MONTHS,
     WEEKDAYS,
 )
-from holidays.constants import (
-    HOLIDAY_NAME_DELIMITER,
-    PUBLIC,
-    DEFAULT_START_YEAR,
-    DEFAULT_END_YEAR,
-)
+from holidays.constants import HOLIDAY_NAME_DELIMITER, PUBLIC, DEFAULT_START_YEAR, DEFAULT_END_YEAR
 from holidays.helpers import _normalize_arguments, _normalize_tuple
 
 CategoryArg = Union[str, Iterable[str]]
@@ -293,27 +288,28 @@ class HolidayBase(dict[date, str]):
 
             state:
                 *deprecated* use `subdiv` instead.
-        language:
-            The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code or a
-            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
-            (e.g., "en_US").
 
-            When this parameter is not specified (None):
-            - The behavior depends on the system's LANG environment variable
-            - If LANG is empty or unset, holiday names will be in the country's
-              original language
-            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
-            - This may lead to inconsistent results across different environments
-              (e.g., terminal vs. Jupyter notebooks)
+            language:
+                This is the language in which the holiday names will be shown.
+                You need to give it a 2-letter language code (like "en" for English, "fr"
+                for French) or a combination of the language and country code,
+                joined with an underscore (like "en_US" for English in the United States,
+                or "fr_FR" for French in France).
 
-            For consistent behavior regardless of environment, explicitly specify
-            a language code (e.g., "de_DE" for German, "en_US" for English).
+                If you don't specify this setting (None):
+                - The system will look at the `LANG` setting on your computer.
+                - If `LANG` is empty or not set, the holiday names will be in the original language
+                of the country.
+                - This can cause inconsistent results depending on your environment (for example,
+                the terminal might behave differently than Jupyter notebooks).
 
-            If the language translation is not supported, the original holiday
-            names will be used.
+                To make sure the holiday names are always in the same language, it's best to choose
+                a language code (like "de" for German or "en_US" for English).
 
-            This behaviour will be later updated in version 1
+                If the chosen language isn't supported, the holiday names will stay in the original
+                language.
+
+                This will be updated in version 1.
 
             categories:
                 Requested holiday categories.
@@ -554,7 +550,7 @@ class HolidayBase(dict[date, str]):
                     return lambda name: self._add_holiday(
                         name,
                         _get_nth_weekday_from(
-                            (-int(number[0]) if date_direction == "before" else +int(number[0])),
+                            -int(number[0]) if date_direction == "before" else +int(number[0]),
                             WEEKDAYS[weekday],
                             date(self._year, MONTHS[month], int(day)),
                         ),
@@ -733,15 +729,7 @@ class HolidayBase(dict[date, str]):
 
     @property
     def __attribute_names(self):
-        return (
-            "country",
-            "expand",
-            "language",
-            "market",
-            "observed",
-            "subdiv",
-            "years",
-        )
+        return ("country", "expand", "language", "market", "observed", "subdiv", "years")
 
     @cached_property
     def _entity_code(self):
@@ -839,11 +827,9 @@ class HolidayBase(dict[date, str]):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
                     self._add_holiday(
-                        (
-                            self.tr(self.observed_label) % self.tr(name)
-                            if observed
-                            else self.tr(name)
-                        ),
+                        self.tr(self.observed_label) % self.tr(name)
+                        if observed
+                        else self.tr(name),
                         month,
                         day,
                     )
@@ -1011,10 +997,7 @@ class HolidayBase(dict[date, str]):
         return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
     def get_named(
-        self,
-        holiday_name: str,
-        lookup: str = "icontains",
-        split_multiple_names: bool = True,
+        self, holiday_name: str, lookup: str = "icontains", split_multiple_names: bool = True
     ) -> list[date]:
         """Find all holiday dates matching a given name.
 

@@ -71,26 +71,26 @@ def country_holidays(
             *deprecated* use `subdiv` instead.
 
         language:
-            The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code or a
-            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
-            (e.g., "en_US").
+            This is the language in which the holiday names will be shown.
+            You need to give it a 2-letter language code (like "en" for English, "fr"
+            for French) or a combination of the language and country code,
+            joined with an underscore (like "en_US" for English in the United States,
+            or "fr_FR" for French in France).
 
-            When this parameter is not specified (None):
-            - The behavior depends on the system's LANG environment variable
-            - If LANG is empty or unset, holiday names will be in the country's
-              original language
-            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
-            - This may lead to inconsistent results across different environments
-              (e.g., terminal vs. Jupyter notebooks)
+            If you don't specify this setting (None):
+            - The system will look at the `LANG` setting on your computer.
+            - If `LANG` is empty or not set, the holiday names will be in the original language
+            of the country.
+            - This can cause inconsistent results depending on your environment (for example,
+            the terminal might behave differently than Jupyter notebooks).
 
-            For consistent behavior regardless of environment, explicitly specify
-            a language code (e.g., "de_DE" for German, "en_US" for English).
+            To make sure the holiday names are always in the same language, it's best to choose
+            a language code (like "de" for German or "en_US" for English).
 
-            If the language translation is not supported, the original holiday
-            names will be used.
+            If the chosen language isn't supported, the holiday names will stay in the original
+            language.
 
-            This behaviour will be later updated in version 1
+            This will be updated in version 1.
 
         categories:
             Requested holiday categories.
@@ -251,26 +251,26 @@ def financial_holidays(
             Monday). False may not work for all countries.
 
         language:
-            The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code or a
-            combination of ISO 639-1 and ISO 3166-1 codes joined with "_"
-            (e.g., "en_US").
+            This is the language in which the holiday names will be shown.
+            You need to give it a 2-letter language code (like "en" for English, "fr"
+            for French) or a combination of the language and country code,
+            joined with an underscore (like "en_US" for English in the United States,
+            or "fr_FR" for French in France).
 
-            When this parameter is not specified (None):
-            - The behavior depends on the system's LANG environment variable
-            - If LANG is empty or unset, holiday names will be in the country's
-              original language
-            - If LANG is set (e.g., to C.UTF-8), holiday names will be in English
-            - This may lead to inconsistent results across different environments
-              (e.g., terminal vs. Jupyter notebooks)
+            If you don't specify this setting (None):
+            - The system will look at the `LANG` setting on your computer.
+            - If `LANG` is empty or not set, the holiday names will be in the original language
+            of the country.
+            - This can cause inconsistent results depending on your environment (for example,
+            the terminal might behave differently than Jupyter notebooks).
 
-            For consistent behavior regardless of environment, explicitly specify
-            a language code (e.g., "de_DE" for German, "en_US" for English).
+            To make sure the holiday names are always in the same language, it's best to choose
+            a language code (like "de" for German or "en_US" for English).
 
-            If the language translation is not supported, the original holiday
-            names will be used.
+            If the chosen language isn't supported, the holiday names will stay in the original
+            language.
 
-            This behaviour will be later updated in version 1
+            This will be updated in version 1.
 
     Returns:
         A `HolidayBase` object matching the **market**.
