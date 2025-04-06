@@ -12,55 +12,10 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import APR, AUG, JUL, JUN, MAY, NOV, OCT, SEP
 from holidays.calendars.islamic import _CustomIslamicHolidays
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
-
-
-class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
-    """
-    Sierra Leone Islamic holidays.
-
-    References:
-        * <https://www.timeanddate.com/holidays/sierra-leone/>
-    """
-
-    # Prophet's Birthday
-    MAWLID_DATES = {
-        2018: (11, 21),
-        2019: (11, 10),
-        2020: (10, 29),
-        2021: (10, 18),
-        2022: (10, 8),
-        2023: (9, 27),
-        2024: (9, 15),
-    }
-
-    # Eid al-Fitr
-    EID_AL_FITR_DATES = {
-        2018: (6, 15),
-        2019: (6, 5),
-        2020: (5, 24),
-        2021: (5, 13),
-        2022: (5, 2),
-        2023: (4, 21),
-        2024: (4, 10),
-    }
-
-    # Eid al-Adha
-    EID_AL_ADHA_DATES = {
-        2018: (8, 22),
-        2019: (8, 12),
-        2020: (7, 31),
-        2021: (7, 20),
-        2022: (7, 9),
-        2023: (6, 28),
-        2024: (6, 16),
-    }
 
 
 class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
@@ -93,8 +48,9 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, cls=SierraLeoneIslamicHolidays, show_estimated=False)
-        self._islamic_show_estimated = islamic_show_estimated
+        IslamicHolidays.__init__(
+            self, cls=SierraLeoneIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
@@ -131,27 +87,19 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Prophet's Birthday.
-        for dt in self._add_islamic_holiday(self._add_mawlid_day, tr("Prophet's Birthday")):
+        for dt in self._add_mawlid_day(tr("Prophet's Birthday")):
             dts_observed.add(dt)
 
         # Eid al-Fitr.
-        for dt in self._add_islamic_holiday(self._add_eid_al_fitr_day, tr("Eid al-Fitr")):
+        for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
             dts_observed.add(dt)
 
         # Eid al-Adha.
-        for dt in self._add_islamic_holiday(self._add_eid_al_adha_day, tr("Eid al-Adha")):
+        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
             dts_observed.add(dt)
 
         if self.observed:
             self._populate_observed(dts_observed)
-
-    def _add_islamic_holiday(self, holiday_method, name):
-        """Helper method to add an Islamic holiday with the appropriate estimated label."""
-        if self._islamic_show_estimated:
-            estimated_name = self.tr(self.estimated_label) % self.tr(name)
-        else:
-            estimated_name = name
-        return holiday_method(name=estimated_name)
 
 
 class SL(SierraLeone):
@@ -160,3 +108,45 @@ class SL(SierraLeone):
 
 class SLE(SierraLeone):
     pass
+
+
+class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
+    """
+    Sierra Leone Islamic holidays.
+
+    References:
+        * <https://www.timeanddate.com/holidays/sierra-leone/>
+    """
+
+    # Prophet's Birthday
+    MAWLID_DATES = {
+        2018: (NOV, 21),
+        2019: (NOV, 10),
+        2020: (OCT, 29),
+        2021: (OCT, 18),
+        2022: (OCT, 8),
+        2023: (SEP, 27),
+        2024: (SEP, 15),
+    }
+
+    # Eid al-Fitr
+    EID_AL_FITR_DATES = {
+        2018: (JUN, 15),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
+        2024: (APR, 10),
+    }
+
+    # Eid al-Adha
+    EID_AL_ADHA_DATES = {
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
+    }
