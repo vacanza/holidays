@@ -46,7 +46,7 @@ msgstr ""
 msgid "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"
 msgstr ""
 
-#. King Jigme Khesar Namgyel's Coronation.
+#. Jigme Khesar Namgyel's Coronation
 msgid "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"
 msgstr ""
 

@@ -51,7 +51,7 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         # Birth Anniversary of Third Druk Gyalpo.
         self._add_holiday_may_2(tr("གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"))
 
-        # King Jigme Khesar Namgyel's Coronation.
+        # Jigme Khesar Namgyel's Coronation
         self._add_holiday_nov_1(tr("རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"))
 
         # Birth Anniversary of the Fourth Druk Gyalpo.
