@@ -293,10 +293,10 @@ class HolidayBase(dict[date, str]):
                 This is the language in which the holiday names will be shown.
                 You need to give it a 2-letter language code (like "en" for English, "fr"
                 for French) or a combination of the language and country code,
-                joined with an underscore (like "en_US" for English in the United States,
-                or "fr_FR" for French in France).
+                joined with an underscore (like "en_US" for English in the United States).
 
-                If you don't specify this setting (None):
+                If this is not explicitly set (i.e., `language=None`), the system will fall back
+                to the environment's locale(environment variable):
                 - The system will look at the `LANG` setting on your computer.
                 - If `LANG` is empty or not set, the holiday names will be in the original language
                 of the country.
