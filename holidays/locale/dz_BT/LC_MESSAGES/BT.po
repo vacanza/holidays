@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  English translations for Bhutan Holidays which use the Dzongkha Language
+#  Bhutan Holidays which use the Dzongkha Language
 #
 msgid ""
 msgstr ""
@@ -28,64 +28,64 @@ msgstr ""
 
 #. Nyilo.
 msgid "ཉི་ལོག་"
-msgstr "Nyilo"
+msgstr ""
 
 #. King's Birthday (Day 1).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"
-msgstr "King's Birthday (Day 1)"
+msgstr ""
 
 #. King's Birthday (Day 2).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"
-msgstr "King's Birthday (Day 2)"
+msgstr ""
 
 #. King's Birthday (Day 3).
 msgid "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"
-msgstr "King's Birthday (Day 3)"
+msgstr ""
 
 #. Birth Anniversary of Third Druk Gyalpo.
 msgid "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"
-msgstr "Birth Anniversary of Third Druk Gyalpo"
+msgstr ""
 
 #. Jigme Khesar Namgyel's Coronation
 msgid "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"
-msgstr "Jigme Khesar Namgyel's Coronation"
+msgstr ""
 
 #. Birth Anniversary of the Fourth Druk Gyalpo.
 msgid "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"
-msgstr "Birth Anniversary of the Fourth Druk Gyalpo"
+msgstr ""
 
 #. National Day.
 msgid "རྒྱལ་ཡོངས་དུས་ཆེན།"
-msgstr "National Day"
+msgstr ""
 
 #. Day of Offering.
 msgid "བུ་ལྭ་ཕེུ་ཝི་ཉིམ"
-msgstr "Day of Offering"
+msgstr ""
 
 #. Blessed Rainy Day.
 msgid "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"
-msgstr "Blessed Rainy Day"
+msgstr ""
 
 #. Losar.
 msgid "ལལོ་གསར་"
-msgstr "Losar"
+msgstr ""
 
 #. Buddha Parinirvana.
 msgid "།སངས་རྒྱས་པ་རི་ནིར་ཝན།"
-msgstr "Buddha Parinirvana"
+msgstr ""
 
 #. Buddha's First Sermon.
 msgid "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"
-msgstr "Buddha's First Sermon"
+msgstr ""
 
 #. Birth of Guru Rinpoche.
 msgid "སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"
-msgstr "Birth of Guru Rinpoche"
+msgstr ""
 
 #. Death of Zhabdrung.
 msgid "ཞབས་དྲུང་གི་འདས་དུས།"
-msgstr "Death of Zhabdrung"
+msgstr ""
 
 #. Dashain.
 msgid "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"
-msgstr " Dashain"
+msgstr ""
