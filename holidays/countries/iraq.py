@@ -10,9 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# References -> https://en.wikipedia.org/wiki/Public_holidays_in_Iraq
-# https://www.timeanddate.com/holidays/iraq/
-
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -33,31 +30,45 @@ from holidays.calendars.gregorian import (
     SAT,
 )
 from holidays.groups import (
+    ChristianHolidays,
+    HebrewCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
     PersianCalendarHolidays,
-    ChristianHolidays,
-    HebrewCalendarHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
 
 class Iraq(
+    ChristianHolidays,
+    HebrewCalendarHolidays,
     HolidayBase,
     InternationalHolidays,
     IslamicHolidays,
     PersianCalendarHolidays,
-    ChristianHolidays,
-    HebrewCalendarHolidays,
 ):
+    """Iraq Holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Iraq>
+        * <https://www.timeanddate.com/holidays/iraq/>
+    """
+
     country = "IQ"
     default_language = "ar_IQ"
+    # %s (estimated).
     estimated_label = tr("%s (تقديري)")
     supported_languages = ("ar_IQ", "en_US")
     start_year = 1933
     weekend = {FRI, SAT}
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=IraqIslamicCalender, show_estimated=islamic_show_estimated
