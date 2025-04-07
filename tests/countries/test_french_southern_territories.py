@@ -85,7 +85,9 @@ class TestTF(CommonCountryTests, TestCase):
         self.assertHoliday(f"{year}-05-08" for year in range(1953, 1960))
         self.assertHoliday("1982-05-08")
         self.assertNoHoliday("1960-05-08", "1981-05-08")
-        self.assertNoHolidayName("Fête de la Victoire", FrenchSouthernTerritories(years=range(1960, 1982)))
+        self.assertNoHolidayName(
+            "Fête de la Victoire", FrenchSouthernTerritories(years=range(1960, 1982))
+        )
 
     def test_fete_nationale(self):
         self.assertHoliday("1880-07-14")
@@ -104,7 +106,6 @@ class TestTF(CommonCountryTests, TestCase):
             "2007-05-28",
         )
         self.assertHoliday("2004-05-31", "2008-05-12")
-
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

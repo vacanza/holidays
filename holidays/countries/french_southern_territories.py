@@ -28,7 +28,8 @@ class FrenchSouthernTerritories(ObservedHolidayBase, ChristianHolidays, Internat
     parent_entity = France
     default_language = "fr"
     supported_languages = ("en_US", "fr")
-    start_year = 1801 # Start dates copied from French class as I didn't find any specific reference for ATF.
+    # Start dates copied from France class as I didn't find any specific reference for ATF.
+    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
