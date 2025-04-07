@@ -196,61 +196,70 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         )
 
     def test_new_years_day_observed(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1962, 2050)))
         dt = (
             "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_armed_forces_day_observed(self):
+        name = "Armed Forces Day"
+        self.assertHolidayName(name, (f"{year}-02-18" for year in range(2002, 2050)))
         dt = (
             "2006-02-20",
             "2012-02-20",
             "2017-02-20",
             "2023-02-20",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_international_womens_day_observed(self):
+        name = "International Women's Day"
+        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2018, 2050)))
         dt = (
             "2020-03-09",
             "2025-03-10",
-            "2031-03-10",
-            "2036-03-10",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_labor_day_observed(self):
+        name = "International Worker's Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1962, 2050)))
         dt = (
             "2005-05-02",
             "2011-05-02",
             "2016-05-02",
             "2022-05-03",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day_observed(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1962, 2050)))
         dt = (
             "2005-12-27",
             "2010-12-27",
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day_observed(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1962, 2050)))
         dt = (
-            "2004-12-27",
-            "2010-12-27",
-            "2021-12-27",
-            "2027-12-27",
+            "2009-12-28",
+            "2020-12-28",
+            "2021-12-28",
         )
-        self.assertHoliday(dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
