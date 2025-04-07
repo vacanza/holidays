@@ -261,7 +261,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
-            ("2025-06-19", "Corpus Christi; Labour Day"),
+            ("2025-06-19", "Corpus Christi; Labor Day"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-24", "Republic Day"),

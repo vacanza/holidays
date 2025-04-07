@@ -45,7 +45,7 @@ msgstr "Indian Arrival Day"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. African Emancipation Day.
 msgid "African Emancipation Day"
