@@ -113,6 +113,7 @@ class _ThaiLunisolar:
         * <https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
 
     Example:
+
         >>> from holidays.calendars.thai import _ThaiLunisolar
         >>> thls = _ThaiLunisolar()
         >>> print(thls.visakha_bucha_date(2010))
