@@ -35,9 +35,6 @@ class ThaiCalendarHolidays:
         Asalha Pūjā (also written as Asarnha Bucha Day) is a Buddhist festival
         celebrated on the 15th Waxing Day (Full Moon) of Month 8.
 
-        Khmer variant: always fall on Month 8.
-        Thai variant:  will use Month 8.8 instead for Athikamat years.
-
         https://en.wikipedia.org/wiki/Asalha_Puja
         """
 
@@ -93,9 +90,6 @@ class ThaiCalendarHolidays:
 
         Start of Buddhist Lent (also written as Khao Phansa Day) is a Buddhist
         festival celebrated on the 1st Waning Day of Month 8.
-
-        Khmer variant: always fall on Month 8.
-        Thai variant:  will use Month 8.8 instead for Athikamat years.
 
         https://en.wikipedia.org/wiki/Vassa
         """
