@@ -48,19 +48,19 @@ class _ThaiLunisolar:
     Implemented Thai Lunar Calendar holiday methods:
         * Magha Puja / Makha Bucha / Meak Bochea:
             15th Waxing Day (Full Moon) of Month 3 (On Month 4 for Athikamat Years).
-            KHMER_CALENDAR always falls on Month 3.
+            `KHMER_CALENDAR` always falls on Month 3.
 
         * Vesak / Visakha Bucha / Visaka Bochea:
             15th Waxing Day (Full Moon) of Month 6 (On Month 7 for Athikamat Years).
-            KHMER_CALENDAR always falls on Month 6.
+            `KHMER_CALENDAR` always falls on Month 6.
 
         * Cambodian Royal Ploughing Ceremony / Preah Neangkol:
             4th Waning Day of Month 6 (On Month 7 for Athikamat Years).
-            Defaults to KHMER_CALENDAR (its sole user).
+            Defaults to `KHMER_CALENDAR` (its sole user).
 
         * Buddha's Cremation Day / Atthami Bucha:
             8th Waning Day of Month 6 (On Month 7 for Athikamat Years).
-            KHMER_CALENDAR always falls on Month 6.
+            `KHMER_CALENDAR` always falls on Month 6.
 
         * Asalha Puja / Asarnha Bucha:
             15th Waxing Day (Full Moon) of Month 8 (On Month 8.8 for Athikamat Years).
@@ -281,7 +281,7 @@ class _ThaiLunisolar:
                 The calendar identifier to check.
 
         Returns:
-            True if the calendar is KHMER_CALENDAR, False otherwise.
+            True if the calendar is `KHMER_CALENDAR`, False otherwise.
         """
         return calendar == KHMER_CALENDAR
 
@@ -327,15 +327,18 @@ class _ThaiLunisolar:
         This coincides with the 15th Waxing Day of Month 3
         in Thai Lunar Calendar, or Month 4 in Athikamat years.
 
-        KHMER_CALENDAR will always use Month 3 regardless of year type.
+        `KHMER_CALENDAR` will always use Month 3 regardless of year type.
 
         To calculate, we use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 4
-                     or 29[1] + 30[2] + 29[3] + 15[4] -1 = 102
-        - Athikawan: 15th Waxing Day of Month 3
-                     or 29[1] + 30[2] + 15[3] -1 = 73
-        - Pakatimat: 15th Waxing Day of Month 3
-                     or 29[1] + 30[2] + 15[3] -1 = 73
+
+        * Athikamat:
+            15th Waxing Day of Month 4 or 29[1] + 30[2] + 29[3] + 15[4] -1 = 102
+
+        * Athikawan:
+            15th Waxing Day of Month 3 or 29[1] + 30[2] + 15[3] -1 = 73
+
+        * Pakatimat:
+            15th Waxing Day of Month 3 or 29[1] + 30[2] + 15[3] -1 = 73
 
         Args:
             year:
@@ -371,15 +374,18 @@ class _ThaiLunisolar:
         Also known as "Vesak" and "Buddha Day". This coincides with
         the 15th Waxing Day of Month 6 in Thai Lunar Calendar, or Month 7 in Athikamat years.
 
-        KHMER_CALENDAR will always use Month 6 regardless of year type.
+        `KHMER_CALENDAR` will always use Month 6 regardless of year type.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 7
-                     or 177[1-6] + 15[7] -1 = 191
-        - Athikawan: 15th Waxing Day of Month 6
-                     or 147[1-5] + 15[6] -1 = 161
-        - Pakatimat: 15th Waxing Day of Month 6
-                     or 147[1-5] + 15[6] -1 = 161
+
+        * Athikamat:
+            15th Waxing Day of Month 7 or 177[1-6] + 15[7] -1 = 191
+
+        * Athikawan:
+            15th Waxing Day of Month 6 or 147[1-5] + 15[6] -1 = 161
+
+        * Pakatimat:
+            15th Waxing Day of Month 6 or 147[1-5] + 15[6] -1 = 161
 
         Args:
             year:
@@ -416,12 +422,16 @@ class _ThaiLunisolar:
         coincides with the 4th Waning Day of Month 6 in Khmer Lunar Calendar.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 4th Waning Day of Month 6 (Khmer Lunar Calendar).
-                     or 177[1-5] + 19[6] -1 = 165
-        - Athikawan: 4th Waning Day of Month 6
-                     or 147[1-5] + 19[6] -1 = 165
-        - Pakatimat: 4th Waning Day of Month 6
-                     or 147[1-5] + 19[6] -1 = 165
+
+        * Athikamat:
+            4th Waning Day of Month 6 (Khmer Lunar Calendar) or 177[1-5] + 19[6] -1 = 165
+
+        * Athikawan:
+            4th Waning Day of Month 6 or 147[1-5] + 19[6] -1 = 165
+
+        * Pakatimat:
+            4th Waning Day of Month 6 or 147[1-5] + 19[6] -1 = 165
+
         Or as in simpler terms: "Visakha Bucha" (Khmer Lunar Calendar) +4.
 
         Args:
@@ -443,16 +453,20 @@ class _ThaiLunisolar:
         Also known as "Buddha's Cremation Day". This coincides with
         the 8th Waning Day of Month 6 in Thai Lunar Calendar, or Month 7 in Athikamat years.
 
-        KHMER_CALENDAR will always use Month 6 regardless of year type.
+        `KHMER_CALENDAR` will always use Month 6 regardless of year type.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 8th Waning Day of  Month 7
-                    or 177[1-6] + 23[7] -1 = 199
-        - Athikawan: 8th Waning Day of  Month 6
-                     or 147[1-5] + 23[6] -1 = 169
-        - Pakatimat: 8th Waning Day of  Month 6
-                    or 147[1-5] + 23[6] -1 = 169
-        - Or as in simpler terms: "Visakha Bucha" +8
+
+        * Athikamat:
+            8th Waning Day of  Month 7 or 177[1-6] + 23[7] -1 = 199
+
+        * Athikawan:
+            8th Waning Day of  Month 6 or 147[1-5] + 23[6] -1 = 169
+
+        * Pakatimat:
+            8th Waning Day of  Month 6 or 147[1-5] + 23[6] -1 = 169
+
+        Or as in simpler terms: "Visakha Bucha" +8
 
         Args:
             year:
@@ -492,12 +506,15 @@ class _ThaiLunisolar:
         Lao Start of Buddhist Lent start on this day (1-day earlier than Thai and Khmer ones).
 
         To calculate, we use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 8/8
-                     or 177[1-6] + 29[7] + 30[8] + 15[8.8] -1 = 250
-        - Athikawan: 15th Waxing Day of Month 8
-                     or 177[1-6] + 30[7] + 15[8] -1 = 221
-        - Pakatimat: 15th Waxing Day of Month 8
-                     or 177[1-6] + 29[7] + 15[8] -1 = 220
+
+        * Athikamat:
+            15th Waxing Day of Month 8/8 or 177[1-6] + 29[7] + 30[8] + 15[8.8] -1 = 250
+
+        * Athikawan:
+            15th Waxing Day of Month 8 or 177[1-6] + 30[7] + 15[8] -1 = 221
+
+        * Pakatimat:
+            15th Waxing Day of Month 8 or 177[1-6] + 29[7] + 15[8] -1 = 220
 
         Args:
             year:
@@ -527,13 +544,17 @@ class _ThaiLunisolar:
         in Thai Lunar Calendar, or Month 8.8 in Athikamat years.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 1st Waning Day of Month 8.8
-                     or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
-        - Athikawan: 1st Waning Day of Month 8 ]
-                     or 177[1-6] + 30[7] + 16[8] -1 = 222
-        - Pakatimat: 1st Waning Day of Month 8
-                     or 177[1-6] + 29[7] + 16[8] -1 = 221
-        - Or as in simpler terms: "Asarnha Bucha" +1
+
+        * Athikamat:
+            1st Waning Day of Month 8.8 or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
+
+        * Athikawan:
+            1st Waning Day of Month 8 or 177[1-6] + 30[7] + 16[8] -1 = 222
+
+        * Pakatimat:
+            1st Waning Day of Month 8 or 177[1-6] + 29[7] + 16[8] -1 = 221
+
+        Or as in simpler terms: "Asarnha Bucha" +1
 
         Args:
             year:
@@ -561,13 +582,16 @@ class _ThaiLunisolar:
         Also known as "Boon Khao Padap Din".
         This coincides with the 14th Waning Day of Month 9 in Thai Lunar Calendar.
 
-         To calculate, we use use the following time delta:
-        - Athikamat: 14th Waning Day of Month 9
-                     or 236[1-8] + 30[8.8] + 29[9] -1 = 294
-        - Athikawan: 14th Waning Day of Month 9
-                     or 236[1-8] + 1[7] + 29[9] -1 = 265
-        - Pakatimat: 14th Waning Day of Month 9
-                     or 236[1-8] + 29[9] -1 = 264
+        To calculate, we use use the following time delta:
+
+        * Athikamat:
+            14th Waning Day of Month 9 or 236[1-8] + 30[8.8] + 29[9] -1 = 294
+
+        * Athikawan:
+            14th Waning Day of Month 9 or 236[1-8] + 1[7] + 29[9] -1 = 265
+
+        * Pakatimat:
+            14th Waning Day of Month 9 or 236[1-8] + 29[9] -1 = 264
 
         Args:
             year:
@@ -595,13 +619,16 @@ class _ThaiLunisolar:
         Also known as "Boon Khao Sak".
         This coincides with the 15th Waxing Day of Month 10 in Thai Lunar Calendar.
 
-         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 10
-                     or 265[1-9] + 30[8.8] + 15[10] -1 = 309
-        - Athikawan: 15th Waxing Day of Month 10
-                     or 265[1-9] + 1[7] + 15[10] -1 = 280
-        - Pakatimat: 15th Waxing Day of Month 10
-                     or 265[1-9] + 15[10] -1 = 279
+        To calculate, we use use the following time delta:
+
+        * Athikamat:
+            15th Waxing Day of Month 10 or 265[1-9] + 30[8.8] + 15[10] -1 = 309
+
+        * Athikawan:
+            15th Waxing Day of Month 10 or 265[1-9] + 1[7] + 15[10] -1 = 280
+
+        * Pakatimat:
+            15th Waxing Day of Month 10 or 265[1-9] + 15[10] -1 = 279
 
         Args:
             year:
@@ -629,13 +656,16 @@ class _ThaiLunisolar:
         Also known as "Prachum Bandar".
         This coincides with the 15th Waning Day of Month 10 in Thai Lunar Calendar.
 
-         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waning Day of Month 10
-                     or 265[1-9] + 30[8.8] + 30[10] -1 = 324
-        - Athikawan: 15th Waning Day of Month 10
-                     or 265[1-9] + 1[7] + 30[10] -1 = 295
-        - Pakatimat: 15th Waning Day of Month 10
-                     or 265[1-9] + 30[10] -1 = 294
+        To calculate, we use use the following time delta:
+
+        * Athikamat:
+            15th Waning Day of Month 10 or 265[1-9] + 30[8.8] + 30[10] -1 = 324
+
+        * Athikawan:
+            15th Waning Day of Month 10 or 265[1-9] + 1[7] + 30[10] -1 = 295
+
+        * Pakatimat:
+            15th Waning Day of Month 10 or 265[1-9] + 30[10] -1 = 294
 
         Args:
             year:
@@ -664,12 +694,15 @@ class _ThaiLunisolar:
         This coincides with the 15th Waxing Day of Month 11 in Thai Lunar Calendar.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 11
-                     or 295[1-10] + 30[8.8] + 15[11] -1 = 339
-        - Athikawan: 15th Waxing Day of Month 11
-                     or 295[1-10] + 1[7] + 15[11] -1 = 310
-        - Pakatimat: 15th Waxing Day of Month 11
-                     or 295[1-10] + 15[11] -1 = 309
+
+        * Athikamat:
+            15th Waxing Day of Month 11 or 295[1-10] + 30[8.8] + 15[11] -1 = 339
+
+        * Athikawan:
+            15th Waxing Day of Month 11 or 295[1-10] + 1[7] + 15[11] -1 = 310
+
+        * Pakatimat:
+            15th Waxing Day of Month 11 or 295[1-10] + 15[11] -1 = 309
 
         Args:
             year:
@@ -698,12 +731,15 @@ class _ThaiLunisolar:
         This coincides with the 1st Waning Day of Month 11 in Thai Lunar Calendar.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 1st Waning Day of Month 11
-                     or 295[1-10] + 30[8.8] + 16[11] -1 = 340
-        - Athikawan: 1st Waning Day of Month 11
-                     or 295[1-10] + 1[7] + 16[11] -1 = 311
-        - Pakatimat: 1st Waning Day of Month 11
-                     or 295[1-10] + 16[11] -1 = 310
+
+        * Athikamat:
+            1st Waning Day of Month 11 or 295[1-10] + 30[8.8] + 16[11] -1 = 340
+
+        * Athikawan:
+            1st Waning Day of Month 11 or 295[1-10] + 1[7] + 16[11] -1 = 311
+
+        * Pakatimat:
+            1st Waning Day of Month 11 or 295[1-10] + 16[11] -1 = 310
 
         Args:
             year:
@@ -732,12 +768,15 @@ class _ThaiLunisolar:
         This coincides with the 15th Waxing Day of Month 12 in Thai Lunar Calendar.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 12
-                     or 324[1-11] + 30[8.8] + 15[11] -1 = 368
-        - Athikawan: 15th Waxing Day of Month 12
-                     or 324[1-11] + 1[7] + 15[11] -1 = 339
-        - Pakatimat: 15th Waxing Day of Month 12
-                     or 324[1-11] + 15[11] -1 = 338
+
+        * Athikamat:
+            15th Waxing Day of Month 12 or 324[1-11] + 30[8.8] + 15[11] -1 = 368
+
+        * Athikawan:
+            15th Waxing Day of Month 12 or 324[1-11] + 1[7] + 15[11] -1 = 339
+
+        * Pakatimat:
+            15th Waxing Day of Month 12 or 324[1-11] + 15[11] -1 = 338
 
         Args:
             year:
