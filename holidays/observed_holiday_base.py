@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -138,11 +138,14 @@ class ObservedHolidayBase(HolidayBase):
 
     def _add_observed(
         self,
-        dt: DateArg,
+        dt: Optional[DateArg] = None,
         name: Optional[str] = None,
         rule: Optional[ObservedRule] = None,
         show_observed_label: bool = True,
     ) -> tuple[bool, Optional[date]]:
+        if dt is None:
+            return False, None
+
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
 
         if not self.observed or not self._is_observed(dt):

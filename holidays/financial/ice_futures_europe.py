@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -15,12 +15,13 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN
 
 
 class ICEFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """ICE Futures Europe holidays.
+
     References:
-        - https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf
-        - https://www.ice.com/publicdocs/Trading_Schedule.pdf
-        - https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf
-        - https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf
+        * <https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf>
+        * <https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+        * <https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+        * <https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
     """
 
     market = "IFEU"

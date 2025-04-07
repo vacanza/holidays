@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -23,16 +23,17 @@ from holidays.observed_holiday_base import (
 
 
 class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """Costa Rica holidays.
+
     References:
-    - https://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica
-    - http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx
-    - Law #8442 from 19.04.2005
-    - Law #8604 from 17.09.2007
-    - Law #8753 from 25.07.2009
-    - Law #8886 from 01.11.2010
-    - Law #9803 from 19.05.2020
-    - Law #10050 from 25.10.2021
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica>
+        * <http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx>
+        * Law #8442 from 19.04.2005
+        * Law #8604 from 17.09.2007
+        * Law #8753 from 25.07.2009
+        * Law #8886 from 01.11.2010
+        * Law #9803 from 19.05.2020
+        * Law #10050 from 25.10.2021
     """
 
     country = "CR"

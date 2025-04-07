@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,6 +18,7 @@ from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
 from .andorra import Andorra, AD, AND
 from .angola import Angola, AO, AGO
+from .antigua_and_barbuda import AntiguaAndBarbuda, AG, ATG
 from .argentina import Argentina, AR, ARG
 from .armenia import Armenia, AM, ARM
 from .aruba import Aruba, AW, ABW
@@ -63,6 +64,7 @@ from .el_salvador import ElSalvador, SV, SLV
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
+from .fiji import Fiji, FJ, FJI
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
 from .gabon import Gabon, GA, GAB
@@ -74,6 +76,7 @@ from .greenland import Greenland, GL, GRL
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
 from .guernsey import Guernsey, GG, GGY
+from .guinea import Guinea, GN, GIN
 from .haiti import Haiti, HT, HTI
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
@@ -86,6 +89,7 @@ from .ireland import Ireland, IE, IRL
 from .isle_of_man import IsleOfMan, IM, IMN
 from .israel import Israel, IL, ISR
 from .italy import Italy, IT, ITA
+from .ivory_coast import IvoryCoast, CI, CIV
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
 from .jersey import Jersey, JE, JEY
@@ -132,6 +136,7 @@ from .philippines import Philippines, PH, PHL
 from .poland import Poland, PL, POL
 from .portugal import Portugal, PT, PRT
 from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
+from .qatar import Qatar, QA, QAT
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA

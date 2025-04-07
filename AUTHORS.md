@@ -1,0 +1,151 @@
+# Holidays Authors
+
+Aaron Picht
+Aart Goossens
+Abdelkhalek Boukli Hacene
+Akos Furton
+Alejandro Antunes
+Aleksei Zhuchkov
+Alexander Schulze
+Alexandre Carvalho
+Alexei Mikhailov
+Anders Wenhaug
+Andrei Klimenko
+Andres Marrugo
+Ankush Kapoor
+Anon Kangpanich
+Anthony Rose
+Anton Daitche
+Arjun Anandkumar
+Arkadii Yakovets
+Artem Tserekh
+Bailey Thompson
+Ben Collerson
+Ben Letham
+Benjamin Lucas Wacha
+Bernhard M. Wiedemann
+Carlos Rocha
+Chanran Kim
+Chris McKeague
+Chris Turra
+Christian Alexander
+Colin Watson
+Dan Gentry
+Daniel Musketa
+Daniël Niemeijer
+David Hotham
+Diogo Rosa
+Dorian Monnier
+Douglas Franklin
+Eden Juscelino
+Edison Robles
+Edward Betts
+Eldar Mustafayev
+Emmanuel Arias
+Eugenio Panadero Maciá
+Fabian Affolter
+Felix Lee
+Filip Bednárik
+Firas Kafri
+Gabriel L Martinez
+Gabriel Trabanco
+Giedrius Mauza
+Gordon Inggs
+Greg Rafferty
+Győző Papp
+Heikki Orsila
+Henrik Sozzi
+Hiroki Kawahara
+Hugh McNamara
+Hugo van Kemenade
+Isabelle COWAN-BERGMAN
+Jacky Han
+Jacob Punter
+Jaemin Kim
+Jahir Fiquitiva
+Jakob M. Kjær
+Jan Pipek
+Jason Jensen
+Jeremy Chrimes
+Jerry Agbesi
+John Laswell
+Joost van Driel
+Jorge Cadena Argote
+Jose Riha
+Joshua Adelman
+Joël van Amerongen
+Julian Broudou
+Jung Dong Ho
+Justin Asfour
+Kamil Leduchowski
+Kate Golovanova
+Kelsey Karin Hawley
+Koert van der Veer
+Koki Nomura
+Kriti Birda
+Maina Kamau
+Malthe Borch
+Marek Šuppa
+Martin Becker
+Martin Thurau
+Matheus Oliveira
+Maurizio Montel
+Max Härtwig
+Michael Thessel
+Mike Borsetti
+Mike Polyakovsky
+Miroslav Šedivý
+Monde Sinxi
+Nalin Gupta
+Nataliia Dmytriievska
+Nate Harris
+Nathan Ell
+Nicholas Spagnoletti
+Nico Albers
+Olivier Iffrig
+Ondřej Nový
+Osayd Abdu
+Oscar Romero
+Pablo Merino
+Panpakorn Siripanich
+Patrick Nicholson
+Paulo Orrock
+Pavel Sofroniev
+Pedro Baptista
+Peter Zsak
+Pieter van der Westhuizen
+Piotr Staniów
+Prateekshit Jaiswal
+Raphael Borg Ellul Vincenti
+Raychel Mattheeuw
+Reinaldo Ramos
+Robert Frazier
+Robert Schmidtke
+Robert Tran
+Robin Emeršič
+Roshan Pradhan
+Ryan McCrory
+Sam Tregar
+Santiago Feliu
+Sergi Almacellas Abellana
+Sergio Mayoral Martinez
+Serhii Murza
+Shaurya Uppal
+Sho Hirose
+Simon Gurcke
+Sugato Ray
+Sylvain Pasche
+Sylvia van Os
+Søren Klintrup
+Takeshi Osoekawa
+Tasnim Nishat Islam
+Tewodros Meshesha
+Thomas Bøvith
+Tommy Sparber
+Tudor Văran
+Victor Luna
+Victor Miti
+Ville Skyttä
+Vu Nhat Chuong
+Wasif Shahzad
+Youhei Sakurai

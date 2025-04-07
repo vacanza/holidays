@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -51,16 +51,19 @@ class HongKong(
     PreferredDiscretionaryHolidays,
     StaticHolidays,
 ):
-    """
+    """Hong Kong holidays.
+
     References:
-        - `English Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong>`_
-        - `Chinese Wikipedia <https://zh.wikipedia.org/wiki/香港節日與公眾假期>`_
+        * [English Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong)
+        * [Chinese Wikipedia](https://zh.wikipedia.org/wiki/香港節日與公眾假期)
+
     Statutory Holidays:
-        - `Section 39 of Cap. 57 Employment Ordinance <https://www.elegislation.gov.hk/hk/cap57!en-zh-Hant-HK?INDEX_CS=N&xpid=ID_1438403463460_002>`_
-        - `Holidays for 2010-2025 <https://www.labour.gov.hk/eng/news/holidays_list.htm>`_
+        * [Section 39 of Cap. 57 Employment Ordinance](https://www.elegislation.gov.hk/hk/cap57!en-zh-Hant-HK?INDEX_CS=N&xpid=ID_1438403463460_002)
+        * [Holidays for 2010-2025](https://www.labour.gov.hk/eng/news/holidays_list.htm)
+
     General Holidays:
-        - `Cap. 149 General Holidays Ordinance <https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N>`_
-        - `Holidays for 2007–2025 <https://www.gov.hk/en/about/abouthk/holiday/index.htm>`_
+        * [Cap. 149 General Holidays Ordinance](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
+        * [Holidays for 2007–2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
     """
 
     country = "HK"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,11 +16,13 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    https://www.officeholidays.com/countries/zambia/
-    https://www.timeanddate.com/holidays/zambia/
-    https://en.wikipedia.org/wiki/Public_holidays_in_Zambia
-    https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf
+    """Zambia holidays.
+
+    References:
+        * <https://www.officeholidays.com/countries/zambia/>
+        * <https://www.timeanddate.com/holidays/zambia/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Zambia>
+        * <https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf>
     """
 
     country = "ZM"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -18,13 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
-    Greenland holidays.
+    """Greenland holidays.
 
     References:
-        - https://en.wikipedia.org/wiki/Public_holidays_in_Greenland
-        - `Greenlandic names source <https://nalunaarutit.gl/groenlandsk-lovgivning/2008/bkg-26-2008?sc_lang=kl-GL>`_
-        - `Translation source <https://www.norden.org/en/info-norden/public-holidays-greenland>`_
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Greenland>
+        * [Greenlandic names source](https://nalunaarutit.gl/groenlandsk-lovgivning/2008/bkg-26-2008?sc_lang=kl-GL)
+        * [Translation source](https://www.norden.org/en/info-norden/public-holidays-greenland)
     """
 
     country = "GL"

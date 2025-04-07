@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,20 +27,20 @@ from holidays.holiday_base import HolidayBase
 class TimorLeste(
     HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
 ):
-    """
+    """Timor Leste holidays.
+
     References:
-    - https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf  # 2005 Law
-    - http://timor-leste.gov.tl/?p=14494&lang=en  # 2016 Amendment
-    - http://timor-leste.gov.tl/?p=30266&lang=en  # 2022
-    - http://timor-leste.gov.tl/?p=31750&lang=en  # 2023 (en_US)
-    - http://timor-leste.gov.tl/?p=31750&lang=pt  # 2023 (pt_PT)
-    - http://timor-leste.gov.tl/?p=31750&lang=tp  # 2023 (tet)
-    - http://timor-leste.gov.tl/?p=35833&lang=en  # 2024
-    - https://timor-leste.gov.tl/?p=41492&lang=en # 2025
+        * [2005 Law](https://mj.gov.tl/jornal/lawsTL/RDTL-Law/RDTL-Laws/Law-2005-10.pdf)
+        * [2016 Amendment](http://timor-leste.gov.tl/?p=14494&lang=en)
+        * [2022](http://timor-leste.gov.tl/?p=30266&lang=en)
+        * [2023 (en_US)](http://timor-leste.gov.tl/?p=31750&lang=en)
+        * [2023 (pt_PT)](http://timor-leste.gov.tl/?p=31750&lang=pt)
+        * [2023 (tet)](http://timor-leste.gov.tl/?p=31750&lang=tp)
+        * [2024](http://timor-leste.gov.tl/?p=35833&lang=en)
+        * [2025](https://timor-leste.gov.tl/?p=41492&lang=en)
 
     Limitations:
-
-    - Exact Islamic holidays dates are only available for 2011-2023; the rest are estimates.
+        * Exact Islamic holidays dates are only available for 2011-2025; the rest are estimates.
     """
 
     country = "TL"
@@ -48,14 +48,16 @@ class TimorLeste(
     default_language = "pt_TL"
     # %s (estimated).
     estimated_label = tr("%s (aproximada)")
-    supported_languages = ("en_US", "pt_TL", "tet")
+    supported_languages = ("en_TL", "en_US", "pt_TL", "tet", "th")
     # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
     start_year = 2006
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
-        :param islamic_show_estimated:
-            Whether to add "estimated" label to Islamic holidays name if holiday date is estimated.
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -78,7 +80,7 @@ class TimorLeste(
             # Veteran's Day.
             self._add_holiday_mar_3(tr("Dia dos Veteranos"))
 
-        # World Labor Day.
+        # International Worker's Day.
         self._add_labor_day(tr("Dia Mundial do Trabalhador"))
 
         # Restoration of Independence Day.
@@ -148,7 +150,7 @@ class TimorLeste(
     def _populate_workday_holidays(self):
         # Fixed Date Government Holidays.
 
-        # World Children's Day.
+        # International Children's Day.
         self._add_childrens_day(tr("Dia Mundial da Criança"))
 
         self._add_holiday_aug_20(
@@ -165,7 +167,7 @@ class TimorLeste(
             # National Women's Day.
             self._add_holiday_nov_3(tr("Dia Nacional da Mulher"))
 
-        # World Human Rights Day.
+        # International Human Rights Day.
         self._add_holiday_dec_10(tr("Dia Mundial dos Direitos Humanos"))
 
         # Variable Date Government Holidays.

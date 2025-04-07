@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -26,6 +26,7 @@ COUNTRIES: RegistryDict = {
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
+    "antigua_and_barbuda": ("AntiguaAndBarbuda", "AG", "ATG"),
     "argentina": ("Argentina", "AR", "ARG"),
     "armenia": ("Armenia", "AM", "ARM"),
     "aruba": ("Aruba", "AW", "ABW"),
@@ -72,6 +73,7 @@ COUNTRIES: RegistryDict = {
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
     "ethiopia": ("Ethiopia", "ET", "ETH"),
+    "fiji": ("Fiji", "FJ", "FJI"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
     "gabon": ("Gabon", "GA", "GAB"),
@@ -83,6 +85,7 @@ COUNTRIES: RegistryDict = {
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
     "guatemala": ("Guatemala", "GT", "GUA"),
     "guernsey": ("Guernsey", "GG", "GGY"),
+    "guinea": ("Guinea", "GN", "GIN"),
     "haiti": ("Haiti", "HT", "HTI"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
@@ -95,6 +98,7 @@ COUNTRIES: RegistryDict = {
     "isle_of_man": ("IsleOfMan", "IM", "IMN"),
     "israel": ("Israel", "IL", "ISR"),
     "italy": ("Italy", "IT", "ITA"),
+    "ivory_coast": ("IvoryCoast", "CI", "CIV"),
     "jamaica": ("Jamaica", "JM", "JAM"),
     "japan": ("Japan", "JP", "JPN"),
     "jersey": ("Jersey", "JE", "JEY"),
@@ -140,6 +144,7 @@ COUNTRIES: RegistryDict = {
     "poland": ("Poland", "PL", "POL"),
     "portugal": ("Portugal", "PT", "PRT"),
     "puerto_rico": ("PuertoRico", "PR", "PRI", "HolidaysPR"),
+    "qatar": ("Qatar", "QA", "QAT"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),

@@ -1,0 +1,73 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Pakistan holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.70\n"
+"POT-Creation-Date: 2025-03-29 00:02+0500\n"
+"PO-Revision-Date: 2025-03-30 00:34+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_PK\n"
+
+#. Kashmir Solidarity Day.
+msgid "Kashmir Solidarity Day"
+msgstr "Kashmir Solidarity Day"
+
+#. Pakistan Day.
+msgid "Pakistan Day"
+msgstr "Pakistan Day"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Iqbal Day.
+msgid "Iqbal Day"
+msgstr "Iqbal Day"
+
+#. Quaid-e-Azam Day.
+msgid "Quaid-e-Azam Day"
+msgstr "Quaid-e-Azam Day"
+
+#. Eid al-Fitr.
+msgid "Eid-ul-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid-ul-Adha"
+msgstr "Eid al-Adha"
+
+#. Prophet's Birthday.
+msgid "Eid Milad-un-Nabi"
+msgstr "Prophet's Birthday"
+
+#. Ashura.
+msgid "Ashura"
+msgstr "Ashura"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,11 +17,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """
+    """El Salvador holidays.
+
     References:
-        - `Labor Code 1972 <https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download>`_
-        - https://www.timeanddate.com/holidays/el-salvador
-        - https://www.officeholidays.com/countries/el-salvador
+        * [Labor Code 1972](https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
+        * <https://www.timeanddate.com/holidays/el-salvador>
+        * <https://www.officeholidays.com/countries/el-salvador>
     """
 
     country = "SV"

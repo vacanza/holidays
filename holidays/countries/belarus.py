@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,20 +20,19 @@ from holidays.holiday_base import HolidayBase
 
 
 class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
-    """
-    Belarus holidays.
+    """Belarus holidays.
 
     References:
-        - https://president.gov.by/en/gosudarstvo/prazdniki
-        - https://president.gov.by/be/gosudarstvo/prazdniki
-        - https://president.gov.by/ru/gosudarstvo/prazdniki
-        - http://www.belarus.by/en/about-belarus/national-holidays
-        - http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
-        - http://president.gov.by/uploads/documents/2019/464uk.pdf
-        - https://ru.wikipedia.org/wiki/Праздники_Белоруссии
+        * <https://president.gov.by/en/gosudarstvo/prazdniki>
+        * <https://president.gov.by/be/gosudarstvo/prazdniki>
+        * <https://president.gov.by/ru/gosudarstvo/prazdniki>
+        * <http://www.belarus.by/en/about-belarus/national-holidays>
+        * <http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm>
+        * <http://president.gov.by/uploads/documents/2019/464uk.pdf>
+        * <https://ru.wikipedia.org/wiki/Праздники_Белоруссии>
 
     Cross-checked With:
-        - https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024
+        * <https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
     """
 
     country = "BY"
@@ -146,10 +145,11 @@ class BLR(Belarus):
 
 
 class BelarusStaticHolidays:
-    """
-    References
-        - https://belarusbank.by/en/financial-institutions/11151
-        - https://belarusbank.by/en/financial-institutions/11160
+    """Belarus special holidays.
+
+    References:
+        * <https://belarusbank.by/en/financial-institutions/11151>
+        * <https://belarusbank.by/en/financial-institutions/11160>
     """
 
     # Date format (see strftime() Format Codes)

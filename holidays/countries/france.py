@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -17,18 +17,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class France(HolidayBase, ChristianHolidays, InternationalHolidays):
-    """Official French holidays.
+    """France holidays.
+
+    References:
+        * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France>
+        * <https://www.service-public.fr/particuliers/vosdroits/F2405>
 
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,
     which makes it difficult to enumerate.
-
-    For religious holidays usually happening on Sundays (Easter, Pentecost),
-    only the following Monday is considered a holiday.
-
-    Primary sources:
-        https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France
-        https://www.service-public.fr/particuliers/vosdroits/F2405
     """
 
     country = "FR"

@@ -4,15 +4,20 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS file)
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from unittest import TestCase
+import sys
 
-from importlib_metadata import metadata
+if sys.version_info >= (3, 10):
+    from importlib.metadata import metadata
+else:
+    from importlib_metadata import metadata
+
+from unittest import TestCase
 
 import holidays
 
@@ -33,7 +38,7 @@ class TestPackage(TestCase):
             "classifier",
             "description",
             "keywords",
-            "license",
+            "license-expression",
             "license-file",
             "maintainer",
             "project-url",
