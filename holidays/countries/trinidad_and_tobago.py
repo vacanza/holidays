@@ -85,6 +85,9 @@ class TrinidadAndTobago(
         # Republic Day.
         self._add_holiday_sep_24(tr("Republic Day"))
 
+        # Diwali.
+        self._add_diwali(tr("Diwali"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
@@ -105,9 +108,6 @@ class TrinidadAndTobago(
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
-
-        # Diwali.
-        self._add_diwali(tr("Diwali"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))

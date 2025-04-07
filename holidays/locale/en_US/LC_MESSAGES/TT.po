@@ -59,6 +59,10 @@ msgstr "Independence Day"
 msgid "Republic Day"
 msgstr "Republic Day"
 
+#. Diwali.
+msgid "Diwali"
+msgstr "Diwali"
+
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
@@ -90,7 +94,3 @@ msgstr "Corpus Christi"
 #. Eid al-Fitr.
 msgid "Eid-Ul-Fitr"
 msgstr "Eid al-Fitr"
-
-#. Diwali.
-msgid "Diwali"
-msgstr "Diwali"

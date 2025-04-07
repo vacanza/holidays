@@ -59,6 +59,10 @@ msgstr ""
 msgid "Republic Day"
 msgstr ""
 
+#. Diwali.
+msgid "Diwali"
+msgstr ""
+
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
@@ -89,8 +93,4 @@ msgstr ""
 
 #. Eid al-Fitr.
 msgid "Eid-Ul-Fitr"
-msgstr ""
-
-#. Diwali.
-msgid "Diwali"
 msgstr ""
