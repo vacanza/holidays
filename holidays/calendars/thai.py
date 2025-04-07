@@ -23,8 +23,8 @@ THAI_CALENDAR = "THAI_CALENDAR"
 class _ThaiLunisolar:
     """Thai Lunar Calendar Holidays.
 
-    Works from 1913 (B.E. 2456/2455) onwards until 2157 (B.E. 2700) as we only have
-    Thai year-type data for cross-checking until then.
+    Works from 1913 (B.E. 2456/2455) onwards until 2157 (B.E. 2700), as we only have
+    Thai year-type data for cross-checking through that period.
 
     The basics of the Thai Lunar Calendar:
 
@@ -425,11 +425,11 @@ class _ThaiLunisolar:
         coincides with the 4th Waning Day of Month 6 in Khmer Lunar Calendar.
 
         To calculate, we use use the following time delta:
-        - Athikamat: 15th Waxing Day of Month 6 (Khmer Lunar Calendar).
+        - Athikamat: 4th Waning Day of Month 6 (Khmer Lunar Calendar).
                      or 177[1-5] + 19[6] -1 = 165
-        - Athikawan: 15th Waxing Day of Month 6
+        - Athikawan: 4th Waning Day of Month 6
                      or 147[1-5] + 19[6] -1 = 165
-        - Pakatimat: 15th Waxing Day of Month 6
+        - Pakatimat: 4th Waning Day of Month 6
                      or 147[1-5] + 19[6] -1 = 165
         Or as in simpler terms: "Visakha Bucha" (Khmer Lunar Calendar) +4.
 
