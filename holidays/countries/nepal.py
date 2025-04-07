@@ -40,6 +40,7 @@ class Nepal(
         * <https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
         * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
         * <https://english.hamropatro.com/nepali-public-holidays>
+        * <https://www.ashesh.com.np/nepali-calendar/ >
     """
 
     country = "NP"
@@ -66,8 +67,8 @@ class Nepal(
         # Women's Day.
         self._add_womens_day("Women's Day")
 
-        # Nepal New Year (Vikram Sambat).
-        self._add_vaisakhi("Nepali New Year (Vikram Sambat)")
+        # Nepal New Year.
+        self._add_vaisakhi("Nepali New Year")
 
         # Labor Day.
         self._add_labor_day("Labor Day")
@@ -165,17 +166,17 @@ class Nepal(
             # Ram Navami.
             self._add_ram_navami("Ram Navami")
 
-            # Ghatasthapana.
-            self._add_sharad_navratri("Ghatasthapana")
-
-            # Duwadashi (Dashain).
-            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
-
             # Janai Purnima.
             self._add_raksha_bandhan("Janai Purnima")
 
             # Shree Krishna Janmashtami.
             self._add_janmashtami("Shree Krishna Janmashtami")
+
+            # Ghatasthapana.
+            self._add_sharad_navratri("Ghatasthapana")
+
+            # Duwadashi (Dashain).
+            self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
     def _populate_workday_holidays(self):
         if 2019 <= self._year <= 2020:

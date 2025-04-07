@@ -594,7 +594,14 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/nepal/gyalpo-losar
+    # https://www.ashesh.com.np/nepali-calendar/
     GYALPO_LOSAR_DATES = {
+        2010: (FEB, 13),
+        2011: (MAR, 5),
+        2012: (FEB, 22),
+        2013: (MAR, 12),
+        2014: (MAR, 2),
+        2015: (FEB, 19),
         2016: (MAR, 9),
         2017: (FEB, 27),
         2018: (FEB, 16),
@@ -1008,7 +1015,14 @@ class _HinduLunisolar:
     }
 
     # https://www.timeanddate.com/holidays/nepal/sonam-losar
+    # https://www.ashesh.com.np/nepali-calendar/
     SONAM_LOSAR_DATES = {
+        2010: (JAN, 16),
+        2011: (FEB, 4),
+        2012: (JAN, 24),
+        2013: (FEB, 11),
+        2014: (JAN, 31),
+        2015: (JAN, 21),
         2016: (FEB, 9),
         2017: (JAN, 28),
         2018: (JAN, 18),

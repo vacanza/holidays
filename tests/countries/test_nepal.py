@@ -78,7 +78,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(2010, 2050)))
 
     def test_nepali_new_year(self):
-        name = "Nepali New Year (Vikram Sambat)"
+        name = "Nepali New Year"
         dt = (
             "2019-04-14",
             "2020-04-13",
@@ -142,7 +142,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-01-30",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2016, 2036))
+        self.assertHolidayName(name, range(2010, 2036))
 
     def test_gyalpo_losar(self):
         name = "Gyalpo Losar"
@@ -156,7 +156,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2025-02-28",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2016, 2036))
+        self.assertHolidayName(name, range(2010, 2036))
 
     def test_maha_shivaratri(self):
         name = "Maha Shivaratri"
@@ -519,7 +519,7 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-03-14", "Holi (Terai)"),
             ("2025-03-31", "Id-ul-Fitr"),
             ("2025-04-06", "Ram Navami"),
-            ("2025-04-13", "Nepali New Year (Vikram Sambat)"),
+            ("2025-04-13", "Nepali New Year"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-12", "Buddha Jayanti"),
             ("2025-05-29", "Republic Day"),
