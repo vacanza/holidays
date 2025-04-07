@@ -26,81 +26,70 @@ class _ThaiLunisolar:
     Works from 1913 (B.E. 2456/2455) onwards until 2157 (B.E. 2700), as we only have
     Thai year-type data for cross-checking through that period.
 
-    The basics of the Thai Lunar Calendar:
+    ## The basics of the Thai Lunar Calendar:
 
-        3-year types for calendar intercalation:
-            - Pakatimat (Normal Year):
-                Consists of 12 months, totaling 354 days.
-            - Athikawan (Extra-Day Year):
-                Adds one extra day to the 7th month, totaling 355 days
-                for synodic month correction.
-            - Athikamat (Extra-Month Year):
-                Adds an extra 8th month, totaling 384 days for
-                sidereal year correction.
+    3-year types for calendar intercalation:
+        * Pakatimat (Normal Year):
+            Consists of 12 months, totaling 354 days.
+        * Athikawan (Extra-Day Year):
+            Adds one extra day to the 7th month, totaling 355 days for synodic month correction.
+        * Athikamat (Extra-Month Year):
+            Adds one extra 8th month, totaling 384 days for sidereal year correction.
 
-        Months alternate between 30 (even months) and 29 (odd months) days.
+    Months alternate between 30 (even months) and 29 (odd months) days.
 
-        The waxing phase (Full Moon) lasts 15 days, while the waning phase (New Moon) lasts:
-            - 14 days for odd months (except Month 7 in Athikawan years),
-            - 15 days for even months.
+    The waxing phase (Full Moon) lasts 15 days, while the waning phase (New Moon) lasts
+    14 days for odd months (except Month 7 in Athikawan years), 15 days for even months.
 
-        The second "Month 8" for Athikamat years is called "Month 8.8"
-        (read as "the latter 8th month"), with all observed holidays
-        delayed from the usual calendar by 30 days.
+    The second "Month 8" for Athikamat years is called "Month 8.8"
+    (read as "the latter 8th month"), with all observed holidays
+    delayed from the usual calendar by 30 days.
 
     Implemented Thai Lunar Calendar holiday methods:
-
-        - Magha Puja / Makha Bucha / Meak Bochea:
-            15th Waxing Day (Full Moon) of Month 3
-            (On Month 4 for Athikamat Years).
+        * Magha Puja / Makha Bucha / Meak Bochea:
+            15th Waxing Day (Full Moon) of Month 3 (On Month 4 for Athikamat Years).
             KHMER_CALENDAR always falls on Month 3.
 
-        - Vesak / Visakha Bucha / Visaka Bochea:
-            15th Waxing Day (Full Moon) of Month 6
-            (On Month 7 for Athikamat Years).
+        * Vesak / Visakha Bucha / Visaka Bochea:
+            15th Waxing Day (Full Moon) of Month 6 (On Month 7 for Athikamat Years).
             KHMER_CALENDAR always falls on Month 6.
 
-        - Cambodian Royal Ploughing Ceremony / Preah Neangkol:
-            4th Waning Day of Month 6
-            (On Month 7 for Athikamat Years).
+        * Cambodian Royal Ploughing Ceremony / Preah Neangkol:
+            4th Waning Day of Month 6 (On Month 7 for Athikamat Years).
             Defaults to KHMER_CALENDAR (its sole user).
 
-        - Buddha's Cremation Day / Atthami Bucha:
-            8th Waning Day of Month 6
-            (On Month 7 for Athikamat Years).
+        * Buddha's Cremation Day / Atthami Bucha:
+            8th Waning Day of Month 6 (On Month 7 for Athikamat Years).
             KHMER_CALENDAR always falls on Month 6.
 
-        - Asalha Puja / Asarnha Bucha:
-            15th Waxing Day (Full Moon) of Month 8
-            (On Month 8.8 for Athikamat Years).
+        * Asalha Puja / Asarnha Bucha:
+            15th Waxing Day (Full Moon) of Month 8 (On Month 8.8 for Athikamat Years).
 
-        - Buddhist Lent Day / Wan Khao Phansa:
-            1st Waning Day of Month 8
-            (On Month 8.8 for Athikamat Years).
+        * Buddhist Lent Day / Wan Khao Phansa:
+            1st Waning Day of Month 8 (On Month 8.8 for Athikamat Years).
 
-        - Boun Haw Khao Padapdin / Boon Khao Padap Din:
+        * Boun Haw Khao Padapdin / Boon Khao Padap Din:
             14th Waning Day (New Moon) of Month 9.
 
-        - Boun Haw Khao Salark / Boon Khao Sak:
+        * Boun Haw Khao Salark / Boon Khao Sak:
             15th Waxing Day (Full Moon) of Month 10.
 
-        - Pchum Ben / Prachum Bandar:
+        * Pchum Ben / Prachum Bandar:
             15th Waning Day (New Moon) of Month 10.
 
-        - Ok Boun Suang Huea / Vientiane Boat Racing Festival:
+        * Ok Boun Suang Huea / Vientiane Boat Racing Festival:
             1st Waning Day (New Moon) of Month 11.
 
-        - Loy Krathong / Boun That Louang / Bon Om Touk:
+        * Loy Krathong / Boun That Louang / Bon Om Touk:
             15th Waxing Day (Full Moon) of Month 12.
 
     Other Thai Lunar Calendar holidays:
-
-        - Thai Royal Ploughing Ceremony / Raeknakhwan:
+        * Thai Royal Ploughing Ceremony / Raeknakhwan:
             Court astrologers choose the auspicious dates based on the Thai Lunar Calendar,
             but these dates do not follow a predictable pattern.
             See the specific section in `thailand.py` for more details.
 
-        - End of Buddhist Lent Day / Ok Phansa:
+        * End of Buddhist Lent Day / Ok Phansa:
             15th Waxing Day (Full Moon) of Month 11
             (Currently calculated based on Asalha Puja / Asarnha Bucha method).
 
@@ -118,6 +107,7 @@ class _ThaiLunisolar:
         >>> thls = _ThaiLunisolar()
         >>> print(thls.visakha_bucha_date(2010))
         2010-05-28
+
     """
 
     # Athikawan (Extra-Day Year) list goes from 1914-2157 C.E.
@@ -283,7 +273,7 @@ class _ThaiLunisolar:
         self.__calendar = calendar
 
     @staticmethod
-    def __is_khmer_calendar(calendar):
+    def __is_khmer_calendar(calendar) -> bool:
         """Check if the given calendar is the Khmer calendar.
 
         Args:
@@ -296,7 +286,7 @@ class _ThaiLunisolar:
         return calendar == KHMER_CALENDAR
 
     @staticmethod
-    def __verify_calendar(calendar):
+    def __verify_calendar(calendar) -> None:
         """Verify calendar type."""
         if calendar not in {KHMER_CALENDAR, THAI_CALENDAR}:
             raise ValueError(
