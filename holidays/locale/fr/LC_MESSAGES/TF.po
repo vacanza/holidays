@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Ivory Coast holidays.
+# French Southern Territories holidays.
 #
 msgid ""
 msgstr ""

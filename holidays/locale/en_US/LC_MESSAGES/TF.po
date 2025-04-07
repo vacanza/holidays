@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# France holidays en_US localization.
+# French Southern Territories holidays en_US localization.
 #
 msgid ""
 msgstr ""
