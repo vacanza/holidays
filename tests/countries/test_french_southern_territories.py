@@ -77,7 +77,7 @@ class TestTF(CommonCountryTests, TestCase):
         self.assertHolidayName(name_new, "1948-05-01")
 
     def test_fete_de_la_victoire(self):
-        self.assertHoliday(f"{year}-05-08" for year in range(1953, 1960))
+        self.assertHoliday(*[f"{year}-05-08" for year in range(1953, 1960)])
         self.assertHoliday("1982-05-08")
         self.assertNoHoliday("1960-05-08", "1981-05-08")
         self.assertNoHolidayName(
