@@ -20,7 +20,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1963, 2050)
-        super().setUpClass(TrinidadAndTobago, years=years, years_non_observed=years)
+        super().setUpClass(TrinidadAndTobago, years=years)
+        cls.no_estimated_holidays = TrinidadAndTobago(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(TrinidadAndTobago, TT, TTO)
@@ -85,7 +86,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2025-03-03",
             "2026-02-16",
         )
-        self.assertHolidayName(name, range(1963, 2027))
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_carnival_tuesday(self):
         name = "Carnival Tuesday"
@@ -108,7 +109,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2025-03-04",
             "2026-02-17",
         )
-        self.assertHolidayName(name, range(1963, 2027))
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -188,7 +189,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
-        self.assertHolidayName(name, range(2012, 2025))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1963, 2050))
 
     def test_2024(self):
         self.assertHolidays(
@@ -256,7 +257,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
             ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
-            ("2025-03-31", "Eid-Ul-Fitr"),
+            ("2025-03-31", "Eid al-Fitr"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),

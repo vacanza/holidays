@@ -89,7 +89,7 @@ msgstr "Corpus Christi"
 
 #. Eid al-Fitr.
 msgid "Eid-Ul-Fitr"
-msgstr "Eid-Ul-Fitr"
+msgstr "Eid al-Fitr"
 
 #. Diwali.
 msgid "Diwali"
