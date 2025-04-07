@@ -25,6 +25,7 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
         * <https://www.officeholidays.com/countries/sierra-leone>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Sierra_Leone>
         * <https://www.timeanddate.com/holidays/sierra-leone/>
+        * <https://salpost.gov.sl/opening-time-national-holidays>
     """
 
     country = "SL"

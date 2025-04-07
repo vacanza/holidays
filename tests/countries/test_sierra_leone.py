@@ -194,3 +194,63 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
+
+    def test_new_years_day_observed(self):
+        dt = (
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_armed_forces_day_observed(self):
+        dt = (
+            "2006-02-20",
+            "2012-02-20",
+            "2017-02-20",
+            "2023-02-20",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_international_womens_day_observed(self):
+        dt = (
+            "2020-03-09",
+            "2025-03-10",
+            "2031-03-10",
+            "2036-03-10",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_labor_day_observed(self):
+        dt = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-03",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_christmas_day_observed(self):
+        dt = (
+            "2005-12-27",
+            "2010-12-27",
+            "2016-12-27",
+            "2022-12-27",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_boxing_day_observed(self):
+        dt = (
+            "2004-12-27",
+            "2010-12-27",
+            "2021-12-27",
+            "2027-12-27",
+        )
+        self.assertHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
