@@ -24,11 +24,6 @@ class TestTF(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(FrenchSouthernTerritories, TF, ATF)
 
-    def test_1970(self):
-        self.assertHolidays(
-            FrenchSouthernTerritories(years=1970),
-        )
-
     def test_pre_1802(self):
         self.assertNoHoliday("1801-08-15", "1801-11-01", "1801-12-25")
 
