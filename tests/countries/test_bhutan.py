@@ -28,45 +28,62 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertNoHolidays(Bhutan(years=1969))
 
     def test_nyilo(self):
+        name = "ཉི་ལོག་"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-01-02")
+            self.assertHolidayName(name, f"{year}-01-02")
 
     def test_kings_birthday_day1(self):
+        name = "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-02-21")
+            self.assertHolidayName(name, f"{year}-02-21")
 
     def test_kings_birthday_day2(self):
+        name = "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-02-22")
+            self.assertHolidayName(name, f"{year}-02-22")
 
     def test_kings_birthday_day3(self):
+        name = "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-02-23")
+            self.assertHolidayName(name, f"{year}-02-23")
 
     def test_birth_anniversary_third_druk_gyalpo(self):
+        name = "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-05-02")
+            self.assertHolidayName(name, f"{year}-05-02")
 
     def test_coronation_king_jigme_khesar(self):
+        name = "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-11-01")
+            self.assertHolidayName(name, f"{year}-11-01")
 
     def test_birth_anniversary_fourth_druk_gyalpo(self):
+        name = "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-11-11")
+            self.assertHolidayName(name, f"{year}-11-11")
 
     def test_national_day(self):
+        name = "རྒྱལ་ཡོངས་དུས་ཆེན།"
         for year in range(1970, 2050):
-            self.assertHoliday(f"{year}-12-17")
+            self.assertHolidayName(name, f"{year}-12-17")
 
     def test_losar(self):
-        self.assertHoliday("2022-03-03", "2024-02-11", "2025-02-28")
+        name = "ལལོ་གསར་"
+        dt = ("2022-03-03", "2024-02-11", "2025-02-28")
+        for date in dt:
+            self.assertHolidayName(name, date)
 
     def test_blessed_rainy_day(self):
-        self.assertHoliday("2022-09-23", "2024-09-23", "2025-09-23")
+        name = "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"
+        dt = ("2022-09-23", "2024-09-23", "2025-09-23")
+        for date in dt:
+            self.assertHolidayName(name, date)
 
     def test_dashain(self):
-        self.assertHoliday("2022-10-05", "2024-10-12", "2025-10-02")
+        name = "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"
+        dt = ("2022-10-05", "2024-10-12", "2025-10-02")
+        for date in dt:
+            self.assertHolidayName(name, date)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

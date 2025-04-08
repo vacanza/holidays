@@ -89,7 +89,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
 
     def _add_blessed_rainy_day(self, name) -> Optional[date]:
         """
-        Add Blessed Rainy Day (15th day of the 7th lunar month).
+        Add Blessed Rainy Day (September Equinox of Autumn Calendar).
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.blessed_rainy_day_date(self._year)
