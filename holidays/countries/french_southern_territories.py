@@ -22,8 +22,7 @@ class HolidaysTF(France):
     """
 
     country = "TF"
-    default_language = "fr"
-    supported_languages = ("en_US", "fr", "uk")
+    parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
 
