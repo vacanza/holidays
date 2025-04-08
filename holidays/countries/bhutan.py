@@ -25,7 +25,6 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
     """
 
     country = "BT"
-    supported_categories = (PUBLIC,)
     default_language = "dz_BT"
     supported_languages = ("dz_BT", "en_US")
     start_year = 1970
