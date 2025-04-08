@@ -1,3 +1,32 @@
+# Version 0.70
+
+Released April 7, 2025
+
+- Add iCalendar export support (#2362 by @PPsyrius, @kawazap)
+- Add Antigua and Barbuda holidays (#2395 by @kritibirda26)
+- Add Fiji holidays (#2354 by @Prateekshit73, @arkid15r, @kasya, @PPsyrius)
+- Add Guinea holidays (#2398 by @nalin-28, @arkid15r)
+- Add Ivory Coast holidays (#2388 by @kritibirda26, @arkid15r)
+- Add Qatar holidays (#2409 by @Wasif-Shahzad, @arkid15r)
+- Update Argentina holidays: add categories and subdivisions support (#2375 by @KJhellico)
+- Update India holidays: Hindi l10n fixes (#2393 by @Ninad0109)
+- Update Pakistan holidays: add 2023-2024 exact dates (#2380 by @Wasif-Shahzad)
+- Update Pakistan holidays: add l10n support (en_PK, en_US, ur_PK) (#2385 by @Wasif-Shahzad, @KJhellico)
+- Update Philippines holidays: 2025 Eid'l Fitr (#2367 by @kleo)
+- Update Philippines holidays: adjust Bonifacio Day for 2023 (#2370 by @w3stling)
+- Update README.md badges (#2379 by @arkid15r)
+- Update Timor-Leste holidays: add `en_TL`, `th` l10n, update `en_US` l10n (#2407 by @PPsyrius)
+- Update `HolidayBase::pop_named`: add support for more lookup types (#2140 by @wth-d, @KJhellico)
+- Update `_ThaiLunisolar` and `ThaiCalendarHolidays` documentation (#2439 by @PPsyrius)
+- Update pyproject.toml: align with PEP 639 metadata format (#2363 by @KJhellico)
+- Update release notes generator (#2374 by @KJhellico)
+- Update tests requirements (#2383 by @KJhellico)
+- Added commit SHAs instead of versions (#2384 by @samyak003, @arkid15r)
+- Adjust project files after migration to MkDocs (#2381 by @KJhellico)
+- Migrate Documentation from Sphinx to MkDocs (#2289 by @Roshan-1024, @arkid15r, @KJhellico, @PPsyrius)
+- Reformat .po files (#2356 by @KJhellico)
+- Reformat BY.po files (#2365 by @PPsyrius)
+
 # Version 0.69
 
 Released March 17, 2025
