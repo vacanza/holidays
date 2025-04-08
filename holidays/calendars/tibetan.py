@@ -28,7 +28,7 @@ LOSAR = "LOSAR"
 
 class _TibetanLunisolar:
     """Tibetan lunisolar calendar.
-    This claculation is based on the Tibetan lunisolar calendar, which is sourced from https://github.com/wp-plugins/bhutanese-calendar"""
+    This calculation is based on the Tibetan lunisolar calendar, which is sourced from https://github.com/wp-plugins/bhutanese-calendar"""
 
     BUDDHA_PARINIRVANA_DATES = {
         1970: (MAY, 21),
