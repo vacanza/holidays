@@ -63,7 +63,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if self._year >= 2024:
             # Youm-e-Takbeer.
-            self._add_holiday(tr("Youm-e-Takbeer"), (MAY, 28))
+            self._add_holiday_may_28(tr("Youm-e-Takbeer"))
 
         # Independence Day.
         self._add_holiday_aug_14(tr("Independence Day"))
