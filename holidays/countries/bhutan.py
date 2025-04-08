@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import PUBLIC
 from holidays.groups import TibetanCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
