@@ -25,6 +25,8 @@ class HolidaysTF(France):
     parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
+    # This overseas territory was separated in 1955.
+    start_year = 1956
 
     def _populate_public_holidays(self) -> None:
         """
