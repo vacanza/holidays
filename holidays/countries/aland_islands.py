@@ -78,7 +78,6 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Midsummer Day.
         self._add_holiday(tr("Midsommardagen"), _timedelta(dt, +1))
 
-      
         # All Saints' Day.
         self._add_holiday_1st_sat_from_oct_31(tr("Alla helgons dag"))
         
@@ -103,11 +102,10 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
             for dt in _get_all_sundays(self._year):
                 # Sunday.
                 self._add_holiday(tr("Söndag"), dt)
-
-
-
 class AX(AlandIslands):
+    """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-2 code)."""
     pass
 
 class ALA(AlandIslands):
+    """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-3 code)."""
     pass
