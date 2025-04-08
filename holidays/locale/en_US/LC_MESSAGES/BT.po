@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-#  English Translation for Bhutanese Language Dzongkha for Holidays
+#  Bhutan holidays en_US localization
 #
 msgid ""
 msgstr ""

@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  tests/countries/test_bhutan.py
-#  ------------------------------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from unittest import TestCase
 
 from holidays.countries.bhutan import Bhutan, BT, BTN
@@ -37,7 +25,7 @@ class TestBhutan(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Bhutan, BT, BTN)
 
-    def test_no_holidays_before_start_year(self):
+    def test_no_holidays(self):
         self.assertNoHolidays(Bhutan(years=1969))
 
     def test_fixed_holidays(self):
