@@ -24,6 +24,8 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
+        * [Public and optional holidays](https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
+        * [No.10-01/2024-Min-II](https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
     """
 
     country = "PK"
