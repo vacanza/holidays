@@ -59,6 +59,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Labor Day.
             self._add_labor_day(tr("Labour Day"))
 
+        if self._year >= 2024:
+            # Youm-e-Takbeer.
+            self._add_holiday(tr("Youm-e-Takbeer"), (MAY, 28))
+
         # Independence Day.
         self._add_holiday_aug_14(tr("Independence Day"))
 
@@ -122,6 +126,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 9),
         2023: (JUL, 28),
         2024: (JUL, 16),
+        2025: (JUL, 5),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -146,6 +151,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
+        2025: (JUN, 7),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -170,6 +176,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025: (MAR, 31),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
@@ -194,4 +201,5 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
+        2025: (SEP, 5),
     }

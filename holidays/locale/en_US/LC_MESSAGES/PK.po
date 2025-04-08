@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
-"PO-Revision-Date: 2025-03-30 00:34+0500\n"
+"PO-Revision-Date: 2025-04-08 04:13+0200\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: en_PK\n"
 
 #. Kashmir Solidarity Day.
@@ -71,3 +71,7 @@ msgstr "Ashura"
 #, c-format
 msgid "%s (estimated)"
 msgstr "%s (estimated)"
+
+#. Youm-e-Takbeer.
+msgid "Youm-e-Takbeer"
+msgstr "Youm-e-Takbeer"
