@@ -97,7 +97,7 @@ class TibetanCalendarHolidays(EasternCalendarHolidays):
 
     def _add_dashain(self, name) -> Optional[date]:
         """
-        Add Dashain (15th day of the 7th lunar month).
+        Add Dashain.
         """
         return self._add_tibetan_calendar_holiday(
             name, self._tibetan_calendar.dashain_date(self._year)
