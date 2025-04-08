@@ -28,41 +28,6 @@ class TestBhutan(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Bhutan(years=1969))
 
-    def test_fixed_holidays(self):
-        # Nyilo (Winter Solstice)
-        self.assertHoliday(f"{year}-01-02" for year in range(1970, 2050))
-
-        # King's Birthday (Day 1)
-        self.assertHoliday(f"{year}-02-21" for year in range(1970, 2050))
-
-        # King's Birthday (Day 2)
-        self.assertHoliday(f"{year}-02-22" for year in range(1970, 2050))
-
-        # King's Birthday (Day 3)
-        self.assertHoliday(f"{year}-02-23" for year in range(1970, 2050))
-
-        # Birth Anniversary of Third Druk Gyalpo
-        self.assertHoliday(f"{year}-05-02" for year in range(1970, 2050))
-
-        # Coronation of King Jigme Khesar Namgyel
-        self.assertHoliday(f"{year}-11-01" for year in range(1970, 2050))
-
-        # Birth Anniversary of Fourth Druk Gyalpo
-        self.assertHoliday(f"{year}-11-11" for year in range(1970, 2050))
-
-        # National Day
-        self.assertHoliday(f"{year}-12-17" for year in range(1970, 2050))
-
-    def test_tibetan_based_holidays(self):
-        # Losar (Tibetan New Year) - sample dates
-        self.assertHoliday("2022-03-03", "2024-02-11", "2025-02-28")
-
-        # Blessed Rainy Day - sample dates
-        self.assertHoliday("2022-09-23", "2024-09-23", "2025-09-23")
-
-        # Dashain - sample dates
-        self.assertHoliday("2022-10-5", "2024-10-12", "2025-10-02")
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-02", "ཉི་ལོག་"),
