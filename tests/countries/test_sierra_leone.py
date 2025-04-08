@@ -39,7 +39,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2022-01-03",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_armed_forces_day(self):
@@ -54,7 +54,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2023-02-20",
             "2024-02-19",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_international_womens_day(self):
@@ -66,7 +66,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2025-03-10",
             "2026-03-09",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
@@ -106,7 +106,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2019-04-29",
             "2024-04-29",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_labor_day(self):
@@ -119,7 +119,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2016-05-02",
             "2021-05-03",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
@@ -131,7 +131,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
@@ -143,7 +143,7 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2020-12-28",
             "2021-12-28",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_prophets_birthday(self):
@@ -159,8 +159,14 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2024-09-15",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1962, 2050))
-        dt = ("2024-09-16",)
-        self.assertHolidayName(f"{name} (observed)", dt)
+        dt = (
+            "2015-01-05",
+            "2016-12-12",
+            "2019-11-11",
+            "2022-10-10",
+            "2024-09-16",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_fitr(self):
@@ -176,8 +182,13 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2024-04-10",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1962, 2050))
-        dt = ("2025-03-31",)
-        self.assertHolidayName(f"{name} (observed, estimated)", dt)
+        dt = (
+            "2012-08-20",
+            "2017-06-26",
+            "2020-05-25",
+            "2025-03-31",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_adha(self):
@@ -193,8 +204,12 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             "2024-06-16",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1962, 2050))
-        dt = ("2024-06-17",)
-        self.assertHolidayName(f"{name} (observed)", dt)
+        dt = (
+            "2014-10-06",
+            "2016-09-12",
+            "2024-06-17",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2024(self):
@@ -256,49 +271,3 @@ class TestSierraLeone(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
-
-    def test_new_years_day_observed(self):
-        name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1962, 2050)))
-        dt = (
-            "2006-01-02",
-            "2012-01-02",
-            "2017-01-02",
-            "2023-01-02",
-        )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
-
-    def test_armed_forces_day_observed(self):
-        name = "Armed Forces Day"
-        self.assertHolidayName(name, (f"{year}-02-18" for year in range(2002, 2050)))
-        dt = (
-            "2006-02-20",
-            "2012-02-20",
-            "2017-02-20",
-            "2023-02-20",
-        )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
-
-    def test_international_womens_day_observed(self):
-        name = "International Women's Day"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2018, 2050)))
-        dt = (
-            "2020-03-09",
-            "2025-03-10",
-        )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
-
-    def test_labor_day_observed(self):
-        name = "International Worker's Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1962, 2050)))
-        dt = (
-            "2005-05-02",
-            "2011-05-02",
-            "2016-05-02",
-            "2022-05-03",
-        )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
