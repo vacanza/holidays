@@ -23,6 +23,7 @@ class HolidaysTF(France):
 
     country = "TF"
     subdivisions = ()  # Override France subdivisions.
+    subdivisions_aliases = {}  # Override France subdivisions aliases.
 
     def _populate_public_holidays(self) -> None:
         """

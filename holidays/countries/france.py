@@ -45,7 +45,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "WF",  # Wallis-et-Futuna.
         "YT",  # Mayotte.
     )
-    subdivisions_aliases = {
+    subdivisions_aliases: Union[dict[()], dict[str, str]] = {
         "Saint-Barthélemy": "BL",
         "Alsace": "GES",
         "Champagne-Ardenne": "GES",
