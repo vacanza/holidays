@@ -193,7 +193,7 @@ class TestPakistan(CommonCountryTests, TestCase):
             ("2002-12-25", "Quaid-e-Azam Day"),
         )
 
-    def test_2022(self):
+    def test_2024(self):
         self.assertHolidays(
             Pakistan(years=2024),
             ("2024-02-05", "Kashmir Solidarity Day"),
