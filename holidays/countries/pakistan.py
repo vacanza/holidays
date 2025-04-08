@@ -128,7 +128,6 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (AUG, 9),
         2023: (JUL, 28),
         2024: (JUL, 16),
-        2025: (JUL, 5),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -153,7 +152,6 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
-        2025: (JUN, 7),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -203,5 +201,4 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
-        2025: (SEP, 5),
     }
