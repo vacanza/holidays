@@ -12,24 +12,29 @@
 
 from unittest import TestCase
 
-from holidays.countries.french_southern_territories import FrenchSouthernTerritories, TF, ATF
+from holidays.countries.french_southern_territories import (
+    HolidaysTF,
+    FrenchSouthernTerritories,
+    TF,
+    ATF,
+)
 from tests.common import CommonCountryTests
 
 
 class TestTF(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(FrenchSouthernTerritories, years=range(1970, 2070))
+        super().setUpClass(HolidaysTF, years=range(1970, 2070))
 
     def test_country_aliases(self):
-        self.assertAliases(FrenchSouthernTerritories, TF, ATF)
+        self.assertAliases(HolidaysTF, FrenchSouthernTerritories, TF, ATF)
 
     def test_pre_1802(self):
         self.assertNoHoliday("1801-08-15", "1801-11-01", "1801-12-25")
 
     def test_2017(self):
         self.assertHolidayDates(
-            FrenchSouthernTerritories(years=2017),
+            HolidaysTF(years=2017),
             "2017-01-01",
             "2017-04-17",
             "2017-05-01",
@@ -45,7 +50,7 @@ class TestTF(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidayDates(
-            FrenchSouthernTerritories(years=2022),
+            HolidaysTF(years=2022),
             "2022-01-01",
             "2022-04-18",
             "2022-05-01",
@@ -62,7 +67,7 @@ class TestTF(CommonCountryTests, TestCase):
     def test_jour_de_lan(self):
         self.assertHoliday("1811-01-01")
         self.assertNoHoliday("1810-01-01")
-        self.assertNoHolidayName("Jour de l'an", FrenchSouthernTerritories(years=1810))
+        self.assertNoHolidayName("Jour de l'an", HolidaysTF(years=1810))
 
     def test_fete_du_travail(self):
         name_old = "Fête du Travail et de la Concorde sociale"
@@ -70,9 +75,9 @@ class TestTF(CommonCountryTests, TestCase):
 
         self.assertHoliday("1919-05-01")
         self.assertNoHoliday("1918-05-01")
-        self.assertNoHolidayName(name_old, FrenchSouthernTerritories(years=1918))
-        self.assertNoHolidayName(name_new, FrenchSouthernTerritories(years=range(1919, 1948)))
-        self.assertNoHolidayName(name_old, FrenchSouthernTerritories(years=1948))
+        self.assertNoHolidayName(name_old, HolidaysTF(years=1918))
+        self.assertNoHolidayName(name_new, HolidaysTF(years=range(1919, 1948)))
+        self.assertNoHolidayName(name_old, HolidaysTF(years=1948))
         self.assertHolidayName(name_old, "1919-05-01", "1947-05-01")
         self.assertHolidayName(name_new, "1948-05-01")
 
@@ -80,19 +85,17 @@ class TestTF(CommonCountryTests, TestCase):
         self.assertHoliday(*[f"{year}-05-08" for year in range(1953, 1960)])
         self.assertHoliday("1982-05-08")
         self.assertNoHoliday("1960-05-08", "1981-05-08")
-        self.assertNoHolidayName(
-            "Fête de la Victoire", FrenchSouthernTerritories(years=range(1960, 1982))
-        )
+        self.assertNoHolidayName("Fête de la Victoire", HolidaysTF(years=range(1960, 1982)))
 
     def test_fete_nationale(self):
         self.assertHoliday("1880-07-14")
         self.assertNoHoliday("1879-07-14")
-        self.assertNoHolidayName("Fête nationale", FrenchSouthernTerritories(years=1879))
+        self.assertNoHolidayName("Fête nationale", HolidaysTF(years=1879))
 
     def test_armistice(self):
         self.assertHoliday("1918-11-11")
         self.assertNoHoliday("1917-11-11")
-        self.assertNoHolidayName("Armistice", FrenchSouthernTerritories(years=1917))
+        self.assertNoHolidayName("Armistice", HolidaysTF(years=1917))
 
     def test_lundi_de_pentecote(self):
         self.assertNoHoliday(
