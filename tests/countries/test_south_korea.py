@@ -154,8 +154,8 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2012-12-19",
             "2017-05-09",
             "2022-03-09",
-            # Preliminary Dates.
-            "2027-03-03",
+            # Special Presidential Election(21st) due to Yoon Seok-yeol's impeachment.
+            "2025-06-03",
         )
 
     def test_local_election_day(self):

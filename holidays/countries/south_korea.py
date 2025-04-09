@@ -213,7 +213,7 @@ class SouthKorea(
         # Christmas Day.
         append_observed(self._add_christmas_day(tr("기독탄신일")), 2023)
 
-        # Election Days since Sep 2006; excluding the 2017 Special Presidential Election Day.
+        # Election Days since Sep 2006; excluding the 2017, 2025 Special Presidential Election Day.
 
         # Based on Article 34 of the Public Official Election Act.
         # (1) The election day for each election to be held at the expiration of the term shall
@@ -244,6 +244,9 @@ class SouthKorea(
 
             if self._year <= 2012:
                 self._add_holiday_3rd_wed_of_dec(name)
+            elif self._year == 2027:
+                # Excluded in 2027 due to the 2025 Special Presidential Election Day.
+                pass
             elif self._year >= 2022:
                 if (
                     self._is_tuesday(mar_1)
@@ -610,8 +613,12 @@ class SouthKoreaStaticHolidays:
         2023: (OCT, 2, temporary_public_holiday),
         # 76th Anniversary of the Armed Forces of Korea.
         2024: (OCT, 1, armed_forces_day),
-        # Added to create a 6-day long holiday period.
-        2025: (JAN, 27, temporary_public_holiday),
+        2025: (
+            # Added to create a 6-day long holiday period.
+            (JAN, 27, temporary_public_holiday),
+            # Special Presidential Election(21st) due to Yoon Seok-yeol's impeachment.
+            (JUN, 3, presidential_election_day),
+        ),
     }
     # Pre-2014 Alternate Holidays
     # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1
