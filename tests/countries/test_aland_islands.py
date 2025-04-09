@@ -10,28 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
 
 from unittest import TestCase
 
-from holidays.countries.aland_islands import AlandIslands
+from holidays.holidays.countries.aland_islands import AlandIslands
 
 
 class TestAland(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.holidays = AlandIslands(years=range(1930, 2050), include_sundays=True)
+        cls.holidays = AlandIslands(years=range(1930, 2050))
 
     def test_fixed_date_holidays(self):
         # Group fixed date holidays in a single method
@@ -40,7 +29,6 @@ class TestAland(TestCase):
             "Trettondedag jul": [f"{y}-01-06" for y in range(1930, 2050)],
             "Första maj": [f"{y}-05-01" for y in range(1939, 2050)],
             "Självstyrelsedagen": [f"{y}-06-09" for y in range(1920, 2050)],
-            # etc...
             "Julafton": [f"{y}-12-24" for y in range(1930, 2050)],
             "Juldagen": [f"{y}-12-25" for y in range(1930, 2050)],
             "Annandag jul": [f"{y}-12-26" for y in range(1930, 2050)],

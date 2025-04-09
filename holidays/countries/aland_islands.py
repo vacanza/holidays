@@ -12,13 +12,13 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import _get_all_sundays, _timedelta
+from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Aland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Aland Islands holidays.
 
     References:
@@ -29,7 +29,7 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AX"
     default_language = "sv"
-    supported_languages = ("en_US", "fi", "uk")
+    supported_languages = ("en_US",)
     supported_categories = (PUBLIC, UNOFFICIAL)
     start_year = 1920
 
@@ -97,20 +97,14 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Eve.
         self._add_new_years_eve(tr("Nyårsafton"))
 
-        # Optionally add all Sundays of the year.
-        if self.include_sundays:
-            for dt in _get_all_sundays(self._year):
-                # Sunday.
-                self._add_holiday(tr("Söndag"), dt)
 
-
-class AX(AlandIslands):
+class AX(Aland):
     """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-2 code)."""
 
     pass
 
 
-class ALA(AlandIslands):
+class ALA(Aland):
     """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-3 code)."""
 
     pass
