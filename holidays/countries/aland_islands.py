@@ -29,7 +29,7 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AX"
     default_language = "sv"
-    supported_languages = ("en_US", "fi",  "uk")
+    supported_languages = ("en_US", "fi", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
     start_year = 1920
 
@@ -64,7 +64,7 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Sunday.
         self._add_whit_sunday(tr("Pingstdagen"))
 
-        # 	Autonomy Day
+        # Autonomy Day
         self._add_holiday_jun_9(tr("Självstyrelsedagen"))
 
         # Midsummer Eve.
@@ -80,7 +80,7 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # All Saints' Day.
         self._add_holiday_1st_sat_from_oct_31(tr("Alla helgons dag"))
-        
+
         if self._year >= 1917:
             # Finnish Independence Day.
             self._add_holiday_dec_6(tr("Självständighetsdagen"))
@@ -102,10 +102,15 @@ class AlandIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
             for dt in _get_all_sundays(self._year):
                 # Sunday.
                 self._add_holiday(tr("Söndag"), dt)
+
+
 class AX(AlandIslands):
     """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-2 code)."""
+
     pass
+
 
 class ALA(AlandIslands):
     """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-3 code)."""
+
     pass
