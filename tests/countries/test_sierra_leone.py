@@ -205,8 +205,10 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1962, 2050))
         dt = (
+            "2011-11-07",
             "2014-10-06",
             "2016-09-12",
+            "2022-07-11",
             "2024-06-17",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
