@@ -238,20 +238,18 @@ class SouthKorea(
         elif self._year >= 2007 and (self._year - 2008) % 4 == 0:
             self._add_holiday_2nd_wed_of_apr(name)
 
-        if 2007 <= self._year < 2025 and (self._year - 2007) % 5 == 0:
+        if self._year >= 2007:
             # Presidential Election Day.
             name = tr("대통령 선거일")
-
-            if self._year <= 2012:
-                self._add_holiday_3rd_wed_of_dec(name)
-            elif self._year >= 2022:
-                # Moved as per Paragraph 2 of Article 34 due to conflict with
-                # Independence Movement Day (MAR, 1).
-                self._add_holiday_2nd_wed_of_mar(name)
-        if self._year >= 2030 and (self._year - 2030) % 5 == 0:
-            # Presidential Election Day.
-            name = tr("대통령 선거일")
-            self._add_holiday_1st_wed_of_apr(name)
+            if self._year <= 2024 and (self._year - 2007) % 5 == 0:
+                if self._year <= 2012:
+                    self._add_holiday_3rd_wed_of_dec(name)
+                elif self._year >= 2022:
+                    # Moved as per Paragraph 2 of Article 34 due to conflict with
+                    # Independence Movement Day (MAR, 1).
+                    self._add_holiday_2nd_wed_of_mar(name)
+            elif self._year >= 2030 and (self._year - 2030) % 5 == 0:
+                self._add_holiday_1st_wed_of_apr(name)
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
             # Local Election Day.
