@@ -151,7 +151,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Aland</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision AX</td>
-<td></td>
+<td>en_US, <strong>sv</strong>, fi, uk</td>
+<td>UNOFFICIAL</td>
 </tr>
 <tr>
 <td>Albania</td>
