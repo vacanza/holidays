@@ -154,7 +154,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2012-12-19",
             "2017-05-09",
             "2022-03-09",
-            # Special Presidential Election(21st) due to Yoon Seok-yeol's impeachment.
+            # Special Presidential Election (21st) due to Yoon Seok-yeol's impeachment.
             "2025-06-03",
             "2030-04-03",
         )
