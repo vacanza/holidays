@@ -150,8 +150,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Aland</td>
 <td>AX</td>
-<td>Autonomous region belonging to Finland</td>
-<td>en_US, <strong>sv</strong></td>
+<td>Can also be loaded as country FI, subdivision AX</td>
 <td></td>
 </tr>
 <tr>

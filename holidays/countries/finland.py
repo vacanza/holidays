@@ -36,6 +36,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
+    subdivisions: tuple[()] | tuple[str, ...] = ("AX",)  # Aland Islands
     start_year = 1853
 
     def __init__(self, *args, **kwargs):

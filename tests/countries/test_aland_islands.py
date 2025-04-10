@@ -10,20 +10,19 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
-from holidays.holidays.countries.aland_islands import AlandIslands
+from holidays.countries.aland_islands import Aland
 
 
 class TestAland(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.holidays = AlandIslands(years=range(1930, 2050))
+
+        cls.holidays = Aland(years=range(1930, 2050))
 
     def test_fixed_date_holidays(self):
-        # Group fixed date holidays in a single method
         fixed = {
             "Nyårsdagen": [f"{y}-01-01" for y in range(1930, 2050)],
             "Trettondedag jul": [f"{y}-01-06" for y in range(1930, 2050)],
@@ -34,6 +33,7 @@ class TestAland(TestCase):
             "Annandag jul": [f"{y}-12-26" for y in range(1930, 2050)],
             "Nyårsafton": [f"{y}-12-31" for y in range(1930, 2050)],
         }
+
         for holiday_name, dates in fixed.items():
             self.assertHolidayName(holiday_name, dates)
 
