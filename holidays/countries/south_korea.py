@@ -610,7 +610,7 @@ class SouthKoreaStaticHolidays:
         2025: (
             # Added to create a 6-day long holiday period.
             (JAN, 27, temporary_public_holiday),
-            # Special Presidential Election(21st) due to Yoon Seok-yeol's impeachment.
+            # Special Presidential Election (21st) due to Yoon Seok-yeol's impeachment.
             (JUN, 3, presidential_election_day),
         ),
     }
