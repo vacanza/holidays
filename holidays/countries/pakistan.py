@@ -24,6 +24,8 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
+        * [Public and optional holidays](https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
+        * [No.10-01/2024-Min-II](https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
     """
 
     country = "PK"
@@ -58,6 +60,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         if self._year >= 1972:
             # Labor Day.
             self._add_labor_day(tr("Labour Day"))
+
+        if self._year >= 2024:
+            # Youm-e-Takbeer.
+            self._add_holiday_may_28(tr("Youm-e-Takbeer"))
 
         # Independence Day.
         self._add_holiday_aug_14(tr("Independence Day"))
@@ -170,6 +176,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025: (MAR, 31),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi

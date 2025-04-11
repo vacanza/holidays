@@ -303,7 +303,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Night_of_Power
         """
         return self._add_islamic_calendar_holiday(
-            name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+26
+            name, self._islamic_calendar.laylat_al_qadr_dates(self._year)
         )
 
     def _add_maldives_embraced_islam_day(self, name) -> set[date]:
