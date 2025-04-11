@@ -1,69 +1,88 @@
-from holidays.calendars.gregorian import JAN, MAR, MAY, SEP, OCT, DEC
+from gettext import gettext as tr
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
 
 class Turkmenistan(HolidayBase, InternationalHolidays, IslamicHolidays):
-    """
-    Turkmenistan holidays.
+    """Turkmenistan holidays.
+
     References:
-        https://en.wikipedia.org/wiki/Public_holidays_in_Turkmenistan
-        https://www.timeanddate.com/holidays/turkmenistan/
+        * https://en.wikipedia.org/wiki/Public_holidays_in_Turkmenistan
+        * https://www.timeanddate.com/holidays/turkmenistan/
+        * https://www.mfa.gov.tm/en/articles/2
     """
 
     country = "TM"
-    start_year = 1991 
+    default_language = "tk"
+    start_year = 1992
+    supported_languages = ("en_US", "tk", "ru")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self) 
+        IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        """Add public holidays for Turkmenistan."""
-        if self._year >= 1991:
-            self._add_holiday_jan_1("New Year's Day")
-            
-            self._add_holiday_mar_8("International Women's Day")
-            
-            if self._year >= 1992:
-                self._add_holiday_mar_21("Nowruz (Persian New Year)")
-                self._add_holiday_mar_22("Nowruz (Persian New Year)")
-            
-            if self._year >= 1991:
-                self._add_holiday_may_9("Victory Day")
-            
-            if self._year >= 2018: 
-                self._add_holiday_may_18("Constitution and Revival Day")
-            elif self._year >= 1992: 
-                self._add_holiday_may_18("Revival Day")
-            
-            if self._year >= 1992:
-                if self._year <= 2017:
-                    self._add_holiday_oct_27("Independence Day")
-                else:
-                    self._add_holiday_sep_27("Independence Day")
-            
-            if self._year >= 2015:  
-                self._add_holiday_oct_6("Day of Remembrance")
-            
-        if self._year >= 2023:
-            self._add_holiday_dec_12("Neutrality Day")
-        elif self._year >= 2018:
-            self._add_holiday_jun_27("Day of Turkmenistan's Neutrality")
-        elif self._year >= 1995:
-            self._add_holiday_dec_12("Neutrality Day")
+        # New Year's Day
+        name = tr("Жаңа жыл")
+        self._add_new_years_day(name)
+        self._add_new_years_day_two(name)
 
-        self._add_eid_al_fitr_day("Eid al-Fitr")
-        self._add_eid_al_fitr_day_two("Eid al-Fitr")
-        self._add_eid_al_fitr_day_three("Eid al-Fitr")
-        
-        self._add_eid_al_adha_day("Eid al-Adha")
-        self._add_eid_al_adha_day_two("Eid al-Adha")
-        self._add_eid_al_adha_day_three("Eid al-Adha")
+        # Memorial Day 
+        self._add_holiday_jan_12(tr("Хатыра гүни (Memorial Day)"))
+
+        # Defender of the Fatherland Day
+        if self._year >= 2009:
+            self._add_holiday_jan_27(tr("Ватанмухадызларың гүни"))
+
+        # International Women's Day
+        self._add_womens_day(tr("Халықаралық әйелдер күні"))
+
+        # Nowruz 
+        name = tr("Наурыз мейрамы")
+        self._add_holiday_mar_21(name)
+        self._add_holiday_mar_22(name)
+
+        # Victory Day
+        self._add_holiday_may_9(tr("Жеңиш гүни"))
+
+        # Constitution and Revival Day 
+        if self._year >= 2018:
+            self._add_holiday_may_18(tr("Конституция ве Түзелиш гүни"))
+        else:
+            self._add_holiday_may_18(tr("Түзелиш гүни"))
+
+        # Independence Day 
+        if self._year <= 2017:
+            self._add_holiday_oct_27(tr("Гарашсызлык гүни"))
+        else:
+            self._add_holiday_sep_27(tr("Гарашсызлык гүни"))
+
+        # Day of Remembrance 
+        if self._year >= 2015:
+            self._add_holiday_oct_6(tr("Хатыра гүни (Day of Remembrance)"))
+
+        # Neutrality Day 
+        if self._year >= 2023:
+            self._add_holiday_dec_12(tr("Битараплык гүни"))
+        elif self._year >= 2018:
+            self._add_holiday_jun_27(tr("Түркменистаның битараплык гүни"))
+        elif self._year >= 1995:
+            self._add_holiday_dec_12(tr("Битараплык гүни"))
+
+        # Islamic Holidays 
+        self._add_eid_al_fitr_day(tr("Ораза байрамы"))
+        self._add_eid_al_fitr_day_two(tr("Ораза байрамы"))
+        self._add_eid_al_fitr_day_three(tr("Ораза байрамы"))
+
+        self._add_eid_al_adha_day(tr("Гурбан байрамы"))
+        self._add_eid_al_adha_day_two(tr("Гурбан байрамы"))
+        self._add_eid_al_adha_day_three(tr("Гурбан байрамы"))
+
 
 class TM(Turkmenistan):
     pass
+
 
 class TKM(Turkmenistan):
     pass

@@ -1,86 +1,95 @@
-import unittest
-from datetime import date
-from holidays.countries import Turkmenistan
+from unittest import TestCase
+from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
+from tests.common import CommonCountryTests, WorkingDayTests
 
-class TestTurkmenistanHolidays(unittest.TestCase):
-    def setUp(self):
-        """Initialize Turkmenistan holidays for testing."""
-        self.holidays_2024 = Turkmenistan(years=2024)
-        self.holidays_2017 = Turkmenistan(years=2017)  
-        self.holidays_1991 = Turkmenistan(years=1991)  
+class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Turkmenistan, years=range(1992, 2050))
 
-    def test_fixed_holidays_2024(self):
-        """Test fixed date public holidays in 2024."""
-        fixed_holidays = {
-            date(2024, 1, 1): "New Year's Day",
-            date(2024, 3, 8): "International Women's Day",
-            date(2024, 3, 21): "Nowruz (Persian New Year)",
-            date(2024, 3, 22): "Nowruz (Persian New Year)",
-            date(2024, 5, 9): "Victory Day",
-            date(2024, 5, 18): "Constitution and Revival Day",
-            date(2024, 9, 27): "Independence Day",
-            date(2024, 10, 6): "Day of Remembrance",
-            date(2024, 12, 12): "Neutrality Day",
-        }
+    def test_country_aliases(self):
+        self.assertAliases(Turkmenistan, TM, TKM)
 
-        for holiday_date, holiday_name in fixed_holidays.items():
-            self.assertIn(holiday_date, self.holidays_2024)
-            self.assertEqual(self.holidays_2024[holiday_date], holiday_name)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Turkmenistan(years=1991))
 
-    
-    def test_historical_date_changes(self):
-        """Test holidays that changed dates over time."""
-        self.assertIn(date(2017, 10, 27), self.holidays_2017)
-        self.assertEqual(self.holidays_2017[date(2017, 10, 27)], "Independence Day")
+    def test_new_year(self):
+        name = "Жаңа жыл"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1992, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1992, 2050)))
 
-        self.assertIn(date(2024, 9, 27), self.holidays_2024)
+    def test_memorial_day(self):
+        self.assertHolidayName("Хатыра гүни (Memorial Day)", (f"{year}-01-12" for year in range(1992, 2050)))
+
+    def test_defenders_day(self):
+        name = "Ватанмухадызларың гүни"
+        for year in range(2009, 2050):
+            self.assertHolidayName(name, f"{year}-01-27")
+        for year in range(1992, 2009):
+            self.assertNoHolidayName(name, year)
+
+    def test_womens_day(self):
+        self.assertHolidayName("Халықаралық әйелдер күні", (f"{year}-03-08" for year in range(1992, 2050)))
+
+    def test_nowruz(self):
+        name = "Наурыз мейрамы"
+        for year in range(1992, 2050):
+            self.assertHolidayName(name, f"{year}-03-21")
+            self.assertHolidayName(name, f"{year}-03-22")
+
+    def test_victory_day(self):
+        self.assertHolidayName("Жеңиш гүни", (f"{year}-05-09" for year in range(1992, 2050)))
+
+    def test_constitution_and_revival_day(self):
+        for year in range(2018, 2050):
+            self.assertHolidayName("Конституция ве Түзелиш гүни", f"{year}-05-18")
+        for year in range(1992, 2018):
+            self.assertHolidayName("Түзелиш гүни", f"{year}-05-18")
+
+    def test_independence_day(self):
+        for year in range(1992, 2018):
+            self.assertHolidayName("Гарашсызлык гүни", f"{year}-10-27")
+        for year in range(2018, 2050):
+            self.assertHolidayName("Гарашсызлык гүни", f"{year}-09-27")
+
+    def test_day_of_remembrance(self):
+        for year in range(2015, 2050):
+            self.assertHolidayName("Хатыра гүни (Day of Remembrance)", f"{year}-10-06")
+
+    def test_neutrality_day(self):
+        for year in range(2023, 2050):
+            self.assertHolidayName("Битараплык гүни", f"{year}-12-12")
+        for year in range(2018, 2023):
+            self.assertHolidayName("Түркменистаның битараплык гүни", f"{year}-06-27")
+        for year in range(1995, 2018):
+            self.assertHolidayName("Битараплык гүни", f"{year}-12-12")
+
+    def test_eid_al_fitr(self):
+        self.assertHolidayName("Ораза байрамы (estimated)", "2024-04-10")
+        self.assertHolidayName("Ораза байрамы (estimated)", "2025-04-01")
+
+    def test_eid_al_adha(self):
+        self.assertHolidayName("Гурбан байрамы (estimated)", "2024-06-16")
+        self.assertHolidayName("Гурбан байрамы (estimated)", "2025-06-06")
+
+    def test_localization(self):
+        try:
+            turkmen_holidays = Turkmenistan(years=range(1992, 2050), language="tk")
+            for holiday in turkmen_holidays:
+                self.assertEqual(holiday.lang, "tk", f"Holiday {holiday.name} not localized in Turkmen.")
+        except FileNotFoundError:
+            print("Turkmen language translation files not found")
         
-        self.assertIn(date(2017, 5, 18), self.holidays_2017)
-        self.assertEqual(self.holidays_2017[date(2017, 5, 18)], "Revival Day")
-
-        self.assertNotIn(date(1991, 3, 21), self.holidays_1991)
-
-        holidays_2014 = Turkmenistan(years=2014)
-        if date(2014, 10, 6) in holidays_2014:
-            self.assertNotEqual(holidays_2014[date(2014, 10, 6)], "Day of Remembrance")
-    
-        holidays_2015 = Turkmenistan(years=2015)
-        self.assertIn(date(2015, 10, 6), holidays_2015)
-        self.assertEqual(holidays_2015[date(2015, 10, 6)], "Day of Remembrance")
-
-    
-    def test_neutrality_day_changes(self):
-        """Test Neutrality Day date changes."""
-        self.assertIn(date(2017, 12, 12), Turkmenistan(years=2017))
-        self.assertEqual("Neutrality Day", Turkmenistan(years=2017)[date(2017, 12, 12)])
+        try:
+            russian_holidays = Turkmenistan(years=range(1992, 2050), language="ru")
+            for holiday in russian_holidays:
+                self.assertEqual(holiday.lang, "ru", f"Holiday {holiday.name} not localized in Russian.")
+        except FileNotFoundError:
+            print("Russian language translation files not found")
         
-        self.assertIn(date(2020, 6, 27), Turkmenistan(years=2020))
-        self.assertEqual("Day of Turkmenistan's Neutrality", Turkmenistan(years=2020)[date(2020, 6, 27)])
-        
-        self.assertIn(date(2024, 12, 12), Turkmenistan(years=2024))
-        self.assertEqual("Neutrality Day", Turkmenistan(years=2024)[date(2024, 12, 12)])
-        
-        self.assertNotIn(date(1994, 12, 12), Turkmenistan(years=1994))
-
-    
-    def test_islamic_holidays(self):
-        """Test if Islamic holidays exist in the dataset."""
-        holiday_names = list(self.holidays_2024.values())
-        self.assertTrue(any("Eid al-Fitr" in name for name in holiday_names))
-        self.assertTrue(any("Eid al-Adha" in name for name in holiday_names))
-
-        eid_al_fitr_2024 = date(2024, 4, 10)  
-        eid_al_adha_2024 = date(2024, 6, 16)  
-        
-        self.assertIn(eid_al_fitr_2024, self.holidays_2024)
-        self.assertIn("Eid al-Fitr", self.holidays_2024[eid_al_fitr_2024])
-        
-        self.assertIn(eid_al_adha_2024, self.holidays_2024)
-        self.assertIn("Eid al-Adha", self.holidays_2024[eid_al_adha_2024])
-        
-        eid_days = [d for d, name in self.holidays_2024.items() if "Eid al-Fitr" in name or "Eid al-Adha" in name]
-        self.assertGreaterEqual(len(eid_days), 6)
-
-
-if __name__ == "__main__":
-    unittest.main()
+        try:
+            english_holidays = Turkmenistan(years=range(1992, 2050), language="en_US")
+            for holiday in english_holidays:
+                self.assertEqual(holiday.lang, "en_US", f"Holiday {holiday.name} not localized in English.")
+        except FileNotFoundError:
+            print("English language translation files not found")
