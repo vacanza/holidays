@@ -126,6 +126,7 @@ from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from .norway import Norway, NO, NOR
+from .oman import Oman, OM, OMN
 from .pakistan import Pakistan, PK, PAK
 from .palau import Palau, PW, PLW
 from .panama import Panama, PA, PAN
