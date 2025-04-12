@@ -92,7 +92,7 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_localization(self):
         languages = {"tk": "Turkmen", "ru": "Russian", "en_US": "English"}
-    
+
         for lang_code, lang_name in languages.items():
             try:
                 holidays = Turkmenistan(years=range(1992, 2050), language=lang_code)
@@ -100,7 +100,7 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
                     self.assertEqual(
                         holiday.lang,
                         lang_code,
-                        f"Holiday {holiday.name} not localized in {lang_name}."
+                        f"Holiday {holiday.name} not localized in {lang_name}.",
                     )
             except FileNotFoundError:
                 self.skipTest(f"{lang_name} language translation files not found")
