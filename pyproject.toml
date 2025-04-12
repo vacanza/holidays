@@ -56,29 +56,26 @@ no_inline_sort = true
 profile = "black"
 skip = ["docs"]
 
-[tool.mypy]
-strict = false
-
-[tool.ruff]
-line-length = 99
-target-version = "py39"
-
-[tool.ruff.lint]
-select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "T", "UP", "W"]
-
-[tool.ruff.lint.extend-per-file-ignores]
-"scripts/generate_release_notes.py" = ["T201"]
-
-[tool.ruff.lint.flake8-errmsg]
-max-string-length = 99
-
 [[tool.mypy.overrides]]
 module = "holidays.countries.*"
 disable_error_code = ["override"]
 
 [[tool.mypy.overrides]]
 module = "holidays.groups.*"
-disable_error_code = "attr-defined"
+disable_error_code = ["attr-defined"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "T", "TC", "UP", "W"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"scripts/generate_release_notes.py" = ["T201"]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 99
 
 [tool.pytest.ini_options]
 addopts = [
