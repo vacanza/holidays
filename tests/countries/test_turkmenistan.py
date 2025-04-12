@@ -1,6 +1,20 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 from unittest import TestCase
+
 from holidays.countries.turkmenistan import Turkmenistan, TM, TKM
 from tests.common import CommonCountryTests, WorkingDayTests
+
 
 class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
@@ -19,7 +33,9 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-02" for year in range(1992, 2050)))
 
     def test_memorial_day(self):
-        self.assertHolidayName("Хатыра гүни (Memorial Day)", (f"{year}-01-12" for year in range(1992, 2050)))
+        self.assertHolidayName(
+            "Хатыра гүни (Memorial Day)", (f"{year}-01-12" for year in range(1992, 2050))
+        )
 
     def test_defenders_day(self):
         name = "Ватанмухадызларың гүни"
@@ -29,7 +45,9 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
             self.assertNoHolidayName(name, year)
 
     def test_womens_day(self):
-        self.assertHolidayName("Халықаралық әйелдер күні", (f"{year}-03-08" for year in range(1992, 2050)))
+        self.assertHolidayName(
+            "Халықаралық әйелдер күні", (f"{year}-03-08" for year in range(1992, 2050))
+        )
 
     def test_nowruz(self):
         name = "Наурыз мейрамы"
@@ -76,20 +94,26 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
         try:
             turkmen_holidays = Turkmenistan(years=range(1992, 2050), language="tk")
             for holiday in turkmen_holidays:
-                self.assertEqual(holiday.lang, "tk", f"Holiday {holiday.name} not localized in Turkmen.")
+                self.assertEqual(
+                    holiday.lang, "tk", f"Holiday {holiday.name} not localized in Turkmen."
+                )
         except FileNotFoundError:
             print("Turkmen language translation files not found")
-        
+
         try:
             russian_holidays = Turkmenistan(years=range(1992, 2050), language="ru")
             for holiday in russian_holidays:
-                self.assertEqual(holiday.lang, "ru", f"Holiday {holiday.name} not localized in Russian.")
+                self.assertEqual(
+                    holiday.lang, "ru", f"Holiday {holiday.name} not localized in Russian."
+                )
         except FileNotFoundError:
             print("Russian language translation files not found")
-        
+
         try:
             english_holidays = Turkmenistan(years=range(1992, 2050), language="en_US")
             for holiday in english_holidays:
-                self.assertEqual(holiday.lang, "en_US", f"Holiday {holiday.name} not localized in English.")
+                self.assertEqual(
+                    holiday.lang, "en_US", f"Holiday {holiday.name} not localized in English."
+                )
         except FileNotFoundError:
             print("English language translation files not found")

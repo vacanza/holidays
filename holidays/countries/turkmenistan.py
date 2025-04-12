@@ -1,4 +1,17 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
 from gettext import gettext as tr
+
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -28,7 +41,7 @@ class Turkmenistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_new_years_day(name)
         self._add_new_years_day_two(name)
 
-        # Memorial Day 
+        # Memorial Day
         self._add_holiday_jan_12(tr("Хатыра гүни (Memorial Day)"))
 
         # Defender of the Fatherland Day
@@ -38,7 +51,7 @@ class Turkmenistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # International Women's Day
         self._add_womens_day(tr("Халықаралық әйелдер күні"))
 
-        # Nowruz 
+        # Nowruz
         name = tr("Наурыз мейрамы")
         self._add_holiday_mar_21(name)
         self._add_holiday_mar_22(name)
@@ -46,23 +59,23 @@ class Turkmenistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Victory Day
         self._add_holiday_may_9(tr("Жеңиш гүни"))
 
-        # Constitution and Revival Day 
+        # Constitution and Revival Day
         if self._year >= 2018:
             self._add_holiday_may_18(tr("Конституция ве Түзелиш гүни"))
         else:
             self._add_holiday_may_18(tr("Түзелиш гүни"))
 
-        # Independence Day 
+        # Independence Day
         if self._year <= 2017:
             self._add_holiday_oct_27(tr("Гарашсызлык гүни"))
         else:
             self._add_holiday_sep_27(tr("Гарашсызлык гүни"))
 
-        # Day of Remembrance 
+        # Day of Remembrance
         if self._year >= 2015:
             self._add_holiday_oct_6(tr("Хатыра гүни (Day of Remembrance)"))
 
-        # Neutrality Day 
+        # Neutrality Day
         if self._year >= 2023:
             self._add_holiday_dec_12(tr("Битараплык гүни"))
         elif self._year >= 2018:
@@ -70,7 +83,7 @@ class Turkmenistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         elif self._year >= 1995:
             self._add_holiday_dec_12(tr("Битараплык гүни"))
 
-        # Islamic Holidays 
+        # Islamic Holidays
         self._add_eid_al_fitr_day(tr("Ораза байрамы"))
         self._add_eid_al_fitr_day_two(tr("Ораза байрамы"))
         self._add_eid_al_fitr_day_three(tr("Ораза байрамы"))
