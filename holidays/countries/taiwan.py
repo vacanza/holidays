@@ -12,6 +12,7 @@
 
 from datetime import date
 from gettext import gettext as tr
+from typing import Optional
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -86,7 +87,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         super().__init__(*args, **kwargs)
 
     def _populate_observed(
-        self, dts: set[date], rule: ObservedRule = None, since: int = 2015
+        self, dts: set[date], rule: Optional[ObservedRule] = None, since: int = 2015
     ) -> None:
         """
         Taiwan's General Observance Rule first started in 2015 as per
