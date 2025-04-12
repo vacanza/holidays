@@ -91,29 +91,16 @@ class TestTurkmenistan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertHolidayName("Гурбан байрамы (estimated)", "2025-06-06")
 
     def test_localization(self):
-        try:
-            turkmen_holidays = Turkmenistan(years=range(1992, 2050), language="tk")
-            for holiday in turkmen_holidays:
-                self.assertEqual(
-                    holiday.lang, "tk", f"Holiday {holiday.name} not localized in Turkmen."
-                )
-        except FileNotFoundError:
-            print("Turkmen language translation files not found")
-
-        try:
-            russian_holidays = Turkmenistan(years=range(1992, 2050), language="ru")
-            for holiday in russian_holidays:
-                self.assertEqual(
-                    holiday.lang, "ru", f"Holiday {holiday.name} not localized in Russian."
-                )
-        except FileNotFoundError:
-            print("Russian language translation files not found")
-
-        try:
-            english_holidays = Turkmenistan(years=range(1992, 2050), language="en_US")
-            for holiday in english_holidays:
-                self.assertEqual(
-                    holiday.lang, "en_US", f"Holiday {holiday.name} not localized in English."
-                )
-        except FileNotFoundError:
-            print("English language translation files not found")
+        languages = {"tk": "Turkmen", "ru": "Russian", "en_US": "English"}
+    
+        for lang_code, lang_name in languages.items():
+            try:
+                holidays = Turkmenistan(years=range(1992, 2050), language=lang_code)
+                for holiday in holidays:
+                    self.assertEqual(
+                        holiday.lang,
+                        lang_code,
+                        f"Holiday {holiday.name} not localized in {lang_name}."
+                    )
+            except FileNotFoundError:
+                self.skipTest(f"{lang_name} language translation files not found")
