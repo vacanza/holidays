@@ -81,7 +81,7 @@ msgstr "Indigenous People Day"
 msgid "Dag der Marrons"
 msgstr "Day of the Maroons"
 
-#. Republic Day.
+#. Independence Day.
 msgid "Onafhankelijkheidsdag"
 msgstr "Republic Day"
 
@@ -89,7 +89,7 @@ msgstr "Republic Day"
 msgid "Eerste Kerstdag"
 msgstr "Christmas Day"
 
-#. Boxing Day.
+#. Second Day of Christmas.
 msgid "Tweede Kerstdag"
 msgstr "Boxing Day"
 
@@ -112,3 +112,7 @@ msgstr "Eid al-Adha"
 #. Chinese New Year.
 msgid "Chinees Nieuwjaar"
 msgstr "Chinese New Year"
+
+#. Republic Day.
+msgid "Dag van de Republiek"
+msgstr "Republic Day"

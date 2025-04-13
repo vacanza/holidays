@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -132,6 +132,7 @@ class Suriname(
                 # Republic Day.
                 else tr("Dag van de Republiek")
             )
+            dt = self._add_holiday_nov_25(name)
             if self._year > 2024:
                 self._add_observed(dt)
 
