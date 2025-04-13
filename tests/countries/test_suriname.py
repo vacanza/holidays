@@ -205,7 +205,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_fitr(self):
-        name = "Id-ul-Fitr dag"
+        name = "Ied-Ul-Fitre"
         self.assertHolidayName(name, range(1972, 2050))
         self.assertHolidayName(
             name,
@@ -222,7 +222,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_adha(self):
-        name = "Id-ul-Adha dag"
+        name = "Ied-Ul-Adha"
         self.assertHolidayName(name, range(2012, 2050))
         self.assertNoHolidayName(name, range(1972, 2012))
         self.assertHolidayName(
@@ -259,9 +259,9 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2024-03-25", "Holi-dag"),
             ("2024-03-29", "Goede Vrijdag"),
             ("2024-04-01", "Tweede Paasdag"),
-            ("2024-04-10", "Id-ul-Fitr dag"),
+            ("2024-04-10", "Ied-Ul-Fitre"),
             ("2024-05-01", "Dag van de Arbeid"),
-            ("2024-06-16", "Id-ul-Adha dag"),
+            ("2024-06-16", "Ied-Ul-Adha"),
             ("2024-07-01", "Keti Koti Dey"),
             ("2024-08-09", "Dag der Inheemsen"),
             ("2024-10-10", "Dag der Marrons"),
@@ -276,12 +276,12 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-01-01", "Nieuwjaarsdag"),
             ("2025-01-29", "Chinees Nieuwjaar"),
             ("2025-03-14", "Holi-dag"),
-            ("2025-03-31", "Id-ul-Fitr dag"),
+            ("2025-03-31", "Ied-Ul-Fitre"),
             ("2025-04-18", "Goede Vrijdag"),
             ("2025-04-21", "Tweede Paasdag"),
             ("2025-05-01", "Dag van de Arbeid"),
-            ("2025-06-07", "Id-ul-Adha dag"),
-            ("2025-06-09", "Dag na de Id-ul-Adha dag"),
+            ("2025-06-07", "Ied-Ul-Adha"),
+            ("2025-06-09", "Dag na de Ied-Ul-Adha"),
             ("2025-07-01", "Dag der Vrijheden"),
             ("2025-08-09", "Dag der Inheemsen"),
             ("2025-08-11", "Dag na de Dag der Inheemsen"),

@@ -158,13 +158,13 @@ class Suriname(
                 self._add_observed(dt)
 
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Id-ul-Fitr dag")):
+        for dt in self._add_eid_al_fitr_day(tr("Ied-Ul-Fitre")):
             if self._year > 2024:
                 self._add_observed(dt)
 
         if self._year >= 2012:
             # Eid al-Adha.
-            for dt in self._add_eid_al_adha_day(tr("Id-ul-Adha dag")):
+            for dt in self._add_eid_al_adha_day(tr("Ied-Ul-Adha")):
                 if self._year > 2024:
                     self._add_observed(dt)
 

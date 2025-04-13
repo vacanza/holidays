@@ -101,14 +101,6 @@ msgstr "Holi"
 msgid "Divali dag"
 msgstr "Diwali"
 
-#. Eid al-Fitr.
-msgid "Id-ul-Fitr dag"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "Id-ul-Adha dag"
-msgstr "Eid al-Adha"
-
 #. Chinese New Year.
 msgid "Chinees Nieuwjaar"
 msgstr "Chinese New Year"
@@ -116,3 +108,11 @@ msgstr "Chinese New Year"
 #. Republic Day.
 msgid "Dag van de Republiek"
 msgstr "Republic Day"
+
+#. Eid al-Fitr.
+msgid "Ied-Ul-Fitre"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Ied-Ul-Adha"
+msgstr "Eid al-Adha"
