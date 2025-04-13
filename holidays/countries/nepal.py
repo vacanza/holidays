@@ -60,6 +60,31 @@ class Nepal(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # https://www.bolpatra.gov.np/egp/openDateConverter
+        martyrs_day_dates = {
+            2010: (JAN, 30),
+            2011: (JAN, 30),
+            2012: (JAN, 30),
+            2013: (JAN, 29),
+            2014: (JAN, 30),
+            2015: (JAN, 30),
+            2016: (JAN, 30),
+            2017: (JAN, 29),
+            2018: (JAN, 30),
+            2021: (JAN, 29),
+            2022: (JAN, 30),
+            2023: (JAN, 30),
+            2024: (JAN, 30),
+            2025: (JAN, 29),
+            2026: (JAN, 29),
+            2027: (JAN, 29),
+            2028: (JAN, 29),
+            2029: (JAN, 29),
+            2030: (JAN, 29),
+            2031: (JAN, 30),
+            2032: (JAN, 30),
+            2033: (JAN, 29),
+        }
         if self._year >= 2023:
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
@@ -152,8 +177,9 @@ class Nepal(
         # Removed by MoHA between 2019-2020.
 
         if self._year not in {2019, 2020}:
-            # Martyr's Day.
-            self._add_holiday_jan_30("Martyr's Day")
+            if self._year in martyrs_day_dates:
+                # Martyr's Day.
+                self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
 
             # National Democracy Day.
             self._add_holiday_feb_19("National Democracy Day")
@@ -179,12 +205,19 @@ class Nepal(
             self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
     def _populate_workday_holidays(self):
+        # https://www.bolpatra.gov.np/egp/openDateConverter
+        martyrs_day_dates = {
+            2019: (JAN, 30),
+            2020: (JAN, 30),
+        }
+
         if 2019 <= self._year <= 2020:
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
 
-            # Martyr's Day.
-            self._add_holiday_jan_30("Martyr's Day")
+            if self._year in martyrs_day_dates:
+                # Martyr's Day.
+                self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
 
             # National Democracy Day.
             self._add_holiday_feb_19("National Democracy Day")

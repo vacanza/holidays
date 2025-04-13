@@ -50,15 +50,21 @@ class TestNepal(CommonCountryTests, TestCase):
 
     def test_martyrs_day(self):
         name = "Martyr's Day"
-
-        self.assertHolidayName(
-            name, (f"{year}-01-30" for year in (*range(2010, 2019), *range(2021, 2050)))
+        dt = (
+            "2021-01-29",
+            "2022-01-30",
+            "2023-01-30",
+            "2024-01-30",
+            "2025-01-29",
         )
-        self.assertNoHolidayName(name, range(2019, 2021))
-
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-01-30" for year in range(2019, 2021))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2010, 2019), range(2021, 2034))
+        self.assertNoHolidayName(name, range(2019, 2021), range(2034, 2050))
+        dt = (
+            "2019-01-30",
+            "2020-01-30",
         )
+        self.assertHolidayName(name, self.workday_holidays, dt)
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
     def test_national_democracy_day(self):
@@ -510,7 +516,8 @@ class TestNepal(CommonCountryTests, TestCase):
             Nepal(years=2025),
             ("2025-01-11", "Prithvi Jayanti"),
             ("2025-01-14", "Maghe Sankranti"),
-            ("2025-01-30", "Martyr's Day; Sonam Losar"),
+            ("2025-01-29", "Martyr's Day"),
+            ("2025-01-30", "Sonam Losar"),
             ("2025-02-19", "National Democracy Day"),
             ("2025-02-26", "Maha Shivaratri"),
             ("2025-02-28", "Gyalpo Losar"),
