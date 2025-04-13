@@ -215,7 +215,7 @@ class Nepal(
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
 
-            if self._year in martyrs_day_dates:
+            if self._year in martyrs_day_dates:  # pragma: no cover
                 # Martyr's Day.
                 self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
 
