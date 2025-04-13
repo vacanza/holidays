@@ -41,10 +41,10 @@ class TestSuriname(CommonCountryTests, TestCase):
 
     def test_day_of_liberation_and_renewal(self):
         name = "Dag van Bevrijding en Venieuwing"
-        self.assertHolidayName(name, (f"{year}-02-25" for year in range(1981, 1993)))
-        self.assertNoHolidayName(name, (f"{year}-02-25" for year in range(1993, 2012)))
-        self.assertHolidayName(name, (f"{year}-02-25" for year in range(2012, 2021)))
-        self.assertNoHolidayName(name, (f"{year}-02-25" for year in range(2021, 2050)))
+        self.assertHolidayName(
+            name, (f"{year}-02-25" for year in (*range(1981, 1993), *range(2012, 2021)))
+        )
+        self.assertNoHolidayName(name,  range(1993, 2012), range(2021, 2050))
 
     def test_holi(self):
         name = "Holi-dag"
@@ -267,9 +267,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2024-12-26", "Tweede Kerstdag"),
         )
 
-    def test_l10n_default_nl(self):
+    def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            "nl",
             ("2025-01-01", "Nieuwjaarsdag"),
             ("2025-01-29", "Chinees Nieuwjaar"),
             ("2025-03-14", "Holi-dag"),

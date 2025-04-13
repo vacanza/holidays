@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Suriname holidays nl localization.
+# Suriname holidays.
 #
 msgid ""
 msgstr ""
