@@ -55,8 +55,7 @@ msgstr "Проводи"
 msgid "Ziua internaţională a solidarităţii oamenilor muncii"
 msgstr "День міжнародної солідарності трудящих"
 
-#. Victory Day and Commemoration of the heroes fallen for Independence of
-#. Fatherland.
+#. Victory Day and Commemoration of the heroes fallen for Independence of Fatherland.
 msgid "Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr "День Перемоги та вшанування памʼяті героїв, полеглих за незалежність Батьківщини"
 
