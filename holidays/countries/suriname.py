@@ -81,7 +81,7 @@ class Suriname(
         if self._year > 2024:
             self._add_observed(dt)
 
-        if (1981 <= self._year < 1993) or (2012 <= self._year < 2021):
+        if 1981 <= self._year <= 1992 or 2012 <= self._year <= 2020:
             # Day of Liberation and Renewal.
             self._add_holiday_feb_25(tr("Dag van Bevrijding en Venieuwing"))
 
@@ -95,7 +95,7 @@ class Suriname(
         if self._year > 2024:
             self._add_observed(dt)
 
-        if self._year < 1976:
+        if self._year <= 1975:
             # Birthday of H.M. the Queen.
             self._add_holiday_apr_30(tr("Verjaardag van H.M. de Koningin"))
 
@@ -105,8 +105,10 @@ class Suriname(
             self._add_observed(dt)
 
         # Day of Freedoms.
-        name = tr("Dag der Vrijheden") if self._year <= 2007 else tr("Keti Koti Dey")
-        dt = self._add_holiday_jul_1(name)
+        dt = self._add_holiday_jul_1(
+            # Day of Freedoms.
+            tr("Keti Koti Dey") if 2008 <= self._year <= 2024 else tr("Dag der Vrijheden")
+        )
         if self._year > 2024:
             self._add_observed(dt)
 
@@ -123,9 +125,13 @@ class Suriname(
                 self._add_observed(dt)
 
         if self._year >= 1976:
-            # Republic Day.
-            name = "Dag van de Republiek" if self._year <= 2007 else tr("Onafhankelijkheidsdag")
-            dt = self._add_holiday_nov_25(tr(name))
+            name = (
+                # Independence Day.
+                tr("Onafhankelijkheidsdag")
+                if self._year >= 2008
+                # Republic Day.
+                else tr("Dag van de Republiek")
+            )
             if self._year > 2024:
                 self._add_observed(dt)
 
@@ -134,7 +140,7 @@ class Suriname(
         if self._year >= 2024:
             self._add_observed(dt)
 
-        # Boxing Day.
+        # Second Day of Christmas.
         dt = self._add_christmas_day_two(tr("Tweede Kerstdag"))
         if self._year >= 2024:
             self._add_observed(dt)
@@ -224,11 +230,6 @@ class SurinameIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
-        2026: (MAR, 20),
-        2027: (MAR, 10),
-        2028: (FEB, 27),
-        2029: (FEB, 15),
-        2030: (FEB, 5),
     }
 
     # https://www.timeanddate.com/holidays/suriname/eid-al-adha
@@ -245,11 +246,6 @@ class SurinameIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 16),
         2025: (JUN, 7),
-        2026: (MAY, 27),
-        2027: (MAY, 17),
-        2028: (MAY, 5),
-        2029: (APR, 24),
-        2030: (APR, 14),
     }
 
 
