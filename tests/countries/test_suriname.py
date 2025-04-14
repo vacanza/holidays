@@ -29,8 +29,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoHolidays(Suriname(years=1971))
 
     def test_new_years_day(self):
-        name = "Nieuwjaarsdag"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1972, 2050)))
+        self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(1972, 2050)))
 
     def test_day_of_liberation_and_renewal(self):
         name = "Dag van Bevrijding en Vernieuwing"
@@ -41,7 +40,6 @@ class TestSuriname(CommonCountryTests, TestCase):
 
     def test_holi(self):
         name = "Holi-Phagwa"
-        self.assertHolidayName(name, range(2015, 2031))
         self.assertHolidayName(
             name,
             "2019-03-21",
@@ -52,6 +50,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-03-25",
             "2025-03-14",
         )
+        self.assertHolidayName(name, range(2015, 2031))
 
     def test_good_friday(self):
         name = "Goede Vrijdag"
@@ -80,31 +79,32 @@ class TestSuriname(CommonCountryTests, TestCase):
     def test_queens_birthday(self):
         name = "Verjaardag van H.M. de Koningin"
         self.assertHolidayName(name, (f"{year}-04-30" for year in range(1972, 1976)))
-        self.assertNoHolidayName(name, (f"{year}-04-30" for year in range(1976, 2050)))
+        self.assertNoHolidayName(name, range(1976, 2050))
 
     def test_labor_day(self):
-        name = "Dag van de Arbeid"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1972, 2050)))
+        self.assertHolidayName(
+            "Dag van de Arbeid", (f"{year}-05-01" for year in range(1972, 2050))
+        )
 
     def test_day_of_freedoms(self):
-        name_old = "Dag der Vrijheden"
-        name_new = "Keti Koti Dey"
+        name_1 = "Dag der Vrijheden"
+        name_2 = "Keti Koti Dey"
         self.assertHolidayName(
-            name_old,
-            (f"{year}-07-01" for year in range(1972, 2008)),
-            (f"{year}-07-01" for year in range(2025, 2050)),
+            name_1, (f"{year}-07-01" for year in (*range(1972, 2008), *range(2025, 2050)))
         )
-        self.assertHolidayName(name_new, (f"{year}-07-01" for year in range(2008, 2025)))
+        self.assertHolidayName(name_2, (f"{year}-07-01" for year in range(2008, 2025)))
+        self.assertNoHolidayName(name_1, range(2008, 2025))
+        self.assertNoHolidayName(name_2, range(1972, 2008), range(2025, 2050))
 
     def test_indigenous_people_day(self):
         name = "Dag der Inheemsen"
-        self.assertNoHolidayName(name, (f"{year}-08-09" for year in range(1972, 2007)))
         self.assertHolidayName(name, (f"{year}-08-09" for year in range(2007, 2050)))
+        self.assertNoHolidayName(name, range(1972, 2007))
 
     def test_day_of_the_maroons(self):
         name = "Dag der Marrons"
-        self.assertNoHolidayName(name, (f"{year}-10-10" for year in range(1972, 2012)))
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1972, 2012))
 
     def test_diwali(self):
         name = "Divali"
@@ -123,17 +123,16 @@ class TestSuriname(CommonCountryTests, TestCase):
     def test_republic_day(self):
         name_old = "Dag van de Republiek"
         name_new = "Onafhankelijkheidsdag"
-        self.assertNoHolidayName(name_old, range(1972, 1976))
         self.assertHolidayName(name_old, (f"{year}-11-25" for year in range(1976, 2008)))
         self.assertHolidayName(name_new, (f"{year}-11-25" for year in range(2008, 2050)))
+        self.assertNoHolidayName(name_old, range(1972, 1976))
+        self.assertNoHolidayName(name_new, range(1972, 2008))
 
     def test_christmas_day(self):
-        name = "Eerste Kerstdag"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1972, 2050)))
+        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in range(1972, 2050)))
 
     def test_second_day_of_christmas(self):
-        name = "Tweede Kerstdag"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1972, 2050)))
+        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(1972, 2050)))
 
     def test_eid_al_fitr(self):
         name = "Ied-Ul-Fitre"

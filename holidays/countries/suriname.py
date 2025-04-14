@@ -57,7 +57,7 @@ class Suriname(
     start_year = 1972
     supported_languages = ("en_US", "nl")
 
-    def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
         Args:
             islamic_show_estimated:
