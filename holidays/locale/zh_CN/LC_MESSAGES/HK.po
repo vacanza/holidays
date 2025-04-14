@@ -187,8 +187,7 @@ msgstr "英国王储查尔斯王子与戴安娜婚礼"
 msgid "英女王伊利沙伯二世伉儷訪港的第二天"
 msgstr "英女王伊丽莎白二世伉俪访港的第二天"
 
-#. 70th Anniversary of the Victory of the Chinese People's War of Resistance
-#. against Japanese
+#. 70th Anniversary of the Victory of the Chinese People's War of Resistance against Japanese
 #. Aggression and the World Anti-Fascist War.
 msgid "中國人民抗日戰爭勝利70周年紀念日"
 msgstr "中国人民抗日战争胜利70周年纪念日"

@@ -91,7 +91,7 @@ class POGenerator:
             )
 
             # Update .pot file metadata.
-            pot_file = pofile(pot_file_path)
+            pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
             pot_file.metadata.update(
                 {
                     "Language": default_language,
@@ -100,14 +100,14 @@ class POGenerator:
                     "X-Source-Language": default_language,
                 }
             )
-            pot_file.save()
+            pot_file.save(newline="\n")
 
             # Create entity default .po file from the .pot file.
             po_directory = locale_path / default_language / "LC_MESSAGES"
             po_directory.mkdir(parents=True, exist_ok=True)
             po_file_path = po_directory / f"{entity_code}.po"
             if not po_file_path.exists():
-                pofile(pot_file_path).save(po_file_path)
+                pot_file.save(po_file_path, newline="\n")
 
             # Update all .po files.
             for po_file_path in locale_path.rglob(f"{entity_code}.po"):
