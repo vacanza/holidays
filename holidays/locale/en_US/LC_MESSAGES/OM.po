@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-11 14:36+0500\n"
-"PO-Revision-Date: 2025-04-11 14:46+0500\n"
+"PO-Revision-Date: 2025-04-11 23:02+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -52,9 +52,9 @@ msgstr "Islamic New Year"
 msgid "مولد النبي"
 msgstr "Prophet's Birthday"
 
-#. Prophet's Ascension.
+#. Isra' and Mi'raj.
 msgid "الإسراء والمعراج"
-msgstr "Isra and Miraj"
+msgstr "Isra' and Mi'raj"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"

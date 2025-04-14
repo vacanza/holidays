@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
+    _timedelta,
     JAN,
     FEB,
     MAR,
@@ -34,12 +35,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Oman(HolidayBase, IslamicHolidays):
-    """Oman Holidays
+    """Oman holidays.
 
     References:
-        * <https://www.omaninfo.om/pages/161/show/939>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Oman>
-        * [Independece](https://www.omaninfo.om/pages/175/show/572)
+        * [Decree 88/2022](https://decree.om/2022/rd20220088/)
+        * [Decree 56/2020](https://decree.om/2020/rd20200056/)
+        * [Independence](https://www.omaninfo.om/pages/175/show/572)
+        * [National day is moved - Decree 15/2025](https://decree.om/2025/rd20250015/)
         * [Weekend](https://abnnews.com/the-sultanate-of-oman-changes-weekend-days-from-01-may-2013/)
     """
 
@@ -77,8 +80,12 @@ class Oman(HolidayBase, IslamicHolidays):
         if self._year >= 2020:
             # National Day.
             name = tr("يوم وطني")
-            self._add_holiday_nov_18(name)
-            self._add_holiday_nov_19(name)
+            if self._year <= 2024:
+                self._add_holiday_nov_18(name)
+                self._add_holiday_nov_19(name)
+            else:
+                self._add_holiday_nov_20(name)
+                self._add_holiday_nov_21(name)
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
@@ -86,7 +93,7 @@ class Oman(HolidayBase, IslamicHolidays):
         # Prophet's Birthday.
         self._add_mawlid_day(tr("مولد النبي"))
 
-        # Prophet's Ascension.
+        # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("الإسراء والمعراج"))
 
         # Eid al-Fitr.
@@ -94,9 +101,14 @@ class Oman(HolidayBase, IslamicHolidays):
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
+        dates = self._add_holiday_29_ramadan(name)
+        for dt in dates:
+            if _timedelta(dt, +1) not in self:
+                self._add_eid_al_fitr_eve(name)
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")
+        self._add_arafah_day(name)
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
@@ -164,4 +176,11 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
+    }
+
+    # https://www.timeanddate.com/holidays/oman/ramadan-begins
+    RAMADAN_BEGINNING_DATES = {
+        2023: (MAR, 23),
+        2024: (MAR, 12),
+        2025: (MAR, 1),
     }
