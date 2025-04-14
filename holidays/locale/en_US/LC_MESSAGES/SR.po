@@ -45,10 +45,6 @@ msgstr "Day after the %s (estimated)"
 msgid "Nieuwjaarsdag"
 msgstr "New Year's Day"
 
-#. Day of Liberation and Renewal.
-msgid "Dag van Bevrijding en Venieuwing"
-msgstr "Day of Liberation and Renewal"
-
 #. Good Friday.
 msgid "Goede Vrijdag"
 msgstr "Good Friday"
@@ -83,7 +79,7 @@ msgstr "Day of the Maroons"
 
 #. Independence Day.
 msgid "Onafhankelijkheidsdag"
-msgstr "Republic Day"
+msgstr "Independence Day"
 
 #. Christmas Day.
 msgid "Eerste Kerstdag"
@@ -94,11 +90,11 @@ msgid "Tweede Kerstdag"
 msgstr "Second Day of Christmas"
 
 #. Holi.
-msgid "Holi-dag"
+msgid "Holi-Phagwa"
 msgstr "Holi"
 
 #. Diwali.
-msgid "Divali dag"
+msgid "Divali"
 msgstr "Diwali"
 
 #. Chinese New Year.
@@ -116,3 +112,7 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Ied-Ul-Adha"
 msgstr "Eid al-Adha"
+
+#. Day of Liberation and Renewal.
+msgid "Dag van Bevrijding en Vernieuwing"
+msgstr "Day of Liberation and Renewal"

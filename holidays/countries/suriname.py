@@ -146,13 +146,13 @@ class Suriname(
             self._add_observed(dt)
 
         # Holi.
-        dt = self._add_holi(tr("Holi-dag"))
+        dt = self._add_holi(tr("Holi-Phagwa"))
         if self._year > 2024:
             self._add_observed(dt)
 
         if self._year >= 2012:
             # Diwali.
-            dt = self._add_diwali(tr("Divali dag"))
+            dt = self._add_diwali(tr("Divali"))
             if self._year > 2024:
                 self._add_observed(dt)
 

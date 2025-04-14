@@ -40,14 +40,14 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_day_of_liberation_and_renewal(self):
-        name = "Dag van Bevrijding en Venieuwing"
+        name = "Dag van Bevrijding en Vernieuwing"
         self.assertHolidayName(
             name, (f"{year}-02-25" for year in (*range(1981, 1993), *range(2012, 2021)))
         )
         self.assertNoHolidayName(name, range(1993, 2012), range(2021, 2050))
 
     def test_holi(self):
-        name = "Holi-dag"
+        name = "Holi-Phagwa"
         self.assertHolidayName(name, range(2015, 2031))
         self.assertHolidayName(
             name,
@@ -148,7 +148,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_diwali(self):
-        name = "Divali dag"
+        name = "Divali"
         self.assertNoHolidayName(name, range(1972, 2012))
         self.assertHolidayName(name, range(2012, 2050))
         self.assertHolidayName(
@@ -192,7 +192,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertHolidayName(f"Dag na de {name}", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_boxing_day(self):
+    def test_second_day_of_christmas(self):
         name = "Tweede Kerstdag"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1972, 2050)))
         dt = (
@@ -256,7 +256,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             Suriname(years=2024),
             ("2024-01-01", "Nieuwjaarsdag"),
             ("2024-02-10", "Chinees Nieuwjaar"),
-            ("2024-03-25", "Holi-dag"),
+            ("2024-03-25", "Holi-Phagwa"),
             ("2024-03-29", "Goede Vrijdag"),
             ("2024-04-01", "Tweede Paasdag"),
             ("2024-04-10", "Ied-Ul-Fitre"),
@@ -265,7 +265,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2024-07-01", "Keti Koti Dey"),
             ("2024-08-09", "Dag der Inheemsen"),
             ("2024-10-10", "Dag der Marrons"),
-            ("2024-10-31", "Divali dag"),
+            ("2024-10-31", "Divali"),
             ("2024-11-25", "Onafhankelijkheidsdag"),
             ("2024-12-25", "Eerste Kerstdag"),
             ("2024-12-26", "Tweede Kerstdag"),
@@ -275,7 +275,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Nieuwjaarsdag"),
             ("2025-01-29", "Chinees Nieuwjaar"),
-            ("2025-03-14", "Holi-dag"),
+            ("2025-03-14", "Holi-Phagwa"),
             ("2025-03-31", "Ied-Ul-Fitre"),
             ("2025-04-18", "Goede Vrijdag"),
             ("2025-04-21", "Tweede Paasdag"),
@@ -286,7 +286,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-08-09", "Dag der Inheemsen"),
             ("2025-08-11", "Dag na de Dag der Inheemsen"),
             ("2025-10-10", "Dag der Marrons"),
-            ("2025-10-20", "Divali dag"),
+            ("2025-10-20", "Divali"),
             ("2025-11-25", "Onafhankelijkheidsdag"),
             ("2025-12-25", "Eerste Kerstdag"),
             ("2025-12-26", "Tweede Kerstdag"),
@@ -309,7 +309,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-08-11", "Day after the Indigenous People Day"),
             ("2025-10-10", "Day of the Maroons"),
             ("2025-10-20", "Diwali"),
-            ("2025-11-25", "Republic Day"),
+            ("2025-11-25", "Independence Day"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "Boxing Day"),
+            ("2025-12-26", "Second Day of Christmas"),
         )
