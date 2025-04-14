@@ -21,6 +21,7 @@ class TestSuriname(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1972, 2050)
         super().setUpClass(Suriname, years=years)
+        cls.no_estimated_holidays = Suriname(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Suriname, SR, SUR)
@@ -54,7 +55,6 @@ class TestSuriname(CommonCountryTests, TestCase):
 
     def test_good_friday(self):
         name = "Goede Vrijdag"
-        self.assertHolidayName(name, range(1972, 2050))
         self.assertHolidayName(
             name,
             "2021-04-02",
@@ -63,10 +63,10 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        self.assertHolidayName(name, range(1972, 2050))
 
     def test_easter_monday(self):
         name = "Tweede Paasdag"
-        self.assertHolidayName(name, range(1972, 2050))
         self.assertHolidayName(
             name,
             "2021-04-05",
@@ -75,6 +75,7 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
+        self.assertHolidayName(name, range(1972, 2050))
 
     def test_queens_birthday(self):
         name = "Verjaardag van H.M. de Koningin"
@@ -108,8 +109,6 @@ class TestSuriname(CommonCountryTests, TestCase):
 
     def test_diwali(self):
         name = "Divali"
-        self.assertNoHolidayName(name, range(1972, 2012))
-        self.assertHolidayName(name, range(2012, 2050))
         self.assertHolidayName(
             name,
             "2020-11-14",
@@ -119,6 +118,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
+        self.assertHolidayName(name, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1972, 2012))
 
     def test_republic_day(self):
         name_old = "Dag van de Republiek"
@@ -136,7 +137,6 @@ class TestSuriname(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "Ied-Ul-Fitre"
-        self.assertHolidayName(name, range(1972, 2050))
         self.assertHolidayName(
             name,
             "2019-06-05",
@@ -147,11 +147,10 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1972, 2050))
 
     def test_eid_al_adha(self):
         name = "Ied-Ul-Adha"
-        self.assertHolidayName(name, range(2012, 2050))
-        self.assertNoHolidayName(name, range(1972, 2012))
         self.assertHolidayName(
             name,
             "2019-08-12",
@@ -162,11 +161,11 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1972, 2012))
 
     def test_chinese_new_year(self):
         name = "Chinees Nieuwjaar"
-        self.assertHolidayName(name, range(2022, 2050))
-        self.assertNoHolidayName(name, range(1972, 2022))
         self.assertHolidayName(
             name,
             "2022-02-01",
@@ -174,6 +173,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-02-10",
             "2025-01-29",
         )
+        self.assertHolidayName(name, range(2022, 2050))
+        self.assertNoHolidayName(name, range(1972, 2022))
 
     def test_2024(self):
         self.assertHolidays(
