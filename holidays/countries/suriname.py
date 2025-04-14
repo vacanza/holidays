@@ -36,7 +36,7 @@ class Suriname(
 
     References:
         * [Besluit Vrije Dagen 1971](https://web.archive.org/web/20250411201210/https://www.sris.sr/wp-content/uploads/2022/10/Besluit-Vrije-dagen-GB-1971-no-78.pdf)
-        * https://web.archive.org/web/20250411203621/https://gov.sr/wp-content/uploads/2022/09/arbeidswet.pdf
+        * https://web.archive.org/web/20240416223555/https://gov.sr/wp-content/uploads/2022/09/arbeidswet.pdf
         * [S.B. 2007 no. 98](https://web.archive.org/web/20250411204836/https://www.sris.sr/wp-content/uploads/2021/10/SB-2007-no-98-besluit-vrije-dagen.pdf)
         * [S.B. 2012 no. 21](https://web.archive.org/web/20250411204754/https://www.sris.sr/wp-content/uploads/2021/10/SB-2012-no-21-besluit-vrije-dagen.pdf)
         * [S.B. 2021 no. 27](https://web.archive.org/web/20250411210516/https://www.sris.sr/wp-content/uploads/2021/03/S.B.-2021-no.-27-houdende-nadere-wijziging-van-het-Besluit-Vrije-Dagen-1971.pdf)
@@ -83,7 +83,7 @@ class Suriname(
 
         if 1981 <= self._year <= 1992 or 2012 <= self._year <= 2020:
             # Day of Liberation and Renewal.
-            self._add_holiday_feb_25(tr("Dag van Bevrijding en Venieuwing"))
+            self._add_holiday_feb_25(tr("Dag van Bevrijding en Vernieuwing"))
 
         # Good Friday.
         dt = self._add_good_friday(tr("Goede Vrijdag"))
@@ -104,7 +104,6 @@ class Suriname(
         if self._year > 2024:
             self._add_observed(dt)
 
-        # Day of Freedoms.
         dt = self._add_holiday_jul_1(
             # Day of Freedoms.
             tr("Keti Koti Dey") if 2008 <= self._year <= 2024 else tr("Dag der Vrijheden")
@@ -168,7 +167,7 @@ class Suriname(
                 if self._year > 2024:
                     self._add_observed(dt)
 
-        if self._year > 2021:
+        if self._year >= 2022:
             # Chinese New Year.
             self._add_chinese_new_years_day(tr("Chinees Nieuwjaar"))
 

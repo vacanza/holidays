@@ -91,7 +91,7 @@ msgstr "Christmas Day"
 
 #. Second Day of Christmas.
 msgid "Tweede Kerstdag"
-msgstr "Boxing Day"
+msgstr "Second Day of Christmas"
 
 #. Holi.
 msgid "Holi-dag"
