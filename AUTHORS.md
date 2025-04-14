@@ -17,6 +17,7 @@ Anon Kangpanich
 Anthony Rose
 Anton Daitche
 Arjun Anandkumar
+Ary Hauffe Neto
 Arkadii Yakovets
 Artem Tserekh
 Bailey Thompson
