@@ -31,16 +31,6 @@ msgstr ""
 msgid "%s (geschat)"
 msgstr ""
 
-#. Day after the %s.
-#, c-format
-msgid "Dag na de %s"
-msgstr ""
-
-#. Day after the %s (estimated).
-#, c-format
-msgid "Dag na de %s (geschat)"
-msgstr ""
-
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
 msgstr ""

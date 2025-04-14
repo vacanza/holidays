@@ -20,7 +20,7 @@ class TestSuriname(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1972, 2050)
-        super().setUpClass(Suriname, years=years, years_non_observed=years)
+        super().setUpClass(Suriname, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Suriname, SR, SUR)
@@ -31,13 +31,6 @@ class TestSuriname(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "Nieuwjaarsdag"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1972, 2050)))
-        dt = (
-            "2028-01-03",
-            "2033-01-03",
-            "2034-01-02",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_day_of_liberation_and_renewal(self):
         name = "Dag van Bevrijding en Vernieuwing"
@@ -59,9 +52,6 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-03-25",
             "2025-03-14",
         )
-        dt = ("2028-03-13",)
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
         name = "Goede Vrijdag"
@@ -95,13 +85,6 @@ class TestSuriname(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Dag van de Arbeid"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1972, 2050)))
-        dt = (
-            "2027-05-03",
-            "2032-05-03",
-            "2033-05-02",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_day_of_freedoms(self):
         name_old = "Dag der Vrijheden"
@@ -112,40 +95,16 @@ class TestSuriname(CommonCountryTests, TestCase):
             (f"{year}-07-01" for year in range(2025, 2050)),
         )
         self.assertHolidayName(name_new, (f"{year}-07-01" for year in range(2008, 2025)))
-        dt = (
-            "2028-07-03",
-            "2034-07-03",
-            "2035-07-02",
-        )
-        self.assertHolidayName(f"Dag na de {name_old}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_indigenous_people_day(self):
         name = "Dag der Inheemsen"
         self.assertNoHolidayName(name, (f"{year}-08-09" for year in range(1972, 2007)))
         self.assertHolidayName(name, (f"{year}-08-09" for year in range(2007, 2050)))
-        dt = (
-            "2025-08-11",
-            "2026-08-10",
-            "2031-08-11",
-            "2036-08-11",
-            "2037-08-10",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_day_of_the_maroons(self):
         name = "Dag der Marrons"
         self.assertNoHolidayName(name, (f"{year}-10-10" for year in range(1972, 2012)))
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(2012, 2050)))
-        dt = (
-            "2026-10-12",
-            "2027-10-11",
-            "2032-10-11",
-            "2037-10-12",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_diwali(self):
         name = "Divali"
@@ -160,12 +119,6 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-        dt = (
-            "2026-11-09",
-            "2036-11-17",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_republic_day(self):
         name_old = "Dag van de Republiek"
@@ -173,36 +126,14 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_old, range(1972, 1976))
         self.assertHolidayName(name_old, (f"{year}-11-25" for year in range(1976, 2008)))
         self.assertHolidayName(name_new, (f"{year}-11-25" for year in range(2008, 2050)))
-        dt = (
-            "2028-11-27",
-            "2034-11-27",
-            "2035-11-26",
-        )
-        self.assertHolidayName(f"Dag na de {name_new}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         name = "Eerste Kerstdag"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1972, 2050)))
-        dt = (
-            "2027-12-27",
-            "2032-12-27",
-            "2038-12-27",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_second_day_of_christmas(self):
         name = "Tweede Kerstdag"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1972, 2050)))
-        dt = (
-            "2026-12-28",
-            "2027-12-28",
-            "2032-12-28",
-            "2037-12-28",
-        )
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_fitr(self):
         name = "Ied-Ul-Fitre"
@@ -217,9 +148,6 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-31",
         )
-        dt = ("2028-02-28",)
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_eid_al_adha(self):
         name = "Ied-Ul-Adha"
@@ -235,9 +163,6 @@ class TestSuriname(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        dt = ("2025-06-09", "2030-04-15")
-        self.assertHolidayName(f"Dag na de {name}", dt)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_chinese_new_year(self):
         name = "Chinees Nieuwjaar"
@@ -281,10 +206,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-04-21", "Tweede Paasdag"),
             ("2025-05-01", "Dag van de Arbeid"),
             ("2025-06-07", "Ied-Ul-Adha"),
-            ("2025-06-09", "Dag na de Ied-Ul-Adha"),
             ("2025-07-01", "Dag der Vrijheden"),
             ("2025-08-09", "Dag der Inheemsen"),
-            ("2025-08-11", "Dag na de Dag der Inheemsen"),
             ("2025-10-10", "Dag der Marrons"),
             ("2025-10-20", "Divali"),
             ("2025-11-25", "Onafhankelijkheidsdag"),
@@ -303,10 +226,8 @@ class TestSuriname(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day"),
             ("2025-06-07", "Eid al-Adha"),
-            ("2025-06-09", "Day after the Eid al-Adha"),
             ("2025-07-01", "Day of Freedoms"),
             ("2025-08-09", "Indigenous People Day"),
-            ("2025-08-11", "Day after the Indigenous People Day"),
             ("2025-10-10", "Day of the Maroons"),
             ("2025-10-20", "Diwali"),
             ("2025-11-25", "Independence Day"),

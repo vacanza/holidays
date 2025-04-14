@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays import HolidayBase
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.groups import (
@@ -21,11 +22,10 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
 class Suriname(
-    ObservedHolidayBase,
+    HolidayBase,
     ChineseCalendarHolidays,
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -45,16 +45,15 @@ class Suriname(
     Note:
         The oldest decree available online that underpins the public holidays defined here
         for Suriname is Besluit Vrije Dagen 1971 of April 22, 1971.
+
+        The S.B. 2024 no. 167 law only applies to prolongations of terms specified in contracts
+        and other similar legal documents, and does not apply to labor agreements (and days off).
     """
 
     country = "SR"
     default_language = "nl"
     # %s (estimated).
     estimated_label = tr("%s (geschat)")
-    # Day after the %s.
-    observed_label = tr("Dag na de %s")
-    # Day after the %s (estimated).
-    observed_estimated_label = tr("Dag na de %s (geschat)")
     start_year = 1972
     supported_languages = ("en_US", "nl")
 
@@ -72,56 +71,41 @@ class Suriname(
         IslamicHolidays.__init__(
             self, cls=SurinameIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        dt = self._add_new_years_day(tr("Nieuwjaarsdag"))
-        if self._year > 2024:
-            self._add_observed(dt)
+        self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         if 1981 <= self._year <= 1992 or 2012 <= self._year <= 2020:
             # Day of Liberation and Renewal.
             self._add_holiday_feb_25(tr("Dag van Bevrijding en Vernieuwing"))
 
         # Good Friday.
-        dt = self._add_good_friday(tr("Goede Vrijdag"))
-        if self._year > 2024:
-            self._add_observed(dt)
+        self._add_good_friday(tr("Goede Vrijdag"))
 
         # Easter Monday.
-        dt = self._add_easter_monday(tr("Tweede Paasdag"))
-        if self._year > 2024:
-            self._add_observed(dt)
+        self._add_easter_monday(tr("Tweede Paasdag"))
 
         if self._year <= 1975:
             # Birthday of H.M. the Queen.
             self._add_holiday_apr_30(tr("Verjaardag van H.M. de Koningin"))
 
         # Labor Day.
-        dt = self._add_labor_day(tr("Dag van de Arbeid"))
-        if self._year > 2024:
-            self._add_observed(dt)
+        self._add_labor_day(tr("Dag van de Arbeid"))
 
-        dt = self._add_holiday_jul_1(
+        self._add_holiday_jul_1(
             # Day of Freedoms.
             tr("Keti Koti Dey") if 2008 <= self._year <= 2024 else tr("Dag der Vrijheden")
         )
-        if self._year > 2024:
-            self._add_observed(dt)
 
         if self._year >= 2007:
             # Indigenous People Day.
-            dt = self._add_holiday_aug_9(tr("Dag der Inheemsen"))
-            if self._year > 2024:
-                self._add_observed(dt)
+            self._add_holiday_aug_9(tr("Dag der Inheemsen"))
 
         if self._year >= 2012:
             # Day of the Maroons.
-            dt = self._add_holiday_oct_10(tr("Dag der Marrons"))
-            if self._year > 2024:
-                self._add_observed(dt)
+            self._add_holiday_oct_10(tr("Dag der Marrons"))
 
         if self._year >= 1976:
             name = (
@@ -131,41 +115,27 @@ class Suriname(
                 # Republic Day.
                 else tr("Dag van de Republiek")
             )
-            dt = self._add_holiday_nov_25(name)
-            if self._year > 2024:
-                self._add_observed(dt)
+            self._add_holiday_nov_25(name)
 
         # Christmas Day.
-        dt = self._add_christmas_day(tr("Eerste Kerstdag"))
-        if self._year >= 2024:
-            self._add_observed(dt)
+        self._add_christmas_day(tr("Eerste Kerstdag"))
 
         # Second Day of Christmas.
-        dt = self._add_christmas_day_two(tr("Tweede Kerstdag"))
-        if self._year >= 2024:
-            self._add_observed(dt)
+        self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
         # Holi.
-        dt = self._add_holi(tr("Holi-Phagwa"))
-        if self._year > 2024:
-            self._add_observed(dt)
+        self._add_holi(tr("Holi-Phagwa"))
 
         if self._year >= 2012:
             # Diwali.
-            dt = self._add_diwali(tr("Divali"))
-            if self._year > 2024:
-                self._add_observed(dt)
+            self._add_diwali(tr("Divali"))
 
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Ied-Ul-Fitre")):
-            if self._year > 2024:
-                self._add_observed(dt)
+        self._add_eid_al_fitr_day(tr("Ied-Ul-Fitre"))
 
         if self._year >= 2012:
             # Eid al-Adha.
-            for dt in self._add_eid_al_adha_day(tr("Ied-Ul-Adha")):
-                if self._year > 2024:
-                    self._add_observed(dt)
+            self._add_eid_al_adha_day(tr("Ied-Ul-Adha"))
 
         if self._year >= 2022:
             # Chinese New Year.
