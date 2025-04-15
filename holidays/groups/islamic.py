@@ -242,6 +242,16 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.hasan_al_askari_death_dates(self._year)
         )
 
+    def _add_holiday_29_ramadan(self, name) -> set[date]:
+        """
+        Add 29th Ramadan holiday.
+
+        https://decree.om/2022/rd20220088/
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+28
+        )
+
     def _add_imam_mahdi_birthday_day(self, name) -> set[date]:
         """
         Add birthday of Muhammad al-Mahdi day (15th day of 8th month).
