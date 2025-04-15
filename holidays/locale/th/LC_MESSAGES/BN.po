@@ -101,8 +101,7 @@ msgstr "ชดเชย%s (โดยประมาณ)"
 msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"
 msgstr "พระราชพิธีสถาปนาเจ้าชายอัลมุห์ตาดี บิลละห์ มกุฎราชกุมารแห่งบรูไน"
 
-#. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah
-#. of Brunei.
+#. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei.
 msgid "Istiadat Perkahwinan Diraja Brunei 2004"
 msgstr ""
 "พระราชพิธีอภิเษกสมรส เจ้าฟ้าชายฮัจญี อัล-มุห์ตาดี บิลลาห์ มกุฎราชกุมารแห่งบรูไน และเจ้าหญิงซาราห์"

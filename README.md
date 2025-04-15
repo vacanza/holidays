@@ -99,7 +99,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 166 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 167 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -1080,6 +1080,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Sierra Leone</td>
+<td>SL</td>
+<td></td>
+<td><strong>en_SL</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
@@ -1127,6 +1134,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>si_LK</strong>, ta_LK</td>
 <td>BANK, GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Suriname</td>
+<td>SR</td>
+<td></td>
+<td>en_US, <strong>nl</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Sweden</td>
