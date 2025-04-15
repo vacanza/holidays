@@ -73,8 +73,8 @@ class TrinidadAndTobago(
         self._add_easter_monday(tr("Easter Monday"))
 
         if self._year >= 1996:
-            # Spiritual Baptist Shouter Liberation Day.
-            self._add_holiday_mar_30(tr("Spiritual Baptist Shouter Liberation Day"))
+            # Spiritual Baptist Liberation Day.
+            self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day"))
 
             # Indian Arrival Day.
             self._add_holiday_may_30(tr("Indian Arrival Day"))

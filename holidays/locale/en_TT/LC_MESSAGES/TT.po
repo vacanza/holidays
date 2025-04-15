@@ -43,8 +43,8 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Spiritual Baptist Shouter Liberation Day.
-msgid "Spiritual Baptist Shouter Liberation Day"
+#. Spiritual Baptist Liberation Day.
+msgid "Spiritual Baptist Liberation Day"
 msgstr ""
 
 #. Indian Arrival Day.

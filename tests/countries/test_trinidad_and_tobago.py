@@ -60,8 +60,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1963, 2050))
 
-    def test_spiritual_baptist_shouter_liberation_day(self):
-        name = "Spiritual Baptist Shouter Liberation Day"
+    def test_spiritual_baptist_liberation_day(self):
+        name = "Spiritual Baptist Liberation Day"
         self.assertHolidayName(name, (f"{year}-03-30" for year in range(1996, 2050)))
 
     def test_indian_arrival_day(self):
@@ -200,7 +200,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             TrinidadAndTobago(years=2024),
             ("2024-01-01", "New Year's Day"),
             ("2024-03-29", "Good Friday"),
-            ("2024-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2024-03-30", "Spiritual Baptist Liberation Day"),
             ("2024-04-01", "Easter Monday"),
             ("2024-04-10", "Eid-Ul-Fitr"),
             ("2024-05-30", "Corpus Christi; Indian Arrival Day"),
@@ -217,7 +217,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertHolidays(
             TrinidadAndTobago(years=2025),
             ("2025-01-01", "New Year's Day"),
-            ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2025-03-30", "Spiritual Baptist Liberation Day"),
             ("2025-03-31", "Eid-Ul-Fitr"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
@@ -236,7 +236,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-01-01", "New Year's Day"),
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
-            ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2025-03-30", "Spiritual Baptist Liberation Day"),
             ("2025-03-31", "Eid-Ul-Fitr"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
@@ -256,7 +256,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-01-01", "New Year's Day"),
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
-            ("2025-03-30", "Spiritual Baptist Shouter Liberation Day"),
+            ("2025-03-30", "Spiritual Baptist Liberation Day"),
             ("2025-03-31", "Eid al-Fitr"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
