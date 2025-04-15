@@ -947,6 +947,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Oman</td>
+<td>OM</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Pakistan</td>
 <td>PK</td>
 <td></td>
