@@ -35,6 +35,14 @@ msgstr "%s (estimated)"
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
 #. Spiritual Baptist Shouter Liberation Day.
 msgid "Spiritual Baptist Shouter Liberation Day"
 msgstr "Spiritual Baptist Shouter Liberation Day"
@@ -42,6 +50,10 @@ msgstr "Spiritual Baptist Shouter Liberation Day"
 #. Indian Arrival Day.
 msgid "Indian Arrival Day"
 msgstr "Indian Arrival Day"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
 
 #. Labor Day.
 msgid "Labour Day"
@@ -71,6 +83,10 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+#. Eid al-Fitr.
+msgid "Eid-Ul-Fitr"
+msgstr "Eid al-Fitr"
+
 #. Carnival Monday.
 msgid "Carnival Monday"
 msgstr "Carnival Monday"
@@ -78,19 +94,3 @@ msgstr "Carnival Monday"
 #. Carnival Tuesday.
 msgid "Carnival Tuesday"
 msgstr "Carnival Tuesday"
-
-#. Good Friday.
-msgid "Good Friday"
-msgstr "Good Friday"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
-#. Corpus Christi.
-msgid "Corpus Christi"
-msgstr "Corpus Christi"
-
-#. Eid al-Fitr.
-msgid "Eid-Ul-Fitr"
-msgstr "Eid al-Fitr"

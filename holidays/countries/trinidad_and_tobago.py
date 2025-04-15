@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV
+from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -41,6 +42,7 @@ class TrinidadAndTobago(
 
     country = "TT"
     default_language = "en_TT"
+    supported_categories = (OPTIONAL, PUBLIC)
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     supported_languages = ("en_TT", "en_US")
@@ -66,12 +68,21 @@ class TrinidadAndTobago(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
         if self._year >= 1996:
             # Spiritual Baptist Shouter Liberation Day.
             self._add_holiday_mar_30(tr("Spiritual Baptist Shouter Liberation Day"))
 
             # Indian Arrival Day.
             self._add_holiday_may_30(tr("Indian Arrival Day"))
+
+        # Corpus Christi.
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
         # Labor Day.
         self._add_holiday_jun_19(tr("Labour Day"))
@@ -94,23 +105,15 @@ class TrinidadAndTobago(
         # Boxing Day.
         self._add_christmas_day_two(tr("Boxing Day"))
 
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
+
+    def _populate_optional_holidays(self):
         # Carnival Monday.
         self._add_carnival_monday(tr("Carnival Monday"))
 
         # Carnival Tuesday.
         self._add_carnival_tuesday(tr("Carnival Tuesday"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
-        # Corpus Christi.
-        self._add_corpus_christi_day(tr("Corpus Christi"))
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
 
 
 class TT(TrinidadAndTobago):
