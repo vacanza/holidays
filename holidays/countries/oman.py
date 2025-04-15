@@ -38,6 +38,7 @@ class Oman(HolidayBase, IslamicHolidays):
     """Oman holidays.
 
     References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Oman>
         * [Independence](https://www.omaninfo.om/pages/175/show/572)
         * [Weekend](https://abnnews.com/the-sultanate-of-oman-changes-weekend-days-from-01-may-2013/)
         * [Decree 56/2020](https://decree.om/2020/rd20200056/)
