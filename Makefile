@@ -18,11 +18,10 @@ check:
 	make test
 
 clean:
-	find . -name *.mo -delete
-	find . -name *.pyc -delete
-	rm -rf .mypy_cache/*
-	rm -rf .pytest_cache/*
-	rm -rf dist/*
+	@for ext in mo pot pyc; do \
+		find . -type f -name "*.$$ext" -delete; \
+	done
+	@rm -rf .mypy_cache .pytest_cache dist
 
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
@@ -31,6 +30,7 @@ doc:
 	mkdocs build
 
 l10n:
+	find . -type f -name "*.pot" -delete
 	scripts/l10n/generate_po_files.py >/dev/null 2>&1
 	scripts/l10n/generate_mo_files.py
 

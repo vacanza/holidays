@@ -111,8 +111,7 @@ msgstr ""
 msgid "Dia Mundial da Criança"
 msgstr ""
 
-#. Day of the Armed Forces for the National Liberation of Timor-Leste
-#. (FALINTIL).
+#. Day of the Armed Forces for the National Liberation of Timor-Leste (FALINTIL).
 msgid "Dia das Forças Armadas de Libertação Nacional de Timor-Leste (FALINTIL)"
 msgstr ""
 
