@@ -162,6 +162,7 @@ COUNTRIES: RegistryDict = {
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
+    "suriname": ("Suriname", "SR", "SUR"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "taiwan": ("Taiwan", "TW", "TWN"),

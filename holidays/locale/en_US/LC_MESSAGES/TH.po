@@ -271,8 +271,7 @@ msgstr "Buddhist Lent Day"
 msgid "วันกองทัพไทย"
 msgstr "Royal Thai Armed Forces Day"
 
-#. Additional Closing Day for Bank for Agriculture and Agricultural
-#. Cooperatives.
+#. Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives.
 msgid "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
 msgstr "Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives"
 

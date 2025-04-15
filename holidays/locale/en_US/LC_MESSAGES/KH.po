@@ -54,8 +54,7 @@ msgstr "Khmer New Year's Day"
 msgid "ទិវាពលកម្មអន្តរជាតិ"
 msgstr "International Labor Day"
 
-#. Birthday of His Majesty Preah Bat Samdech Preah Boromneath NORODOM
-#. SIHAMONI, King of Cambodia
+#. Birthday of His Majesty Preah Bat Samdech Preah Boromneath NORODOM SIHAMONI, King of Cambodia
 msgid "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
 msgstr "HM King Norodom Sihamoni's Birthday"
 
@@ -67,8 +66,7 @@ msgstr "National Day of Remembrance"
 msgid "ទិវាកុមារអន្តរជាតិ"
 msgstr "International Children's Day"
 
-#. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of
-#. Cambodia
+#. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
 msgid "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ"
 msgstr "HM Queen Norodom Monineath Sihanouk the Queen-Mother's Birthday"
 
@@ -86,8 +84,7 @@ msgstr "HM King Norodom Sihanouk Mourning Day"
 msgid "ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"
 msgstr "Paris Peace Agreement's Day"
 
-#. Coronation Day of His Majesty Preah Bat Samdech Preah Boromneath NORODOM
-#. SIHAMONI, King of
+#. Coronation Day of His Majesty Preah Bat Samdech Preah Boromneath NORODOM SIHAMONI, King of
 #. Cambodia
 msgid ""
 "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "

@@ -1136,6 +1136,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>BANK, GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
+<td>Suriname</td>
+<td>SR</td>
+<td></td>
+<td>en_US, <strong>nl</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Sweden</td>
 <td>SE</td>
 <td></td>
