@@ -83,11 +83,11 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "Labour Day"
-        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1963, 2050)))
+        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1973, 2050)))
 
     def test_african_emancipation_day(self):
         name = "African Emancipation Day"
-        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1963, 2050)))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1985, 2050)))
 
     def test_independence_day(self):
         name = "Independence Day"
@@ -95,7 +95,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Republic Day"
-        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1963, 2050)))
+        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1976, 2050)))
 
     def test_christmas_day(self):
         name = "Christmas Day"

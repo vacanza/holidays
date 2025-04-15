@@ -82,17 +82,20 @@ class TrinidadAndTobago(
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        # Labor Day.
-        self._add_holiday_jun_19(tr("Labour Day"))
+        if self._year >= 1973:
+            # Labor Day.
+            self._add_holiday_jun_19(tr("Labour Day"))
 
-        # African Emancipation Day.
-        self._add_holiday_aug_1(tr("African Emancipation Day"))
+        if self._year >= 1985:
+            # African Emancipation Day.
+            self._add_holiday_aug_1(tr("African Emancipation Day"))
 
         # Independence Day.
         self._add_holiday_aug_31(tr("Independence Day"))
 
-        # Republic Day.
-        self._add_holiday_sep_24(tr("Republic Day"))
+        if self._year >= 1976:
+            # Republic Day.
+            self._add_holiday_sep_24(tr("Republic Day"))
 
         # Diwali.
         self._add_diwali(tr("Diwali"))
