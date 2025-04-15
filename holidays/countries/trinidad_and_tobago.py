@@ -27,17 +27,15 @@ from holidays.holiday_base import HolidayBase
 class TrinidadAndTobago(
     HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
 ):
-    """
-    Trinidad and Tobago Holidays.
+    """Trinidad and Tobago holidays.
 
     References:
-      * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
-      * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
-      * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
-      * <https://calendarific.com/holiday/trinidad/eid-al-fitr>
-      * <https://www.timeanddate.com/holidays/trinidad/diwali>
-      * <https://calendarific.com/holiday/trinidad/diwali>
-      * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
+        * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
+        * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
+        * <https://en.wikipedia.org/wiki/Indian_Arrival_Day#Trinidad_and_Tobago>
+        * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
+        * <https://www.timeanddate.com/holidays/trinidad/diwali>
     """
 
     country = "TT"
