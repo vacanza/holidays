@@ -14,7 +14,6 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
-    _timedelta,
     JAN,
     FEB,
     MAR,
@@ -29,6 +28,7 @@ from holidays.calendars.gregorian import (
     THU,
     FRI,
     SAT,
+    _timedelta,
 )
 from holidays.groups import IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -38,12 +38,11 @@ class Oman(HolidayBase, IslamicHolidays):
     """Oman holidays.
 
     References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Oman>
-        * [Decree 88/2022](https://decree.om/2022/rd20220088/)
-        * [Decree 56/2020](https://decree.om/2020/rd20200056/)
         * [Independence](https://www.omaninfo.om/pages/175/show/572)
-        * [National day is moved - Decree 15/2025](https://decree.om/2025/rd20250015/)
         * [Weekend](https://abnnews.com/the-sultanate-of-oman-changes-weekend-days-from-01-may-2013/)
+        * [Decree 56/2020](https://decree.om/2020/rd20200056/)
+        * [Decree 88/2022](https://decree.om/2022/rd20220088/)
+        * [Decree 15/2025 (National day is moved)](https://decree.om/2025/rd20250015/)
     """
 
     country = "OM"
@@ -101,8 +100,7 @@ class Oman(HolidayBase, IslamicHolidays):
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
         self._add_eid_al_fitr_day_three(name)
-        dates = self._add_holiday_29_ramadan(name)
-        for dt in dates:
+        for dt in self._add_holiday_29_ramadan(name):
             if _timedelta(dt, +1) not in self:
                 self._add_eid_al_fitr_eve(name)
 

@@ -93,17 +93,21 @@ class TestOman(CommonCountryTests, TestCase):
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
         dts = (
+            "2019-06-03",
             "2019-06-04",
             "2019-06-05",
             "2019-06-06",
+            "2020-05-22",
             "2020-05-23",
             "2020-05-24",
             "2020-05-25",
             "2020-05-26",
+            "2021-05-11",
             "2021-05-12",
             "2021-05-13",
             "2021-05-14",
             "2021-05-15",
+            "2022-04-30",
             "2022-05-01",
             "2022-05-02",
             "2022-05-03",
@@ -123,7 +127,7 @@ class TestOman(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.no_estimated_holidays, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
 
     def test_eid_al_adha(self):
