@@ -18,7 +18,7 @@ import inspect
 import sys
 from pathlib import Path
 
-from lingva.extract import main as create_pot_file
+from lingva.extract import extract as create_pot_file
 from polib import pofile
 
 WRAP_WIDTH = 99
@@ -73,21 +73,14 @@ class POGenerator:
             pot_file_path = pot_path / f"{entity_code}.pot"
             # Create .pot file.
             create_pot_file(
-                (
-                    f"{class_file_path}",
-                    "-k",
-                    "tr",
-                    "-o",
-                    f"{pot_file_path}",
-                    "--package-name",
-                    "Holidays",
-                    "--package-version",
-                    package_version,
-                    "--width",
-                    f"{WRAP_WIDTH}",
-                    "--no-location",
-                ),
-                standalone_mode=False,
+                sources=[class_file_path],
+                keywords=["tr"],
+                output=pot_file_path,
+                package_name="Holidays",
+                package_version=package_version,
+                width=WRAP_WIDTH,
+                location=False,
+                allow_empty=True,
             )
 
             # Update .pot file metadata.
@@ -96,7 +89,6 @@ class POGenerator:
                 {
                     "Language": default_language,
                     "Language-Team": "Holidays Localization Team",
-                    "PO-Revision-Date": pot_file.metadata["POT-Creation-Date"],
                     "X-Source-Language": default_language,
                 }
             )
