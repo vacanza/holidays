@@ -26,6 +26,7 @@ class Aland(Finland):
     """
 
     country = "AX"
+    parent_entity = Finland
     supported_categories = (PUBLIC, UNOFFICIAL)
     subdivisions = ()
     start_year = 1920
