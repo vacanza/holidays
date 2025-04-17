@@ -15,12 +15,15 @@ from holidays.countries.france import France
 
 class HolidaysTF(France):
     """French Southern Territories holidays.
-    Since most islands doesn't have a permanent population,
-        the holidays are just the public ones from France
-    Alias of a French subdivision that is also officially assigned
-        its own country code in ISO 31661.
 
-    See:
+    Alias of a French subdivision that is also officially assigned
+    its own country code in ISO 31661.
+
+    !!! note "Note"
+        Since most islands doesn't have a permanent population,
+        the holidays are just the public ones from France.
+
+    References:
         * <https://www.iso.org/obp/ui#iso:code:3166:TF>
         * <https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
