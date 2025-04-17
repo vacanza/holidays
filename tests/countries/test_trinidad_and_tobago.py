@@ -155,6 +155,13 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertHolidayName("Carnival Tuesday", self.optional_holidays, range(1963, 2050))
         self.assertNoHolidayName("Carnival Tuesday")
 
+    def test_optional_2025(self):
+        self.assertHolidays(
+            TrinidadAndTobago(categories=OPTIONAL, years=2025),
+            ("2025-03-03", "Carnival Monday"),
+            ("2025-03-04", "Carnival Tuesday"),
+        )
+
     def test_2024(self):
         self.assertHolidays(
             TrinidadAndTobago(years=2024),
