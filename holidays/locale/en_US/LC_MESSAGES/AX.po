@@ -14,9 +14,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.23\n"
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-08 20:19+0300\n"
-
+"PO-Revision-Date: 2025-04-17 23:52+0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Autonomy Day.
 msgid "Självstyrelsedagen"
