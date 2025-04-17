@@ -81,8 +81,7 @@ msgstr "День Травневої революції"
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 
-#. Day of Affirmation of Argentine Rights over the Malvinas, Islands and
-#. Antarctic Sector.
+#. Day of Affirmation of Argentine Rights over the Malvinas, Islands and Antarctic Sector.
 msgid ""
 "Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico"
 msgstr "День утвердження прав Аргентини на Мальвінські острови, Aнтарктичний сектор та острови"
@@ -241,8 +240,7 @@ msgstr "Національний день нафти"
 msgid "Tehuelches y Mapuches declaran lealtad a la bandera Argentina"
 msgstr "День присяги теуелче та мапуче на вірність аргентинському прапору"
 
-#. Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic
-#. Islands.
+#. Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic Islands.
 msgid "Día de la Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur"
 msgstr "День провінції Вогняна Земля, Антарктиди і Південноатлантичних островів"
 
@@ -346,8 +344,7 @@ msgstr "200-річчя створення та першої присяги де�
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr "200-річчя битви при Тукумані"
 
-#. Bicentenary of the inaugural session of the National Constituent Assembly
-#. of the year 1813.
+#. Bicentenary of the inaugural session of the National Constituent Assembly of the year 1813.
 msgid "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
 msgstr "200-річчя інавгураційної сесії Національних установчих зборів 1813 року"
 
