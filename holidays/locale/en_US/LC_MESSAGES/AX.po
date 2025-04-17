@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-## Åland Islands holidays en_US localization.
+# Åland Islands holidays en_US localization.
 #
 msgid ""
 msgstr ""
