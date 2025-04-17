@@ -36,7 +36,12 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
-    subdivisions: tuple[()] | tuple[str, ...] = ("AX",)  # Aland Islands
+    subdivisions: Union[tuple[()], tuple[str, ...]] = ("01",)  # Åland Islands.
+    subdivisions_aliases = {
+        "Ahvenanmaan maakunta": "01",
+        "Landskapet Åland": "01",
+        "Åland": "01",
+    }
     start_year = 1853
 
     def __init__(self, *args, **kwargs):
