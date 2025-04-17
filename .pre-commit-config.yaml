@@ -20,7 +20,7 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.4
+    rev: v0.11.5
     hooks:
       - id: ruff
       - id: ruff-format
@@ -58,10 +58,7 @@ repos:
           - types-docutils
           - types-polib
           - types-python-dateutil
-        args:
-          - --ignore-missing-imports
-          - --implicit-optional
-          - --show-error-codes
+          - types-setuptools
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: '1.5.0'
