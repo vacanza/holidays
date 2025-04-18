@@ -21,11 +21,15 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
 class TrinidadAndTobago(
-    HolidayBase, ChristianHolidays, HinduCalendarHolidays, InternationalHolidays, IslamicHolidays
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
 ):
     """Trinidad and Tobago holidays.
 
@@ -70,13 +74,14 @@ class TrinidadAndTobago(
         IslamicHolidays.__init__(
             self, cls=TrinidadAndTobagoIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         dts_observed = set()
 
         # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
+        dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -120,6 +125,9 @@ class TrinidadAndTobago(
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
+
+        if self.observed:
+            self._populate_observed(dts_observed)
 
     def _populate_optional_holidays(self):
         # Carnival Monday.

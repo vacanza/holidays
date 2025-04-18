@@ -21,7 +21,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1963, 2050)
-        super().setUpClass(TrinidadAndTobago, years=years)
+        super().setUpClass(TrinidadAndTobago, years=years, years_non_observed=years)
         cls.no_estimated_holidays = TrinidadAndTobago(years=years, islamic_show_estimated=False)
         cls.optional_holidays = TrinidadAndTobago(categories=OPTIONAL, years=years)
 
@@ -33,7 +33,15 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertNoHolidays(TrinidadAndTobago(categories=OPTIONAL, years=1962))
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1963, 2050)))
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1963, 2050)))
+        dt = (
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
         name = "Good Friday"
