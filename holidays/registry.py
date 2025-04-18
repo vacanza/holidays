@@ -176,6 +176,7 @@ COUNTRIES: RegistryDict = {
     "trinidad_and_tobago": ("TrinidadAndTobago", "TT", "TTO"),
     "tunisia": ("Tunisia", "TN", "TUN"),
     "turkey": ("Turkey", "TR", "TUR"),
+    "turks_and_caicos_islands": ("Turks and Caicos Islands", "TC", "TCA"),
     "tuvalu": ("Tuvalu", "TV", "TUV"),
     "ukraine": ("Ukraine", "UA", "UKR"),
     "united_arab_emirates": ("UnitedArabEmirates", "AE", "ARE"),
