@@ -159,7 +159,7 @@ from .sri_lanka import SriLanka, LK, LKA
 from .suriname import Suriname, SR, SUR
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
-from .syrian_arab_republic import SyrianArabRepublic, SY  
+from .syrian_arab_republic import SyrianArabRepublic, SY, SYR 
 from .taiwan import Taiwan, TW, TWN
 from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
