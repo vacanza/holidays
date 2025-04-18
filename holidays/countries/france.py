@@ -31,7 +31,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "FR"
     default_language = "fr"
     supported_languages = ("en_US", "fr", "uk")
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         "BL",  # Saint-Barthélemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
         "GP",  # Guadeloupe.
