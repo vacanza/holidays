@@ -132,6 +132,7 @@ Santiago Feliu
 Sergi Almacellas Abellana
 Sergio Mayoral Martinez
 Serhii Murza
+Shalom Donga
 Shaurya Uppal
 Sho Hirose
 Simon Gurcke
