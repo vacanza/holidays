@@ -82,7 +82,7 @@ msgid "Republic Day"
 msgstr ""
 
 #. Diwali.
-msgid "Diwali"
+msgid "Divali"
 msgstr ""
 
 #. Christmas Day.

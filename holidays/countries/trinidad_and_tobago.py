@@ -73,6 +73,8 @@ class TrinidadAndTobago(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        dts_observed = set()
+
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
@@ -108,7 +110,7 @@ class TrinidadAndTobago(
             self._add_holiday_sep_24(tr("Republic Day"))
 
         # Diwali.
-        self._add_diwali(tr("Diwali"))
+        dts_observed.add(self._add_diwali(tr("Divali")))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))

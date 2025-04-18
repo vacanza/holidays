@@ -105,7 +105,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1963, 2050)))
 
     def test_diwali(self):
-        name = "Diwali"
+        name = "Divali"
         self.assertHolidayName(
             name,
             "2020-11-14",
@@ -180,7 +180,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2024-08-01", "African Emancipation Day"),
             ("2024-08-31", "Independence Day"),
             ("2024-09-24", "Republic Day"),
-            ("2024-10-31", "Diwali"),
+            ("2024-10-31", "Divali"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )
@@ -198,7 +198,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-24", "Republic Day"),
-            ("2025-10-20", "Diwali"),
+            ("2025-10-20", "Divali"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
@@ -217,7 +217,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-24", "Republic Day"),
-            ("2025-10-20", "Diwali"),
+            ("2025-10-20", "Divali"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
