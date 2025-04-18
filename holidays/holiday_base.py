@@ -1065,7 +1065,7 @@ class HolidayBase(dict[date, str]):
 
     def get_closest_holiday(
         self,
-        target_date: DateLike = None,
+        target_date: Optional[DateLike] = None,
         direction: Literal["forward", "backward"] = "forward",
     ) -> Optional[tuple[date, str]]:
         """Find the closest holiday relative to a given date.
