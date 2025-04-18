@@ -16,22 +16,13 @@ from holidays.calendars.gregorian import (
     APR,
     MAY,
     JUN,
-    JUL,
-    AUG,
     SEP,
     OCT,
-    NOV,
-    DEC,
-    FRI,
-    SAT,
-    SUN,
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
-class SYR(SyrianArabRepublic):
-    """ISO 3166‑1 alpha‑3 code alias for Syrian Arab Republic."""
-    pass
+
 
 
 class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
@@ -113,7 +104,9 @@ class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, St
 
 class SY(SyrianArabRepublic):
     pass
-
+class SYR(SyrianArabRepublic):
+    """ISO 3166‑1 alpha‑3 code alias for Syrian Arab Republic."""
+    pass
 
 class SyrianArabRepublicIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_FITR_DATES = {
