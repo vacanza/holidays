@@ -1,0 +1,183 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from gettext import gettext as tr
+
+from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV
+from holidays.constants import OPTIONAL, PUBLIC
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
+
+
+class TrinidadAndTobago(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+):
+    """Trinidad and Tobago holidays.
+
+    References:
+        * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
+        * <https://laws.gov.tt/ttdll-web2/revision/list?offset=380&q=&currentid=322>
+        * <https://www.guardian.co.tt/article-6.2.448640.3e9e366923>
+        * <https://www.guardian.co.tt/article-6.2.410311.3fe66fb00f>
+        * <https://www.nalis.gov.tt/resources/tt-content-guide/labour-day/>
+        * <https://www.facebook.com/groups/191766699268/posts/10160832951274269/>
+        * <https://www.facebook.com/100064996051675/posts/1101755938667598/?_rdr>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
+        * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
+        * <https://en.wikipedia.org/wiki/Indian_Arrival_Day#Trinidad_and_Tobago>
+        * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
+        * <https://www.timeanddate.com/holidays/trinidad/diwali>
+    """
+
+    country = "TT"
+    default_language = "en_TT"
+    supported_categories = (OPTIONAL, PUBLIC)
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
+    supported_languages = ("en_TT", "en_US")
+    # Trinidad and Tobago gained independence on August 31, 1962.
+    start_year = 1963
+
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
+        ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=TrinidadAndTobagoHinduHolidays)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self, cls=TrinidadAndTobagoIslamicHolidays, show_estimated=islamic_show_estimated
+        )
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        dts_observed = set()
+
+        # New Year's Day.
+        dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
+        if self._year >= 1996:
+            # Spiritual Baptist Liberation Day.
+            self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day"))
+
+            # Indian Arrival Day.
+            self._add_holiday_may_30(tr("Indian Arrival Day"))
+
+        # Corpus Christi.
+        self._add_corpus_christi_day(tr("Corpus Christi"))
+
+        if self._year >= 1973:
+            # Labor Day.
+            self._add_holiday_jun_19(tr("Labour Day"))
+
+        if self._year >= 1985:
+            # African Emancipation Day.
+            self._add_holiday_aug_1(tr("African Emancipation Day"))
+
+        # Independence Day.
+        self._add_holiday_aug_31(tr("Independence Day"))
+
+        if self._year >= 1976:
+            # Republic Day.
+            self._add_holiday_sep_24(tr("Republic Day"))
+
+        # Diwali.
+        dts_observed.add(self._add_diwali(tr("Divali")))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Christmas Day"))
+
+        # Boxing Day.
+        self._add_christmas_day_two(tr("Boxing Day"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
+
+        if self.observed:
+            self._populate_observed(dts_observed)
+
+    def _populate_optional_holidays(self):
+        # Carnival Monday.
+        self._add_carnival_monday(tr("Carnival Monday"))
+
+        # Carnival Tuesday.
+        self._add_carnival_tuesday(tr("Carnival Tuesday"))
+
+
+class TT(TrinidadAndTobago):
+    pass
+
+
+class TTO(TrinidadAndTobago):
+    pass
+
+
+class TrinidadAndTobagoHinduHolidays(_CustomHinduHolidays):
+    DIWALI_DATES = {
+        2012: (NOV, 13),
+        2013: (NOV, 4),
+        2014: (OCT, 23),
+        2015: (NOV, 11),
+        2016: (OCT, 29),
+        2017: (OCT, 19),
+        2018: (NOV, 7),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+    }
+
+
+class TrinidadAndTobagoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_FITR_DATES = {
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 29),
+        2015: (JUL, 18),
+        2016: (JUL, 6),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 22),
+        2024: (APR, 10),
+        2025: (MAR, 31),
+    }
