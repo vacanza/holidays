@@ -292,27 +292,28 @@ class HolidayBase(dict[date, str]):
             language:
                 Specifies the language in which holiday names are returned.
 
-                Accepts:
-                - A two-letter ISO 639-1 language code (e.g., 'en' for English, 'fr' for French)
-                - A language and entity code combination using an underscore (e.g., 'en_US'
-                for U.S. English, 'pt_BR' for Brazilian Portuguese).
+                Accepts either:
 
-                Note: The provided language or locale code must be supported by the holiday entity.
-                Unsupported values will result in names being shown in the entity's original
-                language.
+                * A two-letter ISO 639-1 language code (e.g., 'en' for English, 'fr' for French),
+                    or
+                * A language and entity combination using an underscore (e.g., 'en_US' for U.S.
+                    English, 'pt_BR' for Brazilian Portuguese).
 
-                If not explicitly set (language=None), the system attempts to infer the language
-                from the environment's locale settings. The following environment variables are
-                checked, in order of precedence:
-                    1. LANGUAGE
-                    2. LC_ALL
-                    3. LC_MESSAGES
-                    4. LANG
+                !!! warning
+                    The provided language or locale code must be supported by the holiday
+                    entity. Unsupported values will result in names being shown in the entity's
+                    original language.
+
+                If not explicitly set (`language=None`), the system attempts to infer the
+                language from the environment's locale settings. The following environment
+                variables are checked, in order of precedence: LANGUAGE, LC_ALL, LC_MESSAGES, LANG.
 
                 If none of these are set or they are empty, holiday names will default to the
                 original language of the entity's holiday implementation.
-                Note: This fallback mechanism may yield inconsistent results across environments
-                (e.g., between a terminal session and a Jupyter notebook).
+
+                !!! warning
+                    This fallback mechanism may yield inconsistent results across environments
+                    (e.g., between a terminal session and a Jupyter notebook).
 
                 To ensure consistent behavior, it is recommended to set the language parameter
                 explicitly. If the specified language is not supported, holiday names will remain

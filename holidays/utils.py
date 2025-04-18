@@ -71,26 +71,36 @@ def country_holidays(
             *deprecated* use `subdiv` instead.
 
         language:
-            This is the language in which the holiday names will be shown.
-            You need to give it a 2-letter language code (like "en" for English, "fr"
-            for French) or a combination of the language and country code,
-            joined with an underscore (like "en_US" for English in the United States).
+            Specifies the language in which holiday names are returned.
 
-            If this is not explicitly set (i.e., `language=None`), the system will fall back
-            to the environment's locale(environment variable):
-            - The system will look at the `LANG` setting on your computer.
-            - If `LANG` is empty or not set, the holiday names will be in the original language
-            of the country.
-            - This can cause inconsistent results depending on your environment (for example,
-            the terminal might behave differently than Jupyter notebooks).
+            Accepts either:
 
-            To make sure the holiday names are always in the same language, it's best to choose
-            a language code (like "de" for German or "en_US" for English).
+            * A two-letter ISO 639-1 language code (e.g., 'en' for English, 'fr' for French),
+                or
+            * A language and entity combination using an underscore (e.g., 'en_US' for U.S.
+                English, 'pt_BR' for Brazilian Portuguese).
 
-            If the chosen language isn't supported, the holiday names will stay in the original
-            language.
+            !!! warning
+                The provided language or locale code must be supported by the holiday
+                entity. Unsupported values will result in names being shown in the entity's
+                original language.
 
-            This will be updated in version 1.
+            If not explicitly set (`language=None`), the system attempts to infer the
+            language from the environment's locale settings. The following environment
+            variables are checked, in order of precedence: LANGUAGE, LC_ALL, LC_MESSAGES, LANG.
+
+            If none of these are set or they are empty, holiday names will default to the
+            original language of the entity's holiday implementation.
+
+            !!! warning
+                This fallback mechanism may yield inconsistent results across environments
+                (e.g., between a terminal session and a Jupyter notebook).
+
+            To ensure consistent behavior, it is recommended to set the language parameter
+            explicitly. If the specified language is not supported, holiday names will remain
+            in the original language of the entity's holiday implementation.
+
+            This behavior will be updated and formalized in v1.
 
         categories:
             Requested holiday categories.
