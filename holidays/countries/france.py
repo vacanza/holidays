@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from gettext import gettext as tr
-from typing import Union
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
@@ -32,7 +31,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "FR"
     default_language = "fr"
     supported_languages = ("en_US", "fr", "uk")
-    subdivisions: Union[tuple[()], tuple[str, ...]] = (
+    subdivisions: tuple[str, ...] = (
         "BL",  # Saint-Barthélemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
         "GP",  # Guadeloupe.
