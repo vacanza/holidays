@@ -29,6 +29,9 @@ from holidays.calendars.gregorian import (
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
+class SYR(SyrianArabRepublic):
+    """ISO 3166‑1 alpha‑3 code alias for Syrian Arab Republic."""
+    pass
 
 
 class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
