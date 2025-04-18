@@ -31,6 +31,12 @@ class TrinidadAndTobago(
 
     References:
         * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
+        * <https://laws.gov.tt/ttdll-web2/revision/list?offset=380&q=&currentid=322>
+        * <https://www.guardian.co.tt/article-6.2.448640.3e9e366923>
+        * <https://www.guardian.co.tt/article-6.2.410311.3fe66fb00f>
+        * <https://www.nalis.gov.tt/resources/tt-content-guide/labour-day/>
+        * <https://www.facebook.com/groups/191766699268/posts/10160832951274269/>
+        * <https://www.facebook.com/100064996051675/posts/1101755938667598/?_rdr>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
         * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
         * <https://en.wikipedia.org/wiki/Indian_Arrival_Day#Trinidad_and_Tobago>
@@ -43,6 +49,10 @@ class TrinidadAndTobago(
     supported_categories = (OPTIONAL, PUBLIC)
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_TT", "en_US")
     # Trinidad and Tobago gained independence on August 31, 1962.
     start_year = 1963

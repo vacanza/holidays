@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-05 11:20+0530\n"
 "PO-Revision-Date: 2025-04-05 11:20+0530\n"
 "Last-Translator: Roshan Pradhan <roshanpradhan2048@gmail.com>\n"
@@ -30,6 +30,16 @@ msgstr ""
 #, c-format
 msgid "%s (estimated)"
 msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"
 
 #. New Year's Day.
 msgid "New Year's Day"
