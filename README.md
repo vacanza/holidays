@@ -99,7 +99,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 168 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 169 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -522,6 +522,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>France</td>
 <td>FR</td>
 <td>DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)</td>
+<td>en_US, <strong>fr</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>French Southern Territories</td>
+<td>TF</td>
+<td></td>
 <td>en_US, <strong>fr</strong>, uk</td>
 <td></td>
 </tr>

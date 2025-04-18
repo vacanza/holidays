@@ -83,6 +83,7 @@ Kelsey Karin Hawley
 Koert van der Veer
 Koki Nomura
 Kriti Birda
+Lucca Augusto
 Maina Kamau
 Malthe Borch
 Marek Šuppa
