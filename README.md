@@ -526,6 +526,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>French Southern Territories</td>
+<td>TF</td>
+<td></td>
+<td>en_US, <strong>fr</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Gabon</td>
 <td>GA</td>
 <td></td>
