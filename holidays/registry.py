@@ -167,6 +167,7 @@ COUNTRIES: RegistryDict = {
     "suriname": ("Suriname", "SR", "SUR"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
+    "syrian_arab_republic": ("SyrianArabRepublic", "SY", "SYR"),
     "taiwan": ("Taiwan", "TW", "TWN"),
     "tanzania": ("Tanzania", "TZ", "TZA"),
     "thailand": ("Thailand", "TH", "THA"),
