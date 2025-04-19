@@ -2,7 +2,7 @@
 # --------
 # A fast, efficient Python library for generating country, province, and state
 # specific sets of holidays on the fly.
-# Copyright (c) 2025 Vacanza. All rights reserved.Licensed under the terms of the MIT License.
+# Copyright (c) 2025 Vacanza. All rights reserved. Licensed under the terms of the MIT License.
 
 # Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 # Website: https://github.com/vacanza/holidays
