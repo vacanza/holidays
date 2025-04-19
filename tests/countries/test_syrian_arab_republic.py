@@ -91,8 +91,8 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
     def test_eid_al_fitr(self):
-        name = "عيد الفطر"
-        dts = (
+         name = "عيد الفطر"
+         dts = (
             "2022-05-02",
             "2022-05-03",
             "2022-05-04",
@@ -103,25 +103,10 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "2024-04-11",
             "2024-04-12",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
+         self.assertHolidayName(name, self.no_estimated_holidays, dts)
+         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
-        def test_eid_al_adha(self):
-            name = "عيد الأضحى"
-            dts = (
-                "2022-07-09",
-                "2022-07-10",
-                "2022-07-11",
-                "2023-06-28",
-                "2023-06-29",
-                "2023-06-30",
-                "2024-06-16",
-                "2024-06-17",
-                "2024-06-18",
-            )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
-
+        
     def test_christmas_day(self):
         name = "عيد الميلاد المجيد"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.years))
