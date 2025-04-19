@@ -95,6 +95,7 @@ class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, St
 
 
 class SY(SyrianArabRepublic):
+    """ISO 3166‑1 alpha‑2 code alias for Syrian Arab Republic."""
     pass
 class SYR(SyrianArabRepublic):
     """ISO 3166‑1 alpha‑3 code alias for Syrian Arab Republic."""
