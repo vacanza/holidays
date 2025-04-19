@@ -55,7 +55,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
 
     def test_islamic_new_year(self):
         name = "رأس السنة الهجرية"
-         # Known accurate Islamic New Year dates for testing
+        # Known accurate Islamic New Year dates for testing
         dts = (
             "2020-08-20",
             "2021-08-09",
@@ -81,7 +81,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
 
     def test_isra_and_miraj(self):
         name = "الإسراء والمعراج"
-         # Known accurate Isra and Miraj dates for testing
+        # Known accurate Isra and Miraj dates for testing
         dts = (
             "2020-03-22",
             "2021-03-11",
@@ -89,12 +89,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "2023-02-18",
             "2024-02-08",
         )
-         # 27th of Rajab – Isra and Miraj
-        self._add_lunar_holiday(
-        self._year, 7, 27, 
-        "الإسراء والمعراج", 
-        "Isra and Miraj"
-    )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
@@ -130,7 +124,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             ("2023-06-29", "عيد الأضحى"),
             ("2023-06-30", "عيد الأضحى"),
             ("2023-07-19", "رأس السنة الهجرية"),
-            ("2023-09-27", "مولد النبي"),
+            ("2023-09-27", "عيد المولد النبوي"),
             ("2023-12-25", "عيد الميلاد المجيد"),
         )
 
