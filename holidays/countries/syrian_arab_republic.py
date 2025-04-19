@@ -17,8 +17,6 @@ from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
-
-
 class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """
     Syrian Arab Republic holidays.
