@@ -1,0 +1,71 @@
+# Syrian Arab Republic Holidays – Arabic Localization
+# Generated for use with the Vacanza 'holidays' Python library
+# Source: Central Bank of Syria – https://cb.gov.sy/index.php?lang=2&dir=html&ex=1&page=holidays&act=598-
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.71\n"
+"POT-Creation-Date: 2025-04-19 13:17+0530\n"
+"PO-Revision-Date: 2025-04-19 13:17+0530\n"
+"Last-Translator: Rajvardhan <rajvardhan@example.com>\n"
+"Language-Team: Arabic Localization Team\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Poedit 3.4\n"
+
+msgid "New Year's Day"
+msgstr "رأس السنة الميلادية"
+
+msgid "Revolution Day"
+msgstr "عيد الثورة"
+
+msgid "Mother's Day"
+msgstr "عيد الأم"
+
+msgid "Easter Sunday"
+msgstr "عيد الفصح"
+
+msgid "Eid al-Fitr"
+msgstr "عيد الفطر"
+
+msgid "Eid al-Fitr Holiday"
+msgstr "عطلة عيد الفطر"
+
+msgid "Evacuation Day"
+msgstr "عيد الجلاء"
+
+msgid "Labor Day"
+msgstr "عيد العمال"
+
+msgid "Orthodox Easter Day"
+msgstr "عيد الفصح الأرثوذكسي"
+
+msgid "Martyrs' Day"
+msgstr "عيد الشهداء"
+
+msgid "Eid al-Adha"
+msgstr "عيد الأضحى"
+
+msgid "Eid al-Adha Holiday"
+msgstr "عطلة عيد الأضحى"
+
+msgid "Islamic New Year"
+msgstr "رأس السنة الهجرية"
+
+msgid "Armed Forces Day"
+msgstr "عيد القوات المسلحة"
+
+msgid "The Prophet's Birthday"
+msgstr "المولد النبوي الشريف"
+
+msgid "October Liberation Day"
+msgstr "عيد حرب تشرين التحريرية"
+
+msgid "Christmas Day"
+msgstr "عيد الميلاد المجيد"
+
+msgid "Boxing Day"
+msgstr "يوم الصناديق"
