@@ -13,7 +13,6 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, JUN, SEP
 
-
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
