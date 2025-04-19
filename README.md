@@ -1170,13 +1170,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td><strong>de</strong>, en_US, fr, it, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
+<tr>
 <td>Syrian Arab Republic</td>
 <td>SY</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
 <td></td>
 </tr>
-<tr>
 <tr>
 <td>Taiwan</td>
 <td>TW</td>
