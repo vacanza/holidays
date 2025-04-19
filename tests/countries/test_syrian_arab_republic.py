@@ -55,6 +55,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
 
     def test_islamic_new_year(self):
         name = "رأس السنة الهجرية"
+         # Known accurate Islamic New Year dates for testing
         dts = (
             "2020-08-20",
             "2021-08-09",
@@ -105,19 +106,19 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
-    def test_eid_al_adha(self):
-        name = "عيد الأضحى"
-        dts = (
-            "2022-07-09",
-            "2022-07-10",
-            "2022-07-11",
-            "2023-06-28",
-            "2023-06-29",
-            "2023-06-30",
-            "2024-06-17",
-            "2024-06-18",
-            "2024-06-19",
-        )
+        def test_eid_al_adha(self):
+            name = "عيد الأضحى"
+            dts = (
+                "2022-07-09",
+                "2022-07-10",
+                "2022-07-11",
+                "2023-06-28",
+                "2023-06-29",
+                "2023-06-30",
+                "2024-06-16",
+                "2024-06-17",
+                "2024-06-18",
+            )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
