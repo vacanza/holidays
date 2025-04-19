@@ -19,6 +19,7 @@ Anton Daitche
 Arjun Anandkumar
 Arkadii Yakovets
 Artem Tserekh
+Ashaz Akhtar
 Bailey Thompson
 Ben Collerson
 Ben Letham
