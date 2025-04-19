@@ -67,7 +67,8 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
     def test_mawlid(self):
-        name = "مولد النبي"
+        name = "عيد المولد النبوي"
+        # Known accurate Mawlid dates for testing
         dts = (
             "2020-10-28",
             "2021-10-18",
@@ -80,6 +81,7 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
 
     def test_isra_and_miraj(self):
         name = "الإسراء والمعراج"
+         # Known accurate Isra and Miraj dates for testing
         dts = (
             "2020-03-22",
             "2021-03-11",
@@ -87,6 +89,12 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "2023-02-18",
             "2024-02-08",
         )
+         # 27th of Rajab – Isra and Miraj
+        self._add_lunar_holiday(
+        self._year, 7, 27, 
+        "الإسراء والمعراج", 
+        "Isra and Miraj"
+    )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
@@ -106,7 +114,6 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
          self.assertHolidayName(name, self.no_estimated_holidays, dts)
          self.assertHolidayName(name, self.no_estimated_holidays, range(1940, 2050))
 
-        
     def test_christmas_day(self):
         name = "عيد الميلاد المجيد"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.years))
