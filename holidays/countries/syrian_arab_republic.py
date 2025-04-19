@@ -93,7 +93,6 @@ class SyrianArabRepublic(HolidayBase, InternationalHolidays, IslamicHolidays, St
         self._add_orthodox_easter_sunday(tr("عيد الفصح (الأرثوذكسي)"))
         self._add_easter_sunday(tr("عيد الفصح (الغربي)"))
 
-
 class SY(SyrianArabRepublic):
     """ISO 3166‑1 alpha‑2 code alias for Syrian Arab Republic."""
     pass
@@ -117,7 +116,6 @@ class SyrianArabRepublicIslamicHolidays(_CustomIslamicHolidays):
     MAWLID_DATES = {
         2025: (SEP, 5),
     }
-
 
 class SyrianArabRepublicStaticHolidays:
     """Syrian Arab Republic special holidays."""
