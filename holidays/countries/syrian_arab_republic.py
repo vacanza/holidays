@@ -2,7 +2,8 @@
 # --------
 # A fast, efficient Python library for generating country, province, and state
 # specific sets of holidays on the fly.
-#
+# Copyright (c) 2025 Vacanza. All rights reserved.Licensed under the terms of the MIT License.
+
 # Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 # Website: https://github.com/vacanza/holidays
 # License: MIT (see LICENSE file)
@@ -10,7 +11,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, SEP, OCT, _timedelta
+from holidays.calendars.gregorian import MAR, JUN, SEP
 
 
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
@@ -124,6 +125,6 @@ class SyrianArabRepublicStaticHolidays:
     """Syrian Arab Republic special holidays."""
 
     # No special static holidays defined for 2025
-    special_government_holidays = {}
-    special_optional_holidays = {}
-    special_public_holidays = {}
+    special_government_holidays: dict[str, str] = {}
+    special_optional_holidays: dict[str, str] = {}
+    special_public_holidays: dict[str, str] = {}
