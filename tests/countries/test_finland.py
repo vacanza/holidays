@@ -295,6 +295,15 @@ class TestFinland(CommonCountryTests, TestCase):
             "Jean Sibeliuksen päivä, suomalaisen musiikin päivä", "2007-12-08"
         )
 
+    def test_alands_autonomy_day(self):
+        name = "Ahvenanmaan itsehallintopäivä"
+        subdiv_01_public_holidays = Finland(subdiv="01", years=range(1853, 2050))
+        self.assertHolidayName(
+            name, subdiv_01_public_holidays, (f"{year}-06-09" for year in range(1993, 2050))
+        )
+        self.assertNoHolidayName(name, subdiv_01_public_holidays, range(1853, 1993))
+        self.assertNoHolidayName(name, range(1853, 2050))
+
     def test_unofficial_holidays(self):
         self.assertHolidays(
             Finland(categories=UNOFFICIAL, years=2024),
@@ -376,6 +385,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Helatorstai"),
             ("2022-06-05", "Helluntaipäivä"),
             ("2022-06-06", "Puolustusvoimain lippujuhlan päivä"),
+            ("2022-06-09", "Ahvenanmaan itsehallintopäivä"),
             ("2022-06-24", "Juhannusaatto"),
             ("2022-06-25", "Juhannuspäivä"),
             ("2022-07-06", "Eino Leinon päivä, runon ja suven päivä"),
@@ -415,6 +425,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
             ("2022-06-06", "Flag Day of the Finnish Defense Forces"),
+            ("2022-06-09", "Åland's Autonomy Day"),
             ("2022-06-24", "Midsummer Eve"),
             ("2022-06-25", "Midsummer Day"),
             ("2022-07-06", "Eino Leino Day, Day of Summer and Poetry"),
@@ -454,6 +465,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-06-05", "Трійця"),
             ("2022-06-06", "День прапора фінських сил оборони"),
+            ("2022-06-09", "День автономії Аландських островів"),
             ("2022-06-24", "Переддень літнього сонцестояння"),
             ("2022-06-25", "День літнього сонцестояння"),
             ("2022-07-06", "День Ейно Лейно, День літа та поезії"),
@@ -493,6 +505,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Kristi himmelsfärdsdag"),
             ("2022-06-05", "Pingst"),
             ("2022-06-06", "Dagen för försvarets fanfest"),
+            ("2022-06-09", "Ålands självstyrelsedag"),
             ("2022-06-24", "Midsommarafton"),
             ("2022-06-25", "Midsommardagen"),
             ("2022-07-06", "Eino Leino-dagen, diktens och sommarens dag"),

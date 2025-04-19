@@ -10,46 +10,51 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.finland import Finland
 
 
-class Aland(Finland):
+class HolidaysAX(Finland):
     """Aland Islands holidays.
 
+    Alias of a Finnish subdivision that is also officially assigned
+    its own country code in ISO 3166-1.
+
+    !!! note "Note"
+        Aland's Autonomy Day is currently added in Finland's implementation.
+
     References:
-        * https://en.wikipedia.org/wiki/Public_holidays_in_%C3%85land
-        * https://date.nager.at/PublicHoliday/%C3%85land-Islands/2025
-        * https://www.bank-holidays.com/country/Aland-Islands_194.htm
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Åland>
+        * <https://date.nager.at/PublicHoliday/Åland-Islands/2025>
+        * <https://www.bank-holidays.com/country/Aland-Islands_194.htm>
     """
 
     country = "AX"
     parent_entity = Finland
+    default_language = "sv_FI"
+    supported_languages = ("en_US", "fi", "sv_FI", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
-    subdivisions = ()
-    start_year = 1920
+    subdivisions = ()  # Override Finland subdivisions.
+    subdivisions_aliases = {}  # Override Finland subdivisions aliases.
+    # Aland Islands got its autonomy on May 7th, 1920.
+    start_year = 1921
 
     def _populate_unofficial_holidays(self) -> None:
-        self.subdiv = "AX"
+        self.subdiv = "01"
         super()._populate_unofficial_holidays()
 
     def _populate_public_holidays(self):
-        self.subdiv = "AX"
+        self.subdiv = "01"
         super()._populate_public_holidays()
 
-        # Autonomy Day
-        self._add_holiday_jun_9(tr("Självstyrelsedagen"))
 
-
-class AX(Aland):
-    """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-2 code)."""
-
+class Aland(HolidaysAX):
     pass
 
 
-class ALA(Aland):
-    """Alternative name for the Åland Islands holidays (ISO 3166-1 alpha-3 code)."""
+class AX(HolidaysAX):
+    pass
 
+
+class ALA(HolidaysAX):
     pass

@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Åland Islands holidays en_US localization stub.
+# Åland Islands holidays fi localization stub.
 #
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "PO-Revision-Date: 2025-04-18 12:43+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

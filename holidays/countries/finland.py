@@ -30,13 +30,14 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://intermin.fi/en/flag-and-arms/flag-flying-days>
         * <https://intermin.fi/en/flag-and-arms/flag-days/2024>
         * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
+        * <https://en.wikipedia.org/wiki/Åland%27s_Autonomy_Day>
     """
 
     country = "FI"
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
-    subdivisions: Union[tuple[()], tuple[str, ...]] = ("01",)  # Åland Islands.
+    subdivisions: tuple[str, ...] = ("01",)  # Åland Islands.
     subdivisions_aliases = {
         "Ahvenanmaan maakunta": "01",
         "Landskapet Åland": "01",
@@ -188,6 +189,11 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2007:
             # Jean Sibelius Day, Day of Finnish Music.
             self._add_holiday_dec_8(tr("Jean Sibeliuksen päivä, suomalaisen musiikin päivä"))
+
+    def _populate_subdiv_01_public_holidays(self):
+        if self._year >= 1993:
+            # Åland's Autonomy Day.
+            self._add_holiday_jun_9(tr("Ahvenanmaan itsehallintopäivä"))
 
 
 class FI(Finland):
