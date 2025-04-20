@@ -1073,9 +1073,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>São Tomé and Príncipe</td>
+<td>Sao Tome and Principe</td>
 <td>ST</td>
-<td>STP</td>
+<td>PR</td>
 <td>pt, en_US</td>
 <td>PublicHolidays, ChristianHolidays</td>
 <td>ST (nationwide), PR (Príncipe)</td>
