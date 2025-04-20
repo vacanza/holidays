@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 # holidays
 # --------
 # A fast, efficient Python library for generating country, province, and state
@@ -23,7 +22,6 @@
 # License: MIT (see LICENSE file)
 #
 # São Tomé and Príncipe holidays en_US localization.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.71\n"
@@ -68,7 +66,6 @@ msgstr "Armed Forces Day"
 msgid "Dia da Reforma Agrária"
 msgstr "Agricultural Reform Day"
 
-#. São Tomé Day.
 msgid "Dia de São Tomé"
 msgstr "São Tomé Day"
 
@@ -87,7 +84,3 @@ msgstr "Autonomy Day"
 #. São Lourenço Day (August 15).
 msgid "Dia de São Lourenço"
 msgstr "São Lourenço Day"
-
-# Ensure no stray commented-out translations are left behind
-# ~ msgid "observado"
-# ~ msgstr "observed"
