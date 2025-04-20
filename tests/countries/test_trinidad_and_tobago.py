@@ -77,6 +77,13 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
     def test_indian_arrival_day(self):
         name = "Indian Arrival Day"
         self.assertHolidayName(name, (f"{year}-05-30" for year in range(1996, 2050)))
+        dt = (
+            "2004-05-31",
+            "2010-05-31",
+            "2021-05-31",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1996))
 
     def test_corpus_christi(self):
@@ -93,24 +100,68 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1963, 2050))
 
     def test_labor_day(self):
-        self.assertHolidayName("Labour Day", (f"{year}-06-19" for year in range(1973, 2050)))
+        name = "Labour Day"
+        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1973, 2050)))
+        dt = (
+            "2005-06-20",
+            "2011-06-20",
+            "2016-06-20",
+            "2022-06-20",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+        self.assertNoHolidayName(name, range(1963, 1973))
 
     def test_african_emancipation_day(self):
-        self.assertHolidayName(
-            "African Emancipation Day", (f"{year}-08-01" for year in range(1985, 2050))
+        name = "African Emancipation Day"
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1985, 2050)))
+        dt = (
+            "2004-08-02",
+            "2010-08-02",
+            "2021-08-02",
         )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+        self.assertNoHolidayName(name, range(1963, 1985))
 
     def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-08-31" for year in range(1963, 2050)))
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-08-31" for year in range(1963, 2050)))
+        dt = (
+            "2003-09-01",
+            "2008-09-01",
+            "2014-09-01",
+            "2025-09-01",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_republic_day(self):
-        self.assertHolidayName("Republic Day", (f"{year}-09-24" for year in range(1976, 2050)))
+        name = "Republic Day"
+        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1976, 2050)))
+        dt = (
+            "2000-09-25",
+            "2006-09-25",
+            "2017-09-25",
+            "2023-09-25",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+        self.assertNoHolidayName(name, range(1963, 1976))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1963, 2050)))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1963, 2050)))
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1963, 2050)))
+        dt = (
+            "2004-12-27",
+            "2010-12-27",
+            "2021-12-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_diwali(self):
         name = "Divali"
@@ -205,6 +256,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-06-19", "Corpus Christi; Labour Day"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
+            ("2025-09-01", "Independence Day (observed)"),
             ("2025-09-24", "Republic Day"),
             ("2025-10-20", "Divali"),
             ("2025-12-25", "Christmas Day"),
@@ -224,6 +276,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-06-19", "Corpus Christi; Labour Day"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
+            ("2025-09-01", "Independence Day (observed)"),
             ("2025-09-24", "Republic Day"),
             ("2025-10-20", "Divali"),
             ("2025-12-25", "Christmas Day"),
@@ -244,6 +297,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-06-19", "Corpus Christi; Labor Day"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
+            ("2025-09-01", "Independence Day (observed)"),
             ("2025-09-24", "Republic Day"),
             ("2025-10-20", "Diwali"),
             ("2025-12-25", "Christmas Day"),

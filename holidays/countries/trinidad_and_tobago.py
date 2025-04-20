@@ -94,25 +94,25 @@ class TrinidadAndTobago(
             self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day"))
 
             # Indian Arrival Day.
-            self._add_holiday_may_30(tr("Indian Arrival Day"))
+            dts_observed.add(self._add_holiday_may_30(tr("Indian Arrival Day")))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
 
         if self._year >= 1973:
             # Labor Day.
-            self._add_holiday_jun_19(tr("Labour Day"))
+            dts_observed.add(self._add_holiday_jun_19(tr("Labour Day")))
 
         if self._year >= 1985:
             # African Emancipation Day.
-            self._add_holiday_aug_1(tr("African Emancipation Day"))
+            dts_observed.add(self._add_holiday_aug_1(tr("African Emancipation Day")))
 
         # Independence Day.
-        self._add_holiday_aug_31(tr("Independence Day"))
+        dts_observed.add(self._add_holiday_aug_31(tr("Independence Day")))
 
         if self._year >= 1976:
             # Republic Day.
-            self._add_holiday_sep_24(tr("Republic Day"))
+            dts_observed.add(self._add_holiday_sep_24(tr("Republic Day")))
 
         # Diwali.
         dts_observed.add(self._add_diwali(tr("Divali")))
@@ -121,7 +121,7 @@ class TrinidadAndTobago(
         self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        self._add_christmas_day_two(tr("Boxing Day"))
+        dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
