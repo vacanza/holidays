@@ -35,7 +35,7 @@ class SaoTomeAndPrincipe(
     """
 
     country = "ST"
-    subdivisions = ("ST", "PR")
+    subdivisions = ("ST", "PR")  # ST = nationwide, PR = Príncipe-specific
     default_language = "pt"
     supported_categories = (PUBLIC,)
     supported_languages = ("en_US", "pt")

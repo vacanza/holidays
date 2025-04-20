@@ -1078,6 +1078,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>STP</td>
 <td>pt, en_US</td>
 <td>PublicHolidays, ChristianHolidays</td>
+<td>ST (nationwide), PR (Príncipe)</td>
 </tr>
 <tr>
 <td>Saudi Arabia</td>
