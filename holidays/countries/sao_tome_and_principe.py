@@ -83,7 +83,7 @@ class SaoTomeAndPrincipe(
 
     def _populate_public_holidays(self):
         """Populate holidays - national for all, plus extras for Príncipe."""
-        if self._year < self.start_year:
+        if not hasattr(self, "_year") or self._year < self.start_year:
             return None
 
         # National holidays (observed everywhere)

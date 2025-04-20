@@ -1073,12 +1073,12 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Sao Tome and Principe</td>
+<td>São Tomé and Príncipe</td>
 <td>ST</td>
 <td>STP</td>
 <td>pt, en_US</td>
 <td>PublicHolidays, ChristianHolidays</td>
-<td>ST (nationwide), PR (Principe)</td>
+<td>ST (nationwide), PR (Príncipe)</td>
 </tr>
 <tr>
 <td>Saudi Arabia</td>
