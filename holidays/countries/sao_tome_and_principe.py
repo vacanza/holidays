@@ -38,7 +38,7 @@ class SaoTomeAndPrincipe(
     subdivisions = ("ST", "PR")
     default_language = "pt"
     supported_categories = (PUBLIC,)
-    supported_languages = ("pt", "en_US")
+    supported_languages = ("en_US", "pt")
     start_year = 1975  # Independence year
     observed_start_year = 2020  # Year when observed holidays began
 
