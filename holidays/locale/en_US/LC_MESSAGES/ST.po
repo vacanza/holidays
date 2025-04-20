@@ -9,7 +9,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
 # holidays
 # --------
 # A fast, efficient Python library for generating country, province and state
@@ -23,7 +22,6 @@
 # License: MIT (see LICENSE file)
 #
 # São Tomé and Príncipe holidays en_US localization.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.71\n"
@@ -39,54 +37,53 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
 
-#. New Year's Day
+#. National holidays (observed everywhere) New Year's Day.
 msgid "Ano Novo"
 msgstr "New Year's Day"
 
-#. Day of King Amador
+#. Day of King Amador (January 4). Commemorates King Amador, leader of 16th century slave
+#. rebellion.
 msgid "Dia do Rei Amador"
 msgstr "Day of King Amador"
 
-#. Martyrs' Day
+#. Martyrs' Day (February 3). Commemorates the 1953 Batepá massacre.
 msgid "Dia dos Mártires"
 msgstr "Martyrs' Day"
 
-#. Labour Day
+#. Labor Day (May 1).
 msgid "Dia do Trabalhador"
 msgstr "Labour Day"
 
-#. Independence Day
+#. Independence Day (July 12). From Portugal in 1975.
 msgid "Dia da Independência"
 msgstr "Independence Day"
 
-#. Armed Forces Day
+#. Armed Forces Day (September 6).
 msgid "Dia das Forças Armadas"
 msgstr "Armed Forces Day"
 
-#. Agricultural Reform Day
+#. Agricultural Reform Day (September 30). Nationalization of plantations in 1975.
 msgid "Dia da Reforma Agrária"
 msgstr "Agricultural Reform Day"
 
-#. São Tomé Day
 msgid "Dia de São Tomé"
 msgstr "São Tomé Day"
 
-#. Christmas Day
+#. Christmas Day.
 msgid "Natal"
 msgstr "Christmas Day"
 
-#. Discovery of Príncipe Island
+#. Discovery of Príncipe Island (January 17).
 msgid "Descobrimento da Ilha do Príncipe"
 msgstr "Discovery of Príncipe Island"
 
-#. Autonomy Day
+#. Autonomy Day (April 29). Príncipe gained autonomy in 1995.
 msgid "Dia da Autonomia do Príncipe"
 msgstr "Autonomy Day"
 
-#. São Lourenço Day
+#. São Lourenço Day (August 15).
 msgid "Dia de São Lourenço"
 msgstr "São Lourenço Day"
 
-#. Observed holiday suffix
-msgid "observado"
-msgstr "observed"
+#~ msgid "observado"
+#~ msgstr "observed"
