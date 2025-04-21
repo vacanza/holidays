@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-21 17:28+0530\n"
-"PO-Revision-Date: 2025-04-21 23:43+0530\n"
+"PO-Revision-Date: 2025-04-22 01:10+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt\n"
@@ -72,7 +72,6 @@ msgstr ""
 msgid "Descobrimento da Ilha do Príncipe"
 msgstr ""
 
-#. Autonomous Day.
 msgid "Dia da Autonomia do Príncipe"
 msgstr ""
 
