@@ -56,7 +56,7 @@ class SaoTomeAndPrincipe(
 
     default_language = "pt"
     supported_categories = (PUBLIC,)
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observed)")
     supported_languages = ("en_US", "pt")
     start_year = 1975  # Independence year
     observed_start_year = 2020  # Year when observed holidays began
@@ -69,9 +69,9 @@ class SaoTomeAndPrincipe(
         super().__init__(*args, **kwargs)
         # Set the correct observed suffix based on language
         if self.language == "en_US":
-            self.observed_suffix = "%s (observed)"
+            self.observed_suffix = "%s observed"
         else:
-            self.observed_suffix = "%s (observado)"
+            self.observed_suffix = "%s observado"
 
     def _add_observed(self, holiday_date):
         """Add observed holidays only if the year is >= observed_start_year."""
