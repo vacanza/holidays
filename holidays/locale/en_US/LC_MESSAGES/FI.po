@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.54\n"
+"Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2024-07-26 17:41+0300\n"
+"PO-Revision-Date: 2025-04-18 10:22+0700\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -162,3 +161,7 @@ msgstr "Day of Children's Rights"
 #. Jean Sibelius Day, Day of Finnish Music.
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr "Jean Sibelius Day, Day of Finnish Music"
+
+#. Åland's Autonomy Day.
+msgid "Ahvenanmaan itsehallintopäivä"
+msgstr "Åland's Autonomy Day"

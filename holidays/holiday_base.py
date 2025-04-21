@@ -760,7 +760,12 @@ class HolidayBase(dict[date, str]):
         supported_languages = set(self.supported_languages)
         if self._entity_code is not None:
             fallback = self.language not in supported_languages
-            languages = [self.language] if self.language in supported_languages else None
+            if not fallback and self.language is not None:
+                languages = [self.language]
+            elif self.default_language is not None:
+                languages = [self.default_language]
+            else:
+                languages = None
             locale_directory = str(Path(__file__).with_name("locale"))
 
             # Add entity native content translations.
