@@ -1075,10 +1075,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Sao Tome and Principe</td>
 <td>ST</td>
-<td>PR</td>
-<td>pt, en_US</td>
-<td>PublicHolidays, ChristianHolidays</td>
-<td>ST (nationwide), PR (Príncipe)</td>
+<td>Districts and Autonomous Region: 01 (Agua Grande), 02 (Cantagalo), 03 (Caue), 04 (Lemba), 05 (Lobata), 06 (Me-Zochi), PR (Principe)</td>
+<td>en_US, <strong>pt</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Saudi Arabia</td>

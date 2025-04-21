@@ -80,6 +80,13 @@ class TestSaoTome(CommonCountryTests, TestCase):
                 self.assertIn(date_str, self.observed_holidays)
                 self.assertEqual(self.observed_holidays[date_str], expected_name)
 
+            for date_str, expected_name in observed_test_cases.items():
+                if expected_name is None:
+                    self.assertNotIn(date_str, self.observed_holidays)
+                else:
+                    self.assertIn(date_str, self.observed_holidays)
+                    self.assertEqual(self.observed_holidays[date_str], expected_name)
+
     def test_sao_tome_day(self):
         # São Tomé Day started in 2019
         self.assertNotIn("2018-12-21", self.holidays)
@@ -122,7 +129,7 @@ class TestSaoTome(CommonCountryTests, TestCase):
 
     def test_localization(self):
         # Test Portuguese localization
-        pt_holidays = SaoTomeAndPrincipe(years=2025, observed=True)
+        pt_holidays = SaoTomeAndPrincipe(years=2025, language="pr", observed=True)
         self.assertEqual(pt_holidays["2025-01-03"], "Dia do Rei Amador (observado)")
         self.assertEqual(pt_holidays["2025-12-25"], "Natal")
 

@@ -28,16 +28,35 @@ class SaoTomeAndPrincipe(
 
     References:
         * https://en.wikipedia.org/wiki/Public_holidays_in_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe
-        * https://www.timeanddate.com/holidays/sao-tome-and-principe/
+        * https://www.timeanddate.com/holidssays/sao-tome-and-principe/
         * https://www.saotomeexpert.pt/en/sao-tome-public-holidays/
         * https://www.qppstudio.net/publicholidays2025/sao_tome_and_principe.htm
-
     """
 
     country = "ST"
-    subdivisions = ("ST", "PR")  # ST = nationwide, PR = Príncipe-specific
+    subdivisions = (
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "PR",
+    )
+
+    subdivisions_aliases = {
+        "Agua Grande": "01",
+        "Cantagalo": "02",
+        "Caue": "03",
+        "Lemba": "04",
+        "Lobata": "05",
+        "Me-Zochi": "06",
+        "Principe": "PR",  # Autonomous region
+    }
+
     default_language = "pt"
     supported_categories = (PUBLIC,)
+    observed_label = "%s (observado)"
     supported_languages = ("en_US", "pt")
     start_year = 1975  # Independence year
     observed_start_year = 2020  # Year when observed holidays began
@@ -49,41 +68,14 @@ class SaoTomeAndPrincipe(
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON + SAT_TO_PREV_FRI)
         super().__init__(*args, **kwargs)
 
-        # Set language from kwargs or use default
-        self.language = kwargs.get("language", self.default_language)
-
-    def _add_observed(self, dt, name=None):
-        """
-        Add observed date for holidays that fall on weekends.
-        Only applies from observed_start_year (2020) onwards.
-        """
-        if not self.observed or self._year < self.observed_start_year:
-            return dt
-
-        if name is None:
-            name = self.get(dt)
-
-        if not name:
-            return dt
-
-        # Use the internal _observed_rule attribute
-        if not hasattr(self, "_observed_rule"):
-            return dt
-
-        obs_date = self._get_observed_date(dt, self._observed_rule)
-        if obs_date == dt:
-            return dt
-
-        # Use language-specific observed label
-        if self.language == "en_US":
-            self[obs_date] = f"{name} (observed)"
-        else:
-            self[obs_date] = f"{name} (observado)"
-        return dt
+    def _add_observed(self, holiday_date):
+        """Add observed holidays only if the year is >= observed_start_year."""
+        if self._year >= self.observed_start_year:
+            super()._add_observed(holiday_date)
 
     def _populate_public_holidays(self):
         """Populate holidays - national for all, plus extras for Príncipe."""
-        if not hasattr(self, "_year") or self._year < self.start_year:
+        if self._year < self.start_year:
             return None
 
         # National holidays (observed everywhere)
@@ -126,7 +118,8 @@ class SaoTomeAndPrincipe(
 
             # Autonomy Day (April 29).
             # Príncipe gained autonomy in 1995.
-            self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
+            if self._year >= 2019:
+                self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
 
             # São Lourenço Day (August 15).
             self._add_observed(self._add_holiday_aug_15(tr("Dia de São Lourenço")))

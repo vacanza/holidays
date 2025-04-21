@@ -10,13 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Sao Tome and Principe holidays en_US localization.
+# Sao Tome and Principe holidays.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-21 17:28+0530\n"
-"PO-Revision-Date: 2025-04-21 17:44+0530\n"
+"PO-Revision-Date: 2025-04-21 17:38+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt\n"
@@ -29,49 +29,49 @@ msgstr ""
 
 #. National holidays (observed everywhere) New Year's Day.
 msgid "Ano Novo"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Day of King Amador (January 4). Commemorates King Amador, leader of 16th century slave
 #. rebellion.
 msgid "Dia do Rei Amador"
-msgstr "Day of King Amador"
+msgstr ""
 
 #. Martyrs' Day (February 3). Commemorates the 1953 Batepá massacre.
 msgid "Dia dos Mártires"
-msgstr "Martyrs' Day"
+msgstr ""
 
 #. Labor Day (May 1).
 msgid "Dia do Trabalhador"
-msgstr "Labour Day"
+msgstr ""
 
 #. Independence Day (July 12). From Portugal in 1975.
 msgid "Dia da Independência"
-msgstr "Independence Day"
+msgstr ""
 
 #. Armed Forces Day (September 6).
 msgid "Dia das Forças Armadas"
-msgstr "Armed Forces Day"
+msgstr ""
 
 #. Agricultural Reform Day (September 30). Nationalization of plantations in 1975.
 msgid "Dia da Reforma Agrária"
-msgstr "Agricultural Reform Day"
+msgstr ""
 
 msgid "Dia de São Tomé"
-msgstr "São Tomé Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Natal"
-msgstr "Christmas Day"
+msgstr ""
 
 msgid "Descobrimento da Ilha do Príncipe"
-msgstr "Discovery of Príncipe Island"
+msgstr ""
 
 msgid "Dia da Autonomia do Príncipe"
-msgstr "Autonomy Day"
+msgstr ""
 
 #. São Lourenço Day (August 15).
 msgid "Dia de São Lourenço"
-msgstr "São Lourenço Day"
+msgstr ""
 
 msgid "%s (observado)"
-msgstr "%s (observed)"
+msgstr ""
