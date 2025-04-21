@@ -124,7 +124,7 @@ class TrinidadAndTobago(
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr"))
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr")))
 
         if self.observed:
             self._populate_observed(dts_observed)

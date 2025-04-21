@@ -188,6 +188,12 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1963, 2050))
+        dt = (
+            "2012-08-20",
+            "2020-05-25",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_carnival_monday(self):
         name = "Carnival Monday"
