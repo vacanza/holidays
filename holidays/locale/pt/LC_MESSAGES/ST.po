@@ -27,11 +27,6 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: pt\n"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observado)"
-msgstr ""
-
 #. National holidays (observed everywhere) New Year's Day.
 msgid "Ano Novo"
 msgstr ""
@@ -77,4 +72,8 @@ msgstr ""
 
 #. São Lourenço Day (August 15).
 msgid "Dia de São Lourenço"
+msgstr ""
+
+#, c-format
+msgid "%s (observado)"
 msgstr ""
