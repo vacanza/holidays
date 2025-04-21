@@ -1,3 +1,22 @@
+# Version 0.71
+
+Released April 21, 2025
+
+- Add French Southern Territories holidays (#2442 by @LuccaAug, @arkid15r)
+- Add Oman holidays (#2463 by @Wasif-Shahzad)
+- Add Sierra Leone holidays (#2433 by @SammanSarkar, @arkid15r)
+- Add Suriname holidays (#2465 by @kritibirda26)
+- Update .po files generator (#2459 by @KJhellico, @arkid15r)
+- Update .po files generator (#2470 by @KJhellico)
+- Update BY.po files (#2452 by @arkid15r)
+- Update Pakistan holidays: add Youm-e-Takbeer holiday (#2446 by @w3stling)
+- Update Python latest supported version format (#2466 by @arkid15r)
+- Update RELEASE.md (#2484 by @arkid15r)
+- Update South Korea holidays: add 2025 Presidential Election Day (#2451 by @YiGeon)
+- Update l10n related documentation: detailed explain of language parameter behavior (#2396 by @shreyanshVIT23, @arkid15r)
+- Update mypy configuration (#2464 by @arkid15r)
+- Add FUNDING.yml (#2450 by @arkid15r)
+
 # Version 0.70
 
 Released April 7, 2025
