@@ -101,7 +101,6 @@ msgstr ""
 msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"
 msgstr ""
 
-#. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah
-#. of Brunei.
+#. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei.
 msgid "Istiadat Perkahwinan Diraja Brunei 2004"
 msgstr ""

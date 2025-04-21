@@ -71,3 +71,7 @@ msgstr ""
 #, c-format
 msgid "%s (estimated)"
 msgstr ""
+
+#. Youm-e-Takbeer.
+msgid "Youm-e-Takbeer"
+msgstr ""

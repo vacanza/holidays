@@ -290,10 +290,36 @@ class HolidayBase(dict[date, str]):
                 *deprecated* use `subdiv` instead.
 
             language:
-                The language which the returned holiday names will be translated
-                into. It must be an ISO 639-1 (2-letter) language code. If the
-                language translation is not supported the original holiday names
-                will be used.
+                Specifies the language in which holiday names are returned.
+
+                Accepts either:
+
+                * A two-letter ISO 639-1 language code (e.g., 'en' for English, 'fr' for French),
+                    or
+                * A language and entity combination using an underscore (e.g., 'en_US' for U.S.
+                    English, 'pt_BR' for Brazilian Portuguese).
+
+                !!! warning
+                    The provided language or locale code must be supported by the holiday
+                    entity. Unsupported values will result in names being shown in the entity's
+                    original language.
+
+                If not explicitly set (`language=None`), the system attempts to infer the
+                language from the environment's locale settings. The following environment
+                variables are checked, in order of precedence: LANGUAGE, LC_ALL, LC_MESSAGES, LANG.
+
+                If none of these are set or they are empty, holiday names will default to the
+                original language of the entity's holiday implementation.
+
+                !!! warning
+                    This fallback mechanism may yield inconsistent results across environments
+                    (e.g., between a terminal session and a Jupyter notebook).
+
+                To ensure consistent behavior, it is recommended to set the language parameter
+                explicitly. If the specified language is not supported, holiday names will remain
+                in the original language of the entity's holiday implementation.
+
+                This behavior will be updated and formalized in v1.
 
             categories:
                 Requested holiday categories.
@@ -1040,7 +1066,7 @@ class HolidayBase(dict[date, str]):
 
     def get_closest_holiday(
         self,
-        target_date: DateLike = None,
+        target_date: Optional[DateLike] = None,
         direction: Literal["forward", "backward"] = "forward",
     ) -> Optional[tuple[date, str]]:
         """Find the closest holiday relative to a given date.
