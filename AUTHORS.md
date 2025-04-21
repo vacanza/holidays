@@ -83,6 +83,7 @@ Kelsey Karin Hawley
 Koert van der Veer
 Koki Nomura
 Kriti Birda
+Lucca Augusto
 Maina Kamau
 Malthe Borch
 Marek Šuppa
@@ -126,12 +127,14 @@ Robin Emeršič
 Roshan Pradhan
 Ryan McCrory
 Sam Tregar
+Samman Sarkar
 Santiago Feliu
 Sergi Almacellas Abellana
 Sergio Mayoral Martinez
 Serhii Murza
 Shaurya Uppal
 Sho Hirose
+Shreyansh Pande
 Simon Gurcke
 Sugato Ray
 Sylvain Pasche

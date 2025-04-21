@@ -47,9 +47,8 @@ msgstr "Day of Unity of the Peoples of Belarus and Russia"
 msgid "Дзень Перамогі"
 msgstr "Victory Day"
 
-#. Day of the National Coat of Arms of the Republic of Belarus, the National
-#. Flag of the Republic of
-#. Belarus and the National Anthem of the Republic of Belarus.
+#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
+#. of Belarus and the National Anthem of the Republic of Belarus.
 msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
 msgstr ""
 "Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic of"
@@ -67,8 +66,7 @@ msgstr "Day of People's Unity"
 msgid "Новы год"
 msgstr "New Year's Day"
 
-#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of
-#. Belarus.
+#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
 msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
 msgstr "Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus"
 
