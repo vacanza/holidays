@@ -91,7 +91,7 @@ class TrinidadAndTobago(
 
         if self._year >= 1996:
             # Spiritual Baptist Liberation Day.
-            self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day"))
+            dts_observed.add(self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day")))
 
             # Indian Arrival Day.
             dts_observed.add(self._add_holiday_may_30(tr("Indian Arrival Day")))
@@ -118,7 +118,7 @@ class TrinidadAndTobago(
         dts_observed.add(self._add_diwali(tr("Divali")))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
 
         # Boxing Day.
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
