@@ -69,9 +69,9 @@ class SaoTomeAndPrincipe(
         super().__init__(*args, **kwargs)
         # Set the correct observed suffix based on language
         if self.language == "en_US":
-            self.observed_suffix = "%s observed"
+            self.observed_suffix = "%s (observed)"
         else:
-            self.observed_suffix = "%s observado"
+            self.observed_suffix = "%s (observado)"
 
     def _add_observed(self, holiday_date):
         """Add observed holidays only if the year is >= observed_start_year."""
@@ -123,7 +123,7 @@ class SaoTomeAndPrincipe(
 
             # Autonomy Day (April 29).
             # Príncipe gained autonomy in 1995.
-            if self._year >= 2019:
+            if self._year >= 1995:
                 self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
 
             # São Lourenço Day (August 15).

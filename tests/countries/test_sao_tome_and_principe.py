@@ -130,3 +130,36 @@ class TestSaoTome(CommonCountryTests, TestCase):
         en_holidays = SaoTomeAndPrincipe(years=2025, language="en_US", observed=True)
         self.assertEqual(en_holidays["2025-01-03"], "Day of King Amador (observed)")
         self.assertEqual(en_holidays["2025-12-25"], "Christmas Day")
+
+    def test_autonomy_day_history(self):
+        """Test Autonomy Day only appears from 1995 onwards in Príncipe."""
+        # Before 1995 - shouldn't exist
+        st_pr_pre_1995 = SaoTomeAndPrincipe(subdiv="PR", years=1994)
+        self.assertNotIn("1994-04-29", st_pr_pre_1995)
+
+        # From 1995 onwards - should exist
+        st_pr_post_1995 = SaoTomeAndPrincipe(subdiv="PR", years=1995)
+        self.assertIn("1995-04-29", st_pr_post_1995)
+        self.assertEqual(st_pr_post_1995["1995-04-29"], "Dia da Autonomia do Príncipe")
+
+    def test_observed_suffix_translation(self):
+        """Test observed suffix is correctly set based on language."""
+        st_en = SaoTomeAndPrincipe(language="en_US")
+        self.assertEqual(st_en.observed_suffix, "%s (observed)")
+
+        st_pt = SaoTomeAndPrincipe(language="pt")
+        self.assertEqual(st_pt.observed_suffix, "%s (observado)")
+
+        st_fr = SaoTomeAndPrincipe(language="fr")
+        self.assertEqual(st_fr.observed_suffix, "%s (observado)")
+
+    def test_no_observed_holidays_before_2020(self):
+        """Test that no observed holidays exist before 2020."""
+        for year in range(1975, 2020):  # Before observed_start_year (2020)
+            holidays = SaoTomeAndPrincipe(years=year, observed=True)
+
+        # Check New Year's Day (Jan 1) never has an observed date before 2020
+        jan1 = f"{year}-01-01"
+        if jan1 in holidays:
+            jan2 = f"{year}-01-02"
+            self.assertNotIn(jan2, holidays)  # No observed date should exist
