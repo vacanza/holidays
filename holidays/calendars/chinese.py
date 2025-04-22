@@ -1315,10 +1315,11 @@ class _ChineseLunisolar:
     def __verify_calendar(calendar):
         """Verify calendar type."""
 
-        if calendar not in {CHINESE_CALENDAR, KOREAN_CALENDAR, VIETNAMESE_CALENDAR}:
+        supported_calendars = {CHINESE_CALENDAR, KOREAN_CALENDAR, VIETNAMESE_CALENDAR}
+        if calendar not in supported_calendars:
             raise ValueError(
-                f"Unknown calendar name: {calendar}. Supported calendars: `CHINESE_CALENDAR`, "
-                "`KOREAN_CALENDAR`, `VIETNAM_CALENDAR`."
+                f"Unknown calendar name: {calendar}. "
+                f"Supported calendars: {', '.join(sorted(supported_calendars))}"
             )
 
     def _get_holiday(self, holiday: str, year: int, calendar=None) -> tuple[Optional[date], bool]:
