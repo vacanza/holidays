@@ -18,7 +18,7 @@ from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT,
 
 CHINESE_CALENDAR = "CHINESE_CALENDAR"
 KOREAN_CALENDAR = "KOREAN_CALENDAR"
-VIETNAM_CALENDAR = "VIETNAM_CALENDAR"
+VIETNAMESE_CALENDAR = "VIETNAMESE_CALENDAR"
 
 BUDDHA_BIRTHDAY = "BUDDHA_BIRTHDAY"
 DOUBLE_NINTH = "DOUBLE_NINTH"
@@ -1315,7 +1315,7 @@ class _ChineseLunisolar:
     def __verify_calendar(calendar):
         """Verify calendar type."""
 
-        if calendar not in {CHINESE_CALENDAR, KOREAN_CALENDAR, VIETNAM_CALENDAR}:
+        if calendar not in {CHINESE_CALENDAR, KOREAN_CALENDAR, VIETNAMESE_CALENDAR}:
             raise ValueError(
                 f"Unknown calendar name: {calendar}. Supported calendars: `CHINESE_CALENDAR`, "
                 "`KOREAN_CALENDAR`, `VIETNAM_CALENDAR`."

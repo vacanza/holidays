@@ -17,7 +17,7 @@ from holidays.calendars import (
     _CustomChineseHolidays,
     _CustomIslamicHolidays,
 )
-from holidays.calendars.chinese import VIETNAM_CALENDAR
+from holidays.calendars.chinese import VIETNAMESE_CALENDAR
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import (
@@ -74,7 +74,7 @@ class Indonesia(
         BalineseSakaCalendarHolidays.__init__(self)
         BuddhistCalendarHolidays.__init__(self, cls=IndonesiaBuddhistHolidays, show_estimated=True)
         ChineseCalendarHolidays.__init__(
-            self, cls=IndonesiaChineseHolidays, show_estimated=True, calendar=VIETNAM_CALENDAR
+            self, cls=IndonesiaChineseHolidays, show_estimated=True, calendar=VIETNAMESE_CALENDAR
         )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
