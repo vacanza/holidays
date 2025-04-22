@@ -356,8 +356,8 @@ CALENDARS = {
     HINDU: "Hindu",
 }
 
-# ID, VN: UTC+7
-# CN, HK, TW, MY, SG, PH: UTC+8
+# VN: UTC+7
+# CN, HK, TW, MY, SG, PH, ID: UTC+8
 # KR: UTC+9
 
 ASIAN_HOLIDAYS = (
