@@ -1280,7 +1280,7 @@ class _ChineseLunisolar:
         2098: (SEP, 10),
     }
 
-    VIETNAM_CALENDAR_HUNG_KINGS_DATES = {
+    VIETNAMESE_CALENDAR_HUNG_KINGS_DATES = {
         1916: (APR, 11),
         1917: (APR, 1),
         1939: (APR, 28),
@@ -1294,7 +1294,7 @@ class _ChineseLunisolar:
         2100: (APR, 18),
     }
 
-    VIETNAM_CALENDAR_LUNAR_NEW_YEAR_DATES = {
+    VIETNAMESE_CALENDAR_LUNAR_NEW_YEAR_DATES = {
         1903: (JAN, 28),
         1916: (FEB, 3),
         1935: (FEB, 3),
