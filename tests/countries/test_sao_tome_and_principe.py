@@ -26,8 +26,11 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         )
 
     def test_new_years_day(self):
-        for year in range(2014, 2050):
-            self.assertHolidayName("Ano Novo", f"{year}-01-01")
+        name = "Ano Novo"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2014, 2050)))
+        obs_dt = ("2023-01-02", )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_king_amador_day(self):
         for year in range(2014, 2050):
