@@ -63,8 +63,9 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             self.assertHolidayName("Dia da Reforma Agrária", f"{year}-09-30")
 
     def test_sao_tome_day(self):
-        for year in range(2019, 2050):  # Only from 2019 onward
-            self.assertHolidayName("Dia de São Tomé", f"{year}-12-21")
+        name = "Dia de São Tomé"
+        self.assertHolidayName(name, (f"{year}-12-21" for year in range(2019, 2050)))
+        self.assertNoHolidayName(name, range(2014, 2019))
 
     def test_christmas_day(self):
         for year in range(2014, 2050):
