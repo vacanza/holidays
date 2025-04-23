@@ -25,6 +25,12 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             cls.subdiv_p_holidays = SaoTomeAndPrincipe(subdiv="P", years=years)
         )
 
+    def test_country_aliases(self):
+        self.assertAliases(SaoTomeAndPrincipe, ST, STP)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(SaoTomeAndPrincipe(years=2013)
+
     def test_new_years_day(self):
         name = "Ano Novo"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2014, 2050)))
