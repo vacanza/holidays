@@ -134,11 +134,3 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
-
-    def test_special_holidays(self):
-        # Example of testing special one-time holidays if any exist
-        pass
-
-    def test_variable_holidays(self):
-        # Test holidays that change dates each year (like Carnival)
-        pass
