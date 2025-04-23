@@ -33,10 +33,10 @@ Dan Gentry
 Daniel Musketa
 Daniël Niemeijer
 David Hotham
+Devaraj K
 Diogo Rosa
 Dorian Monnier
 Douglas Franklin
-Devaraj K
 Eden Juscelino
 Edison Robles
 Edward Betts

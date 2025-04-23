@@ -28,7 +28,7 @@ class SaoTomeAndPrincipe(
 
     References:
         * https://en.wikipedia.org/wiki/Public_holidays_in_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe
-        * https://www.timeanddate.com/holidssays/sao-tome-and-principe/
+        * https://www.timeanddate.com/holidays/sao-tome-and-principe/
         * https://www.saotomeexpert.pt/en/sao-tome-public-holidays/
         * https://www.qppstudio.net/publicholidays2025/sao_tome_and_principe.htm
     """
