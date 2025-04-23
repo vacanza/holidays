@@ -58,7 +58,7 @@ class SaoTomeAndPrincipe(
     supported_categories = (PUBLIC,)
     observed_label = tr("%s (observed)")
     supported_languages = ("en_US", "pt")
-    start_year = 1975  # Independence year
+    start_year = 2014
     observed_start_year = 2020  # Year when observed holidays began
 
     def __init__(self, *args, **kwargs):
@@ -123,8 +123,7 @@ class SaoTomeAndPrincipe(
 
             # Autonomy Day (April 29).
             # Príncipe gained autonomy in 1995.
-            if self._year >= 1995:
-                self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
+            self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
 
             # São Lourenço Day (August 15).
             self._add_observed(self._add_holiday_aug_15(tr("Dia de São Lourenço")))

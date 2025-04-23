@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
@@ -19,8 +20,8 @@ from tests.common import CommonCountryTests
 class TestSaoTome(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaoTomeAndPrincipe, years=range(2014, 2026))
-        cls.observed_holidays = SaoTomeAndPrincipe(years=range(2014, 2026), observed=True)
+        super().setUpClass(SaoTomeAndPrincipe)
+        cls.observed_holidays = SaoTomeAndPrincipe(observed=True)
 
     def test_country_aliases(self):
         self.assertIsInstance(ST(), SaoTomeAndPrincipe)
@@ -97,6 +98,134 @@ class TestSaoTome(CommonCountryTests, TestCase):
         self.assertIn("2024-12-20", self.observed_holidays)  # Dec 21 was Saturday
         self.assertIn("2025-12-22", self.observed_holidays)  # Dec 21 was Sunday
 
+    def test_all_years_holidays(self):
+        # 2014
+        self.assertIn("2014-01-01", self.holidays)  # New Year
+        self.assertIn("2014-01-04", self.holidays)  # Day of King Amador
+        self.assertIn("2014-02-03", self.holidays)  # Commemoration of the Batepá Massacre
+        self.assertIn("2014-05-01", self.holidays)  # Labour Day
+        self.assertIn("2014-07-12", self.holidays)  # Independence Day
+        self.assertIn("2014-09-06", self.holidays)  # Armed Forces' Day
+        self.assertIn("2014-09-30", self.holidays)  # Nationalization of the Roças
+        self.assertIn("2014-12-25", self.holidays)  # Christmas Day
+
+        # 2015
+        self.assertIn("2015-01-01", self.holidays)
+        self.assertIn("2015-01-04", self.holidays)
+        self.assertIn("2015-02-03", self.holidays)
+        self.assertIn("2015-05-01", self.holidays)
+        self.assertIn("2015-07-12", self.holidays)
+        self.assertIn("2015-09-06", self.holidays)
+        self.assertIn("2015-09-30", self.holidays)
+        self.assertIn("2015-12-25", self.holidays)
+
+        # 2016
+        self.assertIn("2016-01-01", self.holidays)
+        self.assertIn("2016-01-04", self.holidays)
+        self.assertIn("2016-02-03", self.holidays)
+        self.assertIn("2016-05-01", self.holidays)
+        self.assertIn("2016-07-12", self.holidays)
+        self.assertIn("2016-09-06", self.holidays)
+        self.assertIn("2016-09-30", self.holidays)
+        self.assertIn("2016-12-25", self.holidays)
+
+        # 2017
+        self.assertIn("2017-01-01", self.holidays)
+        self.assertIn("2017-01-04", self.holidays)
+        self.assertIn("2017-02-03", self.holidays)
+        self.assertIn("2017-05-01", self.holidays)
+        self.assertIn("2017-07-12", self.holidays)
+        self.assertIn("2017-09-06", self.holidays)
+        self.assertIn("2017-09-30", self.holidays)
+        self.assertIn("2017-12-25", self.holidays)
+
+        # 2018
+        self.assertIn("2018-01-01", self.holidays)
+        self.assertIn("2018-01-04", self.holidays)
+        self.assertIn("2018-02-03", self.holidays)
+        self.assertIn("2018-05-01", self.holidays)
+        self.assertIn("2018-07-12", self.holidays)
+        self.assertIn("2018-09-06", self.holidays)
+        self.assertIn("2018-09-30", self.holidays)
+        self.assertIn("2018-12-25", self.holidays)
+
+        # 2019
+        self.assertIn("2019-01-01", self.holidays)
+        self.assertIn("2019-01-04", self.holidays)
+        self.assertIn("2019-02-03", self.holidays)
+        self.assertIn("2019-05-01", self.holidays)
+        self.assertIn("2019-07-12", self.holidays)
+        self.assertIn("2019-09-06", self.holidays)
+        self.assertIn("2019-09-30", self.holidays)
+        self.assertIn("2019-12-21", self.holidays)  # São Tomé Day (first year)
+        self.assertIn("2019-12-25", self.holidays)
+
+        # 2020
+        self.assertIn("2020-01-01", self.holidays)
+        self.assertIn("2020-01-04", self.holidays)
+        self.assertIn("2020-02-03", self.holidays)
+        self.assertIn("2020-05-01", self.holidays)
+        self.assertIn("2020-07-12", self.holidays)
+        self.assertIn("2020-09-06", self.holidays)
+        self.assertIn("2020-09-30", self.holidays)
+        self.assertIn("2020-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2020-12-25", self.holidays)
+
+        # 2021
+        self.assertIn("2021-01-01", self.holidays)
+        self.assertIn("2021-01-04", self.holidays)
+        self.assertIn("2021-02-03", self.holidays)
+        self.assertIn("2021-05-01", self.holidays)
+        self.assertIn("2021-07-12", self.holidays)
+        self.assertIn("2021-09-06", self.holidays)
+        self.assertIn("2021-09-30", self.holidays)
+        self.assertIn("2021-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2021-12-25", self.holidays)
+
+        # 2022
+        self.assertIn("2022-01-01", self.holidays)
+        self.assertIn("2022-01-04", self.holidays)
+        self.assertIn("2022-02-03", self.holidays)
+        self.assertIn("2022-05-01", self.holidays)
+        self.assertIn("2022-07-12", self.holidays)
+        self.assertIn("2022-09-06", self.holidays)
+        self.assertIn("2022-09-30", self.holidays)
+        self.assertIn("2022-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2022-12-25", self.holidays)
+
+        # 2023
+        self.assertIn("2023-01-01", self.holidays)
+        self.assertIn("2023-01-04", self.holidays)
+        self.assertIn("2023-02-03", self.holidays)
+        self.assertIn("2023-05-01", self.holidays)
+        self.assertIn("2023-07-12", self.holidays)
+        self.assertIn("2023-09-06", self.holidays)
+        self.assertIn("2023-09-30", self.holidays)
+        self.assertIn("2023-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2023-12-25", self.holidays)
+
+        # 2024
+        self.assertIn("2024-01-01", self.holidays)
+        self.assertIn("2024-01-04", self.holidays)
+        self.assertIn("2024-02-03", self.holidays)
+        self.assertIn("2024-05-01", self.holidays)
+        self.assertIn("2024-07-12", self.holidays)
+        self.assertIn("2024-09-06", self.holidays)
+        self.assertIn("2024-09-30", self.holidays)
+        self.assertIn("2024-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2024-12-25", self.holidays)
+
+        # 2025
+        self.assertIn("2025-01-01", self.holidays)
+        self.assertIn("2025-01-04", self.holidays)
+        self.assertIn("2025-02-03", self.holidays)
+        self.assertIn("2025-05-01", self.holidays)
+        self.assertIn("2025-07-12", self.holidays)
+        self.assertIn("2025-09-06", self.holidays)
+        self.assertIn("2025-09-30", self.holidays)
+        self.assertIn("2025-12-21", self.holidays)  # São Tomé Day
+        self.assertIn("2025-12-25", self.holidays)
+
     def test_principe_specific_holidays(self):
         # Test Príncipe-specific holidays
         principe_dates = {
@@ -131,17 +260,6 @@ class TestSaoTome(CommonCountryTests, TestCase):
         self.assertEqual(en_holidays["2025-01-03"], "Day of King Amador (observed)")
         self.assertEqual(en_holidays["2025-12-25"], "Christmas Day")
 
-    def test_autonomy_day_history(self):
-        """Test Autonomy Day only appears from 1995 onwards in Príncipe."""
-        # Before 1995 - shouldn't exist
-        st_pr_pre_1995 = SaoTomeAndPrincipe(subdiv="PR", years=1994)
-        self.assertNotIn("1994-04-29", st_pr_pre_1995)
-
-        # From 1995 onwards - should exist
-        st_pr_post_1995 = SaoTomeAndPrincipe(subdiv="PR", years=1995)
-        self.assertIn("1995-04-29", st_pr_post_1995)
-        self.assertEqual(st_pr_post_1995["1995-04-29"], "Dia da Autonomia do Príncipe")
-
     def test_observed_suffix_translation(self):
         """Test observed suffix is correctly set based on language."""
         st_en = SaoTomeAndPrincipe(language="en_US")
@@ -155,11 +273,54 @@ class TestSaoTome(CommonCountryTests, TestCase):
 
     def test_no_observed_holidays_before_2020(self):
         """Test that no observed holidays exist before 2020."""
-        for year in range(1975, 2020):  # Before observed_start_year (2020)
+        for year in range(2014, 2020):  # Before observed_start_year (2020)
             holidays = SaoTomeAndPrincipe(years=year, observed=True)
 
-        # Check New Year's Day (Jan 1) never has an observed date before 2020
-        jan1 = f"{year}-01-01"
-        if jan1 in holidays:
-            jan2 = f"{year}-01-02"
-            self.assertNotIn(jan2, holidays)  # No observed date should exist
+            # Check New Year's Day (Jan 1) never has an observed date before 2020
+            jan1 = f"{year}-01-01"
+            if jan1 in holidays:
+                jan2 = f"{year}-01-02"
+                self.assertNotIn(jan2, holidays)  # No observed date should exist
+
+    def test_invalid_language_fallback(self):
+        st = ST(language="xx", years=2024)
+        # Should fallback to default (Portuguese)
+        assert st[date(2024, 1, 1)] == "Ano Novo"
+
+    def test_populate_holidays_and_observed_logic(self):
+        """Tests holiday population, observed logic, and pre-2014 early return."""
+        from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe
+
+        # Test 1: Directly test pre-2014 early return
+        st = SaoTomeAndPrincipe.__new__(SaoTomeAndPrincipe)
+        st._year = 2013
+        result = st._populate_public_holidays()
+        self.assertIsNone(result)
+
+        # Test 2: Normal operation with observed holidays
+        st_normal = SaoTomeAndPrincipe(years=2020, observed=True)
+        self.assertIn(date(2020, 1, 1), st_normal)  # New Year's
+        self.assertIn(date(2020, 1, 3), st_normal)  # Observed holiday
+
+        # Test 3: Principe-specific holidays
+        st_pr = SaoTomeAndPrincipe(years=2020, subdiv="PR")
+        self.assertIn(date(2020, 1, 17), st_pr)  # Principe Discovery Day
+
+        # Test 4: São Tomé Day (post-2019)
+        st_2019 = SaoTomeAndPrincipe(years=2019)
+        self.assertIn(date(2019, 12, 21), st_2019)
+
+    def test_observed_suffix_and_principe_branch_logic(self):
+        """Tests localization of observed suffix and non-Principe subdivision exclusion."""
+        from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe
+
+        # Test observed_suffix localization
+        st_en = SaoTomeAndPrincipe(language="en_US")
+        self.assertEqual(st_en.observed_suffix, "%s (observed)")
+
+        st_pt = SaoTomeAndPrincipe(language="pt")
+        self.assertEqual(st_pt.observed_suffix, "%s (observado)")
+
+        # Test that non-PR subdivisions do not get Principe holiday
+        st_no_pr = SaoTomeAndPrincipe(years=2020, subdiv="01")  # Not PR
+        self.assertNotIn("2020-01-17", st_no_pr)
