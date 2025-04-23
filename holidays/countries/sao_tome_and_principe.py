@@ -73,10 +73,10 @@ class SaoTomeAndPrincipe(
         else:
             self.observed_suffix = "%s (observado)"
 
-    def _add_observed(self, holiday_date):
+    def _add_observed(self, holiday_date, name=None, rule=None, show_observed_label=True):
         """Add observed holidays only if the year is >= observed_start_year."""
         if self._year >= self.observed_start_year:
-            super()._add_observed(holiday_date)
+            super()._add_observed(holiday_date, name, rule, show_observed_label)
 
     def _populate_public_holidays(self):
         """Populate holidays - national for all, plus extras for Príncipe."""
