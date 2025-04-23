@@ -12,13 +12,8 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SUN_TO_NEXT_MON,
-    SAT_TO_PREV_FRI,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SAT_TO_PREV_FRI
 
 
 class SaoTomeAndPrincipe(
@@ -27,13 +22,18 @@ class SaoTomeAndPrincipe(
     """São Tomé and Príncipe holidays.
 
     References:
-        * https://en.wikipedia.org/wiki/Public_holidays_in_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe
-        * https://www.timeanddate.com/holidays/sao-tome-and-principe/
-        * https://www.saotomeexpert.pt/en/sao-tome-public-holidays/
-        * https://www.qppstudio.net/publicholidays2025/sao_tome_and_principe.htm
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
+        * <https://www.timeanddate.com/holidays/sao-tome-and-principe/>
+        * <https://www.saotomeexpert.pt/en/sao-tome-public-holidays/>
+        * <https://www.qppstudio.net/publicholidays2025/sao_tome_and_principe.htm>
     """
 
     country = "ST"
+    default_language = "pt_ST"
+    # %s (observed).
+    observed_label = tr("%s (observado)")
+    supported_languages = ("en_US", "pt_ST")
+    start_year = 2014
     subdivisions = (
         "01",
         "02",
@@ -41,42 +41,28 @@ class SaoTomeAndPrincipe(
         "04",
         "05",
         "06",
-        "PR",
+        "P",
     )
-
     subdivisions_aliases = {
-        "Agua Grande": "01",
+        # Districts.
+        "Água Grande": "01",
         "Cantagalo": "02",
-        "Caue": "03",
-        "Lemba": "04",
+        "Caué": "03",
+        "Lembá": "04",
         "Lobata": "05",
-        "Me-Zochi": "06",
-        "Principe": "PR",  # Autonomous region
+        "Mé-Zóchi": "06",
+        # Autonomous Region.
+        "Príncipe": "P",  
     }
-
-    default_language = "pt"
-    supported_categories = (PUBLIC,)
-    observed_label = tr("%s (observed)")
-    supported_languages = ("en_US", "pt")
-    start_year = 2014
-    observed_start_year = 2020  # Year when observed holidays began
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SaoTomeAndPrincipeStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON + SAT_TO_PREV_FRI)
+        # Add references for this as well.
+        kwargs.setdefault("observed_since", 2020)
         super().__init__(*args, **kwargs)
-        # Set the correct observed suffix based on language
-        if self.language == "en_US":
-            self.observed_suffix = "%s (observed)"
-        else:
-            self.observed_suffix = "%s (observado)"
-
-    def _add_observed(self, holiday_date, name=None, rule=None, show_observed_label=True):
-        """Add observed holidays only if the year is >= observed_start_year."""
-        if self._year >= self.observed_start_year:
-            super()._add_observed(holiday_date, name, rule, show_observed_label)
 
     def _populate_public_holidays(self):
         """Populate holidays - national for all, plus extras for Príncipe."""
@@ -87,8 +73,7 @@ class SaoTomeAndPrincipe(
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Ano Novo")))
 
-        # Day of King Amador (January 4).
-        # Commemorates King Amador, leader of 16th century slave rebellion.
+        # Day of King Amador.
         self._add_observed(self._add_holiday_jan_4(tr("Dia do Rei Amador")))
 
         # Martyrs' Day (February 3).
@@ -116,32 +101,21 @@ class SaoTomeAndPrincipe(
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Natal")))
 
-        # Príncipe-specific holidays
-        if self.subdiv == "PR":
-            # Discovery of Príncipe Island (January 17).
-            self._add_observed(self._add_holiday_jan_17(tr("Descobrimento da Ilha do Príncipe")))
+    def _populate_subdiv_p_public_holidays(self):
+        # Discovery of Príncipe Island.
+        self._add_observed(self._add_holiday_jan_17(tr("Descobrimento da Ilha do Príncipe")))
 
-            # Autonomy Day (April 29).
-            # Príncipe gained autonomy in 1995.
-            self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
+        # Autonomy Day.
+        self._add_observed(self._add_holiday_apr_29(tr("Dia da Autonomia do Príncipe")))
 
-            # São Lourenço Day (August 15).
-            self._add_observed(self._add_holiday_aug_15(tr("Dia de São Lourenço")))
+        # São Lourenço Day.
+        self._add_observed(self._add_holiday_aug_15(tr("Dia de São Lourenço")))
 
 
 class ST(SaoTomeAndPrincipe):
-    """Alias for São Tomé and Príncipe national holidays (no subdivision)."""
-
     pass
 
 
 class STP(SaoTomeAndPrincipe):
-    """Alias for São Tomé and Príncipe (allows subdivision specification)."""
-
     pass
 
-
-class SaoTomeAndPrincipeStaticHolidays:
-    """Placeholder for future special holidays."""
-
-    pass
