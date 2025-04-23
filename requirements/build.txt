@@ -1,3 +1,7 @@
 build==1.2.2.post1
+<<<<<<< HEAD
 cyclonedx-bom==5.5.0
+=======
+cyclonedx-bom==5.3.0
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 polib==1.2.0

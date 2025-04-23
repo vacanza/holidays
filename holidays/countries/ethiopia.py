@@ -14,9 +14,14 @@ from calendar import isleap
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
+<<<<<<< HEAD
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import PUBLIC, WORKDAY
+=======
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.julian import JULIAN_CALENDAR
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -25,24 +30,35 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     """Ethiopia holidays.
 
     References:
+<<<<<<< HEAD
         * [Proclamation No. 29/1996](https://www.lawethiopia.com/images/federal_proclamation/proclamations_by_number/29.pdf)
         * [Proclamation No. 1334/2024](https://lawethiopiacomment.wordpress.com/wp-content/uploads/2024/08/public-holiday-stamped.pdf)
         * <https://www.edarabia.com/ethiopia/public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
         * <https://en.wikipedia.org/wiki/Nations,_Nationalities_and_Peoples%27_Day>
         * <https://www.timeanddate.com/holidays/ethiopia/>
+=======
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     """
 
     country = "ET"
     default_language = "am"
     # %s (estimated).
     estimated_label = tr("%s (ግምት)")
+<<<<<<< HEAD
     # Negarit Gazeta Proclamation No. 16/1975.
     start_year = 1976
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("am", "ar", "en_ET", "en_US")
 
     def _is_leap_year(self) -> bool:
+=======
+    supported_languages = ("am", "ar", "en_US")
+    start_year = 1898
+
+    def _is_leap_year(self):
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
         """Determine if the Ethiopian calendar year is a leap year.
 
         Ethiopian leap years generally align with Gregorian leap years until
@@ -74,6 +90,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
     def _populate_public_holidays(self):
         # Christmas Day.
+<<<<<<< HEAD
         self._add_christmas_day(tr("የገና ወይም የልደት በዓል"))
 
         # Epiphany.
@@ -107,12 +124,48 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
         if self._year <= 1990:
             # Popular Revolution Commemoration Day.
+=======
+        self._add_christmas_day(tr("ገና"))
+
+        # Epiphany.
+        self._add_holiday(tr("ጥምቀት"), JAN, 20 if super()._is_leap_year() else 19)
+
+        # Adwa Victory Day.
+        self._add_holiday_mar_2(tr("አድዋ"))
+
+        # Good Friday.
+        self._add_good_friday(tr("ስቅለት"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("ፋሲካ"))
+
+        # Workers' Day.
+        self._add_labor_day(tr("የሰራተኞች ቀን"))
+
+        if self._year >= 1942:
+            # Patriots' Day.
+            self._add_holiday_may_5(tr("የአርበኞች ቀን"))
+
+        if self._year >= 1992:
+            # Downfall of Dergue Regime Day.
+            self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
+
+        # Ethiopian New Year.
+        self._add_holiday(tr("እንቁጣጣሽ"), SEP, 12 if self._is_leap_year() else 11)
+
+        # Finding of True Cross.
+        self._add_holiday(tr("መስቀል"), SEP, 28 if self._is_leap_year() else 27)
+
+        if 1975 <= self._year <= 1990:
+            # Revolution Day.
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
             self._add_holiday(tr("የአብዮት ቀን"), SEP, 13 if self._is_leap_year() else 12)
 
             # October Revolution Day.
             self._add_holiday_nov_7(tr("የጥቅምት አብዮት ቀን"))
 
         # Eid al-Fitr.
+<<<<<<< HEAD
         self._add_eid_al_fitr_day(tr("የኢድ አልፈጥር"))
 
         # Eid al-Adha.
@@ -128,6 +181,15 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         if self._year >= 2006:
             # Nations, Nationalities and Peoples Day.
             self._add_holiday_dec_9(tr("የብሔር ብሔረሰቦች ቀን"))
+=======
+        self._add_eid_al_fitr_day(tr("ኢድ አልፈጥር"))
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("አረፋ"))
+
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("መውሊድ"))
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
 
 class ET(Ethiopia):
@@ -146,7 +208,10 @@ class EthiopiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 9),
         2023: (JUN, 28),
+<<<<<<< HEAD
         2024: (JUN, 16),
+=======
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     EID_AL_FITR_DATES = {
@@ -157,7 +222,10 @@ class EthiopiaIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 2),
         2023: (APR, 21),
         2024: (APR, 10),
+<<<<<<< HEAD
         2025: (MAR, 30),
+=======
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     MAWLID_DATES = {
@@ -167,5 +235,8 @@ class EthiopiaIslamicHolidays(_CustomIslamicHolidays):
         2021: (OCT, 18),
         2022: (OCT, 8),
         2023: (SEP, 27),
+<<<<<<< HEAD
         2024: (SEP, 15),
+=======
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }

@@ -6,10 +6,6 @@ repos:
       - id: check-builtin-literals
       - id: check-yaml
       - id: end-of-file-fixer
-      - id: file-contents-sorter
-        args:
-          - --unique
-        files: AUTHORS.md
       - id: mixed-line-ending
         args:
           - --fix=lf

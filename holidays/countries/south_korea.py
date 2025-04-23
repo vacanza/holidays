@@ -14,7 +14,11 @@ import warnings
 from datetime import date
 from gettext import gettext as tr
 
+<<<<<<< HEAD
 from holidays.calendars.chinese import KOREAN_CALENDAR
+=======
+from holidays.calendars import _CustomChineseHolidays
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -87,7 +91,11 @@ class SouthKorea(
     start_year = 1948
 
     def __init__(self, *args, **kwargs):
+<<<<<<< HEAD
         ChineseCalendarHolidays.__init__(self, calendar=KOREAN_CALENDAR)
+=======
+        ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
@@ -289,6 +297,37 @@ class KOR(SouthKorea):
     pass
 
 
+<<<<<<< HEAD
+=======
+class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
+    BUDDHA_BIRTHDAY_DATES = {
+        1931: (MAY, 25),
+        1968: (MAY, 5),
+        2001: (MAY, 1),
+        2012: (MAY, 28),
+        2023: (MAY, 27),
+        2025: (MAY, 5),
+    }
+
+    LUNAR_NEW_YEAR_DATES = {
+        1916: (FEB, 4),
+        1944: (JAN, 26),
+        1954: (FEB, 4),
+        1958: (FEB, 19),
+        1966: (JAN, 22),
+        1988: (FEB, 18),
+        1997: (FEB, 8),
+        2027: (FEB, 7),
+        2028: (JAN, 27),
+    }
+
+    MID_AUTUMN_DATES = {
+        1942: (SEP, 25),
+        2040: (SEP, 21),
+    }
+
+
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 class SouthKoreaStaticHolidays:
     """South Korea special holidays.
 

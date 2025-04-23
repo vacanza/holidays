@@ -69,7 +69,11 @@ class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
             "Ngày Giỗ Tổ Hùng Vương",
             "2007-04-26",
             "2008-04-15",
+<<<<<<< HEAD
             "2009-04-04",
+=======
+            "2009-04-05",
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
             "2010-04-23",
             "2011-04-12",
             "2012-03-31",

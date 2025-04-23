@@ -13,7 +13,10 @@
 from datetime import date
 from gettext import gettext as tr
 
+<<<<<<< HEAD
 from holidays.calendars.chinese import VIETNAMESE_CALENDAR
+=======
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -60,7 +63,11 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     supported_languages = ("en_US", "th", "vi")
 
     def __init__(self, *args, **kwargs):
+<<<<<<< HEAD
         ChineseCalendarHolidays.__init__(self, calendar=VIETNAMESE_CALENDAR)
+=======
+        ChineseCalendarHolidays.__init__(self)
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, VietnamStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)

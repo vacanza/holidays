@@ -953,7 +953,10 @@
     "2025-03-31": "Eid al-Fitr",
     "2025-04-18": "Good Friday",
     "2025-05-01": "Labor Day",
+<<<<<<< HEAD
     "2025-05-03": "Polling Day",
+=======
+>>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     "2025-05-12": "Vesak Day",
     "2025-06-07": "Eid al-Adha",
     "2025-08-09": "National Day",
