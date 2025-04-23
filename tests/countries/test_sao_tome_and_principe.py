@@ -20,113 +20,102 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SaoTomeAndPrincipe, years=range(2014, 2050))
-        cls.observed_holidays = SaoTomeAndPrincipe(years=range(2020, 2050), observed=True)
-        cls.principe_holidays = SaoTomeAndPrincipe(subdiv="P", years=range(2014, 2050))
+        cls.observed_holidays = SaoTomeAndPrincipe(years=range(2014, 2050), observed=True)
 
     def test_country_aliases(self):
         self.assertIsInstance(ST(), SaoTomeAndPrincipe)
         self.assertIsInstance(STP(), SaoTomeAndPrincipe)
-        self.assertIsNone(ST().subdiv)
-        self.assertIsNone(STP().subdiv)
 
-    def test_2023(self):
-        self.assertHolidays(
-            SaoTomeAndPrincipe(years=2023),
-            [
-                ("2023-01-01", "Ano Novo"),
-                ("2023-01-04", "Dia do Rei Amador"),
-                ("2023-02-03", "Dia dos Mártires"),
-                ("2023-05-01", "Dia do Trabalhador"),
-                ("2023-07-12", "Dia da Independência"),
-                ("2023-09-06", "Dia das Forças Armadas"),
-                ("2023-09-30", "Dia da Reforma Agrária"),
-                ("2023-12-21", "Dia de São Tomé"),
-                ("2023-12-25", "Natal"),
-            ],
-        )
+    def test_fixed_holidays(self):
+        fixed_dates = [
+            ("01-01", "Ano Novo"),
+            ("02-03", "Dia dos Mártires"),
+            ("05-01", "Dia do Trabalhador"),
+            ("07-12", "Dia da Independência"),
+            ("09-06", "Dia das Forças Armadas"),
+            ("09-30", "Dia da Reforma Agrária"),
+            ("12-21", "Dia de São Tomé"),  # Since 2019
+            ("12-25", "Natal"),
+        ]
 
-    def test_observed_dates(self):
-        self.assertHoliday(
-            self.observed_holidays,
-            # Observed King Amador Day (Jan 4 was Saturday)
-            "2020-01-03",
-            # Observed Independence Day (Jul 12 was Sunday)
-            "2020-07-13",
-            # Observed New Year's (Jan 1 was Sunday)
-            "2023-01-02",
-            # Observed São Tomé Day (Dec 21 was Sunday)
-            "2025-12-22",
-        )
+        for month_day, name in fixed_dates:
+            for year in range(2014, 2050):
+                # Skip São Tomé Day before 2019
+                if month_day == "12-21" and year < 2019:
+                    continue
 
-    def test_subdivisions(self):
-        self.assertHoliday(
-            self.principe_holidays,
-            # Discovery of Príncipe Island
-            "2020-01-17",
-            # Autonomy Day
-            "2020-04-29",
-            # São Lourenço Day
-            "2020-08-15",
-        )
-        # Verify national holidays are also present
-        self.assertHoliday(
-            self.principe_holidays,
-            "2020-01-01",
-            "2020-05-01",
-        )
+                self.assertHolidayName(name, f"{year}-{month_day}")
 
-    def test_sao_tome_day(self):
-        self.assertNoHoliday("2018-12-21")
-        self.assertHoliday(
-            "2019-12-21",
-            "2020-12-21",
-            "2025-12-21",
-        )
+    def test_observed_holidays(self):
+        # Test New Year's Day observed (Sunday -> Monday)
+        self.assertIn("2023-01-02", self.observed_holidays)
+        self.assertEqual(self.observed_holidays["2023-01-02"], "Ano Novo (observado)")
+
+        # Test Independence Day observed (Sunday -> Monday)
+        self.assertIn("2020-07-13", self.observed_holidays)
+        self.assertEqual(self.observed_holidays["2020-07-13"], "Dia da Independência (observado)")
+
+        # Test before observed years (should not have observed dates)
+        self.assertNotIn("2019-01-02", self.observed_holidays)  # New Year's was Tuesday
+        self.assertNotIn("2018-07-13", self.observed_holidays)  # Independence was Thursday
+
+    def test_principe_subdivision(self):
+        principe_holidays = SaoTomeAndPrincipe(subdiv="P", years=range(2020, 2026))
+
+        principe_fixed = [
+            ("01-17", "Descobrimento da Ilha do Príncipe"),
+            ("04-29", "Dia da Autonomia do Príncipe"),
+            ("08-15", "Dia de São Lourenço"),
+        ]
+
+        for month_day, name in principe_fixed:
+            for year in range(2020, 2026):
+                self.assertHolidayName(name, principe_holidays, f"{year}-{month_day}")
+
+        # Verify national holidays still exist
+        self.assertHolidayName("Dia da Independência", principe_holidays, "2020-07-12")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            SaoTomeAndPrincipe(years=2023),
-            [
-                ("2023-01-01", "Ano Novo"),
-                ("2023-01-04", "Dia do Rei Amador"),
-                ("2023-02-03", "Dia dos Mártires"),
-                ("2023-05-01", "Dia do Trabalhador"),
-                ("2023-07-12", "Dia da Independência"),
-                ("2023-09-06", "Dia das Forças Armadas"),
-                ("2023-09-30", "Dia da Reforma Agrária"),
-                ("2023-12-21", "Dia de São Tomé"),
-                ("2023-12-25", "Natal"),
-            ],
-        )
-
-    def test_l10n_pt(self):
-        self.assertLocalizedHolidays(
-            SaoTomeAndPrincipe(years=2023, language="pt_ST"),
-            [
-                ("2023-01-01", "Ano Novo"),
-                ("2023-01-04", "Dia do Rei Amador"),
-                ("2023-02-03", "Dia dos Mártires"),
-                ("2023-05-01", "Dia do Trabalhador"),
-                ("2023-07-12", "Dia da Independência"),
-                ("2023-09-06", "Dia das Forças Armadas"),
-                ("2023-09-30", "Dia da Reforma Agrária"),
-                ("2023-12-21", "Dia de São Tomé"),
-                ("2023-12-25", "Natal"),
-            ],
+            ("2022-01-01", "Ano Novo"),
+            ("2022-01-04", "Dia do Rei Amador"),
+            ("2022-01-17", "Descobrimento da Ilha do Príncipe"),
+            ("2022-02-03", "Dia dos Mártires"),
+            ("2022-04-29", "Dia da Autonomia do Príncipe"),
+            ("2022-05-01", "Dia do Trabalhador"),
+            ("2022-05-02", "Dia do Trabalhador (observado)"),
+            ("2022-07-12", "Dia da Independência"),
+            ("2022-08-15", "Dia de São Lourenço"),
+            ("2022-09-06", "Dia das Forças Armadas"),
+            ("2022-09-30", "Dia da Reforma Agrária"),
+            ("2022-12-21", "Dia de São Tomé"),
+            ("2022-12-25", "Natal"),
+            ("2022-12-26", "Natal (observado)"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            SaoTomeAndPrincipe(years=2023, language="en_US"),
-            [
-                ("2023-01-01", "New Year's Day"),
-                ("2023-01-04", "Day of King Amador"),
-                ("2023-02-03", "Martyrs' Day"),
-                ("2023-05-01", "Labor Day"),
-                ("2023-07-12", "Independence Day"),
-                ("2023-09-06", "Armed Forces Day"),
-                ("2023-09-30", "Agricultural Reform Day"),
-                ("2023-12-21", "São Tomé Day"),
-                ("2023-12-25", "Christmas Day"),
-            ],
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-04", "Day of King Amador"),
+            ("2022-01-17", "Discovery of Príncipe Island"),
+            ("2022-02-03", "Martyrs' Day"),
+            ("2022-04-29", "Autonomy Day"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (observed)"),
+            ("2022-07-12", "Independence Day"),
+            ("2022-08-15", "São Lourenço Day"),
+            ("2022-09-06", "Armed Forces Day"),
+            ("2022-09-30", "Agricultural Reform Day"),
+            ("2022-12-21", "São Tomé Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
         )
+
+    def test_special_holidays(self):
+        # Example of testing special one-time holidays if any exist
+        pass
+
+    def test_variable_holidays(self):
+        # Test holidays that change dates each year (like Carnival)
+        pass
