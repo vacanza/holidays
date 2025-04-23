@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe
+from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
 from tests.common import CommonCountryTests
 
 
