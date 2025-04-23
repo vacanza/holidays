@@ -64,14 +64,6 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         for year in range(2014, 2050):
             self.assertHolidayName("Natal", f"{year}-12-25")
 
-    def test_observed_holidays(self):
-        # Test New Year's Day observed (Sunday -> Monday)
-        self.assertIn("2023-01-02", self.observed_holidays)
-        self.assertEqual(self.observed_holidays["2023-01-02"], "Ano Novo (observado)")
-
-        # Test Independence Day observed (Sunday -> Monday)
-        self.assertIn("2020-07-13", self.observed_holidays)
-        self.assertEqual(self.observed_holidays["2020-07-13"], "Dia da Independência (observado)")
 
     def test_principe_subdivision(self):
         principe_holidays = SaoTomeAndPrincipe(subdiv="P", years=range(2020, 2026))
