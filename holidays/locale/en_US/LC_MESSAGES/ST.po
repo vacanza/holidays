@@ -76,9 +76,5 @@ msgid "Dia de São Lourenço"
 msgstr "São Lourenço Day"
 
 #, c-format
-msgid "%s (observed)"
-msgstr ""
-
-#, c-format
-#~ msgid "%s (observado)"
-#~ msgstr "%s (observed)"
+msgid "%s (observado)"
+msgstr "%s (observed)"

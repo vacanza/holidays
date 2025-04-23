@@ -12,13 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SAT_TO_PREV_FRI
 
 
-class SaoTomeAndPrincipe(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
-):
+class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Sao Tome and Principe holidays.
 
     References:
@@ -52,20 +50,19 @@ class SaoTomeAndPrincipe(
         "Lobata": "05",
         "Mé-Zóchi": "06",
         # Autonomous Region.
-        "Príncipe": "P",  
+        "Príncipe": "P",
     }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, cls=SaoTomeAndPrincipeStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON + SAT_TO_PREV_FRI)
-        # Add references for this as well.
+        # Holidays are observed on the next Monday if on Sunday, or previous Friday if on Saturday.
+        # Based on common government practices since at least 2020.
         kwargs.setdefault("observed_since", 2020)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-
         # National holidays (observed everywhere)
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Ano Novo")))
@@ -113,4 +110,3 @@ class ST(SaoTomeAndPrincipe):
 
 class STP(SaoTomeAndPrincipe):
     pass
-
