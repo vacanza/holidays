@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
+from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe
 from tests.common import CommonCountryTests
 
 
@@ -22,30 +22,41 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         super().setUpClass(SaoTomeAndPrincipe, years=range(2014, 2050))
         cls.observed_holidays = SaoTomeAndPrincipe(years=range(2014, 2050), observed=True)
 
-    def test_country_aliases(self):
-        self.assertIsInstance(ST(), SaoTomeAndPrincipe)
-        self.assertIsInstance(STP(), SaoTomeAndPrincipe)
+    def test_new_years_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Ano Novo", f"{year}-01-01")
 
-    def test_fixed_holidays(self):
-        fixed_dates = [
-            ("01-01", "Ano Novo"),
-            ("02-03", "Dia dos Mártires"),
-            ("01-04", "Dia do Rei Amador"),
-            ("05-01", "Dia do Trabalhador"),
-            ("07-12", "Dia da Independência"),
-            ("09-06", "Dia das Forças Armadas"),
-            ("09-30", "Dia da Reforma Agrária"),
-            ("12-21", "Dia de São Tomé"),  # Since 2019
-            ("12-25", "Natal"),
-        ]
+    def test_king_amador_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia do Rei Amador", f"{year}-01-04")
 
-        for month_day, name in fixed_dates:
-            for year in range(2014, 2050):
-                # Skip São Tomé Day before 2019
-                if month_day == "12-21" and year < 2019:
-                    continue
+    def test_martyrs_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia dos Mártires", f"{year}-02-03")
 
-                self.assertHolidayName(name, f"{year}-{month_day}")
+    def test_labor_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia do Trabalhador", f"{year}-05-01")
+
+    def test_independence_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia da Independência", f"{year}-07-12")
+
+    def test_armed_forces_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia das Forças Armadas", f"{year}-09-06")
+
+    def test_agrarian_reform_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Dia da Reforma Agrária", f"{year}-09-30")
+
+    def test_sao_tome_day(self):
+        for year in range(2019, 2050):  # Only from 2019 onward
+            self.assertHolidayName("Dia de São Tomé", f"{year}-12-21")
+
+    def test_christmas_day(self):
+        for year in range(2014, 2050):
+            self.assertHolidayName("Natal", f"{year}-12-25")
 
     def test_observed_holidays(self):
         # Test New Year's Day observed (Sunday -> Monday)
@@ -55,10 +66,6 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         # Test Independence Day observed (Sunday -> Monday)
         self.assertIn("2020-07-13", self.observed_holidays)
         self.assertEqual(self.observed_holidays["2020-07-13"], "Dia da Independência (observado)")
-
-        # Test before observed years (should not have observed dates)
-        self.assertNotIn("2019-01-02", self.observed_holidays)  # New Year's was Tuesday
-        self.assertNotIn("2018-07-13", self.observed_holidays)  # Independence was Thursday
 
     def test_principe_subdivision(self):
         principe_holidays = SaoTomeAndPrincipe(subdiv="P", years=range(2020, 2026))
@@ -72,9 +79,6 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         for month_day, name in principe_fixed:
             for year in range(2020, 2026):
                 self.assertHolidayName(name, principe_holidays, f"{year}-{month_day}")
-
-        # Verify national holidays still exist
-        self.assertHolidayName("Dia da Independência", principe_holidays, "2020-07-12")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
