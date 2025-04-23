@@ -19,8 +19,11 @@ from tests.common import CommonCountryTests
 class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaoTomeAndPrincipe, years=range(2014, 2050))
-        cls.observed_holidays = SaoTomeAndPrincipe(years=range(2014, 2050), observed=True)
+        super().setUpClass(
+            years = range(2014, 2050)
+            SaoTomeAndPrincipe, years=years, years_non_observed=range(2020, 2050)
+            cls.subdiv_p_holidays = SaoTomeAndPrincipe(subdiv="P", years=years)
+        )
 
     def test_new_years_day(self):
         for year in range(2014, 2050):
