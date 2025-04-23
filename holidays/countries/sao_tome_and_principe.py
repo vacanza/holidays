@@ -19,7 +19,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 class SaoTomeAndPrincipe(
     ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
-    """São Tomé and Príncipe holidays.
+    """Sao Tome and Principe holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
@@ -65,9 +65,6 @@ class SaoTomeAndPrincipe(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        """Populate holidays - national for all, plus extras for Príncipe."""
-        if self._year < self.start_year:
-            return None
 
         # National holidays (observed everywhere)
         # New Year's Day.
@@ -76,15 +73,13 @@ class SaoTomeAndPrincipe(
         # Day of King Amador.
         self._add_observed(self._add_holiday_jan_4(tr("Dia do Rei Amador")))
 
-        # Martyrs' Day (February 3).
-        # Commemorates the 1953 Batepá massacre.
+        # Martyrs' Day.
         self._add_observed(self._add_holiday_feb_3(tr("Dia dos Mártires")))
 
         # Labor Day (May 1).
         self._add_observed(self._add_labor_day(tr("Dia do Trabalhador")))
 
-        # Independence Day (July 12).
-        # From Portugal in 1975.
+        # Independence Day.
         self._add_observed(self._add_holiday_jul_12(tr("Dia da Independência")))
 
         # Armed Forces Day (September 6).
