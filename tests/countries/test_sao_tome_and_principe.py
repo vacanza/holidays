@@ -71,18 +71,32 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             self.assertHolidayName("Natal", f"{year}-12-25")
 
 
-    def test_principe_subdivision(self):
-        principe_holidays = SaoTomeAndPrincipe(subdiv="P", years=range(2020, 2026))
+    def test_discovery_of_principe_island(self):
+        name = "Descobrimento da Ilha do Príncipe"
+        self.assertHolidayName(
+            name, subdiv_p_holidays, (f"{year}-01-17" for year in range(2014, 2050))
+        )
+        self.assertNoHolidayName(name)
 
-        principe_fixed = [
-            ("01-17", "Descobrimento da Ilha do Príncipe"),
-            ("04-29", "Dia da Autonomia do Príncipe"),
-            ("08-15", "Dia de São Lourenço"),
-        ]
+    def test_autonomy_day(self):
+        name = "Dia da Autonomia do Príncipe"
+        self.assertHolidayName(
+            name, subdiv_p_holidays, (f"{year}-04-29" for year in range(2014, 2050))
+        )
+        self.assertNoHolidayName(name)
+        obs_dt = ("2023-04-28", )
+        self.assertHolidayName(f"{name} (observado)", subdiv_p_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(subdiv_p_holidays, obs_dt)
 
-        for month_day, name in principe_fixed:
-            for year in range(2020, 2026):
-                self.assertHolidayName(name, principe_holidays, f"{year}-{month_day}")
+    def test_sao_lorenco_day(self):
+        name = "Dia de São Lourenço"
+        self.assertHolidayName(
+            name, subdiv_p_holidays, (f"{year}-08-15" for year in range(2014, 2050))
+        )
+        self.assertNoHolidayName(name)
+        obs_dt = ("2020-08-14", "2021-08-16")
+        self.assertHolidayName(f"{name} (observado)", subdiv_p_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(subdiv_p_holidays, obs_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
