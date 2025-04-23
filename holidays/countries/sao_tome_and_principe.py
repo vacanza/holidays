@@ -84,6 +84,7 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         self._add_observed(self._add_holiday_sep_30(tr("Dia da Reforma Agrária")))
 
         if self._year >= 2019:
+            # São Tomé Day.
             self._add_observed(self._add_holiday_dec_21(tr("Dia de São Tomé")))
 
         # Christmas Day.
