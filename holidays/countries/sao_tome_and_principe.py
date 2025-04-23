@@ -23,7 +23,6 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
         * <https://www.timeanddate.com/holidays/sao-tome-and-principe/>
         * <https://www.saotomeexpert.pt/en/sao-tome-public-holidays/>
-        * <https://www.qppstudio.net/publicholidays2025/sao_tome_and_principe.htm>
     """
 
     country = "ST"
@@ -72,13 +71,13 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         # Martyrs' Day.
         self._add_observed(self._add_holiday_feb_3(tr("Dia dos Mártires")))
 
-        # Labor Day (May 1).
+        # Labor Day.
         self._add_observed(self._add_labor_day(tr("Dia do Trabalhador")))
 
         # Independence Day.
         self._add_observed(self._add_holiday_jul_12(tr("Dia da Independência")))
 
-        # Armed Forces Day (September 6).
+        # Armed Forces Day.
         self._add_observed(self._add_holiday_sep_6(tr("Dia das Forças Armadas")))
 
         # Agricultural Reform Day.

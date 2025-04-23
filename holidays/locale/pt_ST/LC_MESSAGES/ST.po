@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# São Tomé and Príncipe holidays.
+# Sao Tome and Principe holidays.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.71\n"
+"Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2025-04-22 01:37+0530\n"
 "PO-Revision-Date: 2025-04-22 01:37+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"

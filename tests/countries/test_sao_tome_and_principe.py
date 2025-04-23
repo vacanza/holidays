@@ -30,6 +30,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         fixed_dates = [
             ("01-01", "Ano Novo"),
             ("02-03", "Dia dos Mártires"),
+            ("01-04", "Dia do Rei Amador"),
             ("05-01", "Dia do Trabalhador"),
             ("07-12", "Dia da Independência"),
             ("09-06", "Dia das Forças Armadas"),
