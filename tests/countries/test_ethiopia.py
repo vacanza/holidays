@@ -35,12 +35,10 @@ class TestEthiopia(CommonCountryTests, TestCase):
         self.assertHolidayName("የገና ወይም የልደት በዓል", (f"{year}-01-07" for year in range(1976, 2050)))
 
     def test_ephiphany(self):
-        name = "የጥምቀት በዓል"
         self.assertHolidayName(
-            name, (f"{year}-01-19" for year in range(1976, 2050) if year % 4 != 0)
-        )
-        self.assertHolidayName(
-            name, (f"{year}-01-20" for year in range(1976, 2050) if year % 4 == 0)
+            "የጥምቀት በዓል",
+            (f"{year}-01-19" for year in range(1976, 2050) if year % 4 != 0),
+            (f"{year}-01-20" for year in range(1976, 2050) if year % 4 == 0),
         )
 
     def test_adwa_victory_day(self):
@@ -59,6 +57,7 @@ class TestEthiopia(CommonCountryTests, TestCase):
             "2022-04-22",
             "2023-04-14",
             "2024-05-03",
+            "2025-04-18",
         )
         self.assertHolidayName(name, range(1976, 2050))
 
@@ -73,16 +72,19 @@ class TestEthiopia(CommonCountryTests, TestCase):
             "2022-04-24",
             "2023-04-16",
             "2024-05-05",
+            "2025-04-20",
         )
         self.assertHolidayName(name, range(1976, 2050))
 
     def test_international_workers_day(self):
-        name = "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1976, 2050)))
+        self.assertHolidayName(
+            "የዓለም የሠራተኞች (የላብአደሮች) ቀን", (f"{year}-05-01" for year in range(1976, 2050))
+        )
 
     def test_ethiopian_patriots_victory_day(self):
-        name = "የአርበኞች (የድል) ቀን በዓል"
-        self.assertHolidayName(name, (f"{year}-05-05" for year in range(1976, 2050)))
+        self.assertHolidayName(
+            "የአርበኞች (የድል) ቀን በዓል", (f"{year}-05-05" for year in range(1976, 2050))
+        )
 
     def test_downfall_of_the_dergue_regime_day(self):
         name = "ደርግ የወደቀበት ቀን"
@@ -90,30 +92,25 @@ class TestEthiopia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1976, 1992))
 
     def test_ethiopian_new_year(self):
-        name = "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
         self.assertHolidayName(
-            name, (f"{year}-09-11" for year in range(1976, 2050) if year % 4 != 3)
-        )
-        self.assertHolidayName(
-            name, (f"{year}-09-12" for year in range(1976, 2050) if year % 4 == 3)
+            "የዘመን መለወጫ (እንቁጣጣሽ) በዓል",
+            (f"{year}-09-11" for year in range(1976, 2050) if year % 4 != 3),
+            (f"{year}-09-12" for year in range(1976, 2050) if year % 4 == 3),
         )
 
     def test_finding_of_true_cross(self):
-        name = "የመስቀል በዓል"
         self.assertHolidayName(
-            name, (f"{year}-09-27" for year in range(1976, 2050) if year % 4 != 3)
-        )
-        self.assertHolidayName(
-            name, (f"{year}-09-28" for year in range(1976, 2050) if year % 4 == 3)
+            "የመስቀል በዓል",
+            (f"{year}-09-27" for year in range(1976, 2050) if year % 4 != 3),
+            (f"{year}-09-28" for year in range(1976, 2050) if year % 4 == 3),
         )
 
     def test_popular_revolution_commemoration_day(self):
         name = "የአብዮት ቀን"
         self.assertHolidayName(
-            name, (f"{year}-09-12" for year in range(1976, 1991) if year % 4 != 3)
-        )
-        self.assertHolidayName(
-            name, (f"{year}-09-13" for year in range(1976, 1991) if year % 4 == 3)
+            name,
+            (f"{year}-09-12" for year in range(1976, 1991) if year % 4 != 3),
+            (f"{year}-09-13" for year in range(1976, 1991) if year % 4 == 3),
         )
         self.assertNoHolidayName(name, range(1991, 2050))
 

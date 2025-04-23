@@ -37,7 +37,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     default_language = "am"
     # %s (estimated).
     estimated_label = tr("%s (ግምት)")
-    # Negarit Gazeta ​Proclamation No. 16/1975
+    # Negarit Gazeta Proclamation No. 16/1975.
     start_year = 1976
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("am", "ar", "en_ET", "en_US")
