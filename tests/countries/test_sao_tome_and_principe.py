@@ -38,9 +38,8 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_king_amador_day(self):
-        for year in range(2014, 2050):
-            self.assertHolidayName("Dia do Rei Amador", f"{year}-01-04")
+    def test_day_of_king_amador(self):
+        self.assertHolidayName("Dia do Rei Amador", (f"{year}-01-04" for year in range(2014, 2050)))
 
     def test_martyrs_day(self):
         for year in range(2014, 2050):
