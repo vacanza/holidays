@@ -85,6 +85,7 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
 
         if self._year >= 2019:
             # São Tomé Day.
+            # São Tomé Day.
             self._add_observed(self._add_holiday_dec_21(tr("Dia de São Tomé")))
 
         # Christmas Day.
