@@ -63,7 +63,6 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # National holidays (observed everywhere)
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Ano Novo")))
 
@@ -82,11 +81,9 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         # Armed Forces Day (September 6).
         self._add_observed(self._add_holiday_sep_6(tr("Dia das Forças Armadas")))
 
-        # Agricultural Reform Day (September 30).
-        # Nationalization of plantations in 1975.
+        # Agricultural Reform Day.
         self._add_observed(self._add_holiday_sep_30(tr("Dia da Reforma Agrária")))
 
-        # São Tomé Day only from 2019 onwards.
         if self._year >= 2019:
             self._add_observed(self._add_holiday_dec_21(tr("Dia de São Tomé")))
 
