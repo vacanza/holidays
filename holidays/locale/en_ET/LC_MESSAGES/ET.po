@@ -10,21 +10,22 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Ethiopia holidays en_US localization.
+# Ethiopia holidays en_ET localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.72\n"
-"POT-Creation-Date: 2023-02-15 14:15-0800\n"
-"PO-Revision-Date: 2025-04-23 11:03+0700\n"
+"POT-Creation-Date: 2025-04-22 16:15+0700\n"
+"PO-Revision-Date: 2025-04-23 11:12+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: en_ET\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.15.0\n"
+"Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: am\n"
 
 #. %s (estimated).
 #, c-format
@@ -33,7 +34,7 @@ msgstr "%s (estimated)"
 
 #. Christmas Day.
 msgid "የገና ወይም የልደት በዓል"
-msgstr "Christmas Day"
+msgstr "Christmas Holiday"
 
 #. Epiphany.
 msgid "የጥምቀት በዓል"
@@ -49,7 +50,7 @@ msgstr "Good Friday"
 
 #. Easter Sunday.
 msgid "የትንሳኤ(ፋሲካ) በዓል"
-msgstr "Easter Sunday"
+msgstr "Easter"
 
 #. International Workers' Day.
 msgid "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
@@ -65,11 +66,11 @@ msgstr "Downfall of the Dergue Regime Day"
 
 #. Ethiopian New Year.
 msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
-msgstr "Ethiopian New Year"
+msgstr "New Year (Enkutatash)"
 
 #. Finding of True Cross.
 msgid "የመስቀል በዓል"
-msgstr "Finding of True Cross"
+msgstr "Meskel Holiday"
 
 #. Popular Revolution Commemoration Day.
 msgid "የአብዮት ቀን"
@@ -89,7 +90,7 @@ msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "የመውሊድ በዓል"
-msgstr "Prophet's Birthday"
+msgstr "Mawlid"
 
 #. Ethiopian Martyrs' Day.
 msgid "የሰማዕታት ቀን"
@@ -97,4 +98,4 @@ msgstr "Ethiopian Martyrs' Day"
 
 #. Nations, Nationalities and Peoples Day.
 msgid "የብሔር ብሔረሰቦች ቀን"
-msgstr "Nations, Nationalities and Peoples Day"
+msgstr "Ethiopian National Unity Day (Ethiopian Nations and Nationalities) Day"

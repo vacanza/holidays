@@ -501,8 +501,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ethiopia</td>
 <td>ET</td>
 <td></td>
-<td><strong>am</strong>, ar, en_US</td>
-<td></td>
+<td><strong>am</strong>, ar, en_ET, en_US</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Fiji</td>
