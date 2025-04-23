@@ -26,39 +26,40 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: pt_ST\n"
 
+#. %s (observed).
 #, c-format
 msgid "%s (observado)"
 msgstr ""
 
-#. National holidays (observed everywhere) New Year's Day.
+#. New Year's Day.
 msgid "Ano Novo"
 msgstr ""
 
-#. Day of King Amador (January 4). Commemorates King Amador, leader of 16th century slave
-#. rebellion.
+#. Day of King Amador.
 msgid "Dia do Rei Amador"
 msgstr ""
 
-#. Martyrs' Day (February 3). Commemorates the 1953 Batepá massacre.
+#. Martyrs' Day.
 msgid "Dia dos Mártires"
 msgstr ""
 
-#. Labor Day (May 1).
+#. Labor Day.
 msgid "Dia do Trabalhador"
 msgstr ""
 
-#. Independence Day (July 12). From Portugal in 1975.
+#. Independence Day.
 msgid "Dia da Independência"
 msgstr ""
 
-#. Armed Forces Day (September 6).
+#. Armed Forces Day.
 msgid "Dia das Forças Armadas"
 msgstr ""
 
-#. Agricultural Reform Day (September 30). Nationalization of plantations in 1975.
+#. Agricultural Reform Day.
 msgid "Dia da Reforma Agrária"
 msgstr ""
 
+#. São Tomé Day.
 msgid "Dia de São Tomé"
 msgstr ""
 
@@ -66,14 +67,14 @@ msgstr ""
 msgid "Natal"
 msgstr ""
 
-#. Discovery of Príncipe Island (January 17).
+#. Discovery of Príncipe Island.
 msgid "Descobrimento da Ilha do Príncipe"
 msgstr ""
 
-#. Autonomy Day (April 29). Príncipe gained autonomy in 1995.
+#. Autonomy Day.
 msgid "Dia da Autonomia do Príncipe"
 msgstr ""
 
-#. São Lourenço Day (August 15).
+#. São Lourenço Day.
 msgid "Dia de São Lourenço"
 msgstr ""
