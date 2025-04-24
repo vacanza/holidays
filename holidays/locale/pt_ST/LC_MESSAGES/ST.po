@@ -43,7 +43,7 @@ msgstr ""
 msgid "Dia dos Mártires"
 msgstr ""
 
-#. Labor Day.
+#. Worker's Day.
 msgid "Dia do Trabalhador"
 msgstr ""
 
