@@ -66,7 +66,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
 
     def test_armed_forces_day(self):
         name = "Dia das Forças Armadas"
-        self.assertHolidayName(name, (f"{year}-09-06" for year in range(2014, 2025)))
+        self.assertHolidayName(name, (f"{year}-09-06" for year in range(2014, 2050)))
         obs_dt = ("2020-09-07", "2025-09-05")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
