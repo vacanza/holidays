@@ -24,7 +24,6 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         * <https://visitsaotomeprincipe.st/pt/informacoes-uteis/feriados>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
         * <https://www.timeanddate.com/holidays/sao-tome-and-principe/>
-        * <https://www.saotomeexpert.pt/en/sao-tome-public-holidays/>
     """
 
     country = "ST"
