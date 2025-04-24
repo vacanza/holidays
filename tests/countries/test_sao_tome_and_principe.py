@@ -113,7 +113,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         obs_dt = ("2023-04-28")
         self.assertHolidayName(f"{name} (observado)", self.subdiv_p_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.subdiv_p_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(self.subdiv_p_holidays_observed, obs_dt)
 
     def test_sao_lorenco_day(self):
         name = "Dia de São Lourenço"
