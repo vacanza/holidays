@@ -46,7 +46,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     def test_martyrs_day(self):
         name = "Dia dos Mártires"
         self.assertHolidayName(name, (f"{year}-02-03" for year in range(2014, 2050)))
-        obs_dt = ("2024-02-02",)
+        obs_dt = ("2024-02-02")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -59,7 +59,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Dia da Independência"
-        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2014, 2025)))
+        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2014, 2050)))
         obs_dt = ("2020-07-13", "2025-07-11")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -74,7 +74,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     def test_agrarian_reform_day(self):
         name = "Dia da Reforma Agrária"
         self.assertHolidayName(name, (f"{year}-09-30" for year in range(2014, 2050)))
-        obs_dt = "2023-09-29"
+        obs_dt = ("2023-09-29")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -99,7 +99,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             name, self.subdiv_p_holidays, (f"{year}-01-17" for year in range(2014, 2050))
         )
         self.assertNoHolidayName(name)
-        obs_dt = "2021-01-18"
+        obs_dt = ("2021-01-18")
         self.assertHolidayName(f"{name} (observado)", self.subdiv_p_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.subdiv_p_holidays, obs_dt)
 
@@ -109,7 +109,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             name, self.subdiv_p_holidays, (f"{year}-04-29" for year in range(2014, 2050))
         )
         self.assertNoHolidayName(name)
-        obs_dt = "2023-04-28"
+        obs_dt = ("2023-04-28")
         self.assertHolidayName(f"{name} (observado)", self.subdiv_p_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.subdiv_p_holidays, obs_dt)
 
