@@ -124,7 +124,7 @@ uses: actions/checkout@v4
 ## Contributors
 
 In order to keep the list of contributors up to date, we encourage you add your name (in
-alphabetical order) to the [AUTHORS.md](https://github.com/vacanza/holidays/blob/dev/AUTHORS.md)
+alphabetical order) to the [CONTRIBUTORS](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTORS)
 file if it's not there yet. Thanks for your contribution!
 
 [![contributors](https://img.shields.io/github/contributors/vacanza/holidays)](https://github.com/vacanza/holidays/graphs/contributors)
