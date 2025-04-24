@@ -20,6 +20,8 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
     """São Tomé and Príncipe holidays.
 
     References:
+        * <https://web.archive.org/web/20190319201800/http://www.mnec.gov.st/index.php/o-pais?showall=1>
+        * <https://visitsaotomeprincipe.st/pt/informacoes-uteis/feriados>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
         * <https://www.timeanddate.com/holidays/sao-tome-and-principe/>
         * <https://www.saotomeexpert.pt/en/sao-tome-public-holidays/>
