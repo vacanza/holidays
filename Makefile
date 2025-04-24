@@ -21,7 +21,7 @@ clean:
 	@for ext in mo pot pyc; do \
 		find . -type f -name "*.$$ext" -delete; \
 	done
-	@rm -rf .mypy_cache .pytest_cache dist
+	@rm -rf .mypy_cache .pytest_cache dist .tox
 
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
