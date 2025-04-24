@@ -69,7 +69,7 @@ class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
             "Ngày Giỗ Tổ Hùng Vương",
             "2007-04-26",
             "2008-04-15",
-            "2009-04-05",
+            "2009-04-04",
             "2010-04-23",
             "2011-04-12",
             "2012-03-31",

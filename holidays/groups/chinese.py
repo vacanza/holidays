@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _ChineseLunisolar
+from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
 from holidays.calendars.gregorian import APR, DEC
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -23,8 +23,10 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
-        self._chinese_calendar = cls() if cls else _ChineseLunisolar()
+    def __init__(self, cls=None, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
+        self._chinese_calendar = (
+            cls(calendar=calendar) if cls else _ChineseLunisolar(calendar=calendar)
+        )
         self._chinese_calendar_show_estimated = show_estimated
 
     @property

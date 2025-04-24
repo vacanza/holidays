@@ -10,4 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-__version__ = "0.72"
+import unittest
+
+from holidays.calendars.chinese import _ChineseLunisolar
+
+
+class TestChineseLunisolarCalendar(unittest.TestCase):
+    def test_check_calendar(self):
+        self.assertRaises(ValueError, lambda: _ChineseLunisolar("INVALID_CALENDAR"))
