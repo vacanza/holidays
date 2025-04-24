@@ -22,7 +22,9 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         years = range(2014, 2050)
         super().setUpClass(SaoTomeAndPrincipe, years=years, years_non_observed=range(2014, 2050))
         cls.subdiv_p_holidays = SaoTomeAndPrincipe(subdiv="P", years=years)
-
+        cls.subdiv_p_holidays_observed = SaoTomeAndPrincipe(
+            subdiv="P", years=years, observed=False
+        )
     def test_country_aliases(self):
         self.assertAliases(SaoTomeAndPrincipe, ST, STP)
 
