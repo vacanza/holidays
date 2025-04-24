@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Ethiopia holidays en_ET localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.72\n"
+"POT-Creation-Date: 2025-04-22 16:15+0700\n"
+"PO-Revision-Date: 2025-04-23 11:12+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_ET\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: am\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (ግምት)"
+msgstr "%s (estimated)"
+
+#. Christmas Day.
+msgid "የገና ወይም የልደት በዓል"
+msgstr "Christmas Holiday"
+
+#. Epiphany.
+msgid "የጥምቀት በዓል"
+msgstr "Epiphany"
+
+#. Adwa Victory Day.
+msgid "የአድዋ ድል በዓል"
+msgstr "Adwa Victory Day"
+
+#. Good Friday.
+msgid "የስቅለት በዓል"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+msgid "የትንሳኤ(ፋሲካ) በዓል"
+msgstr "Easter"
+
+#. International Workers' Day.
+msgid "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
+msgstr "International Workers' Day"
+
+#. Ethiopian Patriots' Victory Day.
+msgid "የአርበኞች (የድል) ቀን በዓል"
+msgstr "Ethiopian Patriots' Victory Day"
+
+#. Downfall of the Dergue Regime Day.
+msgid "ደርግ የወደቀበት ቀን"
+msgstr "Downfall of the Dergue Regime Day"
+
+#. Ethiopian New Year.
+msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
+msgstr "New Year (Enkutatash)"
+
+#. Finding of True Cross.
+msgid "የመስቀል በዓል"
+msgstr "Meskel Holiday"
+
+#. Popular Revolution Commemoration Day.
+msgid "የአብዮት ቀን"
+msgstr "Popular Revolution Commemoration Day"
+
+#. October Revolution Day.
+msgid "የጥቅምት አብዮት ቀን"
+msgstr "October Revolution Day"
+
+#. Eid al-Fitr.
+msgid "የኢድ አልፈጥር"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "የኢድ አልአድሃ (አረፋ)"
+msgstr "Eid al-Adha"
+
+#. Prophet's Birthday.
+msgid "የመውሊድ በዓል"
+msgstr "Mawlid"
+
+#. Ethiopian Martyrs' Day.
+msgid "የሰማዕታት ቀን"
+msgstr "Ethiopian Martyrs' Day"
+
+#. Nations, Nationalities and Peoples Day.
+msgid "የብሔር ብሔረሰቦች ቀን"
+msgstr "Ethiopian National Unity Day (Ethiopian Nations and Nationalities) Day"

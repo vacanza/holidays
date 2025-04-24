@@ -14,7 +14,7 @@ import warnings
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomChineseHolidays
+from holidays.calendars.chinese import KOREAN_CALENDAR
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -87,7 +87,7 @@ class SouthKorea(
     start_year = 1948
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
+        ChineseCalendarHolidays.__init__(self, calendar=KOREAN_CALENDAR)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
@@ -213,7 +213,7 @@ class SouthKorea(
         # Christmas Day.
         append_observed(self._add_christmas_day(tr("기독탄신일")), 2023)
 
-        # Election Days since Sep 2006; excluding the 2017 Special Presidential Election Day.
+        # Election Days since Sep 2006; excluding the 2017, 2025 Special Presidential Election Day.
 
         # Based on Article 34 of the Public Official Election Act.
         # (1) The election day for each election to be held at the expiration of the term shall
@@ -238,23 +238,18 @@ class SouthKorea(
         elif self._year >= 2007 and (self._year - 2008) % 4 == 0:
             self._add_holiday_2nd_wed_of_apr(name)
 
-        if self._year >= 2007 and (self._year - 2007) % 5 == 0:
+        if self._year >= 2007:
             # Presidential Election Day.
             name = tr("대통령 선거일")
-
-            if self._year <= 2012:
-                self._add_holiday_3rd_wed_of_dec(name)
-            elif self._year >= 2022:
-                if (
-                    self._is_tuesday(mar_1)
-                    or self._is_wednesday(mar_1)
-                    or self._is_thursday(mar_1)
-                ):
+            if self._year <= 2024 and (self._year - 2007) % 5 == 0:
+                if self._year <= 2012:
+                    self._add_holiday_3rd_wed_of_dec(name)
+                elif self._year >= 2022:
                     # Moved as per Paragraph 2 of Article 34 due to conflict with
                     # Independence Movement Day (MAR, 1).
                     self._add_holiday_2nd_wed_of_mar(name)
-                else:
-                    self._add_holiday_1st_wed_of_mar(name)
+            elif self._year >= 2030 and (self._year - 2030) % 5 == 0:
+                self._add_holiday_1st_wed_of_apr(name)
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
             # Local Election Day.
@@ -292,34 +287,6 @@ class KR(SouthKorea):
 
 class KOR(SouthKorea):
     pass
-
-
-class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
-    BUDDHA_BIRTHDAY_DATES = {
-        1931: (MAY, 25),
-        1968: (MAY, 5),
-        2001: (MAY, 1),
-        2012: (MAY, 28),
-        2023: (MAY, 27),
-        2025: (MAY, 5),
-    }
-
-    LUNAR_NEW_YEAR_DATES = {
-        1916: (FEB, 4),
-        1944: (JAN, 26),
-        1954: (FEB, 4),
-        1958: (FEB, 19),
-        1966: (JAN, 22),
-        1988: (FEB, 18),
-        1997: (FEB, 8),
-        2027: (FEB, 7),
-        2028: (JAN, 27),
-    }
-
-    MID_AUTUMN_DATES = {
-        1942: (SEP, 25),
-        2040: (SEP, 21),
-    }
 
 
 class SouthKoreaStaticHolidays:
@@ -610,8 +577,12 @@ class SouthKoreaStaticHolidays:
         2023: (OCT, 2, temporary_public_holiday),
         # 76th Anniversary of the Armed Forces of Korea.
         2024: (OCT, 1, armed_forces_day),
-        # Added to create a 6-day long holiday period.
-        2025: (JAN, 27, temporary_public_holiday),
+        2025: (
+            # Added to create a 6-day long holiday period.
+            (JAN, 27, temporary_public_holiday),
+            # Special Presidential Election (21st) due to Yoon Seok-yeol's impeachment.
+            (JUN, 3, presidential_election_day),
+        ),
     }
     # Pre-2014 Alternate Holidays
     # https://namu.wiki/w/대체%20휴일%20제도#s-4.2.1

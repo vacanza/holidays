@@ -135,13 +135,13 @@ class _HinduLunisolar:
         1911: (NOV, 19),
         1912: (NOV, 7),
         1913: (OCT, 27),
-        1914: (NOV, 15),
+        1914: (NOV, 16),
         1915: (NOV, 5),
         1916: (OCT, 25),
         1917: (NOV, 13),
         1918: (NOV, 2),
         1919: (NOV, 20),
-        1920: (NOV, 8),
+        1920: (NOV, 9),
         1921: (OCT, 29),
         1922: (NOV, 17),
         1923: (NOV, 6),
@@ -321,6 +321,7 @@ class _HinduLunisolar:
         2097: (NOV, 2),
         2098: (OCT, 22),
         2099: (NOV, 10),
+        2100: (OCT, 31),
     }
 
     # https://www.timeanddate.com/holidays/india/diwali
@@ -1181,6 +1182,7 @@ class _HinduLunisolar:
         2097: (FEB, 27),
         2098: (FEB, 16),
         2099: (JAN, 6),
+        2100: (FEB, 24),
     }
 
     # https://www.timeanddate.com/holidays/india/vaisakhi

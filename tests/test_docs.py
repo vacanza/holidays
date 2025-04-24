@@ -25,6 +25,25 @@ from holidays import (
 from holidays.constants import PUBLIC
 
 
+class TestAuthors(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.content = Path("AUTHORS.md").read_text(encoding="UTF-8").strip().split("\n")
+        super().setUpClass()
+
+    def test_header(self):
+        self.assertEqual(self.content[0], "# Holidays Authors")
+
+    def test_authors_list(self):
+        authors = self.content[1:]
+        self.assertEqual(
+            authors,
+            sorted(authors),
+            "Contributors list should be sorted alphabetically.\n"
+            + "\n".join((f"{c} != {s}" for c, s in zip(authors, sorted(authors)) if c != s)),
+        )
+
+
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):

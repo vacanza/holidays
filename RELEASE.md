@@ -40,8 +40,6 @@
   - check <https://pypi.org/project/holidays/> package page -- it should have the current
     version and the released date updated
 - Finish the process with the following post-release actions:
-  - send "Holidays 'v<version>' has been released!" (or similar) message to Vacanza Team
-    Slack #release channel
   - pull the recent changes from `main` branch into `dev`
   - bump the Holidays version at `holidays/version.py` file
   - create a commit with 'Initialize v<version>' message, e.g. 'Initialize v0.40' and

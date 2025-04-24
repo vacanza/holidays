@@ -68,6 +68,7 @@ from .ethiopia import Ethiopia, ET, ETH
 from .fiji import Fiji, FJ, FJI
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .french_southern_territories import FrenchSouthernTerritories, TF, ATF, HolidaysTF
 from .gabon import Gabon, GA, GAB
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
@@ -127,6 +128,7 @@ from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from .norway import Norway, NO, NOR
+from .oman import Oman, OM, OMN
 from .pakistan import Pakistan, PK, PAK
 from .palau import Palau, PW, PLW
 from .panama import Panama, PA, PAN
@@ -147,6 +149,7 @@ from .san_marino import SanMarino, SM, SMR
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .seychelles import Seychelles, SC, SYC
+from .sierra_leone import SierraLeone, SL, SLE
 from .singapore import Singapore, SG, SGP
 from .slovakia import Slovakia, SK, SVK
 from .slovenia import Slovenia, SI, SVN
@@ -154,6 +157,7 @@ from .south_africa import SouthAfrica, ZA, ZAF
 from .south_korea import SouthKorea, KR, KOR, Korea
 from .spain import Spain, ES, ESP
 from .sri_lanka import SriLanka, LK, LKA
+from .suriname import Suriname, SR, SUR
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
