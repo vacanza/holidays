@@ -75,7 +75,7 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         # Martyrs' Day.
         self._add_observed(self._add_holiday_feb_3(tr("Dia dos Mártires")))
 
-        # Labor Day.
+        # Worker's Day.
         self._add_observed(self._add_labor_day(tr("Dia do Trabalhador")))
 
         # Independence Day.
