@@ -21,7 +21,6 @@ class TestAland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysAX)
-        cls.unofficial_holidays = HolidaysAX(categories=UNOFFICIAL, years=range(1921, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysAX, Aland, AX, ALA)
