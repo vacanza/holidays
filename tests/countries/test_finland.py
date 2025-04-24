@@ -302,7 +302,7 @@ class TestFinland(CommonCountryTests, TestCase):
             name, subdiv_01_public_holidays, (f"{year}-06-09" for year in range(1993, 2050))
         )
         self.assertNoHolidayName(name, subdiv_01_public_holidays, range(1853, 1993))
-        self.assertNoHolidayName(name, range(1853, 2050))
+        self.assertNoHolidayName(name)
 
     def test_unofficial_holidays(self):
         self.assertHolidays(
