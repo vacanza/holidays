@@ -39,9 +39,9 @@ msgstr "Day of King Amador"
 msgid "Dia dos Mártires"
 msgstr "Martyrs' Day"
 
-#. Labor Day.
+#. Worker's Day.
 msgid "Dia do Trabalhador"
-msgstr "Labor Day"
+msgstr "Worker's Day"
 
 #. Independence Day.
 msgid "Dia da Independência"
