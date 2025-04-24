@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Sao Tome and Principe holidays en_US localization.
+# São Tomé and Príncipe holidays en_US localization.
 #
 msgid ""
 msgstr ""
