@@ -79,7 +79,6 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
-        # self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1996))
 
     def test_indian_arrival_day(self):
@@ -167,7 +166,6 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2022-12-26",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
-        # self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -258,6 +256,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-04-10", "Eid-Ul-Fitr"),
             ("2024-05-30", "Corpus Christi; Indian Arrival Day"),
+            ("2024-05-31", "Corpus Christi (observed); Indian Arrival Day (observed)"),
             ("2024-06-19", "Labour Day"),
             ("2024-08-01", "African Emancipation Day"),
             ("2024-08-31", "Independence Day"),
@@ -277,6 +276,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
             ("2025-06-19", "Corpus Christi; Labour Day"),
+            ("2025-06-20", "Corpus Christi (observed); Labour Day (observed)"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-01", "Independence Day (observed)"),
@@ -297,6 +297,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
             ("2025-06-19", "Corpus Christi; Labour Day"),
+            ("2025-06-20", "Corpus Christi (observed); Labour Day (observed)"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-01", "Independence Day (observed)"),
@@ -318,6 +319,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
             ("2025-06-19", "Corpus Christi; Labor Day"),
+            ("2025-06-20", "Corpus Christi (observed); Labour Day (observed)"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-01", "Independence Day (observed)"),

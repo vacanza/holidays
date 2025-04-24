@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
@@ -78,56 +79,109 @@ class TrinidadAndTobago(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        def track_holidays(dt: date, name: str) -> None:
+            if dt not in _holidays:
+                _holidays[dt] = []
+            _holidays[dt].append(name)
+
         dts_observed = set()
+        _holidays: dict[date, list[str]] = {}
 
         # New Year's Day.
-        dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
+        name = tr("New Year's Day")
+        dt = self._add_new_years_day(name)
+        track_holidays(dt, name)
+        dts_observed.add(dt)
 
         # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
+        name = tr("Good Friday")
+        dt = self._add_good_friday(name)
+        track_holidays(dt, name)
 
         # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
+        name = tr("Easter Monday")
+        dt = self._add_easter_monday(name)
+        track_holidays(dt, name)
 
         if self._year >= 1996:
             # Spiritual Baptist Liberation Day.
-            dts_observed.add(self._add_holiday_mar_30(tr("Spiritual Baptist Liberation Day")))
+            name = tr("Spiritual Baptist Liberation Day")
+            dt = self._add_holiday_mar_30(name)
+            track_holidays(dt, name)
+            dts_observed.add(dt)
 
             # Indian Arrival Day.
-            dts_observed.add(self._add_holiday_may_30(tr("Indian Arrival Day")))
+            name = tr("Indian Arrival Day")
+            dt = self._add_holiday_may_30(name)
+            track_holidays(dt, name)
+            dts_observed.add(dt)
 
         # Corpus Christi.
-        self._add_corpus_christi_day(tr("Corpus Christi"))
+        name = tr("Corpus Christi")
+        dt = self._add_corpus_christi_day(name)
+        track_holidays(dt, name)
 
         if self._year >= 1973:
             # Labor Day.
-            dts_observed.add(self._add_holiday_jun_19(tr("Labour Day")))
+            name = tr("Labour Day")
+            dt = self._add_holiday_jun_19(name)
+            track_holidays(dt, name)
+            dts_observed.add(dt)
 
         if self._year >= 1985:
             # African Emancipation Day.
-            dts_observed.add(self._add_holiday_aug_1(tr("African Emancipation Day")))
+            name = tr("African Emancipation Day")
+            dt = self._add_holiday_aug_1(name)
+            track_holidays(dt, name)
+            dts_observed.add(dt)
 
         # Independence Day.
-        dts_observed.add(self._add_holiday_aug_31(tr("Independence Day")))
+        name = tr("Independence Day")
+        dt = self._add_holiday_aug_31(name)
+        track_holidays(dt, name)
+        dts_observed.add(dt)
 
         if self._year >= 1976:
             # Republic Day.
-            dts_observed.add(self._add_holiday_sep_24(tr("Republic Day")))
+            name = tr("Republic Day")
+            dt = self._add_holiday_sep_24(name)
+            track_holidays(dt, name)
+            dts_observed.add(dt)
 
         # Diwali.
-        dts_observed.add(self._add_diwali(tr("Divali")))
+        name = tr("Divali")
+        dt = self._add_diwali(name)
+        track_holidays(dt, name)
+        dts_observed.add(dt)
 
         # Christmas Day.
-        dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
+        name = tr("Christmas Day")
+        dt = self._add_christmas_day(name)
+        track_holidays(dt, name)
+        dts_observed.add(dt)
 
         # Boxing Day.
-        dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
+        name = tr("Boxing Day")
+        dt = self._add_christmas_day_two(name)
+        track_holidays(dt, name)
+        dts_observed.add(dt)
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("Eid-Ul-Fitr")))
+        name = tr("Eid-Ul-Fitr")
+        dts = self._add_eid_al_fitr_day(name)
+        for dt in dts:
+            track_holidays(dt, name)
+        dts_observed.update(dts)
 
         if self.observed:
             self._populate_observed(dts_observed)
+
+            # Overlapping holidays get observed on next workday
+            for dt, names in _holidays.items():
+                if len(names) > 1:
+                    next_day = self._get_next_workday(dt)
+                    for name in names:
+                        self._add_holiday(f"{name} (observed)", next_day)
 
     def _populate_optional_holidays(self):
         # Carnival Monday.
