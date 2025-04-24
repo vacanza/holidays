@@ -63,7 +63,9 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("Ano Novo")))
+        name = tr("Ano Novo")
+        self._add_observed(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name=name, rule=SAT_TO_PREV_FRI)
 
         # Day of King Amador.
         self._add_observed(self._add_holiday_jan_4(tr("Dia do Rei Amador")))
