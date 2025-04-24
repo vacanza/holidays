@@ -48,7 +48,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     def test_martyrs_day(self):
         name = "Dia dos Mártires"
         self.assertHolidayName(name, (f"{year}-02-03" for year in range(2014, 2050)))
-        obs_dt = ("2024-02-02")
+        obs_dt = ("2024-02-02",)
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
