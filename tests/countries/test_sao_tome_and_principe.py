@@ -25,6 +25,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
         cls.subdiv_p_holidays_observed = SaoTomeAndPrincipe(
             subdiv="P", years=years, observed=False
         )
+
     def test_country_aliases(self):
         self.assertAliases(SaoTomeAndPrincipe, ST, STP)
 
