@@ -77,7 +77,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     def test_agrarian_reform_day(self):
         name = "Dia da Reforma Agrária"
         self.assertHolidayName(name, (f"{year}-09-30" for year in range(2014, 2050)))
-        obs_dt = ("2023-09-29")
+        obs_dt = ("2023-09-29",)
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
