@@ -20,7 +20,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(2014, 2050)
-        super().setUpClass(SaoTomeAndPrincipe, years=years, years_non_observed=range(2020, 2050))
+        super().setUpClass(SaoTomeAndPrincipe, years=years, years_non_observed=range(2014, 2050))
         cls.subdiv_p_holidays = SaoTomeAndPrincipe(subdiv="P", years=years)
 
     def test_country_aliases(self):
