@@ -102,7 +102,7 @@ class TestSaoTomeAndPrincipe(CommonCountryTests, TestCase):
             name, self.subdiv_p_holidays, (f"{year}-01-17" for year in range(2014, 2050))
         )
         self.assertNoHolidayName(name)
-        obs_dt = ("2021-01-18")
+        obs_dt = ("2021-01-18",)
         self.assertHolidayName(f"{name} (observado)", self.subdiv_p_holidays, obs_dt)
         self.assertNoNonObservedHoliday(self.subdiv_p_holidays_observed, obs_dt)
 
