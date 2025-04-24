@@ -17,7 +17,7 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON,
 
 
 class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """São Tomé and Príncipe holidays.
+    """Sao Tome and Principe holidays.
 
     References:
         * <https://web.archive.org/web/20190319201800/http://www.mnec.gov.st/index.php/o-pais?showall=1>
