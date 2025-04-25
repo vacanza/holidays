@@ -146,6 +146,7 @@ from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from .saint_lucia import SaintLucia, LC, LCA
 from .samoa import Samoa, WS, WSM
 from .san_marino import SanMarino, SM, SMR
+from .sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .seychelles import Seychelles, SC, SYC
