@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -153,6 +153,7 @@ COUNTRIES: RegistryDict = {
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "samoa": ("Samoa", "WS", "WSM"),
     "san_marino": ("SanMarino", "SM", "SMR"),
+    "sao_tome_and_principe": ("SaoTomeAndPrincipe", "ST", "STP"),
     "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
     "serbia": ("Serbia", "RS", "SRB"),
     "seychelles": ("Seychelles", "SC", "SYC"),

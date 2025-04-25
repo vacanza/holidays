@@ -1,0 +1,81 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Sao Tome and Principe holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.72\n"
+"POT-Creation-Date: 2025-04-22 01:37+0530\n"
+"PO-Revision-Date: 2025-04-22 16:36+0530\n"
+"Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: pt_ST\n"
+
+#. New Year's Day.
+msgid "Ano Novo"
+msgstr "New Year's Day"
+
+#. Day of King Amador.
+msgid "Dia do Rei Amador"
+msgstr "Day of King Amador"
+
+#. Martyrs' Day.
+msgid "Dia dos Mártires"
+msgstr "Martyrs' Day"
+
+#. Worker's Day.
+msgid "Dia do Trabalhador"
+msgstr "Worker's Day"
+
+#. Independence Day.
+msgid "Dia da Independência"
+msgstr "Independence Day"
+
+#. Armed Forces Day.
+msgid "Dia das Forças Armadas"
+msgstr "Armed Forces Day"
+
+#. Agricultural Reform Day.
+msgid "Dia da Reforma Agrária"
+msgstr "Agricultural Reform Day"
+
+#. São Tomé Day.
+msgid "Dia de São Tomé"
+msgstr "São Tomé Day"
+
+#. Christmas Day.
+msgid "Natal"
+msgstr "Christmas Day"
+
+#. Discovery of Príncipe Island.
+msgid "Descobrimento da Ilha do Príncipe"
+msgstr "Discovery of Príncipe Island"
+
+#. Autonomy Day.
+msgid "Dia da Autonomia do Príncipe"
+msgstr "Autonomy Day"
+
+#. São Lourenço Day.
+msgid "Dia de São Lourenço"
+msgstr "São Lourenço Day"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observado)"
+msgstr "%s (observed)"

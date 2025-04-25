@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -28,11 +28,8 @@ from holidays.constants import PUBLIC
 class TestAuthors(TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.content = Path("AUTHORS.md").read_text(encoding="UTF-8").strip().split("\n")
+        cls.content = Path("CONTRIBUTORS").read_text(encoding="UTF-8").strip().split("\n")
         super().setUpClass()
-
-    def test_header(self):
-        self.assertEqual(self.content[0], "# Holidays Authors")
 
     def test_authors_list(self):
         authors = self.content[1:]

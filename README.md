@@ -1073,6 +1073,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Sao Tome and Principe</td>
+<td>ST</td>
+<td>Districts and Autonomous Region: 01 (Água Grande), 02 (Cantagalo), 03 (Caué), 04 (Lembá), 05 (Lobata), 06 (Mé-Zóchi), P (Príncipe)</td>
+<td>en_US, <strong>pt_ST</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
