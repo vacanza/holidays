@@ -2,6 +2,7 @@
 name = "holidays"
 description = "Open World Holidays Framework"
 license = "MIT"
+license-files = ["CONTRIBUTORS", "LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 dynamic = ["version"]
