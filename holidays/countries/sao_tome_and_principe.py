@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SAT_TO_PREV_FRI
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
 class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
