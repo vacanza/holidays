@@ -14,30 +14,17 @@
 #
 msgid ""
 msgstr ""
-<<<<<<< HEAD
 "Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2023-02-15 14:15-0800\n"
 "PO-Revision-Date: 2025-04-23 11:03+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-=======
-"Project-Id-Version: Holidays 0.44\n"
-"POT-Creation-Date: 2023-02-15 14:15-0800\n"
-"PO-Revision-Date: 2024-02-27 14:49+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-<<<<<<< HEAD
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
-=======
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
 #. %s (estimated).
 #, c-format
@@ -45,7 +32,6 @@ msgid "%s (ግምት)"
 msgstr "%s (estimated)"
 
 #. Christmas Day.
-<<<<<<< HEAD
 msgid "የገና ወይም የልደት በዓል"
 msgstr "Christmas Day"
 
@@ -88,57 +74,12 @@ msgstr "Finding of True Cross"
 #. Popular Revolution Commemoration Day.
 msgid "የአብዮት ቀን"
 msgstr "Popular Revolution Commemoration Day"
-=======
-msgid "ገና"
-msgstr "Christmas Day"
-
-#. Epiphany.
-msgid "ጥምቀት"
-msgstr "Epiphany Day"
-
-#. Adwa Victory Day.
-msgid "አድዋ"
-msgstr "Adwa Victory Day"
-
-#. Good Friday.
-msgid "ስቅለት"
-msgstr "Good Friday"
-
-#. Easter Sunday.
-msgid "ፋሲካ"
-msgstr "Easter Sunday"
-
-#. Workers' Day.
-msgid "የሰራተኞች ቀን"
-msgstr "Workers' Day"
-
-#. Patriots' Day.
-msgid "የአርበኞች ቀን"
-msgstr "Patriots' Day"
-
-#. Downfall of Dergue Regime Day.
-msgid "ደርግ የወደቀበት ቀን"
-msgstr "Downfall of Dergue Regime Day"
-
-#. Ethiopian New Year.
-msgid "እንቁጣጣሽ"
-msgstr "Ethiopian New Year"
-
-#. Finding of True Cross.
-msgid "መስቀል"
-msgstr "Finding of True Cross"
-
-#. Revolution Day.
-msgid "የአብዮት ቀን"
-msgstr "Revolution Day"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
 #. October Revolution Day.
 msgid "የጥቅምት አብዮት ቀን"
 msgstr "October Revolution Day"
 
 #. Eid al-Fitr.
-<<<<<<< HEAD
 msgid "የኢድ አልፈጥር"
 msgstr "Eid al-Fitr"
 
@@ -157,15 +98,3 @@ msgstr "Ethiopian Martyrs' Day"
 #. Nations, Nationalities and Peoples Day.
 msgid "የብሔር ብሔረሰቦች ቀን"
 msgstr "Nations, Nationalities and Peoples Day"
-=======
-msgid "ኢድ አልፈጥር"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "አረፋ"
-msgstr "Eid al-Adha"
-
-#. Prophet's Birthday.
-msgid "መውሊድ"
-msgstr "Prophet's Birthday"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)

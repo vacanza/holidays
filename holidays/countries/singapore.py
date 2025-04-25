@@ -307,13 +307,9 @@ class SingaporeStaticHolidays:
 
     References:
         * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
-<<<<<<< HEAD
         * <https://www.mom.gov.sg/newsroom/press-releases/2020/0624-public-holiday-on-polling-day---10-july-2020>
         * <https://www.mom.gov.sg/newsroom/press-releases/2023/0822-public-holiday-on-polling-day---1-sep-2023>
         * <https://www.mom.gov.sg/newsroom/press-releases/2025/0415-public-holiday-on-polling-day_3-may-2025>
-=======
-        * <https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22>
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     """
 
     # Polling Day.
@@ -330,10 +326,7 @@ class SingaporeStaticHolidays:
         ),
         2020: (JUL, 10, polling_day_name),
         2023: (SEP, 1, polling_day_name),
-<<<<<<< HEAD
         2025: (MAY, 3, polling_day_name),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     special_public_holidays_observed = {

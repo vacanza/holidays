@@ -186,10 +186,7 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2025-03-31", "Hari Raya Puasa"),
             ("2025-04-18", "Good Friday"),
             ("2025-05-01", "Labour Day"),
-<<<<<<< HEAD
             ("2025-05-03", "Polling Day"),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
             ("2025-05-12", "Vesak Day"),
             ("2025-06-07", "Hari Raya Haji"),
             ("2025-08-09", "National Day"),
@@ -201,7 +198,6 @@ class TestSingapore(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday("2023-01-02")
 
     def test_special_holidays(self):
-<<<<<<< HEAD
         self.assertHoliday(
             "2001-11-03",
             "2006-05-06",
@@ -212,9 +208,6 @@ class TestSingapore(CommonCountryTests, TestCase):
             "2023-09-01",
             "2025-05-03",
         )
-=======
-        self.assertHoliday("2015-08-07")
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

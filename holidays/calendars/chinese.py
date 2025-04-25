@@ -16,13 +16,10 @@ from typing import Optional
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
 
-<<<<<<< HEAD
 CHINESE_CALENDAR = "CHINESE_CALENDAR"
 KOREAN_CALENDAR = "KOREAN_CALENDAR"
 VIETNAMESE_CALENDAR = "VIETNAMESE_CALENDAR"
 
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 BUDDHA_BIRTHDAY = "BUDDHA_BIRTHDAY"
 DOUBLE_NINTH = "DOUBLE_NINTH"
 DRAGON_BOAT = "DRAGON_BOAT"
@@ -232,10 +229,7 @@ class _ChineseLunisolar:
         2097: (MAY, 19),
         2098: (MAY, 8),
         2099: (MAY, 27),
-<<<<<<< HEAD
         2100: (MAY, 16),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     DOUBLE_NINTH_DATES = {
@@ -438,10 +432,7 @@ class _ChineseLunisolar:
         2097: (OCT, 13),
         2098: (OCT, 3),
         2099: (OCT, 22),
-<<<<<<< HEAD
         2100: (OCT, 12),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     DRAGON_BOAT_DATES = {
@@ -644,10 +635,7 @@ class _ChineseLunisolar:
         2097: (JUN, 14),
         2098: (JUN, 4),
         2099: (JUN, 23),
-<<<<<<< HEAD
         2100: (JUN, 12),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     HUNG_KINGS_DATES = {
@@ -850,10 +838,7 @@ class _ChineseLunisolar:
         2097: (APR, 21),
         2098: (APR, 11),
         2099: (APR, 29),
-<<<<<<< HEAD
         2100: (APR, 19),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     LUNAR_NEW_YEAR_DATES = {
@@ -872,11 +857,7 @@ class _ChineseLunisolar:
         1913: (FEB, 6),
         1914: (JAN, 26),
         1915: (FEB, 14),
-<<<<<<< HEAD
         1916: (FEB, 4),
-=======
-        1916: (FEB, 3),
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
         1917: (JAN, 23),
         1918: (FEB, 11),
         1919: (FEB, 1),
@@ -1060,10 +1041,7 @@ class _ChineseLunisolar:
         2097: (FEB, 12),
         2098: (FEB, 1),
         2099: (JAN, 21),
-<<<<<<< HEAD
         2100: (FEB, 9),
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
     }
 
     MID_AUTUMN_DATES = {
@@ -1255,11 +1233,7 @@ class _ChineseLunisolar:
         2086: (SEP, 22),
         2087: (SEP, 11),
         2088: (SEP, 29),
-<<<<<<< HEAD
         2089: (SEP, 18),
-=======
-        2089: (SEP, 19),
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
         2090: (SEP, 8),
         2091: (SEP, 27),
         2092: (SEP, 16),
@@ -1270,7 +1244,6 @@ class _ChineseLunisolar:
         2097: (SEP, 20),
         2098: (SEP, 9),
         2099: (SEP, 29),
-<<<<<<< HEAD
         2100: (SEP, 18),
     }
 
@@ -1360,18 +1333,6 @@ class _ChineseLunisolar:
 
     def buddha_birthday_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
         return self._get_holiday(BUDDHA_BIRTHDAY, year, calendar)
-=======
-    }
-
-    def _get_holiday(self, holiday: str, year: int) -> tuple[Optional[date], bool]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        dt = exact_dates.get(year, estimated_dates.get(year, ()))
-        return date(year, *dt) if dt else None, year not in exact_dates
-
-    def buddha_birthday_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(BUDDHA_BIRTHDAY, year)
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
     def double_ninth_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DOUBLE_NINTH, year)
@@ -1379,7 +1340,6 @@ class _ChineseLunisolar:
     def dragon_boat_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(DRAGON_BOAT, year)
 
-<<<<<<< HEAD
     def hung_kings_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
         return self._get_holiday(HUNG_KINGS, year, calendar)
 
@@ -1388,16 +1348,6 @@ class _ChineseLunisolar:
 
     def mid_autumn_date(self, year: int, calendar=None) -> tuple[Optional[date], bool]:
         return self._get_holiday(MID_AUTUMN, year, calendar)
-=======
-    def hung_kings_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(HUNG_KINGS, year)
-
-    def lunar_new_year_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(LUNAR_NEW_YEAR, year)
-
-    def mid_autumn_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(MID_AUTUMN, year)
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
 
 class _CustomChineseHolidays(_CustomCalendar, _ChineseLunisolar):

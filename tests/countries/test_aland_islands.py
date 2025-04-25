@@ -21,10 +21,6 @@ class TestAland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysAX)
-<<<<<<< HEAD
-=======
-        cls.unofficial_holidays = HolidaysAX(categories=UNOFFICIAL, years=range(1921, 2050))
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysAX, Aland, AX, ALA)
@@ -35,11 +31,7 @@ class TestAland(CommonCountryTests, TestCase):
     def test_alands_autonomy_day(self):
         name = "Ålands självstyrelsedag"
         self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, 2050)))
-<<<<<<< HEAD
         self.assertNoHolidayName(name, range(1921, 1993))
-=======
-        self.assertNoHolidayName(name, range(1853, 1993))
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

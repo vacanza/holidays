@@ -25,7 +25,6 @@ from holidays import (
 from holidays.constants import PUBLIC
 
 
-<<<<<<< HEAD
 class TestAuthors(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -45,8 +44,6 @@ class TestAuthors(TestCase):
         )
 
 
-=======
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):

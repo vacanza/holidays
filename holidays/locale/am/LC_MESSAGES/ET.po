@@ -14,28 +14,17 @@
 #
 msgid ""
 msgstr ""
-<<<<<<< HEAD
 "Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2023-02-15 14:15-0800\n"
 "PO-Revision-Date: 2025-04-23 11:02+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
-=======
-"Project-Id-Version: Holidays 0.44\n"
-"POT-Creation-Date: 2023-02-15 14:15-0800\n"
-"PO-Revision-Date: 2024-02-27 14:46+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 "Language-Team: Holidays Localization Team\n"
 "Language: am\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-<<<<<<< HEAD
 "X-Generator: Poedit 3.6\n"
-=======
-"X-Generator: Poedit 3.4.2\n"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 
 #. %s (estimated).
 #, c-format
@@ -43,7 +32,6 @@ msgid "%s (ግምት)"
 msgstr ""
 
 #. Christmas Day.
-<<<<<<< HEAD
 msgid "የገና ወይም የልደት በዓል"
 msgstr ""
 
@@ -72,41 +60,10 @@ msgid "የአርበኞች (የድል) ቀን በዓል"
 msgstr ""
 
 #. Downfall of the Dergue Regime Day.
-=======
-msgid "ገና"
-msgstr ""
-
-#. Epiphany.
-msgid "ጥምቀት"
-msgstr ""
-
-#. Adwa Victory Day.
-msgid "አድዋ"
-msgstr ""
-
-#. Good Friday.
-msgid "ስቅለት"
-msgstr ""
-
-#. Easter Sunday.
-msgid "ፋሲካ"
-msgstr ""
-
-#. Workers' Day.
-msgid "የሰራተኞች ቀን"
-msgstr ""
-
-#. Patriots' Day.
-msgid "የአርበኞች ቀን"
-msgstr ""
-
-#. Downfall of Dergue Regime Day.
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 msgid "ደርግ የወደቀበት ቀን"
 msgstr ""
 
 #. Ethiopian New Year.
-<<<<<<< HEAD
 msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
 msgstr ""
 
@@ -115,16 +72,6 @@ msgid "የመስቀል በዓል"
 msgstr ""
 
 #. Popular Revolution Commemoration Day.
-=======
-msgid "እንቁጣጣሽ"
-msgstr ""
-
-#. Finding of True Cross.
-msgid "መስቀል"
-msgstr ""
-
-#. Revolution Day.
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 msgid "የአብዮት ቀን"
 msgstr ""
 
@@ -133,7 +80,6 @@ msgid "የጥቅምት አብዮት ቀን"
 msgstr ""
 
 #. Eid al-Fitr.
-<<<<<<< HEAD
 msgid "የኢድ አልፈጥር"
 msgstr ""
 
@@ -151,15 +97,4 @@ msgstr ""
 
 #. Nations, Nationalities and Peoples Day.
 msgid "የብሔር ብሔረሰቦች ቀን"
-=======
-msgid "ኢድ አልፈጥር"
-msgstr ""
-
-#. Eid al-Adha.
-msgid "አረፋ"
-msgstr ""
-
-#. Prophet's Birthday.
-msgid "መውሊድ"
->>>>>>> 7ee519e2 (WIP: recuperando alterações locais antes do merge)
 msgstr ""

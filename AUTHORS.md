@@ -1,5 +1,4 @@
 # Holidays Authors
-
 Aaron Picht
 Aart Goossens
 Abdelkhalek Boukli Hacene
