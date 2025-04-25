@@ -31,6 +31,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://intermin.fi/en/flag-and-arms/flag-days/2024>
         * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
         * <https://en.wikipedia.org/wiki/Åland%27s_Autonomy_Day>
+        * <https://wiki.aineetonkulttuuriperinto.fi/wiki/Workers%E2%80%99_Labour_Day_on_May_1?>
     """
 
     country = "FI"
@@ -70,8 +71,9 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Toinen pääsiäispäivä"))
 
-        # May Day.
-        self._add_holiday_may_1(tr("Vappu"))
+        if self._year >= 1944:
+            # May Day.
+            self._add_holiday_may_1(tr("Vappu"))
 
         # Ascension Day.
         name = tr("Helatorstai")
