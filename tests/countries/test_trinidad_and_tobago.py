@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -76,7 +76,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2003-03-31",
             "2008-03-31",
             "2014-03-31",
-            "2025-03-31",
+            "2025-04-01",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
         self.assertNoHolidayName(name, range(1963, 1996))
@@ -160,10 +160,10 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1963, 2050)))
         dt = (
-            "2005-12-26",
-            "2011-12-26",
-            "2016-12-26",
-            "2022-12-26",
+            "2005-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2022-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
 
@@ -271,7 +271,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             TrinidadAndTobago(years=2025),
             ("2025-01-01", "New Year's Day"),
             ("2025-03-30", "Spiritual Baptist Liberation Day"),
-            ("2025-03-31", "Eid-Ul-Fitr; Spiritual Baptist Liberation Day (observed)"),
+            ("2025-03-31", "Eid-Ul-Fitr"),
+            ("2025-04-01", "Spiritual Baptist Liberation Day (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
@@ -292,7 +293,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
             ("2025-03-30", "Spiritual Baptist Liberation Day"),
-            ("2025-03-31", "Eid-Ul-Fitr; Spiritual Baptist Liberation Day (observed)"),
+            ("2025-03-31", "Eid-Ul-Fitr"),
+            ("2025-04-01", "Spiritual Baptist Liberation Day (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
@@ -314,12 +316,13 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             ("2025-03-03", "Carnival Monday"),
             ("2025-03-04", "Carnival Tuesday"),
             ("2025-03-30", "Spiritual Baptist Liberation Day"),
-            ("2025-03-31", "Eid al-Fitr; Spiritual Baptist Liberation Day (observed)"),
+            ("2025-03-31", "Eid al-Fitr"),
+            ("2025-04-01", "Spiritual Baptist Liberation Day (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-30", "Indian Arrival Day"),
             ("2025-06-19", "Corpus Christi; Labor Day"),
-            ("2025-06-20", "Corpus Christi (observed); Labour Day (observed)"),
+            ("2025-06-20", "Corpus Christi (observed); Labor Day (observed)"),
             ("2025-08-01", "African Emancipation Day"),
             ("2025-08-31", "Independence Day"),
             ("2025-09-01", "Independence Day (observed)"),
