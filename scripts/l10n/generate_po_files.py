@@ -69,9 +69,6 @@ class POGenerator:
         pot_path = locale_path / "pot"
         pot_path.mkdir(exist_ok=True)
         for entity_code in sorted(entity_code_info_mapping.keys()):
-            # [Temp] Aland Islands skip until we sort out lingva later.
-            if entity_code == "AX":
-                continue
             default_language, class_file_path = entity_code_info_mapping[entity_code]
             pot_file_path = pot_path / f"{entity_code}.pot"
             # Create .pot file.
