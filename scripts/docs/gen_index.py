@@ -17,20 +17,26 @@ from pathlib import Path
 import mkdocs_gen_files
 
 
-def main():
-    readme_file = Path(__file__).parents[2] / "README.md"
-    readme_content = readme_file.read_text(encoding="utf-8")
-    readme_content = readme_content.replace(
-        "[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
-        "[here](contributing.md)",
-    )
-    with mkdocs_gen_files.open("index.md", "w", encoding="utf-8", newline="\n") as f:
-        f.write(readme_content)
+def write_file(file_path: Path, content: str):
+    """Write content to a file with proper encoding and newline."""
+    with mkdocs_gen_files.open(file_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(content)
 
-    contributing_file = Path(__file__).parents[2] / "CONTRIBUTING.md"
-    contributing_content = contributing_file.read_text(encoding="utf-8")
-    with mkdocs_gen_files.open("contributing.md", "w", encoding="utf-8", newline="\n") as f:
-        f.write(contributing_content)
+
+def main():
+    project_root = Path(__file__).parents[2]
+
+    contributing_file = project_root / "CONTRIBUTING.md"
+    write_file("contributing.md", contributing_file.read_text(encoding="utf-8"))
+
+    readme_file = project_root / "README.md"
+    write_file(
+        "index.md",
+        readme_file.read_text(encoding="utf-8").replace(
+            "[here](https://github.com/vacanza/holidays/blob/dev/CONTRIBUTING.md)",
+            "[here](contributing.md)",
+        ),
+    )
 
 
 if __name__ in {"__main__", "<run_path>"}:
