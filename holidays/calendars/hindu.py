@@ -40,8 +40,6 @@ RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 THAIPUSAM = "THAIPUSAM"
-THIRUVALLUVAR_DAY = "THIRUVALLUVAR_DAY"
-UZHAVAR_THIRUNAL = "UZHAVAR_THIRUNAL"
 VAISAKHI = "VAISAKHI"
 
 
@@ -1226,82 +1224,6 @@ class _HinduLunisolar:
         2100: (FEB, 24),
     }
 
-    THIRUVALLUVAR_DAY_DATES = {
-        2001: (JAN, 15),
-        2002: (JAN, 15),
-        2003: (JAN, 16),
-        2004: (JAN, 16),
-        2005: (JAN, 15),
-        2006: (JAN, 15),
-        2007: (JAN, 16),
-        2008: (JAN, 16),
-        2009: (JAN, 15),
-        2010: (JAN, 15),
-        2011: (JAN, 16),
-        2012: (JAN, 16),
-        2013: (JAN, 15),
-        2014: (JAN, 15),
-        2015: (JAN, 16),
-        2016: (JAN, 16),
-        2017: (JAN, 15),
-        2018: (JAN, 15),
-        2019: (JAN, 16),
-        2020: (JAN, 16),
-        2021: (JAN, 15),
-        2022: (JAN, 15),
-        2023: (JAN, 16),
-        2024: (JAN, 16),
-        2025: (JAN, 15),
-        2026: (JAN, 15),
-        2027: (JAN, 16),
-        2028: (JAN, 16),
-        2029: (JAN, 15),
-        2030: (JAN, 15),
-        2031: (JAN, 16),
-        2032: (JAN, 16),
-        2033: (JAN, 15),
-        2034: (JAN, 15),
-        2035: (JAN, 16),
-    }
-
-    UZHAVAR_THIRUNAL_DATES = {
-        2001: (JAN, 16),
-        2002: (JAN, 16),
-        2003: (JAN, 17),
-        2004: (JAN, 17),
-        2005: (JAN, 16),
-        2006: (JAN, 16),
-        2007: (JAN, 17),
-        2008: (JAN, 17),
-        2009: (JAN, 16),
-        2010: (JAN, 16),
-        2011: (JAN, 17),
-        2012: (JAN, 17),
-        2013: (JAN, 16),
-        2014: (JAN, 16),
-        2015: (JAN, 17),
-        2016: (JAN, 17),
-        2017: (JAN, 16),
-        2018: (JAN, 16),
-        2019: (JAN, 17),
-        2020: (JAN, 17),
-        2021: (JAN, 16),
-        2022: (JAN, 16),
-        2023: (JAN, 17),
-        2024: (JAN, 17),
-        2025: (JAN, 16),
-        2026: (JAN, 16),
-        2027: (JAN, 17),
-        2028: (JAN, 17),
-        2029: (JAN, 16),
-        2030: (JAN, 16),
-        2031: (JAN, 17),
-        2032: (JAN, 17),
-        2033: (JAN, 16),
-        2034: (JAN, 16),
-        2035: (JAN, 17),
-    }
-
     # https://www.timeanddate.com/holidays/india/vaisakhi
     VAISAKHI_DATES = {
         2001: (APR, 13),
@@ -1419,12 +1341,6 @@ class _HinduLunisolar:
 
     def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(THAIPUSAM, year)
-
-    def thiruvalluvar_day_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(THIRUVALLUVAR_DAY, year)
-
-    def uzhavar_thirunal_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(UZHAVAR_THIRUNAL, year)
 
     def vaisakhi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(VAISAKHI, year)
