@@ -50,8 +50,14 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # JAGS McCartney Day.
-        self._add_holiday_last_mon_of_may(tr("JAGS McCartney Day"))
+        name = (
+            # JAGS McCartney Day.
+            tr("JAGS McCartney Day")
+            if self._year >= 2020
+            # National Heroes Day.
+            else tr("National Heroes Day")
+        )
+        self._add_holiday_last_mon_of_may(name)
 
         # King's Birthday. Previously Queen's Birthday until 2023.
         self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
