@@ -30,77 +30,118 @@ class TestTC(CommonCountryTests, TestCase):
 
     def test_commonwealth_day(self):
         self.assertHolidayName(
-            "Commonwealth Day", 
-            (f"{year}-03-{day}" for year, day in 
-             [(2020, 9), (2021, 8), (2022, 14), (2023, 13), (2024, 11), (2025, 10)])
+            "Commonwealth Day",
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+            "2023-03-13",
+            "2024-03-11",
+            "2025-03-10",
         )
 
     def test_good_friday(self):
         self.assertHolidayName(
-            "Good Friday", 
-            (f"{year}-{month}-{day}" for year, month, day in 
-             [(2020, 4, 10), (2021, 4, 2), (2022, 4, 15), (2023, 4, 7), (2024, 3, 29), (2025, 4, 18)])
+            "Good Friday",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
 
     def test_easter_monday(self):
         self.assertHolidayName(
-            "Easter Monday", 
-            (f"{year}-{month}-{day}" for year, month, day in 
-             [(2020, 4, 13), (2021, 4, 5), (2022, 4, 18), (2023, 4, 10), (2024, 4, 1), (2025, 4, 21)])
+            "Easter Monday",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
 
     def test_jags_mccartney_day(self):
-        for year in range(2020, 2026):
-            if year == 2020:
-                dt = date(2020, 5, 25)
-            elif year == 2021:
-                dt = date(2021, 5, 31)
-            elif year == 2022:
-                dt = date(2022, 5, 30)
-            elif year == 2023:
-                dt = date(2023, 5, 29)
-            elif year == 2024:
-                dt = date(2024, 5, 27)
-            else:  # 2025
-                dt = date(2025, 5, 26)
-            
-            self.assertIn(dt, self.holidays)
-            
-            if year >= 2020:
-                self.assertEqual(self.holidays[dt], "JAGS McCartney Day")
-            else:
-                self.assertEqual(self.holidays[dt], "National Heroes Day")
+        name_pre_2020 = "National Heroes Day"
+        name_2020 = "JAGS McCartney Day"
+        
+        self.assertHolidayName(
+            name_2020,
+            "2020-05-25",
+            "2021-05-31",
+            "2022-05-30",
+            "2023-05-29", 
+            "2024-05-27",
+            "2025-05-26",
+        )
+        
+        self.assertHolidayName(name_2020, range(2020, 2026))
+        self.assertHolidayName(name_pre_2020, range(2000, 2020))
+        self.assertNoHolidayName(name_pre_2020, range(2020, 2026))
+        self.assertNoHolidayName(name_2020, range(2000, 2020))
 
     def test_sovereign_birthday(self):
-        holidays_2022 = TurksAndCaicosIslands(years=2022)
-        self.assertIn(date(2022, 6, 13), holidays_2022)
-        self.assertEqual(holidays_2022[date(2022, 6, 13)], "Queen's Birthday")
+        name_pre_2023 = "Queen's Birthday"
+        name_2023 = "King's Birthday"
         
-        holidays_2023 = TurksAndCaicosIslands(years=2023)
-        self.assertIn(date(2023, 6, 12), holidays_2023)
-        self.assertEqual(holidays_2023[date(2023, 6, 12)], "King's Birthday")
+        self.assertHolidayName(
+            name_pre_2023,
+            "2020-06-08",
+            "2021-06-14",
+            "2022-06-13",
+        )
+        
+        self.assertHolidayName(
+            name_2023,
+            "2023-06-12",
+            "2024-06-10",
+            "2025-06-09",
+        )
+        
+        self.assertHolidayName(name_pre_2023, range(2000, 2023))
+        self.assertHolidayName(name_2023, range(2023, 2026))
+        self.assertNoHolidayName(name_pre_2023, range(2023, 2026))
+        self.assertNoHolidayName(name_2023, range(2000, 2023))
 
     def test_national_youth_day(self):
         self.assertHolidayName(
-            "National Youth Day", 
-            (f"{year}-09-{day}" for year, day in 
-             [(2020, 25), (2021, 24), (2022, 30), (2023, 29), (2024, 27), (2025, 26)])
+            "National Youth Day",
+            "2020-09-25",
+            "2021-09-24",
+            "2022-09-30",
+            "2023-09-29",
+            "2024-09-27",
+            "2025-09-26",
         )
 
     def test_national_heritage_day(self):
-        holidays_2022 = TurksAndCaicosIslands(years=2022)
-        self.assertIn(date(2022, 10, 10), holidays_2022)
-        self.assertEqual(holidays_2022[date(2022, 10, 10)], "National Heritage Day")
+        name_pre_2020 = "Columbus Day"
+        name_2020 = "National Heritage Day"
         
-        holidays_2025 = TurksAndCaicosIslands(years=2025)
-        self.assertIn(date(2025, 10, 13), holidays_2025)
-        self.assertEqual(holidays_2025[date(2025, 10, 13)], "National Heritage Day")
+        self.assertHolidayName(
+            name_2020,
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+            "2024-10-14",
+            "2025-10-13",
+        )
+        
+        self.assertHolidayName(name_2020, range(2020, 2026))
+        self.assertHolidayName(name_pre_2020, range(2000, 2020))
+        self.assertNoHolidayName(name_pre_2020, range(2020, 2026))
+        self.assertNoHolidayName(name_2020, range(2000, 2020))
 
     def test_national_day_of_thanksgiving(self):
         self.assertHolidayName(
-            "National Day of Thanksgiving", 
-            (f"{year}-11-{day}" for year, day in 
-             [(2020, 27), (2021, 26), (2022, 25), (2023, 24), (2024, 29), (2025, 28)])
+            "National Day of Thanksgiving",
+            "2020-11-27",
+            "2021-11-26",
+            "2022-11-25",
+            "2023-11-24",
+            "2024-11-29",
+            "2025-11-28",
         )
 
     def test_2023(self):
