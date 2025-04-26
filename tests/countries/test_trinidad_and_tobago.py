@@ -36,11 +36,12 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1963, 2050)))
         dt = (
+            "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
@@ -54,6 +55,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        dt = ("2018-04-03",)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertHolidayName(name, range(1963, 2050))
 
     def test_easter_monday(self):
@@ -76,9 +79,10 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2003-03-31",
             "2008-03-31",
             "2014-03-31",
+            "2018-04-03",
             "2025-04-01",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoHolidayName(name, range(1963, 1996))
 
     def test_indian_arrival_day(self):
@@ -87,9 +91,11 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         dt = (
             "2004-05-31",
             "2010-05-31",
+            "2013-05-31",
             "2021-05-31",
+            "2024-05-31",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1996))
 
@@ -104,6 +110,14 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-05-30",
             "2025-06-19",
         )
+        dt = (
+            "2013-05-31",
+            "2014-06-20",
+            "2024-05-31",
+            "2025-06-20",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertHolidayName(name, range(1963, 2050))
 
     def test_labor_day(self):
@@ -112,10 +126,12 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         dt = (
             "2005-06-20",
             "2011-06-20",
+            "2014-06-20",
             "2016-06-20",
             "2022-06-20",
+            "2025-06-20",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1973))
 
@@ -127,7 +143,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2010-08-02",
             "2021-08-02",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1985))
 
@@ -140,7 +156,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2014-09-01",
             "2025-09-01",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_republic_day(self):
@@ -152,7 +168,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2017-09-25",
             "2023-09-25",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1976))
 
@@ -165,7 +181,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2016-12-27",
             "2022-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -175,7 +191,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2010-12-27",
             "2021-12-27",
         )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, dt)
+        self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_diwali(self):
@@ -189,6 +205,14 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
+        dt = (
+            "2006-11-20",
+            "2009-11-16",
+            "2019-10-28",
+            "2023-11-13",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertHolidayName(name, range(1963, 2050))
 
     def test_eid_al_fitr(self):
@@ -204,6 +228,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1963, 2050))
         dt = (
+            "2009-09-21",
             "2012-08-20",
             "2020-05-25",
         )
