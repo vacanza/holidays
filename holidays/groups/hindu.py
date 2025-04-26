@@ -350,8 +350,11 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         falls on January 16th or 17th each year.
         https://en.wikipedia.org/wiki/Pongal_(festival)#Uzhavar_Thirunal
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
+        return self._add_eastern_calendar_holiday(
+            name,
+            self._hindu_calendar.pongal_date(self._year),
+            self._hindu_calendar_show_estimated,
+            days_delta=+2,
         )
 
     def _add_vaisakhi(self, name) -> Optional[date]:
