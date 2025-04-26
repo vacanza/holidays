@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
 from holidays.countries.turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
@@ -29,8 +28,9 @@ class TestTC(CommonCountryTests, TestCase):
         self.assertNoChecks(TurksAndCaicosIslands)
 
     def test_commonwealth_day(self):
+        name = "Commonwealth Day"
         self.assertHolidayName(
-            "Commonwealth Day",
+            name,
             "2020-03-09",
             "2021-03-08",
             "2022-03-14",
@@ -40,8 +40,9 @@ class TestTC(CommonCountryTests, TestCase):
         )
 
     def test_good_friday(self):
+        name = "Good Friday"
         self.assertHolidayName(
-            "Good Friday",
+            name,
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -51,8 +52,9 @@ class TestTC(CommonCountryTests, TestCase):
         )
 
     def test_easter_monday(self):
+        name = "Easter Monday"
         self.assertHolidayName(
-            "Easter Monday",
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -64,17 +66,17 @@ class TestTC(CommonCountryTests, TestCase):
     def test_jags_mccartney_day(self):
         name_pre_2020 = "National Heroes Day"
         name_2020 = "JAGS McCartney Day"
-        
+
         self.assertHolidayName(
             name_2020,
             "2020-05-25",
             "2021-05-31",
             "2022-05-30",
-            "2023-05-29", 
+            "2023-05-29",
             "2024-05-27",
             "2025-05-26",
         )
-        
+
         self.assertHolidayName(name_2020, range(2020, 2026))
         self.assertHolidayName(name_pre_2020, range(2000, 2020))
         self.assertNoHolidayName(name_pre_2020, range(2020, 2026))
@@ -83,29 +85,30 @@ class TestTC(CommonCountryTests, TestCase):
     def test_sovereign_birthday(self):
         name_pre_2023 = "Queen's Birthday"
         name_2023 = "King's Birthday"
-        
+
         self.assertHolidayName(
             name_pre_2023,
             "2020-06-08",
             "2021-06-14",
             "2022-06-13",
         )
-        
+
         self.assertHolidayName(
             name_2023,
             "2023-06-12",
             "2024-06-10",
             "2025-06-09",
         )
-        
+
         self.assertHolidayName(name_pre_2023, range(2000, 2023))
         self.assertHolidayName(name_2023, range(2023, 2026))
         self.assertNoHolidayName(name_pre_2023, range(2023, 2026))
         self.assertNoHolidayName(name_2023, range(2000, 2023))
 
     def test_national_youth_day(self):
+        name = "National Youth Day"
         self.assertHolidayName(
-            "National Youth Day",
+            name,
             "2020-09-25",
             "2021-09-24",
             "2022-09-30",
@@ -117,7 +120,7 @@ class TestTC(CommonCountryTests, TestCase):
     def test_national_heritage_day(self):
         name_pre_2020 = "Columbus Day"
         name_2020 = "National Heritage Day"
-        
+
         self.assertHolidayName(
             name_2020,
             "2020-10-12",
@@ -127,15 +130,16 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-10-14",
             "2025-10-13",
         )
-        
+
         self.assertHolidayName(name_2020, range(2020, 2026))
         self.assertHolidayName(name_pre_2020, range(2000, 2020))
         self.assertNoHolidayName(name_pre_2020, range(2020, 2026))
         self.assertNoHolidayName(name_2020, range(2000, 2020))
 
     def test_national_day_of_thanksgiving(self):
+        name = "National Day of Thanksgiving"
         self.assertHolidayName(
-            "National Day of Thanksgiving",
+            name,
             "2020-11-27",
             "2021-11-26",
             "2022-11-25",
