@@ -147,6 +147,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             "TN": (
                 "2018-01-14",
+                "2018-01-15",
+                "2018-01-16",
                 "2018-04-14",
             ),
             "TS": (
@@ -501,6 +503,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2018-01-13", "Lohri"),
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
+            ("2018-01-16", "Uzhavar Thirunal"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
@@ -567,6 +571,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "hi",
             ("2018-01-13", "लोहड़ी"),
             ("2018-01-14", "उत्तरायण; पोंगल; मकर संक्रांति; माघ बिहू"),
+            ("2018-01-15", "तिरुवल्लुवर दिवस / मट्टू पोंगल"),
+            ("2018-01-16", "उझावर थिरुनल"),
             ("2018-01-24", "यूपी स्थापना दिवस"),
             ("2018-01-26", "गणतंत्र दिवस"),
             ("2018-02-13", "महाशिवरात्रि"),
@@ -628,6 +634,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "en_US",
             ("2018-01-13", "Lohri"),
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
+            ("2018-01-16", "Uzhavar Thirunal"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
