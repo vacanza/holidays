@@ -28,6 +28,8 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
 
     country = "TC"
     default_language = "en_TC"
+    # Separated from Jamaica in 1962.
+    start_year = 1963
     supported_languages = ("en_TC", "en_US")
 
     def __init__(self, *args, **kwargs):
