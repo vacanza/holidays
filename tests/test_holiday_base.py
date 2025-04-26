@@ -1228,7 +1228,7 @@ class TestSubstitutedHolidays(unittest.TestCase):
         for cls in (EmptySubstitutedHolidays, NoSubstitutedHolidays):
             hb = self.CountryStub(cls=cls)
             self.assertFalse(hb.has_special_holidays)
-            self.assertTrue(hb.has_substituted_holidays)
+            self.assertFalse(hb.has_substituted_holidays)
 
             hb._populate(1991)
             self.assertNotIn("1991-01-07", hb)
