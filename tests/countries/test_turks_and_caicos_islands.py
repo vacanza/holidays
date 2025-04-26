@@ -44,18 +44,18 @@ class TestTC(CommonCountryTests, TestCase):
     def test_2025(self):
         self.assertHolidayDates(
             TurksAndCaicosIslands(years=2025),
-            "2025-01-01",  # New Year's Day
-            "2025-03-10",  # Commonwealth Day (2nd Monday in March)
-            "2025-04-18",  # Good Friday
-            "2025-04-21",  # Easter Monday
-            "2025-05-26",  # JAGS McCartney Day (last Monday in May)
-            "2025-06-09",  # King's Birthday (2nd Monday in June)
-            "2025-08-01",  # Emancipation Day
-            "2025-09-26",  # National Youth Day (last Friday in September)
-            "2025-10-13",  # National Heritage Day (2nd Monday in October)
-            "2025-11-28",  # National Day of Thanksgiving (4th Friday in November)
-            "2025-12-25",  # Christmas Day
-            "2025-12-26",  # Boxing Day
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-10", "Commonwealth Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-26", "JAGS McCartney Day"),
+            ("2025-06-09", "King's Birthday"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-09-26", "National Youth Day"),
+            ("2025-10-13", "National Heritage Day"),
+            ("2025-11-28", "National Day of Thanksgiving"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
 
     def test_l10n_default(self):
@@ -73,4 +73,21 @@ class TestTC(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
-        
+
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-10", "Commonwealth Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-26", "JAGS McCartney Day"),
+            ("2025-06-09", "King's Birthday"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-09-26", "National Youth Day"),
+            ("2025-10-13", "National Heritage Day"),
+            ("2025-11-28", "National Day of Thanksgiving"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
+        )
