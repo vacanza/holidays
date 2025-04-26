@@ -331,7 +331,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)#Mattu_Pongal
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.thiruvalluvar_day_date(self._year)
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
         )
 
     def _add_uzhavar_thirunal(self, name) -> Optional[date]:
@@ -345,7 +345,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)#Uzhavar_Thirunal
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.uzhavar_thirunal_date(self._year)
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
         )
 
     def _add_vaisakhi(self, name) -> Optional[date]:
