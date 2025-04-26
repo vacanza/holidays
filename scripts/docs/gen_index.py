@@ -17,7 +17,7 @@ from pathlib import Path
 import mkdocs_gen_files
 
 
-def write_file(file_path: Path, content: str):
+def write_file(file_path: str, content: str):
     """Write content to a file with proper encoding and newline."""
     with mkdocs_gen_files.open(file_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(content)
