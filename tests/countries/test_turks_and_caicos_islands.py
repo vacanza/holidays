@@ -27,18 +27,18 @@ class TestTC(CommonCountryTests, TestCase):
     def test_2023(self):
         self.assertHolidayDates(
             TurksAndCaicosIslands(years=2023),
-            "2023-01-01",  # New Year's Day
-            "2023-03-13",  # Commonwealth Day (2nd Monday in March)
-            "2023-04-07",  # Good Friday
-            "2023-04-10",  # Easter Monday
-            "2023-05-29",  # JAGS McCartney Day (last Monday in May)
-            "2023-06-12",  # King's Birthday (2nd Monday in June)
-            "2023-08-01",  # Emancipation Day
-            "2023-09-29",  # National Youth Day (last Friday in September)
-            "2023-10-09",  # National Heritage Day (2nd Monday in October)
-            "2023-11-24",  # National Day of Thanksgiving (4th Friday in November)
-            "2023-12-25",  # Christmas Day
-            "2023-12-26",  # Boxing Day
+            ("2023-01-01", "New Year's Day"),
+            ("2023-03-13", "Commonwealth Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-05-29", "JAGS McCartney Day"),
+            ("2023-06-12", "King's Birthday"),
+            ("2023-08-01", "Emancipation Day"),
+            ("2023-09-29", "National Youth Day"),
+            ("2023-10-09", "National Heritage Day"),
+            ("2023-11-24", "National Day of Thanksgiving"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
         )
 
     def test_2025(self):
