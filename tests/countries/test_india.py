@@ -395,6 +395,32 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
 
+        dt = (
+            "2001-01-15",
+            "2010-01-15",
+            "2025-01-15",
+            "2035-01-16",
+        )
+        name = "Thiruvalluvar Day / Mattu Pongal"
+        for subdiv in India.subdivisions:
+            if subdiv in {"TN"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+
+        dt = (
+            "2001-01-16",
+            "2010-01-16",
+            "2025-01-16",
+            "2035-01-17",
+        )
+        name = "Uzhavar Thirunal"
+        for subdiv in India.subdivisions:
+            if subdiv in {"TN"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+
     def test_ranged_optional_holidays(self):
         opt_holidays = India(categories=OPTIONAL)
 
