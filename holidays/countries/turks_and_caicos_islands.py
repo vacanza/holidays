@@ -64,7 +64,7 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         # National Youth Day.
         self._add_holiday_last_fri_of_sep(tr("National Youth Day"))
 
-        # National Heritage Day. Previously known as Columbus Day.
+        # National Heritage Day. Previously known as Columbus Day until 2014.
         self._add_holiday_2nd_mon_of_oct(tr("National Heritage Day"))
 
         # National Day of Thanksgiving.

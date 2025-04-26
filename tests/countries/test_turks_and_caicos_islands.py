@@ -24,22 +24,31 @@ class TestTC(CommonCountryTests, TestCase):
 
     def test_country_aliases(self):
         self.assertAliases(TurksAndCaicosIslands, TC, TCA)
-        
+
     def test_no_checks(self):
         self.assertNoChecks(TurksAndCaicosIslands)
 
     def test_commonwealth_day(self):
-        self.assertHolidayName("Commonwealth Day", (f"{year}-03-{day}" for year, day in 
-                             [(2020, 9), (2021, 8), (2022, 14), (2023, 13), (2024, 11), (2025, 10)]))
-                             
+        self.assertHolidayName(
+            "Commonwealth Day", 
+            (f"{year}-03-{day}" for year, day in 
+             [(2020, 9), (2021, 8), (2022, 14), (2023, 13), (2024, 11), (2025, 10)])
+        )
+
     def test_good_friday(self):
-        self.assertHolidayName("Good Friday", (f"{year}-{month}-{day}" for year, month, day in
-                             [(2020, 4, 10), (2021, 4, 2), (2022, 4, 15), (2023, 4, 7), (2024, 3, 29), (2025, 4, 18)]))
-                             
+        self.assertHolidayName(
+            "Good Friday", 
+            (f"{year}-{month}-{day}" for year, month, day in 
+             [(2020, 4, 10), (2021, 4, 2), (2022, 4, 15), (2023, 4, 7), (2024, 3, 29), (2025, 4, 18)])
+        )
+
     def test_easter_monday(self):
-        self.assertHolidayName("Easter Monday", (f"{year}-{month}-{day}" for year, month, day in
-                             [(2020, 4, 13), (2021, 4, 5), (2022, 4, 18), (2023, 4, 10), (2024, 4, 1), (2025, 4, 21)]))
-                             
+        self.assertHolidayName(
+            "Easter Monday", 
+            (f"{year}-{month}-{day}" for year, month, day in 
+             [(2020, 4, 13), (2021, 4, 5), (2022, 4, 18), (2023, 4, 10), (2024, 4, 1), (2025, 4, 21)])
+        )
+
     def test_jags_mccartney_day(self):
         for year in range(2020, 2026):
             if year == 2020:
@@ -54,14 +63,14 @@ class TestTC(CommonCountryTests, TestCase):
                 dt = date(2024, 5, 27)
             else:  # 2025
                 dt = date(2025, 5, 26)
-                
+            
             self.assertIn(dt, self.holidays)
             
             if year >= 2020:
                 self.assertEqual(self.holidays[dt], "JAGS McCartney Day")
             else:
                 self.assertEqual(self.holidays[dt], "National Heroes Day")
-                
+
     def test_sovereign_birthday(self):
         holidays_2022 = TurksAndCaicosIslands(years=2022)
         self.assertIn(date(2022, 6, 13), holidays_2022)
@@ -70,11 +79,14 @@ class TestTC(CommonCountryTests, TestCase):
         holidays_2023 = TurksAndCaicosIslands(years=2023)
         self.assertIn(date(2023, 6, 12), holidays_2023)
         self.assertEqual(holidays_2023[date(2023, 6, 12)], "King's Birthday")
-                
+
     def test_national_youth_day(self):
-        self.assertHolidayName("National Youth Day", (f"{year}-09-{day}" for year, day in 
-                             [(2020, 25), (2021, 24), (2022, 30), (2023, 29), (2024, 27), (2025, 26)]))
-                             
+        self.assertHolidayName(
+            "National Youth Day", 
+            (f"{year}-09-{day}" for year, day in 
+             [(2020, 25), (2021, 24), (2022, 30), (2023, 29), (2024, 27), (2025, 26)])
+        )
+
     def test_national_heritage_day(self):
         holidays_2022 = TurksAndCaicosIslands(years=2022)
         self.assertIn(date(2022, 10, 10), holidays_2022)
@@ -83,10 +95,13 @@ class TestTC(CommonCountryTests, TestCase):
         holidays_2025 = TurksAndCaicosIslands(years=2025)
         self.assertIn(date(2025, 10, 13), holidays_2025)
         self.assertEqual(holidays_2025[date(2025, 10, 13)], "National Heritage Day")
-                
+
     def test_national_day_of_thanksgiving(self):
-        self.assertHolidayName("National Day of Thanksgiving", (f"{year}-11-{day}" for year, day in 
-                             [(2020, 27), (2021, 26), (2022, 25), (2023, 24), (2024, 29), (2025, 28)]))
+        self.assertHolidayName(
+            "National Day of Thanksgiving", 
+            (f"{year}-11-{day}" for year, day in 
+             [(2020, 27), (2021, 26), (2022, 25), (2023, 24), (2024, 29), (2025, 28)])
+        )
 
     def test_2023(self):
         self.assertHolidayDates(
