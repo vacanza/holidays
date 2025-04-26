@@ -1243,7 +1243,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Turks and Caicos Islands</td>
 <td>TC</td>
 <td></td>
-<td><strong>en_US</strong></td>
+<td><strong>en_TC</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
