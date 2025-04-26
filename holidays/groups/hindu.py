@@ -330,9 +330,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Thiruvalluvar_Day
         https://en.wikipedia.org/wiki/Pongal_(festival)#Mattu_Pongal
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
-        )
+-        return self._add_hindu_calendar_holiday(
+-            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
+-        )
++        return self._add_eastern_calendar_holiday(
++            name,
++            self._hindu_calendar.pongal_date(self._year),
++            self._hindu_calendar_show_estimated,
++            days_delta=+1,
++        )
 
     def _add_uzhavar_thirunal(self, name) -> Optional[date]:
         """
