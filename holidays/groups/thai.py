@@ -190,7 +190,7 @@ class ThaiCalendarHolidays:
         """
         Add Visakha Bucha.
 
-        Vesak(also written as Visakha Bousa Day and Visaka Bochea Day) is a
+        Vesak (also written as Visakha Bousa Day and Visaka Bochea Day) is a
         Buddhist festival celebrated on the 15th Waxing Day (Full Moon)
         of Month 6.
 
