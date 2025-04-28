@@ -118,8 +118,8 @@ class ThaiCalendarHolidays:
         """
         Add Makha Bucha.
 
-        Māgha Pūjā (also written as Makha Bucha Day) is a Buddhist festival
-        celebrated on the 15th Waxing Day (Full Moon) of Month 3.
+        Māgha Pūjā (also written as Makha Bousa and Meak Bochea Day) is a Buddhist
+        festival celebrated on the 15th Waxing Day (Full Moon) of Month 3.
 
         Khmer variant: always fall on Month 3.
         Thai variant:  will use Month 4 instead for Athikamat years.
@@ -190,7 +190,7 @@ class ThaiCalendarHolidays:
         """
         Add Visakha Bucha.
 
-        Vesak(also written as Makha Bucha Day and Meak Bochea Day) is a
+        Vesak(also written as Visakha Bousa Day and Visaka Bochea Day) is a
         Buddhist festival celebrated on the 15th Waxing Day (Full Moon)
         of Month 6.
 
