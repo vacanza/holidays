@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from collections.abc import Iterable
-from datetime import date, timedelta
+from datetime import date
 from typing import Optional
 
 from holidays.calendars import _HinduLunisolar
@@ -31,14 +31,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         self, name: str, dt_estimated: tuple[Optional[date], bool], days_delta: int = 0
     ) -> Optional[date]:
         """
-        Add Hindu calendar holiday with optional day offset.
-        """
-        if dt_estimated[0] is None:
-            return None
+        Add Hindu calendar holiday.
 
-        dt = dt_estimated[0] + timedelta(days=days_delta)
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
+        """
+
         return self._add_eastern_calendar_holiday(
-            name, (dt, dt_estimated[1]), self._hindu_calendar_show_estimated
+            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta
         )
 
     def _add_hindu_calendar_holiday_set(
@@ -331,7 +331,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)#Mattu_Pongal
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=1
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
         )
 
     def _add_uzhavar_thirunal(self, name) -> Optional[date]:
@@ -345,7 +345,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)#Uzhavar_Thirunal
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=2
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
         )
 
     def _add_vaisakhi(self, name) -> Optional[date]:
