@@ -75,8 +75,8 @@ msgstr "Boxing Day"
 
 #. JAGS McCartney Day. Previously National Heroes Day until 2020.
 msgid "National Heroes Day"
-msgstr ""
+msgstr "National Heroes Day"
 
 #. King's Birthday. Previously Queen's Birthday until 2023.
 msgid "Queen's Birthday"
-msgstr ""
+msgstr "Queen's Birthday"

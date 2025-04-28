@@ -36,7 +36,9 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate_public_holidays(self):
+    def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
@@ -50,12 +52,16 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         self._add_easter_monday(tr("Easter Monday"))
 
         # JAGS McCartney Day. Previously National Heroes Day until 2020.
-        name = tr("JAGS McCartney Day") if self._year >= 2020 else tr("National Heroes Day")
-        self._add_holiday_last_mon_of_may(name)
+        if year >= 2020:
+            self._add_holiday_last_mon_of_may(tr("JAGS McCartney Day"))
+        else:
+            self._add_holiday_last_mon_of_may(tr("National Heroes Day"))
 
         # King's Birthday. Previously Queen's Birthday until 2023.
-        name = tr("King's Birthday") if self._year >= 2023 else tr("Queen's Birthday")
-        self._add_holiday_2nd_mon_of_jun(name)
+        if year >= 2023:
+            self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
+        else:
+            self._add_holiday_2nd_mon_of_jun(tr("Queen's Birthday"))
 
         # Emancipation Day.
         self._add_holiday_aug_1(tr("Emancipation Day"))
@@ -64,7 +70,10 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_last_fri_of_sep(tr("National Youth Day"))
 
         # National Heritage Day. Previously known as Columbus Day until 2014.
-        self._add_holiday_2nd_mon_of_oct(tr("National Heritage Day"))
+        if year >= 2014:
+            self._add_holiday_2nd_mon_of_oct(tr("National Heritage Day"))
+        else:
+            self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
 
         # National Day of Thanksgiving.
         self._add_holiday_4th_fri_of_nov(tr("National Day of Thanksgiving"))
