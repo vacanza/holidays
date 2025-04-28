@@ -9,17 +9,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
-#, fuzzy
+#
+# Turks And Caicos holidays.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2025-04-27 22:07-0500\n"
 "PO-Revision-Date: 2025-04-27 22:07-0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Shalom Donga <shalomdonga@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_TC\n"
 "MIME-Version: 1.0\n"
