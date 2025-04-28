@@ -37,8 +37,9 @@ class India(
         * <https://www.calendarlabs.com/holidays/india/2021>
         * <https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://vahan.parivahan.gov.in/vahan4dashboard/>
-        * <https://www.tamildailycalendar.com/tamil_monthly_calendar.php>
-        * <https://www.prokerala.com/general/calendar/tamilcalendar.php>
+        * Tamil Nadu:
+            * [Tamil Monthly Calendar](https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
+            * [Tamil Calendar](https://www.prokerala.com/general/calendar/tamilcalendar.php)
     """
 
     country = "IN"
