@@ -261,14 +261,32 @@ class TestCanada(CommonCountryTests, TestCase):
         )
 
     def test_thanksgiving_day(self):
-        name = "Thanksgiving Day"
-        self.assertNoHolidayName(name)
-        self.assertHolidayName(name, self.gov_hols, range(1931, 2050))
-        self.assertNoHolidayName(name, self.gov_hols, range(1867, 1931))
+        name_1921 = "Armistice Day"
+        name_1931 = "Thanksgiving Day"
 
-        dts = (
+        dts_1921 = (
+            # By Statute.
+            "1921-11-07",
+            "1922-11-06",
+            "1923-11-12",
+            "1924-11-10",
+            "1925-11-09",
+            "1926-11-08",
+            "1927-11-07",
+            "1928-11-12",
+            "1929-11-11",
+            "1930-11-10",
+        )
+
+        self.assertHolidayName(name_1921, self.gov_hols, dts_1921)
+        self.assertNoHolidayName(name_1921, self.gov_hols, range(1867, 1921), range(1931, 2050))
+        self.assertNoHolidayName(name_1921)
+
+        dts_1931 = (
+            # By Proclamation.
             "1931-10-12",
-            "1935-10-25",
+            "1935-10-24",
+            # Post-Proclamation of 1957.
             "1990-10-08",
             "1999-10-11",
             "2000-10-09",
@@ -280,17 +298,26 @@ class TestCanada(CommonCountryTests, TestCase):
             "2022-10-10",
             "2023-10-09",
         )
-        self.assertHolidayName(name, self.gov_hols, dts)
+
+        self.assertHolidayName(name_1931, self.gov_hols, dts_1931)
+        self.assertHolidayName(name_1931, self.gov_hols, range(1931, 2050))
+        self.assertNoHolidayName(name_1931, self.gov_hols, range(1867, 1931))
+        self.assertNoHolidayName(name_1931)
+
         for prov, holidays in self.prov_hols.items():
             if prov in {"AB", "BC", "MB", "NT", "NU", "ON", "QC", "SK", "YT"}:
-                self.assertHolidayName(name, holidays, dts)
-                self.assertHolidayName(name, holidays, range(1931, 2050))
-                self.assertNoHolidayName(name, holidays, range(1867, 1931))
+                self.assertHolidayName(name_1931, holidays, dts_1931)
+                self.assertHolidayName(name_1921, holidays, range(1921, 1931))
+                self.assertHolidayName(name_1931, holidays, range(1931, 2050))
+                self.assertNoHolidayName(name_1921, holidays, range(1867, 1921), range(1931, 2050))
+                self.assertNoHolidayName(name_1931, holidays, range(1867, 1931))
             else:
-                self.assertNoHolidayName(name, holidays, dts)
+                self.assertNoHolidayName(name_1921, holidays, dts_1921)
+                self.assertNoHolidayName(name_1931, holidays, dts_1931)
 
         for prov in ("NB", "NL"):
-            self.assertHolidayName(name, self.prov_opt_hols[prov], dts)
+            self.assertHolidayName(name_1921, self.prov_opt_hols[prov], dts_1921)
+            self.assertHolidayName(name_1931, self.prov_opt_hols[prov], dts_1931)
 
     def test_remembrance_day(self):
         name = "Remembrance Day"
@@ -299,7 +326,6 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, self.gov_hols, (f"{year}-11-11" for year in range(1931, 2050))
         )
-        self.assertNoHoliday(self.gov_hols, (f"{year}-11-11" for year in range(1900, 1931)))
         self.assertNoHolidayName(name, self.gov_hols, range(1900, 1931))
 
         dts = (
@@ -318,9 +344,6 @@ class TestCanada(CommonCountryTests, TestCase):
                 start_year = 1981 if prov == "NS" else 1931
                 self.assertHolidayName(
                     name, holidays, (f"{year}-11-11" for year in range(start_year, 2050))
-                )
-                self.assertNoHoliday(
-                    holidays, (f"{year}-11-11" for year in range(1900, start_year))
                 )
                 self.assertNoHolidayName(name, holidays, range(1900, start_year))
             else:

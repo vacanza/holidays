@@ -148,17 +148,28 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
         )
 
-    def _add_thanksgiving_day(self):
+    def _add_thanksgiving_day(self) -> None:
+        """
+        In 1921, Thanksgiving Day was moved to "Armistice Day" (1st Monday in the week of Nov 11).
+        "Remembrance Day" and "Thanksgiving Day" split again in 1931, with Thanksgiving usually on
+        the 2nd Monday of October — except in 1935, when it was delayed 10 days due to a General
+        Election. It was finally fixed to the 2nd Monday of October permanently in 1957.
+
+        References:
+            * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
+            * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
+            * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
+        """
         if self._year >= 1931:
             # Thanksgiving Day.
             name = tr("Thanksgiving Day")
-            # in 1935, Canadian Thanksgiving was moved due to the General
-            # Election falling on the second Monday of October
-            # http://tiny.cc/can_thkgvg
             if self._year == 1935:
-                self._add_holiday_oct_25(name)
+                self._add_holiday_oct_24(name)
             else:
                 self._add_holiday_2nd_mon_of_oct(name)
+        elif self._year >= 1921:
+            # Armistice Day.
+            self._add_holiday_1st_mon_before_nov_12(tr("Armistice Day"))
 
     def _populate_subdiv_ab_public_holidays(self):
         if self._year >= 1990:
