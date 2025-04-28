@@ -124,7 +124,7 @@ class ThaiCalendarHolidays:
         Khmer variant: always fall on Month 3.
         Thai variant:  will use Month 4 instead for Athikamat years.
 
-        https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
+        https://en.wikipedia.org/wiki/Māgha_Pūjā
         """
         calendar = calendar or self.__calendar
 
@@ -197,7 +197,7 @@ class ThaiCalendarHolidays:
         Khmer variant: always fall on Month 6.
         Thai variant:  will use Month 7 instead for Athikamat years.
 
-        https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
+        https://en.wikipedia.org/wiki/Vesak
         """
         calendar = calendar or self.__calendar
 
