@@ -36,6 +36,7 @@ IGNORE_URL_PATTERNS = [
     re.compile(r"docs\.python\.org"),
     re.compile(r"loc\.gov"),
     re.compile(r"iso\.org"),
+    re.compile(r"semver\.org"),
 ]
 CDX_API_URL = "https://web.archive.org/cdx/search/cdx"
 SAVE_API_URL = "https://web.archive.org/save"
