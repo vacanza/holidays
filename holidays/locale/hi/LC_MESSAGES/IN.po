@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
 "PO-Revision-Date: 2025-03-01 15:11+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
@@ -306,3 +306,11 @@ msgstr "माघ बिहू"
 #. Buddha Purnima.
 msgid "Buddha Purnima"
 msgstr "बुद्ध पूर्णिमा"
+
+#. Thiruvalluvar Day / Mattu Pongal.
+msgid "Thiruvalluvar Day / Mattu Pongal"
+msgstr "तिरुवल्लुवर दिवस / मट्टू पोंगल"
+
+#. Uzhavar Thirunal.
+msgid "Uzhavar Thirunal"
+msgstr "उझावर थिरुनल"
