@@ -19,7 +19,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Andorra>
-        * <https://www.holsdb.com/public-holidays/ad>
+        * <https://web.archive.org/web/20231203013943/https://www.holsdb.com/public-holidays/ad>
     """
 
     country = "AD"

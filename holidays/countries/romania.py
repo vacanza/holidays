@@ -22,7 +22,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Romania>
-        * <http://www.dreptonline.ro/legislatie/codul_muncii.php>
+        * <https://web.archive.org/web/20250414065123/https://www.dreptonline.ro/legislatie/codul_muncii.php>
     """
 
     country = "RO"

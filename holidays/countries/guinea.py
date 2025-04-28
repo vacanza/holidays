@@ -23,11 +23,11 @@ class Guinea(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
 
     References:
         * [Decree No. 2022-0526](https://igt.gov.gn/wp-content/uploads/2024/10/D-2022-0526-PRG-CNRD_221103_131021.pdf)
-        * <https://www.timeanddate.com/holidays/guinea/>
+        * <https://web.archive.org/web/20250408180953/https://www.timeanddate.com/holidays/guinea/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Guinea>
-        * <https://anydayguide.com/calendar/1878>
-        * <https://www.timeanddate.com/holidays/guinea/second-republic-day>
-        * <https://www.timeanddate.com/holidays/guinea/all-saints-day>
+        * <https://web.archive.org/web/20241205013852/https://anydayguide.com/calendar/1878>
+        * <https://web.archive.org/web/20250408180953/https://web.archive.org/web/20240622164935/https://www.timeanddate.com/holidays/guinea/second-republic-day>
+        * <https://web.archive.org/web/20250408180953/https://web.archive.org/web/20240806075538/https://www.timeanddate.com/holidays/guinea/all-saints-day>
 
     According to Decree No. 2022-0526 of 2 November 2022:
         * Eid al-Adha became a two-day holiday (Article 1).

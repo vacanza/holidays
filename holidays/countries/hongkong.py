@@ -59,11 +59,11 @@ class HongKong(
 
     Statutory Holidays:
         * [Section 39 of Cap. 57 Employment Ordinance](https://www.elegislation.gov.hk/hk/cap57!en-zh-Hant-HK?INDEX_CS=N&xpid=ID_1438403463460_002)
-        * [Holidays for 2010-2025](https://www.labour.gov.hk/eng/news/holidays_list.htm)
+        * [Holidays for 2010-2025](https://web.archive.org/web/20250402133857/https://www.labour.gov.hk/eng/news/holidays_list.htm)
 
     General Holidays:
         * [Cap. 149 General Holidays Ordinance](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
-        * [Holidays for 2007–2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
+        * [Holidays for 2007–2025](https://web.archive.org/web/20250116080351/https://www.gov.hk/en/about/abouthk/holiday/index.htm)
     """
 
     country = "HK"

@@ -45,9 +45,9 @@ class Singapore(
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
-        * [Holidays Act](https://sso.agc.gov.sg/Act/HA1998) (Act 24 of
+        * [Holidays Act](https://web.archive.org/web/20250405061431/http://sso.agc.gov.sg/Act/HA1998) (Act 24 of
             1968—Holidays (Amendment) Act 1968)
-        * [Ministry of Manpower](https://www.mom.gov.sg/employment-practices/public-holidays)
+        * [Ministry of Manpower](https://web.archive.org/web/20250424152111/https://mom.gov.sg/employment-practices/public-holidays)
 
     Limitations:
         * Prior to 1969: holidays are estimated.
@@ -306,10 +306,10 @@ class SingaporeStaticHolidays:
     """Singapore special holidays.
 
     References:
-        * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
-        * <https://www.mom.gov.sg/newsroom/press-releases/2020/0624-public-holiday-on-polling-day---10-july-2020>
-        * <https://www.mom.gov.sg/newsroom/press-releases/2023/0822-public-holiday-on-polling-day---1-sep-2023>
-        * <https://www.mom.gov.sg/newsroom/press-releases/2025/0415-public-holiday-on-polling-day_3-may-2025>
+        * <https://web.archive.org/web/20241015024728/https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
+        * <https://web.archive.org/web/20240809195048/https://www.mom.gov.sg/newsroom/press-releases/2020/0624-public-holiday-on-polling-day---10-july-2020>
+        * <https://web.archive.org/web/20241113193000/https://www.mom.gov.sg/newsroom/press-releases/2023/0822-public-holiday-on-polling-day---1-sep-2023>
+        * <https://web.archive.org/web/20250424145037/https://www.mom.gov.sg/newsroom/press-releases/2025/0415-public-holiday-on-polling-day_3-may-2025>
     """
 
     # Polling Day.

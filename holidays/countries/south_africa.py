@@ -19,10 +19,10 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     """South Africa holidays.
 
     References:
-        * <https://www.gov.za/about-sa/public-holidays>
+        * <https://web.archive.org/web/20250424073852/https://www.gov.za/about-sa/public-holidays>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa>
-        * <https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000>
-        * <https://www.gov.za/documents/notices/public-holidays-act-declaration-29-may-2024-public-holiday-23-feb-2024>
+        * <https://web.archive.org/web/20240715110800/https://www.gov.za/speeches/president-cyril-ramaphosa-progress-economic-recovery-30-oct-2023-0000>
+        * <https://web.archive.org/web/20250427184315/https://www.gov.za/documents/notices/public-holidays-act-declaration-29-may-2024-public-holiday-23-feb-2024>
     """
 
     country = "ZA"

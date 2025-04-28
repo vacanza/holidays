@@ -57,8 +57,8 @@ class Brunei(
     """Brunei holidays.
 
     References:
-        * <http://www.labour.gov.bn/Lists/Upcomming%20events/AllItems.aspx>
-        * <http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf>
+        * <https://web.archive.org/web/20250421085743/https://www.labour.gov.bn/lists/upcomming%20events/allitems.aspx>
+        * <https://web.archive.org/web/20250421234214/https://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk15-1998.pdf>
@@ -76,7 +76,7 @@ class Brunei(
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk17-2006.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2007.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2008.pdf>
-        * <https://chittychat.wordpress.com/wp-content/uploads/2008/11/school_terms_20091.pdf>
+        * <https://web.archive.org/web/20241105162103/https://chittychat.wordpress.com/wp-content/uploads/2008/11/school_terms_20091.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2009.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2010.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2011.pdf>
@@ -84,23 +84,23 @@ class Brunei(
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2012.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2013.pdf>
         * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-14.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2015.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2016.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2017.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2017.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2018.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2019.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2020.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2021.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2022.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2023.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2024.pdf>
+        * <https://web.archive.org/web/20180713195340/http://www.jpm.gov.bn:80/Circulars%20PDF%20Library/jpmsk11-2015.pdf>
+        * <https://web.archive.org/web/20180713195319/http://www.jpm.gov.bn:80/Circulars%20PDF%20Library/jpmsk09-2016.pdf>
+        * <https://web.archive.org/web/20191124043940/http://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2017.pdf>
+        * <https://web.archive.org/web/20191124043933/http://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2017.pdf>
+        * <https://web.archive.org/web/20191124043741/http://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2018.pdf>
+        * <https://web.archive.org/web/20220125022931/http://jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2019.pdf>
+        * <https://web.archive.org/web/20240724020501/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2020.pdf>
+        * <https://web.archive.org/web/20240724020246/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2021.pdf>
+        * <https://web.archive.org/web/20240901140406/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2022.pdf>
+        * <https://web.archive.org/web/20250102120446/https://www.jpm.gov.bn/Circulars%2520PDF%2520Library/jpmsk04-2023.pdf>
+        * <https://web.archive.org/web/20241105052917/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2024.pdf>
 
     Checked with:
-        * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
-        * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
-        * <https://www.timeanddate.com/holidays/brunei/>
-        * [Jubli Emas Sultan Hassanal Bolkiah](https://www.brudirect.com/news.php?id=28316)
+        * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+        * <https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * <https://web.archive.org/web/20250130135348/https://www.timeanddate.com/holidays/brunei/>
+        * [Jubli Emas Sultan Hassanal Bolkiah](https://web.archive.org/web/20241127203518/https://www.brudirect.com/news.php?id=28316)
     """
 
     country = "BN"

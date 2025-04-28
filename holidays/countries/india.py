@@ -31,12 +31,12 @@ class India(
     """India holidays.
 
     References:
-        * <https://www.india.gov.in/calendar>
-        * <https://www.india.gov.in/state-and-ut-holiday-calendar>
+        * <https://web.archive.org/web/20250413193616/https://www.india.gov.in/calendar>
+        * <https://web.archive.org/web/20250413193624/https://www.india.gov.in/state-and-ut-holiday-calendar>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_India>
-        * <https://www.calendarlabs.com/holidays/india/2021>
-        * <https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
-        * <https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
+        * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
+        * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
     """
 
     country = "IN"

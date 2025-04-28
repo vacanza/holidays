@@ -23,9 +23,9 @@ class Bulgaria(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Bulgaria holidays.
 
     References:
-        * <http://lex.bg/laws/ldoc/1594373121>
-        * <https://www.parliament.bg/bg/24>
-        * <https://kik-info.com/spravochnik/calendar/2021/>
+        * <https://web.archive.org/web/20250402193136/https://lex.bg/laws/ldoc/1594373121>
+        * <https://web.archive.org/web/20240814165123/https://www.parliament.bg/bg/24>
+        * <https://web.archive.org/web/20250118142918/https://kik-info.com/spravochnik/calendar/2021/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria>
 
     Official holidays in Bulgaria in their current form. This class does not

@@ -43,7 +43,7 @@ VAISAKHI = "VAISAKHI"
 
 
 class _HinduLunisolar:
-    # https://www.timeanddate.com/holidays/india/buddha-purnima
+    # https://web.archive.org/web/20240804044401/https://www.timeanddate.com/holidays/india/buddha-purnima
     BUDDHA_PURNIMA_DATES = {
         2001: (APR, 30),
         2002: (MAY, 19),
@@ -82,7 +82,7 @@ class _HinduLunisolar:
         2035: (MAY, 22),
     }
 
-    # https://www.timeanddate.com/holidays/india/chhat-puja
+    # https://web.archive.org/web/20250404174934/https://www.timeanddate.com/holidays/india/chhat-puja
     CHHATH_PUJA_DATES = {
         2001: (NOV, 21),
         2002: (NOV, 10),
@@ -324,7 +324,7 @@ class _HinduLunisolar:
         2100: (OCT, 31),
     }
 
-    # https://www.timeanddate.com/holidays/india/diwali
+    # https://web.archive.org/web/20250118190944/https://www.timeanddate.com/holidays/india/diwali
     DIWALI_INDIA_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 4),
@@ -363,7 +363,7 @@ class _HinduLunisolar:
         2035: (OCT, 30),
     }
 
-    # https://www.timeanddate.com/holidays/india/dussehra
+    # https://web.archive.org/web/20250118183534/https://www.timeanddate.com/holidays/india/dussehra
     DUSSEHRA_DATES = {
         2001: (OCT, 26),
         2002: (OCT, 15),
@@ -402,7 +402,7 @@ class _HinduLunisolar:
         2035: (OCT, 11),
     }
 
-    # https://www.timeanddate.com/holidays/india/ganesh-chaturthi
+    # https://web.archive.org/web/20250219062212/https://www.timeanddate.com/holidays/india/ganesh-chaturthi
     GANESH_CHATURTHI_DATES = {
         2001: (AUG, 22),
         2002: (SEP, 10),
@@ -441,7 +441,7 @@ class _HinduLunisolar:
         2035: (SEP, 5),
     }
 
-    # https://www.timeanddate.com/holidays/india/govardhan-puja
+    # https://web.archive.org/web/20240917162551/https://www.timeanddate.com/holidays/india/govardhan-puja
     GOVARDHAN_PUJA_DATES = {
         2001: (NOV, 15),
         2002: (NOV, 5),
@@ -480,7 +480,7 @@ class _HinduLunisolar:
         2035: (OCT, 31),
     }
 
-    # https://www.timeanddate.com/holidays/india/gudi-padwa
+    # https://web.archive.org/web/20250331230057/https://www.timeanddate.com/holidays/india/gudi-padwa
     GUDI_PADWA_DATES = {
         2001: (MAR, 26),
         2002: (APR, 13),
@@ -519,7 +519,7 @@ class _HinduLunisolar:
         2035: (APR, 9),
     }
 
-    # https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
+    # https://web.archive.org/web/20241231181629/https://www.timeanddate.com/holidays/india/guru-govind-singh-jayanti
     GURU_GOBIND_SINGH_JAYANTI_DATES = {
         2001: (JAN, 2),
         2002: (JAN, 21),
@@ -554,7 +554,7 @@ class _HinduLunisolar:
         2035: (JAN, 16),
     }
 
-    # https://www.timeanddate.com/holidays/india/guru-nanak-jayanti
+    # https://web.archive.org/web/20240521074207/https://www.timeanddate.com/holidays/india/guru-nanak-jayanti
     GURU_NANAK_JAYANTI_DATES = {
         2001: (NOV, 30),
         2002: (NOV, 19),
@@ -592,7 +592,7 @@ class _HinduLunisolar:
         2035: (NOV, 15),
     }
 
-    # https://www.timeanddate.com/holidays/india/holi
+    # https://web.archive.org/web/20250410002117/https://www.timeanddate.com/holidays/india/holi
     HOLI_DATES = {
         2001: (MAR, 10),
         2002: (MAR, 29),
@@ -631,7 +631,7 @@ class _HinduLunisolar:
         2035: (MAR, 24),
     }
 
-    # https://www.timeanddate.com/holidays/india/janmashtami
+    # https://web.archive.org/web/20241205010833/https://www.timeanddate.com/holidays/india/janmashtami
     JANMASHTAMI_DATES = {
         2001: (AUG, 12),
         2002: (AUG, 31),
@@ -670,7 +670,7 @@ class _HinduLunisolar:
         2035: (AUG, 26),
     }
 
-    # https://www.timeanddate.com/holidays/india/maha-navami
+    # https://web.archive.org/web/20241125173623/https://www.timeanddate.com/holidays/india/maha-navami
     MAHA_NAVAMI_DATES = {
         2001: (OCT, 25),
         2002: (OCT, 14),
@@ -709,7 +709,7 @@ class _HinduLunisolar:
         2035: (OCT, 10),
     }
 
-    # https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
+    # https://web.archive.org/web/20250323040914/https://www.timeanddate.com/holidays/india/maha-shivaratri-shivaratri
     MAHA_SHIVARATRI_DATES = {
         2001: (FEB, 21),
         2002: (MAR, 12),
@@ -748,7 +748,7 @@ class _HinduLunisolar:
         2035: (MAR, 8),
     }
 
-    # https://www.timeanddate.com/holidays/india/mahavir-jayanti
+    # https://web.archive.org/web/20250121194712/https://www.timeanddate.com/holidays/india/mahavir-jayanti
     MAHAVIR_JAYANTI_DATES = {
         2001: (APR, 6),
         2002: (APR, 25),
@@ -787,7 +787,7 @@ class _HinduLunisolar:
         2035: (APR, 20),
     }
 
-    # https://www.timeanddate.com/holidays/india/makar-sankranti
+    # https://web.archive.org/web/20250119043432/https://www.timeanddate.com/holidays/india/makar-sankranti
     MAKAR_SANKRANTI_DATES = {
         2001: (JAN, 14),
         2002: (JAN, 14),
@@ -826,7 +826,7 @@ class _HinduLunisolar:
         2035: (JAN, 15),
     }
 
-    # https://www.timeanddate.com/holidays/india/onam
+    # https://web.archive.org/web/20241205101551/https://www.timeanddate.com/holidays/india/onam
     ONAM_DATES = {
         2001: (AUG, 31),
         2002: (AUG, 21),
@@ -865,7 +865,7 @@ class _HinduLunisolar:
         2035: (SEP, 14),
     }
 
-    # https://www.timeanddate.com/holidays/india/raksha-bandhan
+    # https://web.archive.org/web/20240720191148/https://www.timeanddate.com/holidays/india/raksha-bandhan
     RAKSHA_BANDHAN_DATES = {
         2001: (AUG, 4),
         2002: (AUG, 22),
@@ -904,7 +904,7 @@ class _HinduLunisolar:
         2035: (AUG, 18),
     }
 
-    # https://www.timeanddate.com/holidays/india/rama-navami
+    # https://web.archive.org/web/20250403054153/https://www.timeanddate.com/holidays/india/rama-navami
     RAM_NAVAMI_DATES = {
         2001: (APR, 2),
         2002: (APR, 21),
@@ -943,7 +943,7 @@ class _HinduLunisolar:
         2035: (APR, 16),
     }
 
-    # https://www.timeanddate.com/holidays/india/navratri
+    # https://web.archive.org/web/20241202103625/https://www.timeanddate.com/holidays/india/navratri
     SHARAD_NAVRATRI_DATES = {
         2001: (OCT, 17),
         2002: (OCT, 7),
@@ -1185,7 +1185,7 @@ class _HinduLunisolar:
         2100: (FEB, 24),
     }
 
-    # https://www.timeanddate.com/holidays/india/vaisakhi
+    # https://web.archive.org/web/20250121194712/https://www.timeanddate.com/holidays/india/vaisakhi
     VAISAKHI_DATES = {
         2001: (APR, 13),
         2002: (APR, 14),

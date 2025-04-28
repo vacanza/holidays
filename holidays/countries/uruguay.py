@@ -28,10 +28,10 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay>
-        * [Law #6997](https://www.impo.com.uy/diariooficial/1919/10/25/2)
-        * [Decree Law #9000](https://www.impo.com.uy/bases/decretos-ley/9000-1933)
-        * [Decree Law #14977](https://www.impo.com.uy/bases/decretos-ley/14977-1979)
-        * [Decree Law #15535](https://www.impo.com.uy/bases/decretos-ley/15535-1984)
+        * [Law #6997](https://web.archive.org/web/20250419214344/http://www.impo.com.uy/diariooficial/1919/10/25/2)
+        * [Decree Law #9000](https://web.archive.org/web/20231029150729/https://www.impo.com.uy/bases/decretos-ley/9000-1933)
+        * [Decree Law #14977](https://web.archive.org/web/20231013033006/https://www.impo.com.uy/bases/decretos-ley/14977-1979)
+        * [Decree Law #15535](https://web.archive.org/web/20210519002815/https://www.impo.com.uy/bases/decretos-ley/15535-1984/)
         * [Law #16805](http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=16805)
         * [Law #17414](http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=17414)
     """

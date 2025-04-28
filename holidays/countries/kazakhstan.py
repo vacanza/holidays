@@ -31,9 +31,9 @@ class Kazakhstan(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan>
-        * <https://egov.kz/cms/en/articles/holidays-calend>
-        * <https://adilet.zan.kz/kaz/docs/Z010000267%5F/history>
-        * <https://adilet.zan.kz/kaz/docs/Z990000493%5F#z63>
+        * <https://web.archive.org/web/20241225060133/https://egov.kz/cms/en/articles/holidays-calend>
+        * <https://web.archive.org/web/20240828112119/https://adilet.zan.kz/kaz/docs/Z010000267_/history>
+        * <https://web.archive.org/web/20240918145208/https://adilet.zan.kz/kaz/docs/Z990000493_>
 
     Islamic holidays:
         * [2025](https://en.inform.kz/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f/)
@@ -176,15 +176,15 @@ class KazakhstanStaticHolidays:
     References:
         * [2000](https://adilet.zan.kz/kaz/docs/P000000642%5F)
         * 2001:
-            * <https://adilet.zan.kz/kaz/docs/P010000282%5F>
+            * <https://web.archive.org/web/20200221115328/http://adilet.zan.kz:80/kaz/docs/P010000282_>
             * <https://adilet.zan.kz/kaz/docs/P010000515%5F>
             * <https://adilet.zan.kz/kaz/docs/P010001604%5F>
         * [2002](https://adilet.zan.kz/kaz/docs/P020000466%5F)
         * 2003:
             * <https://adilet.zan.kz/kaz/docs/P030000338%5F>
-            * <https://adilet.zan.kz/kaz/docs/P030001166%5F>
+            * <https://web.archive.org/web/20240913114351/https://www.adilet.zan.kz/kaz/docs/P030001166_>
         * 2005:
-            * <https://adilet.zan.kz/kaz/docs/P050000142%5F>
+            * <https://web.archive.org/web/20180101044854/http://adilet.zan.kz:80/kaz/docs/P050000142_>
             * <https://adilet.zan.kz/kaz/docs/P050000751%5F>
             * <https://adilet.zan.kz/kaz/docs/P050000949%5F>
         * 2006:
@@ -202,26 +202,26 @@ class KazakhstanStaticHolidays:
             * <https://adilet.zan.kz/kaz/docs/P090002216%5F>
             * <https://adilet.zan.kz/kaz/docs/P100000637%5F>
         * 2011:
-            * <https://adilet.zan.kz/kaz/docs/P1100000167>
+            * <https://web.archive.org/web/20170602150014/http://adilet.zan.kz:80/kaz/docs/P1100000167>
             * <https://adilet.zan.kz/kaz/docs/P1100000948>
         * 2012:
             * <https://adilet.zan.kz/kaz/docs/P1200000268>
             * <https://adilet.zan.kz/kaz/docs/P1200000458>
             * <https://adilet.zan.kz/kaz/docs/P1200001538>
         * 2013:
-            * <https://adilet.zan.kz/kaz/docs/P1300000345>
+            * <https://web.archive.org/web/20130424070807/http://adilet.zan.kz:80/kaz/docs/P1300000345>
             * <https://adilet.zan.kz/kaz/docs/P1300001068>
-            * <https://adilet.zan.kz/kaz/docs/P1300001322>
-        * [2014](https://adilet.zan.kz/kaz/docs/P1400000365)
-        * [2016](https://adilet.zan.kz/kaz/docs/P1600000067)
-        * [2017](https://adilet.zan.kz/kaz/docs/P1700000005)
-        * [2018](https://adilet.zan.kz/kaz/docs/P1700000864)
-        * [2019](https://adilet.zan.kz/kaz/docs/P1800000888)
-        * [2020](https://adilet.zan.kz/kaz/docs/P1900000820)
+            * <https://web.archive.org/web/20131213045017/http://adilet.zan.kz:80/kaz/docs/P1300001322>
+        * [2014](https://web.archive.org/web/20200715173002/http://adilet.zan.kz:80/kaz/docs/P1400000365)
+        * [2016](https://web.archive.org/web/20200225220136/http://adilet.zan.kz:80/kaz/docs/P1600000067)
+        * [2017](https://web.archive.org/web/20200203183402/http://adilet.zan.kz:80/kaz/docs/P1700000005)
+        * [2018](https://web.archive.org/web/20200226012057/http://adilet.zan.kz:80/kaz/docs/P1700000864)
+        * [2019](https://web.archive.org/web/20200630083024/http://adilet.zan.kz:80/kaz/docs/P1800000888)
+        * [2020](https://web.archive.org/web/20221023205506/https://adilet.zan.kz/kaz/docs/P1900000820)
         * [2021](https://adilet.zan.kz/kaz/docs/P2000000930)
         * [2022](https://adilet.zan.kz/kaz/docs/P2200000796)
-        * [2023](https://adilet.zan.kz/kaz/docs/P2300000326)
-        * [2024](https://adilet.zan.kz/kaz/docs/G24G0000109)
+        * [2023](https://web.archive.org/web/20230928205344/https://adilet.zan.kz/kaz/docs/P2300000326)
+        * [2024](https://web.archive.org/web/20250108222408/https://adilet.zan.kz/kaz/docs/G24G0000109)
         * [2025](https://adilet.zan.kz/kaz/docs/G24G0000436)
     """
 

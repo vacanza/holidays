@@ -49,7 +49,7 @@ class ThaiCalendarHolidays:
         Boun Haw Khao Padapdin (also known as Rice Growing Festival)
         is a Buddhist festival celebrated on the 14th Waning Day of Month 9.
 
-        https://www.timsthailand.com/boon-khao-pradap-din/
+        https://web.archive.org/web/20250415072547/https://www.timsthailand.com/boon-khao-pradap-din/
         """
 
         return self._add_thai_calendar_holiday(
@@ -63,7 +63,7 @@ class ThaiCalendarHolidays:
         Boun Haw Khao Salark (also known as Ancestor Festival)
         is a Buddhist festival celebrated on the 15th Waxing Day of Month 10.
 
-        https://www.timsthailand.com/boon-khao-sak/
+        https://web.archive.org/web/20250414145714/https://www.timsthailand.com/boon-khao-sak/
         """
 
         return self._add_thai_calendar_holiday(
@@ -77,7 +77,7 @@ class ThaiCalendarHolidays:
         Boun Suang Huea Nakhone Luang Prabang (also known as Vientiane Boat Racing Festival)
         is a Buddhist festival celebrated on the 1st Waning Day of Month 11.
 
-        https://sonasia-holiday.com/sonabee/laos-boat-racing-festival
+        https://web.archive.org/web/20250413191357/https://sonasia-holiday.com/sonabee/laos-boat-racing-festival
         """
 
         return self._add_thai_calendar_holiday(

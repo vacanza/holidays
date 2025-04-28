@@ -19,8 +19,8 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """Namibia holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/namibia>
-        * <https://www.timeanddate.com/holidays/namibia/>
+        * <https://web.archive.org/web/20250322231149/https://www.officeholidays.com/countries/namibia>
+        * <https://web.archive.org/web/20250423213502/https://www.timeanddate.com/holidays/namibia/>
         * <https://tinyurl.com/lacorg5835>
 
     As of 1991/2/1, whenever a public holiday falls on a Sunday, it rolls over to the monday,
@@ -70,7 +70,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Heroes' Day.
         self._add_observed(self._add_holiday_aug_26("Heroes' Day"))
 
-        # http://www.lac.org.na/laws/2004/3348.pdf
+        # https://web.archive.org/web/20240420201933/https://www.lac.org.na/laws/2004/3348.pdf
         self._add_observed(
             self._add_holiday_sep_10(
                 "Day of the Namibian Women and International Human Rights Day"
@@ -96,7 +96,7 @@ class NAM(Namibia):
 
 class NamibiaStaticHolidays:
     special_public_holidays = {
-        # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
+        # https://web.archive.org/web/20240616004907/https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
         1999: (DEC, 31, "Y2K changeover"),
         2000: (JAN, 3, "Y2K changeover"),
     }

@@ -33,7 +33,7 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Supreme Decree #1210](https://bolivia.infoleyes.com/norma/3756/decreto-supremo-1210)
         * [Supreme Decree #2750](https://bolivia.infoleyes.com/norma/6023/decreto-supremo-2750)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bolivia>
-        * <https://www.officeholidays.com/countries/bolivia>
+        * <https://web.archive.org/web/20250120171827/https://www.officeholidays.com/countries/bolivia>
     """
 
     country = "BO"
