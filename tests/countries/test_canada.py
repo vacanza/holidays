@@ -124,12 +124,12 @@ class TestCanada(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(self.government_holidays_non_observed, dts_sat, dts_sun)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"AB", "BC", "QC"}:
-                self.assertHolidayName(name_observed, self.subdiv_holidays[subdiv], dts_sun)
-                self.assertNoHoliday(self.subdiv_holidays[subdiv], dts_sat)
+                self.assertHolidayName(name_observed, holidays, dts_sun)
+                self.assertNoHoliday(holidays, dts_sat)
             elif subdiv in {"NL", "PE", "SK", "YT"}:
-                self.assertHoliday(self.subdiv_holidays[subdiv], dts_sat, dts_sun)
+                self.assertHoliday(holidays, dts_sat, dts_sun)
             else:
-                self.assertNoHoliday(self.subdiv_holidays[subdiv], dts_sat, dts_sun)
+                self.assertNoHoliday(holidays, dts_sat, dts_sun)
             self.assertNoNonObservedHoliday(
                 self.subdiv_holidays_non_observed[subdiv], dts_sat, dts_sun
             )
