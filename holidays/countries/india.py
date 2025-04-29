@@ -37,6 +37,9 @@ class India(
         * <https://web.archive.org/web/20250413193633/https://www.calendarlabs.com/holidays/india/2021>
         * <https://web.archive.org/web/20231118175007/http://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://web.archive.org/web/20231008063930/https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Tamil Nadu:
+            * [Tamil Monthly Calendar](https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
+            * [Tamil Calendar](https://www.prokerala.com/general/calendar/tamilcalendar.php)
     """
 
     country = "IN"
@@ -456,7 +459,11 @@ class India(
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
         # Pongal.
-        self._add_makar_sankranti(tr("Pongal"))
+        self._add_pongal(tr("Pongal"))
+        # Thiruvalluvar Day / Mattu Pongal.
+        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
+        # Uzhavar Thirunal.
+        self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Puthandu.

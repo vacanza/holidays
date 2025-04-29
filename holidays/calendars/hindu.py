@@ -35,6 +35,7 @@ MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 ONAM = "ONAM"
+PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
@@ -865,6 +866,44 @@ class _HinduLunisolar:
         2035: (SEP, 14),
     }
 
+    PONGAL_DATES = {
+        2001: (JAN, 14),
+        2002: (JAN, 14),
+        2003: (JAN, 15),
+        2004: (JAN, 15),
+        2005: (JAN, 14),
+        2006: (JAN, 14),
+        2007: (JAN, 15),
+        2008: (JAN, 15),
+        2009: (JAN, 14),
+        2010: (JAN, 14),
+        2011: (JAN, 15),
+        2012: (JAN, 15),
+        2013: (JAN, 14),
+        2014: (JAN, 14),
+        2015: (JAN, 15),
+        2016: (JAN, 15),
+        2017: (JAN, 14),
+        2018: (JAN, 14),
+        2019: (JAN, 15),
+        2020: (JAN, 15),
+        2021: (JAN, 14),
+        2022: (JAN, 14),
+        2023: (JAN, 15),
+        2024: (JAN, 15),
+        2025: (JAN, 14),
+        2026: (JAN, 14),
+        2027: (JAN, 15),
+        2028: (JAN, 15),
+        2029: (JAN, 14),
+        2030: (JAN, 14),
+        2031: (JAN, 15),
+        2032: (JAN, 15),
+        2033: (JAN, 14),
+        2034: (JAN, 14),
+        2035: (JAN, 15),
+    }
+
     # https://web.archive.org/web/20240720191148/https://www.timeanddate.com/holidays/india/raksha-bandhan
     RAKSHA_BANDHAN_DATES = {
         2001: (AUG, 4),
@@ -1269,6 +1308,9 @@ class _HinduLunisolar:
 
     def holi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(HOLI, year)
+
+    def pongal_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(PONGAL, year)
 
     def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(JANMASHTAMI, year)
