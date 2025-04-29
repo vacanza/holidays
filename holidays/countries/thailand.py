@@ -181,13 +181,13 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     """
 
     country = "TH"
-    supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
     default_language = "th"
     # %s (in lieu).
     observed_label = tr("ชดเชย%s")
-    supported_languages = ("en_US", "th")
     # First Holiday Decree was promulgated in March 1914.
     start_year = 1914
+    supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
+    supported_languages = ("en_US", "th")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
