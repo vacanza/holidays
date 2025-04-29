@@ -41,6 +41,9 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://www.gov.nu.ca/en/print/pdf/node/52266>
         * <https://www.officeholidays.com/countries/canada/>
         * <https://www.timeanddate.com/holidays/canada/>
+        * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
+        * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
+        * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
     """
 
     country = "CA"
@@ -149,16 +152,12 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         )
 
     def _add_thanksgiving_day(self) -> None:
-        """
+        """Adds Thanksgiving Day / Armistice Day.
+
         In 1921, Thanksgiving Day was moved to "Armistice Day" (1st Monday in the week of Nov 11).
         "Remembrance Day" and "Thanksgiving Day" split again in 1931, with Thanksgiving usually on
         the 2nd Monday of October — except in 1935, when it was delayed 10 days due to a General
         Election. It was finally fixed to the 2nd Monday of October permanently in 1957.
-
-        References:
-            * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
-            * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
-            * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
         """
         if self._year >= 1931:
             # Thanksgiving Day.
