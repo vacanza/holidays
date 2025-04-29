@@ -45,8 +45,7 @@ class Singapore(
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
-        * [Holidays Act](https://web.archive.org/web/20250405061431/http://sso.agc.gov.sg/Act/HA1998) (Act 24 of
-            1968—Holidays (Amendment) Act 1968)
+        * [Holidays Act 1998](https://web.archive.org/web/20250405061431/https://sso.agc.gov.sg/Act/HA1998)
         * [Ministry of Manpower](https://web.archive.org/web/20250424152111/https://mom.gov.sg/employment-practices/public-holidays)
 
     Limitations:

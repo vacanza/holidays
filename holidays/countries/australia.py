@@ -38,7 +38,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
           * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
           * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
           * [SA Holidays Act 1910](https://web.archive.org/web/20250420203417/https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx)
-          * [SA Public Holidays Act 2023](https://www.legislation.sa.gov.au/LZ/C/A/Public%20Holidays%20Act%202023.aspx)
+          * [SA Public Holidays Act 2023](https://web.archive.org/web/20250429092113/https://www.legislation.sa.gov.au/lz?path=%2FC%2FA%2FPublic%20Holidays%20Act%202023)
           * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
           * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
           * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)

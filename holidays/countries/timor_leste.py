@@ -474,7 +474,7 @@ class TimorLesteStaticHolidays:
             (OCT, 27, local_election),
             # https://web.archive.org/web/20250414070835/https://timor-leste.gov.tl/?p=35060&lang=en
             (NOV, 13, local_election),
-            # https://web.archive.org/web/20250417085916/https://web.archive.org/web/20250414070751/https://timor-leste.gov.tl/?p=35627&lang=en&
+            # https://web.archive.org/web/20250429134659/https://timor-leste.gov.tl/?p=35627&lang=en&
             (DEC, 26, special_national_holidays),
         ),
         2024: (

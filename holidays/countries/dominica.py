@@ -27,7 +27,7 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     Cross-Checked With:
         * [2010](https://web.archive.org/web/20240826101956/https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg)
         * [2011-2020](https://web.archive.org/web/20241112201134/https://dominicaconsulategreece.com/dominica/public-holidays/)
-        * <http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
+        * <http://archive.today/2025.04.29-124436/http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
         * [2022-2024](https://web.archive.org/web/20250407175225/https://dominica.gov.dm/about-dominica/public-holidays)
 
     While Labour Day is listed in the 1990 amendment as May 1st, this has, de facto, been

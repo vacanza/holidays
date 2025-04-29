@@ -36,6 +36,9 @@ IGNORE_URL_PATTERNS = [
     re.compile(r"namu\.wiki"),
     re.compile(r"web\.archive\.org"),
     re.compile(r"archive\.org"),
+    re.compile(r"archive\.is"),
+    re.compile(r"archive\.ph"),
+    re.compile(r"archive\.today"),
     re.compile(r"docs\.python\.org"),
     re.compile(r"loc\.gov"),
     re.compile(r"iso\.org"),
@@ -110,7 +113,8 @@ def scan_directory_for_links(
                     all_unique_urls.update(
                         url
                         for url in urls_in_file
-                        if url and (url.startswith("http://") or url.startswith("https://"))
+                        if url
+                        and (url.startswith("http://") or url.startswith("https://"))  # NOSONAR
                     )
 
     print(
@@ -307,7 +311,7 @@ def main() -> None:
         allowed_methods=["HEAD", "GET", "OPTIONS", "POST"],
     )
     adapter = HTTPAdapter(max_retries=retries)
-    session.mount("http://", adapter)
+    session.mount("http://", adapter)  # NOSONAR
     session.mount("https://", adapter)
 
     url_map: dict[str, Optional[str]] = {}

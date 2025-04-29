@@ -166,7 +166,7 @@ class JerseyStaticHolidays:
         * <https://web.archive.org/web/20250418060211/https://www.gov.je/News/2021/pages/cornriots.aspx>
         * <https://web.archive.org/web/20250414072751/https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209288.aspx>
         * <https://web.archive.org/web/20250414072814/https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20R%20%20O%209317.aspx>
-        * <https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%2042-2001.aspx>
+        * <https://web.archive.org/web/20250429110054/https://www.jerseylaw.je/laws/enacted/Pages/RO-042-2001.aspx>
         * <https://web.archive.org/web/20250414072823/https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206350.aspx>
         * <https://web.archive.org/web/20250414072950/https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206514.aspx>
         * <https://web.archive.org/web/20250414072950/https://www.jerseylaw.je/laws/enacted/Pages/Jersey%20RO%206924.aspx>

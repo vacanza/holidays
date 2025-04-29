@@ -54,9 +54,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
 
     Commemorative Day and Day Implementation Method Amendments:
         * [Ministry of Interior (87) Order No. 8706459](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年))
-        * [Ministry of Interior (88) Order No. 8897074](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年))
-        * [Ministry of Interior (89) Order No. 8972185](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年2月))
-        * [Ministry of Interior (89) Order No. 8962562](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年12月))
+        * [Ministry of Interior (88) Order No. 8897074](https://web.archive.org/web/20250429134107/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年))
+        * [Ministry of Interior (89) Order No. 8972185](https://web.archive.org/web/20250429134119/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年2月))
+        * [Ministry of Interior (89) Order No. 8962562](https://web.archive.org/web/20250429134023/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年12月))
         * [Ministry of Interior Order No. 0950045320](https://web.archive.org/web/20240916001724/https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20060309&lser=001)
         * [Ministry of Interior Order No. 0960110433](https://web.archive.org/web/20240915222212/https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001)
         * [Ministry of Interior Order No. 0960131407](https://web.archive.org/web/20240915222212/https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20070711&lser=001)

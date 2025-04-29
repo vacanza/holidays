@@ -36,7 +36,7 @@ class Kazakhstan(
         * <https://web.archive.org/web/20240918145208/https://adilet.zan.kz/kaz/docs/Z990000493_>
 
     Islamic holidays:
-        * [2025](https://en.inform.kz/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f/)
+        * [2025](https://web.archive.org/web/20250429084936/https://qazinform.com/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f)
     """
 
     country = "KZ"

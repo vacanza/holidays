@@ -22,7 +22,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * [Chapter 7, Holidays](https://web.archive.org/web/20250130144425/http://www.paclii.org/pw/legis/consol_act/gpt1262/)
         * <https://web.archive.org/web/20240627055859/https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
-        * [EO336 Memorial Day repealed](https://www.facebook.com/PalauPresident/posts/195883107230463)
+        * [EO336 Memorial Day repealed](https://web.archive.org/web/20250429131246/https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPalauPresident%2Fposts%2F195883107230463)
         * [Earliest source for President's Day](https://web.archive.org/web/20250429075658/https://www.taiwanembassy.org/pal_en/post/792.html)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the

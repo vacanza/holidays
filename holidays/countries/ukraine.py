@@ -47,9 +47,9 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     def _is_observed(self, dt: date) -> bool:
         # 27.01.1995: holiday on weekend move to next workday
-        # https://web.archive.org/web/20250212225249/https://zakon.rada.gov.ua/laws/show/35/95-%D0%B2%D1%80
+        # https://web.archive.org/web/20230731064358/https://zakon.rada.gov.ua/laws/show/35/95-вр#Text
         # 10.01.1998: cancelled
-        # https://web.archive.org/web/20250121184919/https://zakon.rada.gov.ua/laws/show/785/97-%D0%B2%D1%80
+        # https://web.archive.org/web/20250121184919/https://zakon.rada.gov.ua/laws/show/785/97-вр
         # 23.04.1999: holiday on weekend move to next workday
         # https://web.archive.org/web/20240315074159/http://zakon.rada.gov.ua/laws/show/576-14
         return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)

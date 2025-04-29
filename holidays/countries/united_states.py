@@ -78,7 +78,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * [Frances Xavier Cabrini Day](https://web.archive.org/web/20250405014031/https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf)
         * Northern Mariana Islands (subdivision MP):
             * <https://web.archive.org/web/20240727045236/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
-            * <https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://web.archive.org/web/20240727045236/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0>
+            * <https://web.archive.org/web/20250429140158/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
         * American Samoa:
             * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
     """
