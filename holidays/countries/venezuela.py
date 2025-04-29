@@ -60,7 +60,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Declaration of Independence.
             self._add_holiday_apr_19(tr("Declaración de la Independencia"))
 
-        # https://web.archive.org/web/20220619063359/https://bit.ly/3b4xD1L
+        # https://web.archive.org/web/20250428122616/https://venezuelaenretrospectiva.wordpress.com/2016/05/01/1o-de-mayo-dia-del-trabajador-venezolano/
         if self._year >= 1946:
             # International Worker's Day.
             self._add_labor_day(tr("Dia Mundial del Trabajador"))

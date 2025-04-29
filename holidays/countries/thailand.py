@@ -52,13 +52,13 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * [Ascension of HM King Ananda Mahidol (MAR 1935)](https://th.wikisource.org/wiki/ประกาศนายกรัฐมนตรี_ลงวันที่_7_มีนาคม_2477_(รก.))
         * [Holidays Act Amendment (JAN 1938)](https://web.archive.org/web/20240812112232/https://ratchakitcha.soc.go.th/documents/1105432.pdf)
         * [Translation Typo Fixed for the JAN 1938 Amendment](https://ratchakitcha.soc.go.th/documents/1105491.pdf)
-        * [Constitution Petition Day renamed National Day (JUL 1938)](https://web.archive.org/web/20241109062813/https://th.wikisource.org/wiki/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5_%E0%B8%A5%E0%B8%87%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88_18_%E0%B8%81%E0%B8%A3%E0%B8%81%E0%B8%8E%E0%B8%B2%E0%B8%84%E0%B8%A1_2481)
+        * [Constitution Petition Day renamed National Day (JUL 1938)](https://web.archive.org/web/20241109062813/https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_18_กรกฎาคม_2481)
         * [Holidays Act Amendment (MAR 1940)](https://web.archive.org/web/20240813142812/https://ratchakitcha.soc.go.th/documents/1110471.pdf)
         * [Holidays Act Amendment (SEP 1940) (In-effect 1941)](https://web.archive.org/web/20231021230955/https://ratchakitcha.soc.go.th/documents/1111954.pdf)
-        * [Removal of Royal Language for King's Birthday (B.E 2484/1941)](https://web.archive.org/web/20241213001307/https://th.wikisource.org/wiki/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5_%E0%B8%A5%E0%B8%87%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88_19_%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%A2%E0%B8%B2%E0%B8%A2%E0%B8%99_2484)
-        * [Holidays Act, Franco-Thai War Armistice Day added (B.E. 2485/1942)](https://ratchakitcha.soc.go.th/documents/1114825.pdf)
-        * [Holidays Act, Franco-Thai War Armistice Day Repealed (B.E. 2487/1944)](https://ratchakitcha.soc.go.th/documents/1121365.pdf)
-        * [Removal of Royal Language for King's Birthday Repealed (B.E 2488/1945)](https://web.archive.org/web/20241210051421/https://th.wikisource.org/wiki/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5_%E0%B8%A5%E0%B8%87%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88_12_%E0%B8%A1%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%A1_2488)
+        * [Removal of Royal Language for King's Birthday (B.E 2484/1941)](https://web.archive.org/web/20241213001307/https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_19_กันยายน_2484)
+        * [Holidays Act, Franco-Thai War Armistice Day added (B.E. 2485/1942)](https://web.archive.org/web/20250428123610/https://ratchakitcha.soc.go.th/documents/1114825.pdf)
+        * [Holidays Act, Franco-Thai War Armistice Day Repealed (B.E. 2487/1944)](https://web.archive.org/web/20250428123653/https://ratchakitcha.soc.go.th/documents/1121365.pdf)
+        * [Removal of Royal Language for King's Birthday Repealed (B.E 2488/1945)](https://web.archive.org/web/20241210051421/https://th.wikisource.org/wiki/ประกาศสำนักนายกรัฐมนตรี_ลงวันที่_12_มกราคม_2488)
         * [Holidays Act Amendment (DEC B.E. 2488/1945)](https://web.archive.org/web/20231022121809/https://ratchakitcha.soc.go.th/documents/1123218.pdf)
         * [Holidays Act Amendment (AUG B.E. 2489/1946)](https://ratchakitcha.soc.go.th/documents/1124494.pdf)
         * [Special Weekend Arrangement for 4 Southern Provinces (4SP)](https://ratchakitcha.soc.go.th/documents/1129175.pdf)
@@ -123,12 +123,12 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://web.archive.org/web/20250126073943/https://hilight.kapook.com/view/148862>
         * [National Father's Day](https://web.archive.org/web/20230205075650/https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5)
         * Constitution Day:
-            * [ประเทศไทย](https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ_)
+            * <https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ>
             * <https://web.archive.org/web/20250212210436/https://hilight.kapook.com/view/18208>
             * [Bank of Thailand](http://tiny.cc/wa_bot_1992)
-            * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-%E0%B8%9E.%E0%B8%A8.2475.aspx>
+            * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
         * New Year's Eve:
-            * [Bank of Thailand](http://tiny.cc/wa_bot_1992)
+            * <https://web.archive.org/web/20230205072056/https%3A//www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx>
             * <https://resolution.soc.go.th/?prep_id=205799>
             * <https://resolution.soc.go.th/?prep_id=210744>
         * [Makha Bucha](https://web.archive.org/web/20240908185818/https://www.onab.go.th/th/content/category/detail/id/73/iid/3403)

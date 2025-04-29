@@ -45,12 +45,12 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         * [2009](https://web.archive.org/web/20230726083438/https://www.gov.cn/gongbao/content/2008/content_1175823.htm)
         * [2008](https://web.archive.org/web/20240610103541/https://www.gov.cn/gongbao/content/2008/content_859870.htm)
         * [2007](https://web.archive.org/web/20230727050141/https://www.gov.cn/gongbao/content/2007/content_503397.htm)
-        * [2006](https://web.archive.org/web/20221130214247/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2006%E5%B9%B4%E9%83%A8%E5%88%86%E8%8A%82%E5%81%87%E6%97%A5%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
-        * [2005](https://web.archive.org/web/20210212184000/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2005%E5%B9%B4%E9%83%A8%E5%88%86%E8%8A%82%E5%81%87%E6%97%A5%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
-        * [2004](https://web.archive.org/web/20210212183857/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2004%E5%B9%B4%E9%83%A8%E5%88%86%E8%8A%82%E5%81%87%E6%97%A5%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
-        * [2003](https://web.archive.org/web/20210302090553/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2003%E5%B9%B4%E9%83%A8%E5%88%86%E8%8A%82%E5%81%87%E6%97%A5%E4%BC%91%E6%81%AF%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
-        * [2002](https://web.archive.org/web/20180122201149/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2002%E5%B9%B4%E9%83%A8%E5%88%86%E8%8A%82%E5%81%87%E6%97%A5%E4%BC%91%E6%81%AF%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
-        * [2001](https://web.archive.org/web/20180123032517/https://zh.wikisource.org/wiki/%E5%9B%BD%E5%8A%A1%E9%99%A2%E5%8A%9E%E5%85%AC%E5%8E%85%E5%85%B3%E4%BA%8E2001%E5%B9%B4%E6%98%A5%E8%8A%82%E3%80%81%E2%80%9C%E4%BA%94%E4%B8%80%E2%80%9D%E3%80%81%E2%80%9C%E5%8D%81%E4%B8%80%E2%80%9D%E6%94%BE%E5%81%87%E5%AE%89%E6%8E%92%E7%9A%84%E9%80%9A%E7%9F%A5)
+        * [2006](https://web.archive.org/web/20221130214247/https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知)
+        * [2005](https://web.archive.org/web/20210212184000/https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知)
+        * [2004](https://web.archive.org/web/20210212183857/https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知)
+        * [2003](https://web.archive.org/web/20210302090553/https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知)
+        * [2002](https://web.archive.org/web/20180122201149/https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知)
+        * [2001](https://web.archive.org/web/20180123032517/https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知)
 
     Checked With:
         * <https://web.archive.org/web/20250213085558/https://www.officeholidays.com/countries/china/2023>

@@ -93,7 +93,7 @@ class Brunei(
         * <https://web.archive.org/web/20240724020501/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2020.pdf>
         * <https://web.archive.org/web/20240724020246/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2021.pdf>
         * <https://web.archive.org/web/20240901140406/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2022.pdf>
-        * <https://web.archive.org/web/20250102120446/https://www.jpm.gov.bn/Circulars%2520PDF%2520Library/jpmsk04-2023.pdf>
+        * <https://web.archive.org/web/20250428091155/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk04-2023.pdf>
         * <https://web.archive.org/web/20241105052917/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk06-2024.pdf>
 
     Checked with:

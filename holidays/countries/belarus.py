@@ -32,7 +32,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * <https://ru.wikipedia.org/wiki/Праздники_Белоруссии>
 
     Cross-checked With:
-        * <https://web.archive.org/web/20250415105200/https://web.archive.org/web/20250421002507/https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
+        * <https://web.archive.org/web/20250413194446/https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
     """
 
     country = "BY"

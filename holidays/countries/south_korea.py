@@ -55,13 +55,13 @@ class SouthKorea(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea>
-        * <https://web.archive.org/web/20250201034435/http://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B4%80%EA%B3%B5%EC%84%9C%EC%9D%98%20%EA%B3%B5%ED%9C%B4%EC%9D%BC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95>
+        * <https://web.archive.org/web/20240429121214/https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
         * <https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
-        * <https://web.archive.org/web/20250404052310/https://namu.wiki/w/%EB%8C%80%ED%86%B5%EB%A0%B9%20%EC%84%A0%EA%B1%B0%EC%9D%BC>
-        * <https://web.archive.org/web/20250125102245/https://namu.wiki/w/%EA%B3%B5%ED%9C%B4%EC%9D%BC/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD>
-        * <https://web.archive.org/web/20250125102245/https://namu.wiki/w/%EA%B3%B5%ED%9C%B4%EC%9D%BC/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD/역사>
-        * <https://web.archive.org/web/20230815034831/https://namu.wiki/w/%EB%8C%80%EC%B2%B4%20%ED%9C%B4%EC%9D%BC%20%EC%A0%9C%EB%8F%84>
+        * <https://namu.wiki/w/대통령%20선거일>
+        * <https://namu.wiki/w/공휴일/대한민국>
+        * <https://namu.wiki/w/공휴일/대한민국/역사>
+        * <https://namu.wiki/w/대체%20휴일%20제도>
         * [TH localization 1](https://web.archive.org/web/20241217184803/https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do)
         * [TH localization 2](https://web.archive.org/web/20200216004120/http://thailand.korean-culture.org:80/th/138/korea/38)
 
@@ -293,9 +293,9 @@ class SouthKoreaStaticHolidays:
     """South Korea special holidays.
 
     References:
-        * <https://web.archive.org/web/20230828094617/https://namu.wiki/w/%EC%9E%84%EC%8B%9C%EA%B3%B5%ED%9C%B4%EC%9D%BC> *
-        * <https://web.archive.org/web/20250125102245/https://namu.wiki/w/%EA%B3%B5%ED%9C%B4%EC%9D%BC/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD> **
-        * <https://web.archive.org/web/20230815034831/https://namu.wiki/w/%EB%8C%80%EC%B2%B4%20%ED%9C%B4%EC%9D%BC%20%EC%A0%9C%EB%8F%84>
+        * <https://namu.wiki/w/임시공휴일> *
+        * <https://namu.wiki/w/공휴일/대한민국> **
+        * <https://namu.wiki/w/대체%20휴일%20제도>
 
     1. Election Dates featured here are the ones prior to the proper recodification to
         Article 34 of the Public Official Election Act(September 2006)

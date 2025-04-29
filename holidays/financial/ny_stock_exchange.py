@@ -42,7 +42,7 @@ class NewYorkStockExchange(
 
     Historical data:
         * <https://web.archive.org/web/20221206064307/https://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf>
-        * <https://web.archive.org/web/20211101162021/https://web.archive.org/web/20250426144831/https://www.nyse.com/markets/hours-calendars>
+* <https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars>
     """
 
     market = "XNYS"

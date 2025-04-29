@@ -131,13 +131,13 @@ class Argentina(
         * <https://servicios.lanacion.com.ar/app-mobile/feriados/2016>
         * <https://servicios.lanacion.com.ar/app-mobile/feriados/2017>
         * <https://servicios.lanacion.com.ar/app-mobile/feriados/2018>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20240106040241/https://www.argentina.gob.ar/interior/feriados-nacionales-2019>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250218132211/https://www.argentina.gob.ar/interior/feriados-nacionales-2020>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250424202110/https://www.argentina.gob.ar/interior/feriados-nacionales-2021>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250213230843/https://www.argentina.gob.ar/interior/feriados-nacionales-2022>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250320070326/https://www.argentina.gob.ar/interior/feriados-nacionales-2023>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250405100504/https://www.argentina.gob.ar/interior/feriados-nacionales-2024>
-        * <https://web.archive.org/web/20250219140544/https://web.archive.org/web/20250426102342/https://www.argentina.gob.ar/interior/feriados-nacionales-2025>
+        * <https://web.archive.org/web/20201102185631/https://www.argentina.gob.ar/interior/feriados-nacionales-2019>
+        * <https://web.archive.org/web/20220111194913/https://www.argentina.gob.ar/interior/feriados-nacionales-2020>
+        * <https://web.archive.org/web/20220527150354/https://www.argentina.gob.ar/interior/feriados-nacionales-2021>
+        * <https://web.archive.org/web/20230307074516/https://www.argentina.gob.ar/interior/feriados-nacionales-2022>
+        * <https://web.archive.org/web/20231231171358/https://www.argentina.gob.ar/interior/feriados-nacionales-2023>
+        * <https://web.archive.org/web/20241211171318/https://www.argentina.gob.ar/interior/feriados-nacionales-2024>
+        * <https://web.archive.org/web/20250106182732/https://www.argentina.gob.ar/interior/feriados-nacionales-2025>
         * [Entre Ríos](https://web.archive.org/web/20241003004359/https://www.entrerios.gov.ar/dgrrhh/index.php?i=7)
         * [Tierra del Fuego](https://web.archive.org/web/20240716112344/https://www.justierradelfuego.gov.ar/dias-no-laborables/)
         * Jujuy:

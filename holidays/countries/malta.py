@@ -20,7 +20,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Malta holidays.
 
     References:
-        * <https://web.archive.org/web/20250105224348/https://www.gov.mt/en/About%2520Malta/Pages/Public%2520Holidays.aspx>
+        * <https://web.archive.org/web/20240406224540/https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx>
         * [Att 10 tal-1980 (Oldest Maltese Holidays Law available online in full)](https://web.archive.org/web/20250427184411/https://legislation.mt/eli/act/1980/10/mlt)
         * [A.L. 40 tal-1987 (Additional Holidays added)](https://web.archive.org/web/20250427184605/https://legislation.mt/eli/ln/1987/8/mlt)
         * [Att 8 tal-1989 (Additional Holidays added)](https://web.archive.org/web/20250427184429/https://legislation.mt/eli/act/1989/8)
