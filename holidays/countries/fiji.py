@@ -51,12 +51,12 @@ class Fiji(
          * [2016](https://web.archive.org/web/20160520212352/http://www.fiji.gov.fj:80/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx?)
          * [2017](https://web.archive.org/web/20250319202817/https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS)
          * [2018](https://web.archive.org/web/20180727205733/http://www.employment.gov.fj/images/Laws/Press%20Release%20-%20Government%20Approves%202018%20Public%20Holidays.pdf)
-         * [2019](https://web.archive.org/web/20191018023027/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-         * [2020](https://web.archive.org/web/20210103183942/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-         * [2021-2022](https://web.archive.org/web/20221223004409/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-         * [2023](https://web.archive.org/web/20231129154609/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-         * [2024](https://web.archive.org/web/20250121185434/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
-         * [2025](https://web.archive.org/web/20250318092311/https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2019](https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2020](https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2021-2022](https://web.archive.org/web/20221223004409/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2023](https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2024](https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2025](https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
     """
 
     country = "FJ"
