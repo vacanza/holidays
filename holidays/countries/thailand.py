@@ -88,7 +88,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * [Holidays Act, B.E. 2562 (2019)](https://web.archive.org/web/20250428134835/https://ratchakitcha.soc.go.th/documents/17082311.pdf)
 
     Checked with:
-        * [Bank of Thailand](https://web.archive.org/web/20230205072056/https%3A//www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
+        * [Bank of Thailand](https://web.archive.org/web/20230205072056/https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
 
     In Lieus:
         * [isranews.org](https://web.archive.org/web/20230205073547/https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html)
@@ -103,10 +103,10 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * [National Children's Day](https://web.archive.org/web/20230929070232/https://thainews.prd.go.th/banner/th/children'sday/)
         * [Chakri Memorial Day](https://web.archive.org/web/20221003075521/https://www.ocac.go.th/news/๖-เมษายน-วันจักรี/v)
         * Songkran Festival:
-            * [museumsiam.org](https://web.archive.org/web/20230205074402/https%3A//m.museumsiam.org/da-detail2.php?MID=3&CID=177&CONID=4033)
+            * [museumsiam.org](https://web.archive.org/web/20230205074402/https://m.museumsiam.org/da-detail2.php?MID=3&CID=177&CONID=4033)
             * <https://resolution.soc.go.th/?prep_id=123659>
         * [National Labour Day](https://web.archive.org/web/20220629085454/https://www.thairath.co.th/lifestyle/culture/1832869)
-        * [National Day (24 June: Defunct)](https://web.archive.org/web/20091106202525/http%3A//www.culture.go.th/study.php?&YY=2548&MM=11&DD=2)
+        * [National Day (24 June: Defunct)](https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2)
         * Coronation Day:
             * <https://web.archive.org/web/20220817223130/https://www.matichon.co.th/politics/news_526200>
             * <https://web.archive.org/web/20230205075326/https://workpointtoday.com/news1-5/>
@@ -119,16 +119,16 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://th.wikipedia.org/wiki/วันปิยมหาราช>
             * <https://web.archive.org/web/20231024220855/https://www.sanook.com/news/9072518/>
         * HM King Bhumibol Adulyadej's Birthday
-            * [Ministry of Culture](https://web.archive.org/web/20091106202525/http%3A//www.culture.go.th/study.php?&YY=2548&MM=11&DD=2)
+            * [Ministry of Culture](https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2)
             * <https://web.archive.org/web/20250126073943/https://hilight.kapook.com/view/148862>
         * [National Father's Day](https://web.archive.org/web/20230205075650/https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5)
         * Constitution Day:
             * <https://th.wikipedia.org/wiki/วันรัฐธรรมนูญ>
             * <https://web.archive.org/web/20250212210436/https://hilight.kapook.com/view/18208>
-            * [Bank of Thailand](https://web.archive.org/web/20230205072056/https%3A//www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
+            * [Bank of Thailand](https://web.archive.org/web/20230205072056/https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
             * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
         * New Year's Eve:
-            * [Bank of Thailand](https://web.archive.org/web/20230205072056/https%3A//www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
+            * [Bank of Thailand](https://web.archive.org/web/20230205072056/https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
             * <https://web.archive.org/web/20250428140227/https://resolution.soc.go.th/?prep_id=205799>
             * <https://web.archive.org/web/20250428152003/https://resolution.soc.go.th/?prep_id=210744>
         * [Makha Bucha](https://web.archive.org/web/20240908185818/https://www.onab.go.th/th/content/category/detail/id/73/iid/3403)
@@ -144,7 +144,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             * <https://web.archive.org/web/20250428140422/https://resolution.soc.go.th/PDF_UPLOAD/2510/932141.pdf>
             * <https://web.archive.org/web/20161028001043/http://www.myhora.com:80/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx>
         * [Royal Thai Armed Forces Day](https://th.wikipedia.org/wiki/วันกองทัพไทย)
-        * [Teacher's Day](https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf)
+        * [Teacher's Day](https://web.archive.org/web/20250117105542/http://event.sanook.com/day/teacher-day/)
 
     !!! info "Info"
         If Public Holiday falls on weekends, (in lieu) on workday.
