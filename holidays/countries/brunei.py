@@ -59,31 +59,31 @@ class Brunei(
     References:
         * <https://web.archive.org/web/20250421085743/https://www.labour.gov.bn/lists/upcomming%20events/allitems.aspx>
         * <https://web.archive.org/web/20250421234214/https://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk15-1998.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1999.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk05-2000.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2000.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk13-2000.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2001.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2002.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk02-2003.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2004.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2005.pdf>
-        * <https://www.pmo.gov.bn/Circulars%20PDF%20Library/jpmsk12-2005.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk03-2006.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk17-2006.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2007.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2008.pdf>
+        * <https://web.archive.org/web/20250429080129/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk12-1997.pdf>
+        * <https://web.archive.org/web/20250429080148/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1998.pdf>
+        * <https://web.archive.org/web/20250429080326/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk15-1998.pdf>
+        * <https://web.archive.org/web/20250429080154/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk14-1999.pdf>
+        * <https://web.archive.org/web/20250428210642/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk05-2000.pdf>
+        * <https://web.archive.org/web/20250429075903/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2000.pdf>
+        * <https://web.archive.org/web/20250429080137/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk13-2000.pdf>
+        * <https://web.archive.org/web/20250428210647/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2001.pdf>
+        * <https://web.archive.org/web/20250429080046/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2002.pdf>
+        * <https://web.archive.org/web/20250428210125/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk02-2003.pdf>
+        * <https://web.archive.org/web/20250429075953/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2004.pdf>
+        * <https://web.archive.org/web/20250429080052/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk11-2005.pdf>
+        * <https://web.archive.org/web/20250429080357/https://www.pmo.gov.bn/Circulars%20PDF%20Library/jpmsk12-2005.pdf>
+        * <https://web.archive.org/web/20250428210640/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk03-2006.pdf>
+        * <https://web.archive.org/web/20250429080354/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk17-2006.pdf>
+        * <https://web.archive.org/web/20250429080005/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2007.pdf>
+        * <https://web.archive.org/web/20250428211158/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2008.pdf>
         * <https://web.archive.org/web/20241105162103/https://chittychat.wordpress.com/wp-content/uploads/2008/11/school_terms_20091.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2009.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2010.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2011.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2012.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2012.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2013.pdf>
-        * <https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-14.pdf>
+        * <https://web.archive.org/web/20250428210649/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2009.pdf>
+        * <https://web.archive.org/web/20250428211159/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-2010.pdf>
+        * <https://web.archive.org/web/20250429080022/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2011.pdf>
+        * <https://web.archive.org/web/20250428211153/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk08-2012.pdf>
+        * <https://web.archive.org/web/20250429084043/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk10-2012.pdf>
+        * <https://web.archive.org/web/20250428210648/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2013.pdf>
+        * <https://web.archive.org/web/20250428211155/https://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk09-14.pdf>
         * <https://web.archive.org/web/20180713195340/http://www.jpm.gov.bn:80/Circulars%20PDF%20Library/jpmsk11-2015.pdf>
         * <https://web.archive.org/web/20180713195319/http://www.jpm.gov.bn:80/Circulars%20PDF%20Library/jpmsk09-2016.pdf>
         * <https://web.archive.org/web/20191124043940/http://www.jpm.gov.bn/Circulars%20PDF%20Library/jpmsk07-2017.pdf>

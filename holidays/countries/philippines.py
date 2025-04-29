@@ -44,7 +44,7 @@ class Philippines(
         * [Republic Act No. 9645](https://web.archive.org/web/20231014172648/https://www.officialgazette.gov.ph/2009/06/12/republic-act-no-9645/)
         * [Republic Act No. 9849](https://web.archive.org/web/20250424053703/http://officialgazette.gov.ph/2009/12/11/republic-act-no-9849/)
         * [Republic Act No. 10966](https://web.archive.org/web/20250419183417/http://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/)
-        * [Proclamation No. 944/2020](https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
+        * [Proclamation No. 944/2020](https://web.archive.org/web/20250428055016/https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
         * [Proclamation No. 985/2020](https://web.archive.org/web/20230901112559/https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/)
         * [Proclamation No. 90/2022](https://web.archive.org/web/20231026052921/https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/)
         * [Proclamation No. 665/2024](https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/)

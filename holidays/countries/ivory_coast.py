@@ -145,7 +145,7 @@ class IvoryCoastStaticHolidays:
 
     References:
         * [2010 Presidential Election](https://web.archive.org/web/20250427185110/https://www.gouv.ci/_actualite-article.php?d=4.&recordID=1255&p=366)
-        * [2024 AFCON](https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
+        * [2024 AFCON](https://web.archive.org/web/20250429075000/https://apanews.net/public-holiday-as-cote-divoire-wins-afcon-trophy/)
     """
 
     special_public_holidays = {

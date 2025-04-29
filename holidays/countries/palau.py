@@ -23,7 +23,7 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Chapter 7, Holidays](https://web.archive.org/web/20250130144425/http://www.paclii.org/pw/legis/consol_act/gpt1262/)
         * <https://web.archive.org/web/20240627055859/https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
         * [EO336 Memorial Day repealed](https://www.facebook.com/PalauPresident/posts/195883107230463)
-        * [Earliest source for President's Day](https://www.taiwanembassy.org/pal_en/post/792.html)
+        * [Earliest source for President's Day](https://web.archive.org/web/20250429075658/https://www.taiwanembassy.org/pal_en/post/792.html)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the
     following Monday shall be observed as a holiday. If any of the holidays enumerated in

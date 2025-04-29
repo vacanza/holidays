@@ -117,14 +117,14 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
-        * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
-        * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
-        * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
+        * [2010](https://web.archive.org/web/20250428204804/https://njt.hu/jogszabaly/2009-20-20-1X)
+        * [2011](https://web.archive.org/web/20250428204915/https://njt.hu/jogszabaly/2010-7-20-2X)
+        * [2012](https://web.archive.org/web/20250428204812/https://njt.hu/jogszabaly/2011-39-20-2X)
         * [2012-2013](https://web.archive.org/web/20230719163315/https://njt.hu/jogszabaly/2012-28-20-2X)
         * [2014](https://web.archive.org/web/20241104082745/https://njt.hu/jogszabaly/2013-33-20-2X)
         * [2015](https://web.archive.org/web/20241104081744/https://njt.hu/jogszabaly/2014-28-20-2X)
         * [2016](https://web.archive.org/web/20230719163025/https://njt.hu/jogszabaly/2015-18-20-2X)
-        * [2018](https://njt.hu/jogszabaly/2017-61-B0-15)
+        * [2018](https://web.archive.org/web/20250429080658/https://njt.hu/jogszabaly/2017-61-B0-15)
         * [2019](https://web.archive.org/web/20241211095342/https://njt.hu/jogszabaly/2018-6-20-53)
         * [2020](https://web.archive.org/web/20241104072826/https://njt.hu/jogszabaly/2019-7-20-53)
         * [2021](https://web.archive.org/web/20241102122816/https://njt.hu/jogszabaly/2020-14-20-7Q)

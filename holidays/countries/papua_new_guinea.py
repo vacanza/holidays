@@ -28,8 +28,8 @@ class PapuaNewGuinea(
     Checked With:
         * <https://web.archive.org/web/20250215234848/https://www.ipa.gov.pg/public/Holidays.aspx>
         * <https://web.archive.org/web/20240119163205/https://www.businessadvantagepng.com/papua-new-guinea-public-for-holidays/>
-        * [2019](https://www.scribd.com/document/465334129/PNG-2019-Gazetted-Public-Holidays-pdf)
-        * [2020](https://publicholidays.asia/wp-content/uploads/2020/01/PNG_PublicHolidays_2020.png)
+        * [2019](https://web.archive.org/web/20250429081247/https://www.scribd.com/document/465334129/PNG-2019-Gazetted-Public-Holidays-pdf)
+        * [2020](https://web.archive.org/web/20250429081229/https://publicholidays.asia/wp-content/uploads/2020/01/PNG_PublicHolidays_2020.png)
         * [2021](https://web.archive.org/web/20240625200332/https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf)
         * [2022](https://web.archive.org/web/20230530042019/https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf)
         * [2023](https://web.archive.org/web/20240413053729/https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf)

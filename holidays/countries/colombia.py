@@ -20,7 +20,7 @@ class Colombia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Colombia holidays.
 
     References:
-        * [Ley 35 de 1939 (DEC 4)](https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=86145)
+        * [Ley 35 de 1939 (DEC 4)](https://web.archive.org/web/20250429071624/https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=86145)
         * [Decreto 2663 de 1950 (AUG 5)](https://web.archive.org/web/20241113003142/https://www.suin-juriscol.gov.co/viewDocument.asp?id=1874133)
         * [Decreto 3743 de 1950 (DEC 20)](https://web.archive.org/web/20240725032513/http://suin-juriscol.gov.co/viewDocument.asp?id=1535683)
         * [Ley 51 de 1983 (DEC 6)](https://web.archive.org/web/20250423030608/https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4954)

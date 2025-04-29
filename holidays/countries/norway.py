@@ -28,7 +28,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     Note that holidays falling on a sunday is "lost", it will not be moved
     to another day to make up for the collision.
 
-    In Norway, ALL sundays are considered a holiday (https://snl.no/helligdag).
+    In Norway, ALL sundays are considered a holiday (https://web.archive.org/web/20250202193959/https://snl.no/helligdag).
     Initialize this class with `include_sundays=False` to not include sundays as a holiday.
     """
 

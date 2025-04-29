@@ -25,7 +25,7 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [Decreto n. 22.647, de 17.04.1933](https://web.archive.org/web/20220414202918/https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-22647-17-abril-1933-558774-publicacaooriginal-80337-pe.html)
         * [Lei n. 662, de 6.04.1949](https://web.archive.org/web/20240913060643/https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
         * [Lei n. 6.802, de 30.06.1980](https://web.archive.org/web/20250206215621/http://www.planalto.gov.br/ccivil_03/leis/L6802.htm)
-        * [Resolução n. 2.516, de 29.06.1998](https://www.bcb.gov.br/pre/normativos/res/1998/pdf/res_2516_v2_P.pdf)
+        * [Resolução n. 2.516, de 29.06.1998](https://web.archive.org/web/20250428203302/https://www.bcb.gov.br/pre/normativos/res/1998/pdf/res_2516_v2_P.pdf)
         * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
 
     Historical data:

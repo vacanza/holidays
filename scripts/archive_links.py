@@ -35,6 +35,7 @@ IGNORE_URL_PATTERNS = [
     re.compile(r"wikisource\.org"),
     re.compile(r"namu\.wiki"),
     re.compile(r"web\.archive\.org"),
+    re.compile(r"archive\.org"),
     re.compile(r"docs\.python\.org"),
     re.compile(r"loc\.gov"),
     re.compile(r"iso\.org"),

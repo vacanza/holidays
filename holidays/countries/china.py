@@ -56,7 +56,7 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
         * <https://web.archive.org/web/20250213085558/https://www.officeholidays.com/countries/china/2023>
         * <https://web.archive.org/web/20250210121944/https://www.china-briefing.com/news/china-public-holiday-2023-schedule/>
         * <https://web.archive.org/web/20250218010025/https://www.timeanddate.com/calendar/?year=2023&country=41>
-        * [2001-2010](https://m.wannianli.tianqi.com/fangjiaanpai/2001.html)
+        * [2001-2010](https://web.archive.org/web/20250429074341/https://m.wannianli.tianqi.com/fangjiaanpai/2001.html)
 
     Limitations:
         * Only checked with the official General Office of the State Council Notice from 2001

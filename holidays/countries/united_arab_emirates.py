@@ -201,7 +201,7 @@ class UnitedArabEmiratesStaticHolidays:
     """United Arab Emirates special holidays.
 
     Special Eid al-Fitr entries for Ramadan 29 from 2020 onwards:
-        * [2019](https://www.mohre.gov.ae/en/media-centre/news/30/1/2019/عطلة-رسمية-يوم-زيارة-البابا-للمشاركين-في-فعالياته-من-القطاع-الخاص.aspx?DisableResponsive=1)
+        * [2019](https://web.archive.org/web/20250429081745/https://www.mohre.gov.ae/en/media-centre/news/30/1/2019/عطلة-رسمية-يوم-زيارة-البابا-للمشاركين-في-فعالياته-من-القطاع-الخاص.aspx?DisableResponsive=1)
         * [2020](https://web.archive.org/web/20210804023600/https://gulfbusiness.com/revealed-uae-private-sector-holidays-for-eid-al-fitr-2020/)
         * [2021](https://web.archive.org/web/20220508191126/https://www.timeoutdubai.com/news/466278-eid-al-fitr-holiday-2021-dubai)
         * 2022:
@@ -212,7 +212,7 @@ class UnitedArabEmiratesStaticHolidays:
         * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
 
     Cross-Checked With:
-        * <https://www.timeanddate.com/holidays/united-arab-emirates/2021?hol=134217729>
+        * <https://web.archive.org/web/20250429081729/https://www.timeanddate.com/holidays/united-arab-emirates/2021?hol=134217729>
     """
 
     # Eid al-Fitr Holiday.

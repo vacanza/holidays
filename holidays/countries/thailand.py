@@ -93,7 +93,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     In Lieus:
         * [isranews.org](https://web.archive.org/web/20230205073547/https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html)
         * <https://web.archive.org/web/20250428135057/https://resolution.soc.go.th/?prep_id=99159317>
-        * <https://resolution.soc.go.th/?prep_id=196007>
+        * <https://web.archive.org/web/20250428151918/https://resolution.soc.go.th/?prep_id=196007>
         * <https://github.com/vacanza/holidays/pull/929>
         * <https://web.archive.org/web/20250418080608/https://www.thairath.co.th/lifestyle/life/2812118>
         * <https://web.archive.org/web/20250408214054/https://www.thaipbs.or.th/news/content/346216>
@@ -130,7 +130,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * New Year's Eve:
             * [Bank of Thailand](https://web.archive.org/web/20230205072056/https%3A//www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx)
             * <https://web.archive.org/web/20250428140227/https://resolution.soc.go.th/?prep_id=205799>
-            * <https://resolution.soc.go.th/?prep_id=210744>
+            * <https://web.archive.org/web/20250428152003/https://resolution.soc.go.th/?prep_id=210744>
         * [Makha Bucha](https://web.archive.org/web/20240908185818/https://www.onab.go.th/th/content/category/detail/id/73/iid/3403)
         * [Visakha Bucha](https://web.archive.org/web/20240908190019/https://www.onab.go.th/th/content/category/detail/id/73/iid/3401)
         * [Asarnha Bucha](https://web.archive.org/web/20240816131909/https://www.onab.go.th/th/content/category/detail/id/73/iid/3397)

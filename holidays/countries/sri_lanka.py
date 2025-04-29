@@ -377,14 +377,14 @@ class SriLankaStaticHolidays:
 
     References:
         * <https://web.archive.org/web/20110809085026/http://www.adaderana.lk:80/news.php?nid=13026>
-        * <https://www.adaderana.lk/news.php?nid=17539>
+        * <https://web.archive.org/web/20250429080725/https://www.adaderana.lk/news.php?nid=17539>
         * <https://web.archive.org/web/20130402104735/http://www.adaderana.lk:80/news.php?nid=22168>
         * <https://web.archive.org/web/20160416130945/http://adaderana.lk:80/news.php?nid=34870>
         * <https://web.archive.org/web/20190515145927/http://www.adaderana.lk/news.php?nid=55146>
         * <https://web.archive.org/web/20200317133128/http://www.adaderana.lk/news.php?nid=61437>
-        * <https://www.adaderana.lk/news.php?nid=64367>
+        * <https://web.archive.org/web/20250429080821/https://www.adaderana.lk/news.php?nid=64367>
         * <https://web.archive.org/web/20220408080237/http://www.adaderana.lk/news.php?nid=81686>
-        * <https://www.adaderana.lk/news.php?nid=82111>
+        * <https://web.archive.org/web/20250429080933/https://www.adaderana.lk/news.php?nid=82111>
         * <https://web.archive.org/web/20220611075054/http://www.adaderana.lk/news.php?nid=82979>
         * <https://web.archive.org/web/20220824142821/http://adaderana.lk/news.php?nid=83082>
         * <https://web.archive.org/web/20220824142511/http://adaderana.lk/news.php?nid=84035>
