@@ -40,18 +40,18 @@ class TrinidadAndTobago(
     """Trinidad and Tobago holidays.
 
     References:
-        * <https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
-        * <https://laws.gov.tt/ttdll-web2/revision/list?offset=380&q=&currentid=322>
-        * <https://www.guardian.co.tt/article-6.2.448640.3e9e366923>
-        * <https://www.guardian.co.tt/article-6.2.410311.3fe66fb00f>
-        * <https://www.nalis.gov.tt/resources/tt-content-guide/labour-day/>
-        * <https://www.facebook.com/groups/191766699268/posts/10160832951274269/>
-        * <https://www.facebook.com/100064996051675/posts/1101755938667598/?_rdr>
+        * <https://web.archive.org/web/20250429121623/https://otp.tt/trinidad-and-tobago/national-holidays-and-awards/>
+        * <https://web.archive.org/web/20250429120744/https://laws.gov.tt/ttdll-web2/revision/list?offset=380&q=&currentid=322>
+        * <https://web.archive.org/web/20250429120707/https://www.guardian.co.tt/article-6.2.448640.3e9e366923>
+        * <https://web.archive.org/web/20250429120548/https://www.guardian.co.tt/article-6.2.410311.3fe66fb00f>
+        * <http://archive.today/2025.04.29-121801/https://www.nalis.gov.tt/resources/tt-content-guide/labour-day/>
+        * <https://web.archive.org/web/20250429120701/https://www.facebook.com/groups/191766699268/posts/10160832951274269/>
+        * <https://web.archive.org/save/https://www.facebook.com/100064996051675/posts/1101755938667598/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
         * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
         * <https://en.wikipedia.org/wiki/Indian_Arrival_Day#Trinidad_and_Tobago>
-        * <https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
-        * <https://www.timeanddate.com/holidays/trinidad/diwali>
+        * <https://web.archive.org/web/20250429120402/https://www.timeanddate.com/holidays/trinidad/eid-al-fitr>
+        * <https://web.archive.org/web/20250429120140/https://www.timeanddate.com/holidays/trinidad/diwali>
     """
 
     country = "TT"
