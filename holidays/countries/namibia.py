@@ -21,7 +21,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     References:
         * <https://web.archive.org/web/20250322231149/https://www.officeholidays.com/countries/namibia>
         * <https://web.archive.org/web/20250423213502/https://www.timeanddate.com/holidays/namibia/>
-        * <https://tinyurl.com/lacorg5835>
+        * <https://web.archive.org/web/20250429080700/https://www.lac.org.na/laws/annoSTAT/Public%20Holidays%20Act%2026%20of%201990.pdf>
 
     As of 1991/2/1, whenever a public holiday falls on a Sunday, it rolls over to the monday,
     unless that monday is already a public holiday.

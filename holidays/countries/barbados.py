@@ -102,6 +102,6 @@ class BarbadosStaticHolidays:
             (JAN, 5, "Public Holiday"),
         ),
         # One off 50th Anniversary of CARICOM Holiday.
-        # See https://tinyurl.com/brbhol
+        # See https://web.archive.org/web/20240805050828/https://gisbarbados.gov.bb/blog/one-off-bank-holiday-for-caricoms-50th-anniversary-celebrations/
         2023: (JUL, 31, "50th Anniversary of CARICOM Holiday"),
     }
