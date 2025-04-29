@@ -41,6 +41,10 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://www.gov.nu.ca/en/print/pdf/node/52266>
         * <https://web.archive.org/web/20250116143344/https://www.officeholidays.com/countries/canada>
         * <https://web.archive.org/web/20250425120843/https://www.timeanddate.com/holidays/canada>
+        * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
+        * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
+        * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
+        * <https://web.archive.org/web/20240915001506/https://www.britannica.com/topic/Victoria-Day>
     """
 
     country = "CA"
@@ -111,9 +115,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         self._add_statutory_holidays()
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 1879:
             self._add_observed(self._canada_day)
@@ -132,42 +134,64 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         self._add_observed(self._christmas_day, rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
     def _populate_optional_holidays(self):
-        # Christmas Day.
         self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-    def _add_thanksgiving_day(self):
+    def _add_thanksgiving_day(self) -> None:
+        """Adds Thanksgiving Day / Armistice Day.
+
+        In 1921, Thanksgiving Day was moved to "Armistice Day" (1st Monday in the week of Nov 11).
+        "Remembrance Day" and "Thanksgiving Day" split again in 1931, with Thanksgiving usually on
+        the 2nd Monday of October — except in 1935, when it was delayed 10 days due to a General
+        Election. It was finally fixed to the 2nd Monday of October permanently in 1957.
+        """
         if self._year >= 1931:
             # Thanksgiving Day.
             name = tr("Thanksgiving Day")
-            # in 1935, Canadian Thanksgiving was moved due to the General
-            # Election falling on the second Monday of October
-            # http://tiny.cc/can_thkgvg
             if self._year == 1935:
-                self._add_holiday_oct_25(name)
+                self._add_holiday_oct_24(name)
             else:
                 self._add_holiday_2nd_mon_of_oct(name)
+        elif self._year >= 1921:
+            # Armistice Day.
+            self._add_holiday_1st_mon_before_nov_12(tr("Armistice Day"))
+
+    def _add_victoria_day(self) -> None:
+        """Adds Victoria Day.
+
+        After Queen Victoria’s death in 1901, an act of the Canadian Parliament established
+        Victoria Day as a legal holiday, to be celebrated on May 24 (or on May 25 when
+        May 24 fell on a Sunday). This was later moved to the Monday preceding May 24 in 1952.
+        """
+        # Victoria Day.
+        name = tr("Victoria Day")
+        if self._year >= 1953:
+            self._add_holiday_1st_mon_before_may_24(name)
+        elif self._year >= 1901:
+            self._add_observed(self._add_holiday_may_24(name), rule=SUN_TO_NEXT_MON)
 
     def _populate_subdiv_ab_public_holidays(self):
         if self._year >= 1990:
             # Family Day.
             self._add_holiday_3rd_mon_of_feb(tr("Family Day"))
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 1879:
             self._add_observed(self._canada_day, rule=SUN_TO_NEXT_MON)
@@ -196,15 +220,14 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_subdiv_bc_public_holidays(self):
         if self._year >= 2013:
+            # Family Day.
             name = tr("Family Day")
             if self._year >= 2019:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_2nd_mon_of_feb(name)
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 1879:
             self._add_observed(self._canada_day, rule=SUN_TO_NEXT_MON)
@@ -229,9 +252,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Louis Riel Day.
             self._add_holiday_3rd_mon_of_feb(tr("Louis Riel Day"))
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         self._add_thanksgiving_day()
 
@@ -264,9 +285,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_remembrance_day(tr("Remembrance Day"))
 
     def _populate_subdiv_nb_optional_holidays(self):
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         self._add_thanksgiving_day()
 
@@ -327,9 +346,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_holiday_1st_mon_of_aug(tr("Natal Day"))
 
     def _populate_subdiv_nt_public_holidays(self):
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 1996:
             # National Aboriginal Day.
@@ -350,9 +367,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_remembrance_day(tr("Remembrance Day"))
 
     def _populate_subdiv_nu_public_holidays(self):
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 2020:
             # Nunavut Day.
@@ -374,6 +389,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_subdiv_nu_optional_holidays(self):
         if 2000 <= self._year <= 2019:
+            # Nunavut Day.
             name = tr("Nunavut Day")
             if self._year == 2000:
                 self._add_holiday_apr_1(name)
@@ -385,12 +401,11 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Family Day.
             self._add_holiday_3rd_mon_of_feb(tr("Family Day"))
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         self._add_thanksgiving_day()
 
+        # Boxing Day.
         self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SUN_TO_NEXT_TUE)
 
     def _populate_subdiv_on_optional_holidays(self):
@@ -444,9 +459,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Family Day.
             self._add_holiday_3rd_mon_of_feb(tr("Family Day"))
 
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 1879:
             self._add_observed(self._canada_day)
@@ -463,9 +476,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             self._add_observed(self._add_remembrance_day(tr("Remembrance Day")))
 
     def _populate_subdiv_yt_public_holidays(self):
-        if self._year >= 1953:
-            # Victoria Day.
-            self._add_holiday_1st_mon_before_may_24(tr("Victoria Day"))
+        self._add_victoria_day()
 
         if self._year >= 2017:
             # National Aboriginal Day.
@@ -491,6 +502,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     def _populate_subdiv_yt_optional_holidays(self):
         # Friday before the last Sunday in February
         if self._year >= 1976:
+            # Heritage Day.
             self._add_holiday_2_days_prior_last_sun_of_feb(tr("Heritage Day"))
 
 

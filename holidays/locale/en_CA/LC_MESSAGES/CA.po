@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.32\n"
+"Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2023-04-10 14:10+0300\n"
-"PO-Revision-Date: 2023-12-26 22:10+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-04-28 22:27+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. %s (observed).
 #, c-format
@@ -158,4 +157,8 @@ msgstr ""
 
 #. Natal Day.
 msgid "Natal Day"
+msgstr ""
+
+#. Armistice Day.
+msgid "Armistice Day"
 msgstr ""
