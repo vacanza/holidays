@@ -128,6 +128,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2098-03-31",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name, range(1963, 1996))
 
     def test_indian_arrival_day(self):
@@ -171,6 +172,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-05-30",
             "2025-06-19",
         )
+        self.assertHolidayName(name, range(1963, 2050))
         dt = (
             "2002-05-31",
             "2003-06-20",
@@ -185,7 +187,6 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertHolidayName(name, range(1963, 2050))
 
     def test_labor_day(self):
         name = "Labour Day"
@@ -326,6 +327,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2095-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -367,6 +369,7 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
+        self.assertHolidayName(name, range(1963, 2050))
         dt = (
             "1979-11-19",
             "1985-11-11",
@@ -386,7 +389,6 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertHolidayName(name, range(1963, 2050))
 
     def test_eid_al_fitr(self):
         name = "Eid-Ul-Fitr"
