@@ -152,6 +152,6 @@ class SouthAfricaStaticHolidays:
     }
 
     special_public_holidays_observed = {
-        # Special holiday http://tiny.cc/za_y2k
+        # https://web.archive.org/web/20120328122217/http%3A//www.info.gov.za/speeches/1999/991028409p1002.htm
         2000: (JAN, 3, y2k_changeover),
     }
