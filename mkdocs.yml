@@ -32,6 +32,7 @@ plugins:
         - scripts/docs/gen_summary.py
         - scripts/docs/gen_changelog.py
         - scripts/docs/gen_copyright.py
+        - scripts/docs/gen_index.py
   - literate-nav:
       nav_file: SUMMARY.md
 

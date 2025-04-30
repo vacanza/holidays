@@ -36,6 +36,12 @@ specific date is a holiday as fast and flexible as possible.
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
     </td>
   </tr>
+  <tr>
+    <td>Snyk</td>
+    <td>
+      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
+    </td>
+  </tr>
 </table>
 
 ## Install
@@ -1218,6 +1224,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>to</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Trinidad and Tobago</td>
+<td>TT</td>
+<td></td>
+<td><strong>en_TT</strong>, en_US</td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Tunisia</td>
