@@ -14,6 +14,7 @@ from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars import _IslamicLunar
+from holidays.calendars.gregorian import _timedelta
 from holidays.groups.eastern import EasternCalendarHolidays
 
 
@@ -180,16 +181,6 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+2
-        )
-
-    def _add_eid_al_fitr_day_four(self, name) -> set[date]:
-        """
-        Add Eid al-Fitr Day Four.
-
-        https://en.wikipedia.org/wiki/Eid_al-Fitr
-        """
-        return self._add_islamic_calendar_holiday(
-            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
     def _add_eid_al_fitr_eve(self, name) -> set[date]:
@@ -451,3 +442,20 @@ class IslamicHolidays(EasternCalendarHolidays):
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.tasua_dates(self._year)
         )
+
+    def _is_long_ramadan(self, eid_al_fitr: date) -> bool:
+        """Check whether the Ramadan preceding the given Eid al-Fitr date lasted 30 days.
+
+        Args:
+            eid_al_fitr:
+                The date of Eid al-Fitr.
+
+        Returns:
+            True if Ramadan lasted 30 days, False otherwise.
+        """
+        first_ramadan_dates = {
+            d[0]
+            for y in (self._year - 1, self._year)
+            for d in self._islamic_calendar.ramadan_beginning_dates(y)
+        }
+        return _timedelta(eid_al_fitr, -30) in first_ramadan_dates
