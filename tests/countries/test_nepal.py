@@ -4,6 +4,18 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
 #  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
@@ -129,7 +141,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2020-01-15",
             "2021-01-14",
             "2022-01-14",
-            "2023-01-14",
+            "2023-01-15",
             "2024-01-14",
             "2025-01-14",
         )
@@ -185,7 +197,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2020-03-09",
             "2021-03-28",
             "2022-03-17",
-            "2023-03-07",
+            "2023-03-06",
             "2024-03-24",
             "2025-03-13",
         )
@@ -199,7 +211,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2020-03-10",
             "2021-03-29",
             "2022-03-18",
-            "2023-03-08",
+            "2023-03-07",
             "2024-03-25",
             "2025-03-14",
         )
@@ -243,7 +255,7 @@ class TestNepal(CommonCountryTests, TestCase):
         name = "Janai Purnima"
         dt = (
             "2021-08-22",
-            "2022-08-11",
+            "2022-08-12",
             "2023-08-30",
             "2024-08-19",
             "2025-08-09",
@@ -405,7 +417,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2019-10-27",
             "2020-11-14",
             "2021-11-04",
-            "2022-10-24",
+            "2022-10-25",
             "2023-11-12",
             "2024-11-01",
             "2025-10-21",
@@ -419,7 +431,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2019-10-28",
             "2020-11-15",
             "2021-11-05",
-            "2022-10-25",
+            "2022-10-26",
             "2023-11-13",
             "2024-11-02",
             "2025-10-22",
@@ -433,7 +445,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2019-10-28",
             "2020-11-15",
             "2021-11-05",
-            "2022-10-25",
+            "2022-10-26",
             "2023-11-13",
             "2024-11-02",
             "2025-10-22",
@@ -447,7 +459,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2019-10-29",
             "2020-11-16",
             "2021-11-06",
-            "2022-10-26",
+            "2022-10-27",
             "2023-11-14",
             "2024-11-03",
             "2025-10-23",
@@ -461,7 +473,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2019-10-30",
             "2020-11-17",
             "2021-11-07",
-            "2022-10-27",
+            "2022-10-28",
             "2023-11-15",
             "2024-11-04",
             "2025-10-24",

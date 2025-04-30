@@ -328,6 +328,29 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
+    def _add_papankusha_ekadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Ekadashi.
+
+        Papankusha Ekadashi is a Hindu festival which occurs on eleventh day on month of
+        Ashwin (September-October).
+        https://en.wikipedia.org/wiki/Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
+        )
+
+    def _add_papankusha_duwadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Duwadashi.
+
+        Papankusha Duwadashi is a Hindu festival which occurs next day of Papankusha Ekadashi.
+        https://en.wikipedia.org/wiki/Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
+        )
+
     def _add_pongal(self, name) -> Optional[date]:
         """
         Add Pongal.
