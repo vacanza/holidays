@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -13,6 +13,7 @@
 from datetime import date
 from gettext import gettext as tr
 
+from holidays.calendars.chinese import VIETNAMESE_CALENDAR
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -59,7 +60,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
     supported_languages = ("en_US", "th", "vi")
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self)
+        ChineseCalendarHolidays.__init__(self, calendar=VIETNAMESE_CALENDAR)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, VietnamStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)

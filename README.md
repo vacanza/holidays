@@ -36,6 +36,12 @@ specific date is a holiday as fast and flexible as possible.
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
     </td>
   </tr>
+  <tr>
+    <td>Snyk</td>
+    <td>
+      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
+    </td>
+  </tr>
 </table>
 
 ## Install
@@ -99,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 169 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 171 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -501,8 +507,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ethiopia</td>
 <td>ET</td>
 <td></td>
-<td><strong>am</strong>, ar, en_US</td>
-<td></td>
+<td><strong>am</strong>, ar, en_ET, en_US</td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Fiji</td>
@@ -522,6 +528,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>France</td>
 <td>FR</td>
 <td>DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)</td>
+<td>en_US, <strong>fr</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>French Southern Territories</td>
+<td>TF</td>
+<td></td>
 <td>en_US, <strong>fr</strong>, uk</td>
 <td></td>
 </tr>
@@ -1073,6 +1086,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Sao Tome and Principe</td>
+<td>ST</td>
+<td>Districts and Autonomous Region: 01 (Água Grande), 02 (Cantagalo), 03 (Caué), 04 (Lembá), 05 (Lobata), 06 (Mé-Zóchi), P (Príncipe)</td>
+<td>en_US, <strong>pt_ST</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
@@ -1204,6 +1224,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>to</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Trinidad and Tobago</td>
+<td>TT</td>
+<td></td>
+<td><strong>en_TT</strong>, en_US</td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Tunisia</td>

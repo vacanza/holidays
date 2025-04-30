@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -307,7 +307,9 @@ class SingaporeStaticHolidays:
 
     References:
         * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
-        * <https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22>
+        * <https://www.mom.gov.sg/newsroom/press-releases/2020/0624-public-holiday-on-polling-day---10-july-2020>
+        * <https://www.mom.gov.sg/newsroom/press-releases/2023/0822-public-holiday-on-polling-day---1-sep-2023>
+        * <https://www.mom.gov.sg/newsroom/press-releases/2025/0415-public-holiday-on-polling-day_3-may-2025>
     """
 
     # Polling Day.
@@ -324,6 +326,7 @@ class SingaporeStaticHolidays:
         ),
         2020: (JUL, 10, polling_day_name),
         2023: (SEP, 1, polling_day_name),
+        2025: (MAY, 3, polling_day_name),
     }
 
     special_public_holidays_observed = {

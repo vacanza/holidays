@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -23,6 +23,22 @@ from holidays import (
     list_supported_financial,
 )
 from holidays.constants import PUBLIC
+
+
+class TestAuthors(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.content = Path("CONTRIBUTORS").read_text(encoding="UTF-8").strip().split("\n")
+        super().setUpClass()
+
+    def test_authors_list(self):
+        authors = self.content[1:]
+        self.assertEqual(
+            authors,
+            sorted(authors),
+            "Contributors list should be sorted alphabetically.\n"
+            + "\n".join((f"{c} != {s}" for c, s in zip(authors, sorted(authors)) if c != s)),
+        )
 
 
 class TestReadme(TestCase):

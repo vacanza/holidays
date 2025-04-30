@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -38,7 +38,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
 
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta=days_delta
+            name, dt_estimated, self._hindu_calendar_show_estimated, days_delta
         )
 
     def _add_hindu_calendar_holiday_set(
@@ -328,28 +328,17 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
-    def _add_papankusha_ekadashi(self, name) -> Optional[date]:
+    def _add_pongal(self, name) -> Optional[date]:
         """
-        Add Papankusha Ekadashi.
+        Add Pongal.
 
-        Papankusha Ekadashi is a Hindu festival which occurs on eleventh day on month of
-        Ashwin (September-October).
-        https://en.wikipedia.org/wiki/Ekadashi
+        Pongal is a major harvest festival celebrated in Tamil Nadu, India, marking the
+        beginning of the sun's northward journey (Uttarayana). It is usually observed
+        on January 14th or 15th every year, coinciding with the Tamil month of Thai.
+        The festival is dedicated to the Sun God and marks a season of prosperity and abundance.
+        https://en.wikipedia.org/wiki/Pongal_(festival)
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
-        )
-
-    def _add_papankusha_duwadashi(self, name) -> Optional[date]:
-        """
-        Add Papankusha Duwadashi.
-
-        Papankusha Duwadashi is a Hindu festival which occurs next day of Papankusha Ekadashi.
-        https://en.wikipedia.org/wiki/Ekadashi
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
-        )
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
 
     def _add_raksha_bandhan(self, name) -> Optional[date]:
         """
@@ -426,6 +415,36 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.thaipusam_date(self._year)
+        )
+
+    def _add_thiruvalluvar_day(self, name) -> Optional[date]:
+        """
+        Add Thiruvalluvar Day and Mattu Pongal.
+
+        Thiruvalluvar Day and Mattu Pongal are celebrated in Tamil Nadu, India, as part
+        of the Pongal festival. Thiruvalluvar Day honors the classical Tamil poet and
+        philosopher Thiruvalluvar, while Mattu Pongal is dedicated to cattle, recognizing
+        their importance in agriculture. Both events usually fall on January 15th or 16th
+        each year during the Tamil month of Thai.
+        https://en.wikipedia.org/wiki/Thiruvalluvar_Day
+        https://en.wikipedia.org/wiki/Pongal_(festival)#Mattu_Pongal
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
+        )
+
+    def _add_uzhavar_thirunal(self, name) -> Optional[date]:
+        """
+        Add Uzhavar Thirunal.
+
+        Uzhavar Thirunal is a harvest festival celebrated in Tamil Nadu, India,
+        as part of the Pongal festivities. It is dedicated to honoring farmers
+        (uzhavar) and their contribution to agriculture. Uzhavar Thirunal usually
+        falls on January 16th or 17th each year.
+        https://en.wikipedia.org/wiki/Pongal_(festival)#Uzhavar_Thirunal
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
         )
 
     def _add_vaisakhi(self, name) -> Optional[date]:

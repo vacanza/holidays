@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,7 +14,7 @@ import warnings
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomChineseHolidays
+from holidays.calendars.chinese import KOREAN_CALENDAR
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -87,7 +87,7 @@ class SouthKorea(
     start_year = 1948
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self, cls=SouthKoreaLunisolarHolidays)
+        ChineseCalendarHolidays.__init__(self, calendar=KOREAN_CALENDAR)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=SouthKoreaStaticHolidays)
@@ -287,34 +287,6 @@ class KR(SouthKorea):
 
 class KOR(SouthKorea):
     pass
-
-
-class SouthKoreaLunisolarHolidays(_CustomChineseHolidays):
-    BUDDHA_BIRTHDAY_DATES = {
-        1931: (MAY, 25),
-        1968: (MAY, 5),
-        2001: (MAY, 1),
-        2012: (MAY, 28),
-        2023: (MAY, 27),
-        2025: (MAY, 5),
-    }
-
-    LUNAR_NEW_YEAR_DATES = {
-        1916: (FEB, 4),
-        1944: (JAN, 26),
-        1954: (FEB, 4),
-        1958: (FEB, 19),
-        1966: (JAN, 22),
-        1988: (FEB, 18),
-        1997: (FEB, 8),
-        2027: (FEB, 7),
-        2028: (JAN, 27),
-    }
-
-    MID_AUTUMN_DATES = {
-        1942: (SEP, 25),
-        2040: (SEP, 21),
-    }
 
 
 class SouthKoreaStaticHolidays:

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -118,13 +118,13 @@ class ThaiCalendarHolidays:
         """
         Add Makha Bucha.
 
-        Māgha Pūjā (also written as Makha Bucha Day) is a Buddhist festival
-        celebrated on the 15th Waxing Day (Full Moon) of Month 3.
+        Māgha Pūjā (also written as Makha Bousa and Meak Bochea Day) is a Buddhist
+        festival celebrated on the 15th Waxing Day (Full Moon) of Month 3.
 
         Khmer variant: always fall on Month 3.
         Thai variant:  will use Month 4 instead for Athikamat years.
 
-        https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
+        https://en.wikipedia.org/wiki/Māgha_Pūjā
         """
         calendar = calendar or self.__calendar
 
@@ -190,14 +190,14 @@ class ThaiCalendarHolidays:
         """
         Add Visakha Bucha.
 
-        Vesak(also written as Makha Bucha Day and Meak Bochea Day) is a
+        Vesak (also written as Visakha Bousa Day and Visaka Bochea Day) is a
         Buddhist festival celebrated on the 15th Waxing Day (Full Moon)
         of Month 6.
 
         Khmer variant: always fall on Month 6.
         Thai variant:  will use Month 7 instead for Athikamat years.
 
-        https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
+        https://en.wikipedia.org/wiki/Vesak
         """
         calendar = calendar or self.__calendar
 

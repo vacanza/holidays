@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -71,7 +71,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # ទិវាអន្តរជាតិនារី
         # Status: In-Use.
 
-        # International Women's Rights Day
+        # International Women's Rights Day.
         self._add_womens_day(tr("ទិវាអន្តរជាតិនារី"))
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
@@ -80,7 +80,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # for years 2001-2050.
 
         if self._year != 2020:
-            # Khmer New Year's Day
+            # Khmer New Year's Day.
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
             sangkranta_years_apr_14 = {
                 2017,
@@ -106,7 +106,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         #  ទិវាពលកម្មអន្តរជាតិ
         # Status: In-Use.
 
-        # International Labor Day
+        # International Labor Day.
         self._add_labor_day(tr("ទិវាពលកម្មអន្តរជាតិ"))
 
         # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី
@@ -116,7 +116,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         if self._year >= 2005:
             king_sihamoni_bday = tr(
                 # Birthday of His Majesty Preah Bat Samdech Preah Boromneath
-                # NORODOM SIHAMONI, King of Cambodia
+                # NORODOM SIHAMONI, King of Cambodia.
                 "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
             )
             self._add_holiday_may_14(king_sihamoni_bday)
@@ -132,7 +132,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # its name changed to present one in 2001.
 
         if 2018 <= self._year <= 2019:
-            # National Day of Remembrance
+            # National Day of Remembrance.
             self._add_holiday_may_20(tr("ទិវាជាតិនៃការចងចាំ"))
 
         # ទិវាកុមារអន្តរជាតិ
@@ -140,7 +140,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Assumed to start in 1993, defunct from 2020 onwards.
 
         if self._year <= 2019:
-            # International Children's Day
+            # International Children's Day.
             self._add_childrens_day(tr("ទិវាកុមារអន្តរជាតិ"))
 
         # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ
@@ -149,7 +149,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         if self._year >= 1994:
             self._add_holiday_jun_18(
-                # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
+                # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia.
                 tr("ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ")
             )
 
@@ -157,7 +157,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Starts in 1993
 
-        # Constitution Day
+        # Constitution Day.
         self._add_holiday_sep_24(tr("ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"))
 
         # ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម សីហនុ
@@ -167,7 +167,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
 
         if self._year >= 2012:
             self._add_holiday_oct_15(
-                # Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia
+                # Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia.
                 tr(
                     "ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម "
                     "សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
@@ -180,7 +180,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Assumed to start in 1993, defunct from 2020 onwards.
 
         if self._year <= 2019:
-            # Paris Peace Agreement's Day
+            # Paris Peace Agreement's Day.
             self._add_holiday_oct_23(tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"))
 
         # ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា
@@ -192,7 +192,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         if self._year >= 2004:
             self._add_holiday_oct_29(
                 # Coronation Day of His Majesty Preah Bat Samdech Preah
-                # Boromneath NORODOM SIHAMONI, King of Cambodia
+                # Boromneath NORODOM SIHAMONI, King of Cambodia.
                 tr(
                     "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា "
                     "ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "
@@ -204,7 +204,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # Starts in 1953
 
-        # National Independence Day
+        # National Independence Day.
         self._add_holiday_nov_9(tr("ពិធីបុណ្យឯករាជ្យជាតិ"))
 
         # ទិវាសិទ្ធិមនុស្សអន្តរជាតិ
@@ -212,7 +212,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Assumed to start in 1993, defunct from 2020 onwards.
 
         if self._year <= 2019:
-            # International Human Rights Day
+            # International Human Rights Day.
             self._add_holiday_dec_10(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"))
 
         # Cambodian Lunar Calendar Holidays
@@ -225,7 +225,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Defunct from 2020 onwards.
 
         if self._year <= 2019:
-            # Meak Bochea Day
+            # Meak Bochea Day.
             self._add_makha_bucha(tr("ពិធីបុណ្យមាឃបូជា"))
 
         # ពិធីបុណ្យវិសាខបូជា
@@ -234,7 +234,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # This utilizes Thai calendar as a base, though are calculated to always happen
         # in the Traditional Visakhamas month (May).
 
-        # Visaka Bochea Day
+        # Visaka Bochea Day.
         self._add_visakha_bucha(tr("ពិធីបុណ្យវិសាខបូជា"))
 
         # ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល
@@ -242,7 +242,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # 4th Waning Day of Month 6.
         # Unlike Thai ones, Cambodian Royal Ploughing Ceremony is always fixed.
 
-        # Royal Ploughing Ceremony
+        # Royal Ploughing Ceremony.
         self._add_preah_neangkoal(tr("ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"))
 
         # ពិធីបុណ្យភ្ផុំបិណ្ឌ
@@ -250,7 +250,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # 14th Waning Day of Month 10 - 1st Waxing Day of Month 11.
         # The 3rd day is added as a public holiday from 2017 onwards.
 
-        # Pchum Ben Day
+        # Pchum Ben Day.
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
         pchum_ben_date = self._add_pchum_ben(pchum_ben)
         self._add_holiday(pchum_ben, _timedelta(pchum_ben_date, -1))
@@ -261,7 +261,7 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
         # Status: In-Use.
         # 14th Waxing Day of Month 12 - 1st Waning Day of Month 12.
 
-        # Water Festival
+        # Water Festival.
         bon_om_touk = tr("ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក")
         bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
         self._add_holiday(bon_om_touk, _timedelta(bon_om_touk_date, -1))
@@ -288,13 +288,13 @@ class KHM(Cambodia):
 
 class CambodiaStaticHolidays:
     sangkranta_in_lieu_covid = tr(
-        # Khmer New Year's Replacement Holiday
+        # Khmer New Year's Replacement Holiday.
         "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
     )
-    # Special Public Holiday
+    # Special Public Holiday.
     special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
 
-    # Khmer New Year's Day
+    # Khmer New Year's Day.
     sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
 
     special_public_holidays = {
