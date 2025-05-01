@@ -255,7 +255,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Navaratri
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-2
+            name, self._hindu_calendar.maha_ashtami_date(self._year), days_delta=-1
         )
 
     def _add_maha_ashtami(self, name) -> Optional[date]:
@@ -267,7 +267,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Navaratri
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.maha_navami_date(self._year), days_delta=-1
+            name, self._hindu_calendar.maha_ashtami_date(self._year)
         )
 
     def _add_maha_navami(self, name) -> Optional[date]:
@@ -412,20 +412,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sonam_losar_date(self._year)
-        )
-
-    def _add_tihar_holiday(self, name) -> Optional[date]:
-        """
-        Add Tihar Holiday (Nepal)
-
-        Tihar holiday is celebrated as the fifth day of Tihar festival, also
-        known as Yamapanchak. Tihar is a five-day Hindu festival celebrated
-        in Nepal that honors various deities, animals, and the bond
-        between siblings.
-        https://en.wikipedia.org/wiki/Tihar_(festival)
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=+2
         )
 
     def _add_thaipusam(self, name) -> Optional[date]:

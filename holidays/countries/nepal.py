@@ -209,9 +209,6 @@ class Nepal(
         # Bhai Tika.
         self._add_bhai_dooj("Bhai Tika")
 
-        # Tihar Holiday.
-        self._add_tihar_holiday("Tihar Holiday")
-
         # Chhath Parwa.
         self._add_chhath_puja("Chhath Parwa")
 
@@ -275,22 +272,63 @@ class NepalIslamicHolidays(_CustomIslamicHolidays):
 class NepalHinduHolidays(_CustomHinduHolidays):
     # Maghe Sankranti.
     MAKAR_SANKRANTI_DATES = {
+        2022: (JAN, 15),
         2023: (JAN, 15),
+        2024: (JAN, 15),
+        2026: (JAN, 15),
     }
 
     # Holi (Terai).
     HOLI_DATES = {
         2023: (MAR, 7),
+        2026: (MAR, 3),
+    }
+
+    # Ram Navami.
+    RAM_NAVAMI_DATES = {
+        2026: (MAR, 27),
+    }
+
+    # Nepal New Year.
+    VAISAKHI_DATES = {
+        2025: (APR, 14),
     }
 
     # Janai Punima.
     RAKSHA_BANDHAN_DATES = {
         2022: (AUG, 12),
+        2023: (AUG, 31),
+    }
+
+    # Shree Krishna Janmashtami.
+    JANMASHTAMI_DATES = {
+        2023: (SEP, 6),
+    }
+
+    # Maha Ashtami.
+    MAHA_ASHTAMI_DATES = {
+        2020: (OCT, 24),
+    }
+
+    # Maha Navami.
+    MAHA_NAVAMI_DATES = {
+        2020: (OCT, 25),
+    }
+
+    # Vijayadashami.
+    DUSSEHRA_DATES = {
+        2020: (OCT, 26),
     }
 
     # Govardhan Puja.
     GOVARDHAN_PUJA_DATES = {
+        2020: (NOV, 16),
         2022: (OCT, 26),
+    }
+
+    # Chhath Parwa.
+    CHHATH_PUJA_DATES = {
+        2025: (OCT, 27),
     }
 
 
@@ -317,13 +355,24 @@ class NepalStaticHolidays:
     # Day of National Mourning.
     name_day_of_national_mourning = "Day of National Mourning"
 
+    # Tihar Holdiay.
+    name_tihar_holiday = "Tihar Holiday"
+
     special_public_holidays = {
-        2011: (MAR, 6, name_day_of_national_mourning),
+        2011: ((MAR, 6, name_day_of_national_mourning)),
         2016: (FEB, 10, name_day_of_national_mourning),
+        2021: (NOV, 7, name_tihar_holiday),
+        2022: (OCT, 28, name_tihar_holiday),
         2023: (
             (JAN, 16, name_day_of_national_mourning),
             # People War's Day.
             (FEB, 13, "People War's Day"),
             (SEP, 14, name_day_of_national_mourning),
+            (NOV, 16, name_tihar_holiday),
         ),
+        2024: (
+            (NOV, 1, name_tihar_holiday),
+            (NOV, 4, name_tihar_holiday),
+        ),
+        2025: (OCT, 24, name_tihar_holiday),
     }

@@ -31,6 +31,7 @@ GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
 GYALPO_LOSAR = "GYALPO_LOSAR"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
+MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
@@ -352,7 +353,7 @@ class _HinduLunisolar:
         2021: (NOV, 4),
         2022: (OCT, 24),
         2023: (NOV, 12),
-        2024: (NOV, 1),
+        2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
         2027: (OCT, 29),
@@ -704,6 +705,45 @@ class _HinduLunisolar:
         2035: (AUG, 26),
     }
 
+    # https://www.timeanddate.com/holidays/india/maha-ashtami
+    MAHA_ASHTAMI_DATES = {
+        2001: (OCT, 24),
+        2002: (OCT, 13),
+        2003: (OCT, 3),
+        2004: (OCT, 21),
+        2005: (OCT, 11),
+        2006: (SEP, 30),
+        2007: (OCT, 19),
+        2008: (OCT, 7),
+        2009: (SEP, 26),
+        2010: (OCT, 15),
+        2011: (OCT, 4),
+        2012: (OCT, 22),
+        2013: (OCT, 12),
+        2014: (OCT, 2),
+        2015: (OCT, 21),
+        2016: (OCT, 9),
+        2017: (SEP, 28),
+        2018: (OCT, 17),
+        2019: (OCT, 6),
+        2020: (OCT, 23),
+        2021: (OCT, 13),
+        2022: (OCT, 3),
+        2023: (OCT, 22),
+        2024: (OCT, 11),
+        2025: (SEP, 30),
+        2026: (OCT, 19),
+        2027: (OCT, 7),
+        2028: (SEP, 26),
+        2029: (OCT, 14),
+        2030: (OCT, 4),
+        2031: (OCT, 23),
+        2032: (OCT, 12),
+        2033: (OCT, 2),
+        2034: (OCT, 20),
+        2035: (OCT, 9),
+    }
+
     # https://www.timeanddate.com/holidays/india/maha-navami
     MAHA_NAVAMI_DATES = {
         2001: (OCT, 25),
@@ -723,8 +763,8 @@ class _HinduLunisolar:
         2015: (OCT, 21),
         2016: (OCT, 10),
         2017: (SEP, 29),
-        2018: (OCT, 18),
-        2019: (OCT, 7),
+        2018: (OCT, 17),
+        2019: (OCT, 6),
         2020: (OCT, 24),
         2021: (OCT, 14),
         2022: (OCT, 4),
@@ -1381,6 +1421,9 @@ class _HinduLunisolar:
 
     def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(JANMASHTAMI, year)
+
+    def maha_ashtami_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAHA_ASHTAMI, year)
 
     def maha_navami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(MAHA_NAVAMI, year)
