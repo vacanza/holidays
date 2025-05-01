@@ -135,6 +135,7 @@ def check_availability_api(url: str, session: requests.Session) -> Optional[str]
             "output": "json",
             "limit": -1,
             "fastLatest": "true",
+            "filter": "statuscode:200",
         }
         response = session.get(
             CDX_API_URL,
