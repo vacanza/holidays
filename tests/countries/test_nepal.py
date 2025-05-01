@@ -473,13 +473,11 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
-
     def test_chhath_parwa(self):
         name = "Chhath Parwa"
         dt = (
             "2019-11-02",
             "2020-11-20",
-            "2021-11-10",
             "2021-11-10",
             "2022-10-30",
             "2023-11-19",
