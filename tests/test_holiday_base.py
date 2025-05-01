@@ -1286,12 +1286,12 @@ class TestClosestHoliday(unittest.TestCase):
         self.hb = CountryStub3(years=self.current_year)
         self.next_labor_day_year = (
             self.current_year
-            if datetime.now().date() < self.hb.get_named("Custom May 1st Holiday")[0]
+            if datetime.now().date() <= self.hb.get_named("Custom May 1st Holiday")[0]
             else self.next_year
         )
         self.previous_labor_day_year = (
             self.current_year
-            if datetime.now().date() > self.hb.get_named("Custom May 1st Holiday")[0]
+            if datetime.now().date() >= self.hb.get_named("Custom May 2nd Holiday")[0]
             else self.previous_year
         )
 
