@@ -13,7 +13,6 @@
 # ruff: noqa: F403
 
 from holidays.constants import *
-from holidays.deprecations.v1_incompatibility import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
 from holidays.utils import *
