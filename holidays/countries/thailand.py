@@ -104,7 +104,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
         * [Chakri Memorial Day](https://web.archive.org/web/20221003075521/https://www.ocac.go.th/news/๖-เมษายน-วันจักรี/v)
         * Songkran Festival:
             * [museumsiam.org](https://web.archive.org/web/20230205074402/https://m.museumsiam.org/da-detail2.php?MID=3&CID=177&CONID=4033)
-            * <https://resolution.soc.go.th/?prep_id=123659>
+            * <https://web.archive.org/web/20250501040114/https://resolution.soc.go.th/?prep_id=123659>
         * [National Labour Day](https://web.archive.org/web/20220629085454/https://www.thairath.co.th/lifestyle/culture/1832869)
         * [National Day (24 June: Defunct)](https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2)
         * Coronation Day:

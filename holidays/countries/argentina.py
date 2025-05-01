@@ -127,10 +127,10 @@ class Argentina(
         * <https://web.archive.org/web/20250426175526/http://www.saij.gob.ar/>
 
     Checked With:
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2015>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2016>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2017>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2018>
+        * <https://web.archive.org/web/20250501050306/https://www.lanacion.com.ar/sociedad/conoce-el-calendario-de-feriados-2015-nid1741224/>
+        * <https://web.archive.org/web/20250501050042/https://www.lanacion.com.ar/sociedad/como-es-el-calendario-de-feriados-para-2016-nid1846640/>
+        * <https://web.archive.org/web/20250501045504/https://www.lanacion.com.ar/sociedad/feriados-puente-2017-gobierno-calendario-nid1978221/>
+        * <https://web.archive.org/web/20250501045044/https://www.lanacion.com.ar/sociedad/feriados-2018-asi-quedo-el-calendario-nid2081185/>
         * <https://web.archive.org/web/20201102185631/https://www.argentina.gob.ar/interior/feriados-nacionales-2019>
         * <https://web.archive.org/web/20220111194913/https://www.argentina.gob.ar/interior/feriados-nacionales-2020>
         * <https://web.archive.org/web/20220527150354/https://www.argentina.gob.ar/interior/feriados-nacionales-2021>

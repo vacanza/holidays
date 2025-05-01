@@ -53,7 +53,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan>
 
     Commemorative Day and Day Implementation Method Amendments:
-        * [Ministry of Interior (87) Order No. 8706459](https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年))
+        * [Ministry of Interior (87) Order No. 8706459](https://web.archive.org/web/20250501035936/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國87年))
         * [Ministry of Interior (88) Order No. 8897074](https://web.archive.org/web/20250429134107/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國88年))
         * [Ministry of Interior (89) Order No. 8972185](https://web.archive.org/web/20250429134119/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年2月))
         * [Ministry of Interior (89) Order No. 8962562](https://web.archive.org/web/20250429134023/https://zh.wikisource.org/wiki/紀念日及節日實施辦法_(民國89年12月))
