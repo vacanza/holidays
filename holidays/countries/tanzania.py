@@ -31,8 +31,8 @@ class Tanzania(
 
     References:
         * [1962](https://old.tanzlii.org/tz/legislation/act/1962/48/)
-        * [1964](https://old.tanzlii.org/tz/legislation/act/1964/52/)
-        * [1966](https://old.tanzlii.org/tz/legislation/act/1966/39/)
+        * [1964](https://web.archive.org/web/20250426030228/http://www.parliament.go.tz/polis/uploads/bills/acts/1565172859-The%20Public%20Holidays%20Ordinance%20(amendment)%20Act,%201964.pdf)
+        * [1966](https://web.archive.org/web/20241130122429/http://www.parliament.go.tz/polis/uploads/bills/acts/1565692654-The%20Public%20Holidays%20Ordinance%20(Amendment)%20Act,%201966.pdf)
         * [1993](https://web.archive.org/web/20250425095011/https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf)
         * [1994](https://web.archive.org/web/20241130115733/http://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf)
         * [2002](https://web.archive.org/web/20250427172313/http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf)

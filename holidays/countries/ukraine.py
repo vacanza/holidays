@@ -190,7 +190,7 @@ class UkraineStaticHolidays:
         * [2001 [1]](https://web.archive.org/web/20220312201133/https://zakon.rada.gov.ua/laws/show/138-2001-%D1%80/)
         * [2001 [2]](https://web.archive.org/web/20220404230657/https://zakon.rada.gov.ua/laws/show/210-2001-%D0%BF)
         * [2002](https://web.archive.org/web/20220521085829/https://zakon.rada.gov.ua/laws/show/202-2002-%D1%80)
-        * [2002 - 2003](https://archive.ph/2025.05.01-040415/https://zakon.rada.gov.ua/laws/show/705-2002-р%23Text)
+        * [2002 - 2003](https://web.archive.org/web/20220312195735/https://zakon.rada.gov.ua/laws/show/705-2002-%D1%80)
         * [2004](https://web.archive.org/web/20220404105708/https://zakon.rada.gov.ua/laws/show/773-2003-%D1%80)
         * [2005 [1]](https://web.archive.org/web/20220521235321/https://zakon.rada.gov.ua/laws/show/936-2004-%D1%80)
         * [2005 [2]](https://web.archive.org/web/20220611030516/https://zakon.rada.gov.ua/laws/show/133-2005-%D1%80)
