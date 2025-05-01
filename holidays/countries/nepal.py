@@ -347,7 +347,7 @@ class NepalStaticHolidays:
     name_tihar_holiday = "Tihar Holiday"
 
     special_public_holidays = {
-        2011: ((MAR, 6, name_day_of_national_mourning)),
+        2011: (MAR, 6, name_day_of_national_mourning),
         2016: (FEB, 10, name_day_of_national_mourning),
         2021: (NOV, 7, name_tihar_holiday),
         2022: (OCT, 28, name_tihar_holiday),
