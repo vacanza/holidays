@@ -355,7 +355,7 @@ class NepalStaticHolidays:
     # Day of National Mourning.
     name_day_of_national_mourning = "Day of National Mourning"
 
-    # Tihar Holdiay.
+    # Tihar Holiday.
     name_tihar_holiday = "Tihar Holiday"
 
     special_public_holidays = {
