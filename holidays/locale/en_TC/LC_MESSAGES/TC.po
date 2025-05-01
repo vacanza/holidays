@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Turks And Caicos holidays.
+# Turks and Caicos Islands holidays.
 #
 msgid ""
 msgstr ""
