@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 171 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 172 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -487,6 +487,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SV</td>
 <td>Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)</td>
 <td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Equatorial Guinea</td>
+<td>GQ</td>
+<td></td>
+<td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>
 <tr>
