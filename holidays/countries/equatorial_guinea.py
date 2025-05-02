@@ -36,6 +36,7 @@ class EquatorialGuinea(
     country = "GQ"
     default_language = "es"
     supported_languages = ("en_US", "es")
+    # %s observed.
     observed_label = tr("%s (observado)")
     start_year = 1968
 
