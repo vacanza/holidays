@@ -48,7 +48,7 @@ class EquatorialGuinea(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's.
+        # New Year's Day.
         name = tr("Año Nuevo")
         self._add_observed(self._add_new_years_day(name))
 

@@ -30,7 +30,7 @@ msgstr ""
 msgid "%s (observado)"
 msgstr ""
 
-#. New Year's.
+#. New Year's Day.
 msgid "Año Nuevo"
 msgstr ""
 

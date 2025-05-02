@@ -149,7 +149,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2025-01-01", "New Year's"),
+            ("2025-01-01", "New Year's Day"),
             ("2025-03-08", "International Women's Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-05-01", "Labor Day"),
