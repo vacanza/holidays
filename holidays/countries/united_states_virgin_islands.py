@@ -24,6 +24,7 @@ class HolidaysVI(US):
     country = "VI"
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
+    subdivisions_aliases = {}  # Override US subdivisions aliases.
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "VI"
