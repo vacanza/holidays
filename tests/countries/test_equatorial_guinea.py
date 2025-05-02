@@ -126,8 +126,10 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_afcon_victory(self):
-        self.assertHoliday("2024-01-23")
-
+        name = "Victoria de la AFCON contra Costa de Marfil"
+        self.assertHolidayName(name, "2024-01-23")
+        # Verify it doesn't exist in other years
+        self.assertNoHoliday("2023-01-23", "2025-01-23")
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Año Nuevo"),
