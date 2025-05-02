@@ -37,7 +37,9 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-08" for year in range(1968, 2050)))
 
     def test_good_friday(self):
-        self.assertHoliday(
+        name = "Viernes Santo"
+        self.assertHolidayName(
+            name,
             "1994-04-01",
             "1995-04-14",
             "1996-04-05",
@@ -130,6 +132,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, "2024-01-23")
         # Verify it doesn't exist in other years
         self.assertNoHoliday("2023-01-23", "2025-01-23")
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Año Nuevo"),
