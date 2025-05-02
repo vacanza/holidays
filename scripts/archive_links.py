@@ -29,21 +29,22 @@ from urllib3.util.retry import Retry
 EXTENSIONS_TO_SCAN = [".py", ".po"]
 FIND_URL_PATTERN = re.compile(r'https?://[^\s<>"]+|www\.[^\s<>"]+')
 IGNORED_DIRECTORIES = ["__pycache__"]
-IGNORE_URL_PATTERNS = [
-    re.compile(r"github\.com"),
-    re.compile(r"wikipedia\.org"),
-    re.compile(r"wikisource\.org"),
-    re.compile(r"namu\.wiki"),
-    re.compile(r"web\.archive\.org"),
-    re.compile(r"archive\.org"),
-    re.compile(r"archive\.is"),
-    re.compile(r"archive\.ph"),
-    re.compile(r"archive\.today"),
-    re.compile(r"docs\.python\.org"),
-    re.compile(r"loc\.gov"),
-    re.compile(r"iso\.org"),
-    re.compile(r"semver\.org"),
+IGNORE_DOMAINS = [
+    r"archive\.is",
+    r"archive\.org",
+    r"archive\.ph",
+    r"archive\.today",
+    r"docs\.python\.org",
+    r"github\.com",
+    r"iso\.org",
+    r"loc\.gov",
+    r"namu\.wiki",
+    r"semver\.org",
+    r"web\.archive\.org",
+    r"wikipedia\.org",
+    r"wikisource\.org",
 ]
+IGNORE_URL_REGEX = re.compile(r"|".join(IGNORE_DOMAINS))
 CDX_API_URL = "https://web.archive.org/cdx/search/cdx"
 SAVE_API_URL = "https://web.archive.org/save"
 REQUEST_TIMEOUT = 60
@@ -61,19 +62,13 @@ def find_hyperlinks_in_file(filepath: str) -> list[str]:
         print(f"Warning: Could not read file {filepath} due to: {e}", file=sys.stderr)
         return []
 
-    found_urls = set()
     try:
-        for match in re.findall(FIND_URL_PATTERN, file_content):
-            if match:
-                ignore = False
-                for ignore_pattern in IGNORE_URL_PATTERNS:
-                    if re.search(ignore_pattern, match):
-                        ignore = True
-                        break
-                if not ignore:
-                    cleaned_match = match.rstrip(")")
-                    found_urls.add(cleaned_match)
-        return sorted(list(found_urls))
+        found_urls = {
+            match.rstrip(")")
+            for match in re.findall(FIND_URL_PATTERN, file_content)
+            if match and not IGNORE_URL_REGEX.search(match)
+        }
+        return sorted(found_urls)
     except Exception as e:
         print(f"Warning: Error processing file {filepath}: {e}", file=sys.stderr)
         return []
