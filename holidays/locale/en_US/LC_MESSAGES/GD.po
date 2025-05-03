@@ -66,6 +66,7 @@ msgstr "Carnival Monday"
 msgid "Carnival Tuesday"
 msgstr "Carnival Tuesday"
 
+#. National Heroes' Day
 msgid "National Heroes' Day"
 msgstr "National Heroes' Day"
 
