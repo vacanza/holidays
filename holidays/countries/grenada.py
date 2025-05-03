@@ -53,7 +53,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     default_language = "en_GB"
     # %s (observed).
     estimated_label = "%s (observed)"
-    supported_languages = ("en_GB", "en_US")
+    supported_languages = ("en_US", "en_GB")
 
     # Guinea gained independence from United Kingdom on February 7, 1974.
     start_year = 1975
@@ -100,7 +100,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_holiday_2nd_tue_of_aug(tr("Carnival Tuesday"))
 
         if self._year >= 2023:
-            # National Heroes’ Day.
+            # National Heroes' Day.
             self._add_observed(self._add_holiday_oct_19(tr("National Heroes' Day")))
 
         # Thanksgiving Day.
@@ -134,69 +134,69 @@ class GrenadaStaticHolidays:
 
     special_public_holidays = {
         2012: (
-            # Carricou Maroon and String Band Music Festival
+            # Carricou Maroon and String Band Music Festival.
             (APR, 27, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 28, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 29, tr("Carricou Maroon and String Band Music Festival")),
-            # Aunty Tek Spice Word Festival
+            # Aunty Tek Spice Word Festival.
             (OCT, 16, tr("Aunty Tek Spice Word Festival")),
             (OCT, 17, tr("Aunty Tek Spice Word Festival")),
             (OCT, 18, tr("Aunty Tek Spice Word Festival")),
             (OCT, 19, tr("Aunty Tek Spice Word Festival")),
             (OCT, 20, tr("Aunty Tek Spice Word Festival")),
-            # Camerhogne Folk Festival
+            # Camerhogne Folk Festival.
             (NOV, 30, tr("Camerhogne Folk Festival")),
             (DEC, 1, tr("Camerhogne Folk Festival")),
             (DEC, 2, tr("Camerhogne Folk Festival")),
         ),
         2013: (
-            # Carricou Maroon and String Band Music Festival
+            # Carricou Maroon and String Band Music Festival.
             (APR, 26, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 27, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 28, tr("Carricou Maroon and String Band Music Festival")),
-            # Aunty Tek Spice Word Festival
+            # Aunty Tek Spice Word Festival.
             (OCT, 16, tr("Aunty Tek Spice Word Festival")),
             (OCT, 17, tr("Aunty Tek Spice Word Festival")),
             (OCT, 18, tr("Aunty Tek Spice Word Festival")),
             (OCT, 19, tr("Aunty Tek Spice Word Festival")),
             (OCT, 20, tr("Aunty Tek Spice Word Festival")),
-            # Camerhogne Folk Festival
+            # Camerhogne Folk Festival.
             (NOV, 29, tr("Camerhogne Folk Festival")),
             (NOV, 30, tr("Camerhogne Folk Festival")),
             (DEC, 1, tr("Camerhogne Folk Festival")),
         ),
         2014: (
-            # Carricou Maroon and String Band Music Festival
+            # Carricou Maroon and String Band Music Festival.
             (APR, 25, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 26, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 27, tr("Carricou Maroon and String Band Music Festival")),
-            # Aunty Tek Spice Word Festival
+            # Aunty Tek Spice Word Festival.
             (OCT, 15, tr("Aunty Tek Spice Word Festival")),
             (OCT, 16, tr("Aunty Tek Spice Word Festival")),
             (OCT, 17, tr("Aunty Tek Spice Word Festival")),
             (OCT, 18, tr("Aunty Tek Spice Word Festival")),
             (OCT, 19, tr("Aunty Tek Spice Word Festival")),
-            # Camerhogne Folk Festival
+            # Camerhogne Folk Festival.
             (DEC, 5, tr("Camerhogne Folk Festival")),
             (DEC, 6, tr("Camerhogne Folk Festival")),
             (DEC, 7, tr("Camerhogne Folk Festival")),
         ),
         2015: (
-            # Carricou Maroon and String Band Music Festival
+            # Carricou Maroon and String Band Music Festival.
             (APR, 24, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 25, tr("Carricou Maroon and String Band Music Festival")),
             (APR, 26, tr("Carricou Maroon and String Band Music Festival")),
-            # Aunty Tek Spice Word Festival
+            # Aunty Tek Spice Word Festival.
             (OCT, 15, tr("Aunty Tek Spice Word Festival")),
             (OCT, 16, tr("Aunty Tek Spice Word Festival")),
             (OCT, 17, tr("Aunty Tek Spice Word Festival")),
             (OCT, 18, tr("Aunty Tek Spice Word Festival")),
             (OCT, 19, tr("Aunty Tek Spice Word Festival")),
-            # Camerhogne Folk Festival
+            # Camerhogne Folk Festival.
             (DEC, 4, tr("Camerhogne Folk Festival")),
             (DEC, 5, tr("Camerhogne Folk Festival")),
             (DEC, 6, tr("Camerhogne Folk Festival")),
         ),
-        # CARICOM’s 50th Anniversary.
+        # CARICOM's 50th Anniversary.
         2023: (JUL, 4, tr("CARICOM's 50th Anniversary")),
     }
