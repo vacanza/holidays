@@ -54,16 +54,18 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     # %s (observed).
     observed_label = tr("%s (observed)")
     start_year = 1801
+    # fmt: off
     subdivisions = (
         "ACT",  # Australian Capital Territory.
         "NSW",  # New South Wales.
-        "NT",  # Northern Territory.
+        "NT",   # Northern Territory.
         "QLD",  # Queensland.
-        "SA",  # South Australia.
+        "SA",   # South Australia.
         "TAS",  # Tasmania.
         "VIC",  # Victoria.
-        "WA",  # Western Australia.
+        "WA",   # Western Australia.
     )
+    # fmt: on
     subdivisions_aliases = {
         "Australian Capital Territory": "ACT",
         "New South Wales": "NSW",
