@@ -200,7 +200,7 @@ class TestGrenada(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1975, 2050))
 
-    def emancipation_day(self):
+    def test_emancipation_day(self):
         name = "Emancipation Day"
         self.assertHolidayName(
             name,
