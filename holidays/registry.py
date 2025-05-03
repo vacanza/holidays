@@ -83,6 +83,7 @@ COUNTRIES: RegistryDict = {
     "ghana": ("Ghana", "GH", "GHA"),
     "greece": ("Greece", "GR", "GRC"),
     "greenland": ("Greenland", "GL", "GRL"),
+    "grenada": ("Grenada", "GD", "GRD"),
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
     "guatemala": ("Guatemala", "GT", "GUA"),
     "guernsey": ("Guernsey", "GG", "GGY"),

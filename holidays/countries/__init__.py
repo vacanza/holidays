@@ -74,6 +74,7 @@ from .germany import Germany, DE, DEU
 from .ghana import Ghana, GH, GHA
 from .greece import Greece, GR, GRC
 from .greenland import Greenland, GL, GRL
+from .grenada import Grenada, GD, GRD
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
 from .guernsey import Guernsey, GG, GGY
