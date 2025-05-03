@@ -265,7 +265,12 @@ class TestGrenada(CommonCountryTests, TestCase):
     def test_national_heroes_day(self):
         name = "National Heroes' Day"
         self.assertHolidayName(name, (f"{year}-10-19" for year in range(2023, 2050)))
-        dt = ("2025-10-20", "2031-10-20", "2036-10-20", "2042-10-20")
+        dt = (
+            "2025-10-20",
+            "2031-10-20",
+            "2036-10-20",
+            "2042-10-20",
+        )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNonObservedHoliday(dt)
 
