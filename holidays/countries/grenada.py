@@ -107,7 +107,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_holiday_oct_25(tr("Thanksgiving Day")))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))

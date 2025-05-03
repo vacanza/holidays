@@ -292,20 +292,7 @@ class TestGrenada(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1975, 2050)))
-        dt = (
-            "1983-12-26",
-            "1988-12-26",
-            "1994-12-26",
-            "2005-12-26",
-            "2011-12-26",
-            "2016-12-26",
-            "2022-12-26",
-            "2033-12-26",
-        )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1975, 2050)))
 
     def test_boxing_day(self):
         name = "Boxing Day"
