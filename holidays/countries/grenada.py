@@ -55,7 +55,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     estimated_label = tr("%s (observed)")
     supported_languages = ("en_GB", "en_US")
 
-    # Guinea gained independence from United Kingdom on February 7, 1974.
+    # Guinea gained independence from the United Kingdom on February 7, 1974.
     start_year = 1975
 
     def __init__(self, *args, **kwargs):
