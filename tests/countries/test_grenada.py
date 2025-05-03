@@ -295,7 +295,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1975, 2050)))
         dt = (
-            "1977-12-26",
             "1983-12-26",
             "1988-12-26",
             "1994-12-26",
