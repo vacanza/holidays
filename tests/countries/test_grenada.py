@@ -20,7 +20,7 @@ class TestGrenada(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1975, 2050)
-        super().setUpClass(Grenada, years=years, years_non_observed=years)
+        super().setUpClass(Grenada, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Grenada, GD, GRD)
