@@ -310,3 +310,72 @@ class TestGrenada(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
+
+    def test_2012(self):
+        # * <<https://web.archive.org/web/20120623100105/http://www.gov.gd/holiday_events.html>
+        self.assertHolidays(
+            Grenada(years=2012),
+            ("2012-01-01", "New Year's Day"),
+            ("2012-02-07", "Independence Day"),
+            ("2012-04-06", "Good Friday"),
+            ("2012-04-09", "Easter Monday"),
+            ("2012-04-27", "Carricou Maroon and String Band Music Festival"),
+            ("2012-04-28", "Carricou Maroon and String Band Music Festival"),
+            ("2012-04-29", "Carricou Maroon and String Band Music Festival"),
+            ("2012-05-01", "Labour Day"),
+            ("2012-05-28", "Whit Monday"),
+            ("2012-06-07", "Corpus Christi"),
+            ("2012-08-06", "Emancipation Day"),
+            ("2012-08-13", "Carnival Monday"),
+            ("2012-08-14", "Carnival Tuesday"),
+            ("2012-10-16", "Aunty Tek Spice Word Festival"),
+            ("2012-10-17", "Aunty Tek Spice Word Festival"),
+            ("2012-10-18", "Aunty Tek Spice Word Festival"),
+            ("2012-10-19", "Aunty Tek Spice Word Festival"),
+            ("2012-10-20", "Aunty Tek Spice Word Festival"),
+            ("2012-10-25", "Thanksgiving Day"),
+            ("2012-11-31", "Camerhogne Folk Festival"),
+            ("2012-12-01", "Camerhogne Folk Festival"),
+            ("2012-12-02", "Camerhogne Folk Festival"),
+            ("2012-12-25", "Christmas Day"),
+            ("2012-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2025-01-01", "New Year's Day"),
+            ("2025-02-07", "Independence Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labour Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-06-19", "Corpus Christi"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-08-11", "Carnival Monday"),
+            ("2025-08-12", "Carnival Tuesday"),
+            ("2025-10-19", "National Heroes' Day"),
+            ("2025-10-20", "National Heroes' Day (observed)"),
+            ("2025-10-25", "Thanksgiving Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-02-07", "Independence Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-06-19", "Corpus Christi"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-08-11", "Carnival Monday"),
+            ("2025-08-12", "Carnival Tuesday"),
+            ("2025-10-19", "National Heroes' Day"),
+            ("2025-10-20", "National Heroes' Day (observed)"),
+            ("2025-10-25", "Thanksgiving Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
+        )
