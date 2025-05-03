@@ -53,7 +53,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     default_language = "en_GB"
     # %s (observed).
     estimated_label = tr("%s (observed)")
-    supported_languages = ("en_US", "en_GB")
+    supported_languages = ("en_GB", "en_US")
 
     # Guinea gained independence from United Kingdom on February 7, 1974.
     start_year = 1975
@@ -73,19 +73,19 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_holiday_feb_7(tr("Independence Day")))
 
         # Good Friday.
-        self._add_observed(self._add_good_friday(tr("Good Friday")))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_observed(self._add_easter_monday(tr("Easter Monday")))
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Whit Monday.
-        self._add_observed(self._add_whit_monday(tr("Whit Monday")))
+        self._add_whit_monday(tr("Whit Monday"))
 
         # Corpus Christi.
-        self._add_observed(self._add_corpus_christi_day(tr("Corpus Christi")))
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
         if self._year < 2025:
             # Emancipation Day.
