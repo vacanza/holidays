@@ -92,7 +92,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2034-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
         name = "Independence Day"
@@ -109,7 +109,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2038-02-08",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -162,7 +162,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2039-05-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_whit_monday(self):
         name = "Whit Monday"
@@ -224,7 +224,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2049-08-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_carnival_monday_day(self):
         name = "Carnival Monday"
@@ -272,7 +272,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2042-10-20",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
@@ -289,7 +289,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2037-10-26",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"
@@ -306,7 +306,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2033-12-26",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
@@ -323,4 +323,4 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2032-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNonObservedHoliday(dt)
+        self.assertNoNonObservedHoliday(dt)
