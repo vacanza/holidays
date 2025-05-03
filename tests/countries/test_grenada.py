@@ -334,7 +334,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             ("2012-10-19", "Aunty Tek Spice Word Festival"),
             ("2012-10-20", "Aunty Tek Spice Word Festival"),
             ("2012-10-25", "Thanksgiving Day"),
-            ("2012-11-31", "Camerhogne Folk Festival"),
+            ("2012-11-30", "Camerhogne Folk Festival"),
             ("2012-12-01", "Camerhogne Folk Festival"),
             ("2012-12-02", "Camerhogne Folk Festival"),
             ("2012-12-25", "Christmas Day"),
