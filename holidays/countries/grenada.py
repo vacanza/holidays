@@ -52,7 +52,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     country = "GD"
     default_language = "en_GB"
     # %s (observed).
-    estimated_label = "%s (observed)"
+    estimated_label = tr("%s (observed)")
     supported_languages = ("en_US", "en_GB")
 
     # Guinea gained independence from United Kingdom on February 7, 1974.

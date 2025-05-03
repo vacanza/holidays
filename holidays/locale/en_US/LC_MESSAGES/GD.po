@@ -26,6 +26,10 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_GB\n"
 
+#. %s (observed).
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
@@ -82,15 +86,15 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. Carricou Maroon and String Band Music Festival
+#. Carricou Maroon and String Band Music Festival.
 msgid "Carricou Maroon and String Band Music Festival"
 msgstr "Carricou Maroon and String Band Music Festival"
 
-#. Aunty Tek Spice Word Festival
+#. Aunty Tek Spice Word Festival.
 msgid "Aunty Tek Spice Word Festival"
 msgstr "Aunty Tek Spice Word Festival"
 
-#. Camerhogne Folk Festival
+#. Camerhogne Folk Festival.
 msgid "Camerhogne Folk Festival"
 msgstr "Camerhogne Folk Festival"
 
