@@ -65,7 +65,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def populate_public_holidays(self):
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
