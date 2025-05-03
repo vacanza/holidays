@@ -584,7 +584,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Grenada</td>
 <td>GD</td>
 <td></td>
-<td><strong>en_GB</strong>, en_US</td>
+<td><strong>en_GD</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
