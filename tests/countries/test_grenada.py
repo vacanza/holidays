@@ -316,6 +316,7 @@ class TestGrenada(CommonCountryTests, TestCase):
         self.assertHolidays(
             Grenada(years=2012),
             ("2012-01-01", "New Year's Day"),
+            ("2012-01-02", "New Year's Day (observed)"),
             ("2012-02-07", "Independence Day"),
             ("2012-04-06", "Good Friday"),
             ("2012-04-09", "Easter Monday"),
