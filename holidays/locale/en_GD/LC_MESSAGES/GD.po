@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Grenada holidays en_GD localization.
+# Grenada holidays.
 #
 msgid ""
 msgstr ""
