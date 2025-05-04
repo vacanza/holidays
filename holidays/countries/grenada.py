@@ -118,13 +118,13 @@ class GrenadaStaticHolidays:
     """Grenada special holidays.
 
     References:
-        * [2011](<https://web.archive.org/web/20250504100149/https://laws.gov.gd/index.php/s-r-o/37-sr-o-35-of-2011-bank-holiday/viewdocument/37>)
-        * [2013](<https://web.archive.org/web/20250504100219/https://laws.gov.gd/index.php/s-r-o/93-sro-6-of-2013-bank-holiday/viewdocument/93>)
-        * [2016](<https://web.archive.org/web/20250504100408/https://laws.gov.gd/index.php/s-r-o/289-sr-o-61-of-2016-bank-holiday/viewdocument/289>)
-        * [2018](<https://web.archive.org/web/20250504100436/https://laws.gov.gd/index.php/s-r-o/348-sr-o-10-of-2018-bank-holiday-proclamation/viewdocument/348>)
-        * [24 June 2022](<https://web.archive.org/web/20250504100516/https://laws.gov.gd/index.php/s-r-o/576-sr-o-33-of-2022-bank-holiday-proclamation-2022/viewdocument/576>)
-        * [27 December 2022](<https://web.archive.org/web/20250504100538/https://laws.gov.gd/index.php/s-r-o/586-sr-o-43-of-2022-bank-holiday-proclamation-2022/viewdocument/586>)
-        * [CARICOM's 50th Anniversary 2023](<https://web.archive.org/web/20250504100603/https://laws.gov.gd/index.php/s-r-o/612-sr-o-22-of-2023-bank-holiday-proclamation-2023/viewdocument/612>)
+        * [2011](https://web.archive.org/web/20250504100149/https://laws.gov.gd/index.php/s-r-o/37-sr-o-35-of-2011-bank-holiday/viewdocument/37)
+        * [2013](https://web.archive.org/web/20250504100219/https://laws.gov.gd/index.php/s-r-o/93-sro-6-of-2013-bank-holiday/viewdocument/93)
+        * [2016](https://web.archive.org/web/20250504100408/https://laws.gov.gd/index.php/s-r-o/289-sr-o-61-of-2016-bank-holiday/viewdocument/289)
+        * [2018](https://web.archive.org/web/20250504100436/https://laws.gov.gd/index.php/s-r-o/348-sr-o-10-of-2018-bank-holiday-proclamation/viewdocument/348)
+        * [24 June 2022](https://web.archive.org/web/20250504100516/https://laws.gov.gd/index.php/s-r-o/576-sr-o-33-of-2022-bank-holiday-proclamation-2022/viewdocument/576)
+        * [27 December 2022](https://web.archive.org/web/20250504100538/https://laws.gov.gd/index.php/s-r-o/586-sr-o-43-of-2022-bank-holiday-proclamation-2022/viewdocument/586)
+        * [CARICOM's 50th Anniversary 2023](https://web.archive.org/web/20250504100603/https://laws.gov.gd/index.php/s-r-o/612-sr-o-22-of-2023-bank-holiday-proclamation-2023/viewdocument/612)
     """
 
     # Bank Holiday.
