@@ -40,6 +40,10 @@ msgstr ""
 msgid "Vendredi saint"
 msgstr ""
 
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
 #. Independence Day.
 msgid "Fête de l’indépendance"
 msgstr ""

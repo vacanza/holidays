@@ -1218,7 +1218,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td><strong>fr</strong></td>
 <td>OPTIONAL</td>
 </tr>
-<tr><tr>
+<tr>
 <td>Tonga</td>
 <td>TO</td>
 <td></td>

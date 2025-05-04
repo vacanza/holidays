@@ -93,7 +93,7 @@ class Togo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
         self._add_good_friday(tr("Vendredi saint"))
 
         # Easter Monday.
-        self._add_easter_monday("Lundi de Pâques")
+        self._add_easter_monday(tr("Lundi de Pâques"))
 
         # Independence Day.
         self._add_holiday_apr_27(tr("Fête de l’indépendance"))
