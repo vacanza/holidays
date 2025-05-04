@@ -20,10 +20,10 @@ from holidays.groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase
+from holidays.observed_holiday_base import HolidayBase
 
 
-class Togo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Togo
 
     References:
@@ -59,10 +59,6 @@ class Togo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islami
     supported_categories = (OPTIONAL, PUBLIC)
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    # %s (observed).
-    observed_label = tr("%s (observed)")
-    # %s (observed, estimated).
-    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("fr",)
     # Togo gained independence on April 27, 1960.
     start_year = 1960

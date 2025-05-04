@@ -18,16 +18,6 @@ msgstr "Project-Id-Version: Holidays 0.72\n"
 msgid "%s (estimated)"
 msgstr ""
 
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr ""
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (observed, estimated)"
-msgstr ""
-
 #. New Year's Day.
 msgid "Jour de l‘an"
 msgstr ""
