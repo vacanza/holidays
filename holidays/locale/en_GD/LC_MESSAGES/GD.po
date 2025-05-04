@@ -87,16 +87,8 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
-#. Carricou Maroon and String Band Music Festival.
-msgid "Carricou Maroon and String Band Music Festival"
-msgstr ""
-
-#. Aunty Tek Spice Word Festival.
-msgid "Aunty Tek Spice Word Festival"
-msgstr ""
-
-#. Camerhogne Folk Festival.
-msgid "Camerhogne Folk Festival"
+#. Bank Holiday.
+msgid "Bank Holiday"
 msgstr ""
 
 #. CARICOM's 50th Anniversary.
