@@ -1,0 +1,240 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from unittest import TestCase
+
+from holidays.constants import OPTIONAL
+from holidays.countries.togo import Togo, TG, TGO
+from tests.common import CommonCountryTests
+
+
+class TestTogo(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        years = range(1960, 2050)
+        super().setUpClass(Togo, years=years, years_non_observed=years)
+        cls.no_estimated_holidays = Togo(years=years, islamic_show_estimated=False)
+        cls.optional_holidays = Togo(categories=OPTIONAL, years=years)
+
+    def test_country_aliases(self):
+        self.assertAliases(Togo, TG, TGO)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Togo(years=1959))
+        self.assertNoHolidays(Togo(categories=OPTIONAL, years=1959))
+
+    def test_new_years_day(self):
+        self.assertHolidayName("Jour de l‘an", (f"{year}-01-01" for year in range(1960, 2050)))
+
+    def test_liberation_day(self):
+        name = "Fête de la libération nationale"
+        self.assertHolidayName(name, (f"{year}-01-13" for year in range(1967, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
+
+    def test_good_friday(self):
+        name = "Vendredi saint"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, range(1960, 2050))
+
+    def test_easter_monday(self):
+        name = "Lundi de Pâques"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, range(1960, 2050))
+
+    def test_independence_day(self):
+        self.assertHolidayName(
+            "Fête de l’indépendance", (f"{year}-04-27" for year in range(1960, 2050))
+        )
+
+    def test_labor_day(self):
+        self.assertHolidayName("Fête du travail", (f"{year}-05-01" for year in range(1960, 2050)))
+
+    def test_ascension_day(self):
+        name = "Fête de l'Ascension"
+        self.assertHolidayName(name, range(1960, 1977))
+        self.assertHolidayName(
+            name,
+            "1971-05-20",
+            "1972-05-11",
+            "1973-05-31",
+            "1974-05-23",
+            "1975-05-08",
+            "1976-05-27",
+        )
+
+    def test_whit_monday(self):
+        name = "Lundi de Pentecôte"
+        self.assertHolidayName(
+            name,
+            "1960-06-06",
+            "1970-05-18",
+            "1971-05-31",
+            "1972-05-22",
+        )
+        self.assertHolidayName(name, range(1960, 1973))
+
+    def test_martyrs_day(self):
+        self.assertHolidayName("Fête des Martyrs", (f"{year}-06-21" for year in range(1960, 2050)))
+
+    def test_assumption_day(self):
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1960, 2050)))
+
+    def test_all_saints_day(self):
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in range(1960, 2050)))
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in range(1960, 2050)))
+
+    def test_ramadan_beginning_day(self):
+        name = "Ramadan"
+        self.assertHolidayName(
+            name,
+            "2015-06-18",
+            "2016-06-06",
+            "2017-05-27",
+            "2018-05-17",
+            "2019-05-06",
+            "2020-04-24",
+            "2021-04-13",
+            "2022-04-02",
+            "2023-03-23",
+            "2024-03-11",
+            "2025-03-01",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+
+    def test_eid_al_fitr(self):
+        name = "l’Aïd El-Fitr"
+        self.assertHolidayName(
+            name,
+            "2010-09-10",
+            "2011-08-31",
+            "2012-08-19",
+            "2013-08-08",
+            "2014-07-29",
+            "2015-07-18",
+            "2016-07-07",
+            "2017-06-26",
+            "2018-06-15",
+            "2019-06-05",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+
+    def test_eid_al_adha(self):
+        name = "Tabaski"
+        self.assertHolidayName(
+            name,
+            "2010-11-17",
+            "2011-11-07",
+            "2012-10-26",
+            "2013-10-15",
+            "2014-10-05",
+            "2015-09-24",
+            "2016-09-13",
+            "2017-09-02",
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-16",
+            "2025-06-07",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+
+    def test_mawlid_day(self):
+        name = "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
+        self.assertHolidayName(
+            name,
+            self.optional_holidays,
+            "2020-10-29",
+            "2021-10-19",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-16",
+            "2025-09-05",
+        )
+
+    def test_anniversary_of_the_failed_attack_on_lomé(self):
+        name = "Anniversaire de l'attentat manqué contre Lomé"
+        self.assertHolidayName(
+            name, self.optional_holidays, (f"{year}-09-24" for year in range(1987, 2050))
+        )
+        self.assertNoHolidayName(name, range(1960, 1987))
+
+    def test_optional_2025(self):
+        self.assertHolidays(
+            Togo(categories=OPTIONAL, years=2025),
+            ("2025-09-05", "Journée anniversaire de la naissance du prophète Mohamed à Lomé"),
+            ("2025-09-24", "Anniversaire de l'attentat manqué contre Lomé"),
+        )
+
+    def test_2024(self):
+        self.assertHolidays(
+            Togo(years=2024),
+            ("2024-01-01", "Jour de l‘an"),
+            ("2024-03-11", "Ramadan"),
+            ("2024-03-29", "Vendredi saint"),
+            ("2024-04-01", "Lundi de Pâques"),
+            ("2024-04-10", "l’Aïd El-Fitr"),
+            ("2024-04-27", "Fête de l’indépendance"),
+            ("2024-05-01", "Fête du travail"),
+            ("2024-05-09", "Fête de l'Ascension"),
+            ("2024-05-20", "Lundi de Pentecôte"),
+            ("2024-06-16", "Tabaski"),
+            ("2024-06-21", "Fête des Martyrs"),
+            ("2024-08-15", "Assomption"),
+            ("2024-11-01", "Toussaint"),
+            ("2024-12-25", "Noël"),
+        )
+
+    def test_2025(self):
+        self.assertHolidays(
+            Togo(years=2025),
+            ("2025-01-01", "Jour de l‘an"),
+            ("2025-03-01", "Ramadan"),
+            ("2025-04-18", "Vendredi saint"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-03-30", "l’Aïd El-Fitr"),
+            ("2025-04-27", "Fête de l’indépendance"),
+            ("2025-05-01", "Fête du travail"),
+            ("2025-05-29", "Fête de l'Ascension"),
+            ("2025-06-09", "Lundi de Pentecôte"),
+            ("2025-06-07", "Tabaski"),
+            ("2025-06-21", "Fête des Martyrs"),
+            ("2025-08-15", "Assomption"),
+            ("2025-11-01", "Toussaint"),
+            ("2025-12-25", "Noël"),
+        )

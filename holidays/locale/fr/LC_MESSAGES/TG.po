@@ -1,0 +1,93 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+msgid ""
+msgstr "Project-Id-Version: Holidays 0.72\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Jour de l‘an"
+msgstr ""
+
+#. Liberation Day.
+msgid "Fête de la libération nationale"
+msgstr ""
+
+#. Good Friday.
+msgid "Vendredi saint"
+msgstr ""
+
+#. Independence Day.
+msgid "Fête de l’indépendance"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du travail"
+msgstr ""
+
+#. Ascension Day.
+msgid "Fête de l'Ascension"
+msgstr ""
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Fête des Martyrs"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr ""
+
+#. Christmas Day.
+msgid "Noël"
+msgstr ""
+
+#. First Day of Ramadan.
+msgid "Ramadan"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "l’Aïd El-Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Tabaski"
+msgstr ""
+
+#. Prophet Mohammed's Birthday.
+msgid "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
+msgstr ""
+
+#. Anniversary of the Failed Attack on Lomé.
+msgid "Anniversaire de l'attentat manqué contre Lomé"
+msgstr ""
