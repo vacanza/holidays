@@ -19,7 +19,7 @@ msgid "%s (estimated)"
 msgstr ""
 
 #. New Year's Day.
-msgid "Jour de l‘an"
+msgid "Jour de l'an"
 msgstr ""
 
 #. Liberation Day.
@@ -35,7 +35,7 @@ msgid "Lundi de Pâques"
 msgstr ""
 
 #. Independence Day.
-msgid "Fête de l’indépendance"
+msgid "Fête de l'indépendance"
 msgstr ""
 
 #. Labor Day.
@@ -71,7 +71,7 @@ msgid "Ramadan"
 msgstr ""
 
 #. Eid al-Fitr.
-msgid "l’Aïd El-Fitr"
+msgid "l'Aïd El-Fitr"
 msgstr ""
 
 #. Eid al-Adha.

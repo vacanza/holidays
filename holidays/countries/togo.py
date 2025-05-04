@@ -79,7 +79,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Jour de l‘an"))
+        self._add_new_years_day(tr("Jour de l'an"))
 
         if self._year >= 1967 and self._year < 2014:
             # Liberation Day.
@@ -92,7 +92,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         self._add_easter_monday(tr("Lundi de Pâques"))
 
         # Independence Day.
-        self._add_holiday_apr_27(tr("Fête de l’indépendance"))
+        self._add_holiday_apr_27(tr("Fête de l'indépendance"))
 
         # Labor Day.
         self._add_holiday_may_1(tr("Fête du travail"))
@@ -119,7 +119,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         self._add_ramadan_beginning_day(tr("Ramadan"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("l’Aïd El-Fitr"))
+        self._add_eid_al_fitr_day(tr("l'Aïd El-Fitr"))
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
