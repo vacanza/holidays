@@ -85,6 +85,12 @@ class TestTogo(CommonCountryTests, TestCase):
             "1974-05-23",
             "1975-05-08",
             "1976-05-27",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
         )
 
     def test_whit_monday(self):
@@ -95,6 +101,12 @@ class TestTogo(CommonCountryTests, TestCase):
             "1970-05-18",
             "1971-05-31",
             "1972-05-22",
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
         )
         self.assertHolidayName(name, range(1960, 1973))
 
@@ -225,9 +237,9 @@ class TestTogo(CommonCountryTests, TestCase):
             Togo(years=2025),
             ("2025-01-01", "Jour de l'an"),
             ("2025-03-01", "Ramadan"),
+            ("2025-03-30", "l'Aïd El-Fitr"),
             ("2025-04-18", "Vendredi saint"),
             ("2025-04-21", "Lundi de Pâques"),
-            ("2025-03-30", "l'Aïd El-Fitr"),
             ("2025-04-27", "Fête de l'indépendance"),
             ("2025-05-01", "Fête du travail"),
             ("2025-05-29", "Fête de l'Ascension"),
