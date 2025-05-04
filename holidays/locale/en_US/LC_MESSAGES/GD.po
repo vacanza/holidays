@@ -87,7 +87,7 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. Bank Holiday
+#. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "Bank Holiday"
 
