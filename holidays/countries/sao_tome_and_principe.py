@@ -30,16 +30,15 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
     default_language = "pt_ST"
     # %s (observed).
     observed_label = tr("%s (observado)")
-    supported_languages = ("en_US", "pt_ST")
     start_year = 2014
     subdivisions = (
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "P",
+        "01",  # Água Grande.
+        "02",  # Cantagalo.
+        "03",  # Caué.
+        "04",  # Lembá.
+        "05",  # Lobata.
+        "06",  # Mé-Zóchi.
+        "P",  # Príncipe.
     )
     subdivisions_aliases = {
         # Districts.
@@ -52,6 +51,7 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
         # Autonomous Region.
         "Príncipe": "P",
     }
+    supported_languages = ("en_US", "pt_ST")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

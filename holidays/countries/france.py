@@ -30,7 +30,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FR"
     default_language = "fr"
-    supported_languages = ("en_US", "fr", "uk")
+    start_year = 1801
     subdivisions: tuple[str, ...] = (
         "BL",  # Saint-Barthélemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
@@ -59,7 +59,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wallis-et-Futuna": "WF",
         "Mayotte": "YT",
     }
-
+    supported_languages = ("en_US", "fr", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
         "Guadeloupe",
@@ -74,7 +74,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Martin",
         "Wallis-et-Futuna",
     )
-    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

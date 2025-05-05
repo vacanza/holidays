@@ -38,29 +38,27 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "pt_PT"
     supported_categories = (OPTIONAL, PUBLIC)
     start_year = 1801
-
-    # https://en.wikipedia.org/wiki/ISO_3166-2:PT
     subdivisions = (
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-        "20",
-        "30",
+        "01",  # Aveiro.
+        "02",  # Beja.
+        "03",  # Braga.
+        "04",  # Bragança.
+        "05",  # Castelo Branco.
+        "06",  # Coimbra.
+        "07",  # Évora.
+        "08",  # Faro.
+        "09",  # Guarda.
+        "10",  # Leiria.
+        "11",  # Lisboa.
+        "12",  # Portalegre.
+        "13",  # Porto.
+        "14",  # Santarém.
+        "15",  # Setúbal.
+        "16",  # Viana do Castelo.
+        "17",  # Vila Real.
+        "18",  # Viseu.
+        "20",  # Região Autónoma dos Açores.
+        "30",  # Região Autónoma da Madeira.
     )
     subdivisions_aliases = {
         "Aveiro": "01",
@@ -84,8 +82,8 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Região Autónoma dos Açores": "20",
         "Região Autónoma da Madeira": "30",
     }
-    _deprecated_subdivisions = ("Ext",)
     supported_languages = ("en_US", "pt_PT", "uk")
+    _deprecated_subdivisions = ("Ext",)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -105,7 +103,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Sunday.
         self._add_easter_sunday(tr("Páscoa"))
 
-        # Revoked holidays in 2013–2015.
+        # Revoked holidays in 2013-2015.
         if self._year <= 2012 or self._year >= 2016:
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Corpo de Deus"))
