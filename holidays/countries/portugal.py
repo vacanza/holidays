@@ -105,7 +105,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Sunday.
         self._add_easter_sunday(tr("Páscoa"))
 
-        # Revoked holidays in 2013–2015.
+        # Revoked holidays in 2013-2015.
         if self._year <= 2012 or self._year >= 2016:
             # Corpus Christi.
             self._add_corpus_christi_day(tr("Corpo de Deus"))

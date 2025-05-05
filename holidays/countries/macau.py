@@ -55,7 +55,7 @@ class Macau(
         * [Lei n.º 7/2008](https://web.archive.org/web/20250403121227/https://bo.io.gov.mo/bo/i/2008/33/lei07.asp)
 
     Cross-Checking:
-        * [Public Holidays for 2017–2025](https://web.archive.org/web/20210509143637/https://www.gov.mo/en/public-holidays/year-2017/)
+        * [Public Holidays for 2017-2025](https://web.archive.org/web/20210509143637/https://www.gov.mo/en/public-holidays/year-2017/)
         * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
         * [Mandatory Holidays for 2009-2029](https://web.archive.org/web/20250421090753/https://www.dsal.gov.mo/pt/standard/holiday_table.html)
     """
@@ -414,7 +414,7 @@ class MacauStaticHolidays:
         * <https://web.archive.org/web/20250421090753/https://www.dsal.gov.mo/pt/standard/holiday_table.html>
 
     Cross-Checking:
-        * [Public Holidays for 2017–2025](https://web.archive.org/web/20210509143637/https://www.gov.mo/en/public-holidays/year-2017/)
+        * [Public Holidays for 2017-2025](https://web.archive.org/web/20210509143637/https://www.gov.mo/en/public-holidays/year-2017/)
         * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
     """
 
