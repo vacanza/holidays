@@ -197,7 +197,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     def _add_victoria_day(self) -> None:
         """Adds Victoria Day.
 
-        After Queen Victoria’s death in 1901, an act of the Canadian Parliament established
+        After Queen Victoria's death in 1901, an act of the Canadian Parliament established
         Victoria Day as a legal holiday, to be celebrated on May 24 (or on May 25 when
         May 24 fell on a Sunday). This was later moved to the Monday preceding May 24 in 1952.
         """
