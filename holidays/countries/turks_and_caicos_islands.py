@@ -20,9 +20,18 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
     """Turks and Caicos Islands holidays.
 
     References:
-        * https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands
-        * https://destinationtci.tc/turks-and-caicos-islands-public-holidays/
-        * https://www.timeanddate.com/holidays/turks-and-caicos-islands/
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands>
+        * <https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=>
+        * <https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=>
+        * [2018](https://web.archive.org/web/20180126185141/https://gov.tc/pressoffice/999-listing-of-special-days-public-holidays-for-2018)
+        * [2019](https://www.facebook.com/photo/?fbid=2514587681970236&set=a.349345645161128)
+        * [2020](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/2572825079479829/?type=3)
+        * [2021](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/3511371698958491/?type=3)
+        * [2022](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/4515540038541647/?type=3)
+        * [2023](https://www.facebook.com/photo/?fbid=557741379734203&set=a.363028765872133)
+        * [2025](https://www.facebook.com/photo/?fbid=1019082573584944&set=a.353200576839817)
+        * <https://web.archive.org/web/20250429024708/https://destinationtci.tc/turks-and-caicos-islands-public-holidays/>
+        * <https://web.archive.org/web/20250429024853/https://www.timeanddate.com/holidays/turks-and-caicos-islands/>
     """
 
     country = "TC"
@@ -36,9 +45,7 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
@@ -51,17 +58,21 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # JAGS McCartney Day. Previously National Heroes Day until 2020.
-        if year >= 2020:
-            self._add_holiday_last_mon_of_may(tr("JAGS McCartney Day"))
-        else:
-            self._add_holiday_last_mon_of_may(tr("National Heroes Day"))
+        self._add_holiday_last_mon_of_may(
+            # JAGS McCartney Day.
+            tr("JAGS McCartney Day")
+            if self._year >= 2020
+            # National Heroes Day.
+            else tr("National Heroes Day")
+        )
 
-        # King's Birthday. Previously Queen's Birthday until 2023.
-        if year >= 2023:
-            self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
-        else:
-            self._add_holiday_2nd_mon_of_jun(tr("Queen's Birthday"))
+        self._add_holiday_2nd_mon_of_jun(
+            # King's Birthday.
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
 
         # Emancipation Day.
         self._add_holiday_aug_1(tr("Emancipation Day"))
@@ -69,11 +80,13 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         # National Youth Day.
         self._add_holiday_last_fri_of_sep(tr("National Youth Day"))
 
-        # National Heritage Day. Previously known as Columbus Day until 2014.
-        if year >= 2014:
-            self._add_holiday_2nd_mon_of_oct(tr("National Heritage Day"))
-        else:
-            self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
+        self._add_holiday_2nd_mon_of_oct(
+            # National Heritage Day.
+            tr("National Heritage Day")
+            if self._year >= 2014
+            # Columbus Day.
+            else tr("Columbus Day")
+        )
 
         # National Day of Thanksgiving.
         self._add_holiday_4th_fri_of_nov(tr("National Day of Thanksgiving"))
