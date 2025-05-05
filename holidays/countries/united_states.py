@@ -197,7 +197,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         "United States Minor Outlying Islands": "UM",
         "Utah": "UT",
         "Virginia": "VA",
-        "Virgin Islands U.S.": "VI",
+        "Virgin Islands, U.S.": "VI",
         "Vermont": "VT",
         "Washington": "WA",
         "Wisconsin": "WI",

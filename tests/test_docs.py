@@ -118,6 +118,9 @@ class TestReadme(TestCase):
                             subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
                             subdivision = subdivision_aliases.group(1)
                             aliases = subdivision_aliases.group(2).split(", ")
+                            # "Virgin Islands, U.S." special case.
+                            if len(aliases) == 2 and aliases[1] == "U.S.":
+                                aliases = [subdivision_aliases.group(2)]
                         else:
                             aliases = []
                             subdivision = subdivision_aliases
