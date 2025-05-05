@@ -1,3 +1,25 @@
+# Version 0.72
+
+Released May 5, 2025
+
+- Add Sao Tome and Principe holidays (#2489 by @tr33k, @arkid15r)
+- Add Trinidad and Tobago holidays (#2402 by @Roshan-1024, @KJhellico)
+- Fix `TestClosestHoliday` current date handling (#2517 by @KJhellico)
+- Fix typography: replace U+2019 with "'" and U+2013 with '-' (#2523 by @KJhellico)
+- Update Canada holidays: add historical holidays (#2507 by @PPsyrius)
+- Update Ethiopia holidays: official source namings, `WORKDAY` category (#2490 by @PPsyrius)
+- Update India holidays: add missing Tamil Nadu holidays (#2502 by @tr33k, @KJhellico)
+- Update README: add Snyk package health badge (#2503 by @KJhellico)
+- Update Singapore holidays: 2025 Polling Day on May 3rd (#2487 by @PPsyrius)
+- Update Taiwan holidays: test case refactor (#2498 by @PPsyrius)
+- Update documentation build process (#2501 by @KJhellico, @arkid15r)
+- Update documentation tests: add AUTHORS.md checking (#2492 by @KJhellico, @arkid15r)
+- Add missing subdivisions aliases  (#2520 by @KJhellico)
+- Disable v1 incompatibility warning (#2518 by @arkid15r)
+- Docstring cleanup for Indochinese countries (#2505 by @PPsyrius)
+- Extend Chinese Lunisolar calendar support (#2488 by @KJhellico)
+- Rename AUTHORS.md to CONTRIBUTORS (#2496 by @arkid15r)
+
 # Version 0.71
 
 Released April 21, 2025
