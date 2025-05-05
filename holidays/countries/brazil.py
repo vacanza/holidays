@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -32,6 +32,8 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BR"
     default_language = "pt_BR"
+    # Decreto n. 155-B, de 14.01.1890
+    start_year = 1890
     subdivisions = (
         "AC",
         "AL",
@@ -90,11 +92,8 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "São Paulo": "SP",
         "Tocantins": "TO",
     }
-
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_BR", "uk")
-    # Decreto n. 155-B, de 14.01.1890
-    start_year = 1890
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

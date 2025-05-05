@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -32,7 +32,7 @@ class Albania(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
         * [Law No. 7651](http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
-        * [Holidays for 2018–2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
+        * [Holidays for 2018-2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
     """
 
     country = "AL"

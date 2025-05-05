@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -145,6 +145,7 @@ from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from .saint_lucia import SaintLucia, LC, LCA
 from .samoa import Samoa, WS, WSM
 from .san_marino import SanMarino, SM, SMR
+from .sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .seychelles import Seychelles, SC, SYC
@@ -164,6 +165,7 @@ from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
 from .timor_leste import TimorLeste, TL, TLS
 from .tonga import Tonga, TO, TON
+from .trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR
 from .tuvalu import Tuvalu, TV, TUV

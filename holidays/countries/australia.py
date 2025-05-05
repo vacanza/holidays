@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -50,12 +50,22 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
     """
 
     country = "AU"
-    supported_categories = (BANK, HALF_DAY, PUBLIC)
     default_language = "en_AU"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_AU", "en_US", "th")
-    subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
+    start_year = 1801
+    # fmt: off
+    subdivisions = (
+        "ACT",  # Australian Capital Territory.
+        "NSW",  # New South Wales.
+        "NT",   # Northern Territory.
+        "QLD",  # Queensland.
+        "SA",   # South Australia.
+        "TAS",  # Tasmania.
+        "VIC",  # Victoria.
+        "WA",   # Western Australia.
+    )
+    # fmt: on
     subdivisions_aliases = {
         "Australian Capital Territory": "ACT",
         "New South Wales": "NSW",
@@ -66,7 +76,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Victoria": "VIC",
         "Western Australia": "WA",
     }
-    start_year = 1801
+    supported_categories = (BANK, HALF_DAY, PUBLIC)
+    supported_languages = ("en_AU", "en_US", "th")
 
     @property
     def sovereign_birthday(self) -> str:

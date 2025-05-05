@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -55,26 +55,49 @@ class Spain(
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
     subdivisions = (
-        "AN",  # Andalucía
-        "AR",  # Aragón
-        "AS",  # Asturias
-        "CB",  # Cantabria
-        "CE",  # Ceuta
-        "CL",  # Castilla y León
-        "CM",  # Castilla-La Mancha
-        "CN",  # Canarias
-        "CT",  # Cataluña
-        "EX",  # Extremadura
-        "GA",  # Galicia
-        "IB",  # Islas Baleares
-        "MC",  # Murcia
-        "MD",  # Madrid
-        "ML",  # Melilla
-        "NC",  # Navarra
-        "PV",  # País Vasco
-        "RI",  # La Rioja
-        "VC",  # Valenciana
+        "AN",  # Andalucía.
+        "AR",  # Aragón.
+        "AS",  # Asturias.
+        "CB",  # Cantabria.
+        "CE",  # Ceuta.
+        "CL",  # Castilla y León.
+        "CM",  # Castilla-La Mancha.
+        "CN",  # Canarias.
+        "CT",  # Cataluña (Catalunya).
+        "EX",  # Extremadura.
+        "GA",  # Galicia.
+        "IB",  # Islas Baleares (Illes Balears).
+        "MC",  # Murcia.
+        "MD",  # Madrid.
+        "ML",  # Melilla.
+        "NC",  # Navarra.
+        "PV",  # País Vasco.
+        "RI",  # La Rioja.
+        "VC",  # Valenciana.
     )
+    subdivisions_aliases = {
+        "Andalucía": "AN",
+        "Aragón": "AR",
+        "Asturias": "AS",
+        "Cantabria": "CB",
+        "Ceuta": "CE",
+        "Castilla y León": "CL",
+        "Castilla-La Mancha": "CM",
+        "Canarias": "CN",
+        "Cataluña": "CT",
+        "Catalunya": "CT",
+        "Extremadura": "EX",
+        "Galicia": "GA",
+        "Islas Baleares": "IB",
+        "Illes Balears": "IB",
+        "Murcia": "MC",
+        "Madrid": "MD",
+        "Melilla": "ML",
+        "Navarra": "NC",
+        "País Vasco": "PV",
+        "La Rioja": "RI",
+        "Valenciana": "VC",
+    }
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):

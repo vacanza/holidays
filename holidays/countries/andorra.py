@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -32,6 +32,15 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         "07",  # Andorra la Vella.
         "08",  # Escaldes-Engordany.
     )
+    subdivisions_aliases = {
+        "Canillo": "02",
+        "Encamp": "03",
+        "La Massana": "04",
+        "Ordino": "05",
+        "Sant Julià de Lòria": "06",
+        "Andorra la Vella": "07",
+        "Escaldes-Engordany": "08",
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

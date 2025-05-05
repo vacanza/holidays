@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -63,7 +63,7 @@ class HongKong(
 
     General Holidays:
         * [Cap. 149 General Holidays Ordinance](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
-        * [Holidays for 2007–2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
+        * [Holidays for 2007-2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
     """
 
     country = "HK"

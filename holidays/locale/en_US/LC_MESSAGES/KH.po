@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.61\n"
 "POT-Creation-Date: 2023-06-07 20:10+0700\n"
-"PO-Revision-Date: 2024-11-06 00:20+0700\n"
+"PO-Revision-Date: 2025-04-28 09:57+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -24,13 +24,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
-#. Khmer New Year's Replacement Holiday
+#. Khmer New Year's Replacement Holiday.
 msgid "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
 msgstr "Khmer New Year's Replacement Holiday"
 
-#. Special Public Holiday
+#. Special Public Holiday.
 msgid "ថ្ងៃឈប់សម្រាកសងជំនួស"
 msgstr "Special Public Holiday"
 
@@ -42,80 +42,80 @@ msgstr "International New Year Day"
 msgid "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
 msgstr "Day of Victory over the Genocidal Regime"
 
-#. International Women's Rights Day
+#. International Women's Rights Day.
 msgid "ទិវាអន្តរជាតិនារី"
 msgstr "International Women's Rights Day"
 
-#. Khmer New Year's Day
+#. Khmer New Year's Day.
 msgid "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
 msgstr "Khmer New Year's Day"
 
-#. International Labor Day
+#. International Labor Day.
 msgid "ទិវាពលកម្មអន្តរជាតិ"
 msgstr "International Labor Day"
 
-#. Birthday of His Majesty Preah Bat Samdech Preah Boromneath NORODOM SIHAMONI, King of Cambodia
+#. Birthday of His Majesty Preah Bat Samdech Preah Boromneath NORODOM SIHAMONI, King of Cambodia.
 msgid "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
 msgstr "HM King Norodom Sihamoni's Birthday"
 
-#. National Day of Remembrance
+#. National Day of Remembrance.
 msgid "ទិវាជាតិនៃការចងចាំ"
 msgstr "National Day of Remembrance"
 
-#. International Children's Day
+#. International Children's Day.
 msgid "ទិវាកុមារអន្តរជាតិ"
 msgstr "International Children's Day"
 
-#. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
+#. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia.
 msgid "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ"
 msgstr "HM Queen Norodom Monineath Sihanouk the Queen-Mother's Birthday"
 
-#. Constitution Day
+#. Constitution Day.
 msgid "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
 msgstr "Constitution Day"
 
-#. Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia
+#. Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia.
 msgid ""
 "ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ "
 "ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ ព្រះបរមរតនកោដ្ឋ"
 msgstr "HM King Norodom Sihanouk Mourning Day"
 
-#. Paris Peace Agreement's Day
+#. Paris Peace Agreement's Day.
 msgid "ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"
 msgstr "Paris Peace Agreement's Day"
 
 #. Coronation Day of His Majesty Preah Bat Samdech Preah Boromneath NORODOM SIHAMONI, King of
-#. Cambodia
+#. Cambodia.
 msgid ""
 "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "
 "ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា"
 msgstr "HM King Norodom Sihamoni's Coronation Day"
 
-#. National Independence Day
+#. National Independence Day.
 msgid "ពិធីបុណ្យឯករាជ្យជាតិ"
 msgstr "National Independence Day"
 
-#. International Human Rights Day
+#. International Human Rights Day.
 msgid "ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"
 msgstr "International Human Rights Day"
 
-#. Meak Bochea Day
+#. Meak Bochea Day.
 msgid "ពិធីបុណ្យមាឃបូជា"
 msgstr "Meak Bochea Day"
 
-#. Visaka Bochea Day
+#. Visaka Bochea Day.
 msgid "ពិធីបុណ្យវិសាខបូជា"
 msgstr "Visaka Bochea Day"
 
-#. Royal Ploughing Ceremony
+#. Royal Ploughing Ceremony.
 msgid "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
 msgstr "Royal Ploughing Ceremony"
 
-#. Pchum Ben Day
+#. Pchum Ben Day.
 msgid "ពិធីបុណ្យភ្ផុំបិណ្ឌ"
 msgstr "Pchum Ben Day"
 
-#. Water Festival
+#. Water Festival.
 msgid "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
 msgstr "Water Festival"
 

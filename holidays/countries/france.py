@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -30,7 +30,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FR"
     default_language = "fr"
-    supported_languages = ("en_US", "fr", "uk")
+    start_year = 1801
     subdivisions: tuple[str, ...] = (
         "BL",  # Saint-Barthélemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
@@ -59,7 +59,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wallis-et-Futuna": "WF",
         "Mayotte": "YT",
     }
-
+    supported_languages = ("en_US", "fr", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
         "Guadeloupe",
@@ -74,7 +74,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Martin",
         "Wallis-et-Futuna",
     )
-    start_year = 1801
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

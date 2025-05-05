@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -35,26 +35,24 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     country = "DE"
     default_language = "de"
-    supported_categories = (CATHOLIC, PUBLIC)
-    supported_languages = ("de", "en_US", "th", "uk")
+    start_year = 1990
     subdivisions = (
-        # ISO 3166-2:DE
-        "BB",
-        "BE",
-        "BW",
-        "BY",
-        "HB",
-        "HE",
-        "HH",
-        "MV",
-        "NI",
-        "NW",
-        "RP",
-        "SH",
-        "SL",
-        "SN",
-        "ST",
-        "TH",
+        "BB",  # Brandenburg.
+        "BE",  # Berlin.
+        "BW",  # Baden-Württemberg.
+        "BY",  # Bayern.
+        "HB",  # Bremen.
+        "HE",  # Hessen.
+        "HH",  # Hamburg.
+        "MV",  # Mecklenburg-Vorpommern.
+        "NI",  # Niedersachsen.
+        "NW",  # Nordrhein-Westfalen.
+        "RP",  # Rheinland-Pfalz.
+        "SH",  # Schleswig-Holstein.
+        "SL",  # Saarland.
+        "SN",  # Sachsen.
+        "ST",  # Sachsen-Anhalt.
+        "TH",  # Thüringen.
     )
     subdivisions_aliases = {
         "Brandenburg": "BB",
@@ -74,8 +72,9 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         "Sachsen-Anhalt": "ST",
         "Thüringen": "TH",
     }
+    supported_categories = (CATHOLIC, PUBLIC)
+    supported_languages = ("de", "en_US", "th", "uk")
     _deprecated_subdivisions = ("BYP",)
-    start_year = 1990
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

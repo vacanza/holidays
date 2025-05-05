@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -87,7 +87,7 @@ class IvoryCoast(
         self._add_observed(self._add_labor_day(tr("Fête du travail")))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Jour de l’Ascension"))
+        self._add_ascension_thursday(tr("Jour de l'Ascension"))
 
         # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))
@@ -96,7 +96,7 @@ class IvoryCoast(
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day(tr("Fête de l’Assomption"))
+        self._add_assumption_of_mary_day(tr("Fête de l'Assomption"))
 
         # National Peace Day.
         self._add_holiday_nov_15(tr("Journée Nationale de la Paix"))
@@ -116,7 +116,7 @@ class IvoryCoast(
             self._add_observed(dt)
 
         # Day after Prophet's Birthday.
-        self._add_mawlid_day(tr("Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"))
+        self._add_mawlid_day(tr("Lendemain de l'Anniversaire de la Naissance du Prophète Mahomet"))
 
         # Day after Night of Power.
         self._add_laylat_al_qadr_day(tr("Lendemain de la Nuit du Destin"))
@@ -152,5 +152,5 @@ class IvoryCoastStaticHolidays:
         # Public holiday for Presidential election preparation.
         2010: (OCT, 29, tr("Jour férié pour la préparation de l'élection présidentielle")),
         # 2024 African Cup of Nations Victory.
-        2024: (FEB, 12, tr("Victoire à la Coupe d’Afrique des Nations 2024")),
+        2024: (FEB, 12, tr("Victoire à la Coupe d'Afrique des Nations 2024")),
     }

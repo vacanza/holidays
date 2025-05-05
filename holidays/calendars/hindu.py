@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -35,6 +35,7 @@ MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
 MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 ONAM = "ONAM"
+PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
@@ -135,13 +136,13 @@ class _HinduLunisolar:
         1911: (NOV, 19),
         1912: (NOV, 7),
         1913: (OCT, 27),
-        1914: (NOV, 15),
+        1914: (NOV, 16),
         1915: (NOV, 5),
         1916: (OCT, 25),
         1917: (NOV, 13),
         1918: (NOV, 2),
         1919: (NOV, 20),
-        1920: (NOV, 8),
+        1920: (NOV, 9),
         1921: (OCT, 29),
         1922: (NOV, 17),
         1923: (NOV, 6),
@@ -321,6 +322,7 @@ class _HinduLunisolar:
         2097: (NOV, 2),
         2098: (OCT, 22),
         2099: (NOV, 10),
+        2100: (OCT, 31),
     }
 
     # https://www.timeanddate.com/holidays/india/diwali
@@ -864,6 +866,44 @@ class _HinduLunisolar:
         2035: (SEP, 14),
     }
 
+    PONGAL_DATES = {
+        2001: (JAN, 14),
+        2002: (JAN, 14),
+        2003: (JAN, 15),
+        2004: (JAN, 15),
+        2005: (JAN, 14),
+        2006: (JAN, 14),
+        2007: (JAN, 15),
+        2008: (JAN, 15),
+        2009: (JAN, 14),
+        2010: (JAN, 14),
+        2011: (JAN, 15),
+        2012: (JAN, 15),
+        2013: (JAN, 14),
+        2014: (JAN, 14),
+        2015: (JAN, 15),
+        2016: (JAN, 15),
+        2017: (JAN, 14),
+        2018: (JAN, 14),
+        2019: (JAN, 15),
+        2020: (JAN, 15),
+        2021: (JAN, 14),
+        2022: (JAN, 14),
+        2023: (JAN, 15),
+        2024: (JAN, 15),
+        2025: (JAN, 14),
+        2026: (JAN, 14),
+        2027: (JAN, 15),
+        2028: (JAN, 15),
+        2029: (JAN, 14),
+        2030: (JAN, 14),
+        2031: (JAN, 15),
+        2032: (JAN, 15),
+        2033: (JAN, 14),
+        2034: (JAN, 14),
+        2035: (JAN, 15),
+    }
+
     # https://www.timeanddate.com/holidays/india/raksha-bandhan
     RAKSHA_BANDHAN_DATES = {
         2001: (AUG, 4),
@@ -1181,6 +1221,7 @@ class _HinduLunisolar:
         2097: (FEB, 27),
         2098: (FEB, 16),
         2099: (JAN, 6),
+        2100: (FEB, 24),
     }
 
     # https://www.timeanddate.com/holidays/india/vaisakhi
@@ -1267,6 +1308,9 @@ class _HinduLunisolar:
 
     def holi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(HOLI, year)
+
+    def pongal_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(PONGAL, year)
 
     def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(JANMASHTAMI, year)

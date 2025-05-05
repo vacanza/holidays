@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -181,13 +181,13 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     """
 
     country = "TH"
-    supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
     default_language = "th"
     # %s (in lieu).
     observed_label = tr("ชดเชย%s")
-    supported_languages = ("en_US", "th")
     # First Holiday Decree was promulgated in March 1914.
     start_year = 1914
+    supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
+    supported_languages = ("en_US", "th")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)

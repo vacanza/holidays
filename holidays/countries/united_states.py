@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -84,8 +84,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     observed_label = "%s (observed)"
+    start_year = 1777
     subdivisions: Union[tuple[()], tuple[str, ...]] = (
         "AK",  # Alaska.
         "AL",  # Alabama.
@@ -145,13 +145,71 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         "WV",  # West Virginia.
         "WY",  # Wyoming.
     )
-
+    subdivisions_aliases = {
+        "Alaska": "AK",
+        "Alabama": "AL",
+        "Arkansas": "AR",
+        "American Samoa": "AS",
+        "Arizona": "AZ",
+        "California": "CA",
+        "Colorado": "CO",
+        "Connecticut": "CT",
+        "District of Columbia": "DC",
+        "Delaware": "DE",
+        "Florida": "FL",
+        "Georgia": "GA",
+        "Guam": "GU",
+        "Hawaii": "HI",
+        "Iowa": "IA",
+        "Idaho": "ID",
+        "Illinois": "IL",
+        "Indiana": "IN",
+        "Kansas": "KS",
+        "Kentucky": "KY",
+        "Louisiana": "LA",
+        "Massachusetts": "MA",
+        "Maryland": "MD",
+        "Maine": "ME",
+        "Michigan": "MI",
+        "Minnesota": "MN",
+        "Missouri": "MO",
+        "Northern Mariana Islands": "MP",
+        "Mississippi": "MS",
+        "Montana": "MT",
+        "North Carolina": "NC",
+        "North Dakota": "ND",
+        "Nebraska": "NE",
+        "New Hampshire": "NH",
+        "New Jersey": "NJ",
+        "New Mexico": "NM",
+        "Nevada": "NV",
+        "New York": "NY",
+        "Ohio": "OH",
+        "Oklahoma": "OK",
+        "Oregon": "OR",
+        "Pennsylvania": "PA",
+        "Puerto Rico": "PR",
+        "Rhode Island": "RI",
+        "South Carolina": "SC",
+        "South Dakota": "SD",
+        "Tennessee": "TN",
+        "Texas": "TX",
+        "United States Minor Outlying Islands": "UM",
+        "Utah": "UT",
+        "Virginia": "VA",
+        "Virgin Islands, U.S.": "VI",
+        "Vermont": "VT",
+        "Washington": "WA",
+        "Wisconsin": "WI",
+        "West Virginia": "WV",
+        "Wyoming": "WY",
+    }
+    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     _deprecated_subdivisions = (
         "FM",
         "MH",
         "PW",
     )
-    start_year = 1777
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

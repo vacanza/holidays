@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -38,21 +38,32 @@ class Bolivia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BO"
     default_language = "es"
-    supported_languages = ("en_US", "es", "uk")
     # %s (observed).
     observed_label = tr("%s (observado)")
-    subdivisions = (
-        "B",  # El Beni
-        "C",  # Cochabamba
-        "H",  # Chuquisaca
-        "L",  # La Paz
-        "N",  # Pando
-        "O",  # Oruro
-        "P",  # Potosí
-        "S",  # Santa Cruz
-        "T",  # Tarija
-    )
     start_year = 1825
+    subdivisions = (
+        "B",  # El Beni.
+        "C",  # Cochabamba.
+        "H",  # Chuquisaca.
+        "L",  # La Paz.
+        "N",  # Pando.
+        "O",  # Oruro.
+        "P",  # Potosí.
+        "S",  # Santa Cruz.
+        "T",  # Tarija.
+    )
+    subdivisions_aliases = {
+        "El Beni": "B",
+        "Cochabamba": "C",
+        "Chuquisaca": "H",
+        "La Paz": "L",
+        "Pando": "N",
+        "Oruro": "O",
+        "Potosí": "P",
+        "Santa Cruz": "S",
+        "Tarija": "T",
+    }
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

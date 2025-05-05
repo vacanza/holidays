@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -60,27 +60,45 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     country = "CL"
     default_language = "es"
+    start_year = 1915
     subdivisions = (
-        "AI",
-        "AN",
-        "AP",
-        "AR",
-        "AT",
-        "BI",
-        "CO",
-        "LI",
-        "LL",
-        "LR",
-        "MA",
-        "ML",
-        "NB",
-        "RM",
-        "TA",
-        "VS",
+        "AI",  # Aisén del General Carlos Ibañez del Campo.
+        "AN",  # Antofagasta.
+        "AP",  # Arica y Parinacota.
+        "AR",  # La Araucanía.
+        "AT",  # Atacama.
+        "BI",  # Biobío.
+        "CO",  # Coquimbo.
+        "LI",  # Libertador General Bernardo O'Higgins.
+        "LL",  # Los Lagos.
+        "LR",  # Los Ríos.
+        "MA",  # Magallanes.
+        "ML",  # Maule.
+        "NB",  # Ñuble.
+        "RM",  # Región Metropolitana de Santiago.
+        "TA",  # Tarapacá.
+        "VS",  # Valparaíso.
     )
+    subdivisions_aliases = {
+        "Aisén del General Carlos Ibañez del Campo": "AI",
+        "Antofagasta": "AN",
+        "Arica y Parinacota": "AP",
+        "La Araucanía": "AR",
+        "Atacama": "AT",
+        "Biobío": "BI",
+        "Coquimbo": "CO",
+        "Libertador General Bernardo O'Higgins": "LI",
+        "Los Lagos": "LL",
+        "Los Ríos": "LR",
+        "Magallanes": "MA",
+        "Maule": "ML",
+        "Ñuble": "NB",
+        "Región Metropolitana de Santiago": "RM",
+        "Tarapacá": "TA",
+        "Valparaíso": "VS",
+    }
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
-    start_year = 1915
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

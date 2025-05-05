@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -147,10 +147,10 @@ class Argentina(
 
     country = "AR"
     default_language = "es"
-    supported_languages = ("en_US", "es", "uk")
-    supported_categories = (ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC, PUBLIC)
     # %s (observed).
     observed_label = tr("%s (observado)")
+    # Decree-Law 2446.
+    start_year = 1957
     subdivisions = (
         "A",  # Salta.
         "B",  # Buenos Aires.
@@ -203,8 +203,8 @@ class Argentina(
         "Jujuy": "Y",
         "Santa Cruz": "Z",
     }
-    # Decree-Law 2446.
-    start_year = 1957
+    supported_languages = ("en_US", "es", "uk")
+    supported_categories = (ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC, PUBLIC)
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """

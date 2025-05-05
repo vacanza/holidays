@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -37,14 +37,17 @@ class India(
         * <https://www.calendarlabs.com/holidays/india/2021>
         * <https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Tamil Nadu:
+            * [Tamil Monthly Calendar](https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
+            * [Tamil Calendar](https://www.prokerala.com/general/calendar/tamilcalendar.php)
     """
 
     country = "IN"
     default_language = "en_IN"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "hi")
+    # India gained independence on August 15, 1947.
+    start_year = 1948
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
@@ -82,10 +85,6 @@ class India(
         "UK",  # Uttarakhand (Uttarākhand).
         "UP",  # Uttar Pradesh.
         "WB",  # West Bengal.
-    )
-    _deprecated_subdivisions = (
-        "DD",  # Daman and Diu.
-        "OR",  # Orissa.
     )
     subdivisions_aliases = {
         "Andaman and Nicobar Islands": "AN",
@@ -144,9 +143,12 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-
-    # India gained independence on August 15, 1947.
-    start_year = 1948
+    supported_categories = (OPTIONAL, PUBLIC)
+    supported_languages = ("en_IN", "en_US", "hi")
+    _deprecated_subdivisions = (
+        "DD",  # Daman and Diu.
+        "OR",  # Orissa.
+    )
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -456,7 +458,11 @@ class India(
     # Tamil Nadu.
     def _populate_subdiv_tn_public_holidays(self):
         # Pongal.
-        self._add_makar_sankranti(tr("Pongal"))
+        self._add_pongal(tr("Pongal"))
+        # Thiruvalluvar Day / Mattu Pongal.
+        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
+        # Uzhavar Thirunal.
+        self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
         # Dr. B. R. Ambedkar Jayanti.
         self._add_holiday_apr_14(tr("Dr. B. R. Ambedkar's Jayanti"))
         # Puthandu.

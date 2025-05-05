@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.44\n"
+"Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2023-02-15 14:15-0800\n"
-"PO-Revision-Date: 2024-02-27 14:49+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-04-23 11:03+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. %s (estimated).
 #, c-format
@@ -33,61 +32,69 @@ msgid "%s (ግምት)"
 msgstr "%s (estimated)"
 
 #. Christmas Day.
-msgid "ገና"
+msgid "የገና ወይም የልደት በዓል"
 msgstr "Christmas Day"
 
 #. Epiphany.
-msgid "ጥምቀት"
-msgstr "Epiphany Day"
+msgid "የጥምቀት በዓል"
+msgstr "Epiphany"
 
 #. Adwa Victory Day.
-msgid "አድዋ"
+msgid "የአድዋ ድል በዓል"
 msgstr "Adwa Victory Day"
 
 #. Good Friday.
-msgid "ስቅለት"
+msgid "የስቅለት በዓል"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-msgid "ፋሲካ"
+msgid "የትንሳኤ(ፋሲካ) በዓል"
 msgstr "Easter Sunday"
 
-#. Workers' Day.
-msgid "የሰራተኞች ቀን"
-msgstr "Workers' Day"
+#. International Workers' Day.
+msgid "የዓለም የሠራተኞች (የላብአደሮች) ቀን"
+msgstr "International Workers' Day"
 
-#. Patriots' Day.
-msgid "የአርበኞች ቀን"
-msgstr "Patriots' Day"
+#. Ethiopian Patriots' Victory Day.
+msgid "የአርበኞች (የድል) ቀን በዓል"
+msgstr "Ethiopian Patriots' Victory Day"
 
-#. Downfall of Dergue Regime Day.
+#. Downfall of the Dergue Regime Day.
 msgid "ደርግ የወደቀበት ቀን"
-msgstr "Downfall of Dergue Regime Day"
+msgstr "Downfall of the Dergue Regime Day"
 
 #. Ethiopian New Year.
-msgid "እንቁጣጣሽ"
+msgid "የዘመን መለወጫ (እንቁጣጣሽ) በዓል"
 msgstr "Ethiopian New Year"
 
 #. Finding of True Cross.
-msgid "መስቀል"
+msgid "የመስቀል በዓል"
 msgstr "Finding of True Cross"
 
-#. Revolution Day.
+#. Popular Revolution Commemoration Day.
 msgid "የአብዮት ቀን"
-msgstr "Revolution Day"
+msgstr "Popular Revolution Commemoration Day"
 
 #. October Revolution Day.
 msgid "የጥቅምት አብዮት ቀን"
 msgstr "October Revolution Day"
 
 #. Eid al-Fitr.
-msgid "ኢድ አልፈጥር"
+msgid "የኢድ አልፈጥር"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
-msgid "አረፋ"
+msgid "የኢድ አልአድሃ (አረፋ)"
 msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
-msgid "መውሊድ"
+msgid "የመውሊድ በዓል"
 msgstr "Prophet's Birthday"
+
+#. Ethiopian Martyrs' Day.
+msgid "የሰማዕታት ቀን"
+msgstr "Ethiopian Martyrs' Day"
+
+#. Nations, Nationalities and Peoples Day.
+msgid "የብሔር ብሔረሰቦች ቀን"
+msgstr "Nations, Nationalities and Peoples Day"

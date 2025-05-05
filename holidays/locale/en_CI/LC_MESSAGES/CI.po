@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -51,7 +51,7 @@ msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
 #. Assumption Day.
-msgid "Fête de l’Assomption"
+msgid "Fête de l'Assomption"
 msgstr "Assumption Day"
 
 #. All Saints' Day.
@@ -63,7 +63,7 @@ msgid "Fête de Noël"
 msgstr "Christmas Day"
 
 #. Ascension Day.
-msgid "Jour de l’Ascension"
+msgid "Jour de l'Ascension"
 msgstr "Ascension Day"
 
 #. %s (estimated).
@@ -80,7 +80,7 @@ msgid "Fête de la Tabaski"
 msgstr "Aid-El-Kebir"
 
 #. Day after Prophet's Birthday.
-msgid "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
+msgid "Lendemain de l'Anniversaire de la Naissance du Prophète Mahomet"
 msgstr "Day after Maouloud"
 
 #. Day after Night of Power.
@@ -88,7 +88,7 @@ msgid "Lendemain de la Nuit du Destin"
 msgstr "Day after Lailatou-Kadr"
 
 #. 2024 African Cup of Nations Victory.
-msgid "Victoire à la Coupe d’Afrique des Nations 2024"
+msgid "Victoire à la Coupe d'Afrique des Nations 2024"
 msgstr "2024 African Cup of Nations Victory"
 
 #. Day after the %s.

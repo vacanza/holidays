@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -28,23 +28,23 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NI"
     default_language = "es"
     subdivisions = (
-        "AN",
-        "AS",
-        "BO",
-        "CA",
-        "CI",
-        "CO",
-        "ES",
-        "GR",
-        "JI",
-        "LE",
-        "MD",
-        "MN",
-        "MS",
-        "MT",
-        "NS",
-        "RI",
-        "SJ",
+        "AN",  # Costa Caribe Norte.
+        "AS",  # Costa Caribe Sur.
+        "BO",  # Boaco.
+        "CA",  # Carazo.
+        "CI",  # Chinandega.
+        "CO",  # Chontales.
+        "ES",  # Estelí.
+        "GR",  # Granada.
+        "JI",  # Jinotega.
+        "LE",  # León.
+        "MD",  # Madriz.
+        "MN",  # Managua.
+        "MS",  # Masaya.
+        "MT",  # Matagalpa.
+        "NS",  # Nueva Segovia.
+        "RI",  # Rivas.
+        "SJ",  # Río San Juan.
     )
     subdivisions_aliases = {
         "Costa Caribe Norte": "AN",
@@ -62,8 +62,8 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Masaya": "MS",
         "Matagalpa": "MT",
         "Nueva Segovia": "NS",
-        "Río San Juan": "SJ",
         "Rivas": "RI",
+        "Río San Juan": "SJ",
     }
     supported_languages = ("en_US", "es", "uk")
 
