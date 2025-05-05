@@ -32,6 +32,8 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BR"
     default_language = "pt_BR"
+    # Decreto n. 155-B, de 14.01.1890
+    start_year = 1890
     subdivisions = (
         "AC",
         "AL",
@@ -90,11 +92,8 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "São Paulo": "SP",
         "Tocantins": "TO",
     }
-
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "pt_BR", "uk")
-    # Decreto n. 155-B, de 14.01.1890
-    start_year = 1890
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

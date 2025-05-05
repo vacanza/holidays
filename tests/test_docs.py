@@ -101,8 +101,7 @@ class TestReadme(TestCase):
             country_subdivisions_aliases[country_code] = {}
             subdivision_str = row[2]
             if subdivision_str:
-                for subdivision_groups in subdivision_str.split("."):
-                    subdivision_aliases_group = subdivision_groups.split(";")[0].strip()
+                for subdivision_aliases_group in subdivision_str.split(";"):
                     # Exclude empty subdivisions.
                     if ":" not in subdivision_aliases_group:
                         country_subdivisions[country_code] = []
@@ -119,10 +118,13 @@ class TestReadme(TestCase):
                             subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
                             subdivision = subdivision_aliases.group(1)
                             aliases = subdivision_aliases.group(2).split(", ")
+                            # "Virgin Islands, U.S." special case.
+                            if len(aliases) == 2 and aliases[1] == "U.S.":
+                                aliases = [subdivision_aliases.group(2)]
                         else:
                             aliases = []
                             subdivision = subdivision_aliases
-                        subdivision = subdivision.strip(" *")
+                        subdivision = subdivision.strip()
 
                         country_subdivisions[country_code].append(subdivision)
                         country_subdivisions_aliases[country_code][subdivision] = aliases

@@ -55,26 +55,49 @@ class Spain(
     # Monday following %s.
     observed_label = tr("Lunes siguiente a %s")
     subdivisions = (
-        "AN",  # Andalucía
-        "AR",  # Aragón
-        "AS",  # Asturias
-        "CB",  # Cantabria
-        "CE",  # Ceuta
-        "CL",  # Castilla y León
-        "CM",  # Castilla-La Mancha
-        "CN",  # Canarias
-        "CT",  # Cataluña
-        "EX",  # Extremadura
-        "GA",  # Galicia
-        "IB",  # Islas Baleares
-        "MC",  # Murcia
-        "MD",  # Madrid
-        "ML",  # Melilla
-        "NC",  # Navarra
-        "PV",  # País Vasco
-        "RI",  # La Rioja
-        "VC",  # Valenciana
+        "AN",  # Andalucía.
+        "AR",  # Aragón.
+        "AS",  # Asturias.
+        "CB",  # Cantabria.
+        "CE",  # Ceuta.
+        "CL",  # Castilla y León.
+        "CM",  # Castilla-La Mancha.
+        "CN",  # Canarias.
+        "CT",  # Cataluña (Catalunya).
+        "EX",  # Extremadura.
+        "GA",  # Galicia.
+        "IB",  # Islas Baleares (Illes Balears).
+        "MC",  # Murcia.
+        "MD",  # Madrid.
+        "ML",  # Melilla.
+        "NC",  # Navarra.
+        "PV",  # País Vasco.
+        "RI",  # La Rioja.
+        "VC",  # Valenciana.
     )
+    subdivisions_aliases = {
+        "Andalucía": "AN",
+        "Aragón": "AR",
+        "Asturias": "AS",
+        "Cantabria": "CB",
+        "Ceuta": "CE",
+        "Castilla y León": "CL",
+        "Castilla-La Mancha": "CM",
+        "Canarias": "CN",
+        "Cataluña": "CT",
+        "Catalunya": "CT",
+        "Extremadura": "EX",
+        "Galicia": "GA",
+        "Islas Baleares": "IB",
+        "Illes Balears": "IB",
+        "Murcia": "MC",
+        "Madrid": "MD",
+        "Melilla": "ML",
+        "Navarra": "NC",
+        "País Vasco": "PV",
+        "La Rioja": "RI",
+        "Valenciana": "VC",
+    }
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):

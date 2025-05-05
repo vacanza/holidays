@@ -28,26 +28,27 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
 
     country = "NZ"
     observed_label = "%s (observed)"
+    start_year = 1894
     subdivisions = (
         # ISO 3166-2: Regions and Special Island Authorities.
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
-        "AUK",  # Auckland / Tāmaki-makaurau
-        "BOP",  # Bay of Plenty / Toi Moana
-        "CAN",  # Canterbury / Waitaha
-        "CIT",  # Chatham Islands Territory / Wharekauri
-        "GIS",  # Gisborne / Te Tairāwhiti
-        "HKB",  # Hawke's Bay / Te Matau a Māui
-        "MBH",  # Marlborough
-        "MWT",  # Manawatū-Whanganui / Manawatū Whanganui
-        "NSN",  # Nelson / Whakatū
-        "NTL",  # Northland / Te Tai tokerau
-        "OTA",  # Otago / Ō Tākou
-        "STL",  # Southland / Te Taiao Tonga
-        "TAS",  # Tasman / Te tai o Aorere
-        "TKI",  # Taranaki
-        "WGN",  # Greater Wellington / Te Pane Matua Taiao
-        "WKO",  # Waikato
-        "WTC",  # West Coast / Te Tai o Poutini
+        "AUK",  # Auckland (Tāmaki-Makaurau).
+        "BOP",  # Bay of Plenty (Toi Moana).
+        "CAN",  # Canterbury (Waitaha).
+        "CIT",  # Chatham Islands Territory (Wharekauri).
+        "GIS",  # Gisborne (Te Tairāwhiti).
+        "HKB",  # Hawke's Bay (Te Matau-a-Māui).
+        "MBH",  # Marlborough (Manawatū-Whanganui).
+        "MWT",  # Manawatū-Whanganui (Manawatū Whanganui).
+        "NSN",  # Nelson (Whakatū).
+        "NTL",  # Northland (Te Taitokerau).
+        "OTA",  # Otago (Ō Tākou).
+        "STL",  # Southland (Te Taiao Tonga).
+        "TAS",  # Tasman (Te tai o Aorere).
+        "TKI",  # Taranaki (Taranaki).
+        "WGN",  # Greater Wellington (Te Pane Matua Taiao).
+        "WKO",  # Waikato (Waikato).
+        "WTC",  # West Coast (Te Tai o Poutini).
         # Subregions:
         # https://web.archive.org/web/20250415230521/https://www.govt.nz/browse/work/public-holidays-and-work/public-holidays-and-anniversary-dates/
         "South Canterbury",
@@ -114,7 +115,6 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         "STC",  # For 'South Canterbury' Subregional Holidays.
         "WTL",  # Westland, Correct code is WTC (for West Coast).
     )
-    start_year = 1894
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

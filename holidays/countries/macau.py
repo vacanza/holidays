@@ -62,6 +62,8 @@ class Macau(
 
     country = "MO"
     default_language = "zh_MO"
+    # Decreto-Lei n.º 4/82/M.
+    start_year = 1982
     subdivisions = (
         "I",  # Ilhas.
         "M",  # Macau.
@@ -77,8 +79,6 @@ class Macau(
     }
     supported_categories = (GOVERNMENT, MANDATORY, PUBLIC)
     supported_languages = ("en_MO", "en_US", "pt_MO", "th", "zh_CN", "zh_MO")
-    # Decreto-Lei n.º 4/82/M.
-    start_year = 1982
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
