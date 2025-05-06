@@ -41,8 +41,14 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     """Yemen holidays.
 
     References:
+        * [Presidential Decree Law No. (8) of 1996](https://web.archive.org/web/20230905142654/http://yemen-nic.info/db/laws_ye/detail.php?ID=11476)
+        * [Presidential Decree Law No. (2) of 2000](https://web.archive.org/web/20140714152707/http://www.presidentsaleh.gov.ye/showlaws.php?_lwbkno=3&_lwptno=2&_lwnmid=4)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Yemen>
-        * <https://yemenembassy.it/festivities/>
+        * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_اليمن>
+        * <https://web.archive.org/web/20160806072136/http://marebpress.net/news_details.php?lang=arabic&sid=55120>
+        * <https://web.archive.org/web/20250505071425/https://yemenembassy.it/festivities/>
+        * <https://web.archive.org/web/20250113111659/https://www.timeanddate.com/holidays/yemen/2025?hol=9>
+        * <https://web.archive.org/web/20250103115023/http://www.yemenpost.net/Detail123456789.aspx?ID=3&SubID=7132&MainCat=3>
     """
 
     country = "YE"
