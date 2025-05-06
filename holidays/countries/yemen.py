@@ -10,6 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:  # pragma: no cover
+    from datetime import date
+
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -22,12 +28,16 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
+    THU,
+    FRI,
+    SAT,
+    _timedelta,
 )
 from holidays.groups import InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_NEXT_WORKDAY
 
 
-class Yemen(HolidayBase, InternationalHolidays, IslamicHolidays):
+class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     """Yemen holidays.
 
     References:
@@ -39,7 +49,12 @@ class Yemen(HolidayBase, InternationalHolidays, IslamicHolidays):
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (مُقدَّر)")
-    start_year = 1990
+    # %s (observed).
+    observed_label = tr("(ملاحظة) %s")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("(مُقدَّر ملاحظة) %s")
+    # The Republic of Yemen was declared on 22 May 1990.
+    start_year = 1991
     supported_languages = ("ar", "en_US")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
@@ -53,42 +68,58 @@ class Yemen(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(
             self, cls=YemenIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        kwargs.setdefault("observed_rule", FRI_TO_NEXT_WORKDAY)
+        self._observed_rule = FRI_TO_NEXT_WORKDAY
+        self.dts_observed: set[date] = set()
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Labor Day.
-        self._add_labor_day(tr("عيد العمال"))
-
-        # Unity Day.
-        self._add_holiday_may_22(tr("اليوم الوطني للجمهورية اليمنية"))
-
-        # Revolution Day.
-        self._add_holiday_sep_26(tr("ثورة 26 سبتمبر المجيدة"))
-
-        # Liberation Day.
-        self._add_holiday_oct_14(tr("ثورة 14 أكتوبر المجيدة"))
-
-        # Independence Day.
-        self._add_holiday_nov_30(tr("عيد الجلاء"))
+        self.dts_observed = set()
+        # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013
+        self.weekend = {THU, FRI} if self._year <= 2013 else {FRI, SAT}
 
         # Hijri New Year.
-        self._add_islamic_new_year_day(tr("عيد راس السنة الهجرية"))
+        self.dts_observed.update(self._add_islamic_new_year_day(tr("عيد راس السنة الهجرية")))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("المولد النبوي"))
+        self.dts_observed.update(self._add_mawlid_day(tr("المولد النبوي")))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
+        self.dts_observed.update(self._add_eid_al_fitr_day(name))
+        self.dts_observed.update(self._add_eid_al_fitr_day_two(name))
+        self.dts_observed.update(self._add_eid_al_fitr_day_three(name))
+        ramadan_29_holidays = self._add_holiday_29_ramadan(name)
+        self.dts_observed.update(ramadan_29_holidays)
+        for dt in ramadan_29_holidays:
+            if _timedelta(dt, +1) not in self:
+                self.dts_observed.update(self._add_eid_al_fitr_eve(name))
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")
-        self._add_eid_al_adha_day(name)
-        self._add_eid_al_adha_day_two(name)
-        self._add_eid_al_adha_day_three(name)
-        self._add_eid_al_adha_day_four(name)
+        self.dts_observed.update(self._add_arafah_day(name))
+        self.dts_observed.update(self._add_eid_al_adha_day(name))
+        self.dts_observed.update(self._add_eid_al_adha_day_two(name))
+        self.dts_observed.update(self._add_eid_al_adha_day_three(name))
+        self.dts_observed.update(self._add_eid_al_adha_day_four(name))
+
+        # Labor Day.
+        self.dts_observed.add(self._add_labor_day(tr("عيد العمال")))
+
+        # Unity Day.
+        self.dts_observed.add(self._add_holiday_may_22(tr("اليوم الوطني للجمهورية اليمنية")))
+
+        # Revolution Day.
+        self.dts_observed.add(self._add_holiday_sep_26(tr("ثورة 26 سبتمبر المجيدة")))
+
+        # Liberation Day.
+        self.dts_observed.add(self._add_holiday_oct_14(tr("ثورة 14 أكتوبر المجيدة")))
+
+        # Independence Day.
+        self.dts_observed.add(self._add_holiday_nov_30(tr("عيد الجلاء")))
+
+        if self.observed:
+            self._populate_observed(self.dts_observed)
 
 
 class YE(Yemen):
@@ -116,6 +147,13 @@ class YemenIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 8),
         2023: (SEP, 27),
         2024: (SEP, 15),
+    }
+
+    # https://www.timeanddate.com/holidays/yemen/ramadan-begins
+    RAMADAN_BEGINNING_DATES = {
+        2023: (MAR, 23),
+        2024: (MAR, 11),
+        2025: (MAR, 1),
     }
 
     # https://www.timeanddate.com/holidays/yemen/eid-al-fitr-first-day

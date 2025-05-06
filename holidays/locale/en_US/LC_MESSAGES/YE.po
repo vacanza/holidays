@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2025-05-03 08:13+0500\n"
-"PO-Revision-Date: 2025-05-03 08:16+0500\n"
+"PO-Revision-Date: 2025-05-06 15:19+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -67,3 +67,13 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
+
+#. %s (observed).
+#, c-format
+msgid "(ملاحظة) %s"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "(مُقدَّر ملاحظة) %s"
+msgstr "%s (observed, estimated)"
