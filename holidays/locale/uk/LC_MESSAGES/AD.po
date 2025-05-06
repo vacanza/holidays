@@ -65,7 +65,7 @@ msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. Our Lady of Meritxell.
 msgid "Nostra Senyora de Meritxell"
-msgstr "День Богоматері Мерітшелльскої"
+msgstr "День Богоматері Мерічелльської"
 
 #. All Saints' Day.
 msgid "Tots Sants"
@@ -122,3 +122,24 @@ msgstr "День створення парафії"
 #. Escaldes-Engordany Festival.
 msgid "Festa Major d'Escaldes-Engordany"
 msgstr "Свято парафії Ескальдес-Енгордань"
+
+#. %s (from 1pm).
+#, c-format
+msgid "%s (a partir de les 13h)"
+msgstr "%s (з 13:00)"
+
+#. Epiphany Eve.
+msgid "Vigília de Reis"
+msgstr "Переддень Богоявлення"
+
+#. Maundy Thursday.
+msgid "Dijous Sant"
+msgstr "Великий четвер"
+
+#. Christmas Eve.
+msgid "Vigília de Nadal"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+msgid "Vigília de Cap d'Any"
+msgstr "Переддень Нового року"

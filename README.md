@@ -179,7 +179,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AD</td>
 <td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant Julià de Lòria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
 <td><strong>ca</strong>, en_US, uk</td>
-<td></td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Angola</td>

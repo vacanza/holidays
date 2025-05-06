@@ -122,3 +122,24 @@ msgstr "Parish foundation day"
 #. Escaldes-Engordany Festival.
 msgid "Festa Major d'Escaldes-Engordany"
 msgstr "Escaldes-Engordany Festival"
+
+#. %s (from 1pm).
+#, c-format
+msgid "%s (a partir de les 13h)"
+msgstr "%s (from 1pm)"
+
+#. Epiphany Eve.
+msgid "Vigília de Reis"
+msgstr "Epiphany Eve"
+
+#. Maundy Thursday.
+msgid "Dijous Sant"
+msgstr "Maundy Thursday"
+
+#. Christmas Eve.
+msgid "Vigília de Nadal"
+msgstr "Christmas Eve"
+
+#. New Year's Eve.
+msgid "Vigília de Cap d'Any"
+msgstr "New Year's Eve"

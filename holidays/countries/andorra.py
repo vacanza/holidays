@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -22,6 +23,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Andorra>
         * [Andorra's Constitution](https://web.archive.org/web/20250506145838/https://www.bopa.ad/Legislacio/Detall?doc=7586)
+        * (https://seu.consellgeneral.ad/calendariPublic/show)
         * [2025](https://web.archive.org/web/20250506142149/https://www.bopa.ad/Documents/Detall?doc=GD_2024_10_24_14_36_16)
 
     Subdivisions holidays:
@@ -75,6 +77,8 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AD"
     default_language = "ca"
+    # The 1933 Revolution in Andorra
+    start_year = 1934
     subdivisions = (
         "02",  # Canillo.
         "03",  # Encamp.
@@ -93,6 +97,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Andorra la Vella": "07",
         "Escaldes-Engordany": "08",
     }
+    supported_categories = (GOVERNMENT, PUBLIC)
     supported_languages = ("ca", "en_US", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
@@ -198,6 +203,22 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = tr("Festa Major d'Escaldes-Engordany")
         self._add_holiday_jul_25(name)
         self._add_holiday_jul_26(name)
+
+    def _populate_government_holidays(self):
+        # %s (from 1pm).
+        begin_time_label = self.tr("%s (a partir de les 13h)")
+
+        # Epiphany Eve.
+        self._add_holiday_jan_5(begin_time_label % self.tr("Vigília de Reis"))
+
+        # Maundy Thursday.
+        self._add_holy_thursday(begin_time_label % self.tr("Dijous Sant"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(begin_time_label % self.tr("Vigília de Nadal"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(begin_time_label % self.tr("Vigília de Cap d'Any"))
 
 
 class AD(Andorra):
