@@ -828,6 +828,9 @@ class ArgentinaStaticHolidays:
         * [Release P51020 (2021)](https://bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
         * [Release P51155 (2024)](https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
 
+    Special Subdivision-level Holidays References:
+        * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
+
     Special Bridge Holidays are given upto 3 days a year as long as it's declared
     50 days before calendar year's end.
     There's no Bridge Holidays declared in 2017.
@@ -868,6 +871,9 @@ class ArgentinaStaticHolidays:
 
     # National Census Day 2010.
     national_census_2010 = tr("Censo Nacional 2010")
+
+    # G20 Leaders' Summit.
+    g20_leaders_summit_holiday = tr("Cumbre de Líderes del Grupo de los 20 (G20)")
 
     # National Census Day 2022.
     national_census_2022 = tr("Censo Nacional 2022")
@@ -984,4 +990,8 @@ class ArgentinaStaticHolidays:
             (DEC, 24, bank_holiday),
             (DEC, 31, bank_holiday),
         ),
+    }
+
+    special_b_public_holidays = {
+        2018: (NOV, 30, g20_leaders_summit_holiday),
     }
