@@ -30,8 +30,6 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Togo>
         * <https://www.timeanddate.com/holidays/togo/>
         * <https://www.goethe.de/ins/tg/fr/ueb/fer.html>
-        * <https://calendarific.com/holiday/togo/eid-al-fitr>
-        * <https://calendarific.com/holiday/togo/eid-al-adha>
         * <https://www.republiquetogolaise.com/politique/2309-3579-23-septembre-le-togo-rend-hommage-a-ses-martyrs>
         * <https://islam.zmo.de/s/westafrica/item/25841#?xywh=-485%2C-94%2C2537%2C1868>
         * <https://en.wikipedia.org/wiki/1986_Togolese_coup_attempt>
