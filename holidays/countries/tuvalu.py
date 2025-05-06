@@ -39,7 +39,10 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "tvl"
     # %s (observed).
     observed_label = tr("%s (fakamatakuga)")
-    supported_languages = ("en_GB", "en_US", "tvl")
+    # Tuvalu became fully independent of the United Kingdom on October 1, 1978
+    # Tuvalu's PUBLIC HOLIDAYS (AMENDMENT) ACT 1990 (Act 2 of 1990)
+    # It was first proclaimed on FEB 7th, 1990
+    start_year = 1990
     subdivisions = (
         "FUN",  # Funafuti.
         "NIT",  # Niutao.
@@ -62,10 +65,7 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Nui": "NUI",
         "Vaitupu": "VAI",
     }
-    # Tuvalu became fully independent of the United Kingdom on October 1, 1978
-    # Tuvalu's PUBLIC HOLIDAYS (AMENDMENT) ACT 1990 (Act 2 of 1990)
-    # It was first proclaimed on FEB 7th, 1990
-    start_year = 1990
+    supported_languages = ("en_GB", "en_US", "tvl")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

@@ -28,23 +28,23 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NI"
     default_language = "es"
     subdivisions = (
-        "AN",
-        "AS",
-        "BO",
-        "CA",
-        "CI",
-        "CO",
-        "ES",
-        "GR",
-        "JI",
-        "LE",
-        "MD",
-        "MN",
-        "MS",
-        "MT",
-        "NS",
-        "RI",
-        "SJ",
+        "AN",  # Costa Caribe Norte.
+        "AS",  # Costa Caribe Sur.
+        "BO",  # Boaco.
+        "CA",  # Carazo.
+        "CI",  # Chinandega.
+        "CO",  # Chontales.
+        "ES",  # Estelí.
+        "GR",  # Granada.
+        "JI",  # Jinotega.
+        "LE",  # León.
+        "MD",  # Madriz.
+        "MN",  # Managua.
+        "MS",  # Masaya.
+        "MT",  # Matagalpa.
+        "NS",  # Nueva Segovia.
+        "RI",  # Rivas.
+        "SJ",  # Río San Juan.
     )
     subdivisions_aliases = {
         "Costa Caribe Norte": "AN",
@@ -62,8 +62,8 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Masaya": "MS",
         "Matagalpa": "MT",
         "Nueva Segovia": "NS",
-        "Río San Juan": "SJ",
         "Rivas": "RI",
+        "Río San Juan": "SJ",
     }
     supported_languages = ("en_US", "es", "uk")
 

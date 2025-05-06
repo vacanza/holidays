@@ -94,23 +94,24 @@ class Malaysia(
     observed_label = tr("Cuti %s")
     # %s (observed, estimated).
     observed_estimated_label = tr("Cuti %s (anggaran)")
+    start_year = 1952
     subdivisions = (
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
+        "01",  # Johor.
+        "02",  # Kedah.
+        "03",  # Kelantan.
+        "04",  # Melaka.
+        "05",  # Negeri Sembilan.
+        "06",  # Pahang.
+        "07",  # Pulau Pinang.
+        "08",  # Perak.
+        "09",  # Perlis.
+        "10",  # Selangor.
+        "11",  # Terengganu.
+        "12",  # Sabah.
+        "13",  # Sarawak.
+        "14",  # Wilayah Persekutuan Kuala Lumpur.
+        "15",  # Wilayah Persekutuan Labuan.
+        "16",  # Wilayah Persekutuan Putrajaya.
     )
     subdivisions_aliases = {
         "Johor": "01",
@@ -139,15 +140,14 @@ class Malaysia(
         "SBH": "12",
         "Sarawak": "13",
         "SWK": "13",
-        "WP Kuala Lumpur": "14",
+        "Wilayah Persekutuan Kuala Lumpur": "14",
         "KUL": "14",
-        "WP Labuan": "15",
+        "Wilayah Persekutuan Labuan": "15",
         "LBN": "15",
-        "WP Putrajaya": "16",
+        "Wilayah Persekutuan Putrajaya": "16",
         "PJY": "16",
     }
     supported_languages = ("en_US", "ms_MY", "th")
-    start_year = 1952
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """

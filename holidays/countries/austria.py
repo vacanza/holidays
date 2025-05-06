@@ -22,8 +22,6 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AT"
     default_language = "de"
-    supported_categories = (BANK, PUBLIC)
-    supported_languages = ("de", "en_US", "uk")
     subdivisions = (
         "1",  # Burgenland.
         "2",  # Kärnten.
@@ -62,6 +60,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wien": "9",
         "W": "9",
     }
+    supported_categories = (BANK, PUBLIC)
+    supported_languages = ("de", "en_US", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

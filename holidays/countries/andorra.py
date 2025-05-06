@@ -32,6 +32,15 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
         "07",  # Andorra la Vella.
         "08",  # Escaldes-Engordany.
     )
+    subdivisions_aliases = {
+        "Canillo": "02",
+        "Encamp": "03",
+        "La Massana": "04",
+        "Ordino": "05",
+        "Sant Julià de Lòria": "06",
+        "Andorra la Vella": "07",
+        "Escaldes-Engordany": "08",
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

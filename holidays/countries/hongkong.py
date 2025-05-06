@@ -63,7 +63,7 @@ class HongKong(
 
     General Holidays:
         * [Cap. 149 General Holidays Ordinance](https://www.elegislation.gov.hk/hk/cap149!en-zh-Hant-HK?INDEX_CS=N)
-        * [Holidays for 2007–2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
+        * [Holidays for 2007-2025](https://www.gov.hk/en/about/abouthk/holiday/index.htm)
     """
 
     country = "HK"
