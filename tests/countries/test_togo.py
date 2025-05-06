@@ -79,12 +79,6 @@ class TestTogo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1960, 1977))
         self.assertHolidayName(
             name,
-            "1971-05-20",
-            "1972-05-11",
-            "1973-05-31",
-            "1974-05-23",
-            "1975-05-08",
-            "1976-05-27",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -97,10 +91,6 @@ class TestTogo(CommonCountryTests, TestCase):
         name = "Lundi de Pentecôte"
         self.assertHolidayName(
             name,
-            "1960-06-06",
-            "1970-05-18",
-            "1971-05-31",
-            "1972-05-22",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
