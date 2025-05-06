@@ -76,7 +76,6 @@ class TestTogo(CommonCountryTests, TestCase):
 
     def test_ascension_day(self):
         name = "Fête de l'Ascension"
-        self.assertHolidayName(name, range(1960, 1977))
         self.assertHolidayName(
             name,
             "2020-05-21",
@@ -86,6 +85,7 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
+        self.assertHolidayName(name, range(1960, 2050))
 
     def test_whit_monday(self):
         name = "Lundi de Pentecôte"
@@ -98,7 +98,7 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1960, 1973))
+        self.assertHolidayName(name, range(1960, 2050))
 
     def test_martyrs_day(self):
         self.assertHolidayName("Fête des Martyrs", (f"{year}-06-21" for year in range(1960, 2050)))
