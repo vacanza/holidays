@@ -37,14 +37,17 @@ class India(
         * <https://www.calendarlabs.com/holidays/india/2021>
         * <https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm>
         * <https://vahan.parivahan.gov.in/vahan4dashboard/>
+        * Tamil Nadu:
+            * [Tamil Monthly Calendar](https://www.tamildailycalendar.com/tamil_monthly_calendar.php)
+            * [Tamil Calendar](https://www.prokerala.com/general/calendar/tamilcalendar.php)
     """
 
     country = "IN"
     default_language = "en_IN"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_categories = (OPTIONAL, PUBLIC)
-    supported_languages = ("en_IN", "en_US", "hi")
+    # India gained independence on August 15, 1947.
+    start_year = 1948
     subdivisions = (
         "AN",  # Andaman and Nicobar Islands.
         "AP",  # Andhra Pradesh.
@@ -82,10 +85,6 @@ class India(
         "UK",  # Uttarakhand (Uttarākhand).
         "UP",  # Uttar Pradesh.
         "WB",  # West Bengal.
-    )
-    _deprecated_subdivisions = (
-        "DD",  # Daman and Diu.
-        "OR",  # Orissa.
     )
     subdivisions_aliases = {
         "Andaman and Nicobar Islands": "AN",
@@ -144,9 +143,12 @@ class India(
         "Uttar Pradesh": "UP",
         "West Bengal": "WB",
     }
-
-    # India gained independence on August 15, 1947.
-    start_year = 1948
+    supported_categories = (OPTIONAL, PUBLIC)
+    supported_languages = ("en_IN", "en_US", "hi")
+    _deprecated_subdivisions = (
+        "DD",  # Daman and Diu.
+        "OR",  # Orissa.
+    )
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """

@@ -36,6 +36,12 @@ specific date is a holiday as fast and flexible as possible.
       <a href="https://doi.org/10.5281/zenodo.14884702"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.14884702-41B5BE?style=flat" alt="Open World Holidays Framework DOI"></a>
     </td>
   </tr>
+  <tr>
+    <td>Snyk</td>
+    <td>
+      <a href="https://snyk.io/advisor/python/holidays/"><img src="https://snyk.io/advisor/python/holidays/badge.svg" alt="Open World Holidays Package Health Score"></a>
+    </td>
+  </tr>
 </table>
 
 ## Install
@@ -171,7 +177,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Andorra</td>
 <td>AD</td>
-<td>Parishes: 02, 03, 04, 05, 06, 07, 08</td>
+<td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant Julià de Lòria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
 <td></td>
 <td></td>
 </tr>
@@ -283,7 +289,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Bolivia</td>
 <td>BO</td>
-<td>Departments: B, C, H, L, N, O, P, S, T</td>
+<td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
@@ -353,7 +359,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Canada</td>
 <td>CA</td>
-<td>Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT</td>
+<td>Provinces and territories: AB (Alberta), BC (British Columbia, Colombie-Britannique), MB (Manitoba), NB (New Brunswick, Nouveau-Brunswick), NL (Newfoundland and Labrador, Terre-Neuve-et-Labrador), NS (Nova Scotia, Nouvelle-Écosse), NT (Northwest Territories, Territoires du Nord-Ouest), NU (Nunavut), ON (Ontario), PE (Prince Edward Island, Île-du-Prince-Édouard), QC (Quebec, Québec), SK (Saskatchewan), YT (Yukon)</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
@@ -367,7 +373,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Chile</td>
 <td>CL</td>
-<td>Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS</td>
+<td>Regions: AI (Aisén del General Carlos Ibañez del Campo), AN (Antofagasta), AP (Arica y Parinacota), AR (La Araucanía), AT (Atacama), BI (Biobío), CO (Coquimbo), LI (Libertador General Bernardo O'Higgins), LL (Los Lagos), LR (Los Ríos), MA (Magallanes), ML (Maule), NB (Ñuble), RM (Región Metropolitana de Santiago), TA (Tarapacá), VS (Valparaíso)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td>BANK</td>
 </tr>
@@ -556,7 +562,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Germany</td>
 <td>DE</td>
-<td>States: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
+<td>Lands: BB (Brandenburg), BE (Berlin), BW (Baden-Württemberg), BY (Bayern), HB (Bremen), HE (Hessen), HH (Hamburg), MV (Mecklenburg-Vorpommern), NI (Niedersachsen), NW (Nordrhein-Westfalen), RP (Rheinland-Pfalz), SH (Schleswig-Holstein), SL (Saarland), SN (Sachsen), ST (Sachsen-Anhalt), TH (Thüringen)</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td>CATHOLIC</td>
 </tr>
@@ -690,7 +696,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Italy</td>
 <td>IT</td>
-<td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia). Cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
+<td>Provinces: AG (Agrigento), AL (Alessandria), AN (Ancona), AO (Aosta), AP (Ascoli Piceno), AQ (L'Aquila), AR (Arezzo), AT (Asti), AV (Avellino), BA (Bari), BG (Bergamo), BI (Biella), BL (Belluno), BN (Benevento), BO (Bologna), BR (Brindisi), BS (Brescia), BT (Barletta-Andria-Trani), BZ (Bolzano), CA (Cagliari), CB (Campobasso), CE (Caserta), CH (Chieti), CL (Caltanissetta), CN (Cuneo), CO (Como), CR (Cremona), CS (Cosenza), CT (Catania), CZ (Catanzaro), EN (Enna), FC (Forli-Cesena, Forlì-Cesena), FE (Ferrara), FG (Foggia), FI (Firenze), FM (Fermo), FR (Frosinone), GE (Genova), GO (Gorizia), GR (Grosseto), IM (Imperia), IS (Isernia), KR (Crotone), LC (Lecco), LE (Lecce), LI (Livorno), LO (Lodi), LT (Latina), LU (Lucca), MB (Monza e Brianza), MC (Macerata), ME (Messina), MI (Milano), MN (Mantova), MO (Modena), MS (Massa-Carrara), MT (Matera), NA (Napoli), NO (Novara), NU (Nuoro), OR (Oristano), PA (Palermo), PC (Piacenza), PD (Padova), PE (Pescara), PG (Perugia), PI (Pisa), PN (Pordenone), PO (Prato), PR (Parma), PT (Pistoia), PU (Pesaro e Urbino), PV (Pavia), PZ (Potenza), RA (Ravenna), RC (Reggio Calabria), RE (Reggio Emilia), RG (Ragusa), RI (Rieti), RM (Roma), RN (Rimini), RO (Rovigo), SA (Salerno), SI (Siena), SO (Sondrio), SP (La Spezia), SR (Siracusa), SS (Sassari), SU (Sud Sardegna), SV (Savona), TA (Taranto), TE (Teramo), TN (Trento), TO (Torino), TP (Trapani), TR (Terni), TS (Trieste), TV (Treviso), UD (Udine), VA (Varese), VB (Verbano-Cusio-Ossola), VC (Vercelli), VE (Venezia), VI (Vicenza), VR (Verona), VT (Viterbo), VV (Vibo Valentia); cities: Andria, Barletta, Cesena, Forli (Forlì), Pesaro, Trani, Urbino</td>
 <td></td>
 <td></td>
 </tr>
@@ -823,7 +829,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Malaysia</td>
 <td>MY</td>
-<td>States and federal territories: 01 (Johor, JHR), 02 (Kedah, KDH), 03 (Kelantan, KTN), 04 (Melaka, MLK), 05 (Negeri Sembilan, NSN), 06 (Pahang, PHG), 07 (Pulau Pinang, PNG), 08 (Perak, PRK), 09 (Perlis, PLS), 10 (Selangor, SGR), 11 (Terengganu, TRG), 12 (Sabah, SBH), 13 (Sarawak, SWK), 14 (WP Kuala Lumpur, KUL), 15 (WP Labuan, LBN), 16 (WP Putrajaya, PJY)</td>
+<td>States and federal territories: 01 (Johor, JHR), 02 (Kedah, KDH), 03 (Kelantan, KTN), 04 (Melaka, MLK), 05 (Negeri Sembilan, NSN), 06 (Pahang, PHG), 07 (Pulau Pinang, PNG), 08 (Perak, PRK), 09 (Perlis, PLS), 10 (Selangor, SGR), 11 (Terengganu, TRG), 12 (Sabah, SBH), 13 (Sarawak, SWK), 14 (Wilayah Persekutuan Kuala Lumpur, KUL), 15 (Wilayah Persekutuan Labuan, LBN), 16 (Wilayah Persekutuan Putrajaya, PJY)</td>
 <td>en_US, <strong>ms_MY</strong>, th</td>
 <td></td>
 </tr>
@@ -914,7 +920,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>New Zealand</td>
 <td>NZ</td>
-<td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC). Subregions: South Canterbury</td>
+<td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
 <td></td>
 <td></td>
 </tr>
@@ -1152,7 +1158,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Spain</td>
 <td>ES</td>
-<td>Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC</td>
+<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
@@ -1180,7 +1186,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Switzerland</td>
 <td>CH</td>
-<td>Cantons: AG, AI, AR, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH</td>
+<td>Cantons: AG (Aargau), AI (Appenzell Innerrhoden), AR (Appenzell Ausserrhoden), BE (Bern, Berne), BL (Basel-Landschaft), BS (Basel-Stadt), FR (Freiburg, Fribourg), GE (Genève), GL (Glarus), GR (Graubünden, Grigioni, Grischun), JU (Jura), LU (Luzern), NE (Neuchâtel), NW (Nidwalden), OW (Obwalden), SG (Sankt Gallen), SH (Schaffhausen), SO (Solothurn), SZ (Schwyz), TG (Thurgau), TI (Ticino), UR (Uri), VD (Vaud), VS (Valais, Wallis), ZG (Zug), ZH (Zürich)</td>
 <td><strong>de</strong>, en_US, fr, it, uk</td>
 <td>HALF_DAY, OPTIONAL</td>
 </tr>
@@ -1218,6 +1224,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>to</strong></td>
 <td></td>
+</tr>
+<tr>
+<td>Trinidad and Tobago</td>
+<td>TT</td>
+<td></td>
+<td><strong>en_TT</strong>, en_US</td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Tunisia</td>
@@ -1271,7 +1284,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
-<td>States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY</td>
+<td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
 <td></td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
