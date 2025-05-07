@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Togo holidays.
+# Togo holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -19,82 +19,83 @@ msgstr ""
 "PO-Revision-Date: 2025-05-07 4:17+0530\n"
 "Last-Translator: Roshan Pradhan <roshanpradhan2048@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: fr\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: fr\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
-msgstr ""
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "Jour de l'an"
-msgstr ""
+msgstr "New Year's Day"
 
 #. Liberation Day.
 msgid "Fête de la libération nationale"
-msgstr ""
+msgstr "Liberation Day"
 
 #. Good Friday.
 msgid "Vendredi saint"
-msgstr ""
+msgstr "Good Friday"
 
 #. Easter Monday.
 msgid "Lundi de Pâques"
-msgstr ""
+msgstr "Easter Monday"
 
 #. Independence Day.
 msgid "Fête de l'indépendance"
-msgstr ""
+msgstr "Independence Day"
 
 #. Labor Day.
 msgid "Fête du travail"
-msgstr ""
+msgstr "Labor Day"
 
 #. Ascension Day.
 msgid "Fête de l'Ascension"
-msgstr ""
+msgstr "Ascension Day"
 
 #. Whit Monday.
 msgid "Lundi de Pentecôte"
-msgstr ""
+msgstr "Whit Monday"
 
 #. Martyrs' Day.
 msgid "Fête des Martyrs"
-msgstr ""
+msgstr "Martyrs' Day"
 
 #. Assumption Day.
 msgid "Assomption"
-msgstr ""
+msgstr "Assumption Day"
 
 #. All Saints' Day.
 msgid "Toussaint"
-msgstr ""
+msgstr "All Saints' Day"
 
 #. Christmas Day.
 msgid "Noël"
-msgstr ""
+msgstr "Christmas Day"
 
 #. First Day of Ramadan.
 msgid "Ramadan"
-msgstr ""
+msgstr "First Day of Ramadan"
 
 #. Eid al-Fitr.
 msgid "l'Aïd El-Fitr"
-msgstr ""
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Tabaski"
-msgstr ""
+msgstr "Eid al-Adha"
 
 #. Prophet Mohammed's Birthday.
 msgid "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
-msgstr ""
+msgstr "Prophet Mohammed's Birthday"
 
 #. Anniversary of the Failed Attack on Lomé.
 msgid "Anniversaire de l'attentat manqué contre Lomé"
-msgstr ""
+msgstr "Anniversary of the Failed Attack on Lomé"

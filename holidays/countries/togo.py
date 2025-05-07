@@ -15,16 +15,12 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import OPTIONAL, PUBLIC
-from holidays.groups import (
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-)
-from holidays.observed_holiday_base import HolidayBase
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.holiday_base import HolidayBase
 
 
 class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """Togo
+    """Togo holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Togo>
@@ -56,10 +52,10 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
     default_language = "fr"
     supported_categories = (OPTIONAL, PUBLIC)
     # %s (estimated).
-    estimated_label = tr("%s (estimated)")
-    supported_languages = ("fr",)
+    estimated_label = tr("%s (estimé)")
+    supported_languages = ("en_US", "fr")
     # Togo gained independence on April 27, 1960.
-    start_year = 1960
+    start_year = 1961
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -79,7 +75,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'an"))
 
-        if self._year >= 1967 and self._year < 2014:
+        if 1967 <= self._year <= 2013:
             # Liberation Day.
             self._add_holiday_jan_13(tr("Fête de la libération nationale"))
 
