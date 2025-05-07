@@ -14,6 +14,7 @@ from datetime import date, timedelta
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
+from holidays.utils import nth_weekday_of_month
 from holidays.constants import (
     JAN,
     FEB,
@@ -67,13 +68,6 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
-    def _get_nth_weekday_of_month(self, n, weekday, month):
-        """Get the nth weekday of a given month (2nd Monday of June)."""
-        first_day = date(self._year, month, 1)
-        delta = (weekday - first_day.weekday()) % 7
-        first_weekday = first_day + timedelta(days=delta)
-        return first_weekday + timedelta(days=(n - 1) * 7)
-
     def _populate_public_holidays(self):
         # New Year's Day.
         name = tr("Hari Tahun Baru")
@@ -108,7 +102,7 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         # King's Birthday.
         name = tr("Hari Ulang Tahun Raja")
-        dt = self._get_nth_weekday_of_month(2, MON, JUN)
+        dt = self.nth_weekday_of_month(2, MON, JUN)
         self._add_holiday(name, dt)
 
         # Prophet Muhammad's Birthday.
