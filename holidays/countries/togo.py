@@ -24,28 +24,28 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Togo>
-        * <https://www.timeanddate.com/holidays/togo/>
-        * <https://www.goethe.de/ins/tg/fr/ueb/fer.html>
-        * <https://www.republiquetogolaise.com/politique/2309-3579-23-septembre-le-togo-rend-hommage-a-ses-martyrs>
-        * <https://islam.zmo.de/s/westafrica/item/25841#?xywh=-485%2C-94%2C2537%2C1868>
+        * <https://web.archive.org/web/20250507123116/https://www.timeanddate.com/holidays/togo/>
+        * <https://web.archive.org/web/20250507123425/https://www.goethe.de/ins/tg/fr/ueb/fer.html>
+        * <https://web.archive.org/web/20250507123619/https://www.republiquetogolaise.com/politique/2309-3579-23-septembre-le-togo-rend-hommage-a-ses-martyrs>
+        * <https://web.archive.org/web/20250507123840/https://islam.zmo.de/s/westafrica/item/25841#?xywh=-405%2C-94%2C2376%2C1868>
         * <https://en.wikipedia.org/wiki/1986_Togolese_coup_attempt>
-        * <https://www.rfi.fr/fr/afrique/20140112-togo-le-13-janvier-est-plus-jour-fete>
+        * <https://archive.ph/KRjSV>
         * <https://fr.wikipedia.org/wiki/Coup_d%27%C3%89tat_de_1967_au_Togo>
-        * <https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1743%2C-1%2C4506%2C2362>
-        * <https://www.republiquetogolaise.com/politique/2501-10232-le-togo-a-commemore-le-51eme-anniversaire-de-l-attentat-de-sarakawa>
+        * <https://web.archive.org/web/20250507124528/https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1641%2C0%2C4303%2C2363>
+        * <https://web.archive.org/web/20250507124709/https://www.republiquetogolaise.com/politique/2501-10232-le-togo-a-commemore-le-51eme-anniversaire-de-l-attentat-de-sarakawa>
 
         Ramadan start dates:
-        * <https://www.republicoftogo.com/toutes-les-rubriques/societe/le-mois-du-jeune-debute-le-18-juin>
-        * <https://www.republicoftogo.com/toutes-les-rubriques/societe/le-ramadan-debute-le-6-juin>
-        * <https://www.tf1info.fr/societe/le-ramadan-2017-1438-commence-le-samedi-27-mai-comment-la-date-du-debut-du-jeune-est-elle-fixee-1512235.html>
-        * <https://www.republicoftogo.com/toutes-les-rubriques/societe/debut-du-ramadan-demain>
-        * <https://www.republiquetogolaise.com/social/0605-3100-la-communaute-musulmane-du-togo-entame-ce-lundi-le-jeune-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/2404-4278-debut-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/1304-5393-debut-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/0304-6745-debut-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/2303-7864-debut-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/1103-9017-debut-du-mois-de-ramadan>
-        * <https://www.republiquetogolaise.com/culture/2802-10360-le-jeune-de-ramadan-debute-le-1er-mars>
+        * <https://web.archive.org/save/https://www.republicoftogo.com/toutes-les-rubriques/societe/le-mois-du-jeune-debute-le-18-juin>
+        * <https://web.archive.org/web/20250507125256/https://www.republicoftogo.com/toutes-les-rubriques/societe/le-ramadan-debute-le-6-juin>
+        * <https://web.archive.org/web/20250507125353/https://www.tf1info.fr/societe/le-ramadan-2017-1438-commence-le-samedi-27-mai-comment-la-date-du-debut-du-jeune-est-elle-fixee-1512235.html>
+        * <https://web.archive.org/web/20250507125622/https://www.republicoftogo.com/toutes-les-rubriques/societe/debut-du-ramadan-demain>
+        * <https://web.archive.org/web/20250507130404/https://www.republiquetogolaise.com/social/0605-3100-la-communaute-musulmane-du-togo-entame-ce-lundi-le-jeune-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507125837/https://www.republiquetogolaise.com/culture/2404-4278-debut-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507130643/https://www.republiquetogolaise.com/culture/1304-5393-debut-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507130847/https://www.republiquetogolaise.com/culture/0304-6745-debut-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507131022/https://www.republiquetogolaise.com/culture/2303-7864-debut-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507131215/https://www.republiquetogolaise.com/culture/1103-9017-debut-du-mois-de-ramadan>
+        * <https://web.archive.org/web/20250507131439/https://www.republiquetogolaise.com/culture/2802-10360-le-jeune-de-ramadan-debute-le-1er-mars>
     """
 
     country = "TG"
