@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-03 08:13+0500\n"
 "PO-Revision-Date: 2025-05-06 15:19+0500\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
@@ -53,7 +53,7 @@ msgid "عيد الجلاء"
 msgstr "Independence Day"
 
 #. Hijri New Year.
-msgid "عيد راس السنة الهجرية"
+msgid "عيد رأس السنة الهجرية"
 msgstr "Hijri New Year"
 
 #. Prophet's Birthday.

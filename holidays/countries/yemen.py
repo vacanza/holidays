@@ -10,12 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:  # pragma: no cover
-    from datetime import date
-
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -75,17 +69,15 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
             self, cls=YemenIslamicHolidays, show_estimated=islamic_show_estimated
         )
         kwargs.setdefault("observed_rule", FRI_TO_NEXT_WORKDAY)
-        self._observed_rule = FRI_TO_NEXT_WORKDAY
-        self.dts_observed: set[date] = set()
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         self.dts_observed = set()
         # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013
-        self.weekend = {THU, FRI} if self._year <= 2013 else {FRI, SAT}
+        self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
         # Hijri New Year.
-        self.dts_observed.update(self._add_islamic_new_year_day(tr("عيد راس السنة الهجرية")))
+        self.dts_observed.update(self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية")))
 
         # Prophet's Birthday.
         self.dts_observed.update(self._add_mawlid_day(tr("المولد النبوي")))
