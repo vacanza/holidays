@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestCocosIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2007, 2050)
+        years = range(1955, 2050)
         super().setUpClass(CocosIslands, years=years, years_non_observed=range(1955, 2050))
         cls.holidays_observed = CocosIslands(observed=True, years=years)
         cls.holidays_non_observed = CocosIslands(observed=False, years=years)
