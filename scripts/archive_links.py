@@ -27,7 +27,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 EXTENSIONS_TO_SCAN = [".py", ".po"]
-FIND_URL_PATTERN = re.compile(r'https?://[^\s<>"]+|www\.[^\s<>"]+')
+FIND_URL_PATTERN = re.compile(r'https?://[^\s<>"]+')
 IGNORED_DIRECTORIES = ["__pycache__"]
 IGNORE_DOMAINS = [
     r"archive\.is",
@@ -67,7 +67,7 @@ def find_hyperlinks_in_file(filepath: str) -> list[str]:
     try:
         found_urls = {
             match.rstrip(")")
-            for match in re.findall(FIND_URL_PATTERN, file_content)
+            for match in FIND_URL_PATTERN.findall(file_content)
             if match and not IGNORE_URL_REGEX.search(match)
         }
         return sorted(found_urls)
