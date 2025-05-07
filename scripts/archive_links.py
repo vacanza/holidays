@@ -45,6 +45,8 @@ IGNORE_DOMAINS = [
     r"wikisource\.org",
 ]
 IGNORE_URL_REGEX = re.compile(r"|".join(IGNORE_DOMAINS))
+# Characters that can be part of a URL - used to avoid replacing URLs that are part of larger URLs
+URL_BOUNDARY_CHARS = r"a-zA-Z0-9_/.-"
 CDX_API_URL = "https://web.archive.org/cdx/search/cdx"
 SAVE_API_URL = "https://web.archive.org/save"
 REQUEST_TIMEOUT = 60
@@ -216,7 +218,11 @@ def replace_urls_in_file(filepath: str, url_map: dict[str, str], urls_in_file: l
     print(f"  Attempting replacements in: {filepath}")
     for original_url, wayback_url in valid_replacements_for_file.items():
         escaped_original_url = re.escape(original_url)
-        new_content, count = re.subn(escaped_original_url, wayback_url, modified_content)
+        # pattern that matches the URL when it's not part of a larger URL
+        # negative lookbehind: ensure URL doesn't follow a character that could be part of a URL
+        # negative lookahead: ensure URL isn't followed by a character that could be part of a URL
+        pattern = f"(?<![{URL_BOUNDARY_CHARS}]){escaped_original_url}(?![{URL_BOUNDARY_CHARS}])"
+        new_content, count = re.subn(pattern, wayback_url, modified_content)
         if count > 0:
             modified_content = new_content
             replacements_made += count
@@ -287,18 +293,46 @@ def main() -> None:
         "'always' (always submit for archiving), 'never' (only search for "
         "exising captures)",
     )
+    parser.add_argument(
+        "--check-only",
+        action="store_true",
+        help="Only print URLs that would need to be archived without checking or modifying "
+        "anything. Exits with code 1 if any URLs are found.",
+    )
     args = parser.parse_args()
 
     start_time_total = time.time()
-    print("\n--- Stage: Per-File Processing ---")
     directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
 
     # Scan for files and their URLs
     files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+
+    if args.check_only:
+        print("Check-only mode: Printing all URLs that would need archiving")
+
+        if files_to_urls_data:
+            print("FOUND: URLs that need archiving")
+
+            for source_file, urls_in_file in files_to_urls_data.items():
+                print(f"\nFile: {source_file}")
+                for url in urls_in_file:
+                    print(f"  {url}")
+
+            exit_code = 1
+        else:
+            print("SUCCESS: No URLs to archive")
+            exit_code = 0
+
+        end_time_total = time.time()
+        print("-" * 30)
+        print(f"Script finished in {end_time_total - start_time_total:.2f} seconds.")
+        sys.exit(exit_code)
+
     if not files_to_urls_data:
         print("No URLs found or no files processed. Exiting.")
         sys.exit(0)
 
+    print("\n--- Stage: Per-File Processing ---")
     session = requests.Session()
     retries = Retry(
         total=5,
