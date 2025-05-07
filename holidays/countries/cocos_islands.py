@@ -14,7 +14,6 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.utils import nth_weekday_of_month
 from holidays.constants import (
     JAN,
     FEB,
