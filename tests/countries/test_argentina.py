@@ -99,6 +99,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2024-12-31",
         )
 
+    def test_special_subdiv_holidays(self):
+        # Buenos Aires.
+        self.assertHoliday(self.subdiv_holidays["B"], "2018-11-30")
+
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1957, 2050)))
 
