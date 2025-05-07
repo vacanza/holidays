@@ -113,7 +113,6 @@ class TestCocosIslands(CommonCountryTests, TestCase):
 
     def test_self_determination_day(self):
         name = "Hari Penentuan Diri"
-        holidays_1980 = CocosIslands(years=1980)
         self.assertHolidayName(name, (f"{year}-04-06" for year in range(1984, 2050)))
         self.assertNoHolidayName(
             name,
@@ -122,7 +121,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         obs_dt = ("2025-04-07",)
         self.assertHolidayName(f"{name} (disambut)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNotIn("1980-04-06", holidays_1980)
+        self.assertNotIn("1980-04-06", CocosIslands(years=1980))
 
     def test_anzac_day(self):
         name = "Hari ANZAC"
