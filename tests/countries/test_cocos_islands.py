@@ -115,7 +115,10 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Hari Penentuan Diri"
         holidays_1980 = CocosIslands(years=1980)
         self.assertHolidayName(name, (f"{year}-04-06" for year in range(1984, 2050)))
-        self.assertNoHolidayName(name, range(1955, 1984))
+        self.assertNoHolidayName(
+            name,
+            (f"{year}-04-06" for year in range(1955, 1984)),
+        )
         obs_dt = ("2025-04-07",)
         self.assertHolidayName(f"{name} (disambut)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
