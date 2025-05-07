@@ -831,6 +831,9 @@ class ArgentinaStaticHolidays:
     Special Subdivision-level Holidays References:
         * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
 
+    Special Subdivision-level Holidays References:
+        * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
+
     Special Bridge Holidays are given upto 3 days a year as long as it's declared
     50 days before calendar year's end.
     There's no Bridge Holidays declared in 2017.
