@@ -92,10 +92,10 @@ msgstr "Eid al-Fitr"
 msgid "Tabaski"
 msgstr "Eid al-Adha"
 
-#. Prophet Mohammed's Birthday.
-msgid "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
-msgstr "Prophet Mohammed's Birthday"
-
 #. Anniversary of the Failed Attack on Lomé.
 msgid "Anniversaire de l'attentat manqué contre Lomé"
 msgstr "Anniversary of the Failed Attack on Lomé"
+
+#. Prophet Mohammed's Birthday.
+msgid "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
+msgstr "Prophet Mohammed's Birthday"

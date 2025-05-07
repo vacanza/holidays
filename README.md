@@ -1214,7 +1214,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Togo</td>
 <td>TG</td>
-<td></td>
+<td>Regions: C (Centrale), K (Kara), M (Maritime), P (Plateaux), S (Savanes)</td>
 <td>en_US, <strong>fr</strong></td>
 <td>OPTIONAL</td>
 </tr>

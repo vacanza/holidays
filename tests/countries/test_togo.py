@@ -178,9 +178,8 @@ class TestTogo(CommonCountryTests, TestCase):
 
     def test_mawlid_day(self):
         name = "Journée anniversaire de la naissance du prophète Mohamed à Lomé"
-        self.assertHolidayName(
-            name,
-            self.optional_holidays,
+        self.assertNoHolidayName(name, range(1961, 2050))
+        dt = (
             "2020-10-29",
             "2021-10-19",
             "2022-10-08",
@@ -188,6 +187,8 @@ class TestTogo(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-05",
         )
+        self.assertNoHoliday(dt)
+        self.assertHolidayName(name, Togo(subdiv="M"), dt)
 
     def test_anniversary_of_the_failed_attack_on_lomé(self):
         name = "Anniversaire de l'attentat manqué contre Lomé"
@@ -199,7 +200,6 @@ class TestTogo(CommonCountryTests, TestCase):
     def test_optional_2025(self):
         self.assertHolidays(
             Togo(categories=OPTIONAL, years=2025),
-            ("2025-09-05", "Journée anniversaire de la naissance du prophète Mohamed à Lomé"),
             ("2025-09-24", "Anniversaire de l'attentat manqué contre Lomé"),
         )
 
