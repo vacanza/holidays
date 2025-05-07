@@ -140,7 +140,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     def _populate_subdiv_m_public_holidays(self):
         # Prophet Mohammed's Birthday.
-        self._add_mawlid_day(tr("Journée anniversaire de la naissance du prophète Mohamed à Lomé"))
+        self._add_mawlid_day(tr("Journée anniversaire de la naissance du prophète Mohamed"))
 
 
 class TG(Togo):
