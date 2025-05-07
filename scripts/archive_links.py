@@ -107,12 +107,7 @@ def scan_directory_for_links(
                 urls_in_file = find_hyperlinks_in_file(full_path)
                 if urls_in_file:
                     file_to_urls_map[full_path] = urls_in_file
-                    all_unique_urls.update(
-                        url
-                        for url in urls_in_file
-                        if url
-                        and (url.startswith("http://") or url.startswith("https://"))  # NOSONAR
-                    )
+                    all_unique_urls.update(urls_in_file)
 
     print(
         f"\nScan complete. Found links in {len(file_to_urls_map)} file(s)."
