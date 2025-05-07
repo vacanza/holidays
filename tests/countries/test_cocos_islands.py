@@ -33,7 +33,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
     def test_new_years_day(self):
         name = "Hari Tahun Baru"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1955, 2050)))
-        obs_dt = ("2023-01-02", "2017-01-02" "2028-01-03", "2034-01-02")
+        obs_dt = ("2023-01-02", "2017-01-02", "2028-01-03", "2034-01-02")
         self.assertHolidayName(f"{name} (disambut)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
