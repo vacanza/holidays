@@ -47,7 +47,7 @@ msgstr "Easter Monday"
 msgid "JAGS McCartney Day"
 msgstr "JAGS McCartney Day"
 
-#. King's Birthday.
+#. Sovereign's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
 
@@ -79,7 +79,7 @@ msgstr "Boxing Day"
 msgid "National Heroes Day"
 msgstr "National Heroes Day"
 
-#. Queen's Birthday.
+#. Sovereign's Birthday.
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"
 

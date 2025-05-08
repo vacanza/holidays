@@ -50,11 +50,11 @@ msgstr ""
 msgid "National Heroes Day"
 msgstr ""
 
-#. King's Birthday.
+#. Sovereign's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
-#. Queen's Birthday.
+#. Sovereign's Birthday.
 msgid "Queen's Birthday"
 msgstr ""
 
