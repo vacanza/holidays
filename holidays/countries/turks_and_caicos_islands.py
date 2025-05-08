@@ -25,10 +25,15 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands)
+<<<<<<< HEAD
         * [Public Holidays Ordinance, rev. 2014](https://web.archive.org/web/20250210082429/https://gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/599?Itemid=)
         * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
         * [Public Holidays Ordinance, rev. 2021](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
         * [2017](https://www.facebook.com/photo/?fbid=1137860329642985&set=a.349345645161128)
+=======
+        * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
+        * [Public Holidays Ordinance](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
+>>>>>>> 65aaa864 (- Expanded test coverage to cover 1963–2050 and assert localized names)
         * [2018](https://web.archive.org/web/20180126185141/https://gov.tc/pressoffice/999-listing-of-special-days-public-holidays-for-2018)
         * [2019](https://www.facebook.com/photo/?fbid=2514587681970236&set=a.349345645161128)
         * [2020](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/2572825079479829/?type=3)
