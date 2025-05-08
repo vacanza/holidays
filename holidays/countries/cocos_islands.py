@@ -101,8 +101,7 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
         # King's Birthday.
         name = tr("Hari Ulang Tahun Raja")
-        dt = self.nth_weekday_of_month(2, MON, JUN)
-        self._add_holiday(name, dt)
+        self._add_holiday_2nd_mon_of_jun(name)
 
         # Prophet Muhammad's Birthday.
         self._add_mawlid_day(tr("Hari Maulaud Nabi"))
