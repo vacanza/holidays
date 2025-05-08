@@ -13,6 +13,8 @@
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import JUN
+from holidays.constants import MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,13 +68,12 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
             else tr("National Heroes Day")
         )
 
-        self._add_holiday_2nd_mon_of_jun(
-            # King's Birthday.
-            tr("King's Birthday")
-            if self._year >= 2023
-            # Queen's Birthday.
-            else tr("Queen's Birthday")
-        )
+        # Sovereign's Birthday.
+        name = tr("King's Birthday") if self._year >= 2023 else tr("Queen's Birthday")
+        if self._year >= 2023 and self._year in {2025}:
+            self._add_holiday(name, (JUN, 23))
+        else:
+            self._add_holiday_2nd_mon_of_jun(name)
 
         # Emancipation Day.
         self._add_holiday_aug_1(tr("Emancipation Day"))
