@@ -197,7 +197,7 @@ class ChristianHolidays:
 
     def _add_carnival_tuesday(self, name) -> date:
         """
-        Add Carnival Monday (47 days before Easter Sunday).
+        Add Carnival Tuesday (47 days before Easter Sunday).
 
         Carnival is a Catholic Christian festive season that occurs before
         the liturgical season of Lent.
@@ -373,7 +373,7 @@ class ChristianHolidays:
 
         Add Day Of Rejoicing ("Radonitsa"), in the Russian Orthodox Church is
         a commemoration of the departed observed on the second Tuesday of
-        Pascha (Easter).In Ukrainian tradition it is called Provody.
+        Pascha (Easter). In Ukrainian tradition it is called Provody.
         https://en.wikipedia.org/wiki/Radonitsa
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +9))
@@ -421,7 +421,7 @@ class ChristianHolidays:
 
     def _add_saints_peter_and_paul_day(self, name) -> date:
         """
-        Feast of Saints Peter and Paul (June 29th).
+        Add Feast of Saints Peter and Paul (June 29th).
 
         A liturgical feast in honor of the martyrdom in Rome of the apostles
         Saint Peter and Saint Paul, which is observed on 29 June.
