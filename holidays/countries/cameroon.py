@@ -28,8 +28,8 @@ class Cameroon(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
-        * <https://www.timeanddate.com/holidays/cameroon>
-        * <https://www.officeholidays.com/countries/cameroon>
+        * <https://web.archive.org/web/20250408001410/https://www.timeanddate.com/holidays/cameroon/>
+        * <https://web.archive.org/web/20231004010829/https://www.officeholidays.com/countries/cameroon>
     """
 
     country = "CM"

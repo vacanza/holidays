@@ -21,7 +21,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France>
-        * <https://www.service-public.fr/particuliers/vosdroits/F2405>
+        * <https://web.archive.org/web/20250424031328/https://www.service-public.fr/particuliers/vosdroits/F2405>
 
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,

@@ -22,8 +22,8 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Denmark>
-        * <https://www.norden.org/en/info-norden/public-holidays-denmark>
-        * <https://www.ft.dk/samling/20222/lovforslag/l13/index.htm>
+        * <https://web.archive.org/web/20250422010005/https://www.norden.org/en/info-norden/public-holidays-denmark>
+        * <https://web.archive.org/web/20231219155820/http://www.ft.dk/samling/20222/lovforslag/l13/index.htm>
     """
 
     country = "DK"

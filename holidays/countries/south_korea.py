@@ -55,19 +55,19 @@ class SouthKorea(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea>
-        * <https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
-        * <https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
-        * <https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
+        * <https://web.archive.org/web/20240429121214/https://www.law.go.kr/법령/관공서의%20공휴일에%20관한%20규정>
+        * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
+        * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
         * <https://namu.wiki/w/공휴일/대한민국>
         * <https://namu.wiki/w/공휴일/대한민국/역사>
         * <https://namu.wiki/w/대체%20휴일%20제도>
-        * [TH localization 1](https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do)
-        * [TH localization 2](https://thailand.korean-culture.org/th/138/korea/38)
+        * [TH localization 1](https://web.archive.org/web/20241217184803/https://overseas.mofa.go.kr/th-th/wpge/m_3133/contents.do)
+        * [TH localization 2](https://web.archive.org/web/20200216004120/http://thailand.korean-culture.org:80/th/138/korea/38)
 
     Checked With:
-        * <https://publicholidays.co.kr/ko/2020-dates/>
-        * <https://publicholidays.co.kr/ko/2022-dates/>
+        * <https://web.archive.org/web/20231202051034/https://publicholidays.co.kr/ko/2020-dates/>
+        * <https://web.archive.org/web/20231002172705/https://publicholidays.co.kr/ko/2022-dates/>
 
     According to (3), the alt holidays in Korea are as follows:
         * The alt holiday means next first non holiday after the holiday.

@@ -22,7 +22,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     """Switzerland holidays.
 
     References:
-        * <https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
+        * <https://web.archive.org/web/20250201054902/https://www.bj.admin.ch/dam/bj/de/data/publiservice/service/zivilprozessrecht/kant-feiertage.pdf>
         * <https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Switzerland>
     """
