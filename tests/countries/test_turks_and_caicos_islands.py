@@ -19,10 +19,26 @@ from tests.common import CommonCountryTests
 class TestTC(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(TurksAndCaicosIslands, years=range(2010, 2025))
+        super().setUpClass(TurksAndCaicosIslands, years=range(1963, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(TurksAndCaicosIslands, TC, TCA)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(TurksAndCaicosIslands(years=1962))
+
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(
+            name,
+            "2020-01-01",
+            "2021-01-01",
+            "2022-01-01",
+            "2023-01-01",
+            "2024-01-01",
+            "2025-01-01",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
@@ -35,6 +51,7 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-03-11",
             "2025-03-10",
         )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -47,6 +64,7 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -59,10 +77,21 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_jags_mccartney_day(self):
         name_pre_2020 = "National Heroes Day"
         name_2020 = "JAGS McCartney Day"
+
+        self.assertHolidayName(
+            name_pre_2020,
+            "2014-05-26",
+            "2015-05-25",
+            "2016-05-30",
+            "2017-05-29",
+            "2018-05-28",
+            "2019-05-27",
+        )
 
         self.assertHolidayName(
             name_2020,
@@ -74,10 +103,10 @@ class TestTC(CommonCountryTests, TestCase):
             "2025-05-26",
         )
 
-        self.assertHolidayName(name_pre_2020, range(2010, 2020))
-        self.assertHolidayName(name_2020, range(2020, 2026))
-        self.assertNoHolidayName(name_pre_2020, range(2020, 2026))
-        self.assertNoHolidayName(name_2020, range(2010, 2020))
+        self.assertHolidayName(name_pre_2020, range(1963, 2020))
+        self.assertHolidayName(name_2020, range(2020, 2050))
+        self.assertNoHolidayName(name_pre_2020, range(2020, 2050))
+        self.assertNoHolidayName(name_2020, range(1963, 2020))
 
     def test_sovereign_birthday(self):
         name_pre_2023 = "Queen's Birthday"
@@ -85,6 +114,9 @@ class TestTC(CommonCountryTests, TestCase):
 
         self.assertHolidayName(
             name_pre_2023,
+            "2017-06-12",
+            "2018-06-11",
+            "2019-06-10",
             "2020-06-08",
             "2021-06-14",
             "2022-06-13",
@@ -97,10 +129,23 @@ class TestTC(CommonCountryTests, TestCase):
             "2025-06-09",
         )
 
-        self.assertHolidayName(name_pre_2023, range(2010, 2023))
-        self.assertHolidayName(name_2023, range(2023, 2026))
-        self.assertNoHolidayName(name_pre_2023, range(2023, 2026))
-        self.assertNoHolidayName(name_2023, range(2010, 2023))
+        self.assertHolidayName(name_pre_2023, range(1963, 2023))
+        self.assertHolidayName(name_2023, range(2023, 2050))
+        self.assertNoHolidayName(name_pre_2023, range(2023, 2050))
+        self.assertNoHolidayName(name_2023, range(1963, 2023))
+
+    def test_emancipation_day(self):
+        name = "Emancipation Day"
+        self.assertHolidayName(
+            name,
+            "2020-08-01",
+            "2021-08-01",
+            "2022-08-01",
+            "2023-08-01",
+            "2024-08-01",
+            "2025-08-01",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_national_youth_day(self):
         name = "National Youth Day"
@@ -113,10 +158,19 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-09-27",
             "2025-09-26",
         )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_national_heritage_day(self):
         name_pre_2014 = "Columbus Day"
         name_2014 = "National Heritage Day"
+
+        self.assertHolidayName(
+            name_pre_2014,
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+        )
 
         self.assertHolidayName(
             name_2014,
@@ -126,18 +180,12 @@ class TestTC(CommonCountryTests, TestCase):
             "2017-10-09",
             "2018-10-08",
             "2019-10-14",
-            "2020-10-12",
-            "2021-10-11",
-            "2022-10-10",
-            "2023-10-09",
-            "2024-10-14",
-            "2025-10-13",
         )
 
-        self.assertHolidayName(name_pre_2014, range(2010, 2014))
-        self.assertHolidayName(name_2014, range(2014, 2026))
-        self.assertNoHolidayName(name_pre_2014, range(2014, 2026))
-        self.assertNoHolidayName(name_2014, range(2010, 2014))
+        self.assertHolidayName(name_pre_2014, range(1963, 2014))
+        self.assertHolidayName(name_2014, range(2014, 2050))
+        self.assertNoHolidayName(name_pre_2014, range(2014, 2050))
+        self.assertNoHolidayName(name_2014, range(1963, 2014))
 
     def test_national_day_of_thanksgiving(self):
         name = "National Day of Thanksgiving"
@@ -150,39 +198,66 @@ class TestTC(CommonCountryTests, TestCase):
             "2024-11-22",
             "2025-11-28",
         )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(
+            name,
+            "2020-12-25",
+            "2021-12-25",
+            "2022-12-25",
+            "2023-12-25",
+            "2024-12-25",
+            "2025-12-25",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(
+            name,
+            "2020-12-26",
+            "2021-12-26",
+            "2022-12-26",
+            "2023-12-26",
+            "2024-12-26",
+            "2025-12-26",
+        )
+        self.assertHolidayName(name, range(1963, 2050))
 
     def test_2023(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             TurksAndCaicosIslands(years=2023),
-            ("2023-01-01"),
-            ("2023-03-13"),
-            ("2023-04-07"),
-            ("2023-04-10"),
-            ("2023-05-29"),
-            ("2023-06-12"),
-            ("2023-08-01"),
-            ("2023-09-29"),
-            ("2023-10-09"),
-            ("2023-11-24"),
-            ("2023-12-25"),
-            ("2023-12-26"),
+            ("2023-01-01", "New Year's Day"),
+            ("2023-03-13", "Commonwealth Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-05-29", "JAGS McCartney Day"),
+            ("2023-06-12", "King's Birthday"),
+            ("2023-08-01", "Emancipation Day"),
+            ("2023-09-29", "National Youth Day"),
+            ("2023-10-09", "National Heritage Day"),
+            ("2023-11-24", "National Day of Thanksgiving"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
         )
 
     def test_2025(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             TurksAndCaicosIslands(years=2025),
-            ("2025-01-01"),
-            ("2025-03-10"),
-            ("2025-04-18"),
-            ("2025-04-21"),
-            ("2025-05-26"),
-            ("2025-06-09"),
-            ("2025-08-01"),
-            ("2025-09-26"),
-            ("2025-10-13"),
-            ("2025-11-28"),
-            ("2025-12-25"),
-            ("2025-12-26"),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-10", "Commonwealth Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-26", "JAGS McCartney Day"),
+            ("2025-06-09", "King's Birthday"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-09-26", "National Youth Day"),
+            ("2025-10-13", "National Heritage Day"),
+            ("2025-11-28", "National Day of Thanksgiving"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
 
     def test_l10n_default(self):

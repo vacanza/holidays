@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.72\n"
 "POT-Creation-Date: 2025-04-23 12:44-0500\n"
-"PO-Revision-Date: 2025-04-23 12:55-0500\n"
+"PO-Revision-Date: 2025-05-07 13:02-0400\n"
 "Last-Translator: Shalom Donga <shalomdonga@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -43,11 +43,11 @@ msgstr "Good Friday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. JAGS McCartney Day. Previously National Heroes Day until 2020.
+#. JAGS McCartney Day.
 msgid "JAGS McCartney Day"
 msgstr "JAGS McCartney Day"
 
-#. King's Birthday. Previously Queen's Birthday until 2023.
+#. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
 
@@ -59,7 +59,7 @@ msgstr "Emancipation Day"
 msgid "National Youth Day"
 msgstr "National Youth Day"
 
-#. National Heritage Day. Previously known as Columbus Day until 2014.
+#. National Heritage Day.
 msgid "National Heritage Day"
 msgstr "National Heritage Day"
 
@@ -75,10 +75,14 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. JAGS McCartney Day. Previously National Heroes Day until 2020.
+#. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "National Heroes Day"
 
-#. King's Birthday. Previously Queen's Birthday until 2023.
+#. Queen's Birthday.
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"
+
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr "Columbus Day"

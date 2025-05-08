@@ -20,9 +20,9 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
     """Turks and Caicos Islands holidays.
 
     References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands>
-        * <https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=>
-        * <https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=>
+        * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands)
+        * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
+        * [Public Holidays Ordinance](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
         * [2018](https://web.archive.org/web/20180126185141/https://gov.tc/pressoffice/999-listing-of-special-days-public-holidays-for-2018)
         * [2019](https://www.facebook.com/photo/?fbid=2514587681970236&set=a.349345645161128)
         * [2020](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/2572825079479829/?type=3)
@@ -30,8 +30,8 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         * [2022](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/4515540038541647/?type=3)
         * [2023](https://www.facebook.com/photo/?fbid=557741379734203&set=a.363028765872133)
         * [2025](https://www.facebook.com/photo/?fbid=1019082573584944&set=a.353200576839817)
-        * <https://web.archive.org/web/20250429024708/https://destinationtci.tc/turks-and-caicos-islands-public-holidays/>
-        * <https://web.archive.org/web/20250429024853/https://www.timeanddate.com/holidays/turks-and-caicos-islands/>
+        * [Destination TCI](https://web.archive.org/web/20250429024708/https://destinationtci.tc/turks-and-caicos-islands-public-holidays/)
+        * [Time and Date](https://web.archive.org/web/20250429024853/https://www.timeanddate.com/holidays/turks-and-caicos-islands/)
     """
 
     country = "TC"
