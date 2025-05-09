@@ -14,23 +14,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    MON,
-    SAT,
-    SUN,
-)
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -47,7 +31,27 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cocos_(Keeling)_Islands>
         * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
         * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
-        * <https://publicholidays.asia/cocos-keeling-islands/>
+
+       * [2007](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
+        * [2008](https://web.archive.org/web/20240718120923/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/06-2007_Public_Holidays_CKI.pdf)
+        * [2008 Eid al-Fitr](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
+        * [2009](https://web.archive.org/web/20231208153529/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/01-2008-2009-public-holiday-CKI-gazette.pdf)
+        * [2010](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2009/2009-Gazette_6-2009-CKI-Proclamation_of_2010_Special_Public_Bank_Holidays.pdf)
+        * [2013](https://web.archive.org/web/20240805055409/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2012/2012-Gazette_8-2012-CKI-Proclamation_of_2013_Public_Holidays_for_Cocos_(Keeling)_Islands.pdf)
+        * [2014](https://web.archive.org/web/20240718123844/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2013/2013-Gazette_3-2013-Cocos_K_Islands_2014_Public_Holidays.pdf)
+        * [2016](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2015/2015-Gazette_4-2015-CKI-Proclamation_of_2016_Special_Public_Bank_Holidays.pdf)
+        * [2016 Eid al-Fitr](https://web.archive.org/web/20231208203746/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_3-2016-CKI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
+        * [2017](https://web.archive.org/web/20240303203132/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_2-2016-CKI-Proclamation_Special_Public_and_Bank_Holidays_2017.pdf)
+        * [2019](https://web.archive.org/web/20241123131420/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2018/files/A38-2018.pdf)
+        * [2019 Act of Self Determination Day](https://web.archive.org/web/20220518200522/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2019/files/A10-2019-bank-holidays.pdf)
+        * [2020](https://web.archive.org/web/20240521203357/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2019/files/A53-2019.pdf)
+        * [2021](https://web.archive.org/web/20250502204052/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian_ocean/iot_bulletins/2020/A041-2020-cki-public-holidays)
+        * [2022](https://web.archive.org/web/20250429071240/https://www.infrastructure.gov.au/sites/default/files/documents/a33-2021-2022-public-holidays-cocos-keeling-islands.pdf)
+        * [2022 Eid al-Fitr](https://web.archive.org/web/20220810061351/https://www.infrastructure.gov.au/sites/default/files/documents/Gazette-Change-to-CKI-Hari-Raya-Puasa-2022.pdf)
+        * [2023](https://web.archive.org/web/20240701080640/https://www.infrastructure.gov.au/sites/default/files/documents/A07-2022-notice-proclamation-special-public-bank-holidays-2023-cki.pdf)
+        * [2023 Eid al-Adha](https://web.archive.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
+        * [2024](https://web.archive.org/web/20250207203100/https://www.infrastructure.gov.au/sites/default/files/documents/a12-2023-2024-public-holidays-cocos-k-islands.pdf)
+        * [2025](https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf)
     """
 
     country = "CC"
@@ -55,12 +59,18 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     # %s (observed).
     observed_label = tr("%s (disambut)")
     supported_languages = ("coa_CC", "en_AU", "en_US")
-    start_year = 1955
+    # Act of Self Determination 1984.
+    start_year = 1985
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        islamic_show_estimated = kwargs.pop("islamic_show_estimated", True)
         IslamicHolidays.__init__(
             self, cls=CocosIslandsIslamicHolidays, show_estimated=islamic_show_estimated
         )
@@ -69,15 +79,13 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        name = tr("Hari Tahun Baru")
-        self._add_observed(self._add_new_years_day(name))
-        self._add_observed(self._next_year_new_years_day, name=name)
+        self._add_observed(self._add_new_years_day(tr("Hari Tahun Baru")))
 
         # Australia Day.
         self._add_observed(self._add_holiday_jan_26(tr("Hari Australia")))
 
-        # Islamic New Year.
-        if self._year < 2020:
+        if self._year <= 2019:
+            # Islamic New Year.
             self._add_islamic_new_year_day(tr("Tahun Baru Hijriah"))
 
         # Eid al-Fitr.
@@ -89,9 +97,8 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         # Easter Monday.
         self._add_easter_monday(tr("Isnin Paskah"))
 
-        # Self Determination Day.
-        if self._year >= 1984:
-            self._add_observed(self._add_holiday_apr_6(tr("Hari Penentuan Diri")))
+        # Act of Self Determination Day.
+        self._add_observed(self._add_holiday_apr_6(tr("Hari Penentuan Diri")))
 
         # ANZAC Day.
         self._add_observed(self._add_holiday_apr_25(tr("Hari ANZAC")))
@@ -103,24 +110,17 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         name = tr("Hari Ulang Tahun Raja")
         self._add_holiday_2nd_mon_of_jun(name)
 
-        # Prophet Muhammad's Birthday.
+        # Prophet's Birthday.
         self._add_mawlid_day(tr("Hari Maulaud Nabi"))
 
         # Christmas Day.
-        name = tr("Hari Natal")
-        dt_christmas = date(self._year, DEC, 25)
-        self._add_observed(dt_christmas, rule=SAT_SUN_TO_NEXT_MON)
-        self._add_christmas_day(name)
+        self._add_observed(self._add_christmas_day(tr("Hari Natal")))
 
-        # Boxing Day.
-        name = tr("Hari Boxing")
-        dt_boxing = date(self._year, DEC, 26)
-        self._add_christmas_day_two(name)
-        boxing_weekday = dt_boxing.weekday()
-        if boxing_weekday == MON:
-            self._add_observed(dt_boxing, name=name, rule=MON_TO_NEXT_TUE)
-        elif boxing_weekday in (SAT, SUN):
-            self._add_observed(dt_boxing, name=name, rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Hari Boxing")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
+        )
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
@@ -199,12 +199,8 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
 
 
 class CC(CocosIslands):
-    """Alias for CocosIslands class."""
-
     pass
 
 
 class CCK(CocosIslands):
-    """Alias for CocosIslands class."""
-
     pass
