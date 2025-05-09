@@ -25,8 +25,7 @@ class HolidaysAX(Finland):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Åland>
-        * <https://date.nager.at/PublicHoliday/Åland-Islands/2025>
-        * <https://www.bank-holidays.com/country/Aland-Islands_194.htm>
+        * <https://en.wikipedia.org/wiki/Åland%27s_Autonomy_Day>
     """
 
     country = "AX"
