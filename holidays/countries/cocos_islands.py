@@ -31,7 +31,7 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
         * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
 
-       * [2007](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
+        * [2007](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
         * [2008](https://web.archive.org/web/20240718120923/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/06-2007_Public_Holidays_CKI.pdf)
         * [2008 Eid al-Fitr](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
         * [2009](https://web.archive.org/web/20231208153529/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/01-2008-2009-public-holiday-CKI-gazette.pdf)
