@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import PUBLIC, UNOFFICIAL
-from holidays.countries.aland_islands import HolidaysAX, Aland, AX, ALA
+from holidays.countries.aland_islands import HolidaysAX, AlandIslands, AX, ALA
 from tests.common import CommonCountryTests
 
 
@@ -23,7 +23,7 @@ class TestAland(CommonCountryTests, TestCase):
         super().setUpClass(HolidaysAX)
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysAX, Aland, AX, ALA)
+        self.assertAliases(HolidaysAX, AlandIslands, AX, ALA)
 
     def test_no_holiday(self):
         self.assertNoHolidays(HolidaysAX(years=1920, categories=(PUBLIC, UNOFFICIAL)))

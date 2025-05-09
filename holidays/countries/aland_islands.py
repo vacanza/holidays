@@ -48,7 +48,7 @@ class HolidaysAX(Finland):
         super()._populate_public_holidays()
 
 
-class Aland(HolidaysAX):
+class AlandIslands(HolidaysAX):
     pass
 
 
