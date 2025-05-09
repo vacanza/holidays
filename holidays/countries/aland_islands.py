@@ -32,7 +32,7 @@ class HolidaysAX(Finland):
     country = "AX"
     parent_entity = Finland
     default_language = "sv_FI"
-    supported_languages = ("en_US", "fi", "sv_FI", "uk")
+    supported_languages = ("en_US", "fi", "sv_FI", "th", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override Finland subdivisions.
     subdivisions_aliases = {}  # Override Finland subdivisions aliases.

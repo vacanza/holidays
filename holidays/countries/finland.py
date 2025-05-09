@@ -36,7 +36,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FI"
     default_language = "fi"
-    supported_languages = ("en_US", "fi", "sv_FI", "uk")
+    supported_languages = ("en_US", "fi", "sv_FI", "th", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
     subdivisions: tuple[str, ...] = ("01",)  # Åland Islands.
     subdivisions_aliases = {

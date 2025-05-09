@@ -157,7 +157,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Aland</td>
 <td>AX</td>
 <td>Can also be loaded as country FI, subdivision 01</td>
-<td>en_US, fi, <strong>sv_FI</strong>, uk</td>
+<td>en_US, fi, <strong>sv_FI</strong>, th, uk</td>
 <td>UNOFFICIAL</td>
 </tr>
 <tr>
@@ -528,7 +528,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Finland</td>
 <td>FI</td>
 <td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland, Åland)</td>
-<td>en_US, <strong>fi</strong>, sv_FI, uk</td>
+<td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
 <td>UNOFFICIAL</td>
 </tr>
 <tr>
