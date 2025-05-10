@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Cocos (Keeling) Islands holidays.
+# Cocos (Keeling) Islands holidays coa_CC localization.
 #
 msgid ""
 msgstr ""

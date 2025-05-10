@@ -113,23 +113,26 @@ class CocosIslands(
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
-        # Sovereign's Birthday.
-        if self._year < 2023:
-            self._add_holiday_2nd_mon_of_jun(tr("Queen's Birthday"))
-        else:
-            self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
+        self._add_holiday_2nd_mon_of_jun(
+            # King's Birthday.
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
 
         # Prophet's Birthday.
         self._add_mawlid_day(tr("Prophet's Birthday"))
 
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
-
+        # Placed before Christmas Day for proper observed calculation.
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
+
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
@@ -208,8 +211,11 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
 
 
 class CocosIslandsStaticHolidays:
-    # Special public holiday.
-    special_public_holiday = tr("Special public holiday")
+    """Cocos (Keeling) Islands special holidays.
+
+    References:
+        * [National Day of Mourning 2022](https://web.archive.org/web/20240712213751/https://www.infrastructure.gov.au/sites/default/files/documents/04-2022-proclamation-cki-day-of-mourning.pdf)
+    """
 
     special_public_holidays = {
         # National Day of Mourning for Queen Elizabeth II.
