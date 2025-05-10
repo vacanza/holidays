@@ -19,8 +19,8 @@ from tests.common import CommonCountryTests
 class TestCocosIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1955, 2050)
-        super().setUpClass(CocosIslands, years=years, years_non_observed=range(1955, 2050))
+        years = range(1985, 2050)
+        super().setUpClass(CocosIslands, years=years, years_non_observed=range(1985, 2050))
         cls.holidays_observed = CocosIslands(observed=True, years=years)
         cls.holidays_non_observed = CocosIslands(observed=False, years=years)
 
@@ -28,24 +28,24 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertAliases(CocosIslands, CC, CCK)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CocosIslands(years=1954))
+        self.assertNoHolidays(CocosIslands(years=1984))
 
     def test_new_years_day(self):
-        name = "Hari Tahun Baru"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1955, 2050)))
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1985, 2050)))
         obs_dt = ("2023-01-02", "2017-01-02", "2028-01-03", "2034-01-02")
-        self.assertHolidayName(f"{name} (disambut)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_australia_day(self):
-        name = "Hari Australia"
-        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1955, 2050)))
+        name = "Australia Day"
+        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1985, 2050)))
         obs_dt = ("2020-01-27", "2025-01-27")
-        self.assertHolidayName(f"{name} (disambut)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_islamic_new_year(self):
-        name = "Tahun Baru Hijriah"
+        name = "Islamic New Year"
         self.assertHolidayName(
             name,
             [
@@ -62,7 +62,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_eid_al_fitr(self):
-        name = "Hari Raya Puasa"
+        name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
             [
@@ -86,7 +86,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_good_friday(self):
-        name = "Jumat Agung"
+        name = "Good Friday"
         self.assertHolidayName(
             name,
             [
@@ -99,7 +99,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_easter_monday(self):
-        name = "Isnin Paskah"
+        name = "Easter Monday"
         self.assertHolidayName(
             name,
             [
@@ -112,26 +112,26 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_self_determination_day(self):
-        name = "Hari Penentuan Diri"
-        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1984, 2050)))
+        name = "Act of Self Determination Day"
+        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1985, 2050)))
         self.assertNoHolidayName(
             name,
             (f"{year}-04-06" for year in range(1955, 1984)),
         )
         obs_dt = ("2025-04-07",)
-        self.assertHolidayName(f"{name} (disambut)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
         self.assertNotIn("1980-04-06", CocosIslands(years=1980))
 
     def test_anzac_day(self):
-        name = "Hari ANZAC"
-        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1955, 2050)))
+        name = "ANZAC Day"
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1985, 2050)))
         obs_dt = ("2020-04-27", "2021-04-26")
-        self.assertHolidayName(f"{name} (disambut)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_adha(self):
-        name = "Hari Raya Haji"
+        name = "Eid al-Adha"
         self.assertHolidayName(
             name,
             [
@@ -152,13 +152,21 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_kings_birthday(self):
-        name = "Hari Ulang Tahun Raja"
+        name_king = "King's Birthday"
+        name_queen = "Queen's Birthday"
+        # Queen's Birthday before 2022
         self.assertHolidayName(
-            name,
+            name_queen,
             [
                 "2020-06-08",
                 "2021-06-14",
                 "2022-06-13",
+            ],
+        )
+        # King's Birthday from 2022 onward
+        self.assertHolidayName(
+            name_king,
+            [
                 "2023-06-12",
                 "2024-06-10",
                 "2025-06-09",
@@ -166,7 +174,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_mawlid(self):
-        name = "Hari Maulaud Nabi"
+        name = "Prophet's Birthday"
         self.assertHolidayName(
             name,
             [
@@ -187,65 +195,71 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
 
     def test_christmas_day(self):
-        name = "Hari Natal"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1955, 2050)))
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1985, 2050)))
 
     def test_boxing_day(self):
-        name = "Hari Boxing"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1955, 2050)))
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1985, 2050)))
         obs_dt = ("2022-12-27", "2033-12-27")
-        self.assertHolidayName(f"{name} (disambut)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-01", "Hari Tahun Baru"),
-            ("2023-01-02", "Hari Tahun Baru (disambut)"),
-            ("2023-01-26", "Hari Australia"),
-            ("2023-04-06", "Hari Penentuan Diri"),
-            ("2023-04-07", "Jumat Agung"),
-            ("2023-04-10", "Isnin Paskah"),
-            ("2023-04-22", "Hari Raya Puasa"),
-            ("2023-04-25", "Hari ANZAC"),
-            ("2023-06-12", "Hari Ulang Tahun Raja"),
-            ("2023-06-29", "Hari Raya Haji"),
-            ("2023-09-27", "Hari Maulaud Nabi"),
-            ("2023-12-25", "Hari Natal"),
-            ("2023-12-26", "Hari Boxing"),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-26", "Australia Day"),
+            ("2022-04-06", "Act of Self Determination Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "ANZAC Day"),
+            ("2022-05-02", "Eid al-Fitr"),
+            ("2022-06-13", "Queen's Birthday"),
+            ("2022-07-11", "Eid al-Adha"),
+            ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
+            ("2022-10-10", "Prophet's Birthday"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Boxing Day (observed); Christmas Day (observed) (observed)"),
         )
 
-    def test_l10n_en_au(self):
+    def test_l10n_coa_cc(self):
         self.assertLocalizedHolidays(
-            "en_AU",
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-01-26", "Australia Day"),
-            ("2023-04-06", "Self Determination Day"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-04-22", "Eid al-Fitr"),
-            ("2023-04-25", "ANZAC Day"),
-            ("2023-06-12", "King's Birthday"),
-            ("2023-06-29", "Eid al-Adha"),
-            ("2023-09-27", "Prophet Muhammad's Birthday"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            "coa_CC",
+            ("2022-01-01", "Hari Tahun Baru"),
+            ("2022-01-03", "Hari Tahun Baru (disambut)"),
+            ("2022-01-26", "Hari Australia"),
+            ("2022-04-06", "Hari Penentuan Diri"),
+            ("2022-04-15", "Jumat Agung"),
+            ("2022-04-18", "Isnin Paskah"),
+            ("2022-04-25", "Hari ANZAC"),
+            ("2022-05-02", "Hari Raya Puasa"),
+            ("2022-06-13", "Hari Ulang Tahun Ratu"),
+            ("2022-07-11", "Hari Raya Haji"),
+            ("2022-09-22", "Hari Berkabung Negara untuk Ratu Elizabeth II"),
+            ("2022-10-10", "Hari Maulaud Nabi"),
+            ("2022-12-25", "Hari Natal"),
+            ("2022-12-26", "Hari Boxing; Hari Natal (disambut)"),
+            ("2022-12-27", "Hari Boxing (disambut); Hari Natal (disambut) (disambut)"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-01-26", "Australia Day"),
-            ("2023-04-06", "Self Determination Day"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-04-22", "Eid al-Fitr"),
-            ("2023-04-25", "ANZAC Day"),
-            ("2023-06-12", "King's Birthday"),
-            ("2023-06-29", "Eid al-Adha"),
-            ("2023-09-27", "Mawlid al-Nabi"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-26", "Australia Day"),
+            ("2022-04-06", "Act of Self Determination Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "ANZAC Day"),
+            ("2022-05-02", "Eid al-Fitr"),
+            ("2022-06-13", "Queen's Birthday"),
+            ("2022-07-11", "Eid al-Adha"),
+            ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
+            ("2022-10-10", "Mawlid al-Nabi"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Boxing Day (observed); Christmas Day (observed) (observed)"),
         )

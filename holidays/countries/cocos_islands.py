@@ -14,7 +14,12 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -23,7 +28,9 @@ from holidays.observed_holiday_base import (
 )
 
 
-class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class CocosIslands(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
+):
     """Cocos (Keeling) Islands holidays.
 
     References:
@@ -54,10 +61,10 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "CC"
-    default_language = "coa_CC"
+    default_language = "en_CC"
     # %s (observed).
-    observed_label = tr("%s (disambut)")
-    supported_languages = ("coa_CC", "en_AU", "en_US")
+    observed_label = tr("%s (observed)")
+    supported_languages = ("coa_CC", "en_CC", "en_US")
     # Act of Self Determination 1984.
     start_year = 1985
 
@@ -70,6 +77,7 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, CocosIslandsStaticHolidays)
         IslamicHolidays.__init__(
             self, cls=CocosIslandsIslamicHolidays, show_estimated=islamic_show_estimated
         )
@@ -78,46 +86,48 @@ class CocosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("Hari Tahun Baru")))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # Australia Day.
-        self._add_observed(self._add_holiday_jan_26(tr("Hari Australia")))
+        self._add_observed(self._add_holiday_jan_26(tr("Australia Day")))
 
         if self._year <= 2019:
             # Islamic New Year.
-            self._add_islamic_new_year_day(tr("Tahun Baru Hijriah"))
+            self._add_islamic_new_year_day(tr("Islamic New Year"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Hari Raya Puasa"))
+        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
 
         # Good Friday.
-        self._add_good_friday(tr("Jumat Agung"))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Isnin Paskah"))
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Act of Self Determination Day.
-        self._add_observed(self._add_holiday_apr_6(tr("Hari Penentuan Diri")))
+        self._add_observed(self._add_holiday_apr_6(tr("Act of Self Determination Day")))
 
         # ANZAC Day.
-        self._add_observed(self._add_holiday_apr_25(tr("Hari ANZAC")))
+        self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Hari Raya Haji"))
+        self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
-        # King's Birthday.
-        name = tr("Hari Ulang Tahun Raja")
-        self._add_holiday_2nd_mon_of_jun(name)
+        # Sovereign's Birthday.
+        if self._year < 2023:
+            self._add_holiday_2nd_mon_of_jun(tr("Queen's Birthday"))
+        else:
+            self._add_holiday_2nd_mon_of_jun(tr("King's Birthday"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Hari Maulaud Nabi"))
+        self._add_mawlid_day(tr("Prophet's Birthday"))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Hari Natal")))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         self._add_observed(
             # Boxing Day.
-            self._add_christmas_day_two(tr("Hari Boxing")),
+            self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
 
@@ -194,6 +204,16 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 16),
         2025: (SEP, 5),
         2026: (AUG, 26),
+    }
+
+
+class CocosIslandsStaticHolidays:
+    # Special public holiday.
+    special_public_holiday = tr("Special public holiday")
+
+    special_public_holidays = {
+        # National Day of Mourning for Queen Elizabeth II.
+        2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
 
 

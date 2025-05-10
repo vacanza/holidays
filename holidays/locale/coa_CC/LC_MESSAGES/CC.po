@@ -25,61 +25,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.5\n"
-"X-Source-Language: coa_CC\n"
+"X-Source-Language: en_CC\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (disambut)"
-msgstr ""
+msgid "%s (observed)"
+msgstr "%s (disambut)"
+
+msgid "King's Birthday"
+msgstr "Hari Ulang Tahun Raja"
+
+msgid "Queen's Birthday"
+msgstr "Hari Ulang Tahun Ratu"
 
 #. New Year's Day.
-msgid "Hari Tahun Baru"
-msgstr ""
+msgid "New Year's Day"
+msgstr "Hari Tahun Baru"
 
 #. Australia Day.
-msgid "Hari Australia"
-msgstr ""
+msgid "Australia Day"
+msgstr "Hari Australia"
 
-# Islamic New Year.
-msgid "Tahun Baru Hijriah"
-msgstr ""
+#. Islamic New Year.
+msgid "Islamic New Year"
+msgstr "Tahun Baru Hijriah"
 
 #. Eid al-Fitr.
-msgid "Hari Raya Puasa"
-msgstr ""
+msgid "Eid al-Fitr"
+msgstr "Hari Raya Puasa"
 
 #. Good Friday.
-msgid "Jumat Agung"
-msgstr ""
+msgid "Good Friday"
+msgstr "Jumat Agung"
 
 #. Easter Monday.
-msgid "Isnin Paskah"
-msgstr ""
+msgid "Easter Monday"
+msgstr "Isnin Paskah"
 
-# Self Determination Day.
-msgid "Hari Penentuan Diri"
-msgstr ""
+#. Act of Self Determination Day.
+msgid "Act of Self Determination Day"
+msgstr "Hari Penentuan Diri"
 
 #. ANZAC Day.
-msgid "Hari ANZAC"
-msgstr ""
+msgid "ANZAC Day"
+msgstr "Hari ANZAC"
 
 #. Eid al-Adha.
-msgid "Hari Raya Haji"
-msgstr ""
+msgid "Eid al-Adha"
+msgstr "Hari Raya Haji"
 
-#. King's Birthday.
-msgid "Hari Ulang Tahun Raja"
-msgstr ""
-
-#. Prophet Muhammad's Birthday.
-msgid "Hari Maulaud Nabi"
-msgstr ""
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
+msgstr "Hari Maulaud Nabi"
 
 #. Christmas Day.
-msgid "Hari Natal"
-msgstr ""
+msgid "Christmas Day"
+msgstr "Hari Natal"
 
 #. Boxing Day.
-msgid "Hari Boxing"
-msgstr ""
+msgid "Boxing Day"
+msgstr "Hari Boxing"
+
+#. Special public holiday.
+msgid "Special public holiday"
+msgstr "Cuti umum istimewa"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "Hari Berkabung Negara untuk Ratu Elizabeth II"

@@ -25,61 +25,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.5\n"
-"X-Source-Language: coa_CC\n"
+"X-Source-Language: en_CC\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (disambut)"
+msgid "%s (observed)"
 msgstr "%s (observed)"
 
+msgid "King's Birthday"
+msgstr "King's Birthday"
+
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
+
 #. New Year's Day.
-msgid "Hari Tahun Baru"
+msgid "New Year's Day"
 msgstr "New Year's Day"
 
 #. Australia Day.
-msgid "Hari Australia"
+msgid "Australia Day"
 msgstr "Australia Day"
 
-# Islamic New Year.
-msgid "Tahun Baru Hijriah"
+#. Islamic New Year.
+msgid "Islamic New Year"
 msgstr "Islamic New Year"
 
 #. Eid al-Fitr.
-msgid "Hari Raya Puasa"
+msgid "Eid al-Fitr"
 msgstr "Eid al-Fitr"
 
 #. Good Friday.
-msgid "Jumat Agung"
+msgid "Good Friday"
 msgstr "Good Friday"
 
 #. Easter Monday.
-msgid "Isnin Paskah"
+msgid "Easter Monday"
 msgstr "Easter Monday"
 
-# Self Determination Day.
-msgid "Hari Penentuan Diri"
-msgstr "Self Determination Day"
+#. Act of Self Determination Day.
+msgid "Act of Self Determination Day"
+msgstr "Act of Self Determination Day"
 
 #. ANZAC Day.
-msgid "Hari ANZAC"
+msgid "ANZAC Day"
 msgstr "ANZAC Day"
 
 #. Eid al-Adha.
-msgid "Hari Raya Haji"
+msgid "Eid al-Adha"
 msgstr "Eid al-Adha"
 
-#. King's Birthday.
-msgid "Hari Ulang Tahun Raja"
-msgstr "King's Birthday"
-
-#. Prophet Muhammad's Birthday.
-msgid "Hari Maulaud Nabi"
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
 msgstr "Mawlid al-Nabi"
 
 #. Christmas Day.
-msgid "Hari Natal"
+msgid "Christmas Day"
 msgstr "Christmas Day"
 
 #. Boxing Day.
-msgid "Hari Boxing"
+msgid "Boxing Day"
 msgstr "Boxing Day"
+
+#. Special public holiday.
+msgid "Special public holiday"
+msgstr "Special public holiday"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "National Day of Mourning for Queen Elizabeth II"

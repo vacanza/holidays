@@ -388,7 +388,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cocos Islands</td>
 <td>CC</td>
 <td></td>
-<td><strong>coa_CC</strong>, en_AU, en_US</td>
+<td>coa_CC, <strong>en_CC</strong>,  en_US</td>
 <td></td>
 </tr>
 <tr>
