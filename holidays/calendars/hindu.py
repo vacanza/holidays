@@ -28,8 +28,10 @@ GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
 GURU_GOBIND_SINGH_JAYANTI = "GURU_GOBIND_SINGH_JAYANTI"
 GURU_NANAK_JAYANTI = "GURU_NANAK_JAYANTI"
+GYALPO_LOSAR = "GYALPO_LOSAR"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
+MAHA_ASHTAMI = "MAHA_ASHTAMI"
 MAHA_NAVAMI = "MAHA_NAVAMI"
 MAHA_SHIVARATRI = "MAHA_SHIVARATRI"
 MAHAVIR_JAYANTI = "MAHAVIR_JAYANTI"
@@ -39,6 +41,8 @@ PONGAL = "PONGAL"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
+SONAM_LOSAR = "SONAM_LOSAR"
+TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
 
@@ -350,7 +354,7 @@ class _HinduLunisolar:
         2021: (NOV, 4),
         2022: (OCT, 24),
         2023: (NOV, 12),
-        2024: (NOV, 1),
+        2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
         2027: (OCT, 29),
@@ -593,6 +597,37 @@ class _HinduLunisolar:
         2035: (NOV, 15),
     }
 
+    # https://www.timeanddate.com/holidays/nepal/gyalpo-losar
+    # https://www.ashesh.com.np/nepali-calendar/
+    GYALPO_LOSAR_DATES = {
+        2010: (FEB, 13),
+        2011: (MAR, 5),
+        2012: (FEB, 22),
+        2013: (MAR, 12),
+        2014: (MAR, 2),
+        2015: (FEB, 19),
+        2016: (MAR, 9),
+        2017: (FEB, 27),
+        2018: (FEB, 16),
+        2019: (MAR, 7),
+        2020: (FEB, 24),
+        2021: (MAR, 14),
+        2022: (MAR, 3),
+        2023: (FEB, 21),
+        2024: (MAR, 11),
+        2025: (FEB, 28),
+        2026: (FEB, 18),
+        2027: (FEB, 7),
+        2028: (FEB, 26),
+        2029: (FEB, 14),
+        2030: (MAR, 5),
+        2031: (FEB, 22),
+        2032: (FEB, 12),
+        2033: (MAR, 2),
+        2034: (FEB, 19),
+        2035: (FEB, 9),
+    }
+
     # https://www.timeanddate.com/holidays/india/holi
     HOLI_DATES = {
         2001: (MAR, 10),
@@ -671,6 +706,45 @@ class _HinduLunisolar:
         2035: (AUG, 26),
     }
 
+    # https://www.timeanddate.com/holidays/india/maha-ashtami
+    MAHA_ASHTAMI_DATES = {
+        2001: (OCT, 24),
+        2002: (OCT, 13),
+        2003: (OCT, 3),
+        2004: (OCT, 21),
+        2005: (OCT, 11),
+        2006: (SEP, 30),
+        2007: (OCT, 19),
+        2008: (OCT, 7),
+        2009: (SEP, 26),
+        2010: (OCT, 15),
+        2011: (OCT, 4),
+        2012: (OCT, 22),
+        2013: (OCT, 12),
+        2014: (OCT, 2),
+        2015: (OCT, 21),
+        2016: (OCT, 9),
+        2017: (SEP, 28),
+        2018: (OCT, 17),
+        2019: (OCT, 6),
+        2020: (OCT, 23),
+        2021: (OCT, 13),
+        2022: (OCT, 3),
+        2023: (OCT, 22),
+        2024: (OCT, 11),
+        2025: (SEP, 30),
+        2026: (OCT, 19),
+        2027: (OCT, 7),
+        2028: (SEP, 26),
+        2029: (OCT, 14),
+        2030: (OCT, 4),
+        2031: (OCT, 23),
+        2032: (OCT, 12),
+        2033: (OCT, 2),
+        2034: (OCT, 20),
+        2035: (OCT, 9),
+    }
+
     # https://www.timeanddate.com/holidays/india/maha-navami
     MAHA_NAVAMI_DATES = {
         2001: (OCT, 25),
@@ -690,8 +764,8 @@ class _HinduLunisolar:
         2015: (OCT, 21),
         2016: (OCT, 10),
         2017: (SEP, 29),
-        2018: (OCT, 18),
-        2019: (OCT, 7),
+        2018: (OCT, 17),
+        2019: (OCT, 6),
         2020: (OCT, 24),
         2021: (OCT, 14),
         2022: (OCT, 4),
@@ -1021,6 +1095,64 @@ class _HinduLunisolar:
         2035: (OCT, 2),
     }
 
+    # https://www.timeanddate.com/holidays/nepal/sonam-losar
+    # https://www.ashesh.com.np/nepali-calendar/
+    SONAM_LOSAR_DATES = {
+        2010: (JAN, 16),
+        2011: (FEB, 4),
+        2012: (JAN, 24),
+        2013: (FEB, 11),
+        2014: (JAN, 31),
+        2015: (JAN, 21),
+        2016: (FEB, 9),
+        2017: (JAN, 28),
+        2018: (JAN, 18),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 2),
+        2023: (JAN, 22),
+        2024: (FEB, 10),
+        2025: (JAN, 30),
+        2026: (JAN, 19),
+        2027: (FEB, 7),
+        2028: (FEB, 26),
+        2029: (JAN, 15),
+        2030: (FEB, 3),
+        2031: (JAN, 24),
+        2032: (FEB, 12),
+        2033: (JAN, 31),
+        2034: (JAN, 21),
+        2035: (FEB, 9),
+    }
+
+    # https://www.hamropatro.com/posts/articles-Bishesh-Dinharu/articles-Bishesh-Dinharu-english-tamu-lhosar
+    TAMU_LOSAR_DATES = {
+        2010: (DEC, 30),
+        2011: (DEC, 30),
+        2012: (DEC, 30),
+        2013: (DEC, 30),
+        2014: (DEC, 30),
+        2015: (DEC, 30),
+        2016: (DEC, 30),
+        2017: (DEC, 30),
+        2018: (DEC, 30),
+        2019: (DEC, 31),
+        2020: (DEC, 30),
+        2021: (DEC, 30),
+        2022: (DEC, 30),
+        2023: (DEC, 31),
+        2024: (DEC, 30),
+        2025: (DEC, 30),
+        2026: (DEC, 30),
+        2027: (DEC, 30),
+        2028: (DEC, 30),
+        2029: (DEC, 30),
+        2030: (DEC, 31),
+        2031: (DEC, 31),
+        2032: (DEC, 30),
+    }
+
     THAIPUSAM_DATES = {
         1901: (MAR, 5),
         1902: (FEB, 23),
@@ -1306,6 +1438,9 @@ class _HinduLunisolar:
     def guru_nanak_jayanti_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(GURU_NANAK_JAYANTI, year)
 
+    def gyalpo_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(GYALPO_LOSAR, year)
+
     def holi_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(HOLI, year)
 
@@ -1314,6 +1449,9 @@ class _HinduLunisolar:
 
     def janmashtami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(JANMASHTAMI, year)
+
+    def maha_ashtami_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(MAHA_ASHTAMI, year)
 
     def maha_navami_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(MAHA_NAVAMI, year)
@@ -1338,6 +1476,12 @@ class _HinduLunisolar:
 
     def sharad_navratri_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(SHARAD_NAVRATRI, year)
+
+    def sonam_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(SONAM_LOSAR, year)
+
+    def tamu_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(TAMU_LOSAR, year)
 
     def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(THAIPUSAM, year)

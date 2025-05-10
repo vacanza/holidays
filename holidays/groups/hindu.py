@@ -59,6 +59,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
 
         return added_dates
 
+    def _add_bhai_dooj(self, name) -> Optional[date]:
+        """
+        Add Bhai Dooj.
+
+        Bhai Dooj, also known as Bhai Tika or Bhaiya Dooj, is a Hindu festival celebrating the bond
+        between brothers and sisters. It is observed two days after Diwali on the second lunar day
+        of the Shukla Paksha in the Hindu month of Kartika.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=+1
+        )
+
     def _add_buddha_purnima(self, name) -> Optional[date]:
         """
         Add Buddha Purnima.
@@ -126,11 +138,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.ganesh_chaturthi_date(self._year)
         )
 
+    def _add_gau_krida(self, name) -> Optional[date]:
+        """
+        Add Gau Krida.
+
+        Gau Krida, is celebrated the day after Diwali to honor cows.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.govardhan_puja_date(self._year), days_delta=-1
+        )
+
     def _add_govardhan_puja(self, name) -> Optional[date]:
         """
         Add Govardhan Puja.
 
-        Govardhan Puja, also known as Annakut, is celebrated the day after Diwali
+        Govardhan Puja, also known as Annakut, is celebrated after Diwali
         to honor Lord Krishna. It falls on the first lunar day of the Hindu month of Kartika.
         https://en.wikipedia.org/wiki/Govardhan_Puja
         """
@@ -175,6 +197,32 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.guru_nanak_jayanti_date(self._year)
         )
 
+    def _add_gyalpo_losar(self, name) -> Optional[date]:
+        """
+        Add Gyalpo Losar.
+
+        Gyalpo Losar marks the Tibetan New Year and is widely celebrated by the
+        Tibetan and Sherpa communities in Nepal. It falls on the first day of the
+        Tibetan lunar calendar, typically in February or March.
+        https://en.wikipedia.org/wiki/Gyalpo_Losar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.gyalpo_losar_date(self._year)
+        )
+
+    def _add_nepal_holi(self, name) -> Optional[date]:
+        """
+        Add Holi Festival for Nepal (Mountain & Hilly).
+
+        Holi, known as the Festival of Colors, is a Hindu festival that marks
+        the arrival of spring. It is celebrated on the full moon day of the
+        Hindu month of Phalguna (February/March).
+        https://en.wikipedia.org/wiki/Holi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.holi_date(self._year), days_delta=-1
+        )
+
     def _add_holi(self, name) -> Optional[date]:
         """
         Add Holi Festival.
@@ -196,6 +244,30 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.janmashtami_date(self._year)
+        )
+
+    def _add_maha_saptami(self, name) -> Optional[date]:
+        """
+        Add Maha Saptami.
+
+        Maha Saptami is the seventh day of Navratri, dedicated to Goddess Durga.
+        It is observed in Ashvin (September-October).
+        https://en.wikipedia.org/wiki/Navaratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maha_ashtami_date(self._year), days_delta=-1
+        )
+
+    def _add_maha_ashtami(self, name) -> Optional[date]:
+        """
+        Add Maha Ashtami.
+
+        Maha Ashtami is the eighth day of Navratri, dedicated to Goddess Durga.
+        It is observed in Ashvin (September-October).
+        https://en.wikipedia.org/wiki/Navaratri
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.maha_ashtami_date(self._year)
         )
 
     def _add_maha_navami(self, name) -> Optional[date]:
@@ -256,6 +328,29 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
+    def _add_papankusha_ekadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Ekadashi.
+
+        Papankusha Ekadashi is a Hindu festival which occurs on eleventh day on month of
+        Ashwin (September-October).
+        https://en.wikipedia.org/wiki/Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+1
+        )
+
+    def _add_papankusha_duwadashi(self, name) -> Optional[date]:
+        """
+        Add Papankusha Duwadashi.
+
+        Papankusha Duwadashi is a Hindu festival which occurs next day of Papankusha Ekadashi.
+        https://en.wikipedia.org/wiki/Ekadashi
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.dussehra_date(self._year), days_delta=+2
+        )
+
     def _add_pongal(self, name) -> Optional[date]:
         """
         Add Pongal.
@@ -304,6 +399,31 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.sharad_navratri_date(self._year)
+        )
+
+    def _add_sonam_losar(self, name) -> Optional[date]:
+        """
+        Add Sonam Losar.
+
+        Sonam Losar is the New Year festival celebrated by the Tamang community
+        in Nepal. It follows the Tibetan lunar calendar and usually falls in
+        January or February.
+        https://en.wikipedia.org/wiki/Sonam_Lhosar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.sonam_losar_date(self._year)
+        )
+
+    def _add_tamu_losar(self, name) -> Optional[date]:
+        """
+        Add Tamu Losar.
+
+        Tamu Losar marks the New Year festival of the Gurung community in Nepal.
+        It is traditionally celebrated on December 30th each year.
+        https://en.wikipedia.org/wiki/Tamu_Lhosar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.tamu_losar_date(self._year)
         )
 
     def _add_thaipusam(self, name) -> Optional[date]:
