@@ -38,11 +38,65 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fi"
     supported_languages = ("en_US", "fi", "sv_FI", "th", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
-    subdivisions: tuple[str, ...] = ("01",)  # Åland Islands.
+    subdivisions: tuple[str, ...] = (
+        "01",  # Ahvenanmaan maakunta (Landskapet Åland).
+        "02",  # Etelä-Karjala (Södra Karelen).
+        "03",  # Etelä-Pohjanmaa (Södra Österbotten).
+        "04",  # Etelä-Savo (Södra Savolax).
+        "05",  # Kainuu (Kajanaland).
+        "06",  # Kanta-Häme (Egentliga Tavastland).
+        "07",  # Keski-Pohjanmaa (Mellersta Österbotten).
+        "08",  # Keski-Suomi (Mellersta Finland).
+        "09",  # Kymenlaakso (Kymmenedalen).
+        "10",  # Lappi (Lappland).
+        "11",  # Pirkanmaa (Birkaland).
+        "12",  # Pohjanmaa (Österbotten).
+        "13",  # Pohjois-Karjala (Norra Karelen).
+        "14",  # Pohjois-Pohjanmaa (Norra Österbotten).
+        "15",  # Pohjois-Savo (Norra Savolax).
+        "16",  # Päijät-Häme (Päijänne-Tavastland).
+        "17",  # Satakunta.
+        "18",  # Uusimaa (Nyland).
+        "19",  # Varsinais-Suomi (Egentliga Finland).
+    )
     subdivisions_aliases = {
         "Ahvenanmaan maakunta": "01",
         "Landskapet Åland": "01",
-        "Åland": "01",
+        "Etelä-Karjala": "02",
+        "Södra Karelen": "02",
+        "Etelä-Pohjanmaa": "03",
+        "Södra Österbotten": "03",
+        "Etelä-Savo": "04",
+        "Södra Savolax": "04",
+        "Kainuu": "05",
+        "Kajanaland": "05",
+        "Kanta-Häme": "06",
+        "Egentliga Tavastland": "06",
+        "Keski-Pohjanmaa": "07",
+        "Mellersta Österbotten": "07",
+        "Keski-Suomi": "08",
+        "Mellersta Finland": "08",
+        "Kymenlaakso": "09",
+        "Kymmenedalen": "09",
+        "Lappi": "10",
+        "Lappland": "10",
+        "Pirkanmaa": "11",
+        "Birkaland": "11",
+        "Pohjanmaa": "12",
+        "Österbotten": "12",
+        "Pohjois-Karjala": "13",
+        "Norra Karelen": "13",
+        "Pohjois-Pohjanmaa": "14",
+        "Norra Österbotten": "14",
+        "Pohjois-Savo": "15",
+        "Norra Savolax": "15",
+        "Päijät-Häme": "16",
+        "Päijänne-Tavastland": "16",
+        "Satakunta": "17",
+        "Uusimaa": "18",
+        "Nyland": "18",
+        "Varsinais-Suomi": "19",
+        "Egentliga Finland": "19",
     }
     start_year = 1853
 

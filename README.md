@@ -527,7 +527,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Finland</td>
 <td>FI</td>
-<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland, Åland)</td>
+<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland), 02 (Etelä-Karjala, Södra Karelen), 03 (Etelä-Pohjanmaa, Södra Österbotten), 04 (Etelä-Savo, Södra Savolax), 05 (Kainuu, Kajanaland), 06 (Kanta-Häme, Egentliga Tavastland), 07 (Keski-Pohjanmaa, Mellersta Österbotten), 08 (Keski-Suomi, Mellersta Finland), 09 (Kymenlaakso, Kymmenedalen), 10 (Lappi, Lappland), 11 (Pirkanmaa, Birkaland), 12 (Pohjanmaa, Österbotten), 13 (Pohjois-Karjala, Norra Karelen), 14 (Pohjois-Pohjanmaa, Norra Österbotten), 15 (Pohjois-Savo, Norra Savolax), 16 (Päijät-Häme, Päijänne-Tavastland), 17 (Satakunta), 18 (Uusimaa, Nyland), 19 (Varsinais-Suomi, Egentliga Finland)</td>
 <td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
 <td>UNOFFICIAL</td>
 </tr>
