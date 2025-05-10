@@ -31,9 +31,11 @@ msgstr ""
 msgid "%s (observed)"
 msgstr ""
 
+#. King's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
+#. Queen's Birthday.
 msgid "Queen's Birthday"
 msgstr ""
 
@@ -83,10 +85,6 @@ msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
-
-#. Special public holiday.
-msgid "Special public holiday"
 msgstr ""
 
 #. National Day of Mourning for Queen Elizabeth II.

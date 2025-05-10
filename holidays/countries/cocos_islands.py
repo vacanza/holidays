@@ -91,27 +91,17 @@ class CocosIslands(
         # Australia Day.
         self._add_observed(self._add_holiday_jan_26(tr("Australia Day")))
 
-        if self._year <= 2019:
-            # Islamic New Year.
-            self._add_islamic_new_year_day(tr("Islamic New Year"))
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Good Friday"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
         # Act of Self Determination Day.
         self._add_observed(self._add_holiday_apr_6(tr("Act of Self Determination Day")))
 
+        # Good Friday.
+        self._add_observed(self._add_good_friday(tr("Good Friday")))
+
+        # Easter Monday.
+        self._add_observed(self._add_easter_monday(tr("Easter Monday")))
+
         # ANZAC Day.
         self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
-
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
         self._add_holiday_2nd_mon_of_jun(
             # King's Birthday.
@@ -120,9 +110,6 @@ class CocosIslands(
             # Queen's Birthday.
             else tr("Queen's Birthday")
         )
-
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("Prophet's Birthday"))
 
         # Placed before Christmas Day for proper observed calculation.
         self._add_observed(
@@ -133,6 +120,25 @@ class CocosIslands(
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+
+        # Islamic holidays.
+
+        if self._year <= 2019:
+            # Islamic New Year.
+            for dt in self._add_islamic_new_year_day(tr("Islamic New Year")):
+                self._add_observed(dt, tr("Islamic New Year"))
+
+        # Prophet's Birthday.
+        for dt in self._add_mawlid_day(tr("Prophet's Birthday")):
+            self._add_observed(dt, tr("Prophet's Birthday"))
+
+        # Eid al-Fitr.
+        for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
+            self._add_observed(dt, tr("Eid al-Fitr"))
+
+        # Eid al-Adha.
+        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
+            self._add_observed(dt, tr("Eid al-Adha"))
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
@@ -149,8 +155,8 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2019: (AUG, 11),
         2020: (JUL, 31),
         2021: (JUL, 20),
-        2022: (JUL, 11),
-        2023: (JUN, 29),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
         2024: (JUN, 17),
         2025: (JUN, 7),
         2026: (MAY, 27),
@@ -159,13 +165,13 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
     # Eid al-Fitr.
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
-        2008: (OCT, 2),
+        2008: (OCT, 1),
         2009: (SEP, 21),
         2010: (SEP, 10),
         2013: (AUG, 8),
         2014: (JUL, 28),
         2016: (JUL, 7),
-        2017: (JUN, 26),
+        2017: (JUN, 24),
         2019: (JUN, 5),
         2020: (MAY, 24),
         2021: (MAY, 13),
@@ -183,7 +189,7 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2009: (DEC, 18),
         2010: (DEC, 7),
         2013: (NOV, 4),
-        2014: (OCT, 27),
+        2014: (OCT, 25),
         2016: (OCT, 3),
         2017: (SEP, 22),
         2019: (SEP, 1),
@@ -202,12 +208,20 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2019: (NOV, 9),
         2020: (OCT, 29),
         2021: (OCT, 19),
-        2022: (OCT, 10),
+        2022: (OCT, 8),
         2023: (SEP, 27),
         2024: (SEP, 16),
         2025: (SEP, 5),
         2026: (AUG, 26),
     }
+
+
+class CC(CocosIslands):
+    pass
+
+
+class CCK(CocosIslands):
+    pass
 
 
 class CocosIslandsStaticHolidays:
@@ -221,11 +235,3 @@ class CocosIslandsStaticHolidays:
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
-
-
-class CC(CocosIslands):
-    pass
-
-
-class CCK(CocosIslands):
-    pass
