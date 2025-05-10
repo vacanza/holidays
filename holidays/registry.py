@@ -194,6 +194,7 @@ COUNTRIES: RegistryDict = {
     "vatican_city": ("VaticanCity", "VA", "VAT"),
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
+    "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }
