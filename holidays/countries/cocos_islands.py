@@ -142,7 +142,7 @@ class CocosIslands(
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
-    
+
     # Islamic New Year.
     HIJRI_NEW_YEAR_DATES = {
         2007: (JAN, 22),
