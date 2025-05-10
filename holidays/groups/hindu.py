@@ -414,6 +414,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.sonam_losar_date(self._year)
         )
 
+    def _add_tamu_losar(self, name) -> Optional[date]:
+        """
+        Add Tamu Losar.
+
+        Tamu Losar marks the New Year festival of the Gurung community in Nepal.
+        It is traditionally celebrated on December 30th each year.
+        https://en.wikipedia.org/wiki/Tamu_Lhosar
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.tamu_losar_date(self._year)
+        )
+
     def _add_thaipusam(self, name) -> Optional[date]:
         """
         Add Thaipusam.

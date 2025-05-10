@@ -42,6 +42,7 @@ RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 SHARAD_NAVRATRI = "SHARAD_NAVRATRI"
 SONAM_LOSAR = "SONAM_LOSAR"
+TAMU_LOSAR = "TAMU_LOSAR"
 THAIPUSAM = "THAIPUSAM"
 VAISAKHI = "VAISAKHI"
 
@@ -1125,6 +1126,33 @@ class _HinduLunisolar:
         2035: (FEB, 9),
     }
 
+    # https://www.hamropatro.com/posts/articles-Bishesh-Dinharu/articles-Bishesh-Dinharu-english-tamu-lhosar
+    TAMU_LOSAR_DATES = {
+        2010: (DEC, 30),
+        2011: (DEC, 30),
+        2012: (DEC, 30),
+        2013: (DEC, 30),
+        2014: (DEC, 30),
+        2015: (DEC, 30),
+        2016: (DEC, 30),
+        2017: (DEC, 30),
+        2018: (DEC, 30),
+        2019: (DEC, 31),
+        2020: (DEC, 30),
+        2021: (DEC, 30),
+        2022: (DEC, 30),
+        2023: (DEC, 31),
+        2024: (DEC, 30),
+        2025: (DEC, 30),
+        2026: (DEC, 30),
+        2027: (DEC, 30),
+        2028: (DEC, 30),
+        2029: (DEC, 30),
+        2030: (DEC, 31),
+        2031: (DEC, 31),
+        2032: (DEC, 30),
+    }
+
     THAIPUSAM_DATES = {
         1901: (MAR, 5),
         1902: (FEB, 23),
@@ -1451,6 +1479,9 @@ class _HinduLunisolar:
 
     def sonam_losar_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(SONAM_LOSAR, year)
+
+    def tamu_losar_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(TAMU_LOSAR, year)
 
     def thaipusam_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(THAIPUSAM, year)

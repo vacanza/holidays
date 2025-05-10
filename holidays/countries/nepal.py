@@ -41,7 +41,8 @@ class Nepal(
         * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
         * <https://english.hamropatro.com/nepali-public-holidays>
         * <https://english.hamropatro.com/calendar>
-        * <https://www.ashesh.com.np/nepali-calendar/ >
+        * <https://www.ashesh.com.np/nepali-calendar/>
+        * <https://www.bolpatra.gov.np/egp/openDateConverter>
     """
 
     country = "NP"
@@ -72,7 +73,6 @@ class Nepal(
     def _add_non_continuous_holidays(self, is_workday: bool = False):
         """Holidays removed by MoHA between 2019-2020."""
 
-        # https://www.bolpatra.gov.np/egp/openDateConverter
         martyrs_day_dates = {
             2010: (JAN, 30),
             2011: (JAN, 30),
@@ -100,13 +100,41 @@ class Nepal(
             2033: (JAN, 29),
         }
 
+        democracy_day_dates = {
+            2010: (FEB, 19),
+            2011: (FEB, 19),
+            2012: (FEB, 19),
+            2013: (FEB, 18),
+            2014: (FEB, 19),
+            2015: (FEB, 19),
+            2016: (FEB, 19),
+            2017: (FEB, 18),
+            2018: (FEB, 19),
+            2019: (FEB, 19),
+            2020: (FEB, 19),
+            2021: (FEB, 19),
+            2022: (FEB, 19),
+            2023: (FEB, 19),
+            2024: (FEB, 19),
+            2025: (FEB, 19),
+            2026: (FEB, 19),
+            2027: (FEB, 19),
+            2028: (FEB, 19),
+            2029: (FEB, 19),
+            2030: (FEB, 19),
+            2031: (FEB, 20),
+            2032: (FEB, 20),
+            2033: (FEB, 19),
+        }
+
         if (2019 <= self._year <= 2020) == is_workday:
             if self._year in martyrs_day_dates:
                 # Martyr's Day.
                 self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
 
-            # National Democracy Day.
-            self._add_holiday_feb_19("National Democracy Day")
+            if self._year in democracy_day_dates:
+                # National Democracy Day.
+                self._add_holiday("National Democracy Day", democracy_day_dates[self._year])
 
             # Republic Day.
             self._add_holiday_may_29("Republic Day")
@@ -129,6 +157,26 @@ class Nepal(
             self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
     def _populate_public_holidays(self):
+        constitution_day_dates = {
+            2016: (SEP, 19),
+            2017: (SEP, 19),
+            2018: (SEP, 19),
+            2019: (SEP, 20),
+            2020: (SEP, 19),
+            2021: (SEP, 19),
+            2022: (SEP, 19),
+            2023: (SEP, 20),
+            2024: (SEP, 19),
+            2025: (SEP, 19),
+            2026: (SEP, 19),
+            2027: (SEP, 19),
+            2028: (SEP, 18),
+            2029: (SEP, 19),
+            2030: (SEP, 19),
+            2031: (SEP, 19),
+            2032: (SEP, 19),
+        }
+
         if self._year >= 2023:
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
@@ -142,14 +190,12 @@ class Nepal(
         # Labor Day.
         self._add_labor_day("Labor Day")
 
-        # Constitution Day.
-        self._add_holiday_sep_19("Constitution Day")
+        if self._year in constitution_day_dates:
+            # Constitution Day.
+            self._add_holiday("Constitution Day", constitution_day_dates[self._year])
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
-
-        # Tamu Losar.
-        self._add_holiday_dec_30("Tamu Losar")
 
         # Hindu holidays.
 
@@ -206,6 +252,9 @@ class Nepal(
 
         # Chhath Parwa.
         self._add_chhath_puja("Chhath Parwa")
+
+        # Tamu Losar.
+        self._add_tamu_losar("Tamu Losar")
 
         # Islamic holidays.
 
@@ -365,6 +414,6 @@ class NepalStaticHolidays:
             (SEP, 14, name_day_of_national_mourning),
             (NOV, 16, name_tihar_holiday),
         ),
-        2024: ((NOV, 4, name_tihar_holiday)),
+        2024: (NOV, 4, name_tihar_holiday),
         2025: (OCT, 24, name_tihar_holiday),
     }

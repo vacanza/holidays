@@ -75,15 +75,21 @@ class TestNepal(CommonCountryTests, TestCase):
 
     def test_national_democracy_day(self):
         name = "National Democracy Day"
-
-        self.assertHolidayName(
-            name, (f"{year}-02-19" for year in (*range(2010, 2019), *range(2021, 2050)))
+        dt = (
+            "2021-02-19",
+            "2022-02-19",
+            "2023-02-19",
+            "2024-02-19",
+            "2025-02-19",
         )
-        self.assertNoHolidayName(name, range(2019, 2021))
-
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-02-19" for year in range(2019, 2021))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2010, 2019), range(2021, 2034))
+        self.assertNoHolidayName(name, range(2019, 2021), range(2034, 2050))
+        dt = (
+            "2019-02-19",
+            "2020-02-19",
         )
+        self.assertHolidayName(name, self.workday_holidays, dt)
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
     def test_womens_day(self):
@@ -120,13 +126,21 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
     def test_constitution_day(self):
-        self.assertHolidayName("Constitution Day", (f"{year}-09-19" for year in range(2010, 2050)))
+        name = "Constitution Day"
+        dt = (
+            "2019-09-20",
+            "2020-09-19",
+            "2021-09-19",
+            "2022-09-19",
+            "2023-09-20",
+            "2024-09-19",
+            "2025-09-19",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2016, 2033))
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2010, 2050)))
-
-    def test_tamu_losar(self):
-        self.assertHolidayName("Tamu Losar", (f"{year}-12-30" for year in range(2010, 2050)))
 
     def test_maghe_sankranti(self):
         name = "Maghe Sankranti"
@@ -474,6 +488,20 @@ class TestNepal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
+
+    def test_tamu_losar(self):
+        name = "Tamu Losar"
+        dt = (
+            "2019-12-31",
+            "2020-12-30",
+            "2021-12-30",
+            "2022-12-30",
+            "2023-12-31",
+            "2024-12-30",
+            "2025-12-30",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2010, 2033))
 
     def test_id_ul_fitr(self):
         name = "Id-ul-Fitr"
