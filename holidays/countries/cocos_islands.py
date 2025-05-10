@@ -142,46 +142,7 @@ class CocosIslands(
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
-    # Eid al-Adha.
-    EID_AL_ADHA_DATES = {
-        2007: (DEC, 20),
-        2008: (DEC, 8),
-        2009: (NOV, 30),
-        2010: (NOV, 16),
-        2013: (OCT, 15),
-        2014: (OCT, 4),
-        2016: (SEP, 13),
-        2017: (SEP, 1),
-        2019: (AUG, 11),
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
-        2026: (MAY, 27),
-    }
-
-    # Eid al-Fitr.
-    EID_AL_FITR_DATES = {
-        2007: (OCT, 15),
-        2008: (OCT, 1),
-        2009: (SEP, 21),
-        2010: (SEP, 10),
-        2013: (AUG, 8),
-        2014: (JUL, 28),
-        2016: (JUL, 7),
-        2017: (JUN, 24),
-        2019: (JUN, 5),
-        2020: (MAY, 24),
-        2021: (MAY, 13),
-        2022: (MAY, 2),
-        2023: (APR, 22),
-        2024: (APR, 10),
-        2025: (MAR, 31),
-        2026: (MAR, 20),
-    }
-
+    
     # Islamic New Year.
     HIJRI_NEW_YEAR_DATES = {
         2007: (JAN, 22),
@@ -215,6 +176,45 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2026: (AUG, 26),
     }
 
+    # Eid al-Fitr.
+    EID_AL_FITR_DATES = {
+        2007: (OCT, 15),
+        2008: (OCT, 1),
+        2009: (SEP, 21),
+        2010: (SEP, 10),
+        2013: (AUG, 8),
+        2014: (JUL, 28),
+        2016: (JUL, 7),
+        2017: (JUN, 24),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 22),
+        2024: (APR, 10),
+        2025: (MAR, 31),
+        2026: (MAR, 20),
+    }
+
+    # Eid al-Adha.
+    EID_AL_ADHA_DATES = {
+        2007: (DEC, 20),
+        2008: (DEC, 8),
+        2009: (NOV, 30),
+        2010: (NOV, 16),
+        2013: (OCT, 15),
+        2014: (OCT, 4),
+        2016: (SEP, 13),
+        2017: (SEP, 1),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+        2026: (MAY, 27),
+    }
 
 class CC(CocosIslands):
     pass
