@@ -40,16 +40,23 @@ class Nepal(
         * <https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
         * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
         * <https://english.hamropatro.com/nepali-public-holidays>
+        * <https://english.hamropatro.com/calendar>
         * <https://www.ashesh.com.np/nepali-calendar/ >
     """
 
     country = "NP"
-    supported_categories = (PUBLIC, WORKDAY)
     # %s (estimated).
     estimated_label = "%s (estimated)"
     start_year = 2010
+    supported_categories = (PUBLIC, WORKDAY)
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(
             self,
@@ -152,11 +159,11 @@ class Nepal(
         # Sonam Losar.
         self._add_sonam_losar("Sonam Losar")
 
-        # Gyalpo Losar.
-        self._add_gyalpo_losar("Gyalpo Losar")
-
         # Maha Shivaratri.
         self._add_maha_shivaratri("Maha Shivaratri")
+
+        # Gyalpo Losar.
+        self._add_gyalpo_losar("Gyalpo Losar")
 
         # Holi (Mountain & Hilly).
         self._add_nepal_holi("Holi (Mountain & Hilly)")
@@ -358,9 +365,6 @@ class NepalStaticHolidays:
             (SEP, 14, name_day_of_national_mourning),
             (NOV, 16, name_tihar_holiday),
         ),
-        2024: (
-            (NOV, 1, name_tihar_holiday),
-            (NOV, 4, name_tihar_holiday),
-        ),
+        2024: ((NOV, 4, name_tihar_holiday)),
         2025: (OCT, 24, name_tihar_holiday),
     }

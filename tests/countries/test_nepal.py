@@ -44,7 +44,6 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2023-02-13", "People War's Day"),
             ("2023-09-14", name_day_of_national_mourning),
             ("2023-11-16", name_tihar_holiday),
-            ("2024-11-01", name_tihar_holiday),
             ("2024-11-04", name_tihar_holiday),
             ("2025-10-24", name_tihar_holiday),
         ):
