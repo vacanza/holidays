@@ -21,6 +21,7 @@ RegistryDict = dict[str, tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
     "afghanistan": ("Afghanistan", "AF", "AFG"),
+    "aland_islands": ("AlandIslands", "AX", "ALA", "HolidaysAX"),
     "albania": ("Albania", "AL", "ALB"),
     "algeria": ("Algeria", "DZ", "DZA"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),

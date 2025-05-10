@@ -23,19 +23,81 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Finland>
-        * [Bank holidays (Finnish)](https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/)
-        * [Bank holidays (English)](https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/)
-        * [Bank holidays (Swedish)](https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/)
+        * [Bank holidays (Finnish)](https://web.archive.org/web/20250416185850/https://www.suomenpankki.fi/fi/raha-ja-maksaminen/pankkivapaapaivat/)
+        * [Bank holidays (English)](https://web.archive.org/web/20250327200736/https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/)
+        * [Bank holidays (Swedish)](https://web.archive.org/web/20250217014536/https://www.suomenpankki.fi/sv/pengar-och-betalningar/bankfria-dagar-i-finland/)
         * <https://en.wikipedia.org/wiki/Flag_flying_days_in_Finland#Customary_flag_days>
-        * <https://intermin.fi/en/flag-and-arms/flag-flying-days>
-        * <https://intermin.fi/en/flag-and-arms/flag-days/2024>
+        * <https://web.archive.org/web/20250327201901/https://intermin.fi/en/flag-and-arms/flag-flying-days>
+        * <https://web.archive.org/web/20241227163324/https://intermin.fi/en/flag-and-arms/flag-days/2024>
         * <https://en.wikipedia.org/wiki/Independence_Day_(Finland)>
+        * <https://en.wikipedia.org/wiki/Åland%27s_Autonomy_Day>
+        * <https://web.archive.org/web/20250509184304/https://wiki.aineetonkulttuuriperinto.fi/wiki/Workers’_Labour_Day_on_May_1>
     """
 
     country = "FI"
     default_language = "fi"
-    supported_languages = ("en_US", "fi", "sv_FI", "uk")
+    supported_languages = ("en_US", "fi", "sv_FI", "th", "uk")
     supported_categories = (PUBLIC, UNOFFICIAL)
+    subdivisions: tuple[str, ...] = (
+        "01",  # Ahvenanmaan maakunta (Landskapet Åland).
+        "02",  # Etelä-Karjala (Södra Karelen).
+        "03",  # Etelä-Pohjanmaa (Södra Österbotten).
+        "04",  # Etelä-Savo (Södra Savolax).
+        "05",  # Kainuu (Kajanaland).
+        "06",  # Kanta-Häme (Egentliga Tavastland).
+        "07",  # Keski-Pohjanmaa (Mellersta Österbotten).
+        "08",  # Keski-Suomi (Mellersta Finland).
+        "09",  # Kymenlaakso (Kymmenedalen).
+        "10",  # Lappi (Lappland).
+        "11",  # Pirkanmaa (Birkaland).
+        "12",  # Pohjanmaa (Österbotten).
+        "13",  # Pohjois-Karjala (Norra Karelen).
+        "14",  # Pohjois-Pohjanmaa (Norra Österbotten).
+        "15",  # Pohjois-Savo (Norra Savolax).
+        "16",  # Päijät-Häme (Päijänne-Tavastland).
+        "17",  # Satakunta.
+        "18",  # Uusimaa (Nyland).
+        "19",  # Varsinais-Suomi (Egentliga Finland).
+    )
+    subdivisions_aliases = {
+        "Ahvenanmaan maakunta": "01",
+        "Landskapet Åland": "01",
+        "Etelä-Karjala": "02",
+        "Södra Karelen": "02",
+        "Etelä-Pohjanmaa": "03",
+        "Södra Österbotten": "03",
+        "Etelä-Savo": "04",
+        "Södra Savolax": "04",
+        "Kainuu": "05",
+        "Kajanaland": "05",
+        "Kanta-Häme": "06",
+        "Egentliga Tavastland": "06",
+        "Keski-Pohjanmaa": "07",
+        "Mellersta Österbotten": "07",
+        "Keski-Suomi": "08",
+        "Mellersta Finland": "08",
+        "Kymenlaakso": "09",
+        "Kymmenedalen": "09",
+        "Lappi": "10",
+        "Lappland": "10",
+        "Pirkanmaa": "11",
+        "Birkaland": "11",
+        "Pohjanmaa": "12",
+        "Österbotten": "12",
+        "Pohjois-Karjala": "13",
+        "Norra Karelen": "13",
+        "Pohjois-Pohjanmaa": "14",
+        "Norra Österbotten": "14",
+        "Pohjois-Savo": "15",
+        "Norra Savolax": "15",
+        "Päijät-Häme": "16",
+        "Päijänne-Tavastland": "16",
+        "Satakunta": "17",
+        "Uusimaa": "18",
+        "Nyland": "18",
+        "Varsinais-Suomi": "19",
+        "Egentliga Finland": "19",
+    }
     start_year = 1853
 
     def __init__(self, *args, **kwargs):
@@ -63,8 +125,9 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Toinen pääsiäispäivä"))
 
-        # May Day.
-        self._add_holiday_may_1(tr("Vappu"))
+        if self._year >= 1944:
+            # May Day.
+            self._add_holiday_may_1(tr("Vappu"))
 
         # Ascension Day.
         name = tr("Helatorstai")
@@ -182,6 +245,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2007:
             # Jean Sibelius Day, Day of Finnish Music.
             self._add_holiday_dec_8(tr("Jean Sibeliuksen päivä, suomalaisen musiikin päivä"))
+
+    def _populate_subdiv_01_public_holidays(self):
+        # Celebrated since 1993 when the 70th anniversary of the Autonomy Act of 1920 was
+        # first formally recognized as a flag day.
+        if self._year >= 1993:
+            # Åland's Autonomy Day.
+            self._add_holiday_jun_9(tr("Ahvenanmaan itsehallintopäivä"))
 
 
 class FI(Finland):

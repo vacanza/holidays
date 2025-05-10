@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import UNOFFICIAL
+from holidays.constants import PUBLIC, UNOFFICIAL
 from holidays.countries.finland import Finland, FI, FIN
 from tests.common import CommonCountryTests
 
@@ -20,11 +20,15 @@ from tests.common import CommonCountryTests
 class TestFinland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Finland)
-        cls.unofficial_holidays = Finland(categories=UNOFFICIAL, years=range(1853, 2050))
+        years = range(1853, 2050)
+        super().setUpClass(Finland, years=years)
+        cls.unofficial_holidays = Finland(categories=UNOFFICIAL, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Finland, FI, FIN)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Finland(years=1852, categories=(PUBLIC, UNOFFICIAL)))
 
     def test_fixed_holidays(self):
         for year in range(2010, 2050):
@@ -39,76 +43,94 @@ class TestFinland(CommonCountryTests, TestCase):
             )
 
     def test_epiphany(self):
+        name = "Loppiainen"
         self.assertHolidayName(
-            "Loppiainen",
+            name,
             "1972-01-06",
+            # 1973 - 1990 changes.
             "1973-01-06",
             "1974-01-12",
             "1989-01-07",
             "1990-01-06",
+            # 1991 - Present.
             "1991-01-06",
         )
-        self.assertNoHoliday(
+        self.assertNoHolidayName(
+            name,
             "1974-01-06",
             "1975-01-06",
             "1980-01-06",
             "1988-01-06",
             "1989-01-06",
         )
+        self.assertHolidayName(
+            name, (f"{year}-01-06" for year in (*range(1853, 1973), *range(1991, 2050)))
+        )
+        self.assertHolidayName(name, range(1973, 1991))
 
-    def test_easter_holidays(self):
-        self.assertHoliday(
-            # Good Friday
+    def test_good_friday(self):
+        name = "Pitkäperjantai"
+        self.assertHolidayName(
+            name,
             "2018-03-30",
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
-            # Easter Sunday
+        )
+        self.assertHolidayName(name, range(1853, 2050))
+
+    def test_easter_sunday(self):
+        name = "Pääsiäispäivä"
+        self.assertHolidayName(
+            name,
             "2018-04-01",
             "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
-            # Easter Monday
+        )
+        self.assertHolidayName(name, range(1853, 2050))
+
+    def test_easter_monday(self):
+        name = "Toinen pääsiäispäivä"
+        self.assertHolidayName(
+            name,
             "2018-04-02",
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
-            # Ascension Day
+        )
+        self.assertHolidayName(name, range(1853, 2050))
+
+    def test_ascension_day(self):
+        name = "Helatorstai"
+        self.assertHolidayName(
+            name,
+            "1971-05-20",
+            "1972-05-11",
+            # 1973 - 1990 changes.
+            "1973-05-26",
+            "1974-05-18",
+            "1989-04-29",
+            "1990-05-19",
+            # 1991 - Present.
+            "1991-05-09",
+            "1992-05-28",
+            "1993-05-20",
             "2018-05-10",
             "2019-05-30",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
             "2023-05-18",
-            # Whit Sunday
-            "2018-05-20",
-            "2019-06-09",
-            "2020-05-31",
-            "2021-05-23",
-            "2022-06-05",
-            "2023-05-28",
         )
-
-    def test_ascension_day(self):
-        self.assertHoliday(
-            "1971-05-20",
-            "1972-05-11",
-            "1973-05-26",
-            "1974-05-18",
-            "1989-04-29",
-            "1990-05-19",
-            "1991-05-09",
-            "1992-05-28",
-            "1993-05-20",
-        )
-
-        self.assertNoHoliday(
+        self.assertNoHolidayName(
+            name,
             "1973-05-31",
             "1974-05-23",
             "1980-05-15",
@@ -116,6 +138,25 @@ class TestFinland(CommonCountryTests, TestCase):
             "1989-05-04",
             "1990-05-24",
         )
+        self.assertHolidayName(name, range(1853, 2050))
+
+    def test_may_day(self):
+        name = "Vappu"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1944, 2050)))
+        self.assertNoHolidayName(name, range(1853, 1944))
+
+    def test_whit_sunday(self):
+        name = "Helluntaipäivä"
+        self.assertHolidayName(
+            name,
+            "2018-05-20",
+            "2019-06-09",
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+        )
+        self.assertHolidayName(name, range(1853, 2050))
 
     def test_midsummer_eve(self):
         name = "Juhannusaatto"
@@ -124,15 +165,18 @@ class TestFinland(CommonCountryTests, TestCase):
             "1953-06-23",
             "1954-06-23",
             "1955-06-24",
+            # 1955 - Present.
             "1956-06-22",
             "1957-06-21",
         )
-        for dt in (
+        self.assertNoHolidayName(
+            name,
             "1955-06-23",
             "1956-06-23",
             "1957-06-23",
-        ):
-            self.assertNotIn(name, self.holidays.get(dt, ""))
+        )
+        self.assertHolidayName(name, (f"{year}-06-23" for year in range(1853, 1955)))
+        self.assertHolidayName(name, range(1955, 2050))
 
     def test_midsummer_day(self):
         name = "Juhannuspäivä"
@@ -140,37 +184,44 @@ class TestFinland(CommonCountryTests, TestCase):
             name,
             "1953-06-24",
             "1954-06-24",
+            # 1955 - Present.
             "1955-06-25",
             "1956-06-23",
             "1957-06-22",
         )
-        for dt in (
+        self.assertNoHolidayName(
+            name,
             "1955-06-24",
             "1956-06-24",
             "1957-06-24",
-        ):
-            self.assertNotIn(name, self.holidays.get(dt, ""))
+        )
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(1853, 1955)))
+        self.assertHolidayName(name, range(1955, 2050))
 
     def test_all_saints_day(self):
+        name = "Pyhäinpäivä"
         self.assertHolidayName(
-            "Pyhäinpäivä",
+            name,
             "1952-11-01",
             "1953-11-01",
             "1954-11-01",
+            # 1955 - Present.
             "1955-11-05",
             "1956-11-03",
             "1957-11-02",
         )
-        self.assertNoHoliday(
+        self.assertNoHolidayName(
+            name,
             "1955-11-01",
             "1956-11-01",
             "1957-11-01",
         )
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1853, 1955)))
+        self.assertHolidayName(name, range(1955, 2050))
 
     def test_independence_day(self):
         name = "Itsenäisyyspäivä"
         self.assertHolidayName(name, (f"{year}-12-06" for year in range(1917, 2050)))
-        self.assertNoHoliday(f"{year}-12-06" for year in range(1853, 1917))
         self.assertNoHolidayName(name, range(1853, 1917))
 
     def _test_unofficial_holiday(self, name, since):
@@ -180,7 +231,8 @@ class TestFinland(CommonCountryTests, TestCase):
             self.unofficial_holidays,
             (f"{year}-{month}-{day}" for year in range(start_year, 2050)),
         )
-        self.assertNoHolidayName(name, self.unofficial_holidays, start_year - 1)
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, start_year))
+        self.assertNoHolidayName(name)
 
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "1854-02-05")
@@ -203,25 +255,26 @@ class TestFinland(CommonCountryTests, TestCase):
         self._test_unofficial_holiday("Eurooppa-päivä", "2019-05-09")
 
     def test_mothers_day(self):
+        name = "Äitienpäivä"
         self.assertHolidayName(
-            "Äitienpäivä",
+            name,
             self.unofficial_holidays,
             "1918-05-12",
             "1919-05-11",
             "2020-05-10",
             "2024-05-12",
         )
-        self.assertNoHoliday(
-            self.unofficial_holidays,
-            "1917-05-13",
-        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(1918, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 1918))
+        self.assertNoHolidayName(name)
 
     def test_finnish_identity_day(self):
         self._test_unofficial_holiday("J.V. Snellmanin päivä, suomalaisuuden päivä", "1952-05-12")
 
     def test_remembrance_day(self):
+        name = "Kaatuneitten muistopäivä"
         self.assertHolidayName(
-            "Kaatuneitten muistopäivä",
+            name,
             self.unofficial_holidays,
             "1977-05-15",
             "1978-05-21",
@@ -229,11 +282,9 @@ class TestFinland(CommonCountryTests, TestCase):
             "2024-05-19",
             "2025-05-18",
         )
-        self.assertNoHoliday(
-            self.unofficial_holidays,
-            "1976-05-16",
-            "1975-05-18",
-        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(1977, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 1977))
+        self.assertNoHolidayName(name)
 
     def test_defense_forces_day(self):
         self._test_unofficial_holiday("Puolustusvoimain lippujuhlan päivä", "1942-06-06")
@@ -242,8 +293,9 @@ class TestFinland(CommonCountryTests, TestCase):
         self._test_unofficial_holiday("Eino Leinon päivä, runon ja suven päivä", "1992-07-06")
 
     def test_finnish_nature_day(self):
+        name = "Suomen luonnon päivä"
         self.assertHolidayName(
-            "Suomen luonnon päivä",
+            name,
             self.unofficial_holidays,
             "2013-08-31",
             "2014-08-30",
@@ -251,11 +303,9 @@ class TestFinland(CommonCountryTests, TestCase):
             "2025-08-30",
             "2026-08-29",
         )
-        self.assertNoHoliday(
-            self.unofficial_holidays,
-            "2012-08-25",
-            "2011-08-27",
-        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(2013, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 2013))
+        self.assertNoHolidayName(name)
 
     def test_miina_sillanpaa_day(self):
         self._test_unofficial_holiday(
@@ -274,18 +324,18 @@ class TestFinland(CommonCountryTests, TestCase):
         self._test_unofficial_holiday("Ruotsalaisuuden päivä, Kustaa Aadolfin päivä", "1908-11-06")
 
     def test_fathers_day(self):
+        name = "Isänpäivä"
         self.assertHolidayName(
-            "Isänpäivä",
+            name,
             self.unofficial_holidays,
             "1949-11-13",
             "1950-11-12",
             "2020-11-08",
             "2024-11-10",
         )
-        self.assertNoHoliday(
-            self.unofficial_holidays,
-            "1949-11-10",
-        )
+        self.assertHolidayName(name, self.unofficial_holidays, range(1949, 2050))
+        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, 1949))
+        self.assertNoHolidayName(name)
 
     def test_day_of_childrens_rights(self):
         self._test_unofficial_holiday("Lapsen oikeuksien päivä", "2020-11-20")
@@ -294,6 +344,15 @@ class TestFinland(CommonCountryTests, TestCase):
         self._test_unofficial_holiday(
             "Jean Sibeliuksen päivä, suomalaisen musiikin päivä", "2007-12-08"
         )
+
+    def test_alands_autonomy_day(self):
+        name = "Ahvenanmaan itsehallintopäivä"
+        subdiv_01_public_holidays = Finland(subdiv="01", years=range(1853, 2050))
+        self.assertHolidayName(
+            name, subdiv_01_public_holidays, (f"{year}-06-09" for year in range(1993, 2050))
+        )
+        self.assertNoHolidayName(name, subdiv_01_public_holidays, range(1853, 1993))
+        self.assertNoHolidayName(name)
 
     def test_unofficial_holidays(self):
         self.assertHolidays(
@@ -320,6 +379,7 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_2018(self):
         self.assertHolidays(
+            Finland(years=2018),
             ("2018-01-01", "Uudenvuodenpäivä"),
             ("2018-01-06", "Loppiainen"),
             ("2018-03-30", "Pitkäperjantai"),
@@ -339,6 +399,7 @@ class TestFinland(CommonCountryTests, TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Finland(years=2022),
             ("2022-01-01", "Uudenvuodenpäivä"),
             ("2022-01-06", "Loppiainen"),
             ("2022-04-15", "Pitkäperjantai"),
@@ -376,6 +437,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Helatorstai"),
             ("2022-06-05", "Helluntaipäivä"),
             ("2022-06-06", "Puolustusvoimain lippujuhlan päivä"),
+            ("2022-06-09", "Ahvenanmaan itsehallintopäivä"),
             ("2022-06-24", "Juhannusaatto"),
             ("2022-06-25", "Juhannuspäivä"),
             ("2022-07-06", "Eino Leinon päivä, runon ja suven päivä"),
@@ -415,6 +477,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
             ("2022-06-06", "Flag Day of the Finnish Defense Forces"),
+            ("2022-06-09", "Åland's Autonomy Day"),
             ("2022-06-24", "Midsummer Eve"),
             ("2022-06-25", "Midsummer Day"),
             ("2022-07-06", "Eino Leino Day, Day of Summer and Poetry"),
@@ -431,45 +494,6 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
-        )
-
-    def test_l10n_uk(self):
-        self.assertLocalizedHolidays(
-            "uk",
-            ("2022-01-01", "Новий рік"),
-            ("2022-01-06", "Богоявлення"),
-            ("2022-02-05", "День Рунеберга"),
-            ("2022-02-28", "День Калевали, День фінської культури"),
-            ("2022-03-19", "День Мінни Кант, День рівності"),
-            ("2022-04-09", "День Мікаеля Аґріколи, День фінської мови"),
-            ("2022-04-15", "Страсна пʼятниця"),
-            ("2022-04-17", "Великдень"),
-            ("2022-04-18", "Великодній понеділок"),
-            ("2022-04-27", "Національний день ветеранів"),
-            ("2022-05-01", "Ваппу"),
-            ("2022-05-08", "День матері"),
-            ("2022-05-09", "День Європи"),
-            ("2022-05-12", "День Ю. В. Снелльмана, День фінської спадщини"),
-            ("2022-05-15", "День ветеранів Національної війни"),
-            ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День прапора фінських сил оборони"),
-            ("2022-06-24", "Переддень літнього сонцестояння"),
-            ("2022-06-25", "День літнього сонцестояння"),
-            ("2022-07-06", "День Ейно Лейно, День літа та поезії"),
-            ("2022-08-27", "День природи Фінляндії"),
-            ("2022-10-01", "День Міїни Сілланпяя, День громадянської активності"),
-            ("2022-10-10", "День Алексіса Ківі, День фінської літератури"),
-            ("2022-10-24", "День ООН"),
-            ("2022-11-05", "День усіх святих"),
-            ("2022-11-06", "День фінської шведської спадщини, шведський день"),
-            ("2022-11-13", "День батька"),
-            ("2022-11-20", "День прав дитини"),
-            ("2022-12-06", "День незалежності"),
-            ("2022-12-08", "День Жана Сібеліуса, День фінської музики"),
-            ("2022-12-24", "Святий вечір"),
-            ("2022-12-25", "Різдво Христове"),
-            ("2022-12-26", "Другий день Різдва"),
         )
 
     def test_l10n_sv_fi(self):
@@ -493,6 +517,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-05-26", "Kristi himmelsfärdsdag"),
             ("2022-06-05", "Pingst"),
             ("2022-06-06", "Dagen för försvarets fanfest"),
+            ("2022-06-09", "Ålands självstyrelsedag"),
             ("2022-06-24", "Midsommarafton"),
             ("2022-06-25", "Midsommardagen"),
             ("2022-07-06", "Eino Leino-dagen, diktens och sommarens dag"),
@@ -509,4 +534,84 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2022-12-24", "Julafton"),
             ("2022-12-25", "Juldagen"),
             ("2022-12-26", "Annandag jul"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
+            ("2022-02-05", "วันรูนแบร์ก"),
+            ("2022-02-28", "วันกาเลวาลา, วันวัฒนธรรมฟินแลนด์"),
+            ("2022-03-19", "วันมินน่า คานท์, วันแห่งความความเสมอภาค"),
+            ("2022-04-09", "วันมิคาเอล อากริโคลา, วันภาษาฟินแลนด์"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-17", "วันอาทิตย์อีสเตอร์"),
+            ("2022-04-18", "วันจันทร์อีสเตอร์"),
+            ("2022-04-27", "วันทหารผ่านศึกแห่งชาติ"),
+            ("2022-05-01", "วันเมย์เดย์ (วันแรงงาน)"),
+            ("2022-05-08", "วันแม่"),
+            ("2022-05-09", "วันยุโรป"),
+            ("2022-05-12", "วันเจ.วี. สเนลล์มาน, วันมรดกฟินแลนด์"),
+            ("2022-05-15", "วันรำลึก"),
+            ("2022-05-26", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2022-06-05", "วันสมโภชพระจิตเจ้า"),
+            ("2022-06-06", "วันกองกำลังป้องกันฟินแลนด์"),
+            ("2022-06-09", "วันปกครองตนเองหมู่เกาะโอลันด์"),
+            ("2022-06-24", "วันมิดซัมเมอร์อีฟ (วันก่อนวันกลางฤดูร้อน)"),
+            ("2022-06-25", "วันมิดซัมเมอร์ (วันกลางฤดูร้อน)"),
+            ("2022-07-06", "วันไอนอ ไลโน, วันแห่งบทกวีและฤดูร้อน"),
+            ("2022-08-27", "วันสิ่งแวดล้อมฟินแลนด์"),
+            ("2022-10-01", "วันมีนา ซิลลันแป, วันส่งเสริมการมีส่วนร่วมของพลเมือง"),
+            ("2022-10-10", "วันอเล็กซิส กีวี, วันวรรณกรรมฟินแลนด์"),
+            ("2022-10-24", "วันสหประชาชาติ"),
+            ("2022-11-05", "วันสมโภชนักบุญทั้งหลาย"),
+            ("2022-11-06", "วันมรดกสวีเดน-ฟินแลนด์, วันกุสตาฟวัส อดอลฟัส"),
+            ("2022-11-13", "วันพ่อ"),
+            ("2022-11-20", "วันสิทธิเด็ก"),
+            ("2022-12-06", "วันประกาศอิสรภาพฟินแลนด์"),
+            ("2022-12-08", "วันฌอง ซิเบลิอุส, วันดนตรีฟินแลนด์"),
+            ("2022-12-24", "วันคริสต์มาสอีฟ"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "วันคริสต์มาสวันที่สอง"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-01-06", "Богоявлення"),
+            ("2022-02-05", "День Рунеберга"),
+            ("2022-02-28", "День Калевали, День фінської культури"),
+            ("2022-03-19", "День Мінни Кант, День рівності"),
+            ("2022-04-09", "День Мікаеля Аґріколи, День фінської мови"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-04-17", "Великдень"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-04-27", "Національний день ветеранів"),
+            ("2022-05-01", "Ваппу"),
+            ("2022-05-08", "День матері"),
+            ("2022-05-09", "День Європи"),
+            ("2022-05-12", "День Ю. В. Снелльмана, День фінської спадщини"),
+            ("2022-05-15", "День ветеранів Національної війни"),
+            ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-06-05", "Трійця"),
+            ("2022-06-06", "День прапора фінських сил оборони"),
+            ("2022-06-09", "День автономії Аландських островів"),
+            ("2022-06-24", "Переддень літнього сонцестояння"),
+            ("2022-06-25", "День літнього сонцестояння"),
+            ("2022-07-06", "День Ейно Лейно, День літа та поезії"),
+            ("2022-08-27", "День природи Фінляндії"),
+            ("2022-10-01", "День Міїни Сілланпяя, День громадянської активності"),
+            ("2022-10-10", "День Алексіса Ківі, День фінської літератури"),
+            ("2022-10-24", "День ООН"),
+            ("2022-11-05", "День усіх святих"),
+            ("2022-11-06", "День фінської шведської спадщини, шведський день"),
+            ("2022-11-13", "День батька"),
+            ("2022-11-20", "День прав дитини"),
+            ("2022-12-06", "День незалежності"),
+            ("2022-12-08", "День Жана Сібеліуса, День фінської музики"),
+            ("2022-12-24", "Святий вечір"),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-26", "Другий день Різдва"),
         )
