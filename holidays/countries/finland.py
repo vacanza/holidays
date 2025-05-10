@@ -247,6 +247,8 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_dec_8(tr("Jean Sibeliuksen päivä, suomalaisen musiikin päivä"))
 
     def _populate_subdiv_01_public_holidays(self):
+        # Celebrated since 1993 when the 70th anniversary of the Autonomy Act of 1920 was
+        # first formally recognized as a flag day.
         if self._year >= 1993:
             # Åland's Autonomy Day.
             self._add_holiday_jun_9(tr("Ahvenanmaan itsehallintopäivä"))
