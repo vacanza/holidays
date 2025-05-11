@@ -95,10 +95,10 @@ class CocosIslands(
         self._add_observed(self._add_holiday_apr_6(tr("Act of Self Determination Day")))
 
         # Good Friday.
-        self._add_observed(self._add_good_friday(tr("Good Friday")))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_observed(self._add_easter_monday(tr("Easter Monday")))
+        self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
         self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
@@ -126,7 +126,7 @@ class CocosIslands(
         if self._year <= 2019:
             # Islamic New Year.
             for dt in self._add_islamic_new_year_day(tr("Islamic New Year")):
-                self._add_observed(dt, tr("Islamic New Year"))
+                self._add_observed(dt)
 
         # Prophet's Birthday.
         for dt in self._add_mawlid_day(tr("Prophet's Birthday")):
@@ -142,7 +142,6 @@ class CocosIslands(
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
-    # Islamic New Year.
     HIJRI_NEW_YEAR_DATES = {
         2007: (JAN, 22),
         2008: (JAN, 10),
