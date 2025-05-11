@@ -127,6 +127,32 @@ class Nepal(
             2033: (FEB, 19),
         }
 
+        republic_day_dates = {
+            2010: (MAY, 29),
+            2011: (MAY, 29),
+            2012: (MAY, 28),
+            2013: (MAY, 29),
+            2014: (MAY, 29),
+            2015: (MAY, 29),
+            2016: (MAY, 28),
+            2017: (MAY, 29),
+            2018: (MAY, 29),
+            2019: (MAY, 29),
+            2020: (MAY, 28),
+            2021: (MAY, 29),
+            2022: (MAY, 29),
+            2023: (MAY, 29),
+            2024: (MAY, 28),
+            2025: (MAY, 28),
+            2026: (MAY, 29),
+            2027: (MAY, 29),
+            2028: (MAY, 28),
+            2029: (MAY, 28),
+            2030: (MAY, 29),
+            2031: (MAY, 29),
+            2032: (MAY, 28),
+        }
+
         if (2019 <= self._year <= 2020) == is_workday:
             if self._year in martyrs_day_dates:
                 # Martyr's Day.
@@ -136,8 +162,9 @@ class Nepal(
                 # National Democracy Day.
                 self._add_holiday("National Democracy Day", democracy_day_dates[self._year])
 
-            # Republic Day.
-            self._add_holiday_may_29("Republic Day")
+            if self._year in republic_day_dates:
+                # Republic Day.
+                self._add_holiday("Republic Day", republic_day_dates[self._year])
 
             # Hindu Holidays.
 
