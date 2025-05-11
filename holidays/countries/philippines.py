@@ -52,6 +52,7 @@ class Philippines(
         * [Nationwide holidays 2018-2025](https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
         * [2025 Eid'l Fitr and Eid'l Adha Tentative Date](https://melbournepcg.org/?page_id=9779)
         * [Proclamation No. 839/2025](https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/)
+        * [Proclamation No. 878/2025](https://www.officialgazette.gov.ph/2025/05/06/proclamation-no-878-s-2025/)
     """
 
     country = "PH"
@@ -334,6 +335,7 @@ class PhilippinesStaticHolidays:
             (DEC, 24, additional_special),
         ),
         2025: (
+            (MAY, 12, election_special),
             (JUL, 27, additional_special),
             # All Saints' Day Eve.
             (OCT, 31, tr("All Saints' Day Eve")),
