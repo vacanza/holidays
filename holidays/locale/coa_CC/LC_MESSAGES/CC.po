@@ -91,3 +91,13 @@ msgstr "Hari Boxing"
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "Hari Berkabung Negara untuk Ratu Elizabeth II"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (dianggarkan)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (disambut, dianggarkan)"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
-"PO-Revision-Date: 2025-05-09 22:15+0530\n"
+"PO-Revision-Date: 2025-05-12 01:27+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_CC\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: en_CC\n"
 
 #. %s (observed).
@@ -89,4 +90,14 @@ msgstr ""
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
 msgstr ""

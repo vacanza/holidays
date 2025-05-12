@@ -91,3 +91,13 @@ msgstr "Boxing Day"
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"

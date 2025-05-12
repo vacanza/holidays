@@ -25,6 +25,7 @@ from holidays.observed_holiday_base import (
     MON_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SAT_TO_PREV_FRI,
 )
 
 
@@ -64,6 +65,10 @@ class CocosIslands(
     default_language = "en_CC"
     # %s (observed).
     observed_label = tr("%s (observed)")
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("coa_CC", "en_CC", "en_US")
     # Act of Self Determination 1984.
     start_year = 1985
@@ -91,8 +96,16 @@ class CocosIslands(
         # Australia Day.
         self._add_observed(self._add_holiday_jan_26(tr("Australia Day")))
 
+        act_of_self_determination_dates = {
+            2007: (APR, 5),
+            2019: (APR, 10),
+        }
         # Act of Self Determination Day.
-        self._add_observed(self._add_holiday_apr_6(tr("Act of Self Determination Day")))
+        name = tr("Act of Self Determination Day")
+        if self._year in act_of_self_determination_dates:
+            self._add_holiday(name, act_of_self_determination_dates[self._year])
+        else:
+            self._add_observed(self._add_holiday_apr_6(name))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -103,13 +116,22 @@ class CocosIslands(
         # ANZAC Day.
         self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
 
-        self._add_holiday_2nd_mon_of_jun(
+        queens_kings_birthday_dates = {
+            2021: (JUN, 7),
+            2022: (JUN, 6),
+            2024: (JUN, 6),
+        }
+        name = (
             # King's Birthday.
             tr("King's Birthday")
             if self._year >= 2023
             # Queen's Birthday.
             else tr("Queen's Birthday")
         )
+        if self._year in queens_kings_birthday_dates:
+            self._add_holiday(name, queens_kings_birthday_dates[self._year])
+        else:
+            self._add_holiday_2nd_mon_of_jun(name)
 
         # Placed before Christmas Day for proper observed calculation.
         self._add_observed(
@@ -138,7 +160,10 @@ class CocosIslands(
 
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
-            self._add_observed(dt, tr("Eid al-Adha"))
+            if self._year == 2025:
+                self._add_observed(dt, tr("Eid al-Adha"), rule=SAT_TO_PREV_FRI)
+            else:
+                self._add_observed(dt, tr("Eid al-Adha"))
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
@@ -182,12 +207,12 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2010: (SEP, 10),
         2013: (AUG, 8),
         2014: (JUL, 28),
-        2016: (JUL, 7),
+        2016: (JUL, 6),
         2017: (JUN, 24),
         2019: (JUN, 5),
         2020: (MAY, 24),
         2021: (MAY, 13),
-        2022: (MAY, 2),
+        2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),

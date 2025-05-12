@@ -44,21 +44,23 @@ class TestCocosIslands(CommonCountryTests, TestCase):
     def test_australia_day(self):
         name = "Australia Day"
         self.assertHolidayName(name, (f"{year}-01-26" for year in range(1985, 2050)))
-        obs_dt = ("2020-01-27", "2025-01-27")
+        obs_dt = (
+            "2020-01-27",
+            "2025-01-27",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_self_determination_day(self):
+    def test_act_of_self_determination_day(self):
         name = "Act of Self Determination Day"
-        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1985, 2050)))
-        self.assertNoHolidayName(
+        self.assertHolidayName(
             name,
-            (f"{year}-04-06" for year in range(1955, 1984)),
+            "2007-04-05",
+            "2019-04-10",
         )
         obs_dt = ("2025-04-07",)
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNotIn("1980-04-06", CocosIslands(years=1980))
+        self.assertNoHolidayName(name, range(1950, 1984))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -77,19 +79,21 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            [
-                "2020-04-13",
-                "2021-04-05",
-                "2022-04-18",
-                "2023-04-10",
-                "2025-04-21",
-            ],
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2025-04-21",
         )
+        self.assertHolidayName(name, range(1985, 2050))
 
     def test_anzac_day(self):
         name = "ANZAC Day"
         self.assertHolidayName(name, (f"{year}-04-25" for year in range(1985, 2050)))
-        obs_dt = ("2020-04-27", "2021-04-26")
+        obs_dt = (
+            "2020-04-27",
+            "2021-04-26",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -99,26 +103,25 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         # Queen's Birthday before 2022
         self.assertHolidayName(
             name_queen,
-            [
-                "2020-06-08",
-                "2021-06-14",
-                "2022-06-13",
-            ],
+            "2020-06-08",
+            "2021-06-07",
+            "2022-06-06",
         )
         # King's Birthday from 2022 onward
         self.assertHolidayName(
             name_king,
-            [
-                "2023-06-12",
-                "2024-06-10",
-                "2025-06-09",
-            ],
+            "2023-06-12",
+            "2024-06-06",
+            "2025-06-09",
         )
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1985, 2050)))
-        obs_dt = ("2022-12-27", "2033-12-27")
+        obs_dt = (
+            "2022-12-27",
+            "2033-12-27",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -130,88 +133,82 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Islamic New Year"
         self.assertHolidayName(
             name,
-            [
-                "2007-01-22",
-                "2008-01-10",
-                "2009-12-18",
-                "2010-12-07",
-                "2013-11-04",
-                "2014-10-25",
-                "2016-10-03",
-                "2017-09-22",
-                "2019-09-01",
-            ],
+            "2007-01-22",
+            "2008-01-10",
+            "2009-12-18",
+            "2010-12-07",
+            "2013-11-04",
+            "2014-10-25",
+            "2016-10-03",
+            "2017-09-22",
+            "2019-09-01",
         )
 
     def test_mawlid(self):
         name = "Prophet's Birthday"
         self.assertHolidayName(
             name,
-            [
-                "2007-04-02",
-                "2008-03-20",
-                "2009-03-09",
-                "2010-02-26",
-                "2013-01-24",
-                "2014-01-13",
-                "2016-12-12",
-                "2017-12-01",
-                "2019-11-09",
-                "2020-10-29",
-                "2021-10-19",
-                "2022-10-08",
-                "2023-09-27",
-                "2024-09-16",
-                "2025-09-05",
-            ],
+            "2007-04-02",
+            "2008-03-20",
+            "2009-03-09",
+            "2010-02-26",
+            "2013-01-24",
+            "2014-01-13",
+            "2016-12-12",
+            "2017-12-01",
+            "2019-11-09",
+            "2020-10-29",
+            "2021-10-19",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-16",
+            "2025-09-05",
         )
 
     def test_eid_al_fitr(self):
         name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
-            [
-                "2007-10-15",
-                "2008-10-01",
-                "2009-09-21",
-                "2010-09-10",
-                "2013-08-08",
-                "2014-07-28",
-                "2016-07-07",
-                "2017-06-24",
-                "2019-06-05",
-                "2020-05-24",
-                "2021-05-13",
-                "2022-05-02",
-                "2023-04-22",
-                "2024-04-10",
-                "2025-03-31",
-                "2026-03-20",
-            ],
+            "2007-10-15",
+            "2008-10-01",
+            "2009-09-21",
+            "2010-09-10",
+            "2013-08-08",
+            "2014-07-28",
+            "2016-07-06",
+            "2017-06-24",
+            "2019-06-05",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-03",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+            "2026-03-20",
         )
 
     def test_eid_al_adha(self):
         name = "Eid al-Adha"
         self.assertHolidayName(
             name,
-            [
-                "2007-12-20",
-                "2008-12-08",
-                "2009-11-30",
-                "2010-11-16",
-                "2013-10-15",
-                "2014-10-04",
-                "2016-09-13",
-                "2017-09-01",
-                "2019-08-11",
-                "2020-07-31",
-                "2021-07-20",
-                "2022-07-09",
-                "2023-06-28",
-                "2024-06-17",
-                "2025-06-07",
-            ],
+            "2007-12-20",
+            "2008-12-08",
+            "2009-11-30",
+            "2010-11-16",
+            "2013-10-15",
+            "2014-10-04",
+            "2016-09-13",
+            "2017-09-01",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+            "2024-06-17",
+            "2025-06-07",
         )
+        obs_dt = "2025-06-06"
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -222,8 +219,8 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),
-            ("2022-05-02", "Eid al-Fitr"),
-            ("2022-06-13", "Queen's Birthday"),
+            ("2022-05-03", "Eid al-Fitr"),
+            ("2022-06-06", "Queen's Birthday"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-07-11", "Eid al-Adha (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
@@ -244,8 +241,8 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Jumat Agung"),
             ("2022-04-18", "Isnin Paskah"),
             ("2022-04-25", "Hari ANZAC"),
-            ("2022-05-02", "Hari Raya Puasa"),
-            ("2022-06-13", "Hari Ulang Tahun Ratu"),
+            ("2022-05-03", "Hari Raya Puasa"),
+            ("2022-06-06", "Hari Ulang Tahun Ratu"),
             ("2022-07-09", "Hari Raya Haji"),
             ("2022-07-11", "Hari Raya Haji (disambut)"),
             ("2022-09-22", "Hari Berkabung Negara untuk Ratu Elizabeth II"),
@@ -266,8 +263,8 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),
-            ("2022-05-02", "Eid al-Fitr"),
-            ("2022-06-13", "Queen's Birthday"),
+            ("2022-05-03", "Eid al-Fitr"),
+            ("2022-06-06", "Queen's Birthday"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-07-11", "Eid al-Adha (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
