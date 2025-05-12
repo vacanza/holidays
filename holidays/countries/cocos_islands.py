@@ -101,11 +101,15 @@ class CocosIslands(
             2019: (APR, 10),
         }
         # Act of Self Determination Day.
-        name = tr("Act of Self Determination Day")
         if self._year in act_of_self_determination_dates:
-            self._add_holiday(name, act_of_self_determination_dates[self._year])
+            self._add_holiday(
+                tr("Act of Self Determination Day"),
+                act_of_self_determination_dates[self._year],
+            )
         else:
-            self._add_observed(self._add_holiday_apr_6(name))
+            self._add_observed(
+                self._add_holiday_apr_6(tr("Act of Self Determination Day"))
+            )
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -161,7 +165,9 @@ class CocosIslands(
 
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
+        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
             if self._year == 2025:
+                # Special handling for 2025 when the holiday falls on Saturday
                 self._add_observed(dt, tr("Eid al-Adha"), rule=SAT_TO_PREV_FRI)
             else:
                 self._add_observed(dt, tr("Eid al-Adha"))
