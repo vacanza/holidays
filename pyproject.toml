@@ -80,8 +80,17 @@ max-string-length = 99
 
 [tool.pytest.ini_options]
 addopts = [
+    "--cov-config=pyproject.toml",
     "--cov-fail-under=100",
+    "--cov-report=term",
+    "--cov-report=xml",
+    "--cov=.",
+    "--dist=loadscope",
+    "--durations-min=0.75",
+    "--durations=10",
+    "--numprocesses=auto"
 ]
+
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]

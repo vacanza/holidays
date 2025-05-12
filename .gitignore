@@ -1,7 +1,9 @@
-.coverage
+.cache
+.coverage*
 .github_token
 .gitpod.yml
 .idea
+.local
 .tox
 .venv
 .vscode/
@@ -11,8 +13,7 @@
 *.mo
 *.pyc
 build/*
-coverage.lcov
-coverage.xml
+coverage.*
 dist/
 docs/auto_gen_files/
 docs/build

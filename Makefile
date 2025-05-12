@@ -12,59 +12,58 @@ help:
 	@echo "    tox           run tox (in parallel)"
 
 check:
-	make l10n
-	make pre-commit
-	make doc
-	make test
+	@$(MAKE) l10n
+	@$(MAKE) test
 
-clean:
-	@for ext in mo pot pyc; do \
-		find . -type f -name "*.$$ext" -delete; \
-	done
-	@rm -rf .mypy_cache .pytest_cache dist .tox
+clean: CMD="find . -type f \( -name '*.mo' -o -name '*.pot' -o -name '*.pyc' \) -delete && \
+	rm -rf .cache .mypy_cache .pytest_cache .ruff_cache .tox build dist site"
+clean: docker-run
 
-coverage:
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
+coverage: CMD="pytest --cov-report term-missing --no-cov-on-fail"
+coverage: docker-run
 
-doc:
-	mkdocs build
+doc: CMD="mkdocs build"
+doc: docker-run
 
-l10n:
-	find . -type f -name "*.pot" -delete
-	scripts/l10n/generate_po_files.py >/dev/null 2>&1
-	scripts/l10n/generate_mo_files.py
+docker-build:
+	@DOCKER_BUILDKIT=1 docker buildx build \
+		--cache-from holidays \
+		--platform=linux/amd64 . \
+		-t holidays > /dev/null 2>&1
 
-package:
-	scripts/l10n/generate_mo_files.py
-	python -m build
+docker-run: docker-build
+	@docker run \
+		--mount type=bind,src="$(PWD)",dst=/home/user \
+		--platform=linux/amd64 \
+		--rm \
+		holidays "$(CMD)"
 
-pre-commit:
-	pre-commit run --all-files
+l10n: CMD="find . -type f -name "*.pot" -delete && \
+	scripts/l10n/generate_po_files.py >/dev/null 2>&1 && \
+	scripts/l10n/generate_mo_files.py"
+l10n: docker-run
 
-release-notes:
-	@scripts/generate_release_notes.py
+package: CMD="scripts/l10n/generate_mo_files.py && python -m build"
+package: docker-run
 
-sbom:
-	@python -m cyclonedx_py requirements requirements/runtime.txt
+pre-commit: CMD="git init && pre-commit run --all-files"
+pre-commit: docker-build docker-run
 
-setup:
-	pip install --upgrade pip
-	pip install --requirement requirements/dev.txt
-	pip install --requirement requirements/docs.txt
-	pip install --requirement requirements/runtime.txt
-	pip install --requirement requirements/tests.txt
-	pre-commit install --hook-type pre-commit
-	pre-commit install --hook-type pre-push
-	make l10n
-	make package
+release-notes: CMD="scripts/generate_release_notes.py"
+release-notes: docker-run
 
-snapshot:
-	scripts/l10n/generate_mo_files.py
-	scripts/generate_snapshots.py
+sbom: CMD="python -m cyclonedx_py requirements requirements/runtime.txt"
+sbom: docker-run
 
-test:
-	scripts/l10n/generate_mo_files.py
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+setup: \
+	$(MAKE) l10n
+	$(MAKE) package
+
+snapshot: CMD="scripts/l10n/generate_mo_files.py && scripts/generate_snapshots.py"
+snapshot: docker-run
+
+test: CMD="scripts/l10n/generate_mo_files.py && pytest"
+test: docker-run
 
 tox:
 	tox --parallel auto
