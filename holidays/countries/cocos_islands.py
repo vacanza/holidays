@@ -165,7 +165,6 @@ class CocosIslands(
 
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
-        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
             if self._year == 2025:
                 # Special handling for 2025 when the holiday falls on Saturday
                 self._add_observed(dt, tr("Eid al-Adha"), rule=SAT_TO_PREV_FRI)
