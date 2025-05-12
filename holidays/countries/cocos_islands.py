@@ -108,8 +108,7 @@ class CocosIslands(
             )
         else:
             self._add_observed(
-                self._add_holiday_apr_6(tr("Act of Self Determination Day"))
-            )
+                self._add_holiday_apr_6(tr("Act of Self Determination Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
