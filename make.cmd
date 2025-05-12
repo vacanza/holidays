@@ -44,7 +44,6 @@ GoTo :Help
     Echo     pre-commit    run pre-commit against all files
     Echo     setup         setup development environment
     Echo     test          run tests (in parallel)
-    Echo     tox           run tox (in parallel)
     Exit /B
 
 :L10n
@@ -89,8 +88,4 @@ GoTo :Help
 :Test
     python scripts\l10n\generate_mo_files.py
     pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
-    Exit /B
-
-:Tox
-    tox --parallel auto
     Exit /B

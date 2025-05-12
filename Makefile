@@ -9,14 +9,15 @@ help:
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
-	@echo "    tox           run tox (in parallel)"
 
 check:
 	@$(MAKE) l10n
+	@$(MAKE) pre-commit
+	@$(MAKE) doc
 	@$(MAKE) test
 
 clean: CMD="find . -type f \( -name '*.mo' -o -name '*.pot' -o -name '*.pyc' \) -delete && \
-	rm -rf .cache .mypy_cache .pytest_cache .ruff_cache .tox build dist site"
+	rm -rf .cache .mypy_cache .pytest_cache .ruff_cache build dist site"
 clean: docker-run
 
 coverage: CMD="pytest --cov-report term-missing --no-cov-on-fail"
@@ -39,7 +40,7 @@ docker-run: docker-build
 		holidays "$(CMD)"
 
 l10n: CMD="find . -type f -name "*.pot" -delete && \
-	scripts/l10n/generate_po_files.py >/dev/null 2>&1 && \
+	scripts/l10n/generate_po_files.py > /dev/null 2>&1 && \
 	scripts/l10n/generate_mo_files.py"
 l10n: docker-run
 
@@ -64,6 +65,3 @@ snapshot: docker-run
 
 test: CMD="scripts/l10n/generate_mo_files.py && pytest"
 test: docker-run
-
-tox:
-	tox --parallel auto

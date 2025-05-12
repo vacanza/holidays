@@ -4,7 +4,6 @@
 .gitpod.yml
 .idea
 .local
-.tox
 .venv
 .vscode/
 *.code-workspace

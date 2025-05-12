@@ -64,11 +64,6 @@ repos:
           - types-python-dateutil
           - types-setuptools
 
-  - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: '1.5.0'
-    hooks:
-      - id: tox-ini-fmt
-
   - repo: local
     hooks:
       - id: tests
