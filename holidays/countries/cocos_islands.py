@@ -25,7 +25,6 @@ from holidays.observed_holiday_base import (
     MON_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
-    SAT_TO_PREV_FRI,
 )
 
 

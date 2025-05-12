@@ -92,6 +92,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
             "2025-04-21",
         )
         self.assertHolidayName(name, range(1985, 2050))
@@ -282,8 +283,8 @@ class TestCocosIslands(CommonCountryTests, TestCase):
             ("2022-07-09", "Eid al-Adha"),
             ("2022-07-11", "Eid al-Adha (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
-            ("2022-10-08", "Mawlid al-Nabi"),
-            ("2022-10-10", "Mawlid al-Nabi (observed)"),
+            ("2022-10-08", "Prophet's Birthday"),
+            ("2022-10-10", "Prophet's Birthday (observed)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
             ("2022-12-27", "Boxing Day (observed)"),
