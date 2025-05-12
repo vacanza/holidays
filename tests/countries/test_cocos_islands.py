@@ -210,6 +210,11 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         obs_dt = "2025-06-06"
         self.assertHolidayName(f"{name} (observed)", obs_dt)
 
+    def test_national_day_of_mourning_for_queen_elizabeth_ii(self):
+        name = "National Day of Mourning for Queen Elizabeth II"
+        dt = "2022-09-22"
+        self.assertHolidayName(name, dt)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
