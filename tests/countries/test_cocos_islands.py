@@ -110,7 +110,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         # King's Birthday from 2022 onward
         self.assertHolidayName(
             name_king,
-            "2023-06-12",
+            "2023-06-06",
             "2024-06-06",
             "2025-06-09",
         )
