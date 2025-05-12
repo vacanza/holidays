@@ -23,7 +23,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingva 5.0.6\n"
+"Generated-By: Lingva 4.15.0\n"
 "X-Source-Language: en_TC\n"
 
 #. New Year's Day.
@@ -50,11 +50,11 @@ msgstr ""
 msgid "National Heroes Day"
 msgstr ""
 
-#. Sovereign's Birthday.
+#. King's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
-#. Sovereign's Birthday.
+#. Queen's Birthday.
 msgid "Queen's Birthday"
 msgstr ""
 

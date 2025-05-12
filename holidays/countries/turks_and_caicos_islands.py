@@ -14,16 +14,21 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JUN
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_MON,
+)
 
 
-class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
+class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Turks and Caicos Islands holidays.
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands)
+        * [Public Holidays Ordinance, rev. 2014](https://web.archive.org/web/20250210082429/https://gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/599?Itemid=)
         * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
-        * [Public Holidays Ordinance](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
+        * [Public Holidays Ordinance, rev. 2021](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
+        * [2017](https://www.facebook.com/photo/?fbid=1137860329642985&set=a.349345645161128)
         * [2018](https://web.archive.org/web/20180126185141/https://gov.tc/pressoffice/999-listing-of-special-days-public-holidays-for-2018)
         * [2019](https://www.facebook.com/photo/?fbid=2514587681970236&set=a.349345645161128)
         * [2020](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/2572825079479829/?type=3)
@@ -44,11 +49,14 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        # Public Holidays Act 1980 established weekend-to-Monday rule.
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 1980)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # Commonwealth Day.
         self._add_holiday_2nd_mon_of_mar(tr("Commonwealth Day"))
@@ -67,15 +75,26 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
             else tr("National Heroes Day")
         )
 
-        # Sovereign's Birthday.
-        name = tr("King's Birthday") if self._year >= 2023 else tr("Queen's Birthday")
-        if self._year >= 2023 and self._year in {2025}:
-            self._add_holiday(name, (JUN, 23))
+        name = (
+            # King's Birthday.
+            tr("King's Birthday")
+            if self._year >= 2023
+            # Queen's Birthday.
+            else tr("Queen's Birthday")
+        )
+        dates_obs = {
+            2022: (JUN, 3),
+            2023: (JUN, 19),
+            2024: (JUN, 17),
+            2025: (JUN, 23),
+        }
+        if self._year in dates_obs:
+            self._add_holiday(name, dates_obs.get(self._year))
         else:
             self._add_holiday_2nd_mon_of_jun(name)
 
         # Emancipation Day.
-        self._add_holiday_aug_1(tr("Emancipation Day"))
+        self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
 
         # National Youth Day.
         self._add_holiday_last_fri_of_sep(tr("National Youth Day"))
@@ -92,10 +111,10 @@ class TurksAndCaicosIslands(HolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_4th_fri_of_nov(tr("National Day of Thanksgiving"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Boxing Day.
-        self._add_christmas_day_two(tr("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
 
 class TC(TurksAndCaicosIslands):
