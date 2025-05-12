@@ -55,7 +55,7 @@ class CocosIslands(
         * [2021](https://web.archive.org/web/20250502204052/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian_ocean/iot_bulletins/2020/A041-2020-cki-public-holidays)
         * [2022](https://web.archive.org/web/20250429071240/https://www.infrastructure.gov.au/sites/default/files/documents/a33-2021-2022-public-holidays-cocos-keeling-islands.pdf)
         * [2022 Eid al-Fitr](https://web.archive.org/web/20220810061351/https://www.infrastructure.gov.au/sites/default/files/documents/Gazette-Change-to-CKI-Hari-Raya-Puasa-2022.pdf)
-        * [2023](https://web.archive.org/web/20240701080640/https://www.infrastructure.gov.au/sites/default/files/documents/A07-2022-notice-proclamation-special-public-bank-holidays-2023-cki.pdf)
+        * [2023](https://web.archive.org/web/20240711221156/https://www.infrastructure.gov.au/sites/default/files/documents/a19-2022-community-bulletin-2023-kings-birthday-cocos-keeling-islands.pdf)
         * [2023 Eid al-Adha](https://web.archive.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
         * [2024](https://web.archive.org/web/20250207203100/https://www.infrastructure.gov.au/sites/default/files/documents/a12-2023-2024-public-holidays-cocos-k-islands.pdf)
         * [2025](https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf)
@@ -82,10 +82,10 @@ class CocosIslands(
         """
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, CocosIslandsStaticHolidays)
         IslamicHolidays.__init__(
             self, cls=CocosIslandsIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, CocosIslandsStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -98,16 +98,15 @@ class CocosIslands(
 
         act_of_self_determination_dates = {
             2007: (APR, 5),
-            2019: (APR, 10),
         }
         # Act of Self Determination Day.
+        name = tr("Act of Self Determination Day")
         if self._year in act_of_self_determination_dates:
-            self._add_holiday(
-                tr("Act of Self Determination Day"),
-                act_of_self_determination_dates[self._year],
-            )
+            self._add_holiday(name, act_of_self_determination_dates[self._year])
         else:
-            self._add_observed(self._add_holiday_apr_6(tr("Act of Self Determination Day")))
+            dt = self._add_holiday_apr_6(name)
+            if self._year != 2019:
+                self._add_observed(dt)
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -155,19 +154,16 @@ class CocosIslands(
 
         # Prophet's Birthday.
         for dt in self._add_mawlid_day(tr("Prophet's Birthday")):
-            self._add_observed(dt, tr("Prophet's Birthday"))
+            self._add_observed(dt)
 
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
-            self._add_observed(dt, tr("Eid al-Fitr"))
+            self._add_observed(dt)
 
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
-            if self._year == 2025:
-                # Special handling for 2025 when the holiday falls on Saturday
-                self._add_observed(dt, tr("Eid al-Adha"), rule=SAT_TO_PREV_FRI)
-            else:
-                self._add_observed(dt, tr("Eid al-Adha"))
+            if self._year != 2025:
+                self._add_observed(dt)
 
 
 class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
@@ -262,4 +258,9 @@ class CocosIslandsStaticHolidays:
     special_public_holidays = {
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
+    }
+
+    special_public_holidays_observed = {
+        2019: (APR, 10, tr("Act of Self Determination Day")),
+        2025: (JUN, 6, tr("Eid al-Adha")),
     }

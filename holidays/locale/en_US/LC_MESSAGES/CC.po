@@ -78,7 +78,7 @@ msgstr "Eid al-Adha"
 
 #. Prophet's Birthday.
 msgid "Prophet's Birthday"
-msgstr "Mawlid al-Nabi"
+msgstr "Prophet's Birthday"
 
 #. Christmas Day.
 msgid "Christmas Day"

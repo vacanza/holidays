@@ -45,6 +45,9 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Australia Day"
         self.assertHolidayName(name, (f"{year}-01-26" for year in range(1985, 2050)))
         obs_dt = (
+            "2013-01-28",
+            "2014-01-27",
+            "2019-01-28",
             "2020-01-27",
             "2025-01-27",
         )
@@ -56,11 +59,17 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2007-04-05",
-            "2019-04-10",
+            (f"{year}-04-06" for year in (*range(1985, 2007), *range(2008, 2050))),
         )
-        obs_dt = ("2025-04-07",)
+        obs_dt = (
+            "2013-04-08",
+            "2014-04-07",
+            "2019-04-10",
+            "2024-04-08",
+            "2025-04-07",
+        )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoHolidayName(name, range(1950, 1984))
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
         name = "Good Friday"
