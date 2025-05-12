@@ -119,6 +119,7 @@ class CocosIslands(
         queens_kings_birthday_dates = {
             2021: (JUN, 7),
             2022: (JUN, 6),
+            2023: (JUN, 6),
             2024: (JUN, 6),
         }
         name = (
