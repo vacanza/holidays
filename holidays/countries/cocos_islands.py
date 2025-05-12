@@ -178,7 +178,6 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2019: (SEP, 1),
     }
 
-    # Prophet Muhammad's Birthday.
     MAWLID_DATES = {
         2007: (APR, 2),
         2008: (MAR, 20),
@@ -198,7 +197,6 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2026: (AUG, 26),
     }
 
-    # Eid al-Fitr.
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
         2008: (OCT, 1),
@@ -218,7 +216,6 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2026: (MAR, 20),
     }
 
-    # Eid al-Adha.
     EID_AL_ADHA_DATES = {
         2007: (DEC, 20),
         2008: (DEC, 8),
