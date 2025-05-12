@@ -184,7 +184,7 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 7),
         2026: (MAY, 27),
     }
-     
+
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
         2008: (OCT, 1),
@@ -203,7 +203,7 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
         2026: (MAR, 20),
     }
-    
+
     HIJRI_NEW_YEAR_DATES = {
         2007: (JAN, 22),
         2008: (JAN, 10),
@@ -215,7 +215,7 @@ class CocosIslandsIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 22),
         2019: (SEP, 1),
     }
-    
+
     MAWLID_DATES = {
         2007: (APR, 2),
         2008: (MAR, 20),
