@@ -20,6 +20,9 @@ clean: CMD="find . -type f \( -name '*.mo' -o -name '*.pot' -o -name '*.pyc' \) 
 	rm -rf .cache .mypy_cache .pytest_cache .ruff_cache build dist site"
 clean: docker-run
 
+clean-docker:
+	@docker image rm -f holidays > /dev/null 2>&1
+
 coverage: CMD="pytest --cov-report term-missing --no-cov-on-fail"
 coverage: docker-run
 
