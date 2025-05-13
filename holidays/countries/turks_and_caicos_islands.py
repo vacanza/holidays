@@ -45,6 +45,7 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
     # Separated from Jamaica in 1962.
     start_year = 1963
     supported_languages = ("en_TC", "en_US")
+    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

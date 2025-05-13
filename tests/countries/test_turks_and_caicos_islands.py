@@ -107,12 +107,12 @@ class TestTC(CommonCountryTests, TestCase):
             "2019-06-10",
             "2020-06-08",
             "2021-06-14",
-            "2022-06-13",
+            "2022-06-3",
         )
         self.assertHolidayName(
             name_2023,
-            "2023-06-12",
-            "2024-06-10",
+            "2023-06-19",
+            "2024-06-17",
             "2025-06-23",
         )
 
@@ -192,11 +192,12 @@ class TestTC(CommonCountryTests, TestCase):
         self.assertHolidays(
             TurksAndCaicosIslands(years=2023),
             ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-03-13", "Commonwealth Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-05-29", "JAGS McCartney Day"),
-            ("2023-06-12", "King's Birthday"),
+            ("2023-06-19", "King's Birthday"),
             ("2023-08-01", "Emancipation Day"),
             ("2023-09-29", "National Youth Day"),
             ("2023-10-09", "National Heritage Day"),
