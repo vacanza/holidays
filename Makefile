@@ -34,7 +34,6 @@ docker-build:
 
 docker-run: docker-build
 	@docker run \
-		-it \
 		--mount type=bind,src="$(PWD)",dst=/home/user \
 		--platform=linux/amd64 \
 		--rm \
