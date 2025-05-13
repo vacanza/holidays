@@ -33,6 +33,7 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         self.assertHoliday(
             "2022-09-22",
         )
+
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1985, 2050)))
@@ -50,9 +51,6 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Australia Day"
         self.assertHolidayName(name, (f"{year}-01-26" for year in range(1985, 2050)))
         obs_dt = (
-            "2013-01-28",
-            "2014-01-27",
-            "2019-01-28",
             "2013-01-28",
             "2014-01-27",
             "2019-01-28",
@@ -178,67 +176,67 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Prophet's Birthday"
         self.assertHolidayName(
             name,
-            "2007-04-02",
-            "2008-03-20",
-            "2009-03-09",
-            "2010-02-26",
-            "2013-01-24",
-            "2014-01-13",
+            self.no_estimated_holidays,
+            "2015-01-03",
             "2016-12-12",
             "2017-12-01",
+            "2018-11-20",
             "2019-11-09",
-            "2020-10-29",
-            "2021-10-19",
-            "2022-10-08",
-            "2023-09-27",
-            "2024-09-16",
-            "2025-09-05",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
+        obs_dt = (
+            "1988-10-24",
+            "1993-08-30",
+            "2004-05-03",
+            "2015-01-05",
+            "2040-03-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_fitr(self):
         name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
-            "2007-10-15",
-            "2008-10-01",
-            "2009-09-21",
-            "2010-09-10",
-            "2013-08-08",
-            "2014-07-28",
+            self.no_estimated_holidays,
+            "2015-07-17",
             "2016-07-06",
             "2017-06-24",
+            "2018-06-15",
             "2019-06-05",
-            "2020-05-24",
-            "2021-05-13",
-            "2022-05-03",
-            "2023-04-22",
-            "2024-04-10",
-            "2025-03-31",
-            "2026-03-20",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
+        obs_dt = (
+            "1989-05-08",
+            "1994-03-14",
+            "2017-06-26",
+            "2028-02-28",
+            "2048-07-13",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_adha(self):
         name = "Eid al-Adha"
         self.assertHolidayName(
             name,
-            "2007-12-20",
-            "2008-12-08",
-            "2009-11-30",
-            "2010-11-16",
-            "2013-10-15",
-            "2014-10-04",
+            self.no_estimated_holidays,
+            "2015-09-23",
             "2016-09-13",
             "2017-09-01",
+            "2018-08-21",
             "2019-08-11",
-            "2020-07-31",
-            "2021-07-20",
-            "2022-07-09",
-            "2023-06-28",
-            "2024-06-17",
-            "2025-06-07",
         )
-        obs_dt = "2025-06-06"
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
+        obs_dt = (
+            "1991-06-24",
+            "2004-02-02",
+            "2011-11-07",
+            "2019-08-12",
+            "2045-10-23",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
