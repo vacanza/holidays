@@ -17,7 +17,7 @@ USER user
 WORKDIR /opt/holidays
 
 COPY --chmod=444 --chown=user:user pyproject.toml ./
-COPY --chmod=444 --chown=user:user requirements requirements
+COPY --chmod=555 --chown=user:user requirements requirements
 RUN python -m venv ${VIRTUAL_ENV_DIR} && \
     . ${VIRTUAL_ENV_DIR}/bin/activate && \
     pip install \

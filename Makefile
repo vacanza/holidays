@@ -34,6 +34,7 @@ docker-build:
 
 docker-run: docker-build
 	@docker run \
+		-it \
 		--mount type=bind,src="$(PWD)",dst=/home/user \
 		--platform=linux/amd64 \
 		--rm \
@@ -47,8 +48,8 @@ l10n: docker-run
 package: CMD="scripts/l10n/generate_mo_files.py && python -m build"
 package: docker-run
 
-pre-commit: CMD="git init && pre-commit run --all-files"
-pre-commit: docker-build docker-run
+pre-commit: CMD="pre-commit run --all-files"
+pre-commit: docker-run
 
 release-notes: CMD="scripts/generate_release_notes.py"
 release-notes: docker-run
