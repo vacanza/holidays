@@ -107,6 +107,9 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "ANZAC Day"
         self.assertHolidayName(name, (f"{year}-04-25" for year in range(1985, 2050)))
         obs_dt = (
+            "2004-04-26",
+            "2009-04-27",
+            "2015-04-27",
             "2020-04-27",
             "2021-04-26",
         )
@@ -139,6 +142,9 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1985, 2050)))
         obs_dt = (
+            "1998-12-28",
+            "2004-12-28",
+            "2009-12-28",
             "2022-12-27",
             "2033-12-27",
         )
