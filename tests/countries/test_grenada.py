@@ -20,7 +20,7 @@ class TestGrenada(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1975, 2050)
-        super().setUpClass(Grenada, years=years)
+        super().setUpClass(Grenada, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(Grenada, GD, GRD)
@@ -43,15 +43,10 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1975, 2050)))
         dt = (
-            "1978-01-02",
-            "1984-01-02",
-            "1989-01-02",
-            "1995-01-02",
             "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
-            "2034-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -177,7 +172,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2023-08-07",
             "2024-08-05",
         )
-        self.assertHolidayName(name, range(1975, 2024))
+        self.assertHolidayName(name, range(1975, 2025))
         self.assertHolidayName(name, (f"{year}-08-01" for year in range(2025, 2050)))
         dt = (
             "2027-08-02",
@@ -227,6 +222,7 @@ class TestGrenada(CommonCountryTests, TestCase):
     def test_national_heroes_day(self):
         name = "National Heroes' Day"
         self.assertHolidayName(name, (f"{year}-10-19" for year in range(2023, 2050)))
+        self.assertNoHolidayName(name, range(1975, 2023))
         dt = (
             "2025-10-20",
             "2031-10-20",
@@ -288,7 +284,7 @@ class TestGrenada(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_2012(self):
-        # * <<https://web.archive.org/web/20120623100105/http://www.gov.gd/holiday_events.html>
+        # https://web.archive.org/web/20120623100105/http://www.gov.gd/holiday_events.html
         self.assertHolidays(
             Grenada(years=2012),
             ("2012-01-01", "New Year's Day"),
