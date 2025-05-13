@@ -1,3 +1,5 @@
+.ash_history
+.buildx-cache
 .cache
 .coverage*
 .github_token

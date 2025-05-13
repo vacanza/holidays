@@ -68,9 +68,9 @@ repos:
     hooks:
       - id: tests
         always_run: true
-        entry: make check
+        entry: make test
         language: system
-        name: run `make check`
+        name: run `make test`
         pass_filenames: false
         stages:
           - pre-push

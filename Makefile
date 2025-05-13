@@ -27,17 +27,28 @@ doc: CMD="mkdocs build"
 doc: docker-run
 
 docker-build:
-	@DOCKER_BUILDKIT=1 docker buildx build \
-		--cache-from holidays \
-		--platform=linux/amd64 . \
+	@DOCKER_BUILDKIT=1 docker buildx use holidays-builder || \
+	docker buildx create --use --name holidays-builder && \
+	docker buildx build \
+		--cache-from=type=local,src=./.buildx-cache \
+  		--cache-to=type=local,dest=./.buildx-cache \
+		--load \
+		. \
 		-t holidays > /dev/null 2>&1
 
 docker-run: docker-build
 	@docker run \
+		-it \
 		--mount type=bind,src="$(PWD)",dst=/home/user \
-		--platform=linux/amd64 \
 		--rm \
-		holidays "$(CMD)"
+		holidays sh -c $(CMD)
+
+docker-shell: docker-build
+	@docker run \
+		-it \
+		--mount type=bind,src="$(PWD)",dst=/home/user \
+		--rm \
+		holidays /bin/sh
 
 l10n: CMD="find . -type f -name "*.pot" -delete && \
 	scripts/l10n/generate_po_files.py > /dev/null 2>&1 && \
