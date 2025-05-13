@@ -142,11 +142,11 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1985, 2050)))
         obs_dt = (
-            "1998-12-28",
-            "2004-12-28",
             "2009-12-28",
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
             "2022-12-27",
-            "2033-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -191,11 +191,11 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
         obs_dt = (
-            "1988-10-24",
-            "1993-08-30",
             "2004-05-03",
+            "2012-02-06",
             "2015-01-05",
-            "2040-03-26",
+            "2019-11-11",
+            "2022-10-10",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -213,11 +213,11 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
         obs_dt = (
-            "1989-05-08",
-            "1994-03-14",
+            "2001-12-17",
+            "2004-11-15",
+            "2012-08-20",
             "2017-06-26",
-            "2028-02-28",
-            "2048-07-13",
+            "2020-05-25",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -235,11 +235,11 @@ class TestCocosIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
         obs_dt = (
-            "1991-06-24",
             "2004-02-02",
             "2011-11-07",
+            "2014-10-06",
             "2019-08-12",
-            "2045-10-23",
+            "2022-07-11",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
