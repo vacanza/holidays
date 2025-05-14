@@ -18,19 +18,51 @@ GoTo :Help
     Exit /B
 
 :Clean
-    Del /S /Q *.mo
-    Del /S /Q *.pyc
-    RD /S /Q .mypy_cache
-    RD /S /Q .pytest_cache
-    RD /S /Q dist
+    Set CMD=find . -type f \( -name "*.mo" -o -name "*.pot" -o -name "*.pyc" \) -delete ^&^& ^
+        rm -rf .cache .mypy_cache .pytest_cache .ruff_cache build dist site
+    Call :Docker-run
+    Exit /B
+
+:Clean-docker
+    docker image rm -f holidays >nul 2>&1
     Exit /B
 
 :Coverage
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
+    Set CMD=pytest --cov-report term-missing --no-cov-on-fail
+    Call :Docker-run
     Exit /B
 
 :Doc
-    mkdocs build
+    Set CMD=mkdocs build
+    Call :Docker-run
+    Exit /B
+
+:Docker-build
+    Set DOCKER_BUILDKIT=1
+    docker buildx use holidays-builder >nul 2>&1 || (
+        docker buildx create --use --name holidays-builder
+    )
+    docker buildx build ^
+        --cache-from=type=local,src=./.buildx-cache ^
+        --cache-to=type=local,dest=./.buildx-cache ^
+        --load ^
+        -t holidays ^
+        . >nul 2>&1
+    Exit /B
+
+:Docker-run
+    docker run --rm ^
+        --mount type=bind,src=%CD%,dst=/home/user ^
+        --platform=linux/amd64 ^
+        holidays sh -c "!CMD!"
+    Exit /B
+
+:Docker-shell
+    docker run --rm ^
+	    -it ^
+        --mount type=bind,src=%CD%,dst=/home/user ^
+        --platform=linux/amd64 ^
+        holidays /bin/sh
     Exit /B
 
 :Help
@@ -47,45 +79,43 @@ GoTo :Help
     Exit /B
 
 :L10n
-    python scripts\l10n\generate_po_files.py 2>nul >nul
-    python scripts\l10n\generate_mo_files.py
+    Set CMD=find . -type f -name "*.pot" -delete ^&^& ^
+        scripts/l10n/generate_po_files.py ^> /dev/null 2^>^&1 ^&^& ^
+        scripts/l10n/generate_mo_files.py
+    Call :Docker-run
     Exit /B
 
 :Package
-    python scripts\l10n\generate_mo_files.py
-    python -m build
+    Set CMD=scripts/l10n/generate_mo_files.py ^&^& python -m build
+    Call :Docker-run
     Exit /B
 
 :Pre-commit
-    pre-commit run --all-files
+    Set CMD=pre-commit run --all-files
+    Call :Docker-run
     Exit /B
 
 :Release-notes
-    python scripts\generate_release_notes.py
+    Set CMD=scripts/generate_release_notes.py
+    Call :Docker-run
     Exit /B
 
 :Sbom
-    python -m cyclonedx_py requirements requirements\runtime.txt
+    Set CMD=python -m cyclonedx_py requirements requirements/runtime.txt
+    Call :Docker-run
     Exit /B
 
 :Setup
-    pip install --upgrade pip
-    pip install --requirement requirements\dev.txt
-    pip install --requirement requirements\docs.txt
-    pip install --requirement requirements\runtime.txt
-    pip install --requirement requirements\tests.txt
-    pre-commit install --hook-type pre-commit
-    pre-commit install --hook-type pre-push
     Call :L10n
     Call :Package
     Exit /B
 
 :Snapshot
-    python scripts\l10n\generate_mo_files.py
-    python scripts\generate_snapshots.py
+    Set CMD=scripts/l10n/generate_mo_files.py ^&^& scripts/generate_snapshots.py
+    Call :Docker-run
     Exit /B
 
 :Test
-    python scripts\l10n\generate_mo_files.py
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+    Set CMD=scripts/l10n/generate_mo_files.py ^&^& pytest
+    Call :Docker-run
     Exit /B
