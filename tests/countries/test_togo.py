@@ -40,19 +40,6 @@ class TestTogo(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(1967, 2014)))
         self.assertNoHolidayName(name, range(2014, 2050))
 
-    def test_good_friday(self):
-        name = "Vendredi saint"
-        self.assertHolidayName(
-            name,
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, range(1961, 2050))
-
     def test_easter_monday(self):
         name = "Lundi de Pâques"
         self.assertHolidayName(
@@ -208,7 +195,6 @@ class TestTogo(CommonCountryTests, TestCase):
             Togo(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-11", "Ramadan"),
-            ("2024-03-29", "Vendredi saint"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-04-10", "l'Aïd El-Fitr"),
             ("2024-04-27", "Fête de l'indépendance"),
@@ -228,7 +214,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-01-01", "Jour de l'an"),
             ("2025-03-01", "Ramadan"),
             ("2025-03-30", "l'Aïd El-Fitr"),
-            ("2025-04-18", "Vendredi saint"),
             ("2025-04-21", "Lundi de Pâques"),
             ("2025-04-27", "Fête de l'indépendance"),
             ("2025-05-01", "Fête du travail"),
@@ -246,7 +231,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-01-01", "Jour de l'an"),
             ("2025-03-01", "Ramadan"),
             ("2025-03-30", "l'Aïd El-Fitr"),
-            ("2025-04-18", "Vendredi saint"),
             ("2025-04-21", "Lundi de Pâques"),
             ("2025-04-27", "Fête de l'indépendance"),
             ("2025-05-01", "Fête du travail"),
@@ -267,7 +251,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-01-01", "New Year's Day"),
             ("2025-03-01", "First Day of Ramadan"),
             ("2025-03-30", "Eid al-Fitr"),
-            ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-27", "Independence Day"),
             ("2025-05-01", "Labor Day"),

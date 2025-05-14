@@ -29,10 +29,8 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         * <https://web.archive.org/web/20250507123619/https://www.republiquetogolaise.com/politique/2309-3579-23-septembre-le-togo-rend-hommage-a-ses-martyrs>
         * <https://web.archive.org/web/20250507123840/https://islam.zmo.de/s/westafrica/item/25841#?xywh=-405%2C-94%2C2376%2C1868>
         * <https://en.wikipedia.org/wiki/1986_Togolese_coup_attempt>
-        * <https://archive.ph/KRjSV>
-        * <https://fr.wikipedia.org/wiki/Coup_d%27%C3%89tat_de_1967_au_Togo>
+        * <https://web.archive.org/web/20250507131725/https://www.rfi.fr/fr/afrique/20140112-togo-le-13-janvier-est-plus-jour-fete>
         * <https://web.archive.org/web/20250507124528/https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1641%2C0%2C4303%2C2363>
-        * <https://web.archive.org/web/20250507124709/https://www.republiquetogolaise.com/politique/2501-10232-le-togo-a-commemore-le-51eme-anniversaire-de-l-attentat-de-sarakawa>
 
         Ramadan start dates:
         * <https://web.archive.org/save/https://www.republicoftogo.com/toutes-les-rubriques/societe/le-mois-du-jeune-debute-le-18-juin>
@@ -93,9 +91,6 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         if 1967 <= self._year <= 2013:
             # Liberation Day.
             self._add_holiday_jan_13(tr("Fête de la libération nationale"))
-
-        # Good Friday.
-        self._add_good_friday(tr("Vendredi saint"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))

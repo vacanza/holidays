@@ -39,10 +39,6 @@ msgstr ""
 msgid "Fête de la libération nationale"
 msgstr ""
 
-#. Good Friday.
-msgid "Vendredi saint"
-msgstr ""
-
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr ""
