@@ -38,7 +38,8 @@ SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 RUN apk update && \
     apk add git postgresql-client && \
     addgroup -S user && \
-    adduser -S -h /home/user -G user user
+    adduser -S -h /home/user -G user user && \
+    git config --system --add safe.directory /home/user
 
 ENV VIRTUAL_ENV_DIR="/opt/holidays/.venv"
 ENV FORCE_COLOR=1 \
