@@ -36,7 +36,7 @@ FROM python:3.13.3-alpine
 SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 
 RUN apk update && \
-    apk add git postgresql-client && \
+    apk add git && \
     addgroup -S user && \
     adduser -S -h /home/user -G user user && \
     git config --system --add safe.directory /home/user

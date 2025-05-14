@@ -41,7 +41,6 @@ docker-build:
 
 docker-run: docker-build
 	@docker run \
-		-it \
 		--mount type=bind,src="$(PWD)",dst=/home/user \
 		--rm \
 		holidays sh -c $(CMD)
