@@ -178,8 +178,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Andorra</td>
 <td>AD</td>
 <td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant Julià de Lòria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
-<td></td>
-<td></td>
+<td><strong>ca</strong>, en_US, uk</td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Angola</td>
@@ -383,6 +383,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Cocos Islands</td>
+<td>CC</td>
+<td></td>
+<td>coa_CC, <strong>en_CC</strong>,  en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Colombia</td>
