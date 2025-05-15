@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-03 20:34+0530\n"
 "PO-Revision-Date: 2025-05-03 20:34+0530\n"
 "Last-Translator: Nalin Gupta <nalinguptaofficial@gmail.com>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_GD\n"
 
 #. %s (observed).
 #, c-format

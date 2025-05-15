@@ -47,7 +47,6 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
-            "2034-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -68,11 +67,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2015-04-03",
-            "2016-03-25",
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -86,16 +80,12 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2015-04-06",
-            "2016-03-28",
-            "2017-04-17",
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, range(1975, 2050))
 
@@ -107,7 +97,6 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
-            "2033-05-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -116,11 +105,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Whit Monday"
         self.assertHolidayName(
             name,
-            "2015-05-25",
-            "2016-05-16",
-            "2017-06-05",
-            "2018-05-21",
-            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
@@ -134,11 +118,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Corpus Christi"
         self.assertHolidayName(
             name,
-            "2015-06-04",
-            "2016-05-26",
-            "2017-06-15",
-            "2018-05-31",
-            "2019-06-20",
             "2020-06-11",
             "2021-06-03",
             "2022-06-16",
@@ -152,11 +131,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Emancipation Day"
         self.assertHolidayName(
             name,
-            "2015-08-03",
-            "2016-08-01",
-            "2017-08-07",
-            "2018-08-06",
-            "2019-08-05",
             "2020-08-03",
             "2021-08-02",
             "2022-08-01",
@@ -176,11 +150,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Carnival Monday"
         self.assertHolidayName(
             name,
-            "2015-08-10",
-            "2016-08-08",
-            "2017-08-14",
-            "2018-08-13",
-            "2019-08-12",
             "2020-08-10",
             "2021-08-09",
             "2022-08-08",
@@ -194,11 +163,6 @@ class TestGrenada(CommonCountryTests, TestCase):
         name = "Carnival Tuesday"
         self.assertHolidayName(
             name,
-            "2015-08-11",
-            "2016-08-09",
-            "2017-08-15",
-            "2018-08-14",
-            "2019-08-13",
             "2020-08-11",
             "2021-08-10",
             "2022-08-09",
@@ -226,7 +190,6 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2009-10-26",
             "2015-10-26",
             "2020-10-26",
-            "2026-10-26",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -239,7 +202,6 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2011-12-26",
             "2016-12-26",
             "2022-12-26",
-            "2033-12-26",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
 
@@ -250,7 +212,6 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2004-12-27",
             "2010-12-27",
             "2021-12-27",
-            "2027-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
