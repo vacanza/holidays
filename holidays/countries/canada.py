@@ -51,24 +51,46 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     default_language = "en_CA"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
-    subdivisions = (
-        "AB",
-        "BC",
-        "MB",
-        "NB",
-        "NL",
-        "NS",
-        "NT",
-        "NU",
-        "ON",
-        "PE",
-        "QC",
-        "SK",
-        "YT",
-    )
-    supported_languages = ("ar", "en_CA", "en_US", "fr", "th")
     start_year = 1867
+    subdivisions = (
+        "AB",  # Alberta.
+        "BC",  # British Columbia (Colombie-Britannique).
+        "MB",  # Manitoba.
+        "NB",  # New Brunswick (Nouveau-Brunswick).
+        "NL",  # Newfoundland and Labrador (Terre-Neuve-et-Labrador).
+        "NS",  # Nova Scotia (Nouvelle-Écosse).
+        "NT",  # Northwest Territories (Territoires du Nord-Ouest).
+        "NU",  # Nunavut.
+        "ON",  # Ontario.
+        "PE",  # Prince Edward Island (Île-du-Prince-Édouard).
+        "QC",  # Quebec (Québec).
+        "SK",  # Saskatchewan.
+        "YT",  # Yukon.
+    )
+    subdivisions_aliases = {
+        "Alberta": "AB",
+        "British Columbia": "BC",
+        "Colombie-Britannique": "BC",
+        "Manitoba": "MB",
+        "New Brunswick": "NB",
+        "Nouveau-Brunswick": "NB",
+        "Newfoundland and Labrador": "NL",
+        "Terre-Neuve-et-Labrador": "NL",
+        "Nova Scotia": "NS",
+        "Nouvelle-Écosse": "NS",
+        "Northwest Territories": "NT",
+        "Territoires du Nord-Ouest": "NT",
+        "Nunavut": "NU",
+        "Ontario": "ON",
+        "Prince Edward Island": "PE",
+        "Île-du-Prince-Édouard": "PE",
+        "Quebec": "QC",
+        "Québec": "QC",
+        "Saskatchewan": "SK",
+        "Yukon": "YT",
+    }
+    supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
+    supported_languages = ("ar", "en_CA", "en_US", "fr", "th")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -175,7 +197,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     def _add_victoria_day(self) -> None:
         """Adds Victoria Day.
 
-        After Queen Victoria’s death in 1901, an act of the Canadian Parliament established
+        After Queen Victoria's death in 1901, an act of the Canadian Parliament established
         Victoria Day as a legal holiday, to be celebrated on May 24 (or on May 25 when
         May 24 fell on a Sunday). This was later moved to the Monday preceding May 24 in 1952.
         """

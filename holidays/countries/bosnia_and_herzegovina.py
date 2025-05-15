@@ -58,13 +58,12 @@ class BosniaAndHerzegovina(
 
     country = "BA"
     default_language = "bs"
-    supported_languages = ("bs", "en_US", "sr", "uk")
     # %s (observed).
     observed_label = tr("%s (preneseno)")
     subdivisions = (
-        "BIH",  # Federacija Bosne i Hercegovine
-        "BRC",  # Brčko distrikt
-        "SRP",  # Republika Srpska
+        "BIH",  # Federacija Bosne i Hercegovine.
+        "BRC",  # Brčko distrikt.
+        "SRP",  # Republika Srpska.
     )
     subdivisions_aliases = {
         "Federacija Bosne i Hercegovine": "BIH",
@@ -74,6 +73,7 @@ class BosniaAndHerzegovina(
         "Republika Srpska": "SRP",
         "RS": "SRP",
     }
+    supported_languages = ("bs", "en_US", "sr", "uk")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
