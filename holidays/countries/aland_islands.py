@@ -42,7 +42,7 @@ class HolidaysAX(Finland):
         self.subdiv = "01"
         super()._populate_unofficial_holidays()
 
-    def _populate_public_holidays(self):
+    def _populate_public_holidays(self) -> None:
         self.subdiv = "01"
         super()._populate_public_holidays()
 
