@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2025-05-09 12:24+0700\n"
+"PO-Revision-Date: 2025-05-15 18:48+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -114,6 +114,10 @@ msgstr "День Європи"
 msgid "Äitienpäivä"
 msgstr "День матері"
 
+#. J. V. Snellman Day.
+msgid "J.V. Snellmanin päivä"
+msgstr "День Ю. В. Снелльмана"
+
 #. J. V. Snellman Day, Day of Finnish Heritage.
 msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
 msgstr "День Ю. В. Снелльмана, День фінської спадщини"
@@ -121,6 +125,10 @@ msgstr "День Ю. В. Снелльмана, День фінської спа�
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
 msgstr "День ветеранів Національної війни"
+
+#. Birthday of the Marshal of Finland.
+msgid "Suomen marsalkan syntymäpäivä"
+msgstr "День народження маршала Фінляндії"
 
 #. Flag Day of the Finnish Defense Forces.
 msgid "Puolustusvoimain lippujuhlan päivä"
@@ -165,3 +173,11 @@ msgstr "День Жана Сібеліуса, День фінської музи
 #. Åland's Autonomy Day.
 msgid "Ahvenanmaan itsehallintopäivä"
 msgstr "День автономії Аландських островів"
+
+#. Day of the Finnish Flag.
+msgid "Suomen lipun päivä"
+msgstr "День прапора Фінляндії"
+
+#. Aleksis Kivi Day.
+msgid "Aleksis Kiven päivä"
+msgstr "День Алексіса Ківі"
