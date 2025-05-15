@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
-from holidays.constants import OPTIONAL, PUBLIC
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +31,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         * <https://en.wikipedia.org/wiki/1986_Togolese_coup_attempt>
         * <https://web.archive.org/web/20250507131725/https://www.rfi.fr/fr/afrique/20140112-togo-le-13-janvier-est-plus-jour-fete>
         * <https://web.archive.org/web/20250507124528/https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1641%2C0%2C4303%2C2363>
+        * <https://web.archive.org/web/20231202052731/https://www.holidayscalendar.com/event/anniversary-of-the-failed-attack-on-lome/>
 
         Ramadan start dates:
         * <https://web.archive.org/save/https://www.republicoftogo.com/toutes-les-rubriques/societe/le-mois-du-jeune-debute-le-18-juin>
@@ -48,7 +49,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     country = "TG"
     default_language = "fr"
-    supported_categories = (OPTIONAL, PUBLIC)
+    supported_categories = (PUBLIC, WORKDAY)
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
     supported_languages = ("en_US", "fr")
@@ -128,14 +129,14 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
 
-    def _populate_optional_holidays(self):
-        if self._year >= 1987:
-            # Anniversary of the Failed Attack on Lomé.
-            self._add_holiday_sep_24(tr("Anniversaire de l'attentat manqué contre Lomé"))
-
     def _populate_subdiv_m_public_holidays(self):
         # Prophet Mohammed's Birthday.
         self._add_mawlid_day(tr("Journée anniversaire de la naissance du prophète Mohamed"))
+
+    def _populate_workday_holidays(self):
+        if self._year >= 1987:
+            # Anniversary of the Failed Attack on Lomé.
+            self._add_holiday_sep_24(tr("Anniversaire de l'attentat manqué contre Lomé"))
 
 
 class TG(Togo):

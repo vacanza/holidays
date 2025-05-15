@@ -12,25 +12,25 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL
+from holidays.constants import WORKDAY
 from holidays.countries.togo import Togo, TG, TGO
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestTogo(CommonCountryTests, TestCase):
+class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1961, 2050)
         super().setUpClass(Togo, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Togo(years=years, islamic_show_estimated=False)
-        cls.optional_holidays = Togo(categories=OPTIONAL, years=years)
+        cls.workday_holidays = Togo(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Togo, TG, TGO)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Togo(years=1960))
-        self.assertNoHolidays(Togo(categories=OPTIONAL, years=1960))
+        self.assertNoHolidays(Togo(years=1960, categories=WORKDAY))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1961, 2050)))
@@ -180,15 +180,9 @@ class TestTogo(CommonCountryTests, TestCase):
     def test_anniversary_of_the_failed_attack_on_lomé(self):
         name = "Anniversaire de l'attentat manqué contre Lomé"
         self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-09-24" for year in range(1987, 2050))
+            name, self.workday_holidays, (f"{year}-09-24" for year in range(1987, 2050))
         )
         self.assertNoHolidayName(name, range(1961, 1987))
-
-    def test_optional_2025(self):
-        self.assertHolidays(
-            Togo(categories=OPTIONAL, years=2025),
-            ("2025-09-24", "Anniversaire de l'attentat manqué contre Lomé"),
-        )
 
     def test_2024(self):
         self.assertHolidays(
