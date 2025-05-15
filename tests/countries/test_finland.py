@@ -238,25 +238,21 @@ class TestFinland(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(1853, 1919))
 
-    def _test_unofficial_holiday(self, name, since, end_year=2050):
-        start_year, month, day = (int(part) for part in since.split("-"))
+    def _test_categorised_holiday(self, name, holidays_list, since, end_year):
+        start_year, month, day = (int(p) for p in since.split("-"))
         self.assertHolidayName(
             name,
-            self.unofficial_holidays,
+            holidays_list,
             (f"{year}-{month:02d}-{day:02d}" for year in range(start_year, end_year)),
         )
-        self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, start_year))
+        self.assertNoHolidayName(name, holidays_list, range(1853, start_year))
         self.assertNoHolidayName(name)
 
+    def _test_unofficial_holiday(self, name, since, end_year=2050):
+        self._test_categorised_holiday(name, self.unofficial_holidays, since, end_year)
+
     def _test_workday_holiday(self, name, since, end_year=2050):
-        start_year, month, day = (int(part) for part in since.split("-"))
-        self.assertHolidayName(
-            name,
-            self.workday_holidays,
-            (f"{year}-{month:02d}-{day:02d}" for year in range(start_year, end_year)),
-        )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1853, start_year))
-        self.assertNoHolidayName(name)
+        self._test_categorised_holiday(name, self.workday_holidays, since, end_year)
 
     def test_runeberg_day(self):
         self._test_unofficial_holiday("Runebergin päivä", "1976-02-05")
