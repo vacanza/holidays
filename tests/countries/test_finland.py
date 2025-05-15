@@ -243,7 +243,7 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.unofficial_holidays,
-            (f"{year}-{month}-{day}" for year in range(start_year, end_year)),
+            (f"{year}-{month:02d}-{day:02d}" for year in range(start_year, end_year)),
         )
         self.assertNoHolidayName(name, self.unofficial_holidays, range(1853, start_year))
         self.assertNoHolidayName(name)
@@ -253,7 +253,7 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.workday_holidays,
-            (f"{year}-{month}-{day}" for year in range(start_year, end_year)),
+            (f"{year}-{month:02d}-{day:02d}" for year in range(start_year, end_year)),
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(1853, start_year))
         self.assertNoHolidayName(name)
