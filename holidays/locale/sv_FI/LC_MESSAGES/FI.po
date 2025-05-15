@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2025-05-15 18:48+0700\n"
+"PO-Revision-Date: 2025-05-15 19:22+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sv_FI\n"
@@ -72,7 +72,7 @@ msgstr "Alla helgons dag"
 
 #. Independence Day.
 msgid "Itsenäisyyspäivä"
-msgstr "Självständigshetsdagen"
+msgstr "Självständighetsdagen"
 
 #. Christmas Eve.
 msgid "Jouluaatto"

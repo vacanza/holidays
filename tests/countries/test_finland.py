@@ -568,7 +568,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-11-06", "Svenska dagen, Gustav Adolfsdagen"),
             ("2024-11-10", "Fars dag"),
             ("2024-11-20", "Barnkonventionens dag"),
-            ("2024-12-06", "Självständigshetsdagen"),
+            ("2024-12-06", "Självständighetsdagen"),
             ("2024-12-08", "Sibeliusdagen, den finländska musikens dag"),
             ("2024-12-24", "Julafton"),
             ("2024-12-25", "Juldagen"),

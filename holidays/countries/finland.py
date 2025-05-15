@@ -320,7 +320,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_jun_6(name)
 
         # Day of the Finnish Flag was first created in 1934.
-        # This concides with the Midsummer Day.
+        # This coincides with Midsummer Day.
 
         # Day of the Finnish Flag.
         name = tr("Suomen lipun päivä")
