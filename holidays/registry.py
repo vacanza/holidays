@@ -54,6 +54,7 @@ COUNTRIES: RegistryDict = {
     "chad": ("Chad", "TD", "TCD"),
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
+    "cocos_islands": ("CocosIslands", "CC", "CCK"),
     "colombia": ("Colombia", "CO", "COL"),
     "congo": ("Congo", "CG", "COG"),
     "costa_rica": ("CostaRica", "CR", "CRI"),

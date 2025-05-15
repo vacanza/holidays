@@ -55,13 +55,15 @@ class Macau(
         * [Lei n.º 7/2008](https://bo.io.gov.mo/bo/i/2008/33/lei07.asp)
 
     Cross-Checking:
-        * [Public Holidays for 2017–2025](https://www.gov.mo/en/public-holidays/year-2017/)
+        * [Public Holidays for 2017-2025](https://www.gov.mo/en/public-holidays/year-2017/)
         * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
         * [Mandatory Holidays for 2009-2029](https://www.dsal.gov.mo/pt/standard/holiday_table.html)
     """
 
     country = "MO"
     default_language = "zh_MO"
+    # Decreto-Lei n.º 4/82/M.
+    start_year = 1982
     subdivisions = (
         "I",  # Ilhas.
         "M",  # Macau.
@@ -77,8 +79,6 @@ class Macau(
     }
     supported_categories = (GOVERNMENT, MANDATORY, PUBLIC)
     supported_languages = ("en_MO", "en_US", "pt_MO", "th", "zh_CN", "zh_MO")
-    # Decreto-Lei n.º 4/82/M.
-    start_year = 1982
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
@@ -414,7 +414,7 @@ class MacauStaticHolidays:
         * <https://www.dsal.gov.mo/pt/standard/holiday_table.html>
 
     Cross-Checking:
-        * [Public Holidays for 2017–2025](https://www.gov.mo/en/public-holidays/year-2017/)
+        * [Public Holidays for 2017-2025](https://www.gov.mo/en/public-holidays/year-2017/)
         * [Public Holidays for 2005-2018](https://web.archive.org/web/20171207162948/http://portal.gov.mo/web/guest/info_detail?infoid=1887061)
     """
 
