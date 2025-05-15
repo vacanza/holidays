@@ -47,6 +47,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
+            "2034-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
