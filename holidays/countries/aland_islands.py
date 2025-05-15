@@ -15,13 +15,13 @@ from holidays.countries.finland import Finland
 
 
 class HolidaysAX(Finland):
-    """Aland Islands holidays.
+    """Åland Islands holidays.
 
     Alias of a Finnish subdivision that is also officially assigned
     its own country code in ISO 3166-1.
 
     !!! note "Note"
-        Aland's Autonomy Day is currently added in Finland's implementation.
+        Åland's Autonomy Day is currently added in Finland's implementation.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Åland>
@@ -35,7 +35,7 @@ class HolidaysAX(Finland):
     supported_categories = (PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override Finland subdivisions.
     subdivisions_aliases = {}  # Override Finland subdivisions aliases.
-    # Aland Islands got its autonomy on May 7th, 1920.
+    # Åland Islands got its autonomy on May 7th, 1920.
     start_year = 1921
 
     def _populate_unofficial_holidays(self) -> None:
