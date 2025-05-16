@@ -10,11 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:  # pragma: no cover
-    from datetime import date
-
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -167,11 +162,8 @@ class Malaysia(
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
-        self.dts_observed: set[date] = set()
 
     def _populate_public_holidays(self):
-        # This must be done for every `_populate_public_holidays()` call.
-        # Otherwise, 2006/2007 Eid al-Adha observance would be miscalculated.
         self.dts_observed = set()
 
         # Chinese New Year.
