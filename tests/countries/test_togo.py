@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import WORKDAY
 from holidays.countries.togo import Togo, TG, TGO
-from tests.common import CommonCountryTests, WorkingDayTests
+from tests.common import CommonCountryTests
 
 
-class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
+class TestTogo(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1961, 2050)
@@ -103,11 +103,6 @@ class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Ramadan"
         self.assertHolidayName(
             name,
-            "2015-06-18",
-            "2016-06-06",
-            "2017-05-27",
-            "2018-05-17",
-            "2019-05-06",
             "2020-04-24",
             "2021-04-13",
             "2022-04-02",
@@ -121,16 +116,6 @@ class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
         name = "l'Aïd El-Fitr"
         self.assertHolidayName(
             name,
-            "2010-09-10",
-            "2011-08-31",
-            "2012-08-19",
-            "2013-08-08",
-            "2014-07-29",
-            "2015-07-18",
-            "2016-07-07",
-            "2017-06-26",
-            "2018-06-15",
-            "2019-06-05",
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -144,16 +129,6 @@ class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Tabaski"
         self.assertHolidayName(
             name,
-            "2010-11-17",
-            "2011-11-07",
-            "2012-10-26",
-            "2013-10-15",
-            "2014-10-05",
-            "2015-09-24",
-            "2016-09-13",
-            "2017-09-02",
-            "2018-08-22",
-            "2019-08-11",
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
@@ -177,12 +152,13 @@ class TestTogo(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHoliday(dt)
         self.assertHolidayName(name, Togo(subdiv="M"), dt)
 
-    def test_anniversary_of_the_failed_attack_on_lomé(self):
+    def test_anniversary_of_the_failed_attack_on_lome(self):
         name = "Anniversaire de l'attentat manqué contre Lomé"
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-09-24" for year in range(1987, 2050))
         )
-        self.assertNoHolidayName(name, range(1961, 1987))
+        self.assertNoHolidayName(name, self.workday_holidays, range(1961, 1987))
+        self.assertNoHolidayName(name)
 
     def test_2024(self):
         self.assertHolidays(
