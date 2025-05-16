@@ -53,6 +53,20 @@ REQUEST_TIMEOUT = 60
 USER_AGENT = "https://github.com/vacanza/holidays (python)"
 
 
+def get_session():
+    session = requests.Session()
+    retries = Retry(
+        total=3,
+        backoff_factor=1,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=["HEAD", "GET"],
+    )
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount("http://", adapter)  # NOSONAR
+    session.mount("https://", adapter)
+    return session
+
+
 def find_hyperlinks_in_file(filepath: str) -> list[str]:
     """
     Finds all hyperlinks within a single text file, respecting IGNORE_URL_PATTERNS.
@@ -275,70 +289,94 @@ def check_archive_urls_in_file(
     return file_url_map
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Find, check/archive via Wayback Machine, and replace URLs in project files.",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
-    parser.add_argument(
-        "--archive-policy",
-        choices=["if-missing", "always", "never"],
-        default="if-missing",
-        help="Archiving policy: 'if-missing' (only archive if no capture exists), "
-        "'always' (always submit for archiving), 'never' (only search for "
-        "exising captures)",
-    )
-    parser.add_argument(
-        "--check-only",
-        action="store_true",
-        help="Only print URLs that would need to be archived without checking or modifying "
-        "anything. Exits with code 1 if any URLs are found.",
-    )
-    args = parser.parse_args()
+def run_show_only_mode(files_to_urls_data: dict[str, list[str]]) -> int:
+    """
+    Runs the show-only mode which just displays URLs without checking or modifying.
 
-    start_time_total = time.time()
-    directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
+    Args:
+        files_to_urls_data: Dictionary mapping files to their URLs
 
-    # Scan for files and their URLs
-    files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+    Returns:
+        Exit code (0 for success, 1 if URLs are found)
+    """
+    print("Check-only mode: Printing all URLs that would need archiving")
 
-    if args.check_only:
-        print("Check-only mode: Printing all URLs that would need archiving")
+    if files_to_urls_data:
+        print("FOUND: URLs that need archiving")
 
-        if files_to_urls_data:
-            print("FOUND: URLs that need archiving")
+        for source_file, urls_in_file in files_to_urls_data.items():
+            print(f"\nFile: {source_file}")
+            for url in urls_in_file:
+                print(f"  {url}")
 
-            for source_file, urls_in_file in files_to_urls_data.items():
-                print(f"\nFile: {source_file}")
-                for url in urls_in_file:
-                    print(f"  {url}")
+        exit_code = 1
+    else:
+        print("SUCCESS: No URLs to archive")
+        exit_code = 0
 
-            exit_code = 1
-        else:
-            print("SUCCESS: No URLs to archive")
-            exit_code = 0
+    return exit_code
 
-        end_time_total = time.time()
-        print("-" * 30)
-        print(f"Script finished in {end_time_total - start_time_total:.2f} seconds.")
-        sys.exit(exit_code)
 
+def run_check_liveness_mode(files_to_urls_data: dict[str, list[str]]) -> int:
+    """
+    Checks if URLs are alive by sending HTTP HEAD requests.
+
+    Args:
+        files_to_urls_data: Dictionary mapping files to their URLs
+
+    Returns:
+        Exit code (0 if all links alive, 1 if any dead links found)
+    """
+    print("Liveness check mode: Checking if URLs are still alive")
+    session = get_session()
+
+    total_urls = 0
+    dead_count = 0
+
+    for source_file, urls_in_file in files_to_urls_data.items():
+        print(f"Checking file: {source_file}")
+
+        for url in urls_in_file:
+            total_urls += 1
+            try:
+                response = session.head(
+                    url,
+                    headers={"User-Agent": USER_AGENT},
+                    timeout=REQUEST_TIMEOUT // 4,  # use shorter timeout for HEAD requests
+                    allow_redirects=True,
+                )
+                response.raise_for_status()
+            except Exception as e:
+                print(f"  DEAD: {url} - {e}")
+                dead_count += 1
+
+    print("\n--- Liveness Check Summary ---")
+    print(f"Total URLs checked: {total_urls}")
+    print(f"Dead links found: {dead_count}")
+
+    return 1 if dead_count > 0 else 0
+
+
+def run_archive_mode(
+    files_to_urls_data: dict[str, list[str]],
+    archive_policy: str,
+) -> int:
+    """
+    Archives URLs via Wayback Machine and replaces them in the files.
+
+    Args:
+        files_to_urls_data: Dictionary mapping files to their URLs
+        archive_policy: Policy for archiving ("if-missing", "always", or "never")
+
+    Returns:
+        Exit code (always 0 for success)
+    """
     if not files_to_urls_data:
         print("No URLs found or no files processed. Exiting.")
-        sys.exit(0)
+        return 0
 
     print("\n--- Stage: Per-File Processing ---")
-    session = requests.Session()
-    retries = Retry(
-        total=5,
-        backoff_factor=2,
-        status_forcelist=[429, 500, 502, 503, 504],
-        allowed_methods=["HEAD", "GET", "OPTIONS", "POST"],
-    )
-    adapter = HTTPAdapter(max_retries=retries)
-    session.mount("http://", adapter)  # NOSONAR
-    session.mount("https://", adapter)
-
+    session = get_session()
     url_map: dict[str, Optional[str]] = {}
     total_files_processed = 0
     total_files_modified = 0
@@ -354,19 +392,63 @@ def main() -> None:
             continue
 
         print(f"\nProcessing file: {source_file}")
-        file_url_map = check_archive_urls_in_file(
-            urls_in_file, url_map, session, args.archive_policy
-        )
+        file_url_map = check_archive_urls_in_file(urls_in_file, url_map, session, archive_policy)
 
         total_files_processed += 1
         if replace_urls_in_file(source_file, file_url_map, urls_in_file):
             total_files_modified += 1
 
+    print(f"Processed {total_files_processed} files. Modified {total_files_modified} files.")
+
+    return 0
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Find, check/archive via Wayback Machine, and replace URLs in project files.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--archive-policy",
+        choices=["if-missing", "always", "never"],
+        default="if-missing",
+        help="Archiving policy: 'if-missing' (only archive if no capture exists), "
+        "'always' (always submit for archiving), 'never' (only search for "
+        "exising captures)",
+    )
+
+    mode_group = parser.add_mutually_exclusive_group()
+    mode_group.add_argument(
+        "--show-only",
+        action="store_true",
+        help="Only print URLs that would need to be archived without checking or modifying "
+        "anything. Exits with code 1 if any URLs are found.",
+    )
+    mode_group.add_argument(
+        "--check-liveness",
+        action="store_true",
+        help="Check if original URLs are still alive by sending HTTP HEAD requests. "
+        "Prints dead links and exits with code 1 if any are found.",
+    )
+    args = parser.parse_args()
+
+    start_time_total = time.time()
+    directory = os.path.abspath(os.path.join(__file__, "..", "..", "holidays"))
+    files_to_urls_data, _ = scan_directory_for_links(directory, EXTENSIONS_TO_SCAN)
+
+    if args.show_only:
+        exit_code = run_show_only_mode(files_to_urls_data)
+    elif args.check_liveness:
+        exit_code = run_check_liveness_mode(files_to_urls_data)
+    else:
+        exit_code = run_archive_mode(files_to_urls_data, args.archive_policy)
+
     end_time_total = time.time()
     print("-" * 30)
-    print(f"Processed {total_files_processed} files. Modified {total_files_modified} files.")
     print(f"Script finished in {end_time_total - start_time_total:.2f} seconds.")
     print("Done.")
+
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":
