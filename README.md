@@ -497,6 +497,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Equatorial Guinea</td>
+<td>GQ</td>
+<td></td>
+<td>en_US, <strong>es</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Estonia</td>
 <td>EE</td>
 <td></td>
