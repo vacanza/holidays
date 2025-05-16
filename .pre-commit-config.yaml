@@ -50,10 +50,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-docutils
           - types-polib
           - types-python-dateutil
-          - types-setuptools
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: '1.5.0'
