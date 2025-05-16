@@ -20,9 +20,9 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
     """El Salvador holidays.
 
     References:
-        * [Labor Code 1972](https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
-        * <https://www.timeanddate.com/holidays/el-salvador>
-        * <https://www.officeholidays.com/countries/el-salvador>
+        * [Labor Code 1972](https://web.archive.org/web/20240918054537/http://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
+        * <https://web.archive.org/web/20250308121509/https://www.timeanddate.com/holidays/el-salvador/>
+        * <https://web.archive.org/web/20250122083353/https://www.officeholidays.com/countries/el-salvador>
     """
 
     country = "SV"

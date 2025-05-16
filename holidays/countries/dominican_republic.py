@@ -25,7 +25,7 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
     """Dominican Republic holidays.
 
     References:
-        * <http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf>
+        * <https://web.archive.org/web/20220314033234/http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf>
         * <https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales>
     """
 

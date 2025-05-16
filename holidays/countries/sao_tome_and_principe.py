@@ -21,9 +21,9 @@ class SaoTomeAndPrincipe(ObservedHolidayBase, ChristianHolidays, InternationalHo
 
     References:
         * <https://web.archive.org/web/20190319201800/http://www.mnec.gov.st/index.php/o-pais?showall=1>
-        * <https://visitsaotomeprincipe.st/pt/informacoes-uteis/feriados>
+        * <https://web.archive.org/web/20241102204908/https://visitsaotomeprincipe.st/pt/informacoes-uteis/feriados>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_São_Tomé_and_Príncipe>
-        * <https://www.timeanddate.com/holidays/sao-tome-and-principe/>
+        * <https://web.archive.org/web/20250320223941/https://www.timeanddate.com/holidays/sao-tome-and-principe/>
     """
 
     country = "ST"

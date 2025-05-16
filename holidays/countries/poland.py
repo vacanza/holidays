@@ -23,7 +23,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Poland>
         * <https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce>
-        * <https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965>
+        * <https://web.archive.org/web/20250402103635/https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965>
     """
 
     country = "PL"

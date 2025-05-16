@@ -24,7 +24,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)>
-        * <https://matsne.gov.ge/en/document/view/1155567?publication=24>
+        * <https://web.archive.org/web/20250121212149/https://matsne.gov.ge/en/document/view/1155567?publication=24>
     """
 
     country = "GE"
@@ -103,7 +103,7 @@ class GeorgiaStaticHolidays:
     """Georgia special holidays.
 
     References:
-        * <https://www.matsne.gov.ge/ka/document/view/6173967>
+        * <https://web.archive.org/web/20240704104728/https://matsne.gov.ge/ka/document/view/6173967>
     """
 
     special_government_holidays = {

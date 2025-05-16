@@ -24,10 +24,10 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """Botswana holidays.
 
     References:
-        * <https://www.gov.bw/public-holidays>
-        * <https://publicholidays.africa/botswana/2021-dates/>
-        * <https://www.timeanddate.com/holidays/botswana/>
-        * <http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
+        * <https://web.archive.org/web/20250126165541/https://www.gov.bw/public-holidays>
+        * <https://web.archive.org/web/20240303024114/https://publicholidays.africa/botswana/2021-dates/>
+        * <https://web.archive.org/web/20250126135243/https://www.timeanddate.com/holidays/botswana/>
+        * <https://web.archive.org/web/20231103081712/http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
     """
 
     country = "BW"

@@ -21,7 +21,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania>
-        * <https://www.kalendorius.today/>
+        * <https://web.archive.org/web/20250415141132/https://www.kalendorius.today/>
     """
 
     country = "LT"

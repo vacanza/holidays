@@ -23,9 +23,9 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia>
-        * <https://sl.wikipedia.org/wiki/Dr%C5%BEavni_prazniki_v_Sloveniji>
-        * <https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-1091/zakon-o-praznikih-in-dela-prostih-dnevih-v-republiki-sloveniji>
-        * <https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/>
+        * <https://sl.wikipedia.org/wiki/Državni_prazniki_v_Sloveniji>
+        * <https://web.archive.org/web/20250429081020/https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-1091/zakon-o-praznikih-in-dela-prostih-dnevih-v-republiki-sloveniji>
+        * <https://web.archive.org/web/20250414154423/https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi>
     """
 
     country = "SI"

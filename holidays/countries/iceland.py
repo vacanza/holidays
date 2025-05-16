@@ -22,7 +22,7 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Iceland>
-        * <https://www.althingi.is/lagas/nuna/1971088.html>
+        * <https://web.archive.org/web/20240805200641/https://www.althingi.is/lagas/nuna/1971088.html>
     """
 
     country = "IS"
