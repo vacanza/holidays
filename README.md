@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 171 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 172 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -178,8 +178,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Andorra</td>
 <td>AD</td>
 <td>Parishes: 02 (Canillo), 03 (Encamp), 04 (La Massana), 05 (Ordino), 06 (Sant Julià de Lòria), 07 (Andorra la Vella), 08 (Escaldes-Engordany)</td>
-<td></td>
-<td></td>
+<td><strong>ca</strong>, en_US, uk</td>
+<td>GOVERNMENT</td>
 </tr>
 <tr>
 <td>Angola</td>
@@ -383,6 +383,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Cocos Islands</td>
+<td>CC</td>
+<td></td>
+<td>coa_CC, <strong>en_CC</strong>,  en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Colombia</td>
