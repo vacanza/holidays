@@ -59,12 +59,6 @@ class Nepal(
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        """
-        Args:
-            islamic_show_estimated:
-                Whether to add "estimated" label to Islamic holidays name
-                if holiday date is estimated.
-        """
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, cls=NepalHinduHolidays)
         InternationalHolidays.__init__(self)
