@@ -43,6 +43,7 @@ class Nepal(
         * <https://english.hamropatro.com/calendar>
         * <https://www.ashesh.com.np/nepali-calendar/>
         * <https://www.bolpatra.gov.np/egp/openDateConverter>
+        * <https://www.moha.gov.np/en/page/holidays>
     """
 
     country = "NP"
@@ -163,6 +164,7 @@ class Nepal(
                 self._add_holiday("National Democracy Day", democracy_day_dates[self._year])
 
             if self._year in republic_day_dates:
+                # Established in 2009.
                 # Republic Day.
                 self._add_holiday("Republic Day", republic_day_dates[self._year])
 
@@ -171,8 +173,8 @@ class Nepal(
             # Ram Navami.
             self._add_ram_navami("Ram Navami")
 
-            # Janai Purnima.
-            self._add_raksha_bandhan("Janai Purnima")
+            # Janai Poornima.
+            self._add_raksha_bandhan("Janai Poornima")
 
             # Shree Krishna Janmashtami.
             self._add_janmashtami("Shree Krishna Janmashtami")
@@ -208,14 +210,14 @@ class Nepal(
             # Prithvi Jayanti.
             self._add_holiday_jan_11("Prithvi Jayanti")
 
-        # Women's Day.
-        self._add_womens_day("Women's Day")
+        # International Women's Day.
+        self._add_womens_day("International Women's Day")
 
         # Nepal New Year.
         self._add_vaisakhi("Nepali New Year")
 
-        # Labor Day.
-        self._add_labor_day("Labor Day")
+        # International Labour Day.
+        self._add_labor_day("International Labour Day")
 
         if self._year in constitution_day_dates:
             # Constitution Day.
@@ -229,26 +231,26 @@ class Nepal(
         # Maghe Sankranti.
         self._add_makar_sankranti("Maghe Sankranti")
 
-        # Sonam Losar.
-        self._add_sonam_losar("Sonam Losar")
+        # Sonam Lhochhar.
+        self._add_sonam_losar("Sonam Lhochhar")
 
         # Maha Shivaratri.
         self._add_maha_shivaratri("Maha Shivaratri")
 
-        # Gyalpo Losar.
-        self._add_gyalpo_losar("Gyalpo Losar")
+        # Gyalpo Lhosar.
+        self._add_gyalpo_losar("Gyalpo Lhosar")
 
-        # Holi (Mountain & Hilly).
-        self._add_nepal_holi("Holi (Mountain & Hilly)")
+        # Fagu Poornima.
+        self._add_nepal_holi("Fagu Poornima")
 
-        # Holi (Terai).
-        self._add_holi("Holi (Terai)")
+        # Fagu Poornima (Terai).
+        self._add_holi("Fagu Poornima (Terai)")
 
         # Buddha Jayanti.
         self._add_buddha_purnima("Buddha Jayanti")
 
-        # Phulpati.
-        self._add_maha_saptami("Phulpati")
+        # Fulpati.
+        self._add_maha_saptami("Fulpati")
 
         # Maha Ashtami.
         self._add_maha_ashtami("Maha Ashtami")
@@ -256,32 +258,32 @@ class Nepal(
         # Maha Navami.
         self._add_maha_navami("Maha Navami")
 
-        # Vijayadashami.
-        self._add_dussehra("Vijayadashami")
+        # Bijaya Dashami.
+        self._add_dussehra("Bijaya Dashami")
 
         # Ekadashi (Dashain).
         self._add_papankusha_ekadashi("Ekadashi (Dashain)")
 
-        # Lakshmi Puja.
-        self._add_diwali_india("Lakshmi Puja")
+        # Laxmi Pooja.
+        self._add_diwali_india("Laxmi Pooja")
 
         # Gai Tihar.
         self._add_gau_krida("Gai Tihar")
 
-        # Govardhan Puja.
-        self._add_govardhan_puja("Govardhan Puja")
+        # Gobardhan Pooja.
+        self._add_govardhan_puja("Gobardhan Pooja")
 
-        # Mha Puja.
-        self._add_govardhan_puja("Mha Puja")
+        # Mha Pooja.
+        self._add_govardhan_puja("Mha Pooja")
 
         # Bhai Tika.
         self._add_bhai_dooj("Bhai Tika")
 
-        # Chhath Parwa.
-        self._add_chhath_puja("Chhath Parwa")
+        # Chhath Parva.
+        self._add_chhath_puja("Chhath Parva")
 
-        # Tamu Losar.
-        self._add_tamu_losar("Tamu Losar")
+        # Tamu Lhochhar.
+        self._add_tamu_losar("Tamu Lhochhar")
 
         # Islamic holidays.
 
@@ -349,7 +351,7 @@ class NepalHinduHolidays(_CustomHinduHolidays):
         2026: (JAN, 15),
     }
 
-    # Holi (Terai).
+    # Fagu Poornima (Terai).
     HOLI_DATES = {
         2023: (MAR, 7),
         2026: (MAR, 3),
@@ -386,18 +388,19 @@ class NepalHinduHolidays(_CustomHinduHolidays):
         2020: (OCT, 25),
     }
 
-    # Vijayadashami.
+    # Bijaya Dashami.
     DUSSEHRA_DATES = {
         2020: (OCT, 26),
     }
 
-    # Govardhan Puja.
+    # Gobardhan Pooja.
     GOVARDHAN_PUJA_DATES = {
         2020: (NOV, 16),
         2022: (OCT, 26),
+        2023: (NOV, 14),
     }
 
-    # Chhath Parwa.
+    # Chhath Parva.
     CHHATH_PUJA_DATES = {
         2025: (OCT, 27),
     }

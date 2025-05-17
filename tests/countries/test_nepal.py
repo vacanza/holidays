@@ -93,7 +93,9 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
     def test_womens_day(self):
-        self.assertHolidayName("Women's Day", (f"{year}-03-08" for year in range(2010, 2050)))
+        self.assertHolidayName(
+            "International Women's Day", (f"{year}-03-08" for year in range(2010, 2050))
+        )
 
     def test_nepali_new_year(self):
         name = "Nepali New Year"
@@ -109,8 +111,10 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_labor_day(self):
-        self.assertHolidayName("Labor Day", (f"{year}-05-01" for year in range(2010, 2050)))
+    def test_labour_day(self):
+        self.assertHolidayName(
+            "International Labour Day", (f"{year}-05-01" for year in range(2010, 2050))
+        )
 
     def test_republic_day(self):
         name = "Republic Day"
@@ -162,8 +166,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_sonam_losar(self):
-        name = "Sonam Losar"
+    def test_sonam_lhochhar(self):
+        name = "Sonam Lhochhar"
         dt = (
             "2019-02-05",
             "2020-01-25",
@@ -176,8 +180,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_gyalpo_losar(self):
-        name = "Gyalpo Losar"
+    def test_gyalpo_lhosar(self):
+        name = "Gyalpo Lhosar"
         dt = (
             "2019-03-07",
             "2020-02-24",
@@ -205,7 +209,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2010, 2036))
 
     def test_holi_hilly(self):
-        name = "Holi (Mountain & Hilly)"
+        name = "Fagu Poornima"
         dt = (
             "2019-03-20",
             "2020-03-09",
@@ -219,7 +223,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2010, 2036))
 
     def test_holi_terai(self):
-        name = "Holi (Terai)"
+        name = "Fagu Poornima (Terai)"
         dt = (
             "2019-03-21",
             "2020-03-10",
@@ -265,8 +269,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_janai_purnima(self):
-        name = "Janai Purnima"
+    def test_janai_poornima(self):
+        name = "Janai Poornima"
         dt = (
             "2021-08-22",
             "2022-08-12",
@@ -322,8 +326,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.workday_holidays, dt)
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
-    def test_phulpati(self):
-        name = "Phulpati"
+    def test_fulpati(self):
+        name = "Fulpati"
         dt = (
             "2019-10-05",
             "2020-10-23",
@@ -365,7 +369,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2010, 2036))
 
     def test_vijayadashami(self):
-        name = "Vijayadashami"
+        name = "Bijaya Dashami"
         dt = (
             "2019-10-08",
             "2020-10-26",
@@ -411,8 +415,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.workday_holidays, dt)
         self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
 
-    def test_lakshmi_puja(self):
-        name = "Lakshmi Puja"
+    def test_laxmi_pooja(self):
+        name = "Laxmi Pooja"
         dt = (
             "2019-10-27",
             "2020-11-14",
@@ -432,35 +436,35 @@ class TestNepal(CommonCountryTests, TestCase):
             "2020-11-15",
             "2021-11-04",
             "2022-10-25",
-            "2023-11-12",
+            "2023-11-13",
             "2024-11-01",
             "2025-10-21",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_govardhan_puja(self):
-        name = "Govardhan Puja"
+    def test_gobardhan_pooja(self):
+        name = "Gobardhan Pooja"
         dt = (
             "2019-10-28",
             "2020-11-16",
             "2021-11-05",
             "2022-10-26",
-            "2023-11-13",
+            "2023-11-14",
             "2024-11-02",
             "2025-10-22",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_mha_puja(self):
-        name = "Mha Puja"
+    def test_mha_pooja(self):
+        name = "Mha Pooja"
         dt = (
             "2019-10-28",
             "2020-11-16",
             "2021-11-05",
             "2022-10-26",
-            "2023-11-13",
+            "2023-11-14",
             "2024-11-02",
             "2025-10-22",
         )
@@ -474,7 +478,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2020-11-17",
             "2021-11-06",
             "2022-10-27",
-            "2023-11-14",
+            "2023-11-15",
             "2024-11-03",
             "2025-10-23",
         )
@@ -482,7 +486,7 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2010, 2036))
 
     def test_chhath_parwa(self):
-        name = "Chhath Parwa"
+        name = "Chhath Parva"
         dt = (
             "2019-11-02",
             "2020-11-20",
@@ -495,8 +499,8 @@ class TestNepal(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2010, 2036))
 
-    def test_tamu_losar(self):
-        name = "Tamu Losar"
+    def test_tamu_lhochhar(self):
+        name = "Tamu Lhochhar"
         dt = (
             "2019-12-31",
             "2020-12-30",
@@ -543,36 +547,36 @@ class TestNepal(CommonCountryTests, TestCase):
             ("2025-01-11", "Prithvi Jayanti"),
             ("2025-01-14", "Maghe Sankranti"),
             ("2025-01-29", "Martyr's Day"),
-            ("2025-01-30", "Sonam Losar"),
+            ("2025-01-30", "Sonam Lhochhar"),
             ("2025-02-19", "National Democracy Day"),
             ("2025-02-26", "Maha Shivaratri"),
-            ("2025-02-28", "Gyalpo Losar"),
-            ("2025-03-08", "Women's Day"),
-            ("2025-03-13", "Holi (Mountain & Hilly)"),
-            ("2025-03-14", "Holi (Terai)"),
+            ("2025-02-28", "Gyalpo Lhosar"),
+            ("2025-03-08", "International Women's Day"),
+            ("2025-03-13", "Fagu Poornima"),
+            ("2025-03-14", "Fagu Poornima (Terai)"),
             ("2025-03-31", "Id-ul-Fitr"),
             ("2025-04-06", "Ram Navami"),
             ("2025-04-14", "Nepali New Year"),
-            ("2025-05-01", "Labor Day"),
+            ("2025-05-01", "International Labour Day"),
             ("2025-05-12", "Buddha Jayanti"),
             ("2025-05-28", "Republic Day"),
             ("2025-06-07", "Bakrid"),
-            ("2025-08-09", "Janai Purnima"),
+            ("2025-08-09", "Janai Poornima"),
             ("2025-08-16", "Shree Krishna Janmashtami"),
             ("2025-09-19", "Constitution Day"),
             ("2025-09-22", "Ghatasthapana"),
-            ("2025-09-29", "Phulpati"),
+            ("2025-09-29", "Fulpati"),
             ("2025-09-30", "Maha Ashtami"),
             ("2025-10-01", "Maha Navami"),
-            ("2025-10-02", "Vijayadashami"),
+            ("2025-10-02", "Bijaya Dashami"),
             ("2025-10-03", "Ekadashi (Dashain)"),
             ("2025-10-04", "Duwadashi (Dashain)"),
-            ("2025-10-20", "Lakshmi Puja"),
+            ("2025-10-20", "Laxmi Pooja"),
             ("2025-10-21", "Gai Tihar"),
-            ("2025-10-22", "Govardhan Puja; Mha Puja"),
+            ("2025-10-22", "Gobardhan Pooja; Mha Pooja"),
             ("2025-10-23", "Bhai Tika"),
             ("2025-10-24", "Tihar Holiday"),
-            ("2025-10-27", "Chhath Parwa"),
+            ("2025-10-27", "Chhath Parva"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-30", "Tamu Losar"),
+            ("2025-12-30", "Tamu Lhochhar"),
         )
