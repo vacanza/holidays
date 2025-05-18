@@ -118,14 +118,6 @@ msgstr ""
 msgid "San Francisco Javier"
 msgstr ""
 
-#. Our Lady of Carmen.
-msgid "Nuestra señora del Carmen"
-msgstr ""
-
-#. Immaculate Heart of Mary.
-msgid "Inmaculada Corazon de Maria"
-msgstr ""
-
 #. Saint Teresa of Jesus.
 msgid "Santa Teresa de Jesús"
 msgstr ""
@@ -152,4 +144,12 @@ msgstr ""
 
 #. Our Lady of Asunción.
 msgid "Nuestra señora de Asunción"
+msgstr ""
+
+#. Our Lady of Carmen.
+msgid "Nuestra Señora del Carmen"
+msgstr ""
+
+#. Immaculate Heart of Mary.
+msgid "Inmaculada Corazón de Maria"
 msgstr ""

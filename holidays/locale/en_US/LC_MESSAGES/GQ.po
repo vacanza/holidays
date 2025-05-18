@@ -118,14 +118,6 @@ msgstr "Exaltation of the Holy Cross"
 msgid "San Francisco Javier"
 msgstr "Saint Francis Xavier"
 
-#. Our Lady of Carmen.
-msgid "Nuestra señora del Carmen"
-msgstr "Our Lady of Carmen"
-
-#. Immaculate Heart of Mary.
-msgid "Inmaculada Corazon de Maria"
-msgstr "Immaculate Heart of Mary"
-
 #. Saint Teresa of Jesus.
 msgid "Santa Teresa de Jesús"
 msgstr "Saint Teresa of Jesus"
@@ -153,3 +145,11 @@ msgstr "Assumption of Our Lady Patroness of Bikurga"
 #. Our Lady of Asunción.
 msgid "Nuestra señora de Asunción"
 msgstr "Our Lady of Asunción"
+
+#. Our Lady of Carmen.
+msgid "Nuestra Señora del Carmen"
+msgstr "Our Lady of Carmen"
+
+#. Immaculate Heart of Mary.
+msgid "Inmaculada Corazón de Maria"
+msgstr "Immaculate Heart of Mary"

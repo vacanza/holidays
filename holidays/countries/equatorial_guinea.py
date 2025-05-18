@@ -69,8 +69,9 @@ class EquatorialGuinea(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=EquatorialGuineaStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
+
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
@@ -79,7 +80,7 @@ class EquatorialGuinea(
         self._add_womens_day(tr("Día Internacional de la Mujer"))
 
         # Good Friday.
-        self._add_good_friday(tr("Viernes Santo"))
+        self._add_observed(self._add_good_friday(tr("Viernes Santo")))
 
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
@@ -89,7 +90,7 @@ class EquatorialGuinea(
             self._add_observed(self._add_holiday_jun_5(tr("Día del Presidente")))
 
         # Corpus Christi.
-        self._add_corpus_christi_day(tr("Corpus Christi"))
+        self._add_observed(self._add_corpus_christi_day(tr("Corpus Christi")))
 
         if self._year >= 1979:
             # Armed Forces Day.
@@ -156,13 +157,13 @@ class EquatorialGuinea(
 
     def _populate_subdiv_li_public_holidays(self):
         # Our Lady of Carmen.
-        self._add_holiday_jul_15(tr("Nuestra señora del Carmen"))
+        self._add_holiday_jul_15(tr("Nuestra Señora del Carmen"))
 
         # Santiago Apóstol.
         self._add_holiday_jul_25(tr("Santiago Apóstol"))
 
         # Immaculate Heart of Mary.
-        self._add_holiday_aug_22(tr("Inmaculada Corazon de Maria"))
+        self._add_holiday_aug_22(tr("Inmaculada Corazón de Maria"))
 
         # Saint Teresa of Jesus.
         self._add_holiday_oct_15(tr("Santa Teresa de Jesús"))
