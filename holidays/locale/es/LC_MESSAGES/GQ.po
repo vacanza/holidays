@@ -143,7 +143,7 @@ msgid "Asunción de Nuestra Señora Patrona de Bikurga"
 msgstr ""
 
 #. Our Lady of Asunción.
-msgid "Nuestra señora de Asunción"
+msgid "Nuestra Señora de Asunción"
 msgstr ""
 
 #. Our Lady of Carmen.

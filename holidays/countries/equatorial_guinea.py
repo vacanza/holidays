@@ -176,7 +176,7 @@ class EquatorialGuinea(
         self._add_holiday_jun_29(tr("Santos Pedro y Pablo"))
 
         # Our Lady of Asunción.
-        self._add_holiday_aug_15(tr("Nuestra señora de Asunción"))
+        self._add_holiday_aug_15(tr("Nuestra Señora de Asunción"))
 
         # Saint Pius X.
         self._add_holiday_aug_21(tr("Santo Pío X"))

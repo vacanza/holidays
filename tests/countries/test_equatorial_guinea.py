@@ -197,7 +197,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
                 "2025-08-15",
                 "Asunción de Nuestra Señora Patrona de Bikurga; "
                 + "Día de la Ley Fundamental; "
-                + "Nuestra señora de Asunción",
+                + "Nuestra Señora de Asunción",
             ),
             ("2025-08-21", "Santo Pío X"),
             ("2025-08-22", "Inmaculada Corazón de Maria; Maria Reina"),
