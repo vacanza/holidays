@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-01 05:05+0000\n"
 "PO-Revision-Date: 2025-05-01 05:05+0000\n"
 "Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
@@ -55,11 +55,6 @@ msgstr ""
 msgid "Día de Independencia"
 msgstr ""
 
-#. Feast of Santa Isabel.
-msgid "Fiesta de Santa Isabel"
-msgstr ""
-
-#. Feast of the Immaculate Conception.
 msgid "Fiesta de Inmaculada Concepción"
 msgstr ""
 
@@ -67,7 +62,7 @@ msgstr ""
 msgid "Día de Navidad"
 msgstr ""
 
-#. AFCON Victory Against Ivory Coast
+#. AFCON Victory Against Ivory Coast.
 msgid "Victoria de la AFCON contra Costa de Marfil"
 msgstr ""
 
@@ -81,4 +76,80 @@ msgstr ""
 
 #. Fundamental Law Day.
 msgid "Día de la Ley Fundamental"
+msgstr ""
+
+#. Feast of Santa Isabel.
+msgid "Fiesta de Santa Isabel"
+msgstr ""
+
+#. Patron Saint Festival of Annobón.
+msgid "Fiesta Patronal de Annobón"
+msgstr ""
+
+#. Our Lady of Montserrat.
+msgid "Nuestra Señora de Montserrat"
+msgstr ""
+
+#. Santiago Apóstol.
+msgid "Santiago Apóstol"
+msgstr ""
+
+#. Maria Reina.
+msgid "Maria Reina"
+msgstr ""
+
+#. Saint Barbara
+msgid "Santa Bárbara"
+msgstr ""
+
+#. Virgin of Africa.
+msgid "Virgen de Africa"
+msgstr ""
+
+#. Saint Peter Claver.
+msgid "San Pedro Claver"
+msgstr ""
+
+#. Exaltation of the Holy Cross.
+msgid "Exaltación de la Santa Cruz"
+msgstr ""
+
+#. Saint Francis Xavier.
+msgid "San Francisco Javier"
+msgstr ""
+
+#. Our Lady of Carmen.
+msgid "Nuestra señora del Carmen"
+msgstr ""
+
+#. Immaculate Heart of Mary.
+msgid "Inmaculada Corazon de Maria"
+msgstr ""
+
+#. Saint Teresa of Jesus.
+msgid "Santa Teresa de Jesús"
+msgstr ""
+
+#. Holy Family.
+msgid "Sagrada Familia"
+msgstr ""
+
+#. Saints Peter and Paul.
+msgid "Santos Pedro y Pablo"
+msgstr ""
+
+#. Saint Pius X.
+msgid "Santo Pío X"
+msgstr ""
+
+#. Virgin of Guadalupe.
+msgid "Virgen de Guadalupe"
+msgstr ""
+
+#. Assumption of Our Lady Patroness of Bikurga.
+msgid "Asunción de Nuestra Señora Patrona de Bikurga"
+msgstr ""
+
+#. Our Lady of Asunción.
+msgid "Nuestra señora de Asunción"
 msgstr ""

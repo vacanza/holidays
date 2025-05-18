@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Equatorial Guinea holidays.
+# Equatorial Guinea holidays en_US localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.72\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-01 05:05+0000\n"
 "PO-Revision-Date: 2025-05-01 05:05+0000\n"
 "Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
@@ -55,11 +55,6 @@ msgstr "Corpus Christi"
 msgid "Día de Independencia"
 msgstr "Independence Day"
 
-#. Feast of Santa Isabel.
-msgid "Fiesta de Santa Isabel"
-msgstr "Feast of Santa Isabel"
-
-#. Feast of the Immaculate Conception.
 msgid "Fiesta de Inmaculada Concepción"
 msgstr "Feast of the Immaculate Conception"
 
@@ -67,7 +62,7 @@ msgstr "Feast of the Immaculate Conception"
 msgid "Día de Navidad"
 msgstr "Christmas Day"
 
-#. AFCON Victory Against Ivory Coast
+#. AFCON Victory Against Ivory Coast.
 msgid "Victoria de la AFCON contra Costa de Marfil"
 msgstr "AFCON Victory Against Ivory Coast"
 
@@ -82,3 +77,79 @@ msgstr "Armed Forces Day"
 #. Fundamental Law Day.
 msgid "Día de la Ley Fundamental"
 msgstr "Fundamental Law Day"
+
+#. Feast of Santa Isabel.
+msgid "Fiesta de Santa Isabel"
+msgstr "Feast of Santa Isabel"
+
+#. Patron Saint Festival of Annobón.
+msgid "Fiesta Patronal de Annobón"
+msgstr "Patron Saint Festival of Annobón"
+
+#. Our Lady of Montserrat.
+msgid "Nuestra Señora de Montserrat"
+msgstr "Our Lady of Montserrat"
+
+#. Santiago Apóstol.
+msgid "Santiago Apóstol"
+msgstr "Santiago Apóstol"
+
+#. Maria Reina.
+msgid "Maria Reina"
+msgstr "Maria Reina"
+
+#. Saint Barbara
+msgid "Santa Bárbara"
+msgstr "Saint Barbara"
+
+#. Virgin of Africa.
+msgid "Virgen de Africa"
+msgstr "Virgin of Africa"
+
+#. Saint Peter Claver.
+msgid "San Pedro Claver"
+msgstr "Saint Peter Claver"
+
+#. Exaltation of the Holy Cross.
+msgid "Exaltación de la Santa Cruz"
+msgstr "Exaltation of the Holy Cross"
+
+#. Saint Francis Xavier.
+msgid "San Francisco Javier"
+msgstr "Saint Francis Xavier"
+
+#. Our Lady of Carmen.
+msgid "Nuestra señora del Carmen"
+msgstr "Our Lady of Carmen"
+
+#. Immaculate Heart of Mary.
+msgid "Inmaculada Corazon de Maria"
+msgstr "Immaculate Heart of Mary"
+
+#. Saint Teresa of Jesus.
+msgid "Santa Teresa de Jesús"
+msgstr "Saint Teresa of Jesus"
+
+#. Holy Family.
+msgid "Sagrada Familia"
+msgstr "Holy Family"
+
+#. Saints Peter and Paul.
+msgid "Santos Pedro y Pablo"
+msgstr "Saints Peter and Paul"
+
+#. Saint Pius X.
+msgid "Santo Pío X"
+msgstr "Saint Pius X"
+
+#. Virgin of Guadalupe.
+msgid "Virgen de Guadalupe"
+msgstr "Virgin of Guadalupe"
+
+#. Assumption of Our Lady Patroness of Bikurga.
+msgid "Asunción de Nuestra Señora Patrona de Bikurga"
+msgstr "Assumption of Our Lady Patroness of Bikurga"
+
+#. Our Lady of Asunción.
+msgid "Nuestra señora de Asunción"
+msgstr "Our Lady of Asunción"
