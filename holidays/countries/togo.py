@@ -55,21 +55,6 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
     supported_languages = ("en_US", "fr")
     # Togo gained independence on April 27, 1960.
     start_year = 1961
-    subdivisions = (
-        "C",  # Centrale
-        "K",  # Kara
-        "M",  # Maritime
-        "P",  # Plateaux
-        "S",  # Savanes
-    )
-
-    subdivisions_aliases = {
-        "Centrale": "C",
-        "Kara": "K",
-        "Maritime": "M",
-        "Plateaux": "P",
-        "Savanes": "S",
-    }
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -128,10 +113,6 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Tabaski"))
-
-    def _populate_subdiv_m_public_holidays(self):
-        # Prophet Mohammed's Birthday.
-        self._add_mawlid_day(tr("Journée anniversaire de la naissance du prophète Mohamed"))
 
     def _populate_workday_holidays(self):
         if self._year >= 1987:

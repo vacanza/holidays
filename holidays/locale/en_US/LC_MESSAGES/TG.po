@@ -91,7 +91,3 @@ msgstr "Eid al-Adha"
 #. Anniversary of the Failed Attack on Lomé.
 msgid "Anniversaire de l'attentat manqué contre Lomé"
 msgstr "Anniversary of the Failed Attack on Lomé"
-
-#. Prophet Mohammed's Birthday.
-msgid "Journée anniversaire de la naissance du prophète Mohamed"
-msgstr "Prophet Mohammed's Birthday"

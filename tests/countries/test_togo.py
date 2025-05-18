@@ -138,20 +138,6 @@ class TestTogo(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1961, 2050))
 
-    def test_mawlid_day(self):
-        name = "Journée anniversaire de la naissance du prophète Mohamed"
-        self.assertNoHolidayName(name, range(1961, 2050))
-        dt = (
-            "2020-10-29",
-            "2021-10-19",
-            "2022-10-08",
-            "2023-09-27",
-            "2024-09-16",
-            "2025-09-05",
-        )
-        self.assertNoHoliday(dt)
-        self.assertHolidayName(name, Togo(subdiv="M"), dt)
-
     def test_anniversary_of_the_failed_attack_on_lome(self):
         name = "Anniversaire de l'attentat manqué contre Lomé"
         self.assertHolidayName(
@@ -209,7 +195,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-06-09", "Lundi de Pentecôte"),
             ("2025-06-21", "Fête des Martyrs"),
             ("2025-08-15", "Assomption"),
-            ("2025-09-05", "Journée anniversaire de la naissance du prophète Mohamed"),
             ("2025-09-24", "Anniversaire de l'attentat manqué contre Lomé"),
             ("2025-11-01", "Toussaint"),
             ("2025-12-25", "Noël"),
@@ -229,7 +214,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-06-09", "Whit Monday"),
             ("2025-06-21", "Martyrs' Day"),
             ("2025-08-15", "Assumption Day"),
-            ("2025-09-05", "Prophet Mohammed's Birthday"),
             ("2025-09-24", "Anniversary of the Failed Attack on Lomé"),
             ("2025-11-01", "All Saints' Day"),
             ("2025-12-25", "Christmas Day"),
