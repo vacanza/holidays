@@ -71,7 +71,7 @@ select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W"]
 
 [tool.ruff.lint.per-file-ignores]
 "scripts/generate_release_notes.py" = ["T201"]
-"tests/**" = ["S"]
+"tests/test_holiday_base.py" = ["S301"]
 
 [tool.ruff.lint.flake8-errmsg]
 max-string-length = 99
