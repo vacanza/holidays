@@ -169,6 +169,7 @@ from .tonga import Tonga, TO, TON
 from .trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from .tunisia import Tunisia, TN, TUN
 from .turkey import Turkey, TR, TUR
+from .turks_and_caicos_islands import TurksAndCaicosIslands, TC, TCA
 from .tuvalu import Tuvalu, TV, TUV
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
