@@ -47,20 +47,22 @@ class TestVaticanCity(CommonCountryTests, TestCase):
     def test_anniversary_election_of_holy_father(self):
         name = "Anniversario dell'Elezione del Santo Padre"
         self.assertHolidayName(name, (f"{year}-02-06" for year in range(1929, 1940)))
-        self.assertHolidayName(name, (f"{year}-03-02" for year in range(1939, 1959)))
-        self.assertHolidayName(name, (f"{year}-10-28" for year in range(1958, 1963)))
-        self.assertHolidayName(name, (f"{year}-06-21" for year in range(1963, 1979)))
-        self.assertHolidayName(name, "1978-08-26")
-        self.assertHolidayName(name, (f"{year}-10-16" for year in range(1978, 2005)))
-        self.assertHolidayName(name, (f"{year}-04-19" for year in range(2005, 2013)))
-        self.assertHolidayName(name, (f"{year}-03-13" for year in range(2013, 2050)))
+        self.assertHolidayName(name, (f"{year}-03-02" for year in range(1940, 1959)))
+        self.assertHolidayName(name, (f"{year}-10-28" for year in range(1959, 1963)))
+        self.assertHolidayName(name, (f"{year}-06-21" for year in range(1964, 1979)))
+        self.assertHolidayName(name, (f"{year}-10-16" for year in range(1979, 2005)))
+        self.assertHolidayName(name, (f"{year}-04-19" for year in range(2006, 2013)))
+        self.assertHolidayName(name, (f"{year}-03-13" for year in range(2014, 2026)))
+        self.assertHolidayName(name, (f"{year}-05-08" for year in range(2026, 2050)))
+        self.assertNoHolidayName(name, 1963, 2005, 2013)
 
     def test_name_day_of_holy_father(self):
         name = "Onomastico del Santo Padre"
         self.assertHolidayName(name, (f"{year}-11-04" for year in range(1978, 2005)))
-        self.assertHolidayName(name, (f"{year}-03-19" for year in range(2005, 2013)))
-        self.assertHolidayName(name, (f"{year}-04-23" for year in range(2013, 2050)))
-        self.assertNoHolidayName(name, range(1929, 1978))
+        self.assertHolidayName(name, (f"{year}-03-19" for year in range(2006, 2013)))
+        self.assertHolidayName(name, (f"{year}-04-23" for year in range(2013, 2026)))
+        self.assertHolidayName(name, (f"{year}-09-17" for year in range(2025, 2050)))
+        self.assertNoHolidayName(name, range(1929, 1978), 2005)
 
     def test_saint_josephs_day(self):
         self.assertHolidayName("San Giuseppe", (f"{year}-03-19" for year in range(1929, 2050)))
@@ -72,6 +74,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-18",
             "2020-04-09",
             "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -82,6 +88,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-19",
             "2020-04-10",
             "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -92,6 +102,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-20",
             "2020-04-11",
             "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -102,6 +116,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-21",
             "2020-04-12",
             "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -112,6 +130,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-22",
             "2020-04-13",
             "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -122,6 +144,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-04-23",
             "2020-04-14",
             "2021-04-06",
+            "2022-04-19",
+            "2023-04-11",
+            "2024-04-02",
+            "2025-04-22",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -129,16 +155,13 @@ class TestVaticanCity(CommonCountryTests, TestCase):
         name = "Ascensione del Signore"
         self.assertHolidayName(
             name,
-            "2000-06-01",
-            "2001-05-24",
-            "2002-05-09",
-            "2003-05-29",
-            "2004-05-20",
-            "2005-05-05",
-            "2006-05-25",
-            "2007-05-17",
-            "2008-05-01",
-            "2009-05-21",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            "2024-05-09",
+            "2025-05-29",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -146,16 +169,13 @@ class TestVaticanCity(CommonCountryTests, TestCase):
         name = "Corpus Domini"
         self.assertHolidayName(
             name,
-            "2000-06-22",
-            "2001-06-14",
-            "2002-05-30",
-            "2003-06-19",
-            "2004-06-10",
-            "2005-05-26",
-            "2006-06-15",
-            "2007-06-07",
-            "2008-05-22",
-            "2009-06-11",
+            "2019-06-20",
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+            "2025-06-19",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -171,6 +191,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-06-09",
             "2020-05-31",
             "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -181,6 +205,10 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             "2019-06-16",
             "2020-06-07",
             "2021-05-30",
+            "2022-06-12",
+            "2023-06-04",
+            "2024-05-26",
+            "2025-06-15",
         )
         self.assertHolidayName(name, range(1929, 2050))
 
@@ -207,8 +235,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
 
     def test_all_souls_day(self):
         self.assertHolidayName(
-            "Tutti i Fedeli Defunti",
-            (f"{year}-11-02" for year in range(1929, 2050)),
+            "Tutti i Fedeli Defunti", (f"{year}-11-02" for year in range(1929, 2050))
         )
 
     def test_immaculate_conception(self):
@@ -405,7 +432,6 @@ class TestVaticanCity(CommonCountryTests, TestCase):
         )
 
     def test_l10n_default(self):
-        # https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf
         self.assertLocalizedHolidays(
             ("2025-01-01", "Solennità di Maria Santissima Madre di Dio"),
             ("2025-01-06", "Epifania del Signore"),
@@ -428,6 +454,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             ("2025-08-14", "Vigilia dell'Assunzione di Maria Santissima"),
             ("2025-08-15", "Assunzione di Maria Santissima"),
             ("2025-08-16", "Giorno Successivo all'Assunzione di Maria Santissima"),
+            ("2025-09-17", "Onomastico del Santo Padre"),
             ("2025-11-01", "Tutti i Santi"),
             ("2025-11-02", "Tutti i Fedeli Defunti"),
             ("2025-12-08", "Immacolata Concezione"),
@@ -462,6 +489,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             ("2025-08-14", "Day Before Assumption of Mary"),
             ("2025-08-15", "Assumption of Mary Day"),
             ("2025-08-16", "Day After Assumption of Mary"),
+            ("2025-09-17", "Name Day of the Holy Father"),
             ("2025-11-01", "All Saints' Day"),
             ("2025-11-02", "All Souls' Day"),
             ("2025-12-08", "Immaculate Conception"),
@@ -496,6 +524,7 @@ class TestVaticanCity(CommonCountryTests, TestCase):
             ("2025-08-14", "วันก่อนวันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"),
             ("2025-08-15", "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"),
             ("2025-08-16", "วันหลังวันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"),
+            ("2025-09-17", "วันฉลองพระนามเดิมสมเด็จพระสันตะปาปา"),
             ("2025-11-01", "วันสมโภชนักบุญทั้งหลาย"),
             ("2025-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
             ("2025-12-08", "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"),
