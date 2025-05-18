@@ -66,13 +66,11 @@ class EquatorialGuinea(
     }
 
     def __init__(self, *args, **kwargs):
-        InternationalHolidays.__init__(self)
-        ObservedHolidayBase.__init__(self)
         ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=EquatorialGuineaStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
-
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
