@@ -785,21 +785,23 @@ class HolidayBase(dict[date, str]):
         """Initialize translation function based on language settings."""
         supported_languages = set(self.supported_languages)
         if self._entity_code is not None:
-            fallback = self.language not in supported_languages
-            # Uses language parameter if provided,
-            # else defaults to child entity's `default_language` if exists.
-            if not fallback and self.language is not None:
+            # Determine translation language: explicit setting first, then default.
+            # This logic is used to ensure that the language is set correctly for child entities
+            # in case they have a different language than their parent entity.
+            is_supported_language = self.language in supported_languages
+            if self.language and is_supported_language:
                 languages = [self.language]
-            elif self.default_language is not None:
+            elif self.default_language:
                 languages = [self.default_language]
             else:
                 languages = None
+
             locale_directory = str(Path(__file__).with_name("locale"))
 
             # Add entity native content translations.
             entity_translation = translation(
                 self._entity_code,
-                fallback=fallback,
+                fallback=not is_supported_language,
                 languages=languages,
                 localedir=locale_directory,
             )
@@ -808,7 +810,7 @@ class HolidayBase(dict[date, str]):
                 entity_translation.add_fallback(
                     translation(
                         parent_entity.country or parent_entity.market,
-                        fallback=fallback,
+                        fallback=is_supported_language,
                         languages=languages,
                         localedir=locale_directory,
                     )
