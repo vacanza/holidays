@@ -595,6 +595,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>Grenada</td>
+<td>GD</td>
+<td></td>
+<td><strong>en_GD</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Guam</td>
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
