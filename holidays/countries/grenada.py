@@ -45,7 +45,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     default_language = "en_GD"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    # Grenada gained independence from the United Kingdom on February 7, 1974.
+    # First available revision of Bank Holidays Act.
     start_year = 2000
     supported_languages = ("en_GD", "en_US")
 
