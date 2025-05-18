@@ -810,7 +810,7 @@ class HolidayBase(dict[date, str]):
                 entity_translation.add_fallback(
                     translation(
                         parent_entity.country or parent_entity.market,
-                        fallback=is_supported_language,
+                        fallback=not is_supported_language,
                         languages=languages,
                         localedir=locale_directory,
                     )
