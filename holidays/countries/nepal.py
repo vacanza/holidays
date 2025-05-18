@@ -70,96 +70,92 @@ class Nepal(
 
     def _add_non_continuous_holidays(self, is_workday: bool = False):
         """Holidays removed by MoHA between 2019-2020."""
-
-        martyrs_day_dates = {
-            2010: (JAN, 30),
-            2011: (JAN, 30),
-            2012: (JAN, 30),
-            2013: (JAN, 29),
-            2014: (JAN, 30),
-            2015: (JAN, 30),
-            2016: (JAN, 30),
-            2017: (JAN, 29),
-            2018: (JAN, 30),
-            2019: (JAN, 30),
-            2020: (JAN, 30),
-            2021: (JAN, 29),
-            2022: (JAN, 30),
-            2023: (JAN, 30),
-            2024: (JAN, 30),
-            2025: (JAN, 29),
-            2026: (JAN, 29),
-            2027: (JAN, 29),
-            2028: (JAN, 29),
-            2029: (JAN, 29),
-            2030: (JAN, 29),
-            2031: (JAN, 30),
-            2032: (JAN, 30),
-            2033: (JAN, 29),
-        }
-
-        democracy_day_dates = {
-            2010: (FEB, 19),
-            2011: (FEB, 19),
-            2012: (FEB, 19),
-            2013: (FEB, 18),
-            2014: (FEB, 19),
-            2015: (FEB, 19),
-            2016: (FEB, 19),
-            2017: (FEB, 18),
-            2018: (FEB, 19),
-            2019: (FEB, 19),
-            2020: (FEB, 19),
-            2021: (FEB, 19),
-            2022: (FEB, 19),
-            2023: (FEB, 19),
-            2024: (FEB, 19),
-            2025: (FEB, 19),
-            2026: (FEB, 19),
-            2027: (FEB, 19),
-            2028: (FEB, 19),
-            2029: (FEB, 19),
-            2030: (FEB, 19),
-            2031: (FEB, 20),
-            2032: (FEB, 20),
-            2033: (FEB, 19),
-        }
-
-        republic_day_dates = {
-            2010: (MAY, 29),
-            2011: (MAY, 29),
-            2012: (MAY, 28),
-            2013: (MAY, 29),
-            2014: (MAY, 29),
-            2015: (MAY, 29),
-            2016: (MAY, 28),
-            2017: (MAY, 29),
-            2018: (MAY, 29),
-            2019: (MAY, 29),
-            2020: (MAY, 28),
-            2021: (MAY, 29),
-            2022: (MAY, 29),
-            2023: (MAY, 29),
-            2024: (MAY, 28),
-            2025: (MAY, 28),
-            2026: (MAY, 29),
-            2027: (MAY, 29),
-            2028: (MAY, 28),
-            2029: (MAY, 28),
-            2030: (MAY, 29),
-            2031: (MAY, 29),
-            2032: (MAY, 28),
-        }
-
         if (2019 <= self._year <= 2020) == is_workday:
+            martyrs_day_dates = {
+                2010: (JAN, 30),
+                2011: (JAN, 30),
+                2012: (JAN, 30),
+                2013: (JAN, 29),
+                2014: (JAN, 30),
+                2015: (JAN, 30),
+                2016: (JAN, 30),
+                2017: (JAN, 29),
+                2018: (JAN, 30),
+                2019: (JAN, 30),
+                2020: (JAN, 30),
+                2021: (JAN, 29),
+                2022: (JAN, 30),
+                2023: (JAN, 30),
+                2024: (JAN, 30),
+                2025: (JAN, 29),
+                2026: (JAN, 29),
+                2027: (JAN, 29),
+                2028: (JAN, 29),
+                2029: (JAN, 29),
+                2030: (JAN, 29),
+                2031: (JAN, 30),
+                2032: (JAN, 30),
+                2033: (JAN, 29),
+            }
             if self._year in martyrs_day_dates:
                 # Martyr's Day.
                 self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
 
+            democracy_day_dates = {
+                2010: (FEB, 19),
+                2011: (FEB, 19),
+                2012: (FEB, 19),
+                2013: (FEB, 18),
+                2014: (FEB, 19),
+                2015: (FEB, 19),
+                2016: (FEB, 19),
+                2017: (FEB, 18),
+                2018: (FEB, 19),
+                2019: (FEB, 19),
+                2020: (FEB, 19),
+                2021: (FEB, 19),
+                2022: (FEB, 19),
+                2023: (FEB, 19),
+                2024: (FEB, 19),
+                2025: (FEB, 19),
+                2026: (FEB, 19),
+                2027: (FEB, 19),
+                2028: (FEB, 19),
+                2029: (FEB, 19),
+                2030: (FEB, 19),
+                2031: (FEB, 20),
+                2032: (FEB, 20),
+                2033: (FEB, 19),
+            }
             if self._year in democracy_day_dates:
                 # National Democracy Day.
                 self._add_holiday("National Democracy Day", democracy_day_dates[self._year])
 
+            republic_day_dates = {
+                2010: (MAY, 29),
+                2011: (MAY, 29),
+                2012: (MAY, 28),
+                2013: (MAY, 29),
+                2014: (MAY, 29),
+                2015: (MAY, 29),
+                2016: (MAY, 28),
+                2017: (MAY, 29),
+                2018: (MAY, 29),
+                2019: (MAY, 29),
+                2020: (MAY, 28),
+                2021: (MAY, 29),
+                2022: (MAY, 29),
+                2023: (MAY, 29),
+                2024: (MAY, 28),
+                2025: (MAY, 28),
+                2026: (MAY, 29),
+                2027: (MAY, 29),
+                2028: (MAY, 28),
+                2029: (MAY, 28),
+                2030: (MAY, 29),
+                2031: (MAY, 29),
+                2032: (MAY, 28),
+            }
             if self._year in republic_day_dates:
                 # Established in 2009.
                 # Republic Day.
@@ -183,6 +179,19 @@ class Nepal(
             self._add_papankusha_duwadashi("Duwadashi (Dashain)")
 
     def _populate_public_holidays(self):
+        if self._year >= 2023:
+            # Prithvi Jayanti.
+            self._add_holiday_jan_11("Prithvi Jayanti")
+
+        # International Women's Day.
+        self._add_womens_day("International Women's Day")
+
+        # Nepal New Year.
+        self._add_vaisakhi("Nepali New Year")
+
+        # International Labour Day.
+        self._add_labor_day("International Labour Day")
+
         constitution_day_dates = {
             2016: (SEP, 19),
             2017: (SEP, 19),
@@ -202,20 +211,6 @@ class Nepal(
             2031: (SEP, 19),
             2032: (SEP, 19),
         }
-
-        if self._year >= 2023:
-            # Prithvi Jayanti.
-            self._add_holiday_jan_11("Prithvi Jayanti")
-
-        # International Women's Day.
-        self._add_womens_day("International Women's Day")
-
-        # Nepal New Year.
-        self._add_vaisakhi("Nepali New Year")
-
-        # International Labour Day.
-        self._add_labor_day("International Labour Day")
-
         if self._year in constitution_day_dates:
             # Constitution Day.
             self._add_holiday("Constitution Day", constitution_day_dates[self._year])
