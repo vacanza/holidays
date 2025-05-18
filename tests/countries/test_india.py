@@ -183,7 +183,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-08-26",
             "2018-09-13",
             "2018-10-10",
-            "2018-10-18",
+            "2018-10-17",
             "2018-11-08",
             "2018-11-14",
         )
@@ -566,7 +566,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "Gandhi Jayanti"),
             ("2018-10-06", "Bathukamma Festival"),
             ("2018-10-10", "Navratri / Sharad Navratri"),
-            ("2018-10-18", "Maha Navami"),
+            ("2018-10-17", "Maha Navami"),
             ("2018-10-19", "Dussehra"),
             ("2018-10-31", "Sardar Vallabhbhai Patel Jayanti"),
             (
@@ -631,7 +631,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "गांधी जयंती"),
             ("2018-10-06", "बतुकम्मा महोत्सव"),
             ("2018-10-10", "नवरात्र/शरद नवरात्र"),
-            ("2018-10-18", "महानवमी"),
+            ("2018-10-17", "महानवमी"),
             ("2018-10-19", "दशहरा"),
             ("2018-10-31", "सरदार वल्लभभाई पटेल जयंती"),
             (
@@ -697,7 +697,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "Gandhi Jayanti"),
             ("2018-10-06", "Bathukamma Festival"),
             ("2018-10-10", "Navratri / Sharad Navratri"),
-            ("2018-10-18", "Maha Navami"),
+            ("2018-10-17", "Maha Navami"),
             ("2018-10-19", "Dussehra"),
             ("2018-10-31", "Sardar Vallabhbhai Patel Jayanti"),
             (
