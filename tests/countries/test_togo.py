@@ -30,7 +30,7 @@ class TestTogo(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Togo(years=1960))
-        self.assertNoHolidays(Togo(years=1960, categories=WORKDAY))
+        self.assertNoHolidays(Togo(categories=WORKDAY, years=1986))
 
     def test_new_years_day(self):
         self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1961, 2050)))

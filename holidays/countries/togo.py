@@ -167,15 +167,6 @@ class TogoIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 30),
     }
 
-    MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 19),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
-    }
-
     RAMADAN_BEGINNING_DATES = {
         2015: (JUN, 18),
         2016: (JUN, 6),
