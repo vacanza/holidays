@@ -167,6 +167,7 @@ from .taiwan import Taiwan, TW, TWN
 from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
 from .timor_leste import TimorLeste, TL, TLS
+from .togo import Togo, TG, TGO
 from .tonga import Tonga, TO, TON
 from .trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from .tunisia import Tunisia, TN, TUN
