@@ -2,7 +2,8 @@
 
 The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget.
 
-The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside of traditional coding events. Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
+The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside of traditional coding events.
+Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
 
 - [Program Goals](#program-goals)
 - [Current Funding](#current-funding)
@@ -65,6 +66,7 @@ A previously sponsored contributor will not be assigned to a new task if there i
 - Payments are processed after the sponsored task is officially released, typically on the **1st and 3rd Monday of each month**
 - Contributors are responsible for setting up and maintaining their payment details in GitHub Sponsors or any approved alternative method
 - **We do not cover any transaction or processing fees** imposed by [GitHub Sponsors](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#about-github-sponsors), banks, or other platforms. The amounts listed in the [Sponsorship Amounts](#sponsorship-amounts) section represent the **maximum compensation per task before fees**
+- A **transaction confirmation number** will be sent directly to the contributor via private Slack message once the payment has been processed.
 
 ## For Potential Sponsors
 
@@ -75,7 +77,7 @@ If you or your organization would like to help sustain and grow the Open World H
 **Q: GitHub payment isn't available in my country. What are my options?**
 **A:** We rely on GitHub Sponsors payments as our main payment option. We may consider offering an alternative crypto payment (USDT) on a case-by-case basis.
 
-**Q: Could you please provide a more brief difference between medium and big tasks?**
+**Q: What is the difference between medium and big tasks?**
 **A:**
 
 - Medium task example – [PR #2525](https://github.com/vacanza/holidays/pull/2525)
@@ -102,7 +104,7 @@ If these requirements are not met, the contributor will be unassigned and **no p
 **A:** No, previously submitted pull requests are not eligible for sponsorship. Only contributions linked to issues explicitly labeled with sponsorship are considered part of the program. These issues will also include a label indicating their complexity or the associated payment amount.
 
 **Q: What are the acceptance criteria for a sponsored task to be eligible for payment?**
-**A:** In order to be eligible for payment, the pull request must be successfully merged into the dev branch. This typically requires 100% test coverage (in line with the current project standard) and adherence to strict code style and quality guidelines. Please refer to our contributing guide and recently merged PRs for examples. These standards help maintain the high quality of a project used by millions, with over 10 million downloads per month.
+**A:** To be eligible for payment, the pull request must be successfully merged into the dev branch. This typically requires 100% test coverage (in line with the current project standard) and adherence to strict code style and quality guidelines. Please refer to our contributing guide and recently merged PRs for examples. These standards help maintain the high quality of a project used by millions, with over 10 million downloads per month.
 
 ## Contact
 
