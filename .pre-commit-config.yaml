@@ -24,9 +24,9 @@ repos:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.8
+    rev: v0.11.10
     hooks:
-      - id: ruff
+      - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/lucas-c/pre-commit-hooks
@@ -39,15 +39,6 @@ repos:
           - --license-filepath
           - docs/file_header.txt
 
-  - repo: https://github.com/pycqa/bandit
-    rev: 1.8.3
-    hooks:
-      - id: bandit
-        additional_dependencies:
-          - bandit[toml]
-        args:
-          - --configfile=pyproject.toml
-
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
     hooks:
@@ -59,10 +50,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-docutils
           - types-polib
           - types-python-dateutil
-          - types-setuptools
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: '1.5.0'

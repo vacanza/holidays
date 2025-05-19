@@ -1,3 +1,18 @@
+# Version 0.73
+
+Released May 19, 2025
+
+- Add Cocos Islands holidays (#2532 by @tr33k)
+- Add Grenada holidays (#2524 by @nalin-28)
+- Add Nepal holidays (#2386 by @ankushhKapoor, @arkid15r)
+- Add Togo holidays (#2525 by @Roshan-1024, @KJhellico)
+- Update Andorra holidays, add l10n support (#2530 by @KJhellico)
+- Update Argentina holidays: add 2018 G20 Leaders' Summit for Buenos Aires (#2529 by @PPsyrius)
+- Update Philippines holidays: add special holiday May 12, 2025 (#2539 by @KJhellico)
+- Update Vatican City holidays: add election and name day of Pope Leo XIV (#2549 by @KJhellico)
+- Update documentation build: make PR links in changelog (#2540 by @KJhellico)
+- Update pre-commit config (#2548 by @KJhellico, @arkid15r)
+
 # Version 0.72
 
 Released May 5, 2025

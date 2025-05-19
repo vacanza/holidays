@@ -46,6 +46,7 @@ from .canada import Canada, CA, CAN
 from .chad import Chad, TD, TCD
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
+from .cocos_islands import CocosIslands, CC, CCK
 from .colombia import Colombia, CO, COL
 from .congo import Congo, CG, COG
 from .costa_rica import CostaRica, CR, CRI
@@ -74,6 +75,7 @@ from .germany import Germany, DE, DEU
 from .ghana import Ghana, GH, GHA
 from .greece import Greece, GR, GRC
 from .greenland import Greenland, GL, GRL
+from .grenada import Grenada, GD, GRD
 from .guam import Guam, GU, GUM, HolidaysGU
 from .guatemala import Guatemala, GT, GUA
 from .guernsey import Guernsey, GG, GGY
@@ -120,6 +122,7 @@ from .montenegro import Montenegro, ME, MNE
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
 from .namibia import Namibia, NA, NAM
+from .nepal import Nepal, NP, NPL
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
@@ -164,6 +167,7 @@ from .taiwan import Taiwan, TW, TWN
 from .tanzania import Tanzania, TZ, TZA
 from .thailand import Thailand, TH, THA
 from .timor_leste import TimorLeste, TL, TLS
+from .togo import Togo, TG, TGO
 from .tonga import Tonga, TO, TON
 from .trinidad_and_tobago import TrinidadAndTobago, TT, TTO
 from .tunisia import Tunisia, TN, TUN
