@@ -53,8 +53,9 @@ If GitHub Sponsors is not available for the contributor's country, we may consid
 
 To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
 
-Before applying, please ensure that you meet the eligibility requirement:
-You must have **at least one merged pull request** that adds support for a new entity’s holidays.
+Before applying, please ensure that you meet the eligibility requirements:
+
+- You must have **at least one merged pull request** that adds support for a new entity’s holidays.
 
 If more than one eligible contributor expresses interest, we will review each applicant’s prior contributions and sponsorship participation history. Priority will be given to **new eligible contributors** who have not yet participated in the sponsorship program. This helps ensure a fair and balanced distribution of sponsored tasks across the community.
 
@@ -70,7 +71,9 @@ A previously sponsored contributor will not be assigned to a new task if there i
 
 ## For Potential Sponsors
 
-If you or your organization would like to help sustain and grow the Open World Holidays Framework, we welcome your support. The easiest way to contribute to our sponsorship fund is via: [Open Collective – Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework). Your contributions will directly support community contributors and the continued improvement of our holiday data platform.
+We welcome additional financial support from individuals and organizations who believe in the mission of Open World Holidays Framework and want to help sustain high-quality open source contributions. The easiest way to contribute to our sponsorship fund is via: [Open Collective – Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework). To recognize your support, all sponsors who contribute $100 USD or more will be acknowledged in the project's README.md file.
+
+Your contributions help expand our budget, allowing us to sponsor more contributors and cover a wider range of countries, regions, and entities. Thank you for helping us grow the Open World Holidays Framework community.
 
 ## FAQ
 
