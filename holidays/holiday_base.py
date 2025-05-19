@@ -783,35 +783,36 @@ class HolidayBase(dict[date, str]):
 
     def _init_translation(self) -> None:
         """Initialize translation function based on language settings."""
-        supported_languages = set(self.supported_languages)
-        if self._entity_code is not None:
-            # Determine translation language: explicit setting first, then default.
-            # This logic is used to ensure that the language is set correctly for child entities
-            # in case they have a different language than their parent entity.
-            is_supported_language = self.language in supported_languages
-            if self.language and is_supported_language:
-                languages = [self.language]
-            elif self.default_language:
-                languages = [self.default_language]
-            else:
-                languages = None
 
+        # Determine translation language: explicit setting first, then default.
+        # This logic is used to ensure that the language is set correctly for child entities
+        # in case they have a different language than their parent entity.
+        if self._entity_code is not None:
+            languages = [self.language] if self.language in self.supported_languages else []
             locale_directory = str(Path(__file__).with_name("locale"))
 
             # Add entity native content translations.
             entity_translation = translation(
                 self._entity_code,
-                fallback=not is_supported_language,
-                languages=languages,
+                # Return the original untranslated strings if .mo file is not found.
+                fallback=True,
+                languages=languages if languages else None,
                 localedir=locale_directory,
             )
             # Add a fallback if entity has parent translations.
             if parent_entity := self.parent_entity:
+                if not self.language and self.parent_entity.default_language:
+                    languages.append(self.parent_entity.default_language)
+
+                # Specify a fallback translation in case the original translation
+                # does not contain a given message.
                 entity_translation.add_fallback(
                     translation(
                         parent_entity.country or parent_entity.market,
-                        fallback=not is_supported_language,
-                        languages=languages,
+                        # Return the original untranslated strings if .mo file is not found.
+                        fallback=True,
+                        # Make sure gettext handles locale settings correctly.
+                        languages=None if not self.language else languages,
                         localedir=locale_directory,
                     )
                 )
