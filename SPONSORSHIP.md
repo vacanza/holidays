@@ -1,5 +1,7 @@
 # Open World Holidays Framework Sponsorship Program
 
+The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget.
+
 The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside of traditional coding events. Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
 
 - [Program Goals](#program-goals)
@@ -11,8 +13,6 @@ The Open World Holidays Framework offers a flexible, community-funded sponsorshi
 - [For Potential Sponsors](#for-potential-sponsors)
 - [FAQ](#faq)
 - [Contact](#contact)
-
-The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget.
 
 ## Program Goals
 
@@ -68,11 +68,7 @@ A previously sponsored contributor will not be assigned to a new task if there i
 
 ## For Potential Sponsors
 
-If you or your organization would like to help sustain and grow the Open World Holidays Framework, we welcome your support. The easiest way to contribute to our sponsorship fund is via:
-
-[Open Collective – Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework)
-
-Your contributions will directly support community contributors and the continued improvement of our holiday data platform.
+If you or your organization would like to help sustain and grow the Open World Holidays Framework, we welcome your support. The easiest way to contribute to our sponsorship fund is via: [Open Collective – Open World Holidays Framework](https://opencollective.com/open-world-holidays-framework). Your contributions will directly support community contributors and the continued improvement of our holiday data platform.
 
 ## FAQ
 
