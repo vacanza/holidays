@@ -39,7 +39,6 @@ msgstr "New Year's Day"
 msgid "Commonwealth Day"
 msgstr "Commonwealth Day"
 
-#. Lavity Stoutt's Birthday.
 msgid "Lavity Stoutt's Birthday"
 msgstr "Lavity Stoutt's Birthday"
 
