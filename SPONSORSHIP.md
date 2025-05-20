@@ -42,8 +42,6 @@ Note:
 - By default, tasks are classified as **medium**, unless a maintainer explicitly labels them as **hard**.
 - A task may be **reclassified as hard** at the maintainer’s discretion, based on its complexity or scope.
 
-Let me know if you’d like to include examples or define criteria for "hard" vs. "medium" more formally.
-
 ## Eligibility
 
 To participate in the sponsorship program, contributors must:
