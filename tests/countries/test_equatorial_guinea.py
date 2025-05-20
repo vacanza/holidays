@@ -152,7 +152,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             "Niefang": ("2025-08-22",),
             "Nkimi": ("2025-07-25",),
             "Nkue": ("2025-12-03",),
-            # "Nsok-Nsomo": ("2025-09-09",),
+            "Nsok-Nsomo": ("2025-09-09",),
             "Nsork": ("2025-06-29",),
             "Rebola": ("2025-04-27",),
         }
