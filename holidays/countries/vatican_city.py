@@ -64,58 +64,56 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Anniversario della istituzione dello Stato della Città del Vaticano")
         )
 
-        # Anniversary of the Election of the Holy Father.
-        name_election = tr("Anniversario dell'Elezione del Santo Padre")
-
         # Name Day of the Holy Father.
         name_day = tr("Onomastico del Santo Padre")
 
-        if self._year >= 2013:
+        if self._year >= 2025:
+            # Pope Leo XIV (Robert Francis Prevost).
+            # Name Day: Saint Robert Bellarmine Day (SEP 17).
+            self._add_holiday_sep_17(name_day)
+
+            if self._year == 2025:
+                # Pope Francis (cont.).
+                self._add_saint_georges_day(name_day)
+        elif self._year >= 2013:
             # Pope Francis (Jorge Mario Bergoglio).
             # Name Day: Saint George's Day (APR 23).
-            self._add_holiday_mar_13(name_election)
             self._add_saint_georges_day(name_day)
-        elif self._year >= 2005:
+        elif self._year >= 2006:
             # Pope Benedict XVI (Josef Aloisius Ratzinger).
             # Name Day: Saint Joseph's Day (MAR 19).
-            self._add_holiday_apr_19(name_election)
             self._add_saint_josephs_day(name_day)
-        elif self._year >= 1978:
+        elif 1978 <= self._year <= 2004:
             # Pope John Paul II (Karol Józef Wojtyła).
             # Name Day: Saint Charles Borromeo Day (NOV 4).
-            self._add_holiday_oct_16(name_election)
             self._add_holiday_nov_4(name_day)
 
-            if self._year == 1978:
-                # Pope John Paul I (Albino Luciani).
-                # Name Day: Saint Albinus of Angers (MAR 1)?
-                self._add_holiday_aug_26(name_election)
+        # Anniversary of the Election of the Holy Father.
+        name_election = tr("Anniversario dell'Elezione del Santo Padre")
 
-                # Pope Paul VI (cont.).
-                self._add_holiday_jun_21(name_election)
-        elif self._year >= 1963:
+        if self._year >= 2026:
+            # Pope Leo XIV (Robert Francis Prevost).
+            self._add_holiday_may_8(name_election)
+        elif self._year >= 2014:
+            # Pope Francis (Jorge Mario Bergoglio).
+            self._add_holiday_mar_13(name_election)
+        elif 2006 <= self._year <= 2012:
+            # Pope Benedict XVI (Josef Aloisius Ratzinger).
+            self._add_holiday_apr_19(name_election)
+        elif 1979 <= self._year <= 2004:
+            # Pope John Paul II (Karol Józef Wojtyła).
+            self._add_holiday_oct_16(name_election)
+        elif 1964 <= self._year <= 1978:
             # Pope Paul VI (Giovanni Battista Enrico Antonio Maria Montini).
-            # Name Day: Saint John's Day (JUN 24)?
             self._add_holiday_jun_21(name_election)
-        elif self._year >= 1958:
+        elif 1959 <= self._year <= 1962:
             # Pope John XXIII (Angelo Giuseppe Roncalli).
-            # Name Day: Saint Angelus of Jerusalem (MAY 5)?
             self._add_holiday_oct_28(name_election)
-
-            if self._year == 1958:
-                # Pope Pius XII (cont.).
-                self._add_holiday_mar_2(name_election)
-        elif self._year >= 1939:
+        elif 1940 <= self._year <= 1958:
             # Pope Pius XII (Eugenio Maria Giuseppe Giovanni Pacelli).
-            # Name Day: Saint Eugene (JUN 2)?
             self._add_holiday_mar_2(name_election)
-
-            if self._year == 1939:
-                # Pope Pius XI (cont.).
-                self._add_holiday_feb_6(name_election)
-        else:
+        elif self._year <= 1939:
             # Pope Pius XI (Achille Ambrogio Damiano Ratti).
-            # Name Day: Saint Nereus and Achilleus (MAY 12)?
             self._add_holiday_feb_6(name_election)
 
         # Saint Joseph's Day.

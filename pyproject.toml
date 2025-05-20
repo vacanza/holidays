@@ -42,9 +42,6 @@ Documentation = "https://holidays.readthedocs.io/en/latest/"
 Repository = "https://github.com/vacanza/holidays/"
 Changelog = "https://github.com/vacanza/holidays/releases/"
 
-[tool.bandit]
-exclude_dirs = ["tests"]
-
 [tool.coverage.run]
 branch = true
 omit = ["scripts/*", "setup.py", "tests/*"]
@@ -70,10 +67,11 @@ line-length = 99
 target-version = "py39"
 
 [tool.ruff.lint]
-select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "T", "TC", "UP", "W"]
+select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W"]
 
-[tool.ruff.lint.extend-per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "scripts/generate_release_notes.py" = ["T201"]
+"tests/test_holiday_base.py" = ["S301"]
 
 [tool.ruff.lint.flake8-errmsg]
 max-string-length = 99
