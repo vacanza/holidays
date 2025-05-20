@@ -1240,6 +1240,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
+<td>Togo</td>
+<td>TG</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Tonga</td>
 <td>TO</td>
 <td></td>
