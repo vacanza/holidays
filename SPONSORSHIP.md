@@ -34,9 +34,15 @@ The amount sponsored will vary depending on the complexity of the task:
 | Task Size | Description                                                                                    | Compensation |
 | --------- | ---------------------------------------------------------------------------------------------- | ------------ |
 | Medium    | Tasks such as implementing holidays for a new entity using well-established templates or rules | \$25 USD     |
-| Big       | Tasks requiring deeper research, localization, or custom rule logic                            | \$50 USD     |
+| Hard       | Tasks requiring deeper research, localization, or custom rule logic                           | \$50 USD     |
 
-*Note: These rates are subject to available funding and do not include any additional fees imposed by payment processors.*
+Note:
+
+- These rates are contingent on available funding and **do not cover any fees** charged by payment processors or platforms.
+- By default, tasks are classified as **medium**, unless a maintainer explicitly labels them as **hard**.
+- A task may be **reclassified as hard** at the maintainer’s discretion, based on its complexity or scope.
+
+Let me know if you’d like to include examples or define criteria for "hard" vs. "medium" more formally.
 
 ## Eligibility
 
@@ -47,7 +53,10 @@ To participate in the sponsorship program, contributors must:
 - Have a **GitHub Sponsors account set up and eligible to receive payments** (check [GitHub’s supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
 - Ensure their country is eligible to receive payouts under GitHub Sponsors requirements
 
-If GitHub Sponsors is not available for the contributor's country, we may consider **alternative payment options** (e.g., crypto payments in USDT) on a **case-by-case basis**.
+Note:
+
+- If GitHub Sponsors program is not available for the contributor's country, we may consider **alternative payment options** (e.g., crypto payments in USDT) on a **case-by-case basis**.
+- Maintainers may specify additional eligibility requirements for specific entities or tasks. These may include familiarity with the country or region in question, native language proficiency, or relevant domain knowledge to ensure the accuracy and quality of the contribution.
 
 ## Application and Selection Process
 
@@ -80,11 +89,11 @@ Your contributions help expand our budget, allowing us to sponsor more contribut
 **Q: GitHub payment isn't available in my country. What are my options?**
 **A:** We rely on GitHub Sponsors payments as our main payment option. We may consider offering an alternative crypto payment (USDT) on a case-by-case basis.
 
-**Q: What is the difference between medium and big tasks?**
+**Q: What is the difference between medium and hard tasks?**
 **A:**
 
 - Medium task example – [PR #2525](https://github.com/vacanza/holidays/pull/2525)
-- Big task example – [PR #2386](https://github.com/vacanza/holidays/pull/2386)
+- Hard task example – [PR #2386](https://github.com/vacanza/holidays/pull/2386)
 
 **Q: Can I work on multiple sponsored tasks simultaneously?**
 **A:** No, one person can work on a single sponsorship-eligible issue at a time.
