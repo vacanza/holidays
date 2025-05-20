@@ -40,7 +40,7 @@ from holidays.observed_holiday_base import (
 class BritishVirginIslands(
     ObservedHolidayBase, InternationalHolidays, ChristianHolidays, StaticHolidays
 ):
-    """Cocos (Keeling) Islands holidays.
+    """British Virgin Islands holidays.
 
     References:
     * <https://en.wikipedia.org/wiki/Public_holidays_in_the_British_Virgin_Islands>
