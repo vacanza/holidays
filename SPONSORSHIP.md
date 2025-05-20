@@ -1,9 +1,6 @@
 # Open World Holidays Framework Sponsorship Program
 
-The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget.
-
-The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside of traditional coding events.
-Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
+The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget. The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside traditional coding events. Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
 
 - [Program Goals](#program-goals)
 - [Current Funding](#current-funding)
@@ -53,7 +50,7 @@ To participate in the sponsorship program, contributors must:
 
 Note:
 
-- If GitHub Sponsors program is not available for the contributor's country, we may consider **alternative payment options** (e.g., crypto payments in USDT) on a **case-by-case basis**.
+- If the GitHub Sponsors program is not available for the contributor's country, we may consider **alternative payment options** (e.g., crypto payments in USDT) on a **case-by-case basis**.
 - Maintainers may specify additional eligibility requirements for specific entities or tasks. These may include familiarity with the country or region in question, native language proficiency, or relevant domain knowledge to ensure the accuracy and quality of the contribution.
 
 ## Application and Selection Process
