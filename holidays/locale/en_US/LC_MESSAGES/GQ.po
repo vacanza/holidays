@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.73\n"
+"Project-Id-Version: Holidays 0.74\n"
 "POT-Creation-Date: 2025-05-01 05:05+0000\n"
 "PO-Revision-Date: 2025-05-01 05:05+0000\n"
 "Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
@@ -43,20 +43,9 @@ msgstr "International Women's Day"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. Labor Day.
-msgid "Día del Trabajo"
-msgstr "Labor Day"
-
 #. Corpus Christi.
 msgid "Corpus Christi"
 msgstr "Corpus Christi"
-
-#. Independence Day.
-msgid "Día de Independencia"
-msgstr "Independence Day"
-
-msgid "Fiesta de Inmaculada Concepción"
-msgstr "Feast of the Immaculate Conception"
 
 #. Christmas Day.
 msgid "Día de Navidad"
@@ -66,17 +55,9 @@ msgstr "Christmas Day"
 msgid "Victoria de la AFCON contra Costa de Marfil"
 msgstr "AFCON Victory Against Ivory Coast"
 
-#. President's Day.
-msgid "Día del Presidente"
-msgstr "President's Day"
-
 #. Armed Forces Day.
 msgid "Día de las Fuerzas Armadas"
 msgstr "Armed Forces Day"
-
-#. Fundamental Law Day.
-msgid "Día de la Ley Fundamental"
-msgstr "Fundamental Law Day"
 
 #. Feast of Santa Isabel.
 msgid "Fiesta de Santa Isabel"
@@ -138,13 +119,9 @@ msgstr "Saint Pius X"
 msgid "Virgen de Guadalupe"
 msgstr "Virgin of Guadalupe"
 
-#. Assumption of Our Lady Patroness of Bikurga.
-msgid "Asunción de Nuestra Señora Patrona de Bikurga"
-msgstr "Assumption of Our Lady Patroness of Bikurga"
-
-#. Our Lady of Asunción.
+#. Our Lady of the Assumption.
 msgid "Nuestra Señora de Asunción"
-msgstr "Our Lady of Asunción"
+msgstr "Our Lady of Assumption"
 
 #. Our Lady of Carmen.
 msgid "Nuestra Señora del Carmen"
@@ -153,3 +130,35 @@ msgstr "Our Lady of Carmen"
 #. Immaculate Heart of Mary.
 msgid "Inmaculada Corazón de Maria"
 msgstr "Immaculate Heart of Mary"
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Maundy Thursday"
+
+#. International Labor Day.
+msgid "Día Internacional del Trabajo"
+msgstr "International Labor Day"
+
+#. President's Day.
+msgid "Natalicio de Su Excelencia el Presidente de la República"
+msgstr "President's Day"
+
+#. Constitution Day.
+msgid "Día de la Constitución"
+msgstr "Constitution Day"
+
+#. Independence Day.
+msgid "Día de la Independencia Nacional"
+msgstr "Independence Day"
+
+#. Immaculate Conception.
+msgid "Festividad de la Inmaculada Concepción de María"
+msgstr "Immaculate Conception"
+
+#. Assumption of Our Lady.
+msgid "Asunción de Nuestra Señora"
+msgstr "Assumption of Our Lady"
+
+#. Saints Paul.
+msgid "Santos Pablo"
+msgstr "Saints Paul"

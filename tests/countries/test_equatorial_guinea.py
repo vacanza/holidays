@@ -19,18 +19,18 @@ from tests.common import CommonCountryTests
 class TestEquatorialGuinea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1969, 2050)
+        years = range(2007, 2050)
         super().setUpClass(EquatorialGuinea, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(EquatorialGuinea, GQ, GNQ)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(EquatorialGuinea(years=1968))
+        self.assertNoHolidays(EquatorialGuinea(years=2006))
 
     def test_new_years_day(self):
         name = "Año Nuevo"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2007, 2050)))
 
         obs_dt = "2017-01-02"
         self.assertHolidayName(f"{name} (observado)", obs_dt)
@@ -38,27 +38,23 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
 
     def test_womens_day(self):
         name = "Día Internacional de la Mujer"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2007, 2050)))
 
     def test_good_friday(self):
         name = "Viernes Santo"
         self.assertHolidayName(
             name,
-            "1994-04-01",
-            "1995-04-14",
-            "1996-04-05",
-            "1997-03-28",
             "2017-04-14",
             "2018-03-30",
             "2019-04-19",
             "2020-04-10",
         )
 
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_labor_day(self):
-        name = "Día del Trabajo"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1969, 2050)))
+        name = "Día Internacional del Trabajo"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2007, 2050)))
 
         obs_dt = ("2021-05-03", "2016-05-02", "2022-05-02")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
@@ -81,11 +77,11 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             "2030-06-20",
         )
 
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_armed_forces_day(self):
         name = "Día de las Fuerzas Armadas"
-        self.assertHolidayName(name, (f"{year}-08-03" for year in range(1979, 2050)))
+        self.assertHolidayName(name, (f"{year}-08-03" for year in range(2007, 2050)))
         self.assertNoHolidayName(name, range(1969, 1979))
 
         obs_dt = ("2014-08-04", "2025-08-04")
@@ -93,32 +89,32 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_presidents_day(self):
-        name = "Día del Presidente"
-        self.assertHolidayName(name, (f"{year}-06-05" for year in range(1979, 2050)))
+        name = "Natalicio de Su Excelencia el Presidente de la República"
+        self.assertHolidayName(name, (f"{year}-06-05" for year in range(2007, 2050)))
 
         obs_dt = ("2021-06-07", "2016-06-06", "2022-06-06")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_fundamental_law_day(self):
-        name = "Día de la Ley Fundamental"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1982, 2050)))
+    def test_constitution_day(self):
+        name = "Día de la Constitución"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(2007, 2050)))
 
         obs_dt = ("2010-08-16", "2021-08-16")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_independence_day(self):
-        name = "Día de Independencia"
-        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1969, 2050)))
+        name = "Día de la Independencia Nacional"
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(2007, 2050)))
 
         obs_dt = ("2014-10-13", "2025-10-13")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_immaculate_conception(self):
-        name = "Fiesta de Inmaculada Concepción"
-        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1969, 2050)))
+        name = "Festividad de la Inmaculada Concepción de María"
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(2007, 2050)))
 
         obs_dt = ("2019-12-09", "2024-12-09")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
@@ -126,7 +122,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Día de Navidad"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2007, 2050)))
 
         obs_dt = ("2021-12-27", "2016-12-26", "2022-12-26")
         self.assertHolidayName(f"{name} (observado)", obs_dt)
@@ -135,38 +131,30 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
     def test_subdivision_holidays(self):
         subdiv_holidays_mapping = {
             "AN": ("2025-06-13",),
-            "BN": (
-                "2025-04-27",
-                "2025-07-25",
-                "2025-11-17",
-            ),
-            "BS": ("2025-04-27",),
-            "CS": (
-                "2025-07-25",
-                "2025-08-15",
-                "2025-08-22",
-                "2025-12-04",
-            ),
-            "KN": (
-                "2025-08-05",
-                "2025-09-09",
-                "2025-09-14",
-                "2025-12-03",
-            ),
-            "LI": (
-                "2025-07-15",
-                "2025-07-25",
-                "2025-08-22",
-                "2025-10-15",
-                "2025-12-30",
-            ),
-            "WN": (
-                "2025-06-29",
-                "2025-08-15",
-                "2025-08-21",
-                "2025-12-12",
-                "2025-12-30",
-            ),
+            "Akurenam": ("2025-12-04",),
+            "Akonibe": ("2025-08-21",),
+            "Anisok": ("2025-06-29",),
+            "Ayene": ("2025-08-15",),
+            "Baney": ("2025-07-25",),
+            "Bata": ("2025-07-25",),
+            "Bidja-Bidjan": ("2025-09-14",),
+            "Bikurga": ("2025-08-15",),
+            "Bitika": ("2025-10-15",),
+            "Ebebiyin": ("2025-09-09",),
+            "Kogo": ("2025-07-15",),
+            "Luba": ("2025-04-27",),
+            "Machinda": ("2025-12-30",),
+            "Malabo": ("2025-11-17",),
+            "Mbini": ("2025-08-22",),
+            "Mikomeseng": ("2025-08-05",),
+            "Mongomeyen": ("2025-12-30",),
+            "Mongomo": ("2025-12-12",),
+            "Niefang": ("2025-08-22",),
+            "Nkimi": ("2025-07-25",),
+            "Nkue": ("2025-12-03",),
+            # "Nsok-Nsomo": ("2025-09-09",),
+            "Nsork": ("2025-06-29",),
+            "Rebola": ("2025-04-27",),
         }
 
         for subdiv, holidays in subdiv_holidays_mapping.items():
@@ -181,13 +169,14 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Año Nuevo"),
             ("2025-03-08", "Día Internacional de la Mujer"),
+            ("2025-04-17", "Jueves Santo"),
             ("2025-04-18", "Viernes Santo"),
             ("2025-04-27", "Nuestra Señora de Montserrat"),
-            ("2025-05-01", "Día del Trabajo"),
-            ("2025-06-05", "Día del Presidente"),
+            ("2025-05-01", "Día Internacional del Trabajo"),
+            ("2025-06-05", "Natalicio de Su Excelencia el Presidente de la República"),
             ("2025-06-13", "Fiesta Patronal de Annobón"),
             ("2025-06-19", "Corpus Christi"),
-            ("2025-06-29", "Santos Pedro y Pablo"),
+            ("2025-06-29", "Santos Pablo; Santos Pedro y Pablo"),
             ("2025-07-15", "Nuestra Señora del Carmen"),
             ("2025-07-25", "Santiago Apóstol"),
             ("2025-08-03", "Día de las Fuerzas Armadas"),
@@ -195,21 +184,21 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-08-05", "Virgen de Africa"),
             (
                 "2025-08-15",
-                "Asunción de Nuestra Señora Patrona de Bikurga; "
-                + "Día de la Ley Fundamental; "
+                "Asunción de Nuestra Señora; "
+                + "Día de la Constitución; "
                 + "Nuestra Señora de Asunción",
             ),
             ("2025-08-21", "Santo Pío X"),
             ("2025-08-22", "Inmaculada Corazón de Maria; Maria Reina"),
             ("2025-09-09", "San Pedro Claver"),
             ("2025-09-14", "Exaltación de la Santa Cruz"),
-            ("2025-10-12", "Día de Independencia"),
-            ("2025-10-13", "Día de Independencia (observado)"),
+            ("2025-10-12", "Día de la Independencia Nacional"),
+            ("2025-10-13", "Día de la Independencia Nacional (observado)"),
             ("2025-10-15", "Santa Teresa de Jesús"),
             ("2025-11-17", "Fiesta de Santa Isabel"),
             ("2025-12-03", "San Francisco Javier"),
             ("2025-12-04", "Santa Bárbara"),
-            ("2025-12-08", "Fiesta de Inmaculada Concepción"),
+            ("2025-12-08", "Festividad de la Inmaculada Concepción de María"),
             ("2025-12-12", "Virgen de Guadalupe"),
             ("2025-12-25", "Día de Navidad"),
             ("2025-12-30", "Sagrada Familia"),
@@ -220,13 +209,14 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-03-08", "International Women's Day"),
+            ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-27", "Our Lady of Montserrat"),
-            ("2025-05-01", "Labor Day"),
+            ("2025-05-01", "International Labor Day"),
             ("2025-06-05", "President's Day"),
             ("2025-06-13", "Patron Saint Festival of Annobón"),
             ("2025-06-19", "Corpus Christi"),
-            ("2025-06-29", "Saints Peter and Paul"),
+            ("2025-06-29", "Saints Paul; Saints Peter and Paul"),
             ("2025-07-15", "Our Lady of Carmen"),
             ("2025-07-25", "Santiago Apóstol"),
             ("2025-08-03", "Armed Forces Day"),
@@ -234,9 +224,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-08-05", "Virgin of Africa"),
             (
                 "2025-08-15",
-                "Assumption of Our Lady Patroness of Bikurga; "
-                + "Fundamental Law Day; "
-                + "Our Lady of Asunción",
+                "Assumption of Our Lady; " + "Constitution Day; " + "Our Lady of Assumption",
             ),
             ("2025-08-21", "Saint Pius X"),
             ("2025-08-22", "Immaculate Heart of Mary; Maria Reina"),
@@ -248,7 +236,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-11-17", "Feast of Santa Isabel"),
             ("2025-12-03", "Saint Francis Xavier"),
             ("2025-12-04", "Saint Barbara"),
-            ("2025-12-08", "Feast of the Immaculate Conception"),
+            ("2025-12-08", "Immaculate Conception"),
             ("2025-12-12", "Virgin of Guadalupe"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-30", "Holy Family"),

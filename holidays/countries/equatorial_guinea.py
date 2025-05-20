@@ -23,14 +23,19 @@ class EquatorialGuinea(
     """Equatorial Guinea holidays.
 
     References:
-        * <https://web.archive.org/web/20250503042253/https://boe.gob.gq/files/Decreto%20de%20Fijación%20de%20los%20Días%20Feriados%20en%20Guinea%20Ecuatorial.pdf>
-        * <https://web.archive.org/web/20250503042253/https://en.wikipedia.org/wiki/Public_holidays_in_Equatorial_Guinea>
+       * [Decree 9/2007](https://web.archive.org/web/20250518185011/https://boe.gob.gq/files/Decreto%20de%20Fijaci%C3%B3n%20de%20los%20D%C3%ADas%20Feriados%20en%20Guinea%20Ecuatorial.pdf)
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Equatorial_Guinea>
         * <https://web.archive.org/web/20250503042253/https://www.timeanddate.com/holidays/guineaecuatorial/>
-        * <https://web.archive.org/web/20250503042253/https://gq.usembassy.gov/holiday-calendar/>
-        * <https://web.archive.org/web/20250503044712/https://www.guineainfomarket.com/business/2024/03/29/calendario-laboral-de-guinea-ecuatorial-2024/>
-        * [President's Day](https://web.archive.org/web/20250503042253/https://www.officeholidays.com/holidays/equatorial-guinea/equatorial-guinea-presidents-day)
-        * [AFCON Victory Holiday](https://web.archive.org/web/20250503042253/https://www.timeanddate.com/holidays/equatorialguinea/afcon-victory-vs-ivory-coast)
-
+        * <https://web.archive.org/web/20250503042610/https://gq.usembassy.gov/holiday-calendar/>
+        * [AFCON Victory Holiday](https://web.archive.org/web/20240124021813/https://www.monitor.co.ug/uganda/sports/soccer/equatorial-guinea-president-awards-team-1-million-for-afcon-victory-4500644)
+        * [2015](https://web.archive.org/web/20250421105147/https://www.guineainfomarket.com/gobierno/2015/01/01/calendario-laboral-de-guinea-ecuatorial-2015/)
+        * [2016](https://web.archive.org/web/20250212174334/https://www.guineainfomarket.com/libros/2015/12/06/calendario-laboral-de-guinea-ecuatorial-2016/)
+        * [2018](https://web.archive.org/web/20241005004303/https://www.guineainfomarket.com/economia/2017/12/29/calendario-laboral-guinea-ecuatorial-2018/)
+        * [2019](https://web.archive.org/web/20220526022213/https://www.guineainfomarket.com/economia/2019/01/01/calendario-laboral-guinea-ecuatorial-2019/)
+        * [2020](https://web.archive.org/web/20250503044753/https://www.guineainfomarket.com/cultura/2020/01/01/calendario-laboral-de-guinea-ecuatorial-2020/)
+        * [2021](https://web.archive.org/web/20250503044727/https://www.guineainfomarket.com/cultura/2021/01/29/calendario-laboral-de-guinea-ecuatorial-2021/)
+        * [2022](https://web.archive.org/web/20250503044746/https://www.guineainfomarket.com/cultura/2021/01/29/calendario-laboral-de-guinea-ecuatorial-2021-2/)
+        * [2024](https://web.archive.org/web/20250504175804/https://www.guineainfomarket.com/business/2024/03/29/calendario-laboral-de-guinea-ecuatorial-2024/)
     """
 
     country = "GQ"
@@ -38,32 +43,39 @@ class EquatorialGuinea(
     supported_languages = ("en_US", "es")
     # %s observed.
     observed_label = tr("%s (observado)")
-    # On 12 October 1968, Equatorial Guinea gained independence from Spain.
-    start_year = 1969
+    # Decree 9/2007.
+    start_year = 2007
     subdivisions = (
+        # Provinces.
         "AN",  # Annobón (Annobon).
-        "BN",  # Bioko Norte (North Bioko).
-        "BS",  # Bioko Sur (South Bioko).
-        "CS",  # Centro Sur (South Center).
-        "KN",  # Kié-Ntem (Kie-Ntem).
-        "LI",  # Litoral (Coast).
-        "WN",  # Wele-Nzas (Wele-Nzas).
+        # Cities.
+        "Akurenam",
+        "Akonibe",
+        "Anisok",
+        "Ayene",
+        "Baney",
+        "Bata",
+        "Bidja-Bidjan",
+        "Bikurga",
+        "Bitika",
+        "Ebebiyin",
+        "Kogo",
+        "Luba",
+        "Machinda",
+        "Malabo",
+        "Mbini",
+        "Mikomeseng",
+        "Mongomeyen",
+        "Mongomo",
+        "Niefang",
+        "Nkimi",
+        "Nkue",
+        "Nsok-Nsomo",
+        "Nsork",
+        "Rebola",
     )
-    subdivisions_aliases = {
-        "Annobón": "AN",
-        "Annobon": "AN",
-        "Bioko Norte": "BN",
-        "North Bioko": "BN",
-        "Bioko Sur": "BS",
-        "South Bioko": "BS",
-        "Centro Sur": "CS",
-        "South Center": "CS",
-        "Kié-Ntem": "KN",
-        "Kie-Ntem": "KN",
-        "Litoral": "LI",
-        "Coast": "LI",
-        "Wele-Nzas": "WN",
-    }
+
+    subdivisions_aliases = {"Annobón": "AN", "Annobon": "AN", "Añisok": "Anisok"}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -79,33 +91,37 @@ class EquatorialGuinea(
         # International Women's Day.
         self._add_womens_day(tr("Día Internacional de la Mujer"))
 
+        # Maundy Thursday.
+        self._add_holy_thursday(tr("Jueves Santo"))
+
         # Good Friday.
-        self._add_observed(self._add_good_friday(tr("Viernes Santo")))
+        self._add_good_friday(tr("Viernes Santo"))
 
-        # Labor Day.
-        self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
+        # International Labor Day.
+        self._add_observed(self._add_labor_day(tr("Día Internacional del Trabajo")))
 
-        if self._year >= 1979:
+        self._add_observed(
             # President's Day.
-            self._add_observed(self._add_holiday_jun_5(tr("Día del Presidente")))
+            self._add_holiday_jun_5(tr("Natalicio de Su Excelencia el Presidente de la República"))
+        )
 
         # Corpus Christi.
-        self._add_observed(self._add_corpus_christi_day(tr("Corpus Christi")))
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        if self._year >= 1979:
-            # Armed Forces Day.
-            self._add_observed(self._add_holiday_aug_3(tr("Día de las Fuerzas Armadas")))
+        # Armed Forces Day.
+        self._add_observed(self._add_holiday_aug_3(tr("Día de las Fuerzas Armadas")))
 
-        if self._year >= 1982:
-            # Fundamental Law Day.
-            self._add_observed(self._add_holiday_aug_15(tr("Día de la Ley Fundamental")))
+        # Constitution Day.
+        self._add_observed(self._add_holiday_aug_15(tr("Día de la Constitución")))
 
         # Independence Day.
-        self._add_observed(self._add_holiday_oct_12(tr("Día de Independencia")))
+        self._add_observed(self._add_holiday_oct_12(tr("Día de la Independencia Nacional")))
 
-        # Feast of the Immaculate Conception.
         self._add_observed(
-            self._add_immaculate_conception_day(tr("Fiesta de Inmaculada Concepción"))
+            self._add_immaculate_conception_day(
+                # Immaculate Conception.
+                tr("Festividad de la Inmaculada Concepción de María")
+            )
         )
 
         # Christmas Day.
@@ -115,77 +131,101 @@ class EquatorialGuinea(
         # Patron Saint Festival of Annobón.
         self._add_holiday_jun_13(tr("Fiesta Patronal de Annobón"))
 
-    def _populate_subdiv_bn_public_holidays(self):
-        # Our Lady of Montserrat.
-        self._add_holiday_apr_27(tr("Nuestra Señora de Montserrat"))
-
-        # Santiago Apóstol.
-        self._add_holiday_jul_25(tr("Santiago Apóstol"))
-
-        # Feast of Santa Isabel.
-        self._add_holiday_nov_17(tr("Fiesta de Santa Isabel"))
-
-    def _populate_subdiv_bs_public_holidays(self):
-        # Our Lady of Montserrat.
-        self._add_holiday_apr_27(tr("Nuestra Señora de Montserrat"))
-
-    def _populate_subdiv_cs_public_holidays(self):
-        # Santiago Apóstol.
-        self._add_holiday_jul_25(tr("Santiago Apóstol"))
-
-        # Assumption of Our Lady Patroness of Bikurga.
-        self._add_holiday_aug_15(tr("Asunción de Nuestra Señora Patrona de Bikurga"))
-
-        # Maria Reina.
-        self._add_holiday_aug_22(tr("Maria Reina"))
-
+    def _populate_subdiv_akurenam_public_holidays(self):
         # Saint Barbara
         self._add_holiday_dec_4(tr("Santa Bárbara"))
 
-    def _populate_subdiv_kn_public_holidays(self):
-        # Virgin of Africa.
-        self._add_holiday_aug_5(tr("Virgen de Africa"))
-
-        # Saint Peter Claver.
-        self._add_holiday_sep_9(tr("San Pedro Claver"))
-
-        # Exaltation of the Holy Cross.
-        self._add_holiday_sep_14(tr("Exaltación de la Santa Cruz"))
-
-        # Saint Francis Xavier.
-        self._add_holiday_dec_3(tr("San Francisco Javier"))
-
-    def _populate_subdiv_li_public_holidays(self):
-        # Our Lady of Carmen.
-        self._add_holiday_jul_15(tr("Nuestra Señora del Carmen"))
-
-        # Santiago Apóstol.
-        self._add_holiday_jul_25(tr("Santiago Apóstol"))
-
-        # Immaculate Heart of Mary.
-        self._add_holiday_aug_22(tr("Inmaculada Corazón de Maria"))
-
-        # Saint Teresa of Jesus.
-        self._add_holiday_oct_15(tr("Santa Teresa de Jesús"))
-
-        # Holy Family.
-        self._add_holiday_dec_30(tr("Sagrada Familia"))
-
-    def _populate_subdiv_wn_public_holidays(self):
-        # Saints Peter and Paul.
-        self._add_holiday_jun_29(tr("Santos Pedro y Pablo"))
-
-        # Our Lady of Asunción.
-        self._add_holiday_aug_15(tr("Nuestra Señora de Asunción"))
-
+    def _populate_subdiv_akonibe_public_holidays(self):
         # Saint Pius X.
         self._add_holiday_aug_21(tr("Santo Pío X"))
 
+    def _populate_subdiv_anisok_public_holidays(self):
+        # Saints Peter and Paul.
+        self._add_holiday_jun_29(tr("Santos Pedro y Pablo"))
+
+    def _populate_subdiv_ayene_public_holidays(self):
+        # Our Lady of the Assumption.
+        self._add_holiday_aug_15(tr("Nuestra Señora de Asunción"))
+
+    def _populate_subdiv_baney_public_holidays(self):
+        # Santiago Apóstol.
+        self._add_holiday_jul_25(tr("Santiago Apóstol"))
+
+    def _populate_subdiv_bata_public_holidays(self):
+        # Santiago Apóstol.
+        self._add_holiday_jul_25(tr("Santiago Apóstol"))
+
+    def _populate_subdiv_bidja_bidjan_public_holidays(self):
+        # Exaltation of the Holy Cross.
+        self._add_holiday_sep_14(tr("Exaltación de la Santa Cruz"))
+
+    def _populate_subdiv_bikurga_public_holidays(self):
+        # Assumption of Our Lady.
+        self._add_holiday_aug_15(tr("Asunción de Nuestra Señora"))
+
+    def _populate_subdiv_bitika_public_holidays(self):
+        # Saint Teresa of Jesus.
+        self._add_holiday_oct_15(tr("Santa Teresa de Jesús"))
+
+    def _populate_subdiv_ebebiyin_public_holidays(self):
+        # Saint Peter Claver.
+        self._add_holiday_sep_9(tr("San Pedro Claver"))
+
+    def _populate_subdiv_kogo_public_holidays(self):
+        # Our Lady of Carmen.
+        self._add_holiday_jul_15(tr("Nuestra Señora del Carmen"))
+
+    def _populate_subdiv_luba_public_holidays(self):
+        # Our Lady of Montserrat.
+        self._add_holiday_apr_27(tr("Nuestra Señora de Montserrat"))
+
+    def _populate_subdiv_machinda_public_holidays(self):
+        # Holy Family.
+        self._add_holiday_dec_30(tr("Sagrada Familia"))
+
+    def _populate_subdiv_malabo_public_holidays(self):
+        # Feast of Santa Isabel.
+        self._add_holiday_nov_17(tr("Fiesta de Santa Isabel"))
+
+    def _populate_subdiv_mbini_public_holidays(self):
+        # Immaculate Heart of Mary.
+        self._add_holiday_aug_22(tr("Inmaculada Corazón de Maria"))
+
+    def _populate_subdiv_mikomeseng_public_holidays(self):
+        # Virgin of Africa.
+        self._add_holiday_aug_5(tr("Virgen de Africa"))
+
+    def _populate_subdiv_mongomeyen_public_holidays(self):
+        # Holy Family.
+        self._add_holiday_dec_30(tr("Sagrada Familia"))
+
+    def _populate_subdiv_mongomo_public_holidays(self):
         # Virgin of Guadalupe.
         self._add_holiday_dec_12(tr("Virgen de Guadalupe"))
 
-        # Holy Family.
-        self._add_holiday_dec_30(tr("Sagrada Familia"))
+    def _populate_subdiv_niefang_public_holidays(self):
+        # Maria Reina.
+        self._add_holiday_aug_22(tr("Maria Reina"))
+
+    def _populate_subdiv_nkimi_public_holidays(self):
+        # Santiago Apóstol.
+        self._add_holiday_jul_25(tr("Santiago Apóstol"))
+
+    def _populate_subdiv_nkue_public_holidays(self):
+        # Saint Francis Xavier.
+        self._add_holiday_dec_3(tr("San Francisco Javier"))
+
+    def _populate_subdiv_nsok_nsomo_public_holidays(self):
+        # Saint Peter Claver.
+        self._add_holiday_sep_9(tr("San Pedro Claver"))
+
+    def _populate_subdiv_nsork_public_holidays(self):
+        # Saints Paul.
+        self._add_holiday_jun_29(tr("Santos Pablo"))
+
+    def _populate_subdiv_rebola_public_holidays(self):
+        # Our Lady of Montserrat.
+        self._add_holiday_apr_27(tr("Nuestra Señora de Montserrat"))
 
 
 class GQ(EquatorialGuinea):

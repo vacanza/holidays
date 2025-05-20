@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.73\n"
+"Project-Id-Version: Holidays 0.74\n"
 "POT-Creation-Date: 2025-05-01 05:05+0000\n"
 "PO-Revision-Date: 2025-05-01 05:05+0000\n"
 "Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
@@ -43,19 +43,8 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
-#. Labor Day.
-msgid "Día del Trabajo"
-msgstr ""
-
 #. Corpus Christi.
 msgid "Corpus Christi"
-msgstr ""
-
-#. Independence Day.
-msgid "Día de Independencia"
-msgstr ""
-
-msgid "Fiesta de Inmaculada Concepción"
 msgstr ""
 
 #. Christmas Day.
@@ -66,16 +55,8 @@ msgstr ""
 msgid "Victoria de la AFCON contra Costa de Marfil"
 msgstr ""
 
-#. President's Day.
-msgid "Día del Presidente"
-msgstr ""
-
 #. Armed Forces Day.
 msgid "Día de las Fuerzas Armadas"
-msgstr ""
-
-#. Fundamental Law Day.
-msgid "Día de la Ley Fundamental"
 msgstr ""
 
 #. Feast of Santa Isabel.
@@ -138,11 +119,7 @@ msgstr ""
 msgid "Virgen de Guadalupe"
 msgstr ""
 
-#. Assumption of Our Lady Patroness of Bikurga.
-msgid "Asunción de Nuestra Señora Patrona de Bikurga"
-msgstr ""
-
-#. Our Lady of Asunción.
+#. Our Lady of the Assumption.
 msgid "Nuestra Señora de Asunción"
 msgstr ""
 
@@ -152,4 +129,36 @@ msgstr ""
 
 #. Immaculate Heart of Mary.
 msgid "Inmaculada Corazón de Maria"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr ""
+
+#. International Labor Day.
+msgid "Día Internacional del Trabajo"
+msgstr ""
+
+#. President's Day.
+msgid "Natalicio de Su Excelencia el Presidente de la República"
+msgstr ""
+
+#. Constitution Day.
+msgid "Día de la Constitución"
+msgstr ""
+
+#. Independence Day.
+msgid "Día de la Independencia Nacional"
+msgstr ""
+
+#. Immaculate Conception.
+msgid "Festividad de la Inmaculada Concepción de María"
+msgstr ""
+
+#. Assumption of Our Lady.
+msgid "Asunción de Nuestra Señora"
+msgstr ""
+
+#. Saints Paul.
+msgid "Santos Pablo"
 msgstr ""
