@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-19 07:23+0530\n"
 "PO-Revision-Date: 2025-05-19 07:23+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyamoorthy@gmail.com>\n"
@@ -37,9 +37,6 @@ msgstr ""
 
 #. Commonwealth Day.
 msgid "Commonwealth Day"
-msgstr ""
-
-msgid "Lavity Stoutt's Birthday"
 msgstr ""
 
 #. Good Friday.
@@ -100,4 +97,19 @@ msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
+msgstr ""
+
+msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
+msgstr ""
+
+#. Festival Monday.
+msgid "Festival Monday"
+msgstr ""
+
+#. Festival Tuesday.
+msgid "Festival Tuesday"
+msgstr ""
+
+#. Festival Wednesday.
+msgid "Festival Wednesday"
 msgstr ""
