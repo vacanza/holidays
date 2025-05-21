@@ -248,12 +248,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-08-03", "Día de las Fuerzas Armadas"),
             ("2025-08-04", "Día de las Fuerzas Armadas (observado)"),
             ("2025-08-05", "Virgen de Africa"),
-            (
-                "2025-08-15",
-                "Asunción de Nuestra Señora; "
-                + "Día de la Constitución; "
-                + "Nuestra Señora de Asunción",
-            ),
+            ("2025-08-15", "Asunción de Nuestra Señora; Día de la Constitución"),
             ("2025-08-21", "Santo Pío X"),
             ("2025-08-22", "Inmaculada Corazón de Maria; Maria Reina"),
             ("2025-09-09", "San Pedro Claver"),
@@ -291,7 +286,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-08-05", "Virgin of Africa"),
             (
                 "2025-08-15",
-                "Assumption of Our Lady; " + "Constitution Day; " + "Our Lady of Assumption",
+                "Assumption of Our Lady; Constitution Day",
             ),
             ("2025-08-21", "Saint Pius X"),
             ("2025-08-22", "Immaculate Heart of Mary; Maria Reina"),

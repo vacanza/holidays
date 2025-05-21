@@ -119,10 +119,6 @@ msgstr "Saint Pius X"
 msgid "Virgen de Guadalupe"
 msgstr "Virgin of Guadalupe"
 
-#. Our Lady of the Assumption.
-msgid "Nuestra Señora de Asunción"
-msgstr "Our Lady of Assumption"
-
 #. Our Lady of Carmen.
 msgid "Nuestra Señora del Carmen"
 msgstr "Our Lady of Carmen"

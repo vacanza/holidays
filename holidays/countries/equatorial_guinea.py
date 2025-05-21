@@ -146,8 +146,8 @@ class EquatorialGuinea(
         self._add_holiday_jun_29(tr("Santos Pedro y Pablo"))
 
     def _populate_subdiv_ayene_public_holidays(self):
-        # Our Lady of the Assumption.
-        self._add_holiday_aug_15(tr("Nuestra Señora de Asunción"))
+        # Assumption of Our Lady.
+        self._add_holiday_aug_15(tr("Asunción de Nuestra Señora"))
 
     def _populate_subdiv_baney_public_holidays(self):
         # Santiago Apóstol.

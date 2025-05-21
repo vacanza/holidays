@@ -119,10 +119,6 @@ msgstr ""
 msgid "Virgen de Guadalupe"
 msgstr ""
 
-#. Our Lady of the Assumption.
-msgid "Nuestra Señora de Asunción"
-msgstr ""
-
 #. Our Lady of Carmen.
 msgid "Nuestra Señora del Carmen"
 msgstr ""
