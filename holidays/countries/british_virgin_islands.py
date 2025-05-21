@@ -13,18 +13,7 @@
 from datetime import timedelta
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import (  # noqa: F401
-    JAN,
-    MAR,
-    JUN,
-    JUL,
-    AUG,
-    OCT,
-    DEC,
-    MON,
-    SAT,
-    FRI,
-)
+from holidays.calendars.gregorian import JUN, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -38,34 +27,31 @@ from holidays.observed_holiday_base import (
 
 
 class BritishVirginIslands(
-    ObservedHolidayBase, InternationalHolidays, ChristianHolidays, StaticHolidays
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
 ):
     """British Virgin Islands holidays.
 
     References:
-    * <https://en.wikipedia.org/wiki/Public_holidays_in_the_British_Virgin_Islands>
-    * <https://www.timeanddate.com/holidays/british-virgin-islands/>
-
-    * [2021] <https://bvi.org.uk/2021-public-holidays/>
-    * [2022] <http://www.bvi.gov.vg/media-centre/revised-2022-public-holidays>
-    * [2023] <https://bvi.gov.vg/media-centre/updatedofficialholidays20231>
-    * [2024] <https://bvi.gov.vg/media-centre/cabinet-approves-2024-public-holidays>
-    * [2025] <https://bvi.gov.vg/media-centre/2025-holiday-calendar-flyer-01>
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_British_Virgin_Islands>
+        * [Public Holidays (Amendment) Act, 2021](https://laws.gov.vg/Laws/public-holidays-amendment-act-2021)
+        * <https://www.timeanddate.com/holidays/british-virgin-islands/>
+        * [2021](https://bvi.org.uk/2021-public-holidays/)
+        * [2022](http://www.bvi.gov.vg/media-centre/revised-2022-public-holidays)
+        * [2023](https://bvi.gov.vg/media-centre/updatedofficialholidays20231)
+        * [2024](https://bvi.gov.vg/media-centre/cabinet-approves-2024-public-holidays)
+        * [2025](https://bvi.gov.vg/media-centre/2025-holiday-calendar-flyer-01)
     """
 
     country = "VG"
     default_language = "en_VG"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    subdivisions = ()
-    supported_languages = (
-        "en_US",
-        "en_VG",
-    )
+    supported_languages = ("en_US", "en_VG")
     start_year = 1967
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, BritishVirginIslandsStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         kwargs.setdefault("observed_since", 2000)
@@ -78,9 +64,7 @@ class BritishVirginIslands(
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
         # Lavity Stoutt's Birthday.
-        self._add_observed(
-            self._add_holiday_mar_7(tr("Lavity Stoutt's Birthday")), rule=ALL_TO_PREV_MON
-        )
+        self._add_holiday_1st_mon_before_mar_7(tr("Lavity Stoutt's Birthday"))
 
         # Commonwealth Day.
         self._add_holiday_2nd_mon_of_mar(tr("Commonwealth Day"))
@@ -96,10 +80,10 @@ class BritishVirginIslands(
 
         # Sovereign's Birthday.
         name = tr("Sovereign's Birthday")
-        if self._year < 2020:
-            self._add_holiday_2nd_sat_of_jun(name)
-        else:
+        if self._year >= 2020:
             self._add_holiday_2nd_fri_of_jun(name)
+        else:
+            self._add_holiday_2nd_sat_of_jun(name)
 
         territory_day_dates = {
             2015: (JUN, 29),
@@ -123,13 +107,13 @@ class BritishVirginIslands(
                 self._add_observed(dt)
 
         # Emancipation Monday.
-        emancipation_monday = self._add_holiday_1st_mon_of_aug(tr("Emancipation Monday"))
+        self._add_holiday_1st_mon_of_aug(tr("Emancipation Monday"))
 
         # Emancipation Tuesday.
-        self._add_holiday(tr("Emancipation Tuesday"), emancipation_monday + timedelta(days=1))
+        self._add_holiday_1_day_past_1st_mon_of_aug(tr("Emancipation Tuesday"))
 
         # Emancipation Wednesday.
-        self._add_holiday(tr("Emancipation Wednesday"), emancipation_monday + timedelta(days=2))
+        self._add_holiday_2_days_past_1st_mon_of_aug(tr("Emancipation Wednesday"))
 
         if self._year < 2021:
             # Saint Ursula's Day.
@@ -146,13 +130,9 @@ class BritishVirginIslands(
             self._add_holiday_4th_mon_of_nov(tr("The Great March of 1949 and Restoration Day"))
 
         if self._year != 2022:
-            self._add_observed(
-                # Boxing Day.
-                self._add_christmas_day_two(tr("Boxing Day")),
-                rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
-            )
-        else:
-            self._add_christmas_day_two(tr("Boxing Day"))
+        dt = self._add_christmas_day_two(tr("Boxing Day"))
+        if self._year != 2022:
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
 
         # Christmas Day.
         dt = self._add_christmas_day(tr("Christmas Day"))
