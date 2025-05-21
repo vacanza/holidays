@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 175 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 176 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -1364,6 +1364,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Can also be loaded as country US, subdivision VI</td>
 <td></td>
 <td>GOVERNMENT, UNOFFICIAL</td>
+</tr>
+<tr>
+<td>Yemen</td>
+<td>YE</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Zambia</td>
