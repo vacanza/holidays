@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JUN, OCT, DEC
@@ -21,7 +20,6 @@ from holidays.observed_holiday_base import (
     SUN_TO_NEXT_MON,
     MON_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
-    ALL_TO_PREV_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
 )
 
@@ -35,6 +33,12 @@ class BritishVirginIslands(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_British_Virgin_Islands>
         * [Public Holidays (Amendment) Act, 2021](https://laws.gov.vg/Laws/public-holidays-amendment-act-2021)
         * <https://www.timeanddate.com/holidays/british-virgin-islands/>
+        * [2015](https://bvi.gov.vg/media-centre/2015-public-holidays)
+        * [2016](https://bvi.gov.vg/media-centre/2016-public-holidays)
+        * [2017](https://bvi.gov.vg/media-centre/2017-public-holidays)
+        * [2018](https://bvi.gov.vg/media-centre/2018-public-holidays)
+        * [2019](https://bvi.gov.vg/media-centre/2019-public-holidays)
+        * [2020](https://bvi.gov.vg/media-centre/2020-public-holidays)
         * [2021](https://bvi.org.uk/2021-public-holidays/)
         * [2022](http://www.bvi.gov.vg/media-centre/revised-2022-public-holidays)
         * [2023](https://bvi.gov.vg/media-centre/updatedofficialholidays20231)
@@ -63,11 +67,14 @@ class BritishVirginIslands(
         if self._year not in {2004, 2010}:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON)
 
-        # Lavity Stoutt's Birthday.
-        self._add_holiday_1st_mon_before_mar_7(tr("Lavity Stoutt's Birthday"))
+        # The Anniversary of the Birth of Hamilton Lavity Stoutt.
+        self._add_holiday_1st_mon_before_mar_7(
+            tr("The Anniversary of the Birth of Hamilton Lavity Stoutt")
+        )
 
-        # Commonwealth Day.
-        self._add_holiday_2nd_mon_of_mar(tr("Commonwealth Day"))
+        if self._year <= 2020:
+            # Commonwealth Day.
+            self._add_holiday_2nd_mon_of_mar(tr("Commonwealth Day"))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -92,30 +99,51 @@ class BritishVirginIslands(
         name = (
             # Colony Day.
             tr("Colony Day")
-            if self._year < 1978
+            if self._year <= 1977
             # Territory Day.
             else tr("Territory Day")
-            if self._year < 2021
+            if self._year <= 2020
             # Virgin Islands Day.
             else tr("Virgin Islands Day")
         )
         if self._year in territory_day_dates:
             self._add_holiday(name, territory_day_dates[self._year])
         else:
-            dt = self._add_holiday_jul_1(name)
+            if self._year < 2021:
+                dt = self._add_holiday_jul_1(name)
+            else:
+                dt = self._add_holiday_1st_mon_of_jul(name)
             if self._year not in {2006, 2017}:
                 self._add_observed(dt)
 
-        # Emancipation Monday.
-        self._add_holiday_1st_mon_of_aug(tr("Emancipation Monday"))
+        name = (
+            # Festival Monday.
+            tr("Festival Monday")
+            if self._year <= 2020
+            # Emancipation Monday.
+            else tr("Emancipation Monday")
+        )
+        self._add_holiday_1st_mon_of_aug(name)
 
-        # Emancipation Tuesday.
-        self._add_holiday_1_day_past_1st_mon_of_aug(tr("Emancipation Tuesday"))
+        name = (
+            # Festival Tuesday.
+            tr("Festival Tuesday")
+            if self._year <= 2020
+            # Emancipation Tuesday.
+            else tr("Emancipation Tuesday")
+        )
+        self._add_holiday_1_day_past_1st_mon_of_aug(name)
 
-        # Emancipation Wednesday.
-        self._add_holiday_2_days_past_1st_mon_of_aug(tr("Emancipation Wednesday"))
+        name = (
+            # Festival Wednesday.
+            tr("Festival Wednesday")
+            if self._year <= 2020
+            # Emancipation Wednesday.
+            else tr("Emancipation Wednesday")
+        )
+        self._add_holiday_2_days_past_1st_mon_of_aug(name)
 
-        if self._year < 2021:
+        if self._year <= 2020:
             # Saint Ursula's Day.
             dt = self._add_holiday_oct_21(tr("Saint Ursula's Day"))
             if self._year != 2020:
@@ -129,7 +157,7 @@ class BritishVirginIslands(
             # The Great March of 1949 and Restoration Day.
             self._add_holiday_4th_mon_of_nov(tr("The Great March of 1949 and Restoration Day"))
 
-        if self._year != 2022:
+        # Boxing Day.
         dt = self._add_christmas_day_two(tr("Boxing Day"))
         if self._year != 2022:
             self._add_observed(dt, rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE)
