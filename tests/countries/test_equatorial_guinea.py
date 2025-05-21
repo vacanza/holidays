@@ -32,35 +32,80 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         name = "Año Nuevo"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2007, 2050)))
 
-        obs_dt = "2017-01-02"
+        obs_dt = (
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_womens_day(self):
-        name = "Día Internacional de la Mujer"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2007, 2050)))
+    def test_international_womens_day(self):
+        self.assertHolidayName(
+            "Día Internacional de la Mujer", (f"{year}-03-08" for year in range(2007, 2050))
+        )
+
+    def test_maundy_thursday(self):
+        self.assertHolidayName(
+            "Jueves Santo",
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+            "2024-03-28",
+            "2025-04-17",
+        )
 
     def test_good_friday(self):
         name = "Viernes Santo"
         self.assertHolidayName(
             name,
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
 
         self.assertHolidayName(name, range(2007, 2050))
 
-    def test_labor_day(self):
+    def test_international_labor_day(self):
         name = "Día Internacional del Trabajo"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2007, 2050)))
 
-        obs_dt = ("2021-05-03", "2016-05-02", "2022-05-02")
+        obs_dt = (
+            "2010-05-03",
+            "2011-05-02",
+            "2016-05-02",
+            "2021-05-03",
+            "2022-05-02",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_corpus_christi_day(self):
+    def test_african_liberation_day(self):
+        self.assertHolidayName(
+            "Día de la liberación Africana", (f"{year}-05-25" for year in range(2007, 2050))
+        )
+
+    def test_presidents_day(self):
+        name = "Natalicio de Su Excelencia el Presidente de la República"
+        self.assertHolidayName(name, (f"{year}-06-05" for year in range(2007, 2050)))
+
+        obs_dt = (
+            "2010-06-07",
+            "2011-06-06",
+            "2016-06-06",
+            "2021-06-07",
+            "2022-06-06",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_corpus_christi(self):
         name = "Corpus Christi"
         self.assertHolidayName(
             name,
@@ -70,11 +115,6 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             "2023-06-08",
             "2024-05-30",
             "2025-06-19",
-            "2026-06-04",
-            "2027-05-27",
-            "2028-06-15",
-            "2029-05-31",
-            "2030-06-20",
         )
 
         self.assertHolidayName(name, range(2007, 2050))
@@ -84,15 +124,14 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-08-03" for year in range(2007, 2050)))
         self.assertNoHolidayName(name, range(1969, 1979))
 
-        obs_dt = ("2014-08-04", "2025-08-04")
-        self.assertHolidayName(f"{name} (observado)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_presidents_day(self):
-        name = "Natalicio de Su Excelencia el Presidente de la República"
-        self.assertHolidayName(name, (f"{year}-06-05" for year in range(2007, 2050)))
-
-        obs_dt = ("2021-06-07", "2016-06-06", "2022-06-06")
+        obs_dt = (
+            "2008-08-04",
+            "2013-08-05",
+            "2014-08-04",
+            "2019-08-05",
+            "2024-08-05",
+            "2025-08-04",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -100,7 +139,13 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         name = "Día de la Constitución"
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(2007, 2050)))
 
-        obs_dt = ("2010-08-16", "2021-08-16")
+        obs_dt = (
+            "2009-08-17",
+            "2010-08-16",
+            "2015-08-17",
+            "2020-08-17",
+            "2021-08-16",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -108,7 +153,14 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         name = "Día de la Independencia Nacional"
         self.assertHolidayName(name, (f"{year}-10-12" for year in range(2007, 2050)))
 
-        obs_dt = ("2014-10-13", "2025-10-13")
+        obs_dt = (
+            "2008-10-13",
+            "2013-10-14",
+            "2014-10-13",
+            "2019-10-14",
+            "2024-10-14",
+            "2025-10-13",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -116,7 +168,14 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         name = "Festividad de la Inmaculada Concepción de María"
         self.assertHolidayName(name, (f"{year}-12-08" for year in range(2007, 2050)))
 
-        obs_dt = ("2019-12-09", "2024-12-09")
+        obs_dt = (
+            "2007-12-10",
+            "2012-12-10",
+            "2013-12-09",
+            "2018-12-10",
+            "2019-12-09",
+            "2024-12-09",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -124,7 +183,13 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         name = "Día de Navidad"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2007, 2050)))
 
-        obs_dt = ("2021-12-27", "2016-12-26", "2022-12-26")
+        obs_dt = (
+            "2010-12-27",
+            "2011-12-26",
+            "2016-12-26",
+            "2021-12-27",
+            "2022-12-26",
+        )
         self.assertHolidayName(f"{name} (observado)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -173,6 +238,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-04-18", "Viernes Santo"),
             ("2025-04-27", "Nuestra Señora de Montserrat"),
             ("2025-05-01", "Día Internacional del Trabajo"),
+            ("2025-05-25", "Día de la liberación Africana"),
             ("2025-06-05", "Natalicio de Su Excelencia el Presidente de la República"),
             ("2025-06-13", "Fiesta Patronal de Annobón"),
             ("2025-06-19", "Corpus Christi"),
@@ -213,6 +279,7 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-04-18", "Good Friday"),
             ("2025-04-27", "Our Lady of Montserrat"),
             ("2025-05-01", "International Labor Day"),
+            ("2025-05-25", "African Liberation Day"),
             ("2025-06-05", "President's Day"),
             ("2025-06-13", "Patron Saint Festival of Annobón"),
             ("2025-06-19", "Corpus Christi"),

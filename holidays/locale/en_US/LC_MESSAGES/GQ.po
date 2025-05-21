@@ -162,3 +162,7 @@ msgstr "Assumption of Our Lady"
 #. Saints Paul.
 msgid "Santos Pablo"
 msgstr "Saints Paul"
+
+#. African Liberation Day.
+msgid "Día de la liberación Africana"
+msgstr "African Liberation Day"

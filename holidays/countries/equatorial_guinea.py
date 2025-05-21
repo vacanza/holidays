@@ -27,7 +27,6 @@ class EquatorialGuinea(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Equatorial_Guinea>
         * <https://web.archive.org/web/20250503042253/https://www.timeanddate.com/holidays/guineaecuatorial/>
         * <https://web.archive.org/web/20250503042610/https://gq.usembassy.gov/holiday-calendar/>
-        * [AFCON Victory Holiday](https://web.archive.org/web/20240124021813/https://www.monitor.co.ug/uganda/sports/soccer/equatorial-guinea-president-awards-team-1-million-for-afcon-victory-4500644)
         * [2015](https://web.archive.org/web/20250421105147/https://www.guineainfomarket.com/gobierno/2015/01/01/calendario-laboral-de-guinea-ecuatorial-2015/)
         * [2016](https://web.archive.org/web/20250212174334/https://www.guineainfomarket.com/libros/2015/12/06/calendario-laboral-de-guinea-ecuatorial-2016/)
         * [2018](https://web.archive.org/web/20241005004303/https://www.guineainfomarket.com/economia/2017/12/29/calendario-laboral-guinea-ecuatorial-2018/)
@@ -99,6 +98,9 @@ class EquatorialGuinea(
 
         # International Labor Day.
         self._add_observed(self._add_labor_day(tr("Día Internacional del Trabajo")))
+
+        # African Liberation Day.
+        self._add_holiday_may_25(tr("Día de la liberación Africana"))
 
         self._add_observed(
             # President's Day.
@@ -237,6 +239,12 @@ class GNQ(EquatorialGuinea):
 
 
 class EquatorialGuineaStaticHolidays:
+    """Equatorial Guinea special holidays.
+
+    References:
+        * [AFCON Victory Holiday](https://web.archive.org/web/20240124021813/https://www.monitor.co.ug/uganda/sports/soccer/equatorial-guinea-president-awards-team-1-million-for-afcon-victory-4500644)
+    """
+
     special_public_holidays = {
         # AFCON Victory Against Ivory Coast.
         2024: (JAN, 23, tr("Victoria de la AFCON contra Costa de Marfil")),

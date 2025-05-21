@@ -162,3 +162,7 @@ msgstr ""
 #. Saints Paul.
 msgid "Santos Pablo"
 msgstr ""
+
+#. African Liberation Day.
+msgid "Día de la liberación Africana"
+msgstr ""
