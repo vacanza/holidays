@@ -50,30 +50,29 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_lavity_stoutts_birthday(self):
-        name = "Lavity Stoutt's Birthday"
-        self.assertHolidayName(name, (f"{year}-03-07" for year in range(1967, 2050)))
-        obs_dt = (
+        name = "The Anniversary of the Birth of Hamilton Lavity Stoutt"
+        self.assertHolidayName(
+            name,
             "2020-03-02",
             "2021-03-01",
             "2023-03-06",
             "2024-03-04",
             "2025-03-03",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(name, range(1967, 2050))
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
-        (
-            self.assertHolidayName(
-                name,
-                "2021-03-08",
-                "2022-03-14",
-                "2023-03-13",
-                "2024-03-11",
-                "2025-03-10",
-            ),
+        self.assertHolidayName(
+            name,
+            "2015-03-09",
+            "2016-03-14",
+            "2017-03-13",
+            "2018-03-12",
+            "2019-03-11",
+            "2020-03-09",
         )
+        self.assertHolidayName(name, range(1967, 2020))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -130,51 +129,73 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name_1 = "Colony Day"
         name_2 = "Territory Day"
         name_3 = "Virgin Islands Day"
-
-        self.assertHolidayName(name_1, *[f"{year}-07-01" for year in range(1967, 1978)])
         self.assertHolidayName(
-            name_2, *[f"{year}-07-01" for year in range(1978, 2021) if year not in (2015, 2020)]
+            name_2,
+            "2014-07-01",
+            "2015-06-29",
+            "2016-07-01",
+            "2017-07-01",
+            "2018-07-01",
+            "2019-07-01",
+            "2020-06-29",
         )
-        self.assertHolidayName(name_3, *[f"{year}-07-01" for year in range(2021, 2050)])
+        self.assertHolidayName(
+            name_3,
+            "2021-07-05",
+            "2022-07-04",
+            "2023-07-03",
+            "2024-07-01",
+            "2025-07-07",
+        )
         obs_dt = (
-            "2006-06-30",
             "2007-07-02",
             "2012-07-02",
             "2017-06-30",
             "2018-07-02",
         )
+        self.assertHolidayName(name_1, range(1967, 1978))
         self.assertHolidayName(f"{name_2} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_emancipation_days(self):
         self.assertHolidayName(
+            "Festival Monday",
+            "2018-08-06",
+            "2019-08-05",
+            "2020-08-03",
+        )
+        self.assertHolidayName(
+            "Festival Tuesday",
+            "2018-08-07",
+            "2019-08-06",
+            "2020-08-04",
+        )
+        self.assertHolidayName(
+            "Festival Wednesday",
+            "2018-08-08",
+            "2019-08-07",
+            "2020-08-05",
+        )
+        self.assertHolidayName(
             "Emancipation Monday",
-            (
-                "2020-08-03",
-                "2021-08-02",
-                "2022-08-01",
-                "2023-08-07",
-                "2024-08-05",
-            ),
+            "2021-08-02",
+            "2022-08-01",
+            "2023-08-07",
+            "2024-08-05",
         )
         self.assertHolidayName(
             "Emancipation Tuesday",
-            (
-                "2020-08-04",
-                "2021-08-03",
-                "2022-08-02",
-                "2023-08-08",
-                "2024-08-06",
-            ),
+            "2021-08-03",
+            "2022-08-02",
+            "2023-08-08",
+            "2024-08-06",
         )
         self.assertHolidayName(
             "Emancipation Wednesday",
-            (
-                "2020-08-05",
-                "2021-08-04",
-                "2022-08-03",
-                "2023-08-09",
-                "2024-08-07",
-            ),
+            "2021-08-04",
+            "2022-08-03",
+            "2023-08-09",
+            "2024-08-07",
         )
 
     def test_saint_ursulas_day(self):
@@ -244,13 +265,12 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
-            ("2022-03-07", "Lavity Stoutt's Birthday"),
-            ("2022-03-14", "Commonwealth Day"),
+            ("2022-03-07", "The Anniversary of the Birth of Hamilton Lavity Stoutt"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
-            ("2022-07-01", "Virgin Islands Day"),
+            ("2022-07-04", "Virgin Islands Day"),
             ("2022-08-01", "Emancipation Monday"),
             ("2022-08-02", "Emancipation Tuesday"),
             ("2022-08-03", "Emancipation Wednesday"),
@@ -267,12 +287,11 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
             ("2022-03-07", "Lavity Stoutt's Birthday"),
-            ("2022-03-14", "Commonwealth Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
-            ("2022-07-01", "Virgin Islands Day"),
+            ("2022-07-04", "Virgin Islands Day"),
             ("2022-08-01", "Emancipation Monday"),
             ("2022-08-02", "Emancipation Tuesday"),
             ("2022-08-03", "Emancipation Wednesday"),
