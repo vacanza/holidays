@@ -39,9 +39,6 @@ msgstr "New Year's Day"
 msgid "Commonwealth Day"
 msgstr "Commonwealth Day"
 
-msgid "Lavity Stoutt's Birthday"
-msgstr "Lavity Stoutt's Birthday"
-
 #. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
@@ -101,3 +98,18 @@ msgstr "Boxing Day"
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
+
+msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
+msgstr "Lavity Stoutt's Birthday"
+
+#. Festival Monday.
+msgid "Festival Monday"
+msgstr "Festival Monday"
+
+#. Festival Tuesday.
+msgid "Festival Tuesday"
+msgstr "Festival Tuesday"
+
+#. Festival Wednesday.
+msgid "Festival Wednesday"
+msgstr "Festival Wednesday"
