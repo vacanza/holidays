@@ -59,72 +59,8 @@ msgstr ""
 msgid "Día de las Fuerzas Armadas"
 msgstr ""
 
-#. Feast of Santa Isabel.
-msgid "Fiesta de Santa Isabel"
-msgstr ""
-
 #. Patron Saint Festival of Annobón.
 msgid "Fiesta Patronal de Annobón"
-msgstr ""
-
-#. Our Lady of Montserrat.
-msgid "Nuestra Señora de Montserrat"
-msgstr ""
-
-#. Santiago Apóstol.
-msgid "Santiago Apóstol"
-msgstr ""
-
-#. Maria Reina.
-msgid "Maria Reina"
-msgstr ""
-
-#. Saint Barbara
-msgid "Santa Bárbara"
-msgstr ""
-
-#. Virgin of Africa.
-msgid "Virgen de Africa"
-msgstr ""
-
-#. Saint Peter Claver.
-msgid "San Pedro Claver"
-msgstr ""
-
-#. Exaltation of the Holy Cross.
-msgid "Exaltación de la Santa Cruz"
-msgstr ""
-
-#. Saint Francis Xavier.
-msgid "San Francisco Javier"
-msgstr ""
-
-#. Saint Teresa of Jesus.
-msgid "Santa Teresa de Jesús"
-msgstr ""
-
-#. Holy Family.
-msgid "Sagrada Familia"
-msgstr ""
-
-#. Saints Peter and Paul.
-msgid "Santos Pedro y Pablo"
-msgstr ""
-
-#. Saint Pius X.
-msgid "Santo Pío X"
-msgstr ""
-
-#. Virgin of Guadalupe.
-msgid "Virgen de Guadalupe"
-msgstr ""
-
-#. Our Lady of Carmen.
-msgid "Nuestra Señora del Carmen"
-msgstr ""
-
-#. Immaculate Heart of Mary.
-msgid "Inmaculada Corazón de Maria"
 msgstr ""
 
 #. Maundy Thursday.
@@ -149,14 +85,6 @@ msgstr ""
 
 #. Immaculate Conception.
 msgid "Festividad de la Inmaculada Concepción de María"
-msgstr ""
-
-#. Assumption of Our Lady.
-msgid "Asunción de Nuestra Señora"
-msgstr ""
-
-#. Saints Paul.
-msgid "Santos Pablo"
 msgstr ""
 
 #. African Liberation Day.

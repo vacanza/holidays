@@ -499,7 +499,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Equatorial Guinea</td>
 <td>GQ</td>
-<td>Provinces: AN (Annobón, Annobon); Cities: Akurenam, Akonibe, Anisok (Añisok), Ayene, Baney, Bata, Bidja-Bidjan, Bikurga, Bitika, Ebebiyin, Kogo, Luba, Machinda, Malabo, Mbini, Mikomeseng, Mongomeyen, Mongomo, Niefang, Nkimi, Nkue, Nsok-Nsomo, Nsork, Rebola</td>
+<td>Provinces: AN (Annobón, Annobon)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>
