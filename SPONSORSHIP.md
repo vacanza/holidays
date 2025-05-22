@@ -1,6 +1,6 @@
 # Open World Holidays Framework Sponsorship Program
 
-The **Open World Holidays Framework** is launching a sponsorship initiative to support **high-quality, independent contributions** to the project. This program is **not tied to specific coding events** such as Google Summer of Code or Winter of Code. Instead, it is designed to recognize and reward meaningful work from contributors **year-round**, based on our available budget. The Open World Holidays Framework offers a flexible, community-funded sponsorship program to support high-quality contributions outside traditional coding events. Sponsored tasks are open year-round, with compensation based on task complexity and available funding. We aim to fairly reward meaningful work while encouraging long-term engagement with the project.
+The Open World Holidays Framework is launching a year-round sponsorship program to reward meaningful, independent contributions based on task complexity. Sponsored tasks are open year-round and tiered by complexity and available budget. We aim to reward meaningful work fairly while encouraging long-term engagement beyond specific coding events.
 
 - [Program Goals](#program-goals)
 - [Current Funding](#current-funding)
@@ -22,7 +22,7 @@ The **Open World Holidays Framework** is launching a sponsorship initiative to s
 
 This program is currently supported through the [Tidelift Maintainer Program](https://tidelift.com/lifter/search/pypi/holidays), where we receive compensation based on the usage and maintenance of the `holidays` Python package. We are reinvesting these earnings to sponsor contributions to the Open World Holidays Framework.
 
-We are actively exploring additional sources of funding and will provide updates as new opportunities arise.
+We are actively exploring additional sources of funding and will provide updates as new opportunities arise (at least on a monthly basis).
 
 ## Sponsorship Amounts
 
@@ -36,8 +36,8 @@ The amount sponsored will vary depending on the complexity of the task:
 Note:
 
 - These rates are contingent on available funding and **do not cover any fees** charged by payment processors or platforms.
-- By default, tasks are classified as **medium**, unless a maintainer explicitly labels them as **hard**.
-- A task may be **reclassified as hard** at the maintainer’s discretion, based on its complexity or scope.
+- By default, tasks are classified as **#sponsorship-medium**, unless a maintainer explicitly labels them as **#sponsorship-hard**.
+- A task may be **reclassified as #sponsorship-hard** at the maintainer’s discretion, based on its complexity or scope.
 
 ## Eligibility
 
@@ -55,7 +55,7 @@ Note:
 
 ## Application and Selection Process
 
-To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
+To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [#sponsorship](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3A%22sponsorship%22), [#sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Amedium), [#sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Ahard)). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
 
 Before applying, please ensure that you meet the eligibility requirements:
 
@@ -96,7 +96,7 @@ Your contributions help expand our budget, allowing us to sponsor more contribut
 **Q: What happens if I cannot complete my task within the deadline?**
 **A:** We provide reasonable deadlines:
 
-- Task must be completed within 6 weeks of the start date
+- Any task must be completed within 6 weeks of the start date
 - A draft PR must be submitted within the first 2 weeks
 
 If these requirements are not met, the contributor will be unassigned and **no payment will be issued**.
@@ -113,12 +113,16 @@ If these requirements are not met, the contributor will be unassigned and **no p
 **Q: What are the acceptance criteria for a sponsored task to be eligible for payment?**
 **A:** To be eligible for payment, the pull request must be successfully merged into the dev branch. This typically requires 100% test coverage (in line with the current project standard) and adherence to strict code style and quality guidelines. Please refer to our contributing guide and recently merged PRs for examples. These standards help maintain the high quality of a project used by millions, with over 10 million downloads per month.
 
+**Q: Is there a limit to the number of sponsorship-eligible pull requests a contributor can complete per month?**
+**A:** There is no fixed limit on the number of sponsorship-eligible pull requests a contributor can complete per month. However, to ensure fair distribution of available tasks, contributors may only work on one sponsored task at a time. Priority is given to new eligible contributors who have not yet participated in the program. As long as you meet the eligibility criteria and follow the assignment process, you’re welcome to continue contributing.
+
 ## Contact
 
 To express interest in joining the sponsorship program or if you have any questions, please:
 
 - [Open an issue](https://github.com/vacanza/holidays/issues/new) on our GitHub repository
 - Contact maintainers via [Discussions](https://github.com/vacanza/holidays/discussions/2545)
+- Join our [Slack](https://join.slack.com/t/vacanza-team/shared_invite/zt-31jz9je5t-dl0vayg0iJ3DEzDh82~8Sg) and reach out to the maintainers at [#sponsorship](https://vacanza-team.slack.com/archives/C08S8394T4N) channel
 
 ---
 
