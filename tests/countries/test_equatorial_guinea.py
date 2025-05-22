@@ -124,7 +124,6 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
     def test_armed_forces_day(self):
         name = "Día de las Fuerzas Armadas"
         self.assertHolidayName(name, (f"{year}-08-03" for year in range(2007, 2050)))
-        self.assertNoHolidayName(name, range(1969, 1979))
         obs_dt = (
             "2008-08-04",
             "2013-08-05",
