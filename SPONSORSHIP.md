@@ -33,11 +33,11 @@ The amount sponsored will vary depending on the complexity of the task:
 | Medium    | Tasks such as implementing holidays for a new entity using well-established templates or rules | \$25 USD     |
 | Hard       | Tasks requiring deeper research, localization, or custom rule logic                           | \$50 USD     |
 
-Note:
+### Sponsorship Amounts Notes
 
 - These rates are contingent on available funding and **do not cover any fees** charged by payment processors or platforms.
-- By default, tasks are classified as **#sponsorship-medium**, unless a maintainer explicitly labels them as **#sponsorship-hard**.
-- A task may be **reclassified as #sponsorship-hard** at the maintainer’s discretion, based on its complexity or scope.
+- By default, tasks are classified as `sponsorship-medium`, unless a maintainer explicitly labels them as `sponsorship-hard`.
+- A task may be **reclassified as `sponsorship-hard` at the maintainer’s discretion, based on its complexity or scope.
 
 ## Eligibility
 
@@ -48,14 +48,14 @@ To participate in the sponsorship program, contributors must:
 - Have a **GitHub Sponsors account set up and eligible to receive payments** (check [GitHub’s supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
 - Ensure their country is eligible to receive payouts under GitHub Sponsors requirements
 
-Note:
+### Eligibility Notes
 
 - If the GitHub Sponsors program is not available for the contributor's country, we may consider **alternative payment options** (e.g., crypto payments in USDT) on a **case-by-case basis**.
 - Maintainers may specify additional eligibility requirements for specific entities or tasks. These may include familiarity with the country or region in question, native language proficiency, or relevant domain knowledge to ensure the accuracy and quality of the contribution.
 
 ## Application and Selection Process
 
-To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [#sponsorship](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3A%22sponsorship%22), [#sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Amedium), [#sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Ahard)). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
+To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [sponsorship](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3A%22sponsorship%22), [sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Amedium), [sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Ahard)). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
 
 Before applying, please ensure that you meet the eligibility requirements:
 
@@ -87,8 +87,8 @@ Your contributions help expand our budget, allowing us to sponsor more contribut
 **Q: What is the difference between medium and hard tasks?**
 **A:**
 
-- Medium task example – [PR #2525](https://github.com/vacanza/holidays/pull/2525)
-- Hard task example – [PR #2386](https://github.com/vacanza/holidays/pull/2386)
+- Medium task example: [PR #2525](https://github.com/vacanza/holidays/pull/2525)
+- Hard task example: [PR #2386](https://github.com/vacanza/holidays/pull/2386)
 
 **Q: Can I work on multiple sponsored tasks simultaneously?**
 **A:** No, one person can work on a single sponsorship-eligible issue at a time.
