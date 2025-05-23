@@ -39,7 +39,6 @@ HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 
 # Supported holiday categories.
 ARMED_FORCES = "armed_forces"
-ARMENIAN = "armenian"
 BANK = "bank"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
@@ -57,6 +56,14 @@ HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+
+ALBANIAN = "albanian"
+ARMENIAN = "armenian"
+BOSNIAN = "bosnian"
+ROMA = "roma"
+SERBIAN = "serbian"
+TURKISH = "turkish"
+VLACH = "vlach"
 
 DEFAULT_START_YEAR = 1901
 DEFAULT_END_YEAR = 2100

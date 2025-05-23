@@ -970,8 +970,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>mk</strong>, uk</td>
+<td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
 <td>Norway</td>
