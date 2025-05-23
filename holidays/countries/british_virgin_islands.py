@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUN, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAY, JUN, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -84,8 +84,9 @@ class BritishVirginIslands(
 
         # Sovereign's Birthday.
         name = tr("Sovereign's Birthday")
-        if self._year >= 2020:
+        if self._year >= 2019:
             sovereign_birthday_dates = {
+                2019: (JUN, 7),
                 2023: (JUN, 16),
             }
             if self._year in sovereign_birthday_dates:
@@ -147,6 +148,7 @@ class BritishVirginIslands(
             # Saint Ursula's Day.
             name = tr("Saint Ursula's Day")
             saint_ursula_dates = {
+                2015: (OCT, 19),
                 2020: (OCT, 23),
             }
             if self._year in saint_ursula_dates:
@@ -161,14 +163,7 @@ class BritishVirginIslands(
             self._add_holiday_3rd_mon_of_oct(tr("Heroes and Foreparents Day"))
 
             # The Great March of 1949 and Restoration Day.
-            name = tr("The Great March of 1949 and Restoration Day")
-            restoration_day_dates = {
-                2021: (NOV, 8),
-            }
-            if self._year in restoration_day_dates:
-                self._add_holiday(name, restoration_day_dates[self._year])
-            else:
-                self._add_holiday_4th_mon_of_nov(name)
+            self._add_holiday_4th_mon_of_nov(tr("The Great March of 1949 and Restoration Day"))
 
         self._add_observed(
             # Christmas Day.
