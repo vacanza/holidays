@@ -30,10 +30,9 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
-            "2006-06-30",
-            "2017-06-30",
-            "2020-10-23",
-            "2022-12-27",
+            "2019-12-11",
+            "2022-06-03",
+            "2023-05-08",
         )
 
     def test_new_years_day(self):
@@ -72,7 +71,8 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2019-03-11",
             "2020-03-09",
         )
-        self.assertHolidayName(name, range(1967, 2020))
+        self.assertHolidayName(name, range(1967, 2021))
+        self.assertNoHolidayName(name, range(2021, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -122,6 +122,9 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2020-06-12",
             "2021-06-11",
             "2022-06-10",
+            "2023-06-16",
+            "2024-06-14",
+            "2025-06-13",
         )
         self.assertHolidayName(name, range(1967, 2050))
 
@@ -129,14 +132,11 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name_1 = "Colony Day"
         name_2 = "Territory Day"
         name_3 = "Virgin Islands Day"
+        self.assertHolidayName(name_1, (f"{year}-07-01" for year in range(1967, 1978)))
         self.assertHolidayName(
             name_2,
-            "2014-07-01",
+            (f"{year}-07-01" for year in (*range(1978, 2015), *range(2016, 2020))),
             "2015-06-29",
-            "2016-07-01",
-            "2017-07-01",
-            "2018-07-01",
-            "2019-07-01",
             "2020-06-29",
         )
         self.assertHolidayName(
@@ -147,13 +147,15 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2024-07-01",
             "2025-07-07",
         )
+        self.assertNoHolidayName(name_1, range(1978, 2050))
+        self.assertNoHolidayName(name_2, range(1967, 1978), range(2021, 2050))
+        self.assertNoHolidayName(name_3, range(1967, 2021))
         obs_dt = (
             "2007-07-02",
             "2012-07-02",
             "2017-06-30",
             "2018-07-02",
         )
-        self.assertHolidayName(name_1, range(1967, 1978))
         self.assertHolidayName(f"{name_2} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -200,22 +202,18 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
 
     def test_saint_ursulas_day(self):
         name = "Saint Ursula's Day"
-        self.assertHolidayName(
-            name, *[f"{year}-10-21" for year in range(1967, 2021) if year != 2020]
-        )
+        self.assertHolidayName(name, (f"{year}-10-21" for year in range(1967, 2020)), "2020-10-23")
         self.assertNoHolidayName(name, range(2021, 2050))
         obs_dt = (
             "2007-10-22",
             "2012-10-22",
             "2017-10-20",
             "2018-10-22",
-            "2020-10-23",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
 
     def test_heroes_and_foreparents_day(self):
         name = "Heroes and Foreparents Day"
-        self.assertNoHolidayName(name, range(1967, 2021))
         self.assertHolidayName(
             name,
             "2021-10-18",
@@ -224,26 +222,30 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2024-10-21",
             "2025-10-20",
         )
+        self.assertHolidayName(name, range(2021, 2050))
+        self.assertNoHolidayName(name, range(1967, 2021))
 
     def test_great_march_and_restoration_day(self):
         name = "The Great March of 1949 and Restoration Day"
         self.assertNoHolidayName(name, range(1967, 2021))
         self.assertHolidayName(
             name,
-            "2021-11-22",
+            "2021-11-08",
             "2022-11-28",
             "2023-11-27",
             "2024-11-25",
             "2025-11-24",
         )
+        self.assertHolidayName(name, range(2021, 2050))
+        self.assertNoHolidayName(name, range(1967, 2021))
 
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1967, 2050)))
         obs_dt = (
             "2010-12-27",
-            "2011-12-26",
-            "2016-12-26",
+            "2011-12-27",
+            "2016-12-27",
             "2021-12-27",
             "2022-12-27",
         )
@@ -253,8 +255,9 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1967, 2050)))
         obs_dt = (
+            "2009-12-28",
+            "2010-12-28",
             "2015-12-28",
-            "2016-12-27",
             "2020-12-28",
             "2021-12-28",
         )
