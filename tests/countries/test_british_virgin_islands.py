@@ -39,7 +39,6 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1967, 2050)))
         obs_dt = (
-            "2010-12-31",
             "2012-01-02",
             "2017-01-02",
             "2022-01-03",
@@ -54,6 +53,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             name,
             "2020-03-02",
             "2021-03-01",
+            "2022-03-07",
             "2023-03-06",
             "2024-03-04",
             "2025-03-03",
@@ -118,7 +118,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2018-06-09",
-            "2019-06-08",
+            "2019-06-07",
             "2020-06-12",
             "2021-06-11",
             "2022-06-10",
@@ -159,50 +159,77 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name_2} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_emancipation_days(self):
+    def test_emancipation_monday(self):
+        name_1 = "Festival Monday"
+        name_2 = "Emancipation Monday"
         self.assertHolidayName(
-            "Festival Monday",
+            name_1,
             "2018-08-06",
             "2019-08-05",
             "2020-08-03",
         )
         self.assertHolidayName(
-            "Festival Tuesday",
-            "2018-08-07",
-            "2019-08-06",
-            "2020-08-04",
-        )
-        self.assertHolidayName(
-            "Festival Wednesday",
-            "2018-08-08",
-            "2019-08-07",
-            "2020-08-05",
-        )
-        self.assertHolidayName(
-            "Emancipation Monday",
+            name_2,
             "2021-08-02",
             "2022-08-01",
             "2023-08-07",
             "2024-08-05",
         )
+        self.assertHolidayName(name_1, range(1967, 2021))
+        self.assertHolidayName(name_2, range(2021, 2050))
+        self.assertNoHolidayName(name_1, range(2021, 2050))
+        self.assertNoHolidayName(name_2, range(1967, 2021))
+
+    def test_emancipation_tuesday(self):
+        name_1 = "Festival Tuesday"
+        name_2 = "Emancipation Tuesday"
         self.assertHolidayName(
-            "Emancipation Tuesday",
+            name_1,
+            "2018-08-07",
+            "2019-08-06",
+            "2020-08-04",
+        )
+        self.assertHolidayName(
+            name_2,
             "2021-08-03",
             "2022-08-02",
             "2023-08-08",
             "2024-08-06",
         )
+        self.assertHolidayName(name_1, range(1967, 2021))
+        self.assertHolidayName(name_2, range(2021, 2050))
+        self.assertNoHolidayName(name_1, range(2021, 2050))
+        self.assertNoHolidayName(name_2, range(1967, 2021))
+
+    def test_emancipation_wednesday(self):
+        name_1 = "Festival Wednesday"
+        name_2 = "Emancipation Wednesday"
         self.assertHolidayName(
-            "Emancipation Wednesday",
+            name_1,
+            "2018-08-08",
+            "2019-08-07",
+            "2020-08-05",
+        )
+        self.assertHolidayName(
+            name_2,
             "2021-08-04",
             "2022-08-03",
             "2023-08-09",
             "2024-08-07",
         )
+        self.assertHolidayName(name_1, range(1967, 2021))
+        self.assertHolidayName(name_2, range(2021, 2050))
+        self.assertNoHolidayName(name_1, range(2021, 2050))
+        self.assertNoHolidayName(name_2, range(1967, 2021))
 
     def test_saint_ursulas_day(self):
         name = "Saint Ursula's Day"
-        self.assertHolidayName(name, (f"{year}-10-21" for year in range(1967, 2020)), "2020-10-23")
+        self.assertHolidayName(
+            name,
+            *[f"{year}-10-21" for year in range(1967, 2020) if year not in (2015, 2020)],
+            "2015-10-19",
+            "2020-10-23",
+        )
         self.assertNoHolidayName(name, range(2021, 2050))
         obs_dt = (
             "2007-10-22",
@@ -211,6 +238,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             "2018-10-22",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_heroes_and_foreparents_day(self):
         name = "Heroes and Foreparents Day"
@@ -227,10 +255,9 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
 
     def test_great_march_and_restoration_day(self):
         name = "The Great March of 1949 and Restoration Day"
-        self.assertNoHolidayName(name, range(1967, 2021))
         self.assertHolidayName(
             name,
-            "2021-11-08",
+            "2021-11-22",
             "2022-11-28",
             "2023-11-27",
             "2024-11-25",
@@ -245,7 +272,6 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         obs_dt = (
             "2010-12-27",
             "2011-12-27",
-            "2016-12-27",
             "2021-12-27",
             "2022-12-27",
         )
@@ -255,7 +281,6 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1967, 2050)))
         obs_dt = (
-            "2009-12-28",
             "2010-12-28",
             "2015-12-28",
             "2020-12-28",
@@ -271,6 +296,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             ("2022-03-07", "The Anniversary of the Birth of Hamilton Lavity Stoutt"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
+            ("2022-06-03", "Queen Elizabeth II's Platinum Jubilee"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
             ("2022-07-04", "Virgin Islands Day"),
@@ -292,6 +318,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             ("2022-03-07", "Lavity Stoutt's Birthday"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
+            ("2022-06-03", "Queen Elizabeth II's Platinum Jubilee"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
             ("2022-07-04", "Virgin Islands Day"),
