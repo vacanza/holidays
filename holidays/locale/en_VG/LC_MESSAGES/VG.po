@@ -99,6 +99,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
+#. Lavity Stoutt's Birthday.
 msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
 msgstr ""
 
@@ -112,4 +113,16 @@ msgstr ""
 
 #. Festival Wednesday.
 msgid "Festival Wednesday"
+msgstr ""
+
+#. State Funeral of Honourable Ralph T. O'Neal.
+msgid "State Funeral of Honourable Ralph T. O'Neal"
+msgstr ""
+
+#. Platinum Jubilee of Elizabeth II.
+msgid "Queen Elizabeth II's Platinum Jubilee"
+msgstr ""
+
+#. Coronation of Charles III.
+msgid "The King's Coronation"
 msgstr ""
