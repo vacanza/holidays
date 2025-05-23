@@ -499,7 +499,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Equatorial Guinea</td>
 <td>GQ</td>
-<td>Provinces: AN (Annobón, Annobon)</td>
+<td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
 <td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>

@@ -190,9 +190,17 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_subdivision_holidays(self):
-        subdiv_holidays_mapping = {"AN": ("2025-06-13",)}
-        for subdiv, holidays in subdiv_holidays_mapping.items():
-            self.assertHoliday(EquatorialGuinea(subdiv=subdiv), holidays)
+        name = "Fiesta Patronal de Annobón"
+        self.assertNoHolidayName(name)
+
+        for subdiv in EquatorialGuinea.subdivisions:
+            holidays = EquatorialGuinea(subdiv=subdiv, years=range(2007, 2050))
+            if subdiv == "AN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-06-13" for year in range(2007, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

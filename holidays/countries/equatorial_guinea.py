@@ -23,7 +23,7 @@ class EquatorialGuinea(
     """Equatorial Guinea holidays.
 
     References:
-       * [Decree 9/2007](https://web.archive.org/web/20250518185011/https://boe.gob.gq/files/Decreto%20de%20Fijaci%C3%B3n%20de%20los%20D%C3%ADas%20Feriados%20en%20Guinea%20Ecuatorial.pdf)
+        * [Decree 9/2007](https://web.archive.org/web/20250518185011/https://boe.gob.gq/files/Decreto%20de%20Fijaci%C3%B3n%20de%20los%20D%C3%ADas%20Feriados%20en%20Guinea%20Ecuatorial.pdf)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Equatorial_Guinea>
         * <https://web.archive.org/web/20250503042253/https://www.timeanddate.com/holidays/guineaecuatorial/>
         * <https://web.archive.org/web/20250503042610/https://gq.usembassy.gov/holiday-calendar/>
@@ -46,10 +46,29 @@ class EquatorialGuinea(
     start_year = 2007
     subdivisions = (
         "AN",  # Annobón (Annobon).
+        "BN",  # Bioko Norte (North Bioko).
+        "BS",  # Bioko Sur (South Bioko).
+        "CS",  # Centro Sur (South Center).
+        "DJ",  # Djibloho.
+        "KN",  # Kié-Ntem (Kie-Ntem).
+        "LI",  # Litoral (Coast).
+        "WN",  # Wele-Nzas.
     )
     subdivisions_aliases = {
         "Annobón": "AN",
         "Annobon": "AN",
+        "Bioko Norte": "BN",
+        "North Bioko": "BN",
+        "Bioko Sur": "BS",
+        "South Bioko": "BS",
+        "Centro Sur": "CS",
+        "South Center": "CS",
+        "Djibloho": "DJ",
+        "Kié-Ntem": "KN",
+        "Kie-Ntem": "KN",
+        "Litoral": "LI",
+        "Coast": "LI",
+        "Wele-Nzas": "WN",
     }
 
     def __init__(self, *args, **kwargs):
