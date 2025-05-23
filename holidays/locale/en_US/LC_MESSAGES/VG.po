@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# British Virgin Islands holidays en_US localization.
+# British Virgin Islands holidays.
 #
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "PO-Revision-Date: 2025-05-19 07:23+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyamoorthy@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: en_VG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,87 +29,100 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Commonwealth Day.
 msgid "Commonwealth Day"
-msgstr "Commonwealth Day"
+msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "Easter Monday"
+msgstr ""
 
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr "Whit Monday"
+msgstr ""
 
 #. Sovereign's Birthday.
 msgid "Sovereign's Birthday"
-msgstr "Sovereign's Birthday"
+msgstr ""
 
 #. Colony Day.
 msgid "Colony Day"
-msgstr "Colony Day"
+msgstr ""
 
 #. Territory Day.
 msgid "Territory Day"
-msgstr "Territory Day"
+msgstr ""
 
 #. Virgin Islands Day.
 msgid "Virgin Islands Day"
-msgstr "Virgin Islands Day"
+msgstr ""
 
 #. Emancipation Monday.
 msgid "Emancipation Monday"
-msgstr "Emancipation Monday"
+msgstr ""
 
 #. Emancipation Tuesday.
 msgid "Emancipation Tuesday"
-msgstr "Emancipation Tuesday"
+msgstr ""
 
 #. Emancipation Wednesday.
 msgid "Emancipation Wednesday"
-msgstr "Emancipation Wednesday"
+msgstr ""
 
 #. Saint Ursula's Day.
 msgid "Saint Ursula's Day"
-msgstr "Saint Ursula's Day"
+msgstr ""
 
 #. Heroes and Foreparents Day.
 msgid "Heroes and Foreparents Day"
-msgstr "Heroes and Foreparents Day"
+msgstr ""
 
 #. The Great March of 1949 and Restoration Day.
 msgid "The Great March of 1949 and Restoration Day"
-msgstr "The Great March of 1949 and Restoration Day"
+msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "Boxing Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
+#. Lavity Stoutt's Birthday.
 msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
-msgstr "Lavity Stoutt's Birthday"
+msgstr ""
 
 #. Festival Monday.
 msgid "Festival Monday"
-msgstr "Festival Monday"
+msgstr ""
 
 #. Festival Tuesday.
 msgid "Festival Tuesday"
-msgstr "Festival Tuesday"
+msgstr ""
 
 #. Festival Wednesday.
 msgid "Festival Wednesday"
-msgstr "Festival Wednesday"
+msgstr ""
+
+#. State Funeral of Honourable Ralph T. O'Neal.
+msgid "State Funeral of Honourable Ralph T. O'Neal"
+msgstr ""
+
+#. Platinum Jubilee of Elizabeth II.
+msgid "Queen Elizabeth II's Platinum Jubilee"
+msgstr ""
+
+#. Coronation of Charles III.
+msgid "The King's Coronation"
+msgstr ""
