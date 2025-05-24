@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 176 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 177 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -313,6 +313,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>States: AC (Acre), AL (Alagoas), AM (Amazonas), AP (Amapá), BA (Bahia), CE (Ceará), DF (Distrito Federal), ES (Espírito Santo), GO (Goiás), MA (Maranhão), MG (Minas Gerais), MS (Mato Grosso do Sul), MT (Mato Grosso), PA (Pará), PB (Paraíba), PE (Pernambuco), PI (Piauí), PR (Paraná), RJ (Rio de Janeiro), RN (Rio Grande do Norte), RO (Rondônia), RR (Roraima), RS (Rio Grande do Sul), SC (Santa Catarina), SE (Sergipe), SP (São Paulo), TO (Tocantins)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
 <td>OPTIONAL</td>
+</tr>
+<tr>
+<td>British Virgin Islands</td>
+<td>VG</td>
+<td></td>
+<td>en_US, <strong>en_VG</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>Brunei</td>
