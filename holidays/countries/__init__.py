@@ -62,6 +62,7 @@ from .dominican_republic import DominicanRepublic, DO, DOM
 from .ecuador import Ecuador, EC, ECU
 from .egypt import Egypt, EG, EGY
 from .el_salvador import ElSalvador, SV, SLV
+from .equatorial_guinea import EquatorialGuinea, GQ, GNQ
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
