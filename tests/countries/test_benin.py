@@ -74,7 +74,7 @@ class TestBenin(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1960, 2050))
 
-    def test_ascention_day(self):
+    def test_ascension_day(self):
         name = "Jour de l'Ascension"
         self.assertHolidayName(
             name,
