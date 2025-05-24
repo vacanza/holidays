@@ -33,7 +33,7 @@ class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         * [2023 Whit Monday](https://web.archive.org/web/20240911163554/https://travail.gouv.bj/page/communiques/la-fete-de-pentecote)
         * [2023 Labor Day] (https://web.archive.org/web/20240814205702/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-1er-mai-2023-declaree-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national-a-loccasion-de-la-celebration-de-la-fete-du-travail)
         * [2023 Assumption Day] (https://web.archive.org/web/20241214182235/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-15-aout-2023-declaree-feriee-chomee-et-payee-en-raison-de-la-fete-de-lassomption)
-        * [2023 Indipendence Day] (https://web.archive.org/web/20240723004533/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-aout-2023-declaree-feriee-chomee-et-payee-a-l-occasion-de-la-fete-nationale)
+        * [2023 Independence Day] (https://web.archive.org/web/20240723004533/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-aout-2023-declaree-feriee-chomee-et-payee-a-l-occasion-de-la-fete-nationale)
         * [2023 Eid al-Adha] (https://web.archive.org/web/20250422035008/https://travail.gouv.bj/page/communiques/communique-du-ministere-du-travail-et-de-la-fonction-publique-2306262022-744)
 
         * [2024] (https://web.archive.org/web/20250317151037/http://beninconsulate.co.ke/index.php/news-events)
