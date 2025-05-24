@@ -121,8 +121,8 @@ msgstr "State Funeral of Honourable Ralph T. O'Neal"
 
 #. Platinum Jubilee of Elizabeth II.
 msgid "Queen Elizabeth II's Platinum Jubilee"
-msgstr "Queen Elizabeth II's Platinum Jubilee"
+msgstr "Platinum Jubilee of Elizabeth II"
 
 #. Coronation of Charles III.
 msgid "The King's Coronation"
-msgstr "The King's Coronation"
+msgstr "Coronation of Charles III"

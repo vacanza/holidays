@@ -226,7 +226,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
         name = "Saint Ursula's Day"
         self.assertHolidayName(
             name,
-            *[f"{year}-10-21" for year in range(1967, 2020) if year not in (2015, 2020)],
+            (f"{year}-10-21" for year in (*range(1967, 2015), *range(2016, 2020))),
             "2015-10-19",
             "2020-10-23",
         )
@@ -318,7 +318,7 @@ class TestBritishVirginIslands(CommonCountryTests, TestCase):
             ("2022-03-07", "Lavity Stoutt's Birthday"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-06-03", "Queen Elizabeth II's Platinum Jubilee"),
+            ("2022-06-03", "Platinum Jubilee of Elizabeth II"),
             ("2022-06-06", "Whit Monday"),
             ("2022-06-10", "Sovereign's Birthday"),
             ("2022-07-04", "Virgin Islands Day"),
