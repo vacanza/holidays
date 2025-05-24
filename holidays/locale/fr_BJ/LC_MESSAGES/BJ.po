@@ -87,3 +87,8 @@ msgstr ""
 #. All Saints' Day.
 msgid "La Toussaint"
 msgstr ""
+
+#. %s (observé, estimé).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr ""
