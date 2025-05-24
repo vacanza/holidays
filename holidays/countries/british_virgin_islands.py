@@ -17,9 +17,9 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
-    SUN_TO_NEXT_MON,
 )
 
 
