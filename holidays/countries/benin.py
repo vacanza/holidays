@@ -23,8 +23,8 @@ class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Benin>
 
-        * [2022 All Saints' Day] (https://web.archive.org/web/20241010101230/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-novembre-2022-declaree-feriee-chomee-et-payee)
-        * [2022 Christmas Day] (https://web.archive.org/web/20240814200022/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-25-decembre-2022-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-de-noel-lire-le-communique-du-ministre-du-travail-et-de-la-fonction-publique)
+        * [2022 All Saints' Day](https://web.archive.org/web/20241010101230/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-novembre-2022-declaree-feriee-chomee-et-payee)
+        * [2022 Christmas Day](https://web.archive.org/web/20240814200022/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-25-decembre-2022-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-de-noel-lire-le-communique-du-ministre-du-travail-et-de-la-fonction-publique)
 
         * [2023 New Year's Day] (https://web.archive.org/web/20240724084416/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-1er-janvier-2023-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-du-nouvel-an)
         * [2023 Vodoun Festival] (https://web.archive.org/web/20240724084406/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-10-janvier-2023-est-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-annuelle-des-religions-traditionnelles-2301071350-956)
