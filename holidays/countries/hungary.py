@@ -147,17 +147,17 @@ class HungaryStaticHolidays:
             (OCT, 22, OCT, 20),
             (NOV, 2, OCT, 27),
             (DEC, 24, DEC, 22),
-            (DEC, 31, DEC, 29)
+            (DEC, 31, DEC, 29),
         ),
         2008: (
             (MAY, 2, APR, 26),
             (OCT, 24, OCT, 18),
-            (DEC, 24, DEC, 20)
+            (DEC, 24, DEC, 20),
         ),
         2009: (
             (JAN, 2, MAR, 28),
             (AUG, 21, AUG, 29),
-            (DEC, 24, DEC, 19)
+            (DEC, 24, DEC, 19),
         ),
         2010: (DEC, 24, DEC, 11),
         2011: (
