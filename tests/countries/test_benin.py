@@ -43,7 +43,7 @@ class TestBenin(CommonCountryTests, TestCase):
     def test_martyrs_day(self):
         name = "Journée des Martyrs"
         self.assertHolidayName(name, (f"{year}-01-16" for year in range(1979, 1989)))
-        self.assertNoHolidayName(name, range(1960, 1979))
+        self.assertNoHolidayName(name, range(1960, 1979), range(1990, 2050))
         self.assertNoHolidayName(name, range(1990, 2050))
 
     def test_youth_day(self):

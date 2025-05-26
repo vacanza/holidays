@@ -60,14 +60,11 @@ class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
     country = "BJ"
     default_language = "fr_BJ"
-    # %s (observé).
-    observed_label = tr("%s (observé)")
-    # %s (estimé).
+    # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    # %s (observé, estimé).
-    observed_estimated_label = tr("%s (observé, estimé)")
     supported_languages = ("en_US", "fr_BJ")
-    start_year = 1960
+    # Order 76-35 of June 30, 1976.
+    start_year = 1977
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -87,42 +84,47 @@ class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
         if self._year >= 1998:
             # Vodoun Festival.
-            name = tr("Journée Vaudoun")
+            name = tr("Fête annuelle des religions traditionnelles")
             if self._year >= 2025:
-                self._add_observed(
-                    self._add_holiday_2nd_fri_of_jan(name),
-                    rule=FRI_TO_PREV_THU,
-                )
+                self._add_holiday_1_day_prior_2nd_fri_of_jan(name)
+                self._add_holiday_2nd_fri_of_jan(name)
             else:
                 self._add_holiday_jan_10(name)
 
-        if 1979 <= self._year <= 1989:
+        if 1980 <= self._year <= 1990:
             # Martyrs' Day.
             self._add_holiday_jan_16(tr("Journée des Martyrs"))
 
-        if 1979 <= self._year <= 1989:
             # Youth Day.
             self._add_holiday_apr_1(tr("Journée de la Jeunesse"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("Lundi de Pâques"))
+        if self._year >= 1991:
+            # Easter Monday.
+            self._add_easter_monday(tr("Lundi de Pâques"))
+        else:
+            # Easter Sunday.
+            self._add_easter_sunday(tr("Jour de Pâques"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
-        if self._year >= 1990:
+        if self._year >= 1991:
             # Ascension Day.
             self._add_ascension_thursday(tr("Jour de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        if self._year >= 1991:
+            # Whit Monday.
+            self._add_whit_monday(tr("Lundi de Pentecôte"))
+        else:
+            # Whit Sunday.
+            self._add_whit_sunday(tr("Jour de Pentecôte"))
 
         if self._year >= 1990:
             # Assumption Day.
             self._add_assumption_of_mary_day(tr("Jour de l'Assomption"))
 
-        if 1979 <= self._year <= 1989:
-            # Day of the Popular Armed Forces.
+        if self._year <= 1989:
+            # Armed Forces Day.
             self._add_holiday_oct_26(tr("Fête des Forces Armées Populaires du Bénin"))
 
         if self._year >= 1990:
@@ -131,29 +133,29 @@ class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
         # National Day.
         name = tr("Fête Nationale")
-        if self._year <= 1990:
-            self._add_holiday_nov_30(name)
-        else:
+        if self._year >= 1991:
             self._add_holiday_aug_1(name)
+        else:
+            self._add_holiday_nov_30(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
-        if 1979 <= self._year <= 1989:
+        if self._year <= 1989:
             # Production Day.
             self._add_holiday_dec_31(tr("Fête de la Production"))
 
         # Islamic holidays.
 
-        if self._year >= 1961:
+        if self._year >= 1990:
             # Prophet's Birthday.
-            self._add_mawlid_day(tr("Maouloud"))
+            self._add_mawlid_day(tr("Journée Maouloud"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Korité"))
+        self._add_eid_al_fitr_day(tr("Jour du Ramadan"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Tabaski"))
+        self._add_eid_al_adha_day(tr("Jour de la Tabaski"))
 
 
 class BJ(Benin):
