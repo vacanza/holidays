@@ -38,31 +38,57 @@ class TestYemen(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "عيد العمال"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1991, 2050)))
-        obs_dt = ("2020-05-03",)
+        obs_dt = (
+            "2009-05-02",
+            "2015-05-03",
+            "2020-05-03",
+        )
         self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_unity_day(self):
         name = "اليوم الوطني للجمهورية اليمنية"
         self.assertHolidayName(name, (f"{year}-05-22" for year in range(1991, 2050)))
-        obs_dt = ("2020-05-27",)
+        obs_dt = (
+            "2009-05-23",
+            "2015-05-24",
+            "2020-05-27",
+        )
         self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
         self.assertNoNonObservedHolidayName(obs_dt)
 
     def test_revolution_day(self):
         name = "ثورة 26 سبتمبر المجيدة"
         self.assertHolidayName(name, (f"{year}-09-26" for year in range(1991, 2050)))
+        obs_dt = (
+            "2003-09-27",
+            "2008-09-27",
+            "2014-09-28",
+        )
+        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertNoNonObservedHolidayName(obs_dt)
 
     def test_liberation_day(self):
         name = "ثورة 14 أكتوبر المجيدة"
         self.assertHolidayName(name, (f"{year}-10-14" for year in range(1991, 2050)))
-        obs_dt = ("2022-10-16",)
+        obs_dt = (
+            "2011-10-15",
+            "2016-10-16",
+            "2022-10-16",
+        )
         self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertNoNonObservedHolidayName(obs_dt)
 
     def test_independence_day(self):
         name = "عيد الجلاء"
         self.assertHolidayName(name, (f"{year}-11-30" for year in range(1991, 2050)))
+        obs_dt = (
+            "2007-12-01",
+            "2012-12-01",
+            "2018-12-02",
+        )
+        self.assertHolidayName(f"{name} (ملاحظة)", obs_dt)
+        self.assertNoNonObservedHolidayName(obs_dt)
 
     def test_hijri_new_year(self):
         name = "عيد رأس السنة الهجرية"
@@ -75,6 +101,13 @@ class TestYemen(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1991, 2050))
+        obs_dt = (
+            "1994-06-11",
+            "2002-03-16",
+            "2009-12-19",
+        )
+        self.assertHolidayName(f"{name} (ملاحظة)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
