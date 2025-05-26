@@ -36,10 +36,6 @@ msgstr "%s (observed)"
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
-#. New Year's Day.
-msgid "Jour de l'An"
-msgstr "New Year's Day"
-
 #. Vodoun Festival.
 msgid "Journée Vaudoun"
 msgstr "Vodoun Festival"
@@ -59,10 +55,6 @@ msgstr "Ascension Day"
 #. Whit Monday.
 msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
-
-#. Independence Day.
-msgid "Jour de l'indépendance"
-msgstr "Independence Day"
 
 #. Assumption Day.
 msgid "Jour de l'Assomption"
@@ -92,3 +84,27 @@ msgstr "Eid al-Adha"
 #, c-format
 msgid "%s (observé, estimé)"
 msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "Fête du Nouvel An"
+msgstr "New Year's Day"
+
+#. Martyrs' Day.
+msgid "Journée des Martyrs"
+msgstr "Martyrs' Day"
+
+#. Youth Day.
+msgid "Journée de la Jeunesse"
+msgstr "Youth Day"
+
+#. Day of the Popular Armed Forces.
+msgid "Fête des Forces Armées Populaires du Bénin"
+msgstr "Day of the Popular Armed Forces"
+
+#. National Day.
+msgid "Fête Nationale"
+msgstr "National Day"
+
+#. Production Day.
+msgid "Fête de la Production"
+msgstr "Production Day"
