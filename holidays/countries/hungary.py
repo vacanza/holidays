@@ -142,22 +142,22 @@ class HungaryStaticHolidays:
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
     special_public_holidays = {
         2007: (
-            (MAR 16, MAR 10),
-            (APR 30, APR 21),
-            (OCT 22, OCT 20),
-            (NOV 2, OCT 27),
-            (DEC 24, DEC 22),
-            (DEC 31, DEC 29)
+            (MAR, 16, MAR, 10),
+            (APR, 30, APR, 21),
+            (OCT, 22, OCT, 20),
+            (NOV, 2, OCT, 27),
+            (DEC, 24, DEC, 22),
+            (DEC, 31, DEC, 29)
         ),
         2008: (
-            (MAY 2, APR 26),
-            (OCT 24, OCT 18),
-            (DEC 24, DEC 20)
+            (MAY, 2, APR, 26),
+            (OCT, 24, OCT, 18),
+            (DEC, 24, DEC, 20)
         ),
         2009: (
-            (JAN 2, MAR 28),
-            (AUG 21, AUG 29),
-            (DEC 24, DEC 19)
+            (JAN, 2, MAR, 28),
+            (AUG, 21, AUG, 29),
+            (DEC, 24, DEC, 19)
         ),
         2010: (DEC, 24, DEC, 11),
         2011: (
