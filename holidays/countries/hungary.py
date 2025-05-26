@@ -117,6 +117,9 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
+        * [2007](https://jogkodex.hu/jsz/2006_4_szmm_rendelet_8628960)
+        * [2008](https://jogkodex.hu/jsz/2007_27_szmm_rendelet_3904252)
+        * [2009](https://jogkodex.hu/jsz/2008_16_szmm_rendelet_7668376)
         * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
         * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
         * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
@@ -138,6 +141,24 @@ class HungaryStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
     special_public_holidays = {
+        2007: (
+            (MAR 16, MAR 10),
+            (APR 30, APR 21),
+            (OCT 22, OCT 20),
+            (NOV 2, OCT 27),
+            (DEC 24, DEC 22),
+            (DEC 31, DEC 29)
+        ),
+        2008: (
+            (MAY 2, APR 26),
+            (OCT 24, OCT 18),
+            (DEC 24, DEC 20)
+        ),
+        2009: (
+            (JAN 2, MAR 28),
+            (AUG 21, AUG 29),
+            (DEC 24, DEC 19)
+        ),
         2010: (DEC, 24, DEC, 11),
         2011: (
             (MAR, 14, MAR, 19),
