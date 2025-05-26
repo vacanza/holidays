@@ -68,16 +68,6 @@ msgstr "Eid al-Fitr"
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
-#. %s (observed).
-#, c-format
-msgid "(ملاحظة) %s"
-msgstr "%s (observed)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "(مُقدَّر ملاحظة) %s"
-msgstr "%s (observed, estimated)"
-
 #. Victory Day.
 msgid "ذكرى 7 يوليو"
 msgstr "Victory Day"
@@ -89,3 +79,13 @@ msgstr "Teacher's Day"
 #. Isra' and Mi'raj.
 msgid "ذكرى الإسراء والمعراج"
 msgstr "Isra' and Mi'raj"
+
+#. %s (observed).
+#, c-format
+msgid "%s (ملاحظة)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (مُقدَّر ملاحظة)"
+msgstr "%s (observed, estimated)"

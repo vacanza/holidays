@@ -53,9 +53,9 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("%s (مُقدَّر)")
     # %s (observed).
-    observed_label = tr("(ملاحظة) %s")
+    observed_label = tr("%s (ملاحظة)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("(مُقدَّر ملاحظة) %s")
+    observed_estimated_label = tr("%s (مُقدَّر ملاحظة)")
     # The Republic of Yemen was declared on 22 May 1990.
     start_year = 1991
     supported_categories = (PUBLIC, SCHOOL, WORKDAY)
@@ -77,6 +77,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         self.dts_observed = set()
+
         # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013
         self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
@@ -154,36 +155,13 @@ class YEM(Yemen):
 
 
 class YemenIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/yemen/muharram-new-year
-    HIJRI_NEW_YEAR_DATES = {
-        2020: (AUG, 20),
-        2021: (AUG, 10),
-        2022: (JUL, 30),
-        2023: (JUL, 19),
-        2024: (JUL, 7),
-    }
-
-    # https://www.timeanddate.com/holidays/yemen/prophet-birthday
-    MAWLID_DATES = {
-        2020: (OCT, 29),
-        2021: (OCT, 18),
-        2022: (OCT, 8),
-        2023: (SEP, 27),
-        2024: (SEP, 15),
-    }
-
-    # https://www.timeanddate.com/holidays/yemen/isra-miraj
-    ISRA_AND_MIRAJ_DATES = {
-        2023: (FEB, 18),
-        2024: (FEB, 8),
-        2025: (JAN, 27),
-    }
-
-    # https://www.timeanddate.com/holidays/yemen/ramadan-begins
-    RAMADAN_BEGINNING_DATES = {
-        2023: (MAR, 23),
-        2024: (MAR, 11),
-        2025: (MAR, 1),
+    # https://www.timeanddate.com/holidays/yemen/eid-al-adha-first-day
+    EID_AL_ADHA_DATES = {
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
+        2024: (JUN, 16),
     }
 
     # https://www.timeanddate.com/holidays/yemen/eid-al-fitr-first-day
@@ -196,11 +174,34 @@ class YemenIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 30),
     }
 
-    # https://www.timeanddate.com/holidays/yemen/eid-al-adha-first-day
-    EID_AL_ADHA_DATES = {
-        2020: (JUL, 31),
-        2021: (JUL, 20),
-        2022: (JUL, 9),
-        2023: (JUN, 28),
-        2024: (JUN, 16),
+    # https://www.timeanddate.com/holidays/yemen/muharram-new-year
+    HIJRI_NEW_YEAR_DATES = {
+        2020: (AUG, 20),
+        2021: (AUG, 10),
+        2022: (JUL, 30),
+        2023: (JUL, 19),
+        2024: (JUL, 7),
+    }
+
+    # https://www.timeanddate.com/holidays/yemen/isra-miraj
+    ISRA_AND_MIRAJ_DATES = {
+        2023: (FEB, 18),
+        2024: (FEB, 8),
+        2025: (JAN, 27),
+    }
+
+    # https://www.timeanddate.com/holidays/yemen/prophet-birthday
+    MAWLID_DATES = {
+        2020: (OCT, 29),
+        2021: (OCT, 18),
+        2022: (OCT, 8),
+        2023: (SEP, 27),
+        2024: (SEP, 15),
+    }
+
+    # https://www.timeanddate.com/holidays/yemen/ramadan-begins
+    RAMADAN_BEGINNING_DATES = {
+        2023: (MAR, 23),
+        2024: (MAR, 11),
+        2025: (MAR, 1),
     }
