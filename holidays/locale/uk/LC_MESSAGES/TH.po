@@ -10,331 +10,332 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Thailand holidays.
+# Thailand holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.63\n"
-"POT-Creation-Date: 2023-03-02 00:37+0700\n"
-"PO-Revision-Date: 2024-12-14 10:20+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Project-Id-Version: Holidays 0.74\n"
+"POT-Creation-Date: 2023-03-18 15:58-0700\n"
+"PO-Revision-Date: 2025-05-25 19:22+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: th\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: th\n"
 
 #. Special In Lieu Holiday.
 msgid "วันหยุดชดเชย"
-msgstr ""
+msgstr "Додатковий вихідний"
 
 #. Thai Election Day.
 msgid "วันเลือกตั้ง"
-msgstr ""
+msgstr "День виборів"
 
 #. Bridge Public Holiday.
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
-msgstr ""
+msgstr "Проміжний вихідний"
 
 #. HM King Bhumibol Adulyadej's Golden Jubilee.
 msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
-msgstr ""
+msgstr "Золотий ювілей Його Величності короля Пуміпона Адульядета"
 
 #. HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
 msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
-msgstr ""
+msgstr "60-та річниця сходження на престол Його Величності короля Пуміпона Адульядета"
 
 #. Emergency Lockdown (Thai Military Coup d'état).
 msgid "วันหยุดพิเศษ (คมช.)"
-msgstr ""
+msgstr "Надзвичайний стан (військовий переворот)"
 
 #. Emergency Lockdown (Thai Political Unrest).
 msgid "วันหยุดพิเศษ (การเมือง)"
-msgstr ""
+msgstr "Надзвичайний стан (політичні заворушення)"
 
 #. Emergency Lockdown (2011 Thailand Floods).
 msgid "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
-msgstr ""
+msgstr "Надзвичайний стан (повінь 2011 року)"
 
 #. Day of Mourning for HM King Bhumibol Adulyadej.
 msgid "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
-msgstr ""
+msgstr "День жалоби за Його Величністю королем Пуміпоном Адульядетом"
 
 #. HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
 msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
-msgstr ""
+msgstr "Церемонія кремації Його Величності короля Пуміпона Адульядета"
 
 #. HM King Maha Vajiralongkorn's Coronation Celebrations.
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
-msgstr ""
+msgstr "Коронація Його Величності короля Маха Вачіралонгкорна"
 
 #. %s (in lieu).
 #, c-format
 msgid "ชดเชย%s"
-msgstr ""
+msgstr "%s (вихідний)"
 
 #. New Year's Day.
 msgid "วันขึ้นปีใหม่"
-msgstr ""
+msgstr "Новий рік"
 
 #. New Year's Eve.
 msgid "วันสิ้นปี"
-msgstr ""
+msgstr "Переддень Нового року"
 
 #. National Children's Day.
 msgid "วันเด็กแห่งชาติ"
-msgstr ""
+msgstr "Національний день дітей"
 
 #. Maha Chakri Memorial Day.
 msgid "วันที่ระลึกมหาจักรี"
-msgstr ""
+msgstr "День памʼяті Чакрі"
 
 #. Chakri Day.
 msgid "วันจักรี"
-msgstr ""
+msgstr "День Чакрі"
 
 #. Chakri Memorial Day.
 msgid "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"
-msgstr ""
+msgstr "День памʼяті короля Рами I та династії Чакрі"
 
 #. Songkran New Year Holidays.
 msgid "พระราชพิธีตะรุษะสงกรานต์ แลนักขัตฤกษ์"
-msgstr ""
+msgstr "Святкування Тайського Нового року"
 
 #. Songkran New Year.
 msgid "ตะรุษะสงกรานต์"
-msgstr ""
+msgstr "Тайський Новий рік"
 
 #. Songkran New Year.
 msgid "วันตรุษสงกรานต์"
-msgstr ""
+msgstr "Тайський Новий рік"
 
 #. Songkran New Year.
 msgid "วันตรุษสงกรานต์และขึ้นปีใหม่"
-msgstr ""
+msgstr "Тайський Новий рік"
 
 #. Songkran Festival.
 msgid "วันสงกรานต์"
-msgstr ""
+msgstr "Тайський Новий рік"
 
 #. National Labor Day.
 msgid "วันแรงงานแห่งชาติ"
-msgstr ""
+msgstr "Національний день праці"
 
 #. Constitution Petition Day.
 msgid "วันขอพระราชทานรัฐธรรมนูญ"
-msgstr ""
+msgstr "День конституційної петиції"
 
 #. National Day.
 msgid "วันชาติ"
-msgstr ""
+msgstr "Національний день"
 
 #. Provisional Constitution Day.
 msgid "วันรัฐธรรมนูญชั่วคราว"
-msgstr ""
+msgstr "День тимчасової Конституції"
 
 #. Merit-making Ceremony for the Royal Ashes and the Coronation Day.
 msgid "ทำบุญพระบรมอัษฐิ และพระราชพิธีฉัตรมงคล"
-msgstr ""
+msgstr "Церемонія вшанування королівського праху та День коронації"
 
 #. Coronation Day.
 msgid "พระราชพิธีฉัตรมงคล"
-msgstr ""
+msgstr "День королівської коронації"
 
 #. Coronation Day.
 msgid "วันฉัตรมงคล"
-msgstr ""
+msgstr "День коронації"
 
 #. HM Queen Suthida's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
-msgstr ""
+msgstr "День народження Її Величності королеви Сутіди"
 
 #. HM King Maha Vajiralongkorn's Birthday.
-msgid ""
-"วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
-msgstr ""
+msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
+msgstr "День народження Його Величності короля Маха Вачіралонгкорна"
 
 #. HM Queen Sirikit's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
-msgstr ""
+msgstr "День народження Її Величності королеви Сірікіт"
 
 #. HM Queen Sirikit the Queen Mother's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
-msgstr ""
+msgstr "День народження Її Величності королеви-матері Сірікіт"
 
 #. National Mother's Day.
 msgid "วันแม่แห่งชาติ"
-msgstr ""
+msgstr "Національний день матері"
 
 #. Anniversary for the Death of King Bhumibol Adulyadej.
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "Річниця смерті Його Величності короля Пуміпона Адульядета"
 
 #. Anniversary for the Death of King Bhumibol Adulyadej the Great.
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-msgstr ""
+msgstr "Річниця смерті Його Величності короля Пуміпона Адульядета Великого"
 
 #. HM King Bhumibol Adulyadej Memorial Day.
 msgid "วันนวมินทรมหาราช"
-msgstr ""
+msgstr "День памʼяті Його Величності короля Пуміпона Адульядета"
 
 #. Merit-making Ceremony for the Royal Ashes of HM King Chulalongkorn.
 msgid "ทำบุญพระบรมอัษฐิพระพุทธเจ้าหลวง"
-msgstr ""
+msgstr "Церемонія вшанування королівського праху Його Величності короля Чулалонгкорна"
 
 #. Anniversary for the Death of HM King Chulalongkorn.
 msgid "วันสวรรคตแห่งพระบาทสมเด็จพระพุทธเจ้าหลวง"
-msgstr ""
+msgstr "Річниця смерті Його Величності короля Чулалонгкорна"
 
 #. HM King Chulalongkorn Memorial Day.
 msgid "วันปิยมหาราช"
-msgstr ""
+msgstr "День памʼяті Його Величності короля Чулалонгкорна"
 
 #. The King's Birthday.
 msgid "เฉลิมพระชนมพรรษา"
-msgstr ""
+msgstr "День народження Його Величності"
 
 #. The King's Birthday.
 msgid "เฉลิมพระชนม์พรรษา"
-msgstr ""
+msgstr "День народження Його Величності"
 
 #. The King's Birthday.
 msgid "วันเฉลิมพระชนม์พรรษา"
-msgstr ""
+msgstr "День народження Його Величності"
 
 #. The King's Birthday.
 msgid "วันเกิดในสมเด็จพระเจ้าอยู่หัว"
-msgstr ""
+msgstr "День народження Його Величності короля"
 
 #. The King's Birthday.
 msgid "วันเฉลิมพระชนมพรรษา"
-msgstr ""
+msgstr "День народження Його Величності"
 
 #. HM King Bhumibol Adulyadej Birthday Anniversary.
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "День народження Його Величності короля Пуміпона Адульядета"
 
 #. HM King Bhumibol Adulyadej Birthday Anniversary.
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "Річниця дня народження Його Величності короля Пуміпона Адульядета"
 
 #. HM King Bhumibol Adulyadej the Great's Birthday Anniversary.
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-msgstr ""
+msgstr "Річниця дня народження Його Величності короля Пуміпона Адульядета Великого"
 
 #. National Father's Day.
 msgid "วันพ่อแห่งชาติ"
-msgstr ""
+msgstr "Національний день батька"
 
 #. Constitution Day.
 msgid "วันรัฐธรรมนูญ"
-msgstr ""
+msgstr "День Конституції"
 
 #. Makha Bucha, the Fourfold Assembly Day.
 msgid "มาฆบูชา จาตุรงฅ์สันนิบาต"
-msgstr ""
+msgstr "Маха Буча, День чотиристороннього зібрання"
 
 #. Makha Bucha.
 msgid "วันมาฆบูชา"
-msgstr ""
+msgstr "Маха Буча"
 
 #. Visakha Bucha.
 msgid "วิสาขะบูชา"
-msgstr ""
+msgstr "Вісака Буча"
 
 #. Visakha Bucha.
 msgid "วิศาขะบูชา"
-msgstr ""
+msgstr "Вісака Буча"
 
 #. Visakha Bucha.
 msgid "วันวิสาขะบูชา"
-msgstr ""
+msgstr "Вісака Буча"
 
 #. Visakha Bucha.
 msgid "วันวิสาขบูชา"
-msgstr ""
+msgstr "Вісака Буча"
 
 #. Asarnha Bucha.
 msgid "วันอาสาฬหบูชา"
-msgstr ""
+msgstr "Асарна Буча"
 
 #. Buddhist Lent Day.
 msgid "เข้าปุริมพรรษา"
-msgstr ""
+msgstr "Початок буддистського посту"
 
 #. Buddhist Lent Day.
 msgid "วันเข้าพรรษา"
-msgstr ""
+msgstr "Початок буддистського посту"
 
 #. Royal Thai Armed Forces Day.
 msgid "วันกองทัพไทย"
-msgstr ""
+msgstr "День Королівських збройних сил Таїланду"
 
-#. Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives.
+#. Additional Closing Day for Bank for Agriculture and Agricultural
+#. Cooperatives.
 msgid "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
-msgstr ""
+msgstr "Додатковий вихідний сільськогосподарського Банку та кооперативів"
 
 #. Mid-Year Closing Day.
 msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
-msgstr ""
+msgstr "Вихідний середини року для фінансових установ"
 
 #. Royal Ploughing Ceremony.
 msgid "วันพืชมงคล"
-msgstr ""
+msgstr "Церемонія королівської оранки"
 
 #. Teacher's Day.
 msgid "วันครู"
-msgstr ""
+msgstr "День вчителя"
 
 #. National Aviation Day.
 msgid "วันการบินแห่งชาติ"
-msgstr ""
+msgstr "Національний день авіації"
 
 #. National Forest Conservation Day.
 msgid "วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ"
-msgstr ""
+msgstr "Національний день охорони лісів"
 
 #. National Artist Day.
 msgid "วันศิลปินแห่งชาติ"
-msgstr ""
+msgstr "Національний день художника"
 
 #. International Women's Day.
 msgid "วันสตรีสากล"
-msgstr ""
+msgstr "Міжнародний жіночий день"
 
 #. Loy Krathong.
 msgid "วันลอยกระทง"
-msgstr ""
+msgstr "Лой Кратонг"
 
 #. Thai Veterans Day.
 msgid "วันทหารผ่านศึก"
-msgstr ""
+msgstr "День ветеранів"
 
 #. National Science Day.
 msgid "วันวิทยาศาสตร์แห่งชาติ"
-msgstr ""
+msgstr "Національний день науки"
 
 #. HM King Ramkhamhaeng Memorial Day.
 msgid "วันพ่อขุนรามคำแหงมหาราช"
-msgstr ""
+msgstr "День памʼяті короля Рамкхамхенга"
 
 #. Thai National Flag Day.
 msgid "วันพระราชทานธงชาติไทย"
-msgstr ""
+msgstr "День національного прапора Таїланду"
 
 #. Franco-Thai War Armistice Day.
 msgid "วันลงนามในสัญญาพักรบระหว่างประเทศไทยกับประเทศอินโดจีนฝรั่งเศส"
-msgstr ""
+msgstr "День підписання перемирʼя між Таїландом та Францією"
 
 #. Peace Proclamation Day.
 msgid "วันประกาศสันติภาพ"
-msgstr ""
+msgstr "День проголошення миру"
 
 #. United Nations Day.
 msgid "วันสหประชาชาติ"
-msgstr ""
+msgstr "День ООН"
 
 #. HM Queen Rambai Barni's Royal Cremation Ceremony.
 msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพสมเด็จพระนางเจ้ารำไพพรรณี"
-msgstr ""
+msgstr "Церемонія кремації Її Величності королеви Рамбай Барні"

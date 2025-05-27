@@ -187,7 +187,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
     # First Holiday Decree was promulgated in March 1914.
     start_year = 1914
     supported_categories = (ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL, WORKDAY)
-    supported_languages = ("en_US", "th")
+    supported_languages = ("en_US", "th", "uk")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
@@ -932,7 +932,7 @@ class Thailand(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiC
             # Status: In-Use.
             # Started in 1990.
 
-            # HM King Ramkamhaeng Memorial Day.
+            # HM King Ramkhamhaeng Memorial Day.
             self._add_holiday_jan_17(tr("วันพ่อขุนรามคำแหงมหาราช"))
 
         if self._year >= 1995:
