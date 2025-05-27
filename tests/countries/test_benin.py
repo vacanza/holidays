@@ -56,7 +56,7 @@ class TestBenin(CommonCountryTests, TestCase):
             Benin(categories=WORKDAY, years=range(1977, 2050)),
             (f"{year}-01-16" for year in (range(1990, 2050))),
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
+        self.assertNoHolidayName(name, range(1977, 1990))
 
     def test_peoples_sovereignty_day(self):
         name = "Journée de la Souveraineté de Peuple"
@@ -65,7 +65,7 @@ class TestBenin(CommonCountryTests, TestCase):
             Benin(categories=WORKDAY, years=range(1977, 2050)),
             (f"{year}-02-28" for year in (range(1990, 2050))),
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
+        self.assertNoHolidayName(name, range(1977, 1990))
 
     def test_womens_day(self):
         name = "Journée de la Femme"
@@ -74,7 +74,7 @@ class TestBenin(CommonCountryTests, TestCase):
             Benin(categories=WORKDAY, years=range(1977, 2050)),
             (f"{year}-03-08" for year in (range(1990, 2050))),
         )
-        self.assertNoHolidayName(name, range(1977, 1989))
+        self.assertNoHolidayName(name, range(1977, 1990))
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse"
