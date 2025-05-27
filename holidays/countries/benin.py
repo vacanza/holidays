@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import HolidayBase
 
@@ -59,6 +60,7 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     """
 
     country = "BJ"
+    supported_categories = (PUBLIC, WORKDAY)
     default_language = "fr_BJ"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
@@ -156,6 +158,17 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Jour de la Tabaski"))
+
+    def _populate_workday_holidays(self):
+        if self._year >= 1990:
+            # Remembrance Day.
+            self._add_holiday_jan_16(tr("Journée de Souvenir"))
+
+            # People's Sovereignty Day.
+            self._add_holiday_feb_28(tr("Journée de la Souveraineté de Peuple"))
+
+            # Women's Day.
+            self._add_holiday_mar_8(tr("Journée de la Femme"))
 
 
 class BJ(Benin):

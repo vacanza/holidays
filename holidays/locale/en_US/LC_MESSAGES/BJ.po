@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2025-05-24 17:10+0530\n"
 "PO-Revision-Date: 2025-05-24 17:10+0530\n"
 "Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
@@ -106,3 +106,15 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Jour de la Tabaski"
 msgstr "Eid al-Adha"
+
+#. Remembrance Day.
+msgid "Journée de Souvenir"
+msgstr "Remembrance Day"
+
+#. People's Sovereignty Day.
+msgid "Journée de la Souveraineté de Peuple"
+msgstr "People's Sovereignty Day"
+
+#. Women's Day.
+msgid "Journée de la Femme"
+msgstr "Women's Day"

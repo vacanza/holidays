@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.benin import Benin, BJ, BEN
 from tests.common import CommonCountryTests
 
@@ -47,6 +48,33 @@ class TestBenin(CommonCountryTests, TestCase):
         name = "Journée des Martyrs"
         self.assertHolidayName(name, (f"{year}-01-16" for year in range(1980, 1990)))
         self.assertNoHolidayName(name, range(1977, 1979), range(1991, 2050))
+
+    def test_remembrance_day(self):
+        name = "Journée de Souvenir"
+        self.assertHolidayName(
+            name,
+            Benin(categories=WORKDAY, years=range(1977, 2050)),
+            (f"{year}-01-16" for year in (range(1990, 2050))),
+        )
+        self.assertNoHolidayName(name, range(1977, 1989))
+
+    def test_peoples_sovereignty_day(self):
+        name = "Journée de la Souveraineté de Peuple"
+        self.assertHolidayName(
+            name,
+            Benin(categories=WORKDAY, years=range(1977, 2050)),
+            (f"{year}-02-28" for year in (range(1990, 2050))),
+        )
+        self.assertNoHolidayName(name, range(1977, 1989))
+
+    def test_womens_day(self):
+        name = "Journée de la Femme"
+        self.assertHolidayName(
+            name,
+            Benin(categories=WORKDAY, years=range(1977, 2050)),
+            (f"{year}-03-08" for year in (range(1990, 2050))),
+        )
+        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse"
@@ -205,6 +233,9 @@ class TestBenin(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Fête du Nouvel An"),
             ("2022-01-10", "Fête annuelle des religions traditionnelles"),
+            ("2022-01-16", "Journée de Souvenir"),
+            ("2022-02-28", "Journée de la Souveraineté de Peuple"),
+            ("2022-03-08", "Journée de la Femme"),
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-02", "Jour du Ramadan (estimé)"),
@@ -223,6 +254,9 @@ class TestBenin(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-10", "Vodoun Festival"),
+            ("2022-01-16", "Remembrance Day"),
+            ("2022-02-28", "People's Sovereignty Day"),
+            ("2022-03-08", "Women's Day"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Eid al-Fitr (estimated)"),
