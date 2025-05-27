@@ -76,58 +76,58 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self.dts_observed = set()
+        dts_observed = set()
 
         # Yemen switches from THU-FRI to FRI-SAT on Aug 15, 2013
         self.weekend = {THU, FRI} if self._year <= 2012 else {FRI, SAT}
 
         # Hijri New Year.
-        self.dts_observed.update(self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية")))
+        dts_observed.update(self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية")))
 
         if self._year <= 1999:
             # Prophet's Birthday.
-            self.dts_observed.update(self._add_mawlid_day(tr("المولد النبوي")))
+            dts_observed.update(self._add_mawlid_day(tr("المولد النبوي")))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")
-        self.dts_observed.update(self._add_eid_al_fitr_day(name))
-        self.dts_observed.update(self._add_eid_al_fitr_day_two(name))
-        self.dts_observed.update(self._add_eid_al_fitr_day_three(name))
+        dts_observed.update(self._add_eid_al_fitr_day(name))
+        dts_observed.update(self._add_eid_al_fitr_day_two(name))
+        dts_observed.update(self._add_eid_al_fitr_day_three(name))
         ramadan_29_holidays = self._add_holiday_29_ramadan(name)
-        self.dts_observed.update(ramadan_29_holidays)
+        dts_observed.update(ramadan_29_holidays)
         for dt in ramadan_29_holidays:
             if _timedelta(dt, +1) not in self:
-                self.dts_observed.update(self._add_eid_al_fitr_eve(name))
+                dts_observed.update(self._add_eid_al_fitr_eve(name))
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")
-        self.dts_observed.update(self._add_arafah_day(name))
-        self.dts_observed.update(self._add_eid_al_adha_day(name))
-        self.dts_observed.update(self._add_eid_al_adha_day_two(name))
-        self.dts_observed.update(self._add_eid_al_adha_day_three(name))
-        self.dts_observed.update(self._add_eid_al_adha_day_four(name))
+        dts_observed.update(self._add_arafah_day(name))
+        dts_observed.update(self._add_eid_al_adha_day(name))
+        dts_observed.update(self._add_eid_al_adha_day_two(name))
+        dts_observed.update(self._add_eid_al_adha_day_three(name))
+        dts_observed.update(self._add_eid_al_adha_day_four(name))
 
         # Labor Day.
-        self.dts_observed.add(self._add_labor_day(tr("عيد العمال")))
+        dts_observed.add(self._add_labor_day(tr("عيد العمال")))
 
         # Unity Day.
-        self.dts_observed.add(self._add_holiday_may_22(tr("اليوم الوطني للجمهورية اليمنية")))
+        dts_observed.add(self._add_holiday_may_22(tr("اليوم الوطني للجمهورية اليمنية")))
 
         if self._year <= 1999:
             # Victory Day.
-            self.dts_observed.add(self._add_holiday_jul_7(tr("ذكرى 7 يوليو")))
+            dts_observed.add(self._add_holiday_jul_7(tr("ذكرى 7 يوليو")))
 
         # Revolution Day.
-        self.dts_observed.add(self._add_holiday_sep_26(tr("ثورة 26 سبتمبر المجيدة")))
+        dts_observed.add(self._add_holiday_sep_26(tr("ثورة 26 سبتمبر المجيدة")))
 
         # Liberation Day.
-        self.dts_observed.add(self._add_holiday_oct_14(tr("ثورة 14 أكتوبر المجيدة")))
+        dts_observed.add(self._add_holiday_oct_14(tr("ثورة 14 أكتوبر المجيدة")))
 
         # Independence Day.
-        self.dts_observed.add(self._add_holiday_nov_30(tr("عيد الجلاء")))
+        dts_observed.add(self._add_holiday_nov_30(tr("عيد الجلاء")))
 
         if self.observed:
-            self._populate_observed(self.dts_observed)
+            self._populate_observed(dts_observed)
 
     def _populate_school_holidays(self):
         if self._year >= 2013:
