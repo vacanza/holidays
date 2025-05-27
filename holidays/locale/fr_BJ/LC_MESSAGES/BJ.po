@@ -67,10 +67,6 @@ msgstr ""
 msgid "Journée des Martyrs"
 msgstr ""
 
-#. Youth Day.
-msgid "Journée de la Jeunesse"
-msgstr ""
-
 #. Armed Forces Day.
 msgid "Fête des Forces Armées Populaires du Bénin"
 msgstr ""
@@ -117,4 +113,8 @@ msgstr ""
 
 #. Women's Day.
 msgid "Journée de la Femme"
+msgstr ""
+
+#. Youth Day.
+msgid "Journée de la Jeunesse Béninoise"
 msgstr ""
