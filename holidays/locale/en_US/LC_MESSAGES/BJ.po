@@ -73,7 +73,7 @@ msgstr "Youth Day"
 
 #. Armed Forces Day.
 msgid "Fête des Forces Armées Populaires du Bénin"
-msgstr "Day of the Popular Armed Forces"
+msgstr "Armed Forces Day"
 
 #. National Day.
 msgid "Fête Nationale"
