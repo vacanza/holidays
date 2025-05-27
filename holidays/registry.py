@@ -40,6 +40,7 @@ COUNTRIES: RegistryDict = {
     "belarus": ("Belarus", "BY", "BLR"),
     "belgium": ("Belgium", "BE", "BEL"),
     "belize": ("Belize", "BZ", "BLZ"),
+    "bermuda": ("Bermuda", "BM", "BMU"),
     "bolivia": ("Bolivia", "BO", "BOL"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
