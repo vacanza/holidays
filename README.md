@@ -322,6 +322,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>British Virgin Islands</td>
+<td>VG</td>
+<td></td>
+<td>en_US, <strong>en_VG</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Brunei</td>
 <td>BN</td>
 <td></td>
@@ -501,6 +508,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SV</td>
 <td>Departments: AH (Ahuachapán), CA (Cabañas), CH (Chalatenango), CU (Cuscatlán), LI (La Libertad), MO (Morazán), PA (La Paz), SA (Santa Ana), SM (San Miguel), SO (Sonsonate), SS (San Salvador), SV (San Vicente), UN (La Unión), US (Usulután)</td>
 <td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Equatorial Guinea</td>
+<td>GQ</td>
+<td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
+<td>en_US, <strong>es</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -970,8 +984,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>mk</strong>, uk</td>
+<td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
 <td>Norway</td>
@@ -1229,7 +1243,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Thailand</td>
 <td>TH</td>
 <td></td>
-<td>en_US, <strong>th</strong></td>
+<td>en_US, <strong>th</strong>, uk</td>
 <td>ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY</td>
 </tr>
 <tr>
@@ -1238,6 +1252,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_TL, en_US, <strong>pt_TL</strong>, tet, th</td>
 <td>GOVERNMENT, WORKDAY</td>
+</tr>
+<tr>
+<td>Togo</td>
+<td>TG</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Tonga</td>
