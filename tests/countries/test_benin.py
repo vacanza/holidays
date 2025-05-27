@@ -19,38 +19,52 @@ from tests.common import CommonCountryTests
 class TestBenin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1960, 2050)
-        super().setUpClass(Benin, years=years, years_non_observed=years)
+        years = range(1977, 2050)
+        super().setUpClass(Benin, years=years)
         cls.no_estimated_holidays = Benin(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Benin, BJ, BEN)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Benin(years=1959))
+        self.assertNoHolidays(Benin(years=1976))
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "Fête du Nouvel An", (f"{year}-01-01" for year in range(1960, 2050))
+            "Fête du Nouvel An", (f"{year}-01-01" for year in range(1977, 2050))
         )
 
     def test_vodoun_festival(self):
-        name = "Journée Vaudoun"
+        name = "Fête annuelle des religions traditionnelles"
         self.assertHolidayName(name, (f"{year}-01-10" for year in range(1998, 2025)))
-        obs_dt = ("2025-01-09",)
-        self.assertHolidayName(f"{name} (observé)", obs_dt)
+        self.assertHolidayName(
+            name,
+            "2025-01-09",
+            "2025-01-10",
+        )
 
     def test_martyrs_day(self):
         name = "Journée des Martyrs"
-        self.assertHolidayName(name, (f"{year}-01-16" for year in range(1979, 1989)))
-        self.assertNoHolidayName(name, range(1960, 1979), range(1990, 2050))
-        self.assertNoHolidayName(name, range(1990, 2050))
+        self.assertHolidayName(name, (f"{year}-01-16" for year in range(1980, 1990)))
+        self.assertNoHolidayName(name, range(1977, 1979), range(1991, 2050))
 
     def test_youth_day(self):
         name = "Journée de la Jeunesse"
-        self.assertHolidayName(name, (f"{year}-04-01" for year in range(1979, 1989)))
-        self.assertNoHolidayName(name, range(1960, 1979))
-        self.assertNoHolidayName(name, range(1990, 2050))
+        self.assertHolidayName(name, (f"{year}-04-01" for year in range(1980, 1990)))
+        self.assertNoHolidayName(name, range(1977, 1979), range(1991, 2050))
+
+    def test_easter_sunday(self):
+        name = "Jour de Pâques"
+        self.assertHolidayName(
+            name,
+            "1977-04-10",
+            "1978-03-26",
+            "1980-04-06",
+            "1983-04-03",
+            "1987-04-19",
+            "1990-04-15",
+        )
+        self.assertHolidayName(name, range(1977, 1990))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -63,10 +77,10 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1960, 2050))
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_labor_day(self):
-        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1960, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1977, 2050)))
 
     def test_ascension_day(self):
         name = "Jour de l'Ascension"
@@ -79,8 +93,21 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1990, 2050))
-        self.assertNoHolidayName(name, range(1960, 1989))
+        self.assertHolidayName(name, range(1991, 2050))
+        self.assertNoHolidayName(name, range(1977, 1990))
+
+    def test_whit_sunday(self):
+        name = "Jour de Pentecôte"
+        self.assertHolidayName(
+            name,
+            "1977-05-29",
+            "1980-05-25",
+            "1983-05-22",
+            "1986-05-18",
+            "1988-05-22",
+            "1990-06-03",
+        )
+        self.assertHolidayName(name, range(1977, 1990))
 
     def test_whit_monday(self):
         name = "Lundi de Pentecôte"
@@ -93,10 +120,10 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, range(1960, 2050))
+        self.assertHolidayName(name, range(1991, 2050))
 
     def test_national_day(self):
-        self.assertHolidayName("Fête Nationale", (f"{year}-11-30" for year in range(1960, 1990)))
+        self.assertHolidayName("Fête Nationale", (f"{year}-11-30" for year in range(1977, 1990)))
         self.assertHolidayName("Fête Nationale", (f"{year}-08-01" for year in range(1991, 2050)))
 
     def test_assumption_day(self):
@@ -111,30 +138,28 @@ class TestBenin(CommonCountryTests, TestCase):
             "2025-08-15",
         )
         self.assertHolidayName(name, range(1990, 2050))
-        self.assertNoHolidayName(name, range(1960, 1989))
+        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_day_of_the_popular_armed_forces(self):
         name = "Fête des Forces Armées Populaires du Bénin"
-        self.assertHolidayName(name, (f"{year}-10-26" for year in range(1979, 1989)))
-        self.assertNoHolidayName(name, range(1960, 1979))
+        self.assertHolidayName(name, (f"{year}-10-26" for year in range(1977, 1989)))
         self.assertNoHolidayName(name, range(1990, 2050))
 
     def test_all_saints_day(self):
         name = "La Toussaint"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1990, 2050)))
-        self.assertNoHolidayName(name, range(1960, 1989))
+        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in range(1960, 2050)))
+        self.assertHolidayName("Jour de Noël", (f"{year}-12-25" for year in range(1977, 2050)))
 
     def test_production_day(self):
         name = "Fête de la Production"
-        self.assertHolidayName(name, (f"{year}-12-31" for year in range(1979, 1989)))
-        self.assertNoHolidayName(name, range(1960, 1979))
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(1977, 1989)))
         self.assertNoHolidayName(name, range(1990, 2050))
 
     def test_prophets_birthday(self):
-        name = "Maouloud"
+        name = "Journée Maouloud"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -145,11 +170,11 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-09-15",
             "2025-09-04",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1971, 2050))
-        self.assertNoHolidayName(name, range(1960, 1970))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1990, 2050))
+        self.assertNoHolidayName(name, range(1977, 1989))
 
     def test_eid_al_fitr(self):
-        name = "Korité"
+        name = "Jour du Ramadan"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -160,10 +185,10 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1977, 2050))
 
     def test_eid_al_adha(self):
-        name = "Tabaski"
+        name = "Jour de la Tabaski"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -174,21 +199,21 @@ class TestBenin(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1977, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Fête du Nouvel An"),
-            ("2022-01-10", "Journée Vaudoun"),
+            ("2022-01-10", "Fête annuelle des religions traditionnelles"),
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
-            ("2022-05-02", "Korité (estimé)"),
+            ("2022-05-02", "Jour du Ramadan (estimé)"),
             ("2022-05-26", "Jour de l'Ascension"),
             ("2022-06-06", "Lundi de Pentecôte"),
-            ("2022-07-09", "Tabaski (estimé)"),
+            ("2022-07-09", "Jour de la Tabaski (estimé)"),
             ("2022-08-01", "Fête Nationale"),
             ("2022-08-15", "Jour de l'Assomption"),
-            ("2022-10-08", "Maouloud (estimé)"),
+            ("2022-10-08", "Journée Maouloud (estimé)"),
             ("2022-11-01", "La Toussaint"),
             ("2022-12-25", "Jour de Noël"),
         )
