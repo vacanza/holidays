@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import HolidayBase
+from holidays.holiday_base import HolidayBase
 
 
 class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
@@ -60,13 +60,13 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     """
 
     country = "BJ"
-    supported_categories = (PUBLIC, WORKDAY)
     default_language = "fr_BJ"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    supported_languages = ("en_US", "fr_BJ")
     # Order 76-35 of June 30, 1976.
     start_year = 1977
+    supported_categories = (PUBLIC, WORKDAY)
+    supported_languages = ("en_US", "fr_BJ")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -98,7 +98,7 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             self._add_holiday_jan_16(tr("Journée des Martyrs"))
 
             # Youth Day.
-            self._add_holiday_apr_1(tr("Journée de la Jeunesse"))
+            self._add_holiday_apr_1(tr("Journée de la Jeunesse Béninoise"))
 
         if self._year >= 1991:
             # Easter Monday.

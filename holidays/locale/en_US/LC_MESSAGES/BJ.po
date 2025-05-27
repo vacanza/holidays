@@ -37,7 +37,7 @@ msgstr "Easter Monday"
 
 #. Labor Day.
 msgid "Fête du Travail"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 msgid "Jour de l'Ascension"
