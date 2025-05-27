@@ -334,8 +334,8 @@ class TestCase:
 
         if language:
             self.set_language(language)
-        # Match the logic used in production.
-        self._assertLocalizedHolidays(localized_holidays, language)
+        for language in (language, "invalid", ""):
+            self._assertLocalizedHolidays(localized_holidays, language)
 
 
 class CommonTests(TestCase):
