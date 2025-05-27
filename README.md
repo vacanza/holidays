@@ -1236,7 +1236,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Thailand</td>
 <td>TH</td>
 <td></td>
-<td>en_US, <strong>th</strong></td>
+<td>en_US, <strong>th</strong>, uk</td>
 <td>ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY</td>
 </tr>
 <tr>
