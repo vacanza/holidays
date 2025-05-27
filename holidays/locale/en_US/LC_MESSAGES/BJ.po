@@ -26,25 +26,16 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: fr_BJ\n"
 
-#. %s (observé).
-#, c-format
-msgid "%s (observé)"
-msgstr "%s (observed)"
-
-#. %s (estimé).
+#. %s (estimated).
 #, c-format
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
-
-#. Vodoun Festival.
-msgid "Journée Vaudoun"
-msgstr "Vodoun Festival"
 
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête du Travail"
 msgstr "Labour Day"
 
@@ -68,23 +59,6 @@ msgstr "All Saints' Day"
 msgid "Jour de Noël"
 msgstr "Christmas Day"
 
-#. Prophet's Birthday.
-msgid "Maouloud"
-msgstr "Prophet's Birthday"
-
-#. Eid al-Fitr.
-msgid "Korité"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "Tabaski"
-msgstr "Eid al-Adha"
-
-#. %s (observé, estimé).
-#, c-format
-msgid "%s (observé, estimé)"
-msgstr "%s (observed, estimated)"
-
 #. New Year's Day.
 msgid "Fête du Nouvel An"
 msgstr "New Year's Day"
@@ -97,7 +71,7 @@ msgstr "Martyrs' Day"
 msgid "Journée de la Jeunesse"
 msgstr "Youth Day"
 
-#. Day of the Popular Armed Forces.
+#. Armed Forces Day.
 msgid "Fête des Forces Armées Populaires du Bénin"
 msgstr "Day of the Popular Armed Forces"
 
@@ -108,3 +82,27 @@ msgstr "National Day"
 #. Production Day.
 msgid "Fête de la Production"
 msgstr "Production Day"
+
+#. Vodoun Festival.
+msgid "Fête annuelle des religions traditionnelles"
+msgstr "Vodoun Festival"
+
+#. Easter Sunday.
+msgid "Jour de Pâques"
+msgstr "Easter Sunday"
+
+#. Whit Sunday.
+msgid "Jour de Pentecôte"
+msgstr "Whit Sunday"
+
+#. Prophet's Birthday.
+msgid "Journée Maouloud"
+msgstr "Prophet's Birthday"
+
+#. Eid al-Fitr.
+msgid "Jour du Ramadan"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Jour de la Tabaski"
+msgstr "Eid al-Adha"
