@@ -13,20 +13,20 @@
 from gettext import gettext as tr
 
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_PREV_THU
+from holidays.observed_holiday_base import HolidayBase
 
 
-class Benin(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """Benin holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Benin>
-        * [Order 71-14](https://sgg.gouv.bj/doc/ordonnance-1971-14/)
-        * [Order 76-35](https://sgg.gouv.bj/doc/ordonnance-1976-35/)
-        * [Order 79-33](https://sgg.gouv.bj/doc/ordonnance-1979-33/)
-        * [Law 90-019](https://sgg.gouv.bj/doc/loi-90-019/)
-        * [Law 97-031](https://sgg.gouv.bj/doc/loi-97-031/)
-        * [Law 2024-32](https://sgg.gouv.bj/doc/loi-2024-32/)
+        * [Order 71-14](https://web.archive.org/web/20240727075244/https://sgg.gouv.bj/doc/ordonnance-1971-14/))
+        * [Order 76-35](https://web.archive.org/web/20240726042853/https://sgg.gouv.bj/doc/ordonnance-1976-35/)
+        * [Order 79-33](https://web.archive.org/web/20240725115717/https://sgg.gouv.bj/doc/ordonnance-1979-33/)
+        * [Law 90-019](https://web.archive.org/web/20250527021602/https://sgg.gouv.bj/doc/loi-90-019/)
+        * [Law 97-031](https://web.archive.org/web/20250527022039/https://sgg.gouv.bj/doc/loi-97-031/)
+        * [Law 2024-32](https://web.archive.org/web/20250321041430/https://sgg.gouv.bj/doc/loi-2024-32/)
 
         * [2022 All Saints' Day](https://web.archive.org/web/20241010101230/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-novembre-2022-declaree-feriee-chomee-et-payee)
         * [2022 Christmas Day](https://web.archive.org/web/20240814200022/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-25-decembre-2022-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-de-noel-lire-le-communique-du-ministre-du-travail-et-de-la-fonction-publique)
