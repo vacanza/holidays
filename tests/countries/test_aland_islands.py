@@ -30,7 +30,7 @@ class TestAland(CommonCountryTests, TestCase):
         self.assertNoHolidays(HolidaysAX(years=1949, categories=UNOFFICIAL))
 
     def test_alands_autonomy_day(self):
-        name = "Ålands självstyrelsedag"
+        name = "Ahvenanmaan itsehallintopäivä"
         self.assertHolidayName(name, (f"{year}-06-09" for year in range(1993, 2050)))
         self.assertNoHolidayName(name, range(1921, 1993))
 
