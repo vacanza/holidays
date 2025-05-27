@@ -1,0 +1,96 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Grenada holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.73\n"
+"POT-Creation-Date: 2025-05-03 20:34+0530\n"
+"PO-Revision-Date: 2025-05-03 20:34+0530\n"
+"Last-Translator: Nalin Gupta <nalinguptaofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_GD\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_GD\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Emancipation Day.
+msgid "Emancipation Day"
+msgstr ""
+
+#. Carnival Monday.
+msgid "Carnival Monday"
+msgstr ""
+
+#. Carnival Tuesday.
+msgid "Carnival Tuesday"
+msgstr ""
+
+#. National Heroes' Day.
+msgid "National Heroes' Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Bank Holiday.
+msgid "Bank Holiday"
+msgstr ""
+
+#. CARICOM's 50th Anniversary.
+msgid "CARICOM's 50th Anniversary"
+msgstr ""
