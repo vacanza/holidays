@@ -67,10 +67,6 @@ msgstr "New Year's Day"
 msgid "Journée des Martyrs"
 msgstr "Martyrs' Day"
 
-#. Youth Day.
-msgid "Journée de la Jeunesse"
-msgstr "Youth Day"
-
 #. Armed Forces Day.
 msgid "Fête des Forces Armées Populaires du Bénin"
 msgstr "Armed Forces Day"
@@ -118,3 +114,7 @@ msgstr "People's Sovereignty Day"
 #. Women's Day.
 msgid "Journée de la Femme"
 msgstr "Women's Day"
+
+#. Youth Day.
+msgid "Journée de la Jeunesse Béninoise"
+msgstr "Youth Day"
