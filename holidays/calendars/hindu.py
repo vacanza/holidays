@@ -597,8 +597,8 @@ class _HinduLunisolar:
         2035: (NOV, 15),
     }
 
-    # https://www.timeanddate.com/holidays/nepal/gyalpo-losar
-    # https://www.ashesh.com.np/nepali-calendar/
+    # https://web.archive.org/web/20240814073838/https://www.timeanddate.com/holidays/nepal/gyalpo-losar
+    # https://web.archive.org/web/20250322000610/https://www.ashesh.com.np/nepali-calendar/
     GYALPO_LOSAR_DATES = {
         2010: (FEB, 13),
         2011: (MAR, 5),
@@ -706,7 +706,7 @@ class _HinduLunisolar:
         2035: (AUG, 26),
     }
 
-    # https://www.timeanddate.com/holidays/india/maha-ashtami
+    # https://web.archive.org/web/20250113213218/https://www.timeanddate.com/holidays/india/maha-ashtami
     MAHA_ASHTAMI_DATES = {
         2001: (OCT, 24),
         2002: (OCT, 13),
@@ -1095,8 +1095,8 @@ class _HinduLunisolar:
         2035: (OCT, 2),
     }
 
-    # https://www.timeanddate.com/holidays/nepal/sonam-losar
-    # https://www.ashesh.com.np/nepali-calendar/
+    # https://web.archive.org/web/20241007171215/https://www.timeanddate.com/holidays/nepal/sonam-losar
+    # https://web.archive.org/web/20250322000610/https://www.ashesh.com.np/nepali-calendar/
     SONAM_LOSAR_DATES = {
         2010: (JAN, 16),
         2011: (FEB, 4),
@@ -1126,7 +1126,7 @@ class _HinduLunisolar:
         2035: (FEB, 9),
     }
 
-    # https://www.hamropatro.com/posts/articles-Bishesh-Dinharu/articles-Bishesh-Dinharu-english-tamu-lhosar
+    # https://web.archive.org/web/20241207045124/https://www.hamropatro.com/posts/articles-Bishesh-Dinharu/articles-Bishesh-Dinharu-english-tamu-lhosar
     TAMU_LOSAR_DATES = {
         2010: (DEC, 30),
         2011: (DEC, 30),
