@@ -287,6 +287,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Benin</td>
+<td>BJ</td>
+<td></td>
+<td>en_US, <strong>fr_BJ</strong></td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
