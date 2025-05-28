@@ -91,6 +91,8 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # New Year's Day.
         self._add_new_years_day(tr("Fête du Nouvel An"))
 
+        # Established in 1998 by Law 97-031.
+        # Changed in 2025 by Law 2024-32.
         if self._year >= 1998:
             # Vodoun Festival.
             name = tr("Fête annuelle des religions traditionnelles")
@@ -100,6 +102,8 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             else:
                 self._add_holiday_jan_10(name)
 
+        # Established in 1980 by Order 79-33.
+        # Abolished in 1991 by Law 90-019.
         if 1980 <= self._year <= 1990:
             # Martyrs' Day.
             self._add_holiday_jan_16(tr("Journée des Martyrs"))
@@ -107,6 +111,7 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             # Youth Day.
             self._add_holiday_apr_1(tr("Journée de la Jeunesse Béninoise"))
 
+        # Changed in 1991 by Law 90-019.
         if self._year >= 1991:
             # Easter Monday.
             self._add_easter_monday(tr("Lundi de Pâques"))
@@ -117,6 +122,7 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
+        # Established in 1991 by Law 90-019.
         if self._year >= 1991:
             # Ascension Day.
             self._add_ascension_thursday(tr("Jour de l'Ascension"))
@@ -128,14 +134,18 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
             # Whit Sunday.
             self._add_whit_sunday(tr("Jour de Pentecôte"))
 
+        # Established in 1990 by Law 90-019.
         if self._year >= 1990:
             # Assumption Day.
             self._add_assumption_of_mary_day(tr("Jour de l'Assomption"))
 
+        # Established in 1977 by Order 71-14.
+        # Abolished in 1990 by Law 90-019.
         if self._year <= 1989:
             # Armed Forces Day.
             self._add_holiday_oct_26(tr("Fête des Forces Armées Populaires du Bénin"))
 
+        # Established in 1990 by Law 90-019.
         if self._year >= 1990:
             # All Saints' Day.
             self._add_all_saints_day(tr("La Toussaint"))
@@ -150,12 +160,15 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         # Christmas Day.
         self._add_christmas_day(tr("Jour de Noël"))
 
+        # Established in 1977 by Order 71-14.
+        # Abolished in 1990 by Law 90-019.
         if self._year <= 1989:
             # Production Day.
             self._add_holiday_dec_31(tr("Fête de la Production"))
 
         # Islamic holidays.
 
+        # Established in 1990 by Law 90-019.
         if self._year >= 1990:
             # Prophet's Birthday.
             self._add_mawlid_day(tr("Journée Maouloud"))
