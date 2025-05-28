@@ -10,16 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Finland holidays uk localization.
+# Finland holidays th localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.74\n"
-"POT-Creation-Date: 2023-04-08 19:30+0300\n"
+"POT-Creation-Date: 2025-05-09 12:23+0700\n"
 "PO-Revision-Date: 2025-05-26 10:19+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: uk\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,156 +28,156 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
-msgstr "Новий рік"
+msgstr "วันขึ้นปีใหม่"
 
 #. Epiphany.
 msgid "Loppiainen"
-msgstr "Богоявлення"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
 
 #. Good Friday.
 msgid "Pitkäperjantai"
-msgstr "Страсна пʼятниця"
+msgstr "วันศุกร์ประเสริฐ"
 
 #. Easter Sunday.
 msgid "Pääsiäispäivä"
-msgstr "Великдень"
+msgstr "วันอาทิตย์อีสเตอร์"
 
 #. Easter Monday.
 msgid "Toinen pääsiäispäivä"
-msgstr "Великодній понеділок"
+msgstr "วันจันทร์อีสเตอร์"
 
 #. May Day.
 msgid "Vappu"
-msgstr "Ваппу"
+msgstr "วันเมย์เดย์ (วันแรงงาน)"
 
 #. Ascension Day.
 msgid "Helatorstai"
-msgstr "Вознесіння Господнє"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
 #. Whit Sunday.
 msgid "Helluntaipäivä"
-msgstr "Трійця"
+msgstr "วันสมโภชพระจิตเจ้า"
 
 #. Midsummer Eve.
 msgid "Juhannusaatto"
-msgstr "Переддень літнього сонцестояння"
+msgstr "วันมิดซัมเมอร์อีฟ (วันก่อนวันกลางฤดูร้อน)"
 
 #. Midsummer Day.
 msgid "Juhannuspäivä"
-msgstr "День літнього сонцестояння"
+msgstr "วันมิดซัมเมอร์ (วันกลางฤดูร้อน)"
 
 #. All Saints' Day.
 msgid "Pyhäinpäivä"
-msgstr "День усіх святих"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
 
 #. Independence Day.
 msgid "Itsenäisyyspäivä"
-msgstr "День незалежності"
+msgstr "วันประกาศอิสรภาพฟินแลนด์"
 
 #. Christmas Eve.
 msgid "Jouluaatto"
-msgstr "Святий вечір"
+msgstr "วันคริสต์มาสอีฟ"
 
 #. Christmas Day.
 msgid "Joulupäivä"
-msgstr "Різдво Христове"
+msgstr "วันคริสต์มาส"
 
 #. Second Day of Christmas.
 msgid "Tapaninpäivä"
-msgstr "Другий день Різдва"
+msgstr "วันคริสต์มาสวันที่สอง"
 
 #. Runeberg Day.
 msgid "Runebergin päivä"
-msgstr "День Рунеберга"
+msgstr "วันรูนแบร์ก"
 
 #. Kalevala Day, Day of Finnish Culture.
 msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
-msgstr "День Калевали, День фінської культури"
+msgstr "วันกาเลวาลา, วันวัฒนธรรมฟินแลนด์"
 
 #. Minna Canth Day, Day of Equality.
 msgid "Minna Canthin päivä, tasa-arvon päivä"
-msgstr "День Мінни Кант, День рівності"
+msgstr "วันมินน่า คานท์, วันแห่งความความเสมอภาค"
 
 #. Mikael Agricola Day, Day of the Finnish Language.
 msgid "Mikael Agricolan päivä, suomen kielen päivä"
-msgstr "День Мікаеля Аґріколи, День фінської мови"
+msgstr "วันมิคาเอล อากริโคลา, วันภาษาฟินแลนด์"
 
 #. National War Veterans' Day.
 msgid "Kansallinen veteraanipäivä"
-msgstr "Національний день ветеранів"
+msgstr "วันทหารผ่านศึกแห่งชาติ"
 
 #. Europe Day.
 msgid "Eurooppa-päivä"
-msgstr "День Європи"
+msgstr "วันยุโรป"
 
 #. Mother's Day.
 msgid "Äitienpäivä"
-msgstr "День матері"
+msgstr "วันแม่"
 
 #. J. V. Snellman Day.
 msgid "J.V. Snellmanin päivä"
-msgstr "День Ю. В. Снелльмана"
+msgstr "วันเจ.วี. สเนลล์มาน"
 
 #. J. V. Snellman Day, Day of Finnish Heritage.
 msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
-msgstr "День Ю. В. Снелльмана, День фінської спадщини"
+msgstr "วันเจ.วี. สเนลล์มาน, วันมรดกฟินแลนด์"
 
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
-msgstr "День ветеранів Національної війни"
+msgstr "วันรำลึก"
 
 #. Birthday of the Marshal of Finland.
 msgid "Suomen marsalkan syntymäpäivä"
-msgstr "День народження маршала Фінляндії"
+msgstr "วันคล้ายวันเกิดจอมพลแห่งฟินแลนด์"
 
 #. Flag Day of the Finnish Defense Forces.
 msgid "Puolustusvoimain lippujuhlan päivä"
-msgstr "День прапора фінських сил оборони"
+msgstr "วันกองกำลังป้องกันฟินแลนด์"
 
 #. Eino Leino Day, Day of Summer and Poetry.
 msgid "Eino Leinon päivä, runon ja suven päivä"
-msgstr "День Ейно Лейно, День літа та поезії"
+msgstr "วันไอนอ ไลโน, วันแห่งบทกวีและฤดูร้อน"
 
 #. Finland's Nature Day.
 msgid "Suomen luonnon päivä"
-msgstr "День природи Фінляндії"
+msgstr "วันสิ่งแวดล้อมฟินแลนด์"
 
 #. Miina Sillanpää Day, Day of Civic Participation.
 msgid "Miina Sillanpään ja kansalaisvaikuttamisen päivä"
-msgstr "День Міїни Сілланпяя, День громадянської активності"
+msgstr "วันมีนา ซิลลันแป, วันส่งเสริมการมีส่วนร่วมของพลเมือง"
 
 #. Aleksis Kivi Day, Day of Finnish Literature.
 msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
-msgstr "День Алексіса Ківі, День фінської літератури"
+msgstr "วันอเล็กซิส กีวี, วันวรรณกรรมฟินแลนด์"
 
 #. United Nations Day.
 msgid "YK:n päivä"
-msgstr "День ООН"
+msgstr "วันสหประชาชาติ"
 
 #. Finnish Swedish Heritage Day, svenska dagen.
 msgid "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"
-msgstr "День фінської шведської спадщини, шведський день"
+msgstr "วันมรดกสวีเดน-ฟินแลนด์, วันกุสตาฟวัส อดอลฟัส"
 
 #. Father's Day.
 msgid "Isänpäivä"
-msgstr "День батька"
+msgstr "วันพ่อ"
 
 #. Day of Children's Rights.
 msgid "Lapsen oikeuksien päivä"
-msgstr "День прав дитини"
+msgstr "วันสิทธิเด็ก"
 
 #. Jean Sibelius Day, Day of Finnish Music.
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
-msgstr "День Жана Сібеліуса, День фінської музики"
+msgstr "วันฌอง ซิเบลิอุส, วันดนตรีฟินแลนด์"
 
 #. Åland's Autonomy Day.
 msgid "Ahvenanmaan itsehallintopäivä"
-msgstr "День автономії Аландських островів"
+msgstr "วันปกครองตนเองหมู่เกาะโอลันด์"
 
 #. Day of the Finnish Flag.
 msgid "Suomen lipun päivä"
-msgstr "День прапора Фінляндії"
+msgstr "วันธงชาติฟินแลนด์"
 
 #. Aleksis Kivi Day.
 msgid "Aleksis Kiven päivä"
-msgstr "День Алексіса Ківі"
+msgstr "วันอเล็กซิส กีวี"

@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 179 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 180 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -152,6 +152,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>fa_AF</strong>, ps_AF</td>
 <td></td>
+</tr>
+<tr>
+<td>Aland Islands</td>
+<td>AX</td>
+<td>Can also be loaded as country FI, subdivision 01</td>
+<td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
+<td>UNOFFICIAL, WORKDAY</td>
 </tr>
 <tr>
 <td>Albania</td>
@@ -548,9 +555,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Finland</td>
 <td>FI</td>
-<td></td>
-<td>en_US, <strong>fi</strong>, sv_FI, uk</td>
-<td>UNOFFICIAL</td>
+<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland), 02 (Etelä-Karjala, Södra Karelen), 03 (Etelä-Pohjanmaa, Södra Österbotten), 04 (Etelä-Savo, Södra Savolax), 05 (Kainuu, Kajanaland), 06 (Kanta-Häme, Egentliga Tavastland), 07 (Keski-Pohjanmaa, Mellersta Österbotten), 08 (Keski-Suomi, Mellersta Finland), 09 (Kymenlaakso, Kymmenedalen), 10 (Lappi, Lappland), 11 (Pirkanmaa, Birkaland), 12 (Pohjanmaa, Österbotten), 13 (Pohjois-Karjala, Norra Karelen), 14 (Pohjois-Pohjanmaa, Norra Österbotten), 15 (Pohjois-Savo, Norra Savolax), 16 (Päijät-Häme, Päijänne-Tavastland), 17 (Satakunta), 18 (Uusimaa, Nyland), 19 (Varsinais-Suomi, Egentliga Finland)</td>
+<td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
+<td>UNOFFICIAL, WORKDAY</td>
 </tr>
 <tr>
 <td>France</td>
