@@ -22,41 +22,48 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Benin>
-        * [Order 71-14](https://web.archive.org/web/20240727075244/https://sgg.gouv.bj/doc/ordonnance-1971-14/))
+        * [Order 71-14](https://web.archive.org/web/20240727075244/https://sgg.gouv.bj/doc/ordonnance-1971-14/)
         * [Order 76-35](https://web.archive.org/web/20240726042853/https://sgg.gouv.bj/doc/ordonnance-1976-35/)
         * [Order 79-33](https://web.archive.org/web/20240725115717/https://sgg.gouv.bj/doc/ordonnance-1979-33/)
         * [Law 90-019](https://web.archive.org/web/20250527021602/https://sgg.gouv.bj/doc/loi-90-019/)
         * [Law 97-031](https://web.archive.org/web/20250527022039/https://sgg.gouv.bj/doc/loi-97-031/)
         * [Law 2024-32](https://web.archive.org/web/20250321041430/https://sgg.gouv.bj/doc/loi-2024-32/)
 
-        * [2022 All Saints' Day](https://web.archive.org/web/20241010101230/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-novembre-2022-declaree-feriee-chomee-et-payee)
-        * [2022 Christmas Day](https://web.archive.org/web/20240814200022/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-25-decembre-2022-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-de-noel-lire-le-communique-du-ministre-du-travail-et-de-la-fonction-publique)
-
-        * [2023 New Year's Day](https://web.archive.org/web/20240724084416/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-1er-janvier-2023-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-du-nouvel-an)
-        * [2023 Vodoun Festival](https://web.archive.org/web/20240724084406/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-10-janvier-2023-est-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-annuelle-des-religions-traditionnelles-2301071350-956)
-        * [2023 Eid al-Fitr](https://web.archive.org/web/20240723004550/https://travail.gouv.bj/page/communiques/celebration-le-vendredi-21-avril-2023-de-la-fete-du-ramadan)
-        * [2023 Easter Monday](https://web.archive.org/web/20241010103541/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-10-avril-2023-est-declaree-feriee-chomee-et-payee-en-raison-de-la-fete-de-paques)
-        * [2023 Whit Monday](https://web.archive.org/web/20240911163554/https://travail.gouv.bj/page/communiques/la-fete-de-pentecote)
-        * [2023 Labor Day](https://web.archive.org/web/20240814205702/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-1er-mai-2023-declaree-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national-a-loccasion-de-la-celebration-de-la-fete-du-travail)
-        * [2023 Assumption Day](https://web.archive.org/web/20241214182235/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-15-aout-2023-declaree-feriee-chomee-et-payee-en-raison-de-la-fete-de-lassomption)
-        * [2023 Independence Day](https://web.archive.org/web/20240723004533/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-aout-2023-declaree-feriee-chomee-et-payee-a-l-occasion-de-la-fete-nationale)
-        * [2023 Eid al-Adha](https://web.archive.org/web/20250422035008/https://travail.gouv.bj/page/communiques/communique-du-ministere-du-travail-et-de-la-fonction-publique-2306262022-744)
-
-        * [2024](https://web.archive.org/web/20250317151037/http://beninconsulate.co.ke/index.php/news-events)
-        * [2024 Vodoun Festival](https://web.archive.org/web/20240723004435/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-10-janvier-2024-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Eid al-Fitr](https://web.archive.org/web/20241010114534/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-10-avril-2024-jour-du-ramadan-est-declaree-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Easter Monday](https://web.archive.org/web/20241106004344/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-1er-avril-2024-lundi-de-paques-est-chomee)
-        * [2024 Assumption Day](https://web.archive.org/web/20250215044724/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-15-aout-jour-de-lassomption-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Eid al-Adha](https://web.archive.org/web/20241214200230/https://travail.gouv.bj/page/communiques/jour-de-la-tabaski)
-        * [2024 Labor Day](https://web.archive.org/web/20250418224409/https://www.travail.gouv.bj/page/communiques/la-journee-du-mercredi-1er-mai-2024-journee-de-la-fete-du-travail-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Ascension Day](https://web.archive.org/web/20241214204011/https://travail.gouv.bj/page/communiques/le-jeudi-09-mai-2024-jour-de-lascension-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Whit Monday](https://web.archive.org/web/20241010113401/https://travail.gouv.bj/page/communiques/le-lundi-20-mai-2024-lundi-de-pentecote-est-ferie-chome-et-paye-sur-toute-letendue-du-territoire-national)
-        * [2024 Prophet's Birthday](https://web.archive.org/web/20250215034616/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-15-septembre-2024-jour-de-maoloud-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2024 Christmas Day](https://web.archive.org/web/20250122081816/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-25-decembre-2024-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-
+    Official dates:
+        * [2015](https://web.archive.org/web/20211130121041/https://beninconsulate.co.ke/index.php/news-events/7-public-holidays-2015)
+        * [2017](https://web.archive.org/web/20211130124252/https://beninconsulate.co.ke/index.php/news-events/8-public-holidays-2017)
+        * [2019](https://web.archive.org/web/20231003144018/https://beninconsulate.co.ke/index.php/news-events)
+        * [2024](https://web.archive.org/web/20241211032923/https://beninconsulate.co.ke/index.php/news-events)
         * [2025](https://web.archive.org/web/20250317141957/https://beninconsulate.co.ke/index.php/news-events?start=1)
-        * [2025 New Year's Day](https://web.archive.org/web/20250422023225/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-1er-janvier-2025-fete-du-nouvel-an-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
-        * [2025 Vodoun Festival](https://web.archive.org/web/20250422034718/https://travail.gouv.bj/page/communiques/les-journees-du-jeudi-9-janvier-2024-et-vendredi-10-janvier-2024-sont-feriees-chomees-et-payees-sur-toute-letendue-du-territoire-national)
+
+    Certain holidays dates:
+        * 2022:
+            * [All Saints' Day](https://web.archive.org/web/20241010101230/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-novembre-2022-declaree-feriee-chomee-et-payee)
+            * [Christmas Day](https://web.archive.org/web/20240814200022/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-25-decembre-2022-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-de-noel-lire-le-communique-du-ministre-du-travail-et-de-la-fonction-publique)
+        * 2023:
+            * [New Year's Day](https://web.archive.org/web/20240724084416/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-1er-janvier-2023-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-du-nouvel-an)
+            * [Vodoun Festival](https://web.archive.org/web/20240724084406/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-10-janvier-2023-est-declaree-feriee-chomee-et-payee-a-loccasion-de-la-celebration-de-la-fete-annuelle-des-religions-traditionnelles-2301071350-956)
+            * [Eid al-Fitr](https://web.archive.org/web/20240723004550/https://travail.gouv.bj/page/communiques/celebration-le-vendredi-21-avril-2023-de-la-fete-du-ramadan)
+            * [Easter Monday](https://web.archive.org/web/20241010103541/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-10-avril-2023-est-declaree-feriee-chomee-et-payee-en-raison-de-la-fete-de-paques)
+            * [Whit Monday](https://web.archive.org/web/20240911163554/https://travail.gouv.bj/page/communiques/la-fete-de-pentecote)
+            * [Labor Day](https://web.archive.org/web/20240814205702/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-1er-mai-2023-declaree-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national-a-loccasion-de-la-celebration-de-la-fete-du-travail)
+            * [Assumption Day](https://web.archive.org/web/20241214182235/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-15-aout-2023-declaree-feriee-chomee-et-payee-en-raison-de-la-fete-de-lassomption)
+            * [Independence Day](https://web.archive.org/web/20240723004533/https://travail.gouv.bj/page/communiques/la-journee-du-mardi-1er-aout-2023-declaree-feriee-chomee-et-payee-a-l-occasion-de-la-fete-nationale)
+            * [Eid al-Adha](https://web.archive.org/web/20250422035008/https://travail.gouv.bj/page/communiques/communique-du-ministere-du-travail-et-de-la-fonction-publique-2306262022-744)
+        * 2024:
+            * [Vodoun Festival](https://web.archive.org/web/20240723004435/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-10-janvier-2024-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Eid al-Fitr](https://web.archive.org/web/20241010114534/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-10-avril-2024-jour-du-ramadan-est-declaree-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Easter Monday](https://web.archive.org/web/20241106004344/https://travail.gouv.bj/page/communiques/la-journee-du-lundi-1er-avril-2024-lundi-de-paques-est-chomee)
+            * [Assumption Day](https://web.archive.org/web/20250215044724/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-15-aout-jour-de-lassomption-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Eid al-Adha](https://web.archive.org/web/20241214200230/https://travail.gouv.bj/page/communiques/jour-de-la-tabaski)
+            * [Labor Day](https://web.archive.org/web/20250418224409/https://www.travail.gouv.bj/page/communiques/la-journee-du-mercredi-1er-mai-2024-journee-de-la-fete-du-travail-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Ascension Day](https://web.archive.org/web/20241214204011/https://travail.gouv.bj/page/communiques/le-jeudi-09-mai-2024-jour-de-lascension-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Whit Monday](https://web.archive.org/web/20241010113401/https://travail.gouv.bj/page/communiques/le-lundi-20-mai-2024-lundi-de-pentecote-est-ferie-chome-et-paye-sur-toute-letendue-du-territoire-national)
+            * [Prophet's Birthday](https://web.archive.org/web/20250215034616/https://travail.gouv.bj/page/communiques/la-journee-du-dimanche-15-septembre-2024-jour-de-maoloud-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Christmas Day](https://web.archive.org/web/20250122081816/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-25-decembre-2024-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+        * 2025:
+            * [New Year's Day](https://web.archive.org/web/20250422023225/https://travail.gouv.bj/page/communiques/la-journee-du-mercredi-1er-janvier-2025-fete-du-nouvel-an-est-feriee-chomee-et-payee-sur-toute-letendue-du-territoire-national)
+            * [Vodoun Festival](https://web.archive.org/web/20250422034718/https://travail.gouv.bj/page/communiques/les-journees-du-jeudi-9-janvier-2024-et-vendredi-10-janvier-2024-sont-feriees-chomees-et-payees-sur-toute-letendue-du-territoire-national)
     """
 
     country = "BJ"
