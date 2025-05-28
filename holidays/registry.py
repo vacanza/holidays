@@ -41,6 +41,7 @@ COUNTRIES: RegistryDict = {
     "belarus": ("Belarus", "BY", "BLR"),
     "belgium": ("Belgium", "BE", "BEL"),
     "belize": ("Belize", "BZ", "BLZ"),
+    "benin": ("Benin", "BJ", "BEN"),
     "bolivia": ("Bolivia", "BO", "BOL"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
@@ -201,6 +202,7 @@ COUNTRIES: RegistryDict = {
     "vatican_city": ("VaticanCity", "VA", "VAT"),
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
+    "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }

@@ -33,6 +33,7 @@ from .barbados import Barbados, BB, BRB
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
+from .benin import Benin, BJ, BEN
 from .bolivia import Bolivia, BO, BOL
 from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
@@ -193,5 +194,6 @@ from .vanuatu import Vanuatu, VU, VTU
 from .vatican_city import VaticanCity, VA, VAT
 from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
+from .yemen import Yemen, YE, YEM
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE
