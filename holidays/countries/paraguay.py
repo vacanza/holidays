@@ -27,7 +27,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * [Ley 1.601/2000](https://www.bacn.gov.py/leyes-paraguayas/1677/ley-n-1601--modifica-el-articulo-1-de-la-ley-no-71595-que-amplia-la-ley-n-0890-por-la-cual-se-determinan-los-feriados-de-la-republica)
         * [Ley 1.723/2001](https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes)
         * [Ley 4.531/2011](https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional)
-        * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Paraguay>
+        * <https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Paraguay>
         * <http://www.calendarioparaguay.com/>
     """
 

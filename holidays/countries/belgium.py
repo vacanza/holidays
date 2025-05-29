@@ -23,7 +23,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Belgium>
         * <https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen>
-        * <https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB>
+        * <https://nl.wikipedia.org/wiki/Feestdagen_in_België>
         * <https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays>
     """
 
