@@ -72,7 +72,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * Columbus Day / Indigenous Peoples' Day history:
             * <https://www.pewresearch.org/short-reads/2023/10/05/working-on-columbus-day-or-indigenous-peoples-day-it-depends-on-where-your-job-is/>
             * <https://www.officeholidays.com/holidays/usa/columbus-day-state-guide>
-            * <https://en.wikipedia.org/wiki/Indigenous_Peoples%27_Day_(United_States)>
+            * <https://en.wikipedia.org/wiki/Indigenous_Peoples'_Day_(United_States)>
             * <https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays>
             * <https://web.archive.org/web/20080831103521/http://www.dpa.ca.gov/personnel-policies/holidays.htm>
         * [Frances Xavier Cabrini Day](https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf)
