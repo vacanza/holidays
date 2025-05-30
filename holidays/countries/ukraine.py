@@ -170,7 +170,7 @@ class UkraineStaticHolidays:
 
     Substituted holidays References:
         * [1991](https://zakon.rada.gov.ua/laws/show/60-91-п)
-        * [1992 [1]](https://zakon.rada.gov.ua/laws/show/60-91-п)
+        * [1992 [1]](https://zakon.rada.gov.ua/laws/show/202-92-п)
         * [1992 [2]](https://zakon.rada.gov.ua/laws/show/377-91-п)
         * [1993 [1]](https://zakon.rada.gov.ua/laws/show/563-93-п)
         * [1993 [2]](https://zakon.rada.gov.ua/laws/show/725-92-п)
