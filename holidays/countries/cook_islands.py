@@ -72,9 +72,10 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day.
         self._add_observed(
-            self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # New Year's Day.
+            self._add_new_years_day(tr("New Year's Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
         self._add_observed(
