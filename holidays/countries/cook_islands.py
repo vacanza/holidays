@@ -96,7 +96,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Sovereign's Birthday.
         self._add_holiday_1st_mon_of_jun(tr("Sovereign's Birthday"))
 
-        if self._year >= 2011:
+        if self._year >= 2012:
             # Day of the House of Ariki.
             name = tr("Ra o te Ui Ariki")
             if self._year >= 2013:
@@ -105,10 +105,10 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
                 self._add_holiday_jun_6(name)
 
         # Constitution Day.
-        self._add_holiday_aug_4(tr("Constitution Day"))
+        self._add_observed(self._add_holiday_aug_4(tr("Constitution Day")))
 
         # Cook Islands Gospel Day.
-        self._add_holiday_oct_26(tr("Cook Islands Gospel Day"))
+        self._add_observed(self._add_holiday_oct_26(tr("Cook Islands Gospel Day")))
 
         self._add_observed(
             # Christmas Day.
