@@ -25,12 +25,12 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cook_Islands>
-        * [Public Holidays Amendment Act 1970-71](https://cookislandslaws.gov.ck/#/Laws-as-Made?id=414&name=Public%20Holidays%20Amendment%20Act%201970-71%20No%2029)
-        * [Public Holidays Act 1999 (Law as Made)](https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1241&name=Public%20Holidays%20Act%201999%20No%2017)
-        * [Public Holidays (Aitutaki Gospel Day) Order 1989](https://parliament.gov.ck/wp-content/uploads/2022/07/Public-Holidays-Aitutaki-Gospel-Day-Order-1990-No.-9.pdf)
-        * [Public Holidays Act 1999 (Consolidated Law)](https://cookislandslaws.gov.ck/#/InternalConsolidatedLaws?legalId=LOCI.PHA99&parent_id=Public%20Holidays%20Act%201999)
-        * [Public Holidays (Ra o te Ui Ariki) Amendment Act 2011](https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1553&name=Public%20Holidays%20(Ra%20o%20te%20Ui%20Ariki)%20Amendment%20Act%202011%20No%204)
-        * [Public Holidays (Ra o te Ui Ariki) Amendment 2013](https://web.archive.org/web/20240726134410/https://parliament.gov.ck/wp-content/uploads/2020/02/Public-Holidays-Ra-o-te-Ui-Ariki-No.-4.pdf)
+        * [Public Holidays Amendment Act 1970-71](https://web.archive.org/web/20250530101809/https://cookislandslaws.gov.ck/#/Laws-as-Made?id=414&name=Public%20Holidays%20Amendment%20Act%201970-71%20No%2029)
+        * [Public Holidays Act 1999 (Law as Made)](https://web.archive.org/web/20250530120928/https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1241&name=Public%20Holidays%20Act%201999%20No%2017)
+        * [Public Holidays (Aitutaki Gospel Day) Order 1989](https://web.archive.org/web/20250530121249/https://parliament.gov.ck/wp-content/uploads/2022/07/Public-Holidays-Aitutaki-Gospel-Day-Order-1990-No.-9.pdf)
+        * [Public Holidays Act 1999 (Consolidated Law)](https://web.archive.org/web/20250530101809/https://cookislandslaws.gov.ck/#/InternalConsolidatedLaws?legalId=LOCI.PHA99&parent_id=Public%20Holidays%20Act%201999)
+        * [Public Holidays (Ra o te Ui Ariki) Amendment Act 2011](https://web.archive.org/web/20250530101809/https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1553&name=Public%20Holidays%20(Ra%20o%20te%20Ui%20Ariki)%20Amendment%20Act%202011%20No%204)
+        * [Public Holidays (Ra o te Ui Ariki) Amendment 2013](https://web.archive.org/web/20250530122050/https://parliament.gov.ck/wp-content/uploads/2020/02/Public-Holidays-Ra-o-te-Ui-Ariki-No.-4.pdf)
         * [2004](https://web.archive.org/web/20090326004400/http://www.cook-islands.gov.ck/view_release.php?release_id=429)
         * [2008](https://web.archive.org/web/20090326003301/http://www.stats.gov.ck/NewsEvents/PublicHolidays.pdf)
     """
@@ -41,7 +41,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     observed_label = tr("%s (observed)")
     supported_languages = ("en_CK", "en_US")
     # Public Holiday Act 1999.
-    start_year = 1999
+    start_year = 2000
     subdivisions = (
         "AI",  # Aitutaki (including uninhabited Manuae)
         "AT",  # Atiu (including uninhabited Takutea)
@@ -94,7 +94,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Day of the House of Ariki.
             name = tr("Ra o te Ui Ariki")
             if self._year >= 2013:
-                (self._add_holiday_1st_fri_of_jul(name))
+                self._add_holiday_1st_fri_of_jul(name)
             else:
                 self._add_holiday_jun_6(name)
 
@@ -122,42 +122,42 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             self._add_observed(self._add_holiday_oct_27(tr("Aitutaki Gospel Day")))
 
     def _populate_subdiv_at_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Atiu Gospel Day.
             self._add_observed(self._add_holiday_jul_20(tr("Atiu Gospel Day")))
 
     def _populate_subdiv_mg_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Mangaia Gospel Day.
             self._add_observed(self._add_holiday_jun_15(tr("Mangaia Gospel Day")))
 
     def _populate_subdiv_mh_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Manihiki Gospel Day.
             self._add_observed(self._add_holiday_aug_8(tr("Manihiki Gospel Day")))
 
     def _populate_subdiv_mt_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Mitiaro Gospel Day.
             self._add_observed(self._add_holiday_jul_21(tr("Mitiaro Gospel Day")))
 
     def _populate_subdiv_pa_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Palmerston Gospel Day.
             self._add_observed(self._add_holiday_may_25(tr("Palmerston Gospel Day")))
 
     def _populate_subdiv_pe_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Penrhyn Gospel Day.
             self._add_observed(self._add_holiday_mar_13(tr("Penrhyn Gospel Day")))
 
     def _populate_subdiv_pu_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Pukapuka Gospel Day.
             self._add_observed(self._add_holiday_dec_8(tr("Pukapuka Gospel Day")))
 
     def _populate_subdiv_ra_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Rakahanga Gospel Day.
             self._add_observed(self._add_holiday_aug_15(tr("Rakahanga Gospel Day")))
 
