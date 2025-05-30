@@ -19,8 +19,8 @@ from tests.common import CommonCountryTests
 class TestCookIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1999, 2050)
-        super().setUpClass(CookIslands, years=years)
+        years = range(2000, 2050)
+        super().setUpClass(CookIslands, years=years, years_non_observed=years)
         cls.subdiv_holidays = {
             subdiv: CookIslands(subdiv=subdiv, years=years) for subdiv in CookIslands.subdivisions
         }
@@ -60,6 +60,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
+        self.assertHolidayName(name, range(2000, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"

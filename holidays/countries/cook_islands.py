@@ -117,7 +117,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         )
 
     def _populate_subdiv_ai_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # Aitutaki Gospel Day.
             self._add_observed(self._add_holiday_oct_27(tr("Aitutaki Gospel Day")))
 
