@@ -102,3 +102,11 @@ msgstr "Rakahanga Gospel Day"
 #. Sovereign's Birthday.
 msgid "Sovereign's Birthday"
 msgstr "Sovereign's Birthday"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Day after New Year's Day.
+msgid "Day after New Year's Day"
+msgstr "Day after New Year's Day"
