@@ -1,0 +1,104 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Cook Islands holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.74\n"
+"POT-Creation-Date: 2025-05-30 08:10+0530\n"
+"PO-Revision-Date: 2025-05-30 08:10+0530\n"
+"Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_CK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_CK\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. Anzac Day.
+msgid "Anzac Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Day of the House of Ariki.
+msgid "Ra o te Ui Ariki"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Cook Islands Gospel Day.
+msgid "Cook Islands Gospel Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Aitutaki Gospel Day.
+msgid "Aitutaki Gospel Day"
+msgstr ""
+
+#. Atiu Gospel Day.
+msgid "Atiu Gospel Day"
+msgstr ""
+
+#. Mangaia Gospel Day.
+msgid "Mangaia Gospel Day"
+msgstr ""
+
+#. Manihiki Gospel Day.
+msgid "Manihiki Gospel Day"
+msgstr ""
+
+#. Mitiaro Gospel Day.
+msgid "Mitiaro Gospel Day"
+msgstr ""
+
+#. Palmerston Gospel Day.
+msgid "Palmerston Gospel Day"
+msgstr ""
+
+#. Penrhyn Gospel Day.
+msgid "Penrhyn Gospel Day"
+msgstr ""
+
+#. Pukapuka Gospel Day.
+msgid "Pukapuka Gospel Day"
+msgstr ""
+
+#. Rakahanga Gospel Day.
+msgid "Rakahanga Gospel Day"
+msgstr ""
+
+#. Sovereign's Birthday.
+msgid "Sovereign's Birthday"
+msgstr ""

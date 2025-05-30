@@ -60,6 +60,7 @@ COUNTRIES: RegistryDict = {
     "cocos_islands": ("CocosIslands", "CC", "CCK"),
     "colombia": ("Colombia", "CO", "COL"),
     "congo": ("Congo", "CG", "COG"),
+    "cook_islands": ("CookIslands", "CK", "COK"),
     "costa_rica": ("CostaRica", "CR", "CRI"),
     "croatia": ("Croatia", "HR", "HRV"),
     "cuba": ("Cuba", "CU", "CUB"),

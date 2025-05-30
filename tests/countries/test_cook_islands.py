@@ -1,0 +1,301 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from unittest import TestCase
+
+from holidays.countries.cook_islands import CookIslands, CK, COK
+from tests.common import CommonCountryTests
+
+
+class TestCookIslands(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        years = range(1999, 2050)
+        super().setUpClass(CookIslands, years=years)
+        cls.subdiv_holidays = {
+            subdiv: CookIslands(subdiv=subdiv, years=years) for subdiv in CookIslands.subdivisions
+        }
+
+    def test_country_aliases(self):
+        self.assertAliases(CookIslands, CK, COK)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(CookIslands(years=1998))
+
+    def test_new_years(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1999, 2050)))
+        years_observed = (2005, 2006, 2011, 2012, 2017)
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-03" for year in years_observed))
+        self.assertNoNonObservedHoliday(f"{year}-01-03" for year in years_observed)
+
+    def test_day_after_new_years(self):
+        name = "Day after New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1999, 2050)))
+        years_observed = (2010, 2011, 2016, 2021, 2022)
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-01-04" for year in years_observed))
+        self.assertNoNonObservedHoliday(f"{year}-01-04" for year in years_observed)
+
+    def test_anzac_day(self):
+        self.assertHolidayName("Anzac Day", (f"{year}-04-25" for year in range(1999, 2050)))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+
+    def test_sovereigns_birthday(self):
+        name = "Sovereign's Birthday"
+        self.assertHolidayName(
+            name,
+            "2020-06-01",
+            "2021-06-07",
+            "2022-06-06",
+            "2023-06-05",
+            "2024-06-03",
+            "2025-06-02",
+        )
+
+    def test_house_of_ariki_day(self):
+        name = "Ra o te Ui Ariki"
+        self.assertNoHolidayName(name, range(1999, 2011))
+        self.assertHolidayName(name, "2011-06-06", "2012-06-06")
+        self.assertHolidayName(
+            name,
+            "2020-07-03",
+            "2021-07-02",
+            "2022-07-01",
+            "2023-07-07",
+            "2024-07-05",
+            "2025-07-04",
+        )
+
+    def test_constitution_day(self):
+        self.assertHolidayName("Constitution Day", (f"{year}-08-04" for year in range(1999, 2050)))
+
+    def test_cook_islands_gospel_day(self):
+        self.assertHolidayName(
+            "Cook Islands Gospel Day", (f"{year}-10-26" for year in range(1999, 2050))
+        )
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1999, 2050)))
+        years_observed = (2004, 2005, 2010, 2011, 2016, 2021, 2022)
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-27" for year in years_observed))
+        self.assertNoNonObservedHoliday(f"{year}-12-27" for year in years_observed)
+
+    def test_boxing_day(self):
+        name = "Boxing Day"
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1999, 2050)))
+        years_observed = (2004, 2009, 2010, 2015, 2020, 2021)
+        self.assertHolidayName(f"{name} (observed)", (f"{year}-12-28" for year in years_observed))
+        self.assertNoNonObservedHoliday(f"{year}-12-28" for year in years_observed)
+
+    def test_aitutaki_gospel_day(self):
+        name = "Aitutaki Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["AI"], (f"{year}-10-27" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2001-10-29",
+            "2002-10-28",
+            "2007-10-29",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["AI"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["AI"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["AI"], range(2012, 2050)
+        )
+
+    def test_atiu_gospel_day(self):
+        name = "Atiu Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["AT"], (f"{year}-07-20" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2002-07-22",
+            "2008-07-21",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["AT"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["AT"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["AT"], range(2012, 2050)
+        )
+
+    def test_mangaia_gospel_day(self):
+        name = "Mangaia Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["MG"], (f"{year}-06-15" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2002-06-17",
+            "2003-06-16",
+            "2008-06-16",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["MG"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["MG"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["MG"], range(2012, 2050)
+        )
+
+    def test_manihiki_gospel_day(self):
+        name = "Manihiki Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["MH"], (f"{year}-08-08" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2004-08-09",
+            "2009-08-10",
+            "2010-08-09",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["MH"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["MH"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["MH"], range(2012, 2050)
+        )
+
+    def test_mitiaro_gospel_day(self):
+        name = "Mitiaro Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["MT"], (f"{year}-07-21" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2002-07-22",
+            "2007-07-23",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["MT"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["MT"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["MT"], range(2012, 2050)
+        )
+
+    def test_palmerston_gospel_day(self):
+        name = "Palmerston Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["PA"], (f"{year}-05-25" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2003-05-26",
+            "2008-05-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["PA"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["PA"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["PA"], range(2012, 2050)
+        )
+
+    def test_penrhyn_gospel_day(self):
+        name = "Penrhyn Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["PE"], (f"{year}-03-13" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2005-03-14",
+            "2010-03-15",
+            "2011-03-14",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["PE"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["PE"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["PE"], range(2012, 2050)
+        )
+
+    def test_pukapuka_gospel_day(self):
+        name = "Pukapuka Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["PU"], (f"{year}-12-08" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2001-12-10",
+            "2002-12-09",
+            "2007-12-10",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["PU"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["PU"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["PU"], range(2012, 2050)
+        )
+
+    def test_rakahanga_gospel_day(self):
+        name = "Rakahanga Gospel Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["RA"], (f"{year}-08-15" for year in range(1999, 2012))
+        )
+        obs_dt = (
+            "2004-08-16",
+            "2009-08-17",
+            "2010-08-16",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.subdiv_holidays["RA"], obs_dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["RA"], range(2012, 2050))
+        self.assertNoHolidayName(
+            f"{name} (observed)", self.subdiv_holidays["RA"], range(2012, 2050)
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-02", "Day after New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-04", "Day after New Year's Day (observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "Anzac Day"),
+            ("2022-06-06", "Sovereign's Birthday"),
+            ("2022-07-01", "Ra o te Ui Ariki"),
+            ("2022-08-04", "Constitution Day"),
+            ("2022-10-26", "Cook Islands Gospel Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (observed)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-02", "Day after New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-04", "Day after New Year's Day (observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "Anzac Day"),
+            ("2022-06-06", "Sovereign's Birthday"),
+            ("2022-07-01", "Day of the House of Ariki"),
+            ("2022-08-04", "Constitution Day"),
+            ("2022-10-26", "Cook Islands Gospel Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (observed)"),
+        )
