@@ -21,6 +21,7 @@ RegistryDict = dict[str, tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
     "afghanistan": ("Afghanistan", "AF", "AFG"),
+    "aland_islands": ("AlandIslands", "AX", "ALA", "HolidaysAX"),
     "albania": ("Albania", "AL", "ALB"),
     "algeria": ("Algeria", "DZ", "DZA"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
@@ -40,6 +41,7 @@ COUNTRIES: RegistryDict = {
     "belarus": ("Belarus", "BY", "BLR"),
     "belgium": ("Belgium", "BE", "BEL"),
     "belize": ("Belize", "BZ", "BLZ"),
+    "benin": ("Benin", "BJ", "BEN"),
     "bermuda": ("Bermuda", "BM", "BMU"),
     "bolivia": ("Bolivia", "BO", "BOL"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
@@ -201,6 +203,7 @@ COUNTRIES: RegistryDict = {
     "vatican_city": ("VaticanCity", "VA", "VAT"),
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),
+    "yemen": ("Yemen", "YE", "YEM"),
     "zambia": ("Zambia", "ZM", "ZMB"),
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }

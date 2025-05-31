@@ -1,0 +1,120 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Benin holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.74\n"
+"POT-Creation-Date: 2025-05-24 17:10+0530\n"
+"PO-Revision-Date: 2025-05-24 17:10+0530\n"
+"Last-Translator: Devaraj K <devarajkaliyaamoorthy@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr_BJ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: fr_BJ\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Ascension Day.
+msgid "Jour de l'Ascension"
+msgstr ""
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr ""
+
+#. Assumption Day.
+msgid "Jour de l'Assomption"
+msgstr ""
+
+#. Christmas Day.
+msgid "Jour de Noël"
+msgstr ""
+
+#. All Saints' Day.
+msgid "La Toussaint"
+msgstr ""
+
+#. New Year's Day.
+msgid "Fête du Nouvel An"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Journée des Martyrs"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Fête des Forces Armées Populaires du Bénin"
+msgstr ""
+
+#. National Day.
+msgid "Fête Nationale"
+msgstr ""
+
+#. Production Day.
+msgid "Fête de la Production"
+msgstr ""
+
+#. Vodoun Festival.
+msgid "Fête annuelle des religions traditionnelles"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Jour de Pâques"
+msgstr ""
+
+#. Whit Sunday.
+msgid "Jour de Pentecôte"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Journée Maouloud"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Jour du Ramadan"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Jour de la Tabaski"
+msgstr ""
+
+#. Remembrance Day.
+msgid "Journée de Souvenir"
+msgstr ""
+
+#. People's Sovereignty Day.
+msgid "Journée de la Souveraineté de Peuple"
+msgstr ""
+
+#. Women's Day.
+msgid "Journée de la Femme"
+msgstr ""
+
+#. Youth Day.
+msgid "Journée de la Jeunesse Béninoise"
+msgstr ""
