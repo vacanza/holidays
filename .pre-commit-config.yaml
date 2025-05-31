@@ -52,7 +52,6 @@ repos:
         additional_dependencies:
           - types-polib
           - types-python-dateutil
-          - types-setuptools
           - types-requests
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
