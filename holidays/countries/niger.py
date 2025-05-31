@@ -38,13 +38,13 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     References:
         * [Law No. 59-22 of December 24, 1959](https://web.archive.org/web/20241106023958/https://www.impots.gouv.ne/media/loi/1960.pdf)
         * <https://web.archive.org/web/20110721063839/http://www.ais-asecna.org/pdf/gen/gen-2-1/12gen2-1-01.pdf>
-        * <https://wageindicator.org/documents/decentworkcheck/africa/niger-french-2021.pdf>
+        * <https://web.archive.org/web/20250531032502/https://wageindicator.org/documents/decentworkcheck/africa/niger-french-2021.pdf>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Niger>
-        * <https://wageindicator.org/fr-ne/droit-du-travail/les-conges-et-les-jours-de-repos>
+        * <https://web.archive.org/web/20250531032604/https://wageindicator.org/fr-ne/droit-du-travail/les-conges-et-les-jours-de-repos>
         * <https://web.archive.org/web/20250206194155/https://www.rivermate.com/guides/niger/leave>
         * [Eid al-Adha](https://web.archive.org/web/20250117013558/https://www.timeanddate.com/holidays/niger/eid-al-adha)
         * [Eid al-Fitr](https://web.archive.org/web/20250114130118/https://www.timeanddate.com/holidays/niger/eid-al-fitr)
-        * [Laylat al-Qadr](https://www.timeanddate.com/holidays/niger/lailat-al-qadr)
+        * [Laylat al-Qadr](https://web.archive.org/web/20250531033137/https://www.timeanddate.com/holidays/niger/laylat-al-qadr)
         * [Islamic New Year](https://web.archive.org/web/20240723135601/https://www.timeanddate.com/holidays/niger/muharram-new-year)
         * [Prophet's Birthday](https://web.archive.org/web/20250124122731/https://www.timeanddate.com/holidays/niger/prophet-birthday)
         * [Article 114](https://web.archive.org/web/20240205184429/https://droit-afrique.com/upload/doc/niger/Niger-Code-2012-du-travail.pdf)

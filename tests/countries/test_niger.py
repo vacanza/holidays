@@ -118,15 +118,6 @@ class TestNiger(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Bikin cikar shelar 'yancin kai"
-        self.assertHolidayName(
-            name,
-            "2020-08-03",
-            "2021-08-03",
-            "2022-08-03",
-            "2023-08-03",
-            "2024-08-03",
-            "2025-08-03",
-        )
         self.assertHolidayName(name, (f"{year}-08-03" for year in range(1960, 2050)))
         self.assertNoHolidayName(name, 1959)
         obs_dt = (
@@ -140,15 +131,6 @@ class TestNiger(CommonCountryTests, TestCase):
 
     def test_assumption_of_mary(self):
         name = "Zaton Maryama"
-        self.assertHolidayName(
-            name,
-            "2020-08-15",
-            "2021-08-15",
-            "2022-08-15",
-            "2023-08-15",
-            "2024-08-15",
-            "2025-08-15",
-        )
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(1959, 2050)))
         obs_dt = (
             "2010-08-16",
@@ -160,15 +142,6 @@ class TestNiger(CommonCountryTests, TestCase):
 
     def test_all_saints_day(self):
         name = "Rana Duka Saints"
-        self.assertHolidayName(
-            name,
-            "2020-11-01",
-            "2021-11-01",
-            "2022-11-01",
-            "2023-11-01",
-            "2024-11-01",
-            "2025-11-01",
-        )
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2050)))
         obs_dt = (
             "2009-11-02",
@@ -181,15 +154,6 @@ class TestNiger(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Ranar Jamhuriya"
-        self.assertHolidayName(
-            name,
-            "2020-12-18",
-            "2021-12-18",
-            "2022-12-18",
-            "2023-12-18",
-            "2024-12-18",
-            "2025-12-18",
-        )
         self.assertHolidayName(name, (f"{year}-12-18" for year in range(1959, 2050)))
         obs_dt = (
             "2011-12-19",
@@ -202,15 +166,6 @@ class TestNiger(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Ranar Kirsimeti"
-        self.assertHolidayName(
-            name,
-            "2020-12-25",
-            "2021-12-25",
-            "2022-12-25",
-            "2023-12-25",
-            "2024-12-25",
-            "2025-12-25",
-        )
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1959, 2050)))
         obs_dt = (
             "2011-12-26",
