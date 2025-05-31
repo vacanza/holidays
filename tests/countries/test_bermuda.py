@@ -68,7 +68,7 @@ class TestBermuda(CommonCountryTests, TestCase):
             name,
             "2018-05-25",
             "2019-05-31",
-            "2020-05-22",
+            "2020-05-29",
             "2021-05-28",
             "2022-05-27",
             "2023-05-26",
@@ -117,6 +117,31 @@ class TestBermuda(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2008, 2050))
         self.assertNoHolidayName(name, range(1948, 2008))
 
+    def test_cup_match_and_emancipation_day(self):
+        name_1 = "Cup Match Day"
+        self.assertHolidayName(
+            name_1,
+            "1995-08-03",
+            "1996-08-01",
+            "1997-07-31",
+            "1998-07-30",
+            "1999-07-29",
+        )
+        self.assertHolidayName(name_1, range(1948, 2000))
+        self.assertNoHolidayName(name_1, range(2000, 2050))
+
+        name_2 = "Emancipation Day"
+        self.assertHolidayName(
+            name_2,
+            "2021-07-29",
+            "2022-07-28",
+            "2023-08-03",
+            "2024-08-01",
+            "2025-07-31",
+        )
+        self.assertHolidayName(name_2, range(2000, 2050))
+        self.assertNoHolidayName(name_2, range(1948, 2000))
+
     def test_somers_and_mary_prince_day(self):
         name_1 = "Somers Day"
         self.assertHolidayName(
@@ -125,22 +150,22 @@ class TestBermuda(CommonCountryTests, TestCase):
             "2017-08-04",
             "2018-08-03",
             "2019-08-02",
-            "2020-07-31",
         )
-        self.assertHolidayName(name_1, range(1948, 2021))
-        self.assertNoHolidayName(name_1, range(2021, 2050))
+        self.assertHolidayName(name_1, range(1948, 2020))
+        self.assertNoHolidayName(name_1, range(2020, 2050))
 
         name_2 = "Mary Prince Day"
         self.assertHolidayName(
             name_2,
+            "2020-07-31",
             "2021-07-30",
             "2022-07-29",
             "2023-08-04",
             "2024-08-02",
             "2025-08-01",
         )
-        self.assertHolidayName(name_2, range(2021, 2050))
-        self.assertNoHolidayName(name_2, range(1948, 2021))
+        self.assertHolidayName(name_2, range(2020, 2050))
+        self.assertNoHolidayName(name_2, range(1948, 2020))
 
     def test_labour_day(self):
         name = "Labour Day"
