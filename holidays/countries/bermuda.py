@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAY, OCT, NOV
+from holidays.calendars.gregorian import MAY, JUN, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -30,6 +30,7 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         * [Public Holidays Amendment Act 2017](https://web.archive.org/web/20250527163819/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2017/Public%20Holidays%20Amendment%20Act%202017)
         * [Public Holidays Amendment Act 2020](https://web.archive.org/web/20250527163836/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2020/Public%20Holidays%20Amendment%20Act%202020)
         * [Government of Bermuda](https://web.archive.org/web/20250530055854/https://www.gov.bm/public-holidays)
+        * [Proclamation BR 149 / 2018](https://web.archive.org/web/20250530114331/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2018/Proclamation%20-%20Bermuda%20Day%20Public%20Holiday)
     """
 
     country = "BM"
@@ -54,6 +55,8 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         name = "Bermuda Day"
         if self._year <= 2017:
             self._add_observed(self._add_holiday_may_24(name))
+        elif self._year == 2019:
+            self._add_holiday_may_24(name)
         elif self._year <= 2020:
             self._add_holiday_last_fri_of_may(name)
         else:
@@ -114,12 +117,21 @@ class BermudaStaticHolidays:
     """Bermuda special holidays.
 
     References:
-        * [Portuguese Welcome 170th Anniversary](https://web.archive.org/web/20241210201648/https://www.royalgazette.com/other/news/article/20191025/portuguese-welcome-170th-anniversary-holiday/)
-        * [Flora Duffy Day](https://web.archive.org/web/20240613083451/https://bernews.com/2021/10/governor-signs-flora-duffy-day-proclamation/)
-        * [The Coronation of His Majesty King Charles III Holiday](https://web.archive.org/web/20250222035055/http://gov.bm/articles/coronation-his-majesty-king-charles-iii-her-majesty-queen-consort)
+        * [June 5, 2007 Holiday](https://web.archive.org/web/20250530122818/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2007/Proclamation)
+        * Portuguese Welcome 170th Anniversary
+            * <https://web.archive.org/web/20241210201648/https://www.royalgazette.com/other/news/article/20191025/portuguese-welcome-170th-anniversary-holiday/>
+            * <https://web.archive.org/web/20250530122008/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2018/Proclamation%20-%20Portguese%20Public%20Holiday>
+        * Flora Duffy Day
+            * <https://web.archive.org/web/20240613083451/https://bernews.com/2021/10/governor-signs-flora-duffy-day-proclamation/>
+            * <https://web.archive.org/web/20250530113359/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2021/Proclamation%20for%2018%20October%202021%20Holiday>
+        * The Coronation of His Majesty King Charles III Holiday
+            * <https://web.archive.org/web/20250222035055/https://gov.bm/articles/coronation-his-majesty-king-charles-iii-her-majesty-queen-consort>
+            * <https://web.archive.org/web/20250530112129/https://www.bermudalaws.bm/Laws/Annual%20Law/Statutory%20Instruments/2023/Proclamation%20for%208%20May%202023%20Holiday>
     """
 
     special_public_holidays = {
+        # Public Holiday.
+        2007: (JUN, 5, "Public Holiday"),
         # Portuguese Welcome 170th Anniversary.
         2019: (NOV, 4, "Portuguese Welcome 170th Anniversary"),
         # Flora Duffy Day.

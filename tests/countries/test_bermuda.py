@@ -30,6 +30,7 @@ class TestBermuda(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         for dt, name in (
+            ("2007-06-05", "Public Holiday"),
             ("2019-11-04", "Portuguese Welcome 170th Anniversary"),
             ("2021-10-18", "Flora Duffy Day"),
             ("2023-05-08", "The Coronation of His Majesty King Charles III"),
@@ -67,7 +68,7 @@ class TestBermuda(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2018-05-25",
-            "2019-05-31",
+            "2019-05-24",
             "2020-05-29",
             "2021-05-28",
             "2022-05-27",
