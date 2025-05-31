@@ -65,7 +65,7 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Queen's Birthday.
         name = "Queen's Birthday"
         if self._year <= 1999:
-            self._add_holiday_3rd_mon_of_june(name)
+            self._add_holiday_3rd_mon_of_jun(name)
         elif self._year <= 2008:
             self._add_holiday_2_days_past_2nd_sat_of_jun(name)
 

@@ -91,12 +91,14 @@ class TestBermuda(CommonCountryTests, TestCase):
         name = "Queen's Birthday"
         self.assertHolidayName(
             name,
-            "2003-06-11",
-            "2004-06-16",
-            "2005-06-15",
-            "2006-06-14",
-            "2007-06-13",
-            "2008-06-11",
+            "1997-06-16",
+            "1998-06-15",
+            "1999-06-21",
+            "2000-06-12",
+            "2001-06-11",
+            "2006-06-12",
+            "2007-06-11",
+            "2008-06-16",
         )
         self.assertHolidayName(name, range(1948, 2009))
         self.assertNoHolidayName(name, range(2009, 2050))
