@@ -814,7 +814,7 @@ class ArgentinaStaticHolidays:
 
     Special Holidays References:
         * [Decree 615/2010](https://web.archive.org/web/20240109181152/https://www.argentina.gob.ar/normativa/nacional/decreto-615-2010-166825/texto)
-        * [Joint Resolution 1159/2010](https://web.archive.org/web/20231215002151/https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-1159-2010-173748/texto)
+        * [Joint Resolution 1159/2010](https://web.archive.org/web/20231215002151/https://www.argentina.gob.ar/normativa/nacional/resolución-1159-2010-173748/texto)
         * [Law 26721](https://web.archive.org/web/20240109181220/https://www.argentina.gob.ar/normativa/nacional/ley-26721-191835/texto)
         * [Law 26763](https://web.archive.org/web/20240109181221/https://www.argentina.gob.ar/normativa/nacional/ley-26763-201915/texto)
         * [Law 26837](https://web.archive.org/web/20240109181217/https://www.argentina.gob.ar/normativa/nacional/ley-26837-207405/texto)
