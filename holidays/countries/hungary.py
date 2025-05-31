@@ -117,6 +117,13 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
+        * [2002](https://jogkodex.hu/jsz/2001_25_gm_rendelet_9200619)
+        * [2003](https://jogkodex.hu/jsz/2002_2_fmm_rendelet_1831209)
+        * [2004](https://jogkodex.hu/jsz/2003_9_fmm_rendelet_8666269)
+        * [2005](https://jogkodex.hu/jsz/2004_25_fmm_rendelet_4309634)
+        * [2007](https://jogkodex.hu/jsz/2006_4_szmm_rendelet_8628960)
+        * [2008](https://jogkodex.hu/jsz/2007_27_szmm_rendelet_3904252)
+        * [2009](https://jogkodex.hu/jsz/2008_16_szmm_rendelet_7668376)
         * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
         * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
         * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
@@ -131,6 +138,7 @@ class HungaryStaticHolidays:
         * [2022](https://njt.hu/jogszabaly/2021-23-20-7Q)
         * [2024](https://njt.hu/jogszabaly/2023-15-20-8P)
         * [2025](https://njt.hu/jogszabaly/2024-11-20-2X)
+        * [2026](https://jogkodex.hu/jsz/2025_10_ngm_rendelet_5591314)
     """
 
     # Substituted date format.
@@ -138,6 +146,41 @@ class HungaryStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
     special_public_holidays = {
+        2002: (
+            (AUG, 19, AUG, 10),
+            (DEC, 24, DEC, 28),
+        ),
+        2003: (
+            (MAY, 2, APR, 26),
+            (OCT, 24, OCT, 18),
+            (DEC, 24, DEC, 13),
+        ),
+        2004: (
+            (JAN, 2, JAN, 10),
+            (DEC, 24, DEC, 18),
+        ),
+        2005: (
+            (MAR, 14, MAR, 19),
+            (OCT, 31, NOV, 5),
+        ),
+        2007: (
+            (MAR, 16, MAR, 10),
+            (APR, 30, APR, 21),
+            (OCT, 22, OCT, 20),
+            (NOV, 2, OCT, 27),
+            (DEC, 24, DEC, 22),
+            (DEC, 31, DEC, 29),
+        ),
+        2008: (
+            (MAY, 2, APR, 26),
+            (OCT, 24, OCT, 18),
+            (DEC, 24, DEC, 20),
+        ),
+        2009: (
+            (JAN, 2, MAR, 28),
+            (AUG, 21, AUG, 29),
+            (DEC, 24, DEC, 19),
+        ),
         2010: (DEC, 24, DEC, 11),
         2011: (
             (MAR, 14, MAR, 19),
@@ -201,5 +244,10 @@ class HungaryStaticHolidays:
             (MAY, 2, MAY, 17),
             (OCT, 24, OCT, 18),
             (DEC, 24, DEC, 13),
+        ),
+        2026: (
+            (JAN, 2, JAN, 10),
+            (AUG, 21, AUG, 8),
+            (DEC, 24, DEC, 12),
         ),
     }
