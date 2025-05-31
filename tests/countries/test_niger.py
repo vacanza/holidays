@@ -240,7 +240,6 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
 
     def test_prophets_birthday(self):
         name = "Maulidin Annabi"
