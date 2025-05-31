@@ -1,0 +1,114 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Niger holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.74\n"
+"POT-Creation-Date: 2025-05-30 19:15+0000\n"
+"PO-Revision-Date: 2025-05-30 19:15+0000\n"
+"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ha\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: ha\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (lura)"
+msgstr ""
+
+#. %s (estimated).
+#, c-format
+msgid "%s (kimanta)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (lura, kimanta)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Ranar Sabuwar Shekara"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Litinin"
+msgstr ""
+
+#. Concord Day.
+msgid "Ranar Concord"
+msgstr ""
+
+#. International Labor Day.
+msgid "Ranar Kwadago ta Duniya"
+msgstr ""
+
+#. Ascension Thursday.
+msgid "Hawan Yesu zuwa sama Alhamis"
+msgstr ""
+
+#. Pentecost.
+msgid "Fentikos"
+msgstr ""
+
+#. Anniversary of the CNSP Coup.
+msgid "Bikin bukin juyin mulkin CNSP"
+msgstr ""
+
+#. Anniversary of the Proclamation of Independence.
+msgid "Bikin cikar shelar 'yancin kai"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Zaton Maryama"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Rana Duka Saints"
+msgstr ""
+
+#. Republic Day.
+msgid "Ranar Jamhuriya"
+msgstr ""
+
+#. Christmas Day.
+msgid "Ranar Kirsimeti"
+msgstr ""
+
+#. Islamic New Year.
+msgid "Sabuwar Shekarar Musulunci"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Maulidin Annabi"
+msgstr ""
+
+#. Laylat al-Qadr.
+msgid "Lailatul Kadri"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr ""
+
+#. Eid al-Adha Holiday.
+msgid "Hutun Eid al-Adha"
+msgstr ""
