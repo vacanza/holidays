@@ -21,9 +21,9 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Haiti holidays.
 
     References:
-        * <https://www.wipo.int/wipolex/en/legislation/details/7837>
-        * <https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27>
-        * <https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/>
+        * <https://web.archive.org/web/20250214180331/https://www.wipo.int/wipolex/en/legislation/details/7837>
+        * <https://web.archive.org/web/20241206114430/https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27>
+        * <https://web.archive.org/web/20241226203305/https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/>
     """
 
     country = "HT"

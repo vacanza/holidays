@@ -24,10 +24,10 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://pt.wikipedia.org/wiki/Feriados_no_Brasil>
-        * [Decreto n. 155-B, de 14.01.1890](https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html)
-        * [Decreto n. 19.488, de 15.12.1930](https://www2.camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html)
-        * [Lei n. 662, de 6.04.1949](https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
-        * [Lei n. 14.759, de 21.12.2023](https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
+        * [Decreto n. 155-B, de 14.01.1890](https://web.archive.org/web/20241226133739/https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-155-b-14-janeiro-1890-517534-publicacaooriginal-1-pe.html)
+        * [Decreto n. 19.488, de 15.12.1930](https://web.archive.org/web/20241006041503/http://camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html)
+        * [Lei n. 662, de 6.04.1949](https://web.archive.org/web/20240913060643/https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
+        * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
     """
 
     country = "BR"

@@ -18,7 +18,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     """Burundi holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/burundi>
+        * <https://web.archive.org/web/20240915030631/https://www.officeholidays.com/countries/burundi>
 
     Note that holidays falling on a sunday maybe observed on the following Monday.
     This depends on formal announcements by the government, which only happens close

@@ -23,7 +23,7 @@ class Grenada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Grenada>
         * [Bank Holidays Act](https://web.archive.org/web/20250504095840/https://laws.gov.gd/index.php/chapters/b-23-39/1042-cap25-bank-holidays-act-2/viewdocument/1042)
-        * <https://www.timeanddate.com/holidays/grenada/>
+        * <https://web.archive.org/web/20250213100825/https://www.timeanddate.com/holidays/grenada/>
         * [National Heroes' Day](https://web.archive.org/web/20250504095924/https://www.gov.gd/component/edocman/grenadas-first-national-heroes-day-and-october-19th-commemoration-events/viewdocument/576)
         * [Emancipation Day](https://web.archive.org/web/20250504100015/https://nowgrenada.com/2025/01/gnrc-chairman-supports-1-august-as-national-holiday/)
 

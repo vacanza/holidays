@@ -22,12 +22,12 @@ class Guatemala(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Guatemala holidays.
 
     References:
-        * <http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php>
-        * <https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf>
+        * <https://web.archive.org/web/20240419130706/http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php>
+        * <https://web.archive.org/web/20250426043930/https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf>
 
     Moving holidays:
-        * [Decree 19-2018 start 18 oct 2018](https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf)
-        * [Case 5536-2018 (CC) start 17 abr 2020](https://leyes.infile.com/index.php?id=182&id_publicacion=81055)
+        * [Decree 19-2018 start 18 oct 2018](https://web.archive.org/web/20250426043930/https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf)
+        * [Case 5536-2018 (CC) start 17 abr 2020](https://web.archive.org/web/20240625093244/https://leyes.infile.com/index.php?id=182&id_publicacion=81055)
     """
 
     country = "GT"

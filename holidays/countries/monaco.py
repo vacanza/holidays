@@ -22,7 +22,7 @@ class Monaco(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Monaco>
-        * <https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays>
+        * <https://web.archive.org/web/20231212161716/https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays>
     """
 
     country = "MC"

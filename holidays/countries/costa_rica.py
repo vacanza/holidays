@@ -27,7 +27,7 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica>
-        * <http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx>
+        * <https://web.archive.org/web/20250328094837/http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx>
         * Law #8442 from 19.04.2005
         * Law #8604 from 17.09.2007
         * Law #8753 from 25.07.2009

@@ -28,7 +28,7 @@ class Chad(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Chad>
-        * <https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
+        * <https://web.archive.org/web/20240619220557/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
     """
 
     country = "TD"
