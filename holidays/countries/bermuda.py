@@ -9,7 +9,8 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-from holidays.calendars.gregorian import NOV, OCT, MAY
+
+from holidays.calendars.gregorian import MAY, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -28,6 +29,7 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         * [Public Holidays Amendment (No. 2) Act 2009](https://web.archive.org/web/20250527163816/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2009/Public%20Holidays%20Amendment%20%28No.%202%29%20Act%202009)
         * [Public Holidays Amendment Act 2017](https://web.archive.org/web/20250527163819/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2017/Public%20Holidays%20Amendment%20Act%202017)
         * [Public Holidays Amendment Act 2020](https://web.archive.org/web/20250527163836/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2020/Public%20Holidays%20Amendment%20Act%202020)
+        * [Government of Bermuda](https://web.archive.org/web/20250530055854/https://www.gov.bm/public-holidays)
     """
 
     country = "BM"
@@ -46,13 +48,13 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Good Friday.
-        self._add_observed(self._add_good_friday("Good Friday"))
+        self._add_good_friday("Good Friday")
 
         # Bermuda Day.
         name = "Bermuda Day"
         if self._year <= 2017:
             self._add_observed(self._add_holiday_may_24(name))
-        elif self._year <= 2019:
+        elif self._year <= 2020:
             self._add_holiday_last_fri_of_may(name)
         else:
             self._add_holiday_3_days_prior_last_mon_of_may(name)
@@ -60,44 +62,35 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Queen's Birthday.
         name = "Queen's Birthday"
         if self._year <= 1999:
-            dt = self._add_holiday_3_days_prior_last_mon_of_may(name)
+            self._add_holiday_3_days_prior_last_mon_of_may(name)
         elif self._year <= 2008:
-            dt = self._add_holiday_2_days_past_2nd_mon_of_jun(name)
-        else:
-            dt = None
-        if dt is not None:
-            self._add_observed(dt)
+            self._add_holiday_2_days_past_2nd_mon_of_jun(name)
 
         # National Heroes Day.
         name = "National Heroes Day"
         if self._year == 2008:
-            dt = self._add_holiday_2nd_mon_of_oct(name)
+            self._add_holiday_2nd_mon_of_oct(name)
         elif self._year >= 2009:
-            dt = self._add_holiday_3rd_mon_of_jun(name)
-        else:
-            dt = None
-        if dt is not None:
-            self._add_observed(dt)
+            self._add_holiday_3rd_mon_of_jun(name)
 
-        if self._year <= 1999:
+        self._add_holiday_4_days_prior_1st_mon_of_aug(
             # Cup Match Day.
-            name = "Cup Match Day"
-        else:
+            "Cup Match Day"
+            if self._year <= 1999
             # Emancipation Day.
-            name = "Emancipation Day"
-        self._add_observed(self._add_holiday_4_days_prior_1st_mon_of_aug(name))
+            else "Emancipation Day"
+        )
 
-        name = (
+        self._add_holiday_3_days_prior_1st_mon_of_aug(
             # Somers Day.
             "Somers Day"
-            if self._year <= 2020
+            if self._year <= 2019
             # Mary Prince Day.
             else "Mary Prince Day"
         )
-        self._add_observed(self._add_holiday_3_days_prior_1st_mon_of_aug(name))
 
-        # Labour Day.
-        self._add_observed(self._add_holiday_1st_mon_of_sep("Labour Day"))
+        # Labor Day.
+        self._add_holiday_1st_mon_of_sep("Labour Day")
 
         # Remembrance Day.
         self._add_observed(self._add_remembrance_day("Remembrance Day"))
