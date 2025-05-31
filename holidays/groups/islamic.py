@@ -299,7 +299,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Add Isra' and Mi'raj Day (27th day of 7th month).
 
         The Prophet's Ascension.
-        https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
+        https://en.wikipedia.org/wiki/Isra'_and_Mi'raj
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
@@ -399,7 +399,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add birthday of Prophet Muhammad and Ja'far al-Sadiq day (17th day of 3rd month).
 
-        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.sadiq_birthday_dates(self._year)
@@ -409,7 +409,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add death of Ja'far al-Sadiq day (25th day of 10th month).
 
-        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.sadiq_death_dates(self._year)
