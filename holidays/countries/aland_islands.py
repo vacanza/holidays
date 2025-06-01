@@ -25,7 +25,7 @@ class HolidaysAX(Finland):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Åland>
-        * <https://en.wikipedia.org/wiki/Åland%27s_Autonomy_Day>
+        * <https://en.wikipedia.org/wiki/Åland's_Autonomy_Day>
     """
 
     country = "AX"

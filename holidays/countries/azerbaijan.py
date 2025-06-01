@@ -29,7 +29,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
-        * <https://az.wikipedia.org/wiki/Az%C9%99rbaycan%C4%B1n_d%C3%B6vl%C9%99t_bayramlar%C4%B1_v%C9%99_x%C3%BCsusi_g%C3%BCnl%C9%99ri>
+        * <https://az.wikipedia.org/wiki/Azərbaycanın_dövlət_bayramları_və_xüsusi_günləri>
         * <https://www.sosial.gov.az/en/prod-calendar>
     """
 
