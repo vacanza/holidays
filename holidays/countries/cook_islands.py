@@ -42,28 +42,6 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     supported_languages = ("en_CK", "en_US")
     # Public Holiday Act 1999.
     start_year = 2000
-    subdivisions = (
-        "AI",  # Aitutaki (including uninhabited Manuae)
-        "AT",  # Atiu (including uninhabited Takutea)
-        "MG",  # Mangaia
-        "MH",  # Manihiki
-        "MT",  # Mitiaro
-        "PA",  # Palmerston
-        "PE",  # Penrhyn
-        "PU",  # Pukapuka (including Nassau and Suwarrow)
-        "RA",  # Rakahanga
-    )
-    subdivisions_aliases = {
-        "Aitutaki": "AI",
-        "Atiu": "AT",
-        "Mangaia": "MG",
-        "Manihiki": "MH",
-        "Mitiaro": "MT",
-        "Palmerston": "PA",
-        "Penrhyn": "PE",
-        "Pukapuka": "PU",
-        "Rakahanga": "RA",
-    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -122,48 +100,31 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-    def _populate_subdiv_ai_public_holidays(self):
         if self._year <= 2011:
             # Aitutaki Gospel Day.
             self._add_observed(self._add_holiday_oct_27(tr("Aitutaki Gospel Day")))
 
-    def _populate_subdiv_at_public_holidays(self):
-        if self._year <= 2011:
             # Atiu Gospel Day.
             self._add_observed(self._add_holiday_jul_20(tr("Atiu Gospel Day")))
 
-    def _populate_subdiv_mg_public_holidays(self):
-        if self._year <= 2011:
             # Mangaia Gospel Day.
             self._add_observed(self._add_holiday_jun_15(tr("Mangaia Gospel Day")))
 
-    def _populate_subdiv_mh_public_holidays(self):
-        if self._year <= 2011:
             # Manihiki Gospel Day.
             self._add_observed(self._add_holiday_aug_8(tr("Manihiki Gospel Day")))
 
-    def _populate_subdiv_mt_public_holidays(self):
-        if self._year <= 2011:
             # Mitiaro Gospel Day.
             self._add_observed(self._add_holiday_jul_21(tr("Mitiaro Gospel Day")))
 
-    def _populate_subdiv_pa_public_holidays(self):
-        if self._year <= 2011:
             # Palmerston Gospel Day.
             self._add_observed(self._add_holiday_may_25(tr("Palmerston Gospel Day")))
 
-    def _populate_subdiv_pe_public_holidays(self):
-        if self._year <= 2011:
             # Penrhyn Gospel Day.
             self._add_observed(self._add_holiday_mar_13(tr("Penrhyn Gospel Day")))
 
-    def _populate_subdiv_pu_public_holidays(self):
-        if self._year <= 2011:
             # Pukapuka Gospel Day.
             self._add_observed(self._add_holiday_dec_8(tr("Pukapuka Gospel Day")))
 
-    def _populate_subdiv_ra_public_holidays(self):
-        if self._year <= 2011:
             # Rakahanga Gospel Day.
             self._add_observed(self._add_holiday_aug_15(tr("Rakahanga Gospel Day")))
 

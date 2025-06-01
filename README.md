@@ -429,7 +429,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Cook Islands</td>
 <td>CK</td>
-<td>Islands: AI (Aitutaki), AT (Atiu), MG (Mangaia), MH (Manihiki), MT (Mitiaro), PA (Palmerston), PE (Penrhyn), PU (Pukapuka), RA (Rakahanga)</td>
+<td></td>
 <td><strong>en_CK</strong>, en_US</td>
 <td></td>
 </tr>
