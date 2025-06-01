@@ -24,91 +24,95 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: ha\n"
+"X-Source-Language: fr\n"
 
 #. %s (observed).
 #, c-format
-msgid "%s (lura)"
+msgid "%s (observé)"
 msgstr "%s (observed)"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (kimanta)"
+msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (lura, kimanta)"
+msgid "%s (observé, estimé)"
 msgstr "%s (observed, estimated)"
 
 #. New Year's Day.
-msgid "Ranar Sabuwar Shekara"
+msgid "Jour de l'An"
 msgstr "New Year's Day"
 
 #. Easter Monday.
-msgid "Easter Litinin"
+msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Concord Day.
-msgid "Ranar Concord"
-msgstr "Concord Day"
+#. National Concord Day.
+msgid "Fête nationale de la Concorde"
+msgstr "National Concord Day"
 
 #. International Labor Day.
-msgid "Ranar Kwadago ta Duniya"
+msgid "Journée internationale du travail"
 msgstr "International Labor Day"
 
-#. Ascension Thursday.
-msgid "Hawan Yesu zuwa sama Alhamis"
-msgstr "Ascension Thursday"
-
-#. Pentecost.
-msgid "Fentikos"
-msgstr "Pentecost"
-
 #. Anniversary of the CNSP Coup.
-msgid "Bikin bukin juyin mulkin CNSP"
+msgid "Anniversaire du coup d'État du CNSP"
 msgstr "Anniversary of the CNSP Coup"
 
 #. Anniversary of the Proclamation of Independence.
-msgid "Bikin cikar shelar 'yancin kai"
+msgid "L'anniversaire de la proclamation de l'indépendance"
 msgstr "Anniversary of the Proclamation of Independence"
 
-#. Assumption of Mary.
-msgid "Zaton Maryama"
-msgstr "Assumption of Mary"
+#. Independence Day.
+msgid "Jour de l'indépendance"
+msgstr "Independence Day"
 
-#. All Saints' Day.
-msgid "Rana Duka Saints"
-msgstr "All Saints' Day"
-
-#. Republic Day.
-msgid "Ranar Jamhuriya"
-msgstr "Republic Day"
+#. National Day.
+msgid "Fête nationale"
+msgstr "National Day"
 
 #. Christmas Day.
-msgid "Ranar Kirsimeti"
+msgid "Noël"
 msgstr "Christmas Day"
 
 #. Islamic New Year.
-msgid "Sabuwar Shekarar Musulunci"
+msgid "Nouvel An islamique"
 msgstr "Islamic New Year"
 
 #. Prophet's Birthday.
-msgid "Maulidin Annabi"
+msgid "Mouloud"
 msgstr "Prophet's Birthday"
 
-#. Laylat al-Qadr.
-msgid "Lailatul Kadri"
-msgstr "Laylat al-Qadr"
-
 #. Eid al-Fitr.
-msgid "Eid al-Fitr"
+msgid "Korité"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
-msgid "Eid al-Adha"
+msgid "Tabaski"
 msgstr "Eid al-Adha"
 
 #. Eid al-Adha Holiday.
-msgid "Hutun Eid al-Adha"
+msgid "Vacances Tabaski"
 msgstr "Eid al-Adha Holiday"
+
+#. Laylat al-Qadr.
+msgid "Laylat al-Qadr"
+msgstr "Laylat al-Qadr"
+
+#. Ascension.
+msgid "Ascension"
+msgstr "Ascension"
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr "Whit Monday"
+
+#. Assumption of Mary.
+msgid "Assomption"
+msgstr "Assumption of Mary"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "All Saints' Day"

@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays import OPTIONAL, PUBLIC
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
@@ -47,7 +48,6 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         * [Laylat al-Qadr](https://web.archive.org/web/20250531033137/https://www.timeanddate.com/holidays/niger/laylat-al-qadr)
         * [Islamic New Year](https://web.archive.org/web/20240723135601/https://www.timeanddate.com/holidays/niger/muharram-new-year)
         * [Prophet's Birthday](https://web.archive.org/web/20250124122731/https://www.timeanddate.com/holidays/niger/prophet-birthday)
-        * [Article 114](https://web.archive.org/web/20240205184429/https://droit-afrique.com/upload/doc/niger/Niger-Code-2012-du-travail.pdf)
 
     Notes:
         After Law No. 97-020 of June 20, 1997 establishing public holidays came into
@@ -56,16 +56,17 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     """
 
     country = "NE"
-    default_language = "ha"
-    supported_languages = ("en_US", "ha")
+    default_language = "fr"
+    supported_languages = ("en_US", "fr")
+    supported_categories = (OPTIONAL, PUBLIC)
     # %s (observed).
-    observed_label = tr("%s (lura)")
+    observed_label = tr("%s (observé)")
     # %s (estimated).
-    estimated_label = tr("%s (kimanta)")
+    estimated_label = tr("%s (estimé)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (lura, kimanta)")
-    # Niger gain semi-independence from France on Dec 18 1958.
-    start_year = 1959
+    observed_estimated_label = tr("%s (observé, estimé)")
+    # Law No. 59-22.
+    start_year = 1960
     weekend = {SUN}
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
@@ -86,68 +87,73 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("Ranar Sabuwar Shekara")))
+        self._add_observed(self._add_new_years_day(tr("Jour de l'An")))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Easter Litinin"))
+        self._add_easter_monday(tr("Lundi de Pâques"))
 
         if self._year >= 1995:
-            # Concord Day.
-            self._add_observed(self._add_holiday_apr_24(tr("Ranar Concord")))
+            # National Concord Day.
+            self._add_observed(self._add_holiday_apr_24(tr("Fête nationale de la Concorde")))
 
         # International Labor Day.
-        self._add_observed(self._add_labor_day(tr("Ranar Kwadago ta Duniya")))
-
-        # Ascension Thursday.
-        self._add_ascension_thursday(tr("Hawan Yesu zuwa sama Alhamis"))
-
-        # Pentecost.
-        self._add_observed(self._add_whit_sunday(tr("Fentikos")))
+        self._add_observed(self._add_labor_day(tr("Journée internationale du travail")))
 
         if self._year >= 2024:
             # Anniversary of the CNSP Coup.
-            self._add_observed(self._add_holiday_jul_26(tr("Bikin bukin juyin mulkin CNSP")))
+            self._add_observed(self._add_holiday_jul_26(tr("Anniversaire du coup d'État du CNSP")))
 
-        if self._year >= 1960:
+        name = (
             # Anniversary of the Proclamation of Independence.
-            self._add_observed(self._add_holiday_aug_3(tr("Bikin cikar shelar 'yancin kai")))
+            tr("L'anniversaire de la proclamation de l'indépendance")
+            if self._year >= 1961
+            # Independence Day.
+            else tr("Jour de l'indépendance")
+        )
+        self._add_observed(self._add_holiday_aug_3(name))
 
-        # Assumption of Mary.
-        self._add_observed(self._add_assumption_of_mary_day(tr("Zaton Maryama")))
-
-        # All Saints' Day.
-        self._add_observed(self._add_all_saints_day(tr("Rana Duka Saints")))
-
-        # Republic Day.
-        self._add_observed(self._add_holiday_dec_18(tr("Ranar Jamhuriya")))
+        # National Day.
+        self._add_observed(self._add_holiday_dec_18(tr("Fête nationale")))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Ranar Kirsimeti")))
+        self._add_observed(self._add_christmas_day(tr("Noël")))
 
-        if self._year >= 1998:
-            # Islamic New Year.
-            for dt in self._add_islamic_new_year_day(tr("Sabuwar Shekarar Musulunci")):
-                self._add_observed(dt)
+        # Islamic New Year.
+        for dt in self._add_islamic_new_year_day(tr("Nouvel An islamique")):
+            self._add_observed(dt)
 
-            # Prophet's Birthday.
-            for dt in self._add_mawlid_day(tr("Maulidin Annabi")):
-                self._add_observed(dt)
+        # Prophet's Birthday.
+        for dt in self._add_mawlid_day(tr("Mouloud")):
+            self._add_observed(dt)
 
-            # Laylat al-Qadr.
-            for dt in self._add_laylat_al_qadr_day(tr("Lailatul Kadri")):
-                self._add_observed(dt)
+        # Eid al-Fitr.
+        for dt in self._add_eid_al_fitr_day(tr("Korité")):
+            self._add_observed(dt)
 
-            # Eid al-Fitr.
-            for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
-                self._add_observed(dt)
+        # Eid al-Adha.
+        for dt in self._add_eid_al_adha_day(tr("Tabaski")):
+            self._add_observed(dt)
 
-            # Eid al-Adha.
-            for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
-                self._add_observed(dt)
+        # Eid al-Adha Holiday.
+        for dt in self._add_eid_al_adha_day_two(tr("Vacances Tabaski")):
+            self._add_observed(dt)
 
-            # Eid al-Adha Holiday.
-            for dt in self._add_eid_al_adha_day_two(tr("Hutun Eid al-Adha")):
-                self._add_observed(dt)
+        # Laylat al-Qadr.
+        for dt in self._add_laylat_al_qadr_day(tr("Laylat al-Qadr")):
+            self._add_observed(dt)
+
+    def _populate_optional_holidays(self):
+        # Ascension.
+        self._add_ascension_thursday(tr("Ascension"))
+
+        # Whit Monday.
+        self._add_whit_monday(tr("Lundi de Pentecôte"))
+
+        # Assumption of Mary.
+        self._add_observed(self._add_assumption_of_mary_day(tr("Assomption")))
+
+        # All Saints' Day.
+        self._add_observed(self._add_all_saints_day(tr("Toussaint")))
 
 
 class NigerIslamicHolidays(_CustomIslamicHolidays):

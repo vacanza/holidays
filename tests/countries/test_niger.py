@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays import OPTIONAL
 from holidays.countries.niger import Niger, NE, NER
 from tests.common import CommonCountryTests
 
@@ -19,9 +20,10 @@ from tests.common import CommonCountryTests
 class TestNiger(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1959, 2050)
+        years = range(1960, 2050)
         super().setUpClass(Niger, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Niger(years=years, islamic_show_estimated=False)
+        cls.optional_holidays = Niger(categories=OPTIONAL, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(Niger, NE, NER)
@@ -30,19 +32,19 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertNoHolidays(Niger(years=1958))
 
     def test_new_years_day(self):
-        name = "Ranar Sabuwar Shekara"
+        name = "Jour de l'An"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1998, 2050)))
         obs_dt = (
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_easter_monday(self):
-        name = "Easter Litinin"
+        name = "Lundi de Pâques"
         self.assertHolidayName(
             name,
             "2020-04-13",
@@ -52,37 +54,38 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, range(1960, 2050))
 
     def test_concord_day(self):
-        name = "Ranar Concord"
+        name = "Fête nationale de la Concorde"
         self.assertHolidayName(name, (f"{year}-04-24" for year in range(1995, 2050)))
-        self.assertNoHolidayName(name, range(1959, 1995))
+        self.assertNoHolidayName(name, range(1960, 1995))
         obs_dt = (
             "2011-04-25",
             "2016-04-25",
             "2022-04-25",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_international_labor_day(self):
-        name = "Ranar Kwadago ta Duniya"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1959, 2050)))
+        name = "Journée internationale du travail"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1960, 2050)))
         obs_dt = (
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_ascension_thursday(self):
-        name = "Hawan Yesu zuwa sama Alhamis"
+        name = "Ascension"
         self.assertHolidayName(
             name,
+            self.optional_holidays,
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -90,94 +93,99 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(1959, 2050))
+        self.assertHolidayName(name, self.optional_holidays, range(1960, 2050))
 
-    def test_whit_sunday(self):
-        name = "Fentikos"
+    def test_whit_monday(self):
+        name = "Lundi de Pentecôte"
         self.assertHolidayName(
             name,
-            "2020-05-31",
-            "2021-05-23",
-            "2022-06-05",
-            "2023-05-28",
-            "2024-05-19",
-            "2025-06-08",
+            self.optional_holidays,
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
         )
-        self.assertHolidayName(name, range(1959, 2050))
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertHolidayName(name, self.optional_holidays, range(1960, 2050))
 
     def test_cnsp_coup_anniversary(self):
-        name = "Bikin bukin juyin mulkin CNSP"
+        name = "Anniversaire du coup d'État du CNSP"
         self.assertHolidayName(
             name,
             "2024-07-26",
             "2025-07-26",
         )
         self.assertHolidayName(name, (f"{year}-07-26" for year in range(2024, 2050)))
-        self.assertNoHolidayName(name, range(1959, 2024))
+        self.assertNoHolidayName(name, range(1960, 2024))
 
     def test_independence_day(self):
-        name = "Bikin cikar shelar 'yancin kai"
-        self.assertHolidayName(name, (f"{year}-08-03" for year in range(1960, 2050)))
+        self.assertHolidayName("Jour de l'indépendance", "1960-08-03")
+        name = "L'anniversaire de la proclamation de l'indépendance"
+        self.assertHolidayName(name, (f"{year}-08-03" for year in range(1961, 2050)))
         self.assertNoHolidayName(name, 1959)
         obs_dt = (
             "2008-08-04",
             "2014-08-04",
             "2025-08-04",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_assumption_of_mary(self):
-        name = "Zaton Maryama"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1959, 2050)))
+        name = "Assomption"
+        self.assertHolidayName(
+            name, self.optional_holidays, (f"{year}-08-15" for year in range(1960, 2050))
+        )
         obs_dt = (
             "2010-08-16",
             "2021-08-16",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.optional_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", self.optional_holidays, range(1960, 1998))
 
     def test_all_saints_day(self):
-        name = "Rana Duka Saints"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2050)))
+        name = "Toussaint"
+        self.assertHolidayName(
+            name, self.optional_holidays, (f"{year}-11-01" for year in range(1960, 2050))
+        )
         obs_dt = (
             "2009-11-02",
             "2015-11-02",
             "2020-11-02",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.optional_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", self.optional_holidays, range(1960, 1998))
 
-    def test_republic_day(self):
-        name = "Ranar Jamhuriya"
-        self.assertHolidayName(name, (f"{year}-12-18" for year in range(1959, 2050)))
+    def test_national_day(self):
+        name = "Fête nationale"
+        self.assertHolidayName(name, (f"{year}-12-18" for year in range(1960, 2050)))
         obs_dt = (
             "2011-12-19",
             "2016-12-19",
             "2022-12-19",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_christmas_day(self):
-        name = "Ranar Kirsimeti"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1959, 2050)))
+        name = "Noël"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1960, 2050)))
         obs_dt = (
             "2011-12-26",
             "2016-12-26",
             "2022-12-26",
         )
-        self.assertHolidayName(f"{name} (lura)", obs_dt)
+        self.assertHolidayName(f"{name} (observé)", obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
-        self.assertNoHolidayName(f"{name} (lura)", range(1959, 1998))
+        self.assertNoHolidayName(f"{name} (observé)", range(1960, 1998))
 
     def test_islamic_new_year(self):
-        name = "Sabuwar Shekarar Musulunci"
+        name = "Nouvel An islamique"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -188,16 +196,16 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-07-06",
             "2025-06-27",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1998, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
         obs_dt = (
             "2004-02-23",
             "2011-11-28",
         )
-        self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
 
     def test_prophets_birthday(self):
-        name = "Maulidin Annabi"
+        name = "Mouloud"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -208,17 +216,17 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-05",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1998, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
         obs_dt = (
             "2004-05-03",
             "2012-02-06",
             "2019-11-11",
         )
-        self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
 
     def test_laylat_al_qadr(self):
-        name = "Lailatul Kadri"
+        name = "Laylat al-Qadr"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -229,18 +237,18 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-04-06",
             "2025-03-27",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1998, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
         obs_dt = (
             "2000-12-25",
             "2008-09-29",
             "2013-08-05",
             "2021-05-10",
         )
-        self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
 
     def test_eid_al_fitr(self):
-        name = "Eid al-Fitr"
+        name = "Korité"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -251,18 +259,18 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-04-09",
             "2025-03-30",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1998, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
         obs_dt = (
             "2004-11-15",
             "2012-08-20",
             "2022-05-02",
             "2025-03-31",
         )
-        self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
+        self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
 
     def test_eid_al_adha(self):
-        name = "Eid al-Adha"
+        name = "Tabaski"
         self.assertHolidayName(
             name,
             self.no_estimated_holidays,
@@ -273,36 +281,33 @@ class TestNiger(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1998, 2050))
-        obs_dt = (
-            # "1985-07-01",
-            "2014-10-06",
-        )
-        self.assertHolidayName(f"{name} (lura)", self.no_estimated_holidays, obs_dt)
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
+        obs_dt = ("2014-10-06",)
+        self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHolidayName(name, obs_dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2025-01-01", "Ranar Sabuwar Shekara"),
-            ("2025-03-27", "Lailatul Kadri"),
-            ("2025-03-30", "Eid al-Fitr"),
-            ("2025-03-31", "Eid al-Fitr (lura)"),
-            ("2025-04-21", "Easter Litinin"),
-            ("2025-04-24", "Ranar Concord"),
-            ("2025-05-01", "Ranar Kwadago ta Duniya"),
-            ("2025-05-29", "Hawan Yesu zuwa sama Alhamis"),
-            ("2025-06-07", "Eid al-Adha"),
-            ("2025-06-08", "Fentikos; Hutun Eid al-Adha"),
-            ("2025-06-09", "Fentikos (lura); Hutun Eid al-Adha (lura)"),
-            ("2025-06-27", "Sabuwar Shekarar Musulunci"),
-            ("2025-07-26", "Bikin bukin juyin mulkin CNSP"),
-            ("2025-08-03", "Bikin cikar shelar 'yancin kai"),
-            ("2025-08-04", "Bikin cikar shelar 'yancin kai (lura)"),
-            ("2025-08-15", "Zaton Maryama"),
-            ("2025-09-05", "Maulidin Annabi"),
-            ("2025-11-01", "Rana Duka Saints"),
-            ("2025-12-18", "Ranar Jamhuriya"),
-            ("2025-12-25", "Ranar Kirsimeti"),
+            ("2025-01-01", "Jour de l'An"),
+            ("2025-03-27", "Laylat al-Qadr"),
+            ("2025-03-30", "Korité"),
+            ("2025-03-31", "Korité (observé)"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-04-24", "Fête nationale de la Concorde"),
+            ("2025-05-01", "Journée internationale du travail"),
+            ("2025-05-29", "Ascension"),
+            ("2025-06-07", "Tabaski"),
+            ("2025-06-08", "Vacances Tabaski"),
+            ("2025-06-09", "Lundi de Pentecôte; Vacances Tabaski (observé)"),
+            ("2025-06-27", "Nouvel An islamique"),
+            ("2025-07-26", "Anniversaire du coup d'État du CNSP"),
+            ("2025-08-03", "L'anniversaire de la proclamation de l'indépendance"),
+            ("2025-08-04", "L'anniversaire de la proclamation de l'indépendance (observé)"),
+            ("2025-08-15", "Assomption"),
+            ("2025-09-05", "Mouloud"),
+            ("2025-11-01", "Toussaint"),
+            ("2025-12-18", "Fête nationale"),
+            ("2025-12-25", "Noël"),
         )
 
     def test_l10n_en_us(self):
@@ -313,12 +318,12 @@ class TestNiger(CommonCountryTests, TestCase):
             ("2025-03-30", "Eid al-Fitr"),
             ("2025-03-31", "Eid al-Fitr (observed)"),
             ("2025-04-21", "Easter Monday"),
-            ("2025-04-24", "Concord Day"),
+            ("2025-04-24", "National Concord Day"),
             ("2025-05-01", "International Labor Day"),
-            ("2025-05-29", "Ascension Thursday"),
+            ("2025-05-29", "Ascension"),
             ("2025-06-07", "Eid al-Adha"),
-            ("2025-06-08", "Eid al-Adha Holiday; Pentecost"),
-            ("2025-06-09", "Eid al-Adha Holiday (observed); Pentecost (observed)"),
+            ("2025-06-08", "Eid al-Adha Holiday"),
+            ("2025-06-09", "Eid al-Adha Holiday (observed); Whit Monday"),
             ("2025-06-27", "Islamic New Year"),
             ("2025-07-26", "Anniversary of the CNSP Coup"),
             ("2025-08-03", "Anniversary of the Proclamation of Independence"),
@@ -326,6 +331,6 @@ class TestNiger(CommonCountryTests, TestCase):
             ("2025-08-15", "Assumption of Mary"),
             ("2025-09-05", "Prophet's Birthday"),
             ("2025-11-01", "All Saints' Day"),
-            ("2025-12-18", "Republic Day"),
+            ("2025-12-18", "National Day"),
             ("2025-12-25", "Christmas Day"),
         )
