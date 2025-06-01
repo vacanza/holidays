@@ -55,7 +55,7 @@ To participate in the sponsorship program, contributors must:
 
 ## Application and Selection Process
 
-To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [sponsorship](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3A%22sponsorship%22), [sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Amedium), [sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Ahard)). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
+To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [sponsorship](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship), [sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship:medium), [sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship:hard). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
 
 Before applying, please ensure that you meet the eligibility requirements:
 

@@ -46,7 +46,7 @@ class TrinidadAndTobago(
         * <https://web.archive.org/web/20250429120548/https://www.guardian.co.tt/article-6.2.410311.3fe66fb00f>
         * <https://web.archive.org/web/20250418212357/https://www.nalis.gov.tt/resources/tt-content-guide/labour-day/>
         * <https://web.archive.org/web/20250429120701/https://www.facebook.com/groups/191766699268/posts/10160832951274269/>
-        * <https://web.archive.org/web/20250429142054/https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F100064996051675%2Fposts%2F1101755938667598%2F>
+        * <https://web.archive.org/web/20250429142054/https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/100064996051675/posts/1101755938667598/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Trinidad_and_Tobago>
         * <https://en.wikipedia.org/wiki/Trinidad_and_Tobago_Carnival>
         * <https://en.wikipedia.org/wiki/Indian_Arrival_Day#Trinidad_and_Tobago>

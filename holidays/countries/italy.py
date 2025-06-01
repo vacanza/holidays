@@ -20,7 +20,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Italy>
-        * [Provinces holidays](https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane)
+        * [Provinces holidays](https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_città_capoluogo_di_provincia_italiane)
     """
 
     country = "IT"
