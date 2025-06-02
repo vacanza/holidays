@@ -15,16 +15,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.74\n"
-"POT-Creation-Date: 2025-06-01 15:18+0000\n"
-"PO-Revision-Date: 2025-06-01 15:18+0000\n"
+"POT-Creation-Date: 2025-06-02 13:28+0000\n"
+"PO-Revision-Date: 2025-06-02 13:28+0000\n"
 "Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: fr\n"
+"Language: fr_NE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: fr\n"
+"X-Source-Language: fr_NE\n"
 
 #. %s (observed).
 #, c-format
@@ -78,11 +78,15 @@ msgid "Noël"
 msgstr ""
 
 #. Islamic New Year.
-msgid "Nouvel An islamique"
+msgid "Jour de l'An musulman"
 msgstr ""
 
 #. Prophet's Birthday.
 msgid "Mouloud"
+msgstr ""
+
+#. Laylat al-Qadr.
+msgid "Laylat al-Qadr"
 msgstr ""
 
 #. Eid al-Fitr.
@@ -93,15 +97,11 @@ msgstr ""
 msgid "Tabaski"
 msgstr ""
 
-#. Eid al-Adha Holiday.
-msgid "Vacances Tabaski"
+#. Day after Eid al-Adha.
+msgid "Lendemain de la Tabaski"
 msgstr ""
 
-#. Laylat al-Qadr.
-msgid "Laylat al-Qadr"
-msgstr ""
-
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Lundi de Pentecôte"
 msgstr ""
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption"
 msgstr ""
 

@@ -78,7 +78,7 @@ msgid "Noël"
 msgstr "Christmas Day"
 
 #. Islamic New Year.
-msgid "Nouvel An islamique"
+msgid "Jour de l'An musulman"
 msgstr "Islamic New Year"
 
 #. Prophet's Birthday.
@@ -93,15 +93,15 @@ msgstr "Eid al-Fitr"
 msgid "Tabaski"
 msgstr "Eid al-Adha"
 
-#. Eid al-Adha Holiday.
-msgid "Vacances Tabaski"
-msgstr "Eid al-Adha Holiday"
+#. Day after Eid al-Adha.
+msgid "Lendemain de la Tabaski"
+msgstr "Day after Eid al-Adha"
 
 #. Laylat al-Qadr.
 msgid "Laylat al-Qadr"
 msgstr "Laylat al-Qadr"
 
-#. Ascension.
+#. Ascension Day.
 msgid "Ascension"
 msgstr "Ascension"
 
@@ -109,9 +109,9 @@ msgstr "Ascension"
 msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
-#. Assumption of Mary.
+#. Assumption Day.
 msgid "Assomption"
-msgstr "Assumption of Mary"
+msgstr "Assumption Day"
 
 #. All Saints' Day.
 msgid "Toussaint"

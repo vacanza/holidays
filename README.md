@@ -977,7 +977,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Niger</td>
 <td>NE</td>
 <td></td>
-<td>en_US, <strong>fr</strong></td>
+<td>en_US, <strong>fr_NE</strong></td>
 <td>OPTIONAL</td>
 </tr>
 <tr>

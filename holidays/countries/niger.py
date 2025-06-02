@@ -56,8 +56,8 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     """
 
     country = "NE"
-    default_language = "fr"
-    supported_languages = ("en_US", "fr")
+    default_language = "fr_NE"
+    supported_languages = ("en_US", "fr_NE")
     supported_categories = (OPTIONAL, PUBLIC)
     # %s (observed).
     observed_label = tr("%s (observé)")
@@ -119,11 +119,15 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         self._add_observed(self._add_christmas_day(tr("Noël")))
 
         # Islamic New Year.
-        for dt in self._add_islamic_new_year_day(tr("Nouvel An islamique")):
+        for dt in self._add_islamic_new_year_day(tr("Jour de l'An musulman")):
             self._add_observed(dt)
 
         # Prophet's Birthday.
         for dt in self._add_mawlid_day(tr("Mouloud")):
+            self._add_observed(dt)
+
+        # Laylat al-Qadr.
+        for dt in self._add_laylat_al_qadr_day(tr("Laylat al-Qadr")):
             self._add_observed(dt)
 
         # Eid al-Fitr.
@@ -131,25 +135,20 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
             self._add_observed(dt)
 
         # Eid al-Adha.
-        for dt in self._add_eid_al_adha_day(tr("Tabaski")):
-            self._add_observed(dt)
+        self._add_eid_al_adha_day(tr("Tabaski"))
 
-        # Eid al-Adha Holiday.
-        for dt in self._add_eid_al_adha_day_two(tr("Vacances Tabaski")):
-            self._add_observed(dt)
-
-        # Laylat al-Qadr.
-        for dt in self._add_laylat_al_qadr_day(tr("Laylat al-Qadr")):
+        # Day after Eid al-Adha.
+        for dt in self._add_eid_al_adha_day_two(tr("Lendemain de la Tabaski")):
             self._add_observed(dt)
 
     def _populate_optional_holidays(self):
-        # Ascension.
+        # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
         # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))
 
-        # Assumption of Mary.
+        # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("Assomption")))
 
         # All Saints' Day.
