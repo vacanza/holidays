@@ -32,11 +32,10 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2000, 2050)))
         obs_dt = (
-            "2005-01-03",
-            "2006-01-03",
             "2011-01-03",
             "2012-01-03",
             "2017-01-03",
+            "2022-01-03",
             "2023-01-03",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
@@ -101,10 +100,9 @@ class TestCookIslands(CommonCountryTests, TestCase):
 
     def test_house_of_ariki_day(self):
         name = "Ra o te Ui Ariki"
-        self.assertNoHolidayName(name, range(2000, 2012))
-        self.assertHolidayName(name, "2012-06-06")
         self.assertHolidayName(
             name,
+            "2012-06-06",
             "2020-07-03",
             "2021-07-02",
             "2022-07-01",
@@ -113,12 +111,13 @@ class TestCookIslands(CommonCountryTests, TestCase):
             "2025-07-04",
         )
         self.assertHolidayName(name, range(2012, 2050))
+        self.assertNoHolidayName(name, range(2000, 2012))
 
     def test_constitution_day(self):
         name = "Constitution Day"
         self.assertHolidayName(name, (f"{year}-08-04" for year in range(2000, 2050)))
         obs_dt = (
-            "2007-08-06",
+            "2012-08-06",
             "2013-08-05",
             "2018-08-06",
             "2019-08-05",
@@ -131,10 +130,10 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "Cook Islands Gospel Day"
         self.assertHolidayName(name, (f"{year}-10-26" for year in range(2000, 2050)))
         obs_dt = (
-            "2008-10-27",
             "2013-10-28",
             "2014-10-27",
             "2019-10-28",
+            "2024-10-28",
             "2025-10-27",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
@@ -156,7 +155,6 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(2000, 2050)))
         obs_dt = (
-            "2004-12-28",
             "2009-12-28",
             "2010-12-28",
             "2015-12-28",
@@ -169,20 +167,21 @@ class TestCookIslands(CommonCountryTests, TestCase):
     def test_aitutaki_gospel_day(self):
         name = "Aitutaki Gospel Day"
         self.assertHolidayName(name, (f"{year}-10-27" for year in range(2000, 2012)))
+        self.assertNoHolidayName(name, range(2012, 2050))
         obs_dt = (
             "2001-10-29",
             "2002-10-28",
             "2007-10-29",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoHolidayName(name, range(2012, 2050))
-        self.assertNoHolidayName(f"{name} (observed)", range(2012, 2050))
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_atiu_gospel_day(self):
         name = "Atiu Gospel Day"
         self.assertHolidayName(name, (f"{year}-07-20" for year in range(2000, 2012)))
         obs_dt = (
             "2002-07-22",
+            "2003-07-21",
             "2008-07-21",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
@@ -217,6 +216,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "Mitiaro Gospel Day"
         self.assertHolidayName(name, (f"{year}-07-21" for year in range(2000, 2012)))
         obs_dt = (
+            "2001-07-23",
             "2002-07-22",
             "2007-07-23",
         )
@@ -228,6 +228,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "Palmerston Gospel Day"
         self.assertHolidayName(name, (f"{year}-05-25" for year in range(2000, 2012)))
         obs_dt = (
+            "2002-05-27",
             "2003-05-26",
             "2008-05-26",
         )
@@ -239,6 +240,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
         name = "Penrhyn Gospel Day"
         self.assertHolidayName(name, (f"{year}-03-13" for year in range(2000, 2012)))
         obs_dt = (
+            "2004-03-15",
             "2005-03-14",
             "2010-03-15",
             "2011-03-14",
