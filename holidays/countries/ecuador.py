@@ -28,7 +28,7 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ecuador>
-        * [Código del Trabajo](https://biblioteca.defensoria.gob.ec/bitstream/37000/3364/1/C%C3%B3digo%20de%20Trabajo%20%2804-11-2021%29.pdf)
+        * [Código del Trabajo](https://biblioteca.defensoria.gob.ec/bitstream/37000/3364/1/Código%20de%20Trabajo%20(04-11-2021).pdf)
     """
 
     country = "EC"

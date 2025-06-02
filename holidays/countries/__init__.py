@@ -13,6 +13,7 @@
 # flake8: noqa: F401
 
 from .afghanistan import Afghanistan, AF, AFG
+from .aland_islands import AlandIslands, AX, ALA, HolidaysAX
 from .albania import Albania, AL, ALB
 from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
@@ -32,10 +33,13 @@ from .barbados import Barbados, BB, BRB
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
+from .benin import Benin, BJ, BEN
+from .bermuda import Bermuda, BM, BMU
 from .bolivia import Bolivia, BO, BOL
 from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
+from .british_virgin_islands import BritishVirginIslands, VG, VGB
 from .brunei import Brunei, BN, BRN
 from .bulgaria import Bulgaria, BG, BLG
 from .burkina_faso import BurkinaFaso, BF, BFA
@@ -62,6 +66,7 @@ from .dominican_republic import DominicanRepublic, DO, DOM
 from .ecuador import Ecuador, EC, ECU
 from .egypt import Egypt, EG, EGY
 from .el_salvador import ElSalvador, SV, SLV
+from .equatorial_guinea import EquatorialGuinea, GQ, GNQ
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
@@ -190,5 +195,6 @@ from .vanuatu import Vanuatu, VU, VTU
 from .vatican_city import VaticanCity, VA, VAT
 from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
+from .yemen import Yemen, YE, YEM
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE

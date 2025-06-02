@@ -32,8 +32,8 @@ class Kazakhstan(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan>
         * <https://egov.kz/cms/en/articles/holidays-calend>
-        * <https://adilet.zan.kz/kaz/docs/Z010000267%5F/history>
-        * <https://adilet.zan.kz/kaz/docs/Z990000493%5F#z63>
+        * <https://adilet.zan.kz/kaz/docs/Z010000267_/history>
+        * <https://adilet.zan.kz/kaz/docs/Z990000493_#z63>
 
     Islamic holidays:
         * [2025](https://en.inform.kz/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f/)
@@ -174,33 +174,33 @@ class KazakhstanStaticHolidays:
     """Kazakhstan special holidays.
 
     References:
-        * [2000](https://adilet.zan.kz/kaz/docs/P000000642%5F)
+        * [2000](https://adilet.zan.kz/kaz/docs/P000000642_)
         * 2001:
-            * <https://adilet.zan.kz/kaz/docs/P010000282%5F>
-            * <https://adilet.zan.kz/kaz/docs/P010000515%5F>
-            * <https://adilet.zan.kz/kaz/docs/P010001604%5F>
-        * [2002](https://adilet.zan.kz/kaz/docs/P020000466%5F)
+            * <https://adilet.zan.kz/kaz/docs/P010000282_>
+            * <https://adilet.zan.kz/kaz/docs/P010000515_>
+            * <https://adilet.zan.kz/kaz/docs/P010001604_>
+        * [2002](https://adilet.zan.kz/kaz/docs/P020000466_)
         * 2003:
-            * <https://adilet.zan.kz/kaz/docs/P030000338%5F>
-            * <https://adilet.zan.kz/kaz/docs/P030001166%5F>
+            * <https://adilet.zan.kz/kaz/docs/P030000338_>
+            * <https://adilet.zan.kz/kaz/docs/P030001166_>
         * 2005:
-            * <https://adilet.zan.kz/kaz/docs/P050000142%5F>
-            * <https://adilet.zan.kz/kaz/docs/P050000751%5F>
-            * <https://adilet.zan.kz/kaz/docs/P050000949%5F>
+            * <https://adilet.zan.kz/kaz/docs/P050000142_>
+            * <https://adilet.zan.kz/kaz/docs/P050000751_>
+            * <https://adilet.zan.kz/kaz/docs/P050000949_>
         * 2006:
-            * <https://adilet.zan.kz/kaz/docs/P050001309%5F>
-            * <https://adilet.zan.kz/kaz/docs/P060000277%5F>
+            * <https://adilet.zan.kz/kaz/docs/P050001309_>
+            * <https://adilet.zan.kz/kaz/docs/P060000277_>
         * 2007:
-            * <https://adilet.zan.kz/kaz/docs/P070000148%5F>
-            * <https://adilet.zan.kz/kaz/docs/P070000165%5F>
-            * <https://adilet.zan.kz/kaz/docs/P070000713%5F>
-            * <https://adilet.zan.kz/kaz/docs/P070000925%5F>
-            * <https://adilet.zan.kz/kaz/docs/P070001113%5F>
-        * [2008](https://adilet.zan.kz/kaz/docs/P080000364%5F)
-        * [2009](https://adilet.zan.kz/kaz/docs/P090001936%5F)
+            * <https://adilet.zan.kz/kaz/docs/P070000148_>
+            * <https://adilet.zan.kz/kaz/docs/P070000165_>
+            * <https://adilet.zan.kz/kaz/docs/P070000713_>
+            * <https://adilet.zan.kz/kaz/docs/P070000925_>
+            * <https://adilet.zan.kz/kaz/docs/P070001113_>
+        * [2008](https://adilet.zan.kz/kaz/docs/P080000364_)
+        * [2009](https://adilet.zan.kz/kaz/docs/P090001936_)
         * 2010:
-            * <https://adilet.zan.kz/kaz/docs/P090002216%5F>
-            * <https://adilet.zan.kz/kaz/docs/P100000637%5F>
+            * <https://adilet.zan.kz/kaz/docs/P090002216_>
+            * <https://adilet.zan.kz/kaz/docs/P100000637_>
         * 2011:
             * <https://adilet.zan.kz/kaz/docs/P1100000167>
             * <https://adilet.zan.kz/kaz/docs/P1100000948>

@@ -32,7 +32,7 @@ class IvoryCoast(
         * Decree No. 2011-371:
             * [page 1](https://web.archive.org/web/20180617165811/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-1.pdf)
             * [page 2](https://web.archive.org/web/20180826205106/http://www.cgeci.org/cgeci/docs/documents/Doc-ferie-2.pdf)
-        * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_Côte_d%27Ivoire>
+        * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_Côte_d'Ivoire>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ivory_Coast>
         * <https://www.timeanddate.com/holidays/ivory-coast/>
         * [National Peace Day](https://en.wikipedia.org/wiki/Ivory_Coast#Independence)
