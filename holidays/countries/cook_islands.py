@@ -118,15 +118,11 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Mitiaro Gospel Day.
             self._add_observed(self._add_holiday_jul_21(tr("Mitiaro Gospel Day")))
 
-            # Mauke Gospel Day.
-            name = tr("Mauke Gospel Day")
-            if self._year in {2005, 2011}:
-                self._add_observed(
-                    self._add_holiday_jul_23(name),
-                    rule=SAT_TO_NEXT_TUE,
-                )
-            else:
-                self._add_observed(self._add_holiday_jul_23(name))
+            self._add_observed(
+                # Mauke Gospel Day.
+                self._add_holiday_jul_23(name=tr("Mauke Gospel Day")),
+                rule=SAT_TO_NEXT_TUE if self._year in {2005, 2011} else None,
+            )
 
             # Rarotonga Gospel Day.
             self._add_observed(self._add_holiday_jul_25(tr("Rarotonga Gospel Day")))
