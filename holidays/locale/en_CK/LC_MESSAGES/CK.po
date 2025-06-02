@@ -110,3 +110,11 @@ msgstr ""
 #. Day after New Year's Day.
 msgid "Day after New Year's Day"
 msgstr ""
+
+#. Mauke Gospel Day.
+msgid "Mauke Gospel Day"
+msgstr ""
+
+#. Rarotonga Gospel Day.
+msgid "Rarotonga Gospel Day"
+msgstr ""

@@ -17,6 +17,7 @@ from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SAT_TO_NEXT_TUE,
 )
 
 
@@ -29,6 +30,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         * [Public Holidays Act 1999 (Law as Made)](https://web.archive.org/web/20250530120928/https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1241&name=Public%20Holidays%20Act%201999%20No%2017)
         * [Public Holidays (Aitutaki Gospel Day) Order 1989](https://web.archive.org/web/20250530121249/https://parliament.gov.ck/wp-content/uploads/2022/07/Public-Holidays-Aitutaki-Gospel-Day-Order-1990-No.-9.pdf)
         * [Public Holidays Act 1999 (Consolidated Law)](https://web.archive.org/web/20250530101809/https://cookislandslaws.gov.ck/#/InternalConsolidatedLaws?legalId=LOCI.PHA99&parent_id=Public%20Holidays%20Act%201999)
+        * [Gospel Days](https://web.archive.org/web/20110928152006/http://www.cookislands.org.uk/gospelday.html)
         * [Public Holidays (Ra o te Ui Ariki) Amendment Act 2011](https://web.archive.org/web/20250530101809/https://cookislandslaws.gov.ck/#/Laws-as-Made?id=1553&name=Public%20Holidays%20(Ra%20o%20te%20Ui%20Ariki)%20Amendment%20Act%202011%20No%204)
         * [Public Holidays (Ra o te Ui Ariki) Amendment 2013](https://web.archive.org/web/20250530122050/https://parliament.gov.ck/wp-content/uploads/2020/02/Public-Holidays-Ra-o-te-Ui-Ariki-No.-4.pdf)
         * [2004](https://web.archive.org/web/20090326004400/http://www.cook-islands.gov.ck/view_release.php?release_id=429)
@@ -101,32 +103,45 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         )
 
         if self._year <= 2011:
-            # Aitutaki Gospel Day.
-            self._add_observed(self._add_holiday_oct_27(tr("Aitutaki Gospel Day")))
-
-            # Atiu Gospel Day.
-            self._add_observed(self._add_holiday_jul_20(tr("Atiu Gospel Day")))
-
-            # Mangaia Gospel Day.
-            self._add_observed(self._add_holiday_jun_15(tr("Mangaia Gospel Day")))
-
-            # Manihiki Gospel Day.
-            self._add_observed(self._add_holiday_aug_8(tr("Manihiki Gospel Day")))
-
-            # Mitiaro Gospel Day.
-            self._add_observed(self._add_holiday_jul_21(tr("Mitiaro Gospel Day")))
+            # Penrhyn Gospel Day.
+            self._add_observed(self._add_holiday_mar_13(tr("Penrhyn Gospel Day")))
 
             # Palmerston Gospel Day.
             self._add_observed(self._add_holiday_may_25(tr("Palmerston Gospel Day")))
 
-            # Penrhyn Gospel Day.
-            self._add_observed(self._add_holiday_mar_13(tr("Penrhyn Gospel Day")))
+            # Mangaia Gospel Day.
+            self._add_observed(self._add_holiday_jun_15(tr("Mangaia Gospel Day")))
 
-            # Pukapuka Gospel Day.
-            self._add_observed(self._add_holiday_dec_8(tr("Pukapuka Gospel Day")))
+            # Atiu Gospel Day.
+            self._add_observed(self._add_holiday_jul_20(tr("Atiu Gospel Day")))
+
+            # Mitiaro Gospel Day.
+            self._add_observed(self._add_holiday_jul_21(tr("Mitiaro Gospel Day")))
+
+            # Mauke Gospel Day.
+            name = tr("Mauke Gospel Day")
+            if self._year in {2005, 2011}:
+                self._add_observed(
+                    self._add_holiday_jul_23(name),
+                    rule=SAT_TO_NEXT_TUE,
+                )
+            else:
+                self._add_observed(self._add_holiday_jul_23(name))
+
+            # Rarotonga Gospel Day.
+            self._add_observed(self._add_holiday_jul_25(tr("Rarotonga Gospel Day")))
+
+            # Manihiki Gospel Day.
+            self._add_observed(self._add_holiday_aug_8(tr("Manihiki Gospel Day")))
 
             # Rakahanga Gospel Day.
             self._add_observed(self._add_holiday_aug_15(tr("Rakahanga Gospel Day")))
+
+            # Aitutaki Gospel Day.
+            self._add_observed(self._add_holiday_oct_27(tr("Aitutaki Gospel Day")))
+
+            # Pukapuka Gospel Day.
+            self._add_observed(self._add_holiday_dec_8(tr("Pukapuka Gospel Day")))
 
 
 class CK(CookIslands):
