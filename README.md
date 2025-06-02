@@ -301,6 +301,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Bermuda</td>
+<td>BM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
