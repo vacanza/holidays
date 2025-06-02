@@ -17,6 +17,7 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
 
 
@@ -25,15 +26,10 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_the_Turks_and_Caicos_Islands)
-<<<<<<< HEAD
         * [Public Holidays Ordinance, rev. 2014](https://web.archive.org/web/20250210082429/https://gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/599?Itemid=)
         * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
         * [Public Holidays Ordinance, rev. 2021](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
         * [2017](https://www.facebook.com/photo/?fbid=1137860329642985&set=a.349345645161128)
-=======
-        * [Ordinance 5 of 2020](https://web.archive.org/web/20250429025117/https://www.gov.tc/agc/component/edocman/05-of-2020-public-holidays-amendment-ordinance/viewdocument/1419?Itemid=)
-        * [Public Holidays Ordinance](https://web.archive.org/web/20250429025602/https://www.gov.tc/agc/component/edocman/21-02-public-holidays-ordinance-2/viewdocument/2027?Itemid=)
->>>>>>> 65aaa864 (- Expanded test coverage to cover 1963–2050 and assert localized names)
         * [2018](https://web.archive.org/web/20180126185141/https://gov.tc/pressoffice/999-listing-of-special-days-public-holidays-for-2018)
         * [2019](https://www.facebook.com/photo/?fbid=2514587681970236&set=a.349345645161128)
         * [2020](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/2572825079479829/?type=3)
@@ -47,10 +43,11 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
 
     country = "TC"
     default_language = "en_TC"
+    # %s (observed).
+    observed_label = "%s (observed)"
     # Separated from Jamaica in 1962.
     start_year = 1963
     supported_languages = ("en_TC", "en_US")
-    observed_label = "%s (observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -116,11 +113,17 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
         # National Day of Thanksgiving.
         self._add_holiday_4th_fri_of_nov(tr("National Day of Thanksgiving"))
 
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
-        # Boxing Day.
-        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
 
 class TC(TurksAndCaicosIslands):

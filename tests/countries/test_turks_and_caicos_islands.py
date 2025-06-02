@@ -29,16 +29,19 @@ class TestTC(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(
-            name,
-            "2020-01-01",
-            "2021-01-01",
-            "2022-01-01",
-            "2023-01-01",
-            "2024-01-01",
-            "2025-01-01",
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1963, 2050)))
+        obs_dt = (
+            "2000-01-03",
+            "2005-01-03",
+            "2006-01-02",
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
         )
-        self.assertHolidayName(name, range(1963, 2050))
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_commonwealth_day(self):
         name = "Commonwealth Day"
@@ -118,7 +121,7 @@ class TestTC(CommonCountryTests, TestCase):
             "2019-06-10",
             "2020-06-08",
             "2021-06-14",
-            "2022-06-3",
+            "2022-06-03",
         )
         self.assertHolidayName(
             name_2023,
@@ -134,16 +137,17 @@ class TestTC(CommonCountryTests, TestCase):
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
-        self.assertHolidayName(
-            name,
-            "2020-08-01",
-            "2021-08-01",
-            "2022-08-01",
-            "2023-08-01",
-            "2024-08-01",
-            "2025-08-01",
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1963, 2050)))
+        obs_dt = (
+            "2004-08-02",
+            "2009-08-03",
+            "2010-08-02",
+            "2015-08-03",
+            "2020-08-03",
+            "2021-08-02",
         )
-        self.assertHolidayName(name, range(1963, 2050))
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_youth_day(self):
         name = "National Youth Day"
@@ -199,29 +203,32 @@ class TestTC(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(
-            name,
-            "2020-12-25",
-            "2021-12-25",
-            "2022-12-25",
-            "2023-12-25",
-            "2024-12-25",
-            "2025-12-25",
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1963, 2050)))
+        obs_dt = (
+            "2004-12-27",
+            "2005-12-27",
+            "2010-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2021-12-27",
+            "2022-12-27",
         )
-        self.assertHolidayName(name, range(1963, 2050))
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(
-            name,
-            "2020-12-26",
-            "2021-12-26",
-            "2022-12-26",
-            "2023-12-26",
-            "2024-12-26",
-            "2025-12-26",
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1963, 2050)))
+        obs_dt = (
+            "2004-12-28",
+            "2009-12-28",
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-28",
         )
-        self.assertHolidayName(name, range(1963, 2050))
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_2023(self):
         self.assertHolidays(
