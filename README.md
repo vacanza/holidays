@@ -651,7 +651,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<tr>
 <td>Guinea</td>
 <td>GN</td>
 <td></td>
