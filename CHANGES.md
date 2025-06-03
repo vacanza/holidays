@@ -1,3 +1,19 @@
+# Version 0.74
+
+Released June 2, 2025
+
+- Add Benin holidays (#2562 by @tr33k, @KJhellico)
+- Add Bermuda holidays (#2571 by @kritibirda26)
+- Add British Virgin Islands holidays (#2555 by @tr33k, @arkid15r)
+- Add Equatorial Guinea holidays (#2521 by @Abheelash-Mishra)
+- Add Yemen holidays (#2522 by @Wasif-Shahzad, @arkid15r)
+- Add Åland Islands holidays. Update Finland holidays (#2537 by @PPsyrius, @arkid15r, @Arynelson)
+- Update Thailand holidays: add uk localization (#2566 by @KJhellico)
+- Update North Macedonia holidays, add l10n support (#2554 by @KJhellico)
+- Update sponsorship FAQ formatting (#2572 by @arkid15r)
+- Add SPONSORSHIP.md (#2546 by @arkid15r)
+- Clean up unicode URLs (#2580 by @PPsyrius, @arkid15r, @KJhellico)
+
 # Version 0.73
 
 Released May 19, 2025
