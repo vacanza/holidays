@@ -103,14 +103,16 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Remembrance Day.
         self._add_observed(self._add_remembrance_day(tr("Remembrance Day")))
 
-        # Christmas Day.
         self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
 

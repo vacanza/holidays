@@ -75,9 +75,11 @@ msgstr "Labor Day"
 msgid "Remembrance Day"
 msgstr "Remembrance Day"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
