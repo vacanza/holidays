@@ -140,6 +140,7 @@ COUNTRIES: RegistryDict = {
     "netherlands": ("Netherlands", "NL", "NLD"),
     "new_zealand": ("NewZealand", "NZ", "NZL"),
     "nicaragua": ("Nicaragua", "NI", "NIC"),
+    "niger": ("Niger", "NE", "NER"),
     "nigeria": ("Nigeria", "NG", "NGA"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),

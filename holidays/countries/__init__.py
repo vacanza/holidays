@@ -132,6 +132,7 @@ from .nepal import Nepal, NP, NPL
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
+from .niger import Niger, NE, NER
 from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
