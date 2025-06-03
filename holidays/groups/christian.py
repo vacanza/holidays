@@ -100,7 +100,7 @@ class ChristianHolidays:
 
         Also known as All Hallows' Day, the Feast of All Saints,
         the Feast of All Hallows, the Solemnity of All Saints, and Hallowmas.
-        https://en.wikipedia.org/wiki/All_Saints%27_Day
+        https://en.wikipedia.org/wiki/All_Saints'_Day
         """
         return self._add_holiday_nov_1(name)
 
@@ -111,7 +111,7 @@ class ChristianHolidays:
         All Souls' Day is a day of prayer and remembrance for the faithful
         departed, observed by certain Christian denominations on 2 November.
         In Belarussian tradition it is called Dziady.
-        https://en.wikipedia.org/wiki/All_Souls%27_Day
+        https://en.wikipedia.org/wiki/All_Souls'_Day
         https://en.wikipedia.org/wiki/Dziady
         """
         return self._add_holiday_nov_2(name)
@@ -384,7 +384,7 @@ class ChristianHolidays:
 
         Saint George's Day is celebrated on 23 April, the traditionally
         accepted date of the saint's death.
-        https://en.wikipedia.org/wiki/Saint_George%27s_Day
+        https://en.wikipedia.org/wiki/Saint_George's_Day
         """
         return self._add_holiday_apr_23(name)
 
@@ -415,7 +415,7 @@ class ChristianHolidays:
         Solemnity of Saint Joseph, is in Western Christianity the principal
         feast day of Saint Joseph, husband of the Virgin Mary and legal father
         of Jesus Christ.
-        https://en.wikipedia.org/wiki/Saint_Joseph%27s_Day
+        https://en.wikipedia.org/wiki/Saint_Joseph's_Day
         """
         return self._add_holiday_mar_19(name)
 

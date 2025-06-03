@@ -103,7 +103,7 @@ class InternationalHolidays:
         International Workers' Day, also known as Labour Day, is a celebration
         of labourers and the working classes that is promoted by the
         international labour movement.
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_1(name)
 
@@ -111,7 +111,7 @@ class InternationalHolidays:
         """
         Add International Workers' Day Two (May 2nd)
 
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_2(name)
 
@@ -119,7 +119,7 @@ class InternationalHolidays:
         """
         Add International Workers' Day Three (May 3rd)
 
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        https://en.wikipedia.org/wiki/International_Workers'_Day
         """
         return self._add_holiday_may_3(name)
 
@@ -129,7 +129,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_1(name)
 
@@ -139,7 +139,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_2(name)
 
@@ -149,7 +149,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_3(name)
 
@@ -159,7 +159,7 @@ class InternationalHolidays:
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
-        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        https://en.wikipedia.org/wiki/New_Year's_Day
         """
         return self._add_holiday_jan_4(name)
 
@@ -180,7 +180,7 @@ class InternationalHolidays:
         In the Gregorian calendar, New Year's Eve, also known as Old Year's
         Day or Saint Sylvester's Day in many countries, is the evening or the
         entire day of the last day of the year, on 31 December.
-        https://en.wikipedia.org/wiki/New_Year%27s_Eve
+        https://en.wikipedia.org/wiki/New_Year's_Eve
         """
         return self._add_holiday_dec_31(name)
 
@@ -192,7 +192,7 @@ class InternationalHolidays:
         point in the women's rights movement, bringing attention to issues
         such as gender equality, reproductive rights, and violence and abuse
         against women.
-        https://en.wikipedia.org/wiki/International_Women%27s_Day
+        https://en.wikipedia.org/wiki/International_Women's_Day
         """
         return self._add_holiday_mar_8(name)
 

@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.54\n"
+"Project-Id-Version: Holidays 0.74\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2024-07-26 17:41+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-05-26 10:19+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -115,6 +114,10 @@ msgstr "День Європи"
 msgid "Äitienpäivä"
 msgstr "День матері"
 
+#. J. V. Snellman Day.
+msgid "J.V. Snellmanin päivä"
+msgstr "День Ю. В. Снелльмана"
+
 #. J. V. Snellman Day, Day of Finnish Heritage.
 msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
 msgstr "День Ю. В. Снелльмана, День фінської спадщини"
@@ -122,6 +125,10 @@ msgstr "День Ю. В. Снелльмана, День фінської спа�
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
 msgstr "День ветеранів Національної війни"
+
+#. Birthday of the Marshal of Finland.
+msgid "Suomen marsalkan syntymäpäivä"
+msgstr "День народження маршала Фінляндії"
 
 #. Flag Day of the Finnish Defense Forces.
 msgid "Puolustusvoimain lippujuhlan päivä"
@@ -162,3 +169,15 @@ msgstr "День прав дитини"
 #. Jean Sibelius Day, Day of Finnish Music.
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr "День Жана Сібеліуса, День фінської музики"
+
+#. Åland's Autonomy Day.
+msgid "Ahvenanmaan itsehallintopäivä"
+msgstr "День автономії Аландських островів"
+
+#. Day of the Finnish Flag.
+msgid "Suomen lipun päivä"
+msgstr "День прапора Фінляндії"
+
+#. Aleksis Kivi Day.
+msgid "Aleksis Kiven päivä"
+msgstr "День Алексіса Ківі"

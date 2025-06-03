@@ -36,8 +36,8 @@ class Angola(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * [Law #16/96](https://www.lexlink.eu/FileGet.aspx?FileId=3037036)
         * [Law #1/01](https://www.lexlink.eu/FileGet.aspx?FileId=3029035)
         * [Law #7/03](https://www.lexlink.eu/FileGet.aspx?FileId=3002131)
-        * [Law #10/11](https://equadros.gov.ao/documents/40468/0/lei_10_11-1+%281%29.pdf)
-        * [Law #11/18](https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+%281%29.pdf)
+        * [Law #10/11](https://equadros.gov.ao/documents/40468/0/lei_10_11-1+(1).pdf)
+        * [Law #11/18](https://equadros.gov.ao/documents/40468/0/Lei_no_11-18+(1).pdf)
         * <https://www.officeholidays.com/countries/angola/>
         * <https://www.timeanddate.com/holidays/angola/>
     """
