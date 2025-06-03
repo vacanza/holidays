@@ -32,7 +32,7 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertAliases(Niger, NE, NER)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(Niger(years=1958))
+        self.assertNoHolidays(Niger(years=1959))
 
     def test_new_years_day(self):
         name = "Jour de l'An"

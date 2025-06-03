@@ -103,14 +103,15 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
             # Anniversary of the CNSP Coup.
             self._add_observed(self._add_holiday_jul_26(tr("Anniversaire du coup d'État du CNSP")))
 
-        name = (
-            # Anniversary of the Proclamation of Independence.
-            tr("L'anniversaire de la proclamation de l'indépendance")
-            if self._year >= 1961
-            # Independence Day.
-            else tr("Jour de l'indépendance")
+        self._add_observed(
+            self._add_holiday_aug_3(
+                # Anniversary of the Proclamation of Independence.
+                tr("L'anniversaire de la proclamation de l'indépendance")
+                if self._year >= 1961
+                # Independence Day.
+                else tr("Jour de l'indépendance")
+            )
         )
-        self._add_observed(self._add_holiday_aug_3(name))
 
         # National Day.
         self._add_observed(self._add_holiday_dec_18(tr("Fête nationale")))
