@@ -120,7 +120,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
             self._add_observed(
                 # Mauke Gospel Day.
-                self._add_holiday_jul_23(name=tr("Mauke Gospel Day")),
+                self._add_holiday_jul_23(tr("Mauke Gospel Day")),
                 rule=SAT_TO_NEXT_TUE if self._year in {2005, 2011} else None,
             )
 
