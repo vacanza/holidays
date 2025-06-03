@@ -434,6 +434,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Cook Islands</td>
+<td>CK</td>
+<td></td>
+<td><strong>en_CK</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Costa Rica</td>
 <td>CR</td>
 <td></td>
@@ -650,7 +657,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 </tr>
-<tr>
 <tr>
 <td>Guinea</td>
 <td>GN</td>
