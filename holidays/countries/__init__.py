@@ -53,6 +53,7 @@ from .china import China, CN, CHN
 from .cocos_islands import CocosIslands, CC, CCK
 from .colombia import Colombia, CO, COL
 from .congo import Congo, CG, COG
+from .cook_islands import CookIslands, CK, COK
 from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
