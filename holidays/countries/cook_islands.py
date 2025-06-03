@@ -15,9 +15,9 @@ from gettext import gettext as tr
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    SAT_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
-    SAT_TO_NEXT_TUE,
 )
 
 
