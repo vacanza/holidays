@@ -131,11 +131,13 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_observed, range(1960, 2024))
 
     def test_independence_day(self):
-        self.assertHolidayName("Jour de l'indépendance", "1960-08-03")
-        name = "L'anniversaire de la proclamation de l'indépendance"
-        name_observed = f"{name} (observé)"
-        self.assertHolidayName(name, (f"{year}-08-03" for year in range(1961, 2050)))
-        self.assertNoHolidayName(name, 1959)
+        name_1 = "Jour de l'indépendance"
+        name_2 = "L'anniversaire de la proclamation de l'indépendance"
+        name_observed = f"{name_2} (observé)"
+        self.assertHolidayName(name_1, "1960-08-03")
+        self.assertNoHolidayName(name_1, range(1961, 2050))
+        self.assertHolidayName(name_2, (f"{year}-08-03" for year in range(1961, 2050)))
+        self.assertNoHolidayName(name_2, 1960)
         obs_dt = (
             "2008-08-04",
             "2014-08-04",
@@ -313,7 +315,11 @@ class TestNiger(CommonCountryTests, TestCase):
             "2025-06-08",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1960, 2050))
-        obs_dt = ("2025-06-09",)
+        obs_dt = (
+            "2009-11-30",
+            "2017-09-04",
+            "2025-06-09",
+        )
         self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
