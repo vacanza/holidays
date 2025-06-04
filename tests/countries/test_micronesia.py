@@ -21,6 +21,9 @@ class TestMicronesia(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1987, 2050)
         super().setUpClass(Micronesia, years=years, years_non_observed=years)
+        cls.subdiv_holidays = {
+            subdiv: FM(subdiv=subdiv, years=years) for subdiv in FM.subdivisions
+        }
 
     def test_country_aliases(self):
         self.assertAliases(Micronesia, FM, FSM)

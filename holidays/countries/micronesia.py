@@ -110,10 +110,11 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        # Micronesian Culture and Tradition Day.
-        name = tr("Micronesian Culture and Tradition Day")
         if self._year >= 2010:
-            self._add_observed(self._add_holiday_mar_31(name))
+            self._add_observed(
+                # Micronesian Culture and Tradition Day.
+                self._add_holiday_mar_31(tr("Micronesian Culture and Tradition Day"))
+            )
 
         # Federated States of Micronesia Day.
         self._add_observed(self._add_holiday_may_10(tr("Federated States of Micronesia Day")))
@@ -129,7 +130,7 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # FSM Veterans of Foreign Wars Day.
             self._add_observed(self._add_remembrance_day(tr("FSM Veterans of Foreign Wars Day")))
 
-        if self._year > 2020:
+        if self._year >= 2021:
             # Presidents Day.
             self._add_observed(self._add_holiday_nov_23(tr("Presidents Day")))
 
