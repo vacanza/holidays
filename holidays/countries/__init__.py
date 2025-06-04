@@ -168,6 +168,7 @@ from .south_korea import SouthKorea, KR, KOR, Korea
 from .spain import Spain, ES, ESP
 from .sri_lanka import SriLanka, LK, LKA
 from .suriname import Suriname, SR, SUR
+from .svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN

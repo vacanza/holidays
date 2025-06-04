@@ -34,6 +34,39 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "NO"
     default_language = "no"
+    subdivisions: tuple[str, ...] = (
+        "03",  # Oslo.
+        "11",  # Rogaland.
+        "15",  # Møre og Romsdal.
+        "18",  # Nordland.
+        "21",  # Svalbard.
+        "22",  # Jan Mayen.
+        "30",  # Viken.
+        "34",  # Innlandet.
+        "38",  # Vestfold og Telemark.
+        "42",  # Agder.
+        "46",  # Vestland.
+        "50",  # Trøndelag (Trööndelage).
+        "54",  # Troms og Finnmark (Romssa ja Finnmárkku, Tromssan ja Finmarkun).
+    )
+    subdivisions_aliases = {
+        "Oslo": "03",
+        "Rogaland": "11",
+        "Møre og Romsdal": "15",
+        "Nordland": "18",
+        "Svalbard": "21",
+        "Jan Mayen": "22",
+        "Viken": "30",
+        "Innlandet": "34",
+        "Vestfold og Telemark": "38",
+        "Agder": "42",
+        "Vestland": "46",
+        "Trööndelage": "50",
+        "Trøndelag": "50",
+        "Romssa ja Finnmárkku": "54",
+        "Troms og Finnmark": "54",
+        "Tromssan ja Finmarkun": "54",
+    }
     supported_languages = ("en_US", "no", "th", "uk")
 
     def __init__(self, include_sundays: bool = False, *args, **kwargs):

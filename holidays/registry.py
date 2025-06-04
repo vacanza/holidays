@@ -176,6 +176,7 @@ COUNTRIES: RegistryDict = {
     "spain": ("Spain", "ES", "ESP"),
     "sri_lanka": ("SriLanka", "LK", "LKA"),
     "suriname": ("Suriname", "SR", "SUR"),
+    "svalbard_and_jan_mayen": ("SvalbardAndJanMayen", "SJ", "SJM", "HolidaysSJ"),
     "sweden": ("Sweden", "SE", "SWE"),
     "switzerland": ("Switzerland", "CH", "CHE"),
     "taiwan": ("Taiwan", "TW", "TWN"),
