@@ -40,7 +40,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
-            * [AR](https://web.archive.org/web/20250213100442/https://arkleg.state.ar.us/Home/FTPDocument?path=%2FACTS%2F2001%2FPublic%2FACT304.pdf)
+            * [AR](https://web.archive.org/web/20250213100442/https://arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2001/Public/ACT304.pdf)
             * [AZ](https://web.archive.org/web/20250323052619/https://www.azleg.gov/ars/1/00301.htm)
             * [CA](https://web.archive.org/web/20250414210521/http://www.sos.ca.gov/state-holidays/)
             * [CO](https://web.archive.org/web/20250409020643/https://leg.colorado.gov/sites/default/files/images/olls/crs2023-title-24.pdf)

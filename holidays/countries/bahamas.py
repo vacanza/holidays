@@ -127,7 +127,7 @@ class BHS(Bahamas):
 
 class BahamasStaticHolidays:
     special_public_holidays = {
-        # https://web.archive.org/web/20250122110613/https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%2520holiday%252019th%2520september/
+        # https://web.archive.org/web/20250122110613/https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
     }
 
