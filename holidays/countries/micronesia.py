@@ -25,8 +25,8 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://web.archive.org/web/20241213112548/http://www.fsmlaw.org/fsm/code/PDF/FSMCA2014Tit01.pdf>
         * [Section 601, 602, 603](https://web.archive.org/web/20020731194201/http://fsmlaw.org/fsm/code/title01/t01ch06.htm)
         * [United Nations Day](https://web.archive.org/web/20241213120703/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%207-20.pdf)
-        * [FSM Veterans of Foreign Wars Day](https://web.archive.org/web/20241213120703/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%207-20.pdf)
-        * [Micronesian Culture and Tradition Day](https://web.archive.org/web/20241213120631/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%2013-38.pdf)
+        * [FSM Veterans of Foreign Wars Day](https://web.archive.org/web/20241213120631/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%2013-38.pdf)
+        * [Micronesian Culture and Tradition Day](https://web.archive.org/web/20241213114748/http://fsmlaw.org/fsm/code/PDF/CODE%201/PL%2016-27.pdf)
         * [Presidents Day](https://web.archive.org/web/20241213120719/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%2021-209.pdf)
 
         Chuuk:
@@ -110,7 +110,7 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        if self._year >= 2010:
+        if self._year >= 2011:
             self._add_observed(
                 # Micronesian Culture and Tradition Day.
                 self._add_holiday_mar_31(tr("Micronesian Culture and Tradition Day"))
@@ -148,26 +148,26 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     # Kosrae.
     def _populate_subdiv_ksa_public_holidays(self):
-        if self._year > 1990:
+        if self._year >= 1991:
             # Kosrae State Constitution Day.
             self._add_observed(self._add_holiday_jan_11(tr("Kosrae State Constitution Day")))
 
-        if self._year > 1999:
+        if self._year >= 2000:
             # Good Friday.
             self._add_good_friday(tr("Good Friday"))
 
-        if self._year > 1999:
+        if self._year >= 2000:
             # Gospel Day.
             self._add_observed(self._add_holiday_aug_21(tr("Gospel Day")))
 
-        if self._year > 1990:
+        if self._year >= 1991:
             # Kosrae Liberation Day.
             self._add_observed(self._add_holiday_sep_8(tr("Kosrae Liberation Day")))
 
         # Self Government Day.
         self._add_observed(self._add_holiday_nov_3(tr("Self Government Day")))
 
-        if self._year > 2010:
+        if self._year >= 2011:
             # Thanksgiving Day.
             self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
 
