@@ -122,6 +122,7 @@ from .malta import Malta, MT, MLT
 from .marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
 from .mauritania import Mauritania, MR, MRT
 from .mexico import Mexico, MX, MEX
+from .micronesia import Micronesia, FM, FSM
 from .moldova import Moldova, MD, MDA
 from .monaco import Monaco, MC, MCO
 from .montenegro import Montenegro, ME, MNE

@@ -1,0 +1,441 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from unittest import TestCase
+
+from holidays.countries.micronesia import Micronesia, FM, FSM
+from tests.common import CommonCountryTests
+
+
+class TestMicronesia(CommonCountryTests, TestCase):
+    @classmethod
+    def setUpClass(cls):
+        years = range(1987, 2050)
+        super().setUpClass(Micronesia, years=years, years_non_observed=years)
+
+    def test_country_aliases(self):
+        self.assertAliases(Micronesia, FM, FSM)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Micronesia(years=1986))
+
+    def test_new_years_day(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1987, 2050)))
+        dt = (
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_micronesian_culture_and_tradition_day(self):
+        name = "Micronesian Culture and Tradition Day"
+        self.assertHolidayName(name, (f"{year}-03-31" for year in range(2010, 2050)))
+        dt = (
+            "2012-03-30",
+            "2013-04-01",
+            "2018-03-30",
+            "2019-04-01",
+            "2024-04-01",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_federated_states_of_micronesia_day(self):
+        name = "Federated States of Micronesia Day"
+        self.assertHolidayName(name, (f"{year}-05-10" for year in range(1987, 2050)))
+        dt = (
+            "2003-05-09",
+            "2008-05-09",
+            "2009-05-11",
+            "2014-05-09",
+            "2015-05-11",
+            "2020-05-11",
+            "2025-05-09",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_united_nations_day(self):
+        name = "United Nations Day"
+        self.assertHolidayName(name, (f"{year}-10-24" for year in range(1991, 2050)))
+        dt = (
+            "2004-10-25",
+            "2009-10-23",
+            "2010-10-25",
+            "2015-10-23",
+            "2020-10-23",
+            "2021-10-25",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_independence_day(self):
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-11-03" for year in range(1987, 2050)))
+        dt = (
+            "2001-11-02",
+            "2002-11-04",
+            "2007-11-02",
+            "2012-11-02",
+            "2013-11-04",
+            "2018-11-02",
+            "2019-11-04",
+            "2024-11-04",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_fsm_veterans_of_foreign_wars_day(self):
+        name = "FSM Veterans of Foreign Wars Day"
+        self.assertHolidayName(name, (f"{year}-11-11" for year in range(2004, 2050)))
+        dt = (
+            "2006-11-10",
+            "2007-11-12",
+            "2012-11-12",
+            "2017-11-10",
+            "2018-11-12",
+            "2023-11-10",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_presidents_day(self):
+        name = "Presidents Day"
+        self.assertHolidayName(name, (f"{year}-11-23" for year in range(2021, 2050)))
+        dt = (
+            "2024-11-22",
+            "2025-11-24",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_christmas_day(self):
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1987, 2050)))
+        dt = (
+            "2004-12-24",
+            "2005-12-26",
+            "2010-12-24",
+            "2011-12-26",
+            "2016-12-26",
+            "2021-12-24",
+            "2022-12-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_trk_holidays(self):
+        trk_holidays = Micronesia(subdiv="TRK", years=range(1987, 2050))
+
+        name = "State Charter Day"
+        self.assertHolidayName(name, trk_holidays, (f"{year}-09-26" for year in range(1987, 2050)))
+        dt = (
+            "2004-09-27",
+            "2009-09-25",
+            "2010-09-27",
+            "2015-09-25",
+            "2020-09-25",
+            "2021-09-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", trk_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Chuuk State Constitution Day"
+        self.assertHolidayName(name, trk_holidays, (f"{year}-10-01" for year in range(1990, 2050)))
+        dt = (
+            "2000-10-02",
+            "2005-09-30",
+            "2006-10-02",
+            "2011-09-30",
+            "2016-09-30",
+            "2017-10-02",
+            "2022-09-30",
+            "2023-10-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", trk_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_ksa_holidays(self):
+        ksa_holidays = Micronesia(subdiv="KSA", years=range(1987, 2050))
+
+        name = "Kosrae State Constitution Day"
+        self.assertHolidayName(name, ksa_holidays, (f"{year}-01-11" for year in range(1991, 2050)))
+        dt = (
+            "2003-01-10",
+            "2004-01-12",
+            "2009-01-12",
+            "2014-01-10",
+            "2015-01-12",
+            "2020-01-10",
+            "2025-01-10",
+        )
+        self.assertHolidayName(f"{name} (observed)", ksa_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            ksa_holidays,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, ksa_holidays, range(2000, 2050))
+
+        name = "Gospel Day"
+        self.assertHolidayName(name, ksa_holidays, (f"{year}-08-21" for year in range(2000, 2050)))
+        dt = (
+            "2004-08-20",
+            "2005-08-22",
+            "2010-08-20",
+            "2011-08-22",
+            "2016-08-22",
+            "2021-08-20",
+            "2022-08-22",
+        )
+        self.assertHolidayName(f"{name} (observed)", ksa_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Kosrae Liberation Day"
+        self.assertHolidayName(name, ksa_holidays, (f"{year}-09-08" for year in range(1991, 2050)))
+        dt = (
+            "2001-09-07",
+            "2002-09-09",
+            "2007-09-07",
+            "2012-09-07",
+            "2013-09-09",
+            "2018-09-07",
+            "2019-09-09",
+            "2024-09-09",
+        )
+        self.assertHolidayName(f"{name} (observed)", ksa_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Self Government Day"
+        self.assertHolidayName(name, ksa_holidays, (f"{year}-11-03" for year in range(1987, 2050)))
+        dt = (
+            "2001-11-02",
+            "2002-11-04",
+            "2007-11-02",
+            "2012-11-02",
+            "2013-11-04",
+            "2018-11-02",
+            "2019-11-04",
+            "2024-11-04",
+        )
+        self.assertHolidayName(f"{name} (observed)", ksa_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Thanksgiving Day"
+        self.assertHolidayName(
+            name,
+            ksa_holidays,
+            "2020-11-26",
+            "2021-11-25",
+            "2022-11-24",
+            "2023-11-23",
+            "2024-11-28",
+            "2025-11-27",
+        )
+        self.assertHolidayName(name, ksa_holidays, range(2011, 2050))
+
+        name = "Kosrae Disability Day"
+        self.assertHolidayName(name, ksa_holidays, (f"{year}-12-03" for year in range(2024, 2050)))
+        dt = (
+            "2028-12-04",
+            "2033-12-02",
+            "2034-12-04",
+        )
+        self.assertHolidayName(f"{name} (observed)", ksa_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_pni_holidays(self):
+        pni_holidays = Micronesia(subdiv="PNI", years=range(1987, 2050))
+
+        name = "Women's Day"
+        self.assertHolidayName(name, pni_holidays, (f"{year}-03-08" for year in range(2022, 2050)))
+        dt = ("2025-03-07",)
+        self.assertHolidayName(f"{name} (observed)", pni_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Pohnpei Cultural Day"
+        self.assertHolidayName(name, pni_holidays, (f"{year}-03-31" for year in range(1987, 2050)))
+        dt = (
+            "2001-03-30",
+            "2002-04-01",
+            "2007-03-30",
+            "2012-03-30",
+            "2013-04-01",
+            "2018-03-30",
+            "2019-04-01",
+            "2024-04-01",
+        )
+        self.assertHolidayName(f"{name} (observed)", pni_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            pni_holidays,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, pni_holidays, range(1987, 2050))
+
+        name = "Liberation Day"
+        self.assertHolidayName(name, pni_holidays, (f"{year}-09-11" for year in range(1987, 2050)))
+        dt = (
+            "2004-09-10",
+            "2005-09-12",
+            "2010-09-10",
+            "2011-09-12",
+            "2016-09-12",
+            "2021-09-10",
+            "2022-09-12",
+        )
+        self.assertHolidayName(f"{name} (observed)", pni_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Pohnpei Constitution Day"
+        self.assertHolidayName(name, pni_holidays, (f"{year}-11-08" for year in range(1987, 2050)))
+        dt = (
+            "2003-11-07",
+            "2008-11-07",
+            "2009-11-09",
+            "2014-11-07",
+            "2015-11-09",
+            "2020-11-09",
+            "2025-11-07",
+        )
+        self.assertHolidayName(f"{name} (observed)", pni_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+    def test_yap_holidays(self):
+        yap_holidays = Micronesia(subdiv="YAP", years=range(1987, 2050))
+
+        name = "Yap Day"
+        self.assertHolidayName(name, yap_holidays, (f"{year}-03-01" for year in range(1987, 2050)))
+        dt = (
+            "2003-02-28",
+            "2008-02-29",
+            "2009-03-02",
+            "2014-02-28",
+            "2015-03-02",
+            "2020-03-02",
+            "2025-02-28",
+        )
+        self.assertHolidayName(f"{name} (observed)", yap_holidays, dt)
+        self.assertNoNonObservedHoliday(dt)
+
+        name = "Yap State Constitution Day"
+        self.assertHolidayName(name, yap_holidays, (f"{year}-12-24" for year in range(1987, 2050)))
+        dt = (
+            "2000-12-25",
+            "2005-12-23",
+            "2006-12-25",
+            "2011-12-23",
+            "2016-12-23",
+            "2017-12-25",
+            "2022-12-23",
+            "2023-12-25",
+        )
+        self.assertHolidayName(f"{name} (observed)", yap_holidays, dt)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2025-01-01", "New Year's Day"),
+            ("2025-01-10", "Kosrae State Constitution Day (observed)"),
+            ("2025-01-11", "Kosrae State Constitution Day"),
+            ("2025-02-28", "Yap Day (observed)"),
+            ("2025-03-01", "Yap Day"),
+            ("2025-03-07", "Women's Day (observed)"),
+            ("2025-03-08", "Women's Day"),
+            ("2025-03-31", "Micronesian Culture and Tradition Day; Pohnpei Cultural Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-05-09", "Federated States of Micronesia Day (observed)"),
+            ("2025-05-10", "Federated States of Micronesia Day"),
+            ("2025-08-21", "Gospel Day"),
+            ("2025-09-08", "Kosrae Liberation Day"),
+            ("2025-09-11", "Liberation Day"),
+            ("2025-09-26", "State Charter Day"),
+            ("2025-10-01", "Chuuk State Constitution Day"),
+            ("2025-10-24", "United Nations Day"),
+            ("2025-11-03", "Independence Day; Self Government Day"),
+            ("2025-11-07", "Pohnpei Constitution Day (observed)"),
+            ("2025-11-08", "Pohnpei Constitution Day"),
+            ("2025-11-11", "FSM Veterans of Foreign Wars Day"),
+            ("2025-11-23", "Presidents Day"),
+            ("2025-11-24", "Presidents Day (observed)"),
+            ("2025-11-27", "Thanksgiving Day"),
+            ("2025-12-03", "Kosrae Disability Day"),
+            ("2025-12-24", "Yap State Constitution Day"),
+            ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_us",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-01-10", "Kosrae State Constitution Day (observed)"),
+            ("2025-01-11", "Kosrae State Constitution Day"),
+            ("2025-02-28", "Yap Day (observed)"),
+            ("2025-03-01", "Yap Day"),
+            ("2025-03-07", "Women's Day (observed)"),
+            ("2025-03-08", "Women's Day"),
+            ("2025-03-31", "Micronesian Culture and Tradition Day; Pohnpei Cultural Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-05-09", "Federated States of Micronesia Day (observed)"),
+            ("2025-05-10", "Federated States of Micronesia Day"),
+            ("2025-08-21", "Gospel Day"),
+            ("2025-09-08", "Kosrae Liberation Day"),
+            ("2025-09-11", "Liberation Day"),
+            ("2025-09-26", "State Charter Day"),
+            ("2025-10-01", "Chuuk State Constitution Day"),
+            ("2025-10-24", "United Nations Day"),
+            ("2025-11-03", "Independence Day; Self Government Day"),
+            ("2025-11-07", "Pohnpei Constitution Day (observed)"),
+            ("2025-11-08", "Pohnpei Constitution Day"),
+            ("2025-11-11", "FSM Veterans of Foreign Wars Day"),
+            ("2025-11-23", "Presidents Day"),
+            ("2025-11-24", "Presidents Day (observed)"),
+            ("2025-11-27", "Thanksgiving Day"),
+            ("2025-12-03", "Kosrae Disability Day"),
+            ("2025-12-24", "Yap State Constitution Day"),
+            ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_2025(self):
+        # https://en.wikipedia.org/wiki/Public_holidays_in_the_Federated_States_of_Micronesia
+        self.assertHolidays(
+            Micronesia(years=2025),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-31", "Micronesian Culture and Tradition Day"),
+            ("2025-05-09", "Federated States of Micronesia Day (observed)"),
+            ("2025-05-10", "Federated States of Micronesia Day"),
+            ("2025-10-24", "United Nations Day"),
+            ("2025-11-03", "Independence Day"),
+            ("2025-11-11", "FSM Veterans of Foreign Wars Day"),
+            ("2025-11-23", "Presidents Day"),
+            ("2025-11-24", "Presidents Day (observed)"),
+            ("2025-12-25", "Christmas Day"),
+        )
