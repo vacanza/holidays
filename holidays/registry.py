@@ -163,6 +163,7 @@ COUNTRIES: RegistryDict = {
     "san_marino": ("SanMarino", "SM", "SMR"),
     "sao_tome_and_principe": ("SaoTomeAndPrincipe", "ST", "STP"),
     "saudi_arabia": ("SaudiArabia", "SA", "SAU"),
+    "senegal": ("Senegal", "SN", "SEN"),
     "serbia": ("Serbia", "RS", "SRB"),
     "seychelles": ("Seychelles", "SC", "SYC"),
     "sierra_leone": ("SierraLeone", "SL", "SLE"),
