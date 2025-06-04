@@ -22,13 +22,13 @@ class SaintKittsAndNevis(
     """Saint Kitts and Nevis holidays.
 
     References:
-        * <https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2009/Ch-23_23-Public-Holidays-Act.pdf>
+        * <https://web.archive.org/web/20240725043444/https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2009/Ch-23_23-Public-Holidays-Act.pdf>
         * <https://web.archive.org/web/20220124000224/https://aglcskn.info/wp-content/documents/Act02and09TOC/Ch-23_23-Public-Holidays-Act.pdf>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Kitts_and_Nevis>
 
     Cross-Checked With:
-        * <https://sknhcottawa.gov.kn/in-skn-national-public-holidays/>
-        * <https://www.timeanddate.com/holidays/saint-kitts-and-nevis/>
+        * <https://web.archive.org/web/20250417181411/https://sknhcottawa.gov.kn/in-skn-national-public-holidays/>
+        * <https://web.archive.org/web/20250321015910/https://www.timeanddate.com/holidays/saint-kitts-and-nevis/>
 
     If Sovereign's Birthday, New Year's Day, Independence Day, or National Heroes Day
     fall on a Sunday the next following Monday shall be a public holiday.
@@ -125,19 +125,19 @@ class SaintKittsAndNevisStaticHolidays:
     """Saint Kitts and Nevis special holidays.
 
     References:
-        * <https://www.sknis.gov.kn/2023/07/17/state-funeral-accorded-to-sir-tapley-national-day-of-mourning-and-half-holiday-declared-for-july-20/>
-        * <https://www.sknis.gov.kn/2022/12/30/public-holiday-notice-request-from-the-department-of-labour/>
-        * <https://www.sknis.gov.kn/2022/08/06/prime-minister-drew-declares-monday-august-08-2022-as-a-public-holiday-in-st-kitts-and-nevis/>
-        * <https://www.sknis.gov.kn/2022/04/20/nia-announces-half-holiday/>
-        * <https://www.sknis.gov.kn/2021/07/26/governor-general-proclaims-tuesday-3rd-august-2021-as-a-public-holiday/>
-        * <https://nia.gov.kn/culturama-47-rescheduled-to-independence-holiday-weekend-in-september/>
-        * <https://www.sknis.gov.kn/2019/12/27/public-holidays-during-carnival-2019-2020/>
-        * <https://www.sknis.gov.kn/2018/12/29/proclamations-from-his-excellency-the-governor-general-re-carnival-public-holidays/>
-        * <https://www.sknis.gov.kn/2017/12/19/public-holiday-declared-for-nevis-today-after-the-ccms-solid-win-in-the-local-elections/>
-        * <https://www.sknis.gov.kn/2017/04/13/employers-must-comply-with-law-for-work-performed-on-national-holidays-says-labour-department/>
-        * <https://www.facebook.com/share/p/ZkpwKmyAzN4fEFP2/>
-        * <https://www.facebook.com/share/p/Jc1uGgzGpj6zUzqB/>
-        * <https://www.facebook.com/share/p/6GSgvcCWS3aenQh6/>
+        * <https://web.archive.org/web/20250127081445/https://www.sknis.gov.kn/2023/07/17/state-funeral-accorded-to-sir-tapley-national-day-of-mourning-and-half-holiday-declared-for-july-20/>
+        * <https://web.archive.org/web/20241010133156/https://www.sknis.gov.kn/2022/12/30/public-holiday-notice-request-from-the-department-of-labour/>
+        * <https://web.archive.org/web/20240908004504/https://www.sknis.gov.kn/2022/08/06/prime-minister-drew-declares-monday-august-08-2022-as-a-public-holiday-in-st-kitts-and-nevis/>
+        * <https://web.archive.org/web/20250402141902/https://www.sknis.gov.kn/2022/04/20/nia-announces-half-holiday/>
+        * <https://web.archive.org/web/20250422075354/https://www.sknis.gov.kn/2021/07/26/governor-general-proclaims-tuesday-3rd-august-2021-as-a-public-holiday/>
+        * <https://web.archive.org/web/20241114110536/https://nia.gov.kn/culturama-47-rescheduled-to-independence-holiday-weekend-in-september/>
+        * <https://web.archive.org/web/20241012200906/https://www.sknis.gov.kn/2019/12/27/public-holidays-during-carnival-2019-2020/>
+        * <https://web.archive.org/web/20250417160028/https://www.sknis.gov.kn/2018/12/29/proclamations-from-his-excellency-the-governor-general-re-carnival-public-holidays/>
+        * <https://web.archive.org/web/20240731154425/https://www.sknis.gov.kn/2017/12/19/public-holiday-declared-for-nevis-today-after-the-ccms-solid-win-in-the-local-elections/>
+        * <https://web.archive.org/web/20250402140120/https://www.sknis.gov.kn/2017/04/13/employers-must-comply-with-law-for-work-performed-on-national-holidays-says-labour-department/>
+        * <https://web.archive.org/web/20250429133207/https://www.facebook.com/sknismedia/posts/pfbid02WRQ6HgzJKuFYnm7BhyoTXqeCYAfGBa1fUsKCKC9ffntQHTMkJUEMDAjxxQ4m22y8l?rdid=ppYG2YsWr0asGnPI>
+        * <https://web.archive.org/web/20250429133414/https://www.facebook.com/sknismedia/posts/pfbid02Bgyc9YtJugY2vuPUdGT7crsCE6k4zY2MuMEJZk43nWCypmXuhEoBWvHbfPoWYLfhl?rdid=72IgP06WkImFL5Y0>
+        * <https://web.archive.org/web/20250429133044/https://www.facebook.com/sknismedia/posts/pfbid02NLERm2eW3vgaHFQMT6x5jfNYz6RUUHpnGFW5kTv7dLwe1amgf8ba5V1QqgKRwQQrl?rdid=9YawfFWYcZrP91n1>
     """
 
     # Federal Election Victory Day.

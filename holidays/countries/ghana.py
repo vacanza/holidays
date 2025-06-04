@@ -22,7 +22,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     """Ghana holidays.
 
     References:
-        * <https://www.mint.gov.gh/statutory-public-holidays/>
+        * <https://web.archive.org/web/20250114152956/https://www.mint.gov.gh/statutory-public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
     """
 

@@ -23,16 +23,16 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     """Belarus holidays.
 
     References:
-        * <https://president.gov.by/en/gosudarstvo/prazdniki>
-        * <https://president.gov.by/be/gosudarstvo/prazdniki>
-        * <https://president.gov.by/ru/gosudarstvo/prazdniki>
-        * <http://www.belarus.by/en/about-belarus/national-holidays>
-        * <http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm>
-        * <http://president.gov.by/uploads/documents/2019/464uk.pdf>
+        * <https://web.archive.org/web/20250415105200/https://president.gov.by/en/gosudarstvo/prazdniki>
+        * <https://web.archive.org/web/20250413194347/https://president.gov.by/be/gosudarstvo/prazdniki>
+        * <https://web.archive.org/web/20250413194359/https://president.gov.by/ru/gosudarstvo/prazdniki>
+        * <https://web.archive.org/web/20250129213846/https://www.belarus.by/en/about-belarus/national-holidays>
+        * <https://web.archive.org/web/20250123174511/https://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm>
+        * <https://web.archive.org/web/20250413194444/https://president.gov.by/uploads/documents/2019/464uk.pdf>
         * <https://ru.wikipedia.org/wiki/Праздники_Белоруссии>
 
     Cross-checked With:
-        * <https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
+        * <https://web.archive.org/web/20250413194446/https://president.gov.by/en/gosudarstvo/prazdniki/calendar-2024>
     """
 
     country = "BY"
@@ -148,8 +148,8 @@ class BelarusStaticHolidays:
     """Belarus special holidays.
 
     References:
-        * <https://belarusbank.by/en/financial-institutions/11151>
-        * <https://belarusbank.by/en/financial-institutions/11160>
+        * <https://web.archive.org/web/20241005054448/https://belarusbank.by/en/financial-institutions/11151>
+        * <https://web.archive.org/web/20241210150222/https://belarusbank.by/en/financial-institutions/11160>
     """
 
     # Date format (see strftime() Format Codes)

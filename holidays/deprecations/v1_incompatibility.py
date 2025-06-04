@@ -19,7 +19,7 @@ FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE = """
 This is a future version incompatibility warning from Holidays v{version}
 to inform you about an upcoming change in our API versioning strategy that may affect your
 project's dependencies. Starting from version 1.0 onwards, we will be following a loose form of
-Semantic Versioning (SemVer, https://semver.org) to provide clearer communication regarding any
+Semantic Versioning (SemVer, https://semver.org/) to provide clearer communication regarding any
 potential breaking changes.
 
 This means that while we strive to maintain backward compatibility, there might be occasional

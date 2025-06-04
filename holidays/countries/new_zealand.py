@@ -50,7 +50,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         "WKO",  # Waikato (Waikato).
         "WTC",  # West Coast (Te Tai o Poutini).
         # Subregions:
-        # https://www.govt.nz/browse/work/public-holidays-and-work/public-holidays-and-anniversary-dates/
+        # https://web.archive.org/web/20250415230521/https://www.govt.nz/browse/work/public-holidays-and-work/public-holidays-and-anniversary-dates/
         "South Canterbury",
     )
     subdivisions_aliases = {
@@ -175,7 +175,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             elif self._year >= 1912:
                 self._add_holiday_jun_3(name)  # George V
             else:
-                # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
+                # https://web.archive.org/web/20250427125629/https://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
                 self._add_holiday_nov_9(name)  # Edward VII
 
         # Matariki

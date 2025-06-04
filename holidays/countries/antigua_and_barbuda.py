@@ -26,12 +26,12 @@ class AntiguaAndBarbuda(
     """Antigua and Barbuda holidays.
 
     References:
-        * [The Public Holidays Act, 1954](https://laws.gov.ag/wp-content/uploads/2018/08/cap-354.pdf)
-        * [The Public Holidays (Amendment) Act, 2005](https://laws.gov.ag/wp-content/uploads/2018/08/a2005-8.pdf)
-        * [The Public Holidays (Amendment) Act, 2014](https://laws.gov.ag/wp-content/uploads/2019/03/Public-Holidays-Amendment-Act.pdf)
-        * [The Public Holidays (Amendment) Act, 2019](https://laws.gov.ag/wp-content/uploads/2020/02/No.-23-of-2019-Public-Holidays-Amendment-Act-2019.pdf)
-        * [No. 24 of 2006 Proclamation](https://laws.gov.ag/wp-content/uploads/2022/06/No.-24-of-2006-Proclamation-dated-29th-November2006-Appointing-the-11th-of-December2006.pdf)
-        * [No. 40 of 2012 Proclamation](https://laws.gov.ag/wp-content/uploads/2021/08/No.-40-of-2012-Proclamation-dated-the-27th-day-of-November-2012-Apponting-the-27th-of-December-2012-as-a-Public-Holiday-throughout-Antigua-and-Barbuda.pdf)
+        * [The Public Holidays Act, 1954](https://web.archive.org/web/20250123110511/https://laws.gov.ag/wp-content/uploads/2018/08/cap-354.pdf)
+        * [The Public Holidays (Amendment) Act, 2005](https://web.archive.org/web/20250103221834/https://laws.gov.ag/wp-content/uploads/2018/08/a2005-8.pdf)
+        * [The Public Holidays (Amendment) Act, 2014](https://web.archive.org/web/20250427174435/https://laws.gov.ag/wp-content/uploads/2019/03/Public-Holidays-Amendment-Act.pdf)
+        * [The Public Holidays (Amendment) Act, 2019](https://web.archive.org/web/20250427174433/https://laws.gov.ag/wp-content/uploads/2020/02/No.-23-of-2019-Public-Holidays-Amendment-Act-2019.pdf)
+        * [No. 24 of 2006 Proclamation](https://web.archive.org/web/20240620021627/http://laws.gov.ag/wp-content/uploads/2022/06/No.-24-of-2006-Proclamation-dated-29th-November2006-Appointing-the-11th-of-December2006.pdf)
+        * [No. 40 of 2012 Proclamation](https://web.archive.org/web/20250427174546/https://laws.gov.ag/wp-content/uploads/2021/08/No.-40-of-2012-Proclamation-dated-the-27th-day-of-November-2012-Apponting-the-27th-of-December-2012-as-a-Public-Holiday-throughout-Antigua-and-Barbuda.pdf)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Antigua_and_Barbuda>
 
     Notes:
@@ -119,14 +119,14 @@ class AntiguaAndBarbudaStaticHolidays:
     """Antigua and Barbuda special holidays.
 
     References:
-        * [August 3, 1993 Holiday](https://laws.gov.ag/wp-content/uploads/2021/08/No.-42-of-1993-Proclamation-dated-the-22nd-day-of-July-1993-appointing-Tuesday-the-3rd-day-of-August-1993-as-a-public-holiday-throughout-Antigua-and-Barbuda..pdf)
-        * [State Funeral of the late The Honourable Charlesworth T. Samuel](https://laws.gov.ag/wp-content/uploads/2022/12/No.-7-of-2008-Proclamation-dated-the-13th-day-of-February-2008-Appointing-Tuesday-19th-February-2008-as-a-Public-Holiday.pdf)
-        * [State Funeral of the late The Honourable Sir George Herbert Walter](https://laws.gov.ag/wp-content/uploads/2022/12/No.-9-of-2008-Proclamation-dated-the-13th-day-of-March-2008-Appointing-Tuesday-18th-March-2008-as-a-Public-Holiday.pdf)
+        * [August 3, 1993 Holiday](https://web.archive.org/web/20241215194404/https://laws.gov.ag/wp-content/uploads/2021/08/No.-42-of-1993-Proclamation-dated-the-22nd-day-of-July-1993-appointing-Tuesday-the-3rd-day-of-August-1993-as-a-public-holiday-throughout-Antigua-and-Barbuda..pdf)
+        * [State Funeral of the late The Honourable Charlesworth T. Samuel](https://web.archive.org/web/20250427174441/https://laws.gov.ag/wp-content/uploads/2022/12/No.-7-of-2008-Proclamation-dated-the-13th-day-of-February-2008-Appointing-Tuesday-19th-February-2008-as-a-Public-Holiday.pdf)
+        * [State Funeral of the late The Honourable Sir George Herbert Walter](https://web.archive.org/web/20250427174444/https://laws.gov.ag/wp-content/uploads/2022/12/No.-9-of-2008-Proclamation-dated-the-13th-day-of-March-2008-Appointing-Tuesday-18th-March-2008-as-a-Public-Holiday.pdf)
         * According to the Public Holidays (Amendment) Act, 2014, the day after the general
           election is a holiday.
             * [2018 Antiguan general election](https://en.wikipedia.org/wiki/2018_Antiguan_general_election)
             * [2023 Antiguan general election](https://en.wikipedia.org/wiki/2023_Antiguan_general_election)
-            * [The Public Holidays (Amendment) Act, 2014](https://laws.gov.ag/wp-content/uploads/2019/03/Public-Holidays-Amendment-Act.pdf)
+            * [The Public Holidays (Amendment) Act, 2014](https://web.archive.org/web/20250427174435/https://laws.gov.ag/wp-content/uploads/2019/03/Public-Holidays-Amendment-Act.pdf)
     """
 
     # Day after the General Election.

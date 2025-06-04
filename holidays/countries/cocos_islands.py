@@ -35,8 +35,8 @@ class CocosIslands(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cocos_(Keeling)_Islands>
-        * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
-        * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
+        * <https://web.archive.org/web/20250514044918/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
+        * <https://web.archive.org/web/20250417205202/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
 
         * [2007](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
         * [2008](https://web.archive.org/web/20240718120923/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/06-2007_Public_Holidays_CKI.pdf)

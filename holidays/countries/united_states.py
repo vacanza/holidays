@@ -36,51 +36,51 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States>
-        * [Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
+        * [Federal holidays](https://web.archive.org/web/20250426120914/https://opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
         * Washington's Birthday:
-            * [AK](https://doa.alaska.gov/calendar/)
-            * [AL](https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
-            * [AR](https://arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2001/Public/ACT304.pdf)
-            * [AZ](https://www.azleg.gov/ars/1/00301.htm)
-            * [CA](https://www.sos.ca.gov/state-holidays)
-            * [CO](https://leg.colorado.gov/sites/default/files/images/olls/crs2023-title-24.pdf)
-            * [GA](https://www.gasupreme.us/court-information/holidays-2/)
-            * [HI](https://www.capitol.hawaii.gov/hrscurrent/Vol01_Ch0001-0042F/HRS0008/HRS_0008-0001.htm)
-            * [ID](https://idaho.gov/government/state-holidays/)
+            * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
+            * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
+            * [AR](https://web.archive.org/web/20250213100442/https://arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2001/Public/ACT304.pdf)
+            * [AZ](https://web.archive.org/web/20250323052619/https://www.azleg.gov/ars/1/00301.htm)
+            * [CA](https://web.archive.org/web/20250414210521/http://www.sos.ca.gov/state-holidays/)
+            * [CO](https://web.archive.org/web/20250409020643/https://leg.colorado.gov/sites/default/files/images/olls/crs2023-title-24.pdf)
+            * [GA](https://web.archive.org/web/20250204223228/https://www.gasupreme.us/court-information/holidays-2/)
+            * [HI](https://web.archive.org/web/20250313033818/https://www.capitol.hawaii.gov/hrscurrent/Vol01_Ch0001-0042F/HRS0008/HRS_0008-0001.htm)
+            * [ID](https://web.archive.org/web/20250328091357/https://idaho.gov/government/state-holidays/)
             * IN:
-                * <https://digital.statelib.lib.in.us/infoexpress/holidays.aspx>
-                * <https://www.in.gov/spd/benefits/state-holidays/>
-            * [MD](https://msa.maryland.gov/msa/mdmanual/01glance/html/holidayl.html)
-            * [MI](https://www.michigan.gov/som/government/state-holidays)
-            * [MN](https://www.revisor.mn.gov/statutes/cite/645.44)
-            * [MT](https://archive.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html)
-            * [NJ](https://nj.gov/nj/about/facts/holidays/)
-            * [OH](https://codes.ohio.gov/ohio-revised-code/section-1.14)
-            * [OK](https://oklahoma.gov/omes/divisions/human-capital-management/employee-benefits/leave-holidays/holidays.html)
-            * [OR](https://www.oregonlegislature.gov/bills_laws/ors/ors187.html)
-            * [PA](https://www.legis.state.pa.us/WU01/LI/LI/US/PDF/1893/0/0138..PDF)
+                * <https://web.archive.org/web/20250119103241/https://digital.statelib.lib.in.us/infoexpress/holidays.aspx>
+                * <https://web.archive.org/web/20250418142531/https://www.in.gov/spd/benefits/state-holidays/>
+            * [MD](https://web.archive.org/web/20250310030503/https://msa.maryland.gov/msa/mdmanual/01glance/html/holidayl.html)
+            * [MI](https://web.archive.org/web/20250328094534/https://www.michigan.gov/som/government/state-holidays)
+            * [MN](https://web.archive.org/web/20250322174508/https://www.revisor.mn.gov/statutes/cite/645.44)
+            * [MT](https://web.archive.org/web/20250408030903/https://archive.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html)
+            * [NJ](https://web.archive.org/web/20250409164919/https://nj.gov/nj/about/facts/holidays/)
+            * [OH](https://web.archive.org/web/20250307080858/https://codes.ohio.gov/ohio-revised-code/section-1.14)
+            * [OK](https://web.archive.org/web/20250424191658/https://oklahoma.gov/omes/divisions/human-capital-management/employee-benefits/leave-holidays/holidays.html)
+            * [OR](https://web.archive.org/web/20250209222310/https://www.oregonlegislature.gov/bills_laws/ors/ors187.html)
+            * [PA](https://web.archive.org/web/20241226003617/https://www.legis.state.pa.us/WU01/LI/LI/US/PDF/1893/0/0138..PDF)
             * [PR](https://en.wikipedia.org/wiki/Public_holidays_in_Puerto_Rico)
-            * [SC](https://www.scstatehouse.gov/code/t53c005.php)
-            * [TN](https://www.tn.gov/about-tn/state-holidays.html)
-            * [TX](https://www.tsl.texas.gov/ref/abouttx/holidays)
-            * [UT](https://le.utah.gov/xcode/Title63G/Chapter1/63G-1-S301.html)
-            * [VA](https://law.lis.virginia.gov/vacode/title2.2/chapter33/section2.2-3300/)
-            * [VT](https://legislature.vermont.gov/statutes/section/01/007/00371)
-            * [WA](https://app.leg.wa.gov/rcw/default.aspx?cite=1.16.050)
-            * [WV](https://code.wvlegislature.gov/2-2-1/)
-            * [WY](https://ai.wyo.gov/about-us/state-holidays-and-office-closures)
+            * [SC](https://web.archive.org/web/20250212044252/https://www.scstatehouse.gov/code/t53c005.php)
+            * [TN](https://web.archive.org/web/20250404130210/https://www.tn.gov/about-tn/state-holidays.html)
+            * [TX](https://web.archive.org/web/20250314100137/http://www.tsl.texas.gov/ref/abouttx/holidays)
+            * [UT](https://web.archive.org/web/20250312095206/https://le.utah.gov/xcode/Title63G/Chapter1/63G-1-S301.html)
+            * [VA](https://web.archive.org/web/20250309075526/https://law.lis.virginia.gov/vacode/title2.2/chapter33/section2.2-3300/)
+            * [VT](https://web.archive.org/web/20250415013508/https://legislature.vermont.gov/statutes/section/01/007/00371)
+            * [WA](https://web.archive.org/web/20250414010238/https://app.leg.wa.gov/RCW/default.aspx?cite=1.16.050)
+            * [WV](https://web.archive.org/web/20250328050144/http://code.wvlegislature.gov/2-2-1/)
+            * [WY](https://web.archive.org/web/20250405094801/https://ai.wyo.gov/about-us/state-holidays-and-office-closures)
         * Columbus Day / Indigenous Peoples' Day history:
-            * <https://www.pewresearch.org/short-reads/2023/10/05/working-on-columbus-day-or-indigenous-peoples-day-it-depends-on-where-your-job-is/>
-            * <https://www.officeholidays.com/holidays/usa/columbus-day-state-guide>
+            * <https://web.archive.org/web/20250315203844/https://www.pewresearch.org/short-reads/2023/10/05/working-on-columbus-day-or-indigenous-peoples-day-it-depends-on-where-your-job-is/>
+            * <https://web.archive.org/web/20240715051215/https://www.officeholidays.com/holidays/usa/columbus-day-state-guide>
             * <https://en.wikipedia.org/wiki/Indigenous_Peoples'_Day_(United_States)>
-            * <https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays>
+            * <https://web.archive.org/web/20250416043551/https://www.sos.ri.gov/divisions/civics-and-education/reference-desk/ri-state-holidays>
             * <https://web.archive.org/web/20080831103521/http://www.dpa.ca.gov/personnel-policies/holidays.htm>
-        * [Frances Xavier Cabrini Day](https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf)
+        * [Frances Xavier Cabrini Day](https://web.archive.org/web/20250405014031/https://leg.colorado.gov/sites/default/files/2020a_1031_signed.pdf)
         * Northern Mariana Islands (subdivision MP):
-            * <https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
-            * <https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0>
+            * <https://web.archive.org/web/20240727045236/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
+            * <https://web.archive.org/web/20250429140158/https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/>
         * American Samoa:
-            * <https://asbar.org/code-annotated/1-0501-public-holidays/>
+            * <https://web.archive.org/web/20240808163628/https://asbar.org/code-annotated/1-0501-public-holidays/>
     """
 
     country = "US"
@@ -383,7 +383,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_3rd_mon_of_feb("Presidents' Day")
 
         # Seward's Day
-        # No observance in 1921: https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
+        # No observance in 1921: https://web.archive.org/web/20230208015211/https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
         if self._year >= 1918 and self._year != 1921:
             name = "Seward's Day"
             if self._year >= 1955:

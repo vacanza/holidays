@@ -20,8 +20,8 @@ class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Congo holidays.
 
     References:
-        * [Loi N° 2-94](http://mokili.free.fr/jours_feries.php)
-        * [Loi N° 18-2010](https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF)
+        * [Loi N° 2-94](https://web.archive.org/web/20241003070938/http://mokili.free.fr/jours_feries.php)
+        * [Loi N° 18-2010](https://web.archive.org/web/20250427173832/https://www.finances.gouv.cg/sites/default/files/documents/n¯18-2010%20du%2027%20novembre%202010.PDF)
 
     Cross-Checked With:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_the_Congo>

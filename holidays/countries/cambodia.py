@@ -22,15 +22,15 @@ class Cambodia(HolidayBase, InternationalHolidays, StaticHolidays, ThaiCalendarH
     """Cambodia holidays.
 
     References:
-        * <https://www.nbc.gov.kh/english/news_and_events/official_holiday.php>
-        * <https://www.nbc.gov.kh/news_and_events/official_holiday.php>
+        * <https://web.archive.org/web/20241117220849/https://www.nbc.gov.kh/english/news_and_events/official_holiday.php>
+        * <https://web.archive.org/web/20250401111433/https://www.nbc.gov.kh/news_and_events/official_holiday.php>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia>
-        * <https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf>
+        * <https://web.archive.org/web/20250427180236/https://admin.taftac-cambodia.org/public/pdf_file/regulation_1704245695_Z7IALJjE.pdf>
 
     Checked with:
-        * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
-        * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
-        * <https://www.timeanddate.com/holidays/cambodia/>
+        * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+        * <https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * <https://web.archive.org/web/20250416140353/https://www.timeanddate.com/holidays/cambodia/>
 
     Limitations:
         * Cambodian holidays only works from 1993 onwards.

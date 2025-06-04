@@ -37,7 +37,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
-        * <https://www.timeanddate.com/holidays/afghanistan/>
+        * <https://web.archive.org/web/20250408032244/https://www.timeanddate.com/holidays/afghanistan>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 

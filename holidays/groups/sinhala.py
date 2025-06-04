@@ -71,7 +71,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Bak Poya (first full moon day of the 5th lunar month).
 
-        https://us.lakpura.com/pages/bak-poya
+        https://web.archive.org/web/20250417183100/https://us.lakpura.com/pages/bak-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.bak_poya_date(self._year)
@@ -81,7 +81,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Binara Poya (first full moon day of the 10th lunar month).
 
-        https://us.lakpura.com/pages/binara-poya
+        https://web.archive.org/web/20250415144613/https://us.lakpura.com/pages/binara-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.binara_poya_date(self._year)
@@ -91,7 +91,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Duruthu Poya (first full moon day of the 2nd lunar month).
 
-        https://us.lakpura.com/pages/duruthu-poya
+        https://web.archive.org/web/20250417123343/https://us.lakpura.com/pages/duruthu-poya
         """
         return self._add_sinhala_calendar_holiday_set(
             name, self._sinhala_calendar.duruthu_poya_date(self._year)
@@ -101,7 +101,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Esala Poya (first full moon day of the 8th lunar month).
 
-        https://us.lakpura.com/pages/esala-poya
+        https://web.archive.org/web/20250415231927/https://us.lakpura.com/pages/esala-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.esala_poya_date(self._year)
@@ -112,7 +112,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Add Il Poya (first full moon day of the 12th lunar month).
 
         Also known as "Ill Poya"
-        https://us.lakpura.com/pages/il-poya
+        https://web.archive.org/web/20250415054940/https://us.lakpura.com/pages/il-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.il_poya_date(self._year)
@@ -122,7 +122,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Medin Poya (first full moon day of the 4th lunar month).
 
-        https://us.lakpura.com/pages/medin-poya
+        https://web.archive.org/web/20250415154545/https://us.lakpura.com/pages/medin-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.medin_poya_date(self._year)
@@ -133,7 +133,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Add Nawam Poya (first full moon day of the 3rd lunar month).
 
         Also known as "Navam Poya" and "Magha Puja".
-        https://us.lakpura.com/pages/navam-poya
+        https://web.archive.org/web/20250416122014/https://us.lakpura.com/pages/navam-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.nawam_poya_date(self._year)
@@ -143,7 +143,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Nikini Poya (first full moon day of the 9th lunar month).
 
-        https://us.lakpura.com/pages/nikini-poya
+        https://web.archive.org/web/20241204065104/https://us.lakpura.com/pages/nikini-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.nikini_poya_date(self._year)
@@ -153,7 +153,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Poson Poya (first full moon day of the 7th lunar month).
 
-        https://us.lakpura.com/pages/poson
+        https://web.archive.org/web/20250416105848/https://us.lakpura.com/pages/poson
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.poson_poya_date(self._year)
@@ -164,7 +164,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Add Unduvap Poya (first full moon day of the 1st lunar month).
 
         Also known as "Undawap Poya".
-        https://us.lakpura.com/pages/unduvap-poya
+        https://web.archive.org/web/20250413191847/https://us.lakpura.com/pages/unduvap-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.unduvap_poya_date(self._year)
@@ -174,7 +174,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         Add Vap Poya (first full moon day of the 11th lunar month).
 
-        https://us.lakpura.com/pages/vap-poya
+        https://web.archive.org/web/20250418083429/https://us.lakpura.com/pages/vap-poya
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.vap_poya_date(self._year)
@@ -185,7 +185,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         Add Vesak Poya (first full moon day of the 6th lunar month).
 
         Also known as "Wesak Poya".
-        https://us.lakpura.com/pages/vesak
+        https://web.archive.org/web/20250419054525/https://us.lakpura.com/pages/vesak
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.vesak_poya_date(self._year)

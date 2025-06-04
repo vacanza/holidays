@@ -22,13 +22,13 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     """Paraguay holidays.
 
     References:
-        * [Ley 8/1990](https://www.bacn.gov.py/leyes-paraguayas/2358/ley-n-8--por-la-cual-se-determinan-los-feriados-de-la-republica)
-        * [Ley 715/1995](https://www.bacn.gov.py/leyes-paraguayas/792/ley-n-715--amplia-la-ley-no-0890-)
-        * [Ley 1.601/2000](https://www.bacn.gov.py/leyes-paraguayas/1677/ley-n-1601--modifica-el-articulo-1-de-la-ley-no-71595-que-amplia-la-ley-n-0890-por-la-cual-se-determinan-los-feriados-de-la-republica)
-        * [Ley 1.723/2001](https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes)
-        * [Ley 4.531/2011](https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional)
+        * [Ley 8/1990](https://web.archive.org/web/20250427173904/https://www.bacn.gov.py/leyes-paraguayas/2358/ley-n-8--por-la-cual-se-determinan-los-feriados-de-la-republica)
+        * [Ley 715/1995](https://web.archive.org/web/20250427174040/https://www.bacn.gov.py/leyes-paraguayas/792/ley-n-715--amplia-la-ley-no-0890-)
+        * [Ley 1.601/2000](https://web.archive.org/web/20250427173847/https://www.bacn.gov.py/leyes-paraguayas/1677/ley-n-1601--modifica-el-articulo-1-de-la-ley-no-71595-que-amplia-la-ley-n-0890-por-la-cual-se-determinan-los-feriados-de-la-republica)
+        * [Ley 1.723/2001](https://web.archive.org/web/20250427173914/https://www.bacn.gov.py/leyes-paraguayas/634/ley-n-1723--autoriza-al-poder-ejecutivo-a-trasladar-los-feriados-nacionales-al-dia-lunes)
+        * [Ley 4.531/2011](https://web.archive.org/web/20250420210317/https://www.bacn.gov.py/leyes-paraguayas/3831/ley-n-4531-restablece-el-dia-14-de-mayo-de-cada-ano-como-feriado-nacional)
         * <https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Paraguay>
-        * <http://www.calendarioparaguay.com/>
+        * <https://web.archive.org/web/20250427131220/https://www.calendarioparaguay.com/>
     """
 
     country = "PY"
