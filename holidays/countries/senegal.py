@@ -10,18 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-#  holidays
-#  --------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-
-#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
-#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/vacanza/holidays
-#  License: MIT (see LICENSE file)
-
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -34,16 +22,16 @@ class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHoli
     """
     Senegal holidays.
 
-    Referenes:
+    References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Senegal>
     """
 
     country = "SN"
-    default_language = "fr"
+    default_language = "fr_SN"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    start_year = 1960
-    supported_languages = ("en_US", "fr")
+    start_year = 1961
+    supported_languages = ("en_US", "fr_SN")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
         """
@@ -66,8 +54,17 @@ class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHoli
         # Independence Day.
         self._add_holiday_apr_4(tr("Fête de l'Indépendance"))
 
+        # Easter Monday.
+        self._add_easter_monday(tr("Lundi de Pâques"))
+
         # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
+
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Ascension"))
+
+        # Whit Monday.
+        self._add_whit_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))
@@ -77,15 +74,6 @@ class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHoli
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Lundi de Pâques"))
-
-        # Ascension Day.
-        self._add_ascension_thursday(tr("Ascension"))
-
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
 
         # Ashura.
         self._add_ashura_day(tr("Achoura"))

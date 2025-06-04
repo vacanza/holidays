@@ -224,7 +224,7 @@ class IslamicHolidays(EasternCalendarHolidays):
 
     def _add_grand_magal_of_touba(self, name) -> set[date]:
         """
-        Annual relgious pilgrimage of Sengalese Mouride brotherhood.
+        Annual religious pilgrimage of Senegalese Mouride brotherhood.
 
         https://en.wikipedia.org/wiki/Grand_Magal_of_Touba
         """

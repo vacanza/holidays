@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.6\n"
-"X-Source-Language: fr\n"
+"X-Source-Language: fr_SN\n"
 
 #. %s (estimated).
 #, c-format
