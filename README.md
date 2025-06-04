@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 180 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 183 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -301,6 +301,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Bermuda</td>
+<td>BM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
@@ -424,6 +431,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CG</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Cook Islands</td>
+<td>CK</td>
+<td></td>
+<td><strong>en_CK</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -643,7 +657,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 </tr>
-<tr>
 <tr>
 <td>Guinea</td>
 <td>GN</td>
@@ -972,6 +985,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (Estelí), GR (Granada), JI (Jinotega), LE (León), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (Río San Juan)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Niger</td>
+<td>NE</td>
+<td></td>
+<td>en_US, <strong>fr_NE</strong></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Nigeria</td>

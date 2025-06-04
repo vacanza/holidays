@@ -29,7 +29,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         * [Proclamation No. 1334/2024](https://web.archive.org/web/20240823080839/https://lawethiopiacomment.wordpress.com/wp-content/uploads/2024/08/public-holiday-stamped.pdf)
         * <https://web.archive.org/web/20250427173714/https://www.edarabia.com/ethiopia/public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
-        * <https://en.wikipedia.org/wiki/Nations,_Nationalities_and_Peoples%27_Day>
+        * <https://en.wikipedia.org/wiki/Nations,_Nationalities_and_Peoples'_Day>
         * <https://web.archive.org/web/20250408213218/https://www.timeanddate.com/holidays/ethiopia/>
     """
 

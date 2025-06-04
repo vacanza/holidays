@@ -61,7 +61,7 @@ class NorthMacedonia(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia>
-        * [Law on Holidays 21/98](https://web.archive.org/web/20250404064336/https://www.mtsp.gov.mk/content/pdf/dokumenti/Zakon_Praznici_na_RM%20%282_2%29.pdf)
+        * [Law on Holidays 21/98](https://web.archive.org/web/20250404064336/https://www.mtsp.gov.mk/content/pdf/dokumenti/Zakon_Praznici_na_RM%20(2_2).pdf)
         * [Law Amending Law on Holidays 18/2007](https://web.archive.org/web/20250505061325/https://www.mtsp.gov.mk/content/pdf/dokumenti/Zakon_Izmenuvanje_Praznici_na_RM%20(2_2).pdf)
 
     Checked With:

@@ -33,7 +33,7 @@ class Kazakhstan(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan>
         * <https://web.archive.org/web/20241225060133/https://egov.kz/cms/en/articles/holidays-calend>
         * <https://web.archive.org/web/20240828112119/https://adilet.zan.kz/kaz/docs/Z010000267_/history>
-        * <https://web.archive.org/web/20240918145208/https://adilet.zan.kz/kaz/docs/Z990000493_>
+        * <https://web.archive.org/web/20240918145208/https://adilet.zan.kz/kaz/docs/Z990000493_#z63>
 
     Islamic holidays:
         * [2025](https://web.archive.org/web/20250429084936/https://qazinform.com/news/first-day-of-ramadan-to-fall-on-march-1-2025-ca393f)
@@ -174,7 +174,7 @@ class KazakhstanStaticHolidays:
     """Kazakhstan special holidays.
 
     References:
-        * [2000](https://web.archive.org/web/20250428203427/https://adilet.zan.kz/kaz/docs/P000000642%5F)
+        * [2000](https://web.archive.org/web/20250428203427/https://adilet.zan.kz/kaz/docs/P000000642_)
         * 2001:
             * <https://web.archive.org/web/20200221115328/http://adilet.zan.kz:80/kaz/docs/P010000282_>
             * <https://web.archive.org/web/20250428203415/https://adilet.zan.kz/kaz/docs/P010000515_>

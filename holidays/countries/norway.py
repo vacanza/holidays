@@ -80,7 +80,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_whit_monday(tr("Andre pinsedag"))
 
-        # According to https://no.wikipedia.org/wiki/F%C3%B8rste_juledag,
+        # According to https://no.wikipedia.org/wiki/Første_juledag,
         # these dates are only valid from year > 1700
         # Wikipedia has no source for the statement, so leaving this be for now
 

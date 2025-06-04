@@ -34,6 +34,7 @@ from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
 from .benin import Benin, BJ, BEN
+from .bermuda import Bermuda, BM, BMU
 from .bolivia import Bolivia, BO, BOL
 from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
@@ -52,6 +53,7 @@ from .china import China, CN, CHN
 from .cocos_islands import CocosIslands, CC, CCK
 from .colombia import Colombia, CO, COL
 from .congo import Congo, CG, COG
+from .cook_islands import CookIslands, CK, COK
 from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
@@ -130,6 +132,7 @@ from .nepal import Nepal, NP, NPL
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
+from .niger import Niger, NE, NER
 from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
