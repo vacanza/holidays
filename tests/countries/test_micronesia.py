@@ -208,29 +208,24 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_good_friday(self):
         name = "Good Friday"
+        dt = (
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
         self.assertNoHolidayName(name)
-        self.assertHolidayName(
-            name,
-            self.subdiv_holidays["KSA"],
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, self.subdiv_holidays["KSA"], range(2000, 2050))
-        self.assertHolidayName(
-            name,
-            self.subdiv_holidays["PNI"],
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, self.subdiv_holidays["PNI"], range(1987, 2050))
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "KSA":
+                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(name, holidays, range(2000, 2050))
+            elif subdiv == "PNI":
+                self.assertHolidayName(name, holidays, dt)
+                self.assertHolidayName(name, holidays, range(1987, 2050))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_gospel_day(self):
         name = "Gospel Day"
@@ -431,7 +426,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_yap_state_contitution_day(self):
+    def test_yap_state_constitution_day(self):
         name = "Yap State Constitution Day"
         dt = (
             "2000-12-25",
@@ -452,7 +447,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_2025(self):
+    def test_2024(self):
         # https://www.timeanddate.com/holidays/micronesia/2024?hol=1
         self.assertHolidays(
             Micronesia(years=2024),
