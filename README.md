@@ -1,8 +1,10 @@
 # Holidays
 
-A fast, efficient Python library for generating country- and subdivision- (e.g. state or province)
-specific sets of government-designated holidays on the fly. It aims to make determining whether a
+A fast, efficient Python library for generating country- and subdivision- (e.g. state or province)  
+specific sets of government-designated holidays on the fly. It aims to make determining whether a  
 specific date is a holiday as fast and flexible as possible.
+
+- Please run make pre-commit before opening a PR to automatically format your code and fix linting issues (e.g., line length, import ordering).
 
 <!-- markdownlint-disable MD033 -->
 <table>
@@ -18,6 +20,7 @@ specific date is a holiday as fast and flexible as possible.
       <a href="https://github.com/vacanza/holidays/actions/workflows/ci-cd.yml?query=branch%3Adev"><img src="https://img.shields.io/github/actions/workflow/status/vacanza/holidays/ci-cd.yml?branch=dev&color=41BE4A&style=flat" alt="CI/CD status"></a>&nbsp;<a href="https://holidays.readthedocs.io/en/latest/?badge=latest"><img src="https://img.shields.io/readthedocs/holidays?color=41BE4A&style=flat" alt="Documentation status"></a>
     </td>
   </tr>
+</table>
   <tr>
     <td>Code</td>
     <td>
