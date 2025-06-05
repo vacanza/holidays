@@ -21,7 +21,7 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Federated_States_of_Micronesia>
-        * <https://www.timeanddate.com/holidays/micronesia/>
+        * <https://web.archive.org/web/20250605035443/https://www.timeanddate.com/holidays/micronesia/>
         * <https://web.archive.org/web/20241213112548/http://www.fsmlaw.org/fsm/code/PDF/FSMCA2014Tit01.pdf>
         * [Section 601, 602, 603](https://web.archive.org/web/20020731194201/http://fsmlaw.org/fsm/code/title01/t01ch06.htm)
         * [United Nations Day](https://web.archive.org/web/20241213120703/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%207-20.pdf)
@@ -49,10 +49,6 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             * [Women's Day](https://web.archive.org/web/20250403093235/https://pohnpeistate.gov.fm/2022/02/22/congratulations-pohnpei-womens-council-and-all-who-supported-this-important-undertaking/)
 
         * [Yap](https://web.archive.org/web/20250223222339/http://fsmlaw.org/yap/code/title01/T01_Ch08.htm)
-
-        Deprecated Subdivisions:
-        * <https://en.wikipedia.org/wiki/Federated_States_of_Micronesia#:~:text=The%20islands%20are%20grouped%20into,capital%20is%20Palikir%2C%20on%20Pohnpei.>
-        * [Truk](https://web.archive.org/web/20250214144551/http://fsmlaw.org/chuuk/code/title01/T01_Ch06.htm)
 
         According to Section 602:
             All holidays set forth in section 601 shall, if they occur on a Saturday,
@@ -93,11 +89,6 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Pohnpei": "PNI",
         "Yap": "YAP",
     }
-    _deprecated_subdivisions = (
-        "Truk",
-        "Ponape",
-        "Kusaie",
-    )
     supported_languages = ("en_FM", "en_US")
 
     def __init__(self, *args, **kwargs):
@@ -156,7 +147,6 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Good Friday"))
 
-        if self._year >= 2000:
             # Gospel Day.
             self._add_observed(self._add_holiday_aug_21(tr("Gospel Day")))
 
