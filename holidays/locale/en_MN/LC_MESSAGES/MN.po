@@ -1,0 +1,55 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Mongolia holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+"POT-Creation-Date: 2025-06-04 01:54+0530\n"
+"PO-Revision-Date: 2025-06-04 01:54+0530\n"
+"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_MN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_MN\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. International Women's Day.
+msgid "International Women's Day"
+msgstr ""
+
+#. Children's Day.
+msgid "Children's Day"
+msgstr ""
+
+#. Naadam.
+msgid "Naadam"
+msgstr ""
+
+#. Naadam Holiday.
+msgid "Naadam Holiday"
+msgstr ""
+
+#. Established on November 26, 1924. Republic Day.
+msgid "Republic Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""

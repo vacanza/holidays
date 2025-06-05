@@ -124,6 +124,7 @@ from .mauritania import Mauritania, MR, MRT
 from .mexico import Mexico, MX, MEX
 from .moldova import Moldova, MD, MDA
 from .monaco import Monaco, MC, MCO
+from .mongolia import Mongolia, MN, MNG
 from .montenegro import Montenegro, ME, MNE
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
