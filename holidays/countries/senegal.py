@@ -15,22 +15,28 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class Senegal(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     """
     Senegal holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Senegal>
+        * [Law 74-52 - Observed holidays](https://www.dri.gouv.sn/sites/default/files/an-documents/LOI%20N1974%2052%20DU%204%20NOVEMBRE%201974.pdf)
     """
 
     country = "SN"
     default_language = "fr_SN"
     # %s (estimated).
     estimated_label = tr("%s (estimé)")
-    start_year = 1961
+    # %s (observed).
+    observed_label = tr("%s (observé)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observé, estimé)")
+    # First official documentation with holidays dates back to 1963. (63-51)
+    start_year = 1964
     supported_languages = ("en_US", "fr_SN")
 
     def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
@@ -45,9 +51,28 @@ class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHoli
             self, cls=SenegalIslamicHolidays, show_estimated=islamic_show_estimated
         )
         InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        kwargs.setdefault("observed_since", 1975)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
+        # Ashura.
+        self._add_ashura_day(tr("Achoura"))
+
+        # Grand Magal of Touba.
+        self._add_grand_magal_of_touba(tr("Grand Magal de Touba"))
+
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Maouloud"))
+
+        # Eid al-Fitr.
+        for dt in self._add_eid_al_fitr_day(tr("Aïd al-Fitr")):
+            self._add_observed(dt)
+
+        # Eid al-Adha.
+        for dt in self._add_eid_al_adha_day(tr("Aïd al-Adha")):
+            self._add_observed(dt)
+
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'an"))
 
@@ -74,21 +99,6 @@ class Senegal(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHoli
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
-
-        # Ashura.
-        self._add_ashura_day(tr("Achoura"))
-
-        # Grand Magal of Touba.
-        self._add_grand_magal_of_touba(tr("Grand Magal de Touba"))
-
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maouloud"))
-
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day(tr("Aïd al-Fitr"))
-
-        # Eid al-Adha.
-        self._add_eid_al_adha_day(tr("Aïd al-Adha"))
 
 
 class SN(Senegal):

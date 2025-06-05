@@ -87,3 +87,13 @@ msgstr ""
 #. Eid al-Adha.
 msgid "Aïd al-Adha"
 msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr ""
