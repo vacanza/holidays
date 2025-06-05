@@ -53,6 +53,7 @@ class Philippines(
         * [2025 Eid'l Fitr and Eid'l Adha Tentative Date](https://melbournepcg.org/?page_id=9779)
         * [Proclamation No. 839/2025](https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/)
         * [Proclamation No. 878/2025](https://www.officialgazette.gov.ph/2025/05/06/proclamation-no-878-s-2025/)
+        * [Proclamation No. 911/2025](https://www.officialgazette.gov.ph/2025/05/21/proclamation-no-911-s-2025/)
     """
 
     country = "PH"
