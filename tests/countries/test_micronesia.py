@@ -502,7 +502,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "en_us",
+            "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-01-10", "Kosrae State Constitution Day (observed)"),
             ("2025-01-11", "Kosrae State Constitution Day"),
