@@ -938,13 +938,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Mongolia</td>
-<td>MN</td>
-<td></td>
-<td><strong>en_MN</strong>, en_US, mn</td></td>
-<td></td>
-</tr>
-<tr>
 <td>Montenegro</td>
 <td>ME</td>
 <td></td>
