@@ -261,6 +261,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2019-09-09",
             "2024-09-09",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "KSA":
                 self.assertHolidayName(
@@ -283,6 +284,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2019-11-04",
             "2024-11-04",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "KSA":
                 self.assertHolidayName(
@@ -295,6 +297,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "KSA":
                 self.assertHolidayName(
@@ -318,6 +321,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2033-12-02",
             "2034-12-04",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "KSA":
                 self.assertHolidayName(
@@ -331,6 +335,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
     def test_womens_day(self):
         name = "Women's Day"
         dt = ("2025-03-07",)
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PNI":
                 self.assertHolidayName(
@@ -353,6 +358,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2019-04-01",
             "2024-04-01",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PNI":
                 self.assertHolidayName(
@@ -374,6 +380,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2021-09-10",
             "2022-09-12",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PNI":
                 self.assertHolidayName(
@@ -395,6 +402,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2020-11-09",
             "2025-11-07",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PNI":
                 self.assertHolidayName(
@@ -416,6 +424,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2020-03-02",
             "2025-02-28",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "YAP":
                 self.assertHolidayName(
@@ -438,6 +447,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2022-12-23",
             "2023-12-25",
         )
+        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "YAP":
                 self.assertHolidayName(
