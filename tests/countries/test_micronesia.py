@@ -24,6 +24,9 @@ class TestMicronesia(CommonCountryTests, TestCase):
         cls.subdiv_holidays = {
             subdiv: FM(subdiv=subdiv, years=years) for subdiv in FM.subdivisions
         }
+        cls.subdiv_holidays_non_observed = {
+            subdiv: FM(subdiv=subdiv, years=years, observed=False) for subdiv in FM.subdivisions
+        }
 
     def test_country_aliases(self):
         self.assertAliases(Micronesia, FM, FSM)
@@ -35,9 +38,10 @@ class TestMicronesia(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1987, 2050)))
         dt = (
-            "2006-01-02",
+            "2010-12-31",
             "2012-01-02",
             "2017-01-02",
+            "2021-12-31",
             "2023-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
@@ -46,6 +50,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
     def test_micronesian_culture_and_tradition_day(self):
         name = "Micronesian Culture and Tradition Day"
         self.assertHolidayName(name, (f"{year}-03-31" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name, range(1987, 2011))
         dt = (
             "2012-03-30",
             "2013-04-01",
@@ -142,6 +147,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
 
     def test_state_charter_day(self):
         name = "State Charter Day"
+        self.assertNoHolidayName(name)
         dt = (
             "2004-09-27",
             "2009-09-25",
@@ -150,16 +156,15 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2020-09-25",
             "2021-09-27",
         )
-        self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "TRK":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-09-26" for year in range(1987, 2050))
                 )
                 self.assertHolidayName(f"{name} (observed)", holidays, dt)
+                self.assertNoNonObservedHoliday(self.subdiv_holidays_non_observed[subdiv], dt)
             else:
                 self.assertNoHolidayName(name, holidays)
-        self.assertNoNonObservedHoliday(dt)
 
     def test_chuuk_state_constitution_day(self):
         name = "Chuuk State Constitution Day"
@@ -179,6 +184,7 @@ class TestMicronesia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-10-01" for year in range(1990, 2050))
                 )
+                self.assertNoHolidayName(name, holidays, range(1987, 1990))
                 self.assertHolidayName(f"{name} (observed)", holidays, dt)
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -354,7 +360,6 @@ class TestMicronesia(CommonCountryTests, TestCase):
             "2007-03-30",
             "2012-03-30",
             "2013-04-01",
-            "2018-03-30",
             "2019-04-01",
             "2024-04-01",
         )

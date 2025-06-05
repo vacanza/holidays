@@ -17,65 +17,65 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI,
 
 
 class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """Micronesia Holidays.
+    """Micronesia holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Federated_States_of_Micronesia>
         * <https://web.archive.org/web/20250605035443/https://www.timeanddate.com/holidays/micronesia/>
-        * <https://web.archive.org/web/20241213112548/http://www.fsmlaw.org/fsm/code/PDF/FSMCA2014Tit01.pdf>
+        * [2014 FSM Code](https://web.archive.org/web/20241213112548/http://www.fsmlaw.org/fsm/code/PDF/FSMCA2014Tit01.pdf)
         * [Section 601, 602, 603](https://web.archive.org/web/20020731194201/http://fsmlaw.org/fsm/code/title01/t01ch06.htm)
         * [United Nations Day](https://web.archive.org/web/20241213120703/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%207-20.pdf)
         * [FSM Veterans of Foreign Wars Day](https://web.archive.org/web/20241213120631/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%2013-38.pdf)
         * [Micronesian Culture and Tradition Day](https://web.archive.org/web/20241213114748/http://fsmlaw.org/fsm/code/PDF/CODE%201/PL%2016-27.pdf)
         * [Presidents Day](https://web.archive.org/web/20241213120719/http://www.fsmlaw.org/fsm/code/PDF/CODE%201/PL%2021-209.pdf)
 
-        Chuuk:
-            * <https://web.archive.org/web/20250214151354/http://fsmlaw.org/chuuk/code/title01/T01_Ch03.htm>
+    Subdivisions Holidays References:
+        * Chuuk:
+            * [Chuuk State Code, T. 1, Chap. 3](https://web.archive.org/web/20250214151354/http://fsmlaw.org/chuuk/code/title01/T01_Ch03.htm)
             * [State Charter Day](https://web.archive.org/web/20241213113932/http://fsmlaw.org/chuuk/pdf/tsl_a/TSL%203-10%20EV.pdf)
             * [Chuuk State Constitution Day](https://web.archive.org/web/20241213113821/http://fsmlaw.org/chuuk/pdf/csl_a/CSL%20190-03%20EV.pdf)
-
-        Kosrae:
-            * <https://web.archive.org/web/20250211055635/http://fsmlaw.org/kosrae/code/title02/t02c05.htm>
+        * Kosrae:
+            * [Kosrae State Code, Section 2.501](https://web.archive.org/web/20250211055635/http://fsmlaw.org/kosrae/code/title02/t02c05.htm)
             * [Seventh Korsae State Legislature](https://web.archive.org/web/20241213115951/https://fsmlaw.org/kosrae/Law/pdf/123.pdf)
             * [Fourth Kosrae State Legislature](https://web.archive.org/web/20241213115949/https://fsmlaw.org/kosrae/Law/pdf/Kosrae%20State%20Law%201989-90.pdf)
             * [State Law 4-32](https://www.kosraestatelegislature.com/4th-ksl-state-laws)
             * [State Law 7-76](https://www.kosraestatelegislature.com/7th-ksl-state-laws)
             * [State Law 9-50](https://www.kosraestatelegislature.com/9th-ksl-state-laws)
             * [State Law 13-79](https://web.archive.org/web/20241211232231/https://www.kosraestatelegislature.com/_files/ugd/f1e94d_cc244ef15bea4c74ba81cb1a4621c30f.pdf)
-
-        Pohnpei:
+        * Pohnpei:
             * [State Code 2012](https://web.archive.org/web/20250209195119/https://fsmlaw.org/pohnpei/code/pdf/pohnpei%20state%202012%20code.pdf)
             * [2025](https://web.archive.org/web/20250124225740/https://pohnpeistate.gov.fm/fy-2025-holiday-schedule/)
             * [Women's Day](https://web.archive.org/web/20250403093235/https://pohnpeistate.gov.fm/2022/02/22/congratulations-pohnpei-womens-council-and-all-who-supported-this-important-undertaking/)
-
         * [Yap](https://web.archive.org/web/20250223222339/http://fsmlaw.org/yap/code/title01/T01_Ch08.htm)
 
         According to Section 602:
-            All holidays set forth in section 601 shall, if they occur on a Saturday,
-            be observed on the preceding Friday, and shall, if they occur on a Sunday,
-            be observed on the following Monday.
 
-        According to Kosrae State Legislature State Laws
-            * 4-32: Government Holidays were amended.
-            * 4-135: September 8 was declared a public holiday.
-            * 7-27: Good Friday was declared a public holiday.
-            * 7-76: Gospel Day was declared a public holiday.
-            * 9-50: Thanksgiving Day was declared a public holiday.
-            * 13-79: Kosrae Disability Day was declared a public holiday.
+        > All holidays set forth in section 601 shall, if they occur on a Saturday,
+        > be observed on the preceding Friday, and shall, if they occur on a Sunday,
+        > be observed on the following Monday.
+
+        According to Kosrae State Legislature State Laws:
+
+        * 4-32: Government Holidays were amended.
+        * 4-135: September 8 was declared a public holiday.
+        * 7-27: Good Friday was declared a public holiday.
+        * 7-76: Gospel Day was declared a public holiday.
+        * 9-50: Thanksgiving Day was declared a public holiday.
+        * 13-79: Kosrae Disability Day was declared a public holiday.
 
         According to Pohnpei State Code 2012 Section 7-101:
-            * Pohnpei Consititution Day is a public holiday.
-            * Liberation Day is a public holiday.
-            * Pohnpei Cultural Day is a public holiday.
-            * Good Friday is a public holiday.
 
+        * Pohnpei Consititution Day is a public holiday.
+        * Liberation Day is a public holiday.
+        * Pohnpei Cultural Day is a public holiday.
+        * Good Friday is a public holiday.
     """
 
     country = "FM"
     default_language = "en_FM"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    # Federated States of Micronesia gained independence on November 3, 1986
+    # Federated States of Micronesia gained independence on November 3, 1986.
     start_year = 1987
     subdivisions = (
         "TRK",  # Chuuk.
@@ -99,7 +99,9 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
+        name = tr("New Year's Day")
+        self._add_observed(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name=name, rule=SAT_TO_PREV_FRI)
 
         if self._year >= 2011:
             self._add_observed(
