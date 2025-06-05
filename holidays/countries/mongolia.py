@@ -12,24 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import (
-    ChristianHolidays,
-    HinduCalendarHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    StaticHolidays,
-)
+from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Mongolia(
-    HolidayBase,
-    ChristianHolidays,
-    HinduCalendarHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
-    StaticHolidays,
-):
+class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
     """Mongolia holidays.
 
     References:
@@ -38,6 +25,7 @@ class Mongolia(
         * <https://investmongolia.gov.mn/mongolia-at-a-glance/>
         * <https://www.qppstudio.net/public-holidays/mongolia.htm>
         * <https://publicholidays.asia/mongolia/>
+        * <https://www.math.mcgill.ca/gantumur/cal/year.html>
     """
 
     country = "MN"
