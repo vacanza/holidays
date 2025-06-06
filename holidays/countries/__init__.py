@@ -71,6 +71,7 @@ from .equatorial_guinea import EquatorialGuinea, GQ, GNQ
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
+from .faroe_islands import FaroeIslands, FO, FRO
 from .fiji import Fiji, FJ, FJI
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
