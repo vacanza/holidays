@@ -85,8 +85,11 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     )
     subdivisions_aliases = {
         "Chuuk": "TRK",
+        "Truk": "TRK",
         "Kosrae": "KSA",
+        "Kusaie": "KSA",
         "Pohnpei": "PNI",
+        "Ponape": "PNI",
         "Yap": "YAP",
     }
     supported_languages = ("en_FM", "en_US")

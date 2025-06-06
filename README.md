@@ -919,7 +919,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Micronesia</td>
 <td>FM</td>
-<td>States: TRK (Chuuk), KSA (Kosrae), PNI (Pohnpei), YAP (Yap)</td>
+<td>States: TRK (Chuuk, Truk), KSA (Kosrae, Kusaie), PNI (Pohnpei, Ponape), YAP (Yap)</td>
 <td><strong>en_FM</strong>, en_US</td>
 <td></td>
 </tr>
