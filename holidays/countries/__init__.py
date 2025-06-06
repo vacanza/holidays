@@ -128,6 +128,7 @@ from .montenegro import Montenegro, ME, MNE
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
 from .namibia import Namibia, NA, NAM
+from .nauru import Nauru, NR, NRU
 from .nepal import Nepal, NP, NPL
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
