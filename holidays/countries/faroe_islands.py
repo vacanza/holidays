@@ -1,4 +1,3 @@
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.constants import OPTIONAL, PUBLIC
@@ -11,7 +10,8 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     Faroe Islands holidays.
 
     References:
-        - https://visitfaroeislands.com/en/plan-your-stay/before-you-arrive-in-the-faroe-islands/public-holidays
+        - https://visitfaroeislands.com/en/plan-your-stay/before-you-arrive-in-the-faroe-islands/\
+            public-holidays
         - https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands
     """
 
