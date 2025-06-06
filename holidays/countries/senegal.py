@@ -13,12 +13,19 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.groups import (
+    ChristianHolidays,
+    IslamicHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
-class Senegal(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class Senegal(
+    ObservedHolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays, StaticHolidays
+):
     """
     Senegal holidays.
 
@@ -51,6 +58,7 @@ class Senegal(ObservedHolidayBase, ChristianHolidays, IslamicHolidays, Internati
             self, cls=SenegalIslamicHolidays, show_estimated=islamic_show_estimated
         )
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, SenegalStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         kwargs.setdefault("observed_since", 1975)
         super().__init__(*args, **kwargs)
@@ -154,4 +162,20 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
         2022: (JUL, 10),
         2023: (JUN, 29),
         2024: (JUN, 17),
+    }
+
+
+class SenegalStaticHolidays:
+    """Senegal special holidays.
+
+    References:
+        * [29th October, 2018 Public holiday](https://www.juriafrica.com/lex/decret-2018-1942-26-octobre-2018-48947.htm)
+        * [26th December, 2022 Public holiday](https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
+    """
+
+    # Public holiday.
+    name = tr("Jour férié")
+    special_public_holidays = {
+        2018: (OCT, 29, name),
+        2022: (DEC, 26, name),
     }

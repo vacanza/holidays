@@ -29,6 +29,12 @@ class TestSenegal(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Senegal(years=1963))
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2018-10-29",
+            "2022-12-26",
+        )
+
     def test_new_years_day(self):
         name = "Jour de l'an"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1964, 2050)))

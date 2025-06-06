@@ -97,3 +97,7 @@ msgstr ""
 #, c-format
 msgid "%s (observé, estimé)"
 msgstr ""
+
+#. Public holiday.
+msgid "Jour férié"
+msgstr ""
