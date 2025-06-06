@@ -1,6 +1,5 @@
 from unittest import TestCase
 
-from holidays.constants import PUBLIC
 from holidays.countries.faroe_islands import FaroeIslands, FO
 from tests.common import CommonCountryTests
 
@@ -40,5 +39,6 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             ("2023-12-25", "Jóladagur"),
             ("2023-12-26", "Annar jóladagur"),
             ("2023-12-31", "Nýggjársaftan"),
+            
     )
         
