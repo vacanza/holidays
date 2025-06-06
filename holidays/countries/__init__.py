@@ -74,7 +74,12 @@ from holidays.countries.ethiopia import Ethiopia, ET, ETH
 from holidays.countries.fiji import Fiji, FJ, FJI
 from holidays.countries.finland import Finland, FI, FIN
 from holidays.countries.france import France, FR, FRA
-from holidays.countries.french_southern_territories import FrenchSouthernTerritories, TF, ATF, HolidaysTF
+from holidays.countries.french_southern_territories import (
+    FrenchSouthernTerritories,
+    TF,
+    ATF,
+    HolidaysTF,
+)
 from holidays.countries.gabon import Gabon, GA, GAB
 from holidays.countries.georgia import Georgia, GE, GEO
 from holidays.countries.germany import Germany, DE, DEU
@@ -190,7 +195,12 @@ from holidays.countries.united_states_minor_outlying_islands import (
     UMI,
     HolidaysUM,
 )
-from holidays.countries.united_states_virgin_islands import UnitedStatesVirginIslands, VI, VIR, HolidaysVI
+from holidays.countries.united_states_virgin_islands import (
+    UnitedStatesVirginIslands,
+    VI,
+    VIR,
+    HolidaysVI,
+)
 from holidays.countries.uruguay import Uruguay, UY, URY
 from holidays.countries.uzbekistan import Uzbekistan, UZ, UZB
 from holidays.countries.vanuatu import Vanuatu, VU, VTU
