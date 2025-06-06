@@ -560,7 +560,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
-  <td>FAROE ISLANDS</td>
+  <td>Faroe Islands</td>
   <td>FO</td>
   <td></td>
   <td>da, en_US, <strong>fo</strong>, is, no, sv</td>

@@ -29,7 +29,7 @@ msgstr ""
 #. %s (observed)
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr "%s (eygleitt)"
 
 
 #. Nýggjársdagur
