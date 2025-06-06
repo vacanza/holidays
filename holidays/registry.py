@@ -161,6 +161,7 @@ COUNTRIES: RegistryDict = {
     "russia": ("Russia", "RU", "RUS"),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
+    "saint_vincent_and_the_grenadines": ("SaintVincentandtheGrenadines", "VC", "VCT"),
     "samoa": ("Samoa", "WS", "WSM"),
     "san_marino": ("SanMarino", "SM", "SMR"),
     "sao_tome_and_principe": ("SaoTomeAndPrincipe", "ST", "STP"),

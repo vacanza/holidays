@@ -1,0 +1,99 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from gettext import gettext as tr
+
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.observed_holiday_base import (
+    SAT_SUN_TO_NEXT_MON,
+    ObservedHolidayBase,
+)
+
+
+class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+    """Saint Vincent and the Grenadines holidays.
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
+        * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/>
+        * <https://svgtourism.com/plan-your-trip/public-holidays/>
+        * <https://www.gov.vc/index.php/government/laws-of-svg>
+        * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/national-spiritual-baptist-day>
+    """
+
+    country = "VC"
+    default_language = "en_VC"
+    observed_label = tr("%s (observed)")
+    supported_languages = ("en_US", "en_VC")
+    start_year = 1979
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON)
+
+        # National Heroes Day
+        self._add_holiday_mar_14(tr("National Heroes Day"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
+        # National Workers Day.
+        self._add_observed(self._add_labor_day(tr("National Workers Day")))
+
+        # National Spiritual Baptist Day.
+        if self._year >= 2025:
+            self._add_holiday_may_21(tr("National Spiritual Baptist Day"))
+
+        # Whit Monday.
+        self._add_whit_monday(tr("Whit Monday"))
+
+        # Carnival Monday.
+        # https://www.stvincenttimes.com/august-3rd-and-4th-2020-declared-public-holidays-in-svg/#:~:text=August%203,Vincent%20and%20the%20Grenadines
+        if self._year == 2020:
+            self._add_holiday_aug_3(tr("Carnival Monday"))
+        else:
+            self._add_holiday_2nd_mon_of_jul(tr("Carnival Monday"))
+
+        # Carnival Tuesday.
+        if self._year == 2020:
+            self._add_holiday_aug_4(tr("Carnival Tuesday"))
+        else:
+            self._add_holiday_1_day_past_2nd_mon_of_jul(tr("Carnival Tuesday"))
+
+        # Emancipation Day.
+        self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
+
+        # Independence Day.
+        self._add_holiday_oct_27(tr("Independence Day"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Christmas Day"))
+
+        # Boxing Day.
+        self._add_christmas_day_two(tr("Boxing Day"))
+
+
+class VC(SaintVincentAndTheGrenadines):
+    pass
+
+
+class VCT(SaintVincentAndTheGrenadines):
+    pass
