@@ -50,7 +50,6 @@ class Philippines(
         * [Proclamation No. 665/2024](https://archive.org/details/20241015-proc-665-frm)
         * [Proclamation No. 729/2024](https://archive.org/details/20241030-proc-729-frm)
         * [Nationwide holidays 2018-2025](https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
-        * [2025 Eid'l Fitr and Eid'l Adha Tentative Date](https://melbournepcg.org/?page_id=9779)
         * [Proclamation No. 839/2025](https://archive.org/details/20250320-proc-839-frm_202506)
         * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
         * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
