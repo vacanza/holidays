@@ -136,6 +136,7 @@ COUNTRIES: RegistryDict = {
     "morocco": ("Morocco", "MA", "MOR"),
     "mozambique": ("Mozambique", "MZ", "MOZ"),
     "namibia": ("Namibia", "NA", "NAM"),
+    "nauru": ("Nauru", "NR", "NRU"),
     "nepal": ("Nepal", "NP", "NPL"),
     "netherlands": ("Netherlands", "NL", "NLD"),
     "new_zealand": ("NewZealand", "NZ", "NZL"),
