@@ -60,7 +60,7 @@ class LocalizationHelper:
         ):
             print("No action specified.\n")
             arg_parser.print_help()
-            exit(1)
+            sys.exit(1)
 
         self.country_code = self.args.country_code
         self.encoding = "utf-8-sig" if self.args.bom else "utf-8"
@@ -78,7 +78,7 @@ class LocalizationHelper:
                 break
         if not class_name:
             print(f"Class for country code {self.country_code} not found!")
-            exit(1)
+            sys.exit(1)
 
         module = f"holidays.countries.{module_name}"
         for _, cls in inspect.getmembers(importlib.import_module(module), inspect.isclass):
@@ -125,7 +125,7 @@ class LocalizationHelper:
     def export_to_csv(self):
         if self.csv_name.exists() and not self.args.overwrite:
             print(f"File {self.csv_name} exists and no --overwrite option!")
-            exit(1)
+            sys.exit(1)
 
         po_data = defaultdict(dict)
         comments = {}
@@ -153,7 +153,7 @@ class LocalizationHelper:
     def read_csv(self) -> tuple[list[str], list[list[str]]]:
         if not self.csv_name.exists():
             print(f"File {self.csv_name} not found!")
-            exit(1)
+            sys.exit(1)
 
         with self.csv_name.open("r", encoding=self.encoding) as f:
             reader = csv.reader(f, delimiter=";")
