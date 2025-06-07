@@ -26,6 +26,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
         * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/>
         * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/national-spiritual-baptist-day>
+        * <https://web.archive.org/web/20250214232128/https://pmoffice.gov.vc/pmoffice/index.php/public-holidays>
     """
 
     country = "VC"
