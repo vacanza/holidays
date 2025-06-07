@@ -66,11 +66,11 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         self._add_whit_monday(tr("Whit Monday"))
 
         # Carnival Monday.
-        # https://www.stvincenttimes.com/august-3rd-and-4th-2020-declared-public-holidays-in-svg/#:~:text=August%203,Vincent%20and%20the%20Grenadines
+        name = tr("Carnival Monday")
         if self._year == 2020:
-            self._add_holiday_aug_3(tr("Carnival Monday"))
+            self._add_holiday_aug_3(name)
         else:
-            self._add_holiday_2nd_mon_of_jul(tr("Carnival Monday"))
+            self._add_holiday_2nd_mon_of_jul(name)
 
         # Carnival Tuesday.
         name = tr("Carnival Tuesday")
