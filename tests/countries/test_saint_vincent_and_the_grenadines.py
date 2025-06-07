@@ -82,3 +82,37 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-03-14", "National Heroes Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-05-01", "National Workers Day"),
+            ("2023-05-29", "Whit Monday"),
+            ("2023-07-10", "Carnival Monday"),
+            ("2023-07-11", "Carnival Tuesday"),
+            ("2023-08-01", "Emancipation Day"),
+            ("2023-10-27", "Independence Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-14", "National Heroes Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-01", "Labor Day"),
+            ("2024-05-20", "Whit Monday"),
+            ("2024-07-08", "Carnival Monday"),
+            ("2024-07-09", "Carnival Tuesday"),
+            ("2024-08-01", "Emancipation Day"),
+            ("2024-10-27", "Independence Day"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
