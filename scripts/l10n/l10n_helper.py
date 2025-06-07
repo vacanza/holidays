@@ -66,7 +66,7 @@ class LocalizationHelper:
         self.csv_name = Path(f"holidays/locale/csv/{self.country_code}.csv")
 
     def create_po_files(self):
-        sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
+        sys.path.append(str(Path.cwd()))  # Make holidays visible.
         from holidays.registry import COUNTRIES
 
         class_name = None
