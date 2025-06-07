@@ -15,7 +15,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.75\n"
 "POT-Creation-Date: 2025-06-04 23:49+0500\n"
 "PO-Revision-Date: 2025-06-04 23:49+0500\n"
 "Last-Translator: Muhammad Waqar <waqar216447@gmail.com>\n"
