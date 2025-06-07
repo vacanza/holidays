@@ -156,7 +156,7 @@ from .saint_lucia import SaintLucia, LC, LCA
 from .saint_vincent_and_the_grenadines import (
     SaintVincentAndTheGrenadines,
     VC,
-    VCT
+    VCT,
 )
 from .samoa import Samoa, WS, WSM
 from .san_marino import SanMarino, SM, SMR
