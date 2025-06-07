@@ -153,7 +153,7 @@ from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saint_kitts_and_nevis import SaintKittsAndNevis, KN, KNA
 from .saint_lucia import SaintLucia, LC, LCA
-from holidays.countries.saint_vincent_and_the_grenadines import (
+from .saint_vincent_and_the_grenadines import (
     SaintVincentAndTheGrenadines,
     VC,
     VCT
