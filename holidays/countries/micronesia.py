@@ -65,7 +65,7 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         According to Pohnpei State Code 2012 Section 7-101:
 
-        * Pohnpei Consititution Day is a public holiday.
+        * Pohnpei Constitution Day is a public holiday.
         * Liberation Day is a public holiday.
         * Pohnpei Cultural Day is a public holiday.
         * Good Friday is a public holiday.
