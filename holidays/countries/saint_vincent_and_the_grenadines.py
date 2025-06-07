@@ -73,10 +73,11 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
             self._add_holiday_2nd_mon_of_jul(tr("Carnival Monday"))
 
         # Carnival Tuesday.
+        name = tr("Carnival Tuesday")
         if self._year == 2020:
-            self._add_holiday_aug_4(tr("Carnival Tuesday"))
+            self._add_holiday_aug_4(name)
         else:
-            self._add_holiday_1_day_past_2nd_mon_of_jul(tr("Carnival Tuesday"))
+            self._add_holiday_1_day_past_2nd_mon_of_jul(name)
 
         # Emancipation Day.
         self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
