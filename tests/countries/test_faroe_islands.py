@@ -73,4 +73,4 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             ("2023-12-25", "Jóladagur"),
             ("2023-12-26", "Annar jóladagur"),
             ("2023-12-31", "Nýggjársaftan"),
-)
+        )
