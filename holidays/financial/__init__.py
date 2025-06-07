@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F401
+# ruff: noqa: F401
 
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
