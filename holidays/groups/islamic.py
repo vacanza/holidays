@@ -222,6 +222,16 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.fatima_death_dates(self._year)
         )
 
+    def _add_grand_magal_of_touba(self, name) -> set[date]:
+        """
+        Annual religious pilgrimage of Senegalese Mouride brotherhood.
+
+        https://en.wikipedia.org/wiki/Grand_Magal_of_Touba
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.grand_magal_of_touba_dates(self._year)
+        )
+
     def _add_hari_hol_johor(self, name) -> set[date]:
         """
         Hari Hol Johor.
