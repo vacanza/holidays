@@ -54,8 +54,8 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             ("2023-12-31", "Nýggjársaftan"),
         )
 
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
+    def test_2023_and_localization(self):
+        holidays_2023 = [
             ("2023-01-01", "Nýggjársdagur"),
             ("2023-04-06", "Skírhósdagur"),
             ("2023-04-07", "Langifríggjadagur"),
@@ -73,4 +73,7 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
             ("2023-12-25", "Jóladagur"),
             ("2023-12-26", "Annar jóladagur"),
             ("2023-12-31", "Nýggjársaftan"),
-        )
+        ]
+
+        self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *holidays_2023)
+        self.assertLocalizedHolidays(*holidays_2023)
