@@ -44,7 +44,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_labour_day(self):
+    def test_national_workers_day(self):
         name = "National Workers Day"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(1979, 2050)))
         dt = (
