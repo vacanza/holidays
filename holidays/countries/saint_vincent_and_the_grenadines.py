@@ -58,8 +58,8 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         # National Workers Day.
         self._add_observed(self._add_labor_day(tr("National Workers Day")))
 
-        # National Spiritual Baptist Day.
         if self._year >= 2025:
+            # National Spiritual Baptist Day.
             self._add_holiday_may_21(tr("National Spiritual Baptist Day"))
 
         # Whit Monday.
