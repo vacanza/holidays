@@ -924,6 +924,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Micronesia</td>
+<td>FM</td>
+<td>States: KSA (Kosrae, Kusaie), PNI (Pohnpei, Ponape), TRK (Chuuk, Truk), YAP (Yap)</td>
+<td><strong>en_FM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Moldova</td>
 <td>MD</td>
 <td></td>
