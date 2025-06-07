@@ -78,18 +78,18 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # Federated States of Micronesia gained independence on November 3, 1986.
     start_year = 1987
     subdivisions = (
-        "TRK",  # Chuuk.
         "KSA",  # Kosrae.
         "PNI",  # Pohnpei.
+        "TRK",  # Chuuk.
         "YAP",  # Yap.
     )
     subdivisions_aliases = {
-        "Chuuk": "TRK",
-        "Truk": "TRK",
         "Kosrae": "KSA",
         "Kusaie": "KSA",
         "Pohnpei": "PNI",
         "Ponape": "PNI",
+        "Chuuk": "TRK",
+        "Truk": "TRK",
         "Yap": "YAP",
     }
     supported_languages = ("en_FM", "en_US")
@@ -132,15 +132,6 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
-
-    # Chuuk.
-    def _populate_subdiv_trk_public_holidays(self):
-        # State Charter Day.
-        self._add_observed(self._add_holiday_sep_26(tr("State Charter Day")))
-
-        if self._year >= 1990:
-            # Chuuk State Constitution Day.
-            self._add_observed(self._add_holiday_oct_1(tr("Chuuk State Constitution Day")))
 
     # Kosrae.
     def _populate_subdiv_ksa_public_holidays(self):
@@ -187,6 +178,15 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Pohnpei Constitution Day.
         self._add_observed(self._add_holiday_nov_8(tr("Pohnpei Constitution Day")))
+
+    # Chuuk.
+    def _populate_subdiv_trk_public_holidays(self):
+        # State Charter Day.
+        self._add_observed(self._add_holiday_sep_26(tr("State Charter Day")))
+
+        if self._year >= 1990:
+            # Chuuk State Constitution Day.
+            self._add_observed(self._add_holiday_oct_1(tr("Chuuk State Constitution Day")))
 
     # Yap.
     def _populate_subdiv_yap_public_holidays(self):
