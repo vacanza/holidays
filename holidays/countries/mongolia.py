@@ -23,15 +23,12 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mongolia>
         * <https://www.timeanddate.com/holidays/mongolia>
         * <https://investmongolia.gov.mn/mongolia-at-a-glance/>
-        * <https://www.qppstudio.net/public-holidays/mongolia.htm>
-        * <https://publicholidays.asia/mongolia/>
         * <https://www.math.mcgill.ca/gantumur/cal/year.html>
     """
 
     country = "MN"
-    default_language = "en_MN"
-    # Mongolia gained independence on December 29, 1911.
-    start_year = 1912
+    default_language = "mn"
+    start_year = 2004
     supported_languages = ("en_MN", "en_US", "mn")
 
     def __init__(self, *args, **kwargs):
@@ -40,31 +37,39 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
+        self._add_new_years_day(tr("Шинэ жилийн баяр"))
 
         # International Women's Day.
-        self._add_womens_day(tr("International Women's Day"))
+        self._add_womens_day(tr("Олон улсын эмэгтэйчүүдийн өдөр"))
 
         # Children's Day.
-        self._add_holiday_jun_1(tr("Children's Day"))
+        self._add_childrens_day(tr("Хүүхдийн баяр"))
 
         # Naadam.
-        self._add_holiday_jul_11(tr("Naadam"))
+        self._add_holiday_jul_11(tr("Наадам"))
 
         # Naadam Holiday.
-        name = tr("Naadam Holiday")
+        name = tr("Наадмын баяр")
         self._add_holiday_jul_12(name)
         self._add_holiday_jul_13(name)
         self._add_holiday_jul_14(name)
         self._add_holiday_jul_15(name)
 
+        # Established on November 26, 1924.
         if self._year >= 1925:
-            # Established on November 26, 1924.
             # Republic Day.
-            self._add_holiday_nov_26(tr("Republic Day"))
+            self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
 
-        # Independence Day.
-        self._add_holiday_dec_29(tr("Independence Day"))
+        # Established on August 16th, 2007.
+        # Renamed on December 23rd, 2011.
+        if self._year >= 2007:
+            self._add_holiday_dec_29(
+                # Restoration of Freedom and Independence Day.
+                tr("Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр")
+                if self._year >= 2011
+                # Independence Day.
+                else tr("Үндэсний эрх чөлөөний өдөр")
+            )
 
 
 class MN(Mongolia):

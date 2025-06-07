@@ -28,29 +28,54 @@ msgstr ""
 "X-Source-Language: en_MN\n"
 
 #. New Year's Day.
-msgid "New Year's Day"
-msgstr "Шинэ жилийн баяр"
+msgid "Шинэ жилийн баяр"
+msgstr ""
 
 #. International Women's Day.
-msgid "International Women's Day"
-msgstr "Олон улсын эмэгтэйчүүдийн өдөр"
+msgid "Олон улсын эмэгтэйчүүдийн өдөр"
+msgstr ""
 
 #. Children's Day.
-msgid "Children's Day"
-msgstr "Хүүхдийн баяр"
+msgid "Хүүхдийн баяр"
+msgstr ""
 
 #. Naadam.
-msgid "Naadam"
-msgstr "Наадам"
+msgid "Наадам"
+msgstr ""
 
 #. Naadam Holiday.
-msgid "Naadam Holiday"
-msgstr "Наадмын баяр"
+msgid "Наадмын баяр"
+msgstr ""
 
-#. Established on November 26, 1924. Republic Day.
-msgid "Republic Day"
-msgstr "Бүгд найрамдах өдөр"
+#. Republic Day.
+msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
+msgstr ""
+
+#. Restoration of Freedom and Independence Day.
+msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
+msgstr ""
 
 #. Independence Day.
-msgid "Independence Day"
-msgstr "Тусгаар тогтнолын өдөр"
+msgid "Үндэсний эрх чөлөөний өдөр"
+msgstr ""
+
+#~ msgid "New Year's Day"
+#~ msgstr "Шинэ жилийн баяр"
+
+#~ msgid "International Women's Day"
+#~ msgstr "Олон улсын эмэгтэйчүүдийн өдөр"
+
+#~ msgid "Children's Day"
+#~ msgstr "Хүүхдийн баяр"
+
+#~ msgid "Naadam"
+#~ msgstr "Наадам"
+
+#~ msgid "Naadam Holiday"
+#~ msgstr "Наадмын баяр"
+
+#~ msgid "Republic Day"
+#~ msgstr "Бүгд Найрамдах Улс тунхагласан өдөр"
+
+#~ msgid "Independence Day"
+#~ msgstr "Тусгаар тогтнолын өдөр"

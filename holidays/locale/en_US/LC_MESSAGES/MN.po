@@ -27,29 +27,33 @@ msgstr ""
 "X-Source-Language: en_MN\n"
 
 #. New Year's Day.
-msgid "New Year's Day"
+msgid "Шинэ жилийн баяр"
 msgstr "New Year's Day"
 
 #. International Women's Day.
-msgid "International Women's Day"
+msgid "Олон улсын эмэгтэйчүүдийн өдөр"
 msgstr "International Women's Day"
 
 #. Children's Day.
-msgid "Children's Day"
+msgid "Хүүхдийн баяр"
 msgstr "Children's Day"
 
 #. Naadam.
-msgid "Naadam"
+msgid "Наадам"
 msgstr "Naadam"
 
 #. Naadam Holiday.
-msgid "Naadam Holiday"
+msgid "Наадмын баяр"
 msgstr "Naadam Holiday"
 
-#. Established on November 26, 1924. Republic Day.
-msgid "Republic Day"
+#. Republic Day.
+msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
 msgstr "Republic Day"
 
+#. Restoration of Freedom and Independence Day.
+msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
+msgstr "Restoration of Freedom and Independence Day"
+
 #. Independence Day.
-msgid "Independence Day"
+msgid "Үндэсний эрх чөлөөний өдөр"
 msgstr "Independence Day"
