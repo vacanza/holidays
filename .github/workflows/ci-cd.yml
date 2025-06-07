@@ -129,7 +129,7 @@ jobs:
           cache-dependency-path: |
             requirements/build.txt
           check-latest: true
-          python-version: '3.12'
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
