@@ -23,14 +23,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: ChatGPT\n"
+"Generated-By: Lingua 4.15.0\n"
 "X-Source-Language: fo\n"
-
-#. %s (observed)
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (observed)"
-
 
 #. Nýggjársdagur
 msgid "Nýggjársdagur"

@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Faroe Islands holidays fo localization.
+# Faroe Islands holidays.
 #
 msgid ""
 msgstr ""
@@ -23,79 +23,73 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: ChatGPT\n"
+"Generated-By: Lingua 4.15.0\n"
 "X-Source-Language: fo\n"
-
-#. %s (observed)
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (eygleitt)"
-
 
 #. Nýggjársdagur
 msgid "Nýggjársdagur"
-msgstr "Nýggjársdagur"
+msgstr ""
 
 #. Skírhósdagur
 msgid "Skírhósdagur"
-msgstr "Skírhósdagur"
+msgstr ""
 
 #. Langifríggjadagur
 msgid "Langifríggjadagur"
-msgstr "Langifríggjadagur"
+msgstr ""
 
 #. Páskadagur
 msgid "Páskadagur"
-msgstr "Páskadagur"
+msgstr ""
 
 #. Annar páskadagur
 msgid "Annar páskadagur"
-msgstr "Annar páskadagur"
+msgstr ""
 
 #. Flaggdagur
 msgid "Flaggdagur"
-msgstr "Flaggdagur"
+msgstr ""
 
 #. Dýri biðidagur
 msgid "Dýri biðidagur"
-msgstr "Dýri biðidagur"
+msgstr ""
 
 #. Kristi himmalsferðardagur
 msgid "Kristi himmalsferðardagur"
-msgstr "Kristi himmalsferðardagur"
+msgstr ""
 
 #. Hvítusunnudagur
 msgid "Hvítusunnudagur"
-msgstr "Hvítusunnudagur"
+msgstr ""
 
 #. Annar hvítusunnudagur
 msgid "Annar hvítusunnudagur"
-msgstr "Annar hvítusunnudagur"
+msgstr ""
 
 #. Grundlógardagur
 msgid "Grundlógardagur"
-msgstr "Grundlógardagur"
+msgstr ""
 
 #. Ólavsøkuaftan
 msgid "Ólavsøkuaftan"
-msgstr "Ólavsøkuaftan"
+msgstr ""
 
 #. Ólavsøkudagur
 msgid "Ólavsøkudagur"
-msgstr "Ólavsøkudagur"
+msgstr ""
 
 #. Jólaaftan
 msgid "Jólaaftan"
-msgstr "Jólaaftan"
+msgstr ""
 
 #. Jóladagur
 msgid "Jóladagur"
-msgstr "Jóladagur"
+msgstr ""
 
 #. Annar jóladagur
 msgid "Annar jóladagur"
-msgstr "Annar jóladagur"
+msgstr ""
 
 #. Nýggjársaftan
 msgid "Nýggjársaftan"
-msgstr "Nýggjársaftan"
+msgstr ""

@@ -564,7 +564,7 @@ any) in brackets, available languages and additional holiday categories. All cou
   <td>FO</td>
   <td></td>
   <td>da, en_US, <strong>fo</strong>, is, no, sv</td>
-  <td>OPTIONAL</td>
+  <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Fiji</td>
