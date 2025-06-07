@@ -304,7 +304,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bermuda</td>
 <td>BM</td>
 <td></td>
-<td></td>
+<td><strong>en_BM</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
