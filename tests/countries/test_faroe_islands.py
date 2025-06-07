@@ -23,6 +23,26 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
         years = range(1990, 2050)
         super().setUpClass(FaroeIslands, years=years)
 
+    holidays_2023 = [
+        ("2023-01-01", "Nýggjársdagur"),
+        ("2023-04-06", "Skírhósdagur"),
+        ("2023-04-07", "Langifríggjadagur"),
+        ("2023-04-09", "Páskadagur"),
+        ("2023-04-10", "Annar páskadagur"),
+        ("2023-04-25", "Flaggdagur"),
+        ("2023-05-05", "Dýri biðidagur"),
+        ("2023-05-18", "Kristi himmalsferðardagur"),
+        ("2023-05-28", "Hvítusunnudagur"),
+        ("2023-05-29", "Annar hvítusunnudagur"),
+        ("2023-06-05", "Grundlógardagur"),
+        ("2023-07-28", "Ólavsøkuaftan"),
+        ("2023-07-29", "Ólavsøkudagur"),
+        ("2023-12-24", "Jólaaftan"),
+        ("2023-12-25", "Jóladagur"),
+        ("2023-12-26", "Annar jóladagur"),
+        ("2023-12-31", "Nýggjársaftan"),
+    ]
+
     def test_country_aliases(self):
         self.assertAliases(FaroeIslands, FO)
 
@@ -33,47 +53,9 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
         self.assertHolidayName("Ólavsøkudagur", (f"{year}-07-29" for year in range(1990, 2050)))
 
     def test_2023(self):
-        self.assertHolidays(
-            FaroeIslands(categories=(PUBLIC, HALF_DAY)),
-            ("2023-01-01", "Nýggjársdagur"),
-            ("2023-04-06", "Skírhósdagur"),
-            ("2023-04-07", "Langifríggjadagur"),
-            ("2023-04-09", "Páskadagur"),
-            ("2023-04-10", "Annar páskadagur"),
-            ("2023-04-25", "Flaggdagur"),
-            ("2023-05-05", "Dýri biðidagur"),
-            ("2023-05-18", "Kristi himmalsferðardagur"),
-            ("2023-05-28", "Hvítusunnudagur"),
-            ("2023-05-29", "Annar hvítusunnudagur"),
-            ("2023-06-05", "Grundlógardagur"),
-            ("2023-07-28", "Ólavsøkuaftan"),
-            ("2023-07-29", "Ólavsøkudagur"),
-            ("2023-12-24", "Jólaaftan"),
-            ("2023-12-25", "Jóladagur"),
-            ("2023-12-26", "Annar jóladagur"),
-            ("2023-12-31", "Nýggjársaftan"),
-        )
+        self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *self.holidays_2023)
 
     def test_2023_and_localization(self):
-        holidays_2023 = [
-            ("2023-01-01", "Nýggjársdagur"),
-            ("2023-04-06", "Skírhósdagur"),
-            ("2023-04-07", "Langifríggjadagur"),
-            ("2023-04-09", "Páskadagur"),
-            ("2023-04-10", "Annar páskadagur"),
-            ("2023-04-25", "Flaggdagur"),
-            ("2023-05-05", "Dýri biðidagur"),
-            ("2023-05-18", "Kristi himmalsferðardagur"),
-            ("2023-05-28", "Hvítusunnudagur"),
-            ("2023-05-29", "Annar hvítusunnudagur"),
-            ("2023-06-05", "Grundlógardagur"),
-            ("2023-07-28", "Ólavsøkuaftan"),
-            ("2023-07-29", "Ólavsøkudagur"),
-            ("2023-12-24", "Jólaaftan"),
-            ("2023-12-25", "Jóladagur"),
-            ("2023-12-26", "Annar jóladagur"),
-            ("2023-12-31", "Nýggjársaftan"),
-        ]
+        self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *self.holidays_2023)
+        self.assertLocalizedHolidays(*self.holidays_2023)
 
-        self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *holidays_2023)
-        self.assertLocalizedHolidays(*holidays_2023)
