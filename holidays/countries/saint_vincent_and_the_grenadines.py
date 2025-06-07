@@ -25,8 +25,6 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
         * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/>
-        * <https://svgtourism.com/plan-your-trip/public-holidays/>
-        * <https://www.gov.vc/index.php/government/laws-of-svg>
         * <https://www.timeanddate.com/holidays/saint-vincent-and-the-grenadines/national-spiritual-baptist-day>
     """
 
