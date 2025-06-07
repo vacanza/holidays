@@ -966,6 +966,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Nauru</td>
+<td>NR</td>
+<td></td>
+<td><strong>en_AU</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
