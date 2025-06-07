@@ -47,12 +47,12 @@ class Philippines(
         * [Proclamation No. 944/2020](https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
         * [Proclamation No. 985/2020](https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/)
         * [Proclamation No. 90/2022](https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/)
-        * [Proclamation No. 665/2024](https://www.officialgazette.gov.ph/2024/08/15/proclamation-no-665-s-2024/)
-        * [Proclamation No. 729/2024](https://www.officialgazette.gov.ph/2024/10/30/proclamation-no-729-s-2024/)
+        * [Proclamation No. 665/2024](https://archive.org/details/20241015-proc-665-frm)
+        * [Proclamation No. 729/2024](https://archive.org/details/20241030-proc-729-frm)
         * [Nationwide holidays 2018-2025](https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
-        * [2025 Eid'l Fitr and Eid'l Adha Tentative Date](https://melbournepcg.org/?page_id=9779)
-        * [Proclamation No. 839/2025](https://www.officialgazette.gov.ph/2025/03/20/proclamation-no-839-s-2025/)
-        * [Proclamation No. 878/2025](https://www.officialgazette.gov.ph/2025/05/06/proclamation-no-878-s-2025/)
+        * [Proclamation No. 839/2025](https://archive.org/details/20250320-proc-839-frm_202506)
+        * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
+        * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
     """
 
     country = "PH"
