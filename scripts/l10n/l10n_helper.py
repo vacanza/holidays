@@ -18,7 +18,6 @@
 import argparse
 import csv
 import importlib
-import inspect
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -68,7 +67,6 @@ class LocalizationHelper:
 
     def create_po_files(self):
         sys.path.append(f"{Path.cwd()}")  # Make holidays visible.
-        from holidays.holiday_base import HolidayBase
         from holidays.registry import COUNTRIES
 
         class_name = None
@@ -80,13 +78,8 @@ class LocalizationHelper:
             print(f"Class for country code {self.country_code} not found!")
             sys.exit(1)
 
-        module = f"holidays.countries.{module_name}"
-        for _, cls in inspect.getmembers(importlib.import_module(module), inspect.isclass):
-            if issubclass(cls, HolidayBase) and cls.__name__ == class_name:
-                supported_languages = getattr(cls, "supported_languages")
-                default_language = getattr(cls, "default_language")
-                docstring = cls.__doc__
-                break
+        cls = getattr(importlib.import_module(f"holidays.countries.{module_name}"), class_name)
+        docstring = cls.__doc__
 
         header = Path("docs/file_header.txt").read_text(encoding="utf-8").split("\n")
         header = [f"# {line}" if line else "#" for line in header]
@@ -98,7 +91,7 @@ class LocalizationHelper:
         pot_file_path = locale_path / "pot" / f"{self.country_code}.pot"
         pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
 
-        for language in supported_languages:
+        for language in cls.supported_languages:
             po_directory = locale_path / f"{language}" / "LC_MESSAGES"
             po_directory.mkdir(parents=True, exist_ok=True)
             po_file_path = po_directory / f"{self.country_code}.po"
@@ -110,7 +103,7 @@ class LocalizationHelper:
             file_content = po_file_path.read_text(encoding="utf-8").split("\n")
             if file_content[0] != "# SOME DESCRIPTIVE TITLE":
                 continue
-            loc_desc = f" {language} localization" if language != default_language else ""
+            loc_desc = f" {language} localization" if language != cls.default_language else ""
             title = f"# {country_name} holidays{loc_desc}."
             file_content = header + [title, "#"] + file_content[4:]
             po_file_path.write_text("\n".join(file_content), encoding="utf-8", newline="\n")
