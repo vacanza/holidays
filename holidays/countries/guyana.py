@@ -56,7 +56,7 @@ class Guyana(
     start_year = 1968
     supported_languages = ("en_GY", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
