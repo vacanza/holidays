@@ -173,12 +173,12 @@ class HungaryStaticHolidays:
         ),
         1997: (
             (MAY, 2, APR, 26),
-            (OCT, 24, OCT 18),
+            (OCT, 24, OCT, 18),
             (DEC, 24, DEC, 20),
         ),
         1998: (
             (JAN, 2, JAN, 10),
-            (AUG, 21, AUG 15),
+            (AUG, 21, AUG, 15),
             (DEC, 24, DEC, 19),
         ),
         1999: (
