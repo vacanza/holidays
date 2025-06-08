@@ -38,7 +38,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * <https://web.archive.org/web/20250427131243/https://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
         * <https://web.archive.org/web/20250112160822/https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
         * <https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays>
-        * <https://www.gov.nu.ca/en/print/pdf/node/52266>
+        * <https://archive.org/details/nunavut-day-designated-as-a-general-holiday-start-date>
         * <https://web.archive.org/web/20250116143344/https://www.officeholidays.com/countries/canada>
         * <https://web.archive.org/web/20250425120843/https://www.timeanddate.com/holidays/canada>
         * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
