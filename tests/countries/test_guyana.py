@@ -130,7 +130,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             "2025-03-14",
             "2026-03-03",
         )
-        self.assertHolidayName(name, range(2005, 2026))
+        self.assertHolidayName(name, range(2005, 2027))
         dt = ("2017-03-13",)
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
