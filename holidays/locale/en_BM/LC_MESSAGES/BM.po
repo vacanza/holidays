@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Bermuda holidays en_BM localization.
+# Bermuda holidays.
 #
 msgid ""
 msgstr ""
