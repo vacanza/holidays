@@ -20,7 +20,7 @@ class TestSenegal(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1964, 2050)
-        super().setUpClass(Senegal, years=years)
+        super().setUpClass(Senegal, years=years, years_non_observed=years)
         cls.no_estimated_holidays = Senegal(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
@@ -36,35 +36,31 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
 
     def test_new_years_day(self):
-        name = "Jour de l'an"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1964, 2050)))
+        self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in range(1964, 2050)))
 
     def test_confederation_day(self):
         name = "Fête de la Confédération de la Sénégambie"
         self.assertHolidayName(name, (f"{year}-02-01" for year in range(1983, 1990)))
-        self.assertNoHolidayName(name, range(1964, 1983))
-        self.assertNoHolidayName(name, range(1990, 2050))
+        self.assertNoHolidayName(name, range(1964, 1983), range(1990, 2050))
 
     def test_independence_day(self):
-        name = "Fête de l'Indépendance"
-        self.assertHolidayName(name, (f"{year}-07-14" for year in range(1964, 1975)))
-        self.assertHolidayName(name, (f"{year}-04-04" for year in range(1975, 2050)))
+        self.assertHolidayName(
+            "Fête de l'Indépendance",
+            (f"{year}-07-14" for year in range(1964, 1975)),
+            (f"{year}-04-04" for year in range(1975, 2050)),
+        )
 
     def test_labor_day(self):
-        name = "Fête du Travail"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1964, 2050)))
+        self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in range(1964, 2050)))
 
     def test_assumption_of_mary_day(self):
-        name = "Assomption"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(1964, 2050)))
+        self.assertHolidayName("Assomption", (f"{year}-08-15" for year in range(1964, 2050)))
 
     def test_all_saints_day(self):
-        name = "Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1964, 2050)))
+        self.assertHolidayName("Toussaint", (f"{year}-11-01" for year in range(1964, 2050)))
 
     def test_christmas_day(self):
-        name = "Noël"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1964, 2050)))
+        self.assertHolidayName("Noël", (f"{year}-12-25" for year in range(1964, 2050)))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
@@ -113,7 +109,7 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1983, 2050))
-        self.assertNoHolidayName(name, range(1964, 1983))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1964, 1983))
 
     def test_grand_magal_of_touba(self):
         name = "Grand Magal de Touba"
@@ -126,7 +122,7 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(2014, 2050))
-        self.assertNoHolidayName(name, range(1964, 2014))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1964, 2014))
 
     def test_mawlid_day(self):
         name = "Journée du Maouloud"
@@ -171,7 +167,11 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.no_estimated_holidays, range(1964, 2050))
-        obs_dt = ("2022-07-11",)
+        obs_dt = (
+            "2016-09-12",
+            "2019-08-12",
+            "2022-07-11",
+        )
         self.assertHolidayName(f"{name} (observé)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
@@ -201,7 +201,7 @@ class TestSenegal(CommonCountryTests, TestCase):
             ("2024-04-04", "Independence Day"),
             ("2024-04-10", "Eid al-Fitr"),
             ("2024-05-01", "Labor Day"),
-            ("2024-05-09", "Ascension"),
+            ("2024-05-09", "Ascension Day"),
             ("2024-05-20", "Whit Monday"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-07-17", "Ashura"),
@@ -209,5 +209,5 @@ class TestSenegal(CommonCountryTests, TestCase):
             ("2024-08-23", "Grand Magal of Touba"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-11-01", "All Saints' Day"),
-            ("2024-12-25", "Christmas"),
+            ("2024-12-25", "Christmas Day"),
         )

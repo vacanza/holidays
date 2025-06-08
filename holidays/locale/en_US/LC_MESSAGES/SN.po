@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Senegal holidays.
+# Senegal holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -54,7 +54,7 @@ msgstr "All Saints' Day"
 
 #. Christmas Day.
 msgid "Noël"
-msgstr "Christmas"
+msgstr "Christmas Day"
 
 #. Easter Monday.
 msgid "Lundi de Pâques"
@@ -100,7 +100,7 @@ msgstr "Eid al-Adha"
 
 #. Ascension Day.
 msgid "Jeudi de l'Ascension"
-msgstr "Ascension"
+msgstr "Ascension Day"
 
 #. Senegambia Confederation Day.
 msgid "Fête de la Confédération de la Sénégambie"
