@@ -27,12 +27,12 @@ class Tonga(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     """Tonga holidays.
 
     References:
-        * [1988 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf)
-        * [1988 Rev.](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_1.pdf)
+        * [1988 Rev. (to)](https://archive.org/details/laokihengaahi-aho-malolo-faka-puleanga-3x/LaokihengaahiAhoMaloloFaka-Puleanga_1x.pdf)
+        * [1988 Rev.](https://archive.org/details/tonga-public-holidays-act-1)
         * [Act 10 of 2010](https://web.archive.org/web/20241217174606/http://www.paclii.org/to/legis/num_act/pha2010243/)
         * [Act 5 of 2013](https://web.archive.org/web/20250128143333/http://www.paclii.org/to/legis/num_act/pha2013243/)
         * [2016 Rev.](https://web.archive.org/web/20250329175511/https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_2.pdf)
-        * [2020 Rev. (to)](https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf)
+        * [2020 Rev. (to)](https://archive.org/details/laokihengaahi-aho-malolo-faka-puleanga-3x/LaokihengaahiAhoMaloloFaka-Puleanga_3x.pdf)
         * [2020 Rev.](https://web.archive.org/web/20240531232255/https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1919/1919-0008/PublicHolidaysAct_3.pdf)
 
     Checked With:
