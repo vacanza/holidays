@@ -59,3 +59,4 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
         self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *self.holidays_2023)
         self.assertLocalizedHolidays(*self.holidays_2023)
 
+
