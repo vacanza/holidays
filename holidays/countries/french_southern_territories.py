@@ -36,10 +36,6 @@ class HolidaysTF(France):
     # This overseas territory was separated in 1955.
     start_year = 1956
 
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "TF"
-        super()._populate_public_holidays()
-
 
 class FrenchSouthernTerritories(HolidaysTF):
     pass

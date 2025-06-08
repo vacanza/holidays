@@ -27,10 +27,10 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         * <https://web.archive.org/web/20250507123116/https://www.timeanddate.com/holidays/togo/>
         * <https://web.archive.org/web/20250507123425/https://www.goethe.de/ins/tg/fr/ueb/fer.html>
         * <https://web.archive.org/web/20250507123619/https://www.republiquetogolaise.com/politique/2309-3579-23-septembre-le-togo-rend-hommage-a-ses-martyrs>
-        * <https://web.archive.org/web/20250507123840/https://islam.zmo.de/s/westafrica/item/25841#?xywh=-405%2C-94%2C2376%2C1868>
+        * <https://web.archive.org/web/20250507123840/https://islam.zmo.de/s/westafrica/item/25841#?xywh=-405,-94,2376,1868>
         * <https://en.wikipedia.org/wiki/1986_Togolese_coup_attempt>
         * <https://web.archive.org/web/20250507131725/https://www.rfi.fr/fr/afrique/20140112-togo-le-13-janvier-est-plus-jour-fete>
-        * <https://web.archive.org/web/20250507124528/https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1641%2C0%2C4303%2C2363>
+        * <https://web.archive.org/web/20250507124528/https://islam.zmo.de/s/afrique_ouest/item/25800#?xywh=-1641,0,4303,2363>
         * <https://web.archive.org/web/20231202052731/https://www.holidayscalendar.com/event/anniversary-of-the-failed-attack-on-lome/>
 
     Ramadan start dates:

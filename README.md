@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 177 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 185 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -152,6 +152,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>fa_AF</strong>, ps_AF</td>
 <td></td>
+</tr>
+<tr>
+<td>Aland Islands</td>
+<td>AX</td>
+<td>Can also be loaded as country FI, subdivision 01</td>
+<td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
+<td>UNOFFICIAL, WORKDAY</td>
 </tr>
 <tr>
 <td>Albania</td>
@@ -287,6 +294,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Benin</td>
+<td>BJ</td>
+<td></td>
+<td>en_US, <strong>fr_BJ</strong></td>
+<td>WORKDAY</td>
+</tr>
+<tr>
+<td>Bermuda</td>
+<td>BM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Bolivia</td>
 <td>BO</td>
 <td>Departments: B (El Beni), C (Cochabamba), H (Chuquisaca), L (La Paz), N (Pando), O (Oruro), P (Potosí), S (Santa Cruz), T (Tarija)</td>
@@ -410,6 +431,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CG</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Cook Islands</td>
+<td>CK</td>
+<td></td>
+<td><strong>en_CK</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -541,9 +569,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Finland</td>
 <td>FI</td>
-<td></td>
-<td>en_US, <strong>fi</strong>, sv_FI, uk</td>
-<td>UNOFFICIAL</td>
+<td>Regions: 01 (Ahvenanmaan maakunta, Landskapet Åland), 02 (Etelä-Karjala, Södra Karelen), 03 (Etelä-Pohjanmaa, Södra Österbotten), 04 (Etelä-Savo, Södra Savolax), 05 (Kainuu, Kajanaland), 06 (Kanta-Häme, Egentliga Tavastland), 07 (Keski-Pohjanmaa, Mellersta Österbotten), 08 (Keski-Suomi, Mellersta Finland), 09 (Kymenlaakso, Kymmenedalen), 10 (Lappi, Lappland), 11 (Pirkanmaa, Birkaland), 12 (Pohjanmaa, Österbotten), 13 (Pohjois-Karjala, Norra Karelen), 14 (Pohjois-Pohjanmaa, Norra Österbotten), 15 (Pohjois-Savo, Norra Savolax), 16 (Päijät-Häme, Päijänne-Tavastland), 17 (Satakunta), 18 (Uusimaa, Nyland), 19 (Varsinais-Suomi, Egentliga Finland)</td>
+<td>en_US, <strong>fi</strong>, sv_FI, th, uk</td>
+<td>UNOFFICIAL, WORKDAY</td>
 </tr>
 <tr>
 <td>France</td>
@@ -629,7 +657,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td></td>
 </tr>
-<tr>
 <tr>
 <td>Guinea</td>
 <td>GN</td>
@@ -890,6 +917,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Micronesia</td>
+<td>FM</td>
+<td>States: KSA (Kosrae, Kusaie), PNI (Pohnpei, Ponape), TRK (Chuuk, Truk), YAP (Yap)</td>
+<td><strong>en_FM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Moldova</td>
 <td>MD</td>
 <td></td>
@@ -958,6 +992,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Subdivisions: AN (Costa Caribe Norte), AS (Costa Caribe Sur), BO (Boaco), CA (Carazo), CI (Chinandega), CO (Chontales), ES (Estelí), GR (Granada), JI (Jinotega), LE (León), MD (Madriz), MN (Managua), MS (Masaya), MT (Matagalpa), NS (Nueva Segovia), RI (Rivas), SJ (Río San Juan)</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Niger</td>
+<td>NE</td>
+<td></td>
+<td>en_US, <strong>fr_NE</strong></td>
+<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Nigeria</td>
@@ -1236,7 +1277,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Thailand</td>
 <td>TH</td>
 <td></td>
-<td>en_US, <strong>th</strong></td>
+<td>en_US, <strong>th</strong>, uk</td>
 <td>ARMED_FORCES, BANK, GOVERNMENT, SCHOOL, WORKDAY</td>
 </tr>
 <tr>
@@ -1280,6 +1321,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Turks and Caicos Islands</td>
+<td>TC</td>
+<td></td>
+<td><strong>en_TC</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Tuvalu</td>
@@ -1378,6 +1426,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Can also be loaded as country US, subdivision VI</td>
 <td></td>
 <td>GOVERNMENT, UNOFFICIAL</td>
+</tr>
+<tr>
+<td>Yemen</td>
+<td>YE</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Zambia</td>

@@ -115,7 +115,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Birthday of the Buddha is a Buddhist festival that is celebrated in
         most of East Asia and South Asia commemorating the birth of Gautama
         Buddha, who was the founder of Buddhism.
-        https://en.wikipedia.org/wiki/Buddha%27s_Birthday
+        https://en.wikipedia.org/wiki/Buddha's_Birthday
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.buddha_birthday_date(self._year)
@@ -126,7 +126,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Add Chinese New Year's Eve (last day of 12th lunar month).
 
         Chinese New Year's Eve is the day before the Chinese New Year.
-        https://en.wikipedia.org/wiki/Chinese_New_Year%27s_Eve
+        https://en.wikipedia.org/wiki/Chinese_New_Year's_Eve
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-1
@@ -235,7 +235,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
 
         Vietnamese festival held annually from the 8th to the 11th day of the
         3rd lunar month in honour of the Hùng Kings.
-        https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
+        https://en.wikipedia.org/wiki/Hùng_Kings'_Festival
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.hung_kings_date(self._year)

@@ -45,8 +45,7 @@ To participate in the sponsorship program, contributors must:
 
 - Have successfully implemented at least one entity’s holiday support (not necessarily through the sponsorship program)
 - Not be currently receiving payment through other structured coding programs (e.g., GSoC, Outreachy)
-- Have a **GitHub Sponsors account set up and eligible to receive payments** (check [GitHub’s supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
-- Ensure their country is eligible to receive payouts under GitHub Sponsors requirements
+- Have a GitHub Sponsors account set up and eligible to receive payments (check [GitHub’s supported countries](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#supported-regions-for-github-sponsors))
 
 ### Eligibility Notes
 
@@ -55,7 +54,7 @@ To participate in the sponsorship program, contributors must:
 
 ## Application and Selection Process
 
-To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [sponsorship](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3A%22sponsorship%22), [sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Amedium), [sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state%3Aopen%20label%3Asponsorship%3Ahard)). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
+To apply for a sponsored issue, simply comment on the issue expressing your interest in working on it. Please make sure the issue is labeled as eligible for the program (e.g. [sponsorship](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship), [sponsorship-medium](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship:medium), [sponsorship-hard](https://github.com/vacanza/holidays/issues?q=state:open%20label:sponsorship:hard). Each sponsored issue will remain open for applications for at least **7 days** to give all eligible contributors a fair opportunity to participate.
 
 Before applying, please ensure that you meet the eligibility requirements:
 
@@ -64,6 +63,8 @@ Before applying, please ensure that you meet the eligibility requirements:
 If more than one eligible contributor expresses interest, we will review each applicant’s prior contributions and sponsorship participation history. Priority will be given to **new eligible contributors** who have not yet participated in the sponsorship program. This helps ensure a fair and balanced distribution of sponsored tasks across the community.
 
 A previously sponsored contributor will not be assigned to a new task if there is another eligible contributor who has not yet had the opportunity to participate.
+
+All applications from eligible contributors will be considered, and the issue will be assigned to one selected contributor for sponsored work. Only after the issue is officially assigned (i.e., your GitHub username appears in the assignee field) should work begin. Starting work prematurely does not provide any advantage during the selection process. If you are unsure about the assignment status or have any questions, please contact the project maintainers (see the [Contact](#contact) section).
 
 ## Payment Process
 
@@ -81,19 +82,19 @@ Your contributions help expand our budget, allowing us to sponsor more contribut
 
 ## FAQ
 
-**Q: GitHub payment isn't available in my country. What are my options?**
+**Q: GitHub payment isn't available in my country. What are my options?**  
 **A:** We rely on GitHub Sponsors payments as our main payment option. We may consider offering an alternative crypto payment (USDT) on a case-by-case basis.
 
-**Q: What is the difference between medium and hard tasks?**
+**Q: What is the difference between medium and hard tasks?**  
 **A:**
 
 - Medium task example: [PR #2525](https://github.com/vacanza/holidays/pull/2525)
 - Hard task example: [PR #2386](https://github.com/vacanza/holidays/pull/2386)
 
-**Q: Can I work on multiple sponsored tasks simultaneously?**
+**Q: Can I work on multiple sponsored tasks simultaneously?**  
 **A:** No, one person can work on a single sponsorship-eligible issue at a time.
 
-**Q: What happens if I cannot complete my task within the deadline?**
+**Q: What happens if I cannot complete my task within the deadline?**  
 **A:** We provide reasonable deadlines:
 
 - Any task must be completed within 6 weeks of the start date
@@ -101,19 +102,19 @@ Your contributions help expand our budget, allowing us to sponsor more contribut
 
 If these requirements are not met, the contributor will be unassigned and **no payment will be issued**.
 
-**Q: Are there any tax implications I should be aware of?**
+**Q: Are there any tax implications I should be aware of?**  
 **A:** Contributors are entirely responsible for handling any applicable taxes in their local jurisdiction.
 
-**Q: How are tasks prioritized for sponsorship?**
+**Q: How are tasks prioritized for sponsorship?**  
 **A:** We prioritize based on existing community interest. If no specific entity has been requested, we typically proceed alphabetically or focus on uncovered one-off entities.
 
-**Q: Are my previous contributions eligible for sponsorship payments?**
+**Q: Are my previous contributions eligible for sponsorship payments?**  
 **A:** No, previously submitted pull requests are not eligible for sponsorship. Only contributions linked to issues explicitly labeled with sponsorship are considered part of the program. These issues will also include a label indicating their complexity or the associated payment amount.
 
-**Q: What are the acceptance criteria for a sponsored task to be eligible for payment?**
+**Q: What are the acceptance criteria for a sponsored task to be eligible for payment?**  
 **A:** To be eligible for payment, the pull request must be successfully merged into the dev branch. This typically requires 100% test coverage (in line with the current project standard) and adherence to strict code style and quality guidelines. Please refer to our contributing guide and recently merged PRs for examples. These standards help maintain the high quality of a project used by millions, with over 10 million downloads per month.
 
-**Q: Is there a limit to the number of sponsorship-eligible pull requests a contributor can complete per month?**
+**Q: Is there a limit to the number of sponsorship-eligible pull requests a contributor can complete per month?**  
 **A:** There is no fixed limit on the number of sponsorship-eligible pull requests a contributor can complete per month. However, to ensure fair distribution of available tasks, contributors may only work on one sponsored task at a time. Priority is given to new eligible contributors who have not yet participated in the program. As long as you meet the eligibility criteria and follow the assignment process, you’re welcome to continue contributing.
 
 ## Contact

@@ -315,7 +315,7 @@ msgstr ""
 msgid "วันวิทยาศาสตร์แห่งชาติ"
 msgstr ""
 
-#. HM King Ramkamhaeng Memorial Day.
+#. HM King Ramkhamhaeng Memorial Day.
 msgid "วันพ่อขุนรามคำแหงมหาราช"
 msgstr ""
 

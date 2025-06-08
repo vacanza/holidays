@@ -41,7 +41,7 @@ class Argentina(
     """Argentina holidays.
 
     References:
-        * [Spanish Wikipedia](https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina)
+        * [Spanish Wikipedia](https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Argentina)
         * [Decree-Law 2446](https://www.argentina.gob.ar/normativa/nacional/decreto_ley-2446-1956-161122/texto)
         * [Law 21329](https://www.argentina.gob.ar/normativa/nacional/ley-21329-65453/texto)
         * [Law 22655](https://www.argentina.gob.ar/normativa/nacional/ley-22655-140416/texto)
@@ -814,7 +814,7 @@ class ArgentinaStaticHolidays:
 
     Special Holidays References:
         * [Decree 615/2010](https://www.argentina.gob.ar/normativa/nacional/decreto-615-2010-166825/texto)
-        * [Joint Resolution 1159/2010](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-1159-2010-173748/texto)
+        * [Joint Resolution 1159/2010](https://www.argentina.gob.ar/normativa/nacional/resolución-1159-2010-173748/texto)
         * [Law 26721](https://www.argentina.gob.ar/normativa/nacional/ley-26721-191835/texto)
         * [Law 26763](https://www.argentina.gob.ar/normativa/nacional/ley-26763-201915/texto)
         * [Law 26837](https://www.argentina.gob.ar/normativa/nacional/ley-26837-207405/texto)
