@@ -138,7 +138,7 @@ class HungaryStaticHolidays:
         * [2022](https://njt.hu/jogszabaly/2021-23-20-7Q)
         * [2024](https://njt.hu/jogszabaly/2023-15-20-8P)
         * [2025](https://njt.hu/jogszabaly/2024-11-20-2X)
-        * [2026](https://jogkodex.hu/jsz/2025_10_ngm_rendelet_5591314)
+        * [2026](https://web.archive.org/web/20250526083742/https://jogkodex.hu/jsz/2025_10_ngm_rendelet_5591314)
     """
 
     # Substituted date format.
