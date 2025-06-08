@@ -414,7 +414,7 @@ def main() -> None:
         default="if-missing",
         help="Archiving policy: 'if-missing' (only archive if no capture exists), "
         "'always' (always submit for archiving), 'never' (only search for "
-        "exising captures)",
+        "existing captures)",
     )
 
     mode_group = parser.add_mutually_exclusive_group()
