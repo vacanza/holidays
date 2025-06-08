@@ -58,5 +58,3 @@ class TestFaroeIslands(CommonCountryTests, TestCase):
     def test_2023_and_localization(self):
         self.assertHolidays(FaroeIslands(categories=(PUBLIC, HALF_DAY)), *self.holidays_2023)
         self.assertLocalizedHolidays(*self.holidays_2023)
-
-
