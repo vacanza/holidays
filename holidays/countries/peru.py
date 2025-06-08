@@ -20,7 +20,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Peru holidays.
 
     References:
-        * <https://www.gob.pe/feriados>
+        * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
     """
 

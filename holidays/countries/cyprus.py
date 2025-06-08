@@ -23,7 +23,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus>
-        * <https://www.centralbank.cy/en/the-bank/working-hours-bank-holidays>
+        * <https://web.archive.org/web/20241127121516/https://www.centralbank.cy/en//the-bank/working-hours-bank-holidays>
     """
 
     country = "CY"
