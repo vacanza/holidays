@@ -117,13 +117,13 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
-        * [2002](https://jogkodex.hu/jsz/2001_25_gm_rendelet_9200619)
-        * [2003](https://jogkodex.hu/jsz/2002_2_fmm_rendelet_1831209)
-        * [2004](https://jogkodex.hu/jsz/2003_9_fmm_rendelet_8666269)
-        * [2005](https://jogkodex.hu/jsz/2004_25_fmm_rendelet_4309634)
-        * [2007](https://jogkodex.hu/jsz/2006_4_szmm_rendelet_8628960)
-        * [2008](https://jogkodex.hu/jsz/2007_27_szmm_rendelet_3904252)
-        * [2009](https://jogkodex.hu/jsz/2008_16_szmm_rendelet_7668376)
+        * [2002](https://web.archive.org/web/20250526071659/https://jogkodex.hu/jsz/2001_25_gm_rendelet_9200619)
+        * [2003](https://web.archive.org/web/20250526071517/https://jogkodex.hu/jsz/2002_2_fmm_rendelet_1831209)
+        * [2004](https://web.archive.org/web/20250526071310/https://jogkodex.hu/jsz/2003_9_fmm_rendelet_8666269)
+        * [2005](https://web.archive.org/web/20250526071135/https://jogkodex.hu/jsz/2004_25_fmm_rendelet_4309634)
+        * [2007](https://web.archive.org/web/20250526064108/https://jogkodex.hu/jsz/2006_4_szmm_rendelet_8628960)
+        * [2008](https://web.archive.org/web/20250526051643/https://jogkodex.hu/jsz/2007_27_szmm_rendelet_3904252)
+        * [2009](https://web.archive.org/web/20250526051816/https://jogkodex.hu/jsz/2008_16_szmm_rendelet_7668376)
         * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
         * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
         * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
