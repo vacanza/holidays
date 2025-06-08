@@ -1,0 +1,263 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from gettext import gettext as tr
+
+from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import (
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+)
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_NEXT_WORKDAY,
+    SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
+
+
+class Guyana(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    StaticHolidays,
+):
+    """Guyana holidays.
+
+    References:
+        * [Public Holidays Amendment Act 1967](https://parliament.gov.gy/documents/bills/11264-bill_6_of_1967_public_holidays.pdf)
+        * [Public Holidays Amendment Act 1969](https://parliament.gov.gy/documents/bills/11891-bill_26_of_1969_1.pdf)
+        * [Public Holidays Act Consolidated as of 2012](https://mola.gov.gy/laws/Volume%206%20Cap.%2018.01%20-%2023.011696968337.pdf)
+    """
+
+    country = "GY"
+    default_language = "en_GY"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
+    start_year = 1968
+    supported_languages = ("en_GY", "en_US")
+
+    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+        """
+        Args:
+            islamic_show_estimated:
+                Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+        """
+        ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, cls=GuyanaHinduHolidays)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self, cls=GuyanaIslamicHolidays, show_estimated=islamic_show_estimated
+        )
+        StaticHolidays.__init__(self, cls=GuyanaStaticHolidays)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        # New Year's Day.
+        self._add_observed(
+            self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_WORKDAY
+        )
+
+        if self._year <= 1969:
+            # Independence Day.
+            self._add_holiday_may_26(tr("Independence Day"))
+
+        if self._year >= 1970:
+            # Republic Day.
+            self._add_holiday_feb_23(tr("Republic Day"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Labour Day")))
+
+        # Commonwealth Day.
+        self._add_holiday_1st_mon_of_aug(tr("Commonwealth Day"))
+
+        # Christmas Day.
+        self._add_observed(
+            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
+
+        # Day after Christmas.
+        self._add_observed(
+            self._add_christmas_day_two(tr("Day after Christmas")), rule=SAT_SUN_TO_NEXT_MON_TUE
+        )
+
+        # Phagwah Day.
+        self._add_observed(self._add_holi(tr("Phagwah Day")))
+
+        # Deepavali Day.
+        self._add_observed(self._add_diwali(tr("Deepavali Day")))
+
+        # Mawlid Day.
+        for dt in self._add_mawlid_day(tr("Youman Nabi Day")):
+            self._add_observed(dt)
+
+        # Eid al-Adha Day.
+        for dt in self._add_eid_al_adha_day(tr("Eid-Ul-Azha Day")):
+            self._add_observed(dt)
+
+
+class GY(Guyana):
+    pass
+
+
+class GUY(Guyana):
+    pass
+
+
+class GuyanaHinduHolidays(_CustomHinduHolidays):
+    # https://www.timeanddate.com/holidays/guyana/phagwah
+    HOLI_DATES = {
+        2005: (MAR, 26),
+        2006: (MAR, 15),
+        2007: (MAR, 4),
+        2008: (MAR, 22),
+        2009: (MAR, 11),
+        2010: (MAR, 1),
+        2011: (MAR, 20),
+        2012: (MAR, 8),
+        2013: (MAR, 27),
+        2014: (MAR, 17),
+        2015: (MAR, 6),
+        2016: (MAR, 23),
+        2017: (MAR, 12),
+        2018: (MAR, 2),
+        2019: (MAR, 21),
+        2020: (MAR, 10),
+        2021: (MAR, 28),
+        2022: (MAR, 18),
+        2023: (MAR, 7),
+        2024: (MAR, 25),
+        2025: (MAR, 14),
+        2026: (MAR, 3),
+    }
+
+    # https://www.timeanddate.com/holidays/guyana/deepavali
+    DIWALI_DATES = {
+        2001: (OCT, 30),
+        2002: (OCT, 30),
+        2003: (OCT, 30),
+        2004: (OCT, 30),
+        2005: (OCT, 30),
+        2006: (OCT, 30),
+        2007: (OCT, 30),
+        2008: (OCT, 30),
+        2009: (OCT, 30),
+        2010: (OCT, 30),
+        2011: (OCT, 30),
+        2012: (OCT, 30),
+        2013: (OCT, 30),
+        2014: (OCT, 30),
+        2015: (OCT, 30),
+        2016: (OCT, 29),
+        2017: (OCT, 19),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+    }
+
+
+class GuyanaIslamicHolidays(_CustomIslamicHolidays):
+    # https://www.timeanddate.com/holidays/guyana/eid-al-adha
+    EID_AL_ADHA_DATES = {
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 2),
+        2005: (JAN, 21),
+        2006: ((JAN, 10), (DEC, 31)),
+        2007: (DEC, 20),
+        2008: (DEC, 9),
+        2009: (NOV, 28),
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 26),
+        2013: (OCT, 15),
+        2014: (OCT, 5),
+        2015: (SEP, 24),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 21),
+        2022: (JUL, 9),
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+    }
+
+    # https://www.timeanddate.com/holidays/guyana/prophet-birthday
+    MAWLID_DATES = {
+        2001: (JUN, 4),
+        2002: (MAY, 24),
+        2003: (MAY, 14),
+        2004: (MAY, 2),
+        2005: (APR, 21),
+        2006: (APR, 11),
+        2007: (MAR, 31),
+        2008: (MAR, 20),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
+        2011: (FEB, 16),
+        2012: (FEB, 5),
+        2013: (JAN, 24),
+        2014: (JAN, 14),
+        2015: ((JAN, 3), (DEC, 24)),
+        2016: (DEC, 12),
+        2017: (DEC, 1),
+        2018: (NOV, 21),
+        2019: (NOV, 10),
+        2020: (OCT, 29),
+        2021: (OCT, 19),
+        2022: (OCT, 9),
+        2023: (SEP, 28),
+        2024: (SEP, 16),
+        2025: (SEP, 5),
+    }
+
+
+class GuyanaStaticHolidays(StaticHolidays):
+    """Guyana special holidays.
+
+    References:
+        * [Public Holiday](https://officialgazette.gov.gy/images/gazette2020/feb/Extra_27FEBRUARY2020NotPholA.pdf)
+
+    """
+
+    special_public_holidays = {
+        # Public Holiday.
+        2020: (MAR, 2, tr("Public Holiday")),
+    }
