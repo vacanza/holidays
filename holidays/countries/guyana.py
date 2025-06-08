@@ -40,8 +40,8 @@ class Guyana(
     """Guyana holidays.
 
     References:
-        * [Public Holidays Amendment Act 1967](https://parliament.gov.gy/documents/bills/11264-bill_6_of_1967_public_holidays.pdf)
-        * [Public Holidays Amendment Act 1969](https://parliament.gov.gy/documents/bills/11891-bill_26_of_1969_1.pdf)
+        * [Public Holidays Amendment Act 1967](https://web.archive.org/web/20241125073357/https://parliament.gov.gy/documents/bills/11264-bill_6_of_1967_public_holidays.pdf)
+        * [Public Holidays Amendment Act 1969](https://web.archive.org/web/20250424211718/https://parliament.gov.gy/documents/bills/11891-bill_26_of_1969_1.pdf)
         * [Public Holidays Act Consolidated as of 2012](https://mola.gov.gy/laws/Volume%206%20Cap.%2018.01%20-%2023.011696968337.pdf)
     """
 
@@ -133,7 +133,7 @@ class GUY(Guyana):
 
 
 class GuyanaHinduHolidays(_CustomHinduHolidays):
-    # https://www.timeanddate.com/holidays/guyana/phagwah
+    # https://web.archive.org/web/20250324205940/https://www.timeanddate.com/holidays/guyana/phagwah
     HOLI_DATES = {
         2005: (MAR, 26),
         2006: (MAR, 15),
@@ -159,7 +159,7 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
         2026: (MAR, 3),
     }
 
-    # https://www.timeanddate.com/holidays/guyana/deepavali
+    # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
     DIWALI_DATES = {
         2001: (OCT, 30),
         2002: (OCT, 30),
@@ -190,7 +190,7 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
 
 
 class GuyanaIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/guyana/eid-al-adha
+    # https://web.archive.org/web/20250424074512/https://www.timeanddate.com/holidays/guyana/eid-al-adha
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -219,7 +219,7 @@ class GuyanaIslamicHolidays(_CustomIslamicHolidays):
         2025: (JUN, 7),
     }
 
-    # https://www.timeanddate.com/holidays/guyana/prophet-birthday
+    # https://web.archive.org/web/20241006104125/https://www.timeanddate.com/holidays/guyana/prophet-birthday
     MAWLID_DATES = {
         2001: (JUN, 4),
         2002: (MAY, 24),
@@ -253,7 +253,7 @@ class GuyanaStaticHolidays(StaticHolidays):
     """Guyana special holidays.
 
     References:
-        * [Public Holiday](https://officialgazette.gov.gy/images/gazette2020/feb/Extra_27FEBRUARY2020NotPholA.pdf)
+        * [Public Holiday](https://web.archive.org/web/20250207012131/https://officialgazette.gov.gy/images/gazette2020/feb/Extra_27FEBRUARY2020NotPholA.pdf)
 
     """
 
