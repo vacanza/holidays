@@ -29,6 +29,9 @@ class TestTF(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(HolidaysTF, FrenchSouthernTerritories, TF, ATF)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(FrenchSouthernTerritories(years=1955))
+
     def test_2022(self):
         self.assertHolidayDates(
             HolidaysTF(years=2022),
