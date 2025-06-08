@@ -1330,6 +1330,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Turks and Caicos Islands</td>
+<td>TC</td>
+<td></td>
+<td><strong>en_TC</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Tuvalu</td>
 <td>TV</td>
 <td>Town/Island Councils: FUN (Funafuti), NIT (Niutao), NKF (Nukufetau), NKL (Nukulaelae), NMA (Nanumea), NMG (Nanumaga, Nanumanga), NUI (Nui), VAI (Vaitupu)</td>
