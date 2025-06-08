@@ -117,7 +117,8 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
-        * [1991]() 7/1990. (XII. 27.) MüM rendelet - az 1991. évi munkaszüneti napok körüli munkarendről
+        * [1991]() 
+          7/1990. (XII. 27.) MüM rendelet - az 1991. évi munkaszüneti napok körüli munkarendről
           The data is taken from a payed online database: https://uj.jogtar.hu
         * [1992](https://web.archive.org/web/20250526085935/https://jogkodex.hu/jsz/1992_3_mum_rendelet_5937748)
         * [1993](https://web.archive.org/web/20250526090343/https://jogkodex.hu/jsz/1992_7_mum_rendelet_7815697)
@@ -128,7 +129,7 @@ class HungaryStaticHolidays:
         * [2001](https://web.archive.org/web/20250526094003/https://jogkodex.hu/jsz/2000_43_gm_rendelet_9845985)
           The online data for 2001 is incomplete. Probably due to error in digitalization. 
           The data is taken from a payed online database: https://uj.jogtar.hu
-          see also: https://www.economx.hu/belfold/a-munkaszuneti-napok-eve-lesz-a-2001-es-ev.57628.html
+          [see also](https://www.economx.hu/belfold/a-munkaszuneti-napok-eve-lesz-a-2001-es-ev.57628.html)
         * [2002](https://web.archive.org/web/20250526071659/https://jogkodex.hu/jsz/2001_25_gm_rendelet_9200619)
         * [2003](https://web.archive.org/web/20250526071517/https://jogkodex.hu/jsz/2002_2_fmm_rendelet_1831209)
         * [2004](https://web.archive.org/web/20250526071310/https://jogkodex.hu/jsz/2003_9_fmm_rendelet_8666269)
