@@ -31,7 +31,11 @@ class Senegal(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Senegal>
+        * [Law 63-51](https://www.dri.gouv.sn/loi-n%C2%B0-196351-du-3-juillet-1963)
         * [Law 74-52 - Observed holidays](https://www.dri.gouv.sn/sites/default/files/an-documents/LOI%20N1974%2052%20DU%204%20NOVEMBRE%201974.pdf)
+        * [Law 83-54](https://www.dri.gouv.sn/sites/default/files/LOI/1983/comP4%20loi%20decentralisation%20et%20travail/LOI%20N%20198354%20DU%2018%20FEVRIER%201983/LOI%20N%20198354%20DU%2018%20FEVRIER%201983.pdf)
+        * [Law 2013-06](https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/97261/SEN-97261.pdf)
+        * [Law 2018-1942](www.juriafrica.com/lex/decret-2018-1942-26-octobre-2018-48947.htm)
     """
 
     country = "SN"
@@ -64,28 +68,38 @@ class Senegal(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # Ashura.
-        self._add_ashura_day(tr("Achoura"))
+        if self._year >= 1983:
+            # Ashura.
+            self._add_ashura_day(tr("Tamxarit"))
 
-        # Grand Magal of Touba.
-        self._add_grand_magal_of_touba(tr("Grand Magal de Touba"))
+        if self._year >= 2014:
+            # Grand Magal of Touba.
+            self._add_grand_magal_of_touba(tr("Grand Magal de Touba"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maouloud"))
+        self._add_mawlid_day(tr("Journée du Maouloud"))
 
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Aïd al-Fitr")):
+        for dt in self._add_eid_al_fitr_day(tr("Journée de la Korité")):
             self._add_observed(dt)
 
         # Eid al-Adha.
-        for dt in self._add_eid_al_adha_day(tr("Aïd al-Adha")):
+        for dt in self._add_eid_al_adha_day(tr("Journée de la Tabaski")):
             self._add_observed(dt)
 
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'an"))
 
+        if self._year >= 1983 and self._year <= 1989:
+            # Senegambia Confederation Day.
+            self._add_holiday_feb_1(tr("Fête de la Confédération de la Sénégambie"))
+
         # Independence Day.
-        self._add_holiday_apr_4(tr("Fête de l'Indépendance"))
+        name = tr("Fête de l'Indépendance")
+        if self._year >= 1975:
+            self._add_holiday_apr_4(name)
+        else:
+            self._add_holiday_jul_14(name)
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
@@ -94,7 +108,7 @@ class Senegal(
         self._add_labor_day(tr("Fête du Travail"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Ascension"))
+        self._add_ascension_thursday(tr("Jeudi de l'Ascension"))
 
         # Whit Monday.
         self._add_whit_monday(tr("Lundi de Pentecôte"))

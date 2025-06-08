@@ -60,33 +60,13 @@ msgstr "Christmas"
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Ascension Day.
-msgid "Ascension"
-msgstr "Ascension"
-
 #. Whit Monday.
 msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
-#. Ashura.
-msgid "Achoura"
-msgstr "Ashura"
-
 #. Grand Magal of Touba.
 msgid "Grand Magal de Touba"
 msgstr "Grand Magal of Touba"
-
-#. Prophet's Birthday.
-msgid "Maouloud"
-msgstr "Prophet's Birthday"
-
-#. Eid al-Fitr.
-msgid "Aïd al-Fitr"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "Aïd al-Adha"
-msgstr "Eid al-Adha"
 
 #. %s (observed).
 #, c-format
@@ -101,3 +81,27 @@ msgstr "%s (observed, estimated)"
 #. Public holiday.
 msgid "Jour férié"
 msgstr "Public holiday"
+
+#. Ashura.
+msgid "Tamxarit"
+msgstr "Ashura"
+
+#. Prophet's Birthday.
+msgid "Journée du Maouloud"
+msgstr "Prophet's Birthday"
+
+#. Eid al-Fitr.
+msgid "Journée de la Korité"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Journée de la Tabaski"
+msgstr "Eid al-Adha"
+
+#. Ascension Day.
+msgid "Jeudi de l'Ascension"
+msgstr "Ascension"
+
+#. Senegambia Confederation Day.
+msgid "Fête de la Confédération de la Sénégambie"
+msgstr "Senegambia Confederation Day"
