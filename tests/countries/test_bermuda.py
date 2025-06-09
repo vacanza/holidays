@@ -237,3 +237,32 @@ class TestBermuda(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-05-24", "Bermuda Day"),
+            ("2024-06-17", "National Heroes Day"),
+            ("2024-08-01", "Emancipation Day"),
+            ("2024-08-02", "Mary Prince Day"),
+            ("2024-09-02", "Labour Day"),
+            ("2024-11-11", "Remembrance Day"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-05-24", "Bermuda Day"),
+            ("2024-06-17", "National Heroes Day"),
+            ("2024-08-01", "Emancipation Day"),
+            ("2024-08-02", "Mary Prince Day"),
+            ("2024-09-02", "Labor Day"),
+            ("2024-11-11", "Remembrance Day"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Boxing Day"),
+        )

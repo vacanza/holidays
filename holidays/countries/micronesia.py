@@ -38,9 +38,9 @@ class Micronesia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             * [Kosrae State Code, Section 2.501](https://web.archive.org/web/20250211055635/http://fsmlaw.org/kosrae/code/title02/t02c05.htm)
             * [Seventh Korsae State Legislature](https://web.archive.org/web/20241213115951/https://fsmlaw.org/kosrae/Law/pdf/123.pdf)
             * [Fourth Kosrae State Legislature](https://web.archive.org/web/20241213115949/https://fsmlaw.org/kosrae/Law/pdf/Kosrae%20State%20Law%201989-90.pdf)
-            * [State Law 4-32](https://www.kosraestatelegislature.com/4th-ksl-state-laws)
-            * [State Law 7-76](https://www.kosraestatelegislature.com/7th-ksl-state-laws)
-            * [State Law 9-50](https://www.kosraestatelegislature.com/9th-ksl-state-laws)
+            * [State Law 4-32](https://web.archive.org/web/20250211151328/https://www.kosraestatelegislature.com/4th-ksl-state-laws)
+            * [State Law 7-76](https://web.archive.org/web/20250211151710/https://www.kosraestatelegislature.com/7th-ksl-state-laws)
+            * [State Law 9-50](https://web.archive.org/web/20250430191523/https://www.kosraestatelegislature.com/9th-ksl-state-laws)
             * [State Law 13-79](https://web.archive.org/web/20241211232231/https://www.kosraestatelegislature.com/_files/ugd/f1e94d_cc244ef15bea4c74ba81cb1a4621c30f.pdf)
         * Pohnpei:
             * [State Code 2012](https://web.archive.org/web/20250209195119/https://fsmlaw.org/pohnpei/code/pdf/pohnpei%20state%202012%20code.pdf)

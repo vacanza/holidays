@@ -24,15 +24,15 @@ class Laos(ObservedHolidayBase, InternationalHolidays, StaticHolidays, ThaiCalen
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Laos>
-        * [Decree on Holidays No. 386 / Rev. 15.12.2017](https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf)
+        * [Decree on Holidays No. 386 / Rev. 15.12.2017](https://web.archive.org/web/20250427180756/https://juristact.weebly.com/uploads/1/0/9/9/109947087/d17_386.pdf)
 
     Checked with:
-        * <https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
-        * <https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
-        * <https://www.timeanddate.com/holidays/laos/>
-        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022>
-        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023>
-        * <https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024>
+        * <https://web.archive.org/web/20250414071145/https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf>
+        * <https://web.archive.org/web/20250414071156/https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf>
+        * <https://web.archive.org/web/20250414071331/https://www.timeanddate.com/holidays/laos/>
+        * <https://web.archive.org/web/20250414071244/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2022>
+        * <https://web.archive.org/web/20250414071349/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2023>
+        * <https://web.archive.org/web/20250414071245/https://www.bcel.com.la/bcel/bcel-calendar.html?y=2024>
         * <http://www.lsx.com.la/cal/getStockCalendar.do?lang=lo> (from 2011 onwards)
 
     !!! note "If Public Holiday falls on weekends, (in lieu) on workday"

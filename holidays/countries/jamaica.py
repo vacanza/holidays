@@ -24,7 +24,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
-        * <https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
+        * <https://web.archive.org/web/20241110125301/https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
     """
 
     country = "JM"

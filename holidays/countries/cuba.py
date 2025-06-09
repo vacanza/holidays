@@ -21,25 +21,25 @@ class Cuba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cuba>
-        * [1984 (DEC 28)](https://files.sld.cu/prevemi/files/2013/03/ley_49_codigo_trabajo_1984.pdf)
-        * [2007 (NOV 19)](https://www.gacetaoficial.gob.cu/sites/default/files/go_x_053_2007.pdf)
-        * [2013 (DEC 20)](https://www.gacetaoficial.gob.cu/es/ley-no-116-codigo-de-trabajo)
+        * [1984 (DEC 28)](https://web.archive.org/web/20240726190205/https://files.sld.cu/prevemi/files/2013/03/ley_49_codigo_trabajo_1984.pdf)
+        * [2007 (NOV 19)](https://web.archive.org/web/20220705173115/https://www.gacetaoficial.gob.cu/sites/default/files/go_x_053_2007.pdf)
+        * [2013 (DEC 20)](https://web.archive.org/web/20241125112840/http://www.gacetaoficial.gob.cu/es/ley-no-116-codigo-de-trabajo/)
 
     Certain holidays details:
         * Good Friday:
             Granted temporarily in 2012 and 2013, permanently granted in 2013 decree for 2014
             and onwards:
-                * <https://www.cnn.com/2012/03/31/world/americas/cuba-good-friday/index.html>
-                * <https://www.catholicnewsagency.com/news/29455/cuban-government-makes-good-friday-official-holiday>
+                * <https://web.archive.org/web/20250413192145/https://www.cnn.com/2012/03/31/world/americas/cuba-good-friday/index.html>
+                * <https://web.archive.org/web/20241005041855/https://www.catholicnewsagency.com/news/29455/cuban-government-makes-good-friday-official-holiday>
 
         * Christmas Day:
             In 1969, Christmas was cancelled for the sugar harvest but then was cancelled for good:
-                * <https://time.com/vault/issue/1969-11-07/page/44/>
+                * <https://web.archive.org/web/20250413192307/https://time.com/vault/issue/1969-11-07/page/44/>
             In 1997, Christmas was temporarily back for the Pope's visit:
-                * <http://www.cnn.com/WORLD/9712/15/castro.christmas/>
+                * <https://web.archive.org/web/20250427131226/https://www.cnn.com/WORLD/9712/15/castro.christmas/>
             In 1998, Christmas returns for good:
-                * <https://www.independent.co.uk/news/cuba-ends-its-30year-ban-on-christmas-1193525.html>
-                * <https://www.ilo.org/dyn/travail/docs/1320/DECRETO-LEY%20No.%20189-1998.pdf>
+                * <https://web.archive.org/web/20250413185514/https://www.independent.co.uk/news/cuba-ends-its-30year-ban-on-christmas-1193525.html>
+                * <https://web.archive.org/web/20220508094546/https://www.ilo.org/dyn/travail/docs/1320/DECRETO-LEY%20No.%20189-1998.pdf>
 
     For holidays that can be moved to a Monday if they fall on a Sunday, between 1984
     and 2013, the State Committee of Work and Social Security would determine if they

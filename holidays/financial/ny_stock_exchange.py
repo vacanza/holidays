@@ -37,11 +37,10 @@ class NewYorkStockExchange(
     """New York Stock Exchange holidays.
 
     References:
-        * <https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf>
-        * <https://www.nyse.com/markets/hours-calendars>
+        * <https://web.archive.org/web/20240118104341/https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf>
 
     Historical data:
-        * <https://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf>
+        * <https://web.archive.org/web/20221206064307/https://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf>
         * <https://web.archive.org/web/20211101162021/https://www.nyse.com/markets/hours-calendars>
     """
 
@@ -152,8 +151,8 @@ class NewYorkStockExchangeStaticHolidays:
     """New York Stock Exchange special holidays.
 
     References:
-        * <https://guides.loc.gov/presidents-portraits/chronological>
-        * <https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy>
+        * <https://web.archive.org/web/20250421093104/https://guides.loc.gov/presidents-portraits/chronological>
+        * <https://web.archive.org/web/20250208135423/https://www.presidency.ucsb.edu/documents/proclamation-3561-national-day-mourning-for-president-kennedy>
     """
 
     # Blizzard of 1888.

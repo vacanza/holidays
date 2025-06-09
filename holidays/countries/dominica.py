@@ -19,16 +19,16 @@ class Dominica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """Dominica holidays.
 
     References:
-        * <https://www.dominica.gov.dm/laws/chapters/chap19-10.pdf>
-        * <https://pressroomopm.gov.dm/notice-public-holiday-order-2022/>
+        * <https://web.archive.org/web/20241204154212/http://www.dominica.gov.dm/laws/chapters/chap19-10.pdf>
+        * <https://web.archive.org/web/20250427181829/https://pressroomopm.gov.dm/notice-public-holiday-order-2022/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Dominica>
-        * <https://dominica.gov.dm/laws/1998/sro1-1998.pdf>
+        * <https://web.archive.org/web/20220723095045/https://www.dominica.gov.dm/laws/1998/sro1-1998.pdf>
 
     Cross-Checked With:
-        * [2010](https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg)
-        * [2011-2020](https://dominicaconsulategreece.com/dominica/public-holidays/)
-        * <http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
-        * [2022-2024](https://dominica.gov.dm/about-dominica/public-holidays)
+        * [2010](https://web.archive.org/web/20240826101956/https://www.dominica-weekly.com/images/dominica-calendar-2010/1600-1280.jpg)
+        * [2011-2020](https://web.archive.org/web/20241112201134/https://dominicaconsulategreece.com/dominica/public-holidays/)
+        * <http://archive.today/2025.04.29-124436/http://www.q95da.com/news/q95-news-received-on-december-29-2020-at-731pm-the-official-public-holiday-calendar-for-2021-approved-by-the-government-of-dominica>
+        * [2022-2024](https://web.archive.org/web/20250407175225/https://dominica.gov.dm/about-dominica/public-holidays)
 
     While Labour Day is listed in the 1990 amendment as May 1st, this has, de facto, been
     made 1st Monday of May since at least 2010.
@@ -109,10 +109,10 @@ class DominicaStaticHolidays:
     """Dominica special holidays.
 
     References:
-        * <https://qppstudio-public-holidays-news.blogspot.com/2009/07/dominica-declares-july-28-public.html>
-        * <https://dominica.gov.dm/laws/2009/sro35-2009.pdf>
-        * <https://dominica.gov.dm/laws/2009/sro55-2009.pdf>
-        * <https://emonewsdm.com/thursday-september-19-2019-declared-public-holiday-in-dominica/>
+        * <https://web.archive.org/web/20231123061211/https://qppstudio-public-holidays-news.blogspot.com/2009/07/dominica-declares-july-28-public.html>
+        * <https://web.archive.org/web/20220723095040/https://www.dominica.gov.dm/laws/2009/sro35-2009.pdf>
+        * <https://web.archive.org/web/20220723095033/https://www.dominica.gov.dm/laws/2009/sro55-2009.pdf>
+        * <https://web.archive.org/web/20250427181820/https://emonewsdm.com/thursday-september-19-2019-declared-public-holiday-in-dominica/>
     """
 
     # Special Public Holidays.

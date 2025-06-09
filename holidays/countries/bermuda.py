@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars.gregorian import MAY, JUN, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
@@ -26,7 +28,7 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         * [Public Holidays Act 1947](https://web.archive.org/web/20250527163956/https://www.bermudalaws.bm/Laws/Consolidated%20Law/1947/Public%20Holidays%20Act%201947)
         * [Public Holidays Amendment Act 1999](https://web.archive.org/web/20250527163749/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/1999/Public%20Holidays%20Amendment%20Act%201999)
         * [Public Holidays Amendment Act 2008](https://web.archive.org/web/20250527163810/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2008/Public%20Holidays%20Amendment%20Act%202008)
-        * [Public Holidays Amendment (No. 2) Act 2009](https://web.archive.org/web/20250527163816/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2009/Public%20Holidays%20Amendment%20%28No.%202%29%20Act%202009)
+        * [Public Holidays Amendment (No. 2) Act 2009](https://web.archive.org/web/20250527163816/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2009/Public%20Holidays%20Amendment%20(No.%202)%20Act%202009)
         * [Public Holidays Amendment Act 2017](https://web.archive.org/web/20250527163819/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2017/Public%20Holidays%20Amendment%20Act%202017)
         * [Public Holidays Amendment Act 2020](https://web.archive.org/web/20250527163836/https://www.bermudalaws.bm/Laws/Annual%20Law/Acts/2020/Public%20Holidays%20Amendment%20Act%202020)
         * [Government of Bermuda](https://web.archive.org/web/20250530055854/https://www.gov.bm/public-holidays)
@@ -34,7 +36,10 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """
 
     country = "BM"
-    observed_label = "%s (observed)"
+    default_language = "en_BM"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    supported_languages = ("en_BM", "en_US")
     start_year = 1948
 
     def __init__(self, *args, **kwargs):
@@ -46,13 +51,13 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Bermuda Day.
-        name = "Bermuda Day"
+        name = tr("Bermuda Day")
         if self._year <= 2017:
             self._add_observed(self._add_holiday_may_24(name))
         elif self._year == 2019:
@@ -63,14 +68,14 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             self._add_holiday_3_days_prior_last_mon_of_may(name)
 
         # Queen's Birthday.
-        name = "Queen's Birthday"
+        name = tr("Queen's Birthday")
         if self._year <= 1999:
             self._add_holiday_3rd_mon_of_jun(name)
         elif self._year <= 2008:
             self._add_holiday_2_days_past_2nd_sat_of_jun(name)
 
         # National Heroes Day.
-        name = "National Heroes Day"
+        name = tr("National Heroes Day")
         if self._year == 2008:
             self._add_holiday_2nd_mon_of_oct(name)
         elif self._year >= 2009:
@@ -78,31 +83,37 @@ class Bermuda(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
         self._add_holiday_4_days_prior_1st_mon_of_aug(
             # Cup Match Day.
-            "Cup Match Day"
+            tr("Cup Match Day")
             if self._year <= 1999
             # Emancipation Day.
-            else "Emancipation Day"
+            else tr("Emancipation Day")
         )
 
         self._add_holiday_3_days_prior_1st_mon_of_aug(
             # Somers Day.
-            "Somers Day"
+            tr("Somers Day")
             if self._year <= 2019
             # Mary Prince Day.
-            else "Mary Prince Day"
+            else tr("Mary Prince Day")
         )
 
         # Labor Day.
-        self._add_holiday_1st_mon_of_sep("Labour Day")
+        self._add_holiday_1st_mon_of_sep(tr("Labour Day"))
 
         # Remembrance Day.
-        self._add_observed(self._add_remembrance_day("Remembrance Day"))
+        self._add_observed(self._add_remembrance_day(tr("Remembrance Day")))
 
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
-        # Boxing Day.
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
 
 class BM(Bermuda):
@@ -131,11 +142,11 @@ class BermudaStaticHolidays:
 
     special_public_holidays = {
         # Public Holiday.
-        2007: (JUN, 5, "Public Holiday"),
+        2007: (JUN, 5, tr("Public Holiday")),
         # Portuguese Welcome 170th Anniversary.
-        2019: (NOV, 4, "Portuguese Welcome 170th Anniversary"),
+        2019: (NOV, 4, tr("Portuguese Welcome 170th Anniversary")),
         # Flora Duffy Day.
-        2021: (OCT, 18, "Flora Duffy Day"),
+        2021: (OCT, 18, tr("Flora Duffy Day")),
         # The Coronation of His Majesty King Charles III.
-        2023: (MAY, 8, "The Coronation of His Majesty King Charles III"),
+        2023: (MAY, 8, tr("The Coronation of His Majesty King Charles III")),
     }

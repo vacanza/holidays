@@ -22,8 +22,8 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Malawi holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/malawi>
-        * <https://www.timeanddate.com/holidays/malawi/>
+        * <https://web.archive.org/web/20250414071022/https://www.officeholidays.com/countries/malawi>
+        * <https://web.archive.org/web/20250213080059/https://www.timeanddate.com/holidays/malawi/>
     """
 
     country = "MW"
