@@ -32,6 +32,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
 
     country = "VC"
     default_language = "en_VC"
+    # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_US", "en_VC")
     start_year = 1979
