@@ -44,10 +44,6 @@ msgstr ""
 msgid "Independence Day"
 msgstr ""
 
-#. International Women's Day.
-msgid "International Women's Day"
-msgstr ""
-
 #. Good Friday.
 msgid "Good Friday"
 msgstr ""
@@ -64,10 +60,6 @@ msgstr ""
 msgid "Constitution Day"
 msgstr ""
 
-#. RONPhos Handover Day.
-msgid "RONPhos Handover Day"
-msgstr ""
-
 #. Ibumin Earoeni Day.
 msgid "Ibumin Earoeni Day"
 msgstr ""
@@ -80,6 +72,18 @@ msgstr ""
 msgid "Angam Day"
 msgstr ""
 
-#. Boxing Day.
-msgid "Boxing Day"
+#. Day following Independence Day.
+msgid "Day following Independence Day"
+msgstr ""
+
+#. International Womens Day.
+msgid "International Womens Day"
+msgstr ""
+
+#. RONPHOS Handover.
+msgid "RONPHOS Handover"
+msgstr ""
+
+#. Day following Christmas.
+msgid "Day following Christmas"
 msgstr ""
