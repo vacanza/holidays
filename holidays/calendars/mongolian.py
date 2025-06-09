@@ -10,13 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, OCT, NOV, DEC
-from holidays.helpers import _normalize_tuple
 
 TSAGAAN_SAR = "TSAGAAN_SAR"
 BUDDHA_DAY = "BUDDHA_DAY"
@@ -25,98 +23,6 @@ GENGHIS_KHAN_DAY = "GENGHIS_KHAN_DAY"
 
 class _MongolianLunisolar:
     TSAGAAN_SAR_DATES = {
-        1912: (FEB, 19),
-        1913: (FEB, 7),
-        1914: (FEB, 25),
-        1915: (FEB, 15),
-        1916: (FEB, 4),
-        1917: (FEB, 22),
-        1918: (FEB, 12),
-        1919: (FEB, 1),
-        1920: (FEB, 20),
-        1921: (FEB, 8),
-        1922: (JAN, 28),
-        1923: (FEB, 16),
-        1924: (FEB, 5),
-        1925: (FEB, 24),
-        1926: (FEB, 13),
-        1927: (FEB, 3),
-        1928: (FEB, 22),
-        1929: (FEB, 10),
-        1930: (JAN, 30),
-        1931: (FEB, 18),
-        1932: (FEB, 7),
-        1933: (FEB, 25),
-        1934: (FEB, 14),
-        1935: (FEB, 4),
-        1936: (FEB, 23),
-        1937: (FEB, 12),
-        1938: (FEB, 1),
-        1939: (FEB, 20),
-        1940: (FEB, 9),
-        1941: (JAN, 28),
-        1942: (FEB, 16),
-        1943: (FEB, 5),
-        1944: (FEB, 25),
-        1945: (FEB, 13),
-        1946: (FEB, 3),
-        1947: (FEB, 21),
-        1948: (FEB, 10),
-        1949: (JAN, 29),
-        1950: (FEB, 17),
-        1951: (FEB, 7),
-        1952: (FEB, 26),
-        1953: (FEB, 15),
-        1954: (FEB, 4),
-        1955: (FEB, 23),
-        1956: (FEB, 12),
-        1957: (JAN, 31),
-        1958: (FEB, 19),
-        1959: (FEB, 8),
-        1960: (FEB, 27),
-        1961: (FEB, 16),
-        1962: (FEB, 5),
-        1963: (FEB, 25),
-        1964: (FEB, 14),
-        1965: (FEB, 2),
-        1966: (FEB, 21),
-        1967: (FEB, 10),
-        1968: (JAN, 30),
-        1969: (FEB, 17),
-        1970: (FEB, 7),
-        1971: (FEB, 26),
-        1972: (FEB, 15),
-        1973: (FEB, 4),
-        1974: (FEB, 23),
-        1975: (FEB, 12),
-        1976: (FEB, 1),
-        1977: (FEB, 19),
-        1978: (FEB, 8),
-        1979: (FEB, 27),
-        1980: (FEB, 17),
-        1981: (FEB, 5),
-        1982: (FEB, 24),
-        1983: (FEB, 13),
-        1984: (FEB, 2),
-        1985: (FEB, 20),
-        1986: (FEB, 9),
-        1987: (JAN, 30),
-        1988: (FEB, 18),
-        1989: (FEB, 7),
-        1990: (FEB, 26),
-        1991: (FEB, 15),
-        1992: (FEB, 4),
-        1993: (FEB, 22),
-        1994: (FEB, 11),
-        1995: (JAN, 31),
-        1996: (FEB, 19),
-        1997: (FEB, 8),
-        1998: (FEB, 27),
-        1999: (FEB, 17),
-        2000: (FEB, 6),
-        2001: (FEB, 24),
-        2002: (FEB, 13),
-        2003: (FEB, 2),
         2004: (FEB, 21),
         2005: (FEB, 9),
         2006: (JAN, 30),
@@ -421,13 +327,6 @@ class _MongolianLunisolar:
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
-
-    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        for year in (year - 1, year):
-            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
-                yield date(year, *dt), year not in exact_dates
 
     def tsagaan_sar_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(TSAGAAN_SAR, year)

@@ -12,7 +12,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from math import floor, ceil
+from datetime import date
 from pathlib import Path
 
 """
@@ -25,33 +25,21 @@ Sources:
 https://www.math.mcgill.ca/gantumur/cal/year.html
 """
 
-
-def int_div(a, b):
-    return a // b
-
-
-def amod(a, b):
-    t = a % b
-    return t + b if t <= 0 else t
-
-
 Mzero = 3
 epoch = 1747
 ixx = 46
 betastar = 10
 beta = 172
 
-cnst = {
-    "m0": 2359237 + 2603 / 2828,
-    "m1": 167025 / 5656,
-    "m2": 11135 / 11312,
-    "s0": 397 / 402,
-    "s1": 65 / 804,
-    "s2": 13 / 4824,
-    "a0": 1523 / 1764,
-    "a1": 253 / 3528,
-    "a2": 1 / 28,
-}
+m0 = 2359237 + 2603 / 2828
+m1 = 167025 / 5656
+m2 = 11135 / 11312
+s0 = 397 / 402
+s1 = 65 / 804
+s2 = 13 / 4824
+a0 = 1523 / 1764
+a1 = 253 / 3528
+a2 = 1 / 28
 
 
 def mstar(y, m):
@@ -60,7 +48,7 @@ def mstar(y, m):
 
 def leap_month(y, m):
     t = (24 * (y - epoch) + 2 * m - beta) % 65
-    return t in (0, 1)
+    return t <= 1
 
 
 def leap_year(y):
@@ -70,8 +58,7 @@ def leap_year(y):
 
 def true_month(y, m, is_leap):
     p = 67 * mstar(y, m) + betastar
-    ix = p % 65
-    pp = (p - ix) // 65
+    pp, ix = divmod(p, 65)
     return pp if is_leap or ix < ixx else pp + 1
 
 
@@ -83,10 +70,10 @@ def moon_tab(i):
         s = -1
     if i > 7:
         i = 14 - i
-    a = floor(i)
-    b = ceil(i)
-    v = [0, 5, 10, 15, 19, 22, 24, 25]
-    return s * v[a] if a == b else s * ((b - i) * v[a] + (i - a) * v[b]) / (b - a)
+    a = int(i)
+    b = a + 1
+    v = (0, 5, 10, 15, 19, 22, 24, 25)
+    return s * (v[a] if a == i else (b - i) * v[a] + (i - a) * v[b])
 
 
 def sun_tab(i):
@@ -97,16 +84,16 @@ def sun_tab(i):
         s = -1
     if i > 3:
         i = 6 - i
-    a = floor(i)
-    b = ceil(i)
-    v = [0, 6, 10, 11]
-    return s * v[a] if a == b else s * ((b - i) * v[a] + (i - a) * v[b]) / (b - a)
+    a = int(i)
+    b = a + 1
+    v = (0, 6, 10, 11)
+    return s * (v[a] if a == i else (b - i) * v[a] + (i - a) * v[b])
 
 
 def true_date(d, n):
-    mean_date = n * cnst["m1"] + d * cnst["m2"] + cnst["m0"]
-    mean_sun = n * cnst["s1"] + d * cnst["s2"] + cnst["s0"]
-    anomaly_moon = n * cnst["a1"] + d * cnst["a2"] + cnst["a0"]
+    mean_date = n * m1 + d * m2 + m0
+    mean_sun = n * s1 + d * s2 + s0
+    anomaly_moon = n * a1 + d * a2 + a0
     moon_equ = moon_tab(28 * anomaly_moon)
     anomaly_sun = mean_sun - 0.25
     sun_equ = sun_tab(12 * anomaly_sun)
@@ -116,18 +103,18 @@ def true_date(d, n):
 def julian_day(y, m, is_leap, d):
     n = true_month(y, m, is_leap)
     t = true_date(d, n)
-    return floor(t)
+    return int(t)
 
 
 def gregorian_date(jdn):
-    f = jdn + 1401 + int_div(int_div(4 * jdn + 274277, 146097) * 3, 4) - 38
+    f = jdn + 1401 + (4 * jdn + 274277) // 146097 * 3 // 4 - 38
     e = 4 * f + 3
-    h = int_div(e % 1461, 4)
+    h = e % 1461 // 4
     h = 5 * h + 2
-    d = int_div(h % 153, 5) + 1
-    m = (int_div(h, 153) + 2) % 12 + 1
-    y = int_div(e, 1461) - 4716 + int_div(14 - m, 12)
-    return {"year": y, "month": m, "day": d}
+    d = (h % 153) // 5 + 1
+    m = (h // 153 + 2) % 12 + 1
+    y = e // 1461 - 4716 + (14 - m) // 12
+    return date(y, m, d)
 
 
 def mongolian_to_gregorian(m_year, m_month, is_leap, m_day):
@@ -136,22 +123,14 @@ def mongolian_to_gregorian(m_year, m_month, is_leap, m_day):
 
 
 def get_tsagaan_sar(y):
-    try:
-        jd = julian_day(y - 1, 12, False, 30) + 1
-        return gregorian_date(jd)
-    except Exception:
-        return gregorian_date(julian_day(y - 1, 12, True, 30) + 1)
+    jd = julian_day(y - 1, 12, False, 30) + 1
+    return gregorian_date(jd)
 
 
 def find_festival_date(y, m_month, m_day):
     for leap in [False, True]:
-        try:
-            jd = julian_day(y, m_month, leap, m_day)
-            return gregorian_date(jd)
-        except Exception:
-            raise ValueError(
-                f"Invalid lunar festival date in year {y}, month {m_month}, day {m_day}"
-            )
+        jd = julian_day(y, m_month, leap, m_day)
+        return gregorian_date(jd)
 
 
 CLASS_NAME = "_{cal_name}Lunisolar"
@@ -165,7 +144,7 @@ HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
     }}
 """
 
-YEAR_TEMPLATE = "        {year}: ({month}, {day}),"
+YEAR_TEMPLATE = "        {year}: ({date}),"
 
 CALENDARS = {
     "MONGOLIAN": "Mongolian",
@@ -187,10 +166,8 @@ def generate_mongolian_data():
         for year in range(g_year_min, g_year_max + 1):
             try:
                 g = hol_func(year)
-                date_str = ("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC").split()[
-                    g["month"] - 1
-                ]
-                year_dates.append(YEAR_TEMPLATE.format(year=year, month=date_str, day=g["day"]))
+                date_str = f"{g.strftime('%b').upper()}, {g.day}"
+                year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
             except Exception:
                 year_dates.append(f"        {year}: None,")
 
