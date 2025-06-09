@@ -22,13 +22,13 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Aruba holidays.
 
     References:
-        * <https://www.government.aw/information-public-services/hiring-people_47940/item/holidays_43823.html>
-        * <https://www.overheid.aw/informatie-dienstverlening/ondernemen-en-werken-subthemas_46970/item/feestdagen_37375.html>
-        * <https://www.gobierno.aw/informacion-tocante-servicio/haci-negoshi-y-traha-sub-topics_47789/item/dia-di-fiesta_41242.html>
-        * <https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/>
-        * <https://www.arubatoday.com/we-celebrate-our-national-hero-betico-croes/>
-        * <https://www.caribbeannewsglobal.com/carnival-monday-remains-a-festive-day-in-aruba/>
-        * <https://www.aruba.com/us/calendar/national-anthem-and-flag-day>
+        * <https://web.archive.org/web/20240615045656/https://www.government.aw/information-public-services/hiring-people_47940/item/holidays_43823.html>
+        * <https://web.archive.org/web/20231208145916/https://www.overheid.aw/informatie-dienstverlening/ondernemen-en-werken-subthemas_46970/item/feestdagen_37375.html>
+        * <https://web.archive.org/web/20231202011228/https://www.gobierno.aw/informacion-tocante-servicio/haci-negoshi-y-traha-sub-topics_47789/item/dia-di-fiesta_41242.html>
+        * <https://web.archive.org/web/20250210000132/https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/>
+        * <https://web.archive.org/web/20240619235841/https://www.arubatoday.com/we-celebrate-our-national-hero-betico-croes/>
+        * <https://web.archive.org/web/20240721173750/https://caribbeannewsglobal.com/carnival-monday-remains-a-festive-day-in-aruba/>
+        * <https://web.archive.org/web/20250426210119/https://www.aruba.com/us/calendar/national-anthem-and-flag-day>
     """
 
     country = "AW"

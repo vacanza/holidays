@@ -20,13 +20,13 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Venezuela holidays.
 
     References:
-        * <https://dias-festivos.eu/dias-festivos/venezuela/#>
-        * [1909 Aug 5](https://www.guao.org/sites/default/files/efemerides/69.Ley%20fiestas%20nacionales%201909.pdf)
-        * [1918 May 19](https://www.guao.org/sites/default/files/efemerides/70.%20Ley%20de%20fiestas%20nacionales%201918.pdf)
-        * [1921 Jun 11](https://guao.org/sites/default/files/efemerides/37.LEYES_Y_DECRETOS_1921_Día_de_la_raza.PDF)
-        * [1971 Jun 22](https://www.ilo.org/dyn/travail/docs/2030/Law%20No.29.541.pdf)
-        * [2002 Oct 10](https://www.acnur.org/fileadmin/Documentos/BDL/2008/6635.pdf)
-        * [2012 May 7](https://oig.cepal.org/sites/default/files/2012_leyorgtrabajo_ven.pdf)
+        * <https://web.archive.org/web/20250317124608/https://dias-festivos.eu/dias-festivos/venezuela/>
+        * [1909 Aug 5](https://web.archive.org/web/20241012151721/https://www.guao.org/sites/default/files/efemerides/69.Ley%20fiestas%20nacionales%201909.pdf)
+        * [1918 May 19](https://web.archive.org/web/20250429081541/https://www.guao.org/sites/default/files/efemerides/70.%20Ley%20de%20fiestas%20nacionales%201918.pdf)
+        * [1921 Jun 11](https://web.archive.org/web/20241012160001/https://www.guao.org/sites/default/files/efemerides/37.LEYES_Y_DECRETOS_1921_Día_de_la_raza.PDF)
+        * [1971 Jun 22](https://web.archive.org/web/20240802055637/https://www.ilo.org/dyn/travail/docs/2030/Law%20No.29.541.pdf)
+        * [2002 Oct 10](https://web.archive.org/web/20250214140239/https://www.acnur.org/fileadmin/Documentos/BDL/2008/6635.pdf)
+        * [2012 May 7](https://web.archive.org/web/20250418204844/https://oig.cepal.org/sites/default/files/2012_leyorgtrabajo_ven.pdf)
     """
 
     country = "VE"
@@ -60,7 +60,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Declaration of Independence.
             self._add_holiday_apr_19(tr("Declaración de la Independencia"))
 
-        # https://bit.ly/3B4Xd1L
+        # https://web.archive.org/web/20250428122616/https://venezuelaenretrospectiva.wordpress.com/2016/05/01/1o-de-mayo-dia-del-trabajador-venezolano/
         if self._year >= 1946:
             # International Worker's Day.
             self._add_labor_day(tr("Dia Mundial del Trabajador"))
