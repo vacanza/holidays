@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
@@ -39,6 +40,24 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
         return self._add_eastern_calendar_holiday(
             name, dt_estimated, self._mongolian_calendar_show_estimated, days_delta
         )
+
+    def _add_mongolian_calendar_holiday_set(
+        self, name: str, dts_estimated: Iterable[tuple[date, bool]], days_delta: int = 0
+    ) -> set[date]:
+        """
+        Add Mongolian calendar holidays.
+
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
+        """
+        added_dates = set()
+        for dt_estimated in dts_estimated:
+            if dt := self._add_eastern_calendar_holiday(
+                name, dt_estimated, self._mongolian_calendar_show_estimated, days_delta=days_delta
+            ):
+                added_dates.add(dt)
+
+        return added_dates
 
     def _add_tsagaan_sar(self, name) -> Optional[date]:
         """

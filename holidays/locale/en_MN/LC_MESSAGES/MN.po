@@ -57,3 +57,19 @@ msgstr "Restoration of Freedom and Independence Day"
 #. Independence Day.
 msgid "Үндэсний эрх чөлөөний өдөр"
 msgstr "Independence Day"
+
+#. Tsagaan Sar.
+msgid "Цагаан сар"
+msgstr "Tsagaan Sar"
+
+#. Tsagaan Sar Holiday.
+msgid "Цагаан сарын баяр"
+msgstr "Tsagaan Sar Holiday"
+
+#. Buddha Day.
+msgid "Буддагийн өдөр"
+msgstr "Buddha Day"
+
+#. Genghis Khan Day.
+msgid "Чингис хааны өдөр"
+msgstr "Genghis Khan Day"

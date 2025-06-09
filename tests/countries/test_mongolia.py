@@ -31,6 +31,42 @@ class TestMongolia(CommonCountryTests, TestCase):
     def test_new_year(self):
         self.assertHolidayName("Шинэ жилийн баяр", (f"{year}-01-01" for year in range(2004, 2050)))
 
+    def test_tsagaan_sar(self):
+        name = "Цагаан сар"
+        dt = (
+            "2021-02-12",
+            "2022-01-02",
+            "2023-02-21",
+            "2024-02-10",
+            "2025-03-01",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2004, 2101))
+
+    def test_tsagaan_sar_day_2(self):
+        name = "Цагаан сарын баяр"
+        dt = (
+            "2021-02-13",
+            "2022-01-03",
+            "2023-02-22",
+            "2024-02-11",
+            "2025-03-02",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2004, 2101))
+
+    def test_tsagaan_sar_day_3(self):
+        name = "Цагаан сарын баяр"
+        dt = (
+            "2021-02-14",
+            "2022-01-04",
+            "2023-02-23",
+            "2024-02-12",
+            "2025-03-03",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2004, 2101))
+
     def test_womens_day(self):
         self.assertHolidayName(
             "Олон улсын эмэгтэйчүүдийн өдөр", (f"{year}-03-08" for year in range(2004, 2050))
@@ -38,6 +74,40 @@ class TestMongolia(CommonCountryTests, TestCase):
 
     def test_childrens_day(self):
         self.assertHolidayName("Хүүхдийн баяр", (f"{year}-06-01" for year in range(2004, 2050)))
+
+    def test_buddha_day(self):
+        name = "Буддагийн өдөр"
+        dt = (
+            "2021-05-26",
+            "2022-06-14",
+            "2023-06-04",
+            "2024-05-23",
+            "2025-06-11",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2004, 2101))
+
+    def test_naadam(self):
+        self.assertHolidayName("Наадам", (f"{year}-07-11" for year in range(2004, 2050)))
+
+    def test_naadam_holiday(self):
+        name = "Наадмын баяр"
+        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2004, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-13" for year in range(2004, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-14" for year in range(2004, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-15" for year in range(2004, 2050)))
+
+    def test_genghis_khan_day(self):
+        name = "Чингис хааны өдөр"
+        dt = (
+            "2021-11-05",
+            "2022-11-24",
+            "2023-11-14",
+            "2024-11-01",
+            "2025-11-21",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2004, 2101))
 
     def test_republic_day(self):
         self.assertHolidayName(
@@ -59,13 +129,18 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertHolidays(
             Mongolia(years=2025),
             ("2025-01-01", "Шинэ жилийн баяр"),
+            ("2025-03-01", "Цагаан сар"),
+            ("2025-03-02", "Цагаан сарын баяр"),
+            ("2025-03-03", "Цагаан сарын баяр"),
             ("2025-03-08", "Олон улсын эмэгтэйчүүдийн өдөр"),
             ("2025-06-01", "Хүүхдийн баяр"),
+            ("2025-06-11", "Буддагийн өдөр"),
             ("2025-07-11", "Наадам"),
             ("2025-07-12", "Наадмын баяр"),
             ("2025-07-13", "Наадмын баяр"),
             ("2025-07-14", "Наадмын баяр"),
             ("2025-07-15", "Наадмын баяр"),
+            ("2025-11-21", "Чингис хааны өдөр"),
             ("2025-11-26", "Бүгд Найрамдах Улс тунхагласан өдөр"),
             ("2025-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
@@ -73,13 +148,18 @@ class TestMongolia(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-01-01", "Шинэ жилийн баяр"),
+            ("2024-02-10", "Цагаан сар"),
+            ("2024-02-11", "Цагаан сарын баяр"),
+            ("2024-02-12", "Цагаан сарын баяр"),
             ("2024-03-08", "Олон улсын эмэгтэйчүүдийн өдөр"),
+            ("2024-05-23", "Буддагийн өдөр"),
             ("2024-06-01", "Хүүхдийн баяр"),
             ("2024-07-11", "Наадам"),
             ("2024-07-12", "Наадмын баяр"),
             ("2024-07-13", "Наадмын баяр"),
             ("2024-07-14", "Наадмын баяр"),
             ("2024-07-15", "Наадмын баяр"),
+            ("2024-11-01", "Чингис хааны өдөр"),
             ("2024-11-26", "Бүгд Найрамдах Улс тунхагласан өдөр"),
             ("2024-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
@@ -88,13 +168,18 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_MN",
             ("2024-01-01", "New Year's Day"),
+            ("2024-02-10", "Tsagaan Sar"),
+            ("2024-02-11", "Tsagaan Sar Holiday"),
+            ("2024-02-12", "Tsagaan Sar Holiday"),
             ("2024-03-08", "International Women's Day"),
+            ("2024-05-23", "Buddha Day"),
             ("2024-06-01", "Children's Day"),
             ("2024-07-11", "Naadam"),
             ("2024-07-12", "Naadam Holiday"),
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
+            ("2024-11-01", "Genghis Khan Day"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )
@@ -103,13 +188,18 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
+            ("2024-02-10", "Tsagaan Sar"),
+            ("2024-02-11", "Tsagaan Sar Holiday"),
+            ("2024-02-12", "Tsagaan Sar Holiday"),
             ("2024-03-08", "International Women's Day"),
+            ("2024-05-23", "Buddha Day"),
             ("2024-06-01", "Children's Day"),
             ("2024-07-11", "Naadam"),
             ("2024-07-12", "Naadam Holiday"),
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
+            ("2024-11-01", "Genghis Khan Day"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )

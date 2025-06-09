@@ -10,11 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 from typing import Optional
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, OCT, NOV, DEC
+from holidays.helpers import _normalize_tuple
 
 TSAGAAN_SAR = "TSAGAAN_SAR"
 BUDDHA_DAY = "BUDDHA_DAY"
@@ -327,6 +329,13 @@ class _MongolianLunisolar:
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
+
+    def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
+        estimated_dates = getattr(self, f"{holiday}_DATES", {})
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
+        for year in (year - 1, year):
+            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
+                yield date(year, *dt), year not in exact_dates
 
     def tsagaan_sar_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(TSAGAAN_SAR, year)

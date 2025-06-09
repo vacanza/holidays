@@ -59,6 +59,22 @@ msgstr ""
 msgid "Үндэсний эрх чөлөөний өдөр"
 msgstr ""
 
+#. Tsagaan Sar.
+msgid "Цагаан сар"
+msgstr ""
+
+#. Tsagaan Sar Holiday.
+msgid "Цагаан сарын баяр"
+msgstr ""
+
+#. Buddha Day.
+msgid "Буддагийн өдөр"
+msgstr ""
+
+#. Genghis Khan Day.
+msgid "Чингис хааны өдөр"
+msgstr ""
+
 #~ msgid "New Year's Day"
 #~ msgstr "Шинэ жилийн баяр"
 

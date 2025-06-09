@@ -39,11 +39,22 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Шинэ жилийн баяр"))
 
+        # Tsagaan Sar.
+        self._add_tsagaan_sar(tr("Цагаан сар"))
+
+        # Tsagaan Sar Holiday.
+        name = tr("Цагаан сарын баяр")
+        self._add_tsagaan_sar_day_2(name)
+        self._add_tsagaan_sar_day_3(name)
+
         # International Women's Day.
         self._add_womens_day(tr("Олон улсын эмэгтэйчүүдийн өдөр"))
 
         # Children's Day.
         self._add_childrens_day(tr("Хүүхдийн баяр"))
+
+        # Buddha Day.
+        self._add_buddha_day(tr("Буддагийн өдөр"))
 
         # Naadam.
         self._add_holiday_jul_11(tr("Наадам"))
@@ -54,6 +65,9 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         self._add_holiday_jul_13(name)
         self._add_holiday_jul_14(name)
         self._add_holiday_jul_15(name)
+
+        # Genghis Khan Day.
+        self._add_genghis_khan_day(tr("Чингис хааны өдөр"))
 
         # Established on November 26, 1924.
         if self._year >= 1925:
