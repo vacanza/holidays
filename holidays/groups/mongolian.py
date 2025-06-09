@@ -94,3 +94,29 @@ class MongolianCalendarHolidays(EasternCalendarHolidays):
         return self._add_mongolian_calendar_holiday(
             name, self._mongolian_calendar.tsagaan_sar_date(self._year), days_delta=+2
         )
+
+    def _add_buddha_day(self, name) -> Optional[date]:
+        """
+        Add Buddha Day.
+
+        Buddha Day is celebrated on the 15th day of the early summer month
+        in the Mongolian lunisolar calendar.
+        This holiday honors the birth, enlightenment, and death of Buddha.
+        https://en.wikipedia.org/wiki/Vesak (general Buddhist context)
+        """
+        return self._add_mongolian_calendar_holiday(
+            name, self._mongolian_calendar.buddha_day_date(self._year)
+        )
+
+    def _add_genghis_khan_day(self, name) -> Optional[date]:
+        """
+        Add Genghis Khan's Birthday.
+
+        Genghis Khan's Birthday is observed on the 1st day of the early winter month
+        according to the Mongolian lunisolar calendar.
+        It commemorates the birth of the founder of the Mongol Empire.
+        https://en.wikipedia.org/wiki/Genghis_Khan
+        """
+        return self._add_mongolian_calendar_holiday(
+            name, self._mongolian_calendar.genghis_khan_day_date(self._year)
+        )
