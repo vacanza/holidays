@@ -126,10 +126,7 @@ class HungaryStaticHolidays:
         * [1997](https://web.archive.org/web/20250526090817/https://jogkodex.hu/jsz/1996_11_mum_rendelet_3554324)
         * [1998](https://web.archive.org/web/20250526091318/https://jogkodex.hu/jsz/1997_18_mum_rendelet_7493439)
         * [1999](https://web.archive.org/web/20250526093916/https://jogkodex.hu/jsz/1998_3_szcsm_rendelet_7336830)
-        * [2001](https://web.archive.org/web/20250526094003/https://jogkodex.hu/jsz/2000_43_gm_rendelet_9845985)
-          The online data for 2001 is incomplete. Probably due to error in digitalization.
-          The data is taken from a payed online database: https://uj.jogtar.hu
-          [see also](https://www.economx.hu/belfold/a-munkaszuneti-napok-eve-lesz-a-2001-es-ev.57628.html)
+        * [2001](https://archive.org/details/43-2000-xii-18-gm-rendelet)
         * [2002](https://web.archive.org/web/20250526071659/https://jogkodex.hu/jsz/2001_25_gm_rendelet_9200619)
         * [2003](https://web.archive.org/web/20250526071517/https://jogkodex.hu/jsz/2002_2_fmm_rendelet_1831209)
         * [2004](https://web.archive.org/web/20250526071310/https://jogkodex.hu/jsz/2003_9_fmm_rendelet_8666269)
