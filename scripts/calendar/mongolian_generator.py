@@ -15,6 +15,16 @@
 from math import floor, ceil
 from pathlib import Path
 
+"""
+This file generates Gregorian dates for Mongolian lunisolar calendar based holidays.
+
+See `Wikipedia
+https://en.wikipedia.org/wiki/Mongolian_calendar
+
+Sources:
+https://www.math.mcgill.ca/gantumur/cal/year.html
+"""
+
 
 def int_div(a, b):
     return a // b
