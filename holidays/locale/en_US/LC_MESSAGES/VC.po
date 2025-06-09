@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Saint Vincent and the Grenadines en_US localization.
+# Saint Vincent and the Grenadines holidays en_US localization.
 #
 msgid ""
 msgstr ""
