@@ -164,6 +164,7 @@ from holidays.countries.samoa import Samoa, WS, WSM
 from holidays.countries.san_marino import SanMarino, SM, SMR
 from holidays.countries.sao_tome_and_principe import SaoTomeAndPrincipe, ST, STP
 from holidays.countries.saudi_arabia import SaudiArabia, SA, SAU
+from holidays.countries.senegal import Senegal, SN, SEN
 from holidays.countries.serbia import Serbia, RS, SRB
 from holidays.countries.seychelles import Seychelles, SC, SYC
 from holidays.countries.sierra_leone import SierraLeone, SL, SLE
