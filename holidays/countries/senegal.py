@@ -30,7 +30,7 @@ class Senegal(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Senegal>
         * [Law 63-51](https://web.archive.org/web/20250604134724/https://www.dri.gouv.sn/sites/default/files/LOI/1963/63_51.pdf)
-        * [Law 74-52](https://www.dri.gouv.sn/sites/default/files/an-documents/LOI%20N1974%2052%20DU%204%20NOVEMBRE%201974.pdf)
+        * [Law 74-52](https://web.archive.org/web/20250608105243/https://www.dri.gouv.sn/sites/default/files/an-documents/LOI%20N1974%2052%20DU%204%20NOVEMBRE%201974.pdf)
         * [Law 83-54](https://web.archive.org/web/20250608105419/https://www.dri.gouv.sn/sites/default/files/LOI/1983/comP4%20loi%20decentralisation%20et%20travail/LOI%20N%20198354%20DU%2018%20FEVRIER%201983/LOI%20N%20198354%20DU%2018%20FEVRIER%201983.pdf)
         * [Law 2013-06](https://web.archive.org/web/20250604215148/https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/97261/SEN-97261.pdf)
     """
@@ -182,7 +182,7 @@ class SenegalStaticHolidays:
 
     References:
         * [29th October, 2018 Public holiday](https://web.archive.org/web/20250608105852/https://www.juriafrica.com/lex/decret-2018-1942-26-octobre-2018-48947.htm)
-        * [26th December, 2022 Public holiday](https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
+        * [26th December, 2022 Public holiday](https://web.archive.org/web/20250608135605/https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
     """
 
     # Public holiday.
