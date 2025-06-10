@@ -24,7 +24,7 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
 
     country = "KG"
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

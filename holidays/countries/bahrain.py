@@ -33,7 +33,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

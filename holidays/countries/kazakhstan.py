@@ -51,7 +51,7 @@ class Kazakhstan(
     # Kazakhstan declared its sovereignty on 25 October 1990.
     start_year = 1991
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

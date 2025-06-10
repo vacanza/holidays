@@ -144,7 +144,7 @@ class Malaysia(
     }
     supported_languages = ("en_US", "ms_MY", "th")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
