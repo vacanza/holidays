@@ -158,13 +158,13 @@ class HungaryStaticHolidays:
     # Day off (substituted from %s).
     substituted_label = tr("Pihenőnap (%s-től helyettesítve)")
     special_public_holidays = {
-        1991: ((AUG, 19, AUG, 17),),
+        1991: (AUG, 19, AUG, 17),
         1992: (
             (AUG, 21, AUG, 29),
             (DEC, 24, DEC, 19),
         ),
-        1993: ((DEC, 24, DEC, 18),),
-        1994: ((MAR, 14, MAR, 12),),
+        1993: (DEC, 24, DEC, 18),
+        1994: (MAR, 14, MAR, 12),
         1997: (
             (MAY, 2, APR, 26),
             (OCT, 24, OCT, 18),
@@ -175,7 +175,7 @@ class HungaryStaticHolidays:
             (AUG, 21, AUG, 15),
             (DEC, 24, DEC, 19),
         ),
-        1999: ((DEC, 24, DEC, 18),),
+        1999: (DEC, 24, DEC, 18),
         2001: (
             (MAR, 16, MAR, 10),
             (APR, 30, APR, 28),
