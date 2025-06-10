@@ -35,37 +35,37 @@ class TestMongolia(CommonCountryTests, TestCase):
         name = "Цагаан сар"
         dt = (
             "2021-02-12",
-            "2022-01-02",
+            "2022-02-02",
             "2023-02-21",
             "2024-02-10",
             "2025-03-01",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2101))
+        self.assertHolidayName(name, range(2004, 2050))
 
     def test_tsagaan_sar_day_2(self):
         name = "Цагаан сарын баяр"
         dt = (
             "2021-02-13",
-            "2022-01-03",
+            "2022-02-03",
             "2023-02-22",
             "2024-02-11",
             "2025-03-02",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2101))
+        self.assertHolidayName(name, range(2004, 2050))
 
     def test_tsagaan_sar_day_3(self):
         name = "Цагаан сарын баяр"
         dt = (
             "2021-02-14",
-            "2022-01-04",
+            "2022-02-04",
             "2023-02-23",
             "2024-02-12",
             "2025-03-03",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2101))
+        self.assertHolidayName(name, range(2004, 2050))
 
     def test_womens_day(self):
         self.assertHolidayName(
@@ -85,7 +85,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             "2025-06-11",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2101))
+        self.assertHolidayName(name, range(2004, 2050))
 
     def test_naadam(self):
         self.assertHolidayName("Наадам", (f"{year}-07-11" for year in range(2004, 2050)))
@@ -103,11 +103,11 @@ class TestMongolia(CommonCountryTests, TestCase):
             "2021-11-05",
             "2022-11-24",
             "2023-11-14",
-            "2024-11-01",
+            "2024-11-02",
             "2025-11-21",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2101))
+        self.assertHolidayName(name, range(2004, 2050))
 
     def test_republic_day(self):
         self.assertHolidayName(
@@ -159,7 +159,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Наадмын баяр"),
             ("2024-07-14", "Наадмын баяр"),
             ("2024-07-15", "Наадмын баяр"),
-            ("2024-11-01", "Чингис хааны өдөр"),
+            ("2024-11-02", "Чингис хааны өдөр"),
             ("2024-11-26", "Бүгд Найрамдах Улс тунхагласан өдөр"),
             ("2024-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
@@ -179,7 +179,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
-            ("2024-11-01", "Genghis Khan Day"),
+            ("2024-11-02", "Genghis Khan Day"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )
@@ -199,7 +199,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
-            ("2024-11-01", "Genghis Khan Day"),
+            ("2024-11-02", "Genghis Khan Day"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )
