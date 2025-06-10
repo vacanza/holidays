@@ -119,9 +119,7 @@ class HungaryStaticHolidays:
     """Hungary special holidays.
 
     References:
-        * [1991]()
-          7/1990. (XII. 27.) MüM rendelet - az 1991. évi munkaszüneti napok körüli munkarendről
-          The data is taken from a payed online database: https://uj.jogtar.hu
+        * [1991](https://archive.org/details/7-1990-xii-27-mum-rendelet)
         * [1992](https://web.archive.org/web/20250526085935/https://jogkodex.hu/jsz/1992_3_mum_rendelet_5937748)
         * [1993](https://web.archive.org/web/20250526090343/https://jogkodex.hu/jsz/1992_7_mum_rendelet_7815697)
         * [1994](https://web.archive.org/web/20250526090541/https://jogkodex.hu/jsz/1993_3_mum_rendelet_3120363)
