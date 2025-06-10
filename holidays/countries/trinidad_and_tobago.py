@@ -98,10 +98,10 @@ class TrinidadAndTobago(
         dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
         # Good Friday.
-        dts_observed.add(self._add_good_friday(tr("Good Friday")))
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        dts_observed.add(self._add_easter_monday(tr("Easter Monday")))
+        self._add_easter_monday(tr("Easter Monday"))
 
         if self._year >= 1996:
             # Spiritual Baptist Liberation Day.
