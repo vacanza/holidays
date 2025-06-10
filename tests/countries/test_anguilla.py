@@ -163,24 +163,24 @@ class TestAnguilla(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2011, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
+    def test_celebration_of_the_birthday_of_his_majesty_the_king(self):
+        name = "Celebration of the Birthday of His Majesty the King"
+        self.assertHolidayName(
+            name,
+            "2023-06-19",
+            "2024-06-17",
+            "2025-06-16",
+        )
+        self.assertHolidayName(name, range(2023, 2050))
+        self.assertNoHolidayName(name, range(2011, 2023))
+
     def test_anguilla_day(self):
         name = "Anguilla Day"
         self.assertHolidayName(
             name,
-            "2011-05-30",
-            "2012-05-30",
-            "2013-05-30",
-            "2014-05-30",
-            "2015-05-30",
-            "2016-05-30",
-            "2017-05-30",
-            "2018-05-30",
-            "2019-05-30",
             "2020-05-30",
             "2021-05-31",
             "2022-05-30",
-            "2023-05-30",
-            "2024-05-30",
             "2025-05-30",
         )
         self.assertHolidayName(name, range(2011, 2050))
@@ -278,24 +278,23 @@ class TestAnguilla(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (observed)"),
-            ("2022-03-02", "James Ronald Webster Day"),
-            ("2022-04-15", "Good Friday"),
-            ("2022-04-17", "Easter Sunday"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-05-02", "Labor Day (observed)"),
-            ("2022-05-30", "Anguilla Day"),
-            ("2022-06-03", "Celebration of the Birthday of Her Majesty the Queen"),
-            ("2022-06-06", "Whit Monday"),
-            ("2022-08-01", "August Monday"),
-            ("2022-08-04", "August Thursday"),
-            ("2022-08-05", "Constitution Day"),
-            ("2022-12-19", "National Heroes and Heroines Day"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Boxing Day"),
-            ("2022-12-27", "Christmas Day (observed)"),
+            ("2015-01-01", "New Year's Day"),
+            ("2015-03-02", "James Ronald Webster Day"),
+            ("2015-04-03", "Good Friday"),
+            ("2015-04-05", "Easter Sunday"),
+            ("2015-04-06", "Easter Monday"),
+            ("2015-05-01", "Labor Day"),
+            ("2015-05-25", "Whit Monday"),
+            ("2015-05-30", "Anguilla Day"),
+            ("2015-06-08", "Celebration of the Birthday of Her Majesty the Queen"),
+            ("2015-08-03", "August Monday"),
+            ("2015-08-06", "August Thursday"),
+            ("2015-08-07", "Constitution Day"),
+            ("2015-12-18", "National Heroes and Heroines Day (observed)"),
+            ("2015-12-19", "National Heroes and Heroines Day"),
+            ("2015-12-25", "Christmas Day"),
+            ("2015-12-26", "Boxing Day"),
+            ("2015-12-28", "Boxing Day (observed)"),
         )
 
     def test_l10n_en_us(self):
