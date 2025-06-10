@@ -67,7 +67,7 @@ class TrinidadAndTobago(
     # Trinidad and Tobago gained independence on August 31, 1962.
     start_year = 1963
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
