@@ -20,7 +20,7 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Croatia holidays.
 
     References:
-        * <https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html>
+        * <https://web.archive.org/web/20250206084954/https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Croatia>
         * <https://hr.wikipedia.org/wiki/Blagdani_i_spomendani_u_Hrvatskoj>
 

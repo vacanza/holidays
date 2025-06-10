@@ -22,8 +22,8 @@ class Latvia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Latvia>
-        * <https://information.lv/>
-        * <https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
+        * <https://web.archive.org/web/20250210170838/https://www.information.lv/>
+        * <https://web.archive.org/web/20240914233046/https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam>
     """
 
     country = "LV"
