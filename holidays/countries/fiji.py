@@ -37,19 +37,19 @@ class Fiji(
     """Fiji holidays.
 
     References:
-        * <https://laws.gov.fj/Acts/DisplayAct/2910#>
-        * <https://laws.gov.fj/LawsAsMade>
-        * <https://www.fiji.gov.fj/About-Fiji/Public-Holidays>
-        * <https://www.timeanddate.com/holidays/fiji/>
+        * <https://web.archive.org/web/20250421221329/https://www.laws.gov.fj/Acts/DisplayAct/2910>
+        * <https://web.archive.org/web/20250421155009/https://laws.gov.fj/LawsAsMade>
+        * <https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays>
+        * <https://web.archive.org/web/20250413132828/https://www.timeanddate.com/holidays/fiji/>
         * <https://en.wikipedia.org/wiki/List_of_festivals_in_Fiji>
-        * <https://www.rnz.co.nz/international/pacific-news/249514/new-public-holiday-for-fiji>
-        * <https://www.fijitimes.com.fj/constitution-day-public-holiday-removed-cabinet/>
-        * <https://fijivillage.com/news/National-Sports-Day-celebrated-5krs29/>
-        * <https://fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/>
+        * <https://web.archive.org/web/20250427183802/https://www.rnz.co.nz/international/pacific-news/249514/new-public-holiday-for-fiji>
+        * <https://web.archive.org/web/20250427183723/https://www.fijitimes.com.fj/constitution-day-public-holiday-removed-cabinet/>
+        * <https://web.archive.org/web/20150626160414/http://fijivillage.com:80/news/National-Sports-Day-celebrated-5krs29/>
+        * <https://web.archive.org/web/20240624074852/https://www.fijivillage.com/news/Cabinet-approves-Ratu-Sir-Lala-Sukuna-Day-and-Girmit-Day-and-removes-Constitution-Day-as-a-public-holiday-f48r5x/>
 
     Official Fiji Public Holidays Calendar:
-         * [2016](https://www.fiji.gov.fj/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx)
-         * [2017](https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS)
+         * [2016](https://web.archive.org/web/20160520212352/http://www.fiji.gov.fj:80/Media-Center/Press-Releases/GOVERNMENT-APPROVES-2016-PUBLIC-HOLIDAYS.aspx?)
+         * [2017](https://web.archive.org/web/20250319202817/https://www.fiji.gov.fj/Media-Centre/News/GOVERNMENT-APPROVES-2017-PUBLIC-HOLIDAYS)
          * [2018](https://web.archive.org/web/20180727205733/http://www.employment.gov.fj/images/Laws/Press%20Release%20-%20Government%20Approves%202018%20Public%20Holidays.pdf)
          * [2019](https://web.archive.org/web/20191018023027/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
          * [2020](https://web.archive.org/web/20210103183942/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
@@ -70,7 +70,7 @@ class Fiji(
     # Act No. 13 of 2015
     start_year = 2016
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -153,7 +153,7 @@ class FJI(Fiji):
 
 
 class FijiHinduHolidays(_CustomHinduHolidays):
-    # https://www.timeanddate.com/holidays/fiji/diwali
+    # https://web.archive.org/web/20250413132828/https://web.archive.org/web/20240724121605/https://www.timeanddate.com/holidays/fiji/diwali
     DIWALI_INDIA_DATES = {
         2016: (OCT, 31),
         2017: (OCT, 19),

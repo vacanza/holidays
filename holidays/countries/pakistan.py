@@ -24,8 +24,8 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
-        * [Public and optional holidays](https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
-        * [No.10-01/2024-Min-II](https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
+        * [Public and optional holidays](https://web.archive.org/web/20250118105814/https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
+        * [No.10-01/2024-Min-II](https://web.archive.org/web/20241103080918/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
     """
 
     country = "PK"
@@ -35,7 +35,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -105,7 +105,7 @@ class PAK(Pakistan):
 
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/pakistan/first-day-ashura
+    # https://web.archive.org/web/20241123192805/https://www.timeanddate.com/holidays/pakistan/first-day-ashura
 
     ASHURA_DATES = {
         2005: (FEB, 18),
@@ -130,7 +130,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUL, 16),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
+    # https://web.archive.org/web/20250424085932/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
@@ -154,7 +154,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
+    # https://web.archive.org/web/20250414111814/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
@@ -179,7 +179,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
+    # https://web.archive.org/web/20240529050144/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),

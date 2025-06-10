@@ -22,7 +22,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     """Ghana holidays.
 
     References:
-        * <https://www.mint.gov.gh/statutory-public-holidays/>
+        * <https://web.archive.org/web/20250114152956/https://www.mint.gov.gh/statutory-public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ghana>
     """
 
@@ -32,7 +32,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     observed_estimated_label = "%s (observed, estimated)"
     start_year = 1957
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

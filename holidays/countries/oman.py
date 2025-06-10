@@ -39,11 +39,11 @@ class Oman(HolidayBase, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Oman>
-        * [Independence](https://www.omaninfo.om/pages/175/show/572)
-        * [Weekend](https://abnnews.com/the-sultanate-of-oman-changes-weekend-days-from-01-may-2013/)
-        * [Decree 56/2020](https://decree.om/2020/rd20200056/)
-        * [Decree 88/2022](https://decree.om/2022/rd20220088/)
-        * [Decree 15/2025 (National day is moved)](https://decree.om/2025/rd20250015/)
+        * [Independence](https://web.archive.org/web/20250211055127/https://omaninfo.om/pages/175/show/572)
+        * [Weekend](https://web.archive.org/web/20250213121638/https://abnnews.com/the-sultanate-of-oman-changes-weekend-days-from-01-may-2013/)
+        * [Decree 56/2020](https://web.archive.org/web/20240522150742/https://decree.om/2020/rd20200056/)
+        * [Decree 88/2022](https://web.archive.org/web/20221207194900/https://decree.om/2022/rd20220088/)
+        * [Decree 15/2025 (National day is moved)](https://web.archive.org/web/20250121132446/https://decree.om/2025/rd20250015/)
     """
 
     country = "OM"
@@ -53,7 +53,7 @@ class Oman(HolidayBase, IslamicHolidays):
     start_year = 1970
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -122,7 +122,7 @@ class OMN(Oman):
 
 
 class OmanIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/oman/muharram-new-year
+    # https://web.archive.org/web/20240911084650/https://www.timeanddate.com/holidays/oman/muharram-new-year
     HIJRI_NEW_YEAR_DATES = {
         2018: (SEP, 11),
         2019: (SEP, 1),
@@ -133,7 +133,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUL, 7),
     }
 
-    # https://www.timeanddate.com/holidays/oman/prophet-birthday
+    # https://web.archive.org/web/20240810230306/https://www.timeanddate.com/holidays/oman/prophet-birthday
     MAWLID_DATES = {
         2018: (NOV, 20),
         2019: (NOV, 9),
@@ -144,7 +144,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 15),
     }
 
-    # https://www.timeanddate.com/holidays/oman/isra-miraj
+    # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/isra-miraj
     ISRA_AND_MIRAJ_DATES = {
         2018: (APR, 13),
         2019: (APR, 3),
@@ -156,7 +156,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2025: (JAN, 27),
     }
 
-    # https://www.timeanddate.com/holidays/oman/eid-al-adha
+    # https://web.archive.org/web/20240913230603/https://www.timeanddate.com/holidays/oman/eid-al-adha
     EID_AL_ADHA_DATES = {
         2019: (AUG, 11),
         2020: (JUL, 31),
@@ -166,7 +166,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    # https://www.timeanddate.com/holidays/oman/eid-al-fitr
+    # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/eid-al-fitr
     EID_AL_FITR_DATES = {
         2019: (JUN, 4),
         2020: (MAY, 24),
@@ -177,7 +177,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    # https://www.timeanddate.com/holidays/oman/ramadan-begins
+    # https://web.archive.org/web/20240814104839/https://www.timeanddate.com/holidays/oman/ramadan-begins
     RAMADAN_BEGINNING_DATES = {
         2023: (MAR, 23),
         2024: (MAR, 12),

@@ -65,12 +65,12 @@ class Malaysia(
     """Malaysia holidays.
 
     References:
-        * [Holidays Act 1951](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
-        * [Holidays Ordinance (Sabah Cap. 56)](https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
-        * [Public Holidays Ordinance (Sarawak Cap. 8)](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
+        * [Holidays Act 1951](https://web.archive.org/web/20241202103403/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
+        * [Holidays Ordinance (Sabah Cap. 56)](https://web.archive.org/web/20201028045259/https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
+        * [Public Holidays Ordinance (Sarawak Cap. 8)](https://web.archive.org/web/20221208142318/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia)
-        * <https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
-        * <https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
+        * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
+        * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
 
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
@@ -144,7 +144,7 @@ class Malaysia(
     }
     supported_languages = ("en_US", "ms_MY", "th")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

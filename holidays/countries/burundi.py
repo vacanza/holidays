@@ -18,7 +18,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     """Burundi holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/burundi>
+        * <https://web.archive.org/web/20240915030631/https://www.officeholidays.com/countries/burundi>
 
     Note that holidays falling on a sunday maybe observed on the following Monday.
     This depends on formal announcements by the government, which only happens close
@@ -29,7 +29,7 @@ class Burundi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     observed_label = "%s (observed)"
     start_year = 1962
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

@@ -39,9 +39,9 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Qatar>
-        * [National Sports Day](https://hukoomi.gov.qa/en/national-sport-day)
-        * [Qatar National Day](https://www.qatar.qa/en/qatar/history-of-qatar-qatar-national-day-committee/)
-        * [Weekend](https://www.arabnews.com/node/234601)
+        * [National Sports Day](https://web.archive.org/web/20250417141518/https://hukoomi.gov.qa/en/national-sport-day)
+        * [Qatar National Day](https://web.archive.org/web/20240522081644/https://www.qatar.qa/en/qatar/history-of-qatar-qatar-national-day-committee/)
+        * [Weekend](https://web.archive.org/web/20240930093123/https://www.arabnews.com/node/234601)
     """
 
     country = "QA"
@@ -52,7 +52,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("ar_QA", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -108,7 +108,7 @@ class QAT(Qatar):
 
 
 class QatarIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/qatar/eid-al-adha
+    # https://web.archive.org/web/20250422212912/https://www.timeanddate.com/holidays/qatar/eid-al-adha
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
@@ -132,7 +132,7 @@ class QatarIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 16),
     }
 
-    # https://www.timeanddate.com/holidays/qatar/eid-al-fitr
+    # https://web.archive.org/web/20241207022523/https://www.timeanddate.com/holidays/qatar/eid-al-fitr
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
@@ -162,7 +162,7 @@ class QatarStaticHolidays:
     """Qatar special holidays.
 
     References:
-        * [New Year's Holiday](https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
+        * [New Year's Holiday](https://web.archive.org/web/20250119073018/https://www.expatica.com/qa/lifestyle/holidays/qatar-public-holidays-74585/)
     """
 
     # New Year's Holiday.

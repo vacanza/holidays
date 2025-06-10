@@ -57,7 +57,7 @@ class Suriname(
     start_year = 1972
     supported_languages = ("en_US", "nl")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -143,7 +143,7 @@ class Suriname(
 
 
 class SurinameHinduHolidays(_CustomHinduHolidays):
-    # https://www.timeanddate.com/holidays/suriname/holi-phagwa
+    # https://web.archive.org/web/20241104221047/https://www.timeanddate.com/holidays/suriname/holi-phagwa
     HOLI_DATES = {
         2015: (MAR, 6),
         2016: (MAR, 23),
@@ -163,7 +163,7 @@ class SurinameHinduHolidays(_CustomHinduHolidays):
         2030: (MAR, 19),
     }
 
-    # https://www.timeanddate.com/holidays/suriname/diwali
+    # https://web.archive.org/web/20241105043434/https://www.timeanddate.com/holidays/suriname/diwali
     DIWALI_DATES = {
         2014: (OCT, 23),
         2015: (NOV, 11),
@@ -186,7 +186,7 @@ class SurinameHinduHolidays(_CustomHinduHolidays):
 
 
 class SurinameIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/suriname/eid-al-fitr
+    # https://web.archive.org/web/20241107062349/https://www.timeanddate.com/holidays/suriname/eid-al-fitr
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
@@ -202,7 +202,7 @@ class SurinameIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 31),
     }
 
-    # https://www.timeanddate.com/holidays/suriname/eid-al-adha
+    # https://web.archive.org/web/20241113121535/https://www.timeanddate.com/holidays/suriname/eid-al-adha
     EID_AL_ADHA_DATES = {
         2014: (OCT, 5),
         2015: (SEP, 24),

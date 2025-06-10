@@ -24,7 +24,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Slovakia>
         * <https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_Slovensku>
-        * <https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/>
+        * <https://web.archive.org/web/20250413192257/https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/>
     """
 
     country = "SK"

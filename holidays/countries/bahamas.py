@@ -27,16 +27,16 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Bahamas>
-        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf>
-        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0040/MajorityRulePublicHolidayAct2013_1.pdf>
-        * <https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2013/2013-0009/RandolFawkesLabourDayAct2013_1.pdf>
-        * <http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/>
-        * <https://eleutheranews.com/?p=3594>
+        * <https://web.archive.org/web/20250421024112/http://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/PublicHolidaysAct_1.pdf>
+        * <https://archive.org/details/majority-rule-public-holiday-act-2013>
+        * <https://archive.org/details/randol-fawkes-labour-day-act-2013>
+        * <https://web.archive.org/web/20210922210604/http://www.tribune242.com/news/2013/oct/12/national-heroes-day-formally-established/>
+        * <https://web.archive.org/web/20190905051207/http://eleutheranews.com/?p=3594>
 
     Checked With:
-        * <https://www.bahamashclondon.net/consular-information/public-holidays/>
-        * <https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf>
-        * <https://publicholidays.la/the-bahamas/2022-dates/>
+        * <https://web.archive.org/web/20250218064125/https://www.bahamashclondon.net/consular-information/public-holidays/>
+        * <https://web.archive.org/web/20250427182357/https://bisxbahamas.com/wp-content/uploads/2020/12/Trading-Calendar-2021.pdf>
+        * <https://web.archive.org/web/20231210053149/https://publicholidays.la/the-bahamas/2022-dates/>
     """
 
     country = "BS"
@@ -127,7 +127,7 @@ class BHS(Bahamas):
 
 class BahamasStaticHolidays:
     special_public_holidays = {
-        # https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/
+        # https://web.archive.org/web/20250122110613/https://www.bahamas.gov.bs/wps/portal/public/gov/government/notices/national%20holiday%2019th%20september/
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
     }
 

@@ -22,7 +22,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Jordan>
-        * <https://www.mfa.gov.jo/content/public-holidays>
+        * <https://web.archive.org/web/20250116061815/https://www.mfa.gov.jo/content/public-holidays>
     """
 
     country = "JO"
@@ -31,7 +31,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -45,7 +45,7 @@ class Jordan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolid
 
     def _populate_public_holidays(self):
         # The resting days are Friday and Saturday since Jan 6, 2000.
-        # https://archive.wfn.org/2000/01/msg00078.html
+        # https://web.archive.org/web/20241226195649/http://archive.wfn.org/2000/01/msg00078.html
         self.weekend = {THU, FRI} if self._year <= 1999 else {FRI, SAT}
 
         # New Year's Day.
