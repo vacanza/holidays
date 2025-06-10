@@ -95,16 +95,14 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Soviet era.
         if 1950 <= self._year <= 1989:
             # Proclamation of Soviet Republic Day.
-            self._add_holiday_mar_21(
-                tr("A Tanácsköztársaság kikiáltásának ünnepe"))
+            self._add_holiday_mar_21(tr("A Tanácsköztársaság kikiáltásának ünnepe"))
 
             # Liberation Day.
             self._add_holiday_apr_4(tr("A felszabadulás ünnepe"))
 
             if self._year not in {1956, 1989}:
                 # Great October Socialist Revolution Day.
-                self._add_holiday_nov_7(
-                    tr("A nagy októberi szocialista forradalom ünnepe"))
+                self._add_holiday_nov_7(tr("A nagy októberi szocialista forradalom ünnepe"))
 
 
 class HU(Hungary):
