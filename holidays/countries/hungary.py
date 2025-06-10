@@ -22,8 +22,8 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Hungary>
-        * <https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek>
-        * <https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839>
+        * <https://web.archive.org/web/20191002190510/http://hvg.hu:80/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek>
+        * <https://web.archive.org/web/20240307183735/http://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html>
     """
 
     country = "HU"
@@ -95,14 +95,16 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Soviet era.
         if 1950 <= self._year <= 1989:
             # Proclamation of Soviet Republic Day.
-            self._add_holiday_mar_21(tr("A Tanácsköztársaság kikiáltásának ünnepe"))
+            self._add_holiday_mar_21(
+                tr("A Tanácsköztársaság kikiáltásának ünnepe"))
 
             # Liberation Day.
             self._add_holiday_apr_4(tr("A felszabadulás ünnepe"))
 
             if self._year not in {1956, 1989}:
                 # Great October Socialist Revolution Day.
-                self._add_holiday_nov_7(tr("A nagy októberi szocialista forradalom ünnepe"))
+                self._add_holiday_nov_7(
+                    tr("A nagy októberi szocialista forradalom ünnepe"))
 
 
 class HU(Hungary):
@@ -134,20 +136,20 @@ class HungaryStaticHolidays:
         * [2007](https://web.archive.org/web/20250526064108/https://jogkodex.hu/jsz/2006_4_szmm_rendelet_8628960)
         * [2008](https://web.archive.org/web/20250526051643/https://jogkodex.hu/jsz/2007_27_szmm_rendelet_3904252)
         * [2009](https://web.archive.org/web/20250526051816/https://jogkodex.hu/jsz/2008_16_szmm_rendelet_7668376)
-        * [2010](https://njt.hu/jogszabaly/2009-20-20-1X)
-        * [2011](https://njt.hu/jogszabaly/2010-7-20-2X)
-        * [2012](https://njt.hu/jogszabaly/2011-39-20-2X)
-        * [2012-2013](https://njt.hu/jogszabaly/2012-28-20-2X)
-        * [2014](https://njt.hu/jogszabaly/2013-33-20-2X)
-        * [2015](https://njt.hu/jogszabaly/2014-28-20-2X)
-        * [2016](https://njt.hu/jogszabaly/2015-18-20-2X)
-        * [2018](https://njt.hu/jogszabaly/2017-61-B0-15)
-        * [2019](https://njt.hu/jogszabaly/2018-6-20-53)
-        * [2020](https://njt.hu/jogszabaly/2019-7-20-53)
-        * [2021](https://njt.hu/jogszabaly/2020-14-20-7Q)
-        * [2022](https://njt.hu/jogszabaly/2021-23-20-7Q)
-        * [2024](https://njt.hu/jogszabaly/2023-15-20-8P)
-        * [2025](https://njt.hu/jogszabaly/2024-11-20-2X)
+        * [2010](https://web.archive.org/web/20250428204804/https://njt.hu/jogszabaly/2009-20-20-1X)
+        * [2011](https://web.archive.org/web/20250428204915/https://njt.hu/jogszabaly/2010-7-20-2X)
+        * [2012](https://web.archive.org/web/20250428204812/https://njt.hu/jogszabaly/2011-39-20-2X)
+        * [2012-2013](https://web.archive.org/web/20230719163315/https://njt.hu/jogszabaly/2012-28-20-2X)
+        * [2014](https://web.archive.org/web/20241104082745/https://njt.hu/jogszabaly/2013-33-20-2X)
+        * [2015](https://web.archive.org/web/20241104081744/https://njt.hu/jogszabaly/2014-28-20-2X)
+        * [2016](https://web.archive.org/web/20230719163025/https://njt.hu/jogszabaly/2015-18-20-2X)
+        * [2018](https://web.archive.org/web/20250429080658/https://njt.hu/jogszabaly/2017-61-B0-15)
+        * [2019](https://web.archive.org/web/20241211095342/https://njt.hu/jogszabaly/2018-6-20-53)
+        * [2020](https://web.archive.org/web/20241104072826/https://njt.hu/jogszabaly/2019-7-20-53)
+        * [2021](https://web.archive.org/web/20241102122816/https://njt.hu/jogszabaly/2020-14-20-7Q)
+        * [2022](https://web.archive.org/web/20241107133627/https://njt.hu/jogszabaly/2021-23-20-7Q)
+        * [2024](https://web.archive.org/web/20241105131832/https://njt.hu/jogszabaly/2023-15-20-8P)
+        * [2025](https://web.archive.org/web/20241219165144/https://njt.hu/jogszabaly/2024-11-20-2X)
         * [2026](https://web.archive.org/web/20250526083742/https://jogkodex.hu/jsz/2025_10_ngm_rendelet_5591314)
     """
 

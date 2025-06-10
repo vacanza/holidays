@@ -242,9 +242,9 @@ class GermanyStaticHolidays:
     """Germany special holidays.
 
     References:
-        * <https://www.stuttgarter-zeitung.de/inhalt.reformationstag-2017-einmalig-bundesweiter-feiertag.b7e189b3-a33d-41a3-a0f4-141cd13df54e.html>
-        * <https://www.bbc.com/news/world-europe-52574748>
-        * <https://gesetze.berlin.de/bsbe/document/jlr-FeiertGBEV8P1>
+        * <https://web.archive.org/web/20241127055605/https://www.stuttgarter-zeitung.de/inhalt.reformationstag-2017-einmalig-bundesweiter-feiertag.b7e189b3-a33d-41a3-a0f4-141cd13df54e.html>
+        * <https://web.archive.org/web/20250415233518/https://www.bbc.com/news/world-europe-52574748>
+        * <https://web.archive.org/web/20241219151307/https://gesetze.berlin.de/bsbe/document/jlr-FeiertGBEV8P1>
     """
 
     special_public_holidays = {

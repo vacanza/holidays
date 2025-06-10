@@ -25,12 +25,12 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * [Public holidays in Tuvalu](https://en.wikipedia.org/wiki/Public_holidays_in_Tuvalu)
-        * [Today's and Upcoming Holidays in Tuvalu](https://www.timeanddate.com/holidays/tuvalu/)
-        * [Public Holidays (Amendment) Act 1990](https://www.paclii.org/cgi-bin/sinodisp/tv/legis/num_act/pha1990243/pha1990243.html)
-        * [Public Holidays Act 1](https://tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1937/1937-0005/1937-0005_1.pdf)
-        * [Public Holidays (Amendment) Act 2018](https://tuvalu-legislation.tv/cms/images/LEGISLATION/AMENDING/Public%20Holidays%20(Amendment)%20Act/Public%20Holidays%20(Amendment)%20Act%202018/Public%20Holidays%20(Amendment)%20Act%202018.pdf)
-        * [Public Holidays (Amendment) Act 2020](https://tuvalu-legislation.tv/cms/images/LEGISLATION/AMENDING/2020/2020-0013/2020-0013.pdf)
-        * [Public Holidays Act 2](https://tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1937/1937-0005/1937-0005_2.pdf)
+        * [Today's and Upcoming Holidays in Tuvalu](https://web.archive.org/web/20250310164727/https://www.timeanddate.com/holidays/tuvalu/)
+        * [Public Holidays (Amendment) Act 1990](https://web.archive.org/web/20250429073846/https://www.paclii.org/cgi-bin/sinodisp/tv/legis/num_act/pha1990243/pha1990243.html)
+        * [Public Holidays Act 1](https://archive.org/details/tuvalu-public-holidays-act-revised-2008)
+        * [Public Holidays (Amendment) Act 2018](https://archive.org/details/tuvalu-public-holidays-amendment-act-2018)
+        * [Public Holidays (Amendment) Act 2020](https://archive.org/details/tuvalu-public-holidays-amendment-act-2020)
+        * [Public Holidays Act 2](https://archive.org/details/tuvalu-public-holidays-act-revised-2022)
         * [Codes for the representation of names of countries and their subdivisions](https://www.iso.org/obp/ui/#iso:code:3166:TV)
         * [TUVALU-NEWS.TV](https://web.archive.org/web/20140915180104/http://www.tuvalu-news.tv/archives/2007/01/island_special_public_holidays.html)
     """

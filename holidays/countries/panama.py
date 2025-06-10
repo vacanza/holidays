@@ -23,11 +23,11 @@ class Panama(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Panama>
-        * [Labor Code 1947](https://docs.panama.justia.com/federales/leyes/67-de-1947-nov-26-1947.pdf)
-        * [Cabinet Decree #347 of 1969](https://docs.panama.justia.com/federales/decretos-de-gabinete/decreto-de-gabinete-347-de-1969-nov-14-1969.pdf)
-        * [Labor Code 1971](https://www.mitradel.gob.pa/wp-content/uploads/2016/12/código-detrabajo.pdf)
-        * [Law #4 of Jun 25, 1990](https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/1990/1990/LEY/Administrador%20Legispan_21570_1990_7_2_ASAMBLEA%20LEGISLATIVA_4.pdf)
-        * [Law #55 of Nov 7, 2001](https://docs.panama.justia.com/federales/leyes/55-de-2001-nov-14-2001.pdf)
+        * [Labor Code 1947](https://web.archive.org/web/20250429081529/https://docs.panama.justia.com/federales/leyes/67-de-1947-nov-26-1947.pdf)
+        * [Cabinet Decree #347 of 1969](https://web.archive.org/web/20250429081519/https://docs.panama.justia.com/federales/decretos-de-gabinete/decreto-de-gabinete-347-de-1969-nov-14-1969.pdf)
+        * [Labor Code 1971](https://web.archive.org/web/20240420050417/https://www.mitradel.gob.pa/wp-content/uploads/2016/12/código-detrabajo.pdf)
+        * [Law #4 of Jun 25, 1990](https://web.archive.org/web/20250429081538/https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/1990/1990/LEY/Administrador%20Legispan_21570_1990_7_2_ASAMBLEA%20LEGISLATIVA_4.pdf)
+        * [Law #55 of Nov 7, 2001](https://web.archive.org/web/20230401210617/https://docs.panama.justia.com/federales/leyes/55-de-2001-nov-14-2001.pdf)
     """
 
     country = "PA"

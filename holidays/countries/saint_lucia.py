@@ -21,9 +21,9 @@ class SaintLucia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Lucia>
-        * <https://www.timeanddate.com/holidays/saint-lucia/>
-        * <https://archive.stlucia.gov.lc/saint_lucia/public_holidays.htm>
-        * <https://archive.stlucia.gov.lc/stluciasilver/national_holidays.htm>
+        * <https://web.archive.org/web/20250415223705/https://www.timeanddate.com/holidays/saint-lucia/>
+        * <https://web.archive.org/web/20241201164546/https://archive.stlucia.gov.lc/saint_lucia/public_holidays.htm>
+        * <https://web.archive.org/web/20220227084500/https://archive.stlucia.gov.lc/stluciasilver/national_holidays.htm>
         * <https://web.archive.org/web/20160314100648/http://www.stluciachamber.org/uploadedImages/contentImg/file/List%20of%20Holidays%20for%202015%20(1).pdf>
     """
 

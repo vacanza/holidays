@@ -38,7 +38,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
         * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
-        * <https://www.time.ir>
+        * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
         * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
