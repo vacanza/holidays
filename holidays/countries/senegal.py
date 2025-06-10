@@ -130,7 +130,7 @@ class SEN(Senegal):
 
 
 class SenegalIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/senegal/tamkharit
+    # https://web.archive.org/web/20250609044648/https://www.timeanddate.com/holidays/senegal/tamkharit
     ASHURA_DATES = {
         2020: (AUG, 29),
         2021: (AUG, 18),
@@ -139,7 +139,7 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUL, 17),
     }
 
-    # https://www.timeanddate.com/holidays/senegal/grand-magal-de-touba
+    # https://web.archive.org/web/20250609061446/https://www.timeanddate.com/holidays/senegal/grand-magal-de-touba
     GRAND_MAGAL_OF_TOUBA_DATES = {
         2020: (OCT, 6),
         2021: (SEP, 26),
@@ -148,7 +148,7 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
         2024: (AUG, 23),
     }
 
-    # https://www.timeanddate.com/holidays/senegal/maouloud
+    # https://web.archive.org/web/20250609091559/https://www.timeanddate.com/holidays/senegal/maouloud
     MAWLID_DATES = {
         2020: (OCT, 29),
         2021: (OCT, 18),
@@ -157,7 +157,7 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 15),
     }
 
-    # https://www.timeanddate.com/holidays/senegal/korite
+    # https://web.archive.org/web/20250609092813/https://www.timeanddate.com/holidays/senegal/korite
     EID_AL_FITR_DATES = {
         2020: (MAY, 24),
         2021: (MAY, 12),
@@ -167,7 +167,7 @@ class SenegalIslamicHolidays(_CustomIslamicHolidays):
         2025: (MAR, 30),
     }
 
-    # https://www.timeanddate.com/holidays/senegal/tabaski
+    # https://web.archive.org/web/20250609102658/https://www.timeanddate.com/holidays/senegal/tabaski
     EID_AL_ADHA_DATES = {
         2020: (JUL, 31),
         2021: (JUL, 21),
