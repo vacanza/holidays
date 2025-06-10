@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Anguilla holidays en_US localization.
+# Anguilla holidays en_AI localization.
 #
 msgid ""
 msgstr ""
