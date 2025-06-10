@@ -75,7 +75,7 @@ class Benin(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "fr_BJ")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

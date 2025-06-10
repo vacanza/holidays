@@ -60,7 +60,7 @@ class IvoryCoast(
     start_year = 1997
     supported_languages = ("en_CI", "en_US", "fr")
 
-    def __init__(self, islamic_show_estimated: bool = False, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):
         """
         Args:
             islamic_show_estimated:

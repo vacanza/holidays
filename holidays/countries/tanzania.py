@@ -66,7 +66,7 @@ class Tanzania(
     # Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
     start_year = 1994
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

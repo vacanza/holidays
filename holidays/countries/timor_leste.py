@@ -52,7 +52,7 @@ class TimorLeste(
     # Law No. 10/2005 Of 10 August, Public Holidays and Official Commemorative Dates.
     start_year = 2006
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

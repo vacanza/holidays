@@ -45,7 +45,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     supported_languages = ("az", "en_US", "uk")
     start_year = 1990
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

@@ -35,7 +35,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
