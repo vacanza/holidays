@@ -15,94 +15,94 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.75\n"
-"POT-Creation-Date: 2025-06-06 23:16+0530\n"
-"PO-Revision-Date: 2025-06-06 23:16+0530\n"
+"POT-Creation-Date: 2025-06-10 23:55+0530\n"
+"PO-Revision-Date: 2025-06-10 23:55+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_US\n"
+"Language: en_AI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_AI\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. James Ronald Webster Day.
 msgid "James Ronald Webster Day"
-msgstr "James Ronald Webster Day"
+msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "Easter Monday"
+msgstr ""
 
 #. Easter Sunday.
 msgid "Easter Sunday"
-msgstr "Easter Sunday"
+msgstr ""
 
 #. Labor Day.
 msgid "Labor Day"
-msgstr "Labor Day"
+msgstr ""
 
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr "Whit Monday"
+msgstr ""
 
 #. Celebration of the Birthday of Her Majesty the Queen.
 msgid "Celebration of the Birthday of Her Majesty the Queen"
-msgstr "Celebration of the Birthday of Her Majesty the Queen"
+msgstr ""
 
 #. Celebration of the Birthday of His Majesty the King.
 msgid "Celebration of the Birthday of His Majesty the King"
-msgstr "Celebration of the Birthday of His Majesty the King"
+msgstr ""
 
 #. Anguilla Day.
 msgid "Anguilla Day"
-msgstr "Anguilla Day"
+msgstr ""
 
 #. August Monday.
 msgid "August Monday"
-msgstr "August Monday"
+msgstr ""
 
 #. August Thursday.
 msgid "August Thursday"
-msgstr "August Thursday"
+msgstr ""
 
 #. Constitution Day.
 msgid "Constitution Day"
-msgstr "Constitution Day"
+msgstr ""
 
 #. National Heroes and Heroines Day.
 msgid "National Heroes and Heroines Day"
-msgstr "National Heroes and Heroines Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "Boxing Day"
+msgstr ""
 
 #. Royal Wedding of Prince William & Kate Middleton.
 msgid "Royal Wedding of Prince William & Kate Middleton"
-msgstr "Royal Wedding of Prince William & Kate Middleton"
+msgstr ""
 
 #. Diamond Jubilee Celebration of Her Majesty The Queen.
 msgid "Diamond Jubilee Celebration of Her Majesty The Queen"
-msgstr "Diamond Jubilee Celebration of Her Majesty The Queen"
+msgstr ""
 
 #. Special Public Holiday.
 msgid "Special Public Holiday"
-msgstr "Special Public Holiday"
+msgstr ""

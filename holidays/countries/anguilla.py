@@ -13,15 +13,13 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, APR, JUN, MAY, _timedelta
+from holidays.calendars.gregorian import FEB, APR, MAY, JUN, SUN, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_PREV_FRI,
-    SAT_TO_NEXT_MON,
-    SUN_TO_NEXT_MON,
-    SUN_TO_NEXT_TUE,
 )
 
 
@@ -29,23 +27,35 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """Anguilla holidays.
 
     References:
-        - [Public Holidays For 2011](https://web.archive.org/web/20110531155208/https://gov.ai/holiday.php)
+        - [Public Holidays For 2011](https://web.archive.org/web/20110531155208/https://www.gov.ai/holiday.php)
         - [Public Holidays For 2012](https://web.archive.org/web/20120316123834/http://www.gov.ai/holiday.php)
-        - [Public Holidays For 2019](https://web.archive.org/web/20190129001329/http://www.gov.ai:80/holiday.php)
+        - [Public Holidays For 2013](https://web.archive.org/web/20131113151001/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2014](https://web.archive.org/web/20141113163349/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2015](https://web.archive.org/web/20151113150558/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2016](https://web.archive.org/web/20161021015139/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2017](https://web.archive.org/web/20170830143632/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2018](https://web.archive.org/web/20181127040220/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2019](https://web.archive.org/web/20191021020537/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2020](https://web.archive.org/web/20210205021056/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2021](https://web.archive.org/web/20210901183726/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2022](https://web.archive.org/web/20221011200016/http://www.gov.ai/holiday.php)
+        - [Public Holidays For 2024](https://web.archive.org/web/20241004074741/https://www.gov.ai/service/public-holidays-for-2024)
+        - [Public Holidays For 2025](https://web.archive.org/web/20250425025259/https://www.gov.ai/service/public-holidays-for-2025)
         - [PUBLIC HOLIDAYS ACT R.S.A. c. P130](https://www.gov.ai/laws/P130-00-Public%20Holidays%20Act/docs/P130-00-Public%20Holidays%20Act_03.pdf)
         - [Revised Regulations of Anguilla: P130-1](https://www.gov.ai/laws/P130-01-Public%20Holidays%20Regulations/docs/P130-01-Public%20Holidays%20Regulations_05.pdf)
-        - [Government of Anguilla Official Gazette](https://gov.ai/document/2025-03-04-123357_2051160063.pdf)
+        - [Government of Anguilla Official Gazette](https://web.archive.org/web/20250304213202/https://gov.ai/document/2025-03-04-123357_2051160063.pdf)
         - [REVISED REGULATIONS OF ANGUILLA](https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/109059/ATG109059.pdf)
     """
 
     country = "AI"
-    default_language = "en_US"
-    supported_languages = ("en_US",)
+    default_language = "en_AI"
+    supported_languages = ("en_AI", "en_US")
     # %s (observed).
     observed_label = tr("%s (observed)")
     # Declaration of independence May 30, 1967,
     # but the 2010 revision is the most recent comprehensive legal update.
-    start_year = 2010
+    start_year = 2011
+    weekend = {SUN}
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -56,13 +66,10 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON)
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # James Ronald Webster Day.
-        self._add_observed(
-            self._add_holiday_mar_2(tr("James Ronald Webster Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        self._add_observed(self._add_holiday_mar_2(tr("James Ronald Webster Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -73,16 +80,25 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Labour Day.
-        self._add_observed(self._add_labor_day(tr("Labour Day")), rule=SAT_SUN_TO_NEXT_MON)
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Labor Day")))
 
         # Whit Monday.
         whit_monday = self._add_whit_monday(tr("Whit Monday"))
 
-        # Celebration of the Birthday of Her Majesty the Queen.
-        self._add_holiday_2nd_mon_of_jun(
+        name = (
+            # Celebration of the Birthday of Her Majesty the Queen.
             tr("Celebration of the Birthday of Her Majesty the Queen")
+            if self._year <= 2022
+            # Celebration of the Birthday of His Majesty the King.
+            else tr("Celebration of the Birthday of His Majesty the King")
         )
+        if self._year == 2022:
+            self._add_holiday_jun_3(name)
+        elif self._year <= 2021:
+            self._add_holiday_2nd_mon_of_jun(name)
+        else:
+            self._add_holiday_3rd_mon_of_jun(name)
 
         dt = date(self._year, MAY, 30)
         if self._is_weekend(dt):
@@ -92,57 +108,34 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Anguilla Day.
         self._add_holiday(tr("Anguilla Day"), dt)
 
-        # Sovereignty Day.
-        self._add_holiday_mar_2(tr("Sovereignty Day"))
-
         # August Monday.
-        self._add_observed(
-            self._add_holiday_1st_mon_of_aug(tr("August Monday")), rule=SAT_SUN_TO_PREV_FRI
-        )
+        self._add_holiday_1st_mon_of_aug(tr("August Monday"))
 
         # August Thursday.
-        self._add_observed(
-            self._add_holiday_3_days_past_1st_mon_of_aug(tr("August Thursday")),
-            rule=SAT_SUN_TO_PREV_FRI,
-        )
+        self._add_holiday_3_days_past_1st_mon_of_aug(tr("August Thursday"))
 
         # Constitution Day.
-        self._add_observed(
-            self._add_holiday_4_days_past_1st_mon_of_aug(tr("Constitution Day")),
-            rule=SAT_SUN_TO_PREV_FRI,
-        )
+        self._add_holiday_4_days_past_1st_mon_of_aug(tr("Constitution Day"))
 
         self._add_observed(
             self._add_holiday_dec_19(
                 # National Heroes and Heroines Day.
                 tr("National Heroes and Heroines Day")
-                if self._year >= 2011
-                # Separation Day.
-                else tr("Separation Day")
             ),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
-        christmas_date = self._christmas_day
-        boxing_date = _timedelta(christmas_date, +1)
-
-        if self._is_sunday(christmas_date):
+        self._add_observed(
             # Boxing Day.
-            self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SUN_TO_NEXT_MON)
-            # Boxing Day.
-            self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SUN_TO_NEXT_TUE)
-        elif self._is_saturday(christmas_date):
-            # Boxing Day.
-            self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_TO_NEXT_MON)
-        elif self._is_saturday(boxing_date):
-            # Boxing Day.
-            self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_TO_NEXT_MON)
-        else:
-            # Boxing Day.
-            self._add_christmas_day_two(tr("Boxing Day"))
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
+        )
 
 
 class AI(Anguilla):
@@ -159,6 +152,6 @@ class AnguillaStaticHolidays:
         2011: (APR, 29, tr("Royal Wedding of Prince William & Kate Middleton")),
         # Diamond Jubilee Celebration of Her Majesty The Queen.
         2012: (JUN, 4, tr("Diamond Jubilee Celebration of Her Majesty The Queen")),
-        # Special Public Holiday Day.
-        2025: (FEB, 28, tr("Special Public Holiday Day")),
+        # Special Public Holiday.
+        2025: (FEB, 28, tr("Special Public Holiday")),
     }
