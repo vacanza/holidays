@@ -63,7 +63,7 @@ class LocalizationHelper:
 
         self.country_code = self.args.country_code
         self.encoding = "utf-8-sig" if self.args.bom else "utf-8"
-        self.csv_name = Path(f"holidays/locale/csv/{self.country_code}.csv")
+        self.csv_file_path = Path(f"holidays/locale/csv/{self.country_code}.csv")
 
     def create_po_files(self):
         sys.path.append(str(Path.cwd()))  # Make holidays visible.
@@ -81,21 +81,23 @@ class LocalizationHelper:
         cls = getattr(importlib.import_module(f"holidays.countries.{module_name}"), class_name)
         docstring = cls.__doc__
 
-        header = Path("docs/file_header.txt").read_text(encoding="utf-8").split("\n")
-        header = [f"# {line}" if line else "#" for line in header]
+        header = [
+            f"# {line}" if line else "#"
+            for line in Path("docs/file_header.txt").read_text(encoding="utf-8").split("\n")
+        ]
         country_name = "COUNTRY"
         if (title := docstring.split("\n")[0]) and title.endswith(" holidays."):
             country_name = title.split("holidays")[0].strip()
 
-        locale_path = Path("holidays/locale")
-        pot_file_path = locale_path / "pot" / f"{self.country_code}.pot"
+        locale_directory = Path("holidays/locale")
+        pot_file_path = locale_directory / "pot" / f"{self.country_code}.pot"
         pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
 
         for language in cls.supported_languages:
-            po_directory = locale_path / f"{language}" / "LC_MESSAGES"
+            po_directory = locale_directory / language / "LC_MESSAGES"
             po_directory.mkdir(parents=True, exist_ok=True)
             po_file_path = po_directory / f"{self.country_code}.po"
-            if po_file_path.exists() and not self.args.overwrite:
+            if not self.args.overwrite and po_file_path.exists():
                 continue
             pot_file.metadata["Language"] = language
             pot_file.save(po_file_path, newline="\n")
@@ -103,12 +105,12 @@ class LocalizationHelper:
             file_content = po_file_path.read_text(encoding="utf-8").split("\n")
             if file_content[0] != "# SOME DESCRIPTIVE TITLE":
                 continue
-            loc_desc = f" {language} localization" if language != cls.default_language else ""
-            title = f"# {country_name} holidays{loc_desc}."
+            l10n_suffix = f" {language} localization" if language != cls.default_language else ""
+            title = f"# {country_name} holidays{l10n_suffix}."
             file_content = header + [title, "#"] + file_content[4:]
             po_file_path.write_text("\n".join(file_content), encoding="utf-8", newline="\n")
 
-        en_us_po_path = locale_path / "en_us/LC_MESSAGES" / f"{self.country_code}.po"
+        en_us_po_path = locale_directory / "en_us/LC_MESSAGES" / f"{self.country_code}.po"
         po_file = pofile(en_us_po_path, wrapwidth=WRAP_WIDTH)
         for po_entry in po_file:
             if po_entry.comment:
@@ -116,13 +118,13 @@ class LocalizationHelper:
         po_file.save(en_us_po_path, newline="\n")
 
     def export_to_csv(self):
-        if self.csv_name.exists() and not self.args.overwrite:
-            print(f"File {self.csv_name} exists and no --overwrite option!")
+        if not self.args.overwrite and self.csv_file_path.exists():
+            print(f"File {self.csv_file_path} exists and no --overwrite option!")
             sys.exit(1)
 
-        po_data = defaultdict(dict)
         comments = {}
         languages = []
+        po_data = defaultdict(dict)
         for po_path in Path("holidays/locale").rglob(f"{self.country_code}.po"):
             po_file = pofile(po_path, wrapwidth=WRAP_WIDTH)
             language = po_file.metadata["Language"]
@@ -138,25 +140,24 @@ class LocalizationHelper:
         languages = sorted(languages)
         headers = ["msgid", "msgcomment", *languages]
         rows = [
-            [msgid, comments[msgid]] + [po_data[msgid][lang] for lang in languages]
+            [msgid, comments[msgid]] + [po_data[msgid][language] for language in languages]
             for msgid in po_data
         ]
         self.write_csv(headers, rows)
 
     def read_csv(self) -> tuple[list[str], list[list[str]]]:
-        if not self.csv_name.exists():
-            print(f"File {self.csv_name} not found!")
+        if not self.csv_file_path.exists():
+            print(f"File {self.csv_file_path} not found!")
             sys.exit(1)
 
-        with self.csv_name.open("r", encoding=self.encoding) as f:
+        with self.csv_file_path.open("r", encoding=self.encoding) as f:
             reader = csv.reader(f, delimiter=";")
-            headers = next(reader)
-            rows = list(reader)
+            headers, *rows = reader
         return headers, rows
 
     def write_csv(self, headers: list[str], rows: list[list[str]]):
-        self.csv_name.parent.mkdir(parents=True, exist_ok=True)
-        with self.csv_name.open("w", newline="", encoding=self.encoding) as f:
+        self.csv_file_path.parent.mkdir(parents=True, exist_ok=True)
+        with self.csv_file_path.open("w", newline="", encoding=self.encoding) as f:
             writer = csv.writer(f, delimiter=";")
             writer.writerow(headers)
             writer.writerows(rows)
