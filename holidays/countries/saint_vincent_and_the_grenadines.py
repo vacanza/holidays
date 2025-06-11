@@ -54,8 +54,8 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # National Workers Day.
-        self._add_observed(self._add_labor_day(tr("National Workers Day")))
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("National Workers' Day")))
 
         if self._year >= 2025:
             # National Spiritual Baptist Day.
