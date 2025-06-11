@@ -75,9 +75,7 @@ class Guyana(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(
-            self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_WORKDAY
-        )
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON)
 
         if self._year <= 1969:
             # Independence Day.
@@ -99,27 +97,32 @@ class Guyana(
         # Commonwealth Day.
         self._add_holiday_1st_mon_of_aug(tr("Commonwealth Day"))
 
-        # Christmas Day.
         self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Day after Christmas.
         self._add_observed(
-            self._add_christmas_day_two(tr("Day after Christmas")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Day after Christmas.
+            self._add_christmas_day_two(tr("Day after Christmas")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Phagwah Day.
+        # Holi.
         self._add_observed(self._add_holi(tr("Phagwah Day")))
 
-        # Deepavali Day.
-        self._add_observed(self._add_diwali(tr("Deepavali Day")))
+        # Diwali.
+        name = tr("Deepavali Day")
+        self._add_observed(
+            self._add_diwali(name) if self._year >= 2016 else self._add_holiday_oct_30(name)
+        )
 
-        # Mawlid Day.
+        # Prophet's Birthday.
         for dt in self._add_mawlid_day(tr("Youman Nabi Day")):
             self._add_observed(dt)
 
-        # Eid al-Adha Day.
+        # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Eid-Ul-Azha Day")):
             self._add_observed(dt)
 
