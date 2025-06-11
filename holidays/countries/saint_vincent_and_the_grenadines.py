@@ -85,7 +85,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         self._add_observed(self._add_holiday_oct_27(tr("Independence Day")))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
