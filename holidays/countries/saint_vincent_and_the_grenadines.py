@@ -82,7 +82,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
 
         # Independence Day.
-        self._add_holiday_oct_27(tr("Independence Day"))
+        self._add_observed(self._add_holiday_oct_27(tr("Independence Day")))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
