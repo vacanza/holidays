@@ -76,8 +76,8 @@ msgstr ""
 msgid "Day following Independence Day"
 msgstr ""
 
-#. International Womens Day.
-msgid "International Womens Day"
+#. International Women's Day.
+msgid "International Women's Day"
 msgstr ""
 
 #. RONPHOS Handover.

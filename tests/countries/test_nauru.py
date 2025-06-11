@@ -72,8 +72,8 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_womens_day(self):
-        name = "International Womens Day"
+    def test_international_womens_day(self):
+        name = "International Women's Day"
         self.assertHolidayName(name, (f"{year}-03-08" for year in range(2019, 2050)))
         dt = (
             "2020-03-09",

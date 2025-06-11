@@ -12,12 +12,11 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
 
 
@@ -43,8 +42,7 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "NR"
-    default_language = "en_AU"
-    supported_categories = (PUBLIC,)
+    default_language = "en_NR"
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_AU",)
@@ -54,14 +52,12 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._add_observed(
-            # New Year's Day.
-            self._add_new_years_day(tr("New Year's Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         self._add_observed(
             # Independence Day.
@@ -72,66 +68,39 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(
             # Day following Independence Day.
             self._add_holiday_feb_1(tr("Day following Independence Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
         if self._year >= 2019:
-            self._add_observed(
-                # International Womens Day.
-                self._add_womens_day(tr("International Womens Day")),
-                rule=SAT_SUN_TO_NEXT_MON,
-            )
+            # International Women's Day.
+            self._add_observed(self._add_womens_day(tr("International Women's Day")))
 
-        self._add_observed(
-            # Good Friday.
-            self._add_good_friday(tr("Good Friday")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        self._add_observed(
-            # Easter Monday.
-            self._add_easter_monday(tr("Easter Monday")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
-        self._add_observed(
-            # Easter Tuesday.
-            self._add_easter_tuesday(tr("Easter Tuesday")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Easter Tuesday.
+        self._add_easter_tuesday(tr("Easter Tuesday"))
 
-        self._add_observed(
-            # Constitution Day.
-            self._add_holiday_may_17(tr("Constitution Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Constitution Day.
+        self._add_observed(self._add_holiday_may_17(tr("Constitution Day")))
 
         if self._year >= 2018:
-            self._add_observed(
-                # RONPHOS Handover.
-                self._add_holiday_jul_1(tr("RONPHOS Handover")),
-                rule=SAT_SUN_TO_NEXT_MON,
-            )
+            # RONPHOS Handover.
+            self._add_observed(self._add_holiday_jul_1(tr("RONPHOS Handover")))
 
         if self._year >= 2019:
-            self._add_observed(
-                # Ibumin Earoeni Day.
-                self._add_holiday_aug_19(tr("Ibumin Earoeni Day")),
-                rule=SAT_SUN_TO_NEXT_MON,
-            )
+            # Ibumin Earoeni Day.
+            self._add_observed(self._add_holiday_aug_19(tr("Ibumin Earoeni Day")))
 
         if self._year >= 2021:
-            self._add_observed(
-                # Sir Hammer DeRoburt Day.
-                self._add_holiday_sep_25(tr("Sir Hammer DeRoburt Day")),
-                rule=SAT_SUN_TO_NEXT_MON,
-            )
+            # Sir Hammer DeRoburt Day.
+            self._add_observed(self._add_holiday_sep_25(tr("Sir Hammer DeRoburt Day")))
 
-        self._add_observed(
-            # Angam Day.
-            self._add_holiday_oct_26(tr("Angam Day")),
-            rule=SAT_SUN_TO_NEXT_MON,
-        )
+        # Angam Day.
+        self._add_observed(self._add_holiday_oct_26(tr("Angam Day")))
 
         self._add_observed(
             # Christmas Day.
@@ -142,7 +111,7 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(
             # Day following Christmas.
             self._add_christmas_day_two(tr("Day following Christmas")),
-            rule=SAT_SUN_TO_NEXT_MON,
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
 
