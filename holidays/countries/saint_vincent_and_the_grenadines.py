@@ -94,8 +94,8 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         # Public Holidays Act, Cap. 274 (22 & 25 January, 2021)
         name = tr("Public Health Holidays")
         if self._year == 2021:
-            self._add_holiday_jan_22(tr("name"))
-            self._add_holiday_jan_22(tr("name"))
+            self._add_holiday_jan_22(name)
+            self._add_holiday_jan_25(name)
 
 
 class VC(SaintVincentAndTheGrenadines):
