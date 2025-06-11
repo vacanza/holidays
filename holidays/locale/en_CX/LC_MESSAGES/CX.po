@@ -117,11 +117,11 @@ msgstr "New Year's Day"
 msgid "Australia Day"
 msgstr "Australia Day"
 
-#. Chinese New Year
+#. Chinese New Year 
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
-#. Labour Day – 4th Monday in March
+#. Labour Day 
 msgid "Labour Day"
 msgstr "Labour Day"
 
@@ -145,7 +145,7 @@ msgstr "Eid al-Fitr"
 msgid "Eid al-Adha"
 msgstr "Eid al-Adha"
 
-#. Territory Day – 6 October
+#. Territory Day 
 msgid "Territory Day"
 msgstr "Territory Day"
 
