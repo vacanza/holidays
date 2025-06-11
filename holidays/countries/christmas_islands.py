@@ -43,7 +43,7 @@ class ChristmasIslands(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Christmas_Island>
         * <https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf>
-        * <https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf>
+        * <https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf>
     """
 
     country = "CX"
