@@ -92,7 +92,7 @@ msgstr "New Year's Day"
 msgid "Australia Day"
 msgstr "Australia Day"
 
-#. Chinese New Year – 2 days
+#. Chinese New Year
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
