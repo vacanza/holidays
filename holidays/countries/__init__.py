@@ -56,7 +56,11 @@ from holidays.countries.central_african_republic import CentralAfricanRepublic, 
 from holidays.countries.chad import Chad, TD, TCD
 from holidays.countries.chile import Chile, CL, CHL
 from holidays.countries.china import China, CN, CHN
+<<<<<<< HEAD
 from holidays.countries.christmas_island import ChristmasIsland, CX, CXR
+=======
+from holidays.countries.christmas_islands import ChristmasIslands, CX, CXR
+>>>>>>> 5505906f (Add Christmas Island holidays)
 from holidays.countries.cocos_islands import CocosIslands, CC, CCK
 from holidays.countries.colombia import Colombia, CO, COL
 from holidays.countries.congo import Congo, CG, COG

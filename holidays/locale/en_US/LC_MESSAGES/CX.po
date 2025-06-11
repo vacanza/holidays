@@ -10,11 +10,19 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
+<<<<<<< HEAD
 # Christmas Island holidays en_US localization.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.77\n"
+=======
+# Christmas Island holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+>>>>>>> 5505906f (Add Christmas Island holidays)
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
 "PO-Revision-Date: 2025-06-12 12:00+0000\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
@@ -42,6 +50,7 @@ msgstr "%s (estimated)"
 msgid "%s (observed, estimated)"
 msgstr "%s (observed, estimated)"
 
+<<<<<<< HEAD
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
@@ -74,10 +83,53 @@ msgstr "Territory Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+=======
+#. New Year's Day
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Australia Day
+msgid "Australia Day"
+msgstr "Australia Day"
+
+#. Chinese New Year – 2 days
+msgid "Chinese New Year"
+msgstr "Chinese New Year"
+
+#. Labour Day – 4th Monday in March
+msgid "Labour Day"
+msgstr "Labour Day"
+
+#. Good Friday
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. ANZAC Day
+msgid "ANZAC Day"
+msgstr "ANZAC Day"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Eid al-Adha"
+
+#. Territory Day – 6 October
+msgid "Territory Day"
+msgstr "Territory Day"
+
+>>>>>>> 5505906f (Add Christmas Island holidays)
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+<<<<<<< HEAD
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"
 msgstr "Eid al-Fitr"
@@ -85,6 +137,11 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Hari Raya Haji"
 msgstr "Eid al-Adha"
+=======
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+>>>>>>> 5505906f (Add Christmas Island holidays)
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
