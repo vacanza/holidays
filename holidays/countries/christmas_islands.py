@@ -69,33 +69,33 @@ class ChristmasIslands(
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        # New Year's Day
+        # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        # Australia Day
+        # Australia Day.
         self._add_observed(self._add_holiday_jan_26(tr("Australia Day")))
 
-        # Chinese New Year – 2 days
+        # Chinese New Year.
         name = tr("Chinese New Year")
         self._add_observed(self._add_chinese_new_years_day(name))
         self._add_observed(self._add_chinese_new_years_day_two(name))
 
-        # Labour Day – 4th Monday in March
+        # Labour Day.
         self._add_holiday_4th_mon_of_mar(tr("Labour Day"))
 
-        # Good Friday
+        # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Easter Monday
+        # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # ANZAC Day
+        # ANZAC Day.
         self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
 
-        # Territory Day – 6 October
+        # Territory Day.
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
 
-        # Christmas & Boxing Day
+        # Christmas & Boxing Day.
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),

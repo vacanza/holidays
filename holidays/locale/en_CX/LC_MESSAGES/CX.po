@@ -50,7 +50,7 @@ msgstr "New Year's Day"
 msgid "Australia Day"
 msgstr "Australia Day"
 
-#. Chinese New Year – 2 days
+#. Chinese New Year
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
@@ -93,13 +93,3 @@ msgstr "Boxing Day"
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
-
-# Optional legacy/fallback
-#~ msgid "Anzac Day"
-#~ msgstr "ANZAC Day"
-
-#~ msgid "Chinese New Year (2nd day)"
-#~ msgstr "Chinese New Year"
-
-#~ msgid "Christmas"
-#~ msgstr "Christmas Day"
