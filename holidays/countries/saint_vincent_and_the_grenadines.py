@@ -90,7 +90,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        self._add_christmas_day_two(tr("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
 
 class VC(SaintVincentAndTheGrenadines):
