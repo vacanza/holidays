@@ -23,9 +23,9 @@ from holidays.groups import (
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_SUN_TO_NEXT_WORKDAY,
-    SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
+    SUN_TO_NEXT_MON,
 )
 
 
@@ -164,21 +164,6 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
 
     # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
     DIWALI_DATES = {
-        2001: (OCT, 30),
-        2002: (OCT, 30),
-        2003: (OCT, 30),
-        2004: (OCT, 30),
-        2005: (OCT, 30),
-        2006: (OCT, 30),
-        2007: (OCT, 30),
-        2008: (OCT, 30),
-        2009: (OCT, 30),
-        2010: (OCT, 30),
-        2011: (OCT, 30),
-        2012: (OCT, 30),
-        2013: (OCT, 30),
-        2014: (OCT, 30),
-        2015: (OCT, 30),
         2016: (OCT, 29),
         2017: (OCT, 19),
         2018: (NOV, 6),

@@ -41,6 +41,7 @@ msgstr "%s (observed)"
 msgid "%s (observed, estimated)"
 msgstr "%s (observed, estimated)"
 
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
@@ -68,27 +69,29 @@ msgstr "Labor Day"
 msgid "Commonwealth Day"
 msgstr "Commonwealth Day"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+#. Day after Christmas.
 msgid "Day after Christmas"
 msgstr "Day after Christmas"
 
-#. Phagwah Day.
+#. Holi.
 msgid "Phagwah Day"
-msgstr "Phagwah Day"
+msgstr "Holi"
 
-#. Deepavali Day.
+#. Diwali.
 msgid "Deepavali Day"
-msgstr "Deepavali Day"
+msgstr "Diwali"
 
-#. Mawlid Day.
+#. Prophet's Birthday.
 msgid "Youman Nabi Day"
-msgstr "Mawlid Day"
+msgstr "Prophet's Birthday"
 
-#. Eid al-Adha Day.
+#. Eid al-Adha.
 msgid "Eid-Ul-Azha Day"
-msgstr "Eid al-Adha Day"
+msgstr "Eid al-Adha"
 
 #. Public Holiday.
 msgid "Public Holiday"
