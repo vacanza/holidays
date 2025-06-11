@@ -148,16 +148,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_ronphos_handover(self):
         name = "RONPHOS Handover"
-        self.assertHolidayName(
-            name,
-            "2020-07-01",
-            "2021-07-01",
-            "2022-07-01",
-            "2023-07-01",
-            "2024-07-01",
-            "2025-07-01",
-        )
-        self.assertHolidayName(name, range(2018, 2050))
+        self.assertHolidayName(name, (f"{year}-07-01" for year in range(2018, 2050)))
         dt = (
             "2018-07-02",
             "2023-07-03",
@@ -168,16 +159,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_ibumin_earoeni_day(self):
         name = "Ibumin Earoeni Day"
-        self.assertHolidayName(
-            name,
-            "2020-08-19",
-            "2021-08-19",
-            "2022-08-19",
-            "2023-08-19",
-            "2024-08-19",
-            "2025-08-19",
-        )
-        self.assertHolidayName(name, range(2019, 2050))
+        self.assertHolidayName(name, (f"{year}-08-19" for year in range(2019, 2050)))
         dt = ("2023-08-21",)
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -185,15 +167,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_sir_hammer_deroburt_day(self):
         name = "Sir Hammer DeRoburt Day"
-        self.assertHolidayName(
-            name,
-            "2021-09-25",
-            "2022-09-25",
-            "2023-09-25",
-            "2024-09-25",
-            "2025-09-25",
-        )
-        self.assertHolidayName(name, range(2021, 2050))
+        self.assertHolidayName(name, (f"{year}-09-25" for year in range(2021, 2050)))
         dt = (
             "2021-09-27",
             "2022-09-26",
