@@ -50,7 +50,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
     start_year = 1919
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

@@ -54,7 +54,7 @@ class Kenya(
     # Kenya gained independence on December 12, 1963.
     start_year = 1964
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

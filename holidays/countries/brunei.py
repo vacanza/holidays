@@ -116,7 +116,7 @@ class Brunei(
     # Available post-Independence from 1984 afterwards
     start_year = 1984
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
