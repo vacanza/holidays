@@ -45,7 +45,7 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "en_NR"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_AU",)
+    supported_languages = ("en_NR",)
     # Nauru gained independence on January 31, 1968
     start_year = 1969
 

@@ -9,27 +9,23 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
-# Nauru holidays en_AU localization.
+# SOME DESCRIPTIVE TITLE
 # This file is distributed under the same license as the Holidays package.
-# Roshan Pradhan <roshanpradhan2048@gmail.com>, 2025.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.75\n"
-"POT-Creation-Date: 2025-06-06 16:44+0530\n"
-"PO-Revision-Date: 2025-06-06 16:44+0530\n"
-"Last-Translator: Roshan Pradhan <roshanpradhan2048@gmail.com>\n"
+"POT-Creation-Date: 2025-06-11 21:05+0530\n"
+"PO-Revision-Date: 2025-06-11 21:05+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_AU\n"
+"Language: en_NR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_AU\n"
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr ""
+"X-Source-Language: en_NR\n"
 
 #. %s (observed).
 #, c-format
@@ -42,6 +38,14 @@ msgstr ""
 
 #. Independence Day.
 msgid "Independence Day"
+msgstr ""
+
+#. Day following Independence Day.
+msgid "Day following Independence Day"
+msgstr ""
+
+#. International Women's Day.
+msgid "International Women's Day"
 msgstr ""
 
 #. Good Friday.
@@ -60,6 +64,10 @@ msgstr ""
 msgid "Constitution Day"
 msgstr ""
 
+#. RONPHOS Handover.
+msgid "RONPHOS Handover"
+msgstr ""
+
 #. Ibumin Earoeni Day.
 msgid "Ibumin Earoeni Day"
 msgstr ""
@@ -72,16 +80,8 @@ msgstr ""
 msgid "Angam Day"
 msgstr ""
 
-#. Day following Independence Day.
-msgid "Day following Independence Day"
-msgstr ""
-
-#. International Women's Day.
-msgid "International Women's Day"
-msgstr ""
-
-#. RONPHOS Handover.
-msgid "RONPHOS Handover"
+#. Christmas Day.
+msgid "Christmas Day"
 msgstr ""
 
 #. Day following Christmas.

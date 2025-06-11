@@ -63,10 +63,10 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-02-01" for year in range(1969, 2050)))
         dt = (
             "2003-02-03",
-            "2004-02-02",
-            "2009-02-02",
+            "2004-02-03",
+            "2009-02-03",
             "2014-02-03",
-            "2015-02-02",
+            "2015-02-03",
             "2020-02-03",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
@@ -124,16 +124,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_constitution_day(self):
         name = "Constitution Day"
-        self.assertHolidayName(
-            name,
-            "2020-05-17",
-            "2021-05-17",
-            "2022-05-17",
-            "2023-05-17",
-            "2024-05-17",
-            "2025-05-17",
-        )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, (f"{year}-05-17" for year in range(1969, 2050)))
         dt = (
             "2003-05-19",
             "2008-05-19",
@@ -178,16 +169,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_angam_day(self):
         name = "Angam Day"
-        self.assertHolidayName(
-            name,
-            "2020-10-26",
-            "2021-10-26",
-            "2022-10-26",
-            "2023-10-26",
-            "2024-10-26",
-            "2025-10-26",
-        )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, (f"{year}-10-26" for year in range(1969, 2050)))
         dt = (
             "2002-10-28",
             "2003-10-27",
@@ -203,16 +185,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(
-            name,
-            "2020-12-25",
-            "2021-12-25",
-            "2022-12-25",
-            "2023-12-25",
-            "2024-12-25",
-            "2025-12-25",
-        )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1969, 2050)))
         dt = (
             "2004-12-27",
             "2005-12-27",
@@ -227,23 +200,14 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_day_following_christmas(self):
         name = "Day following Christmas"
-        self.assertHolidayName(
-            name,
-            "2020-12-26",
-            "2021-12-26",
-            "2022-12-26",
-            "2023-12-26",
-            "2024-12-26",
-            "2025-12-26",
-        )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1969, 2050)))
         dt = (
-            "2004-12-27",
+            "2004-12-28",
             "2009-12-28",
-            "2010-12-27",
+            "2010-12-28",
             "2015-12-28",
             "2020-12-28",
-            "2021-12-27",
+            "2021-12-28",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -254,7 +218,7 @@ class TestNauru(CommonCountryTests, TestCase):
             ("2024-01-01", "New Year's Day"),
             ("2024-01-31", "Independence Day"),
             ("2024-02-01", "Day following Independence Day"),
-            ("2024-03-08", "International Womens Day"),
+            ("2024-03-08", "International Women's Day"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
             ("2024-04-02", "Easter Tuesday"),
@@ -275,8 +239,8 @@ class TestNauru(CommonCountryTests, TestCase):
             ("2025-01-31", "Independence Day"),
             ("2025-02-01", "Day following Independence Day"),
             ("2025-02-03", "Day following Independence Day (observed)"),
-            ("2025-03-08", "International Womens Day"),
-            ("2025-03-10", "International Womens Day (observed)"),
+            ("2025-03-08", "International Women's Day"),
+            ("2025-03-10", "International Women's Day (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-22", "Easter Tuesday"),
@@ -297,8 +261,8 @@ class TestNauru(CommonCountryTests, TestCase):
             ("2025-01-31", "Independence Day"),
             ("2025-02-01", "Day following Independence Day"),
             ("2025-02-03", "Day following Independence Day (observed)"),
-            ("2025-03-08", "International Womens Day"),
-            ("2025-03-10", "International Womens Day (observed)"),
+            ("2025-03-08", "International Women's Day"),
+            ("2025-03-10", "International Women's Day (observed)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-04-22", "Easter Tuesday"),
