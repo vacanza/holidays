@@ -70,7 +70,7 @@ class Fiji(
     # Act No. 13 of 2015
     start_year = 2016
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

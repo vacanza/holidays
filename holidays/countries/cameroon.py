@@ -37,7 +37,7 @@ class Cameroon(
     # On 1 January 1960, French Cameroun gained independence from France.
     start_year = 1960
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

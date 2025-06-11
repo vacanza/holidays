@@ -1176,6 +1176,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Senegal</td>
+<td>SN</td>
+<td></td>
+<td>en_US, <strong>fr_SN</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Serbia</td>
 <td>RS</td>
 <td></td>
