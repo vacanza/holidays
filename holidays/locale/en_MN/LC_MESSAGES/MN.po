@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Mongolia holidays en_MN holidays.
+# Mongolia holidays en_MN localization.
 #
 msgid ""
 msgstr ""
