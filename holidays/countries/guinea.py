@@ -48,7 +48,7 @@ class Guinea(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
     # Guinea gained independence from France on October 2, 1958.
     start_year = 1959
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

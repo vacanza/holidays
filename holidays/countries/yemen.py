@@ -61,7 +61,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     supported_categories = (PUBLIC, SCHOOL, WORKDAY)
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

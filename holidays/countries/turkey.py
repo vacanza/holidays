@@ -38,7 +38,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     # Law 2739 of 27 May 1935.
     start_year = 1936
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

@@ -66,7 +66,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     # Founded on DEC 2, 1971.
     start_year = 1972
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

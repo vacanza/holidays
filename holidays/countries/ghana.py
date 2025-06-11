@@ -32,7 +32,7 @@ class Ghana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
     observed_estimated_label = "%s (observed, estimated)"
     start_year = 1957
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
