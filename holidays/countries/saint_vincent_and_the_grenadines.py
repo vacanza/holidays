@@ -14,10 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JUL, AUG, SEP, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.observed_holiday_base import (
-    SAT_SUN_TO_NEXT_MON,
-    ObservedHolidayBase,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
 class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
