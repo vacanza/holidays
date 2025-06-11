@@ -28,44 +28,41 @@ class TestMongolia(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Mongolia(years=2003))
 
-    def test_new_year(self):
+    def test_new_years_day(self):
         self.assertHolidayName("Шинэ жилийн баяр", (f"{year}-01-01" for year in range(2004, 2050)))
 
     def test_tsagaan_sar(self):
         name = "Цагаан сар"
-        dt = (
+        name_holiday = "Цагаан сарын баяр"
+        # Day 1.
+        self.assertHolidayName(
+            name,
             "2021-02-12",
             "2022-02-02",
             "2023-02-21",
             "2024-02-10",
             "2025-03-01",
         )
-        self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2004, 2050))
-
-    def test_tsagaan_sar_day_2(self):
-        name = "Цагаан сарын баяр"
-        dt = (
+        # Day 2.
+        self.assertHolidayName(
+            name_holiday,
             "2021-02-13",
             "2022-02-03",
             "2023-02-22",
             "2024-02-11",
             "2025-03-02",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2050))
-
-    def test_tsagaan_sar_day_3(self):
-        name = "Цагаан сарын баяр"
-        dt = (
+        # Day 3.
+        self.assertHolidayName(
+            name_holiday,
             "2021-02-14",
             "2022-02-04",
             "2023-02-23",
             "2024-02-12",
             "2025-03-03",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2050))
+        self.assertHolidayName(name_holiday, range(2004, 2050))
 
     def test_womens_day(self):
         self.assertHolidayName(
@@ -88,14 +85,15 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2004, 2050))
 
     def test_naadam(self):
-        self.assertHolidayName("Наадам", (f"{year}-07-11" for year in range(2004, 2050)))
-
-    def test_naadam_holiday(self):
-        name = "Наадмын баяр"
-        self.assertHolidayName(name, (f"{year}-07-12" for year in range(2004, 2050)))
-        self.assertHolidayName(name, (f"{year}-07-13" for year in range(2004, 2050)))
-        self.assertHolidayName(name, (f"{year}-07-14" for year in range(2004, 2050)))
-        self.assertHolidayName(name, (f"{year}-07-15" for year in range(2004, 2050)))
+        for year in range(2004, 2050):
+            self.assertHolidayName("Наадам", (f"{year}-07-11"))
+            self.assertHolidayName(
+                "Наадмын баяр",
+                (f"{year}-07-12"),
+                (f"{year}-07-13"),
+                (f"{year}-07-14"),
+                (f"{year}-07-15"),
+            )
 
     def test_genghis_khan_day(self):
         name = "Чингис хааны өдөр"
@@ -115,15 +113,12 @@ class TestMongolia(CommonCountryTests, TestCase):
         )
 
     def test_independence_day(self):
-        name = "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
-        self.assertHolidayName(
-            name,
-            (f"{year}-12-29" for year in range(2011, 2050)),
-        )
-        self.assertNoHolidayName(name, range(2004, 2011))
-        name = "Үндэсний эрх чөлөөний өдөр"
-        self.assertHolidayName(name, (f"{year}-12-29" for year in range(2007, 2011)))
-        self.assertNoHolidayName(name, range(2004, 2007), range(2011, 2050))
+        name_2007 = "Үндэсний эрх чөлөөний өдөр"
+        name_2011 = "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
+        self.assertHolidayName(name_2007, (f"{year}-12-29" for year in range(2007, 2011)))
+        self.assertHolidayName(name_2011, (f"{year}-12-29" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name_2007, range(2004, 2007), range(2011, 2050))
+        self.assertNoHolidayName(name_2011, range(2004, 2011))
 
     def test_2025(self):
         self.assertHolidays(
@@ -192,7 +187,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-02-11", "Tsagaan Sar Holiday"),
             ("2024-02-12", "Tsagaan Sar Holiday"),
             ("2024-03-08", "International Women's Day"),
-            ("2024-05-23", "Buddha Day"),
+            ("2024-05-23", "The Buddha's Birthday"),
             ("2024-06-01", "Children's Day"),
             ("2024-07-11", "Naadam"),
             ("2024-07-12", "Naadam Holiday"),

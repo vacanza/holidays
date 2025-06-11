@@ -66,9 +66,9 @@ msgstr "Tsagaan Sar"
 msgid "Цагаан сарын баяр"
 msgstr "Tsagaan Sar Holiday"
 
-#. Buddha Day.
+#. The Buddha's Birthday.
 msgid "Буддагийн өдөр"
-msgstr "Buddha Day"
+msgstr "The Buddha's Birthday"
 
 #. Genghis Khan Day.
 msgid "Чингис хааны өдөр"

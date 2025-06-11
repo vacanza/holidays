@@ -54,7 +54,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Children's Day.
         self._add_childrens_day(tr("Хүүхдийн баяр"))
 
-        # Buddha Day.
+        # The Buddha's Birthday.
         self._add_buddha_day(tr("Буддагийн өдөр"))
 
         # Naadam.

@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Mongolia holidays.
+# Mongolia holidays en_MN holidays.
 #
 msgid ""
 msgstr ""
@@ -66,7 +66,7 @@ msgstr "Tsagaan Sar"
 msgid "Цагаан сарын баяр"
 msgstr "Tsagaan Sar Holiday"
 
-#. Buddha Day.
+#. The Buddha's Birthday.
 msgid "Буддагийн өдөр"
 msgstr "Buddha Day"
 
