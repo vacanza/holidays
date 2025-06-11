@@ -47,8 +47,8 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        # National Heroes Day
-        self._add_holiday_mar_14(tr("National Heroes Day"))
+        # National Heroes' Day.
+        self._add_observed(self._add_holiday_mar_14(tr("National Heroes' Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
