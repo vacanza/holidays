@@ -44,8 +44,12 @@ class TestGuyana(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Independence Day"
-        self.assertHolidayName(name, (f"{year}-05-26" for year in range(1968, 1970)))
-        self.assertNoHolidayName(name, range(1970, 2050))
+        self.assertHolidayName(
+            name,
+            (f"{year}-05-26" for year in range(1968, 1970)),
+            (f"{year}-05-26" for year in range(2016, 2050)),
+        )
+        self.assertNoHolidayName(name, range(1970, 2016))
 
     def test_republic_day(self):
         name = "Republic Day"
@@ -86,12 +90,36 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_commonwealth_day(self):
-        name = "Commonwealth Day"
-        self.assertHolidayName(name, range(1968, 2050))
+    def test_arrival_day(self):
+        name = "Arrival Day"
+        self.assertHolidayName(name, (f"{year}-05-05" for year in range(2019, 2050)))
+        dt = ("2024-05-06",)
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+        self.assertNoHolidayName(name, range(1970, 2019))
+
+    def test_caricom_day(self):
+        name = "CARICOM Day"
+        self.assertHolidayName(name, range(2016, 2050))
         self.assertHolidayName(
-            name, "2021-08-02", "2022-08-01", "2023-08-07", "2024-08-05", "2025-08-04"
+            name, "2021-07-05", "2022-07-04", "2023-07-03", "2024-07-01", "2025-07-07"
         )
+        self.assertNoHolidayName(name, range(1970, 2016))
+
+    def test_commonwealth_day_and_emancipation_day(self):
+        name_1 = "Commonwealth Day"
+        self.assertHolidayName(name_1, range(1968, 2016))
+        self.assertHolidayName(
+            name_1, "2011-08-01", "2012-08-06", "2013-08-05", "2014-08-04", "2015-08-03"
+        )
+        self.assertNoHolidayName(name_1, range(2016, 2050))
+
+        name_2 = "Emancipation Day"
+        self.assertHolidayName(name_2, range(2016, 2050))
+        self.assertHolidayName(
+            name_2, "2021-08-02", "2022-08-01", "2023-08-07", "2024-08-05", "2025-08-04"
+        )
+        self.assertNoHolidayName(name_2, range(1968, 2016))
 
     def test_christmas_day(self):
         name = "Christmas Day"
@@ -119,7 +147,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_phagwah_day(self):
-        name = "Phagwah Day"
+        name = "Phagwah"
         self.assertHolidayName(
             name,
             "2020-03-10",
@@ -136,7 +164,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_deepavali_day(self):
-        name = "Deepavali Day"
+        name = "Deepavali"
         self.assertHolidayName(
             name,
             "2020-11-14",
@@ -155,7 +183,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_youman_nabi_day(self):
-        name = "Youman Nabi Day"
+        name = "Youman Nabi"
         self.assertHolidayName(
             name,
             "2020-10-29",
@@ -171,7 +199,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_eid_ul_azha_day(self):
-        name = "Eid-Ul-Azha Day"
+        name = "Eid-Ul-Azha"
         self.assertHolidayName(
             name,
             "2020-07-31",
@@ -191,14 +219,18 @@ class TestGuyana(CommonCountryTests, TestCase):
             Guyana(years=2024),
             ("2024-01-01", "New Year's Day"),
             ("2024-02-23", "Republic Day"),
-            ("2024-03-25", "Phagwah Day"),
+            ("2024-03-25", "Phagwah"),
             ("2024-03-29", "Good Friday"),
             ("2024-04-01", "Easter Monday"),
             ("2024-05-01", "Labour Day"),
-            ("2024-06-17", "Eid-Ul-Azha Day"),
-            ("2024-08-05", "Commonwealth Day"),
-            ("2024-09-16", "Youman Nabi Day"),
-            ("2024-10-31", "Deepavali Day"),
+            ("2024-05-05", "Arrival Day"),
+            ("2024-05-06", "Arrival Day (observed)"),
+            ("2024-05-26", "Independence Day"),
+            ("2024-06-17", "Eid-Ul-Azha"),
+            ("2024-07-01", "CARICOM Day"),
+            ("2024-08-05", "Emancipation Day"),
+            ("2024-09-16", "Youman Nabi"),
+            ("2024-10-31", "Deepavali"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Day after Christmas"),
         )
@@ -207,14 +239,17 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2025-01-01", "New Year's Day"),
             ("2025-02-23", "Republic Day"),
-            ("2025-03-14", "Phagwah Day"),
+            ("2025-03-14", "Phagwah"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labour Day"),
-            ("2025-06-07", "Eid-Ul-Azha Day"),
-            ("2025-08-04", "Commonwealth Day"),
-            ("2025-09-05", "Youman Nabi Day"),
-            ("2025-10-20", "Deepavali Day"),
+            ("2025-05-05", "Arrival Day"),
+            ("2025-05-26", "Independence Day"),
+            ("2025-06-07", "Eid-Ul-Azha"),
+            ("2025-07-07", "CARICOM Day"),
+            ("2025-08-04", "Emancipation Day"),
+            ("2025-09-05", "Youman Nabi"),
+            ("2025-10-20", "Deepavali"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Day after Christmas"),
         )
@@ -228,8 +263,11 @@ class TestGuyana(CommonCountryTests, TestCase):
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day"),
+            ("2025-05-05", "Arrival Day"),
+            ("2025-05-26", "Independence Day"),
             ("2025-06-07", "Eid al-Adha"),
-            ("2025-08-04", "Commonwealth Day"),
+            ("2025-07-07", "CARICOM Day"),
+            ("2025-08-04", "Emancipation Day"),
             ("2025-09-05", "Prophet's Birthday"),
             ("2025-10-20", "Diwali"),
             ("2025-12-25", "Christmas Day"),

@@ -78,21 +78,33 @@ msgid "Day after Christmas"
 msgstr "Day after Christmas"
 
 #. Holi.
-msgid "Phagwah Day"
+msgid "Phagwah"
 msgstr "Holi"
 
 #. Diwali.
-msgid "Deepavali Day"
+msgid "Deepavali"
 msgstr "Diwali"
 
 #. Prophet's Birthday.
-msgid "Youman Nabi Day"
+msgid "Youman Nabi"
 msgstr "Prophet's Birthday"
 
 #. Eid al-Adha.
-msgid "Eid-Ul-Azha Day"
+msgid "Eid-Ul-Azha"
 msgstr "Eid al-Adha"
 
 #. Public Holiday.
 msgid "Public Holiday"
 msgstr "Public Holiday"
+
+#. Arrival Day.
+msgid "Arrival Day"
+msgstr "Arrival Day"
+
+#. CARICOM Day.
+msgid "CARICOM Day"
+msgstr "CARICOM Day"
+
+#. Emancipation Day
+msgid "Emancipation Day"
+msgstr "Emancipation Day"
