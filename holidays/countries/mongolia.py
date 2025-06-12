@@ -67,11 +67,15 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         self._add_holiday_jul_14(name)
         self._add_holiday_jul_15(name)
 
-        # Genghis Khan Day.
-        self._add_genghis_khan_day(tr("Чингис хааны өдөр"))
+        # Established on November 8th, 2012.
+        if self._year >= 2012:
+            # The Birthday of the great emperor Genghis Khan.
+            self._add_genghis_khan_day(tr("Их эзэн Чингис хааны мэндэлсэн өдөр"))
 
-        # Republic Day.
-        self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
+        # Established on November 8th, 2012.
+        if self._year >= 2012:
+            # Republic Day.
+            self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
 
         # Established on August 16th, 2007.
         # Renamed on December 23rd, 2011.

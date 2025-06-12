@@ -96,7 +96,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             )
 
     def test_genghis_khan_day(self):
-        name = "Чингис хааны өдөр"
+        name = "Их эзэн Чингис хааны мэндэлсэн өдөр"
         dt = (
             "2021-11-05",
             "2022-11-24",
@@ -105,12 +105,13 @@ class TestMongolia(CommonCountryTests, TestCase):
             "2025-11-21",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2050))
+        self.assertHolidayName(name, range(2012, 2050))
+        self.assertNoHolidayName(name, range(2004, 2012))
 
     def test_republic_day(self):
-        self.assertHolidayName(
-            "Бүгд Найрамдах Улс тунхагласан өдөр", (f"{year}-11-26" for year in range(2004, 2050))
-        )
+        name = "Бүгд Найрамдах Улс тунхагласан өдөр"
+        self.assertHolidayName(name, (f"{year}-11-26" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, (f"{year}-11-26" for year in range(2004, 2012)))
 
     def test_independence_day(self):
         name_2007 = "Үндэсний эрх чөлөөний өдөр"
@@ -135,7 +136,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2025-07-13", "Наадмын баяр"),
             ("2025-07-14", "Наадмын баяр"),
             ("2025-07-15", "Наадмын баяр"),
-            ("2025-11-21", "Чингис хааны өдөр"),
+            ("2025-11-21", "Их эзэн Чингис хааны мэндэлсэн өдөр"),
             ("2025-11-26", "Бүгд Найрамдах Улс тунхагласан өдөр"),
             ("2025-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
@@ -154,7 +155,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Наадмын баяр"),
             ("2024-07-14", "Наадмын баяр"),
             ("2024-07-15", "Наадмын баяр"),
-            ("2024-11-02", "Чингис хааны өдөр"),
+            ("2024-11-02", "Их эзэн Чингис хааны мэндэлсэн өдөр"),
             ("2024-11-26", "Бүгд Найрамдах Улс тунхагласан өдөр"),
             ("2024-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
@@ -174,7 +175,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
-            ("2024-11-02", "Genghis Khan Day"),
+            ("2024-11-02", "The Birthday of the great emperor Genghis Khan"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )
