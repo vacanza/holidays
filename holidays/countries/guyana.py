@@ -45,23 +45,23 @@ class Guyana(
         * [Public Holidays Act Consolidated as of 2012](https://web.archive.org/web/20250608202320/https://mola.gov.gy/laws/Volume%206%20Cap.%2018.01%20-%2023.011696968337.pdf)
 
     The holidays below are not part of the latest Public Holidays Act but have been notified
-    every year as a holiday by gazzette notifications for many years. The earliest and latest
+    every year as a holiday by Gazette notifications for many years. The earliest and latest
     available notifications for each are linked below.
 
     * Independence Day:
-        * [Extraordinary Gazzette 14 May 2016](https://web.archive.org/web/20250210091920/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_14may161.pdf)
-        * [Extraordinary Gazzette 10 May 2025](https://web.archive.org/web/20250611200312/https://officialgazette.gov.gy/images/gazette2025/may/Extra_10MAY2025NotiPHA.pdf)
+        * [Extraordinary Gazette 14 May 2016](https://web.archive.org/web/20250210091920/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_14may161.pdf)
+        * [Extraordinary Gazette 10 May 2025](https://web.archive.org/web/20250611200312/https://officialgazette.gov.gy/images/gazette2025/may/Extra_10MAY2025NotiPHA.pdf)
     * CARICOM Day:
-        * [Extraordinary Gazzette 29 June 2016](https://web.archive.org/web/20250209205727/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_29jun16.pdf)
-        * [Extraordinary Gazzette 22 June 2024](https://web.archive.org/web/20250209154128/https://officialgazette.gov.gy/images/gazette2024/jun/Extra_22JUNE2024NotiPHA.pdf)
+        * [Extraordinary Gazette 29 June 2016](https://web.archive.org/web/20250209205727/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_29jun16.pdf)
+        * [Extraordinary Gazette 22 June 2024](https://web.archive.org/web/20250209154128/https://officialgazette.gov.gy/images/gazette2024/jun/Extra_22JUNE2024NotiPHA.pdf)
     * Arrival Day:
-        * [Extraordinary Gazzette 16 April 2019](https://web.archive.org/web/20221118182239/https://officialgazette.gov.gy/images/gazette2019/apr/Extra_20APRIL2019NotPubHol.pdf)
-        * [Extraordinary Gazzette 26 April 2025](https://web.archive.org/web/20250611200310/https://officialgazette.gov.gy/images/gazette2025/apr/Extra_26APRIL2025PHA.pdf)
+        * [Extraordinary Gazette 16 April 2019](https://web.archive.org/web/20221118182239/https://officialgazette.gov.gy/images/gazette2019/apr/Extra_20APRIL2019NotPubHol.pdf)
+        * [Extraordinary Gazette 26 April 2025](https://web.archive.org/web/20250611200310/https://officialgazette.gov.gy/images/gazette2025/apr/Extra_26APRIL2025PHA.pdf)
     * Commonwealth Day / Emancipation Day:
         * No amendment act renaming Commonwealth Day to Emancipation Day but being referred as
-          the latter in annual gazzette notifications for years.
-        * [Extraordinary Gazzette 21 July 2016](https://web.archive.org/web/20250211095036/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_21jul16.pdf)
-        * [Extraordinary Gazzette 16 July 2022](https://web.archive.org/web/20231214011437/https://officialgazette.gov.gy/images/gazette2022/jul/Extra_16JULY2022NotificPHA.pdf)
+          the latter in annual Gazette notifications for years.
+        * [Extraordinary Gazette 21 July 2016](https://web.archive.org/web/20250211095036/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_21jul16.pdf)
+        * [Extraordinary Gazette 16 July 2022](https://web.archive.org/web/20231214011437/https://officialgazette.gov.gy/images/gazette2022/jul/Extra_16JULY2022NotificPHA.pdf)
     """
 
     country = "GY"
@@ -145,10 +145,7 @@ class Guyana(
         self._add_observed(self._add_holi(tr("Phagwah")))
 
         # Diwali.
-        name = tr("Deepavali")
-        self._add_observed(
-            self._add_diwali(name) if self._year >= 2016 else self._add_holiday_oct_30(name)
-        )
+        self._add_observed(self._add_diwali_india(tr("Deepavali")))
 
         # Prophet's Birthday.
         for dt in self._add_mawlid_day(tr("Youman Nabi")):
@@ -196,9 +193,9 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
 
     # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
     DIWALI_DATES = {
-        2016: (OCT, 29),
+        2016: (OCT, 30),
         2017: (OCT, 19),
-        2018: (NOV, 6),
+        2018: (NOV, 7),
         2019: (OCT, 27),
         2020: (NOV, 14),
         2021: (NOV, 4),

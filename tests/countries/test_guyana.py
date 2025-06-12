@@ -174,7 +174,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-        self.assertHolidayName(name, range(2001, 2025))
+        self.assertHolidayName(name, range(2016, 2025))
         dt = (
             "2019-10-28",
             "2023-11-13",
@@ -193,7 +193,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-05",
         )
-        self.assertHolidayName(name, range(2001, 2025))
+        self.assertHolidayName(name, range(2001, 2026))
         dt = ("2012-02-06", "2022-10-10")
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -209,7 +209,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-07",
         )
-        self.assertHolidayName(name, range(2001, 2025))
+        self.assertHolidayName(name, range(2001, 2026))
         dt = ("2014-10-06", "2019-08-12")
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
