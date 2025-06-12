@@ -297,15 +297,6 @@ class _Lunisolar:
         span_days += self._span_days(year) + day - 1
         return self.SOLAR_START_DATE + td(days=span_days)
 
-    def buddha_day_date(self, year: int) -> date:
-        """
-        Return the estimated Gregorian date of Buddha Day for Mongolia
-        corresponding to 15th day of 4th month of the
-        Mongolian lunar calendar. See `Wikipedia
-        <https://en.wikipedia.org/wiki/Buddha%27s_Birthday>`__.
-        """
-        return self.lunar_to_gre(year, 4, 15)
-
     def vesak_date(self, year: int) -> date:
         """
         Return the estimated Gregorian date of Vesak for Thailand, Laos,
@@ -314,15 +305,6 @@ class _Lunisolar:
         <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
         """
         return self.lunar_to_gre(year, 4, 15)
-
-    def genghis_khan_day_date(self, year: int) -> date:
-        """
-        Return the estimated Gregorian date of Genghis Khan's Birthday for Mongolia,
-        corresponding to the 1st day of the 6th month of the Mongolian lunar calendar.
-        Observed in Mongolia as a national remembrance day. See `Wikipedia
-        <https://en.wikipedia.org/wiki/Genghis_Khan>`__.
-        """
-        return self.lunar_to_gre(year, 10, 1)
 
     def vesak_may_date(self, year: int) -> date:
         """
@@ -367,30 +349,25 @@ HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
 
 YEAR_TEMPLATE = "        {year}: ({date}),"
 
-BUDDHIST, CHINESE, HINDU, MONGOLIAN = range(4)
+BUDDHIST, CHINESE, HINDU = range(3)
 CALENDARS = {
     BUDDHIST: "Buddhist",
     CHINESE: "Chinese",
     HINDU: "Hindu",
-    MONGOLIAN: "Mongolian",
 }
 
 # Timezones:
 # UTC+7: VN
-# UTC+8: BN, CN, HK, ID, MO, MN, MY, PH, SG, TW
+# UTC+8: BN, CN, HK, ID, MO, MY, PH, SG, TW
 # UTC+9: KR
 
 ASIAN_HOLIDAYS = (
     # CN, HK, ID, KR, MY, PH, SG, TW, VN
     (1, 1, "LUNAR_NEW_YEAR", CHINESE),  # Lunar New Year
-    # MN
-    (1, 1, "TSAGAAN_SAR", MONGOLIAN),  # Mongolian Lunar New Year
     # VN
     (3, 10, "HUNG_KINGS", CHINESE),  # Kings' Commemoration Day
     # HK, KR
     (4, 8, "BUDDHA_BIRTHDAY", CHINESE),  # Buddha's Birthday
-    # MN
-    (4, 15, "BUDDHA_DAY", MONGOLIAN),  # Buddha's Birthday
     # ID, SG
     (4, 15, "VESAK", BUDDHIST),  # Vesak
     # CN, HK, TW
@@ -399,8 +376,6 @@ ASIAN_HOLIDAYS = (
     (8, 15, "MID_AUTUMN", CHINESE),  # Mid-Autumn Festival
     # HK
     (9, 9, "DOUBLE_NINTH", CHINESE),  # Double Ninth Festival
-    # MN
-    (10, 1, "GENGHIS_KHAN_DAY", MONGOLIAN),  # Genghis Khan's Birthday
     # MY
     (0, 0, "VESAK_MAY", BUDDHIST),  # Vesak (May)
     # MY, SG
