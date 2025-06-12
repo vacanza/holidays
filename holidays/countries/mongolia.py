@@ -57,7 +57,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         self._add_childrens_day(tr("Хүүхдийн баяр"))
 
         # The Buddha's Birthday.
-        self._add_buddha_day(tr("Буддагийн өдөр"))
+        self._add_buddha_day(tr("Бурхан багшийн Их дүйчин өдөр"))
 
         # Naadam.
         self._add_holiday_jul_11(tr("Наадам"))
@@ -72,7 +72,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Established on November 8th, 2012.
         if self._year >= 2012:
             # The Birthday of the great emperor Genghis Khan.
-            self._add_genghis_khan_day(tr("Их эзэн Чингис хааны мэндэлсэн өдөр"))
+            self._add_genghis_khan_day(tr("Их Эзэн Чингис хааны өдөр"))
 
         # Established on November 8th, 2012.
         if self._year >= 2012:
