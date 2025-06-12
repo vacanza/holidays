@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Anguilla holidays en_AI localization.
+# Anguilla holidays.
 #
 msgid ""
 msgstr ""
@@ -51,20 +51,8 @@ msgstr ""
 msgid "Easter Sunday"
 msgstr ""
 
-#. Labor Day.
-msgid "Labor Day"
-msgstr ""
-
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr ""
-
-#. Celebration of the Birthday of Her Majesty the Queen.
-msgid "Celebration of the Birthday of Her Majesty the Queen"
-msgstr ""
-
-#. Celebration of the Birthday of His Majesty the King.
-msgid "Celebration of the Birthday of His Majesty the King"
 msgstr ""
 
 #. Anguilla Day.
@@ -105,4 +93,24 @@ msgstr ""
 
 #. Special Public Holiday.
 msgid "Special Public Holiday"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Mourning the Death of Her Majesty The Queen Elizabeth II.
+msgid "Mourning the Death of Her Majesty The Queen Elizabeth II"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr ""
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr ""
+
+#. Separation Day.
+msgid "Separation Day"
 msgstr ""

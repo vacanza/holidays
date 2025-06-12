@@ -10,14 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, APR, MAY, JUN, SUN, _timedelta
+from holidays.calendars.gregorian import FEB, APR, JUN, SEP, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_TUE,
     SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_PREV_FRI,
 )
@@ -41,10 +42,8 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         - [Public Holidays For 2022](https://web.archive.org/web/20221011200016/http://www.gov.ai/holiday.php)
         - [Public Holidays For 2024](https://web.archive.org/web/20241004074741/https://www.gov.ai/service/public-holidays-for-2024)
         - [Public Holidays For 2025](https://web.archive.org/web/20250425025259/https://www.gov.ai/service/public-holidays-for-2025)
-        - [PUBLIC HOLIDAYS ACT R.S.A. c. P130](https://www.gov.ai/laws/P130-00-Public%20Holidays%20Act/docs/P130-00-Public%20Holidays%20Act_03.pdf)
-        - [Revised Regulations of Anguilla: P130-1](https://www.gov.ai/laws/P130-01-Public%20Holidays%20Regulations/docs/P130-01-Public%20Holidays%20Regulations_05.pdf)
-        - [Government of Anguilla Official Gazette](https://web.archive.org/web/20250304213202/https://gov.ai/document/2025-03-04-123357_2051160063.pdf)
-        - [REVISED REGULATIONS OF ANGUILLA](https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/109059/ATG109059.pdf)
+        - [Public Holidays Regulations R.R.A. P130-1 as of DEC 15, 2000](https://web.archive.org/web/20250611054639/https://laws.gov.ai/storage/pdfs/2000%20AXA%20Revised%20Statutes%20and%20Regulations/PDF%20(Regulations)/P-R.R.A.s/P130-Public%20Holidays%20Regulations.pdf)
+        - [Public Holidays Regulations R.R.A. P130-1 as of DEC 15, 2010](https://web.archive.org/web/20250611055143/https://laws.gov.ai/storage/pdfs/2010%20AXA%20Revised%20Statutes%20and%20Regulations/PDF%20(Regulations)/P-R.R.A.s/P130-Public%20Holidays%20Regulations.pdf)
     """
 
     country = "AI"
@@ -53,8 +52,8 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     # %s (observed).
     observed_label = tr("%s (observed)")
     # Declaration of independence May 30, 1967,
-    # but the 2010 revision is the most recent comprehensive legal update.
-    start_year = 2011
+    # but the 2000 revision is the earliest comprehensive legal update.
+    start_year = 2001
     weekend = {SUN}
 
     def __init__(self, *args, **kwargs):
@@ -68,30 +67,31 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
-        # James Ronald Webster Day.
-        self._add_observed(self._add_holiday_mar_2(tr("James Ronald Webster Day")))
+        if self._year >= 2010:
+            # James Ronald Webster Day.
+            self._add_observed(self._add_holiday_mar_2(tr("James Ronald Webster Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
 
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
+
         # Labor Day.
-        self._add_observed(self._add_labor_day(tr("Labor Day")))
+        self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Whit Monday.
         whit_monday = self._add_whit_monday(tr("Whit Monday"))
 
         name = (
-            # Celebration of the Birthday of Her Majesty the Queen.
-            tr("Celebration of the Birthday of Her Majesty the Queen")
+            # Queen's Birthday.
+            tr("Queen's Birthday")
             if self._year <= 2022
-            # Celebration of the Birthday of His Majesty the King.
-            else tr("Celebration of the Birthday of His Majesty the King")
+            # King's Birthday.
+            else tr("King's Birthday")
         )
         if self._year == 2022:
             self._add_holiday_jun_3(name)
@@ -100,13 +100,17 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         else:
             self._add_holiday_3rd_mon_of_jun(name)
 
-        dt = date(self._year, MAY, 30)
-        if self._is_weekend(dt):
-            dt = _timedelta(dt, +2) if self._is_saturday(dt) else _timedelta(dt, +1)
-        if whit_monday == dt:
-            dt = _timedelta(dt, +1)
         # Anguilla Day.
-        self._add_holiday(tr("Anguilla Day"), dt)
+        name = tr("Anguilla Day")
+        self._add_observed(
+            dt := self._add_holiday_may_30(name),
+            name=name,
+            rule=MON_TO_NEXT_TUE
+            if dt == whit_monday
+            else SAT_SUN_TO_NEXT_TUE
+            if self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) == whit_monday
+            else SAT_SUN_TO_NEXT_MON,
+        )
 
         # August Monday.
         self._add_holiday_1st_mon_of_aug(tr("August Monday"))
@@ -117,13 +121,22 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Constitution Day.
         self._add_holiday_4_days_past_1st_mon_of_aug(tr("Constitution Day"))
 
-        self._add_observed(
-            self._add_holiday_dec_19(
-                # National Heroes and Heroines Day.
-                tr("National Heroes and Heroines Day")
-            ),
-            rule=SAT_SUN_TO_PREV_FRI,
-        )
+        if self._year < 2011:
+            self._add_observed(
+                self._add_holiday_dec_19(
+                    # Separation Day.
+                    tr("Separation Day")
+                ),
+                rule=SAT_SUN_TO_PREV_FRI,
+            )
+        else:
+            self._add_observed(
+                self._add_holiday_dec_19(
+                    # National Heroes and Heroines Day.
+                    tr("National Heroes and Heroines Day")
+                ),
+                rule=SAT_SUN_TO_PREV_FRI,
+            )
 
         self._add_observed(
             # Christmas Day.
@@ -147,11 +160,20 @@ class AIA(Anguilla):
 
 
 class AnguillaStaticHolidays:
+    """Anguilla special holidays.
+
+    References:
+        - [Government of Anguilla Official Gazette](https://web.archive.org/web/20250304213202/https://gov.ai/document/2025-03-04-123357_2051160063.pdf)
+        - [Mourning the Death of Her Majesty Queen Elizabeth II](https://web.archive.org/web/20250611052948/https://theanguillian.com/2022/09/mourning-the-death-of-her-majesty-queen-elizabeth-ii/)
+    """
+
     special_public_holidays = {
         # Royal Wedding of Prince William & Kate Middleton.
         2011: (APR, 29, tr("Royal Wedding of Prince William & Kate Middleton")),
         # Diamond Jubilee Celebration of Her Majesty The Queen.
         2012: (JUN, 4, tr("Diamond Jubilee Celebration of Her Majesty The Queen")),
+        # Mourning the Death of Her Majesty The Queen Elizabeth II.
+        2022: (SEP, 19, tr("Mourning the Death of Her Majesty The Queen Elizabeth II")),
         # Special Public Holiday.
         2025: (FEB, 28, tr("Special Public Holiday")),
     }
