@@ -29,7 +29,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
     country = "MN"
     default_language = "mn"
     start_year = 2004
-    supported_languages = ("en_MN", "en_US", "mn")
+    supported_languages = ("en_US", "mn")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)

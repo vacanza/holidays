@@ -159,26 +159,6 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-12-29", "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"),
         )
 
-    def test_l10n_en_mn(self):
-        self.assertLocalizedHolidays(
-            "en_MN",
-            ("2024-01-01", "New Year's Day"),
-            ("2024-02-10", "Tsagaan Sar"),
-            ("2024-02-11", "Tsagaan Sar Holiday"),
-            ("2024-02-12", "Tsagaan Sar Holiday"),
-            ("2024-03-08", "International Women's Day"),
-            ("2024-05-23", "Buddha Day"),
-            ("2024-06-01", "Children's Day"),
-            ("2024-07-11", "Naadam"),
-            ("2024-07-12", "Naadam Holiday"),
-            ("2024-07-13", "Naadam Holiday"),
-            ("2024-07-14", "Naadam Holiday"),
-            ("2024-07-15", "Naadam Holiday"),
-            ("2024-11-02", "Genghis Khan Day"),
-            ("2024-11-26", "Republic Day"),
-            ("2024-12-29", "Restoration of Freedom and Independence Day"),
-        )
-
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
