@@ -109,9 +109,9 @@ class PalauStaticHolidays:
     """Palau special holidays.
 
     References:
-        * <https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
-        * <https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
-        * <https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202645/https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202650/https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202639/https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
     """
 
     special_armed_forces_holidays = {
