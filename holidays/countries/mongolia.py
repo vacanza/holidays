@@ -20,10 +20,12 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
     """Mongolia holidays.
 
     References:
+        * [Law on Public holidays and days of observation](https://web.archive.org/web/20250327062440/https://legalinfo.mn/mn/detail/399)
+        * [Labor Law](https://web.archive.org/web/20250421093230/https://legalinfo.mn/mn/detail?lawId=16230709635751)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mongolia>
+        * [Mongolian lunar calendar](https://web.archive.org/web/20230412171012/https://www.math.mcgill.ca/gantumur/cal/index_mn.html)
         * <https://www.timeanddate.com/holidays/mongolia>
         * <https://investmongolia.gov.mn/mongolia-at-a-glance/>
-        * <https://www.math.mcgill.ca/gantumur/cal/year.html>
     """
 
     country = "MN"
