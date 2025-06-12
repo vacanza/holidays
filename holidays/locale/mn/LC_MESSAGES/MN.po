@@ -68,9 +68,9 @@ msgid "Цагаан сарын баяр"
 msgstr ""
 
 #. The Buddha's Birthday.
-msgid "Буддагийн өдөр"
+msgid "Бурхан багшийн Их дүйчин өдөр"
 msgstr ""
 
 #. The Birthday of the great emperor Genghis Khan.
-msgid "Их эзэн Чингис хааны мэндэлсэн өдөр"
+msgid "Их Эзэн Чингис хааны өдөр"
 msgstr ""
