@@ -43,23 +43,25 @@ class Guyana(
         * [Public Holidays Amendment Act 1967](https://web.archive.org/web/20241125073357/https://parliament.gov.gy/documents/bills/11264-bill_6_of_1967_public_holidays.pdf)
         * [Public Holidays Amendment Act 1969](https://web.archive.org/web/20250424211718/https://parliament.gov.gy/documents/bills/11891-bill_26_of_1969_1.pdf)
         * [Public Holidays Act Consolidated as of 2012](https://web.archive.org/web/20250608202320/https://mola.gov.gy/laws/Volume%206%20Cap.%2018.01%20-%2023.011696968337.pdf)
-        * The holidays below are not part of the latest Public Holidays Act but have been notified
-          every year as a holiday by gazzette notifications for many years. The earliest and latest
-          available notifications for each are linked below.
-          - Independence Day
-            - [Extraordinary Gazzette 14 May 2016](https://web.archive.org/web/20250210091920/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_14may161.pdf)
-            - [Extraordinary Gazzette 10 May 2025](https://web.archive.org/web/20250611200312/https://officialgazette.gov.gy/images/gazette2025/may/Extra_10MAY2025NotiPHA.pdf)
-          - CARICOM Day
-            - [Extraordinary Gazzette 29 June 2016](https://web.archive.org/web/20250209205727/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_29jun16.pdf)
-            - [Extraordinary Gazzette 22 June 2024](https://web.archive.org/web/20250209154128/https://officialgazette.gov.gy/images/gazette2024/jun/Extra_22JUNE2024NotiPHA.pdf)
-          - Arrival Day
-            - [Extraordinary Gazzette 16 April 2019](https://web.archive.org/web/20221118182239/https://officialgazette.gov.gy/images/gazette2019/apr/Extra_20APRIL2019NotPubHol.pdf)
-            - [Extraordinary Gazzette 26 April 2025](https://web.archive.org/web/20250611200310/https://officialgazette.gov.gy/images/gazette2025/apr/Extra_26APRIL2025PHA.pdf)
-          - Commonwealth Day / Emancipation Day
-            - No amendment act renaming Commonwealth Day to Emancipation Day but being referred as
-              the latter in annual gazzette notifications for years.
-            - [Extraordinary Gazzette 21 July 2016](https://web.archive.org/web/20250211095036/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_21jul16.pdf)
-            - [Extraordinary Gazzette 16 July 2022](https://web.archive.org/web/20231214011437/https://officialgazette.gov.gy/images/gazette2022/jul/Extra_16JULY2022NotificPHA.pdf)
+
+    The holidays below are not part of the latest Public Holidays Act but have been notified
+    every year as a holiday by gazzette notifications for many years. The earliest and latest
+    available notifications for each are linked below.
+
+    * Independence Day:
+        * [Extraordinary Gazzette 14 May 2016](https://web.archive.org/web/20250210091920/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_14may161.pdf)
+        * [Extraordinary Gazzette 10 May 2025](https://web.archive.org/web/20250611200312/https://officialgazette.gov.gy/images/gazette2025/may/Extra_10MAY2025NotiPHA.pdf)
+    * CARICOM Day:
+        * [Extraordinary Gazzette 29 June 2016](https://web.archive.org/web/20250209205727/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_29jun16.pdf)
+        * [Extraordinary Gazzette 22 June 2024](https://web.archive.org/web/20250209154128/https://officialgazette.gov.gy/images/gazette2024/jun/Extra_22JUNE2024NotiPHA.pdf)
+    * Arrival Day:
+        * [Extraordinary Gazzette 16 April 2019](https://web.archive.org/web/20221118182239/https://officialgazette.gov.gy/images/gazette2019/apr/Extra_20APRIL2019NotPubHol.pdf)
+        * [Extraordinary Gazzette 26 April 2025](https://web.archive.org/web/20250611200310/https://officialgazette.gov.gy/images/gazette2025/apr/Extra_26APRIL2025PHA.pdf)
+    * Commonwealth Day / Emancipation Day:
+        * No amendment act renaming Commonwealth Day to Emancipation Day but being referred as
+          the latter in annual gazzette notifications for years.
+        * [Extraordinary Gazzette 21 July 2016](https://web.archive.org/web/20250211095036/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_21jul16.pdf)
+        * [Extraordinary Gazzette 16 July 2022](https://web.archive.org/web/20231214011437/https://officialgazette.gov.gy/images/gazette2022/jul/Extra_16JULY2022NotificPHA.pdf)
     """
 
     country = "GY"
