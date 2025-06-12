@@ -192,7 +192,7 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
     }
 
     # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
-    DIWALI_DATES = {
+    DIWALI_INDIA_DATES = {
         2016: (OCT, 30),
         2017: (OCT, 19),
         2018: (NOV, 7),
