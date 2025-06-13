@@ -20,50 +20,44 @@ class TestSintMaarten(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SintMaarten, years=range(2010, 2077))
-    
 
     def test_country_aliases(self):
         self.assertAliases(SintMaarten, SX, SXM)
-    
 
     def test_no_holidays(self):
         self.assertNoHolidays(SintMaarten(years=2009))
-    
 
     def test_2017(self):
         self.assertHolidays(
             SintMaarten(years=2017),
             ("2017-01-01", "New Year's Day"),
             ("2017-04-14", "Good Friday"),
+            ("2017-04-16", "Easter Sunday"),
             ("2017-04-17", "Easter Monday"),
             ("2017-04-27", "King's Day"),
             ("2017-04-30", "Carnival Day"),
             ("2017-05-01", "Labour Day"),
             ("2017-05-25", "Ascension Day"),
-            ("2017-07-01", "Emancipation Day"),
+            ("2017-06-04", "Whit Sunday"),
             ("2017-10-10", "Constitution Day"),
             ("2017-11-11", "Sint Maarten Day"),
             ("2017-12-25", "Christmas Day"),
             ("2017-12-26", "Second day of Christmas"),
         )
-    
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
         self.assertNoHolidayName(name, range(2010, 2020))
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(2020, 2077)))
 
-
     def test_constitution_day(self):
         name = "Constitution Day"
         self.assertNoHolidayName(name, range(1900, 2010))
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(2010, 2077)))
 
-
     def test_sint_maarten_day(self):
         name = "Sint Maarten Day"
         self.assertHolidayName(name, (f"{year}-11-11" for year in range(2010, 2077)))
-
 
     def test_king_day(self):
         name = "King's Day"
@@ -82,13 +76,13 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2036-04-27",
         )
 
-
     def test_carnival_day(self):
         name = "Carnival Day"
         self.assertHolidayName(name, (f"{year}-04-30" for year in range(2010, 2077)))
         self.assertNoHolidayName(name, range(1900, 2010))
 
-
     def test_christmas(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2010, 2077)))
-        self.assertHolidayName("Second day of Christmas", (f"{year}-12-26" for year in range(2010, 2077)))
+        self.assertHolidayName(
+            "Second day of Christmas", (f"{year}-12-26" for year in range(2010, 2077))
+        )
