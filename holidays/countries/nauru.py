@@ -24,21 +24,20 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Nauru holidays.
 
     References:
-        * <https://www.worldatlas.com/articles/what-languages-are-spoken-in-nauru.html>
-        * <https://publicholidays.asia/nauru/>
-        * <https://commonwealthchamber.com/day-of-the-tribes-nauru/>
-        * <https://anydayguide.com/calendar/2514>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Nauru>
-        * <https://www.timeanddate.com/holidays/nauru/>
-        * [Public Service Act 2016](https://ronlaw.gov.nr/pdfviewer/docs%252Facts%252F2016%252FPublic%2520Service%2520Act%25202016_serv4.pdf)
+        * [Public Service Act 2016](https://ronlaw.gov.nr/assets/docs/acts/2016/Public%20Service%20Act%202016_serv4.pdf)
         * [Nauru's Online Legal Database](https://ronlaw.gov.nr/)
+        * <https://www.timeanddate.com/holidays/nauru/>
 
     Gazettes:
-        * [15th Jan 2024](https://ronlaw.gov.nr/pdfviewer/docs%252Fgazettes%252F2024%252F01%252FNauru%2520Government%2520Gazette%252C%2520No.%252014%2520%2815%2520January%25202024%29.pdf)
-        * [International Womens Day was started on 2019](https://ronlaw.gov.nr/pdfviewer/docs%2Fgazettes%2F2018%2F11%2FGazette%20No.%20175%20%2828%20November%202018%29.pdf)
-        * [RONPHOS Handover Day was started on 2018](https://ronlaw.gov.nr/pdfviewer/docs%2Fgazettes%2F2018%2F06%2FGazette%20No.%20102%20%2829%20June%202018%29.pdf)
-        * [Ibumin Earoeni Day was started on 2019](https://ronlaw.gov.nr/pdfviewer/docs%2Fgazettes%2F2019%2F08%2FGazette%20No.%20139%20%2812%20August%202019%29.pdf)
-        * [Sir Hammer DeRoburt Day was started on 2021](https://ronlaw.gov.nr/pdfviewer/docs%2Fgazettes%2F2021%2F09%2FGazette%20No.%20144%20%2821%20September%202021%29.pdf)
+        * [Public Holidays 2019](https://ronlaw.gov.nr/assets/docs/gazettes/2018/11/Gazette%20No.%20175%20(28%20November%202018).pdf)
+        * [Public Holidays 2021](https://ronlaw.gov.nr/assets/docs/gazettes/2020/12/Gazette%20No.%20227%20(21%20December%202020).pdf)
+        * [Public Holidays 2022](https://ronlaw.gov.nr/assets/docs/gazettes/2022/01/Gazette%20No.%207%20(6%20January%202022).pdf)
+        * [Public Holidays 2023](https://ronlaw.gov.nr/assets/docs/gazettes/2022/12/Gazette%20No.%20330%20(30%20December%202022).pdf)
+        * [Public Holidays 2024](https://ronlaw.gov.nr/assets/docs/gazettes/2024/01/Nauru%20Government%20Gazette,%20No.%2014%20(15%20January%202024).pdf)
+        * [RONPHOS Handover Day 2018](https://ronlaw.gov.nr/assets/docs/gazettes/2018/06/Gazette%20No.%20102%20(29%20June%202018).pdf)
+        * [Ibumin Earoeni Day 2019](https://ronlaw.gov.nr/assets/docs/gazettes/2019/08/Gazette%20No.%20139%20(12%20August%202019).pdf)
+        * [Sir Hammer DeRoburt Day 2021](https://ronlaw.gov.nr/assets/docs/gazettes/2021/09/Gazette%20No.%20144%20(21%20September%202021).pdf)
     """
 
     country = "NR"
