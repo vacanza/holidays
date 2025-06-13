@@ -44,7 +44,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("New Year’s Day"))
+        self._add_new_years_day(tr("New Year's Day"))
 
         # National Heroes' Day.
         self._add_observed(self._add_holiday_mar_14(tr("National Heroes' Day")))
