@@ -49,6 +49,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         name = "Independence Day"
         self.assertHolidayName(
             name, (f"{year}-05-26" for year in (*range(1968, 1970), *range(2016, 2050)))
+        )
         self.assertNoHolidayName(name, range(1970, 2016))
 
     def test_republic_day(self):
