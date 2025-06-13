@@ -35,11 +35,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        # Jan 1 every year
-        self.assertHolidayName(
-            name,
-            (f"{year}-01-01" for year in range(1979, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1979, 2050)))
         observed = (
             "2006-01-02",
             "2012-01-02",
