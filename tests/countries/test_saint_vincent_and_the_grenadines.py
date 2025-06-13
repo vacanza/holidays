@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from unittest import TestCase
-from unittest import TestCase
 
 from holidays.countries.saint_vincent_and_the_grenadines import (
     SaintVincentAndTheGrenadines,
