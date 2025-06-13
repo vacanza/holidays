@@ -31,7 +31,7 @@ msgid "%s (observed)"
 msgstr "%s (observed)"
 
 #. New Year's Day.
-msgid "New Year’s Day"
+msgid "New Year's Day"
 msgstr "New Year's Day"
 
 #. Good Friday.
@@ -43,7 +43,7 @@ msgid "Easter Monday"
 msgstr "Easter Monday"
 
 #. National Workers Day.
-msgid "National Workers’ Day"
+msgid "National Workers' Day"
 msgstr "Labor Day"
 
 #. Whit Monday.
@@ -73,8 +73,8 @@ msgid "Independence Day"
 msgstr "Independence Day"
 
 #. National Heroes Day
-msgid "National Heroes’ Day"
-msgstr "National Heroes Day"
+msgid "National Heroes' Day"
+msgstr "National Heroes' Day"
 
 #. National Spiritual Baptist Day
 msgid "National Spiritual Baptist Day"
