@@ -73,7 +73,7 @@ msgid "Independence Day"
 msgstr ""
 
 #. National Heroes Day
-msgid "National Heroes’ Day"
+msgid "National Heroes' Day"
 msgstr ""
 
 #. National Spiritual Baptist Day
