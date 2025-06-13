@@ -26,6 +26,7 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (observed)"
@@ -42,7 +43,7 @@ msgstr "Good Friday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. National Workers Day.
+#. Labor Day.
 msgid "National Workers' Day"
 msgstr "Labor Day"
 
