@@ -79,14 +79,8 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
 
     def test_spiritual_baptist_day(self):
         name = "National Spiritual Baptist Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-05-21" for year in range(2025, 2050)),
-        )
-        self.assertNoHolidayName(
-            name,
-            range(1979, 2025),
-        )
+        self.assertHolidayName(name, (f"{year}-05-21" for year in range(2025, 2050)))
+        self.assertNoHolidayName(name, range(1979, 2025))
 
     def test_whit_monday(self):
         name = "Whit Monday"
