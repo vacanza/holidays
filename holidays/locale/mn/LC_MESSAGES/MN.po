@@ -71,6 +71,6 @@ msgstr ""
 msgid "Бурхан багшийн Их дүйчин өдөр"
 msgstr ""
 
-#. The Birthday of the great emperor Genghis Khan.
+#. The Birthday of the Great Emperor Genghis Khan.
 msgid "Их Эзэн Чингис хааны өдөр"
 msgstr ""

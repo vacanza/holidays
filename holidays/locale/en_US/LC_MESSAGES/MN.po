@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: mn\n"
+
 #. New Year's Day.
 msgid "Шинэ жилийн баяр"
 msgstr "New Year's Day"
@@ -69,6 +70,6 @@ msgstr "Tsagaan Sar Holiday"
 msgid "Бурхан багшийн Их дүйчин өдөр"
 msgstr "The Buddha's Birthday"
 
-#. The Birthday of the great emperor Genghis Khan.
+#. The Birthday of the Great Emperor Genghis Khan.
 msgid "Их Эзэн Чингис хааны өдөр"
-msgstr "The Birthday of the great emperor Genghis Khan"
+msgstr "The Birthday of the Great Emperor Genghis Khan"

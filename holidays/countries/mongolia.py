@@ -24,8 +24,8 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         * [Labor Law](https://web.archive.org/web/20250421093230/https://legalinfo.mn/mn/detail?lawId=16230709635751)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mongolia>
         * [Mongolian lunar calendar](https://web.archive.org/web/20230412171012/https://www.math.mcgill.ca/gantumur/cal/index_mn.html)
-        * <https://www.timeanddate.com/holidays/mongolia>
-        * <https://investmongolia.gov.mn/mongolia-at-a-glance/>
+        * <https://web.archive.org/web/20250613054645/https://www.timeanddate.com/holidays/mongolia/>
+        * <hhttps://web.archive.org/web/20250429110535/https://investmongolia.gov.mn/mongolia-at-a-glance/>
     """
 
     country = "MN"
@@ -56,8 +56,10 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Children's Day.
         self._add_childrens_day(tr("Хүүхдийн баяр"))
 
-        # The Buddha's Birthday.
-        self._add_buddha_day(tr("Бурхан багшийн Их дүйчин өдөр"))
+        # Established on December 20th, 2019.
+        if self._year >= 2020:
+            # The Buddha's Birthday.
+            self._add_buddha_day(tr("Бурхан багшийн Их дүйчин өдөр"))
 
         # Naadam.
         self._add_holiday_jul_11(tr("Наадам"))
@@ -71,11 +73,11 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Established on November 8th, 2012.
         if self._year >= 2012:
-            # The Birthday of the great emperor Genghis Khan.
+            # The Birthday of the Great Emperor Genghis Khan.
             self._add_genghis_khan_day(tr("Их Эзэн Чингис хааны өдөр"))
 
-        # Established on November 8th, 2012.
-        if self._year >= 2012:
+        # Established on November 18th, 2016.
+        if self._year >= 2016:
             # Republic Day.
             self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
 

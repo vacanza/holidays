@@ -72,7 +72,7 @@ class TestMongolia(CommonCountryTests, TestCase):
     def test_childrens_day(self):
         self.assertHolidayName("Хүүхдийн баяр", (f"{year}-06-01" for year in range(2004, 2050)))
 
-    def test_buddha_day(self):
+    def test_the_buddhas_birthday(self):
         name = "Бурхан багшийн Их дүйчин өдөр"
         dt = (
             "2021-05-26",
@@ -82,7 +82,8 @@ class TestMongolia(CommonCountryTests, TestCase):
             "2025-06-11",
         )
         self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2004, 2050))
+        self.assertHolidayName(name, range(2020, 2050))
+        self.assertNoHolidayName(name, range(2004, 2020))
 
     def test_naadam(self):
         for year in range(2004, 2050):
@@ -110,8 +111,8 @@ class TestMongolia(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Бүгд Найрамдах Улс тунхагласан өдөр"
-        self.assertHolidayName(name, (f"{year}-11-26" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, (f"{year}-11-26" for year in range(2004, 2012)))
+        self.assertHolidayName(name, (f"{year}-11-26" for year in range(2016, 2050)))
+        self.assertNoHolidayName(name, range(2004, 2016))
 
     def test_independence_day(self):
         name_2007 = "Үндэсний эрх чөлөөний өдөр"
@@ -175,7 +176,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-07-13", "Naadam Holiday"),
             ("2024-07-14", "Naadam Holiday"),
             ("2024-07-15", "Naadam Holiday"),
-            ("2024-11-02", "The Birthday of the great emperor Genghis Khan"),
+            ("2024-11-02", "The Birthday of the Great Emperor Genghis Khan"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-29", "Restoration of Freedom and Independence Day"),
         )
