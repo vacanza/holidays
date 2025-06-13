@@ -43,7 +43,7 @@ msgid "Easter Monday"
 msgstr ""
 
 #. National Workers Day.
-msgid "National Workers’ Day"
+msgid "National Workers' Day"
 msgstr ""
 
 #. Whit Monday.
