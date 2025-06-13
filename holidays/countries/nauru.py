@@ -94,13 +94,16 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Ibumin Earoeni Day.
             self._add_observed(self._add_holiday_aug_19(tr("Ibumin Earoeni Day")))
 
-        if 2001 <= self._year <= 2019:
-            # National Youth Day
-            self._add_observed(self._add_holiday_sep_25(tr("National Youth Day")))
-
-        if self._year >= 2020:
-            # Sir Hammer DeRoburt Day.
-            self._add_observed(self._add_holiday_sep_25(tr("Sir Hammer DeRoburt Day")))
+        if self._year >= 2001:
+            self._add_observed(
+                self._add_holiday_sep_25(
+                    # Sir Hammer DeRoburt Day.
+                    tr("Sir Hammer DeRoburt Day")
+                    if self._year >= 2020
+                    # National Youth Day.
+                    else tr("National Youth Day")
+                )
+            )
 
         # Angam Day.
         self._add_observed(self._add_holiday_oct_26(tr("Angam Day")))
