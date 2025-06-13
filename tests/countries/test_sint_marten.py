@@ -77,7 +77,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2025-04-26",  # Observed early due to Sunday
         )
         self.assertNoHoliday(
-            "2025-04-27",  # Confirm not double-listed
+            "2025-04-27",
             "2031-04-27",
             "2036-04-27",
         )
