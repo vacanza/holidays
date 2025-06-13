@@ -71,6 +71,54 @@ msgstr ""
 msgid "Бурхан багшийн Их дүйчин өдөр"
 msgstr ""
 
-#. The Birthday of the Great Emperor Genghis Khan.
+#. Genghis Khan;s Birthday.
 msgid "Их Эзэн Чингис хааны өдөр"
+msgstr ""
+
+#. Constitutional Day of Mongolia.
+msgid "Монгол Улсын Үндсэн хуулийн өдөр"
+msgstr ""
+
+#. Patriots' Day.
+msgid "Эх орончдын өдөр"
+msgstr ""
+
+#. Mongolia Military Day.
+msgid "Монгол цэргийн өдөр"
+msgstr ""
+
+#. Health Protection Day.
+msgid "Эрүүл мэндийг хамгаалах өдөр"
+msgstr ""
+
+#. Intellectual Property Day.
+msgid "Оюуны өмчийг хамгаалах өдөр"
+msgstr ""
+
+#. Family Day.
+msgid "Гэр бүлийн өдөр"
+msgstr ""
+
+#. Mongolia National Flag Day.
+msgid "Монгол Улсын төрийн далбааны өдөр"
+msgstr ""
+
+#. Youth Day.
+msgid "Залуучуудын өдөр"
+msgstr ""
+
+#. Memorial Day of Political Defendants.
+msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
+msgstr ""
+
+#. Elders' Day.
+msgid "Ахмадын өдөр"
+msgstr ""
+
+#. Mongolia Capital Day.
+msgid "Монгол Улсын Нийслэлийн өдөр"
+msgstr ""
+
+#. Democracy and Human Rights Day.
+msgid "Ардчилал, хүний эрхийн өдөр"
 msgstr ""

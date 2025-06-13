@@ -12,6 +12,7 @@
 
 from gettext import gettext as tr
 
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, MongolianCalendarHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +32,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
     country = "MN"
     default_language = "mn"
     start_year = 2004
+    supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("en_US", "mn")
 
     def __init__(self, *args, **kwargs):
@@ -73,7 +75,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Established on November 8th, 2012.
         if self._year >= 2012:
-            # The Birthday of the Great Emperor Genghis Khan.
+            # Genghis Khan;s Birthday.
             self._add_genghis_khan_day(tr("Их Эзэн Чингис хааны өдөр"))
 
         # Established on November 18th, 2016.
@@ -91,6 +93,49 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
                 # Independence Day.
                 else tr("Үндэсний эрх чөлөөний өдөр")
             )
+
+    def _populate_workday_holidays(self):
+        # Constitutional Day of Mongolia.
+        self._add_holiday_jan_13(tr("Монгол Улсын Үндсэн хуулийн өдөр"))
+
+        # Patriots' Day.
+        self._add_holiday_mar_1(tr("Эх орончдын өдөр"))
+
+        if self._year >= 2011:
+            # Mongolia Military Day.
+            self._add_holiday_mar_18(tr("Монгол цэргийн өдөр"))
+
+        # Health Protection Day.
+        self._add_holiday_apr_7(tr("Эрүүл мэндийг хамгаалах өдөр"))
+
+        # Intellectual Property Day.
+        self._add_holiday_apr_26(tr("Оюуны өмчийг хамгаалах өдөр"))
+
+        # Family Day.
+        self._add_holiday_may_15(tr("Гэр бүлийн өдөр"))
+
+        if self._year >= 2009:
+            # Mongolia National Flag Day.
+            self._add_holiday_jul_10(tr("Монгол Улсын төрийн далбааны өдөр"))
+
+        # Youth Day.
+        self._add_holiday_aug_25(tr("Залуучуудын өдөр"))
+
+        # Memorial Day of Political Defendants.
+        self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))
+
+        # Elders' Day.
+        self._add_holiday_oct_1(tr("Ахмадын өдөр"))
+
+        # Mongolia Capital Day.
+        self._add_holiday_oct_29(tr("Монгол Улсын Нийслэлийн өдөр"))
+
+        if 2012 <= self._year <= 2015:
+            # Republic Day.
+            self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
+
+        # Democracy and Human Rights Day.
+        self._add_holiday_dec_10(tr("Ардчилал, хүний эрхийн өдөр"))
 
 
 class MN(Mongolia):
