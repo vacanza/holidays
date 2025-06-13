@@ -111,8 +111,8 @@ class SaintVincentAndTheGrenadinesStaticHolidays:
     # Public Health Holidays.
     name = tr("Public Health Holidays")
     special_public_holidays = {
-    2021: [
-        (JAN, 22, name),
-        (JAN, 25, name),
-        ],
-    }
+        2021: [
+            (JAN, 22, name),
+            (JAN, 25, name),
+         ],
+     }
