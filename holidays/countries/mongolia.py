@@ -25,7 +25,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mongolia>
         * [Mongolian lunar calendar](https://web.archive.org/web/20230412171012/https://www.math.mcgill.ca/gantumur/cal/index_mn.html)
         * <https://web.archive.org/web/20250613054645/https://www.timeanddate.com/holidays/mongolia/>
-        * <hhttps://web.archive.org/web/20250429110535/https://investmongolia.gov.mn/mongolia-at-a-glance/>
+        * <https://web.archive.org/web/20250429110535/https://investmongolia.gov.mn/mongolia-at-a-glance/>
     """
 
     country = "MN"
