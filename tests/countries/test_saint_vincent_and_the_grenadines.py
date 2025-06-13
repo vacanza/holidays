@@ -34,7 +34,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertNoHolidays(SaintVincentAndTheGrenadines(years=1978))
 
     def test_new_years_day(self):
-        name = "New Year’s Day"
+        name = "New Year's Day"
         # Jan 1 every year
         self.assertHolidayName(
             name,
