@@ -92,7 +92,6 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
 
-
 class VC(SaintVincentAndTheGrenadines):
     pass
 
@@ -114,5 +113,5 @@ class SaintVincentAndTheGrenadinesStaticHolidays:
         2021: [
             (JAN, 22, name),
             (JAN, 25, name),
-         ],
-     }
+        ],
+    }
