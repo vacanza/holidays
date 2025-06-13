@@ -31,9 +31,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertAliases(SaintVincentAndTheGrenadines, VC, VCT)
 
     def test_no_holidays_before_start(self):
-        self.assertNoHolidays(
-            SaintVincentAndTheGrenadines(years=1978)
-        )
+        self.assertNoHolidays(SaintVincentAndTheGrenadines(years=1978))
 
     def test_new_years_day(self):
         name = "New Year’s Day"
