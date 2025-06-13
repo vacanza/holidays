@@ -58,7 +58,7 @@ class SintMaarten(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(tr("King's Day"), date(self._year, APR, 26))
             else:
                 self._add_holiday(tr("King's Day"), date(self._year, APR, 27))
-        
+
         # Carnival Day
         self._add_holiday(tr("Carnival Day"), date(self._year, APR, 30))
 
@@ -74,11 +74,11 @@ class SintMaarten(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Emancipation Day
         if self._year >= 2020:
             self._add_holiday(tr("Emancipation Day"), date(self._year, JUL, 1))
-        
+
         # Constitution Day
         if self._year >= 2010:
             self._add_holiday(tr("Constitution Day"), date(self._year, OCT, 10))
-        
+
         # Sint Maarten Day
         self._add_holiday(tr("Sint Maarten Day"), date(self._year, NOV, 11))
 
