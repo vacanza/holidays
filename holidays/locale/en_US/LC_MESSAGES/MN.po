@@ -24,8 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_MN\n"
-
+"X-Source-Language: mn\n"
 #. New Year's Day.
 msgid "Шинэ жилийн баяр"
 msgstr "New Year's Day"
