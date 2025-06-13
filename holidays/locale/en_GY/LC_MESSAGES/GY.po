@@ -105,6 +105,6 @@ msgstr ""
 msgid "CARICOM Day"
 msgstr ""
 
-#. Emancipation Day
+#. Emancipation Day.
 msgid "Emancipation Day"
 msgstr ""

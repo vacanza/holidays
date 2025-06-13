@@ -125,7 +125,7 @@ class Guyana(
             # Commonwealth Day.
             tr("Commonwealth Day")
             if self._year <= 2015
-            # Emancipation Day
+            # Emancipation Day.
             else tr("Emancipation Day")
         )
 
