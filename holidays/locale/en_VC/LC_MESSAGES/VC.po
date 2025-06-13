@@ -26,6 +26,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_VC\n"
 
+#. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr ""
