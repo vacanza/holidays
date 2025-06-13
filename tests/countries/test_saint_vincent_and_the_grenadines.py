@@ -107,12 +107,17 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(["2024-10-28"])
 
     def test_christmas_and_boxing_day(self):
-        self.assertHolidayName("Christmas Day", range(1979, 2050))
-        self.assertHolidayName("Christmas Day (observed)", ["2022-12-27"])
-        self.assertNoNonObservedHoliday(["2022-12-27"])
-        self.assertHolidayName("Boxing Day", range(1979, 2050))
-        self.assertHolidayName("Boxing Day (observed)", ["2021-12-27"])
-        self.assertNoNonObservedHoliday(["2021-12-27"])
+        name_christmas = "Christmas Day"
+        name_boxing = "Boxing Day"
+        self.assertHolidayName(name_christmas, (f"{year}-12-25" for year in range(1979, 2050)))
+        self.assertHolidayName(name_boxing, (f"{year}-12-26" for year in range(1979, 2050)))
+
+        dt_chrismas = ("2022-12-27",)
+        self.assertHolidayName(f"{name_christmas} (observed)", dt_chrismas)
+        self.assertNoNonObservedHoliday(dt_chrismas)
+        dt_boxing = ("2021-12-27",)
+        self.assertHolidayName(f"{name_boxing} (observed)", dt_boxing)
+        self.assertNoNonObservedHoliday(dt_boxing)
 
     def test_2024_holidays(self):
         self.assertHolidays(
