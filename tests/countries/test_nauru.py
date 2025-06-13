@@ -46,7 +46,9 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Independence Day"
+        name_after = f"Day following {name}"
         self.assertHolidayName(name, (f"{year}-01-31" for year in range(1969, 2050)))
+        self.assertHolidayName(name_after, (f"{year}-02-01" for year in range(1969, 2050)))
         dt = (
             "2004-02-02",
             "2009-02-02",
@@ -56,12 +58,7 @@ class TestNauru(CommonCountryTests, TestCase):
             "2021-02-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
-
-    def test_day_following_independence_day(self):
-        name = "Day following Independence Day"
-        self.assertHolidayName(name, (f"{year}-02-01" for year in range(1969, 2050)))
-        dt = (
+        dt_after = (
             "2003-02-03",
             "2004-02-03",
             "2009-02-03",
@@ -69,19 +66,19 @@ class TestNauru(CommonCountryTests, TestCase):
             "2015-02-03",
             "2020-02-03",
         )
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        self.assertHolidayName(f"{name_after} (observed)", dt_after)
+        self.assertNoNonObservedHoliday(dt, dt_after)
 
     def test_international_womens_day(self):
         name = "International Women's Day"
         self.assertHolidayName(name, (f"{year}-03-08" for year in range(2019, 2050)))
+        self.assertNoHolidayName(name, range(1969, 2019))
         dt = (
             "2020-03-09",
             "2025-03-10",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(name, range(1969, 2019))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -140,32 +137,32 @@ class TestNauru(CommonCountryTests, TestCase):
     def test_ronphos_handover(self):
         name = "RONPHOS Handover"
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(2018, 2050)))
+        self.assertNoHolidayName(name, range(1969, 2018))
         dt = (
             "2018-07-02",
             "2023-07-03",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(name, range(1969, 2018))
 
     def test_ibumin_earoeni_day(self):
         name = "Ibumin Earoeni Day"
         self.assertHolidayName(name, (f"{year}-08-19" for year in range(2019, 2050)))
+        self.assertNoHolidayName(name, range(1969, 2019))
         dt = ("2023-08-21",)
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(name, range(1969, 2019))
 
     def test_sir_hammer_deroburt_day(self):
         name = "Sir Hammer DeRoburt Day"
         self.assertHolidayName(name, (f"{year}-09-25" for year in range(2021, 2050)))
+        self.assertNoHolidayName(name, range(1969, 2021))
         dt = (
             "2021-09-27",
             "2022-09-26",
         )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName(name, range(1969, 2021))
 
     def test_angam_day(self):
         name = "Angam Day"
