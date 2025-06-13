@@ -168,6 +168,7 @@ from holidays.countries.serbia import Serbia, RS, SRB
 from holidays.countries.seychelles import Seychelles, SC, SYC
 from holidays.countries.sierra_leone import SierraLeone, SL, SLE
 from holidays.countries.singapore import Singapore, SG, SGP
+from holidays.countries.sint_maarten import SintMaarten, SX, SXM
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from holidays.countries.slovenia import Slovenia, SI, SVN
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
