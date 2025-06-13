@@ -13,11 +13,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1979, 2050)
-        super().setUpClass(
-            SaintVincentAndTheGrenadines,
-            years=years,
-            years_non_observed=years,
-        )
+        super().setUpClass(SaintVincentAndTheGrenadines, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(SaintVincentAndTheGrenadines, VC, VCT)
