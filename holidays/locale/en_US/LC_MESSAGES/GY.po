@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Guyana holidays.
+# Guyana holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_GY\n"
 
 #. %s (estimated).
 #, c-format
