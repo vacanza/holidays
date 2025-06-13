@@ -75,7 +75,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Established on November 8th, 2012.
         if self._year >= 2012:
-            # Genghis Khan;s Birthday.
+            # Genghis Khan's Birthday.
             self._add_genghis_khan_day(tr("Их Эзэн Чингис хааны өдөр"))
 
         # Established on November 18th, 2016.
