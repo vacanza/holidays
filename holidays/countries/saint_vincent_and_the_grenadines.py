@@ -24,7 +24,6 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
         * <https://web.archive.org/web/20250513011200/https://www.gov.vc/images/pdf_documents/VINCENTIANS-PREPARE-FOR-MAY-21--SPIRITUAL-BAPTIST-LIBERATION-DAY-NATIONAL-HOLIDAY.pdf>
         * [2019-2025](https://web.archive.org/web/20250214232128/https://pmoffice.gov.vc/pmoffice/index.php/public-holidays)
-        * [National Health Holidays] (https://web.archive.org/web/20250611195307/https://www.stvincenttimes.com/holidays-for-public-health-declared-in-st-vincent/)
         * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf>
         * <https://web.archive.org/web/20250607111242/https://www.stvincenttimes.com/august-3rd-and-4th-2020-declared-public-holidays-in-svg/>
     """
