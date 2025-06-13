@@ -153,10 +153,24 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
+    def test_national_youth_day(self):
+        name = "National Youth Day"
+        self.assertHolidayName(name, (f"{year}-09-25" for year in range(2001, 2020)))
+        self.assertNoHolidayName(name, range(1969, 2001), range(2020, 2050))
+        dt = (
+            "2004-09-27",
+            "2005-09-26",
+            "2010-09-27",
+            "2011-09-26",
+            "2016-09-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
+
     def test_sir_hammer_deroburt_day(self):
         name = "Sir Hammer DeRoburt Day"
-        self.assertHolidayName(name, (f"{year}-09-25" for year in range(2021, 2050)))
-        self.assertNoHolidayName(name, range(1969, 2021))
+        self.assertHolidayName(name, (f"{year}-09-25" for year in range(2020, 2050)))
+        self.assertNoHolidayName(name, range(1969, 2020))
         dt = (
             "2021-09-27",
             "2022-09-26",

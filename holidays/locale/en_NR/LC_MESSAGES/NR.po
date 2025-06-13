@@ -86,3 +86,7 @@ msgstr ""
 #. Day following Christmas.
 msgid "Day following Christmas"
 msgstr ""
+
+#. National Youth Day
+msgid "National Youth Day"
+msgstr ""
