@@ -47,10 +47,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
 
     def test_national_heroes_day(self):
         name = "National Heroes' Day"
-        self.assertHolidayName(
-            name,
-            (f"{year}-03-14" for year in range(1979, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-03-14" for year in range(1979, 2050)))
         self.assertHolidayName(f"{name} (observed)", ["2021-03-15"])
         self.assertNoNonObservedHoliday(["2021-03-15"])
 
