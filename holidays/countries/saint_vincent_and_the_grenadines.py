@@ -91,11 +91,6 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
-        # Public Holidays Act, Cap. 274 (22 & 25 January, 2021)
-        name = tr("Public Health Holidays")
-        if self._year == 2021:
-            self._add_holiday_jan_22(name)
-            self._add_holiday_jan_25(name)
 
 
 class VC(SaintVincentAndTheGrenadines):
@@ -104,3 +99,18 @@ class VC(SaintVincentAndTheGrenadines):
 
 class VCT(SaintVincentAndTheGrenadines):
     pass
+
+
+class SaintVincentAndTheGrenadinesStaticHolidays:
+    """Saint Vincent and the Grenadines special holidays.
+
+    References:
+        * [Statutory Rules and Orders 2021 No.1](https://web.archive.org/web/20250613051716/https://pmoffice.gov.vc/pmoffice/images/PDF/Gazettes/No_1_Proclamation_Delcaring_Friday_the_22nd_and_Monday_25th_day_of_January_2021_to_be_Public_Holidays_in_Saint_Vincent_and_the_Grenadines_19th_January_2021.pdf)
+    """
+
+    # Public Health Holidays.
+    name = tr("Public Health Holidays")
+    special_public_holidays = {
+        2021: (JAN, 22, name),
+        2021: (JAN, 25, name),
+    }
