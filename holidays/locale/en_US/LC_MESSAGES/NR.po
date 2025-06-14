@@ -19,12 +19,12 @@ msgstr ""
 "PO-Revision-Date: 2025-06-11 21:05+0530\n"
 "Last-Translator: Roshan Pradhan <roshanpradhan2048@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: en_NR\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_NR\n"
 
 #. %s (observed).
 #, c-format
