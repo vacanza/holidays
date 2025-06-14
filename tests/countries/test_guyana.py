@@ -135,16 +135,14 @@ class TestGuyana(CommonCountryTests, TestCase):
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
-        self.assertHolidayName(
-            name,
-            "2021-08-01",
-            "2022-08-01",
-            "2023-08-01",
-            "2024-08-01",
-            "2025-08-01",
-        )
-        self.assertHolidayName(name, range(2016, 2050))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(2016, 2050)))
         self.assertNoHolidayName(name, range(1968, 2016))
+        dt = (
+            "2021-08-02",
+            "2027-08-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"

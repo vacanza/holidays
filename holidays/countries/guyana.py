@@ -43,6 +43,7 @@ class Guyana(
         * [Public Holidays Amendment Act 1967](https://web.archive.org/web/20241125073357/https://parliament.gov.gy/documents/bills/11264-bill_6_of_1967_public_holidays.pdf)
         * [Public Holidays Amendment Act 1969](https://web.archive.org/web/20250424211718/https://parliament.gov.gy/documents/bills/11891-bill_26_of_1969_1.pdf)
         * [Public Holidays Act Consolidated as of 2012](https://web.archive.org/web/20250608202320/https://mola.gov.gy/laws/Volume%206%20Cap.%2018.01%20-%2023.011696968337.pdf)
+        * [2021-2025](https://web.archive.org/web/20250614200338/https://moha.gov.gy/public-holidays/)
 
     The holidays below are not part of the latest Public Holidays Act but have been notified
     every year as a holiday by Gazette notifications for many years. The earliest and latest
