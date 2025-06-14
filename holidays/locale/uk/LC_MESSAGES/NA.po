@@ -1,0 +1,120 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Namibia holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+"POT-Creation-Date: 2025-06-13 21:11+0300\n"
+"PO-Revision-Date: 2025-06-13 21:11+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_NA\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Новий рік"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "День незалежності"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Страсна пʼятниця"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Великодній понеділок"
+
+#. Workers' Day.
+msgid "Workers' Day"
+msgstr "День трудящих"
+
+#. Cassinga Day.
+msgid "Cassinga Day"
+msgstr "День Кассінги"
+
+#. Africa Day.
+msgid "Africa Day"
+msgstr "День Африки"
+
+#. Genocide Remembrance Day.
+msgid "Genocide Remembrance Day"
+msgstr "День памʼяті жертв геноциду"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Вознесіння Господнє"
+
+#. Heroes' Day.
+msgid "Heroes' Day"
+msgstr "День Героїв"
+
+#. Day of the Namibian Women and International Human Rights Day.
+msgid "Day of the Namibian Women and International Human Rights Day"
+msgstr "День намібійських жінок та Міжнародний день прав людини"
+
+#. International Human Rights Day.
+msgid "International Human Rights Day"
+msgstr "Міжнародний день прав людини"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Різдво Христове"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "День родини"
+
+#. Y2K changeover.
+msgid "Y2K changeover"
+msgstr "Y2K-перехід"
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr "День загальних виборів"
+
+#. Regional Election Day.
+msgid "Regional Election Day"
+msgstr "День місцевих виборів"
+
+#. Walvis Bay Reintegration Day.
+msgid "Walvis Bay Reintegration Day"
+msgstr "День реінтеграції Волфіш-Бей"
+
+#. Public Holiday.
+msgid "Public Holiday"
+msgstr "Вихідний день"
+
+#. Day of Mourning for Honourable Moses Garoeb.
+msgid "Day of Mourning for Honourable Moses Garoeb"
+msgstr "День жалоби за Мозесом Гароебом"
+
+#. Burial ceremony of Dr. Hage Gottfried Geingob.
+msgid "Burial ceremony of Dr. Hage Gottfried Geingob"
+msgstr "Церемонія поховання Хаге Готтфріда Гейнгоба"
+
+#. Burial ceremony of Dr. Sam Shafiishuna Nujoma.
+msgid "Burial ceremony of Dr. Sam Shafiishuna Nujoma"
+msgstr "Церемонія поховання Сема Шафіішуна Нуйоми"
