@@ -22,6 +22,7 @@ from holidays.groups.hebrew import HebrewCalendarHolidays
 from holidays.groups.hindu import HinduCalendarHolidays
 from holidays.groups.international import InternationalHolidays
 from holidays.groups.islamic import IslamicHolidays
+from holidays.groups.mongolian import MongolianCalendarHolidays
 from holidays.groups.persian import PersianCalendarHolidays
 from holidays.groups.sinhala import SinhalaCalendarHolidays
 from holidays.groups.thai import ThaiCalendarHolidays
