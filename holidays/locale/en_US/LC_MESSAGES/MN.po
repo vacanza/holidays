@@ -38,33 +38,22 @@ msgstr "International Women's Day"
 msgid "Хүүхдийн баяр"
 msgstr "Children's Day"
 
-#. Naadam.
-msgid "Наадам"
-msgstr "Naadam"
-
-#. Naadam Holiday.
-msgid "Наадмын баяр"
-msgstr "Naadam Holiday"
-
+#. Republic Day
 #. Republic Day.
 msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
 msgstr "Republic Day"
 
-#. Restoration of Freedom and Independence Day.
+#. National Freedom and Independence Day.
 msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
-msgstr "Restoration of Freedom and Independence Day"
+msgstr "National Freedom and Independence Day"
 
-#. Independence Day.
+#. National Freedom Day.
 msgid "Үндэсний эрх чөлөөний өдөр"
-msgstr "Independence Day"
+msgstr "National Freedom Day"
 
 #. Tsagaan Sar.
 msgid "Цагаан сар"
 msgstr "Tsagaan Sar"
-
-#. Tsagaan Sar Holiday.
-msgid "Цагаан сарын баяр"
-msgstr "Tsagaan Sar Holiday"
 
 #. The Buddha's Birthday.
 msgid "Бурхан багшийн Их дүйчин өдөр"
@@ -82,9 +71,9 @@ msgstr "Constitutional Day of Mongolia"
 msgid "Эх орончдын өдөр"
 msgstr "Patriots' Day"
 
-#. Mongolia Military Day.
+#. Military Day.
 msgid "Монгол цэргийн өдөр"
-msgstr "Mongolia Military Day"
+msgstr "Military Day"
 
 #. Health Protection Day.
 msgid "Эрүүл мэндийг хамгаалах өдөр"
@@ -98,9 +87,9 @@ msgstr "Intellectual Property Day"
 msgid "Гэр бүлийн өдөр"
 msgstr "Family Day"
 
-#. Mongolia National Flag Day.
+#. National Flag Day.
 msgid "Монгол Улсын төрийн далбааны өдөр"
-msgstr "Mongolia National Flag Day"
+msgstr "National Flag Day"
 
 #. Youth Day.
 msgid "Залуучуудын өдөр"
@@ -114,10 +103,27 @@ msgstr "Memorial Day of Political Defendants"
 msgid "Ахмадын өдөр"
 msgstr "Elders' Day"
 
-#. Mongolia Capital Day.
+#. Capital Day.
 msgid "Монгол Улсын Нийслэлийн өдөр"
-msgstr "Mongolia Capital Day"
+msgstr "Capital Day"
 
 #. Democracy and Human Rights Day.
 msgid "Ардчилал, хүний эрхийн өдөр"
 msgstr "Democracy and Human Rights Day"
+
+#. Expanded to July 10 on July 7th, 2023. Expanded to July 14-15 on July 1st, 2014. National
+#. Festival and People's Revolution Anniversary.
+msgid "Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр"
+msgstr "National Festival and People's Revolution Anniversary"
+
+#. Armed Forces Day.
+msgid "Зэвсэгт хүчний өдөр"
+msgstr "Armed Forces Day"
+
+#. Republic Holiday.
+msgid "Бүгд Найрамдах Улс тунхагласны баяр"
+msgstr "Republic Holiday"
+
+#. Capital Day.
+msgid "Монгол Улсын нийслэл хотын өдөр"
+msgstr "Capital Day"

@@ -45,12 +45,12 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         self._add_new_years_day(tr("Шинэ жилийн баяр"))
 
         # Tsagaan Sar.
-        self._add_tsagaan_sar(tr("Цагаан сар"))
-
-        # Tsagaan Sar Holiday.
-        name = tr("Цагаан сарын баяр")
+        name = tr("Цагаан сар")
+        self._add_tsagaan_sar(name)
         self._add_tsagaan_sar_day_2(name)
-        self._add_tsagaan_sar_day_3(name)
+        # Expanded on November 28th, 2013.
+        if self._year >= 2014:
+            self._add_tsagaan_sar_day_3(name)
 
         # International Women's Day.
         self._add_womens_day(tr("Олон улсын эмэгтэйчүүдийн өдөр"))
@@ -63,47 +63,61 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             # The Buddha's Birthday.
             self._add_buddha_day(tr("Бурхан багшийн Их дүйчин өдөр"))
 
-        # Naadam.
-        self._add_holiday_jul_11(tr("Наадам"))
-
-        # Naadam Holiday.
-        name = tr("Наадмын баяр")
+        # Expanded to July 10 on July 7th, 2023.
+        # Expanded to July 14-15 on July 1st, 2014.
+        # National Festival and People's Revolution Anniversary.
+        name = tr("Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр")
+        if self._year >= 2023:
+            self._add_holiday_jul_10(name)
+        self._add_holiday_jul_11(name)
         self._add_holiday_jul_12(name)
         self._add_holiday_jul_13(name)
-        self._add_holiday_jul_14(name)
-        self._add_holiday_jul_15(name)
+
+        if self._year >= 2014:
+            self._add_holiday_jul_14(name)
+            self._add_holiday_jul_15(name)
 
         # Established on November 8th, 2012.
         if self._year >= 2012:
             # Genghis Khan's Birthday.
             self._add_genghis_khan_day(tr("Их Эзэн Чингис хааны өдөр"))
 
-        # Established on November 18th, 2016.
-        if self._year >= 2016:
+        # Repealed on November 8th, 2012.
+        # Re-established again on November 18th, 2016.
+        if self._year <= 2011 or self._year >= 2016:
             # Republic Day.
-            self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
+            self._add_holiday_nov_26(
+                # Republic Day
+                tr("Бүгд Найрамдах Улс тунхагласан өдөр")
+                if self._year >= 2016
+                # Republic Holiday.
+                else tr("Бүгд Найрамдах Улс тунхагласны баяр")
+            )
 
         # Established on August 16th, 2007.
-        # Renamed on December 23rd, 2011.
-        if self._year >= 2007:
+        # Renamed and considered a Public Holiday on December 23rd, 2011.
+        if self._year >= 2011:
             self._add_holiday_dec_29(
-                # Restoration of Freedom and Independence Day.
+                # National Freedom and Independence Day.
                 tr("Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр")
-                if self._year >= 2011
-                # Independence Day.
-                else tr("Үндэсний эрх чөлөөний өдөр")
             )
 
     def _populate_workday_holidays(self):
         # Constitutional Day of Mongolia.
         self._add_holiday_jan_13(tr("Монгол Улсын Үндсэн хуулийн өдөр"))
 
-        # Patriots' Day.
-        self._add_holiday_mar_1(tr("Эх орончдын өдөр"))
+        # Established on December 9th, 2004.
+        if self._year >= 2005:
+            # Patriots' Day.
+            self._add_holiday_mar_1(tr("Эх орончдын өдөр"))
 
-        if self._year >= 2011:
-            # Mongolia Military Day.
-            self._add_holiday_mar_18(tr("Монгол цэргийн өдөр"))
+        self._add_holiday_mar_18(
+            # Military Day.
+            tr("Монгол цэргийн өдөр")
+            if self._year >= 2011
+            # Armed Forces Day.
+            else tr("Зэвсэгт хүчний өдөр")
+        )
 
         # Health Protection Day.
         self._add_holiday_apr_7(tr("Эрүүл мэндийг хамгаалах өдөр"))
@@ -114,8 +128,9 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Family Day.
         self._add_holiday_may_15(tr("Гэр бүлийн өдөр"))
 
+        # Established on June 11th, 2009
         if self._year >= 2009:
-            # Mongolia National Flag Day.
+            # National Flag Day.
             self._add_holiday_jul_10(tr("Монгол Улсын төрийн далбааны өдөр"))
 
         # Youth Day.
@@ -127,15 +142,29 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Elders' Day.
         self._add_holiday_oct_1(tr("Ахмадын өдөр"))
 
-        # Mongolia Capital Day.
-        self._add_holiday_oct_29(tr("Монгол Улсын Нийслэлийн өдөр"))
+        # Renamed on July 7th, 2021.
+        self._add_holiday_oct_29(
+            # Capital Day.
+            tr("Монгол Улсын нийслэл хотын өдөр")
+            if self._year >= 2021
+            # Capital Day.
+            else tr("Монгол Улсын Нийслэлийн өдөр")
+        )
 
+        # Established on November 8th, 2012 after the old one was repealed.
+        # Made a Public Holiday again on November 8th, 2016.
         if 2012 <= self._year <= 2015:
             # Republic Day.
             self._add_holiday_nov_26(tr("Бүгд Найрамдах Улс тунхагласан өдөр"))
 
         # Democracy and Human Rights Day.
         self._add_holiday_dec_10(tr("Ардчилал, хүний эрхийн өдөр"))
+
+        # Established on August 16th, 2007.
+        # Renamed and considered a Public Holiday on December 23rd, 2011.
+        if 2007 <= self._year <= 2010:
+            # National Freedom Day.
+            self._add_holiday_dec_29(tr("Үндэсний эрх чөлөөний өдөр"))
 
 
 class MN(Mongolia):
