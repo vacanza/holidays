@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Holidays package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+"POT-Creation-Date: 2025-06-14 14:20-0400\n"
+"PO-Revision-Date: 2025-06-14 14:20-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_US\n"
+
+#. New Year's Day
+msgid "New Year's Day"
+msgstr ""
+
+#. Good Friday
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Sunday
+msgid "Easter Sunday"
+msgstr ""
+
+#. Easter Monday
+msgid "Easter Monday"
+msgstr ""
+
+msgid "King's Day"
+msgstr ""
+
+#. Note: Carnival Day date may vary; verify annually
+msgid "Carnival Day"
+msgstr ""
+
+#. Labour Day
+msgid "Labour Day"
+msgstr ""
+
+#. Ascension Day
+msgid "Ascension Day"
+msgstr ""
+
+#. Whit Sunday
+msgid "Whit Sunday"
+msgstr ""
+
+msgid "Emancipation Day"
+msgstr ""
+
+msgid "Constitution Day"
+msgstr ""
+
+#. All Saints' Day
+msgid "All Saints' Day"
+msgstr ""
+
+#. Sint Maarten Day
+msgid "Sint Maarten Day"
+msgstr ""
+
+#. Christmas Day
+msgid "Christmas Day"
+msgstr ""
+
+#. Second day of Christmas
+msgid "Second day of Christmas"
+msgstr ""
