@@ -58,8 +58,8 @@ class Guyana(
         * [Extraordinary Gazette 16 April 2019](https://web.archive.org/web/20221118182239/https://officialgazette.gov.gy/images/gazette2019/apr/Extra_20APRIL2019NotPubHol.pdf)
         * [Extraordinary Gazette 26 April 2025](https://web.archive.org/web/20250611200310/https://officialgazette.gov.gy/images/gazette2025/apr/Extra_26APRIL2025PHA.pdf)
     * Commonwealth Day / Emancipation Day:
-        * No amendment act renaming Commonwealth Day to Emancipation Day but being referred as
-          the latter in annual Gazette notifications for years.
+        * No amendment act removing Commonwealth Day and adding Emancipation Day it has been that
+          way in annual Gazette notifications for years.
         * [Extraordinary Gazette 21 July 2016](https://web.archive.org/web/20250211095036/https://officialgazette.gov.gy/images/gazettes-files/Extraordinary-gazette_21jul16.pdf)
         * [Extraordinary Gazette 16 July 2022](https://web.archive.org/web/20231214011437/https://officialgazette.gov.gy/images/gazette2022/jul/Extra_16JULY2022NotificPHA.pdf)
     """
