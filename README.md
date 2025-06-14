@@ -1218,6 +1218,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Sint Maarten</td>
+<td>SX</td>
+<td></td>
+<td><strong>en_US</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Slovakia</td>
 <td>SK</td>
 <td></td>
