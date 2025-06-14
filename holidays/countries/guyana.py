@@ -121,13 +121,12 @@ class Guyana(
             # CARICOM Day.
             self._add_holiday_1st_mon_of_jul(tr("CARICOM Day"))
 
-        self._add_holiday_1st_mon_of_aug(
-            # Commonwealth Day.
-            tr("Commonwealth Day")
-            if self._year <= 2015
+        if self._year >= 2016:
             # Emancipation Day.
-            else tr("Emancipation Day")
-        )
+            self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
+        else:
+            # Commonwealth Day.
+            self._add_holiday_1st_mon_of_aug(tr("Commonwealth Day"))
 
         self._add_observed(
             # Christmas Day.
