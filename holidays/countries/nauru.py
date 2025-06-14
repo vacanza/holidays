@@ -45,7 +45,7 @@ class Nauru(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_languages = ("en_NR", "en_US")
-    # Nauru gained independence on January 31, 1968
+    # Nauru gained independence on January 31, 1968.
     start_year = 1969
 
     def __init__(self, *args, **kwargs):
