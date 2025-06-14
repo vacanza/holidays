@@ -75,6 +75,11 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2031-04-27",
             "2036-04-27",
         )
+        self.assertHolidayName(name, "2024-04-27")  # Normal case: April 27 is not Sunday
+
+    def test_king_day_shifted_sunday(self):
+        self.assertHolidayName("King's Day", "2025-04-26")
+        self.assertNoHoliday("2025-04-27")
 
     def test_carnival_day(self):
         name = "Carnival Day"
