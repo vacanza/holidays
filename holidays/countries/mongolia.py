@@ -87,7 +87,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         if self._year <= 2011 or self._year >= 2016:
             # Republic Day.
             self._add_holiday_nov_26(
-                # Republic Day
+                # Republic Day.
                 tr("Бүгд Найрамдах Улс тунхагласан өдөр")
                 if self._year >= 2016
                 # Republic Holiday.
