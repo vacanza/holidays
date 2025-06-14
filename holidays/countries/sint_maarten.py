@@ -10,10 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, OCT, JUL, NOV
+from holidays.calendars.gregorian import APR, JUL, OCT, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -31,7 +31,6 @@ class SintMaarten(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "SX"
     default_language = "en_US"
     supported_languages = ("en_US",)
-    # OCT 2010: Autonomous State status in the Kingdom of the Netherlands.
     start_year = 2010
 
     def __init__(self, *args, **kwargs):
@@ -54,12 +53,12 @@ class SintMaarten(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # King's Day (April 27 or April 26 if 27 is a Sunday)
         if self._year >= 2014:
-            if date(self._year, APR, 27).weekday() == 6:  # Sunday
+            if date(self._year, APR, 27).weekday() == 6:
                 self._add_holiday(tr("King's Day"), date(self._year, APR, 26))
             else:
                 self._add_holiday(tr("King's Day"), date(self._year, APR, 27))
 
-        # Carnival Day
+        # Note: Carnival Day date may vary; verify annually
         self._add_holiday(tr("Carnival Day"), date(self._year, APR, 30))
 
         # Labour Day
@@ -72,12 +71,18 @@ class SintMaarten(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_sunday(tr("Whit Sunday"))
 
         # Emancipation Day
-        if self._year >= 2020:
+        if self._year >= 2010:
             self._add_holiday(tr("Emancipation Day"), date(self._year, JUL, 1))
 
         # Constitution Day
         if self._year >= 2010:
-            self._add_holiday(tr("Constitution Day"), date(self._year, OCT, 10))
+            constitution_day = date(self._year, OCT, 1) + timedelta(
+                days=(7 - date(self._year, OCT, 1).weekday()) % 7 + 7
+            )
+            self._add_holiday(tr("Constitution Day"), constitution_day)
+
+        # All Saints' Day
+        self._add_holiday(tr("All Saints' Day"), date(self._year, NOV, 1))
 
         # Sint Maarten Day
         self._add_holiday(tr("Sint Maarten Day"), date(self._year, NOV, 11))
