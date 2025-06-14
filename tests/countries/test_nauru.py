@@ -287,3 +287,26 @@ class TestNauru(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Day following Christmas"),
         )
+
+        def test_l10n_en_us(self):
+            self.assertLocalizedHolidays(
+                "en_US",
+                ("2025-01-01", "New Year's Day"),
+                ("2025-01-31", "Independence Day"),
+                ("2025-02-01", "Day following Independence Day"),
+                ("2025-02-03", "Day following Independence Day (observed)"),
+                ("2025-03-08", "International Women's Day"),
+                ("2025-03-10", "International Women's Day (observed)"),
+                ("2025-04-18", "Good Friday"),
+                ("2025-04-21", "Easter Monday"),
+                ("2025-04-22", "Easter Tuesday"),
+                ("2025-05-17", "Constitution Day"),
+                ("2025-05-19", "Constitution Day (observed)"),
+                ("2025-07-01", "RONPHOS Handover"),
+                ("2025-08-19", "Ibumin Earoeni Day"),
+                ("2025-09-25", "Sir Hammer DeRoburt Day"),
+                ("2025-10-26", "Angam Day"),
+                ("2025-10-27", "Angam Day (observed)"),
+                ("2025-12-25", "Christmas Day"),
+                ("2025-12-26", "Day following Christmas"),
+            )
