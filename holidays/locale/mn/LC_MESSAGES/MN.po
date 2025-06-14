@@ -39,7 +39,6 @@ msgstr ""
 msgid "Хүүхдийн баяр"
 msgstr ""
 
-#. Republic Day
 #. Republic Day.
 msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
 msgstr ""

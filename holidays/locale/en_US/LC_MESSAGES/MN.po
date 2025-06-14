@@ -38,7 +38,6 @@ msgstr "International Women's Day"
 msgid "Хүүхдийн баяр"
 msgstr "Children's Day"
 
-#. Republic Day
 #. Republic Day.
 msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
 msgstr "Republic Day"
