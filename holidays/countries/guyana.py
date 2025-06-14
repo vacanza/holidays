@@ -165,6 +165,20 @@ class GUY(Guyana):
 
 
 class GuyanaHinduHolidays(_CustomHinduHolidays):
+    # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
+    DIWALI_INDIA_DATES = {
+        2016: (OCT, 30),
+        2017: (OCT, 19),
+        2018: (NOV, 7),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+        2024: (OCT, 31),
+        2025: (OCT, 20),
+    }
+
     # https://web.archive.org/web/20250324205940/https://www.timeanddate.com/holidays/guyana/phagwah
     HOLI_DATES = {
         2005: (MAR, 26),
@@ -189,20 +203,6 @@ class GuyanaHinduHolidays(_CustomHinduHolidays):
         2024: (MAR, 25),
         2025: (MAR, 14),
         2026: (MAR, 3),
-    }
-
-    # https://web.archive.org/web/20250428060218/https://www.timeanddate.com/holidays/guyana/deepavali
-    DIWALI_INDIA_DATES = {
-        2016: (OCT, 30),
-        2017: (OCT, 19),
-        2018: (NOV, 7),
-        2019: (OCT, 27),
-        2020: (NOV, 14),
-        2021: (NOV, 4),
-        2022: (OCT, 24),
-        2023: (NOV, 12),
-        2024: (OCT, 31),
-        2025: (OCT, 20),
     }
 
 
