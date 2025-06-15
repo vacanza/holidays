@@ -27,25 +27,30 @@ class SolomonIslands(
 
     References:
         * [Public Holidays Act](https://web.archive.org/web/20250615054807/https://www.paclii.org/sb/legis/consol_act_1996/pha163.pdf)
-        * The day appointed for the celebration of the Anniversary of the Birthday of the
-          Sovereign:
-            - Up to 2022, the Queen’s Birthday was typically observed on the second Saturday of
-              June, with the preceding Friday designated as a public holiday From 2023 onward,
-              the King’s Birthday has been marked on the Friday before the third Saturday in
-              June. Although there has been no amendment to the Public Holidays Act to explicitly
-              state this change, the pattern is evident in the annual government gazettes and
-              supported by information from the relevant Wikipedia entry.
-            - <https://en.wikipedia.org/wiki/King%27s_Official_Birthday#Solomon_Islands>
-            - There are a few exceptions to this rule:
-                - [Queen's Birthday 2022](https://web.archive.org/web/20240727184251/https://solomons.gov.sb/wp-content/uploads/2022/05/Gaz-No.-171-Friday-27th-May-2022.pdf)
-                - [King's Birthday 2025](https://web.archive.org/web/20250615054519/https://solomons.gov.sb/wp-content/uploads/2025/04/Gaz-No.-33-Wednesday-9th-April-2025.pdf)
-        * Province Days are not listed in the Public Holidays Act but are consistently announced
-          in the official gazette each year.
-        * While the Public Holidays Act specifies the Sunday to next Monday observance rule,
-          gazettes dating back to 2016 also follow the Saturday to previous Friday rule for
-          shifting public holidays.
-        * <https://web.archive.org/web/20250615054517/https://solomons.gov.sb/wp-content/uploads/2024/11/Gaz-No.-178-Monday-25th-November-2024.pdf>
-        * <https://web.archive.org/web/20250530230724/https://mehrd.gov.sb/documents?view=download&format=raw&fileId=4377>
+        * [2016](https://web.archive.org/web/20250530230724/https://mehrd.gov.sb/documents?view=download&format=raw&fileId=4377)
+        * [2023](https://web.archive.org/web/20240810050725/https://solomons.gov.sb/wp-content/uploads/2022/12/Gaz-No.-324-Wednesday-21st-December-2022-1.pdf)
+        * [2025](https://web.archive.org/web/20250615054517/https://solomons.gov.sb/wp-content/uploads/2024/11/Gaz-No.-178-Monday-25th-November-2024.pdf)
+
+    About the day appointed for the celebration of the Anniversary of the Birthday of the
+    Sovereign:
+
+    * Up to 2022, the Queen’s Birthday was typically observed on the second Saturday of
+        June, with the preceding Friday designated as a public holiday. From 2023 onward,
+        the King’s Birthday has been marked on the Friday before the third Saturday in
+        June. Although there has been no amendment to the Public Holidays Act to explicitly
+        state this change, the pattern is evident in the annual government gazettes and
+        supported by information from the relevant [Wikipedia
+        entry](https://en.wikipedia.org/wiki/King's_Official_Birthday#Solomon_Islands).
+    * There are a few exceptions to this rule:
+        * [Queen's Birthday 2022](https://web.archive.org/web/20240727184251/https://solomons.gov.sb/wp-content/uploads/2022/05/Gaz-No.-171-Friday-27th-May-2022.pdf)
+        * [King's Birthday 2025](https://web.archive.org/web/20250615054519/https://solomons.gov.sb/wp-content/uploads/2025/04/Gaz-No.-33-Wednesday-9th-April-2025.pdf)
+
+    Province Days are not listed in the Public Holidays Act but are consistently announced
+    in the official gazette each year.
+
+    While the Public Holidays Act specifies the Sunday to next Monday observance rule,
+    gazettes dating back to 2016 also follow the Saturday to previous Friday rule for
+    shifting public holidays.
     """
 
     country = "SB"
@@ -102,13 +107,16 @@ class SolomonIslands(
         self._add_whit_monday("Whit Monday")
 
         name = (
-            # Queen's Birthday.
-            "Queen's Birthday"
-            if self._year <= 2022
             # King's Birthday.
-            else "King's Birthday"
+            "King's Birthday"
+            if self._year >= 2023
+            # Queen's Birthday.
+            else "Queen's Birthday"
         )
-        sovereign_birthday_dates = {2022: (JUN, 3), 2025: (JUN, 13)}
+        sovereign_birthday_dates = {
+            2022: (JUN, 3),
+            2025: (JUN, 13),
+        }
         if self._year in sovereign_birthday_dates:
             self._add_holiday(name, sovereign_birthday_dates[self._year])
         elif self._year >= 2023:
@@ -183,6 +191,10 @@ class SolomonIslandsStaticHolidays:
         2024: (APR, 17, name),
     }
 
-    special_ch_public_holidays = {2020: (NOV, 18, name)}
+    special_ch_public_holidays = {
+        2020: (NOV, 18, name),
+    }
 
-    special_gu_public_holidays = {2020: (NOV, 18, name)}
+    special_gu_public_holidays = {
+        2020: (NOV, 18, name),
+    }

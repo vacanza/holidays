@@ -23,10 +23,11 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         years = range(1979, 2050)
         super().setUpClass(SolomonIslands, years=years, years_non_observed=years)
         cls.subdiv_holidays = {
-            subdiv: SB(subdiv=subdiv, years=years) for subdiv in SolomonIslands.subdivisions
+            subdiv: SolomonIslands(subdiv=subdiv, years=years)
+            for subdiv in SolomonIslands.subdivisions
         }
         cls.subdiv_holidays_non_observed = {
-            subdiv: SB(subdiv=subdiv, years=years, observed=False)
+            subdiv: SolomonIslands(subdiv=subdiv, years=years, observed=False)
             for subdiv in SolomonIslands.subdivisions
         }
 
@@ -42,11 +43,11 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
 
         dt = "2020-11-18"
-        for subdiv in SolomonIslands.subdivisions:
+        for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"CH", "GU"}:
-                self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
+                self.assertHolidayName(name, holidays, dt)
             else:
-                self.assertNoHoliday(self.subdiv_holidays[subdiv], dt)
+                self.assertNoHoliday(holidays, dt)
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -180,29 +181,32 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def _test_province_day_helper(
-        self, subdiv: str, name: str, dts: list[str], observed_dts: list[str]
+        self, subdiv: str, name: str, month_day: str, observed_dts: tuple[str, ...]
     ):
-        for _subdiv, holidays in self.subdiv_holidays.items():  # type: ignore
+        for _subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
             if _subdiv == subdiv:
-                self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-{month_day}" for year in range(1979, 2050))
+                )
                 name = f"{name} (observed)"
                 self.assertHolidayName(name, holidays, observed_dts)
                 self.assertNoNonObservedHolidayName(
                     name,
-                    self.subdiv_holidays_non_observed[subdiv],  # type: ignore
+                    self.subdiv_holidays_non_observed[subdiv],  # type: ignore[attr-defined]
                     observed_dts,
                 )
             else:
-                self.assertNoHolidayName(name, holidays, dts)
+                self.assertNoHolidayName(name, holidays, range(1979, 2050))
 
     def test_central_province_day(self):
-        # use list instead of generator because test helper will iterate
-        # multiple times over the list
-        dts = [f"{year}-06-29" for year in range(1979, 2050)]
-        observed_dts = [
+        observed_dts = (
+            "2013-06-28",
+            "2014-06-30",
+            "2019-06-28",
+            "2024-06-28",
             "2025-06-30",
-        ]
-        self._test_province_day_helper("CE", "Central Province Day", dts, observed_dts)
+        )
+        self._test_province_day_helper("CE", "Central Province Day", "06-29", observed_dts)
 
     def test_choiseul_province_day(self):
         dts = [f"{year}-02-25" for year in range(1979, 2050)]
