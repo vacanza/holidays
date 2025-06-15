@@ -15,8 +15,8 @@ from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHoli
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_PREV_FRI,
-    SAT_SUN_TO_NEXT_MON_TUE,
     SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
 )
 
 
@@ -34,9 +34,9 @@ class SolomonIslands(
     About the day appointed for the celebration of the Anniversary of the Birthday of the
     Sovereign:
 
-    * Up to 2022, the Queen’s Birthday was typically observed on the second Saturday of
+    * Up to 2022, the Queen's Birthday was typically observed on the second Saturday of
         June, with the preceding Friday designated as a public holiday. From 2023 onward,
-        the King’s Birthday has been marked on the Friday before the third Saturday in
+        the King's Birthday has been marked on the Friday before the third Saturday in
         June. Although there has been no amendment to the Public Holidays Act to explicitly
         state this change, the pattern is evident in the annual government gazettes and
         supported by information from the relevant [Wikipedia

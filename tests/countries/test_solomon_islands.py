@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.calendars.gregorian import FEB, JUN, JUL, AUG, DEC
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
 from tests.common import CommonCountryTests
 
@@ -183,14 +184,21 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def _test_province_day_helper(
-        self, subdiv: str, name: str, month_day: str, observed_dts: tuple[str, ...]
+        self,
+        province_code: str,
+        holiday_name: str,
+        month: int,
+        day: int,
+        observed_dts: tuple[str, ...],
     ):
-        for _subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
-            if _subdiv == subdiv:
+        for subdiv, holidays in self.subdiv_holidays.items():  # type: ignore[attr-defined]
+            if subdiv == province_code:
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-{month_day}" for year in range(1979, 2050))
+                    holiday_name,
+                    holidays,
+                    (f"{year}-{month}-{day:02d}" for year in range(1979, 2050)),
                 )
-                observed_name = f"{name} (observed)"
+                observed_name = f"{holiday_name} (observed)"
                 self.assertHolidayName(observed_name, holidays, observed_dts)
                 self.assertNoNonObservedHolidayName(
                     observed_name,
@@ -198,7 +206,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
                     observed_dts,
                 )
             else:
-                self.assertNoHolidayName(name, holidays, range(1979, 2050))
+                self.assertNoHolidayName(holiday_name, holidays, range(1979, 2050))
 
     def test_central_province_day(self):
         observed_dts = (
@@ -208,7 +216,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-06-28",
             "2025-06-30",
         )
-        self._test_province_day_helper("CE", "Central Province Day", "06-29", observed_dts)
+        self._test_province_day_helper("CE", "Central Province Day", JUN, 29, observed_dts)
 
     def test_choiseul_province_day(self):
         observed_dts = (
@@ -218,7 +226,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2023-02-24",
             "2024-02-26",
         )
-        self._test_province_day_helper("CH", "Choiseul Province Day", "02-25", observed_dts)
+        self._test_province_day_helper("CH", "Choiseul Province Day", FEB, 25, observed_dts)
 
     def test_guadalcanal_province_day(self):
         observed_dts = (
@@ -228,7 +236,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2021-08-02",
             "2026-07-31",
         )
-        self._test_province_day_helper("GU", "Guadalcanal Province Day", "08-01", observed_dts)
+        self._test_province_day_helper("GU", "Guadalcanal Province Day", AUG, 1, observed_dts)
 
     def test_isabel_province_day(self):
         observed_dts = (
@@ -238,7 +246,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2019-06-03",
             "2024-06-03",
         )
-        self._test_province_day_helper("IS", "Isabel Province Day", "06-02", observed_dts)
+        self._test_province_day_helper("IS", "Isabel Province Day", JUN, 2, observed_dts)
 
     def test_makira_ulawa_province_day(self):
         observed_dts = (
@@ -248,7 +256,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-08-02",
             "2025-08-04",
         )
-        self._test_province_day_helper("MK", "Makira-Ulawa Province Day", "08-03", observed_dts)
+        self._test_province_day_helper("MK", "Makira-Ulawa Province Day", AUG, 3, observed_dts)
 
     def test_malaita_province_day(self):
         observed_dts = (
@@ -258,7 +266,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2021-08-16",
             "2026-08-14",
         )
-        self._test_province_day_helper("ML", "Malaita Province Day", "08-15", observed_dts)
+        self._test_province_day_helper("ML", "Malaita Province Day", AUG, 15, observed_dts)
 
     def test_rennell_and_bellona_province_day(self):
         observed_dts = (
@@ -269,7 +277,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2025-07-21",
         )
         self._test_province_day_helper(
-            "RB", "Rennell and Bellona Province Day", "07-20", observed_dts
+            "RB", "Rennell and Bellona Province Day", JUL, 20, observed_dts
         )
 
     def test_temotu_province_day(self):
@@ -280,7 +288,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-06-07",
             "2025-06-09",
         )
-        self._test_province_day_helper("TE", "Temotu Province Day", "06-08", observed_dts)
+        self._test_province_day_helper("TE", "Temotu Province Day", JUN, 8, observed_dts)
 
     def test_western_province_day(self):
         observed_dts = (
@@ -290,7 +298,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
             "2024-12-06",
             "2025-12-08",
         )
-        self._test_province_day_helper("WE", "Western Province Day", "12-07", observed_dts)
+        self._test_province_day_helper("WE", "Western Province Day", DEC, 7, observed_dts)
 
     def test_2025(self):
         self.assertHolidays(
