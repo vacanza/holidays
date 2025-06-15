@@ -188,10 +188,10 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-{month_day}" for year in range(1979, 2050))
                 )
-                name = f"{name} (observed)"
-                self.assertHolidayName(name, holidays, observed_dts)
+                observed_name = f"{name} (observed)"
+                self.assertHolidayName(observed_name, holidays, observed_dts)
                 self.assertNoNonObservedHolidayName(
-                    name,
+                    observed_name,
                     self.subdiv_holidays_non_observed[subdiv],  # type: ignore[attr-defined]
                     observed_dts,
                 )
