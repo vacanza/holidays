@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import FEB, APR, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.calendars.gregorian import APR, JUN, SEP, NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -139,32 +139,41 @@ class SolomonIslands(
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-    def _populate_subdiv_holidays(self):
-        super()._populate_subdiv_holidays()
+    def _populate_subdiv_ce_public_holidays(self):
+        # Central Province Day.
+        self._add_observed(self._add_holiday_jun_29("Central Province Day"))
 
-        province_days = {
-            # Central Province Day.
-            "CE": (JUN, 29, "Central Province Day"),
-            # Choiseul Province Day.
-            "CH": (FEB, 25, "Choiseul Province Day"),
-            # Guadalcanal Province Day.
-            "GU": (AUG, 1, "Guadalcanal Province Day"),
-            # Isabel Province Day.
-            "IS": (JUN, 2, "Isabel Province Day"),
-            # Makira-Ulawa Province Day.
-            "MK": (AUG, 3, "Makira-Ulawa Province Day"),
-            # Malaita Province Day.
-            "ML": (AUG, 15, "Malaita Province Day"),
-            # Rennell and Bellona Province Day.
-            "RB": (JUL, 20, "Rennell and Bellona Province Day"),
-            # Temotu Province Day.
-            "TE": (JUN, 8, "Temotu Province Day"),
-            # Western Province Day.
-            "WE": (DEC, 7, "Western Province Day"),
-        }
-        if self.subdiv in province_days:
-            month, day, name = province_days[self.subdiv]
-            self._add_observed(self._add_holiday(name, (month, day)))
+    def _populate_subdiv_ch_public_holidays(self):
+        # Choiseul Province Day.
+        self._add_observed(self._add_holiday_feb_25("Choiseul Province Day"))
+
+    def _populate_subdiv_gu_public_holidays(self):
+        # Guadalcanal Province Day.
+        self._add_observed(self._add_holiday_aug_1("Guadalcanal Province Day"))
+
+    def _populate_subdiv_is_public_holidays(self):
+        # Isabel Province Day.
+        self._add_observed(self._add_holiday_jun_2("Isabel Province Day"))
+
+    def _populate_subdiv_mk_public_holidays(self):
+        # Makira-Ulawa Province Day.
+        self._add_observed(self._add_holiday_aug_3("Makira-Ulawa Province Day"))
+
+    def _populate_subdiv_ml_public_holidays(self):
+        # Malaita Province Day.
+        self._add_observed(self._add_holiday_aug_15("Malaita Province Day"))
+
+    def _populate_subdiv_rb_public_holidays(self):
+        # Rennell and Bellona Province Day.
+        self._add_observed(self._add_holiday_jul_20("Rennell and Bellona Province Day"))
+
+    def _populate_subdiv_te_public_holidays(self):
+        # Temotu Province Day.
+        self._add_observed(self._add_holiday_jun_8("Temotu Province Day"))
+
+    def _populate_subdiv_we_public_holidays(self):
+        # Western Province Day.
+        self._add_observed(self._add_holiday_dec_7("Western Province Day"))
 
 
 class SB(SolomonIslands):
