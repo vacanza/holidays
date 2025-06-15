@@ -25,8 +25,15 @@ class TestAnguilla(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Anguilla, AI, AIA)
 
-    def test_special_holidays(self):
-        self.assertHoliday("2011-04-29", "2012-06-04", "2025-02-28")
+    def test_special_holiday(self):
+        self.assertHolidayName("Royal Wedding of Prince William & Kate Middleton", "2011-04-29")
+        self.assertHolidayName(
+            "Diamond Jubilee Celebration of Her Majesty The Queen", "2012-06-04"
+        )
+        self.assertHolidayName(
+            "Mourning the Death of Her Majesty The Queen Elizabeth II", "2022-09-19"
+        )
+        self.assertHolidayName("Special Public Holiday", "2025-02-28")
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -44,6 +51,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
     def test_james_ronald_webster_day(self):
         name = "James Ronald Webster Day"
         self.assertHolidayName(name, (f"{year}-03-02" for year in range(2010, 2050)))
+        self.assertNoHolidayName(name, range(2001, 2010))
         dt = ("2013-03-04", "2014-03-03", "2019-03-04", "2024-03-04", "2025-03-03")
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
@@ -144,7 +152,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2001, 2050))
 
     def test_queen_birthday(self):
-        name = "Queen's Birthday"
+        name = "Celebration of the Birthday of Her Majesty the Queen"
         self.assertHolidayName(
             name,
             "2011-06-13",
@@ -164,7 +172,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_king_birthday(self):
-        name = "King's Birthday"
+        name = "Celebration of the Birthday of His Majesty the King"
         self.assertHolidayName(
             name,
             "2023-06-19",
@@ -245,17 +253,17 @@ class TestAnguilla(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2001, 2050))
 
     def test_national_heroes_and_heroines_day(self):
-        name = "Separation Day"
-        self.assertHolidayName(name, (f"{year}-12-19" for year in range(2001, 2011)))
-        dt = ("2004-12-17", "2009-12-18", "2010-12-17")
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
-
-        name = "National Heroes and Heroines Day"
-        self.assertHolidayName(name, (f"{year}-12-19" for year in range(2011, 2050)))
-        dt = ("2015-12-18", "2020-12-18", "2021-12-17")
-        self.assertHolidayName(f"{name} (observed)", dt)
-        self.assertNoNonObservedHoliday(dt)
+        name_2001 = "Separation Day"
+        name_2011 = "National Heroes and Heroines Day"
+        self.assertHolidayName(name_2001, (f"{year}-12-19" for year in range(2001, 2011)))
+        self.assertHolidayName(name_2011, (f"{year}-12-19" for year in range(2011, 2050)))
+        self.assertNoHolidayName(name_2001, range(2011, 2050))
+        self.assertNoHolidayName(name_2011, range(2001, 2011))
+        dt_2001 = ("2004-12-17", "2009-12-18", "2010-12-17")
+        dt_2011 = ("2015-12-18", "2020-12-18", "2021-12-17")
+        self.assertHolidayName(f"{name_2001} (observed)", dt_2001)
+        self.assertHolidayName(f"{name_2011} (observed)", dt_2011)
+        self.assertNoNonObservedHoliday(dt_2001, dt_2011)
 
     def test_christmas_day(self):
         name = "Christmas Day"
@@ -279,16 +287,6 @@ class TestAnguilla(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def test_special_holiday(self):
-        name = "Royal Wedding of Prince William & Kate Middleton"
-        self.assertHolidayName(name, "2011-04-29")
-
-        name = "Diamond Jubilee Celebration of Her Majesty The Queen"
-        self.assertHolidayName(name, "2012-06-04")
-
-        name = "Special Public Holiday"
-        self.assertHolidayName(name, "2025-02-28")
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
@@ -300,7 +298,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Labour Day (observed)"),
             ("2022-05-30", "Anguilla Day"),
-            ("2022-06-03", "Queen's Birthday"),
+            ("2022-06-03", "Celebration of the Birthday of Her Majesty the Queen"),
             ("2022-06-06", "Whit Monday"),
             ("2022-08-01", "August Monday"),
             ("2022-08-04", "August Thursday"),
@@ -321,8 +319,8 @@ class TestAnguilla(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labour Day"),
-            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (observed)"),
             ("2022-05-30", "Anguilla Day"),
             ("2022-06-03", "Queen's Birthday"),
             ("2022-06-06", "Whit Monday"),

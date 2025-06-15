@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: en_AI\n"
 
 #. %s (observed).
 #, c-format
@@ -97,20 +97,20 @@ msgstr "Special Public Holiday"
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Mourning the Death of Her Majesty The Queen Elizabeth II.
 msgid "Mourning the Death of Her Majesty The Queen Elizabeth II"
 msgstr "Mourning the Death of Her Majesty The Queen Elizabeth II"
 
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "Queen's Birthday"
-
-#. King's Birthday.
-msgid "King's Birthday"
-msgstr "King's Birthday"
-
 #. Separation Day.
 msgid "Separation Day"
 msgstr "Separation Day"
+
+#. Queen's Birthday.
+msgid "Celebration of the Birthday of Her Majesty the Queen"
+msgstr "Queen's Birthday"
+
+#. King's Birthday.
+msgid "Celebration of the Birthday of His Majesty the King"
+msgstr "King's Birthday"

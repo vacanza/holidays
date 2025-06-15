@@ -103,14 +103,14 @@ msgstr ""
 msgid "Mourning the Death of Her Majesty The Queen Elizabeth II"
 msgstr ""
 
+#. Separation Day.
+msgid "Separation Day"
+msgstr ""
+
 #. Queen's Birthday.
-msgid "Queen's Birthday"
+msgid "Celebration of the Birthday of Her Majesty the Queen"
 msgstr ""
 
 #. King's Birthday.
-msgid "King's Birthday"
-msgstr ""
-
-#. Separation Day.
-msgid "Separation Day"
+msgid "Celebration of the Birthday of His Majesty the King"
 msgstr ""

@@ -88,10 +88,10 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
 
         name = (
             # Queen's Birthday.
-            tr("Queen's Birthday")
+            tr("Celebration of the Birthday of Her Majesty the Queen")
             if self._year <= 2022
             # King's Birthday.
-            else tr("King's Birthday")
+            else tr("Celebration of the Birthday of His Majesty the King")
         )
         if self._year == 2022:
             self._add_holiday_jun_3(name)
@@ -121,22 +121,16 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Constitution Day.
         self._add_holiday_4_days_past_1st_mon_of_aug(tr("Constitution Day"))
 
-        if self._year < 2011:
-            self._add_observed(
-                self._add_holiday_dec_19(
-                    # Separation Day.
-                    tr("Separation Day")
-                ),
-                rule=SAT_SUN_TO_PREV_FRI,
-            )
-        else:
-            self._add_observed(
-                self._add_holiday_dec_19(
-                    # National Heroes and Heroines Day.
-                    tr("National Heroes and Heroines Day")
-                ),
-                rule=SAT_SUN_TO_PREV_FRI,
-            )
+        self._add_observed(
+            self._add_holiday_dec_19(
+                # National Heroes and Heroines Day.
+                tr("National Heroes and Heroines Day")
+                if self._year >= 2011
+                # Separation Day.
+                else tr("Separation Day")
+            ),
+            rule=SAT_SUN_TO_PREV_FRI,
+        )
 
         self._add_observed(
             # Christmas Day.
