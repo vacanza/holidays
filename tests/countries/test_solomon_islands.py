@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
@@ -39,7 +38,10 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         name = "Public Holiday"
-        dt = ("2022-09-12", "2024-04-17")
+        dt = (
+            "2022-09-12",
+            "2024-04-17"
+        )
         self.assertHolidayName(name, dt)
 
         dt = "2020-11-18"
@@ -209,37 +211,85 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self._test_province_day_helper("CE", "Central Province Day", "06-29", observed_dts)
 
     def test_choiseul_province_day(self):
-        observed_dts = ("2024-02-26",)
+        observed_dts = (
+            "2012-02-24",
+            "2017-02-24",
+            "2018-02-26",
+            "2023-02-24",
+            "2024-02-26",
+        )
         self._test_province_day_helper("CH", "Choiseul Province Day", "02-25", observed_dts)
 
     def test_guadalcanal_province_day(self):
-        observed_dts = ("2026-07-31",)
+        observed_dts = (
+            "2010-08-02",
+            "2015-07-31",
+            "2020-07-31",
+            "2021-08-02",
+            "2026-07-31",
+        )
         self._test_province_day_helper("GU", "Guadalcanal Province Day", "08-01", observed_dts)
 
     def test_isabel_province_day(self):
-        observed_dts = ("2024-06-03",)
+        observed_dts = (
+            "2012-06-01",
+            "2013-06-03",
+            "2018-06-01",
+            "2019-06-03",
+            "2024-06-03",
+        )
         self._test_province_day_helper("IS", "Isabel Province Day", "06-02", observed_dts)
 
     def test_makira_ulawa_province_day(self):
-        observed_dts = ("2025-08-04",)
+        observed_dts = (
+            "2013-08-02",
+            "2014-08-04",
+            "2019-08-02",
+            "2024-08-02",
+            "2025-08-04",
+        )
         self._test_province_day_helper("MK", "Makira-Ulawa Province Day", "08-03", observed_dts)
 
     def test_malaita_province_day(self):
-        observed_dts = ("2026-08-14",)
+        observed_dts = (
+            "2010-08-16",
+            "2015-08-14",
+            "2020-08-14",
+            "2021-08-16",
+            "2026-08-14",
+        )
         self._test_province_day_helper("ML", "Malaita Province Day", "08-15", observed_dts)
 
     def test_rennell_and_bellona_province_day(self):
-        observed_dts = ("2025-07-21",)
+        observed_dts = (
+            "2013-07-19",
+            "2014-07-21",
+            "2019-07-19",
+            "2024-07-19",
+            "2025-07-21",
+        )
         self._test_province_day_helper(
             "RB", "Rennell and Bellona Province Day", "07-20", observed_dts
         )
 
     def test_temotu_province_day(self):
-        observed_dts = ("2025-06-09",)
+        observed_dts = (
+            "2013-06-07",
+            "2014-06-09",
+            "2019-06-07",
+            "2024-06-07",
+            "2025-06-09",
+        )
         self._test_province_day_helper("TE", "Temotu Province Day", "06-08", observed_dts)
 
     def test_western_province_day(self):
-        observed_dts = ("2025-12-08",)
+        observed_dts = (
+            "2013-12-06",
+            "2014-12-08",
+            "2019-12-06",
+            "2024-12-06",
+            "2025-12-08",
+        )
         self._test_province_day_helper("WE", "Western Province Day", "12-07", observed_dts)
 
     def test_2025(self):
