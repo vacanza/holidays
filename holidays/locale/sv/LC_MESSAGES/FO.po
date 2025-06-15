@@ -19,7 +19,7 @@ msgstr ""
 "PO-Revision-Date: 2025-06-15 18:52+0530\n"
 "Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: fo\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,10 +49,6 @@ msgstr "Annandag påsk"
 #. Great Prayer Day.
 msgid "Dýri biðidagur"
 msgstr "Bönedag"
-
-#. Ascension Day.
-msgid "Kristi himmalsferðardagur"
-msgstr "Kristi himmelsfärdsdag"
 
 #. Whit Sunday.
 msgid "Hvítusunnudagur"
@@ -93,3 +89,7 @@ msgstr "Olofsmässafton"
 #. National Flag Day.
 msgid "Flaggdagur"
 msgstr "Flaggdag"
+
+#. Ascension Day.
+msgid "Kristi himmalsferðardagur"
+msgstr "Kristi himmelsfärdsdag"
