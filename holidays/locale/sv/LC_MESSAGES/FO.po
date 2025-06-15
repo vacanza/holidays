@@ -15,81 +15,81 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.75\n"
-"POT-Creation-Date: 2025-06-06 14:30+0000\n"
-"PO-Revision-Date: 2025-06-06 14:30+0000\n"
+"POT-Creation-Date: 2025-06-15 18:52+0530\n"
+"PO-Revision-Date: 2025-06-15 18:52+0530\n"
 "Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
-"Language: sv\n"
+"Language: fo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.15.0\n"
+"Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: fo\n"
 
-#. Nýggjársdagur
+#. New Year's Day.
 msgid "Nýggjársdagur"
 msgstr "Nyårsdagen"
 
-#. Skírhósdagur
+#. Maundy Thursday.
 msgid "Skírhósdagur"
 msgstr "Skärtorsdag"
 
-#. Langifríggjadagur
+#. Good Friday.
 msgid "Langifríggjadagur"
 msgstr "Långfredag"
 
-#. Páskadagur
+#. Easter Sunday.
 msgid "Páskadagur"
 msgstr "Påskdagen"
 
-#. Annar páskadagur
+#. Easter Monday.
 msgid "Annar páskadagur"
 msgstr "Annandag påsk"
 
-#. Flaggdagur
-msgid "Flaggdagur"
-msgstr "Flaggdag"
-
-#. Dýri biðidagur
+#. Great Prayer Day.
 msgid "Dýri biðidagur"
 msgstr "Bönedag"
 
-#. Kristi himmalsferðardagur
+#. Ascension Day.
 msgid "Kristi himmalsferðardagur"
 msgstr "Kristi himmelsfärdsdag"
 
-#. Hvítusunnudagur
+#. Whit Sunday.
 msgid "Hvítusunnudagur"
 msgstr "Pingstdagen"
 
-#. Annar hvítusunnudagur
+#. Whit Monday.
 msgid "Annar hvítusunnudagur"
 msgstr "Annandag pingst"
 
-#. Grundlógardagur
-msgid "Grundlógardagur"
-msgstr "Grundlagsdag"
-
-#. Ólavsøkuaftan
-msgid "Ólavsøkuaftan"
-msgstr "Olofsmässafton"
-
-#. Ólavsøkudagur
+#. Saint Olaf's Day.
 msgid "Ólavsøkudagur"
 msgstr "Olofsmässodagen"
 
-#. Jólaaftan
+#. Christmas Eve.
 msgid "Jólaaftan"
 msgstr "Julafton"
 
-#. Jóladagur
+#. Christmas Day.
 msgid "Jóladagur"
 msgstr "Juldagen"
 
-#. Annar jóladagur
+#. Second Day of Christmas.
 msgid "Annar jóladagur"
 msgstr "Annandag jul"
 
-#. Nýggjársaftan
+#. New Year's Eve.
 msgid "Nýggjársaftan"
 msgstr "Nyårsafton"
+
+#. Constitution Day.
+msgid "Grundlógardagur"
+msgstr "Grundlagsdag"
+
+#. Saint Olaf's Eve.
+msgid "Ólavsøkuaftan"
+msgstr "Olofsmässafton"
+
+#. National Flag Day.
+msgid "Flaggdagur"
+msgstr "Flaggdag"

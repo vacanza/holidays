@@ -24,10 +24,12 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         - https://visitfaroeislands.com/en/plan-your-stay/before-you-arrive-in-the-faroe-islands/\
             public-holidays
-        - https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands
         - https://guidetofaroeislands.fo/travel-information/faroe-islands-holiday/
         - https://www.timeanddate.com/holidays/faroe-islands/2025
         - https://www.framtak.com/info/holidays.html
+        - https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
+        - https://dictionary.cambridge.org/translate/
+        - https://en.wikipedia.org/wiki/Public_holidays_in_the_Faroe_Islands
     """
 
     country = "FO"
@@ -57,7 +59,7 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Annar páskadagur"))
 
-        # General Prayer Day.
+        # Great Prayer Day.
         self._add_holiday_26_days_past_easter(tr("Dýri biðidagur"))
 
         # Ascension Day.
@@ -69,7 +71,7 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_whit_monday(tr("Annar hvítusunnudagur"))
 
-        # St. Olaf's Day.
+        # Saint Olaf's Day.
         self._add_holiday_jul_29(tr("Ólavsøkudagur"))
 
         # Christmas Eve.
@@ -78,7 +80,7 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Jóladagur"))
 
-        # Boxing Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Annar jóladagur"))
 
         # New Year's Eve.
@@ -88,7 +90,7 @@ class FaroeIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Constitution Day.
         self._add_holiday_jun_5(tr("Grundlógardagur"))
 
-        # St. Olaf's Eve.
+        # Saint Olaf's Eve.
         self._add_holiday_jul_28(tr("Ólavsøkuaftan"))
 
         # National Flag Day.
