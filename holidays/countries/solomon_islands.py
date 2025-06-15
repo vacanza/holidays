@@ -175,6 +175,7 @@ class SolomonIslandsStaticHolidays:
         * [2020 By-election Holiday](https://web.archive.org/web/20241011021616/https://solomons.gov.sb/wp-content/uploads/2020/11/GAZ-173-11th-November-2020-1.pdf)
         * [Gazette No. 269 of 2022](https://web.archive.org/web/20240727183925/https://solomons.gov.sb/wp-content/uploads/2022/09/Gaz-No.-269-Friday-9th-September-2022.pdf)
     """
+
     # Public Holiday.
     name = "Public Holiday"
     special_public_holidays = {
