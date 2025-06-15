@@ -93,6 +93,3 @@ msgstr ""
 #. Ascension Day.
 msgid "Kristi himmalsferðardagur"
 msgstr ""
-
-#~ msgid "Kristi hi mmalsferðardagur"
-#~ msgstr ""
