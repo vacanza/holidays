@@ -95,6 +95,7 @@ COUNTRIES: RegistryDict = {
     "guatemala": ("Guatemala", "GT", "GUA"),
     "guernsey": ("Guernsey", "GG", "GGY"),
     "guinea": ("Guinea", "GN", "GIN"),
+    "guyana": ("Guyana", "GY", "GUY"),
     "haiti": ("Haiti", "HT", "HTI"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
