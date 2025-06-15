@@ -179,7 +179,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
-    def _test_province_day_hepler(
+    def _test_province_day_helper(
         self, subdiv: str, name: str, dts: list[str], observed_dts: list[str]
     ):
         for _subdiv, holidays in self.subdiv_holidays.items():  # type: ignore
@@ -202,63 +202,63 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         observed_dts = [
             "2025-06-30",
         ]
-        self._test_province_day_hepler("CE", "Central Province Day", dts, observed_dts)
+        self._test_province_day_helper("CE", "Central Province Day", dts, observed_dts)
 
     def test_choiseul_province_day(self):
         dts = [f"{year}-02-25" for year in range(1979, 2050)]
         observed_dts = [
             "2024-02-26",
         ]
-        self._test_province_day_hepler("CH", "Choiseul Province Day", dts, observed_dts)
+        self._test_province_day_helper("CH", "Choiseul Province Day", dts, observed_dts)
 
     def test_guadalcanal_province_day(self):
         dts = [f"{year}-08-01" for year in range(1979, 2050)]
         observed_dts = [
             "2026-07-31",
         ]
-        self._test_province_day_hepler("GU", "Guadalcanal Province Day", dts, observed_dts)
+        self._test_province_day_helper("GU", "Guadalcanal Province Day", dts, observed_dts)
 
     def test_isabel_province_day(self):
         dts = [f"{year}-06-02" for year in range(1979, 2050)]
         observed_dts = [
             "2024-06-03",
         ]
-        self._test_province_day_hepler("IS", "Isabel Province Day", dts, observed_dts)
+        self._test_province_day_helper("IS", "Isabel Province Day", dts, observed_dts)
 
     def test_makira_ulawa_province_day(self):
         dts = [f"{year}-08-03" for year in range(1979, 2050)]
         observed_dts = [
             "2025-08-04",
         ]
-        self._test_province_day_hepler("MK", "Makira-Ulawa Province Day", dts, observed_dts)
+        self._test_province_day_helper("MK", "Makira-Ulawa Province Day", dts, observed_dts)
 
     def test_malaita_province_day(self):
         dts = [f"{year}-08-15" for year in range(1979, 2050)]
         observed_dts = [
             "2026-08-14",
         ]
-        self._test_province_day_hepler("ML", "Malaita Province Day", dts, observed_dts)
+        self._test_province_day_helper("ML", "Malaita Province Day", dts, observed_dts)
 
     def test_rennell_and_bellona_province_day(self):
         dts = [f"{year}-07-20" for year in range(1979, 2050)]
         observed_dts = [
             "2025-07-21",
         ]
-        self._test_province_day_hepler("RB", "Rennell and Bellona Province Day", dts, observed_dts)
+        self._test_province_day_helper("RB", "Rennell and Bellona Province Day", dts, observed_dts)
 
     def test_temotu_province_day(self):
         dts = [f"{year}-06-08" for year in range(1979, 2050)]
         observed_dts = [
             "2025-06-09",
         ]
-        self._test_province_day_hepler("TE", "Temotu Province Day", dts, observed_dts)
+        self._test_province_day_helper("TE", "Temotu Province Day", dts, observed_dts)
 
     def test_western_province_day(self):
         dts = [f"{year}-12-07" for year in range(1979, 2050)]
         observed_dts = [
             "2025-12-08",
         ]
-        self._test_province_day_hepler("WE", "Western Province Day", dts, observed_dts)
+        self._test_province_day_helper("WE", "Western Province Day", dts, observed_dts)
 
     def test_2025(self):
         self.assertHolidays(
