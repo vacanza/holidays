@@ -127,3 +127,7 @@ msgstr ""
 #. Capital Day.
 msgid "Монгол Улсын нийслэл хотын өдөр"
 msgstr ""
+
+#. New Harvest Days.
+msgid "Шинэ ургацын өдрүүд"
+msgstr ""
