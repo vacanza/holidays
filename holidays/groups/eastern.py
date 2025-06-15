@@ -29,7 +29,7 @@ class EasternCalendarHolidays:
         days_delta: int = 0,
     ) -> Optional[date]:
         """
-        Add Eastern (Buddhist, Chinese, Hindu, Islamic) calendar holiday.
+        Add Eastern (Buddhist, Chinese, Hindu, Islamic, Mongolian) calendar holiday.
 
         Adds customizable estimation label to holiday name if holiday date is an estimation.
         """
