@@ -1,3 +1,75 @@
+# Version 0.74
+
+Released June 2, 2025
+
+- Add Benin holidays (#2562 by @tr33k, @KJhellico)
+- Add Bermuda holidays (#2571 by @kritibirda26)
+- Add British Virgin Islands holidays (#2555 by @tr33k, @arkid15r)
+- Add Equatorial Guinea holidays (#2521 by @Abheelash-Mishra)
+- Add Yemen holidays (#2522 by @Wasif-Shahzad, @arkid15r)
+- Add Åland Islands holidays. Update Finland holidays (#2537 by @PPsyrius, @arkid15r, @Arynelson)
+- Update Thailand holidays: add uk localization (#2566 by @KJhellico)
+- Update North Macedonia holidays, add l10n support (#2554 by @KJhellico)
+- Update sponsorship FAQ formatting (#2572 by @arkid15r)
+- Add SPONSORSHIP.md (#2546 by @arkid15r)
+- Clean up unicode URLs (#2580 by @PPsyrius, @arkid15r, @KJhellico)
+
+# Version 0.73
+
+Released May 19, 2025
+
+- Add Cocos Islands holidays (#2532 by @tr33k)
+- Add Grenada holidays (#2524 by @nalin-28)
+- Add Nepal holidays (#2386 by @ankushhKapoor, @arkid15r)
+- Add Togo holidays (#2525 by @Roshan-1024, @KJhellico)
+- Update Andorra holidays, add l10n support (#2530 by @KJhellico)
+- Update Argentina holidays: add 2018 G20 Leaders' Summit for Buenos Aires (#2529 by @PPsyrius)
+- Update Philippines holidays: add special holiday May 12, 2025 (#2539 by @KJhellico)
+- Update Vatican City holidays: add election and name day of Pope Leo XIV (#2549 by @KJhellico)
+- Update documentation build: make PR links in changelog (#2540 by @KJhellico)
+- Update pre-commit config (#2548 by @KJhellico, @arkid15r)
+
+# Version 0.72
+
+Released May 5, 2025
+
+- Add Sao Tome and Principe holidays (#2489 by @tr33k, @arkid15r)
+- Add Trinidad and Tobago holidays (#2402 by @Roshan-1024, @KJhellico)
+- Fix `TestClosestHoliday` current date handling (#2517 by @KJhellico)
+- Fix typography: replace U+2019 with "'" and U+2013 with '-' (#2523 by @KJhellico)
+- Update Canada holidays: add historical holidays (#2507 by @PPsyrius)
+- Update Ethiopia holidays: official source namings, `WORKDAY` category (#2490 by @PPsyrius)
+- Update India holidays: add missing Tamil Nadu holidays (#2502 by @tr33k, @KJhellico)
+- Update README: add Snyk package health badge (#2503 by @KJhellico)
+- Update Singapore holidays: 2025 Polling Day on May 3rd (#2487 by @PPsyrius)
+- Update Taiwan holidays: test case refactor (#2498 by @PPsyrius)
+- Update documentation build process (#2501 by @KJhellico, @arkid15r)
+- Update documentation tests: add AUTHORS.md checking (#2492 by @KJhellico, @arkid15r)
+- Add missing subdivisions aliases  (#2520 by @KJhellico)
+- Disable v1 incompatibility warning (#2518 by @arkid15r)
+- Docstring cleanup for Indochinese countries (#2505 by @PPsyrius)
+- Extend Chinese Lunisolar calendar support (#2488 by @KJhellico)
+- Rename AUTHORS.md to CONTRIBUTORS (#2496 by @arkid15r)
+
+# Version 0.71
+
+Released April 21, 2025
+
+- Add French Southern Territories holidays (#2442 by @LuccaAug, @arkid15r)
+- Add Oman holidays (#2463 by @Wasif-Shahzad)
+- Add Sierra Leone holidays (#2433 by @SammanSarkar, @arkid15r)
+- Add Suriname holidays (#2465 by @kritibirda26)
+- Update .po files generator (#2459 by @KJhellico, @arkid15r)
+- Update .po files generator (#2470 by @KJhellico)
+- Update BY.po files (#2452 by @arkid15r)
+- Update Pakistan holidays: add Youm-e-Takbeer holiday (#2446 by @w3stling)
+- Update Python latest supported version format (#2466 by @arkid15r)
+- Update RELEASE.md (#2484 by @arkid15r)
+- Update South Korea holidays: add 2025 Presidential Election Day (#2451 by @YiGeon)
+- Update l10n related documentation: detailed explain of language parameter behavior (#2396 by @shreyanshVIT23, @arkid15r)
+- Update mypy configuration (#2464 by @arkid15r)
+- Add FUNDING.yml (#2450 by @arkid15r)
+
 # Version 0.70
 
 Released April 7, 2025

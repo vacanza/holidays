@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,9 +22,9 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Belgium>
-        * <https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen>
-        * <https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB>
-        * <https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays>
+        * <https://web.archive.org/web/20250331001402/https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen>
+        * <https://nl.wikipedia.org/wiki/Feestdagen_in_België>
+        * <https://web.archive.org/web/20240816004739/https://www.nbb.be/en/about-national-bank/national-bank-belgium/public-holidays>
     """
 
     country = "BE"

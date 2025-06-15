@@ -1,9 +1,6 @@
-include CHANGES.md
-include CONTRIBUTING.md
 include holidays/py.typed
 include Makefile
 
-include docs/examples.md
 recursive-include holidays/locale *.mo
 recursive-include requirements *
 

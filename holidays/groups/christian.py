@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -100,7 +100,7 @@ class ChristianHolidays:
 
         Also known as All Hallows' Day, the Feast of All Saints,
         the Feast of All Hallows, the Solemnity of All Saints, and Hallowmas.
-        https://en.wikipedia.org/wiki/All_Saints%27_Day
+        https://en.wikipedia.org/wiki/All_Saints'_Day
         """
         return self._add_holiday_nov_1(name)
 
@@ -111,7 +111,7 @@ class ChristianHolidays:
         All Souls' Day is a day of prayer and remembrance for the faithful
         departed, observed by certain Christian denominations on 2 November.
         In Belarussian tradition it is called Dziady.
-        https://en.wikipedia.org/wiki/All_Souls%27_Day
+        https://en.wikipedia.org/wiki/All_Souls'_Day
         https://en.wikipedia.org/wiki/Dziady
         """
         return self._add_holiday_nov_2(name)
@@ -197,7 +197,7 @@ class ChristianHolidays:
 
     def _add_carnival_tuesday(self, name) -> date:
         """
-        Add Carnival Monday (47 days before Easter Sunday).
+        Add Carnival Tuesday (47 days before Easter Sunday).
 
         Carnival is a Catholic Christian festive season that occurs before
         the liturgical season of Lent.
@@ -373,7 +373,7 @@ class ChristianHolidays:
 
         Add Day Of Rejoicing ("Radonitsa"), in the Russian Orthodox Church is
         a commemoration of the departed observed on the second Tuesday of
-        Pascha (Easter).In Ukrainian tradition it is called Provody.
+        Pascha (Easter). In Ukrainian tradition it is called Provody.
         https://en.wikipedia.org/wiki/Radonitsa
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +9))
@@ -384,7 +384,7 @@ class ChristianHolidays:
 
         Saint George's Day is celebrated on 23 April, the traditionally
         accepted date of the saint's death.
-        https://en.wikipedia.org/wiki/Saint_George%27s_Day
+        https://en.wikipedia.org/wiki/Saint_George's_Day
         """
         return self._add_holiday_apr_23(name)
 
@@ -415,13 +415,13 @@ class ChristianHolidays:
         Solemnity of Saint Joseph, is in Western Christianity the principal
         feast day of Saint Joseph, husband of the Virgin Mary and legal father
         of Jesus Christ.
-        https://en.wikipedia.org/wiki/Saint_Joseph%27s_Day
+        https://en.wikipedia.org/wiki/Saint_Joseph's_Day
         """
         return self._add_holiday_mar_19(name)
 
     def _add_saints_peter_and_paul_day(self, name) -> date:
         """
-        Feast of Saints Peter and Paul (June 29th).
+        Add Feast of Saints Peter and Paul (June 29th).
 
         A liturgical feast in honor of the martyrdom in Rome of the apostles
         Saint Peter and Saint Paul, which is observed on 29 June.

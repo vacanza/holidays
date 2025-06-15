@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,8 +22,8 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige>
-        * <http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253>
-        * <https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj>
+        * <https://web.archive.org/web/20250414065223/https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253>
+        * <https://sv.wikipedia.org/wiki/Första_maj>
         * <https://sv.wikipedia.org/wiki/Sveriges_nationaldag>
         * <https://sv.wikipedia.org/wiki/Midsommarafton>
 

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -13,7 +13,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _ChineseLunisolar
+from holidays.calendars.chinese import _ChineseLunisolar, CHINESE_CALENDAR
 from holidays.calendars.gregorian import APR, DEC
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -23,8 +23,10 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, cls=None, show_estimated=False) -> None:
-        self._chinese_calendar = cls() if cls else _ChineseLunisolar()
+    def __init__(self, cls=None, show_estimated=False, calendar=CHINESE_CALENDAR) -> None:
+        self._chinese_calendar = (
+            cls(calendar=calendar) if cls else _ChineseLunisolar(calendar=calendar)
+        )
         self._chinese_calendar_show_estimated = show_estimated
 
     @property
@@ -113,7 +115,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Birthday of the Buddha is a Buddhist festival that is celebrated in
         most of East Asia and South Asia commemorating the birth of Gautama
         Buddha, who was the founder of Buddhism.
-        https://en.wikipedia.org/wiki/Buddha%27s_Birthday
+        https://en.wikipedia.org/wiki/Buddha's_Birthday
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.buddha_birthday_date(self._year)
@@ -124,7 +126,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
         Add Chinese New Year's Eve (last day of 12th lunar month).
 
         Chinese New Year's Eve is the day before the Chinese New Year.
-        https://en.wikipedia.org/wiki/Chinese_New_Year%27s_Eve
+        https://en.wikipedia.org/wiki/Chinese_New_Year's_Eve
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-1
@@ -233,7 +235,7 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
 
         Vietnamese festival held annually from the 8th to the 11th day of the
         3rd lunar month in honour of the Hùng Kings.
-        https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
+        https://en.wikipedia.org/wiki/Hùng_Kings'_Festival
         """
         return self._add_chinese_calendar_holiday(
             name, self._chinese_calendar.hung_kings_date(self._year)

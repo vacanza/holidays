@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -98,8 +98,8 @@ class _ThaiLunisolar:
         and we're thankful for his work.
 
     References:
-        * <https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html>
-        * <https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
+        * <https://web.archive.org/web/20241016080156/https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html>
+        * <https://web.archive.org/web/20250119171416/https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx>
 
     Example:
 

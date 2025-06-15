@@ -1,0 +1,145 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Andorra holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.73\n"
+"POT-Creation-Date: 2025-05-06 14:09+0300\n"
+"PO-Revision-Date: 2025-05-06 14:15+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ca\n"
+
+#. New Year's Day.
+msgid "Cap d'Any"
+msgstr "New Year's Day"
+
+#. Epiphany.
+msgid "Reis"
+msgstr "Epiphany"
+
+#. Carnival.
+msgid "Carnaval"
+msgstr "Carnival"
+
+#. Constitution Day.
+msgid "Dia de la Constitució"
+msgstr "Constitution Day"
+
+#. Good Friday.
+msgid "Divendres Sant"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Dilluns de Pasqua"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Festa del treball"
+msgstr "Labor Day"
+
+#. Whit Monday.
+msgid "Dilluns de Pentecosta"
+msgstr "Whit Monday"
+
+#. Assumption Day.
+msgid "Assumpció"
+msgstr "Assumption Day"
+
+#. Our Lady of Meritxell.
+msgid "Nostra Senyora de Meritxell"
+msgstr "Our Lady of Meritxell"
+
+#. All Saints' Day.
+msgid "Tots Sants"
+msgstr "All Saints' Day"
+
+#. Immaculate Conception.
+msgid "Immaculada Concepció"
+msgstr "Immaculate Conception"
+
+#. Christmas Day.
+msgid "Nadal"
+msgstr "Christmas Day"
+
+#. Saint Stephen's Day.
+msgid "Sant Esteve"
+msgstr "Saint Stephen's Day"
+
+#. Saint Roch's Day.
+msgid "Sant Roc"
+msgstr "Saint Roch's Day"
+
+#. Saint Anthony's Day.
+msgid "Sant Antoni"
+msgstr "Saint Anthony's Day"
+
+#. Saint Peter's Day.
+msgid "Sant Pere"
+msgstr "Saint Peter's Day"
+
+#. Saint Julian's Day.
+msgid "Sant Julià"
+msgstr "Saint Julian's Day"
+
+#. Virgin Mary of Canòlich.
+msgid "Diada de Canòlich"
+msgstr "Virgin Mary of Canòlich"
+
+#. Sant Julià de Lòria Festival.
+msgid "Festa Major de Sant Julià de Lòria"
+msgstr "Sant Julià de Lòria Festival"
+
+#. Andorra la Vella Festival.
+msgid "Festa Major d'Andorra la Vella"
+msgstr "Andorra la Vella Festival"
+
+#. Saint Michael of Engolasters' Day.
+msgid "Sant Miquel d'Engolasters"
+msgstr "Saint Michael of Engolasters' Day"
+
+#. Parish foundation day.
+msgid "Diada de la creació de la parròquia"
+msgstr "Parish foundation day"
+
+#. Escaldes-Engordany Festival.
+msgid "Festa Major d'Escaldes-Engordany"
+msgstr "Escaldes-Engordany Festival"
+
+#. %s (from 1pm).
+#, c-format
+msgid "%s (a partir de les 13h)"
+msgstr "%s (from 1pm)"
+
+#. Epiphany Eve.
+msgid "Vigília de Reis"
+msgstr "Epiphany Eve"
+
+#. Maundy Thursday.
+msgid "Dijous Sant"
+msgstr "Maundy Thursday"
+
+#. Christmas Eve.
+msgid "Vigília de Nadal"
+msgstr "Christmas Eve"
+
+#. New Year's Eve.
+msgid "Vigília de Cap d'Any"
+msgstr "New Year's Eve"

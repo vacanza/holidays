@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,8 +21,8 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Madagascar holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/madagascar>
-        * <https://www.timeanddate.com/holidays/madagascar/>
+        * <https://web.archive.org/web/20250114061412/https://www.officeholidays.com/countries/madagascar>
+        * <https://web.archive.org/web/20250413112126/https://www.timeanddate.com/holidays/madagascar/>
     """
 
     country = "MG"

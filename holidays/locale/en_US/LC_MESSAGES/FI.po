@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.54\n"
+"Project-Id-Version: Holidays 0.74\n"
 "POT-Creation-Date: 2023-04-08 19:30+0300\n"
-"PO-Revision-Date: 2024-07-26 17:41+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-05-26 10:19+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -115,6 +114,10 @@ msgstr "Europe Day"
 msgid "Äitienpäivä"
 msgstr "Mother's Day"
 
+#. J. V. Snellman Day.
+msgid "J.V. Snellmanin päivä"
+msgstr "J. V. Snellman Day"
+
 #. J. V. Snellman Day, Day of Finnish Heritage.
 msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
 msgstr "J. V. Snellman Day, Day of Finnish Heritage"
@@ -122,6 +125,10 @@ msgstr "J. V. Snellman Day, Day of Finnish Heritage"
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
 msgstr "Remembrance Day"
+
+#. Birthday of the Marshal of Finland.
+msgid "Suomen marsalkan syntymäpäivä"
+msgstr "Birthday of the Marshal of Finland"
 
 #. Flag Day of the Finnish Defense Forces.
 msgid "Puolustusvoimain lippujuhlan päivä"
@@ -162,3 +169,15 @@ msgstr "Day of Children's Rights"
 #. Jean Sibelius Day, Day of Finnish Music.
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr "Jean Sibelius Day, Day of Finnish Music"
+
+#. Åland's Autonomy Day.
+msgid "Ahvenanmaan itsehallintopäivä"
+msgstr "Åland's Autonomy Day"
+
+#. Day of the Finnish Flag.
+msgid "Suomen lipun päivä"
+msgstr "Day of the Finnish Flag"
+
+#. Aleksis Kivi Day.
+msgid "Aleksis Kiven päivä"
+msgstr "Aleksis Kivi Day"

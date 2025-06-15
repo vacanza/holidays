@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -46,9 +46,9 @@ class BosniaAndHerzegovina(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina>
-        * <https://www.paragraf.ba/neradni-dani-fbih.html>
-        * <https://www.paragraf.ba/neradni-dani-republike-srpske.html>
-        * <https://www.paragraf.ba/neradni-dani-brcko.html>
+        * <https://web.archive.org/web/20250415045455/https://www.paragraf.ba/neradni-dani-fbih.html>
+        * <https://web.archive.org/web/20250415085409/https://www.paragraf.ba/neradni-dani-republike-srpske.html>
+        * <https://web.archive.org/web/20250414212923/https://www.paragraf.ba/neradni-dani-brcko.html>
 
     Observed holidays rules:
         * BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
@@ -58,13 +58,12 @@ class BosniaAndHerzegovina(
 
     country = "BA"
     default_language = "bs"
-    supported_languages = ("bs", "en_US", "sr", "uk")
     # %s (observed).
     observed_label = tr("%s (preneseno)")
     subdivisions = (
-        "BIH",  # Federacija Bosne i Hercegovine
-        "BRC",  # Brčko distrikt
-        "SRP",  # Republika Srpska
+        "BIH",  # Federacija Bosne i Hercegovine.
+        "BRC",  # Brčko distrikt.
+        "SRP",  # Republika Srpska.
     )
     subdivisions_aliases = {
         "Federacija Bosne i Hercegovine": "BIH",
@@ -74,8 +73,9 @@ class BosniaAndHerzegovina(
         "Republika Srpska": "SRP",
         "RS": "SRP",
     }
+    supported_languages = ("bs", "en_US", "sr", "uk")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

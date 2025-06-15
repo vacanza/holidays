@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -45,9 +45,8 @@ class Singapore(
 
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
-        * [Holidays Act](https://sso.agc.gov.sg/Act/HA1998) (Act 24 of
-            1968—Holidays (Amendment) Act 1968)
-        * [Ministry of Manpower](https://www.mom.gov.sg/employment-practices/public-holidays)
+        * [Holidays Act 1998](https://web.archive.org/web/20250405061431/https://sso.agc.gov.sg/Act/HA1998)
+        * [Ministry of Manpower](https://web.archive.org/web/20250424152111/https://mom.gov.sg/employment-practices/public-holidays)
 
     Limitations:
         * Prior to 1969: holidays are estimated.
@@ -66,7 +65,7 @@ class Singapore(
     observed_label = tr("%s (observed)")
     supported_languages = ("en_SG", "en_US", "th")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -306,8 +305,10 @@ class SingaporeStaticHolidays:
     """Singapore special holidays.
 
     References:
-        * <https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
-        * <https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22>
+        * <https://web.archive.org/web/20241015024728/https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015>
+        * <https://web.archive.org/web/20240809195048/https://www.mom.gov.sg/newsroom/press-releases/2020/0624-public-holiday-on-polling-day---10-july-2020>
+        * <https://web.archive.org/web/20241113193000/https://www.mom.gov.sg/newsroom/press-releases/2023/0822-public-holiday-on-polling-day---1-sep-2023>
+        * <https://web.archive.org/web/20250424145037/https://www.mom.gov.sg/newsroom/press-releases/2025/0415-public-holiday-on-polling-day_3-may-2025>
     """
 
     # Polling Day.
@@ -324,6 +325,7 @@ class SingaporeStaticHolidays:
         ),
         2020: (JUL, 10, polling_day_name),
         2023: (SEP, 1, polling_day_name),
+        2025: (MAY, 3, polling_day_name),
     }
 
     special_public_holidays_observed = {

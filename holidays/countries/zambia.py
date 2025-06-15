@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,10 +19,10 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """Zambia holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/zambia/>
-        * <https://www.timeanddate.com/holidays/zambia/>
+        * <https://web.archive.org/web/20241206135307/https://www.officeholidays.com/countries/zambia>
+        * <https://web.archive.org/web/20250408170158/https://www.timeanddate.com/holidays/zambia/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Zambia>
-        * <https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf>
+        * <https://web.archive.org/web/20250329191121/http://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf>
     """
 
     country = "ZM"

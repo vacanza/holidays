@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,8 +20,8 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Honduras holidays.
 
     References:
-        * [Art. 339 of Labor Code](https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm)
-        * [Decree 78-2015](https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf)
+        * [Art. 339 of Labor Code](https://web.archive.org/web/20240201202118/http://ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm)
+        * [Decree 78-2015](https://web.archive.org/web/20250414065149/https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf)
     """
 
     country = "HN"

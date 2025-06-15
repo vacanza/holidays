@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -69,6 +69,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             "2024-02-09",
             "2024-11-02",
             "2024-12-24",
+            "2025-05-12",
             "2025-07-27",
             "2025-10-31",
             "2025-12-24",
@@ -470,6 +471,7 @@ class TestPhilippines(CommonCountryTests, TestCase):
             ("2025-04-18", "Good Friday"),
             ("2025-04-19", "Black Saturday"),
             ("2025-05-01", "Labor Day"),
+            ("2025-05-12", "Elections special (non-working) day"),
             ("2025-06-06", "Eid'l Adha"),
             ("2025-06-12", "Independence Day"),
             ("2025-07-27", "Additional special (non-working) day"),

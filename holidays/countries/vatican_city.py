@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,21 +20,21 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Vatican City holidays.
 
     References:
-        * <https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html>
-        * <https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf>
-        * <https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html>
+        * <https://web.archive.org/web/20250125172412/https://www.vatican.va/roman_curia/labour_office/docs/documents/ulsa_b18_7_it.html>
+        * <https://web.archive.org/web/20250320055902/https://cdn.restorethe54.com/media/pdf/1917-code-of-canon-law-english.pdf>
+        * <https://web.archive.org/web/20250425093046/https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1244-1253_en.html>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City>
         * <https://en.wikipedia.org/wiki/Holy_day_of_obligation>
-        * <https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826>
-        * <https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/>
+        * <https://web.archive.org/web/20241004015531/https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826>
+        * <https://web.archive.org/web/20241130180934/https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/>
 
     Cross-checked With:
-        * <https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf>
-        * <https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf>
-        * <https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf>
-        * <https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf>
-        * <https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf>
-        * <https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf>
+        * <https://web.archive.org/web/20250427173707/https://www.vaticanstate.va/images/pdf/CALENDARIO_2020.pdf>
+        * <https://web.archive.org/web/20220723175312/https://www.farmaciavaticana.va/images/pdf/calendario_2021.pdf>
+        * <https://web.archive.org/web/20221018201001/https://www.farmaciavaticana.va/images/pdf/calendario_2022.pdf>
+        * <https://web.archive.org/web/20231101221620/https://www.farmaciavaticana.va/images/pdf/calendario_2023.pdf>
+        * <https://web.archive.org/web/20241208034527/https://www.farmaciavaticana.va/media/attachments/2024/01/02/calendario_2024.pdf>
+        * <https://web.archive.org/web/20250208160702/https://www.farmaciavaticana.va/media/attachments/2025/01/02/calendario-2025.pdf>
     """
 
     country = "VA"
@@ -64,58 +64,56 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
             tr("Anniversario della istituzione dello Stato della Città del Vaticano")
         )
 
-        # Anniversary of the Election of the Holy Father.
-        name_election = tr("Anniversario dell'Elezione del Santo Padre")
-
         # Name Day of the Holy Father.
         name_day = tr("Onomastico del Santo Padre")
 
-        if self._year >= 2013:
+        if self._year >= 2025:
+            # Pope Leo XIV (Robert Francis Prevost).
+            # Name Day: Saint Robert Bellarmine Day (SEP 17).
+            self._add_holiday_sep_17(name_day)
+
+            if self._year == 2025:
+                # Pope Francis (cont.).
+                self._add_saint_georges_day(name_day)
+        elif self._year >= 2013:
             # Pope Francis (Jorge Mario Bergoglio).
             # Name Day: Saint George's Day (APR 23).
-            self._add_holiday_mar_13(name_election)
             self._add_saint_georges_day(name_day)
-        elif self._year >= 2005:
+        elif self._year >= 2006:
             # Pope Benedict XVI (Josef Aloisius Ratzinger).
             # Name Day: Saint Joseph's Day (MAR 19).
-            self._add_holiday_apr_19(name_election)
             self._add_saint_josephs_day(name_day)
-        elif self._year >= 1978:
+        elif 1978 <= self._year <= 2004:
             # Pope John Paul II (Karol Józef Wojtyła).
             # Name Day: Saint Charles Borromeo Day (NOV 4).
-            self._add_holiday_oct_16(name_election)
             self._add_holiday_nov_4(name_day)
 
-            if self._year == 1978:
-                # Pope John Paul I (Albino Luciani).
-                # Name Day: Saint Albinus of Angers (MAR 1)?
-                self._add_holiday_aug_26(name_election)
+        # Anniversary of the Election of the Holy Father.
+        name_election = tr("Anniversario dell'Elezione del Santo Padre")
 
-                # Pope Paul VI (cont.).
-                self._add_holiday_jun_21(name_election)
-        elif self._year >= 1963:
+        if self._year >= 2026:
+            # Pope Leo XIV (Robert Francis Prevost).
+            self._add_holiday_may_8(name_election)
+        elif self._year >= 2014:
+            # Pope Francis (Jorge Mario Bergoglio).
+            self._add_holiday_mar_13(name_election)
+        elif 2006 <= self._year <= 2012:
+            # Pope Benedict XVI (Josef Aloisius Ratzinger).
+            self._add_holiday_apr_19(name_election)
+        elif 1979 <= self._year <= 2004:
+            # Pope John Paul II (Karol Józef Wojtyła).
+            self._add_holiday_oct_16(name_election)
+        elif 1964 <= self._year <= 1978:
             # Pope Paul VI (Giovanni Battista Enrico Antonio Maria Montini).
-            # Name Day: Saint John's Day (JUN 24)?
             self._add_holiday_jun_21(name_election)
-        elif self._year >= 1958:
+        elif 1959 <= self._year <= 1962:
             # Pope John XXIII (Angelo Giuseppe Roncalli).
-            # Name Day: Saint Angelus of Jerusalem (MAY 5)?
             self._add_holiday_oct_28(name_election)
-
-            if self._year == 1958:
-                # Pope Pius XII (cont.).
-                self._add_holiday_mar_2(name_election)
-        elif self._year >= 1939:
+        elif 1940 <= self._year <= 1958:
             # Pope Pius XII (Eugenio Maria Giuseppe Giovanni Pacelli).
-            # Name Day: Saint Eugene (JUN 2)?
             self._add_holiday_mar_2(name_election)
-
-            if self._year == 1939:
-                # Pope Pius XI (cont.).
-                self._add_holiday_feb_6(name_election)
-        else:
+        elif self._year <= 1939:
             # Pope Pius XI (Achille Ambrogio Damiano Ratti).
-            # Name Day: Saint Nereus and Achilleus (MAY 12)?
             self._add_holiday_feb_6(name_election)
 
         # Saint Joseph's Day.

@@ -1,0 +1,93 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Togo holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.73\n"
+"POT-Creation-Date: 2025-05-07 4:17+0530\n"
+"PO-Revision-Date: 2025-05-07 4:17+0530\n"
+"Last-Translator: Roshan Pradhan <roshanpradhan2048@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
+
+#. Liberation Day.
+msgid "Fête de la libération nationale"
+msgstr "Liberation Day"
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr "Easter Monday"
+
+#. Independence Day.
+msgid "Fête de l'indépendance"
+msgstr "Independence Day"
+
+#. Labor Day.
+msgid "Fête du travail"
+msgstr "Labor Day"
+
+#. Ascension Day.
+msgid "Fête de l'Ascension"
+msgstr "Ascension Day"
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr "Whit Monday"
+
+#. Martyrs' Day.
+msgid "Fête des Martyrs"
+msgstr "Martyrs' Day"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "Assumption Day"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "All Saints' Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. First Day of Ramadan.
+msgid "Ramadan"
+msgstr "First Day of Ramadan"
+
+#. Eid al-Fitr.
+msgid "l'Aïd El-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Tabaski"
+msgstr "Eid al-Adha"
+
+#. Anniversary of the Failed Attack on Lomé.
+msgid "Anniversaire de l'attentat manqué contre Lomé"
+msgstr "Anniversary of the Failed Attack on Lomé"

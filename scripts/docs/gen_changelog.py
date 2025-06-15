@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -12,6 +12,7 @@
 
 """Generate docs/changelog.md from CHANGES.md"""
 
+import re
 from pathlib import Path
 
 import mkdocs_gen_files
@@ -19,7 +20,11 @@ import mkdocs_gen_files
 
 def main():
     changes_file = Path(__file__).parents[2] / "CHANGES.md"
-    changes_lines = changes_file.read_text(encoding="utf-8").split("\n")
+    file_content = changes_file.read_text(encoding="utf-8")
+    file_content = re.sub(
+        r"#(\d+)", r"[\g<0>](https://github.com/vacanza/holidays/pull/\1)", file_content
+    )
+    changes_lines = file_content.split("\n")
     header = ["# Changelog", ""]
     changelog = [f"#{line}" if line.startswith("# Version") else line for line in changes_lines]
 

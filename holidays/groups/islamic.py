@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -222,11 +222,21 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.fatima_death_dates(self._year)
         )
 
+    def _add_grand_magal_of_touba(self, name) -> set[date]:
+        """
+        Annual religious pilgrimage of Senegalese Mouride brotherhood.
+
+        https://en.wikipedia.org/wiki/Grand_Magal_of_Touba
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.grand_magal_of_touba_dates(self._year)
+        )
+
     def _add_hari_hol_johor(self, name) -> set[date]:
         """
         Hari Hol Johor.
 
-        https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
+        https://web.archive.org/web/20241202170507/https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.hari_hol_johor_dates(self._year)
@@ -246,7 +256,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add 29th Ramadan holiday.
 
-        https://decree.om/2022/rd20220088/
+        https://web.archive.org/web/20250323065556/https://decree.om/2022/rd20220088/
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+28
@@ -299,7 +309,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Add Isra' and Mi'raj Day (27th day of 7th month).
 
         The Prophet's Ascension.
-        https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
+        https://en.wikipedia.org/wiki/Isra'_and_Mi'raj
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.isra_and_miraj_dates(self._year)
@@ -357,7 +367,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         Nuzul Al Quran is a Muslim festival to remember the day when Prophet
         Muhammad received his first revelation of Islam's sacred book,
         the holy Quran.
-        https://zamzam.com/blog/nuzul-al-quran/
+        https://web.archive.org/web/20241012115752/https://zamzam.com/blog/nuzul-al-quran/
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
@@ -399,7 +409,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add birthday of Prophet Muhammad and Ja'far al-Sadiq day (17th day of 3rd month).
 
-        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.sadiq_birthday_dates(self._year)
@@ -409,7 +419,7 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         Add death of Ja'far al-Sadiq day (25th day of 10th month).
 
-        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        https://en.wikipedia.org/wiki/Ja'far_al-Sadiq
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.sadiq_death_dates(self._year)

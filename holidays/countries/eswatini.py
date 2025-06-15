@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,8 +21,8 @@ class Eswatini(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """Eswatini holidays.
 
     References:
-        * <https://swazilii.org/sz/legislation/act/1938/71>
-        * <https://www.officeholidays.com/countries/swaziland>
+        * <https://web.archive.org/web/20171109031840/http://www.swazilii.org:80/sz/legislation/act/1938/71>
+        * <https://web.archive.org/web/20250413193851/https://www.officeholidays.com/countries/swaziland>
     """
 
     country = "SZ"
@@ -87,7 +87,7 @@ class SZW(Eswatini):
 
 class EswatiniStaticHolidays:
     special_public_holidays = {
-        # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
+        # https://web.archive.org/web/20250413193906/https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
         1999: (DEC, 31, "Y2K changeover"),
         2000: (JAN, 3, "Y2K changeover"),
     }

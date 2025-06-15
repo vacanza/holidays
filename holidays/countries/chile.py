@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -30,9 +30,9 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     """Chile holidays.
 
     References:
-        * <https://www.feriados.cl>
-        * [Excellent history of Chile holidays](http://www.feriadoschilenos.cl)
-        * <https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile>
+        * <https://web.archive.org/web/20250418020620/https://www.feriados.cl/>
+        * [Excellent history of Chile holidays](https://web.archive.org/web/20250124223839/https://www.feriadoschilenos.cl/)
+        * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_Chile>
         * Law 2.977 (established official Chile holidays in its current form)
         * Law 20.983 (Day after New Year's Day, if it's a Sunday)
         * Law 19.668 (floating Monday holiday)
@@ -51,36 +51,54 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * Law 20.299 (National Day of the Evangelical and Protestant Churches)
         * Law 20.663 (Región de Arica y Parinacota)
         * Law 20.678 (Región de Ñuble)
-        * [Law 19.656 (Dec 31, 1999 holiday)](https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15)
-        * [Law 12.051 (bank holidays Jun 30 and Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12)
-        * [Decree-law 1.171 (eliminate Jun 30)](https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05)
-        * [Law 19.528 (eliminate Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
-        * [Law 19.559 (restore Dec 31)](https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
+        * [Law 19.656 (Dec 31, 1999 holiday)](https://web.archive.org/web/20241228005823/https://www.bcn.cl/leychile/navegar?idNorma=149328&idVersion=1999-12-15)
+        * [Law 12.051 (bank holidays Jun 30 and Dec 31)](https://web.archive.org/web/20241227190026/https://www.bcn.cl/leychile/navegar?idNorma=27013&idVersion=1956-07-12)
+        * [Decree-law 1.171 (eliminate Jun 30)](https://web.archive.org/web/20241227191010/https://www.bcn.cl/leychile/navegar?idNorma=6507&idVersion=1975-09-05)
+        * [Law 19.528 (eliminate Dec 31)](https://web.archive.org/web/20241227191452/https://www.bcn.cl/leychile/navegar?idNorma=76630&idVersion=1997-11-04)
+        * [Law 19.559 (restore Dec 31)](https://web.archive.org/web/20241227195811/https://www.bcn.cl/leychile/navegar?idNorma=97758&idVersion=1998-04-16)
     """
 
     country = "CL"
     default_language = "es"
+    start_year = 1915
     subdivisions = (
-        "AI",
-        "AN",
-        "AP",
-        "AR",
-        "AT",
-        "BI",
-        "CO",
-        "LI",
-        "LL",
-        "LR",
-        "MA",
-        "ML",
-        "NB",
-        "RM",
-        "TA",
-        "VS",
+        "AI",  # Aisén del General Carlos Ibañez del Campo.
+        "AN",  # Antofagasta.
+        "AP",  # Arica y Parinacota.
+        "AR",  # La Araucanía.
+        "AT",  # Atacama.
+        "BI",  # Biobío.
+        "CO",  # Coquimbo.
+        "LI",  # Libertador General Bernardo O'Higgins.
+        "LL",  # Los Lagos.
+        "LR",  # Los Ríos.
+        "MA",  # Magallanes.
+        "ML",  # Maule.
+        "NB",  # Ñuble.
+        "RM",  # Región Metropolitana de Santiago.
+        "TA",  # Tarapacá.
+        "VS",  # Valparaíso.
     )
+    subdivisions_aliases = {
+        "Aisén del General Carlos Ibañez del Campo": "AI",
+        "Antofagasta": "AN",
+        "Arica y Parinacota": "AP",
+        "La Araucanía": "AR",
+        "Atacama": "AT",
+        "Biobío": "BI",
+        "Coquimbo": "CO",
+        "Libertador General Bernardo O'Higgins": "LI",
+        "Los Lagos": "LL",
+        "Los Ríos": "LR",
+        "Magallanes": "MA",
+        "Maule": "ML",
+        "Ñuble": "NB",
+        "Región Metropolitana de Santiago": "RM",
+        "Tarapacá": "TA",
+        "Valparaíso": "VS",
+    }
     supported_categories = (BANK, PUBLIC)
     supported_languages = ("en_US", "es", "uk")
-    start_year = 1915
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,8 +22,8 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Bahrain holidays.
 
     References:
-        * <https://www.cbb.gov.bh/official-bank-holidays/>
-        * <https://www.officeholidays.com/countries/bahrain/>
+        * <https://web.archive.org/web/20250415063947/https://www.cbb.gov.bh/official-bank-holidays>
+        * <https://web.archive.org/web/20240805170117/https://www.officeholidays.com/countries/bahrain>
     """
 
     country = "BH"
@@ -33,7 +33,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

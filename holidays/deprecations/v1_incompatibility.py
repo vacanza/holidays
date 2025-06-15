@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -19,7 +19,7 @@ FUTURE_INCOMPATIBILITY_WARNING_TEMPLATE = """
 This is a future version incompatibility warning from Holidays v{version}
 to inform you about an upcoming change in our API versioning strategy that may affect your
 project's dependencies. Starting from version 1.0 onwards, we will be following a loose form of
-Semantic Versioning (SemVer, https://semver.org) to provide clearer communication regarding any
+Semantic Versioning (SemVer, https://semver.org/) to provide clearer communication regarding any
 potential breaking changes.
 
 This means that while we strive to maintain backward compatibility, there might be occasional

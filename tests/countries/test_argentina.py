@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -98,6 +98,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2024-12-24",
             "2024-12-31",
         )
+
+    def test_special_subdiv_holidays(self):
+        # Buenos Aires.
+        self.assertHoliday(self.subdiv_holidays["B"], "2018-11-30")
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1957, 2050)))

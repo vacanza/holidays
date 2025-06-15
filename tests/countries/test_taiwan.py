@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,7 +24,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         super().setUpClass(Taiwan, years=years, years_non_observed=years)
         cls.government_holidays = Taiwan(categories=GOVERNMENT, years=years)
         cls.optional_holidays = Taiwan(categories=OPTIONAL, years=years)
-        cls.optional_holidays_observed = Taiwan(categories=OPTIONAL, years=years, observed=False)
+        cls.optional_holidays_non_observed = Taiwan(
+            categories=OPTIONAL, years=years, observed=False
+        )
         cls.school_holidays = Taiwan(categories=SCHOOL, years=years)
         cls.workday_holidays = Taiwan(categories=WORKDAY, years=years)
 
@@ -363,7 +365,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2000-04-03",
         )
         self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
 
         # Public Holidays.
         self.assertHolidayName(name, (f"{year}-04-04" for year in range(2011, 2050)))
@@ -397,7 +399,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2000-04-03",
         )
         self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
         self.assertNoHolidayName(name)
 
         # Workdays.
@@ -541,7 +543,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         obs_dt = ("2000-09-04",)
         self.assertHolidayName(f"{name}（慶祝）", self.optional_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(self.optional_holidays_observed, obs_dt)
+        self.assertNoNonObservedHoliday(self.optional_holidays_non_observed, obs_dt)
         self.assertNoHolidayName(name)
 
     def test_mid_autumn_festival(self):
