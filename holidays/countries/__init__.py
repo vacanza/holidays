@@ -92,6 +92,7 @@ from holidays.countries.guam import Guam, GU, GUM, HolidaysGU
 from holidays.countries.guatemala import Guatemala, GT, GUA
 from holidays.countries.guernsey import Guernsey, GG, GGY
 from holidays.countries.guinea import Guinea, GN, GIN
+from holidays.countries.guyana import Guyana, GY, GUY
 from holidays.countries.haiti import Haiti, HT, HTI
 from holidays.countries.honduras import Honduras, HN, HND
 from holidays.countries.hongkong import HongKong, HK, HKG
@@ -135,6 +136,7 @@ from holidays.countries.montenegro import Montenegro, ME, MNE
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ
 from holidays.countries.namibia import Namibia, NA, NAM
+from holidays.countries.nauru import Nauru, NR, NRU
 from holidays.countries.nepal import Nepal, NP, NPL
 from holidays.countries.netherlands import Netherlands, NL, NLD
 from holidays.countries.new_zealand import NewZealand, NZ, NZL

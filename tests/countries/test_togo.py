@@ -38,7 +38,7 @@ class TestTogo(CommonCountryTests, TestCase):
     def test_liberation_day(self):
         name = "Fête de la libération nationale"
         self.assertHolidayName(name, (f"{year}-01-13" for year in range(1967, 2014)))
-        self.assertNoHolidayName(name, range(2014, 2050))
+        self.assertNoHolidayName(name, range(1961, 1967), range(2014, 2050))
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
