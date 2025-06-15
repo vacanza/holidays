@@ -1235,7 +1235,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Solomon Islands</td>
 <td>SB</td>
 <td>Subdivisions: CE (Central), CH (Choiseul), CT (Capital Territory, Honiara), GU (Guadalcanal), IS (Isabel), MK (Makira-Ulawa), ML (Malaita), RB (Rennell and Bellona), TE (Temotu), WE (Western)</td>
-<td>en_US</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
