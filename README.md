@@ -672,6 +672,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Guyana</td>
+<td>GY</td>
+<td></td>
+<td><strong>en_GY</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Haiti</td>
 <td>HT</td>
 <td></td>
@@ -969,7 +976,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
+<td><strong>en_NA</strong>, en_US, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Nauru</td>
+<td>NR</td>
+<td></td>
+<td><strong>en_NR</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
