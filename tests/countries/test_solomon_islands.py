@@ -38,10 +38,7 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         name = "Public Holiday"
-        dt = (
-            "2022-09-12",
-            "2024-04-17"
-        )
+        dt = ("2022-09-12", "2024-04-17")
         self.assertHolidayName(name, dt)
 
         dt = "2020-11-18"
