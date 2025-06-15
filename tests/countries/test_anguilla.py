@@ -104,7 +104,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
     def test_labor_day(self):
         name = "Labour Day"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2001, 2050)))
-        dt = ("2011-05-02", "2016-05-02", "2021-05-03", "2022-05-02")
+        dt = (
+            "2011-05-02",
+            "2016-05-02",
+            "2021-05-03",
+            "2022-05-02",
+        )
         self.assertHolidayName(f"{name} (observed)", dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -166,13 +171,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
         name = "August Monday"
         self.assertHolidayName(
             name,
-            "2018-08-06",
-            "2019-08-05",
             "2020-08-03",
             "2021-08-02",
             "2022-08-01",
             "2023-08-07",
             "2024-08-05",
+            "2025-08-04",
         )
         self.assertHolidayName(name, range(2001, 2050))
 
@@ -180,13 +184,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
         name = "August Thursday"
         self.assertHolidayName(
             name,
-            "2018-08-09",
-            "2019-08-08",
             "2020-08-06",
             "2021-08-05",
             "2022-08-04",
             "2023-08-10",
             "2024-08-08",
+            "2025-08-07",
         )
         self.assertHolidayName(name, range(2001, 2050))
 
@@ -194,13 +197,12 @@ class TestAnguilla(CommonCountryTests, TestCase):
         name = "Constitution Day"
         self.assertHolidayName(
             name,
-            "2018-08-10",
-            "2019-08-09",
             "2020-08-07",
             "2021-08-06",
             "2022-08-05",
             "2023-08-11",
             "2024-08-09",
+            "2025-08-08",
         )
         self.assertHolidayName(name, range(2001, 2050))
 
