@@ -6,6 +6,7 @@
 .venv
 .vscode/
 *.code-workspace
+*.csv
 *.DS_Store
 *.egg-info
 *.mo

@@ -21,16 +21,16 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
-        * <https://www.timeanddate.com/holidays/gabon>
-        * <https://www.officeholidays.com/countries/gabon>
-        * <http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
+        * <https://web.archive.org/web/20250414021427/https://www.timeanddate.com/holidays/gabon/>
+        * <https://web.archive.org/web/20241206141530/https://www.officeholidays.com/countries/gabon>
+        * <https://web.archive.org/web/20231211163448/https://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
     """
 
     country = "GA"
     # On 17 August 1960, Gabon gained independence from France.
     start_year = 1961
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

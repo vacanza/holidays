@@ -37,7 +37,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Afghanistan>
-        * <https://www.timeanddate.com/holidays/afghanistan/>
+        * <https://web.archive.org/web/20250408032244/https://www.timeanddate.com/holidays/afghanistan>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
 
@@ -50,7 +50,7 @@ class Afghanistan(HolidayBase, InternationalHolidays, IslamicHolidays, PersianCa
     start_year = 1919
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

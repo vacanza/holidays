@@ -38,8 +38,8 @@ class Montenegro(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Montenegro>
-        * [Zakon o državnim i drugim praznicima](https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
-        * [Zakon o svetkovanju vjerskih praznika](https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
+        * [Zakon o državnim i drugim praznicima](https://web.archive.org/web/20241227132503/https://wapi.gov.me/download-preview/927f23a3-db4e-4f65-9f29-ce3c9dde0c90?version=1.0)
+        * [Zakon o svetkovanju vjerskih praznika](https://web.archive.org/web/20250427181807/https://wapi.gov.me/download-preview/4f0b05a4-c85b-4eb2-bc29-0ad8363a9ba3?version=1.0)
     """
 
     country = "ME"
@@ -54,7 +54,7 @@ class Montenegro(
     supported_categories = (CATHOLIC, ISLAMIC, HEBREW, ORTHODOX, PUBLIC, WORKDAY)
     start_year = 2007
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

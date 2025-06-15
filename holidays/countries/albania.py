@@ -31,8 +31,8 @@ class Albania(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
-        * [Law No. 7651](http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
-        * [Holidays for 2018-2024](https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
+        * [Law No. 7651](https://web.archive.org/web/20250119183539/http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
+        * [Holidays for 2018-2024](https://web.archive.org/web/20250119183537/https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
     """
 
     country = "AL"
@@ -47,7 +47,7 @@ class Albania(
     # Law No. 7651 from 21.12.1992.
     start_year = 1993
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

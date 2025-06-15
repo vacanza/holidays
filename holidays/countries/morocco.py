@@ -21,7 +21,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_au_Maroc>
-        * <https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
+        * <https://web.archive.org/web/20230303001626/http://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
     """
 
     country = "MA"
@@ -30,7 +30,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -50,7 +50,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
         # In May 2023, Morocco recognized Berber New Year as official holiday.
-        # http://www.diplomatie.ma/en/statement-royal-office-12
+        # https://web.archive.org/web/20230515114330/https://www.diplomatie.ma/en/statement-royal-office-12
         if self._year >= 2024:
             # Amazigh New Year.
             self._add_holiday_jan_13(tr("رأس السنة الأمازيغية"))

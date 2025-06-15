@@ -56,7 +56,7 @@ class Togo(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
     # Togo gained independence on April 27, 1960.
     start_year = 1961
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

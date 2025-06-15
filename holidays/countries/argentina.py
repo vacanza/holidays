@@ -42,107 +42,107 @@ class Argentina(
 
     References:
         * [Spanish Wikipedia](https://es.wikipedia.org/wiki/Anexo:Días_festivos_en_Argentina)
-        * [Decree-Law 2446](https://www.argentina.gob.ar/normativa/nacional/decreto_ley-2446-1956-161122/texto)
-        * [Law 21329](https://www.argentina.gob.ar/normativa/nacional/ley-21329-65453/texto)
-        * [Law 22655](https://www.argentina.gob.ar/normativa/nacional/ley-22655-140416/texto)
-        * [Law 22769](https://www.argentina.gob.ar/normativa/nacional/ley-22769-65454/texto)
-        * [Decree 901/1984](https://www.argentina.gob.ar/normativa/nacional/decreto-901-1984-65455)
-        * [Law 23555](https://www.argentina.gob.ar/normativa/nacional/ley-23555-20986/texto)
-        * [Law 24023](https://www.argentina.gob.ar/normativa/nacional/ley-24023-422/texto)
-        * [Law 24160](https://www.argentina.gob.ar/normativa/nacional/ley-24160-558/texto)
-        * [Law 24360](https://www.argentina.gob.ar/normativa/nacional/ley-24360-756/texto)
-        * [Law 24445](https://www.argentina.gob.ar/normativa/nacional/ley-24445-782/texto)
-        * [Law 24571](https://www.argentina.gob.ar/normativa/nacional/ley-24571-29129/texto)
-        * [Law 24757](https://www.argentina.gob.ar/normativa/nacional/ley-24757-41168/texto)
-        * [Law 25370](https://www.argentina.gob.ar/normativa/nacional/ley-25370-65442/texto)
-        * [Law 25442](https://www.argentina.gob.ar/normativa/nacional/ley-25442-67888/texto)
-        * [Decree 1932/2002](https://www.argentina.gob.ar/normativa/nacional/decreto-1932-2002-78207/texto)
-        * [Law 26085](https://www.argentina.gob.ar/normativa/nacional/ley-26085-114811/texto)
-        * [Law 26089](https://www.argentina.gob.ar/normativa/nacional/ley-26089-115677/texto)
-        * [Law 26110](https://www.argentina.gob.ar/normativa/nacional/ley-26110-117507/texto)
-        * [Law 26199](https://www.argentina.gob.ar/normativa/nacional/ley-26199-124099/texto)
-        * [Law 26416](https://www.argentina.gob.ar/normativa/nacional/ley-26416-145231/texto)
-        * [Decree 1584/2010](https://www.argentina.gob.ar/normativa/nacional/decreto-1584-2010-174389/texto)
-        * [Decree 521/2011](https://www.argentina.gob.ar/normativa/nacional/decreto-521-2011-181754/texto)
-        * [Decree 2226/2015](https://www.argentina.gob.ar/normativa/nacional/decreto-2226-2015-253971/texto)
-        * [Law 26876](https://www.argentina.gob.ar/normativa/nacional/ley-26876-218152/texto)
-        * [Law 27258](https://www.argentina.gob.ar/normativa/nacional/ley-27258-262574/texto)
-        * [Decree 52/2017](https://www.argentina.gob.ar/normativa/nacional/decreto-52-2017-271094/texto)
-        * [Decree 80/2017](https://www.argentina.gob.ar/normativa/nacional/decreto-80-2017-271382/texto)
-        * [Law 27399](https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto)
-        * [Decreto 297/2020](https://www.argentina.gob.ar/normativa/nacional/decreto-297-2020-335741/texto)
-        * [Collective Agreement 18/75](https://labancaria.org/convenio-colectivo-18-75/)
+        * [Decree-Law 2446](https://web.archive.org/web/20250421214226/https://www.argentina.gob.ar/normativa/nacional/decreto_ley-2446-1956-161122/texto)
+        * [Law 21329](https://web.archive.org/web/20250415074830/https://www.argentina.gob.ar/normativa/nacional/ley-21329-65453/texto)
+        * [Law 22655](https://web.archive.org/web/20240109181150/https://www.argentina.gob.ar/normativa/nacional/ley-22655-140416/texto)
+        * [Law 22769](https://web.archive.org/web/20240114120630/https://www.argentina.gob.ar/normativa/nacional/ley-22769-65454/texto)
+        * [Decree 901/1984](https://web.archive.org/web/20240115193220/https://www.argentina.gob.ar/normativa/nacional/decreto-901-1984-65455)
+        * [Law 23555](https://web.archive.org/web/20250415201749/https://www.argentina.gob.ar/normativa/nacional/ley-23555-20986/texto)
+        * [Law 24023](https://web.archive.org/web/20250421105240/https://www.argentina.gob.ar/normativa/nacional/ley-24023-422/texto)
+        * [Law 24160](https://web.archive.org/web/20250419110215/https://www.argentina.gob.ar/normativa/nacional/ley-24160-558/texto)
+        * [Law 24360](https://web.archive.org/web/20250415204304/https://www.argentina.gob.ar/normativa/nacional/ley-24360-756/texto)
+        * [Law 24445](https://web.archive.org/web/20250416044658/https://www.argentina.gob.ar/normativa/nacional/ley-24445-782/texto)
+        * [Law 24571](https://web.archive.org/web/20250414000940/https://www.argentina.gob.ar/normativa/nacional/ley-24571-29129/texto)
+        * [Law 24757](https://web.archive.org/web/20250414003007/https://www.argentina.gob.ar/normativa/nacional/ley-24757-41168/texto)
+        * [Law 25370](https://web.archive.org/web/20250415155957/https://www.argentina.gob.ar/normativa/nacional/ley-25370-65442/texto)
+        * [Law 25442](https://web.archive.org/web/20250417162156/https://www.argentina.gob.ar/normativa/nacional/ley-25442-67888/texto)
+        * [Decree 1932/2002](https://web.archive.org/web/20240114120622/https://www.argentina.gob.ar/normativa/nacional/decreto-1932-2002-78207/texto)
+        * [Law 26085](https://web.archive.org/web/20250422065647/https://www.argentina.gob.ar/normativa/nacional/ley-26085-114811/texto)
+        * [Law 26089](https://web.archive.org/web/20250414041748/https://www.argentina.gob.ar/normativa/nacional/ley-26089-115677/texto)
+        * [Law 26110](https://web.archive.org/web/20250414182412/https://www.argentina.gob.ar/normativa/nacional/ley-26110-117507/texto)
+        * [Law 26199](https://web.archive.org/web/20250425020808/https://www.argentina.gob.ar/normativa/nacional/ley-26199-124099/texto)
+        * [Law 26416](https://web.archive.org/web/20250416115107/https://www.argentina.gob.ar/normativa/nacional/ley-26416-145231/texto)
+        * [Decree 1584/2010](https://web.archive.org/web/20250415031046/https://www.argentina.gob.ar/normativa/nacional/decreto-1584-2010-174389/texto)
+        * [Decree 521/2011](https://web.archive.org/web/20250416013752/https://www.argentina.gob.ar/normativa/nacional/decreto-521-2011-181754/texto)
+        * [Decree 2226/2015](https://web.archive.org/web/20250415163728/https://www.argentina.gob.ar/normativa/nacional/decreto-2226-2015-253971/texto)
+        * [Law 26876](https://web.archive.org/web/20250415210339/https://www.argentina.gob.ar/normativa/nacional/ley-26876-218152/texto)
+        * [Law 27258](https://web.archive.org/web/20250416110147/https://www.argentina.gob.ar/normativa/nacional/ley-27258-262574/texto)
+        * [Decree 52/2017](https://web.archive.org/web/20250415221116/https://www.argentina.gob.ar/normativa/nacional/decreto-52-2017-271094/texto)
+        * [Decree 80/2017](https://web.archive.org/web/20231214090313/https://www.argentina.gob.ar/normativa/nacional/decreto-80-2017-271382/texto)
+        * [Law 27399](https://web.archive.org/web/20250424202106/https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto)
+        * [Decreto 297/2020](https://web.archive.org/web/20250416211712/https://www.argentina.gob.ar/normativa/nacional/decreto-297-2020-335741/texto)
+        * [Collective Agreement 18/75](https://web.archive.org/web/20250415144525/https://labancaria.org/convenio-colectivo-18-75/)
 
     Subdivisions Holidays References:
         * Catamarca:
-            * [Law 4553](https://www.argentina.gob.ar/normativa/provincial/ley-4553-123456789-0abc-defg-355-4000kvorpyel)
-            * [Law 5525](https://digesto.catamarca.gob.ar/ley/ley_detail/1650)
+            * [Law 4553](https://web.archive.org/web/20250427173633/https://www.argentina.gob.ar/normativa/provincial/ley-4553-123456789-0abc-defg-355-4000kvorpyel)
+            * [Law 5525](https://web.archive.org/web/20250427173109/https://digesto.catamarca.gob.ar/ley/ley_detail/1650)
         * Chubut:
-            * [Law I-85](https://digesto.legislaturadelchubut.gob.ar/public/rama/1/ley/85)
-            * [Law I-547](https://www.argentina.gob.ar/normativa/provincial/ley-547-123456789-0abc-defg-745-0001uvorpyel/actualizacion)
+            * [Law I-85](https://web.archive.org/web/20240926052315/https://digesto.legislaturadelchubut.gob.ar/public/rama/1/ley/85)
+            * [Law I-547](https://web.archive.org/web/20250422154722/https://www.argentina.gob.ar/normativa/provincial/ley-547-123456789-0abc-defg-745-0001uvorpyel/actualizacion)
         * Corrientes:
-            * [Law 5874](https://www.argentina.gob.ar/normativa/provincial/ley-5874-123456789-0abc-defg-478-5000wvorpyel/actualizacion)
-            * [Law 5884](https://www.argentina.gob.ar/normativa/provincial/ley-5884-123456789-0abc-defg-488-5000wvorpyel/actualizacion)
+            * [Law 5874](https://web.archive.org/web/20250415160018/https://www.argentina.gob.ar/normativa/provincial/ley-5874-123456789-0abc-defg-478-5000wvorpyel/actualizacion)
+            * [Law 5884](https://web.archive.org/web/20250415204439/https://www.argentina.gob.ar/normativa/provincial/ley-5884-123456789-0abc-defg-488-5000wvorpyel/actualizacion)
         * Entre Ríos:
-            * [Law 7285/84](https://www.entrerios.gov.ar/dgrrhh/normativas/7285%20-%20Feriado%203%20de%20febrero.pdf)
-            * [Decree 4359/93](https://www.entrerios.gov.ar/dgrrhh/normativas/1993%20-%204359%20MGJE%20(San%20Miguel%20Arcangel).pdf)
-            * [Decree 216/2003](https://www.entrerios.gov.ar/dgrrhh/normativas/2003%20-%20216%20GOB%20(Dia%20del%20Empleado%20Publico).pdf)
-            * [Law 10541](https://www.argentina.gob.ar/normativa/provincial/ley-10541-123456789-0abc-defg-145-0100evorpyel/actualizacion)
+            * [Law 7285/84](https://web.archive.org/web/20241208122634/https://www.entrerios.gov.ar/dgrrhh/normativas/7285%20-%20Feriado%203%20de%20febrero.pdf)
+            * [Decree 4359/93](https://web.archive.org/web/20240626093740/https://www.entrerios.gov.ar/dgrrhh/normativas/1993%20-%204359%20MGJE%20(San%20Miguel%20Arcangel).pdf)
+            * [Decree 216/2003](https://web.archive.org/web/20220816033046/https://www.entrerios.gov.ar/dgrrhh/normativas/2003%20-%20216%20GOB%20(Dia%20del%20Empleado%20Publico).pdf)
+            * [Law 10541](https://web.archive.org/web/20250417063744/https://www.argentina.gob.ar/normativa/provincial/ley-10541-123456789-0abc-defg-145-0100evorpyel/actualizacion)
         * Jujuy:
-            * [Law 4059](https://boletinoficial.jujuy.gob.ar/?p=44711)
-            * [Law 4927](https://boletinoficial.jujuy.gob.ar/?p=56587)
-            * [Law 5005](https://boletinoficial.jujuy.gob.ar/?p=51196)
-            * [Law 6197](https://boletinoficial.jujuy.gob.ar/?p=204052)
+            * [Law 4059](https://web.archive.org/web/20250416043711/https://boletinoficial.jujuy.gob.ar/?p=44711)
+            * [Law 4927](https://web.archive.org/web/20250415213548/https://boletinoficial.jujuy.gob.ar/?p=56587)
+            * [Law 5005](https://web.archive.org/web/20250414192446/https://boletinoficial.jujuy.gob.ar/?p=51196)
+            * [Law 6197](https://web.archive.org/web/20250422010737/https://boletinoficial.jujuy.gob.ar/?p=204052)
         * La Rioja:
-            * [Law 6886](https://www.argentina.gob.ar/normativa/provincial/ley-6886-123456789-0abc-defg-688-6000fvorpyel/actualizacion)
-            * [Law 9844](https://www.argentina.gob.ar/normativa/provincial/ley-9844-123456789-0abc-defg-448-9000fvorpyel/actualizacion)
-            * [Law 9955](https://www.argentina.gob.ar/normativa/provincial/ley-9955-123456789-0abc-defg-559-9000fvorpyel/actualizacion)
-            * [Law 10242](https://www.argentina.gob.ar/normativa/provincial/ley-10242-123456789-0abc-defg-242-0100fvorpyel/actualizacion)
-            * [Law 10298](https://www.argentina.gob.ar/normativa/provincial/ley-10298-123456789-0abc-defg-892-0100fvorpyel/actualizacion)
-            * [Law 1035](https://www.argentina.gob.ar/normativa/provincial/ley-1035-123456789-0abc-defg-153-0100fvorpyel/actualizacion)
+            * [Law 6886](https://web.archive.org/web/20250415205303/https://www.argentina.gob.ar/normativa/provincial/ley-6886-123456789-0abc-defg-688-6000fvorpyel/actualizacion)
+            * [Law 9844](https://web.archive.org/web/20250416124635/https://www.argentina.gob.ar/normativa/provincial/ley-9844-123456789-0abc-defg-448-9000fvorpyel/actualizacion)
+            * [Law 9955](https://web.archive.org/web/20250414092438/https://www.argentina.gob.ar/normativa/provincial/ley-9955-123456789-0abc-defg-559-9000fvorpyel/actualizacion)
+            * [Law 10242](https://web.archive.org/web/20250414195737/https://www.argentina.gob.ar/normativa/provincial/ley-10242-123456789-0abc-defg-242-0100fvorpyel/actualizacion)
+            * [Law 10298](https://web.archive.org/web/20250416014331/https://www.argentina.gob.ar/normativa/provincial/ley-10298-123456789-0abc-defg-892-0100fvorpyel/actualizacion)
+            * [Law 1035](https://web.archive.org/web/20250415042554/https://www.argentina.gob.ar/normativa/provincial/ley-1035-123456789-0abc-defg-153-0100fvorpyel/actualizacion)
         * Mendoza:
-            * [Law 4081](https://www.argentina.gob.ar/normativa/provincial/ley-4081-123456789-0abc-defg-534-0000mvorpyel/actualizacion)
+            * [Law 4081](https://web.archive.org/web/20250418220022/https://www.argentina.gob.ar/normativa/provincial/ley-4081-123456789-0abc-defg-534-0000mvorpyel/actualizacion)
         * Salta:
-            * [Law 5032](https://www.argentina.gob.ar/normativa/provincial/ley-5032-123456789-0abc-defg-230-5000avorpyel/actualizacion)
+            * [Law 5032](https://web.archive.org/web/20250414055533/https://www.argentina.gob.ar/normativa/provincial/ley-5032-123456789-0abc-defg-230-5000avorpyel/actualizacion)
         * San Juan:
-            * [Law 14-P](https://www.argentina.gob.ar/normativa/provincial/ley-14-123456789-0abc-defg-410-0061jvorpyel/actualizacion)
+            * [Law 14-P](https://web.archive.org/web/20250427173119/https://www.argentina.gob.ar/normativa/provincial/ley-14-123456789-0abc-defg-410-0061jvorpyel/actualizacion)
         * San Luis:
-            * [Law II-0046-2004](https://www.argentina.gob.ar/normativa/provincial/ley-46-123456789-0abc-defg-640-0001dvorpyel/actualizacion)
+            * [Law II-0046-2004](https://web.archive.org/web/20250427173701/https://www.argentina.gob.ar/normativa/provincial/ley-46-123456789-0abc-defg-640-0001dvorpyel/actualizacion)
         * Santa Cruz:
-            * [Law 2882](https://www.argentina.gob.ar/normativa/provincial/ley-2882-123456789-0abc-defg-288-2000zvorpyel/actualizacion)
-            * [Law 3342](https://www.argentina.gob.ar/normativa/provincial/ley-3342-123456789-0abc-defg-243-3000zvorpyel/actualizacion)
-            * [Law 3419](https://www.argentina.gob.ar/normativa/provincial/ley-3419-123456789-0abc-defg-914-3000zvorpyel/actualizacion)
-            * [Law 3668](https://www.argentina.gob.ar/normativa/provincial/ley-3668-123456789-0abc-defg-866-3000zvorpyel/actualizacion)
+            * [Law 2882](https://web.archive.org/web/20250427173158/https://www.argentina.gob.ar/normativa/provincial/ley-2882-123456789-0abc-defg-288-2000zvorpyel/actualizacion)
+            * [Law 3342](https://web.archive.org/web/20250427173122/https://www.argentina.gob.ar/normativa/provincial/ley-3342-123456789-0abc-defg-243-3000zvorpyel/actualizacion)
+            * [Law 3419](https://web.archive.org/web/20250427173122/https://www.argentina.gob.ar/normativa/provincial/ley-3419-123456789-0abc-defg-914-3000zvorpyel/actualizacion)
+            * [Law 3668](https://web.archive.org/web/20250427173133/https://www.argentina.gob.ar/normativa/provincial/ley-3668-123456789-0abc-defg-866-3000zvorpyel/actualizacion)
         * Tierra del Fuego:
-            * [Law 7/92](https://www.argentina.gob.ar/normativa/provincial/ley-7-123456789-0abc-defg-751-0000vvorpyel/actualizacion)
-            * [Law 1389/2021](https://www.argentina.gob.ar/normativa/provincial/ley-1389-123456789-0abc-defg-588-1000vvorpyel/actualizacion)
+            * [Law 7/92](https://web.archive.org/web/20250427173650/https://www.argentina.gob.ar/normativa/provincial/ley-7-123456789-0abc-defg-751-0000vvorpyel/actualizacion)
+            * [Law 1389/2021](https://web.archive.org/web/20250427173101/https://www.argentina.gob.ar/normativa/provincial/ley-1389-123456789-0abc-defg-588-1000vvorpyel/actualizacion)
         * Tucumán:
-            * [Law 1765](https://www.fet.com.ar/nota/1054/feriado-en-tucuman-24-de-setiembre)
+            * [Law 1765](https://web.archive.org/web/20241213162228/https://fet.com.ar/nota/1054/feriado-en-tucuman-24-de-setiembre)
 
     Other sources:
-        * <https://biblioteca.afip.gob.ar/search/query/index.aspx>
-        * <https://www.argentina.gob.ar/interior/feriados>
-        * <http://servicios.lanacion.com.ar/feriados>
-        * <https://www.clarin.com/feriados/>
-        * <https://www.saij.gob.ar/>
+        * <https://web.archive.org/web/20250402221607/https://biblioteca.afip.gob.ar/search/query/index.aspx>
+        * <https://web.archive.org/web/20250219140544/https://www.argentina.gob.ar/interior/feriados>
+        * <https://web.archive.org/web/20250403071214/https://servicios.lanacion.com.ar/feriados>
+        * <https://web.archive.org/web/20250406124816/https://www.clarin.com/feriados>
+        * <https://web.archive.org/web/20250426175526/http://www.saij.gob.ar/>
 
     Checked With:
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2015>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2016>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2017>
-        * <https://servicios.lanacion.com.ar/app-mobile/feriados/2018>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2019>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2020>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2021>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2022>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2023>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2024>
-        * <https://www.argentina.gob.ar/interior/feriados-nacionales-2025>
-        * [Entre Ríos](https://www.entrerios.gov.ar/dgrrhh/index.php?i=7)
-        * [Tierra del Fuego](https://www.justierradelfuego.gov.ar/dias-no-laborables/)
+        * <https://web.archive.org/web/20250501050306/https://www.lanacion.com.ar/sociedad/conoce-el-calendario-de-feriados-2015-nid1741224/>
+        * <https://web.archive.org/web/20250501050042/https://www.lanacion.com.ar/sociedad/como-es-el-calendario-de-feriados-para-2016-nid1846640/>
+        * <https://web.archive.org/web/20250501045504/https://www.lanacion.com.ar/sociedad/feriados-puente-2017-gobierno-calendario-nid1978221/>
+        * <https://web.archive.org/web/20250501045044/https://www.lanacion.com.ar/sociedad/feriados-2018-asi-quedo-el-calendario-nid2081185/>
+        * <https://web.archive.org/web/20201102185631/https://www.argentina.gob.ar/interior/feriados-nacionales-2019>
+        * <https://web.archive.org/web/20220111194913/https://www.argentina.gob.ar/interior/feriados-nacionales-2020>
+        * <https://web.archive.org/web/20220527150354/https://www.argentina.gob.ar/interior/feriados-nacionales-2021>
+        * <https://web.archive.org/web/20230307074516/https://www.argentina.gob.ar/interior/feriados-nacionales-2022>
+        * <https://web.archive.org/web/20231231171358/https://www.argentina.gob.ar/interior/feriados-nacionales-2023>
+        * <https://web.archive.org/web/20241211171318/https://www.argentina.gob.ar/interior/feriados-nacionales-2024>
+        * <https://web.archive.org/web/20250106182732/https://www.argentina.gob.ar/interior/feriados-nacionales-2025>
+        * [Entre Ríos](https://web.archive.org/web/20241003004359/https://www.entrerios.gov.ar/dgrrhh/index.php?i=7)
+        * [Tierra del Fuego](https://web.archive.org/web/20240716112344/https://www.justierradelfuego.gov.ar/dias-no-laborables/)
         * Jujuy:
-            * <https://agpjujuy.gob.ar/Archivos/Calendario2024.pdf>
-            * <https://agpjujuy.gob.ar/Archivos/Calendario2025.pdf>
+            * <https://web.archive.org/web/20241202223127/http://agpjujuy.gob.ar/Archivos/Calendario2024.pdf>
+            * <https://web.archive.org/web/20250427172904/https://agpjujuy.gob.ar/Archivos/Calendario2025.pdf>
     """
 
     country = "AR"
@@ -206,7 +206,7 @@ class Argentina(
     supported_languages = ("en_US", "es", "uk")
     supported_categories = (ARMENIAN, BANK, GOVERNMENT, HEBREW, ISLAMIC, PUBLIC)
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -813,20 +813,23 @@ class ArgentinaStaticHolidays:
     """Argentina special holidays.
 
     Special Holidays References:
-        * [Decree 615/2010](https://www.argentina.gob.ar/normativa/nacional/decreto-615-2010-166825/texto)
-        * [Joint Resolution 1159/2010](https://www.argentina.gob.ar/normativa/nacional/resolución-1159-2010-173748/texto)
-        * [Law 26721](https://www.argentina.gob.ar/normativa/nacional/ley-26721-191835/texto)
-        * [Law 26763](https://www.argentina.gob.ar/normativa/nacional/ley-26763-201915/texto)
-        * [Law 26837](https://www.argentina.gob.ar/normativa/nacional/ley-26837-207405/texto)
-        * [Law 26840](https://www.argentina.gob.ar/normativa/nacional/ley-26840-207258/texto)
-        * [Decree 42/2022](https://www.argentina.gob.ar/normativa/nacional/decreto-42-2022-360018/texto)
-        * [Decree 842/2022](https://www.argentina.gob.ar/normativa/nacional/decreto-842-2022-376857/texto)
+        * [Decree 615/2010](https://web.archive.org/web/20240109181152/https://www.argentina.gob.ar/normativa/nacional/decreto-615-2010-166825/texto)
+        * [Joint Resolution 1159/2010](https://web.archive.org/web/20231215002151/https://www.argentina.gob.ar/normativa/nacional/resolución-1159-2010-173748/texto)
+        * [Law 26721](https://web.archive.org/web/20240109181220/https://www.argentina.gob.ar/normativa/nacional/ley-26721-191835/texto)
+        * [Law 26763](https://web.archive.org/web/20240109181221/https://www.argentina.gob.ar/normativa/nacional/ley-26763-201915/texto)
+        * [Law 26837](https://web.archive.org/web/20240109181217/https://www.argentina.gob.ar/normativa/nacional/ley-26837-207405/texto)
+        * [Law 26840](https://web.archive.org/web/20240109181218/https://www.argentina.gob.ar/normativa/nacional/ley-26840-207258/texto)
+        * [Decree 42/2022](https://web.archive.org/web/20241208143041/https://www.argentina.gob.ar/normativa/nacional/decreto-42-2022-360018/texto)
+        * [Decree 842/2022](https://web.archive.org/web/20240114151710/https://www.argentina.gob.ar/normativa/nacional/decreto-842-2022-376857/texto)
 
     Special Bank Holidays References:
-        * [Release P50962 (2019)](https://bcra.gob.ar/Pdfs/comytexord/P50962.pdf)
-        * [Release P50983 (2020)](https://bcra.gob.ar/Pdfs/comytexord/P50983.pdf)
-        * [Release P51020 (2021)](https://bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
-        * [Release P51155 (2024)](https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
+        * [Release P50962 (2019)](https://web.archive.org/web/20250219192339/https://www.bcra.gob.ar/Pdfs/comytexord/P50962.pdf)
+        * [Release P50983 (2020)](https://web.archive.org/web/20241203102423/https://www.bcra.gob.ar/Pdfs/comytexord/p50983.pdf)
+        * [Release P51020 (2021)](https://web.archive.org/web/20240616000609/http://www.bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
+        * [Release P51155 (2024)](https://web.archive.org/web/20250427172945/https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
+
+    Special Subdivision-level Holidays References:
+        * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
 
     Special Subdivision-level Holidays References:
         * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
@@ -836,15 +839,15 @@ class ArgentinaStaticHolidays:
     There's no Bridge Holidays declared in 2017.
 
     Bridge Holidays References:
-        * [Decree 1585/2010 (2011-2013 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-1585-2010-174391/texto)
-        * [Decree 1768/2013 (2014-2016 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-1768-2013-222021/texto)
-        * [Decree 923/2017 (2018-2019 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-923-2017-287145)
-        * [Decree 717/2019 (2020 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-717-2019-330204/texto)
-        * [Decree 947/2020 (2021 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-947-2020-344620/texto)
-        * [Decree 789/2021 (2022 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-789-2021-356678/texto)
-        * [Decree 764/2022 (2023 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-764-2022-375264/texto)
-        * [Decree 106/2023 (2024 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-106-2023-395689/texto)
-        * [Decree 1017/2024 (2025 Bridge Holidays)](https://www.argentina.gob.ar/normativa/nacional/decreto-1027-2024-406417/texto)
+        * [Decree 1585/2010 (2011-2013 Bridge Holidays)](https://web.archive.org/web/20240109181210/https://www.argentina.gob.ar/normativa/nacional/decreto-1585-2010-174391/texto)
+        * [Decree 1768/2013 (2014-2016 Bridge Holidays)](https://web.archive.org/web/20240109181211/https://www.argentina.gob.ar/normativa/nacional/decreto-1768-2013-222021/texto)
+        * [Decree 923/2017 (2018-2019 Bridge Holidays)](https://web.archive.org/web/20231215115842/https://www.argentina.gob.ar/normativa/nacional/decreto-923-2017-287145)
+        * [Decree 717/2019 (2020 Bridge Holidays)](https://web.archive.org/web/20241208012315/https://www.argentina.gob.ar/normativa/nacional/decreto-717-2019-330204/texto)
+        * [Decree 947/2020 (2021 Bridge Holidays)](https://web.archive.org/web/20250424202105/https://www.argentina.gob.ar/normativa/nacional/decreto-947-2020-344620/texto)
+        * [Decree 789/2021 (2022 Bridge Holidays)](https://web.archive.org/web/20250114061352/https://www.argentina.gob.ar/normativa/nacional/decreto-789-2021-356678/texto)
+        * [Decree 764/2022 (2023 Bridge Holidays)](https://web.archive.org/web/20250216064929/https://www.argentina.gob.ar/normativa/nacional/decreto-764-2022-375264/texto)
+        * [Decree 106/2023 (2024 Bridge Holidays)](https://web.archive.org/web/20240930174820/https://www.argentina.gob.ar/normativa/nacional/decreto-106-2023-395689/texto)
+        * [Decree 1017/2024 (2025 Bridge Holidays)](https://web.archive.org/web/20241227231911/https://www.argentina.gob.ar/normativa/nacional/decreto-1027-2024-406417/texto)
     """
 
     # Bridge Public Holiday.

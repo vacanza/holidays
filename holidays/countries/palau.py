@@ -20,10 +20,10 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Palau holidays.
 
     References:
-        * [Chapter 7, Holidays](http://www.paclii.org/pw/legis/consol_act/gpt1262/)
-        * <https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
-        * [EO336 Memorial Day repealed](https://www.facebook.com/PalauPresident/posts/195883107230463)
-        * [Earliest source for President's Day](https://www.taiwanembassy.org/pal_en/post/792.html)
+        * [Chapter 7, Holidays](https://web.archive.org/web/20250130144425/http://www.paclii.org/pw/legis/consol_act/gpt1262/)
+        * <https://web.archive.org/web/20240627055859/https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
+        * [EO336 Memorial Day repealed](https://web.archive.org/web/20250429131246/https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/PalauPresident/posts/195883107230463)
+        * [Earliest source for President's Day](https://web.archive.org/web/20250429075658/https://www.taiwanembassy.org/pal_en/post/792.html)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the
     following Monday shall be observed as a holiday. If any of the holidays enumerated in
@@ -109,9 +109,9 @@ class PalauStaticHolidays:
     """Palau special holidays.
 
     References:
-        * <https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
-        * <https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
-        * <https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202645/https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202650/https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
+        * <https://web.archive.org/web/20250608202639/https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
     """
 
     special_armed_forces_holidays = {

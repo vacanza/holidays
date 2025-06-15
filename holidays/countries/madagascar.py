@@ -21,8 +21,8 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Madagascar holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/madagascar>
-        * <https://www.timeanddate.com/holidays/madagascar/>
+        * <https://web.archive.org/web/20250114061412/https://www.officeholidays.com/countries/madagascar>
+        * <https://web.archive.org/web/20250413112126/https://www.timeanddate.com/holidays/madagascar/>
     """
 
     country = "MG"

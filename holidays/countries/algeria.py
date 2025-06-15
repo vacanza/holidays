@@ -22,8 +22,8 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Algeria>
-        * <https://www.horizons.dz/english/archives/amp/12021>
-        * <https://www.thenationalnews.com/mena/2021/12/07/when-is-the-weekend-in-the-arab-world/>
+        * <https://web.archive.org/web/20250427180223/https://www.horizons.dz/english/archives/amp/12021>
+        * <https://web.archive.org/web/20241231091630/https://www.thenationalnews.com/mena/2021/12/07/when-is-the-weekend-in-the-arab-world/>
     """
 
     country = "DZ"
@@ -32,7 +32,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US", "fr")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

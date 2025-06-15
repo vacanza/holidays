@@ -24,39 +24,39 @@ class China(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays,
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_China>
         * [Festivals and Public Holidays](https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期)
-        * [2024 changes (Order #795)](https://www.gov.cn/zhengce/content/202411/content_6986380.htm)
-        * [2025](https://www.gov.cn/zhengce/content/202411/content_6986382.htm)
-        * [2024](https://www.gov.cn/zhengce/content/202310/content_6911527.htm)
-        * [2023](https://www.gov.cn/gongbao/content/2023/content_5736714.htm)
-        * [2022](https://www.gov.cn/gongbao/content/2021/content_5651728.htm)
-        * [2021](https://www.gov.cn/gongbao/content/2020/content_5567750.htm)
-        * [2020 Extensions](https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm)
-        * [2020](https://www.gov.cn/gongbao/content/2019/content_5459138.htm)
-        * [2019](https://www.gov.cn/gongbao/content/2018/content_5350046.htm)
-        * [2018](https://www.gov.cn/gongbao/content/2017/content_5248221.htm)
-        * [2017](https://www.gov.cn/gongbao/content/2016/content_5148793.htm)
-        * [2016](https://www.gov.cn/gongbao/content/2016/content_2979719.htm)
-        * [2015](https://www.gov.cn/gongbao/content/2015/content_2799019.htm)
-        * [2014](https://www.gov.cn/gongbao/content/2014/content_2561299.htm)
-        * [2013](https://www.gov.cn/gongbao/content/2012/content_2292057.htm)
-        * [2012](https://www.gov.cn/gongbao/content/2011/content_2020918.htm)
-        * [2011](https://www.gov.cn/gongbao/content/2010/content_1765282.htm)
-        * [2010](https://www.gov.cn/gongbao/content/2009/content_1487011.htm)
-        * [2009](https://www.gov.cn/gongbao/content/2008/content_1175823.htm)
-        * [2008](https://www.gov.cn/gongbao/content/2008/content_859870.htm)
-        * [2007](https://www.gov.cn/gongbao/content/2007/content_503397.htm)
-        * [2006](https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知)
-        * [2005](https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知)
-        * [2004](https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知)
-        * [2003](https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知)
-        * [2002](https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知)
-        * [2001](https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知)
+        * [2024 changes (Order #795)](https://web.archive.org/web/20250228151847/https://www.gov.cn/zhengce/content/202411/content_6986380.htm)
+        * [2025](https://web.archive.org/web/20250424041657/https://www.gov.cn/zhengce/content/202411/content_6986382.htm)
+        * [2024](https://web.archive.org/web/20250227033646/https://www.gov.cn/zhengce/content/202310/content_6911527.htm)
+        * [2023](https://web.archive.org/web/20250414125053/https://www.gov.cn/gongbao/content/2023/content_5736714.htm)
+        * [2022](https://web.archive.org/web/20250413071341/http://www.gov.cn/gongbao/content/2021/content_5651728.htm)
+        * [2021](https://web.archive.org/web/20250424075325/https://www.gov.cn/gongbao/content/2020/content_5567750.htm)
+        * [2020 Extensions](https://web.archive.org/web/20250427184932/https://www.gov.cn/zhengce/zhengceku/2020-01/27/content_5472352.htm)
+        * [2020](https://web.archive.org/web/20241222150612/https://www.gov.cn/gongbao/content/2019/content_5459138.htm)
+        * [2019](https://web.archive.org/web/20241202235023/https://www.gov.cn/gongbao/content/2018/content_5350046.htm)
+        * [2018](https://web.archive.org/web/20231205013402/https://www.gov.cn/gongbao/content/2017/content_5248221.htm)
+        * [2017](https://web.archive.org/web/20231205013333/https://www.gov.cn/gongbao/content/2016/content_5148793.htm)
+        * [2016](https://web.archive.org/web/20231205013233/https://www.gov.cn/gongbao/content/2016/content_2979719.htm)
+        * [2015](https://web.archive.org/web/20250427025304/https://www.gov.cn/gongbao/content/2015/content_2799019.htm)
+        * [2014](https://web.archive.org/web/20250426080722/https://www.gov.cn/gongbao/content/2014/content_2561299.htm)
+        * [2013](https://web.archive.org/web/20240229121946/https://www.gov.cn/gongbao/content/2012/content_2292057.htm)
+        * [2012](https://web.archive.org/web/20250420220922/https://www.gov.cn/gongbao/content/2011/content_2020918.htm)
+        * [2011](https://web.archive.org/web/20240812070712/https://www.gov.cn/gongbao/content/2010/content_1765282.htm)
+        * [2010](https://web.archive.org/web/20101210083603/http://www.gov.cn:80/gongbao/content/2009/content_1487011.htm)
+        * [2009](https://web.archive.org/web/20230726083438/https://www.gov.cn/gongbao/content/2008/content_1175823.htm)
+        * [2008](https://web.archive.org/web/20240610103541/https://www.gov.cn/gongbao/content/2008/content_859870.htm)
+        * [2007](https://web.archive.org/web/20230727050141/https://www.gov.cn/gongbao/content/2007/content_503397.htm)
+        * [2006](https://web.archive.org/web/20221130214247/https://zh.wikisource.org/wiki/国务院办公厅关于2006年部分节假日安排的通知)
+        * [2005](https://web.archive.org/web/20210212184000/https://zh.wikisource.org/wiki/国务院办公厅关于2005年部分节假日安排的通知)
+        * [2004](https://web.archive.org/web/20210212183857/https://zh.wikisource.org/wiki/国务院办公厅关于2004年部分节假日安排的通知)
+        * [2003](https://web.archive.org/web/20210302090553/https://zh.wikisource.org/wiki/国务院办公厅关于2003年部分节假日休息安排的通知)
+        * [2002](https://web.archive.org/web/20180122201149/https://zh.wikisource.org/wiki/国务院办公厅关于2002年部分节假日休息安排的通知)
+        * [2001](https://web.archive.org/web/20180123032517/https://zh.wikisource.org/wiki/国务院办公厅关于2001年春节、“五一”、“十一”放假安排的通知)
 
     Checked With:
-        * <https://www.officeholidays.com/countries/china/2023>
-        * <https://www.china-briefing.com/news/china-public-holiday-2023-schedule/>
-        * <https://www.timeanddate.com/calendar/?year=2023&country=41>
-        * [2001-2010](https://m.wannianli.tianqi.com/fangjiaanpai/2001.html)
+        * <https://web.archive.org/web/20250213085558/https://www.officeholidays.com/countries/china/2023>
+        * <https://web.archive.org/web/20250210121944/https://www.china-briefing.com/news/china-public-holiday-2023-schedule/>
+        * <https://web.archive.org/web/20250218010025/https://www.timeanddate.com/calendar/?year=2023&country=41>
+        * [2001-2010](https://web.archive.org/web/20250429074341/https://m.wannianli.tianqi.com/fangjiaanpai/2001.html)
 
     Limitations:
         * Only checked with the official General Office of the State Council Notice from 2001

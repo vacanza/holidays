@@ -24,8 +24,8 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan>
-        * [Labor Code 21.12.1995](https://lex.uz/docs/-142859)
-        * [Labor Code 28.10.2022](https://lex.uz/docs/-6257288)
+        * [Labor Code 21.12.1995](https://web.archive.org/web/20250422170827/https://lex.uz/docs/-142859)
+        * [Labor Code 28.10.2022](https://web.archive.org/web/20250424164306/https://lex.uz/docs/-6257288)
     """
 
     country = "UZ"
@@ -39,7 +39,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     supported_languages = ("en_US", "uk", "uz")
     start_year = 1992
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

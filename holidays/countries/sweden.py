@@ -22,7 +22,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige>
-        * <http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253>
+        * <https://web.archive.org/web/20250414065223/https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253>
         * <https://sv.wikipedia.org/wiki/Första_maj>
         * <https://sv.wikipedia.org/wiki/Sveriges_nationaldag>
         * <https://sv.wikipedia.org/wiki/Midsommarafton>

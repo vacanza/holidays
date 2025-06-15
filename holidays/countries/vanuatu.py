@@ -20,8 +20,8 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Vanuatu>
-        * <https://www.timeanddate.com/holidays/vanuatu/>
-        * <https://www.gov.vu/index.php/events/holidays>
+        * <https://web.archive.org/web/20250419100625/https://www.timeanddate.com/holidays/vanuatu>
+        * <https://web.archive.org/web/20250419062251/https://gov.vu/index.php/events/holidays>
     """
 
     country = "VU"

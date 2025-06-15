@@ -20,14 +20,14 @@ class Maldives(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Maldives>
-        * <https://www.timeanddate.com/holidays/maldives/>
-        * <http://www.mma.gov.mv/#/about/bankholidays>
+        * <https://web.archive.org/web/20250317114653/https://www.timeanddate.com/holidays/maldives>
+        * <https://web.archive.org/web/20250427131834/https://www.mma.gov.mv/>
     """
 
     country = "MV"
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

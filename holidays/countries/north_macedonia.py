@@ -108,7 +108,7 @@ class NorthMacedonia(
     )
     supported_languages = ("en_US", "mk", "uk")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -305,7 +305,7 @@ class NorthMacedoniaStaticHolidays:
     """North Macedonia special holidays.
 
     References:
-        * <https://mk.usembassy.gov/alert-presidential-and-parliamentary-elections-on-may-8-2024/>
+        * <https://web.archive.org/web/20250201212849/https://mk.usembassy.gov/alert-presidential-and-parliamentary-elections-on-may-8-2024/>
     """
 
     # Election Day.

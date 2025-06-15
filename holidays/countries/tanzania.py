@@ -31,23 +31,23 @@ class Tanzania(
 
     References:
         * [1962](https://old.tanzlii.org/tz/legislation/act/1962/48/)
-        * [1964](https://old.tanzlii.org/tz/legislation/act/1964/52/)
-        * [1966](https://old.tanzlii.org/tz/legislation/act/1966/39/)
-        * [1993](https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf)
-        * [1994](https://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf)
-        * [2002](http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf)
+        * [1964](https://web.archive.org/web/20250426030228/http://www.parliament.go.tz/polis/uploads/bills/acts/1565172859-The%20Public%20Holidays%20Ordinance%20(amendment)%20Act,%201964.pdf)
+        * [1966](https://web.archive.org/web/20241130122429/http://www.parliament.go.tz/polis/uploads/bills/acts/1565692654-The%20Public%20Holidays%20Ordinance%20(Amendment)%20Act,%201966.pdf)
+        * [1993](https://web.archive.org/web/20250425095011/https://www.parliament.go.tz/polis/uploads/bills/acts/1566639469-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20Act,%201993.pdf)
+        * [1994](https://web.archive.org/web/20241130115733/http://www.parliament.go.tz/polis/uploads/bills/acts/1566638051-The%20Written%20Laws%20(Miscellaneous%20Amendments)%20(No.%202)%20Act,%201994.pdf)
+        * [2002](https://web.archive.org/web/20250427172313/http://parliament.go.tz/polis/uploads/bills/acts/1454076376-ActNo-25-2002.pdf)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Tanzania>
-        * <http://mytanzaniatimes.blogspot.com/2014/08/holiday-nane-nane-farmers-day-in.html>
-        * <https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836>
-        * <https://www.dw.com/en/samia-suluhu-hassan-who-is-tanzanias-new-president/a-56932264>
+        * <https://web.archive.org/web/20250427125715/https://mytanzaniatimes.blogspot.com/2014/08/holiday-nane-nane-farmers-day-in.html>
+        * <https://web.archive.org/web/20231209061602/https://www.theeastafrican.co.ke/tea/business/tanzania-declares-public-holiday-on-census-day-3918836>
+        * <https://web.archive.org/web/20250413194112/https://www.dw.com/en/samia-suluhu-hassan-who-is-tanzanias-new-president/a-56932264>
 
     Checked With:
-        * [2023](https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf)
-        * [2022](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf)
-        * [2021](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf)
-        * [2020](https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf)
-        * [2018](https://issamichuzi.blogspot.com/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html)
-        * [from 2013 onwards](https://www.timeanddate.com/holidays/tanzania/)
+        * [2023](https://web.archive.org/web/20250403094322/https://www.bot.go.tz/webdocs/Other/2023%20public%20holidays.pdf)
+        * [2022](https://web.archive.org/web/20230123001009/https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202022.pdf)
+        * [2021](https://web.archive.org/web/20210812134750/https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202021.pdf)
+        * [2020](https://web.archive.org/web/20201219014125/https://www.bot.go.tz/webdocs/Other/PUBLIC%20HOLIDAYS%202020.pdf)
+        * [2018](https://web.archive.org/web/20190528223244/http://issamichuzi.blogspot.com:80/2017/11/sikukuu-za-kitaifa-zenye-mapumziko-kwa.html)
+        * [from 2013 onwards](https://web.archive.org/web/20250130093727/https://www.timeanddate.com/holidays/tanzania/)
 
     Limitations:
         * Only works from 1994 onwards due to the lack of sources for certain legislation:
@@ -66,7 +66,7 @@ class Tanzania(
     # Written Law (Miscellaneous Amendments) (No. 2) Act, 1994.
     start_year = 1994
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
