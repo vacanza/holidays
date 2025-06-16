@@ -28,7 +28,11 @@ class SolomonIslands(
     References:
         * [Public Holidays Act](https://web.archive.org/web/20250615054807/https://www.paclii.org/sb/legis/consol_act_1996/pha163.pdf)
         * [2016](https://web.archive.org/web/20250530230724/https://mehrd.gov.sb/documents?view=download&format=raw&fileId=4377)
+        * [2020](https://web.archive.org/web/20240908025223/https://solomons.gov.sb/national-and-provincial-public-holidays-2020/)
+        * [2021](https://web.archive.org/web/20241004035112/https://solomons.gov.sb/wp-content/uploads/2021/03/Gaz-No.-54-Sup-No.-50-Wednesday-10th-March-2021.pdf)
+        * [2022](https://web.archive.org/web/20240727185307/https://solomons.gov.sb/wp-content/uploads/2021/10/Gaz-No.-246-Tuesday-19th-October-2021-.pdf)
         * [2023](https://web.archive.org/web/20240810050725/https://solomons.gov.sb/wp-content/uploads/2022/12/Gaz-No.-324-Wednesday-21st-December-2022-1.pdf)
+        * [2024](https://web.archive.org/web/20240727124555/https://solomons.gov.sb/wp-content/uploads/2024/02/Gaz-No.-15-Monday-12th-FEBRUARY-2024.pdf)
         * [2025](https://web.archive.org/web/20250615054517/https://solomons.gov.sb/wp-content/uploads/2024/11/Gaz-No.-178-Monday-25th-November-2024.pdf)
 
     About the day appointed for the celebration of the Anniversary of the Birthday of the
