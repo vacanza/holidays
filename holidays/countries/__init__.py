@@ -35,6 +35,7 @@ from holidays.countries.belgium import Belgium, BE, BEL
 from holidays.countries.belize import Belize, BZ, BLZ
 from holidays.countries.benin import Benin, BJ, BEN
 from holidays.countries.bermuda import Bermuda, BM, BMU
+from holidays.countries.bhutan import Bhutan, BT, BTN
 from holidays.countries.bolivia import Bolivia, BO, BOL
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from holidays.countries.botswana import Botswana, BW, BWA
