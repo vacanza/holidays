@@ -24,3 +24,4 @@ Pipfile
 sbom.json
 site/
 venv/
+**/__pycache__/

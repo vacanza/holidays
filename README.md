@@ -560,6 +560,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+  <td>Faroe Islands</td>
+  <td>FO</td>
+  <td></td>
+  <td>da, en_US, <strong>fo</strong>, is, no, sv</td>
+  <td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Fiji</td>
 <td>FJ</td>
 <td></td>
