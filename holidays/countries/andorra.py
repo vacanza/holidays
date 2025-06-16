@@ -23,7 +23,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Andorra>
         * [Andorra's Constitution](https://web.archive.org/web/20250506145838/https://www.bopa.ad/Legislacio/Detall?doc=7586)
-        * [Government holidays source](https://seu.consellgeneral.ad/calendariPublic/show)
+        * [Government holidays source](https://web.archive.org/web/20241005040546/https://seu.consellgeneral.ad/calendariPublic/show)
         * [2025](https://web.archive.org/web/20250506142149/https://www.bopa.ad/Documents/Detall?doc=GD_2024_10_24_14_36_16)
 
     Subdivisions holidays:

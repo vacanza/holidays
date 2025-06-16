@@ -52,8 +52,8 @@ class SriLanka(
     """Sri Lanka holidays.
 
     References:
-        * [No. 29 of 1971 (Holidays Act)](http://www.commonlii.org/lk/legis/num_act/ha29o1971152)
-        * [No. 21 of 1991 (Amendment)](http://www.commonlii.org/lk/legis/num_act/ha21o1991232)
+        * [No. 29 of 1971 (Holidays Act)](https://web.archive.org/web/20250315041521/http://www.commonlii.org/lk/legis/num_act/ha29o1971152/)
+        * [No. 21 of 1991 (Amendment)](https://web.archive.org/web/20200221094206/http://www.commonlii.org:80/lk/legis/num_act/ha21o1991232/)
         * <https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm>
         * <https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf>
         * <https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php>
@@ -67,13 +67,13 @@ class SriLanka(
         * <https://web.archive.org/web/20111018071247/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2010.pdf>
         * <https://web.archive.org/web/20110722151043/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2011.pdf>
         * <https://web.archive.org/web/20111125074237/http://www.pubad.gov.lk/Holidays/Public&BankHolidays2012.pdf>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2019>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2020>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2021>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024>
-        * <https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025>
+        * <https://web.archive.org/web/20241206195320/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2019>
+        * <https://web.archive.org/web/20250420233412/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2020>
+        * <https://web.archive.org/web/20220524084434/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2021>
+        * <https://web.archive.org/web/20231210111149/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2022>
+        * <https://web.archive.org/web/20250218215654/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2023>
+        * <https://web.archive.org/web/20250217180119/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024>
+        * <https://web.archive.org/web/20250407061643/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025>
     """
 
     country = "LK"
@@ -88,7 +88,7 @@ class SriLanka(
     start_year = 1972
     end_year = 2025
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -298,9 +298,9 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2008: (DEC, 9),
         2009: (NOV, 28),
         2010: (NOV, 17),
-        # https://www.adaderana.lk/news.php?nid=15606
+        # https://web.archive.org/web/20111103102902/http://www.adaderana.lk:80/news.php?nid=15606
         2011: (NOV, 7),
-        # https://www.adaderana.lk/news.php?nid=20136
+        # https://web.archive.org/web/20121029024049/http://www.adaderana.lk:80/news.php?nid=20136
         2012: (OCT, 27),
         2013: (OCT, 16),
         2014: (OCT, 5),
@@ -376,20 +376,20 @@ class SriLankaStaticHolidays:
     """Sri Lanka special holdays.
 
     References:
-        * <https://www.adaderana.lk/news.php?nid=13026>
-        * <https://www.adaderana.lk/news.php?nid=17539>
-        * <https://www.adaderana.lk/news.php?nid=22168>
-        * <https://www.adaderana.lk/news.php?nid=34870>
-        * <https://www.adaderana.lk/news.php?nid=55146>
-        * <https://www.adaderana.lk/news.php?nid=61437>
-        * <https://www.adaderana.lk/news.php?nid=64367>
-        * <https://www.adaderana.lk/news.php?nid=81686>
-        * <https://www.adaderana.lk/news.php?nid=82111>
-        * <https://www.adaderana.lk/news.php?nid=82979>
-        * <https://www.adaderana.lk/news.php?nid=83082>
-        * <https://www.adaderana.lk/news.php?nid=84035>
-        * <https://www.adaderana.lk/news.php?nid=98560>
-        * <https://www.adaderana.lk/news.php?nid=102125>
+        * <https://web.archive.org/web/20110809085026/http://www.adaderana.lk:80/news.php?nid=13026>
+        * <https://web.archive.org/web/20250429080725/https://www.adaderana.lk/news.php?nid=17539>
+        * <https://web.archive.org/web/20130402104735/http://www.adaderana.lk:80/news.php?nid=22168>
+        * <https://web.archive.org/web/20160416130945/http://adaderana.lk:80/news.php?nid=34870>
+        * <https://web.archive.org/web/20190515145927/http://www.adaderana.lk/news.php?nid=55146>
+        * <https://web.archive.org/web/20200317133128/http://www.adaderana.lk/news.php?nid=61437>
+        * <https://web.archive.org/web/20250429080821/https://www.adaderana.lk/news.php?nid=64367>
+        * <https://web.archive.org/web/20220408080237/http://www.adaderana.lk/news.php?nid=81686>
+        * <https://web.archive.org/web/20250429080933/https://www.adaderana.lk/news.php?nid=82111>
+        * <https://web.archive.org/web/20220611075054/http://www.adaderana.lk/news.php?nid=82979>
+        * <https://web.archive.org/web/20220824142821/http://adaderana.lk/news.php?nid=83082>
+        * <https://web.archive.org/web/20220824142511/http://adaderana.lk/news.php?nid=84035>
+        * <https://web.archive.org/web/20240412063648/https://www.adaderana.lk/news.php?nid=98560>
+        * <https://web.archive.org/web/20241009053635/https://www.adaderana.lk/news.php?nid=102125>
         * <https://web.archive.org/web/20110722150724/http://www.pubad.gov.lk/Holidays/holidays%202003.htm>
         * <https://web.archive.org/web/20111018053717/http://www.pubad.gov.lk/Holidays/Public%20&%20Bank%20Holidays%202004.pdf>
         * <https://web.archive.org/web/20241120204015/https://documents.gov.lk/en/calendar.php>

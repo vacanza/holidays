@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 181 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 191 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -193,6 +193,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AO</td>
 <td></td>
 <td>en_US, <strong>pt_AO</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Anguilla</td>
+<td>AI</td>
+<td></td>
+<td><strong>en_AI</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -304,7 +311,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bermuda</td>
 <td>BM</td>
 <td></td>
-<td></td>
+<td><strong>en_BM</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -431,6 +438,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CG</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Cook Islands</td>
+<td>CK</td>
+<td></td>
+<td><strong>en_CK</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -651,11 +665,17 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<tr>
 <td>Guinea</td>
 <td>GN</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Guyana</td>
+<td>GY</td>
+<td></td>
+<td><strong>en_GY</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -911,6 +931,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Micronesia</td>
+<td>FM</td>
+<td>States: KSA (Kosrae, Kusaie), PNI (Pohnpei, Ponape), TRK (Chuuk, Truk), YAP (Yap)</td>
+<td><strong>en_FM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Moldova</td>
 <td>MD</td>
 <td></td>
@@ -949,7 +976,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
+<td><strong>en_NA</strong>, en_US, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Nauru</td>
+<td>NR</td>
+<td></td>
+<td><strong>en_NR</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -981,6 +1015,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Niger</td>
+<td>NE</td>
+<td></td>
+<td>en_US, <strong>fr_NE</strong></td>
+<td>OPTIONAL</td>
+</tr>
+<tr>
 <td>Nigeria</td>
 <td>NG</td>
 <td></td>
@@ -1004,7 +1045,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td></td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1149,6 +1190,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Senegal</td>
+<td>SN</td>
+<td></td>
+<td>en_US, <strong>fr_SN</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Serbia</td>
 <td>RS</td>
 <td></td>
@@ -1191,6 +1239,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>WORKDAY</td>
 </tr>
 <tr>
+<td>Solomon Islands</td>
+<td>SB</td>
+<td>Subdivisions: CE (Central), CH (Choiseul), CT (Capital Territory, Honiara), GU (Guadalcanal), IS (Isabel), MK (Makira-Ulawa), ML (Malaita), RB (Rennell and Bellona), TE (Temotu), WE (Western)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
@@ -1223,6 +1278,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SR</td>
 <td></td>
 <td>en_US, <strong>nl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Svalbard and Jan Mayen</td>
+<td>SJ</td>
+<td>Can also be loaded as country NO, subdivision 21 and 22</td>
+<td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1301,6 +1363,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Turks and Caicos Islands</td>
+<td>TC</td>
+<td></td>
+<td><strong>en_TC</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Tuvalu</td>

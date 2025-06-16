@@ -35,15 +35,15 @@ class Nepal(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Nepal>
-        * <https://narayanilawfirm.org.np/list-of-public-holidays-in-nepal-2079/>
-        * <https://www.timeanddate.com/holidays/nepal/>
-        * <https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
-        * <https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
-        * <https://english.hamropatro.com/nepali-public-holidays>
-        * <https://english.hamropatro.com/calendar>
-        * <https://www.ashesh.com.np/nepali-calendar/>
-        * <https://www.bolpatra.gov.np/egp/openDateConverter>
-        * <https://www.moha.gov.np/en/page/holidays>
+        * <https://web.archive.org/web/20250422191700/https://narayanilawfirm.org.np/list-of-public-holidays-in-nepal-2079/>
+        * <https://web.archive.org/web/20250131082346/https://www.timeanddate.com/holidays/nepal/>
+        * <https://web.archive.org/web/20240911172745/https://kathmandupost.com/national/2018/03/29/government-trims-public-holidays-by-22-days>
+        * <https://web.archive.org/web/20250419211438/https://kathmandupost.com/national/2021/02/13/two-years-after-shortening-public-holiday-list-government-starts-adding-to-it-again>
+        * <https://web.archive.org/web/20250316094224/https://english.hamropatro.com/nepali-public-holidays>
+        * <https://web.archive.org/web/20250527164012/https://english.hamropatro.com/calendar>
+        * <https://web.archive.org/web/20250322000610/https://www.ashesh.com.np/nepali-calendar/>
+        * <https://web.archive.org/web/20250117021312/https://www.bolpatra.gov.np/egp/openDateConverter>
+        * <https://web.archive.org/web/20241013164133/https://www.moha.gov.np/en/page/holidays>
     """
 
     country = "NP"
@@ -52,7 +52,7 @@ class Nepal(
     start_year = 2010
     supported_categories = (PUBLIC, WORKDAY)
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -410,12 +410,12 @@ class NepalStaticHolidays:
     """Nepal special holidays.
 
     References:
-        * [Death of Krishna Prasad Bhattarai](https://myrepublica.nagariknetwork.com/news/27618/)
-        * [Death of Sushil Koirala](https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
-        * [Crash of Yeti Airlines Flight 691](https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
-        * [People's War Day Instituted](https://kathmandupost.com/national/2023/02/12/government-announces-public-holiday-on-monday-to-mark-people-s-war-day)
-        * [People's War Day Annulled](https://kathmandupost.com/national/2023/12/29/supreme-court-annuls-public-holiday-on-people-s-war-day)
-        * [Death of Subas Chandra Nembang](https://en.nepalkhabar.com/news/detail/6023/)
+        * [Death of Krishna Prasad Bhattarai](https://web.archive.org/web/20250527164153/https://myrepublica.nagariknetwork.com/news/27618/)
+        * [Death of Sushil Koirala](https://web.archive.org/web/20250527164210/https://kathmandupost.com/miscellaneous/2016/02/09/cabinet-decision-koirala-to-be-honoured-with-state-funeral)
+        * [Crash of Yeti Airlines Flight 691](https://web.archive.org/web/20250123204057/https://edition.cnn.com/2023/01/15/asia/nepal-yeti-airlines-crash-intl-hnk/index.html)
+        * [People's War Day Instituted](https://web.archive.org/web/20241211215602/https://kathmandupost.com/national/2023/02/12/government-announces-public-holiday-on-monday-to-mark-people-s-war-day)
+        * [People's War Day Annulled](https://web.archive.org/web/20240111230228/https://kathmandupost.com/national/2023/12/29/supreme-court-annuls-public-holiday-on-people-s-war-day)
+        * [Death of Subas Chandra Nembang](https://web.archive.org/web/20241214193305/https://en.nepalkhabar.com/news/detail/6023/)
     """
 
     # Day of National Mourning.

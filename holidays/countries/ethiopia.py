@@ -25,12 +25,12 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     """Ethiopia holidays.
 
     References:
-        * [Proclamation No. 29/1996](https://www.lawethiopia.com/images/federal_proclamation/proclamations_by_number/29.pdf)
-        * [Proclamation No. 1334/2024](https://lawethiopiacomment.wordpress.com/wp-content/uploads/2024/08/public-holiday-stamped.pdf)
-        * <https://www.edarabia.com/ethiopia/public-holidays/>
+        * [Proclamation No. 29/1996](https://web.archive.org/web/20240918183943/https://lawethiopia.com/images/federal_proclamation/proclamations_by_number/29.pdf)
+        * [Proclamation No. 1334/2024](https://web.archive.org/web/20240823080839/https://lawethiopiacomment.wordpress.com/wp-content/uploads/2024/08/public-holiday-stamped.pdf)
+        * <https://web.archive.org/web/20250427173714/https://www.edarabia.com/ethiopia/public-holidays/>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Ethiopia>
         * <https://en.wikipedia.org/wiki/Nations,_Nationalities_and_Peoples'_Day>
-        * <https://www.timeanddate.com/holidays/ethiopia/>
+        * <https://web.archive.org/web/20250408213218/https://www.timeanddate.com/holidays/ethiopia/>
     """
 
     country = "ET"
@@ -58,7 +58,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
         return isleap(self._year + 1)
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

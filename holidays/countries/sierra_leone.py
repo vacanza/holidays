@@ -22,10 +22,10 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     """Sierra Leone holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/sierra-leone>
+        * <https://web.archive.org/web/20241006064824/https://www.officeholidays.com/countries/sierra-leone>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Sierra_Leone>
-        * <https://www.timeanddate.com/holidays/sierra-leone/>
-        * <https://salpost.gov.sl/opening-time-national-holidays>
+        * <https://web.archive.org/web/20250408204431/https://www.timeanddate.com/holidays/sierra-leone/>
+        * <https://web.archive.org/web/20240727123934/http://salpost.gov.sl/opening-time-national-holidays>
     """
 
     country = "SL"
@@ -40,7 +40,7 @@ class SierraLeone(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     # Sierra Leone gained independence on April 27, 1961.
     start_year = 1962
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -112,7 +112,7 @@ class SierraLeoneIslamicHolidays(_CustomIslamicHolidays):
     """Sierra Leone Islamic holidays exact dates.
 
     References:
-        * <https://www.timeanddate.com/holidays/sierra-leone/>
+        * <https://web.archive.org/web/20250408204431/https://www.timeanddate.com/holidays/sierra-leone/>
     """
 
     # Prophet's Birthday

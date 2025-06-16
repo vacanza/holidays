@@ -1,3 +1,34 @@
+# Version 0.75
+
+Released June 16, 2025
+
+- Refactor TF holidays (#2612 by @KJhellico)
+- Refactor Trinidad and Tobago holidays (#2617 by @PPsyrius)
+- Refactor `__init__` method signature (#2618 by @KJhellico)
+- Add Anguilla holidays (#2615 by @Prateekshit73, @arkid15r, @KJhellico)
+- Add Cook Islands holidays (#2582 by @tr33k, @arkid15r)
+- Add Guyana holidays (#2614 by @kritibirda26, @arkid15r)
+- Add Micronesia holidays (#2594 by @nalin-28, @arkid15r, @PPsyrius)
+- Add Nauru holidays (#2609 by @Roshan-1024, @arkid15r, @KJhellico)
+- Add Niger holidays (#2583 by @Abheelash-Mishra, @arkid15r)
+- Add Senegal holidays (#2593 by @Wasif-Shahzad, @arkid15r)
+- Add Solomon Islands holidays (#2632 by @kritibirda26, @arkid15r, @KJhellico)
+- Add Svalbard and Jan Mayen holidays (#2638 by @PPsyrius)
+- Add Turks and Caicos Islands holidays (#2483 by @ShalomDee)
+- Improve Togo holidays test coverage (#2628 by @Roshan-1024)
+- Update Bermuda holidays: add l10n support (#2589 by @kritibirda26)
+- Update Hungary holidays: update 1991-2026 special holidays (#2568 by @prokaj)
+- Update Namibia holidays, add l10n support (#2629 by @KJhellico)
+- Update Philippines holidays: 2025 Eid'l Adha Proclamation URL (#2600 by @kleo)
+- Update SPONSORSHIP.md (#2588 by @arkid15r)
+- Update Singapore holidays: add 2026 public holidays (#2637 by @PPsyrius)
+- Update countries/financial with absolute imports (#2599 by @laurentco, @arkid15r)
+- Add Wayback Machine URL archiver and replacer script (#2504 by @kritibirda26)
+- Add l10n helper script (#2607 by @KJhellico)
+- Archive more links (#2622 by @kritibirda26)
+- Replace flake8 noqa-s w/ ruff (#2610 by @arkid15r)
+- Set Python 3.13 as primary in CI/CD (#2605 by @KJhellico)
+
 # Version 0.74
 
 Released June 2, 2025

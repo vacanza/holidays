@@ -24,7 +24,7 @@ class HolidaysTF(France):
         the holidays are just the public ones from France.
 
     References:
-        * <https://www.iso.org/obp/ui#iso:code:3166:TF>
+        * <https://web.archive.org/web/20250427081803/https://www.iso.org/obp/ui/>
         * <https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
     """
@@ -35,10 +35,6 @@ class HolidaysTF(France):
     subdivisions_aliases = {}  # Override France subdivisions aliases.
     # This overseas territory was separated in 1955.
     start_year = 1956
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "TF"
-        super()._populate_public_holidays()
 
 
 class FrenchSouthernTerritories(HolidaysTF):

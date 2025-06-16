@@ -38,6 +38,8 @@ ISLAMIC_HOLIDAYS = (
     (1, 10, "ASHURA"),  # Ashura
     # MY
     (2, 6, "HARI_HOL_JOHOR"),  # Hari Hol of Johor
+    # SN
+    (2, 18, "GRAND_MAGAL_OF_TOUBA"),  # Grand Magal of Touba
     # BH, DJ, EG, ET, IN, ID, MY, MA, NG, PK, TN, AE
     (3, 12, "MAWLID"),  # Birthday of Prophet
     # DJ, ID, IR, MY, AE

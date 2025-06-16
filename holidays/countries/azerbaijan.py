@@ -30,7 +30,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan>
         * <https://az.wikipedia.org/wiki/Azərbaycanın_dövlət_bayramları_və_xüsusi_günləri>
-        * <https://www.sosial.gov.az/en/prod-calendar>
+        * <https://web.archive.org/web/20240615110243/https://sosial.gov.az/en/prod-calendar>
     """
 
     country = "AZ"
@@ -45,7 +45,7 @@ class Azerbaijan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
     supported_languages = ("az", "en_US", "uk")
     start_year = 1990
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -265,19 +265,19 @@ class AzerbaijanStaticHolidays:
     """Azerbaijan special holidays.
 
     Substituted holidays references:
-        * <https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449>
-        * <https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623>
+        * <https://web.archive.org/web/20240616014651/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423>
+        * <https://web.archive.org/web/20250427175631/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982>
+        * <https://web.archive.org/web/20250427175637/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488>
+        * <https://web.archive.org/web/20240814143858/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047>
+        * <https://web.archive.org/web/20250427175636/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466>
+        * <https://web.archive.org/web/20240814142341/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576>
+        * <https://web.archive.org/web/20250215005539/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843>
+        * <https://web.archive.org/web/20241015224204/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332>
+        * <https://web.archive.org/web/20250410132503/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449>
+        * <https://web.archive.org/web/20250216200846/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623>
 
     Special holidays references:
-        * <https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025>
+        * <https://web.archive.org/web/20250421013220/https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025>
     """
 
     eid_al_adha = tr("Qurban bayrami")

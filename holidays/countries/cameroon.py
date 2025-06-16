@@ -28,8 +28,8 @@ class Cameroon(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
-        * <https://www.timeanddate.com/holidays/cameroon>
-        * <https://www.officeholidays.com/countries/cameroon>
+        * <https://web.archive.org/web/20250408001410/https://www.timeanddate.com/holidays/cameroon/>
+        * <https://web.archive.org/web/20231004010829/https://www.officeholidays.com/countries/cameroon>
     """
 
     country = "CM"
@@ -37,7 +37,7 @@ class Cameroon(
     # On 1 January 1960, French Cameroun gained independence from France.
     start_year = 1960
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

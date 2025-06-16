@@ -33,14 +33,14 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Canada>
         * <https://web.archive.org/web/20130703014214/http://www.hrsdc.gc.ca/eng/labour/overviews/employment_standards/holidays.shtml>
-        * <https://www.alberta.ca/alberta-general-holidays>
-        * <https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays>
-        * <http://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
-        * <https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
-        * <https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays>
-        * <https://www.gov.nu.ca/en/print/pdf/node/52266>
-        * <https://www.officeholidays.com/countries/canada/>
-        * <https://www.timeanddate.com/holidays/canada/>
+        * <https://web.archive.org/web/20250330082640/https://www.alberta.ca/alberta-general-holidays>
+        * <https://web.archive.org/web/20250403044407/https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/statutory-holidays>
+        * <https://web.archive.org/web/20250427131243/https://web2.gov.mb.ca/laws/statutes/ccsm/r120e.php>
+        * <https://web.archive.org/web/20250112160822/https://www2.gnb.ca/content/gnb/en/departments/elg/local_government/content/governance/content/days_of_rest_act.html>
+        * <https://web.archive.org/web/20250405170509/https://www.ontario.ca/document/your-guide-employment-standards-act-0/public-holidays>
+        * <https://archive.org/details/nunavut-day-designated-as-a-general-holiday-start-date>
+        * <https://web.archive.org/web/20250116143344/https://www.officeholidays.com/countries/canada>
+        * <https://web.archive.org/web/20250425120843/https://www.timeanddate.com/holidays/canada>
         * <https://web.archive.org/web/20250122122256/https://www.warmuseum.ca/firstworldwar/history/after-the-war/remembrance/remembrance-day/>
         * <https://web.archive.org/web/20250428153936/https://www.thecanadianencyclopedia.ca/en/article/thanksgiving-day>
         * <https://web.archive.org/web/20250428154427/https://recherche-collection-search.bac-lac.gc.ca/eng/home/record?idnumber=9326&app=diawlmking&ecopy=80003QJW>
@@ -353,7 +353,7 @@ class Canada(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         self._add_christmas_day_two(tr("Boxing Day"))
 
     def _populate_subdiv_ns_public_holidays(self):
-        # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
+        # https://web.archive.org/web/20240611215326/https://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
         if self._year >= 2015:
             # Heritage Day.
             self._add_holiday_3rd_mon_of_feb(tr("Heritage Day"))

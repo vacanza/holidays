@@ -21,19 +21,52 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Norway holidays.
 
     References:
-        * <https://lovdata.no/dokument/NL/lov/1947-04-26-1>
+        * <https://web.archive.org/web/20250102052441/https://lovdata.no/dokument/NL/lov/1947-04-26-1>
         * <https://no.wikipedia.org/wiki/Helligdager_i_Norge>
-        * <https://www.timeanddate.no/merkedag/norge/>
+        * <https://web.archive.org/web/20250416120557/https://www.timeanddate.no/merkedag/norge>
 
     Note that holidays falling on a sunday is "lost", it will not be moved
     to another day to make up for the collision.
 
-    In Norway, ALL sundays are considered a holiday (https://snl.no/helligdag).
+    In Norway, ALL sundays are considered a holiday (https://web.archive.org/web/20250202193959/https://snl.no/helligdag).
     Initialize this class with `include_sundays=False` to not include sundays as a holiday.
     """
 
     country = "NO"
     default_language = "no"
+    subdivisions: tuple[str, ...] = (
+        "03",  # Oslo.
+        "11",  # Rogaland.
+        "15",  # Møre og Romsdal.
+        "18",  # Nordland.
+        "21",  # Svalbard.
+        "22",  # Jan Mayen.
+        "30",  # Viken.
+        "34",  # Innlandet.
+        "38",  # Vestfold og Telemark.
+        "42",  # Agder.
+        "46",  # Vestland.
+        "50",  # Trøndelag (Trööndelage).
+        "54",  # Troms og Finnmark (Romssa ja Finnmárkku, Tromssan ja Finmarkun).
+    )
+    subdivisions_aliases = {
+        "Oslo": "03",
+        "Rogaland": "11",
+        "Møre og Romsdal": "15",
+        "Nordland": "18",
+        "Svalbard": "21",
+        "Jan Mayen": "22",
+        "Viken": "30",
+        "Innlandet": "34",
+        "Vestfold og Telemark": "38",
+        "Agder": "42",
+        "Vestland": "46",
+        "Trööndelage": "50",
+        "Trøndelag": "50",
+        "Romssa ja Finnmárkku": "54",
+        "Troms og Finnmark": "54",
+        "Tromssan ja Finmarkun": "54",
+    }
     supported_languages = ("en_US", "no", "th", "uk")
 
     def __init__(self, include_sundays: bool = False, *args, **kwargs):
@@ -63,7 +96,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Andre påskedag"))
 
-        # Source: https://lovdata.no/dokument/NL/lov/1947-04-26-1
+        # Source: https://web.archive.org/web/20250102052441/https://lovdata.no/dokument/NL/lov/1947-04-26-1
         if self._year >= 1947:
             # Labor Day.
             self._add_labor_day(tr("Arbeidernes dag"))
