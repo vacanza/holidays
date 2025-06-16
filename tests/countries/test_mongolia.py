@@ -31,7 +31,7 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertNoHolidays(Mongolia(years=2003, categories=(PUBLIC, WORKDAY)))
 
     def test_new_years_day(self):
-        self.assertHolidayName("Шинэ жилийн баяр", (f"{year}-01-01" for year in range(2004, 2050)))
+        self.assertHolidayName("Шинэ жил", (f"{year}-01-01" for year in range(2004, 2050)))
 
     def test_constitutional_day(self):
         self.assertHolidayName(
@@ -88,7 +88,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             (f"{year}-04-07" for year in range(2004, 2050)),
         )
 
-    def test_intellectual_property_day(self):
+    def test_intellectual_property_protection_day(self):
         self.assertHolidayName(
             "Оюуны өмчийг хамгаалах өдөр",
             self.workday_holidays,
@@ -176,7 +176,7 @@ class TestMongolia(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(2004, 2007))
 
-    def test_memorial_day_of_political_defendants(self):
+    def test_memorial_day_of_political_victims(self):
         self.assertHolidayName(
             "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр",
             self.workday_holidays,
@@ -248,7 +248,7 @@ class TestMongolia(CommonCountryTests, TestCase):
     def test_2025(self):
         self.assertHolidays(
             Mongolia(years=2025),
-            ("2025-01-01", "Шинэ жилийн баяр"),
+            ("2025-01-01", "Шинэ жил"),
             ("2025-03-01", "Цагаан сар"),
             ("2025-03-02", "Цагаан сар"),
             ("2025-03-03", "Цагаан сар"),
@@ -268,7 +268,7 @@ class TestMongolia(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "Шинэ жилийн баяр"),
+            ("2024-01-01", "Шинэ жил"),
             ("2024-01-13", "Монгол Улсын Үндсэн хуулийн өдөр"),
             ("2024-02-10", "Цагаан сар"),
             ("2024-02-11", "Цагаан сар"),
@@ -349,7 +349,7 @@ class TestMongolia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-01-13", "Constitutional Day of Mongolia"),
+            ("2024-01-13", "Constitution Day"),
             ("2024-02-10", "Tsagaan Sar"),
             ("2024-02-11", "Tsagaan Sar"),
             ("2024-02-12", "Tsagaan Sar"),
@@ -357,7 +357,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-03-08", "International Women's Day"),
             ("2024-03-18", "Military Day"),
             ("2024-04-07", "Health Protection Day"),
-            ("2024-04-26", "Intellectual Property Day"),
+            ("2024-04-26", "Intellectual Property Protection Day"),
             ("2024-05-15", "Family Day"),
             ("2024-05-23", "The Buddha's Birthday"),
             ("2024-06-01", "Children's Day"),
@@ -376,7 +376,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-09-07", "New Harvest Days"),
             ("2024-09-08", "New Harvest Days"),
             ("2024-09-09", "New Harvest Days"),
-            ("2024-09-10", "Memorial Day of Political Defendants; New Harvest Days"),
+            ("2024-09-10", "Memorial Day of Political Victims; New Harvest Days"),
             ("2024-09-11", "New Harvest Days"),
             ("2024-09-12", "New Harvest Days"),
             ("2024-09-13", "New Harvest Days"),
@@ -417,7 +417,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             ("2024-10-18", "New Harvest Days"),
             ("2024-10-19", "New Harvest Days"),
             ("2024-10-20", "New Harvest Days"),
-            ("2024-10-29", "Capital Day"),
+            ("2024-10-29", "Capital City Day"),
             ("2024-11-02", "Genghis Khan's Birthday"),
             ("2024-11-26", "Republic Day"),
             ("2024-12-10", "Democracy and Human Rights Day"),

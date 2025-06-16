@@ -27,10 +27,6 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 "X-Source-Language: mn\n"
 
-#. New Year's Day.
-msgid "Шинэ жилийн баяр"
-msgstr ""
-
 #. International Women's Day.
 msgid "Олон улсын эмэгтэйчүүдийн өдөр"
 msgstr ""
@@ -63,7 +59,7 @@ msgstr ""
 msgid "Их Эзэн Чингис хааны өдөр"
 msgstr ""
 
-#. Constitutional Day of Mongolia.
+#. Constitution Day.
 msgid "Монгол Улсын Үндсэн хуулийн өдөр"
 msgstr ""
 
@@ -79,7 +75,7 @@ msgstr ""
 msgid "Эрүүл мэндийг хамгаалах өдөр"
 msgstr ""
 
-#. Intellectual Property Day.
+#. Intellectual Property Protection Day.
 msgid "Оюуны өмчийг хамгаалах өдөр"
 msgstr ""
 
@@ -95,7 +91,8 @@ msgstr ""
 msgid "Залуучуудын өдөр"
 msgstr ""
 
-#. Memorial Day of Political Defendants.
+# Memorial Day of Political Victims.
+#. Memorial Day of Political Victims.
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr ""
 
@@ -124,10 +121,14 @@ msgstr ""
 msgid "Бүгд Найрамдах Улс тунхагласны баяр"
 msgstr ""
 
-#. Capital Day.
+#. Capital City Day.
 msgid "Монгол Улсын нийслэл хотын өдөр"
 msgstr ""
 
 #. New Harvest Days.
 msgid "Шинэ ургацын өдрүүд"
+msgstr ""
+
+#. New Year's Day.
+msgid "Шинэ жил"
 msgstr ""

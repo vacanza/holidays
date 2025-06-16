@@ -43,7 +43,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Шинэ жилийн баяр"))
+        self._add_new_years_day(tr("Шинэ жил"))
 
         # Tsagaan Sar.
         name = tr("Цагаан сар")
@@ -104,7 +104,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             )
 
     def _populate_workday_holidays(self):
-        # Constitutional Day of Mongolia.
+        # Constitution Day.
         self._add_holiday_jan_13(tr("Монгол Улсын Үндсэн хуулийн өдөр"))
 
         # Established on December 9th, 2004.
@@ -112,6 +112,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             # Patriots' Day.
             self._add_holiday_mar_1(tr("Эх орончдын өдөр"))
 
+        # Renamed on February 9th, 2011.
         self._add_holiday_mar_18(
             # Military Day.
             tr("Монгол цэргийн өдөр")
@@ -123,13 +124,13 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Health Protection Day.
         self._add_holiday_apr_7(tr("Эрүүл мэндийг хамгаалах өдөр"))
 
-        # Intellectual Property Day.
+        # Intellectual Property Protection Day.
         self._add_holiday_apr_26(tr("Оюуны өмчийг хамгаалах өдөр"))
 
         # Family Day.
         self._add_holiday_may_15(tr("Гэр бүлийн өдөр"))
 
-        # Established on June 11th, 2009
+        # Established on June 11th, 2009.
         if self._year >= 2009:
             # National Flag Day.
             self._add_holiday_jul_10(tr("Монгол Улсын төрийн далбааны өдөр"))
@@ -144,7 +145,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             for delta in range(1, 46):
                 self._add_holiday(name, _timedelta(dt, delta))
 
-        # Memorial Day of Political Defendants.
+        # Memorial Day of Political Victims.
         self._add_holiday_sep_10(tr("Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"))
 
         # Elders' Day.
@@ -152,7 +153,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Renamed on July 7th, 2021.
         self._add_holiday_oct_29(
-            # Capital Day.
+            # Capital City Day.
             tr("Монгол Улсын нийслэл хотын өдөр")
             if self._year >= 2021
             # Capital Day.

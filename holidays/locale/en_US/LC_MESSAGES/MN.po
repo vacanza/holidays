@@ -26,10 +26,6 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: mn\n"
 
-#. New Year's Day.
-msgid "Шинэ жилийн баяр"
-msgstr "New Year's Day"
-
 #. International Women's Day.
 msgid "Олон улсын эмэгтэйчүүдийн өдөр"
 msgstr "International Women's Day"
@@ -62,9 +58,9 @@ msgstr "The Buddha's Birthday"
 msgid "Их Эзэн Чингис хааны өдөр"
 msgstr "Genghis Khan's Birthday"
 
-#. Constitutional Day of Mongolia.
+#. Constitution Day.
 msgid "Монгол Улсын Үндсэн хуулийн өдөр"
-msgstr "Constitutional Day of Mongolia"
+msgstr "Constitution Day"
 
 #. Patriots' Day.
 msgid "Эх орончдын өдөр"
@@ -78,9 +74,9 @@ msgstr "Military Day"
 msgid "Эрүүл мэндийг хамгаалах өдөр"
 msgstr "Health Protection Day"
 
-#. Intellectual Property Day.
+#. Intellectual Property Protection Day.
 msgid "Оюуны өмчийг хамгаалах өдөр"
-msgstr "Intellectual Property Day"
+msgstr "Intellectual Property Protection Day"
 
 #. Family Day.
 msgid "Гэр бүлийн өдөр"
@@ -94,9 +90,9 @@ msgstr "National Flag Day"
 msgid "Залуучуудын өдөр"
 msgstr "Youth Day"
 
-#. Memorial Day of Political Defendants.
+#. Memorial Day of Political Victims.
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
-msgstr "Memorial Day of Political Defendants"
+msgstr "Memorial Day of Political Victims"
 
 #. Elders' Day.
 msgid "Ахмадын өдөр"
@@ -123,10 +119,14 @@ msgstr "Armed Forces Day"
 msgid "Бүгд Найрамдах Улс тунхагласны баяр"
 msgstr "Republic Holiday"
 
-#. Capital Day.
+#. Capital City Day.
 msgid "Монгол Улсын нийслэл хотын өдөр"
-msgstr "Capital Day"
+msgstr "Capital City Day"
 
 #. New Harvest Days.
 msgid "Шинэ ургацын өдрүүд"
 msgstr "New Harvest Days"
+
+#. New Year's Day.
+msgid "Шинэ жил"
+msgstr "New Year's Day"
