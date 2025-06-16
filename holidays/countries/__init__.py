@@ -173,6 +173,7 @@ from holidays.countries.sierra_leone import SierraLeone, SL, SLE
 from holidays.countries.singapore import Singapore, SG, SGP
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from holidays.countries.slovenia import Slovenia, SI, SVN
+from holidays.countries.solomon_islands import SolomonIslands, SB, SLB
 from holidays.countries.south_africa import SouthAfrica, ZA, ZAF
 from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.spain import Spain, ES, ESP

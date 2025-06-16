@@ -176,6 +176,7 @@ COUNTRIES: RegistryDict = {
     "singapore": ("Singapore", "SG", "SGP"),
     "slovakia": ("Slovakia", "SK", "SVK"),
     "slovenia": ("Slovenia", "SI", "SVN"),
+    "solomon_islands": ("SolomonIslands", "SB", "SLB"),
     "south_africa": ("SouthAfrica", "ZA", "ZAF"),
     "south_korea": ("SouthKorea", "KR", "KOR", "Korea"),
     "spain": ("Spain", "ES", "ESP"),
