@@ -24,9 +24,9 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Turkey>
-        * [Law 2739](https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf)
-        * [Law 2429](https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf)
-        * [Hijri calendar holidays](https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php)
+        * [Law 2739](https://web.archive.org/web/20250102114014/https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf)
+        * [Law 2429](https://web.archive.org/web/20250121111504/http://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf)
+        * [Hijri calendar holidays](https://web.archive.org/web/20250415045516/https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php)
     """
 
     country = "TR"
@@ -38,7 +38,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     # Law 2739 of 27 May 1935.
     start_year = 1936
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

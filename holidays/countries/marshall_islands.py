@@ -21,8 +21,8 @@ class HolidaysMH(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     """Marshall Islands holidays.
 
     References:
-        * <https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101>
-        * <https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays>
+        * <https://web.archive.org/web/20240613114250/https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101>
+        * <https://web.archive.org/web/20230528174331/http://www.rmiembassyus.org/country-profile>
     """
 
     country = "MH"

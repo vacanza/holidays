@@ -21,14 +21,14 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Norway holidays.
 
     References:
-        * <https://lovdata.no/dokument/NL/lov/1947-04-26-1>
+        * <https://web.archive.org/web/20250102052441/https://lovdata.no/dokument/NL/lov/1947-04-26-1>
         * <https://no.wikipedia.org/wiki/Helligdager_i_Norge>
-        * <https://www.timeanddate.no/merkedag/norge/>
+        * <https://web.archive.org/web/20250416120557/https://www.timeanddate.no/merkedag/norge>
 
     Note that holidays falling on a sunday is "lost", it will not be moved
     to another day to make up for the collision.
 
-    In Norway, ALL sundays are considered a holiday (https://snl.no/helligdag).
+    In Norway, ALL sundays are considered a holiday (https://web.archive.org/web/20250202193959/https://snl.no/helligdag).
     Initialize this class with `include_sundays=False` to not include sundays as a holiday.
     """
 
@@ -96,7 +96,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Andre påskedag"))
 
-        # Source: https://lovdata.no/dokument/NL/lov/1947-04-26-1
+        # Source: https://web.archive.org/web/20250102052441/https://lovdata.no/dokument/NL/lov/1947-04-26-1
         if self._year >= 1947:
             # Labor Day.
             self._add_labor_day(tr("Arbeidernes dag"))

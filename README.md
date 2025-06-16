@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 184 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 189 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -304,7 +304,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bermuda</td>
 <td>BM</td>
 <td></td>
-<td></td>
+<td><strong>en_BM</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -665,6 +665,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Guyana</td>
+<td>GY</td>
+<td></td>
+<td><strong>en_GY</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Haiti</td>
 <td>HT</td>
 <td></td>
@@ -917,6 +924,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Micronesia</td>
+<td>FM</td>
+<td>States: KSA (Kosrae, Kusaie), PNI (Pohnpei, Ponape), TRK (Chuuk, Truk), YAP (Yap)</td>
+<td><strong>en_FM</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Moldova</td>
 <td>MD</td>
 <td></td>
@@ -955,7 +969,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Namibia</td>
 <td>NA</td>
 <td></td>
+<td><strong>en_NA</strong>, en_US, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Nauru</td>
+<td>NR</td>
+<td></td>
+<td><strong>en_NR</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -1162,6 +1183,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Senegal</td>
+<td>SN</td>
+<td></td>
+<td>en_US, <strong>fr_SN</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Serbia</td>
 <td>RS</td>
 <td></td>
@@ -1321,6 +1349,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>tr</strong>, uk</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Turks and Caicos Islands</td>
+<td>TC</td>
+<td></td>
+<td><strong>en_TC</strong>, en_US</td>
+<td></td>
 </tr>
 <tr>
 <td>Tuvalu</td>

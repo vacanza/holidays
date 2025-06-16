@@ -22,7 +22,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein>
-        * <https://www.llb.li/en/contact/bank-holidays>
+        * <https://web.archive.org/web/20250122013118/https://llb.li/en/contact/bank-holidays>
     """
 
     country = "LI"

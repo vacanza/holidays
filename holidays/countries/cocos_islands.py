@@ -35,17 +35,17 @@ class CocosIslands(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cocos_(Keeling)_Islands>
-        * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
-        * <https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
+        * <https://web.archive.org/web/20250514044918/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/community-bulletins>
+        * <https://web.archive.org/web/20250417205202/https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/gazettes-bulletins>
 
-        * [2007](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
+        * [2007](https://web.archive.org/web/20250605022855/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/02_2006_Public_Holidays_2007_CKI.doc)
         * [2008](https://web.archive.org/web/20240718120923/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/06-2007_Public_Holidays_CKI.pdf)
         * [2008 Eid al-Fitr](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
         * [2009](https://web.archive.org/web/20231208153529/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/01-2008-2009-public-holiday-CKI-gazette.pdf)
-        * [2010](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2009/2009-Gazette_6-2009-CKI-Proclamation_of_2010_Special_Public_Bank_Holidays.pdf)
+        * [2010](https://archive.org/details/cocos-island-2009-gazette-6-2009-cki-proclamation-of-2010-special-public-bank-holidays)
         * [2013](https://web.archive.org/web/20240805055409/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2012/2012-Gazette_8-2012-CKI-Proclamation_of_2013_Public_Holidays_for_Cocos_(Keeling)_Islands.pdf)
         * [2014](https://web.archive.org/web/20240718123844/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2013/2013-Gazette_3-2013-Cocos_K_Islands_2014_Public_Holidays.pdf)
-        * [2016](https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2015/2015-Gazette_4-2015-CKI-Proclamation_of_2016_Special_Public_Bank_Holidays.pdf)
+        * [2016](https://archive.org/details/cocos-island-2015-gazette-4-2015-cki-proclamation-of-2016-special-public-bank-holidays)
         * [2016 Eid al-Fitr](https://web.archive.org/web/20231208203746/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_3-2016-CKI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
         * [2017](https://web.archive.org/web/20240303203132/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_2-2016-CKI-Proclamation_Special_Public_and_Bank_Holidays_2017.pdf)
         * [2019](https://web.archive.org/web/20241123131420/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2018/files/A38-2018.pdf)
@@ -72,7 +72,7 @@ class CocosIslands(
     # Act of Self Determination 1984.
     start_year = 1985
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

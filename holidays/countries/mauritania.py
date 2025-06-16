@@ -20,13 +20,13 @@ class Mauritania(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Mauritania>
-        * <https://www.timeanddate.com/holidays/mauritania/>
+        * <https://web.archive.org/web/20250408205543/https://www.timeanddate.com/holidays/mauritania/>
     """
 
     country = "MR"
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

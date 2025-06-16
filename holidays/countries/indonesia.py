@@ -46,9 +46,9 @@ class Indonesia(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia>
         * <https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia>
-        * <https://www.liburnasional.com/sejarah/>
+        * <https://web.archive.org/web/20250413192412/https://www.liburnasional.com/sejarah/>
         * [1963-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
-        * <https://www.timeanddate.com/holidays/indonesia>
+        * <https://web.archive.org/web/20250413192423/https://www.timeanddate.com/holidays/indonesia/>
     """
 
     country = "ID"
@@ -63,7 +63,7 @@ class Indonesia(
     supported_categories = (GOVERNMENT, PUBLIC)
     start_year = 1946
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -593,51 +593,51 @@ class IndonesiaStaticHolidays:
     """Indonesia special holidays.
 
     References (Election Days):
-        * <https://peraturan.bpk.go.id/Details/58370/keppres-no-53-tahun-1999>
-        * <https://peraturan.bpk.go.id/Details/55580/keppres-no-26-tahun-2004>
-        * <https://peraturan.bpk.go.id/Details/55662/keppres-no-55-tahun-2004>
-        * <https://peraturan.bpk.go.id/Details/55763/keppres-no-75-tahun-2004>
-        * <https://peraturan.bpk.go.id/Details/55345/keppres-no-7-tahun-2009>
-        * <https://peraturan.bpk.go.id/Details/55369/keppres-no-17-tahun-2009>
-        * <https://peraturan.bpk.go.id/Details/57563/keppres-no-14-tahun-2014>
-        * <https://peraturan.bpk.go.id/Details/57581/keppres-no-24-tahun-2014>
-        * <https://peraturan.bpk.go.id/Details/54477/keppres-no-25-tahun-2015>
-        * <https://peraturan.bpk.go.id/Details/57397/keppres-no-3-tahun-2017>
-        * <https://peraturan.bpk.go.id/Details/82669/keppres-no-15-tahun-2018>
-        * <https://peraturan.bpk.go.id/Details/104497/keppres-no-10-tahun-2019>
-        * <https://peraturan.bpk.go.id/Details/152704/keppres-no-22-tahun-2020>
-        * <https://peraturan.bpk.go.id/Details/277337/keppres-no-10-tahun-2024>
-        * <https://www.buduk.desa.id/berita/read/83/surat-edaran-menteri-ketenagakerjaan-republik-indonesia-nomor-1-tahun-2024.html>
+        * <https://web.archive.org/web/20250413192438/https://peraturan.bpk.go.id/Details/58370/keppres-no-53-tahun-1999>
+        * <https://web.archive.org/web/20250413192447/https://peraturan.bpk.go.id/Details/55580/keppres-no-26-tahun-2004>
+        * <https://web.archive.org/web/20250413192644/https://peraturan.bpk.go.id/Details/55662/keppres-no-55-tahun-2004>
+        * <https://web.archive.org/web/20250413192655/https://peraturan.bpk.go.id/Details/55763/keppres-no-75-tahun-2004>
+        * <https://web.archive.org/web/20250413192523/https://peraturan.bpk.go.id/Details/55345/keppres-no-7-tahun-2009>
+        * <https://web.archive.org/web/20250413192539/https://peraturan.bpk.go.id/Details/55369/keppres-no-17-tahun-2009>
+        * <https://web.archive.org/web/20250413192619/https://peraturan.bpk.go.id/Details/57563/keppres-no-14-tahun-2014>
+        * <https://web.archive.org/web/20250413192603/https://peraturan.bpk.go.id/Details/57581/keppres-no-24-tahun-2014>
+        * <https://web.archive.org/web/20250413192707/https://peraturan.bpk.go.id/Details/54477/keppres-no-25-tahun-2015>
+        * <https://web.archive.org/web/20250413192641/https://peraturan.bpk.go.id/Details/57397/keppres-no-3-tahun-2017>
+        * <https://web.archive.org/web/20250413192642/https://peraturan.bpk.go.id/Details/82669/keppres-no-15-tahun-2018>
+        * <https://web.archive.org/web/20250413192708/https://peraturan.bpk.go.id/Details/104497/keppres-no-10-tahun-2019>
+        * <https://web.archive.org/web/20241226224121/https://peraturan.bpk.go.id/Details/152704/keppres-no-22-tahun-2020>
+        * <https://web.archive.org/web/20250413192801/https://peraturan.bpk.go.id/Details/277337/keppres-no-10-tahun-2024>
+        * <https://web.archive.org/web/20241104090706/https://www.buduk.desa.id/berita/read/83/surat-edaran-menteri-ketenagakerjaan-republik-indonesia-nomor-1-tahun-2024.html>
 
     References (Joint Holidays):
-        * <https://data.santoslolowang.com/viewing/Agama_Nasional_Indonesia/kepbersama_2002.pdf/>
-        * <https://nasional.tempo.co/read/5515/tahun-depan-libur-hari-raya-berubah>
-        * <https://nasional.tempo.co/read/45224/2005-pemerintah-tetapkan-13-hari-libur-nasional>
-        * <https://news.detik.com/berita/d-562326/30-maret-libur-hari-nyepi-31-maret-ditetapkan-cuti-bersama>
-        * <https://news.detik.com/berita/d-836627/dari-12-hari-jatah-cuti-tahun-ini-dipaksa-cuti-bareng-11-hari>
-        * <https://news.detik.com/berita/d-787189/inilah-jadwal-libur-dan-cuti-bersama-2008>
-        * <https://news.detik.com/berita/d-889403/cuti-bersama-dihapus-sisa-4-hari-untuk-lebaran-natal>
-        * <https://news.detik.com/berita/d-1263142/kamis-24-desember-cuti-bersama>
-        * <https://news.detik.com/berita/d-1179419/daftar-libur-dan-cuti-bersama-2010>
-        * <https://news.detik.com/berita/d-1378563/daftar-hari-libur-nasional-dan-cuti-bersama-2011>
-        * <https://news.detik.com/berita/d-1639209/pemerintah-tetapkan-senin-16-mei-2011-cuti-bersama>
-        * <https://news.detik.com/berita/d-1831855/cuti-bersama-tahun-2012-bertambah-1-hari-jadi-6-hari>
-        * <https://news.detik.com/berita/d-1969257/ini-dia-jadwal-hari-libur-nasional-cuti-bersama-tahun-2013>
-        * <https://news.detik.com/berita/d-2335984/daftar-cuti-bersama-dan-hari-libur-nasional-2014-termasuk-may-day>
-        * <https://news.detik.com/berita/d-2576131/ini-daftar-hari-libur-dan-cuti-bersama-tahun-2015>
-        * <https://bkpsdm.salatiga.go.id/pelaksanaan-hari-libur-nasional-dan-cuti-bersama-tahun-2015.html>
-        * <https://news.detik.com/berita/d-2952083/ini-rincian-libur-dan-cuti-bersama-2016>
-        * <https://news.detik.com/berita/d-3366218/libur-nasional-dan-cuti-bersama-2017-tambah-3-hari-ini-daftar-lengkapnya>
-        * <https://setkab.go.id/tidak-kurangi-hak-cuti-tahunan-presiden-jokowi-tetapkan-23-juni-sebagai-cuti-bersama-idul-fitri/>
-        * <https://setkab.go.id/pelayanan-publik-tetap-jalan-presiden-jokowi-tetapkan-cuti-bersama-pns-tahun-2018/>
-        * <https://setkab.go.id/keppres-no-132019-cuti-bersama-pns-pada-idul-fitri-1440h-tanggal-3-4-dan-7-juni/>
-        * <https://setkab.go.id/pemerintah-keluarkan-skb-3-menteri-hapus-tiga-hari-cuti-bersama-2020/>
-        * <https://setkab.go.id/inilah-perubahan-hari-libur-nasional-dan-cuti-bersama-tahun-2021/>
-        * <https://setkab.go.id/presiden-jokowi-terbitkan-keppres-4-tahun-2022-tentang-cuti-bersama-asn-tahun-2022/>
-        * <https://news.detik.com/berita/d-6468002/apakah-ada-cuti-bersama-natal-2022-cek-infonya-di-sini>
-        * <https://setkab.go.id/presiden-tandatangani-keppres-perubahan-cuti-bersama-bagi-asn/>
-        * <https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
-        * <https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
+        * <https://web.archive.org/web/20240626171556/https://data.santoslolowang.com/viewing/Agama_Nasional_Indonesia/kepbersama_2002.pdf/>
+        * <https://web.archive.org/web/20250413192812/https://nasional.tempo.co/read/5515/tahun-depan-libur-hari-raya-berubah>
+        * <https://web.archive.org/web/20250413192839/https://nasional.tempo.co/read/45224/2005-pemerintah-tetapkan-13-hari-libur-nasional>
+        * <https://web.archive.org/web/20250413192830/https://news.detik.com/berita/d-562326/30-maret-libur-hari-nyepi-31-maret-ditetapkan-cuti-bersama>
+        * <https://web.archive.org/web/20250413192836/https://news.detik.com/berita/d-836627/dari-12-hari-jatah-cuti-tahun-ini-dipaksa-cuti-bareng-11-hari>
+        * <https://web.archive.org/web/20250413192922/https://news.detik.com/berita/d-787189/inilah-jadwal-libur-dan-cuti-bersama-2008>
+        * <https://web.archive.org/web/20250413192845/https://news.detik.com/berita/d-889403/cuti-bersama-dihapus-sisa-4-hari-untuk-lebaran-natal>
+        * <https://web.archive.org/web/20250413193013/https://news.detik.com/berita/d-1263142/kamis-24-desember-cuti-bersama>
+        * <https://web.archive.org/web/20250413192957/https://news.detik.com/berita/d-1179419/daftar-libur-dan-cuti-bersama-2010>
+        * <https://web.archive.org/web/20250413192919/https://news.detik.com/berita/d-1378563/daftar-hari-libur-nasional-dan-cuti-bersama-2011>
+        * <https://web.archive.org/web/20250413192931/https://news.detik.com/berita/d-1639209/pemerintah-tetapkan-senin-16-mei-2011-cuti-bersama>
+        * <https://web.archive.org/web/20250413193003/https://news.detik.com/berita/d-1831855/cuti-bersama-tahun-2012-bertambah-1-hari-jadi-6-hari>
+        * <https://web.archive.org/web/20250413192956/https://news.detik.com/berita/d-1969257/ini-dia-jadwal-hari-libur-nasional-cuti-bersama-tahun-2013>
+        * <https://web.archive.org/web/20250413193006/https://news.detik.com/berita/d-2335984/daftar-cuti-bersama-dan-hari-libur-nasional-2014-termasuk-may-day>
+        * <https://web.archive.org/web/20250413193133/https://news.detik.com/berita/d-2576131/ini-daftar-hari-libur-dan-cuti-bersama-tahun-2015>
+        * <https://web.archive.org/web/20250413193040/https://bkpsdm.salatiga.go.id/pelaksanaan-hari-libur-nasional-dan-cuti-bersama-tahun-2015.html>
+        * <https://web.archive.org/web/20250413193101/https://news.detik.com/berita/d-2952083/ini-rincian-libur-dan-cuti-bersama-2016>
+        * <https://web.archive.org/web/20250413193107/https://news.detik.com/berita/d-3366218/libur-nasional-dan-cuti-bersama-2017-tambah-3-hari-ini-daftar-lengkapnya>
+        * <https://web.archive.org/web/20250413193106/https://setkab.go.id/tidak-kurangi-hak-cuti-tahunan-presiden-jokowi-tetapkan-23-juni-sebagai-cuti-bersama-idul-fitri/>
+        * <https://web.archive.org/web/20250413193200/https://setkab.go.id/pelayanan-publik-tetap-jalan-presiden-jokowi-tetapkan-cuti-bersama-pns-tahun-2018/>
+        * <https://web.archive.org/web/20250413193130/https://setkab.go.id/keppres-no-132019-cuti-bersama-pns-pada-idul-fitri-1440h-tanggal-3-4-dan-7-juni/>
+        * <https://web.archive.org/web/20250413193142/https://setkab.go.id/pemerintah-keluarkan-skb-3-menteri-hapus-tiga-hari-cuti-bersama-2020/>
+        * <https://web.archive.org/web/20250413193249/https://setkab.go.id/inilah-perubahan-hari-libur-nasional-dan-cuti-bersama-tahun-2021/>
+        * <https://web.archive.org/web/20250413193216/https://setkab.go.id/presiden-jokowi-terbitkan-keppres-4-tahun-2022-tentang-cuti-bersama-asn-tahun-2022/>
+        * <https://web.archive.org/web/20250413193308/https://news.detik.com/berita/d-6468002/apakah-ada-cuti-bersama-natal-2022-cek-infonya-di-sini>
+        * <https://web.archive.org/web/20250413193243/https://setkab.go.id/presiden-tandatangani-keppres-perubahan-cuti-bersama-bagi-asn/>
+        * <https://web.archive.org/web/20250413193243/https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
+        * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
     """
 
     # General Election Day.

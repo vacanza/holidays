@@ -46,9 +46,9 @@ class BosniaAndHerzegovina(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina>
-        * <https://www.paragraf.ba/neradni-dani-fbih.html>
-        * <https://www.paragraf.ba/neradni-dani-republike-srpske.html>
-        * <https://www.paragraf.ba/neradni-dani-brcko.html>
+        * <https://web.archive.org/web/20250415045455/https://www.paragraf.ba/neradni-dani-fbih.html>
+        * <https://web.archive.org/web/20250415085409/https://www.paragraf.ba/neradni-dani-republike-srpske.html>
+        * <https://web.archive.org/web/20250414212923/https://www.paragraf.ba/neradni-dani-brcko.html>
 
     Observed holidays rules:
         * BIH: if first day of New Year's Day and Labor Day fall on Sunday, observed on Tuesday.
@@ -75,7 +75,7 @@ class BosniaAndHerzegovina(
     }
     supported_languages = ("bs", "en_US", "sr", "uk")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

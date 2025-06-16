@@ -1,0 +1,124 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Micronesia holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+"POT-Creation-Date: 2025-06-03 22:58+0530\n"
+"PO-Revision-Date: 2025-06-03 22:58+0530\n"
+"Last-Translator: Nalin Gupta <nalinguptaofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_FM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_FM\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Micronesian Culture and Tradition Day.
+msgid "Micronesian Culture and Tradition Day"
+msgstr ""
+
+#. Federated States of Micronesia Day.
+msgid "Federated States of Micronesia Day"
+msgstr ""
+
+#. United Nations Day.
+msgid "United Nations Day"
+msgstr ""
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr ""
+
+#. FSM Veterans of Foreign Wars Day.
+msgid "FSM Veterans of Foreign Wars Day"
+msgstr ""
+
+#. Presidents Day.
+msgid "Presidents Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. State Charter Day.
+msgid "State Charter Day"
+msgstr ""
+
+#. Chuuk State Constitution Day.
+msgid "Chuuk State Constitution Day"
+msgstr ""
+
+#. Kosrae State Constitution Day.
+msgid "Kosrae State Constitution Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Gospel Day.
+msgid "Gospel Day"
+msgstr ""
+
+#. Kosrae Liberation Day.
+msgid "Kosrae Liberation Day"
+msgstr ""
+
+#. Self Government Day.
+msgid "Self Government Day"
+msgstr ""
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Kosrae Disability Day.
+msgid "Kosrae Disability Day"
+msgstr ""
+
+#. Women's Day.
+msgid "Women's Day"
+msgstr ""
+
+#. Pohnpei Cultural Day.
+msgid "Pohnpei Cultural Day"
+msgstr ""
+
+#. Liberation Day.
+msgid "Liberation Day"
+msgstr ""
+
+#. Pohnpei Constitution Day.
+msgid "Pohnpei Constitution Day"
+msgstr ""
+
+#. Yap Day.
+msgid "Yap Day"
+msgstr ""
+
+#. Yap State Constitution Day.
+msgid "Yap State Constitution Day"
+msgstr ""

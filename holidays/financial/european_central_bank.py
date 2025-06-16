@@ -20,9 +20,9 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays)
 
     References:
         * <https://en.wikipedia.org/wiki/TARGET2>
-        * <https://www.ecb.europa.eu/ecb/contacts/working-hours/html/index.en.html>
-        * <https://www.ecb.europa.eu/press/pr/date/1999/html/pr990715_1.en.html>
-        * <https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html>
+        * <https://web.archive.org/web/20250403115031/https://www.ecb.europa.eu/ecb/contacts/working-hours/html/index.en.html>
+        * <https://web.archive.org/web/20241109145056/https://www.ecb.europa.eu/press/pr/date/1999/html/pr990715_1.en.html>
+        * <https://web.archive.org/web/20241202213944/https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html>
     """
 
     market = "XECB"

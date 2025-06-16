@@ -22,8 +22,8 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     """Bahrain holidays.
 
     References:
-        * <https://www.cbb.gov.bh/official-bank-holidays/>
-        * <https://www.officeholidays.com/countries/bahrain/>
+        * <https://web.archive.org/web/20250415063947/https://www.cbb.gov.bh/official-bank-holidays>
+        * <https://web.archive.org/web/20240805170117/https://www.officeholidays.com/countries/bahrain>
     """
 
     country = "BH"
@@ -33,7 +33,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
