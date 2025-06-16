@@ -56,8 +56,10 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1979, 2050)))
         dt = (
+            "2010-12-31",
             "2012-01-02",
             "2017-01-02",
+            "2021-12-31",
             "2023-01-02",
         )
         self.assertHolidayName(f"{name} (observed)", dt)

@@ -92,7 +92,9 @@ class SolomonIslands(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_MON)
+        name = "New Year's Day"
+        self._add_observed(self._add_new_years_day(name))
+        self._add_observed(self._next_year_new_years_day, name=name, rule=SAT_TO_PREV_FRI)
 
         # Good Friday.
         self._add_good_friday("Good Friday")
