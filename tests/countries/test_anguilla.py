@@ -216,6 +216,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             "2010-12-17",
         )
         self.assertHolidayName(f"{name_2001} (observed)", dt_2001)
+        self.assertNoNonObservedHoliday(dt_2001)
 
         name_2011 = "National Heroes and Heroines Day"
         self.assertHolidayName(name_2011, (f"{year}-12-19" for year in range(2011, 2050)))
