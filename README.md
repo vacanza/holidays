@@ -196,6 +196,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Anguilla</td>
+<td>AI</td>
+<td></td>
+<td><strong>en_AI</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Antigua and Barbuda</td>
 <td>AG</td>
 <td></td>
