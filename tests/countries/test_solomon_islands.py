@@ -144,9 +144,12 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name_2,
             "2023-06-16",
-            "2024-06-14",
+            "2024-06-15",
             "2025-06-13",
         )
+        dt = "2024-06-14"
+        self.assertHolidayName(f"{name_2} (observed)", dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
         name = "Independence Day"

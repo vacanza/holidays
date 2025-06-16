@@ -47,6 +47,9 @@ class SolomonIslands(
         entry](https://en.wikipedia.org/wiki/King's_Official_Birthday#Solomon_Islands).
     * There are a few exceptions to this rule:
         * [Queen's Birthday 2022](https://web.archive.org/web/20240727184251/https://solomons.gov.sb/wp-content/uploads/2022/05/Gaz-No.-171-Friday-27th-May-2022.pdf)
+        * According to the holidays schedule for 2024, King's Birthday was celebrated on
+          the 3rd saturday of June (June 15) and the preceding Friday was observed as a
+          public holiday.
         * [King's Birthday 2025](https://web.archive.org/web/20250615054519/https://solomons.gov.sb/wp-content/uploads/2025/04/Gaz-No.-33-Wednesday-9th-April-2025.pdf)
 
     Province Days are not listed in the Public Holidays Act but are consistently announced
@@ -125,6 +128,8 @@ class SolomonIslands(
         }
         if self._year in sovereign_birthday_dates:
             self._add_holiday(name, sovereign_birthday_dates[self._year])
+        elif self._year == 2024:
+            self._add_observed(self._add_holiday_3nd_sat_of_jun(name))
         elif self._year >= 2023:
             self._add_holiday_1_day_prior_3rd_sat_of_jun(name)
         else:
