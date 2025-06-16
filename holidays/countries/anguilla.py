@@ -107,9 +107,11 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
             name=name,
             rule=MON_TO_NEXT_TUE
             if dt == whit_monday
-            else SAT_SUN_TO_NEXT_TUE
-            if self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) == whit_monday
-            else SAT_SUN_TO_NEXT_MON,
+            else (
+                SAT_SUN_TO_NEXT_TUE
+                if self._get_observed_date(dt, SAT_SUN_TO_NEXT_MON) == whit_monday
+                else SAT_SUN_TO_NEXT_MON
+            ),
         )
 
         # August Monday.
