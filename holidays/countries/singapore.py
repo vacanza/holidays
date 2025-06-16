@@ -46,7 +46,7 @@ class Singapore(
     References:
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Singapore)
         * [Holidays Act 1998](https://web.archive.org/web/20250405061431/https://sso.agc.gov.sg/Act/HA1998)
-        * [Ministry of Manpower](https://web.archive.org/web/20250424152111/https://mom.gov.sg/employment-practices/public-holidays)
+        * [Ministry of Manpower](https://web.archive.org/web/20250616105633/https://mom.gov.sg/employment-practices/public-holidays)
 
     Limitations:
         * Prior to 1969: holidays are estimated.
@@ -177,6 +177,7 @@ class SingaporeBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (JUN, 2),
         2024: (MAY, 22),
         2025: (MAY, 12),
+        2026: (MAY, 31),
     }
 
 
@@ -207,6 +208,7 @@ class SingaporeChineseHolidays(_CustomChineseHolidays):
         2023: (JAN, 22),
         2024: (FEB, 10),
         2025: (JAN, 29),
+        2026: (FEB, 17),
     }
 
 
@@ -238,6 +240,7 @@ class SingaporeHinduHolidays(_CustomHinduHolidays):
         2023: (NOV, 12),
         2024: (OCT, 31),
         2025: (OCT, 20),
+        2026: (NOV, 8),
     }
 
 
@@ -269,6 +272,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
+        2026: (MAY, 27),
     }
 
     # Hari Raya Puasa
@@ -298,6 +302,7 @@ class SingaporeIslamicHolidays(_CustomIslamicHolidays):
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
 

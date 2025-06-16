@@ -178,6 +178,7 @@ from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
 from holidays.countries.spain import Spain, ES, ESP
 from holidays.countries.sri_lanka import SriLanka, LK, LKA
 from holidays.countries.suriname import Suriname, SR, SUR
+from holidays.countries.svalbard_and_jan_mayen import SvalbardAndJanMayen, SJ, SJM, HolidaysSJ
 from holidays.countries.sweden import Sweden, SE, SWE
 from holidays.countries.switzerland import Switzerland, CH, CHE
 from holidays.countries.taiwan import Taiwan, TW, TWN
