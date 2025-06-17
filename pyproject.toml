@@ -83,6 +83,7 @@ addopts = [
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
+testpaths = ["tests"]
 
 [tool.setuptools.dynamic]
 version = { attr = "holidays.version.__version__" }
