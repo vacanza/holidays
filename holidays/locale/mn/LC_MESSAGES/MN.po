@@ -91,7 +91,6 @@ msgstr ""
 msgid "Залуучуудын өдөр"
 msgstr ""
 
-# Memorial Day of Political Victims.
 #. Memorial Day of Political Victims.
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr ""
