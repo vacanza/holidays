@@ -128,9 +128,8 @@ def get_tsagaan_sar(y):
 
 
 def find_festival_date(y, m_month, m_day):
-    for leap in [False, True]:
-        jd = julian_day(y, m_month, leap, m_day)
-        return gregorian_date(jd)
+    jd = julian_day(y, m_month, False, m_day)
+    return gregorian_date(jd)
 
 
 CLASS_NAME = "_{cal_name}Lunisolar"
@@ -151,9 +150,9 @@ CALENDARS = {
 }
 
 MONGOLIAN_HOLIDAYS = [
-    ("TSAGAAN_SAR", get_tsagaan_sar),
-    ("GENGHIS_KHAN_DAY", lambda y: find_festival_date(y, 10, 1)),
     ("BUDDHA_DAY", lambda y: find_festival_date(y, 4, 15)),
+    ("GENGHIS_KHAN_DAY", lambda y: find_festival_date(y, 10, 1)),
+    ("TSAGAAN_SAR", get_tsagaan_sar),
 ]
 
 
@@ -164,12 +163,9 @@ def generate_mongolian_data():
     for hol_name, hol_func in MONGOLIAN_HOLIDAYS:
         year_dates = []
         for year in range(g_year_min, g_year_max + 1):
-            try:
-                g = hol_func(year)
-                date_str = f"{g.strftime('%b').upper()}, {g.day}"
-                year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
-            except Exception:
-                year_dates.append(f"        {year}: None,")
+            dt = hol_func(year)
+            date_str = f"{dt.strftime('%b').upper()}, {dt.day}"
+            year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
 
         year_dates_str = "\n".join(year_dates)
         holiday_data.append(

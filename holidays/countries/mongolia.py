@@ -66,6 +66,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
 
         # Expanded to July 10 on July 7th, 2023.
         # Expanded to July 14-15 on July 1st, 2014.
+
         # National Festival and People's Revolution Anniversary.
         name = tr("Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр")
         if self._year >= 2023:

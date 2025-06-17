@@ -106,8 +106,7 @@ msgstr "Capital Day"
 msgid "Ардчилал, хүний эрхийн өдөр"
 msgstr "Democracy and Human Rights Day"
 
-#. Expanded to July 10 on July 7th, 2023. Expanded to July 14-15 on July 1st, 2014. National
-#. Festival and People's Revolution Anniversary.
+#. National Festival and People's Revolution Anniversary.
 msgid "Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр"
 msgstr "National Festival and People's Revolution Anniversary"
 
