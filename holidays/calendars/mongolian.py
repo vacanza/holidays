@@ -16,9 +16,9 @@ from typing import Optional
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, OCT, NOV, DEC
 
-TSAGAAN_SAR = "TSAGAAN_SAR"
 BUDDHA_DAY = "BUDDHA_DAY"
 GENGHIS_KHAN_DAY = "GENGHIS_KHAN_DAY"
+TSAGAAN_SAR = "TSAGAAN_SAR"
 
 
 class _MongolianLunisolar:
