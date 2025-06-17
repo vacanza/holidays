@@ -62,17 +62,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "fr", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
-        "Guadeloupe",
-        "Guyane",
-        "La Réunion",
-        "Martinique",
-        "Mayotte",
         "Métropole",
-        "Nouvelle-Calédonie",
-        "Polynésie Française",
         "Saint-Barthélémy",
-        "Saint-Martin",
-        "Wallis-et-Futuna",
     )
 
     def __init__(self, *args, **kwargs):
@@ -129,26 +120,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.subdiv == "Alsace-Moselle":
             self._populate_subdiv_ges_public_holidays()
-        elif self.subdiv == "Guadeloupe":
-            self._populate_subdiv_gp_public_holidays()
-        elif self.subdiv == "Guyane":
-            self._populate_subdiv_gy_public_holidays()
-        elif self.subdiv == "La Réunion":
-            self._populate_subdiv_re_public_holidays()
-        elif self.subdiv == "Martinique":
-            self._populate_subdiv_mq_public_holidays()
-        elif self.subdiv == "Mayotte":
-            self._populate_subdiv_yt_public_holidays()
-        elif self.subdiv == "Nouvelle-Calédonie":
-            self._populate_subdiv_nc_public_holidays()
-        elif self.subdiv == "Polynésie Française":
-            self._populate_subdiv_pf_public_holidays()
         elif self.subdiv == "Saint-Barthélémy":
             self._populate_subdiv_bl_public_holidays()
-        elif self.subdiv == "Saint-Martin":
-            self._populate_subdiv_mf_public_holidays()
-        elif self.subdiv == "Wallis-et-Futuna":
-            self._populate_subdiv_wf_public_holidays()
 
     # Saint Barthelemy.
     def _populate_subdiv_bl_public_holidays(self):
