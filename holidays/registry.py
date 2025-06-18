@@ -163,6 +163,7 @@ COUNTRIES: RegistryDict = {
     "qatar": ("Qatar", "QA", "QAT"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
+    "saint_barthelemy": ("SaintBarthelemy", "BL", "BLM", "HolidaysBL"),
     "saint_kitts_and_nevis": ("SaintKittsAndNevis", "KN", "KNA"),
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "saint_martin": ("SaintMartin", "MF", "MAF", "HolidaysMF"),
