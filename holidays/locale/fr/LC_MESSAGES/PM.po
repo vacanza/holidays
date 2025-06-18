@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# French Southern Territories holidays.
+# Saint Pierre and Miquelon holidays.
 #
 msgid ""
 msgstr ""
