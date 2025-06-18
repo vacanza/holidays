@@ -128,7 +128,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Whit Monday.
                 self._add_whit_monday(tr("Lundi de Pentecôte"))
 
-        # Made unofficial public holiday with no name on April 23th, 1919.
+        # Made unofficial public holiday with no name on April 23rd, 1919.
         # Included in official list by Vichy France with new name on April 24th, 1941.
         # Confirmed for 1946 with no name on April 26th, 1946.
         # Added annually from 1947 onwards with no name on April 30th, 1947.
@@ -213,7 +213,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_24_days_prior_easter(tr("Mi-Carême"))
 
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
+        # Date for each DOM declared on November 23rd, 1983.
         # Victor Schoelcher Day is based on June 30th, 1983 provision.
         if self._year >= 1984:
             # Abolition of Slavery.
@@ -228,7 +228,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Vendredi saint"))
 
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
+        # Date for each DOM declared on November 23rd, 1983.
         # Victor Schoelcher Day is based on June 30th, 1983 provision.
         if self._year >= 1984:
             # Abolition of Slavery.
@@ -240,7 +240,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Guyane.
     def _populate_subdiv_973_public_holidays(self):
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
+        # Date for each DOM declared on November 23rd, 1983.
         if self._year >= 1984:
             # Abolition of Slavery.
             self._add_holiday_jun_10(tr("Abolition de l'esclavage"))
@@ -248,7 +248,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Reunion.
     def _populate_subdiv_974_public_holidays(self):
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
+        # Date for each DOM declared on November 23rd, 1983.
         if self._year >= 1983:
             # Abolition of Slavery.
             self._add_holiday_dec_20(tr("Abolition de l'esclavage"))
@@ -256,7 +256,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Mayotte.
     def _populate_subdiv_976_public_holidays(self):
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
+        # Date for each DOM declared on November 23rd, 1983.
         if self._year >= 1984:
             # Abolition of Slavery.
             self._add_holiday_apr_27(tr("Abolition de l'esclavage"))
@@ -264,8 +264,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Saint Barthelemy.
     def _populate_subdiv_bl_public_holidays(self):
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
-        # Amended to include Saint-Barthélemy and Saint-Martin subdivision on April 23th, 2012.
+        # Date for each DOM declared on November 23rd, 1983.
+        # Amended to include Saint-Barthélemy and Saint-Martin subdivision on April 23rd, 2012.
         if self._year >= 2012:
             # Abolition of Slavery.
             self._add_holiday_oct_9(tr("Abolition de l'esclavage"))
@@ -273,8 +273,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Saint Martin.
     def _populate_subdiv_mf_public_holidays(self):
         # Provision for Public Holidays decreed on June 30th, 1983.
-        # Date for each DOM declared on November 23th, 1983.
-        # Amended to include Saint-Barthélemy and Saint-Martin subdivision on April 23th, 2012.
+        # Date for each DOM declared on November 23rd, 1983.
+        # Amended to include Saint-Barthélemy and Saint-Martin subdivision on April 23rd, 2012.
         # Victor Schoelcher Day is based on June 30th, 1983 provision.
         if self._year >= 2012:
             # Abolition of Slavery.
