@@ -12,6 +12,8 @@
 
 from unittest import TestCase
 
+import numpy as np
+
 from holidays.countries.cambodia import Cambodia
 from holidays.countries.thailand import Thailand
 from holidays.countries.ukraine import Ukraine
@@ -19,8 +21,6 @@ from holidays.countries.ukraine import Ukraine
 
 class TestNumpy(TestCase):
     def test_years_int_conversion(self):
-        import numpy as np  # It seems the import causes the error mentioned above.
-
         years = (1995, 2000)
         years_range = set(range(*years))
 
