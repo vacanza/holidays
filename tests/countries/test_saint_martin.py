@@ -12,49 +12,43 @@
 
 from unittest import TestCase
 
-from holidays.countries.wallis_and_futuna import WallisAndFutuna, WF, WLF, HolidaysWF
+from holidays.countries.saint_martin import SaintMartin, MF, MAF, HolidaysMF
 from tests.common import CommonCountryTests
 
 
-class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
+class TestSaintMartin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysWF)
+        super().setUpClass(HolidaysMF)
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysWF, WallisAndFutuna, WF, WLF)
+        self.assertAliases(HolidaysMF, SaintMartin, MF, MAF)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(WallisAndFutuna(years=1961))
+        self.assertNoHolidays(SaintMartin(years=2007))
 
-    def test_feast_of_saint_peter_chanel(self):
-        self.assertHolidayName(
-            "Saint Pierre Chanel", (f"{year}-04-28" for year in range(1962, 2050))
-        )
+    def test_abolition_of_slavery(self):
+        name = "Abolition de l'esclavage"
+        self.assertHolidayName(name, (f"{year}-05-28" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(2008, 2012))
 
-    def test_saints_peter_and_paul_day(self):
-        self.assertHolidayName(
-            "Saints Pierre et Paul", (f"{year}-06-29" for year in range(1962, 2050))
-        )
-
-    def test_territory_day(self):
-        self.assertHolidayName(
-            "Fête du Territoire", (f"{year}-07-29" for year in range(1962, 2050))
-        )
+    def test_victor_schoelcher_day(self):
+        name = "Fête de Victor Schoelcher"
+        self.assertHolidayName(name, (f"{year}-07-21" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(2008, 2012))
 
     def test_2024(self):
         self.assertHolidays(
-            HolidaysWF(years=2024),
+            HolidaysMF(years=2024),
             ("2024-01-01", "Jour de l'an"),
             ("2024-04-01", "Lundi de Pâques"),
-            ("2024-04-28", "Saint Pierre Chanel"),
             ("2024-05-01", "Fête du Travail"),
             ("2024-05-08", "Fête de la Victoire"),
             ("2024-05-09", "Ascension"),
             ("2024-05-20", "Lundi de Pentecôte"),
-            ("2024-06-29", "Saints Pierre et Paul"),
+            ("2024-05-28", "Abolition de l'esclavage"),
             ("2024-07-14", "Fête nationale"),
-            ("2024-07-29", "Fête du Territoire"),
+            ("2024-07-21", "Fête de Victor Schoelcher"),
             ("2024-08-15", "Assomption"),
             ("2024-11-01", "Toussaint"),
             ("2024-11-11", "Armistice"),
@@ -65,14 +59,13 @@ class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Jour de l'an"),
             ("2022-04-18", "Lundi de Pâques"),
-            ("2022-04-28", "Saint Pierre Chanel"),
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-08", "Fête de la Victoire"),
             ("2022-05-26", "Ascension"),
+            ("2022-05-28", "Abolition de l'esclavage"),
             ("2022-06-06", "Lundi de Pentecôte"),
-            ("2022-06-29", "Saints Pierre et Paul"),
             ("2022-07-14", "Fête nationale"),
-            ("2022-07-29", "Fête du Territoire"),
+            ("2022-07-21", "Fête de Victor Schoelcher"),
             ("2022-08-15", "Assomption"),
             ("2022-11-01", "Toussaint"),
             ("2022-11-11", "Armistice"),
@@ -84,14 +77,13 @@ class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-04-28", "Feast of Saint Peter Chanel"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-08", "Victory Day"),
             ("2022-05-26", "Ascension Day"),
+            ("2022-05-28", "Abolition of Slavery"),
             ("2022-06-06", "Whit Monday"),
-            ("2022-06-29", "Saints Peter and Paul Day"),
             ("2022-07-14", "National Day"),
-            ("2022-07-29", "Territory Day"),
+            ("2022-07-21", "Victor Schoelcher Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-11", "Armistice Day"),
@@ -103,14 +95,13 @@ class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),
-            ("2022-04-28", "วันสมโภชนักบุญเปโตร ชาเนล"),
             ("2022-05-01", "วันแรงงาน"),
             ("2022-05-08", "วันแห่งชัยชนะ"),
             ("2022-05-26", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2022-05-28", "วันเลิกทาส"),
             ("2022-06-06", "วันจันทร์หลังวันสมโภชพระจิตเจ้า"),
-            ("2022-06-29", "วันสมโภชนักบุญเปโตรและเปาโล"),
             ("2022-07-14", "วันชาติฝรั่งเศส"),
-            ("2022-07-29", "วันก่อตั้งดินแดน"),
+            ("2022-07-21", "วันวิกตอร์ เชลแชร์"),
             ("2022-08-15", "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"),
             ("2022-11-01", "วันสมโภชนักบุญทั้งหลาย"),
             ("2022-11-11", "วันสงบศึก"),
@@ -122,14 +113,13 @@ class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
             "uk",
             ("2022-01-01", "Новий рік"),
             ("2022-04-18", "Великодній понеділок"),
-            ("2022-04-28", "День Святого Пʼєра Шанеля"),
             ("2022-05-01", "День праці"),
             ("2022-05-08", "День Перемоги"),
             ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-05-28", "День скасування рабства"),
             ("2022-06-06", "День Святого Духа"),
-            ("2022-06-29", "День Святих Петра і Павла"),
             ("2022-07-14", "Національне свято"),
-            ("2022-07-29", "День Території"),
+            ("2022-07-21", "День Віктора Шольшера"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),
             ("2022-11-11", "День перемирʼя"),
