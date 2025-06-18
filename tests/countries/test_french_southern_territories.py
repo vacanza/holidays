@@ -33,17 +33,17 @@ class TestTF(CommonCountryTests, TestCase):
         self.assertNoHolidays(FrenchSouthernTerritories(years=1955))
 
     def test_2022(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             HolidaysTF(years=2022),
-            "2022-01-01",
-            "2022-04-18",
-            "2022-05-01",
-            "2022-05-08",
-            "2022-05-26",
-            "2022-06-06",
-            "2022-07-14",
-            "2022-08-15",
-            "2022-11-01",
-            "2022-11-11",
-            "2022-12-25",
+            ("2022-01-01", "Jour de l'an"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-08", "Fête de la Victoire"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentecôte"),
+            ("2022-07-14", "Fête nationale"),
+            ("2022-08-15", "Assomption"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-11-11", "Armistice"),
+            ("2022-12-25", "Noël"),
         )
