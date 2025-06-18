@@ -37,8 +37,8 @@ class Mauritius(
     """Mauritius holidays.
 
     References:
-        * [Public Holidays Act Consolidated 1991](https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/101480/MUS101480.pdf)
-        * [The Public Holidays (Amendment) Act 2015](https://mauritiusassembly.govmu.org/mauritiusassembly/wp-content/uploads/2023/03/act2815.pdf)
+        * [Public Holidays Act Consolidated 1991](https://web.archive.org/web/20250618211720/https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/101480/MUS101480.pdf)
+        * [The Public Holidays (Amendment) Act 2015](https://web.archive.org/web/20240805131941/http://mauritiusassembly.govmu.org/mauritiusassembly/wp-content/uploads/2023/03/act2815.pdf)
         * Mauritius became independent in 1968, but the earliest accessible version of the Public
           Holidays Act is the one consolidated in 1991. The most recent update to the holiday
           schedule reflected in that version dates back to 1987. Therefore, 1988 is being used
@@ -48,13 +48,13 @@ class Mauritius(
           <https://en.wikipedia.org/wiki/Ugadi>
         * Dates for Maha Shivaratree, Ougadi and Divali match the default dates for Maha Shivratri,
           Gudi Padwa and Diwali (India dates) in the Hindu calendar.
-            - <https://www.timeanddate.com/holidays/mauritius/maha-shivaratree>
-            - <https://www.timeanddate.com/holidays/mauritius/ougadi>
-            - <https://www.timeanddate.com/holidays/mauritius/divali>
-        * [2021](https://mauritius-paris.govmu.org/Pages/About%20Us/Public-Holidays-in-Mauritius-for-Year-2021.aspx)
-        * [2022](https://mauritius-kualalumpur.govmu.org/Documents/Public%20Holiday/Public%20holidays%20-%202022.pdf)
-        * [2024](https://mauritius-paris.govmu.org/Documents/Public%20Holidays/Notice%20-%20Final%20Public%20holidays%20-%202024.pdf)
-        * [2025](https://pmo.govmu.org/Communique/Notice-Public_Holidays_2025.pdf)
+            - <https://web.archive.org/web/20250322231005/https://www.timeanddate.com/holidays/mauritius/maha-shivaratree>
+            - <https://web.archive.org/web/20241012141403/https://www.timeanddate.com/holidays/mauritius/ougadi>
+            - <https://web.archive.org/web/20241112085826/https://www.timeanddate.com/holidays/mauritius/divali>
+        * [2021](https://web.archive.org/web/20210926053030/https://mauritius-paris.govmu.org/Pages/About%20Us/Public-Holidays-in-Mauritius-for-Year-2021.aspx)
+        * [2022](https://web.archive.org/web/20240703234017/https://mauritius-kualalumpur.govmu.org/Documents/Public%20Holiday/Public%20holidays%20-%202022.pdf)
+        * [2024](https://web.archive.org/web/20240703233951/https://mauritius-paris.govmu.org/Documents/Public%20Holidays/Notice%20-%20Final%20Public%20holidays%20-%202024.pdf)
+        * [2025](https://web.archive.org/web/20250113100149/https://pmo.govmu.org/Communique/Notice-Public_Holidays_2025.pdf)
     """
 
     country = "MU"
@@ -142,7 +142,7 @@ class MUS(Mauritius):
 
 
 class MauritiusHinduHolidays(_CustomHinduHolidays):
-    # https://www.timeanddate.com/holidays/mauritius/ganesh-chaturthi
+    # https://web.archive.org/web/20241208154454/https://www.timeanddate.com/holidays/mauritius/ganesh-chaturthi
     GANESH_CHATURTHI_DATES = {
         2015: (SEP, 18),
         2016: (SEP, 6),
@@ -157,7 +157,7 @@ class MauritiusHinduHolidays(_CustomHinduHolidays):
         2025: (AUG, 28),
     }
 
-    # https://www.timeanddate.com/holidays/mauritius/thaipoosam-cavadee
+    # https://web.archive.org/web/20240910225221/https://www.timeanddate.com/holidays/mauritius/thaipoosam-cavadee
     THAIPUSAM_DATES = {
         2020: (FEB, 8),
         2021: (JAN, 28),
@@ -169,7 +169,7 @@ class MauritiusHinduHolidays(_CustomHinduHolidays):
 
 
 class MauritiusIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/mauritius/eid-al-fitr
+    # https://web.archive.org/web/20250420201326/https://www.timeanddate.com/holidays/mauritius/eid-al-fitr
     EID_AL_FITR_DATES = {
         2016: (JUL, 6),
         2017: (JUN, 26),
@@ -189,7 +189,7 @@ class MauritiusStaticHolidays(StaticHolidays):
 
     References:
         * July 29, 2019 and September 9, 2019 declared as public holidays according to the
-          [gazette notification](https://mauritiuslii.org/akn/mu/officialGazette/government-gazette/2019-07-27/78/eng@2019-07-27)
+          [gazette notification](https://web.archive.org/web/20250618211631/https://mauritiuslii.org/akn/mu/officialGazette/government-gazette/2019-07-27/78/eng@2019-07-27)
     """
 
     # Public Holiday.
