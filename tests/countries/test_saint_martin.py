@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_martin import SaintMartin, MF, MAF, HolidaysMF
+from holidays.countries.saint_martin import HolidaysMF, SaintMartin, MF, MAF
 from tests.common import CommonCountryTests
 
 

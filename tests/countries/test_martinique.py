@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.martinique import Martinique, MQ, MTQ, HolidaysMQ
+from holidays.countries.martinique import HolidaysMQ, Martinique, MQ, MTQ
 from tests.common import CommonCountryTests
 
 

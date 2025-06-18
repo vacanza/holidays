@@ -13,36 +13,36 @@
 from holidays.countries.france import France
 
 
-class HolidaysMQ(France):
-    """Martinique holidays.
+class HolidaysGP(France):
+    """Guadeloupe holidays.
 
     Alias of a French subdivision that is also officially assigned
     its own country code in ISO 3166-1.
 
     References:
-        * <https://en.wikipedia.org/wiki/Martinique>
+        * <https://en.wikipedia.org/wiki/Guadeloupe>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
     """
 
-    country = "MQ"
+    country = "GP"
     parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
-    # Returned from the UK on March 27th, 1802.
-    start_year = 1803
+    # Cession from Sweden on May 30th, 1814.
+    start_year = 1815
 
     def _populate_public_holidays(self) -> None:
-        self.subdiv = "972"
+        self.subdiv = "971"
         super()._populate_public_holidays()
 
 
-class Martinique(HolidaysMQ):
+class Guadeloupe(HolidaysGP):
     pass
 
 
-class MQ(HolidaysMQ):
+class GP(HolidaysGP):
     pass
 
 
-class MTQ(HolidaysMQ):
+class GLP(HolidaysGP):
     pass

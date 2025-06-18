@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL
+from holidays.countries.saint_barthelemy import HolidaysBL, SaintBarthelemy, BL, BLM
 from tests.common import CommonCountryTests
 
 

@@ -88,6 +88,7 @@ from holidays.countries.ghana import Ghana, GH, GHA
 from holidays.countries.greece import Greece, GR, GRC
 from holidays.countries.greenland import Greenland, GL, GRL
 from holidays.countries.grenada import Grenada, GD, GRD
+from holidays.countries.guadeloupe import Guadeloupe, GP, GLP, HolidaysGP
 from holidays.countries.guam import Guam, GU, GUM, HolidaysGU
 from holidays.countries.guatemala import Guatemala, GT, GUA
 from holidays.countries.guernsey import Guernsey, GG, GGY
