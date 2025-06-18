@@ -42,6 +42,7 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
+#. King's Day
 msgid "King's Day"
 msgstr ""
 
