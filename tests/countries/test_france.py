@@ -52,20 +52,20 @@ class TestFrance(CommonCountryTests, TestCase):
             ("2017-12-25", "Noël"),
         )
 
-    def test_2022(self):
+    def test_2024(self):
         self.assertHolidays(
-            France(years=2022),
-            ("2022-01-01", "Jour de l'an"),
-            ("2022-04-18", "Lundi de Pâques"),
-            ("2022-05-01", "Fête du Travail"),
-            ("2022-05-08", "Fête de la Victoire"),
-            ("2022-05-26", "Ascension"),
-            ("2022-06-06", "Lundi de Pentecôte"),
-            ("2022-07-14", "Fête nationale"),
-            ("2022-08-15", "Assomption"),
-            ("2022-11-01", "Toussaint"),
-            ("2022-11-11", "Armistice"),
-            ("2022-12-25", "Noël"),
+            France(years=2024),
+            ("2024-01-01", "Jour de l'an"),
+            ("2024-04-01", "Lundi de Pâques"),
+            ("2024-05-01", "Fête du Travail"),
+            ("2024-05-08", "Fête de la Victoire"),
+            ("2024-05-09", "Ascension"),
+            ("2024-05-20", "Lundi de Pentecôte"),
+            ("2024-07-14", "Fête nationale"),
+            ("2024-08-15", "Assomption"),
+            ("2024-11-01", "Toussaint"),
+            ("2024-11-11", "Armistice"),
+            ("2024-12-25", "Noël"),
         )
 
     def test_subdiv_deprecation(self):

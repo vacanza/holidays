@@ -124,7 +124,7 @@ msgstr "Свято приєднання"
 
 #. Matāri'i.
 msgid "Matāri'i"
-msgstr "Матаарі'і"
+msgstr "Матаарії"
 
 #. Saints Peter and Paul Day.
 msgid "Saints Pierre et Paul"

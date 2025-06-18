@@ -319,7 +319,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     #  Wallis and Futuna.
     def _populate_subdiv_wf_public_holidays(self):
-        # While it's not clear when these holidays was added,
+        # While it's not clear when these holidays were added,
         # they're likely added after local autonomy was granted on July 29th, 1961.
         if self._year >= 1962:
             # Feast of Saint Peter Chanel.
