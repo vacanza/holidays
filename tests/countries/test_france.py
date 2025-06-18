@@ -189,7 +189,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 self.assertHolidayName(name, holidays, dt)
                 self.assertHolidayName(name, holidays, range(1893, 2050))
                 self.assertNoHolidayName(name, holidays, range(1803, 1893))
-            # Guadalope, Martinique, French Polynesia - Unknown, but exists.
+            # Guadeloupe, Martinique, French Polynesia - Unknown, but exists.
             elif subdiv in {"971", "972", "PF"}:
                 self.assertHolidayName(name, holidays, dt)
                 self.assertHolidayName(name, holidays, range(1803, 2050))
@@ -222,7 +222,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2024-03-07",
                 "2025-03-27",
             )
-            # Guadalope - Unknown, but exists.
+            # Guadeloupe - Unknown, but exists.
             if subdiv == "971":
                 self.assertHolidayName(name, holidays, dt)
                 self.assertHolidayName(name, holidays, range(1803, 2050))
@@ -233,7 +233,7 @@ class TestFrance(CommonCountryTests, TestCase):
         name = "Abolition de l'esclavage"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Guadalope - 1984.
+            # Guadeloupe - 1984.
             if subdiv == "971":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-27" for year in range(1984, 2050))
@@ -269,7 +269,7 @@ class TestFrance(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-10-09" for year in range(2012, 2050))
                 )
                 self.assertNoHolidayName(name, holidays, range(1803, 2012))
-            # Saint Martin - 1984.
+            # Saint Martin - 2012.
             elif subdiv == "MF":
                 self.assertHolidayName(
                     name, holidays, (f"{year}-05-28" for year in range(2012, 2050))
@@ -282,7 +282,7 @@ class TestFrance(CommonCountryTests, TestCase):
         name = "Fête de Victor Schoelcher"
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            # Guadalope, Martinique - 1984.
+            # Guadeloupe, Martinique - 1984.
             if subdiv in {"971", "972"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-21" for year in range(1984, 2050))

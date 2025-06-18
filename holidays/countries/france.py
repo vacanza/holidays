@@ -146,7 +146,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_labor_day(name)
 
         # Commemorated on May 7th, 1946 as 1st Sunday after May 7th.
-        # Upgraded to Publuc Holiday on May 8th directly on March 20th, 1953.
+        # Upgraded to Public Holiday on May 8th directly on March 20th, 1953.
         # Removed from 1960 onwards per April 11th, 1959 decree.
         # Readded on October 2nd, 1981.
         if 1953 <= self._year <= 1959 or self._year >= 1982:
