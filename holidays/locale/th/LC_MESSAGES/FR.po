@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# France holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-18 20:31+0700\n"
+"PO-Revision-Date: 2025-06-18 21:33+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr\n"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "วันขึ้นปีใหม่"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "วันแรงงาน"
+
+#. Labor and Social Concord Day.
+msgid "Fête du Travail et de la Concorde sociale"
+msgstr "วันแรงงานและความสมานฉันท์ทางสังคม"
+
+#. Victory Day.
+msgid "Fête de la Victoire"
+msgstr "วันแห่งชัยชนะ"
+
+#. National Day.
+msgid "Fête nationale"
+msgstr "วันชาติฝรั่งเศส"
+
+#. Armistice Day.
+msgid "Armistice"
+msgstr "วันสงบศึก"
+
+#. Good Friday.
+msgid "Vendredi saint"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Mi-Careme.
+msgid "Mi-Carême"
+msgstr "วันเฉลิมฉลองกลางเทศกาลมหาพรต"
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Ascension Day.
+msgid "Ascension"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "วันสมโภชนักบุญทั้งหลาย"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "วันคริสต์มาส"
+
+#. Victor Schoelcher Day.
+msgid "Fête de Victor Schoelcher"
+msgstr "วันวิกตอร์ เชลแชร์"
+
+#. Abolition of Slavery.
+msgid "Abolition de l'esclavage"
+msgstr "วันเลิกทาส"
+
+#. Saint Stephen's Day.
+msgid "Saint Étienne"
+msgstr "วันสมโภชนักบุญสเตเฟน"
+
+#. Citizenship Day.
+msgid "Fête de la Citoyenneté"
+msgstr "วันแห่งความเป็นพลเมือง"
+
+#. Missionary Day.
+msgid "Arrivée de l'Évangile"
+msgstr "วันคริสตธรรมมาถึง"
+
+#. Internal Autonomy Day.
+msgid "Fête de l'autonomie"
+msgstr "วันปกครองตนเอง"
+
+#. Feast of Saint Peter Chanel.
+msgid "Saint Pierre Chanel"
+msgstr "วันสมโภชนักบุญเปโตร ชาเนล"
+
+#. Territory Day.
+msgid "Fête du Territoire"
+msgstr "วันก่อตั้งดินแดน"
+
+#. May Day.
+msgid "1er mai"
+msgstr "วันเมย์เดย์"
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
+msgstr "วันประกาศอธิปไตยเหนือดินแดน"
+
+#. Matāri'i.
+msgid "Matāri'i"
+msgstr "วันขึ้นปีใหม่โพลินีเซีย (มาตารีอิ)"
+
+#. Saints Peter and Paul Day.
+msgid "Saints Pierre et Paul"
+msgstr "วันสมโภชนักบุญเปโตรและเปาโล"

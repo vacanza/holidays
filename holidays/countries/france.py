@@ -98,7 +98,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Terres australes françaises": "TF",
         "Wallis-et-Futuna": "WF",
     }
-    supported_languages = ("en_US", "fr", "uk")
+    supported_languages = ("en_US", "fr", "th", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
         "GES",

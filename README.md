@@ -584,14 +584,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>France</td>
 <td>FR</td>
 <td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna)</td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>French Southern Territories</td>
 <td>TF</td>
-<td></td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>Can also be loaded as country FR, subdivision TF</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
