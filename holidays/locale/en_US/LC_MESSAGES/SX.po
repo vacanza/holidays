@@ -1,13 +1,23 @@
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Holidays package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
-#, fuzzy
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Sint Maarten holidays en_US localization.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.75\n"
 "POT-Creation-Date: 2025-06-14 14:20-0400\n"
 "PO-Revision-Date: 2025-06-14 14:20-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Platon Supranovich psupra521@gmail.com\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +45,7 @@ msgstr ""
 msgid "King's Day"
 msgstr ""
 
-#. Note: Carnival Day date may vary; verify annually
+#. Carnival Day
 msgid "Carnival Day"
 msgstr ""
 
@@ -51,10 +61,16 @@ msgstr ""
 msgid "Whit Sunday"
 msgstr ""
 
+#. Emancipation Day
 msgid "Emancipation Day"
 msgstr ""
 
+#. Constitution Day
 msgid "Constitution Day"
+msgstr ""
+
+#. Kingdom Day
+msgid "Kingdom Day"
 msgstr ""
 
 #. All Saints' Day
