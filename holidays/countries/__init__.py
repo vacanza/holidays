@@ -127,6 +127,7 @@ from holidays.countries.malaysia import Malaysia, MY, MYS
 from holidays.countries.maldives import Maldives, MV, MDV
 from holidays.countries.malta import Malta, MT, MLT
 from holidays.countries.marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
+from holidays.countries.martinique import Martinique, MQ, MTQ, HolidaysMQ
 from holidays.countries.mauritania import Mauritania, MR, MRT
 from holidays.countries.mexico import Mexico, MX, MEX
 from holidays.countries.micronesia import Micronesia, FM, FSM

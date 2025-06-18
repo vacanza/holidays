@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestSaintMartin(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMF)
+        super().setUpClass(HolidaysMF, years=range(2008, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysMF, SaintMartin, MF, MAF)

@@ -24,7 +24,7 @@ from tests.common import CommonCountryTests
 class TestFrenchSouthernTerritories(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysTF)
+        super().setUpClass(HolidaysTF, years=range(1956, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysTF, FrenchSouthernTerritories, TF, ATF)

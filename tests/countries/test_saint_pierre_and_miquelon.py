@@ -24,7 +24,7 @@ from tests.common import CommonCountryTests
 class TestSaintPierreAndMiquelon(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPM)
+        super().setUpClass(HolidaysPM, years=range(1815, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysPM, SaintPierreAndMiquelon, PM, SPM)

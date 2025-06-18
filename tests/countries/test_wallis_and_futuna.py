@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestWallisAndFutuna(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysWF)
+        super().setUpClass(HolidaysWF, years=range(1962, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysWF, WallisAndFutuna, WF, WLF)

@@ -130,6 +130,7 @@ COUNTRIES: RegistryDict = {
     "maldives": ("Maldives", "MV", "MDV"),
     "malta": ("Malta", "MT", "MLT"),
     "marshall_islands": ("MarshallIslands", "MH", "MHL", "HolidaysMH"),
+    "martinique": ("Martinique", "MQ", "MTQ", "HolidaysMQ"),
     "mauritania": ("Mauritania", "MR", "MRT"),
     "mexico": ("Mexico", "MX", "MEX"),
     "micronesia": ("Micronesia", "FM", "FSM"),
