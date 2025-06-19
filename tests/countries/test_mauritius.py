@@ -59,17 +59,17 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(2016, 2050, 2)))
         self.assertNoHolidayName(name, range(1988, 2016), range(2017, 2050, 2))
 
-    def test_arrival_of_indentured_labourers_day(self):
-        self.assertHolidayName(
-            "Arrival of Indentured Labourers", (f"{year}-11-02" for year in range(1988, 2050))
-        )
-
     def test_all_saints_day(self):
         name = "All Saints' Day"
         self.assertHolidayName(
             name, (f"{year}-11-01" for year in (*range(1988, 2016), *range(2017, 2050, 2)))
         )
         self.assertNoHolidayName(name, range(2016, 2050, 2))
+
+    def test_arrival_of_indentured_labourers_day(self):
+        self.assertHolidayName(
+            "Arrival of Indentured Labourers", (f"{year}-11-02" for year in range(1988, 2050))
+        )
 
     def test_christmas_day(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1988, 2050)))

@@ -96,12 +96,12 @@ class Mauritius(
             # Assumption Day.
             self._add_assumption_of_mary_day(tr("Assumption of the Blessed Virgin Mary"))
 
-        # Arrival of Indentured Laborers.
-        self._add_holiday_nov_2(tr("Arrival of Indentured Labourers"))
-
         if self._year <= 2015 or self._year % 2 != 0:
             # All Saints' Day.
             self._add_all_saints_day(tr("All Saints' Day"))
+
+        # Arrival of Indentured Laborers.
+        self._add_holiday_nov_2(tr("Arrival of Indentured Labourers"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
