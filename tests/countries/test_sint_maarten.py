@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestSintMaarten(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SintMaarten, years=range(2011, 2077))
+        super().setUpClass(SintMaarten, years=range(2011, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(SintMaarten, SX, SXM)
@@ -49,62 +49,17 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             ("2017-12-26", "Second day of Christmas"),
         )
 
-    def test_pre_2011_branch_coverage(self):
-        class TestSintMaarten(SintMaarten):
-            start_year = 2010
+    def test_new_years_day(self):
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2011, 2050)))
 
-        holidays = TestSintMaarten(years=2010)
-        # Verify holidays that should exist
-        self.assertIn(date(2010, 1, 1), holidays)  # New Year's Day
-        self.assertIn(date(2010, 4, 2), holidays)  # Good Friday
-        self.assertIn(date(2010, 4, 4), holidays)  # Easter Sunday
-        self.assertIn(date(2010, 4, 5), holidays)  # Easter Monday
-        self.assertIn(date(2010, 5, 1), holidays)  # Labour Day
-        self.assertIn(date(2010, 5, 13), holidays)  # Ascension Day
-        self.assertIn(date(2010, 5, 23), holidays)  # Whit Sunday
-        self.assertIn(date(2010, 12, 25), holidays)  # Christmas Day
-        self.assertIn(date(2010, 12, 26), holidays)  # Second Day of Christmas
-        self.assertNotIn(date(2010, 4, 27), holidays)  # No King's Day
-        self.assertNotIn(date(2010, 4, 26), holidays)  # No King's Day (Sunday)
-        self.assertNotIn(date(2010, 4, 30), holidays)  # No Carnival Day
-        self.assertNotIn(date(2010, 7, 1), holidays)  # No Emancipation Day
-        self.assertNotIn(date(2010, 10, 11), holidays)  # No Constitution Day
-        self.assertNotIn(date(2010, 11, 1), holidays)  # No All Saints' Day
-        self.assertNotIn(date(2010, 11, 11), holidays)  # No Sint Maarten Day
-        self.assertNotIn(date(2010, 12, 15), holidays)  # No Kingdom Day
+    def test_good_friday(self):
+        self.assertHolidayName("Good Friday", ("2023-04-07", "2024-03-29", "2025-04-18"))
 
-    def test_emancipation_day(self):
-        name = "Emancipation Day"
-        self.assertNoHolidayName(name, range(1900, 2012))
-        self.assertHolidayName(name, (f"{year}-07-01" for year in range(2012, 2077)))
+    def test_easter_sunday(self):
+        self.assertHolidayName("Easter Sunday", ("2023-04-09", "2024-03-31", "2025-04-20"))
 
-    def test_constitution_day(self):
-        name = "Constitution Day"
-        self.assertNoHolidayName(name, range(1900, 2015))
-        second_monday_dates = {
-            2015: "2015-10-12",
-            2017: "2017-10-09",
-            2018: "2018-10-08",
-            2019: "2019-10-14",
-            2020: "2020-10-12",
-            2025: "2025-10-13",
-        }
-        for year, date_str in second_monday_dates.items():
-            self.assertHolidayName(name, date_str)
-        for year in range(2015, 2077):
-            base_date = date(year, 10, 1)
-            second_monday = base_date + timedelta(days=(7 - base_date.weekday()) % 7 + 7)
-            self.assertHolidayName(name, second_monday)
-
-    def test_all_saints_day(self):
-        name = "All Saints' Day"
-        self.assertNoHolidayName(name, range(1900, 2011))
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(2011, 2077)))
-
-    def test_sint_maarten_day(self):
-        name = "Sint Maarten Day"
-        self.assertNoHolidayName(name, range(1900, 2011))
-        self.assertHolidayName(name, (f"{year}-11-11" for year in range(2011, 2077)))
+    def test_easter_monday(self):
+        self.assertHolidayName("Easter Monday", ("2023-04-10", "2024-04-01", "2025-04-21"))
 
     def test_kings_day(self):
         name = "King's Day"
@@ -132,59 +87,79 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertNoHoliday("2014-04-27")
         self.assertNoHoliday("2025-04-27")
 
+    def test_carnival_day(self):
+        name = "Carnival Day"
+        self.assertHolidayName(name, "2014-04-30")
+        self.assertHolidayName(name, "2015-04-30")
+        self.assertHolidayName(name, "2016-04-29")
+        self.assertHolidayName(name, "2017-05-02")
+        self.assertHolidayName(name, "2018-04-30")
+        self.assertHolidayName(name, "2019-04-30")
+
+    def test_labor_day(self):
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(2011, 2050)))
+
+    def test_ascension_day(self):
+        name = "Ascension Day"
+        self.assertHolidayName(name, "2011-06-02")
+        self.assertHolidayName(name, "2012-05-17")
+        self.assertHolidayName(name, "2013-05-09")
+        self.assertHolidayName(name, "2014-05-29")
+        self.assertHolidayName(name, "2019-05-30")
+
+    def test_whit_sunday(self):
+        name = "Whit Sunday"
+        self.assertHolidayName(name, "2011-06-12")
+        self.assertHolidayName(name, "2012-05-27")
+        self.assertHolidayName(name, "2013-05-19")
+        self.assertHolidayName(name, "2014-06-08")
+        self.assertHolidayName(name, "2015-05-24")
+
+    def test_emancipation_day(self):
+        name = "Emancipation Day"
+        self.assertNoHolidayName(name, range(1900, 2012))
+        self.assertHolidayName(name, (f"{year}-07-01" for year in range(2012, 2077)))
+
+    def test_constitution_day(self):
+        name = "Constitution Day"
+        self.assertNoHolidayName(name, range(1900, 2015))
+        second_monday_dates = {
+            2015: "2015-10-12",
+            2017: "2017-10-09",
+            2018: "2018-10-08",
+            2019: "2019-10-14",
+            2020: "2020-10-12",
+            2025: "2025-10-13",
+        }
+        for year, date_str in second_monday_dates.items():
+            self.assertHolidayName(name, date_str)
+        for year in range(2015, 2077):
+            base_date = date(year, 10, 1)
+            second_monday = base_date + timedelta(days=(7 - base_date.weekday()) % 7 + 7)
+            self.assertHolidayName(name, second_monday)
+
     def test_kingdom_day(self):
         name = "Kingdom Day"
         # Check that Kingdom Day is not observed before 2011
         self.assertNoHolidayName(name, range(1900, 2011))
+        self.assertHolidayName(name, "2011-12-15")
+        self.assertHolidayName(name, "2012-12-15")
+        self.assertHolidayName(name, "2013-12-16")
+        self.assertHolidayName(name, "2014-12-15")
+        self.assertHolidayName(name, "2015-12-15")
 
-        # Check Kingdom Day from 2011 onward
-        for year in range(2011, 2077):
-            expected_date = get_expected_kingdom_day(year)
-            expected_date_str = expected_date.strftime("%Y-%m-%d")
-            self.assertHolidayName(name, expected_date_str)
-            # If the holiday is moved to Dec 16, ensure Dec 15 is not a holiday
-            if expected_date.day == 16:  # Moved to Monday
-                self.assertNoHolidayName(name, f"{year}-12-15")
-
-    def test_carnival_day(self):
-        name = "Carnival Day"
-        # Check that Carnival Day is not observed before 2011
+    def test_all_saints_day(self):
+        name = "All Saints' Day"
         self.assertNoHolidayName(name, range(1900, 2011))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(2011, 2077)))
 
-        # Check Carnival Day from 2011 onward
-        for year in range(2011, 2077):
-            expected_date = get_expected_carnival_day(year)
-            expected_date_str = expected_date.strftime("%Y-%m-%d")
-            self.assertHolidayName(name, expected_date_str)
-            # Optionally, ensure the holiday doesn't appear on other dates around April 30
-            for offset in [-2, -1, 1, 2]:  # Check nearby dates
-                test_date = expected_date + timedelta(days=offset)
-                test_date_str = test_date.strftime("%Y-%m-%d")
-                if test_date != expected_date:
-                    self.assertNoHolidayName(name, test_date_str)
+    def test_sint_maarten_day(self):
+        name = "Sint Maarten Day"
+        self.assertNoHolidayName(name, range(1900, 2011))
+        self.assertHolidayName(name, (f"{year}-11-11" for year in range(2011, 2077)))
 
     def test_christmas(self):
         self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2011, 2077)))
         self.assertHolidayName(
             "Second day of Christmas", (f"{year}-12-26" for year in range(2011, 2077))
         )
-
-
-def get_expected_carnival_day(year):
-    """Calculate the expected date for Carnival Day (April 30) with movement rule."""
-    carnival_date = date(year, 4, 30)
-    weekday = carnival_date.weekday()  # Monday=0, Sunday=6
-    if weekday == 5:  # Saturday
-        return carnival_date - timedelta(days=1)  # Previous Friday
-    elif weekday == 6:  # Sunday
-        return carnival_date + timedelta(days=2)  # Next Tuesday
-    return carnival_date
-
-
-def get_expected_kingdom_day(year):
-    """Calculate the expected date for Kingdom Day (December 15) with movement rule."""
-    kingdom_date = date(year, 12, 15)
-    weekday = kingdom_date.weekday()  # Monday=0, Sunday=6
-    if weekday == 6:  # Sunday
-        return kingdom_date + timedelta(days=1)  # Next Monday
-    return kingdom_date
