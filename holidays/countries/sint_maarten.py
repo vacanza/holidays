@@ -69,12 +69,11 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
                 rule=SUN_TO_PREV_SAT,
             )
 
-        if self._year >= 2011:
-            self._move_holiday(
-                # Carnival Day.
-                self._add_holiday_apr_30(tr("Carnival Day")),
-                rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_TUE,
-            )
+        self._move_holiday(
+            # Carnival Day.
+            self._add_holiday_apr_30(tr("Carnival Day")),
+            rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_TUE,
+        )
 
         # Labour Day.
         self._add_labor_day(tr("Labour Day"))
@@ -95,20 +94,17 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Constitution Day.
             self._add_holiday_2nd_mon_of_oct(tr("Constitution Day"))
 
-        if self._year >= 2011:
-            self._move_holiday(
-                # Kingdom Day on 15th December (If a Sunday, on Monday 16 December).
-                self._add_holiday_dec_15(tr("Kingdom Day")),
-                rule=SUN_TO_NEXT_MON,
-            )
+        self._move_holiday(
+            # Kingdom Day on 15th December (If a Sunday, on Monday 16 December).
+            self._add_holiday_dec_15(tr("Kingdom Day")),
+            rule=SUN_TO_NEXT_MON,
+        )
 
-        if self._year >= 2011:
-            # All Saints' Day.
-            self._add_holiday(tr("All Saints' Day"), date(self._year, NOV, 1))
+        # All Saints' Day.
+        self._add_all_saints_day(tr("All Saints' Day"))
 
-        if self._year >= 2011:
-            # Sint Maarten Day.
-            self._add_holiday(tr("Sint Maarten Day"), date(self._year, NOV, 11))
+        # Sint Maarten Day.
+        self._add_holiday(tr("Sint Maarten Day"), date(self._year, NOV, 11))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
