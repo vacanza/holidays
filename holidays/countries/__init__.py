@@ -143,6 +143,7 @@ from holidays.countries.namibia import Namibia, NA, NAM
 from holidays.countries.nauru import Nauru, NR, NRU
 from holidays.countries.nepal import Nepal, NP, NPL
 from holidays.countries.netherlands import Netherlands, NL, NLD
+from holidays.countries.new_caledonia import NewCaledonia, NC, NCL, HolidaysNC
 from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from holidays.countries.nicaragua import Nicaragua, NI, NIC
 from holidays.countries.niger import Niger, NE, NER

@@ -13,36 +13,36 @@
 from holidays.countries.france import France
 
 
-class HolidaysYT(France):
-    """Mayotte holidays.
+class HolidaysNC(France):
+    """New Caledonia holidays.
 
     Alias of a French subdivision that is also officially assigned
     its own country code in ISO 3166-1.
 
     References:
-        * <https://en.wikipedia.org/wiki/Mayotte>
+        * <https://en.wikipedia.org/wiki/New_Caledonia>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
     """
 
-    country = "YT"
+    country = "NC"
     parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
-    # Sold to France on April 25th, 1841.
-    start_year = 1842
+    # France took formal possession of New Caledonia on September 24th, 1853.
+    start_year = 1854
 
     def _populate_public_holidays(self) -> None:
-        self.subdiv = "976"
+        self.subdiv = "NC"
         super()._populate_public_holidays()
 
 
-class Mayotte(HolidaysYT):
+class NewCaledonia(HolidaysNC):
     pass
 
 
-class YT(HolidaysYT):
+class NC(HolidaysNC):
     pass
 
 
-class MYT(HolidaysYT):
+class NCL(HolidaysNC):
     pass

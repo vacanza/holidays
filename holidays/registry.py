@@ -146,6 +146,7 @@ COUNTRIES: RegistryDict = {
     "nauru": ("Nauru", "NR", "NRU"),
     "nepal": ("Nepal", "NP", "NPL"),
     "netherlands": ("Netherlands", "NL", "NLD"),
+    "new_caledonia": ("NewCaledonia", "NC", "NCL", "HolidaysNC"),
     "new_zealand": ("NewZealand", "NZ", "NZL"),
     "nicaragua": ("Nicaragua", "NI", "NIC"),
     "niger": ("Niger", "NE", "NER"),
