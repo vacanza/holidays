@@ -322,7 +322,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Bonaire, Sint Eustatius and Saba</td>
+<td>Bonaire Sint Eustatius and Saba</td>
 <td>BQ</td>
 <td></td>
 <td><strong>en_BQ</strong>, en_US, nl</td>
