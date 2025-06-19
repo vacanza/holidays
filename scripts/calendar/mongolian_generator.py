@@ -149,11 +149,11 @@ CALENDARS = {
     "MONGOLIAN": "Mongolian",
 }
 
-MONGOLIAN_HOLIDAYS = [
+MONGOLIAN_HOLIDAYS = (
     ("BUDDHA_DAY", lambda y: find_festival_date(y, 4, 15)),
     ("GENGHIS_KHAN_DAY", lambda y: find_festival_date(y, 10, 1)),
     ("TSAGAAN_SAR", get_tsagaan_sar),
-]
+)
 
 
 def generate_mongolian_data():
