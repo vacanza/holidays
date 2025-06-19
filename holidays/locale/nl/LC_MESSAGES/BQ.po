@@ -1,0 +1,75 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Bonaire Sint Eustatius And Saba holidays nl localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-17 23:55+0530\n"
+"PO-Revision-Date: 2025-06-17 23:55+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_BQ\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Nieuwjaar"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Goede Vrijdag"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "Pasen"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Paasmaandag"
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr "Dag van de Arbeid"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Hemelvaart"
+
+#. Whit Sunday.
+msgid "Whit Sunday"
+msgstr "Pinksteren"
+
+#. Carnival Monday.
+msgid "Carnival Monday"
+msgstr "Carnavalsmaandag"
+
+#. Saba Day.
+msgid "Saba Day"
+msgstr "Saba Dag"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Kerstmis"
+
+#. Boxing Day
+msgid "Boxing Day"
+msgstr "Tweede Kerstdag"
+
+#. King's Birthday
+msgid "King's Birthday"
+msgstr "Koningsdag"
