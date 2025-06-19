@@ -161,6 +161,7 @@ from holidays.countries.poland import Poland, PL, POL
 from holidays.countries.portugal import Portugal, PT, PRT
 from holidays.countries.puerto_rico import PuertoRico, PR, PRI, HolidaysPR
 from holidays.countries.qatar import Qatar, QA, QAT
+from holidays.countries.reunion import Reunion, RE, REU, HolidaysRE
 from holidays.countries.romania import Romania, RO, ROU
 from holidays.countries.russia import Russia, RU, RUS
 from holidays.countries.saint_barthelemy import SaintBarthelemy, BL, BLM, HolidaysBL

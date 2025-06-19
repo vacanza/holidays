@@ -164,6 +164,7 @@ COUNTRIES: RegistryDict = {
     "portugal": ("Portugal", "PT", "PRT"),
     "puerto_rico": ("PuertoRico", "PR", "PRI", "HolidaysPR"),
     "qatar": ("Qatar", "QA", "QAT"),
+    "reunion": ("Reunion", "RE", "REU", "HolidaysRE"),
     "romania": ("Romania", "RO", "ROU"),
     "russia": ("Russia", "RU", "RUS"),
     "saint_barthelemy": ("SaintBarthelemy", "BL", "BLM", "HolidaysBL"),

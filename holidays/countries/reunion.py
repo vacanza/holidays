@@ -13,36 +13,36 @@
 from holidays.countries.france import France
 
 
-class HolidaysGF(France):
-    """French Guiana holidays.
+class HolidaysRE(France):
+    """Réunion holidays.
 
     Alias of a French subdivision that is also officially assigned
     its own country code in ISO 3166-1.
 
     References:
-        * <https://en.wikipedia.org/wiki/French_Guiana>
+        * <https://en.wikipedia.org/wiki/Réunion>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
     """
 
-    country = "GF"
+    country = "RE"
     parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
-    # Cession from Portugal on May 30th, 1814.
+    # Cession from the UK on May 30th, 1814.
     start_year = 1815
 
     def _populate_public_holidays(self) -> None:
-        self.subdiv = "973"
+        self.subdiv = "974"
         super()._populate_public_holidays()
 
 
-class FrenchGuiana(HolidaysGF):
+class Reunion(HolidaysRE):
     pass
 
 
-class GF(HolidaysGF):
+class RE(HolidaysRE):
     pass
 
 
-class GUF(HolidaysGF):
+class REU(HolidaysRE):
     pass
