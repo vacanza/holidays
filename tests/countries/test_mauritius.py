@@ -55,13 +55,9 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1988, 2050)))
 
     def test_assumption_day(self):
-        self.assertHolidayName(
-            "Assumption of the Blessed Virgin Mary",
-            (f"{year}-08-15" for year in range(2016, 2050, 2)),
-        )
-        self.assertNoHolidayName(
-            "Assumption of the Blessed Virgin Mary", range(1988, 2016), range(2017, 2050, 2)
-        )
+        name = "Assumption of the Blessed Virgin Mary"
+        self.assertHolidayName(name, (f"{year}-08-15" for year in range(2016, 2050, 2)))
+        self.assertNoHolidayName(name, range(1988, 2016), range(2017, 2050, 2))
 
     def test_arrival_of_indentured_labourers_day(self):
         self.assertHolidayName(
