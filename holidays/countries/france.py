@@ -170,7 +170,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Established on October 24th, 1922.
         if self._year >= 1922:
             # Armistice Day.
-            self._add_holiday_nov_11(tr("Armistice"))
+            self._add_remembrance_day(tr("Armistice"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))

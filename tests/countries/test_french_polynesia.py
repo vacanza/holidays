@@ -16,7 +16,7 @@ from holidays.countries.french_polynesia import HolidaysPF, FrenchPolynesia, PF,
 from tests.common import CommonCountryTests
 
 
-class TestNewCaledonia(CommonCountryTests, TestCase):
+class TestFrenchPolynesia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysPF, years=range(1881, 2050))
