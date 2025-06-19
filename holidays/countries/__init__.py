@@ -75,6 +75,7 @@ from holidays.countries.ethiopia import Ethiopia, ET, ETH
 from holidays.countries.fiji import Fiji, FJ, FJI
 from holidays.countries.finland import Finland, FI, FIN
 from holidays.countries.france import France, FR, FRA
+from holidays.countries.french_guiana import FrenchGuiana, GF, GUF, HolidaysGF
 from holidays.countries.french_southern_territories import (
     FrenchSouthernTerritories,
     TF,

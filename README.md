@@ -105,7 +105,7 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 197 country codes. The standard way to refer to a country is by using its [ISO
+We currently support 198 country codes. The standard way to refer to a country is by using its [ISO
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -584,6 +584,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>France</td>
 <td>FR</td>
 <td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna)</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>French Guiana</td>
+<td>GF</td>
+<td>Can also be loaded as country FR, subdivision 973</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>

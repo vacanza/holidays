@@ -84,6 +84,7 @@ COUNTRIES: RegistryDict = {
     "fiji": ("Fiji", "FJ", "FJI"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
+    "french_guiana": ("FrenchGuiana", "GF", "GUF", "HolidaysGF"),
     "french_southern_territories": ("FrenchSouthernTerritories", "TF", "ATF", "HolidaysTF"),
     "gabon": ("Gabon", "GA", "GAB"),
     "georgia": ("Georgia", "GE", "GEO"),
