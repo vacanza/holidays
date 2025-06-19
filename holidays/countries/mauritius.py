@@ -43,8 +43,9 @@ class Mauritius(
           Holidays Act is the one consolidated in 1991. The most recent update to the holiday
           schedule reflected in that version dates back to 1987. Therefore, 1988 is being used
           as the starting year.
-        * [Ougadi](https://en.wikipedia.org/wiki/Ugadi) is another name for the Telugu holiday, Ugadi,
-          which is celebrated on the same day as Gudi Padwa. Therefore, reusing Gudi Padwa for adding Ougadi.
+        * [Ougadi](https://en.wikipedia.org/wiki/Ugadi) is another name for the Telugu holiday,
+          Ugadi, which is celebrated on the same day as Gudi Padwa. Therefore, reusing Gudi Padwa
+          for adding Ougadi.
         * [2021](https://web.archive.org/web/20210926053030/https://mauritius-paris.govmu.org/Pages/About%20Us/Public-Holidays-in-Mauritius-for-Year-2021.aspx)
         * [2022](https://web.archive.org/web/20240703234017/https://mauritius-kualalumpur.govmu.org/Documents/Public%20Holiday/Public%20holidays%20-%202022.pdf)
         * [2024](https://web.archive.org/web/20240703233951/https://mauritius-paris.govmu.org/Documents/Public%20Holidays/Notice%20-%20Final%20Public%20holidays%20-%202024.pdf)
@@ -92,10 +93,10 @@ class Mauritius(
         self._add_labor_day(tr("Labour Day"))
 
         if self._year >= 2016 and self._year % 2 == 0:
-            # Assumption of the Blessed Virgin Mary.
+            # Assumption Day.
             self._add_assumption_of_mary_day(tr("Assumption of the Blessed Virgin Mary"))
 
-        # Arrival of Indentured Labourers.
+        # Arrival of Indentured Laborers.
         self._add_holiday_nov_2(tr("Arrival of Indentured Labourers"))
 
         if self._year <= 2015 or self._year % 2 != 0:

@@ -37,29 +37,36 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1988, 2050)))
 
     def test_day_after_new_years_day(self):
-        name = "Day after New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1988, 2050)))
+        self.assertHolidayName(
+            "Day after New Year's Day", (f"{year}-01-02" for year in range(1988, 2050))
+        )
 
     def test_abolition_of_slavery_day(self):
-        name = "Abolition of Slavery"
-        self.assertHolidayName(name, (f"{year}-02-01" for year in range(1988, 2050)))
+        self.assertHolidayName(
+            "Abolition of Slavery", (f"{year}-02-01" for year in range(1988, 2050))
+        )
 
     def test_independence_and_republic_day(self):
-        name = "Independence and Republic Day"
-        self.assertHolidayName(name, (f"{year}-03-12" for year in range(1988, 2050)))
+        self.assertHolidayName(
+            "Independence and Republic Day", (f"{year}-03-12" for year in range(1988, 2050))
+        )
 
     def test_labour_day(self):
-        name = "Labour Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1988, 2050)))
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1988, 2050)))
 
     def test_assumption_day(self):
-        name = "Assumption of the Blessed Virgin Mary"
-        self.assertHolidayName(name, (f"{year}-08-15" for year in range(2016, 2050, 2)))
-        self.assertNoHolidayName(name, range(1988, 2016), range(2017, 2050, 2))
+        self.assertHolidayName(
+            "Assumption of the Blessed Virgin Mary",
+            (f"{year}-08-15" for year in range(2016, 2050, 2)),
+        )
+        self.assertNoHolidayName(
+            "Assumption of the Blessed Virgin Mary", range(1988, 2016), range(2017, 2050, 2)
+        )
 
     def test_arrival_of_indentured_labourers_day(self):
-        name = "Arrival of Indentured Labourers"
-        self.assertHolidayName(name, (f"{year}-11-02" for year in range(1988, 2050)))
+        self.assertHolidayName(
+            "Arrival of Indentured Labourers", (f"{year}-11-02" for year in range(1988, 2050))
+        )
 
     def test_all_saints_day(self):
         name = "All Saints' Day"
@@ -69,8 +76,7 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2016, 2050, 2))
 
     def test_christmas_day(self):
-        name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1988, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1988, 2050)))
 
     def test_chinese_spring_festival(self):
         name = "Chinese Spring Festival"
