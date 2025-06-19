@@ -25,10 +25,8 @@ class HolidaysSJ(Norway):
 
     country = "SJ"
     parent_entity = Norway
-    default_language = "no"
     subdivisions = ()  # Override Norway subdivisions.
     subdivisions_aliases = {}  # Override Norway subdivisions aliases.
-    supported_languages = ("en_US", "no", "th", "uk")
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "21"
