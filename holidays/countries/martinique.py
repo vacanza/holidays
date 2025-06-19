@@ -28,8 +28,8 @@ class HolidaysMQ(France):
     parent_entity = France
     subdivisions = ()  # Override France subdivisions.
     subdivisions_aliases = {}  # Override France subdivisions aliases.
-    # Returned from the UK on March 27th, 1802.
-    start_year = 1803
+    # Cession from the UK on May 30th, 1814.
+    start_year = 1815
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "972"

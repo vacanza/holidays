@@ -22,7 +22,7 @@ class TestFrenchGuiana(CommonCountryTests, TestCase):
         super().setUpClass(HolidaysGF, years=range(1815, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysGF, FrenchGuiana, GF, GUF )
+        self.assertAliases(HolidaysGF, FrenchGuiana, GF, GUF)
 
     def test_no_holidays(self):
         self.assertNoHolidays(FrenchGuiana(years=1814))
