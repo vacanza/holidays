@@ -53,7 +53,7 @@ msgstr "Labor Day"
 
 #. Arrival of Indentured Labourers.
 msgid "Arrival of Indentured Labourers"
-msgstr "Arrival of Indentured Labourers"
+msgstr "Arrival of Indentured Laborers"
 
 #. All Saints' Day.
 msgid "All Saints' Day"

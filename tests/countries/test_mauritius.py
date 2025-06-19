@@ -31,16 +31,10 @@ class TestMauritius(CommonCountryTests, TestCase):
         self.assertNoHolidays(Mauritius(years=1987))
 
     def test_special_holidays(self):
-        public_holiday = "Public Holiday"
-        for dt, name in (
-            ("2019-07-29", public_holiday),
-            ("2019-09-09", public_holiday),
-        ):
-            self.assertHolidayName(name, dt)
+        self.assertHolidayName("Public Holiday", "2019-07-29", "2019-09-09")
 
     def test_new_years_day(self):
-        name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1988, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1988, 2050)))
 
     def test_day_after_new_years_day(self):
         name = "Day after New Year's Day"
@@ -61,7 +55,7 @@ class TestMauritius(CommonCountryTests, TestCase):
     def test_assumption_day(self):
         name = "Assumption of the Blessed Virgin Mary"
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(2016, 2050, 2)))
-        self.assertNoHolidayName(name, (*range(1988, 2016), *range(2017, 2050, 2)))
+        self.assertNoHolidayName(name, range(1988, 2016), range(2017, 2050, 2))
 
     def test_arrival_of_indentured_labourers_day(self):
         name = "Arrival of Indentured Labourers"
@@ -100,7 +94,7 @@ class TestMauritius(CommonCountryTests, TestCase):
             "2024-04-11",
             "2025-04-01",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2016, 2026))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
 
     def test_thaipusam(self):
         name = "Thaipoosam Cavadee"
@@ -217,6 +211,6 @@ class TestMauritius(CommonCountryTests, TestCase):
             ("2025-08-28", "Ganesh Chaturthi"),
             ("2025-10-20", "Diwali"),
             ("2025-11-01", "All Saints' Day"),
-            ("2025-11-02", "Arrival of Indentured Labourers"),
+            ("2025-11-02", "Arrival of Indentured Laborers"),
             ("2025-12-25", "Christmas Day"),
         )

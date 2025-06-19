@@ -12,8 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays import HolidayBase
-from holidays.calendars import _CustomIslamicHolidays, _CustomHinduHolidays
+from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -23,6 +22,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Mauritius(
@@ -43,14 +43,8 @@ class Mauritius(
           Holidays Act is the one consolidated in 1991. The most recent update to the holiday
           schedule reflected in that version dates back to 1987. Therefore, 1988 is being used
           as the starting year.
-        * Ougadi is another name for the Telegu Holiday, Ugadi, which is celebrated on the same
-          day as Gudi Padwa. Therefore, reusing Gudi Padwa for adding Ougadi.
-          <https://en.wikipedia.org/wiki/Ugadi>
-        * Dates for Maha Shivaratree, Ougadi and Divali match the default dates for Maha Shivratri,
-          Gudi Padwa and Diwali (India dates) in the Hindu calendar.
-            - <https://web.archive.org/web/20250322231005/https://www.timeanddate.com/holidays/mauritius/maha-shivaratree>
-            - <https://web.archive.org/web/20241012141403/https://www.timeanddate.com/holidays/mauritius/ougadi>
-            - <https://web.archive.org/web/20241112085826/https://www.timeanddate.com/holidays/mauritius/divali>
+        * [Ougadi](https://en.wikipedia.org/wiki/Ugadi) is another name for the Telugu holiday, Ugadi,
+          which is celebrated on the same day as Gudi Padwa. Therefore, reusing Gudi Padwa for adding Ougadi.
         * [2021](https://web.archive.org/web/20210926053030/https://mauritius-paris.govmu.org/Pages/About%20Us/Public-Holidays-in-Mauritius-for-Year-2021.aspx)
         * [2022](https://web.archive.org/web/20240703234017/https://mauritius-kualalumpur.govmu.org/Documents/Public%20Holiday/Public%20holidays%20-%202022.pdf)
         * [2024](https://web.archive.org/web/20240703233951/https://mauritius-paris.govmu.org/Documents/Public%20Holidays/Notice%20-%20Final%20Public%20holidays%20-%202024.pdf)
@@ -104,7 +98,7 @@ class Mauritius(
         # Arrival of Indentured Labourers.
         self._add_holiday_nov_2(tr("Arrival of Indentured Labourers"))
 
-        if (self._year <= 2015) or (self._year >= 2017 and self._year % 2 != 0):
+        if self._year <= 2015 or self._year % 2 != 0:
             # All Saints' Day.
             self._add_all_saints_day(tr("All Saints' Day"))
 
@@ -188,8 +182,7 @@ class MauritiusStaticHolidays(StaticHolidays):
     """Mauritius special holidays.
 
     References:
-        * July 29, 2019 and September 9, 2019 declared as public holidays according to the
-          [gazette notification](https://web.archive.org/web/20250618211631/https://mauritiuslii.org/akn/mu/officialGazette/government-gazette/2019-07-27/78/eng@2019-07-27)
+        * [July 29, 2019 and September 9, 2019](https://web.archive.org/web/20250618211631/https://mauritiuslii.org/akn/mu/officialGazette/government-gazette/2019-07-27/78/eng@2019-07-27)
     """
 
     # Public Holiday.
