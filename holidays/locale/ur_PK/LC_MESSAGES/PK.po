@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.70\n"
 "POT-Creation-Date: 2025-03-29 00:09+0500\n"
-"PO-Revision-Date: 2025-03-29 23:00+0500\n"
+"PO-Revision-Date: 2025-04-08 04:16+0200\n"
 "Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: en_PK\n"
 
 #. Kashmir Solidarity Day.
@@ -71,3 +71,7 @@ msgstr "عاشورہ"
 #, c-format
 msgid "%s (estimated)"
 msgstr "%s (اندازاً)"
+
+#. Youm-e-Takbeer.
+msgid "Youm-e-Takbeer"
+msgstr "یوم تکبیر"

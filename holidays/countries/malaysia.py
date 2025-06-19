@@ -4,13 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import (
@@ -66,12 +65,12 @@ class Malaysia(
     """Malaysia holidays.
 
     References:
-        * [Holidays Act 1951](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
-        * [Holidays Ordinance (Sabah Cap. 56)](https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
-        * [Public Holidays Ordinance (Sarawak Cap. 8)](https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
+        * [Holidays Act 1951](https://web.archive.org/web/20241202103403/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
+        * [Holidays Ordinance (Sabah Cap. 56)](https://web.archive.org/web/20201028045259/https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
+        * [Public Holidays Ordinance (Sarawak Cap. 8)](https://web.archive.org/web/20221208142318/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
         * [Wikipedia](https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia)
-        * <https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
-        * <https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
+        * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
+        * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
 
     Section 3 of Holidays Act 1951:
     > If any day specified in the Schedule falls on Sunday then the day following shall be
@@ -90,23 +89,24 @@ class Malaysia(
     observed_label = tr("Cuti %s")
     # %s (observed, estimated).
     observed_estimated_label = tr("Cuti %s (anggaran)")
+    start_year = 1952
     subdivisions = (
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
+        "01",  # Johor.
+        "02",  # Kedah.
+        "03",  # Kelantan.
+        "04",  # Melaka.
+        "05",  # Negeri Sembilan.
+        "06",  # Pahang.
+        "07",  # Pulau Pinang.
+        "08",  # Perak.
+        "09",  # Perlis.
+        "10",  # Selangor.
+        "11",  # Terengganu.
+        "12",  # Sabah.
+        "13",  # Sarawak.
+        "14",  # Wilayah Persekutuan Kuala Lumpur.
+        "15",  # Wilayah Persekutuan Labuan.
+        "16",  # Wilayah Persekutuan Putrajaya.
     )
     subdivisions_aliases = {
         "Johor": "01",
@@ -135,17 +135,16 @@ class Malaysia(
         "SBH": "12",
         "Sarawak": "13",
         "SWK": "13",
-        "WP Kuala Lumpur": "14",
+        "Wilayah Persekutuan Kuala Lumpur": "14",
         "KUL": "14",
-        "WP Labuan": "15",
+        "Wilayah Persekutuan Labuan": "15",
         "LBN": "15",
-        "WP Putrajaya": "16",
+        "Wilayah Persekutuan Putrajaya": "16",
         "PJY": "16",
     }
     supported_languages = ("en_US", "ms_MY", "th")
-    start_year = 1952
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -163,11 +162,8 @@ class Malaysia(
         StaticHolidays.__init__(self, cls=MalaysiaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
-        self.dts_observed: set[date] = set()
 
     def _populate_public_holidays(self):
-        # This must be done for every `_populate_public_holidays()` call.
-        # Otherwise, 2006/2007 Eid al-Adha observance would be miscalculated.
         self.dts_observed = set()
 
         # Chinese New Year.

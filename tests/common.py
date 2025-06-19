@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,8 +21,8 @@ from dateutil.parser import parse
 from holidays import HolidayBase
 from holidays.calendars.gregorian import SUN
 
-PYTHON_LATEST_SUPPORTED_VERSION = (3, 12)
-PYTHON_VERSION = (sys.version_info.major, sys.version_info.minor)
+PYTHON_LATEST_SUPPORTED_VERSION = "3.13"
+PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
 class TestCase:

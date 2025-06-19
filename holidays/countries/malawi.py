@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,8 +22,8 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Malawi holidays.
 
     References:
-        * <https://www.officeholidays.com/countries/malawi>
-        * <https://www.timeanddate.com/holidays/malawi/>
+        * <https://web.archive.org/web/20250414071022/https://www.officeholidays.com/countries/malawi>
+        * <https://web.archive.org/web/20250213080059/https://www.timeanddate.com/holidays/malawi/>
     """
 
     country = "MW"

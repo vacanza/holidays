@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -104,7 +104,11 @@ class ObservedHolidayBase(HolidayBase):
     observed_label = "%s"
 
     def __init__(
-        self, observed_rule: ObservedRule = None, observed_since: int = None, *args, **kwargs
+        self,
+        observed_rule: Optional[ObservedRule] = None,
+        observed_since: Optional[int] = None,
+        *args,
+        **kwargs,
     ):
         self._observed_rule = observed_rule or ObservedRule()
         self._observed_since = observed_since

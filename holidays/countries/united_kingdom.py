@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -29,8 +29,8 @@ class UnitedKingdom(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom>
         * <https://archive.org/details/treatiseonbanki00walk/page/334/mode/2up>
-        * <https://www.gov.uk/bank-holidays>
-        * <https://www.timeanddate.com/holidays/uk/>
+        * <https://web.archive.org/web/20250426173714/https://www.gov.uk/bank-holidays>
+        * <https://web.archive.org/web/20250423223001/https://www.timeanddate.com/holidays/uk>
 
     The Anniversary of the Battle of the Boyne bank holiday is proclaimed annually by the
     Secretary of State for Northern Ireland.

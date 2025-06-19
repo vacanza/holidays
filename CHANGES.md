@@ -1,3 +1,135 @@
+# Version 0.75
+
+Released June 16, 2025
+
+- Refactor TF holidays (#2612 by @KJhellico)
+- Refactor Trinidad and Tobago holidays (#2617 by @PPsyrius)
+- Refactor `__init__` method signature (#2618 by @KJhellico)
+- Add Anguilla holidays (#2615 by @Prateekshit73, @arkid15r, @KJhellico)
+- Add Cook Islands holidays (#2582 by @tr33k, @arkid15r)
+- Add Guyana holidays (#2614 by @kritibirda26, @arkid15r)
+- Add Micronesia holidays (#2594 by @nalin-28, @arkid15r, @PPsyrius)
+- Add Nauru holidays (#2609 by @Roshan-1024, @arkid15r, @KJhellico)
+- Add Niger holidays (#2583 by @Abheelash-Mishra, @arkid15r)
+- Add Senegal holidays (#2593 by @Wasif-Shahzad, @arkid15r)
+- Add Solomon Islands holidays (#2632 by @kritibirda26, @arkid15r, @KJhellico)
+- Add Svalbard and Jan Mayen holidays (#2638 by @PPsyrius)
+- Add Turks and Caicos Islands holidays (#2483 by @ShalomDee)
+- Improve Togo holidays test coverage (#2628 by @Roshan-1024)
+- Update Bermuda holidays: add l10n support (#2589 by @kritibirda26)
+- Update Hungary holidays: update 1991-2026 special holidays (#2568 by @prokaj)
+- Update Namibia holidays, add l10n support (#2629 by @KJhellico)
+- Update Philippines holidays: 2025 Eid'l Adha Proclamation URL (#2600 by @kleo)
+- Update SPONSORSHIP.md (#2588 by @arkid15r)
+- Update Singapore holidays: add 2026 public holidays (#2637 by @PPsyrius)
+- Update countries/financial with absolute imports (#2599 by @laurentco, @arkid15r)
+- Add Wayback Machine URL archiver and replacer script (#2504 by @kritibirda26)
+- Add l10n helper script (#2607 by @KJhellico)
+- Archive more links (#2622 by @kritibirda26)
+- Replace flake8 noqa-s w/ ruff (#2610 by @arkid15r)
+- Set Python 3.13 as primary in CI/CD (#2605 by @KJhellico)
+
+# Version 0.74
+
+Released June 2, 2025
+
+- Add Benin holidays (#2562 by @tr33k, @KJhellico)
+- Add Bermuda holidays (#2571 by @kritibirda26)
+- Add British Virgin Islands holidays (#2555 by @tr33k, @arkid15r)
+- Add Equatorial Guinea holidays (#2521 by @Abheelash-Mishra)
+- Add Yemen holidays (#2522 by @Wasif-Shahzad, @arkid15r)
+- Add Åland Islands holidays. Update Finland holidays (#2537 by @PPsyrius, @arkid15r, @Arynelson)
+- Update Thailand holidays: add uk localization (#2566 by @KJhellico)
+- Update North Macedonia holidays, add l10n support (#2554 by @KJhellico)
+- Update sponsorship FAQ formatting (#2572 by @arkid15r)
+- Add SPONSORSHIP.md (#2546 by @arkid15r)
+- Clean up unicode URLs (#2580 by @PPsyrius, @arkid15r, @KJhellico)
+
+# Version 0.73
+
+Released May 19, 2025
+
+- Add Cocos Islands holidays (#2532 by @tr33k)
+- Add Grenada holidays (#2524 by @nalin-28)
+- Add Nepal holidays (#2386 by @ankushhKapoor, @arkid15r)
+- Add Togo holidays (#2525 by @Roshan-1024, @KJhellico)
+- Update Andorra holidays, add l10n support (#2530 by @KJhellico)
+- Update Argentina holidays: add 2018 G20 Leaders' Summit for Buenos Aires (#2529 by @PPsyrius)
+- Update Philippines holidays: add special holiday May 12, 2025 (#2539 by @KJhellico)
+- Update Vatican City holidays: add election and name day of Pope Leo XIV (#2549 by @KJhellico)
+- Update documentation build: make PR links in changelog (#2540 by @KJhellico)
+- Update pre-commit config (#2548 by @KJhellico, @arkid15r)
+
+# Version 0.72
+
+Released May 5, 2025
+
+- Add Sao Tome and Principe holidays (#2489 by @tr33k, @arkid15r)
+- Add Trinidad and Tobago holidays (#2402 by @Roshan-1024, @KJhellico)
+- Fix `TestClosestHoliday` current date handling (#2517 by @KJhellico)
+- Fix typography: replace U+2019 with "'" and U+2013 with '-' (#2523 by @KJhellico)
+- Update Canada holidays: add historical holidays (#2507 by @PPsyrius)
+- Update Ethiopia holidays: official source namings, `WORKDAY` category (#2490 by @PPsyrius)
+- Update India holidays: add missing Tamil Nadu holidays (#2502 by @tr33k, @KJhellico)
+- Update README: add Snyk package health badge (#2503 by @KJhellico)
+- Update Singapore holidays: 2025 Polling Day on May 3rd (#2487 by @PPsyrius)
+- Update Taiwan holidays: test case refactor (#2498 by @PPsyrius)
+- Update documentation build process (#2501 by @KJhellico, @arkid15r)
+- Update documentation tests: add AUTHORS.md checking (#2492 by @KJhellico, @arkid15r)
+- Add missing subdivisions aliases  (#2520 by @KJhellico)
+- Disable v1 incompatibility warning (#2518 by @arkid15r)
+- Docstring cleanup for Indochinese countries (#2505 by @PPsyrius)
+- Extend Chinese Lunisolar calendar support (#2488 by @KJhellico)
+- Rename AUTHORS.md to CONTRIBUTORS (#2496 by @arkid15r)
+
+# Version 0.71
+
+Released April 21, 2025
+
+- Add French Southern Territories holidays (#2442 by @LuccaAug, @arkid15r)
+- Add Oman holidays (#2463 by @Wasif-Shahzad)
+- Add Sierra Leone holidays (#2433 by @SammanSarkar, @arkid15r)
+- Add Suriname holidays (#2465 by @kritibirda26)
+- Update .po files generator (#2459 by @KJhellico, @arkid15r)
+- Update .po files generator (#2470 by @KJhellico)
+- Update BY.po files (#2452 by @arkid15r)
+- Update Pakistan holidays: add Youm-e-Takbeer holiday (#2446 by @w3stling)
+- Update Python latest supported version format (#2466 by @arkid15r)
+- Update RELEASE.md (#2484 by @arkid15r)
+- Update South Korea holidays: add 2025 Presidential Election Day (#2451 by @YiGeon)
+- Update l10n related documentation: detailed explain of language parameter behavior (#2396 by @shreyanshVIT23, @arkid15r)
+- Update mypy configuration (#2464 by @arkid15r)
+- Add FUNDING.yml (#2450 by @arkid15r)
+
+# Version 0.70
+
+Released April 7, 2025
+
+- Add iCalendar export support (#2362 by @PPsyrius, @kawazap)
+- Add Antigua and Barbuda holidays (#2395 by @kritibirda26)
+- Add Fiji holidays (#2354 by @Prateekshit73, @arkid15r, @kasya, @PPsyrius)
+- Add Guinea holidays (#2398 by @nalin-28, @arkid15r)
+- Add Ivory Coast holidays (#2388 by @kritibirda26, @arkid15r)
+- Add Qatar holidays (#2409 by @Wasif-Shahzad, @arkid15r)
+- Update Argentina holidays: add categories and subdivisions support (#2375 by @KJhellico)
+- Update India holidays: Hindi l10n fixes (#2393 by @Ninad0109)
+- Update Pakistan holidays: add 2023-2024 exact dates (#2380 by @Wasif-Shahzad)
+- Update Pakistan holidays: add l10n support (en_PK, en_US, ur_PK) (#2385 by @Wasif-Shahzad, @KJhellico)
+- Update Philippines holidays: 2025 Eid'l Fitr (#2367 by @kleo)
+- Update Philippines holidays: adjust Bonifacio Day for 2023 (#2370 by @w3stling)
+- Update README.md badges (#2379 by @arkid15r)
+- Update Timor-Leste holidays: add `en_TL`, `th` l10n, update `en_US` l10n (#2407 by @PPsyrius)
+- Update `HolidayBase::pop_named`: add support for more lookup types (#2140 by @wth-d, @KJhellico)
+- Update `_ThaiLunisolar` and `ThaiCalendarHolidays` documentation (#2439 by @PPsyrius)
+- Update pyproject.toml: align with PEP 639 metadata format (#2363 by @KJhellico)
+- Update release notes generator (#2374 by @KJhellico)
+- Update tests requirements (#2383 by @KJhellico)
+- Added commit SHAs instead of versions (#2384 by @samyak003, @arkid15r)
+- Adjust project files after migration to MkDocs (#2381 by @KJhellico)
+- Migrate Documentation from Sphinx to MkDocs (#2289 by @Roshan-1024, @arkid15r, @KJhellico, @PPsyrius)
+- Reformat .po files (#2356 by @KJhellico)
+- Reformat BY.po files (#2365 by @PPsyrius)
+
 # Version 0.69
 
 Released March 17, 2025

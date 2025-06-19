@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2023-03-23 14:47+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-06-18 16:14+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. New Year's Day.
 msgid "Jour de l'an"
@@ -83,11 +82,11 @@ msgstr "All Saints' Day"
 msgid "Noël"
 msgstr "Christmas Day"
 
-#. Feast of Victor Schoelcher.
+#. Victor Schoelcher Day.
 msgid "Fête de Victor Schoelcher"
-msgstr "Feast of Victor Schoelcher"
+msgstr "Victor Schoelcher Day"
 
-#. Abolition of slavery.
+#. Abolition of Slavery.
 msgid "Abolition de l'esclavage"
 msgstr "Abolition of Slavery"
 
@@ -111,6 +110,22 @@ msgstr "Internal Autonomy Day"
 msgid "Saint Pierre Chanel"
 msgstr "Feast of Saint Peter Chanel"
 
-#. Festival of the territory.
+#. Territory Day.
 msgid "Fête du Territoire"
-msgstr "Festival of the Territory"
+msgstr "Territory Day"
+
+#. May Day.
+msgid "1er mai"
+msgstr "May Day"
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
+msgstr "Annexation Day"
+
+#. Matāri'i.
+msgid "Matāri'i"
+msgstr "Matāri'i"
+
+#. Saints Peter and Paul Day.
+msgid "Saints Pierre et Paul"
+msgstr "Saints Peter and Paul Day"

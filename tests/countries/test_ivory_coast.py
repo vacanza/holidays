@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -78,7 +78,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1997, 2050))
 
     def test_ascension_day(self):
-        name = "Jour de l’Ascension"
+        name = "Jour de l'Ascension"
         self.assertHolidayName(
             name,
             "2019-05-30",
@@ -105,7 +105,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
 
     def test_assumption_day(self):
         self.assertHolidayName(
-            "Fête de l’Assomption", (f"{year}-08-15" for year in range(1997, 2050))
+            "Fête de l'Assomption", (f"{year}-08-15" for year in range(1997, 2050))
         )
 
     def test_all_saints_day(self):
@@ -175,7 +175,7 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_day_after_mawlid(self):
-        name = "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"
+        name = "Lendemain de l'Anniversaire de la Naissance du Prophète Mahomet"
         self.assertHolidayName(
             name,
             "2021-10-18",
@@ -202,18 +202,18 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
         self.assertHolidays(
             IvoryCoast(years=2024),
             ("2024-01-01", "1er janvier"),
-            ("2024-02-12", "Victoire à la Coupe d’Afrique des Nations 2024"),
+            ("2024-02-12", "Victoire à la Coupe d'Afrique des Nations 2024"),
             ("2024-04-06", "Lendemain de la Nuit du Destin"),
             ("2024-04-10", "Fête de fin du Ramadan"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du travail"),
-            ("2024-05-09", "Jour de l’Ascension"),
+            ("2024-05-09", "Jour de l'Ascension"),
             ("2024-05-20", "Lundi de Pentecôte"),
             ("2024-06-16", "Fête de la Tabaski"),
             ("2024-06-17", "Lendemain de la Fête de la Tabaski"),
             ("2024-08-07", "Fête Nationale"),
-            ("2024-08-15", "Fête de l’Assomption"),
-            ("2024-09-15", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            ("2024-08-15", "Fête de l'Assomption"),
+            ("2024-09-15", "Lendemain de l'Anniversaire de la Naissance du Prophète Mahomet"),
             ("2024-11-01", "Fête de la Toussaint"),
             ("2024-11-15", "Journée Nationale de la Paix"),
             ("2024-12-25", "Fête de Noël"),
@@ -227,12 +227,12 @@ class TestIvoryCoast(CommonCountryTests, TestCase):
             ("2025-03-31", "Lendemain de la Fête de fin du Ramadan"),
             ("2025-04-21", "Lundi de Pâques"),
             ("2025-05-01", "Fête du travail"),
-            ("2025-05-29", "Jour de l’Ascension"),
+            ("2025-05-29", "Jour de l'Ascension"),
             ("2025-06-06", "Fête de la Tabaski"),
             ("2025-06-09", "Lundi de Pentecôte"),
             ("2025-08-07", "Fête Nationale"),
-            ("2025-08-15", "Fête de l’Assomption"),
-            ("2025-09-04", "Lendemain de l’Anniversaire de la Naissance du Prophète Mahomet"),
+            ("2025-08-15", "Fête de l'Assomption"),
+            ("2025-09-04", "Lendemain de l'Anniversaire de la Naissance du Prophète Mahomet"),
             ("2025-11-01", "Fête de la Toussaint"),
             ("2025-11-15", "Journée Nationale de la Paix"),
             ("2025-12-25", "Fête de Noël"),

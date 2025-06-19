@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,9 +24,9 @@ class Belize(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Belize>
-        * <http://www.belizelaw.org/web/lawadmin/PDF%20files/cap289.pdf>
-        * <https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated/>
-        * <https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/>
+        * <https://web.archive.org/web/20250427131247/https://www.belizelaw.org/web/lawadmin/PDF%20files/cap289.pdf>
+        * <https://web.archive.org/web/20250421081044/https://www.pressoffice.gov.bz/public-and-bank-holidays-2022-updated>
+        * <https://web.archive.org/web/20250318103939/https://www.pressoffice.gov.bz/government-of-belize-establishes-new-public-and-bank-holidays/>
     """
 
     country = "BZ"

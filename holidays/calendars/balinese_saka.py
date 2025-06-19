@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -107,6 +107,6 @@ class _BalineseSakaLunar:
         """
         Data References:
             * [1983-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1983)
-            * [2020-2050](https://www.balitrips.com/balinese-temples-ceremony)
+            * [2020-2050](https://web.archive.org/web/20240718011857/https://www.balitrips.com/balinese-temples-ceremony)
         """
         return self._get_holiday(NYEPI, year)

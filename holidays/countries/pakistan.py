@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,6 +24,8 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Pakistan>
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
+        * [Public and optional holidays](https://web.archive.org/web/20250118105814/https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
+        * [No.10-01/2024-Min-II](https://web.archive.org/web/20241103080918/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
     """
 
     country = "PK"
@@ -33,7 +35,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     start_year = 1948
     supported_languages = ("en_PK", "en_US", "ur_PK")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -58,6 +60,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         if self._year >= 1972:
             # Labor Day.
             self._add_labor_day(tr("Labour Day"))
+
+        if self._year >= 2024:
+            # Youm-e-Takbeer.
+            self._add_holiday_may_28(tr("Youm-e-Takbeer"))
 
         # Independence Day.
         self._add_holiday_aug_14(tr("Independence Day"))
@@ -99,7 +105,7 @@ class PAK(Pakistan):
 
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
-    # https://www.timeanddate.com/holidays/pakistan/first-day-ashura
+    # https://web.archive.org/web/20241123192805/https://www.timeanddate.com/holidays/pakistan/first-day-ashura
 
     ASHURA_DATES = {
         2005: (FEB, 18),
@@ -124,7 +130,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUL, 16),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
+    # https://web.archive.org/web/20250424085932/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
     EID_AL_ADHA_DATES = {
         2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
@@ -148,7 +154,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
+    # https://web.archive.org/web/20250414111814/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
@@ -170,9 +176,10 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2024: (APR, 10),
+        2025: (MAR, 31),
     }
 
-    # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
+    # https://web.archive.org/web/20240529050144/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),

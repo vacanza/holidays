@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,10 +24,10 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """Botswana holidays.
 
     References:
-        * <https://www.gov.bw/public-holidays>
-        * <https://publicholidays.africa/botswana/2021-dates/>
-        * <https://www.timeanddate.com/holidays/botswana/>
-        * <http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
+        * <https://web.archive.org/web/20250126165541/https://www.gov.bw/public-holidays>
+        * <https://web.archive.org/web/20240303024114/https://publicholidays.africa/botswana/2021-dates/>
+        * <https://web.archive.org/web/20250126135243/https://www.timeanddate.com/holidays/botswana/>
+        * <https://web.archive.org/web/20231103081712/http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf>
     """
 
     country = "BW"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,16 +21,16 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Gabon>
-        * <https://www.timeanddate.com/holidays/gabon>
-        * <https://www.officeholidays.com/countries/gabon>
-        * <http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
+        * <https://web.archive.org/web/20250414021427/https://www.timeanddate.com/holidays/gabon/>
+        * <https://web.archive.org/web/20241206141530/https://www.officeholidays.com/countries/gabon>
+        * <https://web.archive.org/web/20231211163448/https://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/>
     """
 
     country = "GA"
     # On 17 August 1960, Gabon gained independence from France.
     start_year = 1961
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,29 +20,30 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
     """El Salvador holidays.
 
     References:
-        * [Labor Code 1972](https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
-        * <https://www.timeanddate.com/holidays/el-salvador>
-        * <https://www.officeholidays.com/countries/el-salvador>
+        * [Labor Code 1972](https://web.archive.org/web/20240918054537/http://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download)
+        * <https://web.archive.org/web/20250308121509/https://www.timeanddate.com/holidays/el-salvador/>
+        * <https://web.archive.org/web/20250122083353/https://www.officeholidays.com/countries/el-salvador>
     """
 
     country = "SV"
     default_language = "es"
-    supported_languages = ("en_US", "es", "uk")
+    # Labor Code 1972.
+    start_year = 1973
     subdivisions = (
-        "AH",  # Ahuachapán
-        "CA",  # Cabañas
-        "CH",  # Chalatenango
-        "CU",  # Cuscatlán
-        "LI",  # La Libertad
-        "MO",  # Morazán
-        "PA",  # La Paz
-        "SA",  # Santa Ana
-        "SM",  # San Miguel
-        "SO",  # Sonsonate
-        "SS",  # San Salvador
-        "SV",  # San Vicente
-        "UN",  # La Unión
-        "US",  # Usulután
+        "AH",  # Ahuachapán.
+        "CA",  # Cabañas.
+        "CH",  # Chalatenango.
+        "CU",  # Cuscatlán.
+        "LI",  # La Libertad.
+        "MO",  # Morazán.
+        "PA",  # La Paz.
+        "SA",  # Santa Ana.
+        "SM",  # San Miguel.
+        "SO",  # Sonsonate.
+        "SS",  # San Salvador.
+        "SV",  # San Vicente.
+        "UN",  # La Unión.
+        "US",  # Usulután.
     )
     subdivisions_aliases = {
         "Ahuachapán": "AH",
@@ -60,8 +61,7 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         "La Unión": "UN",
         "Usulután": "US",
     }
-    # Labor Code 1972.
-    start_year = 1973
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

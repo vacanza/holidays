@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -24,7 +24,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)>
-        * <https://matsne.gov.ge/en/document/view/1155567?publication=24>
+        * <https://web.archive.org/web/20250121212149/https://matsne.gov.ge/en/document/view/1155567?publication=24>
     """
 
     country = "GE"
@@ -103,7 +103,7 @@ class GeorgiaStaticHolidays:
     """Georgia special holidays.
 
     References:
-        * <https://www.matsne.gov.ge/ka/document/view/6173967>
+        * <https://web.archive.org/web/20240704104728/https://matsne.gov.ge/ka/document/view/6173967>
     """
 
     special_government_holidays = {

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -184,6 +184,45 @@ class TestHungary(CommonCountryTests, TestCase):
 
     def test_substituted(self):
         dt = (
+            "1991-08-19",
+            "1992-08-21",
+            "1992-12-24",
+            "1993-12-24",
+            "1994-03-14",
+            "1997-05-02",
+            "1997-10-24",
+            "1997-12-24",
+            "1998-01-02",
+            "1998-08-21",
+            "1998-12-24",
+            "1999-12-24",
+            "2001-03-16",
+            "2001-04-30",
+            "2001-10-22",
+            "2001-11-02",
+            "2001-12-24",
+            "2001-12-31",
+            "2002-08-19",
+            "2002-12-24",
+            "2003-05-02",
+            "2003-10-24",
+            "2003-12-24",
+            "2004-01-02",
+            "2004-12-24",
+            "2005-03-14",
+            "2005-10-31",
+            "2007-03-16",
+            "2007-04-30",
+            "2007-10-22",
+            "2007-11-02",
+            "2007-12-24",
+            "2007-12-31",
+            "2008-05-02",
+            "2008-10-24",
+            "2008-12-24",
+            "2009-01-02",
+            "2009-08-21",
+            "2009-12-24",
             "2010-12-24",
             "2011-03-14",
             "2011-10-31",
@@ -224,6 +263,9 @@ class TestHungary(CommonCountryTests, TestCase):
             "2025-05-02",
             "2025-10-24",
             "2025-12-24",
+            "2026-01-02",
+            "2026-08-21",
+            "2026-12-24",
         )
         self.assertHoliday(dt)
 

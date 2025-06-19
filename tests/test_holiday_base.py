@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -1286,12 +1286,12 @@ class TestClosestHoliday(unittest.TestCase):
         self.hb = CountryStub3(years=self.current_year)
         self.next_labor_day_year = (
             self.current_year
-            if datetime.now().date() < self.hb.get_named("Custom May 1st Holiday")[0]
+            if datetime.now().date() <= self.hb.get_named("Custom May 1st Holiday")[0]
             else self.next_year
         )
         self.previous_labor_day_year = (
             self.current_year
-            if datetime.now().date() > self.hb.get_named("Custom May 1st Holiday")[0]
+            if datetime.now().date() >= self.hb.get_named("Custom May 2nd Holiday")[0]
             else self.previous_year
         )
 

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -20,7 +20,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Peru holidays.
 
     References:
-        * <https://www.gob.pe/feriados>
+        * <https://web.archive.org/web/20250414165243/https://www.gob.pe/feriados/>
         * <https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú>
     """
 

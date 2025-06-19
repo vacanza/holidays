@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -25,12 +25,12 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * [Public holidays in Tuvalu](https://en.wikipedia.org/wiki/Public_holidays_in_Tuvalu)
-        * [Today's and Upcoming Holidays in Tuvalu](https://www.timeanddate.com/holidays/tuvalu/)
-        * [Public Holidays (Amendment) Act 1990](https://www.paclii.org/cgi-bin/sinodisp/tv/legis/num_act/pha1990243/pha1990243.html)
-        * [Public Holidays Act 1](https://tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1937/1937-0005/1937-0005_1.pdf)
-        * [Public Holidays (Amendment) Act 2018](https://tuvalu-legislation.tv/cms/images/LEGISLATION/AMENDING/Public%20Holidays%20(Amendment)%20Act/Public%20Holidays%20(Amendment)%20Act%202018/Public%20Holidays%20(Amendment)%20Act%202018.pdf)
-        * [Public Holidays (Amendment) Act 2020](https://tuvalu-legislation.tv/cms/images/LEGISLATION/AMENDING/2020/2020-0013/2020-0013.pdf)
-        * [Public Holidays Act 2](https://tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1937/1937-0005/1937-0005_2.pdf)
+        * [Today's and Upcoming Holidays in Tuvalu](https://web.archive.org/web/20250310164727/https://www.timeanddate.com/holidays/tuvalu/)
+        * [Public Holidays (Amendment) Act 1990](https://web.archive.org/web/20250429073846/https://www.paclii.org/cgi-bin/sinodisp/tv/legis/num_act/pha1990243/pha1990243.html)
+        * [Public Holidays Act 1](https://archive.org/details/tuvalu-public-holidays-act-revised-2008)
+        * [Public Holidays (Amendment) Act 2018](https://archive.org/details/tuvalu-public-holidays-amendment-act-2018)
+        * [Public Holidays (Amendment) Act 2020](https://archive.org/details/tuvalu-public-holidays-amendment-act-2020)
+        * [Public Holidays Act 2](https://archive.org/details/tuvalu-public-holidays-act-revised-2022)
         * [Codes for the representation of names of countries and their subdivisions](https://www.iso.org/obp/ui/#iso:code:3166:TV)
         * [TUVALU-NEWS.TV](https://web.archive.org/web/20140915180104/http://www.tuvalu-news.tv/archives/2007/01/island_special_public_holidays.html)
     """
@@ -39,7 +39,10 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "tvl"
     # %s (observed).
     observed_label = tr("%s (fakamatakuga)")
-    supported_languages = ("en_GB", "en_US", "tvl")
+    # Tuvalu became fully independent of the United Kingdom on October 1, 1978
+    # Tuvalu's PUBLIC HOLIDAYS (AMENDMENT) ACT 1990 (Act 2 of 1990)
+    # It was first proclaimed on FEB 7th, 1990
+    start_year = 1990
     subdivisions = (
         "FUN",  # Funafuti.
         "NIT",  # Niutao.
@@ -62,10 +65,7 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         "Nui": "NUI",
         "Vaitupu": "VAI",
     }
-    # Tuvalu became fully independent of the United Kingdom on October 1, 1978
-    # Tuvalu's PUBLIC HOLIDAYS (AMENDMENT) ACT 1990 (Act 2 of 1990)
-    # It was first proclaimed on FEB 7th, 1990
-    start_year = 1990
+    supported_languages = ("en_GB", "en_US", "tvl")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -115,7 +115,7 @@ class Tuvalu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_oct_1(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_observed(self._add_holiday_oct_2(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
 
-        # https://en.wikipedia.org/wiki/King%27s_Official_Birthday#Tuvalu
+        # https://en.wikipedia.org/wiki/King's_Official_Birthday#Tuvalu
         if self._year <= 2022:
             # Heir to the Throne's Birthday.
             self._add_holiday_2nd_mon_of_nov(tr("Aso fanau o te sui ote Tupu"))

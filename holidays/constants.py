@@ -4,13 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F401
+# ruff: noqa: F401
 
 from holidays.calendars.gregorian import (
     JAN,
@@ -39,7 +39,6 @@ HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
 
 # Supported holiday categories.
 ARMED_FORCES = "armed_forces"
-ARMENIAN = "armenian"
 BANK = "bank"
 GOVERNMENT = "government"
 HALF_DAY = "half_day"
@@ -57,6 +56,14 @@ HEBREW = "hebrew"
 HINDU = "hindu"
 ISLAMIC = "islamic"
 ORTHODOX = "orthodox"
+
+ALBANIAN = "albanian"
+ARMENIAN = "armenian"
+BOSNIAN = "bosnian"
+ROMA = "roma"
+SERBIAN = "serbian"
+TURKISH = "turkish"
+VLACH = "vlach"
 
 DEFAULT_START_YEAR = 1901
 DEFAULT_END_YEAR = 2100

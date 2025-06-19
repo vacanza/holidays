@@ -2,6 +2,7 @@
 name = "holidays"
 description = "Open World Holidays Framework"
 license = "MIT"
+license-files = ["CONTRIBUTORS", "LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 dynamic = ["version"]
@@ -41,9 +42,6 @@ Documentation = "https://holidays.readthedocs.io/en/latest/"
 Repository = "https://github.com/vacanza/holidays/"
 Changelog = "https://github.com/vacanza/holidays/releases/"
 
-[tool.bandit]
-exclude_dirs = ["tests"]
-
 [tool.coverage.run]
 branch = true
 omit = ["scripts/*", "setup.py", "tests/*"]
@@ -56,29 +54,27 @@ no_inline_sort = true
 profile = "black"
 skip = ["docs"]
 
-[tool.mypy]
-strict = false
-
-[tool.ruff]
-line-length = 99
-target-version = "py39"
-
-[tool.ruff.lint]
-select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "T", "UP", "W"]
-
-[tool.ruff.lint.extend-per-file-ignores]
-"scripts/generate_release_notes.py" = ["T201"]
-
-[tool.ruff.lint.flake8-errmsg]
-max-string-length = 99
-
 [[tool.mypy.overrides]]
 module = "holidays.countries.*"
 disable_error_code = ["override"]
 
 [[tool.mypy.overrides]]
 module = "holidays.groups.*"
-disable_error_code = "attr-defined"
+disable_error_code = ["attr-defined"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E4", "E5", "E7", "E9", "F", "N", "PLE", "S", "T", "TC", "UP", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/generate_release_notes.py" = ["T201"]
+"tests/test_holiday_base.py" = ["S301"]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 99
 
 [tool.pytest.ini_options]
 addopts = [
@@ -87,6 +83,7 @@ addopts = [
 filterwarnings = [
     "ignore::DeprecationWarning:holidays.deprecations.v1_incompatibility",
 ]
+testpaths = ["tests"]
 
 [tool.setuptools.dynamic]
 version = { attr = "holidays.version.__version__" }

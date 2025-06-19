@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -14,18 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.73\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2025-03-19 13:55+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-05-06 10:34+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: es\n"
 
 #. %s (observed).
@@ -81,8 +80,7 @@ msgstr "May Revolution Day"
 msgid "Corpus Christi"
 msgstr "Corpus Christi"
 
-#. Day of Affirmation of Argentine Rights over the Malvinas, Islands and
-#. Antarctic Sector.
+#. Day of Affirmation of Argentine Rights over the Malvinas, Islands and Antarctic Sector.
 msgid ""
 "Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico"
 msgstr "Day of Affirmation of Argentine Rights over the Malvinas, Islands and Antarctic Sector"
@@ -241,8 +239,7 @@ msgstr "National Petroleum Day"
 msgid "Tehuelches y Mapuches declaran lealtad a la bandera Argentina"
 msgstr "Tehuelches and Mapuches declare loyalty to the Argentine flag"
 
-#. Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic
-#. Islands.
+#. Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic Islands.
 msgid "Día de la Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur"
 msgstr "Day of the Province of Tierra del Fuego, Antarctica and the South Atlantic Islands"
 
@@ -346,8 +343,7 @@ msgstr "Bicentenary of the creation and first oath of the national flag"
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr "Bicentenary of the Battle of Tucumán"
 
-#. Bicentenary of the inaugural session of the National Constituent Assembly
-#. of the year 1813.
+#. Bicentenary of the inaugural session of the National Constituent Assembly of the year 1813.
 msgid "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
 msgstr "Bicentenary of the inaugural session of the National Constituent Assembly of the year 1813"
 
@@ -370,3 +366,7 @@ msgstr "FIFA World Cup 2022 Victory Day"
 #. Bank Holiday.
 msgid "Asueto bancario"
 msgstr "Bank Holiday"
+
+#. G20 Leaders' Summit.
+msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
+msgstr "G20 Leaders' Summit"

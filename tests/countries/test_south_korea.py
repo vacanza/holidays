@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -154,8 +154,9 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2012-12-19",
             "2017-05-09",
             "2022-03-09",
-            # Preliminary Dates.
-            "2027-03-03",
+            # Special Presidential Election (21st) due to Yoon Seok-yeol's impeachment.
+            "2025-06-03",
+            "2030-04-03",
         )
 
     def test_local_election_day(self):
@@ -297,12 +298,10 @@ class TestSouthKorea(CommonCountryTests, TestCase):
 
     def test_tree_planting_day(self):
         name = "식목일"
-        self.assertHolidayName(name, (f"{year}-04-05" for year in range(1949, 1960)))
-        self.assertHolidayName(name, (f"{year}-04-05" for year in range(1961, 2006)))
-        self.assertNoHolidayName(name, 1948, 1960, range(2006, 2050))
-        self.assertNoHoliday(
-            "1948-04-05", "1960-04-05", (f"{year}-04-05" for year in range(2006, 2050))
+        self.assertHolidayName(
+            name, (f"{year}-04-05" for year in (*range(1949, 1960), *range(1961, 2006)))
         )
+        self.assertNoHolidayName(name, 1948, 1960, range(2006, 2050))
         self.assertHolidayName(f"{name} 대체 휴일", "1959-04-06")
 
     def test_childrens_day(self):

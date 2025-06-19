@@ -1,0 +1,106 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Senegal holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.75\n"
+"POT-Creation-Date: 2025-06-04 16:10+0500\n"
+"PO-Revision-Date: 2025-06-04 16:10+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr_SN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: fr_SN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr ""
+
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr ""
+
+#. Christmas Day.
+msgid "Noël"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr ""
+
+#. Grand Magal of Touba.
+msgid "Grand Magal de Touba"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr ""
+
+#. Public holiday.
+msgid "Jour férié"
+msgstr ""
+
+#. Ashura.
+msgid "Tamxarit"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Journée du Maouloud"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Journée de la Korité"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Journée de la Tabaski"
+msgstr ""
+
+#. Ascension Day.
+msgid "Jeudi de l'Ascension"
+msgstr ""
+
+#. Senegambia Confederation Day.
+msgid "Fête de la Confédération de la Sénégambie"
+msgstr ""

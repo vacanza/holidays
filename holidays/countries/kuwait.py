@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -22,8 +22,8 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/2024_in_Kuwait>
-        * <https://www.officeholidays.com/countries/kuwait>
-        * <https://www.timeanddate.com/holidays/kuwait/2024>
+        * <https://web.archive.org/web/20250414072705/https://www.officeholidays.com/countries/kuwait>
+        * <https://web.archive.org/web/20250414072609/https://www.timeanddate.com/holidays/kuwait/2024>
     """
 
     country = "KW"
@@ -32,7 +32,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("(تقدير) %s")
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -45,7 +45,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         # The resting days are Friday and Saturday since Sep 1, 2007.
-        # https://www.arabnews.com/node/298933
+        # https://web.archive.org/web/20250414072729/https://www.arabnews.com/node/298933
         self.weekend = {THU, FRI} if self._year <= 2006 else {FRI, SAT}
 
         # New Year's Day.

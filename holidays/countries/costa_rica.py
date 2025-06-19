@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,7 +27,7 @@ class CostaRica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica>
-        * <http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx>
+        * <https://web.archive.org/web/20250328094837/http://www.pgrweb.go.cr/scij/avanzada_pgr.aspx>
         * Law #8442 from 19.04.2005
         * Law #8604 from 17.09.2007
         * Law #8753 from 25.07.2009

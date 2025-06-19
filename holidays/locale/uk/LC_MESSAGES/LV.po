@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -35,8 +35,7 @@ msgstr "День закриття загальнолатвійського фе�
 msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
 msgstr "День пастирського візиту Його Святості Папи Франциска до Латвії"
 
-#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice
-#. Hockey Championship.
+#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice Hockey Championship.
 msgid ""
 "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
 msgstr "День здобуття збірною Латвії з хокею бронзової медалі Чемпіонату світу"

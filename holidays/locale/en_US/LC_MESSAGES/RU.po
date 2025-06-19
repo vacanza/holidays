@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -63,8 +63,7 @@ msgstr "Victory Day"
 msgid "День России"
 msgstr "Russia Day"
 
-#. Day of the Adoption of the Declaration of Sovereignty of the Russian
-#. Federation.
+#. Day of the Adoption of the Declaration of Sovereignty of the Russian Federation.
 msgid "День принятия Декларации о государственном суверенитете Российской Федерации"
 msgstr "Day of the Adoption of the Declaration of Sovereignty of the Russian Federation"
 

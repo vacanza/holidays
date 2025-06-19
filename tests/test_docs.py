@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -23,6 +23,22 @@ from holidays import (
     list_supported_financial,
 )
 from holidays.constants import PUBLIC
+
+
+class TestAuthors(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.content = Path("CONTRIBUTORS").read_text(encoding="UTF-8").strip().split("\n")
+        super().setUpClass()
+
+    def test_authors_list(self):
+        authors = self.content[1:]
+        self.assertEqual(
+            authors,
+            sorted(authors),
+            "Contributors list should be sorted alphabetically.\n"
+            + "\n".join((f"{c} != {s}" for c, s in zip(authors, sorted(authors)) if c != s)),
+        )
 
 
 class TestReadme(TestCase):
@@ -85,8 +101,7 @@ class TestReadme(TestCase):
             country_subdivisions_aliases[country_code] = {}
             subdivision_str = row[2]
             if subdivision_str:
-                for subdivision_groups in subdivision_str.split("."):
-                    subdivision_aliases_group = subdivision_groups.split(";")[0].strip()
+                for subdivision_aliases_group in subdivision_str.split(";"):
                     # Exclude empty subdivisions.
                     if ":" not in subdivision_aliases_group:
                         country_subdivisions[country_code] = []
@@ -103,10 +118,13 @@ class TestReadme(TestCase):
                             subdivision_aliases = subdivision_aliases_re.match(subdivision_aliases)
                             subdivision = subdivision_aliases.group(1)
                             aliases = subdivision_aliases.group(2).split(", ")
+                            # "Virgin Islands, U.S." special case.
+                            if len(aliases) == 2 and aliases[1] == "U.S.":
+                                aliases = [subdivision_aliases.group(2)]
                         else:
                             aliases = []
                             subdivision = subdivision_aliases
-                        subdivision = subdivision.strip(" *")
+                        subdivision = subdivision.strip()
 
                         country_subdivisions[country_code].append(subdivision)
                         country_subdivisions_aliases[country_code][subdivision] = aliases

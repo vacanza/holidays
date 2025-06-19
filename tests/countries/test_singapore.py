@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -186,6 +186,7 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2025-03-31", "Hari Raya Puasa"),
             ("2025-04-18", "Good Friday"),
             ("2025-05-01", "Labour Day"),
+            ("2025-05-03", "Polling Day"),
             ("2025-05-12", "Vesak Day"),
             ("2025-06-07", "Hari Raya Haji"),
             ("2025-08-09", "National Day"),
@@ -193,11 +194,38 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
         )
 
+    def test_2026(self):
+        self.assertHolidays(
+            ("2026-01-01", "New Year's Day"),
+            ("2026-02-17", "Chinese New Year"),
+            ("2026-02-18", "Chinese New Year"),
+            ("2026-03-21", "Hari Raya Puasa"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-05-01", "Labour Day"),
+            ("2026-05-27", "Hari Raya Haji"),
+            ("2026-05-31", "Vesak Day"),
+            ("2026-06-01", "Vesak Day (observed)"),
+            ("2026-08-09", "National Day"),
+            ("2026-08-10", "National Day (observed)"),
+            ("2026-11-08", "Deepavali"),
+            ("2026-11-09", "Deepavali (observed)"),
+            ("2026-12-25", "Christmas Day"),
+        )
+
     def test_non_observed(self):
         self.assertNoNonObservedHoliday("2023-01-02")
 
     def test_special_holidays(self):
-        self.assertHoliday("2015-08-07")
+        self.assertHoliday(
+            "2001-11-03",
+            "2006-05-06",
+            "2011-05-07",
+            "2015-08-07",
+            "2015-09-11",
+            "2020-07-10",
+            "2023-09-01",
+            "2025-05-03",
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

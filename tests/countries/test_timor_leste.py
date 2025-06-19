@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -27,8 +27,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(TimorLeste(years=2005))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=GOVERNMENT))
-        self.assertNoHolidays(TimorLeste(years=2005, categories=WORKDAY))
+        self.assertNoHolidays(TimorLeste(years=2005, categories=(GOVERNMENT, WORKDAY)))
 
     def test_special_government_holidays(self):
         self.assertHoliday(
@@ -606,6 +605,48 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-12-31", "Dia dos Heróis Nacionais"),
         )
 
+    def test_l10n_en_tl(self):
+        self.assertLocalizedHolidays(
+            "en_TL",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "National Holidays (Special)"),
+            ("2023-01-23", "National Holidays (Special)"),
+            ("2023-02-22", "Ash Wednesday; National Holidays (Special)"),
+            ("2023-03-03", "Veterans Day"),
+            ("2023-04-06", "Holy Thursday; National Holidays (Special)"),
+            ("2023-04-07", "Holy Friday"),
+            ("2023-04-10", "National Holidays (Special)"),
+            ("2023-04-20", "National Holidays (Special)"),
+            ("2023-04-21", "National Holidays (Special)"),
+            ("2023-04-22", "Idul Fitri"),
+            ("2023-05-01", "World Labour Day"),
+            ("2023-05-18", "The Day of Ascension of Jesus Christ into Heaven"),
+            ("2023-05-19", "Parliamentary Election Day"),
+            ("2023-05-20", "Restoration of Independence Day"),
+            ("2023-05-22", "Parliamentary Election Day"),
+            ("2023-06-01", "World Children's Day"),
+            ("2023-06-08", "Corpus Christi"),
+            ("2023-06-29", "Idul Adha"),
+            (
+                "2023-08-20",
+                "Day of the Armed Forces for the National Liberation of Timor-Leste (FALINTIL)",
+            ),
+            ("2023-08-30", "Popular Consultation Day"),
+            ("2023-10-27", "Local Election Day"),
+            ("2023-11-01", "All Saints Day"),
+            ("2023-11-02", "All Souls Day"),
+            ("2023-11-03", "National Women's Day"),
+            ("2023-11-12", "National Youth Day"),
+            ("2023-11-13", "Local Election Day"),
+            ("2023-11-28", "Proclamation of Independence Day"),
+            ("2023-12-07", "Memorial Day"),
+            ("2023-12-08", "Day of Our Lady of Immaculate Conception and Timor-Leste Patroness"),
+            ("2023-12-10", "World Human Rights Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "National Holidays (Special)"),
+            ("2023-12-31", "National Heroes Day"),
+        )
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
@@ -620,12 +661,12 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-04-20", "National Holidays (Special)"),
             ("2023-04-21", "National Holidays (Special)"),
             ("2023-04-22", "Eid al-Fitr"),
-            ("2023-05-01", "World Labor Day"),
+            ("2023-05-01", "International Worker's Day"),
             ("2023-05-18", "The Day of Ascension of Jesus Christ into Heaven"),
             ("2023-05-19", "Parliamentary Election Day"),
             ("2023-05-20", "Restoration of Independence Day"),
             ("2023-05-22", "Parliamentary Election Day"),
-            ("2023-06-01", "World Children's Day"),
+            ("2023-06-01", "International Children's Day"),
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-29", "Eid al-Adha"),
             (
@@ -642,7 +683,7 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-11-28", "Proclamation of Independence Day"),
             ("2023-12-07", "Memorial Day"),
             ("2023-12-08", "Day of Our Lady of Immaculate Conception and Timor-Leste Patroness"),
-            ("2023-12-10", "World Human Rights Day"),
+            ("2023-12-10", "International Human Rights Day"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "National Holidays (Special)"),
             ("2023-12-31", "National Heroes Day"),
@@ -685,4 +726,43 @@ class TestTimorLeste(CommonCountryTests, TestCase):
             ("2023-12-25", "Loron Natál"),
             ("2023-12-26", "Feriadu Nasional (Espesial)"),
             ("2023-12-31", "Loron Eroi Nasionál sira nian"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-01", "วันขึ้นปีใหม่"),
+            ("2023-01-02", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-01-23", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-02-22", "วันพุธรับเถ้า; วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-03-03", "วันทหารผ่านศึก"),
+            ("2023-04-06", "วันพฤหัสศักดิสิทธิ์; วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-07", "วันศุกร์ประเสริฐ"),
+            ("2023-04-10", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-20", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-21", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-04-22", "วันอีฎิ้ลฟิตริ"),
+            ("2023-05-01", "วันแรงงานสากล"),
+            ("2023-05-18", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2023-05-19", "วันเลือกตั้งสมาชิกรัฐสภา"),
+            ("2023-05-20", "วันรำลึกการกอบกู้เอกราชติมอร์-เลสเต"),
+            ("2023-05-22", "วันเลือกตั้งสมาชิกรัฐสภา"),
+            ("2023-06-01", "วันเด็กสากล"),
+            ("2023-06-08", "วันสมโภชพระคริสตวรกาย"),
+            ("2023-06-29", "วันอีดิ้ลอัฎฮา"),
+            ("2023-08-20", "วันกองกำลังปลดปล่อยแห่งชาติติมอร์-เลสเต (FALINTIL)"),
+            ("2023-08-30", "วันรำลึกการลงประชามติเอกราช"),
+            ("2023-10-27", "วันเลือกตั้งท้องถิ่น"),
+            ("2023-11-01", "วันสมโภชนักบุญทั้งหลาย"),
+            ("2023-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
+            ("2023-11-03", "วันสตรีแห่งชาติ"),
+            ("2023-11-12", "วันเยาวชนแห่งชาติ"),
+            ("2023-11-13", "วันเลือกตั้งท้องถิ่น"),
+            ("2023-11-28", "วันประกาศเอกราชติมอร์-เลสเต"),
+            ("2023-12-07", "วันรำลึกวีรชน"),
+            ("2023-12-08", "วันสมโภชแม่พระผู้ปฏิสนธินิรมลและแม่พระองค์อุปถัมภ์แห่งติมอร์-เลสเต"),
+            ("2023-12-10", "วันสิทธิมนุษยชนสากล"),
+            ("2023-12-25", "วันคริสต์มาส"),
+            ("2023-12-26", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2023-12-31", "วันวีรบุรุษแห่งชาติ"),
         )

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -38,7 +38,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Iran>
         * <https://fa.wikipedia.org/wiki/تعطیلات_عمومی_در_ایران>
-        * <https://www.time.ir>
+        * <https://web.archive.org/web/20250426102648/https://www.time.ir/>
         * <https://web.archive.org/web/20170222200759/http://www.hvm.ir/LawDetailNews.aspx?id=9017>
         * <https://en.wikipedia.org/wiki/Workweek_and_weekend>
     """
@@ -51,7 +51,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     start_year = 1980
     weekend = {FRI}
 
-    def __init__(self, islamic_show_estimated: bool = True, *args, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
             islamic_show_estimated:

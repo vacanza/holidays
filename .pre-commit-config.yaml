@@ -6,23 +6,28 @@ repos:
       - id: check-builtin-literals
       - id: check-yaml
       - id: end-of-file-fixer
+      - id: file-contents-sorter
+        args:
+          - --unique
+        files: CONTRIBUTORS
       - id: mixed-line-ending
         args:
           - --fix=lf
         exclude: make.cmd
       - id: trailing-whitespace
+        exclude: \.md$
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
+    rev: v3.20.0
     hooks:
     -   id: pyupgrade
         args:
           - --py39-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.2
+    rev: v0.12.0
     hooks:
-      - id: ruff
+      - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/lucas-c/pre-commit-hooks
@@ -35,15 +40,6 @@ repos:
           - --license-filepath
           - docs/file_header.txt
 
-  - repo: https://github.com/pycqa/bandit
-    rev: 1.8.3
-    hooks:
-      - id: bandit
-        additional_dependencies:
-          - bandit[toml]
-        args:
-          - --configfile=pyproject.toml
-
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
     hooks:
@@ -51,17 +47,13 @@ repos:
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.15.0
+    rev: v1.16.1
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-docutils
           - types-polib
           - types-python-dateutil
-        args:
-          - --ignore-missing-imports
-          - --implicit-optional
-          - --show-error-codes
+          - types-requests
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: '1.5.0'

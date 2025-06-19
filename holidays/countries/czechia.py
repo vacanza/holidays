@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,9 +21,9 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic>
-        * [Law 93/1951](https://www.zakonyprolidi.cz/cs/1951-93)
-        * [Law 204/1990 (Jan Hus Day)](https://www.zakonyprolidi.cz/cs/1990-204)
-        * [Law 245/2000](https://www.zakonyprolidi.cz/cs/2000-245)
+        * [Law 93/1951](https://web.archive.org/web/20240924164547/https://www.zakonyprolidi.cz/cs/1951-93)
+        * [Law 204/1990 (Jan Hus Day)](https://web.archive.org/web/20240924164541/https://www.zakonyprolidi.cz/cs/1990-204)
+        * [Law 245/2000](https://web.archive.org/web/20241215175816/https://www.zakonyprolidi.cz/cs/2000-245)
     """
 
     country = "CZ"

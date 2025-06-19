@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -147,6 +147,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             "TN": (
                 "2018-01-14",
+                "2018-01-15",
+                "2018-01-16",
                 "2018-04-14",
             ),
             "TS": (
@@ -181,7 +183,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2018-08-26",
             "2018-09-13",
             "2018-10-10",
-            "2018-10-18",
+            "2018-10-17",
             "2018-11-08",
             "2018-11-14",
         )
@@ -393,6 +395,32 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
 
+        dt = (
+            "2001-01-15",
+            "2010-01-15",
+            "2025-01-15",
+            "2035-01-16",
+        )
+        name = "Thiruvalluvar Day / Mattu Pongal"
+        for subdiv in India.subdivisions:
+            if subdiv in {"TN"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+
+        dt = (
+            "2001-01-16",
+            "2010-01-16",
+            "2025-01-16",
+            "2035-01-17",
+        )
+        name = "Uzhavar Thirunal"
+        for subdiv in India.subdivisions:
+            if subdiv in {"TN"}:
+                self.assertHolidayName(name, India(subdiv=subdiv), dt)
+            else:
+                self.assertNoHolidayName(name, India(subdiv=subdiv), dt)
+
     def test_ranged_optional_holidays(self):
         opt_holidays = India(categories=OPTIONAL)
 
@@ -501,6 +529,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2018-01-13", "Lohri"),
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
+            ("2018-01-16", "Uzhavar Thirunal"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
@@ -536,7 +566,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "Gandhi Jayanti"),
             ("2018-10-06", "Bathukamma Festival"),
             ("2018-10-10", "Navratri / Sharad Navratri"),
-            ("2018-10-18", "Maha Navami"),
+            ("2018-10-17", "Maha Navami"),
             ("2018-10-19", "Dussehra"),
             ("2018-10-31", "Sardar Vallabhbhai Patel Jayanti"),
             (
@@ -567,6 +597,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "hi",
             ("2018-01-13", "लोहड़ी"),
             ("2018-01-14", "उत्तरायण; पोंगल; मकर संक्रांति; माघ बिहू"),
+            ("2018-01-15", "तिरुवल्लुवर दिवस / मट्टू पोंगल"),
+            ("2018-01-16", "उझावर थिरुनल"),
             ("2018-01-24", "यूपी स्थापना दिवस"),
             ("2018-01-26", "गणतंत्र दिवस"),
             ("2018-02-13", "महाशिवरात्रि"),
@@ -599,7 +631,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "गांधी जयंती"),
             ("2018-10-06", "बतुकम्मा महोत्सव"),
             ("2018-10-10", "नवरात्र/शरद नवरात्र"),
-            ("2018-10-18", "महानवमी"),
+            ("2018-10-17", "महानवमी"),
             ("2018-10-19", "दशहरा"),
             ("2018-10-31", "सरदार वल्लभभाई पटेल जयंती"),
             (
@@ -628,6 +660,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "en_US",
             ("2018-01-13", "Lohri"),
             ("2018-01-14", "Magh Bihu; Makar Sankranti; Pongal; Uttarayan"),
+            ("2018-01-15", "Thiruvalluvar Day / Mattu Pongal"),
+            ("2018-01-16", "Uzhavar Thirunal"),
             ("2018-01-24", "UP Formation Day"),
             ("2018-01-26", "Republic Day"),
             ("2018-02-13", "Maha Shivaratri"),
@@ -663,7 +697,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-02", "Gandhi Jayanti"),
             ("2018-10-06", "Bathukamma Festival"),
             ("2018-10-10", "Navratri / Sharad Navratri"),
-            ("2018-10-18", "Maha Navami"),
+            ("2018-10-17", "Maha Navami"),
             ("2018-10-19", "Dussehra"),
             ("2018-10-31", "Sardar Vallabhbhai Patel Jayanti"),
             (

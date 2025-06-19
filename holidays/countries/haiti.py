@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -21,9 +21,9 @@ class Haiti(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Haiti holidays.
 
     References:
-        * <https://www.wipo.int/wipolex/en/legislation/details/7837>
-        * <https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27>
-        * <https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/>
+        * <https://web.archive.org/web/20250214180331/https://www.wipo.int/wipolex/en/legislation/details/7837>
+        * <https://web.archive.org/web/20241206114430/https://haitiwonderland.com/haiti/histoire/jours-feries-en-haiti/27>
+        * <https://web.archive.org/web/20241226203305/https://www.haiti-reference.info/pages/plan/generalites/calendrier-dhaiti/>
     """
 
     country = "HT"

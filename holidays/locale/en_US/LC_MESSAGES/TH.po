@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/vacanza/holidays
@@ -271,8 +271,7 @@ msgstr "Buddhist Lent Day"
 msgid "วันกองทัพไทย"
 msgstr "Royal Thai Armed Forces Day"
 
-#. Additional Closing Day for Bank for Agriculture and Agricultural
-#. Cooperatives.
+#. Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives.
 msgid "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
 msgstr "Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives"
 
@@ -316,9 +315,9 @@ msgstr "Thai Veterans Day"
 msgid "วันวิทยาศาสตร์แห่งชาติ"
 msgstr "National Science Day"
 
-#. HM King Ramkamhaeng Memorial Day.
+#. HM King Ramkhamhaeng Memorial Day.
 msgid "วันพ่อขุนรามคำแหงมหาราช"
-msgstr "HM King Ramkamhaeng Memorial Day"
+msgstr "HM King Ramkhamhaeng Memorial Day"
 
 #. Thai National Flag Day.
 msgid "วันพระราชทานธงชาติไทย"
