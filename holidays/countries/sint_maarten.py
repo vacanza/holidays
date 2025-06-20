@@ -10,15 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SUN_TO_NEXT_MON,
     SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
     SUN_TO_NEXT_TUE,
     SUN_TO_PREV_SAT,
 )
@@ -28,9 +26,6 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     """Sint Maarten holidays.
 
     References:
-        * <https://web.archive.org/web/20250606191248/https://en.wikipedia.org/wiki/Sint_Maarten>
-        * <https://web.archive.org/web/20250529071040/https://en.wikipedia.org/wiki/Public_holidays_in_Sint_Maarten>
-        * <https://web.archive.org/web/20250425015159/https://www.qppstudio.net/public-holidays/sint_maarten.htm>
         * [AB 2012 no. 19](https://web.archive.org/web/20250615040244/https://www.sintmaartengov.org/Documents/Official%20Publications/AB%2019%20Lvo%20Dag%20van%20Bevrijding.pdf)
         * [AB 2015 no. 24](https://web.archive.org/web/20250615035932/https://www.sintmaartengov.org/Documents/Official%20Publications/AB%2024%20Landsverordening%20Constitution%20Day.pdf)
         * [2014-2023](https://web.archive.org/web/20230307083630/https://www.sintmaartengov.org/government/VSA/labour/Pages/Public-Holiday-Schedule.aspx)
@@ -40,7 +35,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     country = "SX"
     default_language = "en_US"
     supported_languages = ("en_US",)
-    # Sint Maarten became a constituent country on October 10, 2010.
+    # Sint Maarten became a constituent country on October 10th, 2010.
     start_year = 2011
 
     def __init__(self, *args, **kwargs):
@@ -62,12 +57,14 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        if self._year >= 2014:
-            self._move_holiday(
-                # King's Day (April 27 or April 26 if 27 is a Sunday).
-                self._add_holiday_apr_27(tr("King's Day")),
-                rule=SUN_TO_PREV_SAT,
-            )
+        self._move_holiday(
+            # King's Day.
+            self._add_holiday_apr_27(tr("King's Day"))
+            if self._year >= 2014
+            # Queen's Day.
+            else self._add_holiday_apr_30(tr("Queen's Day")),
+            rule=SUN_TO_PREV_SAT,
+        )
 
         self._move_holiday(
             # Carnival Day.
@@ -94,23 +91,22 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Constitution Day.
             self._add_holiday_2nd_mon_of_oct(tr("Constitution Day"))
 
-        self._move_holiday(
-            # Kingdom Day on 15th December (If a Sunday, on Monday 16 December).
-            self._add_holiday_dec_15(tr("Kingdom Day")),
-            rule=SUN_TO_NEXT_MON,
-        )
+        # Replaced by Constitution Day on October 2nd, 2015.
+        if self._year <= 2014:
+            # Kingdom Day.
+            self._move_holiday(self._add_holiday_dec_15(tr("Kingdom Day")))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("All Saints' Day"))
 
         # Sint Maarten Day.
-        self._add_holiday(tr("Sint Maarten Day"), date(self._year, NOV, 11))
+        self._add_holiday_nov_11(tr("Sint Maarten Day"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
         # Second day of Christmas.
-        self._add_christmas_day_two(tr("Second day of Christmas"))
+        self._add_christmas_day_two(tr("Second Day of Christmas"))
 
 
 class SX(SintMaarten):
