@@ -22,6 +22,7 @@ from holidays.calendars.hindu import _CustomHinduHolidays, _HinduLunisolar
 from holidays.calendars.islamic import _CustomIslamicHolidays, _IslamicLunar
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
+from holidays.calendars.mongolian import _CustomMongolianHolidays, _MongolianLunisolar
 from holidays.calendars.persian import _Persian
 from holidays.calendars.sinhala import _SinhalaLunar, _CustomSinhalaHolidays
 from holidays.calendars.thai import _ThaiLunisolar, KHMER_CALENDAR, THAI_CALENDAR
