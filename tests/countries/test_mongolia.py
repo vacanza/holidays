@@ -51,8 +51,29 @@ class TestMongolia(CommonCountryTests, TestCase):
             "2024-02-10",
             "2025-03-01",
         )
+        # Day 2.
+        self.assertHolidayName(
+            name,
+            "2012-02-23",
+            "2013-02-12",
+            "2014-02-01",
+            "2021-02-13",
+            "2022-02-03",
+            "2023-02-22",
+            "2024-02-11",
+            "2025-03-02",
+        )
+        # Day 3.
+        self.assertHolidayName(
+            name,
+            "2014-02-02",
+            "2021-02-14",
+            "2022-02-04",
+            "2023-02-23",
+            "2024-02-12",
+            "2025-03-03",
+        )
         self.assertHolidayName(name, range(2004, 2050))
-        self.assertHolidayName(name, "2014-02-02")
         self.assertNoHolidayName(name, "2012-02-24", "2013-02-13")
 
     def test_patriots_day(self):
@@ -108,14 +129,14 @@ class TestMongolia(CommonCountryTests, TestCase):
 
     def test_the_buddhas_birthday(self):
         name = "Бурхан багшийн Их дүйчин өдөр"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2021-05-26",
             "2022-06-14",
             "2023-06-04",
             "2024-05-23",
             "2025-06-11",
         )
-        self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2020, 2050))
         self.assertNoHolidayName(name, range(2004, 2020))
 
@@ -187,14 +208,14 @@ class TestMongolia(CommonCountryTests, TestCase):
 
     def test_genghis_khans_birthday(self):
         name = "Их Эзэн Чингис хааны өдөр"
-        dt = (
+        self.assertHolidayName(
+            name,
             "2021-11-05",
             "2022-11-24",
             "2023-11-14",
             "2024-11-02",
             "2025-11-21",
         )
-        self.assertHolidayName(name, dt)
         self.assertHolidayName(name, range(2012, 2050))
         self.assertNoHolidayName(name, range(2004, 2012))
 
@@ -211,10 +232,7 @@ class TestMongolia(CommonCountryTests, TestCase):
             name_2012, self.workday_holidays, (f"{year}-11-26" for year in range(2012, 2016))
         )
         self.assertNoHolidayName(
-            name_2012,
-            self.workday_holidays,
-            range(2004, 2012),
-            range(2016, 2050),
+            name_2012, self.workday_holidays, range(2004, 2012), range(2016, 2050)
         )
 
     def test_democracy_and_human_rights_day(self):
