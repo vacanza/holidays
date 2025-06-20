@@ -45,6 +45,9 @@ class TestMongolia(CommonCountryTests, TestCase):
         # Day 1.
         self.assertHolidayName(
             name,
+            "2012-02-22",
+            "2013-02-11",
+            "2014-01-31",
             "2021-02-12",
             "2022-02-02",
             "2023-02-21",
