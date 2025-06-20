@@ -64,17 +64,15 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             # The Buddha's Birthday.
             self._add_buddha_day(tr("Бурхан багшийн Их дүйчин өдөр"))
 
-        # Expanded to July 10 on July 7th, 2023.
-        # Expanded to July 14-15 on July 1st, 2014.
-
         # National Festival and People's Revolution Anniversary.
         name = tr("Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр")
+        # Expanded to July 10 on July 7th, 2023.
         if self._year >= 2023:
             self._add_holiday_jul_10(name)
         self._add_holiday_jul_11(name)
         self._add_holiday_jul_12(name)
         self._add_holiday_jul_13(name)
-
+        # Expanded to July 14-15 on July 1st, 2014.
         if self._year >= 2014:
             self._add_holiday_jul_14(name)
             self._add_holiday_jul_15(name)
@@ -87,7 +85,6 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # Repealed on November 8th, 2012.
         # Re-established again on November 18th, 2016.
         if self._year <= 2011 or self._year >= 2016:
-            # Republic Day.
             self._add_holiday_nov_26(
                 # Republic Day.
                 tr("Бүгд Найрамдах Улс тунхагласан өдөр")
