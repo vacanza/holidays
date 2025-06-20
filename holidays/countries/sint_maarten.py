@@ -26,6 +26,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     """Sint Maarten holidays.
 
     References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Sint_Maarten>
         * [AB 2012 no. 19](https://web.archive.org/web/20250615040244/https://www.sintmaartengov.org/Documents/Official%20Publications/AB%2019%20Lvo%20Dag%20van%20Bevrijding.pdf)
         * [AB 2015 no. 24](https://web.archive.org/web/20250615035932/https://www.sintmaartengov.org/Documents/Official%20Publications/AB%2024%20Landsverordening%20Constitution%20Day.pdf)
         * [2014-2023](https://web.archive.org/web/20230307083630/https://www.sintmaartengov.org/government/VSA/labour/Pages/Public-Holiday-Schedule.aspx)
