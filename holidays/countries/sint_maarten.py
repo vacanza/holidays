@@ -97,9 +97,6 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Kingdom Day.
             self._move_holiday(self._add_holiday_dec_15(tr("Kingdom Day")))
 
-        # All Saints' Day.
-        self._add_all_saints_day(tr("All Saints' Day"))
-
         # Sint Maarten Day.
         self._add_holiday_nov_11(tr("Sint Maarten Day"))
 

@@ -26,66 +26,66 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: en_US\n"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr ""
 
-#. Good Friday
+#. Good Friday.
 msgid "Good Friday"
 msgstr ""
 
-#. Easter Sunday
+#. Easter Sunday.
 msgid "Easter Sunday"
 msgstr ""
 
-#. Easter Monday
+#. Easter Monday.
 msgid "Easter Monday"
 msgstr ""
 
-#. King's Day
+#. King's Day.
 msgid "King's Day"
 msgstr ""
 
-#. Carnival Day
+#. Carnival Day.
 msgid "Carnival Day"
 msgstr ""
 
-#. Labour Day
+#. Labour Day.
 msgid "Labour Day"
 msgstr ""
 
-#. Ascension Day
+#. Ascension Day.
 msgid "Ascension Day"
 msgstr ""
 
-#. Whit Sunday
+#. Whit Sunday.
 msgid "Whit Sunday"
 msgstr ""
 
-#. Emancipation Day
+#. Emancipation Day.
 msgid "Emancipation Day"
 msgstr ""
 
-#. Constitution Day
+#. Constitution Day.
 msgid "Constitution Day"
 msgstr ""
 
-#. Kingdom Day
+#. Kingdom Day.
 msgid "Kingdom Day"
 msgstr ""
 
-#. All Saints' Day
-msgid "All Saints' Day"
-msgstr ""
-
-#. Sint Maarten Day
+#. Sint Maarten Day.
 msgid "Sint Maarten Day"
 msgstr ""
 
-#. Christmas Day
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
-#. Second Day of Christmas
+#. Second day of Christmas.
 msgid "Second Day of Christmas"
+msgstr ""
+
+#. Queen's Day.
+msgid "Queen's Day"
 msgstr ""

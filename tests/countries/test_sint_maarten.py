@@ -43,7 +43,6 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             ("2017-06-04", "Whit Sunday"),
             ("2017-07-01", "Emancipation Day"),
             ("2017-10-09", "Constitution Day"),
-            ("2017-11-01", "All Saints' Day"),
             ("2017-11-11", "Sint Maarten Day"),
             ("2017-12-25", "Christmas Day"),
             ("2017-12-26", "Second Day of Christmas"),
@@ -238,9 +237,6 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2014-12-15",
         )
         self.assertNoHolidayName(name, range(2015, 2050))
-
-    def test_all_saints_day(self):
-        self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in range(2011, 2050)))
 
     def test_sint_maarten_day(self):
         self.assertHolidayName("Sint Maarten Day", (f"{year}-11-11" for year in range(2011, 2050)))
