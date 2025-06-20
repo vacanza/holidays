@@ -952,6 +952,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Mauritius</td>
+<td>MU</td>
+<td></td>
+<td><strong>en_MU</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Mayotte</td>
 <td>YT</td>
 <td>Can also be loaded as country FR, subdivision 976</td>
