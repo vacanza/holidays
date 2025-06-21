@@ -220,6 +220,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # Youth Day.
         self._add_holiday_mar_29(tr("青年節"))
 
+        # Teacher's Day.
+        self._add_holiday_sep_28(tr("教師節"))
+
         # Chinese Cultural Renaissance Day.
         self._add_holiday_nov_12(tr("中華文化復興節"))
 

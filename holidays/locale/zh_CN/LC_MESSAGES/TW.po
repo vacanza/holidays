@@ -130,6 +130,10 @@ msgstr "植树节"
 msgid "青年節"
 msgstr "青年节"
 
+#. Teacher's Day.
+msgid "教師節"
+msgstr "教师节"
+
 #. Chinese Cultural Renaissance Day.
 msgid "中華文化復興節"
 msgstr "中华文化复兴节"

@@ -619,6 +619,15 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000), range(2025, 2050))
 
+    def test_teachers_day(self):
+        name = "教師節"
+
+        # Workdays.
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-09-28" for year in range(1998, 2050))
+        )
+        self.assertNoHolidayName(name)
+
     def test_taiwan_united_nations_day(self):
         name = "臺灣聯合國日"
 
@@ -1291,7 +1300,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "軍人節"),
             ("2022-09-09", "中秋節（慶祝）"),
             ("2022-09-10", "中秋節"),
-            ("2022-09-28", "孔子誕辰紀念日"),
+            ("2022-09-28", "孔子誕辰紀念日; 教師節"),
             ("2022-10-10", "國慶日"),
             ("2022-10-24", "臺灣聯合國日"),
             ("2022-10-25", "臺灣光復節"),
@@ -1322,7 +1331,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "Armed Forces Day"),
             ("2022-09-09", "Mid-Autumn Festival (observed)"),
             ("2022-09-10", "Mid-Autumn Festival"),
-            ("2022-09-28", "Confucius' Birthday"),
+            ("2022-09-28", "Confucius' Birthday; Teacher's Day"),
             ("2022-10-10", "National Day"),
             ("2022-10-24", "Taiwan United Nations Day"),
             ("2022-10-25", "Taiwan Retrocession Day"),
@@ -1353,7 +1362,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "วันกองทัพ"),
             ("2022-09-09", "ชดเชยวันไหว้พระจันทร์"),
             ("2022-09-10", "วันไหว้พระจันทร์"),
-            ("2022-09-28", "วันขงจื๊อ"),
+            ("2022-09-28", "วันขงจื๊อ; วันครู"),
             ("2022-10-10", "วันชาติสาธารณรัฐจีน(ไต้หวัน)"),
             ("2022-10-24", "วันรำลึกถึงบทบาทสาธารณรัฐจีน(ไต้หวัน)ในสหประชาชาติ"),
             ("2022-10-25", "วันฉลองกลับคืนสู่มาตุภูมิของไต้หวัน"),
@@ -1384,7 +1393,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "军人节"),
             ("2022-09-09", "中秋节（庆祝）"),
             ("2022-09-10", "中秋节"),
-            ("2022-09-28", "孔子诞辰纪念日"),
+            ("2022-09-28", "孔子诞辰纪念日; 教师节"),
             ("2022-10-10", "国庆日"),
             ("2022-10-24", "台湾联合国日"),
             ("2022-10-25", "台湾光复节"),
