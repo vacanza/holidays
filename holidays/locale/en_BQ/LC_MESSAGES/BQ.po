@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Bonaire Sint Eustatius And Saba holidays.
+# Bonaire Sint Eustatius And Saba holidays en_BQ localization..
 #
 msgid ""
 msgstr ""
