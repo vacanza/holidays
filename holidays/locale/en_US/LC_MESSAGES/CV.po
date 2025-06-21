@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-04-01 13:02-0400\n"
 "PO-Revision-Date: 2025-04-01 13:02-0400\n"
-"Last-Translator: Sindhura Kumbakonam Subramanian <sindhu.ss10@gmail.com>\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -94,11 +94,11 @@ msgstr "Carnival Tuesday"
 msgid "Dia do Município de São Vicente"
 msgstr "São Vicente Municipal Day"
 
-#. Tarrafal de São Nicolau Municipal Day.
+#. Tarrafal de São Nicolau Municipality Day.
 msgid "Dia do Município do Tarrafal de São Nicolau"
 msgstr "Tarrafal de São Nicolau Municipal Day"
 
-#. Ribeira Brava Municipal Day.
+#. Ribeira Brava Municipality Day.
 msgid "Dia do Município de Ribeira Brava"
 msgstr "Ribeira Brava Municipal Day"
 
@@ -110,7 +110,7 @@ msgstr "Municipal Day"
 msgid "Dia do Município do Maio"
 msgstr "Maio Municipal Day"
 
-#. Ribeira Grande de Santiago Municipal Day.
+#. Ribeira Grande de Santiago Municipality Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
 msgstr "Ribeira Grande de Santiago Municipal Day"
 
@@ -125,3 +125,59 @@ msgstr "Praia City Day"
 #. Praia Municipal Day.
 msgid "Dia do Município da Praia"
 msgstr "Praia Municipal Day"
+
+#. Santo Antão Island Day.
+msgid "Dia da Ilha de Santo Antão"
+msgstr "Santo Antão Island Day"
+
+#. Ribeira Grande Municipality Day.
+msgid "Dia do Município de Ribeira Grande"
+msgstr "Ribeira Grande Municipality Day"
+
+#. Paúl Municipality Day.
+msgid "Dia do Município do Paúl"
+msgstr "Paúl Municipality Day"
+
+#. Porto Novo Municipality Day.
+msgid "Dia do Município do Porto Novo"
+msgstr "Porto Novo Municipality Day"
+
+#. Tarrafal de Santiago Municipality Day.
+msgid "Dia do Município do Tarrafal de Santiago"
+msgstr "Tarrafal de Santiago Municipality Day"
+
+#. São Domingos Municipality Day.
+msgid "Dia do Município de São Domingos"
+msgstr "São Domingos Municipality Day"
+
+#. São Lourenço dos Órgãos Municipality Day.
+msgid "Dia do Município de São Lourenço dos Órgãos"
+msgstr "São Lourenço dos Órgãos Municipality Day"
+
+#. São Salvador do Mundo Municipality Day.
+msgid "Dia do Município de São Salvador do Mundo"
+msgstr "São Salvador do Mundo Municipality Day"
+
+#. Santa Cruz Municipality Day.
+msgid "Dia do Município de Santa Cruz"
+msgstr "Santa Cruz Municipality Day"
+
+#. São Miguel Municipality Day.
+msgid "Dia do Município de São Miguel"
+msgstr "São Miguel Municipality Day"
+
+#. Santa Catarina de Santiago Municipality Day.
+msgid "Dia do Município de Santa Catarina de Santiago"
+msgstr "Santa Catarina de Santiago Municipality Day"
+
+#. São Filipe Municipality Day.
+msgid "Dia do Município de São Filipe"
+msgstr "São Filipe Municipality Day"
+
+#. Mosteiros Municipality Day.
+msgid "Dia do Município dos Mosteiros"
+msgstr "Mosteiros Municipality Day"
+
+#. Santa Catarina do Fogo Municipality Day.
+msgid "Dia do Município de Santa Catarina do Fogo"
+msgstr "Santa Catarina do Fogo Municipality Day"

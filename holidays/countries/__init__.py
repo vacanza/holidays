@@ -48,6 +48,7 @@ from holidays.countries.burundi import Burundi, BI, BDI
 from holidays.countries.cambodia import Cambodia, KH, KHM
 from holidays.countries.cameroon import Cameroon, CM, CMR
 from holidays.countries.canada import Canada, CA, CAN
+from holidays.countries.cape_verde import CapeVerde, CV, CAV
 from holidays.countries.chad import Chad, TD, TCD
 from holidays.countries.chile import Chile, CL, CHL
 from holidays.countries.china import China, CN, CHN
@@ -234,5 +235,3 @@ from holidays.countries.wallis_and_futuna import WallisAndFutuna, WF, WLF, Holid
 from holidays.countries.yemen import Yemen, YE, YEM
 from holidays.countries.zambia import Zambia, ZM, ZMB
 from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
-
-from .cape_verde import CapeVerde, CV, CAV

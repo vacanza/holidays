@@ -15,9 +15,10 @@ from gettext import gettext as tr
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase
 
 
-class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
+class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays):
     """Cape Verde holidays.
 
     References:
@@ -46,7 +47,6 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         "PA",  # Paul.
         "PN",  # Porto Novo.
         "PR",  # Praia.
-        "RB",  # Ribeira Brava.
         "RG",  # Ribeira Grande.
         "RS",  # Ribeira Grande de Santiago.
         "SD",  # São Domingos.
@@ -58,7 +58,9 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SV",  # São Vicente.
         "TA",  # Tarrafal.
         "TS",  # Tarrafal de São Nicolau.
+        "SA",  # Santo Antão.
     )
+
     subdivisions_aliases = {
         # Municipalities.
         "Brava": "BR",
@@ -71,7 +73,6 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Paul": "PA",
         "Porto Novo": "PN",
         "Praia": "PR",
-        "Ribeira Brava": "RB",
         "Ribeira Grande": "RG",
         "Ribeira Grande de Santiago": "RS",
         "São Domingos": "SD",
@@ -83,6 +84,7 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         "São Vicente": "SV",
         "Tarrafal": "TA",
         "Tarrafal de São Nicolau": "TS",
+        "Santo Antão": "SA",
     }
     supported_categories = (OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "es", "fr", "pt_CV")
@@ -159,13 +161,38 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Praia Municipal Day.
         self._add_holiday_may_19(tr("Dia do Município da Praia"))
 
-    def _populate_subdiv_rb_public_holidays(self):
-        # Ribeira Brava Municipal Day.
-        self._add_holiday_dec_6(tr("Dia do Município de Ribeira Brava"))
-
     def _populate_subdiv_rs_public_holidays(self):
-        # Ribeira Grande de Santiago Municipal Day.
-        self._add_holiday_jan_31(tr("Dia do Município de Ribeira Grande de Santiago"))
+        # Tarrafal de Santiago Municipality Day.
+        self._add_holiday_jan_15(tr("Dia do Município do Tarrafal de Santiago"))
+
+        if self._year > 2005:
+            # Ribeira Grande de Santiago Municipality Day.
+            self._add_holiday_jan_31(tr("Dia do Município de Ribeira Grande de Santiago"))
+
+        if self._year > 1994:
+            # São Domingos Municipality Day.
+            self._add_holiday_mar_13(tr("Dia do Município de São Domingos"))
+
+        if self._year > 2005:
+            # São Lourenço dos Órgãos Municipality Day.
+            self._add_holiday_may_9(tr("Dia do Município de São Lourenço dos Órgãos"))
+
+        # Praia Municipal Day.
+        self._add_holiday_may_19(tr("Dia do Município da Praia"))
+
+        if self._year > 2005:
+            # São Salvador do Mundo Municipality Day.
+            self._add_holiday_jul_19(tr("Dia do Município de São Salvador do Mundo"))
+
+        # Santa Cruz Municipality Day.
+        self._add_holiday_jul_25(tr("Dia do Município de Santa Cruz"))
+
+        if self._year > 1996:
+            # São Miguel Municipality Day.
+            self._add_holiday_sep_29(tr("Dia do Município de São Miguel"))
+
+        # Santa Catarina de Santiago Municipality Day.
+        self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina de Santiago"))
 
     def _populate_subdiv_sl_public_holidays(self):
         # Municipal Day.
@@ -179,8 +206,37 @@ class CapeVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_carnival_tuesday(tr("Terça-feira de Carnaval"))
 
     def _populate_subdiv_ts_public_holidays(self):
-        # Tarrafal de São Nicolau Municipal Day.
-        self._add_holiday_aug_2(tr("Dia do Município do Tarrafal de São Nicolau"))
+        if self._year > 2005:
+            # Tarrafal de São Nicolau Municipality Day.
+            self._add_holiday_aug_2(tr("Dia do Município do Tarrafal de São Nicolau"))
+
+            # Ribeira Brava Municipality Day.
+            self._add_holiday_dec_6(tr("Dia do Município de Ribeira Brava"))
+
+    def _populate_subdiv_sa_public_holidays(self):
+        # Santo Antão Island Day.
+        self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
+
+        # Ribeira Grande Municipality Day.
+        self._add_holiday_may_7(tr("Dia do Município de Ribeira Grande"))
+
+        # Paúl Municipality Day.
+        self._add_holiday_jun_13(tr("Dia do Município do Paúl"))
+
+        # Porto Novo Municipality Day.
+        self._add_holiday_sep_2(tr("Dia do Município do Porto Novo"))
+
+    def _populate_subdiv_cf_public_holidays(self):
+        if self._year > 1992:
+            # São Filipe Municipality Day.
+            self._add_holiday_may_1(tr("Dia do Município de São Filipe"))
+
+            # Mosteiros Municipality Day.
+            self._add_holiday_aug_15(tr("Dia do Município dos Mosteiros"))
+
+        if self._year > 2005:
+            # Santa Catarina do Fogo Municipality Day.
+            self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina do Fogo"))
 
 
 class CV(CapeVerde):
