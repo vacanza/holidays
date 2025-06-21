@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2025-03-13 11:48+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-06-21 17:08+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: zh_TW\n"
 
 #. %s (observed).
 #, c-format
@@ -67,6 +68,10 @@ msgstr "Mid-Autumn Festival"
 #. National Day.
 msgid "國慶日"
 msgstr "National Day"
+
+#. Taiwan Restoration and Guningtou Victory Memorial Day.
+msgid "臺灣光復暨金門古寧頭大捷紀念日"
+msgstr "Taiwan Restoration and Guningtou Victory Memorial Day"
 
 #. Date format (see strftime() Format Codes).
 msgid "%Y-%m-%d"
@@ -124,10 +129,6 @@ msgstr "Arbor Day"
 #. Youth Day.
 msgid "青年節"
 msgstr "Youth Day"
-
-#. Teacher's Day.
-msgid "教師節"
-msgstr "Teacher's Day"
 
 #. Chinese Cultural Renaissance Day.
 msgid "中華文化復興節"
