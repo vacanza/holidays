@@ -85,25 +85,25 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Established on June 13th, 2012.
         if self._year >= 2012:
             # Emancipation Day.
-            self._add_observed(self._add_holiday_jul_1(tr("Emancipation Day")))
+            self._move_holiday(self._add_holiday_jul_1(tr("Emancipation Day")))
 
         # Established on September 28th, 2015.
         if self._year >= 2015:
             # Constitution Day.
             self._add_holiday_2nd_mon_of_oct(tr("Constitution Day"))
 
+        # Sint Maarten Day.
+        self._add_holiday_nov_11(tr("Sint Maarten Day"))
+
         # Replaced by Constitution Day on October 2nd, 2015.
         if self._year <= 2014:
             # Kingdom Day.
             self._move_holiday(self._add_holiday_dec_15(tr("Kingdom Day")))
 
-        # Sint Maarten Day.
-        self._add_holiday_nov_11(tr("Sint Maarten Day"))
-
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
-        # Second day of Christmas.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Second Day of Christmas"))
 
 
