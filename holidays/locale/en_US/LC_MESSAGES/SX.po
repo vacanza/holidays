@@ -82,7 +82,7 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Second day of Christmas.
+#. Second Day of Christmas.
 msgid "Second Day of Christmas"
 msgstr ""
 
