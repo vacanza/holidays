@@ -1,0 +1,194 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see AUTHORS.md file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Cape Verde holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-04-01 13:02-0400\n"
+"PO-Revision-Date: 2025-04-01 13:02-0400\n"
+"Last-Translator: Sindhura Kumbakonam Subramanian <sindhu.ss10@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: pt_CV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: pt_CV\n"
+
+#. New Year's Day.
+msgid "Ano Novo"
+msgstr ""
+
+#. Democracy and Freedom Day.
+msgid "Dia da Liberdade e Democracia"
+msgstr ""
+
+#. National Heroes Day.
+msgid "Dia da Nacionalidade e dos Heróis Nacionais"
+msgstr ""
+
+#. Good Friday.
+msgid "Sexta-feira Santa"
+msgstr ""
+
+#. Worker's Day.
+msgid "Dia do Trabalhador"
+msgstr ""
+
+#. International Children's Day.
+msgid "Dia Mundial da Criança"
+msgstr ""
+
+#. Independence Day.
+msgid "Dia da Independência Nacional"
+msgstr ""
+
+#. Assumption Day.
+msgid "Dia da Assunção"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Dia de Todos os Santos"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natal"
+msgstr ""
+
+#. Holy Thursday.
+msgid "Quinta-Feira Santa"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Páscoa"
+msgstr ""
+
+#. Mother's Day.
+msgid "Dia das Mães"
+msgstr ""
+
+#. Father's Day.
+msgid "Dia dos Pais"
+msgstr ""
+
+#. Ash Wednesday.
+msgid "Quarta-feira de Cinzas"
+msgstr ""
+
+#. Carnival Tuesday.
+msgid "Terça-feira de Carnaval"
+msgstr ""
+
+#. São Vicente Municipal Day.
+msgid "Dia do Município de São Vicente"
+msgstr ""
+
+#. Tarrafal de São Nicolau Municipality Day.
+msgid "Dia do Município do Tarrafal de São Nicolau"
+msgstr ""
+
+#. Ribeira Brava Municipality Day.
+msgid "Dia do Município de Ribeira Brava"
+msgstr ""
+
+#. Municipal Day.
+msgid "Dia do Município"
+msgstr ""
+
+#. Maio Municipal Day.
+msgid "Dia do Município do Maio"
+msgstr ""
+
+#. Ribeira Grande de Santiago Municipality Day.
+msgid "Dia do Município de Ribeira Grande de Santiago"
+msgstr ""
+
+#. Brava Municipal Day.
+msgid "Dia do Município da Brava"
+msgstr ""
+
+#. Praia City Day.
+msgid "Dia da Cidade da Praia"
+msgstr ""
+
+#. Praia Municipal Day.
+msgid "Dia do Município da Praia"
+msgstr ""
+
+#. Santo Antão Island Day.
+msgid "Dia da Ilha de Santo Antão"
+msgstr ""
+
+#. Ribeira Grande Municipality Day.
+msgid "Dia do Município de Ribeira Grande"
+msgstr ""
+
+#. Paúl Municipality Day.
+msgid "Dia do Município do Paúl"
+msgstr ""
+
+#. Porto Novo Municipality Day.
+msgid "Dia do Município do Porto Novo"
+msgstr ""
+
+#. Tarrafal de Santiago Municipality Day.
+msgid "Dia do Município do Tarrafal de Santiago"
+msgstr ""
+
+#. São Domingos Municipality Day.
+msgid "Dia do Município de São Domingos"
+msgstr ""
+
+#. São Lourenço dos Órgãos Municipality Day.
+msgid "Dia do Município de São Lourenço dos Órgãos"
+msgstr ""
+
+#. São Salvador do Mundo Municipality Day.
+msgid "Dia do Município de São Salvador do Mundo"
+msgstr ""
+
+#. Santa Cruz Municipality Day.
+msgid "Dia do Município de Santa Cruz"
+msgstr ""
+
+#. São Miguel Municipality Day.
+msgid "Dia do Município de São Miguel"
+msgstr ""
+
+#. Santa Catarina de Santiago Municipality Day.
+msgid "Dia do Município de Santa Catarina de Santiago"
+msgstr ""
+
+#. São Filipe Municipality Day.
+msgid "Dia do Município de São Filipe"
+msgstr ""
+
+#. Mosteiros Municipality Day.
+msgid "Dia do Município dos Mosteiros"
+msgstr ""
+
+#. Santa Catarina do Fogo Municipality Day.
+msgid "Dia do Município de Santa Catarina do Fogo"
+msgstr ""
