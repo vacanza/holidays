@@ -103,7 +103,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
-        # Second day of Christmas.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Second Day of Christmas"))
 
 

@@ -156,7 +156,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
-        self.assertNoHolidayName(name, range(2011, 2012))
+        self.assertNoHolidayName(name, range(2011, 2012))  # Started 2012
         self.assertHolidayName(name, "2012-07-02")
         self.assertHolidayName(name, (f"{year}-07-01" for year in range(2013, 2018)))
         self.assertHolidayName(name, "2018-07-02")
