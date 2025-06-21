@@ -234,3 +234,5 @@ from holidays.countries.wallis_and_futuna import WallisAndFutuna, WF, WLF, Holid
 from holidays.countries.yemen import Yemen, YE, YEM
 from holidays.countries.zambia import Zambia, ZM, ZMB
 from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
+
+from .cape_verde import CapeVerde, CV, CAV
