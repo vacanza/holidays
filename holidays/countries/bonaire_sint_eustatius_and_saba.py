@@ -1,0 +1,120 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import JUL, AUG, SEP
+from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_base import HolidayBase
+
+
+class BonaireSintEustatiusAndSaba(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """Bonaire Sint Eustatius And Saba holidays.
+
+    References:
+        * [Public Holidays 2025](https://web.archive.org/web/20250620050728/https://english.rijksdienstcn.com/social-affairs-work/employment/official-holidays)
+        * [Public Holidays in Sint Eustatius in 2025](https://web.archive.org/web/20250621132223/https://www.officeholidays.com/countries/bonaire-st-eustatius-saba/sint-eustatius/2025)
+        * [Upcoming Bonaire, St Eustatius and Saba Public Holidays](https://web.archive.org/web/20250427005333/https://www.qppstudio.net/public-holidays/bonaire__st_eustatius_and_saba.htm)
+    """
+
+    country = "BQ"
+    default_language = "nl"
+    # Became special municipalities of the Netherlands on October 10th, 2010.
+    start_year = 2011
+    subdivisions = (
+        "BON",  # Bonaire
+        "SAB",  # Saba
+        "STA",  # Sint Eustatius
+    )
+    subdivisions_aliases = {
+        "Bonaire": "BON",
+        "Saba": "SAB",
+        "Sint Eustatius": "STA",
+    }
+    supported_languages = ("en_BQ", "en_US", "nl")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("Nieuwjaar"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Goede Vrijdag"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Pasen"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Paasmaandag"))
+
+        # King's Birthday.
+        self._add_holiday_apr_27(tr("Koningsdag"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Dag van de Arbeid"))
+
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Hemelvaart"))
+
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pinksteren"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Kerstmis"))
+
+        # Boxing Day.
+        self._add_christmas_day_two(tr("Tweede Kerstdag"))
+
+    def _populate_subdiv_bon_public_holidays(self):
+        # Rincon Day.
+        self._add_holiday_apr_30(tr("Rincon Dag"))
+
+        # Bonaire Day.
+        self._add_holiday_sep_6(tr("Bonaire Dag"))
+
+        # Emancipation Day.
+        self._add_holiday_jul_1(tr("Dag van de Emancipatie"))
+
+    def _populate_subdiv_sab_public_holidays(self):
+        # Carnival Monday.
+        name = "Carnavalsmaandag"
+        carnival_monday_dates = {
+            2020: (AUG, 3),
+            2021: (SEP, 6),
+            2022: (JUL, 4),
+        }
+        if self._year in carnival_monday_dates:
+            self._add_holiday(name, carnival_monday_dates[self._year])
+        else:
+            self._add_holiday_2nd_mon_of_jul(name)
+
+        # Saba Day.
+        self._add_holiday_dec_6(tr("Saba Dag"))
+
+    def _populate_subdiv_sta_public_holidays(self):
+        # Emancipation Day.
+        self._add_holiday_jul_1(tr("Dag van de Emancipatie"))
+
+        # Statia Day.
+        self._add_holiday_nov_16(tr("Statia Dag"))
+
+
+class BQ(BonaireSintEustatiusAndSaba):
+    pass
+
+
+class BES(BonaireSintEustatiusAndSaba):
+    pass
