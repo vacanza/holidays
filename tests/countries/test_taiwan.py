@@ -183,6 +183,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2022-01-31",
             "2023-01-21",
             "2024-02-09",
+            "2025-01-28",
+            "2026-02-15",
+            "2026-02-16",
         )
         self.assertHolidayName(name_eve, range(1998, 2050))
         # CNY itself.
@@ -237,6 +240,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             "2013-02-13",
             "2016-02-11",
             "2023-01-25",
+            "2026-02-20",
         )
         obs_dt = (
             "1998-01-31",
@@ -460,11 +464,15 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_labor_day(self):
         name = "勞動節"
 
+        # Public Holidays.
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2026, 2050)))
+        self.assertNoHolidayName(name, range(1998, 2026))
+
         # Optional Holidays.
         self.assertHolidayName(
-            name, self.optional_holidays, (f"{year}-05-01" for year in range(1998, 2050))
+            name, self.optional_holidays, (f"{year}-05-01" for year in range(1998, 2026))
         )
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, self.optional_holidays, range(2026, 2050))
 
     def test_the_buddhas_birthday(self):
         name = "佛陀誕辰紀念日"
@@ -589,6 +597,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_confucius_birthday(self):
         name = "孔子誕辰紀念日"
 
+        # Public Holidays.
+        self.assertHolidayName(name, (f"{year}-09-28" for year in range(2025, 2050)))
+        self.assertNoHolidayName(name, range(1998, 2025))
+
         # Government Holidays.
         self.assertHolidayName(
             name, self.government_holidays, (f"{year}-09-28" for year in range(1998, 2001))
@@ -603,19 +615,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-09-28" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-09-28" for year in range(2001, 2025))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
-        self.assertNoHolidayName(name)
-
-    def test_teachers_day(self):
-        name = "教師節"
-
-        # Workdays.
-        self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-09-28" for year in range(1998, 2050))
-        )
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000), range(2025, 2050))
 
     def test_taiwan_united_nations_day(self):
         name = "臺灣聯合國日"
@@ -628,26 +630,33 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHolidayName(name)
 
     def test_taiwan_retrocession_day(self):
-        name = "臺灣光復節"
+        name_old = "臺灣光復節"
+        name_new = "臺灣光復暨金門古寧頭大捷紀念日"
+
+        # Public Holidays.
+        self.assertHolidayName(name_new, (f"{year}-10-25" for year in range(2025, 2050)))
+        self.assertNoHolidayName(name_new, range(1998, 2025))
+        self.assertNoHolidayName(name_old)
 
         # Government Holidays.
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-10-25" for year in range(1998, 2001))
+            name_old, self.government_holidays, (f"{year}-10-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.government_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name_old, self.government_holidays, range(2001, 2050))
 
         # School Holidays.
         self.assertHolidayName(
-            name, self.school_holidays, (f"{year}-10-25" for year in range(1998, 2001))
+            name_old, self.school_holidays, (f"{year}-10-25" for year in range(1998, 2001))
         )
-        self.assertNoHolidayName(name, self.school_holidays, range(2001, 2050))
+        self.assertNoHolidayName(name_old, self.school_holidays, range(2001, 2050))
 
         # Workdays.
         self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-10-25" for year in range(2001, 2050))
+            name_old, self.workday_holidays, (f"{year}-10-25" for year in range(2001, 2025))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(
+            name_old, self.workday_holidays, range(1998, 2000), range(2025, 2050)
+        )
 
     def test_late_president_chiang_kai_sheks_birthday(self):
         name = "先總統　蔣公誕辰紀念日"
@@ -705,6 +714,10 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     def test_constitution_day(self):
         name = "行憲紀念日"
 
+        # Public Holidays.
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2025, 2050)))
+        self.assertNoHolidayName(name, range(1998, 2025))
+
         # Government Holidays.
         self.assertHolidayName(
             name, self.government_holidays, (f"{year}-12-25" for year in range(1998, 2001))
@@ -719,10 +732,9 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
 
         # Workdays.
         self.assertHolidayName(
-            name, self.workday_holidays, (f"{year}-12-25" for year in range(2001, 2050))
+            name, self.workday_holidays, (f"{year}-12-25" for year in range(2001, 2025))
         )
-        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000))
-        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, self.workday_holidays, range(1998, 2000), range(2025, 2050))
 
     def test_1998(self):
         self.assertHolidays(
@@ -1250,8 +1262,11 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2025-04-04", "兒童節; 民族掃墓節"),
             ("2025-05-30", "端午節（慶祝）"),
             ("2025-05-31", "端午節"),
+            ("2025-09-28", "孔子誕辰紀念日"),
             ("2025-10-06", "中秋節"),
             ("2025-10-10", "國慶日"),
+            ("2025-10-25", "臺灣光復暨金門古寧頭大捷紀念日"),
+            ("2025-12-25", "行憲紀念日"),
         )
 
     def test_l10n_default(self):
@@ -1276,7 +1291,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "軍人節"),
             ("2022-09-09", "中秋節（慶祝）"),
             ("2022-09-10", "中秋節"),
-            ("2022-09-28", "孔子誕辰紀念日; 教師節"),
+            ("2022-09-28", "孔子誕辰紀念日"),
             ("2022-10-10", "國慶日"),
             ("2022-10-24", "臺灣聯合國日"),
             ("2022-10-25", "臺灣光復節"),
@@ -1307,7 +1322,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "Armed Forces Day"),
             ("2022-09-09", "Mid-Autumn Festival (observed)"),
             ("2022-09-10", "Mid-Autumn Festival"),
-            ("2022-09-28", "Confucius' Birthday; Teacher's Day"),
+            ("2022-09-28", "Confucius' Birthday"),
             ("2022-10-10", "National Day"),
             ("2022-10-24", "Taiwan United Nations Day"),
             ("2022-10-25", "Taiwan Retrocession Day"),
@@ -1338,7 +1353,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "วันกองทัพ"),
             ("2022-09-09", "ชดเชยวันไหว้พระจันทร์"),
             ("2022-09-10", "วันไหว้พระจันทร์"),
-            ("2022-09-28", "วันขงจื๊อ; วันครู"),
+            ("2022-09-28", "วันขงจื๊อ"),
             ("2022-10-10", "วันชาติสาธารณรัฐจีน(ไต้หวัน)"),
             ("2022-10-24", "วันรำลึกถึงบทบาทสาธารณรัฐจีน(ไต้หวัน)ในสหประชาชาติ"),
             ("2022-10-25", "วันฉลองกลับคืนสู่มาตุภูมิของไต้หวัน"),
@@ -1369,7 +1384,7 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-09-03", "军人节"),
             ("2022-09-09", "中秋节（庆祝）"),
             ("2022-09-10", "中秋节"),
-            ("2022-09-28", "孔子诞辰纪念日; 教师节"),
+            ("2022-09-28", "孔子诞辰纪念日"),
             ("2022-10-10", "国庆日"),
             ("2022-10-24", "台湾联合国日"),
             ("2022-10-25", "台湾光复节"),

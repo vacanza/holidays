@@ -121,6 +121,17 @@ class ChineseCalendarHolidays(EasternCalendarHolidays):
             name, self._chinese_calendar.buddha_birthday_date(self._year)
         )
 
+    def _add_chinese_day_before_new_years_eve(self, name) -> Optional[date]:
+        """
+        Add day before Chinese New Year's Eve (second to last day of 12th lunar month).
+
+        Chinese New Year's Eve is the day before the Chinese New Year.
+        https://en.wikipedia.org/wiki/Chinese_New_Year's_Eve
+        """
+        return self._add_chinese_calendar_holiday(
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-2
+        )
+
     def _add_chinese_new_years_eve(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Eve (last day of 12th lunar month).
