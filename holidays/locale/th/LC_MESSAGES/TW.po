@@ -71,7 +71,7 @@ msgstr "วันชาติสาธารณรัฐจีน(ไต้ห�
 
 #. Taiwan Restoration and Guningtou Victory Memorial Day.
 msgid "臺灣光復暨金門古寧頭大捷紀念日"
-msgstr "การฟื้นฟูไต้หวันและวันรำลึกชัยชนะของจินเหมิน กุนหนิงโถว"
+msgstr "วันรำลึกการทวงคืนไต้หวันและชัยชนะยุทธการกู่หนิงโถว"
 
 #. Date format (see strftime() Format Codes).
 msgid "%Y-%m-%d"
