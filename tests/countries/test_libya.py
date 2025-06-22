@@ -16,7 +16,7 @@ from holidays.countries.libya import Libya, LY, LBY
 from tests.common import CommonCountryTests
 
 
-class TestSaudiArabia(CommonCountryTests, TestCase):
+class TestLibya(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1968, 2050)
