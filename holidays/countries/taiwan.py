@@ -64,6 +64,7 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         * [Ministry of Interior Order No. 0990212117](https://web.archive.org/web/20240916004712/https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20101102&lser=001)
         * [Ministry of Interior Order No. 1010307327 and 1030128812](https://web.archive.org/web/20240919205138/https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=D0020033&lnndate=20120925&lser=001)
         * [Ministry of Interior Order No. 1030182404](https://web.archive.org/web/20250227171607/https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020033)
+        * [Decree No. 11400053171](https://web.archive.org/web/20250602210918/https://law.moj.gov.tw/News/newsdetail.aspx?msgid=191745)
 
     Checked With:
         * [DGPA Work Calendar (1998-2025; Chinese)](https://web.archive.org/web/20250307201828/https://www.dgpa.gov.tw/informationlist?uid=30)
@@ -123,7 +124,10 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             self._add_observed(self._next_year_new_years_day, name=name)
 
         # Chinese New Year's Eve.
-        dts_observed_forward.add(self._add_chinese_new_years_eve(tr("農曆除夕")))
+        name = tr("農曆除夕")
+        if self._year >= 2026:
+            dts_observed_forward.add(self._add_chinese_day_before_new_years_eve(name))
+        dts_observed_forward.add(self._add_chinese_new_years_eve(name))
 
         # Chinese New Year.
         name = tr("春節")
@@ -141,14 +145,29 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         # Tomb-Sweeping Day.
         dts_observed.add(self._add_qingming_festival(tr("民族掃墓節")))
 
+        if self._year >= 2026:
+            # Labor Day.
+            self._add_labor_day(tr("勞動節"))
+
         # Dragon Boat Festival.
         dts_observed.add(self._add_dragon_boat_festival(tr("端午節")))
 
         # Mid-Autumn Festival.
         dts_observed.add(self._add_mid_autumn_festival(tr("中秋節")))
 
+        if self._year >= 2025:
+            # Confucius' Birthday.
+            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
+
         # National Day.
         dts_observed.add(self._add_holiday_oct_10(tr("國慶日")))
+
+        if self._year >= 2025:
+            # Taiwan Restoration and Guningtou Victory Memorial Day.
+            self._add_holiday_oct_25(tr("臺灣光復暨金門古寧頭大捷紀念日"))
+
+            # Constitution Day.
+            self._add_holiday_dec_25(tr("行憲紀念日"))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -184,8 +203,9 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             self._add_holiday_mar_29(tr("革命先烈紀念日"))
 
     def _populate_optional_holidays(self):
-        # Labor Day.
-        self._add_labor_day(tr("勞動節"))
+        if self._year <= 2025:
+            # Labor Day.
+            self._add_labor_day(tr("勞動節"))
 
         # Armed Forces Day.
         self._add_holiday_sep_3(tr("軍人節"))
@@ -228,17 +248,19 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
             # Revolutionary Martyrs Memorial Day.
             self._add_holiday_mar_29(tr("革命先烈紀念日"))
 
-            # Confucius' Birthday.
-            self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
+            if self._year <= 2024:
+                # Confucius' Birthday.
+                self._add_holiday_sep_28(tr("孔子誕辰紀念日"))
 
-            # Taiwan Retrocession Day.
-            self._add_holiday_oct_25(tr("臺灣光復節"))
+                # Taiwan Retrocession Day.
+                self._add_holiday_oct_25(tr("臺灣光復節"))
 
             # Dr. Sun Yat-sen's Birthday.
             self._add_holiday_nov_12(tr("國父誕辰紀念日"))
 
-            # Constitution Day.
-            self._add_holiday_dec_25(tr("行憲紀念日"))
+            if self._year <= 2024:
+                # Constitution Day.
+                self._add_holiday_dec_25(tr("行憲紀念日"))
 
             if self._year <= 2006:
                 # Late President Chiang Kai-shek's Birthday.
