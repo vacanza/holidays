@@ -111,29 +111,32 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         subdiv_holidays = {
             "BR": ("2024-06-24",),
             "BV": ("2024-07-04",),
+            "CA": ("2024-11-25",),
             "CF": (
                 "2024-05-01",
                 "2024-08-15",
                 "2024-11-25",
             ),
+            "CR": ("2024-07-25",),
             "MA": ("2024-09-08",),
-            "PR": ("2024-04-29", "2024-05-19"),
+            "PR": (
+                "2024-04-29",
+                "2024-05-19",
+            ),
+            "RG": ("2024-05-07",),
             "RS": (
-                "2024-01-31",
                 "2024-01-15",
                 "2024-01-31",
-                "2024-03-13",
-                "2024-05-09",
-                "2024-07-19",
-                "2024-07-25",
-                "2024-09-29",
-                "2024-11-25",
             ),
+            "SF": ("2024-05-01",),
             "SL": ("2024-09-15",),
-            "SV": ("2024-01-22", "2024-02-13"),
-            "TS": ("2024-08-02", "2024-12-06"),
-            "SA": ("2024-01-17", "2024-05-07", "2024-06-13", "2024-09-02"),
+            "SV": (
+                "2024-01-22",
+                "2024-02-13",
+            ),
+            "TS": ("2024-08-02",),
         }
+
         for subdiv, holidays in subdiv_holidays.items():
             self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
 
@@ -148,11 +151,16 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_santo_antão_island_day(self):
+        name = "Dia da Ilha de Santo Antão"
+        self.assertHolidayName(name, (f"{year}-01-17" for year in range(1976, 2050)))
+
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CapeVerde(categories=PUBLIC, years=2024),
             ("2024-01-01", "Ano Novo"),
             ("2024-01-13", "Dia da Liberdade e Democracia"),
+            ("2024-01-17", "Dia da Ilha de Santo Antão"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2024-02-14", "Quarta-feira de Cinzas"),
             ("2024-03-29", "Sexta-feira Santa"),
@@ -178,6 +186,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             CapeVerde(categories=PUBLIC, years=2025),
             ("2025-01-01", "Ano Novo"),
             ("2025-01-13", "Dia da Liberdade e Democracia"),
+            ("2025-01-17", "Dia da Ilha de Santo Antão"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2025-03-05", "Quarta-feira de Cinzas"),
             ("2025-04-18", "Sexta-feira Santa"),
