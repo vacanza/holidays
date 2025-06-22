@@ -90,7 +90,7 @@ msgstr "Aschermittwoch"
 msgid "Terça-feira de Carnaval"
 msgstr "Karnevalsdienstag"
 
-#. São Vicente Municipal Day.
+#. São Vicente Municipality Day.
 msgid "Dia do Município de São Vicente"
 msgstr "Tag der Gemeinde São Vicente"
 
@@ -102,11 +102,11 @@ msgstr "Tag der Gemeinde Tarrafal de São Nicolau"
 msgid "Dia do Município de Ribeira Brava"
 msgstr "Tag der Gemeinde Ribeira Brava"
 
-#. Municipal Day.
+#. Municipality Day.
 msgid "Dia do Município"
 msgstr "Gemeindetag"
 
-#. Maio Municipal Day.
+#. Maio Municipality Day.
 msgid "Dia do Município do Maio"
 msgstr "Tag der Gemeinde Maio"
 
@@ -114,7 +114,7 @@ msgstr "Tag der Gemeinde Maio"
 msgid "Dia do Município de Ribeira Grande de Santiago"
 msgstr "Tag der Gemeinde Ribeira Grande de Santiago"
 
-#. Brava Municipal Day.
+#. Brava Municipality Day.
 msgid "Dia do Município da Brava"
 msgstr "Tag der Gemeinde Brava"
 
@@ -122,7 +122,7 @@ msgstr "Tag der Gemeinde Brava"
 msgid "Dia da Cidade da Praia"
 msgstr "Praia-Stadttag"
 
-#. Praia Municipal Day.
+#. Praia Municipality Day.
 msgid "Dia do Município da Praia"
 msgstr "Tag der Gemeinde Praia"
 

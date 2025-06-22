@@ -28,7 +28,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-04-01 13:02-0400\n"
 "PO-Revision-Date: 2025-04-01 13:02-0400\n"
-"Last-Translator: Sindhura Kumbakonam Subramanian <sindhu.ss10@gmail.com>\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_CV\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Terça-feira de Carnaval"
 msgstr ""
 
-#. São Vicente Municipal Day.
+#. São Vicente Municipality Day.
 msgid "Dia do Município de São Vicente"
 msgstr ""
 
@@ -113,11 +113,11 @@ msgstr ""
 msgid "Dia do Município de Ribeira Brava"
 msgstr ""
 
-#. Municipal Day.
+#. Municipality Day.
 msgid "Dia do Município"
 msgstr ""
 
-#. Maio Municipal Day.
+#. Maio Municipality Day.
 msgid "Dia do Município do Maio"
 msgstr ""
 
@@ -125,7 +125,7 @@ msgstr ""
 msgid "Dia do Município de Ribeira Grande de Santiago"
 msgstr ""
 
-#. Brava Municipal Day.
+#. Brava Municipality Day.
 msgid "Dia do Município da Brava"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "Dia da Cidade da Praia"
 msgstr ""
 
-#. Praia Municipal Day.
+#. Praia Municipality Day.
 msgid "Dia do Município da Praia"
 msgstr ""
 

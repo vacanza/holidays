@@ -143,22 +143,22 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
         self._add_holiday_3rd_sun_of_jun(tr("Dia dos Pais"))
 
     def _populate_subdiv_br_public_holidays(self):
-        # Brava Municipal Day.
+        # Brava Municipality Day.
         self._add_holiday_jun_24(tr("Dia do Município da Brava"))
 
     def _populate_subdiv_bv_public_holidays(self):
-        # Municipal Day.
+        # Municipality Day.
         self._add_holiday_jul_4(tr("Dia do Município"))
 
     def _populate_subdiv_ma_public_holidays(self):
-        # Maio Municipal Day.
+        # Maio Municipality Day.
         self._add_holiday_sep_8(tr("Dia do Município do Maio"))
 
     def _populate_subdiv_pr_public_holidays(self):
         # Praia City Day.
         self._add_holiday_apr_29(tr("Dia da Cidade da Praia"))
 
-        # Praia Municipal Day.
+        # Praia Municipality Day.
         self._add_holiday_may_19(tr("Dia do Município da Praia"))
 
     def _populate_subdiv_rs_public_holidays(self):
@@ -177,7 +177,7 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
             # São Lourenço dos Órgãos Municipality Day.
             self._add_holiday_may_9(tr("Dia do Município de São Lourenço dos Órgãos"))
 
-        # Praia Municipal Day.
+        # Praia Municipality Day.
         self._add_holiday_may_19(tr("Dia do Município da Praia"))
 
         if self._year > 2005:
@@ -195,11 +195,11 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
         self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina de Santiago"))
 
     def _populate_subdiv_sl_public_holidays(self):
-        # Municipal Day.
+        # Municipality Day.
         self._add_holiday_sep_15(tr("Dia do Município"))
 
     def _populate_subdiv_sv_public_holidays(self):
-        # São Vicente Municipal Day.
+        # São Vicente Municipality Day.
         self._add_holiday_jan_22(tr("Dia do Município de São Vicente"))
 
         # Carnival Tuesday.

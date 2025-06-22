@@ -20,7 +20,11 @@ from tests.common import CommonCountryTests
 class TestCapeVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(CapeVerde, years=range(1976, 2050))
+        years = range(1976, 2050)
+        super().setUpClass(CapeVerde, years=years)
+        cls.subdiv_holidays = {
+            subdiv: CapeVerde(subdiv=subdiv, years=years) for subdiv in CapeVerde.subdivisions
+        }
 
     def test_country_aliases(self):
         self.assertAliases(CapeVerde, CV, CAV)
@@ -132,6 +136,17 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         }
         for subdiv, holidays in subdiv_holidays.items():
             self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
+
+    def test_ribeira_grande_de_santiago_municipality_day(self):
+        name = "Dia do Município de Ribeira Grande de Santiago"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "RS":
+                self.assertHolidayName(name, holidays, range(2006, 2050))
+                self.assertNoHolidayName(name, range(1976, 2006))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_2024_public_holidays(self):
         self.assertHolidays(
@@ -320,8 +335,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-01-15", "Tarrafal de Santiago Municipality Day"),
             ("2025-01-17", "Santo Antão Island Day"),
             ("2025-01-20", "National Heroes Day"),
-            ("2025-01-22", "São Vicente Municipal Day"),
-            ("2025-01-31", "Ribeira Grande de Santiago Municipal Day"),
+            ("2025-01-22", "São Vicente Municipality Day"),
+            ("2025-01-31", "Ribeira Grande de Santiago Municipality Day"),
             ("2025-03-04", "Carnival Tuesday"),
             ("2025-03-05", "Ash Wednesday"),
             ("2025-03-13", "São Domingos Municipality Day"),
@@ -333,20 +348,20 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-05-07", "Ribeira Grande Municipality Day"),
             ("2025-05-09", "São Lourenço dos Órgãos Municipality Day"),
             ("2025-05-11", "Mother's Day"),
-            ("2025-05-19", "Praia Municipal Day"),
+            ("2025-05-19", "Praia Municipality Day"),
             ("2025-06-01", "International Children's Day"),
             ("2025-06-13", "Paúl Municipality Day"),
             ("2025-06-15", "Father's Day"),
-            ("2025-06-24", "Brava Municipal Day"),
-            ("2025-07-04", "Municipal Day"),
+            ("2025-06-24", "Brava Municipality Day"),
+            ("2025-07-04", "Municipality Day"),
             ("2025-07-05", "Independence Day"),
             ("2025-07-19", "São Salvador do Mundo Municipality Day"),
             ("2025-07-25", "Santa Cruz Municipality Day"),
-            ("2025-08-02", "Tarrafal de São Nicolau Municipal Day"),
+            ("2025-08-02", "Tarrafal de São Nicolau Municipality Day"),
             ("2025-08-15", "Assumption Day; Mosteiros Municipality Day"),
             ("2025-09-02", "Porto Novo Municipality Day"),
-            ("2025-09-08", "Maio Municipal Day"),
-            ("2025-09-15", "Municipal Day"),
+            ("2025-09-08", "Maio Municipality Day"),
+            ("2025-09-15", "Municipality Day"),
             ("2025-09-29", "São Miguel Municipality Day"),
             ("2025-11-01", "All Saints' Day"),
             (
@@ -354,7 +369,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
                 "Santa Catarina de Santiago Municipality Day; "
                 "Santa Catarina do Fogo Municipality Day",
             ),
-            ("2025-12-06", "Ribeira Brava Municipal Day"),
+            ("2025-12-06", "Ribeira Brava Municipality Day"),
             ("2025-12-25", "Christmas Day"),
         )
 

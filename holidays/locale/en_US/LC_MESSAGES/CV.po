@@ -90,41 +90,41 @@ msgstr "Ash Wednesday"
 msgid "Terça-feira de Carnaval"
 msgstr "Carnival Tuesday"
 
-#. São Vicente Municipal Day.
+#. São Vicente Municipality Day.
 msgid "Dia do Município de São Vicente"
-msgstr "São Vicente Municipal Day"
+msgstr "São Vicente Municipality Day"
 
 #. Tarrafal de São Nicolau Municipality Day.
 msgid "Dia do Município do Tarrafal de São Nicolau"
-msgstr "Tarrafal de São Nicolau Municipal Day"
+msgstr "Tarrafal de São Nicolau Municipality Day"
 
 #. Ribeira Brava Municipality Day.
 msgid "Dia do Município de Ribeira Brava"
-msgstr "Ribeira Brava Municipal Day"
+msgstr "Ribeira Brava Municipality Day"
 
-#. Municipal Day.
+#. Municipality Day.
 msgid "Dia do Município"
-msgstr "Municipal Day"
+msgstr "Municipality Day"
 
-#. Maio Municipal Day.
+#. Maio Municipality Day.
 msgid "Dia do Município do Maio"
-msgstr "Maio Municipal Day"
+msgstr "Maio Municipality Day"
 
 #. Ribeira Grande de Santiago Municipality Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
-msgstr "Ribeira Grande de Santiago Municipal Day"
+msgstr "Ribeira Grande de Santiago Municipality Day"
 
-#. Brava Municipal Day.
+#. Brava Municipality Day.
 msgid "Dia do Município da Brava"
-msgstr "Brava Municipal Day"
+msgstr "Brava Municipality Day"
 
 #. Praia City Day.
 msgid "Dia da Cidade da Praia"
 msgstr "Praia City Day"
 
-#. Praia Municipal Day.
+#. Praia Municipality Day.
 msgid "Dia do Município da Praia"
-msgstr "Praia Municipal Day"
+msgstr "Praia Municipality Day"
 
 #. Santo Antão Island Day.
 msgid "Dia da Ilha de Santo Antão"
