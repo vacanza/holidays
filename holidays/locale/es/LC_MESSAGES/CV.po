@@ -144,7 +144,7 @@ msgstr "Día del Municipio de Porto Novo"
 
 #. Tarrafal de Santiago Municipality Day.
 msgid "Dia do Município do Tarrafal de Santiago"
-msgstr "Dia del Municipio de Tarrafal de Santiago"
+msgstr "Día del Municipio de Tarrafal de Santiago"
 
 #. São Domingos Municipality Day.
 msgid "Dia do Município de São Domingos"

@@ -286,7 +286,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             "es",
             ("2025-01-01", "Año Nuevo"),
             ("2025-01-13", "Día de la Libertad y la Democracia"),
-            ("2025-01-15", "Dia del Municipio de Tarrafal de Santiago"),
+            ("2025-01-15", "Día del Municipio de Tarrafal de Santiago"),
             ("2025-01-17", "Día de la Isla de Santo Antón"),
             ("2025-01-20", "Día de los Héroes Nacionales"),
             ("2025-01-22", "Día del Municipio de São Vicente"),
