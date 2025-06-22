@@ -36,7 +36,7 @@ msgstr "Día de la Libertad y la Democracia"
 
 #. National Heroes Day.
 msgid "Dia da Nacionalidade e dos Heróis Nacionais"
-msgstr "Día de los Héroes Nacionales"
+msgstr "Día de la Nacionalidad y de los Héroes Nacionales"
 
 #. Good Friday.
 msgid "Sexta-feira Santa"
@@ -48,7 +48,7 @@ msgstr "Día del Trabajador"
 
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
-msgstr "Día Internacional del Niño"
+msgstr "Día Mundial del Niño"
 
 #. Independence Day.
 msgid "Dia da Independência Nacional"
@@ -108,7 +108,7 @@ msgstr "Día del Municipio"
 
 #. Maio Municipality Day.
 msgid "Dia do Município do Maio"
-msgstr "Día del Municipio de Mayo"
+msgstr "Día del Municipio de Maio"
 
 #. Ribeira Grande de Santiago Municipality Day.
 msgid "Dia do Município de Ribeira Grande de Santiago"
@@ -128,7 +128,7 @@ msgstr "Día del Municipio de Praia"
 
 #. Santo Antão Island Day.
 msgid "Dia da Ilha de Santo Antão"
-msgstr "Día de la Isla de Santo Antón"
+msgstr "Día de la Isla de Santo Antão"
 
 #. Ribeira Grande Municipality Day.
 msgid "Dia do Município de Ribeira Grande"
