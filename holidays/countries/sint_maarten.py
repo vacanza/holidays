@@ -67,11 +67,14 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             rule=SUN_TO_PREV_SAT,
         )
 
-        self._move_holiday(
-            # Carnival Day.
-            self._add_holiday_apr_30(tr("Carnival Day")),
-            rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_TUE,
-        )
+        # Carnival Day.
+        name = tr("Carnival Day")
+        if self._year >= 2014:
+            self._move_holiday(
+                self._add_holiday_apr_30(name), rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_TUE
+            )
+        else:
+            self._add_holiday_apr_29(name)
 
         # Labour Day.
         self._add_labor_day(tr("Labour Day"))

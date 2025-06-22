@@ -116,6 +116,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         name = "Carnival Day"
         self.assertHolidayName(
             name,
+            "2013-04-29",
             "2020-04-30",
             "2021-04-30",
             "2022-04-29",
