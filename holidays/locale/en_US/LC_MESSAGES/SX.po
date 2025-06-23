@@ -27,65 +27,65 @@ msgstr ""
 "X-Source-Language: en_US\n"
 
 #. New Year's Day.
-msgid "New Year's Day"
-msgstr ""
+msgid "Nieuwjaarsdag"
+msgstr "New Year's Day"
 
 #. Good Friday.
-msgid "Good Friday"
-msgstr ""
+msgid "Goede Vrijdag"
+msgstr "Good Friday"
 
 #. Easter Sunday.
-msgid "Easter Sunday"
-msgstr ""
+msgid "Eerste paasdag"
+msgstr "Easter Sunday"
 
 #. Easter Monday.
-msgid "Easter Monday"
-msgstr ""
+msgid "Tweede paasdag"
+msgstr "Easter Monday"
 
 #. King's Day.
-msgid "King's Day"
-msgstr ""
-
-#. Carnival Day.
-msgid "Carnival Day"
-msgstr ""
-
-#. Labour Day.
-msgid "Labour Day"
-msgstr ""
-
-#. Ascension Day.
-msgid "Ascension Day"
-msgstr ""
-
-#. Whit Sunday.
-msgid "Whit Sunday"
-msgstr ""
-
-#. Emancipation Day.
-msgid "Emancipation Day"
-msgstr ""
-
-#. Constitution Day.
-msgid "Constitution Day"
-msgstr ""
-
-#. Kingdom Day.
-msgid "Kingdom Day"
-msgstr ""
-
-#. Sint Maarten Day.
-msgid "Sint Maarten Day"
-msgstr ""
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr ""
-
-#. Second Day of Christmas.
-msgid "Second Day of Christmas"
-msgstr ""
+msgid "Koningsdag"
+msgstr "King's Day"
 
 #. Queen's Day.
-msgid "Queen's Day"
-msgstr ""
+msgid "Koninginnedag"
+msgstr "Queen's Day"
+
+#. Carnival Day.
+msgid "Carnavalsdag"
+msgstr "Carnival Day"
+
+#. Labour Day.
+msgid "Dag van de Arbeid"
+msgstr "Labour Day"
+
+#. Ascension Day.
+msgid "Hemelvaartsdag"
+msgstr "Ascension Day"
+
+#. Whit Sunday.
+msgid "Eerste Pinksterdag"
+msgstr "Whit Sunday"
+
+#. Emancipation Day.
+msgid "Dag van de Bevrijding"
+msgstr "Emancipation Day"
+
+#. Constitution Day.
+msgid "Dag van de Constitutie"
+msgstr "Constitution Day"
+
+#. Sint Maarten Day.
+msgid "Sint-Maartensdag"
+msgstr "Sint Maarten Day"
+
+#. Kingdom Day.
+msgid "Koninkrijksdag"
+msgstr "Kingdom Day"
+
+#. Christmas Day.
+msgid "Eerste Kerstdag"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+msgid "Tweede Kerstdag"
+msgstr "Second Day of Christmas"
