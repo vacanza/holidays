@@ -35,10 +35,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
     country = "SX"
     default_language = "nl"
-    supported_languages = (
-        "en_US",
-        "nl",
-    )
+    supported_languages = ("en_US", "nl",)
     # Sint Maarten became a constituent country on October 10th, 2010.
     start_year = 2011
 
@@ -79,7 +76,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         else:
             self._add_holiday_apr_29(name)
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Dag van de Arbeid"))
 
         # Ascension Day.
