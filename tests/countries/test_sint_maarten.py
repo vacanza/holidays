@@ -25,24 +25,8 @@ class TestSintMaarten(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(SintMaarten, SX, SXM)
 
-    def test_2017(self):
-        self.assertHolidays(
-            SintMaarten(years=2017),
-            ("2017-01-01", "Nieuwjaarsdag"),
-            ("2017-04-14", "Goede Vrijdag"),
-            ("2017-04-16", "Eerste paasdag"),
-            ("2017-04-17", "Tweede paasdag"),
-            ("2017-04-27", "Koningsdag"),
-            ("2017-05-02", "Carnavalsdag"),
-            ("2017-05-01", "Dag van de Arbeid"),
-            ("2017-05-25", "Hemelvaartsdag"),
-            ("2017-06-04", "Eerste Pinksterdag"),
-            ("2017-07-01", "Dag van de Bevrijding"),
-            ("2017-10-09", "Dag van de Constitutie"),
-            ("2017-11-11", "Sint-Maartensdag"),
-            ("2017-12-25", "Eerste Kerstdag"),
-            ("2017-12-26", "Tweede Kerstdag"),
-        )
+    def test_no_holidays(self):
+        self.assertNoHolidays(SintMaarten(years=2010))
 
     def test_new_years_day(self):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(2011, 2050)))
@@ -212,8 +196,24 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in range(2011, 2050)))
         self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
 
-    def test_no_holidays(self):
-        self.assertNoHolidays(SintMaarten(years=2010))
+    def test_2017(self):
+        self.assertHolidays(
+            SintMaarten(years=2017),
+            ("2017-01-01", "Nieuwjaarsdag"),
+            ("2017-04-14", "Goede Vrijdag"),
+            ("2017-04-16", "Eerste paasdag"),
+            ("2017-04-17", "Tweede paasdag"),
+            ("2017-04-27", "Koningsdag"),
+            ("2017-05-02", "Carnavalsdag"),
+            ("2017-05-01", "Dag van de Arbeid"),
+            ("2017-05-25", "Hemelvaartsdag"),
+            ("2017-06-04", "Eerste Pinksterdag"),
+            ("2017-07-01", "Dag van de Bevrijding"),
+            ("2017-10-09", "Dag van de Constitutie"),
+            ("2017-11-11", "Sint-Maartensdag"),
+            ("2017-12-25", "Eerste Kerstdag"),
+            ("2017-12-26", "Tweede Kerstdag"),
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
