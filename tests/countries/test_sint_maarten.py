@@ -242,7 +242,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-04-27", "King's Day"),
             ("2022-04-29", "Carnival Day"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Whit Sunday"),
             ("2022-07-01", "Emancipation Day"),
