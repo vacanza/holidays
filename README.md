@@ -1305,7 +1305,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Sint Maarten</td>
 <td>SX</td>
 <td></td>
-<td><strong>en_US</strong></td>
+<td>en_US, <strong>nl</strong></td>
 <td></td>
 </tr>
 <tr>
