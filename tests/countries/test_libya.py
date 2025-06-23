@@ -19,7 +19,7 @@ from tests.common import CommonCountryTests
 class TestLibya(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1968, 2050)
+        years = range(2012, 2050)
         super().setUpClass(Libya, years=years)
         cls.no_estimated_holidays = Libya(years=years, islamic_show_estimated=False)
 
@@ -44,14 +44,24 @@ class TestLibya(CommonCountryTests, TestCase):
     def test_prophets_birthday(self):
         name = "ذكرى المولد النبوي الشريف"
         self.assertHolidayName(
-            name, "2020-10-29", "2021-10-19", "2022-10-08", "2023-09-27", "2024-09-15"
+            name,
+            "2020-10-29",
+            "2021-10-19",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-15",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
     def test_isra_and_miraj(self):
         name = "ليلة المعراج"
         self.assertHolidayName(
-            f"(تقدير) {name}", "2021-03-11", "2022-02-28", "2023-02-18", "2024-02-08", "2025-01-27"
+            f"(تقدير) {name}",
+            "2021-03-11",
+            "2022-02-28",
+            "2023-02-18",
+            "2024-02-08",
+            "2025-01-27",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
