@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Sint Maarten holidays nl localization.
+# Sint Maarten holidays.
 #
 msgid ""
 msgstr ""
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Carnavalsdag"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Dag van de Arbeid"
 msgstr ""
 
