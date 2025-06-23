@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_US\n"
+"X-Source-Language: nl\n"
 
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
@@ -54,9 +54,9 @@ msgstr "Queen's Day"
 msgid "Carnavalsdag"
 msgstr "Carnival Day"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Dag van de Arbeid"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 msgid "Hemelvaartsdag"
