@@ -328,14 +328,14 @@ class _MongolianLunisolar:
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
-    def tsagaan_sar_date(self, year: int) -> tuple[Optional[date], bool]:
-        return self._get_holiday(TSAGAAN_SAR, year)
-
     def buddha_day_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(BUDDHA_DAY, year)
 
     def genghis_khan_day_date(self, year: int) -> tuple[Optional[date], bool]:
         return self._get_holiday(GENGHIS_KHAN_DAY, year)
+
+    def tsagaan_sar_date(self, year: int) -> tuple[Optional[date], bool]:
+        return self._get_holiday(TSAGAAN_SAR, year)
 
 
 class _CustomMongolianHolidays(_CustomCalendar, _MongolianLunisolar):

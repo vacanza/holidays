@@ -26,6 +26,14 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: mn\n"
 
+#. New Year's Day.
+msgid "Шинэ жил"
+msgstr "New Year's Day"
+
+#. Lunar New Year.
+msgid "Цагаан сар"
+msgstr "Lunar New Year"
+
 #. International Women's Day.
 msgid "Олон улсын эмэгтэйчүүдийн өдөр"
 msgstr "International Women's Day"
@@ -34,29 +42,29 @@ msgstr "International Women's Day"
 msgid "Хүүхдийн баяр"
 msgstr "Children's Day"
 
-#. Republic Day.
-msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
-msgstr "Republic Day"
-
-#. National Freedom and Independence Day.
-msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
-msgstr "National Freedom and Independence Day"
-
-#. National Freedom Day.
-msgid "Үндэсний эрх чөлөөний өдөр"
-msgstr "National Freedom Day"
-
-#. Tsagaan Sar.
-msgid "Цагаан сар"
-msgstr "Tsagaan Sar"
-
 #. The Buddha's Birthday.
 msgid "Бурхан багшийн Их дүйчин өдөр"
 msgstr "The Buddha's Birthday"
 
+#. National Festival and People's Revolution Anniversary.
+msgid "Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр"
+msgstr "National Festival and People's Revolution Anniversary"
+
 #. Genghis Khan's Birthday.
 msgid "Их Эзэн Чингис хааны өдөр"
 msgstr "Genghis Khan's Birthday"
+
+#. Republic Day.
+msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
+msgstr "Republic Day"
+
+#. Republic Holiday.
+msgid "Бүгд Найрамдах Улс тунхагласны баяр"
+msgstr "Republic Holiday"
+
+#. National Freedom and Independence Day.
+msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
+msgstr "National Freedom and Independence Day"
 
 #. Constitution Day.
 msgid "Монгол Улсын Үндсэн хуулийн өдөр"
@@ -69,6 +77,10 @@ msgstr "Patriots' Day"
 #. Military Day.
 msgid "Монгол цэргийн өдөр"
 msgstr "Military Day"
+
+#. Armed Forces Day.
+msgid "Зэвсэгт хүчний өдөр"
+msgstr "Armed Forces Day"
 
 #. Health Protection Day.
 msgid "Эрүүл мэндийг хамгаалах өдөр"
@@ -90,6 +102,10 @@ msgstr "National Flag Day"
 msgid "Залуучуудын өдөр"
 msgstr "Youth Day"
 
+#. New Harvest Days.
+msgid "Шинэ ургацын өдрүүд"
+msgstr "New Harvest Days"
+
 #. Memorial Day of Political Victims.
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr "Memorial Day of Political Victims"
@@ -97,6 +113,10 @@ msgstr "Memorial Day of Political Victims"
 #. Elders' Day.
 msgid "Ахмадын өдөр"
 msgstr "Elders' Day"
+
+#. Capital City Day.
+msgid "Монгол Улсын нийслэл хотын өдөр"
+msgstr "Capital City Day"
 
 #. Capital Day.
 msgid "Монгол Улсын Нийслэлийн өдөр"
@@ -106,26 +126,6 @@ msgstr "Capital Day"
 msgid "Ардчилал, хүний эрхийн өдөр"
 msgstr "Democracy and Human Rights Day"
 
-#. National Festival and People's Revolution Anniversary.
-msgid "Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр"
-msgstr "National Festival and People's Revolution Anniversary"
-
-#. Armed Forces Day.
-msgid "Зэвсэгт хүчний өдөр"
-msgstr "Armed Forces Day"
-
-#. Republic Holiday.
-msgid "Бүгд Найрамдах Улс тунхагласны баяр"
-msgstr "Republic Holiday"
-
-#. Capital City Day.
-msgid "Монгол Улсын нийслэл хотын өдөр"
-msgstr "Capital City Day"
-
-#. New Harvest Days.
-msgid "Шинэ ургацын өдрүүд"
-msgstr "New Harvest Days"
-
-#. New Year's Day.
-msgid "Шинэ жил"
-msgstr "New Year's Day"
+#. National Freedom Day.
+msgid "Үндэсний эрх чөлөөний өдөр"
+msgstr "National Freedom Day"

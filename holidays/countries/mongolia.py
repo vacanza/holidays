@@ -45,7 +45,7 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Шинэ жил"))
 
-        # Tsagaan Sar.
+        # Lunar New Year.
         name = tr("Цагаан сар")
         self._add_tsagaan_sar(name)
         self._add_tsagaan_sar_day_2(name)
