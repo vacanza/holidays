@@ -61,7 +61,7 @@ class ChristmasIsland(
         * [2023](https://web.archive.org/web/20250612044842/https://www.infrastructure.gov.au/sites/default/files/documents/A06-2022-notice-proclamation-special-public-bank-holidays-2023-ci.pdf)
         * [2024](https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf)
         * [2025](https://web.archive.org/web/20250610185153/https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf)
-    
+
     """
 
     country = "CX"
@@ -125,14 +125,12 @@ class ChristmasIsland(
         )
 
         # Christmas Day.
-        
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
             self._add_observed(dt)
-
 
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
@@ -175,7 +173,6 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
         2024: (APR, 10),
         2025: (MAR, 31),
     }
-    
 
 
 class CX(ChristmasIsland):
