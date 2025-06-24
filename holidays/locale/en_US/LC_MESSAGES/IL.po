@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "(נצפה) %s"
+msgid "%s (נצפה)"
 msgstr "%s (observed)"
 
 #. Rosh Hashanah (New Year).

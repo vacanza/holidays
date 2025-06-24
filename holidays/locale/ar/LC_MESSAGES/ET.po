@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (ግምት)"
-msgstr "(تقدير) %s"
+msgstr "%s (مُقدَّر)"
 
 #. Christmas Day.
 msgid "የገና ወይም የልደት በዓል"
