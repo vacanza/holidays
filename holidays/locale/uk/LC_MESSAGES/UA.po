@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: uk\n"
 
 #. %s (observed).
 #, c-format
@@ -34,6 +34,10 @@ msgstr ""
 
 #. New Year's Day.
 msgid "Новий рік"
+msgstr ""
+
+#. Christmas Day.
+msgid "Різдво Христове"
 msgstr ""
 
 #. International Women's Day.
@@ -90,10 +94,6 @@ msgstr ""
 
 #. Anniversary of the Great October Socialist Revolution.
 msgid "Річниця Великої Жовтневої соціалістичної революції"
-msgstr ""
-
-#. Christmas Day.
-msgid "Різдво Христове"
 msgstr ""
 
 #. Date format (see strftime() Format Codes)

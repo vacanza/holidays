@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
@@ -39,9 +40,9 @@ msgstr "Jour de l'an"
 msgid "Good Friday"
 msgstr "Vendredi saint"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Lundi de Pâques"
+#. Canada Day.
+msgid "Canada Day"
+msgstr "Fête du Canada"
 
 #. Dominion Day.
 msgid "Dominion Day"
@@ -55,49 +56,45 @@ msgstr "Fête du Travail"
 msgid "Christmas Day"
 msgstr "Jour de Noël"
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
-#. Family Day.
-msgid "Family Day"
-msgstr "Fête de la famille"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "Action de grâce"
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr "Funéraire de sa majesté la reine Elizabeth II"
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr "Jour de mémorial"
-
-#. Canada Day.
-msgid "Canada Day"
-msgstr "Fête du Canada"
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr "Fête de la Reine"
-
-#. Heritage Day.
-msgid "Heritage Day"
-msgstr "Fête du Patrimoine"
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "Journée nationale de la vérité et de la réconciliation"
 
 #. Remembrance Day.
 msgid "Remembrance Day"
 msgstr "Jour du Souvenir"
 
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "Action de grâce"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "Jour de l'Armistice"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "Fête de la Reine"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "Fête de la famille"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "Fête du Patrimoine"
+
 #. British Columbia Day.
 msgid "British Columbia Day"
 msgstr "Jour de la Colombie Britannique"
-
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
-msgstr "Journée nationale de la vérité et de la réconciliation"
 
 #. Louis Riel Day.
 msgid "Louis Riel Day"
@@ -115,6 +112,10 @@ msgstr "Premier lundi d'août"
 msgid "New Brunswick Day"
 msgstr "Jour du Nouveau Brunswick"
 
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "Jour de mémorial"
+
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "Fête de la Saint-Patrick"
@@ -126,6 +127,14 @@ msgstr "Fête de la Saint-Georges"
 #. Discovery Day.
 msgid "Discovery Day"
 msgstr "Jour de la Découverte"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "Journée des Orangistes"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "Jour de la Fondation"
 
 #. National Aboriginal Day.
 msgid "National Aboriginal Day"
@@ -151,14 +160,6 @@ msgstr "Fête nationale du Québec"
 msgid "Saskatchewan Day"
 msgstr "Jour du Saskatchewan"
 
-#. Orangemen's Day.
-msgid "Orangemen's Day"
-msgstr "Journée des Orangistes"
-
-#. Natal Day.
-msgid "Natal Day"
-msgstr "Jour de la Fondation"
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr "Jour de l'Armistice"
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "Funéraire de sa majesté la reine Elizabeth II"

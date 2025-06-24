@@ -23,22 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==0 || (n%100>=11 && n%100<=19) ? 0 : n%10==1 && n%100!=11 ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. General Latvian Song and Dance Festival closing day.
-msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
-msgstr "День закриття загальнолатвійського фестивалю пісні і танцю"
-
-#. Day of His Holiness Pope Francis' pastoral visit to Latvia.
-msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
-msgstr "День пастирського візиту Його Святості Папи Франциска до Латвії"
-
-#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice Hockey Championship.
-msgid ""
-"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
-msgstr "День здобуття збірною Латвії з хокею бронзової медалі Чемпіонату світу"
+"X-Source-Language: lv\n"
 
 #. %s (observed).
 #, c-format
@@ -73,13 +60,13 @@ msgstr "День відновлення незалежности Латвійс�
 msgid "Mātes diena"
 msgstr "День матері"
 
-#. Midsummer Day.
-msgid "Jāņu diena"
-msgstr "Янів день"
-
 #. Midsummer Eve.
 msgid "Līgo diena"
 msgstr "Ліго"
+
+#. Midsummer Day.
+msgid "Jāņu diena"
+msgstr "Янів день"
 
 #. Republic of Latvia Proclamation Day.
 msgid "Latvijas Republikas proklamēšanas diena"
@@ -100,3 +87,16 @@ msgstr "Другий день Різдва"
 #. New Year's Eve.
 msgid "Vecgada vakars"
 msgstr "Переддень Нового року"
+
+#. General Latvian Song and Dance Festival closing day.
+msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
+msgstr "День закриття загальнолатвійського фестивалю пісні і танцю"
+
+#. Day of His Holiness Pope Francis' pastoral visit to Latvia.
+msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
+msgstr "День пастирського візиту Його Святості Папи Франциска до Латвії"
+
+#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice Hockey Championship.
+msgid ""
+"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
+msgstr "День здобуття збірною Латвії з хокею бронзової медалі Чемпіонату світу"
