@@ -31,34 +31,6 @@ msgstr ""
 msgid "Jour de l'an"
 msgstr "วันขึ้นปีใหม่"
 
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr "วันแรงงาน"
-
-#. Labor and Social Concord Day.
-msgid "Fête du Travail et de la Concorde sociale"
-msgstr "วันแรงงานและความสมานฉันท์ทางสังคม"
-
-#. Victory Day.
-msgid "Fête de la Victoire"
-msgstr "วันแห่งชัยชนะ"
-
-#. National Day.
-msgid "Fête nationale"
-msgstr "วันชาติฝรั่งเศส"
-
-#. Armistice Day.
-msgid "Armistice"
-msgstr "วันสงบศึก"
-
-#. Good Friday.
-msgid "Vendredi saint"
-msgstr "วันศุกร์ประเสริฐ"
-
-#. Mi-Careme.
-msgid "Mi-Carême"
-msgstr "วันเฉลิมฉลองกลางเทศกาลมหาพรต"
-
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "วันจันทร์อีสเตอร์"
@@ -67,9 +39,29 @@ msgstr "วันจันทร์อีสเตอร์"
 msgid "Lundi de Pentecôte"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "วันแรงงาน"
+
+#. Labor and Social Concord Day.
+msgid "Fête du Travail et de la Concorde sociale"
+msgstr "วันแรงงานและความสมานฉันท์ทางสังคม"
+
+#. May Day.
+msgid "1er mai"
+msgstr "วันเมย์เดย์"
+
+#. Victory Day.
+msgid "Fête de la Victoire"
+msgstr "วันแห่งชัยชนะ"
+
 #. Ascension Day.
 msgid "Ascension"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
+#. National Day.
+msgid "Fête nationale"
+msgstr "วันชาติฝรั่งเศส"
 
 #. Assumption Day.
 msgid "Assomption"
@@ -79,25 +71,41 @@ msgstr "วันสมโภชแม่พระรับเกียรติ
 msgid "Toussaint"
 msgstr "วันสมโภชนักบุญทั้งหลาย"
 
+#. Armistice Day.
+msgid "Armistice"
+msgstr "วันสงบศึก"
+
 #. Christmas Day.
 msgid "Noël"
 msgstr "วันคริสต์มาส"
 
-#. Victor Schoelcher Day.
-msgid "Fête de Victor Schoelcher"
-msgstr "วันวิกตอร์ เชลแชร์"
-
-#. Abolition of Slavery.
-msgid "Abolition de l'esclavage"
-msgstr "วันเลิกทาส"
+#. Good Friday.
+msgid "Vendredi saint"
+msgstr "วันศุกร์ประเสริฐ"
 
 #. Saint Stephen's Day.
 msgid "Saint Étienne"
 msgstr "วันสมโภชนักบุญสเตเฟน"
 
+#. Mi-Careme.
+msgid "Mi-Carême"
+msgstr "วันเฉลิมฉลองกลางเทศกาลมหาพรต"
+
+#. Abolition of Slavery.
+msgid "Abolition de l'esclavage"
+msgstr "วันเลิกทาส"
+
+#. Victor Schoelcher Day.
+msgid "Fête de Victor Schoelcher"
+msgstr "วันวิกตอร์ เชลแชร์"
+
 #. Citizenship Day.
 msgid "Fête de la Citoyenneté"
 msgstr "วันแห่งความเป็นพลเมือง"
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
+msgstr "วันประกาศอธิปไตยเหนือดินแดน"
 
 #. Missionary Day.
 msgid "Arrivée de l'Évangile"
@@ -107,26 +115,18 @@ msgstr "วันคริสตธรรมมาถึง"
 msgid "Fête de l'autonomie"
 msgstr "วันปกครองตนเอง"
 
-#. Feast of Saint Peter Chanel.
-msgid "Saint Pierre Chanel"
-msgstr "วันสมโภชนักบุญเปโตร ชาเนล"
-
-#. Territory Day.
-msgid "Fête du Territoire"
-msgstr "วันก่อตั้งดินแดน"
-
-#. May Day.
-msgid "1er mai"
-msgstr "วันเมย์เดย์"
-
-#. Annexation Day.
-msgid "Fête de la prise de possession"
-msgstr "วันประกาศอธิปไตยเหนือดินแดน"
-
 #. Matāri'i.
 msgid "Matāri'i"
 msgstr "วันขึ้นปีใหม่โพลินีเซีย (มาตารีอิ)"
 
+#. Feast of Saint Peter Chanel.
+msgid "Saint Pierre Chanel"
+msgstr "วันสมโภชนักบุญเปโตร ชาเนล"
+
 #. Saints Peter and Paul Day.
 msgid "Saints Pierre et Paul"
 msgstr "วันสมโภชนักบุญเปโตรและเปาโล"
+
+#. Territory Day.
+msgid "Fête du Territoire"
+msgstr "วันก่อตั้งดินแดน"

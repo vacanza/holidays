@@ -24,6 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: tvl\n"
 
 #. %s (observed).
 #, c-format
@@ -34,6 +35,10 @@ msgstr ""
 msgid "Tausaga Fou"
 msgstr ""
 
+#. Commonwealth Day.
+msgid "Aso Atefenua"
+msgstr ""
+
 #. Good Friday.
 msgid "Aso toe tu"
 msgstr ""
@@ -42,16 +47,16 @@ msgstr ""
 msgid "Toe Tu aso gafua"
 msgstr ""
 
-#. Commonwealth Day.
-msgid "Aso Atefenua"
-msgstr ""
-
 #. Gospel Day.
 msgid "Te Aso o te Tala Lei"
 msgstr ""
 
 #. King's Birthday.
 msgid "Asofanau Tupu"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Asofanau Fafine"
 msgstr ""
 
 #. National Children's Day.
@@ -78,6 +83,22 @@ msgstr ""
 msgid "Aso Faipele"
 msgstr ""
 
+#. The Day of the Bombing.
+msgid "Te Aso o te Paula"
+msgstr ""
+
+#. Cyclone Day.
+msgid "Aso o te matagi"
+msgstr ""
+
+#. Niutao Day.
+msgid "Te Aso o te Setema"
+msgstr ""
+
+#. Nukufetau Day.
+msgid "Te Aso O Tutasi"
+msgstr ""
+
 #. Golden Jubilee.
 msgid "Te Po o Tefolaha"
 msgstr ""
@@ -86,34 +107,14 @@ msgstr ""
 msgid "Po Lahi"
 msgstr ""
 
-#. Day of the Flood.
-msgid "Bogin te Ieka"
-msgstr ""
-
-#. The Day of the Bombing.
-msgid "Te Aso o te Paula"
-msgstr ""
-
-#. Niutao Day.
-msgid "Te Aso o te Setema"
-msgstr ""
-
-#. Happy Day.
-msgid "Te Aso Fiafia"
-msgstr ""
-
 #. Nanumaga Day.
 msgid "Aho o te Fakavae"
 msgstr ""
 
-#. Cyclone Day.
-msgid "Aso o te matagi"
+#. Day of the Flood.
+msgid "Bogin te Ieka"
 msgstr ""
 
-#. Nukufetau Day.
-msgid "Te Aso O Tutasi"
-msgstr ""
-
-#. Queen's Birthday.
-msgid "Asofanau Fafine"
+#. Happy Day.
+msgid "Te Aso Fiafia"
 msgstr ""

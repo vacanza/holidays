@@ -31,42 +31,6 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr ""
 
-#. New Year's Day.
-msgid "Jour de l'an"
-msgstr ""
-
-#. Independence Day.
-msgid "Fête de l'Indépendance"
-msgstr ""
-
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr ""
-
-#. Assumption Day.
-msgid "Assomption"
-msgstr ""
-
-#. All Saints' Day.
-msgid "Toussaint"
-msgstr ""
-
-#. Christmas Day.
-msgid "Noël"
-msgstr ""
-
-#. Easter Monday.
-msgid "Lundi de Pâques"
-msgstr ""
-
-#. Whit Monday.
-msgid "Lundi de Pentecôte"
-msgstr ""
-
-#. Grand Magal of Touba.
-msgid "Grand Magal de Touba"
-msgstr ""
-
 #. %s (observed).
 #, c-format
 msgid "%s (observé)"
@@ -77,12 +41,12 @@ msgstr ""
 msgid "%s (observé, estimé)"
 msgstr ""
 
-#. Public holiday.
-msgid "Jour férié"
-msgstr ""
-
 #. Ashura.
 msgid "Tamxarit"
+msgstr ""
+
+#. Grand Magal of Touba.
+msgid "Grand Magal de Touba"
 msgstr ""
 
 #. Prophet's Birthday.
@@ -97,10 +61,46 @@ msgstr ""
 msgid "Journée de la Tabaski"
 msgstr ""
 
-#. Ascension Day.
-msgid "Jeudi de l'Ascension"
+#. New Year's Day.
+msgid "Jour de l'an"
 msgstr ""
 
 #. Senegambia Confederation Day.
 msgid "Fête de la Confédération de la Sénégambie"
+msgstr ""
+
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Ascension Day.
+msgid "Jeudi de l'Ascension"
+msgstr ""
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr ""
+
+#. Christmas Day.
+msgid "Noël"
+msgstr ""
+
+#. Public holiday.
+msgid "Jour férié"
 msgstr ""
