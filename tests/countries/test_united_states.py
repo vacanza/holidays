@@ -2082,3 +2082,218 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "2024-10-07",
             ),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-06", "Epiphany; Three Kings Day"),
+            (
+                "2022-01-17",
+                (
+                    "Birthday of Martin Luther King, Jr.; "
+                    "Dr. Martin Luther King Jr. / Civil Rights Day; "
+                    "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays; "
+                    "Martin Luther King Jr. / Idaho Human Rights Day; Martin Luther King Jr. Day; "
+                    "Martin Luther King, Jr & Robert E. Lee's Birthday"
+                ),
+            ),
+            ("2022-01-19", "Confederate Memorial Day"),
+            ("2022-02-02", "Groundhog Day"),
+            ("2022-02-11", "Lincoln's Birthday (observed)"),
+            ("2022-02-12", "Lincoln's Birthday"),
+            ("2022-02-14", "Valentine's Day"),
+            ("2022-02-15", "Susan B. Anthony Day"),
+            (
+                "2022-02-21",
+                (
+                    "George Washington & Thomas Jefferson's Birthday; George Washington Day; "
+                    "George Washington's Birthday and Daisy Gatson Bates Day; "
+                    "Lincoln's and Washington's Birthdays; Lincoln/Washington Presidents' Day; "
+                    "President's Day; Presidents Day; Presidents' Day; "
+                    "Washington and Lincoln Day; Washington's Birthday; "
+                    "Washington's and Lincoln's Birthday; Washington-Lincoln Day"
+                ),
+            ),
+            ("2022-03-01", "Mardi Gras; Town Meeting Day"),
+            ("2022-03-02", "Texas Independence Day"),
+            ("2022-03-07", "Casimir Pulaski Day; Guam Discovery Day"),
+            ("2022-03-17", "Evacuation Day; Saint Patrick's Day"),
+            ("2022-03-22", "Emancipation Day"),
+            ("2022-03-24", "Commonwealth Covenant Day"),
+            ("2022-03-25", "Prince Jonah Kuhio Kalanianaole Day (observed)"),
+            ("2022-03-26", "Prince Jonah Kuhio Kalanianaole Day"),
+            ("2022-03-28", "Seward's Day"),
+            ("2022-03-31", "Cesar Chavez Day; Transfer Day"),
+            ("2022-04-14", "Holy Thursday"),
+            ("2022-04-15", "Emancipation Day (observed); Good Friday"),
+            ("2022-04-16", "Emancipation Day"),
+            ("2022-04-17", "American Samoa Flag Day"),
+            ("2022-04-18", "American Samoa Flag Day (observed); Easter Monday; Patriots' Day"),
+            ("2022-04-21", "San Jacinto Day"),
+            ("2022-04-25", "Confederate Memorial Day; State Holiday"),
+            ("2022-04-29", "Arbor Day"),
+            ("2022-05-03", "Primary Election Day"),
+            ("2022-05-08", "Truman Day"),
+            ("2022-05-09", "Truman Day (observed)"),
+            ("2022-05-30", "Memorial Day"),
+            ("2022-06-06", "Jefferson Davis Birthday"),
+            ("2022-06-10", "Kamehameha Day (observed)"),
+            ("2022-06-11", "Kamehameha Day"),
+            ("2022-06-19", "Emancipation Day In Texas; Juneteenth National Independence Day"),
+            ("2022-06-20", "Juneteenth National Independence Day (observed); West Virginia Day"),
+            ("2022-07-03", "Emancipation Day"),
+            ("2022-07-04", "Independence Day"),
+            ("2022-07-15", "Manu'a Islands Cession Day (observed)"),
+            ("2022-07-16", "Manu'a Islands Cession Day"),
+            ("2022-07-21", "Liberation Day (Guam)"),
+            ("2022-07-24", "Pioneer Day"),
+            ("2022-07-25", "Constitution Day; Pioneer Day (observed)"),
+            ("2022-08-08", "Victory Day"),
+            ("2022-08-16", "Bennington Battle Day"),
+            ("2022-08-19", "Statehood Day"),
+            ("2022-08-27", "Lyndon Baines Johnson Day"),
+            ("2022-09-05", "Labor Day"),
+            ("2022-10-03", "Frances Xavier Cabrini Day"),
+            ("2022-10-09", "White Sunday"),
+            (
+                "2022-10-10",
+                (
+                    "Columbus Day; Columbus Day / American Indian Heritage Day / Fraternal Day; "
+                    "Columbus Day and Puerto Rico Friendship Day; Commonwealth Cultural Day; "
+                    "Indigenous Peoples' Day; Indigenous Peoples' Day / Columbus Day; "
+                    "Native Americans' Day"
+                ),
+            ),
+            ("2022-10-18", "Alaska Day"),
+            ("2022-10-28", "Nevada Day"),
+            ("2022-10-31", "Halloween"),
+            ("2022-11-01", "Liberty Day"),
+            ("2022-11-02", "All Souls' Day"),
+            ("2022-11-04", "Citizenship Day"),
+            ("2022-11-08", "Election Day"),
+            ("2022-11-11", "Veterans Day"),
+            ("2022-11-19", "Discovery Day"),
+            ("2022-11-24", "Thanksgiving Day"),
+            (
+                "2022-11-25",
+                (
+                    "American Indian Heritage Day; Day After Thanksgiving; Family Day; "
+                    "Friday After Thanksgiving; Lincoln's Birthday; Presidents' Day; State Holiday"
+                ),
+            ),
+            ("2022-12-08", "Constitution Day; Lady of Camarin Day"),
+            ("2022-12-23", "Christmas Eve (observed); Washington's Birthday"),
+            ("2022-12-24", "Christmas Eve"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed); Christmas Second Day; Day After Christmas"),
+            ("2022-12-27", "Day After Christmas (observed)"),
+            ("2022-12-30", "New Year's Eve (observed)"),
+            ("2022-12-31", "New Year's Eve"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
+            (
+                "2022-01-17",
+                (
+                    "วัน ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิพลเมือง; วันมาร์ติน ลูเทอร์ "
+                    "คิง จูเนียร์; วันมาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิมนุษยชนไอดาโฮ; "
+                    "วันเกิด ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี; วันเกิดมาร์ติน "
+                    "ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
+                ),
+            ),
+            ("2022-01-19", "วันรำลึกถึงฝ่ายสมาพันธรัฐ"),
+            ("2022-02-02", "วันกราวน์ฮ็อก"),
+            ("2022-02-11", "ชดเชยวันเกิดลิงคอล์น"),
+            ("2022-02-12", "วันเกิดลิงคอล์น"),
+            ("2022-02-14", "วันวาเลนไทน์"),
+            ("2022-02-15", "วันซูซาน บี. แอนโทนี"),
+            (
+                "2022-02-21",
+                (
+                    "วันจอร์จ วอชิงตัน; วันประธานาธิบดี; วันประธานาธิบดีลิงคอล์น/วอชิงตัน; "
+                    "วันลิงคอล์นและวอชิงตัน; วันวอชิงตัน-ลิงคอล์น; วันวอชิงตันและลิงคอล์น; "
+                    "วันเกิดจอร์จ วอชิงตัน และทอมัส เจฟเฟอร์สัน; วันเกิดจอร์จ วอชิงตันและวันเดซี่ "
+                    "แกตสัน เบตส์; วันเกิดวอชิงตัน; วันเกิดวอชิงตันและลิงคอล์น"
+                ),
+            ),
+            ("2022-03-01", "วันประชาคมท้องถิ่น; วันมาร์ดิกราส์"),
+            ("2022-03-02", "วันประกาศอิสรภาพเท็กซัส"),
+            ("2022-03-07", "วันคาซิเมียร์ พูลาสกี้; วันค้นพบกวม"),
+            ("2022-03-17", "วันนักบุญแพทริก; วันอพยพ"),
+            ("2022-03-22", "วันเลิกทาส"),
+            ("2022-03-24", "วันปฏิญญาเครือรัฐ"),
+            ("2022-03-25", "ชดเชยวันเจ้าชายโจนาห์ คูฮิโอ คาลานิอาเนาโอะเล"),
+            ("2022-03-26", "วันเจ้าชายโจนาห์ คูฮิโอ คาลานิอาเนาโอะเล"),
+            ("2022-03-28", "วันซีเวิร์ด"),
+            ("2022-03-31", "วันซีซาร์ ชาเวซ; วันส่งมอบดินแดน"),
+            ("2022-04-14", "วันพฤหัสศักดิสิทธิ์"),
+            ("2022-04-15", "ชดเชยวันเลิกทาส; วันศุกร์ประเสริฐ"),
+            ("2022-04-16", "วันเลิกทาส"),
+            ("2022-04-17", "วันธงชาติอเมริกันซามัว"),
+            ("2022-04-18", "ชดเชยวันธงชาติอเมริกันซามัว; วันจันทร์อีสเตอร์; วันแพทริออต"),
+            ("2022-04-21", "วันรำลึกยุทธการซานฮาซินโต"),
+            ("2022-04-25", "วันรำลึกถึงฝ่ายสมาพันธรัฐ; วันหยุดประจำรัฐ"),
+            ("2022-04-29", "วันปลูกต้นไม้"),
+            ("2022-05-03", "วันเลือกตั้งขั้นต้น"),
+            ("2022-05-08", "วันทรูแมน"),
+            ("2022-05-09", "ชดเชยวันทรูแมน"),
+            ("2022-05-30", "วันรำลึก"),
+            ("2022-06-06", "วันเกิดเจฟเฟอร์สัน เดวิส"),
+            ("2022-06-10", "ชดเชยวันคาเมฮาเมฮา"),
+            ("2022-06-11", "วันคาเมฮาเมฮา"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันเลิกทาสในเท็กซัส"),
+            ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์; วันเวสต์เวอร์จิเนีย"),
+            ("2022-07-03", "วันเลิกทาส"),
+            ("2022-07-04", "วันประกาศอิสรภาพ"),
+            ("2022-07-15", "ชดเชยวันส่งมอบหมู่เกาะมานูอา"),
+            ("2022-07-16", "วันส่งมอบหมู่เกาะมานูอา"),
+            ("2022-07-21", "วันปลดปล่อย (กวม)"),
+            ("2022-07-24", "วันผู้บุกเบิก"),
+            ("2022-07-25", "ชดเชยวันผู้บุกเบิก; วันรัฐธรรมนูญ"),
+            ("2022-08-08", "วันแห่งชัยชนะ"),
+            ("2022-08-16", "วันรำลึกยุทธการเบนนิงตัน"),
+            ("2022-08-19", "วันครบรอบการได้รัฐภาพ"),
+            ("2022-08-27", "วันลินดอน เบนส์ จอห์นสัน"),
+            ("2022-09-05", "วันแรงงาน"),
+            ("2022-10-03", "วันฟรานเซส ซาเวียร์ คาบรินี"),
+            ("2022-10-09", "วันอาทิตย์ขาว"),
+            (
+                "2022-10-10",
+                (
+                    "วันชนพื้นเมืองอเมริกัน; วันวัฒนธรรมแห่งเครือรัฐ; วันแห่งชนพื้นเมือง; "
+                    "วันแห่งชนพื้นเมือง / วันโคลัมบัส; วันโคลัมบัส; วันโคลัมบัส / "
+                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน / วันภราดรภาพ; วันโคลัมบัส "
+                    "และวันมิตรภาพกับเปอร์โตริโก"
+                ),
+            ),
+            ("2022-10-18", "วันอะลาสกา"),
+            ("2022-10-28", "วันเนวาดา"),
+            ("2022-10-31", "วันฮาโลวีน"),
+            ("2022-11-01", "วันเลิกทาส"),
+            ("2022-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
+            ("2022-11-04", "วันแห่งความเป็นพลเมือง"),
+            ("2022-11-08", "วันเลือกตั้ง"),
+            ("2022-11-11", "วันทหารผ่านศึก"),
+            ("2022-11-19", "วันค้นพบ"),
+            ("2022-11-24", "วันขอบคุณพระเจ้า"),
+            (
+                "2022-11-25",
+                (
+                    "วันครอบครัว; วันประธานาธิบดี; วันหยุดประจำรัฐ; วันหลังวันขอบคุณพระเจ้า; "
+                    "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน; วันเกิดลิงคอล์น; "
+                    "ศุกร์หลังวันขอบคุณพระเจ้า"
+                ),
+            ),
+            ("2022-12-08", "วันรัฐธรรมนูญ; วันแม่พระแห่งคามาริน"),
+            ("2022-12-23", "ชดเชยวันคริสต์มาสอีฟ; วันเกิดวอชิงตัน"),
+            ("2022-12-24", "วันคริสต์มาสอีฟ"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "ชดเชยวันคริสต์มาส; วันคริสต์มาสวันที่สอง; วันหลังวันคริสต์มาส"),
+            ("2022-12-27", "ชดเชยวันหลังวันคริสต์มาส"),
+            ("2022-12-30", "ชดเชยวันสิ้นปี"),
+            ("2022-12-31", "วันสิ้นปี"),
+        )

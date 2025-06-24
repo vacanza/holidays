@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
 
 
-class HolidaysUM(US):
+class HolidaysUM(UnitedStates):
     """United States Minor Outlying Islands holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,6 +22,7 @@ class HolidaysUM(US):
     """
 
     country = "UM"
+    parent_entity = UnitedStates
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.

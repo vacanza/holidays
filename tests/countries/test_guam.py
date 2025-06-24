@@ -32,14 +32,6 @@ class TestGU(CommonCountryTests, TestCase):
         subdivision is specified."""
         self.assertIn("Guam Discovery Day", self.holidays.get_list(date(2016, MAR, 7)))
 
-    def test_unofficial_holidays(self):
-        self.assertHolidays(
-            HolidaysGU(categories=UNOFFICIAL, years=2024),
-            ("2024-02-14", "Valentine's Day"),
-            ("2024-03-17", "Saint Patrick's Day"),
-            ("2024-10-31", "Halloween"),
-        )
-
     def test_government_holidays(self):
         self.assertHolidays(
             HolidaysGU(categories=GOVERNMENT, years=2024),
@@ -54,4 +46,63 @@ class TestGU(CommonCountryTests, TestCase):
             ("2024-11-11", "Veterans Day"),
             ("2024-11-28", "Thanksgiving Day"),
             ("2024-12-25", "Christmas Day"),
+        )
+
+    def test_unofficial_holidays(self):
+        self.assertHolidays(
+            HolidaysGU(categories=UNOFFICIAL, years=2024),
+            ("2024-02-14", "Valentine's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-10-31", "Halloween"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-17", "Birthday of Martin Luther King, Jr.; Martin Luther King Jr. Day"),
+            ("2022-02-14", "Valentine's Day"),
+            ("2022-02-21", "Washington's Birthday"),
+            ("2022-03-07", "Guam Discovery Day"),
+            ("2022-03-17", "Saint Patrick's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-30", "Memorial Day"),
+            ("2022-06-19", "Juneteenth National Independence Day"),
+            ("2022-06-20", "Juneteenth National Independence Day (observed)"),
+            ("2022-07-04", "Independence Day"),
+            ("2022-07-21", "Liberation Day (Guam)"),
+            ("2022-09-05", "Labor Day"),
+            ("2022-10-10", "Columbus Day"),
+            ("2022-10-31", "Halloween"),
+            ("2022-11-02", "All Souls' Day"),
+            ("2022-11-11", "Veterans Day"),
+            ("2022-11-24", "Thanksgiving Day"),
+            ("2022-12-08", "Lady of Camarin Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2022-02-14", "วันวาเลนไทน์"),
+            ("2022-02-21", "วันเกิดวอชิงตัน"),
+            ("2022-03-07", "วันค้นพบกวม"),
+            ("2022-03-17", "วันนักบุญแพทริก"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-05-30", "วันรำลึก"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-07-04", "วันประกาศอิสรภาพ"),
+            ("2022-07-21", "วันปลดปล่อย (กวม)"),
+            ("2022-09-05", "วันแรงงาน"),
+            ("2022-10-10", "วันโคลัมบัส"),
+            ("2022-10-31", "วันฮาโลวีน"),
+            ("2022-11-02", "วันภาวนาอุทิศแด่ผู้ล่วงลับ"),
+            ("2022-11-11", "วันทหารผ่านศึก"),
+            ("2022-11-24", "วันขอบคุณพระเจ้า"),
+            ("2022-12-08", "วันแม่พระแห่งคามาริน"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "ชดเชยวันคริสต์มาส"),
         )

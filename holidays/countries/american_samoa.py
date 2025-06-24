@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
 
 
-class HolidaysAS(US):
+class HolidaysAS(UnitedStates):
     """American Samoa holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,6 +22,7 @@ class HolidaysAS(US):
     """
 
     country = "AS"
+    parent_entity = UnitedStates
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.

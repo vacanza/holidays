@@ -1,0 +1,429 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# United States of America holidays th localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-19 15:33+0700\n"
+"PO-Revision-Date: 2025-06-24 12:53+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_US\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#. Birthday of Martin Luther King, Jr..
+msgid "Birthday of Martin Luther King, Jr."
+msgstr "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"
+
+#. Washington's Birthday.
+msgid "Washington's Birthday"
+msgstr "วันเกิดวอชิงตัน"
+
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "วันรำลึก"
+
+#. Juneteenth National Independence Day.
+msgid "Juneteenth National Independence Day"
+msgstr "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "วันประกาศอิสรภาพ"
+
+#. Labor Day.
+msgid "Labor Day"
+msgstr "วันแรงงาน"
+
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr "วันโคลัมบัส"
+
+#. Veterans Day.
+msgid "Veterans Day"
+msgstr "วันทหารผ่านศึก"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "วันสงบศึก"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "วันขอบคุณพระเจ้า"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "วันคริสต์มาสอีฟ"
+
+#. Martin Luther King Jr. Day.
+msgid "Martin Luther King Jr. Day"
+msgstr "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"
+
+#. Presidents' Day.
+msgid "Presidents' Day"
+msgstr "วันประธานาธิบดี"
+
+#. Seward's Day.
+msgid "Seward's Day"
+msgstr "วันซีเวิร์ด"
+
+#. Indigenous Peoples' Day.
+msgid "Indigenous Peoples' Day"
+msgstr "วันแห่งชนพื้นเมือง"
+
+#. Alaska Day.
+msgid "Alaska Day"
+msgstr "วันอะลาสกา"
+
+#. Martin Luther King, Jr & Robert E. Lee's Birthday.
+msgid "Martin Luther King, Jr & Robert E. Lee's Birthday"
+msgstr "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
+
+#. George Washington & Thomas Jefferson's Birthday.
+msgid "George Washington & Thomas Jefferson's Birthday"
+msgstr "วันเกิดจอร์จ วอชิงตัน และทอมัส เจฟเฟอร์สัน"
+
+#. Confederate Memorial Day.
+msgid "Confederate Memorial Day"
+msgstr "วันรำลึกถึงฝ่ายสมาพันธรัฐ"
+
+#. Jefferson Davis Birthday.
+msgid "Jefferson Davis Birthday"
+msgstr "วันเกิดเจฟเฟอร์สัน เดวิส"
+
+#. Columbus Day / American Indian Heritage Day / Fraternal Day.
+msgid "Columbus Day / American Indian Heritage Day / Fraternal Day"
+msgstr "วันโคลัมบัส / วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน / วันภราดรภาพ"
+
+#. Columbus Day / Fraternal Day.
+msgid "Columbus Day / Fraternal Day"
+msgstr "วันโคลัมบัส / วันภราดรภาพ"
+
+#. Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays.
+msgid "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
+msgstr "วันเกิด ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์และโรเบิร์ต อี. ลี"
+
+#. George Washington's Birthday and Daisy Gatson Bates Day.
+msgid "George Washington's Birthday and Daisy Gatson Bates Day"
+msgstr "วันเกิดจอร์จ วอชิงตันและวันเดซี่ แกตสัน เบตส์"
+
+#. American Samoa Flag Day.
+msgid "American Samoa Flag Day"
+msgstr "วันธงชาติอเมริกันซามัว"
+
+#. Manu'a Islands Cession Day.
+msgid "Manu'a Islands Cession Day"
+msgstr "วันส่งมอบหมู่เกาะมานูอา"
+
+#. White Sunday.
+msgid "White Sunday"
+msgstr "วันอาทิตย์ขาว"
+
+#. Dr. Martin Luther King Jr. / Civil Rights Day.
+msgid "Dr. Martin Luther King Jr. / Civil Rights Day"
+msgstr "วัน ดร. มาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิพลเมือง"
+
+#. Lincoln/Washington Presidents' Day.
+msgid "Lincoln/Washington Presidents' Day"
+msgstr "วันประธานาธิบดีลิงคอล์น/วอชิงตัน"
+
+#. Lincoln's Birthday.
+msgid "Lincoln's Birthday"
+msgstr "วันเกิดลิงคอล์น"
+
+#. Susan B. Anthony Day.
+msgid "Susan B. Anthony Day"
+msgstr "วันซูซาน บี. แอนโทนี"
+
+#. Cesar Chavez Day.
+msgid "Cesar Chavez Day"
+msgstr "วันซีซาร์ ชาเวซ"
+
+#. Day After Thanksgiving.
+msgid "Day After Thanksgiving"
+msgstr "วันหลังวันขอบคุณพระเจ้า"
+
+#. Washington-Lincoln Day.
+msgid "Washington-Lincoln Day"
+msgstr "วันวอชิงตัน-ลิงคอล์น"
+
+#. Frances Xavier Cabrini Day.
+msgid "Frances Xavier Cabrini Day"
+msgstr "วันฟรานเซส ซาเวียร์ คาบรินี"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Inauguration Day.
+msgid "Inauguration Day"
+msgstr "วันสาบานตนประธานาธิบดี"
+
+#. Emancipation Day.
+msgid "Emancipation Day"
+msgstr "วันเลิกทาส"
+
+#. Election Day.
+msgid "Election Day"
+msgstr "วันเลือกตั้ง"
+
+#. Friday After Thanksgiving.
+msgid "Friday After Thanksgiving"
+msgstr "ศุกร์หลังวันขอบคุณพระเจ้า"
+
+#. Robert E. Lee's Birthday.
+msgid "Robert E. Lee's Birthday"
+msgstr "วันเกิดโรเบิร์ต อี. ลี"
+
+#. State Holiday.
+msgid "State Holiday"
+msgstr "วันหยุดประจำรัฐ"
+
+#. Guam Discovery Day.
+msgid "Guam Discovery Day"
+msgstr "วันค้นพบกวม"
+
+#. Liberation Day (Guam).
+msgid "Liberation Day (Guam)"
+msgstr "วันปลดปล่อย (กวม)"
+
+#. All Souls' Day.
+msgid "All Souls' Day"
+msgstr "วันภาวนาอุทิศแด่ผู้ล่วงลับ"
+
+#. Lady of Camarin Day.
+msgid "Lady of Camarin Day"
+msgstr "วันแม่พระแห่งคามาริน"
+
+#. Prince Jonah Kuhio Kalanianaole Day.
+msgid "Prince Jonah Kuhio Kalanianaole Day"
+msgstr "วันเจ้าชายโจนาห์ คูฮิโอ คาลานิอาเนาโอะเล"
+
+#. Kamehameha Day.
+msgid "Kamehameha Day"
+msgstr "วันคาเมฮาเมฮา"
+
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr "วันครบรอบการได้รัฐภาพ"
+
+#. Martin Luther King Jr. / Idaho Human Rights Day.
+msgid "Martin Luther King Jr. / Idaho Human Rights Day"
+msgstr "วันมาร์ติน ลูเทอร์ คิง จูเนียร์ / วันสิทธิมนุษยชนไอดาโฮ"
+
+#. Casimir Pulaski Day.
+msgid "Casimir Pulaski Day"
+msgstr "วันคาซิเมียร์ พูลาสกี้"
+
+#. Primary Election Day.
+msgid "Primary Election Day"
+msgstr "วันเลือกตั้งขั้นต้น"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "วันสิ้นปี"
+
+#. Mardi Gras.
+msgid "Mardi Gras"
+msgstr "วันมาร์ดิกราส์"
+
+#. Evacuation Day.
+msgid "Evacuation Day"
+msgstr "วันอพยพ"
+
+#. Patriots' Day.
+msgid "Patriots' Day"
+msgstr "วันแพทริออต"
+
+#. American Indian Heritage Day.
+msgid "American Indian Heritage Day"
+msgstr "วันอนุรักษ์มรดกชนพื้นเมืองอเมริกัน"
+
+#. Washington's and Lincoln's Birthday.
+msgid "Washington's and Lincoln's Birthday"
+msgstr "วันเกิดวอชิงตันและลิงคอล์น"
+
+#. Truman Day.
+msgid "Truman Day"
+msgstr "วันทรูแมน"
+
+#. Commonwealth Covenant Day.
+msgid "Commonwealth Covenant Day"
+msgstr "วันปฏิญญาเครือรัฐ"
+
+#. Commonwealth Cultural Day.
+msgid "Commonwealth Cultural Day"
+msgstr "วันวัฒนธรรมแห่งเครือรัฐ"
+
+#. Citizenship Day.
+msgid "Citizenship Day"
+msgstr "วันแห่งความเป็นพลเมือง"
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr "วันรัฐธรรมนูญ"
+
+#. Lincoln's and Washington's Birthdays.
+msgid "Lincoln's and Washington's Birthdays"
+msgstr "วันลิงคอล์นและวอชิงตัน"
+
+#. Day After Christmas.
+msgid "Day After Christmas"
+msgstr "วันหลังวันคริสต์มาส"
+
+#. Arbor Day.
+msgid "Arbor Day"
+msgstr "วันปลูกต้นไม้"
+
+#. Presidents Day.
+msgid "Presidents Day"
+msgstr "วันประธานาธิบดี"
+
+#. Nevada Day.
+msgid "Nevada Day"
+msgstr "วันเนวาดา"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "วันครอบครัว"
+
+#. Epiphany.
+msgid "Epiphany"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Discovery Day.
+msgid "Discovery Day"
+msgstr "วันค้นพบ"
+
+#. Victory Day.
+msgid "Victory Day"
+msgstr "วันแห่งชัยชนะ"
+
+#. Indigenous Peoples' Day / Columbus Day.
+msgid "Indigenous Peoples' Day / Columbus Day"
+msgstr "วันแห่งชนพื้นเมือง / วันโคลัมบัส"
+
+#. President's Day.
+msgid "President's Day"
+msgstr "วันประธานาธิบดี"
+
+#. Native Americans' Day.
+msgid "Native Americans' Day"
+msgstr "วันชนพื้นเมืองอเมริกัน"
+
+#. Texas Independence Day.
+msgid "Texas Independence Day"
+msgstr "วันประกาศอิสรภาพเท็กซัส"
+
+#. San Jacinto Day.
+msgid "San Jacinto Day"
+msgstr "วันรำลึกยุทธการซานฮาซินโต"
+
+#. Emancipation Day In Texas.
+msgid "Emancipation Day In Texas"
+msgstr "วันเลิกทาสในเท็กซัส"
+
+#. Lyndon Baines Johnson Day.
+msgid "Lyndon Baines Johnson Day"
+msgstr "วันลินดอน เบนส์ จอห์นสัน"
+
+#. Washington and Lincoln Day.
+msgid "Washington and Lincoln Day"
+msgstr "วันวอชิงตันและลิงคอล์น"
+
+#. Pioneer Day.
+msgid "Pioneer Day"
+msgstr "วันผู้บุกเบิก"
+
+#. Lee Jackson Day.
+msgid "Lee Jackson Day"
+msgstr "วันลี-แจ็กสัน"
+
+#. George Washington Day.
+msgid "George Washington Day"
+msgstr "วันจอร์จ วอชิงตัน"
+
+#. Three Kings Day.
+msgid "Three Kings Day"
+msgstr "วันสมโภชพระคริสต์แสดงองค์"
+
+#. Transfer Day.
+msgid "Transfer Day"
+msgstr "วันส่งมอบดินแดน"
+
+#. Holy Thursday.
+msgid "Holy Thursday"
+msgstr "วันพฤหัสศักดิสิทธิ์"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Columbus Day and Puerto Rico Friendship Day.
+msgid "Columbus Day and Puerto Rico Friendship Day"
+msgstr "วันโคลัมบัส และวันมิตรภาพกับเปอร์โตริโก"
+
+#. Liberty Day.
+msgid "Liberty Day"
+msgstr "วันเลิกทาส"
+
+#. Christmas Second Day.
+msgid "Christmas Second Day"
+msgstr "วันคริสต์มาสวันที่สอง"
+
+#. Town Meeting Day.
+msgid "Town Meeting Day"
+msgstr "วันประชาคมท้องถิ่น"
+
+#. Bennington Battle Day.
+msgid "Bennington Battle Day"
+msgstr "วันรำลึกยุทธการเบนนิงตัน"
+
+#. West Virginia Day.
+msgid "West Virginia Day"
+msgstr "วันเวสต์เวอร์จิเนีย"
+
+#. Valentine's Day.
+msgid "Valentine's Day"
+msgstr "วันวาเลนไทน์"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "วันนักบุญแพทริก"
+
+#. Halloween.
+msgid "Halloween"
+msgstr "วันฮาโลวีน"
+
+#. Groundhog Day.
+msgid "Groundhog Day"
+msgstr "วันกราวน์ฮ็อก"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "ชดเชย%s"
