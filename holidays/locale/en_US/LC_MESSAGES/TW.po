@@ -27,15 +27,6 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: zh_TW\n"
 
-#. Date format (see strftime() Format Codes).
-msgid "%Y-%m-%d"
-msgstr "%m/%d/%Y"
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "休息日（%s日起取代）"
-msgstr "Day off (substituted from %s)"
-
 #. %s (observed).
 #, c-format
 msgid "%s（慶祝）"
