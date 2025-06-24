@@ -65,10 +65,14 @@ COUNTRIES: RegistryDict = {
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
 <<<<<<< HEAD
+<<<<<<< HEAD
     "christmas_island": ("ChristmasIsland", "CX", "CXR"),
 =======
     "christmas_islands": ("ChristmasIslands", "CX", "CXR"),
 >>>>>>> 5505906f (Add Christmas Island holidays)
+=======
+    "christmas_island": ("ChristmasIsland", "CX", "CXR"),
+>>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
     "cocos_islands": ("CocosIslands", "CC", "CCK"),
     "colombia": ("Colombia", "CO", "COL"),
     "congo": ("Congo", "CG", "COG"),

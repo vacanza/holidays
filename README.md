@@ -464,12 +464,16 @@ any) in brackets, available languages and additional holiday categories. All cou
 </tr>
 <tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <td>Christmas Island</td>
 <td>CX</td>
 <td></td>
 <td><strong>en_CX</strong>, en_US</td>
 =======
 <td>Christmas Islands</td>
+=======
+<td>Christmas Island</td>
+>>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 <td>CX</td>
 <td></td>
 <td> <strong>en_CX</strong>, en_US</td>
