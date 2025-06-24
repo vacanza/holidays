@@ -118,10 +118,6 @@ msgstr "Día del Municipio de Ribeira Grande de Santiago"
 msgid "Dia do Município da Brava"
 msgstr "Día del Municipio de Brava"
 
-#. Praia City Day.
-msgid "Dia da Cidade da Praia"
-msgstr "Día de la Ciudad de Praia"
-
 #. Praia Municipality Day.
 msgid "Dia do Município da Praia"
 msgstr "Día del Municipio de Praia"

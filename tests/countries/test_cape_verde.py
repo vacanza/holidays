@@ -119,11 +119,11 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ),
             "CR": ("2024-07-25",),
             "MA": ("2024-09-08",),
-            "PR": (
-                "2024-04-29",
-                "2024-05-19",
+            "PR": ("2024-05-19",),
+            "RG": (
+                "2024-05-07",
+                "2024-01-17",
             ),
-            "RG": ("2024-05-07",),
             "RS": (
                 "2024-01-15",
                 "2024-01-31",
@@ -151,16 +151,11 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_santo_antão_island_day(self):
-        name = "Dia da Ilha de Santo Antão"
-        self.assertHolidayName(name, (f"{year}-01-17" for year in range(1976, 2050)))
-
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CapeVerde(categories=PUBLIC, years=2024),
             ("2024-01-01", "Ano Novo"),
             ("2024-01-13", "Dia da Liberdade e Democracia"),
-            ("2024-01-17", "Dia da Ilha de Santo Antão"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2024-02-14", "Quarta-feira de Cinzas"),
             ("2024-03-29", "Sexta-feira Santa"),
@@ -186,7 +181,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             CapeVerde(categories=PUBLIC, years=2025),
             ("2025-01-01", "Ano Novo"),
             ("2025-01-13", "Dia da Liberdade e Democracia"),
-            ("2025-01-17", "Dia da Ilha de Santo Antão"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
             ("2025-03-05", "Quarta-feira de Cinzas"),
             ("2025-04-18", "Sexta-feira Santa"),
@@ -214,7 +208,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Quinta-Feira Santa"),
             ("2025-04-18", "Sexta-feira Santa"),
             ("2025-04-20", "Páscoa"),
-            ("2025-04-29", "Dia da Cidade da Praia"),
             ("2025-05-01", "Dia do Município de São Filipe; Dia do Trabalhador"),
             ("2025-05-07", "Dia do Município de Ribeira Grande"),
             ("2025-05-09", "Dia do Município de São Lourenço dos Órgãos"),
@@ -260,7 +253,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Gründonnerstag"),
             ("2025-04-18", "Karfreitag"),
             ("2025-04-20", "Ostern"),
-            ("2025-04-29", "Praia-Stadttag"),
             ("2025-05-01", "Tag der Arbeit; Tag der Gemeinde São Filipe"),
             ("2025-05-07", "Tag der Gemeinde Ribeira Grande"),
             ("2025-05-09", "Tag der Gemeinde São Lourenço dos Órgãos"),
@@ -306,7 +298,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jueves Santo"),
             ("2025-04-18", "Viernes Santo"),
             ("2025-04-20", "Domingo de Pascua"),
-            ("2025-04-29", "Día de la Ciudad de Praia"),
             ("2025-05-01", "Día del Municipio de São Filipe; Día del Trabajador"),
             ("2025-05-07", "Día del Municipio de Ribeira Grande"),
             ("2025-05-09", "Día del Municipio de São Lourenço dos Órgãos"),
@@ -352,7 +343,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Holy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-20", "Easter Sunday"),
-            ("2025-04-29", "Praia City Day"),
             ("2025-05-01", "São Filipe Municipality Day; Worker's Day"),
             ("2025-05-07", "Ribeira Grande Municipality Day"),
             ("2025-05-09", "São Lourenço dos Órgãos Municipality Day"),
@@ -398,7 +388,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jeudi Saint"),
             ("2025-04-18", "Vendredi Saint"),
             ("2025-04-20", "Dimanche de Pâques"),
-            ("2025-04-29", "Journée de la ville de Praia"),
             ("2025-05-01", "Fête du travail; Journée de la municipalité de São Filipe"),
             ("2025-05-07", "Journée de la municipalité de Ribeira Grande"),
             ("2025-05-09", "Journée de la municipalité de São Lourenço dos Órgãos"),
