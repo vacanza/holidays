@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestSintMaarten(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2011, 2050)
-        super().setUpClass(SintMaarten, years=years, years_non_observed=years)
+        super().setUpClass(SintMaarten, years=range(2011, 2050))
 
     def test_country_aliases(self):
         self.assertAliases(SintMaarten, SX, SXM)
