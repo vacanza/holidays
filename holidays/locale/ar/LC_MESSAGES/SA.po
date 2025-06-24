@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
@@ -37,8 +37,9 @@ msgstr ""
 msgid "(ملاحظة) %s"
 msgstr ""
 
-#. Celebrate the country's win against Argentina in the World Cup
-msgid "يوم وطني"
+#. %s (observed, estimated).
+#, c-format
+msgid "(تقدير ملاحظة) %s"
 msgstr ""
 
 #. Eid al-Fitr Holiday
@@ -61,7 +62,6 @@ msgstr ""
 msgid "يوم التأسيسي"
 msgstr ""
 
-#. %s (observed, estimated).
-#, c-format
-msgid "(تقدير ملاحظة) %s"
+#. Celebrate the country's win against Argentina in the World Cup
+msgid "يوم وطني"
 msgstr ""

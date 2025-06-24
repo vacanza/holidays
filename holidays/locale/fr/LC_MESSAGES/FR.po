@@ -25,37 +25,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr\n"
 
 #. New Year's Day.
 msgid "Jour de l'an"
-msgstr ""
-
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr ""
-
-#. Labor and Social Concord Day.
-msgid "Fête du Travail et de la Concorde sociale"
-msgstr ""
-
-#. Victory Day.
-msgid "Fête de la Victoire"
-msgstr ""
-
-#. National Day.
-msgid "Fête nationale"
-msgstr ""
-
-#. Armistice Day.
-msgid "Armistice"
-msgstr ""
-
-#. Good Friday.
-msgid "Vendredi saint"
-msgstr ""
-
-#. Mi-Careme.
-msgid "Mi-Carême"
 msgstr ""
 
 #. Easter Monday.
@@ -66,8 +39,28 @@ msgstr ""
 msgid "Lundi de Pentecôte"
 msgstr ""
 
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Labor and Social Concord Day.
+msgid "Fête du Travail et de la Concorde sociale"
+msgstr ""
+
+#. May Day.
+msgid "1er mai"
+msgstr ""
+
+#. Victory Day.
+msgid "Fête de la Victoire"
+msgstr ""
+
 #. Ascension Day.
 msgid "Ascension"
+msgstr ""
+
+#. National Day.
+msgid "Fête nationale"
 msgstr ""
 
 #. Assumption Day.
@@ -78,24 +71,40 @@ msgstr ""
 msgid "Toussaint"
 msgstr ""
 
+#. Armistice Day.
+msgid "Armistice"
+msgstr ""
+
 #. Christmas Day.
 msgid "Noël"
 msgstr ""
 
-#. Victor Schoelcher Day.
-msgid "Fête de Victor Schoelcher"
-msgstr ""
-
-#. Abolition of Slavery.
-msgid "Abolition de l'esclavage"
+#. Good Friday.
+msgid "Vendredi saint"
 msgstr ""
 
 #. Saint Stephen's Day.
 msgid "Saint Étienne"
 msgstr ""
 
+#. Mi-Careme.
+msgid "Mi-Carême"
+msgstr ""
+
+#. Abolition of Slavery.
+msgid "Abolition de l'esclavage"
+msgstr ""
+
+#. Victor Schoelcher Day.
+msgid "Fête de Victor Schoelcher"
+msgstr ""
+
 #. Citizenship Day.
 msgid "Fête de la Citoyenneté"
+msgstr ""
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
 msgstr ""
 
 #. Missionary Day.
@@ -106,26 +115,18 @@ msgstr ""
 msgid "Fête de l'autonomie"
 msgstr ""
 
-#. Feast of Saint Peter Chanel.
-msgid "Saint Pierre Chanel"
-msgstr ""
-
-#. Territory Day.
-msgid "Fête du Territoire"
-msgstr ""
-
-#. May Day.
-msgid "1er mai"
-msgstr ""
-
-#. Annexation Day.
-msgid "Fête de la prise de possession"
-msgstr ""
-
 #. Matāri'i.
 msgid "Matāri'i"
 msgstr ""
 
+#. Feast of Saint Peter Chanel.
+msgid "Saint Pierre Chanel"
+msgstr ""
+
 #. Saints Peter and Paul Day.
 msgid "Saints Pierre et Paul"
+msgstr ""
+
+#. Territory Day.
+msgid "Fête du Territoire"
 msgstr ""

@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.2\n"
 "X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: ms_MY\n"
 
 #. %s (estimated).
 #, c-format
@@ -133,16 +134,12 @@ msgstr ""
 msgid "Hari Nuzul Al-Quran"
 msgstr ""
 
+#. Arafat Day.
+msgid "Hari Arafah"
+msgstr ""
+
 #. New Year's Day.
 msgid "Tahun Baharu"
-msgstr ""
-
-#. Federal Territory Day.
-msgid "Hari Wilayah Persekutuan"
-msgstr ""
-
-#. Pesta Kaamatan.
-msgid "Pesta Kaamatan"
 msgstr ""
 
 #. Declaration of Independence Day.
@@ -157,6 +154,10 @@ msgstr ""
 msgid "Hari Jadi Yang di-Pertua Negeri Melaka"
 msgstr ""
 
+#. Eid al-Fitr (Third Day).
+msgid "Hari Raya Puasa (Hari Ketiga)"
+msgstr ""
+
 #. Birthday of the Sultan of Negeri Sembilan.
 msgid "Hari Keputeraan Yang di-Pertuan Besar Negeri Sembilan"
 msgstr ""
@@ -167,10 +168,6 @@ msgstr ""
 
 #. Birthday of the Sultan of Pahang.
 msgid "Hari Keputeraan Sultan Pahang"
-msgstr ""
-
-#. Birthday of the Raja of Perlis.
-msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
 msgstr ""
 
 #. George Town Heritage Day.
@@ -185,8 +182,28 @@ msgstr ""
 msgid "Hari Keputeraan Sultan Perak"
 msgstr ""
 
+#. Birthday of the Raja of Perlis.
+msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
+msgstr ""
+
+#. Birthday of The Sultan of Selangor.
+msgid "Hari Keputeraan Sultan Selangor"
+msgstr ""
+
+#. Anniversary of the Installation of the Sultan of Terengganu.
+msgid "Hari Ulang Tahun Pertabalan Sultan Terengganu"
+msgstr ""
+
+#. Birthday of the Sultan of Terengganu.
+msgid "Hari Keputeraan Sultan Terengganu"
+msgstr ""
+
 #. Good Friday.
 msgid "Good Friday"
+msgstr ""
+
+#. Pesta Kaamatan.
+msgid "Pesta Kaamatan"
 msgstr ""
 
 #. Birthday of the Governor of Sabah.
@@ -195,10 +212,6 @@ msgstr ""
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr ""
-
-#. Birthday of The Sultan of Selangor.
-msgid "Hari Keputeraan Sultan Selangor"
 msgstr ""
 
 #. Dayak Festival Day.
@@ -213,16 +226,8 @@ msgstr ""
 msgid "Hari Kemerdekaan Sarawak"
 msgstr ""
 
-#. Anniversary of the Installation of the Sultan of Terengganu.
-msgid "Hari Ulang Tahun Pertabalan Sultan Terengganu"
-msgstr ""
-
-#. Birthday of the Sultan of Terengganu.
-msgid "Hari Keputeraan Sultan Terengganu"
-msgstr ""
-
-#. Arafat Day.
-msgid "Hari Arafah"
+#. Federal Territory Day.
+msgid "Hari Wilayah Persekutuan"
 msgstr ""
 
 #. General election additional holiday.
@@ -247,8 +252,4 @@ msgstr ""
 
 #. Additional holiday in commemoration of the 2017 SEA Games.
 msgid "Cuti tambahan sempena memperingati SAT 2017"
-msgstr ""
-
-#. Eid al-Fitr (Third Day).
-msgid "Hari Raya Puasa (Hari Ketiga)"
 msgstr ""

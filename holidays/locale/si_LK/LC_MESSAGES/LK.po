@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: si_LK\n"
 
 #. %s (estimated).
 #, c-format
@@ -49,6 +50,22 @@ msgstr ""
 
 #. International Workers' Day.
 msgid "ලොක කම්කරු දිනය"
+msgstr ""
+
+#. Maha Sivarathri Day.
+msgid "මහ සිවරාත්රි දිනය"
+msgstr ""
+
+#. Deepavali Festival Day.
+msgid "දීපවාලි උත්සව දිනය"
+msgstr ""
+
+#. Good Friday.
+msgid "මහ සිකුරාදා දිනය"
+msgstr ""
+
+#. Christmas Day.
+msgid "නත්තල් උත්සව දිනය"
 msgstr ""
 
 #. Duruthu Full Moon Poya Day.
@@ -103,22 +120,6 @@ msgstr ""
 msgid "උඳුවප් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Maha Sivarathri Day.
-msgid "මහ සිවරාත්රි දිනය"
-msgstr ""
-
-#. Deepavali Festival Day.
-msgid "දීපවාලි උත්සව දිනය"
-msgstr ""
-
-#. Good Friday.
-msgid "මහ සිකුරාදා දිනය"
-msgstr ""
-
-#. Christmas Day.
-msgid "නත්තල් උත්සව දිනය"
-msgstr ""
-
 #. Eid al-Fitr.
 msgid "ඊදුල් ෆීතර්"
 msgstr ""
@@ -131,28 +132,24 @@ msgstr ""
 msgid "නබි නායකතුමාගේ උපන් දිනය"
 msgstr ""
 
-#. Adhi Vesak Full Mon Poya Day.
-msgid "අධි වෙසක් පුර පසළොස්වක පෝය දිනය"
-msgstr ""
-
-#. Adhi Poson Full Moon Poya Day.
-msgid "අධි පොසොන් පුර පසළොස්වක පෝය දිනය"
+#. Adhi Binara Full Moon Poya Day.
+msgid "අධි බිනර පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
 #. Adhi Esala Full Moon Poya Day.
 msgid "අධි ඇසල පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Adhi Binara Full Moon Poya Day.
-msgid "අධි බිනර පුර පසළොස්වක පෝය දිනය"
+#. Adhi Poson Full Moon Poya Day.
+msgid "අධි පොසොන් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
 #. Adhi Vap Full Moon Poya Day.
 msgid "අධි වප් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
-#. Special Bank Holiday.
-msgid "විශේෂ බැංකු නිවාඩු දිනය"
+#. Adhi Vesak Full Mon Poya Day.
+msgid "අධි වෙසක් පුර පසළොස්වක පෝය දිනය"
 msgstr ""
 
 #. Half-Day Special Bank Holiday.
@@ -161,6 +158,10 @@ msgstr ""
 
 #. Public Sector Holiday.
 msgid "රාජ්ය අංශයේ නිවාඩු දිනය"
+msgstr ""
+
+#. Special Bank Holiday.
+msgid "විශේෂ බැංකු නිවාඩු දිනය"
 msgstr ""
 
 #. Special Public Holiday.

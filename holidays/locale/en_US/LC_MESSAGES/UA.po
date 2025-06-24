@@ -23,10 +23,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Source-Language: uk\n"
 
 #. %s (observed).
 #, c-format
@@ -36,6 +36,10 @@ msgstr "%s (observed)"
 #. New Year's Day.
 msgid "Новий рік"
 msgstr "New Year's Day"
+
+#. Christmas Day.
+msgid "Різдво Христове"
+msgstr "Christmas Day"
 
 #. International Women's Day.
 msgid "Міжнародний жіночий день"
@@ -92,10 +96,6 @@ msgstr "Defender of Ukraine Day"
 #. Anniversary of the Great October Socialist Revolution.
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "Anniversary of the Great October Socialist Revolution"
-
-#. Christmas Day.
-msgid "Різдво Христове"
-msgstr "Christmas Day"
 
 #. Date format (see strftime() Format Codes)
 msgid "%d.%m.%Y"

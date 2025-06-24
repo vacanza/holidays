@@ -75,6 +75,10 @@ msgstr ""
 msgid "Sir Hammer DeRoburt Day"
 msgstr ""
 
+#. National Youth Day.
+msgid "National Youth Day"
+msgstr ""
+
 #. Angam Day.
 msgid "Angam Day"
 msgstr ""
@@ -85,8 +89,4 @@ msgstr ""
 
 #. Day following Christmas.
 msgid "Day following Christmas"
-msgstr ""
-
-#. National Youth Day.
-msgid "National Youth Day"
 msgstr ""

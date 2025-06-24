@@ -23,13 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
-msgid "100. výročie prijatia Deklarácie slovenského národa"
-msgstr "100th anniversary of the adoption of the Declaration of the Slovak Nation"
+"X-Source-Language: sk\n"
 
 #. Day of the Establishment of the Slovak Republic.
 msgid "Deň vzniku Slovenskej republiky"
@@ -71,10 +67,6 @@ msgstr "Constitution Day"
 msgid "Sedembolestná Panna Mária"
 msgstr "Day of Our Lady of the Seven Sorrows"
 
-#. Day of the Establishment of the Independent Czech-Slovak State.
-msgid "Deň vzniku samostatného česko-slovenského štátu"
-msgstr "Day of the Establishment of the Independent Czech-Slovak State"
-
 #. All Saints' Day.
 msgid "Sviatok Všetkých svätých"
 msgstr "All Saints' Day"
@@ -94,3 +86,11 @@ msgstr "Christmas Day"
 #. Second Day of Christmas.
 msgid "Druhý sviatok vianočný"
 msgstr "Second Day of Christmas"
+
+#. Day of the Establishment of the Independent Czech-Slovak State.
+msgid "Deň vzniku samostatného česko-slovenského štátu"
+msgstr "Day of the Establishment of the Independent Czech-Slovak State"
+
+#. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
+msgid "100. výročie prijatia Deklarácie slovenského národa"
+msgstr "100th anniversary of the adoption of the Declaration of the Slovak Nation"
