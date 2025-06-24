@@ -38,7 +38,7 @@ class POGenerator:
         po_file.merge(pot_file)
         po_file.sort(key=_location_sort_key)
         for entry in po_file:
-            entry.occurrences = []
+            entry.occurrences.clear()
 
         # Update the project version if po file entries translation has changed only.
         if po_file != po_file_initial:
