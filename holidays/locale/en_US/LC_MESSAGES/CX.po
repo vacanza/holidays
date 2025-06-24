@@ -73,7 +73,6 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
