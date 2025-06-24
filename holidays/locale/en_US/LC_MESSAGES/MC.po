@@ -23,13 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
-
-#. Public holiday.
-msgid "Jour férié"
-msgstr "Public holiday"
+"X-Source-Language: fr\n"
 
 #. %s (observed).
 #, c-format
@@ -83,3 +79,7 @@ msgstr "Immaculate Conception"
 #. Christmas Day.
 msgid "Noël"
 msgstr "Christmas Day"
+
+#. Public holiday.
+msgid "Jour férié"
+msgstr "Public holiday"

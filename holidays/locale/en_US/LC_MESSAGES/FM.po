@@ -63,14 +63,6 @@ msgstr "Presidents Day"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. State Charter Day.
-msgid "State Charter Day"
-msgstr "State Charter Day"
-
-#. Chuuk State Constitution Day.
-msgid "Chuuk State Constitution Day"
-msgstr "Chuuk State Constitution Day"
-
 #. Kosrae State Constitution Day.
 msgid "Kosrae State Constitution Day"
 msgstr "Kosrae State Constitution Day"
@@ -114,6 +106,14 @@ msgstr "Liberation Day"
 #. Pohnpei Constitution Day.
 msgid "Pohnpei Constitution Day"
 msgstr "Pohnpei Constitution Day"
+
+#. State Charter Day.
+msgid "State Charter Day"
+msgstr "State Charter Day"
+
+#. Chuuk State Constitution Day.
+msgid "Chuuk State Constitution Day"
+msgstr "Chuuk State Constitution Day"
 
 #. Yap Day.
 msgid "Yap Day"

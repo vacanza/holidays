@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: az\n"
 
 #. %s (estimated).
 #, c-format
@@ -35,6 +35,11 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (müşahidə olunur)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (müşahidə olunur, təxmini)"
 msgstr ""
 
 #. New Year's Day.
@@ -113,14 +118,6 @@ msgstr ""
 msgid "Milli Dirçəliş Günü"
 msgstr ""
 
-#. Presidential elections.
-msgid "Prezidenti seçkiləri"
-msgstr ""
-
-#. Municipal elections.
-msgid "Bələdiyyə seçkiləri"
-msgstr ""
-
 #. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr ""
@@ -130,7 +127,10 @@ msgstr ""
 msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
 msgstr ""
 
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (müşahidə olunur, təxmini)"
+#. Presidential elections.
+msgid "Prezidenti seçkiləri"
+msgstr ""
+
+#. Municipal elections.
+msgid "Bələdiyyə seçkiləri"
 msgstr ""

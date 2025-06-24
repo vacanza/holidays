@@ -355,6 +355,10 @@ msgstr "Bicentenary of the Battle of Salta"
 msgid "Censo Nacional 2010"
 msgstr "National Census Day 2010"
 
+#. G20 Leaders' Summit.
+msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
+msgstr "G20 Leaders' Summit"
+
 #. National Census Day 2022.
 msgid "Censo Nacional 2022"
 msgstr "National Census Day 2022"
@@ -366,7 +370,3 @@ msgstr "FIFA World Cup 2022 Victory Day"
 #. Bank Holiday.
 msgid "Asueto bancario"
 msgstr "Bank Holiday"
-
-#. G20 Leaders' Summit.
-msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
-msgstr "G20 Leaders' Summit"

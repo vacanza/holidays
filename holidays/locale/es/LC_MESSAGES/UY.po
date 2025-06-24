@@ -23,13 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. Presidential Inauguration Day.
-msgid "Inauguración del Presidente de la República"
-msgstr ""
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -91,12 +87,12 @@ msgstr ""
 msgid "Carnaval"
 msgstr ""
 
-#. Tourism Week.
-msgid "Semana de Turismo"
-msgstr ""
-
 #. Landing of the 33 Patriots.
 msgid "Desembarco de los 33 Orientales"
+msgstr ""
+
+#. Tourism Week.
+msgid "Semana de Turismo"
 msgstr ""
 
 #. Battle of Las Piedras.
@@ -117,4 +113,8 @@ msgstr ""
 
 #. All Souls' Day.
 msgid "Día de los Difuntos"
+msgstr ""
+
+#. Presidential Inauguration Day.
+msgid "Inauguración del Presidente de la República"
 msgstr ""

@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4.2\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
@@ -35,10 +36,6 @@ msgstr "%s (estimated)"
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#. Isra' and Mi'raj.
-msgid "ليلة المعراج"
-msgstr "Isra' and Mi'raj"
-
 #. National Day.
 msgid "اليوم الوطني"
 msgstr "National Day"
@@ -46,6 +43,18 @@ msgstr "National Day"
 #. Liberation Day.
 msgid "يوم التحرير"
 msgstr "Liberation Day"
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"
+
+#. Isra' and Mi'raj.
+msgid "ليلة المعراج"
+msgstr "Isra' and Mi'raj"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
@@ -66,11 +75,3 @@ msgstr "Eid al-Adha"
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
-
-#. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr "Islamic New Year"
-
-#. Prophet's Birthday.
-msgid "عيد المولد النبوي"
-msgstr "Prophet's Birthday"

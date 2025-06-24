@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: ko\n"
 
 #. Alternative holiday for %s.
 #, c-format
@@ -166,6 +166,10 @@ msgstr "Anniversary of the 1st National Assembly Election"
 msgid "백범 김구 선생 국민장 영결식"
 msgstr "Baekbeom Kim Ku's Funeral Ceremony"
 
+#. Joint Memorial Service for Fallen Soldiers.
+msgid "전몰군인 합동위령제"
+msgstr "Joint Memorial Service for Fallen Soldiers"
+
 #. Vice Presidential Election.
 msgid "부통령 선거일"
 msgstr "Vice Presidential Election"
@@ -213,7 +217,3 @@ msgstr "1988 Seoul Olympics Opening Ceremony"
 #. 2002 FIFA World Cup National Team Semi-Finals Celebrations.
 msgid "2002년 한일 월드컵 대표팀 4강 진출"
 msgstr "2002 FIFA World Cup National Team Semi-Finals Celebrations"
-
-#. Joint Memorial Service for Fallen Soldiers.
-msgid "전몰군인 합동위령제"
-msgstr "Joint Memorial Service for Fallen Soldiers"

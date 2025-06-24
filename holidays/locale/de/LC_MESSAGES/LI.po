@@ -22,16 +22,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: de\n"
 
 #. New Year's Day.
 msgid "Neujahr"
-msgstr ""
-
-#. Saint Berchtold's Day.
-msgid "Berchtoldstag"
 msgstr ""
 
 #. Epiphany.
@@ -42,16 +38,8 @@ msgstr ""
 msgid "Mariä Lichtmess"
 msgstr ""
 
-#. Shrove Tuesday.
-msgid "Fasnachtsdienstag"
-msgstr ""
-
 #. Saint Joseph's Day.
 msgid "Josefstag"
-msgstr ""
-
-#. Good Friday.
-msgid "Karfreitag"
 msgstr ""
 
 #. Easter Sunday.
@@ -98,16 +86,28 @@ msgstr ""
 msgid "Mariä Empfängnis"
 msgstr ""
 
-#. Christmas Eve.
-msgid "Heiligabend"
-msgstr ""
-
 #. Christmas Day.
 msgid "Weihnachten"
 msgstr ""
 
 #. Saint Stephen's Day.
 msgid "Stephanstag"
+msgstr ""
+
+#. Saint Berchtold's Day.
+msgid "Berchtoldstag"
+msgstr ""
+
+#. Shrove Tuesday.
+msgid "Fasnachtsdienstag"
+msgstr ""
+
+#. Good Friday.
+msgid "Karfreitag"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Heiligabend"
 msgstr ""
 
 #. New Year's Eve.

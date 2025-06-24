@@ -23,16 +23,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.6\n"
-
-#. Khmer New Year's Replacement Holiday.
-msgid "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-msgstr ""
-
-#. Special Public Holiday.
-msgid "ថ្ងៃឈប់សម្រាកសងជំនួស"
-msgstr ""
+"X-Source-Language: km\n"
 
 #. International New Year Day.
 msgid "ទិវាចូលឆ្នាំសាកល"
@@ -121,4 +113,12 @@ msgstr ""
 
 #. Peace Day in Cambodia.
 msgid "ទិវាសន្តិភាពនៅកម្ពុជា"
+msgstr ""
+
+#. Khmer New Year's Replacement Holiday.
+msgid "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
+msgstr ""
+
+#. Special Public Holiday.
+msgid "ថ្ងៃឈប់សម្រាកសងជំនួស"
 msgstr ""
