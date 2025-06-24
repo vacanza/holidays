@@ -109,47 +109,38 @@ msgstr ""
 =======
 msgstr "%s (observed, estimated)"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
-#. Australia Day
+#. Australia Day.
 msgid "Australia Day"
 msgstr "Australia Day"
 
-#. Chinese New Year
+#. Chinese New Year.
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
-#. Labour Day
+#. Labour Day.
 msgid "Labour Day"
 msgstr "Labour Day"
 
-#. Good Friday
+#. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
 
-#. Easter Monday
+#. Easter Monday.
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. ANZAC Day
+#. ANZAC Day.
 msgid "ANZAC Day"
 msgstr "ANZAC Day"
 
-#. Eid al-Fitr.
-msgid "Eid al-Fitr"
-msgstr "Eid al-Fitr"
-
-#. Eid al-Adha.
-msgid "Eid al-Adha"
-msgstr "Eid al-Adha"
-
-#. Territory Day
+#. Territory Day.
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
@@ -160,6 +151,7 @@ msgstr "Boxing Day"
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 # Optional legacy/fallback
@@ -174,3 +166,13 @@ msgstr "National Day of Mourning for Queen Elizabeth II"
 >>>>>>> 5505906f (Add Christmas Island holidays)
 =======
 >>>>>>> ee363fb5 (fix: typo)
+=======
+
+#. Eid al-Adha.
+msgid "Hari Raya Haji"
+msgstr "Hari Raya Haji"
+
+#. Eid al-Fitr.
+msgid "Hari Raya Puasa"
+msgstr "Hari Raya Puasa"
+>>>>>>> 222c2e78 (updates)
