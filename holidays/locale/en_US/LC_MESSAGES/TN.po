@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
@@ -72,13 +72,13 @@ msgstr "Eid al-Fitr"
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Eid al-Adha.
-msgid "عيد الأضحى"
-msgstr "Eid al-Adha"
-
 #. Arafat Day.
 msgid "يوم عرفة"
 msgstr "Arafat Day"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"
 
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"

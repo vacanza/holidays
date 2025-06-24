@@ -31,6 +31,14 @@ msgstr ""
 msgid "%s (observed)"
 msgstr ""
 
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Day after New Year's Day.
+msgid "Day after New Year's Day"
+msgstr ""
+
 #. Anzac Day.
 msgid "Anzac Day"
 msgstr ""
@@ -41,6 +49,10 @@ msgstr ""
 
 #. Easter Monday.
 msgid "Easter Monday"
+msgstr ""
+
+#. Sovereign's Birthday.
+msgid "Sovereign's Birthday"
 msgstr ""
 
 #. Day of the House of Ariki.
@@ -63,52 +75,24 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
-#. Aitutaki Gospel Day.
-msgid "Aitutaki Gospel Day"
-msgstr ""
-
-#. Atiu Gospel Day.
-msgid "Atiu Gospel Day"
-msgstr ""
-
-#. Mangaia Gospel Day.
-msgid "Mangaia Gospel Day"
-msgstr ""
-
-#. Manihiki Gospel Day.
-msgid "Manihiki Gospel Day"
-msgstr ""
-
-#. Mitiaro Gospel Day.
-msgid "Mitiaro Gospel Day"
+#. Penrhyn Gospel Day.
+msgid "Penrhyn Gospel Day"
 msgstr ""
 
 #. Palmerston Gospel Day.
 msgid "Palmerston Gospel Day"
 msgstr ""
 
-#. Penrhyn Gospel Day.
-msgid "Penrhyn Gospel Day"
+#. Mangaia Gospel Day.
+msgid "Mangaia Gospel Day"
 msgstr ""
 
-#. Pukapuka Gospel Day.
-msgid "Pukapuka Gospel Day"
+#. Atiu Gospel Day.
+msgid "Atiu Gospel Day"
 msgstr ""
 
-#. Rakahanga Gospel Day.
-msgid "Rakahanga Gospel Day"
-msgstr ""
-
-#. Sovereign's Birthday.
-msgid "Sovereign's Birthday"
-msgstr ""
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr ""
-
-#. Day after New Year's Day.
-msgid "Day after New Year's Day"
+#. Mitiaro Gospel Day.
+msgid "Mitiaro Gospel Day"
 msgstr ""
 
 #. Mauke Gospel Day.
@@ -117,4 +101,20 @@ msgstr ""
 
 #. Rarotonga Gospel Day.
 msgid "Rarotonga Gospel Day"
+msgstr ""
+
+#. Manihiki Gospel Day.
+msgid "Manihiki Gospel Day"
+msgstr ""
+
+#. Rakahanga Gospel Day.
+msgid "Rakahanga Gospel Day"
+msgstr ""
+
+#. Aitutaki Gospel Day.
+msgid "Aitutaki Gospel Day"
+msgstr ""
+
+#. Pukapuka Gospel Day.
+msgid "Pukapuka Gospel Day"
 msgstr ""

@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
+"X-Source-Language: es\n"
 
 #. %s (observed).
 #, c-format
@@ -56,16 +56,8 @@ msgstr ""
 msgid "Anexión del Partido de Nicoya a Costa Rica"
 msgstr ""
 
-#. Feast of Our Lady of the Angels.
-msgid "Fiesta de Nuestra Señora de los Ángeles"
-msgstr ""
-
 #. Mother's Day.
 msgid "Día de la Madre"
-msgstr ""
-
-#. Day of the Black Person and Afro-Costa Rican Culture.
-msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
 msgstr ""
 
 #. Independence Day.
@@ -76,10 +68,18 @@ msgstr ""
 msgid "Día de las Culturas"
 msgstr ""
 
-#. Army Abolition Day.
-msgid "Día de la Abolición del Ejército"
-msgstr ""
-
 #. Christmas Day.
 msgid "Navidad"
+msgstr ""
+
+#. Feast of Our Lady of the Angels.
+msgid "Fiesta de Nuestra Señora de los Ángeles"
+msgstr ""
+
+#. Day of the Black Person and Afro-Costa Rican Culture.
+msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
+msgstr ""
+
+#. Army Abolition Day.
+msgid "Día de la Abolición del Ejército"
 msgstr ""

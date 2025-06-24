@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: pt_TL\n"
 
 #. %s (estimated).
 #, c-format
@@ -103,10 +104,6 @@ msgstr ""
 msgid "Idul Adha"
 msgstr ""
 
-#. National Holidays (Special).
-msgid "Feriados Nacionais (Especiais)"
-msgstr ""
-
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
 msgstr ""
@@ -131,12 +128,20 @@ msgstr ""
 msgid "Dia da Ascensão de Jesus Cristo ao Céu"
 msgstr ""
 
+#. National Holidays (Special).
+msgid "Feriados Nacionais (Especiais)"
+msgstr ""
+
 #. Presidential Election Day.
 msgid "Dia da Eleição Presidencial"
 msgstr ""
 
 #. Parliamentary Election Day.
 msgid "Dia de Eleições Parlamentares"
+msgstr ""
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
 msgstr ""
 
 #. Centenary of the Revolt of Dom Boaventura.
@@ -153,10 +158,6 @@ msgstr ""
 
 #. 25th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 25.º Aniversário da Consulta Popular"
-msgstr ""
-
-#. Local Election Day.
-msgid "Dia de eleições locais"
 msgstr ""
 
 #. Visit of His Holiness Pope Francis to Timor-Leste.

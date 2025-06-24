@@ -32,66 +32,6 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "%s (observed)"
 
-#. King's Birthday.
-msgid "King's Birthday"
-msgstr "King's Birthday"
-
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "Queen's Birthday"
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr "New Year's Day"
-
-#. Australia Day.
-msgid "Australia Day"
-msgstr "Australia Day"
-
-#. Islamic New Year.
-msgid "Islamic New Year"
-msgstr "Islamic New Year"
-
-#. Eid al-Fitr.
-msgid "Eid al-Fitr"
-msgstr "Eid al-Fitr"
-
-#. Good Friday.
-msgid "Good Friday"
-msgstr "Good Friday"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
-#. Act of Self Determination Day.
-msgid "Act of Self Determination Day"
-msgstr "Act of Self Determination Day"
-
-#. ANZAC Day.
-msgid "ANZAC Day"
-msgstr "ANZAC Day"
-
-#. Eid al-Adha.
-msgid "Eid al-Adha"
-msgstr "Eid al-Adha"
-
-#. Prophet's Birthday.
-msgid "Prophet's Birthday"
-msgstr "Prophet's Birthday"
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "Christmas Day"
-
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
-#. National Day of Mourning for Queen Elizabeth II.
-msgid "National Day of Mourning for Queen Elizabeth II"
-msgstr "National Day of Mourning for Queen Elizabeth II"
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
@@ -101,3 +41,63 @@ msgstr "%s (estimated)"
 #, c-format
 msgid "%s (observed, estimated)"
 msgstr "%s (observed, estimated)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr "Australia Day"
+
+#. Act of Self Determination Day.
+msgid "Act of Self Determination Day"
+msgstr "Act of Self Determination Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "ANZAC Day"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "King's Birthday"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Queen's Birthday"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Islamic New Year.
+msgid "Islamic New Year"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
+msgstr "Prophet's Birthday"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Eid al-Adha"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "National Day of Mourning for Queen Elizabeth II"

@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: lt\n"
 
 #. New Year's Day.
 msgid "Naujųjų metų diena"
@@ -49,6 +49,14 @@ msgstr ""
 
 #. International Workers' Day.
 msgid "Tarptautinė darbo diena"
+msgstr ""
+
+#. Mother's Day.
+msgid "Motinos diena"
+msgstr ""
+
+#. Father's Day.
+msgid "Tėvo diena"
 msgstr ""
 
 #. Day of Dew and Saint John.
@@ -81,12 +89,4 @@ msgstr ""
 
 #. Second Day of Christmas.
 msgid "Šv. Kalėdų antra diena"
-msgstr ""
-
-#. Mother's Day.
-msgid "Motinos diena"
-msgstr ""
-
-#. Father's Day.
-msgid "Tėvo diena"
 msgstr ""

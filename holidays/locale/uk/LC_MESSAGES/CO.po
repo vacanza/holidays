@@ -23,9 +23,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3\n"
+"X-Source-Language: es\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observado)"
+msgstr "%s (вихідний)"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -39,9 +44,29 @@ msgstr "Богоявлення"
 msgid "Día de San José"
 msgstr "День Святого Йосипа"
 
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr "Великий четвер"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Ascension Day.
+msgid "Ascensión del señor"
+msgstr "Вознесіння Господнє"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Свято Тіла і Крові Христових"
+
 #. Labor Day.
 msgid "Día del Trabajo"
 msgstr "День праці"
+
+#. Sacred Heart.
+msgid "Sagrado Corazón"
+msgstr "Свято Найсвятішого Серця Ісуса"
 
 #. Saint Peter and Saint Paul's Day.
 msgid "San Pedro y San Pablo"
@@ -78,28 +103,3 @@ msgstr "Непорочне зачаття Діви Марії"
 #. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
-
-#. Maundy Thursday.
-msgid "Jueves Santo"
-msgstr "Великий четвер"
-
-#. Good Friday.
-msgid "Viernes Santo"
-msgstr "Страсна пʼятниця"
-
-#. Ascension Day.
-msgid "Ascensión del señor"
-msgstr "Вознесіння Господнє"
-
-#. Corpus Christi.
-msgid "Corpus Christi"
-msgstr "Свято Тіла і Крові Христових"
-
-#. Sacred Heart.
-msgid "Sagrado Corazón"
-msgstr "Свято Найсвятішого Серця Ісуса"
-
-#. %s (observed).
-#, c-format
-msgid "%s (observado)"
-msgstr "%s (вихідний)"

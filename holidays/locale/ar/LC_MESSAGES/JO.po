@@ -24,6 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
@@ -32,6 +33,26 @@ msgstr ""
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Labor Day.
+msgid "عيد العمال"
+msgstr ""
+
+#. Independence Day.
+msgid "عيد الإستقلال"
+msgstr ""
+
+#. Christmas Day.
+msgid "عيد الميلاد المجيد"
+msgstr ""
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
 msgstr ""
 
 #. Isra' and Mi'raj.
@@ -46,14 +67,6 @@ msgstr ""
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Labor Day.
-msgid "عيد العمال"
-msgstr ""
-
-#. Independence Day.
-msgid "عيد الإستقلال"
-msgstr ""
-
 #. Arafat Day.
 msgid "يوم عرفة"
 msgstr ""
@@ -64,16 +77,4 @@ msgstr ""
 
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
-msgstr ""
-
-#. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr ""
-
-#. Prophet's Birthday.
-msgid "عيد المولد النبوي"
-msgstr ""
-
-#. Christmas Day.
-msgid "عيد الميلاد المجيد"
 msgstr ""

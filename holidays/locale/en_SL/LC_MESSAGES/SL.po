@@ -24,6 +24,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
+"X-Source-Language: en_SL\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -61,20 +77,9 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (estimated)"
-msgstr "%s (estimated)"
-
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (observed)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (observed, estimated)"
-msgstr "%s (observed, estimated)"
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
+msgstr "Prophet's Birthday"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
@@ -83,7 +88,3 @@ msgstr "Eid al-Fitr"
 #. Eid al-Adha.
 msgid "Eid al-Adha"
 msgstr "Eid al-Adha"
-
-#. Prophet's Birthday.
-msgid "Prophet's Birthday"
-msgstr "Prophet's Birthday"

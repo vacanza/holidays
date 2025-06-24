@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Canada holidays ar localization (PoC).
+# Canada holidays ar localization.
 #
 msgid ""
 msgstr ""
@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
@@ -39,9 +40,9 @@ msgstr "يوم السنة الجديدة"
 msgid "Good Friday"
 msgstr "جمعة جيدة"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "عيد الفصح الاثنين"
+#. Canada Day.
+msgid "Canada Day"
+msgstr "يوم كندا"
 
 #. Dominion Day.
 msgid "Dominion Day"
@@ -55,49 +56,45 @@ msgstr "عيد العمال"
 msgid "Christmas Day"
 msgstr "عيد الميلاد"
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "يوم الملاكمة"
-
-#. Family Day.
-msgid "Family Day"
-msgstr "يوم العائلة"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "عيد الشكر"
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr "جنازة جلالة الملكة اليزابيث الثانية"
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr "يوم الذكرى"
-
-#. Canada Day.
-msgid "Canada Day"
-msgstr "يوم كندا"
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr "يوم فيكتوريا"
-
-#. Heritage Day.
-msgid "Heritage Day"
-msgstr "يوم التراث"
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "اليوم الوطني للحقيقة والمصالحة"
 
 #. Remembrance Day.
 msgid "Remembrance Day"
 msgstr "يوم الذكرى"
 
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "يوم الملاكمة"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "عيد الشكر"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "يوم الهدنة"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "يوم فيكتوريا"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "يوم العائلة"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "عيد الفصح الاثنين"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "يوم التراث"
+
 #. British Columbia Day.
 msgid "British Columbia Day"
 msgstr "يوم كولومبيا البريطانية"
-
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
-msgstr "اليوم الوطني للحقيقة والمصالحة"
 
 #. Louis Riel Day.
 msgid "Louis Riel Day"
@@ -115,6 +112,10 @@ msgstr "عطلة المدنية"
 msgid "New Brunswick Day"
 msgstr "يوم نيو برونزويك"
 
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "يوم الذكرى"
+
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "عيد القديس باتريك"
@@ -126,6 +127,14 @@ msgstr "عيد القديس جورج"
 #. Discovery Day.
 msgid "Discovery Day"
 msgstr "يوم الاكتشاف"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "يوم رجال البرتقال"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "يوم التأسيس"
 
 #. National Aboriginal Day.
 msgid "National Aboriginal Day"
@@ -151,14 +160,6 @@ msgstr "عيد القديس جان بابتيست"
 msgid "Saskatchewan Day"
 msgstr "يوم ساسكاتشوان"
 
-#. Orangemen's Day.
-msgid "Orangemen's Day"
-msgstr "يوم رجال البرتقال"
-
-#. Natal Day.
-msgid "Natal Day"
-msgstr "يوم التأسيس"
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr "يوم الهدنة"
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "جنازة جلالة الملكة اليزابيث الثانية"

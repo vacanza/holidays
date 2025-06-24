@@ -51,17 +51,17 @@ msgstr "Independence and Republic Day"
 msgid "Labour Day"
 msgstr "Labor Day"
 
-#. Arrival of Indentured Laborers.
-msgid "Arrival of Indentured Labourers"
-msgstr "Arrival of Indentured Laborers"
+#. Assumption Day.
+msgid "Assumption of the Blessed Virgin Mary"
+msgstr "Assumption Day"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
 msgstr "All Saints' Day"
 
-#. Assumption Day.
-msgid "Assumption of the Blessed Virgin Mary"
-msgstr "Assumption Day"
+#. Arrival of Indentured Laborers.
+msgid "Arrival of Indentured Labourers"
+msgstr "Arrival of Indentured Laborers"
 
 #. Christmas Day.
 msgid "Christmas Day"
