@@ -1,0 +1,91 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Sint Maarten holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-14 14:20-0400\n"
+"PO-Revision-Date: 2025-06-14 14:20-0400\n"
+"Last-Translator: Platon Supranovich <psupra521@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: nl\n"
+
+#. New Year's Day.
+msgid "Nieuwjaarsdag"
+msgstr "New Year's Day"
+
+#. Good Friday.
+msgid "Goede Vrijdag"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+msgid "Eerste paasdag"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+msgid "Tweede paasdag"
+msgstr "Easter Monday"
+
+#. King's Day.
+msgid "Koningsdag"
+msgstr "King's Day"
+
+#. Queen's Day.
+msgid "Koninginnedag"
+msgstr "Queen's Day"
+
+#. Carnival Day.
+msgid "Carnavalsdag"
+msgstr "Carnival Day"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "Labor Day"
+
+#. Ascension Day.
+msgid "Hemelvaartsdag"
+msgstr "Ascension Day"
+
+#. Whit Sunday.
+msgid "Eerste Pinksterdag"
+msgstr "Whit Sunday"
+
+#. Emancipation Day.
+msgid "Dag van de Bevrijding"
+msgstr "Emancipation Day"
+
+#. Constitution Day.
+msgid "Dag van de Constitutie"
+msgstr "Constitution Day"
+
+#. Sint Maarten Day.
+msgid "Sint-Maartensdag"
+msgstr "Sint Maarten Day"
+
+#. Kingdom Day.
+msgid "Koninkrijksdag"
+msgstr "Kingdom Day"
+
+#. Christmas Day.
+msgid "Eerste Kerstdag"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+msgid "Tweede Kerstdag"
+msgstr "Second Day of Christmas"
