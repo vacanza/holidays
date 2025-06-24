@@ -18,14 +18,13 @@ from pathlib import Path
 """
 This file generates Gregorian dates for Mongolian lunisolar calendar based holidays.
 
-See `Wikipedia
-https://en.wikipedia.org/wiki/Mongolian_calendar
+See the Wikipedia article: https://en.wikipedia.org/wiki/Mongolian_calendar
 
 Sources:
-https://www.math.mcgill.ca/gantumur/cal/year.html
+- https://www.math.mcgill.ca/gantumur/cal/year.html
 """
 
-Mzero = 3
+m_zero = 3
 epoch = 1747
 ixx = 46
 betastar = 10
@@ -43,7 +42,7 @@ a2 = 1 / 28
 
 
 def mstar(y, m):
-    return 12 * (y - epoch) + m - Mzero
+    return 12 * (y - epoch) + m - m_zero
 
 
 def leap_month(y, m):
@@ -118,18 +117,15 @@ def gregorian_date(jdn):
 
 
 def mongolian_to_gregorian(m_year, m_month, is_leap, m_day):
-    jd = julian_day(m_year, m_month, is_leap, m_day)
-    return gregorian_date(jd)
+    return gregorian_date(julian_day(m_year, m_month, is_leap, m_day))
 
 
 def get_tsagaan_sar(y):
-    jd = julian_day(y - 1, 12, False, 30) + 1
-    return gregorian_date(jd)
+    return gregorian_date(julian_day(y - 1, 12, False, 30) + 1)
 
 
 def find_festival_date(y, m_month, m_day):
-    jd = julian_day(y, m_month, False, m_day)
-    return gregorian_date(jd)
+    return gregorian_date(julian_day(y, m_month, False, m_day))
 
 
 CLASS_NAME = "_{cal_name}Lunisolar"
@@ -156,7 +152,7 @@ MONGOLIAN_HOLIDAYS = (
 )
 
 
-def generate_mongolian_data():
+def generate_data():
     g_year_min, g_year_max = 2004, 2100
     holiday_data = []
 
@@ -184,4 +180,4 @@ def generate_mongolian_data():
 
 
 if __name__ == "__main__":
-    generate_mongolian_data()
+    generate_data()
