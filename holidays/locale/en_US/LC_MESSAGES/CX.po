@@ -119,8 +119,11 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
+<<<<<<< HEAD
 >>>>>>> 5505906f (Add Christmas Island holidays)
 #. Christmas Day.
+=======
+>>>>>>> 0947843e (changes)
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
