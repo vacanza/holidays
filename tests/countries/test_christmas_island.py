@@ -185,7 +185,6 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
-            
             "2012-08-20",
             "2017-06-26",
             "2020-05-25",
@@ -401,4 +400,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
             ("2022-12-27", "Boxing Day (observed)"),
         )
+<<<<<<< HEAD
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> a1cd8468 (Fix formatting issues and test cases)

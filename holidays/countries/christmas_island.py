@@ -90,8 +90,12 @@ class ChristmasIsland(
 =======
         * [2024](https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf)
         * [2025](https://web.archive.org/web/20250610185153/https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf)
+<<<<<<< HEAD
     
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+
+>>>>>>> a1cd8468 (Fix formatting issues and test cases)
     """
 
     country = "CX"
@@ -180,18 +184,23 @@ class ChristmasIsland(
 
         # Christmas Day.
 <<<<<<< HEAD
+<<<<<<< HEAD
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
 =======
         
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+=======
+>>>>>>> a1cd8468 (Fix formatting issues and test cases)
 
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
             self._add_observed(dt)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
@@ -215,6 +224,8 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
         2009: (NOV, 30),
 =======
 
+=======
+>>>>>>> a1cd8468 (Fix formatting issues and test cases)
         # Eid al-Adha.
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
             if self._year != 2025:
@@ -273,8 +284,11 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
         2024: (APR, 10),
         2025: (MAR, 31),
     }
+<<<<<<< HEAD
     
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> a1cd8468 (Fix formatting issues and test cases)
 
 
 class CX(ChristmasIsland):
