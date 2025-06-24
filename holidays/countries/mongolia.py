@@ -102,6 +102,26 @@ class Mongolia(HolidayBase, InternationalHolidays, MongolianCalendarHolidays):
             )
 
     def _populate_workday_holidays(self):
+        """
+        NOTE:
+        The following observances are currently unimplemented
+        due to unclear week-based scheduling rules:
+
+        1. National Literary, Cultural and Book Days (Үндэсний бичиг соёл, номын өдрүүд):
+        - Observed on Saturday and Sunday of the 3rd week of May and September.
+        - Officially added on July 2nd, 2021.
+
+        2. Environmental Protection Days (Байгаль орчныг хамгаалах өдрүүд):
+        - Observed during the 4th week of September.
+
+        These are defined using "week of the month" logic, but it is unclear whether weeks start
+        from the 1st of the month or the first full week. We previously contacted
+        contact@mecc.gov.mn for clarification but received no response.
+
+        See:
+        https://github.com/vacanza/holidays/issues/2672
+        """
+
         # Constitution Day.
         self._add_holiday_jan_13(tr("Монгол Улсын Үндсэн хуулийн өдөр"))
 
