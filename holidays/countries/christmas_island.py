@@ -15,11 +15,11 @@ from gettext import gettext as tr
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
+    ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     StaticHolidays,
-    ChineseCalendarHolidays,
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -29,7 +29,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class ChristmasIslands(
+class ChristmasIsland(
     ObservedHolidayBase,
     ChristianHolidays,
     InternationalHolidays,
@@ -38,12 +38,30 @@ class ChristmasIslands(
     ChineseCalendarHolidays,
 ):
     """
-    Christmas Islands Holidays.
+    Christmas Island Holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Christmas_Island>
         * <https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf>
         * <https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf>
+         * [2007](https://web.archive.org/web/20250612072036/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/01-2006_Public_Holidays_2007_CI.doc)
+        * [2008](https://web.archive.org/web/20240224131231/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/05-2007_Public_Holidays_CI.pdf)
+        * [2008 Hari Raya Puasa Moved](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
+        * [2009](https://web.archive.org/web/20231211180406/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/02-2008_2009_public_holiday_CI_gazette.pdf)
+        * [2010](https://web.archive.org/web/20250612051603/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2009/2009-Gazette_5-2009-CI-Proclamation_of_2010_Special_Public_and_Bank_Holidays.pdf)
+        * [2013](https://web.archive.org/web/20240805060802/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2012/2012-Gazette_7-2012-CI-Proclamation_of_2013_Public_Holidays_for_Christmas_Island.pdf)
+        * [2014](https://web.archive.org/web/20240718175750/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2013/2013-Gazette_2-2013-Christmas_Island_2014_Public_Holidays.pdf)
+        * [2016](https://web.archive.org/web/20250513003407/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2015/2015-Gazette_3-2015-CI-Proclamation_of_2016_Special_Public_Bank_Holidays.pdf)
+        * [2016 Update](https://web.archive.org/web/20240222235345/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_4-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
+        * [2017](https://web.archive.org/web/20240226014639/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_1-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2017.pdf)
+        * [2019](https://web.archive.org/web/20250517064053/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2018/files/A37-2018.pdf)
+        * [2020](https://web.archive.org/web/20240830230128/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2019/files/A52-2019.pdf)
+        * [2021](https://web.archive.org/web/20240713155232/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2020/files/a40-ci-public-holidays-2021-proclamation.pdf)
+        * [2022](https://web.archive.org/web/20240626092850/https://www.infrastructure.gov.au/sites/default/files/documents/a32-2021-2022-public-holidays-christmas-island.pdf)
+        * [2023](https://web.archive.org/web/20250612044842/https://www.infrastructure.gov.au/sites/default/files/documents/A06-2022-notice-proclamation-special-public-bank-holidays-2023-ci.pdf)
+        * [2024](https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf)
+        * [2025](https://web.archive.org/web/20250610185153/https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf)
+    
     """
 
     country = "CX"
@@ -55,16 +73,16 @@ class ChristmasIslands(
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (observed, estimated)")
     supported_languages = ("en_CX", "en_US")
-    start_year = 1985
+    start_year = 2007
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=ChristmasIslandsIslamicHolidays, show_estimated=islamic_show_estimated
+            self, cls=ChristmasIslandIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        StaticHolidays.__init__(self, ChristmasIslandsStaticHolidays)
+        StaticHolidays.__init__(self, ChristmasIslandStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -81,7 +99,11 @@ class ChristmasIslands(
         self._add_observed(self._add_chinese_new_years_day_two(name))
 
         # Labour Day.
-        self._add_holiday_4th_mon_of_mar(tr("Labour Day"))
+        name = tr("Labour Day")
+        if self._year in (2009, 2010, 2014, 2021, 2022, 2025):
+            self._add_holiday_4th_mon_of_mar(name)
+        else:
+            self._add_holiday_3rd_mon_of_mar(name)
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -90,7 +112,7 @@ class ChristmasIslands(
         self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
-        self._add_observed(self._add_holiday_apr_25(tr("ANZAC Day")))
+        self._add_observed(self._add_anzac_day(tr("ANZAC Day")))
 
         # Territory Day.
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
@@ -103,36 +125,39 @@ class ChristmasIslands(
         )
 
         # Christmas Day.
+        
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+
+
         # Eid al-Fitr.
-        for dt in self._add_eid_al_fitr_day(tr("Eid al-Fitr")):
+        for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
             self._add_observed(dt)
 
+
         # Eid al-Adha.
-        for dt in self._add_eid_al_adha_day(tr("Eid al-Adha")):
+        for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
             if self._year != 2025:
                 self._add_observed(dt)
 
 
-class ChristmasIslandsIslamicHolidays(_CustomIslamicHolidays):
+class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_ADHA_DATES = {
         2007: (DEC, 20),
         2008: (DEC, 8),
         2009: (NOV, 30),
         2010: (NOV, 16),
         2013: (OCT, 15),
-        2014: (OCT, 4),
+        2014: (OCT, 5),
         2016: (SEP, 13),
         2017: (SEP, 1),
         2019: (AUG, 11),
         2020: (JUL, 31),
         2021: (JUL, 20),
         2022: (JUL, 9),
-        2023: (JUN, 28),
+        2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
-
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
         2008: (OCT, 1),
@@ -145,22 +170,23 @@ class ChristmasIslandsIslamicHolidays(_CustomIslamicHolidays):
         2019: (JUN, 5),
         2020: (MAY, 24),
         2021: (MAY, 13),
-        2022: (MAY, 3),
+        2022: (MAY, 2),
         2023: (APR, 22),
         2024: (APR, 10),
         2025: (MAR, 31),
     }
+    
 
 
-class CX(ChristmasIslands):
+class CX(ChristmasIsland):
     pass
 
 
-class CXR(ChristmasIslands):
+class CXR(ChristmasIsland):
     pass
 
 
-class ChristmasIslandsStaticHolidays:
+class ChristmasIslandStaticHolidays:
     """Christmas Islands special holidays.
 
     References:
@@ -172,5 +198,5 @@ class ChristmasIslandsStaticHolidays:
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
     special_public_holidays_observed = {
-        2025: (JUN, 6, tr("Eid al-Adha")),
+        2025: (JUN, 6, tr("Hari Raya Haji")),
     }

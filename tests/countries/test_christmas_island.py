@@ -12,26 +12,26 @@
 
 from unittest import TestCase
 
-from holidays.countries.christmas_islands import ChristmasIslands, CX, CXR
+from holidays.countries.christmas_island import ChristmasIsland, CX, CXR
 from tests.common import CommonCountryTests
 
 
-class TestChristmasIslands(CommonCountryTests, TestCase):
+class TestChristmasIsland(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1985, 2050)
-        super().setUpClass(ChristmasIslands, years=years, years_non_observed=years)
-        cls.no_estimated_holidays = ChristmasIslands(years=years, islamic_show_estimated=False)
+        years = range(2007, 2050)
+        super().setUpClass(ChristmasIsland, years=years, years_non_observed=years)
+        cls.no_estimated_holidays = ChristmasIsland(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
-        self.assertAliases(ChristmasIslands, CX, CXR)
+        self.assertAliases(ChristmasIsland, CX, CXR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(ChristmasIslands(years=1984))
+        self.assertNoHolidays(ChristmasIsland(years=1984))
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2007, 2050)))
         obs_dt = (
             "2011-01-03",
             "2012-01-02",
@@ -52,7 +52,7 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             "2019-02-05",
             "2019-02-06",
         )
-        self.assertHolidayName(name, range(1985, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -65,11 +65,11 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1985, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_australia_day(self):
         name = "Australia Day"
-        self.assertHolidayName(name, (f"{year}-01-26" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-26" for year in range(2007, 2050)))
         obs_dt = (
             "2013-01-28",
             "2014-01-27",
@@ -84,14 +84,14 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
         name = "Labour Day"
         self.assertHolidayName(
             name,
-            "2020-03-23",
+            "2020-03-16",
             "2021-03-22",
             "2022-03-28",
-            "2023-03-27",
-            "2024-03-25",
+            "2023-03-20",
+            "2024-03-18",
             "2025-03-24",
         )
-        self.assertHolidayName(name, range(1985, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -104,11 +104,11 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1985, 2050))
+        self.assertHolidayName(name, range(2007, 2050))
 
     def test_anzac_day(self):
         name = "ANZAC Day"
-        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(2007, 2050)))
         obs_dt = (
             "2009-04-27",
             "2010-04-26",
@@ -120,19 +120,19 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_fitr(self):
-        name = "Eid al-Fitr"
+        name = "Hari Raya Puasa"
         self.assertHolidayName(
             name,
             "2020-05-24",
             "2021-05-13",
-            "2022-05-03",
+            "2022-05-02",
             "2023-04-22",
             "2024-04-10",
             "2025-03-31",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
-            "2004-11-15",
+            
             "2012-08-20",
             "2017-06-26",
             "2020-05-25",
@@ -143,7 +143,7 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
 
     def test_territory_day(self):
         name = "Territory Day"
-        self.assertHolidayName(name, (f"{year}-10-06" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-06" for year in range(2007, 2050)))
         obs_dt = (
             "2012-10-08",
             "2013-10-07",
@@ -156,7 +156,7 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2007, 2050)))
         obs_dt = (
             "2010-12-27",
             "2011-12-26",
@@ -168,7 +168,7 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1985, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2007, 2050)))
         obs_dt = (
             "2015-12-28",
             "2016-12-27",
@@ -180,17 +180,17 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_eid_al_adha(self):
-        name = "Eid al-Adha"
+        name = "Hari Raya Haji"
         self.assertHolidayName(
             name,
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
-            "2023-06-28",
+            "2023-06-29",
             "2024-06-17",
             "2025-06-07",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1985, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
             "2011-11-07",
             "2019-08-12",
@@ -211,9 +211,9 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),
-            ("2022-05-03", "Eid al-Fitr"),
-            ("2022-07-09", "Eid al-Adha"),
-            ("2022-07-11", "Eid al-Adha (observed)"),
+            ("2022-05-02", "Hari Raya Puasa"),
+            ("2022-07-09", "Hari Raya Haji"),
+            ("2022-07-11", "Hari Raya Haji (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
             ("2022-10-06", "Territory Day"),
             ("2022-12-25", "Christmas Day"),
@@ -233,9 +233,9 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),
-            ("2022-05-03", "Eid al-Fitr"),
-            ("2022-07-09", "Eid al-Adha"),
-            ("2022-07-11", "Eid al-Adha (observed)"),
+            ("2022-05-02", "Hari Raya Puasa"),
+            ("2022-07-09", "Hari Raya Haji"),
+            ("2022-07-11", "Hari Raya Haji (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
             ("2022-10-06", "Territory Day"),
             ("2022-12-25", "Christmas Day"),
@@ -255,7 +255,7 @@ class TestChristmasIslands(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),
-            ("2022-05-03", "Eid al-Fitr"),
+            ("2022-05-02", "Eid al-Fitr"),
             ("2022-07-09", "Eid al-Adha"),
             ("2022-07-11", "Eid al-Adha (observed)"),
             ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
