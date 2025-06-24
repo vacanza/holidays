@@ -14,10 +14,10 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JUL, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
 
-class BonaireSintEustatiusAndSaba(HolidayBase, ChristianHolidays, InternationalHolidays):
+class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Bonaire Sint Eustatius And Saba holidays.
 
     References:
@@ -60,8 +60,14 @@ class BonaireSintEustatiusAndSaba(HolidayBase, ChristianHolidays, InternationalH
         # Easter Monday.
         self._add_easter_monday(tr("Paasmaandag"))
 
-        # King's Birthday.
-        self._add_holiday_apr_27(tr("Koningsdag"))
+        self._move_holiday(
+            # King's Birthday.
+            self._add_holiday_apr_27(tr("Koningsdag"))
+            if self._year >= 2014
+            # Queen's Day.
+            else self._add_holiday_apr_30(tr("Koninginnedag")),
+            rule=SUN_TO_PREV_SAT,
+        )
 
         # Labor Day.
         self._add_labor_day(tr("Dag van de Arbeid"))

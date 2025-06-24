@@ -81,9 +81,30 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dt)
 
-    def test_kings_birthday(self):
+    def test_queens_day_between_2011_and_2014(self):
+        name = "Koninginnedag"
+        self.assertHolidayName(name, (f"{year}-04-30" for year in range(2011, 2014)))
+        self.assertNoHolidayName(name, range(2014, 2050))
+
+    def test_kings_birthday_after_2014(self):
         name = "Koningsdag"
-        self.assertHolidayName(name, (f"{year}-04-27" for year in range(2011, 2050)))
+        self.assertHolidayName(name, "2015-04-27", "2020-04-27", "2023-04-27", "2027-04-27")
+        self.assertNoHolidayName(name, range(2011, 2014))
+
+    def test_kings_birthday_after_2014_substituted_earlier(self):
+        self.assertHolidayName(
+            "Koningsdag",
+            "2014-04-26",
+            "2025-04-26",
+            "2031-04-26",
+            "2036-04-26",
+        )
+        self.assertNoHoliday(
+            "2014-04-27",
+            "2025-04-27",
+            "2031-04-27",
+            "2036-04-27",
+        )
 
     def test_rincon_day(self):
         name = "Rincon Dag"
@@ -130,7 +151,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in ("BON", "STA"):
+            if subdiv in {"BON", "STA"}:
                 self.assertHolidayName(name, holidays, range(2011, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)

@@ -85,3 +85,7 @@ msgstr ""
 #. Statia Day.
 msgid "Statia Dag"
 msgstr ""
+
+#. Queen's Day.
+msgid "Koninginnedag"
+msgstr ""
