@@ -23,17 +23,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: nl\n"
 
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
 msgstr "Новий рік"
-
-#. Good Friday.
-msgid "Goede Vrijdag"
-msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
 msgid "Eerste paasdag"
@@ -74,3 +70,7 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "Tweede Kerstdag"
 msgstr "Другий день Різдва"
+
+#. Good Friday.
+msgid "Goede Vrijdag"
+msgstr "Страсна пʼятниця"

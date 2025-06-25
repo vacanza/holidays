@@ -23,13 +23,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: lo\n"
 
 #. %s (in lieu).
 #, c-format
 msgid "ພັກຊົດເຊີຍ%s"
 msgstr "ชดเชย%s"
+
+#. Establishment Day of the BOL.
+msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
+msgstr "วันก่อตั้งธนาคารแห่ง สปป. ลาว"
+
+#. Lao Year-End Bank Holiday.
+msgid "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
+msgstr "วันหยุดสิ้นปีของสถาบันการเงิน"
 
 #. New Year's Day.
 msgid "ວັນປີໃໝ່ສາກົນ"
@@ -54,26 +62,6 @@ msgstr "วันเด็กสากล"
 #. Lao National Day.
 msgid "ວັນຊາດ"
 msgstr "วันชาติ สปป. ลาว"
-
-#. Boun That Luang Festival.
-msgid "ວັນບຸນທາດຫລວງ"
-msgstr "วันงานพระธาตุหลวง"
-
-#. Special Bank Holiday.
-msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
-msgstr "วันหยุดทำการพิเศษของสถาบันการเงิน"
-
-#. Lao New Year's Day (Special).
-msgid "ພັກບຸນປີໃໝ່ລາວ"
-msgstr "ชดเชยวันปีใหม่ลาว"
-
-#. Establishment Day of the BOL.
-msgid "ວັນສ້າງຕັ້ງທະນາຄານແຫ່ງ ສປປ ລາວ"
-msgstr "วันก่อตั้งธนาคารแห่ง สปป. ลาว"
-
-#. Lao Year-End Bank Holiday.
-msgid "ສາມວັນລັດຖະການສຸດທ້າຍຂອງທຸກໆປີ"
-msgstr "วันหยุดสิ้นปีของสถาบันการเงิน"
 
 #. Makha Bousa Festival.
 msgid "ວັນບຸນມາຂະບູຊາ"
@@ -102,6 +90,10 @@ msgstr "วันออกพรรษา"
 #. Boun Suang Heua (Vientiane Boat Racing Festival).
 msgid "ວັນບຸນຊ່ວງເຮືອ ນະຄອນຫຼວງວຽງຈັນ"
 msgstr "วันงานบุญแข่งเรือ นครหลวงเวียงจันทน์"
+
+#. Boun That Luang Festival.
+msgid "ວັນບຸນທາດຫລວງ"
+msgstr "วันงานพระธาตุหลวง"
 
 #. National Teacher Day.
 msgid "ວັນຄູແຫ່ງຊາດ"
@@ -158,3 +150,11 @@ msgstr "วันประกาศเอกราช"
 #. President Kaysone Phomvihane's Birthday.
 msgid "ວັນຄ້າຍວັນເກີດ ທ່ານ ປະທານ ໄກສອນ ພົມວິຫານ"
 msgstr "วันคล้ายวันเกิดท่านประธานไกสอน พมวิหาน"
+
+#. Special Bank Holiday.
+msgid "ມື້ປິດການໃຫ້ບໍລິການຂອງທະນາຄານຕົວແທນ"
+msgstr "วันหยุดทำการพิเศษของสถาบันการเงิน"
+
+#. Lao New Year's Day (Special).
+msgid "ພັກບຸນປີໃໝ່ລາວ"
+msgstr "ชดเชยวันปีใหม่ลาว"

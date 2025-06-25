@@ -25,63 +25,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
-
-#. Date format (see strftime() Format Codes)
-msgid "%d.%m.%Y"
-msgstr ""
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "Выходны (перанесены з %s)"
-msgstr ""
-
-#. Constitution Day.
-msgid "Дзень Канстытуцыі"
-msgstr ""
-
-#. Day of Unity of the Peoples of Belarus and Russia.
-msgid "Дзень яднання народаў Беларусі і Расіі"
-msgstr ""
-
-#. Victory Day.
-msgid "Дзень Перамогі"
-msgstr ""
-
-#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
-#. of Belarus and the National Anthem of the Republic of Belarus.
-msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
-msgstr ""
-
-#. Independence Day of the Republic of Belarus (Day of the Republic).
-msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
-msgstr ""
-
-#. Day of People's Unity.
-msgid "Дзень народнага адзінства"
-msgstr ""
+"X-Source-Language: be\n"
 
 #. New Year's Day.
 msgid "Новы год"
 msgstr ""
 
-#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
-msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
+#. Orthodox Christmas Day.
+msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
 msgstr ""
 
 #. Women's Day.
 msgid "Дзень жанчын"
 msgstr ""
 
+#. Constitution Day.
+msgid "Дзень Канстытуцыі"
+msgstr ""
+
 #. Labor Day.
 msgid "Свята працы"
+msgstr ""
+
+#. Victory Day.
+msgid "Дзень Перамогі"
+msgstr ""
+
+#. Radunitsa (Day of Rejoicing).
+msgid "Радаўніца"
+msgstr ""
+
+#. Independence Day of the Republic of Belarus (Day of the Republic).
+msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
 msgstr ""
 
 #. October Revolution Day.
 msgid "Дзень Кастрычніцкай рэвалюцыі"
 msgstr ""
 
-#. Orthodox Christmas Day.
-msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
+#. Catholic Christmas Day.
+msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
 msgstr ""
 
 #. Catholic Easter.
@@ -92,14 +75,32 @@ msgstr ""
 msgid "Праваслаўны Вялiкдзень"
 msgstr ""
 
-#. Radunitsa (Day of Rejoicing).
-msgid "Радаўніца"
-msgstr ""
-
 #. Dzyady (All Souls' Day).
 msgid "Дзень памяці"
 msgstr ""
 
-#. Catholic Christmas Day.
-msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
+#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
+msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
+msgstr ""
+
+#. Day of Unity of the Peoples of Belarus and Russia.
+msgid "Дзень яднання народаў Беларусі і Расіі"
+msgstr ""
+
+#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
+#. of Belarus and the National Anthem of the Republic of Belarus.
+msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
+msgstr ""
+
+#. Day of People's Unity.
+msgid "Дзень народнага адзінства"
+msgstr ""
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr ""
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Выходны (перанесены з %s)"
 msgstr ""

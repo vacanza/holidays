@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: az\n"
 
 #. %s (estimated).
 #, c-format
@@ -36,6 +36,11 @@ msgstr "%s (приблизна дата)"
 #, c-format
 msgid "%s (müşahidə olunur)"
 msgstr "%s (вихідний)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (müşahidə olunur, təxmini)"
+msgstr "%s (вихідний, приблизна дата)"
 
 #. New Year's Day.
 msgid "Yeni il bayramı"
@@ -113,14 +118,6 @@ msgstr "День Конституції"
 msgid "Milli Dirçəliş Günü"
 msgstr "День національного відродження"
 
-#. Presidential elections.
-msgid "Prezidenti seçkiləri"
-msgstr "Президентські вибори"
-
-#. Municipal elections.
-msgid "Bələdiyyə seçkiləri"
-msgstr "Місцеві вибори"
-
 #. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%d.%m.%Y"
@@ -130,7 +127,10 @@ msgstr "%d.%m.%Y"
 msgid "İstirahət günü (%s ilə əvəz edilmişdir)"
 msgstr "Вихідний день (перенесено з %s)"
 
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (müşahidə olunur, təxmini)"
-msgstr "%s (вихідний, приблизна дата)"
+#. Presidential elections.
+msgid "Prezidenti seçkiləri"
+msgstr "Президентські вибори"
+
+#. Municipal elections.
+msgid "Bələdiyyə seçkiləri"
+msgstr "Місцеві вибори"

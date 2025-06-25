@@ -25,6 +25,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_PH\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -62,10 +68,6 @@ msgstr "Labor Day"
 msgid "Independence Day"
 msgstr "Independence Day"
 
-#. Founding Anniversary of Iglesia ni Cristo.
-msgid "Founding Anniversary of Iglesia ni Cristo"
-msgstr "Founding Anniversary of Iglesia ni Cristo"
-
 #. Ninoy Aquino Day.
 msgid "Ninoy Aquino Day"
 msgstr "Ninoy Aquino Day"
@@ -73,10 +75,6 @@ msgstr "Ninoy Aquino Day"
 #. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "National Heroes Day"
-
-#. All Saints' Day Eve.
-msgid "All Saints' Day Eve"
-msgstr "All Saints' Day Eve"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -94,10 +92,6 @@ msgstr "Immaculate Conception"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "Christmas Eve"
-
 #. Rizal Day.
 msgid "Rizal Day"
 msgstr "Rizal Day"
@@ -114,6 +108,10 @@ msgstr "Eid al-Fitr"
 msgid "Eid'l Adha"
 msgstr "Eid al-Adha"
 
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "Founding Anniversary of Iglesia ni Cristo"
+
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
 msgstr "Additional special (non-working) day"
@@ -122,7 +120,10 @@ msgstr "Additional special (non-working) day"
 msgid "Elections special (non-working) day"
 msgstr "Elections special (non-working) day"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (estimated)"
-msgstr "%s (estimated)"
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "All Saints' Day Eve"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"

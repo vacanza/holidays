@@ -31,24 +31,14 @@ msgstr ""
 msgid "%s (مُقدَّر)"
 msgstr ""
 
-#. Labor Day.
-msgid "عيد العمال"
+#. %s (observed).
+#, c-format
+msgid "%s (ملاحظة)"
 msgstr ""
 
-#. Unity Day.
-msgid "اليوم الوطني للجمهورية اليمنية"
-msgstr ""
-
-#. Revolution Day.
-msgid "ثورة 26 سبتمبر المجيدة"
-msgstr ""
-
-#. Liberation Day.
-msgid "ثورة 14 أكتوبر المجيدة"
-msgstr ""
-
-#. Independence Day.
-msgid "عيد الجلاء"
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (مُقدَّر ملاحظة)"
 msgstr ""
 
 #. Hijri New Year.
@@ -67,8 +57,28 @@ msgstr ""
 msgid "عيد الأضحى"
 msgstr ""
 
+#. Labor Day.
+msgid "عيد العمال"
+msgstr ""
+
+#. Unity Day.
+msgid "اليوم الوطني للجمهورية اليمنية"
+msgstr ""
+
 #. Victory Day.
 msgid "ذكرى 7 يوليو"
+msgstr ""
+
+#. Revolution Day.
+msgid "ثورة 26 سبتمبر المجيدة"
+msgstr ""
+
+#. Liberation Day.
+msgid "ثورة 14 أكتوبر المجيدة"
+msgstr ""
+
+#. Independence Day.
+msgid "عيد الجلاء"
 msgstr ""
 
 #. Teacher's Day.
@@ -77,14 +87,4 @@ msgstr ""
 
 #. Isra' and Mi'raj.
 msgid "ذكرى الإسراء والمعراج"
-msgstr ""
-
-#. %s (observed).
-#, c-format
-msgid "%s (ملاحظة)"
-msgstr ""
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (مُقدَّر ملاحظة)"
 msgstr ""

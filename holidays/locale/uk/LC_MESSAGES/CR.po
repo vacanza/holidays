@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
+"X-Source-Language: es\n"
 
 #. %s (observed).
 #, c-format
@@ -56,17 +56,9 @@ msgstr "Міжнародний день праці"
 msgid "Anexión del Partido de Nicoya a Costa Rica"
 msgstr "День приєднання Нікої"
 
-#. Feast of Our Lady of the Angels.
-msgid "Fiesta de Nuestra Señora de los Ángeles"
-msgstr "Свято Богоматері Ангелів"
-
 #. Mother's Day.
 msgid "Día de la Madre"
 msgstr "День матері"
-
-#. Day of the Black Person and Afro-Costa Rican Culture.
-msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
-msgstr "День чорношкірої людини та афро-костариканської культури"
 
 #. Independence Day.
 msgid "Día de la Independencia"
@@ -76,10 +68,18 @@ msgstr "День незалежності"
 msgid "Día de las Culturas"
 msgstr "День культур"
 
-#. Army Abolition Day.
-msgid "Día de la Abolición del Ejército"
-msgstr "День ліквідації армії"
-
 #. Christmas Day.
 msgid "Navidad"
 msgstr "Різдво Христове"
+
+#. Feast of Our Lady of the Angels.
+msgid "Fiesta de Nuestra Señora de los Ángeles"
+msgstr "Свято Богоматері Ангелів"
+
+#. Day of the Black Person and Afro-Costa Rican Culture.
+msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
+msgstr "День чорношкірої людини та афро-костариканської культури"
+
+#. Army Abolition Day.
+msgid "Día de la Abolición del Ejército"
+msgstr "День ліквідації армії"

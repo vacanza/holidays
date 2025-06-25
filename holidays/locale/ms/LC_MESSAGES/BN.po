@@ -23,12 +23,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.5\n"
-
-#. Sultan Hassanal Bolkiah's Golden Jubilee celebration.
-msgid "Jubli Emas Sultan Hassanal Bolkiah"
-msgstr ""
+"X-Source-Language: ms\n"
 
 #. %s (estimated).
 #, c-format
@@ -38,6 +34,11 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (diperhatikan)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (diperhatikan, anggaran)"
 msgstr ""
 
 #. New Year's Day.
@@ -92,15 +93,14 @@ msgstr ""
 msgid "Maulidur Rasul"
 msgstr ""
 
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (diperhatikan, anggaran)"
-msgstr ""
-
 #. Proclamation Ceremony of Crown Prince Al-Muhtadee Billah of Brunei.
 msgid "Istiadat Pengisytiharan Duli Pengiran Muda Mahkota Al-Muhtadee Billah"
 msgstr ""
 
 #. Royal Wedding of Crown Prince Al-Muhtadee Billah and Crown Princess Sarah of Brunei.
 msgid "Istiadat Perkahwinan Diraja Brunei 2004"
+msgstr ""
+
+#. Sultan Hassanal Bolkiah's Golden Jubilee celebration.
+msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr ""
