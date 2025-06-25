@@ -138,6 +138,7 @@ from holidays.countries.mexico import Mexico, MX, MEX
 from holidays.countries.micronesia import Micronesia, FM, FSM
 from holidays.countries.moldova import Moldova, MD, MDA
 from holidays.countries.monaco import Monaco, MC, MCO
+from holidays.countries.mongolia import Mongolia, MN, MNG
 from holidays.countries.montenegro import Montenegro, ME, MNE
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ

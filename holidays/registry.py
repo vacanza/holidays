@@ -141,6 +141,7 @@ COUNTRIES: RegistryDict = {
     "micronesia": ("Micronesia", "FM", "FSM"),
     "moldova": ("Moldova", "MD", "MDA"),
     "monaco": ("Monaco", "MC", "MCO"),
+    "mongolia": ("Mongolia", "MN", "MNG"),
     "montenegro": ("Montenegro", "ME", "MNE"),
     "morocco": ("Morocco", "MA", "MOR"),
     "mozambique": ("Mozambique", "MZ", "MOZ"),
