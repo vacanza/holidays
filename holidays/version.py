@@ -10,4 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+<<<<<<< HEAD
 __version__ = "0.80"
+=======
+__version__ = "0.75"
+>>>>>>> 92346375 (fixes)
