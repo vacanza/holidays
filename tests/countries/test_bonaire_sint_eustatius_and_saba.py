@@ -248,7 +248,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
 
     def test_l10n_pap_bq(self):
         self.assertLocalizedHolidays(
-            "pap_bq",
+            "pap_BQ",
             ("2023-01-01", "Aña nobo"),
             ("2023-04-07", "Bièrnèsantu"),
             ("2023-04-09", "Pasku di Resurekshon"),
