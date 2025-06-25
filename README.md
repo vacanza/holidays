@@ -1001,6 +1001,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Mongolia</td>
+<td>MN</td>
+<td></td>
+<td>en_US, <strong>mn</strong></td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Montenegro</td>
 <td>ME</td>
 <td></td>
