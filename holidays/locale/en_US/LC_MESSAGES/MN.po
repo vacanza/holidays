@@ -1,0 +1,131 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Mongolia holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-04 01:55+0530\n"
+"PO-Revision-Date: 2025-06-04 01:55+0530\n"
+"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: mn\n"
+
+#. New Year's Day.
+msgid "Шинэ жил"
+msgstr "New Year's Day"
+
+#. Lunar New Year.
+msgid "Цагаан сар"
+msgstr "Lunar New Year"
+
+#. International Women's Day.
+msgid "Олон улсын эмэгтэйчүүдийн өдөр"
+msgstr "International Women's Day"
+
+#. Children's Day.
+msgid "Хүүхдийн баяр"
+msgstr "Children's Day"
+
+#. The Buddha's Birthday.
+msgid "Бурхан багшийн Их дүйчин өдөр"
+msgstr "The Buddha's Birthday"
+
+#. National Festival and People's Revolution Anniversary.
+msgid "Үндэсний их баяр наадам, Ардын хувьсгалын ойн баяр"
+msgstr "National Festival and People's Revolution Anniversary"
+
+#. Genghis Khan's Birthday.
+msgid "Их Эзэн Чингис хааны өдөр"
+msgstr "Genghis Khan's Birthday"
+
+#. Republic Day.
+msgid "Бүгд Найрамдах Улс тунхагласан өдөр"
+msgstr "Republic Day"
+
+#. Republic Holiday.
+msgid "Бүгд Найрамдах Улс тунхагласны баяр"
+msgstr "Republic Holiday"
+
+#. National Freedom and Independence Day.
+msgid "Үндэсний эрх чөлөө, тусгаар тогтнолоо сэргээсний баярын өдөр"
+msgstr "National Freedom and Independence Day"
+
+#. Constitution Day.
+msgid "Монгол Улсын Үндсэн хуулийн өдөр"
+msgstr "Constitution Day"
+
+#. Patriots' Day.
+msgid "Эх орончдын өдөр"
+msgstr "Patriots' Day"
+
+#. Military Day.
+msgid "Монгол цэргийн өдөр"
+msgstr "Military Day"
+
+#. Armed Forces Day.
+msgid "Зэвсэгт хүчний өдөр"
+msgstr "Armed Forces Day"
+
+#. Health Protection Day.
+msgid "Эрүүл мэндийг хамгаалах өдөр"
+msgstr "Health Protection Day"
+
+#. Intellectual Property Protection Day.
+msgid "Оюуны өмчийг хамгаалах өдөр"
+msgstr "Intellectual Property Protection Day"
+
+#. Family Day.
+msgid "Гэр бүлийн өдөр"
+msgstr "Family Day"
+
+#. National Flag Day.
+msgid "Монгол Улсын төрийн далбааны өдөр"
+msgstr "National Flag Day"
+
+#. Youth Day.
+msgid "Залуучуудын өдөр"
+msgstr "Youth Day"
+
+#. New Harvest Days.
+msgid "Шинэ ургацын өдрүүд"
+msgstr "New Harvest Days"
+
+#. Memorial Day of Political Victims.
+msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
+msgstr "Memorial Day of Political Victims"
+
+#. Elders' Day.
+msgid "Ахмадын өдөр"
+msgstr "Elders' Day"
+
+#. Capital City Day.
+msgid "Монгол Улсын нийслэл хотын өдөр"
+msgstr "Capital City Day"
+
+#. Capital Day.
+msgid "Монгол Улсын Нийслэлийн өдөр"
+msgstr "Capital Day"
+
+#. Democracy and Human Rights Day.
+msgid "Ардчилал, хүний эрхийн өдөр"
+msgstr "Democracy and Human Rights Day"
+
+#. National Freedom Day.
+msgid "Үндэсний эрх чөлөөний өдөр"
+msgstr "National Freedom Day"

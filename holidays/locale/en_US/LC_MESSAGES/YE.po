@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Yemen holidays.
+# Yemen holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -32,25 +32,15 @@ msgstr ""
 msgid "%s (مُقدَّر)"
 msgstr "%s (estimated)"
 
-#. Labor Day.
-msgid "عيد العمال"
-msgstr "Labor Day"
+#. %s (observed).
+#, c-format
+msgid "%s (ملاحظة)"
+msgstr "%s (observed)"
 
-#. Unity Day.
-msgid "اليوم الوطني للجمهورية اليمنية"
-msgstr "Unity Day"
-
-#. Revolution Day.
-msgid "ثورة 26 سبتمبر المجيدة"
-msgstr "Revolution Day"
-
-#. Liberation Day.
-msgid "ثورة 14 أكتوبر المجيدة"
-msgstr "Liberation Day"
-
-#. Independence Day.
-msgid "عيد الجلاء"
-msgstr "Independence Day"
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (مُقدَّر ملاحظة)"
+msgstr "%s (observed, estimated)"
 
 #. Hijri New Year.
 msgid "عيد رأس السنة الهجرية"
@@ -68,9 +58,29 @@ msgstr "Eid al-Fitr"
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
+#. Labor Day.
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+#. Unity Day.
+msgid "اليوم الوطني للجمهورية اليمنية"
+msgstr "Unity Day"
+
 #. Victory Day.
 msgid "ذكرى 7 يوليو"
 msgstr "Victory Day"
+
+#. Revolution Day.
+msgid "ثورة 26 سبتمبر المجيدة"
+msgstr "Revolution Day"
+
+#. Liberation Day.
+msgid "ثورة 14 أكتوبر المجيدة"
+msgstr "Liberation Day"
+
+#. Independence Day.
+msgid "عيد الجلاء"
+msgstr "Independence Day"
 
 #. Teacher's Day.
 msgid "عيد المعلم"
@@ -79,13 +89,3 @@ msgstr "Teacher's Day"
 #. Isra' and Mi'raj.
 msgid "ذكرى الإسراء والمعراج"
 msgstr "Isra' and Mi'raj"
-
-#. %s (observed).
-#, c-format
-msgid "%s (ملاحظة)"
-msgstr "%s (observed)"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "%s (مُقدَّر ملاحظة)"
-msgstr "%s (observed, estimated)"

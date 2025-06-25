@@ -31,9 +31,29 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
+#. New Year's Day.
+msgid "Fête du Nouvel An"
+msgstr "New Year's Day"
+
+#. Vodoun Festival.
+msgid "Fête annuelle des religions traditionnelles"
+msgstr "Vodoun Festival"
+
+#. Martyrs' Day.
+msgid "Journée des Martyrs"
+msgstr "Martyrs' Day"
+
+#. Youth Day.
+msgid "Journée de la Jeunesse Béninoise"
+msgstr "Youth Day"
+
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
+
+#. Easter Sunday.
+msgid "Jour de Pâques"
+msgstr "Easter Sunday"
 
 #. Labor Day.
 msgid "Fête du Travail"
@@ -47,49 +67,33 @@ msgstr "Ascension Day"
 msgid "Lundi de Pentecôte"
 msgstr "Whit Monday"
 
+#. Whit Sunday.
+msgid "Jour de Pentecôte"
+msgstr "Whit Sunday"
+
 #. Assumption Day.
 msgid "Jour de l'Assomption"
 msgstr "Assumption Day"
-
-#. All Saints' Day.
-msgid "La Toussaint"
-msgstr "All Saints' Day"
-
-#. Christmas Day.
-msgid "Jour de Noël"
-msgstr "Christmas Day"
-
-#. New Year's Day.
-msgid "Fête du Nouvel An"
-msgstr "New Year's Day"
-
-#. Martyrs' Day.
-msgid "Journée des Martyrs"
-msgstr "Martyrs' Day"
 
 #. Armed Forces Day.
 msgid "Fête des Forces Armées Populaires du Bénin"
 msgstr "Armed Forces Day"
 
+#. All Saints' Day.
+msgid "La Toussaint"
+msgstr "All Saints' Day"
+
 #. National Day.
 msgid "Fête Nationale"
 msgstr "National Day"
 
+#. Christmas Day.
+msgid "Jour de Noël"
+msgstr "Christmas Day"
+
 #. Production Day.
 msgid "Fête de la Production"
 msgstr "Production Day"
-
-#. Vodoun Festival.
-msgid "Fête annuelle des religions traditionnelles"
-msgstr "Vodoun Festival"
-
-#. Easter Sunday.
-msgid "Jour de Pâques"
-msgstr "Easter Sunday"
-
-#. Whit Sunday.
-msgid "Jour de Pentecôte"
-msgstr "Whit Sunday"
 
 #. Prophet's Birthday.
 msgid "Journée Maouloud"
@@ -114,7 +118,3 @@ msgstr "People's Sovereignty Day"
 #. Women's Day.
 msgid "Journée de la Femme"
 msgstr "Women's Day"
-
-#. Youth Day.
-msgid "Journée de la Jeunesse Béninoise"
-msgstr "Youth Day"

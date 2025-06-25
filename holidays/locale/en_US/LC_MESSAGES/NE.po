@@ -85,6 +85,10 @@ msgstr "Islamic New Year"
 msgid "Mouloud"
 msgstr "Prophet's Birthday"
 
+#. Laylat al-Qadr.
+msgid "Laylat al-Qadr"
+msgstr "Laylat al-Qadr"
+
 #. Eid al-Fitr.
 msgid "Korité"
 msgstr "Eid al-Fitr"
@@ -96,10 +100,6 @@ msgstr "Eid al-Adha"
 #. Day after Eid al-Adha.
 msgid "Lendemain de la Tabaski"
 msgstr "Day after Eid al-Adha"
-
-#. Laylat al-Qadr.
-msgid "Laylat al-Qadr"
-msgstr "Laylat al-Qadr"
 
 #. Ascension Day.
 msgid "Ascension"

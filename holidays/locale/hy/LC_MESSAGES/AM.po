@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: hy\n"
 
 #. New Year's Day.
 msgid "Նոր տարվա օր"
@@ -58,12 +59,12 @@ msgstr ""
 msgid "Եղեռնի զոհերի հիշատակի օր"
 msgstr ""
 
-#. International Day of Workers' Solidarity.
-msgid "Աշխատավորների համերաշխության միջազգային օր"
-msgstr ""
-
 #. Labor Day.
 msgid "Աշխատանքի օր"
+msgstr ""
+
+#. International Day of Workers' Solidarity.
+msgid "Աշխատավորների համերաշխության միջազգային օր"
 msgstr ""
 
 #. Victory and Peace Day.

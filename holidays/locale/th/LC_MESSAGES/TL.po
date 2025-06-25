@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.71\n"
 "POT-Creation-Date: 2025-04-03 11:35+0700\n"
 "PO-Revision-Date: 2025-04-03 16:24+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: pt_TL\n"
 
 #. %s (estimated).
 #, c-format
@@ -103,10 +104,6 @@ msgstr "วันสมโภชพระคริสตวรกาย"
 msgid "Idul Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#. National Holidays (Special).
-msgid "Feriados Nacionais (Especiais)"
-msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
-
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
 msgstr "วันเด็กสากล"
@@ -131,6 +128,10 @@ msgstr "วันพฤหัสศักดิสิทธิ์"
 msgid "Dia da Ascensão de Jesus Cristo ao Céu"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
+#. National Holidays (Special).
+msgid "Feriados Nacionais (Especiais)"
+msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
+
 #. Presidential Election Day.
 msgid "Dia da Eleição Presidencial"
 msgstr "วันเลือกตั้งประธานาธิบดี"
@@ -138,6 +139,10 @@ msgstr "วันเลือกตั้งประธานาธิบดี
 #. Parliamentary Election Day.
 msgid "Dia de Eleições Parlamentares"
 msgstr "วันเลือกตั้งสมาชิกรัฐสภา"
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
+msgstr "วันเลือกตั้งท้องถิ่น"
 
 #. Centenary of the Revolt of Dom Boaventura.
 msgid "Centenário da Revolta de Dom Boaventura"
@@ -154,10 +159,6 @@ msgstr "วันครบรอบ 20 ปีของการลงประ�
 #. 25th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 25.º Aniversário da Consulta Popular"
 msgstr "วันครบรอบ 25 ปีของการลงประชามติเอกราช"
-
-#. Local Election Day.
-msgid "Dia de eleições locais"
-msgstr "วันเลือกตั้งท้องถิ่น"
 
 #. Visit of His Holiness Pope Francis to Timor-Leste.
 msgid "Visita de Sua Santidade o Papa Francisco a Timor-Leste"

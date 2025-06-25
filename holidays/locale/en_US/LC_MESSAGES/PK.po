@@ -27,6 +27,11 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: en_PK\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
 #. Kashmir Solidarity Day.
 msgid "Kashmir Solidarity Day"
 msgstr "Kashmir Solidarity Day"
@@ -38,6 +43,10 @@ msgstr "Pakistan Day"
 #. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
+
+#. Youm-e-Takbeer.
+msgid "Youm-e-Takbeer"
+msgstr "Youm-e-Takbeer"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -66,12 +75,3 @@ msgstr "Prophet's Birthday"
 #. Ashura.
 msgid "Ashura"
 msgstr "Ashura"
-
-#. %s (estimated).
-#, c-format
-msgid "%s (estimated)"
-msgstr "%s (estimated)"
-
-#. Youm-e-Takbeer.
-msgid "Youm-e-Takbeer"
-msgstr "Youm-e-Takbeer"

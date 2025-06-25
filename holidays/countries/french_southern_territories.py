@@ -17,7 +17,7 @@ class HolidaysTF(France):
     """French Southern Territories holidays.
 
     Alias of a French subdivision that is also officially assigned
-    its own country code in ISO 31661.
+    its own country code in ISO 3166-1.
 
     !!! note "Note"
         Since most islands doesn't have a permanent population,
@@ -35,6 +35,10 @@ class HolidaysTF(France):
     subdivisions_aliases = {}  # Override France subdivisions aliases.
     # This overseas territory was separated in 1955.
     start_year = 1956
+
+    def _populate_public_holidays(self) -> None:
+        self.subdiv = "TF"
+        super()._populate_public_holidays()
 
 
 class FrenchSouthernTerritories(HolidaysTF):

@@ -35,6 +35,10 @@ msgstr "%s (observed)"
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
+#. Lavity Stoutt's Birthday.
+msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
+msgstr "Lavity Stoutt's Birthday"
+
 #. Commonwealth Day.
 msgid "Commonwealth Day"
 msgstr "Commonwealth Day"
@@ -55,29 +59,41 @@ msgstr "Whit Monday"
 msgid "Sovereign's Birthday"
 msgstr "Sovereign's Birthday"
 
-#. Colony Day.
-msgid "Colony Day"
-msgstr "Colony Day"
+#. Virgin Islands Day.
+msgid "Virgin Islands Day"
+msgstr "Virgin Islands Day"
 
 #. Territory Day.
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Virgin Islands Day.
-msgid "Virgin Islands Day"
-msgstr "Virgin Islands Day"
+#. Colony Day.
+msgid "Colony Day"
+msgstr "Colony Day"
 
 #. Emancipation Monday.
 msgid "Emancipation Monday"
 msgstr "Emancipation Monday"
 
+#. Festival Monday.
+msgid "Festival Monday"
+msgstr "Festival Monday"
+
 #. Emancipation Tuesday.
 msgid "Emancipation Tuesday"
 msgstr "Emancipation Tuesday"
 
+#. Festival Tuesday.
+msgid "Festival Tuesday"
+msgstr "Festival Tuesday"
+
 #. Emancipation Wednesday.
 msgid "Emancipation Wednesday"
 msgstr "Emancipation Wednesday"
+
+#. Festival Wednesday.
+msgid "Festival Wednesday"
+msgstr "Festival Wednesday"
 
 #. Saint Ursula's Day.
 msgid "Saint Ursula's Day"
@@ -91,29 +107,13 @@ msgstr "Heroes and Foreparents Day"
 msgid "The Great March of 1949 and Restoration Day"
 msgstr "The Great March of 1949 and Restoration Day"
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. Lavity Stoutt's Birthday.
-msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
-msgstr "Lavity Stoutt's Birthday"
-
-#. Festival Monday.
-msgid "Festival Monday"
-msgstr "Festival Monday"
-
-#. Festival Tuesday.
-msgid "Festival Tuesday"
-msgstr "Festival Tuesday"
-
-#. Festival Wednesday.
-msgid "Festival Wednesday"
-msgstr "Festival Wednesday"
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
 
 #. State Funeral of Honourable Ralph T. O'Neal.
 msgid "State Funeral of Honourable Ralph T. O'Neal"

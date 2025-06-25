@@ -24,10 +24,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
+"X-Source-Language: en_LC\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
+
+#. New Year's Holiday.
+msgid "New Year's Holiday"
+msgstr "New Year's Holiday"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -57,6 +67,10 @@ msgstr "Corpus Christi"
 msgid "Emancipation Day"
 msgstr "Emancipation Day"
 
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "Thanksgiving Day"
+
 #. National Day.
 msgid "National Day"
 msgstr "National Day"
@@ -68,16 +82,3 @@ msgstr "Christmas Day"
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
-
-#. New Year's Holiday.
-msgid "New Year's Holiday"
-msgstr "New Year's Holiday"
-
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr "%s (observed)"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "Thanksgiving Day"

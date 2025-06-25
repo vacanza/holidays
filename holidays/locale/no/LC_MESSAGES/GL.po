@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.5\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: kl\n"
 
 #. New Year's Day.
 msgid "Ukiortaaq"
