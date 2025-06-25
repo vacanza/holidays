@@ -11,7 +11,11 @@
 #  License: MIT (see LICENSE file)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __version__ = "0.80"
 =======
 __version__ = "0.75"
 >>>>>>> 92346375 (fixes)
+=======
+__version__ = "0.76"
+>>>>>>> 85ea111e (fix)
