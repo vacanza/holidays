@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Bonaire Sint Eustatius And Saba holidays en_BQ localization..
+# Bonaire, Sint Eustatius and Saba holidays en_BQ localization.
 #
 msgid ""
 msgstr ""
@@ -71,21 +71,25 @@ msgid "Tweede Kerstdag"
 msgstr "Boxing Day"
 
 #. Rincon Day.
-msgid "Dia di Rincon"
+msgid "Rincon dag"
 msgstr "Rincon Day"
-
-#. Bonaire Day.
-msgid "Dia di Boneiru"
-msgstr "Bonaire Day"
 
 #. Emancipation Day.
 msgid "Emancipatie dag"
 msgstr "Emancipation Day"
 
+#. Bonaire Day.
+msgid "Boneiru dag"
+msgstr "Bonaire Day"
+
+#. Carnival Monday.
+msgid "Dag na de carnavalsoptocht"
+msgstr "Carnival Monday"
+
 #. Saba Day.
-msgid "Saba Dag"
+msgid "Saba dag"
 msgstr "Saba Day"
 
 #. Statia Day.
-msgid "Statia Dag"
+msgid "Statia dag"
 msgstr "Statia Day"

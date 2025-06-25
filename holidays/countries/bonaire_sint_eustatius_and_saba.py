@@ -24,6 +24,9 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         * [Public Holidays 2025](https://web.archive.org/web/20250620050728/https://english.rijksdienstcn.com/social-affairs-work/employment/official-holidays)
         * [Public Holidays in Sint Eustatius in 2025](https://web.archive.org/web/20250621132223/https://www.officeholidays.com/countries/bonaire-st-eustatius-saba/sint-eustatius/2025)
         * [Upcoming Bonaire, St Eustatius and Saba Public Holidays](https://web.archive.org/web/20250427005333/https://www.qppstudio.net/public-holidays/bonaire__st_eustatius_and_saba.htm)
+        * [NATIONAL ORDINANCE of 27 July 2000 (Labour Regulations 2000)](https://lokaleregelgeving.overheid.nl/CVDR10375/1)
+        * [Official holidays](https://web.archive.org/web/20250323122427/https://www.rijksdienstcn.com/sociale-zaken-werk/arbeid/officiele-feestdagen)
+        * [Dia di fiesta ofisial](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
     """
 
     country = "BQ"
@@ -86,21 +89,21 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
 
     def _populate_subdiv_bon_public_holidays(self):
         # Rincon Day.
-        self._add_holiday_apr_30(tr("Dia di Rincon"))
-
-        # Bonaire Day.
-        self._add_holiday_sep_6(tr("Dia di Boneiru"))
+        self._add_holiday_apr_30(tr("Rincon dag"))
 
         # Emancipation Day.
         self._add_holiday_jul_1(tr("Emancipatie dag"))
 
+        # Bonaire Day.
+        self._add_holiday_sep_6(tr("Boneiru dag"))
+
     def _populate_subdiv_sab_public_holidays(self):
         # Carnival Monday.
-        name = "Dag na de carnavalsoptocht"
+        name = tr("Dag na de carnavalsoptocht")
         carnival_monday_dates = {
+            2022: (JUL, 4),
             2020: (AUG, 3),
             2021: (SEP, 6),
-            2022: (JUL, 4),
         }
         if self._year in carnival_monday_dates:
             self._add_holiday(name, carnival_monday_dates[self._year])
@@ -108,14 +111,14 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
             self._add_holiday_2nd_mon_of_jul(name)
 
         # Saba Day.
-        self._add_holiday_dec_6(tr("Saba Dag"))
+        self._add_holiday_1st_fri_of_dec(tr("Saba dag"))
 
     def _populate_subdiv_sta_public_holidays(self):
         # Emancipation Day.
         self._add_holiday_jul_1(tr("Emancipatie dag"))
 
         # Statia Day.
-        self._add_holiday_nov_16(tr("Statia Dag"))
+        self._add_holiday_nov_16(tr("Statia dag"))
 
 
 class BQ(BonaireSintEustatiusAndSaba):

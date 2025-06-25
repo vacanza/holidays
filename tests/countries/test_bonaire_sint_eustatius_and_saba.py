@@ -97,7 +97,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         )
 
     def test_rincon_day(self):
-        name = "Dia di Rincon"
+        name = "Rincon dag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -147,7 +147,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_bonaire_day(self):
-        name = "Dia di Boneiru"
+        name = "Boneiru dag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -157,7 +157,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_statia_day(self):
-        name = "Statia Dag"
+        name = "Statia dag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -167,7 +167,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_saba_day(self):
-        name = "Saba Dag"
+        name = "Saba dag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -191,15 +191,15 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-04-09", "Eerste Paasdag"),
             ("2023-04-10", "Tweede Paasdag"),
             ("2023-04-27", "Koningsdag"),
-            ("2023-04-30", "Dia di Rincon"),
+            ("2023-04-30", "Rincon dag"),
             ("2023-05-01", "Dag van de Arbeid"),
             ("2023-05-18", "Hemelvaartsdag"),
             ("2023-05-28", "Eerste Pinksterdag"),
             ("2023-07-01", "Emancipatie dag"),
             ("2023-07-10", "Dag na de carnavalsoptocht"),
-            ("2023-09-06", "Dia di Boneiru"),
-            ("2023-11-16", "Statia Dag"),
-            ("2023-12-06", "Saba Dag"),
+            ("2023-09-06", "Boneiru dag"),
+            ("2023-11-16", "Statia dag"),
+            ("2023-12-01", "Saba dag"),
             ("2023-12-25", "Eerste Kerstdag"),
             ("2023-12-26", "Tweede Kerstdag"),
         )
@@ -217,10 +217,10 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-05-18", "Ascension Day"),
             ("2023-05-28", "Whit Sunday"),
             ("2023-07-01", "Emancipation Day"),
-            ("2023-07-10", "Dag na de carnavalsoptocht"),
+            ("2023-07-10", "Carnival Monday"),
             ("2023-09-06", "Bonaire Day"),
             ("2023-11-16", "Statia Day"),
-            ("2023-12-06", "Saba Day"),
+            ("2023-12-01", "Saba Day"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Boxing Day"),
         )
@@ -238,10 +238,10 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-05-18", "Ascension Day"),
             ("2023-05-28", "Whit Sunday"),
             ("2023-07-01", "Emancipation Day"),
-            ("2023-07-10", "Dag na de carnavalsoptocht"),
+            ("2023-07-10", "Carnival Monday"),
             ("2023-09-06", "Bonaire Day"),
             ("2023-11-16", "Statia Day"),
-            ("2023-12-06", "Saba Day"),
+            ("2023-12-01", "Saba Day"),
             ("2023-12-25", "Christmas Day"),
             ("2023-12-26", "Boxing Day"),
         )
@@ -257,12 +257,12 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-04-30", "Dia di Rincon"),
             ("2023-05-01", "Dia di labor"),
             ("2023-05-18", "Asenshon"),
-            ("2023-05-28", "Asenshon"),
+            ("2023-05-28", "Dia di Pentekòste"),
             ("2023-07-01", "Dia di Emansipashon"),
-            ("2023-07-10", "Dag na de carnavalsoptocht"),
+            ("2023-07-10", "Djaluna di Carnaval"),
             ("2023-09-06", "Dia di Boneiru"),
-            ("2023-11-16", "Dia di Sint Eustatius"),
-            ("2023-12-06", "Dia di Saba"),
+            ("2023-11-16", "Dia di Statia"),
+            ("2023-12-01", "Dia di Saba"),
             ("2023-12-25", "Pasku"),
             ("2023-12-26", "Di dos dia di Pasku"),
         )
