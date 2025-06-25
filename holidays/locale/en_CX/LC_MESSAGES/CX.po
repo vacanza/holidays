@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
 "PO-Revision-Date: 2025-06-12 12:00+0000\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
@@ -74,21 +74,21 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
-msgid "Christmas Day"
-msgstr "Christmas Day"
-
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. National Day of Mourning for Queen Elizabeth II.
-msgid "National Day of Mourning for Queen Elizabeth II"
-msgstr "National Day of Mourning for Queen Elizabeth II"
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Hari Raya Puasa"
+msgstr "Hari Raya Puasa"
 
 #. Eid al-Adha.
 msgid "Hari Raya Haji"
 msgstr "Hari Raya Haji"
 
-#. Eid al-Fitr.
-msgid "Hari Raya Puasa"
-msgstr "Hari Raya Puasa"
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "National Day of Mourning for Queen Elizabeth II"
