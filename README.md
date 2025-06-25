@@ -325,7 +325,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bonaire Sint Eustatius and Saba</td>
 <td>BQ</td>
 <td>Subdivisions: BON (Bonaire), SAB (Saba), STA (Sint Eustatius)</td>
-<td>en_BQ, en_US, <strong>nl</strong></td>
+<td>en_BQ, en_US, <strong>nl</strong>, pap_BQ</td>
 <td></td>
 </tr>
 <tr>

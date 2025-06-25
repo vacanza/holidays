@@ -24,10 +24,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
-"X-Source-Language: en_BQ\n"
+"X-Source-Language: nl\n"
 
 #. New Year's Day.
-msgid "Nieuwjaar"
+msgid "Nieuwjaarsdag"
 msgstr "New Year's Day"
 
 #. Good Friday.
@@ -35,31 +35,35 @@ msgid "Goede Vrijdag"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-msgid "Pasen"
+msgid "Eerste Paasdag"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-msgid "Paasmaandag"
+msgid "Tweede Paasdag"
 msgstr "Easter Monday"
 
-#. King's Birthday.
+#. King's Day.
 msgid "Koningsdag"
-msgstr "King's Birthday"
+msgstr "King's Day"
+
+#. Queen's Day.
+msgid "Koninginnedag"
+msgstr "Queen's Day"
 
 #. Labor Day.
 msgid "Dag van de Arbeid"
 msgstr "Labor Day"
 
 #. Ascension Day.
-msgid "Hemelvaart"
+msgid "Hemelvaartsdag"
 msgstr "Ascension Day"
 
 #. Whit Sunday.
-msgid "Pinksteren"
+msgid "Eerste Pinksterdag"
 msgstr "Whit Sunday"
 
 #. Christmas Day.
-msgid "Kerstmis"
+msgid "Eerste Kerstdag"
 msgstr "Christmas Day"
 
 #. Boxing Day.
@@ -67,15 +71,15 @@ msgid "Tweede Kerstdag"
 msgstr "Boxing Day"
 
 #. Rincon Day.
-msgid "Rincon Dag"
+msgid "Dia di Rincon"
 msgstr "Rincon Day"
 
 #. Bonaire Day.
-msgid "Bonaire Dag"
+msgid "Dia di Boneiru"
 msgstr "Bonaire Day"
 
 #. Emancipation Day.
-msgid "Dag van de Emancipatie"
+msgid "Emancipatie dag"
 msgstr "Emancipation Day"
 
 #. Saba Day.
@@ -85,7 +89,3 @@ msgstr "Saba Day"
 #. Statia Day.
 msgid "Statia Dag"
 msgstr "Statia Day"
-
-#. Queen's Day.
-msgid "Koninginnedag"
-msgstr "Queen's Day"

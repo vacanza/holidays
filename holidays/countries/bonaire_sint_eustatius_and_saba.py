@@ -40,7 +40,7 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         "Saba": "SAB",
         "Sint Eustatius": "STA",
     }
-    supported_languages = ("en_BQ", "en_US", "nl")
+    supported_languages = ("en_BQ", "en_US", "nl", "pap_BQ")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -49,19 +49,19 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day(tr("Nieuwjaar"))
+        self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         # Good Friday.
         self._add_good_friday(tr("Goede Vrijdag"))
 
         # Easter Sunday.
-        self._add_easter_sunday(tr("Pasen"))
+        self._add_easter_sunday(tr("Eerste Paasdag"))
 
         # Easter Monday.
-        self._add_easter_monday(tr("Paasmaandag"))
+        self._add_easter_monday(tr("Tweede Paasdag"))
 
         self._move_holiday(
-            # King's Birthday.
+            # King's Day.
             self._add_holiday_apr_27(tr("Koningsdag"))
             if self._year >= 2014
             # Queen's Day.
@@ -73,30 +73,30 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         self._add_labor_day(tr("Dag van de Arbeid"))
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("Hemelvaart"))
+        self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
         # Whit Sunday.
-        self._add_whit_sunday(tr("Pinksteren"))
+        self._add_whit_sunday(tr("Eerste Pinksterdag"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Kerstmis"))
+        self._add_christmas_day(tr("Eerste Kerstdag"))
 
         # Boxing Day.
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
     def _populate_subdiv_bon_public_holidays(self):
         # Rincon Day.
-        self._add_holiday_apr_30(tr("Rincon Dag"))
+        self._add_holiday_apr_30(tr("Dia di Rincon"))
 
         # Bonaire Day.
-        self._add_holiday_sep_6(tr("Bonaire Dag"))
+        self._add_holiday_sep_6(tr("Dia di Boneiru"))
 
         # Emancipation Day.
-        self._add_holiday_jul_1(tr("Dag van de Emancipatie"))
+        self._add_holiday_jul_1(tr("Emancipatie dag"))
 
     def _populate_subdiv_sab_public_holidays(self):
         # Carnival Monday.
-        name = "Carnavalsmaandag"
+        name = "Dag na de carnavalsoptocht"
         carnival_monday_dates = {
             2020: (AUG, 3),
             2021: (SEP, 6),
@@ -112,7 +112,7 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
 
     def _populate_subdiv_sta_public_holidays(self):
         # Emancipation Day.
-        self._add_holiday_jul_1(tr("Dag van de Emancipatie"))
+        self._add_holiday_jul_1(tr("Emancipatie dag"))
 
         # Statia Day.
         self._add_holiday_nov_16(tr("Statia Dag"))
