@@ -73,6 +73,7 @@ msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
 #. Labor Day.
+<<<<<<< HEAD
 msgid "Labour Day"
 msgstr "Labor Day"
 
@@ -109,6 +110,8 @@ msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
 #. Labour Day.
+=======
+>>>>>>> 374ed607 (fixed formatting)
 msgid "Labour Day"
 msgstr "Labour Day"
 
@@ -130,6 +133,7 @@ msgstr "Territory Day"
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 5505906f (Add Christmas Island holidays)
 #. Christmas Day.
 =======
@@ -149,10 +153,13 @@ msgstr "Eid al-Adha"
 =======
 >>>>>>> 92346375 (fixes)
 #. Boxing Day.
+=======
+>>>>>>> 374ed607 (fixed formatting)
 msgid "Boxing Day"
 msgstr "Boxing Day"
 >>>>>>> 5505906f (Add Christmas Island holidays)
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 

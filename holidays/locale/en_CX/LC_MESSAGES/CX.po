@@ -125,7 +125,7 @@ msgstr "Australia Day"
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labour Day"
 
@@ -145,10 +145,10 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
@@ -170,6 +170,9 @@ msgstr "National Day of Mourning for Queen Elizabeth II"
 >>>>>>> ee363fb5 (fix: typo)
 =======
 =======
+=======
+#. Christmas Day.
+>>>>>>> 374ed607 (fixed formatting)
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
