@@ -10,27 +10,42 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import MAR
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.united_states_virgin_islands import HolidaysVI, VI, VIR
+from holidays.countries.united_states_virgin_islands import (
+    HolidaysVI,
+    UnitedStatesVirginIslands,
+    VI,
+    VIR,
+)
 from tests.common import CommonCountryTests
 
 
 class TestVI(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysVI)
+        super().setUpClass(HolidaysVI, years=range(1918, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysVI, VI, VIR)
+        self.assertAliases(HolidaysVI, UnitedStatesVirginIslands, VI, VIR)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysVI(years=1917))
 
     def test_vi_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Transfer Day", self.holidays.get_list(date(2020, MAR, 31)))
+        self.assertHolidayName("Three Kings Day", "2016-01-06")
+        self.assertHolidayName("Presidents' Day", "2016-02-15")
+        self.assertHolidayName("Holy Thursday", "2016-03-24")
+        self.assertHolidayName("Good Friday", "2016-03-25")
+        self.assertHolidayName("Easter Monday", "2016-03-28")
+        self.assertHolidayName("Transfer Day", "2016-03-31")
+        self.assertHolidayName("Emancipation Day", "2016-07-03")
+        self.assertHolidayName("Columbus Day and Puerto Rico Friendship Day", "2016-10-10")
+        self.assertHolidayName("Liberty Day", "2016-11-01")
+        self.assertHolidayName("Christmas Second Day", "2016-12-26")
 
     def test_government_holidays(self):
         self.assertHolidays(

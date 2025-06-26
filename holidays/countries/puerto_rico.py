@@ -26,6 +26,8 @@ class HolidaysPR(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # Became a U.S. Territory on April 11th, 1899.
+    start_year = 1900
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "PR"
@@ -40,13 +42,13 @@ class HolidaysPR(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class PuertoRico(HolidaysPR):
+    pass
+
+
 class PR(HolidaysPR):
     pass
 
 
 class PRI(HolidaysPR):
-    pass
-
-
-class PuertoRico(HolidaysPR):
     pass

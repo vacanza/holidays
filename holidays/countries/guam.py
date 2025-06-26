@@ -26,6 +26,8 @@ class HolidaysGU(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # Became a U.S. Territory on April 11th, 1899.
+    start_year = 1900
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "GU"
@@ -40,13 +42,13 @@ class HolidaysGU(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class Guam(HolidaysGU):
+    pass
+
+
 class GU(HolidaysGU):
     pass
 
 
 class GUM(HolidaysGU):
-    pass
-
-
-class Guam(HolidaysGU):
     pass

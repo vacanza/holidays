@@ -26,6 +26,8 @@ class HolidaysUM(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # The first islands were claimed via Guano Islands Act on August 18th, 1856.
+    start_year = 1857
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "UM"
@@ -40,13 +42,13 @@ class HolidaysUM(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class UnitedStatesMinorOutlyingIslands(HolidaysUM):
+    pass
+
+
 class UM(HolidaysUM):
     pass
 
 
 class UMI(HolidaysUM):
-    pass
-
-
-class UnitedStatesMinorOutlyingIslands(HolidaysUM):
     pass

@@ -26,6 +26,8 @@ class HolidaysMP(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # UNSC Resolution 21 on April 2nd, 1947.
+    start_year = 1948
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "MP"
@@ -40,13 +42,13 @@ class HolidaysMP(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class NorthernMarianaIslands(HolidaysMP):
+    pass
+
+
 class MP(HolidaysMP):
     pass
 
 
 class MNP(HolidaysMP):
-    pass
-
-
-class NorthernMarianaIslands(HolidaysMP):
     pass

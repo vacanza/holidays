@@ -13,23 +13,28 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.american_samoa import HolidaysAS, AS, ASM
+from holidays.countries.american_samoa import HolidaysAS, AmericanSamoa, AS, ASM
 from tests.common import CommonCountryTests
 
 
 class TestAS(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysAS)
+        super().setUpClass(HolidaysAS, years=range(1901, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysAS, AS, ASM)
+        self.assertAliases(HolidaysAS, AmericanSamoa, AS, ASM)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysAS(years=1900))
 
     def test_as_only(self):
         """Check for a holiday that is not returned by US unless the subdivision is specified."""
-        self.assertHolidayName("American Samoa Flag Day", "2024-04-17")
-        self.assertHolidayName("Manu'a Islands Cession Day", "2024-07-16")
-        self.assertHolidayName("White Sunday", "2024-10-13")
+        self.assertHolidayName("American Samoa Flag Day", "2016-04-17")
+        self.assertHolidayName("American Samoa Flag Day (observed)", "2016-04-18")
+        self.assertHolidayName("Manu'a Islands Cession Day (observed)", "2016-07-15")
+        self.assertHolidayName("Manu'a Islands Cession Day", "2016-07-16")
+        self.assertHolidayName("White Sunday", "2016-10-09")
 
     def test_government_holidays(self):
         self.assertHolidays(

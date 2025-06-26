@@ -10,27 +10,32 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import MAR
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.guam import HolidaysGU, GU, GUM
+from holidays.countries.guam import HolidaysGU, Guam, GU, GUM
 from tests.common import CommonCountryTests
 
 
 class TestGU(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysGU)
+        super().setUpClass(HolidaysGU, years=range(1900, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysGU, GU, GUM)
+        self.assertAliases(HolidaysGU, Guam, GU, GUM)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Guam(years=1899))
 
     def test_gu_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Guam Discovery Day", self.holidays.get_list(date(2016, MAR, 7)))
+        self.assertHolidayName("Guam Discovery Day", "2016-03-07")
+        self.assertHolidayName("Good Friday", "2016-03-25")
+        self.assertHolidayName("Liberation Day (Guam)", "2016-07-21")
+        self.assertHolidayName("All Souls' Day", "2016-11-02")
+        self.assertHolidayName("Lady of Camarin Day", "2016-12-08")
 
     def test_government_holidays(self):
         self.assertHolidays(

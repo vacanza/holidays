@@ -10,27 +10,33 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import NOV
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.puerto_rico import HolidaysPR, PR, PRI
+from holidays.countries.puerto_rico import HolidaysPR, PuertoRico, PR, PRI
 from tests.common import CommonCountryTests
 
 
 class TestPR(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPR)
+        super().setUpClass(HolidaysPR, years=range(1900, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysPR, PR, PRI)
+        self.assertAliases(HolidaysPR, PuertoRico, PR, PRI)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysPR(years=1899))
 
     def test_pr_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Discovery Day (observed)", self.holidays.get_list(date(2017, NOV, 20)))
+        self.assertHolidayName("Epiphany", "2016-01-06")
+        self.assertHolidayName("Presidents' Day", "2016-02-15")
+        self.assertHolidayName("Emancipation Day", "2016-03-22")
+        self.assertHolidayName("Good Friday", "2016-03-25")
+        self.assertHolidayName("Constitution Day", "2016-07-25")
+        self.assertHolidayName("Discovery Day", "2016-11-19")
 
     def test_government_holidays(self):
         self.assertHolidays(

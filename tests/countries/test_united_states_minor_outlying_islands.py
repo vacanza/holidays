@@ -13,20 +13,40 @@
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.united_states_minor_outlying_islands import HolidaysUM, UM, UMI
+from holidays.countries.united_states_minor_outlying_islands import (
+    HolidaysUM,
+    UnitedStatesMinorOutlyingIslands,
+    UM,
+    UMI,
+)
 from tests.common import CommonCountryTests
 
 
 class TestUM(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysUM)
+        super().setUpClass(HolidaysUM, years=range(1857, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysUM, UM, UMI)
+        self.assertAliases(HolidaysUM, UnitedStatesMinorOutlyingIslands, UM, UMI)
 
-    def test_common(self):
-        self.assertIn("Christmas Day", self.holidays["2022-12-25"])
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysUM(years=1856))
+
+    def test_public_holidays(self):
+        self.assertHolidays(
+            HolidaysUM(years=2024),
+            ("2024-01-01", "New Year's Day"),
+            ("2024-01-15", "Martin Luther King Jr. Day"),
+            ("2024-02-19", "Washington's Birthday"),
+            ("2024-05-27", "Memorial Day"),
+            ("2024-06-19", "Juneteenth National Independence Day"),
+            ("2024-07-04", "Independence Day"),
+            ("2024-09-02", "Labor Day"),
+            ("2024-11-11", "Veterans Day"),
+            ("2024-11-28", "Thanksgiving Day"),
+            ("2024-12-25", "Christmas Day"),
+        )
 
     def test_government_holidays(self):
         self.assertHolidays(

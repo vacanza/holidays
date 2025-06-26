@@ -26,6 +26,8 @@ class HolidaysAS(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # Became a U.S. Territory since April 17th, 1900.
+    start_year = 1901
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "AS"
@@ -40,13 +42,13 @@ class HolidaysAS(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class AmericanSamoa(HolidaysAS):
+    pass
+
+
 class AS(HolidaysAS):
     pass
 
 
 class ASM(HolidaysAS):
-    pass
-
-
-class AmericanSamoa(HolidaysAS):
     pass

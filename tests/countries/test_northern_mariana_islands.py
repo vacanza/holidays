@@ -10,27 +10,33 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import MAR
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.northern_mariana_islands import HolidaysMP, MP, MNP
+from holidays.countries.northern_mariana_islands import HolidaysMP, NorthernMarianaIslands, MP, MNP
 from tests.common import CommonCountryTests
 
 
 class TestMP(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMP)
+        super().setUpClass(HolidaysMP, years=(1948, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysMP, MP, MNP)
+        self.assertAliases(HolidaysMP, NorthernMarianaIslands, MP, MNP)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysMP(years=1947))
 
     def test_mp_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Commonwealth Covenant Day", self.holidays.get_list(date(2022, MAR, 24)))
+        self.assertHolidayName("Commonwealth Covenant Day", "2016-03-24")
+        self.assertHolidayName("Good Friday", "2016-03-25")
+        self.assertHolidayName("Commonwealth Cultural Day", "2016-10-10")
+        self.assertHolidayName("Citizenship Day", "2016-11-04")
+        self.assertHolidayName("Election Day", "2016-11-08")
+        self.assertHolidayName("Constitution Day", "2016-12-08")
 
     def test_government_holidays(self):
         self.assertHolidays(

@@ -26,6 +26,8 @@ class HolidaysVI(UnitedStates):
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # Became a U.S. Territory since March 31st, 1917.
+    start_year = 1918
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "VI"
@@ -40,13 +42,13 @@ class HolidaysVI(UnitedStates):
         super()._populate_unofficial_holidays()
 
 
+class UnitedStatesVirginIslands(HolidaysVI):
+    pass
+
+
 class VI(HolidaysVI):
     pass
 
 
 class VIR(HolidaysVI):
-    pass
-
-
-class UnitedStatesVirginIslands(HolidaysVI):
     pass
