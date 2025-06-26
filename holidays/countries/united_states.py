@@ -1410,7 +1410,7 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         1862: (APR, 10, tr("Thanksgiving Day")),
     }
 
-    # Pre-1971 Inauguration Day observances.
+    # Pre-1953 Inauguration Day observances.
     special_dc_public_holidays_observed = {
         1877: (MAR, 5, inauguration_day_name),
         1917: (MAR, 5, inauguration_day_name),
