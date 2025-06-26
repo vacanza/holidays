@@ -37,14 +37,13 @@ class ChristmasIsland(
     StaticHolidays,
     ChineseCalendarHolidays,
 ):
-    """
-    Christmas Island Holidays.
+    """Christmas Island Holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Christmas_Island>
         * <https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf>
         * <https://web.archive.org/web/20250413083314/https://www.infrastructure.gov.au/sites/default/files/documents/a21-2024-administrator-community-bulletin-cki-public-holidays-2025.pdf>
-         * [2007](https://web.archive.org/web/20250612072036/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/01-2006_Public_Holidays_2007_CI.doc)
+        * [2007](https://web.archive.org/web/20250612072036/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/01-2006_Public_Holidays_2007_CI.doc)
         * [2008](https://web.archive.org/web/20240224131231/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/05-2007_Public_Holidays_CI.pdf)
         * [2008 Hari Raya Puasa Moved](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
         * [2009](https://web.archive.org/web/20231211180406/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/02-2008_2009_public_holiday_CI_gazette.pdf)
@@ -98,7 +97,7 @@ class ChristmasIsland(
         self._add_observed(self._add_chinese_new_years_day(name))
         self._add_observed(self._add_chinese_new_years_day_two(name))
 
-        # Labour Day.
+        # Labor Day.
         name = tr("Labour Day")
         if self._year in (2009, 2010, 2014, 2021, 2022, 2025):
             self._add_holiday_4th_mon_of_mar(name)
@@ -117,15 +116,13 @@ class ChristmasIsland(
         # Territory Day.
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
 
-        # Christmas & Boxing Day.
+        # Boxing Day.
         self._add_observed(
-            # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
 
         # Christmas Day.
-
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Eid al-Fitr.
@@ -156,6 +153,7 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
         2025: (JUN, 7),
     }
+
     EID_AL_FITR_DATES = {
         2007: (OCT, 15),
         2008: (OCT, 1),
@@ -184,7 +182,7 @@ class CXR(ChristmasIsland):
 
 
 class ChristmasIslandStaticHolidays:
-    """Christmas Islands special holidays.
+    """Christmas Island special holidays.
 
     References:
         * [National Day of Mourning 2022](https://web.archive.org/web/20240712013008/https://www.infrastructure.gov.au/sites/default/files/documents/03-2022-proclamation-ci-day-of-mourning.pdf)

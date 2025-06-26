@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Christmas Island holidays.
+# Christmas Island holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_CX\n"
 
 #. %s (observed).
 #, c-format
