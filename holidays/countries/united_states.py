@@ -315,10 +315,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # Labor Day.
             self._add_holiday_1st_mon_of_sep(tr("Labor Day"))
 
-        if include_federal:
-            if self._year >= 1971:
-                # Columbus Day.
-                self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
+        if self._year >= 1971 and include_federal:
+            # Columbus Day.
+            self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
 
         if self._year >= 1938:
             name = (
