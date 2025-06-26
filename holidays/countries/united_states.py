@@ -14,7 +14,6 @@ from gettext import gettext as tr
 from typing import Union
 
 from holidays.calendars.gregorian import (
-    JAN,
     FEB,
     MAR,
     APR,
@@ -60,6 +59,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         * [Thanksgiving Day Proclamations 1789-Present](https://web.archive.org/web/20240621142029/https://www.whatsoproudlywehail.org/curriculum/the-american-calendar/thanksgiving-day-proclamations-1789-present/)
         * [H.J. RES. 41](https://web.archive.org/web/20250222190611/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/joint-res-l.jpg&c=/legislative/features/thanksgiving/images/joint-res.caption.html)
         * [H.J. RES. 41 December 9th, 1941 Amendment](https://web.archive.org/web/20250523062313/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/amendment-l.jpg&c=/legislative/features/thanksgiving/images/amendment.caption.html)
+        * [B-112525 February 27th, 1953 32 COMP. GEN. 378](https://web.archive.org/web/20201001081239/https://www.gao.gov/products/b-112525#mt=e-report)
+        * [Public Law 89-554](https://web.archive.org/web/20250512204449/https://www.govinfo.gov/content/pkg/STATUTE-80/pdf/STATUTE-80-Pg378.pdf)
         * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
@@ -244,8 +245,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
-        # Executive Order 11582 - Observance of holidays by Government agencies.
-        kwargs.setdefault("observed_since", 1971)
+        # B-11252 February 27th, 1953 32 COMP. GEN. 378.
+        kwargs.setdefault("observed_since", 1953)
         super().__init__(*args, **kwargs)
 
     def _populate_common(self, include_federal: bool = False):
@@ -255,14 +256,32 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         Federal Holidays were first codified on June 28th, 1870
         via 16 Stat. 168.
 
+        First regulation on holidays in-lieu observance is from B-112525
+        February 27th, 1953 32 COMP. GEN. 378 document which shifts
+        from SUN to next MON only.
+
+        It wouldn't be until Public Law 89-554 from September 6th, 1966
+        that SAT to previous MON is listed as well.
+
+        This would be finally consolidated as part of E.O. 11582 of
+        February 11th, 1971 later.
+
         :param include_federal:
             Whether to include federal-specific holidays.
         """
+        self._observed_rule = (
+            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
+            if self._year >= 1966
+            else SUN_TO_NEXT_MON
+        )
+
         if self._year >= 1871:
             # New Year's Day.
             name = tr("New Year's Day")
             self._add_observed(self._add_new_years_day(name))
-            self._add_observed(self._next_year_new_years_day, name=name)
+            # Public Law 89-554 of September 6th, 1966.
+            if self._year >= 1967:
+                self._add_observed(self._next_year_new_years_day, name=name)
 
         if include_federal:
             if self._year >= 1986:
@@ -275,7 +294,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 if self._year >= 1971:
                     self._add_holiday_3rd_mon_of_feb(name)
                 else:
-                    self._add_holiday_feb_22(name)
+                    dt = self._add_holiday_feb_22(name)
+                    # B-112525 February 27th, 1953 32 COMP. GEN. 378.
+                    if self._year >= 1954:
+                        self._add_observed(dt)
 
         if self._year >= 1971:
             # Memorial Day.
@@ -1394,15 +1416,12 @@ class UnitedStatesStaticHolidays(StaticHolidays):
     special_dc_public_holidays_observed = {
         1877: (MAR, 5, inauguration_day_name),
         1917: (MAR, 5, inauguration_day_name),
-        1957: (JAN, 21, inauguration_day_name),
     }
     special_md_public_holidays_observed = {
         1877: (MAR, 5, inauguration_day_name),
         1917: (MAR, 5, inauguration_day_name),
-        1957: (JAN, 21, inauguration_day_name),
     }
     special_va_public_holidays_observed = {
         1877: (MAR, 5, inauguration_day_name),
         1917: (MAR, 5, inauguration_day_name),
-        1957: (JAN, 21, inauguration_day_name),
     }
