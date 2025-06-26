@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.27\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-06-09 23:12+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -27,33 +27,37 @@ msgstr ""
 "X-Generator: Poedit 3.3.1\n"
 "X-Source-Language: pap_AW\n"
 
-#. New Year's Day
+#. New Year's Day.
 msgid "Aña Nobo"
 msgstr "Новий рік"
 
-#. Betico Day
+#. Betico Day.
 msgid "Dia di Betico"
 msgstr "День Бетіко"
 
-#. Carnival Monday
+#. Carnival Monday.
 msgid "Dialuna despues di Carnaval Grandi"
 msgstr "Карнавальний понеділок"
 
-#. Monday before Ash Wednesday
+#. Monday before Ash Wednesday.
 msgid "Dialuna prome cu diaranson di shinish"
 msgstr "Понеділок перед Попільною середою"
 
-#. National Anthem and Flag Day
+#. National Anthem and Flag Day.
 msgid "Dia di Himno y Bandera"
 msgstr "День державного гімну та прапора"
 
-#. Good Friday
+#. Good Friday.
 msgid "Bierna Santo"
 msgstr "Страсна пʼятниця"
 
-#. Easter Monday
+#. Easter Monday.
 msgid "Di dos dia di Pasco di Resureccion"
 msgstr "Великодній понеділок"
+
+#. Labor Day.
+msgid "Dia di Obrero"
+msgstr "День праці"
 
 #. King's Day.
 msgid "Dia di Rey"
@@ -67,18 +71,14 @@ msgstr "День короля"
 msgid "Aña di La Reina"
 msgstr "День королеви"
 
-#. Labor Day
-msgid "Dia di Obrero"
-msgstr "День праці"
-
-#. Ascension Day
+#. Ascension Day.
 msgid "Dia di Asuncion"
 msgstr "Вознесіння Господнє"
 
-#. Christmas Day
+#. Christmas Day.
 msgid "Pasco di Nacemento"
 msgstr "Різдво Христове"
 
-#. Second Day of Christmas
+#. Second Day of Christmas.
 msgid "Di dos dia di Pasco di Nacemento"
 msgstr "Другий день Різдва"
