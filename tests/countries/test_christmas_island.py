@@ -387,7 +387,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2022-01-26", "Australia Day"),
             ("2022-02-01", "Chinese New Year"),
             ("2022-02-02", "Chinese New Year"),
-            ("2022-03-28", "Labour Day"),
+            ("2022-03-28", "Labor Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-25", "ANZAC Day"),

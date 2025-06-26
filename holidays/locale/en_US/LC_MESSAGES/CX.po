@@ -113,7 +113,7 @@ msgstr "Chinese New Year"
 =======
 >>>>>>> 374ed607 (fixed formatting)
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Good Friday.
 msgid "Good Friday"

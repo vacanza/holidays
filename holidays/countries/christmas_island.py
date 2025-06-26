@@ -148,8 +148,12 @@ class ChristmasIsland(
 
         # Labor Day.
         name = tr("Labour Day")
+<<<<<<< HEAD
         if self._year in (2009, 2010, 2014, 2021, 2022, 2025):
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+        if self._year in {2009, 2010, 2014, 2021, 2022, 2025}:
+>>>>>>> 314a5693 (fixed localization for labour day)
             self._add_holiday_4th_mon_of_mar(name)
         else:
             self._add_holiday_3rd_mon_of_mar(name)
