@@ -116,8 +116,8 @@ class ChristmasIsland(
         # Territory Day.
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
 
-        # Boxing Day.
         self._add_observed(
+            # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
