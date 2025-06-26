@@ -251,7 +251,7 @@ class TestAruba(CommonCountryTests, TestCase):
             ("2023-04-07", "Goede vrijdag"),
             ("2023-04-10", "Tweede paasdag"),
             ("2023-04-27", "Koningsdag"),
-            ("2023-05-01", "Dag van de arbeid"),
+            ("2023-05-01", "Dag van de Arbeid"),
             ("2023-05-18", "Hemelvaartsdag"),
             ("2023-12-25", "Eerste Kerstdag"),
             ("2023-12-26", "Tweede kerstdag"),
