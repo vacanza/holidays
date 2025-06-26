@@ -270,9 +270,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             Whether to include federal-specific holidays.
         """
         self._observed_rule = (
-            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-            if self._year >= 1966
-            else SUN_TO_NEXT_MON
+            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON if self._year >= 1966 else SUN_TO_NEXT_MON
         )
 
         if self._year >= 1871:
