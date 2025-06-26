@@ -55,7 +55,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     # %s (observed).
     observed_label = tr("%s (ملاحظة)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (المقدرة ملاحظة)")
+    observed_estimated_label = tr("%s (المقدرة، ملاحظة)")
     # The Republic of Yemen was declared on 22 May 1990.
     start_year = 1991
     supported_categories = (PUBLIC, SCHOOL, WORKDAY)

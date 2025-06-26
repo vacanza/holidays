@@ -39,7 +39,7 @@ msgstr "%s (observed)"
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (المقدرة ملاحظة)"
+msgid "%s (المقدرة، ملاحظة)"
 msgstr "%s (observed, estimated)"
 
 #. Eid al-Fitr Holiday

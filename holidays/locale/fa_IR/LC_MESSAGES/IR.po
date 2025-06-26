@@ -29,7 +29,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "%s (تخمین زده شده)"
+msgid "%s (تخمینی)"
 msgstr ""
 
 #. Islamic Revolution Day.
