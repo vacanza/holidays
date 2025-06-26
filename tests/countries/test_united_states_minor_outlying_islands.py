@@ -25,7 +25,7 @@ from tests.common import CommonCountryTests
 class TestUM(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysUM, years=range(1857, 2050))
+        super().setUpClass(HolidaysUM)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysUM, UnitedStatesMinorOutlyingIslands, UM, UMI)

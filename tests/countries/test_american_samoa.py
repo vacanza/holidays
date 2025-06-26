@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestAS(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysAS, years=range(1901, 2050))
+        super().setUpClass(HolidaysAS)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysAS, AmericanSamoa, AS, ASM)

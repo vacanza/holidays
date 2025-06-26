@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestMP(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysMP, years=(1948, 2050))
+        super().setUpClass(HolidaysMP)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysMP, NorthernMarianaIslands, MP, MNP)

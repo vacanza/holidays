@@ -25,7 +25,7 @@ from tests.common import CommonCountryTests
 class TestVI(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysVI, years=range(1918, 2050))
+        super().setUpClass(HolidaysVI)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysVI, UnitedStatesVirginIslands, VI, VIR)

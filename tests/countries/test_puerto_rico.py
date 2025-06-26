@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestPR(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(HolidaysPR, years=range(1900, 2050))
+        super().setUpClass(HolidaysPR)
 
     def test_country_aliases(self):
         self.assertAliases(HolidaysPR, PuertoRico, PR, PRI)
