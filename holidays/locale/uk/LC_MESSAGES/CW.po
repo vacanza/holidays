@@ -77,7 +77,7 @@ msgstr "День Кюрасао"
 
 #. Kingdom Day.
 msgid "Dia di Reino"
-msgstr "День Королівства Нідерландів"
+msgstr "День Королівства"
 
 #. Christmas Day.
 msgid "Pasku di Nasementu"

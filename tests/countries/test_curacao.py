@@ -161,7 +161,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             "2031-04-27",
             "2036-04-27",
         )
-        self.assertNoHolidayName(name, range(1955, 2013))
+        self.assertNoHolidayName(name, range(1955, 2014))
 
     def test_labor_day(self):
         name = "Dia di Obrero"
@@ -194,7 +194,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, range(1955, 2050))
 
     def test_whit_sunday(self):
         name = "Domingo di Pentekòstès"

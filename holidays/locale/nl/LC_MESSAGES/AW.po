@@ -57,7 +57,7 @@ msgstr "Tweede paasdag"
 
 #. Labor Day.
 msgid "Dia di Obrero"
-msgstr "Dag van de arbeid"
+msgstr "Dag van de Arbeid"
 
 #. King's Day.
 msgid "Dia di Rey"

@@ -49,7 +49,7 @@ class TestAruba(CommonCountryTests, TestCase):
     def test_betico_day(self):
         name = "Dia di Betico"
         self.assertHolidayName(name, (f"{year}-01-25" for year in range(1989, 2050)))
-        self.assertNoHolidayName(name, range(1955, 1988))
+        self.assertNoHolidayName(name, range(1955, 1989))
 
     def test_carnival_monday(self):
         name_carnival = "Dialuna despues di Carnaval Grandi"
@@ -73,12 +73,12 @@ class TestAruba(CommonCountryTests, TestCase):
             "2025-03-03",
         )
         self.assertHolidayName(name_mon_ash, range(2023, 2050))
-        self.assertNoHolidayName(name_carnival, range(1955, 1956), range(2023, 2050))
+        self.assertNoHolidayName(name_carnival, 1955, range(2023, 2050))
         self.assertNoHolidayName(name_mon_ash, range(1955, 2023))
 
     def test_national_anthem_and_flag_day(self):
         name = "Dia di Himno y Bandera"
-        self.assertHolidayName(name, (f"{year}-03-18" for year in range(1976, 2077)))
+        self.assertHolidayName(name, (f"{year}-03-18" for year in range(1976, 2050)))
         self.assertNoHolidayName(name, range(1955, 1976))
 
     def test_good_friday(self):
