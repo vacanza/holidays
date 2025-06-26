@@ -54,7 +54,7 @@ msgstr "Australia Day"
 msgid "Chinese New Year"
 msgstr "Chinese New Year"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labour Day"
 
@@ -74,10 +74,10 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
