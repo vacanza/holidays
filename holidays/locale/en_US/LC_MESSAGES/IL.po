@@ -14,17 +14,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.39\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2023-07-18 17:57+0300\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: he\n"
 
 #. %s (observed).

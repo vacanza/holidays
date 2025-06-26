@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2024-01-25 21:05+0200\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: ar\n"
 
 #. %s (estimated).

@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-08-03 18:21+0300\n"
-"PO-Revision-Date: 2025-01-21 15:34+0200\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
