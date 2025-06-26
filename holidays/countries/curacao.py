@@ -10,109 +10,121 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, _timedelta
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    SUN_TO_PREV_SAT,
+    SUN_TO_NEXT_MON,
+)
 
 
-class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Curacao(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Curaçao holidays.
 
     References:
-        * <https://web.archive.org/web/20240812164331/http://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70>
+        * [Arbeidsregeling 2000](https://web.archive.org/web/20250625071823/https://lokaleregelgeving.overheid.nl/CVDR10375)
+        * [Landbesluit no. 22/2060](https://web.archive.org/web/20240629135453/https://gobiernu.cw/wp-content/uploads/2022/12/123.-GT-Lb.Arebeidsregeling-2000-4.pdf)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Curaçao>
+        * <https://web.archive.org/web/20240723012531/https://loketdigital.gobiernu.cw/contact/officiele-vrije-dagen-op-curacao-nationale-feestdagen>
+        * <https://web.archive.org/web/20250422122824/https://www.meetcuracao.com/2-juli-dia-di-bandera-y-himno-op-curacao/>
     """
 
     country = "CW"
     default_language = "pap_CW"
     supported_categories = (HALF_DAY, PUBLIC)
     supported_languages = ("en_US", "nl", "pap_CW", "uk")
-    # 1954: Creation of the Netherlands Antilles.
-    start_year = 1954
+    # The Netherlands Antilles was established on December 15th, 1954.
+    start_year = 1955
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
         # Aña Nobo.
         # Status: In-Use.
 
-        # New Year's Day
+        # New Year's Day.
         self._add_new_years_day(tr("Aña Nobo"))
 
         # Dialuna despues di Carnaval Grandi.
         # Status: In-Use.
         # Started in 1947.
 
-        # Carnival Monday
+        # Carnival Monday.
         self._add_ash_monday(tr("Dialuna despues di Carnaval Grandi"))
 
         # Bièrnèsantu.
         # Status: In-Use.
 
-        # Good Friday
+        # Good Friday.
         self._add_good_friday(tr("Bièrnèsantu"))
 
         # Pasku di Resurekshon.
         # Status: In-Use
 
-        # Easter Sunday
+        # Easter Sunday.
         self._add_easter_sunday(tr("Pasku di Resurekshon"))
 
         # Di dos dia di Pasku di Resurekshon.
         # Status: In-Use.
 
-        # Easter Monday
+        # Easter Monday.
         self._add_easter_monday(tr("Di dos dia di Pasku di Resurekshon"))
+
+        # Dia di Obrero.
+        # Status: In-Use.
+        # If fall on Sunday, then this will be move to next working day.
+        # This is placed here before King's/Queen's Day for _move_holiday logic.
+
+        self._move_holiday(
+            # Labor Day.
+            self._add_labor_day(tr("Dia di Obrero")),
+            rule=SUN_TO_NEXT_MON if self._year >= 1980 else MON_TO_NEXT_TUE + SUN_TO_NEXT_MON,
+        )
 
         # Dia di la Reina/Dia di Rey.
         # Status: In-Use.
         # Started under Queen Wilhelmina in 1891.
         # Queen Beatrix kept Queen Juliana's Birthday after her coronation.
-        # Switched to Aña di Rey in 2014 for King Willem-Alexander.
-        # Have its name changed again to Dia di Rey from 2021 onwards.
+        # Switched to Dia di Rey in 2014 for King Willem-Alexander.
 
-        # King's / Queen's Day
-        name = (
+        self._move_holiday(
             # King's Day.
-            tr("Dia di Rey")
+            self._add_holiday_apr_27(tr("Dia di Rey"))
             if self._year >= 2014
             # Queen's Day.
-            else tr("Dia di la Reina")
+            else self._add_holiday_apr_30(tr("Dia di la Reina")),
+            rule=SUN_TO_PREV_SAT if self._year >= 1980 else SUN_TO_NEXT_MON,
         )
-        dt = date(self._year, APR, 27 if self._year >= 2014 else 30)
-        if self._is_sunday(dt):
-            dt = _timedelta(dt, -1 if self._year >= 1980 else +1)
-        self._add_holiday(name, dt)
-
-        # Dia di Obrero.
-        # Status: In-Use.
-        # If fall on Sunday, then this will be move to next working day.
-
-        dt = date(self._year, MAY, 1)
-        if self._is_sunday(dt) or (self._is_monday(dt) and self._year <= 1979):
-            dt = _timedelta(dt, +1)
-        # Labor Day
-        self._add_holiday(tr("Dia di Obrero"), dt)
 
         # Dia di Asenshon.
         # Status: In-Use.
 
-        # Ascension Day
+        # Ascension Day.
         self._add_ascension_thursday(tr("Dia di Asenshon"))
+
+        # Domingo di Pentekòstès.
+        # Status: Removed
+        # Exists in Labor Regulation 2000.
+        # Presumed to be removed from 2010 onwards.
+
+        if self._year <= 2009:
+            # Whit Sunday.
+            self._add_whit_sunday(tr("Domingo di Pentekòstès"))
 
         # Dia di Himno i Bandera.
         # Status: In-Use.
         # Starts in 1984.
 
         if self._year >= 1984:
-            # National Anthem and Flag Day
+            # National Anthem and Flag Day.
             self._add_holiday_jul_2(tr("Dia di Himno i Bandera"))
 
         # Dia di Pais Kòrsou / Dia di autonomia.
@@ -120,24 +132,38 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Starts in 2010.
 
         if self._year >= 2010:
-            # Curaçao Day
+            # Curaçao Day.
             self._add_holiday_oct_10(tr("Dia di Pais Kòrsou"))
+
+        # Kingdom Day.
+        # Status: Removed.
+        # Added on June 3rd, 2008 via P.B. 2008 no. 50.
+        # Presumed to have been removed in 2010 after Curacao gain its Autonomy.
+
+        if 2008 <= self._year <= 2009:
+            # Kingdom Day.
+            self._add_holiday_dec_15(tr("Dia di Reino"))
 
         # Pasku di Nasementu.
         # Status: In-Use.
 
-        # Christmas Day
+        # Christmas Day.
         self._add_christmas_day(tr("Pasku di Nasementu"))
 
         # Di dos dia di Pasku di Nasementu.
         # Status: In-Use.
 
-        # Second Day of Christmas
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Di dos dia di Pasku di Nasementu"))
 
     def _populate_half_day_holidays(self):
         # New Year's Eve.
-        self._add_new_years_eve(tr("Vispu di Aña Nobo"))
+        # Status: In-Use.
+        # Presumed to have been added after 2010.
+
+        if self._year >= 2010:
+            # New Year's Eve.
+            self._add_new_years_eve(tr("Vispu di Aña Nobo"))
 
 
 class CW(Curacao):
