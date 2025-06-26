@@ -13,9 +13,25 @@
 from gettext import gettext as tr
 from typing import Union
 
-from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    SEP,
+    NOV,
+    DEC,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+)
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -32,12 +48,19 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 )
 
 
-class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """United States of America (the) holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States>
+        * <https://en.wikipedia.org/wiki/Uniform_Monday_Holiday_Act>
         * [Federal holidays](https://web.archive.org/web/20250426120914/https://opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
+        * [Federal holidays history](https://web.archive.org/web/20250626042129/https://www.congress.gov/crs_external_products/R/PDF/R41990/R41990.11.pdf)
+        * [16 Stat. 168](https://web.archive.org/web/20240602080239/https://memory.loc.gov/cgi-bin/ampage?collId=llsl&fileName=016/llsl016.db&recNum=203)
+        * [Thanksgiving Day Proclamations 1789-Present](https://web.archive.org/web/20240621142029/https://www.whatsoproudlywehail.org/curriculum/the-american-calendar/thanksgiving-day-proclamations-1789-present/)
+        * [H.J. RES. 41](https://web.archive.org/web/20250222190611/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/joint-res-l.jpg&c=/legislative/features/thanksgiving/images/joint-res.caption.html)
+        * [H.J. RES. 41 December 9th, 1941 Amendment](https://web.archive.org/web/20250523062313/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/amendment-l.jpg&c=/legislative/features/thanksgiving/images/amendment.caption.html)
+        * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
@@ -219,12 +242,18 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
+        # Executive Order 11582 - Observance of holidays by Government agencies.
+        kwargs.setdefault("observed_since", 1971)
         super().__init__(*args, **kwargs)
 
     def _populate_common(self, include_federal: bool = False):
         """
         Populates common US holidays.
+
+        Federal Holidays were first codified on June 28th, 1870
+        via 16 Stat. 168.
 
         :param include_federal:
             Whether to include federal-specific holidays.
@@ -258,7 +287,7 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_holiday_jun_19(tr("Juneteenth National Independence Day"))
             )
 
-        if self._year >= 1871:
+        if self._year >= 1870:
             # Independence Day.
             self._add_observed(self._add_holiday_jul_4(tr("Independence Day")))
 
@@ -284,11 +313,25 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
-        if self._year >= 1871:
-            # Thanksgiving Day.
-            self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
+        # Thanksgiving Day.
+        # First declared annually as last THU of NOV by Abraham Lincoln in 1863.
+        # First codified as last THU of NOV on October 6th, 1941 via H.J. RES. 41.
+        # Become 4th THU of NOV from 1942 onwards via a Senate Amendment on December 9th, 1941.
+        # For Pre-1863 observances, see UnitedStatesStaticHolidays.
 
-        if self._year >= 1871:
+        if self._year >= 1863:
+            # Thanksgiving Day.
+            name = tr("Thanksgiving Day")
+            if self._year == 1939 or self._year >= 1942:
+                self._add_holiday_4th_thu_of_nov(name)
+            elif self._year in {1869, 1940, 1941}:
+                self._add_holiday_3rd_thu_of_nov(name)
+            elif self._year == 1865:
+                self._add_holiday_1st_thu_of_dec(name)
+            else:
+                self._add_holiday_last_thu_of_nov(name)
+
+        if self._year >= 1870:
             # Christmas Day.
             self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
@@ -732,16 +775,6 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_observed(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_la_public_holidays(self):
-        if self._year >= 1789 and (self._year - 1789) % 4 == 0:
-            # Inauguration Day.
-            name = tr("Inauguration Day")
-            self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
-                rule=SUN_TO_NEXT_MON,
-            )
-
         if self._year >= 1857:
             # Mardi Gras.
             self._add_carnival_tuesday(tr("Mardi Gras"))
@@ -1260,8 +1293,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             self._add_holiday_3rd_mon_of_feb(tr("President's Day"))
 
     def _populate_government_holidays(self):
-        # Federal holidays in the United States.
-        self._populate_common(include_federal=True)
+        # Added by 16 Stat. 168, effectdive date June 28th, 1870.
+        # New Year's Day check for 1871 is included.
+        if self._year >= 1870:
+            # Federal holidays in the United States.
+            self._populate_common(include_federal=True)
 
     def _populate_unofficial_holidays(self):
         # Very common celebrated cultural days, but no official observance.
@@ -1312,3 +1348,61 @@ class US(UnitedStates):
 
 class USA(UnitedStates):
     pass
+
+
+class UnitedStatesStaticHolidays(StaticHolidays):
+    """United States special holidays.
+
+    Thanksgiving Proclamation References:
+        * [1777](https://web.archive.org/web/20240621142028/https://pilgrimhall.org/pdf/TG_First_National_Thanksgiving_Proclamation_1777.pdf)
+        * [1782](https://web.archive.org/web/20240621142030/https://www.loc.gov/exhibits/religion/vc006491.jpg)
+        * [1789](https://web.archive.org/web/20240621142029/https://www.whatsoproudlywehail.org/curriculum/the-american-calendar/thanksgiving-proclamation-1789-2)
+        * [1795](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Washington/05-17-02-0239)
+        * [1798](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Adams/99-02-02-2386)
+        * [1799](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Adams/99-02-02-3372)
+        * [1813](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-06-02-0434)
+        * [1815](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-09-02-0066)
+        * [1862](https://web.archive.org/web/20240621145259/https://teachingamericanhistory.org/document/proclamation-of-thanksgiving/)
+
+    Pre-1971 Inauguration Day observances has been moved here.
+    """
+
+    # Fasting and Humiliation Day.
+    fasting_and_humiliation_day_name = tr("Fasting and Humiliation Day")
+    # Public Humiliation and Prayer Day.
+    public_humiliation_and_prayer_day_name = tr("Public Humiliation and Prayer Day")
+    # Public Thanksgiving and Prayer Day.
+    public_thanksgiving_and_prayer_day_name = tr("Public Thanksgiving and Prayer Day")
+
+    # Inauguration Day.
+    inauguration_day_name = tr("Inauguration Day")
+
+    special_public_holidays = {
+        1777: (DEC, 18, public_thanksgiving_and_prayer_day_name),
+        1782: (NOV, 28, public_thanksgiving_and_prayer_day_name),
+        1789: (NOV, 26, public_thanksgiving_and_prayer_day_name),
+        1795: (FEB, 19, public_thanksgiving_and_prayer_day_name),
+        1798: (MAY, 9, fasting_and_humiliation_day_name),
+        1799: (APR, 25, fasting_and_humiliation_day_name),
+        1813: (SEP, 9, public_humiliation_and_prayer_day_name),
+        1815: (APR, 13, public_humiliation_and_prayer_day_name),
+        # Thanksgiving Day.
+        1862: (APR, 10, tr("Thanksgiving Day")),
+    }
+
+    # Pre-1971 Inauguration Day observances.
+    special_dc_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+        1957: (JAN, 21, inauguration_day_name),
+    }
+    special_md_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+        1957: (JAN, 21, inauguration_day_name),
+    }
+    special_va_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+        1957: (JAN, 21, inauguration_day_name),
+    }

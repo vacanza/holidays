@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-06-19 15:33+0700\n"
-"PO-Revision-Date: 2025-06-24 12:53+0700\n"
+"PO-Revision-Date: 2025-06-26 15:20+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: en_US\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "ชดเชย%s"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -423,7 +428,14 @@ msgstr "วันฮาโลวีน"
 msgid "Groundhog Day"
 msgstr "วันกราวน์ฮ็อก"
 
-#. %s (observed).
-#, c-format
-msgid "%s (observed)"
-msgstr "ชดเชย%s"
+#. Fasting and Humiliation Day.
+msgid "Fasting and Humiliation Day"
+msgstr "วันถือศีลอดและถ่อมตนต่อพระเจ้า"
+
+#. Public Humiliation and Prayer Day.
+msgid "Public Humiliation and Prayer Day"
+msgstr "วันถ่อมตนร่วมกันและสวดภาวนา"
+
+#. Public Thanksgiving and Prayer Day.
+msgid "Public Thanksgiving and Prayer Day"
+msgstr "วันขอบคุณพระเจ้าร่วมกันและสวดภาวนา"
