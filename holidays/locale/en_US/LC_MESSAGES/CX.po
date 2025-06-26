@@ -134,6 +134,7 @@ msgstr "Territory Day"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 5505906f (Add Christmas Island holidays)
 #. Christmas Day.
 =======
@@ -155,6 +156,9 @@ msgstr "Eid al-Adha"
 #. Boxing Day.
 =======
 >>>>>>> 374ed607 (fixed formatting)
+=======
+#. Boxing Day.
+>>>>>>> 10239cc7 (formatting)
 msgid "Boxing Day"
 msgstr "Boxing Day"
 >>>>>>> 5505906f (Add Christmas Island holidays)

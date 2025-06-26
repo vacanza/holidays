@@ -145,6 +145,7 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
