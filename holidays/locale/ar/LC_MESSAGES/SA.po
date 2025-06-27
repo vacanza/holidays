@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-08-04 20:02+0300\n"
-"PO-Revision-Date: 2023-08-04 20:05+0300\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
@@ -24,22 +24,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (المقدرة)"
 msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "(ملاحظة) %s"
+msgid "%s (ملاحظة)"
 msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "(تقدير ملاحظة) %s"
+msgid "%s (المقدرة، ملاحظة)"
 msgstr ""
 
 #. Eid al-Fitr Holiday
