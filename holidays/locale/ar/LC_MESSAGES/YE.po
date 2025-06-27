@@ -14,21 +14,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-05-03 08:10+0500\n"
-"PO-Revision-Date: 2025-05-03 08:10+0500\n"
-"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.5\n"
 "X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (مُقدَّر)"
+msgid "%s (المقدرة)"
 msgstr ""
 
 #. %s (observed).
@@ -38,7 +39,7 @@ msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (مُقدَّر ملاحظة)"
+msgid "%s (المقدرة، ملاحظة)"
 msgstr ""
 
 #. Hijri New Year.
