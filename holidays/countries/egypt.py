@@ -24,7 +24,7 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
     country = "EG"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (المقدرة)")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
