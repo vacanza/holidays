@@ -333,20 +333,28 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 self._add_observed(self._add_remembrance_day(name))
 
         # Thanksgiving Day.
-        # First declared annually as last THU of NOV by Abraham Lincoln in 1863.
+        # Began to be declared annually in 1862 by Abraham Lincoln.
+        # First declared as last THU of NOV in 1863.
+        # Briefly moved to 3rd THU of NOV by Franklin Delano Roosevelt from 1939 to 1941.
         # First codified as last THU of NOV on October 6th, 1941 via H.J. RES. 41.
         # Become 4th THU of NOV from 1942 onwards via a Senate Amendment on December 9th, 1941.
-        # For Pre-1863 observances, see UnitedStatesStaticHolidays.
+        # For Pre-1862 observances, see UnitedStatesStaticHolidays.
 
-        if self._year >= 1863:
+        if self._year >= 1862:
+            thanksgiving_day_dates = {
+                1862: (APR, 10),
+                1865: (DEC, 7),
+                1869: (NOV, 18),
+                1939: (NOV, 23),
+                1940: (NOV, 21),
+                1941: (NOV, 20),
+            }
             # Thanksgiving Day.
             name = tr("Thanksgiving Day")
-            if self._year == 1939 or self._year >= 1942:
+            if self._year in thanksgiving_day_dates:
+                self._add_holiday(name, thanksgiving_day_dates[self._year])
+            elif self._year >= 1942:
                 self._add_holiday_4th_thu_of_nov(name)
-            elif self._year in {1869, 1940, 1941}:
-                self._add_holiday_3rd_thu_of_nov(name)
-            elif self._year == 1865:
-                self._add_holiday_1st_thu_of_dec(name)
             else:
                 self._add_holiday_last_thu_of_nov(name)
 
@@ -1381,7 +1389,6 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         * [1799](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Adams/99-02-02-3372)
         * [1813](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-06-02-0434)
         * [1815](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-09-02-0066)
-        * [1862](https://web.archive.org/web/20240621145259/https://teachingamericanhistory.org/document/proclamation-of-thanksgiving/)
 
     Pre-1971 Inauguration Day observances has been moved here.
     """
@@ -1405,8 +1412,6 @@ class UnitedStatesStaticHolidays(StaticHolidays):
         1799: (APR, 25, fasting_and_humiliation_day_name),
         1813: (SEP, 9, public_humiliation_and_prayer_day_name),
         1815: (APR, 13, public_humiliation_and_prayer_day_name),
-        # Thanksgiving Day.
-        1862: (APR, 10, tr("Thanksgiving Day")),
     }
 
     # Pre-1953 Inauguration Day observances.
