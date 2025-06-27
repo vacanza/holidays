@@ -13,19 +13,113 @@
 from unittest import TestCase
 
 from holidays.countries.uzbekistan import Uzbekistan, UZ, UZB
-from tests.common import CommonCountryTests
+from tests.common import CommonCountryTests, WorkingDayTests
 
 
-class TestUzbekistan(CommonCountryTests, TestCase):
+class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Uzbekistan, years=range(1992, 2050))
+        years = range(1992, 2050)
+        super().setUpClass(Uzbekistan, years=years)
+        cls.no_estimated_holidays = Uzbekistan(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Uzbekistan, UZ, UZB)
 
     def test_no_holidays(self):
         self.assertNoHolidays(Uzbekistan(years=1991))
+
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "2018-01-02",
+            "2018-03-20",
+            "2018-08-31",
+            "2019-01-02",
+            "2019-03-22",
+            "2019-09-02",
+            "2020-03-23",
+            "2021-05-14",
+            "2021-09-02",
+            "2021-09-03",
+            "2021-12-31",
+            "2022-01-03",
+            "2022-03-22",
+            "2022-03-23",
+            "2022-05-03",
+            "2022-07-11",
+            "2022-09-02",
+            "2023-01-02",
+            "2023-04-24",
+            "2023-06-29",
+            "2023-06-30",
+            "2024-03-22",
+            "2024-04-11",
+            "2024-06-18",
+            "2024-09-03",
+            "2024-12-31",
+        )
+
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2018-01-03",
+            "2018-03-19",
+            "2018-03-22",
+            "2018-08-23",
+            "2018-08-24",
+            "2018-09-03",
+            "2018-09-04",
+            "2018-12-31",
+            "2019-01-03",
+            "2019-06-06",
+            "2019-09-03",
+            "2019-12-31",
+            "2020-01-02",
+            "2020-08-31",
+            "2021-03-22",
+            "2021-07-21",
+            "2021-07-22",
+            "2022-01-04",
+            "2022-05-04",
+            "2022-07-12",
+            "2023-01-03",
+            "2023-03-20",
+            "2023-03-22",
+            "2024-01-02",
+            "2024-04-12",
+            "2024-12-30",
+            "2025-01-02",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2018-01-06",
+            "2018-03-17",
+            "2018-03-24",
+            "2018-08-25",
+            "2018-08-26",
+            "2018-09-08",
+            "2018-09-15",
+            "2018-12-29",
+            "2019-01-05",
+            "2019-06-01",
+            "2019-09-07",
+            "2019-12-28",
+            "2020-01-04",
+            "2020-08-29",
+            "2021-03-27",
+            "2021-07-17",
+            "2021-07-24",
+            "2022-01-08",
+            "2022-05-07",
+            "2022-07-16",
+            "2023-01-07",
+            "2023-03-11",
+            "2023-03-25",
+            "2024-01-06",
+            "2024-04-13",
+            "2024-12-14",
+            "2025-01-04",
+        )
 
     def test_new_years_day(self):
         self.assertHolidayName("Yangi yil", (f"{year}-01-01" for year in range(1992, 2050)))
@@ -60,24 +154,32 @@ class TestUzbekistan(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, 1992)
 
     def test_eid_al_fitr(self):
+        name = "Ro‘za hayit"
         self.assertHolidayName(
-            "Ro‘za hayit",
+            name,
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
             "2023-04-21",
+            "2024-04-10",
+            "2025-03-30",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
 
     def test_eid_al_adha(self):
+        name = "Qurbon hayit"
         self.assertHolidayName(
-            "Qurbon hayit",
+            name,
             "2006-01-10",
             "2006-12-30",
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
             "2023-06-28",
+            "2024-06-16",
+            "2025-06-06",
         )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1992, 2050))
 
     def test_observed(self):
         dt = (
@@ -90,41 +192,41 @@ class TestUzbekistan(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test2020(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             Uzbekistan(years=2020),
-            "2020-01-01",
-            "2020-01-02",
-            "2020-03-08",
-            "2020-03-21",
-            "2020-03-23",
-            "2020-05-09",
-            "2020-05-24",
-            "2020-07-31",
-            "2020-08-31",
-            "2020-09-01",
-            "2020-10-01",
-            "2020-12-08",
+            ("2020-01-01", "Yangi yil"),
+            ("2020-01-02", "Dam olish kuni (04/01 2020 dan ko‘chirilgan)"),
+            ("2020-03-08", "Xotin-qizlar kuni"),
+            ("2020-03-21", "Navro‘z bayrami"),
+            ("2020-03-23", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2020-05-09", "Xotira va qadrlash kuni"),
+            ("2020-05-24", "Ro‘za hayit"),
+            ("2020-07-31", "Qurbon hayit"),
+            ("2020-08-31", "Dam olish kuni (29/08 2020 dan ko‘chirilgan)"),
+            ("2020-09-01", "Mustaqillik kuni"),
+            ("2020-10-01", "O‘qituvchi va murabbiylar kuni"),
+            ("2020-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
         )
 
     def test2021(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             Uzbekistan(years=2021),
-            "2021-01-01",
-            "2021-03-08",
-            "2021-03-21",
-            "2021-03-22",
-            "2021-05-09",
-            "2021-05-13",
-            "2021-05-14",
-            "2021-07-20",
-            "2021-07-21",
-            "2021-07-22",
-            "2021-09-01",
-            "2021-09-02",
-            "2021-09-03",
-            "2021-10-01",
-            "2021-12-08",
-            "2021-12-31",
+            ("2021-01-01", "Yangi yil"),
+            ("2021-03-08", "Xotin-qizlar kuni"),
+            ("2021-03-21", "Navro‘z bayrami"),
+            ("2021-03-22", "Dam olish kuni (27/03 2021 dan ko‘chirilgan)"),
+            ("2021-05-09", "Xotira va qadrlash kuni"),
+            ("2021-05-13", "Ro‘za hayit"),
+            ("2021-05-14", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2021-07-20", "Qurbon hayit"),
+            ("2021-07-21", "Dam olish kuni (17/07 2021 dan ko‘chirilgan)"),
+            ("2021-07-22", "Dam olish kuni (24/07 2021 dan ko‘chirilgan)"),
+            ("2021-09-01", "Mustaqillik kuni"),
+            ("2021-09-02", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2021-09-03", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
+            ("2021-10-01", "O‘qituvchi va murabbiylar kuni"),
+            ("2021-12-08", "O‘zbekiston Respublikasi Konstitutsiyasi kuni"),
+            ("2021-12-31", "Prezidentining farmoni bilan qo‘shimcha dam olish kuni"),
         )
 
     def test2022(self):
