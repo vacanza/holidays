@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# United States holidays.
+# United States of America holidays.
 #
 msgid ""
 msgstr ""
