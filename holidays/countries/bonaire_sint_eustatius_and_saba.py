@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUL, AUG, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
@@ -96,16 +95,7 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
 
     def _populate_subdiv_sab_public_holidays(self):
         # Carnival Monday.
-        name = tr("Dag na de carnavalsoptocht")
-        carnival_monday_dates = {
-            2022: (JUL, 4),
-            2020: (AUG, 3),
-            2021: (SEP, 6),
-        }
-        if self._year in carnival_monday_dates:
-            self._add_holiday(name, carnival_monday_dates[self._year])
-        else:
-            self._add_holiday_2nd_mon_of_jul(name)
+        self._add_holiday_last_mon_of_jul(tr("Dag na de carnavalsoptocht"))
 
         # Saba Day.
         self._add_holiday_1st_fri_of_dec(tr("Saba dag"))
