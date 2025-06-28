@@ -47,7 +47,7 @@ class SanMarino(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_epiphany_day(tr("Epifania"))
 
         self._add_holiday_feb_5(
-            # Anniversary of the Liberation of the Republic and Feast of St. Agatha.
+            # Anniversary of the Liberation of the Republic and Feast of Saint Agatha.
             tr("Anniversario della Liberazione della Repubblica e Festa di Sant'Agata")
         )
 

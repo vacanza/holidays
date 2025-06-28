@@ -214,7 +214,7 @@ class TestSanMarino(CommonCountryTests, TestCase):
             ("2024-01-06", "Epiphany"),
             (
                 "2024-02-05",
-                "Anniversary of the Liberation of the Republic and Feast of St. Agatha",
+                "Anniversary of the Liberation of the Republic and Feast of Saint Agatha",
             ),
             ("2024-03-25", "Anniversary of the Arengo"),
             ("2024-03-31", "Easter Sunday"),

@@ -34,7 +34,7 @@ msgstr "Новий рік"
 msgid "Epifania"
 msgstr "Богоявлення"
 
-#. Anniversary of the Liberation of the Republic and Feast of St. Agatha.
+#. Anniversary of the Liberation of the Republic and Feast of Saint Agatha.
 msgid "Anniversario della Liberazione della Repubblica e Festa di Sant'Agata"
 msgstr "Річниця визволення Республіки та День Святої Агати"
 
