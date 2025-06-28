@@ -25,10 +25,6 @@ GoTo :Help
     RD /S /Q dist
     Exit /B
 
-:Coverage
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
-    Exit /B
-
 :Doc
     mkdocs build
     Exit /B
@@ -36,7 +32,6 @@ GoTo :Help
 :Help
     Echo Usage: make ^<Target^>
     Echo     check         run pre-commit and tests
-    Echo     coverage      identify code not covered with tests
     Echo     doc           run documentation build process
     Echo     help          show summary of available commands
     Echo     l10n          update .pot and .po files
@@ -88,7 +83,7 @@ GoTo :Help
 
 :Test
     python scripts\l10n\generate_mo_files.py
-    pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+    pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
     Exit /B
 
 :Tox
