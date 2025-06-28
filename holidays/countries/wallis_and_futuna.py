@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysWF(France):
+class HolidaysWF(ChildEntity, France):
     """Wallis and Futuna holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,8 @@ class HolidaysWF(France):
 
     country = "WF"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # Separation from French Caledonia on July 29th, 1961.
     start_year = 1962
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "WF"
-        super()._populate_public_holidays()
 
 
 class WallisAndFutuna(HolidaysWF):

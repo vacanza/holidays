@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysMF(France):
+class HolidaysMF(ChildEntity, France):
     """Saint Martin holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,8 @@ class HolidaysMF(France):
 
     country = "MF"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # Cession from Guadeloupe on July 15th, 2007.
     start_year = 2008
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "MF"
-        super()._populate_public_holidays()
 
 
 class SaintMartin(HolidaysMF):

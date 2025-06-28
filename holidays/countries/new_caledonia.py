@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysNC(France):
+class HolidaysNC(ChildEntity, France):
     """New Caledonia holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,8 @@ class HolidaysNC(France):
 
     country = "NC"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # France took formal possession of New Caledonia on September 24th, 1853.
     start_year = 1854
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "NC"
-        super()._populate_public_holidays()
 
 
 class NewCaledonia(HolidaysNC):

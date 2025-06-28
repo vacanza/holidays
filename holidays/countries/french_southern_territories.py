@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysTF(France):
+class HolidaysTF(ChildEntity, France):
     """French Southern Territories holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -31,14 +32,8 @@ class HolidaysTF(France):
 
     country = "TF"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # This overseas territory was separated in 1955.
     start_year = 1956
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "TF"
-        super()._populate_public_holidays()
 
 
 class FrenchSouthernTerritories(HolidaysTF):

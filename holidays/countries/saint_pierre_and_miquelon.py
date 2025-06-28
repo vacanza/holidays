@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysPM(France):
+class HolidaysPM(ChildEntity, France):
     """Saint Pierre and Miquelon holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,8 @@ class HolidaysPM(France):
 
     country = "PM"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # Cession from the UK on May 30th, 1814.
     start_year = 1815
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "PM"
-        super()._populate_public_holidays()
 
 
 class SaintPierreAndMiquelon(HolidaysPM):

@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysPF(France):
+class HolidaysPF(ChildEntity, France):
     """French Polynesia holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,8 @@ class HolidaysPF(France):
 
     country = "PF"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
     # Pōmare V abdicated and Tahiti became a French Colony on June 29th, 1880.
     start_year = 1881
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "PF"
-        super()._populate_public_holidays()
 
 
 class FrenchPolynesia(HolidaysPF):

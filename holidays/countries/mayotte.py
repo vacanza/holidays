@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins import ChildEntity
 
 
-class HolidaysYT(France):
+class HolidaysYT(ChildEntity, France):
     """Mayotte holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,9 @@ class HolidaysYT(France):
 
     country = "YT"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
+    parent_entity_subdivision_code = "976"
     # Sold to France on April 25th, 1841.
     start_year = 1842
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "976"
-        super()._populate_public_holidays()
 
 
 class Mayotte(HolidaysYT):

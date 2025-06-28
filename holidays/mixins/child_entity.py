@@ -11,6 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 
+from typing import Optional
+
 from holidays.holiday_base import HolidayBase
 
 
@@ -19,6 +21,9 @@ class ChildEntity:
 
     parent_entity: type[HolidayBase]
     """The parent entity class."""
+
+    parent_entity_subdivision_code: Optional[str] = None
+    """The parent entity's corresponding ISO 3166-2 subdivision code."""
 
     subdivisions: tuple[str, ...] = ()
     """Override parent subdivisions."""
@@ -30,8 +35,9 @@ class ChildEntity:
         """Initialize the child entity using its country code.
 
         A child entity always has its own country code that is different from
-        the parent entity's country code but is a subdivision of the parent
-        entity.
+        the parent entity's country code but (in majority of cases) is a
+        subdivision of the parent entity. For setting specific subdivision code
+        value use `parent_entity_subdivision_code`.
         """
-        kwargs["subdiv"] = self.country
+        kwargs["subdiv"] = self.parent_entity_subdivision_code or self.country
         super().__init__(*args, **kwargs)
