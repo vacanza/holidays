@@ -75,10 +75,6 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         # Labor Day.
         self._add_labor_day(tr("Dag van de Arbeid"))
 
-        if self._year >= 2022:
-            # Emancipation Day.
-            self._add_holiday_jul_1(tr("Emancipatie dag"))
-
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
@@ -115,6 +111,10 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         self._add_holiday_1st_fri_of_dec(tr("Saba dag"))
 
     def _populate_subdiv_sta_public_holidays(self):
+        if self._year >= 2022:
+            # Emancipation Day.
+            self._add_holiday_jul_1(tr("Emancipatie dag"))
+
         # Statia Day.
         self._add_holiday_nov_16(tr("Statia dag"))
 

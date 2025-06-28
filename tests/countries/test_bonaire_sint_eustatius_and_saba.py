@@ -138,8 +138,13 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
 
     def test_emancipation_day(self):
         name = "Emancipatie dag"
-        self.assertNoHolidayName(name, range(2011, 2022))
-        self.assertHolidayName(name, (f"{year}-07-01" for year in range(2022, 2050)))
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in "STA":
+                self.assertHolidayName(name, holidays, range(2022, 2050))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_bonaire_day(self):
         name = "Boneiru dag"

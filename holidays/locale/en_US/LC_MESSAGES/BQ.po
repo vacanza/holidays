@@ -54,10 +54,6 @@ msgstr "Queen's Day"
 msgid "Dag van de Arbeid"
 msgstr "Labor Day"
 
-#. Emancipation Day.
-msgid "Emancipatie dag"
-msgstr "Emancipation Day"
-
 #. Ascension Day.
 msgid "Hemelvaartsdag"
 msgstr "Ascension Day"
@@ -89,6 +85,10 @@ msgstr "Carnival Monday"
 #. Saba Day.
 msgid "Saba dag"
 msgstr "Saba Day"
+
+#. Emancipation Day.
+msgid "Emancipatie dag"
+msgstr "Emancipation Day"
 
 #. Statia Day.
 msgid "Statia dag"
