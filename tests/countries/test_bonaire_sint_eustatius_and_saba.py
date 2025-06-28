@@ -141,7 +141,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in "STA":
+            if subdiv == "STA":
                 self.assertHolidayName(name, holidays, range(2022, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)
