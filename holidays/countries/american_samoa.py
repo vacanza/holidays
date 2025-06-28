@@ -23,6 +23,7 @@ class HolidaysAS(ChildEntity, UnitedStates):
 
     country = "AS"
     parent_entity = UnitedStates
+    # Became a U.S. Territory since April 17th, 1900.
     start_year = 1901
 
 
