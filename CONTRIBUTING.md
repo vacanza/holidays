@@ -37,7 +37,7 @@ make pre-commit
 make test
 ```
 
-It'll retrieve uncovered lines too
+It'll retrieve uncovered lines too.
 
 You can run specific tests using the `pytest` command:
 
