@@ -25,65 +25,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
 "X-Generator: Poedit 3.5\n"
-
-#. Date format (see strftime() Format Codes)
-msgid "%d.%m.%Y"
-msgstr "%d.%m.%Y"
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "Выходны (перанесены з %s)"
-msgstr "Выходной (перенесено с %s)"
-
-#. Constitution Day.
-msgid "Дзень Канстытуцыі"
-msgstr "День Конституции"
-
-#. Day of Unity of the Peoples of Belarus and Russia.
-msgid "Дзень яднання народаў Беларусі і Расіі"
-msgstr "День единения народов Беларуси и России"
-
-#. Victory Day.
-msgid "Дзень Перамогі"
-msgstr "День Победы"
-
-#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
-#. of Belarus and the National Anthem of the Republic of Belarus.
-msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
-msgstr ""
-"День Государственного флага, Государственного герба и Государственного гимна Республики Беларусь"
-
-#. Independence Day of the Republic of Belarus (Day of the Republic).
-msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
-msgstr "День Независимости Республики Беларусь (День Республики)"
-
-#. Day of People's Unity.
-msgid "Дзень народнага адзінства"
-msgstr "День народного единства"
+"X-Source-Language: be\n"
 
 #. New Year's Day.
 msgid "Новы год"
 msgstr "Новый год"
 
-#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
-msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
-msgstr "День защитников Отечества и Вооруженных Сил Республики Беларусь"
+#. Orthodox Christmas Day.
+msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
+msgstr "Рождество Христово (православное Рождество)"
 
 #. Women's Day.
 msgid "Дзень жанчын"
 msgstr "День женщин"
 
+#. Constitution Day.
+msgid "Дзень Канстытуцыі"
+msgstr "День Конституции"
+
 #. Labor Day.
 msgid "Свята працы"
 msgstr "Праздник труда"
+
+#. Victory Day.
+msgid "Дзень Перамогі"
+msgstr "День Победы"
+
+#. Radunitsa (Day of Rejoicing).
+msgid "Радаўніца"
+msgstr "Радуница"
+
+#. Independence Day of the Republic of Belarus (Day of the Republic).
+msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+msgstr "День Независимости Республики Беларусь (День Республики)"
 
 #. October Revolution Day.
 msgid "Дзень Кастрычніцкай рэвалюцыі"
 msgstr "День Октябрьской революции"
 
-#. Orthodox Christmas Day.
-msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
-msgstr "Рождество Христово (православное Рождество)"
+#. Catholic Christmas Day.
+msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
+msgstr "Рождество Христово (католическое Рождество)"
 
 #. Catholic Easter.
 msgid "Каталiцкi Вялiкдзень"
@@ -93,14 +75,33 @@ msgstr "Католическая Пасха"
 msgid "Праваслаўны Вялiкдзень"
 msgstr "Православная Пасха"
 
-#. Radunitsa (Day of Rejoicing).
-msgid "Радаўніца"
-msgstr "Радуница"
-
 #. Dzyady (All Souls' Day).
 msgid "Дзень памяці"
 msgstr "День памяти"
 
-#. Catholic Christmas Day.
-msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
-msgstr "Рождество Христово (католическое Рождество)"
+#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
+msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
+msgstr "День защитников Отечества и Вооруженных Сил Республики Беларусь"
+
+#. Day of Unity of the Peoples of Belarus and Russia.
+msgid "Дзень яднання народаў Беларусі і Расіі"
+msgstr "День единения народов Беларуси и России"
+
+#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
+#. of Belarus and the National Anthem of the Republic of Belarus.
+msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
+msgstr ""
+"День Государственного флага, Государственного герба и Государственного гимна Республики Беларусь"
+
+#. Day of People's Unity.
+msgid "Дзень народнага адзінства"
+msgstr "День народного единства"
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Выходны (перанесены з %s)"
+msgstr "Выходной (перенесено с %s)"

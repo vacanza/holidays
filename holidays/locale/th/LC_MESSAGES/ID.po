@@ -23,90 +23,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: id\n"
 
 #. %s (estimated).
 #, c-format
 msgid "%s (perkiraan)"
 msgstr "%s (โดยประมาณ)"
 
-#. General Election Day.
-msgid "Hari Pemilihan Unum"
-msgstr "วันเลือกตั้งทั่วไป"
+#. %s (observed).
+#, c-format
+msgid "Pegangti %s"
+msgstr "ชดเชย%s"
 
-#. Presidential Election Day.
-msgid "Hari Pemilihan Presiden"
-msgstr "วันเลือกตั้งประธานาธิบดี"
-
-#. Legislative Election Day.
-msgid "Hari Pemilihan Legislatif"
-msgstr "วันเลือกตั้งสมาชิกสภาผู้แทนราษฎร"
-
-#. Local Election Day.
-msgid "Hari Pemilihan Kepala Daerah"
-msgstr "วันเลือกตั้งท้องถิ่น"
-
-#. Eid al-Fitr Joint Holiday.
-msgid "Cuti Bersama Hari Raya Idul Fitri"
-msgstr "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"
-
-#. Christmas Joint Holiday.
-msgid "Cuti Bersama Hari Raya Natal"
-msgstr "หยุดร่วมพิเศษวันคริสต์มาส"
-
-#. Lunar New Year Joint Holiday.
-msgid "Cuti Bersama Tahun Baru Imlek"
-msgstr "หยุดร่วมพิเศษวันตรุษจีน"
-
-#. Day of Silence Joint Holiday.
-msgid "Cuti Bersama Hari Suci Nyepi"
-msgstr "หยุดร่วมพิเศษวันแห่งความเงียบ"
+#. %s (observed, estimated).
+#, c-format
+msgid "Pegangti %s (perkiraan)"
+msgstr "ชดเชย%s (โดยประมาณ)"
 
 #. New Year's Day.
 msgid "Tahun Baru Masehi"
 msgstr "วันขึ้นปีใหม่"
-
-#. Lunar New Year.
-msgid "Tahun Baru Imlek"
-msgstr "วันตรุษจีน"
-
-#. Day of Silence.
-msgid "Hari Suci Nyepi"
-msgstr "วันแห่งความเงียบ"
-
-#. Good Friday.
-msgid "Wafat Yesus Kristus"
-msgstr "วันศุกร์ประเสริฐ"
-
-#. Easter Monday.
-msgid "Hari kedua Paskah"
-msgstr "วันจันทร์อีสเตอร์"
-
-#. Vesak Day.
-msgid "Hari Raya Waisak"
-msgstr "วันวิสาขบูชา"
-
-#. International Labor Day.
-msgid "Hari Buruh Internasional"
-msgstr "วันแรงงานสากล"
-
-#. Ascension Day.
-msgid "Kenaikan Yesus Kristus"
-msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
-
-#. Whit Monday.
-msgid "Hari kedua Pentakosta"
-msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
-
-#. Pancasila Day.
-msgid "Hari Lahir Pancasila"
-msgstr "วันปัญจศีล"
-
-#. Assumption Day.
-msgid "Mikraj Santa Maria"
-msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
 
 #. Independence Day.
 msgid "Hari Kemerdekaan Republik Indonesia"
@@ -136,6 +74,26 @@ msgstr "วันอีฎิ้ลฟิตริวันที่สอง"
 msgid "Hari Raya Idul Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
 
+#. Easter Monday.
+msgid "Hari kedua Paskah"
+msgstr "วันจันทร์อีสเตอร์"
+
+#. Whit Monday.
+msgid "Hari kedua Pentakosta"
+msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
+
+#. Nuzul Al Quran.
+msgid "Nuzululqur'an"
+msgstr "วันนูซุลอัลกุรอาน"
+
+#. Isra' and Mi'raj.
+msgid "Isra Mikraj Nabi Muhammad"
+msgstr "วันเมี๊ยะราจ"
+
+#. Ascension Day.
+msgid "Kenaikan Yesus Kristus"
+msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
+
 #. Islamic New Year.
 msgid "Tahun Baru Islam"
 msgstr "วันขึ้นปีใหม่อิสลาม"
@@ -144,13 +102,57 @@ msgstr "วันขึ้นปีใหม่อิสลาม"
 msgid "Maulid Nabi Muhammad"
 msgstr "วันเมาลิดนบี"
 
-#. Isra' and Mi'raj.
-msgid "Isra Mikraj Nabi Muhammad"
-msgstr "วันเมี๊ยะราจ"
+#. Assumption Day.
+msgid "Mikraj Santa Maria"
+msgstr "วันสมโภชแม่พระรับเกียรติยกขึ้นสวรรค์"
 
-#. Nuzul Al Quran.
-msgid "Nuzululqur'an"
-msgstr "วันนูซุลอัลกุรอาน"
+#. Good Friday.
+msgid "Wafat Yesus Kristus"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Day of Silence.
+msgid "Hari Suci Nyepi"
+msgstr "วันแห่งความเงียบ"
+
+#. Vesak Day.
+msgid "Hari Raya Waisak"
+msgstr "วันวิสาขบูชา"
+
+#. Lunar New Year.
+msgid "Tahun Baru Imlek"
+msgstr "วันตรุษจีน"
+
+#. International Labor Day.
+msgid "Hari Buruh Internasional"
+msgstr "วันแรงงานสากล"
+
+#. Pancasila Day.
+msgid "Hari Lahir Pancasila"
+msgstr "วันปัญจศีล"
+
+#. Easter Sunday.
+msgid "Kebangkitan Yesus Kristus"
+msgstr "วันอาทิตย์อีสเตอร์"
+
+#. General Election Day.
+msgid "Hari Pemilihan Unum"
+msgstr "วันเลือกตั้งทั่วไป"
+
+#. Presidential Election Day.
+msgid "Hari Pemilihan Presiden"
+msgstr "วันเลือกตั้งประธานาธิบดี"
+
+#. Legislative Election Day.
+msgid "Hari Pemilihan Legislatif"
+msgstr "วันเลือกตั้งสมาชิกสภาผู้แทนราษฎร"
+
+#. Local Election Day.
+msgid "Hari Pemilihan Kepala Daerah"
+msgstr "วันเลือกตั้งท้องถิ่น"
+
+#. Eid al-Fitr Joint Holiday.
+msgid "Cuti Bersama Hari Raya Idul Fitri"
+msgstr "หยุดร่วมพิเศษวันอีฎิ้ลฟิตริ"
 
 #. Eid al-Adha Joint Holiday.
 msgid "Cuti Bersama Hari Raya Idul Adha"
@@ -160,27 +162,29 @@ msgstr "หยุดร่วมพิเศษวันอีดิ้ลอั
 msgid "Cuti Bersama Maulid Nabi Muhammad"
 msgstr "หยุดร่วมพิเศษวันเมาลิดนบี"
 
+#. Islamic New Year Joint Holiday.
+msgid "Cuti Bersama Tahun Baru Islam"
+msgstr "หยุดร่วมพิเศษวันขึ้นปีใหม่อิสลาม"
+
 #. Ascension Joint Holiday.
 msgid "Cuti Bersama Kenaikan Yesus Kristus"
 msgstr "หยุดร่วมพิเศษวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
+#. Christmas Joint Holiday.
+msgid "Cuti Bersama Hari Raya Natal"
+msgstr "หยุดร่วมพิเศษวันคริสต์มาส"
+
+#. Lunar New Year Joint Holiday.
+msgid "Cuti Bersama Tahun Baru Imlek"
+msgstr "หยุดร่วมพิเศษวันตรุษจีน"
+
+#. Day of Silence Joint Holiday.
+msgid "Cuti Bersama Hari Suci Nyepi"
+msgstr "หยุดร่วมพิเศษวันแห่งความเงียบ"
+
 #. Vesak Joint Holiday.
 msgid "Cuti Bersama Hari Raya Waisak"
 msgstr "หยุดร่วมพิเศษวันวิสาขบูชา"
-
-#. %s (observed).
-#, c-format
-msgid "Pegangti %s"
-msgstr "ชดเชย%s"
-
-#. %s (observed, estimated).
-#, c-format
-msgid "Pegangti %s (perkiraan)"
-msgstr "ชดเชย%s (โดยประมาณ)"
-
-#. Islamic New Year Joint Holiday.
-msgid "Cuti Bersama Tahun Baru Islam"
-msgstr "หยุดร่วมพิเศษวันขึ้นปีใหม่อิสลาม"
 
 #. New Year's Joint Holiday.
 msgid "Cuti Bersama Tahun Baru Masehi"
@@ -189,7 +193,3 @@ msgstr "หยุดร่วมพิเศษวันขึ้นปีให
 #. Independence Day Joint Holiday.
 msgid "Cuti Bersama Hari Kemerdekaan Republik Indonesia"
 msgstr "หยุดร่วมพิเศษวันประกาศอิสรภาพสาธารณรัฐอินโดนีเซีย"
-
-#. Easter Sunday.
-msgid "Kebangkitan Yesus Kristus"
-msgstr "วันอาทิตย์อีสเตอร์"

@@ -23,9 +23,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: es\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observado)"
+msgstr ""
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -39,8 +44,28 @@ msgstr ""
 msgid "Día de San José"
 msgstr ""
 
+#. Maundy Thursday.
+msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascensión del señor"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
 #. Labor Day.
 msgid "Día del Trabajo"
+msgstr ""
+
+#. Sacred Heart.
+msgid "Sagrado Corazón"
 msgstr ""
 
 #. Saint Peter and Saint Paul's Day.
@@ -77,29 +102,4 @@ msgstr ""
 
 #. Christmas Day.
 msgid "Navidad"
-msgstr ""
-
-#. Maundy Thursday.
-msgid "Jueves Santo"
-msgstr ""
-
-#. Good Friday.
-msgid "Viernes Santo"
-msgstr ""
-
-#. Ascension Day.
-msgid "Ascensión del señor"
-msgstr ""
-
-#. Corpus Christi.
-msgid "Corpus Christi"
-msgstr ""
-
-#. Sacred Heart.
-msgid "Sagrado Corazón"
-msgstr ""
-
-#. %s (observed).
-#, c-format
-msgid "%s (observado)"
 msgstr ""

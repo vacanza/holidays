@@ -25,26 +25,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: fa_AF\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (برآورد شده)"
+msgstr "%s (estimated)"
 
 #. Liberation Day.
 msgid "روز آزادی"
 msgstr "Liberation Day"
 
+#. Afghanistan Independence Day.
+msgid "روز استقلال افغانستان"
+msgstr "Afghanistan Independence Day"
+
 #. Nowruz.
 msgid "نوروز"
 msgstr "Nowruz"
+
+#. Mojahedin's Victory Day.
+msgid "روز پیروزی مجاهدین"
+msgstr "Mojahedin's Victory Day"
 
 #. International Workers' Day.
 msgid "روز جهانی کارگر"
 msgstr "International Workers' Day"
 
+#. Soviet Victory Day.
+msgid "روز پیروزی شوروی"
+msgstr "Soviet Victory Day"
+
+#. Islamic Emirate Victory Day.
+msgid "روز پیروزی امارت اسلامی"
+msgstr "Islamic Emirate Victory Day"
+
+#. American Withdrawal Day.
+msgid "روز خروج آمریکایی ها"
+msgstr "American Withdrawal Day"
+
 #. Martyrs' Day.
 msgid "روز شهیدان"
 msgstr "Martyrs' Day"
-
-#. Day of Arafah.
-msgid "روز عرفه"
-msgstr "Day of Arafah"
 
 #. Ashura.
 msgid "عاشورا"
@@ -58,35 +80,14 @@ msgstr "Prophet's Birthday"
 msgid "اول رمضان"
 msgstr "First Day of Ramadan"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (برآورد شده)"
-msgstr "%s (estimated)"
-
-#. Soviet Victory Day.
-msgid "روز پیروزی شوروی"
-msgstr "Soviet Victory Day"
-
-#. Mojahedin's Victory Day.
-msgid "روز پیروزی مجاهدین"
-msgstr "Mojahedin's Victory Day"
-
-#. Afghanistan Independence Day.
-msgid "روز استقلال افغانستان"
-msgstr "Afghanistan Independence Day"
-
 #. Eid al-Fitr.
 msgid "عید فطر"
 msgstr "Eid al-Fitr"
 
+#. Day of Arafah.
+msgid "روز عرفه"
+msgstr "Day of Arafah"
+
 #. Eid al-Adha.
 msgid "عید قربانی"
 msgstr "Eid al-Adha"
-
-#. Islamic Emirate Victory Day.
-msgid "روز پیروزی امارت اسلامی"
-msgstr "Islamic Emirate Victory Day"
-
-#. American Withdrawal Day.
-msgid "روز خروج آمریکایی ها"
-msgstr "American Withdrawal Day"

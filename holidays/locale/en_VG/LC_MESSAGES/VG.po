@@ -35,6 +35,10 @@ msgstr ""
 msgid "New Year's Day"
 msgstr ""
 
+#. Lavity Stoutt's Birthday.
+msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
+msgstr ""
+
 #. Commonwealth Day.
 msgid "Commonwealth Day"
 msgstr ""
@@ -55,28 +59,40 @@ msgstr ""
 msgid "Sovereign's Birthday"
 msgstr ""
 
-#. Colony Day.
-msgid "Colony Day"
+#. Virgin Islands Day.
+msgid "Virgin Islands Day"
 msgstr ""
 
 #. Territory Day.
 msgid "Territory Day"
 msgstr ""
 
-#. Virgin Islands Day.
-msgid "Virgin Islands Day"
+#. Colony Day.
+msgid "Colony Day"
 msgstr ""
 
 #. Emancipation Monday.
 msgid "Emancipation Monday"
 msgstr ""
 
+#. Festival Monday.
+msgid "Festival Monday"
+msgstr ""
+
 #. Emancipation Tuesday.
 msgid "Emancipation Tuesday"
 msgstr ""
 
+#. Festival Tuesday.
+msgid "Festival Tuesday"
+msgstr ""
+
 #. Emancipation Wednesday.
 msgid "Emancipation Wednesday"
+msgstr ""
+
+#. Festival Wednesday.
+msgid "Festival Wednesday"
 msgstr ""
 
 #. Saint Ursula's Day.
@@ -91,28 +107,12 @@ msgstr ""
 msgid "The Great March of 1949 and Restoration Day"
 msgstr ""
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr ""
-
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
-#. Lavity Stoutt's Birthday.
-msgid "The Anniversary of the Birth of Hamilton Lavity Stoutt"
-msgstr ""
-
-#. Festival Monday.
-msgid "Festival Monday"
-msgstr ""
-
-#. Festival Tuesday.
-msgid "Festival Tuesday"
-msgstr ""
-
-#. Festival Wednesday.
-msgid "Festival Wednesday"
+#. Boxing Day.
+msgid "Boxing Day"
 msgstr ""
 
 #. State Funeral of Honourable Ralph T. O'Neal.

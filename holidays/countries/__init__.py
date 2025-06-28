@@ -139,6 +139,7 @@ from holidays.countries.mexico import Mexico, MX, MEX
 from holidays.countries.micronesia import Micronesia, FM, FSM
 from holidays.countries.moldova import Moldova, MD, MDA
 from holidays.countries.monaco import Monaco, MC, MCO
+from holidays.countries.mongolia import Mongolia, MN, MNG
 from holidays.countries.montenegro import Montenegro, ME, MNE
 from holidays.countries.morocco import Morocco, MA, MOR
 from holidays.countries.mozambique import Mozambique, MZ, MOZ
@@ -188,6 +189,7 @@ from holidays.countries.serbia import Serbia, RS, SRB
 from holidays.countries.seychelles import Seychelles, SC, SYC
 from holidays.countries.sierra_leone import SierraLeone, SL, SLE
 from holidays.countries.singapore import Singapore, SG, SGP
+from holidays.countries.sint_maarten import SintMaarten, SX, SXM
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from holidays.countries.slovenia import Slovenia, SI, SVN
 from holidays.countries.solomon_islands import SolomonIslands, SB, SLB

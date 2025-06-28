@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.57\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2024-02-28 09:55-0800\n"
-"PO-Revision-Date: 2024-09-07 17:25+0300\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -24,16 +24,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
+"X-Source-Language: ar\n"
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
+
+#. Labor Day.
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+#. Independence Day.
+msgid "عيد الإستقلال"
+msgstr "Independence Day"
+
+#. Christmas Day.
+msgid "عيد الميلاد المجيد"
+msgstr "Christmas Day"
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"
 
 #. Isra' and Mi'raj.
 msgid "ليلة المعراج"
@@ -47,14 +68,6 @@ msgstr "Eid al-Fitr"
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Labor Day.
-msgid "عيد العمال"
-msgstr "Labor Day"
-
-#. Independence Day.
-msgid "عيد الإستقلال"
-msgstr "Independence Day"
-
 #. Arafat Day.
 msgid "يوم عرفة"
 msgstr "Arafat Day"
@@ -66,15 +79,3 @@ msgstr "Eid al-Adha"
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
-
-#. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr "Islamic New Year"
-
-#. Prophet's Birthday.
-msgid "عيد المولد النبوي"
-msgstr "Prophet's Birthday"
-
-#. Christmas Day.
-msgid "عيد الميلاد المجيد"
-msgstr "Christmas Day"

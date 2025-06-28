@@ -355,6 +355,10 @@ msgstr ""
 msgid "Censo Nacional 2010"
 msgstr ""
 
+#. G20 Leaders' Summit.
+msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
+msgstr ""
+
 #. National Census Day 2022.
 msgid "Censo Nacional 2022"
 msgstr ""
@@ -365,8 +369,4 @@ msgstr ""
 
 #. Bank Holiday.
 msgid "Asueto bancario"
-msgstr ""
-
-#. G20 Leaders' Summit.
-msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
 msgstr ""
