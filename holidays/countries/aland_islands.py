@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.finland import Finland
-from holidays.mixins import ChildEntity
+from holidays.mixins.child_entity import ChildEntity
 
 
 class HolidaysAX(ChildEntity, Finland):

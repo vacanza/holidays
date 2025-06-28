@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.norway import Norway
-from holidays.mixins import ChildEntity
+from holidays.mixins.child_entity import ChildEntity
 
 
 class HolidaysSJ(ChildEntity, Norway):
