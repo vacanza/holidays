@@ -1263,8 +1263,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>San Marino</td>
 <td>SM</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>it</strong>, uk</td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Sao Tome and Principe</td>

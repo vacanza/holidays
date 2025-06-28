@@ -1,0 +1,103 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# San Marino holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-28 12:54+0300\n"
+"PO-Revision-Date: 2025-06-28 12:59+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: it\n"
+
+#. New Year's Day.
+msgid "Capodanno"
+msgstr "Новий рік"
+
+#. Epiphany.
+msgid "Epifania"
+msgstr "Богоявлення"
+
+#. Anniversary of the Liberation of the Republic and Feast of Saint Agatha.
+msgid "Anniversario della Liberazione della Repubblica e Festa di Sant'Agata"
+msgstr "Річниця визволення Республіки та День Святої Агати"
+
+#. Anniversary of the Arengo.
+msgid "Anniversario dell'Arengo"
+msgstr "Річниця Аренго"
+
+#. Easter Sunday.
+msgid "Pasqua"
+msgstr "Великдень"
+
+#. Easter Monday.
+msgid "Lunedì dell'angelo"
+msgstr "Великодній понеділок"
+
+#. Investiture of Captains Regent.
+msgid "Investitura Capitani Reggenti"
+msgstr "Інвеститура капітанів-регентів"
+
+#. Workers' Day.
+msgid "Festa dei lavoratori"
+msgstr "День трудящих"
+
+#. Corpus Christi.
+msgid "Corpus Domini"
+msgstr "Свято Тіла і Крові Христових"
+
+#. Anniversary of the Fall of Fascism and Freedom Day.
+msgid "Anniversario della Caduta del Fascismo e Festa della Libertà"
+msgstr "Річниця падіння фашизму та День свободи"
+
+#. Assumption Day.
+msgid "Assunzione della B.V. Maria"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. Saint Marinus' Day, Anniversary of the Founding of the Republic.
+msgid "San Marino, Anniversario di Fondazione della Repubblica"
+msgstr "Річниця заснування Республіки та День Святого Марина"
+
+#. All Saints' Day.
+msgid "Tutti i Santi"
+msgstr "День усіх святих"
+
+#. Commemoration of the Dead.
+msgid "Commemorazione dei defunti"
+msgstr "День вшанування померлих"
+
+#. Immaculate Conception.
+msgid "Immacolata Concezione"
+msgstr "Непорочне зачаття Діви Марії"
+
+#. Christmas Day.
+msgid "Natale"
+msgstr "Різдво Христове"
+
+#. Saint Stephen's Day.
+msgid "Santo Stefano"
+msgstr "День Святого Стефана"
+
+#. Christmas Eve.
+msgid "Vigilia di Natale"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+msgid "Ultimo dell'anno"
+msgstr "Переддень Нового року"
