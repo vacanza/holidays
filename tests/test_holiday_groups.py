@@ -142,7 +142,7 @@ class TestTibetanCalendarHolidays(TestCase):
 
         test_holidays = TestHolidays()
 
-        test_holidays._populate(2025)
+        test_holidays._populate(2100)
         test_holidays._add_buddha_parinirvana("Buddha Parinirvana")
         test_holidays._add_losar("Losar")
         test_holidays._add_day_of_offering("Day of Offering")
@@ -151,4 +151,4 @@ class TestTibetanCalendarHolidays(TestCase):
         test_holidays._add_death_of_zhabdrung("Death of Zhabdrung")
         test_holidays._add_blessed_rainy_day("Blessed Rainy Day")
         test_holidays._add_dashain("Dashain")
-        self.assertEqual(8, len(test_holidays))
+        self.assertEqual(0, len(test_holidays))
