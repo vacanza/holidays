@@ -39,14 +39,15 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         # Losar Wood Male Dragon Year.
         self._add_losar("Losar Wood Male Dragon Year")
 
+        name = "Birth Anniversary of His Majesty the King"
         # Birth Anniversary of His Majesty the King (Day 1).
-        self._add_holiday_feb_21("Birth Anniversary of His Majesty the King")
+        self._add_holiday_feb_21(name)
 
         # Birth Anniversary of His Majesty the King (Day 2).
-        self._add_holiday_feb_22("Birth Anniversary of His Majesty the King")
+        self._add_holiday_feb_22(name)
 
         # Birth Anniversary of His Majesty the King (Day 3).
-        self._add_holiday_feb_23("Birth Anniversary of His Majesty the King")
+        self._add_holiday_feb_23(name)
 
         # Death Anniversary of Zhabdrung (Zhabdrung Kuchoe).
         self._add_death_of_zhabdrung("Death Anniversary of Zhabdrung (Zhabdrung Kuchoe)")
@@ -66,14 +67,15 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         # Thimphu Drubchoe (Thimphu only).
         self._add_holiday_sep_9("Thimphu Drubchoe")
 
+        name = "Thimphu Tshechu"
         # Thimphu Tshechu (Thimphu only, Day 1).
-        self._add_holiday_sep_13("Thimphu Tshechu")
+        self._add_holiday_sep_13(name)
 
         # Thimphu Tshechu (Thimphu only, Day 2).
-        self._add_holiday_sep_14("Thimphu Tshechu")
+        self._add_holiday_sep_14(name)
 
         # Thimphu Tshechu (Thimphu only, Day 3).
-        self._add_holiday_sep_15("Thimphu Tshechu")
+        self._add_holiday_sep_15(name)
 
         # Blessed Rainy Day.
         self._add_blessed_rainy_day("Blessed Rainy Day")
