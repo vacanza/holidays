@@ -10,11 +10,27 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
 from typing import Union
 
-from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.calendars.gregorian import (
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    SEP,
+    NOV,
+    DEC,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+)
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -31,12 +47,21 @@ GA_IN_WASHINGTON_BIRTHDAY = ObservedRule(
 )
 
 
-class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """United States of America (the) holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States>
+        * <https://en.wikipedia.org/wiki/Uniform_Monday_Holiday_Act>
         * [Federal holidays](https://web.archive.org/web/20250426120914/https://opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
+        * [Federal holidays history](https://web.archive.org/web/20250626042129/https://www.congress.gov/crs_external_products/R/PDF/R41990/R41990.11.pdf)
+        * [16 Stat. 168](https://web.archive.org/web/20240602080239/https://memory.loc.gov/cgi-bin/ampage?collId=llsl&fileName=016/llsl016.db&recNum=203)
+        * [Thanksgiving Day Proclamations 1789-Present](https://web.archive.org/web/20240621142029/https://www.whatsoproudlywehail.org/curriculum/the-american-calendar/thanksgiving-day-proclamations-1789-present/)
+        * [H.J. RES. 41](https://web.archive.org/web/20250222190611/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/joint-res-l.jpg&c=/legislative/features/thanksgiving/images/joint-res.caption.html)
+        * [H.J. RES. 41 December 9th, 1941 Amendment](https://web.archive.org/web/20250523062313/https://www.archives.gov/global-pages/larger-image.html?i=/legislative/features/thanksgiving/images/amendment-l.jpg&c=/legislative/features/thanksgiving/images/amendment.caption.html)
+        * [B-112525 February 27th, 1953 32 COMP. GEN. 378](https://web.archive.org/web/20201001081239/https://www.gao.gov/products/b-112525#mt=e-report)
+        * [Public Law 89-554](https://web.archive.org/web/20250512204449/https://www.govinfo.gov/content/pkg/STATUTE-80/pdf/STATUTE-80-Pg378.pdf)
+        * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
@@ -84,7 +109,11 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     """
 
     country = "US"
-    observed_label = "%s (observed)"
+    default_language = "en_US"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
+    supported_languages = ("en_US", "th")
+    # Independence Declared on July 4th, 1776.
     start_year = 1777
     subdivisions: Union[tuple[()], tuple[str, ...]] = (
         "AK",  # Alaska.
@@ -214,84 +243,138 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=UnitedStatesStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
+        # B-11252 February 27th, 1953 32 COMP. GEN. 378.
+        kwargs.setdefault("observed_since", 1953)
         super().__init__(*args, **kwargs)
 
     def _populate_common(self, include_federal: bool = False):
         """
         Populates common US holidays.
 
+        Federal Holidays were first codified on June 28th, 1870
+        via 16 Stat. 168.
+
+        First regulation on holidays in-lieu observance is from B-112525
+        February 27th, 1953 32 COMP. GEN. 378 document which shifts
+        from SUN to next MON only.
+
+        It wouldn't be until Public Law 89-554 from September 6th, 1966
+        that SAT to previous MON is listed as well.
+
+        This would be finally consolidated as part of E.O. 11582 of
+        February 11th, 1971 later.
+
         :param include_federal:
             Whether to include federal-specific holidays.
         """
-        # New Year's Day
+        self._observed_rule = (
+            SAT_TO_PREV_FRI + SUN_TO_NEXT_MON if self._year >= 1966 else SUN_TO_NEXT_MON
+        )
+
         if self._year >= 1871:
-            name = "New Year's Day"
+            # New Year's Day.
+            name = tr("New Year's Day")
             self._add_observed(self._add_new_years_day(name))
-            self._add_observed(self._next_year_new_years_day, name=name)
+            # Public Law 89-554 of September 6th, 1966.
+            if self._year >= 1967:
+                self._add_observed(self._next_year_new_years_day, name=name)
 
         if include_federal:
-            # Birthday of Martin Luther King, Jr.
             if self._year >= 1986:
-                self._add_holiday_3rd_mon_of_jan("Birthday of Martin Luther King, Jr.")
+                # Birthday of Martin Luther King, Jr..
+                self._add_holiday_3rd_mon_of_jan(tr("Birthday of Martin Luther King, Jr."))
 
-            # Washington's Birthday
             if self._year >= 1879:
-                name = "Washington's Birthday"
+                # Washington's Birthday.
+                name = tr("Washington's Birthday")
                 if self._year >= 1971:
                     self._add_holiday_3rd_mon_of_feb(name)
                 else:
-                    self._add_holiday_feb_22(name)
+                    dt = self._add_holiday_feb_22(name)
+                    # B-112525 February 27th, 1953 32 COMP. GEN. 378.
+                    if self._year >= 1954:
+                        self._add_observed(dt)
 
-        # Memorial Day
         if self._year >= 1971:
-            self._add_holiday_last_mon_of_may("Memorial Day")
+            # Memorial Day.
+            self._add_holiday_last_mon_of_may(tr("Memorial Day"))
 
-        # Juneteenth Day
         if self._year >= 2021:
-            self._add_observed(self._add_holiday_jun_19("Juneteenth National Independence Day"))
+            self._add_observed(
+                # Juneteenth National Independence Day.
+                self._add_holiday_jun_19(tr("Juneteenth National Independence Day"))
+            )
 
-        # Independence Day
-        if self._year >= 1871:
-            self._add_observed(self._add_holiday_jul_4("Independence Day"))
+        if self._year >= 1870:
+            # Independence Day.
+            self._add_observed(self._add_holiday_jul_4(tr("Independence Day")))
 
-        # Labor Day
         if self._year >= 1894:
-            self._add_holiday_1st_mon_of_sep("Labor Day")
+            # Labor Day.
+            self._add_holiday_1st_mon_of_sep(tr("Labor Day"))
 
-        if include_federal:
-            # Columbus Day
-            if self._year >= 1971:
-                self._add_holiday_2nd_mon_of_oct("Columbus Day")
+        if include_federal and self._year >= 1971:
+            # Columbus Day.
+            self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
 
-        # Veterans Day
         if self._year >= 1938:
-            name = "Veterans Day" if self._year >= 1954 else "Armistice Day"
+            name = (
+                # Veterans Day.
+                tr("Veterans Day")
+                if self._year >= 1954
+                # Armistice Day.
+                else tr("Armistice Day")
+            )
             if 1971 <= self._year <= 1977:
                 self._add_holiday_4th_mon_of_oct(name)
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
-        # Thanksgiving Day
-        if self._year >= 1871:
-            self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
+        # Thanksgiving Day.
+        # Began to be declared annually in 1862 by Abraham Lincoln.
+        # First declared as last THU of NOV in 1863.
+        # Briefly moved to 3rd THU of NOV by Franklin Delano Roosevelt from 1939 to 1941.
+        # First codified as last THU of NOV on October 6th, 1941 via H.J. RES. 41.
+        # Become 4th THU of NOV from 1942 onwards via a Senate Amendment on December 9th, 1941.
+        # For Pre-1862 observances, see UnitedStatesStaticHolidays.
 
-        # Christmas Day
-        if self._year >= 1871:
-            self._add_observed(self._add_christmas_day("Christmas Day"))
+        if self._year >= 1862:
+            thanksgiving_day_dates = {
+                1862: (APR, 10),
+                1865: (DEC, 7),
+                1869: (NOV, 18),
+                1939: (NOV, 23),
+                1940: (NOV, 21),
+                1941: (NOV, 20),
+            }
+            # Thanksgiving Day.
+            name = tr("Thanksgiving Day")
+            if self._year in thanksgiving_day_dates:
+                self._add_holiday(name, thanksgiving_day_dates[self._year])
+            elif self._year >= 1942:
+                self._add_holiday_4th_thu_of_nov(name)
+            else:
+                self._add_holiday_last_thu_of_nov(name)
+
+        if self._year >= 1870:
+            # Christmas Day.
+            self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
     def _populate_public_holidays(self):
         self._populate_common()
 
-        # Memorial Day
         if 1888 <= self._year <= 1970:
-            self._add_holiday_may_30("Memorial Day")
+            # Memorial Day.
+            self._add_holiday_may_30(tr("Memorial Day"))
 
     def _add_christmas_eve_holiday(self):
-        # Christmas Eve
-        # If on Friday, observed on Thursday
-        # If on Saturday or Sunday, observed on Friday
-        name = "Christmas Eve"
+        # If on Friday, observed on Thursday.
+        # If on Saturday or Sunday, observed on Friday.
+
+        # Christmas Eve.
+        name = tr("Christmas Eve")
         self._add_observed(
             self._add_christmas_eve(name), name=name, rule=FRI_TO_PREV_THU + SAT_SUN_TO_PREV_FRI
         )
@@ -300,11 +383,10 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         if PUBLIC not in self.categories:
             return None
 
-        # Martin Luther King Jr. Day
         if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
-            self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
+            # Martin Luther King Jr. Day.
+            self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
-        # Washington's Birthday
         if self._year >= 1879 and self.subdiv not in {
             "AK",
             "AL",
@@ -339,13 +421,13 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             "WV",
             "WY",
         }:
-            name = "Washington's Birthday"
+            # Washington's Birthday.
+            name = tr("Washington's Birthday")
             if self._year >= 1971:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
 
-        # Columbus Day
         if self._year >= 1937 and (
             self.subdiv is None
             or self.subdiv
@@ -369,7 +451,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 "WV",
             }
         ):
-            name = "Columbus Day"
+            # Columbus Day.
+            name = tr("Columbus Day")
             if self._year >= 1971:
                 self._add_holiday_2nd_mon_of_oct(name)
             else:
@@ -378,147 +461,157 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         super()._populate_subdiv_holidays()
 
     def _populate_subdiv_ak_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Seward's Day
         # No observance in 1921: https://web.archive.org/web/20230208015211/https://chroniclingamerica.loc.gov/lccn/sn86072239/1922-03-29/ed-1/seq-8/
         if self._year >= 1918 and self._year != 1921:
-            name = "Seward's Day"
+            # Seward's Day.
+            name = tr("Seward's Day")
             if self._year >= 1955:
                 self._add_holiday_last_mon_of_mar(name)
             else:
                 self._add_holiday_mar_30(name)
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2015 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2015
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
-        # Alaska Day
         # https://web.archive.org/web/20120502232826/http://www.alaskadispatch.com/article/happy-alaska-day-great-land
         if self._year >= 1917:
-            self._add_observed(self._add_holiday_oct_18("Alaska Day"))
+            # Alaska Day.
+            self._add_observed(self._add_holiday_oct_18(tr("Alaska Day")))
 
     def _populate_subdiv_al_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
-            self._add_holiday_3rd_mon_of_jan("Martin Luther King, Jr & Robert E. Lee's Birthday")
+            self._add_holiday_3rd_mon_of_jan(
+                # Martin Luther King, Jr & Robert E. Lee's Birthday.
+                tr("Martin Luther King, Jr & Robert E. Lee's Birthday")
+            )
 
-        # Washington's Birthday
         if self._year >= 1879:
-            name = "George Washington & Thomas Jefferson's Birthday"
+            # George Washington & Thomas Jefferson's Birthday.
+            name = tr("George Washington & Thomas Jefferson's Birthday")
             if self._year >= 1971:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
 
-        # Confederate Memorial Day
         if self._year >= 1866:
-            self._add_holiday_4th_mon_of_apr("Confederate Memorial Day")
+            # Confederate Memorial Day.
+            self._add_holiday_4th_mon_of_apr(tr("Confederate Memorial Day"))
 
-        # Jefferson Davis Birthday
         if self._year >= 1890:
-            self._add_holiday_1st_mon_of_jun("Jefferson Davis Birthday")
+            # Jefferson Davis Birthday.
+            self._add_holiday_1st_mon_of_jun(tr("Jefferson Davis Birthday"))
 
-        # Columbus Day / American Indian Heritage Day / Fraternal Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Columbus Day / American Indian Heritage Day / Fraternal Day"
+                # Columbus Day / American Indian Heritage Day / Fraternal Day.
+                tr("Columbus Day / American Indian Heritage Day / Fraternal Day")
                 if self._year >= 2000
-                else "Columbus Day / Fraternal Day"
+                # Columbus Day / Fraternal Day.
+                else tr("Columbus Day / Fraternal Day")
             )
 
     def _populate_subdiv_ar_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday_3rd_mon_of_jan(
-                "Martin Luther King Jr. Day"
+                # Martin Luther King Jr. Day.
+                tr("Martin Luther King Jr. Day")
                 if self._year >= 2018
-                else "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
+                # Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays.
+                else tr("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays")
             )
 
-        # Washington's Birthday
         if self._year >= 1879:
-            name = "George Washington's Birthday and Daisy Gatson Bates Day"
+            # George Washington's Birthday and Daisy Gatson Bates Day.
+            name = tr("George Washington's Birthday and Daisy Gatson Bates Day")
             if self._year >= 1971:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
 
     def _populate_subdiv_as_public_holidays(self):
-        # American Samoa Flag Day
         if self._year >= 1901:
-            self._add_observed(self._add_holiday_apr_17("American Samoa Flag Day"))
+            # American Samoa Flag Day.
+            self._add_observed(self._add_holiday_apr_17(tr("American Samoa Flag Day")))
 
-        # Manu'a Islands Cession Day
         if self._year >= 1983:
-            self._add_observed(self._add_holiday_jul_16("Manu'a Islands Cession Day"))
+            # Manu'a Islands Cession Day.
+            self._add_observed(self._add_holiday_jul_16(tr("Manu'a Islands Cession Day")))
 
-        # White Sunday
-        self._add_holiday_2nd_sun_of_oct("White Sunday")
+        # White Sunday.
+        self._add_holiday_2nd_sun_of_oct(tr("White Sunday"))
 
     def _populate_subdiv_az_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
-            self._add_holiday_3rd_mon_of_jan("Dr. Martin Luther King Jr. / Civil Rights Day")
+            # Dr. Martin Luther King Jr. / Civil Rights Day.
+            self._add_holiday_3rd_mon_of_jan(tr("Dr. Martin Luther King Jr. / Civil Rights Day"))
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Lincoln/Washington Presidents' Day")
+            # Lincoln/Washington Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Lincoln/Washington Presidents' Day"))
 
     def _populate_subdiv_ca_public_holidays(self):
-        # Lincoln's Birthday
         if 1971 <= self._year <= 2009:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Susan B. Anthony Day
         if self._year >= 2014:
-            self._add_holiday_feb_15("Susan B. Anthony Day")
+            # Susan B. Anthony Day.
+            self._add_holiday_feb_15(tr("Susan B. Anthony Day"))
 
-        # Cesar Chavez Day
         if self._year >= 1995:
-            self._add_observed(self._add_holiday_mar_31("Cesar Chavez Day"), rule=SUN_TO_NEXT_MON)
+            self._add_observed(
+                # Cesar Chavez Day.
+                self._add_holiday_mar_31(tr("Cesar Chavez Day")),
+                rule=SUN_TO_NEXT_MON,
+            )
 
-        # Columbus Day
         if 1971 <= self._year <= 2008:
-            self._add_holiday_2nd_mon_of_oct("Columbus Day")
+            # Columbus Day.
+            self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_co_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Washington-Lincoln Day")
+            # Washington-Lincoln Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Washington-Lincoln Day"))
 
-        # Cesar Chavez Day
         if self._year >= 2001:
-            self._add_holiday_mar_31("Cesar Chavez Day")
+            # Cesar Chavez Day.
+            self._add_holiday_mar_31(tr("Cesar Chavez Day"))
 
-        # Frances Xavier Cabrini Day
         if self._year >= 2020:
-            self._add_holiday_1st_mon_of_oct("Frances Xavier Cabrini Day")
+            # Frances Xavier Cabrini Day.
+            self._add_holiday_1st_mon_of_oct(tr("Frances Xavier Cabrini Day"))
 
     def _populate_subdiv_ct_public_holidays(self):
-        # Lincoln's Birthday
         if self._year >= 1971:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
     def _populate_subdiv_dc_public_holidays(self):
-        # Inauguration Day
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
-            name = "Inauguration Day"
+            # Inauguration Day.
+            name = tr("Inauguration Day")
             self._add_observed(
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
@@ -526,205 +619,211 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 rule=SUN_TO_NEXT_MON,
             )
 
-        # Emancipation Day
         if self._year >= 2005:
-            self._add_observed(self._add_holiday_apr_16("Emancipation Day"))
+            # Emancipation Day.
+            self._add_observed(self._add_holiday_apr_16(tr("Emancipation Day")))
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2019
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
     def _populate_subdiv_de_public_holidays(self):
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_fl_public_holidays(self):
-        # Susan B. Anthony Day
         if self._year >= 2011:
-            self._add_holiday_feb_15("Susan B. Anthony Day")
+            # Susan B. Anthony Day.
+            self._add_holiday_feb_15(tr("Susan B. Anthony Day"))
 
-        # Friday After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Friday After Thanksgiving")
+            # Friday After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Friday After Thanksgiving"))
 
     def _populate_subdiv_ga_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday_3rd_mon_of_jan(
-                "Martin Luther King Jr. Day" if self._year >= 2012 else "Robert E. Lee's Birthday"
+                # Martin Luther King Jr. Day.
+                tr("Martin Luther King Jr. Day")
+                if self._year >= 2012
+                # Robert E. Lee's Birthday.
+                else tr("Robert E. Lee's Birthday")
             )
 
-        # Confederate Memorial Day
         if self._year >= 1866:
-            name = "State Holiday" if self._year >= 2016 else "Confederate Memorial Day"
+            name = (
+                # State Holiday.
+                tr("State Holiday")
+                if self._year >= 2016
+                # Confederate Memorial Day.
+                else tr("Confederate Memorial Day")
+            )
             if self._year == 2020:
                 self._add_holiday_apr_10(name)
             else:
                 self._add_holiday_4th_mon_of_apr(name)
 
-        # Robert E. Lee's Birthday
         if self._year >= 1986:
             self._add_holiday_1_day_past_4th_thu_of_nov(
-                "State Holiday" if self._year >= 2016 else "Robert E. Lee's Birthday"
+                # State Holiday.
+                tr("State Holiday")
+                if self._year >= 2016
+                # Robert E. Lee's Birthday.
+                else tr("Robert E. Lee's Birthday")
             )
 
-        # Washington's Birthday
         if self._year >= 1879:
             self._add_holiday(
-                "Washington's Birthday",
+                # Washington's Birthday.
+                tr("Washington's Birthday"),
                 self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
             )
 
     def _populate_subdiv_gu_public_holidays(self):
-        # Guam Discovery Day
         if self._year >= 1970:
-            self._add_holiday_1st_mon_of_mar("Guam Discovery Day")
+            # Guam Discovery Day.
+            self._add_holiday_1st_mon_of_mar(tr("Guam Discovery Day"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Liberation Day (Guam)
         if self._year >= 1945:
-            self._add_holiday_jul_21("Liberation Day (Guam)")
+            # Liberation Day (Guam).
+            self._add_holiday_jul_21(tr("Liberation Day (Guam)"))
 
-        # All Souls' Day
-        self._add_all_souls_day("All Souls' Day")
+        # All Souls' Day.
+        self._add_all_souls_day(tr("All Souls' Day"))
 
-        # Lady of Camarin Day
-        self._add_immaculate_conception_day("Lady of Camarin Day")
+        # Lady of Camarin Day.
+        self._add_immaculate_conception_day(tr("Lady of Camarin Day"))
 
     def _populate_subdiv_hi_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Prince Jonah Kuhio Kalanianaole Day
         if self._year >= 1949:
-            self._add_observed(self._add_holiday_mar_26("Prince Jonah Kuhio Kalanianaole Day"))
+            # Prince Jonah Kuhio Kalanianaole Day.
+            self._add_observed(self._add_holiday_mar_26(tr("Prince Jonah Kuhio Kalanianaole Day")))
 
-        # Kamehameha Day
         if self._year >= 1872:
-            jun_11 = self._add_holiday_jun_11("Kamehameha Day")
+            # Kamehameha Day.
+            jun_11 = self._add_holiday_jun_11(tr("Kamehameha Day"))
             if self._year >= 2011:
                 self._add_observed(jun_11)
 
-        # Statehood Day
         if self._year >= 1959:
-            self._add_holiday_3rd_fri_of_aug("Statehood Day")
+            # Statehood Day.
+            self._add_holiday_3rd_fri_of_aug(tr("Statehood Day"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_ia_public_holidays(self):
-        # Lincoln's Birthday
         if self._year >= 1971:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
     def _populate_subdiv_id_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday_3rd_mon_of_jan(
-                "Martin Luther King Jr. / Idaho Human Rights Day"
+                # Martin Luther King Jr. / Idaho Human Rights Day.
+                tr("Martin Luther King Jr. / Idaho Human Rights Day")
                 if self._year >= 2006
-                else "Martin Luther King Jr. Day"
+                # Martin Luther King Jr. Day.
+                else tr("Martin Luther King Jr. Day")
             )
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
     def _populate_subdiv_il_public_holidays(self):
-        # Lincoln's Birthday
         if self._year >= 1971:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        # Casimir Pulaski Day
         if self._year >= 1978:
-            self._add_holiday_1st_mon_of_mar("Casimir Pulaski Day")
+            # Casimir Pulaski Day.
+            self._add_holiday_1st_mon_of_mar(tr("Casimir Pulaski Day"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_in_public_holidays(self):
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Primary Election Day
         if self._year >= 2015 or (self._year >= 2006 and self._year % 2 == 0):
-            self._add_holiday_1_day_past_1st_mon_of_may("Primary Election Day")
+            # Primary Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_may(tr("Primary Election Day"))
 
-        # Election Day
         if self._year >= 2015 or (self._year >= 2008 and self._year % 2 == 0):
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Lincoln's Birthday
         if self._year >= 2010:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Lincoln's Birthday")
+            # Lincoln's Birthday.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Lincoln's Birthday"))
 
-        # Washington's Birthday
         if self._year >= 1879:
             self._add_holiday(
-                "Washington's Birthday",
+                # Washington's Birthday.
+                tr("Washington's Birthday"),
                 self._get_observed_date(self._christmas_day, rule=GA_IN_WASHINGTON_BIRTHDAY),
             )
 
     def _populate_subdiv_ks_public_holidays(self):
-        # Christmas Eve
         if self._year >= 2013:
+            # Christmas Eve.
             self._add_christmas_eve_holiday()
 
     def _populate_subdiv_ky_public_holidays(self):
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # New Year's Eve
         if self._year >= 2013:
-            self._add_observed(self._add_new_years_eve("New Year's Eve"))
+            # New Year's Eve.
+            self._add_observed(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_la_public_holidays(self):
-        # Inauguration Day
-        if self._year >= 1789 and (self._year - 1789) % 4 == 0:
-            name = "Inauguration Day"
-            self._add_observed(
-                self._add_holiday_jan_20(name)
-                if self._year >= 1937
-                else self._add_holiday_mar_4(name),
-                rule=SUN_TO_NEXT_MON,
-            )
-
-        # Mardi Gras
         if self._year >= 1857:
-            self._add_carnival_tuesday("Mardi Gras")
+            # Mardi Gras.
+            self._add_carnival_tuesday(tr("Mardi Gras"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_ma_public_holidays(self):
-        # Evacuation Day
         if self._year >= 1901:
             self._add_observed(
-                self._add_holiday_mar_17("Evacuation Day"), rule=SAT_SUN_TO_NEXT_MON
+                # Evacuation Day.
+                self._add_holiday_mar_17(tr("Evacuation Day")),
+                rule=SAT_SUN_TO_NEXT_MON,
             )
 
-        # Patriots' Day
         if self._year >= 1894:
-            name = "Patriots' Day"
+            # Patriots' Day.
+            name = tr("Patriots' Day")
             if self._year >= 1969:
                 self._add_holiday_3rd_mon_of_apr(name)
             else:
@@ -732,8 +831,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
 
     def _populate_subdiv_md_public_holidays(self):
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
-            # Inauguration Day
-            name = "Inauguration Day"
+            # Inauguration Day.
+            name = tr("Inauguration Day")
             self._add_observed(
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
@@ -741,112 +840,115 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 rule=SUN_TO_NEXT_MON,
             )
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # American Indian Heritage Day
         if self._year >= 2008:
-            self._add_holiday_1_day_past_4th_thu_of_nov("American Indian Heritage Day")
+            # American Indian Heritage Day.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("American Indian Heritage Day"))
 
     def _populate_subdiv_me_public_holidays(self):
-        # Patriots' Day
         if self._year >= 1894:
-            name = "Patriots' Day"
+            # Patriots' Day.
+            name = tr("Patriots' Day")
             if self._year >= 1969:
-                self._add_holiday_3rd_mon_of_apr("Patriots' Day")
+                self._add_holiday_3rd_mon_of_apr(tr("Patriots' Day"))
             else:
                 self._add_holiday_apr_19(name)
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2019
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
     def _populate_subdiv_mi_public_holidays(self):
         if self._year >= 2013:
-            # Christmas Eve
+            # Christmas Eve.
             self._add_christmas_eve_holiday()
 
-            # New Year's Eve
-            self._add_observed(self._add_new_years_eve("New Year's Eve"))
+            # New Year's Eve.
+            self._add_observed(self._add_new_years_eve(tr("New Year's Eve")))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Day after Thanksgiving
         if self._year >= 2017:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_mn_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Washington's and Lincoln's Birthday")
+            # Washington's and Lincoln's Birthday.
+            self._add_holiday_3rd_mon_of_feb(tr("Washington's and Lincoln's Birthday"))
 
     def _populate_subdiv_mo_public_holidays(self):
-        # Truman Day
         if self._year >= 1949:
-            self._add_observed(self._add_holiday_may_8("Truman Day"))
+            # Truman Day.
+            self._add_observed(self._add_holiday_may_8(tr("Truman Day")))
 
     def _populate_subdiv_mp_public_holidays(self):
-        # Commonwealth Covenant Day in Northern Mariana Islands
-        self._add_observed(self._add_holiday_mar_24("Commonwealth Covenant Day"))
+        # Commonwealth Covenant Day.
+        self._add_observed(self._add_holiday_mar_24(tr("Commonwealth Covenant Day")))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Commonwealth Cultural Day in Northern Mariana Islands
-        self._add_holiday_2nd_mon_of_oct("Commonwealth Cultural Day")
+        # Commonwealth Cultural Day.
+        self._add_holiday_2nd_mon_of_oct(tr("Commonwealth Cultural Day"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Citizenship Day in Northern Mariana Islands
-        self._add_observed(self._add_holiday_nov_4("Citizenship Day"))
+        # Citizenship Day.
+        self._add_observed(self._add_holiday_nov_4(tr("Citizenship Day")))
 
-        # Constitution Day in Northern Mariana Islands
-        self._add_observed(self._add_holiday_dec_8("Constitution Day"))
+        # Constitution Day.
+        self._add_observed(self._add_holiday_dec_8(tr("Constitution Day")))
 
     def _populate_subdiv_ms_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday_3rd_mon_of_jan(
-                "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
+                # Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays.
+                tr("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays")
             )
 
-        # Confederate Memorial Day
         if self._year >= 1866:
-            self._add_holiday_last_mon_of_apr("Confederate Memorial Day")
+            # Confederate Memorial Day.
+            self._add_holiday_last_mon_of_apr(tr("Confederate Memorial Day"))
 
     def _populate_subdiv_mt_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Lincoln's and Washington's Birthdays")
+            # Lincoln's and Washington's Birthdays.
+            self._add_holiday_3rd_mon_of_feb(tr("Lincoln's and Washington's Birthdays"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_nc_public_holidays(self):
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
-        # Christmas Eve
         if self._year >= 2013:
+            # Christmas Eve.
             self._add_christmas_eve_holiday()
 
-        # Day After Christmas
+        # If on Saturday or Sunday, observed on Monday
+        # If on Monday, observed on Tuesday
         if self._year >= 2013:
-            # If on Saturday or Sunday, observed on Monday
-            # If on Monday, observed on Tuesday
-            name = "Day After Christmas"
+            # Day After Christmas.
+            name = tr("Day After Christmas")
             self._add_observed(
                 self._add_christmas_day_two(name),
                 name=name,
@@ -857,229 +959,243 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
         pass
 
     def _populate_subdiv_ne_public_holidays(self):
-        # Arbor Day
         if self._year >= 1875:
-            name = "Arbor Day"
+            # Arbor Day.
+            name = tr("Arbor Day")
             if self._year >= 1989:
                 self._add_holiday_last_fri_of_apr(name)
             else:
                 self._add_holiday_apr_22(name)
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2020 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2020
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
     def _populate_subdiv_nh_public_holidays(self):
-        # Martin Luther King Jr. Day
         if self._year >= 1986:
-            self._add_holiday_3rd_mon_of_jan("Dr. Martin Luther King Jr. / Civil Rights Day")
+            # Dr. Martin Luther King Jr. / Civil Rights Day.
+            self._add_holiday_3rd_mon_of_jan(tr("Dr. Martin Luther King Jr. / Civil Rights Day"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_nj_public_holidays(self):
-        # Lincoln's Birthday
         if self._year >= 1971:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents Day")
+            # Presidents Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents Day"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_nm_public_holidays(self):
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2019 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2019
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
-        # Presidents' Day
-        self._add_holiday_1_day_past_4th_thu_of_nov("Presidents' Day")
+        # Presidents' Day.
+        self._add_holiday_1_day_past_4th_thu_of_nov(tr("Presidents' Day"))
 
     def _populate_subdiv_nv_public_holidays(self):
-        # Nevada Day
         if self._year >= 1933:
-            name = "Nevada Day"
+            # Nevada Day.
+            name = tr("Nevada Day")
             self._add_observed(
                 self._add_holiday_last_fri_of_oct(name)
                 if self._year >= 2000
                 else self._add_holiday_oct_31(name)
             )
 
-        # Family Day
-        self._add_holiday_1_day_past_4th_thu_of_nov("Family Day")
+        # Family Day.
+        self._add_holiday_1_day_past_4th_thu_of_nov(tr("Family Day"))
 
     def _populate_subdiv_ny_public_holidays(self):
-        # Lincoln's Birthday
         if self._year >= 1971:
-            self._add_observed(self._add_holiday_feb_12("Lincoln's Birthday"))
+            # Lincoln's Birthday.
+            self._add_observed(self._add_holiday_feb_12(tr("Lincoln's Birthday")))
 
-        # Susan B. Anthony Day
         if self._year >= 2004:
-            self._add_holiday_feb_15("Susan B. Anthony Day")
+            # Susan B. Anthony Day.
+            self._add_holiday_feb_15(tr("Susan B. Anthony Day"))
 
-        # Election Day
         if self._year >= 2015 or (self._year >= 2008 and self._year % 2 == 0):
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
     def _populate_subdiv_oh_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Washington-Lincoln Day")
+            # Washington-Lincoln Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Washington-Lincoln Day"))
 
     def _populate_subdiv_ok_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_or_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents Day")
+            # Presidents Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents Day"))
 
     def _populate_subdiv_pa_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Day After Thanksgiving
-        self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+        # Day After Thanksgiving.
+        self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_pr_public_holidays(self):
-        # Epiphany
-        self._add_epiphany_day("Epiphany")
+        # Epiphany.
+        self._add_epiphany_day(tr("Epiphany"))
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Emancipation Day
-        self._add_observed(self._add_holiday_mar_22("Emancipation Day"), rule=SUN_TO_NEXT_MON)
+        # Emancipation Day.
+        self._add_observed(self._add_holiday_mar_22(tr("Emancipation Day")), rule=SUN_TO_NEXT_MON)
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Constitution Day
-        self._add_observed(self._add_holiday_jul_25("Constitution Day"), rule=SUN_TO_NEXT_MON)
+        # Constitution Day.
+        self._add_observed(self._add_holiday_jul_25(tr("Constitution Day")), rule=SUN_TO_NEXT_MON)
 
-        # Discovery Day
-        self._add_observed(self._add_holiday_nov_19("Discovery Day"), rule=SUN_TO_NEXT_MON)
+        # Discovery Day.
+        self._add_observed(self._add_holiday_nov_19(tr("Discovery Day")), rule=SUN_TO_NEXT_MON)
 
     def _populate_subdiv_ri_public_holidays(self):
-        # Victory Day
         if self._year >= 1948:
-            self._add_holiday_2nd_mon_of_aug("Victory Day")
+            # Victory Day.
+            self._add_holiday_2nd_mon_of_aug(tr("Victory Day"))
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day / Columbus Day" if self._year >= 2022 else "Columbus Day"
+                # Indigenous Peoples' Day / Columbus Day.
+                tr("Indigenous Peoples' Day / Columbus Day")
+                if self._year >= 2022
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
     def _populate_subdiv_sc_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("President's Day")
+            # President's Day.
+            self._add_holiday_3rd_mon_of_feb(tr("President's Day"))
 
-        # Confederate Memorial Day
         if self._year >= 1866:
-            self._add_holiday_4th_mon_of_apr("Confederate Memorial Day")
+            # Confederate Memorial Day.
+            self._add_holiday_4th_mon_of_apr(tr("Confederate Memorial Day"))
 
     def _populate_subdiv_sd_public_holidays(self):
-        # Native Americans' Day / Columbus Day
         if self._year >= 1937:
-            name = "Native Americans' Day" if self._year >= 1990 else "Columbus Day"
+            name = (
+                # Native Americans' Day.
+                tr("Native Americans' Day")
+                if self._year >= 1990
+                # Columbus Day.
+                else tr("Columbus Day")
+            )
             if self._year >= 1970:
                 self._add_holiday_2nd_mon_of_oct(name)
             else:
                 self._add_columbus_day(name)
 
     def _populate_subdiv_tn_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("President's Day")
+            # President's Day.
+            self._add_holiday_3rd_mon_of_feb(tr("President's Day"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
     def _populate_subdiv_tx_public_holidays(self):
-        # Confederate Memorial Day
         if self._year >= 1931:
-            self._add_holiday_jan_19("Confederate Memorial Day")
+            # Confederate Memorial Day.
+            self._add_holiday_jan_19(tr("Confederate Memorial Day"))
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Texas Independence Day
         if self._year >= 1874:
-            self._add_holiday_mar_2("Texas Independence Day")
+            # Texas Independence Day.
+            self._add_holiday_mar_2(tr("Texas Independence Day"))
 
-        # Cesar Chavez Day
         if self._year >= 2000:
-            self._add_holiday_mar_31("Cesar Chavez Day")
+            # Cesar Chavez Day.
+            self._add_holiday_mar_31(tr("Cesar Chavez Day"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # San Jacinto Day
         if self._year >= 1875:
-            self._add_holiday_apr_21("San Jacinto Day")
+            # San Jacinto Day.
+            self._add_holiday_apr_21(tr("San Jacinto Day"))
 
-        # Emancipation Day In Texas
         if self._year >= 1980:
-            self._add_holiday_jun_19("Emancipation Day In Texas")
+            # Emancipation Day In Texas.
+            self._add_holiday_jun_19(tr("Emancipation Day In Texas"))
 
-        # Lyndon Baines Johnson Day
         if self._year >= 1973:
-            self._add_holiday_aug_27("Lyndon Baines Johnson Day")
+            # Lyndon Baines Johnson Day.
+            self._add_holiday_aug_27(tr("Lyndon Baines Johnson Day"))
 
-        # Friday After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Friday After Thanksgiving")
+            # Friday After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Friday After Thanksgiving"))
 
-        # Christmas Eve
         if self._year >= 1981:
+            # Christmas Eve.
             self._add_christmas_eve_holiday()
 
-        # Day After Christmas
         if self._year >= 1981:
-            self._add_christmas_day_two("Day After Christmas")
+            # Day After Christmas.
+            self._add_christmas_day_two(tr("Day After Christmas"))
 
     def _populate_subdiv_um_public_holidays(self):
         pass
 
     def _populate_subdiv_ut_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Washington and Lincoln Day")
+            # Washington and Lincoln Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Washington and Lincoln Day"))
 
-        # Pioneer Day
         if self._year >= 1849:
-            self._add_observed(self._add_holiday_jul_24("Pioneer Day"))
+            # Pioneer Day.
+            self._add_observed(self._add_holiday_jul_24(tr("Pioneer Day")))
 
     def _populate_subdiv_va_public_holidays(self):
-        # Lee Jackson Day
         if 1889 <= self._year <= 2020:
-            name = "Lee Jackson Day"
+            # Lee Jackson Day.
+            name = tr("Lee Jackson Day")
             if self._year >= 2000:
                 self._add_holiday_3_days_prior_3rd_mon_of_jan(name)
             elif self._year >= 1983:
@@ -1087,9 +1203,9 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             else:
                 self._add_holiday_jan_19(name)
 
-        # Inauguration Day
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
-            name = "Inauguration Day"
+            # Inauguration Day.
+            name = tr("Inauguration Day")
             self._add_observed(
                 self._add_holiday_jan_20(name)
                 if self._year >= 1937
@@ -1097,133 +1213,142 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
                 rule=SUN_TO_NEXT_MON,
             )
 
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("George Washington Day")
+            # George Washington Day.
+            self._add_holiday_3rd_mon_of_feb(tr("George Washington Day"))
 
-        # Indigenous Peoples' Day
         if self._year >= 1971:
             self._add_holiday_2nd_mon_of_oct(
-                "Indigenous Peoples' Day" if self._year >= 2020 else "Columbus Day"
+                # Indigenous Peoples' Day.
+                tr("Indigenous Peoples' Day")
+                if self._year >= 2020
+                # Columbus Day.
+                else tr("Columbus Day")
             )
 
     def _populate_subdiv_vi_public_holidays(self):
-        # Three Kings Day
-        self._add_epiphany_day("Three Kings Day")
+        # Three Kings Day.
+        self._add_epiphany_day(tr("Three Kings Day"))
 
-        # Washington's Birthday
         if self._year >= 1879:
-            name = "Presidents' Day"
+            # Presidents' Day.
+            name = tr("Presidents' Day")
             if self._year >= 1971:
                 self._add_holiday_3rd_mon_of_feb(name)
             else:
                 self._add_holiday_feb_22(name)
 
-        # Transfer Day
-        self._add_holiday_mar_31("Transfer Day")
+        # Transfer Day.
+        self._add_holiday_mar_31(tr("Transfer Day"))
 
-        # Holy Thursday
-        self._add_holy_thursday("Holy Thursday")
+        # Holy Thursday.
+        self._add_holy_thursday(tr("Holy Thursday"))
 
-        # Good Friday
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        # Easter Monday
-        self._add_easter_monday("Easter Monday")
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
-        # Emancipation Day in US Virgin Islands
-        self._add_holiday_jul_3("Emancipation Day")
+        # Emancipation Day.
+        self._add_holiday_jul_3(tr("Emancipation Day"))
 
-        # Columbus Day
         if self._year >= 1937:
-            name = "Columbus Day and Puerto Rico Friendship Day"
+            # Columbus Day and Puerto Rico Friendship Day.
+            name = tr("Columbus Day and Puerto Rico Friendship Day")
             if self._year >= 1970:
                 self._add_holiday_2nd_mon_of_oct(name)
             else:
                 self._add_columbus_day(name)
 
-        # Liberty Day
-        self._add_holiday_nov_1("Liberty Day")
+        # Liberty Day.
+        self._add_holiday_nov_1(tr("Liberty Day"))
 
-        # Christmas Second Day
-        self._add_christmas_day_two("Christmas Second Day")
+        # Christmas Second Day.
+        self._add_christmas_day_two(tr("Christmas Second Day"))
 
     def _populate_subdiv_vt_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # Town Meeting Day
         if self._year >= 1800:
-            self._add_holiday_1st_tue_of_mar("Town Meeting Day")
+            # Town Meeting Day.
+            self._add_holiday_1st_tue_of_mar(tr("Town Meeting Day"))
 
-        # Bennington Battle Day
         if self._year >= 1778:
-            self._add_observed(self._add_holiday_aug_16("Bennington Battle Day"))
+            # Bennington Battle Day.
+            self._add_observed(self._add_holiday_aug_16(tr("Bennington Battle Day")))
 
     def _populate_subdiv_wa_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
     def _populate_subdiv_wi_public_holidays(self):
-        # Susan B. Anthony Day
         if self._year >= 1976:
-            self._add_holiday_feb_15("Susan B. Anthony Day")
+            # Susan B. Anthony Day.
+            self._add_holiday_feb_15(tr("Susan B. Anthony Day"))
 
         if self._year >= 2012:
-            # Christmas Eve
+            # Christmas Eve.
             self._add_christmas_eve_holiday()
 
-            # New Year's Eve
-            self._add_observed(self._add_new_years_eve("New Year's Eve"))
+            # New Year's Eve.
+            self._add_observed(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_wv_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("Presidents' Day")
+            # Presidents' Day.
+            self._add_holiday_3rd_mon_of_feb(tr("Presidents' Day"))
 
-        # West Virginia Day
         if self._year >= 1927:
-            self._add_observed(self._add_holiday_jun_20("West Virginia Day"))
+            # West Virginia Day.
+            self._add_observed(self._add_holiday_jun_20(tr("West Virginia Day")))
 
-        # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
-            self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
-        # Day After Thanksgiving
         if self._year >= 1975:
-            self._add_holiday_1_day_past_4th_thu_of_nov("Day After Thanksgiving")
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
 
     def _populate_subdiv_wy_public_holidays(self):
-        # Washington's Birthday
         if self._year >= 1971:
-            self._add_holiday_3rd_mon_of_feb("President's Day")
+            # President's Day.
+            self._add_holiday_3rd_mon_of_feb(tr("President's Day"))
 
     def _populate_government_holidays(self):
-        # Federal holidays in the United States.
-        self._populate_common(include_federal=True)
+        # Added by 16 Stat. 168, effectdive date June 28th, 1870.
+        # New Year's Day check for 1871 is included.
+        if self._year >= 1870:
+            # Federal holidays in the United States.
+            self._populate_common(include_federal=True)
 
     def _populate_unofficial_holidays(self):
         # Very common celebrated cultural days, but no official observance.
         # Due to its nature, no in-lieus are observed.
 
-        # Valentine's Day
+        # Valentine's Day.
         # While the modern iteration of Valentine's Day has started in the UK in 1797,
         # it wasn't until 1847 in the US that this started to be observed here.
 
         if self._year >= 1847:
-            self._add_holiday_feb_14("Valentine's Day")
+            # Valentine's Day.
+            self._add_holiday_feb_14(tr("Valentine's Day"))
 
-        # Saint Patrick's Day
+        # Saint Patrick's Day.
         # Started in Boston in 1737 for the US.
 
-        self._add_holiday_mar_17("Saint Patrick's Day")
+        # Saint Patrick's Day.
+        self._add_holiday_mar_17(tr("Saint Patrick's Day"))
 
-        # Halloween
+        # Halloween.
         # Halloween began in the US sometime around the 19th century.
 
-        self._add_holiday_oct_31("Halloween")
+        # Halloween.
+        self._add_holiday_oct_31(tr("Halloween"))
 
         # Continental US non-Public dates
 
@@ -1232,14 +1357,16 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             # First observed on Feb 2 in 1886 in Continental US + Hawaii.
 
             if self._year >= 1886:
-                self._add_holiday_feb_2("Groundhog Day")
+                # Groundhog Day.
+                self._add_holiday_feb_2(tr("Groundhog Day"))
 
             # Election Day
             # May be duplicates for certain states which has this as their actual public holiday.
             # The current US Presidential Election date pattern was codified in 1848 nationwide.
 
             if self._year >= 1848 and self._year % 4 == 0:
-                self._add_holiday_1_day_past_1st_mon_of_nov("Election Day")
+                # Election Day.
+                self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
 
 
 class US(UnitedStates):
@@ -1248,3 +1375,55 @@ class US(UnitedStates):
 
 class USA(UnitedStates):
     pass
+
+
+class UnitedStatesStaticHolidays(StaticHolidays):
+    """United States special holidays.
+
+    Thanksgiving Proclamation References:
+        * [1777](https://web.archive.org/web/20240621142028/https://pilgrimhall.org/pdf/TG_First_National_Thanksgiving_Proclamation_1777.pdf)
+        * [1782](https://web.archive.org/web/20240621142030/https://www.loc.gov/exhibits/religion/vc006491.jpg)
+        * [1789](https://web.archive.org/web/20240621142029/https://www.whatsoproudlywehail.org/curriculum/the-american-calendar/thanksgiving-proclamation-1789-2)
+        * [1795](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Washington/05-17-02-0239)
+        * [1798](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Adams/99-02-02-2386)
+        * [1799](https://web.archive.org/web/20240621142029/https://founders.archives.gov/documents/Adams/99-02-02-3372)
+        * [1813](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-06-02-0434)
+        * [1815](https://web.archive.org/web/20240621142030/https://founders.archives.gov/documents/Madison/03-09-02-0066)
+
+    Pre-1971 Inauguration Day observances has been moved here.
+    """
+
+    # Fasting and Humiliation Day.
+    fasting_and_humiliation_day_name = tr("Fasting and Humiliation Day")
+    # Public Humiliation and Prayer Day.
+    public_humiliation_and_prayer_day_name = tr("Public Humiliation and Prayer Day")
+    # Public Thanksgiving and Prayer Day.
+    public_thanksgiving_and_prayer_day_name = tr("Public Thanksgiving and Prayer Day")
+
+    # Inauguration Day.
+    inauguration_day_name = tr("Inauguration Day")
+
+    special_public_holidays = {
+        1777: (DEC, 18, public_thanksgiving_and_prayer_day_name),
+        1782: (NOV, 28, public_thanksgiving_and_prayer_day_name),
+        1789: (NOV, 26, public_thanksgiving_and_prayer_day_name),
+        1795: (FEB, 19, public_thanksgiving_and_prayer_day_name),
+        1798: (MAY, 9, fasting_and_humiliation_day_name),
+        1799: (APR, 25, fasting_and_humiliation_day_name),
+        1813: (SEP, 9, public_humiliation_and_prayer_day_name),
+        1815: (APR, 13, public_humiliation_and_prayer_day_name),
+    }
+
+    # Pre-1953 Inauguration Day observances.
+    special_dc_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+    }
+    special_md_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+    }
+    special_va_public_holidays_observed = {
+        1877: (MAR, 5, inauguration_day_name),
+        1917: (MAR, 5, inauguration_day_name),
+    }

@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
 
 
-class HolidaysPR(US):
+class HolidaysPR(UnitedStates):
     """Puerto Rico holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,9 +22,12 @@ class HolidaysPR(US):
     """
 
     country = "PR"
+    parent_entity = UnitedStates
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # Became a U.S. Territory on April 11th, 1899.
+    start_year = 1900
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "PR"
@@ -39,13 +42,13 @@ class HolidaysPR(US):
         super()._populate_unofficial_holidays()
 
 
+class PuertoRico(HolidaysPR):
+    pass
+
+
 class PR(HolidaysPR):
     pass
 
 
 class PRI(HolidaysPR):
-    pass
-
-
-class PuertoRico(HolidaysPR):
     pass
