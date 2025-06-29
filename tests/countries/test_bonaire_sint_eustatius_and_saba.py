@@ -102,7 +102,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BON":
-                self.assertHolidayName(name, holidays, range(2011, 2050))
+                self.assertHolidayName(name, holidays, range(2020, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)
 

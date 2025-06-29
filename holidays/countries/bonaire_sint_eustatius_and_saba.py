@@ -87,8 +87,9 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
     def _populate_subdiv_bon_public_holidays(self):
-        # Rincon Day.
-        self._add_holiday_apr_30(tr("Rincon dag"))
+        if self._year >= 2020:
+            # Rincon Day.
+            self._add_holiday_apr_30(tr("Rincon dag"))
 
         # Bonaire Day.
         self._add_holiday_sep_6(tr("Boneiru dag"))
