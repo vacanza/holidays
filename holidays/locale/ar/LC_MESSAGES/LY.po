@@ -71,12 +71,12 @@ msgstr ""
 msgid "عيد الاستقلال"
 msgstr ""
 
-#. Prophet's Birthday.
-msgid "ذكرى المولد النبوي الشريف"
-msgstr ""
-
 #. Islamic New Year.
 msgid "عيد رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "ذكرى المولد النبوي الشريف"
 msgstr ""
 
 #. Eid al-Fitr.

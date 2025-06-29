@@ -85,12 +85,12 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # Independence Day.
             self._add_holiday_dec_24(tr("عيد الاستقلال"))
 
-        # Prophet's Birthday.
-        self._add_mawlid_day(tr("ذكرى المولد النبوي الشريف"))
-
         if self._year >= 2012:
             # Islamic New Year.
             self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
+
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("ذكرى المولد النبوي الشريف"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")
@@ -198,7 +198,7 @@ class LibyaStaticHolidays:
         - <https://web.archive.org/web/20250629084721/https://lawsociety.ly/legislation/%d9%82%d8%b1%d8%a7%d8%b1-%d8%b1%d9%82%d9%85-555-%d9%84%d8%b3%d9%86%d8%a9-2023-%d9%85-%d8%a8%d9%85%d9%86%d8%ad-%d8%a5%d8%ac%d8%a7%d8%b2%d8%a9-%d8%b1%d8%b3%d9%85%d9%8a%d8%a9/>
     """
 
-    SPECIAL_PUBLIC_HOLIDAYS = {
+    special_public_holidays = {
         # Public Holiday.
         2023: (DEC, 10, tr("عطلة رسمية"))
     }
