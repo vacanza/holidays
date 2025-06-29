@@ -27,88 +27,126 @@ class TestBhutan(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Bhutan(years=1969))
 
-    def test_nyilo(self):
-        self.assertHolidayName("ཉི་ལོག་", (f"{year}-01-02" for year in range(1970, 2050)))
+    def test_winter_solstice(self):
+        self.assertHolidayName("Winter Solstice", (f"{year}-01-02" for year in range(1970, 2050)))
+
+    def test_traditional_day_of_offering(self):
+        name = "Traditional Day of Offering"
+        dt = ("2020-01-25", "2021-01-14", "2022-02-02", "2023-01-22", "2024-01-12", "2025-01-30")
+        self.assertHolidayName(name, dt)
+
+    def test_losar(self):
+        name = "Losar Wood Male Dragon Year"
+        dt = ("2020-02-24", "2021-02-12", "2022-03-03", "2023-02-21", "2024-02-11", "2025-02-28")
+        self.assertHolidayName(name, dt)
 
     def test_kings_birthday_day1(self):
         self.assertHolidayName(
-            "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།", (f"{year}-02-21" for year in range(1970, 2050))
+            "Birth Anniversary of His Majesty the King",
+            (f"{year}-02-21" for year in range(1970, 2050)),
         )
 
     def test_kings_birthday_day2(self):
         self.assertHolidayName(
-            "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽", (f"{year}-02-22" for year in range(1970, 2050))
+            "Birth Anniversary of His Majesty the King",
+            (f"{year}-02-22" for year in range(1970, 2050)),
         )
 
     def test_kings_birthday_day3(self):
         self.assertHolidayName(
-            "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽", (f"{year}-02-23" for year in range(1970, 2050))
+            "Birth Anniversary of His Majesty the King",
+            (f"{year}-02-23" for year in range(1970, 2050)),
         )
+
+    def test_death_anniversary_of_zhabdrung(self):
+        name = "Death Anniversary of Zhabdrung (Zhabdrung Kuchoe)"
+        dt = ("2019-04-14", "2021-04-22", "2022-05-11", "2023-04-30", "2024-04-18", "2025-05-07")
+        self.assertHolidayName(name, dt)
 
     def test_birth_anniversary_third_druk_gyalpo(self):
         self.assertHolidayName(
-            "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།", (f"{year}-05-02" for year in range(1970, 2050))
+            "Birth Anniversary of the 3rd Druk Gyalpo",
+            (f"{year}-05-02" for year in range(1970, 2050)),
         )
 
-    def test_coronation_king_jigme_khesar(self):
+    def test_lord_buddha_parinirvana(self):
+        name = "Lord Buddha's Parinirvana"
+        dt = ("2020-06-05", "2021-05-26", "2022-06-14", "2023-06-04", "2024-05-23", "2025-06-11")
+        self.assertHolidayName(name, dt)
+
+    def test_birth_anniversary_guru_rinpoche(self):
+        name = "Birth Anniversary of Guru Rinpoche"
+        dt = ("2020-06-30", "2021-06-20", "2022-07-09", "2023-06-28", "2024-06-16", "2025-07-05")
+        self.assertHolidayName(name, dt)
+
+    def test_first_sermon_lord_buddha(self):
+        name = "First Sermon of Lord Buddha"
+        dt = ("2020-07-24", "2021-07-14", "2022-08-01", "2023-07-21", "2024-07-10", "2025-07-28")
+        self.assertHolidayName(name, dt)
+
+    def test_thimphu_drubchoe(self):
+        self.assertHolidayName("Thimphu Drubchoe", (f"{year}-09-09" for year in range(1970, 2050)))
+
+    def test_thimphu_tshechu_day1(self):
+        self.assertHolidayName("Thimphu Tshechu", (f"{year}-09-13" for year in range(1970, 2050)))
+
+    def test_thimphu_tshechu_day2(self):
+        self.assertHolidayName("Thimphu Tshechu", (f"{year}-09-14" for year in range(1970, 2050)))
+
+    def test_thimphu_tshechu_day3(self):
+        self.assertHolidayName("Thimphu Tshechu", (f"{year}-09-15" for year in range(1970, 2050)))
+
+    def test_blessed_rainy_day(self):
+        name = "Blessed Rainy Day"
+        dt = ("2020-09-22", "2021-09-23", "2022-09-23", "2023-09-23", "2024-09-23", "2025-09-23")
+        self.assertHolidayName(name, dt)
+
+    def test_dassain(self):
+        name = "Dassain"
+        dt = ("2020-10-25", "2021-10-15", "2022-10-05", "2023-10-24", "2024-10-12", "2025-10-02")
+        self.assertHolidayName(name, dt)
+
+    def test_coronation_his_majesty(self):
         self.assertHolidayName(
-            "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།", (f"{year}-11-01" for year in range(1970, 2050))
+            "Coronation of His Majesty the King", (f"{year}-11-01" for year in range(1970, 2050))
         )
 
     def test_birth_anniversary_fourth_druk_gyalpo(self):
         self.assertHolidayName(
-            "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།", (f"{year}-11-11" for year in range(1970, 2050))
+            "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day",
+            (f"{year}-11-11" for year in range(1970, 2050)),
+        )
+
+    def test_descending_day_lord_buddha(self):
+        self.assertHolidayName(
+            "Descending Day of Lord Buddha", (f"{year}-11-22" for year in range(1970, 2050))
         )
 
     def test_national_day(self):
-        self.assertHolidayName("རྒྱལ་ཡོངས་དུས་ཆེན།", (f"{year}-12-17" for year in range(1970, 2050)))
+        self.assertHolidayName("National Day", (f"{year}-12-17" for year in range(1970, 2050)))
 
-    def test_losar(self):
-        self.assertHolidayName("ལལོ་གསར་", ("2022-03-03", "2024-02-11", "2025-02-28"))
-
-    def test_blessed_rainy_day(self):
-        self.assertHolidayName("ཁྲུས་འབབས་ཀྱི་ཉིནམ།", ("2022-09-23", "2024-09-23", "2025-09-23"))
-
-    def test_dashain(self):
-        self.assertHolidayName("དྲང་བའི་བདུད་རྩིའི་ཉིམ།", ("2022-10-05", "2024-10-12", "2025-10-02"))
-
-    def test_l10n_default(self):
-        self.assertLocalizedHolidays(
-            ("2024-01-02", "ཉི་ལོག་"),
-            ("2024-01-12", "བུ་ལྭ་ཕེུ་ཝི་ཉིམ"),
-            ("2024-02-11", "ལལོ་གསར་"),
-            ("2024-02-21", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན༡༽།"),
-            ("2024-02-22", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིནམ་གཉིས་པ།༽"),
-            ("2024-02-23", "རྒྱལ་པོའི་འཁྲུངས་སྐར།༼ཉིན་གསུམ་པ།༽"),
-            ("2024-04-18", "ཞབས་དྲུང་གི་འདས་དུས།"),
-            ("2024-05-02", "གསུམ་པ་དབུ་མའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
-            ("2024-05-23", "།སངས་རྒྱས་པ་རི་ནིར་ཝན།"),
-            ("2024-06-16", "སྐྱབས་རྗེ་གུ་རུ་རིན་པོ་ཆེའི་འཁྲུངས་སྐར།"),
-            ("2024-07-10", "སངས་རྒྱས་བཅོམ་ལྡན་འདས་ཀྱི་གསུང་ཆོས་དང་པོ།"),
-            ("2024-09-23", "ཁྲུས་འབབས་ཀྱི་ཉིནམ།"),
-            ("2024-10-12", "དྲང་བའི་བདུད་རྩིའི་ཉིམ།"),
-            ("2024-11-01", "རྒྱལ་པོ་འཇིགས་མེད་ཁེ་སར་རྣམ་རྒྱལ།ཀོ་རོ་ན་ཤི་ཡ།"),
-            ("2024-11-11", "དྲུག་རྒྱལ་བཞི་པའི་འཁྲུངས་སྐར་དུས་ཆེན།"),
-            ("2024-12-17", "རྒྱལ་ཡོངས་དུས་ཆེན།"),
-        )
-
-    def test_l10n_en_us(self):
-        self.assertLocalizedHolidays(
-            "en_US",
-            ("2024-01-02", "Nyilo"),
-            ("2024-01-12", "Day of Offering"),
-            ("2024-02-11", "Losar"),
-            ("2024-02-21", "King's Birthday (Day 1)"),
-            ("2024-02-22", "King's Birthday (Day 2)"),
-            ("2024-02-23", "King's Birthday (Day 3)"),
-            ("2024-04-18", "Death of Zhabdrung"),
-            ("2024-05-02", "Birth Anniversary of Third Druk Gyalpo"),
-            ("2024-05-23", "Buddha Parinirvana"),
-            ("2024-06-16", "Birth of Guru Rinpoche"),
-            ("2024-07-10", "Buddha's First Sermon"),
+    def test_2024(self):
+        self.assertHolidays(
+            Bhutan(years=2024),
+            ("2024-01-02", "Winter Solstice"),
+            ("2024-01-12", "Traditional Day of Offering"),
+            ("2024-02-11", "Losar Wood Male Dragon Year"),
+            ("2024-02-21", "Birth Anniversary of His Majesty the King"),
+            ("2024-02-22", "Birth Anniversary of His Majesty the King"),
+            ("2024-02-23", "Birth Anniversary of His Majesty the King"),
+            ("2024-04-18", "Death Anniversary of Zhabdrung (Zhabdrung Kuchoe)"),
+            ("2024-05-02", "Birth Anniversary of the 3rd Druk Gyalpo"),
+            ("2024-05-23", "Lord Buddha's Parinirvana"),
+            ("2024-06-16", "Birth Anniversary of Guru Rinpoche"),
+            ("2024-07-10", "First Sermon of Lord Buddha"),
+            ("2024-09-09", "Thimphu Drubchoe"),
+            ("2024-09-13", "Thimphu Tshechu"),
+            ("2024-09-14", "Thimphu Tshechu"),
+            ("2024-09-15", "Thimphu Tshechu"),
             ("2024-09-23", "Blessed Rainy Day"),
-            ("2024-10-12", "Dashain"),
-            ("2024-11-01", "Jigme Khesar Namgyel's Coronation"),
-            ("2024-11-11", "Birth Anniversary of the Fourth Druk Gyalpo"),
+            ("2024-10-12", "Dassain"),
+            ("2024-11-01", "Coronation of His Majesty the King"),
+            ("2024-11-11", "Birth Anniversary of the 4th Druk Gyalpo - Constitution Day"),
+            ("2024-11-22", "Descending Day of Lord Buddha"),
             ("2024-12-17", "National Day"),
         )
