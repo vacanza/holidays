@@ -48,9 +48,9 @@ msgstr "Barthélemy Boganda Day"
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête du Travail"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 msgid "Ascension Day"

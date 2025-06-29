@@ -48,7 +48,7 @@ msgstr ""
 msgid "Lundi de Pâques"
 msgstr ""
 
-#. Labour Day.
+#. Labor Day.
 msgid "Fête du Travail"
 msgstr ""
 

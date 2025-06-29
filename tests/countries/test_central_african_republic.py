@@ -35,7 +35,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
         name = "Jour de l'an"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1959, 2050)))
 
-    def test_barthélemy_boganda_day(self):
+    def test_barthelemy_boganda_day(self):
         name = "Journée Barthélemy Boganda"
         self.assertHolidayName(name, (f"{year}-03-29" for year in range(1959, 2050)))
 
@@ -87,7 +87,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         name = "Jour de l'indépendance"
-        self.assertHolidayName(name, (f"{year}-08-13" for year in (range(1960, 2050))))
+        self.assertHolidayName(name, (f"{year}-08-13" for year in range(1960, 2050)))
 
     def test_assumption_day(self):
         name = "Assomption"
@@ -95,7 +95,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
 
     def test_all_saints_day(self):
         name = "Toussaint"
-        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1959, 2050)))
 
     def test_national_day(self):
         name = "Fête nationale"
@@ -155,7 +155,7 @@ class TestCentralAfricanRepublic(CommonCountryTests, TestCase):
             ("2019-01-01", "New Year's Day"),
             ("2019-03-29", "Barthélemy Boganda Day"),
             ("2019-04-22", "Easter Monday"),
-            ("2019-05-01", "Labour Day"),
+            ("2019-05-01", "Labor Day"),
             ("2019-05-30", "Ascension Day"),
             ("2019-06-04", "Eid al-Fitr"),
             ("2019-06-10", "Whit Monday"),

@@ -63,7 +63,7 @@ class CentralAfricanRepublic(
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
         # Ascension Day.
