@@ -1,7 +1,6 @@
 help:
 	@echo "Usage: make <target>"
 	@echo "    check         run pre-commit and tests"
-	@echo "    coverage      identify code not covered with tests"
 	@echo "    doc           run documentation build process"
 	@echo "    help          show summary of available commands"
 	@echo "    l10n          update .pot and .po files"
@@ -22,9 +21,6 @@ clean:
 		find . -type f -name "*.$$ext" -delete; \
 	done
 	@rm -rf .mypy_cache .pytest_cache dist .tox
-
-coverage:
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
 
 doc:
 	mkdocs build
@@ -64,7 +60,7 @@ snapshot:
 
 test:
 	scripts/l10n/generate_mo_files.py
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 tox:
 	tox --parallel auto
