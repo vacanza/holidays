@@ -19,27 +19,75 @@ from tests.common import CommonCountryTests
 class TestLibya(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2012, 2050)
+        years = range(1988, 2050)
         super().setUpClass(Libya, years=years)
         cls.no_estimated_holidays = Libya(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
         self.assertAliases(Libya, LY, LBY)
 
+    def test_peoples_authority_day(self):
+        name = "عید إعلان سلطة الشعب"
+        self.assertHolidayName(name, (f"{year}-03-02" for year in range(1988, 2012)))
+        self.assertNoHolidayName(name, range(2012, 2050))
+
     def test_anniversary_of_the_february_17_revolution(self):
-        self.assertHolidayName("ثورة 17 فبراير", (f"{year}-02-17" for year in range(2012, 2050)))
+        name = "ثورة 17 فبراير"
+        self.assertHolidayName(name, (f"{year}-02-17" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
 
     def test_labor_day(self):
-        self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in range(2012, 2050)))
+        name = "عيد العمال"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
+
+    def test_american_forces_evacuation_day(self):
+        name = "عيد إجلاء القوات الأمريكية"
+        self.assertHolidayName(name, (f"{year}-06-11" for year in range(1988, 2012)))
+        self.assertNoHolidayName(name, range(2012, 2050))
+
+    def test_glorious_july_revolution_day(self):
+        name = "عيد ثورة يوليو المجيدة"
+        self.assertHolidayName(name, (f"{year}-07-23" for year in range(1988, 2012)))
+        self.assertNoHolidayName(name, range(2012, 2050))
+
+    def test_national_environmental_sanitation_day(self):
+        name = "يوم وطني للإصحاح البيئي"
+        self.assertHolidayName(name, (f"{year}-08-14" for year in range(2022, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2022))
+
+    def test_great_al_fateh_day(self):
+        name = "عيد الفاتح العظيم"
+        self.assertHolidayName(name, (f"{year}-09-01" for year in range(1988, 2012)))
+        self.assertNoHolidayName(name, range(2012, 2050))
 
     def test_martyrs_day(self):
-        self.assertHolidayName("يوم الشهيد", (f"{year}-09-16" for year in range(2012, 2050)))
+        name = "يوم الشهيد"
+        self.assertHolidayName(name, (f"{year}-09-16" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
 
     def test_liberation_day(self):
-        self.assertHolidayName("يوم التحرير", (f"{year}-10-23" for year in range(2012, 2050)))
+        name = "يوم التحرير"
+        self.assertHolidayName(name, (f"{year}-10-23" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
 
     def test_independence_day(self):
-        self.assertHolidayName("عيد الاستقلال", (f"{year}-12-24" for year in range(2012, 2050)))
+        name = "عيد الاستقلال"
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
+
+    def test_islamic_new_year(self):
+        name = "عيد رأس السنة الهجرية"
+        self.assertHolidayName(
+            name,
+            "2021-08-10",
+            "2022-07-30",
+            "2023-07-19",
+            "2024-07-07",
+            "2025-06-26",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2012))
 
     def test_prophets_birthday(self):
         name = "ذكرى المولد النبوي الشريف"
@@ -50,18 +98,6 @@ class TestLibya(CommonCountryTests, TestCase):
             "2022-10-08",
             "2023-09-27",
             "2024-09-15",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
-
-    def test_isra_and_miraj(self):
-        name = "ليلة المعراج"
-        self.assertHolidayName(
-            f"(تقدير) {name}",
-            "2021-03-11",
-            "2022-02-28",
-            "2023-02-18",
-            "2024-02-08",
-            "2025-01-27",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
 
@@ -113,7 +149,6 @@ class TestLibya(CommonCountryTests, TestCase):
     def test_2024(self):
         self.assertHolidays(
             Libya(years=2024),
-            ("2024-02-08", "(تقدير) ليلة المعراج"),
             ("2024-02-17", "ثورة 17 فبراير"),
             ("2024-04-10", "عيد الفطر"),
             ("2024-04-11", "عيد الفطر"),
@@ -123,6 +158,8 @@ class TestLibya(CommonCountryTests, TestCase):
             ("2024-06-16", "عيد الأضحى"),
             ("2024-06-17", "عيد الأضحى"),
             ("2024-06-18", "عيد الأضحى"),
+            ("2024-07-07", "عيد رأس السنة الهجرية"),
+            ("2024-08-14", "يوم وطني للإصحاح البيئي"),
             ("2024-09-15", "ذكرى المولد النبوي الشريف"),
             ("2024-09-16", "يوم الشهيد"),
             ("2024-10-23", "يوم التحرير"),
@@ -131,7 +168,6 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2025-01-27", "(تقدير) ليلة المعراج"),
             ("2025-02-17", "ثورة 17 فبراير"),
             ("2025-03-31", "عيد الفطر"),
             ("2025-04-01", "عيد الفطر"),
@@ -141,6 +177,8 @@ class TestLibya(CommonCountryTests, TestCase):
             ("2025-06-06", "عيد الأضحى"),
             ("2025-06-07", "عيد الأضحى"),
             ("2025-06-08", "عيد الأضحى"),
+            ("2025-06-26", "عيد رأس السنة الهجرية"),
+            ("2025-08-14", "يوم وطني للإصحاح البيئي"),
             ("2025-09-04", "(تقدير) ذكرى المولد النبوي الشريف"),
             ("2025-09-16", "يوم الشهيد"),
             ("2025-10-23", "يوم التحرير"),
@@ -150,7 +188,6 @@ class TestLibya(CommonCountryTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2025-01-27", "Isra' and Mi'raj (estimated)"),
             ("2025-02-17", "Anniversary of the February 17 Revolution"),
             ("2025-03-31", "Eid al-Fitr"),
             ("2025-04-01", "Eid al-Fitr"),
@@ -160,6 +197,8 @@ class TestLibya(CommonCountryTests, TestCase):
             ("2025-06-06", "Eid al-Adha"),
             ("2025-06-07", "Eid al-Adha"),
             ("2025-06-08", "Eid al-Adha"),
+            ("2025-06-26", "Islamic New Year"),
+            ("2025-08-14", "National Environmental Sanitation Day"),
             ("2025-09-04", "Prophet's Birthday (estimated)"),
             ("2025-09-16", "Martyrs' Day"),
             ("2025-10-23", "Liberation Day"),

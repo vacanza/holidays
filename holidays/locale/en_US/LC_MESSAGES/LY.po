@@ -31,6 +31,10 @@ msgstr ""
 msgid "(تقدير) %s"
 msgstr "%s (estimated)"
 
+#. People's Authority Day.
+msgid "عید إعلان سلطة الشعب"
+msgstr "People's Authority Day"
+
 #. Anniversary of the February 17 Revolution.
 msgid "ثورة 17 فبراير"
 msgstr "Anniversary of the February 17 Revolution"
@@ -38,6 +42,22 @@ msgstr "Anniversary of the February 17 Revolution"
 #. Labor Day.
 msgid "عيد العمال"
 msgstr "Labor Day"
+
+#. American Forces Evacuation Day.
+msgid "عيد إجلاء القوات الأمريكية"
+msgstr "American Forces Evacuation Day"
+
+#. Glorious July Revolution Day.
+msgid "عيد ثورة يوليو المجيدة"
+msgstr "Glorious July Revolution Day"
+
+#. National Environmental Sanitation Day.
+msgid "يوم وطني للإصحاح البيئي"
+msgstr "National Environmental Sanitation Day"
+
+#. Great Al-Fateh Revolution Day.
+msgid "عيد الفاتح العظيم"
+msgstr "Great Al-Fateh Revolution Day"
 
 #. Martyrs' Day.
 msgid "يوم الشهيد"
@@ -55,9 +75,9 @@ msgstr "Independence Day"
 msgid "ذكرى المولد النبوي الشريف"
 msgstr "Prophet's Birthday"
 
-#. Isra' and Mi'raj.
-msgid "ليلة المعراج"
-msgstr "Isra' and Mi'raj"
+#. Islamic New Year.
+msgid "عيد رأس السنة الهجرية"
+msgstr "Islamic New Year"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
@@ -70,3 +90,7 @@ msgstr "Day of Arafah"
 #. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
+
+#. Public Holiday.
+msgid "عطلة رسمية"
+msgstr "Public Holiday"
