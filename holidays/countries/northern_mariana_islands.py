@@ -11,10 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
 
 
-class HolidaysMP(US):
+class HolidaysMP(UnitedStates):
     """Northern Mariana Islands (the) holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,9 +22,12 @@ class HolidaysMP(US):
     """
 
     country = "MP"
+    parent_entity = UnitedStates
     supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
     subdivisions = ()  # Override US subdivisions.
     subdivisions_aliases = {}  # Override US subdivisions aliases.
+    # UNSC Resolution 21 on April 2nd, 1947.
+    start_year = 1948
 
     def _populate_public_holidays(self) -> None:
         self.subdiv = "MP"
@@ -39,13 +42,13 @@ class HolidaysMP(US):
         super()._populate_unofficial_holidays()
 
 
+class NorthernMarianaIslands(HolidaysMP):
+    pass
+
+
 class MP(HolidaysMP):
     pass
 
 
 class MNP(HolidaysMP):
-    pass
-
-
-class NorthernMarianaIslands(HolidaysMP):
     pass
