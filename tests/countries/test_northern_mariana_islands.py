@@ -10,12 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import MAR
 from holidays.constants import GOVERNMENT, UNOFFICIAL
-from holidays.countries.northern_mariana_islands import HolidaysMP, MP, MNP
+from holidays.countries.northern_mariana_islands import HolidaysMP, NorthernMarianaIslands, MP, MNP
 from tests.common import CommonCountryTests
 
 
@@ -25,20 +23,20 @@ class TestMP(CommonCountryTests, TestCase):
         super().setUpClass(HolidaysMP)
 
     def test_country_aliases(self):
-        self.assertAliases(HolidaysMP, MP, MNP)
+        self.assertAliases(HolidaysMP, NorthernMarianaIslands, MP, MNP)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(HolidaysMP(years=1947))
 
     def test_mp_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn("Commonwealth Covenant Day", self.holidays.get_list(date(2022, MAR, 24)))
-
-    def test_unofficial_holidays(self):
-        self.assertHolidays(
-            HolidaysMP(categories=UNOFFICIAL, years=2024),
-            ("2024-02-14", "Valentine's Day"),
-            ("2024-03-17", "Saint Patrick's Day"),
-            ("2024-10-31", "Halloween"),
-        )
+        self.assertHolidayName("Commonwealth Covenant Day", "2016-03-24")
+        self.assertHolidayName("Good Friday", "2016-03-25")
+        self.assertHolidayName("Commonwealth Cultural Day", "2016-10-10")
+        self.assertHolidayName("Citizenship Day", "2016-11-04")
+        self.assertHolidayName("Election Day", "2016-11-08")
+        self.assertHolidayName("Constitution Day", "2016-12-08")
 
     def test_government_holidays(self):
         self.assertHolidays(
@@ -54,4 +52,63 @@ class TestMP(CommonCountryTests, TestCase):
             ("2024-11-11", "Veterans Day"),
             ("2024-11-28", "Thanksgiving Day"),
             ("2024-12-25", "Christmas Day"),
+        )
+
+    def test_unofficial_holidays(self):
+        self.assertHolidays(
+            HolidaysMP(categories=UNOFFICIAL, years=2024),
+            ("2024-02-14", "Valentine's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-10-31", "Halloween"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-17", "Birthday of Martin Luther King, Jr.; Martin Luther King Jr. Day"),
+            ("2022-02-14", "Valentine's Day"),
+            ("2022-02-21", "Washington's Birthday"),
+            ("2022-03-17", "Saint Patrick's Day"),
+            ("2022-03-24", "Commonwealth Covenant Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-30", "Memorial Day"),
+            ("2022-06-19", "Juneteenth National Independence Day"),
+            ("2022-06-20", "Juneteenth National Independence Day (observed)"),
+            ("2022-07-04", "Independence Day"),
+            ("2022-09-05", "Labor Day"),
+            ("2022-10-10", "Columbus Day; Commonwealth Cultural Day"),
+            ("2022-10-31", "Halloween"),
+            ("2022-11-04", "Citizenship Day"),
+            ("2022-11-08", "Election Day"),
+            ("2022-11-11", "Veterans Day"),
+            ("2022-11-24", "Thanksgiving Day"),
+            ("2022-12-08", "Constitution Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์; วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2022-02-14", "วันวาเลนไทน์"),
+            ("2022-02-21", "วันเกิดวอชิงตัน"),
+            ("2022-03-17", "วันนักบุญแพทริก"),
+            ("2022-03-24", "วันปฏิญญาเครือรัฐ"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-05-30", "วันรำลึก"),
+            ("2022-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-06-20", "ชดเชยวันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2022-07-04", "วันประกาศอิสรภาพ"),
+            ("2022-09-05", "วันแรงงาน"),
+            ("2022-10-10", "วันวัฒนธรรมแห่งเครือรัฐ; วันโคลัมบัส"),
+            ("2022-10-31", "วันฮาโลวีน"),
+            ("2022-11-04", "วันแห่งความเป็นพลเมือง"),
+            ("2022-11-08", "วันเลือกตั้ง"),
+            ("2022-11-11", "วันทหารผ่านศึก"),
+            ("2022-11-24", "วันขอบคุณพระเจ้า"),
+            ("2022-12-08", "วันรัฐธรรมนูญ"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "ชดเชยวันคริสต์มาส"),
         )
