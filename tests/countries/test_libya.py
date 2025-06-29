@@ -99,7 +99,7 @@ class TestLibya(CommonCountryTests, TestCase):
             "2023-09-27",
             "2024-09-15",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
@@ -115,7 +115,7 @@ class TestLibya(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
 
     def test_day_of_arafah(self):
         name = "يوم عرفة"
@@ -128,7 +128,7 @@ class TestLibya(CommonCountryTests, TestCase):
             "2024-06-15",
             "2025-06-05",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -144,7 +144,7 @@ class TestLibya(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
 
     def test_2024(self):
         self.assertHolidays(
