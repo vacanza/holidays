@@ -178,7 +178,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>American Samoa</td>
 <td>AS</td>
 <td>Can also be loaded as country US, subdivision AS</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -193,6 +193,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AO</td>
 <td></td>
 <td>en_US, <strong>pt_AO</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Anguilla</td>
+<td>AI</td>
+<td></td>
+<td><strong>en_AI</strong>, en_US</td>
 <td></td>
 </tr>
 <tr>
@@ -583,15 +590,29 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>France</td>
 <td>FR</td>
-<td>DOM/TOM: BL (Saint-Barthélemy), GES (Alsace, Champagne-Ardenne, Lorraine), GP (Guadeloupe), GY (Guyane), MF (Saint-Martin), MQ (Martinique), NC (Nouvelle-Calédonie), PF (Polynésie Française), RE (La Réunion), WF (Wallis-et-Futuna), YT (Mayotte)</td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna)</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>French Guiana</td>
+<td>GF</td>
+<td>Can also be loaded as country FR, subdivision 973</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>French Polynesia</td>
+<td>PF</td>
+<td>Can also be loaded as country FR, subdivision PF</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>French Southern Territories</td>
 <td>TF</td>
-<td></td>
-<td>en_US, <strong>fr</strong>, uk</td>
+<td>Can also be loaded as country FR, subdivision TF</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -644,10 +665,17 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Guadeloupe</td>
+<td>GP</td>
+<td>Can also be loaded as country FR, subdivision 971</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Guam</td>
 <td>GU</td>
 <td>Can also be loaded as country US, subdivision GU</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -917,10 +945,31 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Martinique</td>
+<td>MQ</td>
+<td>Can also be loaded as country FR, subdivision 972</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Mauritania</td>
 <td>MR</td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Mauritius</td>
+<td>MU</td>
+<td></td>
+<td><strong>en_MU</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
+<td>Mayotte</td>
+<td>YT</td>
+<td>Can also be loaded as country FR, subdivision 976</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -950,6 +999,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>fr</strong>, uk</td>
 <td></td>
+</tr>
+<tr>
+<td>Mongolia</td>
+<td>MN</td>
+<td></td>
+<td>en_US, <strong>mn</strong></td>
+<td>WORKDAY</td>
 </tr>
 <tr>
 <td>Montenegro</td>
@@ -1001,6 +1057,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>OPTIONAL</td>
 </tr>
 <tr>
+<td>New Caledonia</td>
+<td>NC</td>
+<td>Can also be loaded as country FR, subdivision NC</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>New Zealand</td>
 <td>NZ</td>
 <td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
@@ -1032,7 +1095,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Northern Mariana Islands (the)</td>
 <td>MP</td>
 <td>Can also be loaded as country US, subdivision MP</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1045,7 +1108,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Norway</td>
 <td>NO</td>
-<td></td>
+<td>Counties and Arctic Regions: 03 (Oslo), 11 (Rogaland), 15 (Møre og Romsdal), 18 (Nordland), 21 (Svalbard), 22 (Jan Mayen), 30 (Viken), 34 (Innlandet), 38 (Vestfold og Telemark), 42 (Agder), 46 (Vestland), 50 (Trööndelage, Trøndelag), 54 (Romssa ja Finnmárkku, Troms og Finnmark, Tromssan ja Finmarkun)</td>
 <td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1123,7 +1186,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Puerto Rico</td>
 <td>PR</td>
 <td>Can also be loaded as country US, subdivision PR</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1132,6 +1195,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td><strong>ar_QA</strong>, en_US</td>
 <td>BANK</td>
+</tr>
+<tr>
+<td>Reunion</td>
+<td>RE</td>
+<td>Can also be loaded as country FR, subdivision 974</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
 </tr>
 <tr>
 <td>Romania</td>
@@ -1145,6 +1215,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>RU</td>
 <td></td>
 <td>en_US, <strong>ru</strong>, th</td>
+<td></td>
+</tr>
+<tr>
+<td>Saint Barthélemy</td>
+<td>BL</td>
+<td>Can also be loaded as country FR, subdivision BL</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1162,6 +1239,20 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Saint Martin</td>
+<td>MF</td>
+<td>Can also be loaded as country FR, subdivision MF</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Saint Pierre and Miquelon</td>
+<td>PM</td>
+<td>Can also be loaded as country FR, subdivision PM</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Samoa</td>
 <td>WS</td>
 <td></td>
@@ -1172,8 +1263,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>San Marino</td>
 <td>SM</td>
 <td></td>
-<td></td>
-<td></td>
+<td>en_US, <strong>it</strong>, uk</td>
+<td>BANK</td>
 </tr>
 <tr>
 <td>Sao Tome and Principe</td>
@@ -1225,6 +1316,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Sint Maarten</td>
+<td>SX</td>
+<td></td>
+<td>en_US, <strong>nl</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Slovakia</td>
 <td>SK</td>
 <td></td>
@@ -1237,6 +1335,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td>en_US, <strong>sl</strong>, uk</td>
 <td>WORKDAY</td>
+</tr>
+<tr>
+<td>Solomon Islands</td>
+<td>SB</td>
+<td>Subdivisions: CE (Central), CH (Choiseul), CT (Capital Territory, Honiara), GU (Guadalcanal), IS (Isabel), MK (Makira-Ulawa), ML (Malaita), RB (Rennell and Bellona), TE (Temotu), WE (Western)</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>South Africa</td>
@@ -1271,6 +1376,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>SR</td>
 <td></td>
 <td>en_US, <strong>nl</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Svalbard and Jan Mayen</td>
+<td>SJ</td>
+<td>Can also be loaded as country NO, subdivision 21 and 22</td>
+<td>en_US, <strong>no</strong>, th, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1389,14 +1501,14 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United States Minor Outlying Islands</td>
 <td>UM</td>
 <td>Can also be loaded as country US, subdivision UM</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
 <td>United States of America (the)</td>
 <td>US</td>
 <td>States and territories: AK (Alaska), AL (Alabama), AR (Arkansas), AS (American Samoa), AZ (Arizona), CA (California), CO (Colorado), CT (Connecticut), DC (District of Columbia), DE (Delaware), FL (Florida), GA (Georgia), GU (Guam), HI (Hawaii), IA (Iowa), ID (Idaho), IL (Illinois), IN (Indiana), KS (Kansas), KY (Kentucky), LA (Louisiana), MA (Massachusetts), MD (Maryland), ME (Maine), MI (Michigan), MN (Minnesota), MO (Missouri), MP (Northern Mariana Islands), MS (Mississippi), MT (Montana), NC (North Carolina), ND (North Dakota), NE (Nebraska), NH (New Hampshire), NJ (New Jersey), NM (New Mexico), NV (Nevada), NY (New York), OH (Ohio), OK (Oklahoma), OR (Oregon), PA (Pennsylvania), PR (Puerto Rico), RI (Rhode Island), SC (South Carolina), SD (South Dakota), TN (Tennessee), TX (Texas), UM (United States Minor Outlying Islands), UT (Utah), VA (Virginia), VI (Virgin Islands, U.S.), VT (Vermont), WA (Washington), WI (Wisconsin), WV (West Virginia), WY (Wyoming)</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
 </tr>
 <tr>
@@ -1452,8 +1564,15 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Virgin Islands (U.S.)</td>
 <td>VI</td>
 <td>Can also be loaded as country US, subdivision VI</td>
-<td></td>
+<td><strong>en_US</strong>, th</td>
 <td>GOVERNMENT, UNOFFICIAL</td>
+</tr>
+<tr>
+<td>Wallis and Futuna</td>
+<td>WF</td>
+<td>Can also be loaded as country FR, subdivision WF</td>
+<td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
 </tr>
 <tr>
 <td>Yemen</td>

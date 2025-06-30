@@ -23,28 +23,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: ja\n"
 
-#. The Crown Prince marriage ceremony.
-msgid "結婚の儀"
+#. Substitute Holiday.
+msgid "振替休日"
 msgstr ""
 
-#. State Funeral of Emperor Shōwa.
-msgid "大喪の礼"
-msgstr ""
-
-#. Enthronement ceremony.
-msgid "即位礼正殿の儀"
-msgstr ""
-
-#. Enthronement day.
-msgid "天皇の即位の日"
-msgstr ""
-
-#. Enthronement ceremony.
-msgid "即位礼正殿の儀が行われる日"
+#. National Holiday.
+msgid "国民の休日"
 msgstr ""
 
 #. New Year's Day.
@@ -99,12 +87,12 @@ msgstr ""
 msgid "秋分の日"
 msgstr ""
 
-#. Physical Education Day.
-msgid "体育の日"
-msgstr ""
-
 #. Sports Day.
 msgid "スポーツの日"
+msgstr ""
+
+#. Physical Education Day.
+msgid "体育の日"
 msgstr ""
 
 #. Culture Day.
@@ -115,14 +103,26 @@ msgstr ""
 msgid "勤労感謝の日"
 msgstr ""
 
-#. Substitute Holiday.
-msgid "振替休日"
-msgstr ""
-
-#. National Holiday.
-msgid "国民の休日"
-msgstr ""
-
 #. Bank Holiday.
 msgid "銀行休業日"
+msgstr ""
+
+#. The Crown Prince marriage ceremony.
+msgid "結婚の儀"
+msgstr ""
+
+#. State Funeral of Emperor Shōwa.
+msgid "大喪の礼"
+msgstr ""
+
+#. Enthronement ceremony.
+msgid "即位礼正殿の儀"
+msgstr ""
+
+#. Enthronement day.
+msgid "天皇の即位の日"
+msgstr ""
+
+#. Enthronement ceremony.
+msgid "即位礼正殿の儀が行われる日"
 msgstr ""

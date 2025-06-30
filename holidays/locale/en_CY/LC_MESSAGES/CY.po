@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: el\n"
 
 #. New Year's Day.
 msgid "Πρωτοχρονιά"
@@ -79,10 +79,6 @@ msgstr "Cyprus Independence Day"
 msgid "Ημέρα του Όχι"
 msgstr "Ochi Day"
 
-#. Christmas Eve.
-msgid "Παραμονή Χριστουγέννων"
-msgstr "Christmas Eve"
-
 #. Christmas Day.
 msgid "Χριστούγεννα"
 msgstr "Christmas Day"
@@ -98,3 +94,7 @@ msgstr "Easter Tuesday"
 #. Holy Saturday.
 msgid "Μεγάλο Σάββατο"
 msgstr "Holy Saturday"
+
+#. Christmas Eve.
+msgid "Παραμονή Χριστουγέννων"
+msgstr "Christmas Eve"

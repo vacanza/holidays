@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -51,6 +51,10 @@ msgstr "Panamerican Day"
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
+#. Independence Day.
+msgid "Día de la Independencia"
+msgstr "Independence Day"
+
 #. Morazan's Day.
 msgid "Día de Morazán"
 msgstr "Morazan's Day"
@@ -70,7 +74,3 @@ msgstr "Morazan Weekend"
 #. Christmas Day.
 msgid "Navidad"
 msgstr "Christmas Day"
-
-#. Independence Day.
-msgid "Día de la Independencia"
-msgstr "Independence Day"

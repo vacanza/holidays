@@ -14,23 +14,27 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-11-24 16:16+0700\n"
-"PO-Revision-Date: 2025-03-13 11:49+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-06-21 17:09+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: zh_TW\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s（慶祝）"
 msgstr "ชดเชย%s"
+
+#. Children's Day.
+msgid "兒童節"
+msgstr "วันเด็กแห่งชาติ"
 
 #. Founding Day of the Republic of China.
 msgid "中華民國開國紀念日"
@@ -48,13 +52,13 @@ msgstr "วันตรุษจีน"
 msgid "和平紀念日"
 msgstr "วันรำลึกสันติภาพ"
 
-#. Children's Day.
-msgid "兒童節"
-msgstr "วันเด็กแห่งชาติ"
-
 #. Tomb-Sweeping Day.
 msgid "民族掃墓節"
 msgstr "วันเช็งเม้ง"
+
+#. Labor Day.
+msgid "勞動節"
+msgstr "วันแรงงาน"
 
 #. Dragon Boat Festival.
 msgid "端午節"
@@ -64,22 +68,21 @@ msgstr "วันไหว้บ๊ะจ่าง"
 msgid "中秋節"
 msgstr "วันไหว้พระจันทร์"
 
+#. Confucius' Birthday.
+msgid "孔子誕辰紀念日"
+msgstr "วันขงจื๊อ"
+
 #. National Day.
 msgid "國慶日"
 msgstr "วันชาติสาธารณรัฐจีน(ไต้หวัน)"
 
-#. Date format (see strftime() Format Codes).
-msgid "%Y-%m-%d"
-msgstr "%d/%m/%Y"
+#. Taiwan Restoration and Guningtou Victory Memorial Day.
+msgid "臺灣光復暨金門古寧頭大捷紀念日"
+msgstr "วันรำลึกการทวงคืนไต้หวันและชัยชนะยุทธการกู่หนิงโถว"
 
-#. Day off (substituted from %s).
-#, c-format
-msgid "休息日（%s日起取代）"
-msgstr "วันหยุด (แทน %s)"
-
-#. Confucius' Birthday.
-msgid "孔子誕辰紀念日"
-msgstr "วันขงจื๊อ"
+#. Constitution Day.
+msgid "行憲紀念日"
+msgstr "วันรัฐธรรมนูญ"
 
 #. Taiwan Retrocession Day.
 msgid "臺灣光復節"
@@ -93,21 +96,9 @@ msgstr "วันคล้ายวันเกิดอดีตประธา
 msgid "國父誕辰紀念日"
 msgstr "วันคล้ายวันเกิด ดร.ซุนยัตเซ็น"
 
-#. Constitution Day.
-msgid "行憲紀念日"
-msgstr "วันรัฐธรรมนูญ"
-
 #. Revolutionary Martyrs Memorial Day.
 msgid "革命先烈紀念日"
 msgstr "วันสดุดีวีรชนแห่งการปฏิวัติ"
-
-#. Women's Day.
-msgid "婦女節"
-msgstr "วันสตรีสากล"
-
-#. Labor Day.
-msgid "勞動節"
-msgstr "วันแรงงาน"
 
 #. Armed Forces Day.
 msgid "軍人節"
@@ -133,13 +124,21 @@ msgstr "วันครู"
 msgid "中華文化復興節"
 msgstr "วันเฉลิมฉลองวัฒนธรรมจีน"
 
-#. Taoism Day.
-msgid "道教節"
-msgstr "วันเต๋า"
+#. Women's Day.
+msgid "婦女節"
+msgstr "วันสตรีสากล"
+
+#. Late President Chiang Kai-shek's Memorial Day.
+msgid "先總統蔣公逝世紀念日"
+msgstr "วันรำลึกถึงการอสัญกรรมอดีตประธานาธิบดีเจียงไคเช็ก"
 
 #. The Buddha's Birthday.
 msgid "佛陀誕辰紀念日"
 msgstr "วันวิสาขบูชา"
+
+#. Taoism Day.
+msgid "道教節"
+msgstr "วันเต๋า"
 
 #. Anti-Aggression Day.
 msgid "反侵略日"
@@ -153,6 +152,11 @@ msgstr "วันรำลึกการยกเลิกกฎอัยกา
 msgid "臺灣聯合國日"
 msgstr "วันรำลึกถึงบทบาทสาธารณรัฐจีน(ไต้หวัน)ในสหประชาชาติ"
 
-#. Late President Chiang Kai-shek's Memorial Day.
-msgid "先總統蔣公逝世紀念日"
-msgstr "วันรำลึกถึงการอสัญกรรมอดีตประธานาธิบดีเจียงไคเช็ก"
+#. Date format (see strftime() Format Codes).
+msgid "%Y-%m-%d"
+msgstr "%d/%m/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "休息日（%s日起取代）"
+msgstr "วันหยุด (แทน %s)"

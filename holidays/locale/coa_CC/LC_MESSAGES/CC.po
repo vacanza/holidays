@@ -32,66 +32,6 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "%s (disambut)"
 
-#. King's Birthday.
-msgid "King's Birthday"
-msgstr "Hari Ulang Tahun Raja"
-
-#. Queen's Birthday.
-msgid "Queen's Birthday"
-msgstr "Hari Ulang Tahun Ratu"
-
-#. New Year's Day.
-msgid "New Year's Day"
-msgstr "Hari Tahun Baru"
-
-#. Australia Day.
-msgid "Australia Day"
-msgstr "Hari Australia"
-
-#. Islamic New Year.
-msgid "Islamic New Year"
-msgstr "Tahun Baru Hijriah"
-
-#. Eid al-Fitr.
-msgid "Eid al-Fitr"
-msgstr "Hari Raya Puasa"
-
-#. Good Friday.
-msgid "Good Friday"
-msgstr "Jumat Agung"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Isnin Paskah"
-
-#. Act of Self Determination Day.
-msgid "Act of Self Determination Day"
-msgstr "Hari Penentuan Diri"
-
-#. ANZAC Day.
-msgid "ANZAC Day"
-msgstr "Hari ANZAC"
-
-#. Eid al-Adha.
-msgid "Eid al-Adha"
-msgstr "Hari Raya Haji"
-
-#. Prophet's Birthday.
-msgid "Prophet's Birthday"
-msgstr "Hari Maulaud Nabi"
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "Hari Natal"
-
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Hari Boxing"
-
-#. National Day of Mourning for Queen Elizabeth II.
-msgid "National Day of Mourning for Queen Elizabeth II"
-msgstr "Hari Berkabung Negara untuk Ratu Elizabeth II"
-
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
@@ -101,3 +41,63 @@ msgstr "%s (dianggarkan)"
 #, c-format
 msgid "%s (observed, estimated)"
 msgstr "%s (disambut, dianggarkan)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Hari Tahun Baru"
+
+#. Australia Day.
+msgid "Australia Day"
+msgstr "Hari Australia"
+
+#. Act of Self Determination Day.
+msgid "Act of Self Determination Day"
+msgstr "Hari Penentuan Diri"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Jumat Agung"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Isnin Paskah"
+
+#. ANZAC Day.
+msgid "ANZAC Day"
+msgstr "Hari ANZAC"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "Hari Ulang Tahun Raja"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "Hari Ulang Tahun Ratu"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Hari Boxing"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Hari Natal"
+
+#. Islamic New Year.
+msgid "Islamic New Year"
+msgstr "Tahun Baru Hijriah"
+
+#. Prophet's Birthday.
+msgid "Prophet's Birthday"
+msgstr "Hari Maulaud Nabi"
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr "Hari Raya Puasa"
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr "Hari Raya Haji"
+
+#. National Day of Mourning for Queen Elizabeth II.
+msgid "National Day of Mourning for Queen Elizabeth II"
+msgstr "Hari Berkabung Negara untuk Ratu Elizabeth II"

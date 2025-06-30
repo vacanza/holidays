@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: pt_PT\n"
 
 #. New Year's Day.
 msgid "Ano Novo"
@@ -91,6 +91,10 @@ msgstr "Різдво Христове"
 msgid "Carnaval"
 msgstr "Карнавал"
 
+#. Saint Anthony's Day.
+msgid "Dia de Santo António"
+msgstr "День Святого Антонія"
+
 #. Christmas Eve.
 msgid "Véspera de Natal"
 msgstr "Святий вечір"
@@ -102,10 +106,6 @@ msgstr "Другий день Різдва"
 #. New Year's Eve.
 msgid "Véspera de Ano Novo"
 msgstr "Переддень Нового року"
-
-#. Saint Anthony's Day.
-msgid "Dia de Santo António"
-msgstr "День Святого Антонія"
 
 #. Saint Joanna's Day.
 msgid "Dia de Santa Joana"
@@ -171,13 +171,13 @@ msgstr "День Святого Матвія"
 msgid "Dia da Região Autónoma dos Açores"
 msgstr "День автономного регіону Азорських островів"
 
-#. Day of the Autonomous Region of Madeira.
-msgid "Dia da Região Autónoma da Madeira"
-msgstr "День автономного регіону Мадейра"
-
 #. Day of the Autonomous Region of Madeira and the Madeiran Communities.
 msgid "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 msgstr "День автономного регіону Мадейра та мадейрських громад"
+
+#. Day of the Autonomous Region of Madeira.
+msgid "Dia da Região Autónoma da Madeira"
+msgstr "День автономного регіону Мадейра"
 
 #. 1st Octave.
 msgid "Primeira Oitava"

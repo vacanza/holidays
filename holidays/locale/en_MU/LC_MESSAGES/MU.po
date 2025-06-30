@@ -1,0 +1,100 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Mauritius holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-15 18:34+0530\n"
+"PO-Revision-Date: 2025-06-15 18:34+0530\n"
+"Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_MU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: en_MU\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Day after New Year's Day.
+msgid "Day after New Year's Day"
+msgstr ""
+
+#. Abolition of Slavery.
+msgid "Abolition of Slavery"
+msgstr ""
+
+#. Independence and Republic Day.
+msgid "Independence and Republic Day"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assumption of the Blessed Virgin Mary"
+msgstr ""
+
+#. All Saints' Day.
+msgid "All Saints' Day"
+msgstr ""
+
+#. Arrival of Indentured Laborers.
+msgid "Arrival of Indentured Labourers"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Chinese Spring Festival.
+msgid "Chinese Spring Festival"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid-ul-Fitr"
+msgstr ""
+
+#. Thaipusam.
+msgid "Thaipoosam Cavadee"
+msgstr ""
+
+#. Maha Shivaratri.
+msgid "Maha Shivaratree"
+msgstr ""
+
+#. Ugadi.
+msgid "Ougadi"
+msgstr ""
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr ""
+
+#. Diwali.
+msgid "Divali"
+msgstr ""
+
+#. Public Holiday.
+msgid "Public Holiday"
+msgstr ""

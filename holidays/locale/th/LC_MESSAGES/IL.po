@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-02-01 20:46+0700\n"
-"PO-Revision-Date: 2025-02-01 21:57+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: he\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (נצפה)"
+msgstr "ชดเชย%s"
 
 #. Rosh Hashanah (New Year).
 msgid "ראש השנה"
@@ -38,10 +44,6 @@ msgstr "วันยม คิปปูร์"
 msgid "סוכות"
 msgstr "วันสุคคต"
 
-#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
-msgid "חול המועד סוכות"
-msgstr "เทศกาลสุคคต"
-
 #. Simchat Torah / Shemini Atzeret.
 msgid "שמחת תורה/שמיני עצרת"
 msgstr "วันซิมหัต โทราห์ / วันเชมินี อัตเซเรต"
@@ -49,10 +51,6 @@ msgstr "วันซิมหัต โทราห์ / วันเชมิ�
 #. Pesach (Passover).
 msgid "פסח"
 msgstr "วันเพสสะห์"
-
-#. Chol HaMoed Pesach (Passover holiday).
-msgid "חול המועד פסח"
-msgstr "เทศกาลเพสสะห์"
 
 #. Shvi'i shel Pesach (Seventh day of Passover)
 msgid "שביעי של פסח"
@@ -66,6 +64,10 @@ msgstr "วันชาติอิสราเอล"
 msgid "שבועות"
 msgstr "วันชาวูโอท"
 
+#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+msgid "חול המועד סוכות"
+msgstr "เทศกาลสุคคต"
+
 #. Sigd.
 msgid "סיגד"
 msgstr "เทศกาลซิกด์"
@@ -73,6 +75,10 @@ msgstr "เทศกาลซิกด์"
 #. Purim.
 msgid "פורים"
 msgstr "เทศกาลปูริม"
+
+#. Chol HaMoed Pesach (Passover holiday).
+msgid "חול המועד פסח"
+msgstr "เทศกาลเพสสะห์"
 
 #. Yom Hazikaron (Fallen Soldiers and Victims of Terrorism Remembrance Day).
 msgid "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"
@@ -97,8 +103,3 @@ msgstr "วันทาอานิต เอสเธอร์"
 #. Lag Ba'omer (Lag BaOmer).
 msgid "ל\"ג בעומר"
 msgstr "วันแล็ก บาโอเมอร์"
-
-#. %s (observed).
-#, c-format
-msgid "(נצפה) %s"
-msgstr "ชดเชย%s"

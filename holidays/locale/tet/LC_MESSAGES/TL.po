@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: pt_TL\n"
 
 #. %s (estimated).
 #, c-format
@@ -103,10 +104,6 @@ msgstr "Festa Korpu de Deus"
 msgid "Idul Adha"
 msgstr "Idul Adha"
 
-#. National Holidays (Special).
-msgid "Feriados Nacionais (Especiais)"
-msgstr "Feriadu Nasional (Espesial)"
-
 #. International Children's Day.
 msgid "Dia Mundial da Criança"
 msgstr "Loron Mundial ba Labarik"
@@ -131,6 +128,10 @@ msgstr "Quinta-Feira Santa"
 msgid "Dia da Ascensão de Jesus Cristo ao Céu"
 msgstr "Loron Ascensão do Senhor Jesus Cristo hi'it An ba Lalehan nian"
 
+#. National Holidays (Special).
+msgid "Feriados Nacionais (Especiais)"
+msgstr "Feriadu Nasional (Espesial)"
+
 #. Presidential Election Day.
 msgid "Dia da Eleição Presidencial"
 msgstr "Loron Eleisaun Prezidensiál nian"
@@ -138,6 +139,10 @@ msgstr "Loron Eleisaun Prezidensiál nian"
 #. Parliamentary Election Day.
 msgid "Dia de Eleições Parlamentares"
 msgstr "Loron Eleisaun Parlamentár nian"
+
+#. Local Election Day.
+msgid "Dia de eleições locais"
+msgstr "Loron eleisaun lokál nian"
 
 #. Centenary of the Revolt of Dom Boaventura.
 msgid "Centenário da Revolta de Dom Boaventura"
@@ -154,10 +159,6 @@ msgstr "Komemorasaun Aniversáriu Konsulta Populár ba dala 20"
 #. 25th Anniversary Celebrations of the Popular Consultation.
 msgid "Celebrações do 25.º Aniversário da Consulta Popular"
 msgstr "Komemorasaun Aniversáriu Konsulta Populár ba dala 25"
-
-#. Local Election Day.
-msgid "Dia de eleições locais"
-msgstr "Loron eleisaun lokál nian"
 
 #. Visit of His Holiness Pope Francis to Timor-Leste.
 msgid "Visita de Sua Santidade o Papa Francisco a Timor-Leste"

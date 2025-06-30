@@ -355,6 +355,10 @@ msgstr "200-річчя битви при Сальті"
 msgid "Censo Nacional 2010"
 msgstr "День національного перепису 2010"
 
+#. G20 Leaders' Summit.
+msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
+msgstr "Саміт лідерів Групи двадцяти (G20)"
+
 #. National Census Day 2022.
 msgid "Censo Nacional 2022"
 msgstr "День національного перепису 2022"
@@ -366,7 +370,3 @@ msgstr "День перемоги збірної Аргентини на Чем�
 #. Bank Holiday.
 msgid "Asueto bancario"
 msgstr "Банківський вихідний"
-
-#. G20 Leaders' Summit.
-msgid "Cumbre de Líderes del Grupo de los 20 (G20)"
-msgstr "Саміт лідерів Групи двадцяти (G20)"

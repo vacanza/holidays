@@ -60,7 +60,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     country = "AE"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (المقدرة)")
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
     supported_languages = ("ar", "en_US", "th")
     # Founded on DEC 2, 1971.

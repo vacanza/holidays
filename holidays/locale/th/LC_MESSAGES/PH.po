@@ -25,6 +25,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: en_PH\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (โดยประมาณ)"
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -62,10 +68,6 @@ msgstr "วันแรงงาน"
 msgid "Independence Day"
 msgstr "วันประกาศเอกราชสาธารณรัฐฟิลิปปินส์"
 
-#. Founding Anniversary of Iglesia ni Cristo.
-msgid "Founding Anniversary of Iglesia ni Cristo"
-msgstr "วันครบรอบการสถาปนานิกายคริสตจักรของพระคริสต์"
-
 #. Ninoy Aquino Day.
 msgid "Ninoy Aquino Day"
 msgstr "วันนินอย อากีโน"
@@ -73,10 +75,6 @@ msgstr "วันนินอย อากีโน"
 #. National Heroes Day.
 msgid "National Heroes Day"
 msgstr "วันวีรบุรุษแห่งชาติ"
-
-#. All Saints' Day Eve.
-msgid "All Saints' Day Eve"
-msgstr "วันก่อนวันสมโภชนักบุญทั้งหลาย"
 
 #. All Saints' Day.
 msgid "All Saints' Day"
@@ -94,10 +92,6 @@ msgstr "วันสมโภชแม่พระผู้ปฏิสนธิ
 msgid "Christmas Day"
 msgstr "วันคริสต์มาส"
 
-#. Christmas Eve.
-msgid "Christmas Eve"
-msgstr "วันคริสต์มาสอีฟ"
-
 #. Rizal Day.
 msgid "Rizal Day"
 msgstr "วันรีซัล"
@@ -114,6 +108,10 @@ msgstr "วันอีฎิ้ลฟิตริ"
 msgid "Eid'l Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
 
+#. Founding Anniversary of Iglesia ni Cristo.
+msgid "Founding Anniversary of Iglesia ni Cristo"
+msgstr "วันครบรอบการสถาปนานิกายคริสตจักรของพระคริสต์"
+
 #. Additional special (non-working) day.
 msgid "Additional special (non-working) day"
 msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
@@ -122,7 +120,10 @@ msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
 msgid "Elections special (non-working) day"
 msgstr "วันหยุดพิเศษ (เลือกตั้ง)"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (estimated)"
-msgstr "%s (โดยประมาณ)"
+#. All Saints' Day Eve.
+msgid "All Saints' Day Eve"
+msgstr "วันก่อนวันสมโภชนักบุญทั้งหลาย"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "วันคริสต์มาสอีฟ"
