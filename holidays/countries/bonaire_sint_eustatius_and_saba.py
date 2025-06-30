@@ -17,16 +17,13 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
 
 class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
-    """Bonaire Sint Eustatius And Saba holidays.
-
+    """Bonaire, Sint Eustatius and Saba holidays.
     References:
-        * [Public Holidays 2025](https://web.archive.org/web/20250620050728/https://english.rijksdienstcn.com/social-affairs-work/employment/official-holidays)
-        * [Public Holidays in Sint Eustatius in 2025](https://web.archive.org/web/20250621132223/https://www.officeholidays.com/countries/bonaire-st-eustatius-saba/sint-eustatius/2025)
-        * [Upcoming Bonaire, St Eustatius and Saba Public Holidays](https://web.archive.org/web/20250427005333/https://www.qppstudio.net/public-holidays/bonaire__st_eustatius_and_saba.htm)
-        * [NATIONAL ORDINANCE of 27 July 2000 (Labour Regulations 2000)](https://lokaleregelgeving.overheid.nl/CVDR10375/1)
-        * [Official holidays](https://web.archive.org/web/20250323122427/https://www.rijksdienstcn.com/sociale-zaken-werk/arbeid/officiele-feestdagen)
-        * [Dia di fiesta ofisial](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
-    """
+        * [Public Holidays 2025 (English)](https://web.archive.org/web/20250620050728/https://english.rijksdienstcn.com/social-affairs-work/employment/official-holidays)
+        * [Public Holidays 2025 (Dutch)](https://web.archive.org/web/20250323122427/https://www.rijksdienstcn.com/sociale-zaken-werk/arbeid/officiele-feestdagen)
+        * [Public Holidays 2025 (Papiamento)](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
+        * [Arbeidsregeling 2000](https://web.archive.org/web/20250625203706/https://lokaleregelgeving.overheid.nl/CVDR10375/1)
+        * [Dia di Rincon 2025](https://web.archive.org/web/20250515183744/https://sunwisebonaire.com/blog/dia-di-rincon-2025-on-bonaire/)"""
 
     country = "BQ"
     default_language = "nl"
