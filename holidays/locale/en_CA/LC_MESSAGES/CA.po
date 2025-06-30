@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
@@ -39,8 +40,8 @@ msgstr ""
 msgid "Good Friday"
 msgstr ""
 
-#. Easter Monday.
-msgid "Easter Monday"
+#. Canada Day.
+msgid "Canada Day"
 msgstr ""
 
 #. Dominion Day.
@@ -55,48 +56,44 @@ msgstr ""
 msgid "Christmas Day"
 msgstr ""
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr ""
-
-#. Family Day.
-msgid "Family Day"
-msgstr ""
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr ""
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr ""
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr ""
-
-#. Canada Day.
-msgid "Canada Day"
-msgstr ""
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr ""
-
-#. Heritage Day.
-msgid "Heritage Day"
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
 msgstr ""
 
 #. Remembrance Day.
 msgid "Remembrance Day"
 msgstr ""
 
-#. British Columbia Day.
-msgid "British Columbia Day"
+#. Boxing Day.
+msgid "Boxing Day"
 msgstr ""
 
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr ""
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr ""
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr ""
+
+#. Family Day.
+msgid "Family Day"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr ""
+
+#. British Columbia Day.
+msgid "British Columbia Day"
 msgstr ""
 
 #. Louis Riel Day.
@@ -115,6 +112,10 @@ msgstr ""
 msgid "New Brunswick Day"
 msgstr ""
 
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr ""
+
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr ""
@@ -125,6 +126,14 @@ msgstr ""
 
 #. Discovery Day.
 msgid "Discovery Day"
+msgstr ""
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr ""
+
+#. Natal Day.
+msgid "Natal Day"
 msgstr ""
 
 #. National Aboriginal Day.
@@ -151,14 +160,6 @@ msgstr ""
 msgid "Saskatchewan Day"
 msgstr ""
 
-#. Orangemen's Day.
-msgid "Orangemen's Day"
-msgstr ""
-
-#. Natal Day.
-msgid "Natal Day"
-msgstr ""
-
-#. Armistice Day.
-msgid "Armistice Day"
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr ""

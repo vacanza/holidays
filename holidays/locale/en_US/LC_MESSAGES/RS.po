@@ -23,9 +23,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: sr\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (слободан дан)"
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "Нова година"
@@ -62,8 +67,3 @@ msgstr "Easter Sunday"
 #. Easter Monday.
 msgid "Други дан Васкрса"
 msgstr "Easter Monday"
-
-#. %s (observed).
-#, c-format
-msgid "%s (слободан дан)"
-msgstr "%s (observed)"

@@ -27,7 +27,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "MA"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (المقدرة)")
     supported_languages = ("ar", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

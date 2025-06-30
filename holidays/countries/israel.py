@@ -38,7 +38,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
     country = "IL"
     default_language = "he"
     # %s (observed).
-    observed_label = tr("(נצפה) %s")
+    observed_label = tr("%s (נצפה)")
     supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
     supported_languages = ("en_US", "he", "th", "uk")
     weekend = {FRI, SAT}

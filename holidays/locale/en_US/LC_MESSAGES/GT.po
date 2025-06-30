@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: es\n"
 
 #. New Year's Day.
 msgid "Año Nuevo"
@@ -39,26 +39,6 @@ msgstr "Maundy Thursday"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. Army Day.
-msgid "Día del Ejército"
-msgstr "Army Day"
-
-#. Independence Day.
-msgid "Día de la Independencia"
-msgstr "Independence Day"
-
-#. All Saints' Day.
-msgid "Día de Todos los Santos"
-msgstr "All Saints' Day"
-
-#. Assumption Day.
-msgid "Día de la Asunción"
-msgstr "Assumption Day"
-
-#. Revolution Day.
-msgid "Día de la Revolución"
-msgstr "Revolution Day"
-
 #. Holy Saturday.
 msgid "Sábado Santo"
 msgstr "Holy Saturday"
@@ -66,6 +46,26 @@ msgstr "Holy Saturday"
 #. Labor Day.
 msgid "Día del Trabajo"
 msgstr "Labor Day"
+
+#. Army Day.
+msgid "Día del Ejército"
+msgstr "Army Day"
+
+#. Assumption Day.
+msgid "Día de la Asunción"
+msgstr "Assumption Day"
+
+#. Independence Day.
+msgid "Día de la Independencia"
+msgstr "Independence Day"
+
+#. Revolution Day.
+msgid "Día de la Revolución"
+msgstr "Revolution Day"
+
+#. All Saints' Day.
+msgid "Día de Todos los Santos"
+msgstr "All Saints' Day"
 
 #. Christmas Day.
 msgid "Día de Navidad"

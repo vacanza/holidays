@@ -65,6 +65,18 @@ msgstr ""
 msgid "Labour Day"
 msgstr ""
 
+#. Arrival Day.
+msgid "Arrival Day"
+msgstr ""
+
+#. CARICOM Day.
+msgid "CARICOM Day"
+msgstr ""
+
+#. Emancipation Day.
+msgid "Emancipation Day"
+msgstr ""
+
 #. Commonwealth Day.
 msgid "Commonwealth Day"
 msgstr ""
@@ -95,16 +107,4 @@ msgstr ""
 
 #. Public Holiday.
 msgid "Public Holiday"
-msgstr ""
-
-#. Arrival Day.
-msgid "Arrival Day"
-msgstr ""
-
-#. CARICOM Day.
-msgid "CARICOM Day"
-msgstr ""
-
-#. Emancipation Day.
-msgid "Emancipation Day"
 msgstr ""

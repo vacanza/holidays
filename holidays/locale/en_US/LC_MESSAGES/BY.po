@@ -25,66 +25,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
-
-#. Date format (see strftime() Format Codes)
-msgid "%d.%m.%Y"
-msgstr "%m/%d/%Y"
-
-#. Day off (substituted from %s).
-#, c-format
-msgid "Выходны (перанесены з %s)"
-msgstr "Day off (substituted from %s)"
-
-#. Constitution Day.
-msgid "Дзень Канстытуцыі"
-msgstr "Constitution Day"
-
-#. Day of Unity of the Peoples of Belarus and Russia.
-msgid "Дзень яднання народаў Беларусі і Расіі"
-msgstr "Day of Unity of the Peoples of Belarus and Russia"
-
-#. Victory Day.
-msgid "Дзень Перамогі"
-msgstr "Victory Day"
-
-#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
-#. of Belarus and the National Anthem of the Republic of Belarus.
-msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
-msgstr ""
-"Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic of"
-" Belarus and the National Anthem of the Republic of Belarus"
-
-#. Independence Day of the Republic of Belarus (Day of the Republic).
-msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
-msgstr "Independence Day of the Republic of Belarus (Day of the Republic)"
-
-#. Day of People's Unity.
-msgid "Дзень народнага адзінства"
-msgstr "Day of People's Unity"
+"X-Source-Language: be\n"
 
 #. New Year's Day.
 msgid "Новы год"
 msgstr "New Year's Day"
 
-#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
-msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
-msgstr "Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus"
+#. Orthodox Christmas Day.
+msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
+msgstr "Orthodox Christmas Day"
 
 #. Women's Day.
 msgid "Дзень жанчын"
 msgstr "Women's Day"
 
+#. Constitution Day.
+msgid "Дзень Канстытуцыі"
+msgstr "Constitution Day"
+
 #. Labor Day.
 msgid "Свята працы"
 msgstr "Labor Day"
+
+#. Victory Day.
+msgid "Дзень Перамогі"
+msgstr "Victory Day"
+
+#. Radunitsa (Day of Rejoicing).
+msgid "Радаўніца"
+msgstr "Radunitsa (Day of Rejoicing)"
+
+#. Independence Day of the Republic of Belarus (Day of the Republic).
+msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+msgstr "Independence Day of the Republic of Belarus (Day of the Republic)"
 
 #. October Revolution Day.
 msgid "Дзень Кастрычніцкай рэвалюцыі"
 msgstr "October Revolution Day"
 
-#. Orthodox Christmas Day.
-msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
-msgstr "Orthodox Christmas Day"
+#. Catholic Christmas Day.
+msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
+msgstr "Catholic Christmas Day"
 
 #. Catholic Easter.
 msgid "Каталiцкi Вялiкдзень"
@@ -94,14 +75,34 @@ msgstr "Catholic Easter"
 msgid "Праваслаўны Вялiкдзень"
 msgstr "Orthodox Easter"
 
-#. Radunitsa (Day of Rejoicing).
-msgid "Радаўніца"
-msgstr "Radunitsa (Day of Rejoicing)"
-
 #. Dzyady (All Souls' Day).
 msgid "Дзень памяці"
 msgstr "Dzyady (All Souls' Day)"
 
-#. Catholic Christmas Day.
-msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
-msgstr "Catholic Christmas Day"
+#. Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus.
+msgid "Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь"
+msgstr "Day of the Fatherland's Defenders and the Armed Forces of the Republic of Belarus"
+
+#. Day of Unity of the Peoples of Belarus and Russia.
+msgid "Дзень яднання народаў Беларусі і Расіі"
+msgstr "Day of Unity of the Peoples of Belarus and Russia"
+
+#. Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic
+#. of Belarus and the National Anthem of the Republic of Belarus.
+msgid "Дзень Дзяржаўнага сцяга, Дзяржаўнага герба і Дзяржаўнага гімна Рэспублікі Беларусь"
+msgstr ""
+"Day of the National Coat of Arms of the Republic of Belarus, the National Flag of the Republic of"
+" Belarus and the National Anthem of the Republic of Belarus"
+
+#. Day of People's Unity.
+msgid "Дзень народнага адзінства"
+msgstr "Day of People's Unity"
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr "%m/%d/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Выходны (перанесены з %s)"
+msgstr "Day off (substituted from %s)"

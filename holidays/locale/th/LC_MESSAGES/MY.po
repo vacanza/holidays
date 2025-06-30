@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.2\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: ms_MY\n"
 
 #. %s (estimated).
 #, c-format
@@ -133,17 +134,13 @@ msgstr "วันคล้ายวันประสูติสุลต่า
 msgid "Hari Nuzul Al-Quran"
 msgstr "วันนูซุลอัลกุรอาน"
 
+#. Arafat Day.
+msgid "Hari Arafah"
+msgstr "วันอารอฟะห์"
+
 #. New Year's Day.
 msgid "Tahun Baharu"
 msgstr "วันขึ้นปีใหม่"
-
-#. Federal Territory Day.
-msgid "Hari Wilayah Persekutuan"
-msgstr "วันเขตสหพันธรัฐ"
-
-#. Pesta Kaamatan.
-msgid "Pesta Kaamatan"
-msgstr "เทศกาลกามะตัน"
 
 #. Declaration of Independence Day.
 msgid "Hari Pengisytiharan Tarikh Kemerdekaan"
@@ -157,6 +154,10 @@ msgstr "วันรำลึกการประกาศมะละกาเ
 msgid "Hari Jadi Yang di-Pertua Negeri Melaka"
 msgstr "วันคล้ายวันเกิดผู้ว่าการรัฐมะละกา"
 
+#. Eid al-Fitr (Third Day).
+msgid "Hari Raya Puasa (Hari Ketiga)"
+msgstr "วันอีฎิ้ลฟิตริวันที่สาม"
+
 #. Birthday of the Sultan of Negeri Sembilan.
 msgid "Hari Keputeraan Yang di-Pertuan Besar Negeri Sembilan"
 msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐเนเกรีเซมบิลัน"
@@ -168,10 +169,6 @@ msgstr "วันคล้ายวันสิ้นพระชนม์สุ
 #. Birthday of the Sultan of Pahang.
 msgid "Hari Keputeraan Sultan Pahang"
 msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐปะหัง"
-
-#. Birthday of the Raja of Perlis.
-msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
-msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐปะลิส"
 
 #. George Town Heritage Day.
 msgid "Hari Ulang Tahun Perisytiharan Tapak Warisan Dunia"
@@ -185,9 +182,29 @@ msgstr "วันคล้ายวันเกิดผู้ว่าการ
 msgid "Hari Keputeraan Sultan Perak"
 msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐเประก์"
 
+#. Birthday of the Raja of Perlis.
+msgid "Hari Ulang Tahun Keputeraan Raja Perlis"
+msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐปะลิส"
+
+#. Birthday of The Sultan of Selangor.
+msgid "Hari Keputeraan Sultan Selangor"
+msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐสลังงอร์"
+
+#. Anniversary of the Installation of the Sultan of Terengganu.
+msgid "Hari Ulang Tahun Pertabalan Sultan Terengganu"
+msgstr "วันครบรอบพระราชพิธีสถาปนาสุลต่านแห่งรัฐตรังกานู"
+
+#. Birthday of the Sultan of Terengganu.
+msgid "Hari Keputeraan Sultan Terengganu"
+msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐตรังกานู"
+
 #. Good Friday.
 msgid "Good Friday"
 msgstr "วันศุกร์ประเสริฐ"
+
+#. Pesta Kaamatan.
+msgid "Pesta Kaamatan"
+msgstr "เทศกาลกามะตัน"
 
 #. Birthday of the Governor of Sabah.
 msgid "Hari Jadi Yang di-Pertua Negeri Sabah"
@@ -196,10 +213,6 @@ msgstr "วันคล้ายวันเกิดผู้ว่าการ
 #. Christmas Eve.
 msgid "Christmas Eve"
 msgstr "วันคริสต์มาสอีฟ"
-
-#. Birthday of The Sultan of Selangor.
-msgid "Hari Keputeraan Sultan Selangor"
-msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐสลังงอร์"
 
 #. Dayak Festival Day.
 msgid "Perayaan Hari Gawai Dayak"
@@ -213,17 +226,9 @@ msgstr "วันคล้ายวันเกิดผู้ว่าการ
 msgid "Hari Kemerdekaan Sarawak"
 msgstr "วันประกาศเอกราชรัฐซาราวัก"
 
-#. Anniversary of the Installation of the Sultan of Terengganu.
-msgid "Hari Ulang Tahun Pertabalan Sultan Terengganu"
-msgstr "วันครบรอบพระราชพิธีสถาปนาสุลต่านแห่งรัฐตรังกานู"
-
-#. Birthday of the Sultan of Terengganu.
-msgid "Hari Keputeraan Sultan Terengganu"
-msgstr "วันคล้ายวันประสูติสุลต่านแห่งรัฐตรังกานู"
-
-#. Arafat Day.
-msgid "Hari Arafah"
-msgstr "วันอารอฟะห์"
+#. Federal Territory Day.
+msgid "Hari Wilayah Persekutuan"
+msgstr "วันเขตสหพันธรัฐ"
 
 #. General election additional holiday.
 msgid "Cuti Peristiwa (pilihan raya umum)"
@@ -248,7 +253,3 @@ msgstr "วันอีฎิ้ลฟิตริ (เพิ่มเติม)
 #. Additional holiday in commemoration of the 2017 SEA Games.
 msgid "Cuti tambahan sempena memperingati SAT 2017"
 msgstr "วันหยุดเพิ่มเติมเนื่องในโอกาสการแข่งขันกีฬาซีเกมส์ปี 2017"
-
-#. Eid al-Fitr (Third Day).
-msgid "Hari Raya Puasa (Hari Ketiga)"
-msgstr "วันอีฎิ้ลฟิตริวันที่สาม"

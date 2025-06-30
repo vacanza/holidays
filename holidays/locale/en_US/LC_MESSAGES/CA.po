@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: en_CA\n"
 
 #. %s (observed).
 #, c-format
@@ -39,9 +40,9 @@ msgstr "New Year's Day"
 msgid "Good Friday"
 msgstr "Good Friday"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
+#. Canada Day.
+msgid "Canada Day"
+msgstr "Canada Day"
 
 #. Dominion Day.
 msgid "Dominion Day"
@@ -55,49 +56,45 @@ msgstr "Labor Day"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
-#. Boxing Day.
-msgid "Boxing Day"
-msgstr "Boxing Day"
-
-#. Family Day.
-msgid "Family Day"
-msgstr "Family Day"
-
-#. Thanksgiving Day.
-msgid "Thanksgiving Day"
-msgstr "Thanksgiving Day"
-
-#. Funeral of Queen Elizabeth II.
-msgid "Funeral of Her Majesty the Queen Elizabeth II"
-msgstr "Funeral of Her Majesty the Queen Elizabeth II"
-
-#. Memorial Day.
-msgid "Memorial Day"
-msgstr "Memorial Day"
-
-#. Canada Day.
-msgid "Canada Day"
-msgstr "Canada Day"
-
-#. Victoria Day.
-msgid "Victoria Day"
-msgstr "Victoria Day"
-
-#. Heritage Day.
-msgid "Heritage Day"
-msgstr "Heritage Day"
+#. National Day for Truth and Reconciliation.
+msgid "National Day for Truth and Reconciliation"
+msgstr "National Day for Truth and Reconciliation"
 
 #. Remembrance Day.
 msgid "Remembrance Day"
 msgstr "Remembrance Day"
 
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "Thanksgiving Day"
+
+#. Armistice Day.
+msgid "Armistice Day"
+msgstr "Armistice Day"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "Victoria Day"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "Family Day"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr "Heritage Day"
+
 #. British Columbia Day.
 msgid "British Columbia Day"
 msgstr "British Columbia Day"
-
-#. National Day for Truth and Reconciliation.
-msgid "National Day for Truth and Reconciliation"
-msgstr "National Day for Truth and Reconciliation"
 
 #. Louis Riel Day.
 msgid "Louis Riel Day"
@@ -115,6 +112,10 @@ msgstr "Civic Holiday"
 msgid "New Brunswick Day"
 msgstr "New Brunswick Day"
 
+#. Memorial Day.
+msgid "Memorial Day"
+msgstr "Memorial Day"
+
 #. Saint Patrick's Day.
 msgid "Saint Patrick's Day"
 msgstr "Saint Patrick's Day"
@@ -126,6 +127,14 @@ msgstr "Saint George's Day"
 #. Discovery Day.
 msgid "Discovery Day"
 msgstr "Discovery Day"
+
+#. Orangemen's Day.
+msgid "Orangemen's Day"
+msgstr "Orangemen's Day"
+
+#. Natal Day.
+msgid "Natal Day"
+msgstr "Natal Day"
 
 #. National Aboriginal Day.
 msgid "National Aboriginal Day"
@@ -151,14 +160,6 @@ msgstr "Saint John the Baptist Day"
 msgid "Saskatchewan Day"
 msgstr "Saskatchewan Day"
 
-#. Orangemen's Day.
-msgid "Orangemen's Day"
-msgstr "Orangemen's Day"
-
-#. Natal Day.
-msgid "Natal Day"
-msgstr "Natal Day"
-
-#. Armistice Day.
-msgid "Armistice Day"
-msgstr "Armistice Day"
+#. Funeral of Queen Elizabeth II.
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "Funeral of Her Majesty the Queen Elizabeth II"

@@ -348,11 +348,16 @@ class HolidayBase(dict[date, str]):
             if isinstance(subdiv, int):
                 subdiv = str(subdiv)
 
-            subdivisions_aliases = tuple(sorted(self.subdivisions_aliases))
+            subdivision_aliases = tuple(self.subdivisions_aliases)
+            supported_subdivisions = set(
+                self.subdivisions
+                + subdivision_aliases
+                + self._deprecated_subdivisions
+                + (self.parent_entity.subdivisions if self.parent_entity else ())
+            )
+
             # Unsupported subdivisions.
-            if not isinstance(self, HolidaySum) and subdiv not in (
-                self.subdivisions + subdivisions_aliases + self._deprecated_subdivisions
-            ):
+            if not isinstance(self, HolidaySum) and subdiv not in supported_subdivisions:
                 raise NotImplementedError(
                     f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
                 )
@@ -371,7 +376,7 @@ class HolidayBase(dict[date, str]):
                     "Dec, 1 2023. The list of supported subdivisions: "
                     f"{', '.join(sorted(self.subdivisions))}; "
                     "the list of supported subdivisions aliases: "
-                    f"{', '.join(subdivisions_aliases)}.",
+                    f"{', '.join(sorted(subdivision_aliases))}.",
                     DeprecationWarning,
                 )
 
