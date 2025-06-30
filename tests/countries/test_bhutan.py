@@ -36,7 +36,7 @@ class TestBhutan(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
 
     def test_losar(self):
-        name = "Losar Wood Male Dragon Year"
+        name = "Losar"
         dt = ("2020-02-24", "2021-02-12", "2022-03-03", "2023-02-21", "2024-02-11", "2025-02-28")
         self.assertHolidayName(name, dt)
 
@@ -130,7 +130,7 @@ class TestBhutan(CommonCountryTests, TestCase):
             Bhutan(years=2024),
             ("2024-01-02", "Winter Solstice"),
             ("2024-01-12", "Traditional Day of Offering"),
-            ("2024-02-11", "Losar Wood Male Dragon Year"),
+            ("2024-02-11", "Losar"),
             ("2024-02-21", "Birth Anniversary of His Majesty the King"),
             ("2024-02-22", "Birth Anniversary of His Majesty the King"),
             ("2024-02-23", "Birth Anniversary of His Majesty the King"),

@@ -36,8 +36,8 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         # Traditional Day of Offering.
         self._add_day_of_offering("Traditional Day of Offering")
 
-        # Losar Wood Male Dragon Year.
-        self._add_losar("Losar Wood Male Dragon Year")
+        # Losar.
+        self._add_losar("Losar")
 
         name = "Birth Anniversary of His Majesty the King"
         # Birth Anniversary of His Majesty the King (Day 1).
