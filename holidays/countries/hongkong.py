@@ -34,7 +34,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
-from holidays.mixins import PreferredDiscretionaryHolidays
+from holidays.mixins.preferred_discretionary_holidays import PreferredDiscretionaryHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_WORKDAY,

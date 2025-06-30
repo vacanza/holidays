@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysRE(France):
+class HolidaysRE(ChildEntity, France):
     """Réunion holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,9 @@ class HolidaysRE(France):
 
     country = "RE"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
+    parent_entity_subdivision_code = "974"
     # Cession from the UK on May 30th, 1814.
     start_year = 1815
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "974"
-        super()._populate_public_holidays()
 
 
 class Reunion(HolidaysRE):

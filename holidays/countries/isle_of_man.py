@@ -21,6 +21,10 @@ class IsleOfMan(UnitedKingdom):
     """Isle Of Man holidays."""
 
     country = "IM"
+    # The Isle of Man (IM) is not a subdivision of the United Kingdom (GB)
+    # entity, so the `IsleOfMan` class does not inherit from the `ChildEntity`
+    # mixin. The `parent_entity` is specified below solely to maintain
+    # consistency in holiday name localization.
     parent_entity = UnitedKingdom
     subdivisions = ()  # Override UnitedKingdom subdivisions.
     subdivisions_aliases = {}  # Override UnitedKingdom subdivisions aliases.
