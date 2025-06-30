@@ -14,9 +14,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-06-04 23:49+0500\n"
-"PO-Revision-Date: 2025-06-04 23:49+0500\n"
+"PO-Revision-Date: 2025-06-30 11:50+0700\n"
 "Last-Translator: Muhammad Waqar <waqar216447@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_VC\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
 "X-Source-Language: en_VC\n"
 
 #. %s (observed).
@@ -33,6 +34,10 @@ msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
+msgstr ""
+
+#. National Heroes' Day.
+msgid "National Heroes' Day"
 msgstr ""
 
 #. Good Friday.
@@ -47,16 +52,12 @@ msgstr ""
 msgid "National Workers' Day"
 msgstr ""
 
+#. National Spiritual Baptist Day.
+msgid "National Spiritual Baptist Day"
+msgstr ""
+
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr ""
-
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr ""
-
-#. Boxing Day.
-msgid "Boxing Day"
 msgstr ""
 
 #. Carnival Monday.
@@ -75,15 +76,14 @@ msgstr ""
 msgid "Independence Day"
 msgstr ""
 
-#. National Heroes' Day.
-msgid "National Heroes' Day"
+#. Christmas Day.
+msgid "Christmas Day"
 msgstr ""
 
-#. National Spiritual Baptist Day.
-msgid "National Spiritual Baptist Day"
+#. Boxing Day.
+msgid "Boxing Day"
 msgstr ""
 
-# Public Health Holidays
 #. Public Health Holidays.
 msgid "Public Health Holidays"
 msgstr ""

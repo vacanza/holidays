@@ -12,12 +12,14 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN
+from holidays.calendars.gregorian import JAN, JUL, AUG, SEP, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
-class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class SaintVincentAndTheGrenadines(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """Saint Vincent and the Grenadines holidays.
 
     References:
@@ -38,7 +40,7 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, SaintVincentAndTheGrenadinesStaticHolidays)
+        StaticHolidays.__init__(self, cls=SaintVincentAndTheGrenadinesStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -67,17 +69,19 @@ class SaintVincentAndTheGrenadines(ObservedHolidayBase, ChristianHolidays, Inter
 
         # Carnival Monday.
         name = tr("Carnival Monday")
-        if self._year == 2020:
-            self._add_holiday_aug_3(name)
+        carnival_monday_dates = {
+            2020: (AUG, 3),
+            2021: (SEP, 6),
+            2022: (JUL, 4),
+            2025: (JUL, 7),
+        }
+        if self._year in carnival_monday_dates:
+            dt = self._add_holiday(name, carnival_monday_dates[self._year])
         else:
-            self._add_holiday_2nd_mon_of_jul(name)
+            dt = self._add_holiday_2nd_mon_of_jul(name)
 
         # Carnival Tuesday.
-        name = tr("Carnival Tuesday")
-        if self._year == 2020:
-            self._add_holiday_aug_4(name)
-        else:
-            self._add_holiday_1_day_past_2nd_mon_of_jul(name)
+        self._add_holiday(tr("Carnival Tuesday"), _timedelta(dt, +1))
 
         # Emancipation Day.
         self._add_observed(self._add_holiday_aug_1(tr("Emancipation Day")))
@@ -109,6 +113,7 @@ class SaintVincentAndTheGrenadinesStaticHolidays:
 
     # Public Health Holidays.
     name = tr("Public Health Holidays")
+
     special_public_holidays = {
         2021: [
             (JAN, 22, name),
