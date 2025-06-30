@@ -25,19 +25,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.4\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: vi\n"
 
 #. %s (observed).
 #, c-format
 msgid "%s (nghỉ bù)"
 msgstr "ชดเชย%s"
 
-#. New Year's Day.
-msgid "Tết Dương lịch"
-msgstr "วันปีใหม่สากล"
-
 #. 29 of Lunar New Year.
 msgid "29 Tết"
 msgstr "วันที่ 29 เดือน 12 ตามปฏิทินจันทรคติ"
+
+#. Fourth Day of Lunar New Year.
+msgid "Mùng bốn Tết Nguyên Đán"
+msgstr "วันตรุษเต๊ตวันที่สี่"
+
+#. Fifth Day of Lunar New Year.
+msgid "Mùng năm Tết Nguyên Đán"
+msgstr "วันตรุษเต๊ตวันที่ห้า"
+
+#. Sixth Day of Lunar New Year.
+msgid "Mùng sáu Tết Nguyên Đán"
+msgstr "วันตรุษเต๊ตวันที่หก"
+
+#. New Year's Day.
+msgid "Tết Dương lịch"
+msgstr "วันปีใหม่สากล"
 
 #. Lunar New Year's Eve.
 msgid "Giao thừa Tết Nguyên Đán"
@@ -54,18 +67,6 @@ msgstr "วันตรุษเต๊ตวันที่สอง"
 #. Third Day of Lunar New Year.
 msgid "Mùng ba Tết Nguyên Đán"
 msgstr "วันตรุษเต๊ตวันที่สาม"
-
-#. Fourth Day of Lunar New Year.
-msgid "Mùng bốn Tết Nguyên Đán"
-msgstr "วันตรุษเต๊ตวันที่สี่"
-
-#. Fifth Day of Lunar New Year.
-msgid "Mùng năm Tết Nguyên Đán"
-msgstr "วันตรุษเต๊ตวันที่ห้า"
-
-#. Sixth Day of Lunar New Year.
-msgid "Mùng sáu Tết Nguyên Đán"
-msgstr "วันตรุษเต๊ตวันที่หก"
 
 #. Hung Kings' Commemoration Day.
 msgid "Ngày Giỗ Tổ Hùng Vương"

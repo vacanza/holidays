@@ -23,13 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. General Election Day.
-msgid "Dia de eleições gerais"
-msgstr ""
+"X-Source-Language: pt_AO\n"
 
 #. %s (observed).
 #, c-format
@@ -114,4 +110,8 @@ msgstr ""
 
 #. Family Day.
 msgid "Dia da Família"
+msgstr ""
+
+#. General Election Day.
+msgid "Dia de eleições gerais"
 msgstr ""

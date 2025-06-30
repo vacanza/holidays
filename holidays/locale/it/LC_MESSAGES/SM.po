@@ -1,0 +1,103 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# San Marino holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-28 12:54+0300\n"
+"PO-Revision-Date: 2025-06-28 12:54+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: it\n"
+
+#. New Year's Day.
+msgid "Capodanno"
+msgstr ""
+
+#. Epiphany.
+msgid "Epifania"
+msgstr ""
+
+#. Anniversary of the Liberation of the Republic and Feast of Saint Agatha.
+msgid "Anniversario della Liberazione della Repubblica e Festa di Sant'Agata"
+msgstr ""
+
+#. Anniversary of the Arengo.
+msgid "Anniversario dell'Arengo"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Pasqua"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lunedì dell'angelo"
+msgstr ""
+
+#. Investiture of Captains Regent.
+msgid "Investitura Capitani Reggenti"
+msgstr ""
+
+#. Workers' Day.
+msgid "Festa dei lavoratori"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Domini"
+msgstr ""
+
+#. Anniversary of the Fall of Fascism and Freedom Day.
+msgid "Anniversario della Caduta del Fascismo e Festa della Libertà"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assunzione della B.V. Maria"
+msgstr ""
+
+#. Saint Marinus' Day, Anniversary of the Founding of the Republic.
+msgid "San Marino, Anniversario di Fondazione della Repubblica"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Tutti i Santi"
+msgstr ""
+
+#. Commemoration of the Dead.
+msgid "Commemorazione dei defunti"
+msgstr ""
+
+#. Immaculate Conception.
+msgid "Immacolata Concezione"
+msgstr ""
+
+#. Christmas Day.
+msgid "Natale"
+msgstr ""
+
+#. Saint Stephen's Day.
+msgid "Santo Stefano"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Vigilia di Natale"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Ultimo dell'anno"
+msgstr ""

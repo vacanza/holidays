@@ -70,6 +70,10 @@ msgstr ""
 msgid "National Heritage Day"
 msgstr ""
 
+#. Columbus Day.
+msgid "Columbus Day"
+msgstr ""
+
 #. National Day of Thanksgiving.
 msgid "National Day of Thanksgiving"
 msgstr ""
@@ -80,8 +84,4 @@ msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
-
-#. Columbus Day.
-msgid "Columbus Day"
 msgstr ""

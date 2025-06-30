@@ -43,17 +43,29 @@ msgstr "James Ronald Webster Day"
 msgid "Good Friday"
 msgstr "Good Friday"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
 #. Easter Sunday.
 msgid "Easter Sunday"
 msgstr "Easter Sunday"
 
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
 #. Whit Monday.
 msgid "Whit Monday"
 msgstr "Whit Monday"
+
+#. Queen's Birthday.
+msgid "Celebration of the Birthday of Her Majesty the Queen"
+msgstr "Queen's Birthday"
+
+#. King's Birthday.
+msgid "Celebration of the Birthday of His Majesty the King"
+msgstr "King's Birthday"
 
 #. Anguilla Day.
 msgid "Anguilla Day"
@@ -75,6 +87,10 @@ msgstr "Constitution Day"
 msgid "National Heroes and Heroines Day"
 msgstr "National Heroes and Heroines Day"
 
+#. Separation Day.
+msgid "Separation Day"
+msgstr "Separation Day"
+
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
@@ -91,26 +107,10 @@ msgstr "Royal Wedding of Prince William & Kate Middleton"
 msgid "Diamond Jubilee Celebration of Her Majesty The Queen"
 msgstr "Diamond Jubilee Celebration of Her Majesty The Queen"
 
-#. Special Public Holiday.
-msgid "Special Public Holiday"
-msgstr "Special Public Holiday"
-
-#. Labor Day.
-msgid "Labour Day"
-msgstr "Labor Day"
-
 #. Mourning the Death of Her Majesty The Queen Elizabeth II.
 msgid "Mourning the Death of Her Majesty The Queen Elizabeth II"
 msgstr "Mourning the Death of Her Majesty The Queen Elizabeth II"
 
-#. Separation Day.
-msgid "Separation Day"
-msgstr "Separation Day"
-
-#. Queen's Birthday.
-msgid "Celebration of the Birthday of Her Majesty the Queen"
-msgstr "Queen's Birthday"
-
-#. King's Birthday.
-msgid "Celebration of the Birthday of His Majesty the King"
-msgstr "King's Birthday"
+#. Special Public Holiday.
+msgid "Special Public Holiday"
+msgstr "Special Public Holiday"

@@ -51,10 +51,10 @@ msgstr ""
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#. New Year's Holiday.
-msgid "عطلة رأس السنة"
-msgstr ""
-
 #. March Bank Holiday.
 msgid "عطلة البنك"
+msgstr ""
+
+#. New Year's Holiday.
+msgid "عطلة رأس السنة"
 msgstr ""

@@ -55,7 +55,7 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         super().__init__(*args, **kwargs)
 
     def _is_observed(self, dt: date) -> bool:
-        # Commencement of the new Labor Code
+        # Commencement of the new Labor Code.
         return dt >= date(2023, APR, 30)
 
     def _populate_public_holidays(self):
@@ -132,6 +132,8 @@ class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
         2021: (JUL, 20),
         2022: (JUL, 9),
         2023: (JUN, 28),
+        2024: (JUN, 16),
+        2025: (JUN, 6),
     }
 
     EID_AL_FITR_DATES = {
@@ -154,10 +156,24 @@ class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 2),
         2023: (APR, 21),
         2024: (APR, 10),
+        2025: (MAR, 30),
     }
 
 
 class UzbekistanStaticHolidays:
+    """Uzbekistan special holidays.
+
+    References:
+        * [2018](https://web.archive.org/web/20250610012705/https://lex.uz/ru/docs/3479237)
+        * [2019](https://web.archive.org/web/20250521124231/https://lex.uz/docs/-4054698)
+        * [2020](https://web.archive.org/web/20250522053834/https://lex.uz/docs/-4595638)
+        * [2021](https://web.archive.org/web/20250522053822/https://lex.uz/docs/-5137156)
+        * [2022](https://web.archive.org/web/20250522053831/https://lex.uz/docs/-5784917)
+        * [2023](https://web.archive.org/web/20250522053822/https://lex.uz/docs/-6324664)
+        * [2024](https://web.archive.org/web/20250522053835/https://lex.uz/docs/-6704048)
+        * [2025](https://web.archive.org/web/20250422135040/https://lex.uz/docs/-7275687)
+    """
+
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d/%m %Y")
     # Day off (substituted from %s).
@@ -171,7 +187,7 @@ class UzbekistanStaticHolidays:
             (JAN, 3, JAN, 6),
             (MAR, 19, MAR, 17),
             (MAR, 22, MAR, 24),
-            (MAR, 30, additional_day_off),
+            (MAR, 20, additional_day_off),
             (AUG, 23, AUG, 25),
             (AUG, 24, AUG, 26),
             (AUG, 31, additional_day_off),
@@ -232,4 +248,5 @@ class UzbekistanStaticHolidays:
             (DEC, 30, DEC, 14),
             (DEC, 31, additional_day_off),
         ),
+        2025: (JAN, 2, JAN, 4),
     }

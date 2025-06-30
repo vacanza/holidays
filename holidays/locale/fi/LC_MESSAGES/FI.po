@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: fi\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -90,10 +91,6 @@ msgstr ""
 msgid "Runebergin päivä"
 msgstr ""
 
-#. Kalevala Day, Day of Finnish Culture.
-msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
-msgstr ""
-
 #. Minna Canth Day, Day of Equality.
 msgid "Minna Canthin päivä, tasa-arvon päivä"
 msgstr ""
@@ -110,28 +107,16 @@ msgstr ""
 msgid "Eurooppa-päivä"
 msgstr ""
 
-#. Mother's Day.
-msgid "Äitienpäivä"
+#. J. V. Snellman Day, Day of Finnish Heritage.
+msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
 msgstr ""
 
 #. J. V. Snellman Day.
 msgid "J.V. Snellmanin päivä"
 msgstr ""
 
-#. J. V. Snellman Day, Day of Finnish Heritage.
-msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
-msgstr ""
-
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
-msgstr ""
-
-#. Birthday of the Marshal of Finland.
-msgid "Suomen marsalkan syntymäpäivä"
-msgstr ""
-
-#. Flag Day of the Finnish Defense Forces.
-msgid "Puolustusvoimain lippujuhlan päivä"
 msgstr ""
 
 #. Eino Leino Day, Day of Summer and Poetry.
@@ -148,6 +133,10 @@ msgstr ""
 
 #. Aleksis Kivi Day, Day of Finnish Literature.
 msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
+msgstr ""
+
+#. Aleksis Kivi Day.
+msgid "Aleksis Kiven päivä"
 msgstr ""
 
 #. United Nations Day.
@@ -170,14 +159,26 @@ msgstr ""
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr ""
 
-#. Åland's Autonomy Day.
-msgid "Ahvenanmaan itsehallintopäivä"
+#. Kalevala Day, Day of Finnish Culture.
+msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
+msgstr ""
+
+#. Mother's Day.
+msgid "Äitienpäivä"
+msgstr ""
+
+#. Flag Day of the Finnish Defense Forces.
+msgid "Puolustusvoimain lippujuhlan päivä"
+msgstr ""
+
+#. Birthday of the Marshal of Finland.
+msgid "Suomen marsalkan syntymäpäivä"
 msgstr ""
 
 #. Day of the Finnish Flag.
 msgid "Suomen lipun päivä"
 msgstr ""
 
-#. Aleksis Kivi Day.
-msgid "Aleksis Kiven päivä"
+#. Åland's Autonomy Day.
+msgid "Ahvenanmaan itsehallintopäivä"
 msgstr ""

@@ -14,49 +14,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.22\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2023-03-23 14:45+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2025-06-18 16:14+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: fr\n"
 
 #. New Year's Day.
 msgid "Jour de l'an"
-msgstr ""
-
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr ""
-
-#. Labor and Social Concord Day.
-msgid "Fête du Travail et de la Concorde sociale"
-msgstr ""
-
-#. Victory Day.
-msgid "Fête de la Victoire"
-msgstr ""
-
-#. National Day.
-msgid "Fête nationale"
-msgstr ""
-
-#. Armistice Day.
-msgid "Armistice"
-msgstr ""
-
-#. Good Friday.
-msgid "Vendredi saint"
-msgstr ""
-
-#. Mi-Careme.
-msgid "Mi-Carême"
 msgstr ""
 
 #. Easter Monday.
@@ -67,8 +39,28 @@ msgstr ""
 msgid "Lundi de Pentecôte"
 msgstr ""
 
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Labor and Social Concord Day.
+msgid "Fête du Travail et de la Concorde sociale"
+msgstr ""
+
+#. May Day.
+msgid "1er mai"
+msgstr ""
+
+#. Victory Day.
+msgid "Fête de la Victoire"
+msgstr ""
+
 #. Ascension Day.
 msgid "Ascension"
+msgstr ""
+
+#. National Day.
+msgid "Fête nationale"
 msgstr ""
 
 #. Assumption Day.
@@ -79,24 +71,40 @@ msgstr ""
 msgid "Toussaint"
 msgstr ""
 
+#. Armistice Day.
+msgid "Armistice"
+msgstr ""
+
 #. Christmas Day.
 msgid "Noël"
 msgstr ""
 
-#. Feast of Victor Schoelcher.
-msgid "Fête de Victor Schoelcher"
-msgstr ""
-
-#. Abolition of slavery.
-msgid "Abolition de l'esclavage"
+#. Good Friday.
+msgid "Vendredi saint"
 msgstr ""
 
 #. Saint Stephen's Day.
 msgid "Saint Étienne"
 msgstr ""
 
+#. Mi-Careme.
+msgid "Mi-Carême"
+msgstr ""
+
+#. Abolition of Slavery.
+msgid "Abolition de l'esclavage"
+msgstr ""
+
+#. Victor Schoelcher Day.
+msgid "Fête de Victor Schoelcher"
+msgstr ""
+
 #. Citizenship Day.
 msgid "Fête de la Citoyenneté"
+msgstr ""
+
+#. Annexation Day.
+msgid "Fête de la prise de possession"
 msgstr ""
 
 #. Missionary Day.
@@ -107,10 +115,18 @@ msgstr ""
 msgid "Fête de l'autonomie"
 msgstr ""
 
+#. Matāri'i.
+msgid "Matāri'i"
+msgstr ""
+
 #. Feast of Saint Peter Chanel.
 msgid "Saint Pierre Chanel"
 msgstr ""
 
-#. Festival of the territory.
+#. Saints Peter and Paul Day.
+msgid "Saints Pierre et Paul"
+msgstr ""
+
+#. Territory Day.
 msgid "Fête du Territoire"
 msgstr ""

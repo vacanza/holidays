@@ -25,6 +25,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: sr\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (слободан дан)"
+msgstr ""
 
 #. New Year's Day.
 msgid "Нова година"
@@ -60,9 +66,4 @@ msgstr ""
 
 #. Easter Monday.
 msgid "Други дан Васкрса"
-msgstr ""
-
-#. %s (observed).
-#, c-format
-msgid "%s (слободан дан)"
 msgstr ""
