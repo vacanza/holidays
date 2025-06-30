@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.76\n"
 "POT-Creation-Date: 2025-06-15 18:52+0530\n"
 "PO-Revision-Date: 2025-06-15 18:52+0530\n"
 "Last-Translator: Shreyas Smarth <smarth.shreyas@gmail.com>\n"
@@ -49,6 +49,10 @@ msgstr "Annar í páskum"
 #. Great Prayer Day.
 msgid "Dýri biðidagur"
 msgstr "Bænadagur"
+
+#. Ascension Day.
+msgid "Kristi himmalsferðardagur"
+msgstr "Uppstigningardagur"
 
 #. Whit Sunday.
 msgid "Hvítusunnudagur"
@@ -89,7 +93,3 @@ msgstr "Ólafsvöku aðfaranótt"
 #. National Flag Day.
 msgid "Flaggdagur"
 msgstr "Fánadagur"
-
-#. Ascension Day.
-msgid "Kristi himmalsferðardagur"
-msgstr "Uppstigningardagur"
