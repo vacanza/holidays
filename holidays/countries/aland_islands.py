@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import PUBLIC, UNOFFICIAL, WORKDAY
 from holidays.countries.finland import Finland
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysAX(Finland):
+class HolidaysAX(ChildEntity, Finland):
     """Åland Islands holidays.
 
     Alias of a Finnish subdivision that is also officially assigned
@@ -30,25 +30,9 @@ class HolidaysAX(Finland):
 
     country = "AX"
     parent_entity = Finland
-    default_language = "fi"
-    supported_languages = ("en_US", "fi", "sv_FI", "th", "uk")
-    supported_categories = (PUBLIC, UNOFFICIAL, WORKDAY)
-    subdivisions = ()  # Override Finland subdivisions.
-    subdivisions_aliases = {}  # Override Finland subdivisions aliases.
+    parent_entity_subdivision_code = "01"
     # Åland Islands got its autonomy on May 7th, 1920.
     start_year = 1921
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "01"
-        super()._populate_public_holidays()
-
-    def _populate_unofficial_holidays(self) -> None:
-        self.subdiv = "01"
-        super()._populate_unofficial_holidays()
-
-    def _populate_workday_holidays(self) -> None:
-        self.subdiv = "01"
-        super()._populate_workday_holidays()
 
 
 class AlandIslands(HolidaysAX):

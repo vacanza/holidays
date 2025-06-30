@@ -36,7 +36,7 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
         * [2021](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/3511371698958491/?type=3)
         * [2022](https://www.facebook.com/pressofficetcig/photos/a.349345645161128/4515540038541647/?type=3)
         * [2023](https://web.archive.org/web/20250608202452/https://www.facebook.com/photo/?fbid=557741379734203&set=a.363028765872133)
-        * [2025](https://www.facebook.com/photo/?fbid=1019082573584944&set=a.353200576839817)
+        * [2025](https://web.archive.org/web/20250608202433/https://www.facebook.com/photo/?fbid=1019082573584944&set=a.353200576839817)
         * [Destination TCI](https://web.archive.org/web/20250429024708/https://destinationtci.tc/turks-and-caicos-islands-public-holidays/)
         * [Time and Date](https://web.archive.org/web/20250429024853/https://www.timeanddate.com/holidays/turks-and-caicos-islands/)
     """
