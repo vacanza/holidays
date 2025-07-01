@@ -872,7 +872,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>LY</td>
 <td></td>
 <td><strong>ar</strong>, en_US</td>
-<td></td>
+<td>PUBLIC, WORKDAY</td>
 </tr>
 <tr>
 <td>Liechtenstein</td>

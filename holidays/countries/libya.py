@@ -14,6 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -32,6 +33,7 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     start_year = 1988
+    supported_categories = (WORKDAY,)
     supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -102,6 +104,32 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
         self._add_eid_al_adha_day_three(name)
+
+    def _populate_workday_holidays(self):
+        if self._year <= 2011:
+            # Syrian Revolution Day.
+            self._add_holiday_mar_8(tr("عيد ثورة سوريا"))
+
+            # Anniversary of the Arab League.
+            self._add_holiday_mar_22(tr("ذكرى إنشاء الجامعة العربية"))
+
+            # British Forces Evacuation Day.
+            self._add_holiday_mar_28(tr("عيد إجلاء القوات البريطانية"))
+
+            # Italian Forces Evacuation Day.
+            self._add_holiday_oct_7(tr("عيد إجلاء الطليان"))
+
+            # Islamic New Year.
+            self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
+
+            # Ashura.
+            self._add_ashura_day(tr("عاشوراء"))
+
+            # Isra and Mi'raj.
+            self._add_isra_and_miraj_day(tr("ذكرى الإسراء والمعراج"))
+
+            # Night of Forgiveness.
+            self._add_imam_mahdi_birthday_day(tr("ليلة النصف من شعبان"))
 
 
 class LY(Libya):

@@ -91,6 +91,34 @@ msgstr "Day of Arafah"
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
+#. Syrian Revolution Day.
+msgid "عيد ثورة سوريا"
+msgstr "Syrian Revolution Day"
+
+#. Anniversary of the Arab League.
+msgid "ذكرى إنشاء الجامعة العربية"
+msgstr "Anniversary of the Arab League"
+
+#. British Forces Evacuation Day.
+msgid "عيد إجلاء القوات البريطانية"
+msgstr "British Forces Evacuation Day"
+
+#. Italian Forces Evacuation Day.
+msgid "عيد إجلاء الطليان"
+msgstr "Italian Forces Evacuation Day"
+
+#. Ashura.
+msgid "عاشوراء"
+msgstr "Ashura"
+
+#. Isra and Mi'raj.
+msgid "ذكرى الإسراء والمعراج"
+msgstr "Isra and Mi'raj"
+
+#. Night of Forgiveness.
+msgid "ليلة النصف من شعبان"
+msgstr "Night of Forgiveness"
+
 #. Public Holiday.
 msgid "عطلة رسمية"
 msgstr "Public Holiday"

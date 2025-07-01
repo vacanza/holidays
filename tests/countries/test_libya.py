@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import WORKDAY
 from holidays.countries.libya import Libya, LY, LBY
 from tests.common import CommonCountryTests
 
@@ -21,6 +22,7 @@ class TestLibya(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(1988, 2050)
         super().setUpClass(Libya, years=years)
+        cls.workday_holidays = Libya(years=years, categories=WORKDAY, islamic_show_estimated=False)
         cls.no_estimated_holidays = Libya(years=years, islamic_show_estimated=False)
 
     def test_country_aliases(self):
@@ -93,6 +95,7 @@ class TestLibya(CommonCountryTests, TestCase):
             "2025-06-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2012))
 
     def test_prophets_birthday(self):
@@ -151,6 +154,96 @@ class TestLibya(CommonCountryTests, TestCase):
             "2025-06-08",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1988, 2050))
+
+    def test_syrian_revolution_day(self):
+        name = "عيد ثورة سوريا"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-03-08",
+            "1989-03-08",
+            "2009-03-08",
+            "2010-03-08",
+            "2011-03-08",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_anniversary_of_arab_league(self):
+        name = "ذكرى إنشاء الجامعة العربية"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-03-22",
+            "1989-03-22",
+            "2009-03-22",
+            "2010-03-22",
+            "2011-03-22",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_british_forces_evacuation_day(self):
+        name = "عيد إجلاء القوات البريطانية"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-03-28",
+            "1989-03-28",
+            "2009-03-28",
+            "2010-03-28",
+            "2011-03-28",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_italian_forces_evacuation_day(self):
+        name = "عيد إجلاء الطليان"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-10-07",
+            "1989-10-07",
+            "2009-10-07",
+            "2010-10-07",
+            "2011-10-07",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_ashura_day(self):
+        name = "عاشوراء"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-08-22",
+            "1989-08-11",
+            "1990-08-01",
+            "2010-12-16",
+            "2011-12-05",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
+
+    def test_isra_and_miraj_day(self):
+        name = "ذكرى الإسراء والمعراج"
+        self.assertHolidayName(
+            name,
+            self.workday_holidays,
+            "1988-03-15",
+            "1989-03-05",
+            "1990-02-22",
+            "2010-07-09",
+            "2011-06-29",
+        )
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
+        self.assertNoHolidayName(name, self.workday_holidays, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1988, 2050))
 
     def test_2024(self):
         self.assertHolidays(
