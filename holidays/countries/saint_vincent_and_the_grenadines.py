@@ -74,7 +74,11 @@ class SaintVincentAndTheGrenadines(
         carnival_monday_dates = {
             2013: (JUL, 8),
             2018: (JUL, 9),
+            2019: (JUL, 8),
+            2020: (JUL, 6),
+            2021: (JUL, 5),
             2023: (JUL, 10),
+            2024: (JUL, 8),
         }
         if self._year in carnival_monday_dates:
             dt = self._add_holiday(name, carnival_monday_dates[self._year])

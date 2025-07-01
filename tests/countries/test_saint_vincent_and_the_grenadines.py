@@ -106,7 +106,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             "2021-07-05",
             "2022-07-04",
             "2023-07-10",
-            "2024-07-01",
+            "2024-07-08",
             "2025-07-07",
         )
         self.assertHolidayName(name, range(1979, 2050))
@@ -119,7 +119,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             "2021-07-06",
             "2022-07-05",
             "2023-07-11",
-            "2024-07-02",
+            "2024-07-09",
             "2025-07-08",
         )
         self.assertHolidayName(name, range(1979, 2050))
@@ -161,8 +161,8 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-05-01", "National Workers' Day"),
             ("2024-05-20", "Whit Monday"),
-            ("2024-07-01", "Carnival Monday"),
-            ("2024-07-02", "Carnival Tuesday"),
+            ("2024-07-08", "Carnival Monday"),
+            ("2024-07-09", "Carnival Tuesday"),
             ("2024-08-01", "Emancipation Day"),
             ("2024-10-27", "Independence Day"),
             ("2024-10-28", "Independence Day (observed)"),
