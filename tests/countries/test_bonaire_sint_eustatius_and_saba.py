@@ -29,9 +29,11 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(BonaireSintEustatiusAndSaba, BQ, BES)
 
-    def test_new_years(self):
-        name = "Nieuwjaarsdag"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2011, 2050)))
+    def test_no_holidays(self):
+        self.assertNoHolidays(BonaireSintEustatiusAndSaba(years=2010))
+
+    def test_new_years_day(self):
+        self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(2011, 2050)))
 
     def test_good_friday(self):
         name = "Goede Vrijdag"
@@ -44,11 +46,11 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2025-04-18",
         )
         self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2011, 2050))
 
     def test_easter_sunday(self):
         name = "Eerste Paasdag"
         dt = (
-            "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
@@ -57,11 +59,11 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2025-04-20",
         )
         self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2011, 2050))
 
     def test_easter_monday(self):
         name = "Tweede Paasdag"
         dt = (
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -70,6 +72,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2025-04-21",
         )
         self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2011, 2050))
 
     def test_kings_day(self):
         name_queen = "Koninginnedag"
@@ -94,34 +97,14 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name_king, range(2014, 2050))
         self.assertNoHolidayName(name_king, range(2011, 2014))
 
-    def test_rincon_day(self):
-        name = "Rincondag"
-        self.assertNoHolidayName(name)
-
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "BON":
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    "2020-04-30",
-                    "2021-04-30",
-                    "2022-04-30",
-                    "2023-04-30",
-                    "2024-04-30",
-                    "2025-04-30",
-                )
-                self.assertHolidayName(name, holidays, range(2020, 2050))
-            else:
-                self.assertNoHolidayName(name, holidays)
-
     def test_labor_day(self):
-        name = "Dag van de Arbeid"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2011, 2050)))
+        self.assertHolidayName(
+            "Dag van de Arbeid", (f"{year}-05-01" for year in range(2011, 2050))
+        )
 
     def test_ascension_day(self):
         name = "Hemelvaartsdag"
         dt = (
-            "2019-05-30",
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -130,11 +113,11 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2025-05-29",
         )
         self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2011, 2050))
 
     def test_whit_sunday(self):
         name = "Eerste Pinksterdag"
         dt = (
-            "2019-06-09",
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
@@ -143,22 +126,24 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             "2025-06-08",
         )
         self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(2011, 2050))
 
-    def test_emancipation_day(self):
-        name = "Emancipatiedag"
+    def test_christmas_day(self):
+        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in range(2011, 2050)))
+
+    def test_boxing_day(self):
+        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
+
+    def test_rincon_day(self):
+        name = "Rincondag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "STA":
+            if subdiv == "BON":
                 self.assertHolidayName(
-                    name,
-                    holidays,
-                    "2022-07-01",
-                    "2023-07-01",
-                    "2024-07-01",
-                    "2025-07-01",
+                    name, holidays, (f"{year}-04-30" for year in range(2020, 2050))
                 )
-                self.assertHolidayName(name, holidays, range(2022, 2050))
+                self.assertNoHolidayName(name, holidays, range(2011, 2020))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -169,34 +154,25 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "BON":
                 self.assertHolidayName(
-                    name,
-                    holidays,
-                    "2020-09-06",
-                    "2021-09-06",
-                    "2022-09-06",
-                    "2023-09-06",
-                    "2024-09-06",
-                    "2025-09-06",
+                    name, holidays, (f"{year}-09-06" for year in range(2011, 2050))
                 )
-                self.assertHolidayName(name, holidays, range(2011, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_statia_day(self):
-        name = "Statiadag"
+    def test_carnival_monday(self):
+        name = "Dag na de carnavalsoptocht"
         self.assertNoHolidayName(name)
-
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "STA":
+            if subdiv == "SAB":
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2020-11-16",
-                    "2021-11-16",
-                    "2022-11-16",
-                    "2023-11-16",
-                    "2024-11-16",
-                    "2025-11-16",
+                    "2020-07-27",
+                    "2021-07-26",
+                    "2022-07-25",
+                    "2023-07-31",
+                    "2024-07-29",
+                    "2025-07-28",
                 )
                 self.assertHolidayName(name, holidays, range(2011, 2050))
             else:
@@ -222,13 +198,30 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_christmas_day(self):
-        name = "Eerste Kerstdag"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2011, 2050)))
+    def test_emancipation_day(self):
+        name = "Emancipatiedag"
+        self.assertNoHolidayName(name)
 
-    def test_boxing_day(self):
-        name = "Tweede Kerstdag"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2011, 2050)))
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "STA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-07-01" for year in range(2022, 2050))
+                )
+                self.assertHolidayName(name, holidays, range(2022, 2050))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_statia_day(self):
+        name = "Statiadag"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "STA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-16" for year in range(2011, 2050))
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
