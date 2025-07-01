@@ -104,7 +104,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                     name,
                     holidays,
                     "2020-04-30",
-                    "2021-04-30 ",
+                    "2021-04-30",
                     "2022-04-30",
                     "2023-04-30",
                     "2024-04-30",
@@ -268,7 +268,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-11-16", "Statia Day"),
             ("2023-12-01", "Saba Day"),
             ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            ("2023-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_en_bq(self):
@@ -289,7 +289,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-11-16", "Statia Day"),
             ("2023-12-01", "Saba Day"),
             ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            ("2023-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_pap_bq(self):
