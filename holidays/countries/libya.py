@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import WORKDAY
+from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -33,7 +33,7 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     # %s (estimated).
     estimated_label = tr("(تقدير) %s")
     start_year = 1988
-    supported_categories = (WORKDAY,)
+    supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
