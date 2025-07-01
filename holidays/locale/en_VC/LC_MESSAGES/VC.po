@@ -30,60 +30,60 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr ""
+msgstr "%s (observed)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr ""
+msgstr "New Year's Day"
 
 #. National Heroes' Day.
 msgid "National Heroes' Day"
-msgstr ""
+msgstr "National Heroes' Day"
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr ""
+msgstr "Good Friday"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr ""
+msgstr "Easter Monday"
 
 #. Labor Day.
 msgid "National Workers' Day"
-msgstr ""
+msgstr "National Workers' Day"
 
 #. National Spiritual Baptist Day.
 msgid "National Spiritual Baptist Day"
-msgstr ""
+msgstr "National Spiritual Baptist Day"
 
 #. Whit Monday.
 msgid "Whit Monday"
-msgstr ""
+msgstr "Whit Monday"
 
 #. Carnival Monday.
 msgid "Carnival Monday"
-msgstr ""
+msgstr "Carnival Monday"
 
 #. Carnival Tuesday.
 msgid "Carnival Tuesday"
-msgstr ""
+msgstr "Carnival Tuesday"
 
 #. Emancipation Day.
 msgid "Emancipation Day"
-msgstr ""
+msgstr "Emancipation Day"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr ""
+msgstr "Independence Day"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr ""
+msgstr "Christmas Day"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr ""
+msgstr "Boxing Day"
 
 #. Public Health Holidays.
 msgid "Public Health Holidays"
-msgstr ""
+msgstr "Public Health Holidays"

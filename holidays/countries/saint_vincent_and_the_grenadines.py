@@ -78,7 +78,7 @@ class SaintVincentAndTheGrenadines(
         if self._year in carnival_monday_dates:
             dt = self._add_holiday(name, carnival_monday_dates[self._year])
         else:
-            dt = self._add_holiday_1nd_mon_of_jul(name)
+            dt = self._add_holiday_1st_mon_of_jul(name)
 
         # Carnival Tuesday.
         self._add_holiday(tr("Carnival Tuesday"), _timedelta(dt, +1))
@@ -111,8 +111,8 @@ class SaintVincentAndTheGrenadinesStaticHolidays:
         * [Statutory Rules and Orders 2021 No.1](https://web.archive.org/web/20250613051716/https://pmoffice.gov.vc/pmoffice/images/PDF/Gazettes/No_1_Proclamation_Delcaring_Friday_the_22nd_and_Monday_25th_day_of_January_2021_to_be_Public_Holidays_in_Saint_Vincent_and_the_Grenadines_19th_January_2021.pdf)
     """
 
-    # Public Health Holiday.
-    name = tr("Public Health Holiday")
+    # Public Health Holidays.
+    name = tr("Public Health Holidays")
     special_public_holidays = {
         2021: (
             (JAN, 22, name),
