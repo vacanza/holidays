@@ -22,9 +22,9 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     """Libya holidays.
 
     References:
-        * [Law No. 4 of 1987](https://web.archive.org/web/20250629084625/https://lawsociety.ly/legislation/%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%b1%d9%82%d9%85-4-%d9%84%d8%b3%d9%86%d8%a9-1987-%d9%85-%d8%a8%d8%b4%d8%a3%d9%86-%d8%a7%d9%84%d8%b9%d8%b7%d9%84%d8%a7%d8%aa-%d8%a7%d9%84%d8%b1%d8%b3%d9%85%d9%8a%d8%a9/)
-        * [Law No. 5 of 2012](https://web.archive.org/web/20250629084558/https://lawsociety.ly/legislation/%d8%a7%d9%84%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%b1%d9%82%d9%85-5-%d9%84%d8%b3%d9%86%d8%a9-2012-%d9%85-%d8%a8%d8%b4%d8%a3%d9%86-%d8%a7%d9%84%d8%b9%d8%b7%d9%84%d8%a7%d8%aa-%d8%a7%d9%84%d8%b1%d8%b3%d9%85/)
-        * [National Environmental Sanitation Day](https://web.archive.org/web/20250629084547/https://lawsociety.ly/legislation/%D9%82%D8%B1%D8%A7%D8%B1-%D8%B1%D9%82%D9%85-414-%D9%84%D8%B3%D9%86%D8%A9-2021-%D9%85-%D8%A8%D8%A7%D8%B9%D8%AA%D8%A8%D8%A7%D8%B1-%D9%8A%D9%88%D9%85-14-%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3-%D9%8A%D9%88/)
+        * [Law No. 4 of 1987](https://web.archive.org/web/20250629084625/https://lawsociety.ly/legislation/قانون-رقم-4-لسنة-1987-م-بشأن-العطلات-الرسمية/)
+        * [Law No. 5 of 2012](https://web.archive.org/web/20250629084558/https://lawsociety.ly/legislation/القانون-رقم-5-لسنة-2012-م-بشأن-العطلات-الرسم/)
+        * [National Environmental Sanitation Day](https://web.archive.org/web/20250629084547/https://lawsociety.ly/legislation/قرار-رقم-414-لسنة-2021-م-باعتبار-يوم-14-أغسطس-يو/)
     """
 
     country = "LY"
@@ -114,7 +114,7 @@ class LBY(Libya):
 
 class LibyaIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20240908234803/https://www.timeanddate.com/holidays/libya/eid-al-adha
-    # https://web.archive.org/web/20250629084537/https://lawsociety.ly/legislation/%d9%82%d8%b1%d8%a7%d8%b1-%d8%b1%d9%82%d9%85-773-%d9%84%d8%b3%d9%86%d8%a9-2017-%d9%85-%d8%a8%d8%b4%d8%a3%d9%86-%d8%aa%d8%ad%d8%af%d9%8a%d8%af-%d8%b9%d8%b7%d9%84%d8%a9-%d8%b9%d9%8a%d8%af-%d8%a7%d9%84/
+    # https://web.archive.org/web/20250629084537/https://lawsociety.ly/legislation/قرار-رقم-773-لسنة-2017-م-بشأن-تحديد-عطلة-عيد-ال/
     EID_AL_ADHA_DATES = {
         2012: (OCT, 26),
         2013: (OCT, 15),
@@ -169,7 +169,7 @@ class LibyaIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20241213175353/https://www.timeanddate.com/holidays/libya/prophet-birthday
-    # https://web.archive.org/web/20250629084607/https://lawsociety.ly/legislation/%D9%82%D8%B1%D8%A7%D8%B1-%D8%B1%D9%82%D9%85-1299-%D9%84%D8%B3%D9%86%D8%A9-2019-%D9%85-%D8%A8%D8%B4%D8%A3%D9%86-%D8%B9%D8%B7%D9%84%D8%A9-%D8%B0%D9%83%D8%B1%D9%89-%D8%A7%D9%84%D9%85%D9%88%D9%84%D8%AF/
+    # https://web.archive.org/web/20250629084607/https://lawsociety.ly/legislation/قرار-رقم-1299-لسنة-2019-م-بشأن-عطلة-ذكرى-المولد/
     MAWLID_DATES = {
         2012: (FEB, 5),
         2013: (JAN, 24),
@@ -191,7 +191,7 @@ class LibyaStaticHolidays:
     """Libya static holidays.
 
     References:
-        - <https://web.archive.org/web/20250629084721/https://lawsociety.ly/legislation/%d9%82%d8%b1%d8%a7%d8%b1-%d8%b1%d9%82%d9%85-555-%d9%84%d8%b3%d9%86%d8%a9-2023-%d9%85-%d8%a8%d9%85%d9%86%d8%ad-%d8%a5%d8%ac%d8%a7%d8%b2%d8%a9-%d8%b1%d8%b3%d9%85%d9%8a%d8%a9/>
+        - <https://web.archive.org/web/20250629084721/https://lawsociety.ly/legislation/قرار-رقم-555-لسنة-2023-م-بمنح-إجازة-رسمية/>
     """
 
     special_public_holidays = {
