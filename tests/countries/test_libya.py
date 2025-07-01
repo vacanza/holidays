@@ -26,6 +26,9 @@ class TestLibya(CommonCountryTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Libya, LY, LBY)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Libya(years=1987))
+
     def test_special_holidays(self):
         self.assertHolidayName("عطلة رسمية", "2023-12-10")
 

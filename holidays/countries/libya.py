@@ -188,10 +188,10 @@ class LibyaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class LibyaStaticHolidays:
-    """Libya static holidays.
+    """Libya special holidays.
 
     References:
-        - <https://web.archive.org/web/20250629084721/https://lawsociety.ly/legislation/قرار-رقم-555-لسنة-2023-م-بمنح-إجازة-رسمية/>
+        * <https://web.archive.org/web/20250629084721/https://lawsociety.ly/legislation/قرار-رقم-555-لسنة-2023-م-بمنح-إجازة-رسمية/>
     """
 
     special_public_holidays = {
