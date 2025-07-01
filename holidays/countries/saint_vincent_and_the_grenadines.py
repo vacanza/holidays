@@ -24,12 +24,15 @@ class SaintVincentAndTheGrenadines(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
-        * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2023/03/BOSVG-CALENDAR-TENT_F_REPRINT_TENT-EXCLUDED-FINAL.pdf>
-        * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf>
-        * <https://web.archive.org/web/20250513011200/https://www.gov.vc/images/pdf_documents/VINCENTIANS-PREPARE-FOR-MAY-21--SPIRITUAL-BAPTIST-LIBERATION-DAY-NATIONAL-HOLIDAY.pdf>
+        * [2013](https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf)
+        * [2014](https://web.archive.org/web/20250610053913/https://www.bosvg.com/wp-content/uploads/2021/10/BOSVG-Calendar-2014-5th-draft.pdf)
+        * [2015](https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/BOSVG-Bklet-Calendar-2015_21_11-3.pdf)
+        * [2016](https://web.archive.org/web/20240225145903/https://www.bosvg.com/wp-content/uploads/2021/10/BOSVG-2016_pgs_sm_fin.pdf)
+        * [2022](https://web.archive.org/web/20230426000952/https://www.bosvg.com/wp-content/uploads/2022/05/Tent-Calendar.pdf)
+        * [2023](https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2023/03/BOSVG-CALENDAR-TENT_F_REPRINT_TENT-EXCLUDED-FINAL.pdf)
         * [2019-2025](https://web.archive.org/web/20250214232128/https://pmoffice.gov.vc/pmoffice/index.php/public-holidays)
-        * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf>
-        * <https://web.archive.org/web/20250607111242/https://www.stvincenttimes.com/august-3rd-and-4th-2020-declared-public-holidays-in-svg/>
+        * [2020 Carnival Monday](https://web.archive.org/web/20250607111242/https://www.stvincenttimes.com/august-3rd-and-4th-2020-declared-public-holidays-in-svg/)
+        * [2025 National Spiritual Baptist Day](https://web.archive.org/web/20250513011200/https://www.gov.vc/images/pdf_documents/VINCENTIANS-PREPARE-FOR-MAY-21--SPIRITUAL-BAPTIST-LIBERATION-DAY-NATIONAL-HOLIDAY.pdf)
     """
 
     country = "VC"
