@@ -207,7 +207,6 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-01" for year in range(2022, 2050))
                 )
-                self.assertHolidayName(name, holidays, range(2022, 2050))
             else:
                 self.assertNoHolidayName(name, holidays)
 
