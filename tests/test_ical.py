@@ -45,8 +45,8 @@ class TestIcalExporter(TestCase):
         self.exporter.generate = MagicMock(return_value=b"BEGIN:VCALENDAR...END:VCALENDAR")
         self.id_holidays = country_holidays("ID", years=2000, language="en_US")
         self.jp_holidays = country_holidays("JP", years=2000, language="ja")
-        self.th_holidays = country_holidays("TH", years=2024)
-        self.us_holidays = country_holidays("US", years=2024)
+        self.th_holidays = country_holidays("TH", years=2024, language="th")
+        self.us_holidays = country_holidays("US", years=2024, language="en_US")
         self.id_exporter = ICalExporter(self.id_holidays)
         self.jp_exporter = ICalExporter(self.jp_holidays)
         self.th_exporter = ICalExporter(self.th_holidays)
@@ -250,7 +250,7 @@ class TestIcalExporter(TestCase):
     def test_single_holiday_multiple_date_continuous_overlap(self):
         # "День міжнародної солідарності трудящих" x2
         # but 2005-05-01 got "Великдень (Пасха)" as well.
-        ua_holidays = country_holidays("UA", years=2005)
+        ua_holidays = country_holidays("UA", years=2005, language="uk")
         output = ICalExporter(ua_holidays).generate()
 
         labor_day_count = output.count("SUMMARY:День міжнародної солідарності трудя\r\n щих\r\n")
