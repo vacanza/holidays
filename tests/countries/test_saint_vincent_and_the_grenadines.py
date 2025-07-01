@@ -102,10 +102,10 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         name = "Carnival Monday"
         self.assertHolidayName(
             name,
-            "2020-08-03",
-            "2021-09-06",
+            "2020-07-06",
+            "2021-07-05",
             "2022-07-04",
-            "2023-07-03",
+            "2023-07-10",
             "2024-07-01",
             "2025-07-07",
         )
@@ -115,10 +115,10 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         name = "Carnival Tuesday"
         self.assertHolidayName(
             name,
-            "2020-08-04",
-            "2021-09-07",
+            "2020-07-07",
+            "2021-07-06",
             "2022-07-05",
-            "2023-07-04",
+            "2023-07-11",
             "2024-07-02",
             "2025-07-08",
         )
@@ -178,8 +178,8 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             ("2023-04-10", "Easter Monday"),
             ("2023-05-01", "National Workers' Day"),
             ("2023-05-29", "Whit Monday"),
-            ("2023-07-03", "Carnival Monday"),
-            ("2023-07-04", "Carnival Tuesday"),
+            ("2023-07-10", "Carnival Monday"),
+            ("2023-07-11", "Carnival Tuesday"),
             ("2023-08-01", "Emancipation Day"),
             ("2023-10-27", "Independence Day"),
             ("2023-12-25", "Christmas Day"),
@@ -195,8 +195,8 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             ("2023-04-10", "Easter Monday"),
             ("2023-05-01", "Labor Day"),
             ("2023-05-29", "Whit Monday"),
-            ("2023-07-03", "Carnival Monday"),
-            ("2023-07-04", "Carnival Tuesday"),
+            ("2023-07-10", "Carnival Monday"),
+            ("2023-07-11", "Carnival Tuesday"),
             ("2023-08-01", "Emancipation Day"),
             ("2023-10-27", "Independence Day"),
             ("2023-12-25", "Christmas Day"),

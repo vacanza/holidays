@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, JUL, AUG, SEP, _timedelta
+from holidays.calendars.gregorian import JAN, JUL, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
@@ -24,6 +24,8 @@ class SaintVincentAndTheGrenadines(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Saint_Vincent_and_the_Grenadines>
+        * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2023/03/BOSVG-CALENDAR-TENT_F_REPRINT_TENT-EXCLUDED-FINAL.pdf>
+        * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf>
         * <https://web.archive.org/web/20250513011200/https://www.gov.vc/images/pdf_documents/VINCENTIANS-PREPARE-FOR-MAY-21--SPIRITUAL-BAPTIST-LIBERATION-DAY-NATIONAL-HOLIDAY.pdf>
         * [2019-2025](https://web.archive.org/web/20250214232128/https://pmoffice.gov.vc/pmoffice/index.php/public-holidays)
         * <https://web.archive.org/web/20240225145904/https://www.bosvg.com/wp-content/uploads/2021/10/bosvg_calendar2013-9x12_ver2-2.pdf>
@@ -70,10 +72,9 @@ class SaintVincentAndTheGrenadines(
         # Carnival Monday.
         name = tr("Carnival Monday")
         carnival_monday_dates = {
-            2020: (AUG, 3),
-            2021: (SEP, 6),
-            2022: (JUL, 4),
-            2025: (JUL, 7),
+            2013: (JUL, 8),
+            2018: (JUL, 9),
+            2023: (JUL, 10),
         }
         if self._year in carnival_monday_dates:
             dt = self._add_holiday(name, carnival_monday_dates[self._year])
