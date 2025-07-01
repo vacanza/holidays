@@ -378,6 +378,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Cabo Verde</td>
+<td>CV</td>
+<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (São Domingos), SF (São Filipe), SL (Sal), SM (São Miguel), SO (São Lourenço dos Órgãos), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
+<td>de, en_US, es, fr, <strong>pt_CV</strong></td>
+<td>OPTIONAL</td>
+</tr>
+<tr>
 <td>Cambodia</td>
 <td>KH</td>
 <td></td>
@@ -397,13 +404,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Provinces and territories: AB (Alberta), BC (British Columbia, Colombie-Britannique), MB (Manitoba), NB (New Brunswick, Nouveau-Brunswick), NL (Newfoundland and Labrador, Terre-Neuve-et-Labrador), NS (Nova Scotia, Nouvelle-Écosse), NT (Northwest Territories, Territoires du Nord-Ouest), NU (Nunavut), ON (Ontario), PE (Prince Edward Island, Île-du-Prince-Édouard), QC (Quebec, Québec), SK (Saskatchewan), YT (Yukon)</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>GOVERNMENT, OPTIONAL</td>
-</tr>
-<tr>
-<td>Cape Verde</td>
-<td>CV</td>
-<td>Municipalities: BR (Brava), BV (Boa Vista), CA (Santa Catarina), CF (Santa Catarina do Fogo), CR (Santa Cruz), MA (Maio), MO (Mosteiros), PA (Paul), PN (Porto Novo), PR (Praia), RB (Ribeira Brava), RG (Ribeira Grande), RS (Ribeira Grande de Santiago), SD (São Domingos), SF (São Filipe), SL (Sal), SM (São Miguel), SO (São Lourenço dos Órgãos), SS (São Salvador do Mundo), SV (São Vicente), TA (Tarrafal), TS (Tarrafal de São Nicolau)</td>
-<td>de, en_US, es, fr, <strong>pt_CV</strong></td>
-<td>OPTIONAL</td>
 </tr>
 <tr>
 <td>Chad</td>

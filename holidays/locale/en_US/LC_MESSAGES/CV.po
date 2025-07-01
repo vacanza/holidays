@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Cape Verde holidays en_US localization.
+# Cabo Verde holidays en_US localization.
 #
 msgid ""
 msgstr ""
@@ -90,9 +90,9 @@ msgstr "Father's Day"
 msgid "Dia do Município da Brava"
 msgstr "Brava Municipality Day"
 
-#. Municipality Day.
-msgid "Dia do Município"
-msgstr "Municipality Day"
+#. Boa Vista Municipality Day.
+msgid "Dia do Município da Boa Vista"
+msgstr "Boa Vista Municipality Day"
 
 #. Santa Catarina de Santiago Municipality Day.
 msgid "Dia do Município de Santa Catarina de Santiago"
@@ -114,13 +114,13 @@ msgstr "Maio Municipality Day"
 msgid "Dia do Município dos Mosteiros"
 msgstr "Mosteiros Municipality Day"
 
-#. Paúl Municipality Day.
-msgid "Dia do Município do Paúl"
-msgstr "Paúl Municipality Day"
-
 #. Santo Antão Island Day.
 msgid "Dia da Ilha de Santo Antão"
 msgstr "Santo Antão Island Day"
+
+#. Paúl Municipality Day.
+msgid "Dia do Município do Paúl"
+msgstr "Paúl Municipality Day"
 
 #. Porto Novo Municipality Day.
 msgid "Dia do Município do Porto Novo"
@@ -149,6 +149,10 @@ msgstr "São Domingos Municipality Day"
 #. São Filipe Municipality Day.
 msgid "Dia do Município de São Filipe"
 msgstr "São Filipe Municipality Day"
+
+#. Sal Municipality Day.
+msgid "Dia do Município da Sal"
+msgstr "Sal Municipality Day"
 
 #. São Miguel Municipality Day.
 msgid "Dia do Município de São Miguel"

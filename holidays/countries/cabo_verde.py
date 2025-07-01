@@ -15,28 +15,24 @@ from gettext import gettext as tr
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.observed_holiday_base import ObservedHolidayBase
 
 
-class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, InternationalHolidays):
+class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Cape Verde holidays.
 
     References:
         * [Public holidays in Cape Verde](https://en.wikipedia.org/wiki/Public_holidays_in_Cape_Verde)
-        * [Today's and Upcoming Holidays in Cape Verde](https://www.timeanddate.com/holidays/cape-verde/)
-        * [Democracy Day](https://www.officeholidays.com/holidays/cape-verde/cape-verde-democracy-day)
-        * [National Heroes Day](https://www.officeholidays.com/holidays/cape-verde/guinea-bissau-national-heroes-day)
+        * [Legislação Municipal Cabo-Verdiana](https://web.archive.org/web/20180820172827/http://www.interface.gov.cv/index.php?option=com_docman&task=doc_download&gid=12&Itemid=314)
         * [Feriados Bancários - Banco de Cabo Verde](https://www.bcv.cv/pt/SistemadePagamentos/feriados_bancarios/Paginas/FeriadosBancarios.aspx)
         * [Feriados Públicos - Feel Cabo Verde](https://feelcaboverde.com/feriados-publicos/)
         * [Public Holidays - Feel Cape Verde](https://feelcaboverde.com/en/public-holidays-cape-verde/)
-        * [Legislação Municipal Cabo-Verdiana](https://web.archive.org/web/20180820172827/http://www.interface.gov.cv/index.php?option=com_docman&task=doc_download&gid=12&Itemid=314)
+        * [Democracy Day](https://web.archive.org/web/20250420093850/https://cmsv.cv/dia-da-liberdade-e-democracia-de-cabo-verde/)
     """
 
     country = "CV"
     default_language = "pt_CV"
     start_year = 1976
     subdivisions = (
-        # Municipalities.
         "BR",  # Brava.
         "BV",  # Boa Vista.
         "CA",  # Santa Catarina.
@@ -62,7 +58,6 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
     )
 
     subdivisions_aliases = {
-        # Municipalities.
         "Brava": "BR",
         "Boa Vista": "BV",
         "Santa Catarina": "CA",
@@ -143,19 +138,24 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
         self._add_holiday_3rd_sun_of_jun(tr("Dia dos Pais"))
 
     def _populate_subdiv_br_public_holidays(self):
+        # Law # 93/82 of November 6th
+
         # Brava Municipality Day.
         self._add_holiday_jun_24(tr("Dia do Município da Brava"))
 
     def _populate_subdiv_bv_public_holidays(self):
-        # Municipality Day.
-        self._add_holiday_jul_4(tr("Dia do Município"))
+        # Law # 93/82 of November 6th
+
+        # Boa Vista Municipality Day.
+        self._add_holiday_jul_4(tr("Dia do Município da Boa Vista"))
 
     def _populate_subdiv_ca_public_holidays(self):
         # Santa Catarina de Santiago Municipality Day.
         self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina de Santiago"))
 
     def _populate_subdiv_cf_public_holidays(self):
-        if self._year > 2005:
+        # Law # 66/VI/2005 of May 9th.
+        if self._year >= 2005:
             # Santa Catarina do Fogo Municipality Day.
             self._add_holiday_nov_25(tr("Dia do Município de Santa Catarina do Fogo"))
 
@@ -164,78 +164,93 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
         self._add_holiday_jul_25(tr("Dia do Município de Santa Cruz"))
 
     def _populate_subdiv_ma_public_holidays(self):
+        # Law # 93/82 of November 6th
+
         # Maio Municipality Day.
         self._add_holiday_sep_8(tr("Dia do Município do Maio"))
 
     def _populate_subdiv_mo_public_holidays(self):
-        if self._year > 1992:
+        # Law # 23/IV/91 of December 30th
+        if self._year >= 1992:
             # Mosteiros Municipality Day.
             self._add_holiday_aug_15(tr("Dia do Município dos Mosteiros"))
 
     def _populate_subdiv_pa_public_holidays(self):
+        # Law # 93/82 of November 6th
+
+        # Santo Antão Island Day.
+        self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
+
         # Paúl Municipality Day.
         self._add_holiday_jun_13(tr("Dia do Município do Paúl"))
 
+    def _populate_subdiv_pn_public_holidays(self):
+        # Law # 93/82 of November 6th
+
         # Santo Antão Island Day.
         self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
 
-    def _populate_subdiv_pn_public_holidays(self):
         # Porto Novo Municipality Day.
         self._add_holiday_sep_2(tr("Dia do Município do Porto Novo"))
-
-        # Santo Antão Island Day.
-        self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
 
     def _populate_subdiv_pr_public_holidays(self):
         # Praia Municipality Day.
         self._add_holiday_may_19(tr("Dia do Município da Praia"))
 
     def _populate_subdiv_rb_public_holidays(self):
+        # Law # 67/VI/2005 of May 9th
+
         # Ribeira Brava Municipality Day.
         self._add_holiday_dec_6(tr("Dia do Município de Ribeira Brava"))
 
     def _populate_subdiv_rg_public_holidays(self):
-        # Ribeira Grande Municipality Day.
-        self._add_holiday_may_7(tr("Dia do Município de Ribeira Grande"))
-
         # Santo Antão Island Day.
         self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
 
+        # Ribeira Grande Municipality Day.
+        self._add_holiday_may_7(tr("Dia do Município de Ribeira Grande"))
+
     def _populate_subdiv_rs_public_holidays(self):
-        if self._year > 2005:
+        # Law # 63/VI/2005 of May 9th
+        if self._year >= 2005:
             # Ribeira Grande de Santiago Municipality Day.
             self._add_holiday_jan_31(tr("Dia do Município de Ribeira Grande de Santiago"))
 
     def _populate_subdiv_sd_public_holidays(self):
-        if self._year > 1994:
+        if self._year >= 1994:
             # São Domingos Municipality Day.
             self._add_holiday_mar_13(tr("Dia do Município de São Domingos"))
 
     def _populate_subdiv_sf_public_holidays(self):
-        if self._year > 1992:
+        if self._year >= 1992:
             # São Filipe Municipality Day.
             self._add_holiday_may_1(tr("Dia do Município de São Filipe"))
 
     def _populate_subdiv_sl_public_holidays(self):
-        # Municipality Day.
-        self._add_holiday_sep_15(tr("Dia do Município"))
+        # Sal Municipality Day.
+        self._add_holiday_sep_15(tr("Dia do Município da Sal"))
 
     def _populate_subdiv_sm_public_holidays(self):
-        if self._year > 1996:
+        # Law # 11/V/96 of November 11th
+        if self._year >= 1996:
             # São Miguel Municipality Day.
             self._add_holiday_sep_29(tr("Dia do Município de São Miguel"))
 
     def _populate_subdiv_so_public_holidays(self):
-        if self._year > 2005:
+        # Law # 64/VI/2005 of May 9th
+        if self._year >= 2005:
             # São Lourenço dos Órgãos Municipality Day.
             self._add_holiday_may_9(tr("Dia do Município de São Lourenço dos Órgãos"))
 
     def _populate_subdiv_ss_public_holidays(self):
-        if self._year > 2005:
+        # Law # 65/VI/2005 of May 9th
+        if self._year >= 2005:
             # São Salvador do Mundo Municipality Day.
             self._add_holiday_jul_19(tr("Dia do Município de São Salvador do Mundo"))
 
     def _populate_subdiv_sv_public_holidays(self):
+        # Regulatory Decree No. 8/2000 of August 28th
+
         # São Vicente Municipality Day.
         self._add_holiday_jan_22(tr("Dia do Município de São Vicente"))
 
@@ -247,14 +262,15 @@ class CapeVerde(ObservedHolidayBase, HolidayBase, ChristianHolidays, Internation
         self._add_holiday_jan_15(tr("Dia do Município do Tarrafal de Santiago"))
 
     def _populate_subdiv_ts_public_holidays(self):
-        if self._year > 2005:
+        # Law # 67/VI/2005 of May 9
+        if self._year >= 2005:
             # Tarrafal de São Nicolau Municipality Day.
             self._add_holiday_aug_2(tr("Dia do Município do Tarrafal de São Nicolau"))
 
 
-class CV(CapeVerde):
+class CV(CaboVerde):
     pass
 
 
-class CAV(CapeVerde):
+class CAV(CaboVerde):
     pass

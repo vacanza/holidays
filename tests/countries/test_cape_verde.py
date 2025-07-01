@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries import CapeVerde, CV, CAV
+from holidays.countries import CaboVerde, CV, CAV
 from tests.common import CommonCountryTests
 
 
@@ -21,16 +21,16 @@ class TestCapeVerde(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1976, 2050)
-        super().setUpClass(CapeVerde, years=years)
+        super().setUpClass(CaboVerde, years=years)
         cls.subdiv_holidays = {
-            subdiv: CapeVerde(subdiv=subdiv, years=years) for subdiv in CapeVerde.subdivisions
+            subdiv: CaboVerde(subdiv=subdiv, years=years) for subdiv in CaboVerde.subdivisions
         }
 
     def test_country_aliases(self):
-        self.assertAliases(CapeVerde, CV, CAV)
+        self.assertAliases(CaboVerde, CV, CAV)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CapeVerde(categories=(OPTIONAL, PUBLIC), years=1975))
+        self.assertNoHolidays(CaboVerde(categories=(OPTIONAL, PUBLIC), years=1975))
 
     def test_democracy_and_freedom_day(self):
         name = "Dia da Liberdade e Democracia"
@@ -109,7 +109,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_2024_public_holidays(self):
         self.assertHolidays(
-            CapeVerde(categories=PUBLIC, years=2024),
+            CaboVerde(categories=PUBLIC, years=2024),
             ("2024-01-01", "Ano Novo"),
             ("2024-01-13", "Dia da Liberdade e Democracia"),
             ("2024-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
@@ -126,7 +126,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_2024_optional_holidays(self):
         self.assertHolidays(
-            CapeVerde(categories=OPTIONAL, years=2024),
+            CaboVerde(categories=OPTIONAL, years=2024),
             ("2024-03-28", "Quinta-Feira Santa"),
             ("2024-05-12", "Dia das Mães"),
             ("2024-06-16", "Dia dos Pais"),
@@ -134,7 +134,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_2025_public_holidays(self):
         self.assertHolidays(
-            CapeVerde(categories=PUBLIC, years=2025),
+            CaboVerde(categories=PUBLIC, years=2025),
             ("2025-01-01", "Ano Novo"),
             ("2025-01-13", "Dia da Liberdade e Democracia"),
             ("2025-01-20", "Dia da Nacionalidade e dos Heróis Nacionais"),
@@ -164,7 +164,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Quinta-Feira Santa"),
             ("2025-04-18", "Sexta-feira Santa"),
             ("2025-04-20", "Páscoa"),
-            ("2025-05-01", "Dia do Município de São Filipe; Dia do Trabalhador"),
+            (
+                "2025-05-01",
+                "Dia do Município de São Filipe; Dia do Trabalhador",
+            ),
             ("2025-05-07", "Dia do Município de Ribeira Grande"),
             ("2025-05-09", "Dia do Município de São Lourenço dos Órgãos"),
             ("2025-05-11", "Dia das Mães"),
@@ -173,15 +176,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-13", "Dia do Município do Paúl"),
             ("2025-06-15", "Dia dos Pais"),
             ("2025-06-24", "Dia do Município da Brava"),
-            ("2025-07-04", "Dia do Município"),
+            ("2025-07-04", "Dia do Município da Boa Vista"),
             ("2025-07-05", "Dia da Independência Nacional"),
             ("2025-07-19", "Dia do Município de São Salvador do Mundo"),
             ("2025-07-25", "Dia do Município de Santa Cruz"),
             ("2025-08-02", "Dia do Município do Tarrafal de São Nicolau"),
-            ("2025-08-15", "Dia da Assunção; Dia do Município dos Mosteiros"),
+            (
+                "2025-08-15",
+                "Dia da Assunção; Dia do Município dos Mosteiros",
+            ),
             ("2025-09-02", "Dia do Município do Porto Novo"),
             ("2025-09-08", "Dia do Município do Maio"),
-            ("2025-09-15", "Dia do Município"),
+            ("2025-09-15", "Dia do Município da Sal"),
             ("2025-09-29", "Dia do Município de São Miguel"),
             ("2025-11-01", "Dia de Todos os Santos"),
             (
@@ -209,7 +215,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Gründonnerstag"),
             ("2025-04-18", "Karfreitag"),
             ("2025-04-20", "Ostern"),
-            ("2025-05-01", "Tag der Arbeit; Tag der Gemeinde São Filipe"),
+            (
+                "2025-05-01",
+                "Tag der Arbeit; Tag der Gemeinde São Filipe",
+            ),
             ("2025-05-07", "Tag der Gemeinde Ribeira Grande"),
             ("2025-05-09", "Tag der Gemeinde São Lourenço dos Órgãos"),
             ("2025-05-11", "Muttertag"),
@@ -218,15 +227,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-13", "Tag der Gemeinde Paúl"),
             ("2025-06-15", "Vatertag"),
             ("2025-06-24", "Tag der Gemeinde Brava"),
-            ("2025-07-04", "Gemeindetag"),
+            ("2025-07-04", "Tag der Gemeinde Boa Vista"),
             ("2025-07-05", "Nationaler Unabhängigkeitstag"),
             ("2025-07-19", "Tag der Gemeinde São Salvador do Mundo"),
             ("2025-07-25", "Tag der Gemeinde Santa Cruz"),
             ("2025-08-02", "Tag der Gemeinde Tarrafal de São Nicolau"),
-            ("2025-08-15", "Mariä Himmelfahrt; Tag der Gemeinde Mosteiros"),
+            (
+                "2025-08-15",
+                "Mariä Himmelfahrt; Tag der Gemeinde Mosteiros",
+            ),
             ("2025-09-02", "Tag der Gemeinde Porto Novo"),
             ("2025-09-08", "Tag der Gemeinde Maio"),
-            ("2025-09-15", "Gemeindetag"),
+            ("2025-09-15", "Tag der Gemeinde Sal"),
             ("2025-09-29", "Tag der Gemeinde São Miguel"),
             ("2025-11-01", "Allerheiligen"),
             (
@@ -254,7 +266,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jueves Santo"),
             ("2025-04-18", "Viernes Santo"),
             ("2025-04-20", "Domingo de Pascua"),
-            ("2025-05-01", "Día del Municipio de São Filipe; Día del Trabajador"),
+            (
+                "2025-05-01",
+                "Día del Municipio de São Filipe; Día del Trabajador",
+            ),
             ("2025-05-07", "Día del Municipio de Ribeira Grande"),
             ("2025-05-09", "Día del Municipio de São Lourenço dos Órgãos"),
             ("2025-05-11", "Día de la Madre"),
@@ -263,15 +278,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-13", "Día del Municipio de Paúl"),
             ("2025-06-15", "Día del Padre"),
             ("2025-06-24", "Día del Municipio de Brava"),
-            ("2025-07-04", "Día del Municipio"),
+            ("2025-07-04", "Día del Municipio de Boa Vista"),
             ("2025-07-05", "Día de la Independencia Nacional"),
             ("2025-07-19", "Día del Municipio de São Salvador do Mundo"),
             ("2025-07-25", "Día del Municipio de Santa Cruz"),
             ("2025-08-02", "Día del Municipio de Tarrafal de São Nicolau"),
-            ("2025-08-15", "Día de la Asunción; Día del Municipio de Mosteiros"),
+            (
+                "2025-08-15",
+                "Día de la Asunción; Día del Municipio de Mosteiros",
+            ),
             ("2025-09-02", "Día del Municipio de Porto Novo"),
             ("2025-09-08", "Día del Municipio de Maio"),
-            ("2025-09-15", "Día del Municipio"),
+            ("2025-09-15", "Día del Municipio de Sal"),
             ("2025-09-29", "Día del Municipio de São Miguel"),
             ("2025-11-01", "Día de Todos los Santos"),
             (
@@ -299,7 +317,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Holy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-20", "Easter Sunday"),
-            ("2025-05-01", "São Filipe Municipality Day; Worker's Day"),
+            (
+                "2025-05-01",
+                "São Filipe Municipality Day; Worker's Day",
+            ),
             ("2025-05-07", "Ribeira Grande Municipality Day"),
             ("2025-05-09", "São Lourenço dos Órgãos Municipality Day"),
             ("2025-05-11", "Mother's Day"),
@@ -308,15 +329,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-13", "Paúl Municipality Day"),
             ("2025-06-15", "Father's Day"),
             ("2025-06-24", "Brava Municipality Day"),
-            ("2025-07-04", "Municipality Day"),
+            ("2025-07-04", "Boa Vista Municipality Day"),
             ("2025-07-05", "Independence Day"),
             ("2025-07-19", "São Salvador do Mundo Municipality Day"),
             ("2025-07-25", "Santa Cruz Municipality Day"),
             ("2025-08-02", "Tarrafal de São Nicolau Municipality Day"),
-            ("2025-08-15", "Assumption Day; Mosteiros Municipality Day"),
+            (
+                "2025-08-15",
+                "Assumption Day; Mosteiros Municipality Day",
+            ),
             ("2025-09-02", "Porto Novo Municipality Day"),
             ("2025-09-08", "Maio Municipality Day"),
-            ("2025-09-15", "Municipality Day"),
+            ("2025-09-15", "Sal Municipality Day"),
             ("2025-09-29", "São Miguel Municipality Day"),
             ("2025-11-01", "All Saints' Day"),
             (
@@ -344,7 +368,10 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-04-17", "Jeudi Saint"),
             ("2025-04-18", "Vendredi Saint"),
             ("2025-04-20", "Dimanche de Pâques"),
-            ("2025-05-01", "Fête du travail; Journée de la municipalité de São Filipe"),
+            (
+                "2025-05-01",
+                "Fête du travail; Journée de la municipalité de São Filipe",
+            ),
             ("2025-05-07", "Journée de la municipalité de Ribeira Grande"),
             ("2025-05-09", "Journée de la municipalité de São Lourenço dos Órgãos"),
             ("2025-05-11", "Fête des Mères"),
@@ -353,15 +380,18 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ("2025-06-13", "Journée de la municipalité de Paúl"),
             ("2025-06-15", "Fête des Pères"),
             ("2025-06-24", "Journée de la municipalité de Brava"),
-            ("2025-07-04", "Journée de la municipalité"),
+            ("2025-07-04", "Journée de la municipalité de Boa Vista"),
             ("2025-07-05", "Fête de l'Indépendance Nationale"),
             ("2025-07-19", "Journée de la municipalité de São Salvador do Mundo"),
             ("2025-07-25", "Journée de la municipalité de Santa Cruz"),
             ("2025-08-02", "Journée de la municipalité de Tarrafal de São Nicolau"),
-            ("2025-08-15", "Jour de l'Assomption; Journée de la municipalité des Mosteiros"),
+            (
+                "2025-08-15",
+                "Jour de l'Assomption; Journée de la municipalité des Mosteiros",
+            ),
             ("2025-09-02", "Journée de la municipalité de Porto Novo"),
             ("2025-09-08", "Journée de la municipalité de Maio"),
-            ("2025-09-15", "Journée de la municipalité"),
+            ("2025-09-15", "Journée de la municipalité de Sal"),
             ("2025-09-29", "Journée de la municipalité de São Miguel"),
             ("2025-11-01", "La Toussaint"),
             (
