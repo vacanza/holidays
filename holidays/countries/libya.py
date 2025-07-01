@@ -70,6 +70,10 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # Labor Day.
             self._add_labor_day(tr("عيد العمال"))
 
+            if self._year >= 2022:
+                # National Environmental Sanitation Day.
+                self._add_holiday_aug_14(tr("يوم وطني للإصحاح البيئي"))
+
             # Martyrs' Day.
             self._add_holiday_sep_16(tr("يوم الشهيد"))
 
@@ -78,10 +82,6 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
 
             # Independence Day.
             self._add_holiday_dec_24(tr("عيد الاستقلال"))
-
-            if self._year >= 2022:
-                # National Environmental Sanitation Day.
-                self._add_holiday_aug_14(tr("يوم وطني للإصحاح البيئي"))
 
         if self._year >= 2012:
             # Islamic New Year.

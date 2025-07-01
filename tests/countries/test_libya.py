@@ -39,16 +39,6 @@ class TestLibya(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-03-02" for year in range(1988, 2012)))
         self.assertNoHolidayName(name, range(2012, 2050))
 
-    def test_anniversary_of_the_february_17_revolution(self):
-        name = "ثورة 17 فبراير"
-        self.assertHolidayName(name, (f"{year}-02-17" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, range(1988, 2012))
-
-    def test_labor_day(self):
-        name = "عيد العمال"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2012, 2050)))
-        self.assertNoHolidayName(name, range(1988, 2012))
-
     def test_american_forces_evacuation_day(self):
         name = "عيد إجلاء القوات الأمريكية"
         self.assertHolidayName(name, (f"{year}-06-11" for year in range(1988, 2012)))
@@ -59,15 +49,25 @@ class TestLibya(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-07-23" for year in range(1988, 2012)))
         self.assertNoHolidayName(name, range(2012, 2050))
 
-    def test_national_environmental_sanitation_day(self):
-        name = "يوم وطني للإصحاح البيئي"
-        self.assertHolidayName(name, (f"{year}-08-14" for year in range(2022, 2050)))
-        self.assertNoHolidayName(name, range(1988, 2022))
-
     def test_great_al_fateh_day(self):
         name = "عيد الفاتح العظيم"
         self.assertHolidayName(name, (f"{year}-09-01" for year in range(1988, 2012)))
         self.assertNoHolidayName(name, range(2012, 2050))
+
+    def test_anniversary_of_the_february_17_revolution(self):
+        name = "ثورة 17 فبراير"
+        self.assertHolidayName(name, (f"{year}-02-17" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
+
+    def test_labor_day(self):
+        name = "عيد العمال"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(2012, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2012))
+
+    def test_national_environmental_sanitation_day(self):
+        name = "يوم وطني للإصحاح البيئي"
+        self.assertHolidayName(name, (f"{year}-08-14" for year in range(2022, 2050)))
+        self.assertNoHolidayName(name, range(1988, 2022))
 
     def test_martyrs_day(self):
         name = "يوم الشهيد"

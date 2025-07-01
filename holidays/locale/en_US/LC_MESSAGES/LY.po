@@ -55,6 +55,10 @@ msgstr "Anniversary of the February 17 Revolution"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
+#. National Environmental Sanitation Day.
+msgid "يوم وطني للإصحاح البيئي"
+msgstr "National Environmental Sanitation Day"
+
 #. Martyrs' Day.
 msgid "يوم الشهيد"
 msgstr "Martyrs' Day"
@@ -66,10 +70,6 @@ msgstr "Liberation Day"
 #. Independence Day.
 msgid "عيد الاستقلال"
 msgstr "Independence Day"
-
-#. National Environmental Sanitation Day.
-msgid "يوم وطني للإصحاح البيئي"
-msgstr "National Environmental Sanitation Day"
 
 #. Islamic New Year.
 msgid "عيد رأس السنة الهجرية"
