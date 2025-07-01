@@ -95,7 +95,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_king, range(2011, 2014))
 
     def test_rincon_day(self):
-        name = "Rincon dag"
+        name = "Rincondag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -145,7 +145,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
         self.assertHolidayName(name, dt)
 
     def test_emancipation_day(self):
-        name = "Emancipatie dag"
+        name = "Emancipatiedag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -163,7 +163,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_bonaire_day(self):
-        name = "Boneiru dag"
+        name = "Bonairedag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -183,7 +183,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_statia_day(self):
-        name = "Statia dag"
+        name = "Statiadag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -203,7 +203,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_saba_day(self):
-        name = "Saba dag"
+        name = "Sabadag"
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
@@ -237,15 +237,15 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-04-09", "Eerste Paasdag"),
             ("2023-04-10", "Tweede Paasdag"),
             ("2023-04-27", "Koningsdag"),
-            ("2023-04-30", "Rincon dag"),
+            ("2023-04-30", "Rincondag"),
             ("2023-05-01", "Dag van de Arbeid"),
             ("2023-05-18", "Hemelvaartsdag"),
             ("2023-05-28", "Eerste Pinksterdag"),
-            ("2023-07-01", "Emancipatie dag"),
+            ("2023-07-01", "Emancipatiedag"),
             ("2023-07-31", "Dag na de carnavalsoptocht"),
-            ("2023-09-06", "Boneiru dag"),
-            ("2023-11-16", "Statia dag"),
-            ("2023-12-01", "Saba dag"),
+            ("2023-09-06", "Bonairedag"),
+            ("2023-11-16", "Statiadag"),
+            ("2023-12-01", "Sabadag"),
             ("2023-12-25", "Eerste Kerstdag"),
             ("2023-12-26", "Tweede Kerstdag"),
         )

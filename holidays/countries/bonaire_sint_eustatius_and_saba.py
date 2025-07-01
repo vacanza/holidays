@@ -18,21 +18,23 @@ from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
 class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Bonaire, Sint Eustatius and Saba holidays.
+
     References:
         * [Public Holidays 2025 (English)](https://web.archive.org/web/20250620050728/https://english.rijksdienstcn.com/social-affairs-work/employment/official-holidays)
         * [Public Holidays 2025 (Dutch)](https://web.archive.org/web/20250323122427/https://www.rijksdienstcn.com/sociale-zaken-werk/arbeid/officiele-feestdagen)
         * [Public Holidays 2025 (Papiamento)](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
         * [Arbeidsregeling 2000](https://web.archive.org/web/20250625203706/https://lokaleregelgeving.overheid.nl/CVDR10375/1)
-        * [Dia di Rincon 2025](https://web.archive.org/web/20250515183744/https://sunwisebonaire.com/blog/dia-di-rincon-2025-on-bonaire/)"""
+        * [Dia di Rincon 2025](https://web.archive.org/web/20250515183744/https://sunwisebonaire.com/blog/dia-di-rincon-2025-on-bonaire/)
+    """
 
     country = "BQ"
     default_language = "nl"
     # Became special municipalities of the Netherlands on October 10th, 2010.
     start_year = 2011
     subdivisions = (
-        "BON",  # Bonaire
-        "SAB",  # Saba
-        "STA",  # Sint Eustatius
+        "BON",  # Bonaire.
+        "SAB",  # Saba.
+        "STA",  # Sint Eustatius.
     )
     subdivisions_aliases = {
         "Bonaire": "BON",
@@ -80,31 +82,31 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         # Christmas Day.
         self._add_christmas_day(tr("Eerste Kerstdag"))
 
-        # Boxing Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
     def _populate_subdiv_bon_public_holidays(self):
         if self._year >= 2020:
             # Rincon Day.
-            self._add_holiday_apr_30(tr("Rincon dag"))
+            self._add_holiday_apr_30(tr("Rincondag"))
 
         # Bonaire Day.
-        self._add_holiday_sep_6(tr("Boneiru dag"))
+        self._add_holiday_sep_6(tr("Bonairedag"))
 
     def _populate_subdiv_sab_public_holidays(self):
         # Carnival Monday.
         self._add_holiday_last_mon_of_jul(tr("Dag na de carnavalsoptocht"))
 
         # Saba Day.
-        self._add_holiday_1st_fri_of_dec(tr("Saba dag"))
+        self._add_holiday_1st_fri_of_dec(tr("Sabadag"))
 
     def _populate_subdiv_sta_public_holidays(self):
         if self._year >= 2022:
             # Emancipation Day.
-            self._add_holiday_jul_1(tr("Emancipatie dag"))
+            self._add_holiday_jul_1(tr("Emancipatiedag"))
 
         # Statia Day.
-        self._add_holiday_nov_16(tr("Statia dag"))
+        self._add_holiday_nov_16(tr("Statiadag"))
 
 
 class BQ(BonaireSintEustatiusAndSaba):

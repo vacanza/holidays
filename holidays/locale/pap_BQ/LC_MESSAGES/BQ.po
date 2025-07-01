@@ -66,16 +66,16 @@ msgstr "Dia di Pentekòste"
 msgid "Eerste Kerstdag"
 msgstr "Pasku"
 
-#. Boxing Day.
+#. Second Day of Christmas.
 msgid "Tweede Kerstdag"
 msgstr "Di dos dia di Pasku"
 
 #. Rincon Day.
-msgid "Rincon dag"
+msgid "Rincondag"
 msgstr "Dia di Rincon"
 
 #. Bonaire Day.
-msgid "Boneiru dag"
+msgid "Bonairedag"
 msgstr "Dia di Boneiru"
 
 #. Carnival Monday.
@@ -83,13 +83,13 @@ msgid "Dag na de carnavalsoptocht"
 msgstr "Djaluna di Carnaval"
 
 #. Saba Day.
-msgid "Saba dag"
+msgid "Sabadag"
 msgstr "Dia di Saba"
 
 #. Emancipation Day.
-msgid "Emancipatie dag"
+msgid "Emancipatiedag"
 msgstr "Dia di Emansipashon"
 
 #. Statia Day.
-msgid "Statia dag"
+msgid "Statiadag"
 msgstr "Dia di Statia"
