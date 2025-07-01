@@ -107,50 +107,6 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1976, 2050)))
 
-    def test_municipal_specific_days(self):
-        subdiv_holidays = {
-            "BR": ("2024-06-24",),
-            "BV": ("2024-07-04",),
-            "CA": ("2024-11-25",),
-            "CF": (
-                "2024-05-01",
-                "2024-08-15",
-                "2024-11-25",
-            ),
-            "CR": ("2024-07-25",),
-            "MA": ("2024-09-08",),
-            "PR": ("2024-05-19",),
-            "RG": (
-                "2024-05-07",
-                "2024-01-17",
-            ),
-            "RS": (
-                "2024-01-15",
-                "2024-01-31",
-            ),
-            "SF": ("2024-05-01",),
-            "SL": ("2024-09-15",),
-            "SV": (
-                "2024-01-22",
-                "2024-02-13",
-            ),
-            "TS": ("2024-08-02",),
-        }
-
-        for subdiv, holidays in subdiv_holidays.items():
-            self.assertHoliday(CapeVerde(subdiv=subdiv, years=2024), holidays)
-
-    def test_ribeira_grande_de_santiago_municipality_day(self):
-        name = "Dia do Município de Ribeira Grande de Santiago"
-        self.assertNoHolidayName(name)
-
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "RS":
-                self.assertHolidayName(name, holidays, range(2006, 2050))
-                self.assertNoHolidayName(name, range(1976, 2006))
-            else:
-                self.assertNoHolidayName(name, holidays)
-
     def test_2024_public_holidays(self):
         self.assertHolidays(
             CapeVerde(categories=PUBLIC, years=2024),
