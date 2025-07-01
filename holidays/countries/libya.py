@@ -49,7 +49,7 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._year < 2012:
+        if self._year <= 2011:
             # People's Authority Day.
             self._add_holiday_mar_2(tr("عید إعلان سلطة الشعب"))
 
