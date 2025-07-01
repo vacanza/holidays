@@ -35,14 +35,6 @@ msgstr ""
 msgid "عید إعلان سلطة الشعب"
 msgstr ""
 
-#. Anniversary of the February 17 Revolution.
-msgid "ثورة 17 فبراير"
-msgstr ""
-
-#. Labor Day.
-msgid "عيد العمال"
-msgstr ""
-
 #. American Forces Evacuation Day.
 msgid "عيد إجلاء القوات الأمريكية"
 msgstr ""
@@ -51,12 +43,16 @@ msgstr ""
 msgid "عيد ثورة يوليو المجيدة"
 msgstr ""
 
-#. National Environmental Sanitation Day.
-msgid "يوم وطني للإصحاح البيئي"
-msgstr ""
-
 #. Great Al-Fateh Revolution Day.
 msgid "عيد الفاتح العظيم"
+msgstr ""
+
+#. Anniversary of the February 17 Revolution.
+msgid "ثورة 17 فبراير"
+msgstr ""
+
+#. Labor Day.
+msgid "عيد العمال"
 msgstr ""
 
 #. Martyrs' Day.
@@ -69,6 +65,10 @@ msgstr ""
 
 #. Independence Day.
 msgid "عيد الاستقلال"
+msgstr ""
+
+#. National Environmental Sanitation Day.
+msgid "يوم وطني للإصحاح البيئي"
 msgstr ""
 
 #. Islamic New Year.

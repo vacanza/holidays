@@ -53,29 +53,21 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # People's Authority Day.
             self._add_holiday_mar_2(tr("عید إعلان سلطة الشعب"))
 
-        if self._year >= 2012:
-            # Anniversary of the February 17 Revolution.
-            self._add_holiday_feb_17(tr("ثورة 17 فبراير"))
-
-            # Labor Day.
-            self._add_labor_day(tr("عيد العمال"))
-
-        if self._year < 2012:
             # American Forces Evacuation Day.
             self._add_holiday_jun_11(tr("عيد إجلاء القوات الأمريكية"))
 
             # Glorious July Revolution Day.
             self._add_holiday_jul_23(tr("عيد ثورة يوليو المجيدة"))
 
-        if self._year >= 2022:
-            # National Environmental Sanitation Day.
-            self._add_holiday_aug_14(tr("يوم وطني للإصحاح البيئي"))
-
-        if self._year < 2012:
             # Great Al-Fateh Revolution Day.
             self._add_holiday_sep_1(tr("عيد الفاتح العظيم"))
+        else:
+            # Anniversary of the February 17 Revolution.
+            self._add_holiday_feb_17(tr("ثورة 17 فبراير"))
 
-        if self._year >= 2012:
+            # Labor Day.
+            self._add_labor_day(tr("عيد العمال"))
+
             # Martyrs' Day.
             self._add_holiday_sep_16(tr("يوم الشهيد"))
 
@@ -84,6 +76,10 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
 
             # Independence Day.
             self._add_holiday_dec_24(tr("عيد الاستقلال"))
+
+            if self._year >= 2022:
+                # National Environmental Sanitation Day.
+                self._add_holiday_aug_14(tr("يوم وطني للإصحاح البيئي"))
 
         if self._year >= 2012:
             # Islamic New Year.
