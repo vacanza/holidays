@@ -31,7 +31,7 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     country = "LY"
     default_language = "ar"
     # %s (estimated).
-    estimated_label = tr("(تقدير) %s")
+    estimated_label = tr("%s (المقدرة)")
     start_year = 1988
     supported_categories = (PUBLIC, WORKDAY)
     supported_languages = ("ar", "en_US")
