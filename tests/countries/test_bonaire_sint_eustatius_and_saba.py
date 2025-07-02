@@ -162,6 +162,7 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
     def test_carnival_monday(self):
         name = "Dag na de carnavalsoptocht"
         self.assertNoHolidayName(name)
+
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "SAB":
                 self.assertHolidayName(
@@ -242,16 +243,16 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-12-26", "Tweede Kerstdag"),
         )
 
-    def test_l10n_en_us(self):
+    def test_l10n_en_bq(self):
         self.assertLocalizedHolidays(
-            "en_US",
+            "en_BQ",
             ("2023-01-01", "New Year's Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-09", "Easter Sunday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-27", "King's Day"),
             ("2023-04-30", "Rincon Day"),
-            ("2023-05-01", "Labor Day"),
+            ("2023-05-01", "Labour Day"),
             ("2023-05-18", "Ascension Day"),
             ("2023-05-28", "Whit Sunday"),
             ("2023-07-01", "Emancipation Day"),
@@ -263,9 +264,9 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             ("2023-12-26", "Second Day of Christmas"),
         )
 
-    def test_l10n_en_bq(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            "en_BQ",
+            "en_US",
             ("2023-01-01", "New Year's Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-09", "Easter Sunday"),

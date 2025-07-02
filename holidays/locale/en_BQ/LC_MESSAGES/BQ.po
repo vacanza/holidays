@@ -52,7 +52,7 @@ msgstr "Queen's Day"
 
 #. Labor Day.
 msgid "Dag van de Arbeid"
-msgstr "Labor Day"
+msgstr "Labour Day"
 
 #. Ascension Day.
 msgid "Hemelvaartsdag"
