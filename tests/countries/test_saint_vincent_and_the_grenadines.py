@@ -180,6 +180,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-03-14", "National Heroes' Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
@@ -197,6 +198,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
             ("2023-03-14", "National Heroes' Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
