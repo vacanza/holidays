@@ -28,7 +28,7 @@ msgstr ""
 
 #. %s (estimated).
 #, c-format
-msgid "(تقدير) %s"
+msgid "%s (المقدرة)"
 msgstr "%s (estimated)"
 
 #. People's Authority Day.
