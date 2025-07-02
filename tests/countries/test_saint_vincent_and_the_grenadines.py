@@ -103,7 +103,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2020-08-03",
-            "2021-07-05",
+            "2021-09-06",
             "2022-07-04",
             "2023-07-10",
             "2024-07-08",
@@ -116,7 +116,7 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             "2020-08-04",
-            "2021-07-06",
+            "2021-09-07",
             "2022-07-05",
             "2023-07-11",
             "2024-07-09",
