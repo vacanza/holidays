@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, JUL, _timedelta
+from holidays.calendars.gregorian import JAN, JUL, AUG, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
@@ -78,7 +78,7 @@ class SaintVincentAndTheGrenadines(
             2013: (JUL, 8),
             2018: (JUL, 9),
             2019: (JUL, 8),
-            2020: (JUL, 6),
+            2020: (AUG, 3),
             2021: (JUL, 5),
             2023: (JUL, 10),
             2024: (JUL, 8),
