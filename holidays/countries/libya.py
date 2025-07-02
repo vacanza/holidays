@@ -83,7 +83,6 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # Independence Day.
             self._add_holiday_dec_24(tr("عيد الاستقلال"))
 
-        if self._year >= 2012:
             # Islamic New Year.
             self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
 
