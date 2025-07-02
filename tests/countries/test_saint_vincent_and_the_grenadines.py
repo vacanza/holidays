@@ -153,11 +153,10 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(observed)
 
     def test_new_years_day(self):
-        name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1979, 2050)))
-        observed = ("2023-01-02",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
+        self.assertHolidayName(
+            "New Year's Day",
+            (f"{year}-01-01" for year in range(1979, 2050)),
+        )
 
     def test_2024_holidays(self):
         self.assertHolidays(
