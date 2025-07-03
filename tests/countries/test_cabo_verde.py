@@ -187,7 +187,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
             ),
             ("2025-09-02", "Dia do Município do Porto Novo"),
             ("2025-09-08", "Dia do Município do Maio"),
-            ("2025-09-15", "Dia do Município da Sal"),
+            ("2025-09-15", "Dia do Município do Sal"),
             ("2025-09-29", "Dia do Município de São Miguel"),
             ("2025-11-01", "Dia de Todos os Santos"),
             (

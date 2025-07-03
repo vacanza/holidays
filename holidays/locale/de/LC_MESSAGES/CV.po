@@ -151,7 +151,7 @@ msgid "Dia do Município de São Filipe"
 msgstr "Tag der Gemeinde São Filipe"
 
 #. Sal Municipality Day.
-msgid "Dia do Município da Sal"
+msgid "Dia do Município do Sal"
 msgstr "Tag der Gemeinde Sal"
 
 #. São Miguel Municipality Day.
