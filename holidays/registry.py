@@ -124,6 +124,7 @@ COUNTRIES: RegistryDict = {
     "laos": ("Laos", "LA", "LAO"),
     "latvia": ("Latvia", "LV", "LVA"),
     "lesotho": ("Lesotho", "LS", "LSO"),
+    "libya": ("Libya", "LY", "LBY"),
     "liechtenstein": ("Liechtenstein", "LI", "LIE"),
     "lithuania": ("Lithuania", "LT", "LTU"),
     "luxembourg": ("Luxembourg", "LU", "LUX"),
