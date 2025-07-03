@@ -113,6 +113,17 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2002, 2050))
         self.assertNoHolidayName(name, range(1983, 2002))
 
+    def test_kings_birthday(self):
+        name = "King's Birthday"
+        self.assertHolidayName(name, (f"{year}-11-14" for year in range(2022, 2050)))
+        obs_dt = (
+            "2026-11-16",
+            "2027-11-15",
+            "2032-11-15",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoHolidayName(name, range(1983, 2022))
+
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1983, 2050)))

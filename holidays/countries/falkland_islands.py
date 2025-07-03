@@ -77,8 +77,9 @@ class FalklandIslands(
             # Peat Cutting Day.
             self._add_holiday_1st_mon_of_oct(tr("Peat Cutting Day"))
 
-        # King's Birthday.
-        self._add_observed(self._add_holiday_nov_14(tr("King's Birthday")))
+        if self._year >= 2022:
+            # King's Birthday.
+            self._add_observed(self._add_holiday_nov_14(tr("King's Birthday")))
 
         dec_25 = (DEC, 25)
         christmas_day_rule = None
