@@ -121,6 +121,7 @@ from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
 from holidays.countries.laos import Laos, LA, LAO
 from holidays.countries.latvia import Latvia, LV, LVA
 from holidays.countries.lesotho import Lesotho, LS, LSO
+from holidays.countries.libya import Libya, LY, LBY
 from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
 from holidays.countries.lithuania import Lithuania, LT, LTU
 from holidays.countries.luxembourg import Luxembourg, LU, LUX
