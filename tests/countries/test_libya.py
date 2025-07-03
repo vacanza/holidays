@@ -157,7 +157,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_syrian_revolution_day(self):
         name = "عيد ثورة سوريا"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-03-08" for year in range(1988, 2012))
         )
@@ -165,7 +165,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_anniversary_of_arab_league(self):
         name = "ذكرى إنشاء الجامعة العربية"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-03-22" for year in range(1988, 2012))
         )
@@ -173,7 +173,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_british_forces_evacuation_day(self):
         name = "عيد إجلاء القوات البريطانية"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-03-28" for year in range(1988, 2012))
         )
@@ -181,7 +181,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_italian_forces_evacuation_day(self):
         name = "عيد إجلاء الطليان"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-10-07" for year in range(1988, 2012))
         )
@@ -189,7 +189,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_ashura_day(self):
         name = "عاشوراء"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             self.workday_holidays,
@@ -204,7 +204,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_isra_and_miraj_day(self):
         name = "ذكرى الإسراء والمعراج"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             self.workday_holidays,
@@ -219,7 +219,7 @@ class TestLibya(CommonCountryTests, TestCase):
 
     def test_night_of_forgiveness(self):
         name = "ليلة النصف من شعبان"
-        self.assertNoHolidayName(name, range(1988, 2050))
+        self.assertNoHolidayName(name)
         self.assertHolidayName(
             name,
             self.workday_holidays,
