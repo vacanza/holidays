@@ -128,7 +128,7 @@ class FalklandIslandsStaticHolidays:
     """Falkland Islands special holidays.
 
     References:
-        * <https://en.mercopress.com/2022/09/14/falklands-public-holiday-and-national-two-minute-s-silence-for-queen-elizabeth-ii>
+        * <https://web.archive.org/web/20231004165250/https://en.mercopress.com/2022/09/14/falklands-public-holiday-and-national-two-minute-s-silence-for-queen-elizabeth-ii>
     """
 
     special_public_holidays = {
