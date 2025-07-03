@@ -875,6 +875,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Libya</td>
+<td>LY</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>WORKDAY</td>
+</tr>
+<tr>
 <td>Liechtenstein</td>
 <td>LI</td>
 <td></td>
