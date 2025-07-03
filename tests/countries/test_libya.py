@@ -95,8 +95,8 @@ class TestLibya(CommonCountryTests, TestCase):
             "2025-06-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2012, 2050))
-        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1988, 2012))
+        self.assertHolidayName(name, self.workday_holidays, range(1988, 2012))
 
     def test_prophets_birthday(self):
         name = "ذكرى المولد النبوي الشريف"
