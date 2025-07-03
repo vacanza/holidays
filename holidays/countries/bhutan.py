@@ -23,7 +23,8 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
     """
 
     country = "BT"
-    start_year = 1970
+    # Jigme Khesar Namgyel Wangchuck ascended to the throne on December 9th, 2006.
+    start_year = 2007
 
     def __init__(self, *args, **kwargs):
         TibetanCalendarHolidays.__init__(self)
@@ -40,13 +41,9 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         self._add_losar("Losar")
 
         name = "Birth Anniversary of His Majesty the King"
-        # Birth Anniversary of His Majesty the King (Day 1).
+        # Birth Anniversary of His Majesty the King.
         self._add_holiday_feb_21(name)
-
-        # Birth Anniversary of His Majesty the King (Day 2).
         self._add_holiday_feb_22(name)
-
-        # Birth Anniversary of His Majesty the King (Day 3).
         self._add_holiday_feb_23(name)
 
         # Death Anniversary of Zhabdrung (Zhabdrung Kuchoe).
@@ -64,17 +61,13 @@ class Bhutan(HolidayBase, TibetanCalendarHolidays):
         # First Sermon of Lord Buddha.
         self._add_buddha_first_sermon("First Sermon of Lord Buddha")
 
-        # Thimphu Drubchoe (Thimphu only).
+        # Thimphu Drubchoe.
         self._add_holiday_sep_9("Thimphu Drubchoe")
 
+        # Thimphu Tshechu.
         name = "Thimphu Tshechu"
-        # Thimphu Tshechu (Thimphu only, Day 1).
         self._add_holiday_sep_13(name)
-
-        # Thimphu Tshechu (Thimphu only, Day 2).
         self._add_holiday_sep_14(name)
-
-        # Thimphu Tshechu (Thimphu only, Day 3).
         self._add_holiday_sep_15(name)
 
         # Blessed Rainy Day.
