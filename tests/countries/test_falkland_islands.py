@@ -31,7 +31,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertNoHolidays(FalklandIslands(years=1982))
 
     def test_special_holidays(self):
-        self.assertHoliday("2024-09-19")
+        self.assertHoliday("2022-09-19")
 
     def test_new_years_day(self):
         name = "New Year's Day"

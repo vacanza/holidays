@@ -135,5 +135,5 @@ class FalklandIslandsStaticHolidays:
 
     special_public_holidays = {
         # Queen Elizabeth II's Funeral.
-        2024: (SEP, 19, tr("Queen Elizabeth II's Funeral")),
+        2022: (SEP, 19, tr("Queen Elizabeth II's Funeral")),
     }
