@@ -93,14 +93,16 @@ class FalklandIslands(
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=christmas_day_rule)
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=christmas_day_two_rule
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=christmas_day_two_rule,
         )
 
-        # Christmas Holiday.
         self._add_observed(
-            self._add_christmas_day_three(tr("Christmas Holiday")), rule=christmas_day_three_rule
+            # Christmas Holiday.
+            self._add_christmas_day_three(tr("Christmas Holiday")),
+            rule=christmas_day_three_rule,
         )
 
     def _populate_government_holidays(self):
