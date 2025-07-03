@@ -12,11 +12,14 @@
 
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import MAY
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT
 
 
-class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class BonaireSintEustatiusAndSaba(
+    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
+):
     """Bonaire, Sint Eustatius and Saba holidays.
 
     References:
@@ -25,6 +28,7 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
         * [Public Holidays 2025 (Papiamento)](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
         * [Arbeidsregeling 2000](https://web.archive.org/web/20250625203706/https://lokaleregelgeving.overheid.nl/CVDR10375/1)
         * [Dia di Rincon 2025](https://web.archive.org/web/20250515183744/https://sunwisebonaire.com/blog/dia-di-rincon-2025-on-bonaire/)
+        * [Bonaire declaring MAY, 2 a Bridge Holiday for 2025](https://bonairegov.com/nieuwsoverzicht/artikel/vrijdag-2-mei-2025-aangewezen-als-vrije-dag-voor-ambtenaren)
     """
 
     country = "BQ"
@@ -46,6 +50,7 @@ class BonaireSintEustatiusAndSaba(ObservedHolidayBase, ChristianHolidays, Intern
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, cls=BonaireSintEustatiusAndSabaStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -115,3 +120,15 @@ class BQ(BonaireSintEustatiusAndSaba):
 
 class BES(BonaireSintEustatiusAndSaba):
     pass
+
+
+class BonaireSintEustatiusAndSabaStaticHolidays(StaticHolidays):
+    """Bonaire, Sint Eustatius and Saba special holidays.
+    References:
+        * [Bonaire May 2nd, 2025](https://web.archive.org/web/20250620052258/https://bonairegov.com/nieuwsoverzicht/artikel/vrijdag-2-mei-2025-aangewezen-als-vrije-dag-voor-ambtenaren)
+    """
+
+    special_bon_public_holidays = {
+        # Bridge Holiday.
+        2025: (MAY, 2, tr("Brugdag")),
+    }

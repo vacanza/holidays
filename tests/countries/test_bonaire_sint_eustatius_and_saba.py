@@ -223,6 +223,17 @@ class TestBonaireSintEustatiusAndSaba(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_special_holiday(self):
+        name = "Brugdag"
+        dt_bon_only = ("2025-05-02",)
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "BON":
+                self.assertHolidayName(name, holidays, dt_bon_only)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Nieuwjaarsdag"),

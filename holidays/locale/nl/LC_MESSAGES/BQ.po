@@ -93,3 +93,7 @@ msgstr ""
 #. Statia Day.
 msgid "Statiadag"
 msgstr ""
+
+#. Bridge Holiday.
+msgid "Brugdag"
+msgstr ""

@@ -93,3 +93,7 @@ msgstr "Dia di Emansipashon"
 #. Statia Day.
 msgid "Statiadag"
 msgstr "Dia di Statia"
+
+#. Bridge Holiday.
+msgid "Brugdag"
+msgstr "Dia Liber"
