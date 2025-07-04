@@ -161,20 +161,20 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
     def test_government_holiday(self):
         name = "Government Holiday"
         self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-30" for year in range(1983, 2050))
-        )
-        self.assertHolidayName(
-            name, self.government_holidays, (f"{year}-12-31" for year in range(1983, 2050))
-        )
-        obs_dt = (
+            name,
+            self.government_holidays,
             "2017-12-28",
             "2017-12-29",
             "2018-12-28",
             "2022-12-29",
             "2023-12-28",
             "2023-12-29",
+            "2024-12-30",
+            "2024-12-31",
+            "2025-12-30",
+            "2025-12-31",
         )
-        self.assertHolidayName(f"{name} (observed)", self.government_holidays, obs_dt)
+        self.assertHolidayName(name, self.government_holidays, range(1983, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

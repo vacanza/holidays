@@ -13,16 +13,15 @@
 from gettext import gettext as tr
 
 from holidays import GOVERNMENT, PUBLIC
-from holidays.calendars.gregorian import SEP, DEC
+from holidays.calendars.gregorian import SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
-    SAT_TO_PREV_THU,
-    SAT_SUN_TO_PREV_THU_FRI,
     SAT_SUN_TO_NEXT_MON,
-    SAT_SUN_TO_NEXT_MON_TUE,
-    SAT_SUN_TO_NEXT_TUE_WED,
     SUN_TO_NEXT_WED,
+    SAT_TO_NEXT_MON,
+    SUN_TO_NEXT_TUE,
+    SAT_TO_NEXT_TUE,
 )
 
 
@@ -81,42 +80,31 @@ class FalklandIslands(
             # King's Birthday.
             self._add_observed(self._add_holiday_nov_14(tr("King's Birthday")))
 
-        dec_25 = (DEC, 25)
-        christmas_day_rule = None
-        christmas_day_two_rule = SAT_SUN_TO_NEXT_MON_TUE
-        christmas_day_three_rule = SAT_SUN_TO_NEXT_MON_TUE
-        if self._is_saturday(dec_25):
-            christmas_day_rule = SAT_SUN_TO_NEXT_TUE_WED
-            christmas_day_two_rule = SAT_SUN_TO_NEXT_TUE_WED
-        elif self._is_sunday(dec_25):
-            christmas_day_rule = SUN_TO_NEXT_WED
-
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=christmas_day_rule)
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_TO_NEXT_TUE + SUN_TO_NEXT_WED,
+        )
 
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
-            rule=christmas_day_two_rule,
+            rule=SAT_TO_NEXT_MON + SUN_TO_NEXT_WED,
         )
 
         self._add_observed(
             # Christmas Holiday.
             self._add_christmas_day_three(tr("Christmas Holiday")),
-            rule=christmas_day_three_rule,
+            rule=SAT_TO_NEXT_MON + SUN_TO_NEXT_TUE,
         )
 
     def _populate_government_holidays(self):
-        dec_30 = (DEC, 30)
         # Government Holiday.
         name = tr("Government Holiday")
-        govt_holiday_one_rule = SAT_SUN_TO_PREV_THU_FRI
-        govt_holiday_two_rule = SAT_SUN_TO_PREV_THU_FRI
-        if self._is_friday(dec_30):
-            govt_holiday_two_rule = SAT_TO_PREV_THU
-
-        self._add_observed(self._add_holiday_dec_30(name), rule=govt_holiday_one_rule)
-        self._add_observed(self._add_holiday_dec_31(name), rule=govt_holiday_two_rule)
+        last_workday = self._add_holiday(
+            name, self._get_next_workday(self._next_year_new_years_day, -1)
+        )
+        self._add_holiday(name, self._get_next_workday(last_workday, -1))
 
 
 class FK(FalklandIslands):

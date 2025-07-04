@@ -27,7 +27,6 @@ class ObservedRule(dict[int, Optional[int]]):
 # Observance calculation rules: +7 - next workday, -7 - previous workday.
 # Single days.
 MON_TO_NEXT_TUE = ObservedRule({MON: +1})
-MON_TO_NEXT_WED = ObservedRule({MON: +2})
 MON_ONLY = ObservedRule({TUE: None, WED: None, THU: None, FRI: None, SAT: None, SUN: None})
 
 TUE_TO_PREV_MON = ObservedRule({TUE: -1})
@@ -93,12 +92,10 @@ FRI_SUN_TO_NEXT_MON = ObservedRule({FRI: +3, SUN: +1})
 FRI_SUN_TO_NEXT_SAT_MON = ObservedRule({FRI: +1, SUN: +1})
 
 SAT_SUN_TO_PREV_FRI = ObservedRule({SAT: -1, SUN: -2})
-SAT_SUN_TO_PREV_THU_FRI = ObservedRule({SAT: -2, SUN: -2})
 SAT_SUN_TO_NEXT_MON = ObservedRule({SAT: +2, SUN: +1})
 SAT_SUN_TO_NEXT_TUE = ObservedRule({SAT: +3, SUN: +2})
 SAT_SUN_TO_NEXT_WED = ObservedRule({SAT: +4, SUN: +3})
 SAT_SUN_TO_NEXT_MON_TUE = ObservedRule({SAT: +2, SUN: +2})
-SAT_SUN_TO_NEXT_TUE_WED = ObservedRule({SAT: +3, SUN: +3})
 SAT_SUN_TO_NEXT_WORKDAY = ObservedRule({SAT: +7, SUN: +7})
 
 
