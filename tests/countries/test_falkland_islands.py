@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays import GOVERNMENT
+from holidays import GOVERNMENT, WORKDAY
 from holidays.countries.falkland_islands import FalklandIslands, FK, FLK
 from tests.common import CommonCountryTests
 
@@ -23,6 +23,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         years = range(1983, 2050)
         super().setUpClass(FalklandIslands, years=years, years_non_observed=years)
         cls.government_holidays = FalklandIslands(categories=GOVERNMENT, years=years)
+        cls.workday_holidays = FalklandIslands(categories=WORKDAY, years=years)
 
     def test_country_aliases(self):
         self.assertAliases(FalklandIslands, FK, FLK)
@@ -48,6 +49,12 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_margaret_thatcher_day(self):
+        name = "Margaret Thatcher Day"
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-01-10" for year in range(1983, 2050))
+        )
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -101,6 +108,9 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoHolidayName(name, range(2002, 2050))
+        self.assertHolidayName(
+            name, self.workday_holidays, (f"{year}-08-14" for year in range(2002, 2050))
+        )
 
     def test_peat_cutting_day(self):
         name = "Peat Cutting Day"
@@ -182,9 +192,11 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "New Year's Day"),
+            ("2025-01-10", "Margaret Thatcher Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-06-14", "Liberation Day"),
             ("2025-06-16", "Liberation Day (observed)"),
+            ("2025-08-14", "Falkland Day"),
             ("2025-10-06", "Peat Cutting Day"),
             ("2025-11-14", "HM The King's Birthday"),
             ("2025-12-25", "Christmas Day"),
@@ -199,11 +211,13 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
+            ("2025-01-10", "Margaret Thatcher Day"),
             ("2025-04-18", "Good Friday"),
             ("2025-06-14", "Liberation Day"),
             ("2025-06-16", "Liberation Day (observed)"),
+            ("2025-08-14", "Falkland Day"),
             ("2025-10-06", "Peat Cutting Day"),
-            ("2025-11-14", "HM The King's Birthday"),
+            ("2025-11-14", "King's Birthday"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
             ("2025-12-27", "Christmas Holiday"),

@@ -39,7 +39,7 @@ msgstr ""
 msgid "Good Friday"
 msgstr ""
 
-#. HM The Queen's Birthday.
+#. Queen's Birthday.
 msgid "HM The Queen's Birthday"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 msgid "Peat Cutting Day"
 msgstr ""
 
-#. HM The King's Birthday.
+#. King's Birthday.
 msgid "HM The King's Birthday"
 msgstr ""
 
@@ -75,10 +75,14 @@ msgstr ""
 msgid "Government Holiday"
 msgstr ""
 
+#. Margaret Thatcher Day.
+msgid "Margaret Thatcher Day"
+msgstr ""
+
 #. Queen Elizabeth II's Funeral.
 msgid "Queen Elizabeth II's Funeral"
 msgstr ""
 
-#. HM The King's Coronation.
+#. King Charles III's Coronation.
 msgid "HM The King's Coronation"
 msgstr ""

@@ -571,7 +571,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>FK</td>
 <td></td>
 <td><strong>en_GB</strong>, en_US</td>
-<td>GOVERNMENT</td>
+<td>GOVERNMENT, WORKDAY</td>
 </tr>
 <tr>
 <td>Fiji</td>
