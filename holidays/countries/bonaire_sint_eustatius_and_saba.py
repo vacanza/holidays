@@ -28,7 +28,6 @@ class BonaireSintEustatiusAndSaba(
         * [Public Holidays 2025 (Papiamento)](https://web.archive.org/web/20250323125431/https://papiamentu.rijksdienstcn.com/asuntunan-sosial-i-labor/labor/dia-di-fiesta-ofisial)
         * [Arbeidsregeling 2000](https://web.archive.org/web/20250625203706/https://lokaleregelgeving.overheid.nl/CVDR10375/1)
         * [Dia di Rincon 2025](https://web.archive.org/web/20250515183744/https://sunwisebonaire.com/blog/dia-di-rincon-2025-on-bonaire/)
-        * [Bonaire declaring MAY, 2 a Bridge Holiday for 2025](https://bonairegov.com/nieuwsoverzicht/artikel/vrijdag-2-mei-2025-aangewezen-als-vrije-dag-voor-ambtenaren)
     """
 
     country = "BQ"
@@ -124,6 +123,7 @@ class BES(BonaireSintEustatiusAndSaba):
 
 class BonaireSintEustatiusAndSabaStaticHolidays(StaticHolidays):
     """Bonaire, Sint Eustatius and Saba special holidays.
+
     References:
         * [Bonaire May 2nd, 2025](https://web.archive.org/web/20250620052258/https://bonairegov.com/nieuwsoverzicht/artikel/vrijdag-2-mei-2025-aangewezen-als-vrije-dag-voor-ambtenaren)
     """
