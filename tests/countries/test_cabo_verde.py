@@ -13,7 +13,7 @@
 from unittest import TestCase
 
 from holidays.constants import OPTIONAL, PUBLIC
-from holidays.countries import CaboVerde, CV, CAV
+from holidays.countries import CaboVerde, CV, CPV
 from tests.common import CommonCountryTests
 
 
@@ -27,7 +27,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
         }
 
     def test_country_aliases(self):
-        self.assertAliases(CaboVerde, CV, CAV)
+        self.assertAliases(CaboVerde, CV, CPV)
 
     def test_no_holidays(self):
         self.assertNoHolidays(CaboVerde(categories=(OPTIONAL, PUBLIC), years=1975))

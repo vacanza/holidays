@@ -199,6 +199,8 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_sep_2(tr("Dia do Município do Porto Novo"))
 
     def _populate_subdiv_pr_public_holidays(self):
+        # Law # 93/82 of November 6th.
+
         if self._year >= 1983:
             # Praia Municipality Day.
             self._add_holiday_may_19(tr("Dia do Município da Praia"))
@@ -211,6 +213,8 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_dec_6(tr("Dia do Município de Ribeira Brava"))
 
     def _populate_subdiv_rg_public_holidays(self):
+        # Law # 93/82 of November 6th.
+
         if self._year >= 1983:
             # Santo Antão Island Day.
             self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
@@ -235,6 +239,8 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_may_1(tr("Dia do Município de São Filipe"))
 
     def _populate_subdiv_sl_public_holidays(self):
+        # Law # 93/82 of November 6th.
+
         if self._year >= 1983:
             # Sal Municipality Day.
             self._add_holiday_sep_15(tr("Dia do Município do Sal"))
@@ -279,5 +285,5 @@ class CV(CaboVerde):
     pass
 
 
-class CAV(CaboVerde):
+class CPV(CaboVerde):
     pass
