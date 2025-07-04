@@ -111,6 +111,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-08-14" for year in range(2002, 2050))
         )
+        self.assertNoHolidayName(name, self.workday_holidays, range(1983, 2002))
 
     def test_peat_cutting_day(self):
         name = "Peat Cutting Day"
