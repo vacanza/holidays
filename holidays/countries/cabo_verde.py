@@ -143,14 +143,16 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_br_public_holidays(self):
         # Law # 93/82 of November 6th.
 
-        # Brava Municipality Day.
-        self._add_holiday_jun_24(tr("Dia do Município da Brava"))
+        if self._year >= 1983:
+            # Brava Municipality Day.
+            self._add_holiday_jun_24(tr("Dia do Município da Brava"))
 
     def _populate_subdiv_bv_public_holidays(self):
         # Law # 93/82 of November 6th.
 
-        # Boa Vista Municipality Day.
-        self._add_holiday_jul_4(tr("Dia do Município da Boa Vista"))
+        if self._year >= 1983:
+            # Boa Vista Municipality Day.
+            self._add_holiday_jul_4(tr("Dia do Município da Boa Vista"))
 
     def _populate_subdiv_ca_public_holidays(self):
         # Santa Catarina de Santiago Municipality Day.
@@ -182,11 +184,12 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_pa_public_holidays(self):
         # Law # 93/82 of November 6th.
 
-        # Santo Antão Island Day.
-        self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
+        if self._year >= 1983:
+            # Santo Antão Island Day.
+            self._add_holiday_jan_17(tr("Dia da Ilha de Santo Antão"))
 
-        # Paúl Municipality Day.
-        self._add_holiday_jun_13(tr("Dia do Município do Paúl"))
+            # Paúl Municipality Day.
+            self._add_holiday_jun_13(tr("Dia do Município do Paúl"))
 
     def _populate_subdiv_pn_public_holidays(self):
         # Law # 93/82 of November 6th.
