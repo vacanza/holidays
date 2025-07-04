@@ -13,7 +13,7 @@
 from gettext import gettext as tr
 
 from holidays import GOVERNMENT, PUBLIC
-from holidays.calendars.gregorian import SEP
+from holidays.calendars.gregorian import SEP, MAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -32,10 +32,12 @@ class FalklandIslands(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Falkland_Islands>
+        * [January 31st, 2023 Amendment](https://web.archive.org/web/20250704040815/https://www.falklands.gov.fk/legalservices/statute-law-commissioner/gazettes-supplements/2023/supplements-2023?task=download.send&id=140)
         * <https://web.archive.org/web/20241201174202/https://www.timeanddate.com/holidays/falkland-islands/2025>
         * [Falkland Day](https://web.archive.org/web/20250325025508/https://www.daysoftheyear.com/days/falklands-day/)
-        * [Peat Cutting Day](https://en.wikipedia.org/wiki/Peat_Cutting_Monday#:~:text=Peat%20Cutting%20Day%20is%20a,Monday%20in%20October%20every%20year.)
-        * [King's Birthday](https://web.archive.org/web/20230329063159/https://en.mercopress.com/2022/11/03/falklands-appoints-14-november-as-a-public-holiday-to-celebrate-birthday-of-king-charles-iii)
+        * [Peat Cutting Day](https://en.wikipedia.org/wiki/Peat_Cutting_Monday)
+        * [HM The King's Birthday](https://web.archive.org/web/20230329063159/https://en.mercopress.com/2022/11/03/falklands-appoints-14-november-as-a-public-holiday-to-celebrate-birthday-of-king-charles-iii)
+        * [Governor's Office Stanley](https://web.archive.org/web/20250704040807/https://www.gov.uk/world/organisations/governors-office-stanley/office/governors-office-stanley)
         * [2023-2026](https://web.archive.org/web/20250402143330/https://www.falklands.gov.fk/policy/downloads?task=download.send&id=186:falkland-islands-public-holidays-2023-2026&catid=12)
     """
 
@@ -45,7 +47,7 @@ class FalklandIslands(
     supported_categories = (GOVERNMENT, PUBLIC)
     # %s observed.
     observed_label = tr("%s (observed)")
-
+    # Falkland War's Conclusion.
     start_year = 1983
 
     def __init__(self, *args, **kwargs):
@@ -63,8 +65,8 @@ class FalklandIslands(
         self._add_good_friday(tr("Good Friday"))
 
         if self._year <= 2022:
-            # Queen's Birthday.
-            self._add_observed(self._add_holiday_apr_21(tr("Queen's Birthday")))
+            # HM The Queen's Birthday.
+            self._add_observed(self._add_holiday_apr_21(tr("HM The Queen's Birthday")))
 
         # Liberation Day.
         self._add_observed(self._add_holiday_jun_14(tr("Liberation Day")))
@@ -77,8 +79,8 @@ class FalklandIslands(
             self._add_holiday_1st_mon_of_oct(tr("Peat Cutting Day"))
 
         if self._year >= 2022:
-            # King's Birthday.
-            self._add_observed(self._add_holiday_nov_14(tr("King's Birthday")))
+            # HM The King's Birthday.
+            self._add_observed(self._add_holiday_nov_14(tr("HM The King's Birthday")))
 
         self._add_observed(
             # Christmas Day.
@@ -125,4 +127,6 @@ class FalklandIslandsStaticHolidays:
     special_public_holidays = {
         # Queen Elizabeth II's Funeral.
         2022: (SEP, 19, tr("Queen Elizabeth II's Funeral")),
+        # HM The King's Coronation.
+        2023: (MAY, 8, tr("HM The King's Coronation")),
     }

@@ -31,7 +31,10 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertNoHolidays(FalklandIslands(years=1982))
 
     def test_special_holidays(self):
-        self.assertHoliday("2022-09-19")
+        self.assertHoliday(
+            "2022-09-19",
+            "2023-05-08",
+        )
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -60,8 +63,8 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(1983, 2050))
 
     def test_queens_birthday(self):
-        name = "Queen's Birthday"
-        self.assertHolidayName("Queen's Birthday", (f"{year}-04-21" for year in range(1983, 2023)))
+        name = "HM The Queen's Birthday"
+        self.assertHolidayName(name, (f"{year}-04-21" for year in range(1983, 2023)))
         obs_dt = (
             "2007-04-23",
             "2012-04-23",
@@ -114,7 +117,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1983, 2002))
 
     def test_kings_birthday(self):
-        name = "King's Birthday"
+        name = "HM The King's Birthday"
         self.assertHolidayName(name, (f"{year}-11-14" for year in range(2022, 2050)))
         obs_dt = (
             "2026-11-16",
@@ -183,7 +186,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             ("2025-06-14", "Liberation Day"),
             ("2025-06-16", "Liberation Day (observed)"),
             ("2025-10-06", "Peat Cutting Day"),
-            ("2025-11-14", "King's Birthday"),
+            ("2025-11-14", "HM The King's Birthday"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
             ("2025-12-27", "Christmas Holiday"),
@@ -200,7 +203,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             ("2025-06-14", "Liberation Day"),
             ("2025-06-16", "Liberation Day (observed)"),
             ("2025-10-06", "Peat Cutting Day"),
-            ("2025-11-14", "King's Birthday"),
+            ("2025-11-14", "HM The King's Birthday"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
             ("2025-12-27", "Christmas Holiday"),
