@@ -12,8 +12,9 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays, JULIAN_CALENDAR
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
@@ -59,8 +60,8 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        if self._year > 1994:
-            # Orthodox Christmas Day.
+        if self._year >= 1995:
+            # Armenian Orthodox Christmas Day.
             self._add_holiday_jan_6(tr("عيد الميلاد عند الطوائف الارمنية الارثوذكسية"))
 
         # Saint Maron's Day.
@@ -70,7 +71,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
             # Feast of the Annunciation.
             self._add_holiday_mar_25(tr("عيد بشارة السيدة مريم العذراء"))
 
-        # Good Friday (Catholic).
+        # Catholic Good Friday.
         catholic_good_friday = self._add_good_friday(tr("الجمعة العظيمة عند الطوائف الكاثوليكية"))
 
         orthodox_good_friday = self._add_good_friday(
@@ -149,7 +150,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         name = tr("عيد الأضحى")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        if 1985 <= self._year < 1994:
+        if 1986 <= self._year <= 1993:
             self._add_eid_al_adha_day_three(name)
 
 
