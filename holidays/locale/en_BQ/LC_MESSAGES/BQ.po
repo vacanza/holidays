@@ -1,0 +1,99 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Bonaire, Sint Eustatius and Saba holidays en_BQ localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-06-17 23:55+0530\n"
+"PO-Revision-Date: 2025-06-17 23:55+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_BQ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: nl\n"
+
+#. New Year's Day.
+msgid "Nieuwjaarsdag"
+msgstr "New Year's Day"
+
+#. Good Friday.
+msgid "Goede Vrijdag"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+msgid "Eerste Paasdag"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+msgid "Tweede Paasdag"
+msgstr "Easter Monday"
+
+#. King's Day.
+msgid "Koningsdag"
+msgstr "King's Day"
+
+#. Queen's Day.
+msgid "Koninginnedag"
+msgstr "Queen's Day"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "Labour Day"
+
+#. Ascension Day.
+msgid "Hemelvaartsdag"
+msgstr "Ascension Day"
+
+#. Whit Sunday.
+msgid "Eerste Pinksterdag"
+msgstr "Whit Sunday"
+
+#. Christmas Day.
+msgid "Eerste Kerstdag"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+msgid "Tweede Kerstdag"
+msgstr "Second Day of Christmas"
+
+#. Rincon Day.
+msgid "Rincondag"
+msgstr "Rincon Day"
+
+#. Bonaire Day.
+msgid "Bonairedag"
+msgstr "Bonaire Day"
+
+#. Carnival Monday.
+msgid "Dag na de carnavalsoptocht"
+msgstr "Carnival Monday"
+
+#. Saba Day.
+msgid "Sabadag"
+msgstr "Saba Day"
+
+#. Emancipation Day.
+msgid "Emancipatiedag"
+msgstr "Emancipation Day"
+
+#. Statia Day.
+msgid "Statiadag"
+msgstr "Statia Day"
+
+#. Bridge Holiday.
+msgid "Brugdag"
+msgstr "Bridge Holiday"
