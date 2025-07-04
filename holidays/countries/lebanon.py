@@ -67,7 +67,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Saint Maron's Day.
         self._add_holiday_feb_9(tr("عيد مار مارون"))
 
-        if (1994 < self._year <= 2005) or self._year >= 2010:
+        if (1995 <= self._year <= 2005) or self._year >= 2010:
             # Feast of the Annunciation.
             self._add_holiday_mar_25(tr("عيد بشارة السيدة مريم العذراء"))
 
@@ -75,39 +75,39 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         catholic_good_friday = self._add_good_friday(tr("الجمعة العظيمة عند الطوائف الكاثوليكية"))
 
         orthodox_good_friday = self._add_good_friday(
-            # Good Friday (Orthodox).
+            # Orthodox Good Friday.
             tr("الجمعة العظيمة عند الطوائف الأرثوذكسية"),
             calendar=JULIAN_CALENDAR,
         )
 
         if orthodox_good_friday == catholic_good_friday:
-            # Holy Saturday (Orthodox).
+            # Orthodox Holy Saturday.
             self._add_holy_saturday(tr("سبت النور للطائفة الأرثوذكسية"))
 
-        if 1985 < self._year <= 1994:
+        if 1986 <= self._year <= 1994:
             catholic_easter_monday = self._add_easter_monday(
-                # Easter Monday (Catholic).
+                # Catholic Easter Monday.
                 tr("اثنين الفصح عند الطوائف الكاثوليكية")
             )
 
             orthodox_easter_monday = self._add_easter_monday(
-                # Easter Monday (Orthodox).
+                # Orthodox Easter Monday.
                 tr("اثنين الفصح عند الطوائف الأرثوذكسية"),
                 calendar=JULIAN_CALENDAR,
             )
 
             if catholic_easter_monday == orthodox_easter_monday:
-                # Easter Tuesday (Orthodox).
+                # Orthodox Easter Tuesday.
                 self._add_easter_tuesday(tr("ثلاثاء الفصح للطوائف الأرثوذكسية"))
 
         # Labor Day.
         dt = self._add_labor_day(tr("عيد العمل"))
-        if self._year > 1994:
+        if self._year >= 1995:
             self._add_observed(dt, rule=SUN_TO_NEXT_MON)
 
         # Martyrs' Day.
         name = tr("عيد الشهداء")
-        if self._year < 1994:
+        if self._year <= 1993:
             self._add_holiday_1st_sun_from_may_6(name)
         elif self._year > 2005:
             self._add_holiday_1st_sun_of_may(name)
@@ -119,7 +119,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("عيد انتقال العذراء"))
 
-        if 1985 <= self._year < 1994:
+        if 1985 <= self._year <= 1993:
             # All Saints' Day.
             self._add_all_saints_day(tr("عيد جميع القديسين"))
 

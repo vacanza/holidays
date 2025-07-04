@@ -46,7 +46,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, (*range(1978, 1995), *range(2006, 2010)))
 
-    def test_good_friday_catholic(self):
+    def test_catholic_good_friday(self):
         name = "الجمعة العظيمة عند الطوائف الكاثوليكية"
         self.assertHolidayName(
             name,
@@ -60,7 +60,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1978, 2050))
 
-    def test_good_friday_orthodox(self):
+    def test_orthodox_good_friday(self):
         name = "الجمعة العظيمة عند الطوائف الأرثوذكسية"
         self.assertHolidayName(
             name,
@@ -74,7 +74,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(1978, 2050))
 
-    def test_holy_saturday_orthodox(self):
+    def test_orthodox_holy_saturday(self):
         name = "سبت النور للطائفة الأرثوذكسية"
         self.assertHolidayName(
             name,
@@ -85,7 +85,7 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, set(range(2010, 2025)) - {2010, 2011, 2014, 2017})
 
-    def test_easter_monday_catholic(self):
+    def test_catholic_easter_monday(self):
         name = "اثنين الفصح عند الطوائف الكاثوليكية"
         self.assertHolidayName(
             name,
@@ -97,14 +97,14 @@ class TestLebanon(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, (*range(1978, 1985), *range(1995, 2050)))
 
-    def test_easter_monday_orthodox(self):
+    def test_orthodox_easter_monday(self):
         name = "اثنين الفصح عند الطوائف الأرثوذكسية"
         self.assertHolidayName(
             name, "1986-05-05", "1987-04-20", "1988-04-11", "1989-05-01", "1990-04-16"
         )
         self.assertNoHolidayName(name, (*range(1978, 1985), *range(1995, 2050)))
 
-    def test_easter_tuesday_orthodox(self):
+    def test_orthodox_easter_tuesday(self):
         name = "ثلاثاء الفصح للطوائف الأرثوذكسية"
         self.assertHolidayName(
             name,
@@ -232,7 +232,9 @@ class TestLebanon(CommonCountryTests, TestCase):
             name,
             "1985-08-27",
             "1985-08-28",
-            "1985-08-29",
+            "1986-08-16",
+            "1986-08-17",
+            "1986-08-18",
             "1994-05-21",
             "1994-05-22",
             "2020-07-31",
@@ -304,13 +306,13 @@ class TestLebanon(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
-            ("2025-01-06", "Orthodox Christmas Day"),
+            ("2025-01-06", "Armenian Orthodox Christmas Day"),
             ("2025-02-09", "Saint Maron's Day"),
             ("2025-03-25", "Feast of the Annunciation"),
             ("2025-03-30", "Eid al-Fitr"),
             ("2025-03-31", "Eid al-Fitr"),
-            ("2025-04-18", "Good Friday (Catholic); Good Friday (Orthodox)"),
-            ("2025-04-19", "Holy Saturday (Orthodox)"),
+            ("2025-04-18", "Catholic Good Friday; Orthodox Good Friday"),
+            ("2025-04-19", "Orthodox Holy Saturday"),
             ("2025-05-01", "Labor Day"),
             ("2025-05-04", "Martyrs' Day"),
             ("2025-05-11", "Resistance and Liberation Day"),

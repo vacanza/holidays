@@ -45,9 +45,9 @@ msgstr "%s (observed, estimated)"
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#. Orthodox Christmas Day.
+#. Armenian Orthodox Christmas Day.
 msgid "عيد الميلاد عند الطوائف الارمنية الارثوذكسية"
-msgstr "Orthodox Christmas Day"
+msgstr "Armenian Orthodox Christmas Day"
 
 #. Saint Maron's Day.
 msgid "عيد مار مارون"
@@ -57,29 +57,29 @@ msgstr "Saint Maron's Day"
 msgid "عيد بشارة السيدة مريم العذراء"
 msgstr "Feast of the Annunciation"
 
-#. Good Friday (Catholic).
+#. Catholic Good Friday.
 msgid "الجمعة العظيمة عند الطوائف الكاثوليكية"
-msgstr "Good Friday (Catholic)"
+msgstr "Catholic Good Friday"
 
-#. Good Friday (Orthodox).
+#. Orthodox Good Friday.
 msgid "الجمعة العظيمة عند الطوائف الأرثوذكسية"
-msgstr "Good Friday (Orthodox)"
+msgstr "Orthodox Good Friday"
 
-#. Holy Saturday (Orthodox).
+#. Orthodox Holy Saturday.
 msgid "سبت النور للطائفة الأرثوذكسية"
-msgstr "Holy Saturday (Orthodox)"
+msgstr "Orthodox Holy Saturday"
 
-#. Easter Monday (Catholic).
+#. Catholic Easter Monday.
 msgid "اثنين الفصح عند الطوائف الكاثوليكية"
-msgstr "Easter Monday (Catholic)"
+msgstr "Catholic Easter Monday"
 
-#. Easter Monday (Orthodox).
+#. Orthodox Easter Monday.
 msgid "اثنين الفصح عند الطوائف الأرثوذكسية"
-msgstr "Easter Monday  (Orthodox)"
+msgstr "Orthodox Easter Monday"
 
-#. Easter Tuesday (Orthodox).
+#. Orthodox Easter Tuesday.
 msgid "ثلاثاء الفصح للطوائف الأرثوذكسية"
-msgstr "Easter Tuesday (Orthodox)"
+msgstr "Orthodox Easter Tuesday"
 
 #. Labor Day.
 msgid "عيد العمل"
