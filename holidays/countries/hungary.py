@@ -28,6 +28,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
     country = "HU"
     default_language = "hu"
+    start_year = 1945
     supported_languages = ("en_US", "hu", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -40,7 +41,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # New Year's Day.
         self._add_new_years_day(tr("Újév"))
 
-        if 1945 <= self._year <= 1950 or self._year >= 1989:
+        if self._year <= 1950 or self._year >= 1989:
             # National Day.
             self._add_holiday_mar_15(tr("Nemzeti ünnep"))
 
