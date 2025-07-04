@@ -93,7 +93,8 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Ano Novo"))
 
-        if self._year >= 1991:
+        # Law # 95/V/99 of March 22nd.
+        if self._year >= 2000:
             # Democracy and Freedom Day.
             self._add_holiday_jan_13(tr("Dia da Liberdade e Democracia"))
 
@@ -112,8 +113,10 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Worker's Day.
         self._add_labor_day(tr("Dia do Trabalhador"))
 
-        # International Children's Day.
-        self._add_childrens_day(tr("Dia Mundial da Criança"))
+        # Law # 69/VI/2005 of May 31st.
+        if self._year >= 2005:
+            # International Children's Day.
+            self._add_childrens_day(tr("Dia Mundial da Criança"))
 
         # Independence Day.
         self._add_holiday_jul_5(tr("Dia da Independência Nacional"))

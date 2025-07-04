@@ -34,8 +34,8 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_democracy_and_freedom_day(self):
         name = "Dia da Liberdade e Democracia"
-        self.assertHolidayName(name, (f"{year}-01-13" for year in range(1991, 2050)))
-        self.assertNoHolidayName(name, range(1976, 1991))
+        self.assertHolidayName(name, (f"{year}-01-13" for year in range(2000, 2050)))
+        self.assertNoHolidayName(name, range(1976, 2000))
 
     def test_independence_day(self):
         self.assertHolidayName(
@@ -50,7 +50,7 @@ class TestCapeVerde(CommonCountryTests, TestCase):
 
     def test_international_childrens_day(self):
         self.assertHolidayName(
-            "Dia Mundial da Criança", (f"{year}-06-01" for year in range(1976, 2050))
+            "Dia Mundial da Criança", (f"{year}-06-01" for year in range(2005, 2050))
         )
 
     def test_ash_wednesday(self):
