@@ -26,6 +26,46 @@ class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
     def test_country_aliases(self):
         self.assertAliases(Vietnam, VN, VNM)
 
+    def test_substituted_holidays(self):
+        self.assertHoliday(
+            "2010-02-19",
+            "2012-01-27",
+            "2013-04-29",
+            "2014-05-02",
+            "2014-09-01",
+            "2015-01-02",
+            "2015-02-16",
+            "2015-04-29",
+            "2018-12-31",
+            "2019-04-29",
+            "2024-04-29",
+        )
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2010-02-27",
+            "2012-02-04",
+            "2013-05-04",
+            "2014-04-26",
+            "2014-09-06",
+            "2014-12-27",
+            "2015-02-14",
+            "2015-04-25",
+            "2019-01-05",
+            "2019-05-04",
+            "2024-05-04",
+        )
+
+        for year, dts in {
+            2014: (
+                "2014-04-26",
+                "2014-09-06",
+                "2014-12-27",
+            ),
+            2019: ("2019-01-05",),
+        }.items():
+            self.assertWorkingDay(Vietnam(years=year), dts)
+
     def test_common(self):
         self.assertHolidayName(
             "Tết Dương lịch",
@@ -158,46 +198,6 @@ class TestVietnam(CommonCountryTests, WorkingDayTests, TestCase):
         )
         self.assertHoliday(observed_holidays)
         self.assertNoNonObservedHoliday(observed_holidays)
-
-    def test_substituted_holidays(self):
-        self.assertHoliday(
-            "2010-02-19",
-            "2012-01-27",
-            "2013-04-29",
-            "2014-05-02",
-            "2014-09-01",
-            "2015-01-02",
-            "2015-02-16",
-            "2015-04-29",
-            "2018-12-31",
-            "2019-04-29",
-            "2024-04-29",
-        )
-
-    def test_workdays(self):
-        self.assertWorkingDay(
-            "2010-02-27",
-            "2012-02-04",
-            "2013-05-04",
-            "2014-04-26",
-            "2014-09-06",
-            "2014-12-27",
-            "2015-02-14",
-            "2015-04-25",
-            "2019-01-05",
-            "2019-05-04",
-            "2024-05-04",
-        )
-
-        for year, dts in {
-            2014: (
-                "2014-04-26",
-                "2014-09-06",
-                "2014-12-27",
-            ),
-            2019: ("2019-01-05",),
-        }.items():
-            self.assertWorkingDay(Vietnam(years=year), dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
