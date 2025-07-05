@@ -25,12 +25,14 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
 
     References:
         * https://en.wikipedia.org/wiki/Public_holidays_in_Palestine
-        * <https://info.wafa.ps/pages/details/29601#:~:text=%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A>
-        * [Independence](https://www.dailyfinland.fi/worldwide/3115/Palestinians-mark-29-years-for-declaration-of-independence#:~:text=Late%20Palestinian%20leader%20Yaser%20Arafat%2C,15%2C%201988)
+        * <https://web.archive.org/web/20250705114216/https://info.wafa.ps/pages/details/29601>
+        * [Independence](https://en.wikipedia.org/wiki/Palestine#Uprising,_declaration_and_peace_treaty)
     """
 
     country = "PS"
     default_language = "ar"
+    # %s (estimated).
+    estimated_label = tr("%s (المقدرة)")
     start_year = 1989
     supported_categories = (CATHOLIC, ORTHODOX, PUBLIC)
     supported_languages = ("ar", "en_US")

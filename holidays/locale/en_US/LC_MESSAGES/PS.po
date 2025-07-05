@@ -26,6 +26,11 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: ar\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (المقدرة)"
+msgstr "%s (estimated)"
+
 #. New Year's Day.
 msgid "رأس السنة الميلادي"
 msgstr "New Year's Day"

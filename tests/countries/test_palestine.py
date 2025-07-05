@@ -14,10 +14,10 @@ from unittest import TestCase
 
 from holidays.constants import CATHOLIC, ORTHODOX
 from holidays.countries.palestine import Palestine, PS, PSE
-from tests.common import CommonTests
+from tests.common import CommonCountryTests
 
 
-class TestPalestine(CommonTests, TestCase):
+class TestPalestine(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(1989, 2050)
@@ -61,7 +61,7 @@ class TestPalestine(CommonTests, TestCase):
             name, self.orthodox_holidays, (f"{year}-01-08" for year in range(1989, 2050))
         )
 
-    def test_ephiphany_orthodox(self):
+    def test_epiphany_orthodox(self):
         name = "عيد الغطاس"
         self.assertHolidayName(
             name, self.orthodox_holidays, (f"{year}-01-19" for year in range(1989, 2050))
@@ -155,7 +155,7 @@ class TestPalestine(CommonTests, TestCase):
         self.assertHolidayName(name, self.orthodox_holidays, dt)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
-    def test_ephiphany_catholic(self):
+    def test_epiphany_catholic(self):
         name = "عيد الغطاس"
         self.assertHolidayName(
             name, self.catholic_holidays, (f"{year}-01-06" for year in range(1989, 2050))

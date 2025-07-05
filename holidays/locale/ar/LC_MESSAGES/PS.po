@@ -26,6 +26,11 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ar\n"
 
+#. %s (estimated).
+#, c-format
+msgid "%s (المقدرة)"
+msgstr ""
+
 #. New Year's Day.
 msgid "رأس السنة الميلادي"
 msgstr ""
