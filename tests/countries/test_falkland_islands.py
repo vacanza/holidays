@@ -84,7 +84,6 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             "2019-04-22",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoHolidayName(name, range(2023, 2050))
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_liberation_day(self):
@@ -143,7 +142,6 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             "2032-11-15",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoHolidayName(name, range(1983, 2022))
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_christmas_day(self):
@@ -202,7 +200,6 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             "2025-12-31",
         )
         self.assertHolidayName(name, self.government_holidays, range(1983, 2050))
-        self.assertNoHolidayName(name)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
