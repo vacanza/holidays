@@ -322,6 +322,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Bonaire, Sint Eustatius and Saba</td>
+<td>BQ</td>
+<td>Subdivisions: BON (Bonaire), SAB (Saba), STA (Sint Eustatius)</td>
+<td>en_BQ, en_US, <strong>nl</strong>, pap_BQ</td>
+<td></td>
+</tr>
+<tr>
 <td>Bosnia and Herzegovina</td>
 <td>BA</td>
 <td>Entities and district: BIH (Federacija Bosne i Hercegovine, FBiH), BRC (Brčko distrikt, BD), SRP (Republika Srpska, RS)</td>
