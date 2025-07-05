@@ -69,6 +69,7 @@ COUNTRIES: RegistryDict = {
     "curacao": ("Curacao", "CW", "CUW"),
     "cyprus": ("Cyprus", "CY", "CYP"),
     "czechia": ("Czechia", "CZ", "CZE"),
+    "democratic_republic_of_the_congo": ("DemocraticRepublicOfTheCongo", "CD", "COD"),
     "denmark": ("Denmark", "DK", "DNK"),
     "djibouti": ("Djibouti", "DJ", "DJI"),
     "dominica": ("Dominica", "DM", "DMA"),

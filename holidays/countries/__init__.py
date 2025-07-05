@@ -61,6 +61,11 @@ from holidays.countries.cuba import Cuba, CU, CUB
 from holidays.countries.curacao import Curacao, CW, CUW
 from holidays.countries.cyprus import Cyprus, CY, CYP
 from holidays.countries.czechia import Czechia, CZ, CZE
+from holidays.countries.democratic_republic_of_the_congo import (
+    DemocraticRepublicOfTheCongo,
+    CD,
+    COD,
+)
 from holidays.countries.denmark import Denmark, DK, DNK
 from holidays.countries.djibouti import Djibouti, DJ, DJI
 from holidays.countries.dominica import Dominica, DM, DMA

@@ -1,0 +1,75 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Democratic Republic of the Congo holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.76\n"
+"POT-Creation-Date: 2025-07-05 21:01+0530\n"
+"PO-Revision-Date: 2025-07-05 21:01+0530\n"
+"Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Source-Language: fr\n"
+
+#. New Year's Day.
+msgid "Jour de l'An"
+msgstr "New Year's Day"
+
+#. Martyrs' Day.
+msgid "Journée des Martyrs"
+msgstr "Martyrs' Day"
+
+#. Laurent-Désiré Kabila Assassination.
+msgid "Assassinat de Laurent-Désiré Kabila"
+msgstr "Laurent-Désiré Kabila Assassination"
+
+#. Patrice Lumumba Assassination.
+msgid "Assassinat de Patrice Lumumba"
+msgstr "Patrice Lumumba Assassination"
+
+#. Kimbangu's Day.
+msgid "Journée de Kimbangu"
+msgstr "Kimbangu's Day"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "Labor Day"
+
+#. Liberation Day.
+msgid "Jour de la Libération"
+msgstr "Liberation Day"
+
+#. Armed Forces Day.
+msgid "Journée des forces armées"
+msgstr "Armed Forces Day"
+
+#. Independence Day.
+msgid "Jour de l'indépendance"
+msgstr "Independence Day"
+
+#. Parents' Day.
+msgid "Journée des parents"
+msgstr "Parents' Day"
+
+#. Congolese Genocide Day.
+msgid "Journée du génocide congolais"
+msgstr "Congolese Genocide Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
