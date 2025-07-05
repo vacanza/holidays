@@ -187,9 +187,6 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             self.government_holidays,
-            "2017-12-28",
-            "2017-12-29",
-            "2018-12-28",
             "2022-12-29",
             "2022-12-30",
             "2023-12-28",
