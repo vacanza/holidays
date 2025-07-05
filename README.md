@@ -497,7 +497,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Democratic Republic Of The Congo</td>
+<td>Democratic Republic of The Congo</td>
 <td>CD</td>
 <td></td>
 <td>en_US, <strong>fr</strong></td>

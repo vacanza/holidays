@@ -51,7 +51,7 @@ class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, International
 
         if self._year >= 1961:
             # Patrice Lumumba Assassination.
-            self._add_holiday_jan_16(tr("Assassinat de Patrice Lumumba"))
+            self._add_holiday_jan_17(tr("Assassinat de Patrice Lumumba"))
 
         if self._year >= 2023:
             # Kimbangu's Day.
