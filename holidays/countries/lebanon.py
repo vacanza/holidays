@@ -13,7 +13,21 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+	JAN,
+	FEB,
+	MAR,
+	APR,
+	MAY,
+	JUN,
+	JUL,
+	AUG,
+	SEP,
+	OCT,
+	NOV,
+	DEC,
+	SUN,
+)
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
@@ -41,6 +55,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
     observed_estimated_label = tr("%s (يُحتفل به، المقدرة)")
     start_year = 1978
     supported_languages = ("ar", "en_US")
+    weekend = {SUN}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -109,10 +124,10 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         name = tr("عيد الشهداء")
         if self._year <= 1993:
             self._add_holiday_1st_sun_from_may_6(name)
-        elif self._year > 2005:
+        elif self._year >= 2004:
             self._add_holiday_1st_sun_of_may(name)
 
-        if self._year > 2005:
+        if self._year >= 2004:
             # Resistance and Liberation Day.
             self._add_holiday_2nd_sun_of_may(tr("عيد المقاومة والتحرير"))
 
