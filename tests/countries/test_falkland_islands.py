@@ -55,6 +55,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name, self.workday_holidays, (f"{year}-01-10" for year in range(1983, 2050))
         )
+        self.assertNoHolidayName(name)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -188,6 +189,7 @@ class TestFalklandIslands(CommonCountryTests, TestCase):
             "2025-12-31",
         )
         self.assertHolidayName(name, self.government_holidays, range(1983, 2050))
+        self.assertNoHolidayName(name)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
