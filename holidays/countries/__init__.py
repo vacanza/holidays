@@ -37,6 +37,7 @@ from holidays.countries.belize import Belize, BZ, BLZ
 from holidays.countries.benin import Benin, BJ, BEN
 from holidays.countries.bermuda import Bermuda, BM, BMU
 from holidays.countries.bolivia import Bolivia, BO, BOL
+from holidays.countries.bonaire_sint_eustatius_and_saba import BonaireSintEustatiusAndSaba, BQ, BES
 from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from holidays.countries.botswana import Botswana, BW, BWA
 from holidays.countries.brazil import Brazil, BR, BRA
@@ -125,6 +126,7 @@ from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
 from holidays.countries.laos import Laos, LA, LAO
 from holidays.countries.latvia import Latvia, LV, LVA
 from holidays.countries.lesotho import Lesotho, LS, LSO
+from holidays.countries.libya import Libya, LY, LBY
 from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
 from holidays.countries.lithuania import Lithuania, LT, LTU
 from holidays.countries.luxembourg import Luxembourg, LU, LUX

@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysGF(France):
+class HolidaysGF(ChildEntity, France):
     """French Guiana holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,9 @@ class HolidaysGF(France):
 
     country = "GF"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
+    parent_entity_subdivision_code = "973"
     # Cession from Portugal on May 30th, 1814.
     start_year = 1815
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "973"
-        super()._populate_public_holidays()
 
 
 class FrenchGuiana(HolidaysGF):
