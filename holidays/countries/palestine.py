@@ -21,7 +21,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
-    """
+    """Palestine holidays.
+
     References:
         * https://en.wikipedia.org/wiki/Public_holidays_in_Palestine
         * <https://info.wafa.ps/pages/details/29601#:~:text=%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A>
@@ -29,15 +30,12 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
     """
 
     country = "PS"
-    default_category = PUBLIC
     default_language = "ar"
-    # $s (estimated)
-    estimated_label = tr("%s (المقدرة)")
     start_year = 1989
     supported_categories = (CATHOLIC, ORTHODOX, PUBLIC)
     supported_languages = ("ar", "en_US")
 
-    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+    def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):
         """
         Args:
             islamic_show_estimated:
@@ -47,9 +45,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self,
-            cls=PalestineIslamicHolidays,
-            show_estimated=islamic_show_estimated,
+            self, cls=PalestineIslamicHolidays, show_estimated=islamic_show_estimated
         )
         super().__init__(*args, **kwargs)
 
@@ -57,14 +53,26 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادي"))
 
+        # Christmas (Orthodox).
+        self._add_christmas_day(tr("عيد الميلاد المجيد الشرقي"))
+
         # International Women's Day.
         self._add_womens_day(tr("يوم المراة العالمي"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("عيد الفصح المجيد"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
         # Independence Day.
         self._add_holiday_nov_15(tr("عيد الإستقلال"))
+
+        # Christmas (Catholic).
+        self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
         # Hijri New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجريــة"))
@@ -89,7 +97,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_eid_al_adha_day_four(name)
 
     def _populate_catholic_holidays(self):
-        # Ephiphany.
+        # Epiphany.
         self._add_epiphany_day(tr("عيد الغطاس"), GREGORIAN_CALENDAR)
 
         # Palm Sunday.
@@ -104,9 +112,6 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"), GREGORIAN_CALENDAR)
 
-        # Easter Monday.
-        self._add_easter_monday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
-
         # Easter Tuesday.
         self._add_easter_tuesday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
 
@@ -117,7 +122,6 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_whit_sunday(tr("أحد العنصرة"), GREGORIAN_CALENDAR)
 
         # Christmas (Catholic).
-        self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
         self._add_christmas_day_two(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
     def _populate_orthodox_holidays(self):
@@ -125,10 +129,9 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_holiday_jan_14(tr("عيد الميلاد المجيد"))
 
         # Christmas (Orthodox).
-        self._add_christmas_day(tr("عيد الميلاد المجيد الشرقي"))
         self._add_christmas_day_two(tr("عيد الميلاد المجيد الشرقي"))
 
-        # Ephiphany.
+        # Epiphany.
         self._add_epiphany_day(tr("عيد الغطاس"))
 
         # Palm Sunday.
@@ -142,9 +145,6 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
 
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("عيد الفصح المجيد"))
 
         # Easter Tuesday.
         self._add_easter_tuesday(tr("عيد الفصح المجيد"))

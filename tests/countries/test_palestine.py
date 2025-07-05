@@ -56,9 +56,7 @@ class TestPalestine(CommonTests, TestCase):
 
     def test_christmas_orthodox(self):
         name = "عيد الميلاد المجيد الشرقي"
-        self.assertHolidayName(
-            name, self.orthodox_holidays, (f"{year}-01-07" for year in range(1989, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-01-07" for year in range(1989, 2050)))
         self.assertHolidayName(
             name, self.orthodox_holidays, (f"{year}-01-08" for year in range(1989, 2050))
         )
@@ -121,8 +119,8 @@ class TestPalestine(CommonTests, TestCase):
             "2024-05-06",
             "2025-04-21",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
-        self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_easter_tuesday_orthodox(self):
         name = "عيد الفصح المجيد"
@@ -215,8 +213,8 @@ class TestPalestine(CommonTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
-        self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_easter_tuesday_catholic(self):
         name = "عيد الفصح المجيد"
@@ -253,9 +251,7 @@ class TestPalestine(CommonTests, TestCase):
 
     def test_christmas_catholic(self):
         name = "عيد الميلاد المجيد الغربي"
-        self.assertHolidayName(
-            name, self.catholic_holidays, (f"{year}-12-25" for year in range(1989, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1989, 2050)))
         self.assertHolidayName(
             name, self.catholic_holidays, (f"{year}-12-26" for year in range(1989, 2050))
         )
@@ -270,8 +266,8 @@ class TestPalestine(CommonTests, TestCase):
             "2024-07-07",
             "2025-06-26",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_mawlid(self):
         name = "ذكرى المولد النبوي الشريـف"
@@ -282,8 +278,8 @@ class TestPalestine(CommonTests, TestCase):
             "2023-09-27",
             "2024-09-15",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_isra_and_miraj(self):
         name = "ذكرى الإسراء والمعــراج"
@@ -295,8 +291,8 @@ class TestPalestine(CommonTests, TestCase):
             "2024-02-08",
             "2025-01-27",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر السعيد"
@@ -320,8 +316,8 @@ class TestPalestine(CommonTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى المبارك"
@@ -351,8 +347,8 @@ class TestPalestine(CommonTests, TestCase):
             "2025-06-08",
             "2025-06-09",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1989, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(1989, 2050))
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
@@ -363,7 +359,7 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-01-08", "Christmas (Orthodox)"),
             ("2024-01-14", "New Year's Day (Orthodox)"),
             ("2024-01-19", "Epiphany Day"),
-            ("2024-02-08", "Isra' and Mi'raj (estimated)"),
+            ("2024-02-08", "Isra' and Mi'raj"),
             ("2024-03-08", "International Women's Day"),
             ("2024-03-24", "Palm Sunday"),
             ("2024-03-28", "Holy Thursday"),
@@ -371,9 +367,9 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-03-30", "Holy Saturday"),
             ("2024-04-01", "Easter"),
             ("2024-04-02", "Easter"),
-            ("2024-04-10", "Eid al-Fitr (estimated)"),
-            ("2024-04-11", "Eid al-Fitr (estimated)"),
-            ("2024-04-12", "Eid al-Fitr (estimated)"),
+            ("2024-04-10", "Eid al-Fitr"),
+            ("2024-04-11", "Eid al-Fitr"),
+            ("2024-04-12", "Eid al-Fitr"),
             ("2024-04-28", "Palm Sunday"),
             ("2024-05-01", "Labor Day"),
             ("2024-05-02", "Holy Thursday"),
@@ -384,13 +380,13 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-05-09", "Ascension Day"),
             ("2024-05-19", "Whit Sunday"),
             ("2024-06-13", "Ascension Day"),
-            ("2024-06-16", "Eid al-Adha (estimated)"),
-            ("2024-06-17", "Eid al-Adha (estimated)"),
-            ("2024-06-18", "Eid al-Adha (estimated)"),
-            ("2024-06-19", "Eid al-Adha (estimated)"),
+            ("2024-06-16", "Eid al-Adha"),
+            ("2024-06-17", "Eid al-Adha"),
+            ("2024-06-18", "Eid al-Adha"),
+            ("2024-06-19", "Eid al-Adha"),
             ("2024-06-23", "Whit Sunday"),
-            ("2024-07-07", "Hijri New Year (estimated)"),
-            ("2024-09-15", "Prophet's Birthday (estimated)"),
+            ("2024-07-07", "Hijri New Year"),
+            ("2024-09-15", "Prophet's Birthday"),
             ("2024-11-15", "Independence Day"),
             ("2024-12-25", "Christmas (Catholic)"),
             ("2024-12-26", "Christmas (Catholic)"),
@@ -404,7 +400,7 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-01-08", "عيد الميلاد المجيد الشرقي"),
             ("2024-01-14", "عيد الميلاد المجيد"),
             ("2024-01-19", "عيد الغطاس"),
-            ("2024-02-08", "ذكرى الإسراء والمعــراج (المقدرة)"),
+            ("2024-02-08", "ذكرى الإسراء والمعــراج"),
             ("2024-03-08", "يوم المراة العالمي"),
             ("2024-03-24", "أحد الشعانين"),
             ("2024-03-28", "خميس الغسل"),
@@ -412,9 +408,9 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-03-30", "سبت النور"),
             ("2024-04-01", "عيد الفصح المجيد"),
             ("2024-04-02", "عيد الفصح المجيد"),
-            ("2024-04-10", "عيد الفطر السعيد (المقدرة)"),
-            ("2024-04-11", "عيد الفطر السعيد (المقدرة)"),
-            ("2024-04-12", "عيد الفطر السعيد (المقدرة)"),
+            ("2024-04-10", "عيد الفطر السعيد"),
+            ("2024-04-11", "عيد الفطر السعيد"),
+            ("2024-04-12", "عيد الفطر السعيد"),
             ("2024-04-28", "أحد الشعانين"),
             ("2024-05-01", "عيد العمال"),
             ("2024-05-02", "خميس الغسل"),
@@ -425,13 +421,13 @@ class TestPalestine(CommonTests, TestCase):
             ("2024-05-09", "خميس الصعود"),
             ("2024-05-19", "أحد العنصرة"),
             ("2024-06-13", "خميس الصعود"),
-            ("2024-06-16", "عيد الأضحى المبارك (المقدرة)"),
-            ("2024-06-17", "عيد الأضحى المبارك (المقدرة)"),
-            ("2024-06-18", "عيد الأضحى المبارك (المقدرة)"),
-            ("2024-06-19", "عيد الأضحى المبارك (المقدرة)"),
+            ("2024-06-16", "عيد الأضحى المبارك"),
+            ("2024-06-17", "عيد الأضحى المبارك"),
+            ("2024-06-18", "عيد الأضحى المبارك"),
+            ("2024-06-19", "عيد الأضحى المبارك"),
             ("2024-06-23", "أحد العنصرة"),
-            ("2024-07-07", "رأس السنة الهجريــة (المقدرة)"),
-            ("2024-09-15", "ذكرى المولد النبوي الشريـف (المقدرة)"),
+            ("2024-07-07", "رأس السنة الهجريــة"),
+            ("2024-09-15", "ذكرى المولد النبوي الشريـف"),
             ("2024-11-15", "عيد الإستقلال"),
             ("2024-12-25", "عيد الميلاد المجيد الغربي"),
             ("2024-12-26", "عيد الميلاد المجيد الغربي"),

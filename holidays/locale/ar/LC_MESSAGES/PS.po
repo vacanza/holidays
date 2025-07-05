@@ -26,17 +26,21 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: ar\n"
 
-#. $s (estimated)
-#, c-format
-msgid "%s (المقدرة)"
-msgstr ""
-
 #. New Year's Day.
 msgid "رأس السنة الميلادي"
 msgstr ""
 
+#. Christmas (Orthodox).
+msgid "عيد الميلاد المجيد الشرقي"
+msgstr ""
+
 #. International Women's Day.
 msgid "يوم المراة العالمي"
+msgstr ""
+
+#. Easter Monday.
+#. Easter Tuesday.
+msgid "عيد الفصح المجيد"
 msgstr ""
 
 #. Labor Day.
@@ -45,6 +49,10 @@ msgstr ""
 
 #. Independence Day.
 msgid "عيد الإستقلال"
+msgstr ""
+
+#. Christmas (Catholic).
+msgid "عيد الميلاد المجيد الغربي"
 msgstr ""
 
 #. Hijri New Year.
@@ -67,7 +75,7 @@ msgstr ""
 msgid "عيد الأضحى المبارك"
 msgstr ""
 
-#. Ephiphany.
+#. Epiphany.
 msgid "عيد الغطاس"
 msgstr ""
 
@@ -87,11 +95,6 @@ msgstr ""
 msgid "سبت النور"
 msgstr ""
 
-#. Easter Monday.
-#. Easter Tuesday.
-msgid "عيد الفصح المجيد"
-msgstr ""
-
 #. Ascension Day.
 msgid "خميس الصعود"
 msgstr ""
@@ -100,14 +103,6 @@ msgstr ""
 msgid "أحد العنصرة"
 msgstr ""
 
-#. Christmas (Catholic).
-msgid "عيد الميلاد المجيد الغربي"
-msgstr ""
-
 #. New Year's Day (Orthodox).
 msgid "عيد الميلاد المجيد"
-msgstr ""
-
-#. Christmas (Orthodox).
-msgid "عيد الميلاد المجيد الشرقي"
 msgstr ""

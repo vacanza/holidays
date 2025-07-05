@@ -26,18 +26,22 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: ar\n"
 
-#. $s (estimated)
-#, c-format
-msgid "%s (المقدرة)"
-msgstr "%s (estimated)"
-
 #. New Year's Day.
 msgid "رأس السنة الميلادي"
 msgstr "New Year's Day"
 
+#. Christmas (Orthodox).
+msgid "عيد الميلاد المجيد الشرقي"
+msgstr "Christmas (Orthodox)"
+
 #. International Women's Day.
 msgid "يوم المراة العالمي"
 msgstr "International Women's Day"
+
+#. Easter Monday.
+#. Easter Tuesday.
+msgid "عيد الفصح المجيد"
+msgstr "Easter"
 
 #. Labor Day.
 msgid "عيد العمال"
@@ -46,6 +50,10 @@ msgstr "Labor Day"
 #. Independence Day.
 msgid "عيد الإستقلال"
 msgstr "Independence Day"
+
+#. Christmas (Catholic).
+msgid "عيد الميلاد المجيد الغربي"
+msgstr "Christmas (Catholic)"
 
 #. Hijri New Year.
 msgid "رأس السنة الهجريــة"
@@ -67,7 +75,7 @@ msgstr "Eid al-Fitr"
 msgid "عيد الأضحى المبارك"
 msgstr "Eid al-Adha"
 
-#. Ephiphany.
+#. Epiphany.
 msgid "عيد الغطاس"
 msgstr "Epiphany Day"
 
@@ -87,11 +95,6 @@ msgstr "Good Friday"
 msgid "سبت النور"
 msgstr "Holy Saturday"
 
-#. Easter Monday.
-#. Easter Tuesday.
-msgid "عيد الفصح المجيد"
-msgstr "Easter"
-
 #. Ascension Day.
 msgid "خميس الصعود"
 msgstr "Ascension Day"
@@ -100,14 +103,6 @@ msgstr "Ascension Day"
 msgid "أحد العنصرة"
 msgstr "Whit Sunday"
 
-#. Christmas (Catholic).
-msgid "عيد الميلاد المجيد الغربي"
-msgstr "Christmas (Catholic)"
-
 #. New Year's Day (Orthodox).
 msgid "عيد الميلاد المجيد"
 msgstr "New Year's Day (Orthodox)"
-
-#. Christmas (Orthodox).
-msgid "عيد الميلاد المجيد الشرقي"
-msgstr "Christmas (Orthodox)"
