@@ -13,7 +13,6 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
