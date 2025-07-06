@@ -12,28 +12,28 @@
 
 from unittest import TestCase
 
-from holidays.countries.democratic_republic_of_the_congo import (
-    DemocraticRepublicOfTheCongo,
+from holidays.countries.dr_congo import (
+    DRCongo,
     CD,
     COD,
 )
 from tests.common import CommonCountryTests
 
 
-class TestDemocraticRepublicOfTheCongo(CommonCountryTests, TestCase):
+class TestDRCongo(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(DemocraticRepublicOfTheCongo, years=range(1960, 2050))
+        super().setUpClass(DRCongo, years=range(1960, 2050))
 
     def test_country_aliases(self):
-        self.assertAliases(DemocraticRepublicOfTheCongo, CD, COD)
+        self.assertAliases(DRCongo, CD, COD)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(DemocraticRepublicOfTheCongo(years=1959))
+        self.assertNoHolidays(DRCongo(years=1959))
 
     def test_2006(self):
         self.assertHolidays(
-            DemocraticRepublicOfTheCongo(years=2006),
+            DRCongo(years=2006),
             ("2006-01-01", "Jour de l'An"),
             ("2006-01-04", "Journée des Martyrs"),
             ("2006-01-16", "Assassinat de Laurent-Désiré Kabila"),
@@ -47,7 +47,7 @@ class TestDemocraticRepublicOfTheCongo(CommonCountryTests, TestCase):
 
     def test_2010(self):
         self.assertHolidays(
-            DemocraticRepublicOfTheCongo(years=2010),
+            DRCongo(years=2010),
             ("2010-01-01", "Jour de l'An"),
             ("2010-01-04", "Journée des Martyrs"),
             ("2010-01-16", "Assassinat de Laurent-Désiré Kabila"),
@@ -61,7 +61,7 @@ class TestDemocraticRepublicOfTheCongo(CommonCountryTests, TestCase):
 
     def test_2015(self):
         self.assertHolidays(
-            DemocraticRepublicOfTheCongo(years=2015),
+            DRCongo(years=2015),
             ("2015-01-01", "Jour de l'An"),
             ("2015-01-04", "Journée des Martyrs"),
             ("2015-01-16", "Assassinat de Laurent-Désiré Kabila"),
@@ -75,7 +75,7 @@ class TestDemocraticRepublicOfTheCongo(CommonCountryTests, TestCase):
 
     def test_2016(self):
         self.assertHolidays(
-            DemocraticRepublicOfTheCongo(years=2016),
+            DRCongo(years=2016),
             ("2016-01-01", "Jour de l'An"),
             ("2016-01-04", "Journée des Martyrs"),
             ("2016-01-16", "Assassinat de Laurent-Désiré Kabila"),
@@ -89,7 +89,7 @@ class TestDemocraticRepublicOfTheCongo(CommonCountryTests, TestCase):
 
     def test_2017(self):
         self.assertHolidays(
-            DemocraticRepublicOfTheCongo(years=2017),
+            DRCongo(years=2017),
             ("2017-01-01", "Jour de l'An"),
             ("2017-01-04", "Journée des Martyrs"),
             ("2017-01-16", "Assassinat de Laurent-Désiré Kabila"),

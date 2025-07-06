@@ -497,13 +497,6 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
-<td>Democratic Republic of The Congo</td>
-<td>CD</td>
-<td></td>
-<td>en_US, <strong>fr</strong></td>
-<td></td>
-</tr>
-<tr>
 <td>Denmark</td>
 <td>DK</td>
 <td></td>
@@ -529,6 +522,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>DO</td>
 <td></td>
 <td>en_US, <strong>es</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>DRCongo</td>
+<td>CD</td>
+<td></td>
+<td>en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>

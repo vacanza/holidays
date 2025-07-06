@@ -50,13 +50,13 @@ msgstr "Kimbangu's Day"
 msgid "Fête du Travail"
 msgstr "Labor Day"
 
-#. Liberation Day.
-msgid "Jour de la Libération"
-msgstr "Liberation Day"
-
 #. Armed Forces Day.
 msgid "Journée des forces armées"
 msgstr "Armed Forces Day"
+
+#. Liberation Day.
+msgid "Jour de la Libération"
+msgstr "Liberation Day"
 
 #. Independence Day.
 msgid "Jour de l'indépendance"

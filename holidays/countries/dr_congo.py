@@ -16,14 +16,10 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, InternationalHolidays):
+class DRCongo(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Democratic Republic of the Congo holidays.
 
     References:
-        * [Democratic Republic of the Congo](https://web.archive.org/web/20220428223822/https://www.eac.int/eac-partner-states/drcongo)
-        * [Independence Day in DR Congo in 2020](https://web.archive.org/web/20200607141425/https://www.officeholidays.com/holidays/dr-congo/dr-congo-independence-day)
-
-    Cross-Checked With:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Democratic_Republic_of_the_Congo>
     """
 
@@ -31,7 +27,7 @@ class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, International
     default_language = "fr"
     supported_languages = ("en_US", "fr")
     # Democratic Republic of the Congo marks independence from Belgium in June 1960.
-    start_year = 1960
+    start_year = 1961
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -45,11 +41,11 @@ class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, International
         # Martyrs' Day.
         self._add_holiday_jan_4(tr("Journée des Martyrs"))
 
-        if self._year >= 2001:
+        if self._year >= 2002:
             # Laurent-Désiré Kabila Assassination.
             self._add_holiday_jan_16(tr("Assassinat de Laurent-Désiré Kabila"))
 
-        if self._year >= 1961:
+        if self._year >= 1962:
             # Patrice Lumumba Assassination.
             self._add_holiday_jan_17(tr("Assassinat de Patrice Lumumba"))
 
@@ -60,12 +56,14 @@ class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, International
         # Labor Day.
         self._add_labor_day(tr("Fête du Travail"))
 
-        if 1997 <= self._year < 2019:
-            # Liberation Day.
-            self._add_holiday_may_17(tr("Jour de la Libération"))
-        elif self._year >= 2019:
-            # Armed Forces Day.
-            self._add_holiday_may_17(tr("Journée des forces armées"))
+        if self._year >= 1998:
+            self._add_holiday_may_17(
+                # Armed Forces Day.
+                tr("Journée des forces armées")
+                if self._year >= 2019
+                # Liberation Day.
+                else tr("Jour de la Libération")
+            )
 
         # Independence Day.
         self._add_holiday_jun_30(tr("Jour de l'indépendance"))
@@ -81,9 +79,9 @@ class DemocraticRepublicOfTheCongo(HolidayBase, ChristianHolidays, International
         self._add_christmas_day(tr("Noël"))
 
 
-class CD(DemocraticRepublicOfTheCongo):
+class CD(DRCongo):
     pass
 
 
-class COD(DemocraticRepublicOfTheCongo):
+class COD(DRCongo):
     pass

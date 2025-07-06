@@ -50,12 +50,12 @@ msgstr ""
 msgid "Fête du Travail"
 msgstr ""
 
-#. Liberation Day.
-msgid "Jour de la Libération"
-msgstr ""
-
 #. Armed Forces Day.
 msgid "Journée des forces armées"
+msgstr ""
+
+#. Liberation Day.
+msgid "Jour de la Libération"
 msgstr ""
 
 #. Independence Day.
