@@ -478,6 +478,8 @@ class TestChina(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-02-13",
             "2024-02-14",
         )
+        self.assertHolidayCountPerYear(name, 3, range(1950, 2008), range(2014, 2050))
+        self.assertHolidayCountPerYear(name, 2, range(2008, 2014))
 
     def test_labor_day(self):
         name = "劳动节"

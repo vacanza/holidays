@@ -247,8 +247,14 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-04-21",
             "2023-04-22",
         )
-        self.assertNoHolidayName(name, "2004-11-15", "2005-11-04")
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
+        self.assertHolidayCountPerYear(
+            name, 1, self.no_estimated_holidays, set(range(1993, 2006)) - {2000}
+        )
+        self.assertHolidayCountPerYear(
+            name, 2, self.no_estimated_holidays, set(range(2006, 2050)) - {2033}
+        )
 
     def test_eid_al_adha(self):
         name = "Qurban bayrami"
@@ -265,8 +271,12 @@ class TestAzerbaijan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-06-28",
             "2023-06-29",
         )
-        self.assertNoHolidayName(name, "2004-02-02", "2005-01-23", "2006-01-11")
+        self.assertHolidayName(name, self.no_estimated_holidays, range(1993, 2050))
         self.assertNoHolidayName(name, self.no_estimated_holidays, range(1990, 1993))
+        self.assertHolidayCountPerYear(name, 1, self.no_estimated_holidays, range(1993, 2006))
+        self.assertHolidayCountPerYear(
+            name, 2, self.no_estimated_holidays, set(range(2006, 2050)) - {2007, 2039}
+        )
 
     def test_observed_days(self):
         observed_holidays = (
