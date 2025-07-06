@@ -13,20 +13,21 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
-	JAN,
-	FEB,
-	MAR,
-	APR,
-	MAY,
-	JUN,
-	JUL,
-	AUG,
-	SEP,
-	OCT,
-	NOV,
-	DEC,
-	SUN,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    SUN,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -82,7 +83,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Saint Maron's Day.
         self._add_holiday_feb_9(tr("عيد مار مارون"))
 
-        if (1995 <= self._year <= 2005) or self._year >= 2010:
+        if 1995 <= self._year <= 2005 or self._year >= 2010:
             # Feast of the Annunciation.
             self._add_holiday_mar_25(tr("عيد بشارة السيدة مريم العذراء"))
 
@@ -124,10 +125,10 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         name = tr("عيد الشهداء")
         if self._year <= 1993:
             self._add_holiday_1st_sun_from_may_6(name)
-        elif self._year >= 2004:
+        elif self._year >= 2006:
             self._add_holiday_1st_sun_of_may(name)
 
-        if self._year >= 2004:
+        if self._year >= 2006:
             # Resistance and Liberation Day.
             self._add_holiday_2nd_sun_of_may(tr("عيد المقاومة والتحرير"))
 
@@ -156,7 +157,7 @@ class Lebanon(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isl
         # Eid al-Fitr.
         name = tr("عيد الفطر")
         self._add_eid_al_fitr_day(name)
-        if self._year > 1985:
+        if self._year >= 1986:
             self._add_eid_al_fitr_day_two(name)
             if self._year <= 1994:
                 self._add_eid_al_fitr_day_three(name)
