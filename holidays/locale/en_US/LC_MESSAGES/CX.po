@@ -119,10 +119,6 @@ msgstr "Labor Day"
 msgid "Good Friday"
 msgstr "Good Friday"
 
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
-
 #. ANZAC Day.
 msgid "ANZAC Day"
 msgstr "ANZAC Day"

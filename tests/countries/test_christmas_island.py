@@ -50,6 +50,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def test_chinese_new_year(self):
         name = "Chinese New Year"
         self.assertHolidayName(
@@ -78,30 +79,29 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 =======
     def test_chinese_new_years_day(self):
+=======
+    def test_chinese_new_year(self):
+>>>>>>> b356221b (updated test cases and holidays)
         name = "Chinese New Year"
-
         self.assertHolidayName(
             name,
-            "2018-02-16",
-            "2018-02-17",
+            "2016-02-08",
             "2019-02-05",
-            "2019-02-06",
+            "2023-01-23",
         )
-        self.assertHolidayName(name, range(2007, 2050))
-
-    def test_easter_monday(self):
-        name = "Easter Monday"
-        self.assertHolidayName(
-            name,
-            "2020-04-13",
-            "2021-04-05",
-            "2022-04-18",
-            "2023-04-10",
-            "2024-04-01",
-            "2025-04-21",
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
+        obs_dt = (
+            "2017-01-30",
+            "2020-01-28",
+            "2024-02-12",
         )
+<<<<<<< HEAD
         self.assertHolidayName(name, range(2007, 2050))
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+>>>>>>> b356221b (updated test cases and holidays)
 
     def test_australia_day(self):
         name = "Australia Day"
@@ -123,10 +123,14 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2020-03-16",
             "2021-03-22",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "2022-03-21",
 =======
             "2022-03-28",
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+            "2022-03-21",
+>>>>>>> b356221b (updated test cases and holidays)
             "2023-03-20",
             "2024-03-18",
             "2025-03-24",
@@ -195,17 +199,21 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
 
     def test_territory_day(self):
         name = "Territory Day"
-        self.assertHolidayName(name, (f"{year}-10-06" for year in range(2007, 2050)))
-        obs_dt = (
-            "2012-10-08",
+        self.assertHolidayName(
+            name,
             "2013-10-07",
-            "2018-10-08",
+            "2018-10-01",
             "2019-10-07",
+            "2020-10-05",
             "2024-10-07",
         )
+<<<<<<< HEAD
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+        self.assertHolidayName(name, range(2007, 2050))
+>>>>>>> b356221b (updated test cases and holidays)
 
     def test_christmas_day(self):
         name = "Christmas Day"
@@ -288,6 +296,9 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b356221b (updated test cases and holidays)
             ("2024-01-01", "New Year's Day"),
             ("2024-01-26", "Australia Day"),
             ("2024-02-10", "Chinese New Year"),
@@ -302,6 +313,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2024-10-07", "Territory Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+<<<<<<< HEAD
 =======
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
@@ -321,12 +333,17 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
             ("2022-12-27", "Boxing Day (observed)"),
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> b356221b (updated test cases and holidays)
         )
 
     def test_l10n_en_cx(self):
         self.assertLocalizedHolidays(
             "en_CX",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b356221b (updated test cases and holidays)
             ("2024-01-01", "New Year's Day"),
             ("2024-01-26", "Australia Day"),
             ("2024-02-10", "Chinese New Year"),
@@ -341,6 +358,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2024-10-07", "Territory Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+<<<<<<< HEAD
 =======
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (observed)"),
@@ -360,12 +378,17 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
             ("2022-12-27", "Boxing Day (observed)"),
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> b356221b (updated test cases and holidays)
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b356221b (updated test cases and holidays)
             ("2024-01-01", "New Year's Day"),
             ("2024-01-26", "Australia Day"),
             ("2024-02-10", "Chinese New Year"),
@@ -380,6 +403,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2024-10-07", "Territory Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+<<<<<<< HEAD
         )
 =======
             ("2022-01-01", "New Year's Day"),
@@ -399,6 +423,8 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
             ("2022-12-27", "Boxing Day (observed)"),
+=======
+>>>>>>> b356221b (updated test cases and holidays)
         )
 <<<<<<< HEAD
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)

@@ -28,10 +28,14 @@ msgstr ""
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Language: en_CX\n"
 =======
 "Language: en_US\n"
 >>>>>>> 5505906f (Add Christmas Island holidays)
+=======
+"Language: en_CX\n"
+>>>>>>> b356221b (updated test cases and holidays)
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -132,10 +136,6 @@ msgstr "Labour Day"
 #. Good Friday.
 msgid "Good Friday"
 msgstr "Good Friday"
-
-#. Easter Monday.
-msgid "Easter Monday"
-msgstr "Easter Monday"
 
 #. ANZAC Day.
 msgid "ANZAC Day"
