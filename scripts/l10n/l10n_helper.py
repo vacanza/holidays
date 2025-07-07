@@ -51,6 +51,12 @@ class LocalizationHelper:
             default=False,
             help="Overwrite existing files",
         )
+        arg_parser.add_argument(
+            "--strict-locale",
+            action=argparse.BooleanOptionalAction,
+            default=True,
+            help="Use strict locale when searching for suitable translations",
+        )
         self.args = arg_parser.parse_args()
         if not any(
             getattr(self.args, action.dest)
@@ -92,6 +98,8 @@ class LocalizationHelper:
         locale_directory = Path("holidays/locale")
         pot_file_path = locale_directory / "pot" / f"{self.country_code}.pot"
         pot_file = pofile(pot_file_path, wrapwidth=WRAP_WIDTH)
+        for entry in pot_file:
+            entry.occurrences.clear()
 
         for language in cls.supported_languages:
             po_directory = locale_directory / language / "LC_MESSAGES"
@@ -109,6 +117,9 @@ class LocalizationHelper:
             title = f"# {country_name} holidays{l10n_suffix}."
             file_content = header + [title, "#"] + file_content[4:]
             po_file_path.write_text("\n".join(file_content), encoding="utf-8", newline="\n")
+
+        if cls.default_language == "en_US":
+            return None
 
         en_us_po_path = locale_directory / "en_us/LC_MESSAGES" / f"{self.country_code}.po"
         po_file = pofile(en_us_po_path, wrapwidth=WRAP_WIDTH)
@@ -179,6 +190,8 @@ class LocalizationHelper:
                 msgstr = msg_mapping[language]
                 if entry.msgstr != msgstr:
                     entry.msgstr = msgstr
+                    if "|" in msgstr:
+                        entry.flags.append("fuzzy")
                     changed = True
 
             if changed:
@@ -195,15 +208,24 @@ class LocalizationHelper:
                 if not msgstr.strip():
                     untranslated_languages.add(lang)
 
-        translations = defaultdict(lambda: defaultdict(set))
+        locale_path = Path("holidays/locale")
+        translations = {language: defaultdict(set) for language in untranslated_languages}
         for language in untranslated_languages:
-            for po_path in Path(f"holidays/locale/{language}/LC_MESSAGES/").glob("*.po"):
+            language_prefix = language if self.args.strict_locale else language.split("_")[0]
+            for po_path in locale_path.rglob("LC_MESSAGES/*.po"):
                 if po_path.stem == self.country_code:
+                    continue
+                language_dir = po_path.parent.parent.name
+                if not (
+                    language_dir == language_prefix
+                    if self.args.strict_locale
+                    else language_dir.startswith(language_prefix)
+                ):
                     continue
                 po_file = pofile(po_path, wrapwidth=WRAP_WIDTH)
                 for entry in po_file:
-                    if entry.comment and entry.msgstr:
-                        translations[language][entry.comment].add(entry.msgstr)
+                    if entry.comment:
+                        translations[language][entry.comment].add(entry.msgstr or entry.msgid)
 
         updated_rows = []
         for msgid, msgcomment, *msgstrs in rows:
@@ -212,7 +234,7 @@ class LocalizationHelper:
                 if msgstr.strip():
                     new_msgstrs.append(msgstr)
                 elif msgcomment in translations[lang]:
-                    new_msgstrs.append("/".join(sorted(translations[lang][msgcomment])))
+                    new_msgstrs.append(" | ".join(sorted(translations[lang][msgcomment])))
                 else:
                     new_msgstrs.append("")
 
