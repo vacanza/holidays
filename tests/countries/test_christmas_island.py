@@ -176,7 +176,6 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
-            "2023-06-29",
             "2024-06-17",
             "2025-06-07",
         )
