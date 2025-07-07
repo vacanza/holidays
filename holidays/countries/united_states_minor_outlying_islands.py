@@ -10,11 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import GOVERNMENT, PUBLIC, UNOFFICIAL
-from holidays.countries.united_states import US
+from holidays.countries.united_states import UnitedStates
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysUM(US):
+class HolidaysUM(ChildEntity, UnitedStates):
     """United States Minor Outlying Islands holidays.
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
@@ -22,21 +22,13 @@ class HolidaysUM(US):
     """
 
     country = "UM"
-    supported_categories = (GOVERNMENT, PUBLIC, UNOFFICIAL)
-    subdivisions = ()  # Override US subdivisions.
-    subdivisions_aliases = {}  # Override US subdivisions aliases.
+    parent_entity = UnitedStates
+    # The first islands were claimed via Guano Islands Act on August 18th, 1856.
+    start_year = 1857
 
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "UM"
-        super()._populate_public_holidays()
 
-    def _populate_government_holidays(self) -> None:
-        self.subdiv = "UM"
-        super()._populate_government_holidays()
-
-    def _populate_unofficial_holidays(self) -> None:
-        self.subdiv = "UM"
-        super()._populate_unofficial_holidays()
+class UnitedStatesMinorOutlyingIslands(HolidaysUM):
+    pass
 
 
 class UM(HolidaysUM):
@@ -44,8 +36,4 @@ class UM(HolidaysUM):
 
 
 class UMI(HolidaysUM):
-    pass
-
-
-class UnitedStatesMinorOutlyingIslands(HolidaysUM):
     pass

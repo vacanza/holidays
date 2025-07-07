@@ -32,42 +32,6 @@ msgstr ""
 msgid "%s (estimé)"
 msgstr "%s (estimated)"
 
-#. New Year's Day.
-msgid "Jour de l'an"
-msgstr "New Year's Day"
-
-#. Independence Day.
-msgid "Fête de l'Indépendance"
-msgstr "Independence Day"
-
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr "Labor Day"
-
-#. Assumption Day.
-msgid "Assomption"
-msgstr "Assumption Day"
-
-#. All Saints' Day.
-msgid "Toussaint"
-msgstr "All Saints' Day"
-
-#. Christmas Day.
-msgid "Noël"
-msgstr "Christmas Day"
-
-#. Easter Monday.
-msgid "Lundi de Pâques"
-msgstr "Easter Monday"
-
-#. Whit Monday.
-msgid "Lundi de Pentecôte"
-msgstr "Whit Monday"
-
-#. Grand Magal of Touba.
-msgid "Grand Magal de Touba"
-msgstr "Grand Magal of Touba"
-
 #. %s (observed).
 #, c-format
 msgid "%s (observé)"
@@ -78,13 +42,13 @@ msgstr "%s (observed)"
 msgid "%s (observé, estimé)"
 msgstr "%s (observed, estimated)"
 
-#. Public holiday.
-msgid "Jour férié"
-msgstr "Public holiday"
-
 #. Ashura.
 msgid "Tamxarit"
 msgstr "Ashura"
+
+#. Grand Magal of Touba.
+msgid "Grand Magal de Touba"
+msgstr "Grand Magal of Touba"
 
 #. Prophet's Birthday.
 msgid "Journée du Maouloud"
@@ -98,10 +62,46 @@ msgstr "Eid al-Fitr"
 msgid "Journée de la Tabaski"
 msgstr "Eid al-Adha"
 
-#. Ascension Day.
-msgid "Jeudi de l'Ascension"
-msgstr "Ascension Day"
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
 
 #. Senegambia Confederation Day.
 msgid "Fête de la Confédération de la Sénégambie"
 msgstr "Senegambia Confederation Day"
+
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr "Independence Day"
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr "Easter Monday"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "Labor Day"
+
+#. Ascension Day.
+msgid "Jeudi de l'Ascension"
+msgstr "Ascension Day"
+
+#. Whit Monday.
+msgid "Lundi de Pentecôte"
+msgstr "Whit Monday"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "Assumption Day"
+
+#. All Saints' Day.
+msgid "Toussaint"
+msgstr "All Saints' Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Public holiday.
+msgid "Jour férié"
+msgstr "Public holiday"

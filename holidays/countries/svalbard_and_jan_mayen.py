@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.norway import Norway
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysSJ(Norway):
+class HolidaysSJ(ChildEntity, Norway):
     """Svalbard and Jan Mayen holidays.
 
     Alias of Norwegian subdivisions that are also officially assigned
@@ -25,14 +26,7 @@ class HolidaysSJ(Norway):
 
     country = "SJ"
     parent_entity = Norway
-    default_language = "no"
-    subdivisions = ()  # Override Norway subdivisions.
-    subdivisions_aliases = {}  # Override Norway subdivisions aliases.
-    supported_languages = ("en_US", "no", "th", "uk")
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "21"
-        super()._populate_public_holidays()
+    parent_entity_subdivision_code = "21"
 
 
 class SvalbardAndJanMayen(HolidaysSJ):

@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.3\n"
 "X-Generator: Poedit 3.5\n"
+"X-Source-Language: it\n"
 
 #. Solemnity of Mary, Mother of God.
 msgid "Solennità di Maria Santissima Madre di Dio"
@@ -38,13 +39,13 @@ msgstr "Epiphany"
 msgid "Anniversario della istituzione dello Stato della Città del Vaticano"
 msgstr "Anniversary of the Foundation of Vatican City"
 
-#. Anniversary of the Election of the Holy Father.
-msgid "Anniversario dell'Elezione del Santo Padre"
-msgstr "Anniversary of the Election of the Holy Father"
-
 #. Name Day of the Holy Father.
 msgid "Onomastico del Santo Padre"
 msgstr "Name Day of the Holy Father"
+
+#. Anniversary of the Election of the Holy Father.
+msgid "Anniversario dell'Elezione del Santo Padre"
+msgstr "Anniversary of the Election of the Holy Father"
 
 #. Saint Joseph's Day.
 msgid "San Giuseppe"

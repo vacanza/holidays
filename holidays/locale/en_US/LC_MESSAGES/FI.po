@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
+"X-Source-Language: fi\n"
 
 #. New Year's Day.
 msgid "Uudenvuodenpäivä"
@@ -90,10 +91,6 @@ msgstr "Second Day of Christmas"
 msgid "Runebergin päivä"
 msgstr "Runeberg Day"
 
-#. Kalevala Day, Day of Finnish Culture.
-msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
-msgstr "Kalevala Day, Day of Finnish Culture"
-
 #. Minna Canth Day, Day of Equality.
 msgid "Minna Canthin päivä, tasa-arvon päivä"
 msgstr "Minna Canth Day, Day of Equality"
@@ -110,29 +107,17 @@ msgstr "National War Veterans' Day"
 msgid "Eurooppa-päivä"
 msgstr "Europe Day"
 
-#. Mother's Day.
-msgid "Äitienpäivä"
-msgstr "Mother's Day"
+#. J. V. Snellman Day, Day of Finnish Heritage.
+msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
+msgstr "J. V. Snellman Day, Day of Finnish Heritage"
 
 #. J. V. Snellman Day.
 msgid "J.V. Snellmanin päivä"
 msgstr "J. V. Snellman Day"
 
-#. J. V. Snellman Day, Day of Finnish Heritage.
-msgid "J.V. Snellmanin päivä, suomalaisuuden päivä"
-msgstr "J. V. Snellman Day, Day of Finnish Heritage"
-
 #. Remembrance Day.
 msgid "Kaatuneitten muistopäivä"
 msgstr "Remembrance Day"
-
-#. Birthday of the Marshal of Finland.
-msgid "Suomen marsalkan syntymäpäivä"
-msgstr "Birthday of the Marshal of Finland"
-
-#. Flag Day of the Finnish Defense Forces.
-msgid "Puolustusvoimain lippujuhlan päivä"
-msgstr "Flag Day of the Finnish Defense Forces"
 
 #. Eino Leino Day, Day of Summer and Poetry.
 msgid "Eino Leinon päivä, runon ja suven päivä"
@@ -149,6 +134,10 @@ msgstr "Miina Sillanpää Day, Day of Civic Participation"
 #. Aleksis Kivi Day, Day of Finnish Literature.
 msgid "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"
 msgstr "Aleksis Kivi Day, Day of Finnish Literature"
+
+#. Aleksis Kivi Day.
+msgid "Aleksis Kiven päivä"
+msgstr "Aleksis Kivi Day"
 
 #. United Nations Day.
 msgid "YK:n päivä"
@@ -170,14 +159,26 @@ msgstr "Day of Children's Rights"
 msgid "Jean Sibeliuksen päivä, suomalaisen musiikin päivä"
 msgstr "Jean Sibelius Day, Day of Finnish Music"
 
-#. Åland's Autonomy Day.
-msgid "Ahvenanmaan itsehallintopäivä"
-msgstr "Åland's Autonomy Day"
+#. Kalevala Day, Day of Finnish Culture.
+msgid "Kalevalan päivä, suomalaisen kulttuurin päivä"
+msgstr "Kalevala Day, Day of Finnish Culture"
+
+#. Mother's Day.
+msgid "Äitienpäivä"
+msgstr "Mother's Day"
+
+#. Flag Day of the Finnish Defense Forces.
+msgid "Puolustusvoimain lippujuhlan päivä"
+msgstr "Flag Day of the Finnish Defense Forces"
+
+#. Birthday of the Marshal of Finland.
+msgid "Suomen marsalkan syntymäpäivä"
+msgstr "Birthday of the Marshal of Finland"
 
 #. Day of the Finnish Flag.
 msgid "Suomen lipun päivä"
 msgstr "Day of the Finnish Flag"
 
-#. Aleksis Kivi Day.
-msgid "Aleksis Kiven päivä"
-msgstr "Aleksis Kivi Day"
+#. Åland's Autonomy Day.
+msgid "Ahvenanmaan itsehallintopäivä"
+msgstr "Åland's Autonomy Day"

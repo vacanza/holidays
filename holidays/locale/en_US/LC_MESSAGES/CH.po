@@ -23,9 +23,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.4\n"
+"X-Source-Language: de\n"
 
 #. New Year's Day.
 msgid "Neujahrstag"
@@ -43,6 +43,10 @@ msgstr "National Day"
 msgid "Weihnachten"
 msgstr "Christmas Day"
 
+#. Saint Berchtold's Day.
+msgid "Berchtoldstag"
+msgstr "Saint Berchtold's Day"
+
 #. Good Friday.
 msgid "Karfreitag"
 msgstr "Good Friday"
@@ -51,17 +55,13 @@ msgstr "Good Friday"
 msgid "Ostermontag"
 msgstr "Easter Monday"
 
+#. Labor Day.
+msgid "Tag der Arbeit"
+msgstr "Labor Day"
+
 #. Whit Monday.
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
-
-#. Saint Stephen's Day.
-msgid "Stephanstag"
-msgstr "Saint Stephen's Day"
-
-#. Saint Berchtold's Day.
-msgid "Berchtoldstag"
-msgstr "Saint Berchtold's Day"
 
 #. Corpus Christi.
 msgid "Fronleichnam"
@@ -79,9 +79,9 @@ msgstr "All Saints' Day"
 msgid "Mariä Empfängnis"
 msgstr "Immaculate Conception"
 
-#. Labor Day.
-msgid "Tag der Arbeit"
-msgstr "Labor Day"
+#. Saint Stephen's Day.
+msgid "Stephanstag"
+msgstr "Saint Stephen's Day"
 
 #. Genevan Fast.
 msgid "Genfer Bettag"

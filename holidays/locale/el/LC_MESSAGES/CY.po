@@ -25,6 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+"X-Source-Language: el\n"
 
 #. New Year's Day.
 msgid "Πρωτοχρονιά"
@@ -78,10 +79,6 @@ msgstr ""
 msgid "Ημέρα του Όχι"
 msgstr ""
 
-#. Christmas Eve.
-msgid "Παραμονή Χριστουγέννων"
-msgstr ""
-
 #. Christmas Day.
 msgid "Χριστούγεννα"
 msgstr ""
@@ -96,4 +93,8 @@ msgstr ""
 
 #. Holy Saturday.
 msgid "Μεγάλο Σάββατο"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Παραμονή Χριστουγέννων"
 msgstr ""
