@@ -35,7 +35,7 @@ msgstr ""
 msgid "رأس السنة الميلادي"
 msgstr ""
 
-#. Christmas (Orthodox).
+#. Orthodox Christmas Day.
 msgid "عيد الميلاد المجيد الشرقي"
 msgstr ""
 
@@ -43,8 +43,8 @@ msgstr ""
 msgid "يوم المراة العالمي"
 msgstr ""
 
+#. Easter Sunday.
 #. Easter Monday.
-#. Easter Tuesday.
 msgid "عيد الفصح المجيد"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgstr ""
 msgid "عيد الإستقلال"
 msgstr ""
 
-#. Christmas (Catholic).
+#. Catholic Christmas Day.
 msgid "عيد الميلاد المجيد الغربي"
 msgstr ""
 
@@ -108,6 +108,9 @@ msgstr ""
 msgid "أحد العنصرة"
 msgstr ""
 
-#. New Year's Day (Orthodox).
-msgid "عيد الميلاد المجيد"
+#. Orthodox New Year's Day.
+msgid "عيد رأس السنة الشرقي"
 msgstr ""
+
+#~ msgid "عيد الميلاد المجيد"
+#~ msgstr ""

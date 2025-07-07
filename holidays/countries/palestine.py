@@ -55,17 +55,17 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادي"))
 
-        # Christmas (Orthodox).
+        # Orthodox Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد الشرقي"))
 
         # International Women's Day.
         self._add_womens_day(tr("يوم المراة العالمي"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("عيد الفصح المجيد"))
+        # Easter Sunday.
+        self._add_easter_sunday(tr("عيد الفصح المجيد"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
+        # Easter Sunday.
+        self._add_easter_sunday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
@@ -73,7 +73,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Independence Day.
         self._add_holiday_nov_15(tr("عيد الإستقلال"))
 
-        # Christmas (Catholic).
+        # Catholic Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
         # Hijri New Year.
@@ -99,6 +99,9 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_eid_al_adha_day_four(name)
 
     def _populate_catholic_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("رأس السنة الميلادي"))
+
         # Epiphany.
         self._add_epiphany_day(tr("عيد الغطاس"), GREGORIAN_CALENDAR)
 
@@ -114,8 +117,8 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"), GREGORIAN_CALENDAR)
 
-        # Easter Tuesday.
-        self._add_easter_tuesday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
+        # Easter Monday.
+        self._add_easter_monday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
 
         # Ascension Day.
         self._add_ascension_thursday(tr("خميس الصعود"), GREGORIAN_CALENDAR)
@@ -123,14 +126,14 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Pentecost.
         self._add_whit_sunday(tr("أحد العنصرة"), GREGORIAN_CALENDAR)
 
-        # Christmas (Catholic).
+        # Catholic Christmas Day.
         self._add_christmas_day_two(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
     def _populate_orthodox_holidays(self):
-        # New Year's Day (Orthodox).
-        self._add_holiday_jan_14(tr("عيد الميلاد المجيد"))
+        # Orthodox New Year's Day.
+        self._add_holiday_jan_14(tr("عيد رأس السنة الشرقي"))
 
-        # Christmas (Orthodox).
+        # Orthodox Christmas Day.
         self._add_christmas_day_two(tr("عيد الميلاد المجيد الشرقي"))
 
         # Epiphany.
@@ -148,8 +151,8 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"))
 
-        # Easter Tuesday.
-        self._add_easter_tuesday(tr("عيد الفصح المجيد"))
+        # Easter Monday.
+        self._add_easter_monday(tr("عيد الفصح المجيد"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("خميس الصعود"))
