@@ -95,6 +95,7 @@ class ChristmasIsland(
         * [2023](https://web.archive.org/web/20250612044842/https://www.infrastructure.gov.au/sites/default/files/documents/A06-2022-notice-proclamation-special-public-bank-holidays-2023-ci.pdf)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         * [2023 Hari Raya Haji](https://web.archive.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
         * [2024](https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf)
         * [2025](https://web.archive.org/web/20250610185153/https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf)
@@ -109,6 +110,9 @@ class ChristmasIsland(
 >>>>>>> a1cd8468 (Fix formatting issues and test cases)
 =======
         * [2023 Hari Raya Haji](https://web.archiv  e.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
+=======
+        * [2023 Hari Raya Haji](https://web.archive.org/web/20240804112114/https://www.infrastructure.gov.au/sites/default/files/documents/a06-2023_community_bulletin_-_change_of_public_holiday_date_for_hari_raya_haji_2023.pdf)
+>>>>>>> 304f4511 (fix)
         * [2024](https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf)
         * [2025](https://web.archive.org/web/20250610185153/https://www.infrastructure.gov.au/sites/default/files/documents/a20-2024-administrator-community-bulletin-ci-public-holidays-2025.pdf)
 >>>>>>> b356221b (updated test cases and holidays)
