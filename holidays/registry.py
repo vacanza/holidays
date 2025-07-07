@@ -168,6 +168,7 @@ COUNTRIES: RegistryDict = {
     "paraguay": ("Paraguay", "PY", "PRY"),
     "peru": ("Peru", "PE", "PER"),
     "philippines": ("Philippines", "PH", "PHL"),
+    "pitcairn_islands":("PitcairnIslands", "PN"),
     "poland": ("Poland", "PL", "POL"),
     "portugal": ("Portugal", "PT", "PRT"),
     "puerto_rico": ("PuertoRico", "PR", "PRI", "HolidaysPR"),
