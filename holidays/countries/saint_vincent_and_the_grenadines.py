@@ -62,7 +62,7 @@ class SaintVincentAndTheGrenadines(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Labor Day.
+        # National Workers' Day.
         self._add_observed(self._add_labor_day(tr("National Workers' Day")))
 
         if self._year >= 2025:
@@ -119,8 +119,8 @@ class SaintVincentAndTheGrenadinesStaticHolidays:
         * [Statutory Rules and Orders 2021 No.1](https://web.archive.org/web/20250613051716/https://pmoffice.gov.vc/pmoffice/images/PDF/Gazettes/No_1_Proclamation_Delcaring_Friday_the_22nd_and_Monday_25th_day_of_January_2021_to_be_Public_Holidays_in_Saint_Vincent_and_the_Grenadines_19th_January_2021.pdf)
     """
 
-    # Public Health Holidays.
-    name = tr("Public Health Holidays")
+    # Public Health Holiday.
+    name = tr("Public Health Holiday")
     special_public_holidays = {
         2021: (
             (JAN, 22, name),

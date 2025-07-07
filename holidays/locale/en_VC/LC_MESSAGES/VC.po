@@ -48,7 +48,7 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. Labor Day.
+#. National Workers' Day.
 msgid "National Workers' Day"
 msgstr ""
 
@@ -84,6 +84,6 @@ msgstr ""
 msgid "Boxing Day"
 msgstr ""
 
-#. Public Health Holidays.
-msgid "Public Health Holidays"
+#. Public Health Holiday.
+msgid "Public Health Holiday"
 msgstr ""

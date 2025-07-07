@@ -32,27 +32,22 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(SaintVincentAndTheGrenadines(years=1978))
 
-    def test_special_holidays(self):
-        self.assertHolidayName("Public Health Holidays", "2021-01-22", "2021-01-25")
+    def test_new_years_day(self):
+        self.assertHolidayName(
+            "New Year's Day",
+            (f"{year}-01-01" for year in range(1979, 2050)),
+        )
 
     def test_national_heroes_day(self):
         name = "National Heroes' Day"
         self.assertHolidayName(name, (f"{year}-03-14" for year in range(1979, 2050)))
-        observed = ("2021-03-15",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
-
-    def test_national_workers_day(self):
-        name = "National Workers' Day"
-        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1979, 2050)))
-        observed = (
-            "2005-05-02",
-            "2011-05-02",
-            "2016-05-02",
-            "2022-05-02",
+        obs_dt = (
+            "2004-03-15",
+            "2010-03-15",
+            "2021-03-15",
         )
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -79,6 +74,18 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
             "2025-04-21",
         )
         self.assertHolidayName(name, range(1979, 2050))
+
+    def test_national_workers_day(self):
+        name = "National Workers' Day"
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1979, 2050)))
+        obs_dt = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_spiritual_baptist_day(self):
         name = "National Spiritual Baptist Day"
@@ -127,36 +134,51 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     def test_emancipation_day(self):
         name = "Emancipation Day"
         self.assertHolidayName(name, (f"{year}-08-01" for year in range(1979, 2050)))
-        observed = ("2021-08-02",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
+        obs_dt = (
+            "2004-08-02",
+            "2010-08-02",
+            "2021-08-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_independence_day(self):
         name = "Independence Day"
         self.assertHolidayName(name, (f"{year}-10-27" for year in range(1979, 2050)))
-        observed = ("2024-10-28",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
+        obs_dt = (
+            "2002-10-28",
+            "2013-10-28",
+            "2019-10-28",
+            "2024-10-28",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1979, 2050)))
-        observed = ("2022-12-27",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
+        obs_dt = (
+            "2005-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2022-12-27",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1979, 2050)))
-        observed = ("2021-12-27",)
-        self.assertHolidayName(f"{name} (observed)", observed)
-        self.assertNoNonObservedHoliday(observed)
-
-    def test_new_years_day(self):
-        self.assertHolidayName(
-            "New Year's Day",
-            (f"{year}-01-01" for year in range(1979, 2050)),
+        obs_dt = (
+            "2004-12-27",
+            "2010-12-27",
+            "2021-12-27",
         )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_special_holidays(self):
+        self.assertHolidayName("Public Health Holiday", "2021-01-22", "2021-01-25")
 
     def test_2024_holidays(self):
         self.assertHolidays(
@@ -178,35 +200,35 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-03-14", "National Heroes' Day"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "National Workers' Day"),
-            ("2023-05-29", "Whit Monday"),
-            ("2023-07-10", "Carnival Monday"),
-            ("2023-07-11", "Carnival Tuesday"),
-            ("2023-08-01", "Emancipation Day"),
-            ("2023-10-27", "Independence Day"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-14", "National Heroes' Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "National Workers' Day"),
+            ("2025-05-21", "National Spiritual Baptist Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-07-07", "Carnival Monday"),
+            ("2025-07-08", "Carnival Tuesday"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-10-27", "Independence Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day (observed)"),
-            ("2023-03-14", "National Heroes' Day"),
-            ("2023-04-07", "Good Friday"),
-            ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "Labor Day"),
-            ("2023-05-29", "Whit Monday"),
-            ("2023-07-10", "Carnival Monday"),
-            ("2023-07-11", "Carnival Tuesday"),
-            ("2023-08-01", "Emancipation Day"),
-            ("2023-10-27", "Independence Day"),
-            ("2023-12-25", "Christmas Day"),
-            ("2023-12-26", "Boxing Day"),
+            ("2025-01-01", "New Year's Day"),
+            ("2025-03-14", "National Heroes' Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "National Workers' Day"),
+            ("2025-05-21", "National Spiritual Baptist Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-07-07", "Carnival Monday"),
+            ("2025-07-08", "Carnival Tuesday"),
+            ("2025-08-01", "Emancipation Day"),
+            ("2025-10-27", "Independence Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
