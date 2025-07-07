@@ -11,9 +11,10 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
+from holidays.mixins.child_entity import ChildEntity
 
 
-class HolidaysMQ(France):
+class HolidaysMQ(ChildEntity, France):
     """Martinique holidays.
 
     Alias of a French subdivision that is also officially assigned
@@ -26,14 +27,9 @@ class HolidaysMQ(France):
 
     country = "MQ"
     parent_entity = France
-    subdivisions = ()  # Override France subdivisions.
-    subdivisions_aliases = {}  # Override France subdivisions aliases.
+    parent_entity_subdivision_code = "972"
     # Cession from the UK on May 30th, 1814.
     start_year = 1815
-
-    def _populate_public_holidays(self) -> None:
-        self.subdiv = "972"
-        super()._populate_public_holidays()
 
 
 class Martinique(HolidaysMQ):

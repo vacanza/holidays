@@ -46,7 +46,7 @@ class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     country = "IR"
     default_language = "fa_IR"
     # %s (estimated).
-    estimated_label = tr("(تخمین زده) %s")
+    estimated_label = tr("%s (تخمینی)")
     supported_languages = ("en_US", "fa_IR")
     start_year = 1980
     weekend = {FRI}
