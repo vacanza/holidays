@@ -24,16 +24,16 @@ class TestSpain(CommonCountryTests, TestCase):
         super().setUpClass(Spain)
 
     def _assertVariableDays(self, year: int, subdiv_holidays: dict):  # noqa: N802
-        observed_prov_holidays = {
+        observed_subdiv_holidays = {
             subdiv: Spain(subdiv=subdiv, years=year) for subdiv in Spain.subdivisions
         }
-        for hol_date, hol_provs in subdiv_holidays.items():
-            dt = date(year, *hol_date)
-            for subdiv, prov_holidays in observed_prov_holidays.items():
+        for dt, subdivisions in subdiv_holidays.items():
+            dt = date(year, *dt)
+            for subdiv, subdiv_holidays in observed_subdiv_holidays.items():
                 self.assertEqual(
-                    dt in prov_holidays,
-                    subdiv in hol_provs,
-                    f"Failed date `{dt:%Y-%m-%d}`, province `{subdiv}`: {', '.join(hol_provs)}",
+                    dt in subdiv_holidays,
+                    subdiv in subdivisions,
+                    f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: {', '.join(subdivisions)}",
                 )
 
     def test_country_aliases(self):
