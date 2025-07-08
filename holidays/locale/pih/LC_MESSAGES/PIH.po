@@ -38,15 +38,15 @@ msgstr "Bauti Dei"
 
 #. Good Friday
 msgid "Good Friday"
-msgstr "Gud Fraidei"
+msgstr "Gud Fraidee"
 
 #. Easter Monday
 msgid "Easter Monday"
-msgstr "Ista Mondei"
+msgstr "Iista Mundee"
 
 #. King's Birthday
 msgid "King's Birthday"
-msgstr "Kings Bedei"
+msgstr "Keng Borthdee"
 
 #. Christmas Day
 msgid "Christmas Day"
@@ -54,4 +54,4 @@ msgstr "Krismas Dei"
 
 #. Boxing Day
 msgid "Boxing Day"
-msgstr "Boksin Dei"
+msgstr "Boksing Dei"
