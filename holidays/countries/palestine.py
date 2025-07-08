@@ -26,13 +26,14 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
     References:
         * https://en.wikipedia.org/wiki/Public_holidays_in_Palestine
         * <https://web.archive.org/web/20250705114216/https://info.wafa.ps/pages/details/29601>
-        * [Independence](https://en.wikipedia.org/wiki/Palestine#Uprising,_declaration_and_peace_treaty)
+        * [Declaration of Palestine independence](https://en.wikipedia.org/wiki/Palestine#Uprising,_declaration_and_peace_treaty)
     """
 
     country = "PS"
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (المقدرة)")
+    # State of Palestine declarated in November 1988.
     start_year = 1989
     supported_categories = (CATHOLIC, ORTHODOX, PUBLIC)
     supported_languages = ("ar", "en_US")
@@ -61,11 +62,11 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # International Women's Day.
         self._add_womens_day(tr("يوم المراة العالمي"))
 
-        # Easter Sunday.
-        self._add_easter_sunday(tr("عيد الفصح المجيد"))
-
-        # Easter Sunday.
+        # Easter.
         self._add_easter_sunday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
+
+        # Easter.
+        self._add_easter_sunday(tr("عيد الفصح المجيد"))
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
@@ -117,7 +118,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"), GREGORIAN_CALENDAR)
 
-        # Easter Monday.
+        # Easter.
         self._add_easter_monday(tr("عيد الفصح المجيد"), GREGORIAN_CALENDAR)
 
         # Ascension Day.
@@ -151,7 +152,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         # Holy Saturday.
         self._add_holy_saturday(tr("سبت النور"))
 
-        # Easter Monday.
+        # Easter.
         self._add_easter_monday(tr("عيد الفصح المجيد"))
 
         # Ascension Day.

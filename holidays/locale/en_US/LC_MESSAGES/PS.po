@@ -43,8 +43,7 @@ msgstr "Orthodox Christmas Day"
 msgid "يوم المراة العالمي"
 msgstr "International Women's Day"
 
-#. Easter Sunday.
-#. Easter Monday.
+#. Easter.
 msgid "عيد الفصح المجيد"
 msgstr "Easter"
 

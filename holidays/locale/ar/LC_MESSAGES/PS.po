@@ -43,8 +43,7 @@ msgstr ""
 msgid "يوم المراة العالمي"
 msgstr ""
 
-#. Easter Sunday.
-#. Easter Monday.
+#. Easter.
 msgid "عيد الفصح المجيد"
 msgstr ""
 
