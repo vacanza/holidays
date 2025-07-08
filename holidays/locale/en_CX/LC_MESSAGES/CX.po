@@ -16,6 +16,7 @@ msgid ""
 msgstr ""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Project-Id-Version: Holidays 0.77\n"
 =======
 "Project-Id-Version: Holidays 0.75\n"
@@ -23,6 +24,9 @@ msgstr ""
 =======
 "Project-Id-Version: Holidays 0.76\n"
 >>>>>>> 92346375 (fixes)
+=======
+"Project-Id-Version: Holidays 0.77\n"
+>>>>>>> a04a4ab8 (localization fix)
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
 "PO-Revision-Date: 2025-06-12 12:00+0000\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
@@ -47,23 +51,32 @@ msgstr ""
 #, c-format
 msgid "%s (observed)"
 <<<<<<< HEAD
+<<<<<<< HEAD
 msgstr ""
 =======
 msgstr "%s (observed)"
 >>>>>>> 5505906f (Add Christmas Island holidays)
+=======
+msgstr ""
+>>>>>>> a04a4ab8 (localization fix)
 
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
 <<<<<<< HEAD
+<<<<<<< HEAD
 msgstr ""
 =======
 msgstr "%s (estimated)"
 >>>>>>> 5505906f (Add Christmas Island holidays)
+=======
+msgstr ""
+>>>>>>> a04a4ab8 (localization fix)
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
+<<<<<<< HEAD
 <<<<<<< HEAD
 msgstr ""
 
@@ -116,38 +129,41 @@ msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr ""
 =======
 msgstr "%s (observed, estimated)"
+=======
+msgstr ""
+>>>>>>> a04a4ab8 (localization fix)
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Australia Day.
 msgid "Australia Day"
-msgstr "Australia Day"
+msgstr ""
 
 #. Chinese New Year.
 msgid "Chinese New Year"
-msgstr "Chinese New Year"
+msgstr ""
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 #. ANZAC Day.
 msgid "ANZAC Day"
-msgstr "ANZAC Day"
+msgstr ""
 
 #. Territory Day.
 msgid "Territory Day"
-msgstr "Territory Day"
+msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "Boxing Day"
+msgstr ""
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -175,16 +191,20 @@ msgstr "National Day of Mourning for Queen Elizabeth II"
 #. Christmas Day.
 >>>>>>> 374ed607 (fixed formatting)
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"
+<<<<<<< HEAD
 msgstr "Hari Raya Puasa"
 >>>>>>> 92346375 (fixes)
+=======
+msgstr ""
+>>>>>>> a04a4ab8 (localization fix)
 
 #. Eid al-Adha.
 msgid "Hari Raya Haji"
-msgstr "Hari Raya Haji"
+msgstr ""
 
 <<<<<<< HEAD
 #. Eid al-Fitr.
@@ -194,5 +214,9 @@ msgstr "Hari Raya Puasa"
 =======
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
+<<<<<<< HEAD
 msgstr "National Day of Mourning for Queen Elizabeth II"
 >>>>>>> 92346375 (fixes)
+=======
+msgstr ""
+>>>>>>> a04a4ab8 (localization fix)
