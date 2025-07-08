@@ -24,7 +24,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
     """Palestine holidays.
 
     References:
-        * https://en.wikipedia.org/wiki/Public_holidays_in_Palestine
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_Palestine>
         * <https://web.archive.org/web/20250705114216/https://info.wafa.ps/pages/details/29601>
         * [Declaration of Palestine independence](https://en.wikipedia.org/wiki/Palestine#Uprising,_declaration_and_peace_treaty)
     """
