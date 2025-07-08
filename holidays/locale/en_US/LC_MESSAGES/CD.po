@@ -30,29 +30,29 @@ msgstr ""
 msgid "Jour de l'An"
 msgstr "New Year's Day"
 
-#. Martyrs' Day.
-msgid "Journée des Martyrs"
-msgstr "Martyrs' Day"
+#. Martyrs of Independence.
+msgid "Martyrs de l’indépendance"
+msgstr "Martyrs of Independence"
 
-#. Laurent-Désiré Kabila Assassination.
-msgid "Assassinat de Laurent-Désiré Kabila"
-msgstr "Laurent-Désiré Kabila Assassination"
+#. National Hero Laurent Désiré KABILA Day.
+msgid "Journée du Héro National Laurent Désiré KABILA"
+msgstr "National Hero Laurent Désiré KABILA Day"
 
-#. Patrice Lumumba Assassination.
-msgid "Assassinat de Patrice Lumumba"
-msgstr "Patrice Lumumba Assassination"
+#. National Hero Patrice Emery LUMUMBA Day.
+msgid "Journée du Héro National Patrice Emery LUMUMBA"
+msgstr "National Hero Patrice Emery LUMUMBA Day"
 
-#. Kimbangu's Day.
-msgid "Journée de Kimbangu"
-msgstr "Kimbangu's Day"
+#. Day of the Struggle of Simon Kimbangu and African Consciousness.
+msgid "Journée du combat de Simon Kimbangu et de la conscience africaine"
+msgstr "Day of the Struggle of Simon Kimbangu and African Consciousness"
 
 #. Labor Day.
 msgid "Fête du Travail"
 msgstr "Labor Day"
 
-#. Armed Forces Day.
-msgid "Journée des forces armées"
-msgstr "Armed Forces Day"
+#. Revolution and Armed Forces Day.
+msgid "Journée de la Révolution et des Forces Armées"
+msgstr "Revolution and Armed Forces Day"
 
 #. Liberation Day.
 msgid "Jour de la Libération"
@@ -63,12 +63,12 @@ msgid "Jour de l'indépendance"
 msgstr "Independence Day"
 
 #. Parents' Day.
-msgid "Journée des parents"
+msgid "Fête des parents"
 msgstr "Parents' Day"
 
-#. Congolese Genocide Day.
-msgid "Journée du génocide congolais"
-msgstr "Congolese Genocide Day"
+#. Congolese Genocide Memorial Day.
+msgid "Journée commémorative du génocide Congolais"
+msgstr "Congolese Genocide Memorial Day"
 
 #. Christmas Day.
 msgid "Noël"
