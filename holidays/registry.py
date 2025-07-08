@@ -180,6 +180,7 @@ COUNTRIES: RegistryDict = {
     "saint_lucia": ("SaintLucia", "LC", "LCA"),
     "saint_martin": ("SaintMartin", "MF", "MAF", "HolidaysMF"),
     "saint_pierre_and_miquelon": ("SaintPierreAndMiquelon", "PM", "SPM", "HolidaysPM"),
+    "saint_vincent_and_the_grenadines": ("SaintVincentAndTheGrenadines", "VC", "VCT"),
     "samoa": ("Samoa", "WS", "WSM"),
     "san_marino": ("SanMarino", "SM", "SMR"),
     "sao_tome_and_principe": ("SaoTomeAndPrincipe", "ST", "STP"),
