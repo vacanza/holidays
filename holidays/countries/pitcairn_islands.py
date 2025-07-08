@@ -28,7 +28,6 @@ class PitcairnIslands(HolidayBase, ChristianHolidays):
 
     country = "PN"
     default_language = "en"
-    supported_categories = (PUBLIC,)
     supported_languages = ("en", "pih")  # English, Pitkern
 
     def __init__(self, *args, **kwargs):
@@ -40,11 +39,11 @@ class PitcairnIslands(HolidayBase, ChristianHolidays):
             # Pitkern translations
             self._add_new_years_day("Niu Ier Dei")
             self._add_holiday_jan_23("Bauti Dei")
-            self._add_good_friday("Gud Fraidee")
-            self._add_easter_monday("Iista Mundee")
-            self._add_kings_birthday("Keng Borthdee")
+            self._add_good_friday("Gud Fraidei")
+            self._add_easter_monday("Ista Mondei")
+            self._add_kings_birthday("Kings Bedei")
             self._add_christmas_day("Krismas Dei")
-            self._add_boxing_day("Boksing Dei")
+            self._add_boxing_day("Boksin Dei")
         else:
             # English translations (default)
             self._add_new_years_day(tr("New Year's Day"))

@@ -37,3 +37,4 @@ class TestPitcairnIslands(CommonCountryTests):
 
     def test_random_non_holiday(self):
         self.assertNoHoliday(PitcairnIslands(year=2024), date(2024, 2, 2))
+        
