@@ -1274,6 +1274,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<td>Saint Vincent and the Grenadines</td>
+<td>VC</td>
+<td></td>
+<td>en_US, <strong>en_VC</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Samoa</td>
 <td>WS</td>
 <td></td>
