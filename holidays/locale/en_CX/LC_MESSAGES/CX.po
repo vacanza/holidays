@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
 "PO-Revision-Date: 2025-06-12 12:00+0000\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
@@ -30,62 +30,62 @@ msgstr ""
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
-msgstr "%s (observed)"
+msgstr ""
 
 #. %s (estimated).
 #, c-format
 msgid "%s (estimated)"
-msgstr "%s (estimated)"
+msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (observed, estimated)"
-msgstr "%s (observed, estimated)"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "New Year's Day"
+msgstr ""
 
 #. Australia Day.
 msgid "Australia Day"
-msgstr "Australia Day"
+msgstr ""
 
 #. Chinese New Year.
 msgid "Chinese New Year"
-msgstr "Chinese New Year"
+msgstr ""
 
 #. Labor Day.
 msgid "Labour Day"
-msgstr "Labour Day"
+msgstr ""
 
 #. Good Friday.
 msgid "Good Friday"
-msgstr "Good Friday"
+msgstr ""
 
 #. ANZAC Day.
 msgid "ANZAC Day"
-msgstr "ANZAC Day"
+msgstr ""
 
 #. Territory Day.
 msgid "Territory Day"
-msgstr "Territory Day"
+msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "Boxing Day"
+msgstr ""
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Christmas Day"
+msgstr ""
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"
-msgstr "Hari Raya Puasa"
+msgstr ""
 
 #. Eid al-Adha.
 msgid "Hari Raya Haji"
-msgstr "Hari Raya Haji"
+msgstr ""
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
-msgstr "National Day of Mourning for Queen Elizabeth II"
+msgstr ""
