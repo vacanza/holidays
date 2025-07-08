@@ -32,11 +32,19 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(SaintVincentAndTheGrenadines(years=1978))
 
+    def test_special_holidays(self):
+        self.assertHolidayName("Public Health Holiday", "2021-01-22", "2021-01-25")
+
     def test_new_years_day(self):
-        self.assertHolidayName(
-            "New Year's Day",
-            (f"{year}-01-01" for year in range(1979, 2050)),
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1979, 2050)))
+        obs_dt = (
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
         )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_national_heroes_day(self):
         name = "National Heroes' Day"
@@ -176,9 +184,6 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_special_holidays(self):
-        self.assertHolidayName("Public Health Holiday", "2021-01-22", "2021-01-25")
 
     def test_2024_holidays(self):
         self.assertHolidays(
