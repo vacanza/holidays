@@ -83,10 +83,11 @@ class SaintVincentAndTheGrenadines(
             2023: (JUL, 10),
             2024: (JUL, 8),
         }
-        if self._year in carnival_monday_dates:
-            dt = self._add_holiday(name, carnival_monday_dates[self._year])
-        else:
-            dt = self._add_holiday_1st_mon_of_jul(name)
+        dt = (
+            self._add_holiday(name, dt)
+            if (dt := carnival_monday_dates.get(self._year))
+            else self._add_holiday_1st_mon_of_jul(name)
+        )
 
         # Carnival Tuesday.
         self._add_holiday(tr("Carnival Tuesday"), _timedelta(dt, +1))
