@@ -57,7 +57,7 @@ class TestPalestine(CommonCountryTests, TestCase):
             name, self.orthodox_holidays, (f"{year}-01-08" for year in range(1989, 2050))
         )
 
-    def test_orthodox_new_years_day(self):
+    def test_new_years_day_orthodox(self):
         name = "عيد رأس السنة الشرقي"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
@@ -87,83 +87,83 @@ class TestPalestine(CommonCountryTests, TestCase):
     def test_holy_thursday_orthodox(self):
         name = "خميس الغسل"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-21",
             "2023-04-13",
             "2024-05-02",
             "2025-04-17",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_good_friday_orthodox(self):
         name = "الجمعة العظيمة"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-22",
             "2023-04-14",
             "2024-05-03",
             "2025-04-18",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_holy_saturday_orthodox(self):
         name = "سبت النور"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-23",
             "2023-04-15",
             "2024-05-04",
             "2025-04-19",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_easter_sunday_orthodox(self):
         name = "عيد الفصح المجيد"
         self.assertHolidayName(name, range(1989, 2050))
-        dt = (
+        dts = (
             "2022-04-24",
             "2023-04-16",
             "2024-05-05",
             "2025-04-20",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
 
     def test_easter_monday_orthodox(self):
         name = "عيد الفصح المجيد"
-        dt = (
+        dts = (
             "2022-04-25",
             "2023-04-17",
             "2024-05-06",
             "2025-04-21",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_ascension_thursday_orthodox(self):
         name = "خميس الصعود"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-06-02",
             "2023-05-25",
             "2024-06-13",
             "2025-05-29",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_whit_sunday_orthodox(self):
         name = "أحد العنصرة"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-06-12",
             "2023-06-04",
             "2024-06-23",
             "2025-06-08",
         )
-        self.assertHolidayName(name, self.orthodox_holidays, dt)
+        self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
     def test_epiphany_catholic(self):
@@ -188,83 +188,83 @@ class TestPalestine(CommonCountryTests, TestCase):
     def test_holy_thursday_catholic(self):
         name = "خميس الغسل"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-14",
             "2023-04-06",
             "2024-03-28",
             "2025-04-17",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_good_friday_catholic(self):
         name = "الجمعة العظيمة"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_holy_saturday_catholic(self):
         name = "سبت النور"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-04-16",
             "2023-04-08",
             "2024-03-30",
             "2025-04-19",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_easter_sunday_catholic(self):
         name = "عيد الفصح المجيد"
-        dt = (
+        dts = (
             "2022-04-17",
             "2023-04-09",
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(1989, 2050))
 
     def test_easter_monday_catholic(self):
         name = "عيد الفصح المجيد"
-        dt = (
+        dts = (
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_ascension_thursday_catholic(self):
         name = "خميس الصعود"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-05-26",
             "2023-05-18",
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_whit_sunday_catholic(self):
         name = "أحد العنصرة"
         self.assertNoHolidayName(name)
-        dt = (
+        dts = (
             "2022-06-05",
             "2023-05-28",
             "2024-05-19",
             "2025-06-08",
         )
-        self.assertHolidayName(name, self.catholic_holidays, dt)
+        self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
     def test_christmas_catholic(self):
