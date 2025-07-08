@@ -31,17 +31,16 @@ from holidays.observed_holiday_base import (
 
 class ChristmasIsland(
     ObservedHolidayBase,
+    ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     StaticHolidays,
-    ChineseCalendarHolidays,
 ):
-    """Christmas Island Holidays.
+    """Christmas Island holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Christmas_Island>
-        * <https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf>
         * [2007](https://web.archive.org/web/20250612072036/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/01-2006_Public_Holidays_2007_CI.doc)
         * [2008](https://web.archive.org/web/20240224131231/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/05-2007_Public_Holidays_CI.pdf)
         * [2008 Hari Raya Puasa](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
@@ -50,7 +49,6 @@ class ChristmasIsland(
         * [2013](https://web.archive.org/web/20240805060802/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2012/2012-Gazette_7-2012-CI-Proclamation_of_2013_Public_Holidays_for_Christmas_Island.pdf)
         * [2014](https://web.archive.org/web/20240718175750/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2013/2013-Gazette_2-2013-Christmas_Island_2014_Public_Holidays.pdf)
         * [2016 Hari Raya Puasa](https://web.archive.org/web/20240222235345/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_4-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
-        * [2016 Update](https://web.archive.org/web/20240222235345/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_4-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
         * [2017](https://web.archive.org/web/20240226014639/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_1-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2017.pdf)
         * [2019](https://web.archive.org/web/20250517064053/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2018/files/A37-2018.pdf)
         * [2020](https://web.archive.org/web/20240830230128/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2019/files/A52-2019.pdf)
@@ -210,12 +208,8 @@ class ChristmasIslandStaticHolidays:
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
     special_public_holidays_observed = {
-        2013: (
-            (FEB, 11, chinese_new_year),
-            (FEB, 12, chinese_new_year),
-        ),
+        2013: (FEB, 12, chinese_new_year),
         2014: (
-            (JAN, 31, chinese_new_year),
             (FEB, 3, chinese_new_year),
             (OCT, 7, eid_al_adha),
         ),
