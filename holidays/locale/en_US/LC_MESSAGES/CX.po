@@ -17,6 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.77\n"
+<<<<<<< HEAD
 =======
 # Christmas Island holidays.
 =======
@@ -31,6 +32,8 @@ msgstr ""
 =======
 "Project-Id-Version: Holidays 0.76\n"
 >>>>>>> 92346375 (fixes)
+=======
+>>>>>>> bcd9240e (fix)
 "POT-Creation-Date: 2025-05-09 22:15+0530\n"
 "PO-Revision-Date: 2025-06-12 12:00+0000\n"
 "Last-Translator: Ansh Anand <ansh.a.3112@gmail.com>\n"
@@ -89,6 +92,7 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
+<<<<<<< HEAD
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
@@ -159,9 +163,15 @@ msgid "Boxing Day"
 msgstr "Boxing Day"
 >>>>>>> 5505906f (Add Christmas Island holidays)
 
+=======
+>>>>>>> bcd9240e (fix)
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Boxing Day"
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"
