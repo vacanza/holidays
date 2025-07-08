@@ -55,6 +55,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         name = "Chinese New Year"
         self.assertHolidayName(
             name,
+<<<<<<< HEAD
             "2021-02-12",
             "2021-02-13",
             "2022-02-01",
@@ -85,12 +86,16 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         name = "Chinese New Year"
         self.assertHolidayName(
             name,
+=======
+            "2013-02-11",
+>>>>>>> 63a330eb (fix)
             "2016-02-08",
             "2019-02-05",
             "2023-01-23",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
+            "2013-02-12",
             "2017-01-30",
             "2020-01-28",
             "2024-02-12",

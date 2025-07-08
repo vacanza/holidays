@@ -41,13 +41,18 @@ from holidays.observed_holiday_base import (
 class ChristmasIsland(
     ObservedHolidayBase,
 <<<<<<< HEAD
+<<<<<<< HEAD
     ChineseCalendarHolidays,
 =======
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+    ChineseCalendarHolidays,
+>>>>>>> 63a330eb (fix)
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
     StaticHolidays,
+<<<<<<< HEAD
 <<<<<<< HEAD
 ):
     """Christmas Island holidays.
@@ -59,12 +64,13 @@ class ChristmasIsland(
         * [2008 Hari Raya Puasa](https://web.archive.org/web/20240331104649/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2008/03_2008_Observance_of_Hari_Raya_Puasa_2008.pdf)
 =======
     ChineseCalendarHolidays,
+=======
+>>>>>>> 63a330eb (fix)
 ):
-    """Christmas Island Holidays.
+    """Christmas Island holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Christmas_Island>
-        * <https://web.archive.org/web/20240519034837/https://www.infrastructure.gov.au/sites/default/files/documents/a11-2023-2024-public-holidays-christmas-island.pdf>
         * [2007](https://web.archive.org/web/20250612072036/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2006/01-2006_Public_Holidays_2007_CI.doc)
         * [2008](https://web.archive.org/web/20240224131231/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2007/05-2007_Public_Holidays_CI.pdf)
 <<<<<<< HEAD
@@ -80,6 +86,7 @@ class ChristmasIsland(
 <<<<<<< HEAD
 <<<<<<< HEAD
         * [2016 Hari Raya Puasa](https://web.archive.org/web/20240222235345/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_4-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
+<<<<<<< HEAD
 =======
         * [2016](https://web.archive.org/web/20250513003407/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2015/2015-Gazette_3-2015-CI-Proclamation_of_2016_Special_Public_Bank_Holidays.pdf)
 =======
@@ -87,6 +94,8 @@ class ChristmasIsland(
 >>>>>>> b356221b (updated test cases and holidays)
         * [2016 Update](https://web.archive.org/web/20240222235345/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_4-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2016.pdf)
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> 63a330eb (fix)
         * [2017](https://web.archive.org/web/20240226014639/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_gazette/files/2016/2016-Gazette_1-2016-CI-Proclamation_Special_Public_and_Bank_Holidays_2017.pdf)
         * [2019](https://web.archive.org/web/20250517064053/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2018/files/A37-2018.pdf)
         * [2020](https://web.archive.org/web/20240830230128/https://www.infrastructure.gov.au/sites/default/files/migrated/territories/indian_ocean/iot_bulletins/2019/files/A52-2019.pdf)
@@ -402,6 +411,7 @@ class ChristmasIslandStaticHolidays:
 <<<<<<< HEAD
 
     special_public_holidays_observed = {
+<<<<<<< HEAD
         2014: (OCT, 7, eid_al_adha),
         2020: (
             (JAN, 28, chinese_new_year),
@@ -418,8 +428,10 @@ class ChristmasIslandStaticHolidays:
             (FEB, 11, chinese_new_year),
             (FEB, 12, chinese_new_year),
         ),
+=======
+        2013: (FEB, 12, chinese_new_year),
+>>>>>>> 63a330eb (fix)
         2014: (
-            (JAN, 31, chinese_new_year),
             (FEB, 3, chinese_new_year),
             (OCT, 7, eid_al_adha),
         ),
