@@ -56,6 +56,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2013-02-12",
             "2017-01-30",
             "2020-01-28",
+            "2023-01-24",
             "2024-02-12",
         )
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
