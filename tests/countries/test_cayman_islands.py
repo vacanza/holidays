@@ -16,7 +16,7 @@ from holidays.countries.cayman_islands import CaymanIslands, KY, CYM
 from tests.common import CommonCountryTests
 
 
-class TestFalklandIslands(CommonCountryTests, TestCase):
+class TestCaymanIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         years = range(2008, 2050)
