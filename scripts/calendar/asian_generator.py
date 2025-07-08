@@ -395,8 +395,8 @@ def generate_data():
             if h_month == 0:
                 continue
             g_date = cnls.lunar_to_gre(g_year, h_month, h_day)
-            if g_year in dates:
-                dates[g_year][hol_name] = g_date
+            if dt := dates.get(g_year):
+                dt[hol_name] = g_date
             else:
                 dates[g_year] = {hol_name: g_date}
         dates[g_year]["DIWALI"] = cnls.s_diwali_date(g_year)
