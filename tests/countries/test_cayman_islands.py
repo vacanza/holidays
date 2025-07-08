@@ -50,7 +50,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_nationals_heros_day(self):
+    def test_nationals_heroes_day(self):
         name = "National Heroes Day"
         self.assertHolidayName(
             name,
