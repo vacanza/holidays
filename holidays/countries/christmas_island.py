@@ -217,6 +217,7 @@ class ChristmasIsland(
 <<<<<<< HEAD
         self._add_holiday_1st_mon_of_oct(tr("Territory Day"))
 
+<<<<<<< HEAD
 =======
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
 =======
@@ -232,12 +233,18 @@ class ChristmasIsland(
 >>>>>>> ab4deaa7 (fixed formatting issues)
 =======
 >>>>>>> 10239cc7 (formatting)
+=======
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+
+>>>>>>> 8eba1200 (suggested changes)
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
 
+<<<<<<< HEAD
         # Christmas Day.
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -255,6 +262,8 @@ class ChristmasIsland(
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+>>>>>>> 8eba1200 (suggested changes)
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
             self._add_observed(dt)
