@@ -82,7 +82,7 @@ msgstr "Eid al-Adha"
 
 #. Epiphany.
 msgid "عيد الغطاس"
-msgstr "Epiphany Day"
+msgstr "Epiphany"
 
 #. Palm Sunday.
 msgid "أحد الشعانين"

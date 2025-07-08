@@ -357,11 +357,11 @@ class TestPalestine(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-01-01", "New Year's Day"),
-            ("2024-01-06", "Epiphany Day"),
+            ("2024-01-06", "Epiphany"),
             ("2024-01-07", "Orthodox Christmas Day"),
             ("2024-01-08", "Orthodox Christmas Day"),
             ("2024-01-14", "Orthodox New Year's Day"),
-            ("2024-01-19", "Epiphany Day"),
+            ("2024-01-19", "Epiphany"),
             ("2024-02-08", "Isra' and Mi'raj"),
             ("2024-03-08", "International Women's Day"),
             ("2024-03-24", "Palm Sunday"),
