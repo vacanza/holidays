@@ -13,7 +13,6 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, JUN
-from holidays.constants import PUBLIC
 from holidays.groups import ChristianHolidays
 from holidays.holiday_base import HolidayBase
 

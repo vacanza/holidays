@@ -1187,7 +1187,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PN</td>
 <td></td>
 <td><strong>en_PN</strong>, en_US, fil, th</td>
-<td>WORKDAY</td>
+<td></td>
 </tr>
 <tr>
 <td>Poland</td>
