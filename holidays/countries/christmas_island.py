@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChineseCalendarHolidays,
@@ -167,6 +167,15 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
     }
 
 
+class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES = {
+        2007: (FEB, 19),
+        2009: (JAN, 27),
+        2010: (FEB, 15),
+        2023: (JAN, 23),
+    }
+
+
 class CX(ChristmasIsland):
     pass
 
@@ -188,55 +197,12 @@ class ChristmasIslandStaticHolidays:
     # Eid al-Adha.
     eid_al_adha = tr("Hari Raya Haji")
 
-    # Eid al-Fitr.
-    eid_al_fitr = tr("Hari Raya Puasa")
-
-    # Australia Day.
-    australia_day = tr("Australia Day")
-
-    # Christmas Day.
-    christmas_day = tr("Christmas Day")
-
-    # Boxing Day.
-    boxing_day = tr("Boxing Day")
-
-    # New Year's Day.
-    new_years_day = tr("New Year's Day")
-
     special_public_holidays = {
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
     special_public_holidays_observed = {
-        2013: (FEB, 12, chinese_new_year),
-        2014: (
-            (FEB, 3, chinese_new_year),
-            (OCT, 7, eid_al_adha),
-        ),
-        2016: (
-            (DEC, 26, christmas_day),
-            (DEC, 27, boxing_day),
-        ),
-        2017: (
-            (JAN, 2, new_years_day),
-            (JAN, 30, chinese_new_year),
-            (JAN, 31, chinese_new_year),
-            (JUN, 26, eid_al_fitr),
-        ),
-        2019: (AUG, 12, eid_al_adha),
-        2020: (
-            (JAN, 28, chinese_new_year),
-            (JAN, 29, chinese_new_year),
-            (MAY, 25, eid_al_fitr),
-        ),
-        2022: (JUL, 11, eid_al_adha),
-        2023: (APR, 24, eid_al_fitr),
-        2024: (
-            (FEB, 12, chinese_new_year),
-            (FEB, 13, chinese_new_year),
-        ),
-        2025: (
-            (JUN, 6, eid_al_adha),
-            (JAN, 27, australia_day),
-        ),
+        2014: (OCT, 7, eid_al_adha),
+        2020: (JAN, 28, chinese_new_year),
+        2025: (JUN, 6, eid_al_adha),
     }
