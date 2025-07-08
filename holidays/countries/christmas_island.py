@@ -13,6 +13,7 @@
 from gettext import gettext as tr
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, JUN, JUL, AUG, SEP, OCT, NOV
 =======
@@ -21,6 +22,9 @@ from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
+=======
+from holidays.calendars import _CustomChineseHolidays, _CustomIslamicHolidays
+>>>>>>> 0aed4632 (added custom chinese holidays)
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 >>>>>>> b356221b (updated test cases and holidays)
 from holidays.groups import (
@@ -360,6 +364,15 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
 >>>>>>> a1cd8468 (Fix formatting issues and test cases)
 
 
+class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES = {
+        2007: (FEB, 19),
+        2009: (JAN, 27),
+        2010: (FEB, 15),
+        2023: (JAN, 23),
+    }
+
+
 class CX(ChristmasIsland):
     pass
 
@@ -394,6 +407,7 @@ class ChristmasIslandStaticHolidays:
     eid_al_adha = tr("Hari Raya Haji")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
@@ -413,6 +427,8 @@ class ChristmasIslandStaticHolidays:
     new_years_day = tr("New Year's Day")
 
 >>>>>>> b356221b (updated test cases and holidays)
+=======
+>>>>>>> 0aed4632 (added custom chinese holidays)
     special_public_holidays = {
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
@@ -420,6 +436,7 @@ class ChristmasIslandStaticHolidays:
 <<<<<<< HEAD
 
     special_public_holidays_observed = {
+<<<<<<< HEAD
 <<<<<<< HEAD
         2014: (OCT, 7, eid_al_adha),
         2020: (
@@ -471,4 +488,9 @@ class ChristmasIslandStaticHolidays:
             (JAN, 27, australia_day),
         ),
 >>>>>>> b356221b (updated test cases and holidays)
+=======
+        2014: (OCT, 7, eid_al_adha),
+        2020: (JAN, 28, chinese_new_year),
+        2025: (JUN, 6, eid_al_adha),
+>>>>>>> 0aed4632 (added custom chinese holidays)
     }
