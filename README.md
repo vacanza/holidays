@@ -110,6 +110,7 @@ and detailed information.
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 We currently support 235 country codes. The standard way to refer to a country is by using its [ISO
 =======
 We currently support 186 country codes. The standard way to refer to a country is by using its [ISO
@@ -126,6 +127,9 @@ We currently support 208 country codes. The standard way to refer to a country i
 =======
 We currently support 209 country codes. The standard way to refer to a country is by using its [ISO
 >>>>>>> 3a9f4152 (readme)
+=======
+We currently support 210 country codes. The standard way to refer to a country is by using its [ISO
+>>>>>>> 7ef82ada (readme change)
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
