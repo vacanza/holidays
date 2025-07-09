@@ -33,12 +33,15 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-22")
+<<<<<<< HEAD
 =======
         self.assertNoHolidays(ChristmasIsland(years=1984))
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
         self.assertNoHolidays(ChristmasIsland(years=2006))
 >>>>>>> 0fa58338 (test changes)
+=======
+>>>>>>> b75e99a5 (added test for special holiday)
 
     def test_new_years_day(self):
         name = "New Year's Day"
