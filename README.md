@@ -485,6 +485,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>CX</td>
 <td></td>
 <td><strong>en_CX</strong>, en_US</td>
+<<<<<<< HEAD
 =======
 <td>Christmas Islands</td>
 =======
@@ -494,6 +495,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 <td> <strong>en_CX</strong>, en_US</td>
 >>>>>>> 5505906f (Add Christmas Island holidays)
+=======
+>>>>>>> cebd1f61 (readme fix)
 <td></td>
 </tr>
 <tr>
