@@ -103,17 +103,16 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             }
             # Queen's Birthday.
             name = tr("Queen's Birthday")
-            if self._year in queens_birthday_dates:
-                self._add_holiday(name, queens_birthday_dates[self._year])
-        else:
+            self._add_holiday(name, queens_birthday_dates[self._year])
+
+        if self._year >= 2023 and self._year <= 2025:
             kings_birthday_dates = {
                 2023: (JUN, 19),
                 2024: (JUN, 17),
                 2025: (JUN, 23),
             }
-            if self._year in kings_birthday_dates:
-                # King's Birthday.
-                self._add_holiday(tr("King's Birthday"), kings_birthday_dates[self._year])
+            # King's Birthday.
+            self._add_holiday(tr("King's Birthday"), kings_birthday_dates[self._year])
 
         # Constitution Day.
         self._add_holiday_1st_mon_of_jul(tr("Constitution Day"))
