@@ -89,8 +89,8 @@ class BritishVirginIslands(
                 2019: (JUN, 7),
                 2023: (JUN, 16),
             }
-            if self._year in sovereign_birthday_dates:
-                self._add_holiday(name, sovereign_birthday_dates[self._year])
+            if dt := sovereign_birthday_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_2nd_fri_of_jun(name)
         else:
@@ -110,8 +110,8 @@ class BritishVirginIslands(
             2015: (JUN, 29),
             2020: (JUN, 29),
         }
-        if self._year in territory_day_dates:
-            self._add_holiday(name, territory_day_dates[self._year])
+        if dt := territory_day_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             if self._year >= 2021:
                 self._add_holiday_1st_mon_of_jul(name)
@@ -151,8 +151,8 @@ class BritishVirginIslands(
                 2015: (OCT, 19),
                 2020: (OCT, 23),
             }
-            if self._year in saint_ursula_dates:
-                self._add_holiday(name, saint_ursula_dates[self._year])
+            if dt := saint_ursula_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_observed(
                     self._add_holiday_oct_21(name), rule=SAT_TO_PREV_FRI + SUN_TO_NEXT_MON

@@ -529,8 +529,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         }
         # The Royal Queensland Show.
         name = tr("The Royal Queensland Show")
-        if self._year in ekka_dates:
-            self._add_holiday(name, ekka_dates[self._year])
+        if dt := ekka_dates.get(self._year):
+            self._add_holiday(name, dt)
         else:
             # [1st FRI after Aug 5] + 5 days = [1st WED after Aug 10]
             self._add_holiday_1st_wed_from_aug_10(name)
@@ -839,8 +839,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             }
             # Grand Final Day.
             name = tr("Grand Final Day")
-            if self._year in grand_final_dates:
-                self._add_holiday(name, grand_final_dates[self._year])
+            if dt := grand_final_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_1_day_prior_last_sat_of_sep(name)
 
@@ -937,10 +937,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                     2012: (OCT, 1),
                     2024: (SEP, 23),
                 }
-                if self._year in sovereign_birthday_dates:
-                    self._add_holiday(
-                        self.sovereign_birthday, sovereign_birthday_dates[self._year]
-                    )
+                if dt := sovereign_birthday_dates.get(self._year):
+                    self._add_holiday(self.sovereign_birthday, dt)
                 else:
                     self._add_holiday_last_mon_of_sep(self.sovereign_birthday)
             else:
