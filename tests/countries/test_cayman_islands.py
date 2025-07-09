@@ -19,14 +19,14 @@ from tests.common import CommonCountryTests
 class TestCaymanIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2008, 2050)
+        years = range(2006, 2050)
         super().setUpClass(CaymanIslands, years=years, years_non_observed=years)
 
     def test_country_aliases(self):
         self.assertAliases(CaymanIslands, KY, CYM)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(CaymanIslands(years=2007))
+        self.assertNoHolidays(CaymanIslands(years=2005))
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -39,7 +39,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2008, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2006, 2050)))
         obs_dt = (
             "2011-01-03",
             "2012-01-02",
@@ -61,7 +61,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-01-22",
             "2025-01-27",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_ash_wednesday(self):
         name = "Ash Wednesday"
@@ -74,7 +74,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-02-14",
             "2025-03-05",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -87,7 +87,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -100,13 +100,16 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_general_election_day(self):
         name = "General Election Day"
-        self.assertHolidayName(name, "2009-05-20", "2017-05-24", "2021-04-14", "2025-04-30")
+        self.assertHolidayName(
+            name, "2009-05-20", "2013-05-22", "2017-05-24", "2021-04-14", "2025-04-30"
+        )
         self.assertNoHolidayName(
-            name, [year for year in range(2008, 2050) if year not in (2009, 2017, 2021, 2025)]
+            name,
+            [year for year in range(2006, 2050) if year not in (2009, 2013, 2017, 2021, 2025)],
         )
 
     def test_emancipation_day(self):
@@ -120,7 +123,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2028-05-01",
         )
         self.assertHolidayName(name, range(2024, 2050))
-        self.assertNoHolidayName(name, range(2008, 2024))
+        self.assertNoHolidayName(name, range(2006, 2024))
 
     def test_discovery_day(self):
         name = "Discovery Day"
@@ -133,7 +136,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-05-19",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_queens_birthday(self):
         name = "Queen's Birthday"
@@ -145,7 +148,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2021-06-14",
             "2022-06-06",
         )
-        self.assertHolidayName(name, range(2008, 2023))
+        self.assertHolidayName(name, range(2006, 2023))
         self.assertNoHolidayName(name, range(2023, 2050))
 
     def test_kings_birthday(self):
@@ -156,7 +159,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-23",
         )
-        self.assertNoHolidayName(name, range(2008, 2023))
+        self.assertNoHolidayName(name, range(2006, 2023))
 
     def test_constitution_day(self):
         name = "Constitution Day"
@@ -169,7 +172,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-07-01",
             "2025-07-07",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_remembrance_day(self):
         name = "Remembrance Day"
@@ -182,11 +185,11 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-11-11",
             "2025-11-10",
         )
-        self.assertHolidayName(name, range(2008, 2050))
+        self.assertHolidayName(name, range(2006, 2050))
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2008, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2006, 2050)))
         obs_dt = (
             "2010-12-27",
             "2011-12-27",
@@ -199,7 +202,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2008, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2006, 2050)))
         obs_dt = (
             "2010-12-28",
             "2015-12-28",
@@ -208,6 +211,13 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_referendum_day(self):
+        name = "Referendum Day"
+        self.assertHolidayName(name, "2012-07-18", "2019-12-19")
+        self.assertNoHolidayName(name, range(2006, 2012))
+        self.assertNoHolidayName(name, range(2013, 2019))
+        self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

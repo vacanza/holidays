@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays import APR, MAY, JUN, SEP, NOV
+from holidays import APR, MAY, JUN, SEP, NOV, DEC, JUL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -26,21 +26,25 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Cayman_Islands>
-        * <https://web.archive.org/web/20250212214050/https://www.timeanddate.com/holidays/cayman-islands/2025>
         * [Public Holidays Law (2007 Revision)](https://web.archive.org/web/20250227060525/https://legislation.gov.ky/cms/images/LEGISLATION/PRINCIPAL/1964/1964-0140/PublicHolidaysAct_2007%20Revision_g.pdf)
         * [Public Holidays Order, 2024](https://web.archive.org/web/20240518181823/https://legislation.gov.ky/cms/images/LEGISLATION/AMENDING/2024/2024-O004/PublicHolidaysOrder2024SL4of2024.pdf)
-        * [Public Holidays Order, 2025](https://legislation.gov.ky/cms/images/LEGISLATION/SUBORDINATE/2025/2025-0015/PublicHolidaysOrder2025_SL%2015%20of%202025.pdf)
-        * [2021](https://www.gov.ky/news/press-release-details/public-holidays-for-2021)
-        * [2022](https://www.gov.ky/news/press-release-details/public-holidays-2022)
-        * [2025](https://www.gov.ky/calendar/public-holidays)
+        * [2006-2007](https://web.archive.org/web/20061005043512/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2008-2009](https://web.archive.org/web/20090114153804/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2010-2011](https://web.archive.org/web/20101130124121/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2012-2013](http://archive.today/2012.12.20-043003/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2014-2015](https://web.archive.org/web/20141108191601/http://www.gov.ky/portal/page?_pageid=1142,1592653&_dad=portal&_schema=PORTAL)
+        * [2021](http://archive.today/2025.07.09-033240/https://www.gov.ky/news/press-release-details/public-holidays-for-2021)
+        * [2022](http://archive.today/2025.07.09-033515/https://www.gov.ky/news/press-release-details/public-holidays-2022)
+        * [2024](http://archive.today/2025.01.06-110234/https://www.gov.ky/calendar/public-holidays)
+        * [2025](http://archive.today/2025.07.09-033853/https://www.gov.ky/calendar/public-holidays)
     """
 
     country = "KY"
     default_language = "en_GB"
     # %s observed.
     observed_label = tr("%s (observed)")
-    # Public Holidays Law (2007 Revision).
-    start_year = 2008
+    # Earliest year of holidays.
+    start_year = 2006
     supported_languages = ("en_GB", "en_US")
 
     def __init__(self, *args, **kwargs):
@@ -66,16 +70,6 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        general_election_dates = {
-            2009: (MAY, 20),
-            2017: (MAY, 24),
-            2021: (APR, 14),
-            2025: (APR, 30),
-        }
-        if self._year in general_election_dates:
-            # General Election Day.
-            self._add_holiday(tr("General Election Day"), general_election_dates[self._year])
-
         if self._year >= 2024:
             # Emancipation Day.
             self._add_holiday_1st_mon_of_may(tr("Emancipation Day"))
@@ -85,34 +79,21 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
         if self._year <= 2022:
             queens_birthday_dates = {
-                2008: (JUN, 16),
-                2009: (JUN, 15),
-                2010: (JUN, 14),
-                2011: (JUN, 13),
+                2007: (JUN, 18),
                 2012: (JUN, 18),
                 2013: (JUN, 17),
-                2014: (JUN, 16),
-                2015: (JUN, 15),
-                2016: (JUN, 13),
                 2017: (JUN, 19),
-                2018: (JUN, 11),
-                2019: (JUN, 10),
-                2020: (JUN, 15),
-                2021: (JUN, 14),
                 2022: (JUN, 6),
             }
             # Queen's Birthday.
             name = tr("Queen's Birthday")
-            self._add_holiday(name, queens_birthday_dates[self._year])
-
-        if self._year >= 2023 and self._year <= 2025:
-            kings_birthday_dates = {
-                2023: (JUN, 19),
-                2024: (JUN, 17),
-                2025: (JUN, 23),
-            }
+            if dt := queens_birthday_dates.get(self._year):
+                self._add_holiday(name, dt)
+            else:
+                self._add_holiday_2_days_past_2nd_sat_of_jun(name)
+        else:
             # King's Birthday.
-            self._add_holiday(tr("King's Birthday"), kings_birthday_dates[self._year])
+            self._add_holiday_2_days_past_3rd_sat_of_jun(tr("King's Birthday"))
 
         # Constitution Day.
         self._add_holiday_1st_mon_of_jul(tr("Constitution Day"))
@@ -147,20 +128,36 @@ class CaymanIslandsStaticHolidays:
     References:
         * [2009 Cayman Islands Constitution Day](https://web.archive.org/web/20250320152628/https://www.constitutionalcommission.ky/the-cayman-islands-constitution-2009)
         * [UK Royal Wedding](https://en.wikipedia.org/wiki/Wedding_of_Prince_William_and_Catherine_Middleton)
-        * [Queen Elizabeth II's Diamond Jubilee](https://web.archive.org/web/20250708170324/https://calendarific.com/holiday/cayman-islands/queen-diamond-jubilee)
-        * [Queen Elizabeth II's Funeral](https://www.gov.ky/queen-elizabeth-ii/faqs)
+        * [Queen Elizabeth II's Diamond Jubilee](https://web.archive.org/web/20210803202236/https://www.caymancompass.com/2012/06/06/queens-diamond-jubilee-feted/)
+        * [Queen Elizabeth II's Funeral](https://web.archive.org/web/20231226055510/https://www.caymancompass.com/2022/09/12/cayman-declares-public-holiday-for-queens-funeral/)
         * [King Charles III's Coronation](https://web.archive.org/web/20250601214328/https://www.radiocayman.gov.ky/news/public-holidays-for-2023-unconfirmed)
+        * [Public Holidays Order, 2025](https://archive.org/details/public-holidays-order-2025-sl-15-of-2025)
     """
 
+    # Referendum Day.
+    referendum_day_name = tr("Referendum Day")
+    # General Election Day.
+    general_election_day_name = tr("General Election Day")
     special_public_holidays = {
-        # 2009 Cayman Islands Constitution Day.
-        2009: (NOV, 6, tr("2009 Cayman Islands Constitution Day")),
+        2009: (
+            # 2009 Cayman Islands Constitution Day.
+            (NOV, 6, tr("2009 Cayman Islands Constitution Day")),
+            (MAY, 20, general_election_day_name),
+        ),
         # UK Royal Wedding.
         2011: (APR, 29, tr("UK Royal Wedding")),
-        # Queen Elizabeth II's Diamond Jubilee.
-        2012: (JUN, 4, tr("Queen Elizabeth II's Diamond Jubilee")),
+        2012: (
+            # Queen Elizabeth II's Diamond Jubilee.
+            (JUN, 4, tr("Queen Elizabeth II's Diamond Jubilee")),
+            (JUL, 18, referendum_day_name),
+        ),
+        2013: (MAY, 22, general_election_day_name),
+        2017: (MAY, 24, general_election_day_name),
+        2019: (DEC, 19, referendum_day_name),
+        2021: (APR, 14, general_election_day_name),
         # Queen Elizabeth II's Funeral.
         2022: (SEP, 19, tr("Queen Elizabeth II's Funeral")),
         # King Charles III's Coronation.
         2023: (MAY, 8, tr("Coronation of His Majesty King Charles III")),
+        2025: (APR, 30, general_election_day_name),
     }

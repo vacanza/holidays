@@ -51,10 +51,6 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. General Election Day.
-msgid "General Election Day"
-msgstr ""
-
 #. Emancipation Day.
 msgid "Emancipation Day"
 msgstr ""
@@ -85,6 +81,14 @@ msgstr ""
 
 #. Boxing Day.
 msgid "Boxing Day"
+msgstr ""
+
+#. Referendum Day.
+msgid "Referendum Day"
+msgstr ""
+
+#. General Election Day.
+msgid "General Election Day"
 msgstr ""
 
 #. 2009 Cayman Islands Constitution Day.
