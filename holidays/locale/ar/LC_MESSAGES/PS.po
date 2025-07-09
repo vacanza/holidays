@@ -60,15 +60,15 @@ msgid "عيد الميلاد المجيد الغربي"
 msgstr ""
 
 #. Hijri New Year.
-msgid "رأس السنة الهجريــة"
+msgid "رأس السنة الهجرية"
 msgstr ""
 
 #. Prophet's Birthday.
-msgid "ذكرى المولد النبوي الشريـف"
+msgid "ذكرى المولد النبوي الشريف"
 msgstr ""
 
 #. Isra' and Mi'raj.
-msgid "ذكرى الإسراء والمعــراج"
+msgid "ذكرى الإسراء والمعراج"
 msgstr ""
 
 #. Eid al-Fitr.

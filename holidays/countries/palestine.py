@@ -78,13 +78,13 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
         # Hijri New Year.
-        self._add_islamic_new_year_day(tr("رأس السنة الهجريــة"))
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("ذكرى المولد النبوي الشريـف"))
+        self._add_mawlid_day(tr("ذكرى المولد النبوي الشريف"))
 
         # Isra' and Mi'raj.
-        self._add_isra_and_miraj_day(tr("ذكرى الإسراء والمعــراج"))
+        self._add_isra_and_miraj_day(tr("ذكرى الإسراء والمعراج"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر السعيد")
