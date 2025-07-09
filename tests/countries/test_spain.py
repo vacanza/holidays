@@ -23,11 +23,11 @@ class TestSpain(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Spain)
 
-    def _assertVariableDays(self, year: int, subdiv_holidays: dict):  # noqa: N802
+    def _assertVariableDays(self, year: int, expected_subdiv_holidays: dict):  # noqa: N802
         observed_subdiv_holidays = {
             subdiv: Spain(subdiv=subdiv, years=year) for subdiv in Spain.subdivisions
         }
-        for month_day, subdivisions in subdiv_holidays.items():
+        for month_day, subdivisions in expected_subdiv_holidays.items():
             dt = date(year, *month_day)
             for subdiv, observed_holidays in observed_subdiv_holidays.items():
                 self.assertEqual(
