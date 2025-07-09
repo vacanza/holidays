@@ -110,6 +110,3 @@ msgstr ""
 #. Orthodox New Year's Day.
 msgid "عيد رأس السنة الشرقي"
 msgstr ""
-
-#~ msgid "عيد الميلاد المجيد"
-#~ msgstr ""
