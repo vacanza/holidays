@@ -29,6 +29,9 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(ChristmasIsland(years=2006))
 
+    def test_special_holidays(self):
+        self.assertHoliday("2022-09-22")
+
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(2007, 2050)))
