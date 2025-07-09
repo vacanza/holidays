@@ -27,7 +27,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertAliases(ChristmasIsland, CX, CXR)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(ChristmasIsland(years=1984))
+        self.assertNoHolidays(ChristmasIsland(years=2006))
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -46,13 +46,28 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         name = "Chinese New Year"
         self.assertHolidayName(
             name,
-            "2013-02-11",
-            "2016-02-08",
-            "2019-02-05",
+            "2021-02-12",
+            "2021-02-13",
+            "2022-02-01",
+            "2022-02-02",
             "2023-01-23",
+            "2023-01-24",
+            "2024-02-10",
+            "2024-02-11",
+            "2025-01-29",
+            "2025-01-30",
         )
-        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
-        self.assertTrue(set(range(2007, 2050)).issubset(years_found))
+        self.assertHolidayName(name, range(2007, 2020), range(2021, 2050))
+        obs_dt = (
+            "2018-02-19",
+            "2020-01-28",
+            "2020-01-29",
+            "2021-02-15",
+            "2024-02-12",
+            "2024-02-13",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_australia_day(self):
         name = "Australia Day"
@@ -106,27 +121,6 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test_eid_al_fitr(self):
-        name = "Hari Raya Puasa"
-        self.assertHolidayName(
-            name,
-            "2020-05-24",
-            "2021-05-13",
-            "2022-05-02",
-            "2023-04-22",
-            "2024-04-10",
-            "2025-03-31",
-        )
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
-        obs_dt = (
-            "2012-08-20",
-            "2017-06-26",
-            "2020-05-25",
-            "2023-04-24",
-        )
-        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
-
     def test_territory_day(self):
         name = "Territory Day"
         self.assertHolidayName(
@@ -164,6 +158,27 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
+    def test_eid_al_fitr(self):
+        name = "Hari Raya Puasa"
+        self.assertHolidayName(
+            name,
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-22",
+            "2024-04-10",
+            "2025-03-31",
+        )
+        self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
+        obs_dt = (
+            "2012-08-20",
+            "2017-06-26",
+            "2020-05-25",
+            "2023-04-24",
+        )
+        self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
     def test_eid_al_adha(self):
         name = "Hari Raya Haji"
         self.assertHolidayName(
@@ -176,7 +191,6 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
-            "2011-11-07",
             "2019-08-12",
             "2022-07-11",
             "2025-06-06",
