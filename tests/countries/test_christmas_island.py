@@ -341,6 +341,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
 <<<<<<< HEAD
+<<<<<<< HEAD
             "2011-11-07",
 <<<<<<< HEAD
             "2014-10-07",
@@ -348,6 +349,10 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
 >>>>>>> 0fa58338 (test changes)
+=======
+            "2011-11-07",
+            "2014-10-07",
+>>>>>>> 1d1c6cd5 (update)
             "2019-08-12",
             "2022-07-11",
             "2025-06-06",
