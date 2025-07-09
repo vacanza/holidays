@@ -91,8 +91,8 @@ class TurksAndCaicosIslands(ObservedHolidayBase, ChristianHolidays, Internationa
             2024: (JUN, 17),
             2025: (JUN, 23),
         }
-        if self._year in dates_obs:
-            self._add_holiday(name, dates_obs.get(self._year))
+        if dt := dates_obs.get(self._year):
+            self._add_holiday(name, dt)
         else:
             self._add_holiday_2nd_mon_of_jun(name)
 
