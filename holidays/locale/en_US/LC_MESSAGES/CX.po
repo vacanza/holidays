@@ -70,13 +70,13 @@ msgstr "ANZAC Day"
 msgid "Territory Day"
 msgstr "Territory Day"
 
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr "Christmas Day"
-
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"

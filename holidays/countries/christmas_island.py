@@ -72,7 +72,7 @@ class ChristmasIsland(
     start_year = 2007
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
-        ChineseCalendarHolidays.__init__(self)
+        ChineseCalendarHolidays.__init__(self, cls=ChristmasIslandChineseHolidays)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
@@ -91,8 +91,11 @@ class ChristmasIsland(
 
         # Chinese New Year.
         name = tr("Chinese New Year")
-        self._add_observed(self._add_chinese_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
-        self._add_observed(self._add_chinese_new_years_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+        if self._year != 2020:
+            self._add_observed(self._add_chinese_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+            self._add_observed(
+                self._add_chinese_new_years_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE
+            )
 
         # Labor Day.
         name = tr("Labour Day")
@@ -110,14 +113,14 @@ class ChristmasIsland(
         # Territory Day.
         self._add_holiday_1st_mon_of_oct(tr("Territory Day"))
 
-        # Christmas Day.
-        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
-
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
+
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
@@ -127,6 +130,15 @@ class ChristmasIsland(
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
             if self._year not in {2014, 2025}:
                 self._add_observed(dt)
+
+
+class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES = {
+        2007: (FEB, 19),
+        2009: (JAN, 27),
+        2010: (FEB, 15),
+        2023: (JAN, 23),
+    }
 
 
 class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
@@ -167,15 +179,6 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
     }
 
 
-class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES = {
-        2007: (FEB, 19),
-        2009: (JAN, 27),
-        2010: (FEB, 15),
-        2023: (JAN, 23),
-    }
-
-
 class CX(ChristmasIsland):
     pass
 
@@ -201,8 +204,12 @@ class ChristmasIslandStaticHolidays:
         # National Day of Mourning for Queen Elizabeth II.
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
+
     special_public_holidays_observed = {
         2014: (OCT, 7, eid_al_adha),
-        2020: (JAN, 28, chinese_new_year),
+        2020: (
+            (JAN, 28, chinese_new_year),
+            (JAN, 29, chinese_new_year),
+        ),
         2025: (JUN, 6, eid_al_adha),
     }
