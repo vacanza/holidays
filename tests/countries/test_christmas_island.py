@@ -325,12 +325,16 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2022-07-09",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             "2023-06-28",
 =======
             "2023-06-29",
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
 >>>>>>> 47ba5c3f (fix)
+=======
+            "2023-06-28",
+>>>>>>> 9278e046 (fix)
             "2024-06-17",
             "2025-06-07",
         )
