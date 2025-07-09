@@ -154,7 +154,7 @@ class TestPalestine(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.orthodox_holidays, dts)
         self.assertHolidayName(name, self.orthodox_holidays, range(1989, 2050))
 
-    def test_whit_sunday_orthodox(self):
+    def test_pentecost_orthodox(self):
         name = "أحد العنصرة"
         self.assertNoHolidayName(name)
         dts = (
@@ -255,7 +255,7 @@ class TestPalestine(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.catholic_holidays, dts)
         self.assertHolidayName(name, self.catholic_holidays, range(1989, 2050))
 
-    def test_whit_sunday_catholic(self):
+    def test_pentecost_catholic(self):
         name = "أحد العنصرة"
         self.assertNoHolidayName(name)
         dts = (
@@ -396,13 +396,13 @@ class TestPalestine(CommonCountryTests, TestCase):
             ("2024-05-05", "Easter"),
             ("2024-05-06", "Easter"),
             ("2024-05-09", "Ascension Day"),
-            ("2024-05-19", "Whit Sunday"),
+            ("2024-05-19", "Pentecost"),
             ("2024-06-13", "Ascension Day"),
             ("2024-06-16", "Eid al-Adha"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-06-18", "Eid al-Adha"),
             ("2024-06-19", "Eid al-Adha"),
-            ("2024-06-23", "Whit Sunday"),
+            ("2024-06-23", "Pentecost"),
             ("2024-07-07", "Hijri New Year"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-11-15", "Independence Day"),
