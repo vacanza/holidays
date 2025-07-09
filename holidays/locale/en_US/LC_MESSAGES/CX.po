@@ -93,6 +93,7 @@ msgid "Territory Day"
 msgstr "Territory Day"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
@@ -169,9 +170,15 @@ msgstr "Boxing Day"
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+=======
+>>>>>>> b3e678af (fixes)
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
 
 #. Eid al-Fitr.
 msgid "Hari Raya Puasa"

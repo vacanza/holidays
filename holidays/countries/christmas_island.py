@@ -144,10 +144,14 @@ class ChristmasIsland(
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
 <<<<<<< HEAD
+<<<<<<< HEAD
         ChineseCalendarHolidays.__init__(self, cls=ChristmasIslandChineseHolidays)
 =======
         ChineseCalendarHolidays.__init__(self)
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
+=======
+        ChineseCalendarHolidays.__init__(self, cls=ChristmasIslandChineseHolidays)
+>>>>>>> b3e678af (fixes)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
@@ -168,11 +172,15 @@ class ChristmasIsland(
         name = tr("Chinese New Year")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b3e678af (fixes)
         if self._year != 2020:
             self._add_observed(self._add_chinese_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
             self._add_observed(
                 self._add_chinese_new_years_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE
             )
+<<<<<<< HEAD
 
         # Labor Day.
         name = tr("Labour Day")
@@ -192,6 +200,8 @@ class ChristmasIsland(
 =======
         self._add_observed(self._add_chinese_new_years_day(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
         self._add_observed(self._add_chinese_new_years_day_two(name), rule=SAT_SUN_TO_NEXT_MON_TUE)
+=======
+>>>>>>> b3e678af (fixes)
 
         # Labor Day.
         name = tr("Labour Day")
@@ -222,6 +232,7 @@ class ChristmasIsland(
         self._add_holiday_1st_mon_of_oct(tr("Territory Day"))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         self._add_observed(self._add_holiday_oct_6(tr("Territory Day")))
 =======
@@ -242,12 +253,15 @@ class ChristmasIsland(
         self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
 >>>>>>> 8eba1200 (suggested changes)
+=======
+>>>>>>> b3e678af (fixes)
         self._add_observed(
             # Boxing Day.
             self._add_christmas_day_two(tr("Boxing Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
         )
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         # Christmas Day.
 <<<<<<< HEAD
@@ -268,6 +282,11 @@ class ChristmasIsland(
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
 >>>>>>> 8eba1200 (suggested changes)
+=======
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+
+>>>>>>> b3e678af (fixes)
         # Eid al-Fitr.
         for dt in self._add_eid_al_fitr_day(tr("Hari Raya Puasa")):
             self._add_observed(dt)
@@ -302,6 +321,15 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Haji")):
             if self._year not in {2014, 2025}:
                 self._add_observed(dt)
+
+
+class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
+    LUNAR_NEW_YEAR_DATES = {
+        2007: (FEB, 19),
+        2009: (JAN, 27),
+        2010: (FEB, 15),
+        2023: (JAN, 23),
+    }
 
 
 class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
@@ -362,15 +390,6 @@ class ChristmasIslandIslamicHolidays(_CustomIslamicHolidays):
 >>>>>>> f097c6b9 (Fixed Formatting Issues and tests)
 =======
 >>>>>>> a1cd8468 (Fix formatting issues and test cases)
-
-
-class ChristmasIslandChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES = {
-        2007: (FEB, 19),
-        2009: (JAN, 27),
-        2010: (FEB, 15),
-        2023: (JAN, 23),
-    }
 
 
 class CX(ChristmasIsland):
@@ -434,6 +453,9 @@ class ChristmasIslandStaticHolidays:
         2022: (SEP, 22, tr("National Day of Mourning for Queen Elizabeth II")),
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b3e678af (fixes)
 
     special_public_holidays_observed = {
 <<<<<<< HEAD
@@ -490,7 +512,10 @@ class ChristmasIslandStaticHolidays:
 >>>>>>> b356221b (updated test cases and holidays)
 =======
         2014: (OCT, 7, eid_al_adha),
-        2020: (JAN, 28, chinese_new_year),
+        2020: (
+            (JAN, 28, chinese_new_year),
+            (JAN, 29, chinese_new_year),
+        ),
         2025: (JUN, 6, eid_al_adha),
 >>>>>>> 0aed4632 (added custom chinese holidays)
     }

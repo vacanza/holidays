@@ -108,12 +108,12 @@ msgstr ""
 msgid "Territory Day"
 msgstr ""
 
-#. Christmas Day.
-msgid "Christmas Day"
-msgstr ""
-
 #. Boxing Day.
 msgid "Boxing Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
 msgstr ""
 
 #. Eid al-Fitr.

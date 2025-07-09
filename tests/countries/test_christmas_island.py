@@ -93,6 +93,7 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
             "2019-02-05",
             "2023-01-23",
         )
+<<<<<<< HEAD
         self.assertHolidayName(name, self.no_estimated_holidays, range(2007, 2050))
         obs_dt = (
             "2013-02-12",
@@ -108,6 +109,10 @@ class TestChristmasIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", self.no_estimated_holidays, obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 >>>>>>> b356221b (updated test cases and holidays)
+=======
+        years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
+        self.assertTrue(set(range(2007, 2050)).issubset(years_found))
+>>>>>>> b3e678af (fixes)
 
     def test_australia_day(self):
         name = "Australia Day"
