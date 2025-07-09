@@ -27,11 +27,11 @@ class TestSpain(CommonCountryTests, TestCase):
         observed_subdiv_holidays = {
             subdiv: Spain(subdiv=subdiv, years=year) for subdiv in Spain.subdivisions
         }
-        for dt, subdivisions in subdiv_holidays.items():
-            dt = date(year, *dt)
-            for subdiv, subdiv_holidays in observed_subdiv_holidays.items():
+        for month_day, subdivisions in subdiv_holidays.items():
+            dt = date(year, *month_day)
+            for subdiv, observed_holidays in observed_subdiv_holidays.items():
                 self.assertEqual(
-                    dt in subdiv_holidays,
+                    dt in observed_holidays,
                     subdiv in subdivisions,
                     f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: {', '.join(subdivisions)}",
                 )
