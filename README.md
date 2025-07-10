@@ -1200,7 +1200,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Pitcairn Islands</td>
 <td>PN</td>
 <td></td>
-<td>-</td>
+<td><strong>en_GB</strong>, en_US</td>
 <td></td>
 </tr>
 <td>Poland</td>
