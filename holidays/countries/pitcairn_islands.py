@@ -10,9 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
-from holidays.calendars.gregorian import JAN, JUN, DEC, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import JAN, JUN, _get_nth_weekday_of_month
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -26,8 +24,6 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "PN"
-    default_language = "en"
-    supported_languages = ("en",)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -38,13 +34,13 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year < 2000:
             return
 
-        self._add_new_years_day(tr("New Year's Day"))
-        self._add_holiday_jan_23(tr("Bounty Day"))
-        self._add_good_friday(tr("Good Friday"))
-        self._add_easter_monday(tr("Easter Monday"))
-        self._add_kings_birthday(tr("King's Birthday"))
-        self._add_christmas_day(tr("Christmas Day"))
-        self._add_holiday(tr("Boxing Day"), DEC, 26)
+        self._add_new_years_day("New Year's Day")
+        self._add_holiday_jan_23("Bounty Day")
+        self._add_good_friday("Good Friday")
+        self._add_easter_monday("Easter Monday")
+        self._add_kings_birthday("King's Birthday")
+        self._add_christmas_day("Christmas Day")
+        self._add_holiday("Boxing Day", 12, 26)
 
     def _add_holiday_jan_23(self, name: str):
         """Add Bounty Day (January 23)."""
@@ -52,7 +48,7 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_kings_birthday(self, name: str):
         """Add King's Birthday (2nd Saturday in June)."""
-        date = _get_nth_weekday_of_month(2, 5, JUN, self._year)  # 2nd Saturday (5) in June
+        date = _get_nth_weekday_of_month(2, 5, JUN, self._year)
         self._add_holiday(name, date)
 
 
