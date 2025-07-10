@@ -1,0 +1,113 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Palestine holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.77\n"
+"POT-Creation-Date: 2025-07-02 19:05+0500\n"
+"PO-Revision-Date: 2025-07-05 15:38+0500\n"
+"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.6\n"
+"X-Generator: Poedit 3.6\n"
+"X-Source-Language: ar\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (المقدرة)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "رأس السنة الميلادي"
+msgstr "New Year's Day"
+
+#. Orthodox Christmas Day.
+msgid "عيد الميلاد المجيد الشرقي"
+msgstr "Orthodox Christmas Day"
+
+#. International Women's Day.
+msgid "يوم المراة العالمي"
+msgstr "International Women's Day"
+
+#. Easter.
+msgid "عيد الفصح المجيد"
+msgstr "Easter"
+
+#. Labor Day.
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+#. Independence Day.
+msgid "عيد الإستقلال"
+msgstr "Independence Day"
+
+#. Catholic Christmas Day.
+msgid "عيد الميلاد المجيد الغربي"
+msgstr "Catholic Christmas Day"
+
+#. Hijri New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Hijri New Year"
+
+#. Prophet's Birthday.
+msgid "ذكرى المولد النبوي الشريف"
+msgstr "Prophet's Birthday"
+
+#. Isra' and Mi'raj.
+msgid "ذكرى الإسراء والمعراج"
+msgstr "Isra' and Mi'raj"
+
+#. Eid al-Fitr.
+msgid "عيد الفطر السعيد"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى المبارك"
+msgstr "Eid al-Adha"
+
+#. Epiphany.
+msgid "عيد الغطاس"
+msgstr "Epiphany"
+
+#. Palm Sunday.
+msgid "أحد الشعانين"
+msgstr "Palm Sunday"
+
+#. Holy Thursday.
+msgid "خميس الغسل"
+msgstr "Holy Thursday"
+
+#. Good Friday.
+msgid "الجمعة العظيمة"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+msgid "سبت النور"
+msgstr "Holy Saturday"
+
+#. Ascension Day.
+msgid "خميس الصعود"
+msgstr "Ascension Day"
+
+#. Pentecost.
+msgid "أحد العنصرة"
+msgstr "Pentecost"
+
+#. Orthodox New Year's Day.
+msgid "عيد رأس السنة الشرقي"
+msgstr "Orthodox New Year's Day"

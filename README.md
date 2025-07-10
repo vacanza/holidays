@@ -427,6 +427,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Christmas Island</td>
+<td>CX</td>
+<td></td>
+<td><strong>en_CX</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Cocos Islands</td>
 <td>CC</td>
 <td></td>
@@ -1148,6 +1155,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>ARMED_FORCES, HALF_DAY</td>
 </tr>
 <tr>
+<td>Palestine</td>
+<td>PS</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CATHOLIC, ORTHODOX</td>
+</tr>
+<tr>
 <td>Panama</td>
 <td>PA</td>
 <td></td>
@@ -1270,6 +1284,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>PM</td>
 <td>Can also be loaded as country FR, subdivision PM</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Saint Vincent and the Grenadines</td>
+<td>VC</td>
+<td></td>
+<td>en_US, <strong>en_VC</strong></td>
 <td></td>
 </tr>
 <tr>

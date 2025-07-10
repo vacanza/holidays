@@ -97,9 +97,9 @@ class Nepal(
                 2032: (JAN, 30),
                 2033: (JAN, 29),
             }
-            if self._year in martyrs_day_dates:
+            if dt := martyrs_day_dates.get(self._year):
                 # Martyr's Day.
-                self._add_holiday("Martyr's Day", martyrs_day_dates[self._year])
+                self._add_holiday("Martyr's Day", dt)
 
             democracy_day_dates = {
                 2010: (FEB, 19),
@@ -127,9 +127,9 @@ class Nepal(
                 2032: (FEB, 20),
                 2033: (FEB, 19),
             }
-            if self._year in democracy_day_dates:
+            if dt := democracy_day_dates.get(self._year):
                 # National Democracy Day.
-                self._add_holiday("National Democracy Day", democracy_day_dates[self._year])
+                self._add_holiday("National Democracy Day", dt)
 
             republic_day_dates = {
                 2010: (MAY, 29),
@@ -156,10 +156,10 @@ class Nepal(
                 2031: (MAY, 29),
                 2032: (MAY, 28),
             }
-            if self._year in republic_day_dates:
+            if dt := republic_day_dates.get(self._year):
                 # Established in 2009.
                 # Republic Day.
-                self._add_holiday("Republic Day", republic_day_dates[self._year])
+                self._add_holiday("Republic Day", dt)
 
             # Hindu Holidays.
 
@@ -211,9 +211,9 @@ class Nepal(
             2031: (SEP, 19),
             2032: (SEP, 19),
         }
-        if self._year in constitution_day_dates:
+        if dt := constitution_day_dates.get(self._year):
             # Constitution Day.
-            self._add_holiday("Constitution Day", constitution_day_dates[self._year])
+            self._add_holiday("Constitution Day", dt)
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

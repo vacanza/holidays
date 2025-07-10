@@ -85,11 +85,11 @@ def generate_data():
                 h_day = convert.Hijri(h_year, h_month, 1).month_length() + h_day + 1
             g_date = convert.Hijri(h_year, h_month, h_day).to_gregorian()
             g_year = g_date.year
-            if g_year in dates:
-                if hol_name in dates[g_year]:
-                    dates[g_year][hol_name].append(g_date)
+            if dt := dates.get(g_year):
+                if dts := dt.get(hol_name):
+                    dts.append(g_date)
                 else:
-                    dates[g_year][hol_name] = [g_date]
+                    dt[hol_name] = [g_date]
             else:
                 dates[g_year] = {hol_name: [g_date]}
 

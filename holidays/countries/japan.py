@@ -137,11 +137,9 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
                     2020: (JUL, 23),
                     2021: (JUL, 22),
                 }
-                dts_observed.add(
-                    self._add_holiday(name, dates[self._year])
-                    if self._year in dates
-                    else self._add_holiday_3rd_mon_of_jul(name)
-                )
+                dts_observed.add(self._add_holiday(name, dt)) if (
+                    dt := dates.get(self._year)
+                ) else dts_observed.add(self._add_holiday_3rd_mon_of_jul(name))
 
         if self._year >= 2016:
             dates = {
@@ -178,9 +176,9 @@ class Japan(ObservedHolidayBase, InternationalHolidays, StaticHolidays):
                     2020: (JUL, 24),
                     2021: (JUL, 23),
                 }
-                dts_observed.add(
-                    self._add_holiday(name, dates[self._year])
-                ) if self._year in dates else self._add_holiday_2nd_mon_of_oct(name)
+                dts_observed.add(self._add_holiday(name, dt)) if (
+                    dt := dates.get(self._year)
+                ) else dts_observed.add(self._add_holiday_2nd_mon_of_oct(name))
             else:
                 dts_observed.add(self._add_holiday_oct_10(name))
 

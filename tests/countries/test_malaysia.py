@@ -95,9 +95,9 @@ class TestMalaysia(CommonCountryTests, TestCase):
         )
 
         for col, subdiv in enumerate(Malaysia.subdivisions):
-            state_holidays = self.subdiv_holidays[subdiv]
+            subdiv_holidays = self.subdiv_holidays[subdiv]
             for dt, is_holiday in rows:
-                self.assertEqual(dt in state_holidays, is_holiday[col])
+                self.assertEqual(dt in subdiv_holidays, is_holiday[col])
 
     def test_special_holidays(self):
         self.assertHoliday(

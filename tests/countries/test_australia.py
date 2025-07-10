@@ -29,16 +29,16 @@ class TestAustralia(CommonCountryTests, TestCase):
         }
 
     def _assertVariableDays(self, year: int, subdiv_holidays: dict):  # noqa: N802
-        observed_prov_holidays = {
+        observed_subdiv_holidays = {
             subdiv: Australia(subdiv=subdiv, years=year) for subdiv in Australia.subdivisions
         }
-        for hol_date, hol_provs in subdiv_holidays.items():
-            dt = date(year, *hol_date)
-            for subdiv, prov_holidays in observed_prov_holidays.items():
+        for dt, subdivisions in subdiv_holidays.items():
+            dt = date(year, *dt)
+            for subdiv, subdiv_holidays in observed_subdiv_holidays.items():
                 self.assertEqual(
-                    dt in prov_holidays,
-                    subdiv in hol_provs,
-                    f"Failed date `{dt:%Y-%m-%d}`, province `{subdiv}`: {', '.join(hol_provs)}",
+                    dt in subdiv_holidays,
+                    subdiv in subdivisions,
+                    f"Failed date `{dt:%Y-%m-%d}`, subdiv `{subdiv}`: {', '.join(subdivisions)}",
                 )
 
     def test_country_aliases(self):
@@ -511,7 +511,7 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertEqual(all_holidays, holidays_found)
 
     def test_holidays_2019(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 28): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (MAR, 4): {"WA"},
@@ -534,10 +534,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 25): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (DEC, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2019, province_days)
+        self._assertVariableDays(2019, subdivision_days)
 
     def test_holidays_2020(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 26): {"SA"},
             (JAN, 27): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
@@ -562,10 +562,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 26): {"ACT", "NSW", "QLD", "VIC", "WA"},
             (DEC, 28): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2020, province_days)
+        self._assertVariableDays(2020, subdivision_days)
 
     def test_holidays_2021(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (MAR, 1): {"WA"},
@@ -591,10 +591,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 27): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (DEC, 28): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2021, province_days)
+        self._assertVariableDays(2021, subdivision_days)
 
     def test_holidays_2022(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "VIC", "WA"},
             (JAN, 3): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
@@ -620,10 +620,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (DEC, 27): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2022, province_days)
+        self._assertVariableDays(2022, subdivision_days)
 
     def test_holidays_2023(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "SA", "VIC", "WA"},
             (JAN, 2): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
@@ -647,10 +647,10 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 25): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (DEC, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2023, province_days)
+        self._assertVariableDays(2023, subdivision_days)
 
     def test_holidays_2024(self):
-        province_days = {
+        subdivision_days = {
             (JAN, 1): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (JAN, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (MAR, 4): {"WA"},
@@ -673,7 +673,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             (DEC, 25): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
             (DEC, 26): {"ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"},
         }
-        self._assertVariableDays(2024, province_days)
+        self._assertVariableDays(2024, subdivision_days)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
