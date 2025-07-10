@@ -27,7 +27,7 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "PN"
     default_language = "en"
-    supported_languages = ("en", "pih")  # English, Pitkern
+    supported_languages = ("en",)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -35,24 +35,13 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        if self._language == "pih":
-            # Pitkern translations
-            self._add_new_years_day("Niu Ier Dei")
-            self._add_holiday_jan_23("Bauti Dei")
-            self._add_good_friday("Gud Fraidee")
-            self._add_easter_monday("Iista Mundee")
-            self._add_kings_birthday("Keng Borthdee")
-            self._add_christmas_day("Krismas Dei")
-            self._add_boxing_day("Boksing Dei")
-        else:
-            # English translations (default)
-            self._add_new_years_day(tr("New Year's Day"))
-            self._add_holiday_jan_23(tr("Bounty Day"))
-            self._add_good_friday(tr("Good Friday"))
-            self._add_easter_monday(tr("Easter Monday"))
-            self._add_kings_birthday(tr("King's Birthday"))
-            self._add_christmas_day(tr("Christmas Day"))
-            self._add_boxing_day(tr("Boxing Day"))
+        self._add_new_years_day(tr("New Year's Day"))
+        self._add_holiday_jan_23(tr("Bounty Day"))
+        self._add_good_friday(tr("Good Friday"))
+        self._add_easter_monday(tr("Easter Monday"))
+        self._add_kings_birthday(tr("King's Birthday"))
+        self._add_christmas_day(tr("Christmas Day"))
+        self._add_boxing_day(tr("Boxing Day"))
 
     def _add_holiday_jan_23(self, name: str):
         """Add Bounty Day (January 23)."""
@@ -64,5 +53,9 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
 
 class PN(PitcairnIslands):
+    """Alias for PitcairnIslands."""
+    pass
+
+class PCN(PitcairnIslands):
     """Alias for PitcairnIslands."""
     pass

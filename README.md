@@ -1186,7 +1186,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Pitcairn Islands</td>
 <td>PN</td>
 <td></td>
-<td><strong>en</strong>, pih</td>
+<td><strong>en</strong></td>
 <td></td>
 </tr>
 <td>Poland</td>
