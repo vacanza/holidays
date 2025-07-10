@@ -116,7 +116,7 @@ class ChristianHolidays:
         """
         return self._add_holiday_nov_2(name)
 
-    def _add_ascension_thursday(self, name) -> date:
+    def _add_ascension_thursday(self, name, calendar=None) -> date:
         """
         Add Ascension Thursday (39 days after the Easter Sunday).
 
@@ -124,7 +124,7 @@ class ChristianHolidays:
         Day, or sometimes Holy Thursday.
         https://en.wikipedia.org/wiki/Feast_of_the_Ascension
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, +39))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +39))
 
     def _add_ash_monday(self, name) -> date:
         """
@@ -316,16 +316,16 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -2))
 
-    def _add_holy_saturday(self, name) -> date:
+    def _add_holy_saturday(self, name, calendar=None) -> date:
         """
         Add Holy Saturday (1 day before Easter Sunday).
 
         Great and Holy Saturday is a day between Good Friday and Easter Sunday.
         https://en.wikipedia.org/wiki/Holy_Saturday
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, -1))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -1))
 
-    def _add_holy_thursday(self, name) -> date:
+    def _add_holy_thursday(self, name, calendar=None) -> date:
         """
         Add Holy Thursday (3 days before Easter Sunday).
 
@@ -334,7 +334,7 @@ class ChristianHolidays:
         Jesus Christ with the Apostles, as described in the canonical gospels.
         https://en.wikipedia.org/wiki/Maundy_Thursday
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, -3))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -3))
 
     def _add_immaculate_conception_day(self, name) -> date:
         """
@@ -355,7 +355,7 @@ class ChristianHolidays:
         """
         return self._add_holiday_sep_8(name)
 
-    def _add_palm_sunday(self, name) -> date:
+    def _add_palm_sunday(self, name, calendar=None) -> date:
         """
         Add Palm Sunday (7 days before Easter Sunday).
 
@@ -365,7 +365,7 @@ class ChristianHolidays:
         Palm Sunday marks the first day of Holy Week.
         https://en.wikipedia.org/wiki/Palm_Sunday
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, -7))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -7))
 
     def _add_rejoicing_day(self, name) -> date:
         """
@@ -440,7 +440,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self._easter_sunday, +50))
 
-    def _add_whit_sunday(self, name) -> date:
+    def _add_whit_sunday(self, name, calendar=None) -> date:
         """
         Add Whit Sunday (49 days after Easter Sunday).
 
@@ -450,7 +450,7 @@ class ChristianHolidays:
         Feast of Weeks.
         https://en.wikipedia.org/wiki/Pentecost
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, +49))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +49))
 
     def _add_trinity_sunday(self, name) -> date:
         """
