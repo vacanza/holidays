@@ -54,8 +54,11 @@ class PitcairnIslands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
 class PN(PitcairnIslands):
     """Alias for PitcairnIslands."""
+
     pass
+
 
 class PCN(PitcairnIslands):
     """Alias for PitcairnIslands."""
+
     pass
