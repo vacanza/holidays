@@ -43,7 +43,7 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
     default_language = "en_GB"
     # %s observed.
     observed_label = tr("%s (observed)")
-    # Earliest year of holidays.
+    # Earliest year of holidays with an accessible online record.
     start_year = 2006
     supported_languages = ("en_GB", "en_US")
 
@@ -126,12 +126,14 @@ class CaymanIslandsStaticHolidays:
     """Cayman Islands special holidays.
 
     References:
-        * [2009 Cayman Islands Constitution Day](https://web.archive.org/web/20250320152628/https://www.constitutionalcommission.ky/the-cayman-islands-constitution-2009)
+        * [Public Holidays Order, 2009](https://legislation.gov.ky/cms/images/LEGISLATION/SUBORDINATE/2009/2009-0033/PublicHolidaysOrder2009_SL%2033%20of%202009.pdf)
+        * [Public Holidays Order (No. 2), 2019](https://legislation.gov.ky/cms/images/LEGISLATION/SUBORDINATE/2019/2019-0038/PublicHolidaysNo.2Order2019_SL%2038%20of%202019.pdf)
+        * [Public Holidays Order, 2025](https://archive.org/details/public-holidays-order-2025-sl-15-of-2025)
+        * [Referendum Day 2019](http://archive.today/2025.07.10-145125/https://web.facebook.com/ElectionsOffice/posts/reminder-the-referendum-vote-has-been-postponed-and-will-no-longer-take-place-th/2619995141431734/?_rdc=1&_rdr)
         * [UK Royal Wedding](https://en.wikipedia.org/wiki/Wedding_of_Prince_William_and_Catherine_Middleton)
         * [Queen Elizabeth II's Diamond Jubilee](https://web.archive.org/web/20210803202236/https://www.caymancompass.com/2012/06/06/queens-diamond-jubilee-feted/)
         * [Queen Elizabeth II's Funeral](https://web.archive.org/web/20231226055510/https://www.caymancompass.com/2022/09/12/cayman-declares-public-holiday-for-queens-funeral/)
         * [King Charles III's Coronation](https://web.archive.org/web/20250601214328/https://www.radiocayman.gov.ky/news/public-holidays-for-2023-unconfirmed)
-        * [Public Holidays Order, 2025](https://archive.org/details/public-holidays-order-2025-sl-15-of-2025)
     """
 
     # Referendum Day.

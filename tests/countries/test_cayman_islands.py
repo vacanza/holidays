@@ -36,6 +36,19 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2022-09-19",
             "2023-05-08",
         )
+        self.assertHolidayName(
+            "Referendum Day",
+            "2012-07-18",
+            "2019-12-19",
+        )
+        self.assertHolidayName(
+            "General Election Day",
+            "2009-05-20",
+            "2013-05-22",
+            "2017-05-24",
+            "2021-04-14",
+            "2025-04-30",
+        )
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -101,16 +114,6 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2025-04-21",
         )
         self.assertHolidayName(name, range(2006, 2050))
-
-    def test_general_election_day(self):
-        name = "General Election Day"
-        self.assertHolidayName(
-            name, "2009-05-20", "2013-05-22", "2017-05-24", "2021-04-14", "2025-04-30"
-        )
-        self.assertNoHolidayName(
-            name,
-            [year for year in range(2006, 2050) if year not in (2009, 2013, 2017, 2021, 2025)],
-        )
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -211,13 +214,6 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-
-    def test_referendum_day(self):
-        name = "Referendum Day"
-        self.assertHolidayName(name, "2012-07-18", "2019-12-19")
-        self.assertNoHolidayName(name, range(2006, 2012))
-        self.assertNoHolidayName(name, range(2013, 2019))
-        self.assertNoHolidayName(name, range(2020, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
