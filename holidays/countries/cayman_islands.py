@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays import APR, MAY, JUN, SEP, NOV, DEC, JUL
+from holidays import APR, MAY, JUN, JUL, SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
