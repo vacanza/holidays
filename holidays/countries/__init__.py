@@ -52,6 +52,7 @@ from holidays.countries.canada import Canada, CA, CAN
 from holidays.countries.chad import Chad, TD, TCD
 from holidays.countries.chile import Chile, CL, CHL
 from holidays.countries.china import China, CN, CHN
+from holidays.countries.christmas_island import ChristmasIsland, CX, CXR
 from holidays.countries.cocos_islands import CocosIslands, CC, CCK
 from holidays.countries.colombia import Colombia, CO, COL
 from holidays.countries.congo import Congo, CG, COG
@@ -161,6 +162,7 @@ from holidays.countries.norway import Norway, NO, NOR
 from holidays.countries.oman import Oman, OM, OMN
 from holidays.countries.pakistan import Pakistan, PK, PAK
 from holidays.countries.palau import Palau, PW, PLW
+from holidays.countries.palestine import Palestine, PS, PSE
 from holidays.countries.panama import Panama, PA, PAN
 from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
 from holidays.countries.paraguay import Paraguay, PY, PRY
