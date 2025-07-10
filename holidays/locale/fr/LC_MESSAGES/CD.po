@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.77\n"
 "POT-Creation-Date: 2025-07-05 21:01+0530\n"
 "PO-Revision-Date: 2025-07-05 21:01+0530\n"
 "Last-Translator: Prateekshit Jaiswal <prateekshitjaiswal73@gmail.com>\n"
@@ -26,20 +26,25 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: fr\n"
 
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr ""
+
 #. New Year's Day.
-msgid "Jour de l'An"
+msgid "Nouvel an"
 msgstr ""
 
 #. Martyrs of Independence.
-msgid "Martyrs de l’indépendance"
+msgid "Martyrs de l'indépendance"
 msgstr ""
 
-#. National Hero Laurent Désiré KABILA Day.
-msgid "Journée du Héro National Laurent Désiré KABILA"
+#. National Hero Laurent Désiré Kabila Day.
+msgid "Journée du héros national Laurent Désiré Kabila"
 msgstr ""
 
-#. National Hero Patrice Emery LUMUMBA Day.
-msgid "Journée du Héro National Patrice Emery LUMUMBA"
+#. National Hero Patrice Emery Lumumba Day.
+msgid "Journée du héros national Patrice Emery Lumumba"
 msgstr ""
 
 #. Day of the Struggle of Simon Kimbangu and African Consciousness.
@@ -47,11 +52,11 @@ msgid "Journée du combat de Simon Kimbangu et de la conscience africaine"
 msgstr ""
 
 #. Labor Day.
-msgid "Fête du Travail"
+msgid "Fête du travail"
 msgstr ""
 
-#. Revolution and Armed Forces Day.
-msgid "Journée de la Révolution et des Forces Armées"
+#. Armed Forces Day.
+msgid "Journée des Forces armées"
 msgstr ""
 
 #. Liberation Day.
@@ -59,7 +64,7 @@ msgid "Jour de la Libération"
 msgstr ""
 
 #. Independence Day.
-msgid "Jour de l'indépendance"
+msgid "Journée de l’indépendance"
 msgstr ""
 
 #. Parents' Day.
