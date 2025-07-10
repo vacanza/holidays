@@ -351,8 +351,8 @@ class UnitedStates(ObservedHolidayBase, ChristianHolidays, InternationalHolidays
             }
             # Thanksgiving Day.
             name = tr("Thanksgiving Day")
-            if self._year in thanksgiving_day_dates:
-                self._add_holiday(name, thanksgiving_day_dates[self._year])
+            if dt := thanksgiving_day_dates.get(self._year):
+                self._add_holiday(name, dt)
             elif self._year >= 1942:
                 self._add_holiday_4th_thu_of_nov(name)
             else:

@@ -107,8 +107,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
             }
             # Spring Bank Holiday
             name = "Spring Bank Holiday"
-            if self._year in spring_bank_dates:
-                self._add_holiday(name, spring_bank_dates[self._year])
+            if dt := spring_bank_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_last_mon_of_may(name)
 
@@ -168,9 +168,9 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
                 1945: (JUN, 14),
                 1946: (JUN, 13),
             }
-            if self._year in his_majesty_birth_dates:
+            if dt := his_majesty_birth_dates.get(self._year):
                 # His Majesty's Birthday.
-                self._add_holiday("His Majesty's Birthday", his_majesty_birth_dates[self._year])
+                self._add_holiday("His Majesty's Birthday", dt)
 
         # Summer Bank Holiday
         # Le premier Lundi du mois d'Août
@@ -217,8 +217,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
             }
             # Liberation Day.
             name = "Liberation Day"
-            if self._year in liberation_dates:
-                self._add_holiday(name, liberation_dates[self._year])
+            if dt := liberation_dates.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_may_9(name)
 
