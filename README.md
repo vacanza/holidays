@@ -434,6 +434,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Christmas Island</td>
+<td>CX</td>
+<td></td>
+<td><strong>en_CX</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Cocos Islands</td>
 <td>CC</td>
 <td></td>
