@@ -10,13 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import unittest
 from datetime import date
 
 from holidays.countries.pitcairn_islands import PitcairnIslands, PN, PCN
 from tests.common import CommonCountryTests
 
 
-class TestPitcairnIslands(CommonCountryTests):
+class TestPitcairnIslands(CommonCountryTests, unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
@@ -42,4 +43,4 @@ class TestPitcairnIslands(CommonCountryTests):
         )
 
     def test_random_non_holiday(self):
-        self.assertNoHoliday(PitcairnIslands(year=2024), date(2024, 2, 2))
+        self.assertNoHoliday(PitcairnIslands(years=2024), date(2024, 2, 2))
