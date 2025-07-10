@@ -163,6 +163,7 @@ COUNTRIES: RegistryDict = {
     "oman": ("Oman", "OM", "OMN"),
     "pakistan": ("Pakistan", "PK", "PAK"),
     "palau": ("Palau", "PW", "PLW"),
+    "palestine": ("Palestine", "PS", "PSE"),
     "panama": ("Panama", "PA", "PAN"),
     "papua_new_guinea": ("PapuaNewGuinea", "PG", "PNG"),
     "paraguay": ("Paraguay", "PY", "PRY"),
