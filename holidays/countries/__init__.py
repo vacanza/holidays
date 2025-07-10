@@ -161,6 +161,7 @@ from holidays.countries.norway import Norway, NO, NOR
 from holidays.countries.oman import Oman, OM, OMN
 from holidays.countries.pakistan import Pakistan, PK, PAK
 from holidays.countries.palau import Palau, PW, PLW
+from holidays.countries.palestine import Palestine, PS, PSE
 from holidays.countries.panama import Panama, PA, PAN
 from holidays.countries.papua_new_guinea import PapuaNewGuinea, PG, PNG
 from holidays.countries.paraguay import Paraguay, PY, PRY

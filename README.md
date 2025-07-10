@@ -1155,6 +1155,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>ARMED_FORCES, HALF_DAY</td>
 </tr>
 <tr>
+<td>Palestine</td>
+<td>PS</td>
+<td></td>
+<td><strong>ar</strong>, en_US</td>
+<td>CATHOLIC, ORTHODOX</td>
+</tr>
+<tr>
 <td>Panama</td>
 <td>PA</td>
 <td></td>

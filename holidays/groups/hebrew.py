@@ -27,11 +27,11 @@ class HebrewCalendarHolidays:
         self._hebrew_calendar = _HebrewLunisolar()
 
     def _add_hebrew_calendar_holiday(
-        self, name: str, hol_date: date, days_delta: Union[int, Iterable[int]] = 0
+        self, name: str, holiday_date: date, days_delta: Union[int, Iterable[int]] = 0
     ) -> set[date]:
         added_dates = set()
         for delta in (days_delta,) if isinstance(days_delta, int) else days_delta:
-            if dt := self._add_holiday(name, _timedelta(hol_date, delta)):
+            if dt := self._add_holiday(name, _timedelta(holiday_date, delta)):
                 added_dates.add(dt)
         return added_dates
 
