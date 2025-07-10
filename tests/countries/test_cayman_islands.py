@@ -162,6 +162,7 @@ class TestCaymanIslands(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-23",
         )
+        self.assertHolidayName(name, range(2023, 2050))
         self.assertNoHolidayName(name, range(2006, 2023))
 
     def test_constitution_day(self):
