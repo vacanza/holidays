@@ -59,8 +59,8 @@ def generate_data():
             g_year = g_date.year
             if g_year < g_year_min or g_year > g_year_max:
                 continue
-            if g_year in dates:
-                dates[g_year][hol_name] = g_date
+            if dt := dates.get(g_year):
+                dt[hol_name] = g_date
             else:
                 dates[g_year] = {hol_name: g_date}
 
