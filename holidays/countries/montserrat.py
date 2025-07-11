@@ -34,9 +34,9 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         * [National Day of Prayer and Thanksgiving, 2021](https://web.archive.org/web/20220809144840/https://www.gov.ms/2021/07/16/wednesday-july-21-2021-public-holiday-national-day-of-prayer-thanksgiving/)
         * [National Day of Prayer and Thanksgiving, 2022](https://web.archive.org/web/20220816124619/https://www.gov.ms/2022/07/19/public-holiday-for-national-day-of-prayer-and-thanksgiving-to-be-held-on-july-20-2022/)
         * [National Day of Prayer and Thanksgiving](https://web.archive.org/web/20240711221313/https://www.gov.ms/wp-content/uploads/2023/05/SRO-No.-15-of-2023-Public-Holidays-Amendment-of-Schedule-Order.pdf)
-        * [Queen's Platinum Jubilee, 2022](https://www.gov.ms/tag/public-holidays/)
+        * [Queen's Platinum Jubilee, 2022](https://web.archive.org/web/20250711160439/https://www.gov.ms/tag/public-holidays/)
         * [Montserrat Public holidays, 2024](https://web.archive.org/web/20240421112540/https://www.gov.ms/wp-content/uploads/2023/12/Public-Holidays-Montserrat-2024.docx.pdf)
-        * [Montserrat Public holidays, 2025](https://www.gov.ms/wp-content/uploads/2025/01/2025-Public-Holidays-on-Montserrat.pdf)
+        * [Montserrat Public holidays, 2025](https://web.archive.org/web/20250711160324/https://www.gov.ms/wp-content/uploads/2025/01/2025-Public-Holidays-on-Montserrat.pdf)
     """
 
     country = "MS"
