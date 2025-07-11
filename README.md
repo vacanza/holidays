@@ -406,6 +406,13 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
+<td>Cayman Islands</td>
+<td>KY</td>
+<td></td>
+<td><strong>en_GB</strong>, en_US</td>
+<td></td>
+</tr>
+<tr>
 <td>Chad</td>
 <td>TD</td>
 <td></td>
