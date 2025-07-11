@@ -142,13 +142,15 @@ class TestMontserrat(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(2017, 2021))
 
     def test_emancipation_day(self):
+        name = "Emancipation Day"
         dts = (
             "2022-08-01",
             "2023-08-07",
             "2024-08-05",
             "2025-08-04",
         )
-        self.assertHolidayName("Emancipation Day", dts)
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(2017, 2050))
 
     def test_christmas_day(self):
         name = "Christmas Day"
