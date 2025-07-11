@@ -182,7 +182,10 @@ COUNTRIES: RegistryDict = {
     "nicaragua": ("Nicaragua", "NI", "NIC"),
     "niger": ("Niger", "NE", "NER"),
     "nigeria": ("Nigeria", "NG", "NGA"),
+<<<<<<< HEAD
     "niue": ("Niue", "NU", "NIU"),
+=======
+>>>>>>> af207d1b (Add Norfolk Island holidays)
     "norfolk_island": ("NorfolkIsland", "NF", "NFK"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
     "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),

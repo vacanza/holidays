@@ -31,6 +31,19 @@ msgstr ""
 msgid "%s (observed)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr ""
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr ""
@@ -59,11 +72,17 @@ msgstr ""
 msgid "Bounty Day"
 msgstr ""
 
+<<<<<<< HEAD
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr ""
 
 #. Queen's Birthday.
+=======
+msgid "King's Birthday"
+msgstr ""
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 msgid "Queen's Birthday"
 msgstr ""
 
@@ -75,14 +94,24 @@ msgstr ""
 msgid "Thanksgiving Day"
 msgstr ""
 
+<<<<<<< HEAD
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr ""
 
+=======
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr ""

@@ -24,13 +24,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
+<<<<<<< HEAD
 "X-Source-Language: en_US\n"
+=======
+"X-Source-Language: en_NF\n"
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
 #. %s (observed).
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (observed)"
 
+<<<<<<< HEAD
+=======
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (observed, estimated)"
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. New Year's Day.
 msgid "New Year's Day"
 msgstr "New Year's Day"
@@ -59,11 +76,17 @@ msgstr "ANZAC Day"
 msgid "Bounty Day"
 msgstr "Bounty Day"
 
+<<<<<<< HEAD
 #. King's Birthday.
 msgid "King's Birthday"
 msgstr "King's Birthday"
 
 #. Queen's Birthday.
+=======
+msgid "King's Birthday"
+msgstr "King's Birthday"
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 msgid "Queen's Birthday"
 msgstr "Queen's Birthday"
 
@@ -75,14 +98,24 @@ msgstr "Show Day"
 msgid "Thanksgiving Day"
 msgstr "Thanksgiving Day"
 
+<<<<<<< HEAD
 #. Christmas Day.
 msgid "Christmas Day"
 msgstr "Christmas Day"
 
+=======
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. Boxing Day.
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
+<<<<<<< HEAD
+=======
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"

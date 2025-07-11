@@ -112,6 +112,7 @@ and detailed information.
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 We currently support 235 country codes. The standard way to refer to a country is by using its [ISO
 =======
 We currently support 186 country codes. The standard way to refer to a country is by using its [ISO
@@ -134,6 +135,9 @@ We currently support 210 country codes. The standard way to refer to a country i
 =======
 We currently support 211 country codes. The standard way to refer to a country is by using its [ISO
 >>>>>>> 531d3099 (readme changes)
+=======
+We currently support 212 country codes. The standard way to refer to a country is by using its [ISO
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), the same used
 for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
@@ -1267,6 +1271,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <td>Niue</td>
 <td>NU</td>
 <td></td>
@@ -1274,6 +1279,8 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td></td>
 </tr>
 <tr>
+=======
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 <td>Norfolk Island</td>
 <td>NF</td>
 <td></td>

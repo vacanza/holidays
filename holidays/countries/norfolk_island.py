@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+<<<<<<< HEAD
 
 from gettext import gettext as tr
 
@@ -24,11 +25,37 @@ from holidays.observed_holiday_base import (
 
 
 class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
+=======
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import SEP, JUN
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+)
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    MON_TO_NEXT_TUE,
+    SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON,
+    SAT_SUN_TO_NEXT_MON_TUE,
+)
+
+
+class NorfolkIsland(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
+>>>>>>> af207d1b (Add Norfolk Island holidays)
     """Norfolk Island holidays.
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Norfolk_Island>
         * <https://web.archive.org/web/20250409233237/https://www.infrastructure.gov.au/territories-regions-cities/territories/norfolk-island/travel-information>
+<<<<<<< HEAD
         * [2020](https://web.archive.org/web/20220704121150/http://norfolkislander.com/images/2019_08_30_Gazette_No._38.pdf)
         * [2021](https://web.archive.org/web/20250710234146/http://www.norfolkislander.com/images/2020_07_31_Gazette_No._35.pdf)
         * [2022](https://web.archive.org/web/20250328071352/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2021_07_09_gazette_no_29.pdf)
@@ -36,12 +63,24 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         * [2024](https://web.archive.org/web/20250328070948/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2023_07_13_gazette_no_40.pdf)
         * [2025](https://web.archive.org/web/20250711000525/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2024_07_05_gazette_no_25.pdf)
         * [2026](https://web.archive.org/web/20250713192750/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2025/2025-07-11-gazette-no-26.pdf)
+=======
+        * [2021](https://web.archive.org/web/20250710234146/http://www.norfolkislander.com/images/2020_07_31_Gazette_No._35.pdf)
+        * [2022](https://web.archive.org/web/20250328071352/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2021_07_09_gazette_no_29.pdf)
+        * [2025](https://web.archive.org/web/20250711000525/https://www.nirc.gov.au/files/assets/public/v/1/your-council/documents/nirc-gazettes/2024_07_05_gazette_no_25.pdf)
+>>>>>>> af207d1b (Add Norfolk Island holidays)
     """
 
     country = "NF"
     default_language = "en_NF"
     # %s (observed).
     observed_label = tr("%s (observed)")
+<<<<<<< HEAD
+=======
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
+    # %s (observed, estimated).
+    observed_estimated_label = tr("%s (observed, estimated)")
+>>>>>>> af207d1b (Add Norfolk Island holidays)
     supported_languages = ("en_NF", "en_US")
     start_year = 2016
 
@@ -69,6 +108,7 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_easter_monday(tr("Easter Monday"))
 
         # ANZAC Day.
+<<<<<<< HEAD
         self._add_anzac_day(tr("ANZAC Day"))
 
         # Bounty Day.
@@ -88,6 +128,29 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             self._add_holiday_2_days_past_3rd_sat_of_jun(name)
         else:
             self._add_holiday_2_days_past_2nd_sat_of_jun(name)
+=======
+        self._add_observed(self._add_anzac_day(tr("ANZAC Day")))
+
+        # Bounty Day.
+        self._add_observed(self._add_holiday_jun_8(tr("Bounty Day")), rule=SAT_SUN_TO_NEXT_MON)
+
+        sovereign_birthday_dates = {
+            2019: (JUN, 17),
+            2024: (JUN, 17),
+        }
+        # Sovereign's Birthday.
+        if self._year >= 2023:
+            name = tr("King's Birthday")
+        else:
+            name = tr("Queen's Birthday")
+
+        if dt := sovereign_birthday_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_observed(
+                self._add_holiday_2_days_past_2nd_sat_of_jun(name),
+            )
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
         # Show Day.
         self._add_holiday_2nd_mon_of_oct(tr("Show Day"))
@@ -96,6 +159,7 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
         self._add_holiday_last_wed_of_nov(tr("Thanksgiving Day"))
 
         self._add_observed(
+<<<<<<< HEAD
             # Christmas Day.
             self._add_christmas_day(tr("Christmas Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE,
@@ -107,6 +171,16 @@ class NorfolkIsland(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
+=======
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE + MON_TO_NEXT_TUE,
+        )
+
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
+
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
 class NF(NorfolkIsland):
     pass

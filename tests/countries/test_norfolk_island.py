@@ -21,12 +21,20 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
     def setUpClass(cls):
         years = range(2016, 2050)
         super().setUpClass(NorfolkIsland, years=years, years_non_observed=years)
+<<<<<<< HEAD
+=======
+        cls.no_estimated_holidays = NorfolkIsland(years=years)
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
     def test_country_aliases(self):
         self.assertAliases(NorfolkIsland, NF, NFK)
 
     def test_no_holidays(self):
+<<<<<<< HEAD
         self.assertNoHolidays(NorfolkIsland(years=2015))
+=======
+        self.assertNoHolidays(NorfolkIsland(years=1913))
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
     def test_special_holidays(self):
         self.assertHoliday("2022-09-22")
@@ -47,7 +55,10 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-01-26" for year in range(2016, 2050)))
         obs_dt = (
             "2019-01-28",
+<<<<<<< HEAD
             "2020-01-27",
+=======
+>>>>>>> af207d1b (Add Norfolk Island holidays)
             "2025-01-27",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
@@ -67,6 +78,11 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
+<<<<<<< HEAD
+=======
+            "2018-03-30",
+            "2019-04-19",
+>>>>>>> af207d1b (Add Norfolk Island holidays)
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
@@ -88,7 +104,18 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         self.assertHolidayName(name, range(2016, 2050))
 
     def test_anzac_day(self):
+<<<<<<< HEAD
         self.assertHolidayName("ANZAC Day", (f"{year}-04-25" for year in range(2016, 2050)))
+=======
+        name = "ANZAC Day"
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(2016, 2050)))
+        obs_dt = (
+            "2020-04-27",
+            "2021-04-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
     def test_bounty_day(self):
         name = "Bounty Day"
@@ -102,6 +129,7 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_sovereigns_birthday(self):
+<<<<<<< HEAD
         name_queen = "Queen's Birthday"
         self.assertHolidayName(
             name_queen,
@@ -116,13 +144,29 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name_queen, range(2023, 2050))
 
         name_king = "King's Birthday"
+=======
+        name_king = "King's Birthday"
+        name_queen = "Queen's Birthday"
+>>>>>>> af207d1b (Add Norfolk Island holidays)
         self.assertHolidayName(
             name_king,
             "2023-06-12",
             "2024-06-17",
             "2025-06-16",
         )
+<<<<<<< HEAD
         self.assertHolidayName(name_king, range(2023, 2050))
+=======
+        self.assertHolidayName(
+            name_queen,
+            "2020-06-15",
+            "2021-06-14",
+            "2022-06-13",
+        )
+        self.assertHolidayName(name_queen, range(2016, 2023))
+        self.assertHolidayName(name_king, range(2023, 2050))
+        self.assertNoHolidayName(name_queen, range(2023, 2050))
+>>>>>>> af207d1b (Add Norfolk Island holidays)
         self.assertNoHolidayName(name_king, range(2016, 2023))
 
     def test_show_day(self):
@@ -155,19 +199,34 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2016, 2050)))
         obs_dt = (
+<<<<<<< HEAD
             "2016-12-27",
             "2021-12-27",
             "2022-12-27",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+=======
+            "2016-12-26",
+            "2021-12-27",
+            "2022-12-26",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+>>>>>>> af207d1b (Add Norfolk Island holidays)
 
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(2016, 2050)))
         obs_dt = (
+<<<<<<< HEAD
             "2020-12-28",
             "2021-12-28",
+=======
+            "2016-12-27",
+            "2020-12-28",
+            "2021-12-28",
+            "2022-12-27",
+>>>>>>> af207d1b (Add Norfolk Island holidays)
         )
         self.assertHolidayName(f"{name} (observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -188,8 +247,34 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
             ("2022-10-10", "Show Day"),
             ("2022-11-30", "Thanksgiving Day"),
             ("2022-12-25", "Christmas Day"),
+<<<<<<< HEAD
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
+=======
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Boxing Day (observed)"),
+        )
+
+    def test_l10n_en_nf(self):
+        self.assertLocalizedHolidays(
+            "en_NF",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (observed)"),
+            ("2022-01-26", "Australia Day"),
+            ("2022-03-06", "Foundation Day"),
+            ("2022-03-07", "Foundation Day (observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "ANZAC Day"),
+            ("2022-06-08", "Bounty Day"),
+            ("2022-06-13", "Queen's Birthday"),
+            ("2022-09-22", "National Day of Mourning for Queen Elizabeth II"),
+            ("2022-10-10", "Show Day"),
+            ("2022-11-30", "Thanksgiving Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Boxing Day (observed)"),
+>>>>>>> af207d1b (Add Norfolk Island holidays)
         )
 
     def test_l10n_en_us(self):
@@ -209,6 +294,11 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
             ("2022-10-10", "Show Day"),
             ("2022-11-30", "Thanksgiving Day"),
             ("2022-12-25", "Christmas Day"),
+<<<<<<< HEAD
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
+=======
+            ("2022-12-26", "Boxing Day; Christmas Day (observed)"),
+            ("2022-12-27", "Boxing Day (observed)"),
+>>>>>>> af207d1b (Add Norfolk Island holidays)
         )
